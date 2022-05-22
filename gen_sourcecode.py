@@ -705,7 +705,7 @@ def debug(fpath):
         
         for i, dgen in enumerate(nimp.DATA_CLASSES):
             
-            for line in dgen().gen_class(all_nodes):
+            for line in dgen(all_nodes).gen_class():
                 f.write(line)
                 
         print('-'*80)

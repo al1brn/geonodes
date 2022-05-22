@@ -2804,7 +2804,7 @@ class NodeHandleTypeSelection(Attribute):
     ----------
 
         handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN') 
-        mode        : {'RIGHT', 'LEFT'}
+        mode        : {'LEFT', 'RIGHT'}
 
     Output sockets
     --------------
@@ -2815,7 +2815,7 @@ class NodeHandleTypeSelection(Attribute):
 
     PARAMETERS = ['handle_type', 'mode']
 
-    def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, owner_socket=None, data_type='FLOAT', domain='POINT'):
+    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, owner_socket=None, data_type='FLOAT', domain='POINT'):
 
         super().__init__('GeometryNodeCurveHandleTypeSelection', name='Handle Type Selection', owner_socket=owner_socket, data_type=data_type, domain=domain)
 
@@ -3622,7 +3622,7 @@ class NodeSetHandleType(Node):
     ----------
 
         handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN') 
-        mode        : {'RIGHT', 'LEFT'}
+        mode        : {'LEFT', 'RIGHT'}
 
     Output sockets
     --------------
@@ -3633,7 +3633,7 @@ class NodeSetHandleType(Node):
 
     PARAMETERS = ['handle_type', 'mode']
 
-    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
 
         super().__init__('GeometryNodeCurveSetHandles', name='Set Handle Type')
 

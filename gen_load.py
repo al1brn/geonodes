@@ -547,6 +547,8 @@ class Argument:
             self.hook = hooks.get(name)
             self.class_name = class_name
             
+            self.default_type = type(default).__name__ # USed for comment
+            
             if type(default) is str:
                 self.default = f"'{default}'"
             elif type(default).__name__ == 'Vector':
@@ -564,7 +566,7 @@ class Argument:
             return self.arg_type == 'SOCKET'
         
         @property
-        def isparameter(self):
+        def is_parameter(self):
             return self.arg_type == 'PARAMETER'
                 
         @property
@@ -576,14 +578,16 @@ class Argument:
             s = f"{self.name:15s} : "
             if self.is_variation:
                 s += f"node parameter set to {self.default}"
-            elif self.isparameter:
-                s += "node parameter"
+                
+            elif self.is_parameter:
+                s += self.default_type
+
             else:
                 s += self.class_name
                 if self.is_multi:
                     s += " (multi input)"
                 if self.is_self:
-                    s + ": self socket"
+                    s += ": self socket"
             return s + "\n"
         
             
@@ -760,6 +764,13 @@ class Node:
                 
         explore_params()
             
+    # ----------------------------------------------------------------------------------------------------
+    # bl_idname
+    
+    @property
+    def bl_idname(self):
+        return self.bnode.bl_idname
+    
     # ----------------------------------------------------------------------------------------------------
     # When a node is created, a parameter can be passed as argument or not
     # When passed as an argument, the use can change it
