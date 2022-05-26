@@ -1,72 +1,57 @@
 import geonodes as gn
-from geonodes.core import socket as bcls
+from geonodes.core import datasocket as dsock
 from geonodes.nodes import nodes
+
 import logging
 logger = logging.Logger('geonodes')
-
-# ----------------------------------------------------------------------------------------------------
-# Argument is a vector
-
-def is_vector(arg):
-    return isinstance(arg, Vector) or (isinstance(arg, (tuple, list)) and len(arg) == 3)
-
-# ----------------------------------------------------------------------------------------------------
-# Sockets outputs
-
-class Sockets(bcls.Sockets):
-    pass
-
 
 # ==============================================================================================================
 # Data class Material
 
-class Material(bcls.Material):
-    """ Socket data class Material
+class Material(dsock.Material):
+    """ Data socket Material
 
     Methods
     -------
-        selection            : Boolean
-        switch               : Material
-
+        selection            : selection (Boolean)
+        switch               : output (Material)
     """
-
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def switch(self, switch=None, true=None):
-        """ Method switch using node NodeSwitch
+    def switch(self, switch0=None, switch1=None, true=None):
+        """Call node NodeSwitch (GeometryNodeSwitch)
 
-        Arguments
-        ---------
-            false           : Float: self socket
-            switch          : Boolean
-            true            : Float
+        Sockets arguments
+        -----------------
+            false          : Material (self)
+            switch0        : Boolean
+            switch1        : Boolean
+            true           : Material
 
-        Node parameters settings
-        ------------------------
-            input_type      : node parameter set to 'MATERIAL'
+        Fixed parameters
+        ----------------
+            input_type     : 'MATERIAL'
 
         Returns
         -------
             Material
         """
 
-        return nodes.NodeSwitch(false=self, switch=switch, true=true, input_type='MATERIAL').output
+        return nodes.NodeSwitch(false=self, switch0=switch0, switch1=switch1, true=true, input_type='MATERIAL').output
 
     def selection(self):
-        """ Method selection using node NodeMaterialSelection
+        """Call node NodeMaterialSelection (GeometryNodeMaterialSelection)
 
-        Arguments
-        ---------
-            material        : Material: self socket
-
+        Sockets arguments
+        -----------------
+            material       : Material (self)
         Returns
         -------
             Boolean
         """
 
-        return nodes.NodeMaterialSelection(material=self).output
-
+        return nodes.NodeMaterialSelection(material=self).selection
 
 

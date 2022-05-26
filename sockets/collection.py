@@ -1,76 +1,63 @@
 import geonodes as gn
-from geonodes.core import socket as bcls
+from geonodes.core import datasocket as dsock
 from geonodes.nodes import nodes
+
 import logging
 logger = logging.Logger('geonodes')
-
-# ----------------------------------------------------------------------------------------------------
-# Argument is a vector
-
-def is_vector(arg):
-    return isinstance(arg, Vector) or (isinstance(arg, (tuple, list)) and len(arg) == 3)
-
-# ----------------------------------------------------------------------------------------------------
-# Sockets outputs
-
-class Sockets(bcls.Sockets):
-    pass
-
 
 # ==============================================================================================================
 # Data class Collection
 
-class Collection(bcls.Collection):
-    """ Socket data class Collection
+class Collection(dsock.Collection):
+    """ Data socket Collection
 
     Methods
     -------
-        info                 : Geometry
-        switch               : Collection
-
+        info                 : geometry (Geometry)
+        switch               : output (Collection)
     """
-
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def switch(self, switch=None, true=None):
-        """ Method switch using node NodeSwitch
+    def switch(self, switch0=None, switch1=None, true=None):
+        """Call node NodeSwitch (GeometryNodeSwitch)
 
-        Arguments
-        ---------
-            false           : Float: self socket
-            switch          : Boolean
-            true            : Float
+        Sockets arguments
+        -----------------
+            false          : Collection (self)
+            switch0        : Boolean
+            switch1        : Boolean
+            true           : Collection
 
-        Node parameters settings
-        ------------------------
-            input_type      : node parameter set to 'COLLECTION'
+        Fixed parameters
+        ----------------
+            input_type     : 'COLLECTION'
 
         Returns
         -------
             Collection
         """
 
-        return nodes.NodeSwitch(false=self, switch=switch, true=true, input_type='COLLECTION').output
+        return nodes.NodeSwitch(false=self, switch0=switch0, switch1=switch1, true=true, input_type='COLLECTION').output
 
     def info(self, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
-        """ Method info using node NodeCollectionInfo
+        """Call node NodeCollectionInfo (GeometryNodeCollectionInfo)
 
-        Arguments
-        ---------
-            collection      : Collection: self socket
-            separate_children : Boolean
-            reset_children  : Boolean
+        Sockets arguments
+        -----------------
+            collection     : Collection (self)
+            separate_children: Boolean
+            reset_children : Boolean
 
-            transform_space : str
-
+        Parameters arguments
+        --------------------
+            transform_space: 'ORIGINAL' in [ORIGINAL, RELATIVE]
         Returns
         -------
             Geometry
         """
 
-        return nodes.NodeCollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space).output
-
+        return nodes.NodeCollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space).geometry
 
 

@@ -1,118 +1,101 @@
 import geonodes as gn
-from geonodes.core import socket as bcls
+from geonodes.core import datasocket as dsock
 from geonodes.nodes import nodes
+
 import logging
 logger = logging.Logger('geonodes')
-
-# ----------------------------------------------------------------------------------------------------
-# Argument is a vector
-
-def is_vector(arg):
-    return isinstance(arg, Vector) or (isinstance(arg, (tuple, list)) and len(arg) == 3)
-
-# ----------------------------------------------------------------------------------------------------
-# Sockets outputs
-
-class Sockets(bcls.Sockets):
-    pass
-
 
 # ==============================================================================================================
 # Data class Points
 
 class Points(gn.Mesh):
-    """ Socket data class Points
+    """ Data socket Points
 
     Methods
     -------
-        instance_on_points   : Instances
-        to_vertices          : Mesh
-        to_volume            : Volume
-
+        instance_on_points   : instances (Geometry)
+        to_vertices          : mesh (Geometry)
+        to_volume            : volume (Geometry)
     Stacked methods
     ---------------
         set_radius           : Points
-
     """
-
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
-        """ Method instance_on_points using node NodeInstanceonPoints
+    def instance_on_points(points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
+        """Call node NodeInstanceOnPoints (GeometryNodeInstanceOnPoints)
 
-        Arguments
-        ---------
-            points          : Points: self socket
-            selection       : Boolean
-            instance        : Geometry
-            pick_instance   : Boolean
-            instance_index  : Integer
-            rotation        : Vector
-            scale           : Vector
-
+        Sockets arguments
+        -----------------
+            points         : Geometry
+            selection      : Boolean
+            instance       : Geometry
+            pick_instance  : Boolean
+            instance_index : Integer
+            rotation       : Vector
+            scale          : Vector
         Returns
         -------
-            Instances
+            Geometry
         """
 
-        return nodes.NodeInstanceonPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).output
+        return nodes.NodeInstanceOnPoints(points=points, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances
 
-    def to_vertices(self, selection=None):
-        """ Method to_vertices using node NodePointstoVertices
+    def to_vertices(points=None, selection=None):
+        """Call node NodePointsToVertices (GeometryNodePointsToVertices)
 
-        Arguments
-        ---------
-            points          : Points: self socket
-            selection       : Boolean
-
+        Sockets arguments
+        -----------------
+            points         : Geometry
+            selection      : Boolean
         Returns
         -------
-            Mesh
+            Geometry
         """
 
-        return nodes.NodePointstoVertices(points=self, selection=selection).output
+        return nodes.NodePointsToVertices(points=points, selection=selection).mesh
 
-    def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
-        """ Method to_volume using node NodePointstoVolume
+    def to_volume(points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
+        """Call node NodePointsToVolume (GeometryNodePointsToVolume)
 
-        Arguments
-        ---------
-            points          : Points: self socket
-            density         : Float
-            voxel_size      : Float
-            voxel_amount    : Float
-            radius          : Float
+        Sockets arguments
+        -----------------
+            points         : Geometry
+            density        : Float
+            voxel_size     : Float
+            voxel_amount   : Float
+            radius         : Float
 
-            resolution_mode : str
-
+        Parameters arguments
+        --------------------
+            resolution_mode: 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
         Returns
         -------
-            Volume
+            Geometry
         """
 
-        return nodes.NodePointstoVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode).output
+        return nodes.NodePointsToVolume(points=points, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode).volume
 
 
     # ----------------------------------------------------------------------------------------------------
     # Stacked methods
 
-    def set_radius(self, selection=None, radius=None):
-        """ Stacked method set_radius using node NodeSetPointRadius
+    def set_radius(points=None, selection=None, radius=None):
+        """Call node NodeSetPointRadius (GeometryNodeSetPointRadius)
 
-        Arguments
-        ---------
-            points          : Points: self socket
-            selection       : Boolean
-            radius          : Float
-
+        Sockets arguments
+        -----------------
+            points         : Geometry
+            selection      : Boolean
+            radius         : Float
         Returns
         -------
-            Points
+            self
+
         """
 
-        return self.stack(nodes.NodeSetPointRadius(points=self, selection=selection, radius=radius))
-
+        return self.stack(nodes.NodeSetPointRadius(points=points, selection=selection, radius=radius))
 
 

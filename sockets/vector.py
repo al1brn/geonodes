@@ -1,149 +1,127 @@
 import geonodes as gn
-from geonodes.core import socket as bcls
+from geonodes.core import datasocket as dsock
 from geonodes.nodes import nodes
+
 import logging
 logger = logging.Logger('geonodes')
-
-# ----------------------------------------------------------------------------------------------------
-# Argument is a vector
-
-def is_vector(arg):
-    return isinstance(arg, Vector) or (isinstance(arg, (tuple, list)) and len(arg) == 3)
-
-# ----------------------------------------------------------------------------------------------------
-# Sockets outputs
-
-class Sockets(bcls.Sockets):
-    pass
-
 
 # ==============================================================================================================
 # Data class Vector
 
-class Vector(bcls.Vector):
-    """ Socket data class Vector
+class Vector(dsock.Vector):
+    """ Data socket Vector
 
     Constructors
     ------------
-        AlignToVector        : Vector
-        Combine              : Vector
-        Random               : Vector
-
+        AlignToVector        : rotation (Vector)
+        Combine              : vector (Vector)
+        Random               : value (Vector)
     Properties
     ----------
         separate             : Sockets [x (Float), y (Float), z (Float)]
-
-    Node properties
-    ---------------
-        x                    : Float
-        y                    : Float
-        z                    : Float
-
     Methods
     -------
-        absolute             : Vector
+        absolute             : vector (Vector)
         accumulate_field     : Sockets [leading (Vector), trailing (Vector), total (Vector)]
-        add                  : Vector
-        ceil                 : Vector
-        cos                  : Vector
-        cross                : Vector
-        distance             : Float
-        divide               : Vector
-        dot                  : Float
-        faceforward          : Vector
-        field_at_index       : Vector
-        floor                : Vector
-        fraction             : Vector
-        length               : Float
-        max                  : Vector
-        min                  : Vector
-        modulo               : Vector
-        multiply             : Vector
-        multiply_add         : Vector
-        normalize            : Vector
-        project              : Vector
-        reflect              : Vector
-        refract              : Vector
-        rotate               : Vector
-        scale                : Vector
-        sin                  : Vector
-        snap                 : Vector
-        subtract             : Vector
-        switch               : Vector
-        tan                  : Vector
-        wrap                 : Vector
-
+        add                  : vector (Vector)
+        ceil                 : vector (Vector)
+        cos                  : vector (Vector)
+        cross                : vector (Vector)
+        distance             : value (Float)
+        divide               : vector (Vector)
+        dot                  : value (Float)
+        faceforward          : vector (Vector)
+        field_at_index       : value (Vector)
+        floor                : vector (Vector)
+        fraction             : vector (Vector)
+        length               : value (Float)
+        max                  : vector (Vector)
+        min                  : vector (Vector)
+        modulo               : vector (Vector)
+        multiply             : vector (Vector)
+        multiply_add         : vector (Vector)
+        normalize            : vector (Vector)
+        project              : vector (Vector)
+        reflect              : vector (Vector)
+        refract              : vector (Vector)
+        rotate               : vector (Vector)
+        scale                : vector (Vector)
+        sin                  : vector (Vector)
+        snap                 : vector (Vector)
+        subtract             : vector (Vector)
+        switch               : output (Vector)
+        tan                  : vector (Vector)
+        wrap                 : vector (Vector)
     Stacked methods
     ---------------
         align_to_vector      : Vector
         curves               : Vector
         map_range            : Vector
         rotate_euler         : Vector
-
     """
-
 
     # ----------------------------------------------------------------------------------------------------
     # Constructors
 
     @classmethod
-    def Random(cls, min=None, max=None, ID=None, seed=None):
-        """ Constructor Random using node NodeRandomValue
+    def Random(cls, min=None, max=None, probability=None, ID=None, seed=None):
+        """Call node NodeRandomValue (FunctionNodeRandomValue)
 
-        Arguments
-        ---------
-            min             : Vector
-            max             : Vector
-            ID              : Integer
-            seed            : Integer
+        Sockets arguments
+        -----------------
+            min            : Vector
+            max            : Vector
+            probability    : Float
+            ID             : Integer
+            seed           : Integer
 
-        Node parameters settings
-        ------------------------
-            data_type       : node parameter set to 'FLOAT_VECTOR'
+        Fixed parameters
+        ----------------
+            data_type      : 'FLOAT_VECTOR'
 
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeRandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR').output
+        return cls(nodes.NodeRandomValue(min=min, max=max, probability=probability, ID=ID, seed=seed, data_type='FLOAT_VECTOR').value)
 
     @classmethod
     def Combine(cls, x=None, y=None, z=None):
-        """ Constructor Combine using node NodeCombineXYZ
+        """Call node NodeCombineXyz (ShaderNodeCombineXYZ)
 
-        Arguments
-        ---------
-            x               : Float
-            y               : Float
-            z               : Float
-
+        Sockets arguments
+        -----------------
+            x              : Float
+            y              : Float
+            z              : Float
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeCombineXYZ(x=x, y=y, z=z).output
+        return cls(nodes.NodeCombineXyz(x=x, y=y, z=z).vector)
 
     @classmethod
     def AlignToVector(cls, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
-        """ Constructor AlignToVector using node NodeAlignEulertoVector
+        """Call node NodeAlignEulerToVector (FunctionNodeAlignEulerToVector)
 
-        Arguments
-        ---------
-            rotation        : Vector
-            factor          : Float
-            vector          : Vector
+        Sockets arguments
+        -----------------
+            rotation       : Vector
+            factor         : Float
+            vector         : Vector
 
-            axis            : str
-            pivot_axis      : str
-
+        Parameters arguments
+        --------------------
+            axis           : 'X' in [X, Y, Z]
+            pivot_axis     : 'AUTO' in [AUTO, X, Y, Z]
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeAlignEulertoVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis).output
+        return cls(nodes.NodeAlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis).rotation)
 
 
     # ----------------------------------------------------------------------------------------------------
@@ -151,747 +129,781 @@ class Vector(bcls.Vector):
 
     @property
     def separate(self):
-        """ Property separate using node NodeSeparateXYZ
+        """Call node NodeSeparateXyz (ShaderNodeSeparateXYZ)
 
-        Arguments
-        ---------
-            vector          : Vector: self socket
-
+        Sockets arguments
+        -----------------
+            vector         : Vector (self)
         Returns
         -------
             Sockets [x (Float), y (Float), z (Float)]
         """
 
-        if not hasattr(self.top, 'separate_'):
-            self.top.separate_ = nodes.NodeSeparateXYZ(vector=self).output
-        return self.top.separate_
+        if self.separate_ is None:
+            self.separate_ = nodes.NodeSeparateXyz(vector=self)
+        return self.separate_
 
-
-    # ----------------------------------------------------------------------------------------------------
-    # Node properties
 
     @property
     def x(self):
-        """ Node property x using node NodeSeparateXYZ on output socket x
-
-        Arguments
-        ---------
-            vector          : Vector: self socket
-
-        Returns
-        -------
-            Float
-        """
-
         return self.separate.x
 
     @property
     def y(self):
-        """ Node property y using node NodeSeparateXYZ on output socket y
-
-        Arguments
-        ---------
-            vector          : Vector: self socket
-
-        Returns
-        -------
-            Float
-        """
-
         return self.separate.y
 
     @property
     def z(self):
-        """ Node property z using node NodeSeparateXYZ on output socket z
-
-        Arguments
-        ---------
-            vector          : Vector: self socket
-
-        Returns
-        -------
-            Float
-        """
-
         return self.separate.z
 
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def add(self, vector1=None):
-        """ Method add using node NodeVectorMath
+    def add(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
 
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            vector1         : Vector
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'ADD'
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.NodeVectorMath(vector0=self, vector1=vector1, operation='ADD').output
-
-    def subtract(self, vector1=None):
-        """ Method subtract using node NodeVectorMath
-
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            vector1         : Vector
-
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'SUBTRACT'
+        Fixed parameters
+        ----------------
+            operation      : 'ADD'
 
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeVectorMath(vector0=self, vector1=vector1, operation='SUBTRACT').output
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='ADD').vector
 
-    def multiply(self, vector1=None):
-        """ Method multiply using node NodeVectorMath
+    def subtract(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
 
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            vector1         : Vector
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'MULTIPLY'
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.NodeVectorMath(vector0=self, vector1=vector1, operation='MULTIPLY').output
-
-    def divide(self, vector1=None):
-        """ Method divide using node NodeVectorMath
-
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            vector1         : Vector
-
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'DIVIDE'
+        Fixed parameters
+        ----------------
+            operation      : 'SUBTRACT'
 
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeVectorMath(vector0=self, vector1=vector1, operation='DIVIDE').output
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='SUBTRACT').vector
 
-    def multiply_add(self, vector1=None, vector2=None):
-        """ Method multiply_add using node NodeVectorMath
+    def multiply(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
 
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            vector1         : Vector
-            vector2         : Vector
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'MULTIPLY_ADD'
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD').output
-
-    def cross(self, vector1=None):
-        """ Method cross using node NodeVectorMath
-
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            vector1         : Vector
-
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'CROSS_PRODUCT'
+        Fixed parameters
+        ----------------
+            operation      : 'MULTIPLY'
 
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeVectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT').output
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='MULTIPLY').vector
 
-    def project(self, vector1=None):
-        """ Method project using node NodeVectorMath
+    def divide(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
 
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            vector1         : Vector
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'PROJECT'
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.NodeVectorMath(vector0=self, vector1=vector1, operation='PROJECT').output
-
-    def reflect(self, vector1=None):
-        """ Method reflect using node NodeVectorMath
-
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            vector1         : Vector
-
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'REFLECT'
+        Fixed parameters
+        ----------------
+            operation      : 'DIVIDE'
 
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeVectorMath(vector0=self, vector1=vector1, operation='REFLECT').output
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='DIVIDE').vector
 
-    def refract(self, vector1=None, scale=None):
-        """ Method refract using node NodeVectorMath
+    def multiply_add(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
 
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            vector1         : Vector
-            scale           : Float
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'REFRACT'
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.NodeVectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT').output
-
-    def faceforward(self, vector1=None, vector2=None):
-        """ Method faceforward using node NodeVectorMath
-
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            vector1         : Vector
-            vector2         : Vector
-
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'FACEFORWARD'
+        Fixed parameters
+        ----------------
+            operation      : 'MULTIPLY_ADD'
 
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD').output
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='MULTIPLY_ADD').vector
 
-    def dot(self, vector1=None):
-        """ Method dot using node NodeVectorMath
+    def cross(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
 
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            vector1         : Vector
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'DOT_PRODUCT'
+        Fixed parameters
+        ----------------
+            operation      : 'CROSS_PRODUCT'
+
+        Returns
+        -------
+            Vector
+        """
+
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='CROSS_PRODUCT').vector
+
+    def project(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
+
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
+
+        Fixed parameters
+        ----------------
+            operation      : 'PROJECT'
+
+        Returns
+        -------
+            Vector
+        """
+
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='PROJECT').vector
+
+    def reflect(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
+
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
+
+        Fixed parameters
+        ----------------
+            operation      : 'REFLECT'
+
+        Returns
+        -------
+            Vector
+        """
+
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='REFLECT').vector
+
+    def refract(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
+
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
+
+        Fixed parameters
+        ----------------
+            operation      : 'REFRACT'
+
+        Returns
+        -------
+            Vector
+        """
+
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='REFRACT').vector
+
+    def faceforward(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
+
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
+
+        Fixed parameters
+        ----------------
+            operation      : 'FACEFORWARD'
+
+        Returns
+        -------
+            Vector
+        """
+
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='FACEFORWARD').vector
+
+    def dot(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
+
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
+
+        Fixed parameters
+        ----------------
+            operation      : 'DOT_PRODUCT'
 
         Returns
         -------
             Float
         """
 
-        return nodes.NodeVectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT').output
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='DOT_PRODUCT').value
 
-    def distance(self, vector1=None):
-        """ Method distance using node NodeVectorMath
+    def distance(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
 
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            vector1         : Vector
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'DISTANCE'
-
-        Returns
-        -------
-            Float
-        """
-
-        return nodes.NodeVectorMath(vector0=self, vector1=vector1, operation='DISTANCE').output
-
-    def length(self):
-        """ Method length using node NodeVectorMath
-
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'LENGTH'
+        Fixed parameters
+        ----------------
+            operation      : 'DISTANCE'
 
         Returns
         -------
             Float
         """
 
-        return nodes.NodeVectorMath(vector0=self, operation='LENGTH').output
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='DISTANCE').value
 
-    def scale(self, scale=None):
-        """ Method scale using node NodeVectorMath
+    def length(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
 
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            scale           : Float
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'SCALE'
+        Fixed parameters
+        ----------------
+            operation      : 'LENGTH'
+
+        Returns
+        -------
+            Float
+        """
+
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='LENGTH').value
+
+    def scale(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
+
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
+
+        Fixed parameters
+        ----------------
+            operation      : 'SCALE'
 
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeVectorMath(vector0=self, scale=scale, operation='SCALE').output
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='SCALE').vector
 
-    def normalize(self):
-        """ Method normalize using node NodeVectorMath
+    def normalize(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
 
-        Arguments
-        ---------
-            vector0         : Vector: self socket
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'NORMALIZE'
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.NodeVectorMath(vector0=self, operation='NORMALIZE').output
-
-    def absolute(self):
-        """ Method absolute using node NodeVectorMath
-
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'ABSOLUTE'
+        Fixed parameters
+        ----------------
+            operation      : 'NORMALIZE'
 
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeVectorMath(vector0=self, operation='ABSOLUTE').output
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='NORMALIZE').vector
 
-    def min(self, vector1=None):
-        """ Method min using node NodeVectorMath
+    def absolute(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
 
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            vector1         : Vector
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'MINIMUM'
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.NodeVectorMath(vector0=self, vector1=vector1, operation='MINIMUM').output
-
-    def max(self, vector1=None):
-        """ Method max using node NodeVectorMath
-
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            vector1         : Vector
-
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'MAXIMUM'
+        Fixed parameters
+        ----------------
+            operation      : 'ABSOLUTE'
 
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeVectorMath(vector0=self, vector1=vector1, operation='MAXIMUM').output
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='ABSOLUTE').vector
 
-    def floor(self):
-        """ Method floor using node NodeVectorMath
+    def min(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
 
-        Arguments
-        ---------
-            vector0         : Vector: self socket
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'FLOOR'
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.NodeVectorMath(vector0=self, operation='FLOOR').output
-
-    def ceil(self):
-        """ Method ceil using node NodeVectorMath
-
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'CEIL'
+        Fixed parameters
+        ----------------
+            operation      : 'MINIMUM'
 
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeVectorMath(vector0=self, operation='CEIL').output
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='MINIMUM').vector
 
-    def fraction(self):
-        """ Method fraction using node NodeVectorMath
+    def max(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
 
-        Arguments
-        ---------
-            vector0         : Vector: self socket
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'FRACTION'
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.NodeVectorMath(vector0=self, operation='FRACTION').output
-
-    def modulo(self, vector1=None):
-        """ Method modulo using node NodeVectorMath
-
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            vector1         : Vector
-
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'MODULO'
+        Fixed parameters
+        ----------------
+            operation      : 'MAXIMUM'
 
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeVectorMath(vector0=self, vector1=vector1, operation='MODULO').output
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='MAXIMUM').vector
 
-    def wrap(self, vector1=None, vector2=None):
-        """ Method wrap using node NodeVectorMath
+    def floor(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
 
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            vector1         : Vector
-            vector2         : Vector
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'WRAP'
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP').output
-
-    def snap(self, vector1=None):
-        """ Method snap using node NodeVectorMath
-
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-            vector1         : Vector
-
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'SNAP'
+        Fixed parameters
+        ----------------
+            operation      : 'FLOOR'
 
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeVectorMath(vector0=self, vector1=vector1, operation='SNAP').output
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='FLOOR').vector
 
-    def sin(self):
-        """ Method sin using node NodeVectorMath
+    def ceil(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
 
-        Arguments
-        ---------
-            vector0         : Vector: self socket
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'SINE'
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.NodeVectorMath(vector0=self, operation='SINE').output
-
-    def cos(self):
-        """ Method cos using node NodeVectorMath
-
-        Arguments
-        ---------
-            vector0         : Vector: self socket
-
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'COSINE'
+        Fixed parameters
+        ----------------
+            operation      : 'CEIL'
 
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeVectorMath(vector0=self, operation='COSINE').output
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='CEIL').vector
 
-    def tan(self):
-        """ Method tan using node NodeVectorMath
+    def fraction(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
 
-        Arguments
-        ---------
-            vector0         : Vector: self socket
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'TANGENT'
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.NodeVectorMath(vector0=self, operation='TANGENT').output
-
-    def switch(self, switch=None, true=None):
-        """ Method switch using node NodeSwitch
-
-        Arguments
-        ---------
-            false           : Float: self socket
-            switch          : Boolean
-            true            : Float
-
-        Node parameters settings
-        ------------------------
-            input_type      : node parameter set to 'VECTOR'
+        Fixed parameters
+        ----------------
+            operation      : 'FRACTION'
 
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeSwitch(false=self, switch=switch, true=true, input_type='VECTOR').output
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='FRACTION').vector
+
+    def modulo(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
+
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
+
+        Fixed parameters
+        ----------------
+            operation      : 'MODULO'
+
+        Returns
+        -------
+            Vector
+        """
+
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='MODULO').vector
+
+    def wrap(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
+
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
+
+        Fixed parameters
+        ----------------
+            operation      : 'WRAP'
+
+        Returns
+        -------
+            Vector
+        """
+
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='WRAP').vector
+
+    def snap(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
+
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
+
+        Fixed parameters
+        ----------------
+            operation      : 'SNAP'
+
+        Returns
+        -------
+            Vector
+        """
+
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='SNAP').vector
+
+    def sin(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
+
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
+
+        Fixed parameters
+        ----------------
+            operation      : 'SINE'
+
+        Returns
+        -------
+            Vector
+        """
+
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='SINE').vector
+
+    def cos(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
+
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
+
+        Fixed parameters
+        ----------------
+            operation      : 'COSINE'
+
+        Returns
+        -------
+            Vector
+        """
+
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='COSINE').vector
+
+    def tan(self, vector1=None, vector2=None, scale=None):
+        """Call node NodeVectorMath (ShaderNodeVectorMath)
+
+        Sockets arguments
+        -----------------
+            vector0        : Vector (self)
+            vector1        : Vector
+            vector2        : Vector
+            scale          : Float
+
+        Fixed parameters
+        ----------------
+            operation      : 'TANGENT'
+
+        Returns
+        -------
+            Vector
+        """
+
+        return nodes.NodeVectorMath(vector0=self, vector1=vector1, vector2=vector2, scale=scale, operation='TANGENT').vector
+
+    def switch(self, switch0=None, switch1=None, true=None):
+        """Call node NodeSwitch (GeometryNodeSwitch)
+
+        Sockets arguments
+        -----------------
+            false          : Vector (self)
+            switch0        : Boolean
+            switch1        : Boolean
+            true           : Vector
+
+        Fixed parameters
+        ----------------
+            input_type     : 'VECTOR'
+
+        Returns
+        -------
+            Vector
+        """
+
+        return nodes.NodeSwitch(false=self, switch0=switch0, switch1=switch1, true=true, input_type='VECTOR').output
 
     def rotate(self, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE'):
-        """ Method rotate using node NodeVectorRotate
+        """Call node NodeVectorRotate (ShaderNodeVectorRotate)
 
-        Arguments
-        ---------
-            vector          : Vector: self socket
-            center          : Vector
-            axis            : Vector
-            angle           : Float
-            rotation        : Vector
+        Sockets arguments
+        -----------------
+            vector         : Vector (self)
+            center         : Vector
+            axis           : Vector
+            angle          : Float
+            rotation       : Vector
 
-            invert          : bool
-            rotation_type   : str
-
+        Parameters arguments
+        --------------------
+            invert         : False
+            rotation_type  : 'AXIS_ANGLE' in [AXIS_ANGLE, X_AXIS, Y_AXIS, Z_AXIS, EULER_XYZ]
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeVectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type).output
+        return nodes.NodeVectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type).vector
 
     def accumulate_field(self, group_index=None, domain='POINT'):
-        """ Method accumulate_field using node NodeAccumulateField
+        """Call node NodeAccumulateField (GeometryNodeAccumulateField)
 
-        Arguments
-        ---------
-            value           : Vector: self socket
-            group_index     : Integer
+        Sockets arguments
+        -----------------
+            value          : Vector (self)
+            group_index    : Integer
 
-            domain          : str
+        Parameters arguments
+        --------------------
+            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
-        Node parameters settings
-        ------------------------
-            data_type       : node parameter set to 'FLOAT_VECTOR'
+        Fixed parameters
+        ----------------
+            data_type      : 'FLOAT_VECTOR'
 
         Returns
         -------
             Sockets [leading (Vector), trailing (Vector), total (Vector)]
         """
 
-        return nodes.NodeAccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain).output
+        return nodes.NodeAccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain)
 
     def field_at_index(self, index=None, domain='POINT'):
-        """ Method field_at_index using node NodeFieldatIndex
+        """Call node NodeFieldAtIndex (GeometryNodeFieldAtIndex)
 
-        Arguments
-        ---------
-            value           : Float: self socket
-            index           : Integer
+        Sockets arguments
+        -----------------
+            value          : Vector (self)
+            index          : Integer
 
-            domain          : str
+        Parameters arguments
+        --------------------
+            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
-        Node parameters settings
-        ------------------------
-            data_type       : node parameter set to 'FLOAT_VECTOR'
+        Fixed parameters
+        ----------------
+            data_type      : 'FLOAT_VECTOR'
 
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeFieldatIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain).output
+        return nodes.NodeFieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain).value
 
 
     # ----------------------------------------------------------------------------------------------------
     # Stacked methods
 
     def curves(self, fac=None):
-        """ Stacked method curves using node NodeVectorCurves
+        """Call node NodeVectorCurves (ShaderNodeVectorCurve)
 
-        Arguments
-        ---------
-            vector          : Vector: self socket
-            fac             : Float
-
+        Sockets arguments
+        -----------------
+            vector         : Vector (self)
+            fac            : Float
         Returns
         -------
-            Vector
+            self
+
         """
 
         return self.stack(nodes.NodeVectorCurves(vector=self, fac=fac))
 
     def align_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
-        """ Stacked method align_to_vector using node NodeAlignEulertoVector
+        """Call node NodeAlignEulerToVector (FunctionNodeAlignEulerToVector)
 
-        Arguments
-        ---------
-            rotation        : Vector: self socket
-            factor          : Float
-            vector          : Vector
+        Sockets arguments
+        -----------------
+            rotation       : Vector (self)
+            factor         : Float
+            vector         : Vector
 
-            axis            : str
-            pivot_axis      : str
-
+        Parameters arguments
+        --------------------
+            axis           : 'X' in [X, Y, Z]
+            pivot_axis     : 'AUTO' in [AUTO, X, Y, Z]
         Returns
         -------
-            Vector
+            self
+
         """
 
-        return self.stack(nodes.NodeAlignEulertoVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis))
+        return self.stack(nodes.NodeAlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis))
 
     def rotate_euler(self, rotate_by=None, axis=None, angle=None, space='OBJECT'):
-        """ Stacked method rotate_euler using node NodeRotateEuler
+        """Call node NodeRotateEuler (FunctionNodeRotateEuler)
 
-        Arguments
-        ---------
-            rotation        : Vector: self socket
-            rotate_by       : Vector
-            axis            : Vector
-            angle           : Float
+        Sockets arguments
+        -----------------
+            rotation       : Vector (self)
+            rotate_by      : Vector
+            axis           : Vector
+            angle          : Float
 
-            space           : str
-
+        Parameters arguments
+        --------------------
+            space          : 'OBJECT' in [OBJECT, LOCAL]
         Returns
         -------
-            Vector
+            self
+
         """
 
         return self.stack(nodes.NodeRotateEuler(rotation=self, rotate_by=rotate_by, axis=axis, angle=angle, space=space))
 
-    def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
-        """ Stacked method map_range using node NodeMapRange
+    def map_range(self, value=None, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, interpolation_type='LINEAR'):
+        """Call node NodeMapRange (ShaderNodeMapRange)
 
-        Arguments
-        ---------
-            vector          : Vector: self socket
-            from_min        : Float
-            from_max        : Float
-            to_min          : Float
-            to_max          : Float
-            steps           : Float
+        Sockets arguments
+        -----------------
+            vector         : Vector (self)
+            value          : Float
+            from_min       : Vector
+            from_max       : Vector
+            to_min         : Vector
+            to_max         : Vector
 
-            clamp           : bool
-            interpolation_type : str
+        Parameters arguments
+        --------------------
+            clamp          : True
+            interpolation_type: 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
 
-        Node parameters settings
-        ------------------------
-            data_type       : node parameter set to 'FLOAT_VECTOR'
+        Fixed parameters
+        ----------------
+            data_type      : 'FLOAT_VECTOR'
 
         Returns
         -------
-            Vector
+            self
+
         """
 
-        return self.stack(nodes.NodeMapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type))
-
+        return self.stack(nodes.NodeMapRange(vector=self, value=value, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type))
 
 

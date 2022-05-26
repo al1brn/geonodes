@@ -1,90 +1,35 @@
 import geonodes as gn
-from geonodes.core import socket as bcls
+from geonodes.core import datasocket as dsock
 from geonodes.nodes import nodes
+
 import logging
 logger = logging.Logger('geonodes')
-
-# ----------------------------------------------------------------------------------------------------
-# Argument is a vector
-
-def is_vector(arg):
-    return isinstance(arg, Vector) or (isinstance(arg, (tuple, list)) and len(arg) == 3)
-
-# ----------------------------------------------------------------------------------------------------
-# Sockets outputs
-
-class Sockets(bcls.Sockets):
-    pass
-
 
 # ==============================================================================================================
 # Data class Mesh
 
 class Mesh(gn.Geometry):
-    """ Socket data class Mesh
+    """ Data socket Mesh
 
     Constructors
     ------------
-        Circle               : Mesh
-        Cone                 : Sockets [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
-        Cube                 : Mesh
-        Cylinder             : Sockets [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
-        Grid                 : Mesh
-        IcoSphere            : Mesh
-        Line                 : Mesh
-        UVSphere             : Mesh
-
-    Attributes
-    ----------
-        capture_edge_angle_signed_angle : Sockets [unsigned_angle (Float), signed_angle (Float)]
-        capture_edge_angle_unsigned_angle : Sockets [unsigned_angle (Float), signed_angle (Float)]
-        capture_edge_neighbors : Integer
-        capture_edge_vertices_position_1 : Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-        capture_edge_vertices_position_2 : Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-        capture_edge_vertices_vertex_index_1 : Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-        capture_edge_vertices_vertex_index_2 : Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-        capture_face_area    : Float
-        capture_face_neighbors_face_count : Sockets [vertex_count (Integer), face_count (Integer)]
-        capture_face_neighbors_vertex_count : Sockets [vertex_count (Integer), face_count (Integer)]
-        capture_island_count : Sockets [island_index (Integer), island_count (Integer)]
-        capture_island_index : Sockets [island_index (Integer), island_count (Integer)]
-        capture_material_index : Integer
-        capture_shade_smooth : Boolean
-        capture_vertex_neighbors_face_count : Sockets [vertex_count (Integer), face_count (Integer)]
-        capture_vertex_neighbors_vertex_count : Sockets [vertex_count (Integer), face_count (Integer)]
-        corner_ID            : Integer
-        corner_index         : Integer
-        edge_ID              : Integer
-        edge_angle_signed_angle : Sockets [unsigned_angle (Float), signed_angle (Float)]
-        edge_angle_unsigned_angle : Sockets [unsigned_angle (Float), signed_angle (Float)]
-        edge_index           : Integer
-        edge_neighbors       : Integer
-        edge_vertices_position_1 : Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-        edge_vertices_position_2 : Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-        edge_vertices_vertex_index_1 : Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-        edge_vertices_vertex_index_2 : Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-        face_ID              : Integer
-        face_area            : Float
-        face_index           : Integer
-        face_neighbors_face_count : Sockets [vertex_count (Integer), face_count (Integer)]
-        face_neighbors_vertex_count : Sockets [vertex_count (Integer), face_count (Integer)]
-        island_count         : Sockets [island_index (Integer), island_count (Integer)]
-        island_index         : Sockets [island_index (Integer), island_count (Integer)]
-        material_index       : Integer
-        shade_smooth         : Boolean
-        vertex_neighbors_face_count : Sockets [vertex_count (Integer), face_count (Integer)]
-        vertex_neighbors_vertex_count : Sockets [vertex_count (Integer), face_count (Integer)]
-
+        Circle               : mesh (Geometry)
+        Cone                 : Sockets [mesh (Geometry), top (Boolean), bottom (Boolean), side (Boolean)]
+        Cube                 : mesh (Geometry)
+        Cylinder             : Sockets [mesh (Geometry), top (Boolean), side (Boolean), bottom (Boolean)]
+        Grid                 : mesh (Geometry)
+        IcoSphere            : mesh (Geometry)
+        Line                 : mesh (Geometry)
+        UVSphere             : mesh (Geometry)
     Methods
     -------
-        difference           : Mesh
-        distribute_points_on_faces : Sockets [points (Points), normal (Vector), rotation (Vector)]
-        extrude              : Sockets [mesh (Mesh), top (Boolean), side (Boolean)]
-        intersect            : Mesh
-        to_curve             : Curve
-        to_points            : Points
-        union                : Mesh
-
+        difference           : mesh (Geometry)
+        distribute_points_on_faces : Sockets [points (Geometry), normal (Vector), rotation (Vector)]
+        extrude              : Sockets [mesh (Geometry), top (Boolean), side (Boolean)]
+        intersect            : mesh (Geometry)
+        to_curve             : curve (Geometry)
+        to_points            : points (Geometry)
+        union                : mesh (Geometry)
     Stacked methods
     ---------------
         dual                 : Mesh
@@ -93,914 +38,411 @@ class Mesh(gn.Geometry):
         subdivide            : Mesh
         subdivision_surface  : Mesh
         triangulate          : Mesh
-
     """
-
 
     # ----------------------------------------------------------------------------------------------------
     # Constructors
 
     @classmethod
     def Circle(cls, vertices=None, radius=None, fill_type='NONE'):
-        """ Constructor Circle using node NodeMeshCircle
+        """Call node NodeMeshCircle (GeometryNodeMeshCircle)
 
-        Arguments
-        ---------
-            vertices        : Integer
-            radius          : Float
+        Sockets arguments
+        -----------------
+            vertices       : Integer
+            radius         : Float
 
-            fill_type       : str
-
+        Parameters arguments
+        --------------------
+            fill_type      : 'NONE' in [NONE, NGON, TRIANGLE_FAN]
         Returns
         -------
-            Mesh
+            Geometry
         """
 
-        return nodes.NodeMeshCircle(vertices=vertices, radius=radius, fill_type=fill_type).output
+        return cls(nodes.NodeMeshCircle(vertices=vertices, radius=radius, fill_type=fill_type).mesh)
 
     @classmethod
     def Cone(cls, vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON'):
-        """ Constructor Cone using node NodeCone
+        """Call node NodeCone (GeometryNodeMeshCone)
 
-        Arguments
-        ---------
-            vertices        : Integer
-            side_segments   : Integer
-            fill_segments   : Integer
-            radius_top      : Float
-            radius_bottom   : Float
-            depth           : Float
+        Sockets arguments
+        -----------------
+            vertices       : Integer
+            side_segments  : Integer
+            fill_segments  : Integer
+            radius_top     : Float
+            radius_bottom  : Float
+            depth          : Float
 
-            fill_type       : str
-
+        Parameters arguments
+        --------------------
+            fill_type      : 'NGON' in [NONE, NGON, TRIANGLE_FAN]
         Returns
         -------
-            Sockets [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
+            Sockets [mesh (Geometry), top (Boolean), bottom (Boolean), side (Boolean)]
         """
 
-        return nodes.NodeCone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top, radius_bottom=radius_bottom, depth=depth, fill_type=fill_type).output
+        return nodes.NodeCone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top, radius_bottom=radius_bottom, depth=depth, fill_type=fill_type)
 
     @classmethod
     def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None):
-        """ Constructor Cube using node NodeCube
+        """Call node NodeCube (GeometryNodeMeshCube)
 
-        Arguments
-        ---------
-            size            : Vector
-            vertices_x      : Integer
-            vertices_y      : Integer
-            vertices_z      : Integer
-
+        Sockets arguments
+        -----------------
+            size           : Vector
+            vertices_x     : Integer
+            vertices_y     : Integer
+            vertices_z     : Integer
         Returns
         -------
-            Mesh
+            Geometry
         """
 
-        return nodes.NodeCube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, vertices_z=vertices_z).output
+        return cls(nodes.NodeCube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, vertices_z=vertices_z).mesh)
 
     @classmethod
     def Cylinder(cls, vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON'):
-        """ Constructor Cylinder using node NodeCylinder
+        """Call node NodeCylinder (GeometryNodeMeshCylinder)
 
-        Arguments
-        ---------
-            vertices        : Integer
-            side_segments   : Integer
-            fill_segments   : Integer
-            radius          : Float
-            depth           : Float
+        Sockets arguments
+        -----------------
+            vertices       : Integer
+            side_segments  : Integer
+            fill_segments  : Integer
+            radius         : Float
+            depth          : Float
 
-            fill_type       : str
-
+        Parameters arguments
+        --------------------
+            fill_type      : 'NGON' in [NONE, NGON, TRIANGLE_FAN]
         Returns
         -------
-            Sockets [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
+            Sockets [mesh (Geometry), top (Boolean), side (Boolean), bottom (Boolean)]
         """
 
-        return nodes.NodeCylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius, depth=depth, fill_type=fill_type).output
+        return nodes.NodeCylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius, depth=depth, fill_type=fill_type)
 
     @classmethod
     def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):
-        """ Constructor Grid using node NodeGrid
+        """Call node NodeGrid (GeometryNodeMeshGrid)
 
-        Arguments
-        ---------
-            size_x          : Float
-            size_y          : Float
-            vertices_x      : Integer
-            vertices_y      : Integer
-
+        Sockets arguments
+        -----------------
+            size_x         : Float
+            size_y         : Float
+            vertices_x     : Integer
+            vertices_y     : Integer
         Returns
         -------
-            Mesh
+            Geometry
         """
 
-        return nodes.NodeGrid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y).output
+        return cls(nodes.NodeGrid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y).mesh)
 
     @classmethod
     def IcoSphere(cls, radius=None, subdivisions=None):
-        """ Constructor IcoSphere using node NodeIcoSphere
+        """Call node NodeIcoSphere (GeometryNodeMeshIcoSphere)
 
-        Arguments
-        ---------
-            radius          : Float
-            subdivisions    : Integer
-
+        Sockets arguments
+        -----------------
+            radius         : Float
+            subdivisions   : Integer
         Returns
         -------
-            Mesh
+            Geometry
         """
 
-        return nodes.NodeIcoSphere(radius=radius, subdivisions=subdivisions).output
+        return cls(nodes.NodeIcoSphere(radius=radius, subdivisions=subdivisions).mesh)
 
     @classmethod
     def Line(cls, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET'):
-        """ Constructor Line using node NodeMeshLine
+        """Call node NodeMeshLine (GeometryNodeMeshLine)
 
-        Arguments
-        ---------
-            count           : Integer
-            resolution      : Float
-            start_location  : Vector
-            offset          : Vector
+        Sockets arguments
+        -----------------
+            count          : Integer
+            resolution     : Float
+            start_location : Vector
+            offset         : Vector
 
-            count_mode      : str
-            mode            : str
-
+        Parameters arguments
+        --------------------
+            count_mode     : 'TOTAL' in [TOTAL, RESOLUTION]
+            mode           : 'OFFSET' in [OFFSET, END_POINTS]
         Returns
         -------
-            Mesh
+            Geometry
         """
 
-        return nodes.NodeMeshLine(count=count, resolution=resolution, start_location=start_location, offset=offset, count_mode=count_mode, mode=mode).output
+        return cls(nodes.NodeMeshLine(count=count, resolution=resolution, start_location=start_location, offset=offset, count_mode=count_mode, mode=mode).mesh)
 
     @classmethod
     def UVSphere(cls, segments=None, rings=None, radius=None):
-        """ Constructor UVSphere using node NodeUVSphere
+        """Call node NodeUvSphere (GeometryNodeMeshUVSphere)
 
-        Arguments
-        ---------
-            segments        : Integer
-            rings           : Integer
-            radius          : Float
-
+        Sockets arguments
+        -----------------
+            segments       : Integer
+            rings          : Integer
+            radius         : Float
         Returns
         -------
-            Mesh
+            Geometry
         """
 
-        return nodes.NodeUVSphere(segments=segments, rings=rings, radius=radius).output
-
-
-    # ----------------------------------------------------------------------------------------------------
-    # Attributes
-
-    @property
-    def corner_ID(self):
-        """ Attribute corner_ID using node NodeID
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Integer
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def edge_ID(self):
-        """ Attribute edge_ID using node NodeID
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Integer
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def face_ID(self):
-        """ Attribute face_ID using node NodeID
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Integer
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def corner_index(self):
-        """ Attribute corner_index using node NodeIndex
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Integer
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def edge_index(self):
-        """ Attribute edge_index using node NodeIndex
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Integer
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def face_index(self):
-        """ Attribute face_index using node NodeIndex
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Integer
-        """
-
-        return nodes.Attribute().output
-
-    def capture_edge_neighbors(self, domain='EDGE'):
-        """ Attribute capture_edge_neighbors using node NodeEdgeNeighbors
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Integer
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def edge_neighbors(self):
-        """ Attribute edge_neighbors using node NodeEdgeNeighbors
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Integer
-        """
-
-        return nodes.Attribute().output
-
-    def capture_face_area(self, domain='FACE'):
-        """ Attribute capture_face_area using node NodeFaceArea
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Float
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def face_area(self):
-        """ Attribute face_area using node NodeFaceArea
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Float
-        """
-
-        return nodes.Attribute().output
-
-    def capture_edge_angle_unsigned_angle(self, domain='EDGE'):
-        """ Attribute capture_edge_angle_unsigned_angle using node NodeEdgeAngle
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [unsigned_angle (Float), signed_angle (Float)]
-        """
-
-        return nodes.Attribute().output
-
-    def edge_angle_unsigned_angle(self):
-        """ Attribute edge_angle_unsigned_angle using node NodeEdgeAngle
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [unsigned_angle (Float), signed_angle (Float)]
-        """
-
-        return nodes.Attribute().output
-
-    def capture_edge_angle_signed_angle(self, domain='EDGE'):
-        """ Attribute capture_edge_angle_signed_angle using node NodeEdgeAngle
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [unsigned_angle (Float), signed_angle (Float)]
-        """
-
-        return nodes.Attribute().output
-
-    def edge_angle_signed_angle(self):
-        """ Attribute edge_angle_signed_angle using node NodeEdgeAngle
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [unsigned_angle (Float), signed_angle (Float)]
-        """
-
-        return nodes.Attribute().output
-
-    def capture_edge_vertices_vertex_index_1(self, domain='EDGE'):
-        """ Attribute capture_edge_vertices_vertex_index_1 using node NodeEdgeVertices
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-        """
-
-        return nodes.Attribute().output
-
-    def edge_vertices_vertex_index_1(self):
-        """ Attribute edge_vertices_vertex_index_1 using node NodeEdgeVertices
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-        """
-
-        return nodes.Attribute().output
-
-    def capture_edge_vertices_vertex_index_2(self, domain='EDGE'):
-        """ Attribute capture_edge_vertices_vertex_index_2 using node NodeEdgeVertices
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-        """
-
-        return nodes.Attribute().output
-
-    def edge_vertices_vertex_index_2(self):
-        """ Attribute edge_vertices_vertex_index_2 using node NodeEdgeVertices
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-        """
-
-        return nodes.Attribute().output
-
-    def capture_edge_vertices_position_1(self, domain='EDGE'):
-        """ Attribute capture_edge_vertices_position_1 using node NodeEdgeVertices
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-        """
-
-        return nodes.Attribute().output
-
-    def edge_vertices_position_1(self):
-        """ Attribute edge_vertices_position_1 using node NodeEdgeVertices
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-        """
-
-        return nodes.Attribute().output
-
-    def capture_edge_vertices_position_2(self, domain='EDGE'):
-        """ Attribute capture_edge_vertices_position_2 using node NodeEdgeVertices
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-        """
-
-        return nodes.Attribute().output
-
-    def edge_vertices_position_2(self):
-        """ Attribute edge_vertices_position_2 using node NodeEdgeVertices
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-        """
-
-        return nodes.Attribute().output
-
-    def capture_face_neighbors_vertex_count(self, domain='FACE'):
-        """ Attribute capture_face_neighbors_vertex_count using node NodeFaceNeighbors
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [vertex_count (Integer), face_count (Integer)]
-        """
-
-        return nodes.Attribute().output
-
-    def face_neighbors_vertex_count(self):
-        """ Attribute face_neighbors_vertex_count using node NodeFaceNeighbors
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [vertex_count (Integer), face_count (Integer)]
-        """
-
-        return nodes.Attribute().output
-
-    def capture_face_neighbors_face_count(self, domain='FACE'):
-        """ Attribute capture_face_neighbors_face_count using node NodeFaceNeighbors
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [vertex_count (Integer), face_count (Integer)]
-        """
-
-        return nodes.Attribute().output
-
-    def face_neighbors_face_count(self):
-        """ Attribute face_neighbors_face_count using node NodeFaceNeighbors
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [vertex_count (Integer), face_count (Integer)]
-        """
-
-        return nodes.Attribute().output
-
-    def capture_island_index(self, domain='FACE'):
-        """ Attribute capture_island_index using node NodeMeshIsland
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [island_index (Integer), island_count (Integer)]
-        """
-
-        return nodes.Attribute().output
-
-    def island_index(self):
-        """ Attribute island_index using node NodeMeshIsland
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [island_index (Integer), island_count (Integer)]
-        """
-
-        return nodes.Attribute().output
-
-    def capture_island_count(self, domain='FACE'):
-        """ Attribute capture_island_count using node NodeMeshIsland
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [island_index (Integer), island_count (Integer)]
-        """
-
-        return nodes.Attribute().output
-
-    def island_count(self):
-        """ Attribute island_count using node NodeMeshIsland
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [island_index (Integer), island_count (Integer)]
-        """
-
-        return nodes.Attribute().output
-
-    def capture_vertex_neighbors_vertex_count(self, domain='POINT'):
-        """ Attribute capture_vertex_neighbors_vertex_count using node NodeVertexNeighbors
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [vertex_count (Integer), face_count (Integer)]
-        """
-
-        return nodes.Attribute().output
-
-    def vertex_neighbors_vertex_count(self):
-        """ Attribute vertex_neighbors_vertex_count using node NodeVertexNeighbors
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [vertex_count (Integer), face_count (Integer)]
-        """
-
-        return nodes.Attribute().output
-
-    def capture_vertex_neighbors_face_count(self, domain='POINT'):
-        """ Attribute capture_vertex_neighbors_face_count using node NodeVertexNeighbors
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [vertex_count (Integer), face_count (Integer)]
-        """
-
-        return nodes.Attribute().output
-
-    def vertex_neighbors_face_count(self):
-        """ Attribute vertex_neighbors_face_count using node NodeVertexNeighbors
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Sockets [vertex_count (Integer), face_count (Integer)]
-        """
-
-        return nodes.Attribute().output
-
-    def capture_material_index(self, domain='FACE'):
-        """ Attribute capture_material_index using node NodeMaterialIndex
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Integer
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def material_index(self):
-        """ Attribute material_index using node NodeMaterialIndex
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Integer
-        """
-
-        return nodes.Attribute().output
-
-    def capture_shade_smooth(self, domain='FACE'):
-        """ Attribute capture_shade_smooth using node NodeIsShadeSmooth
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Boolean
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def shade_smooth(self):
-        """ Attribute shade_smooth using node NodeIsShadeSmooth
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Boolean
-        """
-
-        return nodes.Attribute().output
+        return cls(nodes.NodeUvSphere(segments=segments, rings=rings, radius=radius).mesh)
 
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def intersect(self, *mesh_2, self_intersection=None, hole_tolerant=None):
-        """ Method intersect using node NodeMeshBoolean
+    def intersect(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None):
+        """Call node NodeMeshBoolean (GeometryNodeMeshBoolean)
 
-        Arguments
-        ---------
-            mesh_2          : Geometry (multi input): self socket
-            self_intersection : Boolean
-            hole_tolerant   : Boolean
+        Sockets arguments
+        -----------------
+            mesh_2         : *Geometry
+            mesh_1         : Geometry
+            self_intersection: Boolean
+            hole_tolerant  : Boolean
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'INTERSECT'
-
-        Returns
-        -------
-            Mesh
-        """
-
-        return nodes.NodeMeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT').output
-
-    def union(self, *mesh_2, self_intersection=None, hole_tolerant=None):
-        """ Method union using node NodeMeshBoolean
-
-        Arguments
-        ---------
-            mesh_2          : Geometry (multi input): self socket
-            self_intersection : Boolean
-            hole_tolerant   : Boolean
-
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'UNION'
+        Fixed parameters
+        ----------------
+            operation      : 'INTERSECT'
 
         Returns
         -------
-            Mesh
+            Geometry
         """
 
-        return nodes.NodeMeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION').output
+        return nodes.NodeMeshBoolean(*mesh_2, mesh_1=mesh_1, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT').mesh
+
+    def union(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None):
+        """Call node NodeMeshBoolean (GeometryNodeMeshBoolean)
+
+        Sockets arguments
+        -----------------
+            mesh_2         : *Geometry
+            mesh_1         : Geometry
+            self_intersection: Boolean
+            hole_tolerant  : Boolean
+
+        Fixed parameters
+        ----------------
+            operation      : 'UNION'
+
+        Returns
+        -------
+            Geometry
+        """
+
+        return nodes.NodeMeshBoolean(*mesh_2, mesh_1=mesh_1, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION').mesh
 
     def difference(self, *mesh_2, self_intersection=None, hole_tolerant=None):
-        """ Method difference using node NodeMeshBoolean
+        """Call node NodeMeshBoolean (GeometryNodeMeshBoolean)
 
-        Arguments
-        ---------
-            mesh_1          : Geometry: self socket
-            mesh_2          : Geometry (multi input)
-            self_intersection : Boolean
-            hole_tolerant   : Boolean
+        Sockets arguments
+        -----------------
+            mesh_1         : Geometry (self)
+            mesh_2         : *Geometry
+            self_intersection: Boolean
+            hole_tolerant  : Boolean
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'DIFFERENCE'
-
-        Returns
-        -------
-            Mesh
-        """
-
-        return nodes.NodeMeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE').output
-
-    def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):
-        """ Method extrude using node NodeExtrudeMesh
-
-        Arguments
-        ---------
-            mesh            : Mesh: self socket
-            selection       : Boolean
-            offset          : Vector
-            offset_scale    : Float
-            individual      : Boolean
-
-            mode            : str
+        Fixed parameters
+        ----------------
+            operation      : 'DIFFERENCE'
 
         Returns
         -------
-            Sockets [mesh (Mesh), top (Boolean), side (Boolean)]
+            Geometry
         """
 
-        return nodes.NodeExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual, mode=mode).output
+        return nodes.NodeMeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE').mesh
 
-    def to_curve(self, selection=None):
-        """ Method to_curve using node NodeMeshtoCurve
+    def extrude(mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):
+        """Call node NodeExtrudeMesh (GeometryNodeExtrudeMesh)
 
-        Arguments
-        ---------
-            mesh            : Mesh: self socket
-            selection       : Boolean
+        Sockets arguments
+        -----------------
+            mesh           : Geometry
+            selection      : Boolean
+            offset         : Vector
+            offset_scale   : Float
+            individual     : Boolean
 
+        Parameters arguments
+        --------------------
+            mode           : 'FACES' in [VERTICES, EDGES, FACES]
         Returns
         -------
-            Curve
+            Sockets [mesh (Geometry), top (Boolean), side (Boolean)]
         """
 
-        return nodes.NodeMeshtoCurve(mesh=self, selection=selection).output
+        return nodes.NodeExtrudeMesh(mesh=mesh, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual, mode=mode)
 
-    def to_points(self, selection=None, position=None, radius=None, mode='VERTICES'):
-        """ Method to_points using node NodeMeshtoPoints
+    def to_curve(mesh=None, selection=None):
+        """Call node NodeMeshToCurve (GeometryNodeMeshToCurve)
 
-        Arguments
-        ---------
-            mesh            : Mesh: self socket
-            selection       : Boolean
-            position        : Vector
-            radius          : Float
-
-            mode            : str
-
+        Sockets arguments
+        -----------------
+            mesh           : Geometry
+            selection      : Boolean
         Returns
         -------
-            Points
+            Geometry
         """
 
-        return nodes.NodeMeshtoPoints(mesh=self, selection=selection, position=position, radius=radius, mode=mode).output
+        return nodes.NodeMeshToCurve(mesh=mesh, selection=selection).curve
 
-    def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):
-        """ Method distribute_points_on_faces using node NodeDistributePointsonFaces
+    def to_points(mesh=None, selection=None, position=None, radius=None, mode='VERTICES'):
+        """Call node NodeMeshToPoints (GeometryNodeMeshToPoints)
 
-        Arguments
-        ---------
-            mesh            : Mesh: self socket
-            selection       : Boolean
-            distance_min    : Float
-            density_max     : Float
-            density         : Float
-            density_factor  : Float
-            seed            : Integer
+        Sockets arguments
+        -----------------
+            mesh           : Geometry
+            selection      : Boolean
+            position       : Vector
+            radius         : Float
 
-            distribute_method : str
-
+        Parameters arguments
+        --------------------
+            mode           : 'VERTICES' in [VERTICES, EDGES, FACES, CORNERS]
         Returns
         -------
-            Sockets [points (Points), normal (Vector), rotation (Vector)]
+            Geometry
         """
 
-        return nodes.NodeDistributePointsonFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method).output
+        return nodes.NodeMeshToPoints(mesh=mesh, selection=selection, position=position, radius=radius, mode=mode).points
+
+    def distribute_points_on_faces(mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):
+        """Call node NodeDistributePointsOnFaces (GeometryNodeDistributePointsOnFaces)
+
+        Sockets arguments
+        -----------------
+            mesh           : Geometry
+            selection      : Boolean
+            distance_min   : Float
+            density_max    : Float
+            density        : Float
+            density_factor : Float
+            seed           : Integer
+
+        Parameters arguments
+        --------------------
+            distribute_method: 'RANDOM' in [RANDOM, POISSON]
+        Returns
+        -------
+            Sockets [points (Geometry), normal (Vector), rotation (Vector)]
+        """
+
+        return nodes.NodeDistributePointsOnFaces(mesh=mesh, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method)
 
 
     # ----------------------------------------------------------------------------------------------------
     # Stacked methods
 
-    def split_edges(self, selection=None):
-        """ Stacked method split_edges using node NodeSplitEdges
+    def split_edges(mesh=None, selection=None):
+        """Call node NodeSplitEdges (GeometryNodeSplitEdges)
 
-        Arguments
-        ---------
-            mesh            : Mesh: self socket
-            selection       : Boolean
-
+        Sockets arguments
+        -----------------
+            mesh           : Geometry
+            selection      : Boolean
         Returns
         -------
-            Mesh
+            self
+
         """
 
-        return self.stack(nodes.NodeSplitEdges(mesh=self, selection=selection))
+        return self.stack(nodes.NodeSplitEdges(mesh=mesh, selection=selection))
 
-    def subdivide(self, level=None):
-        """ Stacked method subdivide using node NodeSubdivideMesh
+    def subdivide(mesh=None, level=None):
+        """Call node NodeSubdivideMesh (GeometryNodeSubdivideMesh)
 
-        Arguments
-        ---------
-            mesh            : Mesh: self socket
-            level           : Integer
-
+        Sockets arguments
+        -----------------
+            mesh           : Geometry
+            level          : Integer
         Returns
         -------
-            Mesh
+            self
+
         """
 
-        return self.stack(nodes.NodeSubdivideMesh(mesh=self, level=level))
+        return self.stack(nodes.NodeSubdivideMesh(mesh=mesh, level=level))
 
-    def subdivision_surface(self, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
-        """ Stacked method subdivision_surface using node NodeSubdivisionSurface
+    def subdivision_surface(mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
+        """Call node NodeSubdivisionSurface (GeometryNodeSubdivisionSurface)
 
-        Arguments
-        ---------
-            mesh            : Mesh: self socket
-            level           : Integer
-            crease          : Float
+        Sockets arguments
+        -----------------
+            mesh           : Geometry
+            level          : Integer
+            crease         : Float
 
-            boundary_smooth : str
-            uv_smooth       : str
-
+        Parameters arguments
+        --------------------
+            boundary_smooth: 'ALL' in [PRESERVE_CORNERS, ALL]
+            uv_smooth      : 'PRESERVE_BOUNDARIES' in [NONE, PRESERVE_CORNERS, PRESERVE_CORNERS_AND_JUNCTIONS, PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE, PRESERVE_BOUNDARIES, SMOOTH_ALL]
         Returns
         -------
-            Mesh
+            self
+
         """
 
-        return self.stack(nodes.NodeSubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth))
+        return self.stack(nodes.NodeSubdivisionSurface(mesh=mesh, level=level, crease=crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth))
 
-    def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
-        """ Stacked method triangulate using node NodeTriangulate
+    def triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
+        """Call node NodeTriangulate (GeometryNodeTriangulate)
 
-        Arguments
-        ---------
-            mesh            : Mesh: self socket
-            selection       : Boolean
-            minimum_vertices : Integer
+        Sockets arguments
+        -----------------
+            mesh           : Geometry
+            selection      : Boolean
+            minimum_vertices: Integer
 
-            ngon_method     : str
-            quad_method     : str
-
+        Parameters arguments
+        --------------------
+            ngon_method    : 'BEAUTY' in [BEAUTY, CLIP]
+            quad_method    : 'SHORTEST_DIAGONAL' in [BEAUTY, FIXED, FIXED_ALTERNATE, SHORTEST_DIAGONAL, LONGEST_DIAGONAL]
         Returns
         -------
-            Mesh
+            self
+
         """
 
-        return self.stack(nodes.NodeTriangulate(mesh=self, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method, quad_method=quad_method))
+        return self.stack(nodes.NodeTriangulate(mesh=mesh, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method, quad_method=quad_method))
 
-    def dual(self, keep_boundaries=None):
-        """ Stacked method dual using node NodeDualMesh
+    def dual(mesh=None, keep_boundaries=None):
+        """Call node NodeDualMesh (GeometryNodeDualMesh)
 
-        Arguments
-        ---------
-            mesh            : Mesh: self socket
-            keep_boundaries : Boolean
-
+        Sockets arguments
+        -----------------
+            mesh           : Geometry
+            keep_boundaries: Boolean
         Returns
         -------
-            Mesh
+            self
+
         """
 
-        return self.stack(nodes.NodeDualMesh(mesh=self, keep_boundaries=keep_boundaries))
+        return self.stack(nodes.NodeDualMesh(mesh=mesh, keep_boundaries=keep_boundaries))
 
-    def flip_faces(self, selection=None):
-        """ Stacked method flip_faces using node NodeFlipFaces
+    def flip_faces(mesh=None, selection=None):
+        """Call node NodeFlipFaces (GeometryNodeFlipFaces)
 
-        Arguments
-        ---------
-            mesh            : Mesh: self socket
-            selection       : Boolean
-
+        Sockets arguments
+        -----------------
+            mesh           : Geometry
+            selection      : Boolean
         Returns
         -------
-            Mesh
+            self
+
         """
 
-        return self.stack(nodes.NodeFlipFaces(mesh=self, selection=selection))
-
+        return self.stack(nodes.NodeFlipFaces(mesh=mesh, selection=selection))
 
 

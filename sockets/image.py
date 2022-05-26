@@ -1,57 +1,43 @@
 import geonodes as gn
-from geonodes.core import socket as bcls
+from geonodes.core import datasocket as dsock
 from geonodes.nodes import nodes
+
 import logging
 logger = logging.Logger('geonodes')
-
-# ----------------------------------------------------------------------------------------------------
-# Argument is a vector
-
-def is_vector(arg):
-    return isinstance(arg, Vector) or (isinstance(arg, (tuple, list)) and len(arg) == 3)
-
-# ----------------------------------------------------------------------------------------------------
-# Sockets outputs
-
-class Sockets(bcls.Sockets):
-    pass
-
 
 # ==============================================================================================================
 # Data class Image
 
-class Image(bcls.Image):
-    """ Socket data class Image
+class Image(dsock.Image):
+    """ Data socket Image
 
     Methods
     -------
-        switch               : Image
-
+        switch               : output (Image)
     """
-
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def switch(self, switch=None, true=None):
-        """ Method switch using node NodeSwitch
+    def switch(self, switch0=None, switch1=None, true=None):
+        """Call node NodeSwitch (GeometryNodeSwitch)
 
-        Arguments
-        ---------
-            false           : Float: self socket
-            switch          : Boolean
-            true            : Float
+        Sockets arguments
+        -----------------
+            false          : Image (self)
+            switch0        : Boolean
+            switch1        : Boolean
+            true           : Image
 
-        Node parameters settings
-        ------------------------
-            input_type      : node parameter set to 'IMAGE'
+        Fixed parameters
+        ----------------
+            input_type     : 'IMAGE'
 
         Returns
         -------
             Image
         """
 
-        return nodes.NodeSwitch(false=self, switch=switch, true=true, input_type='IMAGE').output
-
+        return nodes.NodeSwitch(false=self, switch0=switch0, switch1=switch1, true=true, input_type='IMAGE').output
 
 

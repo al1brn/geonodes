@@ -1,85 +1,88 @@
 import geonodes as gn
-from geonodes.core import socket as bcls
+from geonodes.core import datasocket as dsock
 from geonodes.nodes import nodes
+
 import logging
 logger = logging.Logger('geonodes')
-
-# ----------------------------------------------------------------------------------------------------
-# Argument is a vector
-
-def is_vector(arg):
-    return isinstance(arg, Vector) or (isinstance(arg, (tuple, list)) and len(arg) == 3)
-
-# ----------------------------------------------------------------------------------------------------
-# Sockets outputs
-
-class Sockets(bcls.Sockets):
-    pass
-
 
 # ==============================================================================================================
 # Data class Object
 
-class Object(bcls.Object):
-    """ Socket data class Object
+class Object(dsock.Object):
+    """ Data socket Object
 
     Properties
     ----------
         info                 : Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-
     Methods
     -------
-        switch               : Object
-
+        switch               : output (Object)
     """
-
 
     # ----------------------------------------------------------------------------------------------------
     # Properties
 
     @property
     def info(self, as_instance=None, transform_space='ORIGINAL'):
-        """ Property info using node NodeObjectInfo
+        """Call node NodeObjectInfo (GeometryNodeObjectInfo)
 
-        Arguments
-        ---------
-            object          : Object: self socket
-            as_instance     : Boolean
+        Sockets arguments
+        -----------------
+            object         : Object (self)
+            as_instance    : Boolean
 
-            transform_space : str
-
+        Parameters arguments
+        --------------------
+            transform_space: 'ORIGINAL' in [ORIGINAL, RELATIVE]
         Returns
         -------
             Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
         """
 
-        if not hasattr(self.top, 'info_'):
-            self.top.info_ = nodes.NodeObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space).output
-        return self.top.info_
+        if self.info_ is None:
+            self.info_ = nodes.NodeObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space)
+        return self.info_
+
+
+    @property
+    def location(self):
+        return self.info.location
+
+    @property
+    def rotation(self):
+        return self.info.rotation
+
+    @property
+    def scale(self):
+        return self.info.scale
+
+    @property
+    def geometry(self):
+        return self.info.geometry
 
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def switch(self, switch=None, true=None):
-        """ Method switch using node NodeSwitch
+    def switch(self, switch0=None, switch1=None, true=None):
+        """Call node NodeSwitch (GeometryNodeSwitch)
 
-        Arguments
-        ---------
-            false           : Float: self socket
-            switch          : Boolean
-            true            : Float
+        Sockets arguments
+        -----------------
+            false          : Object (self)
+            switch0        : Boolean
+            switch1        : Boolean
+            true           : Object
 
-        Node parameters settings
-        ------------------------
-            input_type      : node parameter set to 'OBJECT'
+        Fixed parameters
+        ----------------
+            input_type     : 'OBJECT'
 
         Returns
         -------
             Object
         """
 
-        return nodes.NodeSwitch(false=self, switch=switch, true=true, input_type='OBJECT').output
-
+        return nodes.NodeSwitch(false=self, switch0=switch0, switch1=switch1, true=true, input_type='OBJECT').output
 
 

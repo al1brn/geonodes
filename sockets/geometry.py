@@ -1,88 +1,38 @@
 import geonodes as gn
-from geonodes.core import socket as bcls
+from geonodes.core import datasocket as dsock
 from geonodes.nodes import nodes
+
 import logging
 logger = logging.Logger('geonodes')
-
-# ----------------------------------------------------------------------------------------------------
-# Argument is a vector
-
-def is_vector(arg):
-    return isinstance(arg, Vector) or (isinstance(arg, (tuple, list)) and len(arg) == 3)
-
-# ----------------------------------------------------------------------------------------------------
-# Sockets outputs
-
-class Sockets(bcls.Sockets):
-    pass
-
 
 # ==============================================================================================================
 # Data class Geometry
 
-class Geometry(bcls.Geometry):
-    """ Socket data class Geometry
+class Geometry(dsock.Geometry):
+    """ Data socket Geometry
 
     Properties
     ----------
         bound_box            : Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
-        components           : Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
-
-    Node properties
-    ---------------
-        box                  : Geometry
-        box_max              : Geometry
-        box_min              : Geometry
-        curve_component      : Mesh
-        instances_component  : Mesh
-        mesh_component       : Mesh
-        points_component     : Mesh
-        volume_component     : Mesh
-
-    Attributes
-    ----------
-        ID                   : Integer
-        capture_ID           : Integer
-        capture_index        : Integer
-        capture_is_viewport  : Boolean
-        capture_normal       : Vector
-        capture_position     : Vector
-        capture_tangent      : Vector
-        corner_normal        : Vector
-        corner_tangent       : Vector
-        curve_normal         : Vector
-        curve_tangent        : Vector
-        edge_normal          : Vector
-        edge_tangent         : Vector
-        face_normal          : Vector
-        face_tangent         : Vector
-        index                : Integer
-        instance_normal      : Vector
-        instance_tangent     : Vector
-        is_viewport          : Boolean
-        point_normal         : Vector
-        point_tangent        : Vector
-        position             : Vector
-
+        components           : Sockets [mesh (Geometry), point_cloud (Geometry), curve (Geometry), volume (Geometry), instances (Geometry)]
     Methods
     -------
-        attribute_domain_size : Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
-        attribute_remove     : Geometry
-        attribute_statistic  : Sockets [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
-        capture_attribute    : Sockets [geometry (Geometry), attribute (Float)]
+        attribute_domain_size : Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
+        attribute_remove     : geometry (Geometry)
+        attribute_statistic  : Sockets [mean (data_type dependant), median (data_type dependant), sum (data_type dependant), min (data_type dependant), max (data_type dependant), range (data_type dependant), standard_deviation (data_type dependant), variance (data_type dependant)]
+        capture_attribute    : Sockets [geometry (Geometry), attribute (data_type dependant)]
         components           : Sockets [selection (Geometry), inverted (Geometry)]
-        convex_hull          : Geometry
-        join                 : Geometry
+        convex_hull          : convex_hull (Geometry)
+        join                 : geometry (Geometry)
         proximity            : Sockets [position (Vector), distance (Float)]
-        raycast              : Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
-        switch               : Geometry
-        to_instance          : Instances
-        transfer_boolean     : Boolean
-        transfer_color       : Color
-        transfer_float       : Float
-        transfer_integer     : Integer
-        transfer_vector      : Vector
-
+        raycast              : Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (data_type dependant)]
+        switch               : output (Geometry)
+        to_instance          : instances (Geometry)
+        transfer_boolean     : attribute (Boolean)
+        transfer_color       : attribute (Color)
+        transfer_float       : attribute (Float)
+        transfer_integer     : attribute (Integer)
+        transfer_vector      : attribute (Vector)
     Stacked methods
     ---------------
         delete_geometry      : Geometry
@@ -96,974 +46,592 @@ class Geometry(bcls.Geometry):
         set_position         : Geometry
         set_shade_smooth     : Geometry
         transform            : Geometry
-
     """
-
 
     # ----------------------------------------------------------------------------------------------------
     # Properties
 
     @property
     def bound_box(self):
-        """ Property bound_box using node NodeBoundingBox
+        """Call node NodeBoundingBox (GeometryNodeBoundBox)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
         Returns
         -------
             Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
         """
 
-        if not hasattr(self.top, 'bound_box_'):
-            self.top.bound_box_ = nodes.NodeBoundingBox(geometry=self).output
-        return self.top.bound_box_
+        if self.bound_box_ is None:
+            self.bound_box_ = nodes.NodeBoundingBox(geometry=self)
+        return self.bound_box_
 
-    @property
-    def components(self):
-        """ Property components using node NodeSeparateComponents
-
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-
-        Returns
-        -------
-            Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
-        """
-
-        if not hasattr(self.top, 'components_'):
-            self.top.components_ = nodes.NodeSeparateComponents(geometry=self).output
-        return self.top.components_
-
-
-    # ----------------------------------------------------------------------------------------------------
-    # Node properties
 
     @property
     def box(self):
-        """ Node property box using node NodeBoundingBox on output socket bounding_box
-
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-
-        Returns
-        -------
-            Geometry
-        """
-
         return self.bound_box.bounding_box
 
     @property
     def box_min(self):
-        """ Node property box_min using node NodeBoundingBox on output socket min
-
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-
-        Returns
-        -------
-            Geometry
-        """
-
         return self.bound_box.min
 
     @property
     def box_max(self):
-        """ Node property box_max using node NodeBoundingBox on output socket max
-
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-
-        Returns
-        -------
-            Geometry
-        """
-
         return self.bound_box.max
 
     @property
-    def mesh_component(self):
-        """ Node property mesh_component using node NodeSeparateComponents on output socket mesh
+    def components(self):
+        """Call node NodeSeparateComponents (GeometryNodeSeparateComponents)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
         Returns
         -------
-            Mesh
+            Sockets [mesh (Geometry), point_cloud (Geometry), curve (Geometry), volume (Geometry), instances (Geometry)]
         """
 
+        if self.components_ is None:
+            self.components_ = nodes.NodeSeparateComponents(geometry=self)
+        return self.components_
+
+
+    @property
+    def mesh_component(self):
         return self.components.mesh
 
     @property
     def points_component(self):
-        """ Node property points_component using node NodeSeparateComponents on output socket point_cloud
-
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-
-        Returns
-        -------
-            Mesh
-        """
-
         return self.components.point_cloud
 
     @property
     def curve_component(self):
-        """ Node property curve_component using node NodeSeparateComponents on output socket curve
-
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-
-        Returns
-        -------
-            Mesh
-        """
-
         return self.components.curve
 
     @property
     def volume_component(self):
-        """ Node property volume_component using node NodeSeparateComponents on output socket volume
-
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-
-        Returns
-        -------
-            Mesh
-        """
-
         return self.components.volume
 
     @property
     def instances_component(self):
-        """ Node property instances_component using node NodeSeparateComponents on output socket instances
-
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-
-        Returns
-        -------
-            Mesh
-        """
-
         return self.components.instances
-
-
-    # ----------------------------------------------------------------------------------------------------
-    # Attributes
-
-    def capture_normal(self, domain='POINT'):
-        """ Attribute capture_normal using node NodeNormal
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def point_normal(self):
-        """ Attribute point_normal using node NodeNormal
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def edge_normal(self):
-        """ Attribute edge_normal using node NodeNormal
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def face_normal(self):
-        """ Attribute face_normal using node NodeNormal
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def corner_normal(self):
-        """ Attribute corner_normal using node NodeNormal
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def curve_normal(self):
-        """ Attribute curve_normal using node NodeNormal
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def instance_normal(self):
-        """ Attribute instance_normal using node NodeNormal
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.Attribute().output
-
-    def capture_tangent(self, domain='POINT'):
-        """ Attribute capture_tangent using node NodeCurveTangent
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def point_tangent(self):
-        """ Attribute point_tangent using node NodeCurveTangent
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def edge_tangent(self):
-        """ Attribute edge_tangent using node NodeCurveTangent
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def face_tangent(self):
-        """ Attribute face_tangent using node NodeCurveTangent
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def corner_tangent(self):
-        """ Attribute corner_tangent using node NodeCurveTangent
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def curve_tangent(self):
-        """ Attribute curve_tangent using node NodeCurveTangent
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def instance_tangent(self):
-        """ Attribute instance_tangent using node NodeCurveTangent
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.Attribute().output
-
-    def capture_ID(self, domain='POINT'):
-        """ Attribute capture_ID using node NodeID
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Integer
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def ID(self):
-        """ Attribute ID using node NodeID
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Integer
-        """
-
-        return nodes.Attribute().output
-
-    def capture_index(self, domain='POINT'):
-        """ Attribute capture_index using node NodeIndex
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Integer
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def index(self):
-        """ Attribute index using node NodeIndex
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Integer
-        """
-
-        return nodes.Attribute().output
-
-    def capture_position(self, domain='POINT'):
-        """ Attribute capture_position using node NodePosition
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def position(self):
-        """ Attribute position using node NodePosition
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Vector
-        """
-
-        return nodes.Attribute().output
-
-    def capture_is_viewport(self, domain='POINT'):
-        """ Attribute capture_is_viewport using node NodeIsViewport
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Boolean
-        """
-
-        return nodes.Attribute().output
-
-    @property
-    def is_viewport(self):
-        """ Attribute is_viewport using node NodeIsViewport
-
-        Arguments
-        ---------
-
-        Returns
-        -------
-            Boolean
-        """
-
-        return nodes.Attribute().output
 
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def switch(self, switch=None, true=None):
-        """ Method switch using node NodeSwitch
+    def switch(self, switch0=None, switch1=None, true=None):
+        """Call node NodeSwitch (GeometryNodeSwitch)
 
-        Arguments
-        ---------
-            false           : Float: self socket
-            switch          : Boolean
-            true            : Float
+        Sockets arguments
+        -----------------
+            false          : Geometry (self)
+            switch0        : Boolean
+            switch1        : Boolean
+            true           : Geometry
 
-        Node parameters settings
-        ------------------------
-            input_type      : node parameter set to 'GEOMETRY'
+        Fixed parameters
+        ----------------
+            input_type     : 'GEOMETRY'
 
         Returns
         -------
             Geometry
         """
 
-        return nodes.NodeSwitch(false=self, switch=switch, true=true, input_type='GEOMETRY').output
+        return nodes.NodeSwitch(false=self, switch0=switch0, switch1=switch1, true=true, input_type='GEOMETRY').output
 
     def transfer_boolean(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """ Method transfer_boolean using node NodeTransferAttribute
+        """Call node NodeTransferAttribute (GeometryNodeAttributeTransfer)
 
-        Arguments
-        ---------
-            source          : Geometry: self socket
-            attribute       : Vector
-            source_position : Vector
-            index           : Integer
+        Sockets arguments
+        -----------------
+            source         : Geometry (self)
+            attribute      : Boolean
+            source_position: Vector
+            index          : Integer
 
-            domain          : str
-            mapping         : str
+        Parameters arguments
+        --------------------
+            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            mapping        : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
 
-        Node parameters settings
-        ------------------------
-            data_type       : node parameter set to 'BOOLEAN'
+        Fixed parameters
+        ----------------
+            data_type      : 'BOOLEAN'
 
         Returns
         -------
             Boolean
         """
 
-        return nodes.NodeTransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping).output
+        return nodes.NodeTransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping).attribute
 
     def transfer_integer(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """ Method transfer_integer using node NodeTransferAttribute
+        """Call node NodeTransferAttribute (GeometryNodeAttributeTransfer)
 
-        Arguments
-        ---------
-            source          : Geometry: self socket
-            attribute       : Vector
-            source_position : Vector
-            index           : Integer
+        Sockets arguments
+        -----------------
+            source         : Geometry (self)
+            attribute      : Integer
+            source_position: Vector
+            index          : Integer
 
-            domain          : str
-            mapping         : str
+        Parameters arguments
+        --------------------
+            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            mapping        : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
 
-        Node parameters settings
-        ------------------------
-            data_type       : node parameter set to 'INT'
+        Fixed parameters
+        ----------------
+            data_type      : 'INT'
 
         Returns
         -------
             Integer
         """
 
-        return nodes.NodeTransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping).output
+        return nodes.NodeTransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping).attribute
 
     def transfer_float(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """ Method transfer_float using node NodeTransferAttribute
+        """Call node NodeTransferAttribute (GeometryNodeAttributeTransfer)
 
-        Arguments
-        ---------
-            source          : Geometry: self socket
-            attribute       : Vector
-            source_position : Vector
-            index           : Integer
+        Sockets arguments
+        -----------------
+            source         : Geometry (self)
+            attribute      : Float
+            source_position: Vector
+            index          : Integer
 
-            domain          : str
-            mapping         : str
+        Parameters arguments
+        --------------------
+            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            mapping        : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
 
-        Node parameters settings
-        ------------------------
-            data_type       : node parameter set to 'FLOAT'
+        Fixed parameters
+        ----------------
+            data_type      : 'FLOAT'
 
         Returns
         -------
             Float
         """
 
-        return nodes.NodeTransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping).output
+        return nodes.NodeTransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping).attribute
 
     def transfer_vector(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """ Method transfer_vector using node NodeTransferAttribute
+        """Call node NodeTransferAttribute (GeometryNodeAttributeTransfer)
 
-        Arguments
-        ---------
-            source          : Geometry: self socket
-            attribute       : Vector
-            source_position : Vector
-            index           : Integer
+        Sockets arguments
+        -----------------
+            source         : Geometry (self)
+            attribute      : Vector
+            source_position: Vector
+            index          : Integer
 
-            domain          : str
-            mapping         : str
+        Parameters arguments
+        --------------------
+            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            mapping        : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
 
-        Node parameters settings
-        ------------------------
-            data_type       : node parameter set to 'FLOAT_VECTOR'
+        Fixed parameters
+        ----------------
+            data_type      : 'FLOAT_VECTOR'
 
         Returns
         -------
             Vector
         """
 
-        return nodes.NodeTransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping).output
+        return nodes.NodeTransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping).attribute
 
     def transfer_color(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """ Method transfer_color using node NodeTransferAttribute
+        """Call node NodeTransferAttribute (GeometryNodeAttributeTransfer)
 
-        Arguments
-        ---------
-            source          : Geometry: self socket
-            attribute       : Vector
-            source_position : Vector
-            index           : Integer
+        Sockets arguments
+        -----------------
+            source         : Geometry (self)
+            attribute      : Color
+            source_position: Vector
+            index          : Integer
 
-            domain          : str
-            mapping         : str
+        Parameters arguments
+        --------------------
+            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            mapping        : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
 
-        Node parameters settings
-        ------------------------
-            data_type       : node parameter set to 'FLOAT_COLOR'
+        Fixed parameters
+        ----------------
+            data_type      : 'FLOAT_COLOR'
 
         Returns
         -------
             Color
         """
 
-        return nodes.NodeTransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping).output
+        return nodes.NodeTransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping).attribute
 
     def attribute_domain_size(self, component='MESH'):
-        """ Method attribute_domain_size using node NodeDomainSize
+        """Call node NodeDomainSize (GeometryNodeAttributeDomainSize)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
 
-            component       : str
-
+        Parameters arguments
+        --------------------
+            component      : 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
         Returns
         -------
-            Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
+            Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
         """
 
-        return nodes.NodeDomainSize(geometry=self, component=component).output
+        return nodes.NodeDomainSize(geometry=self, component=component)
 
     def attribute_remove(self, *attribute):
-        """ Method attribute_remove using node NodeAttributeRemove
+        """Call node NodeAttributeRemove (GeometryNodeAttributeRemove)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-            attribute       : String (multi input)
-
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
+            attribute      : *String
         Returns
         -------
             Geometry
         """
 
-        return nodes.NodeAttributeRemove(*attribute, geometry=self).output
+        return nodes.NodeAttributeRemove(*attribute, geometry=self).geometry
 
     def attribute_statistic(self, selection=None, attribute=None, data_type='FLOAT', domain='POINT'):
-        """ Method attribute_statistic using node NodeAttributeStatistic
+        """Call node NodeAttributeStatistic (GeometryNodeAttributeStatistic)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-            selection       : Boolean
-            attribute       : Float
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
+            selection      : Boolean
+            attribute      : Float
 
-            data_type       : str
-            domain          : str
-
+        Parameters arguments
+        --------------------
+            data_type      : 'FLOAT' in [FLOAT, FLOAT_VECTOR]
+            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
         Returns
         -------
-            Sockets [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
+            Sockets [mean (data_type dependant), median (data_type dependant), sum (data_type dependant), min (data_type dependant), max (data_type dependant), range (data_type dependant), standard_deviation (data_type dependant), variance (data_type dependant)]
         """
 
-        return nodes.NodeAttributeStatistic(geometry=self, selection=selection, attribute=attribute, data_type=data_type, domain=domain).output
+        return nodes.NodeAttributeStatistic(geometry=self, selection=selection, attribute=attribute, data_type=data_type, domain=domain)
 
     def components(self, selection=None, domain='POINT'):
-        """ Method components using node NodeSeparateGeometry
+        """Call node NodeSeparateGeometry (GeometryNodeSeparateGeometry)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-            selection       : Boolean
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
+            selection      : Boolean
 
-            domain          : str
-
+        Parameters arguments
+        --------------------
+            domain         : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
         Returns
         -------
             Sockets [selection (Geometry), inverted (Geometry)]
         """
 
-        return nodes.NodeSeparateGeometry(geometry=self, selection=selection, domain=domain).output
+        return nodes.NodeSeparateGeometry(geometry=self, selection=selection, domain=domain)
 
     def capture_attribute(self, value=None, data_type='FLOAT', domain='POINT'):
-        """ Method capture_attribute using node NodeCaptureAttribute
+        """Call node NodeCaptureAttribute (GeometryNodeCaptureAttribute)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-            value           : Vector
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
+            value          : Float
 
-            data_type       : str
-            domain          : str
-
+        Parameters arguments
+        --------------------
+            data_type      : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
         Returns
         -------
-            Sockets [geometry (Geometry), attribute (Float)]
+            Sockets [geometry (Geometry), attribute (data_type dependant)]
         """
 
-        return nodes.NodeCaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain).output
+        return nodes.NodeCaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain)
 
     def convex_hull(self):
-        """ Method convex_hull using node NodeConvexHull
+        """Call node NodeConvexHull (GeometryNodeConvexHull)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
         Returns
         -------
             Geometry
         """
 
-        return nodes.NodeConvexHull(geometry=self).output
+        return nodes.NodeConvexHull(geometry=self).convex_hull
 
     def to_instance(self, *geometry):
-        """ Method to_instance using node NodeGeometrytoInstance
+        """Call node NodeGeometryToInstance (GeometryNodeGeometryToInstance)
 
-        Arguments
-        ---------
-            geometry        : Geometry (multi input): self socket
-
-        Returns
-        -------
-            Instances
-        """
-
-        return nodes.NodeGeometrytoInstance(self, *geometry).output
-
-    def join(self, *geometry):
-        """ Method join using node NodeJoinGeometry
-
-        Arguments
-        ---------
-            geometry        : Geometry (multi input): self socket
-
+        Sockets arguments
+        -----------------
+            geometry       : *Geometry (self)
         Returns
         -------
             Geometry
         """
 
-        return nodes.NodeJoinGeometry(self, *geometry).output
+        return nodes.NodeGeometryToInstance(self, *geometry).instances
+
+    def join(self, *geometry):
+        """Call node NodeJoinGeometry (GeometryNodeJoinGeometry)
+
+        Sockets arguments
+        -----------------
+            geometry       : *Geometry (self)
+        Returns
+        -------
+            Geometry
+        """
+
+        return nodes.NodeJoinGeometry(self, *geometry).geometry
 
     def proximity(self, source_position=None, target_element='FACES'):
-        """ Method proximity using node NodeGeometryProximity
+        """Call node NodeGeometryProximity (GeometryNodeProximity)
 
-        Arguments
-        ---------
-            target          : Geometry: self socket
-            source_position : Vector
+        Sockets arguments
+        -----------------
+            target         : Geometry (self)
+            source_position: Vector
 
-            target_element  : str
-
+        Parameters arguments
+        --------------------
+            target_element : 'FACES' in [POINTS, EDGES, FACES]
         Returns
         -------
             Sockets [position (Vector), distance (Float)]
         """
 
-        return nodes.NodeGeometryProximity(target=self, source_position=source_position, target_element=target_element).output
+        return nodes.NodeGeometryProximity(target=self, source_position=source_position, target_element=target_element)
 
     def raycast(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED'):
-        """ Method raycast using node NodeRaycast
+        """Call node NodeRaycast (GeometryNodeRaycast)
 
-        Arguments
-        ---------
-            target_geometry : Geometry: self socket
-            attribute       : Vector
-            source_position : Vector
-            ray_direction   : Vector
-            ray_length      : Float
+        Sockets arguments
+        -----------------
+            target_geometry: Geometry (self)
+            attribute      : Float
+            source_position: Vector
+            ray_direction  : Vector
+            ray_length     : Float
 
-            data_type       : str
-            mapping         : str
-
+        Parameters arguments
+        --------------------
+            data_type      : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+            mapping        : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
         Returns
         -------
-            Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
+            Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (data_type dependant)]
         """
 
-        return nodes.NodeRaycast(target_geometry=self, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type, mapping=mapping).output
+        return nodes.NodeRaycast(target_geometry=self, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type, mapping=mapping)
 
 
     # ----------------------------------------------------------------------------------------------------
     # Stacked methods
 
     def delete_geometry(self, selection=None, domain='POINT', mode='ALL'):
-        """ Stacked method delete_geometry using node NodeDeleteGeometry
+        """Call node NodeDeleteGeometry (GeometryNodeDeleteGeometry)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-            selection       : Boolean
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
+            selection      : Boolean
 
-            domain          : str
-            mode            : str
-
+        Parameters arguments
+        --------------------
+            domain         : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
+            mode           : 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
         Returns
         -------
-            Geometry
+            self
+
         """
 
         return self.stack(nodes.NodeDeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode))
 
     def merge_by_distance(self, selection=None, distance=None):
-        """ Stacked method merge_by_distance using node NodeMergebyDistance
+        """Call node NodeMergeByDistance (GeometryNodeMergeByDistance)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-            selection       : Boolean
-            distance        : Float
-
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
+            selection      : Boolean
+            distance       : Float
         Returns
         -------
-            Geometry
+            self
+
         """
 
-        return self.stack(nodes.NodeMergebyDistance(geometry=self, selection=selection, distance=distance))
+        return self.stack(nodes.NodeMergeByDistance(geometry=self, selection=selection, distance=distance))
 
     def realize_instances(self, legacy_behavior=False):
-        """ Stacked method realize_instances using node NodeRealizeInstances
+        """Call node NodeRealizeInstances (GeometryNodeRealizeInstances)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
 
-            legacy_behavior : bool
-
+        Parameters arguments
+        --------------------
+            legacy_behavior: False
         Returns
         -------
-            Geometry
+            self
+
         """
 
         return self.stack(nodes.NodeRealizeInstances(geometry=self, legacy_behavior=legacy_behavior))
 
     def replace_material(self, old=None, new=None):
-        """ Stacked method replace_material using node NodeReplaceMaterial
+        """Call node NodeReplaceMaterial (GeometryNodeReplaceMaterial)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-            old             : Material
-            new             : Material
-
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
+            old            : Material
+            new            : Material
         Returns
         -------
-            Geometry
+            self
+
         """
 
         return self.stack(nodes.NodeReplaceMaterial(geometry=self, old=old, new=new))
 
     def scale_elements(self, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM'):
-        """ Stacked method scale_elements using node NodeScaleElements
+        """Call node NodeScaleElements (GeometryNodeScaleElements)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-            selection       : Boolean
-            scale           : Float
-            center          : Vector
-            axis            : Vector
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
+            selection      : Boolean
+            scale          : Float
+            center         : Vector
+            axis           : Vector
 
-            domain          : str
-            scale_mode      : str
-
+        Parameters arguments
+        --------------------
+            domain         : 'FACE' in [FACE, EDGE]
+            scale_mode     : 'UNIFORM' in [UNIFORM, SINGLE_AXIS]
         Returns
         -------
-            Geometry
+            self
+
         """
 
         return self.stack(nodes.NodeScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode))
 
     def set_ID(self, selection=None, ID=None):
-        """ Stacked method set_ID using node NodeSetID
+        """Call node NodeSetID (GeometryNodeSetID)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-            selection       : Boolean
-            ID              : Integer
-
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
+            selection      : Boolean
+            ID             : Integer
         Returns
         -------
-            Geometry
+            self
+
         """
 
         return self.stack(nodes.NodeSetID(geometry=self, selection=selection, ID=ID))
 
     def set_material(self, selection=None, material=None):
-        """ Stacked method set_material using node NodeSetMaterial
+        """Call node NodeSetMaterial (GeometryNodeSetMaterial)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-            selection       : Boolean
-            material        : Material
-
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
+            selection      : Boolean
+            material       : Material
         Returns
         -------
-            Geometry
+            self
+
         """
 
         return self.stack(nodes.NodeSetMaterial(geometry=self, selection=selection, material=material))
 
     def set_material_index(self, selection=None, material_index=None):
-        """ Stacked method set_material_index using node NodeSetMaterialIndex
+        """Call node NodeSetMaterialIndex (GeometryNodeSetMaterialIndex)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-            selection       : Boolean
-            material_index  : Integer
-
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
+            selection      : Boolean
+            material_index : Integer
         Returns
         -------
-            Geometry
+            self
+
         """
 
         return self.stack(nodes.NodeSetMaterialIndex(geometry=self, selection=selection, material_index=material_index))
 
     def set_position(self, selection=None, position=None, offset=None):
-        """ Stacked method set_position using node NodeSetPosition
+        """Call node NodeSetPosition (GeometryNodeSetPosition)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-            selection       : Boolean
-            position        : Vector
-            offset          : Vector
-
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
+            selection      : Boolean
+            position       : Vector
+            offset         : Vector
         Returns
         -------
-            Geometry
+            self
+
         """
 
         return self.stack(nodes.NodeSetPosition(geometry=self, selection=selection, position=position, offset=offset))
 
     def set_shade_smooth(self, selection=None, shade_smooth=None):
-        """ Stacked method set_shade_smooth using node NodeSetShadeSmooth
+        """Call node NodeSetShadeSmooth (GeometryNodeSetShadeSmooth)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-            selection       : Boolean
-            shade_smooth    : Boolean
-
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
+            selection      : Boolean
+            shade_smooth   : Boolean
         Returns
         -------
-            Geometry
+            self
+
         """
 
         return self.stack(nodes.NodeSetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth))
 
     def transform(self, translation=None, rotation=None, scale=None):
-        """ Stacked method transform using node NodeTransform
+        """Call node NodeTransform (GeometryNodeTransform)
 
-        Arguments
-        ---------
-            geometry        : Geometry: self socket
-            translation     : Vector
-            rotation        : Vector
-            scale           : Vector
-
+        Sockets arguments
+        -----------------
+            geometry       : Geometry (self)
+            translation    : Vector
+            rotation       : Vector
+            scale          : Vector
         Returns
         -------
-            Geometry
+            self
+
         """
 
         return self.stack(nodes.NodeTransform(geometry=self, translation=translation, rotation=rotation, scale=scale))
-
 
 

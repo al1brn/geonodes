@@ -1,287 +1,275 @@
 import geonodes as gn
-from geonodes.core import socket as bcls
+from geonodes.core import datasocket as dsock
 from geonodes.nodes import nodes
+
 import logging
 logger = logging.Logger('geonodes')
-
-# ----------------------------------------------------------------------------------------------------
-# Argument is a vector
-
-def is_vector(arg):
-    return isinstance(arg, Vector) or (isinstance(arg, (tuple, list)) and len(arg) == 3)
-
-# ----------------------------------------------------------------------------------------------------
-# Sockets outputs
-
-class Sockets(bcls.Sockets):
-    pass
-
 
 # ==============================================================================================================
 # Data class Boolean
 
-class Boolean(bcls.Boolean):
-    """ Socket data class Boolean
+class Boolean(dsock.Boolean):
+    """ Data socket Boolean
 
     Constructors
     ------------
-        Random               : Boolean
-
+        Random               : value (Boolean)
     Methods
     -------
-        b_and                : Boolean
-        b_not                : Boolean
-        b_or                 : Boolean
-        field_at_index       : Boolean
-        imply                : Boolean
-        nand                 : Boolean
-        nimply               : Boolean
-        nor                  : Boolean
-        switch               : Boolean
-        xnor                 : Boolean
-        xor                  : Boolean
-
+        b_and                : boolean (Boolean)
+        b_not                : boolean (Boolean)
+        b_or                 : boolean (Boolean)
+        field_at_index       : value (Boolean)
+        imply                : boolean (Boolean)
+        nand                 : boolean (Boolean)
+        nimply               : boolean (Boolean)
+        nor                  : boolean (Boolean)
+        switch               : output (Boolean)
+        xnor                 : boolean (Boolean)
+        xor                  : boolean (Boolean)
     """
-
 
     # ----------------------------------------------------------------------------------------------------
     # Constructors
 
     @classmethod
     def Random(cls, probability=None, ID=None, seed=None):
-        """ Constructor Random using node NodeRandomValue
+        """Call node NodeRandomValue (FunctionNodeRandomValue)
 
-        Arguments
-        ---------
-            probability     : Float
-            ID              : Integer
-            seed            : Integer
+        Sockets arguments
+        -----------------
+            probability    : Float
+            ID             : Integer
+            seed           : Integer
 
-        Node parameters settings
-        ------------------------
-            data_type       : node parameter set to 'BOOLEAN'
+        Fixed parameters
+        ----------------
+            data_type      : 'BOOLEAN'
 
         Returns
         -------
             Boolean
         """
 
-        return nodes.NodeRandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN').output
+        return cls(nodes.NodeRandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN').value)
 
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
     def b_and(self, boolean1=None):
-        """ Method b_and using node NodeBooleanMath
+        """Call node NodeBooleanMath (FunctionNodeBooleanMath)
 
-        Arguments
-        ---------
-            boolean0        : Boolean: self socket
-            boolean1        : Boolean
+        Sockets arguments
+        -----------------
+            boolean0       : Boolean (self)
+            boolean1       : Boolean
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'AND'
+        Fixed parameters
+        ----------------
+            operation      : 'AND'
 
         Returns
         -------
             Boolean
         """
 
-        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='AND').output
+        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='AND').boolean
 
     def b_or(self, boolean1=None):
-        """ Method b_or using node NodeBooleanMath
+        """Call node NodeBooleanMath (FunctionNodeBooleanMath)
 
-        Arguments
-        ---------
-            boolean0        : Boolean: self socket
-            boolean1        : Boolean
+        Sockets arguments
+        -----------------
+            boolean0       : Boolean (self)
+            boolean1       : Boolean
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'OR'
-
-        Returns
-        -------
-            Boolean
-        """
-
-        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='OR').output
-
-    def b_not(self):
-        """ Method b_not using node NodeBooleanMath
-
-        Arguments
-        ---------
-            boolean0        : Boolean: self socket
-
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'NOT'
+        Fixed parameters
+        ----------------
+            operation      : 'OR'
 
         Returns
         -------
             Boolean
         """
 
-        return nodes.NodeBooleanMath(boolean0=self, operation='NOT').output
+        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='OR').boolean
+
+    def b_not(self, boolean1=None):
+        """Call node NodeBooleanMath (FunctionNodeBooleanMath)
+
+        Sockets arguments
+        -----------------
+            boolean0       : Boolean (self)
+            boolean1       : Boolean
+
+        Fixed parameters
+        ----------------
+            operation      : 'NOT'
+
+        Returns
+        -------
+            Boolean
+        """
+
+        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='NOT').boolean
 
     def nand(self, boolean1=None):
-        """ Method nand using node NodeBooleanMath
+        """Call node NodeBooleanMath (FunctionNodeBooleanMath)
 
-        Arguments
-        ---------
-            boolean0        : Boolean: self socket
-            boolean1        : Boolean
+        Sockets arguments
+        -----------------
+            boolean0       : Boolean (self)
+            boolean1       : Boolean
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'NAND'
+        Fixed parameters
+        ----------------
+            operation      : 'NAND'
 
         Returns
         -------
             Boolean
         """
 
-        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='NAND').output
+        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='NAND').boolean
 
     def nor(self, boolean1=None):
-        """ Method nor using node NodeBooleanMath
+        """Call node NodeBooleanMath (FunctionNodeBooleanMath)
 
-        Arguments
-        ---------
-            boolean0        : Boolean: self socket
-            boolean1        : Boolean
+        Sockets arguments
+        -----------------
+            boolean0       : Boolean (self)
+            boolean1       : Boolean
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'NOR'
+        Fixed parameters
+        ----------------
+            operation      : 'NOR'
 
         Returns
         -------
             Boolean
         """
 
-        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='NOR').output
+        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='NOR').boolean
 
     def xnor(self, boolean1=None):
-        """ Method xnor using node NodeBooleanMath
+        """Call node NodeBooleanMath (FunctionNodeBooleanMath)
 
-        Arguments
-        ---------
-            boolean0        : Boolean: self socket
-            boolean1        : Boolean
+        Sockets arguments
+        -----------------
+            boolean0       : Boolean (self)
+            boolean1       : Boolean
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'XNOR'
+        Fixed parameters
+        ----------------
+            operation      : 'XNOR'
 
         Returns
         -------
             Boolean
         """
 
-        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR').output
+        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR').boolean
 
     def xor(self, boolean1=None):
-        """ Method xor using node NodeBooleanMath
+        """Call node NodeBooleanMath (FunctionNodeBooleanMath)
 
-        Arguments
-        ---------
-            boolean0        : Boolean: self socket
-            boolean1        : Boolean
+        Sockets arguments
+        -----------------
+            boolean0       : Boolean (self)
+            boolean1       : Boolean
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'XOR'
+        Fixed parameters
+        ----------------
+            operation      : 'XOR'
 
         Returns
         -------
             Boolean
         """
 
-        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='XOR').output
+        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='XOR').boolean
 
     def imply(self, boolean1=None):
-        """ Method imply using node NodeBooleanMath
+        """Call node NodeBooleanMath (FunctionNodeBooleanMath)
 
-        Arguments
-        ---------
-            boolean0        : Boolean: self socket
-            boolean1        : Boolean
+        Sockets arguments
+        -----------------
+            boolean0       : Boolean (self)
+            boolean1       : Boolean
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'IMPLY'
+        Fixed parameters
+        ----------------
+            operation      : 'IMPLY'
 
         Returns
         -------
             Boolean
         """
 
-        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY').output
+        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY').boolean
 
     def nimply(self, boolean1=None):
-        """ Method nimply using node NodeBooleanMath
+        """Call node NodeBooleanMath (FunctionNodeBooleanMath)
 
-        Arguments
-        ---------
-            boolean0        : Boolean: self socket
-            boolean1        : Boolean
+        Sockets arguments
+        -----------------
+            boolean0       : Boolean (self)
+            boolean1       : Boolean
 
-        Node parameters settings
-        ------------------------
-            operation       : node parameter set to 'NIMPLY'
+        Fixed parameters
+        ----------------
+            operation      : 'NIMPLY'
 
         Returns
         -------
             Boolean
         """
 
-        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY').output
+        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY').boolean
 
     def field_at_index(self, index=None, domain='POINT'):
-        """ Method field_at_index using node NodeFieldatIndex
+        """Call node NodeFieldAtIndex (GeometryNodeFieldAtIndex)
 
-        Arguments
-        ---------
-            value           : Float: self socket
-            index           : Integer
+        Sockets arguments
+        -----------------
+            value          : Boolean (self)
+            index          : Integer
 
-            domain          : str
+        Parameters arguments
+        --------------------
+            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
-        Node parameters settings
-        ------------------------
-            data_type       : node parameter set to 'BOOLEAN'
-
-        Returns
-        -------
-            Boolean
-        """
-
-        return nodes.NodeFieldatIndex(value=self, index=index, data_type='BOOLEAN', domain=domain).output
-
-    def switch(self, switch=None, true=None):
-        """ Method switch using node NodeSwitch
-
-        Arguments
-        ---------
-            false           : Float: self socket
-            switch          : Boolean
-            true            : Float
-
-        Node parameters settings
-        ------------------------
-            input_type      : node parameter set to 'BOOLEAN'
+        Fixed parameters
+        ----------------
+            data_type      : 'BOOLEAN'
 
         Returns
         -------
             Boolean
         """
 
-        return nodes.NodeSwitch(false=self, switch=switch, true=true, input_type='BOOLEAN').output
+        return nodes.NodeFieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain).value
 
+    def switch(self, switch0=None, switch1=None, true=None):
+        """Call node NodeSwitch (GeometryNodeSwitch)
+
+        Sockets arguments
+        -----------------
+            false          : Boolean (self)
+            switch0        : Boolean
+            switch1        : Boolean
+            true           : Boolean
+
+        Fixed parameters
+        ----------------
+            input_type     : 'BOOLEAN'
+
+        Returns
+        -------
+            Boolean
+        """
+
+        return nodes.NodeSwitch(false=self, switch0=switch0, switch1=switch1, true=true, input_type='BOOLEAN').output
 
 

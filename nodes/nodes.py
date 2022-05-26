@@ -1,15920 +1,5877 @@
-from geonodes.core.node import Socket, SocketIn, Sockets, Node, Attribute
+from geonodes.core.node import Node
 
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class FunctionNodeAlignEulerToVector
+# ----------------------------------------------------------------------------------------------------
+# Node NodeAlignEulerToVector for FunctionNodeAlignEulerToVector
 
-class NodeAlignEulertoVector(Node):
+class NodeAlignEulerToVector(Node):
 
-    """ Node class FunctionNodeAlignEulerToVector
+    """Node 'Align Euler to Vector' (FunctionNodeAlignEulerToVector)
 
     Input sockets
     -------------
-
-        0: rotation             Vector
-        1: factor               Float
-        2: vector               Vector
+        rotation        : Vector
+        factor          : Float
+        vector          : Vector
 
     Parameters
     ----------
-
-        axis        : 'X' in ('X', 'Y', 'Z') 
-        pivot_axis  : 'AUTO' in ('AUTO', 'X', 'Y', 'Z') 
+        axis            : 'X' in [ 'X' 'Y' 'Z']
+        pivot_axis      : 'AUTO' in [ 'AUTO' 'X' 'Y' 'Z']
 
     Output sockets
     --------------
-
-        0: rotation             Vector
-
+        rotation        : Vector
     """
 
-    PARAMETERS = ['axis', 'pivot_axis']
+    def __init__(self, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', label=None):
 
-    def __init__(self, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
+        super().__init__('FunctionNodeAlignEulerToVector', name='Align Euler to Vector', label=label)
 
-        super().__init__('FunctionNodeAlignEulerToVector', name='Align Euler to Vector')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorEuler'  , 'rotation'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatFactor'  , 'factor'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector'       ))
+        self.bnode.axis            = axis
+        self.bnode.pivot_axis      = pivot_axis
 
-        self.outputs.add(Socket (self, 'NodeSocketVectorEuler'  , 'rotation'     ))
+        # Input sockets
 
-        self.socket_out_name = 'rotation'
-        self.out_socket_names = ['rotation']
+        self.plug(0, rotation)
+        self.plug(1, factor)
+        self.plug(2, vector)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.axis            = axis
-        self.pivot_axis      = pivot_axis
-        self.check_parameters()
+        self.rotation        = self.Vector(self.bnode.outputs[0])
+        self.output_sockets  = [self.rotation]
 
-        # ----- Input sockets
-
-        self.irotation       = rotation
-        self.ifactor         = factor
-        self.ivector         = vector
-
-        self.socket_in_name = 'irotation'
-
-    def __repr__(self):
-        s = f"Node 'AlignEulertoVector' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   rotation        : {self.irotation}"
-        s += f"\n   factor          : {self.ifactor}"
-        s += f"\n   vector          : {self.ivector}"
-        s += '\nParameters'
-        s += f"\n   axis            : {self.axis}"
-        s += f"\n   pivot_axis      : {self.pivot_axis}"
-        s += '\nOutput sockets'
-        s +=  "\n   rotation        : Vector"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('X', 'Y', 'Z') 
-        if self.axis not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeAlignEulertoVector'.\n 'axis' is '{self.axis}'.\n Authorized values are {valids}.")
-        valids = ('AUTO', 'X', 'Y', 'Z') 
-        if self.pivot_axis not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeAlignEulertoVector'.\n 'pivot_axis' is '{self.pivot_axis}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def rotation(self):
-        return self.Vector(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.rotation
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def irotation(self):
-        return Node.Vector(self.inputs[0])
-
-    @irotation.setter
-    def irotation(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ifactor(self):
-        return Node.Float(self.inputs[1])
-
-    @ifactor.setter
-    def ifactor(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ivector(self):
-        return Node.Vector(self.inputs[2])
-
-    @ivector.setter
-    def ivector(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class FunctionNodeBooleanMath
+# ----------------------------------------------------------------------------------------------------
+# Node NodeBooleanMath for FunctionNodeBooleanMath
 
 class NodeBooleanMath(Node):
 
-    """ Node class FunctionNodeBooleanMath
+    """Node 'Boolean Math' (FunctionNodeBooleanMath)
 
     Input sockets
     -------------
-
-        0: boolean0             Boolean
-        1: boolean1             Boolean
+        boolean0        : Boolean
+        boolean1        : Boolean
 
     Parameters
     ----------
-
-        operation   : 'AND' in ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY') 
+        operation       : 'AND' in [ 'AND' 'OR' 'NOT' 'NAND' 'NOR' 'XNOR' 'XOR' 'IMPLY' 'NIMPLY']
 
     Output sockets
     --------------
-
-        0: boolean              Boolean
-
+        boolean         : Boolean
     """
 
-    PARAMETERS = ['operation']
+    def __init__(self, boolean0=None, boolean1=None, operation='AND', label=None):
 
-    def __init__(self, boolean0=None, boolean1=None, operation='AND'):
+        super().__init__('FunctionNodeBooleanMath', name='Boolean Math', label=label)
 
-        super().__init__('FunctionNodeBooleanMath', name='Boolean Math')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'boolean0'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'boolean1'     ))
+        self.bnode.operation       = operation
 
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'boolean'      ))
+        # Input sockets
 
-        self.socket_out_name = 'boolean'
-        self.out_socket_names = ['boolean']
+        self.plug(0, boolean0)
+        self.plug(1, boolean1)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.operation       = operation
-        self.check_parameters()
+        self.boolean         = self.Boolean(self.bnode.outputs[0])
+        self.output_sockets  = [self.boolean]
 
-        # ----- Input sockets
-
-        self.iboolean0       = boolean0
-        self.iboolean1       = boolean1
-
-        self.socket_in_name = 'iboolean0'
-
-    def __repr__(self):
-        s = f"Node 'BooleanMath' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   boolean0        : {self.iboolean0}"
-        s += f"\n   boolean1        : {self.iboolean1}"
-        s += '\nParameters'
-        s += f"\n   operation       : {self.operation}"
-        s += '\nOutput sockets'
-        s +=  "\n   boolean         : Boolean"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY') 
-        if self.operation not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeBooleanMath'.\n 'operation' is '{self.operation}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def boolean(self):
-        return self.Boolean(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.boolean
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def iboolean0(self):
-        return Node.Boolean(self.inputs[0])
-
-    @iboolean0.setter
-    def iboolean0(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iboolean1(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iboolean1.setter
-    def iboolean1(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class FunctionNodeCompare
+# ----------------------------------------------------------------------------------------------------
+# Node NodeCompare for FunctionNodeCompare
 
 class NodeCompare(Node):
 
-    """ Node class FunctionNodeCompare
+    """Node 'Compare' (FunctionNodeCompare)
+
+    Data type dependant sockets
+    ---------------------------
+
+        Driving parameter : data_type in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')
+
+        Input sockets     : ['a', 'b']
 
     Input sockets
     -------------
-
-        0: a                    Float
-        1: b                    Float
-        2: a                    Integer
-        3: b                    Integer
-        4: a                    Vector
-        5: b                    Vector
-        6: a                    Color
-        7: b                    Color
-        8: a                    String
-        9: b                    String
-        10: c                    Float
-        11: angle                Float
-        12: epsilon              Float
+        a               : data_type dependant
+        b               : data_type dependant
+        c               : Float
+        angle           : Float
+        epsilon         : Float
 
     Parameters
     ----------
-
-        data_type   : 'FLOAT' in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA') 
-        mode        : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION') 
-        operation   : 'EQUAL' in ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL') 
+        data_type       : 'FLOAT' in [ 'FLOAT' 'INT' 'VECTOR' 'STRING' 'RGBA']
+        mode            : 'ELEMENT' in [ 'ELEMENT' 'LENGTH' 'AVERAGE' 'DOT_PRODUCT' 'DIRECTION']
+        operation       : 'GREATER_THAN' in [ 'LESS_THAN' 'LESS_EQUAL' 'GREATER_THAN' 'GREATER_EQUAL' 'EQUAL' 'NOT_EQUAL']
 
     Output sockets
     --------------
-
-        0: result               Boolean
-
+        result          : Boolean
     """
 
-    PARAMETERS = ['data_type', 'mode', 'operation']
+    def __init__(self, a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', label=None):
 
-    def __init__(self, a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='EQUAL'):
+        super().__init__('FunctionNodeCompare', name='Compare', label=label)
 
-        super().__init__('FunctionNodeCompare', name='Compare')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'a'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'b'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'a'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'b'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'a'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'b'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'a'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'b'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketString'       , 'a'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketString'       , 'b'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'c'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatAngle'   , 'angle'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'epsilon'      ))
+        self.bnode.data_type       = data_type
+        self.bnode.mode            = mode
+        self.bnode.operation       = operation
 
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'result'       ))
+        # Input sockets
 
-        self.socket_out_name = 'result'
-        self.out_socket_names = ['result']
+        if data_type == 'FLOAT':
+            self.plug(0, a)
+            self.plug(1, b)
+        elif data_type == 'INT':
+            self.plug(2, a)
+            self.plug(3, b)
+        elif data_type == 'VECTOR':
+            self.plug(4, a)
+            self.plug(5, b)
+        elif data_type == 'STRING':
+            self.plug(8, a)
+            self.plug(9, b)
+        elif data_type == 'RGBA':
+            self.plug(6, a)
+            self.plug(7, b)
 
-        # ----- Parameters
+        self.plug(10, c)
+        self.plug(11, angle)
+        self.plug(12, epsilon)
 
-        self.data_type       = data_type
-        self.mode            = mode
-        self.operation       = operation
-        self.check_parameters()
 
-        # ----- Input sockets
+        # Output sockets
 
-        self.ia              = a
-        self.ib              = b
-        self.ic              = c
-        self.iangle          = angle
-        self.iepsilon        = epsilon
+        self.result          = self.Boolean(self.bnode.outputs[0])
+        self.output_sockets  = [self.result]
 
-        self.socket_in_name = 'ia'
+# ----------------------------------------------------------------------------------------------------
+# Node NodeFloatToInteger for FunctionNodeFloatToInt
 
-    def __repr__(self):
-        s = f"Node 'Compare' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   a               : {self.ia}"
-        s += f"\n   b               : {self.ib}"
-        s += f"\n   c               : {self.ic}"
-        s += f"\n   angle           : {self.iangle}"
-        s += f"\n   epsilon         : {self.iepsilon}"
-        s += '\nParameters'
-        s += f"\n   data_type       : {self.data_type}"
-        s += f"\n   mode            : {self.mode}"
-        s += f"\n   operation       : {self.operation}"
-        s += '\nOutput sockets'
-        s +=  "\n   result          : Boolean"
-        return s + "\n"
+class NodeFloatToInteger(Node):
 
-    def check_parameters(self):
-        valids = ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA') 
-        if self.data_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeCompare'.\n 'data_type' is '{self.data_type}'.\n Authorized values are {valids}.")
-        valids = ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION') 
-        if self.mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeCompare'.\n 'mode' is '{self.mode}'.\n Authorized values are {valids}.")
-        valids = ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL') 
-        if self.operation not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeCompare'.\n 'operation' is '{self.operation}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def result(self):
-        return self.Boolean(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.result
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ia(self):
-        if (self.data_type == 'FLOAT'):
-            return Node.Float(self.inputs[0])
-        elif (self.data_type == 'INT'):
-            return Node.Integer(self.inputs[2])
-        elif (self.data_type == 'VECTOR'):
-            return Node.Vector(self.inputs[4])
-        elif (self.data_type == 'RGBA'):
-            return Node.Color(self.inputs[6])
-        elif (self.data_type == 'STRING'):
-            return Node.String(self.inputs[8])
-
-    @ia.setter
-    def ia(self, value):
-        if (self.data_type == 'FLOAT'):
-            self.inputs[0].plug(value)
-        elif (self.data_type == 'INT'):
-            self.inputs[2].plug(value)
-        elif (self.data_type == 'VECTOR'):
-            self.inputs[4].plug(value)
-        elif (self.data_type == 'RGBA'):
-            self.inputs[6].plug(value)
-        elif (self.data_type == 'STRING'):
-            self.inputs[8].plug(value)
-
-    @property
-    def ib(self):
-        if (self.data_type == 'FLOAT'):
-            return Node.Float(self.inputs[1])
-        elif (self.data_type == 'INT'):
-            return Node.Integer(self.inputs[3])
-        elif (self.data_type == 'VECTOR'):
-            return Node.Vector(self.inputs[5])
-        elif (self.data_type == 'RGBA'):
-            return Node.Color(self.inputs[7])
-        elif (self.data_type == 'STRING'):
-            return Node.String(self.inputs[9])
-
-    @ib.setter
-    def ib(self, value):
-        if (self.data_type == 'FLOAT'):
-            self.inputs[1].plug(value)
-        elif (self.data_type == 'INT'):
-            self.inputs[3].plug(value)
-        elif (self.data_type == 'VECTOR'):
-            self.inputs[5].plug(value)
-        elif (self.data_type == 'RGBA'):
-            self.inputs[7].plug(value)
-        elif (self.data_type == 'STRING'):
-            self.inputs[9].plug(value)
-
-    @property
-    def ic(self):
-        return Node.Float(self.inputs[10])
-
-    @ic.setter
-    def ic(self, value):
-        self.inputs[10].plug(value)
-
-    @property
-    def iangle(self):
-        return Node.Float(self.inputs[11])
-
-    @iangle.setter
-    def iangle(self, value):
-        self.inputs[11].plug(value)
-
-    @property
-    def iepsilon(self):
-        return Node.Float(self.inputs[12])
-
-    @iepsilon.setter
-    def iepsilon(self, value):
-        self.inputs[12].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class FunctionNodeFloatToInt
-
-class NodeFloattoInteger(Node):
-
-    """ Node class FunctionNodeFloatToInt
+    """Node 'Float to Integer' (FunctionNodeFloatToInt)
 
     Input sockets
     -------------
-
-        0: float                Float
+        float           : Float
 
     Parameters
     ----------
-
-        rounding_mode: 'ROUND' in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE') 
+        rounding_mode   : 'ROUND' in [ 'ROUND' 'FLOOR' 'CEILING' 'TRUNCATE']
 
     Output sockets
     --------------
-
-        0: integer              Integer
-
+        integer         : Integer
     """
 
-    PARAMETERS = ['rounding_mode']
+    def __init__(self, float=None, rounding_mode='ROUND', label=None):
 
-    def __init__(self, float=None, rounding_mode='ROUND'):
+        super().__init__('FunctionNodeFloatToInt', name='Float to Integer', label=label)
 
-        super().__init__('FunctionNodeFloatToInt', name='Float to Integer')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'float'        ))
+        self.bnode.rounding_mode   = rounding_mode
 
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'integer'      ))
+        # Input sockets
 
-        self.socket_out_name = 'integer'
-        self.out_socket_names = ['integer']
+        self.plug(0, float)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.rounding_mode   = rounding_mode
-        self.check_parameters()
+        self.integer         = self.Integer(self.bnode.outputs[0])
+        self.output_sockets  = [self.integer]
 
-        # ----- Input sockets
-
-        self.ifloat          = float
-
-        self.socket_in_name = 'ifloat'
-
-    def __repr__(self):
-        s = f"Node 'FloattoInteger' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   float           : {self.ifloat}"
-        s += '\nParameters'
-        s += f"\n   rounding_mode   : {self.rounding_mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   integer         : Integer"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE') 
-        if self.rounding_mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeFloattoInteger'.\n 'rounding_mode' is '{self.rounding_mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def integer(self):
-        return self.Integer(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.integer
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ifloat(self):
-        return Node.Float(self.inputs[0])
-
-    @ifloat.setter
-    def ifloat(self, value):
-        self.inputs[0].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class FunctionNodeInputBool
+# ----------------------------------------------------------------------------------------------------
+# Node NodeBoolean for FunctionNodeInputBool
 
 class NodeBoolean(Node):
 
-    """ Node class FunctionNodeInputBool
+    """Node 'Boolean' (FunctionNodeInputBool)
 
     Parameters
     ----------
-
-        boolean_    : False
+        boolean         : (False) bool
 
     Output sockets
     --------------
-
-        0: boolean              Boolean
-
+        boolean         : Boolean
     """
 
-    PARAMETERS = ['boolean_']
+    def __init__(self, boolean=False, label=None):
 
-    def __init__(self, boolean=False):
+        super().__init__('FunctionNodeInputBool', name='Boolean', label=label)
 
-        super().__init__('FunctionNodeInputBool', name='Boolean')
+        # Parameters
 
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'boolean'      ))
+        self.bnode.boolean         = boolean
 
-        self.socket_out_name = 'boolean'
-        self.out_socket_names = ['boolean']
+        # Output sockets
 
-        # ----- Parameters
+        self.boolean         = self.Boolean(self.bnode.outputs[0])
+        self.output_sockets  = [self.boolean]
 
-        self.boolean_        = boolean
-        self.check_parameters()
-
-        self.socket_in_name = None
-
-    def __repr__(self):
-        s = f"Node 'Boolean' ({self.unique_id})"
-        s += '\nParameters'
-        s += f"\n   boolean         : {self.boolean}"
-        s += '\nOutput sockets'
-        s +=  "\n   boolean         : Boolean"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def boolean(self):
-        return self.Boolean(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.boolean
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class FunctionNodeInputColor
+# ----------------------------------------------------------------------------------------------------
+# Node NodeColor for FunctionNodeInputColor
 
 class NodeColor(Node):
 
-    """ Node class FunctionNodeInputColor
+    """Node 'Color' (FunctionNodeInputColor)
 
     Output sockets
     --------------
-
-        0: color                Color
-
+        color           : Color
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self):
+        super().__init__('FunctionNodeInputColor', name='Color', label=label)
 
-        super().__init__('FunctionNodeInputColor', name='Color')
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'color'        ))
+        self.color           = self.Color(self.bnode.outputs[0])
+        self.output_sockets  = [self.color]
 
-        self.socket_out_name = 'color'
-        self.out_socket_names = ['color']
-
-        self.socket_in_name = None
-
-    def __repr__(self):
-        s = f"Node 'Color' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   color           : Color"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def color(self):
-        return self.Color(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.color
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class FunctionNodeInputInt
+# ----------------------------------------------------------------------------------------------------
+# Node NodeInteger for FunctionNodeInputInt
 
 class NodeInteger(Node):
 
-    """ Node class FunctionNodeInputInt
+    """Node 'Integer' (FunctionNodeInputInt)
 
     Parameters
     ----------
-
-        integer_    : 0
+        integer         : (0) int
 
     Output sockets
     --------------
-
-        0: integer              Integer
-
+        integer         : Integer
     """
 
-    PARAMETERS = ['integer_']
+    def __init__(self, integer=0, label=None):
 
-    def __init__(self, integer=0):
+        super().__init__('FunctionNodeInputInt', name='Integer', label=label)
 
-        super().__init__('FunctionNodeInputInt', name='Integer')
+        # Parameters
 
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'integer'      ))
+        self.bnode.integer         = integer
 
-        self.socket_out_name = 'integer'
-        self.out_socket_names = ['integer']
+        # Output sockets
 
-        # ----- Parameters
+        self.integer         = self.Integer(self.bnode.outputs[0])
+        self.output_sockets  = [self.integer]
 
-        self.integer_        = integer
-        self.check_parameters()
-
-        self.socket_in_name = None
-
-    def __repr__(self):
-        s = f"Node 'Integer' ({self.unique_id})"
-        s += '\nParameters'
-        s += f"\n   integer         : {self.integer}"
-        s += '\nOutput sockets'
-        s +=  "\n   integer         : Integer"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def integer(self):
-        return self.Integer(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.integer
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class FunctionNodeInputSpecialCharacters
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSpecialCharacters for FunctionNodeInputSpecialCharacters
 
 class NodeSpecialCharacters(Node):
 
-    """ Node class FunctionNodeInputSpecialCharacters
+    """Node 'Special Characters' (FunctionNodeInputSpecialCharacters)
 
     Output sockets
     --------------
-
-        0: line_break           String
-        1: tab                  String
-
+        line_break      : String
+        tab             : String
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self):
+        super().__init__('FunctionNodeInputSpecialCharacters', name='Special Characters', label=label)
 
-        super().__init__('FunctionNodeInputSpecialCharacters', name='Special Characters')
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketString'       , 'line_break'   ))
-        self.outputs.add(Socket (self, 'NodeSocketString'       , 'tab'          ))
+        self.line_break      = self.String(self.bnode.outputs[0])
+        self.tab             = self.String(self.bnode.outputs[1])
+        self.output_sockets  = [self.line_break, self.tab]
 
-        self.socket_out_name = 'line_break'
-        self.out_socket_names = ['line_break', 'tab']
-
-        self.socket_in_name = None
-
-    def __repr__(self):
-        s = f"Node 'SpecialCharacters' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   line_break      : String"
-        s +=  "\n   tab             : String"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def line_break(self):
-        return self.String(self.outputs[0])
-
-    @property
-    def tab(self):
-        return self.String(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class FunctionNodeInputString
+# ----------------------------------------------------------------------------------------------------
+# Node NodeString for FunctionNodeInputString
 
 class NodeString(Node):
 
-    """ Node class FunctionNodeInputString
+    """Node 'String' (FunctionNodeInputString)
 
     Parameters
     ----------
-
-        string_     : ''
+        string          : '' str
 
     Output sockets
     --------------
-
-        0: string               String
-
+        string          : String
     """
 
-    PARAMETERS = ['string_']
+    def __init__(self, string='', label=None):
 
-    def __init__(self, string=''):
+        super().__init__('FunctionNodeInputString', name='String', label=label)
 
-        super().__init__('FunctionNodeInputString', name='String')
+        # Parameters
 
-        self.outputs.add(Socket (self, 'NodeSocketString'       , 'string'       ))
+        self.bnode.string          = string
 
-        self.socket_out_name = 'string'
-        self.out_socket_names = ['string']
+        # Output sockets
 
-        # ----- Parameters
+        self.string          = self.String(self.bnode.outputs[0])
+        self.output_sockets  = [self.string]
 
-        self.string_         = string
-        self.check_parameters()
-
-        self.socket_in_name = None
-
-    def __repr__(self):
-        s = f"Node 'String' ({self.unique_id})"
-        s += '\nParameters'
-        s += f"\n   string          : {self.string}"
-        s += '\nOutput sockets'
-        s +=  "\n   string          : String"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def string(self):
-        return self.String(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.string
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class FunctionNodeInputVector
+# ----------------------------------------------------------------------------------------------------
+# Node NodeVector for FunctionNodeInputVector
 
 class NodeVector(Node):
 
-    """ Node class FunctionNodeInputVector
+    """Node 'Vector' (FunctionNodeInputVector)
 
     Parameters
     ----------
-
-        vector_     : <Vector (0.0000, 0.0000, 0.0000)>
+        vector          : ([0.0, 0.0, 0.0]) Vector
 
     Output sockets
     --------------
-
-        0: vector               Vector
-
+        vector          : Vector
     """
 
-    PARAMETERS = ['vector_']
+    def __init__(self, vector=[0.0, 0.0, 0.0], label=None):
 
-    def __init__(self, vector=(0.0, 0.0, 0.0)):
+        super().__init__('FunctionNodeInputVector', name='Vector', label=label)
 
-        super().__init__('FunctionNodeInputVector', name='Vector')
+        # Parameters
 
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'vector'       ))
+        self.bnode.vector          = vector
 
-        self.socket_out_name = 'vector'
-        self.out_socket_names = ['vector']
+        # Output sockets
 
-        # ----- Parameters
+        self.vector          = self.Vector(self.bnode.outputs[0])
+        self.output_sockets  = [self.vector]
 
-        self.vector_         = vector
-        self.check_parameters()
-
-        self.socket_in_name = None
-
-    def __repr__(self):
-        s = f"Node 'Vector' ({self.unique_id})"
-        s += '\nParameters'
-        s += f"\n   vector          : {self.vector}"
-        s += '\nOutput sockets'
-        s +=  "\n   vector          : Vector"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def vector(self):
-        return self.Vector(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.vector
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class FunctionNodeRandomValue
+# ----------------------------------------------------------------------------------------------------
+# Node NodeRandomValue for FunctionNodeRandomValue
 
 class NodeRandomValue(Node):
 
-    """ Node class FunctionNodeRandomValue
+    """Node 'Random Value' (FunctionNodeRandomValue)
+
+    Data type dependant sockets
+    ---------------------------
+
+        Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
+
+        Input sockets     : ['min', 'max']
+        Output sockets    : ['value']
 
     Input sockets
     -------------
-
-        0: min                  Vector
-        1: max                  Vector
-        2: min                  Float
-        3: max                  Float
-        4: min                  Integer
-        5: max                  Integer
-        6: probability          Float
-        7: ID                   Integer
-        8: seed                 Integer
+        min             : data_type dependant
+        max             : data_type dependant
+        probability     : Float
+        ID              : Integer
+        seed            : Integer
 
     Parameters
     ----------
-
-        data_type   : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN') 
+        data_type       : 'FLOAT' in [ 'FLOAT' 'INT' 'FLOAT_VECTOR' 'BOOLEAN']
 
     Output sockets
     --------------
-
-        0: value                Vector
-        1: value                Float
-        2: value                Integer
-        3: value                Boolean
-
+        value           : data_type dependant
     """
 
-    PARAMETERS = ['data_type']
+    def __init__(self, min=None, max=None, probability=None, ID=None, seed=None, data_type='FLOAT', label=None):
 
-    def __init__(self, min=None, max=None, probability=None, ID=None, seed=None, data_type='FLOAT'):
+        super().__init__('FunctionNodeRandomValue', name='Random Value', label=label)
 
-        super().__init__('FunctionNodeRandomValue', name='Random Value')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'min'          ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'max'          ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'min'          ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'max'          ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'min'          ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'max'          ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatFactor'  , 'probability'  ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'ID'           ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'seed'         ))
+        self.bnode.data_type       = data_type
 
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'value'        ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'value'        ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'value'        ))
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'value'        ))
+        # Input sockets
 
-        self.socket_out_name = 'value'
-        self.out_socket_names = ['value']
+        if data_type == 'FLOAT':
+            self.plug(2, min)
+            self.plug(3, max)
+        elif data_type == 'INT':
+            self.plug(4, min)
+            self.plug(5, max)
+        elif data_type == 'FLOAT_VECTOR':
+            self.plug(0, min)
+            self.plug(1, max)
 
-        # ----- Parameters
+        self.plug(6, probability)
+        self.plug(7, ID)
+        self.plug(8, seed)
 
-        self.data_type       = data_type
-        self.check_parameters()
+        # Output sockets
 
-        # ----- Input sockets
+        if data_type == 'FLOAT':
+            self.value           = self.Float(self.bnode.outputs[1])
+        elif data_type == 'INT':
+            self.value           = self.Integer(self.bnode.outputs[2])
+        elif data_type == 'FLOAT_VECTOR':
+            self.value           = self.Vector(self.bnode.outputs[0])
+        elif data_type == 'BOOLEAN':
+            self.value           = self.Boolean(self.bnode.outputs[3])
 
-        self.imin            = min
-        self.imax            = max
-        self.iprobability    = probability
-        self.iID             = ID
-        self.iseed           = seed
+        self.output_sockets  = []
 
-        self.socket_in_name = 'imin'
-
-    def __repr__(self):
-        s = f"Node 'RandomValue' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   min             : {self.imin}"
-        s += f"\n   max             : {self.imax}"
-        s += f"\n   probability     : {self.iprobability}"
-        s += f"\n   ID              : {self.iID}"
-        s += f"\n   seed            : {self.iseed}"
-        s += '\nParameters'
-        s += f"\n   data_type       : {self.data_type}"
-        s += '\nOutput sockets'
-        s +=  "\n   value           : variable"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN') 
-        if self.data_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeRandomValue'.\n 'data_type' is '{self.data_type}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def value(self):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            return self.Vector(self.outputs[0])
-        elif (self.data_type == 'FLOAT'):
-            return self.Float(self.outputs[1])
-        elif (self.data_type == 'INT'):
-            return self.Integer(self.outputs[2])
-        elif (self.data_type == 'BOOLEAN'):
-            return self.Boolean(self.outputs[3])
-        self.check_parameters()
-
-    @property
-    def output(self):
-        return self.value
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def imin(self):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            return Node.Vector(self.inputs[0])
-        elif (self.data_type == 'FLOAT'):
-            return Node.Float(self.inputs[2])
-        elif (self.data_type == 'INT'):
-            return Node.Integer(self.inputs[4])
-
-    @imin.setter
-    def imin(self, value):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            self.inputs[0].plug(value)
-        elif (self.data_type == 'FLOAT'):
-            self.inputs[2].plug(value)
-        elif (self.data_type == 'INT'):
-            self.inputs[4].plug(value)
-
-    @property
-    def imax(self):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            return Node.Vector(self.inputs[1])
-        elif (self.data_type == 'FLOAT'):
-            return Node.Float(self.inputs[3])
-        elif (self.data_type == 'INT'):
-            return Node.Integer(self.inputs[5])
-
-    @imax.setter
-    def imax(self, value):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            self.inputs[1].plug(value)
-        elif (self.data_type == 'FLOAT'):
-            self.inputs[3].plug(value)
-        elif (self.data_type == 'INT'):
-            self.inputs[5].plug(value)
-
-    @property
-    def iprobability(self):
-        return Node.Float(self.inputs[6])
-
-    @iprobability.setter
-    def iprobability(self, value):
-        self.inputs[6].plug(value)
-
-    @property
-    def iID(self):
-        return Node.Integer(self.inputs[7])
-
-    @iID.setter
-    def iID(self, value):
-        self.inputs[7].plug(value)
-
-    @property
-    def iseed(self):
-        return Node.Integer(self.inputs[8])
-
-    @iseed.setter
-    def iseed(self, value):
-        self.inputs[8].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class FunctionNodeReplaceString
+# ----------------------------------------------------------------------------------------------------
+# Node NodeReplaceString for FunctionNodeReplaceString
 
 class NodeReplaceString(Node):
 
-    """ Node class FunctionNodeReplaceString
+    """Node 'Replace String' (FunctionNodeReplaceString)
 
     Input sockets
     -------------
-
-        0: string               String
-        1: find                 String
-        2: replace              String
+        string          : String
+        find            : String
+        replace         : String
 
     Output sockets
     --------------
-
-        0: string               String
-
+        string          : String
     """
 
-    PARAMETERS = []
+    def __init__(self, string=None, find=None, replace=None, label=None):
 
-    def __init__(self, string=None, find=None, replace=None):
+        super().__init__('FunctionNodeReplaceString', name='Replace String', label=label)
 
-        super().__init__('FunctionNodeReplaceString', name='Replace String')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketString'       , 'string'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketString'       , 'find'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketString'       , 'replace'      ))
+        self.plug(0, string)
+        self.plug(1, find)
+        self.plug(2, replace)
 
-        self.outputs.add(Socket (self, 'NodeSocketString'       , 'string'       ))
+        # Output sockets
 
-        self.socket_out_name = 'string'
-        self.out_socket_names = ['string']
+        self.string          = self.String(self.bnode.outputs[0])
+        self.output_sockets  = [self.string]
 
-        # ----- Input sockets
-
-        self.istring         = string
-        self.ifind           = find
-        self.ireplace        = replace
-
-        self.socket_in_name = 'istring'
-
-    def __repr__(self):
-        s = f"Node 'ReplaceString' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   string          : {self.istring}"
-        s += f"\n   find            : {self.ifind}"
-        s += f"\n   replace         : {self.ireplace}"
-        s += '\nOutput sockets'
-        s +=  "\n   string          : String"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def string(self):
-        return self.String(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.string
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def istring(self):
-        return Node.String(self.inputs[0])
-
-    @istring.setter
-    def istring(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ifind(self):
-        return Node.String(self.inputs[1])
-
-    @ifind.setter
-    def ifind(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ireplace(self):
-        return Node.String(self.inputs[2])
-
-    @ireplace.setter
-    def ireplace(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class FunctionNodeRotateEuler
+# ----------------------------------------------------------------------------------------------------
+# Node NodeRotateEuler for FunctionNodeRotateEuler
 
 class NodeRotateEuler(Node):
 
-    """ Node class FunctionNodeRotateEuler
+    """Node 'Rotate Euler' (FunctionNodeRotateEuler)
 
     Input sockets
     -------------
-
-        0: rotation             Vector
-        1: rotate_by            Vector
-        2: axis                 Vector
-        3: angle                Float
+        rotation        : Vector
+        rotate_by       : Vector
+        axis            : Vector
+        angle           : Float
 
     Parameters
     ----------
-
-        space       : 'OBJECT' in ('OBJECT', 'LOCAL') 
+        space           : 'OBJECT' in [ 'OBJECT' 'LOCAL']
 
     Output sockets
     --------------
-
-        0: rotation             Vector
-
+        rotation        : Vector
     """
 
-    PARAMETERS = ['space']
+    def __init__(self, rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', label=None):
 
-    def __init__(self, rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT'):
+        super().__init__('FunctionNodeRotateEuler', name='Rotate Euler', label=label)
 
-        super().__init__('FunctionNodeRotateEuler', name='Rotate Euler')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorEuler'  , 'rotation'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorEuler'  , 'rotate_by'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorXYZ'    , 'axis'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatAngle'   , 'angle'        ))
+        self.bnode.space           = space
 
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'rotation'     ))
+        # Input sockets
 
-        self.socket_out_name = 'rotation'
-        self.out_socket_names = ['rotation']
+        self.plug(0, rotation)
+        self.plug(1, rotate_by)
+        self.plug(2, axis)
+        self.plug(3, angle)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.space           = space
-        self.check_parameters()
+        self.rotation        = self.Vector(self.bnode.outputs[0])
+        self.output_sockets  = [self.rotation]
 
-        # ----- Input sockets
-
-        self.irotation       = rotation
-        self.irotate_by      = rotate_by
-        self.iaxis           = axis
-        self.iangle          = angle
-
-        self.socket_in_name = 'irotation'
-
-    def __repr__(self):
-        s = f"Node 'RotateEuler' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   rotation        : {self.irotation}"
-        s += f"\n   rotate_by       : {self.irotate_by}"
-        s += f"\n   axis            : {self.iaxis}"
-        s += f"\n   angle           : {self.iangle}"
-        s += '\nParameters'
-        s += f"\n   space           : {self.space}"
-        s += '\nOutput sockets'
-        s +=  "\n   rotation        : Vector"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('OBJECT', 'LOCAL') 
-        if self.space not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeRotateEuler'.\n 'space' is '{self.space}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def rotation(self):
-        return self.Vector(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.rotation
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def irotation(self):
-        return Node.Vector(self.inputs[0])
-
-    @irotation.setter
-    def irotation(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def irotate_by(self):
-        return Node.Vector(self.inputs[1])
-
-    @irotate_by.setter
-    def irotate_by(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iaxis(self):
-        return Node.Vector(self.inputs[2])
-
-    @iaxis.setter
-    def iaxis(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def iangle(self):
-        return Node.Float(self.inputs[3])
-
-    @iangle.setter
-    def iangle(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class FunctionNodeSliceString
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSliceString for FunctionNodeSliceString
 
 class NodeSliceString(Node):
 
-    """ Node class FunctionNodeSliceString
+    """Node 'Slice String' (FunctionNodeSliceString)
 
     Input sockets
     -------------
-
-        0: string               String
-        1: position             Integer
-        2: length               Integer
+        string          : String
+        position        : Integer
+        length          : Integer
 
     Output sockets
     --------------
-
-        0: string               String
-
+        string          : String
     """
 
-    PARAMETERS = []
+    def __init__(self, string=None, position=None, length=None, label=None):
 
-    def __init__(self, string=None, position=None, length=None):
+        super().__init__('FunctionNodeSliceString', name='Slice String', label=label)
 
-        super().__init__('FunctionNodeSliceString', name='Slice String')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketString'       , 'string'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'position'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'length'       ))
+        self.plug(0, string)
+        self.plug(1, position)
+        self.plug(2, length)
 
-        self.outputs.add(Socket (self, 'NodeSocketString'       , 'string'       ))
+        # Output sockets
 
-        self.socket_out_name = 'string'
-        self.out_socket_names = ['string']
+        self.string          = self.String(self.bnode.outputs[0])
+        self.output_sockets  = [self.string]
 
-        # ----- Input sockets
-
-        self.istring         = string
-        self.iposition       = position
-        self.ilength         = length
-
-        self.socket_in_name = 'istring'
-
-    def __repr__(self):
-        s = f"Node 'SliceString' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   string          : {self.istring}"
-        s += f"\n   position        : {self.iposition}"
-        s += f"\n   length          : {self.ilength}"
-        s += '\nOutput sockets'
-        s +=  "\n   string          : String"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def string(self):
-        return self.String(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.string
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def istring(self):
-        return Node.String(self.inputs[0])
-
-    @istring.setter
-    def istring(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iposition(self):
-        return Node.Integer(self.inputs[1])
-
-    @iposition.setter
-    def iposition(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ilength(self):
-        return Node.Integer(self.inputs[2])
-
-    @ilength.setter
-    def ilength(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class FunctionNodeStringLength
+# ----------------------------------------------------------------------------------------------------
+# Node NodeStringLength for FunctionNodeStringLength
 
 class NodeStringLength(Node):
 
-    """ Node class FunctionNodeStringLength
+    """Node 'String Length' (FunctionNodeStringLength)
 
     Input sockets
     -------------
-
-        0: string               String
+        string          : String
 
     Output sockets
     --------------
-
-        0: length               Integer
-
+        length          : Integer
     """
 
-    PARAMETERS = []
+    def __init__(self, string=None, label=None):
 
-    def __init__(self, string=None):
+        super().__init__('FunctionNodeStringLength', name='String Length', label=label)
 
-        super().__init__('FunctionNodeStringLength', name='String Length')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketString'       , 'string'       ))
+        self.plug(0, string)
 
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'length'       ))
+        # Output sockets
 
-        self.socket_out_name = 'length'
-        self.out_socket_names = ['length']
+        self.length          = self.Integer(self.bnode.outputs[0])
+        self.output_sockets  = [self.length]
 
-        # ----- Input sockets
+# ----------------------------------------------------------------------------------------------------
+# Node NodeValueToString for FunctionNodeValueToString
 
-        self.istring         = string
+class NodeValueToString(Node):
 
-        self.socket_in_name = 'istring'
-
-    def __repr__(self):
-        s = f"Node 'StringLength' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   string          : {self.istring}"
-        s += '\nOutput sockets'
-        s +=  "\n   length          : Integer"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def length(self):
-        return self.Integer(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.length
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def istring(self):
-        return Node.String(self.inputs[0])
-
-    @istring.setter
-    def istring(self, value):
-        self.inputs[0].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class FunctionNodeValueToString
-
-class NodeValuetoString(Node):
-
-    """ Node class FunctionNodeValueToString
+    """Node 'Value to String' (FunctionNodeValueToString)
 
     Input sockets
     -------------
-
-        0: value                Float
-        1: decimals             Integer
+        value           : Float
+        decimals        : Integer
 
     Output sockets
     --------------
-
-        0: string               String
-
+        string          : String
     """
 
-    PARAMETERS = []
+    def __init__(self, value=None, decimals=None, label=None):
 
-    def __init__(self, value=None, decimals=None):
+        super().__init__('FunctionNodeValueToString', name='Value to String', label=label)
 
-        super().__init__('FunctionNodeValueToString', name='Value to String')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'decimals'     ))
+        self.plug(0, value)
+        self.plug(1, decimals)
 
-        self.outputs.add(Socket (self, 'NodeSocketString'       , 'string'       ))
+        # Output sockets
 
-        self.socket_out_name = 'string'
-        self.out_socket_names = ['string']
+        self.string          = self.String(self.bnode.outputs[0])
+        self.output_sockets  = [self.string]
 
-        # ----- Input sockets
-
-        self.ivalue          = value
-        self.idecimals       = decimals
-
-        self.socket_in_name = 'ivalue'
-
-    def __repr__(self):
-        s = f"Node 'ValuetoString' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   value           : {self.ivalue}"
-        s += f"\n   decimals        : {self.idecimals}"
-        s += '\nOutput sockets'
-        s +=  "\n   string          : String"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def string(self):
-        return self.String(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.string
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivalue(self):
-        return Node.Float(self.inputs[0])
-
-    @ivalue.setter
-    def ivalue(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def idecimals(self):
-        return Node.Integer(self.inputs[1])
-
-    @idecimals.setter
-    def idecimals(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeAccumulateField
+# ----------------------------------------------------------------------------------------------------
+# Node NodeAccumulateField for GeometryNodeAccumulateField
 
 class NodeAccumulateField(Node):
 
-    """ Node class GeometryNodeAccumulateField
+    """Node 'Accumulate Field' (GeometryNodeAccumulateField)
+
+    Data type dependant sockets
+    ---------------------------
+
+        Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR')
+
+        Input sockets     : ['value']
+        Output sockets    : ['leading', 'trailing', 'total']
 
     Input sockets
     -------------
-
-        0: value                Vector
-        1: value                Float
-        2: value                Integer
-        3: group_index          Integer
+        value           : data_type dependant
+        group_index     : Integer
 
     Parameters
     ----------
-
-        data_type   : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR') 
-        domain      : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE') 
+        data_type       : 'FLOAT' in [ 'FLOAT' 'INT' 'FLOAT_VECTOR']
+        domain          : 'POINT' in [ 'POINT' 'EDGE' 'FACE' 'CORNER' 'CURVE' 'INSTANCE']
 
     Output sockets
     --------------
-
-        0: leading              Vector
-        1: leading              Float
-        2: leading              Integer
-        3: trailing             Vector
-        4: trailing             Float
-        5: trailing             Integer
-        6: total                Vector
-        7: total                Float
-        8: total                Integer
-
+        leading         : data_type dependant
+        trailing        : data_type dependant
+        total           : data_type dependant
     """
 
-    PARAMETERS = ['data_type', 'domain']
+    def __init__(self, value=None, group_index=None, data_type='FLOAT', domain='POINT', label=None):
 
-    def __init__(self, value=None, group_index=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeAccumulateField', name='Accumulate Field', label=label)
 
-        super().__init__('GeometryNodeAccumulateField', name='Accumulate Field')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'group_index'  ))
+        self.bnode.data_type       = data_type
+        self.bnode.domain          = domain
 
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'leading'      ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'leading'      ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'leading'      ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'trailing'     ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'trailing'     ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'trailing'     ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'total'        ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'total'        ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'total'        ))
+        # Input sockets
 
-        self.socket_out_name = 'leading'
-        self.out_socket_names = ['leading', 'trailing', 'total']
+        if data_type == 'FLOAT':
+            self.plug(1, value)
+        elif data_type == 'INT':
+            self.plug(2, value)
+        elif data_type == 'FLOAT_VECTOR':
+            self.plug(0, value)
 
-        # ----- Parameters
+        self.plug(3, group_index)
 
-        self.data_type       = data_type
-        self.domain          = domain
-        self.check_parameters()
+        # Output sockets
 
-        # ----- Input sockets
+        if data_type == 'FLOAT':
+            self.leading         = self.Float(self.bnode.outputs[1])
+            self.trailing        = self.Float(self.bnode.outputs[4])
+            self.total           = self.Float(self.bnode.outputs[7])
+        elif data_type == 'INT':
+            self.leading         = self.Integer(self.bnode.outputs[2])
+            self.trailing        = self.Integer(self.bnode.outputs[5])
+            self.total           = self.Integer(self.bnode.outputs[8])
+        elif data_type == 'FLOAT_VECTOR':
+            self.leading         = self.Vector(self.bnode.outputs[0])
+            self.trailing        = self.Vector(self.bnode.outputs[3])
+            self.total           = self.Vector(self.bnode.outputs[6])
 
-        self.ivalue          = value
-        self.igroup_index    = group_index
+        self.output_sockets  = []
 
-        self.socket_in_name = 'ivalue'
-
-    def __repr__(self):
-        s = f"Node 'AccumulateField' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   value           : {self.ivalue}"
-        s += f"\n   group_index     : {self.igroup_index}"
-        s += '\nParameters'
-        s += f"\n   data_type       : {self.data_type}"
-        s += f"\n   domain          : {self.domain}"
-        s += '\nOutput sockets'
-        s +=  "\n   leading         : variable"
-        s +=  "\n   trailing        : variable"
-        s +=  "\n   total           : variable"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('FLOAT', 'INT', 'FLOAT_VECTOR') 
-        if self.data_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeAccumulateField'.\n 'data_type' is '{self.data_type}'.\n Authorized values are {valids}.")
-        valids = ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE') 
-        if self.domain not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeAccumulateField'.\n 'domain' is '{self.domain}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def leading(self):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            return self.Vector(self.outputs[0])
-        elif (self.data_type == 'FLOAT'):
-            return self.Float(self.outputs[1])
-        elif (self.data_type == 'INT'):
-            return self.Integer(self.outputs[2])
-        self.check_parameters()
-
-    @property
-    def trailing(self):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            return self.Vector(self.outputs[3])
-        elif (self.data_type == 'FLOAT'):
-            return self.Float(self.outputs[4])
-        elif (self.data_type == 'INT'):
-            return self.Integer(self.outputs[5])
-        self.check_parameters()
-
-    @property
-    def total(self):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            return self.Vector(self.outputs[6])
-        elif (self.data_type == 'FLOAT'):
-            return self.Float(self.outputs[7])
-        elif (self.data_type == 'INT'):
-            return self.Integer(self.outputs[8])
-        self.check_parameters()
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivalue(self):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            return Node.Vector(self.inputs[0])
-        elif (self.data_type == 'FLOAT'):
-            return Node.Float(self.inputs[1])
-        elif (self.data_type == 'INT'):
-            return Node.Integer(self.inputs[2])
-
-    @ivalue.setter
-    def ivalue(self, value):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            self.inputs[0].plug(value)
-        elif (self.data_type == 'FLOAT'):
-            self.inputs[1].plug(value)
-        elif (self.data_type == 'INT'):
-            self.inputs[2].plug(value)
-
-    @property
-    def igroup_index(self):
-        return Node.Integer(self.inputs[3])
-
-    @igroup_index.setter
-    def igroup_index(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeAttributeDomainSize
+# ----------------------------------------------------------------------------------------------------
+# Node NodeDomainSize for GeometryNodeAttributeDomainSize
 
 class NodeDomainSize(Node):
 
-    """ Node class GeometryNodeAttributeDomainSize
+    """Node 'Domain Size' (GeometryNodeAttributeDomainSize)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
+        geometry        : Geometry
 
     Parameters
     ----------
-
-        component   : 'MESH' in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES') 
+        component       : 'MESH' in [ 'MESH' 'POINTCLOUD' 'CURVE' 'INSTANCES']
 
     Output sockets
     --------------
-
-        0: point_count          Integer
-        1: edge_count           Integer
-        2: face_count           Integer
-        3: face_corner_count    Integer
-        4: spline_count         Integer
-        5: instance_count       Integer
-
+        point_count     : Integer
+        edge_count      : Integer
+        face_count      : Integer
+        face_corner_count : Integer
+        spline_count    : Integer
+        instance_count  : Integer
     """
 
-    PARAMETERS = ['component']
+    def __init__(self, geometry=None, component='MESH', label=None):
 
-    def __init__(self, geometry=None, component='MESH'):
+        super().__init__('GeometryNodeAttributeDomainSize', name='Domain Size', label=label)
 
-        super().__init__('GeometryNodeAttributeDomainSize', name='Domain Size')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
+        self.bnode.component       = component
 
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'point_count'  ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'edge_count'   ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'face_count'   ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'face_corner_count'))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'spline_count' ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'instance_count'))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
+        self.plug(0, geometry)
 
-        self.socket_out_name = 'point_count'
-        self.out_socket_names = ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+        # Output sockets
 
-        # ----- Parameters
+        self.point_count     = self.Integer(self.bnode.outputs[0])
+        self.edge_count      = self.Integer(self.bnode.outputs[1])
+        self.face_count      = self.Integer(self.bnode.outputs[2])
+        self.face_corner_count = self.Integer(self.bnode.outputs[3])
+        self.spline_count    = self.Integer(self.bnode.outputs[4])
+        self.instance_count  = self.Integer(self.bnode.outputs[5])
+        self.output_sockets  = [self.point_count, self.edge_count, self.face_count, self.face_corner_count, self.spline_count, self.instance_count]
 
-        self.component       = component
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'DomainSize' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += '\nParameters'
-        s += f"\n   component       : {self.component}"
-        s += '\nOutput sockets'
-        s +=  "\n   point_count     : Integer"
-        s +=  "\n   edge_count      : Integer"
-        s +=  "\n   face_count      : Integer"
-        s +=  "\n   face_corner_count : Integer"
-        s +=  "\n   spline_count    : Integer"
-        s +=  "\n   instance_count  : Integer"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES') 
-        if self.component not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeDomainSize'.\n 'component' is '{self.component}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def point_count(self):
-        return self.Integer(self.outputs[0])
-
-    @property
-    def edge_count(self):
-        return self.Integer(self.outputs[1])
-
-    @property
-    def face_count(self):
-        return self.Integer(self.outputs[2])
-
-    @property
-    def face_corner_count(self):
-        return self.Integer(self.outputs[3])
-
-    @property
-    def spline_count(self):
-        return self.Integer(self.outputs[4])
-
-    @property
-    def instance_count(self):
-        return self.Integer(self.outputs[5])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeAttributeRemove
+# ----------------------------------------------------------------------------------------------------
+# Node NodeAttributeRemove for GeometryNodeAttributeRemove
 
 class NodeAttributeRemove(Node):
 
-    """ Node class GeometryNodeAttributeRemove
+    """Node 'Attribute Remove' (GeometryNodeAttributeRemove)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
-        1: attribute            String
+        geometry        : Geometry
+        attribute       : *String
 
     Output sockets
     --------------
-
-        0: geometry             Geometry
-
+        geometry        : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, *attribute, geometry=None, label=None):
 
-    def __init__(self, *attribute, geometry=None):
+        super().__init__('GeometryNodeAttributeRemove', name='Attribute Remove', label=label)
 
-        super().__init__('GeometryNodeAttributeRemove', name='Attribute Remove')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketString'       , 'attribute'    , is_multi_input=True))
+        self.plug(1, *attribute)
+        self.plug(0, geometry)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.geometry]
 
-        self.socket_out_name = 'geometry'
-        self.out_socket_names = ['geometry']
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-        self.iattribute      = attribute
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'AttributeRemove' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += f"\n   attribute       : {self.iattribute}"
-        s += '\nOutput sockets'
-        s +=  "\n   geometry        : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.geometry
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iattribute(self):
-        return Node.String(self.inputs[1])
-
-    @iattribute.setter
-    def iattribute(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeAttributeStatistic
+# ----------------------------------------------------------------------------------------------------
+# Node NodeAttributeStatistic for GeometryNodeAttributeStatistic
 
 class NodeAttributeStatistic(Node):
 
-    """ Node class GeometryNodeAttributeStatistic
+    """Node 'Attribute Statistic' (GeometryNodeAttributeStatistic)
+
+    Data type dependant sockets
+    ---------------------------
+
+        Driving parameter : data_type in ('FLOAT', 'FLOAT_VECTOR')
+
+        Input sockets     : ['attribute']
+        Output sockets    : ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
-        1: selection            Boolean
-        2: attribute            Float
-        3: attribute            Vector
+        geometry        : Geometry
+        selection       : Boolean
+        attribute       : data_type dependant
 
     Parameters
     ----------
-
-        data_type   : 'FLOAT' in ('FLOAT', 'FLOAT_VECTOR') 
-        domain      : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE') 
+        data_type       : 'FLOAT' in [ 'FLOAT' 'FLOAT_VECTOR']
+        domain          : 'POINT' in [ 'POINT' 'EDGE' 'FACE' 'CORNER' 'CURVE' 'INSTANCE']
 
     Output sockets
     --------------
-
-        0: mean                 Float
-        1: median               Float
-        2: sum                  Float
-        3: min                  Float
-        4: max                  Float
-        5: range                Float
-        6: standard_deviation   Float
-        7: variance             Float
-        8: mean                 Vector
-        9: median               Vector
-        10: sum                  Vector
-        11: min                  Vector
-        12: max                  Vector
-        13: range                Vector
-        14: standard_deviation   Vector
-        15: variance             Vector
-
+        mean            : data_type dependant
+        median          : data_type dependant
+        sum             : data_type dependant
+        min             : data_type dependant
+        max             : data_type dependant
+        range           : data_type dependant
+        standard_deviation : data_type dependant
+        variance        : data_type dependant
     """
 
-    PARAMETERS = ['data_type', 'domain']
+    def __init__(self, geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', label=None):
 
-    def __init__(self, geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeAttributeStatistic', name='Attribute Statistic', label=label)
 
-        super().__init__('GeometryNodeAttributeStatistic', name='Attribute Statistic')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'attribute'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'attribute'    ))
+        self.bnode.data_type       = data_type
+        self.bnode.domain          = domain
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'mean'         ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'median'       ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'sum'          ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'min'          ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'max'          ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'range'        ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'standard_deviation'))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'variance'     ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'mean'         ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'median'       ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'sum'          ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'min'          ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'max'          ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'range'        ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'standard_deviation'))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'variance'     ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
+        if data_type == 'FLOAT':
+            self.plug(2, attribute)
+        elif data_type == 'FLOAT_VECTOR':
+            self.plug(3, attribute)
 
-        self.socket_out_name = 'mean'
-        self.out_socket_names = ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
+        self.plug(0, geometry)
+        self.plug(1, selection)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.data_type       = data_type
-        self.domain          = domain
-        self.check_parameters()
+        if data_type == 'FLOAT':
+            self.mean            = self.Float(self.bnode.outputs[0])
+            self.median          = self.Float(self.bnode.outputs[1])
+            self.sum             = self.Float(self.bnode.outputs[2])
+            self.min             = self.Float(self.bnode.outputs[3])
+            self.max             = self.Float(self.bnode.outputs[4])
+            self.range           = self.Float(self.bnode.outputs[5])
+            self.standard_deviation = self.Float(self.bnode.outputs[6])
+            self.variance        = self.Float(self.bnode.outputs[7])
+        elif data_type == 'FLOAT_VECTOR':
+            self.mean            = self.Vector(self.bnode.outputs[8])
+            self.median          = self.Vector(self.bnode.outputs[9])
+            self.sum             = self.Vector(self.bnode.outputs[10])
+            self.min             = self.Vector(self.bnode.outputs[11])
+            self.max             = self.Vector(self.bnode.outputs[12])
+            self.range           = self.Vector(self.bnode.outputs[13])
+            self.standard_deviation = self.Vector(self.bnode.outputs[14])
+            self.variance        = self.Vector(self.bnode.outputs[15])
 
-        # ----- Input sockets
+        self.output_sockets  = []
 
-        self.igeometry       = geometry
-        self.iselection      = selection
-        self.iattribute      = attribute
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'AttributeStatistic' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   attribute       : {self.iattribute}"
-        s += '\nParameters'
-        s += f"\n   data_type       : {self.data_type}"
-        s += f"\n   domain          : {self.domain}"
-        s += '\nOutput sockets'
-        s +=  "\n   mean            : variable"
-        s +=  "\n   median          : variable"
-        s +=  "\n   sum             : variable"
-        s +=  "\n   min             : variable"
-        s +=  "\n   max             : variable"
-        s +=  "\n   range           : variable"
-        s +=  "\n   standard_deviation : variable"
-        s +=  "\n   variance        : variable"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('FLOAT', 'FLOAT_VECTOR') 
-        if self.data_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeAttributeStatistic'.\n 'data_type' is '{self.data_type}'.\n Authorized values are {valids}.")
-        valids = ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE') 
-        if self.domain not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeAttributeStatistic'.\n 'domain' is '{self.domain}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mean(self):
-        if (self.data_type == 'FLOAT'):
-            return self.Float(self.outputs[0])
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            return self.Vector(self.outputs[8])
-        self.check_parameters()
-
-    @property
-    def median(self):
-        if (self.data_type == 'FLOAT'):
-            return self.Float(self.outputs[1])
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            return self.Vector(self.outputs[9])
-        self.check_parameters()
-
-    @property
-    def sum(self):
-        if (self.data_type == 'FLOAT'):
-            return self.Float(self.outputs[2])
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            return self.Vector(self.outputs[10])
-        self.check_parameters()
-
-    @property
-    def min(self):
-        if (self.data_type == 'FLOAT'):
-            return self.Float(self.outputs[3])
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            return self.Vector(self.outputs[11])
-        self.check_parameters()
-
-    @property
-    def max(self):
-        if (self.data_type == 'FLOAT'):
-            return self.Float(self.outputs[4])
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            return self.Vector(self.outputs[12])
-        self.check_parameters()
-
-    @property
-    def range(self):
-        if (self.data_type == 'FLOAT'):
-            return self.Float(self.outputs[5])
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            return self.Vector(self.outputs[13])
-        self.check_parameters()
-
-    @property
-    def standard_deviation(self):
-        if (self.data_type == 'FLOAT'):
-            return self.Float(self.outputs[6])
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            return self.Vector(self.outputs[14])
-        self.check_parameters()
-
-    @property
-    def variance(self):
-        if (self.data_type == 'FLOAT'):
-            return self.Float(self.outputs[7])
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            return self.Vector(self.outputs[15])
-        self.check_parameters()
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iattribute(self):
-        if (self.data_type == 'FLOAT'):
-            return Node.Float(self.inputs[2])
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            return Node.Vector(self.inputs[3])
-
-    @iattribute.setter
-    def iattribute(self, value):
-        if (self.data_type == 'FLOAT'):
-            self.inputs[2].plug(value)
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeAttributeTransfer
+# ----------------------------------------------------------------------------------------------------
+# Node NodeTransferAttribute for GeometryNodeAttributeTransfer
 
 class NodeTransferAttribute(Node):
 
-    """ Node class GeometryNodeAttributeTransfer
+    """Node 'Transfer Attribute' (GeometryNodeAttributeTransfer)
+
+    Data type dependant sockets
+    ---------------------------
+
+        Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+
+        Input sockets     : ['attribute']
+        Output sockets    : ['attribute']
 
     Input sockets
     -------------
-
-        0: source               Geometry
-        1: attribute            Vector
-        2: attribute            Float
-        3: attribute            Color
-        4: attribute            Boolean
-        5: attribute            Integer
-        6: source_position      Vector
-        7: index                Integer
+        source          : Geometry
+        attribute       : data_type dependant
+        source_position : Vector
+        index           : Integer
 
     Parameters
     ----------
-
-        data_type   : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
-        domain      : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE') 
-        mapping     : 'NEAREST_FACE_INTERPOLATED' in ('NEAREST_FACE_INTERPOLATED', 'NEAREST', 'INDEX') 
+        data_type       : 'FLOAT' in [ 'FLOAT' 'INT' 'FLOAT_VECTOR' 'FLOAT_COLOR' 'BOOLEAN']
+        domain          : 'POINT' in [ 'POINT' 'EDGE' 'FACE' 'CORNER' 'CURVE' 'INSTANCE']
+        mapping         : 'NEAREST_FACE_INTERPOLATED' in [ 'NEAREST_FACE_INTERPOLATED' 'NEAREST' 'INDEX']
 
     Output sockets
     --------------
-
-        0: attribute            Vector
-        1: attribute            Float
-        2: attribute            Color
-        3: attribute            Boolean
-        4: attribute            Integer
-
+        attribute       : data_type dependant
     """
 
-    PARAMETERS = ['data_type', 'domain', 'mapping']
+    def __init__(self, source=None, attribute=None, source_position=None, index=None, data_type='FLOAT', domain='POINT', mapping='NEAREST_FACE_INTERPOLATED', label=None):
 
-    def __init__(self, source=None, attribute=None, source_position=None, index=None, data_type='FLOAT', domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
+        super().__init__('GeometryNodeAttributeTransfer', name='Transfer Attribute', label=label)
 
-        super().__init__('GeometryNodeAttributeTransfer', name='Transfer Attribute')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'source'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'attribute'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'attribute'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'attribute'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'attribute'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'attribute'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'source_position'))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'index'        ))
+        self.bnode.data_type       = data_type
+        self.bnode.domain          = domain
+        self.bnode.mapping         = mapping
 
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'attribute'    ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'attribute'    ))
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'attribute'    ))
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'attribute'    ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'attribute'    ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
+        if data_type == 'FLOAT':
+            self.plug(2, attribute)
+        elif data_type == 'INT':
+            self.plug(5, attribute)
+        elif data_type == 'FLOAT_VECTOR':
+            self.plug(1, attribute)
+        elif data_type == 'FLOAT_COLOR':
+            self.plug(3, attribute)
+        elif data_type == 'BOOLEAN':
+            self.plug(4, attribute)
 
-        self.socket_out_name = 'attribute'
-        self.out_socket_names = ['attribute']
+        self.plug(0, source)
+        self.plug(6, source_position)
+        self.plug(7, index)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.data_type       = data_type
-        self.domain          = domain
-        self.mapping         = mapping
-        self.check_parameters()
+        if data_type == 'FLOAT':
+            self.attribute       = self.Float(self.bnode.outputs[1])
+        elif data_type == 'INT':
+            self.attribute       = self.Integer(self.bnode.outputs[4])
+        elif data_type == 'FLOAT_VECTOR':
+            self.attribute       = self.Vector(self.bnode.outputs[0])
+        elif data_type == 'FLOAT_COLOR':
+            self.attribute       = self.Color(self.bnode.outputs[2])
+        elif data_type == 'BOOLEAN':
+            self.attribute       = self.Boolean(self.bnode.outputs[3])
 
-        # ----- Input sockets
+        self.output_sockets  = []
 
-        self.isource         = source
-        self.iattribute      = attribute
-        self.isource_position = source_position
-        self.iindex          = index
-
-        self.socket_in_name = 'isource'
-
-    def __repr__(self):
-        s = f"Node 'TransferAttribute' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   source          : {self.isource}"
-        s += f"\n   attribute       : {self.iattribute}"
-        s += f"\n   source_position : {self.isource_position}"
-        s += f"\n   index           : {self.iindex}"
-        s += '\nParameters'
-        s += f"\n   data_type       : {self.data_type}"
-        s += f"\n   domain          : {self.domain}"
-        s += f"\n   mapping         : {self.mapping}"
-        s += '\nOutput sockets'
-        s +=  "\n   attribute       : variable"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
-        if self.data_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeTransferAttribute'.\n 'data_type' is '{self.data_type}'.\n Authorized values are {valids}.")
-        valids = ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE') 
-        if self.domain not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeTransferAttribute'.\n 'domain' is '{self.domain}'.\n Authorized values are {valids}.")
-        valids = ('NEAREST_FACE_INTERPOLATED', 'NEAREST', 'INDEX') 
-        if self.mapping not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeTransferAttribute'.\n 'mapping' is '{self.mapping}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def attribute(self):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            return self.Vector(self.outputs[0])
-        elif (self.data_type == 'FLOAT'):
-            return self.Float(self.outputs[1])
-        elif (self.data_type == 'FLOAT_COLOR'):
-            return self.Color(self.outputs[2])
-        elif (self.data_type == 'BOOLEAN'):
-            return self.Boolean(self.outputs[3])
-        elif (self.data_type == 'INT'):
-            return self.Integer(self.outputs[4])
-        self.check_parameters()
-
-    @property
-    def output(self):
-        return self.attribute
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def isource(self):
-        return Node.Geometry(self.inputs[0])
-
-    @isource.setter
-    def isource(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iattribute(self):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            return Node.Vector(self.inputs[1])
-        elif (self.data_type == 'FLOAT'):
-            return Node.Float(self.inputs[2])
-        elif (self.data_type == 'FLOAT_COLOR'):
-            return Node.Color(self.inputs[3])
-        elif (self.data_type == 'BOOLEAN'):
-            return Node.Boolean(self.inputs[4])
-        elif (self.data_type == 'INT'):
-            return Node.Integer(self.inputs[5])
-
-    @iattribute.setter
-    def iattribute(self, value):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            self.inputs[1].plug(value)
-        elif (self.data_type == 'FLOAT'):
-            self.inputs[2].plug(value)
-        elif (self.data_type == 'FLOAT_COLOR'):
-            self.inputs[3].plug(value)
-        elif (self.data_type == 'BOOLEAN'):
-            self.inputs[4].plug(value)
-        elif (self.data_type == 'INT'):
-            self.inputs[5].plug(value)
-
-    @property
-    def isource_position(self):
-        return Node.Vector(self.inputs[6])
-
-    @isource_position.setter
-    def isource_position(self, value):
-        self.inputs[6].plug(value)
-
-    @property
-    def iindex(self):
-        return Node.Integer(self.inputs[7])
-
-    @iindex.setter
-    def iindex(self, value):
-        self.inputs[7].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeBoundBox
+# ----------------------------------------------------------------------------------------------------
+# Node NodeBoundingBox for GeometryNodeBoundBox
 
 class NodeBoundingBox(Node):
 
-    """ Node class GeometryNodeBoundBox
+    """Node 'Bounding Box' (GeometryNodeBoundBox)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
+        geometry        : Geometry
 
     Output sockets
     --------------
-
-        0: bounding_box         Geometry
-        1: min                  Vector
-        2: max                  Vector
-
+        bounding_box    : Geometry
+        min             : Vector
+        max             : Vector
     """
 
-    PARAMETERS = []
+    def __init__(self, geometry=None, label=None):
 
-    def __init__(self, geometry=None):
+        super().__init__('GeometryNodeBoundBox', name='Bounding Box', label=label)
 
-        super().__init__('GeometryNodeBoundBox', name='Bounding Box')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
+        self.plug(0, geometry)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'bounding_box' ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'min'          ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'max'          ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.bounding_box    = self.Geometry(self.bnode.outputs[0])
+        self.min             = self.Vector(self.bnode.outputs[1])
+        self.max             = self.Vector(self.bnode.outputs[2])
+        self.output_sockets  = [self.bounding_box, self.min, self.max]
 
-        self.socket_out_name = 'bounding_box'
-        self.out_socket_names = ['bounding_box', 'min', 'max']
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'BoundingBox' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += '\nOutput sockets'
-        s +=  "\n   bounding_box    : Geometry"
-        s +=  "\n   min             : Vector"
-        s +=  "\n   max             : Vector"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def bounding_box(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def min(self):
-        return self.Vector(self.outputs[1])
-
-    @property
-    def max(self):
-        return self.Vector(self.outputs[2])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeCaptureAttribute
+# ----------------------------------------------------------------------------------------------------
+# Node NodeCaptureAttribute for GeometryNodeCaptureAttribute
 
 class NodeCaptureAttribute(Node):
 
-    """ Node class GeometryNodeCaptureAttribute
+    """Node 'Capture Attribute' (GeometryNodeCaptureAttribute)
+
+    Data type dependant sockets
+    ---------------------------
+
+        Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+
+        Input sockets     : ['value']
+        Output sockets    : ['attribute']
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
-        1: value                Vector
-        2: value                Float
-        3: value                Color
-        4: value                Boolean
-        5: value                Integer
+        geometry        : Geometry
+        value           : data_type dependant
 
     Parameters
     ----------
-
-        data_type   : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
-        domain      : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE') 
+        data_type       : 'FLOAT' in [ 'FLOAT' 'INT' 'FLOAT_VECTOR' 'FLOAT_COLOR' 'BOOLEAN']
+        domain          : 'POINT' in [ 'POINT' 'EDGE' 'FACE' 'CORNER' 'CURVE' 'INSTANCE']
 
     Output sockets
     --------------
-
-        0: geometry             Geometry
-        1: attribute            Vector
-        2: attribute            Float
-        3: attribute            Color
-        4: attribute            Boolean
-        5: attribute            Integer
-
+        geometry        : Geometry
+        attribute       : data_type dependant
     """
 
-    PARAMETERS = ['data_type', 'domain']
+    def __init__(self, geometry=None, value=None, data_type='FLOAT', domain='POINT', label=None):
 
-    def __init__(self, geometry=None, value=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeCaptureAttribute', name='Capture Attribute', label=label)
 
-        super().__init__('GeometryNodeCaptureAttribute', name='Capture Attribute')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'value'        ))
+        self.bnode.data_type       = data_type
+        self.bnode.domain          = domain
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'attribute'    ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'attribute'    ))
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'attribute'    ))
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'attribute'    ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'attribute'    ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        if data_type == 'FLOAT':
+            self.plug(2, value)
+        elif data_type == 'INT':
+            self.plug(5, value)
+        elif data_type == 'FLOAT_VECTOR':
+            self.plug(1, value)
+        elif data_type == 'FLOAT_COLOR':
+            self.plug(3, value)
+        elif data_type == 'BOOLEAN':
+            self.plug(4, value)
 
-        self.socket_out_name = 'geometry'
-        self.out_socket_names = ['geometry', 'attribute']
+        self.plug(0, geometry)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.data_type       = data_type
-        self.domain          = domain
-        self.check_parameters()
+        if data_type == 'FLOAT':
+            self.attribute       = self.Float(self.bnode.outputs[2])
+        elif data_type == 'INT':
+            self.attribute       = self.Integer(self.bnode.outputs[5])
+        elif data_type == 'FLOAT_VECTOR':
+            self.attribute       = self.Vector(self.bnode.outputs[1])
+        elif data_type == 'FLOAT_COLOR':
+            self.attribute       = self.Color(self.bnode.outputs[3])
+        elif data_type == 'BOOLEAN':
+            self.attribute       = self.Boolean(self.bnode.outputs[4])
 
-        # ----- Input sockets
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.geometry]
 
-        self.igeometry       = geometry
-        self.ivalue          = value
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'CaptureAttribute' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += f"\n   value           : {self.ivalue}"
-        s += '\nParameters'
-        s += f"\n   data_type       : {self.data_type}"
-        s += f"\n   domain          : {self.domain}"
-        s += '\nOutput sockets'
-        s +=  "\n   geometry        : Geometry"
-        s +=  "\n   attribute       : variable"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
-        if self.data_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeCaptureAttribute'.\n 'data_type' is '{self.data_type}'.\n Authorized values are {valids}.")
-        valids = ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE') 
-        if self.domain not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeCaptureAttribute'.\n 'domain' is '{self.domain}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def attribute(self):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            return self.Vector(self.outputs[1])
-        elif (self.data_type == 'FLOAT'):
-            return self.Float(self.outputs[2])
-        elif (self.data_type == 'FLOAT_COLOR'):
-            return self.Color(self.outputs[3])
-        elif (self.data_type == 'BOOLEAN'):
-            return self.Boolean(self.outputs[4])
-        elif (self.data_type == 'INT'):
-            return self.Integer(self.outputs[5])
-        self.check_parameters()
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ivalue(self):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            return Node.Vector(self.inputs[1])
-        elif (self.data_type == 'FLOAT'):
-            return Node.Float(self.inputs[2])
-        elif (self.data_type == 'FLOAT_COLOR'):
-            return Node.Color(self.inputs[3])
-        elif (self.data_type == 'BOOLEAN'):
-            return Node.Boolean(self.inputs[4])
-        elif (self.data_type == 'INT'):
-            return Node.Integer(self.inputs[5])
-
-    @ivalue.setter
-    def ivalue(self, value):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            self.inputs[1].plug(value)
-        elif (self.data_type == 'FLOAT'):
-            self.inputs[2].plug(value)
-        elif (self.data_type == 'FLOAT_COLOR'):
-            self.inputs[3].plug(value)
-        elif (self.data_type == 'BOOLEAN'):
-            self.inputs[4].plug(value)
-        elif (self.data_type == 'INT'):
-            self.inputs[5].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeCollectionInfo
+# ----------------------------------------------------------------------------------------------------
+# Node NodeCollectionInfo for GeometryNodeCollectionInfo
 
 class NodeCollectionInfo(Node):
 
-    """ Node class GeometryNodeCollectionInfo
+    """Node 'Collection Info' (GeometryNodeCollectionInfo)
 
     Input sockets
     -------------
-
-        0: collection           Collection
-        1: separate_children    Boolean
-        2: reset_children       Boolean
+        collection      : Collection
+        separate_children : Boolean
+        reset_children  : Boolean
 
     Parameters
     ----------
-
-        transform_space: 'ORIGINAL' in ('ORIGINAL', 'RELATIVE') 
+        transform_space : 'ORIGINAL' in [ 'ORIGINAL' 'RELATIVE']
 
     Output sockets
     --------------
-
-        0: geometry             Geometry
-
+        geometry        : Geometry
     """
 
-    PARAMETERS = ['transform_space']
+    def __init__(self, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL', label=None):
 
-    def __init__(self, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
+        super().__init__('GeometryNodeCollectionInfo', name='Collection Info', label=label)
 
-        super().__init__('GeometryNodeCollectionInfo', name='Collection Info')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketCollection'   , 'collection'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'separate_children'))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'reset_children'))
+        self.bnode.transform_space = transform_space
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
+        # Input sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, collection)
+        self.plug(1, separate_children)
+        self.plug(2, reset_children)
 
-        self.socket_out_name = 'geometry'
-        self.out_socket_names = ['geometry']
+        # Output sockets
 
-        # ----- Parameters
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.geometry]
 
-        self.transform_space = transform_space
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.icollection     = collection
-        self.iseparate_children = separate_children
-        self.ireset_children = reset_children
-
-        self.socket_in_name = 'icollection'
-
-    def __repr__(self):
-        s = f"Node 'CollectionInfo' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   collection      : {self.icollection}"
-        s += f"\n   separate_children : {self.iseparate_children}"
-        s += f"\n   reset_children  : {self.ireset_children}"
-        s += '\nParameters'
-        s += f"\n   transform_space : {self.transform_space}"
-        s += '\nOutput sockets'
-        s +=  "\n   geometry        : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('ORIGINAL', 'RELATIVE') 
-        if self.transform_space not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeCollectionInfo'.\n 'transform_space' is '{self.transform_space}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.geometry
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def icollection(self):
-        return Node.Collection(self.inputs[0])
-
-    @icollection.setter
-    def icollection(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iseparate_children(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iseparate_children.setter
-    def iseparate_children(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ireset_children(self):
-        return Node.Boolean(self.inputs[2])
-
-    @ireset_children.setter
-    def ireset_children(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeConvexHull
+# ----------------------------------------------------------------------------------------------------
+# Node NodeConvexHull for GeometryNodeConvexHull
 
 class NodeConvexHull(Node):
 
-    """ Node class GeometryNodeConvexHull
+    """Node 'Convex Hull' (GeometryNodeConvexHull)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
+        geometry        : Geometry
 
     Output sockets
     --------------
-
-        0: convex_hull          Geometry
-
+        convex_hull     : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, geometry=None, label=None):
 
-    def __init__(self, geometry=None):
+        super().__init__('GeometryNodeConvexHull', name='Convex Hull', label=label)
 
-        super().__init__('GeometryNodeConvexHull', name='Convex Hull')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
+        self.plug(0, geometry)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'convex_hull'  ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.convex_hull     = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.convex_hull]
 
-        self.socket_out_name = 'convex_hull'
-        self.out_socket_names = ['convex_hull']
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'ConvexHull' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += '\nOutput sockets'
-        s +=  "\n   convex_hull     : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def convex_hull(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.convex_hull
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeCurveArc
+# ----------------------------------------------------------------------------------------------------
+# Node NodeArc for GeometryNodeCurveArc
 
 class NodeArc(Node):
 
-    """ Node class GeometryNodeCurveArc
+    """Node 'Arc' (GeometryNodeCurveArc)
 
     Input sockets
     -------------
-
-        0: resolution           Integer
-        1: start                Vector
-        2: middle               Vector
-        3: end                  Vector
-        4: radius               Float
-        5: start_angle          Float
-        6: sweep_angle          Float
-        7: offset_angle         Float
-        8: connect_center       Boolean
-        9: invert_arc           Boolean
+        resolution      : Integer
+        start           : Vector
+        middle          : Vector
+        end             : Vector
+        radius          : Float
+        start_angle     : Float
+        sweep_angle     : Float
+        offset_angle    : Float
+        connect_center  : Boolean
+        invert_arc      : Boolean
 
     Parameters
     ----------
-
-        mode        : 'RADIUS' in ('POINTS', 'RADIUS') 
+        mode            : 'RADIUS' in [ 'POINTS' 'RADIUS']
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-        1: center               Vector
-        2: normal               Vector
-        3: radius               Float
-
+        curve           : Geometry
+        center          : Vector
+        normal          : Vector
+        radius          : Float
     """
 
-    PARAMETERS = ['mode']
+    def __init__(self, resolution=None, start=None, middle=None, end=None, radius=None, start_angle=None, sweep_angle=None, offset_angle=None, connect_center=None, invert_arc=None, mode='RADIUS', label=None):
 
-    def __init__(self, resolution=None, start=None, middle=None, end=None, radius=None, start_angle=None, sweep_angle=None, offset_angle=None, connect_center=None, invert_arc=None, mode='RADIUS'):
+        super().__init__('GeometryNodeCurveArc', name='Arc', label=label)
 
-        super().__init__('GeometryNodeCurveArc', name='Arc')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketIntUnsigned'  , 'resolution'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'start'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'middle'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'end'          ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'radius'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatAngle'   , 'start_angle'  ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatAngle'   , 'sweep_angle'  ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatAngle'   , 'offset_angle' ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'connect_center'))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'invert_arc'   ))
+        self.bnode.mode            = mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'center'       ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'normal'       ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'radius'       ))
+        # Input sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, resolution)
+        self.plug(1, start)
+        self.plug(2, middle)
+        self.plug(3, end)
+        self.plug(4, radius)
+        self.plug(5, start_angle)
+        self.plug(6, sweep_angle)
+        self.plug(7, offset_angle)
+        self.plug(8, connect_center)
+        self.plug(9, invert_arc)
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve', 'center', 'normal', 'radius']
+        # Output sockets
 
-        # ----- Parameters
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.center          = self.Vector(self.bnode.outputs[1])
+        self.normal          = self.Vector(self.bnode.outputs[2])
+        self.radius          = self.Float(self.bnode.outputs[3])
+        self.output_sockets  = [self.curve, self.center, self.normal, self.radius]
 
-        self.mode            = mode
-        self.check_parameters()
+# ----------------------------------------------------------------------------------------------------
+# Node NodeEndpointSelection for GeometryNodeCurveEndpointSelection
 
-        # ----- Input sockets
+class NodeEndpointSelection(Node):
 
-        self.iresolution     = resolution
-        self.istart          = start
-        self.imiddle         = middle
-        self.iend            = end
-        self.iradius         = radius
-        self.istart_angle    = start_angle
-        self.isweep_angle    = sweep_angle
-        self.ioffset_angle   = offset_angle
-        self.iconnect_center = connect_center
-        self.iinvert_arc     = invert_arc
-
-        self.socket_in_name = 'iresolution'
-
-    def __repr__(self):
-        s = f"Node 'Arc' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   resolution      : {self.iresolution}"
-        s += f"\n   start           : {self.istart}"
-        s += f"\n   middle          : {self.imiddle}"
-        s += f"\n   end             : {self.iend}"
-        s += f"\n   radius          : {self.iradius}"
-        s += f"\n   start_angle     : {self.istart_angle}"
-        s += f"\n   sweep_angle     : {self.isweep_angle}"
-        s += f"\n   offset_angle    : {self.ioffset_angle}"
-        s += f"\n   connect_center  : {self.iconnect_center}"
-        s += f"\n   invert_arc      : {self.iinvert_arc}"
-        s += '\nParameters'
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        s +=  "\n   center          : Vector"
-        s +=  "\n   normal          : Vector"
-        s +=  "\n   radius          : Float"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('POINTS', 'RADIUS') 
-        if self.mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeArc'.\n 'mode' is '{self.mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def center(self):
-        return self.Vector(self.outputs[1])
-
-    @property
-    def normal(self):
-        return self.Vector(self.outputs[2])
-
-    @property
-    def radius(self):
-        return self.Float(self.outputs[3])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def iresolution(self):
-        return Node.Integer(self.inputs[0])
-
-    @iresolution.setter
-    def iresolution(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def istart(self):
-        return Node.Vector(self.inputs[1])
-
-    @istart.setter
-    def istart(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def imiddle(self):
-        return Node.Vector(self.inputs[2])
-
-    @imiddle.setter
-    def imiddle(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def iend(self):
-        return Node.Vector(self.inputs[3])
-
-    @iend.setter
-    def iend(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def iradius(self):
-        return Node.Float(self.inputs[4])
-
-    @iradius.setter
-    def iradius(self, value):
-        self.inputs[4].plug(value)
-
-    @property
-    def istart_angle(self):
-        return Node.Float(self.inputs[5])
-
-    @istart_angle.setter
-    def istart_angle(self, value):
-        self.inputs[5].plug(value)
-
-    @property
-    def isweep_angle(self):
-        return Node.Float(self.inputs[6])
-
-    @isweep_angle.setter
-    def isweep_angle(self, value):
-        self.inputs[6].plug(value)
-
-    @property
-    def ioffset_angle(self):
-        return Node.Float(self.inputs[7])
-
-    @ioffset_angle.setter
-    def ioffset_angle(self, value):
-        self.inputs[7].plug(value)
-
-    @property
-    def iconnect_center(self):
-        return Node.Boolean(self.inputs[8])
-
-    @iconnect_center.setter
-    def iconnect_center(self, value):
-        self.inputs[8].plug(value)
-
-    @property
-    def iinvert_arc(self):
-        return Node.Boolean(self.inputs[9])
-
-    @iinvert_arc.setter
-    def iinvert_arc(self, value):
-        self.inputs[9].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeCurveEndpointSelection
-
-class NodeEndpointSelection(Attribute):
-
-    """ Node class GeometryNodeCurveEndpointSelection
+    """Node 'Endpoint Selection' (GeometryNodeCurveEndpointSelection)
 
     Input sockets
     -------------
-
-        0: start_size           Integer
-        1: end_size             Integer
+        start_size      : Integer
+        end_size        : Integer
 
     Output sockets
     --------------
-
-        0: selection            Boolean
-
+        selection       : Boolean
     """
 
-    PARAMETERS = []
+    def __init__(self, start_size=None, end_size=None, label=None):
 
-    def __init__(self, start_size=None, end_size=None, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeCurveEndpointSelection', name='Endpoint Selection', label=label)
 
-        super().__init__('GeometryNodeCurveEndpointSelection', name='Endpoint Selection', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'start_size'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'end_size'     ))
+        self.plug(0, start_size)
+        self.plug(1, end_size)
 
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'selection'    ))
+        # Output sockets
 
-        self.socket_out_name = 'selection'
-        self.out_socket_names = ['selection']
+        self.selection       = self.Boolean(self.bnode.outputs[0])
+        self.output_sockets  = [self.selection]
 
-        # ----- Input sockets
+# ----------------------------------------------------------------------------------------------------
+# Node NodeHandleTypeSelection for GeometryNodeCurveHandleTypeSelection
 
-        self.istart_size     = start_size
-        self.iend_size       = end_size
+class NodeHandleTypeSelection(Node):
 
-        self.socket_in_name = 'istart_size'
-
-    def __repr__(self):
-        s = f"Node 'EndpointSelection' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   start_size      : {self.istart_size}"
-        s += f"\n   end_size        : {self.iend_size}"
-        s += '\nOutput sockets'
-        s +=  "\n   selection       : Boolean"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def selection(self):
-        return self.Boolean(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.selection
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def istart_size(self):
-        return Node.Integer(self.inputs[0])
-
-    @istart_size.setter
-    def istart_size(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iend_size(self):
-        return Node.Integer(self.inputs[1])
-
-    @iend_size.setter
-    def iend_size(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeCurveHandleTypeSelection
-
-class NodeHandleTypeSelection(Attribute):
-
-    """ Node class GeometryNodeCurveHandleTypeSelection
+    """Node 'Handle Type Selection' (GeometryNodeCurveHandleTypeSelection)
 
     Parameters
     ----------
-
-        handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN') 
-        mode        : {'LEFT', 'RIGHT'}
+        handle_type     : 'AUTO' in [ 'FREE' 'AUTO' 'VECTOR' 'ALIGN']
+        mode            : ({'LEFT', 'RIGHT'}) set
 
     Output sockets
     --------------
-
-        0: selection            Boolean
-
+        selection       : Boolean
     """
 
-    PARAMETERS = ['handle_type', 'mode']
+    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None):
 
-    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeCurveHandleTypeSelection', name='Handle Type Selection', label=label)
 
-        super().__init__('GeometryNodeCurveHandleTypeSelection', name='Handle Type Selection', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Parameters
 
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'selection'    ))
+        self.bnode.handle_type     = handle_type
+        self.bnode.mode            = mode
 
-        self.socket_out_name = 'selection'
-        self.out_socket_names = ['selection']
+        # Output sockets
 
-        # ----- Parameters
+        self.selection       = self.Boolean(self.bnode.outputs[0])
+        self.output_sockets  = [self.selection]
 
-        self.handle_type     = handle_type
-        self.mode            = mode
-        self.check_parameters()
-
-        self.socket_in_name = None
-
-    def __repr__(self):
-        s = f"Node 'HandleTypeSelection' ({self.unique_id})"
-        s += '\nParameters'
-        s += f"\n   handle_type     : {self.handle_type}"
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   selection       : Boolean"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('FREE', 'AUTO', 'VECTOR', 'ALIGN') 
-        if self.handle_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeHandleTypeSelection'.\n 'handle_type' is '{self.handle_type}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def selection(self):
-        return self.Boolean(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.selection
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeCurveLength
+# ----------------------------------------------------------------------------------------------------
+# Node NodeCurveLength for GeometryNodeCurveLength
 
 class NodeCurveLength(Node):
 
-    """ Node class GeometryNodeCurveLength
+    """Node 'Curve Length' (GeometryNodeCurveLength)
 
     Input sockets
     -------------
-
-        0: curve                Geometry
+        curve           : Geometry
 
     Output sockets
     --------------
-
-        0: length               Float
-
+        length          : Float
     """
 
-    PARAMETERS = []
+    def __init__(self, curve=None, label=None):
 
-    def __init__(self, curve=None):
+        super().__init__('GeometryNodeCurveLength', name='Curve Length', label=label)
 
-        super().__init__('GeometryNodeCurveLength', name='Curve Length')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'curve'        ))
+        self.plug(0, curve)
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'length'       ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
+        self.length          = self.Float(self.bnode.outputs[0])
+        self.output_sockets  = [self.length]
 
-        self.socket_out_name = 'length'
-        self.out_socket_names = ['length']
-
-        # ----- Input sockets
-
-        self.icurve          = curve
-
-        self.socket_in_name = 'icurve'
-
-    def __repr__(self):
-        s = f"Node 'CurveLength' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   curve           : {self.icurve}"
-        s += '\nOutput sockets'
-        s +=  "\n   length          : Float"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def length(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.length
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def icurve(self):
-        return Node.Curve(self.inputs[0])
-
-    @icurve.setter
-    def icurve(self, value):
-        self.inputs[0].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeCurvePrimitiveBezierSegment
+# ----------------------------------------------------------------------------------------------------
+# Node NodeBezierSegment for GeometryNodeCurvePrimitiveBezierSegment
 
 class NodeBezierSegment(Node):
 
-    """ Node class GeometryNodeCurvePrimitiveBezierSegment
+    """Node 'Bezier Segment' (GeometryNodeCurvePrimitiveBezierSegment)
 
     Input sockets
     -------------
-
-        0: resolution           Integer
-        1: start                Vector
-        2: start_handle         Vector
-        3: end_handle           Vector
-        4: end                  Vector
+        resolution      : Integer
+        start           : Vector
+        start_handle    : Vector
+        end_handle      : Vector
+        end             : Vector
 
     Parameters
     ----------
-
-        mode        : 'POSITION' in ('POSITION', 'OFFSET') 
+        mode            : 'POSITION' in [ 'POSITION' 'OFFSET']
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-
+        curve           : Geometry
     """
 
-    PARAMETERS = ['mode']
+    def __init__(self, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION', label=None):
 
-    def __init__(self, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):
+        super().__init__('GeometryNodeCurvePrimitiveBezierSegment', name='Bezier Segment', label=label)
 
-        super().__init__('GeometryNodeCurvePrimitiveBezierSegment', name='Bezier Segment')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketIntUnsigned'  , 'resolution'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'start'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'start_handle' ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'end_handle'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'end'          ))
+        self.bnode.mode            = mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
+        # Input sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, resolution)
+        self.plug(1, start)
+        self.plug(2, start_handle)
+        self.plug(3, end_handle)
+        self.plug(4, end)
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve']
+        # Output sockets
 
-        # ----- Parameters
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.curve]
 
-        self.mode            = mode
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.iresolution     = resolution
-        self.istart          = start
-        self.istart_handle   = start_handle
-        self.iend_handle     = end_handle
-        self.iend            = end
-
-        self.socket_in_name = 'iresolution'
-
-    def __repr__(self):
-        s = f"Node 'BezierSegment' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   resolution      : {self.iresolution}"
-        s += f"\n   start           : {self.istart}"
-        s += f"\n   start_handle    : {self.istart_handle}"
-        s += f"\n   end_handle      : {self.iend_handle}"
-        s += f"\n   end             : {self.iend}"
-        s += '\nParameters'
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('POSITION', 'OFFSET') 
-        if self.mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeBezierSegment'.\n 'mode' is '{self.mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.curve
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def iresolution(self):
-        return Node.Integer(self.inputs[0])
-
-    @iresolution.setter
-    def iresolution(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def istart(self):
-        return Node.Vector(self.inputs[1])
-
-    @istart.setter
-    def istart(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def istart_handle(self):
-        return Node.Vector(self.inputs[2])
-
-    @istart_handle.setter
-    def istart_handle(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def iend_handle(self):
-        return Node.Vector(self.inputs[3])
-
-    @iend_handle.setter
-    def iend_handle(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def iend(self):
-        return Node.Vector(self.inputs[4])
-
-    @iend.setter
-    def iend(self, value):
-        self.inputs[4].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeCurvePrimitiveCircle
+# ----------------------------------------------------------------------------------------------------
+# Node NodeCurveCircle for GeometryNodeCurvePrimitiveCircle
 
 class NodeCurveCircle(Node):
 
-    """ Node class GeometryNodeCurvePrimitiveCircle
+    """Node 'Curve Circle' (GeometryNodeCurvePrimitiveCircle)
 
     Input sockets
     -------------
-
-        0: resolution           Integer
-        1: point_1              Vector
-        2: point_2              Vector
-        3: point_3              Vector
-        4: radius               Float
+        resolution      : Integer
+        point_1         : Vector
+        point_2         : Vector
+        point_3         : Vector
+        radius          : Float
 
     Parameters
     ----------
-
-        mode        : 'RADIUS' in ('POINTS', 'RADIUS') 
+        mode            : 'RADIUS' in [ 'POINTS' 'RADIUS']
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-        1: center               Vector
-
+        curve           : Geometry
+        center          : Vector
     """
 
-    PARAMETERS = ['mode']
+    def __init__(self, resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS', label=None):
 
-    def __init__(self, resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS'):
+        super().__init__('GeometryNodeCurvePrimitiveCircle', name='Curve Circle', label=label)
 
-        super().__init__('GeometryNodeCurvePrimitiveCircle', name='Curve Circle')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'resolution'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'point_1'      ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'point_2'      ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'point_3'      ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'radius'       ))
+        self.bnode.mode            = mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'center'       ))
+        # Input sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, resolution)
+        self.plug(1, point_1)
+        self.plug(2, point_2)
+        self.plug(3, point_3)
+        self.plug(4, radius)
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve', 'center']
+        # Output sockets
 
-        # ----- Parameters
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.center          = self.Vector(self.bnode.outputs[1])
+        self.output_sockets  = [self.curve, self.center]
 
-        self.mode            = mode
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.iresolution     = resolution
-        self.ipoint_1        = point_1
-        self.ipoint_2        = point_2
-        self.ipoint_3        = point_3
-        self.iradius         = radius
-
-        self.socket_in_name = 'iresolution'
-
-    def __repr__(self):
-        s = f"Node 'CurveCircle' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   resolution      : {self.iresolution}"
-        s += f"\n   point_1         : {self.ipoint_1}"
-        s += f"\n   point_2         : {self.ipoint_2}"
-        s += f"\n   point_3         : {self.ipoint_3}"
-        s += f"\n   radius          : {self.iradius}"
-        s += '\nParameters'
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        s +=  "\n   center          : Vector"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('POINTS', 'RADIUS') 
-        if self.mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeCurveCircle'.\n 'mode' is '{self.mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def center(self):
-        return self.Vector(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def iresolution(self):
-        return Node.Integer(self.inputs[0])
-
-    @iresolution.setter
-    def iresolution(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ipoint_1(self):
-        return Node.Vector(self.inputs[1])
-
-    @ipoint_1.setter
-    def ipoint_1(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ipoint_2(self):
-        return Node.Vector(self.inputs[2])
-
-    @ipoint_2.setter
-    def ipoint_2(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def ipoint_3(self):
-        return Node.Vector(self.inputs[3])
-
-    @ipoint_3.setter
-    def ipoint_3(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def iradius(self):
-        return Node.Float(self.inputs[4])
-
-    @iradius.setter
-    def iradius(self, value):
-        self.inputs[4].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeCurvePrimitiveLine
+# ----------------------------------------------------------------------------------------------------
+# Node NodeCurveLine for GeometryNodeCurvePrimitiveLine
 
 class NodeCurveLine(Node):
 
-    """ Node class GeometryNodeCurvePrimitiveLine
+    """Node 'Curve Line' (GeometryNodeCurvePrimitiveLine)
 
     Input sockets
     -------------
-
-        0: start                Vector
-        1: end                  Vector
-        2: direction            Vector
-        3: length               Float
+        start           : Vector
+        end             : Vector
+        direction       : Vector
+        length          : Float
 
     Parameters
     ----------
-
-        mode        : 'POINTS' in ('POINTS', 'DIRECTION') 
+        mode            : 'POINTS' in [ 'POINTS' 'DIRECTION']
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-
+        curve           : Geometry
     """
 
-    PARAMETERS = ['mode']
+    def __init__(self, start=None, end=None, direction=None, length=None, mode='POINTS', label=None):
 
-    def __init__(self, start=None, end=None, direction=None, length=None, mode='POINTS'):
+        super().__init__('GeometryNodeCurvePrimitiveLine', name='Curve Line', label=label)
 
-        super().__init__('GeometryNodeCurvePrimitiveLine', name='Curve Line')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'start'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'end'          ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'direction'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'length'       ))
+        self.bnode.mode            = mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
+        # Input sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, start)
+        self.plug(1, end)
+        self.plug(2, direction)
+        self.plug(3, length)
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve']
+        # Output sockets
 
-        # ----- Parameters
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.curve]
 
-        self.mode            = mode
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.istart          = start
-        self.iend            = end
-        self.idirection      = direction
-        self.ilength         = length
-
-        self.socket_in_name = 'istart'
-
-    def __repr__(self):
-        s = f"Node 'CurveLine' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   start           : {self.istart}"
-        s += f"\n   end             : {self.iend}"
-        s += f"\n   direction       : {self.idirection}"
-        s += f"\n   length          : {self.ilength}"
-        s += '\nParameters'
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('POINTS', 'DIRECTION') 
-        if self.mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeCurveLine'.\n 'mode' is '{self.mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.curve
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def istart(self):
-        return Node.Vector(self.inputs[0])
-
-    @istart.setter
-    def istart(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iend(self):
-        return Node.Vector(self.inputs[1])
-
-    @iend.setter
-    def iend(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def idirection(self):
-        return Node.Vector(self.inputs[2])
-
-    @idirection.setter
-    def idirection(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def ilength(self):
-        return Node.Float(self.inputs[3])
-
-    @ilength.setter
-    def ilength(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeCurvePrimitiveQuadrilateral
+# ----------------------------------------------------------------------------------------------------
+# Node NodeQuadrilateral for GeometryNodeCurvePrimitiveQuadrilateral
 
 class NodeQuadrilateral(Node):
 
-    """ Node class GeometryNodeCurvePrimitiveQuadrilateral
+    """Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
 
     Input sockets
     -------------
-
-        0: width                Float
-        1: height               Float
-        2: bottom_width         Float
-        3: top_width            Float
-        4: offset               Float
-        5: bottom_height        Float
-        6: top_height           Float
-        7: point_1              Vector
-        8: point_2              Vector
-        9: point_3              Vector
-        10: point_4              Vector
+        width           : Float
+        height          : Float
+        bottom_width    : Float
+        top_width       : Float
+        offset          : Float
+        bottom_height   : Float
+        top_height      : Float
+        point_1         : Vector
+        point_2         : Vector
+        point_3         : Vector
+        point_4         : Vector
 
     Parameters
     ----------
-
-        mode        : 'RECTANGLE' in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS') 
+        mode            : 'RECTANGLE' in [ 'RECTANGLE' 'PARALLELOGRAM' 'TRAPEZOID' 'KITE' 'POINTS']
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-
+        curve           : Geometry
     """
 
-    PARAMETERS = ['mode']
+    def __init__(self, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', label=None):
 
-    def __init__(self, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE'):
+        super().__init__('GeometryNodeCurvePrimitiveQuadrilateral', name='Quadrilateral', label=label)
 
-        super().__init__('GeometryNodeCurvePrimitiveQuadrilateral', name='Quadrilateral')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'width'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'height'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'bottom_width' ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'top_width'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'offset'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'bottom_height'))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'top_height'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'point_1'      ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'point_2'      ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'point_3'      ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'point_4'      ))
+        self.bnode.mode            = mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
+        # Input sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, width)
+        self.plug(1, height)
+        self.plug(2, bottom_width)
+        self.plug(3, top_width)
+        self.plug(4, offset)
+        self.plug(5, bottom_height)
+        self.plug(6, top_height)
+        self.plug(7, point_1)
+        self.plug(8, point_2)
+        self.plug(9, point_3)
+        self.plug(10, point_4)
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve']
+        # Output sockets
 
-        # ----- Parameters
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.curve]
 
-        self.mode            = mode
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.iwidth          = width
-        self.iheight         = height
-        self.ibottom_width   = bottom_width
-        self.itop_width      = top_width
-        self.ioffset         = offset
-        self.ibottom_height  = bottom_height
-        self.itop_height     = top_height
-        self.ipoint_1        = point_1
-        self.ipoint_2        = point_2
-        self.ipoint_3        = point_3
-        self.ipoint_4        = point_4
-
-        self.socket_in_name = 'iwidth'
-
-    def __repr__(self):
-        s = f"Node 'Quadrilateral' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   width           : {self.iwidth}"
-        s += f"\n   height          : {self.iheight}"
-        s += f"\n   bottom_width    : {self.ibottom_width}"
-        s += f"\n   top_width       : {self.itop_width}"
-        s += f"\n   offset          : {self.ioffset}"
-        s += f"\n   bottom_height   : {self.ibottom_height}"
-        s += f"\n   top_height      : {self.itop_height}"
-        s += f"\n   point_1         : {self.ipoint_1}"
-        s += f"\n   point_2         : {self.ipoint_2}"
-        s += f"\n   point_3         : {self.ipoint_3}"
-        s += f"\n   point_4         : {self.ipoint_4}"
-        s += '\nParameters'
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS') 
-        if self.mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeQuadrilateral'.\n 'mode' is '{self.mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.curve
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def iwidth(self):
-        return Node.Float(self.inputs[0])
-
-    @iwidth.setter
-    def iwidth(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iheight(self):
-        return Node.Float(self.inputs[1])
-
-    @iheight.setter
-    def iheight(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ibottom_width(self):
-        return Node.Float(self.inputs[2])
-
-    @ibottom_width.setter
-    def ibottom_width(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def itop_width(self):
-        return Node.Float(self.inputs[3])
-
-    @itop_width.setter
-    def itop_width(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def ioffset(self):
-        return Node.Float(self.inputs[4])
-
-    @ioffset.setter
-    def ioffset(self, value):
-        self.inputs[4].plug(value)
-
-    @property
-    def ibottom_height(self):
-        return Node.Float(self.inputs[5])
-
-    @ibottom_height.setter
-    def ibottom_height(self, value):
-        self.inputs[5].plug(value)
-
-    @property
-    def itop_height(self):
-        return Node.Float(self.inputs[6])
-
-    @itop_height.setter
-    def itop_height(self, value):
-        self.inputs[6].plug(value)
-
-    @property
-    def ipoint_1(self):
-        return Node.Vector(self.inputs[7])
-
-    @ipoint_1.setter
-    def ipoint_1(self, value):
-        self.inputs[7].plug(value)
-
-    @property
-    def ipoint_2(self):
-        return Node.Vector(self.inputs[8])
-
-    @ipoint_2.setter
-    def ipoint_2(self, value):
-        self.inputs[8].plug(value)
-
-    @property
-    def ipoint_3(self):
-        return Node.Vector(self.inputs[9])
-
-    @ipoint_3.setter
-    def ipoint_3(self, value):
-        self.inputs[9].plug(value)
-
-    @property
-    def ipoint_4(self):
-        return Node.Vector(self.inputs[10])
-
-    @ipoint_4.setter
-    def ipoint_4(self, value):
-        self.inputs[10].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeCurveQuadraticBezier
+# ----------------------------------------------------------------------------------------------------
+# Node NodeQuadraticBezier for GeometryNodeCurveQuadraticBezier
 
 class NodeQuadraticBezier(Node):
 
-    """ Node class GeometryNodeCurveQuadraticBezier
+    """Node 'Quadratic Bezier' (GeometryNodeCurveQuadraticBezier)
 
     Input sockets
     -------------
-
-        0: resolution           Integer
-        1: start                Vector
-        2: middle               Vector
-        3: end                  Vector
+        resolution      : Integer
+        start           : Vector
+        middle          : Vector
+        end             : Vector
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-
+        curve           : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, resolution=None, start=None, middle=None, end=None, label=None):
 
-    def __init__(self, resolution=None, start=None, middle=None, end=None):
+        super().__init__('GeometryNodeCurveQuadraticBezier', name='Quadratic Bezier', label=label)
 
-        super().__init__('GeometryNodeCurveQuadraticBezier', name='Quadratic Bezier')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketIntUnsigned'  , 'resolution'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'start'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'middle'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'end'          ))
+        self.plug(0, resolution)
+        self.plug(1, start)
+        self.plug(2, middle)
+        self.plug(3, end)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
+        # Output sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.curve]
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve']
-
-        # ----- Input sockets
-
-        self.iresolution     = resolution
-        self.istart          = start
-        self.imiddle         = middle
-        self.iend            = end
-
-        self.socket_in_name = 'iresolution'
-
-    def __repr__(self):
-        s = f"Node 'QuadraticBezier' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   resolution      : {self.iresolution}"
-        s += f"\n   start           : {self.istart}"
-        s += f"\n   middle          : {self.imiddle}"
-        s += f"\n   end             : {self.iend}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.curve
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def iresolution(self):
-        return Node.Integer(self.inputs[0])
-
-    @iresolution.setter
-    def iresolution(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def istart(self):
-        return Node.Vector(self.inputs[1])
-
-    @istart.setter
-    def istart(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def imiddle(self):
-        return Node.Vector(self.inputs[2])
-
-    @imiddle.setter
-    def imiddle(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def iend(self):
-        return Node.Vector(self.inputs[3])
-
-    @iend.setter
-    def iend(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeCurveSetHandles
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSetHandleType for GeometryNodeCurveSetHandles
 
 class NodeSetHandleType(Node):
 
-    """ Node class GeometryNodeCurveSetHandles
+    """Node 'Set Handle Type' (GeometryNodeCurveSetHandles)
 
     Input sockets
     -------------
-
-        0: curve                Geometry
-        1: selection            Boolean
+        curve           : Geometry
+        selection       : Boolean
 
     Parameters
     ----------
-
-        handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN') 
-        mode        : {'LEFT', 'RIGHT'}
+        handle_type     : 'AUTO' in [ 'FREE' 'AUTO' 'VECTOR' 'ALIGN']
+        mode            : ({'LEFT', 'RIGHT'}) set
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-
+        curve           : Geometry
     """
 
-    PARAMETERS = ['handle_type', 'mode']
+    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None):
 
-    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+        super().__init__('GeometryNodeCurveSetHandles', name='Set Handle Type', label=label)
 
-        super().__init__('GeometryNodeCurveSetHandles', name='Set Handle Type')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'curve'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
+        self.bnode.handle_type     = handle_type
+        self.bnode.mode            = mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, curve)
+        self.plug(1, selection)
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve']
+        # Output sockets
 
-        # ----- Parameters
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.curve]
 
-        self.handle_type     = handle_type
-        self.mode            = mode
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.icurve          = curve
-        self.iselection      = selection
-
-        self.socket_in_name = 'icurve'
-
-    def __repr__(self):
-        s = f"Node 'SetHandleType' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   curve           : {self.icurve}"
-        s += f"\n   selection       : {self.iselection}"
-        s += '\nParameters'
-        s += f"\n   handle_type     : {self.handle_type}"
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('FREE', 'AUTO', 'VECTOR', 'ALIGN') 
-        if self.handle_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeSetHandleType'.\n 'handle_type' is '{self.handle_type}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.curve
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def icurve(self):
-        return Node.Curve(self.inputs[0])
-
-    @icurve.setter
-    def icurve(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeCurveSpiral
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSpiral for GeometryNodeCurveSpiral
 
 class NodeSpiral(Node):
 
-    """ Node class GeometryNodeCurveSpiral
+    """Node 'Spiral' (GeometryNodeCurveSpiral)
 
     Input sockets
     -------------
-
-        0: resolution           Integer
-        1: rotations            Float
-        2: start_radius         Float
-        3: end_radius           Float
-        4: height               Float
-        5: reverse              Boolean
+        resolution      : Integer
+        rotations       : Float
+        start_radius    : Float
+        end_radius      : Float
+        height          : Float
+        reverse         : Boolean
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-
+        curve           : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, label=None):
 
-    def __init__(self, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None):
+        super().__init__('GeometryNodeCurveSpiral', name='Spiral', label=label)
 
-        super().__init__('GeometryNodeCurveSpiral', name='Spiral')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketIntUnsigned'  , 'resolution'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'rotations'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'start_radius' ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'end_radius'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'height'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'reverse'      ))
+        self.plug(0, resolution)
+        self.plug(1, rotations)
+        self.plug(2, start_radius)
+        self.plug(3, end_radius)
+        self.plug(4, height)
+        self.plug(5, reverse)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
+        # Output sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.curve]
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve']
-
-        # ----- Input sockets
-
-        self.iresolution     = resolution
-        self.irotations      = rotations
-        self.istart_radius   = start_radius
-        self.iend_radius     = end_radius
-        self.iheight         = height
-        self.ireverse        = reverse
-
-        self.socket_in_name = 'iresolution'
-
-    def __repr__(self):
-        s = f"Node 'Spiral' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   resolution      : {self.iresolution}"
-        s += f"\n   rotations       : {self.irotations}"
-        s += f"\n   start_radius    : {self.istart_radius}"
-        s += f"\n   end_radius      : {self.iend_radius}"
-        s += f"\n   height          : {self.iheight}"
-        s += f"\n   reverse         : {self.ireverse}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.curve
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def iresolution(self):
-        return Node.Integer(self.inputs[0])
-
-    @iresolution.setter
-    def iresolution(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def irotations(self):
-        return Node.Float(self.inputs[1])
-
-    @irotations.setter
-    def irotations(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def istart_radius(self):
-        return Node.Float(self.inputs[2])
-
-    @istart_radius.setter
-    def istart_radius(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def iend_radius(self):
-        return Node.Float(self.inputs[3])
-
-    @iend_radius.setter
-    def iend_radius(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def iheight(self):
-        return Node.Float(self.inputs[4])
-
-    @iheight.setter
-    def iheight(self, value):
-        self.inputs[4].plug(value)
-
-    @property
-    def ireverse(self):
-        return Node.Boolean(self.inputs[5])
-
-    @ireverse.setter
-    def ireverse(self, value):
-        self.inputs[5].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeCurveSplineType
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSetSplineType for GeometryNodeCurveSplineType
 
 class NodeSetSplineType(Node):
 
-    """ Node class GeometryNodeCurveSplineType
+    """Node 'Set Spline Type' (GeometryNodeCurveSplineType)
 
     Input sockets
     -------------
-
-        0: curve                Geometry
-        1: selection            Boolean
+        curve           : Geometry
+        selection       : Boolean
 
     Parameters
     ----------
-
-        spline_type : 'POLY' in ('BEZIER', 'NURBS', 'POLY') 
+        spline_type     : 'POLY' in [ 'BEZIER' 'NURBS' 'POLY']
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-
+        curve           : Geometry
     """
 
-    PARAMETERS = ['spline_type']
+    def __init__(self, curve=None, selection=None, spline_type='POLY', label=None):
 
-    def __init__(self, curve=None, selection=None, spline_type='POLY'):
+        super().__init__('GeometryNodeCurveSplineType', name='Set Spline Type', label=label)
 
-        super().__init__('GeometryNodeCurveSplineType', name='Set Spline Type')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'curve'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
+        self.bnode.spline_type     = spline_type
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, curve)
+        self.plug(1, selection)
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve']
+        # Output sockets
 
-        # ----- Parameters
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.curve]
 
-        self.spline_type     = spline_type
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.icurve          = curve
-        self.iselection      = selection
-
-        self.socket_in_name = 'icurve'
-
-    def __repr__(self):
-        s = f"Node 'SetSplineType' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   curve           : {self.icurve}"
-        s += f"\n   selection       : {self.iselection}"
-        s += '\nParameters'
-        s += f"\n   spline_type     : {self.spline_type}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('BEZIER', 'NURBS', 'POLY') 
-        if self.spline_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeSetSplineType'.\n 'spline_type' is '{self.spline_type}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.curve
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def icurve(self):
-        return Node.Curve(self.inputs[0])
-
-    @icurve.setter
-    def icurve(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeCurveStar
+# ----------------------------------------------------------------------------------------------------
+# Node NodeStar for GeometryNodeCurveStar
 
 class NodeStar(Node):
 
-    """ Node class GeometryNodeCurveStar
+    """Node 'Star' (GeometryNodeCurveStar)
 
     Input sockets
     -------------
-
-        0: points               Integer
-        1: inner_radius         Float
-        2: outer_radius         Float
-        3: twist                Float
+        points          : Integer
+        inner_radius    : Float
+        outer_radius    : Float
+        twist           : Float
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-        1: outer_points         Boolean
-
+        curve           : Geometry
+        outer_points    : Boolean
     """
 
-    PARAMETERS = []
+    def __init__(self, points=None, inner_radius=None, outer_radius=None, twist=None, label=None):
 
-    def __init__(self, points=None, inner_radius=None, outer_radius=None, twist=None):
+        super().__init__('GeometryNodeCurveStar', name='Star', label=label)
 
-        super().__init__('GeometryNodeCurveStar', name='Star')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketIntUnsigned'  , 'points'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'inner_radius' ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'outer_radius' ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatAngle'   , 'twist'        ))
+        self.plug(0, points)
+        self.plug(1, inner_radius)
+        self.plug(2, outer_radius)
+        self.plug(3, twist)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'outer_points' ))
+        # Output sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.outer_points    = self.Boolean(self.bnode.outputs[1])
+        self.output_sockets  = [self.curve, self.outer_points]
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve', 'outer_points']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeCurveToMesh for GeometryNodeCurveToMesh
 
-        # ----- Input sockets
+class NodeCurveToMesh(Node):
 
-        self.ipoints         = points
-        self.iinner_radius   = inner_radius
-        self.iouter_radius   = outer_radius
-        self.itwist          = twist
-
-        self.socket_in_name = 'ipoints'
-
-    def __repr__(self):
-        s = f"Node 'Star' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   points          : {self.ipoints}"
-        s += f"\n   inner_radius    : {self.iinner_radius}"
-        s += f"\n   outer_radius    : {self.iouter_radius}"
-        s += f"\n   twist           : {self.itwist}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        s +=  "\n   outer_points    : Boolean"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def outer_points(self):
-        return self.Boolean(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ipoints(self):
-        return Node.Points(self.inputs[0])
-
-    @ipoints.setter
-    def ipoints(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iinner_radius(self):
-        return Node.Float(self.inputs[1])
-
-    @iinner_radius.setter
-    def iinner_radius(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iouter_radius(self):
-        return Node.Float(self.inputs[2])
-
-    @iouter_radius.setter
-    def iouter_radius(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def itwist(self):
-        return Node.Float(self.inputs[3])
-
-    @itwist.setter
-    def itwist(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeCurveToMesh
-
-class NodeCurvetoMesh(Node):
-
-    """ Node class GeometryNodeCurveToMesh
+    """Node 'Curve to Mesh' (GeometryNodeCurveToMesh)
 
     Input sockets
     -------------
-
-        0: curve                Geometry
-        1: profile_curve        Geometry
-        2: fill_caps            Boolean
+        curve           : Geometry
+        profile_curve   : Geometry
+        fill_caps       : Boolean
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-
+        mesh            : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, curve=None, profile_curve=None, fill_caps=None, label=None):
 
-    def __init__(self, curve=None, profile_curve=None, fill_caps=None):
+        super().__init__('GeometryNodeCurveToMesh', name='Curve to Mesh', label=label)
 
-        super().__init__('GeometryNodeCurveToMesh', name='Curve to Mesh')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'curve'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'profile_curve'))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'fill_caps'    ))
+        self.plug(0, curve)
+        self.plug(1, profile_curve)
+        self.plug(2, fill_caps)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.mesh]
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeCurveToPoints for GeometryNodeCurveToPoints
 
-        # ----- Input sockets
+class NodeCurveToPoints(Node):
 
-        self.icurve          = curve
-        self.iprofile_curve  = profile_curve
-        self.ifill_caps      = fill_caps
-
-        self.socket_in_name = 'icurve'
-
-    def __repr__(self):
-        s = f"Node 'CurvetoMesh' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   curve           : {self.icurve}"
-        s += f"\n   profile_curve   : {self.iprofile_curve}"
-        s += f"\n   fill_caps       : {self.ifill_caps}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.mesh
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def icurve(self):
-        return Node.Curve(self.inputs[0])
-
-    @icurve.setter
-    def icurve(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iprofile_curve(self):
-        return Node.Geometry(self.inputs[1])
-
-    @iprofile_curve.setter
-    def iprofile_curve(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ifill_caps(self):
-        return Node.Boolean(self.inputs[2])
-
-    @ifill_caps.setter
-    def ifill_caps(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeCurveToPoints
-
-class NodeCurvetoPoints(Node):
-
-    """ Node class GeometryNodeCurveToPoints
+    """Node 'Curve to Points' (GeometryNodeCurveToPoints)
 
     Input sockets
     -------------
-
-        0: curve                Geometry
-        1: count                Integer
-        2: length               Float
+        curve           : Geometry
+        count           : Integer
+        length          : Float
 
     Parameters
     ----------
-
-        mode        : 'COUNT' in ('EVALUATED', 'COUNT', 'LENGTH') 
+        mode            : 'COUNT' in [ 'EVALUATED' 'COUNT' 'LENGTH']
 
     Output sockets
     --------------
-
-        0: points               Geometry
-        1: tangent              Vector
-        2: normal               Vector
-        3: rotation             Vector
-
+        points          : Geometry
+        tangent         : Vector
+        normal          : Vector
+        rotation        : Vector
     """
 
-    PARAMETERS = ['mode']
+    def __init__(self, curve=None, count=None, length=None, mode='COUNT', label=None):
 
-    def __init__(self, curve=None, count=None, length=None, mode='COUNT'):
+        super().__init__('GeometryNodeCurveToPoints', name='Curve to Points', label=label)
 
-        super().__init__('GeometryNodeCurveToPoints', name='Curve to Points')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'curve'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'count'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'length'       ))
+        self.bnode.mode            = mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'points'       ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'tangent'      ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'normal'       ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'rotation'     ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, curve)
+        self.plug(1, count)
+        self.plug(2, length)
 
-        self.socket_out_name = 'points'
-        self.out_socket_names = ['points', 'tangent', 'normal', 'rotation']
+        # Output sockets
 
-        # ----- Parameters
+        self.points          = self.Geometry(self.bnode.outputs[0])
+        self.tangent         = self.Vector(self.bnode.outputs[1])
+        self.normal          = self.Vector(self.bnode.outputs[2])
+        self.rotation        = self.Vector(self.bnode.outputs[3])
+        self.output_sockets  = [self.points, self.tangent, self.normal, self.rotation]
 
-        self.mode            = mode
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.icurve          = curve
-        self.icount          = count
-        self.ilength         = length
-
-        self.socket_in_name = 'icurve'
-
-    def __repr__(self):
-        s = f"Node 'CurvetoPoints' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   curve           : {self.icurve}"
-        s += f"\n   count           : {self.icount}"
-        s += f"\n   length          : {self.ilength}"
-        s += '\nParameters'
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   points          : Geometry"
-        s +=  "\n   tangent         : Vector"
-        s +=  "\n   normal          : Vector"
-        s +=  "\n   rotation        : Vector"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('EVALUATED', 'COUNT', 'LENGTH') 
-        if self.mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeCurvetoPoints'.\n 'mode' is '{self.mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def points(self):
-        return self.Points(self.outputs[0])
-
-    @property
-    def tangent(self):
-        return self.Vector(self.outputs[1])
-
-    @property
-    def normal(self):
-        return self.Vector(self.outputs[2])
-
-    @property
-    def rotation(self):
-        return self.Vector(self.outputs[3])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def icurve(self):
-        return Node.Curve(self.inputs[0])
-
-    @icurve.setter
-    def icurve(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def icount(self):
-        return Node.Integer(self.inputs[1])
-
-    @icount.setter
-    def icount(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ilength(self):
-        return Node.Float(self.inputs[2])
-
-    @ilength.setter
-    def ilength(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeDeleteGeometry
+# ----------------------------------------------------------------------------------------------------
+# Node NodeDeleteGeometry for GeometryNodeDeleteGeometry
 
 class NodeDeleteGeometry(Node):
 
-    """ Node class GeometryNodeDeleteGeometry
+    """Node 'Delete Geometry' (GeometryNodeDeleteGeometry)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
-        1: selection            Boolean
+        geometry        : Geometry
+        selection       : Boolean
 
     Parameters
     ----------
-
-        domain      : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE') 
-        mode        : 'ALL' in ('ALL', 'EDGE_FACE', 'ONLY_FACE') 
+        domain          : 'POINT' in [ 'POINT' 'EDGE' 'FACE' 'CURVE' 'INSTANCE']
+        mode            : 'ALL' in [ 'ALL' 'EDGE_FACE' 'ONLY_FACE']
 
     Output sockets
     --------------
-
-        0: geometry             Geometry
-
+        geometry        : Geometry
     """
 
-    PARAMETERS = ['domain', 'mode']
+    def __init__(self, geometry=None, selection=None, domain='POINT', mode='ALL', label=None):
 
-    def __init__(self, geometry=None, selection=None, domain='POINT', mode='ALL'):
+        super().__init__('GeometryNodeDeleteGeometry', name='Delete Geometry', label=label)
 
-        super().__init__('GeometryNodeDeleteGeometry', name='Delete Geometry')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
+        self.bnode.domain          = domain
+        self.bnode.mode            = mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, geometry)
+        self.plug(1, selection)
 
-        self.socket_out_name = 'geometry'
-        self.out_socket_names = ['geometry']
+        # Output sockets
 
-        # ----- Parameters
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.geometry]
 
-        self.domain          = domain
-        self.mode            = mode
-        self.check_parameters()
+# ----------------------------------------------------------------------------------------------------
+# Node NodeDistributePointsOnFaces for GeometryNodeDistributePointsOnFaces
 
-        # ----- Input sockets
+class NodeDistributePointsOnFaces(Node):
 
-        self.igeometry       = geometry
-        self.iselection      = selection
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'DeleteGeometry' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += f"\n   selection       : {self.iselection}"
-        s += '\nParameters'
-        s += f"\n   domain          : {self.domain}"
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   geometry        : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE') 
-        if self.domain not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeDeleteGeometry'.\n 'domain' is '{self.domain}'.\n Authorized values are {valids}.")
-        valids = ('ALL', 'EDGE_FACE', 'ONLY_FACE') 
-        if self.mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeDeleteGeometry'.\n 'mode' is '{self.mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.geometry
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeDistributePointsOnFaces
-
-class NodeDistributePointsonFaces(Node):
-
-    """ Node class GeometryNodeDistributePointsOnFaces
+    """Node 'Distribute Points on Faces' (GeometryNodeDistributePointsOnFaces)
 
     Input sockets
     -------------
-
-        0: mesh                 Geometry
-        1: selection            Boolean
-        2: distance_min         Float
-        3: density_max          Float
-        4: density              Float
-        5: density_factor       Float
-        6: seed                 Integer
+        mesh            : Geometry
+        selection       : Boolean
+        distance_min    : Float
+        density_max     : Float
+        density         : Float
+        density_factor  : Float
+        seed            : Integer
 
     Parameters
     ----------
-
-        distribute_method: 'RANDOM' in ('RANDOM', 'POISSON') 
+        distribute_method : 'RANDOM' in [ 'RANDOM' 'POISSON']
 
     Output sockets
     --------------
-
-        0: points               Geometry
-        1: normal               Vector
-        2: rotation             Vector
-
+        points          : Geometry
+        normal          : Vector
+        rotation        : Vector
     """
 
-    PARAMETERS = ['distribute_method']
+    def __init__(self, mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None):
 
-    def __init__(self, mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):
+        super().__init__('GeometryNodeDistributePointsOnFaces', name='Distribute Points on Faces', label=label)
 
-        super().__init__('GeometryNodeDistributePointsOnFaces', name='Distribute Points on Faces')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'mesh'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'distance_min' ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'density_max'  ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'density'      ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatFactor'  , 'density_factor'))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'seed'         ))
+        self.bnode.distribute_method = distribute_method
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'points'       ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'normal'       ))
-        self.outputs.add(Socket (self, 'NodeSocketVectorEuler'  , 'rotation'     ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, mesh)
+        self.plug(1, selection)
+        self.plug(2, distance_min)
+        self.plug(3, density_max)
+        self.plug(4, density)
+        self.plug(5, density_factor)
+        self.plug(6, seed)
 
-        self.socket_out_name = 'points'
-        self.out_socket_names = ['points', 'normal', 'rotation']
+        # Output sockets
 
-        # ----- Parameters
+        self.points          = self.Geometry(self.bnode.outputs[0])
+        self.normal          = self.Vector(self.bnode.outputs[1])
+        self.rotation        = self.Vector(self.bnode.outputs[2])
+        self.output_sockets  = [self.points, self.normal, self.rotation]
 
-        self.distribute_method = distribute_method
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.imesh           = mesh
-        self.iselection      = selection
-        self.idistance_min   = distance_min
-        self.idensity_max    = density_max
-        self.idensity        = density
-        self.idensity_factor = density_factor
-        self.iseed           = seed
-
-        self.socket_in_name = 'imesh'
-
-    def __repr__(self):
-        s = f"Node 'DistributePointsonFaces' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   mesh            : {self.imesh}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   distance_min    : {self.idistance_min}"
-        s += f"\n   density_max     : {self.idensity_max}"
-        s += f"\n   density         : {self.idensity}"
-        s += f"\n   density_factor  : {self.idensity_factor}"
-        s += f"\n   seed            : {self.iseed}"
-        s += '\nParameters'
-        s += f"\n   distribute_method : {self.distribute_method}"
-        s += '\nOutput sockets'
-        s +=  "\n   points          : Geometry"
-        s +=  "\n   normal          : Vector"
-        s +=  "\n   rotation        : Vector"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('RANDOM', 'POISSON') 
-        if self.distribute_method not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeDistributePointsonFaces'.\n 'distribute_method' is '{self.distribute_method}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def points(self):
-        return self.Points(self.outputs[0])
-
-    @property
-    def normal(self):
-        return self.Vector(self.outputs[1])
-
-    @property
-    def rotation(self):
-        return self.Vector(self.outputs[2])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def imesh(self):
-        return Node.Mesh(self.inputs[0])
-
-    @imesh.setter
-    def imesh(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def idistance_min(self):
-        return Node.Float(self.inputs[2])
-
-    @idistance_min.setter
-    def idistance_min(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def idensity_max(self):
-        return Node.Float(self.inputs[3])
-
-    @idensity_max.setter
-    def idensity_max(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def idensity(self):
-        return Node.Float(self.inputs[4])
-
-    @idensity.setter
-    def idensity(self, value):
-        self.inputs[4].plug(value)
-
-    @property
-    def idensity_factor(self):
-        return Node.Float(self.inputs[5])
-
-    @idensity_factor.setter
-    def idensity_factor(self, value):
-        self.inputs[5].plug(value)
-
-    @property
-    def iseed(self):
-        return Node.Integer(self.inputs[6])
-
-    @iseed.setter
-    def iseed(self, value):
-        self.inputs[6].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeDualMesh
+# ----------------------------------------------------------------------------------------------------
+# Node NodeDualMesh for GeometryNodeDualMesh
 
 class NodeDualMesh(Node):
 
-    """ Node class GeometryNodeDualMesh
+    """Node 'Dual Mesh' (GeometryNodeDualMesh)
 
     Input sockets
     -------------
-
-        0: mesh                 Geometry
-        1: keep_boundaries      Boolean
+        mesh            : Geometry
+        keep_boundaries : Boolean
 
     Output sockets
     --------------
-
-        0: dual_mesh            Geometry
-
+        dual_mesh       : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, mesh=None, keep_boundaries=None, label=None):
 
-    def __init__(self, mesh=None, keep_boundaries=None):
+        super().__init__('GeometryNodeDualMesh', name='Dual Mesh', label=label)
 
-        super().__init__('GeometryNodeDualMesh', name='Dual Mesh')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'mesh'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'keep_boundaries'))
+        self.plug(0, mesh)
+        self.plug(1, keep_boundaries)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'dual_mesh'    ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.dual_mesh       = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.dual_mesh]
 
-        self.socket_out_name = 'dual_mesh'
-        self.out_socket_names = ['dual_mesh']
-
-        # ----- Input sockets
-
-        self.imesh           = mesh
-        self.ikeep_boundaries = keep_boundaries
-
-        self.socket_in_name = 'imesh'
-
-    def __repr__(self):
-        s = f"Node 'DualMesh' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   mesh            : {self.imesh}"
-        s += f"\n   keep_boundaries : {self.ikeep_boundaries}"
-        s += '\nOutput sockets'
-        s +=  "\n   dual_mesh       : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def dual_mesh(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.dual_mesh
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def imesh(self):
-        return Node.Mesh(self.inputs[0])
-
-    @imesh.setter
-    def imesh(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ikeep_boundaries(self):
-        return Node.Boolean(self.inputs[1])
-
-    @ikeep_boundaries.setter
-    def ikeep_boundaries(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeExtrudeMesh
+# ----------------------------------------------------------------------------------------------------
+# Node NodeExtrudeMesh for GeometryNodeExtrudeMesh
 
 class NodeExtrudeMesh(Node):
 
-    """ Node class GeometryNodeExtrudeMesh
+    """Node 'Extrude Mesh' (GeometryNodeExtrudeMesh)
 
     Input sockets
     -------------
-
-        0: mesh                 Geometry
-        1: selection            Boolean
-        2: offset               Vector
-        3: offset_scale         Float
-        4: individual           Boolean
+        mesh            : Geometry
+        selection       : Boolean
+        offset          : Vector
+        offset_scale    : Float
+        individual      : Boolean
 
     Parameters
     ----------
-
-        mode        : 'FACES' in ('VERTICES', 'EDGES', 'FACES') 
+        mode            : 'FACES' in [ 'VERTICES' 'EDGES' 'FACES']
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-        1: top                  Boolean
-        2: side                 Boolean
-
+        mesh            : Geometry
+        top             : Boolean
+        side            : Boolean
     """
 
-    PARAMETERS = ['mode']
+    def __init__(self, mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES', label=None):
 
-    def __init__(self, mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):
+        super().__init__('GeometryNodeExtrudeMesh', name='Extrude Mesh', label=label)
 
-        super().__init__('GeometryNodeExtrudeMesh', name='Extrude Mesh')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'mesh'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'offset'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'offset_scale' ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'individual'   ))
+        self.bnode.mode            = mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'top'          ))
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'side'         ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, mesh)
+        self.plug(1, selection)
+        self.plug(2, offset)
+        self.plug(3, offset_scale)
+        self.plug(4, individual)
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh', 'top', 'side']
+        # Output sockets
 
-        # ----- Parameters
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.top             = self.Boolean(self.bnode.outputs[1])
+        self.side            = self.Boolean(self.bnode.outputs[2])
+        self.output_sockets  = [self.mesh, self.top, self.side]
 
-        self.mode            = mode
-        self.check_parameters()
+# ----------------------------------------------------------------------------------------------------
+# Node NodeFieldAtIndex for GeometryNodeFieldAtIndex
 
-        # ----- Input sockets
+class NodeFieldAtIndex(Node):
 
-        self.imesh           = mesh
-        self.iselection      = selection
-        self.ioffset         = offset
-        self.ioffset_scale   = offset_scale
-        self.iindividual     = individual
+    """Node 'Field at Index' (GeometryNodeFieldAtIndex)
 
-        self.socket_in_name = 'imesh'
+    Data type dependant sockets
+    ---------------------------
 
-    def __repr__(self):
-        s = f"Node 'ExtrudeMesh' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   mesh            : {self.imesh}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   offset          : {self.ioffset}"
-        s += f"\n   offset_scale    : {self.ioffset_scale}"
-        s += f"\n   individual      : {self.iindividual}"
-        s += '\nParameters'
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        s +=  "\n   top             : Boolean"
-        s +=  "\n   side            : Boolean"
-        return s + "\n"
+        Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
 
-    def check_parameters(self):
-        valids = ('VERTICES', 'EDGES', 'FACES') 
-        if self.mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeExtrudeMesh'.\n 'mode' is '{self.mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def top(self):
-        return self.Boolean(self.outputs[1])
-
-    @property
-    def side(self):
-        return self.Boolean(self.outputs[2])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def imesh(self):
-        return Node.Mesh(self.inputs[0])
-
-    @imesh.setter
-    def imesh(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ioffset(self):
-        return Node.Vector(self.inputs[2])
-
-    @ioffset.setter
-    def ioffset(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def ioffset_scale(self):
-        return Node.Float(self.inputs[3])
-
-    @ioffset_scale.setter
-    def ioffset_scale(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def iindividual(self):
-        return Node.Boolean(self.inputs[4])
-
-    @iindividual.setter
-    def iindividual(self, value):
-        self.inputs[4].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeFieldAtIndex
-
-class NodeFieldatIndex(Node):
-
-    """ Node class GeometryNodeFieldAtIndex
+        Input sockets     : ['value']
+        Output sockets    : ['value']
 
     Input sockets
     -------------
-
-        0: index                Integer
-        1: value                Float
-        2: value                Integer
-        3: value                Vector
-        4: value                Color
-        5: value                Boolean
+        index           : Integer
+        value           : data_type dependant
 
     Parameters
     ----------
-
-        data_type   : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
-        domain      : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE') 
+        data_type       : 'FLOAT' in [ 'FLOAT' 'INT' 'FLOAT_VECTOR' 'FLOAT_COLOR' 'BOOLEAN']
+        domain          : 'POINT' in [ 'POINT' 'EDGE' 'FACE' 'CORNER' 'CURVE' 'INSTANCE']
 
     Output sockets
     --------------
-
-        0: value                Float
-        1: value                Integer
-        2: value                Vector
-        3: value                Color
-        4: value                Boolean
-
+        value           : data_type dependant
     """
 
-    PARAMETERS = ['data_type', 'domain']
+    def __init__(self, index=None, value=None, data_type='FLOAT', domain='POINT', label=None):
 
-    def __init__(self, index=None, value=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeFieldAtIndex', name='Field at Index', label=label)
 
-        super().__init__('GeometryNodeFieldAtIndex', name='Field at Index')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'index'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'value'        ))
+        self.bnode.data_type       = data_type
+        self.bnode.domain          = domain
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'value'        ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'value'        ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'value'        ))
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'value'        ))
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'value'        ))
+        # Input sockets
 
-        self.socket_out_name = 'value'
-        self.out_socket_names = ['value']
+        if data_type == 'FLOAT':
+            self.plug(1, value)
+        elif data_type == 'INT':
+            self.plug(2, value)
+        elif data_type == 'FLOAT_VECTOR':
+            self.plug(3, value)
+        elif data_type == 'FLOAT_COLOR':
+            self.plug(4, value)
+        elif data_type == 'BOOLEAN':
+            self.plug(5, value)
 
-        # ----- Parameters
+        self.plug(0, index)
 
-        self.data_type       = data_type
-        self.domain          = domain
-        self.check_parameters()
+        # Output sockets
 
-        # ----- Input sockets
+        if data_type == 'FLOAT':
+            self.value           = self.Float(self.bnode.outputs[0])
+        elif data_type == 'INT':
+            self.value           = self.Integer(self.bnode.outputs[1])
+        elif data_type == 'FLOAT_VECTOR':
+            self.value           = self.Vector(self.bnode.outputs[2])
+        elif data_type == 'FLOAT_COLOR':
+            self.value           = self.Color(self.bnode.outputs[3])
+        elif data_type == 'BOOLEAN':
+            self.value           = self.Boolean(self.bnode.outputs[4])
 
-        self.iindex          = index
-        self.ivalue          = value
+        self.output_sockets  = []
 
-        self.socket_in_name = 'iindex'
-
-    def __repr__(self):
-        s = f"Node 'FieldatIndex' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   index           : {self.iindex}"
-        s += f"\n   value           : {self.ivalue}"
-        s += '\nParameters'
-        s += f"\n   data_type       : {self.data_type}"
-        s += f"\n   domain          : {self.domain}"
-        s += '\nOutput sockets'
-        s +=  "\n   value           : variable"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
-        if self.data_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeFieldatIndex'.\n 'data_type' is '{self.data_type}'.\n Authorized values are {valids}.")
-        valids = ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE') 
-        if self.domain not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeFieldatIndex'.\n 'domain' is '{self.domain}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def value(self):
-        if (self.data_type == 'FLOAT'):
-            return self.Float(self.outputs[0])
-        elif (self.data_type == 'INT'):
-            return self.Integer(self.outputs[1])
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            return self.Vector(self.outputs[2])
-        elif (self.data_type == 'FLOAT_COLOR'):
-            return self.Color(self.outputs[3])
-        elif (self.data_type == 'BOOLEAN'):
-            return self.Boolean(self.outputs[4])
-        self.check_parameters()
-
-    @property
-    def output(self):
-        return self.value
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def iindex(self):
-        return Node.Integer(self.inputs[0])
-
-    @iindex.setter
-    def iindex(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ivalue(self):
-        if (self.data_type == 'FLOAT'):
-            return Node.Float(self.inputs[1])
-        elif (self.data_type == 'INT'):
-            return Node.Integer(self.inputs[2])
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            return Node.Vector(self.inputs[3])
-        elif (self.data_type == 'FLOAT_COLOR'):
-            return Node.Color(self.inputs[4])
-        elif (self.data_type == 'BOOLEAN'):
-            return Node.Boolean(self.inputs[5])
-
-    @ivalue.setter
-    def ivalue(self, value):
-        if (self.data_type == 'FLOAT'):
-            self.inputs[1].plug(value)
-        elif (self.data_type == 'INT'):
-            self.inputs[2].plug(value)
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            self.inputs[3].plug(value)
-        elif (self.data_type == 'FLOAT_COLOR'):
-            self.inputs[4].plug(value)
-        elif (self.data_type == 'BOOLEAN'):
-            self.inputs[5].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeFillCurve
+# ----------------------------------------------------------------------------------------------------
+# Node NodeFillCurve for GeometryNodeFillCurve
 
 class NodeFillCurve(Node):
 
-    """ Node class GeometryNodeFillCurve
+    """Node 'Fill Curve' (GeometryNodeFillCurve)
 
     Input sockets
     -------------
-
-        0: curve                Geometry
+        curve           : Geometry
 
     Parameters
     ----------
-
-        mode        : 'TRIANGLES' in ('TRIANGLES', 'NGONS') 
+        mode            : 'TRIANGLES' in [ 'TRIANGLES' 'NGONS']
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-
+        mesh            : Geometry
     """
 
-    PARAMETERS = ['mode']
+    def __init__(self, curve=None, mode='TRIANGLES', label=None):
 
-    def __init__(self, curve=None, mode='TRIANGLES'):
+        super().__init__('GeometryNodeFillCurve', name='Fill Curve', label=label)
 
-        super().__init__('GeometryNodeFillCurve', name='Fill Curve')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'curve'        ))
+        self.bnode.mode            = mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, curve)
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh']
+        # Output sockets
 
-        # ----- Parameters
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.mesh]
 
-        self.mode            = mode
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.icurve          = curve
-
-        self.socket_in_name = 'icurve'
-
-    def __repr__(self):
-        s = f"Node 'FillCurve' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   curve           : {self.icurve}"
-        s += '\nParameters'
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('TRIANGLES', 'NGONS') 
-        if self.mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeFillCurve'.\n 'mode' is '{self.mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.mesh
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def icurve(self):
-        return Node.Curve(self.inputs[0])
-
-    @icurve.setter
-    def icurve(self, value):
-        self.inputs[0].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeFilletCurve
+# ----------------------------------------------------------------------------------------------------
+# Node NodeFilletCurve for GeometryNodeFilletCurve
 
 class NodeFilletCurve(Node):
 
-    """ Node class GeometryNodeFilletCurve
+    """Node 'Fillet Curve' (GeometryNodeFilletCurve)
 
     Input sockets
     -------------
-
-        0: curve                Geometry
-        1: count                Integer
-        2: radius               Float
-        3: limit_radius         Boolean
+        curve           : Geometry
+        count           : Integer
+        radius          : Float
+        limit_radius    : Boolean
 
     Parameters
     ----------
-
-        mode        : 'BEZIER' in ('BEZIER', 'POLY') 
+        mode            : 'BEZIER' in [ 'BEZIER' 'POLY']
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-
+        curve           : Geometry
     """
 
-    PARAMETERS = ['mode']
+    def __init__(self, curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER', label=None):
 
-    def __init__(self, curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER'):
+        super().__init__('GeometryNodeFilletCurve', name='Fillet Curve', label=label)
 
-        super().__init__('GeometryNodeFilletCurve', name='Fillet Curve')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'curve'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'count'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'radius'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'limit_radius' ))
+        self.bnode.mode            = mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, curve)
+        self.plug(1, count)
+        self.plug(2, radius)
+        self.plug(3, limit_radius)
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve']
+        # Output sockets
 
-        # ----- Parameters
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.curve]
 
-        self.mode            = mode
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.icurve          = curve
-        self.icount          = count
-        self.iradius         = radius
-        self.ilimit_radius   = limit_radius
-
-        self.socket_in_name = 'icurve'
-
-    def __repr__(self):
-        s = f"Node 'FilletCurve' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   curve           : {self.icurve}"
-        s += f"\n   count           : {self.icount}"
-        s += f"\n   radius          : {self.iradius}"
-        s += f"\n   limit_radius    : {self.ilimit_radius}"
-        s += '\nParameters'
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('BEZIER', 'POLY') 
-        if self.mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeFilletCurve'.\n 'mode' is '{self.mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.curve
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def icurve(self):
-        return Node.Curve(self.inputs[0])
-
-    @icurve.setter
-    def icurve(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def icount(self):
-        return Node.Integer(self.inputs[1])
-
-    @icount.setter
-    def icount(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iradius(self):
-        return Node.Float(self.inputs[2])
-
-    @iradius.setter
-    def iradius(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def ilimit_radius(self):
-        return Node.Boolean(self.inputs[3])
-
-    @ilimit_radius.setter
-    def ilimit_radius(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeFlipFaces
+# ----------------------------------------------------------------------------------------------------
+# Node NodeFlipFaces for GeometryNodeFlipFaces
 
 class NodeFlipFaces(Node):
 
-    """ Node class GeometryNodeFlipFaces
+    """Node 'Flip Faces' (GeometryNodeFlipFaces)
 
     Input sockets
     -------------
-
-        0: mesh                 Geometry
-        1: selection            Boolean
+        mesh            : Geometry
+        selection       : Boolean
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-
+        mesh            : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, mesh=None, selection=None, label=None):
 
-    def __init__(self, mesh=None, selection=None):
+        super().__init__('GeometryNodeFlipFaces', name='Flip Faces', label=label)
 
-        super().__init__('GeometryNodeFlipFaces', name='Flip Faces')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'mesh'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
+        self.plug(0, mesh)
+        self.plug(1, selection)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.mesh]
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeGeometryToInstance for GeometryNodeGeometryToInstance
 
-        # ----- Input sockets
+class NodeGeometryToInstance(Node):
 
-        self.imesh           = mesh
-        self.iselection      = selection
-
-        self.socket_in_name = 'imesh'
-
-    def __repr__(self):
-        s = f"Node 'FlipFaces' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   mesh            : {self.imesh}"
-        s += f"\n   selection       : {self.iselection}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.mesh
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def imesh(self):
-        return Node.Mesh(self.inputs[0])
-
-    @imesh.setter
-    def imesh(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeGeometryToInstance
-
-class NodeGeometrytoInstance(Node):
-
-    """ Node class GeometryNodeGeometryToInstance
+    """Node 'Geometry to Instance' (GeometryNodeGeometryToInstance)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
+        geometry        : *Geometry
 
     Output sockets
     --------------
-
-        0: instances            Geometry
-
+        instances       : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, *geometry, label=None):
 
-    def __init__(self, *geometry):
+        super().__init__('GeometryNodeGeometryToInstance', name='Geometry to Instance', label=label)
 
-        super().__init__('GeometryNodeGeometryToInstance', name='Geometry to Instance')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     , is_multi_input=True))
+        self.plug(0, *geometry)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'instances'    ))
+        # Output sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.instances       = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.instances]
 
-        self.socket_out_name = 'instances'
-        self.out_socket_names = ['instances']
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'GeometrytoInstance' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += '\nOutput sockets'
-        s +=  "\n   instances       : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def instances(self):
-        return self.Instances(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.instances
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeGroup
+# ----------------------------------------------------------------------------------------------------
+# Node NodeGroup for GeometryNodeGroup
 
 class NodeGroup(Node):
 
-    """ Node class GeometryNodeGroup
-
-    Parameters
-    ----------
-
-        node_tree   : None
+    """Node 'Group' (GeometryNodeGroup)
 
     """
 
-    PARAMETERS = ['node_tree']
+    def __init__(self, label=None):
 
-    def __init__(self, node_tree=None):
+        super().__init__('GeometryNodeGroup', name='Group', label=label)
 
-        super().__init__('GeometryNodeGroup', name='Group')
+        self.output_sockets  = []
 
-        self.socket_out_name = None
-
-        self.out_socket_names = []
-
-        # ----- Parameters
-
-        self.node_tree       = node_tree
-        self.check_parameters()
-
-        self.socket_in_name = None
-
-    def __repr__(self):
-        s = f"Node 'Group' ({self.unique_id})"
-        s += '\nParameters'
-        s += f"\n   node_tree       : {self.node_tree}"
-        return s + "\n"
-
-    @property
-    def output(self):
-        return self
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeImageTexture
+# ----------------------------------------------------------------------------------------------------
+# Node NodeImageTexture for GeometryNodeImageTexture
 
 class NodeImageTexture(Node):
 
-    """ Node class GeometryNodeImageTexture
+    """Node 'Image Texture' (GeometryNodeImageTexture)
 
     Input sockets
     -------------
-
-        0: image                Image
-        1: vector               Vector
-        2: frame                Integer
+        image           : Image
+        vector          : Vector
+        frame           : Integer
 
     Parameters
     ----------
-
-        extension   : 'REPEAT' in ('REPEAT', 'EXTEND', 'CLIP') 
-        interpolation: 'Linear' in ('Linear', 'Closest', 'Cubic') 
+        extension       : 'REPEAT' in [ 'REPEAT' 'EXTEND' 'CLIP']
+        interpolation   : 'Linear' in [ 'Linear' 'Closest' 'Cubic']
 
     Output sockets
     --------------
-
-        0: color                Color
-        1: alpha                Float
-
+        color           : Color
+        alpha           : Float
     """
 
-    PARAMETERS = ['extension', 'interpolation']
+    def __init__(self, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', label=None):
 
-    def __init__(self, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
+        super().__init__('GeometryNodeImageTexture', name='Image Texture', label=label)
 
-        super().__init__('GeometryNodeImageTexture', name='Image Texture')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketImage'        , 'image'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'frame'        ))
+        self.bnode.extension       = extension
+        self.bnode.interpolation   = interpolation
 
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'color'        ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'alpha'        ))
+        # Input sockets
 
-        self.socket_out_name = 'color'
-        self.out_socket_names = ['color', 'alpha']
+        self.plug(0, image)
+        self.plug(1, vector)
+        self.plug(2, frame)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.extension       = extension
-        self.interpolation   = interpolation
-        self.check_parameters()
+        self.color           = self.Color(self.bnode.outputs[0])
+        self.alpha           = self.Float(self.bnode.outputs[1])
+        self.output_sockets  = [self.color, self.alpha]
 
-        # ----- Input sockets
+# ----------------------------------------------------------------------------------------------------
+# Node NodeCurveHandlePositions for GeometryNodeInputCurveHandlePositions
 
-        self.iimage          = image
-        self.ivector         = vector
-        self.iframe          = frame
+class NodeCurveHandlePositions(Node):
 
-        self.socket_in_name = 'iimage'
-
-    def __repr__(self):
-        s = f"Node 'ImageTexture' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   image           : {self.iimage}"
-        s += f"\n   vector          : {self.ivector}"
-        s += f"\n   frame           : {self.iframe}"
-        s += '\nParameters'
-        s += f"\n   extension       : {self.extension}"
-        s += f"\n   interpolation   : {self.interpolation}"
-        s += '\nOutput sockets'
-        s +=  "\n   color           : Color"
-        s +=  "\n   alpha           : Float"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('REPEAT', 'EXTEND', 'CLIP') 
-        if self.extension not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeImageTexture'.\n 'extension' is '{self.extension}'.\n Authorized values are {valids}.")
-        valids = ('Linear', 'Closest', 'Cubic') 
-        if self.interpolation not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeImageTexture'.\n 'interpolation' is '{self.interpolation}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def color(self):
-        return self.Color(self.outputs[0])
-
-    @property
-    def alpha(self):
-        return self.Float(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def iimage(self):
-        return Node.Image(self.inputs[0])
-
-    @iimage.setter
-    def iimage(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ivector(self):
-        return Node.Vector(self.inputs[1])
-
-    @ivector.setter
-    def ivector(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iframe(self):
-        return Node.Integer(self.inputs[2])
-
-    @iframe.setter
-    def iframe(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputCurveHandlePositions
-
-class NodeCurveHandlePositions(Attribute):
-
-    """ Node class GeometryNodeInputCurveHandlePositions
+    """Node 'Curve Handle Positions' (GeometryNodeInputCurveHandlePositions)
 
     Input sockets
     -------------
-
-        0: relative             Boolean
-
-    Output sockets
-    --------------
-
-        0: left                 Vector
-        1: right                Vector
-
-    """
-
-    PARAMETERS = []
-
-    def __init__(self, relative=None, owner_socket=None, data_type='FLOAT', domain='POINT'):
-
-        super().__init__('GeometryNodeInputCurveHandlePositions', name='Curve Handle Positions', owner_socket=owner_socket, data_type=data_type, domain=domain)
-
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'relative'     ))
-
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'left'         ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'right'        ))
-
-        self.socket_out_name = 'left'
-        self.out_socket_names = ['left', 'right']
-
-        # ----- Input sockets
-
-        self.irelative       = relative
-
-        self.socket_in_name = 'irelative'
-
-    def __repr__(self):
-        s = f"Node 'CurveHandlePositions' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   relative        : {self.irelative}"
-        s += '\nOutput sockets'
-        s +=  "\n   left            : Vector"
-        s +=  "\n   right           : Vector"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def left(self):
-        return self.Vector(self.outputs[0])
-
-    @property
-    def right(self):
-        return self.Vector(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def irelative(self):
-        return Node.Boolean(self.inputs[0])
-
-    @irelative.setter
-    def irelative(self, value):
-        self.inputs[0].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputCurveTilt
-
-class NodeCurveTilt(Attribute):
-
-    """ Node class GeometryNodeInputCurveTilt
+        relative        : Boolean
 
     Output sockets
     --------------
-
-        0: tilt                 Float
-
+        left            : Vector
+        right           : Vector
     """
 
-    PARAMETERS = []
+    def __init__(self, relative=None, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputCurveHandlePositions', name='Curve Handle Positions', label=label)
 
-        super().__init__('GeometryNodeInputCurveTilt', name='Curve Tilt', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Input sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'tilt'         ))
+        self.plug(0, relative)
 
-        self.socket_out_name = 'tilt'
-        self.out_socket_names = ['tilt']
+        # Output sockets
 
-        self.socket_in_name = None
+        self.left            = self.Vector(self.bnode.outputs[0])
+        self.right           = self.Vector(self.bnode.outputs[1])
+        self.output_sockets  = [self.left, self.right]
 
-    def __repr__(self):
-        s = f"Node 'CurveTilt' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   tilt            : Float"
-        return s + "\n"
+# ----------------------------------------------------------------------------------------------------
+# Node NodeCurveTilt for GeometryNodeInputCurveTilt
 
-    # --------------------------------------------------------------------------------
-    # Output sockets
+class NodeCurveTilt(Node):
 
-    @property
-    def tilt(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.tilt
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputID
-
-class NodeID(Attribute):
-
-    """ Node class GeometryNodeInputID
+    """Node 'Curve Tilt' (GeometryNodeInputCurveTilt)
 
     Output sockets
     --------------
-
-        0: ID                   Integer
-
+        tilt            : Float
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputCurveTilt', name='Curve Tilt', label=label)
 
-        super().__init__('GeometryNodeInputID', name='ID', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'ID'           ))
+        self.tilt            = self.Float(self.bnode.outputs[0])
+        self.output_sockets  = [self.tilt]
 
-        self.socket_out_name = 'ID'
-        self.out_socket_names = ['ID']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeID for GeometryNodeInputID
 
-        self.socket_in_name = None
+class NodeID(Node):
 
-    def __repr__(self):
-        s = f"Node 'ID' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   ID              : Integer"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def ID(self):
-        return self.Integer(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.ID
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputIndex
-
-class NodeIndex(Attribute):
-
-    """ Node class GeometryNodeInputIndex
+    """Node 'ID' (GeometryNodeInputID)
 
     Output sockets
     --------------
-
-        0: index                Integer
-
+        ID              : Integer
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputID', name='ID', label=label)
 
-        super().__init__('GeometryNodeInputIndex', name='Index', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'index'        ))
+        self.ID              = self.Integer(self.bnode.outputs[0])
+        self.output_sockets  = [self.ID]
 
-        self.socket_out_name = 'index'
-        self.out_socket_names = ['index']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeIndex for GeometryNodeInputIndex
 
-        self.socket_in_name = None
+class NodeIndex(Node):
 
-    def __repr__(self):
-        s = f"Node 'Index' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   index           : Integer"
-        return s + "\n"
+    """Node 'Index' (GeometryNodeInputIndex)
 
-    # --------------------------------------------------------------------------------
-    # Output sockets
+    Output sockets
+    --------------
+        index           : Integer
+    """
 
-    @property
-    def index(self):
-        return self.Integer(self.outputs[0])
+    def __init__(self, label=None):
 
-    @property
-    def output(self):
-        return self.index
+        super().__init__('GeometryNodeInputIndex', name='Index', label=label)
 
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeInputMaterial
+        # Output sockets
+
+        self.index           = self.Integer(self.bnode.outputs[0])
+        self.output_sockets  = [self.index]
+
+# ----------------------------------------------------------------------------------------------------
+# Node NodeMaterial for GeometryNodeInputMaterial
 
 class NodeMaterial(Node):
 
-    """ Node class GeometryNodeInputMaterial
-
-    Parameters
-    ----------
-
-        material_   : None
+    """Node 'Material' (GeometryNodeInputMaterial)
 
     Output sockets
     --------------
-
-        0: material             Material
-
+        material        : Material
     """
 
-    PARAMETERS = ['material_']
+    def __init__(self, label=None):
 
-    def __init__(self, material=None):
+        super().__init__('GeometryNodeInputMaterial', name='Material', label=label)
 
-        super().__init__('GeometryNodeInputMaterial', name='Material')
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketMaterial'     , 'material'     ))
+        self.material        = self.Material(self.bnode.outputs[0])
+        self.output_sockets  = [self.material]
 
-        self.socket_out_name = 'material'
-        self.out_socket_names = ['material']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeMaterialIndex for GeometryNodeInputMaterialIndex
 
-        # ----- Parameters
+class NodeMaterialIndex(Node):
 
-        self.material_       = material
-        self.check_parameters()
-
-        self.socket_in_name = None
-
-    def __repr__(self):
-        s = f"Node 'Material' ({self.unique_id})"
-        s += '\nParameters'
-        s += f"\n   material        : {self.material}"
-        s += '\nOutput sockets'
-        s +=  "\n   material        : Material"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def material(self):
-        return self.Material(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.material
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputMaterialIndex
-
-class NodeMaterialIndex(Attribute):
-
-    """ Node class GeometryNodeInputMaterialIndex
+    """Node 'Material Index' (GeometryNodeInputMaterialIndex)
 
     Output sockets
     --------------
-
-        0: material_index       Integer
-
+        material_index  : Integer
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputMaterialIndex', name='Material Index', label=label)
 
-        super().__init__('GeometryNodeInputMaterialIndex', name='Material Index', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'material_index'))
+        self.material_index  = self.Integer(self.bnode.outputs[0])
+        self.output_sockets  = [self.material_index]
 
-        self.socket_out_name = 'material_index'
-        self.out_socket_names = ['material_index']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeEdgeAngle for GeometryNodeInputMeshEdgeAngle
 
-        self.socket_in_name = None
+class NodeEdgeAngle(Node):
 
-    def __repr__(self):
-        s = f"Node 'MaterialIndex' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   material_index  : Integer"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def material_index(self):
-        return self.Integer(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.material_index
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputMeshEdgeAngle
-
-class NodeEdgeAngle(Attribute):
-
-    """ Node class GeometryNodeInputMeshEdgeAngle
+    """Node 'Edge Angle' (GeometryNodeInputMeshEdgeAngle)
 
     Output sockets
     --------------
-
-        0: unsigned_angle       Float
-        1: signed_angle         Float
-
+        unsigned_angle  : Float
+        signed_angle    : Float
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputMeshEdgeAngle', name='Edge Angle', label=label)
 
-        super().__init__('GeometryNodeInputMeshEdgeAngle', name='Edge Angle', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'unsigned_angle'))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'signed_angle' ))
+        self.unsigned_angle  = self.Float(self.bnode.outputs[0])
+        self.signed_angle    = self.Float(self.bnode.outputs[1])
+        self.output_sockets  = [self.unsigned_angle, self.signed_angle]
 
-        self.socket_out_name = 'unsigned_angle'
-        self.out_socket_names = ['unsigned_angle', 'signed_angle']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeEdgeNeighbors for GeometryNodeInputMeshEdgeNeighbors
 
-        self.socket_in_name = None
+class NodeEdgeNeighbors(Node):
 
-    def __repr__(self):
-        s = f"Node 'EdgeAngle' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   unsigned_angle  : Float"
-        s +=  "\n   signed_angle    : Float"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def unsigned_angle(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def signed_angle(self):
-        return self.Float(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputMeshEdgeNeighbors
-
-class NodeEdgeNeighbors(Attribute):
-
-    """ Node class GeometryNodeInputMeshEdgeNeighbors
+    """Node 'Edge Neighbors' (GeometryNodeInputMeshEdgeNeighbors)
 
     Output sockets
     --------------
-
-        0: face_count           Integer
-
+        face_count      : Integer
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputMeshEdgeNeighbors', name='Edge Neighbors', label=label)
 
-        super().__init__('GeometryNodeInputMeshEdgeNeighbors', name='Edge Neighbors', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'face_count'   ))
+        self.face_count      = self.Integer(self.bnode.outputs[0])
+        self.output_sockets  = [self.face_count]
 
-        self.socket_out_name = 'face_count'
-        self.out_socket_names = ['face_count']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeEdgeVertices for GeometryNodeInputMeshEdgeVertices
 
-        self.socket_in_name = None
+class NodeEdgeVertices(Node):
 
-    def __repr__(self):
-        s = f"Node 'EdgeNeighbors' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   face_count      : Integer"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def face_count(self):
-        return self.Integer(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.face_count
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputMeshEdgeVertices
-
-class NodeEdgeVertices(Attribute):
-
-    """ Node class GeometryNodeInputMeshEdgeVertices
+    """Node 'Edge Vertices' (GeometryNodeInputMeshEdgeVertices)
 
     Output sockets
     --------------
-
-        0: vertex_index_1       Integer
-        1: vertex_index_2       Integer
-        2: position_1           Vector
-        3: position_2           Vector
-
+        vertex_index_1  : Integer
+        vertex_index_2  : Integer
+        position_1      : Vector
+        position_2      : Vector
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputMeshEdgeVertices', name='Edge Vertices', label=label)
 
-        super().__init__('GeometryNodeInputMeshEdgeVertices', name='Edge Vertices', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'vertex_index_1'))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'vertex_index_2'))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'position_1'   ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'position_2'   ))
+        self.vertex_index_1  = self.Integer(self.bnode.outputs[0])
+        self.vertex_index_2  = self.Integer(self.bnode.outputs[1])
+        self.position_1      = self.Vector(self.bnode.outputs[2])
+        self.position_2      = self.Vector(self.bnode.outputs[3])
+        self.output_sockets  = [self.vertex_index_1, self.vertex_index_2, self.position_1, self.position_2]
 
-        self.socket_out_name = 'vertex_index_1'
-        self.out_socket_names = ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeFaceArea for GeometryNodeInputMeshFaceArea
 
-        self.socket_in_name = None
+class NodeFaceArea(Node):
 
-    def __repr__(self):
-        s = f"Node 'EdgeVertices' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   vertex_index_1  : Integer"
-        s +=  "\n   vertex_index_2  : Integer"
-        s +=  "\n   position_1      : Vector"
-        s +=  "\n   position_2      : Vector"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def vertex_index_1(self):
-        return self.Integer(self.outputs[0])
-
-    @property
-    def vertex_index_2(self):
-        return self.Integer(self.outputs[1])
-
-    @property
-    def position_1(self):
-        return self.Vector(self.outputs[2])
-
-    @property
-    def position_2(self):
-        return self.Vector(self.outputs[3])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputMeshFaceArea
-
-class NodeFaceArea(Attribute):
-
-    """ Node class GeometryNodeInputMeshFaceArea
+    """Node 'Face Area' (GeometryNodeInputMeshFaceArea)
 
     Output sockets
     --------------
-
-        0: area                 Float
-
+        area            : Float
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputMeshFaceArea', name='Face Area', label=label)
 
-        super().__init__('GeometryNodeInputMeshFaceArea', name='Face Area', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'area'         ))
+        self.area            = self.Float(self.bnode.outputs[0])
+        self.output_sockets  = [self.area]
 
-        self.socket_out_name = 'area'
-        self.out_socket_names = ['area']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeFaceNeighbors for GeometryNodeInputMeshFaceNeighbors
 
-        self.socket_in_name = None
+class NodeFaceNeighbors(Node):
 
-    def __repr__(self):
-        s = f"Node 'FaceArea' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   area            : Float"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def area(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.area
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputMeshFaceNeighbors
-
-class NodeFaceNeighbors(Attribute):
-
-    """ Node class GeometryNodeInputMeshFaceNeighbors
+    """Node 'Face Neighbors' (GeometryNodeInputMeshFaceNeighbors)
 
     Output sockets
     --------------
-
-        0: vertex_count         Integer
-        1: face_count           Integer
-
+        vertex_count    : Integer
+        face_count      : Integer
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputMeshFaceNeighbors', name='Face Neighbors', label=label)
 
-        super().__init__('GeometryNodeInputMeshFaceNeighbors', name='Face Neighbors', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'vertex_count' ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'face_count'   ))
+        self.vertex_count    = self.Integer(self.bnode.outputs[0])
+        self.face_count      = self.Integer(self.bnode.outputs[1])
+        self.output_sockets  = [self.vertex_count, self.face_count]
 
-        self.socket_out_name = 'vertex_count'
-        self.out_socket_names = ['vertex_count', 'face_count']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeMeshIsland for GeometryNodeInputMeshIsland
 
-        self.socket_in_name = None
+class NodeMeshIsland(Node):
 
-    def __repr__(self):
-        s = f"Node 'FaceNeighbors' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   vertex_count    : Integer"
-        s +=  "\n   face_count      : Integer"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def vertex_count(self):
-        return self.Integer(self.outputs[0])
-
-    @property
-    def face_count(self):
-        return self.Integer(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputMeshIsland
-
-class NodeMeshIsland(Attribute):
-
-    """ Node class GeometryNodeInputMeshIsland
+    """Node 'Mesh Island' (GeometryNodeInputMeshIsland)
 
     Output sockets
     --------------
-
-        0: island_index         Integer
-        1: island_count         Integer
-
+        island_index    : Integer
+        island_count    : Integer
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputMeshIsland', name='Mesh Island', label=label)
 
-        super().__init__('GeometryNodeInputMeshIsland', name='Mesh Island', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'island_index' ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'island_count' ))
+        self.island_index    = self.Integer(self.bnode.outputs[0])
+        self.island_count    = self.Integer(self.bnode.outputs[1])
+        self.output_sockets  = [self.island_index, self.island_count]
 
-        self.socket_out_name = 'island_index'
-        self.out_socket_names = ['island_index', 'island_count']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeVertexNeighbors for GeometryNodeInputMeshVertexNeighbors
 
-        self.socket_in_name = None
+class NodeVertexNeighbors(Node):
 
-    def __repr__(self):
-        s = f"Node 'MeshIsland' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   island_index    : Integer"
-        s +=  "\n   island_count    : Integer"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def island_index(self):
-        return self.Integer(self.outputs[0])
-
-    @property
-    def island_count(self):
-        return self.Integer(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputMeshVertexNeighbors
-
-class NodeVertexNeighbors(Attribute):
-
-    """ Node class GeometryNodeInputMeshVertexNeighbors
+    """Node 'Vertex Neighbors' (GeometryNodeInputMeshVertexNeighbors)
 
     Output sockets
     --------------
-
-        0: vertex_count         Integer
-        1: face_count           Integer
-
+        vertex_count    : Integer
+        face_count      : Integer
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputMeshVertexNeighbors', name='Vertex Neighbors', label=label)
 
-        super().__init__('GeometryNodeInputMeshVertexNeighbors', name='Vertex Neighbors', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'vertex_count' ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'face_count'   ))
+        self.vertex_count    = self.Integer(self.bnode.outputs[0])
+        self.face_count      = self.Integer(self.bnode.outputs[1])
+        self.output_sockets  = [self.vertex_count, self.face_count]
 
-        self.socket_out_name = 'vertex_count'
-        self.out_socket_names = ['vertex_count', 'face_count']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeNormal for GeometryNodeInputNormal
 
-        self.socket_in_name = None
+class NodeNormal(Node):
 
-    def __repr__(self):
-        s = f"Node 'VertexNeighbors' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   vertex_count    : Integer"
-        s +=  "\n   face_count      : Integer"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def vertex_count(self):
-        return self.Integer(self.outputs[0])
-
-    @property
-    def face_count(self):
-        return self.Integer(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputNormal
-
-class NodeNormal(Attribute):
-
-    """ Node class GeometryNodeInputNormal
+    """Node 'Normal' (GeometryNodeInputNormal)
 
     Output sockets
     --------------
-
-        0: normal               Vector
-
+        normal          : Vector
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputNormal', name='Normal', label=label)
 
-        super().__init__('GeometryNodeInputNormal', name='Normal', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'normal'       ))
+        self.normal          = self.Vector(self.bnode.outputs[0])
+        self.output_sockets  = [self.normal]
 
-        self.socket_out_name = 'normal'
-        self.out_socket_names = ['normal']
+# ----------------------------------------------------------------------------------------------------
+# Node NodePosition for GeometryNodeInputPosition
 
-        self.socket_in_name = None
+class NodePosition(Node):
 
-    def __repr__(self):
-        s = f"Node 'Normal' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   normal          : Vector"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def normal(self):
-        return self.Vector(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.normal
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputPosition
-
-class NodePosition(Attribute):
-
-    """ Node class GeometryNodeInputPosition
+    """Node 'Position' (GeometryNodeInputPosition)
 
     Output sockets
     --------------
-
-        0: position             Vector
-
+        position        : Vector
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputPosition', name='Position', label=label)
 
-        super().__init__('GeometryNodeInputPosition', name='Position', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'position'     ))
+        self.position        = self.Vector(self.bnode.outputs[0])
+        self.output_sockets  = [self.position]
 
-        self.socket_out_name = 'position'
-        self.out_socket_names = ['position']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeRadius for GeometryNodeInputRadius
 
-        self.socket_in_name = None
+class NodeRadius(Node):
 
-    def __repr__(self):
-        s = f"Node 'Position' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   position        : Vector"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def position(self):
-        return self.Vector(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.position
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputRadius
-
-class NodeRadius(Attribute):
-
-    """ Node class GeometryNodeInputRadius
+    """Node 'Radius' (GeometryNodeInputRadius)
 
     Output sockets
     --------------
-
-        0: radius               Float
-
+        radius          : Float
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputRadius', name='Radius', label=label)
 
-        super().__init__('GeometryNodeInputRadius', name='Radius', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'radius'       ))
+        self.radius          = self.Float(self.bnode.outputs[0])
+        self.output_sockets  = [self.radius]
 
-        self.socket_out_name = 'radius'
-        self.out_socket_names = ['radius']
-
-        self.socket_in_name = None
-
-    def __repr__(self):
-        s = f"Node 'Radius' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   radius          : Float"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def radius(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.radius
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeInputSceneTime
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSceneTime for GeometryNodeInputSceneTime
 
 class NodeSceneTime(Node):
 
-    """ Node class GeometryNodeInputSceneTime
+    """Node 'Scene Time' (GeometryNodeInputSceneTime)
 
     Output sockets
     --------------
-
-        0: seconds              Float
-        1: frame                Float
-
+        seconds         : Float
+        frame           : Float
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self):
+        super().__init__('GeometryNodeInputSceneTime', name='Scene Time', label=label)
 
-        super().__init__('GeometryNodeInputSceneTime', name='Scene Time')
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'seconds'      ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'frame'        ))
+        self.seconds         = self.Float(self.bnode.outputs[0])
+        self.frame           = self.Float(self.bnode.outputs[1])
+        self.output_sockets  = [self.seconds, self.frame]
 
-        self.socket_out_name = 'seconds'
-        self.out_socket_names = ['seconds', 'frame']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeIsShadeSmooth for GeometryNodeInputShadeSmooth
 
-        self.socket_in_name = None
+class NodeIsShadeSmooth(Node):
 
-    def __repr__(self):
-        s = f"Node 'SceneTime' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   seconds         : Float"
-        s +=  "\n   frame           : Float"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def seconds(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def frame(self):
-        return self.Float(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputShadeSmooth
-
-class NodeIsShadeSmooth(Attribute):
-
-    """ Node class GeometryNodeInputShadeSmooth
+    """Node 'Is Shade Smooth' (GeometryNodeInputShadeSmooth)
 
     Output sockets
     --------------
-
-        0: smooth               Boolean
-
+        smooth          : Boolean
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputShadeSmooth', name='Is Shade Smooth', label=label)
 
-        super().__init__('GeometryNodeInputShadeSmooth', name='Is Shade Smooth', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'smooth'       ))
+        self.smooth          = self.Boolean(self.bnode.outputs[0])
+        self.output_sockets  = [self.smooth]
 
-        self.socket_out_name = 'smooth'
-        self.out_socket_names = ['smooth']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeIsSplineCyclic for GeometryNodeInputSplineCyclic
 
-        self.socket_in_name = None
+class NodeIsSplineCyclic(Node):
 
-    def __repr__(self):
-        s = f"Node 'IsShadeSmooth' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   smooth          : Boolean"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def smooth(self):
-        return self.Boolean(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.smooth
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputSplineCyclic
-
-class NodeIsSplineCyclic(Attribute):
-
-    """ Node class GeometryNodeInputSplineCyclic
+    """Node 'Is Spline Cyclic' (GeometryNodeInputSplineCyclic)
 
     Output sockets
     --------------
-
-        0: cyclic               Boolean
-
+        cyclic          : Boolean
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputSplineCyclic', name='Is Spline Cyclic', label=label)
 
-        super().__init__('GeometryNodeInputSplineCyclic', name='Is Spline Cyclic', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'cyclic'       ))
+        self.cyclic          = self.Boolean(self.bnode.outputs[0])
+        self.output_sockets  = [self.cyclic]
 
-        self.socket_out_name = 'cyclic'
-        self.out_socket_names = ['cyclic']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSplineResolution for GeometryNodeInputSplineResolution
 
-        self.socket_in_name = None
+class NodeSplineResolution(Node):
 
-    def __repr__(self):
-        s = f"Node 'IsSplineCyclic' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   cyclic          : Boolean"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def cyclic(self):
-        return self.Boolean(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.cyclic
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputSplineResolution
-
-class NodeSplineResolution(Attribute):
-
-    """ Node class GeometryNodeInputSplineResolution
+    """Node 'Spline Resolution' (GeometryNodeInputSplineResolution)
 
     Output sockets
     --------------
-
-        0: resolution           Integer
-
+        resolution      : Integer
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputSplineResolution', name='Spline Resolution', label=label)
 
-        super().__init__('GeometryNodeInputSplineResolution', name='Spline Resolution', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'resolution'   ))
+        self.resolution      = self.Integer(self.bnode.outputs[0])
+        self.output_sockets  = [self.resolution]
 
-        self.socket_out_name = 'resolution'
-        self.out_socket_names = ['resolution']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeCurveTangent for GeometryNodeInputTangent
 
-        self.socket_in_name = None
+class NodeCurveTangent(Node):
 
-    def __repr__(self):
-        s = f"Node 'SplineResolution' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   resolution      : Integer"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def resolution(self):
-        return self.Integer(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.resolution
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeInputTangent
-
-class NodeCurveTangent(Attribute):
-
-    """ Node class GeometryNodeInputTangent
+    """Node 'Curve Tangent' (GeometryNodeInputTangent)
 
     Output sockets
     --------------
-
-        0: tangent              Vector
-
+        tangent         : Vector
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInputTangent', name='Curve Tangent', label=label)
 
-        super().__init__('GeometryNodeInputTangent', name='Curve Tangent', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'tangent'      ))
+        self.tangent         = self.Vector(self.bnode.outputs[0])
+        self.output_sockets  = [self.tangent]
 
-        self.socket_out_name = 'tangent'
-        self.out_socket_names = ['tangent']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeInstanceOnPoints for GeometryNodeInstanceOnPoints
 
-        self.socket_in_name = None
+class NodeInstanceOnPoints(Node):
 
-    def __repr__(self):
-        s = f"Node 'CurveTangent' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   tangent         : Vector"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def tangent(self):
-        return self.Vector(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.tangent
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeInstanceOnPoints
-
-class NodeInstanceonPoints(Node):
-
-    """ Node class GeometryNodeInstanceOnPoints
+    """Node 'Instance on Points' (GeometryNodeInstanceOnPoints)
 
     Input sockets
     -------------
-
-        0: points               Geometry
-        1: selection            Boolean
-        2: instance             Geometry
-        3: pick_instance        Boolean
-        4: instance_index       Integer
-        5: rotation             Vector
-        6: scale                Vector
+        points          : Geometry
+        selection       : Boolean
+        instance        : Geometry
+        pick_instance   : Boolean
+        instance_index  : Integer
+        rotation        : Vector
+        scale           : Vector
 
     Output sockets
     --------------
-
-        0: instances            Geometry
-
+        instances       : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, label=None):
 
-    def __init__(self, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
+        super().__init__('GeometryNodeInstanceOnPoints', name='Instance on Points', label=label)
 
-        super().__init__('GeometryNodeInstanceOnPoints', name='Instance on Points')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'points'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'instance'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'pick_instance'))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'instance_index'))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorEuler'  , 'rotation'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorXYZ'    , 'scale'        ))
+        self.plug(0, points)
+        self.plug(1, selection)
+        self.plug(2, instance)
+        self.plug(3, pick_instance)
+        self.plug(4, instance_index)
+        self.plug(5, rotation)
+        self.plug(6, scale)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'instances'    ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.instances       = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.instances]
 
-        self.socket_out_name = 'instances'
-        self.out_socket_names = ['instances']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeInstancesToPoints for GeometryNodeInstancesToPoints
 
-        # ----- Input sockets
+class NodeInstancesToPoints(Node):
 
-        self.ipoints         = points
-        self.iselection      = selection
-        self.iinstance       = instance
-        self.ipick_instance  = pick_instance
-        self.iinstance_index = instance_index
-        self.irotation       = rotation
-        self.iscale          = scale
-
-        self.socket_in_name = 'ipoints'
-
-    def __repr__(self):
-        s = f"Node 'InstanceonPoints' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   points          : {self.ipoints}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   instance        : {self.iinstance}"
-        s += f"\n   pick_instance   : {self.ipick_instance}"
-        s += f"\n   instance_index  : {self.iinstance_index}"
-        s += f"\n   rotation        : {self.irotation}"
-        s += f"\n   scale           : {self.iscale}"
-        s += '\nOutput sockets'
-        s +=  "\n   instances       : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def instances(self):
-        return self.Instances(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.instances
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ipoints(self):
-        return Node.Points(self.inputs[0])
-
-    @ipoints.setter
-    def ipoints(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iinstance(self):
-        return Node.Geometry(self.inputs[2])
-
-    @iinstance.setter
-    def iinstance(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def ipick_instance(self):
-        return Node.Boolean(self.inputs[3])
-
-    @ipick_instance.setter
-    def ipick_instance(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def iinstance_index(self):
-        return Node.Integer(self.inputs[4])
-
-    @iinstance_index.setter
-    def iinstance_index(self, value):
-        self.inputs[4].plug(value)
-
-    @property
-    def irotation(self):
-        return Node.Vector(self.inputs[5])
-
-    @irotation.setter
-    def irotation(self, value):
-        self.inputs[5].plug(value)
-
-    @property
-    def iscale(self):
-        return Node.Vector(self.inputs[6])
-
-    @iscale.setter
-    def iscale(self, value):
-        self.inputs[6].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeInstancesToPoints
-
-class NodeInstancestoPoints(Node):
-
-    """ Node class GeometryNodeInstancesToPoints
+    """Node 'Instances to Points' (GeometryNodeInstancesToPoints)
 
     Input sockets
     -------------
-
-        0: instances            Geometry
-        1: selection            Boolean
-        2: position             Vector
-        3: radius               Float
-
-    Output sockets
-    --------------
-
-        0: points               Geometry
-
-    """
-
-    PARAMETERS = []
-
-    def __init__(self, instances=None, selection=None, position=None, radius=None):
-
-        super().__init__('GeometryNodeInstancesToPoints', name='Instances to Points')
-
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'instances'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'position'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'radius'       ))
-
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'points'       ))
-
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
-
-        self.socket_out_name = 'points'
-        self.out_socket_names = ['points']
-
-        # ----- Input sockets
-
-        self.iinstances      = instances
-        self.iselection      = selection
-        self.iposition       = position
-        self.iradius         = radius
-
-        self.socket_in_name = 'iinstances'
-
-    def __repr__(self):
-        s = f"Node 'InstancestoPoints' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   instances       : {self.iinstances}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   position        : {self.iposition}"
-        s += f"\n   radius          : {self.iradius}"
-        s += '\nOutput sockets'
-        s +=  "\n   points          : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def points(self):
-        return self.Points(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.points
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def iinstances(self):
-        return Node.Instances(self.inputs[0])
-
-    @iinstances.setter
-    def iinstances(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iposition(self):
-        return Node.Vector(self.inputs[2])
-
-    @iposition.setter
-    def iposition(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def iradius(self):
-        return Node.Float(self.inputs[3])
-
-    @iradius.setter
-    def iradius(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeIsViewport
-
-class NodeIsViewport(Attribute):
-
-    """ Node class GeometryNodeIsViewport
+        instances       : Geometry
+        selection       : Boolean
+        position        : Vector
+        radius          : Float
 
     Output sockets
     --------------
-
-        0: is_viewport          Boolean
-
+        points          : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, instances=None, selection=None, position=None, radius=None, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeInstancesToPoints', name='Instances to Points', label=label)
 
-        super().__init__('GeometryNodeIsViewport', name='Is Viewport', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Input sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'is_viewport'  ))
+        self.plug(0, instances)
+        self.plug(1, selection)
+        self.plug(2, position)
+        self.plug(3, radius)
 
-        self.socket_out_name = 'is_viewport'
-        self.out_socket_names = ['is_viewport']
+        # Output sockets
 
-        self.socket_in_name = None
+        self.points          = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.points]
 
-    def __repr__(self):
-        s = f"Node 'IsViewport' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   is_viewport     : Boolean"
-        return s + "\n"
+# ----------------------------------------------------------------------------------------------------
+# Node NodeIsViewport for GeometryNodeIsViewport
 
-    # --------------------------------------------------------------------------------
-    # Output sockets
+class NodeIsViewport(Node):
 
-    @property
-    def is_viewport(self):
-        return self.Boolean(self.outputs[0])
+    """Node 'Is Viewport' (GeometryNodeIsViewport)
 
-    @property
-    def output(self):
-        return self.is_viewport
+    Output sockets
+    --------------
+        is_viewport     : Boolean
+    """
 
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeJoinGeometry
+    def __init__(self, label=None):
+
+        super().__init__('GeometryNodeIsViewport', name='Is Viewport', label=label)
+
+        # Output sockets
+
+        self.is_viewport     = self.Boolean(self.bnode.outputs[0])
+        self.output_sockets  = [self.is_viewport]
+
+# ----------------------------------------------------------------------------------------------------
+# Node NodeJoinGeometry for GeometryNodeJoinGeometry
 
 class NodeJoinGeometry(Node):
 
-    """ Node class GeometryNodeJoinGeometry
+    """Node 'Join Geometry' (GeometryNodeJoinGeometry)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
+        geometry        : *Geometry
 
     Output sockets
     --------------
-
-        0: geometry             Geometry
-
+        geometry        : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, *geometry, label=None):
 
-    def __init__(self, *geometry):
+        super().__init__('GeometryNodeJoinGeometry', name='Join Geometry', label=label)
 
-        super().__init__('GeometryNodeJoinGeometry', name='Join Geometry')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     , is_multi_input=True))
+        self.plug(0, *geometry)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
+        # Output sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.geometry]
 
-        self.socket_out_name = 'geometry'
-        self.out_socket_names = ['geometry']
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'JoinGeometry' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += '\nOutput sockets'
-        s +=  "\n   geometry        : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.geometry
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeMaterialSelection
+# ----------------------------------------------------------------------------------------------------
+# Node NodeMaterialSelection for GeometryNodeMaterialSelection
 
 class NodeMaterialSelection(Node):
 
-    """ Node class GeometryNodeMaterialSelection
+    """Node 'Material Selection' (GeometryNodeMaterialSelection)
 
     Input sockets
     -------------
-
-        0: material             Material
+        material        : Material
 
     Output sockets
     --------------
-
-        0: selection            Boolean
-
+        selection       : Boolean
     """
 
-    PARAMETERS = []
+    def __init__(self, material=None, label=None):
 
-    def __init__(self, material=None):
+        super().__init__('GeometryNodeMaterialSelection', name='Material Selection', label=label)
 
-        super().__init__('GeometryNodeMaterialSelection', name='Material Selection')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketMaterial'     , 'material'     ))
+        self.plug(0, material)
 
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'selection'    ))
+        # Output sockets
 
-        self.socket_out_name = 'selection'
-        self.out_socket_names = ['selection']
+        self.selection       = self.Boolean(self.bnode.outputs[0])
+        self.output_sockets  = [self.selection]
 
-        # ----- Input sockets
+# ----------------------------------------------------------------------------------------------------
+# Node NodeMergeByDistance for GeometryNodeMergeByDistance
 
-        self.imaterial       = material
+class NodeMergeByDistance(Node):
 
-        self.socket_in_name = 'imaterial'
-
-    def __repr__(self):
-        s = f"Node 'MaterialSelection' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   material        : {self.imaterial}"
-        s += '\nOutput sockets'
-        s +=  "\n   selection       : Boolean"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def selection(self):
-        return self.Boolean(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.selection
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def imaterial(self):
-        return Node.Material(self.inputs[0])
-
-    @imaterial.setter
-    def imaterial(self, value):
-        self.inputs[0].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeMergeByDistance
-
-class NodeMergebyDistance(Node):
-
-    """ Node class GeometryNodeMergeByDistance
+    """Node 'Merge by Distance' (GeometryNodeMergeByDistance)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
-        1: selection            Boolean
-        2: distance             Float
+        geometry        : Geometry
+        selection       : Boolean
+        distance        : Float
 
     Output sockets
     --------------
-
-        0: geometry             Geometry
-
+        geometry        : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, geometry=None, selection=None, distance=None, label=None):
 
-    def __init__(self, geometry=None, selection=None, distance=None):
+        super().__init__('GeometryNodeMergeByDistance', name='Merge by Distance', label=label)
 
-        super().__init__('GeometryNodeMergeByDistance', name='Merge by Distance')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'distance'     ))
+        self.plug(0, geometry)
+        self.plug(1, selection)
+        self.plug(2, distance)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.geometry]
 
-        self.socket_out_name = 'geometry'
-        self.out_socket_names = ['geometry']
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-        self.iselection      = selection
-        self.idistance       = distance
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'MergebyDistance' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   distance        : {self.idistance}"
-        s += '\nOutput sockets'
-        s +=  "\n   geometry        : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.geometry
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def idistance(self):
-        return Node.Float(self.inputs[2])
-
-    @idistance.setter
-    def idistance(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeMeshBoolean
+# ----------------------------------------------------------------------------------------------------
+# Node NodeMeshBoolean for GeometryNodeMeshBoolean
 
 class NodeMeshBoolean(Node):
 
-    """ Node class GeometryNodeMeshBoolean
+    """Node 'Mesh Boolean' (GeometryNodeMeshBoolean)
 
     Input sockets
     -------------
-
-        0: mesh_1               Geometry
-        1: mesh_2               Geometry
-        2: self_intersection    Boolean
-        3: hole_tolerant        Boolean
+        mesh_1          : Geometry
+        mesh_2          : *Geometry
+        self_intersection : Boolean
+        hole_tolerant   : Boolean
 
     Parameters
     ----------
-
-        operation   : 'DIFFERENCE' in ('INTERSECT', 'UNION', 'DIFFERENCE') 
+        operation       : 'DIFFERENCE' in [ 'INTERSECT' 'UNION' 'DIFFERENCE']
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-
+        mesh            : Geometry
     """
 
-    PARAMETERS = ['operation']
+    def __init__(self, *mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', label=None):
 
-    def __init__(self, *mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE'):
+        super().__init__('GeometryNodeMeshBoolean', name='Mesh Boolean', label=label)
 
-        super().__init__('GeometryNodeMeshBoolean', name='Mesh Boolean')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'mesh_1'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'mesh_2'       , is_multi_input=True))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'self_intersection'))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'hole_tolerant'))
+        self.bnode.operation       = operation
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(1, *mesh_2)
+        self.plug(0, mesh_1)
+        self.plug(2, self_intersection)
+        self.plug(3, hole_tolerant)
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh']
+        # Output sockets
 
-        # ----- Parameters
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.mesh]
 
-        self.operation       = operation
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.imesh_1         = mesh_1
-        self.imesh_2         = mesh_2
-        self.iself_intersection = self_intersection
-        self.ihole_tolerant  = hole_tolerant
-
-        self.socket_in_name = 'imesh_2'
-
-    def __repr__(self):
-        s = f"Node 'MeshBoolean' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   mesh_1          : {self.imesh_1}"
-        s += f"\n   mesh_2          : {self.imesh_2}"
-        s += f"\n   self_intersection : {self.iself_intersection}"
-        s += f"\n   hole_tolerant   : {self.ihole_tolerant}"
-        s += '\nParameters'
-        s += f"\n   operation       : {self.operation}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('INTERSECT', 'UNION', 'DIFFERENCE') 
-        if self.operation not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeMeshBoolean'.\n 'operation' is '{self.operation}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.mesh
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def imesh_1(self):
-        return Node.Geometry(self.inputs[0])
-
-    @imesh_1.setter
-    def imesh_1(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def imesh_2(self):
-        return Node.Geometry(self.inputs[1])
-
-    @imesh_2.setter
-    def imesh_2(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iself_intersection(self):
-        return Node.Boolean(self.inputs[2])
-
-    @iself_intersection.setter
-    def iself_intersection(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def ihole_tolerant(self):
-        return Node.Boolean(self.inputs[3])
-
-    @ihole_tolerant.setter
-    def ihole_tolerant(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeMeshCircle
+# ----------------------------------------------------------------------------------------------------
+# Node NodeMeshCircle for GeometryNodeMeshCircle
 
 class NodeMeshCircle(Node):
 
-    """ Node class GeometryNodeMeshCircle
+    """Node 'Mesh Circle' (GeometryNodeMeshCircle)
 
     Input sockets
     -------------
-
-        0: vertices             Integer
-        1: radius               Float
+        vertices        : Integer
+        radius          : Float
 
     Parameters
     ----------
-
-        fill_type   : 'NONE' in ('NONE', 'NGON', 'TRIANGLE_FAN') 
+        fill_type       : 'NONE' in [ 'NONE' 'NGON' 'TRIANGLE_FAN']
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-
+        mesh            : Geometry
     """
 
-    PARAMETERS = ['fill_type']
+    def __init__(self, vertices=None, radius=None, fill_type='NONE', label=None):
 
-    def __init__(self, vertices=None, radius=None, fill_type='NONE'):
+        super().__init__('GeometryNodeMeshCircle', name='Mesh Circle', label=label)
 
-        super().__init__('GeometryNodeMeshCircle', name='Mesh Circle')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'vertices'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'radius'       ))
+        self.bnode.fill_type       = fill_type
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
+        # Input sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, vertices)
+        self.plug(1, radius)
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh']
+        # Output sockets
 
-        # ----- Parameters
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.mesh]
 
-        self.fill_type       = fill_type
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.ivertices       = vertices
-        self.iradius         = radius
-
-        self.socket_in_name = 'ivertices'
-
-    def __repr__(self):
-        s = f"Node 'MeshCircle' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   vertices        : {self.ivertices}"
-        s += f"\n   radius          : {self.iradius}"
-        s += '\nParameters'
-        s += f"\n   fill_type       : {self.fill_type}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('NONE', 'NGON', 'TRIANGLE_FAN') 
-        if self.fill_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeMeshCircle'.\n 'fill_type' is '{self.fill_type}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.mesh
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivertices(self):
-        return Node.Integer(self.inputs[0])
-
-    @ivertices.setter
-    def ivertices(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iradius(self):
-        return Node.Float(self.inputs[1])
-
-    @iradius.setter
-    def iradius(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeMeshCone
+# ----------------------------------------------------------------------------------------------------
+# Node NodeCone for GeometryNodeMeshCone
 
 class NodeCone(Node):
 
-    """ Node class GeometryNodeMeshCone
+    """Node 'Cone' (GeometryNodeMeshCone)
 
     Input sockets
     -------------
-
-        0: vertices             Integer
-        1: side_segments        Integer
-        2: fill_segments        Integer
-        3: radius_top           Float
-        4: radius_bottom        Float
-        5: depth                Float
+        vertices        : Integer
+        side_segments   : Integer
+        fill_segments   : Integer
+        radius_top      : Float
+        radius_bottom   : Float
+        depth           : Float
 
     Parameters
     ----------
-
-        fill_type   : 'NGON' in ('NONE', 'NGON', 'TRIANGLE_FAN') 
+        fill_type       : 'NGON' in [ 'NONE' 'NGON' 'TRIANGLE_FAN']
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-        1: top                  Boolean
-        2: bottom               Boolean
-        3: side                 Boolean
-
+        mesh            : Geometry
+        top             : Boolean
+        bottom          : Boolean
+        side            : Boolean
     """
 
-    PARAMETERS = ['fill_type']
+    def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', label=None):
 
-    def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON'):
+        super().__init__('GeometryNodeMeshCone', name='Cone', label=label)
 
-        super().__init__('GeometryNodeMeshCone', name='Cone')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'vertices'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'side_segments'))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'fill_segments'))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'radius_top'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'radius_bottom'))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'depth'        ))
+        self.bnode.fill_type       = fill_type
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'top'          ))
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'bottom'       ))
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'side'         ))
+        # Input sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, vertices)
+        self.plug(1, side_segments)
+        self.plug(2, fill_segments)
+        self.plug(3, radius_top)
+        self.plug(4, radius_bottom)
+        self.plug(5, depth)
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh', 'top', 'bottom', 'side']
+        # Output sockets
 
-        # ----- Parameters
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.top             = self.Boolean(self.bnode.outputs[1])
+        self.bottom          = self.Boolean(self.bnode.outputs[2])
+        self.side            = self.Boolean(self.bnode.outputs[3])
+        self.output_sockets  = [self.mesh, self.top, self.bottom, self.side]
 
-        self.fill_type       = fill_type
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.ivertices       = vertices
-        self.iside_segments  = side_segments
-        self.ifill_segments  = fill_segments
-        self.iradius_top     = radius_top
-        self.iradius_bottom  = radius_bottom
-        self.idepth          = depth
-
-        self.socket_in_name = 'ivertices'
-
-    def __repr__(self):
-        s = f"Node 'Cone' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   vertices        : {self.ivertices}"
-        s += f"\n   side_segments   : {self.iside_segments}"
-        s += f"\n   fill_segments   : {self.ifill_segments}"
-        s += f"\n   radius_top      : {self.iradius_top}"
-        s += f"\n   radius_bottom   : {self.iradius_bottom}"
-        s += f"\n   depth           : {self.idepth}"
-        s += '\nParameters'
-        s += f"\n   fill_type       : {self.fill_type}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        s +=  "\n   top             : Boolean"
-        s +=  "\n   bottom          : Boolean"
-        s +=  "\n   side            : Boolean"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('NONE', 'NGON', 'TRIANGLE_FAN') 
-        if self.fill_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeCone'.\n 'fill_type' is '{self.fill_type}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def top(self):
-        return self.Boolean(self.outputs[1])
-
-    @property
-    def bottom(self):
-        return self.Boolean(self.outputs[2])
-
-    @property
-    def side(self):
-        return self.Boolean(self.outputs[3])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivertices(self):
-        return Node.Integer(self.inputs[0])
-
-    @ivertices.setter
-    def ivertices(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iside_segments(self):
-        return Node.Integer(self.inputs[1])
-
-    @iside_segments.setter
-    def iside_segments(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ifill_segments(self):
-        return Node.Integer(self.inputs[2])
-
-    @ifill_segments.setter
-    def ifill_segments(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def iradius_top(self):
-        return Node.Float(self.inputs[3])
-
-    @iradius_top.setter
-    def iradius_top(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def iradius_bottom(self):
-        return Node.Float(self.inputs[4])
-
-    @iradius_bottom.setter
-    def iradius_bottom(self, value):
-        self.inputs[4].plug(value)
-
-    @property
-    def idepth(self):
-        return Node.Float(self.inputs[5])
-
-    @idepth.setter
-    def idepth(self, value):
-        self.inputs[5].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeMeshCube
+# ----------------------------------------------------------------------------------------------------
+# Node NodeCube for GeometryNodeMeshCube
 
 class NodeCube(Node):
 
-    """ Node class GeometryNodeMeshCube
+    """Node 'Cube' (GeometryNodeMeshCube)
 
     Input sockets
     -------------
-
-        0: size                 Vector
-        1: vertices_x           Integer
-        2: vertices_y           Integer
-        3: vertices_z           Integer
+        size            : Vector
+        vertices_x      : Integer
+        vertices_y      : Integer
+        vertices_z      : Integer
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-
+        mesh            : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, size=None, vertices_x=None, vertices_y=None, vertices_z=None, label=None):
 
-    def __init__(self, size=None, vertices_x=None, vertices_y=None, vertices_z=None):
+        super().__init__('GeometryNodeMeshCube', name='Cube', label=label)
 
-        super().__init__('GeometryNodeMeshCube', name='Cube')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'size'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'vertices_x'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'vertices_y'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'vertices_z'   ))
+        self.plug(0, size)
+        self.plug(1, vertices_x)
+        self.plug(2, vertices_y)
+        self.plug(3, vertices_z)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
+        # Output sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.mesh]
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh']
-
-        # ----- Input sockets
-
-        self.isize           = size
-        self.ivertices_x     = vertices_x
-        self.ivertices_y     = vertices_y
-        self.ivertices_z     = vertices_z
-
-        self.socket_in_name = 'isize'
-
-    def __repr__(self):
-        s = f"Node 'Cube' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   size            : {self.isize}"
-        s += f"\n   vertices_x      : {self.ivertices_x}"
-        s += f"\n   vertices_y      : {self.ivertices_y}"
-        s += f"\n   vertices_z      : {self.ivertices_z}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.mesh
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def isize(self):
-        return Node.Vector(self.inputs[0])
-
-    @isize.setter
-    def isize(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ivertices_x(self):
-        return Node.Integer(self.inputs[1])
-
-    @ivertices_x.setter
-    def ivertices_x(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ivertices_y(self):
-        return Node.Integer(self.inputs[2])
-
-    @ivertices_y.setter
-    def ivertices_y(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def ivertices_z(self):
-        return Node.Integer(self.inputs[3])
-
-    @ivertices_z.setter
-    def ivertices_z(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeMeshCylinder
+# ----------------------------------------------------------------------------------------------------
+# Node NodeCylinder for GeometryNodeMeshCylinder
 
 class NodeCylinder(Node):
 
-    """ Node class GeometryNodeMeshCylinder
+    """Node 'Cylinder' (GeometryNodeMeshCylinder)
 
     Input sockets
     -------------
-
-        0: vertices             Integer
-        1: side_segments        Integer
-        2: fill_segments        Integer
-        3: radius               Float
-        4: depth                Float
+        vertices        : Integer
+        side_segments   : Integer
+        fill_segments   : Integer
+        radius          : Float
+        depth           : Float
 
     Parameters
     ----------
-
-        fill_type   : 'NGON' in ('NONE', 'NGON', 'TRIANGLE_FAN') 
+        fill_type       : 'NGON' in [ 'NONE' 'NGON' 'TRIANGLE_FAN']
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-        1: top                  Boolean
-        2: side                 Boolean
-        3: bottom               Boolean
-
+        mesh            : Geometry
+        top             : Boolean
+        side            : Boolean
+        bottom          : Boolean
     """
 
-    PARAMETERS = ['fill_type']
+    def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', label=None):
 
-    def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON'):
+        super().__init__('GeometryNodeMeshCylinder', name='Cylinder', label=label)
 
-        super().__init__('GeometryNodeMeshCylinder', name='Cylinder')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'vertices'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'side_segments'))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'fill_segments'))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'radius'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'depth'        ))
+        self.bnode.fill_type       = fill_type
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'top'          ))
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'side'         ))
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'bottom'       ))
+        # Input sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, vertices)
+        self.plug(1, side_segments)
+        self.plug(2, fill_segments)
+        self.plug(3, radius)
+        self.plug(4, depth)
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh', 'top', 'side', 'bottom']
+        # Output sockets
 
-        # ----- Parameters
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.top             = self.Boolean(self.bnode.outputs[1])
+        self.side            = self.Boolean(self.bnode.outputs[2])
+        self.bottom          = self.Boolean(self.bnode.outputs[3])
+        self.output_sockets  = [self.mesh, self.top, self.side, self.bottom]
 
-        self.fill_type       = fill_type
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.ivertices       = vertices
-        self.iside_segments  = side_segments
-        self.ifill_segments  = fill_segments
-        self.iradius         = radius
-        self.idepth          = depth
-
-        self.socket_in_name = 'ivertices'
-
-    def __repr__(self):
-        s = f"Node 'Cylinder' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   vertices        : {self.ivertices}"
-        s += f"\n   side_segments   : {self.iside_segments}"
-        s += f"\n   fill_segments   : {self.ifill_segments}"
-        s += f"\n   radius          : {self.iradius}"
-        s += f"\n   depth           : {self.idepth}"
-        s += '\nParameters'
-        s += f"\n   fill_type       : {self.fill_type}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        s +=  "\n   top             : Boolean"
-        s +=  "\n   side            : Boolean"
-        s +=  "\n   bottom          : Boolean"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('NONE', 'NGON', 'TRIANGLE_FAN') 
-        if self.fill_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeCylinder'.\n 'fill_type' is '{self.fill_type}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def top(self):
-        return self.Boolean(self.outputs[1])
-
-    @property
-    def side(self):
-        return self.Boolean(self.outputs[2])
-
-    @property
-    def bottom(self):
-        return self.Boolean(self.outputs[3])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivertices(self):
-        return Node.Integer(self.inputs[0])
-
-    @ivertices.setter
-    def ivertices(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iside_segments(self):
-        return Node.Integer(self.inputs[1])
-
-    @iside_segments.setter
-    def iside_segments(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ifill_segments(self):
-        return Node.Integer(self.inputs[2])
-
-    @ifill_segments.setter
-    def ifill_segments(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def iradius(self):
-        return Node.Float(self.inputs[3])
-
-    @iradius.setter
-    def iradius(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def idepth(self):
-        return Node.Float(self.inputs[4])
-
-    @idepth.setter
-    def idepth(self, value):
-        self.inputs[4].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeMeshGrid
+# ----------------------------------------------------------------------------------------------------
+# Node NodeGrid for GeometryNodeMeshGrid
 
 class NodeGrid(Node):
 
-    """ Node class GeometryNodeMeshGrid
+    """Node 'Grid' (GeometryNodeMeshGrid)
 
     Input sockets
     -------------
-
-        0: size_x               Float
-        1: size_y               Float
-        2: vertices_x           Integer
-        3: vertices_y           Integer
+        size_x          : Float
+        size_y          : Float
+        vertices_x      : Integer
+        vertices_y      : Integer
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-
+        mesh            : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, size_x=None, size_y=None, vertices_x=None, vertices_y=None, label=None):
 
-    def __init__(self, size_x=None, size_y=None, vertices_x=None, vertices_y=None):
+        super().__init__('GeometryNodeMeshGrid', name='Grid', label=label)
 
-        super().__init__('GeometryNodeMeshGrid', name='Grid')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'size_x'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'size_y'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'vertices_x'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'vertices_y'   ))
+        self.plug(0, size_x)
+        self.plug(1, size_y)
+        self.plug(2, vertices_x)
+        self.plug(3, vertices_y)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
+        # Output sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.mesh]
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh']
-
-        # ----- Input sockets
-
-        self.isize_x         = size_x
-        self.isize_y         = size_y
-        self.ivertices_x     = vertices_x
-        self.ivertices_y     = vertices_y
-
-        self.socket_in_name = 'isize_x'
-
-    def __repr__(self):
-        s = f"Node 'Grid' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   size_x          : {self.isize_x}"
-        s += f"\n   size_y          : {self.isize_y}"
-        s += f"\n   vertices_x      : {self.ivertices_x}"
-        s += f"\n   vertices_y      : {self.ivertices_y}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.mesh
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def isize_x(self):
-        return Node.Float(self.inputs[0])
-
-    @isize_x.setter
-    def isize_x(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def isize_y(self):
-        return Node.Float(self.inputs[1])
-
-    @isize_y.setter
-    def isize_y(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ivertices_x(self):
-        return Node.Integer(self.inputs[2])
-
-    @ivertices_x.setter
-    def ivertices_x(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def ivertices_y(self):
-        return Node.Integer(self.inputs[3])
-
-    @ivertices_y.setter
-    def ivertices_y(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeMeshIcoSphere
+# ----------------------------------------------------------------------------------------------------
+# Node NodeIcoSphere for GeometryNodeMeshIcoSphere
 
 class NodeIcoSphere(Node):
 
-    """ Node class GeometryNodeMeshIcoSphere
+    """Node 'Ico Sphere' (GeometryNodeMeshIcoSphere)
 
     Input sockets
     -------------
-
-        0: radius               Float
-        1: subdivisions         Integer
+        radius          : Float
+        subdivisions    : Integer
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-
+        mesh            : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, radius=None, subdivisions=None, label=None):
 
-    def __init__(self, radius=None, subdivisions=None):
+        super().__init__('GeometryNodeMeshIcoSphere', name='Ico Sphere', label=label)
 
-        super().__init__('GeometryNodeMeshIcoSphere', name='Ico Sphere')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'radius'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'subdivisions' ))
+        self.plug(0, radius)
+        self.plug(1, subdivisions)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
+        # Output sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.mesh]
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh']
-
-        # ----- Input sockets
-
-        self.iradius         = radius
-        self.isubdivisions   = subdivisions
-
-        self.socket_in_name = 'iradius'
-
-    def __repr__(self):
-        s = f"Node 'IcoSphere' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   radius          : {self.iradius}"
-        s += f"\n   subdivisions    : {self.isubdivisions}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.mesh
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def iradius(self):
-        return Node.Float(self.inputs[0])
-
-    @iradius.setter
-    def iradius(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def isubdivisions(self):
-        return Node.Integer(self.inputs[1])
-
-    @isubdivisions.setter
-    def isubdivisions(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeMeshLine
+# ----------------------------------------------------------------------------------------------------
+# Node NodeMeshLine for GeometryNodeMeshLine
 
 class NodeMeshLine(Node):
 
-    """ Node class GeometryNodeMeshLine
+    """Node 'Mesh Line' (GeometryNodeMeshLine)
 
     Input sockets
     -------------
-
-        0: count                Integer
-        1: resolution           Float
-        2: start_location       Vector
-        3: offset               Vector
+        count           : Integer
+        resolution      : Float
+        start_location  : Vector
+        offset          : Vector
 
     Parameters
     ----------
-
-        count_mode  : 'TOTAL' in ('TOTAL', 'RESOLUTION') 
-        mode        : 'OFFSET' in ('OFFSET', 'END_POINTS') 
-
-    Output sockets
-    --------------
-
-        0: mesh                 Geometry
-
-    """
-
-    PARAMETERS = ['count_mode', 'mode']
-
-    def __init__(self, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET'):
-
-        super().__init__('GeometryNodeMeshLine', name='Mesh Line')
-
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'count'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'resolution'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'start_location'))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'offset'       ))
-
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
-
-        self.output_geometry_socket = self.outputs[0]
-
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh']
-
-        # ----- Parameters
-
-        self.count_mode      = count_mode
-        self.mode            = mode
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.icount          = count
-        self.iresolution     = resolution
-        self.istart_location = start_location
-        self.ioffset         = offset
-
-        self.socket_in_name = 'icount'
-
-    def __repr__(self):
-        s = f"Node 'MeshLine' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   count           : {self.icount}"
-        s += f"\n   resolution      : {self.iresolution}"
-        s += f"\n   start_location  : {self.istart_location}"
-        s += f"\n   offset          : {self.ioffset}"
-        s += '\nParameters'
-        s += f"\n   count_mode      : {self.count_mode}"
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('TOTAL', 'RESOLUTION') 
-        if self.count_mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeMeshLine'.\n 'count_mode' is '{self.count_mode}'.\n Authorized values are {valids}.")
-        valids = ('OFFSET', 'END_POINTS') 
-        if self.mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeMeshLine'.\n 'mode' is '{self.mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.mesh
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def icount(self):
-        return Node.Integer(self.inputs[0])
-
-    @icount.setter
-    def icount(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iresolution(self):
-        return Node.Float(self.inputs[1])
-
-    @iresolution.setter
-    def iresolution(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def istart_location(self):
-        return Node.Vector(self.inputs[2])
-
-    @istart_location.setter
-    def istart_location(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def ioffset(self):
-        return Node.Vector(self.inputs[3])
-
-    @ioffset.setter
-    def ioffset(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeMeshToCurve
-
-class NodeMeshtoCurve(Node):
-
-    """ Node class GeometryNodeMeshToCurve
-
-    Input sockets
-    -------------
-
-        0: mesh                 Geometry
-        1: selection            Boolean
+        count_mode      : 'TOTAL' in [ 'TOTAL' 'RESOLUTION']
+        mode            : 'OFFSET' in [ 'OFFSET' 'END_POINTS']
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-
+        mesh            : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', label=None):
 
-    def __init__(self, mesh=None, selection=None):
+        super().__init__('GeometryNodeMeshLine', name='Mesh Line', label=label)
 
-        super().__init__('GeometryNodeMeshToCurve', name='Mesh to Curve')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'mesh'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
+        self.bnode.count_mode      = count_mode
+        self.bnode.mode            = mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, count)
+        self.plug(1, resolution)
+        self.plug(2, start_location)
+        self.plug(3, offset)
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve']
+        # Output sockets
 
-        # ----- Input sockets
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.mesh]
 
-        self.imesh           = mesh
-        self.iselection      = selection
+# ----------------------------------------------------------------------------------------------------
+# Node NodeMeshToCurve for GeometryNodeMeshToCurve
 
-        self.socket_in_name = 'imesh'
+class NodeMeshToCurve(Node):
 
-    def __repr__(self):
-        s = f"Node 'MeshtoCurve' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   mesh            : {self.imesh}"
-        s += f"\n   selection       : {self.iselection}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.curve
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def imesh(self):
-        return Node.Mesh(self.inputs[0])
-
-    @imesh.setter
-    def imesh(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeMeshToPoints
-
-class NodeMeshtoPoints(Node):
-
-    """ Node class GeometryNodeMeshToPoints
+    """Node 'Mesh to Curve' (GeometryNodeMeshToCurve)
 
     Input sockets
     -------------
+        mesh            : Geometry
+        selection       : Boolean
 
-        0: mesh                 Geometry
-        1: selection            Boolean
-        2: position             Vector
-        3: radius               Float
+    Output sockets
+    --------------
+        curve           : Geometry
+    """
+
+    def __init__(self, mesh=None, selection=None, label=None):
+
+        super().__init__('GeometryNodeMeshToCurve', name='Mesh to Curve', label=label)
+
+        # Input sockets
+
+        self.plug(0, mesh)
+        self.plug(1, selection)
+
+        # Output sockets
+
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.curve]
+
+# ----------------------------------------------------------------------------------------------------
+# Node NodeMeshToPoints for GeometryNodeMeshToPoints
+
+class NodeMeshToPoints(Node):
+
+    """Node 'Mesh to Points' (GeometryNodeMeshToPoints)
+
+    Input sockets
+    -------------
+        mesh            : Geometry
+        selection       : Boolean
+        position        : Vector
+        radius          : Float
 
     Parameters
     ----------
-
-        mode        : 'VERTICES' in ('VERTICES', 'EDGES', 'FACES', 'CORNERS') 
+        mode            : 'VERTICES' in [ 'VERTICES' 'EDGES' 'FACES' 'CORNERS']
 
     Output sockets
     --------------
-
-        0: points               Geometry
-
+        points          : Geometry
     """
 
-    PARAMETERS = ['mode']
+    def __init__(self, mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None):
 
-    def __init__(self, mesh=None, selection=None, position=None, radius=None, mode='VERTICES'):
+        super().__init__('GeometryNodeMeshToPoints', name='Mesh to Points', label=label)
 
-        super().__init__('GeometryNodeMeshToPoints', name='Mesh to Points')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'mesh'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'position'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'radius'       ))
+        self.bnode.mode            = mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'points'       ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, mesh)
+        self.plug(1, selection)
+        self.plug(2, position)
+        self.plug(3, radius)
 
-        self.socket_out_name = 'points'
-        self.out_socket_names = ['points']
+        # Output sockets
 
-        # ----- Parameters
+        self.points          = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.points]
 
-        self.mode            = mode
-        self.check_parameters()
+# ----------------------------------------------------------------------------------------------------
+# Node NodeUvSphere for GeometryNodeMeshUVSphere
 
-        # ----- Input sockets
+class NodeUvSphere(Node):
 
-        self.imesh           = mesh
-        self.iselection      = selection
-        self.iposition       = position
-        self.iradius         = radius
-
-        self.socket_in_name = 'imesh'
-
-    def __repr__(self):
-        s = f"Node 'MeshtoPoints' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   mesh            : {self.imesh}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   position        : {self.iposition}"
-        s += f"\n   radius          : {self.iradius}"
-        s += '\nParameters'
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   points          : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('VERTICES', 'EDGES', 'FACES', 'CORNERS') 
-        if self.mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeMeshtoPoints'.\n 'mode' is '{self.mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def points(self):
-        return self.Points(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.points
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def imesh(self):
-        return Node.Mesh(self.inputs[0])
-
-    @imesh.setter
-    def imesh(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iposition(self):
-        return Node.Vector(self.inputs[2])
-
-    @iposition.setter
-    def iposition(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def iradius(self):
-        return Node.Float(self.inputs[3])
-
-    @iradius.setter
-    def iradius(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeMeshUVSphere
-
-class NodeUVSphere(Node):
-
-    """ Node class GeometryNodeMeshUVSphere
+    """Node 'UV Sphere' (GeometryNodeMeshUVSphere)
 
     Input sockets
     -------------
-
-        0: segments             Integer
-        1: rings                Integer
-        2: radius               Float
+        segments        : Integer
+        rings           : Integer
+        radius          : Float
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-
+        mesh            : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, segments=None, rings=None, radius=None, label=None):
 
-    def __init__(self, segments=None, rings=None, radius=None):
+        super().__init__('GeometryNodeMeshUVSphere', name='UV Sphere', label=label)
 
-        super().__init__('GeometryNodeMeshUVSphere', name='UV Sphere')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'segments'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'rings'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'radius'       ))
+        self.plug(0, segments)
+        self.plug(1, rings)
+        self.plug(2, radius)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
+        # Output sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.mesh]
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh']
-
-        # ----- Input sockets
-
-        self.isegments       = segments
-        self.irings          = rings
-        self.iradius         = radius
-
-        self.socket_in_name = 'isegments'
-
-    def __repr__(self):
-        s = f"Node 'UVSphere' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   segments        : {self.isegments}"
-        s += f"\n   rings           : {self.irings}"
-        s += f"\n   radius          : {self.iradius}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.mesh
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def isegments(self):
-        return Node.Integer(self.inputs[0])
-
-    @isegments.setter
-    def isegments(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def irings(self):
-        return Node.Integer(self.inputs[1])
-
-    @irings.setter
-    def irings(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iradius(self):
-        return Node.Float(self.inputs[2])
-
-    @iradius.setter
-    def iradius(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeObjectInfo
+# ----------------------------------------------------------------------------------------------------
+# Node NodeObjectInfo for GeometryNodeObjectInfo
 
 class NodeObjectInfo(Node):
 
-    """ Node class GeometryNodeObjectInfo
+    """Node 'Object Info' (GeometryNodeObjectInfo)
 
     Input sockets
     -------------
-
-        0: object               Object
-        1: as_instance          Boolean
+        object          : Object
+        as_instance     : Boolean
 
     Parameters
     ----------
-
-        transform_space: 'ORIGINAL' in ('ORIGINAL', 'RELATIVE') 
-
-    Output sockets
-    --------------
-
-        0: location             Vector
-        1: rotation             Vector
-        2: scale                Vector
-        3: geometry             Geometry
-
-    """
-
-    PARAMETERS = ['transform_space']
-
-    def __init__(self, object=None, as_instance=None, transform_space='ORIGINAL'):
-
-        super().__init__('GeometryNodeObjectInfo', name='Object Info')
-
-        self.inputs.add(SocketIn(self, 'NodeSocketObject'       , 'object'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'as_instance'  ))
-
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'location'     ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'rotation'     ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'scale'        ))
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
-
-        self.output_geometry_socket = self.outputs[3]
-
-        self.socket_out_name = 'location'
-        self.out_socket_names = ['location', 'rotation', 'scale', 'geometry']
-
-        # ----- Parameters
-
-        self.transform_space = transform_space
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.iobject         = object
-        self.ias_instance    = as_instance
-
-        self.socket_in_name = 'iobject'
-
-    def __repr__(self):
-        s = f"Node 'ObjectInfo' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   object          : {self.iobject}"
-        s += f"\n   as_instance     : {self.ias_instance}"
-        s += '\nParameters'
-        s += f"\n   transform_space : {self.transform_space}"
-        s += '\nOutput sockets'
-        s +=  "\n   location        : Vector"
-        s +=  "\n   rotation        : Vector"
-        s +=  "\n   scale           : Vector"
-        s +=  "\n   geometry        : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('ORIGINAL', 'RELATIVE') 
-        if self.transform_space not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeObjectInfo'.\n 'transform_space' is '{self.transform_space}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def location(self):
-        return self.Vector(self.outputs[0])
-
-    @property
-    def rotation(self):
-        return self.Vector(self.outputs[1])
-
-    @property
-    def scale(self):
-        return self.Vector(self.outputs[2])
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[3])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def iobject(self):
-        return Node.Object(self.inputs[0])
-
-    @iobject.setter
-    def iobject(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ias_instance(self):
-        return Node.Boolean(self.inputs[1])
-
-    @ias_instance.setter
-    def ias_instance(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodePointsToVertices
-
-class NodePointstoVertices(Node):
-
-    """ Node class GeometryNodePointsToVertices
-
-    Input sockets
-    -------------
-
-        0: points               Geometry
-        1: selection            Boolean
+        transform_space : 'ORIGINAL' in [ 'ORIGINAL' 'RELATIVE']
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-
+        location        : Vector
+        rotation        : Vector
+        scale           : Vector
+        geometry        : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, object=None, as_instance=None, transform_space='ORIGINAL', label=None):
 
-    def __init__(self, points=None, selection=None):
+        super().__init__('GeometryNodeObjectInfo', name='Object Info', label=label)
 
-        super().__init__('GeometryNodePointsToVertices', name='Points to Vertices')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'points'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
+        self.bnode.transform_space = transform_space
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, object)
+        self.plug(1, as_instance)
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh']
+        # Output sockets
 
-        # ----- Input sockets
+        self.location        = self.Vector(self.bnode.outputs[0])
+        self.rotation        = self.Vector(self.bnode.outputs[1])
+        self.scale           = self.Vector(self.bnode.outputs[2])
+        self.geometry        = self.Geometry(self.bnode.outputs[3])
+        self.output_sockets  = [self.location, self.rotation, self.scale, self.geometry]
 
-        self.ipoints         = points
-        self.iselection      = selection
+# ----------------------------------------------------------------------------------------------------
+# Node NodePointsToVertices for GeometryNodePointsToVertices
 
-        self.socket_in_name = 'ipoints'
+class NodePointsToVertices(Node):
 
-    def __repr__(self):
-        s = f"Node 'PointstoVertices' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   points          : {self.ipoints}"
-        s += f"\n   selection       : {self.iselection}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.mesh
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ipoints(self):
-        return Node.Points(self.inputs[0])
-
-    @ipoints.setter
-    def ipoints(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodePointsToVolume
-
-class NodePointstoVolume(Node):
-
-    """ Node class GeometryNodePointsToVolume
+    """Node 'Points to Vertices' (GeometryNodePointsToVertices)
 
     Input sockets
     -------------
+        points          : Geometry
+        selection       : Boolean
 
-        0: points               Geometry
-        1: density              Float
-        2: voxel_size           Float
-        3: voxel_amount         Float
-        4: radius               Float
+    Output sockets
+    --------------
+        mesh            : Geometry
+    """
+
+    def __init__(self, points=None, selection=None, label=None):
+
+        super().__init__('GeometryNodePointsToVertices', name='Points to Vertices', label=label)
+
+        # Input sockets
+
+        self.plug(0, points)
+        self.plug(1, selection)
+
+        # Output sockets
+
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.mesh]
+
+# ----------------------------------------------------------------------------------------------------
+# Node NodePointsToVolume for GeometryNodePointsToVolume
+
+class NodePointsToVolume(Node):
+
+    """Node 'Points to Volume' (GeometryNodePointsToVolume)
+
+    Input sockets
+    -------------
+        points          : Geometry
+        density         : Float
+        voxel_size      : Float
+        voxel_amount    : Float
+        radius          : Float
 
     Parameters
     ----------
-
-        resolution_mode: 'VOXEL_AMOUNT' in ('VOXEL_AMOUNT', 'VOXEL_SIZE') 
+        resolution_mode : 'VOXEL_AMOUNT' in [ 'VOXEL_AMOUNT' 'VOXEL_SIZE']
 
     Output sockets
     --------------
-
-        0: volume               Geometry
-
+        volume          : Geometry
     """
 
-    PARAMETERS = ['resolution_mode']
+    def __init__(self, points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', label=None):
 
-    def __init__(self, points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
+        super().__init__('GeometryNodePointsToVolume', name='Points to Volume', label=label)
 
-        super().__init__('GeometryNodePointsToVolume', name='Points to Volume')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'points'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'density'      ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'voxel_size'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'voxel_amount' ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'radius'       ))
+        self.bnode.resolution_mode = resolution_mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'volume'       ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, points)
+        self.plug(1, density)
+        self.plug(2, voxel_size)
+        self.plug(3, voxel_amount)
+        self.plug(4, radius)
 
-        self.socket_out_name = 'volume'
-        self.out_socket_names = ['volume']
+        # Output sockets
 
-        # ----- Parameters
+        self.volume          = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.volume]
 
-        self.resolution_mode = resolution_mode
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.ipoints         = points
-        self.idensity        = density
-        self.ivoxel_size     = voxel_size
-        self.ivoxel_amount   = voxel_amount
-        self.iradius         = radius
-
-        self.socket_in_name = 'ipoints'
-
-    def __repr__(self):
-        s = f"Node 'PointstoVolume' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   points          : {self.ipoints}"
-        s += f"\n   density         : {self.idensity}"
-        s += f"\n   voxel_size      : {self.ivoxel_size}"
-        s += f"\n   voxel_amount    : {self.ivoxel_amount}"
-        s += f"\n   radius          : {self.iradius}"
-        s += '\nParameters'
-        s += f"\n   resolution_mode : {self.resolution_mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   volume          : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('VOXEL_AMOUNT', 'VOXEL_SIZE') 
-        if self.resolution_mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodePointstoVolume'.\n 'resolution_mode' is '{self.resolution_mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def volume(self):
-        return self.Volume(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.volume
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ipoints(self):
-        return Node.Points(self.inputs[0])
-
-    @ipoints.setter
-    def ipoints(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def idensity(self):
-        return Node.Float(self.inputs[1])
-
-    @idensity.setter
-    def idensity(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ivoxel_size(self):
-        return Node.Float(self.inputs[2])
-
-    @ivoxel_size.setter
-    def ivoxel_size(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def ivoxel_amount(self):
-        return Node.Float(self.inputs[3])
-
-    @ivoxel_amount.setter
-    def ivoxel_amount(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def iradius(self):
-        return Node.Float(self.inputs[4])
-
-    @iradius.setter
-    def iradius(self, value):
-        self.inputs[4].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeProximity
+# ----------------------------------------------------------------------------------------------------
+# Node NodeGeometryProximity for GeometryNodeProximity
 
 class NodeGeometryProximity(Node):
 
-    """ Node class GeometryNodeProximity
+    """Node 'Geometry Proximity' (GeometryNodeProximity)
 
     Input sockets
     -------------
-
-        0: target               Geometry
-        1: source_position      Vector
+        target          : Geometry
+        source_position : Vector
 
     Parameters
     ----------
-
-        target_element: 'FACES' in ('POINTS', 'EDGES', 'FACES') 
+        target_element  : 'FACES' in [ 'POINTS' 'EDGES' 'FACES']
 
     Output sockets
     --------------
-
-        0: position             Vector
-        1: distance             Float
-
+        position        : Vector
+        distance        : Float
     """
 
-    PARAMETERS = ['target_element']
+    def __init__(self, target=None, source_position=None, target_element='FACES', label=None):
 
-    def __init__(self, target=None, source_position=None, target_element='FACES'):
+        super().__init__('GeometryNodeProximity', name='Geometry Proximity', label=label)
 
-        super().__init__('GeometryNodeProximity', name='Geometry Proximity')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'target'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'source_position'))
+        self.bnode.target_element  = target_element
 
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'position'     ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'distance'     ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
+        self.plug(0, target)
+        self.plug(1, source_position)
 
-        self.socket_out_name = 'position'
-        self.out_socket_names = ['position', 'distance']
+        # Output sockets
 
-        # ----- Parameters
+        self.position        = self.Vector(self.bnode.outputs[0])
+        self.distance        = self.Float(self.bnode.outputs[1])
+        self.output_sockets  = [self.position, self.distance]
 
-        self.target_element  = target_element
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.itarget         = target
-        self.isource_position = source_position
-
-        self.socket_in_name = 'itarget'
-
-    def __repr__(self):
-        s = f"Node 'GeometryProximity' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   target          : {self.itarget}"
-        s += f"\n   source_position : {self.isource_position}"
-        s += '\nParameters'
-        s += f"\n   target_element  : {self.target_element}"
-        s += '\nOutput sockets'
-        s +=  "\n   position        : Vector"
-        s +=  "\n   distance        : Float"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('POINTS', 'EDGES', 'FACES') 
-        if self.target_element not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeGeometryProximity'.\n 'target_element' is '{self.target_element}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def position(self):
-        return self.Vector(self.outputs[0])
-
-    @property
-    def distance(self):
-        return self.Float(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def itarget(self):
-        return Node.Geometry(self.inputs[0])
-
-    @itarget.setter
-    def itarget(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def isource_position(self):
-        return Node.Vector(self.inputs[1])
-
-    @isource_position.setter
-    def isource_position(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeRaycast
+# ----------------------------------------------------------------------------------------------------
+# Node NodeRaycast for GeometryNodeRaycast
 
 class NodeRaycast(Node):
 
-    """ Node class GeometryNodeRaycast
+    """Node 'Raycast' (GeometryNodeRaycast)
+
+    Data type dependant sockets
+    ---------------------------
+
+        Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+
+        Input sockets     : ['attribute']
+        Output sockets    : ['attribute']
 
     Input sockets
     -------------
-
-        0: target_geometry      Geometry
-        1: attribute            Vector
-        2: attribute            Float
-        3: attribute            Color
-        4: attribute            Boolean
-        5: attribute            Integer
-        6: source_position      Vector
-        7: ray_direction        Vector
-        8: ray_length           Float
+        target_geometry : Geometry
+        attribute       : data_type dependant
+        source_position : Vector
+        ray_direction   : Vector
+        ray_length      : Float
 
     Parameters
     ----------
-
-        data_type   : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
-        mapping     : 'INTERPOLATED' in ('INTERPOLATED', 'NEAREST') 
+        data_type       : 'FLOAT' in [ 'FLOAT' 'INT' 'FLOAT_VECTOR' 'FLOAT_COLOR' 'BOOLEAN']
+        mapping         : 'INTERPOLATED' in [ 'INTERPOLATED' 'NEAREST']
 
     Output sockets
     --------------
-
-        0: is_hit               Boolean
-        1: hit_position         Vector
-        2: hit_normal           Vector
-        3: hit_distance         Float
-        4: attribute            Vector
-        5: attribute            Float
-        6: attribute            Color
-        7: attribute            Boolean
-        8: attribute            Integer
-
+        is_hit          : Boolean
+        hit_position    : Vector
+        hit_normal      : Vector
+        hit_distance    : Float
+        attribute       : data_type dependant
     """
 
-    PARAMETERS = ['data_type', 'mapping']
+    def __init__(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED', label=None):
 
-    def __init__(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED'):
+        super().__init__('GeometryNodeRaycast', name='Raycast', label=label)
 
-        super().__init__('GeometryNodeRaycast', name='Raycast')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'target_geometry'))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'attribute'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'attribute'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'attribute'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'attribute'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'attribute'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'source_position'))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'ray_direction'))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'ray_length'   ))
+        self.bnode.data_type       = data_type
+        self.bnode.mapping         = mapping
 
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'is_hit'       ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'hit_position' ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'hit_normal'   ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'hit_distance' ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'attribute'    ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'attribute'    ))
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'attribute'    ))
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'attribute'    ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'attribute'    ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
+        if data_type == 'FLOAT':
+            self.plug(2, attribute)
+        elif data_type == 'INT':
+            self.plug(5, attribute)
+        elif data_type == 'FLOAT_VECTOR':
+            self.plug(1, attribute)
+        elif data_type == 'FLOAT_COLOR':
+            self.plug(3, attribute)
+        elif data_type == 'BOOLEAN':
+            self.plug(4, attribute)
 
-        self.socket_out_name = 'is_hit'
-        self.out_socket_names = ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+        self.plug(0, target_geometry)
+        self.plug(6, source_position)
+        self.plug(7, ray_direction)
+        self.plug(8, ray_length)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.data_type       = data_type
-        self.mapping         = mapping
-        self.check_parameters()
+        if data_type == 'FLOAT':
+            self.attribute       = self.Float(self.bnode.outputs[5])
+        elif data_type == 'INT':
+            self.attribute       = self.Integer(self.bnode.outputs[8])
+        elif data_type == 'FLOAT_VECTOR':
+            self.attribute       = self.Vector(self.bnode.outputs[4])
+        elif data_type == 'FLOAT_COLOR':
+            self.attribute       = self.Color(self.bnode.outputs[6])
+        elif data_type == 'BOOLEAN':
+            self.attribute       = self.Boolean(self.bnode.outputs[7])
 
-        # ----- Input sockets
+        self.is_hit          = self.Boolean(self.bnode.outputs[0])
+        self.hit_position    = self.Vector(self.bnode.outputs[1])
+        self.hit_normal      = self.Vector(self.bnode.outputs[2])
+        self.hit_distance    = self.Float(self.bnode.outputs[3])
+        self.output_sockets  = [self.is_hit, self.hit_position, self.hit_normal, self.hit_distance]
 
-        self.itarget_geometry = target_geometry
-        self.iattribute      = attribute
-        self.isource_position = source_position
-        self.iray_direction  = ray_direction
-        self.iray_length     = ray_length
-
-        self.socket_in_name = 'itarget_geometry'
-
-    def __repr__(self):
-        s = f"Node 'Raycast' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   target_geometry : {self.itarget_geometry}"
-        s += f"\n   attribute       : {self.iattribute}"
-        s += f"\n   source_position : {self.isource_position}"
-        s += f"\n   ray_direction   : {self.iray_direction}"
-        s += f"\n   ray_length      : {self.iray_length}"
-        s += '\nParameters'
-        s += f"\n   data_type       : {self.data_type}"
-        s += f"\n   mapping         : {self.mapping}"
-        s += '\nOutput sockets'
-        s +=  "\n   is_hit          : Boolean"
-        s +=  "\n   hit_position    : Vector"
-        s +=  "\n   hit_normal      : Vector"
-        s +=  "\n   hit_distance    : Float"
-        s +=  "\n   attribute       : variable"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
-        if self.data_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeRaycast'.\n 'data_type' is '{self.data_type}'.\n Authorized values are {valids}.")
-        valids = ('INTERPOLATED', 'NEAREST') 
-        if self.mapping not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeRaycast'.\n 'mapping' is '{self.mapping}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def is_hit(self):
-        return self.Boolean(self.outputs[0])
-
-    @property
-    def hit_position(self):
-        return self.Vector(self.outputs[1])
-
-    @property
-    def hit_normal(self):
-        return self.Vector(self.outputs[2])
-
-    @property
-    def hit_distance(self):
-        return self.Float(self.outputs[3])
-
-    @property
-    def attribute(self):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            return self.Vector(self.outputs[4])
-        elif (self.data_type == 'FLOAT'):
-            return self.Float(self.outputs[5])
-        elif (self.data_type == 'FLOAT_COLOR'):
-            return self.Color(self.outputs[6])
-        elif (self.data_type == 'BOOLEAN'):
-            return self.Boolean(self.outputs[7])
-        elif (self.data_type == 'INT'):
-            return self.Integer(self.outputs[8])
-        self.check_parameters()
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def itarget_geometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @itarget_geometry.setter
-    def itarget_geometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iattribute(self):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            return Node.Vector(self.inputs[1])
-        elif (self.data_type == 'FLOAT'):
-            return Node.Float(self.inputs[2])
-        elif (self.data_type == 'FLOAT_COLOR'):
-            return Node.Color(self.inputs[3])
-        elif (self.data_type == 'BOOLEAN'):
-            return Node.Boolean(self.inputs[4])
-        elif (self.data_type == 'INT'):
-            return Node.Integer(self.inputs[5])
-
-    @iattribute.setter
-    def iattribute(self, value):
-        if (self.data_type == 'FLOAT_VECTOR'):
-            self.inputs[1].plug(value)
-        elif (self.data_type == 'FLOAT'):
-            self.inputs[2].plug(value)
-        elif (self.data_type == 'FLOAT_COLOR'):
-            self.inputs[3].plug(value)
-        elif (self.data_type == 'BOOLEAN'):
-            self.inputs[4].plug(value)
-        elif (self.data_type == 'INT'):
-            self.inputs[5].plug(value)
-
-    @property
-    def isource_position(self):
-        return Node.Vector(self.inputs[6])
-
-    @isource_position.setter
-    def isource_position(self, value):
-        self.inputs[6].plug(value)
-
-    @property
-    def iray_direction(self):
-        return Node.Vector(self.inputs[7])
-
-    @iray_direction.setter
-    def iray_direction(self, value):
-        self.inputs[7].plug(value)
-
-    @property
-    def iray_length(self):
-        return Node.Float(self.inputs[8])
-
-    @iray_length.setter
-    def iray_length(self, value):
-        self.inputs[8].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeRealizeInstances
+# ----------------------------------------------------------------------------------------------------
+# Node NodeRealizeInstances for GeometryNodeRealizeInstances
 
 class NodeRealizeInstances(Node):
 
-    """ Node class GeometryNodeRealizeInstances
+    """Node 'Realize Instances' (GeometryNodeRealizeInstances)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
+        geometry        : Geometry
 
     Parameters
     ----------
-
-        legacy_behavior: False
+        legacy_behavior : (False) bool
 
     Output sockets
     --------------
-
-        0: geometry             Geometry
-
+        geometry        : Geometry
     """
 
-    PARAMETERS = ['legacy_behavior']
+    def __init__(self, geometry=None, legacy_behavior=False, label=None):
 
-    def __init__(self, geometry=None, legacy_behavior=False):
+        super().__init__('GeometryNodeRealizeInstances', name='Realize Instances', label=label)
 
-        super().__init__('GeometryNodeRealizeInstances', name='Realize Instances')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
+        self.bnode.legacy_behavior = legacy_behavior
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, geometry)
 
-        self.socket_out_name = 'geometry'
-        self.out_socket_names = ['geometry']
+        # Output sockets
 
-        # ----- Parameters
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.geometry]
 
-        self.legacy_behavior = legacy_behavior
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'RealizeInstances' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += '\nParameters'
-        s += f"\n   legacy_behavior : {self.legacy_behavior}"
-        s += '\nOutput sockets'
-        s +=  "\n   geometry        : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.geometry
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeReplaceMaterial
+# ----------------------------------------------------------------------------------------------------
+# Node NodeReplaceMaterial for GeometryNodeReplaceMaterial
 
 class NodeReplaceMaterial(Node):
 
-    """ Node class GeometryNodeReplaceMaterial
+    """Node 'Replace Material' (GeometryNodeReplaceMaterial)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
-        1: old                  Material
-        2: new                  Material
+        geometry        : Geometry
+        old             : Material
+        new             : Material
 
     Output sockets
     --------------
-
-        0: geometry             Geometry
-
+        geometry        : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, geometry=None, old=None, new=None, label=None):
 
-    def __init__(self, geometry=None, old=None, new=None):
+        super().__init__('GeometryNodeReplaceMaterial', name='Replace Material', label=label)
 
-        super().__init__('GeometryNodeReplaceMaterial', name='Replace Material')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketMaterial'     , 'old'          ))
-        self.inputs.add(SocketIn(self, 'NodeSocketMaterial'     , 'new'          ))
+        self.plug(0, geometry)
+        self.plug(1, old)
+        self.plug(2, new)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.geometry]
 
-        self.socket_out_name = 'geometry'
-        self.out_socket_names = ['geometry']
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-        self.iold            = old
-        self.inew            = new
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'ReplaceMaterial' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += f"\n   old             : {self.iold}"
-        s += f"\n   new             : {self.inew}"
-        s += '\nOutput sockets'
-        s +=  "\n   geometry        : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.geometry
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iold(self):
-        return Node.Material(self.inputs[1])
-
-    @iold.setter
-    def iold(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def inew(self):
-        return Node.Material(self.inputs[2])
-
-    @inew.setter
-    def inew(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeResampleCurve
+# ----------------------------------------------------------------------------------------------------
+# Node NodeResampleCurve for GeometryNodeResampleCurve
 
 class NodeResampleCurve(Node):
 
-    """ Node class GeometryNodeResampleCurve
+    """Node 'Resample Curve' (GeometryNodeResampleCurve)
 
     Input sockets
     -------------
-
-        0: curve                Geometry
-        1: selection            Boolean
-        2: count                Integer
-        3: length               Float
+        curve           : Geometry
+        selection       : Boolean
+        count           : Integer
+        length          : Float
 
     Parameters
     ----------
-
-        mode        : 'COUNT' in ('EVALUATED', 'COUNT', 'LENGTH') 
+        mode            : 'COUNT' in [ 'EVALUATED' 'COUNT' 'LENGTH']
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-
+        curve           : Geometry
     """
 
-    PARAMETERS = ['mode']
+    def __init__(self, curve=None, selection=None, count=None, length=None, mode='COUNT', label=None):
 
-    def __init__(self, curve=None, selection=None, count=None, length=None, mode='COUNT'):
+        super().__init__('GeometryNodeResampleCurve', name='Resample Curve', label=label)
 
-        super().__init__('GeometryNodeResampleCurve', name='Resample Curve')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'curve'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'count'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'length'       ))
+        self.bnode.mode            = mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, curve)
+        self.plug(1, selection)
+        self.plug(2, count)
+        self.plug(3, length)
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve']
+        # Output sockets
 
-        # ----- Parameters
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.curve]
 
-        self.mode            = mode
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.icurve          = curve
-        self.iselection      = selection
-        self.icount          = count
-        self.ilength         = length
-
-        self.socket_in_name = 'icurve'
-
-    def __repr__(self):
-        s = f"Node 'ResampleCurve' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   curve           : {self.icurve}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   count           : {self.icount}"
-        s += f"\n   length          : {self.ilength}"
-        s += '\nParameters'
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('EVALUATED', 'COUNT', 'LENGTH') 
-        if self.mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeResampleCurve'.\n 'mode' is '{self.mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.curve
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def icurve(self):
-        return Node.Curve(self.inputs[0])
-
-    @icurve.setter
-    def icurve(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def icount(self):
-        return Node.Integer(self.inputs[2])
-
-    @icount.setter
-    def icount(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def ilength(self):
-        return Node.Float(self.inputs[3])
-
-    @ilength.setter
-    def ilength(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeReverseCurve
+# ----------------------------------------------------------------------------------------------------
+# Node NodeReverseCurve for GeometryNodeReverseCurve
 
 class NodeReverseCurve(Node):
 
-    """ Node class GeometryNodeReverseCurve
+    """Node 'Reverse Curve' (GeometryNodeReverseCurve)
 
     Input sockets
     -------------
-
-        0: curve                Geometry
-        1: selection            Boolean
+        curve           : Geometry
+        selection       : Boolean
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-
+        curve           : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, curve=None, selection=None, label=None):
 
-    def __init__(self, curve=None, selection=None):
+        super().__init__('GeometryNodeReverseCurve', name='Reverse Curve', label=label)
 
-        super().__init__('GeometryNodeReverseCurve', name='Reverse Curve')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'curve'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
+        self.plug(0, curve)
+        self.plug(1, selection)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.curve]
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve']
-
-        # ----- Input sockets
-
-        self.icurve          = curve
-        self.iselection      = selection
-
-        self.socket_in_name = 'icurve'
-
-    def __repr__(self):
-        s = f"Node 'ReverseCurve' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   curve           : {self.icurve}"
-        s += f"\n   selection       : {self.iselection}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.curve
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def icurve(self):
-        return Node.Curve(self.inputs[0])
-
-    @icurve.setter
-    def icurve(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeRotateInstances
+# ----------------------------------------------------------------------------------------------------
+# Node NodeRotateInstances for GeometryNodeRotateInstances
 
 class NodeRotateInstances(Node):
 
-    """ Node class GeometryNodeRotateInstances
+    """Node 'Rotate Instances' (GeometryNodeRotateInstances)
 
     Input sockets
     -------------
-
-        0: instances            Geometry
-        1: selection            Boolean
-        2: rotation             Vector
-        3: pivot_point          Vector
-        4: local_space          Boolean
+        instances       : Geometry
+        selection       : Boolean
+        rotation        : Vector
+        pivot_point     : Vector
+        local_space     : Boolean
 
     Output sockets
     --------------
-
-        0: instances            Geometry
-
+        instances       : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, label=None):
 
-    def __init__(self, instances=None, selection=None, rotation=None, pivot_point=None, local_space=None):
+        super().__init__('GeometryNodeRotateInstances', name='Rotate Instances', label=label)
 
-        super().__init__('GeometryNodeRotateInstances', name='Rotate Instances')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'instances'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorEuler'  , 'rotation'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'pivot_point'  ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'local_space'  ))
+        self.plug(0, instances)
+        self.plug(1, selection)
+        self.plug(2, rotation)
+        self.plug(3, pivot_point)
+        self.plug(4, local_space)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'instances'    ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.instances       = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.instances]
 
-        self.socket_out_name = 'instances'
-        self.out_socket_names = ['instances']
-
-        # ----- Input sockets
-
-        self.iinstances      = instances
-        self.iselection      = selection
-        self.irotation       = rotation
-        self.ipivot_point    = pivot_point
-        self.ilocal_space    = local_space
-
-        self.socket_in_name = 'iinstances'
-
-    def __repr__(self):
-        s = f"Node 'RotateInstances' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   instances       : {self.iinstances}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   rotation        : {self.irotation}"
-        s += f"\n   pivot_point     : {self.ipivot_point}"
-        s += f"\n   local_space     : {self.ilocal_space}"
-        s += '\nOutput sockets'
-        s +=  "\n   instances       : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def instances(self):
-        return self.Instances(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.instances
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def iinstances(self):
-        return Node.Instances(self.inputs[0])
-
-    @iinstances.setter
-    def iinstances(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def irotation(self):
-        return Node.Vector(self.inputs[2])
-
-    @irotation.setter
-    def irotation(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def ipivot_point(self):
-        return Node.Vector(self.inputs[3])
-
-    @ipivot_point.setter
-    def ipivot_point(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def ilocal_space(self):
-        return Node.Boolean(self.inputs[4])
-
-    @ilocal_space.setter
-    def ilocal_space(self, value):
-        self.inputs[4].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSampleCurve
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSampleCurve for GeometryNodeSampleCurve
 
 class NodeSampleCurve(Node):
 
-    """ Node class GeometryNodeSampleCurve
+    """Node 'Sample Curve' (GeometryNodeSampleCurve)
 
     Input sockets
     -------------
-
-        0: curve                Geometry
-        1: factor               Float
-        2: length               Float
+        curve           : Geometry
+        factor          : Float
+        length          : Float
 
     Parameters
     ----------
-
-        mode        : 'LENGTH' in ('FACTOR', 'LENGTH') 
+        mode            : 'LENGTH' in [ 'FACTOR' 'LENGTH']
 
     Output sockets
     --------------
-
-        0: position             Vector
-        1: tangent              Vector
-        2: normal               Vector
-
+        position        : Vector
+        tangent         : Vector
+        normal          : Vector
     """
 
-    PARAMETERS = ['mode']
+    def __init__(self, curve=None, factor=None, length=None, mode='LENGTH', label=None):
 
-    def __init__(self, curve=None, factor=None, length=None, mode='LENGTH'):
+        super().__init__('GeometryNodeSampleCurve', name='Sample Curve', label=label)
 
-        super().__init__('GeometryNodeSampleCurve', name='Sample Curve')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'curve'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatFactor'  , 'factor'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'length'       ))
+        self.bnode.mode            = mode
 
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'position'     ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'tangent'      ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'normal'       ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
+        self.plug(0, curve)
+        self.plug(1, factor)
+        self.plug(2, length)
 
-        self.socket_out_name = 'position'
-        self.out_socket_names = ['position', 'tangent', 'normal']
+        # Output sockets
 
-        # ----- Parameters
+        self.position        = self.Vector(self.bnode.outputs[0])
+        self.tangent         = self.Vector(self.bnode.outputs[1])
+        self.normal          = self.Vector(self.bnode.outputs[2])
+        self.output_sockets  = [self.position, self.tangent, self.normal]
 
-        self.mode            = mode
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.icurve          = curve
-        self.ifactor         = factor
-        self.ilength         = length
-
-        self.socket_in_name = 'icurve'
-
-    def __repr__(self):
-        s = f"Node 'SampleCurve' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   curve           : {self.icurve}"
-        s += f"\n   factor          : {self.ifactor}"
-        s += f"\n   length          : {self.ilength}"
-        s += '\nParameters'
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   position        : Vector"
-        s +=  "\n   tangent         : Vector"
-        s +=  "\n   normal          : Vector"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('FACTOR', 'LENGTH') 
-        if self.mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeSampleCurve'.\n 'mode' is '{self.mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def position(self):
-        return self.Vector(self.outputs[0])
-
-    @property
-    def tangent(self):
-        return self.Vector(self.outputs[1])
-
-    @property
-    def normal(self):
-        return self.Vector(self.outputs[2])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def icurve(self):
-        return Node.Curve(self.inputs[0])
-
-    @icurve.setter
-    def icurve(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ifactor(self):
-        return Node.Float(self.inputs[1])
-
-    @ifactor.setter
-    def ifactor(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ilength(self):
-        return Node.Float(self.inputs[2])
-
-    @ilength.setter
-    def ilength(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeScaleElements
+# ----------------------------------------------------------------------------------------------------
+# Node NodeScaleElements for GeometryNodeScaleElements
 
 class NodeScaleElements(Node):
 
-    """ Node class GeometryNodeScaleElements
+    """Node 'Scale Elements' (GeometryNodeScaleElements)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
-        1: selection            Boolean
-        2: scale                Float
-        3: center               Vector
-        4: axis                 Vector
+        geometry        : Geometry
+        selection       : Boolean
+        scale           : Float
+        center          : Vector
+        axis            : Vector
 
     Parameters
     ----------
-
-        domain      : 'FACE' in ('FACE', 'EDGE') 
-        scale_mode  : 'UNIFORM' in ('UNIFORM', 'SINGLE_AXIS') 
+        domain          : 'FACE' in [ 'FACE' 'EDGE']
+        scale_mode      : 'UNIFORM' in [ 'UNIFORM' 'SINGLE_AXIS']
 
     Output sockets
     --------------
-
-        0: geometry             Geometry
-
+        geometry        : Geometry
     """
 
-    PARAMETERS = ['domain', 'scale_mode']
+    def __init__(self, geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', label=None):
 
-    def __init__(self, geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM'):
+        super().__init__('GeometryNodeScaleElements', name='Scale Elements', label=label)
 
-        super().__init__('GeometryNodeScaleElements', name='Scale Elements')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'scale'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'center'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'axis'         ))
+        self.bnode.domain          = domain
+        self.bnode.scale_mode      = scale_mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, geometry)
+        self.plug(1, selection)
+        self.plug(2, scale)
+        self.plug(3, center)
+        self.plug(4, axis)
 
-        self.socket_out_name = 'geometry'
-        self.out_socket_names = ['geometry']
+        # Output sockets
 
-        # ----- Parameters
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.geometry]
 
-        self.domain          = domain
-        self.scale_mode      = scale_mode
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-        self.iselection      = selection
-        self.iscale          = scale
-        self.icenter         = center
-        self.iaxis           = axis
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'ScaleElements' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   scale           : {self.iscale}"
-        s += f"\n   center          : {self.icenter}"
-        s += f"\n   axis            : {self.iaxis}"
-        s += '\nParameters'
-        s += f"\n   domain          : {self.domain}"
-        s += f"\n   scale_mode      : {self.scale_mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   geometry        : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('FACE', 'EDGE') 
-        if self.domain not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeScaleElements'.\n 'domain' is '{self.domain}'.\n Authorized values are {valids}.")
-        valids = ('UNIFORM', 'SINGLE_AXIS') 
-        if self.scale_mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeScaleElements'.\n 'scale_mode' is '{self.scale_mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.geometry
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iscale(self):
-        return Node.Float(self.inputs[2])
-
-    @iscale.setter
-    def iscale(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def icenter(self):
-        return Node.Vector(self.inputs[3])
-
-    @icenter.setter
-    def icenter(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def iaxis(self):
-        return Node.Vector(self.inputs[4])
-
-    @iaxis.setter
-    def iaxis(self, value):
-        self.inputs[4].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeScaleInstances
+# ----------------------------------------------------------------------------------------------------
+# Node NodeScaleInstances for GeometryNodeScaleInstances
 
 class NodeScaleInstances(Node):
 
-    """ Node class GeometryNodeScaleInstances
+    """Node 'Scale Instances' (GeometryNodeScaleInstances)
 
     Input sockets
     -------------
-
-        0: instances            Geometry
-        1: selection            Boolean
-        2: scale                Vector
-        3: center               Vector
-        4: local_space          Boolean
+        instances       : Geometry
+        selection       : Boolean
+        scale           : Vector
+        center          : Vector
+        local_space     : Boolean
 
     Output sockets
     --------------
-
-        0: instances            Geometry
-
+        instances       : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, instances=None, selection=None, scale=None, center=None, local_space=None, label=None):
 
-    def __init__(self, instances=None, selection=None, scale=None, center=None, local_space=None):
+        super().__init__('GeometryNodeScaleInstances', name='Scale Instances', label=label)
 
-        super().__init__('GeometryNodeScaleInstances', name='Scale Instances')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'instances'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorXYZ'    , 'scale'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'center'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'local_space'  ))
+        self.plug(0, instances)
+        self.plug(1, selection)
+        self.plug(2, scale)
+        self.plug(3, center)
+        self.plug(4, local_space)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'instances'    ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.instances       = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.instances]
 
-        self.socket_out_name = 'instances'
-        self.out_socket_names = ['instances']
-
-        # ----- Input sockets
-
-        self.iinstances      = instances
-        self.iselection      = selection
-        self.iscale          = scale
-        self.icenter         = center
-        self.ilocal_space    = local_space
-
-        self.socket_in_name = 'iinstances'
-
-    def __repr__(self):
-        s = f"Node 'ScaleInstances' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   instances       : {self.iinstances}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   scale           : {self.iscale}"
-        s += f"\n   center          : {self.icenter}"
-        s += f"\n   local_space     : {self.ilocal_space}"
-        s += '\nOutput sockets'
-        s +=  "\n   instances       : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def instances(self):
-        return self.Instances(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.instances
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def iinstances(self):
-        return Node.Instances(self.inputs[0])
-
-    @iinstances.setter
-    def iinstances(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iscale(self):
-        return Node.Vector(self.inputs[2])
-
-    @iscale.setter
-    def iscale(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def icenter(self):
-        return Node.Vector(self.inputs[3])
-
-    @icenter.setter
-    def icenter(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def ilocal_space(self):
-        return Node.Boolean(self.inputs[4])
-
-    @ilocal_space.setter
-    def ilocal_space(self, value):
-        self.inputs[4].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSeparateComponents
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSeparateComponents for GeometryNodeSeparateComponents
 
 class NodeSeparateComponents(Node):
 
-    """ Node class GeometryNodeSeparateComponents
+    """Node 'Separate Components' (GeometryNodeSeparateComponents)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
+        geometry        : Geometry
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-        1: point_cloud          Geometry
-        2: curve                Geometry
-        3: volume               Geometry
-        4: instances            Geometry
-
+        mesh            : Geometry
+        point_cloud     : Geometry
+        curve           : Geometry
+        volume          : Geometry
+        instances       : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, geometry=None, label=None):
 
-    def __init__(self, geometry=None):
+        super().__init__('GeometryNodeSeparateComponents', name='Separate Components', label=label)
 
-        super().__init__('GeometryNodeSeparateComponents', name='Separate Components')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
+        self.plug(0, geometry)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'point_cloud'  ))
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'volume'       ))
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'instances'    ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.point_cloud     = self.Geometry(self.bnode.outputs[1])
+        self.curve           = self.Geometry(self.bnode.outputs[2])
+        self.volume          = self.Geometry(self.bnode.outputs[3])
+        self.instances       = self.Geometry(self.bnode.outputs[4])
+        self.output_sockets  = [self.mesh, self.point_cloud, self.curve, self.volume, self.instances]
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh', 'point_cloud', 'curve', 'volume', 'instances']
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'SeparateComponents' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        s +=  "\n   point_cloud     : Geometry"
-        s +=  "\n   curve           : Geometry"
-        s +=  "\n   volume          : Geometry"
-        s +=  "\n   instances       : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def point_cloud(self):
-        return self.Geometry(self.outputs[1])
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[2])
-
-    @property
-    def volume(self):
-        return self.Volume(self.outputs[3])
-
-    @property
-    def instances(self):
-        return self.Instances(self.outputs[4])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSeparateGeometry
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSeparateGeometry for GeometryNodeSeparateGeometry
 
 class NodeSeparateGeometry(Node):
 
-    """ Node class GeometryNodeSeparateGeometry
+    """Node 'Separate Geometry' (GeometryNodeSeparateGeometry)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
-        1: selection            Boolean
+        geometry        : Geometry
+        selection       : Boolean
 
     Parameters
     ----------
-
-        domain      : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE') 
+        domain          : 'POINT' in [ 'POINT' 'EDGE' 'FACE' 'CURVE' 'INSTANCE']
 
     Output sockets
     --------------
-
-        0: selection            Geometry
-        1: inverted             Geometry
-
+        selection       : Geometry
+        inverted        : Geometry
     """
 
-    PARAMETERS = ['domain']
+    def __init__(self, geometry=None, selection=None, domain='POINT', label=None):
 
-    def __init__(self, geometry=None, selection=None, domain='POINT'):
+        super().__init__('GeometryNodeSeparateGeometry', name='Separate Geometry', label=label)
 
-        super().__init__('GeometryNodeSeparateGeometry', name='Separate Geometry')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
+        self.bnode.domain          = domain
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'selection'    ))
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'inverted'     ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, geometry)
+        self.plug(1, selection)
 
-        self.socket_out_name = 'selection'
-        self.out_socket_names = ['selection', 'inverted']
+        # Output sockets
 
-        # ----- Parameters
+        self.selection       = self.Geometry(self.bnode.outputs[0])
+        self.inverted        = self.Geometry(self.bnode.outputs[1])
+        self.output_sockets  = [self.selection, self.inverted]
 
-        self.domain          = domain
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-        self.iselection      = selection
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'SeparateGeometry' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += f"\n   selection       : {self.iselection}"
-        s += '\nParameters'
-        s += f"\n   domain          : {self.domain}"
-        s += '\nOutput sockets'
-        s +=  "\n   selection       : Geometry"
-        s +=  "\n   inverted        : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE') 
-        if self.domain not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeSeparateGeometry'.\n 'domain' is '{self.domain}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def selection(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def inverted(self):
-        return self.Geometry(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSetCurveHandlePositions
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSetHandlePositions for GeometryNodeSetCurveHandlePositions
 
 class NodeSetHandlePositions(Node):
 
-    """ Node class GeometryNodeSetCurveHandlePositions
+    """Node 'Set Handle Positions' (GeometryNodeSetCurveHandlePositions)
 
     Input sockets
     -------------
-
-        0: curve                Geometry
-        1: selection            Boolean
-        2: position             Vector
-        3: offset               Vector
+        curve           : Geometry
+        selection       : Boolean
+        position        : Vector
+        offset          : Vector
 
     Parameters
     ----------
-
-        mode        : 'LEFT' in ('LEFT', 'RIGHT') 
+        mode            : 'LEFT' in [ 'LEFT' 'RIGHT']
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-
+        curve           : Geometry
     """
 
-    PARAMETERS = ['mode']
+    def __init__(self, curve=None, selection=None, position=None, offset=None, mode='LEFT', label=None):
 
-    def __init__(self, curve=None, selection=None, position=None, offset=None, mode='LEFT'):
+        super().__init__('GeometryNodeSetCurveHandlePositions', name='Set Handle Positions', label=label)
 
-        super().__init__('GeometryNodeSetCurveHandlePositions', name='Set Handle Positions')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'curve'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'position'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'offset'       ))
+        self.bnode.mode            = mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, curve)
+        self.plug(1, selection)
+        self.plug(2, position)
+        self.plug(3, offset)
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve']
+        # Output sockets
 
-        # ----- Parameters
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.curve]
 
-        self.mode            = mode
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.icurve          = curve
-        self.iselection      = selection
-        self.iposition       = position
-        self.ioffset         = offset
-
-        self.socket_in_name = 'icurve'
-
-    def __repr__(self):
-        s = f"Node 'SetHandlePositions' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   curve           : {self.icurve}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   position        : {self.iposition}"
-        s += f"\n   offset          : {self.ioffset}"
-        s += '\nParameters'
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('LEFT', 'RIGHT') 
-        if self.mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeSetHandlePositions'.\n 'mode' is '{self.mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.curve
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def icurve(self):
-        return Node.Curve(self.inputs[0])
-
-    @icurve.setter
-    def icurve(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iposition(self):
-        return Node.Vector(self.inputs[2])
-
-    @iposition.setter
-    def iposition(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def ioffset(self):
-        return Node.Vector(self.inputs[3])
-
-    @ioffset.setter
-    def ioffset(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSetCurveRadius
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSetCurveRadius for GeometryNodeSetCurveRadius
 
 class NodeSetCurveRadius(Node):
 
-    """ Node class GeometryNodeSetCurveRadius
+    """Node 'Set Curve Radius' (GeometryNodeSetCurveRadius)
 
     Input sockets
     -------------
-
-        0: curve                Geometry
-        1: selection            Boolean
-        2: radius               Float
+        curve           : Geometry
+        selection       : Boolean
+        radius          : Float
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-
+        curve           : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, curve=None, selection=None, radius=None, label=None):
 
-    def __init__(self, curve=None, selection=None, radius=None):
+        super().__init__('GeometryNodeSetCurveRadius', name='Set Curve Radius', label=label)
 
-        super().__init__('GeometryNodeSetCurveRadius', name='Set Curve Radius')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'curve'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'radius'       ))
+        self.plug(0, curve)
+        self.plug(1, selection)
+        self.plug(2, radius)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.curve]
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve']
-
-        # ----- Input sockets
-
-        self.icurve          = curve
-        self.iselection      = selection
-        self.iradius         = radius
-
-        self.socket_in_name = 'icurve'
-
-    def __repr__(self):
-        s = f"Node 'SetCurveRadius' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   curve           : {self.icurve}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   radius          : {self.iradius}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.curve
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def icurve(self):
-        return Node.Curve(self.inputs[0])
-
-    @icurve.setter
-    def icurve(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iradius(self):
-        return Node.Float(self.inputs[2])
-
-    @iradius.setter
-    def iradius(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSetCurveTilt
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSetCurveTilt for GeometryNodeSetCurveTilt
 
 class NodeSetCurveTilt(Node):
 
-    """ Node class GeometryNodeSetCurveTilt
+    """Node 'Set Curve Tilt' (GeometryNodeSetCurveTilt)
 
     Input sockets
     -------------
-
-        0: curve                Geometry
-        1: selection            Boolean
-        2: tilt                 Float
+        curve           : Geometry
+        selection       : Boolean
+        tilt            : Float
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-
+        curve           : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, curve=None, selection=None, tilt=None, label=None):
 
-    def __init__(self, curve=None, selection=None, tilt=None):
+        super().__init__('GeometryNodeSetCurveTilt', name='Set Curve Tilt', label=label)
 
-        super().__init__('GeometryNodeSetCurveTilt', name='Set Curve Tilt')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'curve'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatAngle'   , 'tilt'         ))
+        self.plug(0, curve)
+        self.plug(1, selection)
+        self.plug(2, tilt)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.curve]
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve']
-
-        # ----- Input sockets
-
-        self.icurve          = curve
-        self.iselection      = selection
-        self.itilt           = tilt
-
-        self.socket_in_name = 'icurve'
-
-    def __repr__(self):
-        s = f"Node 'SetCurveTilt' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   curve           : {self.icurve}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   tilt            : {self.itilt}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.curve
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def icurve(self):
-        return Node.Curve(self.inputs[0])
-
-    @icurve.setter
-    def icurve(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def itilt(self):
-        return Node.Float(self.inputs[2])
-
-    @itilt.setter
-    def itilt(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSetID
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSetID for GeometryNodeSetID
 
 class NodeSetID(Node):
 
-    """ Node class GeometryNodeSetID
+    """Node 'Set ID' (GeometryNodeSetID)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
-        1: selection            Boolean
-        2: ID                   Integer
+        geometry        : Geometry
+        selection       : Boolean
+        ID              : Integer
 
     Output sockets
     --------------
-
-        0: geometry             Geometry
-
+        geometry        : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, geometry=None, selection=None, ID=None, label=None):
 
-    def __init__(self, geometry=None, selection=None, ID=None):
+        super().__init__('GeometryNodeSetID', name='Set ID', label=label)
 
-        super().__init__('GeometryNodeSetID', name='Set ID')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'ID'           ))
+        self.plug(0, geometry)
+        self.plug(1, selection)
+        self.plug(2, ID)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.geometry]
 
-        self.socket_out_name = 'geometry'
-        self.out_socket_names = ['geometry']
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-        self.iselection      = selection
-        self.iID             = ID
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'SetID' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   ID              : {self.iID}"
-        s += '\nOutput sockets'
-        s +=  "\n   geometry        : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.geometry
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iID(self):
-        return Node.Integer(self.inputs[2])
-
-    @iID.setter
-    def iID(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSetMaterial
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSetMaterial for GeometryNodeSetMaterial
 
 class NodeSetMaterial(Node):
 
-    """ Node class GeometryNodeSetMaterial
+    """Node 'Set Material' (GeometryNodeSetMaterial)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
-        1: selection            Boolean
-        2: material             Material
+        geometry        : Geometry
+        selection       : Boolean
+        material        : Material
 
     Output sockets
     --------------
-
-        0: geometry             Geometry
-
+        geometry        : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, geometry=None, selection=None, material=None, label=None):
 
-    def __init__(self, geometry=None, selection=None, material=None):
+        super().__init__('GeometryNodeSetMaterial', name='Set Material', label=label)
 
-        super().__init__('GeometryNodeSetMaterial', name='Set Material')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketMaterial'     , 'material'     ))
+        self.plug(0, geometry)
+        self.plug(1, selection)
+        self.plug(2, material)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.geometry]
 
-        self.socket_out_name = 'geometry'
-        self.out_socket_names = ['geometry']
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-        self.iselection      = selection
-        self.imaterial       = material
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'SetMaterial' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   material        : {self.imaterial}"
-        s += '\nOutput sockets'
-        s +=  "\n   geometry        : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.geometry
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def imaterial(self):
-        return Node.Material(self.inputs[2])
-
-    @imaterial.setter
-    def imaterial(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSetMaterialIndex
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSetMaterialIndex for GeometryNodeSetMaterialIndex
 
 class NodeSetMaterialIndex(Node):
 
-    """ Node class GeometryNodeSetMaterialIndex
+    """Node 'Set Material Index' (GeometryNodeSetMaterialIndex)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
-        1: selection            Boolean
-        2: material_index       Integer
+        geometry        : Geometry
+        selection       : Boolean
+        material_index  : Integer
 
     Output sockets
     --------------
-
-        0: geometry             Geometry
-
+        geometry        : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, geometry=None, selection=None, material_index=None, label=None):
 
-    def __init__(self, geometry=None, selection=None, material_index=None):
+        super().__init__('GeometryNodeSetMaterialIndex', name='Set Material Index', label=label)
 
-        super().__init__('GeometryNodeSetMaterialIndex', name='Set Material Index')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'material_index'))
+        self.plug(0, geometry)
+        self.plug(1, selection)
+        self.plug(2, material_index)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.geometry]
 
-        self.socket_out_name = 'geometry'
-        self.out_socket_names = ['geometry']
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-        self.iselection      = selection
-        self.imaterial_index = material_index
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'SetMaterialIndex' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   material_index  : {self.imaterial_index}"
-        s += '\nOutput sockets'
-        s +=  "\n   geometry        : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.geometry
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def imaterial_index(self):
-        return Node.Integer(self.inputs[2])
-
-    @imaterial_index.setter
-    def imaterial_index(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSetPointRadius
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSetPointRadius for GeometryNodeSetPointRadius
 
 class NodeSetPointRadius(Node):
 
-    """ Node class GeometryNodeSetPointRadius
+    """Node 'Set Point Radius' (GeometryNodeSetPointRadius)
 
     Input sockets
     -------------
-
-        0: points               Geometry
-        1: selection            Boolean
-        2: radius               Float
+        points          : Geometry
+        selection       : Boolean
+        radius          : Float
 
     Output sockets
     --------------
-
-        0: points               Geometry
-
+        points          : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, points=None, selection=None, radius=None, label=None):
 
-    def __init__(self, points=None, selection=None, radius=None):
+        super().__init__('GeometryNodeSetPointRadius', name='Set Point Radius', label=label)
 
-        super().__init__('GeometryNodeSetPointRadius', name='Set Point Radius')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'points'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'radius'       ))
+        self.plug(0, points)
+        self.plug(1, selection)
+        self.plug(2, radius)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'points'       ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.points          = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.points]
 
-        self.socket_out_name = 'points'
-        self.out_socket_names = ['points']
-
-        # ----- Input sockets
-
-        self.ipoints         = points
-        self.iselection      = selection
-        self.iradius         = radius
-
-        self.socket_in_name = 'ipoints'
-
-    def __repr__(self):
-        s = f"Node 'SetPointRadius' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   points          : {self.ipoints}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   radius          : {self.iradius}"
-        s += '\nOutput sockets'
-        s +=  "\n   points          : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def points(self):
-        return self.Points(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.points
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ipoints(self):
-        return Node.Points(self.inputs[0])
-
-    @ipoints.setter
-    def ipoints(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iradius(self):
-        return Node.Float(self.inputs[2])
-
-    @iradius.setter
-    def iradius(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSetPosition
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSetPosition for GeometryNodeSetPosition
 
 class NodeSetPosition(Node):
 
-    """ Node class GeometryNodeSetPosition
+    """Node 'Set Position' (GeometryNodeSetPosition)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
-        1: selection            Boolean
-        2: position             Vector
-        3: offset               Vector
+        geometry        : Geometry
+        selection       : Boolean
+        position        : Vector
+        offset          : Vector
 
     Output sockets
     --------------
-
-        0: geometry             Geometry
-
+        geometry        : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, geometry=None, selection=None, position=None, offset=None, label=None):
 
-    def __init__(self, geometry=None, selection=None, position=None, offset=None):
+        super().__init__('GeometryNodeSetPosition', name='Set Position', label=label)
 
-        super().__init__('GeometryNodeSetPosition', name='Set Position')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'position'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'offset'       ))
+        self.plug(0, geometry)
+        self.plug(1, selection)
+        self.plug(2, position)
+        self.plug(3, offset)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.geometry]
 
-        self.socket_out_name = 'geometry'
-        self.out_socket_names = ['geometry']
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-        self.iselection      = selection
-        self.iposition       = position
-        self.ioffset         = offset
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'SetPosition' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   position        : {self.iposition}"
-        s += f"\n   offset          : {self.ioffset}"
-        s += '\nOutput sockets'
-        s +=  "\n   geometry        : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.geometry
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iposition(self):
-        return Node.Vector(self.inputs[2])
-
-    @iposition.setter
-    def iposition(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def ioffset(self):
-        return Node.Vector(self.inputs[3])
-
-    @ioffset.setter
-    def ioffset(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSetShadeSmooth
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSetShadeSmooth for GeometryNodeSetShadeSmooth
 
 class NodeSetShadeSmooth(Node):
 
-    """ Node class GeometryNodeSetShadeSmooth
+    """Node 'Set Shade Smooth' (GeometryNodeSetShadeSmooth)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
-        1: selection            Boolean
-        2: shade_smooth         Boolean
+        geometry        : Geometry
+        selection       : Boolean
+        shade_smooth    : Boolean
 
     Output sockets
     --------------
-
-        0: geometry             Geometry
-
+        geometry        : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, geometry=None, selection=None, shade_smooth=None, label=None):
 
-    def __init__(self, geometry=None, selection=None, shade_smooth=None):
+        super().__init__('GeometryNodeSetShadeSmooth', name='Set Shade Smooth', label=label)
 
-        super().__init__('GeometryNodeSetShadeSmooth', name='Set Shade Smooth')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'shade_smooth' ))
+        self.plug(0, geometry)
+        self.plug(1, selection)
+        self.plug(2, shade_smooth)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.geometry]
 
-        self.socket_out_name = 'geometry'
-        self.out_socket_names = ['geometry']
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-        self.iselection      = selection
-        self.ishade_smooth   = shade_smooth
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'SetShadeSmooth' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   shade_smooth    : {self.ishade_smooth}"
-        s += '\nOutput sockets'
-        s +=  "\n   geometry        : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.geometry
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ishade_smooth(self):
-        return Node.Boolean(self.inputs[2])
-
-    @ishade_smooth.setter
-    def ishade_smooth(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSetSplineCyclic
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSetSplineCyclic for GeometryNodeSetSplineCyclic
 
 class NodeSetSplineCyclic(Node):
 
-    """ Node class GeometryNodeSetSplineCyclic
+    """Node 'Set Spline Cyclic' (GeometryNodeSetSplineCyclic)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
-        1: selection            Boolean
-        2: cyclic               Boolean
+        geometry        : Geometry
+        selection       : Boolean
+        cyclic          : Boolean
 
     Output sockets
     --------------
-
-        0: geometry             Geometry
-
+        geometry        : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, geometry=None, selection=None, cyclic=None, label=None):
 
-    def __init__(self, geometry=None, selection=None, cyclic=None):
+        super().__init__('GeometryNodeSetSplineCyclic', name='Set Spline Cyclic', label=label)
 
-        super().__init__('GeometryNodeSetSplineCyclic', name='Set Spline Cyclic')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'cyclic'       ))
+        self.plug(0, geometry)
+        self.plug(1, selection)
+        self.plug(2, cyclic)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.geometry]
 
-        self.socket_out_name = 'geometry'
-        self.out_socket_names = ['geometry']
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-        self.iselection      = selection
-        self.icyclic         = cyclic
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'SetSplineCyclic' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   cyclic          : {self.icyclic}"
-        s += '\nOutput sockets'
-        s +=  "\n   geometry        : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.geometry
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def icyclic(self):
-        return Node.Boolean(self.inputs[2])
-
-    @icyclic.setter
-    def icyclic(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSetSplineResolution
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSetSplineResolution for GeometryNodeSetSplineResolution
 
 class NodeSetSplineResolution(Node):
 
-    """ Node class GeometryNodeSetSplineResolution
+    """Node 'Set Spline Resolution' (GeometryNodeSetSplineResolution)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
-        1: selection            Boolean
-        2: resolution           Integer
-
-    Output sockets
-    --------------
-
-        0: geometry             Geometry
-
-    """
-
-    PARAMETERS = []
-
-    def __init__(self, geometry=None, selection=None, resolution=None):
-
-        super().__init__('GeometryNodeSetSplineResolution', name='Set Spline Resolution')
-
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'resolution'   ))
-
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
-
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
-
-        self.socket_out_name = 'geometry'
-        self.out_socket_names = ['geometry']
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-        self.iselection      = selection
-        self.iresolution     = resolution
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'SetSplineResolution' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   resolution      : {self.iresolution}"
-        s += '\nOutput sockets'
-        s +=  "\n   geometry        : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.geometry
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iresolution(self):
-        return Node.Integer(self.inputs[2])
-
-    @iresolution.setter
-    def iresolution(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeSplineLength
-
-class NodeSplineLength(Attribute):
-
-    """ Node class GeometryNodeSplineLength
+        geometry        : Geometry
+        selection       : Boolean
+        resolution      : Integer
 
     Output sockets
     --------------
-
-        0: length               Float
-        1: point_count          Integer
-
+        geometry        : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, geometry=None, selection=None, resolution=None, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeSetSplineResolution', name='Set Spline Resolution', label=label)
 
-        super().__init__('GeometryNodeSplineLength', name='Spline Length', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Input sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'length'       ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'point_count'  ))
+        self.plug(0, geometry)
+        self.plug(1, selection)
+        self.plug(2, resolution)
 
-        self.socket_out_name = 'length'
-        self.out_socket_names = ['length', 'point_count']
+        # Output sockets
 
-        self.socket_in_name = None
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.geometry]
 
-    def __repr__(self):
-        s = f"Node 'SplineLength' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   length          : Float"
-        s +=  "\n   point_count     : Integer"
-        return s + "\n"
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSplineLength for GeometryNodeSplineLength
 
-    # --------------------------------------------------------------------------------
-    # Output sockets
+class NodeSplineLength(Node):
 
-    @property
-    def length(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def point_count(self):
-        return self.Integer(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Attribute class GeometryNodeSplineParameter
-
-class NodeSplineParameter(Attribute):
-
-    """ Node class GeometryNodeSplineParameter
+    """Node 'Spline Length' (GeometryNodeSplineLength)
 
     Output sockets
     --------------
-
-        0: factor               Float
-        1: length               Float
-        2: index                Integer
-
+        length          : Float
+        point_count     : Integer
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, owner_socket=None, data_type='FLOAT', domain='POINT'):
+        super().__init__('GeometryNodeSplineLength', name='Spline Length', label=label)
 
-        super().__init__('GeometryNodeSplineParameter', name='Spline Parameter', owner_socket=owner_socket, data_type=data_type, domain=domain)
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'factor'       ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'length'       ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'index'        ))
+        self.length          = self.Float(self.bnode.outputs[0])
+        self.point_count     = self.Integer(self.bnode.outputs[1])
+        self.output_sockets  = [self.length, self.point_count]
 
-        self.socket_out_name = 'factor'
-        self.out_socket_names = ['factor', 'length', 'index']
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSplineParameter for GeometryNodeSplineParameter
 
-        self.socket_in_name = None
+class NodeSplineParameter(Node):
 
-    def __repr__(self):
-        s = f"Node 'SplineParameter' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   factor          : Float"
-        s +=  "\n   length          : Float"
-        s +=  "\n   index           : Integer"
-        return s + "\n"
+    """Node 'Spline Parameter' (GeometryNodeSplineParameter)
 
-    # --------------------------------------------------------------------------------
-    # Output sockets
+    Output sockets
+    --------------
+        factor          : Float
+        length          : Float
+        index           : Integer
+    """
 
-    @property
-    def factor(self):
-        return self.Float(self.outputs[0])
+    def __init__(self, label=None):
 
-    @property
-    def length(self):
-        return self.Float(self.outputs[1])
+        super().__init__('GeometryNodeSplineParameter', name='Spline Parameter', label=label)
 
-    @property
-    def index(self):
-        return self.Integer(self.outputs[2])
+        # Output sockets
 
-    @property
-    def output(self):
-        return self.output_sockets()
+        self.factor          = self.Float(self.bnode.outputs[0])
+        self.length          = self.Float(self.bnode.outputs[1])
+        self.index           = self.Integer(self.bnode.outputs[2])
+        self.output_sockets  = [self.factor, self.length, self.index]
 
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSplitEdges
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSplitEdges for GeometryNodeSplitEdges
 
 class NodeSplitEdges(Node):
 
-    """ Node class GeometryNodeSplitEdges
+    """Node 'Split Edges' (GeometryNodeSplitEdges)
 
     Input sockets
     -------------
-
-        0: mesh                 Geometry
-        1: selection            Boolean
+        mesh            : Geometry
+        selection       : Boolean
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-
+        mesh            : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, mesh=None, selection=None, label=None):
 
-    def __init__(self, mesh=None, selection=None):
+        super().__init__('GeometryNodeSplitEdges', name='Split Edges', label=label)
 
-        super().__init__('GeometryNodeSplitEdges', name='Split Edges')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'mesh'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
+        self.plug(0, mesh)
+        self.plug(1, selection)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.mesh]
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh']
-
-        # ----- Input sockets
-
-        self.imesh           = mesh
-        self.iselection      = selection
-
-        self.socket_in_name = 'imesh'
-
-    def __repr__(self):
-        s = f"Node 'SplitEdges' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   mesh            : {self.imesh}"
-        s += f"\n   selection       : {self.iselection}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.mesh
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def imesh(self):
-        return Node.Mesh(self.inputs[0])
-
-    @imesh.setter
-    def imesh(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeStringJoin
+# ----------------------------------------------------------------------------------------------------
+# Node NodeJoinStrings for GeometryNodeStringJoin
 
 class NodeJoinStrings(Node):
 
-    """ Node class GeometryNodeStringJoin
+    """Node 'Join Strings' (GeometryNodeStringJoin)
 
     Input sockets
     -------------
-
-        0: delimiter            String
-        1: strings              String
+        delimiter       : String
+        strings         : *String
 
     Output sockets
     --------------
-
-        0: string               String
-
+        string          : String
     """
 
-    PARAMETERS = []
+    def __init__(self, *strings, delimiter=None, label=None):
 
-    def __init__(self, *strings, delimiter=None):
+        super().__init__('GeometryNodeStringJoin', name='Join Strings', label=label)
 
-        super().__init__('GeometryNodeStringJoin', name='Join Strings')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketString'       , 'delimiter'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketString'       , 'strings'      , is_multi_input=True))
+        self.plug(1, *strings)
+        self.plug(0, delimiter)
 
-        self.outputs.add(Socket (self, 'NodeSocketString'       , 'string'       ))
+        # Output sockets
 
-        self.socket_out_name = 'string'
-        self.out_socket_names = ['string']
+        self.string          = self.String(self.bnode.outputs[0])
+        self.output_sockets  = [self.string]
 
-        # ----- Input sockets
+# ----------------------------------------------------------------------------------------------------
+# Node NodeStringToCurves for GeometryNodeStringToCurves
 
-        self.idelimiter      = delimiter
-        self.istrings        = strings
+class NodeStringToCurves(Node):
 
-        self.socket_in_name = 'istrings'
-
-    def __repr__(self):
-        s = f"Node 'JoinStrings' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   delimiter       : {self.idelimiter}"
-        s += f"\n   strings         : {self.istrings}"
-        s += '\nOutput sockets'
-        s +=  "\n   string          : String"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def string(self):
-        return self.String(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.string
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def idelimiter(self):
-        return Node.String(self.inputs[0])
-
-    @idelimiter.setter
-    def idelimiter(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def istrings(self):
-        return Node.String(self.inputs[1])
-
-    @istrings.setter
-    def istrings(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeStringToCurves
-
-class NodeStringtoCurves(Node):
-
-    """ Node class GeometryNodeStringToCurves
+    """Node 'String to Curves' (GeometryNodeStringToCurves)
 
     Input sockets
     -------------
-
-        0: string               String
-        1: size                 Float
-        2: character_spacing    Float
-        3: word_spacing         Float
-        4: line_spacing         Float
-        5: text_box_width       Float
-        6: text_box_height      Float
+        string          : String
+        size            : Float
+        character_spacing : Float
+        word_spacing    : Float
+        line_spacing    : Float
+        text_box_width  : Float
+        text_box_height : Float
 
     Parameters
     ----------
-
-        align_x     : 'LEFT' in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH') 
-        align_y     : 'TOP_BASELINE' in ('TOP_BASELINE', 'TOP', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM') 
-        overflow    : 'OVERFLOW' in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE') 
-        pivot_mode  : 'BOTTOM_LEFT' in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 
-                                       'BOTTOM_RIGHT') 
+        align_x         : 'LEFT' in [ 'LEFT' 'CENTER' 'RIGHT' 'JUSTIFY' 'FLUSH']
+        align_y         : 'TOP_BASELINE' in [ 'TOP_BASELINE' 'TOP' 'MIDDLE' 'BOTTOM_BASELINE' 'BOTTOM']
+        overflow        : 'OVERFLOW' in [ 'OVERFLOW' 'SCALE_TO_FIT' 'TRUNCATE']
+        pivot_mode      : 'BOTTOM_LEFT' in [ 'MIDPOINT' 'TOP_LEFT' 'TOP_CENTER' 'TOP_RIGHT' 'BOTTOM_LEFT' 'BOTTOM_CENTER' 'BOTTOM_RIGHT']
 
     Output sockets
     --------------
-
-        0: curve_instances      Geometry
-        1: remainder            String
-        2: line                 Integer
-        3: pivot_point          Vector
-
+        curve_instances : Geometry
+        remainder       : String
+        line            : Integer
+        pivot_point     : Vector
     """
 
-    PARAMETERS = ['align_x', 'align_y', 'overflow', 'pivot_mode']
+    def __init__(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT', label=None):
 
-    def __init__(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
+        super().__init__('GeometryNodeStringToCurves', name='String to Curves', label=label)
 
-        super().__init__('GeometryNodeStringToCurves', name='String to Curves')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketString'       , 'string'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'size'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'character_spacing'))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'word_spacing' ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'line_spacing' ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'text_box_width'))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'text_box_height'))
+        self.bnode.align_x         = align_x
+        self.bnode.align_y         = align_y
+        self.bnode.overflow        = overflow
+        self.bnode.pivot_mode      = pivot_mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve_instances'))
-        self.outputs.add(Socket (self, 'NodeSocketString'       , 'remainder'    ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'line'         ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'pivot_point'  ))
+        # Input sockets
 
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, string)
+        self.plug(1, size)
+        self.plug(2, character_spacing)
+        self.plug(3, word_spacing)
+        self.plug(4, line_spacing)
+        self.plug(5, text_box_width)
+        self.plug(6, text_box_height)
 
-        self.socket_out_name = 'curve_instances'
-        self.out_socket_names = ['curve_instances', 'remainder', 'line', 'pivot_point']
+        # Output sockets
 
-        # ----- Parameters
+        self.curve_instances = self.Geometry(self.bnode.outputs[0])
+        self.remainder       = self.String(self.bnode.outputs[1])
+        self.line            = self.Integer(self.bnode.outputs[2])
+        self.pivot_point     = self.Vector(self.bnode.outputs[3])
+        self.output_sockets  = [self.curve_instances, self.remainder, self.line, self.pivot_point]
 
-        self.align_x         = align_x
-        self.align_y         = align_y
-        self.overflow        = overflow
-        self.pivot_mode      = pivot_mode
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.istring         = string
-        self.isize           = size
-        self.icharacter_spacing = character_spacing
-        self.iword_spacing   = word_spacing
-        self.iline_spacing   = line_spacing
-        self.itext_box_width = text_box_width
-        self.itext_box_height = text_box_height
-
-        self.socket_in_name = 'istring'
-
-    def __repr__(self):
-        s = f"Node 'StringtoCurves' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   string          : {self.istring}"
-        s += f"\n   size            : {self.isize}"
-        s += f"\n   character_spacing : {self.icharacter_spacing}"
-        s += f"\n   word_spacing    : {self.iword_spacing}"
-        s += f"\n   line_spacing    : {self.iline_spacing}"
-        s += f"\n   text_box_width  : {self.itext_box_width}"
-        s += f"\n   text_box_height : {self.itext_box_height}"
-        s += '\nParameters'
-        s += f"\n   align_x         : {self.align_x}"
-        s += f"\n   align_y         : {self.align_y}"
-        s += f"\n   overflow        : {self.overflow}"
-        s += f"\n   pivot_mode      : {self.pivot_mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve_instances : Geometry"
-        s +=  "\n   remainder       : String"
-        s +=  "\n   line            : Integer"
-        s +=  "\n   pivot_point     : Vector"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH') 
-        if self.align_x not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeStringtoCurves'.\n 'align_x' is '{self.align_x}'.\n Authorized values are {valids}.")
-        valids = ('TOP_BASELINE', 'TOP', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM') 
-        if self.align_y not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeStringtoCurves'.\n 'align_y' is '{self.align_y}'.\n Authorized values are {valids}.")
-        valids = ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE') 
-        if self.overflow not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeStringtoCurves'.\n 'overflow' is '{self.overflow}'.\n Authorized values are {valids}.")
-        valids = ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT') 
-        if self.pivot_mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeStringtoCurves'.\n 'pivot_mode' is '{self.pivot_mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve_instances(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def remainder(self):
-        return self.String(self.outputs[1])
-
-    @property
-    def line(self):
-        return self.Integer(self.outputs[2])
-
-    @property
-    def pivot_point(self):
-        return self.Vector(self.outputs[3])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def istring(self):
-        return Node.String(self.inputs[0])
-
-    @istring.setter
-    def istring(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def isize(self):
-        return Node.Float(self.inputs[1])
-
-    @isize.setter
-    def isize(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def icharacter_spacing(self):
-        return Node.Float(self.inputs[2])
-
-    @icharacter_spacing.setter
-    def icharacter_spacing(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def iword_spacing(self):
-        return Node.Float(self.inputs[3])
-
-    @iword_spacing.setter
-    def iword_spacing(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def iline_spacing(self):
-        return Node.Float(self.inputs[4])
-
-    @iline_spacing.setter
-    def iline_spacing(self, value):
-        self.inputs[4].plug(value)
-
-    @property
-    def itext_box_width(self):
-        return Node.Float(self.inputs[5])
-
-    @itext_box_width.setter
-    def itext_box_width(self, value):
-        self.inputs[5].plug(value)
-
-    @property
-    def itext_box_height(self):
-        return Node.Float(self.inputs[6])
-
-    @itext_box_height.setter
-    def itext_box_height(self, value):
-        self.inputs[6].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSubdivideCurve
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSubdivideCurve for GeometryNodeSubdivideCurve
 
 class NodeSubdivideCurve(Node):
 
-    """ Node class GeometryNodeSubdivideCurve
+    """Node 'Subdivide Curve' (GeometryNodeSubdivideCurve)
 
     Input sockets
     -------------
-
-        0: curve                Geometry
-        1: cuts                 Integer
+        curve           : Geometry
+        cuts            : Integer
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-
+        curve           : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, curve=None, cuts=None, label=None):
 
-    def __init__(self, curve=None, cuts=None):
+        super().__init__('GeometryNodeSubdivideCurve', name='Subdivide Curve', label=label)
 
-        super().__init__('GeometryNodeSubdivideCurve', name='Subdivide Curve')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'curve'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'cuts'         ))
+        self.plug(0, curve)
+        self.plug(1, cuts)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.curve]
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve']
-
-        # ----- Input sockets
-
-        self.icurve          = curve
-        self.icuts           = cuts
-
-        self.socket_in_name = 'icurve'
-
-    def __repr__(self):
-        s = f"Node 'SubdivideCurve' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   curve           : {self.icurve}"
-        s += f"\n   cuts            : {self.icuts}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.curve
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def icurve(self):
-        return Node.Curve(self.inputs[0])
-
-    @icurve.setter
-    def icurve(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def icuts(self):
-        return Node.Integer(self.inputs[1])
-
-    @icuts.setter
-    def icuts(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSubdivideMesh
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSubdivideMesh for GeometryNodeSubdivideMesh
 
 class NodeSubdivideMesh(Node):
 
-    """ Node class GeometryNodeSubdivideMesh
+    """Node 'Subdivide Mesh' (GeometryNodeSubdivideMesh)
 
     Input sockets
     -------------
-
-        0: mesh                 Geometry
-        1: level                Integer
+        mesh            : Geometry
+        level           : Integer
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-
+        mesh            : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, mesh=None, level=None, label=None):
 
-    def __init__(self, mesh=None, level=None):
+        super().__init__('GeometryNodeSubdivideMesh', name='Subdivide Mesh', label=label)
 
-        super().__init__('GeometryNodeSubdivideMesh', name='Subdivide Mesh')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'mesh'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'level'        ))
+        self.plug(0, mesh)
+        self.plug(1, level)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.mesh]
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh']
-
-        # ----- Input sockets
-
-        self.imesh           = mesh
-        self.ilevel          = level
-
-        self.socket_in_name = 'imesh'
-
-    def __repr__(self):
-        s = f"Node 'SubdivideMesh' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   mesh            : {self.imesh}"
-        s += f"\n   level           : {self.ilevel}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.mesh
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def imesh(self):
-        return Node.Mesh(self.inputs[0])
-
-    @imesh.setter
-    def imesh(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ilevel(self):
-        return Node.Integer(self.inputs[1])
-
-    @ilevel.setter
-    def ilevel(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSubdivisionSurface
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSubdivisionSurface for GeometryNodeSubdivisionSurface
 
 class NodeSubdivisionSurface(Node):
 
-    """ Node class GeometryNodeSubdivisionSurface
+    """Node 'Subdivision Surface' (GeometryNodeSubdivisionSurface)
 
     Input sockets
     -------------
-
-        0: mesh                 Geometry
-        1: level                Integer
-        2: crease               Float
+        mesh            : Geometry
+        level           : Integer
+        crease          : Float
 
     Parameters
     ----------
-
-        boundary_smooth: 'ALL' in ('PRESERVE_CORNERS', 'ALL') 
-        uv_smooth   : 'PRESERVE_BOUNDARIES' in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 
-                                               'PRESERVE_BOUNDARIES', 'SMOOTH_ALL') 
+        boundary_smooth : 'ALL' in [ 'PRESERVE_CORNERS' 'ALL']
+        uv_smooth       : 'PRESERVE_BOUNDARIES' in [ 'NONE' 'PRESERVE_CORNERS' 'PRESERVE_CORNERS_AND_JUNCTIONS' 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE',
+                             'PRESERVE_BOUNDARIES' 'SMOOTH_ALL']
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-
+        mesh            : Geometry
     """
 
-    PARAMETERS = ['boundary_smooth', 'uv_smooth']
+    def __init__(self, mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None):
 
-    def __init__(self, mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
+        super().__init__('GeometryNodeSubdivisionSurface', name='Subdivision Surface', label=label)
 
-        super().__init__('GeometryNodeSubdivisionSurface', name='Subdivision Surface')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'mesh'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'level'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatFactor'  , 'crease'       ))
+        self.bnode.boundary_smooth = boundary_smooth
+        self.bnode.uv_smooth       = uv_smooth
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, mesh)
+        self.plug(1, level)
+        self.plug(2, crease)
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh']
+        # Output sockets
 
-        # ----- Parameters
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.mesh]
 
-        self.boundary_smooth = boundary_smooth
-        self.uv_smooth       = uv_smooth
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.imesh           = mesh
-        self.ilevel          = level
-        self.icrease         = crease
-
-        self.socket_in_name = 'imesh'
-
-    def __repr__(self):
-        s = f"Node 'SubdivisionSurface' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   mesh            : {self.imesh}"
-        s += f"\n   level           : {self.ilevel}"
-        s += f"\n   crease          : {self.icrease}"
-        s += '\nParameters'
-        s += f"\n   boundary_smooth : {self.boundary_smooth}"
-        s += f"\n   uv_smooth       : {self.uv_smooth}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('PRESERVE_CORNERS', 'ALL') 
-        if self.boundary_smooth not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeSubdivisionSurface'.\n 'boundary_smooth' is '{self.boundary_smooth}'.\n Authorized values are {valids}.")
-        valids = ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 
-                 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL') 
-        if self.uv_smooth not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeSubdivisionSurface'.\n 'uv_smooth' is '{self.uv_smooth}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.mesh
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def imesh(self):
-        return Node.Mesh(self.inputs[0])
-
-    @imesh.setter
-    def imesh(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ilevel(self):
-        return Node.Integer(self.inputs[1])
-
-    @ilevel.setter
-    def ilevel(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def icrease(self):
-        return Node.Float(self.inputs[2])
-
-    @icrease.setter
-    def icrease(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeSwitch
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSwitch for GeometryNodeSwitch
 
 class NodeSwitch(Node):
 
-    """ Node class GeometryNodeSwitch
+    """Node 'Switch' (GeometryNodeSwitch)
+
+    Data type dependant sockets
+    ---------------------------
+
+        Driving parameter : input_type in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')
+
+        Input sockets     : ['false', 'true']
+        Output sockets    : ['output']
 
     Input sockets
     -------------
-
-        0: switch               Boolean
-        1: switch               Boolean
-        2: false                Float
-        3: true                 Float
-        4: false                Integer
-        5: true                 Integer
-        6: false                Boolean
-        7: true                 Boolean
-        8: false                Vector
-        9: true                 Vector
-        10: false                Color
-        11: true                 Color
-        12: false                String
-        13: true                 String
-        14: false                Geometry
-        15: true                 Geometry
-        16: false                Object
-        17: true                 Object
-        18: false                Collection
-        19: true                 Collection
-        20: false                Texture
-        21: true                 Texture
-        22: false                Material
-        23: true                 Material
-        24: false                Image
-        25: true                 Image
+        switch0         : Boolean
+        switch1         : Boolean
+        false           : input_type dependant
+        true            : input_type dependant
 
     Parameters
     ----------
-
-        input_type  : 'GEOMETRY' in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 
-                                    'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL') 
+        input_type      : 'GEOMETRY' in [ 'FLOAT' 'INT' 'BOOLEAN' 'VECTOR' 'STRING' 'RGBA' 'OBJECT' 'IMAGE' 'GEOMETRY' 'COLLECTION' 'TEXTURE',
+                             'MATERIAL']
 
     Output sockets
     --------------
-
-        0: output               Float
-        1: output               Integer
-        2: output               Boolean
-        3: output               Vector
-        4: output               Color
-        5: output               String
-        6: output               Geometry
-        7: output               Object
-        8: output               Collection
-        9: output               Texture
-        10: output               Material
-        11: output               Image
-
+        output          : input_type dependant
     """
 
-    PARAMETERS = ['input_type']
+    def __init__(self, switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', label=None):
 
-    def __init__(self, switch=None, false=None, true=None, input_type='GEOMETRY'):
+        super().__init__('GeometryNodeSwitch', name='Switch', label=label)
 
-        super().__init__('GeometryNodeSwitch', name='Switch')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'switch'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'switch'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'false'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'true'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'false'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'true'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'false'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'true'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'false'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'true'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'false'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'true'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketString'       , 'false'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketString'       , 'true'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'false'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'true'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketObject'       , 'false'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketObject'       , 'true'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketCollection'   , 'false'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketCollection'   , 'true'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketTexture'      , 'false'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketTexture'      , 'true'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketMaterial'     , 'false'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketMaterial'     , 'true'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketImage'        , 'false'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketImage'        , 'true'         ))
+        self.bnode.input_type      = input_type
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'output'       ))
-        self.outputs.add(Socket (self, 'NodeSocketInt'          , 'output'       ))
-        self.outputs.add(Socket (self, 'NodeSocketBool'         , 'output'       ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'output'       ))
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'output'       ))
-        self.outputs.add(Socket (self, 'NodeSocketString'       , 'output'       ))
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'output'       ))
-        self.outputs.add(Socket (self, 'NodeSocketObject'       , 'output'       ))
-        self.outputs.add(Socket (self, 'NodeSocketCollection'   , 'output'       ))
-        self.outputs.add(Socket (self, 'NodeSocketTexture'      , 'output'       ))
-        self.outputs.add(Socket (self, 'NodeSocketMaterial'     , 'output'       ))
-        self.outputs.add(Socket (self, 'NodeSocketImage'        , 'output'       ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[14]
-        self.output_geometry_socket = self.outputs[6]
+        if input_type == 'FLOAT':
+            self.plug(2, false)
+            self.plug(3, true)
+        elif input_type == 'INT':
+            self.plug(4, false)
+            self.plug(5, true)
+        elif input_type == 'BOOLEAN':
+            self.plug(6, false)
+            self.plug(7, true)
+        elif input_type == 'VECTOR':
+            self.plug(8, false)
+            self.plug(9, true)
+        elif input_type == 'STRING':
+            self.plug(12, false)
+            self.plug(13, true)
+        elif input_type == 'RGBA':
+            self.plug(10, false)
+            self.plug(11, true)
+        elif input_type == 'OBJECT':
+            self.plug(16, false)
+            self.plug(17, true)
+        elif input_type == 'IMAGE':
+            self.plug(24, false)
+            self.plug(25, true)
+        elif input_type == 'GEOMETRY':
+            self.plug(14, false)
+            self.plug(15, true)
+        elif input_type == 'COLLECTION':
+            self.plug(18, false)
+            self.plug(19, true)
+        elif input_type == 'TEXTURE':
+            self.plug(20, false)
+            self.plug(21, true)
+        elif input_type == 'MATERIAL':
+            self.plug(22, false)
+            self.plug(23, true)
 
-        self.socket_out_name = 'output'
-        self.out_socket_names = ['output']
+        self.plug(0, switch0)
+        self.plug(1, switch1)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.input_type      = input_type
-        self.check_parameters()
+        if input_type == 'FLOAT':
+            self.output          = self.Float(self.bnode.outputs[0])
+        elif input_type == 'INT':
+            self.output          = self.Integer(self.bnode.outputs[1])
+        elif input_type == 'BOOLEAN':
+            self.output          = self.Boolean(self.bnode.outputs[2])
+        elif input_type == 'VECTOR':
+            self.output          = self.Vector(self.bnode.outputs[3])
+        elif input_type == 'STRING':
+            self.output          = self.String(self.bnode.outputs[5])
+        elif input_type == 'RGBA':
+            self.output          = self.Color(self.bnode.outputs[4])
+        elif input_type == 'OBJECT':
+            self.output          = self.Object(self.bnode.outputs[7])
+        elif input_type == 'IMAGE':
+            self.output          = self.Image(self.bnode.outputs[11])
+        elif input_type == 'GEOMETRY':
+            self.output          = self.Geometry(self.bnode.outputs[6])
+        elif input_type == 'COLLECTION':
+            self.output          = self.Collection(self.bnode.outputs[8])
+        elif input_type == 'TEXTURE':
+            self.output          = self.Texture(self.bnode.outputs[9])
+        elif input_type == 'MATERIAL':
+            self.output          = self.Material(self.bnode.outputs[10])
 
-        # ----- Input sockets
+        self.output_sockets  = []
 
-        self.iswitch         = switch
-        self.ifalse          = false
-        self.itrue           = true
-
-        self.socket_in_name = 'iswitch'
-
-    def __repr__(self):
-        s = f"Node 'Switch' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   switch          : {self.iswitch}"
-        s += f"\n   false           : {self.ifalse}"
-        s += f"\n   true            : {self.itrue}"
-        s += '\nParameters'
-        s += f"\n   input_type      : {self.input_type}"
-        s += '\nOutput sockets'
-        s +=  "\n   output          : variable"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 
-                 'TEXTURE', 'MATERIAL') 
-        if self.input_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeSwitch'.\n 'input_type' is '{self.input_type}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def output(self):
-        if (self.input_type == 'FLOAT'):
-            return self.Float(self.outputs[0])
-        elif (self.input_type == 'INT'):
-            return self.Integer(self.outputs[1])
-        elif (self.input_type == 'BOOLEAN'):
-            return self.Boolean(self.outputs[2])
-        elif (self.input_type == 'VECTOR'):
-            return self.Vector(self.outputs[3])
-        elif (self.input_type == 'RGBA'):
-            return self.Color(self.outputs[4])
-        elif (self.input_type == 'STRING'):
-            return self.String(self.outputs[5])
-        elif (self.input_type == 'GEOMETRY'):
-            return self.Geometry(self.outputs[6])
-        elif (self.input_type == 'OBJECT'):
-            return self.Object(self.outputs[7])
-        elif (self.input_type == 'COLLECTION'):
-            return self.Collection(self.outputs[8])
-        elif (self.input_type == 'TEXTURE'):
-            return self.Texture(self.outputs[9])
-        elif (self.input_type == 'MATERIAL'):
-            return self.Material(self.outputs[10])
-        elif (self.input_type == 'IMAGE'):
-            return self.Image(self.outputs[11])
-        self.check_parameters()
-
-    @property
-    def output(self):
-        return self.output
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def iswitch(self):
-        if (self.input_type in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA']):
-            return Node.Boolean(self.inputs[0])
-        elif (self.input_type in ['OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL']):
-            return Node.Boolean(self.inputs[1])
-
-    @iswitch.setter
-    def iswitch(self, value):
-        if (self.input_type in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA']):
-            self.inputs[0].plug(value)
-        elif (self.input_type in ['OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL']):
-            self.inputs[1].plug(value)
-
-    @property
-    def ifalse(self):
-        if (self.input_type == 'FLOAT'):
-            return Node.Float(self.inputs[2])
-        elif (self.input_type == 'INT'):
-            return Node.Integer(self.inputs[4])
-        elif (self.input_type == 'BOOLEAN'):
-            return Node.Boolean(self.inputs[6])
-        elif (self.input_type == 'VECTOR'):
-            return Node.Vector(self.inputs[8])
-        elif (self.input_type == 'RGBA'):
-            return Node.Color(self.inputs[10])
-        elif (self.input_type == 'STRING'):
-            return Node.String(self.inputs[12])
-        elif (self.input_type == 'GEOMETRY'):
-            return Node.Geometry(self.inputs[14])
-        elif (self.input_type == 'OBJECT'):
-            return Node.Object(self.inputs[16])
-        elif (self.input_type == 'COLLECTION'):
-            return Node.Collection(self.inputs[18])
-        elif (self.input_type == 'TEXTURE'):
-            return Node.Texture(self.inputs[20])
-        elif (self.input_type == 'MATERIAL'):
-            return Node.Material(self.inputs[22])
-        elif (self.input_type == 'IMAGE'):
-            return Node.Image(self.inputs[24])
-
-    @ifalse.setter
-    def ifalse(self, value):
-        if (self.input_type == 'FLOAT'):
-            self.inputs[2].plug(value)
-        elif (self.input_type == 'INT'):
-            self.inputs[4].plug(value)
-        elif (self.input_type == 'BOOLEAN'):
-            self.inputs[6].plug(value)
-        elif (self.input_type == 'VECTOR'):
-            self.inputs[8].plug(value)
-        elif (self.input_type == 'RGBA'):
-            self.inputs[10].plug(value)
-        elif (self.input_type == 'STRING'):
-            self.inputs[12].plug(value)
-        elif (self.input_type == 'GEOMETRY'):
-            self.inputs[14].plug(value)
-        elif (self.input_type == 'OBJECT'):
-            self.inputs[16].plug(value)
-        elif (self.input_type == 'COLLECTION'):
-            self.inputs[18].plug(value)
-        elif (self.input_type == 'TEXTURE'):
-            self.inputs[20].plug(value)
-        elif (self.input_type == 'MATERIAL'):
-            self.inputs[22].plug(value)
-        elif (self.input_type == 'IMAGE'):
-            self.inputs[24].plug(value)
-
-    @property
-    def itrue(self):
-        if (self.input_type == 'FLOAT'):
-            return Node.Float(self.inputs[3])
-        elif (self.input_type == 'INT'):
-            return Node.Integer(self.inputs[5])
-        elif (self.input_type == 'BOOLEAN'):
-            return Node.Boolean(self.inputs[7])
-        elif (self.input_type == 'VECTOR'):
-            return Node.Vector(self.inputs[9])
-        elif (self.input_type == 'RGBA'):
-            return Node.Color(self.inputs[11])
-        elif (self.input_type == 'STRING'):
-            return Node.String(self.inputs[13])
-        elif (self.input_type == 'GEOMETRY'):
-            return Node.Geometry(self.inputs[15])
-        elif (self.input_type == 'OBJECT'):
-            return Node.Object(self.inputs[17])
-        elif (self.input_type == 'COLLECTION'):
-            return Node.Collection(self.inputs[19])
-        elif (self.input_type == 'TEXTURE'):
-            return Node.Texture(self.inputs[21])
-        elif (self.input_type == 'MATERIAL'):
-            return Node.Material(self.inputs[23])
-        elif (self.input_type == 'IMAGE'):
-            return Node.Image(self.inputs[25])
-
-    @itrue.setter
-    def itrue(self, value):
-        if (self.input_type == 'FLOAT'):
-            self.inputs[3].plug(value)
-        elif (self.input_type == 'INT'):
-            self.inputs[5].plug(value)
-        elif (self.input_type == 'BOOLEAN'):
-            self.inputs[7].plug(value)
-        elif (self.input_type == 'VECTOR'):
-            self.inputs[9].plug(value)
-        elif (self.input_type == 'RGBA'):
-            self.inputs[11].plug(value)
-        elif (self.input_type == 'STRING'):
-            self.inputs[13].plug(value)
-        elif (self.input_type == 'GEOMETRY'):
-            self.inputs[15].plug(value)
-        elif (self.input_type == 'OBJECT'):
-            self.inputs[17].plug(value)
-        elif (self.input_type == 'COLLECTION'):
-            self.inputs[19].plug(value)
-        elif (self.input_type == 'TEXTURE'):
-            self.inputs[21].plug(value)
-        elif (self.input_type == 'MATERIAL'):
-            self.inputs[23].plug(value)
-        elif (self.input_type == 'IMAGE'):
-            self.inputs[25].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeTransform
+# ----------------------------------------------------------------------------------------------------
+# Node NodeTransform for GeometryNodeTransform
 
 class NodeTransform(Node):
 
-    """ Node class GeometryNodeTransform
+    """Node 'Transform' (GeometryNodeTransform)
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
-        1: translation          Vector
-        2: rotation             Vector
-        3: scale                Vector
+        geometry        : Geometry
+        translation     : Vector
+        rotation        : Vector
+        scale           : Vector
 
     Output sockets
     --------------
-
-        0: geometry             Geometry
-
+        geometry        : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, geometry=None, translation=None, rotation=None, scale=None, label=None):
 
-    def __init__(self, geometry=None, translation=None, rotation=None, scale=None):
+        super().__init__('GeometryNodeTransform', name='Transform', label=label)
 
-        super().__init__('GeometryNodeTransform', name='Transform')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'translation'  ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorEuler'  , 'rotation'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorXYZ'    , 'scale'        ))
+        self.plug(0, geometry)
+        self.plug(1, translation)
+        self.plug(2, rotation)
+        self.plug(3, scale)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'geometry'     ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.geometry]
 
-        self.socket_out_name = 'geometry'
-        self.out_socket_names = ['geometry']
-
-        # ----- Input sockets
-
-        self.igeometry       = geometry
-        self.itranslation    = translation
-        self.irotation       = rotation
-        self.iscale          = scale
-
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'Transform' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += f"\n   translation     : {self.itranslation}"
-        s += f"\n   rotation        : {self.irotation}"
-        s += f"\n   scale           : {self.iscale}"
-        s += '\nOutput sockets'
-        s +=  "\n   geometry        : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def geometry(self):
-        return self.Geometry(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.geometry
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def itranslation(self):
-        return Node.Vector(self.inputs[1])
-
-    @itranslation.setter
-    def itranslation(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def irotation(self):
-        return Node.Vector(self.inputs[2])
-
-    @irotation.setter
-    def irotation(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def iscale(self):
-        return Node.Vector(self.inputs[3])
-
-    @iscale.setter
-    def iscale(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeTranslateInstances
+# ----------------------------------------------------------------------------------------------------
+# Node NodeTranslateInstances for GeometryNodeTranslateInstances
 
 class NodeTranslateInstances(Node):
 
-    """ Node class GeometryNodeTranslateInstances
+    """Node 'Translate Instances' (GeometryNodeTranslateInstances)
 
     Input sockets
     -------------
-
-        0: instances            Geometry
-        1: selection            Boolean
-        2: translation          Vector
-        3: local_space          Boolean
+        instances       : Geometry
+        selection       : Boolean
+        translation     : Vector
+        local_space     : Boolean
 
     Output sockets
     --------------
-
-        0: instances            Geometry
-
+        instances       : Geometry
     """
 
-    PARAMETERS = []
+    def __init__(self, instances=None, selection=None, translation=None, local_space=None, label=None):
 
-    def __init__(self, instances=None, selection=None, translation=None, local_space=None):
+        super().__init__('GeometryNodeTranslateInstances', name='Translate Instances', label=label)
 
-        super().__init__('GeometryNodeTranslateInstances', name='Translate Instances')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'instances'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorTranslation', 'translation'  ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'local_space'  ))
+        self.plug(0, instances)
+        self.plug(1, selection)
+        self.plug(2, translation)
+        self.plug(3, local_space)
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'instances'    ))
+        # Output sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.instances       = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.instances]
 
-        self.socket_out_name = 'instances'
-        self.out_socket_names = ['instances']
-
-        # ----- Input sockets
-
-        self.iinstances      = instances
-        self.iselection      = selection
-        self.itranslation    = translation
-        self.ilocal_space    = local_space
-
-        self.socket_in_name = 'iinstances'
-
-    def __repr__(self):
-        s = f"Node 'TranslateInstances' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   instances       : {self.iinstances}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   translation     : {self.itranslation}"
-        s += f"\n   local_space     : {self.ilocal_space}"
-        s += '\nOutput sockets'
-        s +=  "\n   instances       : Geometry"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def instances(self):
-        return self.Instances(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.instances
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def iinstances(self):
-        return Node.Instances(self.inputs[0])
-
-    @iinstances.setter
-    def iinstances(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def itranslation(self):
-        return Node.Vector(self.inputs[2])
-
-    @itranslation.setter
-    def itranslation(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def ilocal_space(self):
-        return Node.Boolean(self.inputs[3])
-
-    @ilocal_space.setter
-    def ilocal_space(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeTriangulate
+# ----------------------------------------------------------------------------------------------------
+# Node NodeTriangulate for GeometryNodeTriangulate
 
 class NodeTriangulate(Node):
 
-    """ Node class GeometryNodeTriangulate
+    """Node 'Triangulate' (GeometryNodeTriangulate)
 
     Input sockets
     -------------
-
-        0: mesh                 Geometry
-        1: selection            Boolean
-        2: minimum_vertices     Integer
+        mesh            : Geometry
+        selection       : Boolean
+        minimum_vertices : Integer
 
     Parameters
     ----------
-
-        ngon_method : 'BEAUTY' in ('BEAUTY', 'CLIP') 
-        quad_method : 'SHORTEST_DIAGONAL' in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL') 
+        ngon_method     : 'BEAUTY' in [ 'BEAUTY' 'CLIP']
+        quad_method     : 'SHORTEST_DIAGONAL' in [ 'BEAUTY' 'FIXED' 'FIXED_ALTERNATE' 'SHORTEST_DIAGONAL' 'LONGEST_DIAGONAL']
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-
+        mesh            : Geometry
     """
 
-    PARAMETERS = ['ngon_method', 'quad_method']
+    def __init__(self, mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', label=None):
 
-    def __init__(self, mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
+        super().__init__('GeometryNodeTriangulate', name='Triangulate', label=label)
 
-        super().__init__('GeometryNodeTriangulate', name='Triangulate')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'mesh'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'selection'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'minimum_vertices'))
+        self.bnode.ngon_method     = ngon_method
+        self.bnode.quad_method     = quad_method
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, mesh)
+        self.plug(1, selection)
+        self.plug(2, minimum_vertices)
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh']
+        # Output sockets
 
-        # ----- Parameters
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.mesh]
 
-        self.ngon_method     = ngon_method
-        self.quad_method     = quad_method
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.imesh           = mesh
-        self.iselection      = selection
-        self.iminimum_vertices = minimum_vertices
-
-        self.socket_in_name = 'imesh'
-
-    def __repr__(self):
-        s = f"Node 'Triangulate' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   mesh            : {self.imesh}"
-        s += f"\n   selection       : {self.iselection}"
-        s += f"\n   minimum_vertices : {self.iminimum_vertices}"
-        s += '\nParameters'
-        s += f"\n   ngon_method     : {self.ngon_method}"
-        s += f"\n   quad_method     : {self.quad_method}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('BEAUTY', 'CLIP') 
-        if self.ngon_method not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeTriangulate'.\n 'ngon_method' is '{self.ngon_method}'.\n Authorized values are {valids}.")
-        valids = ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL') 
-        if self.quad_method not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeTriangulate'.\n 'quad_method' is '{self.quad_method}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.mesh
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def imesh(self):
-        return Node.Mesh(self.inputs[0])
-
-    @imesh.setter
-    def imesh(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iselection(self):
-        return Node.Boolean(self.inputs[1])
-
-    @iselection.setter
-    def iselection(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iminimum_vertices(self):
-        return Node.Integer(self.inputs[2])
-
-    @iminimum_vertices.setter
-    def iminimum_vertices(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeTrimCurve
+# ----------------------------------------------------------------------------------------------------
+# Node NodeTrimCurve for GeometryNodeTrimCurve
 
 class NodeTrimCurve(Node):
 
-    """ Node class GeometryNodeTrimCurve
+    """Node 'Trim Curve' (GeometryNodeTrimCurve)
 
     Input sockets
     -------------
-
-        0: curve                Geometry
-        1: start                Float
-        2: end                  Float
-        3: start                Float
-        4: end                  Float
+        curve           : Geometry
+        start0          : Float
+        start1          : Float
+        end0            : Float
+        end1            : Float
 
     Parameters
     ----------
-
-        mode        : 'FACTOR' in ('FACTOR', 'LENGTH') 
+        mode            : 'FACTOR' in [ 'FACTOR' 'LENGTH']
 
     Output sockets
     --------------
-
-        0: curve                Geometry
-
+        curve           : Geometry
     """
 
-    PARAMETERS = ['mode']
+    def __init__(self, curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR', label=None):
 
-    def __init__(self, curve=None, start=None, end=None, mode='FACTOR'):
+        super().__init__('GeometryNodeTrimCurve', name='Trim Curve', label=label)
 
-        super().__init__('GeometryNodeTrimCurve', name='Trim Curve')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'curve'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatFactor'  , 'start'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatFactor'  , 'end'          ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'start'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'end'          ))
+        self.bnode.mode            = mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'curve'        ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, curve)
+        self.plug(1, start0)
+        self.plug(3, start1)
+        self.plug(2, end0)
+        self.plug(4, end1)
 
-        self.socket_out_name = 'curve'
-        self.out_socket_names = ['curve']
+        # Output sockets
 
-        # ----- Parameters
+        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.curve]
 
-        self.mode            = mode
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.icurve          = curve
-        self.istart          = start
-        self.iend            = end
-
-        self.socket_in_name = 'icurve'
-
-    def __repr__(self):
-        s = f"Node 'TrimCurve' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   curve           : {self.icurve}"
-        s += f"\n   start           : {self.istart}"
-        s += f"\n   end             : {self.iend}"
-        s += '\nParameters'
-        s += f"\n   mode            : {self.mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   curve           : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('FACTOR', 'LENGTH') 
-        if self.mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeTrimCurve'.\n 'mode' is '{self.mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def curve(self):
-        return self.Curve(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.curve
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def icurve(self):
-        return Node.Curve(self.inputs[0])
-
-    @icurve.setter
-    def icurve(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def istart(self):
-        if (self.mode == 'FACTOR'):
-            return Node.Float(self.inputs[1])
-        elif (self.mode == 'LENGTH'):
-            return Node.Float(self.inputs[3])
-
-    @istart.setter
-    def istart(self, value):
-        if (self.mode == 'FACTOR'):
-            self.inputs[1].plug(value)
-        elif (self.mode == 'LENGTH'):
-            self.inputs[3].plug(value)
-
-    @property
-    def iend(self):
-        if (self.mode == 'FACTOR'):
-            return Node.Float(self.inputs[2])
-        elif (self.mode == 'LENGTH'):
-            return Node.Float(self.inputs[4])
-
-    @iend.setter
-    def iend(self, value):
-        if (self.mode == 'FACTOR'):
-            self.inputs[2].plug(value)
-        elif (self.mode == 'LENGTH'):
-            self.inputs[4].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeViewer
+# ----------------------------------------------------------------------------------------------------
+# Node NodeViewer for GeometryNodeViewer
 
 class NodeViewer(Node):
 
-    """ Node class GeometryNodeViewer
+    """Node 'Viewer' (GeometryNodeViewer)
+
+    Data type dependant sockets
+    ---------------------------
+
+        Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+
+        Input sockets     : ['value']
 
     Input sockets
     -------------
-
-        0: geometry             Geometry
-        1: value                Float
-        2: value                Vector
-        3: value                Color
-        4: value                Integer
-        5: value                Boolean
+        geometry        : Geometry
+        value           : data_type dependant
 
     Parameters
     ----------
-
-        data_type   : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
+        data_type       : 'FLOAT' in [ 'FLOAT' 'INT' 'FLOAT_VECTOR' 'FLOAT_COLOR' 'BOOLEAN']
 
     """
 
-    PARAMETERS = ['data_type']
+    def __init__(self, geometry=None, value=None, data_type='FLOAT', label=None):
 
-    def __init__(self, geometry=None, value=None, data_type='FLOAT'):
+        super().__init__('GeometryNodeViewer', name='Viewer', label=label)
 
-        super().__init__('GeometryNodeViewer', name='Viewer')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'geometry'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketInt'          , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketBool'         , 'value'        ))
+        self.bnode.data_type       = data_type
 
-        self.input_geometry_socket = self.inputs[0]
+        # Input sockets
 
-        self.socket_out_name = None
+        if data_type == 'FLOAT':
+            self.plug(1, value)
+        elif data_type == 'INT':
+            self.plug(4, value)
+        elif data_type == 'FLOAT_VECTOR':
+            self.plug(2, value)
+        elif data_type == 'FLOAT_COLOR':
+            self.plug(3, value)
+        elif data_type == 'BOOLEAN':
+            self.plug(5, value)
 
-        self.out_socket_names = []
+        self.plug(0, geometry)
 
-        # ----- Parameters
 
-        self.data_type       = data_type
-        self.check_parameters()
+        self.output_sockets  = []
 
-        # ----- Input sockets
+# ----------------------------------------------------------------------------------------------------
+# Node NodeVolumeToMesh for GeometryNodeVolumeToMesh
 
-        self.igeometry       = geometry
-        self.ivalue          = value
+class NodeVolumeToMesh(Node):
 
-        self.socket_in_name = 'igeometry'
-
-    def __repr__(self):
-        s = f"Node 'Viewer' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   geometry        : {self.igeometry}"
-        s += f"\n   value           : {self.ivalue}"
-        s += '\nParameters'
-        s += f"\n   data_type       : {self.data_type}"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
-        if self.data_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeViewer'.\n 'data_type' is '{self.data_type}'.\n Authorized values are {valids}.")
-
-    @property
-    def output(self):
-        return self
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def igeometry(self):
-        return Node.Geometry(self.inputs[0])
-
-    @igeometry.setter
-    def igeometry(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ivalue(self):
-        if (self.data_type == 'FLOAT'):
-            return Node.Float(self.inputs[1])
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            return Node.Vector(self.inputs[2])
-        elif (self.data_type == 'FLOAT_COLOR'):
-            return Node.Color(self.inputs[3])
-        elif (self.data_type == 'INT'):
-            return Node.Integer(self.inputs[4])
-        elif (self.data_type == 'BOOLEAN'):
-            return Node.Boolean(self.inputs[5])
-
-    @ivalue.setter
-    def ivalue(self, value):
-        if (self.data_type == 'FLOAT'):
-            self.inputs[1].plug(value)
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            self.inputs[2].plug(value)
-        elif (self.data_type == 'FLOAT_COLOR'):
-            self.inputs[3].plug(value)
-        elif (self.data_type == 'INT'):
-            self.inputs[4].plug(value)
-        elif (self.data_type == 'BOOLEAN'):
-            self.inputs[5].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class GeometryNodeVolumeToMesh
-
-class NodeVolumetoMesh(Node):
-
-    """ Node class GeometryNodeVolumeToMesh
+    """Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
 
     Input sockets
     -------------
-
-        0: volume               Geometry
-        1: voxel_size           Float
-        2: voxel_amount         Float
-        3: threshold            Float
-        4: adaptivity           Float
+        volume          : Geometry
+        voxel_size      : Float
+        voxel_amount    : Float
+        threshold       : Float
+        adaptivity      : Float
 
     Parameters
     ----------
-
-        resolution_mode: 'GRID' in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE') 
+        resolution_mode : 'GRID' in [ 'GRID' 'VOXEL_AMOUNT' 'VOXEL_SIZE']
 
     Output sockets
     --------------
-
-        0: mesh                 Geometry
-
+        mesh            : Geometry
     """
 
-    PARAMETERS = ['resolution_mode']
+    def __init__(self, volume=None, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID', label=None):
 
-    def __init__(self, volume=None, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):
+        super().__init__('GeometryNodeVolumeToMesh', name='Volume to Mesh', label=label)
 
-        super().__init__('GeometryNodeVolumeToMesh', name='Volume to Mesh')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketGeometry'     , 'volume'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatDistance', 'voxel_size'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'voxel_amount' ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'threshold'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatFactor'  , 'adaptivity'   ))
+        self.bnode.resolution_mode = resolution_mode
 
-        self.outputs.add(Socket (self, 'NodeSocketGeometry'     , 'mesh'         ))
+        # Input sockets
 
-        self.input_geometry_socket = self.inputs[0]
-        self.output_geometry_socket = self.outputs[0]
+        self.plug(0, volume)
+        self.plug(1, voxel_size)
+        self.plug(2, voxel_amount)
+        self.plug(3, threshold)
+        self.plug(4, adaptivity)
 
-        self.socket_out_name = 'mesh'
-        self.out_socket_names = ['mesh']
+        # Output sockets
 
-        # ----- Parameters
+        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = [self.mesh]
 
-        self.resolution_mode = resolution_mode
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.ivolume         = volume
-        self.ivoxel_size     = voxel_size
-        self.ivoxel_amount   = voxel_amount
-        self.ithreshold      = threshold
-        self.iadaptivity     = adaptivity
-
-        self.socket_in_name = 'ivolume'
-
-    def __repr__(self):
-        s = f"Node 'VolumetoMesh' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   volume          : {self.ivolume}"
-        s += f"\n   voxel_size      : {self.ivoxel_size}"
-        s += f"\n   voxel_amount    : {self.ivoxel_amount}"
-        s += f"\n   threshold       : {self.ithreshold}"
-        s += f"\n   adaptivity      : {self.iadaptivity}"
-        s += '\nParameters'
-        s += f"\n   resolution_mode : {self.resolution_mode}"
-        s += '\nOutput sockets'
-        s +=  "\n   mesh            : Geometry"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE') 
-        if self.resolution_mode not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeVolumetoMesh'.\n 'resolution_mode' is '{self.resolution_mode}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def mesh(self):
-        return self.Mesh(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.mesh
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivolume(self):
-        return Node.Volume(self.inputs[0])
-
-    @ivolume.setter
-    def ivolume(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ivoxel_size(self):
-        return Node.Float(self.inputs[1])
-
-    @ivoxel_size.setter
-    def ivoxel_size(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ivoxel_amount(self):
-        return Node.Float(self.inputs[2])
-
-    @ivoxel_amount.setter
-    def ivoxel_amount(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def ithreshold(self):
-        return Node.Float(self.inputs[3])
-
-    @ithreshold.setter
-    def ithreshold(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def iadaptivity(self):
-        return Node.Float(self.inputs[4])
-
-    @iadaptivity.setter
-    def iadaptivity(self, value):
-        self.inputs[4].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeClamp
+# ----------------------------------------------------------------------------------------------------
+# Node NodeClamp for ShaderNodeClamp
 
 class NodeClamp(Node):
 
-    """ Node class ShaderNodeClamp
+    """Node 'Clamp' (ShaderNodeClamp)
 
     Input sockets
     -------------
-
-        0: value                Float
-        1: min                  Float
-        2: max                  Float
+        value           : Float
+        min             : Float
+        max             : Float
 
     Parameters
     ----------
-
-        clamp_type  : 'MINMAX' in ('MINMAX', 'RANGE') 
+        clamp_type      : 'MINMAX' in [ 'MINMAX' 'RANGE']
 
     Output sockets
     --------------
-
-        0: result               Float
-
+        result          : Float
     """
 
-    PARAMETERS = ['clamp_type']
+    def __init__(self, value=None, min=None, max=None, clamp_type='MINMAX', label=None):
 
-    def __init__(self, value=None, min=None, max=None, clamp_type='MINMAX'):
+        super().__init__('ShaderNodeClamp', name='Clamp', label=label)
 
-        super().__init__('ShaderNodeClamp', name='Clamp')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'min'          ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'max'          ))
+        self.bnode.clamp_type      = clamp_type
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'result'       ))
+        # Input sockets
 
-        self.socket_out_name = 'result'
-        self.out_socket_names = ['result']
+        self.plug(0, value)
+        self.plug(1, min)
+        self.plug(2, max)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.clamp_type      = clamp_type
-        self.check_parameters()
+        self.result          = self.Float(self.bnode.outputs[0])
+        self.output_sockets  = [self.result]
 
-        # ----- Input sockets
+# ----------------------------------------------------------------------------------------------------
+# Node NodeCombineRgb for ShaderNodeCombineRGB
 
-        self.ivalue          = value
-        self.imin            = min
-        self.imax            = max
+class NodeCombineRgb(Node):
 
-        self.socket_in_name = 'ivalue'
-
-    def __repr__(self):
-        s = f"Node 'Clamp' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   value           : {self.ivalue}"
-        s += f"\n   min             : {self.imin}"
-        s += f"\n   max             : {self.imax}"
-        s += '\nParameters'
-        s += f"\n   clamp_type      : {self.clamp_type}"
-        s += '\nOutput sockets'
-        s +=  "\n   result          : Float"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('MINMAX', 'RANGE') 
-        if self.clamp_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeClamp'.\n 'clamp_type' is '{self.clamp_type}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def result(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.result
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivalue(self):
-        return Node.Float(self.inputs[0])
-
-    @ivalue.setter
-    def ivalue(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def imin(self):
-        return Node.Float(self.inputs[1])
-
-    @imin.setter
-    def imin(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def imax(self):
-        return Node.Float(self.inputs[2])
-
-    @imax.setter
-    def imax(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeCombineRGB
-
-class NodeCombineRGB(Node):
-
-    """ Node class ShaderNodeCombineRGB
+    """Node 'Combine RGB' (ShaderNodeCombineRGB)
 
     Input sockets
     -------------
-
-        0: r                    Float
-        1: g                    Float
-        2: b                    Float
+        r               : Float
+        g               : Float
+        b               : Float
 
     Output sockets
     --------------
-
-        0: image                Color
-
+        image           : Color
     """
 
-    PARAMETERS = []
+    def __init__(self, r=None, g=None, b=None, label=None):
 
-    def __init__(self, r=None, g=None, b=None):
+        super().__init__('ShaderNodeCombineRGB', name='Combine RGB', label=label)
 
-        super().__init__('ShaderNodeCombineRGB', name='Combine RGB')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'r'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'g'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'b'            ))
+        self.plug(0, r)
+        self.plug(1, g)
+        self.plug(2, b)
 
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'image'        ))
+        # Output sockets
 
-        self.socket_out_name = 'image'
-        self.out_socket_names = ['image']
+        self.image           = self.Color(self.bnode.outputs[0])
+        self.output_sockets  = [self.image]
 
-        # ----- Input sockets
+# ----------------------------------------------------------------------------------------------------
+# Node NodeCombineXyz for ShaderNodeCombineXYZ
 
-        self.ir              = r
-        self.ig              = g
-        self.ib              = b
+class NodeCombineXyz(Node):
 
-        self.socket_in_name = 'ir'
-
-    def __repr__(self):
-        s = f"Node 'CombineRGB' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   r               : {self.ir}"
-        s += f"\n   g               : {self.ig}"
-        s += f"\n   b               : {self.ib}"
-        s += '\nOutput sockets'
-        s +=  "\n   image           : Color"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def image(self):
-        return self.Color(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.image
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ir(self):
-        return Node.Float(self.inputs[0])
-
-    @ir.setter
-    def ir(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ig(self):
-        return Node.Float(self.inputs[1])
-
-    @ig.setter
-    def ig(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ib(self):
-        return Node.Float(self.inputs[2])
-
-    @ib.setter
-    def ib(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeCombineXYZ
-
-class NodeCombineXYZ(Node):
-
-    """ Node class ShaderNodeCombineXYZ
+    """Node 'Combine XYZ' (ShaderNodeCombineXYZ)
 
     Input sockets
     -------------
-
-        0: x                    Float
-        1: y                    Float
-        2: z                    Float
+        x               : Float
+        y               : Float
+        z               : Float
 
     Output sockets
     --------------
-
-        0: vector               Vector
-
+        vector          : Vector
     """
 
-    PARAMETERS = []
+    def __init__(self, x=None, y=None, z=None, label=None):
 
-    def __init__(self, x=None, y=None, z=None):
+        super().__init__('ShaderNodeCombineXYZ', name='Combine XYZ', label=label)
 
-        super().__init__('ShaderNodeCombineXYZ', name='Combine XYZ')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'x'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'y'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'z'            ))
+        self.plug(0, x)
+        self.plug(1, y)
+        self.plug(2, z)
 
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'vector'       ))
+        # Output sockets
 
-        self.socket_out_name = 'vector'
-        self.out_socket_names = ['vector']
+        self.vector          = self.Vector(self.bnode.outputs[0])
+        self.output_sockets  = [self.vector]
 
-        # ----- Input sockets
-
-        self.ix              = x
-        self.iy              = y
-        self.iz              = z
-
-        self.socket_in_name = 'ix'
-
-    def __repr__(self):
-        s = f"Node 'CombineXYZ' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   x               : {self.ix}"
-        s += f"\n   y               : {self.iy}"
-        s += f"\n   z               : {self.iz}"
-        s += '\nOutput sockets'
-        s +=  "\n   vector          : Vector"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def vector(self):
-        return self.Vector(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.vector
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ix(self):
-        return Node.Float(self.inputs[0])
-
-    @ix.setter
-    def ix(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iy(self):
-        return Node.Float(self.inputs[1])
-
-    @iy.setter
-    def iy(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iz(self):
-        return Node.Float(self.inputs[2])
-
-    @iz.setter
-    def iz(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeFloatCurve
+# ----------------------------------------------------------------------------------------------------
+# Node NodeFloatCurve for ShaderNodeFloatCurve
 
 class NodeFloatCurve(Node):
 
-    """ Node class ShaderNodeFloatCurve
+    """Node 'Float Curve' (ShaderNodeFloatCurve)
 
     Input sockets
     -------------
-
-        0: factor               Float
-        1: value                Float
+        factor          : Float
+        value           : Float
 
     Output sockets
     --------------
-
-        0: value                Float
-
+        value           : Float
     """
 
-    PARAMETERS = []
+    def __init__(self, factor=None, value=None, label=None):
 
-    def __init__(self, factor=None, value=None):
+        super().__init__('ShaderNodeFloatCurve', name='Float Curve', label=label)
 
-        super().__init__('ShaderNodeFloatCurve', name='Float Curve')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatFactor'  , 'factor'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'value'        ))
+        self.plug(0, factor)
+        self.plug(1, value)
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'value'        ))
+        # Output sockets
 
-        self.socket_out_name = 'value'
-        self.out_socket_names = ['value']
+        self.value           = self.Float(self.bnode.outputs[0])
+        self.output_sockets  = [self.value]
 
-        # ----- Input sockets
-
-        self.ifactor         = factor
-        self.ivalue          = value
-
-        self.socket_in_name = 'ifactor'
-
-    def __repr__(self):
-        s = f"Node 'FloatCurve' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   factor          : {self.ifactor}"
-        s += f"\n   value           : {self.ivalue}"
-        s += '\nOutput sockets'
-        s +=  "\n   value           : Float"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def value(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.value
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ifactor(self):
-        return Node.Float(self.inputs[0])
-
-    @ifactor.setter
-    def ifactor(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ivalue(self):
-        return Node.Float(self.inputs[1])
-
-    @ivalue.setter
-    def ivalue(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeMapRange
+# ----------------------------------------------------------------------------------------------------
+# Node NodeMapRange for ShaderNodeMapRange
 
 class NodeMapRange(Node):
 
-    """ Node class ShaderNodeMapRange
+    """Node 'Map Range' (ShaderNodeMapRange)
+
+    Data type dependant sockets
+    ---------------------------
+
+        Driving parameter : data_type in ('FLOAT', 'FLOAT_VECTOR')
+
+        Input sockets     : ['from_min', 'from_max', 'to_min', 'to_max', 'steps']
 
     Input sockets
     -------------
-
-        0: value                Float
-        1: from_min             Float
-        2: from_max             Float
-        3: to_min               Float
-        4: to_max               Float
-        5: steps                Float
-        6: vector               Vector
-        7: from_min             Vector
-        8: from_max             Vector
-        9: to_min               Vector
-        10: to_max               Vector
-        11: steps                Vector
+        value           : Float
+        from_min        : data_type dependant
+        from_max        : data_type dependant
+        to_min          : data_type dependant
+        to_max          : data_type dependant
+        steps           : data_type dependant
+        vector          : Vector
 
     Parameters
     ----------
-
-        clamp       : True
-        data_type   : 'FLOAT' in ('FLOAT', 'FLOAT_VECTOR') 
-        interpolation_type: 'LINEAR' in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP') 
+        clamp           : (True) bool
+        data_type       : 'FLOAT' in [ 'FLOAT' 'FLOAT_VECTOR']
+        interpolation_type : 'LINEAR' in [ 'LINEAR' 'STEPPED' 'SMOOTHSTEP' 'SMOOTHERSTEP']
 
     Output sockets
     --------------
-
-        0: result               Float
-        1: vector               Vector
-
+        result          : Float
+        vector          : Vector
     """
 
-    PARAMETERS = ['clamp', 'data_type', 'interpolation_type']
+    def __init__(self, value=None, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, vector=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', label=None):
 
-    def __init__(self, value=None, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, vector=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR'):
+        super().__init__('ShaderNodeMapRange', name='Map Range', label=label)
 
-        super().__init__('ShaderNodeMapRange', name='Map Range')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'value'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'from_min'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'from_max'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'to_min'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'to_max'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'steps'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'from_min'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'from_max'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'to_min'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'to_max'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'steps'        ))
+        self.bnode.clamp           = clamp
+        self.bnode.data_type       = data_type
+        self.bnode.interpolation_type = interpolation_type
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'result'       ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'vector'       ))
+        # Input sockets
 
-        self.socket_out_name = 'result'
-        self.out_socket_names = ['result', 'vector']
+        if data_type == 'FLOAT':
+            self.plug(1, from_min)
+            self.plug(2, from_max)
+            self.plug(3, to_min)
+            self.plug(4, to_max)
+        elif data_type == 'FLOAT_VECTOR':
+            self.plug(7, from_min)
+            self.plug(8, from_max)
+            self.plug(9, to_min)
+            self.plug(10, to_max)
 
-        # ----- Parameters
+        self.plug(0, value)
+        self.plug(6, vector)
 
-        self.clamp           = clamp
-        self.data_type       = data_type
-        self.interpolation_type = interpolation_type
-        self.check_parameters()
 
-        # ----- Input sockets
+        # Output sockets
 
-        self.ivalue          = value
-        self.ifrom_min       = from_min
-        self.ifrom_max       = from_max
-        self.ito_min         = to_min
-        self.ito_max         = to_max
-        self.isteps          = steps
-        self.ivector         = vector
+        self.result          = self.Float(self.bnode.outputs[0])
+        self.vector          = self.Vector(self.bnode.outputs[1])
+        self.output_sockets  = [self.result, self.vector]
 
-        self.socket_in_name = 'ivalue'
-
-    def __repr__(self):
-        s = f"Node 'MapRange' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   value           : {self.ivalue}"
-        s += f"\n   from_min        : {self.ifrom_min}"
-        s += f"\n   from_max        : {self.ifrom_max}"
-        s += f"\n   to_min          : {self.ito_min}"
-        s += f"\n   to_max          : {self.ito_max}"
-        s += f"\n   steps           : {self.isteps}"
-        s += f"\n   vector          : {self.ivector}"
-        s += '\nParameters'
-        s += f"\n   clamp           : {self.clamp}"
-        s += f"\n   data_type       : {self.data_type}"
-        s += f"\n   interpolation_type : {self.interpolation_type}"
-        s += '\nOutput sockets'
-        s +=  "\n   result          : Float"
-        s +=  "\n   vector          : Vector"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('FLOAT', 'FLOAT_VECTOR') 
-        if self.data_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeMapRange'.\n 'data_type' is '{self.data_type}'.\n Authorized values are {valids}.")
-        valids = ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP') 
-        if self.interpolation_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeMapRange'.\n 'interpolation_type' is '{self.interpolation_type}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def result(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def vector(self):
-        return self.Vector(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivalue(self):
-        return Node.Float(self.inputs[0])
-
-    @ivalue.setter
-    def ivalue(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ifrom_min(self):
-        if (self.data_type == 'FLOAT'):
-            return Node.Float(self.inputs[1])
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            return Node.Vector(self.inputs[7])
-
-    @ifrom_min.setter
-    def ifrom_min(self, value):
-        if (self.data_type == 'FLOAT'):
-            self.inputs[1].plug(value)
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            self.inputs[7].plug(value)
-
-    @property
-    def ifrom_max(self):
-        if (self.data_type == 'FLOAT'):
-            return Node.Float(self.inputs[2])
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            return Node.Vector(self.inputs[8])
-
-    @ifrom_max.setter
-    def ifrom_max(self, value):
-        if (self.data_type == 'FLOAT'):
-            self.inputs[2].plug(value)
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            self.inputs[8].plug(value)
-
-    @property
-    def ito_min(self):
-        if (self.data_type == 'FLOAT'):
-            return Node.Float(self.inputs[3])
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            return Node.Vector(self.inputs[9])
-
-    @ito_min.setter
-    def ito_min(self, value):
-        if (self.data_type == 'FLOAT'):
-            self.inputs[3].plug(value)
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            self.inputs[9].plug(value)
-
-    @property
-    def ito_max(self):
-        if (self.data_type == 'FLOAT'):
-            return Node.Float(self.inputs[4])
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            return Node.Vector(self.inputs[10])
-
-    @ito_max.setter
-    def ito_max(self, value):
-        if (self.data_type == 'FLOAT'):
-            self.inputs[4].plug(value)
-        elif (self.data_type == 'FLOAT_VECTOR'):
-            self.inputs[10].plug(value)
-
-    @property
-    def isteps(self):
-        if (self.interpolation_type == 'STEPPED'):
-            return Node.Float(self.inputs[5])
-
-    @isteps.setter
-    def isteps(self, value):
-        if (self.interpolation_type == 'STEPPED'):
-            self.inputs[5].plug(value)
-
-    @property
-    def ivector(self):
-        return Node.Vector(self.inputs[6])
-
-    @ivector.setter
-    def ivector(self, value):
-        self.inputs[6].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeMath
+# ----------------------------------------------------------------------------------------------------
+# Node NodeMath for ShaderNodeMath
 
 class NodeMath(Node):
 
-    """ Node class ShaderNodeMath
+    """Node 'Math' (ShaderNodeMath)
 
     Input sockets
     -------------
-
-        0: value0               Float
-        1: value1               Float
-        2: value2               Float
+        value0          : Float
+        value1          : Float
+        value2          : Float
 
     Parameters
     ----------
-
-        operation   : 'ADD' in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 
-                               'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 
-                               'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 
-                               'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 
-                               'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 
-                               'RADIANS', 'DEGREES') 
-        use_clamp   : False
+        operation       : 'ADD' in [ 'ADD' 'SUBTRACT' 'MULTIPLY' 'DIVIDE' 'MULTIPLY_ADD' 'POWER' 'LOGARITHM' 'SQRT' 'INVERSE_SQRT' 'ABSOLUTE',
+                             'EXPONENT' 'MINIMUM' 'MAXIMUM' 'LESS_THAN' 'GREATER_THAN' 'SIGN' 'COMPARE' 'SMOOTH_MIN' 'SMOOTH_MAX',
+                             'ROUND' 'FLOOR' 'CEIL' 'TRUNC' 'FRACT' 'MODULO' 'WRAP' 'SNAP' 'PINGPONG' 'SINE' 'COSINE' 'TANGENT' 'ARCSINE',
+                             'ARCCOSINE' 'ARCTANGENT' 'ARCTAN2' 'SINH' 'COSH' 'TANH' 'RADIANS' 'DEGREES']
 
     Output sockets
     --------------
-
-        0: value                Float
-
+        value           : Float
     """
 
-    PARAMETERS = ['operation', 'use_clamp']
+    def __init__(self, value0=None, value1=None, value2=None, operation='ADD', label=None):
 
-    def __init__(self, value0=None, value1=None, value2=None, operation='ADD', use_clamp=False):
+        super().__init__('ShaderNodeMath', name='Math', label=label)
 
-        super().__init__('ShaderNodeMath', name='Math')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'value0'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'value1'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'value2'       ))
+        self.bnode.operation       = operation
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'value'        ))
+        # Input sockets
 
-        self.socket_out_name = 'value'
-        self.out_socket_names = ['value']
+        self.plug(0, value0)
+        self.plug(1, value1)
+        self.plug(2, value2)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.operation       = operation
-        self.use_clamp       = use_clamp
-        self.check_parameters()
+        self.value           = self.Float(self.bnode.outputs[0])
+        self.output_sockets  = [self.value]
 
-        # ----- Input sockets
-
-        self.ivalue0         = value0
-        self.ivalue1         = value1
-        self.ivalue2         = value2
-
-        self.socket_in_name = 'ivalue0'
-
-    def __repr__(self):
-        s = f"Node 'Math' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   value0          : {self.ivalue0}"
-        s += f"\n   value1          : {self.ivalue1}"
-        s += f"\n   value2          : {self.ivalue2}"
-        s += '\nParameters'
-        s += f"\n   operation       : {self.operation}"
-        s += f"\n   use_clamp       : {self.use_clamp}"
-        s += '\nOutput sockets'
-        s +=  "\n   value           : Float"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 
-                 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 
-                 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'WRAP', 'SNAP', 
-                 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 
-                 'COSH', 'TANH', 'RADIANS', 'DEGREES') 
-        if self.operation not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeMath'.\n 'operation' is '{self.operation}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def value(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.value
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivalue0(self):
-        return Node.Float(self.inputs[0])
-
-    @ivalue0.setter
-    def ivalue0(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ivalue1(self):
-        return Node.Float(self.inputs[1])
-
-    @ivalue1.setter
-    def ivalue1(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ivalue2(self):
-        return Node.Float(self.inputs[2])
-
-    @ivalue2.setter
-    def ivalue2(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeMixRGB
+# ----------------------------------------------------------------------------------------------------
+# Node NodeMix for ShaderNodeMixRGB
 
 class NodeMix(Node):
 
-    """ Node class ShaderNodeMixRGB
+    """Node 'Mix' (ShaderNodeMixRGB)
 
     Input sockets
     -------------
-
-        0: fac                  Float
-        1: color1               Color
-        2: color2               Color
+        fac             : Float
+        color1          : Color
+        color2          : Color
 
     Parameters
     ----------
-
-        blend_type  : 'MIX' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 
-                               'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 
-                               'COLOR', 'VALUE') 
-        use_alpha   : False
-        use_clamp   : False
+        blend_type      : 'MIX' in [ 'MIX' 'DARKEN' 'MULTIPLY' 'BURN' 'LIGHTEN' 'SCREEN' 'DODGE' 'ADD' 'OVERLAY' 'SOFT_LIGHT' 'LINEAR_LIGHT',
+                             'DIFFERENCE' 'SUBTRACT' 'DIVIDE' 'HUE' 'SATURATION' 'COLOR' 'VALUE']
+        use_alpha       : (False) bool
 
     Output sockets
     --------------
-
-        0: color                Color
-
+        color           : Color
     """
 
-    PARAMETERS = ['blend_type', 'use_alpha', 'use_clamp']
+    def __init__(self, fac=None, color1=None, color2=None, blend_type='MIX', use_alpha=False, label=None):
 
-    def __init__(self, fac=None, color1=None, color2=None, blend_type='MIX', use_alpha=False, use_clamp=False):
+        super().__init__('ShaderNodeMixRGB', name='Mix', label=label)
 
-        super().__init__('ShaderNodeMixRGB', name='Mix')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatFactor'  , 'fac'          ))
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'color1'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'color2'       ))
+        self.bnode.blend_type      = blend_type
+        self.bnode.use_alpha       = use_alpha
 
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'color'        ))
+        # Input sockets
 
-        self.socket_out_name = 'color'
-        self.out_socket_names = ['color']
+        self.plug(0, fac)
+        self.plug(1, color1)
+        self.plug(2, color2)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.blend_type      = blend_type
-        self.use_alpha       = use_alpha
-        self.use_clamp       = use_clamp
-        self.check_parameters()
+        self.color           = self.Color(self.bnode.outputs[0])
+        self.output_sockets  = [self.color]
 
-        # ----- Input sockets
+# ----------------------------------------------------------------------------------------------------
+# Node NodeRgbCurves for ShaderNodeRGBCurve
 
-        self.ifac            = fac
-        self.icolor1         = color1
-        self.icolor2         = color2
+class NodeRgbCurves(Node):
 
-        self.socket_in_name = 'ifac'
-
-    def __repr__(self):
-        s = f"Node 'Mix' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   fac             : {self.ifac}"
-        s += f"\n   color1          : {self.icolor1}"
-        s += f"\n   color2          : {self.icolor2}"
-        s += '\nParameters'
-        s += f"\n   blend_type      : {self.blend_type}"
-        s += f"\n   use_alpha       : {self.use_alpha}"
-        s += f"\n   use_clamp       : {self.use_clamp}"
-        s += '\nOutput sockets'
-        s +=  "\n   color           : Color"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 
-                 'LINEAR_LIGHT', 'DIFFERENCE', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE') 
-        if self.blend_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeMix'.\n 'blend_type' is '{self.blend_type}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def color(self):
-        return self.Color(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.color
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ifac(self):
-        return Node.Float(self.inputs[0])
-
-    @ifac.setter
-    def ifac(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def icolor1(self):
-        return Node.Color(self.inputs[1])
-
-    @icolor1.setter
-    def icolor1(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def icolor2(self):
-        return Node.Color(self.inputs[2])
-
-    @icolor2.setter
-    def icolor2(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeRGBCurve
-
-class NodeRGBCurves(Node):
-
-    """ Node class ShaderNodeRGBCurve
+    """Node 'RGB Curves' (ShaderNodeRGBCurve)
 
     Input sockets
     -------------
-
-        0: fac                  Float
-        1: color                Color
+        fac             : Float
+        color           : Color
 
     Output sockets
     --------------
-
-        0: color                Color
-
+        color           : Color
     """
 
-    PARAMETERS = []
+    def __init__(self, fac=None, color=None, label=None):
 
-    def __init__(self, fac=None, color=None):
+        super().__init__('ShaderNodeRGBCurve', name='RGB Curves', label=label)
 
-        super().__init__('ShaderNodeRGBCurve', name='RGB Curves')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatFactor'  , 'fac'          ))
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'color'        ))
+        self.plug(0, fac)
+        self.plug(1, color)
 
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'color'        ))
+        # Output sockets
 
-        self.socket_out_name = 'color'
-        self.out_socket_names = ['color']
+        self.color           = self.Color(self.bnode.outputs[0])
+        self.output_sockets  = [self.color]
 
-        # ----- Input sockets
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSeparateRgb for ShaderNodeSeparateRGB
 
-        self.ifac            = fac
-        self.icolor          = color
+class NodeSeparateRgb(Node):
 
-        self.socket_in_name = 'ifac'
-
-    def __repr__(self):
-        s = f"Node 'RGBCurves' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   fac             : {self.ifac}"
-        s += f"\n   color           : {self.icolor}"
-        s += '\nOutput sockets'
-        s +=  "\n   color           : Color"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def color(self):
-        return self.Color(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.color
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ifac(self):
-        return Node.Float(self.inputs[0])
-
-    @ifac.setter
-    def ifac(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def icolor(self):
-        return Node.Color(self.inputs[1])
-
-    @icolor.setter
-    def icolor(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeSeparateRGB
-
-class NodeSeparateRGB(Node):
-
-    """ Node class ShaderNodeSeparateRGB
+    """Node 'Separate RGB' (ShaderNodeSeparateRGB)
 
     Input sockets
     -------------
-
-        0: image                Color
+        image           : Color
 
     Output sockets
     --------------
-
-        0: r                    Float
-        1: g                    Float
-        2: b                    Float
-
+        r               : Float
+        g               : Float
+        b               : Float
     """
 
-    PARAMETERS = []
+    def __init__(self, image=None, label=None):
 
-    def __init__(self, image=None):
+        super().__init__('ShaderNodeSeparateRGB', name='Separate RGB', label=label)
 
-        super().__init__('ShaderNodeSeparateRGB', name='Separate RGB')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'image'        ))
+        self.plug(0, image)
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'r'            ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'g'            ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'b'            ))
+        # Output sockets
 
-        self.socket_out_name = 'r'
-        self.out_socket_names = ['r', 'g', 'b']
+        self.r               = self.Float(self.bnode.outputs[0])
+        self.g               = self.Float(self.bnode.outputs[1])
+        self.b               = self.Float(self.bnode.outputs[2])
+        self.output_sockets  = [self.r, self.g, self.b]
 
-        # ----- Input sockets
+# ----------------------------------------------------------------------------------------------------
+# Node NodeSeparateXyz for ShaderNodeSeparateXYZ
 
-        self.iimage          = image
+class NodeSeparateXyz(Node):
 
-        self.socket_in_name = 'iimage'
-
-    def __repr__(self):
-        s = f"Node 'SeparateRGB' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   image           : {self.iimage}"
-        s += '\nOutput sockets'
-        s +=  "\n   r               : Float"
-        s +=  "\n   g               : Float"
-        s +=  "\n   b               : Float"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def r(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def g(self):
-        return self.Float(self.outputs[1])
-
-    @property
-    def b(self):
-        return self.Float(self.outputs[2])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def iimage(self):
-        return Node.Color(self.inputs[0])
-
-    @iimage.setter
-    def iimage(self, value):
-        self.inputs[0].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeSeparateXYZ
-
-class NodeSeparateXYZ(Node):
-
-    """ Node class ShaderNodeSeparateXYZ
+    """Node 'Separate XYZ' (ShaderNodeSeparateXYZ)
 
     Input sockets
     -------------
-
-        0: vector               Vector
+        vector          : Vector
 
     Output sockets
     --------------
-
-        0: x                    Float
-        1: y                    Float
-        2: z                    Float
-
+        x               : Float
+        y               : Float
+        z               : Float
     """
 
-    PARAMETERS = []
+    def __init__(self, vector=None, label=None):
 
-    def __init__(self, vector=None):
+        super().__init__('ShaderNodeSeparateXYZ', name='Separate XYZ', label=label)
 
-        super().__init__('ShaderNodeSeparateXYZ', name='Separate XYZ')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector'       ))
+        self.plug(0, vector)
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'x'            ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'y'            ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'z'            ))
+        # Output sockets
 
-        self.socket_out_name = 'x'
-        self.out_socket_names = ['x', 'y', 'z']
+        self.x               = self.Float(self.bnode.outputs[0])
+        self.y               = self.Float(self.bnode.outputs[1])
+        self.z               = self.Float(self.bnode.outputs[2])
+        self.output_sockets  = [self.x, self.y, self.z]
 
-        # ----- Input sockets
-
-        self.ivector         = vector
-
-        self.socket_in_name = 'ivector'
-
-    def __repr__(self):
-        s = f"Node 'SeparateXYZ' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   vector          : {self.ivector}"
-        s += '\nOutput sockets'
-        s +=  "\n   x               : Float"
-        s +=  "\n   y               : Float"
-        s +=  "\n   z               : Float"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def x(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def y(self):
-        return self.Float(self.outputs[1])
-
-    @property
-    def z(self):
-        return self.Float(self.outputs[2])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivector(self):
-        return Node.Vector(self.inputs[0])
-
-    @ivector.setter
-    def ivector(self, value):
-        self.inputs[0].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeTexBrick
+# ----------------------------------------------------------------------------------------------------
+# Node NodeBrickTexture for ShaderNodeTexBrick
 
 class NodeBrickTexture(Node):
 
-    """ Node class ShaderNodeTexBrick
+    """Node 'Brick Texture' (ShaderNodeTexBrick)
 
     Input sockets
     -------------
-
-        0: vector               Vector
-        1: color1               Color
-        2: color2               Color
-        3: mortar               Color
-        4: scale                Float
-        5: mortar_size          Float
-        6: mortar_smooth        Float
-        7: bias                 Float
-        8: brick_width          Float
-        9: row_height           Float
+        vector          : Vector
+        color1          : Color
+        color2          : Color
+        mortar          : Color
+        scale           : Float
+        mortar_size     : Float
+        mortar_smooth   : Float
+        bias            : Float
+        brick_width     : Float
+        row_height      : Float
 
     Parameters
     ----------
-
-        offset      : 0.5
-        offset_frequency: 2
-        squash      : 1.0
-        squash_frequency: 2
+        offset          : (0.5) float
+        offset_frequency : (2) int
+        squash          : (1.0) float
+        squash_frequency : (2) int
 
     Output sockets
     --------------
-
-        0: color                Color
-        1: fac                  Float
-
+        color           : Color
+        fac             : Float
     """
 
-    PARAMETERS = ['offset', 'offset_frequency', 'squash', 'squash_frequency']
+    def __init__(self, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, label=None):
 
-    def __init__(self, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
+        super().__init__('ShaderNodeTexBrick', name='Brick Texture', label=label)
 
-        super().__init__('ShaderNodeTexBrick', name='Brick Texture')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'color1'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'color2'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'mortar'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'scale'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'mortar_size'  ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'mortar_smooth'))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'bias'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'brick_width'  ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'row_height'   ))
+        self.bnode.offset          = offset
+        self.bnode.offset_frequency = offset_frequency
+        self.bnode.squash          = squash
+        self.bnode.squash_frequency = squash_frequency
 
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'color'        ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'fac'          ))
+        # Input sockets
 
-        self.socket_out_name = 'color'
-        self.out_socket_names = ['color', 'fac']
+        self.plug(0, vector)
+        self.plug(1, color1)
+        self.plug(2, color2)
+        self.plug(3, mortar)
+        self.plug(4, scale)
+        self.plug(5, mortar_size)
+        self.plug(6, mortar_smooth)
+        self.plug(7, bias)
+        self.plug(8, brick_width)
+        self.plug(9, row_height)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.offset          = offset
-        self.offset_frequency = offset_frequency
-        self.squash          = squash
-        self.squash_frequency = squash_frequency
-        self.check_parameters()
+        self.color           = self.Color(self.bnode.outputs[0])
+        self.fac             = self.Float(self.bnode.outputs[1])
+        self.output_sockets  = [self.color, self.fac]
 
-        # ----- Input sockets
-
-        self.ivector         = vector
-        self.icolor1         = color1
-        self.icolor2         = color2
-        self.imortar         = mortar
-        self.iscale          = scale
-        self.imortar_size    = mortar_size
-        self.imortar_smooth  = mortar_smooth
-        self.ibias           = bias
-        self.ibrick_width    = brick_width
-        self.irow_height     = row_height
-
-        self.socket_in_name = 'ivector'
-
-    def __repr__(self):
-        s = f"Node 'BrickTexture' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   vector          : {self.ivector}"
-        s += f"\n   color1          : {self.icolor1}"
-        s += f"\n   color2          : {self.icolor2}"
-        s += f"\n   mortar          : {self.imortar}"
-        s += f"\n   scale           : {self.iscale}"
-        s += f"\n   mortar_size     : {self.imortar_size}"
-        s += f"\n   mortar_smooth   : {self.imortar_smooth}"
-        s += f"\n   bias            : {self.ibias}"
-        s += f"\n   brick_width     : {self.ibrick_width}"
-        s += f"\n   row_height      : {self.irow_height}"
-        s += '\nParameters'
-        s += f"\n   offset          : {self.offset}"
-        s += f"\n   offset_frequency : {self.offset_frequency}"
-        s += f"\n   squash          : {self.squash}"
-        s += f"\n   squash_frequency : {self.squash_frequency}"
-        s += '\nOutput sockets'
-        s +=  "\n   color           : Color"
-        s +=  "\n   fac             : Float"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def color(self):
-        return self.Color(self.outputs[0])
-
-    @property
-    def fac(self):
-        return self.Float(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivector(self):
-        return Node.Vector(self.inputs[0])
-
-    @ivector.setter
-    def ivector(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def icolor1(self):
-        return Node.Color(self.inputs[1])
-
-    @icolor1.setter
-    def icolor1(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def icolor2(self):
-        return Node.Color(self.inputs[2])
-
-    @icolor2.setter
-    def icolor2(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def imortar(self):
-        return Node.Color(self.inputs[3])
-
-    @imortar.setter
-    def imortar(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def iscale(self):
-        return Node.Float(self.inputs[4])
-
-    @iscale.setter
-    def iscale(self, value):
-        self.inputs[4].plug(value)
-
-    @property
-    def imortar_size(self):
-        return Node.Float(self.inputs[5])
-
-    @imortar_size.setter
-    def imortar_size(self, value):
-        self.inputs[5].plug(value)
-
-    @property
-    def imortar_smooth(self):
-        return Node.Float(self.inputs[6])
-
-    @imortar_smooth.setter
-    def imortar_smooth(self, value):
-        self.inputs[6].plug(value)
-
-    @property
-    def ibias(self):
-        return Node.Float(self.inputs[7])
-
-    @ibias.setter
-    def ibias(self, value):
-        self.inputs[7].plug(value)
-
-    @property
-    def ibrick_width(self):
-        return Node.Float(self.inputs[8])
-
-    @ibrick_width.setter
-    def ibrick_width(self, value):
-        self.inputs[8].plug(value)
-
-    @property
-    def irow_height(self):
-        return Node.Float(self.inputs[9])
-
-    @irow_height.setter
-    def irow_height(self, value):
-        self.inputs[9].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeTexChecker
+# ----------------------------------------------------------------------------------------------------
+# Node NodeCheckerTexture for ShaderNodeTexChecker
 
 class NodeCheckerTexture(Node):
 
-    """ Node class ShaderNodeTexChecker
+    """Node 'Checker Texture' (ShaderNodeTexChecker)
 
     Input sockets
     -------------
-
-        0: vector               Vector
-        1: color1               Color
-        2: color2               Color
-        3: scale                Float
+        vector          : Vector
+        color1          : Color
+        color2          : Color
+        scale           : Float
 
     Output sockets
     --------------
-
-        0: color                Color
-        1: fac                  Float
-
+        color           : Color
+        fac             : Float
     """
 
-    PARAMETERS = []
+    def __init__(self, vector=None, color1=None, color2=None, scale=None, label=None):
 
-    def __init__(self, vector=None, color1=None, color2=None, scale=None):
+        super().__init__('ShaderNodeTexChecker', name='Checker Texture', label=label)
 
-        super().__init__('ShaderNodeTexChecker', name='Checker Texture')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'color1'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketColor'        , 'color2'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'scale'        ))
+        self.plug(0, vector)
+        self.plug(1, color1)
+        self.plug(2, color2)
+        self.plug(3, scale)
 
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'color'        ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'fac'          ))
+        # Output sockets
 
-        self.socket_out_name = 'color'
-        self.out_socket_names = ['color', 'fac']
+        self.color           = self.Color(self.bnode.outputs[0])
+        self.fac             = self.Float(self.bnode.outputs[1])
+        self.output_sockets  = [self.color, self.fac]
 
-        # ----- Input sockets
-
-        self.ivector         = vector
-        self.icolor1         = color1
-        self.icolor2         = color2
-        self.iscale          = scale
-
-        self.socket_in_name = 'ivector'
-
-    def __repr__(self):
-        s = f"Node 'CheckerTexture' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   vector          : {self.ivector}"
-        s += f"\n   color1          : {self.icolor1}"
-        s += f"\n   color2          : {self.icolor2}"
-        s += f"\n   scale           : {self.iscale}"
-        s += '\nOutput sockets'
-        s +=  "\n   color           : Color"
-        s +=  "\n   fac             : Float"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def color(self):
-        return self.Color(self.outputs[0])
-
-    @property
-    def fac(self):
-        return self.Float(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivector(self):
-        return Node.Vector(self.inputs[0])
-
-    @ivector.setter
-    def ivector(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def icolor1(self):
-        return Node.Color(self.inputs[1])
-
-    @icolor1.setter
-    def icolor1(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def icolor2(self):
-        return Node.Color(self.inputs[2])
-
-    @icolor2.setter
-    def icolor2(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def iscale(self):
-        return Node.Float(self.inputs[3])
-
-    @iscale.setter
-    def iscale(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeTexGradient
+# ----------------------------------------------------------------------------------------------------
+# Node NodeGradientTexture for ShaderNodeTexGradient
 
 class NodeGradientTexture(Node):
 
-    """ Node class ShaderNodeTexGradient
+    """Node 'Gradient Texture' (ShaderNodeTexGradient)
 
     Input sockets
     -------------
-
-        0: vector               Vector
+        vector          : Vector
 
     Parameters
     ----------
-
-        gradient_type: 'LINEAR' in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 
-                                   'RADIAL') 
+        gradient_type   : 'LINEAR' in [ 'LINEAR' 'QUADRATIC' 'EASING' 'DIAGONAL' 'SPHERICAL' 'QUADRATIC_SPHERE' 'RADIAL']
 
     Output sockets
     --------------
-
-        0: color                Color
-        1: fac                  Float
-
+        color           : Color
+        fac             : Float
     """
 
-    PARAMETERS = ['gradient_type']
+    def __init__(self, vector=None, gradient_type='LINEAR', label=None):
 
-    def __init__(self, vector=None, gradient_type='LINEAR'):
+        super().__init__('ShaderNodeTexGradient', name='Gradient Texture', label=label)
 
-        super().__init__('ShaderNodeTexGradient', name='Gradient Texture')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector'       ))
+        self.bnode.gradient_type   = gradient_type
 
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'color'        ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'fac'          ))
+        # Input sockets
 
-        self.socket_out_name = 'color'
-        self.out_socket_names = ['color', 'fac']
+        self.plug(0, vector)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.gradient_type   = gradient_type
-        self.check_parameters()
+        self.color           = self.Color(self.bnode.outputs[0])
+        self.fac             = self.Float(self.bnode.outputs[1])
+        self.output_sockets  = [self.color, self.fac]
 
-        # ----- Input sockets
-
-        self.ivector         = vector
-
-        self.socket_in_name = 'ivector'
-
-    def __repr__(self):
-        s = f"Node 'GradientTexture' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   vector          : {self.ivector}"
-        s += '\nParameters'
-        s += f"\n   gradient_type   : {self.gradient_type}"
-        s += '\nOutput sockets'
-        s +=  "\n   color           : Color"
-        s +=  "\n   fac             : Float"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL') 
-        if self.gradient_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeGradientTexture'.\n 'gradient_type' is '{self.gradient_type}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def color(self):
-        return self.Color(self.outputs[0])
-
-    @property
-    def fac(self):
-        return self.Float(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivector(self):
-        return Node.Vector(self.inputs[0])
-
-    @ivector.setter
-    def ivector(self, value):
-        self.inputs[0].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeTexMagic
+# ----------------------------------------------------------------------------------------------------
+# Node NodeMagicTexture for ShaderNodeTexMagic
 
 class NodeMagicTexture(Node):
 
-    """ Node class ShaderNodeTexMagic
+    """Node 'Magic Texture' (ShaderNodeTexMagic)
 
     Input sockets
     -------------
-
-        0: vector               Vector
-        1: scale                Float
-        2: distortion           Float
+        vector          : Vector
+        scale           : Float
+        distortion      : Float
 
     Parameters
     ----------
-
-        turbulence_depth: 2
+        turbulence_depth : (2) int
 
     Output sockets
     --------------
-
-        0: color                Color
-        1: fac                  Float
-
+        color           : Color
+        fac             : Float
     """
 
-    PARAMETERS = ['turbulence_depth']
+    def __init__(self, vector=None, scale=None, distortion=None, turbulence_depth=2, label=None):
 
-    def __init__(self, vector=None, scale=None, distortion=None, turbulence_depth=2):
+        super().__init__('ShaderNodeTexMagic', name='Magic Texture', label=label)
 
-        super().__init__('ShaderNodeTexMagic', name='Magic Texture')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'scale'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'distortion'   ))
+        self.bnode.turbulence_depth = turbulence_depth
 
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'color'        ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'fac'          ))
+        # Input sockets
 
-        self.socket_out_name = 'color'
-        self.out_socket_names = ['color', 'fac']
+        self.plug(0, vector)
+        self.plug(1, scale)
+        self.plug(2, distortion)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.turbulence_depth = turbulence_depth
-        self.check_parameters()
+        self.color           = self.Color(self.bnode.outputs[0])
+        self.fac             = self.Float(self.bnode.outputs[1])
+        self.output_sockets  = [self.color, self.fac]
 
-        # ----- Input sockets
-
-        self.ivector         = vector
-        self.iscale          = scale
-        self.idistortion     = distortion
-
-        self.socket_in_name = 'ivector'
-
-    def __repr__(self):
-        s = f"Node 'MagicTexture' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   vector          : {self.ivector}"
-        s += f"\n   scale           : {self.iscale}"
-        s += f"\n   distortion      : {self.idistortion}"
-        s += '\nParameters'
-        s += f"\n   turbulence_depth : {self.turbulence_depth}"
-        s += '\nOutput sockets'
-        s +=  "\n   color           : Color"
-        s +=  "\n   fac             : Float"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def color(self):
-        return self.Color(self.outputs[0])
-
-    @property
-    def fac(self):
-        return self.Float(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivector(self):
-        return Node.Vector(self.inputs[0])
-
-    @ivector.setter
-    def ivector(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iscale(self):
-        return Node.Float(self.inputs[1])
-
-    @iscale.setter
-    def iscale(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def idistortion(self):
-        return Node.Float(self.inputs[2])
-
-    @idistortion.setter
-    def idistortion(self, value):
-        self.inputs[2].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeTexMusgrave
+# ----------------------------------------------------------------------------------------------------
+# Node NodeMusgraveTexture for ShaderNodeTexMusgrave
 
 class NodeMusgraveTexture(Node):
 
-    """ Node class ShaderNodeTexMusgrave
+    """Node 'Musgrave Texture' (ShaderNodeTexMusgrave)
 
     Input sockets
     -------------
-
-        0: vector               Vector
-        1: w                    Float
-        2: scale                Float
-        3: detail               Float
-        4: dimension            Float
-        5: lacunarity           Float
-        6: offset               Float
-        7: gain                 Float
+        vector          : Vector
+        w               : Float
+        scale           : Float
+        detail          : Float
+        dimension       : Float
+        lacunarity      : Float
+        offset          : Float
+        gain            : Float
 
     Parameters
     ----------
-
-        musgrave_dimensions: '3D' in ('1D', '2D', '3D', '4D') 
-        musgrave_type: 'FBM' in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN') 
+        musgrave_dimensions : '3D' in [ '1D' '2D' '3D' '4D']
+        musgrave_type   : 'FBM' in [ 'MULTIFRACTAL' 'RIDGED_MULTIFRACTAL' 'HYBRID_MULTIFRACTAL' 'FBM' 'HETERO_TERRAIN']
 
     Output sockets
     --------------
-
-        0: fac                  Float
-
+        fac             : Float
     """
 
-    PARAMETERS = ['musgrave_dimensions', 'musgrave_type']
+    def __init__(self, vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM', label=None):
 
-    def __init__(self, vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'):
+        super().__init__('ShaderNodeTexMusgrave', name='Musgrave Texture', label=label)
 
-        super().__init__('ShaderNodeTexMusgrave', name='Musgrave Texture')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'w'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'scale'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'detail'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'dimension'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'lacunarity'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'offset'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'gain'         ))
+        self.bnode.musgrave_dimensions = musgrave_dimensions
+        self.bnode.musgrave_type   = musgrave_type
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'fac'          ))
+        # Input sockets
 
-        self.socket_out_name = 'fac'
-        self.out_socket_names = ['fac']
+        self.plug(0, vector)
+        self.plug(1, w)
+        self.plug(2, scale)
+        self.plug(3, detail)
+        self.plug(4, dimension)
+        self.plug(5, lacunarity)
+        self.plug(6, offset)
+        self.plug(7, gain)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.musgrave_dimensions = musgrave_dimensions
-        self.musgrave_type   = musgrave_type
-        self.check_parameters()
+        self.fac             = self.Float(self.bnode.outputs[0])
+        self.output_sockets  = [self.fac]
 
-        # ----- Input sockets
-
-        self.ivector         = vector
-        self.iw              = w
-        self.iscale          = scale
-        self.idetail         = detail
-        self.idimension      = dimension
-        self.ilacunarity     = lacunarity
-        self.ioffset         = offset
-        self.igain           = gain
-
-        self.socket_in_name = 'ivector'
-
-    def __repr__(self):
-        s = f"Node 'MusgraveTexture' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   vector          : {self.ivector}"
-        s += f"\n   w               : {self.iw}"
-        s += f"\n   scale           : {self.iscale}"
-        s += f"\n   detail          : {self.idetail}"
-        s += f"\n   dimension       : {self.idimension}"
-        s += f"\n   lacunarity      : {self.ilacunarity}"
-        s += f"\n   offset          : {self.ioffset}"
-        s += f"\n   gain            : {self.igain}"
-        s += '\nParameters'
-        s += f"\n   musgrave_dimensions : {self.musgrave_dimensions}"
-        s += f"\n   musgrave_type   : {self.musgrave_type}"
-        s += '\nOutput sockets'
-        s +=  "\n   fac             : Float"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('1D', '2D', '3D', '4D') 
-        if self.musgrave_dimensions not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeMusgraveTexture'.\n 'musgrave_dimensions' is '{self.musgrave_dimensions}'.\n Authorized values are {valids}.")
-        valids = ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN') 
-        if self.musgrave_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeMusgraveTexture'.\n 'musgrave_type' is '{self.musgrave_type}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def fac(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.fac
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivector(self):
-        return Node.Vector(self.inputs[0])
-
-    @ivector.setter
-    def ivector(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iw(self):
-        return Node.Float(self.inputs[1])
-
-    @iw.setter
-    def iw(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iscale(self):
-        return Node.Float(self.inputs[2])
-
-    @iscale.setter
-    def iscale(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def idetail(self):
-        return Node.Float(self.inputs[3])
-
-    @idetail.setter
-    def idetail(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def idimension(self):
-        return Node.Float(self.inputs[4])
-
-    @idimension.setter
-    def idimension(self, value):
-        self.inputs[4].plug(value)
-
-    @property
-    def ilacunarity(self):
-        return Node.Float(self.inputs[5])
-
-    @ilacunarity.setter
-    def ilacunarity(self, value):
-        self.inputs[5].plug(value)
-
-    @property
-    def ioffset(self):
-        return Node.Float(self.inputs[6])
-
-    @ioffset.setter
-    def ioffset(self, value):
-        self.inputs[6].plug(value)
-
-    @property
-    def igain(self):
-        return Node.Float(self.inputs[7])
-
-    @igain.setter
-    def igain(self, value):
-        self.inputs[7].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeTexNoise
+# ----------------------------------------------------------------------------------------------------
+# Node NodeNoiseTexture for ShaderNodeTexNoise
 
 class NodeNoiseTexture(Node):
 
-    """ Node class ShaderNodeTexNoise
+    """Node 'Noise Texture' (ShaderNodeTexNoise)
 
     Input sockets
     -------------
-
-        0: vector               Vector
-        1: w                    Float
-        2: scale                Float
-        3: detail               Float
-        4: roughness            Float
-        5: distortion           Float
+        vector          : Vector
+        w               : Float
+        scale           : Float
+        detail          : Float
+        roughness       : Float
+        distortion      : Float
 
     Parameters
     ----------
-
-        noise_dimensions: '3D' in ('1D', '2D', '3D', '4D') 
+        noise_dimensions : '3D' in [ '1D' '2D' '3D' '4D']
 
     Output sockets
     --------------
-
-        0: fac                  Float
-        1: color                Color
-
+        fac             : Float
+        color           : Color
     """
 
-    PARAMETERS = ['noise_dimensions']
+    def __init__(self, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D', label=None):
 
-    def __init__(self, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):
+        super().__init__('ShaderNodeTexNoise', name='Noise Texture', label=label)
 
-        super().__init__('ShaderNodeTexNoise', name='Noise Texture')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'w'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'scale'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'detail'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatFactor'  , 'roughness'    ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'distortion'   ))
+        self.bnode.noise_dimensions = noise_dimensions
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'fac'          ))
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'color'        ))
+        # Input sockets
 
-        self.socket_out_name = 'fac'
-        self.out_socket_names = ['fac', 'color']
+        self.plug(0, vector)
+        self.plug(1, w)
+        self.plug(2, scale)
+        self.plug(3, detail)
+        self.plug(4, roughness)
+        self.plug(5, distortion)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.noise_dimensions = noise_dimensions
-        self.check_parameters()
+        self.fac             = self.Float(self.bnode.outputs[0])
+        self.color           = self.Color(self.bnode.outputs[1])
+        self.output_sockets  = [self.fac, self.color]
 
-        # ----- Input sockets
-
-        self.ivector         = vector
-        self.iw              = w
-        self.iscale          = scale
-        self.idetail         = detail
-        self.iroughness      = roughness
-        self.idistortion     = distortion
-
-        self.socket_in_name = 'ivector'
-
-    def __repr__(self):
-        s = f"Node 'NoiseTexture' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   vector          : {self.ivector}"
-        s += f"\n   w               : {self.iw}"
-        s += f"\n   scale           : {self.iscale}"
-        s += f"\n   detail          : {self.idetail}"
-        s += f"\n   roughness       : {self.iroughness}"
-        s += f"\n   distortion      : {self.idistortion}"
-        s += '\nParameters'
-        s += f"\n   noise_dimensions : {self.noise_dimensions}"
-        s += '\nOutput sockets'
-        s +=  "\n   fac             : Float"
-        s +=  "\n   color           : Color"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('1D', '2D', '3D', '4D') 
-        if self.noise_dimensions not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeNoiseTexture'.\n 'noise_dimensions' is '{self.noise_dimensions}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def fac(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def color(self):
-        return self.Color(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivector(self):
-        return Node.Vector(self.inputs[0])
-
-    @ivector.setter
-    def ivector(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iw(self):
-        return Node.Float(self.inputs[1])
-
-    @iw.setter
-    def iw(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iscale(self):
-        return Node.Float(self.inputs[2])
-
-    @iscale.setter
-    def iscale(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def idetail(self):
-        return Node.Float(self.inputs[3])
-
-    @idetail.setter
-    def idetail(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def iroughness(self):
-        return Node.Float(self.inputs[4])
-
-    @iroughness.setter
-    def iroughness(self, value):
-        self.inputs[4].plug(value)
-
-    @property
-    def idistortion(self):
-        return Node.Float(self.inputs[5])
-
-    @idistortion.setter
-    def idistortion(self, value):
-        self.inputs[5].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeTexVoronoi
+# ----------------------------------------------------------------------------------------------------
+# Node NodeVoronoiTexture for ShaderNodeTexVoronoi
 
 class NodeVoronoiTexture(Node):
 
-    """ Node class ShaderNodeTexVoronoi
+    """Node 'Voronoi Texture' (ShaderNodeTexVoronoi)
 
     Input sockets
     -------------
-
-        0: vector               Vector
-        1: w                    Float
-        2: scale                Float
-        3: smoothness           Float
-        4: exponent             Float
-        5: randomness           Float
+        vector          : Vector
+        w               : Float
+        scale           : Float
+        smoothness      : Float
+        exponent        : Float
+        randomness      : Float
 
     Parameters
     ----------
-
-        distance_   : 'EUCLIDEAN' in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI') 
-        feature     : 'F1' in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS') 
-        voronoi_dimensions: '3D' in ('1D', '2D', '3D', '4D') 
+        distance        : 'EUCLIDEAN' in [ 'EUCLIDEAN' 'MANHATTAN' 'CHEBYCHEV' 'MINKOWSKI']
+        feature         : 'F1' in [ 'F1' 'F2' 'SMOOTH_F1' 'DISTANCE_TO_EDGE' 'N_SPHERE_RADIUS']
+        voronoi_dimensions : '3D' in [ '1D' '2D' '3D' '4D']
 
     Output sockets
     --------------
-
-        0: distance             Float
-        1: color                Color
-        2: position             Vector
-        3: w                    Float
-        4: radius               Float
-
+        distance        : Float
+        color           : Color
+        position        : Vector
+        w               : Float
+        radius          : Float
     """
 
-    PARAMETERS = ['distance_', 'feature', 'voronoi_dimensions']
+    def __init__(self, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D', label=None):
 
-    def __init__(self, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
+        super().__init__('ShaderNodeTexVoronoi', name='Voronoi Texture', label=label)
 
-        super().__init__('ShaderNodeTexVoronoi', name='Voronoi Texture')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'w'            ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'scale'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatFactor'  , 'smoothness'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'exponent'     ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatFactor'  , 'randomness'   ))
+        self.bnode.distance        = distance
+        self.bnode.feature         = feature
+        self.bnode.voronoi_dimensions = voronoi_dimensions
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'distance'     ))
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'color'        ))
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'position'     ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'w'            ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'radius'       ))
+        # Input sockets
 
-        self.socket_out_name = 'distance'
-        self.out_socket_names = ['distance', 'color', 'position', 'w', 'radius']
+        self.plug(0, vector)
+        self.plug(1, w)
+        self.plug(2, scale)
+        self.plug(3, smoothness)
+        self.plug(4, exponent)
+        self.plug(5, randomness)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.distance_       = distance
-        self.feature         = feature
-        self.voronoi_dimensions = voronoi_dimensions
-        self.check_parameters()
+        self.distance        = self.Float(self.bnode.outputs[0])
+        self.color           = self.Color(self.bnode.outputs[1])
+        self.position        = self.Vector(self.bnode.outputs[2])
+        self.w               = self.Float(self.bnode.outputs[3])
+        self.radius          = self.Float(self.bnode.outputs[4])
+        self.output_sockets  = [self.distance, self.color, self.position, self.w, self.radius]
 
-        # ----- Input sockets
-
-        self.ivector         = vector
-        self.iw              = w
-        self.iscale          = scale
-        self.ismoothness     = smoothness
-        self.iexponent       = exponent
-        self.irandomness     = randomness
-
-        self.socket_in_name = 'ivector'
-
-    def __repr__(self):
-        s = f"Node 'VoronoiTexture' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   vector          : {self.ivector}"
-        s += f"\n   w               : {self.iw}"
-        s += f"\n   scale           : {self.iscale}"
-        s += f"\n   smoothness      : {self.ismoothness}"
-        s += f"\n   exponent        : {self.iexponent}"
-        s += f"\n   randomness      : {self.irandomness}"
-        s += '\nParameters'
-        s += f"\n   distance        : {self.distance}"
-        s += f"\n   feature         : {self.feature}"
-        s += f"\n   voronoi_dimensions : {self.voronoi_dimensions}"
-        s += '\nOutput sockets'
-        s +=  "\n   distance        : Float"
-        s +=  "\n   color           : Color"
-        s +=  "\n   position        : Vector"
-        s +=  "\n   w               : Float"
-        s +=  "\n   radius          : Float"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI') 
-        if self.distance not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeVoronoiTexture'.\n 'distance' is '{self.distance_}'.\n Authorized values are {valids}.")
-        valids = ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS') 
-        if self.feature not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeVoronoiTexture'.\n 'feature' is '{self.feature}'.\n Authorized values are {valids}.")
-        valids = ('1D', '2D', '3D', '4D') 
-        if self.voronoi_dimensions not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeVoronoiTexture'.\n 'voronoi_dimensions' is '{self.voronoi_dimensions}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def distance(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def color(self):
-        return self.Color(self.outputs[1])
-
-    @property
-    def position(self):
-        return self.Vector(self.outputs[2])
-
-    @property
-    def w(self):
-        return self.Float(self.outputs[3])
-
-    @property
-    def radius(self):
-        return self.Float(self.outputs[4])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivector(self):
-        return Node.Vector(self.inputs[0])
-
-    @ivector.setter
-    def ivector(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iw(self):
-        return Node.Float(self.inputs[1])
-
-    @iw.setter
-    def iw(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iscale(self):
-        return Node.Float(self.inputs[2])
-
-    @iscale.setter
-    def iscale(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def ismoothness(self):
-        return Node.Float(self.inputs[3])
-
-    @ismoothness.setter
-    def ismoothness(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def iexponent(self):
-        return Node.Float(self.inputs[4])
-
-    @iexponent.setter
-    def iexponent(self, value):
-        self.inputs[4].plug(value)
-
-    @property
-    def irandomness(self):
-        return Node.Float(self.inputs[5])
-
-    @irandomness.setter
-    def irandomness(self, value):
-        self.inputs[5].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeTexWave
+# ----------------------------------------------------------------------------------------------------
+# Node NodeWaveTexture for ShaderNodeTexWave
 
 class NodeWaveTexture(Node):
 
-    """ Node class ShaderNodeTexWave
+    """Node 'Wave Texture' (ShaderNodeTexWave)
 
     Input sockets
     -------------
-
-        0: vector               Vector
-        1: scale                Float
-        2: distortion           Float
-        3: detail               Float
-        4: detail_scale         Float
-        5: detail_roughness     Float
-        6: phase_offset         Float
+        vector          : Vector
+        scale           : Float
+        distortion      : Float
+        detail          : Float
+        detail_scale    : Float
+        detail_roughness : Float
+        phase_offset    : Float
 
     Parameters
     ----------
-
-        bands_direction: 'X' in ('X', 'Y', 'Z', 'DIAGONAL') 
-        rings_direction: 'X' in ('X', 'Y', 'Z', 'SPHERICAL') 
-        wave_profile: 'SIN' in ('SIN', 'SAW', 'TRI') 
-        wave_type   : 'BANDS' in ('BANDS', 'RINGS') 
+        bands_direction : 'X' in [ 'X' 'Y' 'Z' 'DIAGONAL']
+        rings_direction : 'X' in [ 'X' 'Y' 'Z' 'SPHERICAL']
+        wave_profile    : 'SIN' in [ 'SIN' 'SAW' 'TRI']
+        wave_type       : 'BANDS' in [ 'BANDS' 'RINGS']
 
     Output sockets
     --------------
-
-        0: color                Color
-        1: fac                  Float
-
+        color           : Color
+        fac             : Float
     """
 
-    PARAMETERS = ['bands_direction', 'rings_direction', 'wave_profile', 'wave_type']
+    def __init__(self, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS', label=None):
 
-    def __init__(self, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
+        super().__init__('ShaderNodeTexWave', name='Wave Texture', label=label)
 
-        super().__init__('ShaderNodeTexWave', name='Wave Texture')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'scale'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'distortion'   ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'detail'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'detail_scale' ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatFactor'  , 'detail_roughness'))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'phase_offset' ))
+        self.bnode.bands_direction = bands_direction
+        self.bnode.rings_direction = rings_direction
+        self.bnode.wave_profile    = wave_profile
+        self.bnode.wave_type       = wave_type
 
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'color'        ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'fac'          ))
+        # Input sockets
 
-        self.socket_out_name = 'color'
-        self.out_socket_names = ['color', 'fac']
+        self.plug(0, vector)
+        self.plug(1, scale)
+        self.plug(2, distortion)
+        self.plug(3, detail)
+        self.plug(4, detail_scale)
+        self.plug(5, detail_roughness)
+        self.plug(6, phase_offset)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.bands_direction = bands_direction
-        self.rings_direction = rings_direction
-        self.wave_profile    = wave_profile
-        self.wave_type       = wave_type
-        self.check_parameters()
+        self.color           = self.Color(self.bnode.outputs[0])
+        self.fac             = self.Float(self.bnode.outputs[1])
+        self.output_sockets  = [self.color, self.fac]
 
-        # ----- Input sockets
-
-        self.ivector         = vector
-        self.iscale          = scale
-        self.idistortion     = distortion
-        self.idetail         = detail
-        self.idetail_scale   = detail_scale
-        self.idetail_roughness = detail_roughness
-        self.iphase_offset   = phase_offset
-
-        self.socket_in_name = 'ivector'
-
-    def __repr__(self):
-        s = f"Node 'WaveTexture' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   vector          : {self.ivector}"
-        s += f"\n   scale           : {self.iscale}"
-        s += f"\n   distortion      : {self.idistortion}"
-        s += f"\n   detail          : {self.idetail}"
-        s += f"\n   detail_scale    : {self.idetail_scale}"
-        s += f"\n   detail_roughness : {self.idetail_roughness}"
-        s += f"\n   phase_offset    : {self.iphase_offset}"
-        s += '\nParameters'
-        s += f"\n   bands_direction : {self.bands_direction}"
-        s += f"\n   rings_direction : {self.rings_direction}"
-        s += f"\n   wave_profile    : {self.wave_profile}"
-        s += f"\n   wave_type       : {self.wave_type}"
-        s += '\nOutput sockets'
-        s +=  "\n   color           : Color"
-        s +=  "\n   fac             : Float"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('X', 'Y', 'Z', 'DIAGONAL') 
-        if self.bands_direction not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeWaveTexture'.\n 'bands_direction' is '{self.bands_direction}'.\n Authorized values are {valids}.")
-        valids = ('X', 'Y', 'Z', 'SPHERICAL') 
-        if self.rings_direction not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeWaveTexture'.\n 'rings_direction' is '{self.rings_direction}'.\n Authorized values are {valids}.")
-        valids = ('SIN', 'SAW', 'TRI') 
-        if self.wave_profile not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeWaveTexture'.\n 'wave_profile' is '{self.wave_profile}'.\n Authorized values are {valids}.")
-        valids = ('BANDS', 'RINGS') 
-        if self.wave_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeWaveTexture'.\n 'wave_type' is '{self.wave_type}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def color(self):
-        return self.Color(self.outputs[0])
-
-    @property
-    def fac(self):
-        return self.Float(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivector(self):
-        return Node.Vector(self.inputs[0])
-
-    @ivector.setter
-    def ivector(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iscale(self):
-        return Node.Float(self.inputs[1])
-
-    @iscale.setter
-    def iscale(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def idistortion(self):
-        return Node.Float(self.inputs[2])
-
-    @idistortion.setter
-    def idistortion(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def idetail(self):
-        return Node.Float(self.inputs[3])
-
-    @idetail.setter
-    def idetail(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def idetail_scale(self):
-        return Node.Float(self.inputs[4])
-
-    @idetail_scale.setter
-    def idetail_scale(self, value):
-        self.inputs[4].plug(value)
-
-    @property
-    def idetail_roughness(self):
-        return Node.Float(self.inputs[5])
-
-    @idetail_roughness.setter
-    def idetail_roughness(self, value):
-        self.inputs[5].plug(value)
-
-    @property
-    def iphase_offset(self):
-        return Node.Float(self.inputs[6])
-
-    @iphase_offset.setter
-    def iphase_offset(self, value):
-        self.inputs[6].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeTexWhiteNoise
+# ----------------------------------------------------------------------------------------------------
+# Node NodeWhiteNoiseTexture for ShaderNodeTexWhiteNoise
 
 class NodeWhiteNoiseTexture(Node):
 
-    """ Node class ShaderNodeTexWhiteNoise
+    """Node 'White Noise Texture' (ShaderNodeTexWhiteNoise)
 
     Input sockets
     -------------
-
-        0: vector               Vector
-        1: w                    Float
+        vector          : Vector
+        w               : Float
 
     Parameters
     ----------
-
-        noise_dimensions: '3D' in ('1D', '2D', '3D', '4D') 
+        noise_dimensions : '3D' in [ '1D' '2D' '3D' '4D']
 
     Output sockets
     --------------
-
-        0: value                Float
-        1: color                Color
-
+        value           : Float
+        color           : Color
     """
 
-    PARAMETERS = ['noise_dimensions']
+    def __init__(self, vector=None, w=None, noise_dimensions='3D', label=None):
 
-    def __init__(self, vector=None, w=None, noise_dimensions='3D'):
+        super().__init__('ShaderNodeTexWhiteNoise', name='White Noise Texture', label=label)
 
-        super().__init__('ShaderNodeTexWhiteNoise', name='White Noise Texture')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'w'            ))
+        self.bnode.noise_dimensions = noise_dimensions
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'value'        ))
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'color'        ))
+        # Input sockets
 
-        self.socket_out_name = 'value'
-        self.out_socket_names = ['value', 'color']
+        self.plug(0, vector)
+        self.plug(1, w)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.noise_dimensions = noise_dimensions
-        self.check_parameters()
+        self.value           = self.Float(self.bnode.outputs[0])
+        self.color           = self.Color(self.bnode.outputs[1])
+        self.output_sockets  = [self.value, self.color]
 
-        # ----- Input sockets
+# ----------------------------------------------------------------------------------------------------
+# Node NodeColorramp for ShaderNodeValToRGB
 
-        self.ivector         = vector
-        self.iw              = w
+class NodeColorramp(Node):
 
-        self.socket_in_name = 'ivector'
-
-    def __repr__(self):
-        s = f"Node 'WhiteNoiseTexture' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   vector          : {self.ivector}"
-        s += f"\n   w               : {self.iw}"
-        s += '\nParameters'
-        s += f"\n   noise_dimensions : {self.noise_dimensions}"
-        s += '\nOutput sockets'
-        s +=  "\n   value           : Float"
-        s +=  "\n   color           : Color"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('1D', '2D', '3D', '4D') 
-        if self.noise_dimensions not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeWhiteNoiseTexture'.\n 'noise_dimensions' is '{self.noise_dimensions}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def value(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def color(self):
-        return self.Color(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivector(self):
-        return Node.Vector(self.inputs[0])
-
-    @ivector.setter
-    def ivector(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def iw(self):
-        return Node.Float(self.inputs[1])
-
-    @iw.setter
-    def iw(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeValToRGB
-
-class NodeColorRamp(Node):
-
-    """ Node class ShaderNodeValToRGB
+    """Node 'ColorRamp' (ShaderNodeValToRGB)
 
     Input sockets
     -------------
-
-        0: fac                  Float
+        fac             : Float
 
     Output sockets
     --------------
-
-        0: color                Color
-        1: alpha                Float
-
+        color           : Color
+        alpha           : Float
     """
 
-    PARAMETERS = []
+    def __init__(self, fac=None, label=None):
 
-    def __init__(self, fac=None):
+        super().__init__('ShaderNodeValToRGB', name='ColorRamp', label=label)
 
-        super().__init__('ShaderNodeValToRGB', name='ColorRamp')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatFactor'  , 'fac'          ))
+        self.plug(0, fac)
 
-        self.outputs.add(Socket (self, 'NodeSocketColor'        , 'color'        ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'alpha'        ))
+        # Output sockets
 
-        self.socket_out_name = 'color'
-        self.out_socket_names = ['color', 'alpha']
+        self.color           = self.Color(self.bnode.outputs[0])
+        self.alpha           = self.Float(self.bnode.outputs[1])
+        self.output_sockets  = [self.color, self.alpha]
 
-        # ----- Input sockets
-
-        self.ifac            = fac
-
-        self.socket_in_name = 'ifac'
-
-    def __repr__(self):
-        s = f"Node 'ColorRamp' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   fac             : {self.ifac}"
-        s += '\nOutput sockets'
-        s +=  "\n   color           : Color"
-        s +=  "\n   alpha           : Float"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def color(self):
-        return self.Color(self.outputs[0])
-
-    @property
-    def alpha(self):
-        return self.Float(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ifac(self):
-        return Node.Float(self.inputs[0])
-
-    @ifac.setter
-    def ifac(self, value):
-        self.inputs[0].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeValue
+# ----------------------------------------------------------------------------------------------------
+# Node NodeValue for ShaderNodeValue
 
 class NodeValue(Node):
 
-    """ Node class ShaderNodeValue
+    """Node 'Value' (ShaderNodeValue)
 
     Output sockets
     --------------
-
-        0: value                Float
-
+        value           : Float
     """
 
-    PARAMETERS = []
+    def __init__(self, label=None):
 
-    def __init__(self, value=0.):
+        super().__init__('ShaderNodeValue', name='Value', label=label)
 
-        super().__init__('ShaderNodeValue', name='Value')
+        # Output sockets
 
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'value'        ))
+        self.value           = self.Float(self.bnode.outputs[0])
+        self.output_sockets  = [self.value]
 
-        self.socket_out_name = 'value'
-        self.out_socket_names = ['value']
-
-        self.outputs[0].default_value = value
-
-        self.socket_in_name = None
-
-    def __repr__(self):
-        s = f"Node 'Value' ({self.unique_id})"
-        s += '\nOutput sockets'
-        s +=  "\n   value           : Float"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def value(self):
-        return self.Float(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.value
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeVectorCurve
+# ----------------------------------------------------------------------------------------------------
+# Node NodeVectorCurves for ShaderNodeVectorCurve
 
 class NodeVectorCurves(Node):
 
-    """ Node class ShaderNodeVectorCurve
+    """Node 'Vector Curves' (ShaderNodeVectorCurve)
 
     Input sockets
     -------------
-
-        0: fac                  Float
-        1: vector               Vector
+        fac             : Float
+        vector          : Vector
 
     Output sockets
     --------------
-
-        0: vector               Vector
-
+        vector          : Vector
     """
 
-    PARAMETERS = []
+    def __init__(self, fac=None, vector=None, label=None):
 
-    def __init__(self, fac=None, vector=None):
+        super().__init__('ShaderNodeVectorCurve', name='Vector Curves', label=label)
 
-        super().__init__('ShaderNodeVectorCurve', name='Vector Curves')
+        # Input sockets
 
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatFactor'  , 'fac'          ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector'       ))
+        self.plug(0, fac)
+        self.plug(1, vector)
 
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'vector'       ))
+        # Output sockets
 
-        self.socket_out_name = 'vector'
-        self.out_socket_names = ['vector']
+        self.vector          = self.Vector(self.bnode.outputs[0])
+        self.output_sockets  = [self.vector]
 
-        # ----- Input sockets
-
-        self.ifac            = fac
-        self.ivector         = vector
-
-        self.socket_in_name = 'ifac'
-
-    def __repr__(self):
-        s = f"Node 'VectorCurves' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   fac             : {self.ifac}"
-        s += f"\n   vector          : {self.ivector}"
-        s += '\nOutput sockets'
-        s +=  "\n   vector          : Vector"
-        return s + "\n"
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def vector(self):
-        return self.Vector(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.vector
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ifac(self):
-        return Node.Float(self.inputs[0])
-
-    @ifac.setter
-    def ifac(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ivector(self):
-        return Node.Vector(self.inputs[1])
-
-    @ivector.setter
-    def ivector(self, value):
-        self.inputs[1].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeVectorMath
+# ----------------------------------------------------------------------------------------------------
+# Node NodeVectorMath for ShaderNodeVectorMath
 
 class NodeVectorMath(Node):
 
-    """ Node class ShaderNodeVectorMath
+    """Node 'Vector Math' (ShaderNodeVectorMath)
 
     Input sockets
     -------------
-
-        0: vector0              Vector
-        1: vector1              Vector
-        2: vector2              Vector
-        3: scale                Float
+        vector0         : Vector
+        vector1         : Vector
+        vector2         : Vector
+        scale           : Float
 
     Parameters
     ----------
-
-        operation   : 'ADD' in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 
-                               'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 
-                               'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 
-                               'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT') 
+        operation       : 'ADD' in [ 'ADD' 'SUBTRACT' 'MULTIPLY' 'DIVIDE' 'MULTIPLY_ADD' 'CROSS_PRODUCT' 'PROJECT' 'REFLECT' 'REFRACT' 'FACEFORWARD',
+                             'DOT_PRODUCT' 'DISTANCE' 'LENGTH' 'SCALE' 'NORMALIZE' 'ABSOLUTE' 'MINIMUM' 'MAXIMUM' 'FLOOR' 'CEIL',
+                             'FRACTION' 'MODULO' 'WRAP' 'SNAP' 'SINE' 'COSINE' 'TANGENT']
 
     Output sockets
     --------------
-
-        0: vector               Vector
-        1: value                Float
-
+        vector          : Vector
+        value           : Float
     """
 
-    PARAMETERS = ['operation']
+    def __init__(self, vector0=None, vector1=None, vector2=None, scale=None, operation='ADD', label=None):
 
-    def __init__(self, vector0=None, vector1=None, vector2=None, scale=None, operation='ADD'):
+        super().__init__('ShaderNodeVectorMath', name='Vector Math', label=label)
 
-        super().__init__('ShaderNodeVectorMath', name='Vector Math')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector0'      ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector1'      ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector2'      ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloat'        , 'scale'        ))
+        self.bnode.operation       = operation
 
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'vector'       ))
-        self.outputs.add(Socket (self, 'NodeSocketFloat'        , 'value'        ))
+        # Input sockets
 
-        self.socket_out_name = 'vector'
-        self.out_socket_names = ['vector', 'value']
+        self.plug(0, vector0)
+        self.plug(1, vector1)
+        self.plug(2, vector2)
+        self.plug(3, scale)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.operation       = operation
-        self.check_parameters()
+        self.vector          = self.Vector(self.bnode.outputs[0])
+        self.value           = self.Float(self.bnode.outputs[1])
+        self.output_sockets  = [self.vector, self.value]
 
-        # ----- Input sockets
-
-        self.ivector0        = vector0
-        self.ivector1        = vector1
-        self.ivector2        = vector2
-        self.iscale          = scale
-
-        self.socket_in_name = 'ivector0'
-
-    def __repr__(self):
-        s = f"Node 'VectorMath' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   vector0         : {self.ivector0}"
-        s += f"\n   vector1         : {self.ivector1}"
-        s += f"\n   vector2         : {self.ivector2}"
-        s += f"\n   scale           : {self.iscale}"
-        s += '\nParameters'
-        s += f"\n   operation       : {self.operation}"
-        s += '\nOutput sockets'
-        s +=  "\n   vector          : Vector"
-        s +=  "\n   value           : Float"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 
-                 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 
-                 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 
-                 'TANGENT') 
-        if self.operation not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeVectorMath'.\n 'operation' is '{self.operation}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def vector(self):
-        return self.Vector(self.outputs[0])
-
-    @property
-    def value(self):
-        return self.Float(self.outputs[1])
-
-    @property
-    def output(self):
-        return self.output_sockets()
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivector0(self):
-        return Node.Vector(self.inputs[0])
-
-    @ivector0.setter
-    def ivector0(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def ivector1(self):
-        return Node.Vector(self.inputs[1])
-
-    @ivector1.setter
-    def ivector1(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def ivector2(self):
-        return Node.Vector(self.inputs[2])
-
-    @ivector2.setter
-    def ivector2(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def iscale(self):
-        return Node.Float(self.inputs[3])
-
-    @iscale.setter
-    def iscale(self, value):
-        self.inputs[3].plug(value)
-
-# ------------------------------------------------------------------------------------------------------------------------
-# Node class ShaderNodeVectorRotate
+# ----------------------------------------------------------------------------------------------------
+# Node NodeVectorRotate for ShaderNodeVectorRotate
 
 class NodeVectorRotate(Node):
 
-    """ Node class ShaderNodeVectorRotate
+    """Node 'Vector Rotate' (ShaderNodeVectorRotate)
 
     Input sockets
     -------------
-
-        0: vector               Vector
-        1: center               Vector
-        2: axis                 Vector
-        3: angle                Float
-        4: rotation             Vector
+        vector          : Vector
+        center          : Vector
+        axis            : Vector
+        angle           : Float
+        rotation        : Vector
 
     Parameters
     ----------
-
-        invert      : False
-        rotation_type: 'AXIS_ANGLE' in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ') 
+        invert          : (False) bool
+        rotation_type   : 'AXIS_ANGLE' in [ 'AXIS_ANGLE' 'X_AXIS' 'Y_AXIS' 'Z_AXIS' 'EULER_XYZ']
 
     Output sockets
     --------------
-
-        0: vector               Vector
-
+        vector          : Vector
     """
 
-    PARAMETERS = ['invert', 'rotation_type']
+    def __init__(self, vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', label=None):
 
-    def __init__(self, vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE'):
+        super().__init__('ShaderNodeVectorRotate', name='Vector Rotate', label=label)
 
-        super().__init__('ShaderNodeVectorRotate', name='Vector Rotate')
+        # Parameters
 
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'vector'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'center'       ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVector'       , 'axis'         ))
-        self.inputs.add(SocketIn(self, 'NodeSocketFloatAngle'   , 'angle'        ))
-        self.inputs.add(SocketIn(self, 'NodeSocketVectorEuler'  , 'rotation'     ))
+        self.bnode.invert          = invert
+        self.bnode.rotation_type   = rotation_type
 
-        self.outputs.add(Socket (self, 'NodeSocketVector'       , 'vector'       ))
+        # Input sockets
 
-        self.socket_out_name = 'vector'
-        self.out_socket_names = ['vector']
+        self.plug(0, vector)
+        self.plug(1, center)
+        self.plug(2, axis)
+        self.plug(3, angle)
+        self.plug(4, rotation)
 
-        # ----- Parameters
+        # Output sockets
 
-        self.invert          = invert
-        self.rotation_type   = rotation_type
-        self.check_parameters()
-
-        # ----- Input sockets
-
-        self.ivector         = vector
-        self.icenter         = center
-        self.iaxis           = axis
-        self.iangle          = angle
-        self.irotation       = rotation
-
-        self.socket_in_name = 'ivector'
-
-    def __repr__(self):
-        s = f"Node 'VectorRotate' ({self.unique_id})"
-        s += '\nInput sockets'
-        s += f"\n   vector          : {self.ivector}"
-        s += f"\n   center          : {self.icenter}"
-        s += f"\n   axis            : {self.iaxis}"
-        s += f"\n   angle           : {self.iangle}"
-        s += f"\n   rotation        : {self.irotation}"
-        s += '\nParameters'
-        s += f"\n   invert          : {self.invert}"
-        s += f"\n   rotation_type   : {self.rotation_type}"
-        s += '\nOutput sockets'
-        s +=  "\n   vector          : Vector"
-        return s + "\n"
-
-    def check_parameters(self):
-        valids = ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ') 
-        if self.rotation_type not in valids:
-            raise AttributeError(f"\nAttribute error for Node 'NodeVectorRotate'.\n 'rotation_type' is '{self.rotation_type}'.\n Authorized values are {valids}.")
-
-    # --------------------------------------------------------------------------------
-    # Output sockets
-
-    @property
-    def vector(self):
-        return self.Vector(self.outputs[0])
-
-    @property
-    def output(self):
-        return self.vector
-
-    # --------------------------------------------------------------------------------
-    # Input sockets
-
-    @property
-    def ivector(self):
-        return Node.Vector(self.inputs[0])
-
-    @ivector.setter
-    def ivector(self, value):
-        self.inputs[0].plug(value)
-
-    @property
-    def icenter(self):
-        return Node.Vector(self.inputs[1])
-
-    @icenter.setter
-    def icenter(self, value):
-        self.inputs[1].plug(value)
-
-    @property
-    def iaxis(self):
-        return Node.Vector(self.inputs[2])
-
-    @iaxis.setter
-    def iaxis(self, value):
-        self.inputs[2].plug(value)
-
-    @property
-    def iangle(self):
-        return Node.Float(self.inputs[3])
-
-    @iangle.setter
-    def iangle(self, value):
-        self.inputs[3].plug(value)
-
-    @property
-    def irotation(self):
-        return Node.Vector(self.inputs[4])
-
-    @irotation.setter
-    def irotation(self, value):
-        self.inputs[4].plug(value)
-
+        self.vector          = self.Vector(self.bnode.outputs[0])
+        self.output_sockets  = [self.vector]
