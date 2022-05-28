@@ -1,5 +1,5 @@
 import geonodes as gn
-from geonodes.core import datasocket as dsock
+from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
 
 import logging
@@ -13,20 +13,19 @@ class Material(dsock.Material):
 
     Methods
     -------
-        selection            : selection (Boolean)
-        switch               : output (Material)
+        selection                 : selection    (Boolean)
+        switch                    : output       (Material)
     """
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def switch(self, switch0=None, switch1=None, true=None):
+    def switch(self, switch1=None, true=None):
         """Call node NodeSwitch (GeometryNodeSwitch)
 
         Sockets arguments
         -----------------
             false          : Material (self)
-            switch0        : Boolean
             switch1        : Boolean
             true           : Material
 
@@ -39,7 +38,7 @@ class Material(dsock.Material):
             Material
         """
 
-        return nodes.NodeSwitch(false=self, switch0=switch0, switch1=switch1, true=true, input_type='MATERIAL').output
+        return nodes.NodeSwitch(false=self, switch1=switch1, true=true, input_type='MATERIAL').output
 
     def selection(self):
         """Call node NodeMaterialSelection (GeometryNodeMaterialSelection)
@@ -47,6 +46,7 @@ class Material(dsock.Material):
         Sockets arguments
         -----------------
             material       : Material (self)
+
         Returns
         -------
             Boolean

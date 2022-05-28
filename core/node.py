@@ -8,11 +8,12 @@ Created on Thu May 26 11:15:16 2022
 
 import bpy
 import itertools
+
 from pprint import pprint
 import logging
 logger = logging.getLogger('geonodes')
 
-from .color import Color
+from geonodes import colors
 from .arrange import arrange
 
 # =============================================================================================================================
@@ -25,20 +26,66 @@ class DataSocket:
     
     Children classes are Boolean, Integer, Float, Geometry...
     """
-
-    def __init__(self, socket, node=None):
+    
+    # DataSocket class, sub class and domain data type from socket bl_idname
         
-        if isinstance(socket, DataSocket):
-            self.bsocket = socket.get_blender_socket()
-        elif isinstance(socket, bpy.types.NodeSocket):
-            self.bsocket = socket
-        else:
-            raise RuntimeError(f"A DataSocket instance needs a socket to be initialized, not {socket}.")
+    SOCKET_IDS = {
+        'NodeSocketBool'        : ('Boolean',    '',             'BOOLEAN'), 
+
+        'NodeSocketInt'         : ('Integer',    '',             'INT'), 
+        'NodeSocketIntUnsigned' : ('Integer',    'Unsigned',     'INT'), 
+
+        'NodeSocketFloat'       : ('Float',      '',             'FLOAT'), 
+        'NodeSocketFloatFactor' : ('Float',      'Factor',       'FLOAT'),
+        'NodeSocketFloatAngle'  : ('Float',      'Angle',        'FLOAT'), 
+        'NodeSocketFloatDistance': ('Float',     'Distance',     'FLOAT'), 
+
+        'NodeSocketVector'      : ('Vector',     '',             'FLOAT_VECTOR'), 
+        'NodeSocketVectorEuler' : ('Vector',     'Rotation',     'FLOAT_VECTOR'),
+        'NodeSocketVectorXYZ'   : ('Vector',     'xyz',          'FLOAT_VECTOR'), 
+        'NodeSocketVectorTranslation' : ('Vector', 'Translation','FLOAT_VECTOR'), 
+
+        'NodeSocketColor'       : ('Color',      '',             'FLOAT_COLOR'), 
+        'NodeSocketString'      : ('String',     '',             'FLOAT_COLOR'), 
+
+        'NodeSocketGeometry'    : ('Geometry',   '',              None), 
+
+        'NodeSocketCollection'  : ('Collection', '',              None), 
+        'NodeSocketImage'       : ('Image',      '',              None), 
+        'NodeSocketMaterial'    : ('Material',   '',              None), 
+        'NodeSocketObject'      : ('Object',     '',              None), 
+        'NodeSocketTexture'     : ('Texture',    '',              None), 
+    }
+    
+
+    def __init__(self, socket, node=None, label=None):
+        
+        # ----- Ensure the properties are create
+        
+        self.reset_properties()
+        
+        # ----- A class Object doesn't have a constructor Node
+
+        if socket is None:
+            self.bsocket = None
+            self.node    = None
             
-        if node is None:
-            self.node = Tree.TREE.get_bnode_wrapper(self.bsocket.node)
         else:
-            self.node = node
+            if DataSocket.is_data_socket(socket):
+                self.bsocket = socket.get_blender_socket()
+    
+            elif isinstance(socket, bpy.types.NodeSocket):
+                self.bsocket = socket
+            else:
+                raise RuntimeError(f"A DataSocket instance needs a socket to be initialized, not {socket}.")
+                
+            if node is None:
+                self.node = Tree.TREE.get_bnode_wrapper(self.bsocket.node)
+            else:
+                self.node = node
+            
+            if label is not None:
+                self.node.label = label
         
     def __str__(self):
         snode = str(self.node)
@@ -50,10 +97,19 @@ class DataSocket:
     def __repr__(self):
         return str(self)
     
+    @staticmethod
+    def is_data_socket(value):
+        """ An alternative to isinstance(value, DataSocket)
+        """
+        return hasattr(value, 'get_blender_socket')
+
+    @staticmethod
+    def gives_bsocket(value):
+        return DataSocket.is_data_socket(value) or isinstance(value, bpy.types.NodeSocket)
+    
     @property
     def bl_idname(self):
         return self.bsocket.bl_socket_idname if isinstance(self.bsocket, bpy.types.NodeSocketInterfaceGeometry) else self.bsocket.bl_idname
-        
     
     @property
     def name(self):
@@ -74,6 +130,13 @@ class DataSocket:
     @property
     def bnode(self):
         return self.bsocket.node
+    
+    @property
+    def node_chain_label(self):
+        if self.node is None:
+            return ""
+        else:
+            return self.node.chain_label
     
     @property
     def index(self):
@@ -102,50 +165,32 @@ class DataSocket:
     # Class name from socket bl_idname
     
     @staticmethod
+    def domain_data_type(socket):
+        return DataSocket.SOCKET_IDS[socket.bl_idname][2]
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Class name from socket bl_idname
+    
+    @staticmethod
     def get_class_name(socket, with_sub_class = False):
-        blids = {
-            'NodeSocketBool'        : ('Boolean',    ''), 
-    
-            'NodeSocketInt'         : ('Integer',    ''), 
-            'NodeSocketIntUnsigned' : ('Integer',    'Unsigned'), 
-    
-            'NodeSocketFloat'       : ('Float',      ''), 
-            'NodeSocketFloatFactor' : ('Float',      'Factor'),
-            'NodeSocketFloatAngle'  : ('Float',      'Angle'), 
-            'NodeSocketFloatDistance': ('Float',     'Distance'), 
-    
-            'NodeSocketVector'      : ('Vector',     ''), 
-            'NodeSocketVectorEuler' : ('Vector',     'Rotation'),
-            'NodeSocketVectorXYZ'   : ('Vector',     'xyz'), 
-            'NodeSocketVectorTranslation' : ('Vector', 'Translation'), 
-    
-            'NodeSocketColor'       : ('Color',      ''), 
-            'NodeSocketString'      : ('String',     ''), 
-    
-            'NodeSocketGeometry'    : ('Geometry',   ''), 
-    
-            'NodeSocketCollection'  : ('Collection', ''), 
-            'NodeSocketImage'       : ('Image',      ''), 
-            'NodeSocketMaterial'    : ('Material',   ''), 
-            'NodeSocketObject'      : ('Object',     ''), 
-            'NodeSocketTexture'     : ('Texture',    ''), 
-            'NodeSocketVirtual'     : ('Virtual',    ''),
-            }
         
-        bl_idname = socket.bl_socket_idname if isinstance(socket, bpy.types.NodeSocketInterfaceGeometry) else socket.bl_idname
-        class_name = blids[bl_idname][0]
+        bl_idname = socket.bl_idname
+        class_name = DataSocket.SOCKET_IDS[bl_idname][0]
         name = socket.name
         
         if class_name == 'Geometry' and name in ['Mesh', 'Points', 'Instances', 'Volume', 'Spline', 'Curve']:
             class_name = name
             
         if with_sub_class:
-            return class_name, blids[bl_idname][1]
+            return class_name, DataSocket.SOCKET_IDS[bl_idname][1]
         else:
             return class_name
         
     @staticmethod
     def get_bl_idname(class_name):
+        
+        if DataSocket.is_data_socket(class_name):
+            class_name = type(class_name).__name__
         
         if class_name in ['Boolean']:
             return 'NodeSocketBool'
@@ -177,7 +222,7 @@ class DataSocket:
         elif class_name in ['Rotation']:
             return 'NodeSocketVectorEuler'
         
-        elif class_name in ['xyz']:
+        elif class_name in ['Xyz']:
             return 'NodeSocketVectorXYZ'
         
         elif class_name in ['Translation']:
@@ -253,10 +298,142 @@ class DataSocket:
     # Only nodes with a single output socket can be stacked
     
     def stack(self, node):
+        #label = self.node.label
+        
         self.node    = node
-        self.bsocket = node.output_sockets[0].bsocket
+        self.bsocket = node.bnode.outputs[0]
         self.reset_properties()
+
+        #if self.node.label is None:
+        #    self.node.label = label
+            
         return self
+
+    # ----------------------------------------------------------------------------------------------------
+    # Plug (for input sockets only)
+    
+    @staticmethod
+    def plug_bsocket(bsocket, *values):
+        """ Plug the values to the input Blender socket.
+        
+        Since an input socket can be multi input, the values argument is a list.
+        
+        If the socket is multi input, the plug method is called once per provide value.
+        If a value is None, nothing happens.
+        
+        A not None value can be:
+            - either a valid valud for the socket (eg: 123 for Integer socket)
+            - or an output socket of another Node
+            
+        When it is a socket, it can be a Blender socker or a DataSocket
+        
+        Arguments
+        ---------
+            index: int
+                The index of the input sockets (a valid index for Node.inputs)
+            *values: list of values
+                Each value can be an acceptable default value for the socket
+                or an output socket 
+        """
+        
+        if bsocket.is_output:
+            raise RuntimeError(f"Method 'plug' can only be used with input sockets, not {bsocket}.")
+        
+        # ---------------------------------------------------------------------------
+        # Nothing to plug
+
+        if len(values) == 0:
+            return
+
+        # ---------------------------------------------------------------------------
+        # If several output sockets to plugn let's loop on the list
+        
+        if len(values) > 1:
+            if not self.is_multi_input:
+                raise RuntimeError(f"Input socket {bsocket} is not multi input: impossible to plug multiple sockets: {values}.")
+            for v in values:
+                self.plug(v)
+            return
+        
+        # ---------------------------------------------------------------------------
+        # Ok now: only one thing to plug.
+        # It can be a value or a socket (or directly a blender output socket)
+        
+        # ----- Let's suppress the existing links
+        
+        #if not is_multi_input:
+        #    links = [link for link in self.bnode.links]
+        #    for link in links:
+        #        self.node.tree.links.remove(links) 
+        
+        value = values[0]
+        if value is None:
+            return
+        
+        out_socket = None
+        if isinstance(value, bpy.types.NodeSocket):
+            out_socket = value
+        elif DataSocket.is_data_socket(value):
+            # Node is None: particular cases
+            if value.node is None:
+                if hasattr(value, 'bobject'):  # An object socket not connected to input
+                    value = value.bobject
+                else:
+                    raise RuntimeError("Impossible to plug a socket with a None Node: {value}.")
+            else:
+                out_socket = value.get_blender_socket()
+            
+        # ----- It is a value
+        # Let's put it in the default_value of the input socket
+            
+        if out_socket is None:
+            
+            if bsocket.is_multi_input:
+                raise RuntimeError(f"The socket {bsocket} is multi input. Impossible to plug the value {value}.")
+                
+            # ----- Vector / Color hack: a single value is broadcasted in a triplet
+            if hasattr(bsocket, 'default_value') and isinstance(bsocket.default_value, bpy.types.bpy_prop_array):
+                if not hasattr(value, '__len__'):
+                    value = (value, value, value)
+            
+            ok = True
+            try:
+                bsocket.default_value = value
+            except Exception as e:
+                msg = str(e)
+                ok = False
+                
+            if not ok:
+                raise RuntimeError(f"Impossible to set the default value {value} to socket {bsocket}.\n {msg}")
+                
+        else:
+            Tree.TREE.btree.links.new(bsocket, out_socket, verify_limits=True)
+            
+    # ----------------------------------------------------------------------------------------------------
+    # Plug (for input sockets only)
+            
+    def plug(self, *values):
+        DataSocket.plug_bsocket(self.bsockets, *values)
+        self.node.tree.arrange()    
+        
+    # ----------------------------------------------------------------------------------------------------
+    # To group output (for output sockets only)
+    
+    def to_output(self):
+        if not self.is_output:
+            raise RuntimeError(f"The socket '{str(sel)}' is not an output socket. It can't be sent to group output.")
+        self.node.tree.group_output.to_output(self, self.name)
+        
+    # ----------------------------------------------------------------------------------------------------
+    # To viewer (for output sockets only)
+        
+    def to_viewer(self):
+        if not self.is_output:
+            raise RuntimeError(f"The socket '{str(sel)}' is not an output socket. It can't be connected to the viewer.")
+        self.node.tree.to_viewer(self)
+        
+
+    
 
 # =============================================================================================================================
 # Nodes tree    
@@ -282,6 +459,9 @@ class Tree:
         The current tree is store in the class property TREE of the class Tree.
     """
     
+    KEEPS = ['GeometryNodeImageTexture', 'GeometryNodeInputMaterial', 'GeometryNodeStringToCurves', 'ShaderNodeFloatCurve',
+             'ShaderNodeFloatCurve', 'ShaderNodeValToRGB', 'ShaderNodeVectorCurve', 'FunctionNodeInputColor']
+    
     TREE = None
     
     def __init__(self, tree_name, clear=False):
@@ -302,29 +482,34 @@ class Tree:
         if clear:
             self.btree.nodes.clear()
         else:
+            rems = []
             for bnode in self.btree.nodes:
-                self.old_bnodes.append(bnode)
+                if bnode.bl_idname in Tree.KEEPS:
+                    self.old_bnodes.append(bnode)
+                else:
+                    rems.append(bnode)
+                    
+            for bnode in rems:
+                self.btree.nodes.remove(bnode)
+            del rems
             
         self.nodes  = []
         self.node_id = 0
         self.activate()
+        
+        # ----- Layouts stack
+        
+        self.layouts = []
         
         # ----- Input and outputs
         
         self.group_input  = NodeGroupInput()
         self.group_output = NodeGroupOutput()
         
-    @property
-    def input_geometry(self):
-        return self.group_input.input_geometry
+        # ----- Viewer
         
-    @property
-    def output_geometry(self):
-        return self.group_output.output_geometry
-    
-    @output_geometry.setter
-    def output_geometry(self, value):
-        self.group_output.plug(0, value)
+        self.viewer = None
+        
         
     # ----------------------------------------------------------------------------------------------------
     # Get / create a Blender node
@@ -371,6 +556,7 @@ class Tree:
             bnode.label = label
             
         bnode.select = False
+        bnode.parent = self.cur_frame
         
         return bnode
                         
@@ -442,7 +628,64 @@ class Tree:
             if socket.bsocket == bsocket:
                 return socket
         raise RuntimeError(f"Impossible to find the wrapper socket of Blender socket {bsocket}, of node {node}.")
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Input output interface
+    
+    @property
+    def input_geometry(self):
+        return self.group_input.input_geometry
+        
+    @property
+    def output_geometry(self):
+        return self.group_output.output_geometry
+    
+    @output_geometry.setter
+    def output_geometry(self, value):
+        self.group_output.plug(0, value)
+        
+    def new_input(self, class_name, value=None, name=None):
+        return self.group_input.new_socket(class_name=class_name, value=value, name=name)
+    
+    def to_output(self, socket):
+        self.group_output.to_output(socket)
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Viewer
+    
+    def to_viewer(self, geometry=None, socket=None):
+        
+        if self.viewer is None:
+            self.viewer = NodeViewer()
             
+        self.viewer.plug_socket(geometry)
+        self.viewer.plug_socket(socket)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Layouts
+    
+    def new_layout(self, label="Layout", color=colors.yellow(.3, .3)):
+        layout = NodeFrame(label=label, color=color)
+        self.layouts.append(layout)
+        layout.node_color = color
+        return layout
+        
+    @property
+    def cur_frame(self):
+        if self.layouts:
+            return self.layouts[-1].bnode
+        else:
+            return None
+        
+    def close_layout(self):
+        if self.layouts:
+            return self.layouts.pop()
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Arrange the nodes
+    
+    def arrange(self):
+        arrange(self.btree.name)    
         
     
 # ---------------------------------------------------------------------------
@@ -468,24 +711,18 @@ class Node:
         self.tree.register_node(self)
 
         self.name    = name
-        self.label   = label
-        self.bnode   = self.tree.get_bnode(bl_idname, label) #self.tree.bnodes.new(bl_idname)
+        self.label_  = None
+        self.bnode   = self.tree.get_bnode(bl_idname, label)
         self.bnode.name = str(self)
+        self.label      = label
 
         self.inputs  = [DataSocket(bsocket, node=self) for bsocket in self.bnode.inputs]
         self.outputs = [DataSocket(bsocket, node=self) for bsocket in self.bnode.outputs]
         
-    @property
-    def node_label(self):
-        """ Node label
-        
-        If no label is provided the label is the concatenation of the id and the name.
-        Otherwise, it is the label
-        """
-        return f"{self.node_id:2d} {self.name if self.label is None else self.label}"
+        self.is_attribute = False
         
     def __str__(self):
-        return f"[{self.node_label}]"
+        return f"[{self.get_label()}]"
     
     def __repr__(self):
         s = f"<Node {str(self)}:\n"
@@ -499,6 +736,78 @@ class Node:
         for ds in self.outputs:
             s += f"   {ds.name} {ds.connected_sockets()}\n"
         return s + ">"
+    
+    # ---------------------------------------------------------------------------
+    # Node label
+    
+    def get_label(self):
+        return f"{self.node_id:2d} {self.name}" if self.label_ is None else self.label_
+    
+    @property
+    def label(self):
+        return self.label_
+    
+    @label.setter
+    def label(self, value):
+        self.label_ = value
+        self.bnode.label = self.get_label()
+        
+    # ----- Chain label used when labeling chained nodes
+    # eg: separate property of Vector is labeled: {chain_label}.separate
+        
+    @property
+    def chain_label(self):
+        if self.label is None:
+            return str(self.node_id)
+        else:
+            return self.label
+    
+    # ---------------------------------------------------------------------------
+    # Node color
+    
+    @property
+    def node_color(self):
+        return self.bnode.color
+    
+    @node_color.setter
+    def node_color(self, value):
+        if value is None:
+            self.bnode.use_custom_color = False
+        else:
+            self.bnode.use_custom_color = True
+            self.bnode.color = value
+
+    # ---------------------------------------------------------------------------
+    # Switch input sockets
+    
+    def switch_input_sockets(self, index0, index1):
+        
+        bsock0 = self.bnode.inputs[index0]
+        bsock1 = self.bnode.inputs[index1]
+        
+        links0 = [link for link in bsock0.links]
+        links1 = [link for link in bsock1.links]
+        
+        def0     = bsock0.default_value if hasattr(bsock0, 'default_value') else None
+        def1     = bsock1.default_value if hasattr(bsock1, 'default_value') else None
+        
+        inps0 = [link.from_socket for link in links0]
+        inps1 = [link.from_socket for link in links1]
+        
+        for link in itertools.chain(links0, links1):
+            self.tree.btree.links.remove(link)
+            
+        if hasattr(bsock0, 'default_value') and def1 is not None:
+            bsock0.default_value = def1
+            
+        if hasattr(bsock1, 'default_value') and def0 is not None:
+            bsock1.default_value = def0
+            
+        for inp in inps1:
+            self.tree.btree.links.new(inp, bsock0)
+        for inp in inps0:
+            self.tree.btree.links.new(inp, bsock1)
+        
 
     # ---------------------------------------------------------------------------
     # Sockets plugged to an input socket
@@ -532,68 +841,74 @@ class Node:
                 or an output socket 
         """
         
-        # ---------------------------------------------------------------------------
-        # Nothing to plug
-
-        if len(values) == 0:
-            return
-
-        # ---------------------------------------------------------------------------
-        # The blender input socket to plug into
-        
-        in_socket = self.bnode.inputs[index]
-        
-        # ---------------------------------------------------------------------------
-        # If several output sockets to plugn let's loop on the list
-        
-        if len(values) > 1:
-            if not in_socket.is_multi_input:
-                raise RuntimeError(f"Input socket {str(in_socket)} is not multi input: impossible to plug multiple sockets: {values}.")
-            for v in values:
-                self.plug(index, v)
-            return
-        
-        # ---------------------------------------------------------------------------
-        # Ok now: only one thing to plug.
-        # It can be a value or a socket (or directly a blender output socket)
-        
-        # ----- Let's suppress the existing links
-        
-        #if not in_socket.is_multi_input:
-        #    links = [link for link in self.bnode.links]
-        #    for link in links:
-        #        self.node.tree.links.remove(links) 
-        
-        value = values[0]
-        out_socket = None
-        if isinstance(value, bpy.types.NodeSocket):
-            out_socket = value
-        elif hasattr(value, 'get_blender_socket'):
-            out_socket = value.get_blender_socket()
-            
-        # ----- It is a value
-        # Let's put it in the default_value of the input socket
-            
-        if out_socket is None:
-            if in_socket.is_multi_input:
-                raise RuntimeError(f"The socket {str(in_socket)} is multi input. Impossible to plug the value {value}.")
-            
-            if value is not None:
-                ok = True
-                try:
-                    in_socket.default_value = value
-                except Exception as e:
-                    msg = str(e)
-                    ok = False
-                    
-                if not ok:
-                    raise RuntimeError(f"Impossible to set the default value {value} to socket {str(in_socket)}.\n {msg}")
+        # ----- Index can be a string
+        valids = []
+        if type(index) is str:
+            for i, bsock in enumerate(self.bnode.inputs):
                 
-        else:
-            self.tree.btree.links.new(in_socket, out_socket, verify_limits=True)
+                if bsock.enabled:
+                    valids.append((bsock.name, i))
+                    if bsock.name.lower() == index.lower():
+                        index = i
+                        break
+
+        if type(index) is str:
+            raise RuntimeError(f"Invalid input socket name '{index}' for node {self}. Valid (names, index) are : {valids}.")
+        
+        DataSocket.plug_bsocket(self.bnode.inputs[index], *values)
+        self.tree.arrange()
+        
+    # ====================================================================================================
+    # The node is an attribute
+    
+    def as_attribute(self, owning_socket=None, domain='POINT', data_type='FLOAT'):
+        self.owning_socket = owning_socket
+        self.domain        = domain
+        self.data_type     = data_type
+        self.is_attribute  = True
+        
+    # ----------------------------------------------------------------------------------------------------
+    # List of the nodes which are connected through a GEOMETRY socket
+    
+    def connected_geometries(self):
+        
+        def conns(node):
             
-        arrange(self.tree.btree.name)
+            def app(nds, nd):
+                if nd not in nds:
+                    nds.append(nd)
+                    
+            geo_nodes = []
+            oth_nodes = []
+            for socket in node.outputs:
+                for link in socket.links:
+                    nd = link.to_node
+                    if link.to_socket.bl_idname == 'NodeSocketGeometry':
+                        app(geo_nodes, nd)
+                    else:
+                        app(oth_nodes, nd)
+                        
+            for nd in oth_nodes:
+                for n in conns(nd):
+                    app(geo_nodes, n)
+                    
+            return geo_nodes
+        
+        return conns(self)
+        
+    # ----------------------------------------------------------------------------------------------------
+    # The attribute is "solved" when it feeds capture or transfer attribute
+    
+    def attribute_is_solved(self):
+
+        solvers = ['GeometryNodeCaptureAttribute', 'GeometryNodeAttributeTransfer']
+        geos = self.connected_geometries()
+        for node in geos:
+            if node.bl_idname not in solvers:
+                return False
             
+        return True
+
     # ====================================================================================================
     # Node socket classes will be created in generated modules
     
@@ -701,27 +1016,27 @@ class NodeGroup(Node):
     # --------------------------------------------------------------------------------
     # Build the input names to avoid duplicates
     
-    def update_sock_names(self, bsockets):
+    def update_sock_names(self):
         
         if hasattr(self, 'sock_names'):
             for name in self.sock_names:
                 delattr(self, name)
     
         self.sock_names = []
-        for bsocket in bsockets:
+        for bsocket in self.bsockets:
             if bsocket.bl_idname != 'NodeSocketVirtual':
                 self.sock_names.append(bsocket.name)
                 
         def count_name(name):
             count = 0
-            for bsocket in bsockets:
+            for bsocket in self.bsockets:
                 if bsocket.name == name:
                     count += 1
             return count
                     
         def name_order(name, index):
             count = 0
-            for i, bsocket in enumerate(bsockets):
+            for i, bsocket in enumerate(self.bsockets):
                 if bsocket.name == name:
                     if i == index:
                         return count
@@ -734,7 +1049,18 @@ class NodeGroup(Node):
                 self.sock_names[index] += str(name_order(name, index))
                 
         for i, name in enumerate(self.sock_names):
-            setattr(self, name, Node.DataClass(bsockets[i]))
+            setattr(self, name, Node.DataClass(self.bsockets[i]))
+            
+    # --------------------------------------------------------------------------------
+    # Socket index
+    
+    def socket_index(self, name):
+        for i, sock_name in enumerate(self.sock_names):
+            if name == sock_name:
+                return i
+        raise RuntimeError(f"Socket name '{name}' not found in node '{self.label}'. Check homonyms. Available sockets are {self.sock_names}.")
+            
+            
     
     
 # ----------------------------------------------------------------------------------------------------
@@ -746,13 +1072,8 @@ class NodeGroupInput(NodeGroup):
         
         super().__init__('NodeGroupInput', 'Group Input')
         
-        #self.tree    = tree
-        #self.bnode   = tree.get_bnode('NodeGroupInput', 'Group Input')
-        self.sockets = self.bnode.outputs
-        
-        
-        self.update_sock_names(self.sockets)
-        
+        self.bsockets = self.bnode.outputs
+        self.update_sock_names()
         
     # --------------------------------------------------------------------------------
     # Default geometry input node
@@ -771,19 +1092,61 @@ class NodeGroupInput(NodeGroup):
             
         # ----- Look for an existing socket with the proper name
         
+        socket   = None
+        existing = False
         for bsocket in self.bnode.outputs:
             cname, subclass = DataSocket.get_class_name(bsocket, True)
             if (cname == class_name or subclass == class_name) and bsocket.name == name:
-                return Node.DataClass(bsocket)
+                socket = Node.DataClass(bsocket)
+                existing = True
+                break
+            
+        # ----- Let's create if
+            
+        if socket is None:
 
-        # ----- Let's create it
+            new_input = self.tree.btree.inputs.new(type=DataSocket.get_bl_idname(class_name), name=name)
+            self.update_sock_names()
         
-        self.tree.btree.inputs.new(type=DataSocket.get_bl_idname(class_name), name=name)
+        index  = self.socket_index(name)
+        socket = getattr(self, self.sock_names[index])
+            
+        # ----- Let's set the value
+        # Note: if the socket already exists, we don't override it value
         
-        self.update_sock_names(self.sockets)
+        if value is not None:
+            
+            if DataSocket.is_data_socket(value):
+                value.plug(socket)
+                
+            elif not existing:
+                msg = None
+                try:
+                    self.tree.btree.inputs[index].default_value = value
+                    socket.bsocket.default_value = value
+                except exception as e:
+                    msg = str(e)
+                    
+                if msg is not None:
+                    raise RuntimeError(f"Impossible to set the default value '{value}' to the group input socket '{name}'.\n {msg}")
+                    
+                # ---------------------------------------------------------------------------
+                # Set the default value to all modifiers using it
+                #
+                # The tree inputs store the default value of the sockets
+                # The values themselves are stored in properties in the object modifiers
+                # The modifier property is key by the tree input identifier
+                
+                for obj in bpy.data.objects:
+                    for mod in obj.modifiers:
+                        if isinstance(mod, bpy.types.NodesModifier):
+                            if mod.node_group == self.tree.btree:
+                                mod[new_input.identifier] = value
+                                
+                    
+        # ----- Return the newly created socket
         
-        
-        return getattr(self, self.sock_names[-1])
+        return socket
             
 # ----------------------------------------------------------------------------------------------------
 # Node NodeGroupOutput for NodeGroupOutput
@@ -794,9 +1157,8 @@ class NodeGroupOutput(NodeGroup):
         
         super().__init__('NodeGroupOutput', 'Group Output')
         
-        self.sockets = self.bnode.inputs
-        
-        self.update_sock_names(self.sockets)
+        self.bsockets = self.bnode.inputs
+        self.update_sock_names()
         
         
     # --------------------------------------------------------------------------------
@@ -809,26 +1171,161 @@ class NodeGroupOutput(NodeGroup):
     # --------------------------------------------------------------------------------
     # Create a new output socket
     
-    def new_socket(self, class_name, value=None, name=None):
+    def to_output(self, socket, name=None):
         
+        class_name, sub_class = DataSocket.get_class_name(socket, True)
+        if sub_class != '':
+            class_name = sub_class
+            
         if name is None:
             name = class_name
             
         # ----- Look for an existing socket with the proper name
         
-        for bsocket in self.bnode.inputs:
+        for index, bsocket in enumerate(self.bnode.inputs):
             cname, subclass = DataSocket.get_class_name(bsocket, True)
             if (cname == class_name or subclass == class_name) and bsocket.name == name:
-                return Node.DataClass(bsocket)
+                self.plug(index, socket)
+                return
+            
 
         # ----- Let's create it
         
-        self.tree.btree.outputs.new(type=DataSocket.get_bl_idname(class_name), name=name)
+        bsocket = self.tree.btree.outputs.new(type=DataSocket.get_bl_idname(class_name), name=name)
+        self.update_sock_names()
         
-        self.update_sock_names(self.sockets)
+        index  = self.socket_index(name)
+        self.plug(index, socket)
         
+        self.tree.arrange()    
+
         
-        return getattr(self, self.sock_names[-1])    
+# ----------------------------------------------------------------------------------------------------
+# Node NodeViewer for GeometryNodeViewer
+
+class NodeViewer(Node):
+    """Node 'Viewer' (GeometryNodeViewer)
+
+    Data type dependant sockets
+    ---------------------------
+
+        Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+
+        Input sockets     : ['value']
+
+    Input sockets
+    -------------
+        geometry        : Geometry
+        value           : data_type dependant
+
+    Parameters
+    ----------
+        data_type       : 'FLOAT' in [ 'FLOAT' 'INT' 'FLOAT_VECTOR' 'FLOAT_COLOR' 'BOOLEAN']
+
+    """
+
+    def __init__(self, geometry=None, value=None, data_type='FLOAT', label=None):
+
+        super().__init__('GeometryNodeViewer', name='Viewer', label=label)
+
+        # Parameters
+
+        self.bnode.data_type       = data_type
+
+        # Input sockets
+
+        if data_type == 'FLOAT':
+            self.plug(1, value)
+        elif data_type == 'INT':
+            self.plug(4, value)
+        elif data_type == 'FLOAT_VECTOR':
+            self.plug(2, value)
+        elif data_type == 'FLOAT_COLOR':
+            self.plug(3, value)
+        elif data_type == 'BOOLEAN':
+            self.plug(5, value)
+
+        self.plug(0, geometry)
+
+
+        self.output_sockets  = {}     
+        
+    def plug_socket(self, socket):
+        
+        if socket is None:
+            return
+        
+        class_name = DataSocket.get_class_name(socket, False)
+        
+        if class_name == 'Geometry':
+            self.plug(0, socket)
+
+        elif class_name == 'Boolean':
+            self.bnode.data_type = 'BOOLEAN'
+            self.plug(5, socket)
+            
+        elif class_name == 'Integer':
+            self.bnode.data_type = 'INT'
+            self.plug(4, socket)
+            
+        elif class_name == 'Float':
+            self.bnode.data_type = 'FLOAT'
+            self.plug(1, socket)
+            
+        elif class_name == 'Vector':
+            self.bnode.data_type = 'FLOAT_VECTOR'
+            self.plug(2, socket)
+            
+        elif class_name == 'Color':
+            self.bnode.data_type = 'FLOAT_COLOR'
+            self.plug(3, socket)
+            
+        else:
+            raise RuntimeError(f"Impossible to connect the socket {socket} to the viewer. Class {class_name} is not viewable.")
+            
+        self.tree.arrange()
+        
+# ----------------------------------------------------------------------------------------------------
+# Node NodeFrame for NodeFrame
+
+class NodeFrame(Node):
+
+    """Node 'Frame' (NodeFrame)
+
+    Parameters
+    ----------
+        label_size      : (20) int
+        shrink          : (True) bool
+
+    """
+
+    def __init__(self, label="Layout", label_size=42, color=colors.yellow(.3, .3), shrink=True):
+
+        super().__init__('NodeFrame', name='Frame', label=label)
+
+        # Parameters
+
+        self.bnode.label_size      = label_size
+        self.bnode.shrink          = shrink
+
+        self.output_sockets  = {}
+
+    @property
+    def label_size(self):
+        return self.bnode.label_size
+
+    @label_size.setter
+    def label_size(self, value):
+        self.bnode.label_size = value
+
+    @property
+    def shrink(self):
+        return self.bnode.shrink
+
+    @shrink.setter
+    def shrink(self, value):
+        self.bnode.shrink = value
+        
     
     
         

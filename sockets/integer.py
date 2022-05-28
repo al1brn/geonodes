@@ -1,5 +1,5 @@
 import geonodes as gn
-from geonodes.core import datasocket as dsock
+from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
 
 import logging
@@ -13,66 +13,66 @@ class Integer(dsock.Integer):
 
     Constructors
     ------------
-        Random               : value (Integer)
+        Random                    : value        (Integer)
+
     Methods
     -------
-        abs                  : value (Float)
-        accumulate_field     : Sockets [leading (Integer), trailing (Integer), total (Integer)]
-        add                  : value (Float)
-        arccos               : value (Float)
-        arcsin               : value (Float)
-        arctan               : value (Float)
-        arctan2              : value (Float)
-        ceil                 : value (Float)
-        compare              : value (Float)
-        cos                  : value (Float)
-        cosh                 : value (Float)
-        degrees              : value (Float)
-        divide               : value (Float)
-        exp                  : value (Float)
-        field_at_index       : value (Integer)
-        floor                : value (Float)
-        fract                : value (Float)
-        greater_than         : value (Float)
-        inverse_sqrt         : value (Float)
-        less_than            : value (Float)
-        log                  : value (Float)
-        max                  : value (Float)
-        min                  : value (Float)
-        modulo               : value (Float)
-        multiply             : value (Float)
-        multiply_add         : value (Float)
-        pingpong             : value (Float)
-        pow                  : value (Float)
-        radians              : value (Float)
-        round                : value (Float)
-        sign                 : value (Float)
-        sin                  : value (Float)
-        sinh                 : value (Float)
-        smooth_max           : value (Float)
-        smooth_min           : value (Float)
-        snap                 : value (Float)
-        sqrt                 : value (Float)
-        subtract             : value (Float)
-        switch               : output (Integer)
-        tan                  : value (Float)
-        tanh                 : value (Float)
-        trunc                : value (Float)
-        wrap                 : value (Float)
+        abs                       : value        (Float)
+        accumulate_field          : Sockets      [leading (Integer), trailing (Integer), total (Integer)]
+        add                       : value        (Float)
+        arccos                    : value        (Float)
+        arcsin                    : value        (Float)
+        arctan                    : value        (Float)
+        arctan2                   : value        (Float)
+        ceil                      : value        (Float)
+        compare                   : value        (Float)
+        cos                       : value        (Float)
+        cosh                      : value        (Float)
+        degrees                   : value        (Float)
+        divide                    : value        (Float)
+        exp                       : value        (Float)
+        field_at_index            : value        (Integer)
+        floor                     : value        (Float)
+        fract                     : value        (Float)
+        greater_than              : value        (Float)
+        inverse_sqrt              : value        (Float)
+        less_than                 : value        (Float)
+        log                       : value        (Float)
+        max                       : value        (Float)
+        min                       : value        (Float)
+        modulo                    : value        (Float)
+        multiply                  : value        (Float)
+        multiply_add              : value        (Float)
+        pingpong                  : value        (Float)
+        pow                       : value        (Float)
+        radians                   : value        (Float)
+        round                     : value        (Float)
+        sign                      : value        (Float)
+        sin                       : value        (Float)
+        sinh                      : value        (Float)
+        smooth_max                : value        (Float)
+        smooth_min                : value        (Float)
+        snap                      : value        (Float)
+        sqrt                      : value        (Float)
+        subtract                  : value        (Float)
+        switch                    : output       (Integer)
+        tan                       : value        (Float)
+        tanh                      : value        (Float)
+        trunc                     : value        (Float)
+        wrap                      : value        (Float)
     """
 
     # ----------------------------------------------------------------------------------------------------
     # Constructors
 
     @classmethod
-    def Random(cls, min=None, max=None, probability=None, ID=None, seed=None):
+    def Random(cls, min=None, max=None, ID=None, seed=None):
         """Call node NodeRandomValue (FunctionNodeRandomValue)
 
         Sockets arguments
         -----------------
             min            : Integer
             max            : Integer
-            probability    : Float
             ID             : Integer
             seed           : Integer
 
@@ -85,20 +85,19 @@ class Integer(dsock.Integer):
             Integer
         """
 
-        return cls(nodes.NodeRandomValue(min=min, max=max, probability=probability, ID=ID, seed=seed, data_type='INT').value)
+        return cls(nodes.NodeRandomValue(min=min, max=max, ID=ID, seed=seed, data_type='INT').value)
 
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def add(self, value1=None, value2=None):
+    def add(self, value1=None):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
             value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -109,16 +108,15 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='ADD').value
+        return nodes.NodeMath(value0=self, value1=value1, operation='ADD').value
 
-    def subtract(self, value1=None, value2=None):
+    def subtract(self, value1=None):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
             value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -129,16 +127,15 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='SUBTRACT').value
+        return nodes.NodeMath(value0=self, value1=value1, operation='SUBTRACT').value
 
-    def multiply(self, value1=None, value2=None):
+    def multiply(self, value1=None):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
             value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -149,16 +146,15 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='MULTIPLY').value
+        return nodes.NodeMath(value0=self, value1=value1, operation='MULTIPLY').value
 
-    def divide(self, value1=None, value2=None):
+    def divide(self, value1=None):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
             value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -169,7 +165,7 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='DIVIDE').value
+        return nodes.NodeMath(value0=self, value1=value1, operation='DIVIDE').value
 
     def multiply_add(self, value1=None, value2=None):
         """Call node NodeMath (ShaderNodeMath)
@@ -191,14 +187,13 @@ class Integer(dsock.Integer):
 
         return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD').value
 
-    def pow(self, value1=None, value2=None):
+    def pow(self, value1=None):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
             value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -209,16 +204,15 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='POWER').value
+        return nodes.NodeMath(value0=self, value1=value1, operation='POWER').value
 
-    def log(self, value1=None, value2=None):
+    def log(self, value1=None):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
             value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -229,16 +223,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='LOGARITHM').value
+        return nodes.NodeMath(value0=self, value1=value1, operation='LOGARITHM').value
 
-    def sqrt(self, value1=None, value2=None):
+    def sqrt(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -249,16 +241,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='SQRT').value
+        return nodes.NodeMath(value0=self, operation='SQRT').value
 
-    def inverse_sqrt(self, value1=None, value2=None):
+    def inverse_sqrt(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -269,16 +259,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='INVERSE_SQRT').value
+        return nodes.NodeMath(value0=self, operation='INVERSE_SQRT').value
 
-    def abs(self, value1=None, value2=None):
+    def abs(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -289,16 +277,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='ABSOLUTE').value
+        return nodes.NodeMath(value0=self, operation='ABSOLUTE').value
 
-    def exp(self, value1=None, value2=None):
+    def exp(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -309,16 +295,15 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='EXPONENT').value
+        return nodes.NodeMath(value0=self, operation='EXPONENT').value
 
-    def min(self, value1=None, value2=None):
+    def min(self, value1=None):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
             value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -329,16 +314,15 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='MINIMUM').value
+        return nodes.NodeMath(value0=self, value1=value1, operation='MINIMUM').value
 
-    def max(self, value1=None, value2=None):
+    def max(self, value1=None):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
             value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -349,16 +333,15 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='MAXIMUM').value
+        return nodes.NodeMath(value0=self, value1=value1, operation='MAXIMUM').value
 
-    def less_than(self, value1=None, value2=None):
+    def less_than(self, value1=None):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
             value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -369,16 +352,15 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='LESS_THAN').value
+        return nodes.NodeMath(value0=self, value1=value1, operation='LESS_THAN').value
 
-    def greater_than(self, value1=None, value2=None):
+    def greater_than(self, value1=None):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
             value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -389,16 +371,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='GREATER_THAN').value
+        return nodes.NodeMath(value0=self, value1=value1, operation='GREATER_THAN').value
 
-    def sign(self, value1=None, value2=None):
+    def sign(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -409,7 +389,7 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='SIGN').value
+        return nodes.NodeMath(value0=self, operation='SIGN').value
 
     def compare(self, value1=None, value2=None):
         """Call node NodeMath (ShaderNodeMath)
@@ -471,14 +451,12 @@ class Integer(dsock.Integer):
 
         return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX').value
 
-    def round(self, value1=None, value2=None):
+    def round(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -489,16 +467,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='ROUND').value
+        return nodes.NodeMath(value0=self, operation='ROUND').value
 
-    def floor(self, value1=None, value2=None):
+    def floor(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -509,16 +485,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='FLOOR').value
+        return nodes.NodeMath(value0=self, operation='FLOOR').value
 
-    def ceil(self, value1=None, value2=None):
+    def ceil(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -529,16 +503,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='CEIL').value
+        return nodes.NodeMath(value0=self, operation='CEIL').value
 
-    def trunc(self, value1=None, value2=None):
+    def trunc(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -549,16 +521,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='TRUNC').value
+        return nodes.NodeMath(value0=self, operation='TRUNC').value
 
-    def fract(self, value1=None, value2=None):
+    def fract(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -569,16 +539,15 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='FRACT').value
+        return nodes.NodeMath(value0=self, operation='FRACT').value
 
-    def modulo(self, value1=None, value2=None):
+    def modulo(self, value1=None):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
             value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -589,7 +558,7 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='MODULO').value
+        return nodes.NodeMath(value0=self, value1=value1, operation='MODULO').value
 
     def wrap(self, value1=None, value2=None):
         """Call node NodeMath (ShaderNodeMath)
@@ -611,14 +580,13 @@ class Integer(dsock.Integer):
 
         return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='WRAP').value
 
-    def snap(self, value1=None, value2=None):
+    def snap(self, value1=None):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
             value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -629,16 +597,15 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='SNAP').value
+        return nodes.NodeMath(value0=self, value1=value1, operation='SNAP').value
 
-    def pingpong(self, value1=None, value2=None):
+    def pingpong(self, value1=None):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
             value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -649,16 +616,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='PINGPONG').value
+        return nodes.NodeMath(value0=self, value1=value1, operation='PINGPONG').value
 
-    def sin(self, value1=None, value2=None):
+    def sin(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -669,16 +634,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='SINE').value
+        return nodes.NodeMath(value0=self, operation='SINE').value
 
-    def cos(self, value1=None, value2=None):
+    def cos(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -689,16 +652,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='COSINE').value
+        return nodes.NodeMath(value0=self, operation='COSINE').value
 
-    def tan(self, value1=None, value2=None):
+    def tan(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -709,16 +670,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='TANGENT').value
+        return nodes.NodeMath(value0=self, operation='TANGENT').value
 
-    def arcsin(self, value1=None, value2=None):
+    def arcsin(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -729,16 +688,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='ARCSINE').value
+        return nodes.NodeMath(value0=self, operation='ARCSINE').value
 
-    def arccos(self, value1=None, value2=None):
+    def arccos(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -749,16 +706,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='ARCCOSINE').value
+        return nodes.NodeMath(value0=self, operation='ARCCOSINE').value
 
-    def arctan(self, value1=None, value2=None):
+    def arctan(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -769,16 +724,15 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='ARCTANGENT').value
+        return nodes.NodeMath(value0=self, operation='ARCTANGENT').value
 
-    def arctan2(self, value1=None, value2=None):
+    def arctan2(self, value1=None):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
             value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -789,16 +743,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='ARCTAN2').value
+        return nodes.NodeMath(value0=self, value1=value1, operation='ARCTAN2').value
 
-    def sinh(self, value1=None, value2=None):
+    def sinh(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -809,16 +761,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='SINH').value
+        return nodes.NodeMath(value0=self, operation='SINH').value
 
-    def cosh(self, value1=None, value2=None):
+    def cosh(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -829,16 +779,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='COSH').value
+        return nodes.NodeMath(value0=self, operation='COSH').value
 
-    def tanh(self, value1=None, value2=None):
+    def tanh(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -849,16 +797,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='TANH').value
+        return nodes.NodeMath(value0=self, operation='TANH').value
 
-    def radians(self, value1=None, value2=None):
+    def radians(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -869,16 +815,14 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='RADIANS').value
+        return nodes.NodeMath(value0=self, operation='RADIANS').value
 
-    def degrees(self, value1=None, value2=None):
+    def degrees(self):
         """Call node NodeMath (ShaderNodeMath)
 
         Sockets arguments
         -----------------
             value0         : Float (self)
-            value1         : Float
-            value2         : Float
 
         Fixed parameters
         ----------------
@@ -889,16 +833,15 @@ class Integer(dsock.Integer):
             Float
         """
 
-        return nodes.NodeMath(value0=self, value1=value1, value2=value2, operation='DEGREES').value
+        return nodes.NodeMath(value0=self, operation='DEGREES').value
 
-    def switch(self, switch0=None, switch1=None, true=None):
+    def switch(self, switch0=None, true=None):
         """Call node NodeSwitch (GeometryNodeSwitch)
 
         Sockets arguments
         -----------------
             false          : Integer (self)
             switch0        : Boolean
-            switch1        : Boolean
             true           : Integer
 
         Fixed parameters
@@ -910,7 +853,7 @@ class Integer(dsock.Integer):
             Integer
         """
 
-        return nodes.NodeSwitch(false=self, switch0=switch0, switch1=switch1, true=true, input_type='INT').output
+        return nodes.NodeSwitch(false=self, switch0=switch0, true=true, input_type='INT').output
 
     def accumulate_field(self, group_index=None, domain='POINT'):
         """Call node NodeAccumulateField (GeometryNodeAccumulateField)

@@ -1,5 +1,5 @@
 import geonodes as gn
-from geonodes.core import datasocket as dsock
+from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
 
 import logging
@@ -13,7 +13,7 @@ class Volume(gn.Mesh):
 
     Methods
     -------
-        to_mesh              : mesh (Geometry)
+        to_mesh                   : mesh         (Geometry)
     """
 
     # ----------------------------------------------------------------------------------------------------
@@ -33,6 +33,7 @@ class Volume(gn.Mesh):
         Parameters arguments
         --------------------
             resolution_mode: 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
+
         Returns
         -------
             Geometry

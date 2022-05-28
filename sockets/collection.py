@@ -1,5 +1,5 @@
 import geonodes as gn
-from geonodes.core import datasocket as dsock
+from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
 
 import logging
@@ -13,20 +13,19 @@ class Collection(dsock.Collection):
 
     Methods
     -------
-        info                 : geometry (Geometry)
-        switch               : output (Collection)
+        info                      : geometry     (Geometry)
+        switch                    : output       (Collection)
     """
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def switch(self, switch0=None, switch1=None, true=None):
+    def switch(self, switch1=None, true=None):
         """Call node NodeSwitch (GeometryNodeSwitch)
 
         Sockets arguments
         -----------------
             false          : Collection (self)
-            switch0        : Boolean
             switch1        : Boolean
             true           : Collection
 
@@ -39,7 +38,7 @@ class Collection(dsock.Collection):
             Collection
         """
 
-        return nodes.NodeSwitch(false=self, switch0=switch0, switch1=switch1, true=true, input_type='COLLECTION').output
+        return nodes.NodeSwitch(false=self, switch1=switch1, true=true, input_type='COLLECTION').output
 
     def info(self, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
         """Call node NodeCollectionInfo (GeometryNodeCollectionInfo)
@@ -53,6 +52,7 @@ class Collection(dsock.Collection):
         Parameters arguments
         --------------------
             transform_space: 'ORIGINAL' in [ORIGINAL, RELATIVE]
+
         Returns
         -------
             Geometry

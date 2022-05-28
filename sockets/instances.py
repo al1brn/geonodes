@@ -1,5 +1,5 @@
 import geonodes as gn
-from geonodes.core import datasocket as dsock
+from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
 
 import logging
@@ -11,15 +11,35 @@ logger = logging.Logger('geonodes')
 class Instances(gn.Mesh):
     """ Data socket Instances
 
+    Attributes
+    ----------
+        instance_index            : Integer   = capture_index(domain='INSTANCE')
+
     Methods
     -------
-        to_points            : points (Geometry)
+        to_points                 : points       (Geometry)
+
     Stacked methods
     ---------------
-        rotate               : Instances
-        scale                : Instances
-        translate            : Instances
+        rotate                    : Instances
+        scale                     : Instances
+        translate                 : Instances
     """
+
+    # ----------------------------------------------------------------------------------------------------
+    # Attributes
+
+    @property
+    def instance_index(self):
+        """Call node NodeIndex (GeometryNodeInputIndex)
+
+        Returns
+        -------
+            Integer
+        """
+
+        return self.capture_index(domain='INSTANCE')
+
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
@@ -33,6 +53,7 @@ class Instances(gn.Mesh):
             selection      : Boolean
             position       : Vector
             radius         : Float
+
         Returns
         -------
             Geometry
@@ -54,6 +75,7 @@ class Instances(gn.Mesh):
             rotation       : Vector
             pivot_point    : Vector
             local_space    : Boolean
+
         Returns
         -------
             self
@@ -72,6 +94,7 @@ class Instances(gn.Mesh):
             scale          : Vector
             center         : Vector
             local_space    : Boolean
+
         Returns
         -------
             self
@@ -89,6 +112,7 @@ class Instances(gn.Mesh):
             selection      : Boolean
             translation    : Vector
             local_space    : Boolean
+
         Returns
         -------
             self

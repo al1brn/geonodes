@@ -1,5 +1,5 @@
 import geonodes as gn
-from geonodes.core import datasocket as dsock
+from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
 
 import logging
@@ -13,12 +13,13 @@ class Points(gn.Mesh):
 
     Methods
     -------
-        instance_on_points   : instances (Geometry)
-        to_vertices          : mesh (Geometry)
-        to_volume            : volume (Geometry)
+        instance_on_points        : instances    (Geometry)
+        to_vertices               : mesh         (Geometry)
+        to_volume                 : volume       (Geometry)
+
     Stacked methods
     ---------------
-        set_radius           : Points
+        set_radius                : Points
     """
 
     # ----------------------------------------------------------------------------------------------------
@@ -36,6 +37,7 @@ class Points(gn.Mesh):
             instance_index : Integer
             rotation       : Vector
             scale          : Vector
+
         Returns
         -------
             Geometry
@@ -50,6 +52,7 @@ class Points(gn.Mesh):
         -----------------
             points         : Geometry
             selection      : Boolean
+
         Returns
         -------
             Geometry
@@ -71,6 +74,7 @@ class Points(gn.Mesh):
         Parameters arguments
         --------------------
             resolution_mode: 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
+
         Returns
         -------
             Geometry
@@ -90,6 +94,7 @@ class Points(gn.Mesh):
             points         : Geometry
             selection      : Boolean
             radius         : Float
+
         Returns
         -------
             self

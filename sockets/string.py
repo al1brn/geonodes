@@ -1,5 +1,5 @@
 import geonodes as gn
-from geonodes.core import datasocket as dsock
+from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
 
 import logging
@@ -13,17 +13,22 @@ class String(dsock.String):
 
     Properties
     ----------
-        length               : length (Integer)
+        length                    : length       (Integer)
+
     Methods
     -------
-        join                 : string (String)
-        slice                : string (String)
-        switch               : output (String)
-        to_curves            : Sockets [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
+        join                      : string       (String)
+        slice                     : string       (String)
+        switch                    : output       (String)
+        to_curves                 : Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
+
     Stacked methods
     ---------------
-        replace              : String
+        replace                   : String
     """
+
+    def reset_properties(self):
+        self.length_ = None
 
     # ----------------------------------------------------------------------------------------------------
     # Properties
@@ -35,13 +40,14 @@ class String(dsock.String):
         Sockets arguments
         -----------------
             string         : String (self)
+
         Returns
         -------
             Integer
         """
 
         if self.length_ is None:
-            self.length_ = nodes.NodeStringLength(string=self).length
+            self.length_ = nodes.NodeStringLength(string=self, label=f"{self.node_chain_label}.length").length
         return self.length_
 
 
@@ -55,6 +61,7 @@ class String(dsock.String):
         -----------------
             strings        : *String (self)
             delimiter      : String
+
         Returns
         -------
             String
@@ -62,14 +69,13 @@ class String(dsock.String):
 
         return nodes.NodeJoinStrings(self, *strings, delimiter=delimiter).string
 
-    def switch(self, switch0=None, switch1=None, true=None):
+    def switch(self, switch0=None, true=None):
         """Call node NodeSwitch (GeometryNodeSwitch)
 
         Sockets arguments
         -----------------
             false          : String (self)
             switch0        : Boolean
-            switch1        : Boolean
             true           : String
 
         Fixed parameters
@@ -81,7 +87,7 @@ class String(dsock.String):
             String
         """
 
-        return nodes.NodeSwitch(false=self, switch0=switch0, switch1=switch1, true=true, input_type='STRING').output
+        return nodes.NodeSwitch(false=self, switch0=switch0, true=true, input_type='STRING').output
 
     def slice(self, position=None, length=None):
         """Call node NodeSliceString (FunctionNodeSliceString)
@@ -91,6 +97,7 @@ class String(dsock.String):
             string         : String (self)
             position       : Integer
             length         : Integer
+
         Returns
         -------
             String
@@ -117,6 +124,7 @@ class String(dsock.String):
             align_y        : 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
             overflow       : 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
             pivot_mode     : 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
+
         Returns
         -------
             Sockets [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
@@ -136,6 +144,7 @@ class String(dsock.String):
             string         : String (self)
             find           : String
             replace        : String
+
         Returns
         -------
             self

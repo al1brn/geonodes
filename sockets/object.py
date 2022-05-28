@@ -1,5 +1,5 @@
 import geonodes as gn
-from geonodes.core import datasocket as dsock
+from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
 
 import logging
@@ -13,11 +13,15 @@ class Object(dsock.Object):
 
     Properties
     ----------
-        info                 : Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+        info                      : Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+
     Methods
     -------
-        switch               : output (Object)
+        switch                    : output       (Object)
     """
+
+    def reset_properties(self):
+        self.info_ = None
 
     # ----------------------------------------------------------------------------------------------------
     # Properties
@@ -34,13 +38,14 @@ class Object(dsock.Object):
         Parameters arguments
         --------------------
             transform_space: 'ORIGINAL' in [ORIGINAL, RELATIVE]
+
         Returns
         -------
             Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
         """
 
         if self.info_ is None:
-            self.info_ = nodes.NodeObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space)
+            self.info_ = nodes.NodeObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
         return self.info_
 
 
@@ -64,13 +69,12 @@ class Object(dsock.Object):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def switch(self, switch0=None, switch1=None, true=None):
+    def switch(self, switch1=None, true=None):
         """Call node NodeSwitch (GeometryNodeSwitch)
 
         Sockets arguments
         -----------------
             false          : Object (self)
-            switch0        : Boolean
             switch1        : Boolean
             true           : Object
 
@@ -83,6 +87,6 @@ class Object(dsock.Object):
             Object
         """
 
-        return nodes.NodeSwitch(false=self, switch0=switch0, switch1=switch1, true=true, input_type='OBJECT').output
+        return nodes.NodeSwitch(false=self, switch1=switch1, true=true, input_type='OBJECT').output
 
 

@@ -1,5 +1,5 @@
 import geonodes as gn
-from geonodes.core import datasocket as dsock
+from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
 
 import logging
@@ -13,20 +13,21 @@ class Boolean(dsock.Boolean):
 
     Constructors
     ------------
-        Random               : value (Boolean)
+        Random                    : value        (Boolean)
+
     Methods
     -------
-        b_and                : boolean (Boolean)
-        b_not                : boolean (Boolean)
-        b_or                 : boolean (Boolean)
-        field_at_index       : value (Boolean)
-        imply                : boolean (Boolean)
-        nand                 : boolean (Boolean)
-        nimply               : boolean (Boolean)
-        nor                  : boolean (Boolean)
-        switch               : output (Boolean)
-        xnor                 : boolean (Boolean)
-        xor                  : boolean (Boolean)
+        b_and                     : boolean      (Boolean)
+        b_not                     : boolean      (Boolean)
+        b_or                      : boolean      (Boolean)
+        field_at_index            : value        (Boolean)
+        imply                     : boolean      (Boolean)
+        nand                      : boolean      (Boolean)
+        nimply                    : boolean      (Boolean)
+        nor                       : boolean      (Boolean)
+        switch                    : output       (Boolean)
+        xnor                      : boolean      (Boolean)
+        xor                       : boolean      (Boolean)
     """
 
     # ----------------------------------------------------------------------------------------------------
@@ -95,13 +96,12 @@ class Boolean(dsock.Boolean):
 
         return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='OR').boolean
 
-    def b_not(self, boolean1=None):
+    def b_not(self):
         """Call node NodeBooleanMath (FunctionNodeBooleanMath)
 
         Sockets arguments
         -----------------
             boolean0       : Boolean (self)
-            boolean1       : Boolean
 
         Fixed parameters
         ----------------
@@ -112,7 +112,7 @@ class Boolean(dsock.Boolean):
             Boolean
         """
 
-        return nodes.NodeBooleanMath(boolean0=self, boolean1=boolean1, operation='NOT').boolean
+        return nodes.NodeBooleanMath(boolean0=self, operation='NOT').boolean
 
     def nand(self, boolean1=None):
         """Call node NodeBooleanMath (FunctionNodeBooleanMath)
@@ -251,14 +251,13 @@ class Boolean(dsock.Boolean):
 
         return nodes.NodeFieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain).value
 
-    def switch(self, switch0=None, switch1=None, true=None):
+    def switch(self, switch0=None, true=None):
         """Call node NodeSwitch (GeometryNodeSwitch)
 
         Sockets arguments
         -----------------
             false          : Boolean (self)
             switch0        : Boolean
-            switch1        : Boolean
             true           : Boolean
 
         Fixed parameters
@@ -270,6 +269,6 @@ class Boolean(dsock.Boolean):
             Boolean
         """
 
-        return nodes.NodeSwitch(false=self, switch0=switch0, switch1=switch1, true=true, input_type='BOOLEAN').output
+        return nodes.NodeSwitch(false=self, switch0=switch0, true=true, input_type='BOOLEAN').output
 
 

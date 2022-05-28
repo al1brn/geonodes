@@ -1,5 +1,5 @@
 import geonodes as gn
-from geonodes.core import datasocket as dsock
+from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
 
 import logging
@@ -13,19 +13,20 @@ class Texture(dsock.Texture):
 
     Static methods
     --------------
-        Brick                : Sockets [color (Color), fac (Float)]
-        Checker              : Sockets [color (Color), fac (Float)]
-        Gradient             : Sockets [color (Color), fac (Float)]
-        Image                : Sockets [color (Color), alpha (Float)]
-        Magic                : Sockets [color (Color), fac (Float)]
-        Musgrave             : fac (Float)
-        Noise                : Sockets [fac (Float), color (Color)]
-        Voronoi              : Sockets [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
-        Wave                 : Sockets [color (Color), fac (Float)]
-        WhiteNoise           : Sockets [value (Float), color (Color)]
+        Brick                     : Sockets      [color (Color), fac (Float)]
+        Checker                   : Sockets      [color (Color), fac (Float)]
+        Gradient                  : Sockets      [color (Color), fac (Float)]
+        Image                     : Sockets      [color (Color), alpha (Float)]
+        Magic                     : Sockets      [color (Color), fac (Float)]
+        Musgrave                  : fac          (Float)
+        Noise                     : Sockets      [fac (Float), color (Color)]
+        Voronoi                   : Sockets      [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
+        Wave                      : Sockets      [color (Color), fac (Float)]
+        WhiteNoise                : Sockets      [value (Float), color (Color)]
+
     Methods
     -------
-        switch               : output (Texture)
+        switch                    : output       (Texture)
     """
 
     # ----------------------------------------------------------------------------------------------------
@@ -54,6 +55,7 @@ class Texture(dsock.Texture):
             offset_frequency: 2
             squash         : 1.0
             squash_frequency: 2
+
         Returns
         -------
             Sockets [color (Color), fac (Float)]
@@ -71,6 +73,7 @@ class Texture(dsock.Texture):
             color1         : Color
             color2         : Color
             scale          : Float
+
         Returns
         -------
             Sockets [color (Color), fac (Float)]
@@ -89,6 +92,7 @@ class Texture(dsock.Texture):
         Parameters arguments
         --------------------
             gradient_type  : 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
+
         Returns
         -------
             Sockets [color (Color), fac (Float)]
@@ -109,6 +113,7 @@ class Texture(dsock.Texture):
         Parameters arguments
         --------------------
             turbulence_depth: 2
+
         Returns
         -------
             Sockets [color (Color), fac (Float)]
@@ -135,6 +140,7 @@ class Texture(dsock.Texture):
         --------------------
             musgrave_dimensions: '3D' in [1D, 2D, 3D, 4D]
             musgrave_type  : 'FBM' in [MULTIFRACTAL, RIDGED_MULTIFRACTAL, HYBRID_MULTIFRACTAL, FBM, HETERO_TERRAIN]
+
         Returns
         -------
             Float
@@ -158,6 +164,7 @@ class Texture(dsock.Texture):
         Parameters arguments
         --------------------
             noise_dimensions: '3D' in [1D, 2D, 3D, 4D]
+
         Returns
         -------
             Sockets [fac (Float), color (Color)]
@@ -183,6 +190,7 @@ class Texture(dsock.Texture):
             distance       : 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
             feature        : 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
             voronoi_dimensions: '3D' in [1D, 2D, 3D, 4D]
+
         Returns
         -------
             Sockets [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
@@ -210,6 +218,7 @@ class Texture(dsock.Texture):
             rings_direction: 'X' in [X, Y, Z, SPHERICAL]
             wave_profile   : 'SIN' in [SIN, SAW, TRI]
             wave_type      : 'BANDS' in [BANDS, RINGS]
+
         Returns
         -------
             Sockets [color (Color), fac (Float)]
@@ -229,6 +238,7 @@ class Texture(dsock.Texture):
         Parameters arguments
         --------------------
             noise_dimensions: '3D' in [1D, 2D, 3D, 4D]
+
         Returns
         -------
             Sockets [value (Float), color (Color)]
@@ -250,6 +260,7 @@ class Texture(dsock.Texture):
         --------------------
             extension      : 'REPEAT' in [REPEAT, EXTEND, CLIP]
             interpolation  : 'Linear' in [Linear, Closest, Cubic]
+
         Returns
         -------
             Sockets [color (Color), alpha (Float)]
@@ -261,13 +272,12 @@ class Texture(dsock.Texture):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def switch(self, switch0=None, switch1=None, true=None):
+    def switch(self, switch1=None, true=None):
         """Call node NodeSwitch (GeometryNodeSwitch)
 
         Sockets arguments
         -----------------
             false          : Texture (self)
-            switch0        : Boolean
             switch1        : Boolean
             true           : Texture
 
@@ -280,6 +290,6 @@ class Texture(dsock.Texture):
             Texture
         """
 
-        return nodes.NodeSwitch(false=self, switch0=switch0, switch1=switch1, true=true, input_type='TEXTURE').output
+        return nodes.NodeSwitch(false=self, switch1=switch1, true=true, input_type='TEXTURE').output
 
 
