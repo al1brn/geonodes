@@ -14,7 +14,7 @@ class Geometry(dsock.Geometry):
     Properties
     ----------
         bound_box                 : Sockets      [bounding_box (Geometry), min (Vector), max (Vector)]
-        components                : Sockets      [mesh (Geometry), point_cloud (Geometry), curve (Geometry), volume (Geometry), instances (Geometry)]
+        components                : Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
 
     Attribute captures
     ------------------
@@ -48,15 +48,12 @@ class Geometry(dsock.Geometry):
     -------
         attribute_domain_size     : Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
         attribute_remove          : geometry     (Geometry)
-        attribute_statistic       : Sockets      [mean (data_type dependant), median (data_type dependant), sum (data_type dependant), min (data_type dependant), max (data_type dependant), range (data_type dependant), standard_deviation (data_type dependant), variance (data_type dependant)]
-        capture_attribute         : Sockets      [geometry (Geometry), attribute (data_type dependant)]
         components                : Sockets      [selection (Geometry), inverted (Geometry)]
         convex_hull               : convex_hull  (Geometry)
         join                      : geometry     (Geometry)
         proximity                 : Sockets      [position (Vector), distance (Float)]
-        raycast                   : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (data_type dependant)]
         switch                    : output       (Geometry)
-        to_instance               : instances    (Geometry)
+        to_instance               : instances    (Instances)
         transfer_boolean          : attribute    (Boolean)
         transfer_color            : attribute    (Color)
         transfer_float            : attribute    (Float)
@@ -87,7 +84,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def bound_box(self):
-        """Call node NodeBoundingBox (GeometryNodeBoundBox)
+        """Call node BoundingBox (GeometryNodeBoundBox)
 
         Sockets arguments
         -----------------
@@ -99,7 +96,7 @@ class Geometry(dsock.Geometry):
         """
 
         if self.bound_box_ is None:
-            self.bound_box_ = nodes.NodeBoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_box")
+            self.bound_box_ = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_box")
         return self.bound_box_
 
 
@@ -117,7 +114,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def components(self):
-        """Call node NodeSeparateComponents (GeometryNodeSeparateComponents)
+        """Call node SeparateComponents (GeometryNodeSeparateComponents)
 
         Sockets arguments
         -----------------
@@ -125,11 +122,11 @@ class Geometry(dsock.Geometry):
 
         Returns
         -------
-            Sockets [mesh (Geometry), point_cloud (Geometry), curve (Geometry), volume (Geometry), instances (Geometry)]
+            Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
         """
 
         if self.components_ is None:
-            self.components_ = nodes.NodeSeparateComponents(geometry=self, label=f"{self.node_chain_label}.components")
+            self.components_ = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.components")
         return self.components_
 
 
@@ -158,7 +155,7 @@ class Geometry(dsock.Geometry):
     # Attribute captures
 
     def capture_normal(self, domain='POINT'):
-        """Call node NodeNormal (GeometryNodeInputNormal)
+        """Call node Normal (GeometryNodeInputNormal)
 
         Returns
         -------
@@ -167,13 +164,13 @@ class Geometry(dsock.Geometry):
 
         attr_name = 'capture_normal_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.NodeNormal()
+            node = nodes.Normal()
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).normal
 
     def capture_tangent(self, domain='POINT'):
-        """Call node NodeCurveTangent (GeometryNodeInputTangent)
+        """Call node CurveTangent (GeometryNodeInputTangent)
 
         Returns
         -------
@@ -182,13 +179,13 @@ class Geometry(dsock.Geometry):
 
         attr_name = 'capture_tangent_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.NodeCurveTangent()
+            node = nodes.CurveTangent()
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).tangent
 
     def capture_ID(self, domain='POINT'):
-        """Call node NodeID (GeometryNodeInputID)
+        """Call node ID (GeometryNodeInputID)
 
         Returns
         -------
@@ -197,13 +194,13 @@ class Geometry(dsock.Geometry):
 
         attr_name = 'capture_ID_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.NodeID()
+            node = nodes.ID()
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).ID
 
     def capture_index(self, domain='POINT'):
-        """Call node NodeIndex (GeometryNodeInputIndex)
+        """Call node Index (GeometryNodeInputIndex)
 
         Returns
         -------
@@ -212,13 +209,13 @@ class Geometry(dsock.Geometry):
 
         attr_name = 'capture_index_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.NodeIndex()
+            node = nodes.Index()
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).index
 
     def capture_position(self, domain='POINT'):
-        """Call node NodePosition (GeometryNodeInputPosition)
+        """Call node Position (GeometryNodeInputPosition)
 
         Returns
         -------
@@ -227,13 +224,13 @@ class Geometry(dsock.Geometry):
 
         attr_name = 'capture_position_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.NodePosition()
+            node = nodes.Position()
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).position
 
     def capture_is_viewport(self, domain='POINT'):
-        """Call node NodeIsViewport (GeometryNodeIsViewport)
+        """Call node IsViewport (GeometryNodeIsViewport)
 
         Returns
         -------
@@ -242,7 +239,7 @@ class Geometry(dsock.Geometry):
 
         attr_name = 'capture_is_viewport_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.NodeIsViewport()
+            node = nodes.IsViewport()
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).is_viewport
@@ -253,7 +250,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def point_normal(self):
-        """Call node NodeNormal (GeometryNodeInputNormal)
+        """Call node Normal (GeometryNodeInputNormal)
 
         Returns
         -------
@@ -264,7 +261,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def edge_normal(self):
-        """Call node NodeNormal (GeometryNodeInputNormal)
+        """Call node Normal (GeometryNodeInputNormal)
 
         Returns
         -------
@@ -275,7 +272,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def face_normal(self):
-        """Call node NodeNormal (GeometryNodeInputNormal)
+        """Call node Normal (GeometryNodeInputNormal)
 
         Returns
         -------
@@ -286,7 +283,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def corner_normal(self):
-        """Call node NodeNormal (GeometryNodeInputNormal)
+        """Call node Normal (GeometryNodeInputNormal)
 
         Returns
         -------
@@ -297,7 +294,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def curve_normal(self):
-        """Call node NodeNormal (GeometryNodeInputNormal)
+        """Call node Normal (GeometryNodeInputNormal)
 
         Returns
         -------
@@ -308,7 +305,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def instance_normal(self):
-        """Call node NodeNormal (GeometryNodeInputNormal)
+        """Call node Normal (GeometryNodeInputNormal)
 
         Returns
         -------
@@ -319,7 +316,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def point_tangent(self):
-        """Call node NodeCurveTangent (GeometryNodeInputTangent)
+        """Call node CurveTangent (GeometryNodeInputTangent)
 
         Returns
         -------
@@ -330,7 +327,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def edge_tangent(self):
-        """Call node NodeCurveTangent (GeometryNodeInputTangent)
+        """Call node CurveTangent (GeometryNodeInputTangent)
 
         Returns
         -------
@@ -341,7 +338,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def face_tangent(self):
-        """Call node NodeCurveTangent (GeometryNodeInputTangent)
+        """Call node CurveTangent (GeometryNodeInputTangent)
 
         Returns
         -------
@@ -352,7 +349,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def corner_tangent(self):
-        """Call node NodeCurveTangent (GeometryNodeInputTangent)
+        """Call node CurveTangent (GeometryNodeInputTangent)
 
         Returns
         -------
@@ -363,7 +360,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def curve_tangent(self):
-        """Call node NodeCurveTangent (GeometryNodeInputTangent)
+        """Call node CurveTangent (GeometryNodeInputTangent)
 
         Returns
         -------
@@ -374,7 +371,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def instance_tangent(self):
-        """Call node NodeCurveTangent (GeometryNodeInputTangent)
+        """Call node CurveTangent (GeometryNodeInputTangent)
 
         Returns
         -------
@@ -385,7 +382,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def point_ID(self):
-        """Call node NodeID (GeometryNodeInputID)
+        """Call node ID (GeometryNodeInputID)
 
         Returns
         -------
@@ -396,7 +393,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def point_index(self):
-        """Call node NodeIndex (GeometryNodeInputIndex)
+        """Call node Index (GeometryNodeInputIndex)
 
         Returns
         -------
@@ -407,7 +404,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def position(self):
-        """Call node NodePosition (GeometryNodeInputPosition)
+        """Call node Position (GeometryNodeInputPosition)
 
         Returns
         -------
@@ -418,7 +415,7 @@ class Geometry(dsock.Geometry):
 
     @property
     def point_is_viewport(self):
-        """Call node NodeIsViewport (GeometryNodeIsViewport)
+        """Call node IsViewport (GeometryNodeIsViewport)
 
         Returns
         -------
@@ -432,7 +429,7 @@ class Geometry(dsock.Geometry):
     # Methods
 
     def switch(self, switch1=None, true=None):
-        """Call node NodeSwitch (GeometryNodeSwitch)
+        """Call node Switch (GeometryNodeSwitch)
 
         Sockets arguments
         -----------------
@@ -449,10 +446,10 @@ class Geometry(dsock.Geometry):
             Geometry
         """
 
-        return nodes.NodeSwitch(false=self, switch1=switch1, true=true, input_type='GEOMETRY').output
+        return nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY').output
 
     def transfer_boolean(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """Call node NodeTransferAttribute (GeometryNodeAttributeTransfer)
+        """Call node TransferAttribute (GeometryNodeAttributeTransfer)
 
         Sockets arguments
         -----------------
@@ -475,10 +472,10 @@ class Geometry(dsock.Geometry):
             Boolean
         """
 
-        return nodes.NodeTransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping).attribute
+        return nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping).attribute
 
     def transfer_integer(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """Call node NodeTransferAttribute (GeometryNodeAttributeTransfer)
+        """Call node TransferAttribute (GeometryNodeAttributeTransfer)
 
         Sockets arguments
         -----------------
@@ -501,10 +498,10 @@ class Geometry(dsock.Geometry):
             Integer
         """
 
-        return nodes.NodeTransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping).attribute
+        return nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping).attribute
 
     def transfer_float(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """Call node NodeTransferAttribute (GeometryNodeAttributeTransfer)
+        """Call node TransferAttribute (GeometryNodeAttributeTransfer)
 
         Sockets arguments
         -----------------
@@ -527,10 +524,10 @@ class Geometry(dsock.Geometry):
             Float
         """
 
-        return nodes.NodeTransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping).attribute
+        return nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping).attribute
 
     def transfer_vector(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """Call node NodeTransferAttribute (GeometryNodeAttributeTransfer)
+        """Call node TransferAttribute (GeometryNodeAttributeTransfer)
 
         Sockets arguments
         -----------------
@@ -553,10 +550,10 @@ class Geometry(dsock.Geometry):
             Vector
         """
 
-        return nodes.NodeTransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping).attribute
+        return nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping).attribute
 
     def transfer_color(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """Call node NodeTransferAttribute (GeometryNodeAttributeTransfer)
+        """Call node TransferAttribute (GeometryNodeAttributeTransfer)
 
         Sockets arguments
         -----------------
@@ -579,10 +576,10 @@ class Geometry(dsock.Geometry):
             Color
         """
 
-        return nodes.NodeTransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping).attribute
+        return nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping).attribute
 
     def attribute_domain_size(self, component='MESH'):
-        """Call node NodeDomainSize (GeometryNodeAttributeDomainSize)
+        """Call node DomainSize (GeometryNodeAttributeDomainSize)
 
         Sockets arguments
         -----------------
@@ -597,10 +594,10 @@ class Geometry(dsock.Geometry):
             Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
         """
 
-        return nodes.NodeDomainSize(geometry=self, component=component)
+        return nodes.DomainSize(geometry=self, component=component)
 
     def attribute_remove(self, *attribute):
-        """Call node NodeAttributeRemove (GeometryNodeAttributeRemove)
+        """Call node AttributeRemove (GeometryNodeAttributeRemove)
 
         Sockets arguments
         -----------------
@@ -612,31 +609,10 @@ class Geometry(dsock.Geometry):
             Geometry
         """
 
-        return nodes.NodeAttributeRemove(*attribute, geometry=self).geometry
-
-    def attribute_statistic(self, selection=None, attribute=None, data_type='FLOAT', domain='POINT'):
-        """Call node NodeAttributeStatistic (GeometryNodeAttributeStatistic)
-
-        Sockets arguments
-        -----------------
-            geometry       : Geometry (self)
-            selection      : Boolean
-            attribute      : Float
-
-        Parameters arguments
-        --------------------
-            data_type      : 'FLOAT' in [FLOAT, FLOAT_VECTOR]
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-
-        Returns
-        -------
-            Sockets [mean (data_type dependant), median (data_type dependant), sum (data_type dependant), min (data_type dependant), max (data_type dependant), range (data_type dependant), standard_deviation (data_type dependant), variance (data_type dependant)]
-        """
-
-        return nodes.NodeAttributeStatistic(geometry=self, selection=selection, attribute=attribute, data_type=data_type, domain=domain)
+        return nodes.AttributeRemove(*attribute, geometry=self).geometry
 
     def components(self, selection=None, domain='POINT'):
-        """Call node NodeSeparateGeometry (GeometryNodeSeparateGeometry)
+        """Call node SeparateGeometry (GeometryNodeSeparateGeometry)
 
         Sockets arguments
         -----------------
@@ -652,30 +628,10 @@ class Geometry(dsock.Geometry):
             Sockets [selection (Geometry), inverted (Geometry)]
         """
 
-        return nodes.NodeSeparateGeometry(geometry=self, selection=selection, domain=domain)
-
-    def capture_attribute(self, value=None, data_type='FLOAT', domain='POINT'):
-        """Call node NodeCaptureAttribute (GeometryNodeCaptureAttribute)
-
-        Sockets arguments
-        -----------------
-            geometry       : Geometry (self)
-            value          : Float
-
-        Parameters arguments
-        --------------------
-            data_type      : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-
-        Returns
-        -------
-            Sockets [geometry (Geometry), attribute (data_type dependant)]
-        """
-
-        return nodes.NodeCaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain)
+        return nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain)
 
     def convex_hull(self):
-        """Call node NodeConvexHull (GeometryNodeConvexHull)
+        """Call node ConvexHull (GeometryNodeConvexHull)
 
         Sockets arguments
         -----------------
@@ -686,10 +642,10 @@ class Geometry(dsock.Geometry):
             Geometry
         """
 
-        return nodes.NodeConvexHull(geometry=self).convex_hull
+        return nodes.ConvexHull(geometry=self).convex_hull
 
     def to_instance(self, *geometry):
-        """Call node NodeGeometryToInstance (GeometryNodeGeometryToInstance)
+        """Call node GeometryToInstance (GeometryNodeGeometryToInstance)
 
         Sockets arguments
         -----------------
@@ -697,13 +653,13 @@ class Geometry(dsock.Geometry):
 
         Returns
         -------
-            Geometry
+            Instances
         """
 
-        return nodes.NodeGeometryToInstance(self, *geometry).instances
+        return nodes.GeometryToInstance(self, *geometry).instances
 
     def join(self, *geometry):
-        """Call node NodeJoinGeometry (GeometryNodeJoinGeometry)
+        """Call node JoinGeometry (GeometryNodeJoinGeometry)
 
         Sockets arguments
         -----------------
@@ -714,10 +670,10 @@ class Geometry(dsock.Geometry):
             Geometry
         """
 
-        return nodes.NodeJoinGeometry(self, *geometry).geometry
+        return nodes.JoinGeometry(self, *geometry).geometry
 
     def proximity(self, source_position=None, target_element='FACES'):
-        """Call node NodeGeometryProximity (GeometryNodeProximity)
+        """Call node GeometryProximity (GeometryNodeProximity)
 
         Sockets arguments
         -----------------
@@ -733,37 +689,14 @@ class Geometry(dsock.Geometry):
             Sockets [position (Vector), distance (Float)]
         """
 
-        return nodes.NodeGeometryProximity(target=self, source_position=source_position, target_element=target_element)
-
-    def raycast(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED'):
-        """Call node NodeRaycast (GeometryNodeRaycast)
-
-        Sockets arguments
-        -----------------
-            target_geometry: Geometry (self)
-            attribute      : Float
-            source_position: Vector
-            ray_direction  : Vector
-            ray_length     : Float
-
-        Parameters arguments
-        --------------------
-            data_type      : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
-            mapping        : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
-
-        Returns
-        -------
-            Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (data_type dependant)]
-        """
-
-        return nodes.NodeRaycast(target_geometry=self, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type, mapping=mapping)
+        return nodes.GeometryProximity(target=self, source_position=source_position, target_element=target_element)
 
 
     # ----------------------------------------------------------------------------------------------------
     # Stacked methods
 
     def delete_geometry(self, selection=None, domain='POINT', mode='ALL'):
-        """Call node NodeDeleteGeometry (GeometryNodeDeleteGeometry)
+        """Call node DeleteGeometry (GeometryNodeDeleteGeometry)
 
         Sockets arguments
         -----------------
@@ -781,10 +714,10 @@ class Geometry(dsock.Geometry):
 
         """
 
-        return self.stack(nodes.NodeDeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode))
+        return self.stack(nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode))
 
     def merge_by_distance(self, selection=None, distance=None):
-        """Call node NodeMergeByDistance (GeometryNodeMergeByDistance)
+        """Call node MergeByDistance (GeometryNodeMergeByDistance)
 
         Sockets arguments
         -----------------
@@ -798,10 +731,10 @@ class Geometry(dsock.Geometry):
 
         """
 
-        return self.stack(nodes.NodeMergeByDistance(geometry=self, selection=selection, distance=distance))
+        return self.stack(nodes.MergeByDistance(geometry=self, selection=selection, distance=distance))
 
     def realize_instances(self, legacy_behavior=False):
-        """Call node NodeRealizeInstances (GeometryNodeRealizeInstances)
+        """Call node RealizeInstances (GeometryNodeRealizeInstances)
 
         Sockets arguments
         -----------------
@@ -817,10 +750,10 @@ class Geometry(dsock.Geometry):
 
         """
 
-        return self.stack(nodes.NodeRealizeInstances(geometry=self, legacy_behavior=legacy_behavior))
+        return self.stack(nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior))
 
     def replace_material(self, old=None, new=None):
-        """Call node NodeReplaceMaterial (GeometryNodeReplaceMaterial)
+        """Call node ReplaceMaterial (GeometryNodeReplaceMaterial)
 
         Sockets arguments
         -----------------
@@ -834,10 +767,10 @@ class Geometry(dsock.Geometry):
 
         """
 
-        return self.stack(nodes.NodeReplaceMaterial(geometry=self, old=old, new=new))
+        return self.stack(nodes.ReplaceMaterial(geometry=self, old=old, new=new))
 
     def scale_elements(self, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM'):
-        """Call node NodeScaleElements (GeometryNodeScaleElements)
+        """Call node ScaleElements (GeometryNodeScaleElements)
 
         Sockets arguments
         -----------------
@@ -858,10 +791,10 @@ class Geometry(dsock.Geometry):
 
         """
 
-        return self.stack(nodes.NodeScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode))
+        return self.stack(nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode))
 
     def set_ID(self, selection=None, ID=None):
-        """Call node NodeSetID (GeometryNodeSetID)
+        """Call node SetID (GeometryNodeSetID)
 
         Sockets arguments
         -----------------
@@ -875,10 +808,10 @@ class Geometry(dsock.Geometry):
 
         """
 
-        return self.stack(nodes.NodeSetID(geometry=self, selection=selection, ID=ID))
+        return self.stack(nodes.SetID(geometry=self, selection=selection, ID=ID))
 
     def set_material(self, selection=None, material=None):
-        """Call node NodeSetMaterial (GeometryNodeSetMaterial)
+        """Call node SetMaterial (GeometryNodeSetMaterial)
 
         Sockets arguments
         -----------------
@@ -892,10 +825,10 @@ class Geometry(dsock.Geometry):
 
         """
 
-        return self.stack(nodes.NodeSetMaterial(geometry=self, selection=selection, material=material))
+        return self.stack(nodes.SetMaterial(geometry=self, selection=selection, material=material))
 
     def set_material_index(self, selection=None, material_index=None):
-        """Call node NodeSetMaterialIndex (GeometryNodeSetMaterialIndex)
+        """Call node SetMaterialIndex (GeometryNodeSetMaterialIndex)
 
         Sockets arguments
         -----------------
@@ -909,10 +842,10 @@ class Geometry(dsock.Geometry):
 
         """
 
-        return self.stack(nodes.NodeSetMaterialIndex(geometry=self, selection=selection, material_index=material_index))
+        return self.stack(nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index))
 
     def set_position(self, selection=None, position=None, offset=None):
-        """Call node NodeSetPosition (GeometryNodeSetPosition)
+        """Call node SetPosition (GeometryNodeSetPosition)
 
         Sockets arguments
         -----------------
@@ -927,10 +860,10 @@ class Geometry(dsock.Geometry):
 
         """
 
-        return self.stack(nodes.NodeSetPosition(geometry=self, selection=selection, position=position, offset=offset))
+        return self.stack(nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset))
 
     def set_shade_smooth(self, selection=None, shade_smooth=None):
-        """Call node NodeSetShadeSmooth (GeometryNodeSetShadeSmooth)
+        """Call node SetShadeSmooth (GeometryNodeSetShadeSmooth)
 
         Sockets arguments
         -----------------
@@ -944,10 +877,10 @@ class Geometry(dsock.Geometry):
 
         """
 
-        return self.stack(nodes.NodeSetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth))
+        return self.stack(nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth))
 
     def transform(self, translation=None, rotation=None, scale=None):
-        """Call node NodeTransform (GeometryNodeTransform)
+        """Call node Transform (GeometryNodeTransform)
 
         Sockets arguments
         -----------------
@@ -962,6 +895,6 @@ class Geometry(dsock.Geometry):
 
         """
 
-        return self.stack(nodes.NodeTransform(geometry=self, translation=translation, rotation=rotation, scale=scale))
+        return self.stack(nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale))
 
 

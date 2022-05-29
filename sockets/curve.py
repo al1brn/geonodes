@@ -13,18 +13,18 @@ class Curve(gn.Spline):
 
     Constructors
     ------------
-        ArcFromRadius             : curve        (Geometry)
-        BezierSegment             : curve        (Geometry)
-        Circle                    : Sockets      [curve (Geometry), center (Vector)]
-        Line                      : curve        (Geometry)
-        QuadraticBezier           : curve        (Geometry)
-        Quadrilateral             : curve        (Geometry)
-        Spiral                    : curve        (Geometry)
-        Star                      : Sockets      [curve (Geometry), outer_points (Boolean)]
+        ArcFromRadius             : curve        (Curve)
+        BezierSegment             : curve        (Curve)
+        Circle                    : Sockets      [curve (Curve), center (Vector)]
+        Line                      : curve        (Curve)
+        QuadraticBezier           : curve        (Curve)
+        Quadrilateral             : curve        (Curve)
+        Spiral                    : curve        (Curve)
+        Star                      : Sockets      [curve (Curve), outer_points (Boolean)]
 
     Static methods
     --------------
-        ArcFromPoints             : Sockets      [curve (Geometry), center (Vector), normal (Vector), radius (Float)]
+        ArcFromPoints             : Sockets      [curve (Curve), center (Vector), normal (Vector), radius (Float)]
 
     Attribute captures
     ------------------
@@ -49,8 +49,8 @@ class Curve(gn.Spline):
     -------
         length                    : length       (Float)
         sample                    : Sockets      [position (Vector), tangent (Vector), normal (Vector)]
-        to_mesh                   : mesh         (Geometry)
-        to_points                 : Sockets      [points (Geometry), tangent (Vector), normal (Vector), rotation (Vector)]
+        to_mesh                   : mesh         (Mesh)
+        to_points                 : Sockets      [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
 
     Stacked methods
     ---------------
@@ -72,7 +72,7 @@ class Curve(gn.Spline):
 
     @classmethod
     def BezierSegment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):
-        """Call node NodeBezierSegment (GeometryNodeCurvePrimitiveBezierSegment)
+        """Call node BezierSegment (GeometryNodeCurvePrimitiveBezierSegment)
 
         Sockets arguments
         -----------------
@@ -88,14 +88,14 @@ class Curve(gn.Spline):
 
         Returns
         -------
-            Geometry
+            Curve
         """
 
-        return cls(nodes.NodeBezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode).curve)
+        return cls(nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode).curve)
 
     @classmethod
     def Circle(cls, resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS'):
-        """Call node NodeCurveCircle (GeometryNodeCurvePrimitiveCircle)
+        """Call node CurveCircle (GeometryNodeCurvePrimitiveCircle)
 
         Sockets arguments
         -----------------
@@ -111,14 +111,14 @@ class Curve(gn.Spline):
 
         Returns
         -------
-            Sockets [curve (Geometry), center (Vector)]
+            Sockets [curve (Curve), center (Vector)]
         """
 
-        return nodes.NodeCurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=radius, mode=mode)
+        return nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=radius, mode=mode)
 
     @classmethod
     def Line(cls, start=None, end=None, direction=None, length=None, mode='POINTS'):
-        """Call node NodeCurveLine (GeometryNodeCurvePrimitiveLine)
+        """Call node CurveLine (GeometryNodeCurvePrimitiveLine)
 
         Sockets arguments
         -----------------
@@ -133,14 +133,14 @@ class Curve(gn.Spline):
 
         Returns
         -------
-            Geometry
+            Curve
         """
 
-        return cls(nodes.NodeCurveLine(start=start, end=end, direction=direction, length=length, mode=mode).curve)
+        return cls(nodes.CurveLine(start=start, end=end, direction=direction, length=length, mode=mode).curve)
 
     @classmethod
     def Quadrilateral(cls, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE'):
-        """Call node NodeQuadrilateral (GeometryNodeCurvePrimitiveQuadrilateral)
+        """Call node Quadrilateral (GeometryNodeCurvePrimitiveQuadrilateral)
 
         Sockets arguments
         -----------------
@@ -162,14 +162,14 @@ class Curve(gn.Spline):
 
         Returns
         -------
-            Geometry
+            Curve
         """
 
-        return cls(nodes.NodeQuadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width, offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode).curve)
+        return cls(nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width, offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode).curve)
 
     @classmethod
     def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):
-        """Call node NodeQuadraticBezier (GeometryNodeCurveQuadraticBezier)
+        """Call node QuadraticBezier (GeometryNodeCurveQuadraticBezier)
 
         Sockets arguments
         -----------------
@@ -180,14 +180,14 @@ class Curve(gn.Spline):
 
         Returns
         -------
-            Geometry
+            Curve
         """
 
-        return cls(nodes.NodeQuadraticBezier(resolution=resolution, start=start, middle=middle, end=end).curve)
+        return cls(nodes.QuadraticBezier(resolution=resolution, start=start, middle=middle, end=end).curve)
 
     @classmethod
     def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):
-        """Call node NodeStar (GeometryNodeCurveStar)
+        """Call node Star (GeometryNodeCurveStar)
 
         Sockets arguments
         -----------------
@@ -198,14 +198,14 @@ class Curve(gn.Spline):
 
         Returns
         -------
-            Sockets [curve (Geometry), outer_points (Boolean)]
+            Sockets [curve (Curve), outer_points (Boolean)]
         """
 
-        return nodes.NodeStar(points=points, inner_radius=inner_radius, outer_radius=outer_radius, twist=twist)
+        return nodes.Star(points=points, inner_radius=inner_radius, outer_radius=outer_radius, twist=twist)
 
     @classmethod
     def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None):
-        """Call node NodeSpiral (GeometryNodeCurveSpiral)
+        """Call node Spiral (GeometryNodeCurveSpiral)
 
         Sockets arguments
         -----------------
@@ -218,14 +218,14 @@ class Curve(gn.Spline):
 
         Returns
         -------
-            Geometry
+            Curve
         """
 
-        return cls(nodes.NodeSpiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius, height=height, reverse=reverse).curve)
+        return cls(nodes.Spiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius, height=height, reverse=reverse).curve)
 
     @classmethod
     def ArcFromRadius(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None):
-        """Call node NodeArc (GeometryNodeCurveArc)
+        """Call node Arc (GeometryNodeCurveArc)
 
         Sockets arguments
         -----------------
@@ -242,10 +242,10 @@ class Curve(gn.Spline):
 
         Returns
         -------
-            Geometry
+            Curve
         """
 
-        return cls(nodes.NodeArc(resolution=resolution, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle, connect_center=connect_center, invert_arc=invert_arc, mode='RADIUS').curve)
+        return cls(nodes.Arc(resolution=resolution, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle, connect_center=connect_center, invert_arc=invert_arc, mode='RADIUS').curve)
 
 
     # ----------------------------------------------------------------------------------------------------
@@ -253,7 +253,7 @@ class Curve(gn.Spline):
 
     @staticmethod
     def ArcFromPoints(resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None):
-        """Call node NodeArc (GeometryNodeCurveArc)
+        """Call node Arc (GeometryNodeCurveArc)
 
         Sockets arguments
         -----------------
@@ -271,17 +271,17 @@ class Curve(gn.Spline):
 
         Returns
         -------
-            Sockets [curve (Geometry), center (Vector), normal (Vector), radius (Float)]
+            Sockets [curve (Curve), center (Vector), normal (Vector), radius (Float)]
         """
 
-        return nodes.NodeArc(resolution=resolution, start=start, middle=middle, end=end, offset_angle=offset_angle, connect_center=connect_center, invert_arc=invert_arc, mode='POINTS')
+        return nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, offset_angle=offset_angle, connect_center=connect_center, invert_arc=invert_arc, mode='POINTS')
 
 
     # ----------------------------------------------------------------------------------------------------
     # Attribute captures
 
     def capture_endpoint_selection(self, start_size=None, end_size=None, domain='CURVE'):
-        """Call node NodeEndpointSelection (GeometryNodeCurveEndpointSelection)
+        """Call node EndpointSelection (GeometryNodeCurveEndpointSelection)
 
         Sockets arguments
         -----------------
@@ -295,13 +295,13 @@ class Curve(gn.Spline):
 
         attr_name = 'capture_endpoint_selection_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.NodeEndpointSelection(start_size=start_size, end_size=end_size)
+            node = nodes.EndpointSelection(start_size=start_size, end_size=end_size)
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).selection
 
     def capture_handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, domain='CURVE'):
-        """Call node NodeHandleTypeSelection (GeometryNodeCurveHandleTypeSelection)
+        """Call node HandleTypeSelection (GeometryNodeCurveHandleTypeSelection)
 
         Parameters arguments
         --------------------
@@ -315,13 +315,13 @@ class Curve(gn.Spline):
 
         attr_name = 'capture_handle_type_selection_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.NodeHandleTypeSelection(handle_type=handle_type, mode=mode)
+            node = nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).selection
 
     def capture_tilt(self, domain='CURVE'):
-        """Call node NodeCurveTilt (GeometryNodeInputCurveTilt)
+        """Call node CurveTilt (GeometryNodeInputCurveTilt)
 
         Returns
         -------
@@ -330,13 +330,13 @@ class Curve(gn.Spline):
 
         attr_name = 'capture_tilt_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.NodeCurveTilt()
+            node = nodes.CurveTilt()
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).tilt
 
     def capture_radius(self, domain='CURVE'):
-        """Call node NodeRadius (GeometryNodeInputRadius)
+        """Call node Radius (GeometryNodeInputRadius)
 
         Returns
         -------
@@ -345,13 +345,13 @@ class Curve(gn.Spline):
 
         attr_name = 'capture_radius_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.NodeRadius()
+            node = nodes.Radius()
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).radius
 
     def capture_handle_positions(self, relative=None, domain='CURVE'):
-        """Call node NodeCurveHandlePositions (GeometryNodeInputCurveHandlePositions)
+        """Call node CurveHandlePositions (GeometryNodeInputCurveHandlePositions)
 
         Sockets arguments
         -----------------
@@ -364,7 +364,7 @@ class Curve(gn.Spline):
 
         attr_name = 'capture_handle_positions_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.NodeCurveHandlePositions(relative=relative)
+            node = nodes.CurveHandlePositions(relative=relative)
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name)
@@ -375,7 +375,7 @@ class Curve(gn.Spline):
 
     @property
     def spline_ID(self):
-        """Call node NodeID (GeometryNodeInputID)
+        """Call node ID (GeometryNodeInputID)
 
         Returns
         -------
@@ -386,7 +386,7 @@ class Curve(gn.Spline):
 
     @property
     def spline_index(self):
-        """Call node NodeIndex (GeometryNodeInputIndex)
+        """Call node Index (GeometryNodeInputIndex)
 
         Returns
         -------
@@ -397,7 +397,7 @@ class Curve(gn.Spline):
 
     @property
     def endpoint_selection(self, start_size=None, end_size=None):
-        """Call node NodeEndpointSelection (GeometryNodeCurveEndpointSelection)
+        """Call node EndpointSelection (GeometryNodeCurveEndpointSelection)
 
         Sockets arguments
         -----------------
@@ -413,7 +413,7 @@ class Curve(gn.Spline):
 
     @property
     def handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
-        """Call node NodeHandleTypeSelection (GeometryNodeCurveHandleTypeSelection)
+        """Call node HandleTypeSelection (GeometryNodeCurveHandleTypeSelection)
 
         Parameters arguments
         --------------------
@@ -429,7 +429,7 @@ class Curve(gn.Spline):
 
     @property
     def tilt(self):
-        """Call node NodeCurveTilt (GeometryNodeInputCurveTilt)
+        """Call node CurveTilt (GeometryNodeInputCurveTilt)
 
         Returns
         -------
@@ -440,7 +440,7 @@ class Curve(gn.Spline):
 
     @property
     def radius(self):
-        """Call node NodeRadius (GeometryNodeInputRadius)
+        """Call node Radius (GeometryNodeInputRadius)
 
         Returns
         -------
@@ -451,7 +451,7 @@ class Curve(gn.Spline):
 
     @property
     def left_handle_position(self, relative=None):
-        """Call node NodeCurveHandlePositions (GeometryNodeInputCurveHandlePositions)
+        """Call node CurveHandlePositions (GeometryNodeInputCurveHandlePositions)
 
         Sockets arguments
         -----------------
@@ -462,11 +462,11 @@ class Curve(gn.Spline):
             Vector
         """
 
-        return self.capture_handle_positions(domain='CURVE').output_sockets[0]
+        return self.capture_handle_positions(domain='CURVE').left
 
     @property
     def right_handle_position(self, relative=None):
-        """Call node NodeCurveHandlePositions (GeometryNodeInputCurveHandlePositions)
+        """Call node CurveHandlePositions (GeometryNodeInputCurveHandlePositions)
 
         Sockets arguments
         -----------------
@@ -477,34 +477,34 @@ class Curve(gn.Spline):
             Vector
         """
 
-        return self.capture_handle_positions(domain='CURVE').output_sockets[1]
+        return self.capture_handle_positions(domain='CURVE').right
 
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def to_mesh(curve=None, profile_curve=None, fill_caps=None):
-        """Call node NodeCurveToMesh (GeometryNodeCurveToMesh)
+    def to_mesh(self, profile_curve=None, fill_caps=None):
+        """Call node CurveToMesh (GeometryNodeCurveToMesh)
 
         Sockets arguments
         -----------------
-            curve          : Geometry
+            curve          : Curve (self)
             profile_curve  : Geometry
             fill_caps      : Boolean
 
         Returns
         -------
-            Geometry
+            Mesh
         """
 
-        return nodes.NodeCurveToMesh(curve=curve, profile_curve=profile_curve, fill_caps=fill_caps).mesh
+        return nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps).mesh
 
-    def to_points(curve=None, count=None, length=None, mode='COUNT'):
-        """Call node NodeCurveToPoints (GeometryNodeCurveToPoints)
+    def to_points(self, count=None, length=None, mode='COUNT'):
+        """Call node CurveToPoints (GeometryNodeCurveToPoints)
 
         Sockets arguments
         -----------------
-            curve          : Geometry
+            curve          : Curve (self)
             count          : Integer
             length         : Float
 
@@ -514,17 +514,17 @@ class Curve(gn.Spline):
 
         Returns
         -------
-            Sockets [points (Geometry), tangent (Vector), normal (Vector), rotation (Vector)]
+            Sockets [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
         """
 
-        return nodes.NodeCurveToPoints(curve=curve, count=count, length=length, mode=mode)
+        return nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode)
 
-    def sample(curve=None, factor=None, length=None, mode='LENGTH'):
-        """Call node NodeSampleCurve (GeometryNodeSampleCurve)
+    def sample(self, factor=None, length=None, mode='LENGTH'):
+        """Call node SampleCurve (GeometryNodeSampleCurve)
 
         Sockets arguments
         -----------------
-            curve          : Geometry
+            curve          : Curve (self)
             factor         : Float
             length         : Float
 
@@ -537,32 +537,32 @@ class Curve(gn.Spline):
             Sockets [position (Vector), tangent (Vector), normal (Vector)]
         """
 
-        return nodes.NodeSampleCurve(curve=curve, factor=factor, length=length, mode=mode)
+        return nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode)
 
-    def length(curve=None):
-        """Call node NodeCurveLength (GeometryNodeCurveLength)
+    def length(self):
+        """Call node CurveLength (GeometryNodeCurveLength)
 
         Sockets arguments
         -----------------
-            curve          : Geometry
+            curve          : Curve (self)
 
         Returns
         -------
             Float
         """
 
-        return nodes.NodeCurveLength(curve=curve).length
+        return nodes.CurveLength(curve=self).length
 
 
     # ----------------------------------------------------------------------------------------------------
     # Stacked methods
 
-    def set_handles(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
-        """Call node NodeSetHandleType (GeometryNodeCurveSetHandles)
+    def set_handles(self, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+        """Call node SetHandleType (GeometryNodeCurveSetHandles)
 
         Sockets arguments
         -----------------
-            curve          : Geometry
+            curve          : Curve (self)
             selection      : Boolean
 
         Parameters arguments
@@ -576,14 +576,14 @@ class Curve(gn.Spline):
 
         """
 
-        return self.stack(nodes.NodeSetHandleType(curve=curve, selection=selection, handle_type=handle_type, mode=mode))
+        return self.stack(nodes.SetHandleType(curve=self, selection=selection, handle_type=handle_type, mode=mode))
 
-    def set_spline_type(curve=None, selection=None, spline_type='POLY'):
-        """Call node NodeSetSplineType (GeometryNodeCurveSplineType)
+    def set_spline_type(self, selection=None, spline_type='POLY'):
+        """Call node SetSplineType (GeometryNodeCurveSplineType)
 
         Sockets arguments
         -----------------
-            curve          : Geometry
+            curve          : Curve (self)
             selection      : Boolean
 
         Parameters arguments
@@ -596,14 +596,14 @@ class Curve(gn.Spline):
 
         """
 
-        return self.stack(nodes.NodeSetSplineType(curve=curve, selection=selection, spline_type=spline_type))
+        return self.stack(nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_type))
 
-    def fill(curve=None, mode='TRIANGLES'):
-        """Call node NodeFillCurve (GeometryNodeFillCurve)
+    def fill(self, mode='TRIANGLES'):
+        """Call node FillCurve (GeometryNodeFillCurve)
 
         Sockets arguments
         -----------------
-            curve          : Geometry
+            curve          : Curve (self)
 
         Parameters arguments
         --------------------
@@ -615,14 +615,14 @@ class Curve(gn.Spline):
 
         """
 
-        return self.stack(nodes.NodeFillCurve(curve=curve, mode=mode))
+        return self.stack(nodes.FillCurve(curve=self, mode=mode))
 
-    def fillet(curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER'):
-        """Call node NodeFilletCurve (GeometryNodeFilletCurve)
+    def fillet(self, count=None, radius=None, limit_radius=None, mode='BEZIER'):
+        """Call node FilletCurve (GeometryNodeFilletCurve)
 
         Sockets arguments
         -----------------
-            curve          : Geometry
+            curve          : Curve (self)
             count          : Integer
             radius         : Float
             limit_radius   : Boolean
@@ -637,14 +637,14 @@ class Curve(gn.Spline):
 
         """
 
-        return self.stack(nodes.NodeFilletCurve(curve=curve, count=count, radius=radius, limit_radius=limit_radius, mode=mode))
+        return self.stack(nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode=mode))
 
-    def resample(curve=None, selection=None, count=None, length=None, mode='COUNT'):
-        """Call node NodeResampleCurve (GeometryNodeResampleCurve)
+    def resample(self, selection=None, count=None, length=None, mode='COUNT'):
+        """Call node ResampleCurve (GeometryNodeResampleCurve)
 
         Sockets arguments
         -----------------
-            curve          : Geometry
+            curve          : Curve (self)
             selection      : Boolean
             count          : Integer
             length         : Float
@@ -659,14 +659,14 @@ class Curve(gn.Spline):
 
         """
 
-        return self.stack(nodes.NodeResampleCurve(curve=curve, selection=selection, count=count, length=length, mode=mode))
+        return self.stack(nodes.ResampleCurve(curve=self, selection=selection, count=count, length=length, mode=mode))
 
-    def reverse(curve=None, selection=None):
-        """Call node NodeReverseCurve (GeometryNodeReverseCurve)
+    def reverse(self, selection=None):
+        """Call node ReverseCurve (GeometryNodeReverseCurve)
 
         Sockets arguments
         -----------------
-            curve          : Geometry
+            curve          : Curve (self)
             selection      : Boolean
 
         Returns
@@ -675,14 +675,14 @@ class Curve(gn.Spline):
 
         """
 
-        return self.stack(nodes.NodeReverseCurve(curve=curve, selection=selection))
+        return self.stack(nodes.ReverseCurve(curve=self, selection=selection))
 
-    def set_handle_positions(curve=None, selection=None, position=None, offset=None, mode='LEFT'):
-        """Call node NodeSetHandlePositions (GeometryNodeSetCurveHandlePositions)
+    def set_handle_positions(self, selection=None, position=None, offset=None, mode='LEFT'):
+        """Call node SetHandlePositions (GeometryNodeSetCurveHandlePositions)
 
         Sockets arguments
         -----------------
-            curve          : Geometry
+            curve          : Curve (self)
             selection      : Boolean
             position       : Vector
             offset         : Vector
@@ -697,14 +697,14 @@ class Curve(gn.Spline):
 
         """
 
-        return self.stack(nodes.NodeSetHandlePositions(curve=curve, selection=selection, position=position, offset=offset, mode=mode))
+        return self.stack(nodes.SetHandlePositions(curve=self, selection=selection, position=position, offset=offset, mode=mode))
 
-    def set_radius(curve=None, selection=None, radius=None):
-        """Call node NodeSetCurveRadius (GeometryNodeSetCurveRadius)
+    def set_radius(self, selection=None, radius=None):
+        """Call node SetCurveRadius (GeometryNodeSetCurveRadius)
 
         Sockets arguments
         -----------------
-            curve          : Geometry
+            curve          : Curve (self)
             selection      : Boolean
             radius         : Float
 
@@ -714,14 +714,14 @@ class Curve(gn.Spline):
 
         """
 
-        return self.stack(nodes.NodeSetCurveRadius(curve=curve, selection=selection, radius=radius))
+        return self.stack(nodes.SetCurveRadius(curve=self, selection=selection, radius=radius))
 
-    def set_tilt(curve=None, selection=None, tilt=None):
-        """Call node NodeSetCurveTilt (GeometryNodeSetCurveTilt)
+    def set_tilt(self, selection=None, tilt=None):
+        """Call node SetCurveTilt (GeometryNodeSetCurveTilt)
 
         Sockets arguments
         -----------------
-            curve          : Geometry
+            curve          : Curve (self)
             selection      : Boolean
             tilt           : Float
 
@@ -731,14 +731,14 @@ class Curve(gn.Spline):
 
         """
 
-        return self.stack(nodes.NodeSetCurveTilt(curve=curve, selection=selection, tilt=tilt))
+        return self.stack(nodes.SetCurveTilt(curve=self, selection=selection, tilt=tilt))
 
-    def subdivide(curve=None, cuts=None):
-        """Call node NodeSubdivideCurve (GeometryNodeSubdivideCurve)
+    def subdivide(self, cuts=None):
+        """Call node SubdivideCurve (GeometryNodeSubdivideCurve)
 
         Sockets arguments
         -----------------
-            curve          : Geometry
+            curve          : Curve (self)
             cuts           : Integer
 
         Returns
@@ -747,14 +747,14 @@ class Curve(gn.Spline):
 
         """
 
-        return self.stack(nodes.NodeSubdivideCurve(curve=curve, cuts=cuts))
+        return self.stack(nodes.SubdivideCurve(curve=self, cuts=cuts))
 
-    def trim(curve=None, start0=None, end0=None, start1=None, end1=None, mode='FACTOR'):
-        """Call node NodeTrimCurve (GeometryNodeTrimCurve)
+    def trim(self, start0=None, end0=None, start1=None, end1=None, mode='FACTOR'):
+        """Call node TrimCurve (GeometryNodeTrimCurve)
 
         Sockets arguments
         -----------------
-            curve          : Geometry
+            curve          : Curve (self)
             start0         : Float
             end0           : Float
             start1         : Float
@@ -770,6 +770,6 @@ class Curve(gn.Spline):
 
         """
 
-        return self.stack(nodes.NodeTrimCurve(curve=curve, start0=start0, end0=end0, start1=start1, end1=end1, mode=mode))
+        return self.stack(nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1=end1, mode=mode))
 
 

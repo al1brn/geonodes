@@ -17,7 +17,7 @@ class Instances(gn.Mesh):
 
     Methods
     -------
-        to_points                 : points       (Geometry)
+        to_points                 : points       (Points)
 
     Stacked methods
     ---------------
@@ -31,7 +31,7 @@ class Instances(gn.Mesh):
 
     @property
     def instance_index(self):
-        """Call node NodeIndex (GeometryNodeInputIndex)
+        """Call node Index (GeometryNodeInputIndex)
 
         Returns
         -------
@@ -44,33 +44,33 @@ class Instances(gn.Mesh):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def to_points(instances=None, selection=None, position=None, radius=None):
-        """Call node NodeInstancesToPoints (GeometryNodeInstancesToPoints)
+    def to_points(self, selection=None, position=None, radius=None):
+        """Call node InstancesToPoints (GeometryNodeInstancesToPoints)
 
         Sockets arguments
         -----------------
-            instances      : Geometry
+            instances      : Instances (self)
             selection      : Boolean
             position       : Vector
             radius         : Float
 
         Returns
         -------
-            Geometry
+            Points
         """
 
-        return nodes.NodeInstancesToPoints(instances=instances, selection=selection, position=position, radius=radius).points
+        return nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius).points
 
 
     # ----------------------------------------------------------------------------------------------------
     # Stacked methods
 
-    def rotate(instances=None, selection=None, rotation=None, pivot_point=None, local_space=None):
-        """Call node NodeRotateInstances (GeometryNodeRotateInstances)
+    def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None):
+        """Call node RotateInstances (GeometryNodeRotateInstances)
 
         Sockets arguments
         -----------------
-            instances      : Geometry
+            instances      : Instances (self)
             selection      : Boolean
             rotation       : Vector
             pivot_point    : Vector
@@ -82,14 +82,14 @@ class Instances(gn.Mesh):
 
         """
 
-        return self.stack(nodes.NodeRotateInstances(instances=instances, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space))
+        return self.stack(nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space))
 
-    def scale(instances=None, selection=None, scale=None, center=None, local_space=None):
-        """Call node NodeScaleInstances (GeometryNodeScaleInstances)
+    def scale(self, selection=None, scale=None, center=None, local_space=None):
+        """Call node ScaleInstances (GeometryNodeScaleInstances)
 
         Sockets arguments
         -----------------
-            instances      : Geometry
+            instances      : Instances (self)
             selection      : Boolean
             scale          : Vector
             center         : Vector
@@ -101,14 +101,14 @@ class Instances(gn.Mesh):
 
         """
 
-        return self.stack(nodes.NodeScaleInstances(instances=instances, selection=selection, scale=scale, center=center, local_space=local_space))
+        return self.stack(nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space))
 
-    def translate(instances=None, selection=None, translation=None, local_space=None):
-        """Call node NodeTranslateInstances (GeometryNodeTranslateInstances)
+    def translate(self, selection=None, translation=None, local_space=None):
+        """Call node TranslateInstances (GeometryNodeTranslateInstances)
 
         Sockets arguments
         -----------------
-            instances      : Geometry
+            instances      : Instances (self)
             selection      : Boolean
             translation    : Vector
             local_space    : Boolean
@@ -119,6 +119,6 @@ class Instances(gn.Mesh):
 
         """
 
-        return self.stack(nodes.NodeTranslateInstances(instances=instances, selection=selection, translation=translation, local_space=local_space))
+        return self.stack(nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space))
 
 

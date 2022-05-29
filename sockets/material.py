@@ -21,7 +21,7 @@ class Material(dsock.Material):
     # Methods
 
     def switch(self, switch1=None, true=None):
-        """Call node NodeSwitch (GeometryNodeSwitch)
+        """Call node Switch (GeometryNodeSwitch)
 
         Sockets arguments
         -----------------
@@ -38,10 +38,10 @@ class Material(dsock.Material):
             Material
         """
 
-        return nodes.NodeSwitch(false=self, switch1=switch1, true=true, input_type='MATERIAL').output
+        return nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL').output
 
     def selection(self):
-        """Call node NodeMaterialSelection (GeometryNodeMaterialSelection)
+        """Call node MaterialSelection (GeometryNodeMaterialSelection)
 
         Sockets arguments
         -----------------
@@ -52,6 +52,6 @@ class Material(dsock.Material):
             Boolean
         """
 
-        return nodes.NodeMaterialSelection(material=self).selection
+        return nodes.MaterialSelection(material=self).selection
 
 

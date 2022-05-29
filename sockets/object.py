@@ -28,7 +28,7 @@ class Object(dsock.Object):
 
     @property
     def info(self, as_instance=None, transform_space='ORIGINAL'):
-        """Call node NodeObjectInfo (GeometryNodeObjectInfo)
+        """Call node ObjectInfo (GeometryNodeObjectInfo)
 
         Sockets arguments
         -----------------
@@ -45,7 +45,7 @@ class Object(dsock.Object):
         """
 
         if self.info_ is None:
-            self.info_ = nodes.NodeObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
+            self.info_ = nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
         return self.info_
 
 
@@ -70,7 +70,7 @@ class Object(dsock.Object):
     # Methods
 
     def switch(self, switch1=None, true=None):
-        """Call node NodeSwitch (GeometryNodeSwitch)
+        """Call node Switch (GeometryNodeSwitch)
 
         Sockets arguments
         -----------------
@@ -87,6 +87,6 @@ class Object(dsock.Object):
             Object
         """
 
-        return nodes.NodeSwitch(false=self, switch1=switch1, true=true, input_type='OBJECT').output
+        return nodes.Switch(false=self, switch1=switch1, true=true, input_type='OBJECT').output
 
 

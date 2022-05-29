@@ -20,7 +20,7 @@ class Image(dsock.Image):
     # Methods
 
     def switch(self, switch1=None, true=None):
-        """Call node NodeSwitch (GeometryNodeSwitch)
+        """Call node Switch (GeometryNodeSwitch)
 
         Sockets arguments
         -----------------
@@ -37,6 +37,6 @@ class Image(dsock.Image):
             Image
         """
 
-        return nodes.NodeSwitch(false=self, switch1=switch1, true=true, input_type='IMAGE').output
+        return nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE').output
 
 

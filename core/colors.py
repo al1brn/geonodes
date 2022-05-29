@@ -29,6 +29,14 @@ COLORS = {
     'rose'    : (11/12, 1., 0.5),
 }
 
+def gen():
+    for col in COLORS:
+        print(f"light_{col:7s} = color('{col}', 0.25)")
+        print(f"mid_{col:7s}   = color('{col}', 0.50)")
+        print(f"dark_{col:7s}  = color('{col}', 0.75)")
+        print(f"{col:7s}       = color('{col}')")
+        print()
+
 def color(name, saturation=None, value=None):
     
     if isinstance(name, tuple):
@@ -53,46 +61,71 @@ def color(name, saturation=None, value=None):
         
     return c
 
-white       = color('white')
-light_gray  = color('gray', 0.75)
-gray        = color('gray', 0.50)
-dark_gray   = color('gray', 0.25)
-silver      = color('silver')
-black       = color('black')
+white         = color('white')
+black         = color('black')
 
-def red(saturation=None, value=None):
-    return color('red', saturation=saturation, value=value)
+light_gray    = color('gray', 0.25)
+gray          = color('gray', 0.50)
+dark_gray     = color('gray', 0.75)
+silver        = color('silver')
 
-def orange(saturation=None, value=None):
-    return color('orange', saturation=saturation, value=value)
+light_red     = color('red', 0.25)
+mid_red       = color('red', 0.50)
+dark_red      = color('red', 0.75)
+red           = color('red')
 
-def yellow(saturation=None, value=None):
-    return color('yellow', saturation=saturation, value=value)
+light_orange  = color('orange', 0.25)
+mid_orange    = color('orange', 0.50)
+dark_orange   = color('orange', 0.75)
+orange        = color('orange')
 
-def olive(saturation=None, value=None):
-    return color('olive', saturation=saturation, value=value)
+light_yellow  = color('yellow', 0.25)
+mid_yellow    = color('yellow', 0.50)
+dark_yellow   = color('yellow', 0.75)
+yellow        = color('yellow')
 
-def lime(saturation=None, value=None):
-    return color('lime', saturation=saturation, value=value)
+light_olive   = color('olive', 0.25)
+mid_olive     = color('olive', 0.50)
+dark_olive    = color('olive', 0.75)
+olive         = color('olive')
 
-def green(saturation=None, value=None):
-    return color('green', saturation=saturation, value=value)
+light_lime    = color('lime', 0.25)
+mid_lime      = color('lime', 0.50)
+dark_lime     = color('lime', 0.75)
+lime          = color('lime')
 
-def cyan(saturation=None, value=None):
-    return color('cyan', saturation=saturation, value=value)
+light_green   = color('green', 0.25)
+mid_green     = color('green', 0.50)
+dark_green    = color('green', 0.75)
+green         = color('green')
 
-def azure(saturation=None, value=None):
-    return color('azure', saturation=saturation, value=value)
+light_cyan    = color('cyan', 0.25)
+mid_cyan      = color('cyan', 0.50)
+dark_cyan     = color('cyan', 0.75)
+cyan          = color('cyan')
 
-def blue(saturation=None, value=None):
-    return color('blue', saturation=saturation, value=value)
+light_azure   = color('azure', 0.25)
+mid_azure     = color('azure', 0.50)
+dark_azure    = color('azure', 0.75)
+azure         = color('azure')
 
-def violet(saturation=None, value=None):
-    return color('violet', saturation=saturation, value=value)
+light_blue    = color('blue', 0.25)
+mid_blue      = color('blue', 0.50)
+dark_blue     = color('blue', 0.75)
+blue          = color('blue')
 
-def magenta(saturation=None, value=None):
-    return color('magenta', saturation=saturation, value=value)
+light_violet  = color('violet', 0.25)
+mid_violet    = color('violet', 0.50)
+dark_violet   = color('violet', 0.75)
+violet        = color('violet')
 
-def rose(saturation=None, value=None):
-    return color('rose', saturation=saturation, value=value)
+light_magenta = color('magenta', 0.25)
+mid_magenta   = color('magenta', 0.50)
+dark_magenta  = color('magenta', 0.75)
+magenta       = color('magenta')
+
+light_rose    = color('rose', 0.25)
+mid_rose      = color('rose', 0.50)
+dark_rose     = color('rose', 0.75)
+rose          = color('rose')
 

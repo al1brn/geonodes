@@ -34,7 +34,7 @@ class Texture(dsock.Texture):
 
     @staticmethod
     def Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
-        """Call node NodeBrickTexture (ShaderNodeTexBrick)
+        """Call node BrickTexture (ShaderNodeTexBrick)
 
         Sockets arguments
         -----------------
@@ -61,11 +61,11 @@ class Texture(dsock.Texture):
             Sockets [color (Color), fac (Float)]
         """
 
-        return nodes.NodeBrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency)
+        return nodes.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency)
 
     @staticmethod
     def Checker(vector=None, color1=None, color2=None, scale=None):
-        """Call node NodeCheckerTexture (ShaderNodeTexChecker)
+        """Call node CheckerTexture (ShaderNodeTexChecker)
 
         Sockets arguments
         -----------------
@@ -79,11 +79,11 @@ class Texture(dsock.Texture):
             Sockets [color (Color), fac (Float)]
         """
 
-        return nodes.NodeCheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale)
+        return nodes.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale)
 
     @staticmethod
     def Gradient(vector=None, gradient_type='LINEAR'):
-        """Call node NodeGradientTexture (ShaderNodeTexGradient)
+        """Call node GradientTexture (ShaderNodeTexGradient)
 
         Sockets arguments
         -----------------
@@ -98,11 +98,11 @@ class Texture(dsock.Texture):
             Sockets [color (Color), fac (Float)]
         """
 
-        return nodes.NodeGradientTexture(vector=vector, gradient_type=gradient_type)
+        return nodes.GradientTexture(vector=vector, gradient_type=gradient_type)
 
     @staticmethod
     def Magic(vector=None, scale=None, distortion=None, turbulence_depth=2):
-        """Call node NodeMagicTexture (ShaderNodeTexMagic)
+        """Call node MagicTexture (ShaderNodeTexMagic)
 
         Sockets arguments
         -----------------
@@ -119,11 +119,11 @@ class Texture(dsock.Texture):
             Sockets [color (Color), fac (Float)]
         """
 
-        return nodes.NodeMagicTexture(vector=vector, scale=scale, distortion=distortion, turbulence_depth=turbulence_depth)
+        return nodes.MagicTexture(vector=vector, scale=scale, distortion=distortion, turbulence_depth=turbulence_depth)
 
     @staticmethod
     def Musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'):
-        """Call node NodeMusgraveTexture (ShaderNodeTexMusgrave)
+        """Call node MusgraveTexture (ShaderNodeTexMusgrave)
 
         Sockets arguments
         -----------------
@@ -146,11 +146,11 @@ class Texture(dsock.Texture):
             Float
         """
 
-        return nodes.NodeMusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, offset=offset, gain=gain, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type).fac
+        return nodes.MusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, offset=offset, gain=gain, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type).fac
 
     @staticmethod
     def Noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):
-        """Call node NodeNoiseTexture (ShaderNodeTexNoise)
+        """Call node NoiseTexture (ShaderNodeTexNoise)
 
         Sockets arguments
         -----------------
@@ -170,11 +170,11 @@ class Texture(dsock.Texture):
             Sockets [fac (Float), color (Color)]
         """
 
-        return nodes.NodeNoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions)
+        return nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions)
 
     @staticmethod
     def Voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
-        """Call node NodeVoronoiTexture (ShaderNodeTexVoronoi)
+        """Call node VoronoiTexture (ShaderNodeTexVoronoi)
 
         Sockets arguments
         -----------------
@@ -196,11 +196,11 @@ class Texture(dsock.Texture):
             Sockets [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
         """
 
-        return nodes.NodeVoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
+        return nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
 
     @staticmethod
     def Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
-        """Call node NodeWaveTexture (ShaderNodeTexWave)
+        """Call node WaveTexture (ShaderNodeTexWave)
 
         Sockets arguments
         -----------------
@@ -224,11 +224,11 @@ class Texture(dsock.Texture):
             Sockets [color (Color), fac (Float)]
         """
 
-        return nodes.NodeWaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
 
     @staticmethod
     def WhiteNoise(vector=None, w=None, noise_dimensions='3D'):
-        """Call node NodeWhiteNoiseTexture (ShaderNodeTexWhiteNoise)
+        """Call node WhiteNoiseTexture (ShaderNodeTexWhiteNoise)
 
         Sockets arguments
         -----------------
@@ -244,11 +244,11 @@ class Texture(dsock.Texture):
             Sockets [value (Float), color (Color)]
         """
 
-        return nodes.NodeWhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions)
+        return nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions)
 
     @staticmethod
     def Image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
-        """Call node NodeImageTexture (GeometryNodeImageTexture)
+        """Call node ImageTexture (GeometryNodeImageTexture)
 
         Sockets arguments
         -----------------
@@ -266,14 +266,14 @@ class Texture(dsock.Texture):
             Sockets [color (Color), alpha (Float)]
         """
 
-        return nodes.NodeImageTexture(image=image, vector=vector, frame=frame, extension=extension, interpolation=interpolation)
+        return nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=extension, interpolation=interpolation)
 
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
     def switch(self, switch1=None, true=None):
-        """Call node NodeSwitch (GeometryNodeSwitch)
+        """Call node Switch (GeometryNodeSwitch)
 
         Sockets arguments
         -----------------
@@ -290,6 +290,6 @@ class Texture(dsock.Texture):
             Texture
         """
 
-        return nodes.NodeSwitch(false=self, switch1=switch1, true=true, input_type='TEXTURE').output
+        return nodes.Switch(false=self, switch1=switch1, true=true, input_type='TEXTURE').output
 
 

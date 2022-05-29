@@ -126,6 +126,29 @@ COLOR_MIX = {
     'VALUE'         : 'value',
 }
 
+MULTI_CLASSES_NODES = { # Function name and is an attribute. If it is an attribute, use the geometry as geometry socket
+    'FunctionNodeRandomValue'        : ('Random',              False ), # ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
+    'GeometryNodeAccumulateField'    : ('accumulate_field',    False ), # ('FLOAT', 'INT', 'FLOAT_VECTOR')
+    'GeometryNodeAttributeStatistic' : ('attribute_statistic', True  ), # ('FLOAT', 'FLOAT_VECTOR')
+    'GeometryNodeAttributeTransfer'  : ('transfer_attribute',  True  ), # ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+    'GeometryNodeCaptureAttribute'   : ('capture_attribute',   True  ), # ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+    'GeometryNodeFieldAtIndex'       : ('field_at_index',      False ), # ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+    'GeometryNodeRaycast'            : ('raycast',             True  ), # ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+    'GeometryNodeSwitch'             : ('switch',              False ), # ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')
+    'ShaderNodeMapRange'             : ('map_range',           False ), # ('FLOAT', 'FLOAT_VECTOR')
+    
+#   'FunctionNodeCompare'            : ('compare',             False ), # ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')
+#   'GeometryNodeViewer'             : ('viewer',              False ), # ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+    
+}
+
+DATA_TYPES = {
+    'Integer'     : 'INT',
+    'Color'       : 'RGBA',
+    'Vector'      : 'FLOAT_VECTOR',
+    'Color'       : 'FLOAT_COLOR',
+}
+
 # =============================================================================================================================
 # Node calling
 
@@ -238,8 +261,63 @@ class DataClass:
         self.methods_    = []
         
         self.is_global   = False
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Add the multi classes methods
+        
+        for blid, spec in MULTI_CLASSES_NODES.items():
+            wn = self.wnodes[blid]
+            if not self.data_type in wn.parameters[wn.driving_param].values:
+                continue
             
+            meth_name = spec[0]
             
+            fixed = {wn.driving_param: self.data_type}
+            
+            family = 'CONSTRUCTOR' if meth_name[0].upper() == meth_name[0] else 'METHOD'
+            
+            self.add_call(family, blid, meth_name, **fixed)
+            
+        # ----------------------------------------------------------------------------------------------------
+        # FunctionNodeCompare is a little bit complex !
+        
+        blid    = 'FunctionNodeCompare'
+        val_ops = ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL')
+        str_ops = ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+        col_ops = ('EQUAL', 'NOT_EQUAL', 'BRIGHTER', 'DARKER')
+        
+        if self.class_name == 'Integer':
+            for op in val_ops:
+                self.add_call('METHOD', blid, op.lower(), data_type='INT', operation=op, mode='ELEMENT')
+                
+        elif self.class_name == 'Float':
+            for op in val_ops:
+                self.add_call('METHOD', blid, op.lower(), data_type='FLOAT', operation=op, mode='ELEMENT')
+                
+        elif self.class_name == 'Vector':
+            modes = ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+            for op in val_ops:
+                self.add_call('METHOD', blid, op.lower(), data_type='VECTOR', operation=op)
+                
+        elif self.class_name == 'String':
+            for op in str_ops:
+                self.add_call('METHOD', blid, op.lower(), data_type='STRING', operation=op, mode='ELEMENT')
+                
+        elif self.class_name == 'Color':
+            for op in col_ops:
+                self.add_call('METHOD', blid, op.lower(), data_type='RGBA', operation=op, mode='ELEMENT')
+        
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Data type for multi classes nodes (random for instance)
+
+    @property
+    def data_type(self):
+        if self.class_name in DATA_TYPES:
+            return DATA_TYPES[self.class_name]
+        else:
+            return self.class_name.upper()
+        
     # ----------------------------------------------------------------------------------------------------
     # Methods per family
     
@@ -399,10 +477,6 @@ class GlobalGen(DataClass):
 
         self.add_call('FUNCTION', 'FunctionNodeCompare',          meth_name="compare"             )
         self.add_call('FUNCTION', 'GeometryNodeStringJoin',       meth_name="join_strings"        )
-        self.add_call('FUNCTION', 'GeometryNodeAccumulateField',  meth_name="accumulate_field"    )
-        self.add_call('FUNCTION', 'GeometryNodeFieldAtIndex',     meth_name="field_at_index"      )
-        #self.add_call('FUNCTION', 'GeometryNodeCollectionInfo',   meth_name="collection_info", arg_hooks={'collection': 'Collection.blender_collection'})
-        #self.add_call('FUNCTION', 'GeometryNodeObjectInfo',       meth_name="object_info",     arg_hooks={'object':     'Object.blender_object'})
         
         self.add_call('FUNCTION', 'GeometryNodeInputSceneTime', 'scene')
 
@@ -419,7 +493,7 @@ class GlobalGen(DataClass):
         blid = 'ShaderNodeMixRGB'
         for op, meth_name in COLOR_MIX.items():
             self.add_call('FUNCTION', blid, f"color_{meth_name}", blend_type=op)
-
+            
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # Boolean
@@ -443,16 +517,6 @@ class BooleanGen(DataClass):
         self.add_call('METHOD', blid, 'imply',  operation='IMPLY'   )
         self.add_call('METHOD', blid, 'nimply', operation='NIMPLY'  )
         
-        # ----------------------------------------------------------------------------------------------------
-        # Constructors
-
-        self.add_call('CONSTRUCTOR', 'FunctionNodeRandomValue', 'Random', data_type='BOOLEAN')
-
-        # ----------------------------------------------------------------------------------------------------
-        # Other methods
-        
-        self.add_call('METHOD', 'GeometryNodeFieldAtIndex', "field_at_index", self_name='value', ret_class='Boolean', data_type='BOOLEAN')
-        self.add_call('METHOD', 'GeometryNodeSwitch', 'switch', self_name='false', ret_class='Boolean',     input_type='BOOLEAN')
         
         
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -462,10 +526,6 @@ class IntegerGen(DataClass):
     def __init__(self, nodes):
         super().__init__(nodes, 'Integer', 'dsock.Integer')
         
-        # ----------------------------------------------------------------------------------------------------
-        # Constructors
-
-        self.add_call('CONSTRUCTOR', 'FunctionNodeRandomValue', 'Random', data_type='INT')
 
         # ----------------------------------------------------------------------------------------------------
         # Operations
@@ -475,14 +535,6 @@ class IntegerGen(DataClass):
             ret_class = 'Integer' if spec[1] == 'SAME' else spec[1]
             self.add_call('METHOD', blid, spec[0], self_name="value0", ret_class=ret_class, operation=op)
 
-        # ----------------------------------------------------------------------------------------------------
-        # Methods
-
-        self.add_call('METHOD', 'GeometryNodeSwitch', 'switch', self_name='false', ret_class='Integer',     input_type='INT'    )
-
-        self.add_call('METHOD', 'GeometryNodeAccumulateField',  "accumulate_field", data_type = 'INT')
-        self.add_call('METHOD', 'GeometryNodeFieldAtIndex',     "field_at_index", self_name='value', ret_class='Integer', data_type = 'INT')
-        
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # Float
@@ -491,11 +543,6 @@ class FloatGen(DataClass):
     def __init__(self, nodes):
         super().__init__(nodes, 'Float', 'dsock.Float')
         
-        # ----------------------------------------------------------------------------------------------------
-        # Constructors
-
-        self.add_call('CONSTRUCTOR', 'FunctionNodeRandomValue', 'Random', data_type='FLOAT')
-
         # ----------------------------------------------------------------------------------------------------
         # Operations
         
@@ -507,20 +554,14 @@ class FloatGen(DataClass):
         # ----------------------------------------------------------------------------------------------------
         # Methods
 
-        self.add_call('METHOD', 'GeometryNodeSwitch', 'switch', self_name='false', ret_class='Float',       input_type='FLOAT'  )
-        
         self.add_call('METHOD', 'FunctionNodeFloatToInt',     'to_integer',   ret_class='Integer')
         self.add_call('METHOD', 'FunctionNodeValueToString',  'to_string',    ret_class='String' )
 
-        self.add_call('METHOD', 'GeometryNodeAccumulateField',  meth_name="accumulate_field", data_type='FLOAT')
-        self.add_call('METHOD', 'GeometryNodeFieldAtIndex',     meth_name="field_at_index",   self_name='value', ret_class='Float', data_type='FLOAT')
         self.add_call('METHOD', 'ShaderNodeValToRGB',        'color_ramp'       )
         
 
         self.add_call('STACK', 'ShaderNodeFloatCurve',       'curve'            )
         self.add_call('STACK', 'ShaderNodeClamp',            'clamp'            )
-        
-        self.add_call('STACK', 'ShaderNodeMapRange',         'map_range',    data_type = 'FLOAT')
         
         
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -533,7 +574,6 @@ class VectorGen(DataClass):
         # ----------------------------------------------------------------------------------------------------
         # Constructors
 
-        self.add_call('CONSTRUCTOR', 'FunctionNodeRandomValue',         'Random', data_type='FLOAT_VECTOR')
         self.add_call('CONSTRUCTOR', 'ShaderNodeCombineXYZ',            'Combine')
         self.add_call('CONSTRUCTOR', 'FunctionNodeAlignEulerToVector',  'AlignToVector')
         
@@ -552,16 +592,10 @@ class VectorGen(DataClass):
         # ----------------------------------------------------------------------------------------------------
         # Methods
     
-        self.add_call('METHOD', 'GeometryNodeSwitch', 'switch', self_name='false', ret_class='Vector',      input_type='VECTOR' )
-        
         self.add_call('STACK', 'ShaderNodeVectorCurve',           'curves'          )
         self.add_call('STACK', 'FunctionNodeAlignEulerToVector',  'align_to_vector' )
         self.add_call('STACK', 'FunctionNodeRotateEuler',         'rotate_euler'    )
-        self.add_call('STACK', 'ShaderNodeMapRange',              'map_range',      data_type = 'FLOAT_VECTOR')
-        
         self.add_call('METHOD', 'ShaderNodeVectorRotate',         'rotate'          )
-        self.add_call('METHOD', 'GeometryNodeAccumulateField',    'accumulate_field', data_type = 'FLOAT_VECTOR')
-        self.add_call('METHOD', 'GeometryNodeFieldAtIndex',       'field_at_index',   self_name='value', ret_class='Vector', data_type = 'FLOAT_VECTOR')
         
         
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -592,10 +626,7 @@ class ColorGen(DataClass):
         # Methods
 
         self.add_call('STACK', 'ShaderNodeRGBCurve',         'curves')
-
         self.add_call('METHOD', 'ShaderNodeMixRGB',          'mix')
-        self.add_call('METHOD', 'GeometryNodeFieldAtIndex',  'field_at_index', self_name='value', ret_class='Color', data_type = 'FLOAT_COLOR')
-        self.add_call('METHOD', 'GeometryNodeSwitch', 'switch', self_name='false', ret_class='Color',       input_type='RGBA'   )
         
 
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -618,8 +649,6 @@ class StringGen(DataClass):
         # ----------------------------------------------------------------------------------------------------
         # Methods
         
-        self.add_call('METHOD', 'GeometryNodeSwitch', 'switch', self_name='false', ret_class='String',      input_type='STRING' )
-        
         
         self.add_call('STACK', 'FunctionNodeReplaceString',      'replace')
         
@@ -634,8 +663,6 @@ class GeometryGen(DataClass):
     def __init__(self, nodes):
         super().__init__(nodes, 'Geometry', 'dsock.Geometry')
         
-        self.add_call('METHOD', 'GeometryNodeSwitch', 'switch', self_name='false', ret_class='Geometry',    input_type='GEOMETRY')
-
         self.add_attribute('GeometryNodeInputNormal',       'normal',           domains=None  , capture=True)
         self.add_attribute('GeometryNodeInputTangent',      'tangent',          domains=None  , capture=True)
         
@@ -672,14 +699,11 @@ class GeometryGen(DataClass):
         
         self.add_call('METHOD', 'GeometryNodeAttributeDomainSize',  'attribute_domain_size' )
         self.add_call('METHOD', 'GeometryNodeAttributeRemove',      'attribute_remove'      )
-        self.add_call('METHOD', 'GeometryNodeAttributeStatistic',   'attribute_statistic'   )
         self.add_call('METHOD', 'GeometryNodeSeparateGeometry',     'components'            )
-        self.add_call('METHOD', 'GeometryNodeCaptureAttribute',     'capture_attribute'     )
         self.add_call('METHOD', 'GeometryNodeConvexHull',           'convex_hull'           )
         self.add_call('METHOD', 'GeometryNodeGeometryToInstance',   'to_instance'           )
         self.add_call('METHOD', 'GeometryNodeJoinGeometry',         'join'                  )
         self.add_call('METHOD', 'GeometryNodeProximity',            'proximity'             )
-        self.add_call('METHOD', 'GeometryNodeRaycast',              'raycast'               )
         
         
         
@@ -870,8 +894,6 @@ class TextureGen(DataClass):
         self.add_call('STATIC', 'ShaderNodeTexWhiteNoise'     ,'WhiteNoise')
         self.add_call('STATIC', 'GeometryNodeImageTexture'    ,'Image'     )
         
-        self.add_call('METHOD', 'GeometryNodeSwitch', 'switch', self_name='false', ret_class='Texture',     input_type='TEXTURE' )
-
 # -----------------------------------------------------------------------------------------------------------------------------
 # Material
         
@@ -879,7 +901,6 @@ class MaterialGen(DataClass):
     def __init__(self, nodes):
         super().__init__(nodes, 'Material', 'dsock.Material')
 
-        self.add_call('METHOD', 'GeometryNodeSwitch', 'switch', self_name='false', ret_class='Material', input_type='MATERIAL')
         self.add_call('METHOD', 'GeometryNodeMaterialSelection', 'selection', ret_class='Boolean')
         
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -889,8 +910,6 @@ class ImageGen(DataClass):
     def __init__(self, nodes):
         super().__init__(nodes, 'Image', 'dsock.Image')
         
-        self.add_call('METHOD', 'GeometryNodeSwitch', 'switch', self_name='false', ret_class='Image',    input_type='IMAGE'  )
-        
         
 # -----------------------------------------------------------------------------------------------------------------------------
 # Collection
@@ -898,8 +917,6 @@ class ImageGen(DataClass):
 class CollectionGen(DataClass):
     def __init__(self, nodes):
         super().__init__(nodes, 'Collection', 'dsock.Collection')
-
-        self.add_call('METHOD', 'GeometryNodeSwitch', 'switch', self_name='false', ret_class='Collection',  input_type='COLLECTION')
 
         self.add_call('METHOD', 'GeometryNodeCollectionInfo', 'info')
         
@@ -909,8 +926,6 @@ class CollectionGen(DataClass):
 class ObjectGen(DataClass):
     def __init__(self, nodes):
         super().__init__(nodes, 'Object', 'dsock.Object')
-
-        self.add_call('METHOD', 'GeometryNodeSwitch', 'switch', self_name='false', ret_class='Object',      input_type='OBJECT' )
 
         self.add_property('GeometryNodeObjectInfo', 'info')
 

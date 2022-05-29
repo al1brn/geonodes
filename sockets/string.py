@@ -17,7 +17,12 @@ class String(dsock.String):
 
     Methods
     -------
+        average                   : result       (Boolean)
+        direction                 : result       (Boolean)
+        dot_product               : result       (Boolean)
+        element                   : result       (Boolean)
         join                      : string       (String)
+        length                    : result       (Boolean)
         slice                     : string       (String)
         switch                    : output       (String)
         to_curves                 : Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
@@ -35,7 +40,7 @@ class String(dsock.String):
 
     @property
     def length(self):
-        """Call node NodeStringLength (FunctionNodeStringLength)
+        """Call node StringLength (FunctionNodeStringLength)
 
         Sockets arguments
         -----------------
@@ -47,30 +52,15 @@ class String(dsock.String):
         """
 
         if self.length_ is None:
-            self.length_ = nodes.NodeStringLength(string=self, label=f"{self.node_chain_label}.length").length
+            self.length_ = nodes.StringLength(string=self, label=f"{self.node_chain_label}.length").length
         return self.length_
 
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def join(self, *strings, delimiter=None):
-        """Call node NodeJoinStrings (GeometryNodeStringJoin)
-
-        Sockets arguments
-        -----------------
-            strings        : *String (self)
-            delimiter      : String
-
-        Returns
-        -------
-            String
-        """
-
-        return nodes.NodeJoinStrings(self, *strings, delimiter=delimiter).string
-
     def switch(self, switch0=None, true=None):
-        """Call node NodeSwitch (GeometryNodeSwitch)
+        """Call node Switch (GeometryNodeSwitch)
 
         Sockets arguments
         -----------------
@@ -87,10 +77,130 @@ class String(dsock.String):
             String
         """
 
-        return nodes.NodeSwitch(false=self, switch0=switch0, true=true, input_type='STRING').output
+        return nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING').output
+
+    def element(self, b=None):
+        """Call node Compare (FunctionNodeCompare)
+
+        Sockets arguments
+        -----------------
+            a              : String (self)
+            b              : String
+
+        Fixed parameters
+        ----------------
+            data_type      : 'STRING'
+            mode           : 'ELEMENT'
+            operation      : 'ELEMENT'
+
+        Returns
+        -------
+            Boolean
+        """
+
+        return nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT').result
+
+    def length(self, b=None):
+        """Call node Compare (FunctionNodeCompare)
+
+        Sockets arguments
+        -----------------
+            a              : String (self)
+            b              : String
+
+        Fixed parameters
+        ----------------
+            data_type      : 'STRING'
+            mode           : 'ELEMENT'
+            operation      : 'LENGTH'
+
+        Returns
+        -------
+            Boolean
+        """
+
+        return nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH').result
+
+    def average(self, b=None):
+        """Call node Compare (FunctionNodeCompare)
+
+        Sockets arguments
+        -----------------
+            a              : String (self)
+            b              : String
+
+        Fixed parameters
+        ----------------
+            data_type      : 'STRING'
+            mode           : 'ELEMENT'
+            operation      : 'AVERAGE'
+
+        Returns
+        -------
+            Boolean
+        """
+
+        return nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE').result
+
+    def dot_product(self, b=None):
+        """Call node Compare (FunctionNodeCompare)
+
+        Sockets arguments
+        -----------------
+            a              : String (self)
+            b              : String
+
+        Fixed parameters
+        ----------------
+            data_type      : 'STRING'
+            mode           : 'ELEMENT'
+            operation      : 'DOT_PRODUCT'
+
+        Returns
+        -------
+            Boolean
+        """
+
+        return nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT').result
+
+    def direction(self, b=None):
+        """Call node Compare (FunctionNodeCompare)
+
+        Sockets arguments
+        -----------------
+            a              : String (self)
+            b              : String
+
+        Fixed parameters
+        ----------------
+            data_type      : 'STRING'
+            mode           : 'ELEMENT'
+            operation      : 'DIRECTION'
+
+        Returns
+        -------
+            Boolean
+        """
+
+        return nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION').result
+
+    def join(self, *strings, delimiter=None):
+        """Call node JoinStrings (GeometryNodeStringJoin)
+
+        Sockets arguments
+        -----------------
+            strings        : *String (self)
+            delimiter      : String
+
+        Returns
+        -------
+            String
+        """
+
+        return nodes.JoinStrings(self, *strings, delimiter=delimiter).string
 
     def slice(self, position=None, length=None):
-        """Call node NodeSliceString (FunctionNodeSliceString)
+        """Call node SliceString (FunctionNodeSliceString)
 
         Sockets arguments
         -----------------
@@ -103,10 +213,10 @@ class String(dsock.String):
             String
         """
 
-        return nodes.NodeSliceString(string=self, position=position, length=length).string
+        return nodes.SliceString(string=self, position=position, length=length).string
 
     def to_curves(self, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
-        """Call node NodeStringToCurves (GeometryNodeStringToCurves)
+        """Call node StringToCurves (GeometryNodeStringToCurves)
 
         Sockets arguments
         -----------------
@@ -130,14 +240,14 @@ class String(dsock.String):
             Sockets [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
         """
 
-        return nodes.NodeStringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
+        return nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
 
 
     # ----------------------------------------------------------------------------------------------------
     # Stacked methods
 
     def replace(self, find=None, replace=None):
-        """Call node NodeReplaceString (FunctionNodeReplaceString)
+        """Call node ReplaceString (FunctionNodeReplaceString)
 
         Sockets arguments
         -----------------
@@ -151,6 +261,6 @@ class String(dsock.String):
 
         """
 
-        return self.stack(nodes.NodeReplaceString(string=self, find=find, replace=replace))
+        return self.stack(nodes.ReplaceString(string=self, find=find, replace=replace))
 
 

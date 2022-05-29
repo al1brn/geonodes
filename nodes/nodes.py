@@ -1,9 +1,9 @@
 from geonodes.core.node import Node
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeAlignEulerToVector for FunctionNodeAlignEulerToVector
+# Node AlignEulerToVector for FunctionNodeAlignEulerToVector
 
-class NodeAlignEulerToVector(Node):
+class AlignEulerToVector(Node):
 
     """Node 'Align Euler to Vector' (FunctionNodeAlignEulerToVector)
 
@@ -59,9 +59,9 @@ class NodeAlignEulerToVector(Node):
         self.bnode.pivot_axis = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeBooleanMath for FunctionNodeBooleanMath
+# Node BooleanMath for FunctionNodeBooleanMath
 
-class NodeBooleanMath(Node):
+class BooleanMath(Node):
 
     """Node 'Boolean Math' (FunctionNodeBooleanMath)
 
@@ -105,9 +105,9 @@ class NodeBooleanMath(Node):
         self.bnode.operation = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeCompare for FunctionNodeCompare
+# Node Compare for FunctionNodeCompare
 
-class NodeCompare(Node):
+class Compare(Node):
 
     """Node 'Compare' (FunctionNodeCompare)
 
@@ -199,9 +199,9 @@ class NodeCompare(Node):
         self.bnode.operation = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeFloatToInteger for FunctionNodeFloatToInt
+# Node FloatToInteger for FunctionNodeFloatToInt
 
-class NodeFloatToInteger(Node):
+class FloatToInteger(Node):
 
     """Node 'Float to Integer' (FunctionNodeFloatToInt)
 
@@ -243,9 +243,9 @@ class NodeFloatToInteger(Node):
         self.bnode.rounding_mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeBoolean for FunctionNodeInputBool
+# Node Boolean for FunctionNodeInputBool
 
-class NodeBoolean(Node):
+class Boolean(Node):
 
     """Node 'Boolean' (FunctionNodeInputBool)
 
@@ -279,9 +279,9 @@ class NodeBoolean(Node):
         self.bnode.boolean = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeColor for FunctionNodeInputColor
+# Node Color for FunctionNodeInputColor
 
-class NodeColor(Node):
+class Color(Node):
 
     """Node 'Color' (FunctionNodeInputColor)
 
@@ -299,9 +299,9 @@ class NodeColor(Node):
         self.output_sockets  = {'color': self.color}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeInteger for FunctionNodeInputInt
+# Node Integer for FunctionNodeInputInt
 
-class NodeInteger(Node):
+class Integer(Node):
 
     """Node 'Integer' (FunctionNodeInputInt)
 
@@ -335,9 +335,9 @@ class NodeInteger(Node):
         self.bnode.integer = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSpecialCharacters for FunctionNodeInputSpecialCharacters
+# Node SpecialCharacters for FunctionNodeInputSpecialCharacters
 
-class NodeSpecialCharacters(Node):
+class SpecialCharacters(Node):
 
     """Node 'Special Characters' (FunctionNodeInputSpecialCharacters)
 
@@ -357,9 +357,9 @@ class NodeSpecialCharacters(Node):
         self.output_sockets  = {'line_break': self.line_break, 'tab': self.tab}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeString for FunctionNodeInputString
+# Node String for FunctionNodeInputString
 
-class NodeString(Node):
+class String(Node):
 
     """Node 'String' (FunctionNodeInputString)
 
@@ -393,9 +393,9 @@ class NodeString(Node):
         self.bnode.string = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeVector for FunctionNodeInputVector
+# Node Vector for FunctionNodeInputVector
 
-class NodeVector(Node):
+class Vector(Node):
 
     """Node 'Vector' (FunctionNodeInputVector)
 
@@ -429,9 +429,9 @@ class NodeVector(Node):
         self.bnode.vector = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeRandomValue for FunctionNodeRandomValue
+# Node RandomValue for FunctionNodeRandomValue
 
-class NodeRandomValue(Node):
+class RandomValue(Node):
 
     """Node 'Random Value' (FunctionNodeRandomValue)
 
@@ -505,9 +505,9 @@ class NodeRandomValue(Node):
         self.bnode.data_type = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeReplaceString for FunctionNodeReplaceString
+# Node ReplaceString for FunctionNodeReplaceString
 
-class NodeReplaceString(Node):
+class ReplaceString(Node):
 
     """Node 'Replace String' (FunctionNodeReplaceString)
 
@@ -537,9 +537,9 @@ class NodeReplaceString(Node):
         self.output_sockets  = {'string': self.string}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeRotateEuler for FunctionNodeRotateEuler
+# Node RotateEuler for FunctionNodeRotateEuler
 
-class NodeRotateEuler(Node):
+class RotateEuler(Node):
 
     """Node 'Rotate Euler' (FunctionNodeRotateEuler)
 
@@ -587,9 +587,9 @@ class NodeRotateEuler(Node):
         self.bnode.space = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSliceString for FunctionNodeSliceString
+# Node SliceString for FunctionNodeSliceString
 
-class NodeSliceString(Node):
+class SliceString(Node):
 
     """Node 'Slice String' (FunctionNodeSliceString)
 
@@ -619,9 +619,9 @@ class NodeSliceString(Node):
         self.output_sockets  = {'string': self.string}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeStringLength for FunctionNodeStringLength
+# Node StringLength for FunctionNodeStringLength
 
-class NodeStringLength(Node):
+class StringLength(Node):
 
     """Node 'String Length' (FunctionNodeStringLength)
 
@@ -647,9 +647,9 @@ class NodeStringLength(Node):
         self.output_sockets  = {'length': self.length}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeValueToString for FunctionNodeValueToString
+# Node ValueToString for FunctionNodeValueToString
 
-class NodeValueToString(Node):
+class ValueToString(Node):
 
     """Node 'Value to String' (FunctionNodeValueToString)
 
@@ -677,9 +677,9 @@ class NodeValueToString(Node):
         self.output_sockets  = {'string': self.string}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeAccumulateField for GeometryNodeAccumulateField
+# Node AccumulateField for GeometryNodeAccumulateField
 
-class NodeAccumulateField(Node):
+class AccumulateField(Node):
 
     """Node 'Accumulate Field' (GeometryNodeAccumulateField)
 
@@ -761,9 +761,9 @@ class NodeAccumulateField(Node):
         self.bnode.domain = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeDomainSize for GeometryNodeAttributeDomainSize
+# Node DomainSize for GeometryNodeAttributeDomainSize
 
-class NodeDomainSize(Node):
+class DomainSize(Node):
 
     """Node 'Domain Size' (GeometryNodeAttributeDomainSize)
 
@@ -815,9 +815,9 @@ class NodeDomainSize(Node):
         self.bnode.component = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeAttributeRemove for GeometryNodeAttributeRemove
+# Node AttributeRemove for GeometryNodeAttributeRemove
 
-class NodeAttributeRemove(Node):
+class AttributeRemove(Node):
 
     """Node 'Attribute Remove' (GeometryNodeAttributeRemove)
 
@@ -845,9 +845,9 @@ class NodeAttributeRemove(Node):
         self.output_sockets  = {'geometry': self.geometry}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeAttributeStatistic for GeometryNodeAttributeStatistic
+# Node AttributeStatistic for GeometryNodeAttributeStatistic
 
-class NodeAttributeStatistic(Node):
+class AttributeStatistic(Node):
 
     """Node 'Attribute Statistic' (GeometryNodeAttributeStatistic)
 
@@ -940,9 +940,9 @@ class NodeAttributeStatistic(Node):
         self.bnode.domain = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeTransferAttribute for GeometryNodeAttributeTransfer
+# Node TransferAttribute for GeometryNodeAttributeTransfer
 
-class NodeTransferAttribute(Node):
+class TransferAttribute(Node):
 
     """Node 'Transfer Attribute' (GeometryNodeAttributeTransfer)
 
@@ -1038,9 +1038,9 @@ class NodeTransferAttribute(Node):
         self.bnode.mapping = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeBoundingBox for GeometryNodeBoundBox
+# Node BoundingBox for GeometryNodeBoundBox
 
-class NodeBoundingBox(Node):
+class BoundingBox(Node):
 
     """Node 'Bounding Box' (GeometryNodeBoundBox)
 
@@ -1070,9 +1070,9 @@ class NodeBoundingBox(Node):
         self.output_sockets  = {'bounding_box': self.bounding_box, 'min': self.min, 'max': self.max}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeCaptureAttribute for GeometryNodeCaptureAttribute
+# Node CaptureAttribute for GeometryNodeCaptureAttribute
 
-class NodeCaptureAttribute(Node):
+class CaptureAttribute(Node):
 
     """Node 'Capture Attribute' (GeometryNodeCaptureAttribute)
 
@@ -1156,9 +1156,9 @@ class NodeCaptureAttribute(Node):
         self.bnode.domain = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeCollectionInfo for GeometryNodeCollectionInfo
+# Node CollectionInfo for GeometryNodeCollectionInfo
 
-class NodeCollectionInfo(Node):
+class CollectionInfo(Node):
 
     """Node 'Collection Info' (GeometryNodeCollectionInfo)
 
@@ -1204,9 +1204,9 @@ class NodeCollectionInfo(Node):
         self.bnode.transform_space = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeConvexHull for GeometryNodeConvexHull
+# Node ConvexHull for GeometryNodeConvexHull
 
-class NodeConvexHull(Node):
+class ConvexHull(Node):
 
     """Node 'Convex Hull' (GeometryNodeConvexHull)
 
@@ -1232,9 +1232,9 @@ class NodeConvexHull(Node):
         self.output_sockets  = {'convex_hull': self.convex_hull}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeArc for GeometryNodeCurveArc
+# Node Arc for GeometryNodeCurveArc
 
-class NodeArc(Node):
+class Arc(Node):
 
     """Node 'Arc' (GeometryNodeCurveArc)
 
@@ -1257,7 +1257,7 @@ class NodeArc(Node):
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
         center          : Vector
         normal          : Vector
         radius          : Float
@@ -1285,7 +1285,7 @@ class NodeArc(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.center          = self.Vector(self.bnode.outputs[1])
         self.normal          = self.Vector(self.bnode.outputs[2])
         self.radius          = self.Float(self.bnode.outputs[3])
@@ -1300,9 +1300,9 @@ class NodeArc(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeEndpointSelection for GeometryNodeCurveEndpointSelection
+# Node EndpointSelection for GeometryNodeCurveEndpointSelection
 
-class NodeEndpointSelection(Node):
+class EndpointSelection(Node):
 
     """Node 'Endpoint Selection' (GeometryNodeCurveEndpointSelection)
 
@@ -1330,9 +1330,9 @@ class NodeEndpointSelection(Node):
         self.output_sockets  = {'selection': self.selection}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeHandleTypeSelection for GeometryNodeCurveHandleTypeSelection
+# Node HandleTypeSelection for GeometryNodeCurveHandleTypeSelection
 
-class NodeHandleTypeSelection(Node):
+class HandleTypeSelection(Node):
 
     """Node 'Handle Type Selection' (GeometryNodeCurveHandleTypeSelection)
 
@@ -1376,15 +1376,15 @@ class NodeHandleTypeSelection(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeCurveLength for GeometryNodeCurveLength
+# Node CurveLength for GeometryNodeCurveLength
 
-class NodeCurveLength(Node):
+class CurveLength(Node):
 
     """Node 'Curve Length' (GeometryNodeCurveLength)
 
     Input sockets
     -------------
-        curve           : Geometry
+        curve           : Curve
 
     Output sockets
     --------------
@@ -1404,9 +1404,9 @@ class NodeCurveLength(Node):
         self.output_sockets  = {'length': self.length}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeBezierSegment for GeometryNodeCurvePrimitiveBezierSegment
+# Node BezierSegment for GeometryNodeCurvePrimitiveBezierSegment
 
-class NodeBezierSegment(Node):
+class BezierSegment(Node):
 
     """Node 'Bezier Segment' (GeometryNodeCurvePrimitiveBezierSegment)
 
@@ -1424,7 +1424,7 @@ class NodeBezierSegment(Node):
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
     """
 
     def __init__(self, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION', label=None):
@@ -1444,7 +1444,7 @@ class NodeBezierSegment(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.output_sockets  = {'curve': self.curve}
 
     @property
@@ -1456,9 +1456,9 @@ class NodeBezierSegment(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeCurveCircle for GeometryNodeCurvePrimitiveCircle
+# Node CurveCircle for GeometryNodeCurvePrimitiveCircle
 
-class NodeCurveCircle(Node):
+class CurveCircle(Node):
 
     """Node 'Curve Circle' (GeometryNodeCurvePrimitiveCircle)
 
@@ -1476,7 +1476,7 @@ class NodeCurveCircle(Node):
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
         center          : Vector
     """
 
@@ -1497,7 +1497,7 @@ class NodeCurveCircle(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.center          = self.Vector(self.bnode.outputs[1])
         self.output_sockets  = {'curve': self.curve, 'center': self.center}
 
@@ -1510,9 +1510,9 @@ class NodeCurveCircle(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeCurveLine for GeometryNodeCurvePrimitiveLine
+# Node CurveLine for GeometryNodeCurvePrimitiveLine
 
-class NodeCurveLine(Node):
+class CurveLine(Node):
 
     """Node 'Curve Line' (GeometryNodeCurvePrimitiveLine)
 
@@ -1529,7 +1529,7 @@ class NodeCurveLine(Node):
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
     """
 
     def __init__(self, start=None, end=None, direction=None, length=None, mode='POINTS', label=None):
@@ -1548,7 +1548,7 @@ class NodeCurveLine(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.output_sockets  = {'curve': self.curve}
 
     @property
@@ -1560,9 +1560,9 @@ class NodeCurveLine(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeQuadrilateral for GeometryNodeCurvePrimitiveQuadrilateral
+# Node Quadrilateral for GeometryNodeCurvePrimitiveQuadrilateral
 
-class NodeQuadrilateral(Node):
+class Quadrilateral(Node):
 
     """Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
 
@@ -1586,7 +1586,7 @@ class NodeQuadrilateral(Node):
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
     """
 
     def __init__(self, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', label=None):
@@ -1612,7 +1612,7 @@ class NodeQuadrilateral(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.output_sockets  = {'curve': self.curve}
 
     @property
@@ -1624,9 +1624,9 @@ class NodeQuadrilateral(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeQuadraticBezier for GeometryNodeCurveQuadraticBezier
+# Node QuadraticBezier for GeometryNodeCurveQuadraticBezier
 
-class NodeQuadraticBezier(Node):
+class QuadraticBezier(Node):
 
     """Node 'Quadratic Bezier' (GeometryNodeCurveQuadraticBezier)
 
@@ -1639,7 +1639,7 @@ class NodeQuadraticBezier(Node):
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
     """
 
     def __init__(self, resolution=None, start=None, middle=None, end=None, label=None):
@@ -1654,19 +1654,19 @@ class NodeQuadraticBezier(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.output_sockets  = {'curve': self.curve}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSetHandleType for GeometryNodeCurveSetHandles
+# Node SetHandleType for GeometryNodeCurveSetHandles
 
-class NodeSetHandleType(Node):
+class SetHandleType(Node):
 
     """Node 'Set Handle Type' (GeometryNodeCurveSetHandles)
 
     Input sockets
     -------------
-        curve           : Geometry
+        curve           : Curve
         selection       : Boolean
 
     Parameters
@@ -1676,7 +1676,7 @@ class NodeSetHandleType(Node):
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
     """
 
     def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None):
@@ -1694,7 +1694,7 @@ class NodeSetHandleType(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.output_sockets  = {'curve': self.curve}
 
     @property
@@ -1714,9 +1714,9 @@ class NodeSetHandleType(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSpiral for GeometryNodeCurveSpiral
+# Node Spiral for GeometryNodeCurveSpiral
 
-class NodeSpiral(Node):
+class Spiral(Node):
 
     """Node 'Spiral' (GeometryNodeCurveSpiral)
 
@@ -1731,7 +1731,7 @@ class NodeSpiral(Node):
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
     """
 
     def __init__(self, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, label=None):
@@ -1748,19 +1748,19 @@ class NodeSpiral(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.output_sockets  = {'curve': self.curve}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSetSplineType for GeometryNodeCurveSplineType
+# Node SetSplineType for GeometryNodeCurveSplineType
 
-class NodeSetSplineType(Node):
+class SetSplineType(Node):
 
     """Node 'Set Spline Type' (GeometryNodeCurveSplineType)
 
     Input sockets
     -------------
-        curve           : Geometry
+        curve           : Curve
         selection       : Boolean
 
     Parameters
@@ -1769,7 +1769,7 @@ class NodeSetSplineType(Node):
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
     """
 
     def __init__(self, curve=None, selection=None, spline_type='POLY', label=None):
@@ -1786,7 +1786,7 @@ class NodeSetSplineType(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.output_sockets  = {'curve': self.curve}
 
     @property
@@ -1798,9 +1798,9 @@ class NodeSetSplineType(Node):
         self.bnode.spline_type = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeStar for GeometryNodeCurveStar
+# Node Star for GeometryNodeCurveStar
 
-class NodeStar(Node):
+class Star(Node):
 
     """Node 'Star' (GeometryNodeCurveStar)
 
@@ -1813,7 +1813,7 @@ class NodeStar(Node):
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
         outer_points    : Boolean
     """
 
@@ -1829,26 +1829,26 @@ class NodeStar(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.outer_points    = self.Boolean(self.bnode.outputs[1])
         self.output_sockets  = {'curve': self.curve, 'outer_points': self.outer_points}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeCurveToMesh for GeometryNodeCurveToMesh
+# Node CurveToMesh for GeometryNodeCurveToMesh
 
-class NodeCurveToMesh(Node):
+class CurveToMesh(Node):
 
     """Node 'Curve to Mesh' (GeometryNodeCurveToMesh)
 
     Input sockets
     -------------
-        curve           : Geometry
+        curve           : Curve
         profile_curve   : Geometry
         fill_caps       : Boolean
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
     """
 
     def __init__(self, curve=None, profile_curve=None, fill_caps=None, label=None):
@@ -1862,19 +1862,19 @@ class NodeCurveToMesh(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.output_sockets  = {'mesh': self.mesh}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeCurveToPoints for GeometryNodeCurveToPoints
+# Node CurveToPoints for GeometryNodeCurveToPoints
 
-class NodeCurveToPoints(Node):
+class CurveToPoints(Node):
 
     """Node 'Curve to Points' (GeometryNodeCurveToPoints)
 
     Input sockets
     -------------
-        curve           : Geometry
+        curve           : Curve
         count           : Integer
         length          : Float
 
@@ -1884,7 +1884,7 @@ class NodeCurveToPoints(Node):
 
     Output sockets
     --------------
-        points          : Geometry
+        points          : Points
         tangent         : Vector
         normal          : Vector
         rotation        : Vector
@@ -1905,7 +1905,7 @@ class NodeCurveToPoints(Node):
 
         # Output sockets
 
-        self.points          = self.Geometry(self.bnode.outputs[0])
+        self.points          = self.Points(self.bnode.outputs[0])
         self.tangent         = self.Vector(self.bnode.outputs[1])
         self.normal          = self.Vector(self.bnode.outputs[2])
         self.rotation        = self.Vector(self.bnode.outputs[3])
@@ -1920,9 +1920,9 @@ class NodeCurveToPoints(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeDeleteGeometry for GeometryNodeDeleteGeometry
+# Node DeleteGeometry for GeometryNodeDeleteGeometry
 
-class NodeDeleteGeometry(Node):
+class DeleteGeometry(Node):
 
     """Node 'Delete Geometry' (GeometryNodeDeleteGeometry)
 
@@ -1976,15 +1976,15 @@ class NodeDeleteGeometry(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeDistributePointsOnFaces for GeometryNodeDistributePointsOnFaces
+# Node DistributePointsOnFaces for GeometryNodeDistributePointsOnFaces
 
-class NodeDistributePointsOnFaces(Node):
+class DistributePointsOnFaces(Node):
 
     """Node 'Distribute Points on Faces' (GeometryNodeDistributePointsOnFaces)
 
     Input sockets
     -------------
-        mesh            : Geometry
+        mesh            : Mesh
         selection       : Boolean
         distance_min    : Float
         density_max     : Float
@@ -1998,7 +1998,7 @@ class NodeDistributePointsOnFaces(Node):
 
     Output sockets
     --------------
-        points          : Geometry
+        points          : Points
         normal          : Vector
         rotation        : Vector
     """
@@ -2022,7 +2022,7 @@ class NodeDistributePointsOnFaces(Node):
 
         # Output sockets
 
-        self.points          = self.Geometry(self.bnode.outputs[0])
+        self.points          = self.Points(self.bnode.outputs[0])
         self.normal          = self.Vector(self.bnode.outputs[1])
         self.rotation        = self.Vector(self.bnode.outputs[2])
         self.output_sockets  = {'points': self.points, 'normal': self.normal, 'rotation': self.rotation}
@@ -2036,15 +2036,15 @@ class NodeDistributePointsOnFaces(Node):
         self.bnode.distribute_method = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeDualMesh for GeometryNodeDualMesh
+# Node DualMesh for GeometryNodeDualMesh
 
-class NodeDualMesh(Node):
+class DualMesh(Node):
 
     """Node 'Dual Mesh' (GeometryNodeDualMesh)
 
     Input sockets
     -------------
-        mesh            : Geometry
+        mesh            : Mesh
         keep_boundaries : Boolean
 
     Output sockets
@@ -2066,15 +2066,15 @@ class NodeDualMesh(Node):
         self.output_sockets  = {'dual_mesh': self.dual_mesh}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeExtrudeMesh for GeometryNodeExtrudeMesh
+# Node ExtrudeMesh for GeometryNodeExtrudeMesh
 
-class NodeExtrudeMesh(Node):
+class ExtrudeMesh(Node):
 
     """Node 'Extrude Mesh' (GeometryNodeExtrudeMesh)
 
     Input sockets
     -------------
-        mesh            : Geometry
+        mesh            : Mesh
         selection       : Boolean
         offset          : Vector
         offset_scale    : Float
@@ -2086,7 +2086,7 @@ class NodeExtrudeMesh(Node):
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
         top             : Boolean
         side            : Boolean
     """
@@ -2108,7 +2108,7 @@ class NodeExtrudeMesh(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.top             = self.Boolean(self.bnode.outputs[1])
         self.side            = self.Boolean(self.bnode.outputs[2])
         self.output_sockets  = {'mesh': self.mesh, 'top': self.top, 'side': self.side}
@@ -2122,9 +2122,9 @@ class NodeExtrudeMesh(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeFieldAtIndex for GeometryNodeFieldAtIndex
+# Node FieldAtIndex for GeometryNodeFieldAtIndex
 
-class NodeFieldAtIndex(Node):
+class FieldAtIndex(Node):
 
     """Node 'Field at Index' (GeometryNodeFieldAtIndex)
 
@@ -2206,15 +2206,15 @@ class NodeFieldAtIndex(Node):
         self.bnode.domain = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeFillCurve for GeometryNodeFillCurve
+# Node FillCurve for GeometryNodeFillCurve
 
-class NodeFillCurve(Node):
+class FillCurve(Node):
 
     """Node 'Fill Curve' (GeometryNodeFillCurve)
 
     Input sockets
     -------------
-        curve           : Geometry
+        curve           : Curve
 
     Parameters
     ----------
@@ -2222,7 +2222,7 @@ class NodeFillCurve(Node):
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
     """
 
     def __init__(self, curve=None, mode='TRIANGLES', label=None):
@@ -2238,7 +2238,7 @@ class NodeFillCurve(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.output_sockets  = {'mesh': self.mesh}
 
     @property
@@ -2250,15 +2250,15 @@ class NodeFillCurve(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeFilletCurve for GeometryNodeFilletCurve
+# Node FilletCurve for GeometryNodeFilletCurve
 
-class NodeFilletCurve(Node):
+class FilletCurve(Node):
 
     """Node 'Fillet Curve' (GeometryNodeFilletCurve)
 
     Input sockets
     -------------
-        curve           : Geometry
+        curve           : Curve
         count           : Integer
         radius          : Float
         limit_radius    : Boolean
@@ -2269,7 +2269,7 @@ class NodeFilletCurve(Node):
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
     """
 
     def __init__(self, curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER', label=None):
@@ -2288,7 +2288,7 @@ class NodeFilletCurve(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.output_sockets  = {'curve': self.curve}
 
     @property
@@ -2300,20 +2300,20 @@ class NodeFilletCurve(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeFlipFaces for GeometryNodeFlipFaces
+# Node FlipFaces for GeometryNodeFlipFaces
 
-class NodeFlipFaces(Node):
+class FlipFaces(Node):
 
     """Node 'Flip Faces' (GeometryNodeFlipFaces)
 
     Input sockets
     -------------
-        mesh            : Geometry
+        mesh            : Mesh
         selection       : Boolean
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
     """
 
     def __init__(self, mesh=None, selection=None, label=None):
@@ -2326,13 +2326,13 @@ class NodeFlipFaces(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.output_sockets  = {'mesh': self.mesh}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeGeometryToInstance for GeometryNodeGeometryToInstance
+# Node GeometryToInstance for GeometryNodeGeometryToInstance
 
-class NodeGeometryToInstance(Node):
+class GeometryToInstance(Node):
 
     """Node 'Geometry to Instance' (GeometryNodeGeometryToInstance)
 
@@ -2342,7 +2342,7 @@ class NodeGeometryToInstance(Node):
 
     Output sockets
     --------------
-        instances       : Geometry
+        instances       : Instances
     """
 
     def __init__(self, *geometry, label=None):
@@ -2354,13 +2354,13 @@ class NodeGeometryToInstance(Node):
 
         # Output sockets
 
-        self.instances       = self.Geometry(self.bnode.outputs[0])
+        self.instances       = self.Instances(self.bnode.outputs[0])
         self.output_sockets  = {'instances': self.instances}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeGroup for GeometryNodeGroup
+# Node Group for GeometryNodeGroup
 
-class NodeGroup(Node):
+class Group(Node):
 
     """Node 'Group' (GeometryNodeGroup)
 
@@ -2372,9 +2372,9 @@ class NodeGroup(Node):
         self.output_sockets  = {}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeImageTexture for GeometryNodeImageTexture
+# Node ImageTexture for GeometryNodeImageTexture
 
-class NodeImageTexture(Node):
+class ImageTexture(Node):
 
     """Node 'Image Texture' (GeometryNodeImageTexture)
 
@@ -2432,9 +2432,9 @@ class NodeImageTexture(Node):
         self.bnode.interpolation = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeCurveHandlePositions for GeometryNodeInputCurveHandlePositions
+# Node CurveHandlePositions for GeometryNodeInputCurveHandlePositions
 
-class NodeCurveHandlePositions(Node):
+class CurveHandlePositions(Node):
 
     """Node 'Curve Handle Positions' (GeometryNodeInputCurveHandlePositions)
 
@@ -2462,9 +2462,9 @@ class NodeCurveHandlePositions(Node):
         self.output_sockets  = {'left': self.left, 'right': self.right}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeCurveTilt for GeometryNodeInputCurveTilt
+# Node CurveTilt for GeometryNodeInputCurveTilt
 
-class NodeCurveTilt(Node):
+class CurveTilt(Node):
 
     """Node 'Curve Tilt' (GeometryNodeInputCurveTilt)
 
@@ -2482,9 +2482,9 @@ class NodeCurveTilt(Node):
         self.output_sockets  = {'tilt': self.tilt}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeID for GeometryNodeInputID
+# Node ID for GeometryNodeInputID
 
-class NodeID(Node):
+class ID(Node):
 
     """Node 'ID' (GeometryNodeInputID)
 
@@ -2502,9 +2502,9 @@ class NodeID(Node):
         self.output_sockets  = {'ID': self.ID}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeIndex for GeometryNodeInputIndex
+# Node Index for GeometryNodeInputIndex
 
-class NodeIndex(Node):
+class Index(Node):
 
     """Node 'Index' (GeometryNodeInputIndex)
 
@@ -2522,9 +2522,9 @@ class NodeIndex(Node):
         self.output_sockets  = {'index': self.index}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeMaterial for GeometryNodeInputMaterial
+# Node Material for GeometryNodeInputMaterial
 
-class NodeMaterial(Node):
+class Material(Node):
 
     """Node 'Material' (GeometryNodeInputMaterial)
 
@@ -2542,9 +2542,9 @@ class NodeMaterial(Node):
         self.output_sockets  = {'material': self.material}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeMaterialIndex for GeometryNodeInputMaterialIndex
+# Node MaterialIndex for GeometryNodeInputMaterialIndex
 
-class NodeMaterialIndex(Node):
+class MaterialIndex(Node):
 
     """Node 'Material Index' (GeometryNodeInputMaterialIndex)
 
@@ -2562,9 +2562,9 @@ class NodeMaterialIndex(Node):
         self.output_sockets  = {'material_index': self.material_index}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeEdgeAngle for GeometryNodeInputMeshEdgeAngle
+# Node EdgeAngle for GeometryNodeInputMeshEdgeAngle
 
-class NodeEdgeAngle(Node):
+class EdgeAngle(Node):
 
     """Node 'Edge Angle' (GeometryNodeInputMeshEdgeAngle)
 
@@ -2584,9 +2584,9 @@ class NodeEdgeAngle(Node):
         self.output_sockets  = {'unsigned_angle': self.unsigned_angle, 'signed_angle': self.signed_angle}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeEdgeNeighbors for GeometryNodeInputMeshEdgeNeighbors
+# Node EdgeNeighbors for GeometryNodeInputMeshEdgeNeighbors
 
-class NodeEdgeNeighbors(Node):
+class EdgeNeighbors(Node):
 
     """Node 'Edge Neighbors' (GeometryNodeInputMeshEdgeNeighbors)
 
@@ -2604,9 +2604,9 @@ class NodeEdgeNeighbors(Node):
         self.output_sockets  = {'face_count': self.face_count}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeEdgeVertices for GeometryNodeInputMeshEdgeVertices
+# Node EdgeVertices for GeometryNodeInputMeshEdgeVertices
 
-class NodeEdgeVertices(Node):
+class EdgeVertices(Node):
 
     """Node 'Edge Vertices' (GeometryNodeInputMeshEdgeVertices)
 
@@ -2630,9 +2630,9 @@ class NodeEdgeVertices(Node):
         self.output_sockets  = {'vertex_index_1': self.vertex_index_1, 'vertex_index_2': self.vertex_index_2, 'position_1': self.position_1, 'position_2': self.position_2}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeFaceArea for GeometryNodeInputMeshFaceArea
+# Node FaceArea for GeometryNodeInputMeshFaceArea
 
-class NodeFaceArea(Node):
+class FaceArea(Node):
 
     """Node 'Face Area' (GeometryNodeInputMeshFaceArea)
 
@@ -2650,9 +2650,9 @@ class NodeFaceArea(Node):
         self.output_sockets  = {'area': self.area}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeFaceNeighbors for GeometryNodeInputMeshFaceNeighbors
+# Node FaceNeighbors for GeometryNodeInputMeshFaceNeighbors
 
-class NodeFaceNeighbors(Node):
+class FaceNeighbors(Node):
 
     """Node 'Face Neighbors' (GeometryNodeInputMeshFaceNeighbors)
 
@@ -2672,9 +2672,9 @@ class NodeFaceNeighbors(Node):
         self.output_sockets  = {'vertex_count': self.vertex_count, 'face_count': self.face_count}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeMeshIsland for GeometryNodeInputMeshIsland
+# Node MeshIsland for GeometryNodeInputMeshIsland
 
-class NodeMeshIsland(Node):
+class MeshIsland(Node):
 
     """Node 'Mesh Island' (GeometryNodeInputMeshIsland)
 
@@ -2694,9 +2694,9 @@ class NodeMeshIsland(Node):
         self.output_sockets  = {'island_index': self.island_index, 'island_count': self.island_count}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeVertexNeighbors for GeometryNodeInputMeshVertexNeighbors
+# Node VertexNeighbors for GeometryNodeInputMeshVertexNeighbors
 
-class NodeVertexNeighbors(Node):
+class VertexNeighbors(Node):
 
     """Node 'Vertex Neighbors' (GeometryNodeInputMeshVertexNeighbors)
 
@@ -2716,9 +2716,9 @@ class NodeVertexNeighbors(Node):
         self.output_sockets  = {'vertex_count': self.vertex_count, 'face_count': self.face_count}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeNormal for GeometryNodeInputNormal
+# Node Normal for GeometryNodeInputNormal
 
-class NodeNormal(Node):
+class Normal(Node):
 
     """Node 'Normal' (GeometryNodeInputNormal)
 
@@ -2736,9 +2736,9 @@ class NodeNormal(Node):
         self.output_sockets  = {'normal': self.normal}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodePosition for GeometryNodeInputPosition
+# Node Position for GeometryNodeInputPosition
 
-class NodePosition(Node):
+class Position(Node):
 
     """Node 'Position' (GeometryNodeInputPosition)
 
@@ -2756,9 +2756,9 @@ class NodePosition(Node):
         self.output_sockets  = {'position': self.position}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeRadius for GeometryNodeInputRadius
+# Node Radius for GeometryNodeInputRadius
 
-class NodeRadius(Node):
+class Radius(Node):
 
     """Node 'Radius' (GeometryNodeInputRadius)
 
@@ -2776,9 +2776,9 @@ class NodeRadius(Node):
         self.output_sockets  = {'radius': self.radius}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSceneTime for GeometryNodeInputSceneTime
+# Node SceneTime for GeometryNodeInputSceneTime
 
-class NodeSceneTime(Node):
+class SceneTime(Node):
 
     """Node 'Scene Time' (GeometryNodeInputSceneTime)
 
@@ -2798,9 +2798,9 @@ class NodeSceneTime(Node):
         self.output_sockets  = {'seconds': self.seconds, 'frame': self.frame}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeIsShadeSmooth for GeometryNodeInputShadeSmooth
+# Node IsShadeSmooth for GeometryNodeInputShadeSmooth
 
-class NodeIsShadeSmooth(Node):
+class IsShadeSmooth(Node):
 
     """Node 'Is Shade Smooth' (GeometryNodeInputShadeSmooth)
 
@@ -2818,9 +2818,9 @@ class NodeIsShadeSmooth(Node):
         self.output_sockets  = {'smooth': self.smooth}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeIsSplineCyclic for GeometryNodeInputSplineCyclic
+# Node IsSplineCyclic for GeometryNodeInputSplineCyclic
 
-class NodeIsSplineCyclic(Node):
+class IsSplineCyclic(Node):
 
     """Node 'Is Spline Cyclic' (GeometryNodeInputSplineCyclic)
 
@@ -2838,9 +2838,9 @@ class NodeIsSplineCyclic(Node):
         self.output_sockets  = {'cyclic': self.cyclic}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSplineResolution for GeometryNodeInputSplineResolution
+# Node SplineResolution for GeometryNodeInputSplineResolution
 
-class NodeSplineResolution(Node):
+class SplineResolution(Node):
 
     """Node 'Spline Resolution' (GeometryNodeInputSplineResolution)
 
@@ -2858,9 +2858,9 @@ class NodeSplineResolution(Node):
         self.output_sockets  = {'resolution': self.resolution}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeCurveTangent for GeometryNodeInputTangent
+# Node CurveTangent for GeometryNodeInputTangent
 
-class NodeCurveTangent(Node):
+class CurveTangent(Node):
 
     """Node 'Curve Tangent' (GeometryNodeInputTangent)
 
@@ -2878,15 +2878,15 @@ class NodeCurveTangent(Node):
         self.output_sockets  = {'tangent': self.tangent}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeInstanceOnPoints for GeometryNodeInstanceOnPoints
+# Node InstanceOnPoints for GeometryNodeInstanceOnPoints
 
-class NodeInstanceOnPoints(Node):
+class InstanceOnPoints(Node):
 
     """Node 'Instance on Points' (GeometryNodeInstanceOnPoints)
 
     Input sockets
     -------------
-        points          : Geometry
+        points          : Points
         selection       : Boolean
         instance        : Geometry
         pick_instance   : Boolean
@@ -2896,7 +2896,7 @@ class NodeInstanceOnPoints(Node):
 
     Output sockets
     --------------
-        instances       : Geometry
+        instances       : Instances
     """
 
     def __init__(self, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, label=None):
@@ -2914,26 +2914,26 @@ class NodeInstanceOnPoints(Node):
 
         # Output sockets
 
-        self.instances       = self.Geometry(self.bnode.outputs[0])
+        self.instances       = self.Instances(self.bnode.outputs[0])
         self.output_sockets  = {'instances': self.instances}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeInstancesToPoints for GeometryNodeInstancesToPoints
+# Node InstancesToPoints for GeometryNodeInstancesToPoints
 
-class NodeInstancesToPoints(Node):
+class InstancesToPoints(Node):
 
     """Node 'Instances to Points' (GeometryNodeInstancesToPoints)
 
     Input sockets
     -------------
-        instances       : Geometry
+        instances       : Instances
         selection       : Boolean
         position        : Vector
         radius          : Float
 
     Output sockets
     --------------
-        points          : Geometry
+        points          : Points
     """
 
     def __init__(self, instances=None, selection=None, position=None, radius=None, label=None):
@@ -2948,13 +2948,13 @@ class NodeInstancesToPoints(Node):
 
         # Output sockets
 
-        self.points          = self.Geometry(self.bnode.outputs[0])
+        self.points          = self.Points(self.bnode.outputs[0])
         self.output_sockets  = {'points': self.points}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeIsViewport for GeometryNodeIsViewport
+# Node IsViewport for GeometryNodeIsViewport
 
-class NodeIsViewport(Node):
+class IsViewport(Node):
 
     """Node 'Is Viewport' (GeometryNodeIsViewport)
 
@@ -2972,9 +2972,9 @@ class NodeIsViewport(Node):
         self.output_sockets  = {'is_viewport': self.is_viewport}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeJoinGeometry for GeometryNodeJoinGeometry
+# Node JoinGeometry for GeometryNodeJoinGeometry
 
-class NodeJoinGeometry(Node):
+class JoinGeometry(Node):
 
     """Node 'Join Geometry' (GeometryNodeJoinGeometry)
 
@@ -3000,9 +3000,9 @@ class NodeJoinGeometry(Node):
         self.output_sockets  = {'geometry': self.geometry}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeMaterialSelection for GeometryNodeMaterialSelection
+# Node MaterialSelection for GeometryNodeMaterialSelection
 
-class NodeMaterialSelection(Node):
+class MaterialSelection(Node):
 
     """Node 'Material Selection' (GeometryNodeMaterialSelection)
 
@@ -3028,9 +3028,9 @@ class NodeMaterialSelection(Node):
         self.output_sockets  = {'selection': self.selection}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeMergeByDistance for GeometryNodeMergeByDistance
+# Node MergeByDistance for GeometryNodeMergeByDistance
 
-class NodeMergeByDistance(Node):
+class MergeByDistance(Node):
 
     """Node 'Merge by Distance' (GeometryNodeMergeByDistance)
 
@@ -3060,9 +3060,9 @@ class NodeMergeByDistance(Node):
         self.output_sockets  = {'geometry': self.geometry}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeMeshBoolean for GeometryNodeMeshBoolean
+# Node MeshBoolean for GeometryNodeMeshBoolean
 
-class NodeMeshBoolean(Node):
+class MeshBoolean(Node):
 
     """Node 'Mesh Boolean' (GeometryNodeMeshBoolean)
 
@@ -3079,7 +3079,7 @@ class NodeMeshBoolean(Node):
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
     """
 
     def __init__(self, *mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', label=None):
@@ -3098,7 +3098,7 @@ class NodeMeshBoolean(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.output_sockets  = {'mesh': self.mesh}
 
     @property
@@ -3110,9 +3110,9 @@ class NodeMeshBoolean(Node):
         self.bnode.operation = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeMeshCircle for GeometryNodeMeshCircle
+# Node MeshCircle for GeometryNodeMeshCircle
 
-class NodeMeshCircle(Node):
+class MeshCircle(Node):
 
     """Node 'Mesh Circle' (GeometryNodeMeshCircle)
 
@@ -3127,7 +3127,7 @@ class NodeMeshCircle(Node):
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
     """
 
     def __init__(self, vertices=None, radius=None, fill_type='NONE', label=None):
@@ -3144,7 +3144,7 @@ class NodeMeshCircle(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.output_sockets  = {'mesh': self.mesh}
 
     @property
@@ -3156,9 +3156,9 @@ class NodeMeshCircle(Node):
         self.bnode.fill_type = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeCone for GeometryNodeMeshCone
+# Node Cone for GeometryNodeMeshCone
 
-class NodeCone(Node):
+class Cone(Node):
 
     """Node 'Cone' (GeometryNodeMeshCone)
 
@@ -3177,7 +3177,7 @@ class NodeCone(Node):
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
         top             : Boolean
         bottom          : Boolean
         side            : Boolean
@@ -3201,7 +3201,7 @@ class NodeCone(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.top             = self.Boolean(self.bnode.outputs[1])
         self.bottom          = self.Boolean(self.bnode.outputs[2])
         self.side            = self.Boolean(self.bnode.outputs[3])
@@ -3216,9 +3216,9 @@ class NodeCone(Node):
         self.bnode.fill_type = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeCube for GeometryNodeMeshCube
+# Node Cube for GeometryNodeMeshCube
 
-class NodeCube(Node):
+class Cube(Node):
 
     """Node 'Cube' (GeometryNodeMeshCube)
 
@@ -3231,7 +3231,7 @@ class NodeCube(Node):
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
     """
 
     def __init__(self, size=None, vertices_x=None, vertices_y=None, vertices_z=None, label=None):
@@ -3246,13 +3246,13 @@ class NodeCube(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.output_sockets  = {'mesh': self.mesh}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeCylinder for GeometryNodeMeshCylinder
+# Node Cylinder for GeometryNodeMeshCylinder
 
-class NodeCylinder(Node):
+class Cylinder(Node):
 
     """Node 'Cylinder' (GeometryNodeMeshCylinder)
 
@@ -3270,7 +3270,7 @@ class NodeCylinder(Node):
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
         top             : Boolean
         side            : Boolean
         bottom          : Boolean
@@ -3293,7 +3293,7 @@ class NodeCylinder(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.top             = self.Boolean(self.bnode.outputs[1])
         self.side            = self.Boolean(self.bnode.outputs[2])
         self.bottom          = self.Boolean(self.bnode.outputs[3])
@@ -3308,9 +3308,9 @@ class NodeCylinder(Node):
         self.bnode.fill_type = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeGrid for GeometryNodeMeshGrid
+# Node Grid for GeometryNodeMeshGrid
 
-class NodeGrid(Node):
+class Grid(Node):
 
     """Node 'Grid' (GeometryNodeMeshGrid)
 
@@ -3323,7 +3323,7 @@ class NodeGrid(Node):
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
     """
 
     def __init__(self, size_x=None, size_y=None, vertices_x=None, vertices_y=None, label=None):
@@ -3338,13 +3338,13 @@ class NodeGrid(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.output_sockets  = {'mesh': self.mesh}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeIcoSphere for GeometryNodeMeshIcoSphere
+# Node IcoSphere for GeometryNodeMeshIcoSphere
 
-class NodeIcoSphere(Node):
+class IcoSphere(Node):
 
     """Node 'Ico Sphere' (GeometryNodeMeshIcoSphere)
 
@@ -3355,7 +3355,7 @@ class NodeIcoSphere(Node):
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
     """
 
     def __init__(self, radius=None, subdivisions=None, label=None):
@@ -3368,13 +3368,13 @@ class NodeIcoSphere(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.output_sockets  = {'mesh': self.mesh}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeMeshLine for GeometryNodeMeshLine
+# Node MeshLine for GeometryNodeMeshLine
 
-class NodeMeshLine(Node):
+class MeshLine(Node):
 
     """Node 'Mesh Line' (GeometryNodeMeshLine)
 
@@ -3392,7 +3392,7 @@ class NodeMeshLine(Node):
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
     """
 
     def __init__(self, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', label=None):
@@ -3412,7 +3412,7 @@ class NodeMeshLine(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.output_sockets  = {'mesh': self.mesh}
 
     @property
@@ -3432,20 +3432,20 @@ class NodeMeshLine(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeMeshToCurve for GeometryNodeMeshToCurve
+# Node MeshToCurve for GeometryNodeMeshToCurve
 
-class NodeMeshToCurve(Node):
+class MeshToCurve(Node):
 
     """Node 'Mesh to Curve' (GeometryNodeMeshToCurve)
 
     Input sockets
     -------------
-        mesh            : Geometry
+        mesh            : Mesh
         selection       : Boolean
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
     """
 
     def __init__(self, mesh=None, selection=None, label=None):
@@ -3458,19 +3458,19 @@ class NodeMeshToCurve(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.output_sockets  = {'curve': self.curve}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeMeshToPoints for GeometryNodeMeshToPoints
+# Node MeshToPoints for GeometryNodeMeshToPoints
 
-class NodeMeshToPoints(Node):
+class MeshToPoints(Node):
 
     """Node 'Mesh to Points' (GeometryNodeMeshToPoints)
 
     Input sockets
     -------------
-        mesh            : Geometry
+        mesh            : Mesh
         selection       : Boolean
         position        : Vector
         radius          : Float
@@ -3481,7 +3481,7 @@ class NodeMeshToPoints(Node):
 
     Output sockets
     --------------
-        points          : Geometry
+        points          : Points
     """
 
     def __init__(self, mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None):
@@ -3500,7 +3500,7 @@ class NodeMeshToPoints(Node):
 
         # Output sockets
 
-        self.points          = self.Geometry(self.bnode.outputs[0])
+        self.points          = self.Points(self.bnode.outputs[0])
         self.output_sockets  = {'points': self.points}
 
     @property
@@ -3512,9 +3512,9 @@ class NodeMeshToPoints(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeUvSphere for GeometryNodeMeshUVSphere
+# Node UvSphere for GeometryNodeMeshUVSphere
 
-class NodeUvSphere(Node):
+class UvSphere(Node):
 
     """Node 'UV Sphere' (GeometryNodeMeshUVSphere)
 
@@ -3526,7 +3526,7 @@ class NodeUvSphere(Node):
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
     """
 
     def __init__(self, segments=None, rings=None, radius=None, label=None):
@@ -3540,13 +3540,13 @@ class NodeUvSphere(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.output_sockets  = {'mesh': self.mesh}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeObjectInfo for GeometryNodeObjectInfo
+# Node ObjectInfo for GeometryNodeObjectInfo
 
-class NodeObjectInfo(Node):
+class ObjectInfo(Node):
 
     """Node 'Object Info' (GeometryNodeObjectInfo)
 
@@ -3596,20 +3596,20 @@ class NodeObjectInfo(Node):
         self.bnode.transform_space = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodePointsToVertices for GeometryNodePointsToVertices
+# Node PointsToVertices for GeometryNodePointsToVertices
 
-class NodePointsToVertices(Node):
+class PointsToVertices(Node):
 
     """Node 'Points to Vertices' (GeometryNodePointsToVertices)
 
     Input sockets
     -------------
-        points          : Geometry
+        points          : Points
         selection       : Boolean
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
     """
 
     def __init__(self, points=None, selection=None, label=None):
@@ -3622,19 +3622,19 @@ class NodePointsToVertices(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.output_sockets  = {'mesh': self.mesh}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodePointsToVolume for GeometryNodePointsToVolume
+# Node PointsToVolume for GeometryNodePointsToVolume
 
-class NodePointsToVolume(Node):
+class PointsToVolume(Node):
 
     """Node 'Points to Volume' (GeometryNodePointsToVolume)
 
     Input sockets
     -------------
-        points          : Geometry
+        points          : Points
         density         : Float
         voxel_size      : Float
         voxel_amount    : Float
@@ -3646,7 +3646,7 @@ class NodePointsToVolume(Node):
 
     Output sockets
     --------------
-        volume          : Geometry
+        volume          : Volume
     """
 
     def __init__(self, points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', label=None):
@@ -3666,7 +3666,7 @@ class NodePointsToVolume(Node):
 
         # Output sockets
 
-        self.volume          = self.Geometry(self.bnode.outputs[0])
+        self.volume          = self.Volume(self.bnode.outputs[0])
         self.output_sockets  = {'volume': self.volume}
 
     @property
@@ -3678,9 +3678,9 @@ class NodePointsToVolume(Node):
         self.bnode.resolution_mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeGeometryProximity for GeometryNodeProximity
+# Node GeometryProximity for GeometryNodeProximity
 
-class NodeGeometryProximity(Node):
+class GeometryProximity(Node):
 
     """Node 'Geometry Proximity' (GeometryNodeProximity)
 
@@ -3726,9 +3726,9 @@ class NodeGeometryProximity(Node):
         self.bnode.target_element = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeRaycast for GeometryNodeRaycast
+# Node Raycast for GeometryNodeRaycast
 
-class NodeRaycast(Node):
+class Raycast(Node):
 
     """Node 'Raycast' (GeometryNodeRaycast)
 
@@ -3824,9 +3824,9 @@ class NodeRaycast(Node):
         self.bnode.mapping = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeRealizeInstances for GeometryNodeRealizeInstances
+# Node RealizeInstances for GeometryNodeRealizeInstances
 
-class NodeRealizeInstances(Node):
+class RealizeInstances(Node):
 
     """Node 'Realize Instances' (GeometryNodeRealizeInstances)
 
@@ -3868,9 +3868,9 @@ class NodeRealizeInstances(Node):
         self.bnode.legacy_behavior = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeReplaceMaterial for GeometryNodeReplaceMaterial
+# Node ReplaceMaterial for GeometryNodeReplaceMaterial
 
-class NodeReplaceMaterial(Node):
+class ReplaceMaterial(Node):
 
     """Node 'Replace Material' (GeometryNodeReplaceMaterial)
 
@@ -3900,15 +3900,15 @@ class NodeReplaceMaterial(Node):
         self.output_sockets  = {'geometry': self.geometry}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeResampleCurve for GeometryNodeResampleCurve
+# Node ResampleCurve for GeometryNodeResampleCurve
 
-class NodeResampleCurve(Node):
+class ResampleCurve(Node):
 
     """Node 'Resample Curve' (GeometryNodeResampleCurve)
 
     Input sockets
     -------------
-        curve           : Geometry
+        curve           : Curve
         selection       : Boolean
         count           : Integer
         length          : Float
@@ -3919,7 +3919,7 @@ class NodeResampleCurve(Node):
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
     """
 
     def __init__(self, curve=None, selection=None, count=None, length=None, mode='COUNT', label=None):
@@ -3938,7 +3938,7 @@ class NodeResampleCurve(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.output_sockets  = {'curve': self.curve}
 
     @property
@@ -3950,20 +3950,20 @@ class NodeResampleCurve(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeReverseCurve for GeometryNodeReverseCurve
+# Node ReverseCurve for GeometryNodeReverseCurve
 
-class NodeReverseCurve(Node):
+class ReverseCurve(Node):
 
     """Node 'Reverse Curve' (GeometryNodeReverseCurve)
 
     Input sockets
     -------------
-        curve           : Geometry
+        curve           : Curve
         selection       : Boolean
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
     """
 
     def __init__(self, curve=None, selection=None, label=None):
@@ -3976,19 +3976,19 @@ class NodeReverseCurve(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.output_sockets  = {'curve': self.curve}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeRotateInstances for GeometryNodeRotateInstances
+# Node RotateInstances for GeometryNodeRotateInstances
 
-class NodeRotateInstances(Node):
+class RotateInstances(Node):
 
     """Node 'Rotate Instances' (GeometryNodeRotateInstances)
 
     Input sockets
     -------------
-        instances       : Geometry
+        instances       : Instances
         selection       : Boolean
         rotation        : Vector
         pivot_point     : Vector
@@ -3996,7 +3996,7 @@ class NodeRotateInstances(Node):
 
     Output sockets
     --------------
-        instances       : Geometry
+        instances       : Instances
     """
 
     def __init__(self, instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, label=None):
@@ -4012,19 +4012,19 @@ class NodeRotateInstances(Node):
 
         # Output sockets
 
-        self.instances       = self.Geometry(self.bnode.outputs[0])
+        self.instances       = self.Instances(self.bnode.outputs[0])
         self.output_sockets  = {'instances': self.instances}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSampleCurve for GeometryNodeSampleCurve
+# Node SampleCurve for GeometryNodeSampleCurve
 
-class NodeSampleCurve(Node):
+class SampleCurve(Node):
 
     """Node 'Sample Curve' (GeometryNodeSampleCurve)
 
     Input sockets
     -------------
-        curve           : Geometry
+        curve           : Curve
         factor          : Float
         length          : Float
 
@@ -4068,9 +4068,9 @@ class NodeSampleCurve(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeScaleElements for GeometryNodeScaleElements
+# Node ScaleElements for GeometryNodeScaleElements
 
-class NodeScaleElements(Node):
+class ScaleElements(Node):
 
     """Node 'Scale Elements' (GeometryNodeScaleElements)
 
@@ -4130,15 +4130,15 @@ class NodeScaleElements(Node):
         self.bnode.scale_mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeScaleInstances for GeometryNodeScaleInstances
+# Node ScaleInstances for GeometryNodeScaleInstances
 
-class NodeScaleInstances(Node):
+class ScaleInstances(Node):
 
     """Node 'Scale Instances' (GeometryNodeScaleInstances)
 
     Input sockets
     -------------
-        instances       : Geometry
+        instances       : Instances
         selection       : Boolean
         scale           : Vector
         center          : Vector
@@ -4146,7 +4146,7 @@ class NodeScaleInstances(Node):
 
     Output sockets
     --------------
-        instances       : Geometry
+        instances       : Instances
     """
 
     def __init__(self, instances=None, selection=None, scale=None, center=None, local_space=None, label=None):
@@ -4162,13 +4162,13 @@ class NodeScaleInstances(Node):
 
         # Output sockets
 
-        self.instances       = self.Geometry(self.bnode.outputs[0])
+        self.instances       = self.Instances(self.bnode.outputs[0])
         self.output_sockets  = {'instances': self.instances}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSeparateComponents for GeometryNodeSeparateComponents
+# Node SeparateComponents for GeometryNodeSeparateComponents
 
-class NodeSeparateComponents(Node):
+class SeparateComponents(Node):
 
     """Node 'Separate Components' (GeometryNodeSeparateComponents)
 
@@ -4178,11 +4178,11 @@ class NodeSeparateComponents(Node):
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
         point_cloud     : Geometry
-        curve           : Geometry
-        volume          : Geometry
-        instances       : Geometry
+        curve           : Curve
+        volume          : Volume
+        instances       : Instances
     """
 
     def __init__(self, geometry=None, label=None):
@@ -4194,17 +4194,17 @@ class NodeSeparateComponents(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.point_cloud     = self.Geometry(self.bnode.outputs[1])
-        self.curve           = self.Geometry(self.bnode.outputs[2])
-        self.volume          = self.Geometry(self.bnode.outputs[3])
-        self.instances       = self.Geometry(self.bnode.outputs[4])
+        self.curve           = self.Curve(self.bnode.outputs[2])
+        self.volume          = self.Volume(self.bnode.outputs[3])
+        self.instances       = self.Instances(self.bnode.outputs[4])
         self.output_sockets  = {'mesh': self.mesh, 'point_cloud': self.point_cloud, 'curve': self.curve, 'volume': self.volume, 'instances': self.instances}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSeparateGeometry for GeometryNodeSeparateGeometry
+# Node SeparateGeometry for GeometryNodeSeparateGeometry
 
-class NodeSeparateGeometry(Node):
+class SeparateGeometry(Node):
 
     """Node 'Separate Geometry' (GeometryNodeSeparateGeometry)
 
@@ -4250,15 +4250,15 @@ class NodeSeparateGeometry(Node):
         self.bnode.domain = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSetHandlePositions for GeometryNodeSetCurveHandlePositions
+# Node SetHandlePositions for GeometryNodeSetCurveHandlePositions
 
-class NodeSetHandlePositions(Node):
+class SetHandlePositions(Node):
 
     """Node 'Set Handle Positions' (GeometryNodeSetCurveHandlePositions)
 
     Input sockets
     -------------
-        curve           : Geometry
+        curve           : Curve
         selection       : Boolean
         position        : Vector
         offset          : Vector
@@ -4269,7 +4269,7 @@ class NodeSetHandlePositions(Node):
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
     """
 
     def __init__(self, curve=None, selection=None, position=None, offset=None, mode='LEFT', label=None):
@@ -4288,7 +4288,7 @@ class NodeSetHandlePositions(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.output_sockets  = {'curve': self.curve}
 
     @property
@@ -4300,21 +4300,21 @@ class NodeSetHandlePositions(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSetCurveRadius for GeometryNodeSetCurveRadius
+# Node SetCurveRadius for GeometryNodeSetCurveRadius
 
-class NodeSetCurveRadius(Node):
+class SetCurveRadius(Node):
 
     """Node 'Set Curve Radius' (GeometryNodeSetCurveRadius)
 
     Input sockets
     -------------
-        curve           : Geometry
+        curve           : Curve
         selection       : Boolean
         radius          : Float
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
     """
 
     def __init__(self, curve=None, selection=None, radius=None, label=None):
@@ -4328,25 +4328,25 @@ class NodeSetCurveRadius(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.output_sockets  = {'curve': self.curve}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSetCurveTilt for GeometryNodeSetCurveTilt
+# Node SetCurveTilt for GeometryNodeSetCurveTilt
 
-class NodeSetCurveTilt(Node):
+class SetCurveTilt(Node):
 
     """Node 'Set Curve Tilt' (GeometryNodeSetCurveTilt)
 
     Input sockets
     -------------
-        curve           : Geometry
+        curve           : Curve
         selection       : Boolean
         tilt            : Float
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
     """
 
     def __init__(self, curve=None, selection=None, tilt=None, label=None):
@@ -4360,13 +4360,13 @@ class NodeSetCurveTilt(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.output_sockets  = {'curve': self.curve}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSetID for GeometryNodeSetID
+# Node SetID for GeometryNodeSetID
 
-class NodeSetID(Node):
+class SetID(Node):
 
     """Node 'Set ID' (GeometryNodeSetID)
 
@@ -4396,9 +4396,9 @@ class NodeSetID(Node):
         self.output_sockets  = {'geometry': self.geometry}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSetMaterial for GeometryNodeSetMaterial
+# Node SetMaterial for GeometryNodeSetMaterial
 
-class NodeSetMaterial(Node):
+class SetMaterial(Node):
 
     """Node 'Set Material' (GeometryNodeSetMaterial)
 
@@ -4428,9 +4428,9 @@ class NodeSetMaterial(Node):
         self.output_sockets  = {'geometry': self.geometry}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSetMaterialIndex for GeometryNodeSetMaterialIndex
+# Node SetMaterialIndex for GeometryNodeSetMaterialIndex
 
-class NodeSetMaterialIndex(Node):
+class SetMaterialIndex(Node):
 
     """Node 'Set Material Index' (GeometryNodeSetMaterialIndex)
 
@@ -4460,21 +4460,21 @@ class NodeSetMaterialIndex(Node):
         self.output_sockets  = {'geometry': self.geometry}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSetPointRadius for GeometryNodeSetPointRadius
+# Node SetPointRadius for GeometryNodeSetPointRadius
 
-class NodeSetPointRadius(Node):
+class SetPointRadius(Node):
 
     """Node 'Set Point Radius' (GeometryNodeSetPointRadius)
 
     Input sockets
     -------------
-        points          : Geometry
+        points          : Points
         selection       : Boolean
         radius          : Float
 
     Output sockets
     --------------
-        points          : Geometry
+        points          : Points
     """
 
     def __init__(self, points=None, selection=None, radius=None, label=None):
@@ -4488,13 +4488,13 @@ class NodeSetPointRadius(Node):
 
         # Output sockets
 
-        self.points          = self.Geometry(self.bnode.outputs[0])
+        self.points          = self.Points(self.bnode.outputs[0])
         self.output_sockets  = {'points': self.points}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSetPosition for GeometryNodeSetPosition
+# Node SetPosition for GeometryNodeSetPosition
 
-class NodeSetPosition(Node):
+class SetPosition(Node):
 
     """Node 'Set Position' (GeometryNodeSetPosition)
 
@@ -4526,9 +4526,9 @@ class NodeSetPosition(Node):
         self.output_sockets  = {'geometry': self.geometry}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSetShadeSmooth for GeometryNodeSetShadeSmooth
+# Node SetShadeSmooth for GeometryNodeSetShadeSmooth
 
-class NodeSetShadeSmooth(Node):
+class SetShadeSmooth(Node):
 
     """Node 'Set Shade Smooth' (GeometryNodeSetShadeSmooth)
 
@@ -4558,9 +4558,9 @@ class NodeSetShadeSmooth(Node):
         self.output_sockets  = {'geometry': self.geometry}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSetSplineCyclic for GeometryNodeSetSplineCyclic
+# Node SetSplineCyclic for GeometryNodeSetSplineCyclic
 
-class NodeSetSplineCyclic(Node):
+class SetSplineCyclic(Node):
 
     """Node 'Set Spline Cyclic' (GeometryNodeSetSplineCyclic)
 
@@ -4590,9 +4590,9 @@ class NodeSetSplineCyclic(Node):
         self.output_sockets  = {'geometry': self.geometry}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSetSplineResolution for GeometryNodeSetSplineResolution
+# Node SetSplineResolution for GeometryNodeSetSplineResolution
 
-class NodeSetSplineResolution(Node):
+class SetSplineResolution(Node):
 
     """Node 'Set Spline Resolution' (GeometryNodeSetSplineResolution)
 
@@ -4622,9 +4622,9 @@ class NodeSetSplineResolution(Node):
         self.output_sockets  = {'geometry': self.geometry}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSplineLength for GeometryNodeSplineLength
+# Node SplineLength for GeometryNodeSplineLength
 
-class NodeSplineLength(Node):
+class SplineLength(Node):
 
     """Node 'Spline Length' (GeometryNodeSplineLength)
 
@@ -4644,9 +4644,9 @@ class NodeSplineLength(Node):
         self.output_sockets  = {'length': self.length, 'point_count': self.point_count}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSplineParameter for GeometryNodeSplineParameter
+# Node SplineParameter for GeometryNodeSplineParameter
 
-class NodeSplineParameter(Node):
+class SplineParameter(Node):
 
     """Node 'Spline Parameter' (GeometryNodeSplineParameter)
 
@@ -4668,20 +4668,20 @@ class NodeSplineParameter(Node):
         self.output_sockets  = {'factor': self.factor, 'length': self.length, 'index': self.index}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSplitEdges for GeometryNodeSplitEdges
+# Node SplitEdges for GeometryNodeSplitEdges
 
-class NodeSplitEdges(Node):
+class SplitEdges(Node):
 
     """Node 'Split Edges' (GeometryNodeSplitEdges)
 
     Input sockets
     -------------
-        mesh            : Geometry
+        mesh            : Mesh
         selection       : Boolean
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
     """
 
     def __init__(self, mesh=None, selection=None, label=None):
@@ -4694,13 +4694,13 @@ class NodeSplitEdges(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.output_sockets  = {'mesh': self.mesh}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeJoinStrings for GeometryNodeStringJoin
+# Node JoinStrings for GeometryNodeStringJoin
 
-class NodeJoinStrings(Node):
+class JoinStrings(Node):
 
     """Node 'Join Strings' (GeometryNodeStringJoin)
 
@@ -4728,9 +4728,9 @@ class NodeJoinStrings(Node):
         self.output_sockets  = {'string': self.string}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeStringToCurves for GeometryNodeStringToCurves
+# Node StringToCurves for GeometryNodeStringToCurves
 
-class NodeStringToCurves(Node):
+class StringToCurves(Node):
 
     """Node 'String to Curves' (GeometryNodeStringToCurves)
 
@@ -4820,20 +4820,20 @@ class NodeStringToCurves(Node):
         self.bnode.pivot_mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSubdivideCurve for GeometryNodeSubdivideCurve
+# Node SubdivideCurve for GeometryNodeSubdivideCurve
 
-class NodeSubdivideCurve(Node):
+class SubdivideCurve(Node):
 
     """Node 'Subdivide Curve' (GeometryNodeSubdivideCurve)
 
     Input sockets
     -------------
-        curve           : Geometry
+        curve           : Curve
         cuts            : Integer
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
     """
 
     def __init__(self, curve=None, cuts=None, label=None):
@@ -4846,24 +4846,24 @@ class NodeSubdivideCurve(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.output_sockets  = {'curve': self.curve}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSubdivideMesh for GeometryNodeSubdivideMesh
+# Node SubdivideMesh for GeometryNodeSubdivideMesh
 
-class NodeSubdivideMesh(Node):
+class SubdivideMesh(Node):
 
     """Node 'Subdivide Mesh' (GeometryNodeSubdivideMesh)
 
     Input sockets
     -------------
-        mesh            : Geometry
+        mesh            : Mesh
         level           : Integer
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
     """
 
     def __init__(self, mesh=None, level=None, label=None):
@@ -4876,19 +4876,19 @@ class NodeSubdivideMesh(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.output_sockets  = {'mesh': self.mesh}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSubdivisionSurface for GeometryNodeSubdivisionSurface
+# Node SubdivisionSurface for GeometryNodeSubdivisionSurface
 
-class NodeSubdivisionSurface(Node):
+class SubdivisionSurface(Node):
 
     """Node 'Subdivision Surface' (GeometryNodeSubdivisionSurface)
 
     Input sockets
     -------------
-        mesh            : Geometry
+        mesh            : Mesh
         level           : Integer
         crease          : Float
 
@@ -4900,7 +4900,7 @@ class NodeSubdivisionSurface(Node):
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
     """
 
     def __init__(self, mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None):
@@ -4919,7 +4919,7 @@ class NodeSubdivisionSurface(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.output_sockets  = {'mesh': self.mesh}
 
     @property
@@ -4939,9 +4939,9 @@ class NodeSubdivisionSurface(Node):
         self.bnode.uv_smooth = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSwitch for GeometryNodeSwitch
+# Node Switch for GeometryNodeSwitch
 
-class NodeSwitch(Node):
+class Switch(Node):
 
     """Node 'Switch' (GeometryNodeSwitch)
 
@@ -5057,9 +5057,9 @@ class NodeSwitch(Node):
         self.bnode.input_type = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeTransform for GeometryNodeTransform
+# Node Transform for GeometryNodeTransform
 
-class NodeTransform(Node):
+class Transform(Node):
 
     """Node 'Transform' (GeometryNodeTransform)
 
@@ -5091,22 +5091,22 @@ class NodeTransform(Node):
         self.output_sockets  = {'geometry': self.geometry}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeTranslateInstances for GeometryNodeTranslateInstances
+# Node TranslateInstances for GeometryNodeTranslateInstances
 
-class NodeTranslateInstances(Node):
+class TranslateInstances(Node):
 
     """Node 'Translate Instances' (GeometryNodeTranslateInstances)
 
     Input sockets
     -------------
-        instances       : Geometry
+        instances       : Instances
         selection       : Boolean
         translation     : Vector
         local_space     : Boolean
 
     Output sockets
     --------------
-        instances       : Geometry
+        instances       : Instances
     """
 
     def __init__(self, instances=None, selection=None, translation=None, local_space=None, label=None):
@@ -5121,19 +5121,19 @@ class NodeTranslateInstances(Node):
 
         # Output sockets
 
-        self.instances       = self.Geometry(self.bnode.outputs[0])
+        self.instances       = self.Instances(self.bnode.outputs[0])
         self.output_sockets  = {'instances': self.instances}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeTriangulate for GeometryNodeTriangulate
+# Node Triangulate for GeometryNodeTriangulate
 
-class NodeTriangulate(Node):
+class Triangulate(Node):
 
     """Node 'Triangulate' (GeometryNodeTriangulate)
 
     Input sockets
     -------------
-        mesh            : Geometry
+        mesh            : Mesh
         selection       : Boolean
         minimum_vertices : Integer
 
@@ -5144,7 +5144,7 @@ class NodeTriangulate(Node):
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
     """
 
     def __init__(self, mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', label=None):
@@ -5163,7 +5163,7 @@ class NodeTriangulate(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.output_sockets  = {'mesh': self.mesh}
 
     @property
@@ -5183,15 +5183,15 @@ class NodeTriangulate(Node):
         self.bnode.quad_method = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeTrimCurve for GeometryNodeTrimCurve
+# Node TrimCurve for GeometryNodeTrimCurve
 
-class NodeTrimCurve(Node):
+class TrimCurve(Node):
 
     """Node 'Trim Curve' (GeometryNodeTrimCurve)
 
     Input sockets
     -------------
-        curve           : Geometry
+        curve           : Curve
         start0          : Float
         start1          : Float
         end0            : Float
@@ -5203,7 +5203,7 @@ class NodeTrimCurve(Node):
 
     Output sockets
     --------------
-        curve           : Geometry
+        curve           : Curve
     """
 
     def __init__(self, curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR', label=None):
@@ -5223,7 +5223,7 @@ class NodeTrimCurve(Node):
 
         # Output sockets
 
-        self.curve           = self.Geometry(self.bnode.outputs[0])
+        self.curve           = self.Curve(self.bnode.outputs[0])
         self.output_sockets  = {'curve': self.curve}
 
     @property
@@ -5235,15 +5235,15 @@ class NodeTrimCurve(Node):
         self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeVolumeToMesh for GeometryNodeVolumeToMesh
+# Node VolumeToMesh for GeometryNodeVolumeToMesh
 
-class NodeVolumeToMesh(Node):
+class VolumeToMesh(Node):
 
     """Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
 
     Input sockets
     -------------
-        volume          : Geometry
+        volume          : Volume
         voxel_size      : Float
         voxel_amount    : Float
         threshold       : Float
@@ -5255,7 +5255,7 @@ class NodeVolumeToMesh(Node):
 
     Output sockets
     --------------
-        mesh            : Geometry
+        mesh            : Mesh
     """
 
     def __init__(self, volume=None, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID', label=None):
@@ -5275,7 +5275,7 @@ class NodeVolumeToMesh(Node):
 
         # Output sockets
 
-        self.mesh            = self.Geometry(self.bnode.outputs[0])
+        self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.output_sockets  = {'mesh': self.mesh}
 
     @property
@@ -5287,9 +5287,9 @@ class NodeVolumeToMesh(Node):
         self.bnode.resolution_mode = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeClamp for ShaderNodeClamp
+# Node Clamp for ShaderNodeClamp
 
-class NodeClamp(Node):
+class Clamp(Node):
 
     """Node 'Clamp' (ShaderNodeClamp)
 
@@ -5335,9 +5335,9 @@ class NodeClamp(Node):
         self.bnode.clamp_type = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeCombineRgb for ShaderNodeCombineRGB
+# Node CombineRgb for ShaderNodeCombineRGB
 
-class NodeCombineRgb(Node):
+class CombineRgb(Node):
 
     """Node 'Combine RGB' (ShaderNodeCombineRGB)
 
@@ -5367,9 +5367,9 @@ class NodeCombineRgb(Node):
         self.output_sockets  = {'image': self.image}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeCombineXyz for ShaderNodeCombineXYZ
+# Node CombineXyz for ShaderNodeCombineXYZ
 
-class NodeCombineXyz(Node):
+class CombineXyz(Node):
 
     """Node 'Combine XYZ' (ShaderNodeCombineXYZ)
 
@@ -5399,9 +5399,9 @@ class NodeCombineXyz(Node):
         self.output_sockets  = {'vector': self.vector}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeFloatCurve for ShaderNodeFloatCurve
+# Node FloatCurve for ShaderNodeFloatCurve
 
-class NodeFloatCurve(Node):
+class FloatCurve(Node):
 
     """Node 'Float Curve' (ShaderNodeFloatCurve)
 
@@ -5429,9 +5429,9 @@ class NodeFloatCurve(Node):
         self.output_sockets  = {'value': self.value}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeMapRange for ShaderNodeMapRange
+# Node MapRange for ShaderNodeMapRange
 
-class NodeMapRange(Node):
+class MapRange(Node):
 
     """Node 'Map Range' (ShaderNodeMapRange)
 
@@ -5521,9 +5521,9 @@ class NodeMapRange(Node):
         self.bnode.interpolation_type = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeMath for ShaderNodeMath
+# Node Math for ShaderNodeMath
 
-class NodeMath(Node):
+class Math(Node):
 
     """Node 'Math' (ShaderNodeMath)
 
@@ -5572,9 +5572,9 @@ class NodeMath(Node):
         self.bnode.operation = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeMix for ShaderNodeMixRGB
+# Node Mix for ShaderNodeMixRGB
 
-class NodeMix(Node):
+class Mix(Node):
 
     """Node 'Mix' (ShaderNodeMixRGB)
 
@@ -5631,9 +5631,9 @@ class NodeMix(Node):
         self.bnode.use_alpha = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeRgbCurves for ShaderNodeRGBCurve
+# Node RgbCurves for ShaderNodeRGBCurve
 
-class NodeRgbCurves(Node):
+class RgbCurves(Node):
 
     """Node 'RGB Curves' (ShaderNodeRGBCurve)
 
@@ -5661,9 +5661,9 @@ class NodeRgbCurves(Node):
         self.output_sockets  = {'color': self.color}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSeparateRgb for ShaderNodeSeparateRGB
+# Node SeparateRgb for ShaderNodeSeparateRGB
 
-class NodeSeparateRgb(Node):
+class SeparateRgb(Node):
 
     """Node 'Separate RGB' (ShaderNodeSeparateRGB)
 
@@ -5693,9 +5693,9 @@ class NodeSeparateRgb(Node):
         self.output_sockets  = {'r': self.r, 'g': self.g, 'b': self.b}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeSeparateXyz for ShaderNodeSeparateXYZ
+# Node SeparateXyz for ShaderNodeSeparateXYZ
 
-class NodeSeparateXyz(Node):
+class SeparateXyz(Node):
 
     """Node 'Separate XYZ' (ShaderNodeSeparateXYZ)
 
@@ -5725,9 +5725,9 @@ class NodeSeparateXyz(Node):
         self.output_sockets  = {'x': self.x, 'y': self.y, 'z': self.z}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeBrickTexture for ShaderNodeTexBrick
+# Node BrickTexture for ShaderNodeTexBrick
 
-class NodeBrickTexture(Node):
+class BrickTexture(Node):
 
     """Node 'Brick Texture' (ShaderNodeTexBrick)
 
@@ -5819,9 +5819,9 @@ class NodeBrickTexture(Node):
         self.bnode.squash_frequency = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeCheckerTexture for ShaderNodeTexChecker
+# Node CheckerTexture for ShaderNodeTexChecker
 
-class NodeCheckerTexture(Node):
+class CheckerTexture(Node):
 
     """Node 'Checker Texture' (ShaderNodeTexChecker)
 
@@ -5855,9 +5855,9 @@ class NodeCheckerTexture(Node):
         self.output_sockets  = {'color': self.color, 'fac': self.fac}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeGradientTexture for ShaderNodeTexGradient
+# Node GradientTexture for ShaderNodeTexGradient
 
-class NodeGradientTexture(Node):
+class GradientTexture(Node):
 
     """Node 'Gradient Texture' (ShaderNodeTexGradient)
 
@@ -5901,9 +5901,9 @@ class NodeGradientTexture(Node):
         self.bnode.gradient_type = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeMagicTexture for ShaderNodeTexMagic
+# Node MagicTexture for ShaderNodeTexMagic
 
-class NodeMagicTexture(Node):
+class MagicTexture(Node):
 
     """Node 'Magic Texture' (ShaderNodeTexMagic)
 
@@ -5951,9 +5951,9 @@ class NodeMagicTexture(Node):
         self.bnode.turbulence_depth = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeMusgraveTexture for ShaderNodeTexMusgrave
+# Node MusgraveTexture for ShaderNodeTexMusgrave
 
-class NodeMusgraveTexture(Node):
+class MusgraveTexture(Node):
 
     """Node 'Musgrave Texture' (ShaderNodeTexMusgrave)
 
@@ -6019,9 +6019,9 @@ class NodeMusgraveTexture(Node):
         self.bnode.musgrave_type = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeNoiseTexture for ShaderNodeTexNoise
+# Node NoiseTexture for ShaderNodeTexNoise
 
-class NodeNoiseTexture(Node):
+class NoiseTexture(Node):
 
     """Node 'Noise Texture' (ShaderNodeTexNoise)
 
@@ -6075,9 +6075,9 @@ class NodeNoiseTexture(Node):
         self.bnode.noise_dimensions = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeVoronoiTexture for ShaderNodeTexVoronoi
+# Node VoronoiTexture for ShaderNodeTexVoronoi
 
-class NodeVoronoiTexture(Node):
+class VoronoiTexture(Node):
 
     """Node 'Voronoi Texture' (ShaderNodeTexVoronoi)
 
@@ -6157,9 +6157,9 @@ class NodeVoronoiTexture(Node):
         self.bnode.voronoi_dimensions = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeWaveTexture for ShaderNodeTexWave
+# Node WaveTexture for ShaderNodeTexWave
 
-class NodeWaveTexture(Node):
+class WaveTexture(Node):
 
     """Node 'Wave Texture' (ShaderNodeTexWave)
 
@@ -6245,9 +6245,9 @@ class NodeWaveTexture(Node):
         self.bnode.wave_type = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeWhiteNoiseTexture for ShaderNodeTexWhiteNoise
+# Node WhiteNoiseTexture for ShaderNodeTexWhiteNoise
 
-class NodeWhiteNoiseTexture(Node):
+class WhiteNoiseTexture(Node):
 
     """Node 'White Noise Texture' (ShaderNodeTexWhiteNoise)
 
@@ -6293,9 +6293,9 @@ class NodeWhiteNoiseTexture(Node):
         self.bnode.noise_dimensions = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeColorramp for ShaderNodeValToRGB
+# Node Colorramp for ShaderNodeValToRGB
 
-class NodeColorramp(Node):
+class Colorramp(Node):
 
     """Node 'ColorRamp' (ShaderNodeValToRGB)
 
@@ -6323,9 +6323,9 @@ class NodeColorramp(Node):
         self.output_sockets  = {'color': self.color, 'alpha': self.alpha}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeValue for ShaderNodeValue
+# Node Value for ShaderNodeValue
 
-class NodeValue(Node):
+class Value(Node):
 
     """Node 'Value' (ShaderNodeValue)
 
@@ -6343,9 +6343,9 @@ class NodeValue(Node):
         self.output_sockets  = {'value': self.value}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeVectorCurves for ShaderNodeVectorCurve
+# Node VectorCurves for ShaderNodeVectorCurve
 
-class NodeVectorCurves(Node):
+class VectorCurves(Node):
 
     """Node 'Vector Curves' (ShaderNodeVectorCurve)
 
@@ -6373,9 +6373,9 @@ class NodeVectorCurves(Node):
         self.output_sockets  = {'vector': self.vector}
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeVectorMath for ShaderNodeVectorMath
+# Node VectorMath for ShaderNodeVectorMath
 
-class NodeVectorMath(Node):
+class VectorMath(Node):
 
     """Node 'Vector Math' (ShaderNodeVectorMath)
 
@@ -6427,9 +6427,9 @@ class NodeVectorMath(Node):
         self.bnode.operation = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node NodeVectorRotate for ShaderNodeVectorRotate
+# Node VectorRotate for ShaderNodeVectorRotate
 
-class NodeVectorRotate(Node):
+class VectorRotate(Node):
 
     """Node 'Vector Rotate' (ShaderNodeVectorRotate)
 

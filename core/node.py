@@ -139,7 +139,7 @@ class DataSocket:
             return self.node.chain_label
     
     @property
-    def index(self):
+    def socket_index(self):
         if self.is_output:
             bsockets = self.bnode.outputs
         else:
@@ -275,7 +275,7 @@ class DataSocket:
     #
     #     def reset_properties(self):
     #         super().reset_properties()
-    #         self.separate_ = None      # Created by property self.seperate() with node NodeSeparateXyz
+    #         self.separate_ = None      # Created by property self.seperate() with node SeparateXyz
     
     def reset_properties(self):
         pass
@@ -349,10 +349,10 @@ class DataSocket:
         # If several output sockets to plugn let's loop on the list
         
         if len(values) > 1:
-            if not self.is_multi_input:
+            if not bsocket.is_multi_input:
                 raise RuntimeError(f"Input socket {bsocket} is not multi input: impossible to plug multiple sockets: {values}.")
             for v in values:
-                self.plug(v)
+                DataSocket.plug_bsocket(bsocket, v)
             return
         
         # ---------------------------------------------------------------------------
@@ -376,8 +376,10 @@ class DataSocket:
         elif DataSocket.is_data_socket(value):
             # Node is None: particular cases
             if value.node is None:
-                if hasattr(value, 'bobject'):  # An object socket not connected to input
+                if hasattr(value, 'bobject'):        # An object socket not connected to input
                     value = value.bobject
+                elif hasattr(value, 'bcollection'):  # Same for colleciton
+                    value = value.bcollection
                 else:
                     raise RuntimeError("Impossible to plug a socket with a None Node: {value}.")
             else:
@@ -409,12 +411,19 @@ class DataSocket:
         else:
             Tree.TREE.btree.links.new(bsocket, out_socket, verify_limits=True)
             
+            #print(out_socket, bsocket, Tree.TREE.group_output.inputs[0].bsocket)
+            
+            outs = Tree.TREE.group_output.inputs
+            if outs and bsocket == outs[0].bsocket:
+                Tree.TREE.arrange()
+                
+            
     # ----------------------------------------------------------------------------------------------------
     # Plug (for input sockets only)
             
     def plug(self, *values):
-        DataSocket.plug_bsocket(self.bsockets, *values)
-        self.node.tree.arrange()    
+        DataSocket.plug_bsocket(self.bsocket, *values)
+        self.node.tree.arrange(False)
         
     # ----------------------------------------------------------------------------------------------------
     # To group output (for output sockets only)
@@ -496,6 +505,7 @@ class Tree:
         self.nodes  = []
         self.node_id = 0
         self.activate()
+        self.auto_arrange = False
         
         # ----- Layouts stack
         
@@ -503,12 +513,13 @@ class Tree:
         
         # ----- Input and outputs
         
-        self.group_input  = NodeGroupInput()
-        self.group_output = NodeGroupOutput()
+        self.group_input  = GroupInput()
+        self.group_output = GroupOutput()
         
         # ----- Viewer
         
         self.viewer = None
+        self.scene_ = None
         
         
     # ----------------------------------------------------------------------------------------------------
@@ -656,18 +667,34 @@ class Tree:
     def to_viewer(self, geometry=None, socket=None):
         
         if self.viewer is None:
-            self.viewer = NodeViewer()
+            self.viewer = Viewer()
             
         self.viewer.plug_socket(geometry)
         self.viewer.plug_socket(socket)
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Scene
+    
+    @property
+    def scene(self):
+        if self.scene_ is None:
+            self.scene_ = SceneTime()
+        return self.scene_
+        
+    @property
+    def frame(self):
+        return self.scene.frame
+    
+    @property
+    def seconds(self):
+        return self.scene.seconds
 
     # ----------------------------------------------------------------------------------------------------
     # Layouts
     
-    def new_layout(self, label="Layout", color=colors.yellow(.3, .3)):
-        layout = NodeFrame(label=label, color=color)
+    def new_layout(self, label="Layout", color=colors.orange):
+        layout = Frame(label=label, color=color)
         self.layouts.append(layout)
-        layout.node_color = color
         return layout
         
     @property
@@ -684,8 +711,9 @@ class Tree:
     # ----------------------------------------------------------------------------------------------------
     # Arrange the nodes
     
-    def arrange(self):
-        arrange(self.btree.name)    
+    def arrange(self, force=True):
+        if self.auto_arrange or force:
+            arrange(self.btree.name)    
         
     
 # ---------------------------------------------------------------------------
@@ -736,6 +764,13 @@ class Node:
         for ds in self.outputs:
             s += f"   {ds.name} {ds.connected_sockets()}\n"
         return s + ">"
+    
+    # ---------------------------------------------------------------------------
+    # bl idname
+    
+    @property
+    def bl_idname(self):
+        return self.bnode.bl_idname
     
     # ---------------------------------------------------------------------------
     # Node label
@@ -856,7 +891,7 @@ class Node:
             raise RuntimeError(f"Invalid input socket name '{index}' for node {self}. Valid (names, index) are : {valids}.")
         
         DataSocket.plug_bsocket(self.bnode.inputs[index], *values)
-        self.tree.arrange()
+        self.tree.arrange(False)
         
     # ====================================================================================================
     # The node is an attribute
@@ -1066,7 +1101,7 @@ class NodeGroup(Node):
 # ----------------------------------------------------------------------------------------------------
 # Node NodeGroupInput for NodeGroupInput
 
-class NodeGroupInput(NodeGroup):
+class GroupInput(NodeGroup):
 
     def __init__(self):
         
@@ -1095,6 +1130,11 @@ class NodeGroupInput(NodeGroup):
         socket   = None
         existing = False
         for bsocket in self.bnode.outputs:
+            
+            # No virtual socket
+            if bsocket.bl_idname == 'NodeSocketVirtual':
+                continue
+            
             cname, subclass = DataSocket.get_class_name(bsocket, True)
             if (cname == class_name or subclass == class_name) and bsocket.name == name:
                 socket = Node.DataClass(bsocket)
@@ -1151,7 +1191,7 @@ class NodeGroupInput(NodeGroup):
 # ----------------------------------------------------------------------------------------------------
 # Node NodeGroupOutput for NodeGroupOutput
 
-class NodeGroupOutput(NodeGroup):
+class GroupOutput(NodeGroup):
     
     def __init__(self):
         
@@ -1183,11 +1223,20 @@ class NodeGroupOutput(NodeGroup):
         # ----- Look for an existing socket with the proper name
         
         for index, bsocket in enumerate(self.bnode.inputs):
-            cname, subclass = DataSocket.get_class_name(bsocket, True)
-            if (cname == class_name or subclass == class_name) and bsocket.name == name:
-                self.plug(index, socket)
-                return
             
+            #print("TO OUTPUT", index, bsocket.name, bsocket.bl_idname, 'look for', socket, class_name, sub_class, socket.bl_idname)
+            if bsocket.bl_idname != socket.bl_idname:
+                continue
+            
+            #if bsocket.bl_idname == 'NodeSocketVirtual':
+            #    continue
+                
+            #cname, subclass = DataSocket.get_class_name(bsocket, True)
+            #if (cname == class_name or subclass == class_name) and bsocket.name == name:
+            if bsocket.name == name:
+                self.plug(index, socket)
+                self.tree.arrange(True)
+                return
 
         # ----- Let's create it
         
@@ -1197,13 +1246,13 @@ class NodeGroupOutput(NodeGroup):
         index  = self.socket_index(name)
         self.plug(index, socket)
         
-        self.tree.arrange()    
+        self.tree.arrange(True) 
 
         
 # ----------------------------------------------------------------------------------------------------
 # Node NodeViewer for GeometryNodeViewer
 
-class NodeViewer(Node):
+class Viewer(Node):
     """Node 'Viewer' (GeometryNodeViewer)
 
     Data type dependant sockets
@@ -1283,12 +1332,12 @@ class NodeViewer(Node):
         else:
             raise RuntimeError(f"Impossible to connect the socket {socket} to the viewer. Class {class_name} is not viewable.")
             
-        self.tree.arrange()
+        self.tree.arrange(False)
         
 # ----------------------------------------------------------------------------------------------------
 # Node NodeFrame for NodeFrame
 
-class NodeFrame(Node):
+class Frame(Node):
 
     """Node 'Frame' (NodeFrame)
 
@@ -1299,9 +1348,10 @@ class NodeFrame(Node):
 
     """
 
-    def __init__(self, label="Layout", label_size=42, color=colors.yellow(.3, .3), shrink=True):
+    def __init__(self, label="Layout", label_size=42, color=colors.orange, shrink=True):
 
         super().__init__('NodeFrame', name='Frame', label=label)
+        self.node_color = color
 
         # Parameters
 
@@ -1309,7 +1359,7 @@ class NodeFrame(Node):
         self.bnode.shrink          = shrink
 
         self.output_sockets  = {}
-
+        
     @property
     def label_size(self):
         return self.bnode.label_size
@@ -1325,6 +1375,29 @@ class NodeFrame(Node):
     @shrink.setter
     def shrink(self, value):
         self.bnode.shrink = value
+        
+# ----------------------------------------------------------------------------------------------------
+# Scene
+
+class SceneTime(Node):
+
+    """Node 'Scene Time' (GeometryNodeInputSceneTime)
+
+    Output sockets
+    --------------
+        seconds         : Float
+        frame           : Float
+    """
+
+    def __init__(self, label=None):
+
+        super().__init__('GeometryNodeInputSceneTime', name='Scene Time', label=label)
+        # Output sockets
+
+        self.seconds         = self.Float(self.bnode.outputs[0])
+        self.frame           = self.Float(self.bnode.outputs[1])
+        self.output_sockets  = {'seconds': self.seconds, 'frame': self.frame}
+        
         
     
     

@@ -27,7 +27,7 @@ class Boolean(DataSocket):
         if DataSocket.gives_bsocket(value):
             super().__init__(value, label=label)
         else:
-            node = nodes.NodeBoolean(bool(value), label=label)
+            node = nodes.Boolean(bool(value), label=label)
             super().__init__(node.boolean, node)
     
     @classmethod
@@ -148,7 +148,7 @@ class Integer(IntFloat):
         if DataSocket.gives_bsocket(value):
             super().__init__(value, label=label)
         else:
-            node = nodes.NodeInteger(int(value))
+            node = nodes.Integer(int(value))
             super().__init__(node.integer, node, label=label)
     
     @classmethod
@@ -168,7 +168,7 @@ class Float(IntFloat):
         if DataSocket.gives_bsocket(value):
             super().__init__(value, label=label)
         else:
-            node = nodes.NodeValue(label=label)
+            node = nodes.Value(label=label)
             node.bnode.outputs[0].default_value = float(value)
             super().__init__(node.value, node)
     
@@ -197,7 +197,7 @@ class String(DataSocket):
         if DataSocket.gives_bsocket(value):
             super().__init__(value, label=label)
         else:
-            node = nodes.NodeString(str(value), label=label)
+            node = nodes.String(str(value), label=label)
             super().__init__(node.string, node)
     
     @classmethod
@@ -206,20 +206,20 @@ class String(DataSocket):
     
     @classmethod
     def Tab(cls):
-        return cls(nodes.NodeSpecialCharacters().tab)
+        return cls(nodes.SpecialCharacters().tab)
     
     @classmethod
     def LineBreak(cls):
-        return cls(nodes.NodeSpecialCharacters().line_break)
+        return cls(nodes.SpecialCharacters().line_break)
     
     def __add__(self, other):
-        return String(nodes.NodeJoinStrings(self, other).outputs[0])
+        return String(nodes.JoinStrings(self, other).outputs[0])
 
     def __radd__(self, other):
-        return String(nodes.NodeJoinStrings(other, self).outputs[0])
+        return String(nodes.JoinStrings(other, self).outputs[0])
     
     def __iadd__(self, other):
-        return self.stack(nodes.NodeJoinStrings(self, other))
+        return self.stack(nodes.JoinStrings(self, other))
     
     
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -240,7 +240,7 @@ class Vector(DataSocket):
             else:
                 x, y, z = (value, value, value)
                 
-            node = nodes.NodeCombineXyz(x=x, y=y, z=z, label=label)
+            node = nodes.CombineXyz(x=x, y=y, z=z, label=label)
 
             super().__init__(node.vector, node)
             
@@ -270,7 +270,7 @@ class Vector(DataSocket):
             return super().get_blender_socket()
         
         else:
-            node = nodes.NodeCombineXyz(x=self.x, y=self.y, z=self.z, label=f"{self.node.chain_label}.combine")
+            node = nodes.CombineXyz(x=self.x, y=self.y, z=self.z, label=f"{self.node.chain_label}.combine")
             self.stack(node)
             return super().get_blender_socket()
         
@@ -352,7 +352,7 @@ class Color(DataSocket):
             
         else:
             if value is None:
-                node = nodes.NodeColor()
+                node = nodes.Color()
                 node.label = label
                 super().__init__(node.color, node)
 
@@ -364,7 +364,7 @@ class Color(DataSocket):
                 else:
                     r, g, b = (value, value, value)
                 
-                node = nodes.NodeCombineRgb(r=r, g=g, b=b, label=label)
+                node = nodes.CombineRgb(r=r, g=g, b=b, label=label)
                 super().__init__(node.image, node)
     
     @classmethod
@@ -380,7 +380,7 @@ class Color(DataSocket):
             return super().get_blender_socket()
         
         else:
-            node = nodes.NodeCombineRgb(r=self.r, g=self.g, b=self.b, label=f"{self.node.chain_label}.combine")
+            node = nodes.CombineRgb(r=self.r, g=self.g, b=self.b, label=f"{self.node.chain_label}.combine")
             self.stack(node)
             return super().get_blender_socket()
         
@@ -469,13 +469,13 @@ class Geometry(DataSocket):
             coll = bpy.data.collection[collection]
         else:
             coll = collection
-        return cls(nodes.NodeCollectionInfo(collection=coll, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space).outputs[0])
+        return cls(nodes.CollectionInfo(collection=coll, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space).outputs[0])
     
     def __add__(self, other):
         if self.node.bl_idname == 'GeometryNodeJoinGeometry':
             self.node.plug(0, other)
             return self
-        return self.join(other.socket)
+        return self.join(other)
     
     def __radd__(self, other):
         return other.join(self.socket)
@@ -491,6 +491,10 @@ class Geometry(DataSocket):
 # Collection
 
 class Collection(DataSocket):
+    
+    def __init__(self, bcoll):
+        super().__init__(None)
+        self.bcollection = Collection.blender_collection(bcoll)
     
     @staticmethod
     def blender_collection(coll):

@@ -38,7 +38,7 @@ class Spline(gn.Geometry):
     # Attribute captures
 
     def capture_cyclic(self, domain='CURVE'):
-        """Call node NodeIsSplineCyclic (GeometryNodeInputSplineCyclic)
+        """Call node IsSplineCyclic (GeometryNodeInputSplineCyclic)
 
         Returns
         -------
@@ -47,13 +47,13 @@ class Spline(gn.Geometry):
 
         attr_name = 'capture_cyclic_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.NodeIsSplineCyclic()
+            node = nodes.IsSplineCyclic()
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).cyclic
 
     def capture_resolution(self, domain='CURVE'):
-        """Call node NodeSplineResolution (GeometryNodeInputSplineResolution)
+        """Call node SplineResolution (GeometryNodeInputSplineResolution)
 
         Returns
         -------
@@ -62,13 +62,13 @@ class Spline(gn.Geometry):
 
         attr_name = 'capture_resolution_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.NodeSplineResolution()
+            node = nodes.SplineResolution()
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).resolution
 
     def capture_length(self, domain='CURVE'):
-        """Call node NodeSplineLength (GeometryNodeSplineLength)
+        """Call node SplineLength (GeometryNodeSplineLength)
 
         Returns
         -------
@@ -77,13 +77,13 @@ class Spline(gn.Geometry):
 
         attr_name = 'capture_length_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.NodeSplineLength()
+            node = nodes.SplineLength()
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name)
 
     def capture_parameter(self, domain='CURVE'):
-        """Call node NodeSplineParameter (GeometryNodeSplineParameter)
+        """Call node SplineParameter (GeometryNodeSplineParameter)
 
         Returns
         -------
@@ -92,7 +92,7 @@ class Spline(gn.Geometry):
 
         attr_name = 'capture_parameter_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.NodeSplineParameter()
+            node = nodes.SplineParameter()
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name)
@@ -103,7 +103,7 @@ class Spline(gn.Geometry):
 
     @property
     def cyclic(self):
-        """Call node NodeIsSplineCyclic (GeometryNodeInputSplineCyclic)
+        """Call node IsSplineCyclic (GeometryNodeInputSplineCyclic)
 
         Returns
         -------
@@ -114,7 +114,7 @@ class Spline(gn.Geometry):
 
     @property
     def resolution(self):
-        """Call node NodeSplineResolution (GeometryNodeInputSplineResolution)
+        """Call node SplineResolution (GeometryNodeInputSplineResolution)
 
         Returns
         -------
@@ -125,65 +125,65 @@ class Spline(gn.Geometry):
 
     @property
     def length(self):
-        """Call node NodeSplineLength (GeometryNodeSplineLength)
+        """Call node SplineLength (GeometryNodeSplineLength)
 
         Returns
         -------
             Float
         """
 
-        return self.capture_length(domain='CURVE').output_sockets[0]
+        return self.capture_length(domain='CURVE').length
 
     @property
     def point_count(self):
-        """Call node NodeSplineLength (GeometryNodeSplineLength)
+        """Call node SplineLength (GeometryNodeSplineLength)
 
         Returns
         -------
             Integer
         """
 
-        return self.capture_length(domain='CURVE').output_sockets[1]
+        return self.capture_length(domain='CURVE').point_count
 
     @property
     def factor(self):
-        """Call node NodeSplineParameter (GeometryNodeSplineParameter)
+        """Call node SplineParameter (GeometryNodeSplineParameter)
 
         Returns
         -------
             Float
         """
 
-        return self.capture_parameter(domain='CURVE').output_sockets[0]
+        return self.capture_parameter(domain='CURVE').factor
 
     @property
     def parameter_length(self):
-        """Call node NodeSplineParameter (GeometryNodeSplineParameter)
+        """Call node SplineParameter (GeometryNodeSplineParameter)
 
         Returns
         -------
             Float
         """
 
-        return self.capture_parameter(domain='CURVE').output_sockets[1]
+        return self.capture_parameter(domain='CURVE').length
 
     @property
     def parameter_index(self):
-        """Call node NodeSplineParameter (GeometryNodeSplineParameter)
+        """Call node SplineParameter (GeometryNodeSplineParameter)
 
         Returns
         -------
             Integer
         """
 
-        return self.capture_parameter(domain='CURVE').output_sockets[2]
+        return self.capture_parameter(domain='CURVE').index
 
 
     # ----------------------------------------------------------------------------------------------------
     # Stacked methods
 
     def set_cyclic(geometry=None, selection=None, cyclic=None):
-        """Call node NodeSetSplineCyclic (GeometryNodeSetSplineCyclic)
+        """Call node SetSplineCyclic (GeometryNodeSetSplineCyclic)
 
         Sockets arguments
         -----------------
@@ -197,10 +197,10 @@ class Spline(gn.Geometry):
 
         """
 
-        return self.stack(nodes.NodeSetSplineCyclic(geometry=geometry, selection=selection, cyclic=cyclic))
+        return self.stack(nodes.SetSplineCyclic(geometry=geometry, selection=selection, cyclic=cyclic))
 
     def set_resolution(geometry=None, selection=None, resolution=None):
-        """Call node NodeSetSplineResolution (GeometryNodeSetSplineResolution)
+        """Call node SetSplineResolution (GeometryNodeSetSplineResolution)
 
         Sockets arguments
         -----------------
@@ -214,6 +214,6 @@ class Spline(gn.Geometry):
 
         """
 
-        return self.stack(nodes.NodeSetSplineResolution(geometry=geometry, selection=selection, resolution=resolution))
+        return self.stack(nodes.SetSplineResolution(geometry=geometry, selection=selection, resolution=resolution))
 
 

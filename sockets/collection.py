@@ -21,7 +21,7 @@ class Collection(dsock.Collection):
     # Methods
 
     def switch(self, switch1=None, true=None):
-        """Call node NodeSwitch (GeometryNodeSwitch)
+        """Call node Switch (GeometryNodeSwitch)
 
         Sockets arguments
         -----------------
@@ -38,10 +38,10 @@ class Collection(dsock.Collection):
             Collection
         """
 
-        return nodes.NodeSwitch(false=self, switch1=switch1, true=true, input_type='COLLECTION').output
+        return nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION').output
 
     def info(self, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
-        """Call node NodeCollectionInfo (GeometryNodeCollectionInfo)
+        """Call node CollectionInfo (GeometryNodeCollectionInfo)
 
         Sockets arguments
         -----------------
@@ -58,6 +58,6 @@ class Collection(dsock.Collection):
             Geometry
         """
 
-        return nodes.NodeCollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space).geometry
+        return nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space).geometry
 
 
