@@ -45,7 +45,7 @@ node = nodes.JoinStrings(*strings, delimiter=None, label=None)
 > Data socket classes implementing this node
 
 
-- [String](aaa). [join](bbb) : Method
-- [functions](aaa). [join_strings](bbb) : Function
+- [String](./sockets/String.md) [join](./sockets/String.md#join) : Method
+- [functions](./sockets/functions.md) [join_strings](./sockets/functions.md#join_strings) : Function
 
 

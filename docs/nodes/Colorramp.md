@@ -45,6 +45,6 @@ node = nodes.Colorramp(fac=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Float](aaa). [color_ramp](bbb) : Method
+- [Float](./sockets/Float.md) [color_ramp](./sockets/Float.md#color_ramp) : Method
 
 

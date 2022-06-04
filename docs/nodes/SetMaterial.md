@@ -46,6 +46,6 @@ node = nodes.SetMaterial(geometry=None, selection=None, material=None, label=Non
 > Data socket classes implementing this node
 
 
-- [Geometry](aaa). [set_material](bbb) : Stacked method
+- [Geometry](./sockets/Geometry.md) [set_material](./sockets/Geometry.md#set_material) : Stacked method
 
 

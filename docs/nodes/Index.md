@@ -36,10 +36,10 @@ node = nodes.Index(label=None)
 > Data socket classes implementing this node
 
 
-- [Geometry](aaa). [capture_index](bbb) : Capture attribute
-- [Geometry](aaa). [index](bbb) : Attribute
-- [Instances](aaa). [instance_index](bbb) : Attribute
-- [Spline](aaa). [spline_index](bbb) : Attribute
-- [Spline](aaa). [spline_position](bbb) : Attribute
+- [Geometry](./sockets/Geometry.md) [capture_index](./sockets/Geometry.md#capture_index) : Capture attribute
+- [Geometry](./sockets/Geometry.md) [index](./sockets/Geometry.md#index) : Attribute
+- [Instances](./sockets/Instances.md) [instance_index](./sockets/Instances.md#instance_index) : Attribute
+- [Spline](./sockets/Spline.md) [spline_index](./sockets/Spline.md#spline_index) : Attribute
+- [Spline](./sockets/Spline.md) [spline_position](./sockets/Spline.md#spline_position) : Attribute
 
 

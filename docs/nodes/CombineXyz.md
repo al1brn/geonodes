@@ -46,6 +46,6 @@ node = nodes.CombineXyz(x=None, y=None, z=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Vector](aaa). [Combine](bbb) : Constructor
+- [Vector](./sockets/Vector.md) [Combine](./sockets/Vector.md#combine) : Constructor
 
 

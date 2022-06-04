@@ -46,6 +46,6 @@ node = nodes.SetPointRadius(points=None, selection=None, radius=None, label=None
 > Data socket classes implementing this node
 
 
-- [Points](aaa). [set_radius](bbb) : Stacked method
+- [Points](./sockets/Points.md) [set_radius](./sockets/Points.md#set_radius) : Stacked method
 
 

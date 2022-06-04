@@ -51,8 +51,8 @@ class AlignEulerToVector(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Vector. AlignToVector   : Constructor 
-    - Vector. align_to_vector : Stacked method 
+    - Vector AlignToVector   : Constructor 
+    - Vector align_to_vector : Stacked method 
     """
 
     def __init__(self, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', label=None):
@@ -138,15 +138,15 @@ class BooleanMath(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Boolean. b_and  : Method 
-    - Boolean. b_not  : Method 
-    - Boolean. b_or   : Method 
-    - Boolean. imply  : Method 
-    - Boolean. nand   : Method 
-    - Boolean. nimply : Method 
-    - Boolean. nor    : Method 
-    - Boolean. xnor   : Method 
-    - Boolean. xor    : Method 
+    - Boolean b_and  : Method 
+    - Boolean b_not  : Method 
+    - Boolean b_or   : Method 
+    - Boolean imply  : Method 
+    - Boolean nand   : Method 
+    - Boolean nimply : Method 
+    - Boolean nor    : Method 
+    - Boolean xnor   : Method 
+    - Boolean xor    : Method 
     """
 
     def __init__(self, boolean0=None, boolean1=None, operation='AND', label=None):
@@ -234,34 +234,34 @@ class Compare(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Color. brighter        : Method 
-    - Color. darker          : Method 
-    - Color. equal           : Method 
-    - Color. not_equal       : Method 
-    - Float. equal           : Method 
-    - Float. greater_equal   : Method 
-    - Float. greater_than    : Method 
-    - Float. less_equal      : Method 
-    - Float. less_than       : Method 
-    - Float. not_equal       : Method 
-    - Integer. equal         : Method 
-    - Integer. greater_equal : Method 
-    - Integer. greater_than  : Method 
-    - Integer. less_equal    : Method 
-    - Integer. less_than     : Method 
-    - Integer. not_equal     : Method 
-    - String. average        : Method 
-    - String. direction      : Method 
-    - String. dot_product    : Method 
-    - String. element        : Method 
-    - String. length         : Method 
-    - Vector. equal          : Method 
-    - Vector. greater_equal  : Method 
-    - Vector. greater_than   : Method 
-    - Vector. less_equal     : Method 
-    - Vector. less_than      : Method 
-    - Vector. not_equal      : Method 
-    - functions. compare     : Function 
+    - Color brighter        : Method 
+    - Color darker          : Method 
+    - Color equal           : Method 
+    - Color not_equal       : Method 
+    - Float equal           : Method 
+    - Float greater_equal   : Method 
+    - Float greater_than    : Method 
+    - Float less_equal      : Method 
+    - Float less_than       : Method 
+    - Float not_equal       : Method 
+    - Integer equal         : Method 
+    - Integer greater_equal : Method 
+    - Integer greater_than  : Method 
+    - Integer less_equal    : Method 
+    - Integer less_than     : Method 
+    - Integer not_equal     : Method 
+    - String average        : Method 
+    - String direction      : Method 
+    - String dot_product    : Method 
+    - String element        : Method 
+    - String length         : Method 
+    - Vector equal          : Method 
+    - Vector greater_equal  : Method 
+    - Vector greater_than   : Method 
+    - Vector less_equal     : Method 
+    - Vector less_than      : Method 
+    - Vector not_equal      : Method 
+    - functions compare     : Function 
     """
 
     def __init__(self, a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', label=None):
@@ -372,7 +372,7 @@ class FloatToInteger(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Float. to_integer : Method 
+    - Float to_integer : Method 
     """
 
     def __init__(self, float=None, rounding_mode='ROUND', label=None):
@@ -780,10 +780,10 @@ class RandomValue(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Boolean. Random : Constructor 
-    - Float. Random   : Constructor 
-    - Integer. Random : Constructor 
-    - Vector. Random  : Constructor 
+    - Boolean Random : Constructor 
+    - Float Random   : Constructor 
+    - Integer Random : Constructor 
+    - Vector Random  : Constructor 
     """
 
     def __init__(self, min=None, max=None, probability=None, ID=None, seed=None, data_type='FLOAT', label=None):
@@ -874,7 +874,7 @@ class ReplaceString(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - String. replace : Stacked method 
+    - String replace : Stacked method 
     """
 
     def __init__(self, string=None, find=None, replace=None, label=None):
@@ -941,7 +941,7 @@ class RotateEuler(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Vector. rotate_euler : Stacked method 
+    - Vector rotate_euler : Stacked method 
     """
 
     def __init__(self, rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', label=None):
@@ -1015,7 +1015,7 @@ class SliceString(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - String. slice : Method 
+    - String slice : Method 
     """
 
     def __init__(self, string=None, position=None, length=None, label=None):
@@ -1074,7 +1074,7 @@ class StringLength(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - String. length : Property 
+    - String length : Property 
     """
 
     def __init__(self, string=None, label=None):
@@ -1132,7 +1132,7 @@ class ValueToString(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Float. to_string : Method 
+    - Float to_string : Method 
     """
 
     def __init__(self, value=None, decimals=None, label=None):
@@ -1206,9 +1206,9 @@ class AccumulateField(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Float. accumulate_field   : Method 
-    - Integer. accumulate_field : Method 
-    - Vector. accumulate_field  : Method 
+    - Float accumulate_field   : Method 
+    - Integer accumulate_field : Method 
+    - Vector accumulate_field  : Method 
     """
 
     def __init__(self, value=None, group_index=None, data_type='FLOAT', domain='POINT', label=None):
@@ -1315,7 +1315,7 @@ class DomainSize(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. attribute_domain_size : Method 
+    - Geometry attribute_domain_size : Method 
     """
 
     def __init__(self, geometry=None, component='MESH', label=None):
@@ -1390,7 +1390,7 @@ class AttributeRemove(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. attribute_remove : Method 
+    - Geometry attribute_remove : Method 
     """
 
     def __init__(self, *attribute, geometry=None, label=None):
@@ -1471,8 +1471,8 @@ class AttributeStatistic(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Float. attribute_statistic  : Method 
-    - Vector. attribute_statistic : Method 
+    - Float attribute_statistic  : Method 
+    - Vector attribute_statistic : Method 
     """
 
     def __init__(self, geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', label=None):
@@ -1592,16 +1592,16 @@ class TransferAttribute(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Boolean. transfer_attribute : Method 
-    - Color. transfer_attribute   : Method 
-    - Float. transfer_attribute   : Method 
-    - Geometry. transfer_boolean  : Method 
-    - Geometry. transfer_color    : Method 
-    - Geometry. transfer_float    : Method 
-    - Geometry. transfer_integer  : Method 
-    - Geometry. transfer_vector   : Method 
-    - Integer. transfer_attribute : Method 
-    - Vector. transfer_attribute  : Method 
+    - Boolean transfer_attribute : Method 
+    - Color transfer_attribute   : Method 
+    - Float transfer_attribute   : Method 
+    - Geometry transfer_boolean  : Method 
+    - Geometry transfer_color    : Method 
+    - Geometry transfer_float    : Method 
+    - Geometry transfer_integer  : Method 
+    - Geometry transfer_vector   : Method 
+    - Integer transfer_attribute : Method 
+    - Vector transfer_attribute  : Method 
     """
 
     def __init__(self, source=None, attribute=None, source_position=None, index=None, data_type='FLOAT', domain='POINT', mapping='NEAREST_FACE_INTERPOLATED', label=None):
@@ -1713,7 +1713,7 @@ class BoundingBox(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. bound_box : Property 
+    - Geometry bound_box : Property 
     """
 
     def __init__(self, geometry=None, label=None):
@@ -1787,11 +1787,11 @@ class CaptureAttribute(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Boolean. capture_attribute : Method 
-    - Color. capture_attribute   : Method 
-    - Float. capture_attribute   : Method 
-    - Integer. capture_attribute : Method 
-    - Vector. capture_attribute  : Method 
+    - Boolean capture_attribute : Method 
+    - Color capture_attribute   : Method 
+    - Float capture_attribute   : Method 
+    - Integer capture_attribute : Method 
+    - Vector capture_attribute  : Method 
     """
 
     def __init__(self, geometry=None, value=None, data_type='FLOAT', domain='POINT', label=None):
@@ -1899,7 +1899,7 @@ class CollectionInfo(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Collection. info : Method 
+    - Collection info : Method 
     """
 
     def __init__(self, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL', label=None):
@@ -1970,7 +1970,7 @@ class ConvexHull(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. convex_hull : Method 
+    - Geometry convex_hull : Method 
     """
 
     def __init__(self, geometry=None, label=None):
@@ -2045,8 +2045,8 @@ class Arc(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. ArcFromPoints : Static method 
-    - Curve. ArcFromRadius : Constructor 
+    - Curve ArcFromPoints : Static method 
+    - Curve ArcFromRadius : Constructor 
     """
 
     def __init__(self, resolution=None, start=None, middle=None, end=None, radius=None, start_angle=None, sweep_angle=None, offset_angle=None, connect_center=None, invert_arc=None, mode='RADIUS', label=None):
@@ -2128,8 +2128,8 @@ class EndpointSelection(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Spline. capture_endpoint_selection : Capture attribute 
-    - Spline. endpoint_selection         : Attribute 
+    - Spline capture_endpoint_selection : Capture attribute 
+    - Spline endpoint_selection         : Attribute 
     """
 
     def __init__(self, start_size=None, end_size=None, label=None):
@@ -2188,8 +2188,8 @@ class HandleTypeSelection(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Spline. capture_handle_type_selection : Capture attribute 
-    - Spline. handle_type_selection         : Attribute 
+    - Spline capture_handle_type_selection : Capture attribute 
+    - Spline handle_type_selection         : Attribute 
     """
 
     def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None):
@@ -2263,7 +2263,7 @@ class CurveLength(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. length : Method 
+    - Curve length : Method 
     """
 
     def __init__(self, curve=None, label=None):
@@ -2330,7 +2330,7 @@ class BezierSegment(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. BezierSegment : Constructor 
+    - Curve BezierSegment : Constructor 
     """
 
     def __init__(self, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION', label=None):
@@ -2414,7 +2414,7 @@ class CurveCircle(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. Circle : Constructor 
+    - Curve Circle : Constructor 
     """
 
     def __init__(self, resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS', label=None):
@@ -2496,7 +2496,7 @@ class CurveLine(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. Line : Constructor 
+    - Curve Line : Constructor 
     """
 
     def __init__(self, start=None, end=None, direction=None, length=None, mode='POINTS', label=None):
@@ -2584,7 +2584,7 @@ class Quadrilateral(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. Quadrilateral : Constructor 
+    - Curve Quadrilateral : Constructor 
     """
 
     def __init__(self, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', label=None):
@@ -2666,7 +2666,7 @@ class QuadraticBezier(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. QuadraticBezier : Constructor 
+    - Curve QuadraticBezier : Constructor 
     """
 
     def __init__(self, resolution=None, start=None, middle=None, end=None, label=None):
@@ -2733,7 +2733,7 @@ class SetHandleType(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. set_handles : Stacked method 
+    - Curve set_handles : Stacked method 
     """
 
     def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None):
@@ -2818,7 +2818,7 @@ class Spiral(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. Spiral : Constructor 
+    - Curve Spiral : Constructor 
     """
 
     def __init__(self, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, label=None):
@@ -2886,7 +2886,7 @@ class SetSplineType(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. set_spline_type : Stacked method 
+    - Curve set_spline_type : Stacked method 
     """
 
     def __init__(self, curve=None, selection=None, spline_type='POLY', label=None):
@@ -2960,7 +2960,7 @@ class Star(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. Star : Constructor 
+    - Curve Star : Constructor 
     """
 
     def __init__(self, points=None, inner_radius=None, outer_radius=None, twist=None, label=None):
@@ -3023,7 +3023,7 @@ class CurveToMesh(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. to_mesh : Method 
+    - Curve to_mesh : Method 
     """
 
     def __init__(self, curve=None, profile_curve=None, fill_caps=None, label=None):
@@ -3092,7 +3092,7 @@ class CurveToPoints(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. to_points : Method 
+    - Curve to_points : Method 
     """
 
     def __init__(self, curve=None, count=None, length=None, mode='COUNT', label=None):
@@ -3173,7 +3173,7 @@ class DeleteGeometry(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. delete_geometry : Stacked method 
+    - Geometry delete_geometry : Stacked method 
     """
 
     def __init__(self, geometry=None, selection=None, domain='POINT', mode='ALL', label=None):
@@ -3266,7 +3266,7 @@ class DistributePointsOnFaces(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. distribute_points_on_faces : Method 
+    - Mesh distribute_points_on_faces : Method 
     """
 
     def __init__(self, mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None):
@@ -3344,7 +3344,7 @@ class DualMesh(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. dual : Stacked method 
+    - Mesh dual : Stacked method 
     """
 
     def __init__(self, mesh=None, keep_boundaries=None, label=None):
@@ -3414,7 +3414,7 @@ class ExtrudeMesh(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. extrude : Method 
+    - Mesh extrude : Method 
     """
 
     def __init__(self, mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES', label=None):
@@ -3503,11 +3503,11 @@ class FieldAtIndex(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Boolean. field_at_index : Method 
-    - Color. field_at_index   : Method 
-    - Float. field_at_index   : Method 
-    - Integer. field_at_index : Method 
-    - Vector. field_at_index  : Method 
+    - Boolean field_at_index : Method 
+    - Color field_at_index   : Method 
+    - Float field_at_index   : Method 
+    - Integer field_at_index : Method 
+    - Vector field_at_index  : Method 
     """
 
     def __init__(self, index=None, value=None, data_type='FLOAT', domain='POINT', label=None):
@@ -3611,7 +3611,7 @@ class FillCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. fill : Stacked method 
+    - Curve fill : Stacked method 
     """
 
     def __init__(self, curve=None, mode='TRIANGLES', label=None):
@@ -3688,7 +3688,7 @@ class FilletCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. fillet : Stacked method 
+    - Curve fillet : Stacked method 
     """
 
     def __init__(self, curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER', label=None):
@@ -3761,7 +3761,7 @@ class FlipFaces(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. flip_faces : Stacked method 
+    - Mesh flip_faces : Stacked method 
     """
 
     def __init__(self, mesh=None, selection=None, label=None):
@@ -3819,7 +3819,7 @@ class GeometryToInstance(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. to_instance : Method 
+    - Geometry to_instance : Method 
     """
 
     def __init__(self, *geometry, label=None):
@@ -3920,7 +3920,7 @@ class ImageTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Texture. Image : Static method 
+    - Texture Image : Static method 
     """
 
     def __init__(self, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', label=None):
@@ -4002,9 +4002,9 @@ class CurveHandlePositions(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Spline. capture_handle_positions : Capture attribute 
-    - Spline. left_handle_position     : Attribute 
-    - Spline. right_handle_position    : Attribute 
+    - Spline capture_handle_positions : Capture attribute 
+    - Spline left_handle_position     : Attribute 
+    - Spline right_handle_position    : Attribute 
     """
 
     def __init__(self, relative=None, label=None):
@@ -4057,8 +4057,8 @@ class CurveTilt(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Spline. capture_tilt : Capture attribute 
-    - Spline. tilt         : Attribute 
+    - Spline capture_tilt : Capture attribute 
+    - Spline tilt         : Attribute 
     """
 
     def __init__(self, label=None):
@@ -4106,9 +4106,9 @@ class ID(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. ID         : Attribute 
-    - Geometry. capture_ID : Capture attribute 
-    - Spline. spline_ID    : Attribute 
+    - Geometry ID         : Attribute 
+    - Geometry capture_ID : Capture attribute 
+    - Spline spline_ID    : Attribute 
     """
 
     def __init__(self, label=None):
@@ -4156,11 +4156,11 @@ class Index(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. capture_index   : Capture attribute 
-    - Geometry. index           : Attribute 
-    - Instances. instance_index : Attribute 
-    - Spline. spline_index      : Attribute 
-    - Spline. spline_position   : Attribute 
+    - Geometry capture_index   : Capture attribute 
+    - Geometry index           : Attribute 
+    - Instances instance_index : Attribute 
+    - Spline spline_index      : Attribute 
+    - Spline spline_position   : Attribute 
     """
 
     def __init__(self, label=None):
@@ -4250,8 +4250,8 @@ class MaterialIndex(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. capture_material_index : Capture attribute 
-    - Mesh. material_index         : Attribute 
+    - Mesh capture_material_index : Capture attribute 
+    - Mesh material_index         : Attribute 
     """
 
     def __init__(self, label=None):
@@ -4300,18 +4300,18 @@ class EdgeAngle(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. capture_edge_angle  : Capture attribute 
-    - Mesh. corner_ID           : Attribute 
-    - Mesh. corner_index        : Attribute 
-    - Mesh. corner_porision     : Attribute 
-    - Mesh. edge_angle          : Attribute 
-    - Mesh. edge_unsigned_angle : Attribute 
-    - Mesh. egde_ID             : Attribute 
-    - Mesh. egde_index          : Attribute 
-    - Mesh. egde_position       : Attribute 
-    - Mesh. face_ID             : Attribute 
-    - Mesh. face_index          : Attribute 
-    - Mesh. face_position       : Attribute 
+    - Mesh capture_edge_angle  : Capture attribute 
+    - Mesh corner_ID           : Attribute 
+    - Mesh corner_index        : Attribute 
+    - Mesh corner_porision     : Attribute 
+    - Mesh edge_angle          : Attribute 
+    - Mesh edge_unsigned_angle : Attribute 
+    - Mesh egde_ID             : Attribute 
+    - Mesh egde_index          : Attribute 
+    - Mesh egde_position       : Attribute 
+    - Mesh face_ID             : Attribute 
+    - Mesh face_index          : Attribute 
+    - Mesh face_position       : Attribute 
     """
 
     def __init__(self, label=None):
@@ -4360,8 +4360,8 @@ class EdgeNeighbors(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. capture_edge_neighbors : Capture attribute 
-    - Mesh. edge_neighbors         : Attribute 
+    - Mesh capture_edge_neighbors : Capture attribute 
+    - Mesh edge_neighbors         : Attribute 
     """
 
     def __init__(self, label=None):
@@ -4412,11 +4412,11 @@ class EdgeVertices(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. capture_edge_vertices   : Capture attribute 
-    - Mesh. edge_vertices_index1    : Attribute 
-    - Mesh. edge_vertices_index2    : Attribute 
-    - Mesh. edge_vertices_position1 : Attribute 
-    - Mesh. edge_vertices_position2 : Attribute 
+    - Mesh capture_edge_vertices   : Capture attribute 
+    - Mesh edge_vertices_index1    : Attribute 
+    - Mesh edge_vertices_index2    : Attribute 
+    - Mesh edge_vertices_position1 : Attribute 
+    - Mesh edge_vertices_position2 : Attribute 
     """
 
     def __init__(self, label=None):
@@ -4467,8 +4467,8 @@ class FaceArea(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. capture_face_area : Capture attribute 
-    - Mesh. face_area         : Attribute 
+    - Mesh capture_face_area : Capture attribute 
+    - Mesh face_area         : Attribute 
     """
 
     def __init__(self, label=None):
@@ -4517,9 +4517,9 @@ class FaceNeighbors(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. capture_face_neighbors      : Capture attribute 
-    - Mesh. face_neighbors_face_count   : Attribute 
-    - Mesh. face_neighbors_vertex_count : Attribute 
+    - Mesh capture_face_neighbors      : Capture attribute 
+    - Mesh face_neighbors_face_count   : Attribute 
+    - Mesh face_neighbors_vertex_count : Attribute 
     """
 
     def __init__(self, label=None):
@@ -4569,8 +4569,8 @@ class MeshIsland(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. capture_island : Capture attribute 
-    - Mesh. island         : Attribute 
+    - Mesh capture_island : Capture attribute 
+    - Mesh island         : Attribute 
     """
 
     def __init__(self, label=None):
@@ -4620,9 +4620,9 @@ class VertexNeighbors(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. capture_vertex_neighbors      : Capture attribute 
-    - Mesh. vertex_neighbors_face_count   : Attribute 
-    - Mesh. vertex_neighbors_vertex_count : Attribute 
+    - Mesh capture_vertex_neighbors      : Capture attribute 
+    - Mesh vertex_neighbors_face_count   : Attribute 
+    - Mesh vertex_neighbors_vertex_count : Attribute 
     """
 
     def __init__(self, label=None):
@@ -4671,8 +4671,8 @@ class Normal(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. capture_normal : Capture attribute 
-    - Geometry. normal         : Attribute 
+    - Geometry capture_normal : Capture attribute 
+    - Geometry normal         : Attribute 
     """
 
     def __init__(self, label=None):
@@ -4720,8 +4720,8 @@ class Position(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. capture_position : Capture attribute 
-    - Geometry. position         : Attribute 
+    - Geometry capture_position : Capture attribute 
+    - Geometry position         : Attribute 
     """
 
     def __init__(self, label=None):
@@ -4769,8 +4769,8 @@ class Radius(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. capture_radius : Capture attribute 
-    - Geometry. radius         : Attribute 
+    - Geometry capture_radius : Capture attribute 
+    - Geometry radius         : Attribute 
     """
 
     def __init__(self, label=None):
@@ -4819,7 +4819,7 @@ class SceneTime(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - functions. scene : Function 
+    - functions scene : Function 
     """
 
     def __init__(self, label=None):
@@ -4868,8 +4868,8 @@ class IsShadeSmooth(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. capture_shade_smooth : Capture attribute 
-    - Mesh. shade_smooth         : Attribute 
+    - Mesh capture_shade_smooth : Capture attribute 
+    - Mesh shade_smooth         : Attribute 
     """
 
     def __init__(self, label=None):
@@ -4917,8 +4917,8 @@ class IsSplineCyclic(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Spline. capture_cyclic : Capture attribute 
-    - Spline. cyclic         : Attribute 
+    - Spline capture_cyclic : Capture attribute 
+    - Spline cyclic         : Attribute 
     """
 
     def __init__(self, label=None):
@@ -4966,8 +4966,8 @@ class SplineResolution(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Spline. capture_resolution : Capture attribute 
-    - Spline. resolution         : Attribute 
+    - Spline capture_resolution : Capture attribute 
+    - Spline resolution         : Attribute 
     """
 
     def __init__(self, label=None):
@@ -5015,8 +5015,8 @@ class CurveTangent(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Spline. capture_tangent : Capture attribute 
-    - Spline. tangent         : Attribute 
+    - Spline capture_tangent : Capture attribute 
+    - Spline tangent         : Attribute 
     """
 
     def __init__(self, label=None):
@@ -5076,7 +5076,7 @@ class InstanceOnPoints(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Points. instance_on_points : Method 
+    - Points instance_on_points : Method 
     """
 
     def __init__(self, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, label=None):
@@ -5142,7 +5142,7 @@ class InstancesToPoints(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Instances. to_points : Method 
+    - Instances to_points : Method 
     """
 
     def __init__(self, instances=None, selection=None, position=None, radius=None, label=None):
@@ -5197,7 +5197,7 @@ class IsViewport(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. is_viewport : Static method 
+    - Geometry is_viewport : Static method 
     """
 
     def __init__(self, label=None):
@@ -5250,7 +5250,7 @@ class JoinGeometry(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. join : Method 
+    - Geometry join : Method 
     """
 
     def __init__(self, *geometry, label=None):
@@ -5307,9 +5307,9 @@ class MaterialSelection(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Material. selection              : Method 
-    - Mesh. capture_material_selection : Capture attribute 
-    - Mesh. material_selection         : Attribute 
+    - Material selection              : Method 
+    - Mesh capture_material_selection : Capture attribute 
+    - Mesh material_selection         : Attribute 
     """
 
     def __init__(self, material=None, label=None):
@@ -5368,7 +5368,7 @@ class MergeByDistance(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. merge_by_distance : Stacked method 
+    - Geometry merge_by_distance : Stacked method 
     """
 
     def __init__(self, geometry=None, selection=None, distance=None, label=None):
@@ -5436,9 +5436,9 @@ class MeshBoolean(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. difference : Method 
-    - Mesh. intersect  : Method 
-    - Mesh. union      : Method 
+    - Mesh difference : Method 
+    - Mesh intersect  : Method 
+    - Mesh union      : Method 
     """
 
     def __init__(self, *mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', label=None):
@@ -5516,7 +5516,7 @@ class MeshCircle(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. Circle : Constructor 
+    - Mesh Circle : Constructor 
     """
 
     def __init__(self, vertices=None, radius=None, fill_type='NONE', label=None):
@@ -5600,7 +5600,7 @@ class Cone(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. Cone : Constructor 
+    - Mesh Cone : Constructor 
     """
 
     def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', label=None):
@@ -5680,7 +5680,7 @@ class Cube(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. Cube : Constructor 
+    - Mesh Cube : Constructor 
     """
 
     def __init__(self, size=None, vertices_x=None, vertices_y=None, vertices_z=None, label=None):
@@ -5753,7 +5753,7 @@ class Cylinder(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. Cylinder : Constructor 
+    - Mesh Cylinder : Constructor 
     """
 
     def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', label=None):
@@ -5832,7 +5832,7 @@ class Grid(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. Grid : Constructor 
+    - Mesh Grid : Constructor 
     """
 
     def __init__(self, size_x=None, size_y=None, vertices_x=None, vertices_y=None, label=None):
@@ -5893,7 +5893,7 @@ class IcoSphere(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. IcoSphere : Constructor 
+    - Mesh IcoSphere : Constructor 
     """
 
     def __init__(self, radius=None, subdivisions=None, label=None):
@@ -5961,7 +5961,7 @@ class MeshLine(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. Line : Constructor 
+    - Mesh Line : Constructor 
     """
 
     def __init__(self, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', label=None):
@@ -6043,7 +6043,7 @@ class MeshToCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. to_curve : Method 
+    - Mesh to_curve : Method 
     """
 
     def __init__(self, mesh=None, selection=None, label=None):
@@ -6109,7 +6109,7 @@ class MeshToPoints(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. to_points : Method 
+    - Mesh to_points : Method 
     """
 
     def __init__(self, mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None):
@@ -6183,7 +6183,7 @@ class UvSphere(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. UVSphere : Constructor 
+    - Mesh UVSphere : Constructor 
     """
 
     def __init__(self, segments=None, rings=None, radius=None, label=None):
@@ -6251,7 +6251,7 @@ class ObjectInfo(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Object. info : Property 
+    - Object info : Property 
     """
 
     def __init__(self, object=None, as_instance=None, transform_space='ORIGINAL', label=None):
@@ -6325,7 +6325,7 @@ class PointsToVertices(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Points. to_vertices : Method 
+    - Points to_vertices : Method 
     """
 
     def __init__(self, points=None, selection=None, label=None):
@@ -6393,7 +6393,7 @@ class PointsToVolume(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Points. to_volume : Method 
+    - Points to_volume : Method 
     """
 
     def __init__(self, points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', label=None):
@@ -6473,7 +6473,7 @@ class GeometryProximity(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. proximity : Method 
+    - Geometry proximity : Method 
     """
 
     def __init__(self, target=None, source_position=None, target_element='FACES', label=None):
@@ -6566,11 +6566,11 @@ class Raycast(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Boolean. raycast : Method 
-    - Color. raycast   : Method 
-    - Float. raycast   : Method 
-    - Integer. raycast : Method 
-    - Vector. raycast  : Method 
+    - Boolean raycast : Method 
+    - Color raycast   : Method 
+    - Float raycast   : Method 
+    - Integer raycast : Method 
+    - Vector raycast  : Method 
     """
 
     def __init__(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED', label=None):
@@ -6681,7 +6681,7 @@ class RealizeInstances(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. realize_instances : Stacked method 
+    - Geometry realize_instances : Stacked method 
     """
 
     def __init__(self, geometry=None, legacy_behavior=False, label=None):
@@ -6752,7 +6752,7 @@ class ReplaceMaterial(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. replace_material : Stacked method 
+    - Geometry replace_material : Stacked method 
     """
 
     def __init__(self, geometry=None, old=None, new=None, label=None):
@@ -6819,7 +6819,7 @@ class ResampleCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. resample : Stacked method 
+    - Curve resample : Stacked method 
     """
 
     def __init__(self, curve=None, selection=None, count=None, length=None, mode='COUNT', label=None):
@@ -6892,7 +6892,7 @@ class ReverseCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. reverse : Stacked method 
+    - Curve reverse : Stacked method 
     """
 
     def __init__(self, curve=None, selection=None, label=None):
@@ -6955,7 +6955,7 @@ class RotateInstances(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Instances. rotate : Stacked method 
+    - Instances rotate : Stacked method 
     """
 
     def __init__(self, instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, label=None):
@@ -7025,7 +7025,7 @@ class SampleCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. sample : Method 
+    - Curve sample : Method 
     """
 
     def __init__(self, curve=None, factor=None, length=None, mode='LENGTH', label=None):
@@ -7109,7 +7109,7 @@ class ScaleElements(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. scale_elements : Stacked method 
+    - Geometry scale_elements : Stacked method 
     """
 
     def __init__(self, geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', label=None):
@@ -7196,7 +7196,7 @@ class ScaleInstances(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Instances. scale : Stacked method 
+    - Instances scale : Stacked method 
     """
 
     def __init__(self, instances=None, selection=None, scale=None, center=None, local_space=None, label=None):
@@ -7261,7 +7261,7 @@ class SeparateComponents(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. components : Property 
+    - Geometry components : Property 
     """
 
     def __init__(self, geometry=None, label=None):
@@ -7329,7 +7329,7 @@ class SeparateGeometry(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. components : Method 
+    - Geometry components : Method 
     """
 
     def __init__(self, geometry=None, selection=None, domain='POINT', label=None):
@@ -7408,7 +7408,7 @@ class SetHandlePositions(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. set_handle_positions : Stacked method 
+    - Curve set_handle_positions : Stacked method 
     """
 
     def __init__(self, curve=None, selection=None, position=None, offset=None, mode='LEFT', label=None):
@@ -7482,7 +7482,7 @@ class SetCurveRadius(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. set_radius : Stacked method 
+    - Curve set_radius : Stacked method 
     """
 
     def __init__(self, curve=None, selection=None, radius=None, label=None):
@@ -7543,7 +7543,7 @@ class SetCurveTilt(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. set_tilt : Stacked method 
+    - Curve set_tilt : Stacked method 
     """
 
     def __init__(self, curve=None, selection=None, tilt=None, label=None):
@@ -7604,7 +7604,7 @@ class SetID(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. set_ID : Stacked method 
+    - Geometry set_ID : Stacked method 
     """
 
     def __init__(self, geometry=None, selection=None, ID=None, label=None):
@@ -7665,7 +7665,7 @@ class SetMaterial(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. set_material : Stacked method 
+    - Geometry set_material : Stacked method 
     """
 
     def __init__(self, geometry=None, selection=None, material=None, label=None):
@@ -7726,7 +7726,7 @@ class SetMaterialIndex(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. set_material_index : Stacked method 
+    - Geometry set_material_index : Stacked method 
     """
 
     def __init__(self, geometry=None, selection=None, material_index=None, label=None):
@@ -7787,7 +7787,7 @@ class SetPointRadius(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Points. set_radius : Stacked method 
+    - Points set_radius : Stacked method 
     """
 
     def __init__(self, points=None, selection=None, radius=None, label=None):
@@ -7849,7 +7849,7 @@ class SetPosition(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. set_position : Stacked method 
+    - Geometry set_position : Stacked method 
     """
 
     def __init__(self, geometry=None, selection=None, position=None, offset=None, label=None):
@@ -7911,7 +7911,7 @@ class SetShadeSmooth(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. set_shade_smooth : Stacked method 
+    - Geometry set_shade_smooth : Stacked method 
     """
 
     def __init__(self, geometry=None, selection=None, shade_smooth=None, label=None):
@@ -7972,7 +7972,7 @@ class SetSplineCyclic(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Spline. set_cyclic : Stacked method 
+    - Spline set_cyclic : Stacked method 
     """
 
     def __init__(self, geometry=None, selection=None, cyclic=None, label=None):
@@ -8033,7 +8033,7 @@ class SetSplineResolution(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Spline. set_resolution : Stacked method 
+    - Spline set_resolution : Stacked method 
     """
 
     def __init__(self, geometry=None, selection=None, resolution=None, label=None):
@@ -8088,9 +8088,9 @@ class SplineLength(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Spline. capture_length : Capture attribute 
-    - Spline. length         : Attribute 
-    - Spline. point_count    : Attribute 
+    - Spline capture_length : Capture attribute 
+    - Spline length         : Attribute 
+    - Spline point_count    : Attribute 
     """
 
     def __init__(self, label=None):
@@ -8141,10 +8141,10 @@ class SplineParameter(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Spline. capture_parameter : Capture attribute 
-    - Spline. factor            : Attribute 
-    - Spline. parameter_index   : Attribute 
-    - Spline. parameter_length  : Attribute 
+    - Spline capture_parameter : Capture attribute 
+    - Spline factor            : Attribute 
+    - Spline parameter_index   : Attribute 
+    - Spline parameter_length  : Attribute 
     """
 
     def __init__(self, label=None):
@@ -8200,7 +8200,7 @@ class SplitEdges(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. split_edges : Stacked method 
+    - Mesh split_edges : Stacked method 
     """
 
     def __init__(self, mesh=None, selection=None, label=None):
@@ -8259,8 +8259,8 @@ class JoinStrings(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - String. join            : Method 
-    - functions. join_strings : Function 
+    - String join            : Method 
+    - functions join_strings : Function 
     """
 
     def __init__(self, *strings, delimiter=None, label=None):
@@ -8338,7 +8338,7 @@ class StringToCurves(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - String. to_curves : Method 
+    - String to_curves : Method 
     """
 
     def __init__(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT', label=None):
@@ -8444,7 +8444,7 @@ class SubdivideCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. subdivide : Stacked method 
+    - Curve subdivide : Stacked method 
     """
 
     def __init__(self, curve=None, cuts=None, label=None):
@@ -8503,7 +8503,7 @@ class SubdivideMesh(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. subdivide : Stacked method 
+    - Mesh subdivide : Stacked method 
     """
 
     def __init__(self, mesh=None, level=None, label=None):
@@ -8571,7 +8571,7 @@ class SubdivisionSurface(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. subdivision_surface : Stacked method 
+    - Mesh subdivision_surface : Stacked method 
     """
 
     def __init__(self, mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None):
@@ -8668,16 +8668,16 @@ class Switch(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Boolean. switch    : Method 
-    - Collection. switch : Method 
-    - Float. switch      : Method 
-    - Geometry. switch   : Method 
-    - Image. switch      : Method 
-    - Integer. switch    : Method 
-    - Material. switch   : Method 
-    - Object. switch     : Method 
-    - String. switch     : Method 
-    - Texture. switch    : Method 
+    - Boolean switch    : Method 
+    - Collection switch : Method 
+    - Float switch      : Method 
+    - Geometry switch   : Method 
+    - Image switch      : Method 
+    - Integer switch    : Method 
+    - Material switch   : Method 
+    - Object switch     : Method 
+    - String switch     : Method 
+    - Texture switch    : Method 
     """
 
     def __init__(self, switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', label=None):
@@ -8811,7 +8811,7 @@ class Transform(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry. transform : Stacked method 
+    - Geometry transform : Stacked method 
     """
 
     def __init__(self, geometry=None, translation=None, rotation=None, scale=None, label=None):
@@ -8874,7 +8874,7 @@ class TranslateInstances(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Instances. translate : Stacked method 
+    - Instances translate : Stacked method 
     """
 
     def __init__(self, instances=None, selection=None, translation=None, local_space=None, label=None):
@@ -8943,7 +8943,7 @@ class Triangulate(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh. triangulate : Stacked method 
+    - Mesh triangulate : Stacked method 
     """
 
     def __init__(self, mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', label=None):
@@ -9032,7 +9032,7 @@ class TrimCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve. trim : Stacked method 
+    - Curve trim : Stacked method 
     """
 
     def __init__(self, curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR', label=None):
@@ -9115,7 +9115,7 @@ class VolumeToMesh(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Volume. to_mesh : Method 
+    - Volume to_mesh : Method 
     """
 
     def __init__(self, volume=None, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID', label=None):
@@ -9195,7 +9195,7 @@ class Clamp(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Float. clamp : Stacked method 
+    - Float clamp : Stacked method 
     """
 
     def __init__(self, value=None, min=None, max=None, clamp_type='MINMAX', label=None):
@@ -9268,7 +9268,7 @@ class CombineRgb(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Color. Combine : Constructor 
+    - Color Combine : Constructor 
     """
 
     def __init__(self, r=None, g=None, b=None, label=None):
@@ -9329,7 +9329,7 @@ class CombineXyz(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Vector. Combine : Constructor 
+    - Vector Combine : Constructor 
     """
 
     def __init__(self, x=None, y=None, z=None, label=None):
@@ -9389,7 +9389,7 @@ class FloatCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Float. curve : Stacked method 
+    - Float curve : Stacked method 
     """
 
     def __init__(self, factor=None, value=None, label=None):
@@ -9468,8 +9468,8 @@ class MapRange(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Float. map_range  : Method 
-    - Vector. map_range : Method 
+    - Float map_range  : Method 
+    - Vector map_range : Method 
     """
 
     def __init__(self, value=None, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, vector=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', label=None):
@@ -9581,126 +9581,126 @@ class Math(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Float. abs              : Method 
-    - Float. add              : Method 
-    - Float. arccos           : Method 
-    - Float. arcsin           : Method 
-    - Float. arctan           : Method 
-    - Float. arctan2          : Method 
-    - Float. ceil             : Method 
-    - Float. compare          : Method 
-    - Float. cos              : Method 
-    - Float. cosh             : Method 
-    - Float. degrees          : Method 
-    - Float. divide           : Method 
-    - Float. exp              : Method 
-    - Float. floor            : Method 
-    - Float. fract            : Method 
-    - Float. greater_than     : Method 
-    - Float. inverse_sqrt     : Method 
-    - Float. less_than        : Method 
-    - Float. log              : Method 
-    - Float. max              : Method 
-    - Float. min              : Method 
-    - Float. modulo           : Method 
-    - Float. multiply         : Method 
-    - Float. multiply_add     : Method 
-    - Float. pingpong         : Method 
-    - Float. pow              : Method 
-    - Float. radians          : Method 
-    - Float. round            : Method 
-    - Float. sign             : Method 
-    - Float. sin              : Method 
-    - Float. sinh             : Method 
-    - Float. smooth_max       : Method 
-    - Float. smooth_min       : Method 
-    - Float. snap             : Method 
-    - Float. sqrt             : Method 
-    - Float. subtract         : Method 
-    - Float. tan              : Method 
-    - Float. tanh             : Method 
-    - Float. trunc            : Method 
-    - Float. wrap             : Method 
-    - Integer. abs            : Method 
-    - Integer. add            : Method 
-    - Integer. arccos         : Method 
-    - Integer. arcsin         : Method 
-    - Integer. arctan         : Method 
-    - Integer. arctan2        : Method 
-    - Integer. ceil           : Method 
-    - Integer. compare        : Method 
-    - Integer. cos            : Method 
-    - Integer. cosh           : Method 
-    - Integer. degrees        : Method 
-    - Integer. divide         : Method 
-    - Integer. exp            : Method 
-    - Integer. floor          : Method 
-    - Integer. fract          : Method 
-    - Integer. greater_than   : Method 
-    - Integer. inverse_sqrt   : Method 
-    - Integer. less_than      : Method 
-    - Integer. log            : Method 
-    - Integer. max            : Method 
-    - Integer. min            : Method 
-    - Integer. modulo         : Method 
-    - Integer. multiply       : Method 
-    - Integer. multiply_add   : Method 
-    - Integer. pingpong       : Method 
-    - Integer. pow            : Method 
-    - Integer. radians        : Method 
-    - Integer. round          : Method 
-    - Integer. sign           : Method 
-    - Integer. sin            : Method 
-    - Integer. sinh           : Method 
-    - Integer. smooth_max     : Method 
-    - Integer. smooth_min     : Method 
-    - Integer. snap           : Method 
-    - Integer. sqrt           : Method 
-    - Integer. subtract       : Method 
-    - Integer. tan            : Method 
-    - Integer. tanh           : Method 
-    - Integer. trunc          : Method 
-    - Integer. wrap           : Method 
-    - functions. abs          : Function 
-    - functions. add          : Function 
-    - functions. arccos       : Function 
-    - functions. arcsin       : Function 
-    - functions. arctan       : Function 
-    - functions. arctan2      : Function 
-    - functions. ceil         : Function 
-    - functions. compare      : Function 
-    - functions. cos          : Function 
-    - functions. cosh         : Function 
-    - functions. degrees      : Function 
-    - functions. divide       : Function 
-    - functions. exp          : Function 
-    - functions. floor        : Function 
-    - functions. fract        : Function 
-    - functions. greater_than : Function 
-    - functions. inverse_sqrt : Function 
-    - functions. less_than    : Function 
-    - functions. log          : Function 
-    - functions. max          : Function 
-    - functions. min          : Function 
-    - functions. modulo       : Function 
-    - functions. multiply     : Function 
-    - functions. multiply_add : Function 
-    - functions. pingpong     : Function 
-    - functions. pow          : Function 
-    - functions. radians      : Function 
-    - functions. round        : Function 
-    - functions. sign         : Function 
-    - functions. sin          : Function 
-    - functions. sinh         : Function 
-    - functions. smooth_max   : Function 
-    - functions. smooth_min   : Function 
-    - functions. snap         : Function 
-    - functions. sqrt         : Function 
-    - functions. subtract     : Function 
-    - functions. tan          : Function 
-    - functions. tanh         : Function 
-    - functions. trunc        : Function 
-    - functions. wrap         : Function 
+    - Float abs              : Method 
+    - Float add              : Method 
+    - Float arccos           : Method 
+    - Float arcsin           : Method 
+    - Float arctan           : Method 
+    - Float arctan2          : Method 
+    - Float ceil             : Method 
+    - Float compare          : Method 
+    - Float cos              : Method 
+    - Float cosh             : Method 
+    - Float degrees          : Method 
+    - Float divide           : Method 
+    - Float exp              : Method 
+    - Float floor            : Method 
+    - Float fract            : Method 
+    - Float greater_than     : Method 
+    - Float inverse_sqrt     : Method 
+    - Float less_than        : Method 
+    - Float log              : Method 
+    - Float max              : Method 
+    - Float min              : Method 
+    - Float modulo           : Method 
+    - Float multiply         : Method 
+    - Float multiply_add     : Method 
+    - Float pingpong         : Method 
+    - Float pow              : Method 
+    - Float radians          : Method 
+    - Float round            : Method 
+    - Float sign             : Method 
+    - Float sin              : Method 
+    - Float sinh             : Method 
+    - Float smooth_max       : Method 
+    - Float smooth_min       : Method 
+    - Float snap             : Method 
+    - Float sqrt             : Method 
+    - Float subtract         : Method 
+    - Float tan              : Method 
+    - Float tanh             : Method 
+    - Float trunc            : Method 
+    - Float wrap             : Method 
+    - Integer abs            : Method 
+    - Integer add            : Method 
+    - Integer arccos         : Method 
+    - Integer arcsin         : Method 
+    - Integer arctan         : Method 
+    - Integer arctan2        : Method 
+    - Integer ceil           : Method 
+    - Integer compare        : Method 
+    - Integer cos            : Method 
+    - Integer cosh           : Method 
+    - Integer degrees        : Method 
+    - Integer divide         : Method 
+    - Integer exp            : Method 
+    - Integer floor          : Method 
+    - Integer fract          : Method 
+    - Integer greater_than   : Method 
+    - Integer inverse_sqrt   : Method 
+    - Integer less_than      : Method 
+    - Integer log            : Method 
+    - Integer max            : Method 
+    - Integer min            : Method 
+    - Integer modulo         : Method 
+    - Integer multiply       : Method 
+    - Integer multiply_add   : Method 
+    - Integer pingpong       : Method 
+    - Integer pow            : Method 
+    - Integer radians        : Method 
+    - Integer round          : Method 
+    - Integer sign           : Method 
+    - Integer sin            : Method 
+    - Integer sinh           : Method 
+    - Integer smooth_max     : Method 
+    - Integer smooth_min     : Method 
+    - Integer snap           : Method 
+    - Integer sqrt           : Method 
+    - Integer subtract       : Method 
+    - Integer tan            : Method 
+    - Integer tanh           : Method 
+    - Integer trunc          : Method 
+    - Integer wrap           : Method 
+    - functions abs          : Function 
+    - functions add          : Function 
+    - functions arccos       : Function 
+    - functions arcsin       : Function 
+    - functions arctan       : Function 
+    - functions arctan2      : Function 
+    - functions ceil         : Function 
+    - functions compare      : Function 
+    - functions cos          : Function 
+    - functions cosh         : Function 
+    - functions degrees      : Function 
+    - functions divide       : Function 
+    - functions exp          : Function 
+    - functions floor        : Function 
+    - functions fract        : Function 
+    - functions greater_than : Function 
+    - functions inverse_sqrt : Function 
+    - functions less_than    : Function 
+    - functions log          : Function 
+    - functions max          : Function 
+    - functions min          : Function 
+    - functions modulo       : Function 
+    - functions multiply     : Function 
+    - functions multiply_add : Function 
+    - functions pingpong     : Function 
+    - functions pow          : Function 
+    - functions radians      : Function 
+    - functions round        : Function 
+    - functions sign         : Function 
+    - functions sin          : Function 
+    - functions sinh         : Function 
+    - functions smooth_max   : Function 
+    - functions smooth_min   : Function 
+    - functions snap         : Function 
+    - functions sqrt         : Function 
+    - functions subtract     : Function 
+    - functions tan          : Function 
+    - functions tanh         : Function 
+    - functions trunc        : Function 
+    - functions wrap         : Function 
     """
 
     def __init__(self, value0=None, value1=None, value2=None, operation='ADD', label=None):
@@ -9780,43 +9780,43 @@ class Mix(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Color. add                    : Method 
-    - Color. burn                   : Method 
-    - Color. darken                 : Method 
-    - Color. difference             : Method 
-    - Color. divide                 : Method 
-    - Color. dodge                  : Method 
-    - Color. hue                    : Method 
-    - Color. lighten                : Method 
-    - Color. linear_light           : Method 
-    - Color. mix                    : Method 
-    - Color. mix                    : Method 
-    - Color. mix_color              : Method 
-    - Color. multiply               : Method 
-    - Color. overlay                : Method 
-    - Color. saturation             : Method 
-    - Color. screen                 : Method 
-    - Color. soft_light             : Method 
-    - Color. subtract               : Method 
-    - Color. value                  : Method 
-    - functions. color_add          : Function 
-    - functions. color_burn         : Function 
-    - functions. color_darken       : Function 
-    - functions. color_difference   : Function 
-    - functions. color_divide       : Function 
-    - functions. color_dodge        : Function 
-    - functions. color_hue          : Function 
-    - functions. color_lighten      : Function 
-    - functions. color_linear_light : Function 
-    - functions. color_mix          : Function 
-    - functions. color_mix_color    : Function 
-    - functions. color_multiply     : Function 
-    - functions. color_overlay      : Function 
-    - functions. color_saturation   : Function 
-    - functions. color_screen       : Function 
-    - functions. color_soft_light   : Function 
-    - functions. color_subtract     : Function 
-    - functions. color_value        : Function 
+    - Color add                    : Method 
+    - Color burn                   : Method 
+    - Color darken                 : Method 
+    - Color difference             : Method 
+    - Color divide                 : Method 
+    - Color dodge                  : Method 
+    - Color hue                    : Method 
+    - Color lighten                : Method 
+    - Color linear_light           : Method 
+    - Color mix                    : Method 
+    - Color mix                    : Method 
+    - Color mix_color              : Method 
+    - Color multiply               : Method 
+    - Color overlay                : Method 
+    - Color saturation             : Method 
+    - Color screen                 : Method 
+    - Color soft_light             : Method 
+    - Color subtract               : Method 
+    - Color value                  : Method 
+    - functions color_add          : Function 
+    - functions color_burn         : Function 
+    - functions color_darken       : Function 
+    - functions color_difference   : Function 
+    - functions color_divide       : Function 
+    - functions color_dodge        : Function 
+    - functions color_hue          : Function 
+    - functions color_lighten      : Function 
+    - functions color_linear_light : Function 
+    - functions color_mix          : Function 
+    - functions color_mix_color    : Function 
+    - functions color_multiply     : Function 
+    - functions color_overlay      : Function 
+    - functions color_saturation   : Function 
+    - functions color_screen       : Function 
+    - functions color_soft_light   : Function 
+    - functions color_subtract     : Function 
+    - functions color_value        : Function 
     """
 
     def __init__(self, color1=None, color2=None, fac=None, blend_type='MIX', use_alpha=False, label=None):
@@ -9897,7 +9897,7 @@ class RgbCurves(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Color. curves : Stacked method 
+    - Color curves : Stacked method 
     """
 
     def __init__(self, fac=None, color=None, label=None):
@@ -9957,7 +9957,7 @@ class SeparateRgb(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Color. separate : Property 
+    - Color separate : Property 
     """
 
     def __init__(self, image=None, label=None):
@@ -10018,7 +10018,7 @@ class SeparateXyz(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Vector. separate : Property 
+    - Vector separate : Property 
     """
 
     def __init__(self, vector=None, label=None):
@@ -10097,7 +10097,7 @@ class BrickTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Texture. Brick : Static method 
+    - Texture Brick : Static method 
     """
 
     def __init__(self, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, label=None):
@@ -10207,7 +10207,7 @@ class CheckerTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Texture. Checker : Static method 
+    - Texture Checker : Static method 
     """
 
     def __init__(self, vector=None, color1=None, color2=None, scale=None, label=None):
@@ -10275,7 +10275,7 @@ class GradientTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Texture. Gradient : Static method 
+    - Texture Gradient : Static method 
     """
 
     def __init__(self, vector=None, gradient_type='LINEAR', label=None):
@@ -10353,7 +10353,7 @@ class MagicTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Texture. Magic : Static method 
+    - Texture Magic : Static method 
     """
 
     def __init__(self, vector=None, scale=None, distortion=None, turbulence_depth=2, label=None):
@@ -10439,7 +10439,7 @@ class MusgraveTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Texture. Musgrave : Static method 
+    - Texture Musgrave : Static method 
     """
 
     def __init__(self, vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM', label=None):
@@ -10536,7 +10536,7 @@ class NoiseTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Texture. Noise : Static method 
+    - Texture Noise : Static method 
     """
 
     def __init__(self, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D', label=None):
@@ -10628,7 +10628,7 @@ class VoronoiTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Texture. Voronoi : Static method 
+    - Texture Voronoi : Static method 
     """
 
     def __init__(self, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D', label=None):
@@ -10740,7 +10740,7 @@ class WaveTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Texture. Wave : Static method 
+    - Texture Wave : Static method 
     """
 
     def __init__(self, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS', label=None):
@@ -10850,7 +10850,7 @@ class WhiteNoiseTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Texture. WhiteNoise : Static method 
+    - Texture WhiteNoise : Static method 
     """
 
     def __init__(self, vector=None, w=None, noise_dimensions='3D', label=None):
@@ -10922,7 +10922,7 @@ class Colorramp(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Float. color_ramp : Method 
+    - Float color_ramp : Method 
     """
 
     def __init__(self, fac=None, label=None):
@@ -11023,7 +11023,7 @@ class VectorCurves(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Vector. curves : Stacked method 
+    - Vector curves : Stacked method 
     """
 
     def __init__(self, fac=None, vector=None, label=None):
@@ -11092,60 +11092,60 @@ class VectorMath(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Vector. absolute               : Method 
-    - Vector. add                    : Method 
-    - Vector. ceil                   : Method 
-    - Vector. cos                    : Method 
-    - Vector. cross                  : Method 
-    - Vector. distance               : Method 
-    - Vector. divide                 : Method 
-    - Vector. dot                    : Method 
-    - Vector. faceforward            : Method 
-    - Vector. floor                  : Method 
-    - Vector. fraction               : Method 
-    - Vector. length                 : Method 
-    - Vector. max                    : Method 
-    - Vector. min                    : Method 
-    - Vector. modulo                 : Method 
-    - Vector. multiply               : Method 
-    - Vector. multiply_add           : Method 
-    - Vector. normalize              : Method 
-    - Vector. project                : Method 
-    - Vector. reflect                : Method 
-    - Vector. refract                : Method 
-    - Vector. scale                  : Method 
-    - Vector. sin                    : Method 
-    - Vector. snap                   : Method 
-    - Vector. subtract               : Method 
-    - Vector. tan                    : Method 
-    - Vector. wrap                   : Method 
-    - functions. cross               : Function 
-    - functions. distance            : Function 
-    - functions. dot                 : Function 
-    - functions. faceforward         : Function 
-    - functions. fraction            : Function 
-    - functions. length              : Function 
-    - functions. normalize           : Function 
-    - functions. project             : Function 
-    - functions. reflect             : Function 
-    - functions. refract             : Function 
-    - functions. scale               : Function 
-    - functions. vector_absolute     : Function 
-    - functions. vector_add          : Function 
-    - functions. vector_ceil         : Function 
-    - functions. vector_cos          : Function 
-    - functions. vector_divide       : Function 
-    - functions. vector_floor        : Function 
-    - functions. vector_max          : Function 
-    - functions. vector_min          : Function 
-    - functions. vector_modulo       : Function 
-    - functions. vector_multiply     : Function 
-    - functions. vector_multiply_add : Function 
-    - functions. vector_sin          : Function 
-    - functions. vector_snap         : Function 
-    - functions. vector_subtract     : Function 
-    - functions. vector_tan          : Function 
-    - functions. vector_wrap         : Function 
+    - Vector absolute               : Method 
+    - Vector add                    : Method 
+    - Vector ceil                   : Method 
+    - Vector cos                    : Method 
+    - Vector cross                  : Method 
+    - Vector distance               : Method 
+    - Vector divide                 : Method 
+    - Vector dot                    : Method 
+    - Vector faceforward            : Method 
+    - Vector floor                  : Method 
+    - Vector fraction               : Method 
+    - Vector length                 : Method 
+    - Vector max                    : Method 
+    - Vector min                    : Method 
+    - Vector modulo                 : Method 
+    - Vector multiply               : Method 
+    - Vector multiply_add           : Method 
+    - Vector normalize              : Method 
+    - Vector project                : Method 
+    - Vector reflect                : Method 
+    - Vector refract                : Method 
+    - Vector scale                  : Method 
+    - Vector sin                    : Method 
+    - Vector snap                   : Method 
+    - Vector subtract               : Method 
+    - Vector tan                    : Method 
+    - Vector wrap                   : Method 
+    - functions cross               : Function 
+    - functions distance            : Function 
+    - functions dot                 : Function 
+    - functions faceforward         : Function 
+    - functions fraction            : Function 
+    - functions length              : Function 
+    - functions normalize           : Function 
+    - functions project             : Function 
+    - functions reflect             : Function 
+    - functions refract             : Function 
+    - functions scale               : Function 
+    - functions vector_absolute     : Function 
+    - functions vector_add          : Function 
+    - functions vector_ceil         : Function 
+    - functions vector_cos          : Function 
+    - functions vector_divide       : Function 
+    - functions vector_floor        : Function 
+    - functions vector_max          : Function 
+    - functions vector_min          : Function 
+    - functions vector_modulo       : Function 
+    - functions vector_multiply     : Function 
+    - functions vector_multiply_add : Function 
+    - functions vector_sin          : Function 
+    - functions vector_snap         : Function 
+    - functions vector_subtract     : Function 
+    - functions vector_tan          : Function 
+    - functions vector_wrap         : Function 
     """
 
     def __init__(self, vector0=None, vector1=None, vector2=None, scale=None, operation='ADD', label=None):
@@ -11229,7 +11229,7 @@ class VectorRotate(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Vector. rotate : Method 
+    - Vector rotate : Method 
     """
 
     def __init__(self, vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', label=None):

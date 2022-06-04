@@ -48,6 +48,6 @@ node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivo
 > Data socket classes implementing this node
 
 
-- [Instances](aaa). [rotate](bbb) : Stacked method
+- [Instances](./sockets/Instances.md) [rotate](./sockets/Instances.md#rotate) : Stacked method
 
 

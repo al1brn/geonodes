@@ -55,6 +55,6 @@ node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_
 > Data socket classes implementing this node
 
 
-- [Mesh](aaa). [triangulate](bbb) : Stacked method
+- [Mesh](./sockets/Mesh.md) [triangulate](./sockets/Mesh.md#triangulate) : Stacked method
 
 

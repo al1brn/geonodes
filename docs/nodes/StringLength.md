@@ -44,6 +44,6 @@ node = nodes.StringLength(string=None, label=None)
 > Data socket classes implementing this node
 
 
-- [String](aaa). [length](bbb) : Property
+- [String](./sockets/String.md) [length](./sockets/String.md#length) : Property
 
 

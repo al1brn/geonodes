@@ -56,6 +56,6 @@ node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT
 > Data socket classes implementing this node
 
 
-- [Texture](aaa). [Image](bbb) : Static method
+- [Texture](./sockets/Texture.md) [Image](./sockets/Texture.md#image) : Static method
 
 

@@ -60,6 +60,6 @@ node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_
 > Data socket classes implementing this node
 
 
-- [Mesh](aaa). [Cone](bbb) : Constructor
+- [Mesh](./sockets/Mesh.md) [Cone](./sockets/Mesh.md#cone) : Constructor
 
 

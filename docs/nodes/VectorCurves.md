@@ -45,6 +45,6 @@ node = nodes.VectorCurves(fac=None, vector=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Vector](aaa). [curves](bbb) : Stacked method
+- [Vector](./sockets/Vector.md) [curves](./sockets/Vector.md#curves) : Stacked method
 
 

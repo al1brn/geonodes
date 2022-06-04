@@ -47,6 +47,6 @@ node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=Non
 > Data socket classes implementing this node
 
 
-- [Geometry](aaa). [transform](bbb) : Stacked method
+- [Geometry](./sockets/Geometry.md) [transform](./sockets/Geometry.md#transform) : Stacked method
 
 

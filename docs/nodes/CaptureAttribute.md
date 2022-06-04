@@ -65,10 +65,10 @@ node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', doma
 > Data socket classes implementing this node
 
 
-- [Boolean](aaa). [capture_attribute](bbb) : Method
-- [Color](aaa). [capture_attribute](bbb) : Method
-- [Float](aaa). [capture_attribute](bbb) : Method
-- [Integer](aaa). [capture_attribute](bbb) : Method
-- [Vector](aaa). [capture_attribute](bbb) : Method
+- [Boolean](./sockets/Boolean.md) [capture_attribute](./sockets/Boolean.md#capture_attribute) : Method
+- [Color](./sockets/Color.md) [capture_attribute](./sockets/Color.md#capture_attribute) : Method
+- [Float](./sockets/Float.md) [capture_attribute](./sockets/Float.md#capture_attribute) : Method
+- [Integer](./sockets/Integer.md) [capture_attribute](./sockets/Integer.md#capture_attribute) : Method
+- [Vector](./sockets/Vector.md) [capture_attribute](./sockets/Vector.md#capture_attribute) : Method
 
 

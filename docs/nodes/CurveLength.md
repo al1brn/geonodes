@@ -44,6 +44,6 @@ node = nodes.CurveLength(curve=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Curve](aaa). [length](bbb) : Method
+- [Curve](./sockets/Curve.md) [length](./sockets/Curve.md#length) : Method
 
 

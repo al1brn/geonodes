@@ -57,6 +57,6 @@ node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT', la
 > Data socket classes implementing this node
 
 
-- [Curve](aaa). [to_points](bbb) : Method
+- [Curve](./sockets/Curve.md) [to_points](./sockets/Curve.md#to_points) : Method
 
 

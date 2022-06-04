@@ -46,6 +46,6 @@ node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Curve](aaa). [set_tilt](bbb) : Stacked method
+- [Curve](./sockets/Curve.md) [set_tilt](./sockets/Curve.md#set_tilt) : Stacked method
 
 

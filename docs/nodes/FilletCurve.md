@@ -55,6 +55,6 @@ node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None,
 > Data socket classes implementing this node
 
 
-- [Curve](aaa). [fillet](bbb) : Stacked method
+- [Curve](./sockets/Curve.md) [fillet](./sockets/Curve.md#fillet) : Stacked method
 
 

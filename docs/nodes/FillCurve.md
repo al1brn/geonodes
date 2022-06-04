@@ -52,6 +52,6 @@ node = nodes.FillCurve(curve=None, mode='TRIANGLES', label=None)
 > Data socket classes implementing this node
 
 
-- [Curve](aaa). [fill](bbb) : Stacked method
+- [Curve](./sockets/Curve.md) [fill](./sockets/Curve.md#fill) : Stacked method
 
 

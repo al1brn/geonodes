@@ -53,6 +53,6 @@ node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE', label=None
 > Data socket classes implementing this node
 
 
-- [Mesh](aaa). [Circle](bbb) : Constructor
+- [Mesh](./sockets/Mesh.md) [Circle](./sockets/Mesh.md#circle) : Constructor
 
 

@@ -36,7 +36,7 @@ node = nodes.CurveTilt(label=None)
 > Data socket classes implementing this node
 
 
-- [Spline](aaa). [capture_tilt](bbb) : Capture attribute
-- [Spline](aaa). [tilt](bbb) : Attribute
+- [Spline](./sockets/Spline.md) [capture_tilt](./sockets/Spline.md#capture_tilt) : Capture attribute
+- [Spline](./sockets/Spline.md) [tilt](./sockets/Spline.md#tilt) : Attribute
 
 

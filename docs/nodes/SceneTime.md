@@ -37,6 +37,6 @@ node = nodes.SceneTime(label=None)
 > Data socket classes implementing this node
 
 
-- [functions](aaa). [scene](bbb) : Function
+- [functions](./sockets/functions.md) [scene](./sockets/functions.md#scene) : Function
 
 

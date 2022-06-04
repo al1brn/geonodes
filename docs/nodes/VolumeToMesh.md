@@ -56,6 +56,6 @@ node = nodes.VolumeToMesh(volume=None, voxel_size=None, voxel_amount=None, thres
 > Data socket classes implementing this node
 
 
-- [Volume](aaa). [to_mesh](bbb) : Method
+- [Volume](./sockets/Volume.md) [to_mesh](./sockets/Volume.md#to_mesh) : Method
 
 

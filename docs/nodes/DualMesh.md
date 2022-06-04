@@ -45,6 +45,6 @@ node = nodes.DualMesh(mesh=None, keep_boundaries=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Mesh](aaa). [dual](bbb) : Stacked method
+- [Mesh](./sockets/Mesh.md) [dual](./sockets/Mesh.md#dual) : Stacked method
 
 

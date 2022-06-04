@@ -37,8 +37,8 @@ node = nodes.VertexNeighbors(label=None)
 > Data socket classes implementing this node
 
 
-- [Mesh](aaa). [capture_vertex_neighbors](bbb) : Capture attribute
-- [Mesh](aaa). [vertex_neighbors_face_count](bbb) : Attribute
-- [Mesh](aaa). [vertex_neighbors_vertex_count](bbb) : Attribute
+- [Mesh](./sockets/Mesh.md) [capture_vertex_neighbors](./sockets/Mesh.md#capture_vertex_neighbors) : Capture attribute
+- [Mesh](./sockets/Mesh.md) [vertex_neighbors_face_count](./sockets/Mesh.md#vertex_neighbors_face_count) : Attribute
+- [Mesh](./sockets/Mesh.md) [vertex_neighbors_vertex_count](./sockets/Mesh.md#vertex_neighbors_vertex_count) : Attribute
 
 

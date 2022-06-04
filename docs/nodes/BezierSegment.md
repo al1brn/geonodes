@@ -56,6 +56,6 @@ node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_h
 > Data socket classes implementing this node
 
 
-- [Curve](aaa). [BezierSegment](bbb) : Constructor
+- [Curve](./sockets/Curve.md) [BezierSegment](./sockets/Curve.md#beziersegment) : Constructor
 
 

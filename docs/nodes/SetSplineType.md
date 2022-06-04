@@ -53,6 +53,6 @@ node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY', label
 > Data socket classes implementing this node
 
 
-- [Curve](aaa). [set_spline_type](bbb) : Stacked method
+- [Curve](./sockets/Curve.md) [set_spline_type](./sockets/Curve.md#set_spline_type) : Stacked method
 
 

@@ -37,8 +37,8 @@ node = nodes.SplineLength(label=None)
 > Data socket classes implementing this node
 
 
-- [Spline](aaa). [capture_length](bbb) : Capture attribute
-- [Spline](aaa). [length](bbb) : Attribute
-- [Spline](aaa). [point_count](bbb) : Attribute
+- [Spline](./sockets/Spline.md) [capture_length](./sockets/Spline.md#capture_length) : Capture attribute
+- [Spline](./sockets/Spline.md) [length](./sockets/Spline.md#length) : Attribute
+- [Spline](./sockets/Spline.md) [point_count](./sockets/Spline.md#point_count) : Attribute
 
 

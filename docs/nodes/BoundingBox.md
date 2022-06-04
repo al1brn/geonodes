@@ -46,6 +46,6 @@ node = nodes.BoundingBox(geometry=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Geometry](aaa). [bound_box](bbb) : Property
+- [Geometry](./sockets/Geometry.md) [bound_box](./sockets/Geometry.md#bound_box) : Property
 
 

@@ -46,6 +46,6 @@ node = nodes.SetCurveRadius(curve=None, selection=None, radius=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Curve](aaa). [set_radius](bbb) : Stacked method
+- [Curve](./sockets/Curve.md) [set_radius](./sockets/Curve.md#set_radius) : Stacked method
 
 

@@ -44,6 +44,6 @@ node = nodes.GeometryToInstance(*geometry, label=None)
 > Data socket classes implementing this node
 
 
-- [Geometry](aaa). [to_instance](bbb) : Method
+- [Geometry](./sockets/Geometry.md) [to_instance](./sockets/Geometry.md#to_instance) : Method
 
 

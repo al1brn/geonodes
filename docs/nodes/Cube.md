@@ -47,6 +47,6 @@ node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, 
 > Data socket classes implementing this node
 
 
-- [Mesh](aaa). [Cube](bbb) : Constructor
+- [Mesh](./sockets/Mesh.md) [Cube](./sockets/Mesh.md#cube) : Constructor
 
 

@@ -45,6 +45,6 @@ node = nodes.SubdivideMesh(mesh=None, level=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Mesh](aaa). [subdivide](bbb) : Stacked method
+- [Mesh](./sockets/Mesh.md) [subdivide](./sockets/Mesh.md#subdivide) : Stacked method
 
 

@@ -48,6 +48,6 @@ node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None, l
 > Data socket classes implementing this node
 
 
-- [Texture](aaa). [Checker](bbb) : Static method
+- [Texture](./sockets/Texture.md) [Checker](./sockets/Texture.md#checker) : Static method
 
 

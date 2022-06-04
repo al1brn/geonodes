@@ -57,6 +57,6 @@ node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotat
 > Data socket classes implementing this node
 
 
-- [Vector](aaa). [rotate](bbb) : Method
+- [Vector](./sockets/Vector.md) [rotate](./sockets/Vector.md#rotate) : Method
 
 

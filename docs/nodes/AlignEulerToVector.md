@@ -55,7 +55,7 @@ node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X
 > Data socket classes implementing this node
 
 
-- [Vector](aaa). [AlignToVector](bbb) : Constructor
-- [Vector](aaa). [align_to_vector](bbb) : Stacked method
+- [Vector](./sockets/Vector.md) [AlignToVector](./sockets/Vector.md#aligntovector) : Constructor
+- [Vector](./sockets/Vector.md) [align_to_vector](./sockets/Vector.md#align_to_vector) : Stacked method
 
 

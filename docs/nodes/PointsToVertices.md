@@ -45,6 +45,6 @@ node = nodes.PointsToVertices(points=None, selection=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Points](aaa). [to_vertices](bbb) : Method
+- [Points](./sockets/Points.md) [to_vertices](./sockets/Points.md#to_vertices) : Method
 
 

@@ -46,6 +46,6 @@ node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None,
 > Data socket classes implementing this node
 
 
-- [Spline](aaa). [set_resolution](bbb) : Stacked method
+- [Spline](./sockets/Spline.md) [set_resolution](./sockets/Spline.md#set_resolution) : Stacked method
 
 

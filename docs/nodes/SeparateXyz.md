@@ -46,6 +46,6 @@ node = nodes.SeparateXyz(vector=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Vector](aaa). [separate](bbb) : Property
+- [Vector](./sockets/Vector.md) [separate](./sockets/Vector.md#separate) : Property
 
 

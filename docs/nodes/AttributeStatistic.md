@@ -72,7 +72,7 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
 > Data socket classes implementing this node
 
 
-- [Float](aaa). [attribute_statistic](bbb) : Method
-- [Vector](aaa). [attribute_statistic](bbb) : Method
+- [Float](./sockets/Float.md) [attribute_statistic](./sockets/Float.md#attribute_statistic) : Method
+- [Vector](./sockets/Vector.md) [attribute_statistic](./sockets/Vector.md#attribute_statistic) : Method
 
 

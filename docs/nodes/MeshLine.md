@@ -56,6 +56,6 @@ node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=N
 > Data socket classes implementing this node
 
 
-- [Mesh](aaa). [Line](bbb) : Constructor
+- [Mesh](./sockets/Mesh.md) [Line](./sockets/Mesh.md#line) : Constructor
 
 

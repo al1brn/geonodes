@@ -44,8 +44,8 @@ node = nodes.MaterialSelection(material=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Material](aaa). [selection](bbb) : Method
-- [Mesh](aaa). [capture_material_selection](bbb) : Capture attribute
-- [Mesh](aaa). [material_selection](bbb) : Attribute
+- [Material](./sockets/Material.md) [selection](./sockets/Material.md#selection) : Method
+- [Mesh](./sockets/Mesh.md) [capture_material_selection](./sockets/Mesh.md#capture_material_selection) : Capture attribute
+- [Mesh](./sockets/Mesh.md) [material_selection](./sockets/Mesh.md#material_selection) : Attribute
 
 

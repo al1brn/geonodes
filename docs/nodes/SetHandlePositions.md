@@ -55,6 +55,6 @@ node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offse
 > Data socket classes implementing this node
 
 
-- [Curve](aaa). [set_handle_positions](bbb) : Stacked method
+- [Curve](./sockets/Curve.md) [set_handle_positions](./sockets/Curve.md#set_handle_positions) : Stacked method
 
 

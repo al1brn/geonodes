@@ -46,6 +46,6 @@ node = nodes.CombineRgb(r=None, g=None, b=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Color](aaa). [Combine](bbb) : Constructor
+- [Color](./sockets/Color.md) [Combine](./sockets/Color.md#combine) : Constructor
 
 

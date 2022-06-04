@@ -47,6 +47,6 @@ node = nodes.TranslateInstances(instances=None, selection=None, translation=None
 > Data socket classes implementing this node
 
 
-- [Instances](aaa). [translate](bbb) : Stacked method
+- [Instances](./sockets/Instances.md) [translate](./sockets/Instances.md#translate) : Stacked method
 
 

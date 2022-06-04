@@ -52,6 +52,6 @@ node = nodes.FloatToInteger(float=None, rounding_mode='ROUND', label=None)
 > Data socket classes implementing this node
 
 
-- [Float](aaa). [to_integer](bbb) : Method
+- [Float](./sockets/Float.md) [to_integer](./sockets/Float.md#to_integer) : Method
 
 

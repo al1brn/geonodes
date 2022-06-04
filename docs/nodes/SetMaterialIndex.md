@@ -46,6 +46,6 @@ node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None
 > Data socket classes implementing this node
 
 
-- [Geometry](aaa). [set_material_index](bbb) : Stacked method
+- [Geometry](./sockets/Geometry.md) [set_material_index](./sockets/Geometry.md#set_material_index) : Stacked method
 
 

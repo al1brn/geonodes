@@ -53,6 +53,6 @@ node = nodes.GradientTexture(vector=None, gradient_type='LINEAR', label=None)
 > Data socket classes implementing this node
 
 
-- [Texture](aaa). [Gradient](bbb) : Static method
+- [Texture](./sockets/Texture.md) [Gradient](./sockets/Texture.md#gradient) : Static method
 
 

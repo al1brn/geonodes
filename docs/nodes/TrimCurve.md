@@ -56,6 +56,6 @@ node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=Non
 > Data socket classes implementing this node
 
 
-- [Curve](aaa). [trim](bbb) : Stacked method
+- [Curve](./sockets/Curve.md) [trim](./sockets/Curve.md#trim) : Stacked method
 
 

@@ -64,7 +64,7 @@ node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None
 > Data socket classes implementing this node
 
 
-- [Curve](aaa). [ArcFromPoints](bbb) : Static method
-- [Curve](aaa). [ArcFromRadius](bbb) : Constructor
+- [Curve](./sockets/Curve.md) [ArcFromPoints](./sockets/Curve.md#arcfrompoints) : Static method
+- [Curve](./sockets/Curve.md) [ArcFromRadius](./sockets/Curve.md#arcfromradius) : Constructor
 
 

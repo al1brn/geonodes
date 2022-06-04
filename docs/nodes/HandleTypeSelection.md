@@ -45,7 +45,7 @@ node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, lab
 > Data socket classes implementing this node
 
 
-- [Spline](aaa). [capture_handle_type_selection](bbb) : Capture attribute
-- [Spline](aaa). [handle_type_selection](bbb) : Attribute
+- [Spline](./sockets/Spline.md) [capture_handle_type_selection](./sockets/Spline.md#capture_handle_type_selection) : Capture attribute
+- [Spline](./sockets/Spline.md) [handle_type_selection](./sockets/Spline.md#handle_type_selection) : Attribute
 
 

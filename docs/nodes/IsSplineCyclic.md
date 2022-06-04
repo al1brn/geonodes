@@ -36,7 +36,7 @@ node = nodes.IsSplineCyclic(label=None)
 > Data socket classes implementing this node
 
 
-- [Spline](aaa). [capture_cyclic](bbb) : Capture attribute
-- [Spline](aaa). [cyclic](bbb) : Attribute
+- [Spline](./sockets/Spline.md) [capture_cyclic](./sockets/Spline.md#capture_cyclic) : Capture attribute
+- [Spline](./sockets/Spline.md) [cyclic](./sockets/Spline.md#cyclic) : Attribute
 
 

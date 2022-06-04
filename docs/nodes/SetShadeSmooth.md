@@ -46,6 +46,6 @@ node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, la
 > Data socket classes implementing this node
 
 
-- [Geometry](aaa). [set_shade_smooth](bbb) : Stacked method
+- [Geometry](./sockets/Geometry.md) [set_shade_smooth](./sockets/Geometry.md#set_shade_smooth) : Stacked method
 
 

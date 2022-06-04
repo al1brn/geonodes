@@ -49,6 +49,6 @@ node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radi
 > Data socket classes implementing this node
 
 
-- [Curve](aaa). [Spiral](bbb) : Constructor
+- [Curve](./sockets/Curve.md) [Spiral](./sockets/Curve.md#spiral) : Constructor
 
 

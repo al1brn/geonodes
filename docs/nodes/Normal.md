@@ -36,7 +36,7 @@ node = nodes.Normal(label=None)
 > Data socket classes implementing this node
 
 
-- [Geometry](aaa). [capture_normal](bbb) : Capture attribute
-- [Geometry](aaa). [normal](bbb) : Attribute
+- [Geometry](./sockets/Geometry.md) [capture_normal](./sockets/Geometry.md#capture_normal) : Capture attribute
+- [Geometry](./sockets/Geometry.md) [normal](./sockets/Geometry.md#normal) : Attribute
 
 

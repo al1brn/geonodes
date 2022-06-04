@@ -65,6 +65,6 @@ node = nodes.BrickTexture(vector=None, color1=None, color2=None, mortar=None, sc
 > Data socket classes implementing this node
 
 
-- [Texture](aaa). [Brick](bbb) : Static method
+- [Texture](./sockets/Texture.md) [Brick](./sockets/Texture.md#brick) : Static method
 
 

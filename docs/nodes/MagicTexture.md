@@ -55,6 +55,6 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 > Data socket classes implementing this node
 
 
-- [Texture](aaa). [Magic](bbb) : Static method
+- [Texture](./sockets/Texture.md) [Magic](./sockets/Texture.md#magic) : Static method
 
 

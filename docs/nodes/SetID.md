@@ -46,6 +46,6 @@ node = nodes.SetID(geometry=None, selection=None, ID=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Geometry](aaa). [set_ID](bbb) : Stacked method
+- [Geometry](./sockets/Geometry.md) [set_ID](./sockets/Geometry.md#set_id) : Stacked method
 
 

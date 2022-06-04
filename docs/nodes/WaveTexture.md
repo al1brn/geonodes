@@ -62,6 +62,6 @@ node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, 
 > Data socket classes implementing this node
 
 
-- [Texture](aaa). [Wave](bbb) : Static method
+- [Texture](./sockets/Texture.md) [Wave](./sockets/Texture.md#wave) : Static method
 
 

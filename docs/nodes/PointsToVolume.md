@@ -56,6 +56,6 @@ node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_am
 > Data socket classes implementing this node
 
 
-- [Points](aaa). [to_volume](bbb) : Method
+- [Points](./sockets/Points.md) [to_volume](./sockets/Points.md#to_volume) : Method
 
 

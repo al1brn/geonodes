@@ -45,6 +45,6 @@ node = nodes.RgbCurves(fac=None, color=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Color](aaa). [curves](bbb) : Stacked method
+- [Color](./sockets/Color.md) [curves](./sockets/Color.md#curves) : Stacked method
 
 

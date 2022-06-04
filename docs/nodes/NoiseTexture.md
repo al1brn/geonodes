@@ -58,6 +58,6 @@ node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughnes
 > Data socket classes implementing this node
 
 
-- [Texture](aaa). [Noise](bbb) : Static method
+- [Texture](./sockets/Texture.md) [Noise](./sockets/Texture.md#noise) : Static method
 
 

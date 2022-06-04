@@ -36,6 +36,6 @@ node = nodes.IsViewport(label=None)
 > Data socket classes implementing this node
 
 
-- [Geometry](aaa). [is_viewport](bbb) : Static method
+- [Geometry](./sockets/Geometry.md) [is_viewport](./sockets/Geometry.md#is_viewport) : Static method
 
 

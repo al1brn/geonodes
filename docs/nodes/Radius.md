@@ -36,7 +36,7 @@ node = nodes.Radius(label=None)
 > Data socket classes implementing this node
 
 
-- [Geometry](aaa). [capture_radius](bbb) : Capture attribute
-- [Geometry](aaa). [radius](bbb) : Attribute
+- [Geometry](./sockets/Geometry.md) [capture_radius](./sockets/Geometry.md#capture_radius) : Capture attribute
+- [Geometry](./sockets/Geometry.md) [radius](./sockets/Geometry.md#radius) : Attribute
 
 

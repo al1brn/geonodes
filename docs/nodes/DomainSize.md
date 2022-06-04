@@ -57,6 +57,6 @@ node = nodes.DomainSize(geometry=None, component='MESH', label=None)
 > Data socket classes implementing this node
 
 
-- [Geometry](aaa). [attribute_domain_size](bbb) : Method
+- [Geometry](./sockets/Geometry.md) [attribute_domain_size](./sockets/Geometry.md#attribute_domain_size) : Method
 
 

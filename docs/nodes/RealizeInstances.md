@@ -52,6 +52,6 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None)
 > Data socket classes implementing this node
 
 
-- [Geometry](aaa). [realize_instances](bbb) : Stacked method
+- [Geometry](./sockets/Geometry.md) [realize_instances](./sockets/Geometry.md#realize_instances) : Stacked method
 
 

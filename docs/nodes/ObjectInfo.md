@@ -56,6 +56,6 @@ node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL
 > Data socket classes implementing this node
 
 
-- [Object](aaa). [info](bbb) : Property
+- [Object](./sockets/Object.md) [info](./sockets/Object.md#info) : Property
 
 

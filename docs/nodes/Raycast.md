@@ -71,10 +71,10 @@ node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None,
 > Data socket classes implementing this node
 
 
-- [Boolean](aaa). [raycast](bbb) : Method
-- [Color](aaa). [raycast](bbb) : Method
-- [Float](aaa). [raycast](bbb) : Method
-- [Integer](aaa). [raycast](bbb) : Method
-- [Vector](aaa). [raycast](bbb) : Method
+- [Boolean](./sockets/Boolean.md) [raycast](./sockets/Boolean.md#raycast) : Method
+- [Color](./sockets/Color.md) [raycast](./sockets/Color.md#raycast) : Method
+- [Float](./sockets/Float.md) [raycast](./sockets/Float.md#raycast) : Method
+- [Integer](./sockets/Integer.md) [raycast](./sockets/Integer.md#raycast) : Method
+- [Vector](./sockets/Vector.md) [raycast](./sockets/Vector.md#raycast) : Method
 
 

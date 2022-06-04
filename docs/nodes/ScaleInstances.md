@@ -48,6 +48,6 @@ node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=N
 > Data socket classes implementing this node
 
 
-- [Instances](aaa). [scale](bbb) : Stacked method
+- [Instances](./sockets/Instances.md) [scale](./sockets/Instances.md#scale) : Stacked method
 
 

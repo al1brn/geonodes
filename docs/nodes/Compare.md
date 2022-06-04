@@ -67,33 +67,33 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 > Data socket classes implementing this node
 
 
-- [Color](aaa). [brighter](bbb) : Method
-- [Color](aaa). [darker](bbb) : Method
-- [Color](aaa). [equal](bbb) : Method
-- [Color](aaa). [not_equal](bbb) : Method
-- [Float](aaa). [equal](bbb) : Method
-- [Float](aaa). [greater_equal](bbb) : Method
-- [Float](aaa). [greater_than](bbb) : Method
-- [Float](aaa). [less_equal](bbb) : Method
-- [Float](aaa). [less_than](bbb) : Method
-- [Float](aaa). [not_equal](bbb) : Method
-- [Integer](aaa). [equal](bbb) : Method
-- [Integer](aaa). [greater_equal](bbb) : Method
-- [Integer](aaa). [greater_than](bbb) : Method
-- [Integer](aaa). [less_equal](bbb) : Method
-- [Integer](aaa). [less_than](bbb) : Method
-- [Integer](aaa). [not_equal](bbb) : Method
-- [String](aaa). [average](bbb) : Method
-- [String](aaa). [direction](bbb) : Method
-- [String](aaa). [dot_product](bbb) : Method
-- [String](aaa). [element](bbb) : Method
-- [String](aaa). [length](bbb) : Method
-- [Vector](aaa). [equal](bbb) : Method
-- [Vector](aaa). [greater_equal](bbb) : Method
-- [Vector](aaa). [greater_than](bbb) : Method
-- [Vector](aaa). [less_equal](bbb) : Method
-- [Vector](aaa). [less_than](bbb) : Method
-- [Vector](aaa). [not_equal](bbb) : Method
-- [functions](aaa). [compare](bbb) : Function
+- [Color](./sockets/Color.md) [brighter](./sockets/Color.md#brighter) : Method
+- [Color](./sockets/Color.md) [darker](./sockets/Color.md#darker) : Method
+- [Color](./sockets/Color.md) [equal](./sockets/Color.md#equal) : Method
+- [Color](./sockets/Color.md) [not_equal](./sockets/Color.md#not_equal) : Method
+- [Float](./sockets/Float.md) [equal](./sockets/Float.md#equal) : Method
+- [Float](./sockets/Float.md) [greater_equal](./sockets/Float.md#greater_equal) : Method
+- [Float](./sockets/Float.md) [greater_than](./sockets/Float.md#greater_than) : Method
+- [Float](./sockets/Float.md) [less_equal](./sockets/Float.md#less_equal) : Method
+- [Float](./sockets/Float.md) [less_than](./sockets/Float.md#less_than) : Method
+- [Float](./sockets/Float.md) [not_equal](./sockets/Float.md#not_equal) : Method
+- [Integer](./sockets/Integer.md) [equal](./sockets/Integer.md#equal) : Method
+- [Integer](./sockets/Integer.md) [greater_equal](./sockets/Integer.md#greater_equal) : Method
+- [Integer](./sockets/Integer.md) [greater_than](./sockets/Integer.md#greater_than) : Method
+- [Integer](./sockets/Integer.md) [less_equal](./sockets/Integer.md#less_equal) : Method
+- [Integer](./sockets/Integer.md) [less_than](./sockets/Integer.md#less_than) : Method
+- [Integer](./sockets/Integer.md) [not_equal](./sockets/Integer.md#not_equal) : Method
+- [String](./sockets/String.md) [average](./sockets/String.md#average) : Method
+- [String](./sockets/String.md) [direction](./sockets/String.md#direction) : Method
+- [String](./sockets/String.md) [dot_product](./sockets/String.md#dot_product) : Method
+- [String](./sockets/String.md) [element](./sockets/String.md#element) : Method
+- [String](./sockets/String.md) [length](./sockets/String.md#length) : Method
+- [Vector](./sockets/Vector.md) [equal](./sockets/Vector.md#equal) : Method
+- [Vector](./sockets/Vector.md) [greater_equal](./sockets/Vector.md#greater_equal) : Method
+- [Vector](./sockets/Vector.md) [greater_than](./sockets/Vector.md#greater_than) : Method
+- [Vector](./sockets/Vector.md) [less_equal](./sockets/Vector.md#less_equal) : Method
+- [Vector](./sockets/Vector.md) [less_than](./sockets/Vector.md#less_than) : Method
+- [Vector](./sockets/Vector.md) [not_equal](./sockets/Vector.md#not_equal) : Method
+- [functions](./sockets/functions.md) [compare](./sockets/functions.md#compare) : Function
 
 

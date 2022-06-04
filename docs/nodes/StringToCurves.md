@@ -64,6 +64,6 @@ node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word
 > Data socket classes implementing this node
 
 
-- [String](aaa). [to_curves](bbb) : Method
+- [String](./sockets/String.md) [to_curves](./sockets/String.md#to_curves) : Method
 
 
