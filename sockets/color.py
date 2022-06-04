@@ -71,17 +71,29 @@ class Color(dsock.Color):
 
     @classmethod
     def Combine(cls, r=None, g=None, b=None):
-        """Call node CombineRgb (ShaderNodeCombineRGB)
+        """ Combine
+        
 
-        Sockets arguments
-        -----------------
-            r              : Float
-            g              : Float
-            b              : Float
+        | Node: CombineRgb 
+        
+
+            v = Color.Combine(r, g, b) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - r : Float 
+            - g : Float 
+            - b : Float 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return cls(nodes.CombineRgb(r=r, g=g, b=b).image)
@@ -92,15 +104,32 @@ class Color(dsock.Color):
 
     @property
     def separate(self):
-        """Call node SeparateRgb (ShaderNodeSeparateRGB)
+        """ separate
+        
 
-        Sockets arguments
-        -----------------
-            image          : Color (self)
+        | Node: SeparateRgb 
+        
+
+            v = color.separate 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - image : Color (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.separate" 
+        
 
         Returns
-        -------
-            Sockets [r (Float), g (Float), b (Float)]
+        =======
+                Sockets [r (Float), g (Float), b (Float)] 
         """
 
         if self.separate_ is None:
@@ -137,638 +166,1012 @@ class Color(dsock.Color):
     # Methods
 
     def transfer_attribute(self, source=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """Call node TransferAttribute (GeometryNodeAttributeTransfer)
+        """ transfer_attribute
+        
 
-        Sockets arguments
-        -----------------
-            attribute      : Color (self)
-            source         : Geometry
-            source_position: Vector
-            index          : Integer
+        | Node: TransferAttribute 
+        
 
-        Parameters arguments
-        --------------------
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-            mapping        : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+            v = color.transfer_attribute(source, source_position, index, domain, mapping) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT_COLOR'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - attribute       : Color (self) 
+            - source          : Geometry 
+            - source_position : Vector 
+            - index           : Integer 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT_COLOR' 
+        
+
+            Parameters arguments
+            --------------------
+            - domain  : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping).attribute
 
     def capture_attribute(self, geometry=None, domain='POINT'):
-        """Call node CaptureAttribute (GeometryNodeCaptureAttribute)
+        """ capture_attribute
+        
 
-        Sockets arguments
-        -----------------
-            value          : Color (self)
-            geometry       : Geometry
+        | Node: CaptureAttribute 
+        
 
-        Parameters arguments
-        --------------------
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            v = color.capture_attribute(geometry, domain) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT_COLOR'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value    : Color (self) 
+            - geometry : Geometry 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT_COLOR' 
+        
+
+            Parameters arguments
+            --------------------
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
 
         Returns
-        -------
-            Sockets [geometry (Geometry), attribute (Color)]
+        =======
+                Sockets [geometry (Geometry), attribute (Color)] 
         """
 
         return nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_COLOR', domain=domain)
 
     def field_at_index(self, index=None, domain='POINT'):
-        """Call node FieldAtIndex (GeometryNodeFieldAtIndex)
+        """ field_at_index
+        
 
-        Sockets arguments
-        -----------------
-            value          : Color (self)
-            index          : Integer
+        | Node: FieldAtIndex 
+        
 
-        Parameters arguments
-        --------------------
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            v = color.field_at_index(index, domain) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT_COLOR'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value : Color (self) 
+            - index : Integer 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT_COLOR' 
+        
+
+            Parameters arguments
+            --------------------
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_COLOR', domain=domain).value
 
     def raycast(self, target_geometry=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
-        """Call node Raycast (GeometryNodeRaycast)
+        """ raycast
+        
 
-        Sockets arguments
-        -----------------
-            attribute      : Color (self)
-            target_geometry: Geometry
-            source_position: Vector
-            ray_direction  : Vector
-            ray_length     : Float
+        | Node: Raycast 
+        
 
-        Parameters arguments
-        --------------------
-            mapping        : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+            v = color.raycast(target_geometry, source_position, ray_direction, ray_length, mapping) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT_COLOR'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - attribute       : Color (self) 
+            - target_geometry : Geometry 
+            - source_position : Vector 
+            - ray_direction   : Vector 
+            - ray_length      : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT_COLOR' 
+        
+
+            Parameters arguments
+            --------------------
+            - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST] 
+        
 
         Returns
-        -------
-            Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Color)]
+        =======
+                Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute
+                (Color)] 
         """
 
         return nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_COLOR', mapping=mapping)
 
     def equal(self, b=None, epsilon=None):
-        """Call node Compare (FunctionNodeCompare)
+        """ equal
+        
 
-        Sockets arguments
-        -----------------
-            a              : Color (self)
-            b              : Color
-            epsilon        : Float
+        | Node: Compare 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'RGBA'
-            mode           : 'ELEMENT'
-            operation      : 'EQUAL'
+            v = color.equal(b, epsilon) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - a       : Color (self) 
+            - b       : Color 
+            - epsilon : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'RGBA' 
+            - mode      : 'ELEMENT' 
+            - operation : 'EQUAL' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='EQUAL').result
 
     def not_equal(self, b=None, epsilon=None):
-        """Call node Compare (FunctionNodeCompare)
+        """ not_equal
+        
 
-        Sockets arguments
-        -----------------
-            a              : Color (self)
-            b              : Color
-            epsilon        : Float
+        | Node: Compare 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'RGBA'
-            mode           : 'ELEMENT'
-            operation      : 'NOT_EQUAL'
+            v = color.not_equal(b, epsilon) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - a       : Color (self) 
+            - b       : Color 
+            - epsilon : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'RGBA' 
+            - mode      : 'ELEMENT' 
+            - operation : 'NOT_EQUAL' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='NOT_EQUAL').result
 
     def brighter(self, b=None):
-        """Call node Compare (FunctionNodeCompare)
+        """ brighter
+        
 
-        Sockets arguments
-        -----------------
-            a              : Color (self)
-            b              : Color
+        | Node: Compare 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'RGBA'
-            mode           : 'ELEMENT'
-            operation      : 'BRIGHTER'
+            v = color.brighter(b) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - a : Color (self) 
+            - b : Color 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'RGBA' 
+            - mode      : 'ELEMENT' 
+            - operation : 'BRIGHTER' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER').result
 
     def darker(self, b=None):
-        """Call node Compare (FunctionNodeCompare)
+        """ darker
+        
 
-        Sockets arguments
-        -----------------
-            a              : Color (self)
-            b              : Color
+        | Node: Compare 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'RGBA'
-            mode           : 'ELEMENT'
-            operation      : 'DARKER'
+            v = color.darker(b) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - a : Color (self) 
+            - b : Color 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'RGBA' 
+            - mode      : 'ELEMENT' 
+            - operation : 'DARKER' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='DARKER').result
 
     def mix(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ mix
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.mix(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'MIX'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'MIX' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha).color
 
     def darken(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ darken
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.darken(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'DARKEN'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'DARKEN' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha).color
 
     def multiply(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ multiply
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.multiply(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'MULTIPLY'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'MULTIPLY' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha).color
 
     def burn(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ burn
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.burn(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'BURN'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'BURN' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha).color
 
     def lighten(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ lighten
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.lighten(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'LIGHTEN'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'LIGHTEN' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha).color
 
     def screen(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ screen
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.screen(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'SCREEN'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'SCREEN' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha).color
 
     def dodge(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ dodge
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.dodge(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'DODGE'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'DODGE' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha).color
 
     def add(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ add
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.add(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'ADD'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'ADD' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha).color
 
     def overlay(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ overlay
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.overlay(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'OVERLAY'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'OVERLAY' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha).color
 
     def soft_light(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ soft_light
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.soft_light(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'SOFT_LIGHT'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'SOFT_LIGHT' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha).color
 
     def linear_light(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ linear_light
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.linear_light(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'LINEAR_LIGHT'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'LINEAR_LIGHT' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha).color
 
     def difference(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ difference
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.difference(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'DIFFERENCE'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'DIFFERENCE' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha).color
 
     def subtract(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ subtract
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.subtract(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'SUBTRACT'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'SUBTRACT' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha).color
 
     def divide(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ divide
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.divide(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'DIVIDE'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'DIVIDE' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha).color
 
     def hue(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ hue
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.hue(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'HUE'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'HUE' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha).color
 
     def saturation(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ saturation
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.saturation(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'SATURATION'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'SATURATION' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha).color
 
     def mix_color(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ mix_color
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.mix_color(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'COLOR'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'COLOR' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha).color
 
     def value(self, color2=None, fac=None, use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ value
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            use_alpha      : False
+            v = color.value(color2, fac, use_alpha) 
+        
 
-        Fixed parameters
-        ----------------
-            blend_type     : 'VALUE'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - blend_type : 'VALUE' 
+        
+
+            Parameters arguments
+            --------------------
+            - use_alpha : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha).color
 
     def mix(self, color2=None, fac=None, blend_type='MIX', use_alpha=False):
-        """Call node Mix (ShaderNodeMixRGB)
+        """ mix
+        
 
-        Sockets arguments
-        -----------------
-            color1         : Color (self)
-            color2         : Color
-            fac            : Float
+        | Node: Mix 
+        
 
-        Parameters arguments
-        --------------------
-            blend_type     : 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
-            use_alpha      : False
+            v = color.mix(color2, fac, blend_type, use_alpha) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color1 : Color (self) 
+            - color2 : Color 
+            - fac    : Float 
+        
+
+            Parameters arguments
+            --------------------
+            - blend_type : 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE] 
+            - use_alpha  : False 
+        
 
         Returns
-        -------
-            Color
+        =======
+                Color 
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type=blend_type, use_alpha=use_alpha).color
@@ -778,17 +1181,28 @@ class Color(dsock.Color):
     # Stacked methods
 
     def curves(self, fac=None):
-        """Call node RgbCurves (ShaderNodeRGBCurve)
+        """ curves
+        
 
-        Sockets arguments
-        -----------------
-            color          : Color (self)
-            fac            : Float
+        | Node: RgbCurves 
+        
+
+            color.curves(fac) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color : Color (self) 
+            - fac   : Float 
+        
 
         Returns
-        -------
-            self
-
+        =======
+                self 
         """
 
         return self.stack(nodes.RgbCurves(color=self, fac=fac))

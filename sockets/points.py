@@ -32,58 +32,95 @@ class Points(Geometry):
     # Methods
 
     def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
-        """Call node InstanceOnPoints (GeometryNodeInstanceOnPoints)
+        """ instance_on_points
+        
 
-        Sockets arguments
-        -----------------
-            points         : Points (self)
-            selection      : Boolean
-            instance       : Geometry
-            pick_instance  : Boolean
-            instance_index : Integer
-            rotation       : Vector
-            scale          : Vector
+        | Node: InstanceOnPoints 
+        
+
+            v = points.instance_on_points(selection, instance, pick_instance, instance_index, rotation, scale) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - points         : Points (self) 
+            - selection      : Boolean 
+            - instance       : Geometry 
+            - pick_instance  : Boolean 
+            - instance_index : Integer 
+            - rotation       : Vector 
+            - scale          : Vector 
+        
 
         Returns
-        -------
-            Instances
+        =======
+                Instances 
         """
 
         return nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances
 
     def to_vertices(self, selection=None):
-        """Call node PointsToVertices (GeometryNodePointsToVertices)
+        """ to_vertices
+        
 
-        Sockets arguments
-        -----------------
-            points         : Points (self)
-            selection      : Boolean
+        | Node: PointsToVertices 
+        
+
+            v = points.to_vertices(selection) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - points    : Points (self) 
+            - selection : Boolean 
+        
 
         Returns
-        -------
-            Mesh
+        =======
+                Mesh 
         """
 
         return nodes.PointsToVertices(points=self, selection=selection).mesh
 
     def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
-        """Call node PointsToVolume (GeometryNodePointsToVolume)
+        """ to_volume
+        
 
-        Sockets arguments
-        -----------------
-            points         : Points (self)
-            density        : Float
-            voxel_size     : Float
-            voxel_amount   : Float
-            radius         : Float
+        | Node: PointsToVolume 
+        
 
-        Parameters arguments
-        --------------------
-            resolution_mode: 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
+            v = points.to_volume(density, voxel_size, voxel_amount, radius, resolution_mode) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - points       : Points (self) 
+            - density      : Float 
+            - voxel_size   : Float 
+            - voxel_amount : Float 
+            - radius       : Float 
+        
+
+            Parameters arguments
+            --------------------
+            - resolution_mode : 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE] 
+        
 
         Returns
-        -------
-            Volume
+        =======
+                Volume 
         """
 
         return nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode).volume
@@ -93,18 +130,29 @@ class Points(Geometry):
     # Stacked methods
 
     def set_radius(self, selection=None, radius=None):
-        """Call node SetPointRadius (GeometryNodeSetPointRadius)
+        """ set_radius
+        
 
-        Sockets arguments
-        -----------------
-            points         : Points (self)
-            selection      : Boolean
-            radius         : Float
+        | Node: SetPointRadius 
+        
+
+            points.set_radius(selection, radius) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - points    : Points (self) 
+            - selection : Boolean 
+            - radius    : Float 
+        
 
         Returns
-        -------
-            self
-
+        =======
+                self 
         """
 
         return self.stack(nodes.SetPointRadius(points=self, selection=selection, radius=radius))

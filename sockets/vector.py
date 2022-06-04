@@ -90,61 +90,99 @@ class Vector(dsock.Vector):
 
     @classmethod
     def Random(cls, min=None, max=None, ID=None, seed=None):
-        """Call node RandomValue (FunctionNodeRandomValue)
+        """ Random
+        
 
-        Sockets arguments
-        -----------------
-            min            : Vector
-            max            : Vector
-            ID             : Integer
-            seed           : Integer
+        | Node: RandomValue 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT_VECTOR'
+            v = Vector.Random(min, max, ID, seed) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - min  : Vector 
+            - max  : Vector 
+            - ID   : Integer 
+            - seed : Integer 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT_VECTOR' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return cls(nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR').value)
 
     @classmethod
     def Combine(cls, x=None, y=None, z=None):
-        """Call node CombineXyz (ShaderNodeCombineXYZ)
+        """ Combine
+        
 
-        Sockets arguments
-        -----------------
-            x              : Float
-            y              : Float
-            z              : Float
+        | Node: CombineXyz 
+        
+
+            v = Vector.Combine(x, y, z) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - x : Float 
+            - y : Float 
+            - z : Float 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return cls(nodes.CombineXyz(x=x, y=y, z=z).vector)
 
     @classmethod
     def AlignToVector(cls, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
-        """Call node AlignEulerToVector (FunctionNodeAlignEulerToVector)
+        """ AlignToVector
+        
 
-        Sockets arguments
-        -----------------
-            rotation       : Vector
-            factor         : Float
-            vector         : Vector
+        | Node: AlignEulerToVector 
+        
 
-        Parameters arguments
-        --------------------
-            axis           : 'X' in [X, Y, Z]
-            pivot_axis     : 'AUTO' in [AUTO, X, Y, Z]
+            v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - rotation : Vector 
+            - factor   : Float 
+            - vector   : Vector 
+        
+
+            Parameters arguments
+            --------------------
+            - axis       : 'X' in [X, Y, Z] 
+            - pivot_axis : 'AUTO' in [AUTO, X, Y, Z] 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return cls(nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis).rotation)
@@ -155,15 +193,32 @@ class Vector(dsock.Vector):
 
     @property
     def separate(self):
-        """Call node SeparateXyz (ShaderNodeSeparateXYZ)
+        """ separate
+        
 
-        Sockets arguments
-        -----------------
-            vector         : Vector (self)
+        | Node: SeparateXyz 
+        
+
+            v = vector.separate 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector : Vector (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.separate" 
+        
 
         Returns
-        -------
-            Sockets [x (Float), y (Float), z (Float)]
+        =======
+                Sockets [x (Float), y (Float), z (Float)] 
         """
 
         if self.separate_ is None:
@@ -200,862 +255,1410 @@ class Vector(dsock.Vector):
     # Methods
 
     def accumulate_field(self, group_index=None, domain='POINT'):
-        """Call node AccumulateField (GeometryNodeAccumulateField)
+        """ accumulate_field
+        
 
-        Sockets arguments
-        -----------------
-            value          : Vector (self)
-            group_index    : Integer
+        | Node: AccumulateField 
+        
 
-        Parameters arguments
-        --------------------
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            v = vector.accumulate_field(group_index, domain) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT_VECTOR'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value       : Vector (self) 
+            - group_index : Integer 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT_VECTOR' 
+        
+
+            Parameters arguments
+            --------------------
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
 
         Returns
-        -------
-            Sockets [leading (Vector), trailing (Vector), total (Vector)]
+        =======
+                Sockets [leading (Vector), trailing (Vector), total (Vector)] 
         """
 
         return nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain)
 
     def attribute_statistic(self, geometry=None, selection=None, domain='POINT'):
-        """Call node AttributeStatistic (GeometryNodeAttributeStatistic)
+        """ attribute_statistic
+        
 
-        Sockets arguments
-        -----------------
-            attribute      : Vector (self)
-            geometry       : Geometry
-            selection      : Boolean
+        | Node: AttributeStatistic 
+        
 
-        Parameters arguments
-        --------------------
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            v = vector.attribute_statistic(geometry, selection, domain) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT_VECTOR'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - attribute : Vector (self) 
+            - geometry  : Geometry 
+            - selection : Boolean 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT_VECTOR' 
+        
+
+            Parameters arguments
+            --------------------
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
 
         Returns
-        -------
-            Sockets [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)]
+        =======
+                Sockets [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector), range (Vector), standard_deviation
+                (Vector), variance (Vector)] 
         """
 
         return nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT_VECTOR', domain=domain)
 
     def transfer_attribute(self, source=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """Call node TransferAttribute (GeometryNodeAttributeTransfer)
+        """ transfer_attribute
+        
 
-        Sockets arguments
-        -----------------
-            attribute      : Vector (self)
-            source         : Geometry
-            source_position: Vector
-            index          : Integer
+        | Node: TransferAttribute 
+        
 
-        Parameters arguments
-        --------------------
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-            mapping        : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+            v = vector.transfer_attribute(source, source_position, index, domain, mapping) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT_VECTOR'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - attribute       : Vector (self) 
+            - source          : Geometry 
+            - source_position : Vector 
+            - index           : Integer 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT_VECTOR' 
+        
+
+            Parameters arguments
+            --------------------
+            - domain  : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping).attribute
 
     def capture_attribute(self, geometry=None, domain='POINT'):
-        """Call node CaptureAttribute (GeometryNodeCaptureAttribute)
+        """ capture_attribute
+        
 
-        Sockets arguments
-        -----------------
-            value          : Vector (self)
-            geometry       : Geometry
+        | Node: CaptureAttribute 
+        
 
-        Parameters arguments
-        --------------------
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            v = vector.capture_attribute(geometry, domain) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT_VECTOR'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value    : Vector (self) 
+            - geometry : Geometry 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT_VECTOR' 
+        
+
+            Parameters arguments
+            --------------------
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
 
         Returns
-        -------
-            Sockets [geometry (Geometry), attribute (Vector)]
+        =======
+                Sockets [geometry (Geometry), attribute (Vector)] 
         """
 
         return nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VECTOR', domain=domain)
 
     def field_at_index(self, index=None, domain='POINT'):
-        """Call node FieldAtIndex (GeometryNodeFieldAtIndex)
+        """ field_at_index
+        
 
-        Sockets arguments
-        -----------------
-            value          : Vector (self)
-            index          : Integer
+        | Node: FieldAtIndex 
+        
 
-        Parameters arguments
-        --------------------
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            v = vector.field_at_index(index, domain) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT_VECTOR'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value : Vector (self) 
+            - index : Integer 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT_VECTOR' 
+        
+
+            Parameters arguments
+            --------------------
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain).value
 
     def raycast(self, target_geometry=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
-        """Call node Raycast (GeometryNodeRaycast)
+        """ raycast
+        
 
-        Sockets arguments
-        -----------------
-            attribute      : Vector (self)
-            target_geometry: Geometry
-            source_position: Vector
-            ray_direction  : Vector
-            ray_length     : Float
+        | Node: Raycast 
+        
 
-        Parameters arguments
-        --------------------
-            mapping        : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+            v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, mapping) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT_VECTOR'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - attribute       : Vector (self) 
+            - target_geometry : Geometry 
+            - source_position : Vector 
+            - ray_direction   : Vector 
+            - ray_length      : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT_VECTOR' 
+        
+
+            Parameters arguments
+            --------------------
+            - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST] 
+        
 
         Returns
-        -------
-            Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Vector)]
+        =======
+                Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute
+                (Vector)] 
         """
 
         return nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping)
 
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, interpolation_type='LINEAR'):
-        """Call node MapRange (ShaderNodeMapRange)
+        """ map_range
+        
 
-        Sockets arguments
-        -----------------
-            vector         : Vector (self)
-            from_min       : Vector
-            from_max       : Vector
-            to_min         : Vector
-            to_max         : Vector
+        | Node: MapRange 
+        
 
-        Parameters arguments
-        --------------------
-            clamp          : True
-            interpolation_type: 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
+            v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT_VECTOR'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector   : Vector (self) 
+            - from_min : Vector 
+            - from_max : Vector 
+            - to_min   : Vector 
+            - to_max   : Vector 
+        
+
+            Parameters arguments
+            --------------------
+            - clamp              : True 
+            - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP] 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT_VECTOR' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type).vector
 
     def less_than(self, b=None, c=None, angle=None, mode='ELEMENT'):
-        """Call node Compare (FunctionNodeCompare)
+        """ less_than
+        
 
-        Sockets arguments
-        -----------------
-            a              : Vector (self)
-            b              : Vector
-            c              : Float
-            angle          : Float
+        | Node: Compare 
+        
 
-        Parameters arguments
-        --------------------
-            mode           : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+            v = vector.less_than(b, c, angle, mode) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'VECTOR'
-            operation      : 'LESS_THAN'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - a     : Vector (self) 
+            - b     : Vector 
+            - c     : Float 
+            - angle : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'VECTOR' 
+            - operation : 'LESS_THAN' 
+        
+
+            Parameters arguments
+            --------------------
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN').result
 
     def less_equal(self, b=None, c=None, angle=None, mode='ELEMENT'):
-        """Call node Compare (FunctionNodeCompare)
+        """ less_equal
+        
 
-        Sockets arguments
-        -----------------
-            a              : Vector (self)
-            b              : Vector
-            c              : Float
-            angle          : Float
+        | Node: Compare 
+        
 
-        Parameters arguments
-        --------------------
-            mode           : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+            v = vector.less_equal(b, c, angle, mode) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'VECTOR'
-            operation      : 'LESS_EQUAL'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - a     : Vector (self) 
+            - b     : Vector 
+            - c     : Float 
+            - angle : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'VECTOR' 
+            - operation : 'LESS_EQUAL' 
+        
+
+            Parameters arguments
+            --------------------
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL').result
 
     def greater_than(self, b=None, c=None, angle=None, mode='ELEMENT'):
-        """Call node Compare (FunctionNodeCompare)
+        """ greater_than
+        
 
-        Sockets arguments
-        -----------------
-            a              : Vector (self)
-            b              : Vector
-            c              : Float
-            angle          : Float
+        | Node: Compare 
+        
 
-        Parameters arguments
-        --------------------
-            mode           : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+            v = vector.greater_than(b, c, angle, mode) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'VECTOR'
-            operation      : 'GREATER_THAN'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - a     : Vector (self) 
+            - b     : Vector 
+            - c     : Float 
+            - angle : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'VECTOR' 
+            - operation : 'GREATER_THAN' 
+        
+
+            Parameters arguments
+            --------------------
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN').result
 
     def greater_equal(self, b=None, c=None, angle=None, mode='ELEMENT'):
-        """Call node Compare (FunctionNodeCompare)
+        """ greater_equal
+        
 
-        Sockets arguments
-        -----------------
-            a              : Vector (self)
-            b              : Vector
-            c              : Float
-            angle          : Float
+        | Node: Compare 
+        
 
-        Parameters arguments
-        --------------------
-            mode           : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+            v = vector.greater_equal(b, c, angle, mode) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'VECTOR'
-            operation      : 'GREATER_EQUAL'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - a     : Vector (self) 
+            - b     : Vector 
+            - c     : Float 
+            - angle : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'VECTOR' 
+            - operation : 'GREATER_EQUAL' 
+        
+
+            Parameters arguments
+            --------------------
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL').result
 
     def equal(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT'):
-        """Call node Compare (FunctionNodeCompare)
+        """ equal
+        
 
-        Sockets arguments
-        -----------------
-            a              : Vector (self)
-            b              : Vector
-            c              : Float
-            angle          : Float
-            epsilon        : Float
+        | Node: Compare 
+        
 
-        Parameters arguments
-        --------------------
-            mode           : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+            v = vector.equal(b, c, angle, epsilon, mode) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'VECTOR'
-            operation      : 'EQUAL'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - a       : Vector (self) 
+            - b       : Vector 
+            - c       : Float 
+            - angle   : Float 
+            - epsilon : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'VECTOR' 
+            - operation : 'EQUAL' 
+        
+
+            Parameters arguments
+            --------------------
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL').result
 
     def not_equal(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT'):
-        """Call node Compare (FunctionNodeCompare)
+        """ not_equal
+        
 
-        Sockets arguments
-        -----------------
-            a              : Vector (self)
-            b              : Vector
-            c              : Float
-            angle          : Float
-            epsilon        : Float
+        | Node: Compare 
+        
 
-        Parameters arguments
-        --------------------
-            mode           : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+            v = vector.not_equal(b, c, angle, epsilon, mode) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'VECTOR'
-            operation      : 'NOT_EQUAL'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - a       : Vector (self) 
+            - b       : Vector 
+            - c       : Float 
+            - angle   : Float 
+            - epsilon : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'VECTOR' 
+            - operation : 'NOT_EQUAL' 
+        
+
+            Parameters arguments
+            --------------------
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL').result
 
     def add(self, vector1=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ add
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            vector1        : Vector
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'ADD'
+            v = vector.add(vector1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - vector1 : Vector 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'ADD' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD').vector
 
     def subtract(self, vector1=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ subtract
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            vector1        : Vector
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'SUBTRACT'
+            v = vector.subtract(vector1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - vector1 : Vector 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'SUBTRACT' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT').vector
 
     def multiply(self, vector1=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ multiply
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            vector1        : Vector
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'MULTIPLY'
+            v = vector.multiply(vector1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - vector1 : Vector 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'MULTIPLY' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY').vector
 
     def divide(self, vector1=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ divide
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            vector1        : Vector
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'DIVIDE'
+            v = vector.divide(vector1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - vector1 : Vector 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'DIVIDE' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE').vector
 
     def multiply_add(self, vector1=None, vector2=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ multiply_add
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            vector1        : Vector
-            vector2        : Vector
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'MULTIPLY_ADD'
+            v = vector.multiply_add(vector1, vector2) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - vector1 : Vector 
+            - vector2 : Vector 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'MULTIPLY_ADD' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD').vector
 
     def cross(self, vector1=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ cross
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            vector1        : Vector
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'CROSS_PRODUCT'
+            v = vector.cross(vector1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - vector1 : Vector 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'CROSS_PRODUCT' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT').vector
 
     def project(self, vector1=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ project
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            vector1        : Vector
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'PROJECT'
+            v = vector.project(vector1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - vector1 : Vector 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'PROJECT' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT').vector
 
     def reflect(self, vector1=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ reflect
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            vector1        : Vector
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'REFLECT'
+            v = vector.reflect(vector1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - vector1 : Vector 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'REFLECT' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT').vector
 
     def refract(self, vector1=None, scale=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ refract
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            vector1        : Vector
-            scale          : Float
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'REFRACT'
+            v = vector.refract(vector1, scale) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - vector1 : Vector 
+            - scale   : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'REFRACT' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT').vector
 
     def faceforward(self, vector1=None, vector2=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ faceforward
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            vector1        : Vector
-            vector2        : Vector
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'FACEFORWARD'
+            v = vector.faceforward(vector1, vector2) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - vector1 : Vector 
+            - vector2 : Vector 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'FACEFORWARD' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD').vector
 
     def dot(self, vector1=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ dot
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            vector1        : Vector
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'DOT_PRODUCT'
+            v = vector.dot(vector1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - vector1 : Vector 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'DOT_PRODUCT' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT').value
 
     def distance(self, vector1=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ distance
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            vector1        : Vector
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'DISTANCE'
+            v = vector.distance(vector1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - vector1 : Vector 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'DISTANCE' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE').value
 
     def length(self):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ length
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'LENGTH'
+            v = vector.length() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'LENGTH' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.VectorMath(vector0=self, operation='LENGTH').value
 
     def scale(self, scale=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ scale
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            scale          : Float
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'SCALE'
+            v = vector.scale(scale) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - scale   : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'SCALE' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, scale=scale, operation='SCALE').vector
 
     def normalize(self):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ normalize
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'NORMALIZE'
+            v = vector.normalize() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'NORMALIZE' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, operation='NORMALIZE').vector
 
     def absolute(self):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ absolute
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'ABSOLUTE'
+            v = vector.absolute() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'ABSOLUTE' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, operation='ABSOLUTE').vector
 
     def min(self, vector1=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ min
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            vector1        : Vector
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'MINIMUM'
+            v = vector.min(vector1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - vector1 : Vector 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'MINIMUM' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM').vector
 
     def max(self, vector1=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ max
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            vector1        : Vector
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'MAXIMUM'
+            v = vector.max(vector1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - vector1 : Vector 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'MAXIMUM' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM').vector
 
     def floor(self):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ floor
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'FLOOR'
+            v = vector.floor() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'FLOOR' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, operation='FLOOR').vector
 
     def ceil(self):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ ceil
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'CEIL'
+            v = vector.ceil() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'CEIL' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, operation='CEIL').vector
 
     def fraction(self):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ fraction
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'FRACTION'
+            v = vector.fraction() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'FRACTION' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, operation='FRACTION').vector
 
     def modulo(self, vector1=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ modulo
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            vector1        : Vector
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'MODULO'
+            v = vector.modulo(vector1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - vector1 : Vector 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'MODULO' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO').vector
 
     def wrap(self, vector1=None, vector2=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ wrap
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            vector1        : Vector
-            vector2        : Vector
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'WRAP'
+            v = vector.wrap(vector1, vector2) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - vector1 : Vector 
+            - vector2 : Vector 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'WRAP' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP').vector
 
     def snap(self, vector1=None):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ snap
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
-            vector1        : Vector
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'SNAP'
+            v = vector.snap(vector1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+            - vector1 : Vector 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'SNAP' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP').vector
 
     def sin(self):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ sin
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'SINE'
+            v = vector.sin() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'SINE' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, operation='SINE').vector
 
     def cos(self):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ cos
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'COSINE'
+            v = vector.cos() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'COSINE' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, operation='COSINE').vector
 
     def tan(self):
-        """Call node VectorMath (ShaderNodeVectorMath)
+        """ tan
+        
 
-        Sockets arguments
-        -----------------
-            vector0        : Vector (self)
+        | Node: VectorMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'TANGENT'
+            v = vector.tan() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector0 : Vector (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'TANGENT' 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorMath(vector0=self, operation='TANGENT').vector
 
     def rotate(self, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE'):
-        """Call node VectorRotate (ShaderNodeVectorRotate)
+        """ rotate
+        
 
-        Sockets arguments
-        -----------------
-            vector         : Vector (self)
-            center         : Vector
-            axis           : Vector
-            angle          : Float
-            rotation       : Vector
+        | Node: VectorRotate 
+        
 
-        Parameters arguments
-        --------------------
-            invert         : False
-            rotation_type  : 'AXIS_ANGLE' in [AXIS_ANGLE, X_AXIS, Y_AXIS, Z_AXIS, EULER_XYZ]
+            v = vector.rotate(center, axis, angle, rotation, invert, rotation_type) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector   : Vector (self) 
+            - center   : Vector 
+            - axis     : Vector 
+            - angle    : Float 
+            - rotation : Vector 
+        
+
+            Parameters arguments
+            --------------------
+            - invert        : False 
+            - rotation_type : 'AXIS_ANGLE' in [AXIS_ANGLE, X_AXIS, Y_AXIS, Z_AXIS, EULER_XYZ] 
+        
 
         Returns
-        -------
-            Vector
+        =======
+                Vector 
         """
 
         return nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type).vector
@@ -1065,59 +1668,94 @@ class Vector(dsock.Vector):
     # Stacked methods
 
     def curves(self, fac=None):
-        """Call node VectorCurves (ShaderNodeVectorCurve)
+        """ curves
+        
 
-        Sockets arguments
-        -----------------
-            vector         : Vector (self)
-            fac            : Float
+        | Node: VectorCurves 
+        
+
+            vector.curves(fac) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector : Vector (self) 
+            - fac    : Float 
+        
 
         Returns
-        -------
-            self
-
+        =======
+                self 
         """
 
         return self.stack(nodes.VectorCurves(vector=self, fac=fac))
 
     def align_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
-        """Call node AlignEulerToVector (FunctionNodeAlignEulerToVector)
+        """ align_to_vector
+        
 
-        Sockets arguments
-        -----------------
-            rotation       : Vector (self)
-            factor         : Float
-            vector         : Vector
+        | Node: AlignEulerToVector 
+        
 
-        Parameters arguments
-        --------------------
-            axis           : 'X' in [X, Y, Z]
-            pivot_axis     : 'AUTO' in [AUTO, X, Y, Z]
+            vector.align_to_vector(factor, vector, axis, pivot_axis) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - rotation : Vector (self) 
+            - factor   : Float 
+            - vector   : Vector 
+        
+
+            Parameters arguments
+            --------------------
+            - axis       : 'X' in [X, Y, Z] 
+            - pivot_axis : 'AUTO' in [AUTO, X, Y, Z] 
+        
 
         Returns
-        -------
-            self
-
+        =======
+                self 
         """
 
         return self.stack(nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis))
 
     def rotate_euler(self, rotate_by=None, space='OBJECT'):
-        """Call node RotateEuler (FunctionNodeRotateEuler)
+        """ rotate_euler
+        
 
-        Sockets arguments
-        -----------------
-            rotation       : Vector (self)
-            rotate_by      : Vector
+        | Node: RotateEuler 
+        
 
-        Parameters arguments
-        --------------------
-            space          : 'OBJECT' in [OBJECT, LOCAL]
+            vector.rotate_euler(rotate_by, space) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - rotation  : Vector (self) 
+            - rotate_by : Vector 
+        
+
+            Parameters arguments
+            --------------------
+            - space : 'OBJECT' in [OBJECT, LOCAL] 
+        
 
         Returns
-        -------
-            self
-
+        =======
+                self 
         """
 
         return self.stack(nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space))

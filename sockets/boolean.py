@@ -45,21 +45,34 @@ class Boolean(dsock.Boolean):
 
     @classmethod
     def Random(cls, probability=None, ID=None, seed=None):
-        """Call node RandomValue (FunctionNodeRandomValue)
+        """ Random
+        
 
-        Sockets arguments
-        -----------------
-            probability    : Float
-            ID             : Integer
-            seed           : Integer
+        | Node: RandomValue 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'BOOLEAN'
+            v = Boolean.Random(probability, ID, seed) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - probability : Float 
+            - ID          : Integer 
+            - seed        : Integer 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'BOOLEAN' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return cls(nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN').value)
@@ -69,289 +82,476 @@ class Boolean(dsock.Boolean):
     # Methods
 
     def transfer_attribute(self, source=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """Call node TransferAttribute (GeometryNodeAttributeTransfer)
+        """ transfer_attribute
+        
 
-        Sockets arguments
-        -----------------
-            attribute      : Boolean (self)
-            source         : Geometry
-            source_position: Vector
-            index          : Integer
+        | Node: TransferAttribute 
+        
 
-        Parameters arguments
-        --------------------
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-            mapping        : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+            v = boolean.transfer_attribute(source, source_position, index, domain, mapping) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'BOOLEAN'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - attribute       : Boolean (self) 
+            - source          : Geometry 
+            - source_position : Vector 
+            - index           : Integer 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'BOOLEAN' 
+        
+
+            Parameters arguments
+            --------------------
+            - domain  : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping).attribute
 
     def capture_attribute(self, geometry=None, domain='POINT'):
-        """Call node CaptureAttribute (GeometryNodeCaptureAttribute)
+        """ capture_attribute
+        
 
-        Sockets arguments
-        -----------------
-            value          : Boolean (self)
-            geometry       : Geometry
+        | Node: CaptureAttribute 
+        
 
-        Parameters arguments
-        --------------------
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            v = boolean.capture_attribute(geometry, domain) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'BOOLEAN'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value    : Boolean (self) 
+            - geometry : Geometry 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'BOOLEAN' 
+        
+
+            Parameters arguments
+            --------------------
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
 
         Returns
-        -------
-            Sockets [geometry (Geometry), attribute (Boolean)]
+        =======
+                Sockets [geometry (Geometry), attribute (Boolean)] 
         """
 
         return nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain)
 
     def field_at_index(self, index=None, domain='POINT'):
-        """Call node FieldAtIndex (GeometryNodeFieldAtIndex)
+        """ field_at_index
+        
 
-        Sockets arguments
-        -----------------
-            value          : Boolean (self)
-            index          : Integer
+        | Node: FieldAtIndex 
+        
 
-        Parameters arguments
-        --------------------
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            v = boolean.field_at_index(index, domain) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'BOOLEAN'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value : Boolean (self) 
+            - index : Integer 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'BOOLEAN' 
+        
+
+            Parameters arguments
+            --------------------
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain).value
 
     def raycast(self, target_geometry=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
-        """Call node Raycast (GeometryNodeRaycast)
+        """ raycast
+        
 
-        Sockets arguments
-        -----------------
-            attribute      : Boolean (self)
-            target_geometry: Geometry
-            source_position: Vector
-            ray_direction  : Vector
-            ray_length     : Float
+        | Node: Raycast 
+        
 
-        Parameters arguments
-        --------------------
-            mapping        : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+            v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length, mapping) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'BOOLEAN'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - attribute       : Boolean (self) 
+            - target_geometry : Geometry 
+            - source_position : Vector 
+            - ray_direction   : Vector 
+            - ray_length      : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'BOOLEAN' 
+        
+
+            Parameters arguments
+            --------------------
+            - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST] 
+        
 
         Returns
-        -------
-            Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
+        =======
+                Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute
+                (Boolean)] 
         """
 
         return nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping)
 
     def switch(self, false=None, true=None):
-        """Call node Switch (GeometryNodeSwitch)
+        """ switch
+        
 
-        Sockets arguments
-        -----------------
-            switch0        : Boolean (self)
-            false          : Boolean
-            true           : Boolean
+        | Node: Switch 
+        
 
-        Fixed parameters
-        ----------------
-            input_type     : 'BOOLEAN'
+            v = boolean.switch(false, true) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - switch0 : Boolean (self) 
+            - false   : Boolean 
+            - true    : Boolean 
+        
+
+            Fixed parameters
+            ----------------
+            - input_type : 'BOOLEAN' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN').output
 
     def b_and(self, boolean1=None):
-        """Call node BooleanMath (FunctionNodeBooleanMath)
+        """ b_and
+        
 
-        Sockets arguments
-        -----------------
-            boolean0       : Boolean (self)
-            boolean1       : Boolean
+        | Node: BooleanMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'AND'
+            v = boolean.b_and(boolean1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - boolean0 : Boolean (self) 
+            - boolean1 : Boolean 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'AND' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND').boolean
 
     def b_or(self, boolean1=None):
-        """Call node BooleanMath (FunctionNodeBooleanMath)
+        """ b_or
+        
 
-        Sockets arguments
-        -----------------
-            boolean0       : Boolean (self)
-            boolean1       : Boolean
+        | Node: BooleanMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'OR'
+            v = boolean.b_or(boolean1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - boolean0 : Boolean (self) 
+            - boolean1 : Boolean 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'OR' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR').boolean
 
     def b_not(self):
-        """Call node BooleanMath (FunctionNodeBooleanMath)
+        """ b_not
+        
 
-        Sockets arguments
-        -----------------
-            boolean0       : Boolean (self)
+        | Node: BooleanMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'NOT'
+            v = boolean.b_not() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - boolean0 : Boolean (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'NOT' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.BooleanMath(boolean0=self, operation='NOT').boolean
 
     def nand(self, boolean1=None):
-        """Call node BooleanMath (FunctionNodeBooleanMath)
+        """ nand
+        
 
-        Sockets arguments
-        -----------------
-            boolean0       : Boolean (self)
-            boolean1       : Boolean
+        | Node: BooleanMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'NAND'
+            v = boolean.nand(boolean1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - boolean0 : Boolean (self) 
+            - boolean1 : Boolean 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'NAND' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND').boolean
 
     def nor(self, boolean1=None):
-        """Call node BooleanMath (FunctionNodeBooleanMath)
+        """ nor
+        
 
-        Sockets arguments
-        -----------------
-            boolean0       : Boolean (self)
-            boolean1       : Boolean
+        | Node: BooleanMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'NOR'
+            v = boolean.nor(boolean1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - boolean0 : Boolean (self) 
+            - boolean1 : Boolean 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'NOR' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR').boolean
 
     def xnor(self, boolean1=None):
-        """Call node BooleanMath (FunctionNodeBooleanMath)
+        """ xnor
+        
 
-        Sockets arguments
-        -----------------
-            boolean0       : Boolean (self)
-            boolean1       : Boolean
+        | Node: BooleanMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'XNOR'
+            v = boolean.xnor(boolean1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - boolean0 : Boolean (self) 
+            - boolean1 : Boolean 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'XNOR' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR').boolean
 
     def xor(self, boolean1=None):
-        """Call node BooleanMath (FunctionNodeBooleanMath)
+        """ xor
+        
 
-        Sockets arguments
-        -----------------
-            boolean0       : Boolean (self)
-            boolean1       : Boolean
+        | Node: BooleanMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'XOR'
+            v = boolean.xor(boolean1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - boolean0 : Boolean (self) 
+            - boolean1 : Boolean 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'XOR' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR').boolean
 
     def imply(self, boolean1=None):
-        """Call node BooleanMath (FunctionNodeBooleanMath)
+        """ imply
+        
 
-        Sockets arguments
-        -----------------
-            boolean0       : Boolean (self)
-            boolean1       : Boolean
+        | Node: BooleanMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'IMPLY'
+            v = boolean.imply(boolean1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - boolean0 : Boolean (self) 
+            - boolean1 : Boolean 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'IMPLY' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY').boolean
 
     def nimply(self, boolean1=None):
-        """Call node BooleanMath (FunctionNodeBooleanMath)
+        """ nimply
+        
 
-        Sockets arguments
-        -----------------
-            boolean0       : Boolean (self)
-            boolean1       : Boolean
+        | Node: BooleanMath 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'NIMPLY'
+            v = boolean.nimply(boolean1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - boolean0 : Boolean (self) 
+            - boolean1 : Boolean 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'NIMPLY' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY').boolean

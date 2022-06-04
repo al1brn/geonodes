@@ -124,1732 +124,2891 @@ Functions
 # Functions
 
 def compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN'):
-    """Call node Compare (FunctionNodeCompare)
+    """ compare
+    
 
-    Sockets arguments
-    -----------------
-        a              : Float
-        b              : Float
-        epsilon        : Float
+    | Node: Compare 
+    
 
-    Parameters arguments
-    --------------------
-        data_type      : 'FLOAT' in [FLOAT, INT, VECTOR, STRING, RGBA]
-        mode           : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-        operation      : 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+        v = functions.compare(a, b, epsilon, data_type, mode, operation) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - a       : Float 
+        - b       : Float 
+        - epsilon : Float 
+    
+
+        Parameters arguments
+        --------------------
+        - data_type : 'FLOAT' in [FLOAT, INT, VECTOR, STRING, RGBA] 
+        - mode      : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
+        - operation : 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL] 
+    
 
     Returns
-    -------
-        Boolean
+    =======
+            Boolean 
     """
 
     return nodes.Compare(a=a, b=b, epsilon=epsilon, data_type=data_type, mode=mode, operation=operation).result
 
 def join_strings(*strings, delimiter=None):
-    """Call node JoinStrings (GeometryNodeStringJoin)
+    """ join_strings
+    
 
-    Sockets arguments
-    -----------------
-        strings        : *String
-        delimiter      : String
+    | Node: JoinStrings 
+    
+
+        v = functions.join_strings(strings_1, strings_2, strings_3, delimiter) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - strings   : *String 
+        - delimiter : String 
+    
 
     Returns
-    -------
-        String
+    =======
+            String 
     """
 
     return nodes.JoinStrings(*strings, delimiter=delimiter).string
 
 def scene():
-    """Call node SceneTime (GeometryNodeInputSceneTime)
+    """ scene
+    
+
+    | Node: SceneTime 
+    
+
+        v = functions.scene() 
+    
+
+    Arguments
+    =========
+    
 
     Returns
-    -------
-        Sockets [seconds (Float), frame (Float)]
+    =======
+            Sockets [seconds (Float), frame (Float)] 
     """
 
     return nodes.SceneTime()
 
 def add(value0=None, value1=None):
-    """Call node Math (ShaderNodeMath)
+    """ add
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'ADD'
+        v = functions.add(value0, value1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'ADD' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='ADD').value
 
 def subtract(value0=None, value1=None):
-    """Call node Math (ShaderNodeMath)
+    """ subtract
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'SUBTRACT'
+        v = functions.subtract(value0, value1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'SUBTRACT' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='SUBTRACT').value
 
 def multiply(value0=None, value1=None):
-    """Call node Math (ShaderNodeMath)
+    """ multiply
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'MULTIPLY'
+        v = functions.multiply(value0, value1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'MULTIPLY' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='MULTIPLY').value
 
 def divide(value0=None, value1=None):
-    """Call node Math (ShaderNodeMath)
+    """ divide
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'DIVIDE'
+        v = functions.divide(value0, value1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'DIVIDE' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='DIVIDE').value
 
 def multiply_add(value0=None, value1=None, value2=None):
-    """Call node Math (ShaderNodeMath)
+    """ multiply_add
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
-        value2         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'MULTIPLY_ADD'
+        v = functions.multiply_add(value0, value1, value2) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+        - value2 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'MULTIPLY_ADD' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, value2=value2, operation='MULTIPLY_ADD').value
 
 def pow(value0=None, value1=None):
-    """Call node Math (ShaderNodeMath)
+    """ pow
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'POWER'
+        v = functions.pow(value0, value1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'POWER' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='POWER').value
 
 def log(value0=None, value1=None):
-    """Call node Math (ShaderNodeMath)
+    """ log
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'LOGARITHM'
+        v = functions.log(value0, value1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'LOGARITHM' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='LOGARITHM').value
 
 def sqrt(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ sqrt
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'SQRT'
+        v = functions.sqrt(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'SQRT' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='SQRT').value
 
 def inverse_sqrt(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ inverse_sqrt
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'INVERSE_SQRT'
+        v = functions.inverse_sqrt(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'INVERSE_SQRT' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='INVERSE_SQRT').value
 
 def abs(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ abs
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'ABSOLUTE'
+        v = functions.abs(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'ABSOLUTE' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='ABSOLUTE').value
 
 def exp(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ exp
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'EXPONENT'
+        v = functions.exp(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'EXPONENT' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='EXPONENT').value
 
 def min(value0=None, value1=None):
-    """Call node Math (ShaderNodeMath)
+    """ min
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'MINIMUM'
+        v = functions.min(value0, value1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'MINIMUM' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='MINIMUM').value
 
 def max(value0=None, value1=None):
-    """Call node Math (ShaderNodeMath)
+    """ max
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'MAXIMUM'
+        v = functions.max(value0, value1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'MAXIMUM' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='MAXIMUM').value
 
 def less_than(value0=None, value1=None):
-    """Call node Math (ShaderNodeMath)
+    """ less_than
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'LESS_THAN'
+        v = functions.less_than(value0, value1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'LESS_THAN' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='LESS_THAN').value
 
 def greater_than(value0=None, value1=None):
-    """Call node Math (ShaderNodeMath)
+    """ greater_than
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'GREATER_THAN'
+        v = functions.greater_than(value0, value1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'GREATER_THAN' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='GREATER_THAN').value
 
 def sign(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ sign
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'SIGN'
+        v = functions.sign(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'SIGN' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='SIGN').value
 
 def compare(value0=None, value1=None, value2=None):
-    """Call node Math (ShaderNodeMath)
+    """ compare
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
-        value2         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'COMPARE'
+        v = functions.compare(value0, value1, value2) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+        - value2 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'COMPARE' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, value2=value2, operation='COMPARE').value
 
 def smooth_min(value0=None, value1=None, value2=None):
-    """Call node Math (ShaderNodeMath)
+    """ smooth_min
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
-        value2         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'SMOOTH_MIN'
+        v = functions.smooth_min(value0, value1, value2) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+        - value2 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'SMOOTH_MIN' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MIN').value
 
 def smooth_max(value0=None, value1=None, value2=None):
-    """Call node Math (ShaderNodeMath)
+    """ smooth_max
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
-        value2         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'SMOOTH_MAX'
+        v = functions.smooth_max(value0, value1, value2) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+        - value2 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'SMOOTH_MAX' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MAX').value
 
 def round(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ round
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'ROUND'
+        v = functions.round(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'ROUND' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='ROUND').value
 
 def floor(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ floor
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'FLOOR'
+        v = functions.floor(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'FLOOR' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='FLOOR').value
 
 def ceil(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ ceil
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'CEIL'
+        v = functions.ceil(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'CEIL' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='CEIL').value
 
 def trunc(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ trunc
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'TRUNC'
+        v = functions.trunc(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'TRUNC' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='TRUNC').value
 
 def fract(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ fract
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'FRACT'
+        v = functions.fract(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'FRACT' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='FRACT').value
 
 def modulo(value0=None, value1=None):
-    """Call node Math (ShaderNodeMath)
+    """ modulo
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'MODULO'
+        v = functions.modulo(value0, value1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'MODULO' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='MODULO').value
 
 def wrap(value0=None, value1=None, value2=None):
-    """Call node Math (ShaderNodeMath)
+    """ wrap
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
-        value2         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'WRAP'
+        v = functions.wrap(value0, value1, value2) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+        - value2 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'WRAP' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, value2=value2, operation='WRAP').value
 
 def snap(value0=None, value1=None):
-    """Call node Math (ShaderNodeMath)
+    """ snap
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'SNAP'
+        v = functions.snap(value0, value1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'SNAP' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='SNAP').value
 
 def pingpong(value0=None, value1=None):
-    """Call node Math (ShaderNodeMath)
+    """ pingpong
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'PINGPONG'
+        v = functions.pingpong(value0, value1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'PINGPONG' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='PINGPONG').value
 
 def sin(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ sin
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'SINE'
+        v = functions.sin(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'SINE' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='SINE').value
 
 def cos(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ cos
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'COSINE'
+        v = functions.cos(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'COSINE' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='COSINE').value
 
 def tan(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ tan
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'TANGENT'
+        v = functions.tan(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'TANGENT' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='TANGENT').value
 
 def arcsin(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ arcsin
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'ARCSINE'
+        v = functions.arcsin(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'ARCSINE' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='ARCSINE').value
 
 def arccos(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ arccos
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'ARCCOSINE'
+        v = functions.arccos(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'ARCCOSINE' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='ARCCOSINE').value
 
 def arctan(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ arctan
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'ARCTANGENT'
+        v = functions.arctan(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'ARCTANGENT' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='ARCTANGENT').value
 
 def arctan2(value0=None, value1=None):
-    """Call node Math (ShaderNodeMath)
+    """ arctan2
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
-        value1         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'ARCTAN2'
+        v = functions.arctan2(value0, value1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+        - value1 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'ARCTAN2' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='ARCTAN2').value
 
 def sinh(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ sinh
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'SINH'
+        v = functions.sinh(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'SINH' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='SINH').value
 
 def cosh(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ cosh
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'COSH'
+        v = functions.cosh(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'COSH' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='COSH').value
 
 def tanh(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ tanh
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'TANH'
+        v = functions.tanh(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'TANH' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='TANH').value
 
 def radians(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ radians
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'RADIANS'
+        v = functions.radians(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'RADIANS' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='RADIANS').value
 
 def degrees(value0=None):
-    """Call node Math (ShaderNodeMath)
+    """ degrees
+    
 
-    Sockets arguments
-    -----------------
-        value0         : Float
+    | Node: Math 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'DEGREES'
+        v = functions.degrees(value0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - value0 : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'DEGREES' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.Math(value0=value0, operation='DEGREES').value
 
 def vector_add(vector0=None, vector1=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ vector_add
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        vector1        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'ADD'
+        v = functions.vector_add(vector0, vector1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - vector1 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'ADD' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='ADD').vector
 
 def vector_subtract(vector0=None, vector1=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ vector_subtract
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        vector1        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'SUBTRACT'
+        v = functions.vector_subtract(vector0, vector1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - vector1 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'SUBTRACT' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SUBTRACT').vector
 
 def vector_multiply(vector0=None, vector1=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ vector_multiply
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        vector1        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'MULTIPLY'
+        v = functions.vector_multiply(vector0, vector1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - vector1 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'MULTIPLY' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MULTIPLY').vector
 
 def vector_divide(vector0=None, vector1=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ vector_divide
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        vector1        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'DIVIDE'
+        v = functions.vector_divide(vector0, vector1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - vector1 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'DIVIDE' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DIVIDE').vector
 
 def vector_multiply_add(vector0=None, vector1=None, vector2=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ vector_multiply_add
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        vector1        : Vector
-        vector2        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'MULTIPLY_ADD'
+        v = functions.vector_multiply_add(vector0, vector1, vector2) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - vector1 : Vector 
+        - vector2 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'MULTIPLY_ADD' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD').vector
 
 def cross(vector0=None, vector1=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ cross
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        vector1        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'CROSS_PRODUCT'
+        v = functions.cross(vector0, vector1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - vector1 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'CROSS_PRODUCT' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='CROSS_PRODUCT').vector
 
 def project(vector0=None, vector1=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ project
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        vector1        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'PROJECT'
+        v = functions.project(vector0, vector1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - vector1 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'PROJECT' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='PROJECT').vector
 
 def reflect(vector0=None, vector1=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ reflect
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        vector1        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'REFLECT'
+        v = functions.reflect(vector0, vector1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - vector1 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'REFLECT' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='REFLECT').vector
 
 def refract(vector0=None, vector1=None, scale=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ refract
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        vector1        : Vector
-        scale          : Float
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'REFRACT'
+        v = functions.refract(vector0, vector1, scale) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - vector1 : Vector 
+        - scale   : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'REFRACT' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, scale=scale, operation='REFRACT').vector
 
 def faceforward(vector0=None, vector1=None, vector2=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ faceforward
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        vector1        : Vector
-        vector2        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'FACEFORWARD'
+        v = functions.faceforward(vector0, vector1, vector2) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - vector1 : Vector 
+        - vector2 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'FACEFORWARD' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='FACEFORWARD').vector
 
 def dot(vector0=None, vector1=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ dot
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        vector1        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'DOT_PRODUCT'
+        v = functions.dot(vector0, vector1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - vector1 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'DOT_PRODUCT' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DOT_PRODUCT').value
 
 def distance(vector0=None, vector1=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ distance
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        vector1        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'DISTANCE'
+        v = functions.distance(vector0, vector1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - vector1 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'DISTANCE' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DISTANCE').value
 
 def length(vector0=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ length
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'LENGTH'
+        v = functions.length(vector0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'LENGTH' 
+    
 
     Returns
-    -------
-        Float
+    =======
+            Float 
     """
 
     return nodes.VectorMath(vector0=vector0, operation='LENGTH').value
 
 def scale(vector0=None, scale=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ scale
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        scale          : Float
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'SCALE'
+        v = functions.scale(vector0, scale) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - scale   : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'SCALE' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, scale=scale, operation='SCALE').vector
 
 def normalize(vector0=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ normalize
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'NORMALIZE'
+        v = functions.normalize(vector0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'NORMALIZE' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, operation='NORMALIZE').vector
 
 def vector_absolute(vector0=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ vector_absolute
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'ABSOLUTE'
+        v = functions.vector_absolute(vector0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'ABSOLUTE' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, operation='ABSOLUTE').vector
 
 def vector_min(vector0=None, vector1=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ vector_min
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        vector1        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'MINIMUM'
+        v = functions.vector_min(vector0, vector1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - vector1 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'MINIMUM' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MINIMUM').vector
 
 def vector_max(vector0=None, vector1=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ vector_max
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        vector1        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'MAXIMUM'
+        v = functions.vector_max(vector0, vector1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - vector1 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'MAXIMUM' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MAXIMUM').vector
 
 def vector_floor(vector0=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ vector_floor
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'FLOOR'
+        v = functions.vector_floor(vector0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'FLOOR' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, operation='FLOOR').vector
 
 def vector_ceil(vector0=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ vector_ceil
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'CEIL'
+        v = functions.vector_ceil(vector0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'CEIL' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, operation='CEIL').vector
 
 def fraction(vector0=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ fraction
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'FRACTION'
+        v = functions.fraction(vector0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'FRACTION' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, operation='FRACTION').vector
 
 def vector_modulo(vector0=None, vector1=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ vector_modulo
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        vector1        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'MODULO'
+        v = functions.vector_modulo(vector0, vector1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - vector1 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'MODULO' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MODULO').vector
 
 def vector_wrap(vector0=None, vector1=None, vector2=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ vector_wrap
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        vector1        : Vector
-        vector2        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'WRAP'
+        v = functions.vector_wrap(vector0, vector1, vector2) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - vector1 : Vector 
+        - vector2 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'WRAP' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='WRAP').vector
 
 def vector_snap(vector0=None, vector1=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ vector_snap
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
-        vector1        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'SNAP'
+        v = functions.vector_snap(vector0, vector1) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+        - vector1 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'SNAP' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SNAP').vector
 
 def vector_sin(vector0=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ vector_sin
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'SINE'
+        v = functions.vector_sin(vector0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'SINE' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, operation='SINE').vector
 
 def vector_cos(vector0=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ vector_cos
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'COSINE'
+        v = functions.vector_cos(vector0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'COSINE' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, operation='COSINE').vector
 
 def vector_tan(vector0=None):
-    """Call node VectorMath (ShaderNodeVectorMath)
+    """ vector_tan
+    
 
-    Sockets arguments
-    -----------------
-        vector0        : Vector
+    | Node: VectorMath 
+    
 
-    Fixed parameters
-    ----------------
-        operation      : 'TANGENT'
+        v = functions.vector_tan(vector0) 
+    
+
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - vector0 : Vector 
+    
+
+        Fixed parameters
+        ----------------
+        - operation : 'TANGENT' 
+    
 
     Returns
-    -------
-        Vector
+    =======
+            Vector 
     """
 
     return nodes.VectorMath(vector0=vector0, operation='TANGENT').vector
 
 def color_mix(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_mix
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_mix(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'MIX'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'MIX' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha).color
 
 def color_darken(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_darken
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_darken(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'DARKEN'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'DARKEN' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha).color
 
 def color_multiply(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_multiply
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_multiply(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'MULTIPLY'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'MULTIPLY' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha).color
 
 def color_burn(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_burn
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_burn(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'BURN'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'BURN' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha).color
 
 def color_lighten(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_lighten
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_lighten(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'LIGHTEN'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'LIGHTEN' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha).color
 
 def color_screen(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_screen
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_screen(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'SCREEN'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'SCREEN' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha).color
 
 def color_dodge(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_dodge
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_dodge(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'DODGE'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'DODGE' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha).color
 
 def color_add(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_add
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_add(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'ADD'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'ADD' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha).color
 
 def color_overlay(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_overlay
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_overlay(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'OVERLAY'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'OVERLAY' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha).color
 
 def color_soft_light(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_soft_light
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_soft_light(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'SOFT_LIGHT'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'SOFT_LIGHT' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha).color
 
 def color_linear_light(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_linear_light
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_linear_light(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'LINEAR_LIGHT'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'LINEAR_LIGHT' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha).color
 
 def color_difference(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_difference
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_difference(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'DIFFERENCE'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'DIFFERENCE' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha).color
 
 def color_subtract(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_subtract
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_subtract(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'SUBTRACT'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'SUBTRACT' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha).color
 
 def color_divide(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_divide
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_divide(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'DIVIDE'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'DIVIDE' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha).color
 
 def color_hue(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_hue
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_hue(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'HUE'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'HUE' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha).color
 
 def color_saturation(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_saturation
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_saturation(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'SATURATION'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'SATURATION' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha).color
 
 def color_mix_color(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_mix_color
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_mix_color(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'COLOR'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'COLOR' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha).color
 
 def color_value(color1=None, color2=None, fac=None, use_alpha=False):
-    """Call node Mix (ShaderNodeMixRGB)
+    """ color_value
+    
 
-    Sockets arguments
-    -----------------
-        color1         : Color
-        color2         : Color
-        fac            : Float
+    | Node: Mix 
+    
 
-    Parameters arguments
-    --------------------
-        use_alpha      : False
+        v = functions.color_value(color1, color2, fac, use_alpha) 
+    
 
-    Fixed parameters
-    ----------------
-        blend_type     : 'VALUE'
+    Arguments
+    =========
+    
+
+        Sockets arguments
+        -----------------
+        - color1 : Color 
+        - color2 : Color 
+        - fac    : Float 
+    
+
+        Fixed parameters
+        ----------------
+        - blend_type : 'VALUE' 
+    
+
+        Parameters arguments
+        --------------------
+        - use_alpha : False 
+    
 
     Returns
-    -------
-        Color
+    =======
+            Color 
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha).color

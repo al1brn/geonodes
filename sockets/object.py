@@ -34,20 +34,38 @@ class Object(dsock.Object):
 
     @property
     def info(self, as_instance=None, transform_space='ORIGINAL'):
-        """Call node ObjectInfo (GeometryNodeObjectInfo)
+        """ info
+        
 
-        Sockets arguments
-        -----------------
-            object         : Object (self)
-            as_instance    : Boolean
+        | Node: ObjectInfo 
+        
 
-        Parameters arguments
-        --------------------
-            transform_space: 'ORIGINAL' in [ORIGINAL, RELATIVE]
+            v = object.info 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - object      : Object (self) 
+            - as_instance : Boolean 
+        
+
+            Parameters arguments
+            --------------------
+            - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE] 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.info" 
+        
 
         Returns
-        -------
-            Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+        =======
+                Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)] 
         """
 
         if self.info_ is None:
@@ -76,21 +94,34 @@ class Object(dsock.Object):
     # Methods
 
     def switch(self, switch1=None, true=None):
-        """Call node Switch (GeometryNodeSwitch)
+        """ switch
+        
 
-        Sockets arguments
-        -----------------
-            false          : Object (self)
-            switch1        : Boolean
-            true           : Object
+        | Node: Switch 
+        
 
-        Fixed parameters
-        ----------------
-            input_type     : 'OBJECT'
+            v = object.switch(switch1, true) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - false   : Object (self) 
+            - switch1 : Boolean 
+            - true    : Object 
+        
+
+            Fixed parameters
+            ----------------
+            - input_type : 'OBJECT' 
+        
 
         Returns
-        -------
-            Object
+        =======
+                Object 
         """
 
         return nodes.Switch(false=self, switch1=switch1, true=true, input_type='OBJECT').output

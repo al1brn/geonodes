@@ -26,41 +26,67 @@ class Collection(dsock.Collection):
     # Methods
 
     def switch(self, switch1=None, true=None):
-        """Call node Switch (GeometryNodeSwitch)
+        """ switch
+        
 
-        Sockets arguments
-        -----------------
-            false          : Collection (self)
-            switch1        : Boolean
-            true           : Collection
+        | Node: Switch 
+        
 
-        Fixed parameters
-        ----------------
-            input_type     : 'COLLECTION'
+            v = collection.switch(switch1, true) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - false   : Collection (self) 
+            - switch1 : Boolean 
+            - true    : Collection 
+        
+
+            Fixed parameters
+            ----------------
+            - input_type : 'COLLECTION' 
+        
 
         Returns
-        -------
-            Collection
+        =======
+                Collection 
         """
 
         return nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION').output
 
     def info(self, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
-        """Call node CollectionInfo (GeometryNodeCollectionInfo)
+        """ info
+        
 
-        Sockets arguments
-        -----------------
-            collection     : Collection (self)
-            separate_children: Boolean
-            reset_children : Boolean
+        | Node: CollectionInfo 
+        
 
-        Parameters arguments
-        --------------------
-            transform_space: 'ORIGINAL' in [ORIGINAL, RELATIVE]
+            v = collection.info(separate_children, reset_children, transform_space) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - collection        : Collection (self) 
+            - separate_children : Boolean 
+            - reset_children    : Boolean 
+        
+
+            Parameters arguments
+            --------------------
+            - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE] 
+        
 
         Returns
-        -------
-            Geometry
+        =======
+                Geometry 
         """
 
         return nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space).geometry

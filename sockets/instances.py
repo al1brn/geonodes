@@ -38,11 +38,27 @@ class Instances(Geometry):
 
     @property
     def instance_index(self):
-        """Call node Index (GeometryNodeInputIndex)
+        """ instance_index
+        
+
+        | Node: Index 
+        
+
+            v = instances.instance_index(self) 
+        
+
+        Arguments
+        =========
+        
+
+            Parameters arguments
+            --------------------
+            - self 
+        
 
         Returns
-        -------
-            Integer
+        =======
+                Integer 
         """
 
         return self.capture_index(domain='INSTANCE')
@@ -52,18 +68,30 @@ class Instances(Geometry):
     # Methods
 
     def to_points(self, selection=None, position=None, radius=None):
-        """Call node InstancesToPoints (GeometryNodeInstancesToPoints)
+        """ to_points
+        
 
-        Sockets arguments
-        -----------------
-            instances      : Instances (self)
-            selection      : Boolean
-            position       : Vector
-            radius         : Float
+        | Node: InstancesToPoints 
+        
+
+            v = instances.to_points(selection, position, radius) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - instances : Instances (self) 
+            - selection : Boolean 
+            - position  : Vector 
+            - radius    : Float 
+        
 
         Returns
-        -------
-            Points
+        =======
+                Points 
         """
 
         return nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius).points
@@ -73,57 +101,90 @@ class Instances(Geometry):
     # Stacked methods
 
     def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None):
-        """Call node RotateInstances (GeometryNodeRotateInstances)
+        """ rotate
+        
 
-        Sockets arguments
-        -----------------
-            instances      : Instances (self)
-            selection      : Boolean
-            rotation       : Vector
-            pivot_point    : Vector
-            local_space    : Boolean
+        | Node: RotateInstances 
+        
+
+            instances.rotate(selection, rotation, pivot_point, local_space) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - instances   : Instances (self) 
+            - selection   : Boolean 
+            - rotation    : Vector 
+            - pivot_point : Vector 
+            - local_space : Boolean 
+        
 
         Returns
-        -------
-            self
-
+        =======
+                self 
         """
 
         return self.stack(nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space))
 
     def scale(self, selection=None, scale=None, center=None, local_space=None):
-        """Call node ScaleInstances (GeometryNodeScaleInstances)
+        """ scale
+        
 
-        Sockets arguments
-        -----------------
-            instances      : Instances (self)
-            selection      : Boolean
-            scale          : Vector
-            center         : Vector
-            local_space    : Boolean
+        | Node: ScaleInstances 
+        
+
+            instances.scale(selection, scale, center, local_space) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - instances   : Instances (self) 
+            - selection   : Boolean 
+            - scale       : Vector 
+            - center      : Vector 
+            - local_space : Boolean 
+        
 
         Returns
-        -------
-            self
-
+        =======
+                self 
         """
 
         return self.stack(nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space))
 
     def translate(self, selection=None, translation=None, local_space=None):
-        """Call node TranslateInstances (GeometryNodeTranslateInstances)
+        """ translate
+        
 
-        Sockets arguments
-        -----------------
-            instances      : Instances (self)
-            selection      : Boolean
-            translation    : Vector
-            local_space    : Boolean
+        | Node: TranslateInstances 
+        
+
+            instances.translate(selection, translation, local_space) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - instances   : Instances (self) 
+            - selection   : Boolean 
+            - translation : Vector 
+            - local_space : Boolean 
+        
 
         Returns
-        -------
-            self
-
+        =======
+                self 
         """
 
         return self.stack(nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space))

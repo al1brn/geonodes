@@ -25,21 +25,34 @@ class Image(dsock.Image):
     # Methods
 
     def switch(self, switch1=None, true=None):
-        """Call node Switch (GeometryNodeSwitch)
+        """ switch
+        
 
-        Sockets arguments
-        -----------------
-            false          : Image (self)
-            switch1        : Boolean
-            true           : Image
+        | Node: Switch 
+        
 
-        Fixed parameters
-        ----------------
-            input_type     : 'IMAGE'
+            v = image.switch(switch1, true) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - false   : Image (self) 
+            - switch1 : Boolean 
+            - true    : Image 
+        
+
+            Fixed parameters
+            ----------------
+            - input_type : 'IMAGE' 
+        
 
         Returns
-        -------
-            Image
+        =======
+                Image 
         """
 
         return nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE').output

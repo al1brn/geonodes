@@ -95,22 +95,35 @@ class Float(dsock.Float):
 
     @classmethod
     def Random(cls, min=None, max=None, ID=None, seed=None):
-        """Call node RandomValue (FunctionNodeRandomValue)
+        """ Random
+        
 
-        Sockets arguments
-        -----------------
-            min            : Float
-            max            : Float
-            ID             : Integer
-            seed           : Integer
+        | Node: RandomValue 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT'
+            v = Float.Random(min, max, ID, seed) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - min  : Float 
+            - max  : Float 
+            - ID   : Integer 
+            - seed : Integer 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return cls(nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT').value)
@@ -120,1112 +133,1860 @@ class Float(dsock.Float):
     # Methods
 
     def accumulate_field(self, group_index=None, domain='POINT'):
-        """Call node AccumulateField (GeometryNodeAccumulateField)
+        """ accumulate_field
+        
 
-        Sockets arguments
-        -----------------
-            value          : Float (self)
-            group_index    : Integer
+        | Node: AccumulateField 
+        
 
-        Parameters arguments
-        --------------------
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            v = float.accumulate_field(group_index, domain) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value       : Float (self) 
+            - group_index : Integer 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT' 
+        
+
+            Parameters arguments
+            --------------------
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
 
         Returns
-        -------
-            Sockets [leading (Float), trailing (Float), total (Float)]
+        =======
+                Sockets [leading (Float), trailing (Float), total (Float)] 
         """
 
         return nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT', domain=domain)
 
     def attribute_statistic(self, geometry=None, selection=None, domain='POINT'):
-        """Call node AttributeStatistic (GeometryNodeAttributeStatistic)
+        """ attribute_statistic
+        
 
-        Sockets arguments
-        -----------------
-            attribute      : Float (self)
-            geometry       : Geometry
-            selection      : Boolean
+        | Node: AttributeStatistic 
+        
 
-        Parameters arguments
-        --------------------
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            v = float.attribute_statistic(geometry, selection, domain) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - attribute : Float (self) 
+            - geometry  : Geometry 
+            - selection : Boolean 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT' 
+        
+
+            Parameters arguments
+            --------------------
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
 
         Returns
-        -------
-            Sockets [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
+        =======
+                Sockets [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation
+                (Float), variance (Float)] 
         """
 
         return nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT', domain=domain)
 
     def transfer_attribute(self, source=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """Call node TransferAttribute (GeometryNodeAttributeTransfer)
+        """ transfer_attribute
+        
 
-        Sockets arguments
-        -----------------
-            attribute      : Float (self)
-            source         : Geometry
-            source_position: Vector
-            index          : Integer
+        | Node: TransferAttribute 
+        
 
-        Parameters arguments
-        --------------------
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-            mapping        : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+            v = float.transfer_attribute(source, source_position, index, domain, mapping) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - attribute       : Float (self) 
+            - source          : Geometry 
+            - source_position : Vector 
+            - index           : Integer 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT' 
+        
+
+            Parameters arguments
+            --------------------
+            - domain  : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping).attribute
 
     def capture_attribute(self, geometry=None, domain='POINT'):
-        """Call node CaptureAttribute (GeometryNodeCaptureAttribute)
+        """ capture_attribute
+        
 
-        Sockets arguments
-        -----------------
-            value          : Float (self)
-            geometry       : Geometry
+        | Node: CaptureAttribute 
+        
 
-        Parameters arguments
-        --------------------
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            v = float.capture_attribute(geometry, domain) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value    : Float (self) 
+            - geometry : Geometry 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT' 
+        
+
+            Parameters arguments
+            --------------------
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
 
         Returns
-        -------
-            Sockets [geometry (Geometry), attribute (Float)]
+        =======
+                Sockets [geometry (Geometry), attribute (Float)] 
         """
 
         return nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT', domain=domain)
 
     def field_at_index(self, index=None, domain='POINT'):
-        """Call node FieldAtIndex (GeometryNodeFieldAtIndex)
+        """ field_at_index
+        
 
-        Sockets arguments
-        -----------------
-            value          : Float (self)
-            index          : Integer
+        | Node: FieldAtIndex 
+        
 
-        Parameters arguments
-        --------------------
-            domain         : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            v = float.field_at_index(index, domain) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value : Float (self) 
+            - index : Integer 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT' 
+        
+
+            Parameters arguments
+            --------------------
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT', domain=domain).value
 
     def raycast(self, target_geometry=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
-        """Call node Raycast (GeometryNodeRaycast)
+        """ raycast
+        
 
-        Sockets arguments
-        -----------------
-            attribute      : Float (self)
-            target_geometry: Geometry
-            source_position: Vector
-            ray_direction  : Vector
-            ray_length     : Float
+        | Node: Raycast 
+        
 
-        Parameters arguments
-        --------------------
-            mapping        : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+            v = float.raycast(target_geometry, source_position, ray_direction, ray_length, mapping) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - attribute       : Float (self) 
+            - target_geometry : Geometry 
+            - source_position : Vector 
+            - ray_direction   : Vector 
+            - ray_length      : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT' 
+        
+
+            Parameters arguments
+            --------------------
+            - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST] 
+        
 
         Returns
-        -------
-            Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
+        =======
+                Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute
+                (Float)] 
         """
 
         return nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping)
 
     def switch(self, switch0=None, true=None):
-        """Call node Switch (GeometryNodeSwitch)
+        """ switch
+        
 
-        Sockets arguments
-        -----------------
-            false          : Float (self)
-            switch0        : Boolean
-            true           : Float
+        | Node: Switch 
+        
 
-        Fixed parameters
-        ----------------
-            input_type     : 'FLOAT'
+            v = float.switch(switch0, true) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - false   : Float (self) 
+            - switch0 : Boolean 
+            - true    : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - input_type : 'FLOAT' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT').output
 
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, interpolation_type='LINEAR'):
-        """Call node MapRange (ShaderNodeMapRange)
+        """ map_range
+        
 
-        Sockets arguments
-        -----------------
-            value          : Float (self)
-            from_min       : Float
-            from_max       : Float
-            to_min         : Float
-            to_max         : Float
+        | Node: MapRange 
+        
 
-        Parameters arguments
-        --------------------
-            clamp          : True
-            interpolation_type: 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
+            v = float.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type) 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT'
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value    : Float (self) 
+            - from_min : Float 
+            - from_max : Float 
+            - to_min   : Float 
+            - to_max   : Float 
+        
+
+            Parameters arguments
+            --------------------
+            - clamp              : True 
+            - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP] 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type).result
 
     def less_than(self, b=None):
-        """Call node Compare (FunctionNodeCompare)
+        """ less_than
+        
 
-        Sockets arguments
-        -----------------
-            a              : Float (self)
-            b              : Float
+        | Node: Compare 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT'
-            mode           : 'ELEMENT'
-            operation      : 'LESS_THAN'
+            v = float.less_than(b) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - a : Float (self) 
+            - b : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT' 
+            - mode      : 'ELEMENT' 
+            - operation : 'LESS_THAN' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN').result
 
     def less_equal(self, b=None):
-        """Call node Compare (FunctionNodeCompare)
+        """ less_equal
+        
 
-        Sockets arguments
-        -----------------
-            a              : Float (self)
-            b              : Float
+        | Node: Compare 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT'
-            mode           : 'ELEMENT'
-            operation      : 'LESS_EQUAL'
+            v = float.less_equal(b) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - a : Float (self) 
+            - b : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT' 
+            - mode      : 'ELEMENT' 
+            - operation : 'LESS_EQUAL' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL').result
 
     def greater_than(self, b=None):
-        """Call node Compare (FunctionNodeCompare)
+        """ greater_than
+        
 
-        Sockets arguments
-        -----------------
-            a              : Float (self)
-            b              : Float
+        | Node: Compare 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT'
-            mode           : 'ELEMENT'
-            operation      : 'GREATER_THAN'
+            v = float.greater_than(b) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - a : Float (self) 
+            - b : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT' 
+            - mode      : 'ELEMENT' 
+            - operation : 'GREATER_THAN' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN').result
 
     def greater_equal(self, b=None):
-        """Call node Compare (FunctionNodeCompare)
+        """ greater_equal
+        
 
-        Sockets arguments
-        -----------------
-            a              : Float (self)
-            b              : Float
+        | Node: Compare 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT'
-            mode           : 'ELEMENT'
-            operation      : 'GREATER_EQUAL'
+            v = float.greater_equal(b) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - a : Float (self) 
+            - b : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT' 
+            - mode      : 'ELEMENT' 
+            - operation : 'GREATER_EQUAL' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL').result
 
     def equal(self, b=None, epsilon=None):
-        """Call node Compare (FunctionNodeCompare)
+        """ equal
+        
 
-        Sockets arguments
-        -----------------
-            a              : Float (self)
-            b              : Float
-            epsilon        : Float
+        | Node: Compare 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT'
-            mode           : 'ELEMENT'
-            operation      : 'EQUAL'
+            v = float.equal(b, epsilon) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - a       : Float (self) 
+            - b       : Float 
+            - epsilon : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT' 
+            - mode      : 'ELEMENT' 
+            - operation : 'EQUAL' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL').result
 
     def not_equal(self, b=None, epsilon=None):
-        """Call node Compare (FunctionNodeCompare)
+        """ not_equal
+        
 
-        Sockets arguments
-        -----------------
-            a              : Float (self)
-            b              : Float
-            epsilon        : Float
+        | Node: Compare 
+        
 
-        Fixed parameters
-        ----------------
-            data_type      : 'FLOAT'
-            mode           : 'ELEMENT'
-            operation      : 'NOT_EQUAL'
+            v = float.not_equal(b, epsilon) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - a       : Float (self) 
+            - b       : Float 
+            - epsilon : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - data_type : 'FLOAT' 
+            - mode      : 'ELEMENT' 
+            - operation : 'NOT_EQUAL' 
+        
 
         Returns
-        -------
-            Boolean
+        =======
+                Boolean 
         """
 
         return nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL').result
 
     def add(self, value1=None):
-        """Call node Math (ShaderNodeMath)
+        """ add
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'ADD'
+            v = float.add(value1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'ADD' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, operation='ADD').value
 
     def subtract(self, value1=None):
-        """Call node Math (ShaderNodeMath)
+        """ subtract
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'SUBTRACT'
+            v = float.subtract(value1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'SUBTRACT' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, operation='SUBTRACT').value
 
     def multiply(self, value1=None):
-        """Call node Math (ShaderNodeMath)
+        """ multiply
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'MULTIPLY'
+            v = float.multiply(value1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'MULTIPLY' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, operation='MULTIPLY').value
 
     def divide(self, value1=None):
-        """Call node Math (ShaderNodeMath)
+        """ divide
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'DIVIDE'
+            v = float.divide(value1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'DIVIDE' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, operation='DIVIDE').value
 
     def multiply_add(self, value1=None, value2=None):
-        """Call node Math (ShaderNodeMath)
+        """ multiply_add
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
-            value2         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'MULTIPLY_ADD'
+            v = float.multiply_add(value1, value2) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+            - value2 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'MULTIPLY_ADD' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD').value
 
     def pow(self, value1=None):
-        """Call node Math (ShaderNodeMath)
+        """ pow
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'POWER'
+            v = float.pow(value1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'POWER' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, operation='POWER').value
 
     def log(self, value1=None):
-        """Call node Math (ShaderNodeMath)
+        """ log
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'LOGARITHM'
+            v = float.log(value1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'LOGARITHM' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, operation='LOGARITHM').value
 
     def sqrt(self):
-        """Call node Math (ShaderNodeMath)
+        """ sqrt
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'SQRT'
+            v = float.sqrt() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'SQRT' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='SQRT').value
 
     def inverse_sqrt(self):
-        """Call node Math (ShaderNodeMath)
+        """ inverse_sqrt
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'INVERSE_SQRT'
+            v = float.inverse_sqrt() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'INVERSE_SQRT' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='INVERSE_SQRT').value
 
     def abs(self):
-        """Call node Math (ShaderNodeMath)
+        """ abs
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'ABSOLUTE'
+            v = float.abs() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'ABSOLUTE' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='ABSOLUTE').value
 
     def exp(self):
-        """Call node Math (ShaderNodeMath)
+        """ exp
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'EXPONENT'
+            v = float.exp() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'EXPONENT' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='EXPONENT').value
 
     def min(self, value1=None):
-        """Call node Math (ShaderNodeMath)
+        """ min
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'MINIMUM'
+            v = float.min(value1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'MINIMUM' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, operation='MINIMUM').value
 
     def max(self, value1=None):
-        """Call node Math (ShaderNodeMath)
+        """ max
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'MAXIMUM'
+            v = float.max(value1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'MAXIMUM' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, operation='MAXIMUM').value
 
     def less_than(self, value1=None):
-        """Call node Math (ShaderNodeMath)
+        """ less_than
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'LESS_THAN'
+            v = float.less_than(value1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'LESS_THAN' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, operation='LESS_THAN').value
 
     def greater_than(self, value1=None):
-        """Call node Math (ShaderNodeMath)
+        """ greater_than
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'GREATER_THAN'
+            v = float.greater_than(value1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'GREATER_THAN' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, operation='GREATER_THAN').value
 
     def sign(self):
-        """Call node Math (ShaderNodeMath)
+        """ sign
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'SIGN'
+            v = float.sign() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'SIGN' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='SIGN').value
 
     def compare(self, value1=None, value2=None):
-        """Call node Math (ShaderNodeMath)
+        """ compare
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
-            value2         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'COMPARE'
+            v = float.compare(value1, value2) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+            - value2 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'COMPARE' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE').value
 
     def smooth_min(self, value1=None, value2=None):
-        """Call node Math (ShaderNodeMath)
+        """ smooth_min
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
-            value2         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'SMOOTH_MIN'
+            v = float.smooth_min(value1, value2) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+            - value2 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'SMOOTH_MIN' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN').value
 
     def smooth_max(self, value1=None, value2=None):
-        """Call node Math (ShaderNodeMath)
+        """ smooth_max
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
-            value2         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'SMOOTH_MAX'
+            v = float.smooth_max(value1, value2) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+            - value2 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'SMOOTH_MAX' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX').value
 
     def round(self):
-        """Call node Math (ShaderNodeMath)
+        """ round
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'ROUND'
+            v = float.round() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'ROUND' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='ROUND').value
 
     def floor(self):
-        """Call node Math (ShaderNodeMath)
+        """ floor
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'FLOOR'
+            v = float.floor() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'FLOOR' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='FLOOR').value
 
     def ceil(self):
-        """Call node Math (ShaderNodeMath)
+        """ ceil
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'CEIL'
+            v = float.ceil() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'CEIL' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='CEIL').value
 
     def trunc(self):
-        """Call node Math (ShaderNodeMath)
+        """ trunc
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'TRUNC'
+            v = float.trunc() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'TRUNC' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='TRUNC').value
 
     def fract(self):
-        """Call node Math (ShaderNodeMath)
+        """ fract
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'FRACT'
+            v = float.fract() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'FRACT' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='FRACT').value
 
     def modulo(self, value1=None):
-        """Call node Math (ShaderNodeMath)
+        """ modulo
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'MODULO'
+            v = float.modulo(value1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'MODULO' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, operation='MODULO').value
 
     def wrap(self, value1=None, value2=None):
-        """Call node Math (ShaderNodeMath)
+        """ wrap
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
-            value2         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'WRAP'
+            v = float.wrap(value1, value2) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+            - value2 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'WRAP' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP').value
 
     def snap(self, value1=None):
-        """Call node Math (ShaderNodeMath)
+        """ snap
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'SNAP'
+            v = float.snap(value1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'SNAP' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, operation='SNAP').value
 
     def pingpong(self, value1=None):
-        """Call node Math (ShaderNodeMath)
+        """ pingpong
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'PINGPONG'
+            v = float.pingpong(value1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'PINGPONG' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, operation='PINGPONG').value
 
     def sin(self):
-        """Call node Math (ShaderNodeMath)
+        """ sin
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'SINE'
+            v = float.sin() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'SINE' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='SINE').value
 
     def cos(self):
-        """Call node Math (ShaderNodeMath)
+        """ cos
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'COSINE'
+            v = float.cos() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'COSINE' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='COSINE').value
 
     def tan(self):
-        """Call node Math (ShaderNodeMath)
+        """ tan
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'TANGENT'
+            v = float.tan() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'TANGENT' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='TANGENT').value
 
     def arcsin(self):
-        """Call node Math (ShaderNodeMath)
+        """ arcsin
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'ARCSINE'
+            v = float.arcsin() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'ARCSINE' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='ARCSINE').value
 
     def arccos(self):
-        """Call node Math (ShaderNodeMath)
+        """ arccos
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'ARCCOSINE'
+            v = float.arccos() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'ARCCOSINE' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='ARCCOSINE').value
 
     def arctan(self):
-        """Call node Math (ShaderNodeMath)
+        """ arctan
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'ARCTANGENT'
+            v = float.arctan() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'ARCTANGENT' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='ARCTANGENT').value
 
     def arctan2(self, value1=None):
-        """Call node Math (ShaderNodeMath)
+        """ arctan2
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
-            value1         : Float
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'ARCTAN2'
+            v = float.arctan2(value1) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+            - value1 : Float 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'ARCTAN2' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, value1=value1, operation='ARCTAN2').value
 
     def sinh(self):
-        """Call node Math (ShaderNodeMath)
+        """ sinh
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'SINH'
+            v = float.sinh() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'SINH' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='SINH').value
 
     def cosh(self):
-        """Call node Math (ShaderNodeMath)
+        """ cosh
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'COSH'
+            v = float.cosh() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'COSH' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='COSH').value
 
     def tanh(self):
-        """Call node Math (ShaderNodeMath)
+        """ tanh
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'TANH'
+            v = float.tanh() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'TANH' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='TANH').value
 
     def radians(self):
-        """Call node Math (ShaderNodeMath)
+        """ radians
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'RADIANS'
+            v = float.radians() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'RADIANS' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='RADIANS').value
 
     def degrees(self):
-        """Call node Math (ShaderNodeMath)
+        """ degrees
+        
 
-        Sockets arguments
-        -----------------
-            value0         : Float (self)
+        | Node: Math 
+        
 
-        Fixed parameters
-        ----------------
-            operation      : 'DEGREES'
+            v = float.degrees() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value0 : Float (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - operation : 'DEGREES' 
+        
 
         Returns
-        -------
-            Float
+        =======
+                Float 
         """
 
         return nodes.Math(value0=self, operation='DEGREES').value
 
     def to_integer(self, rounding_mode='ROUND'):
-        """Call node FloatToInteger (FunctionNodeFloatToInt)
+        """ to_integer
+        
 
-        Sockets arguments
-        -----------------
-            float          : Float (self)
+        | Node: FloatToInteger 
+        
 
-        Parameters arguments
-        --------------------
-            rounding_mode  : 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE]
+            v = float.to_integer(rounding_mode) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - float : Float (self) 
+        
+
+            Parameters arguments
+            --------------------
+            - rounding_mode : 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE] 
+        
 
         Returns
-        -------
-            Integer
+        =======
+                Integer 
         """
 
         return nodes.FloatToInteger(float=self, rounding_mode=rounding_mode).integer
 
     def to_string(self, decimals=None):
-        """Call node ValueToString (FunctionNodeValueToString)
+        """ to_string
+        
 
-        Sockets arguments
-        -----------------
-            value          : Float (self)
-            decimals       : Integer
+        | Node: ValueToString 
+        
+
+            v = float.to_string(decimals) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value    : Float (self) 
+            - decimals : Integer 
+        
 
         Returns
-        -------
-            String
+        =======
+                String 
         """
 
         return nodes.ValueToString(value=self, decimals=decimals).string
 
     def color_ramp(self):
-        """Call node Colorramp (ShaderNodeValToRGB)
+        """ color_ramp
+        
 
-        Sockets arguments
-        -----------------
-            fac            : Float (self)
+        | Node: Colorramp 
+        
+
+            v = float.color_ramp() 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - fac : Float (self) 
+        
 
         Returns
-        -------
-            Sockets [color (Color), alpha (Float)]
+        =======
+                Sockets [color (Color), alpha (Float)] 
         """
 
         return nodes.Colorramp(fac=self)
@@ -1235,38 +1996,61 @@ class Float(dsock.Float):
     # Stacked methods
 
     def curve(self, value=None):
-        """Call node FloatCurve (ShaderNodeFloatCurve)
+        """ curve
+        
 
-        Sockets arguments
-        -----------------
-            factor         : Float (self)
-            value          : Float
+        | Node: FloatCurve 
+        
+
+            float.curve(value) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - factor : Float (self) 
+            - value  : Float 
+        
 
         Returns
-        -------
-            self
-
+        =======
+                self 
         """
 
         return self.stack(nodes.FloatCurve(factor=self, value=value))
 
     def clamp(self, min=None, max=None, clamp_type='MINMAX'):
-        """Call node Clamp (ShaderNodeClamp)
+        """ clamp
+        
 
-        Sockets arguments
-        -----------------
-            value          : Float (self)
-            min            : Float
-            max            : Float
+        | Node: Clamp 
+        
 
-        Parameters arguments
-        --------------------
-            clamp_type     : 'MINMAX' in [MINMAX, RANGE]
+            float.clamp(min, max, clamp_type) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - value : Float (self) 
+            - min   : Float 
+            - max   : Float 
+        
+
+            Parameters arguments
+            --------------------
+            - clamp_type : 'MINMAX' in [MINMAX, RANGE] 
+        
 
         Returns
-        -------
-            self
-
+        =======
+                self 
         """
 
         return self.stack(nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type))
