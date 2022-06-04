@@ -11,18 +11,12 @@ from geonodes import nodes
 node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', domain='POINT', label=None)
 ```
 
-
 ### Arguments
-
 
 #### Input sockets
 
-
-
 - **geometry** : _Geometry_
 - **value** : **data_type** dependant
-
-
 
 #### Parameters
 
