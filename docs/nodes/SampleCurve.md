@@ -56,6 +56,6 @@ node = nodes.SampleCurve(curve=None, factor=None, length=None, mode='LENGTH', la
 > Data socket classes implementing this node
 
 
-- [Curve](./sockets/Curve.md) [sample](./sockets/Curve.md#sample) : Method
+- [Curve](../sockets/Curve.md) [sample](../sockets/Curve.md#sample) : Method
 
 

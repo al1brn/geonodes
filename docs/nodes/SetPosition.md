@@ -47,6 +47,6 @@ node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=No
 > Data socket classes implementing this node
 
 
-- [Geometry](./sockets/Geometry.md) [set_position](./sockets/Geometry.md#set_position) : Stacked method
+- [Geometry](../sockets/Geometry.md) [set_position](../sockets/Geometry.md#set_position) : Stacked method
 
 

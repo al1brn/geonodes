@@ -55,6 +55,6 @@ node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None,
 > Data socket classes implementing this node
 
 
-- [Mesh](./sockets/Mesh.md) [to_points](./sockets/Mesh.md#to_points) : Method
+- [Mesh](../sockets/Mesh.md) [to_points](../sockets/Mesh.md#to_points) : Method
 
 

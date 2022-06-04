@@ -63,6 +63,6 @@ node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, ex
 > Data socket classes implementing this node
 
 
-- [Texture](./sockets/Texture.md) [Voronoi](./sockets/Texture.md#voronoi) : Static method
+- [Texture](../sockets/Texture.md) [Voronoi](../sockets/Texture.md#voronoi) : Static method
 
 

@@ -55,6 +55,6 @@ node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, s
 > Data socket classes implementing this node
 
 
-- [Vector](./sockets/Vector.md) [rotate_euler](./sockets/Vector.md#rotate_euler) : Stacked method
+- [Vector](../sockets/Vector.md) [rotate_euler](../sockets/Vector.md#rotate_euler) : Stacked method
 
 

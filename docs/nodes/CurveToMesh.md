@@ -46,6 +46,6 @@ node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None, label=N
 > Data socket classes implementing this node
 
 
-- [Curve](./sockets/Curve.md) [to_mesh](./sockets/Curve.md#to_mesh) : Method
+- [Curve](../sockets/Curve.md) [to_mesh](../sockets/Curve.md#to_mesh) : Method
 
 

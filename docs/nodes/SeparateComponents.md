@@ -48,6 +48,6 @@ node = nodes.SeparateComponents(geometry=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Geometry](./sockets/Geometry.md) [components](./sockets/Geometry.md#components) : Property
+- [Geometry](../sockets/Geometry.md) [components](../sockets/Geometry.md#components) : Property
 
 

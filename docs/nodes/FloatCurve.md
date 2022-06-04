@@ -45,6 +45,6 @@ node = nodes.FloatCurve(factor=None, value=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Float](./sockets/Float.md) [curve](./sockets/Float.md#curve) : Stacked method
+- [Float](../sockets/Float.md) [curve](../sockets/Float.md#curve) : Stacked method
 
 

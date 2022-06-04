@@ -54,6 +54,6 @@ node = nodes.CollectionInfo(collection=None, separate_children=None, reset_child
 > Data socket classes implementing this node
 
 
-- [Collection](./sockets/Collection.md) [info](./sockets/Collection.md#info) : Method
+- [Collection](../sockets/Collection.md) [info](../sockets/Collection.md#info) : Method
 
 

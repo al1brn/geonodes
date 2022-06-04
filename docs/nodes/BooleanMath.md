@@ -53,14 +53,14 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND', label=No
 > Data socket classes implementing this node
 
 
-- [Boolean](./sockets/Boolean.md) [b_and](./sockets/Boolean.md#b_and) : Method
-- [Boolean](./sockets/Boolean.md) [b_not](./sockets/Boolean.md#b_not) : Method
-- [Boolean](./sockets/Boolean.md) [b_or](./sockets/Boolean.md#b_or) : Method
-- [Boolean](./sockets/Boolean.md) [imply](./sockets/Boolean.md#imply) : Method
-- [Boolean](./sockets/Boolean.md) [nand](./sockets/Boolean.md#nand) : Method
-- [Boolean](./sockets/Boolean.md) [nimply](./sockets/Boolean.md#nimply) : Method
-- [Boolean](./sockets/Boolean.md) [nor](./sockets/Boolean.md#nor) : Method
-- [Boolean](./sockets/Boolean.md) [xnor](./sockets/Boolean.md#xnor) : Method
-- [Boolean](./sockets/Boolean.md) [xor](./sockets/Boolean.md#xor) : Method
+- [Boolean](../sockets/Boolean.md) [b_and](../sockets/Boolean.md#b_and) : Method
+- [Boolean](../sockets/Boolean.md) [b_not](../sockets/Boolean.md#b_not) : Method
+- [Boolean](../sockets/Boolean.md) [b_or](../sockets/Boolean.md#b_or) : Method
+- [Boolean](../sockets/Boolean.md) [imply](../sockets/Boolean.md#imply) : Method
+- [Boolean](../sockets/Boolean.md) [nand](../sockets/Boolean.md#nand) : Method
+- [Boolean](../sockets/Boolean.md) [nimply](../sockets/Boolean.md#nimply) : Method
+- [Boolean](../sockets/Boolean.md) [nor](../sockets/Boolean.md#nor) : Method
+- [Boolean](../sockets/Boolean.md) [xnor](../sockets/Boolean.md#xnor) : Method
+- [Boolean](../sockets/Boolean.md) [xor](../sockets/Boolean.md#xor) : Method
 
 

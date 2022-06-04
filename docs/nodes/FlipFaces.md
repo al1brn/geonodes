@@ -45,6 +45,6 @@ node = nodes.FlipFaces(mesh=None, selection=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Mesh](./sockets/Mesh.md) [flip_faces](./sockets/Mesh.md#flip_faces) : Stacked method
+- [Mesh](../sockets/Mesh.md) [flip_faces](../sockets/Mesh.md#flip_faces) : Stacked method
 
 

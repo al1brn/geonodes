@@ -36,7 +36,7 @@ node = nodes.EdgeNeighbors(label=None)
 > Data socket classes implementing this node
 
 
-- [Mesh](./sockets/Mesh.md) [capture_edge_neighbors](./sockets/Mesh.md#capture_edge_neighbors) : Capture attribute
-- [Mesh](./sockets/Mesh.md) [edge_neighbors](./sockets/Mesh.md#edge_neighbors) : Attribute
+- [Mesh](../sockets/Mesh.md) [capture_edge_neighbors](../sockets/Mesh.md#capture_edge_neighbors) : Capture attribute
+- [Mesh](../sockets/Mesh.md) [edge_neighbors](../sockets/Mesh.md#edge_neighbors) : Attribute
 
 

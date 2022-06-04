@@ -55,6 +55,6 @@ node = nodes.SubdivisionSurface(mesh=None, level=None, crease=None, boundary_smo
 > Data socket classes implementing this node
 
 
-- [Mesh](./sockets/Mesh.md) [subdivision_surface](./sockets/Mesh.md#subdivision_surface) : Stacked method
+- [Mesh](../sockets/Mesh.md) [subdivision_surface](../sockets/Mesh.md#subdivision_surface) : Stacked method
 
 

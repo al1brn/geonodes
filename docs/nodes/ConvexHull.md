@@ -44,6 +44,6 @@ node = nodes.ConvexHull(geometry=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Geometry](./sockets/Geometry.md) [convex_hull](./sockets/Geometry.md#convex_hull) : Method
+- [Geometry](../sockets/Geometry.md) [convex_hull](../sockets/Geometry.md#convex_hull) : Method
 
 

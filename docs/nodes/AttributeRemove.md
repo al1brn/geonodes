@@ -45,6 +45,6 @@ node = nodes.AttributeRemove(*attribute, geometry=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Geometry](./sockets/Geometry.md) [attribute_remove](./sockets/Geometry.md#attribute_remove) : Method
+- [Geometry](../sockets/Geometry.md) [attribute_remove](../sockets/Geometry.md#attribute_remove) : Method
 
 

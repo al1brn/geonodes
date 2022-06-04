@@ -55,8 +55,8 @@ node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tole
 > Data socket classes implementing this node
 
 
-- [Mesh](./sockets/Mesh.md) [difference](./sockets/Mesh.md#difference) : Method
-- [Mesh](./sockets/Mesh.md) [intersect](./sockets/Mesh.md#intersect) : Method
-- [Mesh](./sockets/Mesh.md) [union](./sockets/Mesh.md#union) : Method
+- [Mesh](../sockets/Mesh.md) [difference](../sockets/Mesh.md#difference) : Method
+- [Mesh](../sockets/Mesh.md) [intersect](../sockets/Mesh.md#intersect) : Method
+- [Mesh](../sockets/Mesh.md) [union](../sockets/Mesh.md#union) : Method
 
 

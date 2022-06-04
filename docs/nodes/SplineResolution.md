@@ -36,7 +36,7 @@ node = nodes.SplineResolution(label=None)
 > Data socket classes implementing this node
 
 
-- [Spline](./sockets/Spline.md) [capture_resolution](./sockets/Spline.md#capture_resolution) : Capture attribute
-- [Spline](./sockets/Spline.md) [resolution](./sockets/Spline.md#resolution) : Attribute
+- [Spline](../sockets/Spline.md) [capture_resolution](../sockets/Spline.md#capture_resolution) : Capture attribute
+- [Spline](../sockets/Spline.md) [resolution](../sockets/Spline.md#resolution) : Attribute
 
 

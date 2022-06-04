@@ -46,6 +46,6 @@ node = nodes.ReplaceString(string=None, find=None, replace=None, label=None)
 > Data socket classes implementing this node
 
 
-- [String](./sockets/String.md) [replace](./sockets/String.md#replace) : Stacked method
+- [String](../sockets/String.md) [replace](../sockets/String.md#replace) : Stacked method
 
 

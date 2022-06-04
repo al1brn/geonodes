@@ -45,6 +45,6 @@ node = nodes.ValueToString(value=None, decimals=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Float](./sockets/Float.md) [to_string](./sockets/Float.md#to_string) : Method
+- [Float](../sockets/Float.md) [to_string](../sockets/Float.md#to_string) : Method
 
 

@@ -48,6 +48,6 @@ node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None,
 > Data socket classes implementing this node
 
 
-- [Curve](./sockets/Curve.md) [Star](./sockets/Curve.md#star) : Constructor
+- [Curve](../sockets/Curve.md) [Star](../sockets/Curve.md#star) : Constructor
 
 

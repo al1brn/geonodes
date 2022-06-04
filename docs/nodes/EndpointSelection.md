@@ -45,7 +45,7 @@ node = nodes.EndpointSelection(start_size=None, end_size=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Spline](./sockets/Spline.md) [capture_endpoint_selection](./sockets/Spline.md#capture_endpoint_selection) : Capture attribute
-- [Spline](./sockets/Spline.md) [endpoint_selection](./sockets/Spline.md#endpoint_selection) : Attribute
+- [Spline](../sockets/Spline.md) [capture_endpoint_selection](../sockets/Spline.md#capture_endpoint_selection) : Capture attribute
+- [Spline](../sockets/Spline.md) [endpoint_selection](../sockets/Spline.md#endpoint_selection) : Attribute
 
 

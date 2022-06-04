@@ -66,8 +66,8 @@ node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', do
 > Data socket classes implementing this node
 
 
-- [Float](./sockets/Float.md) [accumulate_field](./sockets/Float.md#accumulate_field) : Method
-- [Integer](./sockets/Integer.md) [accumulate_field](./sockets/Integer.md#accumulate_field) : Method
-- [Vector](./sockets/Vector.md) [accumulate_field](./sockets/Vector.md#accumulate_field) : Method
+- [Float](../sockets/Float.md) [accumulate_field](../sockets/Float.md#accumulate_field) : Method
+- [Integer](../sockets/Integer.md) [accumulate_field](../sockets/Integer.md#accumulate_field) : Method
+- [Vector](../sockets/Vector.md) [accumulate_field](../sockets/Vector.md#accumulate_field) : Method
 
 

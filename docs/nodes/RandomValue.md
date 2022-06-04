@@ -66,9 +66,9 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 > Data socket classes implementing this node
 
 
-- [Boolean](./sockets/Boolean.md) [Random](./sockets/Boolean.md#random) : Constructor
-- [Float](./sockets/Float.md) [Random](./sockets/Float.md#random) : Constructor
-- [Integer](./sockets/Integer.md) [Random](./sockets/Integer.md#random) : Constructor
-- [Vector](./sockets/Vector.md) [Random](./sockets/Vector.md#random) : Constructor
+- [Boolean](../sockets/Boolean.md) [Random](../sockets/Boolean.md#random) : Constructor
+- [Float](../sockets/Float.md) [Random](../sockets/Float.md#random) : Constructor
+- [Integer](../sockets/Integer.md) [Random](../sockets/Integer.md#random) : Constructor
+- [Vector](../sockets/Vector.md) [Random](../sockets/Vector.md#random) : Constructor
 
 

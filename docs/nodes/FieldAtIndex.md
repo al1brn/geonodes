@@ -64,10 +64,10 @@ node = nodes.FieldAtIndex(index=None, value=None, data_type='FLOAT', domain='POI
 > Data socket classes implementing this node
 
 
-- [Boolean](./sockets/Boolean.md) [field_at_index](./sockets/Boolean.md#field_at_index) : Method
-- [Color](./sockets/Color.md) [field_at_index](./sockets/Color.md#field_at_index) : Method
-- [Float](./sockets/Float.md) [field_at_index](./sockets/Float.md#field_at_index) : Method
-- [Integer](./sockets/Integer.md) [field_at_index](./sockets/Integer.md#field_at_index) : Method
-- [Vector](./sockets/Vector.md) [field_at_index](./sockets/Vector.md#field_at_index) : Method
+- [Boolean](../sockets/Boolean.md) [field_at_index](../sockets/Boolean.md#field_at_index) : Method
+- [Color](../sockets/Color.md) [field_at_index](../sockets/Color.md#field_at_index) : Method
+- [Float](../sockets/Float.md) [field_at_index](../sockets/Float.md#field_at_index) : Method
+- [Integer](../sockets/Integer.md) [field_at_index](../sockets/Integer.md#field_at_index) : Method
+- [Vector](../sockets/Vector.md) [field_at_index](../sockets/Vector.md#field_at_index) : Method
 
 

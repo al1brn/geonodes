@@ -46,6 +46,6 @@ node = nodes.ReplaceMaterial(geometry=None, old=None, new=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Geometry](./sockets/Geometry.md) [replace_material](./sockets/Geometry.md#replace_material) : Stacked method
+- [Geometry](../sockets/Geometry.md) [replace_material](../sockets/Geometry.md#replace_material) : Stacked method
 
 

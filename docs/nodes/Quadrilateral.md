@@ -62,6 +62,6 @@ node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width
 > Data socket classes implementing this node
 
 
-- [Curve](./sockets/Curve.md) [Quadrilateral](./sockets/Curve.md#quadrilateral) : Constructor
+- [Curve](../sockets/Curve.md) [Quadrilateral](../sockets/Curve.md#quadrilateral) : Constructor
 
 

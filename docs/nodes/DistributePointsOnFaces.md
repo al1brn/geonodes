@@ -60,6 +60,6 @@ node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=Non
 > Data socket classes implementing this node
 
 
-- [Mesh](./sockets/Mesh.md) [distribute_points_on_faces](./sockets/Mesh.md#distribute_points_on_faces) : Method
+- [Mesh](../sockets/Mesh.md) [distribute_points_on_faces](../sockets/Mesh.md#distribute_points_on_faces) : Method
 
 

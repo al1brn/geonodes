@@ -36,8 +36,8 @@ node = nodes.ID(label=None)
 > Data socket classes implementing this node
 
 
-- [Geometry](./sockets/Geometry.md) [ID](./sockets/Geometry.md#id) : Attribute
-- [Geometry](./sockets/Geometry.md) [capture_ID](./sockets/Geometry.md#capture_id) : Capture attribute
-- [Spline](./sockets/Spline.md) [spline_ID](./sockets/Spline.md#spline_id) : Attribute
+- [Geometry](../sockets/Geometry.md) [ID](../sockets/Geometry.md#id) : Attribute
+- [Geometry](../sockets/Geometry.md) [capture_ID](../sockets/Geometry.md#capture_id) : Capture attribute
+- [Spline](../sockets/Spline.md) [spline_ID](../sockets/Spline.md#spline_id) : Attribute
 
 

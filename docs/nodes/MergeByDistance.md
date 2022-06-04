@@ -46,6 +46,6 @@ node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, label
 > Data socket classes implementing this node
 
 
-- [Geometry](./sockets/Geometry.md) [merge_by_distance](./sockets/Geometry.md#merge_by_distance) : Stacked method
+- [Geometry](../sockets/Geometry.md) [merge_by_distance](../sockets/Geometry.md#merge_by_distance) : Stacked method
 
 

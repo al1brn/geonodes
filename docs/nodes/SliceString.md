@@ -46,6 +46,6 @@ node = nodes.SliceString(string=None, position=None, length=None, label=None)
 > Data socket classes implementing this node
 
 
-- [String](./sockets/String.md) [slice](./sockets/String.md#slice) : Method
+- [String](../sockets/String.md) [slice](../sockets/String.md#slice) : Method
 
 

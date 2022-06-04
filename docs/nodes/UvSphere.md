@@ -46,6 +46,6 @@ node = nodes.UvSphere(segments=None, rings=None, radius=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Mesh](./sockets/Mesh.md) [UVSphere](./sockets/Mesh.md#uvsphere) : Constructor
+- [Mesh](../sockets/Mesh.md) [UVSphere](../sockets/Mesh.md#uvsphere) : Constructor
 
 

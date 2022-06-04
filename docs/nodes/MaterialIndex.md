@@ -36,7 +36,7 @@ node = nodes.MaterialIndex(label=None)
 > Data socket classes implementing this node
 
 
-- [Mesh](./sockets/Mesh.md) [capture_material_index](./sockets/Mesh.md#capture_material_index) : Capture attribute
-- [Mesh](./sockets/Mesh.md) [material_index](./sockets/Mesh.md#material_index) : Attribute
+- [Mesh](../sockets/Mesh.md) [capture_material_index](../sockets/Mesh.md#capture_material_index) : Capture attribute
+- [Mesh](../sockets/Mesh.md) [material_index](../sockets/Mesh.md#material_index) : Attribute
 
 

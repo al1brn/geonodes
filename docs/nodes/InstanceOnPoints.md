@@ -50,6 +50,6 @@ node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_i
 > Data socket classes implementing this node
 
 
-- [Points](./sockets/Points.md) [instance_on_points](./sockets/Points.md#instance_on_points) : Method
+- [Points](../sockets/Points.md) [instance_on_points](../sockets/Points.md#instance_on_points) : Method
 
 

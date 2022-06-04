@@ -36,7 +36,7 @@ node = nodes.IsShadeSmooth(label=None)
 > Data socket classes implementing this node
 
 
-- [Mesh](./sockets/Mesh.md) [capture_shade_smooth](./sockets/Mesh.md#capture_shade_smooth) : Capture attribute
-- [Mesh](./sockets/Mesh.md) [shade_smooth](./sockets/Mesh.md#shade_smooth) : Attribute
+- [Mesh](../sockets/Mesh.md) [capture_shade_smooth](../sockets/Mesh.md#capture_shade_smooth) : Capture attribute
+- [Mesh](../sockets/Mesh.md) [shade_smooth](../sockets/Mesh.md#shade_smooth) : Attribute
 
 

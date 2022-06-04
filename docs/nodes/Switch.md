@@ -65,15 +65,15 @@ node = nodes.Switch(switch0=None, switch1=None, false=None, true=None, input_typ
 > Data socket classes implementing this node
 
 
-- [Boolean](./sockets/Boolean.md) [switch](./sockets/Boolean.md#switch) : Method
-- [Collection](./sockets/Collection.md) [switch](./sockets/Collection.md#switch) : Method
-- [Float](./sockets/Float.md) [switch](./sockets/Float.md#switch) : Method
-- [Geometry](./sockets/Geometry.md) [switch](./sockets/Geometry.md#switch) : Method
-- [Image](./sockets/Image.md) [switch](./sockets/Image.md#switch) : Method
-- [Integer](./sockets/Integer.md) [switch](./sockets/Integer.md#switch) : Method
-- [Material](./sockets/Material.md) [switch](./sockets/Material.md#switch) : Method
-- [Object](./sockets/Object.md) [switch](./sockets/Object.md#switch) : Method
-- [String](./sockets/String.md) [switch](./sockets/String.md#switch) : Method
-- [Texture](./sockets/Texture.md) [switch](./sockets/Texture.md#switch) : Method
+- [Boolean](../sockets/Boolean.md) [switch](../sockets/Boolean.md#switch) : Method
+- [Collection](../sockets/Collection.md) [switch](../sockets/Collection.md#switch) : Method
+- [Float](../sockets/Float.md) [switch](../sockets/Float.md#switch) : Method
+- [Geometry](../sockets/Geometry.md) [switch](../sockets/Geometry.md#switch) : Method
+- [Image](../sockets/Image.md) [switch](../sockets/Image.md#switch) : Method
+- [Integer](../sockets/Integer.md) [switch](../sockets/Integer.md#switch) : Method
+- [Material](../sockets/Material.md) [switch](../sockets/Material.md#switch) : Method
+- [Object](../sockets/Object.md) [switch](../sockets/Object.md#switch) : Method
+- [String](../sockets/String.md) [switch](../sockets/String.md#switch) : Method
+- [Texture](../sockets/Texture.md) [switch](../sockets/Texture.md#switch) : Method
 
 

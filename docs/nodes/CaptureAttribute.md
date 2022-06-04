@@ -11,12 +11,18 @@ from geonodes import nodes
 node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', domain='POINT', label=None)
 ```
 
+
 ### Arguments
+
 
 #### Input sockets
 
+
+
 - **geometry** : _Geometry_
 - **value** : **data_type** dependant
+
+
 
 #### Parameters
 
@@ -59,10 +65,10 @@ node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', doma
 > Data socket classes implementing this node
 
 
-- [Boolean](./sockets/Boolean.md) [capture_attribute](./sockets/Boolean.md#capture_attribute) : Method
-- [Color](./sockets/Color.md) [capture_attribute](./sockets/Color.md#capture_attribute) : Method
-- [Float](./sockets/Float.md) [capture_attribute](./sockets/Float.md#capture_attribute) : Method
-- [Integer](./sockets/Integer.md) [capture_attribute](./sockets/Integer.md#capture_attribute) : Method
-- [Vector](./sockets/Vector.md) [capture_attribute](./sockets/Vector.md#capture_attribute) : Method
+- [Boolean](../sockets/Boolean.md) [capture_attribute](../sockets/Boolean.md#capture_attribute) : Method
+- [Color](../sockets/Color.md) [capture_attribute](../sockets/Color.md#capture_attribute) : Method
+- [Float](../sockets/Float.md) [capture_attribute](../sockets/Float.md#capture_attribute) : Method
+- [Integer](../sockets/Integer.md) [capture_attribute](../sockets/Integer.md#capture_attribute) : Method
+- [Vector](../sockets/Vector.md) [capture_attribute](../sockets/Vector.md#capture_attribute) : Method
 
 

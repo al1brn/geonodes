@@ -36,7 +36,7 @@ node = nodes.CurveTangent(label=None)
 > Data socket classes implementing this node
 
 
-- [Spline](./sockets/Spline.md) [capture_tangent](./sockets/Spline.md#capture_tangent) : Capture attribute
-- [Spline](./sockets/Spline.md) [tangent](./sockets/Spline.md#tangent) : Attribute
+- [Spline](../sockets/Spline.md) [capture_tangent](../sockets/Spline.md#capture_tangent) : Capture attribute
+- [Spline](../sockets/Spline.md) [tangent](../sockets/Spline.md#tangent) : Attribute
 
 

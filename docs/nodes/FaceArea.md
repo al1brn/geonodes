@@ -36,7 +36,7 @@ node = nodes.FaceArea(label=None)
 > Data socket classes implementing this node
 
 
-- [Mesh](./sockets/Mesh.md) [capture_face_area](./sockets/Mesh.md#capture_face_area) : Capture attribute
-- [Mesh](./sockets/Mesh.md) [face_area](./sockets/Mesh.md#face_area) : Attribute
+- [Mesh](../sockets/Mesh.md) [capture_face_area](../sockets/Mesh.md#capture_face_area) : Capture attribute
+- [Mesh](../sockets/Mesh.md) [face_area](../sockets/Mesh.md#face_area) : Attribute
 
 

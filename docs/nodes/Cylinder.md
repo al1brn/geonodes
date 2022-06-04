@@ -59,6 +59,6 @@ node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, rad
 > Data socket classes implementing this node
 
 
-- [Mesh](./sockets/Mesh.md) [Cylinder](./sockets/Mesh.md#cylinder) : Constructor
+- [Mesh](../sockets/Mesh.md) [Cylinder](../sockets/Mesh.md#cylinder) : Constructor
 
 

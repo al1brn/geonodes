@@ -54,6 +54,6 @@ node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode=
 > Data socket classes implementing this node
 
 
-- [Curve](./sockets/Curve.md) [set_handles](./sockets/Curve.md#set_handles) : Stacked method
+- [Curve](../sockets/Curve.md) [set_handles](../sockets/Curve.md#set_handles) : Stacked method
 
 

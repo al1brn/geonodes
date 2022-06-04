@@ -36,7 +36,7 @@ node = nodes.Position(label=None)
 > Data socket classes implementing this node
 
 
-- [Geometry](./sockets/Geometry.md) [capture_position](./sockets/Geometry.md#capture_position) : Capture attribute
-- [Geometry](./sockets/Geometry.md) [position](./sockets/Geometry.md#position) : Attribute
+- [Geometry](../sockets/Geometry.md) [capture_position](../sockets/Geometry.md#capture_position) : Capture attribute
+- [Geometry](../sockets/Geometry.md) [position](../sockets/Geometry.md#position) : Attribute
 
 

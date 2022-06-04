@@ -38,9 +38,9 @@ node = nodes.SplineParameter(label=None)
 > Data socket classes implementing this node
 
 
-- [Spline](./sockets/Spline.md) [capture_parameter](./sockets/Spline.md#capture_parameter) : Capture attribute
-- [Spline](./sockets/Spline.md) [factor](./sockets/Spline.md#factor) : Attribute
-- [Spline](./sockets/Spline.md) [parameter_index](./sockets/Spline.md#parameter_index) : Attribute
-- [Spline](./sockets/Spline.md) [parameter_length](./sockets/Spline.md#parameter_length) : Attribute
+- [Spline](../sockets/Spline.md) [capture_parameter](../sockets/Spline.md#capture_parameter) : Capture attribute
+- [Spline](../sockets/Spline.md) [factor](../sockets/Spline.md#factor) : Attribute
+- [Spline](../sockets/Spline.md) [parameter_index](../sockets/Spline.md#parameter_index) : Attribute
+- [Spline](../sockets/Spline.md) [parameter_length](../sockets/Spline.md#parameter_length) : Attribute
 
 

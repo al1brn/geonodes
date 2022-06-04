@@ -45,6 +45,6 @@ node = nodes.IcoSphere(radius=None, subdivisions=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Mesh](./sockets/Mesh.md) [IcoSphere](./sockets/Mesh.md#icosphere) : Constructor
+- [Mesh](../sockets/Mesh.md) [IcoSphere](../sockets/Mesh.md#icosphere) : Constructor
 
 

@@ -45,6 +45,6 @@ node = nodes.ReverseCurve(curve=None, selection=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Curve](./sockets/Curve.md) [reverse](./sockets/Curve.md#reverse) : Stacked method
+- [Curve](../sockets/Curve.md) [reverse](../sockets/Curve.md#reverse) : Stacked method
 
 

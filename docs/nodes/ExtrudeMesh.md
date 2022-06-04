@@ -58,6 +58,6 @@ node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=No
 > Data socket classes implementing this node
 
 
-- [Mesh](./sockets/Mesh.md) [extrude](./sockets/Mesh.md#extrude) : Method
+- [Mesh](../sockets/Mesh.md) [extrude](../sockets/Mesh.md#extrude) : Method
 
 

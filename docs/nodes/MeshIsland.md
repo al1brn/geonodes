@@ -37,7 +37,7 @@ node = nodes.MeshIsland(label=None)
 > Data socket classes implementing this node
 
 
-- [Mesh](./sockets/Mesh.md) [capture_island](./sockets/Mesh.md#capture_island) : Capture attribute
-- [Mesh](./sockets/Mesh.md) [island](./sockets/Mesh.md#island) : Attribute
+- [Mesh](../sockets/Mesh.md) [capture_island](../sockets/Mesh.md#capture_island) : Capture attribute
+- [Mesh](../sockets/Mesh.md) [island](../sockets/Mesh.md#island) : Attribute
 
 

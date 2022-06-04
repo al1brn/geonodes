@@ -57,6 +57,6 @@ node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=Non
 > Data socket classes implementing this node
 
 
-- [Geometry](./sockets/Geometry.md) [scale_elements](./sockets/Geometry.md#scale_elements) : Stacked method
+- [Geometry](../sockets/Geometry.md) [scale_elements](../sockets/Geometry.md#scale_elements) : Stacked method
 
 

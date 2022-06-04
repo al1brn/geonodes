@@ -47,6 +47,6 @@ node = nodes.InstancesToPoints(instances=None, selection=None, position=None, ra
 > Data socket classes implementing this node
 
 
-- [Instances](./sockets/Instances.md) [to_points](./sockets/Instances.md#to_points) : Method
+- [Instances](../sockets/Instances.md) [to_points](../sockets/Instances.md#to_points) : Method
 
 

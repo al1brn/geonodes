@@ -44,6 +44,6 @@ node = nodes.JoinGeometry(*geometry, label=None)
 > Data socket classes implementing this node
 
 
-- [Geometry](./sockets/Geometry.md) [join](./sockets/Geometry.md#join) : Method
+- [Geometry](../sockets/Geometry.md) [join](../sockets/Geometry.md#join) : Method
 
 

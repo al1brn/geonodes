@@ -54,6 +54,6 @@ node = nodes.GeometryProximity(target=None, source_position=None, target_element
 > Data socket classes implementing this node
 
 
-- [Geometry](./sockets/Geometry.md) [proximity](./sockets/Geometry.md#proximity) : Method
+- [Geometry](../sockets/Geometry.md) [proximity](../sockets/Geometry.md#proximity) : Method
 
 

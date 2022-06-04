@@ -39,10 +39,10 @@ node = nodes.EdgeVertices(label=None)
 > Data socket classes implementing this node
 
 
-- [Mesh](./sockets/Mesh.md) [capture_edge_vertices](./sockets/Mesh.md#capture_edge_vertices) : Capture attribute
-- [Mesh](./sockets/Mesh.md) [edge_vertices_index1](./sockets/Mesh.md#edge_vertices_index1) : Attribute
-- [Mesh](./sockets/Mesh.md) [edge_vertices_index2](./sockets/Mesh.md#edge_vertices_index2) : Attribute
-- [Mesh](./sockets/Mesh.md) [edge_vertices_position1](./sockets/Mesh.md#edge_vertices_position1) : Attribute
-- [Mesh](./sockets/Mesh.md) [edge_vertices_position2](./sockets/Mesh.md#edge_vertices_position2) : Attribute
+- [Mesh](../sockets/Mesh.md) [capture_edge_vertices](../sockets/Mesh.md#capture_edge_vertices) : Capture attribute
+- [Mesh](../sockets/Mesh.md) [edge_vertices_index1](../sockets/Mesh.md#edge_vertices_index1) : Attribute
+- [Mesh](../sockets/Mesh.md) [edge_vertices_index2](../sockets/Mesh.md#edge_vertices_index2) : Attribute
+- [Mesh](../sockets/Mesh.md) [edge_vertices_position1](../sockets/Mesh.md#edge_vertices_position1) : Attribute
+- [Mesh](../sockets/Mesh.md) [edge_vertices_position2](../sockets/Mesh.md#edge_vertices_position2) : Attribute
 
 

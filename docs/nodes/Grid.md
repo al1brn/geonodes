@@ -47,6 +47,6 @@ node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, la
 > Data socket classes implementing this node
 
 
-- [Mesh](./sockets/Mesh.md) [Grid](./sockets/Mesh.md#grid) : Constructor
+- [Mesh](../sockets/Mesh.md) [Grid](../sockets/Mesh.md#grid) : Constructor
 
 

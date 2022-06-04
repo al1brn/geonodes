@@ -70,7 +70,7 @@ node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_
 > Data socket classes implementing this node
 
 
-- [Float](./sockets/Float.md) [map_range](./sockets/Float.md#map_range) : Method
-- [Vector](./sockets/Vector.md) [map_range](./sockets/Vector.md#map_range) : Method
+- [Float](../sockets/Float.md) [map_range](../sockets/Float.md#map_range) : Method
+- [Vector](../sockets/Vector.md) [map_range](../sockets/Vector.md#map_range) : Method
 
 

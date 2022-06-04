@@ -46,6 +46,6 @@ node = nodes.SeparateRgb(image=None, label=None)
 > Data socket classes implementing this node
 
 
-- [Color](./sockets/Color.md) [separate](./sockets/Color.md#separate) : Property
+- [Color](../sockets/Color.md) [separate](../sockets/Color.md#separate) : Property
 
 

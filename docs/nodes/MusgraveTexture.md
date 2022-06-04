@@ -60,6 +60,6 @@ node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimen
 > Data socket classes implementing this node
 
 
-- [Texture](./sockets/Texture.md) [Musgrave](./sockets/Texture.md#musgrave) : Static method
+- [Texture](../sockets/Texture.md) [Musgrave](../sockets/Texture.md#musgrave) : Static method
 
 
