@@ -8,23 +8,30 @@ logger = logging.Logger('geonodes')
 # ==============================================================================================================
 # Data class Instances
 
-class Instances(gn.Mesh):
-    """ Data socket Instances
+class Instances(Geometry):
+    """ Class Instances
+    
+
+    | Inherits from: Geometry 
+    
 
     Attributes
-    ----------
-        instance_index            : Integer   = capture_index(domain='INSTANCE')
+    ==========
+    - instance_index : Integer = capture_index(domain='INSTANCE') 
+    
 
     Methods
-    -------
-        to_points                 : points       (Points)
+    =======
+    - to_points : points (Points) 
+    
 
     Stacked methods
-    ---------------
-        rotate                    : Instances
-        scale                     : Instances
-        translate                 : Instances
+    ===============
+    - rotate    : Instances 
+    - scale     : Instances 
+    - translate : Instances 
     """
+
 
     # ----------------------------------------------------------------------------------------------------
     # Attributes

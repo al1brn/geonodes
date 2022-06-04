@@ -9,75 +9,94 @@ logger = logging.Logger('geonodes')
 # Data class Geometry
 
 class Geometry(dsock.Geometry):
-    """ Data socket Geometry
+    """ Class Geometry
+    
+
+    | Inherits from: dsock.Geometry 
+    
+
+    Static methods
+    ==============
+    - is_viewport : is_viewport (Boolean) 
+    
 
     Properties
-    ----------
-        bound_box                 : Sockets      [bounding_box (Geometry), min (Vector), max (Vector)]
-        components                : Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+    ==========
+    - bound_box  : Sockets      [bounding_box (Geometry), min (Vector), max (Vector)] 
+    - components : Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances
+      (Instances)] 
+    
 
-    Attribute captures
-    ------------------
-        capture_ID                : ID           (Integer)
-        capture_index             : index        (Integer)
-        capture_is_viewport       : is_viewport  (Boolean)
-        capture_normal            : normal       (Vector)
-        capture_position          : position     (Vector)
-        capture_tangent           : tangent      (Vector)
+    Attribute capture
+    =================
+    - capture_ID       : ID (Integer) 
+    - capture_index    : index (Integer) 
+    - capture_normal   : normal (Vector) 
+    - capture_position : position (Vector) 
+    - capture_radius   : radius (Float) 
+    
 
     Attributes
-    ----------
-        corner_normal             : Vector    = capture_normal(domain='CORNER')
-        corner_tangent            : Vector    = capture_tangent(domain='CORNER')
-        curve_normal              : Vector    = capture_normal(domain='CURVE')
-        curve_tangent             : Vector    = capture_tangent(domain='CURVE')
-        edge_normal               : Vector    = capture_normal(domain='EDGE')
-        edge_tangent              : Vector    = capture_tangent(domain='EDGE')
-        face_normal               : Vector    = capture_normal(domain='FACE')
-        face_tangent              : Vector    = capture_tangent(domain='FACE')
-        instance_normal           : Vector    = capture_normal(domain='INSTANCE')
-        instance_tangent          : Vector    = capture_tangent(domain='INSTANCE')
-        point_ID                  : Integer   = capture_ID(domain='POINT')
-        point_index               : Integer   = capture_index(domain='POINT')
-        point_is_viewport         : Boolean   = capture_is_viewport(domain='POINT')
-        point_normal              : Vector    = capture_normal(domain='POINT')
-        point_tangent             : Vector    = capture_tangent(domain='POINT')
-        position                  : Vector    = capture_position(domain='POINT')
+    ==========
+    - ID       : Integer = capture_ID(domain='POINT') 
+    - index    : Integer = capture_index(domain='POINT') 
+    - normal   : Vector = capture_normal(domain='FACE') 
+    - position : Vector = capture_position(domain='POINT') 
+    - radius   : Float = capture_radius(domain='POINT') 
+    
 
     Methods
-    -------
-        attribute_domain_size     : Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
-        attribute_remove          : geometry     (Geometry)
-        components                : Sockets      [selection (Geometry), inverted (Geometry)]
-        convex_hull               : convex_hull  (Geometry)
-        join                      : geometry     (Geometry)
-        proximity                 : Sockets      [position (Vector), distance (Float)]
-        switch                    : output       (Geometry)
-        to_instance               : instances    (Instances)
-        transfer_boolean          : attribute    (Boolean)
-        transfer_color            : attribute    (Color)
-        transfer_float            : attribute    (Float)
-        transfer_integer          : attribute    (Integer)
-        transfer_vector           : attribute    (Vector)
+    =======
+    - attribute_domain_size : Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer),
+      face_corner_count (Integer), spline_count (Integer), instance_count (Integer)] 
+    - attribute_remove      : geometry (Geometry) 
+    - components            : Sockets      [selection (Geometry), inverted (Geometry)] 
+    - convex_hull           : convex_hull (Geometry) 
+    - join                  : geometry (Geometry) 
+    - proximity             : Sockets      [position (Vector), distance (Float)] 
+    - switch                : output (Geometry) 
+    - to_instance           : instances (Instances) 
+    - transfer_boolean      : attribute (Boolean) 
+    - transfer_color        : attribute (Color) 
+    - transfer_float        : attribute (Float) 
+    - transfer_integer      : attribute (Integer) 
+    - transfer_vector       : attribute (Vector) 
+    
 
     Stacked methods
-    ---------------
-        delete_geometry           : Geometry
-        merge_by_distance         : Geometry
-        realize_instances         : Geometry
-        replace_material          : Geometry
-        scale_elements            : Geometry
-        set_ID                    : Geometry
-        set_material              : Geometry
-        set_material_index        : Geometry
-        set_position              : Geometry
-        set_shade_smooth          : Geometry
-        transform                 : Geometry
+    ===============
+    - delete_geometry    : Geometry 
+    - merge_by_distance  : Geometry 
+    - realize_instances  : Geometry 
+    - replace_material   : Geometry 
+    - scale_elements     : Geometry 
+    - set_ID             : Geometry 
+    - set_material       : Geometry 
+    - set_material_index : Geometry 
+    - set_position       : Geometry 
+    - set_shade_smooth   : Geometry 
+    - transform          : Geometry 
     """
+
 
     def reset_properties(self):
         self.bound_box_ = None
         self.components_ = None
+
+    # ----------------------------------------------------------------------------------------------------
+    # Static methods
+
+    @staticmethod
+    def is_viewport():
+        """Call node IsViewport (GeometryNodeIsViewport)
+
+        Returns
+        -------
+            Boolean
+        """
+
+        return nodes.IsViewport().is_viewport
+
 
     # ----------------------------------------------------------------------------------------------------
     # Properties
@@ -152,37 +171,7 @@ class Geometry(dsock.Geometry):
 
 
     # ----------------------------------------------------------------------------------------------------
-    # Attribute captures
-
-    def capture_normal(self, domain='POINT'):
-        """Call node Normal (GeometryNodeInputNormal)
-
-        Returns
-        -------
-            Vector
-        """
-
-        attr_name = 'capture_normal_' + domain
-        if not hasattr(self, attr_name):
-            node = nodes.Normal()
-            node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).normal
-
-    def capture_tangent(self, domain='POINT'):
-        """Call node CurveTangent (GeometryNodeInputTangent)
-
-        Returns
-        -------
-            Vector
-        """
-
-        attr_name = 'capture_tangent_' + domain
-        if not hasattr(self, attr_name):
-            node = nodes.CurveTangent()
-            node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).tangent
+    # Attribute capture
 
     def capture_ID(self, domain='POINT'):
         """Call node ID (GeometryNodeInputID)
@@ -214,6 +203,21 @@ class Geometry(dsock.Geometry):
             setattr(self, attr_name, node)
         return getattr(self, attr_name).index
 
+    def capture_normal(self, domain='FACE'):
+        """Call node Normal (GeometryNodeInputNormal)
+
+        Returns
+        -------
+            Vector
+        """
+
+        attr_name = 'capture_normal_' + domain
+        if not hasattr(self, attr_name):
+            node = nodes.Normal()
+            node.as_attribute(owning_socket=self, domain=domain)
+            setattr(self, attr_name, node)
+        return getattr(self, attr_name).normal
+
     def capture_position(self, domain='POINT'):
         """Call node Position (GeometryNodeInputPosition)
 
@@ -229,159 +233,27 @@ class Geometry(dsock.Geometry):
             setattr(self, attr_name, node)
         return getattr(self, attr_name).position
 
-    def capture_is_viewport(self, domain='POINT'):
-        """Call node IsViewport (GeometryNodeIsViewport)
+    def capture_radius(self, domain='POINT'):
+        """Call node Radius (GeometryNodeInputRadius)
 
         Returns
         -------
-            Boolean
+            Float
         """
 
-        attr_name = 'capture_is_viewport_' + domain
+        attr_name = 'capture_radius_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.IsViewport()
+            node = nodes.Radius()
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
-        return getattr(self, attr_name).is_viewport
+        return getattr(self, attr_name).radius
 
 
     # ----------------------------------------------------------------------------------------------------
     # Attributes
 
     @property
-    def point_normal(self):
-        """Call node Normal (GeometryNodeInputNormal)
-
-        Returns
-        -------
-            Vector
-        """
-
-        return self.capture_normal(domain='POINT')
-
-    @property
-    def edge_normal(self):
-        """Call node Normal (GeometryNodeInputNormal)
-
-        Returns
-        -------
-            Vector
-        """
-
-        return self.capture_normal(domain='EDGE')
-
-    @property
-    def face_normal(self):
-        """Call node Normal (GeometryNodeInputNormal)
-
-        Returns
-        -------
-            Vector
-        """
-
-        return self.capture_normal(domain='FACE')
-
-    @property
-    def corner_normal(self):
-        """Call node Normal (GeometryNodeInputNormal)
-
-        Returns
-        -------
-            Vector
-        """
-
-        return self.capture_normal(domain='CORNER')
-
-    @property
-    def curve_normal(self):
-        """Call node Normal (GeometryNodeInputNormal)
-
-        Returns
-        -------
-            Vector
-        """
-
-        return self.capture_normal(domain='CURVE')
-
-    @property
-    def instance_normal(self):
-        """Call node Normal (GeometryNodeInputNormal)
-
-        Returns
-        -------
-            Vector
-        """
-
-        return self.capture_normal(domain='INSTANCE')
-
-    @property
-    def point_tangent(self):
-        """Call node CurveTangent (GeometryNodeInputTangent)
-
-        Returns
-        -------
-            Vector
-        """
-
-        return self.capture_tangent(domain='POINT')
-
-    @property
-    def edge_tangent(self):
-        """Call node CurveTangent (GeometryNodeInputTangent)
-
-        Returns
-        -------
-            Vector
-        """
-
-        return self.capture_tangent(domain='EDGE')
-
-    @property
-    def face_tangent(self):
-        """Call node CurveTangent (GeometryNodeInputTangent)
-
-        Returns
-        -------
-            Vector
-        """
-
-        return self.capture_tangent(domain='FACE')
-
-    @property
-    def corner_tangent(self):
-        """Call node CurveTangent (GeometryNodeInputTangent)
-
-        Returns
-        -------
-            Vector
-        """
-
-        return self.capture_tangent(domain='CORNER')
-
-    @property
-    def curve_tangent(self):
-        """Call node CurveTangent (GeometryNodeInputTangent)
-
-        Returns
-        -------
-            Vector
-        """
-
-        return self.capture_tangent(domain='CURVE')
-
-    @property
-    def instance_tangent(self):
-        """Call node CurveTangent (GeometryNodeInputTangent)
-
-        Returns
-        -------
-            Vector
-        """
-
-        return self.capture_tangent(domain='INSTANCE')
-
-    @property
-    def point_ID(self):
+    def ID(self):
         """Call node ID (GeometryNodeInputID)
 
         Returns
@@ -392,7 +264,7 @@ class Geometry(dsock.Geometry):
         return self.capture_ID(domain='POINT')
 
     @property
-    def point_index(self):
+    def index(self):
         """Call node Index (GeometryNodeInputIndex)
 
         Returns
@@ -401,6 +273,17 @@ class Geometry(dsock.Geometry):
         """
 
         return self.capture_index(domain='POINT')
+
+    @property
+    def normal(self):
+        """Call node Normal (GeometryNodeInputNormal)
+
+        Returns
+        -------
+            Vector
+        """
+
+        return self.capture_normal(domain='FACE')
 
     @property
     def position(self):
@@ -414,15 +297,15 @@ class Geometry(dsock.Geometry):
         return self.capture_position(domain='POINT')
 
     @property
-    def point_is_viewport(self):
-        """Call node IsViewport (GeometryNodeIsViewport)
+    def radius(self):
+        """Call node Radius (GeometryNodeInputRadius)
 
         Returns
         -------
-            Boolean
+            Float
         """
 
-        return self.capture_is_viewport(domain='POINT')
+        return self.capture_radius(domain='POINT')
 
 
     # ----------------------------------------------------------------------------------------------------

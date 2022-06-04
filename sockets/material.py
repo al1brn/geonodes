@@ -9,13 +9,18 @@ logger = logging.Logger('geonodes')
 # Data class Material
 
 class Material(dsock.Material):
-    """ Data socket Material
+    """ Class Material
+    
+
+    | Inherits from: dsock.Material 
+    
 
     Methods
-    -------
-        selection                 : selection    (Boolean)
-        switch                    : output       (Material)
+    =======
+    - selection : selection (Boolean) 
+    - switch    : output (Material) 
     """
+
 
     # ----------------------------------------------------------------------------------------------------
     # Methods

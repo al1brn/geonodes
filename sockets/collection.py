@@ -9,13 +9,18 @@ logger = logging.Logger('geonodes')
 # Data class Collection
 
 class Collection(dsock.Collection):
-    """ Data socket Collection
+    """ Class Collection
+    
+
+    | Inherits from: dsock.Collection 
+    
 
     Methods
-    -------
-        info                      : geometry     (Geometry)
-        switch                    : output       (Collection)
+    =======
+    - info   : geometry (Geometry) 
+    - switch : output (Collection) 
     """
+
 
     # ----------------------------------------------------------------------------------------------------
     # Methods

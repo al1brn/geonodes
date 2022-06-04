@@ -8,13 +8,18 @@ logger = logging.Logger('geonodes')
 # ==============================================================================================================
 # Data class Volume
 
-class Volume(gn.Mesh):
-    """ Data socket Volume
+class Volume(Geometry):
+    """ Class Volume
+    
+
+    | Inherits from: Geometry 
+    
 
     Methods
-    -------
-        to_mesh                   : mesh         (Mesh)
+    =======
+    - to_mesh : mesh (Mesh) 
     """
+
 
     # ----------------------------------------------------------------------------------------------------
     # Methods

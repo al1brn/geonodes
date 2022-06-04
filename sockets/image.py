@@ -9,12 +9,17 @@ logger = logging.Logger('geonodes')
 # Data class Image
 
 class Image(dsock.Image):
-    """ Data socket Image
+    """ Class Image
+    
+
+    | Inherits from: dsock.Image 
+    
 
     Methods
-    -------
-        switch                    : output       (Image)
+    =======
+    - switch : output (Image) 
     """
+
 
     # ----------------------------------------------------------------------------------------------------
     # Methods

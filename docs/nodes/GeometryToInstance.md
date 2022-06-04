@@ -1,0 +1,49 @@
+
+# Class GeometryToInstance
+
+> Geometry node name: _'Geometry to Instance'_<br>Blender type:  **GeometryNodeGeometryToInstance**
+
+## Initialization
+
+
+```python
+from geonodes import nodes
+node = nodes.GeometryToInstance(*geometry, label=None)
+```
+
+
+### Arguments
+
+
+#### Input sockets
+
+
+
+- **geometry** : * _Geometry_
+
+
+
+#### Node label
+
+
+
+- **label** : Geometry node label
+
+
+
+## Output sockets
+
+
+
+- **instances** : _Instances_
+
+
+
+## Data sockets
+
+> Data socket classes implementing this node
+
+
+- [Geometry](aaa). [to_instance](bbb) : Method
+
+

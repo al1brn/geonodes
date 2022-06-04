@@ -1,0 +1,53 @@
+
+# Class SeparateComponents
+
+> Geometry node name: _'Separate Components'_<br>Blender type:  **GeometryNodeSeparateComponents**
+
+## Initialization
+
+
+```python
+from geonodes import nodes
+node = nodes.SeparateComponents(geometry=None, label=None)
+```
+
+
+### Arguments
+
+
+#### Input sockets
+
+
+
+- **geometry** : _Geometry_
+
+
+
+#### Node label
+
+
+
+- **label** : Geometry node label
+
+
+
+## Output sockets
+
+
+
+- **mesh** : _Mesh_
+- **point_cloud** : _Geometry_
+- **curve** : _Curve_
+- **volume** : _Volume_
+- **instances** : _Instances_
+
+
+
+## Data sockets
+
+> Data socket classes implementing this node
+
+
+- [Geometry](aaa). [components](bbb) : Property
+
+

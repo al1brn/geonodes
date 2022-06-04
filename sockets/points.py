@@ -8,19 +8,25 @@ logger = logging.Logger('geonodes')
 # ==============================================================================================================
 # Data class Points
 
-class Points(gn.Mesh):
-    """ Data socket Points
+class Points(Geometry):
+    """ Class Points
+    
+
+    | Inherits from: Geometry 
+    
 
     Methods
-    -------
-        instance_on_points        : instances    (Instances)
-        to_vertices               : mesh         (Mesh)
-        to_volume                 : volume       (Volume)
+    =======
+    - instance_on_points : instances (Instances) 
+    - to_vertices        : mesh (Mesh) 
+    - to_volume          : volume (Volume) 
+    
 
     Stacked methods
-    ---------------
-        set_radius                : Points
+    ===============
+    - set_radius : Points 
     """
+
 
     # ----------------------------------------------------------------------------------------------------
     # Methods

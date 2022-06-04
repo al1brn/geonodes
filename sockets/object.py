@@ -9,16 +9,22 @@ logger = logging.Logger('geonodes')
 # Data class Object
 
 class Object(dsock.Object):
-    """ Data socket Object
+    """ Class Object
+    
+
+    | Inherits from: dsock.Object 
+    
 
     Properties
-    ----------
-        info                      : Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+    ==========
+    - info : Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)] 
+    
 
     Methods
-    -------
-        switch                    : output       (Object)
+    =======
+    - switch : output (Object) 
     """
+
 
     def reset_properties(self):
         self.info_ = None
