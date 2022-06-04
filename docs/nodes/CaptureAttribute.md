@@ -65,7 +65,7 @@ node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', doma
 > Data socket classes implementing this node
 
 
-- [Boolean](aaa). [capture_attribute](bbb) : Method
+- [Boolean](#../sockets/Boolean.md). [capture_attribute](bbb) : Method
 - [Color](aaa). [capture_attribute](bbb) : Method
 - [Float](aaa). [capture_attribute](bbb) : Method
 - [Integer](aaa). [capture_attribute](bbb) : Method
