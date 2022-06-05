@@ -17,26 +17,26 @@ class Boolean(dsock.Boolean):
 
     Constructors
     ============
-    - Random : RandomValue value (Boolean) 
+    - **self.meth_name** : RandomValue value (Boolean) 
     
 
     Methods
     =======
-    - b_and              : BooleanMath boolean (Boolean) 
-    - b_not              : BooleanMath boolean (Boolean) 
-    - b_or               : BooleanMath boolean (Boolean) 
-    - capture_attribute  : CaptureAttribute Sockets      [geometry (Geometry), attribute (Boolean)] 
-    - field_at_index     : FieldAtIndex value (Boolean) 
-    - imply              : BooleanMath boolean (Boolean) 
-    - nand               : BooleanMath boolean (Boolean) 
-    - nimply             : BooleanMath boolean (Boolean) 
-    - nor                : BooleanMath boolean (Boolean) 
-    - raycast            : Raycast Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance
-      (Float), attribute (Boolean)] 
-    - switch             : Switch output (Boolean) 
-    - transfer_attribute : TransferAttribute attribute (Boolean) 
-    - xnor               : BooleanMath boolean (Boolean) 
-    - xor                : BooleanMath boolean (Boolean) 
+    - **self.meth_name** : BooleanMath boolean (Boolean) 
+    - **self.meth_name** : BooleanMath boolean (Boolean) 
+    - **self.meth_name** : BooleanMath boolean (Boolean) 
+    - **self.meth_name** : CaptureAttribute Sockets      [geometry (Geometry), attribute (Boolean)] 
+    - **self.meth_name** : FieldAtIndex value (Boolean) 
+    - **self.meth_name** : BooleanMath boolean (Boolean) 
+    - **self.meth_name** : BooleanMath boolean (Boolean) 
+    - **self.meth_name** : BooleanMath boolean (Boolean) 
+    - **self.meth_name** : BooleanMath boolean (Boolean) 
+    - **self.meth_name** : Raycast Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector),
+      hit_distance (Float), attribute (Boolean)] 
+    - **self.meth_name** : Switch output (Boolean) 
+    - **self.meth_name** : TransferAttribute attribute (Boolean) 
+    - **self.meth_name** : BooleanMath boolean (Boolean) 
+    - **self.meth_name** : BooleanMath boolean (Boolean) 
     """
 
 

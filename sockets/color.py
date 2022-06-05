@@ -17,49 +17,49 @@ class Color(dsock.Color):
 
     Constructors
     ============
-    - Combine : CombineRgb image (Color) 
+    - **self.meth_name** : CombineRgb image (Color) 
     
 
     Properties
     ==========
-    - separate : SeparateRgb Sockets      [r (Float), g (Float), b (Float)] 
+    - **self.meth_name** : SeparateRgb Sockets      [r (Float), g (Float), b (Float)] 
     
 
     Methods
     =======
-    - add                : Mix color (Color) 
-    - brighter           : Compare result (Boolean) 
-    - burn               : Mix color (Color) 
-    - capture_attribute  : CaptureAttribute Sockets      [geometry (Geometry), attribute (Color)] 
-    - darken             : Mix color (Color) 
-    - darker             : Compare result (Boolean) 
-    - difference         : Mix color (Color) 
-    - divide             : Mix color (Color) 
-    - dodge              : Mix color (Color) 
-    - equal              : Compare result (Boolean) 
-    - field_at_index     : FieldAtIndex value (Color) 
-    - hue                : Mix color (Color) 
-    - lighten            : Mix color (Color) 
-    - linear_light       : Mix color (Color) 
-    - mix                : Mix color (Color) 
-    - mix                : Mix color (Color) 
-    - mix_color          : Mix color (Color) 
-    - multiply           : Mix color (Color) 
-    - not_equal          : Compare result (Boolean) 
-    - overlay            : Mix color (Color) 
-    - raycast            : Raycast Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance
-      (Float), attribute (Color)] 
-    - saturation         : Mix color (Color) 
-    - screen             : Mix color (Color) 
-    - soft_light         : Mix color (Color) 
-    - subtract           : Mix color (Color) 
-    - transfer_attribute : TransferAttribute attribute (Color) 
-    - value              : Mix color (Color) 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : Compare result (Boolean) 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : CaptureAttribute Sockets      [geometry (Geometry), attribute (Color)] 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : Compare result (Boolean) 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : Compare result (Boolean) 
+    - **self.meth_name** : FieldAtIndex value (Color) 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : Compare result (Boolean) 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : Raycast Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector),
+      hit_distance (Float), attribute (Color)] 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : Mix color (Color) 
+    - **self.meth_name** : TransferAttribute attribute (Color) 
+    - **self.meth_name** : Mix color (Color) 
     
 
     Stacked methods
     ===============
-    - curves : RgbCurves Color 
+    - **self.meth_name** : RgbCurves Color 
     """
 
 

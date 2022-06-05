@@ -17,26 +17,26 @@ class String(dsock.String):
 
     Properties
     ==========
-    - length : StringLength length (Integer) 
+    - **self.meth_name** : StringLength length (Integer) 
     
 
     Methods
     =======
-    - average     : Compare result (Boolean) 
-    - direction   : Compare result (Boolean) 
-    - dot_product : Compare result (Boolean) 
-    - element     : Compare result (Boolean) 
-    - join        : JoinStrings string (String) 
-    - length      : Compare result (Boolean) 
-    - slice       : SliceString string (String) 
-    - switch      : Switch output (String) 
-    - to_curves   : StringToCurves Sockets      [curve_instances (Geometry), remainder (String), line (Integer),
-      pivot_point (Vector)] 
+    - **self.meth_name** : Compare result (Boolean) 
+    - **self.meth_name** : Compare result (Boolean) 
+    - **self.meth_name** : Compare result (Boolean) 
+    - **self.meth_name** : Compare result (Boolean) 
+    - **self.meth_name** : JoinStrings string (String) 
+    - **self.meth_name** : Compare result (Boolean) 
+    - **self.meth_name** : SliceString string (String) 
+    - **self.meth_name** : Switch output (String) 
+    - **self.meth_name** : StringToCurves Sockets      [curve_instances (Geometry), remainder (String), line
+      (Integer), pivot_point (Vector)] 
     
 
     Stacked methods
     ===============
-    - replace : ReplaceString String 
+    - **self.meth_name** : ReplaceString String 
     """
 
 

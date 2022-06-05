@@ -7,7 +7,7 @@
 
 
 
-- [switch](#switch) : [Switch](../nodes/Switch.md) output (Image)
+- [**self.meth_name**](#switch) : [Switch](../nodes/Switch.md) output (Image)
 
 
 

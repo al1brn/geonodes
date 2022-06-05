@@ -17,7 +17,7 @@ class Image(dsock.Image):
 
     Methods
     =======
-    - switch : Switch output (Image) 
+    - **self.meth_name** : Switch output (Image) 
     """
 
 

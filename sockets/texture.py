@@ -17,22 +17,22 @@ class Texture(dsock.Texture):
 
     Static methods
     ==============
-    - Brick      : BrickTexture Sockets      [color (Color), fac (Float)] 
-    - Checker    : CheckerTexture Sockets      [color (Color), fac (Float)] 
-    - Gradient   : GradientTexture Sockets      [color (Color), fac (Float)] 
-    - Image      : ImageTexture Sockets      [color (Color), alpha (Float)] 
-    - Magic      : MagicTexture Sockets      [color (Color), fac (Float)] 
-    - Musgrave   : MusgraveTexture fac (Float) 
-    - Noise      : NoiseTexture Sockets      [fac (Float), color (Color)] 
-    - Voronoi    : VoronoiTexture Sockets      [distance (Float), color (Color), position (Vector), w (Float),
-      radius (Float)] 
-    - Wave       : WaveTexture Sockets      [color (Color), fac (Float)] 
-    - WhiteNoise : WhiteNoiseTexture Sockets      [value (Float), color (Color)] 
+    - **self.meth_name** : BrickTexture Sockets      [color (Color), fac (Float)] 
+    - **self.meth_name** : CheckerTexture Sockets      [color (Color), fac (Float)] 
+    - **self.meth_name** : GradientTexture Sockets      [color (Color), fac (Float)] 
+    - **self.meth_name** : ImageTexture Sockets      [color (Color), alpha (Float)] 
+    - **self.meth_name** : MagicTexture Sockets      [color (Color), fac (Float)] 
+    - **self.meth_name** : MusgraveTexture fac (Float) 
+    - **self.meth_name** : NoiseTexture Sockets      [fac (Float), color (Color)] 
+    - **self.meth_name** : VoronoiTexture Sockets      [distance (Float), color (Color), position (Vector),
+      w (Float), radius (Float)] 
+    - **self.meth_name** : WaveTexture Sockets      [color (Color), fac (Float)] 
+    - **self.meth_name** : WhiteNoiseTexture Sockets      [value (Float), color (Color)] 
     
 
     Methods
     =======
-    - switch : Switch output (Texture) 
+    - **self.meth_name** : Switch output (Texture) 
     """
 
 

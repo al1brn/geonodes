@@ -17,73 +17,73 @@ class Geometry(dsock.Geometry):
 
     Static methods
     ==============
-    - is_viewport : IsViewport is_viewport (Boolean) 
+    - **self.meth_name** : IsViewport is_viewport (Boolean) 
     
 
     Properties
     ==========
-    - bound_box           : BoundingBox Sockets      [bounding_box (Geometry), min (Vector), max (Vector)] 
-    - box                 : BoundingBox bounding_box (Geometry) = bound_box.bounding_box 
-    - box_max             : BoundingBox max (Vector) = bound_box.max 
-    - box_min             : BoundingBox min (Vector) = bound_box.min 
-    - components          : SeparateComponents Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume
-      (Volume), instances (Instances)] 
-    - curve_component     : SeparateComponents curve (Curve) = components.curve 
-    - instances_component : SeparateComponents instances (Instances) = components.instances 
-    - mesh_component      : SeparateComponents mesh (Mesh) = components.mesh 
-    - points_component    : SeparateComponents point_cloud (Geometry) = components.point_cloud 
-    - volume_component    : SeparateComponents volume (Volume) = components.volume 
+    - **self.meth_name** : BoundingBox Sockets      [bounding_box (Geometry), min (Vector), max (Vector)] 
+    - **self.meth_name** : BoundingBox bounding_box (Geometry) = bound_box.bounding_box 
+    - **self.meth_name** : BoundingBox max (Vector) = bound_box.max 
+    - **self.meth_name** : BoundingBox min (Vector) = bound_box.min 
+    - **self.meth_name** : SeparateComponents Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve),
+      volume (Volume), instances (Instances)] 
+    - **self.meth_name** : SeparateComponents curve (Curve) = components.curve 
+    - **self.meth_name** : SeparateComponents instances (Instances) = components.instances 
+    - **self.meth_name** : SeparateComponents mesh (Mesh) = components.mesh 
+    - **self.meth_name** : SeparateComponents point_cloud (Geometry) = components.point_cloud 
+    - **self.meth_name** : SeparateComponents volume (Volume) = components.volume 
     
 
     Attribute capture
     =================
-    - capture_ID       : ID ID (Integer) 
-    - capture_index    : Index index (Integer) 
-    - capture_normal   : Normal normal (Vector) 
-    - capture_position : Position position (Vector) 
-    - capture_radius   : Radius radius (Float) 
+    - **self.meth_name** : ID ID (Integer) 
+    - **self.meth_name** : Index index (Integer) 
+    - **self.meth_name** : Normal normal (Vector) 
+    - **self.meth_name** : Position position (Vector) 
+    - **self.meth_name** : Radius radius (Float) 
     
 
     Attributes
     ==========
-    - ID       : ID Integer = capture_ID(domain='POINT') 
-    - index    : Index Integer = capture_index(domain='POINT') 
-    - normal   : Normal Vector = capture_normal(domain='FACE') 
-    - position : Position Vector = capture_position(domain='POINT') 
-    - radius   : Radius Float = capture_radius(domain='POINT') 
+    - **self.meth_name** : ID Integer = capture_ID(domain='POINT') 
+    - **self.meth_name** : Index Integer = capture_index(domain='POINT') 
+    - **self.meth_name** : Normal Vector = capture_normal(domain='FACE') 
+    - **self.meth_name** : Position Vector = capture_position(domain='POINT') 
+    - **self.meth_name** : Radius Float = capture_radius(domain='POINT') 
     
 
     Methods
     =======
-    - attribute_domain_size : DomainSize Sockets      [point_count (Integer), edge_count (Integer), face_count
+    - **self.meth_name** : DomainSize Sockets      [point_count (Integer), edge_count (Integer), face_count
       (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)] 
-    - attribute_remove      : AttributeRemove geometry (Geometry) 
-    - components            : SeparateGeometry Sockets      [selection (Geometry), inverted (Geometry)] 
-    - convex_hull           : ConvexHull convex_hull (Geometry) 
-    - join                  : JoinGeometry geometry (Geometry) 
-    - proximity             : GeometryProximity Sockets      [position (Vector), distance (Float)] 
-    - switch                : Switch output (Geometry) 
-    - to_instance           : GeometryToInstance instances (Instances) 
-    - transfer_boolean      : TransferAttribute attribute (Boolean) 
-    - transfer_color        : TransferAttribute attribute (Color) 
-    - transfer_float        : TransferAttribute attribute (Float) 
-    - transfer_integer      : TransferAttribute attribute (Integer) 
-    - transfer_vector       : TransferAttribute attribute (Vector) 
+    - **self.meth_name** : AttributeRemove geometry (Geometry) 
+    - **self.meth_name** : SeparateGeometry Sockets      [selection (Geometry), inverted (Geometry)] 
+    - **self.meth_name** : ConvexHull convex_hull (Geometry) 
+    - **self.meth_name** : JoinGeometry geometry (Geometry) 
+    - **self.meth_name** : GeometryProximity Sockets      [position (Vector), distance (Float)] 
+    - **self.meth_name** : Switch output (Geometry) 
+    - **self.meth_name** : GeometryToInstance instances (Instances) 
+    - **self.meth_name** : TransferAttribute attribute (Boolean) 
+    - **self.meth_name** : TransferAttribute attribute (Color) 
+    - **self.meth_name** : TransferAttribute attribute (Float) 
+    - **self.meth_name** : TransferAttribute attribute (Integer) 
+    - **self.meth_name** : TransferAttribute attribute (Vector) 
     
 
     Stacked methods
     ===============
-    - delete_geometry    : DeleteGeometry Geometry 
-    - merge_by_distance  : MergeByDistance Geometry 
-    - realize_instances  : RealizeInstances Geometry 
-    - replace_material   : ReplaceMaterial Geometry 
-    - scale_elements     : ScaleElements Geometry 
-    - set_ID             : SetID Geometry 
-    - set_material       : SetMaterial Geometry 
-    - set_material_index : SetMaterialIndex Geometry 
-    - set_position       : SetPosition Geometry 
-    - set_shade_smooth   : SetShadeSmooth Geometry 
-    - transform          : Transform Geometry 
+    - **self.meth_name** : DeleteGeometry Geometry 
+    - **self.meth_name** : MergeByDistance Geometry 
+    - **self.meth_name** : RealizeInstances Geometry 
+    - **self.meth_name** : ReplaceMaterial Geometry 
+    - **self.meth_name** : ScaleElements Geometry 
+    - **self.meth_name** : SetID Geometry 
+    - **self.meth_name** : SetMaterial Geometry 
+    - **self.meth_name** : SetMaterialIndex Geometry 
+    - **self.meth_name** : SetPosition Geometry 
+    - **self.meth_name** : SetShadeSmooth Geometry 
+    - **self.meth_name** : Transform Geometry 
     """
 
 

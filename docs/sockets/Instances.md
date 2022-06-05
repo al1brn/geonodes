@@ -7,7 +7,7 @@
 
 
 
-- [instance_index](#instance_index) : [Index](../nodes/Index.md) Integer = capture_index(domain='INSTANCE')
+- [**self.meth_name**](#instance_index) : [Index](../nodes/Index.md) Integer = capture_index(domain='INSTANCE')
 
 
 
@@ -15,7 +15,7 @@
 
 
 
-- [to_points](#to_points) : [InstancesToPoints](../nodes/InstancesToPoints.md) points (Points)
+- [**self.meth_name**](#to_points) : [InstancesToPoints](../nodes/InstancesToPoints.md) points (Points)
 
 
 
@@ -23,9 +23,9 @@
 
 
 
-- [rotate](#rotate) : [RotateInstances](../nodes/RotateInstances.md) Instances
-- [scale](#scale) : [ScaleInstances](../nodes/ScaleInstances.md) Instances
-- [translate](#translate) : [TranslateInstances](../nodes/TranslateInstances.md) Instances
+- [**self.meth_name**](#rotate) : [RotateInstances](../nodes/RotateInstances.md) Instances
+- [**self.meth_name**](#scale) : [ScaleInstances](../nodes/ScaleInstances.md) Instances
+- [**self.meth_name**](#translate) : [TranslateInstances](../nodes/TranslateInstances.md) Instances
 
 
 

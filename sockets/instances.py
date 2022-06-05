@@ -17,19 +17,19 @@ class Instances(Geometry):
 
     Attributes
     ==========
-    - instance_index : Index Integer = capture_index(domain='INSTANCE') 
+    - **self.meth_name** : Index Integer = capture_index(domain='INSTANCE') 
     
 
     Methods
     =======
-    - to_points : InstancesToPoints points (Points) 
+    - **self.meth_name** : InstancesToPoints points (Points) 
     
 
     Stacked methods
     ===============
-    - rotate    : RotateInstances Instances 
-    - scale     : ScaleInstances Instances 
-    - translate : TranslateInstances Instances 
+    - **self.meth_name** : RotateInstances Instances 
+    - **self.meth_name** : ScaleInstances Instances 
+    - **self.meth_name** : TranslateInstances Instances 
     """
 
 

@@ -7,7 +7,7 @@
 
 
 
-- [Random](#random) : [RandomValue](../nodes/RandomValue.md) value (Boolean)
+- [**self.meth_name**](#random) : [RandomValue](../nodes/RandomValue.md) value (Boolean)
 
 
 
@@ -15,20 +15,20 @@
 
 
 
-- [b_and](#b_and) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
-- [b_not](#b_not) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
-- [b_or](#b_or) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
-- [capture_attribute](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) Sockets      [geometry (Geometry), attribute (Boolean)]
-- [field_at_index](#field_at_index) : [FieldAtIndex](../nodes/FieldAtIndex.md) value (Boolean)
-- [imply](#imply) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
-- [nand](#nand) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
-- [nimply](#nimply) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
-- [nor](#nor) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
-- [raycast](#raycast) : [Raycast](../nodes/Raycast.md) Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
-- [switch](#switch) : [Switch](../nodes/Switch.md) output (Boolean)
-- [transfer_attribute](#transfer_attribute) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Boolean)
-- [xnor](#xnor) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
-- [xor](#xor) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
+- [**self.meth_name**](#b_and) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
+- [**self.meth_name**](#b_not) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
+- [**self.meth_name**](#b_or) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
+- [**self.meth_name**](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) Sockets      [geometry (Geometry), attribute (Boolean)]
+- [**self.meth_name**](#field_at_index) : [FieldAtIndex](../nodes/FieldAtIndex.md) value (Boolean)
+- [**self.meth_name**](#imply) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
+- [**self.meth_name**](#nand) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
+- [**self.meth_name**](#nimply) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
+- [**self.meth_name**](#nor) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
+- [**self.meth_name**](#raycast) : [Raycast](../nodes/Raycast.md) Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
+- [**self.meth_name**](#switch) : [Switch](../nodes/Switch.md) output (Boolean)
+- [**self.meth_name**](#transfer_attribute) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Boolean)
+- [**self.meth_name**](#xnor) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
+- [**self.meth_name**](#xor) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
 
 
 

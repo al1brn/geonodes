@@ -17,12 +17,13 @@ class Object(dsock.Object):
 
     Properties
     ==========
-    - info : ObjectInfo Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+    - **self.meth_name** : ObjectInfo Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry
+      (Geometry)] 
     
 
     Methods
     =======
-    - switch : Switch output (Object) 
+    - **self.meth_name** : Switch output (Object) 
     """
 
 
