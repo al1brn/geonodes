@@ -7,7 +7,7 @@
 
 
 
-- [instance_index](#instance_index) : Integer = capture_index(domain='INSTANCE')
+- [instance_index](#instance_index) : [Index](../nodes/Index.md) Integer = capture_index(domain='INSTANCE')
 
 
 
@@ -15,7 +15,7 @@
 
 
 
-- [to_points](#to_points) : points (Points)
+- [to_points](#to_points) : [InstancesToPoints](../nodes/InstancesToPoints.md) points (Points)
 
 
 
@@ -23,9 +23,9 @@
 
 
 
-- [rotate](#rotate) : Instances
-- [scale](#scale) : Instances
-- [translate](#translate) : Instances
+- [rotate](#rotate) : [RotateInstances](../nodes/RotateInstances.md) Instances
+- [scale](#scale) : [ScaleInstances](../nodes/ScaleInstances.md) Instances
+- [translate](#translate) : [TranslateInstances](../nodes/TranslateInstances.md) Instances
 
 
 

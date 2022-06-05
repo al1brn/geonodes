@@ -7,7 +7,7 @@
 
 
 
-- [switch](#switch) : output (Image)
+- [switch](#switch) : [Switch](../nodes/Switch.md) output (Image)
 
 
 

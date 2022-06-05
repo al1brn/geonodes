@@ -17,7 +17,7 @@ class Image(dsock.Image):
 
     Methods
     =======
-    - switch : output (Image) 
+    - switch : Switch output (Image) 
     """
 
 

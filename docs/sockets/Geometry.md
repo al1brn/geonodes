@@ -7,7 +7,7 @@
 
 
 
-- [is_viewport](#is_viewport) : is_viewport (Boolean)
+- [is_viewport](#is_viewport) : [IsViewport](../nodes/IsViewport.md) is_viewport (Boolean)
 
 
 
@@ -15,16 +15,16 @@
 
 
 
-- [bound_box](#bound_box) : Sockets      [bounding_box (Geometry), min (Vector), max (Vector)]
-- [box](#box) : bounding_box (Geometry) = bound_box.bounding_box
-- [box_max](#box_max) : max (Vector) = bound_box.max
-- [box_min](#box_min) : min (Vector) = bound_box.min
-- [components](#components) : Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
-- [curve_component](#curve_component) : curve (Curve) = components.curve
-- [instances_component](#instances_component) : instances (Instances) = components.instances
-- [mesh_component](#mesh_component) : mesh (Mesh) = components.mesh
-- [points_component](#points_component) : point_cloud (Geometry) = components.point_cloud
-- [volume_component](#volume_component) : volume (Volume) = components.volume
+- [bound_box](#bound_box) : [BoundingBox](../nodes/BoundingBox.md) Sockets      [bounding_box (Geometry), min (Vector), max (Vector)]
+- [box](#box) : [BoundingBox](../nodes/BoundingBox.md) bounding_box (Geometry) = bound_box.bounding_box
+- [box_max](#box_max) : [BoundingBox](../nodes/BoundingBox.md) max (Vector) = bound_box.max
+- [box_min](#box_min) : [BoundingBox](../nodes/BoundingBox.md) min (Vector) = bound_box.min
+- [components](#components) : [SeparateComponents](../nodes/SeparateComponents.md) Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+- [curve_component](#curve_component) : [SeparateComponents](../nodes/SeparateComponents.md) curve (Curve) = components.curve
+- [instances_component](#instances_component) : [SeparateComponents](../nodes/SeparateComponents.md) instances (Instances) = components.instances
+- [mesh_component](#mesh_component) : [SeparateComponents](../nodes/SeparateComponents.md) mesh (Mesh) = components.mesh
+- [points_component](#points_component) : [SeparateComponents](../nodes/SeparateComponents.md) point_cloud (Geometry) = components.point_cloud
+- [volume_component](#volume_component) : [SeparateComponents](../nodes/SeparateComponents.md) volume (Volume) = components.volume
 
 
 
@@ -32,11 +32,11 @@
 
 
 
-- [capture_ID](#capture_id) : ID (Integer)
-- [capture_index](#capture_index) : index (Integer)
-- [capture_normal](#capture_normal) : normal (Vector)
-- [capture_position](#capture_position) : position (Vector)
-- [capture_radius](#capture_radius) : radius (Float)
+- [capture_ID](#capture_id) : [ID](../nodes/ID.md) ID (Integer)
+- [capture_index](#capture_index) : [Index](../nodes/Index.md) index (Integer)
+- [capture_normal](#capture_normal) : [Normal](../nodes/Normal.md) normal (Vector)
+- [capture_position](#capture_position) : [Position](../nodes/Position.md) position (Vector)
+- [capture_radius](#capture_radius) : [Radius](../nodes/Radius.md) radius (Float)
 
 
 
@@ -44,11 +44,11 @@
 
 
 
-- [ID](#id) : Integer = capture_ID(domain='POINT')
-- [index](#index) : Integer = capture_index(domain='POINT')
-- [normal](#normal) : Vector = capture_normal(domain='FACE')
-- [position](#position) : Vector = capture_position(domain='POINT')
-- [radius](#radius) : Float = capture_radius(domain='POINT')
+- [ID](#id) : [ID](../nodes/ID.md) Integer = capture_ID(domain='POINT')
+- [index](#index) : [Index](../nodes/Index.md) Integer = capture_index(domain='POINT')
+- [normal](#normal) : [Normal](../nodes/Normal.md) Vector = capture_normal(domain='FACE')
+- [position](#position) : [Position](../nodes/Position.md) Vector = capture_position(domain='POINT')
+- [radius](#radius) : [Radius](../nodes/Radius.md) Float = capture_radius(domain='POINT')
 
 
 
@@ -56,19 +56,19 @@
 
 
 
-- [attribute_domain_size](#attribute_domain_size) : Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
-- [attribute_remove](#attribute_remove) : geometry (Geometry)
-- [components](#components) : Sockets      [selection (Geometry), inverted (Geometry)]
-- [convex_hull](#convex_hull) : convex_hull (Geometry)
-- [join](#join) : geometry (Geometry)
-- [proximity](#proximity) : Sockets      [position (Vector), distance (Float)]
-- [switch](#switch) : output (Geometry)
-- [to_instance](#to_instance) : instances (Instances)
-- [transfer_boolean](#transfer_boolean) : attribute (Boolean)
-- [transfer_color](#transfer_color) : attribute (Color)
-- [transfer_float](#transfer_float) : attribute (Float)
-- [transfer_integer](#transfer_integer) : attribute (Integer)
-- [transfer_vector](#transfer_vector) : attribute (Vector)
+- [attribute_domain_size](#attribute_domain_size) : [DomainSize](../nodes/DomainSize.md) Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
+- [attribute_remove](#attribute_remove) : [AttributeRemove](../nodes/AttributeRemove.md) geometry (Geometry)
+- [components](#components) : [SeparateGeometry](../nodes/SeparateGeometry.md) Sockets      [selection (Geometry), inverted (Geometry)]
+- [convex_hull](#convex_hull) : [ConvexHull](../nodes/ConvexHull.md) convex_hull (Geometry)
+- [join](#join) : [JoinGeometry](../nodes/JoinGeometry.md) geometry (Geometry)
+- [proximity](#proximity) : [GeometryProximity](../nodes/GeometryProximity.md) Sockets      [position (Vector), distance (Float)]
+- [switch](#switch) : [Switch](../nodes/Switch.md) output (Geometry)
+- [to_instance](#to_instance) : [GeometryToInstance](../nodes/GeometryToInstance.md) instances (Instances)
+- [transfer_boolean](#transfer_boolean) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Boolean)
+- [transfer_color](#transfer_color) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Color)
+- [transfer_float](#transfer_float) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Float)
+- [transfer_integer](#transfer_integer) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Integer)
+- [transfer_vector](#transfer_vector) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Vector)
 
 
 
@@ -76,17 +76,17 @@
 
 
 
-- [delete_geometry](#delete_geometry) : Geometry
-- [merge_by_distance](#merge_by_distance) : Geometry
-- [realize_instances](#realize_instances) : Geometry
-- [replace_material](#replace_material) : Geometry
-- [scale_elements](#scale_elements) : Geometry
-- [set_ID](#set_id) : Geometry
-- [set_material](#set_material) : Geometry
-- [set_material_index](#set_material_index) : Geometry
-- [set_position](#set_position) : Geometry
-- [set_shade_smooth](#set_shade_smooth) : Geometry
-- [transform](#transform) : Geometry
+- [delete_geometry](#delete_geometry) : [DeleteGeometry](../nodes/DeleteGeometry.md) Geometry
+- [merge_by_distance](#merge_by_distance) : [MergeByDistance](../nodes/MergeByDistance.md) Geometry
+- [realize_instances](#realize_instances) : [RealizeInstances](../nodes/RealizeInstances.md) Geometry
+- [replace_material](#replace_material) : [ReplaceMaterial](../nodes/ReplaceMaterial.md) Geometry
+- [scale_elements](#scale_elements) : [ScaleElements](../nodes/ScaleElements.md) Geometry
+- [set_ID](#set_id) : [SetID](../nodes/SetID.md) Geometry
+- [set_material](#set_material) : [SetMaterial](../nodes/SetMaterial.md) Geometry
+- [set_material_index](#set_material_index) : [SetMaterialIndex](../nodes/SetMaterialIndex.md) Geometry
+- [set_position](#set_position) : [SetPosition](../nodes/SetPosition.md) Geometry
+- [set_shade_smooth](#set_shade_smooth) : [SetShadeSmooth](../nodes/SetShadeSmooth.md) Geometry
+- [transform](#transform) : [Transform](../nodes/Transform.md) Geometry
 
 
 

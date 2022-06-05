@@ -7,7 +7,7 @@
 
 
 
-- [length](#length) : length (Integer)
+- [length](#length) : [StringLength](../nodes/StringLength.md) length (Integer)
 
 
 
@@ -15,15 +15,15 @@
 
 
 
-- [average](#average) : result (Boolean)
-- [direction](#direction) : result (Boolean)
-- [dot_product](#dot_product) : result (Boolean)
-- [element](#element) : result (Boolean)
-- [join](#join) : string (String)
-- [length](#length) : result (Boolean)
-- [slice](#slice) : string (String)
-- [switch](#switch) : output (String)
-- [to_curves](#to_curves) : Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
+- [average](#average) : [Compare](../nodes/Compare.md) result (Boolean)
+- [direction](#direction) : [Compare](../nodes/Compare.md) result (Boolean)
+- [dot_product](#dot_product) : [Compare](../nodes/Compare.md) result (Boolean)
+- [element](#element) : [Compare](../nodes/Compare.md) result (Boolean)
+- [join](#join) : [JoinStrings](../nodes/JoinStrings.md) string (String)
+- [length](#length) : [Compare](../nodes/Compare.md) result (Boolean)
+- [slice](#slice) : [SliceString](../nodes/SliceString.md) string (String)
+- [switch](#switch) : [Switch](../nodes/Switch.md) output (String)
+- [to_curves](#to_curves) : [StringToCurves](../nodes/StringToCurves.md) Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
 
 
 
@@ -31,7 +31,7 @@
 
 
 
-- [replace](#replace) : String
+- [replace](#replace) : [ReplaceString](../nodes/ReplaceString.md) String
 
 
 

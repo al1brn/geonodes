@@ -17,14 +17,14 @@ class Points(Geometry):
 
     Methods
     =======
-    - instance_on_points : instances (Instances) 
-    - to_vertices        : mesh (Mesh) 
-    - to_volume          : volume (Volume) 
+    - instance_on_points : InstanceOnPoints instances (Instances) 
+    - to_vertices        : PointsToVertices mesh (Mesh) 
+    - to_volume          : PointsToVolume volume (Volume) 
     
 
     Stacked methods
     ===============
-    - set_radius : Points 
+    - set_radius : SetPointRadius Points 
     """
 
 

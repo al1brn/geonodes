@@ -17,49 +17,49 @@ class Color(dsock.Color):
 
     Constructors
     ============
-    - Combine : image (Color) 
+    - Combine : CombineRgb image (Color) 
     
 
     Properties
     ==========
-    - separate : Sockets      [r (Float), g (Float), b (Float)] 
+    - separate : SeparateRgb Sockets      [r (Float), g (Float), b (Float)] 
     
 
     Methods
     =======
-    - add                : color (Color) 
-    - brighter           : result (Boolean) 
-    - burn               : color (Color) 
-    - capture_attribute  : Sockets      [geometry (Geometry), attribute (Color)] 
-    - darken             : color (Color) 
-    - darker             : result (Boolean) 
-    - difference         : color (Color) 
-    - divide             : color (Color) 
-    - dodge              : color (Color) 
-    - equal              : result (Boolean) 
-    - field_at_index     : value (Color) 
-    - hue                : color (Color) 
-    - lighten            : color (Color) 
-    - linear_light       : color (Color) 
-    - mix                : color (Color) 
-    - mix                : color (Color) 
-    - mix_color          : color (Color) 
-    - multiply           : color (Color) 
-    - not_equal          : result (Boolean) 
-    - overlay            : color (Color) 
-    - raycast            : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float),
-      attribute (Color)] 
-    - saturation         : color (Color) 
-    - screen             : color (Color) 
-    - soft_light         : color (Color) 
-    - subtract           : color (Color) 
-    - transfer_attribute : attribute (Color) 
-    - value              : color (Color) 
+    - add                : Mix color (Color) 
+    - brighter           : Compare result (Boolean) 
+    - burn               : Mix color (Color) 
+    - capture_attribute  : CaptureAttribute Sockets      [geometry (Geometry), attribute (Color)] 
+    - darken             : Mix color (Color) 
+    - darker             : Compare result (Boolean) 
+    - difference         : Mix color (Color) 
+    - divide             : Mix color (Color) 
+    - dodge              : Mix color (Color) 
+    - equal              : Compare result (Boolean) 
+    - field_at_index     : FieldAtIndex value (Color) 
+    - hue                : Mix color (Color) 
+    - lighten            : Mix color (Color) 
+    - linear_light       : Mix color (Color) 
+    - mix                : Mix color (Color) 
+    - mix                : Mix color (Color) 
+    - mix_color          : Mix color (Color) 
+    - multiply           : Mix color (Color) 
+    - not_equal          : Compare result (Boolean) 
+    - overlay            : Mix color (Color) 
+    - raycast            : Raycast Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance
+      (Float), attribute (Color)] 
+    - saturation         : Mix color (Color) 
+    - screen             : Mix color (Color) 
+    - soft_light         : Mix color (Color) 
+    - subtract           : Mix color (Color) 
+    - transfer_attribute : TransferAttribute attribute (Color) 
+    - value              : Mix color (Color) 
     
 
     Stacked methods
     ===============
-    - curves : Color 
+    - curves : RgbCurves Color 
     """
 
 

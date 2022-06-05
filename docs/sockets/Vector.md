@@ -7,9 +7,9 @@
 
 
 
-- [AlignToVector](#aligntovector) : rotation (Vector)
-- [Combine](#combine) : vector (Vector)
-- [Random](#random) : value (Vector)
+- [AlignToVector](#aligntovector) : [AlignEulerToVector](../nodes/AlignEulerToVector.md) rotation (Vector)
+- [Combine](#combine) : [CombineXyz](../nodes/CombineXyz.md) vector (Vector)
+- [Random](#random) : [RandomValue](../nodes/RandomValue.md) value (Vector)
 
 
 
@@ -17,7 +17,7 @@
 
 
 
-- [separate](#separate) : Sockets      [x (Float), y (Float), z (Float)]
+- [separate](#separate) : [SeparateXyz](../nodes/SeparateXyz.md) Sockets      [x (Float), y (Float), z (Float)]
 
 
 
@@ -25,47 +25,47 @@
 
 
 
-- [absolute](#absolute) : vector (Vector)
-- [accumulate_field](#accumulate_field) : Sockets      [leading (Vector), trailing (Vector), total (Vector)]
-- [add](#add) : vector (Vector)
-- [attribute_statistic](#attribute_statistic) : Sockets      [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)]
-- [capture_attribute](#capture_attribute) : Sockets      [geometry (Geometry), attribute (Vector)]
-- [ceil](#ceil) : vector (Vector)
-- [cos](#cos) : vector (Vector)
-- [cross](#cross) : vector (Vector)
-- [distance](#distance) : value (Float)
-- [divide](#divide) : vector (Vector)
-- [dot](#dot) : value (Float)
-- [equal](#equal) : result (Boolean)
-- [faceforward](#faceforward) : vector (Vector)
-- [field_at_index](#field_at_index) : value (Vector)
-- [floor](#floor) : vector (Vector)
-- [fraction](#fraction) : vector (Vector)
-- [greater_equal](#greater_equal) : result (Boolean)
-- [greater_than](#greater_than) : result (Boolean)
-- [length](#length) : value (Float)
-- [less_equal](#less_equal) : result (Boolean)
-- [less_than](#less_than) : result (Boolean)
-- [map_range](#map_range) : vector (Vector)
-- [max](#max) : vector (Vector)
-- [min](#min) : vector (Vector)
-- [modulo](#modulo) : vector (Vector)
-- [multiply](#multiply) : vector (Vector)
-- [multiply_add](#multiply_add) : vector (Vector)
-- [normalize](#normalize) : vector (Vector)
-- [not_equal](#not_equal) : result (Boolean)
-- [project](#project) : vector (Vector)
-- [raycast](#raycast) : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Vector)]
-- [reflect](#reflect) : vector (Vector)
-- [refract](#refract) : vector (Vector)
-- [rotate](#rotate) : vector (Vector)
-- [scale](#scale) : vector (Vector)
-- [sin](#sin) : vector (Vector)
-- [snap](#snap) : vector (Vector)
-- [subtract](#subtract) : vector (Vector)
-- [tan](#tan) : vector (Vector)
-- [transfer_attribute](#transfer_attribute) : attribute (Vector)
-- [wrap](#wrap) : vector (Vector)
+- [absolute](#absolute) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [accumulate_field](#accumulate_field) : [AccumulateField](../nodes/AccumulateField.md) Sockets      [leading (Vector), trailing (Vector), total (Vector)]
+- [add](#add) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [attribute_statistic](#attribute_statistic) : [AttributeStatistic](../nodes/AttributeStatistic.md) Sockets      [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)]
+- [capture_attribute](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) Sockets      [geometry (Geometry), attribute (Vector)]
+- [ceil](#ceil) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [cos](#cos) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [cross](#cross) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [distance](#distance) : [VectorMath](../nodes/VectorMath.md) value (Float)
+- [divide](#divide) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [dot](#dot) : [VectorMath](../nodes/VectorMath.md) value (Float)
+- [equal](#equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [faceforward](#faceforward) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [field_at_index](#field_at_index) : [FieldAtIndex](../nodes/FieldAtIndex.md) value (Vector)
+- [floor](#floor) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [fraction](#fraction) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [greater_equal](#greater_equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [greater_than](#greater_than) : [Compare](../nodes/Compare.md) result (Boolean)
+- [length](#length) : [VectorMath](../nodes/VectorMath.md) value (Float)
+- [less_equal](#less_equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [less_than](#less_than) : [Compare](../nodes/Compare.md) result (Boolean)
+- [map_range](#map_range) : [MapRange](../nodes/MapRange.md) vector (Vector)
+- [max](#max) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [min](#min) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [modulo](#modulo) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [multiply](#multiply) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [multiply_add](#multiply_add) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [normalize](#normalize) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [not_equal](#not_equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [project](#project) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [raycast](#raycast) : [Raycast](../nodes/Raycast.md) Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Vector)]
+- [reflect](#reflect) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [refract](#refract) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [rotate](#rotate) : [VectorRotate](../nodes/VectorRotate.md) vector (Vector)
+- [scale](#scale) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [sin](#sin) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [snap](#snap) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [subtract](#subtract) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [tan](#tan) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [transfer_attribute](#transfer_attribute) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Vector)
+- [wrap](#wrap) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
 
 
 
@@ -73,9 +73,9 @@
 
 
 
-- [align_to_vector](#align_to_vector) : Vector
-- [curves](#curves) : Vector
-- [rotate_euler](#rotate_euler) : Vector
+- [align_to_vector](#align_to_vector) : [AlignEulerToVector](../nodes/AlignEulerToVector.md) Vector
+- [curves](#curves) : [VectorCurves](../nodes/VectorCurves.md) Vector
+- [rotate_euler](#rotate_euler) : [RotateEuler](../nodes/RotateEuler.md) Vector
 
 
 

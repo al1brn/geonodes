@@ -17,73 +17,73 @@ class Geometry(dsock.Geometry):
 
     Static methods
     ==============
-    - is_viewport : is_viewport (Boolean) 
+    - is_viewport : IsViewport is_viewport (Boolean) 
     
 
     Properties
     ==========
-    - bound_box           : Sockets      [bounding_box (Geometry), min (Vector), max (Vector)] 
-    - box                 : bounding_box (Geometry) = bound_box.bounding_box 
-    - box_max             : max (Vector) = bound_box.max 
-    - box_min             : min (Vector) = bound_box.min 
-    - components          : Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances
-      (Instances)] 
-    - curve_component     : curve (Curve) = components.curve 
-    - instances_component : instances (Instances) = components.instances 
-    - mesh_component      : mesh (Mesh) = components.mesh 
-    - points_component    : point_cloud (Geometry) = components.point_cloud 
-    - volume_component    : volume (Volume) = components.volume 
+    - bound_box           : BoundingBox Sockets      [bounding_box (Geometry), min (Vector), max (Vector)] 
+    - box                 : BoundingBox bounding_box (Geometry) = bound_box.bounding_box 
+    - box_max             : BoundingBox max (Vector) = bound_box.max 
+    - box_min             : BoundingBox min (Vector) = bound_box.min 
+    - components          : SeparateComponents Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume
+      (Volume), instances (Instances)] 
+    - curve_component     : SeparateComponents curve (Curve) = components.curve 
+    - instances_component : SeparateComponents instances (Instances) = components.instances 
+    - mesh_component      : SeparateComponents mesh (Mesh) = components.mesh 
+    - points_component    : SeparateComponents point_cloud (Geometry) = components.point_cloud 
+    - volume_component    : SeparateComponents volume (Volume) = components.volume 
     
 
     Attribute capture
     =================
-    - capture_ID       : ID (Integer) 
-    - capture_index    : index (Integer) 
-    - capture_normal   : normal (Vector) 
-    - capture_position : position (Vector) 
-    - capture_radius   : radius (Float) 
+    - capture_ID       : ID ID (Integer) 
+    - capture_index    : Index index (Integer) 
+    - capture_normal   : Normal normal (Vector) 
+    - capture_position : Position position (Vector) 
+    - capture_radius   : Radius radius (Float) 
     
 
     Attributes
     ==========
-    - ID       : Integer = capture_ID(domain='POINT') 
-    - index    : Integer = capture_index(domain='POINT') 
-    - normal   : Vector = capture_normal(domain='FACE') 
-    - position : Vector = capture_position(domain='POINT') 
-    - radius   : Float = capture_radius(domain='POINT') 
+    - ID       : ID Integer = capture_ID(domain='POINT') 
+    - index    : Index Integer = capture_index(domain='POINT') 
+    - normal   : Normal Vector = capture_normal(domain='FACE') 
+    - position : Position Vector = capture_position(domain='POINT') 
+    - radius   : Radius Float = capture_radius(domain='POINT') 
     
 
     Methods
     =======
-    - attribute_domain_size : Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer),
-      face_corner_count (Integer), spline_count (Integer), instance_count (Integer)] 
-    - attribute_remove      : geometry (Geometry) 
-    - components            : Sockets      [selection (Geometry), inverted (Geometry)] 
-    - convex_hull           : convex_hull (Geometry) 
-    - join                  : geometry (Geometry) 
-    - proximity             : Sockets      [position (Vector), distance (Float)] 
-    - switch                : output (Geometry) 
-    - to_instance           : instances (Instances) 
-    - transfer_boolean      : attribute (Boolean) 
-    - transfer_color        : attribute (Color) 
-    - transfer_float        : attribute (Float) 
-    - transfer_integer      : attribute (Integer) 
-    - transfer_vector       : attribute (Vector) 
+    - attribute_domain_size : DomainSize Sockets      [point_count (Integer), edge_count (Integer), face_count
+      (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)] 
+    - attribute_remove      : AttributeRemove geometry (Geometry) 
+    - components            : SeparateGeometry Sockets      [selection (Geometry), inverted (Geometry)] 
+    - convex_hull           : ConvexHull convex_hull (Geometry) 
+    - join                  : JoinGeometry geometry (Geometry) 
+    - proximity             : GeometryProximity Sockets      [position (Vector), distance (Float)] 
+    - switch                : Switch output (Geometry) 
+    - to_instance           : GeometryToInstance instances (Instances) 
+    - transfer_boolean      : TransferAttribute attribute (Boolean) 
+    - transfer_color        : TransferAttribute attribute (Color) 
+    - transfer_float        : TransferAttribute attribute (Float) 
+    - transfer_integer      : TransferAttribute attribute (Integer) 
+    - transfer_vector       : TransferAttribute attribute (Vector) 
     
 
     Stacked methods
     ===============
-    - delete_geometry    : Geometry 
-    - merge_by_distance  : Geometry 
-    - realize_instances  : Geometry 
-    - replace_material   : Geometry 
-    - scale_elements     : Geometry 
-    - set_ID             : Geometry 
-    - set_material       : Geometry 
-    - set_material_index : Geometry 
-    - set_position       : Geometry 
-    - set_shade_smooth   : Geometry 
-    - transform          : Geometry 
+    - delete_geometry    : DeleteGeometry Geometry 
+    - merge_by_distance  : MergeByDistance Geometry 
+    - realize_instances  : RealizeInstances Geometry 
+    - replace_material   : ReplaceMaterial Geometry 
+    - scale_elements     : ScaleElements Geometry 
+    - set_ID             : SetID Geometry 
+    - set_material       : SetMaterial Geometry 
+    - set_material_index : SetMaterialIndex Geometry 
+    - set_position       : SetPosition Geometry 
+    - set_shade_smooth   : SetShadeSmooth Geometry 
+    - transform          : Transform Geometry 
     """
 
 

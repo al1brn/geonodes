@@ -7,14 +7,14 @@
 
 
 
-- [ArcFromRadius](#arcfromradius) : curve (Curve)
-- [BezierSegment](#beziersegment) : curve (Curve)
-- [Circle](#circle) : Sockets      [curve (Curve), center (Vector)]
-- [Line](#line) : curve (Curve)
-- [QuadraticBezier](#quadraticbezier) : curve (Curve)
-- [Quadrilateral](#quadrilateral) : curve (Curve)
-- [Spiral](#spiral) : curve (Curve)
-- [Star](#star) : Sockets      [curve (Curve), outer_points (Boolean)]
+- [ArcFromRadius](#arcfromradius) : [Arc](../nodes/Arc.md) curve (Curve)
+- [BezierSegment](#beziersegment) : [BezierSegment](../nodes/BezierSegment.md) curve (Curve)
+- [Circle](#circle) : [CurveCircle](../nodes/CurveCircle.md) Sockets      [curve (Curve), center (Vector)]
+- [Line](#line) : [CurveLine](../nodes/CurveLine.md) curve (Curve)
+- [QuadraticBezier](#quadraticbezier) : [QuadraticBezier](../nodes/QuadraticBezier.md) curve (Curve)
+- [Quadrilateral](#quadrilateral) : [Quadrilateral](../nodes/Quadrilateral.md) curve (Curve)
+- [Spiral](#spiral) : [Spiral](../nodes/Spiral.md) curve (Curve)
+- [Star](#star) : [Star](../nodes/Star.md) Sockets      [curve (Curve), outer_points (Boolean)]
 
 
 
@@ -22,7 +22,7 @@
 
 
 
-- [ArcFromPoints](#arcfrompoints) : Sockets      [curve (Curve), center (Vector), normal (Vector), radius (Float)]
+- [ArcFromPoints](#arcfrompoints) : [Arc](../nodes/Arc.md) Sockets      [curve (Curve), center (Vector), normal (Vector), radius (Float)]
 
 
 
@@ -30,10 +30,10 @@
 
 
 
-- [length](#length) : length (Float)
-- [sample](#sample) : Sockets      [position (Vector), tangent (Vector), normal (Vector)]
-- [to_mesh](#to_mesh) : mesh (Mesh)
-- [to_points](#to_points) : Sockets      [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
+- [length](#length) : [CurveLength](../nodes/CurveLength.md) length (Float)
+- [sample](#sample) : [SampleCurve](../nodes/SampleCurve.md) Sockets      [position (Vector), tangent (Vector), normal (Vector)]
+- [to_mesh](#to_mesh) : [CurveToMesh](../nodes/CurveToMesh.md) mesh (Mesh)
+- [to_points](#to_points) : [CurveToPoints](../nodes/CurveToPoints.md) Sockets      [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
 
 
 
@@ -41,17 +41,17 @@
 
 
 
-- [fill](#fill) : Curve
-- [fillet](#fillet) : Curve
-- [resample](#resample) : Curve
-- [reverse](#reverse) : Curve
-- [set_handle_positions](#set_handle_positions) : Curve
-- [set_handles](#set_handles) : Curve
-- [set_radius](#set_radius) : Curve
-- [set_spline_type](#set_spline_type) : Curve
-- [set_tilt](#set_tilt) : Curve
-- [subdivide](#subdivide) : Curve
-- [trim](#trim) : Curve
+- [fill](#fill) : [FillCurve](../nodes/FillCurve.md) Curve
+- [fillet](#fillet) : [FilletCurve](../nodes/FilletCurve.md) Curve
+- [resample](#resample) : [ResampleCurve](../nodes/ResampleCurve.md) Curve
+- [reverse](#reverse) : [ReverseCurve](../nodes/ReverseCurve.md) Curve
+- [set_handle_positions](#set_handle_positions) : [SetHandlePositions](../nodes/SetHandlePositions.md) Curve
+- [set_handles](#set_handles) : [SetHandleType](../nodes/SetHandleType.md) Curve
+- [set_radius](#set_radius) : [SetCurveRadius](../nodes/SetCurveRadius.md) Curve
+- [set_spline_type](#set_spline_type) : [SetSplineType](../nodes/SetSplineType.md) Curve
+- [set_tilt](#set_tilt) : [SetCurveTilt](../nodes/SetCurveTilt.md) Curve
+- [subdivide](#subdivide) : [SubdivideCurve](../nodes/SubdivideCurve.md) Curve
+- [trim](#trim) : [TrimCurve](../nodes/TrimCurve.md) Curve
 
 
 

@@ -17,8 +17,8 @@ class Collection(dsock.Collection):
 
     Methods
     =======
-    - info   : geometry (Geometry) 
-    - switch : output (Collection) 
+    - info   : CollectionInfo geometry (Geometry) 
+    - switch : Switch output (Collection) 
     """
 
 

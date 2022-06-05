@@ -7,7 +7,7 @@
 
 
 
-- [Random](#random) : value (Boolean)
+- [Random](#random) : [RandomValue](../nodes/RandomValue.md) value (Boolean)
 
 
 
@@ -15,20 +15,20 @@
 
 
 
-- [b_and](#b_and) : boolean (Boolean)
-- [b_not](#b_not) : boolean (Boolean)
-- [b_or](#b_or) : boolean (Boolean)
-- [capture_attribute](#capture_attribute) : Sockets      [geometry (Geometry), attribute (Boolean)]
-- [field_at_index](#field_at_index) : value (Boolean)
-- [imply](#imply) : boolean (Boolean)
-- [nand](#nand) : boolean (Boolean)
-- [nimply](#nimply) : boolean (Boolean)
-- [nor](#nor) : boolean (Boolean)
-- [raycast](#raycast) : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
-- [switch](#switch) : output (Boolean)
-- [transfer_attribute](#transfer_attribute) : attribute (Boolean)
-- [xnor](#xnor) : boolean (Boolean)
-- [xor](#xor) : boolean (Boolean)
+- [b_and](#b_and) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
+- [b_not](#b_not) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
+- [b_or](#b_or) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
+- [capture_attribute](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) Sockets      [geometry (Geometry), attribute (Boolean)]
+- [field_at_index](#field_at_index) : [FieldAtIndex](../nodes/FieldAtIndex.md) value (Boolean)
+- [imply](#imply) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
+- [nand](#nand) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
+- [nimply](#nimply) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
+- [nor](#nor) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
+- [raycast](#raycast) : [Raycast](../nodes/Raycast.md) Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
+- [switch](#switch) : [Switch](../nodes/Switch.md) output (Boolean)
+- [transfer_attribute](#transfer_attribute) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Boolean)
+- [xnor](#xnor) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
+- [xor](#xor) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
 
 
 

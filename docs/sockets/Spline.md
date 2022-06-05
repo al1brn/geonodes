@@ -7,15 +7,15 @@
 
 
 
-- [capture_cyclic](#capture_cyclic) : cyclic (Boolean)
-- [capture_endpoint_selection](#capture_endpoint_selection) : selection (Boolean)
-- [capture_handle_positions](#capture_handle_positions) : Sockets      [left (Vector), right (Vector)]
-- [capture_handle_type_selection](#capture_handle_type_selection) : selection (Boolean)
-- [capture_length](#capture_length) : Sockets      [length (Float), point_count (Integer)]
-- [capture_parameter](#capture_parameter) : Sockets      [factor (Float), length (Float), index (Integer)]
-- [capture_resolution](#capture_resolution) : resolution (Integer)
-- [capture_tangent](#capture_tangent) : tangent (Vector)
-- [capture_tilt](#capture_tilt) : tilt (Float)
+- [capture_cyclic](#capture_cyclic) : [IsSplineCyclic](../nodes/IsSplineCyclic.md) cyclic (Boolean)
+- [capture_endpoint_selection](#capture_endpoint_selection) : [EndpointSelection](../nodes/EndpointSelection.md) selection (Boolean)
+- [capture_handle_positions](#capture_handle_positions) : [CurveHandlePositions](../nodes/CurveHandlePositions.md) Sockets      [left (Vector), right (Vector)]
+- [capture_handle_type_selection](#capture_handle_type_selection) : [HandleTypeSelection](../nodes/HandleTypeSelection.md) selection (Boolean)
+- [capture_length](#capture_length) : [SplineLength](../nodes/SplineLength.md) Sockets      [length (Float), point_count (Integer)]
+- [capture_parameter](#capture_parameter) : [SplineParameter](../nodes/SplineParameter.md) Sockets      [factor (Float), length (Float), index (Integer)]
+- [capture_resolution](#capture_resolution) : [SplineResolution](../nodes/SplineResolution.md) resolution (Integer)
+- [capture_tangent](#capture_tangent) : [CurveTangent](../nodes/CurveTangent.md) tangent (Vector)
+- [capture_tilt](#capture_tilt) : [CurveTilt](../nodes/CurveTilt.md) tilt (Float)
 
 
 
@@ -23,22 +23,22 @@
 
 
 
-- [cyclic](#cyclic) : Boolean = capture_cyclic(domain='CURVE')
-- [endpoint_selection](#endpoint_selection) : Boolean = capture_endpoint_selection(domain='CURVE')
-- [factor](#factor) : Float = capture_parameter(domain='CURVE').factor
-- [handle_type_selection](#handle_type_selection) : Boolean = capture_handle_type_selection(domain='CURVE')
-- [left_handle_position](#left_handle_position) : Vector = capture_handle_positions(domain='CURVE').left
-- [length](#length) : Float = capture_length(domain='CURVE').length
-- [parameter_index](#parameter_index) : Integer = capture_parameter(domain='CURVE').index
-- [parameter_length](#parameter_length) : Float = capture_parameter(domain='CURVE').length
-- [point_count](#point_count) : Integer = capture_length(domain='CURVE').point_count
-- [resolution](#resolution) : Integer = capture_resolution(domain='CURVE')
-- [right_handle_position](#right_handle_position) : Vector = capture_handle_positions(domain='CURVE').right
-- [spline_ID](#spline_id) : Integer = capture_ID(domain='SPLINE')
-- [spline_index](#spline_index) : Integer = capture_index(domain='SPLINE')
-- [spline_position](#spline_position) : Integer = capture_position(domain='SPLINE')
-- [tangent](#tangent) : Vector = capture_tangent(domain='CURVE')
-- [tilt](#tilt) : Float = capture_tilt(domain='CURVE')
+- [cyclic](#cyclic) : [IsSplineCyclic](../nodes/IsSplineCyclic.md) Boolean = capture_cyclic(domain='CURVE')
+- [endpoint_selection](#endpoint_selection) : [EndpointSelection](../nodes/EndpointSelection.md) Boolean = capture_endpoint_selection(domain='CURVE')
+- [factor](#factor) : [SplineParameter](../nodes/SplineParameter.md) Float = capture_parameter(domain='CURVE').factor
+- [handle_type_selection](#handle_type_selection) : [HandleTypeSelection](../nodes/HandleTypeSelection.md) Boolean = capture_handle_type_selection(domain='CURVE')
+- [left_handle_position](#left_handle_position) : [CurveHandlePositions](../nodes/CurveHandlePositions.md) Vector = capture_handle_positions(domain='CURVE').left
+- [length](#length) : [SplineLength](../nodes/SplineLength.md) Float = capture_length(domain='CURVE').length
+- [parameter_index](#parameter_index) : [SplineParameter](../nodes/SplineParameter.md) Integer = capture_parameter(domain='CURVE').index
+- [parameter_length](#parameter_length) : [SplineParameter](../nodes/SplineParameter.md) Float = capture_parameter(domain='CURVE').length
+- [point_count](#point_count) : [SplineLength](../nodes/SplineLength.md) Integer = capture_length(domain='CURVE').point_count
+- [resolution](#resolution) : [SplineResolution](../nodes/SplineResolution.md) Integer = capture_resolution(domain='CURVE')
+- [right_handle_position](#right_handle_position) : [CurveHandlePositions](../nodes/CurveHandlePositions.md) Vector = capture_handle_positions(domain='CURVE').right
+- [spline_ID](#spline_id) : [ID](../nodes/ID.md) Integer = capture_ID(domain='SPLINE')
+- [spline_index](#spline_index) : [Index](../nodes/Index.md) Integer = capture_index(domain='SPLINE')
+- [spline_position](#spline_position) : [Index](../nodes/Index.md) Integer = capture_position(domain='SPLINE')
+- [tangent](#tangent) : [CurveTangent](../nodes/CurveTangent.md) Vector = capture_tangent(domain='CURVE')
+- [tilt](#tilt) : [CurveTilt](../nodes/CurveTilt.md) Float = capture_tilt(domain='CURVE')
 
 
 
@@ -46,8 +46,8 @@
 
 
 
-- [set_cyclic](#set_cyclic) : Spline
-- [set_resolution](#set_resolution) : Spline
+- [set_cyclic](#set_cyclic) : [SetSplineCyclic](../nodes/SetSplineCyclic.md) Spline
+- [set_resolution](#set_resolution) : [SetSplineResolution](../nodes/SetSplineResolution.md) Spline
 
 
 

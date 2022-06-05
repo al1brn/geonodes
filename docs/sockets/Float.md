@@ -7,7 +7,7 @@
 
 
 
-- [Random](#random) : value (Float)
+- [Random](#random) : [RandomValue](../nodes/RandomValue.md) value (Float)
 
 
 
@@ -15,63 +15,63 @@
 
 
 
-- [abs](#abs) : value (Float)
-- [accumulate_field](#accumulate_field) : Sockets      [leading (Float), trailing (Float), total (Float)]
-- [add](#add) : value (Float)
-- [arccos](#arccos) : value (Float)
-- [arcsin](#arcsin) : value (Float)
-- [arctan](#arctan) : value (Float)
-- [arctan2](#arctan2) : value (Float)
-- [attribute_statistic](#attribute_statistic) : Sockets      [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
-- [capture_attribute](#capture_attribute) : Sockets      [geometry (Geometry), attribute (Float)]
-- [ceil](#ceil) : value (Float)
-- [color_ramp](#color_ramp) : Sockets      [color (Color), alpha (Float)]
-- [compare](#compare) : value (Float)
-- [cos](#cos) : value (Float)
-- [cosh](#cosh) : value (Float)
-- [degrees](#degrees) : value (Float)
-- [divide](#divide) : value (Float)
-- [equal](#equal) : result (Boolean)
-- [exp](#exp) : value (Float)
-- [field_at_index](#field_at_index) : value (Float)
-- [floor](#floor) : value (Float)
-- [fract](#fract) : value (Float)
-- [greater_equal](#greater_equal) : result (Boolean)
-- [greater_than](#greater_than) : result (Boolean)
-- [greater_than](#greater_than) : value (Float)
-- [inverse_sqrt](#inverse_sqrt) : value (Float)
-- [less_equal](#less_equal) : result (Boolean)
-- [less_than](#less_than) : result (Boolean)
-- [less_than](#less_than) : value (Float)
-- [log](#log) : value (Float)
-- [map_range](#map_range) : result (Float)
-- [max](#max) : value (Float)
-- [min](#min) : value (Float)
-- [modulo](#modulo) : value (Float)
-- [multiply](#multiply) : value (Float)
-- [multiply_add](#multiply_add) : value (Float)
-- [not_equal](#not_equal) : result (Boolean)
-- [pingpong](#pingpong) : value (Float)
-- [pow](#pow) : value (Float)
-- [radians](#radians) : value (Float)
-- [raycast](#raycast) : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
-- [round](#round) : value (Float)
-- [sign](#sign) : value (Float)
-- [sin](#sin) : value (Float)
-- [sinh](#sinh) : value (Float)
-- [smooth_max](#smooth_max) : value (Float)
-- [smooth_min](#smooth_min) : value (Float)
-- [snap](#snap) : value (Float)
-- [sqrt](#sqrt) : value (Float)
-- [subtract](#subtract) : value (Float)
-- [switch](#switch) : output (Float)
-- [tan](#tan) : value (Float)
-- [tanh](#tanh) : value (Float)
-- [to_integer](#to_integer) : integer (Integer)
-- [to_string](#to_string) : string (String)
-- [transfer_attribute](#transfer_attribute) : attribute (Float)
-- [trunc](#trunc) : value (Float)
-- [wrap](#wrap) : value (Float)
+- [abs](#abs) : [Math](../nodes/Math.md) value (Float)
+- [accumulate_field](#accumulate_field) : [AccumulateField](../nodes/AccumulateField.md) Sockets      [leading (Float), trailing (Float), total (Float)]
+- [add](#add) : [Math](../nodes/Math.md) value (Float)
+- [arccos](#arccos) : [Math](../nodes/Math.md) value (Float)
+- [arcsin](#arcsin) : [Math](../nodes/Math.md) value (Float)
+- [arctan](#arctan) : [Math](../nodes/Math.md) value (Float)
+- [arctan2](#arctan2) : [Math](../nodes/Math.md) value (Float)
+- [attribute_statistic](#attribute_statistic) : [AttributeStatistic](../nodes/AttributeStatistic.md) Sockets      [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
+- [capture_attribute](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) Sockets      [geometry (Geometry), attribute (Float)]
+- [ceil](#ceil) : [Math](../nodes/Math.md) value (Float)
+- [color_ramp](#color_ramp) : [Colorramp](../nodes/Colorramp.md) Sockets      [color (Color), alpha (Float)]
+- [compare](#compare) : [Math](../nodes/Math.md) value (Float)
+- [cos](#cos) : [Math](../nodes/Math.md) value (Float)
+- [cosh](#cosh) : [Math](../nodes/Math.md) value (Float)
+- [degrees](#degrees) : [Math](../nodes/Math.md) value (Float)
+- [divide](#divide) : [Math](../nodes/Math.md) value (Float)
+- [equal](#equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [exp](#exp) : [Math](../nodes/Math.md) value (Float)
+- [field_at_index](#field_at_index) : [FieldAtIndex](../nodes/FieldAtIndex.md) value (Float)
+- [floor](#floor) : [Math](../nodes/Math.md) value (Float)
+- [fract](#fract) : [Math](../nodes/Math.md) value (Float)
+- [greater_equal](#greater_equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [greater_than](#greater_than) : [Compare](../nodes/Compare.md) result (Boolean)
+- [greater_than](#greater_than) : [Math](../nodes/Math.md) value (Float)
+- [inverse_sqrt](#inverse_sqrt) : [Math](../nodes/Math.md) value (Float)
+- [less_equal](#less_equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [less_than](#less_than) : [Compare](../nodes/Compare.md) result (Boolean)
+- [less_than](#less_than) : [Math](../nodes/Math.md) value (Float)
+- [log](#log) : [Math](../nodes/Math.md) value (Float)
+- [map_range](#map_range) : [MapRange](../nodes/MapRange.md) result (Float)
+- [max](#max) : [Math](../nodes/Math.md) value (Float)
+- [min](#min) : [Math](../nodes/Math.md) value (Float)
+- [modulo](#modulo) : [Math](../nodes/Math.md) value (Float)
+- [multiply](#multiply) : [Math](../nodes/Math.md) value (Float)
+- [multiply_add](#multiply_add) : [Math](../nodes/Math.md) value (Float)
+- [not_equal](#not_equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [pingpong](#pingpong) : [Math](../nodes/Math.md) value (Float)
+- [pow](#pow) : [Math](../nodes/Math.md) value (Float)
+- [radians](#radians) : [Math](../nodes/Math.md) value (Float)
+- [raycast](#raycast) : [Raycast](../nodes/Raycast.md) Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
+- [round](#round) : [Math](../nodes/Math.md) value (Float)
+- [sign](#sign) : [Math](../nodes/Math.md) value (Float)
+- [sin](#sin) : [Math](../nodes/Math.md) value (Float)
+- [sinh](#sinh) : [Math](../nodes/Math.md) value (Float)
+- [smooth_max](#smooth_max) : [Math](../nodes/Math.md) value (Float)
+- [smooth_min](#smooth_min) : [Math](../nodes/Math.md) value (Float)
+- [snap](#snap) : [Math](../nodes/Math.md) value (Float)
+- [sqrt](#sqrt) : [Math](../nodes/Math.md) value (Float)
+- [subtract](#subtract) : [Math](../nodes/Math.md) value (Float)
+- [switch](#switch) : [Switch](../nodes/Switch.md) output (Float)
+- [tan](#tan) : [Math](../nodes/Math.md) value (Float)
+- [tanh](#tanh) : [Math](../nodes/Math.md) value (Float)
+- [to_integer](#to_integer) : [FloatToInteger](../nodes/FloatToInteger.md) integer (Integer)
+- [to_string](#to_string) : [ValueToString](../nodes/ValueToString.md) string (String)
+- [transfer_attribute](#transfer_attribute) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Float)
+- [trunc](#trunc) : [Math](../nodes/Math.md) value (Float)
+- [wrap](#wrap) : [Math](../nodes/Math.md) value (Float)
 
 
 
@@ -79,8 +79,8 @@
 
 
 
-- [clamp](#clamp) : Float
-- [curve](#curve) : Float
+- [clamp](#clamp) : [Clamp](../nodes/Clamp.md) Float
+- [curve](#curve) : [FloatCurve](../nodes/FloatCurve.md) Float
 
 
 

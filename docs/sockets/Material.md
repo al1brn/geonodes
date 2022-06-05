@@ -7,8 +7,8 @@
 
 
 
-- [selection](#selection) : selection (Boolean)
-- [switch](#switch) : output (Material)
+- [selection](#selection) : [MaterialSelection](../nodes/MaterialSelection.md) selection (Boolean)
+- [switch](#switch) : [Switch](../nodes/Switch.md) output (Material)
 
 
 

@@ -7,9 +7,9 @@
 
 
 
-- [instance_on_points](#instance_on_points) : instances (Instances)
-- [to_vertices](#to_vertices) : mesh (Mesh)
-- [to_volume](#to_volume) : volume (Volume)
+- [instance_on_points](#instance_on_points) : [InstanceOnPoints](../nodes/InstanceOnPoints.md) instances (Instances)
+- [to_vertices](#to_vertices) : [PointsToVertices](../nodes/PointsToVertices.md) mesh (Mesh)
+- [to_volume](#to_volume) : [PointsToVolume](../nodes/PointsToVolume.md) volume (Volume)
 
 
 
@@ -17,7 +17,7 @@
 
 
 
-- [set_radius](#set_radius) : Points
+- [set_radius](#set_radius) : [SetPointRadius](../nodes/SetPointRadius.md) Points
 
 
 

@@ -17,26 +17,26 @@ class Boolean(dsock.Boolean):
 
     Constructors
     ============
-    - Random : value (Boolean) 
+    - Random : RandomValue value (Boolean) 
     
 
     Methods
     =======
-    - b_and              : boolean (Boolean) 
-    - b_not              : boolean (Boolean) 
-    - b_or               : boolean (Boolean) 
-    - capture_attribute  : Sockets      [geometry (Geometry), attribute (Boolean)] 
-    - field_at_index     : value (Boolean) 
-    - imply              : boolean (Boolean) 
-    - nand               : boolean (Boolean) 
-    - nimply             : boolean (Boolean) 
-    - nor                : boolean (Boolean) 
-    - raycast            : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float),
-      attribute (Boolean)] 
-    - switch             : output (Boolean) 
-    - transfer_attribute : attribute (Boolean) 
-    - xnor               : boolean (Boolean) 
-    - xor                : boolean (Boolean) 
+    - b_and              : BooleanMath boolean (Boolean) 
+    - b_not              : BooleanMath boolean (Boolean) 
+    - b_or               : BooleanMath boolean (Boolean) 
+    - capture_attribute  : CaptureAttribute Sockets      [geometry (Geometry), attribute (Boolean)] 
+    - field_at_index     : FieldAtIndex value (Boolean) 
+    - imply              : BooleanMath boolean (Boolean) 
+    - nand               : BooleanMath boolean (Boolean) 
+    - nimply             : BooleanMath boolean (Boolean) 
+    - nor                : BooleanMath boolean (Boolean) 
+    - raycast            : Raycast Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance
+      (Float), attribute (Boolean)] 
+    - switch             : Switch output (Boolean) 
+    - transfer_attribute : TransferAttribute attribute (Boolean) 
+    - xnor               : BooleanMath boolean (Boolean) 
+    - xor                : BooleanMath boolean (Boolean) 
     """
 
 

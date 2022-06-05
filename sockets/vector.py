@@ -17,68 +17,68 @@ class Vector(dsock.Vector):
 
     Constructors
     ============
-    - AlignToVector : rotation (Vector) 
-    - Combine       : vector (Vector) 
-    - Random        : value (Vector) 
+    - AlignToVector : AlignEulerToVector rotation (Vector) 
+    - Combine       : CombineXyz vector (Vector) 
+    - Random        : RandomValue value (Vector) 
     
 
     Properties
     ==========
-    - separate : Sockets      [x (Float), y (Float), z (Float)] 
+    - separate : SeparateXyz Sockets      [x (Float), y (Float), z (Float)] 
     
 
     Methods
     =======
-    - absolute            : vector (Vector) 
-    - accumulate_field    : Sockets      [leading (Vector), trailing (Vector), total (Vector)] 
-    - add                 : vector (Vector) 
-    - attribute_statistic : Sockets      [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector),
-      range (Vector), standard_deviation (Vector), variance (Vector)] 
-    - capture_attribute   : Sockets      [geometry (Geometry), attribute (Vector)] 
-    - ceil                : vector (Vector) 
-    - cos                 : vector (Vector) 
-    - cross               : vector (Vector) 
-    - distance            : value (Float) 
-    - divide              : vector (Vector) 
-    - dot                 : value (Float) 
-    - equal               : result (Boolean) 
-    - faceforward         : vector (Vector) 
-    - field_at_index      : value (Vector) 
-    - floor               : vector (Vector) 
-    - fraction            : vector (Vector) 
-    - greater_equal       : result (Boolean) 
-    - greater_than        : result (Boolean) 
-    - length              : value (Float) 
-    - less_equal          : result (Boolean) 
-    - less_than           : result (Boolean) 
-    - map_range           : vector (Vector) 
-    - max                 : vector (Vector) 
-    - min                 : vector (Vector) 
-    - modulo              : vector (Vector) 
-    - multiply            : vector (Vector) 
-    - multiply_add        : vector (Vector) 
-    - normalize           : vector (Vector) 
-    - not_equal           : result (Boolean) 
-    - project             : vector (Vector) 
-    - raycast             : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float),
-      attribute (Vector)] 
-    - reflect             : vector (Vector) 
-    - refract             : vector (Vector) 
-    - rotate              : vector (Vector) 
-    - scale               : vector (Vector) 
-    - sin                 : vector (Vector) 
-    - snap                : vector (Vector) 
-    - subtract            : vector (Vector) 
-    - tan                 : vector (Vector) 
-    - transfer_attribute  : attribute (Vector) 
-    - wrap                : vector (Vector) 
+    - absolute            : VectorMath vector (Vector) 
+    - accumulate_field    : AccumulateField Sockets      [leading (Vector), trailing (Vector), total (Vector)]
+    - add                 : VectorMath vector (Vector) 
+    - attribute_statistic : AttributeStatistic Sockets      [mean (Vector), median (Vector), sum (Vector), min
+      (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)] 
+    - capture_attribute   : CaptureAttribute Sockets      [geometry (Geometry), attribute (Vector)] 
+    - ceil                : VectorMath vector (Vector) 
+    - cos                 : VectorMath vector (Vector) 
+    - cross               : VectorMath vector (Vector) 
+    - distance            : VectorMath value (Float) 
+    - divide              : VectorMath vector (Vector) 
+    - dot                 : VectorMath value (Float) 
+    - equal               : Compare result (Boolean) 
+    - faceforward         : VectorMath vector (Vector) 
+    - field_at_index      : FieldAtIndex value (Vector) 
+    - floor               : VectorMath vector (Vector) 
+    - fraction            : VectorMath vector (Vector) 
+    - greater_equal       : Compare result (Boolean) 
+    - greater_than        : Compare result (Boolean) 
+    - length              : VectorMath value (Float) 
+    - less_equal          : Compare result (Boolean) 
+    - less_than           : Compare result (Boolean) 
+    - map_range           : MapRange vector (Vector) 
+    - max                 : VectorMath vector (Vector) 
+    - min                 : VectorMath vector (Vector) 
+    - modulo              : VectorMath vector (Vector) 
+    - multiply            : VectorMath vector (Vector) 
+    - multiply_add        : VectorMath vector (Vector) 
+    - normalize           : VectorMath vector (Vector) 
+    - not_equal           : Compare result (Boolean) 
+    - project             : VectorMath vector (Vector) 
+    - raycast             : Raycast Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance
+      (Float), attribute (Vector)] 
+    - reflect             : VectorMath vector (Vector) 
+    - refract             : VectorMath vector (Vector) 
+    - rotate              : VectorRotate vector (Vector) 
+    - scale               : VectorMath vector (Vector) 
+    - sin                 : VectorMath vector (Vector) 
+    - snap                : VectorMath vector (Vector) 
+    - subtract            : VectorMath vector (Vector) 
+    - tan                 : VectorMath vector (Vector) 
+    - transfer_attribute  : TransferAttribute attribute (Vector) 
+    - wrap                : VectorMath vector (Vector) 
     
 
     Stacked methods
     ===============
-    - align_to_vector : Vector 
-    - curves          : Vector 
-    - rotate_euler    : Vector 
+    - align_to_vector : AlignEulerToVector Vector 
+    - curves          : VectorCurves Vector 
+    - rotate_euler    : RotateEuler Vector 
     """
 
 

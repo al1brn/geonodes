@@ -7,7 +7,7 @@
 
 
 
-- [Combine](#combine) : image (Color)
+- [Combine](#combine) : [CombineRgb](../nodes/CombineRgb.md) image (Color)
 
 
 
@@ -15,7 +15,7 @@
 
 
 
-- [separate](#separate) : Sockets      [r (Float), g (Float), b (Float)]
+- [separate](#separate) : [SeparateRgb](../nodes/SeparateRgb.md) Sockets      [r (Float), g (Float), b (Float)]
 
 
 
@@ -23,33 +23,33 @@
 
 
 
-- [add](#add) : color (Color)
-- [brighter](#brighter) : result (Boolean)
-- [burn](#burn) : color (Color)
-- [capture_attribute](#capture_attribute) : Sockets      [geometry (Geometry), attribute (Color)]
-- [darken](#darken) : color (Color)
-- [darker](#darker) : result (Boolean)
-- [difference](#difference) : color (Color)
-- [divide](#divide) : color (Color)
-- [dodge](#dodge) : color (Color)
-- [equal](#equal) : result (Boolean)
-- [field_at_index](#field_at_index) : value (Color)
-- [hue](#hue) : color (Color)
-- [lighten](#lighten) : color (Color)
-- [linear_light](#linear_light) : color (Color)
-- [mix](#mix) : color (Color)
-- [mix](#mix) : color (Color)
-- [mix_color](#mix_color) : color (Color)
-- [multiply](#multiply) : color (Color)
-- [not_equal](#not_equal) : result (Boolean)
-- [overlay](#overlay) : color (Color)
-- [raycast](#raycast) : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Color)]
-- [saturation](#saturation) : color (Color)
-- [screen](#screen) : color (Color)
-- [soft_light](#soft_light) : color (Color)
-- [subtract](#subtract) : color (Color)
-- [transfer_attribute](#transfer_attribute) : attribute (Color)
-- [value](#value) : color (Color)
+- [add](#add) : [Mix](../nodes/Mix.md) color (Color)
+- [brighter](#brighter) : [Compare](../nodes/Compare.md) result (Boolean)
+- [burn](#burn) : [Mix](../nodes/Mix.md) color (Color)
+- [capture_attribute](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) Sockets      [geometry (Geometry), attribute (Color)]
+- [darken](#darken) : [Mix](../nodes/Mix.md) color (Color)
+- [darker](#darker) : [Compare](../nodes/Compare.md) result (Boolean)
+- [difference](#difference) : [Mix](../nodes/Mix.md) color (Color)
+- [divide](#divide) : [Mix](../nodes/Mix.md) color (Color)
+- [dodge](#dodge) : [Mix](../nodes/Mix.md) color (Color)
+- [equal](#equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [field_at_index](#field_at_index) : [FieldAtIndex](../nodes/FieldAtIndex.md) value (Color)
+- [hue](#hue) : [Mix](../nodes/Mix.md) color (Color)
+- [lighten](#lighten) : [Mix](../nodes/Mix.md) color (Color)
+- [linear_light](#linear_light) : [Mix](../nodes/Mix.md) color (Color)
+- [mix](#mix) : [Mix](../nodes/Mix.md) color (Color)
+- [mix](#mix) : [Mix](../nodes/Mix.md) color (Color)
+- [mix_color](#mix_color) : [Mix](../nodes/Mix.md) color (Color)
+- [multiply](#multiply) : [Mix](../nodes/Mix.md) color (Color)
+- [not_equal](#not_equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [overlay](#overlay) : [Mix](../nodes/Mix.md) color (Color)
+- [raycast](#raycast) : [Raycast](../nodes/Raycast.md) Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Color)]
+- [saturation](#saturation) : [Mix](../nodes/Mix.md) color (Color)
+- [screen](#screen) : [Mix](../nodes/Mix.md) color (Color)
+- [soft_light](#soft_light) : [Mix](../nodes/Mix.md) color (Color)
+- [subtract](#subtract) : [Mix](../nodes/Mix.md) color (Color)
+- [transfer_attribute](#transfer_attribute) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Color)
+- [value](#value) : [Mix](../nodes/Mix.md) color (Color)
 
 
 
@@ -57,7 +57,7 @@
 
 
 
-- [curves](#curves) : Color
+- [curves](#curves) : [RgbCurves](../nodes/RgbCurves.md) Color
 
 
 

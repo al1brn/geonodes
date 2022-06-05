@@ -17,76 +17,76 @@ class Float(dsock.Float):
 
     Constructors
     ============
-    - Random : value (Float) 
+    - Random : RandomValue value (Float) 
     
 
     Methods
     =======
-    - abs                 : value (Float) 
-    - accumulate_field    : Sockets      [leading (Float), trailing (Float), total (Float)] 
-    - add                 : value (Float) 
-    - arccos              : value (Float) 
-    - arcsin              : value (Float) 
-    - arctan              : value (Float) 
-    - arctan2             : value (Float) 
-    - attribute_statistic : Sockets      [mean (Float), median (Float), sum (Float), min (Float), max (Float),
-      range (Float), standard_deviation (Float), variance (Float)] 
-    - capture_attribute   : Sockets      [geometry (Geometry), attribute (Float)] 
-    - ceil                : value (Float) 
-    - color_ramp          : Sockets      [color (Color), alpha (Float)] 
-    - compare             : value (Float) 
-    - cos                 : value (Float) 
-    - cosh                : value (Float) 
-    - degrees             : value (Float) 
-    - divide              : value (Float) 
-    - equal               : result (Boolean) 
-    - exp                 : value (Float) 
-    - field_at_index      : value (Float) 
-    - floor               : value (Float) 
-    - fract               : value (Float) 
-    - greater_equal       : result (Boolean) 
-    - greater_than        : result (Boolean) 
-    - greater_than        : value (Float) 
-    - inverse_sqrt        : value (Float) 
-    - less_equal          : result (Boolean) 
-    - less_than           : result (Boolean) 
-    - less_than           : value (Float) 
-    - log                 : value (Float) 
-    - map_range           : result (Float) 
-    - max                 : value (Float) 
-    - min                 : value (Float) 
-    - modulo              : value (Float) 
-    - multiply            : value (Float) 
-    - multiply_add        : value (Float) 
-    - not_equal           : result (Boolean) 
-    - pingpong            : value (Float) 
-    - pow                 : value (Float) 
-    - radians             : value (Float) 
-    - raycast             : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float),
-      attribute (Float)] 
-    - round               : value (Float) 
-    - sign                : value (Float) 
-    - sin                 : value (Float) 
-    - sinh                : value (Float) 
-    - smooth_max          : value (Float) 
-    - smooth_min          : value (Float) 
-    - snap                : value (Float) 
-    - sqrt                : value (Float) 
-    - subtract            : value (Float) 
-    - switch              : output (Float) 
-    - tan                 : value (Float) 
-    - tanh                : value (Float) 
-    - to_integer          : integer (Integer) 
-    - to_string           : string (String) 
-    - transfer_attribute  : attribute (Float) 
-    - trunc               : value (Float) 
-    - wrap                : value (Float) 
+    - abs                 : Math value (Float) 
+    - accumulate_field    : AccumulateField Sockets      [leading (Float), trailing (Float), total (Float)] 
+    - add                 : Math value (Float) 
+    - arccos              : Math value (Float) 
+    - arcsin              : Math value (Float) 
+    - arctan              : Math value (Float) 
+    - arctan2             : Math value (Float) 
+    - attribute_statistic : AttributeStatistic Sockets      [mean (Float), median (Float), sum (Float), min
+      (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)] 
+    - capture_attribute   : CaptureAttribute Sockets      [geometry (Geometry), attribute (Float)] 
+    - ceil                : Math value (Float) 
+    - color_ramp          : Colorramp Sockets      [color (Color), alpha (Float)] 
+    - compare             : Math value (Float) 
+    - cos                 : Math value (Float) 
+    - cosh                : Math value (Float) 
+    - degrees             : Math value (Float) 
+    - divide              : Math value (Float) 
+    - equal               : Compare result (Boolean) 
+    - exp                 : Math value (Float) 
+    - field_at_index      : FieldAtIndex value (Float) 
+    - floor               : Math value (Float) 
+    - fract               : Math value (Float) 
+    - greater_equal       : Compare result (Boolean) 
+    - greater_than        : Compare result (Boolean) 
+    - greater_than        : Math value (Float) 
+    - inverse_sqrt        : Math value (Float) 
+    - less_equal          : Compare result (Boolean) 
+    - less_than           : Compare result (Boolean) 
+    - less_than           : Math value (Float) 
+    - log                 : Math value (Float) 
+    - map_range           : MapRange result (Float) 
+    - max                 : Math value (Float) 
+    - min                 : Math value (Float) 
+    - modulo              : Math value (Float) 
+    - multiply            : Math value (Float) 
+    - multiply_add        : Math value (Float) 
+    - not_equal           : Compare result (Boolean) 
+    - pingpong            : Math value (Float) 
+    - pow                 : Math value (Float) 
+    - radians             : Math value (Float) 
+    - raycast             : Raycast Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance
+      (Float), attribute (Float)] 
+    - round               : Math value (Float) 
+    - sign                : Math value (Float) 
+    - sin                 : Math value (Float) 
+    - sinh                : Math value (Float) 
+    - smooth_max          : Math value (Float) 
+    - smooth_min          : Math value (Float) 
+    - snap                : Math value (Float) 
+    - sqrt                : Math value (Float) 
+    - subtract            : Math value (Float) 
+    - switch              : Switch output (Float) 
+    - tan                 : Math value (Float) 
+    - tanh                : Math value (Float) 
+    - to_integer          : FloatToInteger integer (Integer) 
+    - to_string           : ValueToString string (String) 
+    - transfer_attribute  : TransferAttribute attribute (Float) 
+    - trunc               : Math value (Float) 
+    - wrap                : Math value (Float) 
     
 
     Stacked methods
     ===============
-    - clamp : Float 
-    - curve : Float 
+    - clamp : Clamp Float 
+    - curve : FloatCurve Float 
     """
 
 

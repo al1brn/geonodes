@@ -7,8 +7,8 @@
 
 
 
-- [info](#info) : geometry (Geometry)
-- [switch](#switch) : output (Collection)
+- [info](#info) : [CollectionInfo](../nodes/CollectionInfo.md) geometry (Geometry)
+- [switch](#switch) : [Switch](../nodes/Switch.md) output (Collection)
 
 
 
