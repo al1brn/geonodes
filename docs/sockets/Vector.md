@@ -7,9 +7,9 @@
 
 
 
-- [**self.meth_name**](#aligntovector) : [AlignEulerToVector](../nodes/AlignEulerToVector.md) rotation (Vector)
-- [**self.meth_name**](#combine) : [CombineXyz](../nodes/CombineXyz.md) vector (Vector)
-- [**self.meth_name**](#random) : [RandomValue](../nodes/RandomValue.md) value (Vector)
+- [**AlignToVector**](#aligntovector) : [AlignEulerToVector](../nodes/AlignEulerToVector.md) rotation (Vector)
+- [**Combine**](#combine) : [CombineXyz](../nodes/CombineXyz.md) vector (Vector)
+- [**Random**](#random) : [RandomValue](../nodes/RandomValue.md) value (Vector)
 
 
 
@@ -17,7 +17,7 @@
 
 
 
-- [**self.meth_name**](#separate) : [SeparateXyz](../nodes/SeparateXyz.md) Sockets      [x (Float), y (Float), z (Float)]
+- [**separate**](#separate) : [SeparateXyz](../nodes/SeparateXyz.md) Sockets      [x (Float), y (Float), z (Float)]
 
 
 
@@ -25,47 +25,47 @@
 
 
 
-- [**self.meth_name**](#absolute) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#accumulate_field) : [AccumulateField](../nodes/AccumulateField.md) Sockets      [leading (Vector), trailing (Vector), total (Vector)]
-- [**self.meth_name**](#add) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#attribute_statistic) : [AttributeStatistic](../nodes/AttributeStatistic.md) Sockets      [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)]
-- [**self.meth_name**](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) Sockets      [geometry (Geometry), attribute (Vector)]
-- [**self.meth_name**](#ceil) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#cos) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#cross) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#distance) : [VectorMath](../nodes/VectorMath.md) value (Float)
-- [**self.meth_name**](#divide) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#dot) : [VectorMath](../nodes/VectorMath.md) value (Float)
-- [**self.meth_name**](#equal) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**self.meth_name**](#faceforward) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#field_at_index) : [FieldAtIndex](../nodes/FieldAtIndex.md) value (Vector)
-- [**self.meth_name**](#floor) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#fraction) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#greater_equal) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**self.meth_name**](#greater_than) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**self.meth_name**](#length) : [VectorMath](../nodes/VectorMath.md) value (Float)
-- [**self.meth_name**](#less_equal) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**self.meth_name**](#less_than) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**self.meth_name**](#map_range) : [MapRange](../nodes/MapRange.md) vector (Vector)
-- [**self.meth_name**](#max) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#min) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#modulo) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#multiply) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#multiply_add) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#normalize) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#not_equal) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**self.meth_name**](#project) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#raycast) : [Raycast](../nodes/Raycast.md) Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Vector)]
-- [**self.meth_name**](#reflect) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#refract) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#rotate) : [VectorRotate](../nodes/VectorRotate.md) vector (Vector)
-- [**self.meth_name**](#scale) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#sin) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#snap) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#subtract) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#tan) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-- [**self.meth_name**](#transfer_attribute) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Vector)
-- [**self.meth_name**](#wrap) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**absolute**](#absolute) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**accumulate_field**](#accumulate_field) : [AccumulateField](../nodes/AccumulateField.md) Sockets      [leading (Vector), trailing (Vector), total (Vector)]
+- [**add**](#add) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**attribute_statistic**](#attribute_statistic) : [AttributeStatistic](../nodes/AttributeStatistic.md) Sockets      [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)]
+- [**capture_attribute**](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) Sockets      [geometry (Geometry), attribute (Vector)]
+- [**ceil**](#ceil) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**cos**](#cos) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**cross**](#cross) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**distance**](#distance) : [VectorMath](../nodes/VectorMath.md) value (Float)
+- [**divide**](#divide) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**dot**](#dot) : [VectorMath](../nodes/VectorMath.md) value (Float)
+- [**equal**](#equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**faceforward**](#faceforward) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**field_at_index**](#field_at_index) : [FieldAtIndex](../nodes/FieldAtIndex.md) value (Vector)
+- [**floor**](#floor) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**fraction**](#fraction) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**greater_equal**](#greater_equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**greater_than**](#greater_than) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**length**](#length) : [VectorMath](../nodes/VectorMath.md) value (Float)
+- [**less_equal**](#less_equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**less_than**](#less_than) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**map_range**](#map_range) : [MapRange](../nodes/MapRange.md) vector (Vector)
+- [**max**](#max) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**min**](#min) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**modulo**](#modulo) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**multiply**](#multiply) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**multiply_add**](#multiply_add) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**normalize**](#normalize) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**not_equal**](#not_equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**project**](#project) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**raycast**](#raycast) : [Raycast](../nodes/Raycast.md) Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Vector)]
+- [**reflect**](#reflect) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**refract**](#refract) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**rotate**](#rotate) : [VectorRotate](../nodes/VectorRotate.md) vector (Vector)
+- [**scale**](#scale) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**sin**](#sin) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**snap**](#snap) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**subtract**](#subtract) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**tan**](#tan) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**transfer_attribute**](#transfer_attribute) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Vector)
+- [**wrap**](#wrap) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
 
 
 
@@ -73,9 +73,9 @@
 
 
 
-- [**self.meth_name**](#align_to_vector) : [AlignEulerToVector](../nodes/AlignEulerToVector.md) Vector
-- [**self.meth_name**](#curves) : [VectorCurves](../nodes/VectorCurves.md) Vector
-- [**self.meth_name**](#rotate_euler) : [RotateEuler](../nodes/RotateEuler.md) Vector
+- [**align_to_vector**](#align_to_vector) : [AlignEulerToVector](../nodes/AlignEulerToVector.md) Vector
+- [**curves**](#curves) : [VectorCurves](../nodes/VectorCurves.md) Vector
+- [**rotate_euler**](#rotate_euler) : [RotateEuler](../nodes/RotateEuler.md) Vector
 
 
 

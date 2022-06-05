@@ -17,41 +17,41 @@ class Spline(Geometry):
 
     Attribute capture
     =================
-    - **self.meth_name** : IsSplineCyclic cyclic (Boolean) 
-    - **self.meth_name** : EndpointSelection selection (Boolean) 
-    - **self.meth_name** : CurveHandlePositions Sockets      [left (Vector), right (Vector)] 
-    - **self.meth_name** : HandleTypeSelection selection (Boolean) 
-    - **self.meth_name** : SplineLength Sockets      [length (Float), point_count (Integer)] 
-    - **self.meth_name** : SplineParameter Sockets      [factor (Float), length (Float), index (Integer)] 
-    - **self.meth_name** : SplineResolution resolution (Integer) 
-    - **self.meth_name** : CurveTangent tangent (Vector) 
-    - **self.meth_name** : CurveTilt tilt (Float) 
+    - **capture_cyclic**                : IsSplineCyclic cyclic (Boolean) 
+    - **capture_endpoint_selection**    : EndpointSelection selection (Boolean) 
+    - **capture_handle_positions**      : CurveHandlePositions Sockets      [left (Vector), right (Vector)] 
+    - **capture_handle_type_selection** : HandleTypeSelection selection (Boolean) 
+    - **capture_length**                : SplineLength Sockets      [length (Float), point_count (Integer)] 
+    - **capture_parameter**             : SplineParameter Sockets      [factor (Float), length (Float), index (Integer)]
+    - **capture_resolution**            : SplineResolution resolution (Integer) 
+    - **capture_tangent**               : CurveTangent tangent (Vector) 
+    - **capture_tilt**                  : CurveTilt tilt (Float) 
     
 
     Attributes
     ==========
-    - **self.meth_name** : IsSplineCyclic Boolean = capture_cyclic(domain='CURVE') 
-    - **self.meth_name** : EndpointSelection Boolean = capture_endpoint_selection(domain='CURVE') 
-    - **self.meth_name** : SplineParameter Float = capture_parameter(domain='CURVE').factor 
-    - **self.meth_name** : HandleTypeSelection Boolean = capture_handle_type_selection(domain='CURVE') 
-    - **self.meth_name** : CurveHandlePositions Vector = capture_handle_positions(domain='CURVE').left 
-    - **self.meth_name** : SplineLength Float = capture_length(domain='CURVE').length 
-    - **self.meth_name** : SplineParameter Integer = capture_parameter(domain='CURVE').index 
-    - **self.meth_name** : SplineParameter Float = capture_parameter(domain='CURVE').length 
-    - **self.meth_name** : SplineLength Integer = capture_length(domain='CURVE').point_count 
-    - **self.meth_name** : SplineResolution Integer = capture_resolution(domain='CURVE') 
-    - **self.meth_name** : CurveHandlePositions Vector = capture_handle_positions(domain='CURVE').right 
-    - **self.meth_name** : ID Integer = capture_ID(domain='SPLINE') 
-    - **self.meth_name** : Index Integer = capture_index(domain='SPLINE') 
-    - **self.meth_name** : Index Integer = capture_position(domain='SPLINE') 
-    - **self.meth_name** : CurveTangent Vector = capture_tangent(domain='CURVE') 
-    - **self.meth_name** : CurveTilt Float = capture_tilt(domain='CURVE') 
+    - **cyclic**                : IsSplineCyclic Boolean = capture_cyclic(domain='CURVE') 
+    - **endpoint_selection**    : EndpointSelection Boolean = capture_endpoint_selection(domain='CURVE') 
+    - **factor**                : SplineParameter Float = capture_parameter(domain='CURVE').factor 
+    - **handle_type_selection** : HandleTypeSelection Boolean = capture_handle_type_selection(domain='CURVE')
+    - **left_handle_position**  : CurveHandlePositions Vector = capture_handle_positions(domain='CURVE').left
+    - **length**                : SplineLength Float = capture_length(domain='CURVE').length 
+    - **parameter_index**       : SplineParameter Integer = capture_parameter(domain='CURVE').index 
+    - **parameter_length**      : SplineParameter Float = capture_parameter(domain='CURVE').length 
+    - **point_count**           : SplineLength Integer = capture_length(domain='CURVE').point_count 
+    - **resolution**            : SplineResolution Integer = capture_resolution(domain='CURVE') 
+    - **right_handle_position** : CurveHandlePositions Vector = capture_handle_positions(domain='CURVE').right
+    - **spline_ID**             : ID Integer = capture_ID(domain='SPLINE') 
+    - **spline_index**          : Index Integer = capture_index(domain='SPLINE') 
+    - **spline_position**       : Index Integer = capture_position(domain='SPLINE') 
+    - **tangent**               : CurveTangent Vector = capture_tangent(domain='CURVE') 
+    - **tilt**                  : CurveTilt Float = capture_tilt(domain='CURVE') 
     
 
     Stacked methods
     ===============
-    - **self.meth_name** : SetSplineCyclic Spline 
-    - **self.meth_name** : SetSplineResolution Spline 
+    - **set_cyclic**     : SetSplineCyclic Spline 
+    - **set_resolution** : SetSplineResolution Spline 
     """
 
 

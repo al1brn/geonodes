@@ -7,7 +7,7 @@
 
 
 
-- [**self.meth_name**](#random) : [RandomValue](../nodes/RandomValue.md) value (Float)
+- [**Random**](#random) : [RandomValue](../nodes/RandomValue.md) value (Float)
 
 
 
@@ -15,63 +15,63 @@
 
 
 
-- [**self.meth_name**](#abs) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#accumulate_field) : [AccumulateField](../nodes/AccumulateField.md) Sockets      [leading (Float), trailing (Float), total (Float)]
-- [**self.meth_name**](#add) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#arccos) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#arcsin) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#arctan) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#arctan2) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#attribute_statistic) : [AttributeStatistic](../nodes/AttributeStatistic.md) Sockets      [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
-- [**self.meth_name**](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) Sockets      [geometry (Geometry), attribute (Float)]
-- [**self.meth_name**](#ceil) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#color_ramp) : [Colorramp](../nodes/Colorramp.md) Sockets      [color (Color), alpha (Float)]
-- [**self.meth_name**](#compare) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#cos) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#cosh) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#degrees) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#divide) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#equal) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**self.meth_name**](#exp) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#field_at_index) : [FieldAtIndex](../nodes/FieldAtIndex.md) value (Float)
-- [**self.meth_name**](#floor) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#fract) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#greater_equal) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**self.meth_name**](#greater_than) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**self.meth_name**](#greater_than) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#inverse_sqrt) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#less_equal) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**self.meth_name**](#less_than) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**self.meth_name**](#less_than) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#log) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#map_range) : [MapRange](../nodes/MapRange.md) result (Float)
-- [**self.meth_name**](#max) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#min) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#modulo) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#multiply) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#multiply_add) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#not_equal) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**self.meth_name**](#pingpong) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#pow) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#radians) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#raycast) : [Raycast](../nodes/Raycast.md) Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
-- [**self.meth_name**](#round) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#sign) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#sin) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#sinh) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#smooth_max) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#smooth_min) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#snap) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#sqrt) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#subtract) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#switch) : [Switch](../nodes/Switch.md) output (Float)
-- [**self.meth_name**](#tan) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#tanh) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#to_integer) : [FloatToInteger](../nodes/FloatToInteger.md) integer (Integer)
-- [**self.meth_name**](#to_string) : [ValueToString](../nodes/ValueToString.md) string (String)
-- [**self.meth_name**](#transfer_attribute) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Float)
-- [**self.meth_name**](#trunc) : [Math](../nodes/Math.md) value (Float)
-- [**self.meth_name**](#wrap) : [Math](../nodes/Math.md) value (Float)
+- [**abs**](#abs) : [Math](../nodes/Math.md) value (Float)
+- [**accumulate_field**](#accumulate_field) : [AccumulateField](../nodes/AccumulateField.md) Sockets      [leading (Float), trailing (Float), total (Float)]
+- [**add**](#add) : [Math](../nodes/Math.md) value (Float)
+- [**arccos**](#arccos) : [Math](../nodes/Math.md) value (Float)
+- [**arcsin**](#arcsin) : [Math](../nodes/Math.md) value (Float)
+- [**arctan**](#arctan) : [Math](../nodes/Math.md) value (Float)
+- [**arctan2**](#arctan2) : [Math](../nodes/Math.md) value (Float)
+- [**attribute_statistic**](#attribute_statistic) : [AttributeStatistic](../nodes/AttributeStatistic.md) Sockets      [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
+- [**capture_attribute**](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) Sockets      [geometry (Geometry), attribute (Float)]
+- [**ceil**](#ceil) : [Math](../nodes/Math.md) value (Float)
+- [**color_ramp**](#color_ramp) : [Colorramp](../nodes/Colorramp.md) Sockets      [color (Color), alpha (Float)]
+- [**compare**](#compare) : [Math](../nodes/Math.md) value (Float)
+- [**cos**](#cos) : [Math](../nodes/Math.md) value (Float)
+- [**cosh**](#cosh) : [Math](../nodes/Math.md) value (Float)
+- [**degrees**](#degrees) : [Math](../nodes/Math.md) value (Float)
+- [**divide**](#divide) : [Math](../nodes/Math.md) value (Float)
+- [**equal**](#equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**exp**](#exp) : [Math](../nodes/Math.md) value (Float)
+- [**field_at_index**](#field_at_index) : [FieldAtIndex](../nodes/FieldAtIndex.md) value (Float)
+- [**floor**](#floor) : [Math](../nodes/Math.md) value (Float)
+- [**fract**](#fract) : [Math](../nodes/Math.md) value (Float)
+- [**greater_equal**](#greater_equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**greater_than**](#greater_than) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**greater_than**](#greater_than) : [Math](../nodes/Math.md) value (Float)
+- [**inverse_sqrt**](#inverse_sqrt) : [Math](../nodes/Math.md) value (Float)
+- [**less_equal**](#less_equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**less_than**](#less_than) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**less_than**](#less_than) : [Math](../nodes/Math.md) value (Float)
+- [**log**](#log) : [Math](../nodes/Math.md) value (Float)
+- [**map_range**](#map_range) : [MapRange](../nodes/MapRange.md) result (Float)
+- [**max**](#max) : [Math](../nodes/Math.md) value (Float)
+- [**min**](#min) : [Math](../nodes/Math.md) value (Float)
+- [**modulo**](#modulo) : [Math](../nodes/Math.md) value (Float)
+- [**multiply**](#multiply) : [Math](../nodes/Math.md) value (Float)
+- [**multiply_add**](#multiply_add) : [Math](../nodes/Math.md) value (Float)
+- [**not_equal**](#not_equal) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**pingpong**](#pingpong) : [Math](../nodes/Math.md) value (Float)
+- [**pow**](#pow) : [Math](../nodes/Math.md) value (Float)
+- [**radians**](#radians) : [Math](../nodes/Math.md) value (Float)
+- [**raycast**](#raycast) : [Raycast](../nodes/Raycast.md) Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
+- [**round**](#round) : [Math](../nodes/Math.md) value (Float)
+- [**sign**](#sign) : [Math](../nodes/Math.md) value (Float)
+- [**sin**](#sin) : [Math](../nodes/Math.md) value (Float)
+- [**sinh**](#sinh) : [Math](../nodes/Math.md) value (Float)
+- [**smooth_max**](#smooth_max) : [Math](../nodes/Math.md) value (Float)
+- [**smooth_min**](#smooth_min) : [Math](../nodes/Math.md) value (Float)
+- [**snap**](#snap) : [Math](../nodes/Math.md) value (Float)
+- [**sqrt**](#sqrt) : [Math](../nodes/Math.md) value (Float)
+- [**subtract**](#subtract) : [Math](../nodes/Math.md) value (Float)
+- [**switch**](#switch) : [Switch](../nodes/Switch.md) output (Float)
+- [**tan**](#tan) : [Math](../nodes/Math.md) value (Float)
+- [**tanh**](#tanh) : [Math](../nodes/Math.md) value (Float)
+- [**to_integer**](#to_integer) : [FloatToInteger](../nodes/FloatToInteger.md) integer (Integer)
+- [**to_string**](#to_string) : [ValueToString](../nodes/ValueToString.md) string (String)
+- [**transfer_attribute**](#transfer_attribute) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Float)
+- [**trunc**](#trunc) : [Math](../nodes/Math.md) value (Float)
+- [**wrap**](#wrap) : [Math](../nodes/Math.md) value (Float)
 
 
 
@@ -79,8 +79,8 @@
 
 
 
-- [**self.meth_name**](#clamp) : [Clamp](../nodes/Clamp.md) Float
-- [**self.meth_name**](#curve) : [FloatCurve](../nodes/FloatCurve.md) Float
+- [**clamp**](#clamp) : [Clamp](../nodes/Clamp.md) Float
+- [**curve**](#curve) : [FloatCurve](../nodes/FloatCurve.md) Float
 
 
 

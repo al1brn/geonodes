@@ -17,43 +17,43 @@ class Curve(Spline):
 
     Constructors
     ============
-    - **self.meth_name** : Arc curve (Curve) 
-    - **self.meth_name** : BezierSegment curve (Curve) 
-    - **self.meth_name** : CurveCircle Sockets      [curve (Curve), center (Vector)] 
-    - **self.meth_name** : CurveLine curve (Curve) 
-    - **self.meth_name** : QuadraticBezier curve (Curve) 
-    - **self.meth_name** : Quadrilateral curve (Curve) 
-    - **self.meth_name** : Spiral curve (Curve) 
-    - **self.meth_name** : Star Sockets      [curve (Curve), outer_points (Boolean)] 
+    - **ArcFromRadius**   : Arc curve (Curve) 
+    - **BezierSegment**   : BezierSegment curve (Curve) 
+    - **Circle**          : CurveCircle Sockets      [curve (Curve), center (Vector)] 
+    - **Line**            : CurveLine curve (Curve) 
+    - **QuadraticBezier** : QuadraticBezier curve (Curve) 
+    - **Quadrilateral**   : Quadrilateral curve (Curve) 
+    - **Spiral**          : Spiral curve (Curve) 
+    - **Star**            : Star Sockets      [curve (Curve), outer_points (Boolean)] 
     
 
     Static methods
     ==============
-    - **self.meth_name** : Arc Sockets      [curve (Curve), center (Vector), normal (Vector), radius (Float)]
+    - **ArcFromPoints** : Arc Sockets      [curve (Curve), center (Vector), normal (Vector), radius (Float)]
     
 
     Methods
     =======
-    - **self.meth_name** : CurveLength length (Float) 
-    - **self.meth_name** : SampleCurve Sockets      [position (Vector), tangent (Vector), normal (Vector)] 
-    - **self.meth_name** : CurveToMesh mesh (Mesh) 
-    - **self.meth_name** : CurveToPoints Sockets      [points (Points), tangent (Vector), normal (Vector), rotation
+    - **length**    : CurveLength length (Float) 
+    - **sample**    : SampleCurve Sockets      [position (Vector), tangent (Vector), normal (Vector)] 
+    - **to_mesh**   : CurveToMesh mesh (Mesh) 
+    - **to_points** : CurveToPoints Sockets      [points (Points), tangent (Vector), normal (Vector), rotation
       (Vector)] 
     
 
     Stacked methods
     ===============
-    - **self.meth_name** : FillCurve Curve 
-    - **self.meth_name** : FilletCurve Curve 
-    - **self.meth_name** : ResampleCurve Curve 
-    - **self.meth_name** : ReverseCurve Curve 
-    - **self.meth_name** : SetHandlePositions Curve 
-    - **self.meth_name** : SetHandleType Curve 
-    - **self.meth_name** : SetCurveRadius Curve 
-    - **self.meth_name** : SetSplineType Curve 
-    - **self.meth_name** : SetCurveTilt Curve 
-    - **self.meth_name** : SubdivideCurve Curve 
-    - **self.meth_name** : TrimCurve Curve 
+    - **fill**                 : FillCurve Curve 
+    - **fillet**               : FilletCurve Curve 
+    - **resample**             : ResampleCurve Curve 
+    - **reverse**              : ReverseCurve Curve 
+    - **set_handle_positions** : SetHandlePositions Curve 
+    - **set_handles**          : SetHandleType Curve 
+    - **set_radius**           : SetCurveRadius Curve 
+    - **set_spline_type**      : SetSplineType Curve 
+    - **set_tilt**             : SetCurveTilt Curve 
+    - **subdivide**            : SubdivideCurve Curve 
+    - **trim**                 : TrimCurve Curve 
     """
 
 

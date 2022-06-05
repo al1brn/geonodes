@@ -7,7 +7,7 @@
 
 
 
-- [**self.meth_name**](#to_mesh) : [VolumeToMesh](../nodes/VolumeToMesh.md) mesh (Mesh)
+- [**to_mesh**](#to_mesh) : [VolumeToMesh](../nodes/VolumeToMesh.md) mesh (Mesh)
 
 
 

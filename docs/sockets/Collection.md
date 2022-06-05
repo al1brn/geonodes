@@ -7,8 +7,8 @@
 
 
 
-- [**self.meth_name**](#info) : [CollectionInfo](../nodes/CollectionInfo.md) geometry (Geometry)
-- [**self.meth_name**](#switch) : [Switch](../nodes/Switch.md) output (Collection)
+- [**info**](#info) : [CollectionInfo](../nodes/CollectionInfo.md) geometry (Geometry)
+- [**switch**](#switch) : [Switch](../nodes/Switch.md) output (Collection)
 
 
 

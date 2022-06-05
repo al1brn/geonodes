@@ -7,7 +7,7 @@
 
 
 
-- [**self.meth_name**](#info) : [ObjectInfo](../nodes/ObjectInfo.md) Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+- [**info**](#info) : [ObjectInfo](../nodes/ObjectInfo.md) Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
 
 
 
@@ -15,7 +15,7 @@
 
 
 
-- [**self.meth_name**](#switch) : [Switch](../nodes/Switch.md) output (Object)
+- [**switch**](#switch) : [Switch](../nodes/Switch.md) output (Object)
 
 
 

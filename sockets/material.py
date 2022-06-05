@@ -17,8 +17,8 @@ class Material(dsock.Material):
 
     Methods
     =======
-    - **self.meth_name** : MaterialSelection selection (Boolean) 
-    - **self.meth_name** : Switch output (Material) 
+    - **selection** : MaterialSelection selection (Boolean) 
+    - **switch**    : Switch output (Material) 
     """
 
 

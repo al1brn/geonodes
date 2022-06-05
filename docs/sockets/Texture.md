@@ -7,16 +7,16 @@
 
 
 
-- [**self.meth_name**](#brick) : [BrickTexture](../nodes/BrickTexture.md) Sockets      [color (Color), fac (Float)]
-- [**self.meth_name**](#checker) : [CheckerTexture](../nodes/CheckerTexture.md) Sockets      [color (Color), fac (Float)]
-- [**self.meth_name**](#gradient) : [GradientTexture](../nodes/GradientTexture.md) Sockets      [color (Color), fac (Float)]
-- [**self.meth_name**](#image) : [ImageTexture](../nodes/ImageTexture.md) Sockets      [color (Color), alpha (Float)]
-- [**self.meth_name**](#magic) : [MagicTexture](../nodes/MagicTexture.md) Sockets      [color (Color), fac (Float)]
-- [**self.meth_name**](#musgrave) : [MusgraveTexture](../nodes/MusgraveTexture.md) fac (Float)
-- [**self.meth_name**](#noise) : [NoiseTexture](../nodes/NoiseTexture.md) Sockets      [fac (Float), color (Color)]
-- [**self.meth_name**](#voronoi) : [VoronoiTexture](../nodes/VoronoiTexture.md) Sockets      [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
-- [**self.meth_name**](#wave) : [WaveTexture](../nodes/WaveTexture.md) Sockets      [color (Color), fac (Float)]
-- [**self.meth_name**](#whitenoise) : [WhiteNoiseTexture](../nodes/WhiteNoiseTexture.md) Sockets      [value (Float), color (Color)]
+- [**Brick**](#brick) : [BrickTexture](../nodes/BrickTexture.md) Sockets      [color (Color), fac (Float)]
+- [**Checker**](#checker) : [CheckerTexture](../nodes/CheckerTexture.md) Sockets      [color (Color), fac (Float)]
+- [**Gradient**](#gradient) : [GradientTexture](../nodes/GradientTexture.md) Sockets      [color (Color), fac (Float)]
+- [**Image**](#image) : [ImageTexture](../nodes/ImageTexture.md) Sockets      [color (Color), alpha (Float)]
+- [**Magic**](#magic) : [MagicTexture](../nodes/MagicTexture.md) Sockets      [color (Color), fac (Float)]
+- [**Musgrave**](#musgrave) : [MusgraveTexture](../nodes/MusgraveTexture.md) fac (Float)
+- [**Noise**](#noise) : [NoiseTexture](../nodes/NoiseTexture.md) Sockets      [fac (Float), color (Color)]
+- [**Voronoi**](#voronoi) : [VoronoiTexture](../nodes/VoronoiTexture.md) Sockets      [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
+- [**Wave**](#wave) : [WaveTexture](../nodes/WaveTexture.md) Sockets      [color (Color), fac (Float)]
+- [**WhiteNoise**](#whitenoise) : [WhiteNoiseTexture](../nodes/WhiteNoiseTexture.md) Sockets      [value (Float), color (Color)]
 
 
 
@@ -24,7 +24,7 @@
 
 
 
-- [**self.meth_name**](#switch) : [Switch](../nodes/Switch.md) output (Texture)
+- [**switch**](#switch) : [Switch](../nodes/Switch.md) output (Texture)
 
 
 

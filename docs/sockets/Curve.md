@@ -7,14 +7,14 @@
 
 
 
-- [**self.meth_name**](#arcfromradius) : [Arc](../nodes/Arc.md) curve (Curve)
-- [**self.meth_name**](#beziersegment) : [BezierSegment](../nodes/BezierSegment.md) curve (Curve)
-- [**self.meth_name**](#circle) : [CurveCircle](../nodes/CurveCircle.md) Sockets      [curve (Curve), center (Vector)]
-- [**self.meth_name**](#line) : [CurveLine](../nodes/CurveLine.md) curve (Curve)
-- [**self.meth_name**](#quadraticbezier) : [QuadraticBezier](../nodes/QuadraticBezier.md) curve (Curve)
-- [**self.meth_name**](#quadrilateral) : [Quadrilateral](../nodes/Quadrilateral.md) curve (Curve)
-- [**self.meth_name**](#spiral) : [Spiral](../nodes/Spiral.md) curve (Curve)
-- [**self.meth_name**](#star) : [Star](../nodes/Star.md) Sockets      [curve (Curve), outer_points (Boolean)]
+- [**ArcFromRadius**](#arcfromradius) : [Arc](../nodes/Arc.md) curve (Curve)
+- [**BezierSegment**](#beziersegment) : [BezierSegment](../nodes/BezierSegment.md) curve (Curve)
+- [**Circle**](#circle) : [CurveCircle](../nodes/CurveCircle.md) Sockets      [curve (Curve), center (Vector)]
+- [**Line**](#line) : [CurveLine](../nodes/CurveLine.md) curve (Curve)
+- [**QuadraticBezier**](#quadraticbezier) : [QuadraticBezier](../nodes/QuadraticBezier.md) curve (Curve)
+- [**Quadrilateral**](#quadrilateral) : [Quadrilateral](../nodes/Quadrilateral.md) curve (Curve)
+- [**Spiral**](#spiral) : [Spiral](../nodes/Spiral.md) curve (Curve)
+- [**Star**](#star) : [Star](../nodes/Star.md) Sockets      [curve (Curve), outer_points (Boolean)]
 
 
 
@@ -22,7 +22,7 @@
 
 
 
-- [**self.meth_name**](#arcfrompoints) : [Arc](../nodes/Arc.md) Sockets      [curve (Curve), center (Vector), normal (Vector), radius (Float)]
+- [**ArcFromPoints**](#arcfrompoints) : [Arc](../nodes/Arc.md) Sockets      [curve (Curve), center (Vector), normal (Vector), radius (Float)]
 
 
 
@@ -30,10 +30,10 @@
 
 
 
-- [**self.meth_name**](#length) : [CurveLength](../nodes/CurveLength.md) length (Float)
-- [**self.meth_name**](#sample) : [SampleCurve](../nodes/SampleCurve.md) Sockets      [position (Vector), tangent (Vector), normal (Vector)]
-- [**self.meth_name**](#to_mesh) : [CurveToMesh](../nodes/CurveToMesh.md) mesh (Mesh)
-- [**self.meth_name**](#to_points) : [CurveToPoints](../nodes/CurveToPoints.md) Sockets      [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
+- [**length**](#length) : [CurveLength](../nodes/CurveLength.md) length (Float)
+- [**sample**](#sample) : [SampleCurve](../nodes/SampleCurve.md) Sockets      [position (Vector), tangent (Vector), normal (Vector)]
+- [**to_mesh**](#to_mesh) : [CurveToMesh](../nodes/CurveToMesh.md) mesh (Mesh)
+- [**to_points**](#to_points) : [CurveToPoints](../nodes/CurveToPoints.md) Sockets      [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
 
 
 
@@ -41,17 +41,17 @@
 
 
 
-- [**self.meth_name**](#fill) : [FillCurve](../nodes/FillCurve.md) Curve
-- [**self.meth_name**](#fillet) : [FilletCurve](../nodes/FilletCurve.md) Curve
-- [**self.meth_name**](#resample) : [ResampleCurve](../nodes/ResampleCurve.md) Curve
-- [**self.meth_name**](#reverse) : [ReverseCurve](../nodes/ReverseCurve.md) Curve
-- [**self.meth_name**](#set_handle_positions) : [SetHandlePositions](../nodes/SetHandlePositions.md) Curve
-- [**self.meth_name**](#set_handles) : [SetHandleType](../nodes/SetHandleType.md) Curve
-- [**self.meth_name**](#set_radius) : [SetCurveRadius](../nodes/SetCurveRadius.md) Curve
-- [**self.meth_name**](#set_spline_type) : [SetSplineType](../nodes/SetSplineType.md) Curve
-- [**self.meth_name**](#set_tilt) : [SetCurveTilt](../nodes/SetCurveTilt.md) Curve
-- [**self.meth_name**](#subdivide) : [SubdivideCurve](../nodes/SubdivideCurve.md) Curve
-- [**self.meth_name**](#trim) : [TrimCurve](../nodes/TrimCurve.md) Curve
+- [**fill**](#fill) : [FillCurve](../nodes/FillCurve.md) Curve
+- [**fillet**](#fillet) : [FilletCurve](../nodes/FilletCurve.md) Curve
+- [**resample**](#resample) : [ResampleCurve](../nodes/ResampleCurve.md) Curve
+- [**reverse**](#reverse) : [ReverseCurve](../nodes/ReverseCurve.md) Curve
+- [**set_handle_positions**](#set_handle_positions) : [SetHandlePositions](../nodes/SetHandlePositions.md) Curve
+- [**set_handles**](#set_handles) : [SetHandleType](../nodes/SetHandleType.md) Curve
+- [**set_radius**](#set_radius) : [SetCurveRadius](../nodes/SetCurveRadius.md) Curve
+- [**set_spline_type**](#set_spline_type) : [SetSplineType](../nodes/SetSplineType.md) Curve
+- [**set_tilt**](#set_tilt) : [SetCurveTilt](../nodes/SetCurveTilt.md) Curve
+- [**subdivide**](#subdivide) : [SubdivideCurve](../nodes/SubdivideCurve.md) Curve
+- [**trim**](#trim) : [TrimCurve](../nodes/TrimCurve.md) Curve
 
 
 

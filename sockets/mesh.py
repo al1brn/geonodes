@@ -17,80 +17,80 @@ class Mesh(Geometry):
 
     Constructors
     ============
-    - **self.meth_name** : MeshCircle mesh (Mesh) 
-    - **self.meth_name** : Cone Sockets      [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
-    - **self.meth_name** : Cube mesh (Mesh) 
-    - **self.meth_name** : Cylinder Sockets      [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
-    - **self.meth_name** : Grid mesh (Mesh) 
-    - **self.meth_name** : IcoSphere mesh (Mesh) 
-    - **self.meth_name** : MeshLine mesh (Mesh) 
-    - **self.meth_name** : UvSphere mesh (Mesh) 
+    - **Circle**    : MeshCircle mesh (Mesh) 
+    - **Cone**      : Cone Sockets      [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)] 
+    - **Cube**      : Cube mesh (Mesh) 
+    - **Cylinder**  : Cylinder Sockets      [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)] 
+    - **Grid**      : Grid mesh (Mesh) 
+    - **IcoSphere** : IcoSphere mesh (Mesh) 
+    - **Line**      : MeshLine mesh (Mesh) 
+    - **UVSphere**  : UvSphere mesh (Mesh) 
     
 
     Attribute capture
     =================
-    - **self.meth_name** : EdgeAngle Sockets      [unsigned_angle (Float), signed_angle (Float)] 
-    - **self.meth_name** : EdgeNeighbors face_count (Integer) 
-    - **self.meth_name** : EdgeVertices Sockets      [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1
-      (Vector), position_2 (Vector)] 
-    - **self.meth_name** : FaceArea area (Float) 
-    - **self.meth_name** : FaceNeighbors Sockets      [vertex_count (Integer), face_count (Integer)] 
-    - **self.meth_name** : MeshIsland Sockets      [island_index (Integer), island_count (Integer)] 
-    - **self.meth_name** : MaterialIndex material_index (Integer) 
-    - **self.meth_name** : MaterialSelection selection (Boolean) 
-    - **self.meth_name** : IsShadeSmooth smooth (Boolean) 
-    - **self.meth_name** : VertexNeighbors Sockets      [vertex_count (Integer), face_count (Integer)] 
+    - **capture_edge_angle**         : EdgeAngle Sockets      [unsigned_angle (Float), signed_angle (Float)] 
+    - **capture_edge_neighbors**     : EdgeNeighbors face_count (Integer) 
+    - **capture_edge_vertices**      : EdgeVertices Sockets      [vertex_index_1 (Integer), vertex_index_2 (Integer),
+      position_1 (Vector), position_2 (Vector)] 
+    - **capture_face_area**          : FaceArea area (Float) 
+    - **capture_face_neighbors**     : FaceNeighbors Sockets      [vertex_count (Integer), face_count (Integer)]
+    - **capture_island**             : MeshIsland Sockets      [island_index (Integer), island_count (Integer)] 
+    - **capture_material_index**     : MaterialIndex material_index (Integer) 
+    - **capture_material_selection** : MaterialSelection selection (Boolean) 
+    - **capture_shade_smooth**       : IsShadeSmooth smooth (Boolean) 
+    - **capture_vertex_neighbors**   : VertexNeighbors Sockets      [vertex_count (Integer), face_count (Integer)]
     
 
     Attributes
     ==========
-    - **self.meth_name** : EdgeAngle Float = capture_ID(domain='CORNER').unsigned_angle 
-    - **self.meth_name** : EdgeAngle Float = capture_index(domain='CORNER').unsigned_angle 
-    - **self.meth_name** : EdgeAngle Float = capture_position(domain='CORNER').unsigned_angle 
-    - **self.meth_name** : EdgeAngle Float = capture_edge_angle(domain='EDGE').unsigned_angle 
-    - **self.meth_name** : EdgeNeighbors Integer = capture_edge_neighbors(domain='EDGE') 
-    - **self.meth_name** : EdgeAngle Float = capture_edge_angle(domain='EDGE').signed_angle 
-    - **self.meth_name** : EdgeVertices Integer = capture_edge_vertices(domain='EDGE').vertex_index_1 
-    - **self.meth_name** : EdgeVertices Integer = capture_edge_vertices(domain='EDGE').vertex_index_2 
-    - **self.meth_name** : EdgeVertices Vector = capture_edge_vertices(domain='EDGE').position_1 
-    - **self.meth_name** : EdgeVertices Vector = capture_edge_vertices(domain='EDGE').position_2 
-    - **self.meth_name** : EdgeAngle Float = capture_ID(domain='EDGE').unsigned_angle 
-    - **self.meth_name** : EdgeAngle Float = capture_index(domain='EDGE').unsigned_angle 
-    - **self.meth_name** : EdgeAngle Float = capture_position(domain='EDGE').unsigned_angle 
-    - **self.meth_name** : EdgeAngle Float = capture_ID(domain='FACE').unsigned_angle 
-    - **self.meth_name** : FaceArea Float = capture_face_area(domain='FACE') 
-    - **self.meth_name** : EdgeAngle Float = capture_index(domain='FACE').unsigned_angle 
-    - **self.meth_name** : FaceNeighbors Integer = capture_face_neighbors(domain='FACE').face_count 
-    - **self.meth_name** : FaceNeighbors Integer = capture_face_neighbors(domain='FACE').vertex_count 
-    - **self.meth_name** : EdgeAngle Float = capture_position(domain='FACE').unsigned_angle 
-    - **self.meth_name** : MeshIsland Integer = capture_island(domain='POINT').island_index 
-    - **self.meth_name** : MaterialIndex Integer = capture_material_index(domain='FACE') 
-    - **self.meth_name** : MaterialSelection Boolean = capture_material_selection(domain='FACE') 
-    - **self.meth_name** : IsShadeSmooth Boolean = capture_shade_smooth(domain='FACE') 
-    - **self.meth_name** : VertexNeighbors Integer = capture_vertex_neighbors(domain='POINT').face_count 
-    - **self.meth_name** : VertexNeighbors Integer = capture_vertex_neighbors(domain='POINT').vertex_count 
+    - **corner_ID**                     : EdgeAngle Float = capture_ID(domain='CORNER').unsigned_angle 
+    - **corner_index**                  : EdgeAngle Float = capture_index(domain='CORNER').unsigned_angle 
+    - **corner_porision**               : EdgeAngle Float = capture_position(domain='CORNER').unsigned_angle 
+    - **edge_angle**                    : EdgeAngle Float = capture_edge_angle(domain='EDGE').unsigned_angle 
+    - **edge_neighbors**                : EdgeNeighbors Integer = capture_edge_neighbors(domain='EDGE') 
+    - **edge_unsigned_angle**           : EdgeAngle Float = capture_edge_angle(domain='EDGE').signed_angle 
+    - **edge_vertices_index1**          : EdgeVertices Integer = capture_edge_vertices(domain='EDGE').vertex_index_1
+    - **edge_vertices_index2**          : EdgeVertices Integer = capture_edge_vertices(domain='EDGE').vertex_index_2
+    - **edge_vertices_position1**       : EdgeVertices Vector = capture_edge_vertices(domain='EDGE').position_1 
+    - **edge_vertices_position2**       : EdgeVertices Vector = capture_edge_vertices(domain='EDGE').position_2 
+    - **egde_ID**                       : EdgeAngle Float = capture_ID(domain='EDGE').unsigned_angle 
+    - **egde_index**                    : EdgeAngle Float = capture_index(domain='EDGE').unsigned_angle 
+    - **egde_position**                 : EdgeAngle Float = capture_position(domain='EDGE').unsigned_angle 
+    - **face_ID**                       : EdgeAngle Float = capture_ID(domain='FACE').unsigned_angle 
+    - **face_area**                     : FaceArea Float = capture_face_area(domain='FACE') 
+    - **face_index**                    : EdgeAngle Float = capture_index(domain='FACE').unsigned_angle 
+    - **face_neighbors_face_count**     : FaceNeighbors Integer = capture_face_neighbors(domain='FACE').face_count
+    - **face_neighbors_vertex_count**   : FaceNeighbors Integer = capture_face_neighbors(domain='FACE').vertex_count
+    - **face_position**                 : EdgeAngle Float = capture_position(domain='FACE').unsigned_angle 
+    - **island**                        : MeshIsland Integer = capture_island(domain='POINT').island_index 
+    - **material_index**                : MaterialIndex Integer = capture_material_index(domain='FACE') 
+    - **material_selection**            : MaterialSelection Boolean = capture_material_selection(domain='FACE') 
+    - **shade_smooth**                  : IsShadeSmooth Boolean = capture_shade_smooth(domain='FACE') 
+    - **vertex_neighbors_face_count**   : VertexNeighbors Integer = capture_vertex_neighbors(domain='POINT').face_count
+    - **vertex_neighbors_vertex_count** : VertexNeighbors Integer = capture_vertex_neighbors(domain='POINT').vertex_count
     
 
     Methods
     =======
-    - **self.meth_name** : MeshBoolean mesh (Mesh) 
-    - **self.meth_name** : DistributePointsOnFaces Sockets      [points (Points), normal (Vector), rotation
-      (Vector)] 
-    - **self.meth_name** : ExtrudeMesh Sockets      [mesh (Mesh), top (Boolean), side (Boolean)] 
-    - **self.meth_name** : MeshBoolean mesh (Mesh) 
-    - **self.meth_name** : MeshToCurve curve (Curve) 
-    - **self.meth_name** : MeshToPoints points (Points) 
-    - **self.meth_name** : MeshBoolean mesh (Mesh) 
+    - **difference**                 : MeshBoolean mesh (Mesh) 
+    - **distribute_points_on_faces** : DistributePointsOnFaces Sockets      [points (Points), normal (Vector),
+      rotation (Vector)] 
+    - **extrude**                    : ExtrudeMesh Sockets      [mesh (Mesh), top (Boolean), side (Boolean)] 
+    - **intersect**                  : MeshBoolean mesh (Mesh) 
+    - **to_curve**                   : MeshToCurve curve (Curve) 
+    - **to_points**                  : MeshToPoints points (Points) 
+    - **union**                      : MeshBoolean mesh (Mesh) 
     
 
     Stacked methods
     ===============
-    - **self.meth_name** : DualMesh Mesh 
-    - **self.meth_name** : FlipFaces Mesh 
-    - **self.meth_name** : SplitEdges Mesh 
-    - **self.meth_name** : SubdivideMesh Mesh 
-    - **self.meth_name** : SubdivisionSurface Mesh 
-    - **self.meth_name** : Triangulate Mesh 
+    - **dual**                : DualMesh Mesh 
+    - **flip_faces**          : FlipFaces Mesh 
+    - **split_edges**         : SplitEdges Mesh 
+    - **subdivide**           : SubdivideMesh Mesh 
+    - **subdivision_surface** : SubdivisionSurface Mesh 
+    - **triangulate**         : Triangulate Mesh 
     """
 
 

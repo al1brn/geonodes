@@ -17,7 +17,7 @@ class Volume(Geometry):
 
     Methods
     =======
-    - **self.meth_name** : VolumeToMesh mesh (Mesh) 
+    - **to_mesh** : VolumeToMesh mesh (Mesh) 
     """
 
 

@@ -7,7 +7,7 @@
 
 
 
-- [**self.meth_name**](#length) : [StringLength](../nodes/StringLength.md) length (Integer)
+- [**length**](#length) : [StringLength](../nodes/StringLength.md) length (Integer)
 
 
 
@@ -15,15 +15,15 @@
 
 
 
-- [**self.meth_name**](#average) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**self.meth_name**](#direction) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**self.meth_name**](#dot_product) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**self.meth_name**](#element) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**self.meth_name**](#join) : [JoinStrings](../nodes/JoinStrings.md) string (String)
-- [**self.meth_name**](#length) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**self.meth_name**](#slice) : [SliceString](../nodes/SliceString.md) string (String)
-- [**self.meth_name**](#switch) : [Switch](../nodes/Switch.md) output (String)
-- [**self.meth_name**](#to_curves) : [StringToCurves](../nodes/StringToCurves.md) Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
+- [**average**](#average) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**direction**](#direction) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**dot_product**](#dot_product) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**element**](#element) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**join**](#join) : [JoinStrings](../nodes/JoinStrings.md) string (String)
+- [**length**](#length) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**slice**](#slice) : [SliceString](../nodes/SliceString.md) string (String)
+- [**switch**](#switch) : [Switch](../nodes/Switch.md) output (String)
+- [**to_curves**](#to_curves) : [StringToCurves](../nodes/StringToCurves.md) Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
 
 
 
@@ -31,7 +31,7 @@
 
 
 
-- [**self.meth_name**](#replace) : [ReplaceString](../nodes/ReplaceString.md) String
+- [**replace**](#replace) : [ReplaceString](../nodes/ReplaceString.md) String
 
 
 
