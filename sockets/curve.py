@@ -88,6 +88,14 @@ class Curve(Spline):
             - mode : 'POSITION' in [POSITION, OFFSET] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle,
+            end=end, mode=mode) 
+        
+
         Returns
         =======
                 Curve 
@@ -124,6 +132,14 @@ class Curve(Spline):
             - mode : 'RADIUS' in [POINTS, RADIUS] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=radius,
+            mode=mode) 
+        
+
         Returns
         =======
                 Sockets [curve (Curve), center (Vector)] 
@@ -157,6 +173,13 @@ class Curve(Spline):
             Parameters arguments
             --------------------
             - mode : 'POINTS' in [POINTS, DIRECTION] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.CurveLine(start=start, end=end, direction=direction, length=length, mode=mode) 
         
 
         Returns
@@ -202,6 +225,15 @@ class Curve(Spline):
             - mode : 'RECTANGLE' in [RECTANGLE, PARALLELOGRAM, TRAPEZOID, KITE, POINTS] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width,
+            offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3,
+            point_4=point_4, mode=mode) 
+        
+
         Returns
         =======
                 Curve 
@@ -230,6 +262,13 @@ class Curve(Spline):
             - start      : Vector 
             - middle     : Vector 
             - end        : Vector 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.QuadraticBezier(resolution=resolution, start=start, middle=middle, end=end) 
         
 
         Returns
@@ -262,6 +301,13 @@ class Curve(Spline):
             - twist        : Float 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Star(points=points, inner_radius=inner_radius, outer_radius=outer_radius, twist=twist) 
+        
+
         Returns
         =======
                 Sockets [curve (Curve), outer_points (Boolean)] 
@@ -292,6 +338,14 @@ class Curve(Spline):
             - end_radius   : Float 
             - height       : Float 
             - reverse      : Boolean 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Spiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius,
+            height=height, reverse=reverse) 
         
 
         Returns
@@ -329,6 +383,14 @@ class Curve(Spline):
             Fixed parameters
             ----------------
             - mode : 'RADIUS' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Arc(resolution=resolution, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle,
+            connect_center=connect_center, invert_arc=invert_arc, mode='RADIUS') 
         
 
         Returns
@@ -373,6 +435,14 @@ class Curve(Spline):
             - mode : 'POINTS' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, offset_angle=offset_angle,
+            connect_center=connect_center, invert_arc=invert_arc, mode='POINTS') 
+        
+
         Returns
         =======
                 Sockets [curve (Curve), center (Vector), normal (Vector), radius (Float)] 
@@ -403,6 +473,13 @@ class Curve(Spline):
             - curve         : Curve (self) 
             - profile_curve : Geometry 
             - fill_caps     : Boolean 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps) 
         
 
         Returns
@@ -438,6 +515,13 @@ class Curve(Spline):
             - mode : 'COUNT' in [EVALUATED, COUNT, LENGTH] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode) 
+        
+
         Returns
         =======
                 Sockets [points (Points), tangent (Vector), normal (Vector), rotation (Vector)] 
@@ -471,6 +555,13 @@ class Curve(Spline):
             - mode : 'LENGTH' in [FACTOR, LENGTH] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode) 
+        
+
         Returns
         =======
                 Sockets [position (Vector), tangent (Vector), normal (Vector)] 
@@ -495,6 +586,13 @@ class Curve(Spline):
             Sockets arguments
             -----------------
             - curve : Curve (self) 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.CurveLength(curve=self) 
         
 
         Returns
@@ -534,6 +632,13 @@ class Curve(Spline):
             - mode        : {'RIGHT', 'LEFT'} 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SetHandleType(curve=self, selection=selection, handle_type=handle_type, mode=mode) 
+        
+
         Returns
         =======
                 self 
@@ -566,6 +671,13 @@ class Curve(Spline):
             - spline_type : 'POLY' in [BEZIER, NURBS, POLY] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_type) 
+        
+
         Returns
         =======
                 self 
@@ -595,6 +707,13 @@ class Curve(Spline):
             Parameters arguments
             --------------------
             - mode : 'TRIANGLES' in [TRIANGLES, NGONS] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.FillCurve(curve=self, mode=mode) 
         
 
         Returns
@@ -631,6 +750,13 @@ class Curve(Spline):
             - mode : 'BEZIER' in [BEZIER, POLY] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode=mode)
+        
+
         Returns
         =======
                 self 
@@ -665,6 +791,13 @@ class Curve(Spline):
             - mode : 'COUNT' in [EVALUATED, COUNT, LENGTH] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.ResampleCurve(curve=self, selection=selection, count=count, length=length, mode=mode) 
+        
+
         Returns
         =======
                 self 
@@ -690,6 +823,13 @@ class Curve(Spline):
             -----------------
             - curve     : Curve (self) 
             - selection : Boolean 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.ReverseCurve(curve=self, selection=selection) 
         
 
         Returns
@@ -726,6 +866,13 @@ class Curve(Spline):
             - mode : 'LEFT' in [LEFT, RIGHT] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SetHandlePositions(curve=self, selection=selection, position=position, offset=offset, mode=mode)
+        
+
         Returns
         =======
                 self 
@@ -752,6 +899,13 @@ class Curve(Spline):
             - curve     : Curve (self) 
             - selection : Boolean 
             - radius    : Float 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SetCurveRadius(curve=self, selection=selection, radius=radius) 
         
 
         Returns
@@ -782,6 +936,13 @@ class Curve(Spline):
             - tilt      : Float 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SetCurveTilt(curve=self, selection=selection, tilt=tilt) 
+        
+
         Returns
         =======
                 self 
@@ -807,6 +968,13 @@ class Curve(Spline):
             -----------------
             - curve : Curve (self) 
             - cuts  : Integer 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SubdivideCurve(curve=self, cuts=cuts) 
         
 
         Returns
@@ -842,6 +1010,13 @@ class Curve(Spline):
             Parameters arguments
             --------------------
             - mode : 'FACTOR' in [FACTOR, LENGTH] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1=end1, mode=mode) 
         
 
         Returns

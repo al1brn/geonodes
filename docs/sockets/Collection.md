@@ -12,7 +12,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### info
@@ -43,6 +43,14 @@ v = collection.info(separate_children, reset_children, transform_space)
 
 - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space)
+```
 
 
 #### Returns
@@ -77,6 +85,14 @@ v = collection.switch(switch1, true)
 
 - input_type : 'COLLECTION'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION')
+```
 
 
 #### Returns

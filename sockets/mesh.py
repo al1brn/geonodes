@@ -122,6 +122,13 @@ class Mesh(Geometry):
             - fill_type : 'NONE' in [NONE, NGON, TRIANGLE_FAN] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.MeshCircle(vertices=vertices, radius=radius, fill_type=fill_type) 
+        
+
         Returns
         =======
                 Mesh 
@@ -159,6 +166,14 @@ class Mesh(Geometry):
             - fill_type : 'NGON' in [NONE, NGON, TRIANGLE_FAN] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Cone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top,
+            radius_bottom=radius_bottom, depth=depth, fill_type=fill_type) 
+        
+
         Returns
         =======
                 Sockets [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)] 
@@ -187,6 +202,13 @@ class Mesh(Geometry):
             - vertices_x : Integer 
             - vertices_y : Integer 
             - vertices_z : Integer 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Cube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, vertices_z=vertices_z) 
         
 
         Returns
@@ -225,6 +247,14 @@ class Mesh(Geometry):
             - fill_type : 'NGON' in [NONE, NGON, TRIANGLE_FAN] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Cylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius,
+            depth=depth, fill_type=fill_type) 
+        
+
         Returns
         =======
                 Sockets [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)] 
@@ -255,6 +285,13 @@ class Mesh(Geometry):
             - vertices_y : Integer 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y) 
+        
+
         Returns
         =======
                 Mesh 
@@ -281,6 +318,13 @@ class Mesh(Geometry):
             -----------------
             - radius       : Float 
             - subdivisions : Integer 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.IcoSphere(radius=radius, subdivisions=subdivisions) 
         
 
         Returns
@@ -318,6 +362,14 @@ class Mesh(Geometry):
             - mode       : 'OFFSET' in [OFFSET, END_POINTS] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.MeshLine(count=count, start_location=start_location, offset=offset, count_mode=count_mode,
+            mode=mode) 
+        
+
         Returns
         =======
                 Mesh 
@@ -345,6 +397,13 @@ class Mesh(Geometry):
             - segments : Integer 
             - rings    : Integer 
             - radius   : Float 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.UvSphere(segments=segments, rings=rings, radius=radius) 
         
 
         Returns
@@ -376,6 +435,13 @@ class Mesh(Geometry):
             --------------------
             - self   
             - domain:'EDGE' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeAngle() 
         
 
         Returns
@@ -410,6 +476,13 @@ class Mesh(Geometry):
             - domain:'EDGE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeNeighbors() 
+        
+
         Returns
         =======
                 Integer 
@@ -440,6 +513,13 @@ class Mesh(Geometry):
             --------------------
             - self   
             - domain:'EDGE' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeVertices() 
         
 
         Returns
@@ -474,6 +554,13 @@ class Mesh(Geometry):
             - domain:'FACE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.FaceArea() 
+        
+
         Returns
         =======
                 Float 
@@ -504,6 +591,13 @@ class Mesh(Geometry):
             --------------------
             - self   
             - domain:'FACE' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.FaceNeighbors() 
         
 
         Returns
@@ -538,6 +632,13 @@ class Mesh(Geometry):
             - domain:'POINT' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.MeshIsland() 
+        
+
         Returns
         =======
                 Sockets [island_index (Integer), island_count (Integer)] 
@@ -568,6 +669,13 @@ class Mesh(Geometry):
             --------------------
             - self   
             - domain:'FACE' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.IsShadeSmooth() 
         
 
         Returns
@@ -602,6 +710,13 @@ class Mesh(Geometry):
             - domain:'POINT' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VertexNeighbors() 
+        
+
         Returns
         =======
                 Sockets [vertex_count (Integer), face_count (Integer)] 
@@ -632,6 +747,13 @@ class Mesh(Geometry):
             --------------------
             - self   
             - domain:'FACE' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.MaterialIndex() 
         
 
         Returns
@@ -671,6 +793,13 @@ class Mesh(Geometry):
             - material : Material 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.MaterialSelection(material=material) 
+        
+
         Returns
         =======
                 Boolean 
@@ -707,6 +836,13 @@ class Mesh(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeAngle() 
+        
+
         Returns
         =======
                 Float 
@@ -732,6 +868,13 @@ class Mesh(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeAngle() 
         
 
         Returns
@@ -761,6 +904,13 @@ class Mesh(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeAngle() 
+        
+
         Returns
         =======
                 Float 
@@ -786,6 +936,13 @@ class Mesh(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeAngle() 
         
 
         Returns
@@ -815,6 +972,13 @@ class Mesh(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeAngle() 
+        
+
         Returns
         =======
                 Float 
@@ -840,6 +1004,13 @@ class Mesh(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeAngle() 
         
 
         Returns
@@ -869,6 +1040,13 @@ class Mesh(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeAngle() 
+        
+
         Returns
         =======
                 Float 
@@ -894,6 +1072,13 @@ class Mesh(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeAngle() 
         
 
         Returns
@@ -923,6 +1108,13 @@ class Mesh(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeAngle() 
+        
+
         Returns
         =======
                 Float 
@@ -948,6 +1140,13 @@ class Mesh(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeAngle() 
         
 
         Returns
@@ -977,6 +1176,13 @@ class Mesh(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeAngle() 
+        
+
         Returns
         =======
                 Float 
@@ -1002,6 +1208,13 @@ class Mesh(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeNeighbors() 
         
 
         Returns
@@ -1031,6 +1244,13 @@ class Mesh(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeVertices() 
+        
+
         Returns
         =======
                 Integer 
@@ -1056,6 +1276,13 @@ class Mesh(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeVertices() 
         
 
         Returns
@@ -1085,6 +1312,13 @@ class Mesh(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeVertices() 
+        
+
         Returns
         =======
                 Vector 
@@ -1110,6 +1344,13 @@ class Mesh(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.EdgeVertices() 
         
 
         Returns
@@ -1139,6 +1380,13 @@ class Mesh(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.FaceArea() 
+        
+
         Returns
         =======
                 Float 
@@ -1164,6 +1412,13 @@ class Mesh(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.FaceNeighbors() 
         
 
         Returns
@@ -1193,6 +1448,13 @@ class Mesh(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.FaceNeighbors() 
+        
+
         Returns
         =======
                 Integer 
@@ -1218,6 +1480,13 @@ class Mesh(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.MeshIsland() 
         
 
         Returns
@@ -1247,6 +1516,13 @@ class Mesh(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.IsShadeSmooth() 
+        
+
         Returns
         =======
                 Boolean 
@@ -1272,6 +1548,13 @@ class Mesh(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.VertexNeighbors() 
         
 
         Returns
@@ -1301,6 +1584,13 @@ class Mesh(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VertexNeighbors() 
+        
+
         Returns
         =======
                 Integer 
@@ -1326,6 +1616,13 @@ class Mesh(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.MaterialIndex() 
         
 
         Returns
@@ -1358,6 +1655,13 @@ class Mesh(Geometry):
             Sockets arguments
             -----------------
             - material : Material 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.MaterialSelection(material=material) 
         
 
         Returns
@@ -1397,6 +1701,13 @@ class Mesh(Geometry):
             - operation : 'INTERSECT' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.MeshBoolean(*mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT')
+        
+
         Returns
         =======
                 Mesh 
@@ -1428,6 +1739,13 @@ class Mesh(Geometry):
             Fixed parameters
             ----------------
             - operation : 'UNION' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.MeshBoolean(*mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION')
         
 
         Returns
@@ -1462,6 +1780,14 @@ class Mesh(Geometry):
             Fixed parameters
             ----------------
             - operation : 'DIFFERENCE' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant,
+            operation='DIFFERENCE') 
         
 
         Returns
@@ -1499,6 +1825,14 @@ class Mesh(Geometry):
             - mode : 'FACES' in [VERTICES, EDGES, FACES] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual,
+            mode=mode) 
+        
+
         Returns
         =======
                 Sockets [mesh (Mesh), top (Boolean), side (Boolean)] 
@@ -1524,6 +1858,13 @@ class Mesh(Geometry):
             -----------------
             - mesh      : Mesh (self) 
             - selection : Boolean 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.MeshToCurve(mesh=self, selection=selection) 
         
 
         Returns
@@ -1558,6 +1899,13 @@ class Mesh(Geometry):
             Parameters arguments
             --------------------
             - mode : 'VERTICES' in [VERTICES, EDGES, FACES, CORNERS] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.MeshToPoints(mesh=self, selection=selection, position=position, radius=radius, mode=mode)
         
 
         Returns
@@ -1598,6 +1946,14 @@ class Mesh(Geometry):
             - distribute_method : 'RANDOM' in [RANDOM, POISSON] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max,
+            density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method) 
+        
+
         Returns
         =======
                 Sockets [points (Points), normal (Vector), rotation (Vector)] 
@@ -1629,6 +1985,13 @@ class Mesh(Geometry):
             - selection : Boolean 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SplitEdges(mesh=self, selection=selection) 
+        
+
         Returns
         =======
                 self 
@@ -1654,6 +2017,13 @@ class Mesh(Geometry):
             -----------------
             - mesh  : Mesh (self) 
             - level : Integer 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SubdivideMesh(mesh=self, level=level) 
         
 
         Returns
@@ -1691,6 +2061,14 @@ class Mesh(Geometry):
               PRESERVE_BOUNDARIES, SMOOTH_ALL] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth,
+            uv_smooth=uv_smooth) 
+        
+
         Returns
         =======
                 self 
@@ -1725,6 +2103,14 @@ class Mesh(Geometry):
             - quad_method : 'SHORTEST_DIAGONAL' in [BEAUTY, FIXED, FIXED_ALTERNATE, SHORTEST_DIAGONAL, LONGEST_DIAGONAL]
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method,
+            quad_method=quad_method) 
+        
+
         Returns
         =======
                 self 
@@ -1752,6 +2138,13 @@ class Mesh(Geometry):
             - keep_boundaries : Boolean 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.DualMesh(mesh=self, keep_boundaries=keep_boundaries) 
+        
+
         Returns
         =======
                 self 
@@ -1777,6 +2170,13 @@ class Mesh(Geometry):
             -----------------
             - mesh      : Mesh (self) 
             - selection : Boolean 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.FlipFaces(mesh=self, selection=selection) 
         
 
         Returns

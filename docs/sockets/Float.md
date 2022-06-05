@@ -84,7 +84,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### Random
@@ -118,6 +118,14 @@ v = Float.Random(min, max, ID, seed)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT')
+```
+
+
 #### Returns
 
     Float
@@ -148,6 +156,14 @@ v = float.abs()
 
 - operation : 'ABSOLUTE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='ABSOLUTE')
+```
 
 
 #### Returns
@@ -191,6 +207,14 @@ v = float.accumulate_field(group_index, domain)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT', domain=domain)
+```
+
+
 #### Returns
 
     Sockets [leading (Float), trailing (Float), total (Float)]
@@ -222,6 +246,14 @@ v = float.add(value1)
 
 - operation : 'ADD'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='ADD')
+```
 
 
 #### Returns
@@ -256,6 +288,14 @@ v = float.arccos()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='ARCCOSINE')
+```
+
+
 #### Returns
 
     Float
@@ -286,6 +326,14 @@ v = float.arcsin()
 
 - operation : 'ARCSINE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='ARCSINE')
+```
 
 
 #### Returns
@@ -320,6 +368,14 @@ v = float.arctan()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='ARCTANGENT')
+```
+
+
 #### Returns
 
     Float
@@ -351,6 +407,14 @@ v = float.arctan2(value1)
 
 - operation : 'ARCTAN2'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
+```
 
 
 #### Returns
@@ -395,6 +459,14 @@ v = float.attribute_statistic(geometry, selection, domain)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT', domain=domain)
+```
+
+
 #### Returns
 
     Sockets [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
@@ -436,6 +508,14 @@ v = float.capture_attribute(geometry, domain)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT', domain=domain)
+```
+
+
 #### Returns
 
     Sockets [geometry (Geometry), attribute (Float)]
@@ -466,6 +546,14 @@ v = float.ceil()
 
 - operation : 'CEIL'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='CEIL')
+```
 
 
 #### Returns
@@ -502,6 +590,14 @@ float.clamp(min, max, clamp_type)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type)
+```
+
+
 #### Returns
 
     self
@@ -524,6 +620,14 @@ v = float.color_ramp()
 
 - fac : Float (self)
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Colorramp(fac=self)
+```
 
 
 #### Returns
@@ -560,6 +664,14 @@ v = float.compare(value1, value2)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE')
+```
+
+
 #### Returns
 
     Float
@@ -590,6 +702,14 @@ v = float.cos()
 
 - operation : 'COSINE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='COSINE')
+```
 
 
 #### Returns
@@ -624,6 +744,14 @@ v = float.cosh()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='COSH')
+```
+
+
 #### Returns
 
     Float
@@ -647,6 +775,14 @@ float.curve(value)
 - factor : Float (self)
 - value : Float
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.FloatCurve(factor=self, value=value)
+```
 
 
 #### Returns
@@ -681,6 +817,14 @@ v = float.degrees()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='DEGREES')
+```
+
+
 #### Returns
 
     Float
@@ -712,6 +856,14 @@ v = float.divide(value1)
 
 - operation : 'DIVIDE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='DIVIDE')
+```
 
 
 #### Returns
@@ -750,6 +902,14 @@ v = float.equal(b, epsilon)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL')
+```
+
+
 #### Returns
 
     Boolean
@@ -780,6 +940,14 @@ v = float.exp()
 
 - operation : 'EXPONENT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='EXPONENT')
+```
 
 
 #### Returns
@@ -823,6 +991,14 @@ v = float.field_at_index(index, domain)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT', domain=domain)
+```
+
+
 #### Returns
 
     Float
@@ -855,6 +1031,14 @@ v = float.floor()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='FLOOR')
+```
+
+
 #### Returns
 
     Float
@@ -885,6 +1069,14 @@ v = float.fract()
 
 - operation : 'FRACT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='FRACT')
+```
 
 
 #### Returns
@@ -922,6 +1114,14 @@ v = float.greater_equal(b)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL')
+```
+
+
 #### Returns
 
     Boolean
@@ -955,6 +1155,14 @@ v = float.greater_than(value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
+```
+
+
 #### Returns
 
     Float
@@ -985,6 +1193,14 @@ v = float.inverse_sqrt()
 
 - operation : 'INVERSE_SQRT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='INVERSE_SQRT')
+```
 
 
 #### Returns
@@ -1022,6 +1238,14 @@ v = float.less_equal(b)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL')
+```
+
+
 #### Returns
 
     Boolean
@@ -1055,6 +1279,14 @@ v = float.less_than(value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
+```
+
+
 #### Returns
 
     Float
@@ -1086,6 +1318,14 @@ v = float.log(value1)
 
 - operation : 'LOGARITHM'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
+```
 
 
 #### Returns
@@ -1133,6 +1373,14 @@ v = float.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_typ
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type)
+```
+
+
 #### Returns
 
     Float
@@ -1164,6 +1412,14 @@ v = float.max(value1)
 
 - operation : 'MAXIMUM'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
+```
 
 
 #### Returns
@@ -1199,6 +1455,14 @@ v = float.min(value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='MINIMUM')
+```
+
+
 #### Returns
 
     Float
@@ -1230,6 +1494,14 @@ v = float.modulo(value1)
 
 - operation : 'MODULO'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='MODULO')
+```
 
 
 #### Returns
@@ -1265,6 +1537,14 @@ v = float.multiply(value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
+```
+
+
 #### Returns
 
     Float
@@ -1297,6 +1577,14 @@ v = float.multiply_add(value1, value2)
 
 - operation : 'MULTIPLY_ADD'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD')
+```
 
 
 #### Returns
@@ -1335,6 +1623,14 @@ v = float.not_equal(b, epsilon)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL')
+```
+
+
 #### Returns
 
     Boolean
@@ -1366,6 +1662,14 @@ v = float.pingpong(value1)
 
 - operation : 'PINGPONG'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='PINGPONG')
+```
 
 
 #### Returns
@@ -1401,6 +1705,14 @@ v = float.pow(value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='POWER')
+```
+
+
 #### Returns
 
     Float
@@ -1431,6 +1743,14 @@ v = float.radians()
 
 - operation : 'RADIANS'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='RADIANS')
+```
 
 
 #### Returns
@@ -1477,6 +1797,14 @@ v = float.raycast(target_geometry, source_position, ray_direction, ray_length, m
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping)
+```
+
+
 #### Returns
 
     Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
@@ -1507,6 +1835,14 @@ v = float.round()
 
 - operation : 'ROUND'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='ROUND')
+```
 
 
 #### Returns
@@ -1541,6 +1877,14 @@ v = float.sign()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='SIGN')
+```
+
+
 #### Returns
 
     Float
@@ -1573,6 +1917,14 @@ v = float.sin()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='SINE')
+```
+
+
 #### Returns
 
     Float
@@ -1603,6 +1955,14 @@ v = float.sinh()
 
 - operation : 'SINH'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='SINH')
+```
 
 
 #### Returns
@@ -1639,6 +1999,14 @@ v = float.smooth_max(value1, value2)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX')
+```
+
+
 #### Returns
 
     Float
@@ -1671,6 +2039,14 @@ v = float.smooth_min(value1, value2)
 
 - operation : 'SMOOTH_MIN'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN')
+```
 
 
 #### Returns
@@ -1706,6 +2082,14 @@ v = float.snap(value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='SNAP')
+```
+
+
 #### Returns
 
     Float
@@ -1736,6 +2120,14 @@ v = float.sqrt()
 
 - operation : 'SQRT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='SQRT')
+```
 
 
 #### Returns
@@ -1769,6 +2161,14 @@ v = float.subtract(value1)
 
 - operation : 'SUBTRACT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
+```
 
 
 #### Returns
@@ -1805,6 +2205,14 @@ v = float.switch(switch0, true)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT')
+```
+
+
 #### Returns
 
     Float
@@ -1835,6 +2243,14 @@ v = float.tan()
 
 - operation : 'TANGENT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='TANGENT')
+```
 
 
 #### Returns
@@ -1869,6 +2285,14 @@ v = float.tanh()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='TANH')
+```
+
+
 #### Returns
 
     Float
@@ -1901,6 +2325,14 @@ v = float.to_integer(rounding_mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.FloatToInteger(float=self, rounding_mode=rounding_mode)
+```
+
+
 #### Returns
 
     Integer
@@ -1924,6 +2356,14 @@ v = float.to_string(decimals)
 - value : Float (self)
 - decimals : Integer
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.ValueToString(value=self, decimals=decimals)
+```
 
 
 #### Returns
@@ -1970,6 +2410,14 @@ v = float.transfer_attribute(source, source_position, index, domain, mapping)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
+```
+
+
 #### Returns
 
     Float
@@ -2000,6 +2448,14 @@ v = float.trunc()
 
 - operation : 'TRUNC'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='TRUNC')
+```
 
 
 #### Returns
@@ -2034,6 +2490,14 @@ v = float.wrap(value1, value2)
 
 - operation : 'WRAP'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP')
+```
 
 
 #### Returns

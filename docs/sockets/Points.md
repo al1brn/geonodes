@@ -21,7 +21,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### instance_on_points
@@ -50,6 +50,14 @@ v = points.instance_on_points(selection, instance, pick_instance, instance_index
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale)
+```
+
+
 #### Returns
 
     Instances
@@ -76,6 +84,14 @@ points.set_radius(selection, radius)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.SetPointRadius(points=self, selection=selection, radius=radius)
+```
+
+
 #### Returns
 
     self
@@ -99,6 +115,14 @@ v = points.to_vertices(selection)
 - points : Points (self)
 - selection : Boolean
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.PointsToVertices(points=self, selection=selection)
+```
 
 
 #### Returns
@@ -135,6 +159,14 @@ v = points.to_volume(density, voxel_size, voxel_amount, radius, resolution_mode)
 
 - resolution_mode : 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode)
+```
 
 
 #### Returns

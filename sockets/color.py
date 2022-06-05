@@ -91,6 +91,13 @@ class Color(dsock.Color):
             - b : Float 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.CombineRgb(r=r, g=g, b=b) 
+        
+
         Returns
         =======
                 Color 
@@ -127,6 +134,13 @@ class Color(dsock.Color):
             - label:f"{self.node_chain_label}.separate" 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.separate") 
+        
+
         Returns
         =======
                 Sockets [r (Float), g (Float), b (Float)] 
@@ -135,31 +149,6 @@ class Color(dsock.Color):
         if self.separate_ is None:
             self.separate_ = nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.separate")
         return self.separate_
-
-
-    @property
-    def r(self):
-        return self.separate.r
-
-    @r.setter
-    def r(self, value):
-        self.separate.r = value
-
-    @property
-    def g(self):
-        return self.separate.g
-
-    @g.setter
-    def g(self, value):
-        self.separate.g = value
-
-    @property
-    def b(self):
-        return self.separate.b
-
-    @b.setter
-    def b(self, value):
-        self.separate.b = value
 
 
     # ----------------------------------------------------------------------------------------------------
@@ -196,6 +185,14 @@ class Color(dsock.Color):
             --------------------
             - domain  : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
             - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index,
+            data_type='FLOAT_COLOR', domain=domain, mapping=mapping) 
         
 
         Returns
@@ -235,6 +232,13 @@ class Color(dsock.Color):
             - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_COLOR', domain=domain) 
+        
+
         Returns
         =======
                 Sockets [geometry (Geometry), attribute (Color)] 
@@ -270,6 +274,13 @@ class Color(dsock.Color):
             Parameters arguments
             --------------------
             - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_COLOR', domain=domain) 
         
 
         Returns
@@ -312,6 +323,14 @@ class Color(dsock.Color):
             - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position,
+            ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_COLOR', mapping=mapping) 
+        
+
         Returns
         =======
                 Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute
@@ -346,6 +365,13 @@ class Color(dsock.Color):
             - data_type : 'RGBA' 
             - mode      : 'ELEMENT' 
             - operation : 'EQUAL' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='EQUAL')
         
 
         Returns
@@ -383,6 +409,13 @@ class Color(dsock.Color):
             - operation : 'NOT_EQUAL' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='NOT_EQUAL')
+        
+
         Returns
         =======
                 Boolean 
@@ -417,6 +450,13 @@ class Color(dsock.Color):
             - operation : 'BRIGHTER' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER') 
+        
+
         Returns
         =======
                 Boolean 
@@ -449,6 +489,13 @@ class Color(dsock.Color):
             - data_type : 'RGBA' 
             - mode      : 'ELEMENT' 
             - operation : 'DARKER' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='DARKER') 
         
 
         Returns
@@ -489,6 +536,13 @@ class Color(dsock.Color):
             - use_alpha : False 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha) 
+        
+
         Returns
         =======
                 Color 
@@ -525,6 +579,13 @@ class Color(dsock.Color):
             Parameters arguments
             --------------------
             - use_alpha : False 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha) 
         
 
         Returns
@@ -565,6 +626,13 @@ class Color(dsock.Color):
             - use_alpha : False 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha) 
+        
+
         Returns
         =======
                 Color 
@@ -601,6 +669,13 @@ class Color(dsock.Color):
             Parameters arguments
             --------------------
             - use_alpha : False 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha) 
         
 
         Returns
@@ -641,6 +716,13 @@ class Color(dsock.Color):
             - use_alpha : False 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha) 
+        
+
         Returns
         =======
                 Color 
@@ -677,6 +759,13 @@ class Color(dsock.Color):
             Parameters arguments
             --------------------
             - use_alpha : False 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha) 
         
 
         Returns
@@ -717,6 +806,13 @@ class Color(dsock.Color):
             - use_alpha : False 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha) 
+        
+
         Returns
         =======
                 Color 
@@ -753,6 +849,13 @@ class Color(dsock.Color):
             Parameters arguments
             --------------------
             - use_alpha : False 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha) 
         
 
         Returns
@@ -793,6 +896,13 @@ class Color(dsock.Color):
             - use_alpha : False 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha) 
+        
+
         Returns
         =======
                 Color 
@@ -829,6 +939,13 @@ class Color(dsock.Color):
             Parameters arguments
             --------------------
             - use_alpha : False 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha) 
         
 
         Returns
@@ -869,6 +986,13 @@ class Color(dsock.Color):
             - use_alpha : False 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha)
+        
+
         Returns
         =======
                 Color 
@@ -905,6 +1029,13 @@ class Color(dsock.Color):
             Parameters arguments
             --------------------
             - use_alpha : False 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha) 
         
 
         Returns
@@ -945,6 +1076,13 @@ class Color(dsock.Color):
             - use_alpha : False 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha) 
+        
+
         Returns
         =======
                 Color 
@@ -981,6 +1119,13 @@ class Color(dsock.Color):
             Parameters arguments
             --------------------
             - use_alpha : False 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha) 
         
 
         Returns
@@ -1021,6 +1166,13 @@ class Color(dsock.Color):
             - use_alpha : False 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha) 
+        
+
         Returns
         =======
                 Color 
@@ -1057,6 +1209,13 @@ class Color(dsock.Color):
             Parameters arguments
             --------------------
             - use_alpha : False 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha) 
         
 
         Returns
@@ -1097,6 +1256,13 @@ class Color(dsock.Color):
             - use_alpha : False 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha) 
+        
+
         Returns
         =======
                 Color 
@@ -1135,6 +1301,13 @@ class Color(dsock.Color):
             - use_alpha : False 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha) 
+        
+
         Returns
         =======
                 Color 
@@ -1169,6 +1342,13 @@ class Color(dsock.Color):
             - use_alpha  : False 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type=blend_type, use_alpha=use_alpha) 
+        
+
         Returns
         =======
                 Color 
@@ -1198,6 +1378,13 @@ class Color(dsock.Color):
             -----------------
             - color : Color (self) 
             - fac   : Float 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.RgbCurves(color=self, fac=fac) 
         
 
         Returns

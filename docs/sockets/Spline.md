@@ -51,7 +51,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### capture_cyclic
@@ -73,6 +73,14 @@ v = spline.capture_cyclic(self, domain='CURVE')
 - self
 - domain:'CURVE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.IsSplineCyclic()
+```
 
 
 #### Returns
@@ -109,6 +117,14 @@ v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE'
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.EndpointSelection(start_size=start_size, end_size=end_size)
+```
+
+
 #### Returns
 
     Boolean
@@ -142,6 +158,14 @@ v = spline.capture_handle_positions(self, relative, domain='CURVE')
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.CurveHandlePositions(relative=relative)
+```
+
+
 #### Returns
 
     Sockets [left (Vector), right (Vector)]
@@ -169,6 +193,14 @@ v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE'
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
+```
+
+
 #### Returns
 
     Boolean
@@ -192,6 +224,14 @@ v = spline.capture_length(self, domain='CURVE')
 - self
 - domain:'CURVE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.SplineLength()
+```
 
 
 #### Returns
@@ -219,6 +259,14 @@ v = spline.capture_parameter(self, domain='CURVE')
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.SplineParameter()
+```
+
+
 #### Returns
 
     Sockets [factor (Float), length (Float), index (Integer)]
@@ -242,6 +290,14 @@ v = spline.capture_resolution(self, domain='CURVE')
 - self
 - domain:'CURVE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.SplineResolution()
+```
 
 
 #### Returns
@@ -269,6 +325,14 @@ v = spline.capture_tangent(self, domain='CURVE')
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.CurveTangent()
+```
+
+
 #### Returns
 
     Vector
@@ -294,6 +358,14 @@ v = spline.capture_tilt(self, domain='CURVE')
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.CurveTilt()
+```
+
+
 #### Returns
 
     Float
@@ -316,6 +388,14 @@ v = spline.cyclic(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.IsSplineCyclic()
+```
 
 
 #### Returns
@@ -351,6 +431,14 @@ v = spline.endpoint_selection(self, start_size, end_size)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.EndpointSelection(start_size=start_size, end_size=end_size)
+```
+
+
 #### Returns
 
     Boolean
@@ -373,6 +461,14 @@ v = spline.factor(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.SplineParameter()
+```
 
 
 #### Returns
@@ -399,6 +495,14 @@ v = spline.handle_type_selection(self, handle_type, mode)
 - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
 - mode : {'RIGHT', 'LEFT'}
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
+```
 
 
 #### Returns
@@ -433,6 +537,14 @@ v = spline.left_handle_position(self, relative)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.CurveHandlePositions(relative=relative)
+```
+
+
 #### Returns
 
     Vector
@@ -455,6 +567,14 @@ v = spline.length(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.SplineLength()
+```
 
 
 #### Returns
@@ -481,6 +601,14 @@ v = spline.parameter_index(self)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.SplineParameter()
+```
+
+
 #### Returns
 
     Integer
@@ -503,6 +631,14 @@ v = spline.parameter_length(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.SplineParameter()
+```
 
 
 #### Returns
@@ -529,6 +665,14 @@ v = spline.point_count(self)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.SplineLength()
+```
+
+
 #### Returns
 
     Integer
@@ -551,6 +695,14 @@ v = spline.resolution(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.SplineResolution()
+```
 
 
 #### Returns
@@ -585,6 +737,14 @@ v = spline.right_handle_position(self, relative)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.CurveHandlePositions(relative=relative)
+```
+
+
 #### Returns
 
     Vector
@@ -609,6 +769,14 @@ spline.set_cyclic(geometry, selection, cyclic)
 - selection : Boolean
 - cyclic : Boolean
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.SetSplineCyclic(geometry=geometry, selection=selection, cyclic=cyclic)
+```
 
 
 #### Returns
@@ -637,6 +805,14 @@ spline.set_resolution(geometry, selection, resolution)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.SetSplineResolution(geometry=geometry, selection=selection, resolution=resolution)
+```
+
+
 #### Returns
 
     self
@@ -659,6 +835,14 @@ v = spline.spline_ID(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.ID()
+```
 
 
 #### Returns
@@ -685,6 +869,14 @@ v = spline.spline_index(self)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Index()
+```
+
+
 #### Returns
 
     Integer
@@ -707,6 +899,14 @@ v = spline.spline_position(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Index()
+```
 
 
 #### Returns
@@ -733,6 +933,14 @@ v = spline.tangent(self)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.CurveTangent()
+```
+
+
 #### Returns
 
     Vector
@@ -755,6 +963,14 @@ v = spline.tilt(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.CurveTilt()
+```
 
 
 #### Returns

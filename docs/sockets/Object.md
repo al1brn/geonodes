@@ -19,7 +19,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### info
@@ -59,6 +59,14 @@ v = object.info
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
+```
+
+
 #### Returns
 
     Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
@@ -91,6 +99,14 @@ v = object.switch(switch1, true)
 
 - input_type : 'OBJECT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='OBJECT')
+```
 
 
 #### Returns

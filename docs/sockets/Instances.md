@@ -29,7 +29,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### instance_index
@@ -50,6 +50,14 @@ v = instances.instance_index(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Index()
+```
 
 
 #### Returns
@@ -80,6 +88,14 @@ instances.rotate(selection, rotation, pivot_point, local_space)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
+```
+
+
 #### Returns
 
     self
@@ -106,6 +122,14 @@ instances.scale(selection, scale, center, local_space)
 - center : Vector
 - local_space : Boolean
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
+```
 
 
 #### Returns
@@ -135,6 +159,14 @@ v = instances.to_points(selection, position, radius)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
+```
+
+
 #### Returns
 
     Points
@@ -160,6 +192,14 @@ instances.translate(selection, translation, local_space)
 - translation : Vector
 - local_space : Boolean
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
+```
 
 
 #### Returns

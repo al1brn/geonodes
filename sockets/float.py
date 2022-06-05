@@ -121,6 +121,13 @@ class Float(dsock.Float):
             - data_type : 'FLOAT' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT') 
+        
+
         Returns
         =======
                 Float 
@@ -162,6 +169,13 @@ class Float(dsock.Float):
             - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT', domain=domain) 
+        
+
         Returns
         =======
                 Sockets [leading (Float), trailing (Float), total (Float)] 
@@ -198,6 +212,14 @@ class Float(dsock.Float):
             Parameters arguments
             --------------------
             - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT',
+            domain=domain) 
         
 
         Returns
@@ -241,6 +263,14 @@ class Float(dsock.Float):
             - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index,
+            data_type='FLOAT', domain=domain, mapping=mapping) 
+        
+
         Returns
         =======
                 Float 
@@ -278,6 +308,13 @@ class Float(dsock.Float):
             - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT', domain=domain) 
+        
+
         Returns
         =======
                 Sockets [geometry (Geometry), attribute (Float)] 
@@ -313,6 +350,13 @@ class Float(dsock.Float):
             Parameters arguments
             --------------------
             - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT', domain=domain) 
         
 
         Returns
@@ -355,6 +399,14 @@ class Float(dsock.Float):
             - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position,
+            ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping) 
+        
+
         Returns
         =======
                 Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute
@@ -387,6 +439,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - input_type : 'FLOAT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT') 
         
 
         Returns
@@ -430,6 +489,14 @@ class Float(dsock.Float):
             - data_type : 'FLOAT' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max,
+            clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type) 
+        
+
         Returns
         =======
                 Float 
@@ -462,6 +529,13 @@ class Float(dsock.Float):
             - data_type : 'FLOAT' 
             - mode      : 'ELEMENT' 
             - operation : 'LESS_THAN' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN') 
         
 
         Returns
@@ -498,6 +572,13 @@ class Float(dsock.Float):
             - operation : 'LESS_EQUAL' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL') 
+        
+
         Returns
         =======
                 Boolean 
@@ -532,6 +613,13 @@ class Float(dsock.Float):
             - operation : 'GREATER_THAN' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN') 
+        
+
         Returns
         =======
                 Boolean 
@@ -564,6 +652,13 @@ class Float(dsock.Float):
             - data_type : 'FLOAT' 
             - mode      : 'ELEMENT' 
             - operation : 'GREATER_EQUAL' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL') 
         
 
         Returns
@@ -601,6 +696,13 @@ class Float(dsock.Float):
             - operation : 'EQUAL' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL')
+        
+
         Returns
         =======
                 Boolean 
@@ -636,6 +738,13 @@ class Float(dsock.Float):
             - operation : 'NOT_EQUAL' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL')
+        
+
         Returns
         =======
                 Boolean 
@@ -666,6 +775,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'ADD' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='ADD') 
         
 
         Returns
@@ -700,6 +816,13 @@ class Float(dsock.Float):
             - operation : 'SUBTRACT' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='SUBTRACT') 
+        
+
         Returns
         =======
                 Float 
@@ -732,6 +855,13 @@ class Float(dsock.Float):
             - operation : 'MULTIPLY' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='MULTIPLY') 
+        
+
         Returns
         =======
                 Float 
@@ -762,6 +892,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'DIVIDE' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='DIVIDE') 
         
 
         Returns
@@ -797,6 +934,13 @@ class Float(dsock.Float):
             - operation : 'MULTIPLY_ADD' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD') 
+        
+
         Returns
         =======
                 Float 
@@ -827,6 +971,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'POWER' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='POWER') 
         
 
         Returns
@@ -861,6 +1012,13 @@ class Float(dsock.Float):
             - operation : 'LOGARITHM' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='LOGARITHM') 
+        
+
         Returns
         =======
                 Float 
@@ -890,6 +1048,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'SQRT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='SQRT') 
         
 
         Returns
@@ -923,6 +1088,13 @@ class Float(dsock.Float):
             - operation : 'INVERSE_SQRT' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='INVERSE_SQRT') 
+        
+
         Returns
         =======
                 Float 
@@ -954,6 +1126,13 @@ class Float(dsock.Float):
             - operation : 'ABSOLUTE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='ABSOLUTE') 
+        
+
         Returns
         =======
                 Float 
@@ -983,6 +1162,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'EXPONENT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='EXPONENT') 
         
 
         Returns
@@ -1017,6 +1203,13 @@ class Float(dsock.Float):
             - operation : 'MINIMUM' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='MINIMUM') 
+        
+
         Returns
         =======
                 Float 
@@ -1047,6 +1240,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'MAXIMUM' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='MAXIMUM') 
         
 
         Returns
@@ -1081,6 +1281,13 @@ class Float(dsock.Float):
             - operation : 'LESS_THAN' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='LESS_THAN') 
+        
+
         Returns
         =======
                 Float 
@@ -1113,6 +1320,13 @@ class Float(dsock.Float):
             - operation : 'GREATER_THAN' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='GREATER_THAN') 
+        
+
         Returns
         =======
                 Float 
@@ -1142,6 +1356,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'SIGN' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='SIGN') 
         
 
         Returns
@@ -1177,6 +1398,13 @@ class Float(dsock.Float):
             - operation : 'COMPARE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE') 
+        
+
         Returns
         =======
                 Float 
@@ -1208,6 +1436,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'SMOOTH_MIN' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN') 
         
 
         Returns
@@ -1243,6 +1478,13 @@ class Float(dsock.Float):
             - operation : 'SMOOTH_MAX' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX') 
+        
+
         Returns
         =======
                 Float 
@@ -1272,6 +1514,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'ROUND' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='ROUND') 
         
 
         Returns
@@ -1305,6 +1554,13 @@ class Float(dsock.Float):
             - operation : 'FLOOR' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='FLOOR') 
+        
+
         Returns
         =======
                 Float 
@@ -1334,6 +1590,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'CEIL' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='CEIL') 
         
 
         Returns
@@ -1367,6 +1630,13 @@ class Float(dsock.Float):
             - operation : 'TRUNC' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='TRUNC') 
+        
+
         Returns
         =======
                 Float 
@@ -1396,6 +1666,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'FRACT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='FRACT') 
         
 
         Returns
@@ -1428,6 +1705,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'MODULO' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='MODULO') 
         
 
         Returns
@@ -1463,6 +1747,13 @@ class Float(dsock.Float):
             - operation : 'WRAP' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP') 
+        
+
         Returns
         =======
                 Float 
@@ -1493,6 +1784,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'SNAP' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='SNAP') 
         
 
         Returns
@@ -1527,6 +1825,13 @@ class Float(dsock.Float):
             - operation : 'PINGPONG' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='PINGPONG') 
+        
+
         Returns
         =======
                 Float 
@@ -1556,6 +1861,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'SINE' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='SINE') 
         
 
         Returns
@@ -1589,6 +1901,13 @@ class Float(dsock.Float):
             - operation : 'COSINE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='COSINE') 
+        
+
         Returns
         =======
                 Float 
@@ -1618,6 +1937,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'TANGENT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='TANGENT') 
         
 
         Returns
@@ -1651,6 +1977,13 @@ class Float(dsock.Float):
             - operation : 'ARCSINE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='ARCSINE') 
+        
+
         Returns
         =======
                 Float 
@@ -1682,6 +2015,13 @@ class Float(dsock.Float):
             - operation : 'ARCCOSINE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='ARCCOSINE') 
+        
+
         Returns
         =======
                 Float 
@@ -1711,6 +2051,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'ARCTANGENT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='ARCTANGENT') 
         
 
         Returns
@@ -1745,6 +2092,13 @@ class Float(dsock.Float):
             - operation : 'ARCTAN2' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='ARCTAN2') 
+        
+
         Returns
         =======
                 Float 
@@ -1774,6 +2128,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'SINH' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='SINH') 
         
 
         Returns
@@ -1807,6 +2168,13 @@ class Float(dsock.Float):
             - operation : 'COSH' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='COSH') 
+        
+
         Returns
         =======
                 Float 
@@ -1836,6 +2204,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'TANH' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='TANH') 
         
 
         Returns
@@ -1869,6 +2244,13 @@ class Float(dsock.Float):
             - operation : 'RADIANS' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='RADIANS') 
+        
+
         Returns
         =======
                 Float 
@@ -1898,6 +2280,13 @@ class Float(dsock.Float):
             Fixed parameters
             ----------------
             - operation : 'DEGREES' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='DEGREES') 
         
 
         Returns
@@ -1931,6 +2320,13 @@ class Float(dsock.Float):
             - rounding_mode : 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.FloatToInteger(float=self, rounding_mode=rounding_mode) 
+        
+
         Returns
         =======
                 Integer 
@@ -1958,6 +2354,13 @@ class Float(dsock.Float):
             - decimals : Integer 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.ValueToString(value=self, decimals=decimals) 
+        
+
         Returns
         =======
                 String 
@@ -1982,6 +2385,13 @@ class Float(dsock.Float):
             Sockets arguments
             -----------------
             - fac : Float (self) 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Colorramp(fac=self) 
         
 
         Returns
@@ -2015,6 +2425,13 @@ class Float(dsock.Float):
             - value  : Float 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.FloatCurve(factor=self, value=value) 
+        
+
         Returns
         =======
                 self 
@@ -2046,6 +2463,13 @@ class Float(dsock.Float):
             Parameters arguments
             --------------------
             - clamp_type : 'MINMAX' in [MINMAX, RANGE] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type) 
         
 
         Returns

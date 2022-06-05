@@ -22,9 +22,17 @@ class Geometry(dsock.Geometry):
 
     Properties
     ==========
-    - bound_box  : Sockets      [bounding_box (Geometry), min (Vector), max (Vector)] 
-    - components : Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances
+    - bound_box           : Sockets      [bounding_box (Geometry), min (Vector), max (Vector)] 
+    - box                 : bounding_box (Geometry) = bound_box.bounding_box 
+    - box_max             : max (Vector) = bound_box.max 
+    - box_min             : min (Vector) = bound_box.min 
+    - components          : Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances
       (Instances)] 
+    - curve_component     : curve (Curve) = components.curve 
+    - instances_component : instances (Instances) = components.instances 
+    - mesh_component      : mesh (Mesh) = components.mesh 
+    - points_component    : point_cloud (Geometry) = components.point_cloud 
+    - volume_component    : volume (Volume) = components.volume 
     
 
     Attribute capture
@@ -81,7 +89,15 @@ class Geometry(dsock.Geometry):
 
     def reset_properties(self):
         self.bound_box_ = None
+        self.box_ = None
+        self.box_min_ = None
+        self.box_max_ = None
         self.components_ = None
+        self.mesh_component_ = None
+        self.points_component_ = None
+        self.curve_component_ = None
+        self.volume_component_ = None
+        self.instances_component_ = None
 
     # ----------------------------------------------------------------------------------------------------
     # Static methods
@@ -99,6 +115,13 @@ class Geometry(dsock.Geometry):
 
         Arguments
         =========
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.IsViewport() 
         
 
         Returns
@@ -137,6 +160,13 @@ class Geometry(dsock.Geometry):
             - label:f"{self.node_chain_label}.bound_box" 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_box") 
+        
+
         Returns
         =======
                 Sockets [bounding_box (Geometry), min (Vector), max (Vector)] 
@@ -146,17 +176,121 @@ class Geometry(dsock.Geometry):
             self.bound_box_ = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_box")
         return self.bound_box_
 
-
     @property
     def box(self):
+        """ box
+        
+
+        | Node: BoundingBox 
+        
+
+            v = geometry.box 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry : Geometry (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.box" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box") 
+        
+
+        Returns
+        =======
+                Sockets [bounding_box (Geometry), min (Vector), max (Vector)] 
+        """
+
         return self.bound_box.bounding_box
 
     @property
     def box_min(self):
+        """ box_min
+        
+
+        | Node: BoundingBox 
+        
+
+            v = geometry.box_min 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry : Geometry (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.box_min" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_min") 
+        
+
+        Returns
+        =======
+                Sockets [bounding_box (Geometry), min (Vector), max (Vector)] 
+        """
+
         return self.bound_box.min
 
     @property
     def box_max(self):
+        """ box_max
+        
+
+        | Node: BoundingBox 
+        
+
+            v = geometry.box_max 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry : Geometry (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.box_max" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_max") 
+        
+
+        Returns
+        =======
+                Sockets [bounding_box (Geometry), min (Vector), max (Vector)] 
+        """
+
         return self.bound_box.max
 
     @property
@@ -184,6 +318,13 @@ class Geometry(dsock.Geometry):
             - label:f"{self.node_chain_label}.components" 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.components") 
+        
+
         Returns
         =======
                 Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)] 
@@ -193,25 +334,199 @@ class Geometry(dsock.Geometry):
             self.components_ = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.components")
         return self.components_
 
-
     @property
     def mesh_component(self):
+        """ mesh_component
+        
+
+        | Node: SeparateComponents 
+        
+
+            v = geometry.mesh_component 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry : Geometry (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.mesh_component" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.mesh_component") 
+        
+
+        Returns
+        =======
+                Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)] 
+        """
+
         return self.components.mesh
 
     @property
     def points_component(self):
+        """ points_component
+        
+
+        | Node: SeparateComponents 
+        
+
+            v = geometry.points_component 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry : Geometry (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.points_component" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.points_component") 
+        
+
+        Returns
+        =======
+                Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)] 
+        """
+
         return self.components.point_cloud
 
     @property
     def curve_component(self):
+        """ curve_component
+        
+
+        | Node: SeparateComponents 
+        
+
+            v = geometry.curve_component 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry : Geometry (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.curve_component" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.curve_component") 
+        
+
+        Returns
+        =======
+                Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)] 
+        """
+
         return self.components.curve
 
     @property
     def volume_component(self):
+        """ volume_component
+        
+
+        | Node: SeparateComponents 
+        
+
+            v = geometry.volume_component 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry : Geometry (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.volume_component" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.volume_component") 
+        
+
+        Returns
+        =======
+                Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)] 
+        """
+
         return self.components.volume
 
     @property
     def instances_component(self):
+        """ instances_component
+        
+
+        | Node: SeparateComponents 
+        
+
+            v = geometry.instances_component 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry : Geometry (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.instances_component" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.instances_component") 
+        
+
+        Returns
+        =======
+                Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)] 
+        """
+
         return self.components.instances
 
 
@@ -236,6 +551,13 @@ class Geometry(dsock.Geometry):
             --------------------
             - self   
             - domain:'POINT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.ID() 
         
 
         Returns
@@ -270,6 +592,13 @@ class Geometry(dsock.Geometry):
             - domain:'POINT' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Index() 
+        
+
         Returns
         =======
                 Integer 
@@ -300,6 +629,13 @@ class Geometry(dsock.Geometry):
             --------------------
             - self   
             - domain:'FACE' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Normal() 
         
 
         Returns
@@ -334,6 +670,13 @@ class Geometry(dsock.Geometry):
             - domain:'POINT' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Position() 
+        
+
         Returns
         =======
                 Vector 
@@ -364,6 +707,13 @@ class Geometry(dsock.Geometry):
             --------------------
             - self   
             - domain:'POINT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Radius() 
         
 
         Returns
@@ -402,6 +752,13 @@ class Geometry(dsock.Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.ID() 
+        
+
         Returns
         =======
                 Integer 
@@ -427,6 +784,13 @@ class Geometry(dsock.Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Index() 
         
 
         Returns
@@ -456,6 +820,13 @@ class Geometry(dsock.Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Normal() 
+        
+
         Returns
         =======
                 Vector 
@@ -483,6 +854,13 @@ class Geometry(dsock.Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Position() 
+        
+
         Returns
         =======
                 Vector 
@@ -508,6 +886,13 @@ class Geometry(dsock.Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Radius() 
         
 
         Returns
@@ -545,6 +930,13 @@ class Geometry(dsock.Geometry):
             Fixed parameters
             ----------------
             - input_type : 'GEOMETRY' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY') 
         
 
         Returns
@@ -587,6 +979,14 @@ class Geometry(dsock.Geometry):
             - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index,
+            data_type='BOOLEAN', domain=domain, mapping=mapping) 
+        
+
         Returns
         =======
                 Boolean 
@@ -625,6 +1025,14 @@ class Geometry(dsock.Geometry):
             --------------------
             - domain  : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
             - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index,
+            data_type='INT', domain=domain, mapping=mapping) 
         
 
         Returns
@@ -667,6 +1075,14 @@ class Geometry(dsock.Geometry):
             - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index,
+            data_type='FLOAT', domain=domain, mapping=mapping) 
+        
+
         Returns
         =======
                 Float 
@@ -705,6 +1121,14 @@ class Geometry(dsock.Geometry):
             --------------------
             - domain  : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
             - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index,
+            data_type='FLOAT_VECTOR', domain=domain, mapping=mapping) 
         
 
         Returns
@@ -747,6 +1171,14 @@ class Geometry(dsock.Geometry):
             - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index,
+            data_type='FLOAT_COLOR', domain=domain, mapping=mapping) 
+        
+
         Returns
         =======
                 Color 
@@ -778,6 +1210,13 @@ class Geometry(dsock.Geometry):
             - component : 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.DomainSize(geometry=self, component=component) 
+        
+
         Returns
         =======
                 Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer),
@@ -804,6 +1243,13 @@ class Geometry(dsock.Geometry):
             -----------------
             - geometry  : Geometry (self) 
             - attribute : *String 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.AttributeRemove(*attribute, geometry=self) 
         
 
         Returns
@@ -838,6 +1284,13 @@ class Geometry(dsock.Geometry):
             - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain) 
+        
+
         Returns
         =======
                 Sockets [selection (Geometry), inverted (Geometry)] 
@@ -862,6 +1315,13 @@ class Geometry(dsock.Geometry):
             Sockets arguments
             -----------------
             - geometry : Geometry (self) 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.ConvexHull(geometry=self) 
         
 
         Returns
@@ -890,6 +1350,13 @@ class Geometry(dsock.Geometry):
             - geometry : *Geometry (self) 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.GeometryToInstance(self, *geometry) 
+        
+
         Returns
         =======
                 Instances 
@@ -914,6 +1381,13 @@ class Geometry(dsock.Geometry):
             Sockets arguments
             -----------------
             - geometry : *Geometry (self) 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.JoinGeometry(self, *geometry) 
         
 
         Returns
@@ -946,6 +1420,13 @@ class Geometry(dsock.Geometry):
             Parameters arguments
             --------------------
             - target_element : 'FACES' in [POINTS, EDGES, FACES] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.GeometryProximity(target=self, source_position=source_position, target_element=target_element)
         
 
         Returns
@@ -985,6 +1466,13 @@ class Geometry(dsock.Geometry):
             - mode   : 'ALL' in [ALL, EDGE_FACE, ONLY_FACE] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode) 
+        
+
         Returns
         =======
                 self 
@@ -1011,6 +1499,13 @@ class Geometry(dsock.Geometry):
             - geometry  : Geometry (self) 
             - selection : Boolean 
             - distance  : Float 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.MergeByDistance(geometry=self, selection=selection, distance=distance) 
         
 
         Returns
@@ -1044,6 +1539,13 @@ class Geometry(dsock.Geometry):
             - legacy_behavior : False 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior) 
+        
+
         Returns
         =======
                 self 
@@ -1070,6 +1572,13 @@ class Geometry(dsock.Geometry):
             - geometry : Geometry (self) 
             - old      : Material 
             - new      : Material 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.ReplaceMaterial(geometry=self, old=old, new=new) 
         
 
         Returns
@@ -1108,6 +1617,14 @@ class Geometry(dsock.Geometry):
             - scale_mode : 'UNIFORM' in [UNIFORM, SINGLE_AXIS] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis,
+            domain=domain, scale_mode=scale_mode) 
+        
+
         Returns
         =======
                 self 
@@ -1134,6 +1651,13 @@ class Geometry(dsock.Geometry):
             - geometry  : Geometry (self) 
             - selection : Boolean 
             - ID        : Integer 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SetID(geometry=self, selection=selection, ID=ID) 
         
 
         Returns
@@ -1164,6 +1688,13 @@ class Geometry(dsock.Geometry):
             - material  : Material 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SetMaterial(geometry=self, selection=selection, material=material) 
+        
+
         Returns
         =======
                 self 
@@ -1190,6 +1721,13 @@ class Geometry(dsock.Geometry):
             - geometry       : Geometry (self) 
             - selection      : Boolean 
             - material_index : Integer 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index) 
         
 
         Returns
@@ -1221,6 +1759,13 @@ class Geometry(dsock.Geometry):
             - offset    : Vector 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset) 
+        
+
         Returns
         =======
                 self 
@@ -1247,6 +1792,13 @@ class Geometry(dsock.Geometry):
             - geometry     : Geometry (self) 
             - selection    : Boolean 
             - shade_smooth : Boolean 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth) 
         
 
         Returns
@@ -1276,6 +1828,13 @@ class Geometry(dsock.Geometry):
             - translation : Vector 
             - rotation    : Vector 
             - scale       : Vector 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale) 
         
 
         Returns

@@ -56,6 +56,13 @@ class Instances(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Index() 
+        
+
         Returns
         =======
                 Integer 
@@ -87,6 +94,13 @@ class Instances(Geometry):
             - selection : Boolean 
             - position  : Vector 
             - radius    : Float 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
         
 
         Returns
@@ -123,6 +137,14 @@ class Instances(Geometry):
             - local_space : Boolean 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point,
+            local_space=local_space) 
+        
+
         Returns
         =======
                 self 
@@ -153,6 +175,13 @@ class Instances(Geometry):
             - local_space : Boolean 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
+        
+
         Returns
         =======
                 self 
@@ -180,6 +209,13 @@ class Instances(Geometry):
             - selection   : Boolean 
             - translation : Vector 
             - local_space : Boolean 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
         
 
         Returns

@@ -79,7 +79,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### AlignToVector
@@ -113,6 +113,14 @@ v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
+```
+
+
 #### Returns
 
     Vector
@@ -137,6 +145,14 @@ v = Vector.Combine(x, y, z)
 - y : Float
 - z : Float
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.CombineXyz(x=x, y=y, z=z)
+```
 
 
 #### Returns
@@ -174,6 +190,14 @@ v = Vector.Random(min, max, ID, seed)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR')
+```
+
+
 #### Returns
 
     Vector
@@ -204,6 +228,14 @@ v = vector.absolute()
 
 - operation : 'ABSOLUTE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, operation='ABSOLUTE')
+```
 
 
 #### Returns
@@ -247,6 +279,14 @@ v = vector.accumulate_field(group_index, domain)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain)
+```
+
+
 #### Returns
 
     Sockets [leading (Vector), trailing (Vector), total (Vector)]
@@ -278,6 +318,14 @@ v = vector.add(vector1)
 
 - operation : 'ADD'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD')
+```
 
 
 #### Returns
@@ -313,6 +361,14 @@ vector.align_to_vector(factor, vector, axis, pivot_axis)
 - axis : 'X' in [X, Y, Z]
 - pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
+```
 
 
 #### Returns
@@ -357,6 +413,14 @@ v = vector.attribute_statistic(geometry, selection, domain)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT_VECTOR', domain=domain)
+```
+
+
 #### Returns
 
     Sockets [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)]
@@ -398,6 +462,14 @@ v = vector.capture_attribute(geometry, domain)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VECTOR', domain=domain)
+```
+
+
 #### Returns
 
     Sockets [geometry (Geometry), attribute (Vector)]
@@ -430,6 +502,14 @@ v = vector.ceil()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, operation='CEIL')
+```
+
+
 #### Returns
 
     Vector
@@ -460,6 +540,14 @@ v = vector.cos()
 
 - operation : 'COSINE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, operation='COSINE')
+```
 
 
 #### Returns
@@ -495,6 +583,14 @@ v = vector.cross(vector1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT')
+```
+
+
 #### Returns
 
     Vector
@@ -518,6 +614,14 @@ vector.curves(fac)
 - vector : Vector (self)
 - fac : Float
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorCurves(vector=self, fac=fac)
+```
 
 
 #### Returns
@@ -553,6 +657,14 @@ v = vector.distance(vector1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE')
+```
+
+
 #### Returns
 
     Float
@@ -586,6 +698,14 @@ v = vector.divide(vector1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE')
+```
+
+
 #### Returns
 
     Vector
@@ -617,6 +737,14 @@ v = vector.dot(vector1)
 
 - operation : 'DOT_PRODUCT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT')
+```
 
 
 #### Returns
@@ -664,6 +792,14 @@ v = vector.equal(b, c, angle, epsilon, mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL')
+```
+
+
 #### Returns
 
     Boolean
@@ -696,6 +832,14 @@ v = vector.faceforward(vector1, vector2)
 
 - operation : 'FACEFORWARD'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD')
+```
 
 
 #### Returns
@@ -739,6 +883,14 @@ v = vector.field_at_index(index, domain)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain)
+```
+
+
 #### Returns
 
     Vector
@@ -771,6 +923,14 @@ v = vector.floor()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, operation='FLOOR')
+```
+
+
 #### Returns
 
     Vector
@@ -801,6 +961,14 @@ v = vector.fraction()
 
 - operation : 'FRACTION'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, operation='FRACTION')
+```
 
 
 #### Returns
@@ -847,6 +1015,14 @@ v = vector.greater_equal(b, c, angle, mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL')
+```
+
+
 #### Returns
 
     Boolean
@@ -891,6 +1067,14 @@ v = vector.greater_than(b, c, angle, mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN')
+```
+
+
 #### Returns
 
     Boolean
@@ -921,6 +1105,14 @@ v = vector.length()
 
 - operation : 'LENGTH'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, operation='LENGTH')
+```
 
 
 #### Returns
@@ -967,6 +1159,14 @@ v = vector.less_equal(b, c, angle, mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL')
+```
+
+
 #### Returns
 
     Boolean
@@ -1009,6 +1209,14 @@ v = vector.less_than(b, c, angle, mode)
 
 - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN')
+```
 
 
 #### Returns
@@ -1056,6 +1264,14 @@ v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_ty
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type)
+```
+
+
 #### Returns
 
     Vector
@@ -1087,6 +1303,14 @@ v = vector.max(vector1)
 
 - operation : 'MAXIMUM'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM')
+```
 
 
 #### Returns
@@ -1122,6 +1346,14 @@ v = vector.min(vector1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM')
+```
+
+
 #### Returns
 
     Vector
@@ -1155,6 +1387,14 @@ v = vector.modulo(vector1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO')
+```
+
+
 #### Returns
 
     Vector
@@ -1186,6 +1426,14 @@ v = vector.multiply(vector1)
 
 - operation : 'MULTIPLY'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY')
+```
 
 
 #### Returns
@@ -1222,6 +1470,14 @@ v = vector.multiply_add(vector1, vector2)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD')
+```
+
+
 #### Returns
 
     Vector
@@ -1252,6 +1508,14 @@ v = vector.normalize()
 
 - operation : 'NORMALIZE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, operation='NORMALIZE')
+```
 
 
 #### Returns
@@ -1299,6 +1563,14 @@ v = vector.not_equal(b, c, angle, epsilon, mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL')
+```
+
+
 #### Returns
 
     Boolean
@@ -1330,6 +1602,14 @@ v = vector.project(vector1)
 
 - operation : 'PROJECT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT')
+```
 
 
 #### Returns
@@ -1376,6 +1656,14 @@ v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, 
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping)
+```
+
+
 #### Returns
 
     Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Vector)]
@@ -1407,6 +1695,14 @@ v = vector.reflect(vector1)
 
 - operation : 'REFLECT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT')
+```
 
 
 #### Returns
@@ -1441,6 +1737,14 @@ v = vector.refract(vector1, scale)
 
 - operation : 'REFRACT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT')
+```
 
 
 #### Returns
@@ -1480,6 +1784,14 @@ v = vector.rotate(center, axis, angle, rotation, invert, rotation_type)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type)
+```
+
+
 #### Returns
 
     Vector
@@ -1511,6 +1823,14 @@ vector.rotate_euler(rotate_by, space)
 
 - space : 'OBJECT' in [OBJECT, LOCAL]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space)
+```
 
 
 #### Returns
@@ -1546,6 +1866,14 @@ v = vector.scale(scale)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, scale=scale, operation='SCALE')
+```
+
+
 #### Returns
 
     Vector
@@ -1578,6 +1906,14 @@ v = vector.separate
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.separate")
+```
+
+
 #### Returns
 
     Sockets [x (Float), y (Float), z (Float)]
@@ -1608,6 +1944,14 @@ v = vector.sin()
 
 - operation : 'SINE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, operation='SINE')
+```
 
 
 #### Returns
@@ -1643,6 +1987,14 @@ v = vector.snap(vector1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP')
+```
+
+
 #### Returns
 
     Vector
@@ -1676,6 +2028,14 @@ v = vector.subtract(vector1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT')
+```
+
+
 #### Returns
 
     Vector
@@ -1706,6 +2066,14 @@ v = vector.tan()
 
 - operation : 'TANGENT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, operation='TANGENT')
+```
 
 
 #### Returns
@@ -1752,6 +2120,14 @@ v = vector.transfer_attribute(source, source_position, index, domain, mapping)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
+```
+
+
 #### Returns
 
     Vector
@@ -1784,6 +2160,14 @@ v = vector.wrap(vector1, vector2)
 
 - operation : 'WRAP'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP')
+```
 
 
 #### Returns

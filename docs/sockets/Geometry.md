@@ -16,7 +16,15 @@
 
 
 - [bound_box](#bound_box) : Sockets      [bounding_box (Geometry), min (Vector), max (Vector)]
+- [box](#box) : bounding_box (Geometry) = bound_box.bounding_box
+- [box_max](#box_max) : max (Vector) = bound_box.max
+- [box_min](#box_min) : min (Vector) = bound_box.min
 - [components](#components) : Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+- [curve_component](#curve_component) : curve (Curve) = components.curve
+- [instances_component](#instances_component) : instances (Instances) = components.instances
+- [mesh_component](#mesh_component) : mesh (Mesh) = components.mesh
+- [points_component](#points_component) : point_cloud (Geometry) = components.point_cloud
+- [volume_component](#volume_component) : volume (Volume) = components.volume
 
 
 
@@ -82,7 +90,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### ID
@@ -103,6 +111,14 @@ v = geometry.ID(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.ID()
+```
 
 
 #### Returns
@@ -137,6 +153,14 @@ v = geometry.attribute_domain_size(component)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.DomainSize(geometry=self, component=component)
+```
+
+
 #### Returns
 
     Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
@@ -160,6 +184,14 @@ v = geometry.attribute_remove(attribute_1, attribute_2, attribute_3)
 - geometry : Geometry (self)
 - attribute : *String
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.AttributeRemove(*attribute, geometry=self)
+```
 
 
 #### Returns
@@ -194,6 +226,134 @@ v = geometry.bound_box
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_box")
+```
+
+
+#### Returns
+
+    Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
+
+### box
+
+> Node: [BoundingBox](../nodes/{self.node_name}.md)
+
+```python
+v = geometry.box
+```
+
+
+#### Arguments
+
+
+##### Sockets arguments
+
+
+
+- geometry : Geometry (self)
+
+
+
+##### Fixed parameters
+
+
+
+- label:f"{self.node_chain_label}.box"
+
+
+
+#### Node creation
+
+
+```python
+node = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box")
+```
+
+
+#### Returns
+
+    Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
+
+### box_max
+
+> Node: [BoundingBox](../nodes/{self.node_name}.md)
+
+```python
+v = geometry.box_max
+```
+
+
+#### Arguments
+
+
+##### Sockets arguments
+
+
+
+- geometry : Geometry (self)
+
+
+
+##### Fixed parameters
+
+
+
+- label:f"{self.node_chain_label}.box_max"
+
+
+
+#### Node creation
+
+
+```python
+node = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_max")
+```
+
+
+#### Returns
+
+    Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
+
+### box_min
+
+> Node: [BoundingBox](../nodes/{self.node_name}.md)
+
+```python
+v = geometry.box_min
+```
+
+
+#### Arguments
+
+
+##### Sockets arguments
+
+
+
+- geometry : Geometry (self)
+
+
+
+##### Fixed parameters
+
+
+
+- label:f"{self.node_chain_label}.box_min"
+
+
+
+#### Node creation
+
+
+```python
+node = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_min")
+```
+
+
 #### Returns
 
     Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
@@ -217,6 +377,14 @@ v = geometry.capture_ID(self, domain='POINT')
 - self
 - domain:'POINT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.ID()
+```
 
 
 #### Returns
@@ -244,6 +412,14 @@ v = geometry.capture_index(self, domain='POINT')
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Index()
+```
+
+
 #### Returns
 
     Integer
@@ -267,6 +443,14 @@ v = geometry.capture_normal(self, domain='FACE')
 - self
 - domain:'FACE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Normal()
+```
 
 
 #### Returns
@@ -294,6 +478,14 @@ v = geometry.capture_position(self, domain='POINT')
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Position()
+```
+
+
 #### Returns
 
     Vector
@@ -317,6 +509,14 @@ v = geometry.capture_radius(self, domain='POINT')
 - self
 - domain:'POINT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Radius()
+```
 
 
 #### Returns
@@ -352,6 +552,14 @@ v = geometry.components(selection, domain)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain)
+```
+
+
 #### Returns
 
     Sockets [selection (Geometry), inverted (Geometry)]
@@ -376,9 +584,57 @@ v = geometry.convex_hull()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.ConvexHull(geometry=self)
+```
+
+
 #### Returns
 
     Geometry
+
+### curve_component
+
+> Node: [SeparateComponents](../nodes/{self.node_name}.md)
+
+```python
+v = geometry.curve_component
+```
+
+
+#### Arguments
+
+
+##### Sockets arguments
+
+
+
+- geometry : Geometry (self)
+
+
+
+##### Fixed parameters
+
+
+
+- label:f"{self.node_chain_label}.curve_component"
+
+
+
+#### Node creation
+
+
+```python
+node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.curve_component")
+```
+
+
+#### Returns
+
+    Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
 
 ### delete_geometry
 
@@ -410,6 +666,14 @@ geometry.delete_geometry(selection, domain, mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode)
+```
+
+
 #### Returns
 
     self
@@ -434,9 +698,57 @@ v = geometry.index(self)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Index()
+```
+
+
 #### Returns
 
     Integer
+
+### instances_component
+
+> Node: [SeparateComponents](../nodes/{self.node_name}.md)
+
+```python
+v = geometry.instances_component
+```
+
+
+#### Arguments
+
+
+##### Sockets arguments
+
+
+
+- geometry : Geometry (self)
+
+
+
+##### Fixed parameters
+
+
+
+- label:f"{self.node_chain_label}.instances_component"
+
+
+
+#### Node creation
+
+
+```python
+node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.instances_component")
+```
+
+
+#### Returns
+
+    Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
 
 ### is_viewport
 
@@ -448,6 +760,14 @@ v = Geometry.is_viewport()
 
 
 #### Arguments
+
+
+#### Node creation
+
+
+```python
+node = nodes.IsViewport()
+```
 
 
 #### Returns
@@ -472,6 +792,14 @@ v = geometry.join(geometry_1, geometry_2, geometry_3)
 
 - geometry : *Geometry (self)
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.JoinGeometry(self, *geometry)
+```
 
 
 #### Returns
@@ -500,9 +828,57 @@ geometry.merge_by_distance(selection, distance)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.MergeByDistance(geometry=self, selection=selection, distance=distance)
+```
+
+
 #### Returns
 
     self
+
+### mesh_component
+
+> Node: [SeparateComponents](../nodes/{self.node_name}.md)
+
+```python
+v = geometry.mesh_component
+```
+
+
+#### Arguments
+
+
+##### Sockets arguments
+
+
+
+- geometry : Geometry (self)
+
+
+
+##### Fixed parameters
+
+
+
+- label:f"{self.node_chain_label}.mesh_component"
+
+
+
+#### Node creation
+
+
+```python
+node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.mesh_component")
+```
+
+
+#### Returns
+
+    Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
 
 ### normal
 
@@ -524,9 +900,57 @@ v = geometry.normal(self)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Normal()
+```
+
+
 #### Returns
 
     Vector
+
+### points_component
+
+> Node: [SeparateComponents](../nodes/{self.node_name}.md)
+
+```python
+v = geometry.points_component
+```
+
+
+#### Arguments
+
+
+##### Sockets arguments
+
+
+
+- geometry : Geometry (self)
+
+
+
+##### Fixed parameters
+
+
+
+- label:f"{self.node_chain_label}.points_component"
+
+
+
+#### Node creation
+
+
+```python
+node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.points_component")
+```
+
+
+#### Returns
+
+    Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
 
 ### position
 
@@ -546,6 +970,14 @@ v = geometry.position(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Position()
+```
 
 
 #### Returns
@@ -581,6 +1013,14 @@ v = geometry.proximity(source_position, target_element)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.GeometryProximity(target=self, source_position=source_position, target_element=target_element)
+```
+
+
 #### Returns
 
     Sockets [position (Vector), distance (Float)]
@@ -603,6 +1043,14 @@ v = geometry.radius(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Radius()
+```
 
 
 #### Returns
@@ -637,6 +1085,14 @@ geometry.realize_instances(legacy_behavior)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior)
+```
+
+
 #### Returns
 
     self
@@ -661,6 +1117,14 @@ geometry.replace_material(old, new)
 - old : Material
 - new : Material
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.ReplaceMaterial(geometry=self, old=old, new=new)
+```
 
 
 #### Returns
@@ -700,6 +1164,14 @@ geometry.scale_elements(selection, scale, center, axis, domain, scale_mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode)
+```
+
+
 #### Returns
 
     self
@@ -724,6 +1196,14 @@ geometry.set_ID(selection, ID)
 - selection : Boolean
 - ID : Integer
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.SetID(geometry=self, selection=selection, ID=ID)
+```
 
 
 #### Returns
@@ -752,6 +1232,14 @@ geometry.set_material(selection, material)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.SetMaterial(geometry=self, selection=selection, material=material)
+```
+
+
 #### Returns
 
     self
@@ -776,6 +1264,14 @@ geometry.set_material_index(selection, material_index)
 - selection : Boolean
 - material_index : Integer
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index)
+```
 
 
 #### Returns
@@ -805,6 +1301,14 @@ geometry.set_position(selection, position, offset)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset)
+```
+
+
 #### Returns
 
     self
@@ -829,6 +1333,14 @@ geometry.set_shade_smooth(selection, shade_smooth)
 - selection : Boolean
 - shade_smooth : Boolean
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth)
+```
 
 
 #### Returns
@@ -865,6 +1377,14 @@ v = geometry.switch(switch1, true)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY')
+```
+
+
 #### Returns
 
     Geometry
@@ -887,6 +1407,14 @@ v = geometry.to_instance(geometry_1, geometry_2, geometry_3)
 
 - geometry : *Geometry (self)
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.GeometryToInstance(self, *geometry)
+```
 
 
 #### Returns
@@ -933,6 +1461,14 @@ v = geometry.transfer_boolean(attribute, source_position, index, domain, mapping
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
+```
+
+
 #### Returns
 
     Boolean
@@ -975,6 +1511,14 @@ v = geometry.transfer_color(attribute, source_position, index, domain, mapping)
 - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
+```
 
 
 #### Returns
@@ -1021,6 +1565,14 @@ v = geometry.transfer_float(attribute, source_position, index, domain, mapping)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
+```
+
+
 #### Returns
 
     Float
@@ -1063,6 +1615,14 @@ v = geometry.transfer_integer(attribute, source_position, index, domain, mapping
 - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
+```
 
 
 #### Returns
@@ -1109,6 +1669,14 @@ v = geometry.transfer_vector(attribute, source_position, index, domain, mapping)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
+```
+
+
 #### Returns
 
     Vector
@@ -1136,6 +1704,54 @@ geometry.transform(translation, rotation, scale)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale)
+```
+
+
 #### Returns
 
     self
+
+### volume_component
+
+> Node: [SeparateComponents](../nodes/{self.node_name}.md)
+
+```python
+v = geometry.volume_component
+```
+
+
+#### Arguments
+
+
+##### Sockets arguments
+
+
+
+- geometry : Geometry (self)
+
+
+
+##### Fixed parameters
+
+
+
+- label:f"{self.node_chain_label}.volume_component"
+
+
+
+#### Node creation
+
+
+```python
+node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.volume_component")
+```
+
+
+#### Returns
+
+    Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]

@@ -116,6 +116,13 @@ class Vector(dsock.Vector):
             - data_type : 'FLOAT_VECTOR' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR') 
+        
+
         Returns
         =======
                 Vector 
@@ -143,6 +150,13 @@ class Vector(dsock.Vector):
             - x : Float 
             - y : Float 
             - z : Float 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.CombineXyz(x=x, y=y, z=z) 
         
 
         Returns
@@ -178,6 +192,13 @@ class Vector(dsock.Vector):
             --------------------
             - axis       : 'X' in [X, Y, Z] 
             - pivot_axis : 'AUTO' in [AUTO, X, Y, Z] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
         
 
         Returns
@@ -216,6 +237,13 @@ class Vector(dsock.Vector):
             - label:f"{self.node_chain_label}.separate" 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.separate") 
+        
+
         Returns
         =======
                 Sockets [x (Float), y (Float), z (Float)] 
@@ -224,31 +252,6 @@ class Vector(dsock.Vector):
         if self.separate_ is None:
             self.separate_ = nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.separate")
         return self.separate_
-
-
-    @property
-    def x(self):
-        return self.separate.x
-
-    @x.setter
-    def x(self, value):
-        self.separate.x = value
-
-    @property
-    def y(self):
-        return self.separate.y
-
-    @y.setter
-    def y(self, value):
-        self.separate.y = value
-
-    @property
-    def z(self):
-        return self.separate.z
-
-    @z.setter
-    def z(self, value):
-        self.separate.z = value
 
 
     # ----------------------------------------------------------------------------------------------------
@@ -282,6 +285,13 @@ class Vector(dsock.Vector):
             Parameters arguments
             --------------------
             - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain)
         
 
         Returns
@@ -320,6 +330,14 @@ class Vector(dsock.Vector):
             Parameters arguments
             --------------------
             - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT_VECTOR',
+            domain=domain) 
         
 
         Returns
@@ -363,6 +381,14 @@ class Vector(dsock.Vector):
             - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index,
+            data_type='FLOAT_VECTOR', domain=domain, mapping=mapping) 
+        
+
         Returns
         =======
                 Vector 
@@ -400,6 +426,13 @@ class Vector(dsock.Vector):
             - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VECTOR', domain=domain)
+        
+
         Returns
         =======
                 Sockets [geometry (Geometry), attribute (Vector)] 
@@ -435,6 +468,13 @@ class Vector(dsock.Vector):
             Parameters arguments
             --------------------
             - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain) 
         
 
         Returns
@@ -475,6 +515,14 @@ class Vector(dsock.Vector):
             Parameters arguments
             --------------------
             - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position,
+            ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping) 
         
 
         Returns
@@ -519,6 +567,14 @@ class Vector(dsock.Vector):
             - data_type : 'FLOAT_VECTOR' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max,
+            clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type) 
+        
+
         Returns
         =======
                 Vector 
@@ -557,6 +613,13 @@ class Vector(dsock.Vector):
             Parameters arguments
             --------------------
             - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN')
         
 
         Returns
@@ -599,6 +662,13 @@ class Vector(dsock.Vector):
             - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL')
+        
+
         Returns
         =======
                 Boolean 
@@ -639,6 +709,13 @@ class Vector(dsock.Vector):
             - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN')
+        
+
         Returns
         =======
                 Boolean 
@@ -677,6 +754,13 @@ class Vector(dsock.Vector):
             Parameters arguments
             --------------------
             - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL')
         
 
         Returns
@@ -720,6 +804,13 @@ class Vector(dsock.Vector):
             - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL')
+        
+
         Returns
         =======
                 Boolean 
@@ -761,6 +852,13 @@ class Vector(dsock.Vector):
             - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL')
+        
+
         Returns
         =======
                 Boolean 
@@ -791,6 +889,13 @@ class Vector(dsock.Vector):
             Fixed parameters
             ----------------
             - operation : 'ADD' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD') 
         
 
         Returns
@@ -825,6 +930,13 @@ class Vector(dsock.Vector):
             - operation : 'SUBTRACT' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT') 
+        
+
         Returns
         =======
                 Vector 
@@ -857,6 +969,13 @@ class Vector(dsock.Vector):
             - operation : 'MULTIPLY' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY') 
+        
+
         Returns
         =======
                 Vector 
@@ -887,6 +1006,13 @@ class Vector(dsock.Vector):
             Fixed parameters
             ----------------
             - operation : 'DIVIDE' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE') 
         
 
         Returns
@@ -922,6 +1048,13 @@ class Vector(dsock.Vector):
             - operation : 'MULTIPLY_ADD' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD') 
+        
+
         Returns
         =======
                 Vector 
@@ -952,6 +1085,13 @@ class Vector(dsock.Vector):
             Fixed parameters
             ----------------
             - operation : 'CROSS_PRODUCT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT') 
         
 
         Returns
@@ -986,6 +1126,13 @@ class Vector(dsock.Vector):
             - operation : 'PROJECT' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT') 
+        
+
         Returns
         =======
                 Vector 
@@ -1016,6 +1163,13 @@ class Vector(dsock.Vector):
             Fixed parameters
             ----------------
             - operation : 'REFLECT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT') 
         
 
         Returns
@@ -1051,6 +1205,13 @@ class Vector(dsock.Vector):
             - operation : 'REFRACT' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT') 
+        
+
         Returns
         =======
                 Vector 
@@ -1082,6 +1243,13 @@ class Vector(dsock.Vector):
             Fixed parameters
             ----------------
             - operation : 'FACEFORWARD' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD') 
         
 
         Returns
@@ -1116,6 +1284,13 @@ class Vector(dsock.Vector):
             - operation : 'DOT_PRODUCT' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT') 
+        
+
         Returns
         =======
                 Float 
@@ -1148,6 +1323,13 @@ class Vector(dsock.Vector):
             - operation : 'DISTANCE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE') 
+        
+
         Returns
         =======
                 Float 
@@ -1177,6 +1359,13 @@ class Vector(dsock.Vector):
             Fixed parameters
             ----------------
             - operation : 'LENGTH' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, operation='LENGTH') 
         
 
         Returns
@@ -1211,6 +1400,13 @@ class Vector(dsock.Vector):
             - operation : 'SCALE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, scale=scale, operation='SCALE') 
+        
+
         Returns
         =======
                 Vector 
@@ -1242,6 +1438,13 @@ class Vector(dsock.Vector):
             - operation : 'NORMALIZE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, operation='NORMALIZE') 
+        
+
         Returns
         =======
                 Vector 
@@ -1271,6 +1474,13 @@ class Vector(dsock.Vector):
             Fixed parameters
             ----------------
             - operation : 'ABSOLUTE' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, operation='ABSOLUTE') 
         
 
         Returns
@@ -1305,6 +1515,13 @@ class Vector(dsock.Vector):
             - operation : 'MINIMUM' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM') 
+        
+
         Returns
         =======
                 Vector 
@@ -1335,6 +1552,13 @@ class Vector(dsock.Vector):
             Fixed parameters
             ----------------
             - operation : 'MAXIMUM' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM') 
         
 
         Returns
@@ -1368,6 +1592,13 @@ class Vector(dsock.Vector):
             - operation : 'FLOOR' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, operation='FLOOR') 
+        
+
         Returns
         =======
                 Vector 
@@ -1397,6 +1628,13 @@ class Vector(dsock.Vector):
             Fixed parameters
             ----------------
             - operation : 'CEIL' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, operation='CEIL') 
         
 
         Returns
@@ -1430,6 +1668,13 @@ class Vector(dsock.Vector):
             - operation : 'FRACTION' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, operation='FRACTION') 
+        
+
         Returns
         =======
                 Vector 
@@ -1460,6 +1705,13 @@ class Vector(dsock.Vector):
             Fixed parameters
             ----------------
             - operation : 'MODULO' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO') 
         
 
         Returns
@@ -1495,6 +1747,13 @@ class Vector(dsock.Vector):
             - operation : 'WRAP' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP') 
+        
+
         Returns
         =======
                 Vector 
@@ -1525,6 +1784,13 @@ class Vector(dsock.Vector):
             Fixed parameters
             ----------------
             - operation : 'SNAP' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP') 
         
 
         Returns
@@ -1558,6 +1824,13 @@ class Vector(dsock.Vector):
             - operation : 'SINE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, operation='SINE') 
+        
+
         Returns
         =======
                 Vector 
@@ -1589,6 +1862,13 @@ class Vector(dsock.Vector):
             - operation : 'COSINE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, operation='COSINE') 
+        
+
         Returns
         =======
                 Vector 
@@ -1618,6 +1898,13 @@ class Vector(dsock.Vector):
             Fixed parameters
             ----------------
             - operation : 'TANGENT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.VectorMath(vector0=self, operation='TANGENT') 
         
 
         Returns
@@ -1656,6 +1943,14 @@ class Vector(dsock.Vector):
             - rotation_type : 'AXIS_ANGLE' in [AXIS_ANGLE, X_AXIS, Y_AXIS, Z_AXIS, EULER_XYZ] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert,
+            rotation_type=rotation_type) 
+        
+
         Returns
         =======
                 Vector 
@@ -1685,6 +1980,13 @@ class Vector(dsock.Vector):
             -----------------
             - vector : Vector (self) 
             - fac    : Float 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.VectorCurves(vector=self, fac=fac) 
         
 
         Returns
@@ -1721,6 +2023,13 @@ class Vector(dsock.Vector):
             - pivot_axis : 'AUTO' in [AUTO, X, Y, Z] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
+        
+
         Returns
         =======
                 self 
@@ -1751,6 +2060,13 @@ class Vector(dsock.Vector):
             Parameters arguments
             --------------------
             - space : 'OBJECT' in [OBJECT, LOCAL] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space) 
         
 
         Returns

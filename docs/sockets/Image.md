@@ -11,7 +11,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### switch
@@ -42,6 +42,14 @@ v = image.switch(switch1, true)
 
 - input_type : 'IMAGE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE')
+```
 
 
 #### Returns

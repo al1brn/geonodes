@@ -1714,6 +1714,9 @@ class BoundingBox(Node):
     ============
     | Data socket classes implementing this node 
     - Geometry bound_box : Property 
+    - Geometry box       : Property 
+    - Geometry box_max   : Property 
+    - Geometry box_min   : Property 
     """
 
     def __init__(self, geometry=None, label=None):
@@ -7261,7 +7264,12 @@ class SeparateComponents(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry components : Property 
+    - Geometry components          : Property 
+    - Geometry curve_component     : Property 
+    - Geometry instances_component : Property 
+    - Geometry mesh_component      : Property 
+    - Geometry points_component    : Property 
+    - Geometry volume_component    : Property 
     """
 
     def __init__(self, geometry=None, label=None):

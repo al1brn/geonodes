@@ -63,6 +63,13 @@ class Object(dsock.Object):
             - label:f"{self.node_chain_label}.info" 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
+        
+
         Returns
         =======
                 Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)] 
@@ -71,23 +78,6 @@ class Object(dsock.Object):
         if self.info_ is None:
             self.info_ = nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
         return self.info_
-
-
-    @property
-    def location(self):
-        return self.info.location
-
-    @property
-    def rotation(self):
-        return self.info.rotation
-
-    @property
-    def scale(self):
-        return self.info.scale
-
-    @property
-    def geometry(self):
-        return self.info.geometry
 
 
     # ----------------------------------------------------------------------------------------------------
@@ -117,6 +107,13 @@ class Object(dsock.Object):
             Fixed parameters
             ----------------
             - input_type : 'OBJECT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='OBJECT') 
         
 
         Returns

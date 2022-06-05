@@ -56,6 +56,14 @@ class Points(Geometry):
             - scale          : Vector 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance,
+            instance_index=instance_index, rotation=rotation, scale=scale) 
+        
+
         Returns
         =======
                 Instances 
@@ -81,6 +89,13 @@ class Points(Geometry):
             -----------------
             - points    : Points (self) 
             - selection : Boolean 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.PointsToVertices(points=self, selection=selection) 
         
 
         Returns
@@ -118,6 +133,14 @@ class Points(Geometry):
             - resolution_mode : 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount,
+            radius=radius, resolution_mode=resolution_mode) 
+        
+
         Returns
         =======
                 Volume 
@@ -148,6 +171,13 @@ class Points(Geometry):
             - points    : Points (self) 
             - selection : Boolean 
             - radius    : Float 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SetPointRadius(points=self, selection=selection, radius=radius) 
         
 
         Returns

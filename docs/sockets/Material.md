@@ -12,7 +12,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### selection
@@ -33,6 +33,14 @@ v = material.selection()
 
 - material : Material (self)
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.MaterialSelection(material=self)
+```
 
 
 #### Returns
@@ -67,6 +75,14 @@ v = material.switch(switch1, true)
 
 - input_type : 'MATERIAL'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL')
+```
 
 
 #### Returns

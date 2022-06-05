@@ -55,7 +55,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### ArcFromPoints
@@ -90,6 +90,14 @@ v = Curve.ArcFromPoints(resolution, start, middle, end, offset_angle, connect_ce
 
 - mode : 'POINTS'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, offset_angle=offset_angle, connect_center=connect_center, invert_arc=invert_arc, mode='POINTS')
+```
 
 
 #### Returns
@@ -129,6 +137,14 @@ v = Curve.ArcFromRadius(resolution, radius, start_angle, sweep_angle, connect_ce
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Arc(resolution=resolution, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle, connect_center=connect_center, invert_arc=invert_arc, mode='RADIUS')
+```
+
+
 #### Returns
 
     Curve
@@ -163,6 +179,14 @@ v = Curve.BezierSegment(resolution, start, start_handle, end_handle, end, mode)
 
 - mode : 'POSITION' in [POSITION, OFFSET]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode)
+```
 
 
 #### Returns
@@ -201,6 +225,14 @@ v = Curve.Circle(resolution, point_1, point_2, point_3, radius, mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=radius, mode=mode)
+```
+
+
 #### Returns
 
     Sockets [curve (Curve), center (Vector)]
@@ -236,6 +268,14 @@ v = Curve.Line(start, end, direction, length, mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.CurveLine(start=start, end=end, direction=direction, length=length, mode=mode)
+```
+
+
 #### Returns
 
     Curve
@@ -261,6 +301,14 @@ v = Curve.QuadraticBezier(resolution, start, middle, end)
 - middle : Vector
 - end : Vector
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.QuadraticBezier(resolution=resolution, start=start, middle=middle, end=end)
+```
 
 
 #### Returns
@@ -305,6 +353,14 @@ v = Curve.Quadrilateral(width, height, bottom_width, top_width, offset, bottom_h
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width, offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode)
+```
+
+
 #### Returns
 
     Curve
@@ -334,6 +390,14 @@ v = Curve.Spiral(resolution, rotations, start_radius, end_radius, height, revers
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Spiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius, height=height, reverse=reverse)
+```
+
+
 #### Returns
 
     Curve
@@ -359,6 +423,14 @@ v = Curve.Star(points, inner_radius, outer_radius, twist)
 - outer_radius : Float
 - twist : Float
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Star(points=points, inner_radius=inner_radius, outer_radius=outer_radius, twist=twist)
+```
 
 
 #### Returns
@@ -391,6 +463,14 @@ curve.fill(mode)
 
 - mode : 'TRIANGLES' in [TRIANGLES, NGONS]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.FillCurve(curve=self, mode=mode)
+```
 
 
 #### Returns
@@ -428,6 +508,14 @@ curve.fillet(count, radius, limit_radius, mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode=mode)
+```
+
+
 #### Returns
 
     self
@@ -450,6 +538,14 @@ v = curve.length()
 
 - curve : Curve (self)
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.CurveLength(curve=self)
+```
 
 
 #### Returns
@@ -487,6 +583,14 @@ curve.resample(selection, count, length, mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.ResampleCurve(curve=self, selection=selection, count=count, length=length, mode=mode)
+```
+
+
 #### Returns
 
     self
@@ -510,6 +614,14 @@ curve.reverse(selection)
 - curve : Curve (self)
 - selection : Boolean
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.ReverseCurve(curve=self, selection=selection)
+```
 
 
 #### Returns
@@ -544,6 +656,14 @@ v = curve.sample(factor, length, mode)
 
 - mode : 'LENGTH' in [FACTOR, LENGTH]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode)
+```
 
 
 #### Returns
@@ -581,6 +701,14 @@ curve.set_handle_positions(selection, position, offset, mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.SetHandlePositions(curve=self, selection=selection, position=position, offset=offset, mode=mode)
+```
+
+
 #### Returns
 
     self
@@ -615,6 +743,14 @@ curve.set_handles(selection, handle_type, mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.SetHandleType(curve=self, selection=selection, handle_type=handle_type, mode=mode)
+```
+
+
 #### Returns
 
     self
@@ -639,6 +775,14 @@ curve.set_radius(selection, radius)
 - selection : Boolean
 - radius : Float
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.SetCurveRadius(curve=self, selection=selection, radius=radius)
+```
 
 
 #### Returns
@@ -674,6 +818,14 @@ curve.set_spline_type(selection, spline_type)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_type)
+```
+
+
 #### Returns
 
     self
@@ -698,6 +850,14 @@ curve.set_tilt(selection, tilt)
 - selection : Boolean
 - tilt : Float
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.SetCurveTilt(curve=self, selection=selection, tilt=tilt)
+```
 
 
 #### Returns
@@ -725,6 +885,14 @@ curve.subdivide(cuts)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.SubdivideCurve(curve=self, cuts=cuts)
+```
+
+
 #### Returns
 
     self
@@ -749,6 +917,14 @@ v = curve.to_mesh(profile_curve, fill_caps)
 - profile_curve : Geometry
 - fill_caps : Boolean
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps)
+```
 
 
 #### Returns
@@ -785,6 +961,14 @@ v = curve.to_points(count, length, mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode)
+```
+
+
 #### Returns
 
     Sockets [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
@@ -819,6 +1003,14 @@ curve.trim(start0, end0, start1, end1, mode)
 
 - mode : 'FACTOR' in [FACTOR, LENGTH]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1=end1, mode=mode)
+```
 
 
 #### Returns

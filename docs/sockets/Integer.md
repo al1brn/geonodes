@@ -70,7 +70,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### Random
@@ -104,6 +104,14 @@ v = Integer.Random(min, max, ID, seed)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='INT')
+```
+
+
 #### Returns
 
     Integer
@@ -134,6 +142,14 @@ v = integer.abs()
 
 - operation : 'ABSOLUTE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='ABSOLUTE')
+```
 
 
 #### Returns
@@ -177,6 +193,14 @@ v = integer.accumulate_field(group_index, domain)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.AccumulateField(value=self, group_index=group_index, data_type='INT', domain=domain)
+```
+
+
 #### Returns
 
     Sockets [leading (Integer), trailing (Integer), total (Integer)]
@@ -208,6 +232,14 @@ v = integer.add(value1)
 
 - operation : 'ADD'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='ADD')
+```
 
 
 #### Returns
@@ -242,6 +274,14 @@ v = integer.arccos()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='ARCCOSINE')
+```
+
+
 #### Returns
 
     Float
@@ -272,6 +312,14 @@ v = integer.arcsin()
 
 - operation : 'ARCSINE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='ARCSINE')
+```
 
 
 #### Returns
@@ -306,6 +354,14 @@ v = integer.arctan()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='ARCTANGENT')
+```
+
+
 #### Returns
 
     Float
@@ -337,6 +393,14 @@ v = integer.arctan2(value1)
 
 - operation : 'ARCTAN2'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
+```
 
 
 #### Returns
@@ -380,6 +444,14 @@ v = integer.capture_attribute(geometry, domain)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='INT', domain=domain)
+```
+
+
 #### Returns
 
     Sockets [geometry (Geometry), attribute (Integer)]
@@ -410,6 +482,14 @@ v = integer.ceil()
 
 - operation : 'CEIL'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='CEIL')
+```
 
 
 #### Returns
@@ -446,6 +526,14 @@ v = integer.compare(value1, value2)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE')
+```
+
+
 #### Returns
 
     Float
@@ -476,6 +564,14 @@ v = integer.cos()
 
 - operation : 'COSINE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='COSINE')
+```
 
 
 #### Returns
@@ -510,6 +606,14 @@ v = integer.cosh()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='COSH')
+```
+
+
 #### Returns
 
     Float
@@ -540,6 +644,14 @@ v = integer.degrees()
 
 - operation : 'DEGREES'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='DEGREES')
+```
 
 
 #### Returns
@@ -573,6 +685,14 @@ v = integer.divide(value1)
 
 - operation : 'DIVIDE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='DIVIDE')
+```
 
 
 #### Returns
@@ -610,6 +730,14 @@ v = integer.equal(b)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='EQUAL')
+```
+
+
 #### Returns
 
     Boolean
@@ -640,6 +768,14 @@ v = integer.exp()
 
 - operation : 'EXPONENT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='EXPONENT')
+```
 
 
 #### Returns
@@ -683,6 +819,14 @@ v = integer.field_at_index(value, domain)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.FieldAtIndex(index=self, value=value, data_type='INT', domain=domain)
+```
+
+
 #### Returns
 
     Integer
@@ -715,6 +859,14 @@ v = integer.floor()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='FLOOR')
+```
+
+
 #### Returns
 
     Float
@@ -745,6 +897,14 @@ v = integer.fract()
 
 - operation : 'FRACT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='FRACT')
+```
 
 
 #### Returns
@@ -782,6 +942,14 @@ v = integer.greater_equal(b)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL')
+```
+
+
 #### Returns
 
     Boolean
@@ -815,6 +983,14 @@ v = integer.greater_than(value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
+```
+
+
 #### Returns
 
     Float
@@ -845,6 +1021,14 @@ v = integer.inverse_sqrt()
 
 - operation : 'INVERSE_SQRT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='INVERSE_SQRT')
+```
 
 
 #### Returns
@@ -882,6 +1066,14 @@ v = integer.less_equal(b)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL')
+```
+
+
 #### Returns
 
     Boolean
@@ -913,6 +1105,14 @@ v = integer.less_than(value1)
 
 - operation : 'LESS_THAN'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
+```
 
 
 #### Returns
@@ -948,6 +1148,14 @@ v = integer.log(value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
+```
+
+
 #### Returns
 
     Float
@@ -979,6 +1187,14 @@ v = integer.max(value1)
 
 - operation : 'MAXIMUM'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
+```
 
 
 #### Returns
@@ -1014,6 +1230,14 @@ v = integer.min(value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='MINIMUM')
+```
+
+
 #### Returns
 
     Float
@@ -1045,6 +1269,14 @@ v = integer.modulo(value1)
 
 - operation : 'MODULO'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='MODULO')
+```
 
 
 #### Returns
@@ -1080,6 +1312,14 @@ v = integer.multiply(value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
+```
+
+
 #### Returns
 
     Float
@@ -1112,6 +1352,14 @@ v = integer.multiply_add(value1, value2)
 
 - operation : 'MULTIPLY_ADD'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD')
+```
 
 
 #### Returns
@@ -1149,6 +1397,14 @@ v = integer.not_equal(b)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL')
+```
+
+
 #### Returns
 
     Boolean
@@ -1180,6 +1436,14 @@ v = integer.pingpong(value1)
 
 - operation : 'PINGPONG'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='PINGPONG')
+```
 
 
 #### Returns
@@ -1215,6 +1479,14 @@ v = integer.pow(value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='POWER')
+```
+
+
 #### Returns
 
     Float
@@ -1245,6 +1517,14 @@ v = integer.radians()
 
 - operation : 'RADIANS'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='RADIANS')
+```
 
 
 #### Returns
@@ -1291,6 +1571,14 @@ v = integer.raycast(target_geometry, source_position, ray_direction, ray_length,
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='INT', mapping=mapping)
+```
+
+
 #### Returns
 
     Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Integer)]
@@ -1321,6 +1609,14 @@ v = integer.round()
 
 - operation : 'ROUND'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='ROUND')
+```
 
 
 #### Returns
@@ -1355,6 +1651,14 @@ v = integer.sign()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='SIGN')
+```
+
+
 #### Returns
 
     Float
@@ -1387,6 +1691,14 @@ v = integer.sin()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='SINE')
+```
+
+
 #### Returns
 
     Float
@@ -1417,6 +1729,14 @@ v = integer.sinh()
 
 - operation : 'SINH'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='SINH')
+```
 
 
 #### Returns
@@ -1453,6 +1773,14 @@ v = integer.smooth_max(value1, value2)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX')
+```
+
+
 #### Returns
 
     Float
@@ -1485,6 +1813,14 @@ v = integer.smooth_min(value1, value2)
 
 - operation : 'SMOOTH_MIN'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN')
+```
 
 
 #### Returns
@@ -1520,6 +1856,14 @@ v = integer.snap(value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='SNAP')
+```
+
+
 #### Returns
 
     Float
@@ -1550,6 +1894,14 @@ v = integer.sqrt()
 
 - operation : 'SQRT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='SQRT')
+```
 
 
 #### Returns
@@ -1583,6 +1935,14 @@ v = integer.subtract(value1)
 
 - operation : 'SUBTRACT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
+```
 
 
 #### Returns
@@ -1619,6 +1979,14 @@ v = integer.switch(switch0, true)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Switch(false=self, switch0=switch0, true=true, input_type='INT')
+```
+
+
 #### Returns
 
     Integer
@@ -1651,6 +2019,14 @@ v = integer.tan()
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='TANGENT')
+```
+
+
 #### Returns
 
     Float
@@ -1681,6 +2057,14 @@ v = integer.tanh()
 
 - operation : 'TANH'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='TANH')
+```
 
 
 #### Returns
@@ -1727,6 +2111,14 @@ v = integer.transfer_attribute(source, source_position, index, domain, mapping)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
+```
+
+
 #### Returns
 
     Integer
@@ -1757,6 +2149,14 @@ v = integer.trunc()
 
 - operation : 'TRUNC'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, operation='TRUNC')
+```
 
 
 #### Returns
@@ -1791,6 +2191,14 @@ v = integer.wrap(value1, value2)
 
 - operation : 'WRAP'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP')
+```
 
 
 #### Returns

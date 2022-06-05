@@ -97,7 +97,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### abs
@@ -126,6 +126,14 @@ v = functions.abs(value0)
 
 - operation : 'ABSOLUTE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='ABSOLUTE')
+```
 
 
 #### Returns
@@ -161,6 +169,14 @@ v = functions.add(value0, value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, operation='ADD')
+```
+
+
 #### Returns
 
     Float
@@ -191,6 +207,14 @@ v = functions.arccos(value0)
 
 - operation : 'ARCCOSINE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='ARCCOSINE')
+```
 
 
 #### Returns
@@ -225,6 +249,14 @@ v = functions.arcsin(value0)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='ARCSINE')
+```
+
+
 #### Returns
 
     Float
@@ -255,6 +287,14 @@ v = functions.arctan(value0)
 
 - operation : 'ARCTANGENT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='ARCTANGENT')
+```
 
 
 #### Returns
@@ -290,6 +330,14 @@ v = functions.arctan2(value0, value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, operation='ARCTAN2')
+```
+
+
 #### Returns
 
     Float
@@ -320,6 +368,14 @@ v = functions.ceil(value0)
 
 - operation : 'CEIL'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='CEIL')
+```
 
 
 #### Returns
@@ -364,6 +420,14 @@ v = functions.color_add(color1, color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -404,6 +468,14 @@ v = functions.color_burn(color1, color2, fac, use_alpha)
 
 - use_alpha : False
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha)
+```
 
 
 #### Returns
@@ -448,6 +520,14 @@ v = functions.color_darken(color1, color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -488,6 +568,14 @@ v = functions.color_difference(color1, color2, fac, use_alpha)
 
 - use_alpha : False
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha)
+```
 
 
 #### Returns
@@ -532,6 +620,14 @@ v = functions.color_divide(color1, color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -572,6 +668,14 @@ v = functions.color_dodge(color1, color2, fac, use_alpha)
 
 - use_alpha : False
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha)
+```
 
 
 #### Returns
@@ -616,6 +720,14 @@ v = functions.color_hue(color1, color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -656,6 +768,14 @@ v = functions.color_lighten(color1, color2, fac, use_alpha)
 
 - use_alpha : False
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha)
+```
 
 
 #### Returns
@@ -700,6 +820,14 @@ v = functions.color_linear_light(color1, color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -740,6 +868,14 @@ v = functions.color_mix(color1, color2, fac, use_alpha)
 
 - use_alpha : False
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha)
+```
 
 
 #### Returns
@@ -784,6 +920,14 @@ v = functions.color_mix_color(color1, color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -824,6 +968,14 @@ v = functions.color_multiply(color1, color2, fac, use_alpha)
 
 - use_alpha : False
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha)
+```
 
 
 #### Returns
@@ -868,6 +1020,14 @@ v = functions.color_overlay(color1, color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -908,6 +1068,14 @@ v = functions.color_saturation(color1, color2, fac, use_alpha)
 
 - use_alpha : False
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha)
+```
 
 
 #### Returns
@@ -952,6 +1120,14 @@ v = functions.color_screen(color1, color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -992,6 +1168,14 @@ v = functions.color_soft_light(color1, color2, fac, use_alpha)
 
 - use_alpha : False
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha)
+```
 
 
 #### Returns
@@ -1036,6 +1220,14 @@ v = functions.color_subtract(color1, color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -1078,6 +1270,14 @@ v = functions.color_value(color1, color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -1112,6 +1312,14 @@ v = functions.compare(value0, value1, value2)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, value2=value2, operation='COMPARE')
+```
+
+
 #### Returns
 
     Float
@@ -1144,6 +1352,14 @@ v = functions.cos(value0)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='COSINE')
+```
+
+
 #### Returns
 
     Float
@@ -1174,6 +1390,14 @@ v = functions.cosh(value0)
 
 - operation : 'COSH'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='COSH')
+```
 
 
 #### Returns
@@ -1209,6 +1433,14 @@ v = functions.cross(vector0, vector1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='CROSS_PRODUCT')
+```
+
+
 #### Returns
 
     Vector
@@ -1239,6 +1471,14 @@ v = functions.degrees(value0)
 
 - operation : 'DEGREES'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='DEGREES')
+```
 
 
 #### Returns
@@ -1274,6 +1514,14 @@ v = functions.distance(vector0, vector1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DISTANCE')
+```
+
+
 #### Returns
 
     Float
@@ -1305,6 +1553,14 @@ v = functions.divide(value0, value1)
 
 - operation : 'DIVIDE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, operation='DIVIDE')
+```
 
 
 #### Returns
@@ -1340,6 +1596,14 @@ v = functions.dot(vector0, vector1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DOT_PRODUCT')
+```
+
+
 #### Returns
 
     Float
@@ -1370,6 +1634,14 @@ v = functions.exp(value0)
 
 - operation : 'EXPONENT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='EXPONENT')
+```
 
 
 #### Returns
@@ -1406,6 +1678,14 @@ v = functions.faceforward(vector0, vector1, vector2)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='FACEFORWARD')
+```
+
+
 #### Returns
 
     Vector
@@ -1436,6 +1716,14 @@ v = functions.floor(value0)
 
 - operation : 'FLOOR'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='FLOOR')
+```
 
 
 #### Returns
@@ -1470,6 +1758,14 @@ v = functions.fract(value0)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='FRACT')
+```
+
+
 #### Returns
 
     Float
@@ -1500,6 +1796,14 @@ v = functions.fraction(vector0)
 
 - operation : 'FRACTION'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, operation='FRACTION')
+```
 
 
 #### Returns
@@ -1535,6 +1839,14 @@ v = functions.greater_than(value0, value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, operation='GREATER_THAN')
+```
+
+
 #### Returns
 
     Float
@@ -1567,6 +1879,14 @@ v = functions.inverse_sqrt(value0)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='INVERSE_SQRT')
+```
+
+
 #### Returns
 
     Float
@@ -1590,6 +1910,14 @@ v = functions.join_strings(strings_1, strings_2, strings_3, delimiter)
 - strings : *String
 - delimiter : String
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.JoinStrings(*strings, delimiter=delimiter)
+```
 
 
 #### Returns
@@ -1622,6 +1950,14 @@ v = functions.length(vector0)
 
 - operation : 'LENGTH'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, operation='LENGTH')
+```
 
 
 #### Returns
@@ -1657,6 +1993,14 @@ v = functions.less_than(value0, value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, operation='LESS_THAN')
+```
+
+
 #### Returns
 
     Float
@@ -1688,6 +2032,14 @@ v = functions.log(value0, value1)
 
 - operation : 'LOGARITHM'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, operation='LOGARITHM')
+```
 
 
 #### Returns
@@ -1723,6 +2075,14 @@ v = functions.max(value0, value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, operation='MAXIMUM')
+```
+
+
 #### Returns
 
     Float
@@ -1754,6 +2114,14 @@ v = functions.min(value0, value1)
 
 - operation : 'MINIMUM'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, operation='MINIMUM')
+```
 
 
 #### Returns
@@ -1789,6 +2157,14 @@ v = functions.modulo(value0, value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, operation='MODULO')
+```
+
+
 #### Returns
 
     Float
@@ -1820,6 +2196,14 @@ v = functions.multiply(value0, value1)
 
 - operation : 'MULTIPLY'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, operation='MULTIPLY')
+```
 
 
 #### Returns
@@ -1856,6 +2240,14 @@ v = functions.multiply_add(value0, value1, value2)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, value2=value2, operation='MULTIPLY_ADD')
+```
+
+
 #### Returns
 
     Float
@@ -1886,6 +2278,14 @@ v = functions.normalize(vector0)
 
 - operation : 'NORMALIZE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, operation='NORMALIZE')
+```
 
 
 #### Returns
@@ -1921,6 +2321,14 @@ v = functions.pingpong(value0, value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, operation='PINGPONG')
+```
+
+
 #### Returns
 
     Float
@@ -1952,6 +2360,14 @@ v = functions.pow(value0, value1)
 
 - operation : 'POWER'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, operation='POWER')
+```
 
 
 #### Returns
@@ -1987,6 +2403,14 @@ v = functions.project(vector0, vector1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='PROJECT')
+```
+
+
 #### Returns
 
     Vector
@@ -2017,6 +2441,14 @@ v = functions.radians(value0)
 
 - operation : 'RADIANS'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='RADIANS')
+```
 
 
 #### Returns
@@ -2050,6 +2482,14 @@ v = functions.reflect(vector0, vector1)
 
 - operation : 'REFLECT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='REFLECT')
+```
 
 
 #### Returns
@@ -2086,6 +2526,14 @@ v = functions.refract(vector0, vector1, scale)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, vector1=vector1, scale=scale, operation='REFRACT')
+```
+
+
 #### Returns
 
     Vector
@@ -2116,6 +2564,14 @@ v = functions.round(value0)
 
 - operation : 'ROUND'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='ROUND')
+```
 
 
 #### Returns
@@ -2151,6 +2607,14 @@ v = functions.scale(vector0, scale)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, scale=scale, operation='SCALE')
+```
+
+
 #### Returns
 
     Vector
@@ -2165,6 +2629,14 @@ v = functions.scene()
 
 
 #### Arguments
+
+
+#### Node creation
+
+
+```python
+node = nodes.SceneTime()
+```
 
 
 #### Returns
@@ -2199,6 +2671,14 @@ v = functions.sign(value0)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='SIGN')
+```
+
+
 #### Returns
 
     Float
@@ -2231,6 +2711,14 @@ v = functions.sin(value0)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='SINE')
+```
+
+
 #### Returns
 
     Float
@@ -2261,6 +2749,14 @@ v = functions.sinh(value0)
 
 - operation : 'SINH'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='SINH')
+```
 
 
 #### Returns
@@ -2297,6 +2793,14 @@ v = functions.smooth_max(value0, value1, value2)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MAX')
+```
+
+
 #### Returns
 
     Float
@@ -2329,6 +2833,14 @@ v = functions.smooth_min(value0, value1, value2)
 
 - operation : 'SMOOTH_MIN'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MIN')
+```
 
 
 #### Returns
@@ -2364,6 +2876,14 @@ v = functions.snap(value0, value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, operation='SNAP')
+```
+
+
 #### Returns
 
     Float
@@ -2394,6 +2914,14 @@ v = functions.sqrt(value0)
 
 - operation : 'SQRT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='SQRT')
+```
 
 
 #### Returns
@@ -2429,6 +2957,14 @@ v = functions.subtract(value0, value1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, operation='SUBTRACT')
+```
+
+
 #### Returns
 
     Float
@@ -2459,6 +2995,14 @@ v = functions.tan(value0)
 
 - operation : 'TANGENT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='TANGENT')
+```
 
 
 #### Returns
@@ -2493,6 +3037,14 @@ v = functions.tanh(value0)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='TANH')
+```
+
+
 #### Returns
 
     Float
@@ -2525,6 +3077,14 @@ v = functions.trunc(value0)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, operation='TRUNC')
+```
+
+
 #### Returns
 
     Float
@@ -2555,6 +3115,14 @@ v = functions.vector_absolute(vector0)
 
 - operation : 'ABSOLUTE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, operation='ABSOLUTE')
+```
 
 
 #### Returns
@@ -2590,6 +3158,14 @@ v = functions.vector_add(vector0, vector1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='ADD')
+```
+
+
 #### Returns
 
     Vector
@@ -2622,6 +3198,14 @@ v = functions.vector_ceil(vector0)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, operation='CEIL')
+```
+
+
 #### Returns
 
     Vector
@@ -2652,6 +3236,14 @@ v = functions.vector_cos(vector0)
 
 - operation : 'COSINE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, operation='COSINE')
+```
 
 
 #### Returns
@@ -2687,6 +3279,14 @@ v = functions.vector_divide(vector0, vector1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DIVIDE')
+```
+
+
 #### Returns
 
     Vector
@@ -2717,6 +3317,14 @@ v = functions.vector_floor(vector0)
 
 - operation : 'FLOOR'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, operation='FLOOR')
+```
 
 
 #### Returns
@@ -2752,6 +3360,14 @@ v = functions.vector_max(vector0, vector1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MAXIMUM')
+```
+
+
 #### Returns
 
     Vector
@@ -2783,6 +3399,14 @@ v = functions.vector_min(vector0, vector1)
 
 - operation : 'MINIMUM'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MINIMUM')
+```
 
 
 #### Returns
@@ -2818,6 +3442,14 @@ v = functions.vector_modulo(vector0, vector1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MODULO')
+```
+
+
 #### Returns
 
     Vector
@@ -2849,6 +3481,14 @@ v = functions.vector_multiply(vector0, vector1)
 
 - operation : 'MULTIPLY'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MULTIPLY')
+```
 
 
 #### Returns
@@ -2885,6 +3525,14 @@ v = functions.vector_multiply_add(vector0, vector1, vector2)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD')
+```
+
+
 #### Returns
 
     Vector
@@ -2915,6 +3563,14 @@ v = functions.vector_sin(vector0)
 
 - operation : 'SINE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, operation='SINE')
+```
 
 
 #### Returns
@@ -2950,6 +3606,14 @@ v = functions.vector_snap(vector0, vector1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SNAP')
+```
+
+
 #### Returns
 
     Vector
@@ -2983,6 +3647,14 @@ v = functions.vector_subtract(vector0, vector1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SUBTRACT')
+```
+
+
 #### Returns
 
     Vector
@@ -3013,6 +3685,14 @@ v = functions.vector_tan(vector0)
 
 - operation : 'TANGENT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, operation='TANGENT')
+```
 
 
 #### Returns
@@ -3049,6 +3729,14 @@ v = functions.vector_wrap(vector0, vector1, vector2)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='WRAP')
+```
+
+
 #### Returns
 
     Vector
@@ -3081,6 +3769,14 @@ v = functions.wrap(value0, value1, value2)
 
 - operation : 'WRAP'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Math(value0=value0, value1=value1, value2=value2, operation='WRAP')
+```
 
 
 #### Returns

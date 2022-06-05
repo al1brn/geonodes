@@ -51,6 +51,13 @@ class Collection(dsock.Collection):
             - input_type : 'COLLECTION' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION') 
+        
+
         Returns
         =======
                 Collection 
@@ -82,6 +89,14 @@ class Collection(dsock.Collection):
             Parameters arguments
             --------------------
             - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children,
+            transform_space=transform_space) 
         
 
         Returns

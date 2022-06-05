@@ -83,6 +83,13 @@ class Spline(Geometry):
             - relative : Boolean 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.CurveHandlePositions(relative=relative) 
+        
+
         Returns
         =======
                 Sockets [left (Vector), right (Vector)] 
@@ -115,6 +122,13 @@ class Spline(Geometry):
             - domain:'CURVE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.CurveTangent() 
+        
+
         Returns
         =======
                 Vector 
@@ -145,6 +159,13 @@ class Spline(Geometry):
             --------------------
             - self   
             - domain:'CURVE' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.CurveTilt() 
         
 
         Returns
@@ -185,6 +206,13 @@ class Spline(Geometry):
             - end_size   : Integer 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.EndpointSelection(start_size=start_size, end_size=end_size) 
+        
+
         Returns
         =======
                 Boolean 
@@ -219,6 +247,13 @@ class Spline(Geometry):
             - domain      :'CURVE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.HandleTypeSelection(handle_type=handle_type, mode=mode) 
+        
+
         Returns
         =======
                 Boolean 
@@ -249,6 +284,13 @@ class Spline(Geometry):
             --------------------
             - self   
             - domain:'CURVE' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.IsSplineCyclic() 
         
 
         Returns
@@ -283,6 +325,13 @@ class Spline(Geometry):
             - domain:'CURVE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SplineLength() 
+        
+
         Returns
         =======
                 Sockets [length (Float), point_count (Integer)] 
@@ -315,6 +364,13 @@ class Spline(Geometry):
             - domain:'CURVE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SplineParameter() 
+        
+
         Returns
         =======
                 Sockets [factor (Float), length (Float), index (Integer)] 
@@ -345,6 +401,13 @@ class Spline(Geometry):
             --------------------
             - self   
             - domain:'CURVE' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SplineResolution() 
         
 
         Returns
@@ -383,6 +446,13 @@ class Spline(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.ID() 
+        
+
         Returns
         =======
                 Integer 
@@ -410,6 +480,13 @@ class Spline(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Index() 
+        
+
         Returns
         =======
                 Integer 
@@ -435,6 +512,13 @@ class Spline(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Index() 
         
 
         Returns
@@ -469,6 +553,13 @@ class Spline(Geometry):
             - relative : Boolean 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.CurveHandlePositions(relative=relative) 
+        
+
         Returns
         =======
                 Vector 
@@ -501,6 +592,13 @@ class Spline(Geometry):
             - relative : Boolean 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.CurveHandlePositions(relative=relative) 
+        
+
         Returns
         =======
                 Vector 
@@ -528,6 +626,13 @@ class Spline(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.CurveTangent() 
+        
+
         Returns
         =======
                 Vector 
@@ -553,6 +658,13 @@ class Spline(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.CurveTilt() 
         
 
         Returns
@@ -588,6 +700,13 @@ class Spline(Geometry):
             - end_size   : Integer 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.EndpointSelection(start_size=start_size, end_size=end_size) 
+        
+
         Returns
         =======
                 Boolean 
@@ -617,6 +736,13 @@ class Spline(Geometry):
             - mode        : {'RIGHT', 'LEFT'} 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.HandleTypeSelection(handle_type=handle_type, mode=mode) 
+        
+
         Returns
         =======
                 Boolean 
@@ -642,6 +768,13 @@ class Spline(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.IsSplineCyclic() 
         
 
         Returns
@@ -671,6 +804,13 @@ class Spline(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SplineLength() 
+        
+
         Returns
         =======
                 Float 
@@ -696,6 +836,13 @@ class Spline(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SplineLength() 
         
 
         Returns
@@ -725,6 +872,13 @@ class Spline(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SplineParameter() 
+        
+
         Returns
         =======
                 Float 
@@ -750,6 +904,13 @@ class Spline(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SplineParameter() 
         
 
         Returns
@@ -779,6 +940,13 @@ class Spline(Geometry):
             - self 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SplineParameter() 
+        
+
         Returns
         =======
                 Integer 
@@ -804,6 +972,13 @@ class Spline(Geometry):
             Parameters arguments
             --------------------
             - self 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SplineResolution() 
         
 
         Returns
@@ -838,6 +1013,13 @@ class Spline(Geometry):
             - cyclic    : Boolean 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.SetSplineCyclic(geometry=geometry, selection=selection, cyclic=cyclic) 
+        
+
         Returns
         =======
                 self 
@@ -864,6 +1046,13 @@ class Spline(Geometry):
             - geometry   : Geometry 
             - selection  : Boolean 
             - resolution : Integer 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SetSplineResolution(geometry=geometry, selection=selection, resolution=resolution) 
         
 
         Returns

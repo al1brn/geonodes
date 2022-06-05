@@ -47,5 +47,8 @@ node = nodes.BoundingBox(geometry=None, label=None)
 
 
 - [Geometry](../sockets/Geometry.md) [bound_box](../sockets/Geometry.md#bound_box) : Property
+- [Geometry](../sockets/Geometry.md) [box](../sockets/Geometry.md#box) : Property
+- [Geometry](../sockets/Geometry.md) [box_max](../sockets/Geometry.md#box_max) : Property
+- [Geometry](../sockets/Geometry.md) [box_min](../sockets/Geometry.md#box_min) : Property
 
 

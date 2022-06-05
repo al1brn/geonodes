@@ -70,6 +70,13 @@ class Boolean(dsock.Boolean):
             - data_type : 'BOOLEAN' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN') 
+        
+
         Returns
         =======
                 Boolean 
@@ -114,6 +121,14 @@ class Boolean(dsock.Boolean):
             - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index,
+            data_type='BOOLEAN', domain=domain, mapping=mapping) 
+        
+
         Returns
         =======
                 Boolean 
@@ -151,6 +166,13 @@ class Boolean(dsock.Boolean):
             - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain) 
+        
+
         Returns
         =======
                 Sockets [geometry (Geometry), attribute (Boolean)] 
@@ -186,6 +208,13 @@ class Boolean(dsock.Boolean):
             Parameters arguments
             --------------------
             - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain) 
         
 
         Returns
@@ -228,6 +257,14 @@ class Boolean(dsock.Boolean):
             - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position,
+            ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping) 
+        
+
         Returns
         =======
                 Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute
@@ -262,6 +299,13 @@ class Boolean(dsock.Boolean):
             - input_type : 'BOOLEAN' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN') 
+        
+
         Returns
         =======
                 Boolean 
@@ -292,6 +336,13 @@ class Boolean(dsock.Boolean):
             Fixed parameters
             ----------------
             - operation : 'AND' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND') 
         
 
         Returns
@@ -326,6 +377,13 @@ class Boolean(dsock.Boolean):
             - operation : 'OR' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR') 
+        
+
         Returns
         =======
                 Boolean 
@@ -355,6 +413,13 @@ class Boolean(dsock.Boolean):
             Fixed parameters
             ----------------
             - operation : 'NOT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.BooleanMath(boolean0=self, operation='NOT') 
         
 
         Returns
@@ -389,6 +454,13 @@ class Boolean(dsock.Boolean):
             - operation : 'NAND' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND') 
+        
+
         Returns
         =======
                 Boolean 
@@ -419,6 +491,13 @@ class Boolean(dsock.Boolean):
             Fixed parameters
             ----------------
             - operation : 'NOR' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR') 
         
 
         Returns
@@ -453,6 +532,13 @@ class Boolean(dsock.Boolean):
             - operation : 'XNOR' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR') 
+        
+
         Returns
         =======
                 Boolean 
@@ -483,6 +569,13 @@ class Boolean(dsock.Boolean):
             Fixed parameters
             ----------------
             - operation : 'XOR' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR') 
         
 
         Returns
@@ -517,6 +610,13 @@ class Boolean(dsock.Boolean):
             - operation : 'IMPLY' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY') 
+        
+
         Returns
         =======
                 Boolean 
@@ -547,6 +647,13 @@ class Boolean(dsock.Boolean):
             Fixed parameters
             ----------------
             - operation : 'NIMPLY' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY') 
         
 
         Returns

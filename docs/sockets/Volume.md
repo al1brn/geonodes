@@ -11,7 +11,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### to_mesh
@@ -44,6 +44,14 @@ v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_m
 
 - resolution_mode : 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode)
+```
 
 
 #### Returns

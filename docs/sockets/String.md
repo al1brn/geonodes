@@ -35,7 +35,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### average
@@ -67,6 +67,14 @@ v = string.average(b)
 - mode : 'ELEMENT'
 - operation : 'AVERAGE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE')
+```
 
 
 #### Returns
@@ -104,6 +112,14 @@ v = string.direction(b)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION')
+```
+
+
 #### Returns
 
     Boolean
@@ -137,6 +153,14 @@ v = string.dot_product(b)
 - mode : 'ELEMENT'
 - operation : 'DOT_PRODUCT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT')
+```
 
 
 #### Returns
@@ -174,6 +198,14 @@ v = string.element(b)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT')
+```
+
+
 #### Returns
 
     Boolean
@@ -197,6 +229,14 @@ v = string.join(strings_1, strings_2, strings_3, delimiter)
 - strings : *String (self)
 - delimiter : String
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.JoinStrings(self, *strings, delimiter=delimiter)
+```
 
 
 #### Returns
@@ -234,6 +274,14 @@ v = string.length(b)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH')
+```
+
+
 #### Returns
 
     Boolean
@@ -260,6 +308,14 @@ string.replace(find, replace)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.ReplaceString(string=self, find=find, replace=replace)
+```
+
+
 #### Returns
 
     self
@@ -284,6 +340,14 @@ v = string.slice(position, length)
 - position : Integer
 - length : Integer
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.SliceString(string=self, position=position, length=length)
+```
 
 
 #### Returns
@@ -318,6 +382,14 @@ v = string.switch(switch0, true)
 
 - input_type : 'STRING'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING')
+```
 
 
 #### Returns
@@ -359,6 +431,14 @@ v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_b
 - overflow : 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
 - pivot_mode : 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
+```
 
 
 #### Returns

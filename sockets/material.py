@@ -51,6 +51,13 @@ class Material(dsock.Material):
             - input_type : 'MATERIAL' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL') 
+        
+
         Returns
         =======
                 Material 
@@ -75,6 +82,13 @@ class Material(dsock.Material):
             Sockets arguments
             -----------------
             - material : Material (self) 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.MaterialSelection(material=self) 
         
 
         Returns

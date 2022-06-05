@@ -61,7 +61,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### Combine
@@ -84,6 +84,14 @@ v = Color.Combine(r, g, b)
 - g : Float
 - b : Float
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.CombineRgb(r=r, g=g, b=b)
+```
 
 
 #### Returns
@@ -128,6 +136,14 @@ v = color.add(color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -161,6 +177,14 @@ v = color.brighter(b)
 - mode : 'ELEMENT'
 - operation : 'BRIGHTER'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER')
+```
 
 
 #### Returns
@@ -205,6 +229,14 @@ v = color.burn(color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -246,6 +278,14 @@ v = color.capture_attribute(geometry, domain)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_COLOR', domain=domain)
+```
+
+
 #### Returns
 
     Sockets [geometry (Geometry), attribute (Color)]
@@ -269,6 +309,14 @@ color.curves(fac)
 - color : Color (self)
 - fac : Float
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.RgbCurves(color=self, fac=fac)
+```
 
 
 #### Returns
@@ -313,6 +361,14 @@ v = color.darken(color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -346,6 +402,14 @@ v = color.darker(b)
 - mode : 'ELEMENT'
 - operation : 'DARKER'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='DARKER')
+```
 
 
 #### Returns
@@ -390,6 +454,14 @@ v = color.difference(color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -430,6 +502,14 @@ v = color.divide(color2, fac, use_alpha)
 
 - use_alpha : False
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha)
+```
 
 
 #### Returns
@@ -474,6 +554,14 @@ v = color.dodge(color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -508,6 +596,14 @@ v = color.equal(b, epsilon)
 - mode : 'ELEMENT'
 - operation : 'EQUAL'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='EQUAL')
+```
 
 
 #### Returns
@@ -549,6 +645,14 @@ v = color.field_at_index(index, domain)
 
 - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_COLOR', domain=domain)
+```
 
 
 #### Returns
@@ -593,6 +697,14 @@ v = color.hue(color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -633,6 +745,14 @@ v = color.lighten(color2, fac, use_alpha)
 
 - use_alpha : False
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha)
+```
 
 
 #### Returns
@@ -677,6 +797,14 @@ v = color.linear_light(color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -710,6 +838,14 @@ v = color.mix(color2, fac, blend_type, use_alpha)
 - blend_type : 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
 - use_alpha : False
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type=blend_type, use_alpha=use_alpha)
+```
 
 
 #### Returns
@@ -754,6 +890,14 @@ v = color.mix_color(color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -796,6 +940,14 @@ v = color.multiply(color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -830,6 +982,14 @@ v = color.not_equal(b, epsilon)
 - mode : 'ELEMENT'
 - operation : 'NOT_EQUAL'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='NOT_EQUAL')
+```
 
 
 #### Returns
@@ -872,6 +1032,14 @@ v = color.overlay(color2, fac, use_alpha)
 
 - use_alpha : False
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha)
+```
 
 
 #### Returns
@@ -918,6 +1086,14 @@ v = color.raycast(target_geometry, source_position, ray_direction, ray_length, m
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_COLOR', mapping=mapping)
+```
+
+
 #### Returns
 
     Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Color)]
@@ -958,6 +1134,14 @@ v = color.saturation(color2, fac, use_alpha)
 
 - use_alpha : False
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha)
+```
 
 
 #### Returns
@@ -1002,6 +1186,14 @@ v = color.screen(color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -1032,6 +1224,14 @@ v = color.separate
 
 - label:f"{self.node_chain_label}.separate"
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.separate")
+```
 
 
 #### Returns
@@ -1076,6 +1276,14 @@ v = color.soft_light(color2, fac, use_alpha)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha)
+```
+
+
 #### Returns
 
     Color
@@ -1116,6 +1324,14 @@ v = color.subtract(color2, fac, use_alpha)
 
 - use_alpha : False
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha)
+```
 
 
 #### Returns
@@ -1162,6 +1378,14 @@ v = color.transfer_attribute(source, source_position, index, domain, mapping)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
+```
+
+
 #### Returns
 
     Color
@@ -1202,6 +1426,14 @@ v = color.value(color2, fac, use_alpha)
 
 - use_alpha : False
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha)
+```
 
 
 #### Returns

@@ -94,7 +94,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### Circle
@@ -124,6 +124,14 @@ v = Mesh.Circle(vertices, radius, fill_type)
 
 - fill_type : 'NONE' in [NONE, NGON, TRIANGLE_FAN]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.MeshCircle(vertices=vertices, radius=radius, fill_type=fill_type)
+```
 
 
 #### Returns
@@ -163,6 +171,14 @@ v = Mesh.Cone(vertices, side_segments, fill_segments, radius_top, radius_bottom,
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Cone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top, radius_bottom=radius_bottom, depth=depth, fill_type=fill_type)
+```
+
+
 #### Returns
 
     Sockets [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
@@ -188,6 +204,14 @@ v = Mesh.Cube(size, vertices_x, vertices_y, vertices_z)
 - vertices_y : Integer
 - vertices_z : Integer
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Cube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, vertices_z=vertices_z)
+```
 
 
 #### Returns
@@ -226,6 +250,14 @@ v = Mesh.Cylinder(vertices, side_segments, fill_segments, radius, depth, fill_ty
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Cylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius, depth=depth, fill_type=fill_type)
+```
+
+
 #### Returns
 
     Sockets [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
@@ -253,6 +285,14 @@ v = Mesh.Grid(size_x, size_y, vertices_x, vertices_y)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y)
+```
+
+
 #### Returns
 
     Mesh
@@ -276,6 +316,14 @@ v = Mesh.IcoSphere(radius, subdivisions)
 - radius : Float
 - subdivisions : Integer
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.IcoSphere(radius=radius, subdivisions=subdivisions)
+```
 
 
 #### Returns
@@ -313,6 +361,14 @@ v = Mesh.Line(count, start_location, offset, count_mode, mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.MeshLine(count=count, start_location=start_location, offset=offset, count_mode=count_mode, mode=mode)
+```
+
+
 #### Returns
 
     Mesh
@@ -337,6 +393,14 @@ v = Mesh.UVSphere(segments, rings, radius)
 - rings : Integer
 - radius : Float
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.UvSphere(segments=segments, rings=rings, radius=radius)
+```
 
 
 #### Returns
@@ -364,6 +428,14 @@ v = mesh.capture_edge_angle(self, domain='EDGE')
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.EdgeAngle()
+```
+
+
 #### Returns
 
     Sockets [unsigned_angle (Float), signed_angle (Float)]
@@ -387,6 +459,14 @@ v = mesh.capture_edge_neighbors(self, domain='EDGE')
 - self
 - domain:'EDGE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.EdgeNeighbors()
+```
 
 
 #### Returns
@@ -414,6 +494,14 @@ v = mesh.capture_edge_vertices(self, domain='EDGE')
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.EdgeVertices()
+```
+
+
 #### Returns
 
     Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
@@ -437,6 +525,14 @@ v = mesh.capture_face_area(self, domain='FACE')
 - self
 - domain:'FACE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.FaceArea()
+```
 
 
 #### Returns
@@ -464,6 +560,14 @@ v = mesh.capture_face_neighbors(self, domain='FACE')
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.FaceNeighbors()
+```
+
+
 #### Returns
 
     Sockets [vertex_count (Integer), face_count (Integer)]
@@ -489,6 +593,14 @@ v = mesh.capture_island(self, domain='POINT')
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.MeshIsland()
+```
+
+
 #### Returns
 
     Sockets [island_index (Integer), island_count (Integer)]
@@ -512,6 +624,14 @@ v = mesh.capture_material_index(self, domain='FACE')
 - self
 - domain:'FACE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.MaterialIndex()
+```
 
 
 #### Returns
@@ -547,6 +667,14 @@ v = mesh.capture_material_selection(self, material, domain='FACE')
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.MaterialSelection(material=material)
+```
+
+
 #### Returns
 
     Boolean
@@ -570,6 +698,14 @@ v = mesh.capture_shade_smooth(self, domain='FACE')
 - self
 - domain:'FACE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.IsShadeSmooth()
+```
 
 
 #### Returns
@@ -597,6 +733,14 @@ v = mesh.capture_vertex_neighbors(self, domain='POINT')
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VertexNeighbors()
+```
+
+
 #### Returns
 
     Sockets [vertex_count (Integer), face_count (Integer)]
@@ -619,6 +763,14 @@ v = mesh.corner_ID(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.EdgeAngle()
+```
 
 
 #### Returns
@@ -645,6 +797,14 @@ v = mesh.corner_index(self)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.EdgeAngle()
+```
+
+
 #### Returns
 
     Float
@@ -667,6 +827,14 @@ v = mesh.corner_porision(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.EdgeAngle()
+```
 
 
 #### Returns
@@ -702,6 +870,14 @@ v = mesh.difference(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolera
 
 - operation : 'DIFFERENCE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE')
+```
 
 
 #### Returns
@@ -742,6 +918,14 @@ v = mesh.distribute_points_on_faces(selection, distance_min, density_max, densit
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method)
+```
+
+
 #### Returns
 
     Sockets [points (Points), normal (Vector), rotation (Vector)]
@@ -765,6 +949,14 @@ mesh.dual(keep_boundaries)
 - mesh : Mesh (self)
 - keep_boundaries : Boolean
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.DualMesh(mesh=self, keep_boundaries=keep_boundaries)
+```
 
 
 #### Returns
@@ -791,6 +983,14 @@ v = mesh.edge_angle(self)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.EdgeAngle()
+```
+
+
 #### Returns
 
     Float
@@ -813,6 +1013,14 @@ v = mesh.edge_neighbors(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.EdgeNeighbors()
+```
 
 
 #### Returns
@@ -839,6 +1047,14 @@ v = mesh.edge_unsigned_angle(self)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.EdgeAngle()
+```
+
+
 #### Returns
 
     Float
@@ -861,6 +1077,14 @@ v = mesh.edge_vertices_index1(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.EdgeVertices()
+```
 
 
 #### Returns
@@ -887,6 +1111,14 @@ v = mesh.edge_vertices_index2(self)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.EdgeVertices()
+```
+
+
 #### Returns
 
     Integer
@@ -909,6 +1141,14 @@ v = mesh.edge_vertices_position1(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.EdgeVertices()
+```
 
 
 #### Returns
@@ -935,6 +1175,14 @@ v = mesh.edge_vertices_position2(self)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.EdgeVertices()
+```
+
+
 #### Returns
 
     Vector
@@ -957,6 +1205,14 @@ v = mesh.egde_ID(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.EdgeAngle()
+```
 
 
 #### Returns
@@ -983,6 +1239,14 @@ v = mesh.egde_index(self)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.EdgeAngle()
+```
+
+
 #### Returns
 
     Float
@@ -1005,6 +1269,14 @@ v = mesh.egde_position(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.EdgeAngle()
+```
 
 
 #### Returns
@@ -1043,6 +1315,14 @@ v = mesh.extrude(selection, offset, offset_scale, individual, mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual, mode=mode)
+```
+
+
 #### Returns
 
     Sockets [mesh (Mesh), top (Boolean), side (Boolean)]
@@ -1065,6 +1345,14 @@ v = mesh.face_ID(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.EdgeAngle()
+```
 
 
 #### Returns
@@ -1091,6 +1379,14 @@ v = mesh.face_area(self)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.FaceArea()
+```
+
+
 #### Returns
 
     Float
@@ -1113,6 +1409,14 @@ v = mesh.face_index(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.EdgeAngle()
+```
 
 
 #### Returns
@@ -1139,6 +1443,14 @@ v = mesh.face_neighbors_face_count(self)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.FaceNeighbors()
+```
+
+
 #### Returns
 
     Integer
@@ -1161,6 +1473,14 @@ v = mesh.face_neighbors_vertex_count(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.FaceNeighbors()
+```
 
 
 #### Returns
@@ -1187,6 +1507,14 @@ v = mesh.face_position(self)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.EdgeAngle()
+```
+
+
 #### Returns
 
     Float
@@ -1210,6 +1538,14 @@ mesh.flip_faces(selection)
 - mesh : Mesh (self)
 - selection : Boolean
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.FlipFaces(mesh=self, selection=selection)
+```
 
 
 #### Returns
@@ -1246,6 +1582,14 @@ v = mesh.intersect(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_toleran
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.MeshBoolean(*mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT')
+```
+
+
 #### Returns
 
     Mesh
@@ -1270,6 +1614,14 @@ v = mesh.island(self)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.MeshIsland()
+```
+
+
 #### Returns
 
     Integer
@@ -1292,6 +1644,14 @@ v = mesh.material_index(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.MaterialIndex()
+```
 
 
 #### Returns
@@ -1326,6 +1686,14 @@ v = mesh.material_selection(self, material)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.MaterialSelection(material=material)
+```
+
+
 #### Returns
 
     Boolean
@@ -1348,6 +1716,14 @@ v = mesh.shade_smooth(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.IsShadeSmooth()
+```
 
 
 #### Returns
@@ -1375,6 +1751,14 @@ mesh.split_edges(selection)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.SplitEdges(mesh=self, selection=selection)
+```
+
+
 #### Returns
 
     self
@@ -1398,6 +1782,14 @@ mesh.subdivide(level)
 - mesh : Mesh (self)
 - level : Integer
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.SubdivideMesh(mesh=self, level=level)
+```
 
 
 #### Returns
@@ -1435,6 +1827,14 @@ mesh.subdivision_surface(level, crease, boundary_smooth, uv_smooth)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth)
+```
+
+
 #### Returns
 
     self
@@ -1458,6 +1858,14 @@ v = mesh.to_curve(selection)
 - mesh : Mesh (self)
 - selection : Boolean
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.MeshToCurve(mesh=self, selection=selection)
+```
 
 
 #### Returns
@@ -1495,6 +1903,14 @@ v = mesh.to_points(selection, position, radius, mode)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.MeshToPoints(mesh=self, selection=selection, position=position, radius=radius, mode=mode)
+```
+
+
 #### Returns
 
     Points
@@ -1528,6 +1944,14 @@ mesh.triangulate(selection, minimum_vertices, ngon_method, quad_method)
 - ngon_method : 'BEAUTY' in [BEAUTY, CLIP]
 - quad_method : 'SHORTEST_DIAGONAL' in [BEAUTY, FIXED, FIXED_ALTERNATE, SHORTEST_DIAGONAL, LONGEST_DIAGONAL]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method, quad_method=quad_method)
+```
 
 
 #### Returns
@@ -1564,6 +1988,14 @@ v = mesh.union(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.MeshBoolean(*mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION')
+```
+
+
 #### Returns
 
     Mesh
@@ -1588,6 +2020,14 @@ v = mesh.vertex_neighbors_face_count(self)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.VertexNeighbors()
+```
+
+
 #### Returns
 
     Integer
@@ -1610,6 +2050,14 @@ v = mesh.vertex_neighbors_vertex_count(self)
 
 - self
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VertexNeighbors()
+```
 
 
 #### Returns

@@ -49,5 +49,10 @@ node = nodes.SeparateComponents(geometry=None, label=None)
 
 
 - [Geometry](../sockets/Geometry.md) [components](../sockets/Geometry.md#components) : Property
+- [Geometry](../sockets/Geometry.md) [curve_component](../sockets/Geometry.md#curve_component) : Property
+- [Geometry](../sockets/Geometry.md) [instances_component](../sockets/Geometry.md#instances_component) : Property
+- [Geometry](../sockets/Geometry.md) [mesh_component](../sockets/Geometry.md#mesh_component) : Property
+- [Geometry](../sockets/Geometry.md) [points_component](../sockets/Geometry.md#points_component) : Property
+- [Geometry](../sockets/Geometry.md) [volume_component](../sockets/Geometry.md#volume_component) : Property
 
 

@@ -28,7 +28,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### Brick
@@ -71,6 +71,14 @@ v = Texture.Brick(vector, color1, color2, mortar, scale, mortar_size, mortar_smo
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency)
+```
+
+
 #### Returns
 
     Sockets [color (Color), fac (Float)]
@@ -96,6 +104,14 @@ v = Texture.Checker(vector, color1, color2, scale)
 - color2 : Color
 - scale : Float
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale)
+```
 
 
 #### Returns
@@ -128,6 +144,14 @@ v = Texture.Gradient(vector, gradient_type)
 
 - gradient_type : 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.GradientTexture(vector=vector, gradient_type=gradient_type)
+```
 
 
 #### Returns
@@ -165,6 +189,14 @@ v = Texture.Image(image, vector, frame, extension, interpolation)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=extension, interpolation=interpolation)
+```
+
+
 #### Returns
 
     Sockets [color (Color), alpha (Float)]
@@ -197,6 +229,14 @@ v = Texture.Magic(vector, scale, distortion, turbulence_depth)
 
 - turbulence_depth : 2
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.MagicTexture(vector=vector, scale=scale, distortion=distortion, turbulence_depth=turbulence_depth)
+```
 
 
 #### Returns
@@ -239,6 +279,14 @@ v = Texture.Musgrave(vector, w, scale, detail, dimension, lacunarity, offset, ga
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.MusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, offset=offset, gain=gain, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type)
+```
+
+
 #### Returns
 
     Float
@@ -274,6 +322,14 @@ v = Texture.Noise(vector, w, scale, detail, roughness, distortion, noise_dimensi
 
 - noise_dimensions : '3D' in [1D, 2D, 3D, 4D]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions)
+```
 
 
 #### Returns
@@ -313,6 +369,14 @@ v = Texture.Voronoi(vector, w, scale, smoothness, exponent, randomness, distance
 - feature : 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions : '3D' in [1D, 2D, 3D, 4D]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
+```
 
 
 #### Returns
@@ -356,6 +420,14 @@ v = Texture.Wave(vector, scale, distortion, detail, detail_scale, detail_roughne
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
+```
+
+
 #### Returns
 
     Sockets [color (Color), fac (Float)]
@@ -387,6 +459,14 @@ v = Texture.WhiteNoise(vector, w, noise_dimensions)
 
 - noise_dimensions : '3D' in [1D, 2D, 3D, 4D]
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions)
+```
 
 
 #### Returns
@@ -421,6 +501,14 @@ v = texture.switch(switch1, true)
 
 - input_type : 'TEXTURE'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='TEXTURE')
+```
 
 
 #### Returns

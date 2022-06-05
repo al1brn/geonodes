@@ -32,7 +32,7 @@
 
 
 
-## Methods
+## Methods reference
 
 
 ### Random
@@ -63,6 +63,14 @@ v = Boolean.Random(probability, ID, seed)
 
 - data_type : 'BOOLEAN'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN')
+```
 
 
 #### Returns
@@ -98,6 +106,14 @@ v = boolean.b_and(boolean1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND')
+```
+
+
 #### Returns
 
     Boolean
@@ -128,6 +144,14 @@ v = boolean.b_not()
 
 - operation : 'NOT'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.BooleanMath(boolean0=self, operation='NOT')
+```
 
 
 #### Returns
@@ -161,6 +185,14 @@ v = boolean.b_or(boolean1)
 
 - operation : 'OR'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR')
+```
 
 
 #### Returns
@@ -204,6 +236,14 @@ v = boolean.capture_attribute(geometry, domain)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain)
+```
+
+
 #### Returns
 
     Sockets [geometry (Geometry), attribute (Boolean)]
@@ -245,6 +285,14 @@ v = boolean.field_at_index(index, domain)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain)
+```
+
+
 #### Returns
 
     Boolean
@@ -276,6 +324,14 @@ v = boolean.imply(boolean1)
 
 - operation : 'IMPLY'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY')
+```
 
 
 #### Returns
@@ -311,6 +367,14 @@ v = boolean.nand(boolean1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND')
+```
+
+
 #### Returns
 
     Boolean
@@ -344,6 +408,14 @@ v = boolean.nimply(boolean1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY')
+```
+
+
 #### Returns
 
     Boolean
@@ -375,6 +447,14 @@ v = boolean.nor(boolean1)
 
 - operation : 'NOR'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR')
+```
 
 
 #### Returns
@@ -421,6 +501,14 @@ v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length,
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping)
+```
+
+
 #### Returns
 
     Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
@@ -453,6 +541,14 @@ v = boolean.switch(false, true)
 
 - input_type : 'BOOLEAN'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN')
+```
 
 
 #### Returns
@@ -499,6 +595,14 @@ v = boolean.transfer_attribute(source, source_position, index, domain, mapping)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
+```
+
+
 #### Returns
 
     Boolean
@@ -532,6 +636,14 @@ v = boolean.xnor(boolean1)
 
 
 
+#### Node creation
+
+
+```python
+node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR')
+```
+
+
 #### Returns
 
     Boolean
@@ -563,6 +675,14 @@ v = boolean.xor(boolean1)
 
 - operation : 'XOR'
 
+
+
+#### Node creation
+
+
+```python
+node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR')
+```
 
 
 #### Returns

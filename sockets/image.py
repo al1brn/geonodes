@@ -50,6 +50,13 @@ class Image(dsock.Image):
             - input_type : 'IMAGE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE') 
+        
+
         Returns
         =======
                 Image 

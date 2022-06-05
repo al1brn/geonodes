@@ -71,6 +71,13 @@ class String(dsock.String):
             - label:f"{self.node_chain_label}.length" 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.StringLength(string=self, label=f"{self.node_chain_label}.length") 
+        
+
         Returns
         =======
                 Integer 
@@ -110,6 +117,13 @@ class String(dsock.String):
             - input_type : 'STRING' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING') 
+        
+
         Returns
         =======
                 String 
@@ -142,6 +156,13 @@ class String(dsock.String):
             - data_type : 'STRING' 
             - mode      : 'ELEMENT' 
             - operation : 'ELEMENT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT') 
         
 
         Returns
@@ -178,6 +199,13 @@ class String(dsock.String):
             - operation : 'LENGTH' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH') 
+        
+
         Returns
         =======
                 Boolean 
@@ -210,6 +238,13 @@ class String(dsock.String):
             - data_type : 'STRING' 
             - mode      : 'ELEMENT' 
             - operation : 'AVERAGE' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE') 
         
 
         Returns
@@ -246,6 +281,13 @@ class String(dsock.String):
             - operation : 'DOT_PRODUCT' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT') 
+        
+
         Returns
         =======
                 Boolean 
@@ -280,6 +322,13 @@ class String(dsock.String):
             - operation : 'DIRECTION' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION') 
+        
+
         Returns
         =======
                 Boolean 
@@ -305,6 +354,13 @@ class String(dsock.String):
             -----------------
             - strings   : *String (self) 
             - delimiter : String 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.JoinStrings(self, *strings, delimiter=delimiter) 
         
 
         Returns
@@ -333,6 +389,13 @@ class String(dsock.String):
             - string   : String (self) 
             - position : Integer 
             - length   : Integer 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SliceString(string=self, position=position, length=length) 
         
 
         Returns
@@ -376,6 +439,15 @@ class String(dsock.String):
             - pivot_mode : 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing,
+            line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x,
+            align_y=align_y, overflow=overflow, pivot_mode=pivot_mode) 
+        
+
         Returns
         =======
                 Sockets [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)] 
@@ -406,6 +478,13 @@ class String(dsock.String):
             - string  : String (self) 
             - find    : String 
             - replace : String 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.ReplaceString(string=self, find=find, replace=replace) 
         
 
         Returns

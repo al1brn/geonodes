@@ -109,6 +109,13 @@ class Integer(dsock.Integer):
             - data_type : 'INT' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='INT') 
+        
+
         Returns
         =======
                 Integer 
@@ -148,6 +155,13 @@ class Integer(dsock.Integer):
             Parameters arguments
             --------------------
             - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.AccumulateField(value=self, group_index=group_index, data_type='INT', domain=domain) 
         
 
         Returns
@@ -190,6 +204,14 @@ class Integer(dsock.Integer):
             - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index,
+            data_type='INT', domain=domain, mapping=mapping) 
+        
+
         Returns
         =======
                 Integer 
@@ -227,6 +249,13 @@ class Integer(dsock.Integer):
             - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='INT', domain=domain) 
+        
+
         Returns
         =======
                 Sockets [geometry (Geometry), attribute (Integer)] 
@@ -262,6 +291,13 @@ class Integer(dsock.Integer):
             Parameters arguments
             --------------------
             - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.FieldAtIndex(index=self, value=value, data_type='INT', domain=domain) 
         
 
         Returns
@@ -304,6 +340,14 @@ class Integer(dsock.Integer):
             - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST] 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position,
+            ray_direction=ray_direction, ray_length=ray_length, data_type='INT', mapping=mapping) 
+        
+
         Returns
         =======
                 Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute
@@ -336,6 +380,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - input_type : 'INT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Switch(false=self, switch0=switch0, true=true, input_type='INT') 
         
 
         Returns
@@ -372,6 +423,13 @@ class Integer(dsock.Integer):
             - operation : 'LESS_THAN' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_THAN') 
+        
+
         Returns
         =======
                 Boolean 
@@ -404,6 +462,13 @@ class Integer(dsock.Integer):
             - data_type : 'INT' 
             - mode      : 'ELEMENT' 
             - operation : 'LESS_EQUAL' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL') 
         
 
         Returns
@@ -440,6 +505,13 @@ class Integer(dsock.Integer):
             - operation : 'GREATER_THAN' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_THAN') 
+        
+
         Returns
         =======
                 Boolean 
@@ -472,6 +544,13 @@ class Integer(dsock.Integer):
             - data_type : 'INT' 
             - mode      : 'ELEMENT' 
             - operation : 'GREATER_EQUAL' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL') 
         
 
         Returns
@@ -508,6 +587,13 @@ class Integer(dsock.Integer):
             - operation : 'EQUAL' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='EQUAL') 
+        
+
         Returns
         =======
                 Boolean 
@@ -542,6 +628,13 @@ class Integer(dsock.Integer):
             - operation : 'NOT_EQUAL' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL') 
+        
+
         Returns
         =======
                 Boolean 
@@ -572,6 +665,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'ADD' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='ADD') 
         
 
         Returns
@@ -606,6 +706,13 @@ class Integer(dsock.Integer):
             - operation : 'SUBTRACT' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='SUBTRACT') 
+        
+
         Returns
         =======
                 Float 
@@ -638,6 +745,13 @@ class Integer(dsock.Integer):
             - operation : 'MULTIPLY' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='MULTIPLY') 
+        
+
         Returns
         =======
                 Float 
@@ -668,6 +782,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'DIVIDE' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='DIVIDE') 
         
 
         Returns
@@ -703,6 +824,13 @@ class Integer(dsock.Integer):
             - operation : 'MULTIPLY_ADD' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD') 
+        
+
         Returns
         =======
                 Float 
@@ -733,6 +861,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'POWER' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='POWER') 
         
 
         Returns
@@ -767,6 +902,13 @@ class Integer(dsock.Integer):
             - operation : 'LOGARITHM' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='LOGARITHM') 
+        
+
         Returns
         =======
                 Float 
@@ -796,6 +938,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'SQRT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='SQRT') 
         
 
         Returns
@@ -829,6 +978,13 @@ class Integer(dsock.Integer):
             - operation : 'INVERSE_SQRT' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='INVERSE_SQRT') 
+        
+
         Returns
         =======
                 Float 
@@ -860,6 +1016,13 @@ class Integer(dsock.Integer):
             - operation : 'ABSOLUTE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='ABSOLUTE') 
+        
+
         Returns
         =======
                 Float 
@@ -889,6 +1052,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'EXPONENT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='EXPONENT') 
         
 
         Returns
@@ -923,6 +1093,13 @@ class Integer(dsock.Integer):
             - operation : 'MINIMUM' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='MINIMUM') 
+        
+
         Returns
         =======
                 Float 
@@ -953,6 +1130,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'MAXIMUM' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='MAXIMUM') 
         
 
         Returns
@@ -987,6 +1171,13 @@ class Integer(dsock.Integer):
             - operation : 'LESS_THAN' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='LESS_THAN') 
+        
+
         Returns
         =======
                 Float 
@@ -1019,6 +1210,13 @@ class Integer(dsock.Integer):
             - operation : 'GREATER_THAN' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='GREATER_THAN') 
+        
+
         Returns
         =======
                 Float 
@@ -1048,6 +1246,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'SIGN' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='SIGN') 
         
 
         Returns
@@ -1083,6 +1288,13 @@ class Integer(dsock.Integer):
             - operation : 'COMPARE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE') 
+        
+
         Returns
         =======
                 Float 
@@ -1114,6 +1326,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'SMOOTH_MIN' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN') 
         
 
         Returns
@@ -1149,6 +1368,13 @@ class Integer(dsock.Integer):
             - operation : 'SMOOTH_MAX' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX') 
+        
+
         Returns
         =======
                 Float 
@@ -1178,6 +1404,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'ROUND' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='ROUND') 
         
 
         Returns
@@ -1211,6 +1444,13 @@ class Integer(dsock.Integer):
             - operation : 'FLOOR' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='FLOOR') 
+        
+
         Returns
         =======
                 Float 
@@ -1240,6 +1480,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'CEIL' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='CEIL') 
         
 
         Returns
@@ -1273,6 +1520,13 @@ class Integer(dsock.Integer):
             - operation : 'TRUNC' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='TRUNC') 
+        
+
         Returns
         =======
                 Float 
@@ -1302,6 +1556,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'FRACT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='FRACT') 
         
 
         Returns
@@ -1334,6 +1595,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'MODULO' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='MODULO') 
         
 
         Returns
@@ -1369,6 +1637,13 @@ class Integer(dsock.Integer):
             - operation : 'WRAP' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP') 
+        
+
         Returns
         =======
                 Float 
@@ -1399,6 +1674,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'SNAP' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='SNAP') 
         
 
         Returns
@@ -1433,6 +1715,13 @@ class Integer(dsock.Integer):
             - operation : 'PINGPONG' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='PINGPONG') 
+        
+
         Returns
         =======
                 Float 
@@ -1462,6 +1751,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'SINE' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='SINE') 
         
 
         Returns
@@ -1495,6 +1791,13 @@ class Integer(dsock.Integer):
             - operation : 'COSINE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='COSINE') 
+        
+
         Returns
         =======
                 Float 
@@ -1524,6 +1827,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'TANGENT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='TANGENT') 
         
 
         Returns
@@ -1557,6 +1867,13 @@ class Integer(dsock.Integer):
             - operation : 'ARCSINE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='ARCSINE') 
+        
+
         Returns
         =======
                 Float 
@@ -1588,6 +1905,13 @@ class Integer(dsock.Integer):
             - operation : 'ARCCOSINE' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='ARCCOSINE') 
+        
+
         Returns
         =======
                 Float 
@@ -1617,6 +1941,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'ARCTANGENT' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='ARCTANGENT') 
         
 
         Returns
@@ -1651,6 +1982,13 @@ class Integer(dsock.Integer):
             - operation : 'ARCTAN2' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, value1=value1, operation='ARCTAN2') 
+        
+
         Returns
         =======
                 Float 
@@ -1680,6 +2018,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'SINH' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='SINH') 
         
 
         Returns
@@ -1713,6 +2058,13 @@ class Integer(dsock.Integer):
             - operation : 'COSH' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='COSH') 
+        
+
         Returns
         =======
                 Float 
@@ -1742,6 +2094,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'TANH' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='TANH') 
         
 
         Returns
@@ -1775,6 +2134,13 @@ class Integer(dsock.Integer):
             - operation : 'RADIANS' 
         
 
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='RADIANS') 
+        
+
         Returns
         =======
                 Float 
@@ -1804,6 +2170,13 @@ class Integer(dsock.Integer):
             Fixed parameters
             ----------------
             - operation : 'DEGREES' 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Math(value0=self, operation='DEGREES') 
         
 
         Returns
