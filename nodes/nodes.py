@@ -2162,7 +2162,7 @@ class HandleTypeSelection(Node):
     
 
         from geonodes import nodes 
-        node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None) 
+        node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None) 
     
 
         Arguments
@@ -2172,7 +2172,7 @@ class HandleTypeSelection(Node):
             Parameters
             ----------
             - handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN') 
-            - mode        : {'LEFT', 'RIGHT'} set 
+            - mode        : {'RIGHT', 'LEFT'} set 
     
 
             Node label
@@ -2192,7 +2192,7 @@ class HandleTypeSelection(Node):
     - Spline handle_type_selection         : Attribute 
     """
 
-    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None):
+    def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None):
 
         super().__init__('GeometryNodeCurveHandleTypeSelection', name='Handle Type Selection', label=label)
         # Parameters
@@ -2701,7 +2701,7 @@ class SetHandleType(Node):
     
 
         from geonodes import nodes 
-        node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None)
+        node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None)
     
 
         Arguments
@@ -2717,7 +2717,7 @@ class SetHandleType(Node):
             Parameters
             ----------
             - handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN') 
-            - mode        : {'LEFT', 'RIGHT'} set 
+            - mode        : {'RIGHT', 'LEFT'} set 
     
 
             Node label
@@ -2736,7 +2736,7 @@ class SetHandleType(Node):
     - Curve set_handles : Stacked method 
     """
 
-    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None):
+    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None):
 
         super().__init__('GeometryNodeCurveSetHandles', name='Set Handle Type', label=label)
         # Parameters

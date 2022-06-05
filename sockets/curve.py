@@ -508,7 +508,7 @@ class Curve(Spline):
     # ----------------------------------------------------------------------------------------------------
     # Stacked methods
 
-    def set_handles(self, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+    def set_handles(self, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
         """ set_handles
         
 
@@ -531,7 +531,7 @@ class Curve(Spline):
             Parameters arguments
             --------------------
             - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN] 
-            - mode        : {'LEFT', 'RIGHT'} 
+            - mode        : {'RIGHT', 'LEFT'} 
         
 
         Returns
