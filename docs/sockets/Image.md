@@ -7,7 +7,7 @@
 
 
 
-- switch : output (Image)
+- [switch](#switch) : output (Image)
 
 
 

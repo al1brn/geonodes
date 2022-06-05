@@ -7,7 +7,7 @@
 
 
 
-- Random : value (Boolean)
+- [Random](#random) : value (Boolean)
 
 
 
@@ -15,20 +15,20 @@
 
 
 
-- b_and : boolean (Boolean)
-- b_not : boolean (Boolean)
-- b_or : boolean (Boolean)
-- capture_attribute : Sockets      [geometry (Geometry), attribute (Boolean)]
-- field_at_index : value (Boolean)
-- imply : boolean (Boolean)
-- nand : boolean (Boolean)
-- nimply : boolean (Boolean)
-- nor : boolean (Boolean)
-- raycast : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
-- switch : output (Boolean)
-- transfer_attribute : attribute (Boolean)
-- xnor : boolean (Boolean)
-- xor : boolean (Boolean)
+- [b_and](#b_and) : boolean (Boolean)
+- [b_not](#b_not) : boolean (Boolean)
+- [b_or](#b_or) : boolean (Boolean)
+- [capture_attribute](#capture_attribute) : Sockets      [geometry (Geometry), attribute (Boolean)]
+- [field_at_index](#field_at_index) : value (Boolean)
+- [imply](#imply) : boolean (Boolean)
+- [nand](#nand) : boolean (Boolean)
+- [nimply](#nimply) : boolean (Boolean)
+- [nor](#nor) : boolean (Boolean)
+- [raycast](#raycast) : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
+- [switch](#switch) : output (Boolean)
+- [transfer_attribute](#transfer_attribute) : attribute (Boolean)
+- [xnor](#xnor) : boolean (Boolean)
+- [xor](#xor) : boolean (Boolean)
 
 
 

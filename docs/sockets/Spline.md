@@ -7,15 +7,15 @@
 
 
 
-- capture_cyclic : cyclic (Boolean)
-- capture_endpoint_selection : selection (Boolean)
-- capture_handle_positions : Sockets      [left (Vector), right (Vector)]
-- capture_handle_type_selection : selection (Boolean)
-- capture_length : Sockets      [length (Float), point_count (Integer)]
-- capture_parameter : Sockets      [factor (Float), length (Float), index (Integer)]
-- capture_resolution : resolution (Integer)
-- capture_tangent : tangent (Vector)
-- capture_tilt : tilt (Float)
+- [capture_cyclic](#capture_cyclic) : cyclic (Boolean)
+- [capture_endpoint_selection](#capture_endpoint_selection) : selection (Boolean)
+- [capture_handle_positions](#capture_handle_positions) : Sockets      [left (Vector), right (Vector)]
+- [capture_handle_type_selection](#capture_handle_type_selection) : selection (Boolean)
+- [capture_length](#capture_length) : Sockets      [length (Float), point_count (Integer)]
+- [capture_parameter](#capture_parameter) : Sockets      [factor (Float), length (Float), index (Integer)]
+- [capture_resolution](#capture_resolution) : resolution (Integer)
+- [capture_tangent](#capture_tangent) : tangent (Vector)
+- [capture_tilt](#capture_tilt) : tilt (Float)
 
 
 
@@ -23,22 +23,22 @@
 
 
 
-- cyclic : Boolean = capture_cyclic(domain='CURVE')
-- endpoint_selection : Boolean = capture_endpoint_selection(domain='CURVE')
-- factor : Float = capture_parameter(domain='CURVE').factor
-- handle_type_selection : Boolean = capture_handle_type_selection(domain='CURVE')
-- left_handle_position : Vector = capture_handle_positions(domain='CURVE').left
-- length : Float = capture_length(domain='CURVE').length
-- parameter_index : Integer = capture_parameter(domain='CURVE').index
-- parameter_length : Float = capture_parameter(domain='CURVE').length
-- point_count : Integer = capture_length(domain='CURVE').point_count
-- resolution : Integer = capture_resolution(domain='CURVE')
-- right_handle_position : Vector = capture_handle_positions(domain='CURVE').right
-- spline_ID : Integer = capture_ID(domain='SPLINE')
-- spline_index : Integer = capture_index(domain='SPLINE')
-- spline_position : Integer = capture_position(domain='SPLINE')
-- tangent : Vector = capture_tangent(domain='CURVE')
-- tilt : Float = capture_tilt(domain='CURVE')
+- [cyclic](#cyclic) : Boolean = capture_cyclic(domain='CURVE')
+- [endpoint_selection](#endpoint_selection) : Boolean = capture_endpoint_selection(domain='CURVE')
+- [factor](#factor) : Float = capture_parameter(domain='CURVE').factor
+- [handle_type_selection](#handle_type_selection) : Boolean = capture_handle_type_selection(domain='CURVE')
+- [left_handle_position](#left_handle_position) : Vector = capture_handle_positions(domain='CURVE').left
+- [length](#length) : Float = capture_length(domain='CURVE').length
+- [parameter_index](#parameter_index) : Integer = capture_parameter(domain='CURVE').index
+- [parameter_length](#parameter_length) : Float = capture_parameter(domain='CURVE').length
+- [point_count](#point_count) : Integer = capture_length(domain='CURVE').point_count
+- [resolution](#resolution) : Integer = capture_resolution(domain='CURVE')
+- [right_handle_position](#right_handle_position) : Vector = capture_handle_positions(domain='CURVE').right
+- [spline_ID](#spline_id) : Integer = capture_ID(domain='SPLINE')
+- [spline_index](#spline_index) : Integer = capture_index(domain='SPLINE')
+- [spline_position](#spline_position) : Integer = capture_position(domain='SPLINE')
+- [tangent](#tangent) : Vector = capture_tangent(domain='CURVE')
+- [tilt](#tilt) : Float = capture_tilt(domain='CURVE')
 
 
 
@@ -46,8 +46,8 @@
 
 
 
-- set_cyclic : Spline
-- set_resolution : Spline
+- [set_cyclic](#set_cyclic) : Spline
+- [set_resolution](#set_resolution) : Spline
 
 
 

@@ -7,7 +7,7 @@
 
 
 
-- info : Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+- [info](#info) : Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
 
 
 
@@ -15,7 +15,7 @@
 
 
 
-- switch : output (Object)
+- [switch](#switch) : output (Object)
 
 
 

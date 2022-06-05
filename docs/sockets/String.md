@@ -7,7 +7,7 @@
 
 
 
-- length : length (Integer)
+- [length](#length) : length (Integer)
 
 
 
@@ -15,15 +15,15 @@
 
 
 
-- average : result (Boolean)
-- direction : result (Boolean)
-- dot_product : result (Boolean)
-- element : result (Boolean)
-- join : string (String)
-- length : result (Boolean)
-- slice : string (String)
-- switch : output (String)
-- to_curves : Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
+- [average](#average) : result (Boolean)
+- [direction](#direction) : result (Boolean)
+- [dot_product](#dot_product) : result (Boolean)
+- [element](#element) : result (Boolean)
+- [join](#join) : string (String)
+- [length](#length) : result (Boolean)
+- [slice](#slice) : string (String)
+- [switch](#switch) : output (String)
+- [to_curves](#to_curves) : Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
 
 
 
@@ -31,7 +31,7 @@
 
 
 
-- replace : String
+- [replace](#replace) : String
 
 
 

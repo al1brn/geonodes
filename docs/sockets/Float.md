@@ -7,7 +7,7 @@
 
 
 
-- Random : value (Float)
+- [Random](#random) : value (Float)
 
 
 
@@ -15,63 +15,63 @@
 
 
 
-- abs : value (Float)
-- accumulate_field : Sockets      [leading (Float), trailing (Float), total (Float)]
-- add : value (Float)
-- arccos : value (Float)
-- arcsin : value (Float)
-- arctan : value (Float)
-- arctan2 : value (Float)
-- attribute_statistic : Sockets      [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
-- capture_attribute : Sockets      [geometry (Geometry), attribute (Float)]
-- ceil : value (Float)
-- color_ramp : Sockets      [color (Color), alpha (Float)]
-- compare : value (Float)
-- cos : value (Float)
-- cosh : value (Float)
-- degrees : value (Float)
-- divide : value (Float)
-- equal : result (Boolean)
-- exp : value (Float)
-- field_at_index : value (Float)
-- floor : value (Float)
-- fract : value (Float)
-- greater_equal : result (Boolean)
-- greater_than : result (Boolean)
-- greater_than : value (Float)
-- inverse_sqrt : value (Float)
-- less_equal : result (Boolean)
-- less_than : result (Boolean)
-- less_than : value (Float)
-- log : value (Float)
-- map_range : result (Float)
-- max : value (Float)
-- min : value (Float)
-- modulo : value (Float)
-- multiply : value (Float)
-- multiply_add : value (Float)
-- not_equal : result (Boolean)
-- pingpong : value (Float)
-- pow : value (Float)
-- radians : value (Float)
-- raycast : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
-- round : value (Float)
-- sign : value (Float)
-- sin : value (Float)
-- sinh : value (Float)
-- smooth_max : value (Float)
-- smooth_min : value (Float)
-- snap : value (Float)
-- sqrt : value (Float)
-- subtract : value (Float)
-- switch : output (Float)
-- tan : value (Float)
-- tanh : value (Float)
-- to_integer : integer (Integer)
-- to_string : string (String)
-- transfer_attribute : attribute (Float)
-- trunc : value (Float)
-- wrap : value (Float)
+- [abs](#abs) : value (Float)
+- [accumulate_field](#accumulate_field) : Sockets      [leading (Float), trailing (Float), total (Float)]
+- [add](#add) : value (Float)
+- [arccos](#arccos) : value (Float)
+- [arcsin](#arcsin) : value (Float)
+- [arctan](#arctan) : value (Float)
+- [arctan2](#arctan2) : value (Float)
+- [attribute_statistic](#attribute_statistic) : Sockets      [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
+- [capture_attribute](#capture_attribute) : Sockets      [geometry (Geometry), attribute (Float)]
+- [ceil](#ceil) : value (Float)
+- [color_ramp](#color_ramp) : Sockets      [color (Color), alpha (Float)]
+- [compare](#compare) : value (Float)
+- [cos](#cos) : value (Float)
+- [cosh](#cosh) : value (Float)
+- [degrees](#degrees) : value (Float)
+- [divide](#divide) : value (Float)
+- [equal](#equal) : result (Boolean)
+- [exp](#exp) : value (Float)
+- [field_at_index](#field_at_index) : value (Float)
+- [floor](#floor) : value (Float)
+- [fract](#fract) : value (Float)
+- [greater_equal](#greater_equal) : result (Boolean)
+- [greater_than](#greater_than) : result (Boolean)
+- [greater_than](#greater_than) : value (Float)
+- [inverse_sqrt](#inverse_sqrt) : value (Float)
+- [less_equal](#less_equal) : result (Boolean)
+- [less_than](#less_than) : result (Boolean)
+- [less_than](#less_than) : value (Float)
+- [log](#log) : value (Float)
+- [map_range](#map_range) : result (Float)
+- [max](#max) : value (Float)
+- [min](#min) : value (Float)
+- [modulo](#modulo) : value (Float)
+- [multiply](#multiply) : value (Float)
+- [multiply_add](#multiply_add) : value (Float)
+- [not_equal](#not_equal) : result (Boolean)
+- [pingpong](#pingpong) : value (Float)
+- [pow](#pow) : value (Float)
+- [radians](#radians) : value (Float)
+- [raycast](#raycast) : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
+- [round](#round) : value (Float)
+- [sign](#sign) : value (Float)
+- [sin](#sin) : value (Float)
+- [sinh](#sinh) : value (Float)
+- [smooth_max](#smooth_max) : value (Float)
+- [smooth_min](#smooth_min) : value (Float)
+- [snap](#snap) : value (Float)
+- [sqrt](#sqrt) : value (Float)
+- [subtract](#subtract) : value (Float)
+- [switch](#switch) : output (Float)
+- [tan](#tan) : value (Float)
+- [tanh](#tanh) : value (Float)
+- [to_integer](#to_integer) : integer (Integer)
+- [to_string](#to_string) : string (String)
+- [transfer_attribute](#transfer_attribute) : attribute (Float)
+- [trunc](#trunc) : value (Float)
+- [wrap](#wrap) : value (Float)
 
 
 
@@ -79,8 +79,8 @@
 
 
 
-- clamp : Float
-- curve : Float
+- [clamp](#clamp) : Float
+- [curve](#curve) : Float
 
 
 

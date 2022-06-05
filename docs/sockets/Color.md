@@ -7,7 +7,7 @@
 
 
 
-- Combine : image (Color)
+- [Combine](#combine) : image (Color)
 
 
 
@@ -15,7 +15,7 @@
 
 
 
-- separate : Sockets      [r (Float), g (Float), b (Float)]
+- [separate](#separate) : Sockets      [r (Float), g (Float), b (Float)]
 
 
 
@@ -23,33 +23,33 @@
 
 
 
-- add : color (Color)
-- brighter : result (Boolean)
-- burn : color (Color)
-- capture_attribute : Sockets      [geometry (Geometry), attribute (Color)]
-- darken : color (Color)
-- darker : result (Boolean)
-- difference : color (Color)
-- divide : color (Color)
-- dodge : color (Color)
-- equal : result (Boolean)
-- field_at_index : value (Color)
-- hue : color (Color)
-- lighten : color (Color)
-- linear_light : color (Color)
-- mix : color (Color)
-- mix : color (Color)
-- mix_color : color (Color)
-- multiply : color (Color)
-- not_equal : result (Boolean)
-- overlay : color (Color)
-- raycast : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Color)]
-- saturation : color (Color)
-- screen : color (Color)
-- soft_light : color (Color)
-- subtract : color (Color)
-- transfer_attribute : attribute (Color)
-- value : color (Color)
+- [add](#add) : color (Color)
+- [brighter](#brighter) : result (Boolean)
+- [burn](#burn) : color (Color)
+- [capture_attribute](#capture_attribute) : Sockets      [geometry (Geometry), attribute (Color)]
+- [darken](#darken) : color (Color)
+- [darker](#darker) : result (Boolean)
+- [difference](#difference) : color (Color)
+- [divide](#divide) : color (Color)
+- [dodge](#dodge) : color (Color)
+- [equal](#equal) : result (Boolean)
+- [field_at_index](#field_at_index) : value (Color)
+- [hue](#hue) : color (Color)
+- [lighten](#lighten) : color (Color)
+- [linear_light](#linear_light) : color (Color)
+- [mix](#mix) : color (Color)
+- [mix](#mix) : color (Color)
+- [mix_color](#mix_color) : color (Color)
+- [multiply](#multiply) : color (Color)
+- [not_equal](#not_equal) : result (Boolean)
+- [overlay](#overlay) : color (Color)
+- [raycast](#raycast) : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Color)]
+- [saturation](#saturation) : color (Color)
+- [screen](#screen) : color (Color)
+- [soft_light](#soft_light) : color (Color)
+- [subtract](#subtract) : color (Color)
+- [transfer_attribute](#transfer_attribute) : attribute (Color)
+- [value](#value) : color (Color)
 
 
 
@@ -57,7 +57,7 @@
 
 
 
-- curves : Color
+- [curves](#curves) : Color
 
 
 

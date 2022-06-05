@@ -7,14 +7,14 @@
 
 
 
-- ArcFromRadius : curve (Curve)
-- BezierSegment : curve (Curve)
-- Circle : Sockets      [curve (Curve), center (Vector)]
-- Line : curve (Curve)
-- QuadraticBezier : curve (Curve)
-- Quadrilateral : curve (Curve)
-- Spiral : curve (Curve)
-- Star : Sockets      [curve (Curve), outer_points (Boolean)]
+- [ArcFromRadius](#arcfromradius) : curve (Curve)
+- [BezierSegment](#beziersegment) : curve (Curve)
+- [Circle](#circle) : Sockets      [curve (Curve), center (Vector)]
+- [Line](#line) : curve (Curve)
+- [QuadraticBezier](#quadraticbezier) : curve (Curve)
+- [Quadrilateral](#quadrilateral) : curve (Curve)
+- [Spiral](#spiral) : curve (Curve)
+- [Star](#star) : Sockets      [curve (Curve), outer_points (Boolean)]
 
 
 
@@ -22,7 +22,7 @@
 
 
 
-- ArcFromPoints : Sockets      [curve (Curve), center (Vector), normal (Vector), radius (Float)]
+- [ArcFromPoints](#arcfrompoints) : Sockets      [curve (Curve), center (Vector), normal (Vector), radius (Float)]
 
 
 
@@ -30,10 +30,10 @@
 
 
 
-- length : length (Float)
-- sample : Sockets      [position (Vector), tangent (Vector), normal (Vector)]
-- to_mesh : mesh (Mesh)
-- to_points : Sockets      [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
+- [length](#length) : length (Float)
+- [sample](#sample) : Sockets      [position (Vector), tangent (Vector), normal (Vector)]
+- [to_mesh](#to_mesh) : mesh (Mesh)
+- [to_points](#to_points) : Sockets      [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
 
 
 
@@ -41,17 +41,17 @@
 
 
 
-- fill : Curve
-- fillet : Curve
-- resample : Curve
-- reverse : Curve
-- set_handle_positions : Curve
-- set_handles : Curve
-- set_radius : Curve
-- set_spline_type : Curve
-- set_tilt : Curve
-- subdivide : Curve
-- trim : Curve
+- [fill](#fill) : Curve
+- [fillet](#fillet) : Curve
+- [resample](#resample) : Curve
+- [reverse](#reverse) : Curve
+- [set_handle_positions](#set_handle_positions) : Curve
+- [set_handles](#set_handles) : Curve
+- [set_radius](#set_radius) : Curve
+- [set_spline_type](#set_spline_type) : Curve
+- [set_tilt](#set_tilt) : Curve
+- [subdivide](#subdivide) : Curve
+- [trim](#trim) : Curve
 
 
 

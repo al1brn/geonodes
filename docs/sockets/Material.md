@@ -7,8 +7,8 @@
 
 
 
-- selection : selection (Boolean)
-- switch : output (Material)
+- [selection](#selection) : selection (Boolean)
+- [switch](#switch) : output (Material)
 
 
 

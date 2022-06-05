@@ -7,16 +7,16 @@
 
 
 
-- Brick : Sockets      [color (Color), fac (Float)]
-- Checker : Sockets      [color (Color), fac (Float)]
-- Gradient : Sockets      [color (Color), fac (Float)]
-- Image : Sockets      [color (Color), alpha (Float)]
-- Magic : Sockets      [color (Color), fac (Float)]
-- Musgrave : fac (Float)
-- Noise : Sockets      [fac (Float), color (Color)]
-- Voronoi : Sockets      [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
-- Wave : Sockets      [color (Color), fac (Float)]
-- WhiteNoise : Sockets      [value (Float), color (Color)]
+- [Brick](#brick) : Sockets      [color (Color), fac (Float)]
+- [Checker](#checker) : Sockets      [color (Color), fac (Float)]
+- [Gradient](#gradient) : Sockets      [color (Color), fac (Float)]
+- [Image](#image) : Sockets      [color (Color), alpha (Float)]
+- [Magic](#magic) : Sockets      [color (Color), fac (Float)]
+- [Musgrave](#musgrave) : fac (Float)
+- [Noise](#noise) : Sockets      [fac (Float), color (Color)]
+- [Voronoi](#voronoi) : Sockets      [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
+- [Wave](#wave) : Sockets      [color (Color), fac (Float)]
+- [WhiteNoise](#whitenoise) : Sockets      [value (Float), color (Color)]
 
 
 
@@ -24,7 +24,7 @@
 
 
 
-- switch : output (Texture)
+- [switch](#switch) : output (Texture)
 
 
 

@@ -7,7 +7,7 @@
 
 
 
-- is_viewport : is_viewport (Boolean)
+- [is_viewport](#is_viewport) : is_viewport (Boolean)
 
 
 
@@ -15,8 +15,8 @@
 
 
 
-- bound_box : Sockets      [bounding_box (Geometry), min (Vector), max (Vector)]
-- components : Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+- [bound_box](#bound_box) : Sockets      [bounding_box (Geometry), min (Vector), max (Vector)]
+- [components](#components) : Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
 
 
 
@@ -24,11 +24,11 @@
 
 
 
-- capture_ID : ID (Integer)
-- capture_index : index (Integer)
-- capture_normal : normal (Vector)
-- capture_position : position (Vector)
-- capture_radius : radius (Float)
+- [capture_ID](#capture_id) : ID (Integer)
+- [capture_index](#capture_index) : index (Integer)
+- [capture_normal](#capture_normal) : normal (Vector)
+- [capture_position](#capture_position) : position (Vector)
+- [capture_radius](#capture_radius) : radius (Float)
 
 
 
@@ -36,11 +36,11 @@
 
 
 
-- ID : Integer = capture_ID(domain='POINT')
-- index : Integer = capture_index(domain='POINT')
-- normal : Vector = capture_normal(domain='FACE')
-- position : Vector = capture_position(domain='POINT')
-- radius : Float = capture_radius(domain='POINT')
+- [ID](#id) : Integer = capture_ID(domain='POINT')
+- [index](#index) : Integer = capture_index(domain='POINT')
+- [normal](#normal) : Vector = capture_normal(domain='FACE')
+- [position](#position) : Vector = capture_position(domain='POINT')
+- [radius](#radius) : Float = capture_radius(domain='POINT')
 
 
 
@@ -48,19 +48,19 @@
 
 
 
-- attribute_domain_size : Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
-- attribute_remove : geometry (Geometry)
-- components : Sockets      [selection (Geometry), inverted (Geometry)]
-- convex_hull : convex_hull (Geometry)
-- join : geometry (Geometry)
-- proximity : Sockets      [position (Vector), distance (Float)]
-- switch : output (Geometry)
-- to_instance : instances (Instances)
-- transfer_boolean : attribute (Boolean)
-- transfer_color : attribute (Color)
-- transfer_float : attribute (Float)
-- transfer_integer : attribute (Integer)
-- transfer_vector : attribute (Vector)
+- [attribute_domain_size](#attribute_domain_size) : Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
+- [attribute_remove](#attribute_remove) : geometry (Geometry)
+- [components](#components) : Sockets      [selection (Geometry), inverted (Geometry)]
+- [convex_hull](#convex_hull) : convex_hull (Geometry)
+- [join](#join) : geometry (Geometry)
+- [proximity](#proximity) : Sockets      [position (Vector), distance (Float)]
+- [switch](#switch) : output (Geometry)
+- [to_instance](#to_instance) : instances (Instances)
+- [transfer_boolean](#transfer_boolean) : attribute (Boolean)
+- [transfer_color](#transfer_color) : attribute (Color)
+- [transfer_float](#transfer_float) : attribute (Float)
+- [transfer_integer](#transfer_integer) : attribute (Integer)
+- [transfer_vector](#transfer_vector) : attribute (Vector)
 
 
 
@@ -68,17 +68,17 @@
 
 
 
-- delete_geometry : Geometry
-- merge_by_distance : Geometry
-- realize_instances : Geometry
-- replace_material : Geometry
-- scale_elements : Geometry
-- set_ID : Geometry
-- set_material : Geometry
-- set_material_index : Geometry
-- set_position : Geometry
-- set_shade_smooth : Geometry
-- transform : Geometry
+- [delete_geometry](#delete_geometry) : Geometry
+- [merge_by_distance](#merge_by_distance) : Geometry
+- [realize_instances](#realize_instances) : Geometry
+- [replace_material](#replace_material) : Geometry
+- [scale_elements](#scale_elements) : Geometry
+- [set_ID](#set_id) : Geometry
+- [set_material](#set_material) : Geometry
+- [set_material_index](#set_material_index) : Geometry
+- [set_position](#set_position) : Geometry
+- [set_shade_smooth](#set_shade_smooth) : Geometry
+- [transform](#transform) : Geometry
 
 
 

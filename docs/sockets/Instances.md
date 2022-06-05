@@ -7,7 +7,7 @@
 
 
 
-- instance_index : Integer = capture_index(domain='INSTANCE')
+- [instance_index](#instance_index) : Integer = capture_index(domain='INSTANCE')
 
 
 
@@ -15,7 +15,7 @@
 
 
 
-- to_points : points (Points)
+- [to_points](#to_points) : points (Points)
 
 
 
@@ -23,9 +23,9 @@
 
 
 
-- rotate : Instances
-- scale : Instances
-- translate : Instances
+- [rotate](#rotate) : Instances
+- [scale](#scale) : Instances
+- [translate](#translate) : Instances
 
 
 

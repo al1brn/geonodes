@@ -7,8 +7,8 @@
 
 
 
-- info : geometry (Geometry)
-- switch : output (Collection)
+- [info](#info) : geometry (Geometry)
+- [switch](#switch) : output (Collection)
 
 
 
