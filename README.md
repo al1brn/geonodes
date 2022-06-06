@@ -1,4 +1,4 @@
-# geonodes: scripting the Blender geometry nodes creation
+# geonodes
 
 > In Blender, use python script to generate geometry nodes.
 
@@ -8,14 +8,113 @@ Geometry nodes can be somehow difficult to maintain. The more nodes you have, th
 understand the algorithm. Debugging and maintaining a geometry nodes tree can be difficult, especially if
 you get it from somebody else.
 
-Geonodes module offers an elegant alternative by offering a python style way to create the nodes.
+Geonodes module offers an elegant alternative by using the python style way to create the nodes.
 
-Here after is a quick example of the creating a nodes tree with the geonodes module:
+Here after is an example of a simple script. It creates a surface from a grid by computing
+`z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the distance of the vertex to the center.
 
 ```python
+import geonodes as gn
+
+with gn.Tree("Geometry Nodes") as tree:
+    
+    count = 100   # Grid resolution
+    size  = 20    # Size
+    omega = 2.    # Period
+    height = 2.   # Height of the surface
+    
+    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
+    
+    with tree.layout("Computing the wave", color="dark_rose"):
+        
+        distance = gn.sqrt(grid.position.x**2 + grid.position.y**2)
+        z = height * gn.sin(distance*omega)/distance
+        
+    grid.set_position(offset=(0, 0, z))
+    
+    tree.output_geometry = grid.set_shade_smooth()     
 ```
+## Comments
 
+- **Import**
 
+  The module can be installed in `blender/script/modules/geonodes` folder. Using `import geondes as gn` is sufficient to acces
+  all the module features.
+
+- **Creating the Tree**
+
+  A Tree instance can be created with
+  
+  ```python
+  tree = Tree(tree_name)
+  #...
+  tree.close()
+  ```
+  
+  But it is recommande to use `with` syntax to ensure that the tree will be properly closed. The closing performs final mandatory treatments.
+  
+- **Variables**
+
+  Since it is standard python, one can use variables as global parameters. The variables can be changed in the script or can
+  be exposed to the user as a group input:
+  
+  ```python
+  # Alternative 1: change the script to change the parameter
+  
+  count = 100
+  
+  # Alternative 2: expose the parameter as modifier input
+  
+  count = gn.Integer.Input(100, "Count")
+
+  # Alternative 3: expose the parameter with security and tool tip
+  
+  count = gn.Integer.Input(100, "Count", min_value=2, max_value=1000, description="Set the resolution of the surface")
+  ```
+  
+- **geonodes types**
+
+  geonodes module implements all the node socket types: Boolean, Float, ..., Geometry, Mesh, ... Material,...
+
+- **Mesh creation**
+
+  The Mesh primitives are implemented as static method of the Mesh class.
+  
+- **Layouts**
+
+  Layouts can be created to make the result more readable and to help debug. Layout are initialized with a label and a color.
+  All nodes created in the `with tree.layout():` scope are placed in this layout.
+  
+- **Operators**
+
+  Python operators can be used on geonodes types. Operations between geonodes types and standard python types are valid in some cases:
+  
+  ```python
+  a = gn.Float(10)         # The node "Value"
+  a += 3                   # Node "Math" between previous node and default value 3
+  v = gn.Vector((1, 2, 3)) # Node "Combine XYZ"
+  w = v - (2, 3, a)        # Vector math between the previous vector and a "Combine XYZ" node
+  ```
+  
+- **Methods**
+
+  Nodes such as "Set position" are implemented as methods.
+  
+- **Input and output geometries**
+
+  The output geometry is set with `tree.output_geometry`. Similaly, the input geometry can be read with `tree.input_geometry`
+  
+  ```python
+  import geonodes as gn
+  
+  with gn.Tree("Geometry nodes") as tree:
+  
+      # The "do nothing" modifier !
+      
+      tree.output_geometry = tree.input_geometry
+  ```
+ 
+## Module presentation
 
 The geonodes implements two layers:
 - **Nodes layer**
