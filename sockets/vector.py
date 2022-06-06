@@ -26,6 +26,9 @@ class Vector(dsock.Vector):
     Properties
     ==========
     - **separate** : SeparateXyz Sockets      [x (Float), y (Float), z (Float)] 
+    - **x**        : SeparateXyz x (Float) = separate.x 
+    - **y**        : SeparateXyz y (Float) = separate.y 
+    - **z**        : SeparateXyz z (Float) = separate.z 
     
 
     Methods
@@ -81,6 +84,9 @@ class Vector(dsock.Vector):
 
     def reset_properties(self):
         self.separate_ = None
+        self.x_ = None
+        self.y_ = None
+        self.z_ = None
 
     # ----------------------------------------------------------------------------------------------------
     # Constructors
@@ -253,6 +259,138 @@ class Vector(dsock.Vector):
         if self.separate_ is None:
             self.separate_ = nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.separate")
         return self.separate_
+
+    @property
+    def x(self):
+        """ x
+        
+
+        | Node: SeparateXyz 
+        Top Index 
+        
+
+            v = vector.x 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector : Vector (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.x" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.x") 
+        
+
+        Returns
+        =======
+                Sockets [x (Float), y (Float), z (Float)] 
+        """
+
+        return self.separate.x
+
+    @x.setter
+    def x(self, value):
+        self.separate.x = value
+
+    @property
+    def y(self):
+        """ y
+        
+
+        | Node: SeparateXyz 
+        Top Index 
+        
+
+            v = vector.y 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector : Vector (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.y" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.y") 
+        
+
+        Returns
+        =======
+                Sockets [x (Float), y (Float), z (Float)] 
+        """
+
+        return self.separate.y
+
+    @y.setter
+    def y(self, value):
+        self.separate.y = value
+
+    @property
+    def z(self):
+        """ z
+        
+
+        | Node: SeparateXyz 
+        Top Index 
+        
+
+            v = vector.z 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector : Vector (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.z" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.z") 
+        
+
+        Returns
+        =======
+                Sockets [x (Float), y (Float), z (Float)] 
+        """
+
+        return self.separate.z
+
+    @z.setter
+    def z(self, value):
+        self.separate.z = value
 
 
     # ----------------------------------------------------------------------------------------------------

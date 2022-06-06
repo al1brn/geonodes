@@ -2194,7 +2194,7 @@ class HandleTypeSelection(Node):
     
 
         from geonodes import nodes 
-        node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None) 
+        node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None) 
     
 
         Arguments
@@ -2204,7 +2204,7 @@ class HandleTypeSelection(Node):
             Parameters
             ----------
             - handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN') 
-            - mode        : {'RIGHT', 'LEFT'} set 
+            - mode        : {'LEFT', 'RIGHT'} set 
     
 
             Node label
@@ -2224,7 +2224,7 @@ class HandleTypeSelection(Node):
     - Spline handle_type_selection         : Attribute 
     """
 
-    def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None):
+    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None):
 
         super().__init__('GeometryNodeCurveHandleTypeSelection', name='Handle Type Selection', label=label)
         # Parameters
@@ -2740,7 +2740,7 @@ class SetHandleType(Node):
     
 
         from geonodes import nodes 
-        node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None)
+        node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None)
     
 
         Arguments
@@ -2756,7 +2756,7 @@ class SetHandleType(Node):
             Parameters
             ----------
             - handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN') 
-            - mode        : {'RIGHT', 'LEFT'} set 
+            - mode        : {'LEFT', 'RIGHT'} set 
     
 
             Node label
@@ -2775,7 +2775,7 @@ class SetHandleType(Node):
     - Curve set_handles : Method 
     """
 
-    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None):
+    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None):
 
         super().__init__('GeometryNodeCurveSetHandles', name='Set Handle Type', label=label)
         # Parameters
@@ -6345,7 +6345,11 @@ class ObjectInfo(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Object info : Property 
+    - Object geometry : Property 
+    - Object info     : Property 
+    - Object location : Property 
+    - Object rotation : Property 
+    - Object scale    : Property 
     """
 
     def __init__(self, object=None, as_instance=None, transform_space='ORIGINAL', label=None):
@@ -10104,6 +10108,9 @@ class SeparateRgb(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
+    - Color b        : Property 
+    - Color g        : Property 
+    - Color r        : Property 
     - Color separate : Property 
     """
 
@@ -10167,6 +10174,9 @@ class SeparateXyz(Node):
     ============
     | Data socket classes implementing this node 
     - Vector separate : Property 
+    - Vector x        : Property 
+    - Vector y        : Property 
+    - Vector z        : Property 
     """
 
     def __init__(self, vector=None, label=None):

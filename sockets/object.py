@@ -18,7 +18,11 @@ class Object(dsock.Object):
 
     Properties
     ==========
-    - **info** : ObjectInfo Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+    - **geometry** : ObjectInfo geometry (Geometry) = info.geometry 
+    - **info**     : ObjectInfo Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+    - **location** : ObjectInfo location (Vector) = info.location 
+    - **rotation** : ObjectInfo rotation (Vector) = info.rotation 
+    - **scale**    : ObjectInfo scale (Vector) = info.scale 
     
 
     Methods
@@ -29,6 +33,10 @@ class Object(dsock.Object):
 
     def reset_properties(self):
         self.info_ = None
+        self.location_ = None
+        self.rotation_ = None
+        self.scale_ = None
+        self.geometry_ = None
 
     # ----------------------------------------------------------------------------------------------------
     # Properties
@@ -80,6 +88,190 @@ class Object(dsock.Object):
         if self.info_ is None:
             self.info_ = nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
         return self.info_
+
+    @property
+    def location(self, as_instance=None, transform_space='ORIGINAL'):
+        """ location
+        
+
+        | Node: ObjectInfo 
+        Top Index 
+        
+
+            v = object.location 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - object      : Object (self) 
+            - as_instance : Boolean 
+        
+
+            Parameters arguments
+            --------------------
+            - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE] 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.location" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.location")
+        
+
+        Returns
+        =======
+                Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)] 
+        """
+
+        return self.info.location
+
+    @property
+    def rotation(self, as_instance=None, transform_space='ORIGINAL'):
+        """ rotation
+        
+
+        | Node: ObjectInfo 
+        Top Index 
+        
+
+            v = object.rotation 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - object      : Object (self) 
+            - as_instance : Boolean 
+        
+
+            Parameters arguments
+            --------------------
+            - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE] 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.rotation" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.rotation")
+        
+
+        Returns
+        =======
+                Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)] 
+        """
+
+        return self.info.rotation
+
+    @property
+    def scale(self, as_instance=None, transform_space='ORIGINAL'):
+        """ scale
+        
+
+        | Node: ObjectInfo 
+        Top Index 
+        
+
+            v = object.scale 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - object      : Object (self) 
+            - as_instance : Boolean 
+        
+
+            Parameters arguments
+            --------------------
+            - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE] 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.scale" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.scale")
+        
+
+        Returns
+        =======
+                Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)] 
+        """
+
+        return self.info.scale
+
+    @property
+    def geometry(self, as_instance=None, transform_space='ORIGINAL'):
+        """ geometry
+        
+
+        | Node: ObjectInfo 
+        Top Index 
+        
+
+            v = object.geometry 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - object      : Object (self) 
+            - as_instance : Boolean 
+        
+
+            Parameters arguments
+            --------------------
+            - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE] 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.geometry" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.geometry")
+        
+
+        Returns
+        =======
+                Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)] 
+        """
+
+        return self.info.geometry
 
 
     # ----------------------------------------------------------------------------------------------------

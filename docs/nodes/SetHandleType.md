@@ -11,7 +11,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None)
+node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None)
 ```
 
 
@@ -32,7 +32,7 @@ node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode=
 
 
 - **handle_type** : _'AUTO'_ in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- **mode** : _{'RIGHT', 'LEFT'}_ set
+- **mode** : _{'LEFT', 'RIGHT'}_ set
 
 
 

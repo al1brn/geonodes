@@ -51,6 +51,9 @@ node = nodes.SeparateRgb(image=None, label=None)
 
 
 
+- [Color](../sockets/Color.md) [b](../sockets/Color.md#b) : Property
+- [Color](../sockets/Color.md) [g](../sockets/Color.md#g) : Property
+- [Color](../sockets/Color.md) [r](../sockets/Color.md#r) : Property
 - [Color](../sockets/Color.md) [separate](../sockets/Color.md#separate) : Property
 
 

@@ -230,7 +230,7 @@ class Spline(gn.Geometry):
             setattr(self, attr_name, node)
         return getattr(self, attr_name).selection
 
-    def capture_handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, domain='CURVE'):
+    def capture_handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, domain='CURVE'):
         """ capture_handle_type_selection
         
 
@@ -249,7 +249,7 @@ class Spline(gn.Geometry):
             --------------------
             - self         
             - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN] 
-            - mode        : {'RIGHT', 'LEFT'} 
+            - mode        : {'LEFT', 'RIGHT'} 
             - domain      :'CURVE' 
         
 
@@ -733,7 +733,7 @@ class Spline(gn.Geometry):
         return self.capture_endpoint_selection(domain='CURVE')
 
     @property
-    def handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+    def handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ handle_type_selection
         
 
@@ -752,7 +752,7 @@ class Spline(gn.Geometry):
             --------------------
             - self         
             - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN] 
-            - mode        : {'RIGHT', 'LEFT'} 
+            - mode        : {'LEFT', 'RIGHT'} 
         
 
         Node creation

@@ -18,6 +18,9 @@
 
 
 
+- [**b**](#b) : [SeparateRgb](../nodes/SeparateRgb.md) b (Float) = separate.b
+- [**g**](#g) : [SeparateRgb](../nodes/SeparateRgb.md) g (Float) = separate.g
+- [**r**](#r) : [SeparateRgb](../nodes/SeparateRgb.md) r (Float) = separate.r
 - [**separate**](#separate) : [SeparateRgb](../nodes/SeparateRgb.md) Sockets      [r (Float), g (Float), b (Float)]
 
 
@@ -149,6 +152,49 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='ADD', use_alph
 #### Returns
 
     Color
+
+### b
+
+> Node: [SeparateRgb](../nodes/{self.node_name}.md)
+
+
+[Top](#class-color) [Index](/docs/index.md)
+
+```python
+v = color.b
+```
+
+
+#### Arguments
+
+
+##### Sockets arguments
+
+
+
+- image : Color (self)
+
+
+
+##### Fixed parameters
+
+
+
+- label:f"{self.node_chain_label}.b"
+
+
+
+#### Node creation
+
+
+```python
+node = nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.b")
+```
+
+
+#### Returns
+
+    Sockets [r (Float), g (Float), b (Float)]
 
 ### brighter
 
@@ -694,6 +740,49 @@ node = nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_COLOR', doma
 
     Color
 
+### g
+
+> Node: [SeparateRgb](../nodes/{self.node_name}.md)
+
+
+[Top](#class-color) [Index](/docs/index.md)
+
+```python
+v = color.g
+```
+
+
+#### Arguments
+
+
+##### Sockets arguments
+
+
+
+- image : Color (self)
+
+
+
+##### Fixed parameters
+
+
+
+- label:f"{self.node_chain_label}.g"
+
+
+
+#### Node creation
+
+
+```python
+node = nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.g")
+```
+
+
+#### Returns
+
+    Sockets [r (Float), g (Float), b (Float)]
+
 ### hue
 
 > Node: [Mix](../nodes/{self.node_name}.md)
@@ -1104,6 +1193,49 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='OVERLAY', use_
 #### Returns
 
     Color
+
+### r
+
+> Node: [SeparateRgb](../nodes/{self.node_name}.md)
+
+
+[Top](#class-color) [Index](/docs/index.md)
+
+```python
+v = color.r
+```
+
+
+#### Arguments
+
+
+##### Sockets arguments
+
+
+
+- image : Color (self)
+
+
+
+##### Fixed parameters
+
+
+
+- label:f"{self.node_chain_label}.r"
+
+
+
+#### Node creation
+
+
+```python
+node = nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.r")
+```
+
+
+#### Returns
+
+    Sockets [r (Float), g (Float), b (Float)]
 
 ### raycast
 

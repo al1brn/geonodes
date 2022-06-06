@@ -786,7 +786,7 @@ v = curve.set_handles(selection, handle_type, mode)
 
 
 - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode : {'RIGHT', 'LEFT'}
+- mode : {'LEFT', 'RIGHT'}
 
 
 

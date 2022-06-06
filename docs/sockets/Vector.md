@@ -21,6 +21,9 @@
 
 
 - [**separate**](#separate) : [SeparateXyz](../nodes/SeparateXyz.md) Sockets      [x (Float), y (Float), z (Float)]
+- [**x**](#x) : [SeparateXyz](../nodes/SeparateXyz.md) x (Float) = separate.x
+- [**y**](#y) : [SeparateXyz](../nodes/SeparateXyz.md) y (Float) = separate.y
+- [**z**](#z) : [SeparateXyz](../nodes/SeparateXyz.md) z (Float) = separate.z
 
 
 
@@ -2313,3 +2316,132 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operatio
 #### Returns
 
     Vector
+
+### x
+
+> Node: [SeparateXyz](../nodes/{self.node_name}.md)
+
+
+[Top](#class-vector) [Index](/docs/index.md)
+
+```python
+v = vector.x
+```
+
+
+#### Arguments
+
+
+##### Sockets arguments
+
+
+
+- vector : Vector (self)
+
+
+
+##### Fixed parameters
+
+
+
+- label:f"{self.node_chain_label}.x"
+
+
+
+#### Node creation
+
+
+```python
+node = nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.x")
+```
+
+
+#### Returns
+
+    Sockets [x (Float), y (Float), z (Float)]
+
+### y
+
+> Node: [SeparateXyz](../nodes/{self.node_name}.md)
+
+
+[Top](#class-vector) [Index](/docs/index.md)
+
+```python
+v = vector.y
+```
+
+
+#### Arguments
+
+
+##### Sockets arguments
+
+
+
+- vector : Vector (self)
+
+
+
+##### Fixed parameters
+
+
+
+- label:f"{self.node_chain_label}.y"
+
+
+
+#### Node creation
+
+
+```python
+node = nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.y")
+```
+
+
+#### Returns
+
+    Sockets [x (Float), y (Float), z (Float)]
+
+### z
+
+> Node: [SeparateXyz](../nodes/{self.node_name}.md)
+
+
+[Top](#class-vector) [Index](/docs/index.md)
+
+```python
+v = vector.z
+```
+
+
+#### Arguments
+
+
+##### Sockets arguments
+
+
+
+- vector : Vector (self)
+
+
+
+##### Fixed parameters
+
+
+
+- label:f"{self.node_chain_label}.z"
+
+
+
+#### Node creation
+
+
+```python
+node = nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.z")
+```
+
+
+#### Returns
+
+    Sockets [x (Float), y (Float), z (Float)]

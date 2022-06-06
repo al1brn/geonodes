@@ -796,10 +796,12 @@ class Tree:
 
                     if bsocket is None:
                         if nd in security:
-                            attr_node.node_color = "red"
-                            node.node_color = "red"
-                            nd.node_color = "red"
-                            raise RuntimeError(f"Error when checking the attribute node {attr_node}, apparently, the tree loops on node {nd} {nd.bnode}")
+                            continue
+                        
+                            #attr_node.node_color = "red"
+                            #node.node_color = "red"
+                            #nd.node_color = "red"
+                            #raise RuntimeError(f"Error when checking the attribute node {attr_node}, apparently, the tree loops on node {nd} {nd.bnode}")
                         security.append(nd)
                         
                         if not check_geo_nodes(nd):

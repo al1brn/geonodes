@@ -23,6 +23,9 @@ class Color(dsock.Color):
 
     Properties
     ==========
+    - **b**        : SeparateRgb b (Float) = separate.b 
+    - **g**        : SeparateRgb g (Float) = separate.g 
+    - **r**        : SeparateRgb r (Float) = separate.r 
     - **separate** : SeparateRgb Sockets      [r (Float), g (Float), b (Float)] 
     
 
@@ -62,6 +65,9 @@ class Color(dsock.Color):
 
     def reset_properties(self):
         self.separate_ = None
+        self.r_ = None
+        self.g_ = None
+        self.b_ = None
 
     # ----------------------------------------------------------------------------------------------------
     # Constructors
@@ -148,6 +154,138 @@ class Color(dsock.Color):
         if self.separate_ is None:
             self.separate_ = nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.separate")
         return self.separate_
+
+    @property
+    def r(self):
+        """ r
+        
+
+        | Node: SeparateRgb 
+        Top Index 
+        
+
+            v = color.r 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - image : Color (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.r" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.r") 
+        
+
+        Returns
+        =======
+                Sockets [r (Float), g (Float), b (Float)] 
+        """
+
+        return self.separate.r
+
+    @r.setter
+    def r(self, value):
+        self.separate.r = value
+
+    @property
+    def g(self):
+        """ g
+        
+
+        | Node: SeparateRgb 
+        Top Index 
+        
+
+            v = color.g 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - image : Color (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.g" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.g") 
+        
+
+        Returns
+        =======
+                Sockets [r (Float), g (Float), b (Float)] 
+        """
+
+        return self.separate.g
+
+    @g.setter
+    def g(self, value):
+        self.separate.g = value
+
+    @property
+    def b(self):
+        """ b
+        
+
+        | Node: SeparateRgb 
+        Top Index 
+        
+
+            v = color.b 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - image : Color (self) 
+        
+
+            Fixed parameters
+            ----------------
+            - label:f"{self.node_chain_label}.b" 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.b") 
+        
+
+        Returns
+        =======
+                Sockets [r (Float), g (Float), b (Float)] 
+        """
+
+        return self.separate.b
+
+    @b.setter
+    def b(self, value):
+        self.separate.b = value
 
 
     # ----------------------------------------------------------------------------------------------------

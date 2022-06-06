@@ -52,5 +52,8 @@ node = nodes.SeparateXyz(vector=None, label=None)
 
 
 - [Vector](../sockets/Vector.md) [separate](../sockets/Vector.md#separate) : Property
+- [Vector](../sockets/Vector.md) [x](../sockets/Vector.md#x) : Property
+- [Vector](../sockets/Vector.md) [y](../sockets/Vector.md#y) : Property
+- [Vector](../sockets/Vector.md) [z](../sockets/Vector.md#z) : Property
 
 
