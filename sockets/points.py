@@ -13,6 +13,8 @@ class Points(gn.Geometry):
     
 
     | Inherits from: gn.Geometry 
+    
+
     Index 
     
 
@@ -37,6 +39,8 @@ class Points(gn.Geometry):
         
 
         | Node: InstanceOnPoints 
+        
+
         Top Index 
         
 
@@ -78,6 +82,8 @@ class Points(gn.Geometry):
         
 
         | Node: PointsToVertices 
+        
+
         Top Index 
         
 
@@ -113,6 +119,8 @@ class Points(gn.Geometry):
         
 
         | Node: PointsToVolume 
+        
+
         Top Index 
         
 
@@ -161,6 +169,8 @@ class Points(gn.Geometry):
         
 
         | Node: SetPointRadius 
+        
+
         Top Index 
         
 

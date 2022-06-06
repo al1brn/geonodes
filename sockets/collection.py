@@ -13,6 +13,8 @@ class Collection(dsock.Collection):
     
 
     | Inherits from: dsock.Collection 
+    
+
     Index 
     
 
@@ -31,6 +33,8 @@ class Collection(dsock.Collection):
         
 
         | Node: Switch 
+        
+
         Top Index 
         
 
@@ -72,6 +76,8 @@ class Collection(dsock.Collection):
         
 
         | Node: CollectionInfo 
+        
+
         Top Index 
         
 

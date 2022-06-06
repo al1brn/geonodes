@@ -13,6 +13,8 @@ class Object(dsock.Object):
     
 
     | Inherits from: dsock.Object 
+    
+
     Index 
     
 
@@ -39,6 +41,8 @@ class Object(dsock.Object):
         
 
         | Node: ObjectInfo 
+        
+
         Top Index 
         
 
@@ -90,6 +94,8 @@ class Object(dsock.Object):
         
 
         | Node: Switch 
+        
+
         Top Index 
         
 

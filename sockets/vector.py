@@ -13,6 +13,8 @@ class Vector(dsock.Vector):
     
 
     | Inherits from: dsock.Vector 
+    
+
     Index 
     
 
@@ -95,6 +97,8 @@ class Vector(dsock.Vector):
         
 
         | Node: RandomValue 
+        
+
         Top Index 
         
 
@@ -138,6 +142,8 @@ class Vector(dsock.Vector):
         
 
         | Node: CombineXyz 
+        
+
         Top Index 
         
 
@@ -175,6 +181,8 @@ class Vector(dsock.Vector):
         
 
         | Node: AlignEulerToVector 
+        
+
         Top Index 
         
 
@@ -222,6 +230,8 @@ class Vector(dsock.Vector):
         
 
         | Node: SeparateXyz 
+        
+
         Top Index 
         
 
@@ -267,6 +277,8 @@ class Vector(dsock.Vector):
         
 
         | Node: AccumulateField 
+        
+
         Top Index 
         
 
@@ -312,6 +324,8 @@ class Vector(dsock.Vector):
         
 
         | Node: AttributeStatistic 
+        
+
         Top Index 
         
 
@@ -360,6 +374,8 @@ class Vector(dsock.Vector):
         
 
         | Node: TransferAttribute 
+        
+
         Top Index 
         
 
@@ -409,6 +425,8 @@ class Vector(dsock.Vector):
         
 
         | Node: CaptureAttribute 
+        
+
         Top Index 
         
 
@@ -454,6 +472,8 @@ class Vector(dsock.Vector):
         
 
         | Node: FieldAtIndex 
+        
+
         Top Index 
         
 
@@ -499,6 +519,8 @@ class Vector(dsock.Vector):
         
 
         | Node: Raycast 
+        
+
         Top Index 
         
 
@@ -549,6 +571,8 @@ class Vector(dsock.Vector):
         
 
         | Node: MapRange 
+        
+
         Top Index 
         
 
@@ -599,6 +623,8 @@ class Vector(dsock.Vector):
         
 
         | Node: Compare 
+        
+
         Top Index 
         
 
@@ -647,6 +673,8 @@ class Vector(dsock.Vector):
         
 
         | Node: Compare 
+        
+
         Top Index 
         
 
@@ -695,6 +723,8 @@ class Vector(dsock.Vector):
         
 
         | Node: Compare 
+        
+
         Top Index 
         
 
@@ -743,6 +773,8 @@ class Vector(dsock.Vector):
         
 
         | Node: Compare 
+        
+
         Top Index 
         
 
@@ -791,6 +823,8 @@ class Vector(dsock.Vector):
         
 
         | Node: Compare 
+        
+
         Top Index 
         
 
@@ -840,6 +874,8 @@ class Vector(dsock.Vector):
         
 
         | Node: Compare 
+        
+
         Top Index 
         
 
@@ -889,6 +925,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -929,6 +967,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -969,6 +1009,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1009,6 +1051,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1049,6 +1093,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1090,6 +1136,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1130,6 +1178,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1170,6 +1220,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1210,6 +1262,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1251,6 +1305,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1292,6 +1348,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1332,6 +1390,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1372,6 +1432,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1411,6 +1473,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1451,6 +1515,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1490,6 +1556,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1529,6 +1597,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1569,6 +1639,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1609,6 +1681,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1648,6 +1722,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1687,6 +1763,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1726,6 +1804,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1766,6 +1846,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1807,6 +1889,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1847,6 +1931,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1886,6 +1972,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1925,6 +2013,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        
+
         Top Index 
         
 
@@ -1964,6 +2054,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorRotate 
+        
+
         Top Index 
         
 
@@ -2013,6 +2105,8 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorCurves 
+        
+
         Top Index 
         
 
@@ -2048,6 +2142,8 @@ class Vector(dsock.Vector):
         
 
         | Node: AlignEulerToVector 
+        
+
         Top Index 
         
 
@@ -2090,6 +2186,8 @@ class Vector(dsock.Vector):
         
 
         | Node: RotateEuler 
+        
+
         Top Index 
         
 
