@@ -60,6 +60,6 @@ node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offse
 
 
 
-- [Curve](../sockets/Curve.md) [set_handle_positions](../sockets/Curve.md#set_handle_positions) : Stacked method
+- [Curve](../sockets/Curve.md) [set_handle_positions](../sockets/Curve.md#set_handle_positions) : Method
 
 

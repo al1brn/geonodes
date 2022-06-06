@@ -59,11 +59,21 @@ class Geometry(dsock.Geometry):
     - **attribute_domain_size** : DomainSize Sockets      [point_count (Integer), edge_count (Integer), face_count
       (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)] 
     - **attribute_remove**      : AttributeRemove geometry (Geometry) 
-    - **capture_attribute**     : CaptureAttribute Sockets      [geometry (Geometry), attribute (data_type dependant)]
+    - **capture_attribute**     : CaptureAttribute attribute (data_type dependant) 
     - **components**            : SeparateGeometry Sockets      [selection (Geometry), inverted (Geometry)] 
     - **convex_hull**           : ConvexHull convex_hull (Geometry) 
+    - **delete_geometry**       : DeleteGeometry geometry (Geometry) 
     - **join**                  : JoinGeometry geometry (Geometry) 
+    - **merge_by_distance**     : MergeByDistance geometry (Geometry) 
     - **proximity**             : GeometryProximity Sockets      [position (Vector), distance (Float)] 
+    - **realize_instances**     : RealizeInstances geometry (Geometry) 
+    - **replace_material**      : ReplaceMaterial geometry (Geometry) 
+    - **scale_elements**        : ScaleElements geometry (Geometry) 
+    - **set_ID**                : SetID geometry (Geometry) 
+    - **set_material**          : SetMaterial geometry (Geometry) 
+    - **set_material_index**    : SetMaterialIndex geometry (Geometry) 
+    - **set_position**          : SetPosition geometry (Geometry) 
+    - **set_shade_smooth**      : SetShadeSmooth geometry (Geometry) 
     - **switch**                : Switch output (Geometry) 
     - **to_instance**           : GeometryToInstance instances (Instances) 
     - **transfer_boolean**      : TransferAttribute attribute (Boolean) 
@@ -71,21 +81,7 @@ class Geometry(dsock.Geometry):
     - **transfer_float**        : TransferAttribute attribute (Float) 
     - **transfer_integer**      : TransferAttribute attribute (Integer) 
     - **transfer_vector**       : TransferAttribute attribute (Vector) 
-    
-
-    Stacked methods
-    ===============
-    - **delete_geometry**    : DeleteGeometry Geometry 
-    - **merge_by_distance**  : MergeByDistance Geometry 
-    - **realize_instances**  : RealizeInstances Geometry 
-    - **replace_material**   : ReplaceMaterial Geometry 
-    - **scale_elements**     : ScaleElements Geometry 
-    - **set_ID**             : SetID Geometry 
-    - **set_material**       : SetMaterial Geometry 
-    - **set_material_index** : SetMaterialIndex Geometry 
-    - **set_position**       : SetPosition Geometry 
-    - **set_shade_smooth**   : SetShadeSmooth Geometry 
-    - **transform**          : Transform Geometry 
+    - **transform**             : Transform geometry (Geometry) 
     """
 
 
@@ -1009,7 +1005,9 @@ class Geometry(dsock.Geometry):
                 Sockets [geometry (Geometry), attribute (data_type dependant)] 
         """
 
-        return nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain)
+        node = nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain)
+        self.stack(node)
+        return node.attribute
 
     def transfer_boolean(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
         """ transfer_boolean
@@ -1255,6 +1253,421 @@ class Geometry(dsock.Geometry):
         """
 
         return nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping).attribute
+
+    def delete_geometry(self, selection=None, domain='POINT', mode='ALL'):
+        """ delete_geometry
+        
+
+        | Node: DeleteGeometry 
+        Top Index 
+        
+
+            v = geometry.delete_geometry(selection, domain, mode) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry  : Geometry (self) 
+            - selection : Boolean 
+        
+
+            Parameters arguments
+            --------------------
+            - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE] 
+            - mode   : 'ALL' in [ALL, EDGE_FACE, ONLY_FACE] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode) 
+        
+
+        Returns
+        =======
+                Geometry 
+        """
+
+        return self.stack(nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode))
+
+    def merge_by_distance(self, selection=None, distance=None):
+        """ merge_by_distance
+        
+
+        | Node: MergeByDistance 
+        Top Index 
+        
+
+            v = geometry.merge_by_distance(selection, distance) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry  : Geometry (self) 
+            - selection : Boolean 
+            - distance  : Float 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.MergeByDistance(geometry=self, selection=selection, distance=distance) 
+        
+
+        Returns
+        =======
+                Geometry 
+        """
+
+        return self.stack(nodes.MergeByDistance(geometry=self, selection=selection, distance=distance))
+
+    def realize_instances(self, legacy_behavior=False):
+        """ realize_instances
+        
+
+        | Node: RealizeInstances 
+        Top Index 
+        
+
+            v = geometry.realize_instances(legacy_behavior) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry : Geometry (self) 
+        
+
+            Parameters arguments
+            --------------------
+            - legacy_behavior : False 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior) 
+        
+
+        Returns
+        =======
+                Geometry 
+        """
+
+        return self.stack(nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior))
+
+    def replace_material(self, old=None, new=None):
+        """ replace_material
+        
+
+        | Node: ReplaceMaterial 
+        Top Index 
+        
+
+            v = geometry.replace_material(old, new) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry : Geometry (self) 
+            - old      : Material 
+            - new      : Material 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.ReplaceMaterial(geometry=self, old=old, new=new) 
+        
+
+        Returns
+        =======
+                Geometry 
+        """
+
+        return self.stack(nodes.ReplaceMaterial(geometry=self, old=old, new=new))
+
+    def scale_elements(self, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM'):
+        """ scale_elements
+        
+
+        | Node: ScaleElements 
+        Top Index 
+        
+
+            v = geometry.scale_elements(selection, scale, center, axis, domain, scale_mode) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry  : Geometry (self) 
+            - selection : Boolean 
+            - scale     : Float 
+            - center    : Vector 
+            - axis      : Vector 
+        
+
+            Parameters arguments
+            --------------------
+            - domain     : 'FACE' in [FACE, EDGE] 
+            - scale_mode : 'UNIFORM' in [UNIFORM, SINGLE_AXIS] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis,
+            domain=domain, scale_mode=scale_mode) 
+        
+
+        Returns
+        =======
+                Geometry 
+        """
+
+        return self.stack(nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode))
+
+    def set_ID(self, selection=None, ID=None):
+        """ set_ID
+        
+
+        | Node: SetID 
+        Top Index 
+        
+
+            v = geometry.set_ID(selection, ID) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry  : Geometry (self) 
+            - selection : Boolean 
+            - ID        : Integer 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SetID(geometry=self, selection=selection, ID=ID) 
+        
+
+        Returns
+        =======
+                Geometry 
+        """
+
+        return self.stack(nodes.SetID(geometry=self, selection=selection, ID=ID))
+
+    def set_material(self, selection=None, material=None):
+        """ set_material
+        
+
+        | Node: SetMaterial 
+        Top Index 
+        
+
+            v = geometry.set_material(selection, material) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry  : Geometry (self) 
+            - selection : Boolean 
+            - material  : Material 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SetMaterial(geometry=self, selection=selection, material=material) 
+        
+
+        Returns
+        =======
+                Geometry 
+        """
+
+        return self.stack(nodes.SetMaterial(geometry=self, selection=selection, material=material))
+
+    def set_material_index(self, selection=None, material_index=None):
+        """ set_material_index
+        
+
+        | Node: SetMaterialIndex 
+        Top Index 
+        
+
+            v = geometry.set_material_index(selection, material_index) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry       : Geometry (self) 
+            - selection      : Boolean 
+            - material_index : Integer 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index) 
+        
+
+        Returns
+        =======
+                Geometry 
+        """
+
+        return self.stack(nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index))
+
+    def set_position(self, selection=None, position=None, offset=None):
+        """ set_position
+        
+
+        | Node: SetPosition 
+        Top Index 
+        
+
+            v = geometry.set_position(selection, position, offset) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry  : Geometry (self) 
+            - selection : Boolean 
+            - position  : Vector 
+            - offset    : Vector 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset) 
+        
+
+        Returns
+        =======
+                Geometry 
+        """
+
+        return self.stack(nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset))
+
+    def set_shade_smooth(self, selection=None, shade_smooth=None):
+        """ set_shade_smooth
+        
+
+        | Node: SetShadeSmooth 
+        Top Index 
+        
+
+            v = geometry.set_shade_smooth(selection, shade_smooth) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry     : Geometry (self) 
+            - selection    : Boolean 
+            - shade_smooth : Boolean 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth) 
+        
+
+        Returns
+        =======
+                Geometry 
+        """
+
+        return self.stack(nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth))
+
+    def transform(self, translation=None, rotation=None, scale=None):
+        """ transform
+        
+
+        | Node: Transform 
+        Top Index 
+        
+
+            v = geometry.transform(translation, rotation, scale) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry    : Geometry (self) 
+            - translation : Vector 
+            - rotation    : Vector 
+            - scale       : Vector 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale) 
+        
+
+        Returns
+        =======
+                Geometry 
+        """
+
+        return self.stack(nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale))
 
     def attribute_domain_size(self, component='MESH'):
         """ attribute_domain_size
@@ -1512,424 +1925,5 @@ class Geometry(dsock.Geometry):
         """
 
         return nodes.GeometryProximity(target=self, source_position=source_position, target_element=target_element)
-
-
-    # ----------------------------------------------------------------------------------------------------
-    # Stacked methods
-
-    def delete_geometry(self, selection=None, domain='POINT', mode='ALL'):
-        """ delete_geometry
-        
-
-        | Node: DeleteGeometry 
-        Top Index 
-        
-
-            geometry.delete_geometry(selection, domain, mode) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - geometry  : Geometry (self) 
-            - selection : Boolean 
-        
-
-            Parameters arguments
-            --------------------
-            - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE] 
-            - mode   : 'ALL' in [ALL, EDGE_FACE, ONLY_FACE] 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode))
-
-    def merge_by_distance(self, selection=None, distance=None):
-        """ merge_by_distance
-        
-
-        | Node: MergeByDistance 
-        Top Index 
-        
-
-            geometry.merge_by_distance(selection, distance) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - geometry  : Geometry (self) 
-            - selection : Boolean 
-            - distance  : Float 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.MergeByDistance(geometry=self, selection=selection, distance=distance) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.MergeByDistance(geometry=self, selection=selection, distance=distance))
-
-    def realize_instances(self, legacy_behavior=False):
-        """ realize_instances
-        
-
-        | Node: RealizeInstances 
-        Top Index 
-        
-
-            geometry.realize_instances(legacy_behavior) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - geometry : Geometry (self) 
-        
-
-            Parameters arguments
-            --------------------
-            - legacy_behavior : False 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior))
-
-    def replace_material(self, old=None, new=None):
-        """ replace_material
-        
-
-        | Node: ReplaceMaterial 
-        Top Index 
-        
-
-            geometry.replace_material(old, new) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - geometry : Geometry (self) 
-            - old      : Material 
-            - new      : Material 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.ReplaceMaterial(geometry=self, old=old, new=new) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.ReplaceMaterial(geometry=self, old=old, new=new))
-
-    def scale_elements(self, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM'):
-        """ scale_elements
-        
-
-        | Node: ScaleElements 
-        Top Index 
-        
-
-            geometry.scale_elements(selection, scale, center, axis, domain, scale_mode) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - geometry  : Geometry (self) 
-            - selection : Boolean 
-            - scale     : Float 
-            - center    : Vector 
-            - axis      : Vector 
-        
-
-            Parameters arguments
-            --------------------
-            - domain     : 'FACE' in [FACE, EDGE] 
-            - scale_mode : 'UNIFORM' in [UNIFORM, SINGLE_AXIS] 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis,
-            domain=domain, scale_mode=scale_mode) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode))
-
-    def set_ID(self, selection=None, ID=None):
-        """ set_ID
-        
-
-        | Node: SetID 
-        Top Index 
-        
-
-            geometry.set_ID(selection, ID) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - geometry  : Geometry (self) 
-            - selection : Boolean 
-            - ID        : Integer 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.SetID(geometry=self, selection=selection, ID=ID) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.SetID(geometry=self, selection=selection, ID=ID))
-
-    def set_material(self, selection=None, material=None):
-        """ set_material
-        
-
-        | Node: SetMaterial 
-        Top Index 
-        
-
-            geometry.set_material(selection, material) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - geometry  : Geometry (self) 
-            - selection : Boolean 
-            - material  : Material 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.SetMaterial(geometry=self, selection=selection, material=material) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.SetMaterial(geometry=self, selection=selection, material=material))
-
-    def set_material_index(self, selection=None, material_index=None):
-        """ set_material_index
-        
-
-        | Node: SetMaterialIndex 
-        Top Index 
-        
-
-            geometry.set_material_index(selection, material_index) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - geometry       : Geometry (self) 
-            - selection      : Boolean 
-            - material_index : Integer 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index))
-
-    def set_position(self, selection=None, position=None, offset=None):
-        """ set_position
-        
-
-        | Node: SetPosition 
-        Top Index 
-        
-
-            geometry.set_position(selection, position, offset) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - geometry  : Geometry (self) 
-            - selection : Boolean 
-            - position  : Vector 
-            - offset    : Vector 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset))
-
-    def set_shade_smooth(self, selection=None, shade_smooth=None):
-        """ set_shade_smooth
-        
-
-        | Node: SetShadeSmooth 
-        Top Index 
-        
-
-            geometry.set_shade_smooth(selection, shade_smooth) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - geometry     : Geometry (self) 
-            - selection    : Boolean 
-            - shade_smooth : Boolean 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth))
-
-    def transform(self, translation=None, rotation=None, scale=None):
-        """ transform
-        
-
-        | Node: Transform 
-        Top Index 
-        
-
-            geometry.transform(translation, rotation, scale) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - geometry    : Geometry (self) 
-            - translation : Vector 
-            - rotation    : Vector 
-            - scale       : Vector 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale))
 
 

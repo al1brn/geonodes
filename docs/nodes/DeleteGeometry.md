@@ -59,6 +59,6 @@ node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode=
 
 
 
-- [Geometry](../sockets/Geometry.md) [delete_geometry](../sockets/Geometry.md#delete_geometry) : Stacked method
+- [Geometry](../sockets/Geometry.md) [delete_geometry](../sockets/Geometry.md#delete_geometry) : Method
 
 

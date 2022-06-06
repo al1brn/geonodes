@@ -28,10 +28,12 @@
 - [**attribute_statistic**](#attribute_statistic) : [AttributeStatistic](../nodes/AttributeStatistic.md) Sockets      [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
 - [**capture_attribute**](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) Sockets      [geometry (Geometry), attribute (Float)]
 - [**ceil**](#ceil) : [Math](../nodes/Math.md) value (Float)
+- [**clamp**](#clamp) : [Clamp](../nodes/Clamp.md) result (Float)
 - [**color_ramp**](#color_ramp) : [Colorramp](../nodes/Colorramp.md) Sockets      [color (Color), alpha (Float)]
 - [**compare**](#compare) : [Math](../nodes/Math.md) value (Float)
 - [**cos**](#cos) : [Math](../nodes/Math.md) value (Float)
 - [**cosh**](#cosh) : [Math](../nodes/Math.md) value (Float)
+- [**curve**](#curve) : [FloatCurve](../nodes/FloatCurve.md) value (Float)
 - [**degrees**](#degrees) : [Math](../nodes/Math.md) value (Float)
 - [**divide**](#divide) : [Math](../nodes/Math.md) value (Float)
 - [**equal**](#equal) : [Compare](../nodes/Compare.md) result (Boolean)
@@ -75,15 +77,6 @@
 - [**transfer_attribute**](#transfer_attribute) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Float)
 - [**trunc**](#trunc) : [Math](../nodes/Math.md) value (Float)
 - [**wrap**](#wrap) : [Math](../nodes/Math.md) value (Float)
-
-
-
-## Stacked methods
-
-
-
-- [**clamp**](#clamp) : [Clamp](../nodes/Clamp.md) Float
-- [**curve**](#curve) : [FloatCurve](../nodes/FloatCurve.md) Float
 
 
 
@@ -604,7 +597,7 @@ node = nodes.Math(value0=self, operation='CEIL')
 [Top](#class-float) [Index](/docs/index.md)
 
 ```python
-float.clamp(min, max, clamp_type)
+v = float.clamp(min, max, clamp_type)
 ```
 
 
@@ -639,7 +632,7 @@ node = nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type)
 
 #### Returns
 
-    self
+    Float
 
 ### color_ramp
 
@@ -815,7 +808,7 @@ node = nodes.Math(value0=self, operation='COSH')
 [Top](#class-float) [Index](/docs/index.md)
 
 ```python
-float.curve(factor)
+v = float.curve(factor)
 ```
 
 
@@ -841,7 +834,7 @@ node = nodes.FloatCurve(value=self, factor=factor)
 
 #### Returns
 
-    self
+    Float
 
 ### degrees
 

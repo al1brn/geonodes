@@ -19,18 +19,50 @@ class Points(gn.Geometry):
     Methods
     =======
     - **instance_on_points** : InstanceOnPoints instances (Instances) 
+    - **set_radius**         : SetPointRadius points (Points) 
     - **to_vertices**        : PointsToVertices mesh (Mesh) 
     - **to_volume**          : PointsToVolume volume (Volume) 
-    
-
-    Stacked methods
-    ===============
-    - **set_radius** : SetPointRadius Points 
     """
 
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
+
+    def set_radius(self, selection=None, radius=None):
+        """ set_radius
+        
+
+        | Node: SetPointRadius 
+        Top Index 
+        
+
+            v = points.set_radius(selection, radius) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - points    : Points (self) 
+            - selection : Boolean 
+            - radius    : Float 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SetPointRadius(points=self, selection=selection, radius=radius) 
+        
+
+        Returns
+        =======
+                Points 
+        """
+
+        return self.stack(nodes.SetPointRadius(points=self, selection=selection, radius=radius))
 
     def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """ instance_on_points
@@ -151,45 +183,5 @@ class Points(gn.Geometry):
         """
 
         return nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode).volume
-
-
-    # ----------------------------------------------------------------------------------------------------
-    # Stacked methods
-
-    def set_radius(self, selection=None, radius=None):
-        """ set_radius
-        
-
-        | Node: SetPointRadius 
-        Top Index 
-        
-
-            points.set_radius(selection, radius) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - points    : Points (self) 
-            - selection : Boolean 
-            - radius    : Float 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.SetPointRadius(points=self, selection=selection, radius=radius) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.SetPointRadius(points=self, selection=selection, radius=radius))
 
 

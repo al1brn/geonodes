@@ -29,15 +29,11 @@ class String(dsock.String):
     - **element**     : Compare result (Boolean) 
     - **join**        : JoinStrings string (String) 
     - **length**      : Compare result (Boolean) 
+    - **replace**     : ReplaceString string (String) 
     - **slice**       : SliceString string (String) 
     - **switch**      : Switch output (String) 
     - **to_curves**   : StringToCurves Sockets      [curve_instances (Geometry), remainder (String), line (Integer),
       pivot_point (Vector)] 
-    
-
-    Stacked methods
-    ===============
-    - **replace** : ReplaceString String 
     """
 
 
@@ -379,6 +375,42 @@ class String(dsock.String):
 
         return nodes.JoinStrings(self, *strings, delimiter=delimiter).string
 
+    def replace(self, find=None, replace=None):
+        """ replace
+        
+
+        | Node: ReplaceString 
+        Top Index 
+        
+
+            v = string.replace(find, replace) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - string  : String (self) 
+            - find    : String 
+            - replace : String 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.ReplaceString(string=self, find=find, replace=replace) 
+        
+
+        Returns
+        =======
+                String 
+        """
+
+        return self.stack(nodes.ReplaceString(string=self, find=find, replace=replace))
+
     def slice(self, position=None, length=None):
         """ slice
         
@@ -465,45 +497,5 @@ class String(dsock.String):
         """
 
         return nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
-
-
-    # ----------------------------------------------------------------------------------------------------
-    # Stacked methods
-
-    def replace(self, find=None, replace=None):
-        """ replace
-        
-
-        | Node: ReplaceString 
-        Top Index 
-        
-
-            string.replace(find, replace) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - string  : String (self) 
-            - find    : String 
-            - replace : String 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.ReplaceString(string=self, find=find, replace=replace) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.ReplaceString(string=self, find=find, replace=replace))
 
 

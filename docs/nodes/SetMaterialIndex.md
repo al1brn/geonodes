@@ -51,6 +51,6 @@ node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None
 
 
 
-- [Geometry](../sockets/Geometry.md) [set_material_index](../sockets/Geometry.md#set_material_index) : Stacked method
+- [Geometry](../sockets/Geometry.md) [set_material_index](../sockets/Geometry.md#set_material_index) : Method
 
 

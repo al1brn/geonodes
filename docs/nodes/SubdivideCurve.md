@@ -50,6 +50,6 @@ node = nodes.SubdivideCurve(curve=None, cuts=None, label=None)
 
 
 
-- [Curve](../sockets/Curve.md) [subdivide](../sockets/Curve.md#subdivide) : Stacked method
+- [Curve](../sockets/Curve.md) [subdivide](../sockets/Curve.md#subdivide) : Method
 
 

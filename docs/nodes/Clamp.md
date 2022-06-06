@@ -59,6 +59,6 @@ node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX', label=No
 
 
 
-- [Float](../sockets/Float.md) [clamp](../sockets/Float.md#clamp) : Stacked method
+- [Float](../sockets/Float.md) [clamp](../sockets/Float.md#clamp) : Method
 
 

@@ -50,6 +50,6 @@ node = nodes.VectorCurves(fac=None, vector=None, label=None)
 
 
 
-- [Vector](../sockets/Vector.md) [curves](../sockets/Vector.md#curves) : Stacked method
+- [Vector](../sockets/Vector.md) [curves](../sockets/Vector.md#curves) : Method
 
 

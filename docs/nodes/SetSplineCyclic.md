@@ -51,6 +51,6 @@ node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None, label=N
 
 
 
-- [Spline](../sockets/Spline.md) [set_cyclic](../sockets/Spline.md#set_cyclic) : Stacked method
+- [Spline](../sockets/Spline.md) [set_cyclic](../sockets/Spline.md#set_cyclic) : Method
 
 

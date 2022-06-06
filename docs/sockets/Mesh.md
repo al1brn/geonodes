@@ -76,24 +76,17 @@
 
 - [**difference**](#difference) : [MeshBoolean](../nodes/MeshBoolean.md) mesh (Mesh)
 - [**distribute_points_on_faces**](#distribute_points_on_faces) : [DistributePointsOnFaces](../nodes/DistributePointsOnFaces.md) Sockets      [points (Points), normal (Vector), rotation (Vector)]
+- [**dual**](#dual) : [DualMesh](../nodes/DualMesh.md) dual_mesh (Geometry)
 - [**extrude**](#extrude) : [ExtrudeMesh](../nodes/ExtrudeMesh.md) Sockets      [mesh (Mesh), top (Boolean), side (Boolean)]
+- [**flip_faces**](#flip_faces) : [FlipFaces](../nodes/FlipFaces.md) mesh (Mesh)
 - [**intersect**](#intersect) : [MeshBoolean](../nodes/MeshBoolean.md) mesh (Mesh)
+- [**split_edges**](#split_edges) : [SplitEdges](../nodes/SplitEdges.md) mesh (Mesh)
+- [**subdivide**](#subdivide) : [SubdivideMesh](../nodes/SubdivideMesh.md) mesh (Mesh)
+- [**subdivision_surface**](#subdivision_surface) : [SubdivisionSurface](../nodes/SubdivisionSurface.md) mesh (Mesh)
 - [**to_curve**](#to_curve) : [MeshToCurve](../nodes/MeshToCurve.md) curve (Curve)
 - [**to_points**](#to_points) : [MeshToPoints](../nodes/MeshToPoints.md) points (Points)
+- [**triangulate**](#triangulate) : [Triangulate](../nodes/Triangulate.md) mesh (Mesh)
 - [**union**](#union) : [MeshBoolean](../nodes/MeshBoolean.md) mesh (Mesh)
-
-
-
-## Stacked methods
-
-
-
-- [**dual**](#dual) : [DualMesh](../nodes/DualMesh.md) Mesh
-- [**flip_faces**](#flip_faces) : [FlipFaces](../nodes/FlipFaces.md) Mesh
-- [**split_edges**](#split_edges) : [SplitEdges](../nodes/SplitEdges.md) Mesh
-- [**subdivide**](#subdivide) : [SubdivideMesh](../nodes/SubdivideMesh.md) Mesh
-- [**subdivision_surface**](#subdivision_surface) : [SubdivisionSurface](../nodes/SubdivisionSurface.md) Mesh
-- [**triangulate**](#triangulate) : [Triangulate](../nodes/Triangulate.md) Mesh
 
 
 
@@ -1010,7 +1003,7 @@ node = nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_mi
 [Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
-mesh.dual(keep_boundaries)
+v = mesh.dual(keep_boundaries)
 ```
 
 
@@ -1036,7 +1029,7 @@ node = nodes.DualMesh(mesh=self, keep_boundaries=keep_boundaries)
 
 #### Returns
 
-    self
+    Geometry
 
 ### edge_angle
 
@@ -1653,7 +1646,7 @@ node = nodes.EdgeAngle()
 [Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
-mesh.flip_faces(selection)
+v = mesh.flip_faces(selection)
 ```
 
 
@@ -1679,7 +1672,7 @@ node = nodes.FlipFaces(mesh=self, selection=selection)
 
 #### Returns
 
-    self
+    Mesh
 
 ### intersect
 
@@ -1882,7 +1875,7 @@ node = nodes.IsShadeSmooth()
 [Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
-mesh.split_edges(selection)
+v = mesh.split_edges(selection)
 ```
 
 
@@ -1908,7 +1901,7 @@ node = nodes.SplitEdges(mesh=self, selection=selection)
 
 #### Returns
 
-    self
+    Mesh
 
 ### subdivide
 
@@ -1918,7 +1911,7 @@ node = nodes.SplitEdges(mesh=self, selection=selection)
 [Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
-mesh.subdivide(level)
+v = mesh.subdivide(level)
 ```
 
 
@@ -1944,7 +1937,7 @@ node = nodes.SubdivideMesh(mesh=self, level=level)
 
 #### Returns
 
-    self
+    Mesh
 
 ### subdivision_surface
 
@@ -1954,7 +1947,7 @@ node = nodes.SubdivideMesh(mesh=self, level=level)
 [Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
-mesh.subdivision_surface(level, crease, boundary_smooth, uv_smooth)
+v = mesh.subdivision_surface(level, crease, boundary_smooth, uv_smooth)
 ```
 
 
@@ -1990,7 +1983,7 @@ node = nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_
 
 #### Returns
 
-    self
+    Mesh
 
 ### to_curve
 
@@ -2082,7 +2075,7 @@ node = nodes.MeshToPoints(mesh=self, selection=selection, position=position, rad
 [Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
-mesh.triangulate(selection, minimum_vertices, ngon_method, quad_method)
+v = mesh.triangulate(selection, minimum_vertices, ngon_method, quad_method)
 ```
 
 
@@ -2118,7 +2111,7 @@ node = nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimu
 
 #### Returns
 
-    self
+    Mesh
 
 ### union
 

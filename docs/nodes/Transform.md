@@ -52,6 +52,6 @@ node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=Non
 
 
 
-- [Geometry](../sockets/Geometry.md) [transform](../sockets/Geometry.md#transform) : Stacked method
+- [Geometry](../sockets/Geometry.md) [transform](../sockets/Geometry.md#transform) : Method
 
 

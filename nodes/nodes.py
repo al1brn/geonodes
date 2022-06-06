@@ -53,7 +53,7 @@ class AlignEulerToVector(Node):
     ============
     | Data socket classes implementing this node 
     - Vector AlignToVector   : Constructor 
-    - Vector align_to_vector : Stacked method 
+    - Vector align_to_vector : Method 
     """
 
     def __init__(self, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', label=None):
@@ -886,7 +886,7 @@ class ReplaceString(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - String replace : Stacked method 
+    - String replace : Method 
     """
 
     def __init__(self, string=None, find=None, replace=None, label=None):
@@ -954,7 +954,7 @@ class RotateEuler(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Vector rotate_euler : Stacked method 
+    - Vector rotate_euler : Method 
     """
 
     def __init__(self, rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', label=None):
@@ -2772,7 +2772,7 @@ class SetHandleType(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve set_handles : Stacked method 
+    - Curve set_handles : Method 
     """
 
     def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None):
@@ -2927,7 +2927,7 @@ class SetSplineType(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve set_spline_type : Stacked method 
+    - Curve set_spline_type : Method 
     """
 
     def __init__(self, curve=None, selection=None, spline_type='POLY', label=None):
@@ -3218,7 +3218,7 @@ class DeleteGeometry(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry delete_geometry : Stacked method 
+    - Geometry delete_geometry : Method 
     """
 
     def __init__(self, geometry=None, selection=None, domain='POINT', mode='ALL', label=None):
@@ -3391,7 +3391,7 @@ class DualMesh(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh dual : Stacked method 
+    - Mesh dual : Method 
     """
 
     def __init__(self, mesh=None, keep_boundaries=None, label=None):
@@ -3661,7 +3661,7 @@ class FillCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve fill : Stacked method 
+    - Curve fill : Method 
     """
 
     def __init__(self, curve=None, mode='TRIANGLES', label=None):
@@ -3739,7 +3739,7 @@ class FilletCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve fillet : Stacked method 
+    - Curve fillet : Method 
     """
 
     def __init__(self, curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER', label=None):
@@ -3813,7 +3813,7 @@ class FlipFaces(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh flip_faces : Stacked method 
+    - Mesh flip_faces : Method 
     """
 
     def __init__(self, mesh=None, selection=None, label=None):
@@ -5450,7 +5450,7 @@ class MergeByDistance(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry merge_by_distance : Stacked method 
+    - Geometry merge_by_distance : Method 
     """
 
     def __init__(self, geometry=None, selection=None, distance=None, label=None):
@@ -6780,7 +6780,7 @@ class RealizeInstances(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry realize_instances : Stacked method 
+    - Geometry realize_instances : Method 
     """
 
     def __init__(self, geometry=None, legacy_behavior=False, label=None):
@@ -6852,7 +6852,7 @@ class ReplaceMaterial(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry replace_material : Stacked method 
+    - Geometry replace_material : Method 
     """
 
     def __init__(self, geometry=None, old=None, new=None, label=None):
@@ -6920,7 +6920,7 @@ class ResampleCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve resample : Stacked method 
+    - Curve resample : Method 
     """
 
     def __init__(self, curve=None, selection=None, count=None, length=None, mode='COUNT', label=None):
@@ -6994,7 +6994,7 @@ class ReverseCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve reverse : Stacked method 
+    - Curve reverse : Method 
     """
 
     def __init__(self, curve=None, selection=None, label=None):
@@ -7058,7 +7058,7 @@ class RotateInstances(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Instances rotate : Stacked method 
+    - Instances rotate : Method 
     """
 
     def __init__(self, instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, label=None):
@@ -7214,7 +7214,7 @@ class ScaleElements(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry scale_elements : Stacked method 
+    - Geometry scale_elements : Method 
     """
 
     def __init__(self, geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', label=None):
@@ -7302,7 +7302,7 @@ class ScaleInstances(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Instances scale : Stacked method 
+    - Instances scale : Method 
     """
 
     def __init__(self, instances=None, selection=None, scale=None, center=None, local_space=None, label=None):
@@ -7522,7 +7522,7 @@ class SetHandlePositions(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve set_handle_positions : Stacked method 
+    - Curve set_handle_positions : Method 
     """
 
     def __init__(self, curve=None, selection=None, position=None, offset=None, mode='LEFT', label=None):
@@ -7597,7 +7597,7 @@ class SetCurveRadius(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve set_radius : Stacked method 
+    - Curve set_radius : Method 
     """
 
     def __init__(self, curve=None, selection=None, radius=None, label=None):
@@ -7659,7 +7659,7 @@ class SetCurveTilt(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve set_tilt : Stacked method 
+    - Curve set_tilt : Method 
     """
 
     def __init__(self, curve=None, selection=None, tilt=None, label=None):
@@ -7721,7 +7721,7 @@ class SetID(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry set_ID : Stacked method 
+    - Geometry set_ID : Method 
     """
 
     def __init__(self, geometry=None, selection=None, ID=None, label=None):
@@ -7783,7 +7783,7 @@ class SetMaterial(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry set_material : Stacked method 
+    - Geometry set_material : Method 
     """
 
     def __init__(self, geometry=None, selection=None, material=None, label=None):
@@ -7845,7 +7845,7 @@ class SetMaterialIndex(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry set_material_index : Stacked method 
+    - Geometry set_material_index : Method 
     """
 
     def __init__(self, geometry=None, selection=None, material_index=None, label=None):
@@ -7907,7 +7907,7 @@ class SetPointRadius(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Points set_radius : Stacked method 
+    - Points set_radius : Method 
     """
 
     def __init__(self, points=None, selection=None, radius=None, label=None):
@@ -7970,7 +7970,7 @@ class SetPosition(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry set_position : Stacked method 
+    - Geometry set_position : Method 
     """
 
     def __init__(self, geometry=None, selection=None, position=None, offset=None, label=None):
@@ -8033,7 +8033,7 @@ class SetShadeSmooth(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry set_shade_smooth : Stacked method 
+    - Geometry set_shade_smooth : Method 
     """
 
     def __init__(self, geometry=None, selection=None, shade_smooth=None, label=None):
@@ -8095,7 +8095,7 @@ class SetSplineCyclic(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Spline set_cyclic : Stacked method 
+    - Spline set_cyclic : Method 
     """
 
     def __init__(self, geometry=None, selection=None, cyclic=None, label=None):
@@ -8157,7 +8157,7 @@ class SetSplineResolution(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Spline set_resolution : Stacked method 
+    - Spline set_resolution : Method 
     """
 
     def __init__(self, geometry=None, selection=None, resolution=None, label=None):
@@ -8327,7 +8327,7 @@ class SplitEdges(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh split_edges : Stacked method 
+    - Mesh split_edges : Method 
     """
 
     def __init__(self, mesh=None, selection=None, label=None):
@@ -8574,7 +8574,7 @@ class SubdivideCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve subdivide : Stacked method 
+    - Curve subdivide : Method 
     """
 
     def __init__(self, curve=None, cuts=None, label=None):
@@ -8634,7 +8634,7 @@ class SubdivideMesh(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh subdivide : Stacked method 
+    - Mesh subdivide : Method 
     """
 
     def __init__(self, mesh=None, level=None, label=None):
@@ -8703,7 +8703,7 @@ class SubdivisionSurface(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh subdivision_surface : Stacked method 
+    - Mesh subdivision_surface : Method 
     """
 
     def __init__(self, mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None):
@@ -8945,7 +8945,7 @@ class Transform(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Geometry transform : Stacked method 
+    - Geometry transform : Method 
     """
 
     def __init__(self, geometry=None, translation=None, rotation=None, scale=None, label=None):
@@ -9009,7 +9009,7 @@ class TranslateInstances(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Instances translate : Stacked method 
+    - Instances translate : Method 
     """
 
     def __init__(self, instances=None, selection=None, translation=None, local_space=None, label=None):
@@ -9079,7 +9079,7 @@ class Triangulate(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Mesh triangulate : Stacked method 
+    - Mesh triangulate : Method 
     """
 
     def __init__(self, mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', label=None):
@@ -9169,7 +9169,7 @@ class TrimCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Curve trim : Stacked method 
+    - Curve trim : Method 
     """
 
     def __init__(self, curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR', label=None):
@@ -9334,7 +9334,7 @@ class Clamp(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Float clamp : Stacked method 
+    - Float clamp : Method 
     """
 
     def __init__(self, value=None, min=None, max=None, clamp_type='MINMAX', label=None):
@@ -9531,7 +9531,7 @@ class FloatCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Float curve : Stacked method 
+    - Float curve : Method 
     """
 
     def __init__(self, factor=None, value=None, label=None):
@@ -10043,7 +10043,7 @@ class RgbCurves(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Color curves : Stacked method 
+    - Color curves : Method 
     """
 
     def __init__(self, fac=None, color=None, label=None):
@@ -11183,7 +11183,7 @@ class VectorCurves(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Vector curves : Stacked method 
+    - Vector curves : Method 
     """
 
     def __init__(self, fac=None, vector=None, label=None):

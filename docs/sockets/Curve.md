@@ -33,28 +33,21 @@
 
 
 
+- [**fill**](#fill) : [FillCurve](../nodes/FillCurve.md) mesh (Mesh)
+- [**fillet**](#fillet) : [FilletCurve](../nodes/FilletCurve.md) curve (Curve)
 - [**length**](#length) : [CurveLength](../nodes/CurveLength.md) length (Float)
+- [**resample**](#resample) : [ResampleCurve](../nodes/ResampleCurve.md) curve (Curve)
+- [**reverse**](#reverse) : [ReverseCurve](../nodes/ReverseCurve.md) curve (Curve)
 - [**sample**](#sample) : [SampleCurve](../nodes/SampleCurve.md) Sockets      [position (Vector), tangent (Vector), normal (Vector)]
+- [**set_handle_positions**](#set_handle_positions) : [SetHandlePositions](../nodes/SetHandlePositions.md) curve (Curve)
+- [**set_handles**](#set_handles) : [SetHandleType](../nodes/SetHandleType.md) curve (Curve)
+- [**set_radius**](#set_radius) : [SetCurveRadius](../nodes/SetCurveRadius.md) curve (Curve)
+- [**set_spline_type**](#set_spline_type) : [SetSplineType](../nodes/SetSplineType.md) curve (Curve)
+- [**set_tilt**](#set_tilt) : [SetCurveTilt](../nodes/SetCurveTilt.md) curve (Curve)
+- [**subdivide**](#subdivide) : [SubdivideCurve](../nodes/SubdivideCurve.md) curve (Curve)
 - [**to_mesh**](#to_mesh) : [CurveToMesh](../nodes/CurveToMesh.md) mesh (Mesh)
 - [**to_points**](#to_points) : [CurveToPoints](../nodes/CurveToPoints.md) Sockets      [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
-
-
-
-## Stacked methods
-
-
-
-- [**fill**](#fill) : [FillCurve](../nodes/FillCurve.md) Curve
-- [**fillet**](#fillet) : [FilletCurve](../nodes/FilletCurve.md) Curve
-- [**resample**](#resample) : [ResampleCurve](../nodes/ResampleCurve.md) Curve
-- [**reverse**](#reverse) : [ReverseCurve](../nodes/ReverseCurve.md) Curve
-- [**set_handle_positions**](#set_handle_positions) : [SetHandlePositions](../nodes/SetHandlePositions.md) Curve
-- [**set_handles**](#set_handles) : [SetHandleType](../nodes/SetHandleType.md) Curve
-- [**set_radius**](#set_radius) : [SetCurveRadius](../nodes/SetCurveRadius.md) Curve
-- [**set_spline_type**](#set_spline_type) : [SetSplineType](../nodes/SetSplineType.md) Curve
-- [**set_tilt**](#set_tilt) : [SetCurveTilt](../nodes/SetCurveTilt.md) Curve
-- [**subdivide**](#subdivide) : [SubdivideCurve](../nodes/SubdivideCurve.md) Curve
-- [**trim**](#trim) : [TrimCurve](../nodes/TrimCurve.md) Curve
+- [**trim**](#trim) : [TrimCurve](../nodes/TrimCurve.md) curve (Curve)
 
 
 
@@ -475,7 +468,7 @@ node = nodes.Star(points=points, inner_radius=inner_radius, outer_radius=outer_r
 [Top](#class-curve) [Index](/docs/index.md)
 
 ```python
-curve.fill(mode)
+v = curve.fill(mode)
 ```
 
 
@@ -508,7 +501,7 @@ node = nodes.FillCurve(curve=self, mode=mode)
 
 #### Returns
 
-    self
+    Mesh
 
 ### fillet
 
@@ -518,7 +511,7 @@ node = nodes.FillCurve(curve=self, mode=mode)
 [Top](#class-curve) [Index](/docs/index.md)
 
 ```python
-curve.fillet(count, radius, limit_radius, mode)
+v = curve.fillet(count, radius, limit_radius, mode)
 ```
 
 
@@ -554,7 +547,7 @@ node = nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=li
 
 #### Returns
 
-    self
+    Curve
 
 ### length
 
@@ -599,7 +592,7 @@ node = nodes.CurveLength(curve=self)
 [Top](#class-curve) [Index](/docs/index.md)
 
 ```python
-curve.resample(selection, count, length, mode)
+v = curve.resample(selection, count, length, mode)
 ```
 
 
@@ -635,7 +628,7 @@ node = nodes.ResampleCurve(curve=self, selection=selection, count=count, length=
 
 #### Returns
 
-    self
+    Curve
 
 ### reverse
 
@@ -645,7 +638,7 @@ node = nodes.ResampleCurve(curve=self, selection=selection, count=count, length=
 [Top](#class-curve) [Index](/docs/index.md)
 
 ```python
-curve.reverse(selection)
+v = curve.reverse(selection)
 ```
 
 
@@ -671,7 +664,7 @@ node = nodes.ReverseCurve(curve=self, selection=selection)
 
 #### Returns
 
-    self
+    Curve
 
 ### sample
 
@@ -726,7 +719,7 @@ node = nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode)
 [Top](#class-curve) [Index](/docs/index.md)
 
 ```python
-curve.set_handle_positions(selection, position, offset, mode)
+v = curve.set_handle_positions(selection, position, offset, mode)
 ```
 
 
@@ -762,7 +755,7 @@ node = nodes.SetHandlePositions(curve=self, selection=selection, position=positi
 
 #### Returns
 
-    self
+    Curve
 
 ### set_handles
 
@@ -772,7 +765,7 @@ node = nodes.SetHandlePositions(curve=self, selection=selection, position=positi
 [Top](#class-curve) [Index](/docs/index.md)
 
 ```python
-curve.set_handles(selection, handle_type, mode)
+v = curve.set_handles(selection, handle_type, mode)
 ```
 
 
@@ -807,7 +800,7 @@ node = nodes.SetHandleType(curve=self, selection=selection, handle_type=handle_t
 
 #### Returns
 
-    self
+    Curve
 
 ### set_radius
 
@@ -817,7 +810,7 @@ node = nodes.SetHandleType(curve=self, selection=selection, handle_type=handle_t
 [Top](#class-curve) [Index](/docs/index.md)
 
 ```python
-curve.set_radius(selection, radius)
+v = curve.set_radius(selection, radius)
 ```
 
 
@@ -844,7 +837,7 @@ node = nodes.SetCurveRadius(curve=self, selection=selection, radius=radius)
 
 #### Returns
 
-    self
+    Curve
 
 ### set_spline_type
 
@@ -854,7 +847,7 @@ node = nodes.SetCurveRadius(curve=self, selection=selection, radius=radius)
 [Top](#class-curve) [Index](/docs/index.md)
 
 ```python
-curve.set_spline_type(selection, spline_type)
+v = curve.set_spline_type(selection, spline_type)
 ```
 
 
@@ -888,7 +881,7 @@ node = nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_t
 
 #### Returns
 
-    self
+    Curve
 
 ### set_tilt
 
@@ -898,7 +891,7 @@ node = nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_t
 [Top](#class-curve) [Index](/docs/index.md)
 
 ```python
-curve.set_tilt(selection, tilt)
+v = curve.set_tilt(selection, tilt)
 ```
 
 
@@ -925,7 +918,7 @@ node = nodes.SetCurveTilt(curve=self, selection=selection, tilt=tilt)
 
 #### Returns
 
-    self
+    Curve
 
 ### subdivide
 
@@ -935,7 +928,7 @@ node = nodes.SetCurveTilt(curve=self, selection=selection, tilt=tilt)
 [Top](#class-curve) [Index](/docs/index.md)
 
 ```python
-curve.subdivide(cuts)
+v = curve.subdivide(cuts)
 ```
 
 
@@ -961,7 +954,7 @@ node = nodes.SubdivideCurve(curve=self, cuts=cuts)
 
 #### Returns
 
-    self
+    Curve
 
 ### to_mesh
 
@@ -1053,7 +1046,7 @@ node = nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode)
 [Top](#class-curve) [Index](/docs/index.md)
 
 ```python
-curve.trim(start0, end0, start1, end1, mode)
+v = curve.trim(start0, end0, start1, end1, mode)
 ```
 
 
@@ -1090,4 +1083,4 @@ node = nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1
 
 #### Returns
 
-    self
+    Curve

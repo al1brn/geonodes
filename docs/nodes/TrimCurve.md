@@ -61,6 +61,6 @@ node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=Non
 
 
 
-- [Curve](../sockets/Curve.md) [trim](../sockets/Curve.md#trim) : Stacked method
+- [Curve](../sockets/Curve.md) [trim](../sockets/Curve.md#trim) : Method
 
 

@@ -60,6 +60,6 @@ node = nodes.SubdivisionSurface(mesh=None, level=None, crease=None, boundary_smo
 
 
 
-- [Mesh](../sockets/Mesh.md) [subdivision_surface](../sockets/Mesh.md#subdivision_surface) : Stacked method
+- [Mesh](../sockets/Mesh.md) [subdivision_surface](../sockets/Mesh.md#subdivision_surface) : Method
 
 

@@ -61,11 +61,21 @@
 
 - [**attribute_domain_size**](#attribute_domain_size) : [DomainSize](../nodes/DomainSize.md) Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
 - [**attribute_remove**](#attribute_remove) : [AttributeRemove](../nodes/AttributeRemove.md) geometry (Geometry)
-- [**capture_attribute**](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) Sockets      [geometry (Geometry), attribute (data_type dependant)]
+- [**capture_attribute**](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) attribute (data_type dependant)
 - [**components**](#components) : [SeparateGeometry](../nodes/SeparateGeometry.md) Sockets      [selection (Geometry), inverted (Geometry)]
 - [**convex_hull**](#convex_hull) : [ConvexHull](../nodes/ConvexHull.md) convex_hull (Geometry)
+- [**delete_geometry**](#delete_geometry) : [DeleteGeometry](../nodes/DeleteGeometry.md) geometry (Geometry)
 - [**join**](#join) : [JoinGeometry](../nodes/JoinGeometry.md) geometry (Geometry)
+- [**merge_by_distance**](#merge_by_distance) : [MergeByDistance](../nodes/MergeByDistance.md) geometry (Geometry)
 - [**proximity**](#proximity) : [GeometryProximity](../nodes/GeometryProximity.md) Sockets      [position (Vector), distance (Float)]
+- [**realize_instances**](#realize_instances) : [RealizeInstances](../nodes/RealizeInstances.md) geometry (Geometry)
+- [**replace_material**](#replace_material) : [ReplaceMaterial](../nodes/ReplaceMaterial.md) geometry (Geometry)
+- [**scale_elements**](#scale_elements) : [ScaleElements](../nodes/ScaleElements.md) geometry (Geometry)
+- [**set_ID**](#set_id) : [SetID](../nodes/SetID.md) geometry (Geometry)
+- [**set_material**](#set_material) : [SetMaterial](../nodes/SetMaterial.md) geometry (Geometry)
+- [**set_material_index**](#set_material_index) : [SetMaterialIndex](../nodes/SetMaterialIndex.md) geometry (Geometry)
+- [**set_position**](#set_position) : [SetPosition](../nodes/SetPosition.md) geometry (Geometry)
+- [**set_shade_smooth**](#set_shade_smooth) : [SetShadeSmooth](../nodes/SetShadeSmooth.md) geometry (Geometry)
 - [**switch**](#switch) : [Switch](../nodes/Switch.md) output (Geometry)
 - [**to_instance**](#to_instance) : [GeometryToInstance](../nodes/GeometryToInstance.md) instances (Instances)
 - [**transfer_boolean**](#transfer_boolean) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Boolean)
@@ -73,24 +83,7 @@
 - [**transfer_float**](#transfer_float) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Float)
 - [**transfer_integer**](#transfer_integer) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Integer)
 - [**transfer_vector**](#transfer_vector) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Vector)
-
-
-
-## Stacked methods
-
-
-
-- [**delete_geometry**](#delete_geometry) : [DeleteGeometry](../nodes/DeleteGeometry.md) Geometry
-- [**merge_by_distance**](#merge_by_distance) : [MergeByDistance](../nodes/MergeByDistance.md) Geometry
-- [**realize_instances**](#realize_instances) : [RealizeInstances](../nodes/RealizeInstances.md) Geometry
-- [**replace_material**](#replace_material) : [ReplaceMaterial](../nodes/ReplaceMaterial.md) Geometry
-- [**scale_elements**](#scale_elements) : [ScaleElements](../nodes/ScaleElements.md) Geometry
-- [**set_ID**](#set_id) : [SetID](../nodes/SetID.md) Geometry
-- [**set_material**](#set_material) : [SetMaterial](../nodes/SetMaterial.md) Geometry
-- [**set_material_index**](#set_material_index) : [SetMaterialIndex](../nodes/SetMaterialIndex.md) Geometry
-- [**set_position**](#set_position) : [SetPosition](../nodes/SetPosition.md) Geometry
-- [**set_shade_smooth**](#set_shade_smooth) : [SetShadeSmooth](../nodes/SetShadeSmooth.md) Geometry
-- [**transform**](#transform) : [Transform](../nodes/Transform.md) Geometry
+- [**transform**](#transform) : [Transform](../nodes/Transform.md) geometry (Geometry)
 
 
 
@@ -738,7 +731,7 @@ node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.c
 [Top](#class-geometry) [Index](/docs/index.md)
 
 ```python
-geometry.delete_geometry(selection, domain, mode)
+v = geometry.delete_geometry(selection, domain, mode)
 ```
 
 
@@ -773,7 +766,7 @@ node = nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, m
 
 #### Returns
 
-    self
+    Geometry
 
 ### index
 
@@ -923,7 +916,7 @@ node = nodes.JoinGeometry(self, *geometry)
 [Top](#class-geometry) [Index](/docs/index.md)
 
 ```python
-geometry.merge_by_distance(selection, distance)
+v = geometry.merge_by_distance(selection, distance)
 ```
 
 
@@ -950,7 +943,7 @@ node = nodes.MergeByDistance(geometry=self, selection=selection, distance=distan
 
 #### Returns
 
-    self
+    Geometry
 
 ### mesh_component
 
@@ -1195,7 +1188,7 @@ node = nodes.Radius()
 [Top](#class-geometry) [Index](/docs/index.md)
 
 ```python
-geometry.realize_instances(legacy_behavior)
+v = geometry.realize_instances(legacy_behavior)
 ```
 
 
@@ -1228,7 +1221,7 @@ node = nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior)
 
 #### Returns
 
-    self
+    Geometry
 
 ### replace_material
 
@@ -1238,7 +1231,7 @@ node = nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior)
 [Top](#class-geometry) [Index](/docs/index.md)
 
 ```python
-geometry.replace_material(old, new)
+v = geometry.replace_material(old, new)
 ```
 
 
@@ -1265,7 +1258,7 @@ node = nodes.ReplaceMaterial(geometry=self, old=old, new=new)
 
 #### Returns
 
-    self
+    Geometry
 
 ### scale_elements
 
@@ -1275,7 +1268,7 @@ node = nodes.ReplaceMaterial(geometry=self, old=old, new=new)
 [Top](#class-geometry) [Index](/docs/index.md)
 
 ```python
-geometry.scale_elements(selection, scale, center, axis, domain, scale_mode)
+v = geometry.scale_elements(selection, scale, center, axis, domain, scale_mode)
 ```
 
 
@@ -1313,7 +1306,7 @@ node = nodes.ScaleElements(geometry=self, selection=selection, scale=scale, cent
 
 #### Returns
 
-    self
+    Geometry
 
 ### set_ID
 
@@ -1323,7 +1316,7 @@ node = nodes.ScaleElements(geometry=self, selection=selection, scale=scale, cent
 [Top](#class-geometry) [Index](/docs/index.md)
 
 ```python
-geometry.set_ID(selection, ID)
+v = geometry.set_ID(selection, ID)
 ```
 
 
@@ -1350,7 +1343,7 @@ node = nodes.SetID(geometry=self, selection=selection, ID=ID)
 
 #### Returns
 
-    self
+    Geometry
 
 ### set_material
 
@@ -1360,7 +1353,7 @@ node = nodes.SetID(geometry=self, selection=selection, ID=ID)
 [Top](#class-geometry) [Index](/docs/index.md)
 
 ```python
-geometry.set_material(selection, material)
+v = geometry.set_material(selection, material)
 ```
 
 
@@ -1387,7 +1380,7 @@ node = nodes.SetMaterial(geometry=self, selection=selection, material=material)
 
 #### Returns
 
-    self
+    Geometry
 
 ### set_material_index
 
@@ -1397,7 +1390,7 @@ node = nodes.SetMaterial(geometry=self, selection=selection, material=material)
 [Top](#class-geometry) [Index](/docs/index.md)
 
 ```python
-geometry.set_material_index(selection, material_index)
+v = geometry.set_material_index(selection, material_index)
 ```
 
 
@@ -1424,7 +1417,7 @@ node = nodes.SetMaterialIndex(geometry=self, selection=selection, material_index
 
 #### Returns
 
-    self
+    Geometry
 
 ### set_position
 
@@ -1434,7 +1427,7 @@ node = nodes.SetMaterialIndex(geometry=self, selection=selection, material_index
 [Top](#class-geometry) [Index](/docs/index.md)
 
 ```python
-geometry.set_position(selection, position, offset)
+v = geometry.set_position(selection, position, offset)
 ```
 
 
@@ -1462,7 +1455,7 @@ node = nodes.SetPosition(geometry=self, selection=selection, position=position, 
 
 #### Returns
 
-    self
+    Geometry
 
 ### set_shade_smooth
 
@@ -1472,7 +1465,7 @@ node = nodes.SetPosition(geometry=self, selection=selection, position=position, 
 [Top](#class-geometry) [Index](/docs/index.md)
 
 ```python
-geometry.set_shade_smooth(selection, shade_smooth)
+v = geometry.set_shade_smooth(selection, shade_smooth)
 ```
 
 
@@ -1499,7 +1492,7 @@ node = nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=sha
 
 #### Returns
 
-    self
+    Geometry
 
 ### switch
 
@@ -1864,7 +1857,7 @@ node = nodes.TransferAttribute(source=self, attribute=attribute, source_position
 [Top](#class-geometry) [Index](/docs/index.md)
 
 ```python
-geometry.transform(translation, rotation, scale)
+v = geometry.transform(translation, rotation, scale)
 ```
 
 
@@ -1892,7 +1885,7 @@ node = nodes.Transform(geometry=self, translation=translation, rotation=rotation
 
 #### Returns
 
-    self
+    Geometry
 
 ### volume_component
 

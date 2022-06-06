@@ -29,7 +29,7 @@ class DataSocket:
     Children classes are Boolean, Integer, Float, Geometry...
     """
     
-    # DataSocket class, sub class and domain data type from socket bl_idname
+    # DataSocket class, sub class and domain data type from socket bl_idname    
         
     SOCKET_IDS = {
         'NodeSocketBool'        : ('Boolean',    '',             'BOOLEAN'), 
@@ -510,8 +510,12 @@ class Tree:
             clear: bool, default is False
                 earase the existing nodes
         """
+        
+        
+        if bpy.data.node_groups.get(tree_name) is None:
+            bpy.data.node_groups.new(tree_name, type='GeometryNodeTree')
 
-        self.btree  = bpy.data.node_groups[tree_name]
+        self.btree = bpy.data.node_groups[tree_name]
         self.btree.links.clear()
 
         self.old_bnodes = []
@@ -533,6 +537,7 @@ class Tree:
         self.node_id = 0
         self.activate()
         self.auto_arrange = False
+        self.capture_attributes = True
         
         # ----- Layouts stack
         
@@ -769,6 +774,8 @@ class Tree:
     
     def check_attributes(self):
         
+        from geonodes import Geometry
+        
         attr_nodes = []
         for node in self.nodes:
             if node.is_attribute:
@@ -780,53 +787,97 @@ class Tree:
             # ----- Check if the fed nodes with geometry input are ok
             
             security  = []
-            all_is_good = True
-            def check_geo_nodes(attr_node):
-                for node in node.fed_nodes:
+            def check_geo_nodes(node):
+                for nd in node.fed_nodes:
+                    
+                    bsocket = nd.input_geometry_bsocket
 
-                    bsocket = node.input_geometry_bsocket
+                    print("CHECKING", attr_node, nd, '-->', bsocket)
 
                     if bsocket is None:
-                        if node in security:
-                            raise RuntimeError(f"Apparently, the tree loops on node {node} {node.bnode}")
-                        security.append(node)
-                        check_geo_nodes(node)
+                        if nd in security:
+                            attr_node.node_color = "red"
+                            node.node_color = "red"
+                            nd.node_color = "red"
+                            raise RuntimeError(f"Error when checking the attribute node {attr_node}, apparently, the tree loops on node {nd} {nd.bnode}")
+                        security.append(nd)
+                        
+                        if not check_geo_nodes(nd):
+                            return False
                         
                     else:
-                        if bsocket != node.owning_socket.bsocket:
-                            all_is_good = False
-                            break
                         
-            check_geo_nodes(attr_node)
-            del security
+                        # ----- Normally one single input
+                        
+                        for link in bsocket.links:
+                            if link.from_socket != attr_node.owning_bsocket:
+                                return False
+                
+                return True
             
-            if all_is_good:
+                        
+            if check_geo_nodes(attr_node):
                 continue
             
             # ---------------------------------------------------------------------------
             # ----- A capture node is required
             
+            # ----- Store the links to reroute
             
+            # Geometry
             
-            for node in geo_nodes:
-                pass
+            geo_links  = attr_node.owning_bsocket.links
             
+            # Attribute
             
-        """
-        input_geometry_bsocket
+            attr_links   = None
+            output_index = 0
+            for index, bsocket in enumerate(attr_node.bnode.outputs):
+                links = bsocket.links
+                if links:
+                    if attr_links is not None:
+                        self.arrange(True)
+                        attr_node.node_color = "red"
+                        raise RuntimeError(f"Error when inserting a capture node. The attribute node {attr_node} has several output sockets which are connected.")
+                        
+                    attr_links   = links
+                    output_index = index
+                
+            if attr_links is None:
+                raise RuntimeError(f"Algo error !")
+                
+            # ----- Capture node creation in the proper frame
             
+            data_type = DataSocket.SOCKET_IDS[attr_node.bnode.outputs[output_index].bl_idname][2]
             
-        self.owning_socket = owning_socket
-        self.domain        = domain
-        self.data_type     = data_type
-        self.is_attribute  = True
-        """    
+            capt_node = Geometry(attr_node.owning_bsocket).capture_attribute(value=attr_node.outputs[output_index], data_type=data_type, domain=attr_node.domain)
+            capt_node.bnode.parent = attr_node.bnode.parent
             
+            # ----- Links rerouting
             
+            # Geometry
             
-        
-        
-        
+            for link in geo_links:
+                to_socket = link.to_socket
+                self.btree.links.remove(link)
+                self.btree.links.new(capt_node.bnode.outputs[0], to_socket)
+                
+            # Attribute
+            
+            for index, bsocket in enumerate(capt_node.bnode.outputs):
+                if index > 0 and bsocket.enabled:
+                    out_bsocket = bsocket
+                    break
+            
+            for link in attr_links:
+                to_socket = link.to_socket
+                self.btree.links.remove(link)
+                self.btree.links.new(out_bsocket, to_socket)
+                        
+            # ---------------------------------------------------------------------------
+            # ----- Done :-)
+                        
+            self.arrange(False)
      
     
     
@@ -843,6 +894,8 @@ class Tree:
     # Called by __exit__
     
     def close(self):
+        if self.capture_attributes:
+            self.check_attributes()
         self.arrange(True)
         
     
@@ -932,7 +985,7 @@ class Node:
     
     @property
     def input_geometry_bsocket(self):
-        for bsocket in self.bnodes.inputs:
+        for bsocket in self.bnode.inputs:
             if bsocket.bl_idname == 'NodeSocketGeometry':
                 return bsocket
         return None
@@ -945,7 +998,7 @@ class Node:
 
         bnodes = []
         for bsocket in self.outputs:
-            for link in bsockets.links:
+            for link in bsocket.links:
                 if link.to_node not in bnodes:
                     bnodes.append(link.to_node)
 
@@ -1057,11 +1110,10 @@ class Node:
     # ====================================================================================================
     # The node is an attribute
     
-    def as_attribute(self, owning_socket=None, domain='POINT', data_type='FLOAT'):
-        self.owning_socket = owning_socket
-        self.domain        = domain
-        self.data_type     = data_type
-        self.is_attribute  = True
+    def as_attribute(self, owning_socket, domain='POINT', data_type='FLOAT'):
+        self.is_attribute   = True
+        self.owning_bsocket = owning_socket.bsocket
+        self.domain         = domain
         
     # ----------------------------------------------------------------------------------------------------
     # List of the nodes which are connected through a GEOMETRY socket

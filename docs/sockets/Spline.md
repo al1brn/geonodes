@@ -45,12 +45,12 @@
 
 
 
-## Stacked methods
+## Methods
 
 
 
-- [**set_cyclic**](#set_cyclic) : [SetSplineCyclic](../nodes/SetSplineCyclic.md) Spline
-- [**set_resolution**](#set_resolution) : [SetSplineResolution](../nodes/SetSplineResolution.md) Spline
+- [**set_cyclic**](#set_cyclic) : [SetSplineCyclic](../nodes/SetSplineCyclic.md) geometry (Geometry)
+- [**set_resolution**](#set_resolution) : [SetSplineResolution](../nodes/SetSplineResolution.md) geometry (Geometry)
 
 
 
@@ -820,7 +820,7 @@ node = nodes.CurveHandlePositions(relative=relative)
 [Top](#class-spline) [Index](/docs/index.md)
 
 ```python
-spline.set_cyclic(selection, cyclic)
+v = spline.set_cyclic(selection, cyclic)
 ```
 
 
@@ -847,7 +847,7 @@ node = nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic)
 
 #### Returns
 
-    self
+    Geometry
 
 ### set_resolution
 
@@ -857,7 +857,7 @@ node = nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic)
 [Top](#class-spline) [Index](/docs/index.md)
 
 ```python
-spline.set_resolution(selection, resolution)
+v = spline.set_resolution(selection, resolution)
 ```
 
 
@@ -884,7 +884,7 @@ node = nodes.SetSplineResolution(geometry=self, selection=selection, resolution=
 
 #### Returns
 
-    self
+    Geometry
 
 ### spline_ID
 

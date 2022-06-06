@@ -51,6 +51,6 @@ node = nodes.SetMaterial(geometry=None, selection=None, material=None, label=Non
 
 
 
-- [Geometry](../sockets/Geometry.md) [set_material](../sockets/Geometry.md#set_material) : Stacked method
+- [Geometry](../sockets/Geometry.md) [set_material](../sockets/Geometry.md#set_material) : Method
 
 

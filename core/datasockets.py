@@ -152,12 +152,12 @@ class Integer(IntFloat):
             super().__init__(node.integer, node, label=label)
     
     @classmethod
-    def Input(cls, value=0, name="Integer"):
-        return cls(Tree.TREE.new_input('Integer', value=value, name=name))    
+    def Input(cls, value=0, name="Integer", min_value=None, max_value=None, description=""):
+        return cls(Tree.TREE.new_input('Integer', value=value, name=name, min_value=min_value, max_value=max_value, description=description))    
 
     @classmethod
-    def Unsigned(cls, value=0, name="Unsigned"):
-        return cls(Tree.TREE.new_input('Unsigned', value=value, name=name))    
+    def Unsigned(cls, value=0, name="Unsigned", min_value=0, max_value=None, description=""):
+        return cls(Tree.TREE.new_input('Unsigned', value=value, name=name, min_value=min_value, max_value=max_value, description=description))    
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # Float
@@ -515,7 +515,7 @@ class Collection(DataSocket):
 
 class Object(DataSocket):
     
-    def __init__(self, obj):
+    def __init__(self, obj=None):
         super().__init__(None)
         self.bobject = Object.blender_object(obj)
         

@@ -24,17 +24,10 @@
 - [**element**](#element) : [Compare](../nodes/Compare.md) result (Boolean)
 - [**join**](#join) : [JoinStrings](../nodes/JoinStrings.md) string (String)
 - [**length**](#length) : [Compare](../nodes/Compare.md) result (Boolean)
+- [**replace**](#replace) : [ReplaceString](../nodes/ReplaceString.md) string (String)
 - [**slice**](#slice) : [SliceString](../nodes/SliceString.md) string (String)
 - [**switch**](#switch) : [Switch](../nodes/Switch.md) output (String)
 - [**to_curves**](#to_curves) : [StringToCurves](../nodes/StringToCurves.md) Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
-
-
-
-## Stacked methods
-
-
-
-- [**replace**](#replace) : [ReplaceString](../nodes/ReplaceString.md) String
 
 
 
@@ -315,7 +308,7 @@ node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation=
 [Top](#class-string) [Index](/docs/index.md)
 
 ```python
-string.replace(find, replace)
+v = string.replace(find, replace)
 ```
 
 
@@ -342,7 +335,7 @@ node = nodes.ReplaceString(string=self, find=find, replace=replace)
 
 #### Returns
 
-    self
+    String
 
 ### slice
 

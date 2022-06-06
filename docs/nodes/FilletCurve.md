@@ -60,6 +60,6 @@ node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None,
 
 
 
-- [Curve](../sockets/Curve.md) [fillet](../sockets/Curve.md#fillet) : Stacked method
+- [Curve](../sockets/Curve.md) [fillet](../sockets/Curve.md#fillet) : Method
 
 

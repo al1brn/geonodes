@@ -61,6 +61,6 @@ node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X
 
 
 - [Vector](../sockets/Vector.md) [AlignToVector](../sockets/Vector.md#aligntovector) : Constructor
-- [Vector](../sockets/Vector.md) [align_to_vector](../sockets/Vector.md#align_to_vector) : Stacked method
+- [Vector](../sockets/Vector.md) [align_to_vector](../sockets/Vector.md#align_to_vector) : Method
 
 

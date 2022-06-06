@@ -11,16 +11,9 @@
 
 
 - [**instance_on_points**](#instance_on_points) : [InstanceOnPoints](../nodes/InstanceOnPoints.md) instances (Instances)
+- [**set_radius**](#set_radius) : [SetPointRadius](../nodes/SetPointRadius.md) points (Points)
 - [**to_vertices**](#to_vertices) : [PointsToVertices](../nodes/PointsToVertices.md) mesh (Mesh)
 - [**to_volume**](#to_volume) : [PointsToVolume](../nodes/PointsToVolume.md) volume (Volume)
-
-
-
-## Stacked methods
-
-
-
-- [**set_radius**](#set_radius) : [SetPointRadius](../nodes/SetPointRadius.md) Points
 
 
 
@@ -76,7 +69,7 @@ node = nodes.InstanceOnPoints(points=self, selection=selection, instance=instanc
 [Top](#class-points) [Index](/docs/index.md)
 
 ```python
-points.set_radius(selection, radius)
+v = points.set_radius(selection, radius)
 ```
 
 
@@ -103,7 +96,7 @@ node = nodes.SetPointRadius(points=self, selection=selection, radius=radius)
 
 #### Returns
 
-    self
+    Points
 
 ### to_vertices
 

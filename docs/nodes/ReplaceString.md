@@ -51,6 +51,6 @@ node = nodes.ReplaceString(string=None, find=None, replace=None, label=None)
 
 
 
-- [String](../sockets/String.md) [replace](../sockets/String.md#replace) : Stacked method
+- [String](../sockets/String.md) [replace](../sockets/String.md#replace) : Method
 
 

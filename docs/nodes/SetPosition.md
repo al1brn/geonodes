@@ -52,6 +52,6 @@ node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=No
 
 
 
-- [Geometry](../sockets/Geometry.md) [set_position](../sockets/Geometry.md#set_position) : Stacked method
+- [Geometry](../sockets/Geometry.md) [set_position](../sockets/Geometry.md#set_position) : Method
 
 

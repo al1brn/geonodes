@@ -49,10 +49,10 @@ class Spline(gn.Geometry):
     - **tilt**                  : CurveTilt Float = capture_tilt(domain='CURVE') 
     
 
-    Stacked methods
-    ===============
-    - **set_cyclic**     : SetSplineCyclic Spline 
-    - **set_resolution** : SetSplineResolution Spline 
+    Methods
+    =======
+    - **set_cyclic**     : SetSplineCyclic geometry (Geometry) 
+    - **set_resolution** : SetSplineResolution geometry (Geometry) 
     """
 
 
@@ -1016,7 +1016,7 @@ class Spline(gn.Geometry):
 
 
     # ----------------------------------------------------------------------------------------------------
-    # Stacked methods
+    # Methods
 
     def set_cyclic(self, selection=None, cyclic=None):
         """ set_cyclic
@@ -1026,7 +1026,7 @@ class Spline(gn.Geometry):
         Top Index 
         
 
-            spline.set_cyclic(selection, cyclic) 
+            v = spline.set_cyclic(selection, cyclic) 
         
 
         Arguments
@@ -1049,7 +1049,7 @@ class Spline(gn.Geometry):
 
         Returns
         =======
-                self 
+                Geometry 
         """
 
         return self.stack(nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic))
@@ -1062,7 +1062,7 @@ class Spline(gn.Geometry):
         Top Index 
         
 
-            spline.set_resolution(selection, resolution) 
+            v = spline.set_resolution(selection, resolution) 
         
 
         Arguments
@@ -1085,7 +1085,7 @@ class Spline(gn.Geometry):
 
         Returns
         =======
-                self 
+                Geometry 
         """
 
         return self.stack(nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution))

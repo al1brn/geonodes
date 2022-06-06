@@ -50,6 +50,6 @@ node = nodes.SplitEdges(mesh=None, selection=None, label=None)
 
 
 
-- [Mesh](../sockets/Mesh.md) [split_edges](../sockets/Mesh.md#split_edges) : Stacked method
+- [Mesh](../sockets/Mesh.md) [split_edges](../sockets/Mesh.md#split_edges) : Method
 
 

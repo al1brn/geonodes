@@ -33,12 +33,14 @@ class Vector(dsock.Vector):
     - **absolute**            : VectorMath vector (Vector) 
     - **accumulate_field**    : AccumulateField Sockets      [leading (Vector), trailing (Vector), total (Vector)]
     - **add**                 : VectorMath vector (Vector) 
+    - **align_to_vector**     : AlignEulerToVector rotation (Vector) 
     - **attribute_statistic** : AttributeStatistic Sockets      [mean (Vector), median (Vector), sum (Vector),
       min (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)] 
     - **capture_attribute**   : CaptureAttribute Sockets      [geometry (Geometry), attribute (Vector)] 
     - **ceil**                : VectorMath vector (Vector) 
     - **cos**                 : VectorMath vector (Vector) 
     - **cross**               : VectorMath vector (Vector) 
+    - **curves**              : VectorCurves vector (Vector) 
     - **distance**            : VectorMath value (Float) 
     - **divide**              : VectorMath vector (Vector) 
     - **dot**                 : VectorMath value (Float) 
@@ -66,6 +68,7 @@ class Vector(dsock.Vector):
     - **reflect**             : VectorMath vector (Vector) 
     - **refract**             : VectorMath vector (Vector) 
     - **rotate**              : VectorRotate vector (Vector) 
+    - **rotate_euler**        : RotateEuler rotation (Vector) 
     - **scale**               : VectorMath vector (Vector) 
     - **sin**                 : VectorMath vector (Vector) 
     - **snap**                : VectorMath vector (Vector) 
@@ -73,13 +76,6 @@ class Vector(dsock.Vector):
     - **tan**                 : VectorMath vector (Vector) 
     - **transfer_attribute**  : TransferAttribute attribute (Vector) 
     - **wrap**                : VectorMath vector (Vector) 
-    
-
-    Stacked methods
-    ===============
-    - **align_to_vector** : AlignEulerToVector Vector 
-    - **curves**          : VectorCurves Vector 
-    - **rotate_euler**    : RotateEuler Vector 
     """
 
 
@@ -1959,6 +1955,123 @@ class Vector(dsock.Vector):
 
         return nodes.VectorMath(vector0=self, operation='TANGENT').vector
 
+    def curves(self, fac=None):
+        """ curves
+        
+
+        | Node: VectorCurves 
+        Top Index 
+        
+
+            v = vector.curves(fac) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - vector : Vector (self) 
+            - fac    : Float 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.VectorCurves(vector=self, fac=fac) 
+        
+
+        Returns
+        =======
+                Vector 
+        """
+
+        return self.stack(nodes.VectorCurves(vector=self, fac=fac))
+
+    def align_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
+        """ align_to_vector
+        
+
+        | Node: AlignEulerToVector 
+        Top Index 
+        
+
+            v = vector.align_to_vector(factor, vector, axis, pivot_axis) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - rotation : Vector (self) 
+            - factor   : Float 
+            - vector   : Vector 
+        
+
+            Parameters arguments
+            --------------------
+            - axis       : 'X' in [X, Y, Z] 
+            - pivot_axis : 'AUTO' in [AUTO, X, Y, Z] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
+        
+
+        Returns
+        =======
+                Vector 
+        """
+
+        return self.stack(nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis))
+
+    def rotate_euler(self, rotate_by=None, space='OBJECT'):
+        """ rotate_euler
+        
+
+        | Node: RotateEuler 
+        Top Index 
+        
+
+            v = vector.rotate_euler(rotate_by, space) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - rotation  : Vector (self) 
+            - rotate_by : Vector 
+        
+
+            Parameters arguments
+            --------------------
+            - space : 'OBJECT' in [OBJECT, LOCAL] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space) 
+        
+
+        Returns
+        =======
+                Vector 
+        """
+
+        return self.stack(nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space))
+
     def rotate(self, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE'):
         """ rotate
         
@@ -2003,126 +2116,5 @@ class Vector(dsock.Vector):
         """
 
         return nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type).vector
-
-
-    # ----------------------------------------------------------------------------------------------------
-    # Stacked methods
-
-    def curves(self, fac=None):
-        """ curves
-        
-
-        | Node: VectorCurves 
-        Top Index 
-        
-
-            vector.curves(fac) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - vector : Vector (self) 
-            - fac    : Float 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.VectorCurves(vector=self, fac=fac) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.VectorCurves(vector=self, fac=fac))
-
-    def align_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
-        """ align_to_vector
-        
-
-        | Node: AlignEulerToVector 
-        Top Index 
-        
-
-            vector.align_to_vector(factor, vector, axis, pivot_axis) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - rotation : Vector (self) 
-            - factor   : Float 
-            - vector   : Vector 
-        
-
-            Parameters arguments
-            --------------------
-            - axis       : 'X' in [X, Y, Z] 
-            - pivot_axis : 'AUTO' in [AUTO, X, Y, Z] 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis))
-
-    def rotate_euler(self, rotate_by=None, space='OBJECT'):
-        """ rotate_euler
-        
-
-        | Node: RotateEuler 
-        Top Index 
-        
-
-            vector.rotate_euler(rotate_by, space) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - rotation  : Vector (self) 
-            - rotate_by : Vector 
-        
-
-            Parameters arguments
-            --------------------
-            - space : 'OBJECT' in [OBJECT, LOCAL] 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space))
 
 

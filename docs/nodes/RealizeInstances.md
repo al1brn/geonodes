@@ -57,6 +57,6 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None)
 
 
 
-- [Geometry](../sockets/Geometry.md) [realize_instances](../sockets/Geometry.md#realize_instances) : Stacked method
+- [Geometry](../sockets/Geometry.md) [realize_instances](../sockets/Geometry.md#realize_instances) : Method
 
 

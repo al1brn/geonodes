@@ -51,6 +51,6 @@ node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, la
 
 
 
-- [Geometry](../sockets/Geometry.md) [set_shade_smooth](../sockets/Geometry.md#set_shade_smooth) : Stacked method
+- [Geometry](../sockets/Geometry.md) [set_shade_smooth](../sockets/Geometry.md#set_shade_smooth) : Method
 
 

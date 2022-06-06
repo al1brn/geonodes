@@ -51,6 +51,6 @@ node = nodes.SetPointRadius(points=None, selection=None, radius=None, label=None
 
 
 
-- [Points](../sockets/Points.md) [set_radius](../sockets/Points.md#set_radius) : Stacked method
+- [Points](../sockets/Points.md) [set_radius](../sockets/Points.md#set_radius) : Method
 
 

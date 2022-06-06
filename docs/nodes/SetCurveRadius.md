@@ -51,6 +51,6 @@ node = nodes.SetCurveRadius(curve=None, selection=None, radius=None, label=None)
 
 
 
-- [Curve](../sockets/Curve.md) [set_radius](../sockets/Curve.md#set_radius) : Stacked method
+- [Curve](../sockets/Curve.md) [set_radius](../sockets/Curve.md#set_radius) : Method
 
 

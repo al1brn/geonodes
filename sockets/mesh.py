@@ -77,21 +77,17 @@ class Mesh(gn.Geometry):
     - **difference**                 : MeshBoolean mesh (Mesh) 
     - **distribute_points_on_faces** : DistributePointsOnFaces Sockets      [points (Points), normal (Vector),
       rotation (Vector)] 
+    - **dual**                       : DualMesh dual_mesh (Geometry) 
     - **extrude**                    : ExtrudeMesh Sockets      [mesh (Mesh), top (Boolean), side (Boolean)] 
+    - **flip_faces**                 : FlipFaces mesh (Mesh) 
     - **intersect**                  : MeshBoolean mesh (Mesh) 
+    - **split_edges**                : SplitEdges mesh (Mesh) 
+    - **subdivide**                  : SubdivideMesh mesh (Mesh) 
+    - **subdivision_surface**        : SubdivisionSurface mesh (Mesh) 
     - **to_curve**                   : MeshToCurve curve (Curve) 
     - **to_points**                  : MeshToPoints points (Points) 
+    - **triangulate**                : Triangulate mesh (Mesh) 
     - **union**                      : MeshBoolean mesh (Mesh) 
-    
-
-    Stacked methods
-    ===============
-    - **dual**                : DualMesh Mesh 
-    - **flip_faces**          : FlipFaces Mesh 
-    - **split_edges**         : SplitEdges Mesh 
-    - **subdivide**           : SubdivideMesh Mesh 
-    - **subdivision_surface** : SubdivisionSurface Mesh 
-    - **triangulate**         : Triangulate Mesh 
     """
 
 
@@ -1847,6 +1843,233 @@ class Mesh(gn.Geometry):
 
         return nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE').mesh
 
+    def split_edges(self, selection=None):
+        """ split_edges
+        
+
+        | Node: SplitEdges 
+        Top Index 
+        
+
+            v = mesh.split_edges(selection) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - mesh      : Mesh (self) 
+            - selection : Boolean 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SplitEdges(mesh=self, selection=selection) 
+        
+
+        Returns
+        =======
+                Mesh 
+        """
+
+        return self.stack(nodes.SplitEdges(mesh=self, selection=selection))
+
+    def subdivide(self, level=None):
+        """ subdivide
+        
+
+        | Node: SubdivideMesh 
+        Top Index 
+        
+
+            v = mesh.subdivide(level) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - mesh  : Mesh (self) 
+            - level : Integer 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SubdivideMesh(mesh=self, level=level) 
+        
+
+        Returns
+        =======
+                Mesh 
+        """
+
+        return self.stack(nodes.SubdivideMesh(mesh=self, level=level))
+
+    def subdivision_surface(self, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
+        """ subdivision_surface
+        
+
+        | Node: SubdivisionSurface 
+        Top Index 
+        
+
+            v = mesh.subdivision_surface(level, crease, boundary_smooth, uv_smooth) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - mesh   : Mesh (self) 
+            - level  : Integer 
+            - crease : Float 
+        
+
+            Parameters arguments
+            --------------------
+            - boundary_smooth : 'ALL' in [PRESERVE_CORNERS, ALL] 
+            - uv_smooth       : 'PRESERVE_BOUNDARIES' in [NONE, PRESERVE_CORNERS, PRESERVE_CORNERS_AND_JUNCTIONS, PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE,
+              PRESERVE_BOUNDARIES, SMOOTH_ALL] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth,
+            uv_smooth=uv_smooth) 
+        
+
+        Returns
+        =======
+                Mesh 
+        """
+
+        return self.stack(nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth))
+
+    def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
+        """ triangulate
+        
+
+        | Node: Triangulate 
+        Top Index 
+        
+
+            v = mesh.triangulate(selection, minimum_vertices, ngon_method, quad_method) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - mesh             : Mesh (self) 
+            - selection        : Boolean 
+            - minimum_vertices : Integer 
+        
+
+            Parameters arguments
+            --------------------
+            - ngon_method : 'BEAUTY' in [BEAUTY, CLIP] 
+            - quad_method : 'SHORTEST_DIAGONAL' in [BEAUTY, FIXED, FIXED_ALTERNATE, SHORTEST_DIAGONAL, LONGEST_DIAGONAL]
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method,
+            quad_method=quad_method) 
+        
+
+        Returns
+        =======
+                Mesh 
+        """
+
+        return self.stack(nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method, quad_method=quad_method))
+
+    def dual(self, keep_boundaries=None):
+        """ dual
+        
+
+        | Node: DualMesh 
+        Top Index 
+        
+
+            v = mesh.dual(keep_boundaries) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - mesh            : Mesh (self) 
+            - keep_boundaries : Boolean 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.DualMesh(mesh=self, keep_boundaries=keep_boundaries) 
+        
+
+        Returns
+        =======
+                Geometry 
+        """
+
+        return self.stack(nodes.DualMesh(mesh=self, keep_boundaries=keep_boundaries))
+
+    def flip_faces(self, selection=None):
+        """ flip_faces
+        
+
+        | Node: FlipFaces 
+        Top Index 
+        
+
+            v = mesh.flip_faces(selection) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - mesh      : Mesh (self) 
+            - selection : Boolean 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.FlipFaces(mesh=self, selection=selection) 
+        
+
+        Returns
+        =======
+                Mesh 
+        """
+
+        return self.stack(nodes.FlipFaces(mesh=self, selection=selection))
+
     def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):
         """ extrude
         
@@ -2014,236 +2237,5 @@ class Mesh(gn.Geometry):
         """
 
         return nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method)
-
-
-    # ----------------------------------------------------------------------------------------------------
-    # Stacked methods
-
-    def split_edges(self, selection=None):
-        """ split_edges
-        
-
-        | Node: SplitEdges 
-        Top Index 
-        
-
-            mesh.split_edges(selection) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - mesh      : Mesh (self) 
-            - selection : Boolean 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.SplitEdges(mesh=self, selection=selection) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.SplitEdges(mesh=self, selection=selection))
-
-    def subdivide(self, level=None):
-        """ subdivide
-        
-
-        | Node: SubdivideMesh 
-        Top Index 
-        
-
-            mesh.subdivide(level) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - mesh  : Mesh (self) 
-            - level : Integer 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.SubdivideMesh(mesh=self, level=level) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.SubdivideMesh(mesh=self, level=level))
-
-    def subdivision_surface(self, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
-        """ subdivision_surface
-        
-
-        | Node: SubdivisionSurface 
-        Top Index 
-        
-
-            mesh.subdivision_surface(level, crease, boundary_smooth, uv_smooth) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - mesh   : Mesh (self) 
-            - level  : Integer 
-            - crease : Float 
-        
-
-            Parameters arguments
-            --------------------
-            - boundary_smooth : 'ALL' in [PRESERVE_CORNERS, ALL] 
-            - uv_smooth       : 'PRESERVE_BOUNDARIES' in [NONE, PRESERVE_CORNERS, PRESERVE_CORNERS_AND_JUNCTIONS, PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE,
-              PRESERVE_BOUNDARIES, SMOOTH_ALL] 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth,
-            uv_smooth=uv_smooth) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth))
-
-    def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
-        """ triangulate
-        
-
-        | Node: Triangulate 
-        Top Index 
-        
-
-            mesh.triangulate(selection, minimum_vertices, ngon_method, quad_method) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - mesh             : Mesh (self) 
-            - selection        : Boolean 
-            - minimum_vertices : Integer 
-        
-
-            Parameters arguments
-            --------------------
-            - ngon_method : 'BEAUTY' in [BEAUTY, CLIP] 
-            - quad_method : 'SHORTEST_DIAGONAL' in [BEAUTY, FIXED, FIXED_ALTERNATE, SHORTEST_DIAGONAL, LONGEST_DIAGONAL]
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method,
-            quad_method=quad_method) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method, quad_method=quad_method))
-
-    def dual(self, keep_boundaries=None):
-        """ dual
-        
-
-        | Node: DualMesh 
-        Top Index 
-        
-
-            mesh.dual(keep_boundaries) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - mesh            : Mesh (self) 
-            - keep_boundaries : Boolean 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.DualMesh(mesh=self, keep_boundaries=keep_boundaries) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.DualMesh(mesh=self, keep_boundaries=keep_boundaries))
-
-    def flip_faces(self, selection=None):
-        """ flip_faces
-        
-
-        | Node: FlipFaces 
-        Top Index 
-        
-
-            mesh.flip_faces(selection) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - mesh      : Mesh (self) 
-            - selection : Boolean 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.FlipFaces(mesh=self, selection=selection) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.FlipFaces(mesh=self, selection=selection))
 
 

@@ -34,10 +34,12 @@ class Float(dsock.Float):
       min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)] 
     - **capture_attribute**   : CaptureAttribute Sockets      [geometry (Geometry), attribute (Float)] 
     - **ceil**                : Math value (Float) 
+    - **clamp**               : Clamp result (Float) 
     - **color_ramp**          : Colorramp Sockets      [color (Color), alpha (Float)] 
     - **compare**             : Math value (Float) 
     - **cos**                 : Math value (Float) 
     - **cosh**                : Math value (Float) 
+    - **curve**               : FloatCurve value (Float) 
     - **degrees**             : Math value (Float) 
     - **divide**              : Math value (Float) 
     - **equal**               : Compare result (Boolean) 
@@ -82,12 +84,6 @@ class Float(dsock.Float):
     - **transfer_attribute**  : TransferAttribute attribute (Float) 
     - **trunc**               : Math value (Float) 
     - **wrap**                : Math value (Float) 
-    
-
-    Stacked methods
-    ===============
-    - **clamp** : Clamp Float 
-    - **curve** : FloatCurve Float 
     """
 
 
@@ -2460,10 +2456,6 @@ class Float(dsock.Float):
 
         return nodes.Colorramp(fac=self)
 
-
-    # ----------------------------------------------------------------------------------------------------
-    # Stacked methods
-
     def curve(self, factor=None):
         """ curve
         
@@ -2472,7 +2464,7 @@ class Float(dsock.Float):
         Top Index 
         
 
-            float.curve(factor) 
+            v = float.curve(factor) 
         
 
         Arguments
@@ -2494,7 +2486,7 @@ class Float(dsock.Float):
 
         Returns
         =======
-                self 
+                Float 
         """
 
         return self.stack(nodes.FloatCurve(value=self, factor=factor))
@@ -2507,7 +2499,7 @@ class Float(dsock.Float):
         Top Index 
         
 
-            float.clamp(min, max, clamp_type) 
+            v = float.clamp(min, max, clamp_type) 
         
 
         Arguments
@@ -2535,7 +2527,7 @@ class Float(dsock.Float):
 
         Returns
         =======
-                self 
+                Float 
         """
 
         return self.stack(nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type))

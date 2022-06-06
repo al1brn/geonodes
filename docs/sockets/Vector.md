@@ -31,11 +31,13 @@
 - [**absolute**](#absolute) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
 - [**accumulate_field**](#accumulate_field) : [AccumulateField](../nodes/AccumulateField.md) Sockets      [leading (Vector), trailing (Vector), total (Vector)]
 - [**add**](#add) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**align_to_vector**](#align_to_vector) : [AlignEulerToVector](../nodes/AlignEulerToVector.md) rotation (Vector)
 - [**attribute_statistic**](#attribute_statistic) : [AttributeStatistic](../nodes/AttributeStatistic.md) Sockets      [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)]
 - [**capture_attribute**](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) Sockets      [geometry (Geometry), attribute (Vector)]
 - [**ceil**](#ceil) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
 - [**cos**](#cos) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
 - [**cross**](#cross) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
+- [**curves**](#curves) : [VectorCurves](../nodes/VectorCurves.md) vector (Vector)
 - [**distance**](#distance) : [VectorMath](../nodes/VectorMath.md) value (Float)
 - [**divide**](#divide) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
 - [**dot**](#dot) : [VectorMath](../nodes/VectorMath.md) value (Float)
@@ -62,6 +64,7 @@
 - [**reflect**](#reflect) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
 - [**refract**](#refract) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
 - [**rotate**](#rotate) : [VectorRotate](../nodes/VectorRotate.md) vector (Vector)
+- [**rotate_euler**](#rotate_euler) : [RotateEuler](../nodes/RotateEuler.md) rotation (Vector)
 - [**scale**](#scale) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
 - [**sin**](#sin) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
 - [**snap**](#snap) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
@@ -69,16 +72,6 @@
 - [**tan**](#tan) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
 - [**transfer_attribute**](#transfer_attribute) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Vector)
 - [**wrap**](#wrap) : [VectorMath](../nodes/VectorMath.md) vector (Vector)
-
-
-
-## Stacked methods
-
-
-
-- [**align_to_vector**](#align_to_vector) : [AlignEulerToVector](../nodes/AlignEulerToVector.md) Vector
-- [**curves**](#curves) : [VectorCurves](../nodes/VectorCurves.md) Vector
-- [**rotate_euler**](#rotate_euler) : [RotateEuler](../nodes/RotateEuler.md) Vector
 
 
 
@@ -361,7 +354,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD')
 [Top](#class-vector) [Index](/docs/index.md)
 
 ```python
-vector.align_to_vector(factor, vector, axis, pivot_axis)
+v = vector.align_to_vector(factor, vector, axis, pivot_axis)
 ```
 
 
@@ -397,7 +390,7 @@ node = nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axi
 
 #### Returns
 
-    self
+    Vector
 
 ### attribute_statistic
 
@@ -642,7 +635,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT'
 [Top](#class-vector) [Index](/docs/index.md)
 
 ```python
-vector.curves(fac)
+v = vector.curves(fac)
 ```
 
 
@@ -668,7 +661,7 @@ node = nodes.VectorCurves(vector=self, fac=fac)
 
 #### Returns
 
-    self
+    Vector
 
 ### distance
 
@@ -1924,7 +1917,7 @@ node = nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, ro
 [Top](#class-vector) [Index](/docs/index.md)
 
 ```python
-vector.rotate_euler(rotate_by, space)
+v = vector.rotate_euler(rotate_by, space)
 ```
 
 
@@ -1958,7 +1951,7 @@ node = nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space)
 
 #### Returns
 
-    self
+    Vector
 
 ### scale
 

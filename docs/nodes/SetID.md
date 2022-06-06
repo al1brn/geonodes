@@ -51,6 +51,6 @@ node = nodes.SetID(geometry=None, selection=None, ID=None, label=None)
 
 
 
-- [Geometry](../sockets/Geometry.md) [set_ID](../sockets/Geometry.md#set_id) : Stacked method
+- [Geometry](../sockets/Geometry.md) [set_ID](../sockets/Geometry.md#set_id) : Method
 
 

@@ -18,17 +18,10 @@
 
 
 
+- [**rotate**](#rotate) : [RotateInstances](../nodes/RotateInstances.md) instances (Instances)
+- [**scale**](#scale) : [ScaleInstances](../nodes/ScaleInstances.md) instances (Instances)
 - [**to_points**](#to_points) : [InstancesToPoints](../nodes/InstancesToPoints.md) points (Points)
-
-
-
-## Stacked methods
-
-
-
-- [**rotate**](#rotate) : [RotateInstances](../nodes/RotateInstances.md) Instances
-- [**scale**](#scale) : [ScaleInstances](../nodes/ScaleInstances.md) Instances
-- [**translate**](#translate) : [TranslateInstances](../nodes/TranslateInstances.md) Instances
+- [**translate**](#translate) : [TranslateInstances](../nodes/TranslateInstances.md) instances (Instances)
 
 
 
@@ -78,7 +71,7 @@ node = nodes.Index()
 [Top](#class-instances) [Index](/docs/index.md)
 
 ```python
-instances.rotate(selection, rotation, pivot_point, local_space)
+v = instances.rotate(selection, rotation, pivot_point, local_space)
 ```
 
 
@@ -107,7 +100,7 @@ node = nodes.RotateInstances(instances=self, selection=selection, rotation=rotat
 
 #### Returns
 
-    self
+    Instances
 
 ### scale
 
@@ -117,7 +110,7 @@ node = nodes.RotateInstances(instances=self, selection=selection, rotation=rotat
 [Top](#class-instances) [Index](/docs/index.md)
 
 ```python
-instances.scale(selection, scale, center, local_space)
+v = instances.scale(selection, scale, center, local_space)
 ```
 
 
@@ -146,7 +139,7 @@ node = nodes.ScaleInstances(instances=self, selection=selection, scale=scale, ce
 
 #### Returns
 
-    self
+    Instances
 
 ### to_points
 
@@ -194,7 +187,7 @@ node = nodes.InstancesToPoints(instances=self, selection=selection, position=pos
 [Top](#class-instances) [Index](/docs/index.md)
 
 ```python
-instances.translate(selection, translation, local_space)
+v = instances.translate(selection, translation, local_space)
 ```
 
 
@@ -222,4 +215,4 @@ node = nodes.TranslateInstances(instances=self, selection=selection, translation
 
 #### Returns
 
-    self
+    Instances

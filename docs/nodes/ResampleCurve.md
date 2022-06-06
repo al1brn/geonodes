@@ -60,6 +60,6 @@ node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, 
 
 
 
-- [Curve](../sockets/Curve.md) [resample](../sockets/Curve.md#resample) : Stacked method
+- [Curve](../sockets/Curve.md) [resample](../sockets/Curve.md#resample) : Method
 
 

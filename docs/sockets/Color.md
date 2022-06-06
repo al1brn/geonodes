@@ -30,6 +30,7 @@
 - [**brighter**](#brighter) : [Compare](../nodes/Compare.md) result (Boolean)
 - [**burn**](#burn) : [Mix](../nodes/Mix.md) color (Color)
 - [**capture_attribute**](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) Sockets      [geometry (Geometry), attribute (Color)]
+- [**curves**](#curves) : [RgbCurves](../nodes/RgbCurves.md) color (Color)
 - [**darken**](#darken) : [Mix](../nodes/Mix.md) color (Color)
 - [**darker**](#darker) : [Compare](../nodes/Compare.md) result (Boolean)
 - [**difference**](#difference) : [Mix](../nodes/Mix.md) color (Color)
@@ -53,14 +54,6 @@
 - [**subtract**](#subtract) : [Mix](../nodes/Mix.md) color (Color)
 - [**transfer_attribute**](#transfer_attribute) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Color)
 - [**value**](#value) : [Mix](../nodes/Mix.md) color (Color)
-
-
-
-## Stacked methods
-
-
-
-- [**curves**](#curves) : [RgbCurves](../nodes/RgbCurves.md) Color
 
 
 
@@ -316,7 +309,7 @@ node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_CO
 [Top](#class-color) [Index](/docs/index.md)
 
 ```python
-color.curves(fac)
+v = color.curves(fac)
 ```
 
 
@@ -342,7 +335,7 @@ node = nodes.RgbCurves(color=self, fac=fac)
 
 #### Returns
 
-    self
+    Color
 
 ### darken
 

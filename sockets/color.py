@@ -32,6 +32,7 @@ class Color(dsock.Color):
     - **brighter**           : Compare result (Boolean) 
     - **burn**               : Mix color (Color) 
     - **capture_attribute**  : CaptureAttribute Sockets      [geometry (Geometry), attribute (Color)] 
+    - **curves**             : RgbCurves color (Color) 
     - **darken**             : Mix color (Color) 
     - **darker**             : Compare result (Boolean) 
     - **difference**         : Mix color (Color) 
@@ -56,11 +57,6 @@ class Color(dsock.Color):
     - **subtract**           : Mix color (Color) 
     - **transfer_attribute** : TransferAttribute attribute (Color) 
     - **value**              : Mix color (Color) 
-    
-
-    Stacked methods
-    ===============
-    - **curves** : RgbCurves Color 
     """
 
 
@@ -1344,6 +1340,41 @@ class Color(dsock.Color):
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha).color
 
+    def curves(self, fac=None):
+        """ curves
+        
+
+        | Node: RgbCurves 
+        Top Index 
+        
+
+            v = color.curves(fac) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - color : Color (self) 
+            - fac   : Float 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.RgbCurves(color=self, fac=fac) 
+        
+
+        Returns
+        =======
+                Color 
+        """
+
+        return self.stack(nodes.RgbCurves(color=self, fac=fac))
+
     def mix(self, color2=None, fac=None, blend_type='MIX', use_alpha=False):
         """ mix
         
@@ -1385,44 +1416,5 @@ class Color(dsock.Color):
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type=blend_type, use_alpha=use_alpha).color
-
-
-    # ----------------------------------------------------------------------------------------------------
-    # Stacked methods
-
-    def curves(self, fac=None):
-        """ curves
-        
-
-        | Node: RgbCurves 
-        Top Index 
-        
-
-            color.curves(fac) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - color : Color (self) 
-            - fac   : Float 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.RgbCurves(color=self, fac=fac) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.RgbCurves(color=self, fac=fac))
 
 

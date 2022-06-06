@@ -57,6 +57,6 @@ node = nodes.FillCurve(curve=None, mode='TRIANGLES', label=None)
 
 
 
-- [Curve](../sockets/Curve.md) [fill](../sockets/Curve.md#fill) : Stacked method
+- [Curve](../sockets/Curve.md) [fill](../sockets/Curve.md#fill) : Method
 
 

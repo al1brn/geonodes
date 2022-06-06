@@ -51,6 +51,6 @@ node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None,
 
 
 
-- [Spline](../sockets/Spline.md) [set_resolution](../sockets/Spline.md#set_resolution) : Stacked method
+- [Spline](../sockets/Spline.md) [set_resolution](../sockets/Spline.md#set_resolution) : Method
 
 

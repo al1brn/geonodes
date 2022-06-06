@@ -23,14 +23,10 @@ class Instances(gn.Geometry):
 
     Methods
     =======
+    - **rotate**    : RotateInstances instances (Instances) 
+    - **scale**     : ScaleInstances instances (Instances) 
     - **to_points** : InstancesToPoints points (Points) 
-    
-
-    Stacked methods
-    ===============
-    - **rotate**    : RotateInstances Instances 
-    - **scale**     : ScaleInstances Instances 
-    - **translate** : TranslateInstances Instances 
+    - **translate** : TranslateInstances instances (Instances) 
     """
 
 
@@ -76,6 +72,120 @@ class Instances(gn.Geometry):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
+    def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None):
+        """ rotate
+        
+
+        | Node: RotateInstances 
+        Top Index 
+        
+
+            v = instances.rotate(selection, rotation, pivot_point, local_space) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - instances   : Instances (self) 
+            - selection   : Boolean 
+            - rotation    : Vector 
+            - pivot_point : Vector 
+            - local_space : Boolean 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point,
+            local_space=local_space) 
+        
+
+        Returns
+        =======
+                Instances 
+        """
+
+        return self.stack(nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space))
+
+    def scale(self, selection=None, scale=None, center=None, local_space=None):
+        """ scale
+        
+
+        | Node: ScaleInstances 
+        Top Index 
+        
+
+            v = instances.scale(selection, scale, center, local_space) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - instances   : Instances (self) 
+            - selection   : Boolean 
+            - scale       : Vector 
+            - center      : Vector 
+            - local_space : Boolean 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
+        
+
+        Returns
+        =======
+                Instances 
+        """
+
+        return self.stack(nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space))
+
+    def translate(self, selection=None, translation=None, local_space=None):
+        """ translate
+        
+
+        | Node: TranslateInstances 
+        Top Index 
+        
+
+            v = instances.translate(selection, translation, local_space) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - instances   : Instances (self) 
+            - selection   : Boolean 
+            - translation : Vector 
+            - local_space : Boolean 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
+        
+
+        Returns
+        =======
+                Instances 
+        """
+
+        return self.stack(nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space))
+
     def to_points(self, selection=None, position=None, radius=None):
         """ to_points
         
@@ -112,123 +222,5 @@ class Instances(gn.Geometry):
         """
 
         return nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius).points
-
-
-    # ----------------------------------------------------------------------------------------------------
-    # Stacked methods
-
-    def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None):
-        """ rotate
-        
-
-        | Node: RotateInstances 
-        Top Index 
-        
-
-            instances.rotate(selection, rotation, pivot_point, local_space) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - instances   : Instances (self) 
-            - selection   : Boolean 
-            - rotation    : Vector 
-            - pivot_point : Vector 
-            - local_space : Boolean 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point,
-            local_space=local_space) 
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space))
-
-    def scale(self, selection=None, scale=None, center=None, local_space=None):
-        """ scale
-        
-
-        | Node: ScaleInstances 
-        Top Index 
-        
-
-            instances.scale(selection, scale, center, local_space) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - instances   : Instances (self) 
-            - selection   : Boolean 
-            - scale       : Vector 
-            - center      : Vector 
-            - local_space : Boolean 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space))
-
-    def translate(self, selection=None, translation=None, local_space=None):
-        """ translate
-        
-
-        | Node: TranslateInstances 
-        Top Index 
-        
-
-            instances.translate(selection, translation, local_space) 
-        
-
-        Arguments
-        =========
-        
-
-            Sockets arguments
-            -----------------
-            - instances   : Instances (self) 
-            - selection   : Boolean 
-            - translation : Vector 
-            - local_space : Boolean 
-        
-
-        Node creation
-        =============
-        
-
-            node = nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
-        
-
-        Returns
-        =======
-                self 
-        """
-
-        return self.stack(nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space))
 
 

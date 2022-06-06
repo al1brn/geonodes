@@ -53,6 +53,6 @@ node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=N
 
 
 
-- [Instances](../sockets/Instances.md) [scale](../sockets/Instances.md#scale) : Stacked method
+- [Instances](../sockets/Instances.md) [scale](../sockets/Instances.md#scale) : Method
 
 

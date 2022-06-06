@@ -50,6 +50,6 @@ node = nodes.SubdivideMesh(mesh=None, level=None, label=None)
 
 
 
-- [Mesh](../sockets/Mesh.md) [subdivide](../sockets/Mesh.md#subdivide) : Stacked method
+- [Mesh](../sockets/Mesh.md) [subdivide](../sockets/Mesh.md#subdivide) : Method
 
 

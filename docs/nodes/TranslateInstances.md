@@ -52,6 +52,6 @@ node = nodes.TranslateInstances(instances=None, selection=None, translation=None
 
 
 
-- [Instances](../sockets/Instances.md) [translate](../sockets/Instances.md#translate) : Stacked method
+- [Instances](../sockets/Instances.md) [translate](../sockets/Instances.md#translate) : Method
 
 

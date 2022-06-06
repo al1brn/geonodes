@@ -53,6 +53,6 @@ node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivo
 
 
 
-- [Instances](../sockets/Instances.md) [rotate](../sockets/Instances.md#rotate) : Stacked method
+- [Instances](../sockets/Instances.md) [rotate](../sockets/Instances.md#rotate) : Method
 
 
