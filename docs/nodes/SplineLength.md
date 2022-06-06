@@ -2,6 +2,8 @@
 # Class SplineLength
 
 > Geometry node name: _'Spline Length'_<br>Blender type:  **GeometryNodeSplineLength**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -36,6 +38,8 @@ node = nodes.SplineLength(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Spline](../sockets/Spline.md) [capture_length](../sockets/Spline.md#capture_length) : Capture attribute

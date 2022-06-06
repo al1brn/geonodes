@@ -2,6 +2,8 @@
 # Class Colorramp
 
 > Geometry node name: _'ColorRamp'_<br>Blender type:  **ShaderNodeValToRGB**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -44,6 +46,8 @@ node = nodes.Colorramp(fac=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Float](../sockets/Float.md) [color_ramp](../sockets/Float.md#color_ramp) : Method

@@ -2,6 +2,8 @@
 # Class ReplaceMaterial
 
 > Geometry node name: _'Replace Material'_<br>Blender type:  **GeometryNodeReplaceMaterial**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -45,6 +47,8 @@ node = nodes.ReplaceMaterial(geometry=None, old=None, new=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [replace_material](../sockets/Geometry.md#replace_material) : Stacked method

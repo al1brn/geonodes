@@ -2,6 +2,8 @@
 # Class SplitEdges
 
 > Geometry node name: _'Split Edges'_<br>Blender type:  **GeometryNodeSplitEdges**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -44,6 +46,8 @@ node = nodes.SplitEdges(mesh=None, selection=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [split_edges](../sockets/Mesh.md#split_edges) : Stacked method

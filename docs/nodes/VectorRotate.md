@@ -2,6 +2,8 @@
 # Class VectorRotate
 
 > Geometry node name: _'Vector Rotate'_<br>Blender type:  **ShaderNodeVectorRotate**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -56,6 +58,8 @@ node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotat
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Vector](../sockets/Vector.md) [rotate](../sockets/Vector.md#rotate) : Method

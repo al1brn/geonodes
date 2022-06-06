@@ -2,6 +2,8 @@
 # Class SplineParameter
 
 > Geometry node name: _'Spline Parameter'_<br>Blender type:  **GeometryNodeSplineParameter**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -37,6 +39,8 @@ node = nodes.SplineParameter(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Spline](../sockets/Spline.md) [capture_parameter](../sockets/Spline.md#capture_parameter) : Capture attribute

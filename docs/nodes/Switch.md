@@ -2,6 +2,8 @@
 # Class Switch
 
 > Geometry node name: _'Switch'_<br>Blender type:  **GeometryNodeSwitch**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -64,6 +66,8 @@ node = nodes.Switch(switch0=None, switch1=None, false=None, true=None, input_typ
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Boolean](../sockets/Boolean.md) [switch](../sockets/Boolean.md#switch) : Method

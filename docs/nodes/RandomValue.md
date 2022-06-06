@@ -2,6 +2,8 @@
 # Class RandomValue
 
 > Geometry node name: _'Random Value'_<br>Blender type:  **FunctionNodeRandomValue**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -65,6 +67,8 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Boolean](../sockets/Boolean.md) [Random](../sockets/Boolean.md#random) : Constructor

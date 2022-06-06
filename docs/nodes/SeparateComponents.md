@@ -2,6 +2,8 @@
 # Class SeparateComponents
 
 > Geometry node name: _'Separate Components'_<br>Blender type:  **GeometryNodeSeparateComponents**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -47,6 +49,8 @@ node = nodes.SeparateComponents(geometry=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [components](../sockets/Geometry.md#components) : Property

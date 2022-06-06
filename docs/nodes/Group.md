@@ -2,6 +2,8 @@
 # Class Group
 
 > Geometry node name: _'Group'_<br>Blender type:  **GeometryNodeGroup**
+
+
 [Index](/docs/index.md)
 
 ## Initialization

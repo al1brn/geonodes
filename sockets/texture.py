@@ -13,8 +13,6 @@ class Texture(dsock.Texture):
     
 
     | Inherits from: dsock.Texture 
-    
-
     Index 
     
 
@@ -48,8 +46,6 @@ class Texture(dsock.Texture):
         
 
         | Node: BrickTexture 
-        
-
         Top Index 
         
 
@@ -105,8 +101,6 @@ class Texture(dsock.Texture):
         
 
         | Node: CheckerTexture 
-        
-
         Top Index 
         
 
@@ -145,8 +139,6 @@ class Texture(dsock.Texture):
         
 
         | Node: GradientTexture 
-        
-
         Top Index 
         
 
@@ -187,8 +179,6 @@ class Texture(dsock.Texture):
         
 
         | Node: MagicTexture 
-        
-
         Top Index 
         
 
@@ -231,8 +221,6 @@ class Texture(dsock.Texture):
         
 
         | Node: MusgraveTexture 
-        
-
         Top Index 
         
 
@@ -283,8 +271,6 @@ class Texture(dsock.Texture):
         
 
         | Node: NoiseTexture 
-        
-
         Top Index 
         
 
@@ -331,8 +317,6 @@ class Texture(dsock.Texture):
         
 
         | Node: VoronoiTexture 
-        
-
         Top Index 
         
 
@@ -381,8 +365,6 @@ class Texture(dsock.Texture):
         
 
         | Node: WaveTexture 
-        
-
         Top Index 
         
 
@@ -435,8 +417,6 @@ class Texture(dsock.Texture):
         
 
         | Node: WhiteNoiseTexture 
-        
-
         Top Index 
         
 
@@ -478,8 +458,6 @@ class Texture(dsock.Texture):
         
 
         | Node: ImageTexture 
-        
-
         Top Index 
         
 
@@ -526,8 +504,6 @@ class Texture(dsock.Texture):
         
 
         | Node: Switch 
-        
-
         Top Index 
         
 

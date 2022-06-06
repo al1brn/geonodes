@@ -2,6 +2,8 @@
 # Class Triangulate
 
 > Geometry node name: _'Triangulate'_<br>Blender type:  **GeometryNodeTriangulate**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -54,6 +56,8 @@ node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [triangulate](../sockets/Mesh.md#triangulate) : Stacked method

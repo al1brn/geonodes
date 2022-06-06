@@ -2,6 +2,8 @@
 # Class GeometryProximity
 
 > Geometry node name: _'Geometry Proximity'_<br>Blender type:  **GeometryNodeProximity**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -53,6 +55,8 @@ node = nodes.GeometryProximity(target=None, source_position=None, target_element
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [proximity](../sockets/Geometry.md#proximity) : Method

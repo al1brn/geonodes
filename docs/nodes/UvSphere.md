@@ -2,6 +2,8 @@
 # Class UvSphere
 
 > Geometry node name: _'UV Sphere'_<br>Blender type:  **GeometryNodeMeshUVSphere**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -45,6 +47,8 @@ node = nodes.UvSphere(segments=None, rings=None, radius=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [UVSphere](../sockets/Mesh.md#uvsphere) : Constructor

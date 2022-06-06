@@ -2,6 +2,8 @@
 # Class SceneTime
 
 > Geometry node name: _'Scene Time'_<br>Blender type:  **GeometryNodeInputSceneTime**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -36,6 +38,8 @@ node = nodes.SceneTime(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [functions](../sockets/functions.md) [scene](../sockets/functions.md#scene) : Function

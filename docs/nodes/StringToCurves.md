@@ -2,6 +2,8 @@
 # Class StringToCurves
 
 > Geometry node name: _'String to Curves'_<br>Blender type:  **GeometryNodeStringToCurves**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -63,6 +65,8 @@ node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [String](../sockets/String.md) [to_curves](../sockets/String.md#to_curves) : Method

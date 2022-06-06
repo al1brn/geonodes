@@ -2,6 +2,8 @@
 # Class SetMaterialIndex
 
 > Geometry node name: _'Set Material Index'_<br>Blender type:  **GeometryNodeSetMaterialIndex**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -45,6 +47,8 @@ node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [set_material_index](../sockets/Geometry.md#set_material_index) : Stacked method

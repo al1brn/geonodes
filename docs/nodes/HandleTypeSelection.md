@@ -2,6 +2,8 @@
 # Class HandleTypeSelection
 
 > Geometry node name: _'Handle Type Selection'_<br>Blender type:  **GeometryNodeCurveHandleTypeSelection**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -44,6 +46,8 @@ node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, lab
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Spline](../sockets/Spline.md) [capture_handle_type_selection](../sockets/Spline.md#capture_handle_type_selection) : Capture attribute

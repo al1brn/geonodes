@@ -2,6 +2,8 @@
 # Class VertexNeighbors
 
 > Geometry node name: _'Vertex Neighbors'_<br>Blender type:  **GeometryNodeInputMeshVertexNeighbors**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -36,6 +38,8 @@ node = nodes.VertexNeighbors(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [capture_vertex_neighbors](../sockets/Mesh.md#capture_vertex_neighbors) : Capture attribute

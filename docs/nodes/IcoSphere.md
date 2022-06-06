@@ -2,6 +2,8 @@
 # Class IcoSphere
 
 > Geometry node name: _'Ico Sphere'_<br>Blender type:  **GeometryNodeMeshIcoSphere**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -44,6 +46,8 @@ node = nodes.IcoSphere(radius=None, subdivisions=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [IcoSphere](../sockets/Mesh.md#icosphere) : Constructor

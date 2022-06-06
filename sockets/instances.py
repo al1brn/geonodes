@@ -13,8 +13,6 @@ class Instances(gn.Geometry):
     
 
     | Inherits from: gn.Geometry 
-    
-
     Index 
     
 
@@ -45,8 +43,6 @@ class Instances(gn.Geometry):
         
 
         | Node: Index 
-        
-
         Top Index 
         
 
@@ -85,8 +81,6 @@ class Instances(gn.Geometry):
         
 
         | Node: InstancesToPoints 
-        
-
         Top Index 
         
 
@@ -128,8 +122,6 @@ class Instances(gn.Geometry):
         
 
         | Node: RotateInstances 
-        
-
         Top Index 
         
 
@@ -169,8 +161,6 @@ class Instances(gn.Geometry):
         
 
         | Node: ScaleInstances 
-        
-
         Top Index 
         
 
@@ -209,8 +199,6 @@ class Instances(gn.Geometry):
         
 
         | Node: TranslateInstances 
-        
-
         Top Index 
         
 

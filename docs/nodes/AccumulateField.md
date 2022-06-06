@@ -2,6 +2,8 @@
 # Class AccumulateField
 
 > Geometry node name: _'Accumulate Field'_<br>Blender type:  **GeometryNodeAccumulateField**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -65,6 +67,8 @@ node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', do
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Float](../sockets/Float.md) [accumulate_field](../sockets/Float.md#accumulate_field) : Method

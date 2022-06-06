@@ -2,6 +2,8 @@
 # Class MeshCircle
 
 > Geometry node name: _'Mesh Circle'_<br>Blender type:  **GeometryNodeMeshCircle**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -52,6 +54,8 @@ node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE', label=None
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [Circle](../sockets/Mesh.md#circle) : Constructor

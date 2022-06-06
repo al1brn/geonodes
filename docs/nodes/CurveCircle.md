@@ -2,6 +2,8 @@
 # Class CurveCircle
 
 > Geometry node name: _'Curve Circle'_<br>Blender type:  **GeometryNodeCurvePrimitiveCircle**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -56,6 +58,8 @@ node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=No
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [Circle](../sockets/Curve.md#circle) : Constructor

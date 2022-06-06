@@ -2,6 +2,8 @@
 # Class Math
 
 > Geometry node name: _'Math'_<br>Blender type:  **ShaderNodeMath**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -53,6 +55,8 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Float](../sockets/Float.md) [abs](../sockets/Float.md#abs) : Method

@@ -2,6 +2,8 @@
 # Class FloatToInteger
 
 > Geometry node name: _'Float to Integer'_<br>Blender type:  **FunctionNodeFloatToInt**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -51,6 +53,8 @@ node = nodes.FloatToInteger(float=None, rounding_mode='ROUND', label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Float](../sockets/Float.md) [to_integer](../sockets/Float.md#to_integer) : Method

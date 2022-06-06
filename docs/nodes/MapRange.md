@@ -2,6 +2,8 @@
 # Class MapRange
 
 > Geometry node name: _'Map Range'_<br>Blender type:  **ShaderNodeMapRange**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -69,6 +71,8 @@ node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Float](../sockets/Float.md) [map_range](../sockets/Float.md#map_range) : Method

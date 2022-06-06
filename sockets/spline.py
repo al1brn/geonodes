@@ -13,8 +13,6 @@ class Spline(gn.Geometry):
     
 
     | Inherits from: gn.Geometry 
-    
-
     Index 
     
 
@@ -66,8 +64,6 @@ class Spline(gn.Geometry):
         
 
         | Node: CurveHandlePositions 
-        
-
         Top Index 
         
 
@@ -113,8 +109,6 @@ class Spline(gn.Geometry):
         
 
         | Node: CurveTangent 
-        
-
         Top Index 
         
 
@@ -155,8 +149,6 @@ class Spline(gn.Geometry):
         
 
         | Node: CurveTilt 
-        
-
         Top Index 
         
 
@@ -197,8 +189,6 @@ class Spline(gn.Geometry):
         
 
         | Node: EndpointSelection 
-        
-
         Top Index 
         
 
@@ -245,8 +235,6 @@ class Spline(gn.Geometry):
         
 
         | Node: HandleTypeSelection 
-        
-
         Top Index 
         
 
@@ -289,8 +277,6 @@ class Spline(gn.Geometry):
         
 
         | Node: IsSplineCyclic 
-        
-
         Top Index 
         
 
@@ -331,8 +317,6 @@ class Spline(gn.Geometry):
         
 
         | Node: SplineLength 
-        
-
         Top Index 
         
 
@@ -373,8 +357,6 @@ class Spline(gn.Geometry):
         
 
         | Node: SplineParameter 
-        
-
         Top Index 
         
 
@@ -415,8 +397,6 @@ class Spline(gn.Geometry):
         
 
         | Node: SplineResolution 
-        
-
         Top Index 
         
 
@@ -462,8 +442,6 @@ class Spline(gn.Geometry):
         
 
         | Node: ID 
-        
-
         Top Index 
         
 
@@ -499,8 +477,6 @@ class Spline(gn.Geometry):
         
 
         | Node: Index 
-        
-
         Top Index 
         
 
@@ -536,8 +512,6 @@ class Spline(gn.Geometry):
         
 
         | Node: Index 
-        
-
         Top Index 
         
 
@@ -573,8 +547,6 @@ class Spline(gn.Geometry):
         
 
         | Node: CurveHandlePositions 
-        
-
         Top Index 
         
 
@@ -615,8 +587,6 @@ class Spline(gn.Geometry):
         
 
         | Node: CurveHandlePositions 
-        
-
         Top Index 
         
 
@@ -657,8 +627,6 @@ class Spline(gn.Geometry):
         
 
         | Node: CurveTangent 
-        
-
         Top Index 
         
 
@@ -694,8 +662,6 @@ class Spline(gn.Geometry):
         
 
         | Node: CurveTilt 
-        
-
         Top Index 
         
 
@@ -731,8 +697,6 @@ class Spline(gn.Geometry):
         
 
         | Node: EndpointSelection 
-        
-
         Top Index 
         
 
@@ -774,8 +738,6 @@ class Spline(gn.Geometry):
         
 
         | Node: HandleTypeSelection 
-        
-
         Top Index 
         
 
@@ -813,8 +775,6 @@ class Spline(gn.Geometry):
         
 
         | Node: IsSplineCyclic 
-        
-
         Top Index 
         
 
@@ -850,8 +810,6 @@ class Spline(gn.Geometry):
         
 
         | Node: SplineLength 
-        
-
         Top Index 
         
 
@@ -887,8 +845,6 @@ class Spline(gn.Geometry):
         
 
         | Node: SplineLength 
-        
-
         Top Index 
         
 
@@ -924,8 +880,6 @@ class Spline(gn.Geometry):
         
 
         | Node: SplineParameter 
-        
-
         Top Index 
         
 
@@ -961,8 +915,6 @@ class Spline(gn.Geometry):
         
 
         | Node: SplineParameter 
-        
-
         Top Index 
         
 
@@ -998,8 +950,6 @@ class Spline(gn.Geometry):
         
 
         | Node: SplineParameter 
-        
-
         Top Index 
         
 
@@ -1035,8 +985,6 @@ class Spline(gn.Geometry):
         
 
         | Node: SplineResolution 
-        
-
         Top Index 
         
 
@@ -1075,8 +1023,6 @@ class Spline(gn.Geometry):
         
 
         | Node: SetSplineCyclic 
-        
-
         Top Index 
         
 
@@ -1113,8 +1059,6 @@ class Spline(gn.Geometry):
         
 
         | Node: SetSplineResolution 
-        
-
         Top Index 
         
 

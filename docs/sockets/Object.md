@@ -2,6 +2,8 @@
 # Class Object
 
 > Inherits from: ***dsock.Object***
+
+
 [Index](/docs/index.md)
 
 ## Properties
@@ -26,6 +28,8 @@
 ### info
 
 > Node: [ObjectInfo](../nodes/{self.node_name}.md)
+
+
 [Top](#object) [Index](/docs/index.md)
 
 ```python
@@ -76,6 +80,8 @@ node = nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=tr
 ### switch
 
 > Node: [Switch](../nodes/{self.node_name}.md)
+
+
 [Top](#object) [Index](/docs/index.md)
 
 ```python

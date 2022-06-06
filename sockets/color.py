@@ -13,8 +13,6 @@ class Color(dsock.Color):
     
 
     | Inherits from: dsock.Color 
-    
-
     Index 
     
 
@@ -78,8 +76,6 @@ class Color(dsock.Color):
         
 
         | Node: CombineRgb 
-        
-
         Top Index 
         
 
@@ -121,8 +117,6 @@ class Color(dsock.Color):
         
 
         | Node: SeparateRgb 
-        
-
         Top Index 
         
 
@@ -168,8 +162,6 @@ class Color(dsock.Color):
         
 
         | Node: TransferAttribute 
-        
-
         Top Index 
         
 
@@ -219,8 +211,6 @@ class Color(dsock.Color):
         
 
         | Node: CaptureAttribute 
-        
-
         Top Index 
         
 
@@ -266,8 +256,6 @@ class Color(dsock.Color):
         
 
         | Node: FieldAtIndex 
-        
-
         Top Index 
         
 
@@ -313,8 +301,6 @@ class Color(dsock.Color):
         
 
         | Node: Raycast 
-        
-
         Top Index 
         
 
@@ -365,8 +351,6 @@ class Color(dsock.Color):
         
 
         | Node: Compare 
-        
-
         Top Index 
         
 
@@ -410,8 +394,6 @@ class Color(dsock.Color):
         
 
         | Node: Compare 
-        
-
         Top Index 
         
 
@@ -455,8 +437,6 @@ class Color(dsock.Color):
         
 
         | Node: Compare 
-        
-
         Top Index 
         
 
@@ -499,8 +479,6 @@ class Color(dsock.Color):
         
 
         | Node: Compare 
-        
-
         Top Index 
         
 
@@ -543,8 +521,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -591,8 +567,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -639,8 +613,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -687,8 +659,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -735,8 +705,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -783,8 +751,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -831,8 +797,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -879,8 +843,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -927,8 +889,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -975,8 +935,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -1023,8 +981,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -1071,8 +1027,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -1119,8 +1073,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -1167,8 +1119,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -1215,8 +1165,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -1263,8 +1211,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -1311,8 +1257,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -1359,8 +1303,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -1407,8 +1349,6 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
-        
-
         Top Index 
         
 
@@ -1455,8 +1395,6 @@ class Color(dsock.Color):
         
 
         | Node: RgbCurves 
-        
-
         Top Index 
         
 

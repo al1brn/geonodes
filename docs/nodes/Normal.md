@@ -2,6 +2,8 @@
 # Class Normal
 
 > Geometry node name: _'Normal'_<br>Blender type:  **GeometryNodeInputNormal**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -35,6 +37,8 @@ node = nodes.Normal(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [capture_normal](../sockets/Geometry.md#capture_normal) : Capture attribute

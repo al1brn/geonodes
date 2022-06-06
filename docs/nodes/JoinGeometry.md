@@ -2,6 +2,8 @@
 # Class JoinGeometry
 
 > Geometry node name: _'Join Geometry'_<br>Blender type:  **GeometryNodeJoinGeometry**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -43,6 +45,8 @@ node = nodes.JoinGeometry(*geometry, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [join](../sockets/Geometry.md#join) : Method

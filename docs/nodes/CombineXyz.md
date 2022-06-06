@@ -2,6 +2,8 @@
 # Class CombineXyz
 
 > Geometry node name: _'Combine XYZ'_<br>Blender type:  **ShaderNodeCombineXYZ**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -45,6 +47,8 @@ node = nodes.CombineXyz(x=None, y=None, z=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Vector](../sockets/Vector.md) [Combine](../sockets/Vector.md#combine) : Constructor

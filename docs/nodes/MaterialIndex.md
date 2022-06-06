@@ -2,6 +2,8 @@
 # Class MaterialIndex
 
 > Geometry node name: _'Material Index'_<br>Blender type:  **GeometryNodeInputMaterialIndex**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -35,6 +37,8 @@ node = nodes.MaterialIndex(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [capture_material_index](../sockets/Mesh.md#capture_material_index) : Capture attribute

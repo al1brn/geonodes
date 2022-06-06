@@ -2,6 +2,8 @@
 # Class SubdivideMesh
 
 > Geometry node name: _'Subdivide Mesh'_<br>Blender type:  **GeometryNodeSubdivideMesh**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -44,6 +46,8 @@ node = nodes.SubdivideMesh(mesh=None, level=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [subdivide](../sockets/Mesh.md#subdivide) : Stacked method

@@ -2,6 +2,8 @@
 # Class SeparateXyz
 
 > Geometry node name: _'Separate XYZ'_<br>Blender type:  **ShaderNodeSeparateXYZ**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -45,6 +47,8 @@ node = nodes.SeparateXyz(vector=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Vector](../sockets/Vector.md) [separate](../sockets/Vector.md#separate) : Property

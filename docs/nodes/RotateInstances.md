@@ -2,6 +2,8 @@
 # Class RotateInstances
 
 > Geometry node name: _'Rotate Instances'_<br>Blender type:  **GeometryNodeRotateInstances**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -47,6 +49,8 @@ node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivo
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Instances](../sockets/Instances.md) [rotate](../sockets/Instances.md#rotate) : Stacked method

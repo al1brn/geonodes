@@ -2,6 +2,8 @@
 # Class EdgeVertices
 
 > Geometry node name: _'Edge Vertices'_<br>Blender type:  **GeometryNodeInputMeshEdgeVertices**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -38,6 +40,8 @@ node = nodes.EdgeVertices(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [capture_edge_vertices](../sockets/Mesh.md#capture_edge_vertices) : Capture attribute

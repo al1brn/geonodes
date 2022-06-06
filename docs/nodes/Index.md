@@ -2,6 +2,8 @@
 # Class Index
 
 > Geometry node name: _'Index'_<br>Blender type:  **GeometryNodeInputIndex**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -35,6 +37,8 @@ node = nodes.Index(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [capture_index](../sockets/Geometry.md#capture_index) : Capture attribute

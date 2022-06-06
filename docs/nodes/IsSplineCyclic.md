@@ -2,6 +2,8 @@
 # Class IsSplineCyclic
 
 > Geometry node name: _'Is Spline Cyclic'_<br>Blender type:  **GeometryNodeInputSplineCyclic**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -35,6 +37,8 @@ node = nodes.IsSplineCyclic(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Spline](../sockets/Spline.md) [capture_cyclic](../sockets/Spline.md#capture_cyclic) : Capture attribute

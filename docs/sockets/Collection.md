@@ -2,6 +2,8 @@
 # Class Collection
 
 > Inherits from: ***dsock.Collection***
+
+
 [Index](/docs/index.md)
 
 ## Methods
@@ -19,6 +21,8 @@
 ### info
 
 > Node: [CollectionInfo](../nodes/{self.node_name}.md)
+
+
 [Top](#collection) [Index](/docs/index.md)
 
 ```python
@@ -62,6 +66,8 @@ node = nodes.CollectionInfo(collection=self, separate_children=separate_children
 ### switch
 
 > Node: [Switch](../nodes/{self.node_name}.md)
+
+
 [Top](#collection) [Index](/docs/index.md)
 
 ```python

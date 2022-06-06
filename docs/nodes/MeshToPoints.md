@@ -2,6 +2,8 @@
 # Class MeshToPoints
 
 > Geometry node name: _'Mesh to Points'_<br>Blender type:  **GeometryNodeMeshToPoints**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -54,6 +56,8 @@ node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None,
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [to_points](../sockets/Mesh.md#to_points) : Method

@@ -2,6 +2,8 @@
 # Class EdgeAngle
 
 > Geometry node name: _'Edge Angle'_<br>Blender type:  **GeometryNodeInputMeshEdgeAngle**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -36,6 +38,8 @@ node = nodes.EdgeAngle(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [capture_edge_angle](../sockets/Mesh.md#capture_edge_angle) : Capture attribute

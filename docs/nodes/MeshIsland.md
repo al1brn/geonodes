@@ -2,6 +2,8 @@
 # Class MeshIsland
 
 > Geometry node name: _'Mesh Island'_<br>Blender type:  **GeometryNodeInputMeshIsland**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -36,6 +38,8 @@ node = nodes.MeshIsland(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [capture_island](../sockets/Mesh.md#capture_island) : Capture attribute

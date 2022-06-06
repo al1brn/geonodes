@@ -2,6 +2,8 @@
 # Class PointsToVertices
 
 > Geometry node name: _'Points to Vertices'_<br>Blender type:  **GeometryNodePointsToVertices**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -44,6 +46,8 @@ node = nodes.PointsToVertices(points=None, selection=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Points](../sockets/Points.md) [to_vertices](../sockets/Points.md#to_vertices) : Method

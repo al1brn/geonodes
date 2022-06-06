@@ -2,6 +2,8 @@
 # Class MusgraveTexture
 
 > Geometry node name: _'Musgrave Texture'_<br>Blender type:  **ShaderNodeTexMusgrave**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -59,6 +61,8 @@ node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimen
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Texture](../sockets/Texture.md) [Musgrave](../sockets/Texture.md#musgrave) : Static method

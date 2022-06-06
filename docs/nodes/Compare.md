@@ -2,6 +2,8 @@
 # Class Compare
 
 > Geometry node name: _'Compare'_<br>Blender type:  **FunctionNodeCompare**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -66,6 +68,8 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Color](../sockets/Color.md) [brighter](../sockets/Color.md#brighter) : Method

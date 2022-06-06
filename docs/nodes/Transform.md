@@ -2,6 +2,8 @@
 # Class Transform
 
 > Geometry node name: _'Transform'_<br>Blender type:  **GeometryNodeTransform**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -46,6 +48,8 @@ node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=Non
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [transform](../sockets/Geometry.md#transform) : Stacked method

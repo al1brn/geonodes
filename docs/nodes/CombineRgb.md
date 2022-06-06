@@ -2,6 +2,8 @@
 # Class CombineRgb
 
 > Geometry node name: _'Combine RGB'_<br>Blender type:  **ShaderNodeCombineRGB**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -45,6 +47,8 @@ node = nodes.CombineRgb(r=None, g=None, b=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Color](../sockets/Color.md) [Combine](../sockets/Color.md#combine) : Constructor

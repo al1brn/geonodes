@@ -2,6 +2,8 @@
 # Class ConvexHull
 
 > Geometry node name: _'Convex Hull'_<br>Blender type:  **GeometryNodeConvexHull**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -43,6 +45,8 @@ node = nodes.ConvexHull(geometry=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [convex_hull](../sockets/Geometry.md#convex_hull) : Method

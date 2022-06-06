@@ -2,6 +2,8 @@
 # Class Cylinder
 
 > Geometry node name: _'Cylinder'_<br>Blender type:  **GeometryNodeMeshCylinder**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -58,6 +60,8 @@ node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, rad
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [Cylinder](../sockets/Mesh.md#cylinder) : Constructor

@@ -2,6 +2,8 @@
 # Class CheckerTexture
 
 > Geometry node name: _'Checker Texture'_<br>Blender type:  **ShaderNodeTexChecker**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -47,6 +49,8 @@ node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None, l
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Texture](../sockets/Texture.md) [Checker](../sockets/Texture.md#checker) : Static method

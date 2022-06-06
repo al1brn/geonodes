@@ -2,6 +2,8 @@
 # Class NoiseTexture
 
 > Geometry node name: _'Noise Texture'_<br>Blender type:  **ShaderNodeTexNoise**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -57,6 +59,8 @@ node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughnes
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Texture](../sockets/Texture.md) [Noise](../sockets/Texture.md#noise) : Static method

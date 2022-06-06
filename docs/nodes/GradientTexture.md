@@ -2,6 +2,8 @@
 # Class GradientTexture
 
 > Geometry node name: _'Gradient Texture'_<br>Blender type:  **ShaderNodeTexGradient**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -52,6 +54,8 @@ node = nodes.GradientTexture(vector=None, gradient_type='LINEAR', label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Texture](../sockets/Texture.md) [Gradient](../sockets/Texture.md#gradient) : Static method

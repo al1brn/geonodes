@@ -2,6 +2,8 @@
 # Class Spline
 
 > Inherits from: ***gn.Geometry***
+
+
 [Index](/docs/index.md)
 
 ## Attribute capture
@@ -58,6 +60,8 @@
 ### capture_cyclic
 
 > Node: [IsSplineCyclic](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -92,6 +96,8 @@ node = nodes.IsSplineCyclic()
 ### capture_endpoint_selection
 
 > Node: [EndpointSelection](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -135,6 +141,8 @@ node = nodes.EndpointSelection(start_size=start_size, end_size=end_size)
 ### capture_handle_positions
 
 > Node: [CurveHandlePositions](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -177,6 +185,8 @@ node = nodes.CurveHandlePositions(relative=relative)
 ### capture_handle_type_selection
 
 > Node: [HandleTypeSelection](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -213,6 +223,8 @@ node = nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
 ### capture_length
 
 > Node: [SplineLength](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -247,6 +259,8 @@ node = nodes.SplineLength()
 ### capture_parameter
 
 > Node: [SplineParameter](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -281,6 +295,8 @@ node = nodes.SplineParameter()
 ### capture_resolution
 
 > Node: [SplineResolution](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -315,6 +331,8 @@ node = nodes.SplineResolution()
 ### capture_tangent
 
 > Node: [CurveTangent](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -349,6 +367,8 @@ node = nodes.CurveTangent()
 ### capture_tilt
 
 > Node: [CurveTilt](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -383,6 +403,8 @@ node = nodes.CurveTilt()
 ### cyclic
 
 > Node: [IsSplineCyclic](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -416,6 +438,8 @@ node = nodes.IsSplineCyclic()
 ### endpoint_selection
 
 > Node: [EndpointSelection](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -458,6 +482,8 @@ node = nodes.EndpointSelection(start_size=start_size, end_size=end_size)
 ### factor
 
 > Node: [SplineParameter](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -491,6 +517,8 @@ node = nodes.SplineParameter()
 ### handle_type_selection
 
 > Node: [HandleTypeSelection](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -526,6 +554,8 @@ node = nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
 ### left_handle_position
 
 > Node: [CurveHandlePositions](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -567,6 +597,8 @@ node = nodes.CurveHandlePositions(relative=relative)
 ### length
 
 > Node: [SplineLength](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -600,6 +632,8 @@ node = nodes.SplineLength()
 ### parameter_index
 
 > Node: [SplineParameter](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -633,6 +667,8 @@ node = nodes.SplineParameter()
 ### parameter_length
 
 > Node: [SplineParameter](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -666,6 +702,8 @@ node = nodes.SplineParameter()
 ### point_count
 
 > Node: [SplineLength](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -699,6 +737,8 @@ node = nodes.SplineLength()
 ### resolution
 
 > Node: [SplineResolution](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -732,6 +772,8 @@ node = nodes.SplineResolution()
 ### right_handle_position
 
 > Node: [CurveHandlePositions](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -773,6 +815,8 @@ node = nodes.CurveHandlePositions(relative=relative)
 ### set_cyclic
 
 > Node: [SetSplineCyclic](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -808,6 +852,8 @@ node = nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic)
 ### set_resolution
 
 > Node: [SetSplineResolution](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -843,6 +889,8 @@ node = nodes.SetSplineResolution(geometry=self, selection=selection, resolution=
 ### spline_ID
 
 > Node: [ID](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -876,6 +924,8 @@ node = nodes.ID()
 ### spline_index
 
 > Node: [Index](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -909,6 +959,8 @@ node = nodes.Index()
 ### spline_position
 
 > Node: [Index](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -942,6 +994,8 @@ node = nodes.Index()
 ### tangent
 
 > Node: [CurveTangent](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python
@@ -975,6 +1029,8 @@ node = nodes.CurveTangent()
 ### tilt
 
 > Node: [CurveTilt](../nodes/{self.node_name}.md)
+
+
 [Top](#spline) [Index](/docs/index.md)
 
 ```python

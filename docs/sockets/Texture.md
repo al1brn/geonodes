@@ -2,6 +2,8 @@
 # Class Texture
 
 > Inherits from: ***dsock.Texture***
+
+
 [Index](/docs/index.md)
 
 ## Static methods
@@ -35,6 +37,8 @@
 ### Brick
 
 > Node: [BrickTexture](../nodes/{self.node_name}.md)
+
+
 [Top](#texture) [Index](/docs/index.md)
 
 ```python
@@ -88,6 +92,8 @@ node = nodes.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mo
 ### Checker
 
 > Node: [CheckerTexture](../nodes/{self.node_name}.md)
+
+
 [Top](#texture) [Index](/docs/index.md)
 
 ```python
@@ -124,6 +130,8 @@ node = nodes.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=s
 ### Gradient
 
 > Node: [GradientTexture](../nodes/{self.node_name}.md)
+
+
 [Top](#texture) [Index](/docs/index.md)
 
 ```python
@@ -165,6 +173,8 @@ node = nodes.GradientTexture(vector=vector, gradient_type=gradient_type)
 ### Image
 
 > Node: [ImageTexture](../nodes/{self.node_name}.md)
+
+
 [Top](#texture) [Index](/docs/index.md)
 
 ```python
@@ -209,6 +219,8 @@ node = nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=ext
 ### Magic
 
 > Node: [MagicTexture](../nodes/{self.node_name}.md)
+
+
 [Top](#texture) [Index](/docs/index.md)
 
 ```python
@@ -252,6 +264,8 @@ node = nodes.MagicTexture(vector=vector, scale=scale, distortion=distortion, tur
 ### Musgrave
 
 > Node: [MusgraveTexture](../nodes/{self.node_name}.md)
+
+
 [Top](#texture) [Index](/docs/index.md)
 
 ```python
@@ -301,6 +315,8 @@ node = nodes.MusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dim
 ### Noise
 
 > Node: [NoiseTexture](../nodes/{self.node_name}.md)
+
+
 [Top](#texture) [Index](/docs/index.md)
 
 ```python
@@ -347,6 +363,8 @@ node = nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughn
 ### Voronoi
 
 > Node: [VoronoiTexture](../nodes/{self.node_name}.md)
+
+
 [Top](#texture) [Index](/docs/index.md)
 
 ```python
@@ -395,6 +413,8 @@ node = nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothne
 ### Wave
 
 > Node: [WaveTexture](../nodes/{self.node_name}.md)
+
+
 [Top](#texture) [Index](/docs/index.md)
 
 ```python
@@ -445,6 +465,8 @@ node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, deta
 ### WhiteNoise
 
 > Node: [WhiteNoiseTexture](../nodes/{self.node_name}.md)
+
+
 [Top](#texture) [Index](/docs/index.md)
 
 ```python
@@ -487,6 +509,8 @@ node = nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimens
 ### switch
 
 > Node: [Switch](../nodes/{self.node_name}.md)
+
+
 [Top](#texture) [Index](/docs/index.md)
 
 ```python

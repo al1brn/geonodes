@@ -13,8 +13,6 @@ class Boolean(dsock.Boolean):
     
 
     | Inherits from: dsock.Boolean 
-    
-
     Index 
     
 
@@ -52,8 +50,6 @@ class Boolean(dsock.Boolean):
         
 
         | Node: RandomValue 
-        
-
         Top Index 
         
 
@@ -99,8 +95,6 @@ class Boolean(dsock.Boolean):
         
 
         | Node: TransferAttribute 
-        
-
         Top Index 
         
 
@@ -150,8 +144,6 @@ class Boolean(dsock.Boolean):
         
 
         | Node: CaptureAttribute 
-        
-
         Top Index 
         
 
@@ -197,8 +189,6 @@ class Boolean(dsock.Boolean):
         
 
         | Node: FieldAtIndex 
-        
-
         Top Index 
         
 
@@ -244,8 +234,6 @@ class Boolean(dsock.Boolean):
         
 
         | Node: Raycast 
-        
-
         Top Index 
         
 
@@ -296,8 +284,6 @@ class Boolean(dsock.Boolean):
         
 
         | Node: Switch 
-        
-
         Top Index 
         
 
@@ -339,8 +325,6 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
-        
-
         Top Index 
         
 
@@ -381,8 +365,6 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
-        
-
         Top Index 
         
 
@@ -423,8 +405,6 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
-        
-
         Top Index 
         
 
@@ -464,8 +444,6 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
-        
-
         Top Index 
         
 
@@ -506,8 +484,6 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
-        
-
         Top Index 
         
 
@@ -548,8 +524,6 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
-        
-
         Top Index 
         
 
@@ -590,8 +564,6 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
-        
-
         Top Index 
         
 
@@ -632,8 +604,6 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
-        
-
         Top Index 
         
 
@@ -674,8 +644,6 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
-        
-
         Top Index 
         
 

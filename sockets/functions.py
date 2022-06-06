@@ -129,8 +129,6 @@ def compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', ope
     
 
     | Node: Compare 
-    
-
     Top Index 
     
 
@@ -174,8 +172,6 @@ def join_strings(*strings, delimiter=None):
     
 
     | Node: JoinStrings 
-    
-
     Top Index 
     
 
@@ -211,8 +207,6 @@ def scene():
     
 
     | Node: SceneTime 
-    
-
     Top Index 
     
 
@@ -242,8 +236,6 @@ def add(value0=None, value1=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -284,8 +276,6 @@ def subtract(value0=None, value1=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -326,8 +316,6 @@ def multiply(value0=None, value1=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -368,8 +356,6 @@ def divide(value0=None, value1=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -410,8 +396,6 @@ def multiply_add(value0=None, value1=None, value2=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -453,8 +437,6 @@ def pow(value0=None, value1=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -495,8 +477,6 @@ def log(value0=None, value1=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -537,8 +517,6 @@ def sqrt(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -578,8 +556,6 @@ def inverse_sqrt(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -619,8 +595,6 @@ def abs(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -660,8 +634,6 @@ def exp(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -701,8 +673,6 @@ def min(value0=None, value1=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -743,8 +713,6 @@ def max(value0=None, value1=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -785,8 +753,6 @@ def less_than(value0=None, value1=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -827,8 +793,6 @@ def greater_than(value0=None, value1=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -869,8 +833,6 @@ def sign(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -910,8 +872,6 @@ def compare(value0=None, value1=None, value2=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -953,8 +913,6 @@ def smooth_min(value0=None, value1=None, value2=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -996,8 +954,6 @@ def smooth_max(value0=None, value1=None, value2=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1039,8 +995,6 @@ def round(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1080,8 +1034,6 @@ def floor(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1121,8 +1073,6 @@ def ceil(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1162,8 +1112,6 @@ def trunc(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1203,8 +1151,6 @@ def fract(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1244,8 +1190,6 @@ def modulo(value0=None, value1=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1286,8 +1230,6 @@ def wrap(value0=None, value1=None, value2=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1329,8 +1271,6 @@ def snap(value0=None, value1=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1371,8 +1311,6 @@ def pingpong(value0=None, value1=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1413,8 +1351,6 @@ def sin(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1454,8 +1390,6 @@ def cos(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1495,8 +1429,6 @@ def tan(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1536,8 +1468,6 @@ def arcsin(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1577,8 +1507,6 @@ def arccos(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1618,8 +1546,6 @@ def arctan(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1659,8 +1585,6 @@ def arctan2(value0=None, value1=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1701,8 +1625,6 @@ def sinh(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1742,8 +1664,6 @@ def cosh(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1783,8 +1703,6 @@ def tanh(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1824,8 +1742,6 @@ def radians(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1865,8 +1781,6 @@ def degrees(value0=None):
     
 
     | Node: Math 
-    
-
     Top Index 
     
 
@@ -1906,8 +1820,6 @@ def vector_add(vector0=None, vector1=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -1948,8 +1860,6 @@ def vector_subtract(vector0=None, vector1=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -1990,8 +1900,6 @@ def vector_multiply(vector0=None, vector1=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2032,8 +1940,6 @@ def vector_divide(vector0=None, vector1=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2074,8 +1980,6 @@ def vector_multiply_add(vector0=None, vector1=None, vector2=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2117,8 +2021,6 @@ def cross(vector0=None, vector1=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2159,8 +2061,6 @@ def project(vector0=None, vector1=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2201,8 +2101,6 @@ def reflect(vector0=None, vector1=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2243,8 +2141,6 @@ def refract(vector0=None, vector1=None, scale=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2286,8 +2182,6 @@ def faceforward(vector0=None, vector1=None, vector2=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2329,8 +2223,6 @@ def dot(vector0=None, vector1=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2371,8 +2263,6 @@ def distance(vector0=None, vector1=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2413,8 +2303,6 @@ def length(vector0=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2454,8 +2342,6 @@ def scale(vector0=None, scale=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2496,8 +2382,6 @@ def normalize(vector0=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2537,8 +2421,6 @@ def vector_absolute(vector0=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2578,8 +2460,6 @@ def vector_min(vector0=None, vector1=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2620,8 +2500,6 @@ def vector_max(vector0=None, vector1=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2662,8 +2540,6 @@ def vector_floor(vector0=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2703,8 +2579,6 @@ def vector_ceil(vector0=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2744,8 +2618,6 @@ def fraction(vector0=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2785,8 +2657,6 @@ def vector_modulo(vector0=None, vector1=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2827,8 +2697,6 @@ def vector_wrap(vector0=None, vector1=None, vector2=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2870,8 +2738,6 @@ def vector_snap(vector0=None, vector1=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2912,8 +2778,6 @@ def vector_sin(vector0=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2953,8 +2817,6 @@ def vector_cos(vector0=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -2994,8 +2856,6 @@ def vector_tan(vector0=None):
     
 
     | Node: VectorMath 
-    
-
     Top Index 
     
 
@@ -3035,8 +2895,6 @@ def color_mix(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 
@@ -3083,8 +2941,6 @@ def color_darken(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 
@@ -3131,8 +2987,6 @@ def color_multiply(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 
@@ -3179,8 +3033,6 @@ def color_burn(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 
@@ -3227,8 +3079,6 @@ def color_lighten(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 
@@ -3275,8 +3125,6 @@ def color_screen(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 
@@ -3323,8 +3171,6 @@ def color_dodge(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 
@@ -3371,8 +3217,6 @@ def color_add(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 
@@ -3419,8 +3263,6 @@ def color_overlay(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 
@@ -3467,8 +3309,6 @@ def color_soft_light(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 
@@ -3515,8 +3355,6 @@ def color_linear_light(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 
@@ -3563,8 +3401,6 @@ def color_difference(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 
@@ -3611,8 +3447,6 @@ def color_subtract(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 
@@ -3659,8 +3493,6 @@ def color_divide(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 
@@ -3707,8 +3539,6 @@ def color_hue(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 
@@ -3755,8 +3585,6 @@ def color_saturation(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 
@@ -3803,8 +3631,6 @@ def color_mix_color(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 
@@ -3851,8 +3677,6 @@ def color_value(color1=None, color2=None, fac=None, use_alpha=False):
     
 
     | Node: Mix 
-    
-
     Top Index 
     
 

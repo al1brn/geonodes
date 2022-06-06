@@ -2,6 +2,8 @@
 # Class Mix
 
 > Geometry node name: _'Mix'_<br>Blender type:  **ShaderNodeMixRGB**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -54,6 +56,8 @@ node = nodes.Mix(color1=None, color2=None, fac=None, blend_type='MIX', use_alpha
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Color](../sockets/Color.md) [add](../sockets/Color.md#add) : Method

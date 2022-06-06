@@ -2,6 +2,8 @@
 # Class SeparateGeometry
 
 > Geometry node name: _'Separate Geometry'_<br>Blender type:  **GeometryNodeSeparateGeometry**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -53,6 +55,8 @@ node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT', lab
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [components](../sockets/Geometry.md#components) : Method

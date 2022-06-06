@@ -2,6 +2,8 @@
 # Class RealizeInstances
 
 > Geometry node name: _'Realize Instances'_<br>Blender type:  **GeometryNodeRealizeInstances**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -51,6 +53,8 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [realize_instances](../sockets/Geometry.md#realize_instances) : Stacked method

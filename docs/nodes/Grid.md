@@ -2,6 +2,8 @@
 # Class Grid
 
 > Geometry node name: _'Grid'_<br>Blender type:  **GeometryNodeMeshGrid**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -46,6 +48,8 @@ node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, la
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [Grid](../sockets/Mesh.md#grid) : Constructor

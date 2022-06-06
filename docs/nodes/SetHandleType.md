@@ -2,6 +2,8 @@
 # Class SetHandleType
 
 > Geometry node name: _'Set Handle Type'_<br>Blender type:  **GeometryNodeCurveSetHandles**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -53,6 +55,8 @@ node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode=
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [set_handles](../sockets/Curve.md#set_handles) : Stacked method

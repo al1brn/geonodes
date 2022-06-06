@@ -2,6 +2,8 @@
 # Class Raycast
 
 > Geometry node name: _'Raycast'_<br>Blender type:  **GeometryNodeRaycast**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -70,6 +72,8 @@ node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None,
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Boolean](../sockets/Boolean.md) [raycast](../sockets/Boolean.md#raycast) : Method

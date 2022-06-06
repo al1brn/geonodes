@@ -2,6 +2,8 @@
 # Class Points
 
 > Inherits from: ***gn.Geometry***
+
+
 [Index](/docs/index.md)
 
 ## Methods
@@ -28,6 +30,8 @@
 ### instance_on_points
 
 > Node: [InstanceOnPoints](../nodes/{self.node_name}.md)
+
+
 [Top](#points) [Index](/docs/index.md)
 
 ```python
@@ -67,6 +71,8 @@ node = nodes.InstanceOnPoints(points=self, selection=selection, instance=instanc
 ### set_radius
 
 > Node: [SetPointRadius](../nodes/{self.node_name}.md)
+
+
 [Top](#points) [Index](/docs/index.md)
 
 ```python
@@ -102,6 +108,8 @@ node = nodes.SetPointRadius(points=self, selection=selection, radius=radius)
 ### to_vertices
 
 > Node: [PointsToVertices](../nodes/{self.node_name}.md)
+
+
 [Top](#points) [Index](/docs/index.md)
 
 ```python
@@ -136,6 +144,8 @@ node = nodes.PointsToVertices(points=self, selection=selection)
 ### to_volume
 
 > Node: [PointsToVolume](../nodes/{self.node_name}.md)
+
+
 [Top](#points) [Index](/docs/index.md)
 
 ```python

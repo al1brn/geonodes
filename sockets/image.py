@@ -13,8 +13,6 @@ class Image(dsock.Image):
     
 
     | Inherits from: dsock.Image 
-    
-
     Index 
     
 
@@ -32,8 +30,6 @@ class Image(dsock.Image):
         
 
         | Node: Switch 
-        
-
         Top Index 
         
 

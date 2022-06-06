@@ -2,6 +2,8 @@
 # Class AlignEulerToVector
 
 > Geometry node name: _'Align Euler to Vector'_<br>Blender type:  **FunctionNodeAlignEulerToVector**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -54,6 +56,8 @@ node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Vector](../sockets/Vector.md) [AlignToVector](../sockets/Vector.md#aligntovector) : Constructor

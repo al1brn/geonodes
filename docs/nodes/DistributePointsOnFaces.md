@@ -2,6 +2,8 @@
 # Class DistributePointsOnFaces
 
 > Geometry node name: _'Distribute Points on Faces'_<br>Blender type:  **GeometryNodeDistributePointsOnFaces**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -59,6 +61,8 @@ node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=Non
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [distribute_points_on_faces](../sockets/Mesh.md#distribute_points_on_faces) : Method

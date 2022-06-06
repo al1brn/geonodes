@@ -2,6 +2,8 @@
 # Class FloatCurve
 
 > Geometry node name: _'Float Curve'_<br>Blender type:  **ShaderNodeFloatCurve**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -44,6 +46,8 @@ node = nodes.FloatCurve(factor=None, value=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Float](../sockets/Float.md) [curve](../sockets/Float.md#curve) : Stacked method

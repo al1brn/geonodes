@@ -2,6 +2,8 @@
 # Class FaceArea
 
 > Geometry node name: _'Face Area'_<br>Blender type:  **GeometryNodeInputMeshFaceArea**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -35,6 +37,8 @@ node = nodes.FaceArea(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [capture_face_area](../sockets/Mesh.md#capture_face_area) : Capture attribute

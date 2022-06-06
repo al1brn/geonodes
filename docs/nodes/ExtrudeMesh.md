@@ -2,6 +2,8 @@
 # Class ExtrudeMesh
 
 > Geometry node name: _'Extrude Mesh'_<br>Blender type:  **GeometryNodeExtrudeMesh**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -57,6 +59,8 @@ node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=No
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [extrude](../sockets/Mesh.md#extrude) : Method

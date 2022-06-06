@@ -2,6 +2,8 @@
 # Class TrimCurve
 
 > Geometry node name: _'Trim Curve'_<br>Blender type:  **GeometryNodeTrimCurve**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -55,6 +57,8 @@ node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=Non
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [trim](../sockets/Curve.md#trim) : Stacked method

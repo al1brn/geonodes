@@ -2,6 +2,8 @@
 # Class MeshLine
 
 > Geometry node name: _'Mesh Line'_<br>Blender type:  **GeometryNodeMeshLine**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -55,6 +57,8 @@ node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=N
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [Line](../sockets/Mesh.md#line) : Constructor

@@ -13,8 +13,6 @@ class String(dsock.String):
     
 
     | Inherits from: dsock.String 
-    
-
     Index 
     
 
@@ -55,8 +53,6 @@ class String(dsock.String):
         
 
         | Node: StringLength 
-        
-
         Top Index 
         
 
@@ -102,8 +98,6 @@ class String(dsock.String):
         
 
         | Node: Switch 
-        
-
         Top Index 
         
 
@@ -145,8 +139,6 @@ class String(dsock.String):
         
 
         | Node: Compare 
-        
-
         Top Index 
         
 
@@ -189,8 +181,6 @@ class String(dsock.String):
         
 
         | Node: Compare 
-        
-
         Top Index 
         
 
@@ -233,8 +223,6 @@ class String(dsock.String):
         
 
         | Node: Compare 
-        
-
         Top Index 
         
 
@@ -277,8 +265,6 @@ class String(dsock.String):
         
 
         | Node: Compare 
-        
-
         Top Index 
         
 
@@ -321,8 +307,6 @@ class String(dsock.String):
         
 
         | Node: Compare 
-        
-
         Top Index 
         
 
@@ -365,8 +349,6 @@ class String(dsock.String):
         
 
         | Node: JoinStrings 
-        
-
         Top Index 
         
 
@@ -402,8 +384,6 @@ class String(dsock.String):
         
 
         | Node: SliceString 
-        
-
         Top Index 
         
 
@@ -440,8 +420,6 @@ class String(dsock.String):
         
 
         | Node: StringToCurves 
-        
-
         Top Index 
         
 
@@ -497,8 +475,6 @@ class String(dsock.String):
         
 
         | Node: ReplaceString 
-        
-
         Top Index 
         
 

@@ -2,6 +2,8 @@
 # Class ObjectInfo
 
 > Geometry node name: _'Object Info'_<br>Blender type:  **GeometryNodeObjectInfo**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -55,6 +57,8 @@ node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Object](../sockets/Object.md) [info](../sockets/Object.md#info) : Property

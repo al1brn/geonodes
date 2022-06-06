@@ -2,6 +2,8 @@
 # Class DomainSize
 
 > Geometry node name: _'Domain Size'_<br>Blender type:  **GeometryNodeAttributeDomainSize**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -56,6 +58,8 @@ node = nodes.DomainSize(geometry=None, component='MESH', label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [attribute_domain_size](../sockets/Geometry.md#attribute_domain_size) : Method

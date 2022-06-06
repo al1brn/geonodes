@@ -2,6 +2,8 @@
 # Class CurveHandlePositions
 
 > Geometry node name: _'Curve Handle Positions'_<br>Blender type:  **GeometryNodeInputCurveHandlePositions**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -44,6 +46,8 @@ node = nodes.CurveHandlePositions(relative=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Spline](../sockets/Spline.md) [capture_handle_positions](../sockets/Spline.md#capture_handle_positions) : Capture attribute

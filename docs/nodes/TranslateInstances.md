@@ -2,6 +2,8 @@
 # Class TranslateInstances
 
 > Geometry node name: _'Translate Instances'_<br>Blender type:  **GeometryNodeTranslateInstances**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -46,6 +48,8 @@ node = nodes.TranslateInstances(instances=None, selection=None, translation=None
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Instances](../sockets/Instances.md) [translate](../sockets/Instances.md#translate) : Stacked method

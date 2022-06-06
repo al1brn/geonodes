@@ -2,6 +2,8 @@
 # Class Cone
 
 > Geometry node name: _'Cone'_<br>Blender type:  **GeometryNodeMeshCone**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -59,6 +61,8 @@ node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [Cone](../sockets/Mesh.md#cone) : Constructor

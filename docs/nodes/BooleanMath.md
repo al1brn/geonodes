@@ -2,6 +2,8 @@
 # Class BooleanMath
 
 > Geometry node name: _'Boolean Math'_<br>Blender type:  **FunctionNodeBooleanMath**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -52,6 +54,8 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND', label=No
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Boolean](../sockets/Boolean.md) [b_and](../sockets/Boolean.md#b_and) : Method

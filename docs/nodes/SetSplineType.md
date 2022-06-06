@@ -2,6 +2,8 @@
 # Class SetSplineType
 
 > Geometry node name: _'Set Spline Type'_<br>Blender type:  **GeometryNodeCurveSplineType**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -52,6 +54,8 @@ node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY', label
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [set_spline_type](../sockets/Curve.md#set_spline_type) : Stacked method

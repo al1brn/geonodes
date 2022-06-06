@@ -2,6 +2,8 @@
 # Class Position
 
 > Geometry node name: _'Position'_<br>Blender type:  **GeometryNodeInputPosition**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -35,6 +37,8 @@ node = nodes.Position(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [capture_position](../sockets/Geometry.md#capture_position) : Capture attribute

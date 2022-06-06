@@ -13,8 +13,6 @@ class Curve(gn.Spline):
     
 
     | Inherits from: gn.Spline 
-    
-
     Index 
     
 
@@ -69,8 +67,6 @@ class Curve(gn.Spline):
         
 
         | Node: BezierSegment 
-        
-
         Top Index 
         
 
@@ -116,8 +112,6 @@ class Curve(gn.Spline):
         
 
         | Node: CurveCircle 
-        
-
         Top Index 
         
 
@@ -163,8 +157,6 @@ class Curve(gn.Spline):
         
 
         | Node: CurveLine 
-        
-
         Top Index 
         
 
@@ -208,8 +200,6 @@ class Curve(gn.Spline):
         
 
         | Node: Quadrilateral 
-        
-
         Top Index 
         
 
@@ -263,8 +253,6 @@ class Curve(gn.Spline):
         
 
         | Node: QuadraticBezier 
-        
-
         Top Index 
         
 
@@ -303,8 +291,6 @@ class Curve(gn.Spline):
         
 
         | Node: Star 
-        
-
         Top Index 
         
 
@@ -343,8 +329,6 @@ class Curve(gn.Spline):
         
 
         | Node: Spiral 
-        
-
         Top Index 
         
 
@@ -386,8 +370,6 @@ class Curve(gn.Spline):
         
 
         | Node: Arc 
-        
-
         Top Index 
         
 
@@ -438,8 +420,6 @@ class Curve(gn.Spline):
         
 
         | Node: Arc 
-        
-
         Top Index 
         
 
@@ -490,8 +470,6 @@ class Curve(gn.Spline):
         
 
         | Node: CurveToMesh 
-        
-
         Top Index 
         
 
@@ -528,8 +506,6 @@ class Curve(gn.Spline):
         
 
         | Node: CurveToPoints 
-        
-
         Top Index 
         
 
@@ -571,8 +547,6 @@ class Curve(gn.Spline):
         
 
         | Node: SampleCurve 
-        
-
         Top Index 
         
 
@@ -614,8 +588,6 @@ class Curve(gn.Spline):
         
 
         | Node: CurveLength 
-        
-
         Top Index 
         
 
@@ -654,8 +626,6 @@ class Curve(gn.Spline):
         
 
         | Node: SetHandleType 
-        
-
         Top Index 
         
 
@@ -697,8 +667,6 @@ class Curve(gn.Spline):
         
 
         | Node: SetSplineType 
-        
-
         Top Index 
         
 
@@ -739,8 +707,6 @@ class Curve(gn.Spline):
         
 
         | Node: FillCurve 
-        
-
         Top Index 
         
 
@@ -780,8 +746,6 @@ class Curve(gn.Spline):
         
 
         | Node: FilletCurve 
-        
-
         Top Index 
         
 
@@ -824,8 +788,6 @@ class Curve(gn.Spline):
         
 
         | Node: ResampleCurve 
-        
-
         Top Index 
         
 
@@ -868,8 +830,6 @@ class Curve(gn.Spline):
         
 
         | Node: ReverseCurve 
-        
-
         Top Index 
         
 
@@ -905,8 +865,6 @@ class Curve(gn.Spline):
         
 
         | Node: SetHandlePositions 
-        
-
         Top Index 
         
 
@@ -949,8 +907,6 @@ class Curve(gn.Spline):
         
 
         | Node: SetCurveRadius 
-        
-
         Top Index 
         
 
@@ -987,8 +943,6 @@ class Curve(gn.Spline):
         
 
         | Node: SetCurveTilt 
-        
-
         Top Index 
         
 
@@ -1025,8 +979,6 @@ class Curve(gn.Spline):
         
 
         | Node: SubdivideCurve 
-        
-
         Top Index 
         
 
@@ -1062,8 +1014,6 @@ class Curve(gn.Spline):
         
 
         | Node: TrimCurve 
-        
-
         Top Index 
         
 

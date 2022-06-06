@@ -2,6 +2,8 @@
 # Class Cube
 
 > Geometry node name: _'Cube'_<br>Blender type:  **GeometryNodeMeshCube**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -46,6 +48,8 @@ node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, 
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [Cube](../sockets/Mesh.md#cube) : Constructor

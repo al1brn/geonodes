@@ -2,6 +2,8 @@
 # Class MagicTexture
 
 > Geometry node name: _'Magic Texture'_<br>Blender type:  **ShaderNodeTexMagic**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -54,6 +56,8 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Texture](../sockets/Texture.md) [Magic](../sockets/Texture.md#magic) : Static method

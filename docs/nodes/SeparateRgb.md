@@ -2,6 +2,8 @@
 # Class SeparateRgb
 
 > Geometry node name: _'Separate RGB'_<br>Blender type:  **ShaderNodeSeparateRGB**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -45,6 +47,8 @@ node = nodes.SeparateRgb(image=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Color](../sockets/Color.md) [separate](../sockets/Color.md#separate) : Property

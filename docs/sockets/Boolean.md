@@ -2,6 +2,8 @@
 # Class Boolean
 
 > Inherits from: ***dsock.Boolean***
+
+
 [Index](/docs/index.md)
 
 ## Constructors
@@ -39,6 +41,8 @@
 ### Random
 
 > Node: [RandomValue](../nodes/{self.node_name}.md)
+
+
 [Top](#boolean) [Index](/docs/index.md)
 
 ```python
@@ -82,6 +86,8 @@ node = nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='B
 ### b_and
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+
+
 [Top](#boolean) [Index](/docs/index.md)
 
 ```python
@@ -124,6 +130,8 @@ node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND')
 ### b_not
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+
+
 [Top](#boolean) [Index](/docs/index.md)
 
 ```python
@@ -165,6 +173,8 @@ node = nodes.BooleanMath(boolean0=self, operation='NOT')
 ### b_or
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+
+
 [Top](#boolean) [Index](/docs/index.md)
 
 ```python
@@ -207,6 +217,8 @@ node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR')
 ### capture_attribute
 
 > Node: [CaptureAttribute](../nodes/{self.node_name}.md)
+
+
 [Top](#boolean) [Index](/docs/index.md)
 
 ```python
@@ -257,6 +269,8 @@ node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN'
 ### field_at_index
 
 > Node: [FieldAtIndex](../nodes/{self.node_name}.md)
+
+
 [Top](#boolean) [Index](/docs/index.md)
 
 ```python
@@ -307,6 +321,8 @@ node = nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=d
 ### imply
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+
+
 [Top](#boolean) [Index](/docs/index.md)
 
 ```python
@@ -349,6 +365,8 @@ node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY')
 ### nand
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+
+
 [Top](#boolean) [Index](/docs/index.md)
 
 ```python
@@ -391,6 +409,8 @@ node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND')
 ### nimply
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+
+
 [Top](#boolean) [Index](/docs/index.md)
 
 ```python
@@ -433,6 +453,8 @@ node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY')
 ### nor
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+
+
 [Top](#boolean) [Index](/docs/index.md)
 
 ```python
@@ -475,6 +497,8 @@ node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR')
 ### raycast
 
 > Node: [Raycast](../nodes/{self.node_name}.md)
+
+
 [Top](#boolean) [Index](/docs/index.md)
 
 ```python
@@ -528,6 +552,8 @@ node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_pos
 ### switch
 
 > Node: [Switch](../nodes/{self.node_name}.md)
+
+
 [Top](#boolean) [Index](/docs/index.md)
 
 ```python
@@ -571,6 +597,8 @@ node = nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN')
 ### transfer_attribute
 
 > Node: [TransferAttribute](../nodes/{self.node_name}.md)
+
+
 [Top](#boolean) [Index](/docs/index.md)
 
 ```python
@@ -624,6 +652,8 @@ node = nodes.TransferAttribute(attribute=self, source=source, source_position=so
 ### xnor
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+
+
 [Top](#boolean) [Index](/docs/index.md)
 
 ```python
@@ -666,6 +696,8 @@ node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR')
 ### xor
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+
+
 [Top](#boolean) [Index](/docs/index.md)
 
 ```python

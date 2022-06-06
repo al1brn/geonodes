@@ -2,6 +2,8 @@
 # Class MeshBoolean
 
 > Geometry node name: _'Mesh Boolean'_<br>Blender type:  **GeometryNodeMeshBoolean**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -54,6 +56,8 @@ node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tole
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [difference](../sockets/Mesh.md#difference) : Method

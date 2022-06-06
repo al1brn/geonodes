@@ -2,6 +2,8 @@
 # Class BrickTexture
 
 > Geometry node name: _'Brick Texture'_<br>Blender type:  **ShaderNodeTexBrick**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -64,6 +66,8 @@ node = nodes.BrickTexture(vector=None, color1=None, color2=None, mortar=None, sc
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Texture](../sockets/Texture.md) [Brick](../sockets/Texture.md#brick) : Static method

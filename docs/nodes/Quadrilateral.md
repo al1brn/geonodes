@@ -2,6 +2,8 @@
 # Class Quadrilateral
 
 > Geometry node name: _'Quadrilateral'_<br>Blender type:  **GeometryNodeCurvePrimitiveQuadrilateral**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -61,6 +63,8 @@ node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [Quadrilateral](../sockets/Curve.md#quadrilateral) : Constructor

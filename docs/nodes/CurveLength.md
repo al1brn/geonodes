@@ -2,6 +2,8 @@
 # Class CurveLength
 
 > Geometry node name: _'Curve Length'_<br>Blender type:  **GeometryNodeCurveLength**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -43,6 +45,8 @@ node = nodes.CurveLength(curve=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [length](../sockets/Curve.md#length) : Method

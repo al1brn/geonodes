@@ -13,8 +13,6 @@ class Volume(gn.Geometry):
     
 
     | Inherits from: gn.Geometry 
-    
-
     Index 
     
 
@@ -32,8 +30,6 @@ class Volume(gn.Geometry):
         
 
         | Node: VolumeToMesh 
-        
-
         Top Index 
         
 

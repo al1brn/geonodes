@@ -2,6 +2,8 @@
 # Class PointsToVolume
 
 > Geometry node name: _'Points to Volume'_<br>Blender type:  **GeometryNodePointsToVolume**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -55,6 +57,8 @@ node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_am
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Points](../sockets/Points.md) [to_volume](../sockets/Points.md#to_volume) : Method

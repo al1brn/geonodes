@@ -2,6 +2,8 @@
 # Class CurveToMesh
 
 > Geometry node name: _'Curve to Mesh'_<br>Blender type:  **GeometryNodeCurveToMesh**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -45,6 +47,8 @@ node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None, label=N
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [to_mesh](../sockets/Curve.md#to_mesh) : Method

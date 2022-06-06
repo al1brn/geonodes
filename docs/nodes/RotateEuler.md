@@ -2,6 +2,8 @@
 # Class RotateEuler
 
 > Geometry node name: _'Rotate Euler'_<br>Blender type:  **FunctionNodeRotateEuler**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -54,6 +56,8 @@ node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, s
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Vector](../sockets/Vector.md) [rotate_euler](../sockets/Vector.md#rotate_euler) : Stacked method

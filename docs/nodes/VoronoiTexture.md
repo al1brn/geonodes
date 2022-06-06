@@ -2,6 +2,8 @@
 # Class VoronoiTexture
 
 > Geometry node name: _'Voronoi Texture'_<br>Blender type:  **ShaderNodeTexVoronoi**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -62,6 +64,8 @@ node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, ex
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Texture](../sockets/Texture.md) [Voronoi](../sockets/Texture.md#voronoi) : Static method

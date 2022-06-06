@@ -2,6 +2,8 @@
 # Class MergeByDistance
 
 > Geometry node name: _'Merge by Distance'_<br>Blender type:  **GeometryNodeMergeByDistance**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -45,6 +47,8 @@ node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, label
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [merge_by_distance](../sockets/Geometry.md#merge_by_distance) : Stacked method

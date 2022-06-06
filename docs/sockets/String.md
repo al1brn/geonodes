@@ -2,6 +2,8 @@
 # Class String
 
 > Inherits from: ***dsock.String***
+
+
 [Index](/docs/index.md)
 
 ## Properties
@@ -42,6 +44,8 @@
 ### average
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+
+
 [Top](#string) [Index](/docs/index.md)
 
 ```python
@@ -86,6 +90,8 @@ node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation=
 ### direction
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+
+
 [Top](#string) [Index](/docs/index.md)
 
 ```python
@@ -130,6 +136,8 @@ node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation=
 ### dot_product
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+
+
 [Top](#string) [Index](/docs/index.md)
 
 ```python
@@ -174,6 +182,8 @@ node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation=
 ### element
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+
+
 [Top](#string) [Index](/docs/index.md)
 
 ```python
@@ -218,6 +228,8 @@ node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation=
 ### join
 
 > Node: [JoinStrings](../nodes/{self.node_name}.md)
+
+
 [Top](#string) [Index](/docs/index.md)
 
 ```python
@@ -252,6 +264,8 @@ node = nodes.JoinStrings(self, *strings, delimiter=delimiter)
 ### length
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+
+
 [Top](#string) [Index](/docs/index.md)
 
 ```python
@@ -296,6 +310,8 @@ node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation=
 ### replace
 
 > Node: [ReplaceString](../nodes/{self.node_name}.md)
+
+
 [Top](#string) [Index](/docs/index.md)
 
 ```python
@@ -331,6 +347,8 @@ node = nodes.ReplaceString(string=self, find=find, replace=replace)
 ### slice
 
 > Node: [SliceString](../nodes/{self.node_name}.md)
+
+
 [Top](#string) [Index](/docs/index.md)
 
 ```python
@@ -366,6 +384,8 @@ node = nodes.SliceString(string=self, position=position, length=length)
 ### switch
 
 > Node: [Switch](../nodes/{self.node_name}.md)
+
+
 [Top](#string) [Index](/docs/index.md)
 
 ```python
@@ -409,6 +429,8 @@ node = nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING')
 ### to_curves
 
 > Node: [StringToCurves](../nodes/{self.node_name}.md)
+
+
 [Top](#string) [Index](/docs/index.md)
 
 ```python

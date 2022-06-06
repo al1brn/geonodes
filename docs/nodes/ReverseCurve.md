@@ -2,6 +2,8 @@
 # Class ReverseCurve
 
 > Geometry node name: _'Reverse Curve'_<br>Blender type:  **GeometryNodeReverseCurve**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -44,6 +46,8 @@ node = nodes.ReverseCurve(curve=None, selection=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [reverse](../sockets/Curve.md#reverse) : Stacked method

@@ -2,6 +2,8 @@
 # Class SpecialCharacters
 
 > Geometry node name: _'Special Characters'_<br>Blender type:  **FunctionNodeInputSpecialCharacters**
+
+
 [Index](/docs/index.md)
 
 ## Initialization

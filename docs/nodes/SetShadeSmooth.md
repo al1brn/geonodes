@@ -2,6 +2,8 @@
 # Class SetShadeSmooth
 
 > Geometry node name: _'Set Shade Smooth'_<br>Blender type:  **GeometryNodeSetShadeSmooth**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -45,6 +47,8 @@ node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, la
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [set_shade_smooth](../sockets/Geometry.md#set_shade_smooth) : Stacked method

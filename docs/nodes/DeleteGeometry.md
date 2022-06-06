@@ -2,6 +2,8 @@
 # Class DeleteGeometry
 
 > Geometry node name: _'Delete Geometry'_<br>Blender type:  **GeometryNodeDeleteGeometry**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -53,6 +55,8 @@ node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode=
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [delete_geometry](../sockets/Geometry.md#delete_geometry) : Stacked method

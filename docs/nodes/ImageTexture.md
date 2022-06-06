@@ -2,6 +2,8 @@
 # Class ImageTexture
 
 > Geometry node name: _'Image Texture'_<br>Blender type:  **GeometryNodeImageTexture**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -55,6 +57,8 @@ node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Texture](../sockets/Texture.md) [Image](../sockets/Texture.md#image) : Static method

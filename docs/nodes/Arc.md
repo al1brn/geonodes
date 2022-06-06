@@ -2,6 +2,8 @@
 # Class Arc
 
 > Geometry node name: _'Arc'_<br>Blender type:  **GeometryNodeCurveArc**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -63,6 +65,8 @@ node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [ArcFromPoints](../sockets/Curve.md#arcfrompoints) : Static method

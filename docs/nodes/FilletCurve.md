@@ -2,6 +2,8 @@
 # Class FilletCurve
 
 > Geometry node name: _'Fillet Curve'_<br>Blender type:  **GeometryNodeFilletCurve**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -54,6 +56,8 @@ node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None,
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [fillet](../sockets/Curve.md#fillet) : Stacked method

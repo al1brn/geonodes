@@ -2,6 +2,8 @@
 # Class MaterialSelection
 
 > Geometry node name: _'Material Selection'_<br>Blender type:  **GeometryNodeMaterialSelection**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -43,6 +45,8 @@ node = nodes.MaterialSelection(material=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Material](../sockets/Material.md) [selection](../sockets/Material.md#selection) : Method

@@ -2,6 +2,8 @@
 # Class AttributeStatistic
 
 > Geometry node name: _'Attribute Statistic'_<br>Blender type:  **GeometryNodeAttributeStatistic**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -71,6 +73,8 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Float](../sockets/Float.md) [attribute_statistic](../sockets/Float.md#attribute_statistic) : Method

@@ -2,6 +2,8 @@
 # Class BezierSegment
 
 > Geometry node name: _'Bezier Segment'_<br>Blender type:  **GeometryNodeCurvePrimitiveBezierSegment**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -55,6 +57,8 @@ node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_h
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [BezierSegment](../sockets/Curve.md#beziersegment) : Constructor

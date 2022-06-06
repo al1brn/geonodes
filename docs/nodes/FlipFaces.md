@@ -2,6 +2,8 @@
 # Class FlipFaces
 
 > Geometry node name: _'Flip Faces'_<br>Blender type:  **GeometryNodeFlipFaces**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -44,6 +46,8 @@ node = nodes.FlipFaces(mesh=None, selection=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [flip_faces](../sockets/Mesh.md#flip_faces) : Stacked method

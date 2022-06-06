@@ -2,6 +2,8 @@
 # Class EndpointSelection
 
 > Geometry node name: _'Endpoint Selection'_<br>Blender type:  **GeometryNodeCurveEndpointSelection**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -44,6 +46,8 @@ node = nodes.EndpointSelection(start_size=None, end_size=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Spline](../sockets/Spline.md) [capture_endpoint_selection](../sockets/Spline.md#capture_endpoint_selection) : Capture attribute

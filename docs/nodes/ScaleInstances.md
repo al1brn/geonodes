@@ -2,6 +2,8 @@
 # Class ScaleInstances
 
 > Geometry node name: _'Scale Instances'_<br>Blender type:  **GeometryNodeScaleInstances**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -47,6 +49,8 @@ node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=N
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Instances](../sockets/Instances.md) [scale](../sockets/Instances.md#scale) : Stacked method

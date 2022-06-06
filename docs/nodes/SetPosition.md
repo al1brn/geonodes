@@ -2,6 +2,8 @@
 # Class SetPosition
 
 > Geometry node name: _'Set Position'_<br>Blender type:  **GeometryNodeSetPosition**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -46,6 +48,8 @@ node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=No
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [set_position](../sockets/Geometry.md#set_position) : Stacked method

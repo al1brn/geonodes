@@ -2,6 +2,8 @@
 # Class EdgeNeighbors
 
 > Geometry node name: _'Edge Neighbors'_<br>Blender type:  **GeometryNodeInputMeshEdgeNeighbors**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -35,6 +37,8 @@ node = nodes.EdgeNeighbors(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [capture_edge_neighbors](../sockets/Mesh.md#capture_edge_neighbors) : Capture attribute

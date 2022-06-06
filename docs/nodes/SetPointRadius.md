@@ -2,6 +2,8 @@
 # Class SetPointRadius
 
 > Geometry node name: _'Set Point Radius'_<br>Blender type:  **GeometryNodeSetPointRadius**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -45,6 +47,8 @@ node = nodes.SetPointRadius(points=None, selection=None, radius=None, label=None
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Points](../sockets/Points.md) [set_radius](../sockets/Points.md#set_radius) : Stacked method

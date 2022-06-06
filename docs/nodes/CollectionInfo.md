@@ -2,6 +2,8 @@
 # Class CollectionInfo
 
 > Geometry node name: _'Collection Info'_<br>Blender type:  **GeometryNodeCollectionInfo**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -53,6 +55,8 @@ node = nodes.CollectionInfo(collection=None, separate_children=None, reset_child
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Collection](../sockets/Collection.md) [info](../sockets/Collection.md#info) : Method

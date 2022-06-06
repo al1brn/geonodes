@@ -2,6 +2,8 @@
 # Class SampleCurve
 
 > Geometry node name: _'Sample Curve'_<br>Blender type:  **GeometryNodeSampleCurve**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -55,6 +57,8 @@ node = nodes.SampleCurve(curve=None, factor=None, length=None, mode='LENGTH', la
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [sample](../sockets/Curve.md#sample) : Method

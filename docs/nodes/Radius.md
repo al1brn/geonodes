@@ -2,6 +2,8 @@
 # Class Radius
 
 > Geometry node name: _'Radius'_<br>Blender type:  **GeometryNodeInputRadius**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -35,6 +37,8 @@ node = nodes.Radius(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [capture_radius](../sockets/Geometry.md#capture_radius) : Capture attribute

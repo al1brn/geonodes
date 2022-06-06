@@ -2,6 +2,8 @@
 # Class SubdivideCurve
 
 > Geometry node name: _'Subdivide Curve'_<br>Blender type:  **GeometryNodeSubdivideCurve**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -44,6 +46,8 @@ node = nodes.SubdivideCurve(curve=None, cuts=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [subdivide](../sockets/Curve.md#subdivide) : Stacked method

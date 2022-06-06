@@ -2,6 +2,8 @@
 # Class TransferAttribute
 
 > Geometry node name: _'Transfer Attribute'_<br>Blender type:  **GeometryNodeAttributeTransfer**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -66,6 +68,8 @@ node = nodes.TransferAttribute(source=None, attribute=None, source_position=None
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Boolean](../sockets/Boolean.md) [transfer_attribute](../sockets/Boolean.md#transfer_attribute) : Method

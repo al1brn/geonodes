@@ -2,6 +2,8 @@
 # Class ScaleElements
 
 > Geometry node name: _'Scale Elements'_<br>Blender type:  **GeometryNodeScaleElements**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -56,6 +58,8 @@ node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=Non
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [scale_elements](../sockets/Geometry.md#scale_elements) : Stacked method

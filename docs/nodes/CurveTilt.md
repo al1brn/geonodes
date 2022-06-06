@@ -2,6 +2,8 @@
 # Class CurveTilt
 
 > Geometry node name: _'Curve Tilt'_<br>Blender type:  **GeometryNodeInputCurveTilt**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -35,6 +37,8 @@ node = nodes.CurveTilt(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Spline](../sockets/Spline.md) [capture_tilt](../sockets/Spline.md#capture_tilt) : Capture attribute

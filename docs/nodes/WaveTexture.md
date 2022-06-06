@@ -2,6 +2,8 @@
 # Class WaveTexture
 
 > Geometry node name: _'Wave Texture'_<br>Blender type:  **ShaderNodeTexWave**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -61,6 +63,8 @@ node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, 
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Texture](../sockets/Texture.md) [Wave](../sockets/Texture.md#wave) : Static method

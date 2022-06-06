@@ -2,6 +2,8 @@
 # Class SetCurveTilt
 
 > Geometry node name: _'Set Curve Tilt'_<br>Blender type:  **GeometryNodeSetCurveTilt**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -45,6 +47,8 @@ node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [set_tilt](../sockets/Curve.md#set_tilt) : Stacked method

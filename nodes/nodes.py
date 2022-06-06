@@ -10,8 +10,6 @@ class AlignEulerToVector(Node):
 
     | Geometry node name: 'Align Euler to Vector' 
     | Blender type:  FunctionNodeAlignEulerToVector 
-    
-
     Index 
     
 
@@ -54,8 +52,6 @@ class AlignEulerToVector(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Vector AlignToVector   : Constructor 
     - Vector align_to_vector : Stacked method 
     """
@@ -105,8 +101,6 @@ class BooleanMath(Node):
 
     | Geometry node name: 'Boolean Math' 
     | Blender type:  FunctionNodeBooleanMath 
-    
-
     Index 
     
 
@@ -146,8 +140,6 @@ class BooleanMath(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Boolean b_and  : Method 
     - Boolean b_not  : Method 
     - Boolean b_or   : Method 
@@ -194,8 +186,6 @@ class Compare(Node):
 
     | Geometry node name: 'Compare' 
     | Blender type:  FunctionNodeCompare 
-    
-
     Index 
     
 
@@ -247,8 +237,6 @@ class Compare(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Color brighter        : Method 
     - Color darker          : Method 
     - Color equal           : Method 
@@ -350,8 +338,6 @@ class FloatToInteger(Node):
 
     | Geometry node name: 'Float to Integer' 
     | Blender type:  FunctionNodeFloatToInt 
-    
-
     Index 
     
 
@@ -390,8 +376,6 @@ class FloatToInteger(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Float to_integer : Method 
     """
 
@@ -429,8 +413,6 @@ class Boolean(Node):
 
     | Geometry node name: 'Boolean' 
     | Blender type:  FunctionNodeInputBool 
-    
-
     Index 
     
 
@@ -491,8 +473,6 @@ class Color(Node):
 
     | Geometry node name: 'Color' 
     | Blender type:  FunctionNodeInputColor 
-    
-
     Index 
     
 
@@ -536,8 +516,6 @@ class Integer(Node):
 
     | Geometry node name: 'Integer' 
     | Blender type:  FunctionNodeInputInt 
-    
-
     Index 
     
 
@@ -598,8 +576,6 @@ class SpecialCharacters(Node):
 
     | Geometry node name: 'Special Characters' 
     | Blender type:  FunctionNodeInputSpecialCharacters 
-    
-
     Index 
     
 
@@ -645,8 +621,6 @@ class String(Node):
 
     | Geometry node name: 'String' 
     | Blender type:  FunctionNodeInputString 
-    
-
     Index 
     
 
@@ -707,8 +681,6 @@ class Vector(Node):
 
     | Geometry node name: 'Vector' 
     | Blender type:  FunctionNodeInputVector 
-    
-
     Index 
     
 
@@ -769,8 +741,6 @@ class RandomValue(Node):
 
     | Geometry node name: 'Random Value' 
     | Blender type:  FunctionNodeRandomValue 
-    
-
     Index 
     
 
@@ -821,8 +791,6 @@ class RandomValue(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Boolean Random : Constructor 
     - Float Random   : Constructor 
     - Integer Random : Constructor 
@@ -883,8 +851,6 @@ class ReplaceString(Node):
 
     | Geometry node name: 'Replace String' 
     | Blender type:  FunctionNodeReplaceString 
-    
-
     Index 
     
 
@@ -920,8 +886,6 @@ class ReplaceString(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - String replace : Stacked method 
     """
 
@@ -949,8 +913,6 @@ class RotateEuler(Node):
 
     | Geometry node name: 'Rotate Euler' 
     | Blender type:  FunctionNodeRotateEuler 
-    
-
     Index 
     
 
@@ -992,8 +954,6 @@ class RotateEuler(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Vector rotate_euler : Stacked method 
     """
 
@@ -1034,8 +994,6 @@ class SliceString(Node):
 
     | Geometry node name: 'Slice String' 
     | Blender type:  FunctionNodeSliceString 
-    
-
     Index 
     
 
@@ -1071,8 +1029,6 @@ class SliceString(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - String slice : Method 
     """
 
@@ -1100,8 +1056,6 @@ class StringLength(Node):
 
     | Geometry node name: 'String Length' 
     | Blender type:  FunctionNodeStringLength 
-    
-
     Index 
     
 
@@ -1135,8 +1089,6 @@ class StringLength(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - String length : Property 
     """
 
@@ -1162,8 +1114,6 @@ class ValueToString(Node):
 
     | Geometry node name: 'Value to String' 
     | Blender type:  FunctionNodeValueToString 
-    
-
     Index 
     
 
@@ -1198,8 +1148,6 @@ class ValueToString(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Float to_string : Method 
     """
 
@@ -1226,8 +1174,6 @@ class AccumulateField(Node):
 
     | Geometry node name: 'Accumulate Field' 
     | Blender type:  GeometryNodeAccumulateField 
-    
-
     Index 
     
 
@@ -1277,8 +1223,6 @@ class AccumulateField(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Float accumulate_field   : Method 
     - Integer accumulate_field : Method 
     - Vector accumulate_field  : Method 
@@ -1346,8 +1290,6 @@ class DomainSize(Node):
 
     | Geometry node name: 'Domain Size' 
     | Blender type:  GeometryNodeAttributeDomainSize 
-    
-
     Index 
     
 
@@ -1391,8 +1333,6 @@ class DomainSize(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry attribute_domain_size : Method 
     """
 
@@ -1435,8 +1375,6 @@ class AttributeRemove(Node):
 
     | Geometry node name: 'Attribute Remove' 
     | Blender type:  GeometryNodeAttributeRemove 
-    
-
     Index 
     
 
@@ -1471,8 +1409,6 @@ class AttributeRemove(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry attribute_remove : Method 
     """
 
@@ -1499,8 +1435,6 @@ class AttributeStatistic(Node):
 
     | Geometry node name: 'Attribute Statistic' 
     | Blender type:  GeometryNodeAttributeStatistic 
-    
-
     Index 
     
 
@@ -1557,8 +1491,6 @@ class AttributeStatistic(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Float attribute_statistic  : Method 
     - Vector attribute_statistic : Method 
     """
@@ -1630,8 +1562,6 @@ class TransferAttribute(Node):
 
     | Geometry node name: 'Transfer Attribute' 
     | Blender type:  GeometryNodeAttributeTransfer 
-    
-
     Index 
     
 
@@ -1683,8 +1613,6 @@ class TransferAttribute(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Boolean transfer_attribute : Method 
     - Color transfer_attribute   : Method 
     - Float transfer_attribute   : Method 
@@ -1772,8 +1700,6 @@ class BoundingBox(Node):
 
     | Geometry node name: 'Bounding Box' 
     | Blender type:  GeometryNodeBoundBox 
-    
-
     Index 
     
 
@@ -1809,8 +1735,6 @@ class BoundingBox(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry bound_box : Property 
     - Geometry box       : Property 
     - Geometry box_max   : Property 
@@ -1841,8 +1765,6 @@ class CaptureAttribute(Node):
 
     | Geometry node name: 'Capture Attribute' 
     | Blender type:  GeometryNodeCaptureAttribute 
-    
-
     Index 
     
 
@@ -1891,8 +1813,6 @@ class CaptureAttribute(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Boolean capture_attribute  : Method 
     - Color capture_attribute    : Method 
     - Float capture_attribute    : Method 
@@ -1966,8 +1886,6 @@ class CollectionInfo(Node):
 
     | Geometry node name: 'Collection Info' 
     | Blender type:  GeometryNodeCollectionInfo 
-    
-
     Index 
     
 
@@ -2009,8 +1927,6 @@ class CollectionInfo(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Collection info : Method 
     """
 
@@ -2050,8 +1966,6 @@ class ConvexHull(Node):
 
     | Geometry node name: 'Convex Hull' 
     | Blender type:  GeometryNodeConvexHull 
-    
-
     Index 
     
 
@@ -2085,8 +1999,6 @@ class ConvexHull(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry convex_hull : Method 
     """
 
@@ -2112,8 +2024,6 @@ class Arc(Node):
 
     | Geometry node name: 'Arc' 
     | Blender type:  GeometryNodeCurveArc 
-    
-
     Index 
     
 
@@ -2165,8 +2075,6 @@ class Arc(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve ArcFromPoints : Static method 
     - Curve ArcFromRadius : Constructor 
     """
@@ -2217,8 +2125,6 @@ class EndpointSelection(Node):
 
     | Geometry node name: 'Endpoint Selection' 
     | Blender type:  GeometryNodeCurveEndpointSelection 
-    
-
     Index 
     
 
@@ -2253,8 +2159,6 @@ class EndpointSelection(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Spline capture_endpoint_selection : Capture attribute 
     - Spline endpoint_selection         : Attribute 
     """
@@ -2282,8 +2186,6 @@ class HandleTypeSelection(Node):
 
     | Geometry node name: 'Handle Type Selection' 
     | Blender type:  GeometryNodeCurveHandleTypeSelection 
-    
-
     Index 
     
 
@@ -2318,8 +2220,6 @@ class HandleTypeSelection(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Spline capture_handle_type_selection : Capture attribute 
     - Spline handle_type_selection         : Attribute 
     """
@@ -2363,8 +2263,6 @@ class CurveLength(Node):
 
     | Geometry node name: 'Curve Length' 
     | Blender type:  GeometryNodeCurveLength 
-    
-
     Index 
     
 
@@ -2398,8 +2296,6 @@ class CurveLength(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve length : Method 
     """
 
@@ -2425,8 +2321,6 @@ class BezierSegment(Node):
 
     | Geometry node name: 'Bezier Segment' 
     | Blender type:  GeometryNodeCurvePrimitiveBezierSegment 
-    
-
     Index 
     
 
@@ -2470,8 +2364,6 @@ class BezierSegment(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve BezierSegment : Constructor 
     """
 
@@ -2513,8 +2405,6 @@ class CurveCircle(Node):
 
     | Geometry node name: 'Curve Circle' 
     | Blender type:  GeometryNodeCurvePrimitiveCircle 
-    
-
     Index 
     
 
@@ -2559,8 +2449,6 @@ class CurveCircle(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve Circle : Constructor 
     """
 
@@ -2603,8 +2491,6 @@ class CurveLine(Node):
 
     | Geometry node name: 'Curve Line' 
     | Blender type:  GeometryNodeCurvePrimitiveLine 
-    
-
     Index 
     
 
@@ -2646,8 +2532,6 @@ class CurveLine(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve Line : Constructor 
     """
 
@@ -2688,8 +2572,6 @@ class Quadrilateral(Node):
 
     | Geometry node name: 'Quadrilateral' 
     | Blender type:  GeometryNodeCurvePrimitiveQuadrilateral 
-    
-
     Index 
     
 
@@ -2739,8 +2621,6 @@ class Quadrilateral(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve Quadrilateral : Constructor 
     """
 
@@ -2788,8 +2668,6 @@ class QuadraticBezier(Node):
 
     | Geometry node name: 'Quadratic Bezier' 
     | Blender type:  GeometryNodeCurveQuadraticBezier 
-    
-
     Index 
     
 
@@ -2826,8 +2704,6 @@ class QuadraticBezier(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve QuadraticBezier : Constructor 
     """
 
@@ -2856,8 +2732,6 @@ class SetHandleType(Node):
 
     | Geometry node name: 'Set Handle Type' 
     | Blender type:  GeometryNodeCurveSetHandles 
-    
-
     Index 
     
 
@@ -2898,8 +2772,6 @@ class SetHandleType(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve set_handles : Stacked method 
     """
 
@@ -2947,8 +2819,6 @@ class Spiral(Node):
 
     | Geometry node name: 'Spiral' 
     | Blender type:  GeometryNodeCurveSpiral 
-    
-
     Index 
     
 
@@ -2988,8 +2858,6 @@ class Spiral(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve Spiral : Constructor 
     """
 
@@ -3020,8 +2888,6 @@ class SetSplineType(Node):
 
     | Geometry node name: 'Set Spline Type' 
     | Blender type:  GeometryNodeCurveSplineType 
-    
-
     Index 
     
 
@@ -3061,8 +2927,6 @@ class SetSplineType(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve set_spline_type : Stacked method 
     """
 
@@ -3101,8 +2965,6 @@ class Star(Node):
 
     | Geometry node name: 'Star' 
     | Blender type:  GeometryNodeCurveStar 
-    
-
     Index 
     
 
@@ -3140,8 +3002,6 @@ class Star(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve Star : Constructor 
     """
 
@@ -3171,8 +3031,6 @@ class CurveToMesh(Node):
 
     | Geometry node name: 'Curve to Mesh' 
     | Blender type:  GeometryNodeCurveToMesh 
-    
-
     Index 
     
 
@@ -3208,8 +3066,6 @@ class CurveToMesh(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve to_mesh : Method 
     """
 
@@ -3237,8 +3093,6 @@ class CurveToPoints(Node):
 
     | Geometry node name: 'Curve to Points' 
     | Blender type:  GeometryNodeCurveToPoints 
-    
-
     Index 
     
 
@@ -3282,8 +3136,6 @@ class CurveToPoints(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve to_points : Method 
     """
 
@@ -3326,8 +3178,6 @@ class DeleteGeometry(Node):
 
     | Geometry node name: 'Delete Geometry' 
     | Blender type:  GeometryNodeDeleteGeometry 
-    
-
     Index 
     
 
@@ -3368,8 +3218,6 @@ class DeleteGeometry(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry delete_geometry : Stacked method 
     """
 
@@ -3417,8 +3265,6 @@ class DistributePointsOnFaces(Node):
 
     | Geometry node name: 'Distribute Points on Faces' 
     | Blender type:  GeometryNodeDistributePointsOnFaces 
-    
-
     Index 
     
 
@@ -3466,8 +3312,6 @@ class DistributePointsOnFaces(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh distribute_points_on_faces : Method 
     """
 
@@ -3513,8 +3357,6 @@ class DualMesh(Node):
 
     | Geometry node name: 'Dual Mesh' 
     | Blender type:  GeometryNodeDualMesh 
-    
-
     Index 
     
 
@@ -3549,8 +3391,6 @@ class DualMesh(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh dual : Stacked method 
     """
 
@@ -3577,8 +3417,6 @@ class ExtrudeMesh(Node):
 
     | Geometry node name: 'Extrude Mesh' 
     | Blender type:  GeometryNodeExtrudeMesh 
-    
-
     Index 
     
 
@@ -3624,8 +3462,6 @@ class ExtrudeMesh(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh extrude : Method 
     """
 
@@ -3669,8 +3505,6 @@ class FieldAtIndex(Node):
 
     | Geometry node name: 'Field at Index' 
     | Blender type:  GeometryNodeFieldAtIndex 
-    
-
     Index 
     
 
@@ -3718,8 +3552,6 @@ class FieldAtIndex(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Boolean field_at_index : Method 
     - Color field_at_index   : Method 
     - Float field_at_index   : Method 
@@ -3791,8 +3623,6 @@ class FillCurve(Node):
 
     | Geometry node name: 'Fill Curve' 
     | Blender type:  GeometryNodeFillCurve 
-    
-
     Index 
     
 
@@ -3831,8 +3661,6 @@ class FillCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve fill : Stacked method 
     """
 
@@ -3870,8 +3698,6 @@ class FilletCurve(Node):
 
     | Geometry node name: 'Fillet Curve' 
     | Blender type:  GeometryNodeFilletCurve 
-    
-
     Index 
     
 
@@ -3913,8 +3739,6 @@ class FilletCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve fillet : Stacked method 
     """
 
@@ -3955,8 +3779,6 @@ class FlipFaces(Node):
 
     | Geometry node name: 'Flip Faces' 
     | Blender type:  GeometryNodeFlipFaces 
-    
-
     Index 
     
 
@@ -3991,8 +3813,6 @@ class FlipFaces(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh flip_faces : Stacked method 
     """
 
@@ -4019,8 +3839,6 @@ class GeometryToInstance(Node):
 
     | Geometry node name: 'Geometry to Instance' 
     | Blender type:  GeometryNodeGeometryToInstance 
-    
-
     Index 
     
 
@@ -4054,8 +3872,6 @@ class GeometryToInstance(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry to_instance : Method 
     """
 
@@ -4081,8 +3897,6 @@ class Group(Node):
 
     | Geometry node name: 'Group' 
     | Blender type:  GeometryNodeGroup 
-    
-
     Index 
     
 
@@ -4118,8 +3932,6 @@ class ImageTexture(Node):
 
     | Geometry node name: 'Image Texture' 
     | Blender type:  GeometryNodeImageTexture 
-    
-
     Index 
     
 
@@ -4163,8 +3975,6 @@ class ImageTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Texture Image : Static method 
     """
 
@@ -4214,8 +4024,6 @@ class CurveHandlePositions(Node):
 
     | Geometry node name: 'Curve Handle Positions' 
     | Blender type:  GeometryNodeInputCurveHandlePositions 
-    
-
     Index 
     
 
@@ -4250,8 +4058,6 @@ class CurveHandlePositions(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Spline capture_handle_positions : Capture attribute 
     - Spline left_handle_position     : Attribute 
     - Spline right_handle_position    : Attribute 
@@ -4280,8 +4086,6 @@ class CurveTilt(Node):
 
     | Geometry node name: 'Curve Tilt' 
     | Blender type:  GeometryNodeInputCurveTilt 
-    
-
     Index 
     
 
@@ -4310,8 +4114,6 @@ class CurveTilt(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Spline capture_tilt : Capture attribute 
     - Spline tilt         : Attribute 
     """
@@ -4334,8 +4136,6 @@ class ID(Node):
 
     | Geometry node name: 'ID' 
     | Blender type:  GeometryNodeInputID 
-    
-
     Index 
     
 
@@ -4364,8 +4164,6 @@ class ID(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry ID         : Attribute 
     - Geometry capture_ID : Capture attribute 
     - Spline spline_ID    : Attribute 
@@ -4389,8 +4187,6 @@ class Index(Node):
 
     | Geometry node name: 'Index' 
     | Blender type:  GeometryNodeInputIndex 
-    
-
     Index 
     
 
@@ -4419,8 +4215,6 @@ class Index(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry capture_index   : Capture attribute 
     - Geometry index           : Attribute 
     - Instances instance_index : Attribute 
@@ -4446,8 +4240,6 @@ class Material(Node):
 
     | Geometry node name: 'Material' 
     | Blender type:  GeometryNodeInputMaterial 
-    
-
     Index 
     
 
@@ -4491,8 +4283,6 @@ class MaterialIndex(Node):
 
     | Geometry node name: 'Material Index' 
     | Blender type:  GeometryNodeInputMaterialIndex 
-    
-
     Index 
     
 
@@ -4521,8 +4311,6 @@ class MaterialIndex(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh capture_material_index : Capture attribute 
     - Mesh material_index         : Attribute 
     """
@@ -4545,8 +4333,6 @@ class EdgeAngle(Node):
 
     | Geometry node name: 'Edge Angle' 
     | Blender type:  GeometryNodeInputMeshEdgeAngle 
-    
-
     Index 
     
 
@@ -4576,8 +4362,6 @@ class EdgeAngle(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh capture_edge_angle  : Capture attribute 
     - Mesh corner_ID           : Attribute 
     - Mesh corner_index        : Attribute 
@@ -4611,8 +4395,6 @@ class EdgeNeighbors(Node):
 
     | Geometry node name: 'Edge Neighbors' 
     | Blender type:  GeometryNodeInputMeshEdgeNeighbors 
-    
-
     Index 
     
 
@@ -4641,8 +4423,6 @@ class EdgeNeighbors(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh capture_edge_neighbors : Capture attribute 
     - Mesh edge_neighbors         : Attribute 
     """
@@ -4665,8 +4445,6 @@ class EdgeVertices(Node):
 
     | Geometry node name: 'Edge Vertices' 
     | Blender type:  GeometryNodeInputMeshEdgeVertices 
-    
-
     Index 
     
 
@@ -4698,8 +4476,6 @@ class EdgeVertices(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh capture_edge_vertices   : Capture attribute 
     - Mesh edge_vertices_index1    : Attribute 
     - Mesh edge_vertices_index2    : Attribute 
@@ -4728,8 +4504,6 @@ class FaceArea(Node):
 
     | Geometry node name: 'Face Area' 
     | Blender type:  GeometryNodeInputMeshFaceArea 
-    
-
     Index 
     
 
@@ -4758,8 +4532,6 @@ class FaceArea(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh capture_face_area : Capture attribute 
     - Mesh face_area         : Attribute 
     """
@@ -4782,8 +4554,6 @@ class FaceNeighbors(Node):
 
     | Geometry node name: 'Face Neighbors' 
     | Blender type:  GeometryNodeInputMeshFaceNeighbors 
-    
-
     Index 
     
 
@@ -4813,8 +4583,6 @@ class FaceNeighbors(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh capture_face_neighbors      : Capture attribute 
     - Mesh face_neighbors_face_count   : Attribute 
     - Mesh face_neighbors_vertex_count : Attribute 
@@ -4839,8 +4607,6 @@ class MeshIsland(Node):
 
     | Geometry node name: 'Mesh Island' 
     | Blender type:  GeometryNodeInputMeshIsland 
-    
-
     Index 
     
 
@@ -4870,8 +4636,6 @@ class MeshIsland(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh capture_island : Capture attribute 
     - Mesh island         : Attribute 
     """
@@ -4895,8 +4659,6 @@ class VertexNeighbors(Node):
 
     | Geometry node name: 'Vertex Neighbors' 
     | Blender type:  GeometryNodeInputMeshVertexNeighbors 
-    
-
     Index 
     
 
@@ -4926,8 +4688,6 @@ class VertexNeighbors(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh capture_vertex_neighbors      : Capture attribute 
     - Mesh vertex_neighbors_face_count   : Attribute 
     - Mesh vertex_neighbors_vertex_count : Attribute 
@@ -4952,8 +4712,6 @@ class Normal(Node):
 
     | Geometry node name: 'Normal' 
     | Blender type:  GeometryNodeInputNormal 
-    
-
     Index 
     
 
@@ -4982,8 +4740,6 @@ class Normal(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry capture_normal : Capture attribute 
     - Geometry normal         : Attribute 
     """
@@ -5006,8 +4762,6 @@ class Position(Node):
 
     | Geometry node name: 'Position' 
     | Blender type:  GeometryNodeInputPosition 
-    
-
     Index 
     
 
@@ -5036,8 +4790,6 @@ class Position(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry capture_position : Capture attribute 
     - Geometry position         : Attribute 
     """
@@ -5060,8 +4812,6 @@ class Radius(Node):
 
     | Geometry node name: 'Radius' 
     | Blender type:  GeometryNodeInputRadius 
-    
-
     Index 
     
 
@@ -5090,8 +4840,6 @@ class Radius(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry capture_radius : Capture attribute 
     - Geometry radius         : Attribute 
     """
@@ -5114,8 +4862,6 @@ class SceneTime(Node):
 
     | Geometry node name: 'Scene Time' 
     | Blender type:  GeometryNodeInputSceneTime 
-    
-
     Index 
     
 
@@ -5145,8 +4891,6 @@ class SceneTime(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - functions scene : Function 
     """
 
@@ -5169,8 +4913,6 @@ class IsShadeSmooth(Node):
 
     | Geometry node name: 'Is Shade Smooth' 
     | Blender type:  GeometryNodeInputShadeSmooth 
-    
-
     Index 
     
 
@@ -5199,8 +4941,6 @@ class IsShadeSmooth(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh capture_shade_smooth : Capture attribute 
     - Mesh shade_smooth         : Attribute 
     """
@@ -5223,8 +4963,6 @@ class IsSplineCyclic(Node):
 
     | Geometry node name: 'Is Spline Cyclic' 
     | Blender type:  GeometryNodeInputSplineCyclic 
-    
-
     Index 
     
 
@@ -5253,8 +4991,6 @@ class IsSplineCyclic(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Spline capture_cyclic : Capture attribute 
     - Spline cyclic         : Attribute 
     """
@@ -5277,8 +5013,6 @@ class SplineResolution(Node):
 
     | Geometry node name: 'Spline Resolution' 
     | Blender type:  GeometryNodeInputSplineResolution 
-    
-
     Index 
     
 
@@ -5307,8 +5041,6 @@ class SplineResolution(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Spline capture_resolution : Capture attribute 
     - Spline resolution         : Attribute 
     """
@@ -5331,8 +5063,6 @@ class CurveTangent(Node):
 
     | Geometry node name: 'Curve Tangent' 
     | Blender type:  GeometryNodeInputTangent 
-    
-
     Index 
     
 
@@ -5361,8 +5091,6 @@ class CurveTangent(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Spline capture_tangent : Capture attribute 
     - Spline tangent         : Attribute 
     """
@@ -5385,8 +5113,6 @@ class InstanceOnPoints(Node):
 
     | Geometry node name: 'Instance on Points' 
     | Blender type:  GeometryNodeInstanceOnPoints 
-    
-
     Index 
     
 
@@ -5427,8 +5153,6 @@ class InstanceOnPoints(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Points instance_on_points : Method 
     """
 
@@ -5460,8 +5184,6 @@ class InstancesToPoints(Node):
 
     | Geometry node name: 'Instances to Points' 
     | Blender type:  GeometryNodeInstancesToPoints 
-    
-
     Index 
     
 
@@ -5498,8 +5220,6 @@ class InstancesToPoints(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Instances to_points : Method 
     """
 
@@ -5528,8 +5248,6 @@ class IsViewport(Node):
 
     | Geometry node name: 'Is Viewport' 
     | Blender type:  GeometryNodeIsViewport 
-    
-
     Index 
     
 
@@ -5558,8 +5276,6 @@ class IsViewport(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry is_viewport : Static method 
     """
 
@@ -5581,8 +5297,6 @@ class JoinGeometry(Node):
 
     | Geometry node name: 'Join Geometry' 
     | Blender type:  GeometryNodeJoinGeometry 
-    
-
     Index 
     
 
@@ -5616,8 +5330,6 @@ class JoinGeometry(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry join : Method 
     """
 
@@ -5643,8 +5355,6 @@ class MaterialSelection(Node):
 
     | Geometry node name: 'Material Selection' 
     | Blender type:  GeometryNodeMaterialSelection 
-    
-
     Index 
     
 
@@ -5678,8 +5388,6 @@ class MaterialSelection(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Material selection              : Method 
     - Mesh capture_material_selection : Capture attribute 
     - Mesh material_selection         : Attribute 
@@ -5707,8 +5415,6 @@ class MergeByDistance(Node):
 
     | Geometry node name: 'Merge by Distance' 
     | Blender type:  GeometryNodeMergeByDistance 
-    
-
     Index 
     
 
@@ -5744,8 +5450,6 @@ class MergeByDistance(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry merge_by_distance : Stacked method 
     """
 
@@ -5773,8 +5477,6 @@ class MeshBoolean(Node):
 
     | Geometry node name: 'Mesh Boolean' 
     | Blender type:  GeometryNodeMeshBoolean 
-    
-
     Index 
     
 
@@ -5817,8 +5519,6 @@ class MeshBoolean(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh difference : Method 
     - Mesh intersect  : Method 
     - Mesh union      : Method 
@@ -5861,8 +5561,6 @@ class MeshCircle(Node):
 
     | Geometry node name: 'Mesh Circle' 
     | Blender type:  GeometryNodeMeshCircle 
-    
-
     Index 
     
 
@@ -5902,8 +5600,6 @@ class MeshCircle(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh Circle : Constructor 
     """
 
@@ -5942,8 +5638,6 @@ class Cone(Node):
 
     | Geometry node name: 'Cone' 
     | Blender type:  GeometryNodeMeshCone 
-    
-
     Index 
     
 
@@ -5991,8 +5685,6 @@ class Cone(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh Cone : Constructor 
     """
 
@@ -6038,8 +5730,6 @@ class Cube(Node):
 
     | Geometry node name: 'Cube' 
     | Blender type:  GeometryNodeMeshCube 
-    
-
     Index 
     
 
@@ -6076,8 +5766,6 @@ class Cube(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh Cube : Constructor 
     """
 
@@ -6106,8 +5794,6 @@ class Cylinder(Node):
 
     | Geometry node name: 'Cylinder' 
     | Blender type:  GeometryNodeMeshCylinder 
-    
-
     Index 
     
 
@@ -6154,8 +5840,6 @@ class Cylinder(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh Cylinder : Constructor 
     """
 
@@ -6200,8 +5884,6 @@ class Grid(Node):
 
     | Geometry node name: 'Grid' 
     | Blender type:  GeometryNodeMeshGrid 
-    
-
     Index 
     
 
@@ -6238,8 +5920,6 @@ class Grid(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh Grid : Constructor 
     """
 
@@ -6268,8 +5948,6 @@ class IcoSphere(Node):
 
     | Geometry node name: 'Ico Sphere' 
     | Blender type:  GeometryNodeMeshIcoSphere 
-    
-
     Index 
     
 
@@ -6304,8 +5982,6 @@ class IcoSphere(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh IcoSphere : Constructor 
     """
 
@@ -6332,8 +6008,6 @@ class MeshLine(Node):
 
     | Geometry node name: 'Mesh Line' 
     | Blender type:  GeometryNodeMeshLine 
-    
-
     Index 
     
 
@@ -6377,8 +6051,6 @@ class MeshLine(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh Line : Constructor 
     """
 
@@ -6428,8 +6100,6 @@ class MeshToCurve(Node):
 
     | Geometry node name: 'Mesh to Curve' 
     | Blender type:  GeometryNodeMeshToCurve 
-    
-
     Index 
     
 
@@ -6464,8 +6134,6 @@ class MeshToCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh to_curve : Method 
     """
 
@@ -6492,8 +6160,6 @@ class MeshToPoints(Node):
 
     | Geometry node name: 'Mesh to Points' 
     | Blender type:  GeometryNodeMeshToPoints 
-    
-
     Index 
     
 
@@ -6535,8 +6201,6 @@ class MeshToPoints(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh to_points : Method 
     """
 
@@ -6577,8 +6241,6 @@ class UvSphere(Node):
 
     | Geometry node name: 'UV Sphere' 
     | Blender type:  GeometryNodeMeshUVSphere 
-    
-
     Index 
     
 
@@ -6614,8 +6276,6 @@ class UvSphere(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh UVSphere : Constructor 
     """
 
@@ -6643,8 +6303,6 @@ class ObjectInfo(Node):
 
     | Geometry node name: 'Object Info' 
     | Blender type:  GeometryNodeObjectInfo 
-    
-
     Index 
     
 
@@ -6687,8 +6345,6 @@ class ObjectInfo(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Object info : Property 
     """
 
@@ -6730,8 +6386,6 @@ class PointsToVertices(Node):
 
     | Geometry node name: 'Points to Vertices' 
     | Blender type:  GeometryNodePointsToVertices 
-    
-
     Index 
     
 
@@ -6766,8 +6420,6 @@ class PointsToVertices(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Points to_vertices : Method 
     """
 
@@ -6794,8 +6446,6 @@ class PointsToVolume(Node):
 
     | Geometry node name: 'Points to Volume' 
     | Blender type:  GeometryNodePointsToVolume 
-    
-
     Index 
     
 
@@ -6839,8 +6489,6 @@ class PointsToVolume(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Points to_volume : Method 
     """
 
@@ -6882,8 +6530,6 @@ class GeometryProximity(Node):
 
     | Geometry node name: 'Geometry Proximity' 
     | Blender type:  GeometryNodeProximity 
-    
-
     Index 
     
 
@@ -6924,8 +6570,6 @@ class GeometryProximity(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry proximity : Method 
     """
 
@@ -6965,8 +6609,6 @@ class Raycast(Node):
 
     | Geometry node name: 'Raycast' 
     | Blender type:  GeometryNodeRaycast 
-    
-
     Index 
     
 
@@ -7022,8 +6664,6 @@ class Raycast(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Boolean raycast : Method 
     - Color raycast   : Method 
     - Float raycast   : Method 
@@ -7102,8 +6742,6 @@ class RealizeInstances(Node):
 
     | Geometry node name: 'Realize Instances' 
     | Blender type:  GeometryNodeRealizeInstances 
-    
-
     Index 
     
 
@@ -7142,8 +6780,6 @@ class RealizeInstances(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry realize_instances : Stacked method 
     """
 
@@ -7181,8 +6817,6 @@ class ReplaceMaterial(Node):
 
     | Geometry node name: 'Replace Material' 
     | Blender type:  GeometryNodeReplaceMaterial 
-    
-
     Index 
     
 
@@ -7218,8 +6852,6 @@ class ReplaceMaterial(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry replace_material : Stacked method 
     """
 
@@ -7247,8 +6879,6 @@ class ResampleCurve(Node):
 
     | Geometry node name: 'Resample Curve' 
     | Blender type:  GeometryNodeResampleCurve 
-    
-
     Index 
     
 
@@ -7290,8 +6920,6 @@ class ResampleCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve resample : Stacked method 
     """
 
@@ -7332,8 +6960,6 @@ class ReverseCurve(Node):
 
     | Geometry node name: 'Reverse Curve' 
     | Blender type:  GeometryNodeReverseCurve 
-    
-
     Index 
     
 
@@ -7368,8 +6994,6 @@ class ReverseCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve reverse : Stacked method 
     """
 
@@ -7396,8 +7020,6 @@ class RotateInstances(Node):
 
     | Geometry node name: 'Rotate Instances' 
     | Blender type:  GeometryNodeRotateInstances 
-    
-
     Index 
     
 
@@ -7436,8 +7058,6 @@ class RotateInstances(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Instances rotate : Stacked method 
     """
 
@@ -7467,8 +7087,6 @@ class SampleCurve(Node):
 
     | Geometry node name: 'Sample Curve' 
     | Blender type:  GeometryNodeSampleCurve 
-    
-
     Index 
     
 
@@ -7511,8 +7129,6 @@ class SampleCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve sample : Method 
     """
 
@@ -7554,8 +7170,6 @@ class ScaleElements(Node):
 
     | Geometry node name: 'Scale Elements' 
     | Blender type:  GeometryNodeScaleElements 
-    
-
     Index 
     
 
@@ -7600,8 +7214,6 @@ class ScaleElements(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry scale_elements : Stacked method 
     """
 
@@ -7652,8 +7264,6 @@ class ScaleInstances(Node):
 
     | Geometry node name: 'Scale Instances' 
     | Blender type:  GeometryNodeScaleInstances 
-    
-
     Index 
     
 
@@ -7692,8 +7302,6 @@ class ScaleInstances(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Instances scale : Stacked method 
     """
 
@@ -7723,8 +7331,6 @@ class SeparateComponents(Node):
 
     | Geometry node name: 'Separate Components' 
     | Blender type:  GeometryNodeSeparateComponents 
-    
-
     Index 
     
 
@@ -7762,8 +7368,6 @@ class SeparateComponents(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry components          : Property 
     - Geometry curve_component     : Property 
     - Geometry instances_component : Property 
@@ -7798,8 +7402,6 @@ class SeparateGeometry(Node):
 
     | Geometry node name: 'Separate Geometry' 
     | Blender type:  GeometryNodeSeparateGeometry 
-    
-
     Index 
     
 
@@ -7840,8 +7442,6 @@ class SeparateGeometry(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry components : Method 
     """
 
@@ -7881,8 +7481,6 @@ class SetHandlePositions(Node):
 
     | Geometry node name: 'Set Handle Positions' 
     | Blender type:  GeometryNodeSetCurveHandlePositions 
-    
-
     Index 
     
 
@@ -7924,8 +7522,6 @@ class SetHandlePositions(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve set_handle_positions : Stacked method 
     """
 
@@ -7966,8 +7562,6 @@ class SetCurveRadius(Node):
 
     | Geometry node name: 'Set Curve Radius' 
     | Blender type:  GeometryNodeSetCurveRadius 
-    
-
     Index 
     
 
@@ -8003,8 +7597,6 @@ class SetCurveRadius(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve set_radius : Stacked method 
     """
 
@@ -8032,8 +7624,6 @@ class SetCurveTilt(Node):
 
     | Geometry node name: 'Set Curve Tilt' 
     | Blender type:  GeometryNodeSetCurveTilt 
-    
-
     Index 
     
 
@@ -8069,8 +7659,6 @@ class SetCurveTilt(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve set_tilt : Stacked method 
     """
 
@@ -8098,8 +7686,6 @@ class SetID(Node):
 
     | Geometry node name: 'Set ID' 
     | Blender type:  GeometryNodeSetID 
-    
-
     Index 
     
 
@@ -8135,8 +7721,6 @@ class SetID(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry set_ID : Stacked method 
     """
 
@@ -8164,8 +7748,6 @@ class SetMaterial(Node):
 
     | Geometry node name: 'Set Material' 
     | Blender type:  GeometryNodeSetMaterial 
-    
-
     Index 
     
 
@@ -8201,8 +7783,6 @@ class SetMaterial(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry set_material : Stacked method 
     """
 
@@ -8230,8 +7810,6 @@ class SetMaterialIndex(Node):
 
     | Geometry node name: 'Set Material Index' 
     | Blender type:  GeometryNodeSetMaterialIndex 
-    
-
     Index 
     
 
@@ -8267,8 +7845,6 @@ class SetMaterialIndex(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry set_material_index : Stacked method 
     """
 
@@ -8296,8 +7872,6 @@ class SetPointRadius(Node):
 
     | Geometry node name: 'Set Point Radius' 
     | Blender type:  GeometryNodeSetPointRadius 
-    
-
     Index 
     
 
@@ -8333,8 +7907,6 @@ class SetPointRadius(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Points set_radius : Stacked method 
     """
 
@@ -8362,8 +7934,6 @@ class SetPosition(Node):
 
     | Geometry node name: 'Set Position' 
     | Blender type:  GeometryNodeSetPosition 
-    
-
     Index 
     
 
@@ -8400,8 +7970,6 @@ class SetPosition(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry set_position : Stacked method 
     """
 
@@ -8430,8 +7998,6 @@ class SetShadeSmooth(Node):
 
     | Geometry node name: 'Set Shade Smooth' 
     | Blender type:  GeometryNodeSetShadeSmooth 
-    
-
     Index 
     
 
@@ -8467,8 +8033,6 @@ class SetShadeSmooth(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry set_shade_smooth : Stacked method 
     """
 
@@ -8496,8 +8060,6 @@ class SetSplineCyclic(Node):
 
     | Geometry node name: 'Set Spline Cyclic' 
     | Blender type:  GeometryNodeSetSplineCyclic 
-    
-
     Index 
     
 
@@ -8533,8 +8095,6 @@ class SetSplineCyclic(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Spline set_cyclic : Stacked method 
     """
 
@@ -8562,8 +8122,6 @@ class SetSplineResolution(Node):
 
     | Geometry node name: 'Set Spline Resolution' 
     | Blender type:  GeometryNodeSetSplineResolution 
-    
-
     Index 
     
 
@@ -8599,8 +8157,6 @@ class SetSplineResolution(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Spline set_resolution : Stacked method 
     """
 
@@ -8628,8 +8184,6 @@ class SplineLength(Node):
 
     | Geometry node name: 'Spline Length' 
     | Blender type:  GeometryNodeSplineLength 
-    
-
     Index 
     
 
@@ -8659,8 +8213,6 @@ class SplineLength(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Spline capture_length : Capture attribute 
     - Spline length         : Attribute 
     - Spline point_count    : Attribute 
@@ -8685,8 +8237,6 @@ class SplineParameter(Node):
 
     | Geometry node name: 'Spline Parameter' 
     | Blender type:  GeometryNodeSplineParameter 
-    
-
     Index 
     
 
@@ -8717,8 +8267,6 @@ class SplineParameter(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Spline capture_parameter : Capture attribute 
     - Spline factor            : Attribute 
     - Spline parameter_index   : Attribute 
@@ -8745,8 +8293,6 @@ class SplitEdges(Node):
 
     | Geometry node name: 'Split Edges' 
     | Blender type:  GeometryNodeSplitEdges 
-    
-
     Index 
     
 
@@ -8781,8 +8327,6 @@ class SplitEdges(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh split_edges : Stacked method 
     """
 
@@ -8809,8 +8353,6 @@ class JoinStrings(Node):
 
     | Geometry node name: 'Join Strings' 
     | Blender type:  GeometryNodeStringJoin 
-    
-
     Index 
     
 
@@ -8845,8 +8387,6 @@ class JoinStrings(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - String join            : Method 
     - functions join_strings : Function 
     """
@@ -8874,8 +8414,6 @@ class StringToCurves(Node):
 
     | Geometry node name: 'String to Curves' 
     | Blender type:  GeometryNodeStringToCurves 
-    
-
     Index 
     
 
@@ -8929,8 +8467,6 @@ class StringToCurves(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - String to_curves : Method 
     """
 
@@ -9004,8 +8540,6 @@ class SubdivideCurve(Node):
 
     | Geometry node name: 'Subdivide Curve' 
     | Blender type:  GeometryNodeSubdivideCurve 
-    
-
     Index 
     
 
@@ -9040,8 +8574,6 @@ class SubdivideCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve subdivide : Stacked method 
     """
 
@@ -9068,8 +8600,6 @@ class SubdivideMesh(Node):
 
     | Geometry node name: 'Subdivide Mesh' 
     | Blender type:  GeometryNodeSubdivideMesh 
-    
-
     Index 
     
 
@@ -9104,8 +8634,6 @@ class SubdivideMesh(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh subdivide : Stacked method 
     """
 
@@ -9132,8 +8660,6 @@ class SubdivisionSurface(Node):
 
     | Geometry node name: 'Subdivision Surface' 
     | Blender type:  GeometryNodeSubdivisionSurface 
-    
-
     Index 
     
 
@@ -9177,8 +8703,6 @@ class SubdivisionSurface(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh subdivision_surface : Stacked method 
     """
 
@@ -9227,8 +8751,6 @@ class Switch(Node):
 
     | Geometry node name: 'Switch' 
     | Blender type:  GeometryNodeSwitch 
-    
-
     Index 
     
 
@@ -9279,8 +8801,6 @@ class Switch(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Boolean switch    : Method 
     - Collection switch : Method 
     - Float switch      : Method 
@@ -9389,8 +8909,6 @@ class Transform(Node):
 
     | Geometry node name: 'Transform' 
     | Blender type:  GeometryNodeTransform 
-    
-
     Index 
     
 
@@ -9427,8 +8945,6 @@ class Transform(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Geometry transform : Stacked method 
     """
 
@@ -9457,8 +8973,6 @@ class TranslateInstances(Node):
 
     | Geometry node name: 'Translate Instances' 
     | Blender type:  GeometryNodeTranslateInstances 
-    
-
     Index 
     
 
@@ -9495,8 +9009,6 @@ class TranslateInstances(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Instances translate : Stacked method 
     """
 
@@ -9525,8 +9037,6 @@ class Triangulate(Node):
 
     | Geometry node name: 'Triangulate' 
     | Blender type:  GeometryNodeTriangulate 
-    
-
     Index 
     
 
@@ -9569,8 +9079,6 @@ class Triangulate(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Mesh triangulate : Stacked method 
     """
 
@@ -9619,8 +9127,6 @@ class TrimCurve(Node):
 
     | Geometry node name: 'Trim Curve' 
     | Blender type:  GeometryNodeTrimCurve 
-    
-
     Index 
     
 
@@ -9663,8 +9169,6 @@ class TrimCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Curve trim : Stacked method 
     """
 
@@ -9706,8 +9210,6 @@ class VolumeToMesh(Node):
 
     | Geometry node name: 'Volume to Mesh' 
     | Blender type:  GeometryNodeVolumeToMesh 
-    
-
     Index 
     
 
@@ -9751,8 +9253,6 @@ class VolumeToMesh(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Volume to_mesh : Method 
     """
 
@@ -9794,8 +9294,6 @@ class Clamp(Node):
 
     | Geometry node name: 'Clamp' 
     | Blender type:  ShaderNodeClamp 
-    
-
     Index 
     
 
@@ -9836,8 +9334,6 @@ class Clamp(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Float clamp : Stacked method 
     """
 
@@ -9877,8 +9373,6 @@ class CombineRgb(Node):
 
     | Geometry node name: 'Combine RGB' 
     | Blender type:  ShaderNodeCombineRGB 
-    
-
     Index 
     
 
@@ -9914,8 +9408,6 @@ class CombineRgb(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Color Combine : Constructor 
     """
 
@@ -9943,8 +9435,6 @@ class CombineXyz(Node):
 
     | Geometry node name: 'Combine XYZ' 
     | Blender type:  ShaderNodeCombineXYZ 
-    
-
     Index 
     
 
@@ -9980,8 +9470,6 @@ class CombineXyz(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Vector Combine : Constructor 
     """
 
@@ -10009,8 +9497,6 @@ class FloatCurve(Node):
 
     | Geometry node name: 'Float Curve' 
     | Blender type:  ShaderNodeFloatCurve 
-    
-
     Index 
     
 
@@ -10045,8 +9531,6 @@ class FloatCurve(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Float curve : Stacked method 
     """
 
@@ -10073,8 +9557,6 @@ class MapRange(Node):
 
     | Geometry node name: 'Map Range' 
     | Blender type:  ShaderNodeMapRange 
-    
-
     Index 
     
 
@@ -10129,8 +9611,6 @@ class MapRange(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Float map_range  : Method 
     - Vector map_range : Method 
     """
@@ -10201,8 +9681,6 @@ class Math(Node):
 
     | Geometry node name: 'Math' 
     | Blender type:  ShaderNodeMath 
-    
-
     Index 
     
 
@@ -10247,8 +9725,6 @@ class Math(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Float abs              : Method 
     - Float add              : Method 
     - Float arccos           : Method 
@@ -10407,8 +9883,6 @@ class Mix(Node):
 
     | Geometry node name: 'Mix' 
     | Blender type:  ShaderNodeMixRGB 
-    
-
     Index 
     
 
@@ -10451,8 +9925,6 @@ class Mix(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Color add                    : Method 
     - Color burn                   : Method 
     - Color darken                 : Method 
@@ -10537,8 +10009,6 @@ class RgbCurves(Node):
 
     | Geometry node name: 'RGB Curves' 
     | Blender type:  ShaderNodeRGBCurve 
-    
-
     Index 
     
 
@@ -10573,8 +10043,6 @@ class RgbCurves(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Color curves : Stacked method 
     """
 
@@ -10601,8 +10069,6 @@ class SeparateRgb(Node):
 
     | Geometry node name: 'Separate RGB' 
     | Blender type:  ShaderNodeSeparateRGB 
-    
-
     Index 
     
 
@@ -10638,8 +10104,6 @@ class SeparateRgb(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Color separate : Property 
     """
 
@@ -10667,8 +10131,6 @@ class SeparateXyz(Node):
 
     | Geometry node name: 'Separate XYZ' 
     | Blender type:  ShaderNodeSeparateXYZ 
-    
-
     Index 
     
 
@@ -10704,8 +10166,6 @@ class SeparateXyz(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Vector separate : Property 
     """
 
@@ -10733,8 +10193,6 @@ class BrickTexture(Node):
 
     | Geometry node name: 'Brick Texture' 
     | Blender type:  ShaderNodeTexBrick 
-    
-
     Index 
     
 
@@ -10788,8 +10246,6 @@ class BrickTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Texture Brick : Static method 
     """
 
@@ -10864,8 +10320,6 @@ class CheckerTexture(Node):
 
     | Geometry node name: 'Checker Texture' 
     | Blender type:  ShaderNodeTexChecker 
-    
-
     Index 
     
 
@@ -10903,8 +10357,6 @@ class CheckerTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Texture Checker : Static method 
     """
 
@@ -10934,8 +10386,6 @@ class GradientTexture(Node):
 
     | Geometry node name: 'Gradient Texture' 
     | Blender type:  ShaderNodeTexGradient 
-    
-
     Index 
     
 
@@ -10976,8 +10426,6 @@ class GradientTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Texture Gradient : Static method 
     """
 
@@ -11016,8 +10464,6 @@ class MagicTexture(Node):
 
     | Geometry node name: 'Magic Texture' 
     | Blender type:  ShaderNodeTexMagic 
-    
-
     Index 
     
 
@@ -11059,8 +10505,6 @@ class MagicTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Texture Magic : Static method 
     """
 
@@ -11101,8 +10545,6 @@ class MusgraveTexture(Node):
 
     | Geometry node name: 'Musgrave Texture' 
     | Blender type:  ShaderNodeTexMusgrave 
-    
-
     Index 
     
 
@@ -11150,8 +10592,6 @@ class MusgraveTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Texture Musgrave : Static method 
     """
 
@@ -11205,8 +10645,6 @@ class NoiseTexture(Node):
 
     | Geometry node name: 'Noise Texture' 
     | Blender type:  ShaderNodeTexNoise 
-    
-
     Index 
     
 
@@ -11252,8 +10690,6 @@ class NoiseTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Texture Noise : Static method 
     """
 
@@ -11297,8 +10733,6 @@ class VoronoiTexture(Node):
 
     | Geometry node name: 'Voronoi Texture' 
     | Blender type:  ShaderNodeTexVoronoi 
-    
-
     Index 
     
 
@@ -11349,8 +10783,6 @@ class VoronoiTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Texture Voronoi : Static method 
     """
 
@@ -11415,8 +10847,6 @@ class WaveTexture(Node):
 
     | Geometry node name: 'Wave Texture' 
     | Blender type:  ShaderNodeTexWave 
-    
-
     Index 
     
 
@@ -11466,8 +10896,6 @@ class WaveTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Texture Wave : Static method 
     """
 
@@ -11539,8 +10967,6 @@ class WhiteNoiseTexture(Node):
 
     | Geometry node name: 'White Noise Texture' 
     | Blender type:  ShaderNodeTexWhiteNoise 
-    
-
     Index 
     
 
@@ -11581,8 +11007,6 @@ class WhiteNoiseTexture(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Texture WhiteNoise : Static method 
     """
 
@@ -11622,8 +11046,6 @@ class Colorramp(Node):
 
     | Geometry node name: 'ColorRamp' 
     | Blender type:  ShaderNodeValToRGB 
-    
-
     Index 
     
 
@@ -11658,8 +11080,6 @@ class Colorramp(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Float color_ramp : Method 
     """
 
@@ -11686,8 +11106,6 @@ class Value(Node):
 
     | Geometry node name: 'Value' 
     | Blender type:  ShaderNodeValue 
-    
-
     Index 
     
 
@@ -11731,8 +11149,6 @@ class VectorCurves(Node):
 
     | Geometry node name: 'Vector Curves' 
     | Blender type:  ShaderNodeVectorCurve 
-    
-
     Index 
     
 
@@ -11767,8 +11183,6 @@ class VectorCurves(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Vector curves : Stacked method 
     """
 
@@ -11795,8 +11209,6 @@ class VectorMath(Node):
 
     | Geometry node name: 'Vector Math' 
     | Blender type:  ShaderNodeVectorMath 
-    
-
     Index 
     
 
@@ -11841,8 +11253,6 @@ class VectorMath(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Vector absolute               : Method 
     - Vector add                    : Method 
     - Vector ceil                   : Method 
@@ -11937,8 +11347,6 @@ class VectorRotate(Node):
 
     | Geometry node name: 'Vector Rotate' 
     | Blender type:  ShaderNodeVectorRotate 
-    
-
     Index 
     
 
@@ -11983,8 +11391,6 @@ class VectorRotate(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    
-
     - Vector rotate : Method 
     """
 

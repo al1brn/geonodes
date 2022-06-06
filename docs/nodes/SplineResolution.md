@@ -2,6 +2,8 @@
 # Class SplineResolution
 
 > Geometry node name: _'Spline Resolution'_<br>Blender type:  **GeometryNodeInputSplineResolution**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -35,6 +37,8 @@ node = nodes.SplineResolution(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Spline](../sockets/Spline.md) [capture_resolution](../sockets/Spline.md#capture_resolution) : Capture attribute

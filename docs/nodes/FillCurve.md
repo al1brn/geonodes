@@ -2,6 +2,8 @@
 # Class FillCurve
 
 > Geometry node name: _'Fill Curve'_<br>Blender type:  **GeometryNodeFillCurve**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -51,6 +53,8 @@ node = nodes.FillCurve(curve=None, mode='TRIANGLES', label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [fill](../sockets/Curve.md#fill) : Stacked method

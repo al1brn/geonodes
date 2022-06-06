@@ -2,6 +2,8 @@
 # Class Spiral
 
 > Geometry node name: _'Spiral'_<br>Blender type:  **GeometryNodeCurveSpiral**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -48,6 +50,8 @@ node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radi
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [Spiral](../sockets/Curve.md#spiral) : Constructor

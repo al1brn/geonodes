@@ -2,6 +2,8 @@
 # Class Image
 
 > Inherits from: ***dsock.Image***
+
+
 [Index](/docs/index.md)
 
 ## Methods
@@ -18,6 +20,8 @@
 ### switch
 
 > Node: [Switch](../nodes/{self.node_name}.md)
+
+
 [Top](#image) [Index](/docs/index.md)
 
 ```python

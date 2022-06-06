@@ -2,6 +2,8 @@
 # Class QuadraticBezier
 
 > Geometry node name: _'Quadratic Bezier'_<br>Blender type:  **GeometryNodeCurveQuadraticBezier**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -46,6 +48,8 @@ node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None,
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [QuadraticBezier](../sockets/Curve.md#quadraticbezier) : Constructor

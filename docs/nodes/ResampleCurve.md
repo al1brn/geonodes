@@ -2,6 +2,8 @@
 # Class ResampleCurve
 
 > Geometry node name: _'Resample Curve'_<br>Blender type:  **GeometryNodeResampleCurve**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -54,6 +56,8 @@ node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, 
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [resample](../sockets/Curve.md#resample) : Stacked method

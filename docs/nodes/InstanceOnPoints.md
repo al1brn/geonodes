@@ -2,6 +2,8 @@
 # Class InstanceOnPoints
 
 > Geometry node name: _'Instance on Points'_<br>Blender type:  **GeometryNodeInstanceOnPoints**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -49,6 +51,8 @@ node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_i
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Points](../sockets/Points.md) [instance_on_points](../sockets/Points.md#instance_on_points) : Method

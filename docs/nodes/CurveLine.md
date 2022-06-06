@@ -2,6 +2,8 @@
 # Class CurveLine
 
 > Geometry node name: _'Curve Line'_<br>Blender type:  **GeometryNodeCurvePrimitiveLine**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -54,6 +56,8 @@ node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [Line](../sockets/Curve.md#line) : Constructor

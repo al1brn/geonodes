@@ -2,6 +2,8 @@
 # Class Volume
 
 > Inherits from: ***gn.Geometry***
+
+
 [Index](/docs/index.md)
 
 ## Methods
@@ -18,6 +20,8 @@
 ### to_mesh
 
 > Node: [VolumeToMesh](../nodes/{self.node_name}.md)
+
+
 [Top](#volume) [Index](/docs/index.md)
 
 ```python

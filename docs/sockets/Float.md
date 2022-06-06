@@ -2,6 +2,8 @@
 # Class Float
 
 > Inherits from: ***dsock.Float***
+
+
 [Index](/docs/index.md)
 
 ## Constructors
@@ -91,6 +93,8 @@
 ### Random
 
 > Node: [RandomValue](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -135,6 +139,8 @@ node = nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT')
 ### abs
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -176,6 +182,8 @@ node = nodes.Math(value0=self, operation='ABSOLUTE')
 ### accumulate_field
 
 > Node: [AccumulateField](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -226,6 +234,8 @@ node = nodes.AccumulateField(value=self, group_index=group_index, data_type='FLO
 ### add
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -268,6 +278,8 @@ node = nodes.Math(value0=self, value1=value1, operation='ADD')
 ### arccos
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -309,6 +321,8 @@ node = nodes.Math(value0=self, operation='ARCCOSINE')
 ### arcsin
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -350,6 +364,8 @@ node = nodes.Math(value0=self, operation='ARCSINE')
 ### arctan
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -391,6 +407,8 @@ node = nodes.Math(value0=self, operation='ARCTANGENT')
 ### arctan2
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -433,6 +451,8 @@ node = nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
 ### attribute_statistic
 
 > Node: [AttributeStatistic](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -484,6 +504,8 @@ node = nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=sel
 ### capture_attribute
 
 > Node: [CaptureAttribute](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -534,6 +556,8 @@ node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT', 
 ### ceil
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -575,6 +599,8 @@ node = nodes.Math(value0=self, operation='CEIL')
 ### clamp
 
 > Node: [Clamp](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -618,6 +644,8 @@ node = nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type)
 ### color_ramp
 
 > Node: [Colorramp](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -651,6 +679,8 @@ node = nodes.Colorramp(fac=self)
 ### compare
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -694,6 +724,8 @@ node = nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE'
 ### cos
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -735,6 +767,8 @@ node = nodes.Math(value0=self, operation='COSINE')
 ### cosh
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -776,6 +810,8 @@ node = nodes.Math(value0=self, operation='COSH')
 ### curve
 
 > Node: [FloatCurve](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -810,6 +846,8 @@ node = nodes.FloatCurve(value=self, factor=factor)
 ### degrees
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -851,6 +889,8 @@ node = nodes.Math(value0=self, operation='DEGREES')
 ### divide
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -893,6 +933,8 @@ node = nodes.Math(value0=self, value1=value1, operation='DIVIDE')
 ### equal
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -938,6 +980,8 @@ node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEM
 ### exp
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -979,6 +1023,8 @@ node = nodes.Math(value0=self, operation='EXPONENT')
 ### field_at_index
 
 > Node: [FieldAtIndex](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1029,6 +1075,8 @@ node = nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT', domain=dom
 ### floor
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1070,6 +1118,8 @@ node = nodes.Math(value0=self, operation='FLOOR')
 ### fract
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1111,6 +1161,8 @@ node = nodes.Math(value0=self, operation='FRACT')
 ### greater_equal
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1155,6 +1207,8 @@ node = nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='
 ### greater_than
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1197,6 +1251,8 @@ node = nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
 ### inverse_sqrt
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1238,6 +1294,8 @@ node = nodes.Math(value0=self, operation='INVERSE_SQRT')
 ### less_equal
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1282,6 +1340,8 @@ node = nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='
 ### less_than
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1324,6 +1384,8 @@ node = nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
 ### log
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1366,6 +1428,8 @@ node = nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
 ### map_range
 
 > Node: [MapRange](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1420,6 +1484,8 @@ node = nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=t
 ### max
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1462,6 +1528,8 @@ node = nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
 ### min
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1504,6 +1572,8 @@ node = nodes.Math(value0=self, value1=value1, operation='MINIMUM')
 ### modulo
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1546,6 +1616,8 @@ node = nodes.Math(value0=self, value1=value1, operation='MODULO')
 ### multiply
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1588,6 +1660,8 @@ node = nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
 ### multiply_add
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1631,6 +1705,8 @@ node = nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY
 ### not_equal
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1676,6 +1752,8 @@ node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEM
 ### pingpong
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1718,6 +1796,8 @@ node = nodes.Math(value0=self, value1=value1, operation='PINGPONG')
 ### pow
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1760,6 +1840,8 @@ node = nodes.Math(value0=self, value1=value1, operation='POWER')
 ### radians
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1801,6 +1883,8 @@ node = nodes.Math(value0=self, operation='RADIANS')
 ### raycast
 
 > Node: [Raycast](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1854,6 +1938,8 @@ node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_pos
 ### round
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1895,6 +1981,8 @@ node = nodes.Math(value0=self, operation='ROUND')
 ### sign
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1936,6 +2024,8 @@ node = nodes.Math(value0=self, operation='SIGN')
 ### sin
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -1977,6 +2067,8 @@ node = nodes.Math(value0=self, operation='SINE')
 ### sinh
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -2018,6 +2110,8 @@ node = nodes.Math(value0=self, operation='SINH')
 ### smooth_max
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -2061,6 +2155,8 @@ node = nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_M
 ### smooth_min
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -2104,6 +2200,8 @@ node = nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_M
 ### snap
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -2146,6 +2244,8 @@ node = nodes.Math(value0=self, value1=value1, operation='SNAP')
 ### sqrt
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -2187,6 +2287,8 @@ node = nodes.Math(value0=self, operation='SQRT')
 ### subtract
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -2229,6 +2331,8 @@ node = nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
 ### switch
 
 > Node: [Switch](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -2272,6 +2376,8 @@ node = nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT')
 ### tan
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -2313,6 +2419,8 @@ node = nodes.Math(value0=self, operation='TANGENT')
 ### tanh
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -2354,6 +2462,8 @@ node = nodes.Math(value0=self, operation='TANH')
 ### to_integer
 
 > Node: [FloatToInteger](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -2395,6 +2505,8 @@ node = nodes.FloatToInteger(float=self, rounding_mode=rounding_mode)
 ### to_string
 
 > Node: [ValueToString](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -2429,6 +2541,8 @@ node = nodes.ValueToString(value=self, decimals=decimals)
 ### transfer_attribute
 
 > Node: [TransferAttribute](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -2482,6 +2596,8 @@ node = nodes.TransferAttribute(attribute=self, source=source, source_position=so
 ### trunc
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python
@@ -2523,6 +2639,8 @@ node = nodes.Math(value0=self, operation='TRUNC')
 ### wrap
 
 > Node: [Math](../nodes/{self.node_name}.md)
+
+
 [Top](#float) [Index](/docs/index.md)
 
 ```python

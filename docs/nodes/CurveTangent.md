@@ -2,6 +2,8 @@
 # Class CurveTangent
 
 > Geometry node name: _'Curve Tangent'_<br>Blender type:  **GeometryNodeInputTangent**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -35,6 +37,8 @@ node = nodes.CurveTangent(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Spline](../sockets/Spline.md) [capture_tangent](../sockets/Spline.md#capture_tangent) : Capture attribute

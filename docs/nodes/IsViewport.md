@@ -2,6 +2,8 @@
 # Class IsViewport
 
 > Geometry node name: _'Is Viewport'_<br>Blender type:  **GeometryNodeIsViewport**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -35,6 +37,8 @@ node = nodes.IsViewport(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [is_viewport](../sockets/Geometry.md#is_viewport) : Static method

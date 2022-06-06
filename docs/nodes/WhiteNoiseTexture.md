@@ -2,6 +2,8 @@
 # Class WhiteNoiseTexture
 
 > Geometry node name: _'White Noise Texture'_<br>Blender type:  **ShaderNodeTexWhiteNoise**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -53,6 +55,8 @@ node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', label
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Texture](../sockets/Texture.md) [WhiteNoise](../sockets/Texture.md#whitenoise) : Static method

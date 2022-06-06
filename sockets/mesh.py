@@ -13,8 +13,6 @@ class Mesh(gn.Geometry):
     
 
     | Inherits from: gn.Geometry 
-    
-
     Index 
     
 
@@ -106,8 +104,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: MeshCircle 
-        
-
         Top Index 
         
 
@@ -149,8 +145,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: Cone 
-        
-
         Top Index 
         
 
@@ -197,8 +191,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: Cube 
-        
-
         Top Index 
         
 
@@ -237,8 +229,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: Cylinder 
-        
-
         Top Index 
         
 
@@ -284,8 +274,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: Grid 
-        
-
         Top Index 
         
 
@@ -324,8 +312,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: IcoSphere 
-        
-
         Top Index 
         
 
@@ -362,8 +348,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: MeshLine 
-        
-
         Top Index 
         
 
@@ -408,8 +392,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: UvSphere 
-        
-
         Top Index 
         
 
@@ -450,8 +432,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeAngle 
-        
-
         Top Index 
         
 
@@ -492,8 +472,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeNeighbors 
-        
-
         Top Index 
         
 
@@ -534,8 +512,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeVertices 
-        
-
         Top Index 
         
 
@@ -576,8 +552,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: FaceArea 
-        
-
         Top Index 
         
 
@@ -618,8 +592,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: FaceNeighbors 
-        
-
         Top Index 
         
 
@@ -660,8 +632,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: MeshIsland 
-        
-
         Top Index 
         
 
@@ -702,8 +672,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: IsShadeSmooth 
-        
-
         Top Index 
         
 
@@ -744,8 +712,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: VertexNeighbors 
-        
-
         Top Index 
         
 
@@ -786,8 +752,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: MaterialIndex 
-        
-
         Top Index 
         
 
@@ -828,8 +792,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: MaterialSelection 
-        
-
         Top Index 
         
 
@@ -880,8 +842,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeAngle 
-        
-
         Top Index 
         
 
@@ -917,8 +877,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeAngle 
-        
-
         Top Index 
         
 
@@ -954,8 +912,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeAngle 
-        
-
         Top Index 
         
 
@@ -991,8 +947,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeAngle 
-        
-
         Top Index 
         
 
@@ -1028,8 +982,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeAngle 
-        
-
         Top Index 
         
 
@@ -1065,8 +1017,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeAngle 
-        
-
         Top Index 
         
 
@@ -1102,8 +1052,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeAngle 
-        
-
         Top Index 
         
 
@@ -1139,8 +1087,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeAngle 
-        
-
         Top Index 
         
 
@@ -1176,8 +1122,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeAngle 
-        
-
         Top Index 
         
 
@@ -1213,8 +1157,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeAngle 
-        
-
         Top Index 
         
 
@@ -1250,8 +1192,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeAngle 
-        
-
         Top Index 
         
 
@@ -1287,8 +1227,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeNeighbors 
-        
-
         Top Index 
         
 
@@ -1324,8 +1262,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeVertices 
-        
-
         Top Index 
         
 
@@ -1361,8 +1297,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeVertices 
-        
-
         Top Index 
         
 
@@ -1398,8 +1332,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeVertices 
-        
-
         Top Index 
         
 
@@ -1435,8 +1367,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: EdgeVertices 
-        
-
         Top Index 
         
 
@@ -1472,8 +1402,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: FaceArea 
-        
-
         Top Index 
         
 
@@ -1509,8 +1437,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: FaceNeighbors 
-        
-
         Top Index 
         
 
@@ -1546,8 +1472,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: FaceNeighbors 
-        
-
         Top Index 
         
 
@@ -1583,8 +1507,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: MeshIsland 
-        
-
         Top Index 
         
 
@@ -1620,8 +1542,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: IsShadeSmooth 
-        
-
         Top Index 
         
 
@@ -1657,8 +1577,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: VertexNeighbors 
-        
-
         Top Index 
         
 
@@ -1694,8 +1612,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: VertexNeighbors 
-        
-
         Top Index 
         
 
@@ -1731,8 +1647,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: MaterialIndex 
-        
-
         Top Index 
         
 
@@ -1768,8 +1682,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: MaterialSelection 
-        
-
         Top Index 
         
 
@@ -1813,8 +1725,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: MeshBoolean 
-        
-
         Top Index 
         
 
@@ -1857,8 +1767,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: MeshBoolean 
-        
-
         Top Index 
         
 
@@ -1901,8 +1809,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: MeshBoolean 
-        
-
         Top Index 
         
 
@@ -1946,8 +1852,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: ExtrudeMesh 
-        
-
         Top Index 
         
 
@@ -1992,8 +1896,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: MeshToCurve 
-        
-
         Top Index 
         
 
@@ -2029,8 +1931,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: MeshToPoints 
-        
-
         Top Index 
         
 
@@ -2073,8 +1973,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: DistributePointsOnFaces 
-        
-
         Top Index 
         
 
@@ -2126,8 +2024,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: SplitEdges 
-        
-
         Top Index 
         
 
@@ -2163,8 +2059,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: SubdivideMesh 
-        
-
         Top Index 
         
 
@@ -2200,8 +2094,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: SubdivisionSurface 
-        
-
         Top Index 
         
 
@@ -2246,8 +2138,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: Triangulate 
-        
-
         Top Index 
         
 
@@ -2291,8 +2181,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: DualMesh 
-        
-
         Top Index 
         
 
@@ -2328,8 +2216,6 @@ class Mesh(gn.Geometry):
         
 
         | Node: FlipFaces 
-        
-
         Top Index 
         
 

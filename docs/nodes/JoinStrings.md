@@ -2,6 +2,8 @@
 # Class JoinStrings
 
 > Geometry node name: _'Join Strings'_<br>Blender type:  **GeometryNodeStringJoin**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -44,6 +46,8 @@ node = nodes.JoinStrings(*strings, delimiter=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [String](../sockets/String.md) [join](../sockets/String.md#join) : Method

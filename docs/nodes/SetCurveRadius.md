@@ -2,6 +2,8 @@
 # Class SetCurveRadius
 
 > Geometry node name: _'Set Curve Radius'_<br>Blender type:  **GeometryNodeSetCurveRadius**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -45,6 +47,8 @@ node = nodes.SetCurveRadius(curve=None, selection=None, radius=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [set_radius](../sockets/Curve.md#set_radius) : Stacked method

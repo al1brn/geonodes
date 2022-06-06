@@ -2,6 +2,8 @@
 # Class CaptureAttribute
 
 > Geometry node name: _'Capture Attribute'_<br>Blender type:  **GeometryNodeCaptureAttribute**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -64,6 +66,8 @@ node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', doma
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Boolean](../sockets/Boolean.md) [capture_attribute](../sockets/Boolean.md#capture_attribute) : Method

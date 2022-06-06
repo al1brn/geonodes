@@ -2,6 +2,8 @@
 # Class SetHandlePositions
 
 > Geometry node name: _'Set Handle Positions'_<br>Blender type:  **GeometryNodeSetCurveHandlePositions**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -54,6 +56,8 @@ node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offse
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [set_handle_positions](../sockets/Curve.md#set_handle_positions) : Stacked method

@@ -2,6 +2,8 @@
 # Class Instances
 
 > Inherits from: ***gn.Geometry***
+
+
 [Index](/docs/index.md)
 
 ## Attributes
@@ -36,6 +38,8 @@
 ### instance_index
 
 > Node: [Index](../nodes/{self.node_name}.md)
+
+
 [Top](#instances) [Index](/docs/index.md)
 
 ```python
@@ -69,6 +73,8 @@ node = nodes.Index()
 ### rotate
 
 > Node: [RotateInstances](../nodes/{self.node_name}.md)
+
+
 [Top](#instances) [Index](/docs/index.md)
 
 ```python
@@ -106,6 +112,8 @@ node = nodes.RotateInstances(instances=self, selection=selection, rotation=rotat
 ### scale
 
 > Node: [ScaleInstances](../nodes/{self.node_name}.md)
+
+
 [Top](#instances) [Index](/docs/index.md)
 
 ```python
@@ -143,6 +151,8 @@ node = nodes.ScaleInstances(instances=self, selection=selection, scale=scale, ce
 ### to_points
 
 > Node: [InstancesToPoints](../nodes/{self.node_name}.md)
+
+
 [Top](#instances) [Index](/docs/index.md)
 
 ```python
@@ -179,6 +189,8 @@ node = nodes.InstancesToPoints(instances=self, selection=selection, position=pos
 ### translate
 
 > Node: [TranslateInstances](../nodes/{self.node_name}.md)
+
+
 [Top](#instances) [Index](/docs/index.md)
 
 ```python

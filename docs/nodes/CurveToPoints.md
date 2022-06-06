@@ -2,6 +2,8 @@
 # Class CurveToPoints
 
 > Geometry node name: _'Curve to Points'_<br>Blender type:  **GeometryNodeCurveToPoints**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -56,6 +58,8 @@ node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT', la
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Curve](../sockets/Curve.md) [to_points](../sockets/Curve.md#to_points) : Method

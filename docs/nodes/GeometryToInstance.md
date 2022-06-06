@@ -2,6 +2,8 @@
 # Class GeometryToInstance
 
 > Geometry node name: _'Geometry to Instance'_<br>Blender type:  **GeometryNodeGeometryToInstance**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -43,6 +45,8 @@ node = nodes.GeometryToInstance(*geometry, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Geometry](../sockets/Geometry.md) [to_instance](../sockets/Geometry.md#to_instance) : Method

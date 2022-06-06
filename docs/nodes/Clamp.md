@@ -2,6 +2,8 @@
 # Class Clamp
 
 > Geometry node name: _'Clamp'_<br>Blender type:  **ShaderNodeClamp**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -53,6 +55,8 @@ node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX', label=No
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Float](../sockets/Float.md) [clamp](../sockets/Float.md#clamp) : Stacked method

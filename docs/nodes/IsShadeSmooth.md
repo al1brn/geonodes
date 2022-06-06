@@ -2,6 +2,8 @@
 # Class IsShadeSmooth
 
 > Geometry node name: _'Is Shade Smooth'_<br>Blender type:  **GeometryNodeInputShadeSmooth**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -35,6 +37,8 @@ node = nodes.IsShadeSmooth(label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [capture_shade_smooth](../sockets/Mesh.md#capture_shade_smooth) : Capture attribute

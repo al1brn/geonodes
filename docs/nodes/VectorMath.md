@@ -2,6 +2,8 @@
 # Class VectorMath
 
 > Geometry node name: _'Vector Math'_<br>Blender type:  **ShaderNodeVectorMath**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -55,6 +57,8 @@ node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, op
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Vector](../sockets/Vector.md) [absolute](../sockets/Vector.md#absolute) : Method

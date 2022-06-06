@@ -2,6 +2,8 @@
 # Class DualMesh
 
 > Geometry node name: _'Dual Mesh'_<br>Blender type:  **GeometryNodeDualMesh**
+
+
 [Index](/docs/index.md)
 
 ## Initialization
@@ -44,6 +46,8 @@ node = nodes.DualMesh(mesh=None, keep_boundaries=None, label=None)
 ## Data sockets
 
 > Data socket classes implementing this node
+
+
 
 
 - [Mesh](../sockets/Mesh.md) [dual](../sockets/Mesh.md#dual) : Stacked method
