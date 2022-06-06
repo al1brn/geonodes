@@ -23,7 +23,7 @@
 > Node: [MaterialSelection](../nodes/{self.node_name}.md)
 
 
-[Top](#material) [Index](/docs/index.md)
+[Top](#class-material) [Index](/docs/index.md)
 
 ```python
 v = material.selection()
@@ -58,7 +58,7 @@ node = nodes.MaterialSelection(material=self)
 > Node: [Switch](../nodes/{self.node_name}.md)
 
 
-[Top](#material) [Index](/docs/index.md)
+[Top](#class-material) [Index](/docs/index.md)
 
 ```python
 v = material.switch(switch1, true)

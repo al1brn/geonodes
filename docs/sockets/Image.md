@@ -22,7 +22,7 @@
 > Node: [Switch](../nodes/{self.node_name}.md)
 
 
-[Top](#image) [Index](/docs/index.md)
+[Top](#class-image) [Index](/docs/index.md)
 
 ```python
 v = image.switch(switch1, true)

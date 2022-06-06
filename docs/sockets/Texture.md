@@ -39,7 +39,7 @@
 > Node: [BrickTexture](../nodes/{self.node_name}.md)
 
 
-[Top](#texture) [Index](/docs/index.md)
+[Top](#class-texture) [Index](/docs/index.md)
 
 ```python
 v = Texture.Brick(vector, color1, color2, mortar, scale, mortar_size, mortar_smooth, bias, brick_width, row_height, offset, offset_frequency, squash, squash_frequency)
@@ -94,7 +94,7 @@ node = nodes.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mo
 > Node: [CheckerTexture](../nodes/{self.node_name}.md)
 
 
-[Top](#texture) [Index](/docs/index.md)
+[Top](#class-texture) [Index](/docs/index.md)
 
 ```python
 v = Texture.Checker(vector, color1, color2, scale)
@@ -132,7 +132,7 @@ node = nodes.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=s
 > Node: [GradientTexture](../nodes/{self.node_name}.md)
 
 
-[Top](#texture) [Index](/docs/index.md)
+[Top](#class-texture) [Index](/docs/index.md)
 
 ```python
 v = Texture.Gradient(vector, gradient_type)
@@ -175,7 +175,7 @@ node = nodes.GradientTexture(vector=vector, gradient_type=gradient_type)
 > Node: [ImageTexture](../nodes/{self.node_name}.md)
 
 
-[Top](#texture) [Index](/docs/index.md)
+[Top](#class-texture) [Index](/docs/index.md)
 
 ```python
 v = Texture.Image(image, vector, frame, extension, interpolation)
@@ -221,7 +221,7 @@ node = nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=ext
 > Node: [MagicTexture](../nodes/{self.node_name}.md)
 
 
-[Top](#texture) [Index](/docs/index.md)
+[Top](#class-texture) [Index](/docs/index.md)
 
 ```python
 v = Texture.Magic(vector, scale, distortion, turbulence_depth)
@@ -266,7 +266,7 @@ node = nodes.MagicTexture(vector=vector, scale=scale, distortion=distortion, tur
 > Node: [MusgraveTexture](../nodes/{self.node_name}.md)
 
 
-[Top](#texture) [Index](/docs/index.md)
+[Top](#class-texture) [Index](/docs/index.md)
 
 ```python
 v = Texture.Musgrave(vector, w, scale, detail, dimension, lacunarity, offset, gain, musgrave_dimensions, musgrave_type)
@@ -317,7 +317,7 @@ node = nodes.MusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dim
 > Node: [NoiseTexture](../nodes/{self.node_name}.md)
 
 
-[Top](#texture) [Index](/docs/index.md)
+[Top](#class-texture) [Index](/docs/index.md)
 
 ```python
 v = Texture.Noise(vector, w, scale, detail, roughness, distortion, noise_dimensions)
@@ -365,7 +365,7 @@ node = nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughn
 > Node: [VoronoiTexture](../nodes/{self.node_name}.md)
 
 
-[Top](#texture) [Index](/docs/index.md)
+[Top](#class-texture) [Index](/docs/index.md)
 
 ```python
 v = Texture.Voronoi(vector, w, scale, smoothness, exponent, randomness, distance, feature, voronoi_dimensions)
@@ -415,7 +415,7 @@ node = nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothne
 > Node: [WaveTexture](../nodes/{self.node_name}.md)
 
 
-[Top](#texture) [Index](/docs/index.md)
+[Top](#class-texture) [Index](/docs/index.md)
 
 ```python
 v = Texture.Wave(vector, scale, distortion, detail, detail_scale, detail_roughness, phase_offset, bands_direction, rings_direction, wave_profile, wave_type)
@@ -467,7 +467,7 @@ node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, deta
 > Node: [WhiteNoiseTexture](../nodes/{self.node_name}.md)
 
 
-[Top](#texture) [Index](/docs/index.md)
+[Top](#class-texture) [Index](/docs/index.md)
 
 ```python
 v = Texture.WhiteNoise(vector, w, noise_dimensions)
@@ -511,7 +511,7 @@ node = nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimens
 > Node: [Switch](../nodes/{self.node_name}.md)
 
 
-[Top](#texture) [Index](/docs/index.md)
+[Top](#class-texture) [Index](/docs/index.md)
 
 ```python
 v = texture.switch(switch1, true)

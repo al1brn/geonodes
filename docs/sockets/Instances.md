@@ -40,7 +40,7 @@
 > Node: [Index](../nodes/{self.node_name}.md)
 
 
-[Top](#instances) [Index](/docs/index.md)
+[Top](#class-instances) [Index](/docs/index.md)
 
 ```python
 v = instances.instance_index(self)
@@ -75,7 +75,7 @@ node = nodes.Index()
 > Node: [RotateInstances](../nodes/{self.node_name}.md)
 
 
-[Top](#instances) [Index](/docs/index.md)
+[Top](#class-instances) [Index](/docs/index.md)
 
 ```python
 instances.rotate(selection, rotation, pivot_point, local_space)
@@ -114,7 +114,7 @@ node = nodes.RotateInstances(instances=self, selection=selection, rotation=rotat
 > Node: [ScaleInstances](../nodes/{self.node_name}.md)
 
 
-[Top](#instances) [Index](/docs/index.md)
+[Top](#class-instances) [Index](/docs/index.md)
 
 ```python
 instances.scale(selection, scale, center, local_space)
@@ -153,7 +153,7 @@ node = nodes.ScaleInstances(instances=self, selection=selection, scale=scale, ce
 > Node: [InstancesToPoints](../nodes/{self.node_name}.md)
 
 
-[Top](#instances) [Index](/docs/index.md)
+[Top](#class-instances) [Index](/docs/index.md)
 
 ```python
 v = instances.to_points(selection, position, radius)
@@ -191,7 +191,7 @@ node = nodes.InstancesToPoints(instances=self, selection=selection, position=pos
 > Node: [TranslateInstances](../nodes/{self.node_name}.md)
 
 
-[Top](#instances) [Index](/docs/index.md)
+[Top](#class-instances) [Index](/docs/index.md)
 
 ```python
 instances.translate(selection, translation, local_space)

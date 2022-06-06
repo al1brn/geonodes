@@ -32,7 +32,7 @@
 > Node: [InstanceOnPoints](../nodes/{self.node_name}.md)
 
 
-[Top](#points) [Index](/docs/index.md)
+[Top](#class-points) [Index](/docs/index.md)
 
 ```python
 v = points.instance_on_points(selection, instance, pick_instance, instance_index, rotation, scale)
@@ -73,7 +73,7 @@ node = nodes.InstanceOnPoints(points=self, selection=selection, instance=instanc
 > Node: [SetPointRadius](../nodes/{self.node_name}.md)
 
 
-[Top](#points) [Index](/docs/index.md)
+[Top](#class-points) [Index](/docs/index.md)
 
 ```python
 points.set_radius(selection, radius)
@@ -110,7 +110,7 @@ node = nodes.SetPointRadius(points=self, selection=selection, radius=radius)
 > Node: [PointsToVertices](../nodes/{self.node_name}.md)
 
 
-[Top](#points) [Index](/docs/index.md)
+[Top](#class-points) [Index](/docs/index.md)
 
 ```python
 v = points.to_vertices(selection)
@@ -146,7 +146,7 @@ node = nodes.PointsToVertices(points=self, selection=selection)
 > Node: [PointsToVolume](../nodes/{self.node_name}.md)
 
 
-[Top](#points) [Index](/docs/index.md)
+[Top](#class-points) [Index](/docs/index.md)
 
 ```python
 v = points.to_volume(density, voxel_size, voxel_amount, radius, resolution_mode)

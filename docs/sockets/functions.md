@@ -106,7 +106,7 @@
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.abs(value0)
@@ -149,7 +149,7 @@ node = nodes.Math(value0=value0, operation='ABSOLUTE')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.add(value0, value1)
@@ -193,7 +193,7 @@ node = nodes.Math(value0=value0, value1=value1, operation='ADD')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.arccos(value0)
@@ -236,7 +236,7 @@ node = nodes.Math(value0=value0, operation='ARCCOSINE')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.arcsin(value0)
@@ -279,7 +279,7 @@ node = nodes.Math(value0=value0, operation='ARCSINE')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.arctan(value0)
@@ -322,7 +322,7 @@ node = nodes.Math(value0=value0, operation='ARCTANGENT')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.arctan2(value0, value1)
@@ -366,7 +366,7 @@ node = nodes.Math(value0=value0, value1=value1, operation='ARCTAN2')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.ceil(value0)
@@ -409,7 +409,7 @@ node = nodes.Math(value0=value0, operation='CEIL')
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_add(color1, color2, fac, use_alpha)
@@ -462,7 +462,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='ADD', use_al
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_burn(color1, color2, fac, use_alpha)
@@ -515,7 +515,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='BURN', use_a
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_darken(color1, color2, fac, use_alpha)
@@ -568,7 +568,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DARKEN', use
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_difference(color1, color2, fac, use_alpha)
@@ -621,7 +621,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIFFERENCE',
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_divide(color1, color2, fac, use_alpha)
@@ -674,7 +674,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIVIDE', use
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_dodge(color1, color2, fac, use_alpha)
@@ -727,7 +727,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DODGE', use_
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_hue(color1, color2, fac, use_alpha)
@@ -780,7 +780,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='HUE', use_al
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_lighten(color1, color2, fac, use_alpha)
@@ -833,7 +833,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LIGHTEN', us
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_linear_light(color1, color2, fac, use_alpha)
@@ -886,7 +886,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LINEAR_LIGHT
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_mix(color1, color2, fac, use_alpha)
@@ -939,7 +939,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MIX', use_al
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_mix_color(color1, color2, fac, use_alpha)
@@ -992,7 +992,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='COLOR', use_
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_multiply(color1, color2, fac, use_alpha)
@@ -1045,7 +1045,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MULTIPLY', u
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_overlay(color1, color2, fac, use_alpha)
@@ -1098,7 +1098,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='OVERLAY', us
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_saturation(color1, color2, fac, use_alpha)
@@ -1151,7 +1151,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SATURATION',
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_screen(color1, color2, fac, use_alpha)
@@ -1204,7 +1204,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SCREEN', use
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_soft_light(color1, color2, fac, use_alpha)
@@ -1257,7 +1257,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SOFT_LIGHT',
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_subtract(color1, color2, fac, use_alpha)
@@ -1310,7 +1310,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SUBTRACT', u
 > Node: [Mix](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.color_value(color1, color2, fac, use_alpha)
@@ -1363,7 +1363,7 @@ node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='VALUE', use_
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.compare(value0, value1, value2)
@@ -1408,7 +1408,7 @@ node = nodes.Math(value0=value0, value1=value1, value2=value2, operation='COMPAR
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.cos(value0)
@@ -1451,7 +1451,7 @@ node = nodes.Math(value0=value0, operation='COSINE')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.cosh(value0)
@@ -1494,7 +1494,7 @@ node = nodes.Math(value0=value0, operation='COSH')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.cross(vector0, vector1)
@@ -1538,7 +1538,7 @@ node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='CROSS_PRODU
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.degrees(value0)
@@ -1581,7 +1581,7 @@ node = nodes.Math(value0=value0, operation='DEGREES')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.distance(vector0, vector1)
@@ -1625,7 +1625,7 @@ node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DISTANCE')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.divide(value0, value1)
@@ -1669,7 +1669,7 @@ node = nodes.Math(value0=value0, value1=value1, operation='DIVIDE')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.dot(vector0, vector1)
@@ -1713,7 +1713,7 @@ node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DOT_PRODUCT
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.exp(value0)
@@ -1756,7 +1756,7 @@ node = nodes.Math(value0=value0, operation='EXPONENT')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.faceforward(vector0, vector1, vector2)
@@ -1801,7 +1801,7 @@ node = nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, opera
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.floor(value0)
@@ -1844,7 +1844,7 @@ node = nodes.Math(value0=value0, operation='FLOOR')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.fract(value0)
@@ -1887,7 +1887,7 @@ node = nodes.Math(value0=value0, operation='FRACT')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.fraction(vector0)
@@ -1930,7 +1930,7 @@ node = nodes.VectorMath(vector0=vector0, operation='FRACTION')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.greater_than(value0, value1)
@@ -1974,7 +1974,7 @@ node = nodes.Math(value0=value0, value1=value1, operation='GREATER_THAN')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.inverse_sqrt(value0)
@@ -2017,7 +2017,7 @@ node = nodes.Math(value0=value0, operation='INVERSE_SQRT')
 > Node: [JoinStrings](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.join_strings(strings_1, strings_2, strings_3, delimiter)
@@ -2053,7 +2053,7 @@ node = nodes.JoinStrings(*strings, delimiter=delimiter)
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.length(vector0)
@@ -2096,7 +2096,7 @@ node = nodes.VectorMath(vector0=vector0, operation='LENGTH')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.less_than(value0, value1)
@@ -2140,7 +2140,7 @@ node = nodes.Math(value0=value0, value1=value1, operation='LESS_THAN')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.log(value0, value1)
@@ -2184,7 +2184,7 @@ node = nodes.Math(value0=value0, value1=value1, operation='LOGARITHM')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.max(value0, value1)
@@ -2228,7 +2228,7 @@ node = nodes.Math(value0=value0, value1=value1, operation='MAXIMUM')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.min(value0, value1)
@@ -2272,7 +2272,7 @@ node = nodes.Math(value0=value0, value1=value1, operation='MINIMUM')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.modulo(value0, value1)
@@ -2316,7 +2316,7 @@ node = nodes.Math(value0=value0, value1=value1, operation='MODULO')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.multiply(value0, value1)
@@ -2360,7 +2360,7 @@ node = nodes.Math(value0=value0, value1=value1, operation='MULTIPLY')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.multiply_add(value0, value1, value2)
@@ -2405,7 +2405,7 @@ node = nodes.Math(value0=value0, value1=value1, value2=value2, operation='MULTIP
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.normalize(vector0)
@@ -2448,7 +2448,7 @@ node = nodes.VectorMath(vector0=vector0, operation='NORMALIZE')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.pingpong(value0, value1)
@@ -2492,7 +2492,7 @@ node = nodes.Math(value0=value0, value1=value1, operation='PINGPONG')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.pow(value0, value1)
@@ -2536,7 +2536,7 @@ node = nodes.Math(value0=value0, value1=value1, operation='POWER')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.project(vector0, vector1)
@@ -2580,7 +2580,7 @@ node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='PROJECT')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.radians(value0)
@@ -2623,7 +2623,7 @@ node = nodes.Math(value0=value0, operation='RADIANS')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.reflect(vector0, vector1)
@@ -2667,7 +2667,7 @@ node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='REFLECT')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.refract(vector0, vector1, scale)
@@ -2712,7 +2712,7 @@ node = nodes.VectorMath(vector0=vector0, vector1=vector1, scale=scale, operation
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.round(value0)
@@ -2755,7 +2755,7 @@ node = nodes.Math(value0=value0, operation='ROUND')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.scale(vector0, scale)
@@ -2799,7 +2799,7 @@ node = nodes.VectorMath(vector0=vector0, scale=scale, operation='SCALE')
 > Node: [SceneTime](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.scene()
@@ -2826,7 +2826,7 @@ node = nodes.SceneTime()
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.sign(value0)
@@ -2869,7 +2869,7 @@ node = nodes.Math(value0=value0, operation='SIGN')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.sin(value0)
@@ -2912,7 +2912,7 @@ node = nodes.Math(value0=value0, operation='SINE')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.sinh(value0)
@@ -2955,7 +2955,7 @@ node = nodes.Math(value0=value0, operation='SINH')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.smooth_max(value0, value1, value2)
@@ -3000,7 +3000,7 @@ node = nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.smooth_min(value0, value1, value2)
@@ -3045,7 +3045,7 @@ node = nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.snap(value0, value1)
@@ -3089,7 +3089,7 @@ node = nodes.Math(value0=value0, value1=value1, operation='SNAP')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.sqrt(value0)
@@ -3132,7 +3132,7 @@ node = nodes.Math(value0=value0, operation='SQRT')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.subtract(value0, value1)
@@ -3176,7 +3176,7 @@ node = nodes.Math(value0=value0, value1=value1, operation='SUBTRACT')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.tan(value0)
@@ -3219,7 +3219,7 @@ node = nodes.Math(value0=value0, operation='TANGENT')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.tanh(value0)
@@ -3262,7 +3262,7 @@ node = nodes.Math(value0=value0, operation='TANH')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.trunc(value0)
@@ -3305,7 +3305,7 @@ node = nodes.Math(value0=value0, operation='TRUNC')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.vector_absolute(vector0)
@@ -3348,7 +3348,7 @@ node = nodes.VectorMath(vector0=vector0, operation='ABSOLUTE')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.vector_add(vector0, vector1)
@@ -3392,7 +3392,7 @@ node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='ADD')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.vector_ceil(vector0)
@@ -3435,7 +3435,7 @@ node = nodes.VectorMath(vector0=vector0, operation='CEIL')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.vector_cos(vector0)
@@ -3478,7 +3478,7 @@ node = nodes.VectorMath(vector0=vector0, operation='COSINE')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.vector_divide(vector0, vector1)
@@ -3522,7 +3522,7 @@ node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DIVIDE')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.vector_floor(vector0)
@@ -3565,7 +3565,7 @@ node = nodes.VectorMath(vector0=vector0, operation='FLOOR')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.vector_max(vector0, vector1)
@@ -3609,7 +3609,7 @@ node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MAXIMUM')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.vector_min(vector0, vector1)
@@ -3653,7 +3653,7 @@ node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MINIMUM')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.vector_modulo(vector0, vector1)
@@ -3697,7 +3697,7 @@ node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MODULO')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.vector_multiply(vector0, vector1)
@@ -3741,7 +3741,7 @@ node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MULTIPLY')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.vector_multiply_add(vector0, vector1, vector2)
@@ -3786,7 +3786,7 @@ node = nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, opera
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.vector_sin(vector0)
@@ -3829,7 +3829,7 @@ node = nodes.VectorMath(vector0=vector0, operation='SINE')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.vector_snap(vector0, vector1)
@@ -3873,7 +3873,7 @@ node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SNAP')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.vector_subtract(vector0, vector1)
@@ -3917,7 +3917,7 @@ node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SUBTRACT')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.vector_tan(vector0)
@@ -3960,7 +3960,7 @@ node = nodes.VectorMath(vector0=vector0, operation='TANGENT')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.vector_wrap(vector0, vector1, vector2)
@@ -4005,7 +4005,7 @@ node = nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, opera
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#functions) [Index](/docs/index.md)
+[Top](#class-functions) [Index](/docs/index.md)
 
 ```python
 v = functions.wrap(value0, value1, value2)

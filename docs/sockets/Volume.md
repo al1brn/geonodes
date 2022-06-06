@@ -22,7 +22,7 @@
 > Node: [VolumeToMesh](../nodes/{self.node_name}.md)
 
 
-[Top](#volume) [Index](/docs/index.md)
+[Top](#class-volume) [Index](/docs/index.md)
 
 ```python
 v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_mode)

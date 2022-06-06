@@ -23,7 +23,7 @@
 > Node: [CollectionInfo](../nodes/{self.node_name}.md)
 
 
-[Top](#collection) [Index](/docs/index.md)
+[Top](#class-collection) [Index](/docs/index.md)
 
 ```python
 v = collection.info(separate_children, reset_children, transform_space)
@@ -68,7 +68,7 @@ node = nodes.CollectionInfo(collection=self, separate_children=separate_children
 > Node: [Switch](../nodes/{self.node_name}.md)
 
 
-[Top](#collection) [Index](/docs/index.md)
+[Top](#class-collection) [Index](/docs/index.md)
 
 ```python
 v = collection.switch(switch1, true)

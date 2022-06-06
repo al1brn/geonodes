@@ -95,7 +95,7 @@
 > Node: [RandomValue](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = Float.Random(min, max, ID, seed)
@@ -141,7 +141,7 @@ node = nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.abs()
@@ -184,7 +184,7 @@ node = nodes.Math(value0=self, operation='ABSOLUTE')
 > Node: [AccumulateField](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.accumulate_field(group_index, domain)
@@ -236,7 +236,7 @@ node = nodes.AccumulateField(value=self, group_index=group_index, data_type='FLO
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.add(value1)
@@ -280,7 +280,7 @@ node = nodes.Math(value0=self, value1=value1, operation='ADD')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.arccos()
@@ -323,7 +323,7 @@ node = nodes.Math(value0=self, operation='ARCCOSINE')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.arcsin()
@@ -366,7 +366,7 @@ node = nodes.Math(value0=self, operation='ARCSINE')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.arctan()
@@ -409,7 +409,7 @@ node = nodes.Math(value0=self, operation='ARCTANGENT')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.arctan2(value1)
@@ -453,7 +453,7 @@ node = nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
 > Node: [AttributeStatistic](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.attribute_statistic(geometry, selection, domain)
@@ -506,7 +506,7 @@ node = nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=sel
 > Node: [CaptureAttribute](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.capture_attribute(geometry, domain)
@@ -558,7 +558,7 @@ node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT', 
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.ceil()
@@ -601,7 +601,7 @@ node = nodes.Math(value0=self, operation='CEIL')
 > Node: [Clamp](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 float.clamp(min, max, clamp_type)
@@ -646,7 +646,7 @@ node = nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type)
 > Node: [Colorramp](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.color_ramp()
@@ -681,7 +681,7 @@ node = nodes.Colorramp(fac=self)
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.compare(value1, value2)
@@ -726,7 +726,7 @@ node = nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE'
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.cos()
@@ -769,7 +769,7 @@ node = nodes.Math(value0=self, operation='COSINE')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.cosh()
@@ -812,7 +812,7 @@ node = nodes.Math(value0=self, operation='COSH')
 > Node: [FloatCurve](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 float.curve(factor)
@@ -848,7 +848,7 @@ node = nodes.FloatCurve(value=self, factor=factor)
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.degrees()
@@ -891,7 +891,7 @@ node = nodes.Math(value0=self, operation='DEGREES')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.divide(value1)
@@ -935,7 +935,7 @@ node = nodes.Math(value0=self, value1=value1, operation='DIVIDE')
 > Node: [Compare](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.equal(b, epsilon)
@@ -982,7 +982,7 @@ node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEM
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.exp()
@@ -1025,7 +1025,7 @@ node = nodes.Math(value0=self, operation='EXPONENT')
 > Node: [FieldAtIndex](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.field_at_index(index, domain)
@@ -1077,7 +1077,7 @@ node = nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT', domain=dom
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.floor()
@@ -1120,7 +1120,7 @@ node = nodes.Math(value0=self, operation='FLOOR')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.fract()
@@ -1163,7 +1163,7 @@ node = nodes.Math(value0=self, operation='FRACT')
 > Node: [Compare](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.greater_equal(b)
@@ -1209,7 +1209,7 @@ node = nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.greater_than(value1)
@@ -1253,7 +1253,7 @@ node = nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.inverse_sqrt()
@@ -1296,7 +1296,7 @@ node = nodes.Math(value0=self, operation='INVERSE_SQRT')
 > Node: [Compare](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.less_equal(b)
@@ -1342,7 +1342,7 @@ node = nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.less_than(value1)
@@ -1386,7 +1386,7 @@ node = nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.log(value1)
@@ -1430,7 +1430,7 @@ node = nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
 > Node: [MapRange](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type)
@@ -1486,7 +1486,7 @@ node = nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=t
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.max(value1)
@@ -1530,7 +1530,7 @@ node = nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.min(value1)
@@ -1574,7 +1574,7 @@ node = nodes.Math(value0=self, value1=value1, operation='MINIMUM')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.modulo(value1)
@@ -1618,7 +1618,7 @@ node = nodes.Math(value0=self, value1=value1, operation='MODULO')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.multiply(value1)
@@ -1662,7 +1662,7 @@ node = nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.multiply_add(value1, value2)
@@ -1707,7 +1707,7 @@ node = nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY
 > Node: [Compare](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.not_equal(b, epsilon)
@@ -1754,7 +1754,7 @@ node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEM
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.pingpong(value1)
@@ -1798,7 +1798,7 @@ node = nodes.Math(value0=self, value1=value1, operation='PINGPONG')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.pow(value1)
@@ -1842,7 +1842,7 @@ node = nodes.Math(value0=self, value1=value1, operation='POWER')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.radians()
@@ -1885,7 +1885,7 @@ node = nodes.Math(value0=self, operation='RADIANS')
 > Node: [Raycast](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
@@ -1940,7 +1940,7 @@ node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_pos
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.round()
@@ -1983,7 +1983,7 @@ node = nodes.Math(value0=self, operation='ROUND')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.sign()
@@ -2026,7 +2026,7 @@ node = nodes.Math(value0=self, operation='SIGN')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.sin()
@@ -2069,7 +2069,7 @@ node = nodes.Math(value0=self, operation='SINE')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.sinh()
@@ -2112,7 +2112,7 @@ node = nodes.Math(value0=self, operation='SINH')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.smooth_max(value1, value2)
@@ -2157,7 +2157,7 @@ node = nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_M
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.smooth_min(value1, value2)
@@ -2202,7 +2202,7 @@ node = nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_M
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.snap(value1)
@@ -2246,7 +2246,7 @@ node = nodes.Math(value0=self, value1=value1, operation='SNAP')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.sqrt()
@@ -2289,7 +2289,7 @@ node = nodes.Math(value0=self, operation='SQRT')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.subtract(value1)
@@ -2333,7 +2333,7 @@ node = nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
 > Node: [Switch](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.switch(switch0, true)
@@ -2378,7 +2378,7 @@ node = nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.tan()
@@ -2421,7 +2421,7 @@ node = nodes.Math(value0=self, operation='TANGENT')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.tanh()
@@ -2464,7 +2464,7 @@ node = nodes.Math(value0=self, operation='TANH')
 > Node: [FloatToInteger](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.to_integer(rounding_mode)
@@ -2507,7 +2507,7 @@ node = nodes.FloatToInteger(float=self, rounding_mode=rounding_mode)
 > Node: [ValueToString](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.to_string(decimals)
@@ -2543,7 +2543,7 @@ node = nodes.ValueToString(value=self, decimals=decimals)
 > Node: [TransferAttribute](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.transfer_attribute(source, source_position, index, domain, mapping)
@@ -2598,7 +2598,7 @@ node = nodes.TransferAttribute(attribute=self, source=source, source_position=so
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.trunc()
@@ -2641,7 +2641,7 @@ node = nodes.Math(value0=self, operation='TRUNC')
 > Node: [Math](../nodes/{self.node_name}.md)
 
 
-[Top](#float) [Index](/docs/index.md)
+[Top](#class-float) [Index](/docs/index.md)
 
 ```python
 v = float.wrap(value1, value2)

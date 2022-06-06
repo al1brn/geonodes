@@ -105,7 +105,7 @@
 > Node: [MeshCircle](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = Mesh.Circle(vertices, radius, fill_type)
@@ -149,7 +149,7 @@ node = nodes.MeshCircle(vertices=vertices, radius=radius, fill_type=fill_type)
 > Node: [Cone](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = Mesh.Cone(vertices, side_segments, fill_segments, radius_top, radius_bottom, depth, fill_type)
@@ -197,7 +197,7 @@ node = nodes.Cone(vertices=vertices, side_segments=side_segments, fill_segments=
 > Node: [Cube](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = Mesh.Cube(size, vertices_x, vertices_y, vertices_z)
@@ -235,7 +235,7 @@ node = nodes.Cube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, verti
 > Node: [Cylinder](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = Mesh.Cylinder(vertices, side_segments, fill_segments, radius, depth, fill_type)
@@ -282,7 +282,7 @@ node = nodes.Cylinder(vertices=vertices, side_segments=side_segments, fill_segme
 > Node: [Grid](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = Mesh.Grid(size_x, size_y, vertices_x, vertices_y)
@@ -320,7 +320,7 @@ node = nodes.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_
 > Node: [IcoSphere](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = Mesh.IcoSphere(radius, subdivisions)
@@ -356,7 +356,7 @@ node = nodes.IcoSphere(radius=radius, subdivisions=subdivisions)
 > Node: [MeshLine](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = Mesh.Line(count, start_location, offset, count_mode, mode)
@@ -402,7 +402,7 @@ node = nodes.MeshLine(count=count, start_location=start_location, offset=offset,
 > Node: [UvSphere](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = Mesh.UVSphere(segments, rings, radius)
@@ -439,7 +439,7 @@ node = nodes.UvSphere(segments=segments, rings=rings, radius=radius)
 > Node: [EdgeAngle](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.capture_edge_angle(self, domain='EDGE')
@@ -475,7 +475,7 @@ node = nodes.EdgeAngle()
 > Node: [EdgeNeighbors](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.capture_edge_neighbors(self, domain='EDGE')
@@ -511,7 +511,7 @@ node = nodes.EdgeNeighbors()
 > Node: [EdgeVertices](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.capture_edge_vertices(self, domain='EDGE')
@@ -547,7 +547,7 @@ node = nodes.EdgeVertices()
 > Node: [FaceArea](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.capture_face_area(self, domain='FACE')
@@ -583,7 +583,7 @@ node = nodes.FaceArea()
 > Node: [FaceNeighbors](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.capture_face_neighbors(self, domain='FACE')
@@ -619,7 +619,7 @@ node = nodes.FaceNeighbors()
 > Node: [MeshIsland](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.capture_island(self, domain='POINT')
@@ -655,7 +655,7 @@ node = nodes.MeshIsland()
 > Node: [MaterialIndex](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.capture_material_index(self, domain='FACE')
@@ -691,7 +691,7 @@ node = nodes.MaterialIndex()
 > Node: [MaterialSelection](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.capture_material_selection(self, material, domain='FACE')
@@ -735,7 +735,7 @@ node = nodes.MaterialSelection(material=material)
 > Node: [IsShadeSmooth](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.capture_shade_smooth(self, domain='FACE')
@@ -771,7 +771,7 @@ node = nodes.IsShadeSmooth()
 > Node: [VertexNeighbors](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.capture_vertex_neighbors(self, domain='POINT')
@@ -807,7 +807,7 @@ node = nodes.VertexNeighbors()
 > Node: [EdgeAngle](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.corner_ID(self)
@@ -842,7 +842,7 @@ node = nodes.EdgeAngle()
 > Node: [EdgeAngle](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.corner_index(self)
@@ -877,7 +877,7 @@ node = nodes.EdgeAngle()
 > Node: [EdgeAngle](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.corner_porision(self)
@@ -912,7 +912,7 @@ node = nodes.EdgeAngle()
 > Node: [MeshBoolean](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.difference(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
@@ -958,7 +958,7 @@ node = nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersecti
 > Node: [DistributePointsOnFaces](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.distribute_points_on_faces(selection, distance_min, density_max, density, density_factor, seed, distribute_method)
@@ -1007,7 +1007,7 @@ node = nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_mi
 > Node: [DualMesh](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 mesh.dual(keep_boundaries)
@@ -1043,7 +1043,7 @@ node = nodes.DualMesh(mesh=self, keep_boundaries=keep_boundaries)
 > Node: [EdgeAngle](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.edge_angle(self)
@@ -1078,7 +1078,7 @@ node = nodes.EdgeAngle()
 > Node: [EdgeNeighbors](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.edge_neighbors(self)
@@ -1113,7 +1113,7 @@ node = nodes.EdgeNeighbors()
 > Node: [EdgeAngle](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.edge_unsigned_angle(self)
@@ -1148,7 +1148,7 @@ node = nodes.EdgeAngle()
 > Node: [EdgeVertices](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.edge_vertices_index1(self)
@@ -1183,7 +1183,7 @@ node = nodes.EdgeVertices()
 > Node: [EdgeVertices](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.edge_vertices_index2(self)
@@ -1218,7 +1218,7 @@ node = nodes.EdgeVertices()
 > Node: [EdgeVertices](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.edge_vertices_position1(self)
@@ -1253,7 +1253,7 @@ node = nodes.EdgeVertices()
 > Node: [EdgeVertices](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.edge_vertices_position2(self)
@@ -1288,7 +1288,7 @@ node = nodes.EdgeVertices()
 > Node: [EdgeAngle](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.egde_ID(self)
@@ -1323,7 +1323,7 @@ node = nodes.EdgeAngle()
 > Node: [EdgeAngle](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.egde_index(self)
@@ -1358,7 +1358,7 @@ node = nodes.EdgeAngle()
 > Node: [EdgeAngle](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.egde_position(self)
@@ -1393,7 +1393,7 @@ node = nodes.EdgeAngle()
 > Node: [ExtrudeMesh](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.extrude(selection, offset, offset_scale, individual, mode)
@@ -1440,7 +1440,7 @@ node = nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_s
 > Node: [EdgeAngle](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.face_ID(self)
@@ -1475,7 +1475,7 @@ node = nodes.EdgeAngle()
 > Node: [FaceArea](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.face_area(self)
@@ -1510,7 +1510,7 @@ node = nodes.FaceArea()
 > Node: [EdgeAngle](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.face_index(self)
@@ -1545,7 +1545,7 @@ node = nodes.EdgeAngle()
 > Node: [FaceNeighbors](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.face_neighbors_face_count(self)
@@ -1580,7 +1580,7 @@ node = nodes.FaceNeighbors()
 > Node: [FaceNeighbors](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.face_neighbors_vertex_count(self)
@@ -1615,7 +1615,7 @@ node = nodes.FaceNeighbors()
 > Node: [EdgeAngle](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.face_position(self)
@@ -1650,7 +1650,7 @@ node = nodes.EdgeAngle()
 > Node: [FlipFaces](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 mesh.flip_faces(selection)
@@ -1686,7 +1686,7 @@ node = nodes.FlipFaces(mesh=self, selection=selection)
 > Node: [MeshBoolean](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.intersect(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
@@ -1731,7 +1731,7 @@ node = nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hol
 > Node: [MeshIsland](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.island(self)
@@ -1766,7 +1766,7 @@ node = nodes.MeshIsland()
 > Node: [MaterialIndex](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.material_index(self)
@@ -1801,7 +1801,7 @@ node = nodes.MaterialIndex()
 > Node: [MaterialSelection](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.material_selection(self, material)
@@ -1844,7 +1844,7 @@ node = nodes.MaterialSelection(material=material)
 > Node: [IsShadeSmooth](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.shade_smooth(self)
@@ -1879,7 +1879,7 @@ node = nodes.IsShadeSmooth()
 > Node: [SplitEdges](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 mesh.split_edges(selection)
@@ -1915,7 +1915,7 @@ node = nodes.SplitEdges(mesh=self, selection=selection)
 > Node: [SubdivideMesh](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 mesh.subdivide(level)
@@ -1951,7 +1951,7 @@ node = nodes.SubdivideMesh(mesh=self, level=level)
 > Node: [SubdivisionSurface](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 mesh.subdivision_surface(level, crease, boundary_smooth, uv_smooth)
@@ -1997,7 +1997,7 @@ node = nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_
 > Node: [MeshToCurve](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.to_curve(selection)
@@ -2033,7 +2033,7 @@ node = nodes.MeshToCurve(mesh=self, selection=selection)
 > Node: [MeshToPoints](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.to_points(selection, position, radius, mode)
@@ -2079,7 +2079,7 @@ node = nodes.MeshToPoints(mesh=self, selection=selection, position=position, rad
 > Node: [Triangulate](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 mesh.triangulate(selection, minimum_vertices, ngon_method, quad_method)
@@ -2125,7 +2125,7 @@ node = nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimu
 > Node: [MeshBoolean](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.union(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
@@ -2170,7 +2170,7 @@ node = nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hol
 > Node: [VertexNeighbors](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.vertex_neighbors_face_count(self)
@@ -2205,7 +2205,7 @@ node = nodes.VertexNeighbors()
 > Node: [VertexNeighbors](../nodes/{self.node_name}.md)
 
 
-[Top](#mesh) [Index](/docs/index.md)
+[Top](#class-mesh) [Index](/docs/index.md)
 
 ```python
 v = mesh.vertex_neighbors_vertex_count(self)

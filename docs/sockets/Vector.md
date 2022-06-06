@@ -90,7 +90,7 @@
 > Node: [AlignEulerToVector](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis)
@@ -136,7 +136,7 @@ node = nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector,
 > Node: [CombineXyz](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = Vector.Combine(x, y, z)
@@ -173,7 +173,7 @@ node = nodes.CombineXyz(x=x, y=y, z=z)
 > Node: [RandomValue](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = Vector.Random(min, max, ID, seed)
@@ -219,7 +219,7 @@ node = nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VE
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.absolute()
@@ -262,7 +262,7 @@ node = nodes.VectorMath(vector0=self, operation='ABSOLUTE')
 > Node: [AccumulateField](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.accumulate_field(group_index, domain)
@@ -314,7 +314,7 @@ node = nodes.AccumulateField(value=self, group_index=group_index, data_type='FLO
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.add(vector1)
@@ -358,7 +358,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD')
 > Node: [AlignEulerToVector](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 vector.align_to_vector(factor, vector, axis, pivot_axis)
@@ -404,7 +404,7 @@ node = nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axi
 > Node: [AttributeStatistic](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.attribute_statistic(geometry, selection, domain)
@@ -457,7 +457,7 @@ node = nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=sel
 > Node: [CaptureAttribute](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.capture_attribute(geometry, domain)
@@ -509,7 +509,7 @@ node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VE
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.ceil()
@@ -552,7 +552,7 @@ node = nodes.VectorMath(vector0=self, operation='CEIL')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.cos()
@@ -595,7 +595,7 @@ node = nodes.VectorMath(vector0=self, operation='COSINE')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.cross(vector1)
@@ -639,7 +639,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT'
 > Node: [VectorCurves](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 vector.curves(fac)
@@ -675,7 +675,7 @@ node = nodes.VectorCurves(vector=self, fac=fac)
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.distance(vector1)
@@ -719,7 +719,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.divide(vector1)
@@ -763,7 +763,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.dot(vector1)
@@ -807,7 +807,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT')
 > Node: [Compare](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.equal(b, c, angle, epsilon, mode)
@@ -863,7 +863,7 @@ node = nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.faceforward(vector1, vector2)
@@ -908,7 +908,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operatio
 > Node: [FieldAtIndex](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.field_at_index(index, domain)
@@ -960,7 +960,7 @@ node = nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', dom
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.floor()
@@ -1003,7 +1003,7 @@ node = nodes.VectorMath(vector0=self, operation='FLOOR')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.fraction()
@@ -1046,7 +1046,7 @@ node = nodes.VectorMath(vector0=self, operation='FRACTION')
 > Node: [Compare](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.greater_equal(b, c, angle, mode)
@@ -1101,7 +1101,7 @@ node = nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mod
 > Node: [Compare](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.greater_than(b, c, angle, mode)
@@ -1156,7 +1156,7 @@ node = nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mod
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.length()
@@ -1199,7 +1199,7 @@ node = nodes.VectorMath(vector0=self, operation='LENGTH')
 > Node: [Compare](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.less_equal(b, c, angle, mode)
@@ -1254,7 +1254,7 @@ node = nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mod
 > Node: [Compare](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.less_than(b, c, angle, mode)
@@ -1309,7 +1309,7 @@ node = nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mod
 > Node: [MapRange](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type)
@@ -1365,7 +1365,7 @@ node = nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.max(vector1)
@@ -1409,7 +1409,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.min(vector1)
@@ -1453,7 +1453,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.modulo(vector1)
@@ -1497,7 +1497,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.multiply(vector1)
@@ -1541,7 +1541,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.multiply_add(vector1, vector2)
@@ -1586,7 +1586,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operatio
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.normalize()
@@ -1629,7 +1629,7 @@ node = nodes.VectorMath(vector0=self, operation='NORMALIZE')
 > Node: [Compare](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.not_equal(b, c, angle, epsilon, mode)
@@ -1685,7 +1685,7 @@ node = nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.project(vector1)
@@ -1729,7 +1729,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT')
 > Node: [Raycast](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
@@ -1784,7 +1784,7 @@ node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_pos
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.reflect(vector1)
@@ -1828,7 +1828,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.refract(vector1, scale)
@@ -1873,7 +1873,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='R
 > Node: [VectorRotate](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.rotate(center, axis, angle, rotation, invert, rotation_type)
@@ -1921,7 +1921,7 @@ node = nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, ro
 > Node: [RotateEuler](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 vector.rotate_euler(rotate_by, space)
@@ -1965,7 +1965,7 @@ node = nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space)
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.scale(scale)
@@ -2009,7 +2009,7 @@ node = nodes.VectorMath(vector0=self, scale=scale, operation='SCALE')
 > Node: [SeparateXyz](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.separate
@@ -2052,7 +2052,7 @@ node = nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.separate")
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.sin()
@@ -2095,7 +2095,7 @@ node = nodes.VectorMath(vector0=self, operation='SINE')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.snap(vector1)
@@ -2139,7 +2139,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.subtract(vector1)
@@ -2183,7 +2183,7 @@ node = nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT')
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.tan()
@@ -2226,7 +2226,7 @@ node = nodes.VectorMath(vector0=self, operation='TANGENT')
 > Node: [TransferAttribute](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.transfer_attribute(source, source_position, index, domain, mapping)
@@ -2281,7 +2281,7 @@ node = nodes.TransferAttribute(attribute=self, source=source, source_position=so
 > Node: [VectorMath](../nodes/{self.node_name}.md)
 
 
-[Top](#vector) [Index](/docs/index.md)
+[Top](#class-vector) [Index](/docs/index.md)
 
 ```python
 v = vector.wrap(vector1, vector2)
