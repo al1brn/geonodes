@@ -2,6 +2,7 @@
 # Class CurveTilt
 
 > Geometry node name: _'Curve Tilt'_<br>Blender type:  **GeometryNodeInputCurveTilt**
+[Index](/docs/index.md)
 
 ## Initialization
 

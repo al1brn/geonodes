@@ -2,6 +2,7 @@
 # Class String
 
 > Geometry node name: _'String'_<br>Blender type:  **FunctionNodeInputString**
+[Index](/docs/index.md)
 
 ## Initialization
 

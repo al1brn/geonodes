@@ -13,6 +13,7 @@ class Integer(dsock.Integer):
     
 
     | Inherits from: dsock.Integer 
+    Index 
     
 
     Constructors
@@ -87,6 +88,7 @@ class Integer(dsock.Integer):
         
 
         | Node: RandomValue 
+        Top Index 
         
 
             v = Integer.Random(min, max, ID, seed) 
@@ -132,6 +134,7 @@ class Integer(dsock.Integer):
         
 
         | Node: AccumulateField 
+        Top Index 
         
 
             v = integer.accumulate_field(group_index, domain) 
@@ -176,6 +179,7 @@ class Integer(dsock.Integer):
         
 
         | Node: TransferAttribute 
+        Top Index 
         
 
             v = integer.transfer_attribute(source, source_position, index, domain, mapping) 
@@ -224,6 +228,7 @@ class Integer(dsock.Integer):
         
 
         | Node: CaptureAttribute 
+        Top Index 
         
 
             v = integer.capture_attribute(geometry, domain) 
@@ -268,6 +273,7 @@ class Integer(dsock.Integer):
         
 
         | Node: FieldAtIndex 
+        Top Index 
         
 
             v = integer.field_at_index(value, domain) 
@@ -312,6 +318,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Raycast 
+        Top Index 
         
 
             v = integer.raycast(target_geometry, source_position, ray_direction, ray_length, mapping) 
@@ -361,6 +368,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Switch 
+        Top Index 
         
 
             v = integer.switch(switch0, true) 
@@ -401,6 +409,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = integer.less_than(b) 
@@ -442,6 +451,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = integer.less_equal(b) 
@@ -483,6 +493,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = integer.greater_than(b) 
@@ -524,6 +535,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = integer.greater_equal(b) 
@@ -565,6 +577,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = integer.equal(b) 
@@ -606,6 +619,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = integer.not_equal(b) 
@@ -647,6 +661,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.add(value1) 
@@ -686,6 +701,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.subtract(value1) 
@@ -725,6 +741,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.multiply(value1) 
@@ -764,6 +781,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.divide(value1) 
@@ -803,6 +821,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.multiply_add(value1, value2) 
@@ -843,6 +862,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.pow(value1) 
@@ -882,6 +902,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.log(value1) 
@@ -921,6 +942,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.sqrt() 
@@ -959,6 +981,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.inverse_sqrt() 
@@ -997,6 +1020,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.abs() 
@@ -1035,6 +1059,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.exp() 
@@ -1073,6 +1098,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.min(value1) 
@@ -1112,6 +1138,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.max(value1) 
@@ -1151,6 +1178,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.less_than(value1) 
@@ -1190,6 +1218,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.greater_than(value1) 
@@ -1229,6 +1258,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.sign() 
@@ -1267,6 +1297,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.compare(value1, value2) 
@@ -1307,6 +1338,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.smooth_min(value1, value2) 
@@ -1347,6 +1379,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.smooth_max(value1, value2) 
@@ -1387,6 +1420,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.round() 
@@ -1425,6 +1459,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.floor() 
@@ -1463,6 +1498,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.ceil() 
@@ -1501,6 +1537,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.trunc() 
@@ -1539,6 +1576,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.fract() 
@@ -1577,6 +1615,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.modulo(value1) 
@@ -1616,6 +1655,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.wrap(value1, value2) 
@@ -1656,6 +1696,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.snap(value1) 
@@ -1695,6 +1736,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.pingpong(value1) 
@@ -1734,6 +1776,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.sin() 
@@ -1772,6 +1815,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.cos() 
@@ -1810,6 +1854,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.tan() 
@@ -1848,6 +1893,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.arcsin() 
@@ -1886,6 +1932,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.arccos() 
@@ -1924,6 +1971,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.arctan() 
@@ -1962,6 +2010,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.arctan2(value1) 
@@ -2001,6 +2050,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.sinh() 
@@ -2039,6 +2089,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.cosh() 
@@ -2077,6 +2128,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.tanh() 
@@ -2115,6 +2167,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.radians() 
@@ -2153,6 +2206,7 @@ class Integer(dsock.Integer):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = integer.degrees() 

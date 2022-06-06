@@ -2,6 +2,7 @@
 # Class AlignEulerToVector
 
 > Geometry node name: _'Align Euler to Vector'_<br>Blender type:  **FunctionNodeAlignEulerToVector**
+[Index](/docs/index.md)
 
 ## Initialization
 

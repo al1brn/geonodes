@@ -2,6 +2,7 @@
 # Class Color
 
 > Inherits from: ***dsock.Color***
+[Index](/docs/index.md)
 
 ## Constructors
 
@@ -67,6 +68,7 @@
 ### Combine
 
 > Node: [CombineRgb](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = Color.Combine(r, g, b)
@@ -101,6 +103,7 @@ node = nodes.CombineRgb(r=r, g=g, b=b)
 ### add
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.add(color2, fac, use_alpha)
@@ -151,6 +154,7 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='ADD', use_alph
 ### brighter
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.brighter(b)
@@ -194,6 +198,7 @@ node = nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='B
 ### burn
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.burn(color2, fac, use_alpha)
@@ -244,6 +249,7 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='BURN', use_alp
 ### capture_attribute
 
 > Node: [CaptureAttribute](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.capture_attribute(geometry, domain)
@@ -293,6 +299,7 @@ node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_CO
 ### curves
 
 > Node: [RgbCurves](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 color.curves(fac)
@@ -326,6 +333,7 @@ node = nodes.RgbCurves(color=self, fac=fac)
 ### darken
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.darken(color2, fac, use_alpha)
@@ -376,6 +384,7 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DARKEN', use_a
 ### darker
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.darker(b)
@@ -419,6 +428,7 @@ node = nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='D
 ### difference
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.difference(color2, fac, use_alpha)
@@ -469,6 +479,7 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIFFERENCE', u
 ### divide
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.divide(color2, fac, use_alpha)
@@ -519,6 +530,7 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIVIDE', use_a
 ### dodge
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.dodge(color2, fac, use_alpha)
@@ -569,6 +581,7 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DODGE', use_al
 ### equal
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.equal(b, epsilon)
@@ -613,6 +626,7 @@ node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEME
 ### field_at_index
 
 > Node: [FieldAtIndex](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.field_at_index(index, domain)
@@ -662,6 +676,7 @@ node = nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_COLOR', doma
 ### hue
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.hue(color2, fac, use_alpha)
@@ -712,6 +727,7 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='HUE', use_alph
 ### lighten
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.lighten(color2, fac, use_alpha)
@@ -762,6 +778,7 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LIGHTEN', use_
 ### linear_light
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.linear_light(color2, fac, use_alpha)
@@ -812,6 +829,7 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LINEAR_LIGHT',
 ### mix
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.mix(color2, fac, blend_type, use_alpha)
@@ -855,6 +873,7 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type=blend_type, use
 ### mix_color
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.mix_color(color2, fac, use_alpha)
@@ -905,6 +924,7 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='COLOR', use_al
 ### multiply
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.multiply(color2, fac, use_alpha)
@@ -955,6 +975,7 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MULTIPLY', use
 ### not_equal
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.not_equal(b, epsilon)
@@ -999,6 +1020,7 @@ node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEME
 ### overlay
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.overlay(color2, fac, use_alpha)
@@ -1049,6 +1071,7 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='OVERLAY', use_
 ### raycast
 
 > Node: [Raycast](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
@@ -1101,6 +1124,7 @@ node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_pos
 ### saturation
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.saturation(color2, fac, use_alpha)
@@ -1151,6 +1175,7 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SATURATION', u
 ### screen
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.screen(color2, fac, use_alpha)
@@ -1201,6 +1226,7 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SCREEN', use_a
 ### separate
 
 > Node: [SeparateRgb](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.separate
@@ -1241,6 +1267,7 @@ node = nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.separate")
 ### soft_light
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.soft_light(color2, fac, use_alpha)
@@ -1291,6 +1318,7 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SOFT_LIGHT', u
 ### subtract
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.subtract(color2, fac, use_alpha)
@@ -1341,6 +1369,7 @@ node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SUBTRACT', use
 ### transfer_attribute
 
 > Node: [TransferAttribute](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.transfer_attribute(source, source_position, index, domain, mapping)
@@ -1393,6 +1422,7 @@ node = nodes.TransferAttribute(attribute=self, source=source, source_position=so
 ### value
 
 > Node: [Mix](../nodes/{self.node_name}.md)
+[Top](#color) [Index](/docs/index.md)
 
 ```python
 v = color.value(color2, fac, use_alpha)

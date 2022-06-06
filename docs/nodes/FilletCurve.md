@@ -2,6 +2,7 @@
 # Class FilletCurve
 
 > Geometry node name: _'Fillet Curve'_<br>Blender type:  **GeometryNodeFilletCurve**
+[Index](/docs/index.md)
 
 ## Initialization
 

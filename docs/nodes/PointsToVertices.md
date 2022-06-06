@@ -2,6 +2,7 @@
 # Class PointsToVertices
 
 > Geometry node name: _'Points to Vertices'_<br>Blender type:  **GeometryNodePointsToVertices**
+[Index](/docs/index.md)
 
 ## Initialization
 

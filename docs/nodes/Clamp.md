@@ -2,6 +2,7 @@
 # Class Clamp
 
 > Geometry node name: _'Clamp'_<br>Blender type:  **ShaderNodeClamp**
+[Index](/docs/index.md)
 
 ## Initialization
 

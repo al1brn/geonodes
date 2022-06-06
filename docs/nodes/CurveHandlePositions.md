@@ -2,6 +2,7 @@
 # Class CurveHandlePositions
 
 > Geometry node name: _'Curve Handle Positions'_<br>Blender type:  **GeometryNodeInputCurveHandlePositions**
+[Index](/docs/index.md)
 
 ## Initialization
 

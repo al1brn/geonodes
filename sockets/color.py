@@ -13,6 +13,7 @@ class Color(dsock.Color):
     
 
     | Inherits from: dsock.Color 
+    Index 
     
 
     Constructors
@@ -75,6 +76,7 @@ class Color(dsock.Color):
         
 
         | Node: CombineRgb 
+        Top Index 
         
 
             v = Color.Combine(r, g, b) 
@@ -115,6 +117,7 @@ class Color(dsock.Color):
         
 
         | Node: SeparateRgb 
+        Top Index 
         
 
             v = color.separate 
@@ -159,6 +162,7 @@ class Color(dsock.Color):
         
 
         | Node: TransferAttribute 
+        Top Index 
         
 
             v = color.transfer_attribute(source, source_position, index, domain, mapping) 
@@ -207,6 +211,7 @@ class Color(dsock.Color):
         
 
         | Node: CaptureAttribute 
+        Top Index 
         
 
             v = color.capture_attribute(geometry, domain) 
@@ -251,6 +256,7 @@ class Color(dsock.Color):
         
 
         | Node: FieldAtIndex 
+        Top Index 
         
 
             v = color.field_at_index(index, domain) 
@@ -295,6 +301,7 @@ class Color(dsock.Color):
         
 
         | Node: Raycast 
+        Top Index 
         
 
             v = color.raycast(target_geometry, source_position, ray_direction, ray_length, mapping) 
@@ -344,6 +351,7 @@ class Color(dsock.Color):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = color.equal(b, epsilon) 
@@ -386,6 +394,7 @@ class Color(dsock.Color):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = color.not_equal(b, epsilon) 
@@ -428,6 +437,7 @@ class Color(dsock.Color):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = color.brighter(b) 
@@ -469,6 +479,7 @@ class Color(dsock.Color):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = color.darker(b) 
@@ -510,6 +521,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.mix(color2, fac, use_alpha) 
@@ -555,6 +567,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.darken(color2, fac, use_alpha) 
@@ -600,6 +613,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.multiply(color2, fac, use_alpha) 
@@ -645,6 +659,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.burn(color2, fac, use_alpha) 
@@ -690,6 +705,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.lighten(color2, fac, use_alpha) 
@@ -735,6 +751,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.screen(color2, fac, use_alpha) 
@@ -780,6 +797,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.dodge(color2, fac, use_alpha) 
@@ -825,6 +843,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.add(color2, fac, use_alpha) 
@@ -870,6 +889,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.overlay(color2, fac, use_alpha) 
@@ -915,6 +935,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.soft_light(color2, fac, use_alpha) 
@@ -960,6 +981,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.linear_light(color2, fac, use_alpha) 
@@ -1005,6 +1027,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.difference(color2, fac, use_alpha) 
@@ -1050,6 +1073,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.subtract(color2, fac, use_alpha) 
@@ -1095,6 +1119,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.divide(color2, fac, use_alpha) 
@@ -1140,6 +1165,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.hue(color2, fac, use_alpha) 
@@ -1185,6 +1211,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.saturation(color2, fac, use_alpha) 
@@ -1230,6 +1257,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.mix_color(color2, fac, use_alpha) 
@@ -1275,6 +1303,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.value(color2, fac, use_alpha) 
@@ -1320,6 +1349,7 @@ class Color(dsock.Color):
         
 
         | Node: Mix 
+        Top Index 
         
 
             v = color.mix(color2, fac, blend_type, use_alpha) 
@@ -1365,6 +1395,7 @@ class Color(dsock.Color):
         
 
         | Node: RgbCurves 
+        Top Index 
         
 
             color.curves(fac) 

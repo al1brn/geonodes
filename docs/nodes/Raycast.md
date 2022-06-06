@@ -2,6 +2,7 @@
 # Class Raycast
 
 > Geometry node name: _'Raycast'_<br>Blender type:  **GeometryNodeRaycast**
+[Index](/docs/index.md)
 
 ## Initialization
 

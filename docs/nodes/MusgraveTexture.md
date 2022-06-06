@@ -2,6 +2,7 @@
 # Class MusgraveTexture
 
 > Geometry node name: _'Musgrave Texture'_<br>Blender type:  **ShaderNodeTexMusgrave**
+[Index](/docs/index.md)
 
 ## Initialization
 

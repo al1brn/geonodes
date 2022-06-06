@@ -2,6 +2,7 @@
 # Class ConvexHull
 
 > Geometry node name: _'Convex Hull'_<br>Blender type:  **GeometryNodeConvexHull**
+[Index](/docs/index.md)
 
 ## Initialization
 

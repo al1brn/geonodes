@@ -2,6 +2,7 @@
 # Class IcoSphere
 
 > Geometry node name: _'Ico Sphere'_<br>Blender type:  **GeometryNodeMeshIcoSphere**
+[Index](/docs/index.md)
 
 ## Initialization
 

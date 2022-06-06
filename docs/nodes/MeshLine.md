@@ -2,6 +2,7 @@
 # Class MeshLine
 
 > Geometry node name: _'Mesh Line'_<br>Blender type:  **GeometryNodeMeshLine**
+[Index](/docs/index.md)
 
 ## Initialization
 

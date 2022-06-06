@@ -2,6 +2,7 @@
 # Class ScaleElements
 
 > Geometry node name: _'Scale Elements'_<br>Blender type:  **GeometryNodeScaleElements**
+[Index](/docs/index.md)
 
 ## Initialization
 

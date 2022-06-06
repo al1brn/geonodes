@@ -2,6 +2,7 @@
 # Class EdgeVertices
 
 > Geometry node name: _'Edge Vertices'_<br>Blender type:  **GeometryNodeInputMeshEdgeVertices**
+[Index](/docs/index.md)
 
 ## Initialization
 

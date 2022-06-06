@@ -2,6 +2,7 @@
 # Class TrimCurve
 
 > Geometry node name: _'Trim Curve'_<br>Blender type:  **GeometryNodeTrimCurve**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -2,6 +2,7 @@
 # Class SetID
 
 > Geometry node name: _'Set ID'_<br>Blender type:  **GeometryNodeSetID**
+[Index](/docs/index.md)
 
 ## Initialization
 

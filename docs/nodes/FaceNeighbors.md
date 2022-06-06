@@ -2,6 +2,7 @@
 # Class FaceNeighbors
 
 > Geometry node name: _'Face Neighbors'_<br>Blender type:  **GeometryNodeInputMeshFaceNeighbors**
+[Index](/docs/index.md)
 
 ## Initialization
 

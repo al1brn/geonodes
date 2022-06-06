@@ -2,6 +2,7 @@
 # Class NoiseTexture
 
 > Geometry node name: _'Noise Texture'_<br>Blender type:  **ShaderNodeTexNoise**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -2,6 +2,7 @@
 # Class VertexNeighbors
 
 > Geometry node name: _'Vertex Neighbors'_<br>Blender type:  **GeometryNodeInputMeshVertexNeighbors**
+[Index](/docs/index.md)
 
 ## Initialization
 

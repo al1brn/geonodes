@@ -2,6 +2,7 @@
 # Class RealizeInstances
 
 > Geometry node name: _'Realize Instances'_<br>Blender type:  **GeometryNodeRealizeInstances**
+[Index](/docs/index.md)
 
 ## Initialization
 

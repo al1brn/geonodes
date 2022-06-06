@@ -2,6 +2,7 @@
 # Class SetShadeSmooth
 
 > Geometry node name: _'Set Shade Smooth'_<br>Blender type:  **GeometryNodeSetShadeSmooth**
+[Index](/docs/index.md)
 
 ## Initialization
 

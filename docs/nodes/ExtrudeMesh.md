@@ -2,6 +2,7 @@
 # Class ExtrudeMesh
 
 > Geometry node name: _'Extrude Mesh'_<br>Blender type:  **GeometryNodeExtrudeMesh**
+[Index](/docs/index.md)
 
 ## Initialization
 

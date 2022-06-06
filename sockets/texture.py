@@ -13,6 +13,7 @@ class Texture(dsock.Texture):
     
 
     | Inherits from: dsock.Texture 
+    Index 
     
 
     Static methods
@@ -45,6 +46,7 @@ class Texture(dsock.Texture):
         
 
         | Node: BrickTexture 
+        Top Index 
         
 
             v = Texture.Brick(vector, color1, color2, mortar, scale, mortar_size, mortar_smooth, bias, brick_width,
@@ -99,6 +101,7 @@ class Texture(dsock.Texture):
         
 
         | Node: CheckerTexture 
+        Top Index 
         
 
             v = Texture.Checker(vector, color1, color2, scale) 
@@ -136,6 +139,7 @@ class Texture(dsock.Texture):
         
 
         | Node: GradientTexture 
+        Top Index 
         
 
             v = Texture.Gradient(vector, gradient_type) 
@@ -175,6 +179,7 @@ class Texture(dsock.Texture):
         
 
         | Node: MagicTexture 
+        Top Index 
         
 
             v = Texture.Magic(vector, scale, distortion, turbulence_depth) 
@@ -216,6 +221,7 @@ class Texture(dsock.Texture):
         
 
         | Node: MusgraveTexture 
+        Top Index 
         
 
             v = Texture.Musgrave(vector, w, scale, detail, dimension, lacunarity, offset, gain, musgrave_dimensions,
@@ -265,6 +271,7 @@ class Texture(dsock.Texture):
         
 
         | Node: NoiseTexture 
+        Top Index 
         
 
             v = Texture.Noise(vector, w, scale, detail, roughness, distortion, noise_dimensions) 
@@ -310,6 +317,7 @@ class Texture(dsock.Texture):
         
 
         | Node: VoronoiTexture 
+        Top Index 
         
 
             v = Texture.Voronoi(vector, w, scale, smoothness, exponent, randomness, distance, feature, voronoi_dimensions)
@@ -357,6 +365,7 @@ class Texture(dsock.Texture):
         
 
         | Node: WaveTexture 
+        Top Index 
         
 
             v = Texture.Wave(vector, scale, distortion, detail, detail_scale, detail_roughness, phase_offset, bands_direction,
@@ -408,6 +417,7 @@ class Texture(dsock.Texture):
         
 
         | Node: WhiteNoiseTexture 
+        Top Index 
         
 
             v = Texture.WhiteNoise(vector, w, noise_dimensions) 
@@ -448,6 +458,7 @@ class Texture(dsock.Texture):
         
 
         | Node: ImageTexture 
+        Top Index 
         
 
             v = Texture.Image(image, vector, frame, extension, interpolation) 
@@ -493,6 +504,7 @@ class Texture(dsock.Texture):
         
 
         | Node: Switch 
+        Top Index 
         
 
             v = texture.switch(switch1, true) 

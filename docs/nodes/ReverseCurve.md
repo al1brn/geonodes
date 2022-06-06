@@ -2,6 +2,7 @@
 # Class ReverseCurve
 
 > Geometry node name: _'Reverse Curve'_<br>Blender type:  **GeometryNodeReverseCurve**
+[Index](/docs/index.md)
 
 ## Initialization
 

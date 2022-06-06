@@ -13,6 +13,7 @@ class Collection(dsock.Collection):
     
 
     | Inherits from: dsock.Collection 
+    Index 
     
 
     Methods
@@ -30,6 +31,7 @@ class Collection(dsock.Collection):
         
 
         | Node: Switch 
+        Top Index 
         
 
             v = collection.switch(switch1, true) 
@@ -70,6 +72,7 @@ class Collection(dsock.Collection):
         
 
         | Node: CollectionInfo 
+        Top Index 
         
 
             v = collection.info(separate_children, reset_children, transform_space) 

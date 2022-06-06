@@ -2,6 +2,7 @@
 # Class Math
 
 > Geometry node name: _'Math'_<br>Blender type:  **ShaderNodeMath**
+[Index](/docs/index.md)
 
 ## Initialization
 

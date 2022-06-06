@@ -8,11 +8,12 @@ logger = logging.Logger('geonodes')
 # ==============================================================================================================
 # Data class Instances
 
-class Instances(Geometry):
+class Instances(gn.Geometry):
     """ Class Instances
     
 
-    | Inherits from: Geometry 
+    | Inherits from: gn.Geometry 
+    Index 
     
 
     Attributes
@@ -42,6 +43,7 @@ class Instances(Geometry):
         
 
         | Node: Index 
+        Top Index 
         
 
             v = instances.instance_index(self) 
@@ -79,6 +81,7 @@ class Instances(Geometry):
         
 
         | Node: InstancesToPoints 
+        Top Index 
         
 
             v = instances.to_points(selection, position, radius) 
@@ -119,6 +122,7 @@ class Instances(Geometry):
         
 
         | Node: RotateInstances 
+        Top Index 
         
 
             instances.rotate(selection, rotation, pivot_point, local_space) 
@@ -157,6 +161,7 @@ class Instances(Geometry):
         
 
         | Node: ScaleInstances 
+        Top Index 
         
 
             instances.scale(selection, scale, center, local_space) 
@@ -194,6 +199,7 @@ class Instances(Geometry):
         
 
         | Node: TranslateInstances 
+        Top Index 
         
 
             instances.translate(selection, translation, local_space) 

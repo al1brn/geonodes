@@ -2,6 +2,7 @@
 # Class CurveLength
 
 > Geometry node name: _'Curve Length'_<br>Blender type:  **GeometryNodeCurveLength**
+[Index](/docs/index.md)
 
 ## Initialization
 

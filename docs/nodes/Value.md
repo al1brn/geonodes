@@ -2,6 +2,7 @@
 # Class Value
 
 > Geometry node name: _'Value'_<br>Blender type:  **ShaderNodeValue**
+[Index](/docs/index.md)
 
 ## Initialization
 

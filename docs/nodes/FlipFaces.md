@@ -2,6 +2,7 @@
 # Class FlipFaces
 
 > Geometry node name: _'Flip Faces'_<br>Blender type:  **GeometryNodeFlipFaces**
+[Index](/docs/index.md)
 
 ## Initialization
 

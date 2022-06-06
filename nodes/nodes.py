@@ -10,6 +10,7 @@ class AlignEulerToVector(Node):
 
     | Geometry node name: 'Align Euler to Vector' 
     | Blender type:  FunctionNodeAlignEulerToVector 
+    Index 
     
 
     Initialization
@@ -100,6 +101,7 @@ class BooleanMath(Node):
 
     | Geometry node name: 'Boolean Math' 
     | Blender type:  FunctionNodeBooleanMath 
+    Index 
     
 
     Initialization
@@ -184,6 +186,7 @@ class Compare(Node):
 
     | Geometry node name: 'Compare' 
     | Blender type:  FunctionNodeCompare 
+    Index 
     
 
     Initialization
@@ -335,6 +338,7 @@ class FloatToInteger(Node):
 
     | Geometry node name: 'Float to Integer' 
     | Blender type:  FunctionNodeFloatToInt 
+    Index 
     
 
     Initialization
@@ -409,6 +413,7 @@ class Boolean(Node):
 
     | Geometry node name: 'Boolean' 
     | Blender type:  FunctionNodeInputBool 
+    Index 
     
 
     Initialization
@@ -468,6 +473,7 @@ class Color(Node):
 
     | Geometry node name: 'Color' 
     | Blender type:  FunctionNodeInputColor 
+    Index 
     
 
     Initialization
@@ -510,6 +516,7 @@ class Integer(Node):
 
     | Geometry node name: 'Integer' 
     | Blender type:  FunctionNodeInputInt 
+    Index 
     
 
     Initialization
@@ -569,6 +576,7 @@ class SpecialCharacters(Node):
 
     | Geometry node name: 'Special Characters' 
     | Blender type:  FunctionNodeInputSpecialCharacters 
+    Index 
     
 
     Initialization
@@ -613,6 +621,7 @@ class String(Node):
 
     | Geometry node name: 'String' 
     | Blender type:  FunctionNodeInputString 
+    Index 
     
 
     Initialization
@@ -672,6 +681,7 @@ class Vector(Node):
 
     | Geometry node name: 'Vector' 
     | Blender type:  FunctionNodeInputVector 
+    Index 
     
 
     Initialization
@@ -731,6 +741,7 @@ class RandomValue(Node):
 
     | Geometry node name: 'Random Value' 
     | Blender type:  FunctionNodeRandomValue 
+    Index 
     
 
     Initialization
@@ -840,6 +851,7 @@ class ReplaceString(Node):
 
     | Geometry node name: 'Replace String' 
     | Blender type:  FunctionNodeReplaceString 
+    Index 
     
 
     Initialization
@@ -901,6 +913,7 @@ class RotateEuler(Node):
 
     | Geometry node name: 'Rotate Euler' 
     | Blender type:  FunctionNodeRotateEuler 
+    Index 
     
 
     Initialization
@@ -981,6 +994,7 @@ class SliceString(Node):
 
     | Geometry node name: 'Slice String' 
     | Blender type:  FunctionNodeSliceString 
+    Index 
     
 
     Initialization
@@ -1042,6 +1056,7 @@ class StringLength(Node):
 
     | Geometry node name: 'String Length' 
     | Blender type:  FunctionNodeStringLength 
+    Index 
     
 
     Initialization
@@ -1099,6 +1114,7 @@ class ValueToString(Node):
 
     | Geometry node name: 'Value to String' 
     | Blender type:  FunctionNodeValueToString 
+    Index 
     
 
     Initialization
@@ -1158,6 +1174,7 @@ class AccumulateField(Node):
 
     | Geometry node name: 'Accumulate Field' 
     | Blender type:  GeometryNodeAccumulateField 
+    Index 
     
 
     Initialization
@@ -1273,6 +1290,7 @@ class DomainSize(Node):
 
     | Geometry node name: 'Domain Size' 
     | Blender type:  GeometryNodeAttributeDomainSize 
+    Index 
     
 
     Initialization
@@ -1357,6 +1375,7 @@ class AttributeRemove(Node):
 
     | Geometry node name: 'Attribute Remove' 
     | Blender type:  GeometryNodeAttributeRemove 
+    Index 
     
 
     Initialization
@@ -1416,6 +1435,7 @@ class AttributeStatistic(Node):
 
     | Geometry node name: 'Attribute Statistic' 
     | Blender type:  GeometryNodeAttributeStatistic 
+    Index 
     
 
     Initialization
@@ -1542,6 +1562,7 @@ class TransferAttribute(Node):
 
     | Geometry node name: 'Transfer Attribute' 
     | Blender type:  GeometryNodeAttributeTransfer 
+    Index 
     
 
     Initialization
@@ -1679,6 +1700,7 @@ class BoundingBox(Node):
 
     | Geometry node name: 'Bounding Box' 
     | Blender type:  GeometryNodeBoundBox 
+    Index 
     
 
     Initialization
@@ -1743,6 +1765,7 @@ class CaptureAttribute(Node):
 
     | Geometry node name: 'Capture Attribute' 
     | Blender type:  GeometryNodeCaptureAttribute 
+    Index 
     
 
     Initialization
@@ -1790,11 +1813,12 @@ class CaptureAttribute(Node):
     Data sockets
     ============
     | Data socket classes implementing this node 
-    - Boolean capture_attribute : Method 
-    - Color capture_attribute   : Method 
-    - Float capture_attribute   : Method 
-    - Integer capture_attribute : Method 
-    - Vector capture_attribute  : Method 
+    - Boolean capture_attribute  : Method 
+    - Color capture_attribute    : Method 
+    - Float capture_attribute    : Method 
+    - Geometry capture_attribute : Method 
+    - Integer capture_attribute  : Method 
+    - Vector capture_attribute   : Method 
     """
 
     def __init__(self, geometry=None, value=None, data_type='FLOAT', domain='POINT', label=None):
@@ -1862,6 +1886,7 @@ class CollectionInfo(Node):
 
     | Geometry node name: 'Collection Info' 
     | Blender type:  GeometryNodeCollectionInfo 
+    Index 
     
 
     Initialization
@@ -1941,6 +1966,7 @@ class ConvexHull(Node):
 
     | Geometry node name: 'Convex Hull' 
     | Blender type:  GeometryNodeConvexHull 
+    Index 
     
 
     Initialization
@@ -1998,6 +2024,7 @@ class Arc(Node):
 
     | Geometry node name: 'Arc' 
     | Blender type:  GeometryNodeCurveArc 
+    Index 
     
 
     Initialization
@@ -2098,6 +2125,7 @@ class EndpointSelection(Node):
 
     | Geometry node name: 'Endpoint Selection' 
     | Blender type:  GeometryNodeCurveEndpointSelection 
+    Index 
     
 
     Initialization
@@ -2158,6 +2186,7 @@ class HandleTypeSelection(Node):
 
     | Geometry node name: 'Handle Type Selection' 
     | Blender type:  GeometryNodeCurveHandleTypeSelection 
+    Index 
     
 
     Initialization
@@ -2234,6 +2263,7 @@ class CurveLength(Node):
 
     | Geometry node name: 'Curve Length' 
     | Blender type:  GeometryNodeCurveLength 
+    Index 
     
 
     Initialization
@@ -2291,6 +2321,7 @@ class BezierSegment(Node):
 
     | Geometry node name: 'Bezier Segment' 
     | Blender type:  GeometryNodeCurvePrimitiveBezierSegment 
+    Index 
     
 
     Initialization
@@ -2374,6 +2405,7 @@ class CurveCircle(Node):
 
     | Geometry node name: 'Curve Circle' 
     | Blender type:  GeometryNodeCurvePrimitiveCircle 
+    Index 
     
 
     Initialization
@@ -2459,6 +2491,7 @@ class CurveLine(Node):
 
     | Geometry node name: 'Curve Line' 
     | Blender type:  GeometryNodeCurvePrimitiveLine 
+    Index 
     
 
     Initialization
@@ -2539,6 +2572,7 @@ class Quadrilateral(Node):
 
     | Geometry node name: 'Quadrilateral' 
     | Blender type:  GeometryNodeCurvePrimitiveQuadrilateral 
+    Index 
     
 
     Initialization
@@ -2634,6 +2668,7 @@ class QuadraticBezier(Node):
 
     | Geometry node name: 'Quadratic Bezier' 
     | Blender type:  GeometryNodeCurveQuadraticBezier 
+    Index 
     
 
     Initialization
@@ -2697,6 +2732,7 @@ class SetHandleType(Node):
 
     | Geometry node name: 'Set Handle Type' 
     | Blender type:  GeometryNodeCurveSetHandles 
+    Index 
     
 
     Initialization
@@ -2783,6 +2819,7 @@ class Spiral(Node):
 
     | Geometry node name: 'Spiral' 
     | Blender type:  GeometryNodeCurveSpiral 
+    Index 
     
 
     Initialization
@@ -2851,6 +2888,7 @@ class SetSplineType(Node):
 
     | Geometry node name: 'Set Spline Type' 
     | Blender type:  GeometryNodeCurveSplineType 
+    Index 
     
 
     Initialization
@@ -2927,6 +2965,7 @@ class Star(Node):
 
     | Geometry node name: 'Star' 
     | Blender type:  GeometryNodeCurveStar 
+    Index 
     
 
     Initialization
@@ -2992,6 +3031,7 @@ class CurveToMesh(Node):
 
     | Geometry node name: 'Curve to Mesh' 
     | Blender type:  GeometryNodeCurveToMesh 
+    Index 
     
 
     Initialization
@@ -3053,6 +3093,7 @@ class CurveToPoints(Node):
 
     | Geometry node name: 'Curve to Points' 
     | Blender type:  GeometryNodeCurveToPoints 
+    Index 
     
 
     Initialization
@@ -3137,6 +3178,7 @@ class DeleteGeometry(Node):
 
     | Geometry node name: 'Delete Geometry' 
     | Blender type:  GeometryNodeDeleteGeometry 
+    Index 
     
 
     Initialization
@@ -3223,6 +3265,7 @@ class DistributePointsOnFaces(Node):
 
     | Geometry node name: 'Distribute Points on Faces' 
     | Blender type:  GeometryNodeDistributePointsOnFaces 
+    Index 
     
 
     Initialization
@@ -3314,6 +3357,7 @@ class DualMesh(Node):
 
     | Geometry node name: 'Dual Mesh' 
     | Blender type:  GeometryNodeDualMesh 
+    Index 
     
 
     Initialization
@@ -3373,6 +3417,7 @@ class ExtrudeMesh(Node):
 
     | Geometry node name: 'Extrude Mesh' 
     | Blender type:  GeometryNodeExtrudeMesh 
+    Index 
     
 
     Initialization
@@ -3460,6 +3505,7 @@ class FieldAtIndex(Node):
 
     | Geometry node name: 'Field at Index' 
     | Blender type:  GeometryNodeFieldAtIndex 
+    Index 
     
 
     Initialization
@@ -3577,6 +3623,7 @@ class FillCurve(Node):
 
     | Geometry node name: 'Fill Curve' 
     | Blender type:  GeometryNodeFillCurve 
+    Index 
     
 
     Initialization
@@ -3651,6 +3698,7 @@ class FilletCurve(Node):
 
     | Geometry node name: 'Fillet Curve' 
     | Blender type:  GeometryNodeFilletCurve 
+    Index 
     
 
     Initialization
@@ -3731,6 +3779,7 @@ class FlipFaces(Node):
 
     | Geometry node name: 'Flip Faces' 
     | Blender type:  GeometryNodeFlipFaces 
+    Index 
     
 
     Initialization
@@ -3790,6 +3839,7 @@ class GeometryToInstance(Node):
 
     | Geometry node name: 'Geometry to Instance' 
     | Blender type:  GeometryNodeGeometryToInstance 
+    Index 
     
 
     Initialization
@@ -3847,6 +3897,7 @@ class Group(Node):
 
     | Geometry node name: 'Group' 
     | Blender type:  GeometryNodeGroup 
+    Index 
     
 
     Initialization
@@ -3881,6 +3932,7 @@ class ImageTexture(Node):
 
     | Geometry node name: 'Image Texture' 
     | Blender type:  GeometryNodeImageTexture 
+    Index 
     
 
     Initialization
@@ -3972,6 +4024,7 @@ class CurveHandlePositions(Node):
 
     | Geometry node name: 'Curve Handle Positions' 
     | Blender type:  GeometryNodeInputCurveHandlePositions 
+    Index 
     
 
     Initialization
@@ -4033,6 +4086,7 @@ class CurveTilt(Node):
 
     | Geometry node name: 'Curve Tilt' 
     | Blender type:  GeometryNodeInputCurveTilt 
+    Index 
     
 
     Initialization
@@ -4082,6 +4136,7 @@ class ID(Node):
 
     | Geometry node name: 'ID' 
     | Blender type:  GeometryNodeInputID 
+    Index 
     
 
     Initialization
@@ -4132,6 +4187,7 @@ class Index(Node):
 
     | Geometry node name: 'Index' 
     | Blender type:  GeometryNodeInputIndex 
+    Index 
     
 
     Initialization
@@ -4184,6 +4240,7 @@ class Material(Node):
 
     | Geometry node name: 'Material' 
     | Blender type:  GeometryNodeInputMaterial 
+    Index 
     
 
     Initialization
@@ -4226,6 +4283,7 @@ class MaterialIndex(Node):
 
     | Geometry node name: 'Material Index' 
     | Blender type:  GeometryNodeInputMaterialIndex 
+    Index 
     
 
     Initialization
@@ -4275,6 +4333,7 @@ class EdgeAngle(Node):
 
     | Geometry node name: 'Edge Angle' 
     | Blender type:  GeometryNodeInputMeshEdgeAngle 
+    Index 
     
 
     Initialization
@@ -4336,6 +4395,7 @@ class EdgeNeighbors(Node):
 
     | Geometry node name: 'Edge Neighbors' 
     | Blender type:  GeometryNodeInputMeshEdgeNeighbors 
+    Index 
     
 
     Initialization
@@ -4385,6 +4445,7 @@ class EdgeVertices(Node):
 
     | Geometry node name: 'Edge Vertices' 
     | Blender type:  GeometryNodeInputMeshEdgeVertices 
+    Index 
     
 
     Initialization
@@ -4443,6 +4504,7 @@ class FaceArea(Node):
 
     | Geometry node name: 'Face Area' 
     | Blender type:  GeometryNodeInputMeshFaceArea 
+    Index 
     
 
     Initialization
@@ -4492,6 +4554,7 @@ class FaceNeighbors(Node):
 
     | Geometry node name: 'Face Neighbors' 
     | Blender type:  GeometryNodeInputMeshFaceNeighbors 
+    Index 
     
 
     Initialization
@@ -4544,6 +4607,7 @@ class MeshIsland(Node):
 
     | Geometry node name: 'Mesh Island' 
     | Blender type:  GeometryNodeInputMeshIsland 
+    Index 
     
 
     Initialization
@@ -4595,6 +4659,7 @@ class VertexNeighbors(Node):
 
     | Geometry node name: 'Vertex Neighbors' 
     | Blender type:  GeometryNodeInputMeshVertexNeighbors 
+    Index 
     
 
     Initialization
@@ -4647,6 +4712,7 @@ class Normal(Node):
 
     | Geometry node name: 'Normal' 
     | Blender type:  GeometryNodeInputNormal 
+    Index 
     
 
     Initialization
@@ -4696,6 +4762,7 @@ class Position(Node):
 
     | Geometry node name: 'Position' 
     | Blender type:  GeometryNodeInputPosition 
+    Index 
     
 
     Initialization
@@ -4745,6 +4812,7 @@ class Radius(Node):
 
     | Geometry node name: 'Radius' 
     | Blender type:  GeometryNodeInputRadius 
+    Index 
     
 
     Initialization
@@ -4794,6 +4862,7 @@ class SceneTime(Node):
 
     | Geometry node name: 'Scene Time' 
     | Blender type:  GeometryNodeInputSceneTime 
+    Index 
     
 
     Initialization
@@ -4844,6 +4913,7 @@ class IsShadeSmooth(Node):
 
     | Geometry node name: 'Is Shade Smooth' 
     | Blender type:  GeometryNodeInputShadeSmooth 
+    Index 
     
 
     Initialization
@@ -4893,6 +4963,7 @@ class IsSplineCyclic(Node):
 
     | Geometry node name: 'Is Spline Cyclic' 
     | Blender type:  GeometryNodeInputSplineCyclic 
+    Index 
     
 
     Initialization
@@ -4942,6 +5013,7 @@ class SplineResolution(Node):
 
     | Geometry node name: 'Spline Resolution' 
     | Blender type:  GeometryNodeInputSplineResolution 
+    Index 
     
 
     Initialization
@@ -4991,6 +5063,7 @@ class CurveTangent(Node):
 
     | Geometry node name: 'Curve Tangent' 
     | Blender type:  GeometryNodeInputTangent 
+    Index 
     
 
     Initialization
@@ -5040,6 +5113,7 @@ class InstanceOnPoints(Node):
 
     | Geometry node name: 'Instance on Points' 
     | Blender type:  GeometryNodeInstanceOnPoints 
+    Index 
     
 
     Initialization
@@ -5110,6 +5184,7 @@ class InstancesToPoints(Node):
 
     | Geometry node name: 'Instances to Points' 
     | Blender type:  GeometryNodeInstancesToPoints 
+    Index 
     
 
     Initialization
@@ -5173,6 +5248,7 @@ class IsViewport(Node):
 
     | Geometry node name: 'Is Viewport' 
     | Blender type:  GeometryNodeIsViewport 
+    Index 
     
 
     Initialization
@@ -5221,6 +5297,7 @@ class JoinGeometry(Node):
 
     | Geometry node name: 'Join Geometry' 
     | Blender type:  GeometryNodeJoinGeometry 
+    Index 
     
 
     Initialization
@@ -5278,6 +5355,7 @@ class MaterialSelection(Node):
 
     | Geometry node name: 'Material Selection' 
     | Blender type:  GeometryNodeMaterialSelection 
+    Index 
     
 
     Initialization
@@ -5337,6 +5415,7 @@ class MergeByDistance(Node):
 
     | Geometry node name: 'Merge by Distance' 
     | Blender type:  GeometryNodeMergeByDistance 
+    Index 
     
 
     Initialization
@@ -5398,6 +5477,7 @@ class MeshBoolean(Node):
 
     | Geometry node name: 'Mesh Boolean' 
     | Blender type:  GeometryNodeMeshBoolean 
+    Index 
     
 
     Initialization
@@ -5481,6 +5561,7 @@ class MeshCircle(Node):
 
     | Geometry node name: 'Mesh Circle' 
     | Blender type:  GeometryNodeMeshCircle 
+    Index 
     
 
     Initialization
@@ -5557,6 +5638,7 @@ class Cone(Node):
 
     | Geometry node name: 'Cone' 
     | Blender type:  GeometryNodeMeshCone 
+    Index 
     
 
     Initialization
@@ -5648,6 +5730,7 @@ class Cube(Node):
 
     | Geometry node name: 'Cube' 
     | Blender type:  GeometryNodeMeshCube 
+    Index 
     
 
     Initialization
@@ -5711,6 +5794,7 @@ class Cylinder(Node):
 
     | Geometry node name: 'Cylinder' 
     | Blender type:  GeometryNodeMeshCylinder 
+    Index 
     
 
     Initialization
@@ -5800,6 +5884,7 @@ class Grid(Node):
 
     | Geometry node name: 'Grid' 
     | Blender type:  GeometryNodeMeshGrid 
+    Index 
     
 
     Initialization
@@ -5863,6 +5948,7 @@ class IcoSphere(Node):
 
     | Geometry node name: 'Ico Sphere' 
     | Blender type:  GeometryNodeMeshIcoSphere 
+    Index 
     
 
     Initialization
@@ -5922,6 +6008,7 @@ class MeshLine(Node):
 
     | Geometry node name: 'Mesh Line' 
     | Blender type:  GeometryNodeMeshLine 
+    Index 
     
 
     Initialization
@@ -6013,6 +6100,7 @@ class MeshToCurve(Node):
 
     | Geometry node name: 'Mesh to Curve' 
     | Blender type:  GeometryNodeMeshToCurve 
+    Index 
     
 
     Initialization
@@ -6072,6 +6160,7 @@ class MeshToPoints(Node):
 
     | Geometry node name: 'Mesh to Points' 
     | Blender type:  GeometryNodeMeshToPoints 
+    Index 
     
 
     Initialization
@@ -6152,6 +6241,7 @@ class UvSphere(Node):
 
     | Geometry node name: 'UV Sphere' 
     | Blender type:  GeometryNodeMeshUVSphere 
+    Index 
     
 
     Initialization
@@ -6213,6 +6303,7 @@ class ObjectInfo(Node):
 
     | Geometry node name: 'Object Info' 
     | Blender type:  GeometryNodeObjectInfo 
+    Index 
     
 
     Initialization
@@ -6295,6 +6386,7 @@ class PointsToVertices(Node):
 
     | Geometry node name: 'Points to Vertices' 
     | Blender type:  GeometryNodePointsToVertices 
+    Index 
     
 
     Initialization
@@ -6354,6 +6446,7 @@ class PointsToVolume(Node):
 
     | Geometry node name: 'Points to Volume' 
     | Blender type:  GeometryNodePointsToVolume 
+    Index 
     
 
     Initialization
@@ -6437,6 +6530,7 @@ class GeometryProximity(Node):
 
     | Geometry node name: 'Geometry Proximity' 
     | Blender type:  GeometryNodeProximity 
+    Index 
     
 
     Initialization
@@ -6515,6 +6609,7 @@ class Raycast(Node):
 
     | Geometry node name: 'Raycast' 
     | Blender type:  GeometryNodeRaycast 
+    Index 
     
 
     Initialization
@@ -6647,6 +6742,7 @@ class RealizeInstances(Node):
 
     | Geometry node name: 'Realize Instances' 
     | Blender type:  GeometryNodeRealizeInstances 
+    Index 
     
 
     Initialization
@@ -6721,6 +6817,7 @@ class ReplaceMaterial(Node):
 
     | Geometry node name: 'Replace Material' 
     | Blender type:  GeometryNodeReplaceMaterial 
+    Index 
     
 
     Initialization
@@ -6782,6 +6879,7 @@ class ResampleCurve(Node):
 
     | Geometry node name: 'Resample Curve' 
     | Blender type:  GeometryNodeResampleCurve 
+    Index 
     
 
     Initialization
@@ -6862,6 +6960,7 @@ class ReverseCurve(Node):
 
     | Geometry node name: 'Reverse Curve' 
     | Blender type:  GeometryNodeReverseCurve 
+    Index 
     
 
     Initialization
@@ -6921,6 +7020,7 @@ class RotateInstances(Node):
 
     | Geometry node name: 'Rotate Instances' 
     | Blender type:  GeometryNodeRotateInstances 
+    Index 
     
 
     Initialization
@@ -6987,6 +7087,7 @@ class SampleCurve(Node):
 
     | Geometry node name: 'Sample Curve' 
     | Blender type:  GeometryNodeSampleCurve 
+    Index 
     
 
     Initialization
@@ -7069,6 +7170,7 @@ class ScaleElements(Node):
 
     | Geometry node name: 'Scale Elements' 
     | Blender type:  GeometryNodeScaleElements 
+    Index 
     
 
     Initialization
@@ -7162,6 +7264,7 @@ class ScaleInstances(Node):
 
     | Geometry node name: 'Scale Instances' 
     | Blender type:  GeometryNodeScaleInstances 
+    Index 
     
 
     Initialization
@@ -7228,6 +7331,7 @@ class SeparateComponents(Node):
 
     | Geometry node name: 'Separate Components' 
     | Blender type:  GeometryNodeSeparateComponents 
+    Index 
     
 
     Initialization
@@ -7298,6 +7402,7 @@ class SeparateGeometry(Node):
 
     | Geometry node name: 'Separate Geometry' 
     | Blender type:  GeometryNodeSeparateGeometry 
+    Index 
     
 
     Initialization
@@ -7376,6 +7481,7 @@ class SetHandlePositions(Node):
 
     | Geometry node name: 'Set Handle Positions' 
     | Blender type:  GeometryNodeSetCurveHandlePositions 
+    Index 
     
 
     Initialization
@@ -7456,6 +7562,7 @@ class SetCurveRadius(Node):
 
     | Geometry node name: 'Set Curve Radius' 
     | Blender type:  GeometryNodeSetCurveRadius 
+    Index 
     
 
     Initialization
@@ -7517,6 +7624,7 @@ class SetCurveTilt(Node):
 
     | Geometry node name: 'Set Curve Tilt' 
     | Blender type:  GeometryNodeSetCurveTilt 
+    Index 
     
 
     Initialization
@@ -7578,6 +7686,7 @@ class SetID(Node):
 
     | Geometry node name: 'Set ID' 
     | Blender type:  GeometryNodeSetID 
+    Index 
     
 
     Initialization
@@ -7639,6 +7748,7 @@ class SetMaterial(Node):
 
     | Geometry node name: 'Set Material' 
     | Blender type:  GeometryNodeSetMaterial 
+    Index 
     
 
     Initialization
@@ -7700,6 +7810,7 @@ class SetMaterialIndex(Node):
 
     | Geometry node name: 'Set Material Index' 
     | Blender type:  GeometryNodeSetMaterialIndex 
+    Index 
     
 
     Initialization
@@ -7761,6 +7872,7 @@ class SetPointRadius(Node):
 
     | Geometry node name: 'Set Point Radius' 
     | Blender type:  GeometryNodeSetPointRadius 
+    Index 
     
 
     Initialization
@@ -7822,6 +7934,7 @@ class SetPosition(Node):
 
     | Geometry node name: 'Set Position' 
     | Blender type:  GeometryNodeSetPosition 
+    Index 
     
 
     Initialization
@@ -7885,6 +7998,7 @@ class SetShadeSmooth(Node):
 
     | Geometry node name: 'Set Shade Smooth' 
     | Blender type:  GeometryNodeSetShadeSmooth 
+    Index 
     
 
     Initialization
@@ -7946,6 +8060,7 @@ class SetSplineCyclic(Node):
 
     | Geometry node name: 'Set Spline Cyclic' 
     | Blender type:  GeometryNodeSetSplineCyclic 
+    Index 
     
 
     Initialization
@@ -8007,6 +8122,7 @@ class SetSplineResolution(Node):
 
     | Geometry node name: 'Set Spline Resolution' 
     | Blender type:  GeometryNodeSetSplineResolution 
+    Index 
     
 
     Initialization
@@ -8068,6 +8184,7 @@ class SplineLength(Node):
 
     | Geometry node name: 'Spline Length' 
     | Blender type:  GeometryNodeSplineLength 
+    Index 
     
 
     Initialization
@@ -8120,6 +8237,7 @@ class SplineParameter(Node):
 
     | Geometry node name: 'Spline Parameter' 
     | Blender type:  GeometryNodeSplineParameter 
+    Index 
     
 
     Initialization
@@ -8175,6 +8293,7 @@ class SplitEdges(Node):
 
     | Geometry node name: 'Split Edges' 
     | Blender type:  GeometryNodeSplitEdges 
+    Index 
     
 
     Initialization
@@ -8234,6 +8353,7 @@ class JoinStrings(Node):
 
     | Geometry node name: 'Join Strings' 
     | Blender type:  GeometryNodeStringJoin 
+    Index 
     
 
     Initialization
@@ -8294,6 +8414,7 @@ class StringToCurves(Node):
 
     | Geometry node name: 'String to Curves' 
     | Blender type:  GeometryNodeStringToCurves 
+    Index 
     
 
     Initialization
@@ -8419,6 +8540,7 @@ class SubdivideCurve(Node):
 
     | Geometry node name: 'Subdivide Curve' 
     | Blender type:  GeometryNodeSubdivideCurve 
+    Index 
     
 
     Initialization
@@ -8478,6 +8600,7 @@ class SubdivideMesh(Node):
 
     | Geometry node name: 'Subdivide Mesh' 
     | Blender type:  GeometryNodeSubdivideMesh 
+    Index 
     
 
     Initialization
@@ -8537,6 +8660,7 @@ class SubdivisionSurface(Node):
 
     | Geometry node name: 'Subdivision Surface' 
     | Blender type:  GeometryNodeSubdivisionSurface 
+    Index 
     
 
     Initialization
@@ -8627,6 +8751,7 @@ class Switch(Node):
 
     | Geometry node name: 'Switch' 
     | Blender type:  GeometryNodeSwitch 
+    Index 
     
 
     Initialization
@@ -8784,6 +8909,7 @@ class Transform(Node):
 
     | Geometry node name: 'Transform' 
     | Blender type:  GeometryNodeTransform 
+    Index 
     
 
     Initialization
@@ -8847,6 +8973,7 @@ class TranslateInstances(Node):
 
     | Geometry node name: 'Translate Instances' 
     | Blender type:  GeometryNodeTranslateInstances 
+    Index 
     
 
     Initialization
@@ -8910,6 +9037,7 @@ class Triangulate(Node):
 
     | Geometry node name: 'Triangulate' 
     | Blender type:  GeometryNodeTriangulate 
+    Index 
     
 
     Initialization
@@ -8999,6 +9127,7 @@ class TrimCurve(Node):
 
     | Geometry node name: 'Trim Curve' 
     | Blender type:  GeometryNodeTrimCurve 
+    Index 
     
 
     Initialization
@@ -9081,6 +9210,7 @@ class VolumeToMesh(Node):
 
     | Geometry node name: 'Volume to Mesh' 
     | Blender type:  GeometryNodeVolumeToMesh 
+    Index 
     
 
     Initialization
@@ -9164,6 +9294,7 @@ class Clamp(Node):
 
     | Geometry node name: 'Clamp' 
     | Blender type:  ShaderNodeClamp 
+    Index 
     
 
     Initialization
@@ -9242,6 +9373,7 @@ class CombineRgb(Node):
 
     | Geometry node name: 'Combine RGB' 
     | Blender type:  ShaderNodeCombineRGB 
+    Index 
     
 
     Initialization
@@ -9303,6 +9435,7 @@ class CombineXyz(Node):
 
     | Geometry node name: 'Combine XYZ' 
     | Blender type:  ShaderNodeCombineXYZ 
+    Index 
     
 
     Initialization
@@ -9364,6 +9497,7 @@ class FloatCurve(Node):
 
     | Geometry node name: 'Float Curve' 
     | Blender type:  ShaderNodeFloatCurve 
+    Index 
     
 
     Initialization
@@ -9423,6 +9557,7 @@ class MapRange(Node):
 
     | Geometry node name: 'Map Range' 
     | Blender type:  ShaderNodeMapRange 
+    Index 
     
 
     Initialization
@@ -9546,6 +9681,7 @@ class Math(Node):
 
     | Geometry node name: 'Math' 
     | Blender type:  ShaderNodeMath 
+    Index 
     
 
     Initialization
@@ -9747,6 +9883,7 @@ class Mix(Node):
 
     | Geometry node name: 'Mix' 
     | Blender type:  ShaderNodeMixRGB 
+    Index 
     
 
     Initialization
@@ -9872,6 +10009,7 @@ class RgbCurves(Node):
 
     | Geometry node name: 'RGB Curves' 
     | Blender type:  ShaderNodeRGBCurve 
+    Index 
     
 
     Initialization
@@ -9931,6 +10069,7 @@ class SeparateRgb(Node):
 
     | Geometry node name: 'Separate RGB' 
     | Blender type:  ShaderNodeSeparateRGB 
+    Index 
     
 
     Initialization
@@ -9992,6 +10131,7 @@ class SeparateXyz(Node):
 
     | Geometry node name: 'Separate XYZ' 
     | Blender type:  ShaderNodeSeparateXYZ 
+    Index 
     
 
     Initialization
@@ -10053,6 +10193,7 @@ class BrickTexture(Node):
 
     | Geometry node name: 'Brick Texture' 
     | Blender type:  ShaderNodeTexBrick 
+    Index 
     
 
     Initialization
@@ -10179,6 +10320,7 @@ class CheckerTexture(Node):
 
     | Geometry node name: 'Checker Texture' 
     | Blender type:  ShaderNodeTexChecker 
+    Index 
     
 
     Initialization
@@ -10244,6 +10386,7 @@ class GradientTexture(Node):
 
     | Geometry node name: 'Gradient Texture' 
     | Blender type:  ShaderNodeTexGradient 
+    Index 
     
 
     Initialization
@@ -10321,6 +10464,7 @@ class MagicTexture(Node):
 
     | Geometry node name: 'Magic Texture' 
     | Blender type:  ShaderNodeTexMagic 
+    Index 
     
 
     Initialization
@@ -10401,6 +10545,7 @@ class MusgraveTexture(Node):
 
     | Geometry node name: 'Musgrave Texture' 
     | Blender type:  ShaderNodeTexMusgrave 
+    Index 
     
 
     Initialization
@@ -10500,6 +10645,7 @@ class NoiseTexture(Node):
 
     | Geometry node name: 'Noise Texture' 
     | Blender type:  ShaderNodeTexNoise 
+    Index 
     
 
     Initialization
@@ -10587,6 +10733,7 @@ class VoronoiTexture(Node):
 
     | Geometry node name: 'Voronoi Texture' 
     | Blender type:  ShaderNodeTexVoronoi 
+    Index 
     
 
     Initialization
@@ -10700,6 +10847,7 @@ class WaveTexture(Node):
 
     | Geometry node name: 'Wave Texture' 
     | Blender type:  ShaderNodeTexWave 
+    Index 
     
 
     Initialization
@@ -10819,6 +10967,7 @@ class WhiteNoiseTexture(Node):
 
     | Geometry node name: 'White Noise Texture' 
     | Blender type:  ShaderNodeTexWhiteNoise 
+    Index 
     
 
     Initialization
@@ -10897,6 +11046,7 @@ class Colorramp(Node):
 
     | Geometry node name: 'ColorRamp' 
     | Blender type:  ShaderNodeValToRGB 
+    Index 
     
 
     Initialization
@@ -10956,6 +11106,7 @@ class Value(Node):
 
     | Geometry node name: 'Value' 
     | Blender type:  ShaderNodeValue 
+    Index 
     
 
     Initialization
@@ -10998,6 +11149,7 @@ class VectorCurves(Node):
 
     | Geometry node name: 'Vector Curves' 
     | Blender type:  ShaderNodeVectorCurve 
+    Index 
     
 
     Initialization
@@ -11057,6 +11209,7 @@ class VectorMath(Node):
 
     | Geometry node name: 'Vector Math' 
     | Blender type:  ShaderNodeVectorMath 
+    Index 
     
 
     Initialization
@@ -11194,6 +11347,7 @@ class VectorRotate(Node):
 
     | Geometry node name: 'Vector Rotate' 
     | Blender type:  ShaderNodeVectorRotate 
+    Index 
     
 
     Initialization

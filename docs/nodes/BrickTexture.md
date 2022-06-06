@@ -2,6 +2,7 @@
 # Class BrickTexture
 
 > Geometry node name: _'Brick Texture'_<br>Blender type:  **ShaderNodeTexBrick**
+[Index](/docs/index.md)
 
 ## Initialization
 

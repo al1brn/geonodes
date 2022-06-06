@@ -2,6 +2,7 @@
 # Class EdgeNeighbors
 
 > Geometry node name: _'Edge Neighbors'_<br>Blender type:  **GeometryNodeInputMeshEdgeNeighbors**
+[Index](/docs/index.md)
 
 ## Initialization
 

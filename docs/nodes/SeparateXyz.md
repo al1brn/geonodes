@@ -2,6 +2,7 @@
 # Class SeparateXyz
 
 > Geometry node name: _'Separate XYZ'_<br>Blender type:  **ShaderNodeSeparateXYZ**
+[Index](/docs/index.md)
 
 ## Initialization
 

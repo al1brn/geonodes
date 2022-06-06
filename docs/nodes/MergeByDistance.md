@@ -2,6 +2,7 @@
 # Class MergeByDistance
 
 > Geometry node name: _'Merge by Distance'_<br>Blender type:  **GeometryNodeMergeByDistance**
+[Index](/docs/index.md)
 
 ## Initialization
 

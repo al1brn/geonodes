@@ -13,6 +13,7 @@ class Vector(dsock.Vector):
     
 
     | Inherits from: dsock.Vector 
+    Index 
     
 
     Constructors
@@ -94,6 +95,7 @@ class Vector(dsock.Vector):
         
 
         | Node: RandomValue 
+        Top Index 
         
 
             v = Vector.Random(min, max, ID, seed) 
@@ -136,6 +138,7 @@ class Vector(dsock.Vector):
         
 
         | Node: CombineXyz 
+        Top Index 
         
 
             v = Vector.Combine(x, y, z) 
@@ -172,6 +175,7 @@ class Vector(dsock.Vector):
         
 
         | Node: AlignEulerToVector 
+        Top Index 
         
 
             v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis) 
@@ -218,6 +222,7 @@ class Vector(dsock.Vector):
         
 
         | Node: SeparateXyz 
+        Top Index 
         
 
             v = vector.separate 
@@ -262,6 +267,7 @@ class Vector(dsock.Vector):
         
 
         | Node: AccumulateField 
+        Top Index 
         
 
             v = vector.accumulate_field(group_index, domain) 
@@ -306,6 +312,7 @@ class Vector(dsock.Vector):
         
 
         | Node: AttributeStatistic 
+        Top Index 
         
 
             v = vector.attribute_statistic(geometry, selection, domain) 
@@ -353,6 +360,7 @@ class Vector(dsock.Vector):
         
 
         | Node: TransferAttribute 
+        Top Index 
         
 
             v = vector.transfer_attribute(source, source_position, index, domain, mapping) 
@@ -401,6 +409,7 @@ class Vector(dsock.Vector):
         
 
         | Node: CaptureAttribute 
+        Top Index 
         
 
             v = vector.capture_attribute(geometry, domain) 
@@ -445,6 +454,7 @@ class Vector(dsock.Vector):
         
 
         | Node: FieldAtIndex 
+        Top Index 
         
 
             v = vector.field_at_index(index, domain) 
@@ -489,6 +499,7 @@ class Vector(dsock.Vector):
         
 
         | Node: Raycast 
+        Top Index 
         
 
             v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, mapping) 
@@ -538,6 +549,7 @@ class Vector(dsock.Vector):
         
 
         | Node: MapRange 
+        Top Index 
         
 
             v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type) 
@@ -587,6 +599,7 @@ class Vector(dsock.Vector):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = vector.less_than(b, c, angle, mode) 
@@ -634,6 +647,7 @@ class Vector(dsock.Vector):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = vector.less_equal(b, c, angle, mode) 
@@ -681,6 +695,7 @@ class Vector(dsock.Vector):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = vector.greater_than(b, c, angle, mode) 
@@ -728,6 +743,7 @@ class Vector(dsock.Vector):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = vector.greater_equal(b, c, angle, mode) 
@@ -775,6 +791,7 @@ class Vector(dsock.Vector):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = vector.equal(b, c, angle, epsilon, mode) 
@@ -823,6 +840,7 @@ class Vector(dsock.Vector):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = vector.not_equal(b, c, angle, epsilon, mode) 
@@ -871,6 +889,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.add(vector1) 
@@ -910,6 +929,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.subtract(vector1) 
@@ -949,6 +969,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.multiply(vector1) 
@@ -988,6 +1009,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.divide(vector1) 
@@ -1027,6 +1049,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.multiply_add(vector1, vector2) 
@@ -1067,6 +1090,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.cross(vector1) 
@@ -1106,6 +1130,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.project(vector1) 
@@ -1145,6 +1170,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.reflect(vector1) 
@@ -1184,6 +1210,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.refract(vector1, scale) 
@@ -1224,6 +1251,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.faceforward(vector1, vector2) 
@@ -1264,6 +1292,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.dot(vector1) 
@@ -1303,6 +1332,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.distance(vector1) 
@@ -1342,6 +1372,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.length() 
@@ -1380,6 +1411,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.scale(scale) 
@@ -1419,6 +1451,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.normalize() 
@@ -1457,6 +1490,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.absolute() 
@@ -1495,6 +1529,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.min(vector1) 
@@ -1534,6 +1569,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.max(vector1) 
@@ -1573,6 +1609,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.floor() 
@@ -1611,6 +1648,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.ceil() 
@@ -1649,6 +1687,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.fraction() 
@@ -1687,6 +1726,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.modulo(vector1) 
@@ -1726,6 +1766,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.wrap(vector1, vector2) 
@@ -1766,6 +1807,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.snap(vector1) 
@@ -1805,6 +1847,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.sin() 
@@ -1843,6 +1886,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.cos() 
@@ -1881,6 +1925,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorMath 
+        Top Index 
         
 
             v = vector.tan() 
@@ -1919,6 +1964,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorRotate 
+        Top Index 
         
 
             v = vector.rotate(center, axis, angle, rotation, invert, rotation_type) 
@@ -1967,6 +2013,7 @@ class Vector(dsock.Vector):
         
 
         | Node: VectorCurves 
+        Top Index 
         
 
             vector.curves(fac) 
@@ -2001,6 +2048,7 @@ class Vector(dsock.Vector):
         
 
         | Node: AlignEulerToVector 
+        Top Index 
         
 
             vector.align_to_vector(factor, vector, axis, pivot_axis) 
@@ -2042,6 +2090,7 @@ class Vector(dsock.Vector):
         
 
         | Node: RotateEuler 
+        Top Index 
         
 
             vector.rotate_euler(rotate_by, space) 

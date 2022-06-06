@@ -2,6 +2,7 @@
 # Class MagicTexture
 
 > Geometry node name: _'Magic Texture'_<br>Blender type:  **ShaderNodeTexMagic**
+[Index](/docs/index.md)
 
 ## Initialization
 

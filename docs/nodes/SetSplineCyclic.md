@@ -2,6 +2,7 @@
 # Class SetSplineCyclic
 
 > Geometry node name: _'Set Spline Cyclic'_<br>Blender type:  **GeometryNodeSetSplineCyclic**
+[Index](/docs/index.md)
 
 ## Initialization
 

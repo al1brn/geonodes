@@ -2,6 +2,7 @@
 # Class Vector
 
 > Geometry node name: _'Vector'_<br>Blender type:  **FunctionNodeInputVector**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -2,6 +2,7 @@
 # Class ReplaceString
 
 > Geometry node name: _'Replace String'_<br>Blender type:  **FunctionNodeReplaceString**
+[Index](/docs/index.md)
 
 ## Initialization
 

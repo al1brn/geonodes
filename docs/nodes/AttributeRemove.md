@@ -2,6 +2,7 @@
 # Class AttributeRemove
 
 > Geometry node name: _'Attribute Remove'_<br>Blender type:  **GeometryNodeAttributeRemove**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -2,6 +2,7 @@
 # Class Triangulate
 
 > Geometry node name: _'Triangulate'_<br>Blender type:  **GeometryNodeTriangulate**
+[Index](/docs/index.md)
 
 ## Initialization
 

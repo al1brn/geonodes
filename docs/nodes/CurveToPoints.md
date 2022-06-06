@@ -2,6 +2,7 @@
 # Class CurveToPoints
 
 > Geometry node name: _'Curve to Points'_<br>Blender type:  **GeometryNodeCurveToPoints**
+[Index](/docs/index.md)
 
 ## Initialization
 

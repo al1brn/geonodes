@@ -2,6 +2,7 @@
 # Class CurveTangent
 
 > Geometry node name: _'Curve Tangent'_<br>Blender type:  **GeometryNodeInputTangent**
+[Index](/docs/index.md)
 
 ## Initialization
 

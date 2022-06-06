@@ -2,6 +2,7 @@
 # Class RandomValue
 
 > Geometry node name: _'Random Value'_<br>Blender type:  **FunctionNodeRandomValue**
+[Index](/docs/index.md)
 
 ## Initialization
 

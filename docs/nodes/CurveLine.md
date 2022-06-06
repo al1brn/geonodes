@@ -2,6 +2,7 @@
 # Class CurveLine
 
 > Geometry node name: _'Curve Line'_<br>Blender type:  **GeometryNodeCurvePrimitiveLine**
+[Index](/docs/index.md)
 
 ## Initialization
 

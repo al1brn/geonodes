@@ -2,6 +2,7 @@
 # Class SliceString
 
 > Geometry node name: _'Slice String'_<br>Blender type:  **FunctionNodeSliceString**
+[Index](/docs/index.md)
 
 ## Initialization
 

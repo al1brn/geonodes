@@ -2,6 +2,7 @@
 # Class GeometryProximity
 
 > Geometry node name: _'Geometry Proximity'_<br>Blender type:  **GeometryNodeProximity**
+[Index](/docs/index.md)
 
 ## Initialization
 

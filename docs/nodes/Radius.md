@@ -2,6 +2,7 @@
 # Class Radius
 
 > Geometry node name: _'Radius'_<br>Blender type:  **GeometryNodeInputRadius**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -2,6 +2,7 @@
 # Class MeshIsland
 
 > Geometry node name: _'Mesh Island'_<br>Blender type:  **GeometryNodeInputMeshIsland**
+[Index](/docs/index.md)
 
 ## Initialization
 

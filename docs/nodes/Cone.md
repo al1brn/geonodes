@@ -2,6 +2,7 @@
 # Class Cone
 
 > Geometry node name: _'Cone'_<br>Blender type:  **GeometryNodeMeshCone**
+[Index](/docs/index.md)
 
 ## Initialization
 

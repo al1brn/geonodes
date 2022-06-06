@@ -2,6 +2,7 @@
 # Class ResampleCurve
 
 > Geometry node name: _'Resample Curve'_<br>Blender type:  **GeometryNodeResampleCurve**
+[Index](/docs/index.md)
 
 ## Initialization
 

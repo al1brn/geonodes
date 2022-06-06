@@ -2,6 +2,7 @@
 # Class DualMesh
 
 > Geometry node name: _'Dual Mesh'_<br>Blender type:  **GeometryNodeDualMesh**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -2,6 +2,7 @@
 # Class CombineXyz
 
 > Geometry node name: _'Combine XYZ'_<br>Blender type:  **ShaderNodeCombineXYZ**
+[Index](/docs/index.md)
 
 ## Initialization
 

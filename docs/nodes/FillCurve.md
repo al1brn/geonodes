@@ -2,6 +2,7 @@
 # Class FillCurve
 
 > Geometry node name: _'Fill Curve'_<br>Blender type:  **GeometryNodeFillCurve**
+[Index](/docs/index.md)
 
 ## Initialization
 

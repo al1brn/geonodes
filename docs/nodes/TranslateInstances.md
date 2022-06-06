@@ -2,6 +2,7 @@
 # Class TranslateInstances
 
 > Geometry node name: _'Translate Instances'_<br>Blender type:  **GeometryNodeTranslateInstances**
+[Index](/docs/index.md)
 
 ## Initialization
 

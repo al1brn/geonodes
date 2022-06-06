@@ -2,6 +2,7 @@
 # Class SeparateRgb
 
 > Geometry node name: _'Separate RGB'_<br>Blender type:  **ShaderNodeSeparateRGB**
+[Index](/docs/index.md)
 
 ## Initialization
 

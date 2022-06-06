@@ -2,6 +2,7 @@
 # Class IsShadeSmooth
 
 > Geometry node name: _'Is Shade Smooth'_<br>Blender type:  **GeometryNodeInputShadeSmooth**
+[Index](/docs/index.md)
 
 ## Initialization
 

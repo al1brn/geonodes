@@ -2,6 +2,7 @@
 # Class QuadraticBezier
 
 > Geometry node name: _'Quadratic Bezier'_<br>Blender type:  **GeometryNodeCurveQuadraticBezier**
+[Index](/docs/index.md)
 
 ## Initialization
 

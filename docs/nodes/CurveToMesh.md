@@ -2,6 +2,7 @@
 # Class CurveToMesh
 
 > Geometry node name: _'Curve to Mesh'_<br>Blender type:  **GeometryNodeCurveToMesh**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -1,7 +1,8 @@
 
 # Class Curve
 
-> Inherits from: ***Spline***
+> Inherits from: ***gn.Spline***
+[Index](/docs/index.md)
 
 ## Constructors
 
@@ -61,6 +62,7 @@
 ### ArcFromPoints
 
 > Node: [Arc](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 v = Curve.ArcFromPoints(resolution, start, middle, end, offset_angle, connect_center, invert_arc)
@@ -107,6 +109,7 @@ node = nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, off
 ### ArcFromRadius
 
 > Node: [Arc](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 v = Curve.ArcFromRadius(resolution, radius, start_angle, sweep_angle, connect_center, invert_arc)
@@ -152,6 +155,7 @@ node = nodes.Arc(resolution=resolution, radius=radius, start_angle=start_angle, 
 ### BezierSegment
 
 > Node: [BezierSegment](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 v = Curve.BezierSegment(resolution, start, start_handle, end_handle, end, mode)
@@ -196,6 +200,7 @@ node = nodes.BezierSegment(resolution=resolution, start=start, start_handle=star
 ### Circle
 
 > Node: [CurveCircle](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 v = Curve.Circle(resolution, point_1, point_2, point_3, radius, mode)
@@ -240,6 +245,7 @@ node = nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2
 ### Line
 
 > Node: [CurveLine](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 v = Curve.Line(start, end, direction, length, mode)
@@ -283,6 +289,7 @@ node = nodes.CurveLine(start=start, end=end, direction=direction, length=length,
 ### QuadraticBezier
 
 > Node: [QuadraticBezier](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 v = Curve.QuadraticBezier(resolution, start, middle, end)
@@ -318,6 +325,7 @@ node = nodes.QuadraticBezier(resolution=resolution, start=start, middle=middle, 
 ### Quadrilateral
 
 > Node: [Quadrilateral](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 v = Curve.Quadrilateral(width, height, bottom_width, top_width, offset, bottom_height, top_height, point_1, point_2, point_3, point_4, mode)
@@ -368,6 +376,7 @@ node = nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width
 ### Spiral
 
 > Node: [Spiral](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 v = Curve.Spiral(resolution, rotations, start_radius, end_radius, height, reverse)
@@ -405,6 +414,7 @@ node = nodes.Spiral(resolution=resolution, rotations=rotations, start_radius=sta
 ### Star
 
 > Node: [Star](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 v = Curve.Star(points, inner_radius, outer_radius, twist)
@@ -440,6 +450,7 @@ node = nodes.Star(points=points, inner_radius=inner_radius, outer_radius=outer_r
 ### fill
 
 > Node: [FillCurve](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 curve.fill(mode)
@@ -480,6 +491,7 @@ node = nodes.FillCurve(curve=self, mode=mode)
 ### fillet
 
 > Node: [FilletCurve](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 curve.fillet(count, radius, limit_radius, mode)
@@ -523,6 +535,7 @@ node = nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=li
 ### length
 
 > Node: [CurveLength](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 v = curve.length()
@@ -555,6 +568,7 @@ node = nodes.CurveLength(curve=self)
 ### resample
 
 > Node: [ResampleCurve](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 curve.resample(selection, count, length, mode)
@@ -598,6 +612,7 @@ node = nodes.ResampleCurve(curve=self, selection=selection, count=count, length=
 ### reverse
 
 > Node: [ReverseCurve](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 curve.reverse(selection)
@@ -631,6 +646,7 @@ node = nodes.ReverseCurve(curve=self, selection=selection)
 ### sample
 
 > Node: [SampleCurve](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 v = curve.sample(factor, length, mode)
@@ -673,6 +689,7 @@ node = nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode)
 ### set_handle_positions
 
 > Node: [SetHandlePositions](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 curve.set_handle_positions(selection, position, offset, mode)
@@ -716,6 +733,7 @@ node = nodes.SetHandlePositions(curve=self, selection=selection, position=positi
 ### set_handles
 
 > Node: [SetHandleType](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 curve.set_handles(selection, handle_type, mode)
@@ -758,6 +776,7 @@ node = nodes.SetHandleType(curve=self, selection=selection, handle_type=handle_t
 ### set_radius
 
 > Node: [SetCurveRadius](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 curve.set_radius(selection, radius)
@@ -792,6 +811,7 @@ node = nodes.SetCurveRadius(curve=self, selection=selection, radius=radius)
 ### set_spline_type
 
 > Node: [SetSplineType](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 curve.set_spline_type(selection, spline_type)
@@ -833,6 +853,7 @@ node = nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_t
 ### set_tilt
 
 > Node: [SetCurveTilt](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 curve.set_tilt(selection, tilt)
@@ -867,6 +888,7 @@ node = nodes.SetCurveTilt(curve=self, selection=selection, tilt=tilt)
 ### subdivide
 
 > Node: [SubdivideCurve](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 curve.subdivide(cuts)
@@ -900,6 +922,7 @@ node = nodes.SubdivideCurve(curve=self, cuts=cuts)
 ### to_mesh
 
 > Node: [CurveToMesh](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 v = curve.to_mesh(profile_curve, fill_caps)
@@ -934,6 +957,7 @@ node = nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill
 ### to_points
 
 > Node: [CurveToPoints](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 v = curve.to_points(count, length, mode)
@@ -976,6 +1000,7 @@ node = nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode)
 ### trim
 
 > Node: [TrimCurve](../nodes/{self.node_name}.md)
+[Top](#curve) [Index](/docs/index.md)
 
 ```python
 curve.trim(start0, end0, start1, end1, mode)

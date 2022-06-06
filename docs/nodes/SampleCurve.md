@@ -2,6 +2,7 @@
 # Class SampleCurve
 
 > Geometry node name: _'Sample Curve'_<br>Blender type:  **GeometryNodeSampleCurve**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -2,6 +2,7 @@
 # Class MaterialSelection
 
 > Geometry node name: _'Material Selection'_<br>Blender type:  **GeometryNodeMaterialSelection**
+[Index](/docs/index.md)
 
 ## Initialization
 

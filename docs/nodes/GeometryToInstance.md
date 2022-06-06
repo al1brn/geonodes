@@ -2,6 +2,7 @@
 # Class GeometryToInstance
 
 > Geometry node name: _'Geometry to Instance'_<br>Blender type:  **GeometryNodeGeometryToInstance**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -2,6 +2,7 @@
 # Class SplitEdges
 
 > Geometry node name: _'Split Edges'_<br>Blender type:  **GeometryNodeSplitEdges**
+[Index](/docs/index.md)
 
 ## Initialization
 

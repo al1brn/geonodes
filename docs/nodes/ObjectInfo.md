@@ -2,6 +2,7 @@
 # Class ObjectInfo
 
 > Geometry node name: _'Object Info'_<br>Blender type:  **GeometryNodeObjectInfo**
+[Index](/docs/index.md)
 
 ## Initialization
 

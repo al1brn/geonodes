@@ -2,6 +2,7 @@
 # Class Quadrilateral
 
 > Geometry node name: _'Quadrilateral'_<br>Blender type:  **GeometryNodeCurvePrimitiveQuadrilateral**
+[Index](/docs/index.md)
 
 ## Initialization
 

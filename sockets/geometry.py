@@ -13,6 +13,7 @@ class Geometry(dsock.Geometry):
     
 
     | Inherits from: dsock.Geometry 
+    Index 
     
 
     Static methods
@@ -58,6 +59,7 @@ class Geometry(dsock.Geometry):
     - **attribute_domain_size** : DomainSize Sockets      [point_count (Integer), edge_count (Integer), face_count
       (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)] 
     - **attribute_remove**      : AttributeRemove geometry (Geometry) 
+    - **capture_attribute**     : CaptureAttribute Sockets      [geometry (Geometry), attribute (data_type dependant)]
     - **components**            : SeparateGeometry Sockets      [selection (Geometry), inverted (Geometry)] 
     - **convex_hull**           : ConvexHull convex_hull (Geometry) 
     - **join**                  : JoinGeometry geometry (Geometry) 
@@ -108,6 +110,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: IsViewport 
+        Top Index 
         
 
             v = Geometry.is_viewport() 
@@ -141,6 +144,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: BoundingBox 
+        Top Index 
         
 
             v = geometry.bound_box 
@@ -182,6 +186,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: BoundingBox 
+        Top Index 
         
 
             v = geometry.box 
@@ -221,6 +226,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: BoundingBox 
+        Top Index 
         
 
             v = geometry.box_min 
@@ -260,6 +266,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: BoundingBox 
+        Top Index 
         
 
             v = geometry.box_max 
@@ -299,6 +306,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: SeparateComponents 
+        Top Index 
         
 
             v = geometry.components 
@@ -340,6 +348,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: SeparateComponents 
+        Top Index 
         
 
             v = geometry.mesh_component 
@@ -379,6 +388,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: SeparateComponents 
+        Top Index 
         
 
             v = geometry.points_component 
@@ -418,6 +428,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: SeparateComponents 
+        Top Index 
         
 
             v = geometry.curve_component 
@@ -457,6 +468,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: SeparateComponents 
+        Top Index 
         
 
             v = geometry.volume_component 
@@ -496,6 +508,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: SeparateComponents 
+        Top Index 
         
 
             v = geometry.instances_component 
@@ -538,6 +551,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: ID 
+        Top Index 
         
 
             v = geometry.capture_ID(self, domain='POINT') 
@@ -577,6 +591,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: Index 
+        Top Index 
         
 
             v = geometry.capture_index(self, domain='POINT') 
@@ -616,6 +631,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: Normal 
+        Top Index 
         
 
             v = geometry.capture_normal(self, domain='FACE') 
@@ -655,6 +671,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: Position 
+        Top Index 
         
 
             v = geometry.capture_position(self, domain='POINT') 
@@ -694,6 +711,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: Radius 
+        Top Index 
         
 
             v = geometry.capture_radius(self, domain='POINT') 
@@ -738,6 +756,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: ID 
+        Top Index 
         
 
             v = geometry.ID(self) 
@@ -772,6 +791,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: Index 
+        Top Index 
         
 
             v = geometry.index(self) 
@@ -806,6 +826,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: Normal 
+        Top Index 
         
 
             v = geometry.normal(self) 
@@ -840,6 +861,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: Position 
+        Top Index 
         
 
             v = geometry.position(self) 
@@ -874,6 +896,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: Radius 
+        Top Index 
         
 
             v = geometry.radius(self) 
@@ -911,6 +934,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: Switch 
+        Top Index 
         
 
             v = geometry.switch(switch1, true) 
@@ -946,11 +970,53 @@ class Geometry(dsock.Geometry):
 
         return nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY').output
 
+    def capture_attribute(self, value=None, data_type='FLOAT', domain='POINT'):
+        """ capture_attribute
+        
+
+        | Node: CaptureAttribute 
+        Top Index 
+        
+
+            v = geometry.capture_attribute(value, data_type, domain) 
+        
+
+        Arguments
+        =========
+        
+
+            Sockets arguments
+            -----------------
+            - geometry : Geometry (self) 
+            - value    : Float 
+        
+
+            Parameters arguments
+            --------------------
+            - data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN] 
+            - domain    : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
+        
+
+        Node creation
+        =============
+        
+
+            node = nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain) 
+        
+
+        Returns
+        =======
+                Sockets [geometry (Geometry), attribute (data_type dependant)] 
+        """
+
+        return nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain)
+
     def transfer_boolean(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
         """ transfer_boolean
         
 
         | Node: TransferAttribute 
+        Top Index 
         
 
             v = geometry.transfer_boolean(attribute, source_position, index, domain, mapping) 
@@ -999,6 +1065,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: TransferAttribute 
+        Top Index 
         
 
             v = geometry.transfer_integer(attribute, source_position, index, domain, mapping) 
@@ -1047,6 +1114,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: TransferAttribute 
+        Top Index 
         
 
             v = geometry.transfer_float(attribute, source_position, index, domain, mapping) 
@@ -1095,6 +1163,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: TransferAttribute 
+        Top Index 
         
 
             v = geometry.transfer_vector(attribute, source_position, index, domain, mapping) 
@@ -1143,6 +1212,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: TransferAttribute 
+        Top Index 
         
 
             v = geometry.transfer_color(attribute, source_position, index, domain, mapping) 
@@ -1191,6 +1261,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: DomainSize 
+        Top Index 
         
 
             v = geometry.attribute_domain_size(component) 
@@ -1230,6 +1301,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: AttributeRemove 
+        Top Index 
         
 
             v = geometry.attribute_remove(attribute_1, attribute_2, attribute_3) 
@@ -1264,6 +1336,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: SeparateGeometry 
+        Top Index 
         
 
             v = geometry.components(selection, domain) 
@@ -1303,6 +1376,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: ConvexHull 
+        Top Index 
         
 
             v = geometry.convex_hull() 
@@ -1336,6 +1410,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: GeometryToInstance 
+        Top Index 
         
 
             v = geometry.to_instance(geometry_1, geometry_2, geometry_3) 
@@ -1369,6 +1444,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: JoinGeometry 
+        Top Index 
         
 
             v = geometry.join(geometry_1, geometry_2, geometry_3) 
@@ -1402,6 +1478,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: GeometryProximity 
+        Top Index 
         
 
             v = geometry.proximity(source_position, target_element) 
@@ -1445,6 +1522,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: DeleteGeometry 
+        Top Index 
         
 
             geometry.delete_geometry(selection, domain, mode) 
@@ -1485,6 +1563,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: MergeByDistance 
+        Top Index 
         
 
             geometry.merge_by_distance(selection, distance) 
@@ -1520,6 +1599,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: RealizeInstances 
+        Top Index 
         
 
             geometry.realize_instances(legacy_behavior) 
@@ -1558,6 +1638,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: ReplaceMaterial 
+        Top Index 
         
 
             geometry.replace_material(old, new) 
@@ -1593,6 +1674,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: ScaleElements 
+        Top Index 
         
 
             geometry.scale_elements(selection, scale, center, axis, domain, scale_mode) 
@@ -1637,6 +1719,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: SetID 
+        Top Index 
         
 
             geometry.set_ID(selection, ID) 
@@ -1672,6 +1755,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: SetMaterial 
+        Top Index 
         
 
             geometry.set_material(selection, material) 
@@ -1707,6 +1791,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: SetMaterialIndex 
+        Top Index 
         
 
             geometry.set_material_index(selection, material_index) 
@@ -1742,6 +1827,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: SetPosition 
+        Top Index 
         
 
             geometry.set_position(selection, position, offset) 
@@ -1778,6 +1864,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: SetShadeSmooth 
+        Top Index 
         
 
             geometry.set_shade_smooth(selection, shade_smooth) 
@@ -1813,6 +1900,7 @@ class Geometry(dsock.Geometry):
         
 
         | Node: Transform 
+        Top Index 
         
 
             geometry.transform(translation, rotation, scale) 

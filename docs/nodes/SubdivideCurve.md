@@ -2,6 +2,7 @@
 # Class SubdivideCurve
 
 > Geometry node name: _'Subdivide Curve'_<br>Blender type:  **GeometryNodeSubdivideCurve**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -8,11 +8,12 @@ logger = logging.Logger('geonodes')
 # ==============================================================================================================
 # Data class Volume
 
-class Volume(Geometry):
+class Volume(gn.Geometry):
     """ Class Volume
     
 
-    | Inherits from: Geometry 
+    | Inherits from: gn.Geometry 
+    Index 
     
 
     Methods
@@ -29,6 +30,7 @@ class Volume(Geometry):
         
 
         | Node: VolumeToMesh 
+        Top Index 
         
 
             v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_mode) 

@@ -2,6 +2,7 @@
 # Class VectorMath
 
 > Geometry node name: _'Vector Math'_<br>Blender type:  **ShaderNodeVectorMath**
+[Index](/docs/index.md)
 
 ## Initialization
 

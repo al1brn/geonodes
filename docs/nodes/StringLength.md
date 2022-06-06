@@ -2,6 +2,7 @@
 # Class StringLength
 
 > Geometry node name: _'String Length'_<br>Blender type:  **FunctionNodeStringLength**
+[Index](/docs/index.md)
 
 ## Initialization
 

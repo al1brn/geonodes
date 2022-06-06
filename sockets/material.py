@@ -13,6 +13,7 @@ class Material(dsock.Material):
     
 
     | Inherits from: dsock.Material 
+    Index 
     
 
     Methods
@@ -30,6 +31,7 @@ class Material(dsock.Material):
         
 
         | Node: Switch 
+        Top Index 
         
 
             v = material.switch(switch1, true) 
@@ -70,6 +72,7 @@ class Material(dsock.Material):
         
 
         | Node: MaterialSelection 
+        Top Index 
         
 
             v = material.selection() 

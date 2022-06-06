@@ -2,6 +2,7 @@
 # Class RotateInstances
 
 > Geometry node name: _'Rotate Instances'_<br>Blender type:  **GeometryNodeRotateInstances**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -2,6 +2,7 @@
 # Class SubdivisionSurface
 
 > Geometry node name: _'Subdivision Surface'_<br>Blender type:  **GeometryNodeSubdivisionSurface**
+[Index](/docs/index.md)
 
 ## Initialization
 

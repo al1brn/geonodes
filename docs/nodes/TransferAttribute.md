@@ -2,6 +2,7 @@
 # Class TransferAttribute
 
 > Geometry node name: _'Transfer Attribute'_<br>Blender type:  **GeometryNodeAttributeTransfer**
+[Index](/docs/index.md)
 
 ## Initialization
 

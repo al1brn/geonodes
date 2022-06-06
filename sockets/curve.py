@@ -8,11 +8,12 @@ logger = logging.Logger('geonodes')
 # ==============================================================================================================
 # Data class Curve
 
-class Curve(Spline):
+class Curve(gn.Spline):
     """ Class Curve
     
 
-    | Inherits from: Spline 
+    | Inherits from: gn.Spline 
+    Index 
     
 
     Constructors
@@ -66,6 +67,7 @@ class Curve(Spline):
         
 
         | Node: BezierSegment 
+        Top Index 
         
 
             v = Curve.BezierSegment(resolution, start, start_handle, end_handle, end, mode) 
@@ -110,6 +112,7 @@ class Curve(Spline):
         
 
         | Node: CurveCircle 
+        Top Index 
         
 
             v = Curve.Circle(resolution, point_1, point_2, point_3, radius, mode) 
@@ -154,6 +157,7 @@ class Curve(Spline):
         
 
         | Node: CurveLine 
+        Top Index 
         
 
             v = Curve.Line(start, end, direction, length, mode) 
@@ -196,6 +200,7 @@ class Curve(Spline):
         
 
         | Node: Quadrilateral 
+        Top Index 
         
 
             v = Curve.Quadrilateral(width, height, bottom_width, top_width, offset, bottom_height, top_height, point_1,
@@ -248,6 +253,7 @@ class Curve(Spline):
         
 
         | Node: QuadraticBezier 
+        Top Index 
         
 
             v = Curve.QuadraticBezier(resolution, start, middle, end) 
@@ -285,6 +291,7 @@ class Curve(Spline):
         
 
         | Node: Star 
+        Top Index 
         
 
             v = Curve.Star(points, inner_radius, outer_radius, twist) 
@@ -322,6 +329,7 @@ class Curve(Spline):
         
 
         | Node: Spiral 
+        Top Index 
         
 
             v = Curve.Spiral(resolution, rotations, start_radius, end_radius, height, reverse) 
@@ -362,6 +370,7 @@ class Curve(Spline):
         
 
         | Node: Arc 
+        Top Index 
         
 
             v = Curve.ArcFromRadius(resolution, radius, start_angle, sweep_angle, connect_center, invert_arc) 
@@ -411,6 +420,7 @@ class Curve(Spline):
         
 
         | Node: Arc 
+        Top Index 
         
 
             v = Curve.ArcFromPoints(resolution, start, middle, end, offset_angle, connect_center, invert_arc) 
@@ -460,6 +470,7 @@ class Curve(Spline):
         
 
         | Node: CurveToMesh 
+        Top Index 
         
 
             v = curve.to_mesh(profile_curve, fill_caps) 
@@ -495,6 +506,7 @@ class Curve(Spline):
         
 
         | Node: CurveToPoints 
+        Top Index 
         
 
             v = curve.to_points(count, length, mode) 
@@ -535,6 +547,7 @@ class Curve(Spline):
         
 
         | Node: SampleCurve 
+        Top Index 
         
 
             v = curve.sample(factor, length, mode) 
@@ -575,6 +588,7 @@ class Curve(Spline):
         
 
         | Node: CurveLength 
+        Top Index 
         
 
             v = curve.length() 
@@ -612,6 +626,7 @@ class Curve(Spline):
         
 
         | Node: SetHandleType 
+        Top Index 
         
 
             curve.set_handles(selection, handle_type, mode) 
@@ -652,6 +667,7 @@ class Curve(Spline):
         
 
         | Node: SetSplineType 
+        Top Index 
         
 
             curve.set_spline_type(selection, spline_type) 
@@ -691,6 +707,7 @@ class Curve(Spline):
         
 
         | Node: FillCurve 
+        Top Index 
         
 
             curve.fill(mode) 
@@ -729,6 +746,7 @@ class Curve(Spline):
         
 
         | Node: FilletCurve 
+        Top Index 
         
 
             curve.fillet(count, radius, limit_radius, mode) 
@@ -770,6 +788,7 @@ class Curve(Spline):
         
 
         | Node: ResampleCurve 
+        Top Index 
         
 
             curve.resample(selection, count, length, mode) 
@@ -811,6 +830,7 @@ class Curve(Spline):
         
 
         | Node: ReverseCurve 
+        Top Index 
         
 
             curve.reverse(selection) 
@@ -845,6 +865,7 @@ class Curve(Spline):
         
 
         | Node: SetHandlePositions 
+        Top Index 
         
 
             curve.set_handle_positions(selection, position, offset, mode) 
@@ -886,6 +907,7 @@ class Curve(Spline):
         
 
         | Node: SetCurveRadius 
+        Top Index 
         
 
             curve.set_radius(selection, radius) 
@@ -921,6 +943,7 @@ class Curve(Spline):
         
 
         | Node: SetCurveTilt 
+        Top Index 
         
 
             curve.set_tilt(selection, tilt) 
@@ -956,6 +979,7 @@ class Curve(Spline):
         
 
         | Node: SubdivideCurve 
+        Top Index 
         
 
             curve.subdivide(cuts) 
@@ -990,6 +1014,7 @@ class Curve(Spline):
         
 
         | Node: TrimCurve 
+        Top Index 
         
 
             curve.trim(start0, end0, start1, end1, mode) 

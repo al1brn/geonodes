@@ -2,6 +2,7 @@
 # Class GradientTexture
 
 > Geometry node name: _'Gradient Texture'_<br>Blender type:  **ShaderNodeTexGradient**
+[Index](/docs/index.md)
 
 ## Initialization
 

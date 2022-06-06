@@ -2,6 +2,7 @@
 # Class CheckerTexture
 
 > Geometry node name: _'Checker Texture'_<br>Blender type:  **ShaderNodeTexChecker**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -2,6 +2,7 @@
 # Class AttributeStatistic
 
 > Geometry node name: _'Attribute Statistic'_<br>Blender type:  **GeometryNodeAttributeStatistic**
+[Index](/docs/index.md)
 
 ## Initialization
 

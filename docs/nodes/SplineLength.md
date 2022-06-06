@@ -2,6 +2,7 @@
 # Class SplineLength
 
 > Geometry node name: _'Spline Length'_<br>Blender type:  **GeometryNodeSplineLength**
+[Index](/docs/index.md)
 
 ## Initialization
 

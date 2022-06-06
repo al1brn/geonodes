@@ -2,6 +2,7 @@
 # Class Boolean
 
 > Geometry node name: _'Boolean'_<br>Blender type:  **FunctionNodeInputBool**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -2,6 +2,7 @@
 # Class Transform
 
 > Geometry node name: _'Transform'_<br>Blender type:  **GeometryNodeTransform**
+[Index](/docs/index.md)
 
 ## Initialization
 

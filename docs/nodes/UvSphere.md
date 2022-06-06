@@ -2,6 +2,7 @@
 # Class UvSphere
 
 > Geometry node name: _'UV Sphere'_<br>Blender type:  **GeometryNodeMeshUVSphere**
+[Index](/docs/index.md)
 
 ## Initialization
 

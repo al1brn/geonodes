@@ -2,6 +2,7 @@
 # Class FloatCurve
 
 > Geometry node name: _'Float Curve'_<br>Blender type:  **ShaderNodeFloatCurve**
+[Index](/docs/index.md)
 
 ## Initialization
 

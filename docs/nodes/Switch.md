@@ -2,6 +2,7 @@
 # Class Switch
 
 > Geometry node name: _'Switch'_<br>Blender type:  **GeometryNodeSwitch**
+[Index](/docs/index.md)
 
 ## Initialization
 

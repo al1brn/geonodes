@@ -2,6 +2,7 @@
 # Class SetSplineType
 
 > Geometry node name: _'Set Spline Type'_<br>Blender type:  **GeometryNodeCurveSplineType**
+[Index](/docs/index.md)
 
 ## Initialization
 

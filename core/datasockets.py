@@ -173,20 +173,20 @@ class Float(IntFloat):
             super().__init__(node.value, node)
     
     @classmethod
-    def Input(cls, value=0., name="Float"):
-        return cls(Tree.TREE.new_input('Float', value=value, name=name))
+    def Input(cls, value=0., name="Float", min_value=None, max_value=None, description=""):
+        return cls(Tree.TREE.new_input('Float', value=value, name=name, min_value=min_value, max_value=max_value, description=description))
         
     @classmethod
-    def Angle(cls, value=0., name="Angle"):
-        return cls(Tree.TREE.new_input('Angle', value=value, name=name))    
+    def Angle(cls, value=0., name="Angle", min_value=None, max_value=None, description=""):
+        return cls(Tree.TREE.new_input('Angle', value=value, name=name, min_value=min_value, max_value=max_value, description=description))    
         
     @classmethod
-    def Factor(cls, value=0., name="Factor"):
-        return cls(Tree.TREE.new_input('Factor', value=value, name=name))    
+    def Factor(cls, value=0., name="Factor", min_value=0, max_value=1, description=""):
+        return cls(Tree.TREE.new_input('Factor', value=value, name=name, min_value=min_value, max_value=max_value, description=description))
         
     @classmethod
-    def Distance(cls, value=0., name="Distance"):
-        return cls(Tree.TREE.new_input('Distance', value=value, name=name))    
+    def Distance(cls, value=0., name="Distance", min_value=None, max_value=None, description=""):
+        return cls(Tree.TREE.new_input('Distance', value=value, name=name, min_value=min_value, max_value=max_value, description=description))    
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # String

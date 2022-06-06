@@ -2,6 +2,7 @@
 # Class MeshBoolean
 
 > Geometry node name: _'Mesh Boolean'_<br>Blender type:  **GeometryNodeMeshBoolean**
+[Index](/docs/index.md)
 
 ## Initialization
 

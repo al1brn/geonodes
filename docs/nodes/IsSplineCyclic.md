@@ -2,6 +2,7 @@
 # Class IsSplineCyclic
 
 > Geometry node name: _'Is Spline Cyclic'_<br>Blender type:  **GeometryNodeInputSplineCyclic**
+[Index](/docs/index.md)
 
 ## Initialization
 

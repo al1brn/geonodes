@@ -2,6 +2,7 @@
 # Class HandleTypeSelection
 
 > Geometry node name: _'Handle Type Selection'_<br>Blender type:  **GeometryNodeCurveHandleTypeSelection**
+[Index](/docs/index.md)
 
 ## Initialization
 

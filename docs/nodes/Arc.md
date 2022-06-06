@@ -2,6 +2,7 @@
 # Class Arc
 
 > Geometry node name: _'Arc'_<br>Blender type:  **GeometryNodeCurveArc**
+[Index](/docs/index.md)
 
 ## Initialization
 

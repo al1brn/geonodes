@@ -2,6 +2,7 @@
 # Class SetMaterial
 
 > Geometry node name: _'Set Material'_<br>Blender type:  **GeometryNodeSetMaterial**
+[Index](/docs/index.md)
 
 ## Initialization
 

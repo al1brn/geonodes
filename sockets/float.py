@@ -13,6 +13,7 @@ class Float(dsock.Float):
     
 
     | Inherits from: dsock.Float 
+    Index 
     
 
     Constructors
@@ -99,6 +100,7 @@ class Float(dsock.Float):
         
 
         | Node: RandomValue 
+        Top Index 
         
 
             v = Float.Random(min, max, ID, seed) 
@@ -144,6 +146,7 @@ class Float(dsock.Float):
         
 
         | Node: AccumulateField 
+        Top Index 
         
 
             v = float.accumulate_field(group_index, domain) 
@@ -188,6 +191,7 @@ class Float(dsock.Float):
         
 
         | Node: AttributeStatistic 
+        Top Index 
         
 
             v = float.attribute_statistic(geometry, selection, domain) 
@@ -235,6 +239,7 @@ class Float(dsock.Float):
         
 
         | Node: TransferAttribute 
+        Top Index 
         
 
             v = float.transfer_attribute(source, source_position, index, domain, mapping) 
@@ -283,6 +288,7 @@ class Float(dsock.Float):
         
 
         | Node: CaptureAttribute 
+        Top Index 
         
 
             v = float.capture_attribute(geometry, domain) 
@@ -327,6 +333,7 @@ class Float(dsock.Float):
         
 
         | Node: FieldAtIndex 
+        Top Index 
         
 
             v = float.field_at_index(index, domain) 
@@ -371,6 +378,7 @@ class Float(dsock.Float):
         
 
         | Node: Raycast 
+        Top Index 
         
 
             v = float.raycast(target_geometry, source_position, ray_direction, ray_length, mapping) 
@@ -420,6 +428,7 @@ class Float(dsock.Float):
         
 
         | Node: Switch 
+        Top Index 
         
 
             v = float.switch(switch0, true) 
@@ -460,6 +469,7 @@ class Float(dsock.Float):
         
 
         | Node: MapRange 
+        Top Index 
         
 
             v = float.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type) 
@@ -509,6 +519,7 @@ class Float(dsock.Float):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = float.less_than(b) 
@@ -550,6 +561,7 @@ class Float(dsock.Float):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = float.less_equal(b) 
@@ -591,6 +603,7 @@ class Float(dsock.Float):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = float.greater_than(b) 
@@ -632,6 +645,7 @@ class Float(dsock.Float):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = float.greater_equal(b) 
@@ -673,6 +687,7 @@ class Float(dsock.Float):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = float.equal(b, epsilon) 
@@ -715,6 +730,7 @@ class Float(dsock.Float):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = float.not_equal(b, epsilon) 
@@ -757,6 +773,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.add(value1) 
@@ -796,6 +813,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.subtract(value1) 
@@ -835,6 +853,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.multiply(value1) 
@@ -874,6 +893,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.divide(value1) 
@@ -913,6 +933,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.multiply_add(value1, value2) 
@@ -953,6 +974,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.pow(value1) 
@@ -992,6 +1014,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.log(value1) 
@@ -1031,6 +1054,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.sqrt() 
@@ -1069,6 +1093,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.inverse_sqrt() 
@@ -1107,6 +1132,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.abs() 
@@ -1145,6 +1171,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.exp() 
@@ -1183,6 +1210,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.min(value1) 
@@ -1222,6 +1250,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.max(value1) 
@@ -1261,6 +1290,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.less_than(value1) 
@@ -1300,6 +1330,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.greater_than(value1) 
@@ -1339,6 +1370,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.sign() 
@@ -1377,6 +1409,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.compare(value1, value2) 
@@ -1417,6 +1450,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.smooth_min(value1, value2) 
@@ -1457,6 +1491,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.smooth_max(value1, value2) 
@@ -1497,6 +1532,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.round() 
@@ -1535,6 +1571,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.floor() 
@@ -1573,6 +1610,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.ceil() 
@@ -1611,6 +1649,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.trunc() 
@@ -1649,6 +1688,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.fract() 
@@ -1687,6 +1727,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.modulo(value1) 
@@ -1726,6 +1767,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.wrap(value1, value2) 
@@ -1766,6 +1808,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.snap(value1) 
@@ -1805,6 +1848,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.pingpong(value1) 
@@ -1844,6 +1888,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.sin() 
@@ -1882,6 +1927,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.cos() 
@@ -1920,6 +1966,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.tan() 
@@ -1958,6 +2005,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.arcsin() 
@@ -1996,6 +2044,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.arccos() 
@@ -2034,6 +2083,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.arctan() 
@@ -2072,6 +2122,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.arctan2(value1) 
@@ -2111,6 +2162,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.sinh() 
@@ -2149,6 +2201,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.cosh() 
@@ -2187,6 +2240,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.tanh() 
@@ -2225,6 +2279,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.radians() 
@@ -2263,6 +2318,7 @@ class Float(dsock.Float):
         
 
         | Node: Math 
+        Top Index 
         
 
             v = float.degrees() 
@@ -2301,6 +2357,7 @@ class Float(dsock.Float):
         
 
         | Node: FloatToInteger 
+        Top Index 
         
 
             v = float.to_integer(rounding_mode) 
@@ -2339,6 +2396,7 @@ class Float(dsock.Float):
         
 
         | Node: ValueToString 
+        Top Index 
         
 
             v = float.to_string(decimals) 
@@ -2373,6 +2431,7 @@ class Float(dsock.Float):
         
 
         | Node: Colorramp 
+        Top Index 
         
 
             v = float.color_ramp() 
@@ -2405,14 +2464,15 @@ class Float(dsock.Float):
     # ----------------------------------------------------------------------------------------------------
     # Stacked methods
 
-    def curve(self, value=None):
+    def curve(self, factor=None):
         """ curve
         
 
         | Node: FloatCurve 
+        Top Index 
         
 
-            float.curve(value) 
+            float.curve(factor) 
         
 
         Arguments
@@ -2421,15 +2481,15 @@ class Float(dsock.Float):
 
             Sockets arguments
             -----------------
-            - factor : Float (self) 
-            - value  : Float 
+            - value  : Float (self) 
+            - factor : Float 
         
 
         Node creation
         =============
         
 
-            node = nodes.FloatCurve(factor=self, value=value) 
+            node = nodes.FloatCurve(value=self, factor=factor) 
         
 
         Returns
@@ -2437,13 +2497,14 @@ class Float(dsock.Float):
                 self 
         """
 
-        return self.stack(nodes.FloatCurve(factor=self, value=value))
+        return self.stack(nodes.FloatCurve(value=self, factor=factor))
 
     def clamp(self, min=None, max=None, clamp_type='MINMAX'):
         """ clamp
         
 
         | Node: Clamp 
+        Top Index 
         
 
             float.clamp(min, max, clamp_type) 

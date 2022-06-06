@@ -2,6 +2,7 @@
 # Class VectorRotate
 
 > Geometry node name: _'Vector Rotate'_<br>Blender type:  **ShaderNodeVectorRotate**
+[Index](/docs/index.md)
 
 ## Initialization
 

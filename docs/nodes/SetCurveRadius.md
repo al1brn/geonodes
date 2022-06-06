@@ -2,6 +2,7 @@
 # Class SetCurveRadius
 
 > Geometry node name: _'Set Curve Radius'_<br>Blender type:  **GeometryNodeSetCurveRadius**
+[Index](/docs/index.md)
 
 ## Initialization
 

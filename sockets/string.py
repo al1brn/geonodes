@@ -13,6 +13,7 @@ class String(dsock.String):
     
 
     | Inherits from: dsock.String 
+    Index 
     
 
     Properties
@@ -52,6 +53,7 @@ class String(dsock.String):
         
 
         | Node: StringLength 
+        Top Index 
         
 
             v = string.length 
@@ -96,6 +98,7 @@ class String(dsock.String):
         
 
         | Node: Switch 
+        Top Index 
         
 
             v = string.switch(switch0, true) 
@@ -136,6 +139,7 @@ class String(dsock.String):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = string.element(b) 
@@ -177,6 +181,7 @@ class String(dsock.String):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = string.length(b) 
@@ -218,6 +223,7 @@ class String(dsock.String):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = string.average(b) 
@@ -259,6 +265,7 @@ class String(dsock.String):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = string.dot_product(b) 
@@ -300,6 +307,7 @@ class String(dsock.String):
         
 
         | Node: Compare 
+        Top Index 
         
 
             v = string.direction(b) 
@@ -341,6 +349,7 @@ class String(dsock.String):
         
 
         | Node: JoinStrings 
+        Top Index 
         
 
             v = string.join(strings_1, strings_2, strings_3, delimiter) 
@@ -375,6 +384,7 @@ class String(dsock.String):
         
 
         | Node: SliceString 
+        Top Index 
         
 
             v = string.slice(position, length) 
@@ -410,6 +420,7 @@ class String(dsock.String):
         
 
         | Node: StringToCurves 
+        Top Index 
         
 
             v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_box_width, text_box_height,
@@ -464,6 +475,7 @@ class String(dsock.String):
         
 
         | Node: ReplaceString 
+        Top Index 
         
 
             string.replace(find, replace) 

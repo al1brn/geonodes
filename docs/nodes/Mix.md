@@ -2,6 +2,7 @@
 # Class Mix
 
 > Geometry node name: _'Mix'_<br>Blender type:  **ShaderNodeMixRGB**
+[Index](/docs/index.md)
 
 ## Initialization
 

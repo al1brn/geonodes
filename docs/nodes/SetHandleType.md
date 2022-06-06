@@ -2,6 +2,7 @@
 # Class SetHandleType
 
 > Geometry node name: _'Set Handle Type'_<br>Blender type:  **GeometryNodeCurveSetHandles**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -8,11 +8,12 @@ logger = logging.Logger('geonodes')
 # ==============================================================================================================
 # Data class Mesh
 
-class Mesh(Geometry):
+class Mesh(gn.Geometry):
     """ Class Mesh
     
 
-    | Inherits from: Geometry 
+    | Inherits from: gn.Geometry 
+    Index 
     
 
     Constructors
@@ -103,6 +104,7 @@ class Mesh(Geometry):
         
 
         | Node: MeshCircle 
+        Top Index 
         
 
             v = Mesh.Circle(vertices, radius, fill_type) 
@@ -143,6 +145,7 @@ class Mesh(Geometry):
         
 
         | Node: Cone 
+        Top Index 
         
 
             v = Mesh.Cone(vertices, side_segments, fill_segments, radius_top, radius_bottom, depth, fill_type) 
@@ -188,6 +191,7 @@ class Mesh(Geometry):
         
 
         | Node: Cube 
+        Top Index 
         
 
             v = Mesh.Cube(size, vertices_x, vertices_y, vertices_z) 
@@ -225,6 +229,7 @@ class Mesh(Geometry):
         
 
         | Node: Cylinder 
+        Top Index 
         
 
             v = Mesh.Cylinder(vertices, side_segments, fill_segments, radius, depth, fill_type) 
@@ -269,6 +274,7 @@ class Mesh(Geometry):
         
 
         | Node: Grid 
+        Top Index 
         
 
             v = Mesh.Grid(size_x, size_y, vertices_x, vertices_y) 
@@ -306,6 +312,7 @@ class Mesh(Geometry):
         
 
         | Node: IcoSphere 
+        Top Index 
         
 
             v = Mesh.IcoSphere(radius, subdivisions) 
@@ -341,6 +348,7 @@ class Mesh(Geometry):
         
 
         | Node: MeshLine 
+        Top Index 
         
 
             v = Mesh.Line(count, start_location, offset, count_mode, mode) 
@@ -384,6 +392,7 @@ class Mesh(Geometry):
         
 
         | Node: UvSphere 
+        Top Index 
         
 
             v = Mesh.UVSphere(segments, rings, radius) 
@@ -423,6 +432,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeAngle 
+        Top Index 
         
 
             v = mesh.capture_edge_angle(self, domain='EDGE') 
@@ -462,6 +472,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeNeighbors 
+        Top Index 
         
 
             v = mesh.capture_edge_neighbors(self, domain='EDGE') 
@@ -501,6 +512,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeVertices 
+        Top Index 
         
 
             v = mesh.capture_edge_vertices(self, domain='EDGE') 
@@ -540,6 +552,7 @@ class Mesh(Geometry):
         
 
         | Node: FaceArea 
+        Top Index 
         
 
             v = mesh.capture_face_area(self, domain='FACE') 
@@ -579,6 +592,7 @@ class Mesh(Geometry):
         
 
         | Node: FaceNeighbors 
+        Top Index 
         
 
             v = mesh.capture_face_neighbors(self, domain='FACE') 
@@ -618,6 +632,7 @@ class Mesh(Geometry):
         
 
         | Node: MeshIsland 
+        Top Index 
         
 
             v = mesh.capture_island(self, domain='POINT') 
@@ -657,6 +672,7 @@ class Mesh(Geometry):
         
 
         | Node: IsShadeSmooth 
+        Top Index 
         
 
             v = mesh.capture_shade_smooth(self, domain='FACE') 
@@ -696,6 +712,7 @@ class Mesh(Geometry):
         
 
         | Node: VertexNeighbors 
+        Top Index 
         
 
             v = mesh.capture_vertex_neighbors(self, domain='POINT') 
@@ -735,6 +752,7 @@ class Mesh(Geometry):
         
 
         | Node: MaterialIndex 
+        Top Index 
         
 
             v = mesh.capture_material_index(self, domain='FACE') 
@@ -774,6 +792,7 @@ class Mesh(Geometry):
         
 
         | Node: MaterialSelection 
+        Top Index 
         
 
             v = mesh.capture_material_selection(self, material, domain='FACE') 
@@ -823,6 +842,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeAngle 
+        Top Index 
         
 
             v = mesh.face_ID(self) 
@@ -857,6 +877,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeAngle 
+        Top Index 
         
 
             v = mesh.egde_ID(self) 
@@ -891,6 +912,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeAngle 
+        Top Index 
         
 
             v = mesh.corner_ID(self) 
@@ -925,6 +947,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeAngle 
+        Top Index 
         
 
             v = mesh.face_index(self) 
@@ -959,6 +982,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeAngle 
+        Top Index 
         
 
             v = mesh.egde_index(self) 
@@ -993,6 +1017,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeAngle 
+        Top Index 
         
 
             v = mesh.corner_index(self) 
@@ -1027,6 +1052,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeAngle 
+        Top Index 
         
 
             v = mesh.face_position(self) 
@@ -1061,6 +1087,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeAngle 
+        Top Index 
         
 
             v = mesh.egde_position(self) 
@@ -1095,6 +1122,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeAngle 
+        Top Index 
         
 
             v = mesh.corner_porision(self) 
@@ -1129,6 +1157,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeAngle 
+        Top Index 
         
 
             v = mesh.edge_angle(self) 
@@ -1163,6 +1192,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeAngle 
+        Top Index 
         
 
             v = mesh.edge_unsigned_angle(self) 
@@ -1197,6 +1227,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeNeighbors 
+        Top Index 
         
 
             v = mesh.edge_neighbors(self) 
@@ -1231,6 +1262,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeVertices 
+        Top Index 
         
 
             v = mesh.edge_vertices_index1(self) 
@@ -1265,6 +1297,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeVertices 
+        Top Index 
         
 
             v = mesh.edge_vertices_index2(self) 
@@ -1299,6 +1332,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeVertices 
+        Top Index 
         
 
             v = mesh.edge_vertices_position1(self) 
@@ -1333,6 +1367,7 @@ class Mesh(Geometry):
         
 
         | Node: EdgeVertices 
+        Top Index 
         
 
             v = mesh.edge_vertices_position2(self) 
@@ -1367,6 +1402,7 @@ class Mesh(Geometry):
         
 
         | Node: FaceArea 
+        Top Index 
         
 
             v = mesh.face_area(self) 
@@ -1401,6 +1437,7 @@ class Mesh(Geometry):
         
 
         | Node: FaceNeighbors 
+        Top Index 
         
 
             v = mesh.face_neighbors_vertex_count(self) 
@@ -1435,6 +1472,7 @@ class Mesh(Geometry):
         
 
         | Node: FaceNeighbors 
+        Top Index 
         
 
             v = mesh.face_neighbors_face_count(self) 
@@ -1469,6 +1507,7 @@ class Mesh(Geometry):
         
 
         | Node: MeshIsland 
+        Top Index 
         
 
             v = mesh.island(self) 
@@ -1503,6 +1542,7 @@ class Mesh(Geometry):
         
 
         | Node: IsShadeSmooth 
+        Top Index 
         
 
             v = mesh.shade_smooth(self) 
@@ -1537,6 +1577,7 @@ class Mesh(Geometry):
         
 
         | Node: VertexNeighbors 
+        Top Index 
         
 
             v = mesh.vertex_neighbors_vertex_count(self) 
@@ -1571,6 +1612,7 @@ class Mesh(Geometry):
         
 
         | Node: VertexNeighbors 
+        Top Index 
         
 
             v = mesh.vertex_neighbors_face_count(self) 
@@ -1605,6 +1647,7 @@ class Mesh(Geometry):
         
 
         | Node: MaterialIndex 
+        Top Index 
         
 
             v = mesh.material_index(self) 
@@ -1639,6 +1682,7 @@ class Mesh(Geometry):
         
 
         | Node: MaterialSelection 
+        Top Index 
         
 
             v = mesh.material_selection(self, material) 
@@ -1676,11 +1720,12 @@ class Mesh(Geometry):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def intersect(*mesh_2, self_intersection=None, hole_tolerant=None):
+    def intersect(self, *mesh_2, self_intersection=None, hole_tolerant=None):
         """ intersect
         
 
         | Node: MeshBoolean 
+        Top Index 
         
 
             v = mesh.intersect(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant) 
@@ -1692,7 +1737,7 @@ class Mesh(Geometry):
 
             Sockets arguments
             -----------------
-            - mesh_2            : *Geometry 
+            - mesh_2            : *Geometry (self) 
             - self_intersection : Boolean 
             - hole_tolerant     : Boolean 
         
@@ -1706,7 +1751,8 @@ class Mesh(Geometry):
         =============
         
 
-            node = nodes.MeshBoolean(*mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT')
+            node = nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant,
+            operation='INTERSECT') 
         
 
         Returns
@@ -1714,13 +1760,14 @@ class Mesh(Geometry):
                 Mesh 
         """
 
-        return nodes.MeshBoolean(*mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT').mesh
+        return nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT').mesh
 
-    def union(*mesh_2, self_intersection=None, hole_tolerant=None):
+    def union(self, *mesh_2, self_intersection=None, hole_tolerant=None):
         """ union
         
 
         | Node: MeshBoolean 
+        Top Index 
         
 
             v = mesh.union(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant) 
@@ -1732,7 +1779,7 @@ class Mesh(Geometry):
 
             Sockets arguments
             -----------------
-            - mesh_2            : *Geometry 
+            - mesh_2            : *Geometry (self) 
             - self_intersection : Boolean 
             - hole_tolerant     : Boolean 
         
@@ -1746,7 +1793,8 @@ class Mesh(Geometry):
         =============
         
 
-            node = nodes.MeshBoolean(*mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION')
+            node = nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant,
+            operation='UNION') 
         
 
         Returns
@@ -1754,13 +1802,14 @@ class Mesh(Geometry):
                 Mesh 
         """
 
-        return nodes.MeshBoolean(*mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION').mesh
+        return nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION').mesh
 
     def difference(self, *mesh_2, self_intersection=None, hole_tolerant=None):
         """ difference
         
 
         | Node: MeshBoolean 
+        Top Index 
         
 
             v = mesh.difference(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant) 
@@ -1803,6 +1852,7 @@ class Mesh(Geometry):
         
 
         | Node: ExtrudeMesh 
+        Top Index 
         
 
             v = mesh.extrude(selection, offset, offset_scale, individual, mode) 
@@ -1846,6 +1896,7 @@ class Mesh(Geometry):
         
 
         | Node: MeshToCurve 
+        Top Index 
         
 
             v = mesh.to_curve(selection) 
@@ -1880,6 +1931,7 @@ class Mesh(Geometry):
         
 
         | Node: MeshToPoints 
+        Top Index 
         
 
             v = mesh.to_points(selection, position, radius, mode) 
@@ -1921,6 +1973,7 @@ class Mesh(Geometry):
         
 
         | Node: DistributePointsOnFaces 
+        Top Index 
         
 
             v = mesh.distribute_points_on_faces(selection, distance_min, density_max, density, density_factor, seed,
@@ -1971,6 +2024,7 @@ class Mesh(Geometry):
         
 
         | Node: SplitEdges 
+        Top Index 
         
 
             mesh.split_edges(selection) 
@@ -2005,6 +2059,7 @@ class Mesh(Geometry):
         
 
         | Node: SubdivideMesh 
+        Top Index 
         
 
             mesh.subdivide(level) 
@@ -2039,6 +2094,7 @@ class Mesh(Geometry):
         
 
         | Node: SubdivisionSurface 
+        Top Index 
         
 
             mesh.subdivision_surface(level, crease, boundary_smooth, uv_smooth) 
@@ -2082,6 +2138,7 @@ class Mesh(Geometry):
         
 
         | Node: Triangulate 
+        Top Index 
         
 
             mesh.triangulate(selection, minimum_vertices, ngon_method, quad_method) 
@@ -2124,6 +2181,7 @@ class Mesh(Geometry):
         
 
         | Node: DualMesh 
+        Top Index 
         
 
             mesh.dual(keep_boundaries) 
@@ -2158,6 +2216,7 @@ class Mesh(Geometry):
         
 
         | Node: FlipFaces 
+        Top Index 
         
 
             mesh.flip_faces(selection) 

@@ -2,6 +2,7 @@
 # Class Geometry
 
 > Inherits from: ***dsock.Geometry***
+[Index](/docs/index.md)
 
 ## Static methods
 
@@ -58,6 +59,7 @@
 
 - [**attribute_domain_size**](#attribute_domain_size) : [DomainSize](../nodes/DomainSize.md) Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
 - [**attribute_remove**](#attribute_remove) : [AttributeRemove](../nodes/AttributeRemove.md) geometry (Geometry)
+- [**capture_attribute**](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) Sockets      [geometry (Geometry), attribute (data_type dependant)]
 - [**components**](#components) : [SeparateGeometry](../nodes/SeparateGeometry.md) Sockets      [selection (Geometry), inverted (Geometry)]
 - [**convex_hull**](#convex_hull) : [ConvexHull](../nodes/ConvexHull.md) convex_hull (Geometry)
 - [**join**](#join) : [JoinGeometry](../nodes/JoinGeometry.md) geometry (Geometry)
@@ -96,6 +98,7 @@
 ### ID
 
 > Node: [ID](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.ID(self)
@@ -128,6 +131,7 @@ node = nodes.ID()
 ### attribute_domain_size
 
 > Node: [DomainSize](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.attribute_domain_size(component)
@@ -168,6 +172,7 @@ node = nodes.DomainSize(geometry=self, component=component)
 ### attribute_remove
 
 > Node: [AttributeRemove](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.attribute_remove(attribute_1, attribute_2, attribute_3)
@@ -201,6 +206,7 @@ node = nodes.AttributeRemove(*attribute, geometry=self)
 ### bound_box
 
 > Node: [BoundingBox](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.bound_box
@@ -241,6 +247,7 @@ node = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_bo
 ### box
 
 > Node: [BoundingBox](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.box
@@ -281,6 +288,7 @@ node = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box")
 ### box_max
 
 > Node: [BoundingBox](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.box_max
@@ -321,6 +329,7 @@ node = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_max"
 ### box_min
 
 > Node: [BoundingBox](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.box_min
@@ -361,6 +370,7 @@ node = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_min"
 ### capture_ID
 
 > Node: [ID](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.capture_ID(self, domain='POINT')
@@ -391,9 +401,53 @@ node = nodes.ID()
 
     Integer
 
+### capture_attribute
+
+> Node: [CaptureAttribute](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
+
+```python
+v = geometry.capture_attribute(value, data_type, domain)
+```
+
+
+#### Arguments
+
+
+##### Sockets arguments
+
+
+
+- geometry : Geometry (self)
+- value : Float
+
+
+
+##### Parameters arguments
+
+
+
+- data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+
+
+
+#### Node creation
+
+
+```python
+node = nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain)
+```
+
+
+#### Returns
+
+    Sockets [geometry (Geometry), attribute (data_type dependant)]
+
 ### capture_index
 
 > Node: [Index](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.capture_index(self, domain='POINT')
@@ -427,6 +481,7 @@ node = nodes.Index()
 ### capture_normal
 
 > Node: [Normal](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.capture_normal(self, domain='FACE')
@@ -460,6 +515,7 @@ node = nodes.Normal()
 ### capture_position
 
 > Node: [Position](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.capture_position(self, domain='POINT')
@@ -493,6 +549,7 @@ node = nodes.Position()
 ### capture_radius
 
 > Node: [Radius](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.capture_radius(self, domain='POINT')
@@ -526,6 +583,7 @@ node = nodes.Radius()
 ### components
 
 > Node: [SeparateGeometry](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.components(selection, domain)
@@ -567,6 +625,7 @@ node = nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain)
 ### convex_hull
 
 > Node: [ConvexHull](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.convex_hull()
@@ -599,6 +658,7 @@ node = nodes.ConvexHull(geometry=self)
 ### curve_component
 
 > Node: [SeparateComponents](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.curve_component
@@ -639,6 +699,7 @@ node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.c
 ### delete_geometry
 
 > Node: [DeleteGeometry](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 geometry.delete_geometry(selection, domain, mode)
@@ -681,6 +742,7 @@ node = nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, m
 ### index
 
 > Node: [Index](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.index(self)
@@ -713,6 +775,7 @@ node = nodes.Index()
 ### instances_component
 
 > Node: [SeparateComponents](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.instances_component
@@ -753,6 +816,7 @@ node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.i
 ### is_viewport
 
 > Node: [IsViewport](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = Geometry.is_viewport()
@@ -777,6 +841,7 @@ node = nodes.IsViewport()
 ### join
 
 > Node: [JoinGeometry](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.join(geometry_1, geometry_2, geometry_3)
@@ -809,6 +874,7 @@ node = nodes.JoinGeometry(self, *geometry)
 ### merge_by_distance
 
 > Node: [MergeByDistance](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 geometry.merge_by_distance(selection, distance)
@@ -843,6 +909,7 @@ node = nodes.MergeByDistance(geometry=self, selection=selection, distance=distan
 ### mesh_component
 
 > Node: [SeparateComponents](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.mesh_component
@@ -883,6 +950,7 @@ node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.m
 ### normal
 
 > Node: [Normal](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.normal(self)
@@ -915,6 +983,7 @@ node = nodes.Normal()
 ### points_component
 
 > Node: [SeparateComponents](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.points_component
@@ -955,6 +1024,7 @@ node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.p
 ### position
 
 > Node: [Position](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.position(self)
@@ -987,6 +1057,7 @@ node = nodes.Position()
 ### proximity
 
 > Node: [GeometryProximity](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.proximity(source_position, target_element)
@@ -1028,6 +1099,7 @@ node = nodes.GeometryProximity(target=self, source_position=source_position, tar
 ### radius
 
 > Node: [Radius](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.radius(self)
@@ -1060,6 +1132,7 @@ node = nodes.Radius()
 ### realize_instances
 
 > Node: [RealizeInstances](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 geometry.realize_instances(legacy_behavior)
@@ -1100,6 +1173,7 @@ node = nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior)
 ### replace_material
 
 > Node: [ReplaceMaterial](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 geometry.replace_material(old, new)
@@ -1134,6 +1208,7 @@ node = nodes.ReplaceMaterial(geometry=self, old=old, new=new)
 ### scale_elements
 
 > Node: [ScaleElements](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 geometry.scale_elements(selection, scale, center, axis, domain, scale_mode)
@@ -1179,6 +1254,7 @@ node = nodes.ScaleElements(geometry=self, selection=selection, scale=scale, cent
 ### set_ID
 
 > Node: [SetID](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 geometry.set_ID(selection, ID)
@@ -1213,6 +1289,7 @@ node = nodes.SetID(geometry=self, selection=selection, ID=ID)
 ### set_material
 
 > Node: [SetMaterial](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 geometry.set_material(selection, material)
@@ -1247,6 +1324,7 @@ node = nodes.SetMaterial(geometry=self, selection=selection, material=material)
 ### set_material_index
 
 > Node: [SetMaterialIndex](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 geometry.set_material_index(selection, material_index)
@@ -1281,6 +1359,7 @@ node = nodes.SetMaterialIndex(geometry=self, selection=selection, material_index
 ### set_position
 
 > Node: [SetPosition](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 geometry.set_position(selection, position, offset)
@@ -1316,6 +1395,7 @@ node = nodes.SetPosition(geometry=self, selection=selection, position=position, 
 ### set_shade_smooth
 
 > Node: [SetShadeSmooth](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 geometry.set_shade_smooth(selection, shade_smooth)
@@ -1350,6 +1430,7 @@ node = nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=sha
 ### switch
 
 > Node: [Switch](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.switch(switch1, true)
@@ -1392,6 +1473,7 @@ node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY
 ### to_instance
 
 > Node: [GeometryToInstance](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.to_instance(geometry_1, geometry_2, geometry_3)
@@ -1424,6 +1506,7 @@ node = nodes.GeometryToInstance(self, *geometry)
 ### transfer_boolean
 
 > Node: [TransferAttribute](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.transfer_boolean(attribute, source_position, index, domain, mapping)
@@ -1476,6 +1559,7 @@ node = nodes.TransferAttribute(source=self, attribute=attribute, source_position
 ### transfer_color
 
 > Node: [TransferAttribute](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.transfer_color(attribute, source_position, index, domain, mapping)
@@ -1528,6 +1612,7 @@ node = nodes.TransferAttribute(source=self, attribute=attribute, source_position
 ### transfer_float
 
 > Node: [TransferAttribute](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.transfer_float(attribute, source_position, index, domain, mapping)
@@ -1580,6 +1665,7 @@ node = nodes.TransferAttribute(source=self, attribute=attribute, source_position
 ### transfer_integer
 
 > Node: [TransferAttribute](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.transfer_integer(attribute, source_position, index, domain, mapping)
@@ -1632,6 +1718,7 @@ node = nodes.TransferAttribute(source=self, attribute=attribute, source_position
 ### transfer_vector
 
 > Node: [TransferAttribute](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.transfer_vector(attribute, source_position, index, domain, mapping)
@@ -1684,6 +1771,7 @@ node = nodes.TransferAttribute(source=self, attribute=attribute, source_position
 ### transform
 
 > Node: [Transform](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 geometry.transform(translation, rotation, scale)
@@ -1719,6 +1807,7 @@ node = nodes.Transform(geometry=self, translation=translation, rotation=rotation
 ### volume_component
 
 > Node: [SeparateComponents](../nodes/{self.node_name}.md)
+[Top](#geometry) [Index](/docs/index.md)
 
 ```python
 v = geometry.volume_component

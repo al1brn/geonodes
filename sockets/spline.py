@@ -8,11 +8,12 @@ logger = logging.Logger('geonodes')
 # ==============================================================================================================
 # Data class Spline
 
-class Spline(Geometry):
+class Spline(gn.Geometry):
     """ Class Spline
     
 
-    | Inherits from: Geometry 
+    | Inherits from: gn.Geometry 
+    Index 
     
 
     Attribute capture
@@ -63,6 +64,7 @@ class Spline(Geometry):
         
 
         | Node: CurveHandlePositions 
+        Top Index 
         
 
             v = spline.capture_handle_positions(self, relative, domain='CURVE') 
@@ -107,6 +109,7 @@ class Spline(Geometry):
         
 
         | Node: CurveTangent 
+        Top Index 
         
 
             v = spline.capture_tangent(self, domain='CURVE') 
@@ -146,6 +149,7 @@ class Spline(Geometry):
         
 
         | Node: CurveTilt 
+        Top Index 
         
 
             v = spline.capture_tilt(self, domain='CURVE') 
@@ -185,6 +189,7 @@ class Spline(Geometry):
         
 
         | Node: EndpointSelection 
+        Top Index 
         
 
             v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE') 
@@ -230,6 +235,7 @@ class Spline(Geometry):
         
 
         | Node: HandleTypeSelection 
+        Top Index 
         
 
             v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE') 
@@ -271,6 +277,7 @@ class Spline(Geometry):
         
 
         | Node: IsSplineCyclic 
+        Top Index 
         
 
             v = spline.capture_cyclic(self, domain='CURVE') 
@@ -310,6 +317,7 @@ class Spline(Geometry):
         
 
         | Node: SplineLength 
+        Top Index 
         
 
             v = spline.capture_length(self, domain='CURVE') 
@@ -349,6 +357,7 @@ class Spline(Geometry):
         
 
         | Node: SplineParameter 
+        Top Index 
         
 
             v = spline.capture_parameter(self, domain='CURVE') 
@@ -388,6 +397,7 @@ class Spline(Geometry):
         
 
         | Node: SplineResolution 
+        Top Index 
         
 
             v = spline.capture_resolution(self, domain='CURVE') 
@@ -432,6 +442,7 @@ class Spline(Geometry):
         
 
         | Node: ID 
+        Top Index 
         
 
             v = spline.spline_ID(self) 
@@ -466,6 +477,7 @@ class Spline(Geometry):
         
 
         | Node: Index 
+        Top Index 
         
 
             v = spline.spline_index(self) 
@@ -500,6 +512,7 @@ class Spline(Geometry):
         
 
         | Node: Index 
+        Top Index 
         
 
             v = spline.spline_position(self) 
@@ -534,6 +547,7 @@ class Spline(Geometry):
         
 
         | Node: CurveHandlePositions 
+        Top Index 
         
 
             v = spline.left_handle_position(self, relative) 
@@ -573,6 +587,7 @@ class Spline(Geometry):
         
 
         | Node: CurveHandlePositions 
+        Top Index 
         
 
             v = spline.right_handle_position(self, relative) 
@@ -612,6 +627,7 @@ class Spline(Geometry):
         
 
         | Node: CurveTangent 
+        Top Index 
         
 
             v = spline.tangent(self) 
@@ -646,6 +662,7 @@ class Spline(Geometry):
         
 
         | Node: CurveTilt 
+        Top Index 
         
 
             v = spline.tilt(self) 
@@ -680,6 +697,7 @@ class Spline(Geometry):
         
 
         | Node: EndpointSelection 
+        Top Index 
         
 
             v = spline.endpoint_selection(self, start_size, end_size) 
@@ -720,6 +738,7 @@ class Spline(Geometry):
         
 
         | Node: HandleTypeSelection 
+        Top Index 
         
 
             v = spline.handle_type_selection(self, handle_type, mode) 
@@ -756,6 +775,7 @@ class Spline(Geometry):
         
 
         | Node: IsSplineCyclic 
+        Top Index 
         
 
             v = spline.cyclic(self) 
@@ -790,6 +810,7 @@ class Spline(Geometry):
         
 
         | Node: SplineLength 
+        Top Index 
         
 
             v = spline.length(self) 
@@ -824,6 +845,7 @@ class Spline(Geometry):
         
 
         | Node: SplineLength 
+        Top Index 
         
 
             v = spline.point_count(self) 
@@ -858,6 +880,7 @@ class Spline(Geometry):
         
 
         | Node: SplineParameter 
+        Top Index 
         
 
             v = spline.factor(self) 
@@ -892,6 +915,7 @@ class Spline(Geometry):
         
 
         | Node: SplineParameter 
+        Top Index 
         
 
             v = spline.parameter_length(self) 
@@ -926,6 +950,7 @@ class Spline(Geometry):
         
 
         | Node: SplineParameter 
+        Top Index 
         
 
             v = spline.parameter_index(self) 
@@ -960,6 +985,7 @@ class Spline(Geometry):
         
 
         | Node: SplineResolution 
+        Top Index 
         
 
             v = spline.resolution(self) 
@@ -992,14 +1018,15 @@ class Spline(Geometry):
     # ----------------------------------------------------------------------------------------------------
     # Stacked methods
 
-    def set_cyclic(geometry=None, selection=None, cyclic=None):
+    def set_cyclic(self, selection=None, cyclic=None):
         """ set_cyclic
         
 
         | Node: SetSplineCyclic 
+        Top Index 
         
 
-            spline.set_cyclic(geometry, selection, cyclic) 
+            spline.set_cyclic(selection, cyclic) 
         
 
         Arguments
@@ -1008,7 +1035,7 @@ class Spline(Geometry):
 
             Sockets arguments
             -----------------
-            - geometry  : Geometry 
+            - geometry  : Geometry (self) 
             - selection : Boolean 
             - cyclic    : Boolean 
         
@@ -1017,7 +1044,7 @@ class Spline(Geometry):
         =============
         
 
-            node = nodes.SetSplineCyclic(geometry=geometry, selection=selection, cyclic=cyclic) 
+            node = nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic) 
         
 
         Returns
@@ -1025,16 +1052,17 @@ class Spline(Geometry):
                 self 
         """
 
-        return self.stack(nodes.SetSplineCyclic(geometry=geometry, selection=selection, cyclic=cyclic))
+        return self.stack(nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic))
 
-    def set_resolution(geometry=None, selection=None, resolution=None):
+    def set_resolution(self, selection=None, resolution=None):
         """ set_resolution
         
 
         | Node: SetSplineResolution 
+        Top Index 
         
 
-            spline.set_resolution(geometry, selection, resolution) 
+            spline.set_resolution(selection, resolution) 
         
 
         Arguments
@@ -1043,7 +1071,7 @@ class Spline(Geometry):
 
             Sockets arguments
             -----------------
-            - geometry   : Geometry 
+            - geometry   : Geometry (self) 
             - selection  : Boolean 
             - resolution : Integer 
         
@@ -1052,7 +1080,7 @@ class Spline(Geometry):
         =============
         
 
-            node = nodes.SetSplineResolution(geometry=geometry, selection=selection, resolution=resolution) 
+            node = nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution) 
         
 
         Returns
@@ -1060,6 +1088,6 @@ class Spline(Geometry):
                 self 
         """
 
-        return self.stack(nodes.SetSplineResolution(geometry=geometry, selection=selection, resolution=resolution))
+        return self.stack(nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution))
 
 

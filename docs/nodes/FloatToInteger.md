@@ -2,6 +2,7 @@
 # Class FloatToInteger
 
 > Geometry node name: _'Float to Integer'_<br>Blender type:  **FunctionNodeFloatToInt**
+[Index](/docs/index.md)
 
 ## Initialization
 

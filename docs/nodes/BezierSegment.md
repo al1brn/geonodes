@@ -2,6 +2,7 @@
 # Class BezierSegment
 
 > Geometry node name: _'Bezier Segment'_<br>Blender type:  **GeometryNodeCurvePrimitiveBezierSegment**
+[Index](/docs/index.md)
 
 ## Initialization
 

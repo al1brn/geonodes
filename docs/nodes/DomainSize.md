@@ -2,6 +2,7 @@
 # Class DomainSize
 
 > Geometry node name: _'Domain Size'_<br>Blender type:  **GeometryNodeAttributeDomainSize**
+[Index](/docs/index.md)
 
 ## Initialization
 

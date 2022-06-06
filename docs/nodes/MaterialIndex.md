@@ -2,6 +2,7 @@
 # Class MaterialIndex
 
 > Geometry node name: _'Material Index'_<br>Blender type:  **GeometryNodeInputMaterialIndex**
+[Index](/docs/index.md)
 
 ## Initialization
 

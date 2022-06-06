@@ -2,6 +2,7 @@
 # Class Compare
 
 > Geometry node name: _'Compare'_<br>Blender type:  **FunctionNodeCompare**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -2,6 +2,7 @@
 # Class CurveCircle
 
 > Geometry node name: _'Curve Circle'_<br>Blender type:  **GeometryNodeCurvePrimitiveCircle**
+[Index](/docs/index.md)
 
 ## Initialization
 

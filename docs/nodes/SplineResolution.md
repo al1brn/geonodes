@@ -2,6 +2,7 @@
 # Class SplineResolution
 
 > Geometry node name: _'Spline Resolution'_<br>Blender type:  **GeometryNodeInputSplineResolution**
+[Index](/docs/index.md)
 
 ## Initialization
 

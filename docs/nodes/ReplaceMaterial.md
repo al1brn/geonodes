@@ -2,6 +2,7 @@
 # Class ReplaceMaterial
 
 > Geometry node name: _'Replace Material'_<br>Blender type:  **GeometryNodeReplaceMaterial**
+[Index](/docs/index.md)
 
 ## Initialization
 

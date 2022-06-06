@@ -13,6 +13,7 @@ class Boolean(dsock.Boolean):
     
 
     | Inherits from: dsock.Boolean 
+    Index 
     
 
     Constructors
@@ -49,6 +50,7 @@ class Boolean(dsock.Boolean):
         
 
         | Node: RandomValue 
+        Top Index 
         
 
             v = Boolean.Random(probability, ID, seed) 
@@ -93,6 +95,7 @@ class Boolean(dsock.Boolean):
         
 
         | Node: TransferAttribute 
+        Top Index 
         
 
             v = boolean.transfer_attribute(source, source_position, index, domain, mapping) 
@@ -141,6 +144,7 @@ class Boolean(dsock.Boolean):
         
 
         | Node: CaptureAttribute 
+        Top Index 
         
 
             v = boolean.capture_attribute(geometry, domain) 
@@ -185,6 +189,7 @@ class Boolean(dsock.Boolean):
         
 
         | Node: FieldAtIndex 
+        Top Index 
         
 
             v = boolean.field_at_index(index, domain) 
@@ -229,6 +234,7 @@ class Boolean(dsock.Boolean):
         
 
         | Node: Raycast 
+        Top Index 
         
 
             v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length, mapping) 
@@ -278,6 +284,7 @@ class Boolean(dsock.Boolean):
         
 
         | Node: Switch 
+        Top Index 
         
 
             v = boolean.switch(false, true) 
@@ -318,6 +325,7 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
+        Top Index 
         
 
             v = boolean.b_and(boolean1) 
@@ -357,6 +365,7 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
+        Top Index 
         
 
             v = boolean.b_or(boolean1) 
@@ -396,6 +405,7 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
+        Top Index 
         
 
             v = boolean.b_not() 
@@ -434,6 +444,7 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
+        Top Index 
         
 
             v = boolean.nand(boolean1) 
@@ -473,6 +484,7 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
+        Top Index 
         
 
             v = boolean.nor(boolean1) 
@@ -512,6 +524,7 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
+        Top Index 
         
 
             v = boolean.xnor(boolean1) 
@@ -551,6 +564,7 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
+        Top Index 
         
 
             v = boolean.xor(boolean1) 
@@ -590,6 +604,7 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
+        Top Index 
         
 
             v = boolean.imply(boolean1) 
@@ -629,6 +644,7 @@ class Boolean(dsock.Boolean):
         
 
         | Node: BooleanMath 
+        Top Index 
         
 
             v = boolean.nimply(boolean1) 

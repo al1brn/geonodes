@@ -2,6 +2,7 @@
 # Class JoinGeometry
 
 > Geometry node name: _'Join Geometry'_<br>Blender type:  **GeometryNodeJoinGeometry**
+[Index](/docs/index.md)
 
 ## Initialization
 

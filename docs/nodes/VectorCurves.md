@@ -2,6 +2,7 @@
 # Class VectorCurves
 
 > Geometry node name: _'Vector Curves'_<br>Blender type:  **ShaderNodeVectorCurve**
+[Index](/docs/index.md)
 
 ## Initialization
 

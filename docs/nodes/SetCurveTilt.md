@@ -2,6 +2,7 @@
 # Class SetCurveTilt
 
 > Geometry node name: _'Set Curve Tilt'_<br>Blender type:  **GeometryNodeSetCurveTilt**
+[Index](/docs/index.md)
 
 ## Initialization
 

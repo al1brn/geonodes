@@ -7,7 +7,9 @@ Created on Thu May 26 11:15:16 2022
 """
 
 import bpy
+import mathutils
 import itertools
+from contextlib import contextmanager
 
 from pprint import pprint
 import logging
@@ -238,10 +240,10 @@ class DataSocket:
         elif class_name in ['Geometry', 'Mesh', 'Points', 'Instances', 'Volume', 'Curve', 'Spline']:
             return 'NodeSocketGeometry'
         
-        elif class_name in ['Material']:
+        elif class_name in ['Image']:
             return 'NodeSocketImage'
         
-        elif class_name in ['Image']:
+        elif class_name in ['Material']:
             return 'NodeSocketMaterial'
         
         elif class_name in ['Texture']:
@@ -394,9 +396,34 @@ class DataSocket:
                 raise RuntimeError(f"The socket {bsocket} is multi input. Impossible to plug the value {value}.")
                 
             # ----- Vector / Color hack: a single value is broadcasted in a triplet
-            if hasattr(bsocket, 'default_value') and isinstance(bsocket.default_value, bpy.types.bpy_prop_array):
+            
+            if hasattr(bsocket, 'default_value') and isinstance(bsocket.default_value, (bpy.types.bpy_prop_array, mathutils.Vector)):
+                
                 if not hasattr(value, '__len__'):
                     value = (value, value, value)
+                    
+                # ----- Hack : transform a triplet (a, b, c) with a component
+                # which is a socket to a Vector
+                
+                to_vector = False
+                for v in value:
+                    if isinstance(v, DataSocket):
+                        to_vector = True
+                        break
+                    
+                if to_vector:
+                    from geonodes import Vector
+                    DataSocket.plug_bsocket(bsocket, Vector((value)).bsocket)
+                    return
+                
+            # ----- Socket material hack : replace the name of the material by the material
+            
+            if isinstance(bsocket, bpy.types.NodeSocketMaterial):
+                if type(value) is str:
+                    try:
+                        value = bpy.data.materials[value]
+                    except:
+                        raise RuntimeError(f"Material '{value}' not found.")
             
             ok = True
             try:
@@ -406,7 +433,7 @@ class DataSocket:
                 ok = False
                 
             if not ok:
-                raise RuntimeError(f"Impossible to set the default value {value} to socket {bsocket}.\n {msg}")
+                raise RuntimeError(f"Impossible to set the default value {value} to socket {bsocket}.\n Error: {msg}")
                 
         else:
             Tree.TREE.btree.links.new(bsocket, out_socket, verify_limits=True)
@@ -520,6 +547,12 @@ class Tree:
         
         self.viewer = None
         self.scene_ = None
+        
+    def __enter__(self):
+        return self
+    
+    def __exit__(self, exception_type, exception_value, traceback):
+        self.close()
         
         
     # ----------------------------------------------------------------------------------------------------
@@ -655,8 +688,8 @@ class Tree:
     def output_geometry(self, value):
         self.group_output.plug(0, value)
         
-    def new_input(self, class_name, value=None, name=None):
-        return self.group_input.new_socket(class_name=class_name, value=value, name=name)
+    def new_input(self, class_name, value=None, name=None, min_value=None, max_value=None, description=""):
+        return self.group_input.new_socket(class_name=class_name, value=value, name=name, min_value=min_value, max_value=max_value, description=description)
     
     def to_output(self, socket):
         self.group_output.to_output(socket)
@@ -692,21 +725,110 @@ class Tree:
     # ----------------------------------------------------------------------------------------------------
     # Layouts
     
-    def new_layout(self, label="Layout", color=colors.orange):
-        layout = Frame(label=label, color=color)
-        self.layouts.append(layout)
-        return layout
-        
+    @contextmanager
+    def layout(self, label="Layout", color="orange"):
+        try:
+            layout = Frame(label=label, color=color)
+            self.layouts.append(layout)
+            yield layout
+        finally:
+            self.layouts.pop()
+            
     @property
     def cur_frame(self):
         if self.layouts:
             return self.layouts[-1].bnode
         else:
             return None
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Check the attributes
+    #
+    # Input attributes are initialized with a socket owner
+    # When finalizing the tree, we must check that the attribute actually feeds the expedt geometry
+    # If it is not the case, we me insert a cpature node attribute
+    #
+    # The insertion is made with the following algorithm
+    #
+    # 1) Check if capture is needed
+    #    for each fed node:
+    #        if the node has an input geometry:
+    #             if the input geometry is the expected one:
+    #                 ok
+    #             else
+    #                 insertion is need
+    #        else:
+    #            continue exploration with the nodes fed by this node
+    #
+    # 2) If insertion is needed
+    #    - Create the capture node
+    #    - Set the proper parameters
+    #    - Input geometry with the owning socket
+    #    - Output geometry to the sockets the owning socket was linked to
+    #    - Output attribute to the sockets the attribute was connected to
+    
+    def check_attributes(self):
         
-    def close_layout(self):
-        if self.layouts:
-            return self.layouts.pop()
+        attr_nodes = []
+        for node in self.nodes:
+            if node.is_attribute:
+                attr_nodes.append(node)
+                
+        for attr_node in attr_nodes:
+            
+            # ---------------------------------------------------------------------------
+            # ----- Check if the fed nodes with geometry input are ok
+            
+            security  = []
+            all_is_good = True
+            def check_geo_nodes(attr_node):
+                for node in node.fed_nodes:
+
+                    bsocket = node.input_geometry_bsocket
+
+                    if bsocket is None:
+                        if node in security:
+                            raise RuntimeError(f"Apparently, the tree loops on node {node} {node.bnode}")
+                        security.append(node)
+                        check_geo_nodes(node)
+                        
+                    else:
+                        if bsocket != node.owning_socket.bsocket:
+                            all_is_good = False
+                            break
+                        
+            check_geo_nodes(attr_node)
+            del security
+            
+            if all_is_good:
+                continue
+            
+            # ---------------------------------------------------------------------------
+            # ----- A capture node is required
+            
+            
+            
+            for node in geo_nodes:
+                pass
+            
+            
+        """
+        input_geometry_bsocket
+            
+            
+        self.owning_socket = owning_socket
+        self.domain        = domain
+        self.data_type     = data_type
+        self.is_attribute  = True
+        """    
+            
+            
+            
+        
+        
+        
+     
+    
     
     # ----------------------------------------------------------------------------------------------------
     # Arrange the nodes
@@ -714,6 +836,14 @@ class Tree:
     def arrange(self, force=True):
         if self.auto_arrange or force:
             arrange(self.btree.name)    
+
+    # ----------------------------------------------------------------------------------------------------
+    # Close the tree
+    #
+    # Called by __exit__
+    
+    def close(self):
+        self.arrange(True)
         
     
 # ---------------------------------------------------------------------------
@@ -796,6 +926,37 @@ class Node:
             return str(self.node_id)
         else:
             return self.label
+        
+    # ---------------------------------------------------------------------------
+    # The input geometry socket when exists
+    
+    @property
+    def input_geometry_bsocket(self):
+        for bsocket in self.bnodes.inputs:
+            if bsocket.bl_idname == 'NodeSocketGeometry':
+                return bsocket
+        return None
+
+    # ---------------------------------------------------------------------------
+    # All the fed nodes (nodes connected to one output socket)
+    
+    @property
+    def fed_nodes(self):
+
+        bnodes = []
+        for bsocket in self.outputs:
+            for link in bsockets.links:
+                if link.to_node not in bnodes:
+                    bnodes.append(link.to_node)
+
+        nodes = []
+        for bnode in bnodes:
+            for node in self.tree.nodes:
+                if node.bnode == bnode:
+                    nodes.append(node)
+
+        return nodes
+
     
     # ---------------------------------------------------------------------------
     # Node color
@@ -810,7 +971,7 @@ class Node:
             self.bnode.use_custom_color = False
         else:
             self.bnode.use_custom_color = True
-            self.bnode.color = value
+            self.bnode.color = colors.color(value)
 
     # ---------------------------------------------------------------------------
     # Switch input sockets
@@ -1120,16 +1281,16 @@ class GroupInput(NodeGroup):
     # --------------------------------------------------------------------------------
     # Create a new output socket
     
-    def new_socket(self, class_name, value=None, name=None):
+    def new_socket(self, class_name, value=None, name=None, min_value=None, max_value=None, description=""):
         
         if name is None:
             name = class_name
             
         # ----- Look for an existing socket with the proper name
         
-        socket   = None
-        existing = False
-        for bsocket in self.bnode.outputs:
+        socket    = None
+        existing  = False
+        for socket_index, bsocket in enumerate(self.bnode.outputs):
             
             # No virtual socket
             if bsocket.bl_idname == 'NodeSocketVirtual':
@@ -1137,15 +1298,41 @@ class GroupInput(NodeGroup):
             
             cname, subclass = DataSocket.get_class_name(bsocket, True)
             if (cname == class_name or subclass == class_name) and bsocket.name == name:
+                
+                inp = self.tree.btree.inputs[socket_index]
+                
                 socket = Node.DataClass(bsocket)
                 existing = True
+                
+                update = False
+                
+                if min_value is not None and inp.min_value != min_value:
+                    inp.min_value = min_value
+                    update = True
+                if max_value is not None and inp.max_value != max_value:
+                    inp.max_value = max_value
+                    update = True
+                if inp.description != description:
+                    inp.description = description
+                    update= True
+                    
+                if update:
+                    self.update_sock_names()
+
                 break
             
-        # ----- Let's create if
+        # ----- Let's create it
             
         if socket is None:
 
             new_input = self.tree.btree.inputs.new(type=DataSocket.get_bl_idname(class_name), name=name)
+            
+            if min_value is not None:
+                new_input.min_value = min_value
+            if max_value is not None:
+                new_input.max_value = max_value
+            new_input.description = description
+            
             self.update_sock_names()
         
         index  = self.socket_index(name)
@@ -1187,6 +1374,8 @@ class GroupInput(NodeGroup):
         # ----- Return the newly created socket
         
         return socket
+    
+    
             
 # ----------------------------------------------------------------------------------------------------
 # Node NodeGroupOutput for NodeGroupOutput

@@ -2,6 +2,7 @@
 # Class EdgeAngle
 
 > Geometry node name: _'Edge Angle'_<br>Blender type:  **GeometryNodeInputMeshEdgeAngle**
+[Index](/docs/index.md)
 
 ## Initialization
 

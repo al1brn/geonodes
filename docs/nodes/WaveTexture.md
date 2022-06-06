@@ -2,6 +2,7 @@
 # Class WaveTexture
 
 > Geometry node name: _'Wave Texture'_<br>Blender type:  **ShaderNodeTexWave**
+[Index](/docs/index.md)
 
 ## Initialization
 

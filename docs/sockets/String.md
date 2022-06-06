@@ -2,6 +2,7 @@
 # Class String
 
 > Inherits from: ***dsock.String***
+[Index](/docs/index.md)
 
 ## Properties
 
@@ -41,6 +42,7 @@
 ### average
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+[Top](#string) [Index](/docs/index.md)
 
 ```python
 v = string.average(b)
@@ -84,6 +86,7 @@ node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation=
 ### direction
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+[Top](#string) [Index](/docs/index.md)
 
 ```python
 v = string.direction(b)
@@ -127,6 +130,7 @@ node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation=
 ### dot_product
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+[Top](#string) [Index](/docs/index.md)
 
 ```python
 v = string.dot_product(b)
@@ -170,6 +174,7 @@ node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation=
 ### element
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+[Top](#string) [Index](/docs/index.md)
 
 ```python
 v = string.element(b)
@@ -213,6 +218,7 @@ node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation=
 ### join
 
 > Node: [JoinStrings](../nodes/{self.node_name}.md)
+[Top](#string) [Index](/docs/index.md)
 
 ```python
 v = string.join(strings_1, strings_2, strings_3, delimiter)
@@ -246,6 +252,7 @@ node = nodes.JoinStrings(self, *strings, delimiter=delimiter)
 ### length
 
 > Node: [Compare](../nodes/{self.node_name}.md)
+[Top](#string) [Index](/docs/index.md)
 
 ```python
 v = string.length(b)
@@ -289,6 +296,7 @@ node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation=
 ### replace
 
 > Node: [ReplaceString](../nodes/{self.node_name}.md)
+[Top](#string) [Index](/docs/index.md)
 
 ```python
 string.replace(find, replace)
@@ -323,6 +331,7 @@ node = nodes.ReplaceString(string=self, find=find, replace=replace)
 ### slice
 
 > Node: [SliceString](../nodes/{self.node_name}.md)
+[Top](#string) [Index](/docs/index.md)
 
 ```python
 v = string.slice(position, length)
@@ -357,6 +366,7 @@ node = nodes.SliceString(string=self, position=position, length=length)
 ### switch
 
 > Node: [Switch](../nodes/{self.node_name}.md)
+[Top](#string) [Index](/docs/index.md)
 
 ```python
 v = string.switch(switch0, true)
@@ -399,6 +409,7 @@ node = nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING')
 ### to_curves
 
 > Node: [StringToCurves](../nodes/{self.node_name}.md)
+[Top](#string) [Index](/docs/index.md)
 
 ```python
 v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_box_width, text_box_height, align_x, align_y, overflow, pivot_mode)

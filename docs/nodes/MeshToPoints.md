@@ -2,6 +2,7 @@
 # Class MeshToPoints
 
 > Geometry node name: _'Mesh to Points'_<br>Blender type:  **GeometryNodeMeshToPoints**
+[Index](/docs/index.md)
 
 ## Initialization
 

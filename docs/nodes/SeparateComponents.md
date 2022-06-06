@@ -2,6 +2,7 @@
 # Class SeparateComponents
 
 > Geometry node name: _'Separate Components'_<br>Blender type:  **GeometryNodeSeparateComponents**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -2,6 +2,7 @@
 # Class SubdivideMesh
 
 > Geometry node name: _'Subdivide Mesh'_<br>Blender type:  **GeometryNodeSubdivideMesh**
+[Index](/docs/index.md)
 
 ## Initialization
 

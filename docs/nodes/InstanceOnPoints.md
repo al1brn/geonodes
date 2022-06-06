@@ -2,6 +2,7 @@
 # Class InstanceOnPoints
 
 > Geometry node name: _'Instance on Points'_<br>Blender type:  **GeometryNodeInstanceOnPoints**
+[Index](/docs/index.md)
 
 ## Initialization
 

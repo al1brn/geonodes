@@ -2,6 +2,7 @@
 # Class SetPosition
 
 > Geometry node name: _'Set Position'_<br>Blender type:  **GeometryNodeSetPosition**
+[Index](/docs/index.md)
 
 ## Initialization
 

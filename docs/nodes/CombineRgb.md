@@ -2,6 +2,7 @@
 # Class CombineRgb
 
 > Geometry node name: _'Combine RGB'_<br>Blender type:  **ShaderNodeCombineRGB**
+[Index](/docs/index.md)
 
 ## Initialization
 

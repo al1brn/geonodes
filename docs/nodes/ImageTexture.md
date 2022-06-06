@@ -2,6 +2,7 @@
 # Class ImageTexture
 
 > Geometry node name: _'Image Texture'_<br>Blender type:  **GeometryNodeImageTexture**
+[Index](/docs/index.md)
 
 ## Initialization
 

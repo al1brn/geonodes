@@ -2,6 +2,7 @@
 # Class CaptureAttribute
 
 > Geometry node name: _'Capture Attribute'_<br>Blender type:  **GeometryNodeCaptureAttribute**
+[Index](/docs/index.md)
 
 ## Initialization
 
@@ -68,6 +69,7 @@ node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', doma
 - [Boolean](../sockets/Boolean.md) [capture_attribute](../sockets/Boolean.md#capture_attribute) : Method
 - [Color](../sockets/Color.md) [capture_attribute](../sockets/Color.md#capture_attribute) : Method
 - [Float](../sockets/Float.md) [capture_attribute](../sockets/Float.md#capture_attribute) : Method
+- [Geometry](../sockets/Geometry.md) [capture_attribute](../sockets/Geometry.md#capture_attribute) : Method
 - [Integer](../sockets/Integer.md) [capture_attribute](../sockets/Integer.md#capture_attribute) : Method
 - [Vector](../sockets/Vector.md) [capture_attribute](../sockets/Vector.md#capture_attribute) : Method
 

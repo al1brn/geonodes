@@ -2,6 +2,7 @@
 # Class Colorramp
 
 > Geometry node name: _'ColorRamp'_<br>Blender type:  **ShaderNodeValToRGB**
+[Index](/docs/index.md)
 
 ## Initialization
 

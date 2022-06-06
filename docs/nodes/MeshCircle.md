@@ -2,6 +2,7 @@
 # Class MeshCircle
 
 > Geometry node name: _'Mesh Circle'_<br>Blender type:  **GeometryNodeMeshCircle**
+[Index](/docs/index.md)
 
 ## Initialization
 

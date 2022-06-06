@@ -2,6 +2,7 @@
 # Class Spiral
 
 > Geometry node name: _'Spiral'_<br>Blender type:  **GeometryNodeCurveSpiral**
+[Index](/docs/index.md)
 
 ## Initialization
 

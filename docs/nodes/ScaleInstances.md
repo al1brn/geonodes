@@ -2,6 +2,7 @@
 # Class ScaleInstances
 
 > Geometry node name: _'Scale Instances'_<br>Blender type:  **GeometryNodeScaleInstances**
+[Index](/docs/index.md)
 
 ## Initialization
 

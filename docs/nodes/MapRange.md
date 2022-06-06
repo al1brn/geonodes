@@ -2,6 +2,7 @@
 # Class MapRange
 
 > Geometry node name: _'Map Range'_<br>Blender type:  **ShaderNodeMapRange**
+[Index](/docs/index.md)
 
 ## Initialization
 

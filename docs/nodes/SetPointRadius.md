@@ -2,6 +2,7 @@
 # Class SetPointRadius
 
 > Geometry node name: _'Set Point Radius'_<br>Blender type:  **GeometryNodeSetPointRadius**
+[Index](/docs/index.md)
 
 ## Initialization
 

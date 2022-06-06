@@ -2,6 +2,7 @@
 # Class Material
 
 > Inherits from: ***dsock.Material***
+[Index](/docs/index.md)
 
 ## Methods
 
@@ -18,6 +19,7 @@
 ### selection
 
 > Node: [MaterialSelection](../nodes/{self.node_name}.md)
+[Top](#material) [Index](/docs/index.md)
 
 ```python
 v = material.selection()
@@ -50,6 +52,7 @@ node = nodes.MaterialSelection(material=self)
 ### switch
 
 > Node: [Switch](../nodes/{self.node_name}.md)
+[Top](#material) [Index](/docs/index.md)
 
 ```python
 v = material.switch(switch1, true)

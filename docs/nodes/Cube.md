@@ -2,6 +2,7 @@
 # Class Cube
 
 > Geometry node name: _'Cube'_<br>Blender type:  **GeometryNodeMeshCube**
+[Index](/docs/index.md)
 
 ## Initialization
 

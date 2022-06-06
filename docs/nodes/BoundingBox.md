@@ -2,6 +2,7 @@
 # Class BoundingBox
 
 > Geometry node name: _'Bounding Box'_<br>Blender type:  **GeometryNodeBoundBox**
+[Index](/docs/index.md)
 
 ## Initialization
 

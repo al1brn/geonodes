@@ -2,6 +2,7 @@
 # Class CollectionInfo
 
 > Geometry node name: _'Collection Info'_<br>Blender type:  **GeometryNodeCollectionInfo**
+[Index](/docs/index.md)
 
 ## Initialization
 

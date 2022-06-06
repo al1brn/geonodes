@@ -2,6 +2,7 @@
 # Class Boolean
 
 > Inherits from: ***dsock.Boolean***
+[Index](/docs/index.md)
 
 ## Constructors
 
@@ -38,6 +39,7 @@
 ### Random
 
 > Node: [RandomValue](../nodes/{self.node_name}.md)
+[Top](#boolean) [Index](/docs/index.md)
 
 ```python
 v = Boolean.Random(probability, ID, seed)
@@ -80,6 +82,7 @@ node = nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='B
 ### b_and
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+[Top](#boolean) [Index](/docs/index.md)
 
 ```python
 v = boolean.b_and(boolean1)
@@ -121,6 +124,7 @@ node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND')
 ### b_not
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+[Top](#boolean) [Index](/docs/index.md)
 
 ```python
 v = boolean.b_not()
@@ -161,6 +165,7 @@ node = nodes.BooleanMath(boolean0=self, operation='NOT')
 ### b_or
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+[Top](#boolean) [Index](/docs/index.md)
 
 ```python
 v = boolean.b_or(boolean1)
@@ -202,6 +207,7 @@ node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR')
 ### capture_attribute
 
 > Node: [CaptureAttribute](../nodes/{self.node_name}.md)
+[Top](#boolean) [Index](/docs/index.md)
 
 ```python
 v = boolean.capture_attribute(geometry, domain)
@@ -251,6 +257,7 @@ node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN'
 ### field_at_index
 
 > Node: [FieldAtIndex](../nodes/{self.node_name}.md)
+[Top](#boolean) [Index](/docs/index.md)
 
 ```python
 v = boolean.field_at_index(index, domain)
@@ -300,6 +307,7 @@ node = nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=d
 ### imply
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+[Top](#boolean) [Index](/docs/index.md)
 
 ```python
 v = boolean.imply(boolean1)
@@ -341,6 +349,7 @@ node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY')
 ### nand
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+[Top](#boolean) [Index](/docs/index.md)
 
 ```python
 v = boolean.nand(boolean1)
@@ -382,6 +391,7 @@ node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND')
 ### nimply
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+[Top](#boolean) [Index](/docs/index.md)
 
 ```python
 v = boolean.nimply(boolean1)
@@ -423,6 +433,7 @@ node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY')
 ### nor
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+[Top](#boolean) [Index](/docs/index.md)
 
 ```python
 v = boolean.nor(boolean1)
@@ -464,6 +475,7 @@ node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR')
 ### raycast
 
 > Node: [Raycast](../nodes/{self.node_name}.md)
+[Top](#boolean) [Index](/docs/index.md)
 
 ```python
 v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
@@ -516,6 +528,7 @@ node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_pos
 ### switch
 
 > Node: [Switch](../nodes/{self.node_name}.md)
+[Top](#boolean) [Index](/docs/index.md)
 
 ```python
 v = boolean.switch(false, true)
@@ -558,6 +571,7 @@ node = nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN')
 ### transfer_attribute
 
 > Node: [TransferAttribute](../nodes/{self.node_name}.md)
+[Top](#boolean) [Index](/docs/index.md)
 
 ```python
 v = boolean.transfer_attribute(source, source_position, index, domain, mapping)
@@ -610,6 +624,7 @@ node = nodes.TransferAttribute(attribute=self, source=source, source_position=so
 ### xnor
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+[Top](#boolean) [Index](/docs/index.md)
 
 ```python
 v = boolean.xnor(boolean1)
@@ -651,6 +666,7 @@ node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR')
 ### xor
 
 > Node: [BooleanMath](../nodes/{self.node_name}.md)
+[Top](#boolean) [Index](/docs/index.md)
 
 ```python
 v = boolean.xor(boolean1)

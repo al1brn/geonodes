@@ -8,11 +8,12 @@ logger = logging.Logger('geonodes')
 # ==============================================================================================================
 # Data class Points
 
-class Points(Geometry):
+class Points(gn.Geometry):
     """ Class Points
     
 
-    | Inherits from: Geometry 
+    | Inherits from: gn.Geometry 
+    Index 
     
 
     Methods
@@ -36,6 +37,7 @@ class Points(Geometry):
         
 
         | Node: InstanceOnPoints 
+        Top Index 
         
 
             v = points.instance_on_points(selection, instance, pick_instance, instance_index, rotation, scale) 
@@ -76,6 +78,7 @@ class Points(Geometry):
         
 
         | Node: PointsToVertices 
+        Top Index 
         
 
             v = points.to_vertices(selection) 
@@ -110,6 +113,7 @@ class Points(Geometry):
         
 
         | Node: PointsToVolume 
+        Top Index 
         
 
             v = points.to_volume(density, voxel_size, voxel_amount, radius, resolution_mode) 
@@ -157,6 +161,7 @@ class Points(Geometry):
         
 
         | Node: SetPointRadius 
+        Top Index 
         
 
             points.set_radius(selection, radius) 

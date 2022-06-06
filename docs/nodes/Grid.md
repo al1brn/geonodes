@@ -2,6 +2,7 @@
 # Class Grid
 
 > Geometry node name: _'Grid'_<br>Blender type:  **GeometryNodeMeshGrid**
+[Index](/docs/index.md)
 
 ## Initialization
 

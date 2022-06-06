@@ -2,6 +2,7 @@
 # Class FaceArea
 
 > Geometry node name: _'Face Area'_<br>Blender type:  **GeometryNodeInputMeshFaceArea**
+[Index](/docs/index.md)
 
 ## Initialization
 

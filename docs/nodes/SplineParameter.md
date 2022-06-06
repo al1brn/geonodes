@@ -2,6 +2,7 @@
 # Class SplineParameter
 
 > Geometry node name: _'Spline Parameter'_<br>Blender type:  **GeometryNodeSplineParameter**
+[Index](/docs/index.md)
 
 ## Initialization
 

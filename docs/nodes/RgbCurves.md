@@ -2,6 +2,7 @@
 # Class RgbCurves
 
 > Geometry node name: _'RGB Curves'_<br>Blender type:  **ShaderNodeRGBCurve**
+[Index](/docs/index.md)
 
 ## Initialization
 

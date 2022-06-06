@@ -2,6 +2,7 @@
 # Class JoinStrings
 
 > Geometry node name: _'Join Strings'_<br>Blender type:  **GeometryNodeStringJoin**
+[Index](/docs/index.md)
 
 ## Initialization
 

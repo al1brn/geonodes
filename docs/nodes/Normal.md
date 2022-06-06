@@ -2,6 +2,7 @@
 # Class Normal
 
 > Geometry node name: _'Normal'_<br>Blender type:  **GeometryNodeInputNormal**
+[Index](/docs/index.md)
 
 ## Initialization
 

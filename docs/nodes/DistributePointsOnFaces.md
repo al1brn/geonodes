@@ -2,6 +2,7 @@
 # Class DistributePointsOnFaces
 
 > Geometry node name: _'Distribute Points on Faces'_<br>Blender type:  **GeometryNodeDistributePointsOnFaces**
+[Index](/docs/index.md)
 
 ## Initialization
 

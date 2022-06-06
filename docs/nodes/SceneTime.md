@@ -2,6 +2,7 @@
 # Class SceneTime
 
 > Geometry node name: _'Scene Time'_<br>Blender type:  **GeometryNodeInputSceneTime**
+[Index](/docs/index.md)
 
 ## Initialization
 

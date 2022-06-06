@@ -45,16 +45,39 @@ def color(name, saturation=None, value=None):
             return color(sname, sat, val)
         else:
             hsv = name
-    else:
+            
+    elif type(name) is str:
+        
+        name = name.lower()
+        comps = name.split('_')
+        if len(comps) > 1:
+            name = comps[1]
+            change = comps[0]
+        else:
+            change = ""
+            
         try:
-            hsv = list(COLORS[name.lower()])
+            hsv = list(COLORS[name])
         except:
             return mathutils.Color((0., 0., 0.))
         
-        if saturation is not None:
-            hsv[1] = saturation
-        if value is not None:
-            hsv[2] = value
+        if change == "light":
+            hsv[1] = 0.25
+        elif change == "mid":
+            hsv[1] = 0.50
+        elif change == "dark":
+            hsv[1] = 0.75
+        
+    elif type(name) is mathutils.Color:
+        return name
+    
+    else:
+        raise RuntimeError(f"Unknwon color : {name} ({type(color)/name}.")
+        
+    if saturation is not None:
+        hsv[1] = saturation
+    if value is not None:
+        hsv[2] = value
         
     c = mathutils.Color()
     c.hsv = hsv

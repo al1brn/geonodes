@@ -2,6 +2,7 @@
 # Class WhiteNoiseTexture
 
 > Geometry node name: _'White Noise Texture'_<br>Blender type:  **ShaderNodeTexWhiteNoise**
+[Index](/docs/index.md)
 
 ## Initialization
 

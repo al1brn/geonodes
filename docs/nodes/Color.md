@@ -2,6 +2,7 @@
 # Class Color
 
 > Geometry node name: _'Color'_<br>Blender type:  **FunctionNodeInputColor**
+[Index](/docs/index.md)
 
 ## Initialization
 

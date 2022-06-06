@@ -2,6 +2,7 @@
 # Class PointsToVolume
 
 > Geometry node name: _'Points to Volume'_<br>Blender type:  **GeometryNodePointsToVolume**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -2,6 +2,7 @@
 # Class EndpointSelection
 
 > Geometry node name: _'Endpoint Selection'_<br>Blender type:  **GeometryNodeCurveEndpointSelection**
+[Index](/docs/index.md)
 
 ## Initialization
 

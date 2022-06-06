@@ -2,6 +2,7 @@
 # Class StringToCurves
 
 > Geometry node name: _'String to Curves'_<br>Blender type:  **GeometryNodeStringToCurves**
+[Index](/docs/index.md)
 
 ## Initialization
 

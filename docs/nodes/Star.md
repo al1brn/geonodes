@@ -2,6 +2,7 @@
 # Class Star
 
 > Geometry node name: _'Star'_<br>Blender type:  **GeometryNodeCurveStar**
+[Index](/docs/index.md)
 
 ## Initialization
 

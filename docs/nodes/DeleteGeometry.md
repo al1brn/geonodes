@@ -2,6 +2,7 @@
 # Class DeleteGeometry
 
 > Geometry node name: _'Delete Geometry'_<br>Blender type:  **GeometryNodeDeleteGeometry**
+[Index](/docs/index.md)
 
 ## Initialization
 

@@ -2,6 +2,7 @@
 # Class Integer
 
 > Geometry node name: _'Integer'_<br>Blender type:  **FunctionNodeInputInt**
+[Index](/docs/index.md)
 
 ## Initialization
 
