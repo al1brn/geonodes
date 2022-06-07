@@ -305,15 +305,15 @@ with gn.Tree("Geometry Nodes") as tree:
     
     cube = gn.Mesh(tree.input_geometry)
     
+    # mat_indices represents the 6 material indices of the 6 faces of the cube
+    
+    mat_indices = cube.material_index
+
     # offset is a single value Integer
     
     offset = gn.Integer(1)
     
-    # mat_indices represents the 6 material indices of the 6 faces of the cube
-    
-    mat_indices = cube.material_index
-    
-    # We can combine the two Integer instances to set the new indices of the cube
+    # We can combine the two integers to set the new indices of the cube
     
     cube.set_material_index(material_index=(mat_indices + offset) % 3)
     
@@ -322,7 +322,7 @@ with gn.Tree("Geometry Nodes") as tree:
     tree.output_geometry = cube
  ```  
  
- <img src="docs/images/colored_cubes.png" width="500">
+<img src="docs/images/material_shift_tree.png" height="250"> <img src="docs/images/colored_cubes.png" height="250">
 
  
  
