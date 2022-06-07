@@ -432,6 +432,49 @@ On the other hand, a node such as "Set Shade Smooth" is a modifier applied on a 
 The output geometry is the same as the input geometry. It has just been transformed by the node.
 The method **transforms data**, it follows the scheme: `Geometry.method()`.
 
+The following piece of code illustrates the creation vs transformation calls:
+
+```python
+import geonodes as gn
+
+with gn.Tree("Geometry Nodes") as tree:
+    
+    # Let's build a torus
+    
+    # The torus major circle 
+    
+    circle = gn.Curve.Circle(radius=1).curve
+    circle.node.node_color = "green"
+
+    # ---------------------------------------------------------------------------
+    # Circle : points on the output socket of the node "Curve Circle"
+    # ---------------------------------------------------------------------------
+    
+    torus = circle.to_mesh(profile_curve=gn.Curve.Circle(radius=.2).curve)
+    torus.node.label = "Torus first node"
+    torus.node.node_color = "red"
+    
+    # ---------------------------------------------------------------------------
+    # Torus  : points on the output socket of the node "Curve to Mesh"
+    # Circle : didn't change
+    # ---------------------------------------------------------------------------
+    
+    torus.set_shade_smooth()
+    torus.node.label = "Torus second node"
+    torus.node.node_color = "blue"
+
+    # ---------------------------------------------------------------------------
+    # Torus : now points on the output socket of the node "Set Shade Smooth"
+    # ---------------------------------------------------------------------------
+    
+    tree.output_geometry = torus
+```
+
+In the generated tree, we can see that the node property of the torus has changed after the call of `set_shade_smooth`:
+
+![transformation_creation](docs/images/transforma_creation.png)
+
+
 
 
 
