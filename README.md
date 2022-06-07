@@ -49,7 +49,7 @@ with gn.Tree("Geometry Nodes") as tree:
 
 The generated nodes and the result of the Geometry nodes modifier is given below:
 
-![Generated geometry nodes](docs/images/demo_intro.png)
+<img src="docs/images/demo_intro.png" width="600" class="center">
 
 ## Comments
 
@@ -197,7 +197,8 @@ with gn.Tree("Geometry Nodes") as tree:
 
 The resuling tree is the following:
 
-![Labeling and coloring a socket node](docs/images/node_labeling.png)
+<img src="docs/images/node_labeling.png" width="600">
+
 
 ## Initializing classes
 
@@ -246,7 +247,9 @@ with gn.Tree("Geometry Nodes") as tree:
  ```
  The variables represent now the sockets of group input node:
  
- ![Group input sockets](docs/images/group_input_values.png)
+ 
+ <img src="docs/images/group_input_values.png" width="200">
+
  
  Geometry classes can also be initialized from a group input socket.<br>
  In the following example, we use the optional argument `description` to provide a tool tip to the user.
@@ -265,8 +268,8 @@ with gn.Tree("Geometry Nodes") as tree:
  
  The group input is now:
  
- ![Group input sockets](docs/images/group_input_other.png)
- 
+ <img src="docs/images/group_input_other.png" width="200">
+
  ### 3. Mesh and Curve constructors
  
  **Mesh** and **Curve** classes provide constructors (class methods) to initialize geometry. Basically, the constructors create the nodes in the Geometry Nodes menu **Mesh Primitives** and **Curve Primitives**.
@@ -280,6 +283,8 @@ with gn.Tree("Geometry Nodes") as tree:
     
     tree.output_geometry = sphere
 ```    
+
+ <img src="docs/images/uv_sphere.png" width="200">
 
 
  
