@@ -447,7 +447,7 @@ with gn.Tree("Geometry Nodes") as tree:
     circle.node.node_color = "green"
 
     # ---------------------------------------------------------------------------
-    # Circle : points on the output socket of the node "Curve Circle"
+    # circle : points on the output socket of the node "Curve Circle"
     # ---------------------------------------------------------------------------
     
     torus = circle.to_mesh(profile_curve=gn.Curve.Circle(radius=.2).curve)
@@ -455,8 +455,8 @@ with gn.Tree("Geometry Nodes") as tree:
     torus.node.node_color = "red"
     
     # ---------------------------------------------------------------------------
-    # Torus  : points on the output socket of the node "Curve to Mesh"
-    # Circle : didn't change
+    # torus  : points on the output socket of the node "Curve to Mesh", renamed "Torus first node"
+    # circle : didn't change
     # ---------------------------------------------------------------------------
     
     torus.set_shade_smooth()
@@ -464,7 +464,7 @@ with gn.Tree("Geometry Nodes") as tree:
     torus.node.node_color = "blue"
 
     # ---------------------------------------------------------------------------
-    # Torus : now points on the output socket of the node "Set Shade Smooth"
+    # torus : now points on the output socket of the node "Set Shade Smooth", renamed "Torus second node"
     # ---------------------------------------------------------------------------
     
     tree.output_geometry = torus
@@ -472,7 +472,8 @@ with gn.Tree("Geometry Nodes") as tree:
 
 In the generated tree, we can see that the node property of the torus has changed after the call of `set_shade_smooth`:
 
-![transformation_creation](docs/images/transforma_creation.png)
+
+<img src="docs/images/transformation_creation.png" width="600">
 
 
 
