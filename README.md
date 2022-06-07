@@ -284,9 +284,47 @@ with gn.Tree("Geometry Nodes") as tree:
     tree.output_geometry = sphere
 ```    
 
- <img src="docs/images/uv_sphere.png" width="200">
+<img src="docs/images/uv_sphere.png" width="300">
 
+## Value classes : single value or array of values
 
+It is important to understand that value classes such as **Float** or **Vector** can represent either a single value or an attribute,
+i.e. an array of values (on value per **Mesh** vertex for instance).<br>
+In the example below we create a modifier on a cube having several materials, each face with its own material.
+The tree shifts the material index of the faces. The shift is an addition between an array of values `mat_indices` and a single value `offset`.
+both variables are the same class **Integer**.
+
+```python
+import geonodes as gn
+
+with gn.Tree("Geometry Nodes") as tree:
+    
+    # Get the geometry from the modifier object
+    # Since it is a mesh, we must cast to Mesh to benefit from
+    # Mesh class methods
+    
+    cube = gn.Mesh(tree.input_geometry)
+    
+    # offset is a single value Integer
+    
+    offset = gn.Integer(1)
+    
+    # mat_indices represents the 6 material indices of the 6 faces of the cube
+    
+    mat_indices = cube.material_index
+    
+    # We can combine the two integers to set the new indices of the cube
+    
+    cube.set_material_index(True, (mat_indices + offset) % 3)
+    
+    # Let's represent the result
+    
+    tree.output_geometry = cube
+ ```  
+ 
+ <img src="docs/images/colored_cubes.png" width="300">
+
+ 
  
  
  
