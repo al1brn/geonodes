@@ -2,13 +2,15 @@
 
 > In Blender, use python script to generate geometry nodes.
 
-# Short description
+## Short description
 
 Geometry nodes can be somehow difficult to maintain. The more nodes you have, the more difficult it is to
 understand the algorithm. Debugging and maintaining a geometry nodes tree can be difficult, especially if
 you get it from somebody else.
 
 Geonodes module offers an elegant alternative by using the python style way to create the nodes.
+
+## Example
 
 Here after is an example of a simple script. It creates a surface from a grid by computing
 `z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the distance of the vertex to the center.
@@ -34,6 +36,17 @@ with gn.Tree("Geometry Nodes") as tree:
     
     tree.output_geometry = grid.set_shade_smooth()     
 ```
+
+Here after is the resulting surface:
+
+![Modifier result](docs/images/Wave.png)
+
+### Generated nodes
+
+The generated nodes are the following:
+
+![Generated geometry nodes](docs/images/Wave nodes.png)
+
 ## Comments
 
 - **Import**
