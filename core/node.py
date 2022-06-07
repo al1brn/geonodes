@@ -1401,11 +1401,21 @@ class GroupInput(NodeGroup):
                 value.plug(socket)
                 
             elif not existing:
+                
+                if class_name == 'Vector' and isinstance(value, (tuple, list)):
+                    value = mathutils.Vector(value)
+                
+                elif class_name == 'Color' and isinstance(value, (tuple, list)):
+                    if len(value) == 3:
+                        r, g, b = value
+                        value = (r, g, b, 1.)
+                
                 msg = None
                 try:
                     self.tree.btree.inputs[index].default_value = value
                     socket.bsocket.default_value = value
-                except exception as e:
+                    
+                except Exception as e:
                     msg = str(e)
                     
                 if msg is not None:

@@ -31,8 +31,8 @@ class Boolean(DataSocket):
             super().__init__(node.boolean, node)
     
     @classmethod
-    def Input(cls, value=False, name="Boolean"):
-        return cls(Tree.TREE.new_input('Boolean', value=value, name=name))
+    def Input(cls, value=False, name="Boolean", description=""):
+        return cls(Tree.TREE.new_input('Boolean', value=value, name=name, description=description))
     
     def __add__(self, other):
         return self.b_or(other)
@@ -201,8 +201,8 @@ class String(DataSocket):
             super().__init__(node.string, node)
     
     @classmethod
-    def Input(cls, value="Text", name="String"):
-        return cls(Tree.TREE.new_input('String', value=value, name=name))
+    def Input(cls, value="Text", name="String", description=""):
+        return cls(Tree.TREE.new_input('String', value=value, name=name, description=description))
     
     @classmethod
     def Tab(cls):
@@ -245,8 +245,8 @@ class Vector(DataSocket):
             super().__init__(node.vector, node)
             
     @classmethod
-    def Input(cls, value=(0, 0, 0), name="Vector"):
-        return cls(Tree.TREE.new_input('Vector', value=value, name=name))
+    def Input(cls, value=(0, 0, 0), name="Vector", description=""):
+        return cls(Tree.TREE.new_input('Vector', value=value, name=name, description=description))
         
     @classmethod
     def Rotation(cls, value=(0, 0, 0), name="Rotation"):
@@ -368,8 +368,8 @@ class Color(DataSocket):
                 super().__init__(node.image, node)
     
     @classmethod
-    def Input(cls, name="Color"):
-        return cls(Tree.TREE.new_input('Color', value=value, name=name))
+    def Input(cls, value="blank", name="Color", description=""):
+        return cls(Tree.TREE.new_input('Color', value=value, name=name, description=description))
     
     # ---------------------------------------------------------------------------
     # The r, g, b components can be changed individually. If it is the case
@@ -458,10 +458,10 @@ class Color(DataSocket):
 class Geometry(DataSocket):
     
     @classmethod
-    def Input(cls, name=None):
+    def Input(cls, name=None, description=""):
         if name is None:
             name = cls.__name__
-        return cls(Tree.TREE.new_input('Geometry', name=name))
+        return cls(Tree.TREE.new_input('Geometry', name=name, description=description))
     
     @classmethod
     def FromCollection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
@@ -506,8 +506,8 @@ class Collection(DataSocket):
         return coll
     
     @classmethod
-    def Input(cls, name="Collection"):
-        return cls(Tree.TREE.new_input('Collection', name=name))
+    def Input(cls, name="Collection", description=""):
+        return cls(Tree.TREE.new_input('Collection', name=name, description=description))
             
             
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -530,8 +530,8 @@ class Object(DataSocket):
         return obj
     
     @classmethod
-    def Input(cls, name="Object"):
-        return cls(Tree.TREE.new_input('Object', name=name))
+    def Input(cls, name="Object", description=""):
+        return cls(Tree.TREE.new_input('Object', name=name, description=description))
     
         
             
@@ -550,8 +550,8 @@ class Material(DataSocket):
 
     
     @classmethod
-    def Input(cls, name="Material"):
-        return cls(Tree.TREE.new_input('Material', name=name))
+    def Input(cls, name="Material", description=""):
+        return cls(Tree.TREE.new_input('Material', name=name, description=description))
     
 # -----------------------------------------------------------------------------------------------------------------------------
 # Other classes
@@ -559,14 +559,14 @@ class Material(DataSocket):
 class Texture(DataSocket):
 
     @classmethod
-    def Input(cls, name="Texture"):
-        return cls(Tree.TREE.new_input('Texture', name=name))
+    def Input(cls, name="Texture", description=""):
+        return cls(Tree.TREE.new_input('Texture', name=name, description=description))
     
 class Image(DataSocket):
     
     @classmethod
-    def Input(cls, name="Image"):
-        return cls(Tree.TREE.new_input('Image', name=name))
+    def Input(cls, name="Image", description=""):
+        return cls(Tree.TREE.new_input('Image', name=name, description=description))
     
             
             
