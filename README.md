@@ -45,7 +45,7 @@ Here after is the resulting surface:
 
 The generated nodes are the following:
 
-![Generated geometry nodes](docs/images/Wave nodes.png)
+![Generated geometry nodes](docs/images/demo_intro.png)
 
 ## Comments
 
