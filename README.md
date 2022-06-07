@@ -289,10 +289,10 @@ with gn.Tree("Geometry Nodes") as tree:
 ## Value classes : single value or array of values
 
 It is important to understand that value classes such as **Float** or **Vector** can represent either a single value or an attribute,
-i.e. an array of values (on value per **Mesh** vertex for instance).<br>
+i.e. an array of values (one value per **Mesh** vertex for instance).<br>
 In the example below we create a modifier on a cube having several materials, each face with its own material.
 The tree shifts the material index of the faces. The shift is an addition between an array of values `mat_indices` and a single value `offset`.
-both variables are the same class **Integer**.
+both variables sahre the same class: **Integer**.
 
 ```python
 import geonodes as gn
@@ -315,14 +315,14 @@ with gn.Tree("Geometry Nodes") as tree:
     
     # We can combine the two integers to set the new indices of the cube
     
-    cube.set_material_index(True, (mat_indices + offset) % 3)
+    cube.set_material_index(material_index=(mat_indices + offset) % 3)
     
     # Let's represent the result
     
     tree.output_geometry = cube
  ```  
  
- <img src="docs/images/colored_cubes.png" width="300">
+ <img src="docs/images/colored_cubes.png" width="500">
 
  
  
