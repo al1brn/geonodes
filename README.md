@@ -37,13 +37,9 @@ with gn.Tree("Geometry Nodes") as tree:
     tree.output_geometry = grid.set_shade_smooth()     
 ```
 
-Here after is the resulting surface:
-
-![Modifier result](docs/images/Wave.png)
-
 ### Generated nodes
 
-The generated nodes are the following:
+The generated nodes and the result of the Geometry nodes modifier is given below:
 
 ![Generated geometry nodes](docs/images/demo_intro.png)
 
