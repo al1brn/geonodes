@@ -322,7 +322,7 @@ with gn.Tree("Geometry Nodes") as tree:
     tree.output_geometry = cube
  ```  
  
-<img src="docs/images/material_shift_tree.png" height="250"> <img src="docs/images/colored_cubes.png" height="250">
+<img src="docs/images/material_shift_nodes.png" height="250"> <img src="docs/images/colored_cubes.png" height="250">
 
 Note that in real life, this example would certainly have been written in a more concentrated style, while keeping the same readibility.
 The following two lines generate the above 7-nodes, 6-links tree:
