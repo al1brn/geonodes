@@ -337,8 +337,107 @@ with gn.Tree("Geometry Nodes") as tree:
     tree.output_geometry = cube.set_material_index(material_index=(cube.material_index + 1) % 3)
 ```
 
+## Geometry nodes implementation
+
+The Geometry nodes provide methods and properties for geonodes classes.
+The nodes are implemented into several ways:
+
+- **constructor**, for instance the node "_Curve Circle"_ is implemented as a static method of the **Curve** class
+- **method**, for instance the node _"Curve to Mesh"_ is implemented as the method **to_mesh** of the class **Curve**
+- **property**, for instance the node _"Bounding Box"_ is implemented as a property of **Geometry** class.<br>
+  Since the _"Bounding Box"_ outputs 3 sockets, each socket is itself a property of the **Geometry** class
+- **operator**, for instance the _"Math"_ node gives birth to the standard operators: +, -, * ... 
+
+The attributes are managed in a specific way which is described in the next section.
+
+In the script below, we see the four ways of how nodes are implemented:
+
+```python
+import geonodes as gn
+
+with gn.Tree("Geometry Nodes") as tree:
+    
+    # Building a torus from two circle: major and minor circle
+    
+    # Both circle are created by the Circle static method or Curve
+    # which implement the node "Curve Circle"
+    # Note that this node outputs two sockets:
+    # - curve  (Curve)
+    # - center (Vector)
+    # Hence the method Circle returns the node and not the socket
+    # One must explicitly get the curve socket
+    
+    major_radius = 1
+    minor_radius = .2
+    
+    torus   = gn.Curve.Circle(radius=major_radius).curve   # The major circle
+    profile = gn.Curve.Circle(radius=minor_radius).curve   # The minor circle
+    torus = torus.to_mesh(profile_curve=profile)           # "Curve to Mesh" node
+    
+    # Let's get the bound box of the resulting mesh
+    # And use it the create a socle below the torus
+    
+    box = torus.box
+    box.set_position(offset=(0, 0, -2*minor_radius))
+    
+    # The + operator between two geometries implements the "Join Geometry" node
+    
+    tree.output_geometry = torus + box
+```
+
+### Returned values
+
+The principe is the following:
+-  When a node as only one output socket, it returns an instance of the corresponding class.
+   In the following example, since the node _"Curve to Mesh"_ has only one output socket,
+   the method **to_mesh** returns a class **Mesh**:
+   
+   ```python
+   torus = torus.to_mesh(profile_curve=profile)
+   ```
+   
+ - When a node has several output sockets, it returns the node itself.
+   The user must select his output as a property of the returned node:
+
+   ```python
+    import geonodes as gn
+
+    with gn.Tree("Geometry Nodes") as tree:
+    
+        # The node "Noise texture" returns two sockets
+        # The constructor Noise returns the node, not a socket
+
+        noise = gn.Texture.Noise()
+
+        # We cas use the factor socket
+
+        fac = noise.fac
+
+        # Or the color socket
+
+        color = noise.color
+    ```
+    
+ - _"Capture Attribute"_ node is a particular case. Even if the node has two output sockets (**geometry** and **attribute**),
+   the method returns the **attribute** socket. The geometry instance calling the method points on the **geometry** socket after the call.
+   See the attributes section for more details.
+
+### Creating vs transforming nodes
+
+A node such as _"Curve to Mesh"_ takes a **Curve** as input socket et gives a **Mesh** as output socket.
+The output socket must be considered as data which is different from the input socket.
+The method **creates new data**, it follows the sheme: `Mesh = Curve.method(...)`.
+
+On the other hand, a node such as "Set Shade Smooth" is a modifier applied on a geometry.
+The output geometry is the same as the input geometry. It has just been transformed by the node.
+The method **transforms data**, it follows the scheme: `Geometry.method()`.
 
 
+
+
+
+
+   
  
  
  
