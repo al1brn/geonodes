@@ -167,7 +167,35 @@ For each socket type, there is a corresponding geonodes class:
   - Image
   - Material
  
-A data class makes necessarily reference to a node socket. Once created, 
+A data class makes necessarily reference to a node socket. Operations on data classes are made by creating nodes. The node owning the socket is a property of the data class.<br>
+The following example shows how to change the label and the color of the node owning the a Geometry class:
+
+```python
+import geonodes as gn
+
+with gn.Tree("Geometry Nodes") as tree:
+    
+    # Get the input geometry
+    
+    geo = tree.input_geometry
+    
+    # Shade smooth
+    
+    geo.set_shade_smooth()
+
+    # Change the node "shade smooth" name and color
+    
+    geo.node.node_color = "red"
+    geo.node.label = "Smoothing"
+    
+    # Output geometry
+    
+    tree.output_geometry = geo 
+```
+
+The resuling tree is the following:
+
+![Labeling and coloring a socket node](docs/images/node_labeling.png)
 
  
 ## Module presentation
