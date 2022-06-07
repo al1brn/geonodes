@@ -292,7 +292,7 @@ It is important to understand that value classes such as **Float** or **Vector**
 i.e. an array of values (one value per **Mesh** vertex for instance).<br>
 In the example below we create a modifier on a cube having several materials, each face with its own material.
 The tree shifts the material index of the faces. The shift is an addition between an array of values `mat_indices` and a single value `offset`.
-both variables sahre the same class: **Integer**.
+both variables share the same class: **Integer**.
 
 ```python
 import geonodes as gn
@@ -313,7 +313,7 @@ with gn.Tree("Geometry Nodes") as tree:
     
     mat_indices = cube.material_index
     
-    # We can combine the two integers to set the new indices of the cube
+    # We can combine the two Integer instances to set the new indices of the cube
     
     cube.set_material_index(material_index=(mat_indices + offset) % 3)
     
