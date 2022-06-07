@@ -324,6 +324,19 @@ with gn.Tree("Geometry Nodes") as tree:
  
 <img src="docs/images/material_shift_tree.png" height="250"> <img src="docs/images/colored_cubes.png" height="250">
 
+Note that in real life, this example would certainly have been written in a more concentrated style, while keeping the same readibility:
+
+```python
+import geonodes as gn
+
+with gn.Tree("Geometry Nodes") as tree:
+    
+    cube = gn.Mesh(tree.input_geometry)
+    tree.output_geometry = cube.set_material_index(material_index=(cube.material_index + 1) % 3)
+```
+
+
+
  
  
  
