@@ -142,6 +142,8 @@ import geonodes as gn
 
 # Overview
 
+## Nodes, sockets and classes
+
 geonodes manages **nodes** and **sockets**. Node sockets are data when the nodes are operators working on data.
 For each socket type, there is a corresponding geonodes class:
 
@@ -196,6 +198,46 @@ with gn.Tree("Geometry Nodes") as tree:
 The resuling tree is the following:
 
 ![Labeling and coloring a socket node](docs/images/node_labeling.png)
+
+## Initializing classes
+
+Data classes can be created in three ways:
+1. From constant values
+2. From group input
+3. From class initializer
+
+### Constant initialization
+
+Value classes can be initialized by passing a value in the class init:
+
+```python
+import geonodes as gn
+
+with gn.Tree("Geometry Nodes") as tree:
+    
+    ok     = gn.Boolean(False)
+    count  = gn.Integer(100)
+    factor = gn.Float(5.5)
+    vector = gn.Vector((1, 2, 3))
+    color  = gn.Color((.1, .2, .3))
+    title  = gn.String("My label")
+ ```
+ 
+ The variable correspond to output sockets of the initialization nodes:
+ 
+ ![Value classes initialization](docs/images/value_init.png)
+ 
+ ### Group inputs
+ 
+ Each class implements the class method **Input** which get the socket from the tree group input.
+ 
+ 
+
+
+
+
+
+
 
  
 ## Module presentation
