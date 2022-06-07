@@ -324,7 +324,8 @@ with gn.Tree("Geometry Nodes") as tree:
  
 <img src="docs/images/material_shift_tree.png" height="250"> <img src="docs/images/colored_cubes.png" height="250">
 
-Note that in real life, this example would certainly have been written in a more concentrated style, while keeping the same readibility:
+Note that in real life, this example would certainly have been written in a more concentrated style, while keeping the same readibility.
+The following two lines generate the 6-nodes, 5-links tree:
 
 ```python
 import geonodes as gn
