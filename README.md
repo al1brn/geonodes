@@ -1,6 +1,7 @@
 # geonodes
 
-> In Blender, use python script to generate geometry nodes.
+![Scripting Geometry Nodes for Blender](docs/images/geonodes.png)
+
 
 # Table of contents
 
