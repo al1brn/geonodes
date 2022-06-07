@@ -142,6 +142,32 @@ import geonodes as gn
 
 # Overview
 
+geonodes manages **nodes** and **sockets**. Node sockets are data when the nodes are operators working on data.
+For each socket type, there is a corresponding geonodes class:
+
+- Geometry classes:
+  - Geometry
+  - Spline
+  - Curve
+  - Mesh
+  - Instances
+  - Points
+  - Volume
+- Values
+  - Boolean
+  - Integer
+  - Float
+  - Vector
+  - Color
+  - String
+- Other
+  - Collection
+  - Object
+  - Texture
+  - Image
+  - Material
+ 
+A data class makes necessarily reference to a node socket. Once created, 
 
  
 ## Module presentation
