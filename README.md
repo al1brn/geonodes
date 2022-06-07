@@ -204,9 +204,9 @@ The resuling tree is the following:
 Data classes can be created in three ways:
 1. From constant values
 2. From group input
-3. From class initializer
+3. Mesh and Curve constructors
 
-### Constant initialization
+### 1. Constant initialization
 
 Value classes can be initialized by passing a value in the class init:
 
@@ -227,9 +227,64 @@ with gn.Tree("Geometry Nodes") as tree:
  
  ![Value classes initialization](docs/images/value_init.png)
  
- ### Group inputs
+ ### 2. Group inputs
  
- Each class implements the class method **Input** which get the socket from the tree group input.
+ Each class implements the class method **Input** which get the socket from the tree group input.<br>
+ In the example below we initialized the same variables from group inputs:
+ 
+ ```python
+ import geonodes as gn
+
+with gn.Tree("Geometry Nodes") as tree:
+    
+    ok     = gn.Boolean.Input(False, "Option")
+    count  = gn.Integer.Input(100, "Count")
+    factor = gn.Float.Input(5.5, "Factor")
+    vector = gn.Vector.Input((1, 2, 3), "Location")
+    color  = gn.Color.Input((.1, .2, .3), "Color")
+    title  = gn.String.Input("My label", "Title")
+ ```
+ The variables represent now the sockets of group input node:
+ 
+ ![Group input sockets](docs/images/group_input_values.png)
+ 
+ Geometry classes can also be initialized from a group input socket.<br>
+ In the following example, we use the optional argument `description` to provide a tool tip to the user.
+ 
+ ```python
+ import geonodes as gn
+
+with gn.Tree("Geometry Nodes") as tree:
+    
+    curve   = gn.Curve.Input("Profile", "The curve profile for converting to mesh")
+    models  = gn.Collection.Input("Instances", "Collection of instances")
+    control = gn.Object.Input("Control", "Object to use as control")
+    image   = gn.Image.Input("Image", "The input image for the modifier")
+    texture = gn.Texture.Input("Noise", "Noise texture to use to deform the surface")
+ ```
+ 
+ The group input is now:
+ 
+ ![Group input sockets](docs/images/group_input_other.png)
+ 
+ ### 3. Mesh and Curve constructors
+ 
+ **Mesh** and **Curve** classes provide constructors (class methods) to initialize geometry. Basically, the constructors create the nodes in the Geometry Nodes menu **Mesh Primitives** and **Curve Primitives**.
+ 
+```python
+import geonodes as gn
+
+with gn.Tree("Geometry Nodes") as tree:
+    
+    sphere = gn.Mesh.UVSphere(segments=10, rings=5)
+    
+    tree.output_geometry = sphere
+```    
+
+
+ 
+ 
+ 
  
  
 
