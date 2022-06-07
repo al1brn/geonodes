@@ -2,6 +2,14 @@
 
 > In Blender, use python script to generate geometry nodes.
 
+# Table of contents
+
+- [Short description](#short-description)
+- [Installation](#installation)
+- [Overview](#overview)
+- [Quick reference](#quick-reference)
+- [Index](#index)
+
 ## Short description
 
 Geometry nodes can be somehow difficult to maintain. The more nodes you have, the more difficult it is to
@@ -122,6 +130,19 @@ The generated nodes and the result of the Geometry nodes modifier is given below
       
       tree.output_geometry = tree.input_geometry
   ```
+ 
+# Installation
+
+Simply copy the geonodes folder in the modules folder `...blender/scripts/modules/`. Note that **geonodes** is not an addon, simply a python module.
+The modules classes and functions are then accessible through a standard import statement:
+
+```python
+import geonodes as gn
+```
+
+# Overview
+
+
  
 ## Module presentation
 
