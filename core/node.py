@@ -644,6 +644,12 @@ class DataSocket:
     # To group output (for output sockets only)
     
     def to_output(self):
+        """ > Plug the data socket to the group output
+        
+        The socket is added to the outputs of the geometry nodes tree.
+        
+        **Note**: to define a data socket as the result geometry of the node, use `tree.output_geometry = my_geomety`.
+        """
         if not self.is_output:
             raise RuntimeError(f"The socket '{str(self)}' is not an output socket. It can't be sent to group output.")
         self.node.tree.group_output.to_output(self, self.name)
@@ -653,34 +659,85 @@ class DataSocket:
         
     def to_viewer(self):
         if not self.is_output:
-            raise RuntimeError(f"The socket '{str(sel)}' is not an output socket. It can't be connected to the viewer.")
+            """ > Link the data socket to the viewer
+            
+            If the data socket is a geometry (Curve, Mesh...) it is linked to the geometry input of the viewer.
+            If it ias a value (Integer, Float,...) it is linked to the value socket and the viewer is configured
+            accordingly.
+            """
+            raise RuntimeError(f"The socket '{str(self)}' is not an output socket. It can't be connected to the viewer.")
         self.node.tree.to_viewer(self)
-        
-
     
 
 # =============================================================================================================================
 # Nodes tree    
 
 class Tree:
-    """ Wrap a Blender NodeTree
+    """ > Wrap a Blender NodeTree
+    
+    A tree class encapsulates a Blender NodeTree:
+        
+    ```python
+    blender_tree = tree.btree # The Blender NodeTree
+    ```
+    
+    Nodes are created by data sockets methods. In case of an error, the user cas see the state of
+    the tree when the script stops.
+    
+    Creation / closure
+    ------------------
+    
+    Once the tree is completed, the `arrange` method tries to place the nodes in the most readable way.
+    Hence, building a tree is made between the two instructions:
+    - `tree = Tree(tree_name)` : creation / opening of the Blender NodeTree
+    - `tree.close()` : arrange the nodes
+    
+    It is recommanded to use the `with` syntax:
+        
+    ```python
+    with Tree("Geometry Nodes") as tree:
+        # ... nodes creation
+    ```
+    
+    The TREE static property
+    ------------------------
+    
+    The TREE static attribute of class Tree maintains the current active Tree, i.e. the tree into which
+    creating the new nodes. There is only one single _open_ tree at a time.
+    The method `activate` set the tree as the current one.
+    At creation time, a Tree instance becomes the current one.
+    
+    Layouts
+    -------
+    
+    For clarity, it is possible to put the newly created nodes in a layout. At creation time, one can define
+    both the layout label and color. The layout creation makes use of the `with` syntax:
+        
+    ```python
+    with Tree("Geometry Node") as tree:
+        
+        # Nodes created here are placed directly on the tree background
+        
+        with tree.layout("Some trick computation", color="green"):
+            
+            # Nodes created here are placed in the current layout
+            
+            with tree.layout("The most difficult part", color="red"):
+                
+                # Layouts can be imbricated
+                
+        # Back to standard creation
+    ```
     
     Initialization
     --------------
-        At initialization time, the existing nodes can be deleted or kept. Use clear=True
-        to erase the existing nodes.
-        If the nodes are not erased, they are kept in the list 'old_bnodes'.
+    At initialization time, the existing nodes can be deleted or kept. Use clear=True
+    to erase all the existing nodes.
+      
+    The nodes which are kep are the ones which can not be configured by script, for instance
+    the "Float Curve" or "ColorRamp" nodes. These nodes are reused when instancied in the script.
+    This allows not to loose nodes tuning.
         
-    Node creation
-    -------------
-        Each time a new node is required, use the method 'Tree.get_bnode'.
-        This method check if a node exists in the old_nodes list.
-        This allows nodes with user parameter such as 'Color Ramp' to be preserved
-        between to runs.
-        
-    Current Tree
-    ------------
-        The current tree is store in the class property TREE of the class Tree.
     """
     
     KEEPS = ['GeometryNodeImageTexture', 'GeometryNodeInputMaterial', 'GeometryNodeStringToCurves', 'ShaderNodeFloatCurve',
@@ -693,12 +750,11 @@ class Tree:
         
         Arguments
         ---------
-            tree_name: str
-                the name of the tree
-            clear: bool, default is False
-                earase the existing nodes
+        - tree_name: str
+          the name of the tree. The NodeTree is created if it doesn't exist.
+        - clear: bool, default is False
+          earase all the existing nodes
         """
-        
         
         if bpy.data.node_groups.get(tree_name) is None:
             bpy.data.node_groups.new(tree_name, type='GeometryNodeTree')
@@ -754,22 +810,20 @@ class Tree:
     def get_bnode(self, bl_idname, label=None):
         """ Get or create a new Blender node in the tree.
         
-        The former nodes are stored in old_bnodes. The list is scanned to find a node
-        with the proper bl_idname. If label is not Node, the node label must match exactly
-        the provided label.
-        
-        This allows to keep the user parameters defined in nodes such as Color Ramp.
+        At initialization time, some nodes (the ones which can be changed by UX) are kept
+        in old_bnodes list. Before creating a new node, this list is scaned to find a node
+        of the proper type and the proper label.
         
         Arguments
         ---------
-            bl_idname: str
-                A valid node bl_idname
-            label: str, optional
-                The label of the node.
+        - bl_idname: str
+          A valid node bl_idname
+        - label: str, optional
+          The label of the node.
         
         Returns
         -------
-            A blender node
+          A blender Node
         """
         
         found = None
@@ -807,7 +861,7 @@ class Tree:
     def register_node(self, node):
         """ Register the node passed in argument in the tree.
         
-        When registered, a unique node id is provided to the node.
+        When registered, a unique id is provided to the node.
         This allows the users to more clearly distinguish the nodes.
         
         Arguments
@@ -828,15 +882,15 @@ class Tree:
         
         Arguments
         ---------
-            bnode: Blender node
+        - bnode: Blender node
             
         Returns
         -------
-            Node
+          Node
             
         Raises
         ------
-            Error if not found
+          Error if not found
         """
         
         for node in self.nodes:
@@ -849,15 +903,15 @@ class Tree:
         
         Arguments
         ---------
-            bsocket: Blender socket
+          bsocket: Blender socket
             
         Returns
         -------
-            DataSocket
+          DataSocket
             
         Raises
         ------
-            Error if not found
+          Error if not found
         """
         
         node = self.get_bnode_wrapper(bsocket.node)
@@ -871,10 +925,14 @@ class Tree:
     
     @property
     def input_geometry(self):
+        """ The group input geometry
+        """
         return self.group_input.input_geometry
         
     @property
     def output_geometry(self):
+        """ The group output geometry
+        """
         return self.group_output.output_geometry
     
     @output_geometry.setter
@@ -882,15 +940,29 @@ class Tree:
         self.group_output.plug(0, value)
         
     def new_input(self, class_name, value=None, name=None, min_value=None, max_value=None, description=""):
+        """ Create a new input socket
+        
+        Don't use it directly, better call `DataSocket.Input(...)`
+        """
         return self.group_input.new_socket(class_name=class_name, value=value, name=name, min_value=min_value, max_value=max_value, description=description)
     
     def to_output(self, socket):
+        """ Create a new output socket linked to the data class
+        
+        Don't use it directly, better call `DataSocket.to_output(...)`
+        """
         self.group_output.to_output(socket)
         
     # ----------------------------------------------------------------------------------------------------
     # Viewer
     
     def to_viewer(self, geometry=None, socket=None):
+        """ Connect a data socket to the viewer
+        
+        Don't use it directly, better call `DataSocket.to_viewer()`
+        
+        The `Tree.to_viewer` method reuses the Viewer node if already exists.
+        """
         
         if self.viewer is None:
             self.viewer = Viewer()
@@ -903,16 +975,36 @@ class Tree:
     
     @property
     def scene(self):
+        """ Maintain a single instance of the node "Scene Time""
+        """
         if self.scene_ is None:
             self.scene_ = SceneTime()
         return self.scene_
         
     @property
     def frame(self):
+        """ The "Scene Time" output socket "frame"
+        
+        Used for animation:
+            
+        ```python
+        with Tree("Geometry Nodes") as tree:
+            height = tree.frame / 10 # a value which is a tenth of the current frame 
+        ```
+        """
         return self.scene.frame
     
     @property
     def seconds(self):
+        """ The "Scene Time" output socket "seconds"
+        
+        Used for animation:
+            
+        ```python
+        with Tree("Geometry Nodes") as tree:
+            time = tree.seconds.sqrt() # a value which is the square root of the time
+        ```
+        """
         return self.scene.seconds
 
     # ----------------------------------------------------------------------------------------------------
@@ -920,6 +1012,19 @@ class Tree:
     
     @contextmanager
     def layout(self, label="Layout", color="orange"):
+        """ Create a new layout where the newly created nodes will be placed
+        
+        To be used in a `with` block:
+            
+        ```python
+        with tree.layout("My layout"): # Create a layout
+            mesh = Mesh.UVSphere() # The node is parented in the layout
+            
+        mesh.set_shade_smooth() # "Set Shade Smooth" node is created in the tree backrgound
+        ```
+
+        """
+        
         try:
             layout = Frame(label=label, color=color)
             self.layouts.append(layout)
@@ -929,6 +1034,8 @@ class Tree:
             
     @property
     def cur_frame(self):
+        """ Get the current layout for the newly created nodes
+        """
         if self.layouts:
             return self.layouts[-1].bnode
         else:
@@ -938,22 +1045,23 @@ class Tree:
     # Check the attributes
     #
     # Input attributes are initialized with a socket owner
-    # When finalizing the tree, we must check that the attribute actually feeds the expedt geometry
-    # If it is not the case, we me insert a cpature node attribute
+    # 
+    # When finalizing the tree, we must check that the attribute actually feeds the expectedt geometry.
+    # If it is not the case, we must insert a "Capture Attribute" node.
     #
     # The insertion is made with the following algorithm
     #
-    # 1) Check if capture is needed
-    #    for each fed node:
-    #        if the node has an input geometry:
-    #             if the input geometry is the expected one:
-    #                 ok
-    #             else
-    #                 insertion is need
-    #        else:
-    #            continue exploration with the nodes fed by this node
+    # 1. Check if capture is needed
+    #    - for each fed node:
+    #      - if the node has an input geometry:
+    #        - if the input geometry is the expected one:
+    #          - ok
+    #        - else
+    #          - insertion is needed
+    #      - else:
+    #        - continue exploration with the nodes fed by this node
     #
-    # 2) If insertion is needed
+    # 2. If insertion is needed
     #    - Create the capture node
     #    - Set the proper parameters
     #    - Input geometry with the owning socket
@@ -1034,7 +1142,7 @@ class Tree:
                     output_index = index
                 
             if attr_links is None:
-                raise RuntimeError(f"Algo error !")
+                raise RuntimeError("Algo error !")
                 
             # ----- Capture node creation in the proper frame
             
@@ -1075,6 +1183,8 @@ class Tree:
     # Arrange the nodes
     
     def arrange(self, force=True):
+        """ Arrange the created nodes in the tree background for more lisibility
+        """ 
         if self.auto_arrange or force:
             arrange(self.btree.name)    
 
@@ -1084,6 +1194,13 @@ class Tree:
     # Called by __exit__
     
     def close(self):
+        """ Call to indicated that the tree is completed and that it can be finalized
+        
+        Two actions are performed:
+        - Insertion of "Capture Attribute" nodes for attributes which require it,
+          see [check_attributes](#check_attributes).
+        - Nodes arrangement, see [arrange](#arrange)        
+        """
         if self.capture_attributes:
             self.check_attributes()
         self.arrange(True)
@@ -1093,19 +1210,73 @@ class Tree:
 # A Node    
 
 class Node:
+    """ The root class for Blender node wrappers.
+    
+    This class is basically intended to expose its constructor as a way to create
+    the associated Geometry Node. In the following example, we create a Node
+    supposingly have one single input socket named "geometry"
+        
+    ```python
+    my_node = Node(geometry=value, parameter='PARAM')
+    ```
+    
+    Nodes naming convention
+    ----------------------
+    
+    The Node sub classes are named accoridng their Blender label with a **Camel case** conversion,
+    for instance:
+    - _Set Shade Smooth_ --> SetShadeSmoth
+    - _Split Edges_ --> SplitEdges
+    _ _Normal_ --> Normal
+    
+    Sockets naming convention
+    -------------------------
+    
+    The node socket are named after the Blender sockets names with a **snake case** conversion,
+    for instance:
+    - _Geometry_ --> geometry
+    - _Mesh 1_ --> mesh_1
+    
+    For some nodes, (Math node for instance), several sockets can share the same name. In that case, the
+    sockets are numbered, starting from 0:
+    - Value --> value0
+    - Value --> value1
+    
+    Properties
+    ----------
+    - tree : Tree
+      The tree the node bleongs to
+    - name : str
+      Standard Geometry node name
+    - label : str
+      User defined label. Can be None
+    - bnode : bpy.types.Node
+      The actual Blender Geometry node
+    - inputs : list
+      List of innput sockets
+    - outputs : list
+      List of output sockets
+    - is_attribute : bool
+      Indicates that the node is an field attribute
+    - bl_idname : str
+      The node type name
+    """
+        
     def __init__(self, bl_idname, name, label=None):
         """ The root class for Blender node wrappers.
         
-        This root class gives birth to children classes, one per valid bl_idname.
+        The creation tree is read in the static property Tree.TREE.
+        
+        The blender Node is created by calling the method `tree.get_bnode` method.
         
         Arguments
         ---------
-            bl_idname: str
-                A valid node bl_idname
-            name: str
-                The name to user for the node
-            lavel: str, optional
-                The node label
+        - bl_idname: str
+          A valid node bl_idname
+        - name: str
+          The node name
+        - label: str, optional
+          The node label
         """
         
         self.tree = Tree.TREE
@@ -1149,6 +1320,11 @@ class Node:
     # Node label
     
     def get_label(self):
+        """ Build the node label
+        
+        If the label provided at initialization time is None, the node is labeled by concatening
+        its unique id with its standard name.
+        """
         return f"{self.node_id:2d} {self.name}" if self.label_ is None else self.label_
     
     @property
@@ -1160,7 +1336,8 @@ class Node:
         self.label_ = value
         self.bnode.label = self.get_label()
         
-    # ----- Chain label used when labeling chained nodes
+    # ---------------------------------------------------------------------------
+    # Chain label used when labeling chained nodes
     # eg: separate property of Vector is labeled: {chain_label}.separate
         
     @property
@@ -1220,6 +1397,10 @@ class Node:
     # Switch input sockets
     
     def switch_input_sockets(self, index0, index1):
+        """ Utility method switch the links fo two sockets/
+        
+        Used when implementing operators
+        """
         
         bsock0 = self.bnode.inputs[index0]
         bsock1 = self.bnode.inputs[index1]
@@ -1266,18 +1447,18 @@ class Node:
         If a value is None, nothing happens.
         
         A not None value can be:
-            - either a valid valud for the socket (eg: 123 for Integer socket)
-            - or an output socket of another Node
+        - either a valid valud for the socket (eg: 123 for Integer socket)
+        - or an output socket of another Node
             
         When it is a socket, it can be a Blender socker or a DataSocket
         
         Arguments
         ---------
-            index: int
-                The index of the input sockets (a valid index for Node.inputs)
-            *values: list of values
-                Each value can be an acceptable default value for the socket
-                or an output socket 
+        - index: int
+          The index of the input sockets (a valid index for Node.inputs)
+        - *values: list of values
+          Each value can be an acceptable default value for the socket
+          or an output socket 
         """
         
         # ----- Index can be a string
@@ -1301,6 +1482,20 @@ class Node:
     # The node is an attribute
     
     def as_attribute(self, owning_socket, domain='POINT', data_type='FLOAT'):
+        """ Indicates that the node is an attribute
+        
+        An attribute is intended to provide information from a particular geometry.
+        
+        In Blender, one has to check if he has to use a Capture Node or not.
+        
+        With geonodes scripting, attributes are considered as properties of geometry.
+        At creation time, the Node maintains a reference to the geometry it is an attribute of.
+        When closing the tree, all the attributes are check to see if a "Capture Node" must be
+        created instead of keeping the single attribute node.
+        
+        See `Tree.check_attributes` method.
+        """
+        
         self.is_attribute   = True
         self.owning_bsocket = owning_socket.bsocket
         self.domain         = domain
