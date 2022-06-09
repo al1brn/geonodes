@@ -19,15 +19,40 @@ from geonodes import colors
 from .arrange import arrange
 
 # =============================================================================================================================
-# Data socket: a root for data classes
+# > Root for data classes
+#
+# DataSocket refers to an output socket of a Geometry Node.
+#
+# ```python 
+# DataSocket.bsocket # The output socket of a Geometry Node
+# ```
+#
+# Methods of DataSocket instances
+# are implemented with nodes. The output socket refered by the DataSocket instance is linked
+# to an input socket of the method node.
+#
+# For instance:
+# 
+# ```python
+# geo = Mesh.UVSphere()  # geo refers to the output socket of the node "Mesh UVSphere"
+# geo.set_shade_smooth() # the previous output socket is linked to the input socket of
+#                        # the node "Set Shade Smooth"
+# ````
+# Properties
+# ----------
+#
+# - node: The node owning the output socket. The Blender Geometry Node itself is a property of node
+#
+#   ```python
+#   node = a_data_socket.node # The Node class wrapping the Geometry Node
+#   blender_node = node.bnode # The Blender geometry node
+#   ```
+#
+# - bsocket: The Blender output socket 
+# 
+
 
 class DataSocket:
-    """ Wrap a node socket to provide the root class for data.
-    
-    Basically stores the node and the Blender socket it represents.
-    
-    Children classes are Boolean, Integer, Float, Geometry...
-    """
     
     # DataSocket class, sub class and domain data type from socket bl_idname    
         
@@ -285,17 +310,17 @@ class DataSocket:
     # ----------------------------------------------------------------------------------------------------
     # Stack behavior is used to change the Blender socket, allowing the syntax:
     #
-    #     ...
-    #     mesh = Mesh.UvShere()
-    #     mesh.set_shade_smooth()
-    #     ...
+    # ```python
+    # mesh = Mesh.UVShere()
+    # mesh.set_shade_smooth()
+    # ```
     #
-    # rarher than:
+    # rather than:
     #
-    #     ...
-    #     mesh = Mesh.UvShere()
-    #     mesh = mesh.set_shade_smooth()
-    #     ...
+    #   ```python
+    #   mesh = Mesh.UVShere()
+    #   mesh = mesh.set_shade_smooth()
+    #   ```
     #
     # Only nodes with a single output socket can be stacked
     
@@ -324,18 +349,18 @@ class DataSocket:
         If a value is None, nothing happens.
         
         A not None value can be:
-            - either a valid valud for the socket (eg: 123 for Integer socket)
-            - or an output socket of another Node
+        - either a valid value for the socket (eg: 123 for Integer socket)
+        - or an output socket of another Node
             
         When it is a socket, it can be a Blender socker or a DataSocket
         
         Arguments
         ---------
-            index: int
-                The index of the input sockets (a valid index for Node.inputs)
-            *values: list of values
-                Each value can be an acceptable default value for the socket
-                or an output socket 
+        - index: int
+          The index of the input sockets (a valid index for Node.inputs)
+        - *values: list of values
+          Each value can be an acceptable default value for the socket
+          or an output socket 
         """
         
         if bsocket.is_output:
