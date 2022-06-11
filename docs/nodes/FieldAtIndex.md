@@ -1,7 +1,7 @@
 
 # Node FieldAtIndex
 
-> Geometry node name: [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/field_at_index.html)<br>
+> Geometry node name: [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html)<br>
   Blender type: [Field at Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
   
 <sub>go to [index](/docs/index.md)</sub>

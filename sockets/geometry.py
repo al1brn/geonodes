@@ -60,7 +60,6 @@ class Geometry(dsock.Geometry):
         Methods
         -------
             - attribute_domain_size : Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
-            - attribute_remove : geometry (Geometry)
             - capture_attribute : attribute (data_type dependant)
             - components : Sockets      [selection (Geometry), inverted (Geometry)]
             - convex_hull : convex_hull (Geometry)
@@ -69,6 +68,7 @@ class Geometry(dsock.Geometry):
             - merge_by_distance : geometry (Geometry)
             - proximity : Sockets      [position (Vector), distance (Float)]
             - realize_instances : geometry (Geometry)
+            - remove_attribute : geometry (Geometry)
             - replace_material : geometry (Geometry)
             - scale_elements : geometry (Geometry)
             - set_ID : geometry (Geometry)
@@ -1379,7 +1379,7 @@ class Geometry(dsock.Geometry):
 
         return self.stack(nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode))
 
-    def merge_by_distance(self, selection=None, distance=None):
+    def merge_by_distance(self, selection=None, distance=None, mode='ALL'):
         """ > Node: MergeByDistance
           
         <sub>go to: top index
@@ -1387,7 +1387,7 @@ class Geometry(dsock.Geometry):
         node ref Merge by Distance </sub>
         
         ```python
-        v = geometry.merge_by_distance(selection, distance)
+        v = geometry.merge_by_distance(selection, distance, mode)
         ```
     
 
@@ -1402,11 +1402,16 @@ class Geometry(dsock.Geometry):
                 - distance : Float
     
 
+            Parameters
+            ----------
+                - mode : 'ALL' in [ALL, CONNECTED]
+    
+
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.MergeByDistance(geometry=self, selection=selection, distance=distance)
+            nodes.MergeByDistance(geometry=self, selection=selection, distance=distance, mode=mode)
             ```
     
 
@@ -1416,7 +1421,7 @@ class Geometry(dsock.Geometry):
             
         """
 
-        return self.stack(nodes.MergeByDistance(geometry=self, selection=selection, distance=distance))
+        return self.stack(nodes.MergeByDistance(geometry=self, selection=selection, distance=distance, mode=mode))
 
     def realize_instances(self, legacy_behavior=False):
         """ > Node: RealizeInstances
@@ -1824,15 +1829,15 @@ class Geometry(dsock.Geometry):
 
         return nodes.DomainSize(geometry=self, component=component)
 
-    def attribute_remove(self, *attribute):
-        """ > Node: AttributeRemove
+    def remove_attribute(self, name=None):
+        """ > Node: RemoveNamedAttribute
           
         <sub>go to: top index
-        blender ref GeometryNodeAttributeRemove
-        node ref Attribute Remove </sub>
+        blender ref GeometryNodeRemoveAttribute
+        node ref Remove Named Attribute </sub>
         
         ```python
-        v = geometry.attribute_remove(attribute_1, attribute_2, attribute_3)
+        v = geometry.remove_attribute(name)
         ```
     
 
@@ -1843,14 +1848,14 @@ class Geometry(dsock.Geometry):
             Sockets
             -------
                 - geometry : Geometry (self)
-                - attribute : *String
+                - name : String
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.AttributeRemove(*attribute, geometry=self)
+            nodes.RemoveNamedAttribute(geometry=self, name=name)
             ```
     
 
@@ -1860,7 +1865,7 @@ class Geometry(dsock.Geometry):
             
         """
 
-        return nodes.AttributeRemove(*attribute, geometry=self).geometry
+        return nodes.RemoveNamedAttribute(geometry=self, name=name).geometry
 
     def components(self, selection=None, domain='POINT'):
         """ > Node: SeparateGeometry

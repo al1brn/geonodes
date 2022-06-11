@@ -1,7 +1,7 @@
 
 # Node NoiseTexture
 
-> Geometry node name: [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/noise_texture.html)<br>
+> Geometry node name: [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)<br>
   Blender type: [Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
   
 <sub>go to [index](/docs/index.md)</sub>

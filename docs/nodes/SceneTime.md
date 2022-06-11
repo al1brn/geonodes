@@ -1,7 +1,7 @@
 
 # Node SceneTime
 
-> Geometry node name: [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/scene_time.html)<br>
+> Geometry node name: [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene_time.html)<br>
   Blender type: [Scene Time](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html)
   
 <sub>go to [index](/docs/index.md)</sub>

@@ -1,7 +1,7 @@
 
 # Node SpecialCharacters
 
-> Geometry node name: [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/special_characters.html)<br>
+> Geometry node name: [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html)<br>
   Blender type: [Special Characters](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
   
 <sub>go to [index](/docs/index.md)</sub>

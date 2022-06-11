@@ -1,7 +1,7 @@
 
 # Node Math
 
-> Geometry node name: [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html)<br>
+> Geometry node name: [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)<br>
   Blender type: [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
   
 <sub>go to [index](/docs/index.md)</sub>

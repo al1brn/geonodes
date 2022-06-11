@@ -1,7 +1,7 @@
 
 # Node String
 
-> Geometry node name: [String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/string.html)<br>
+> Geometry node name: [String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/string.html)<br>
   Blender type: [String](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputString.html)
   
 <sub>go to [index](/docs/index.md)</sub>

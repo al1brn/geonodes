@@ -1,7 +1,7 @@
 
 # Node MergeByDistance
 
-> Geometry node name: [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/merge_by_distance.html)<br>
+> Geometry node name: [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/merge_by_distance.html)<br>
   Blender type: [Merge by Distance](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html)
   
 <sub>go to [index](/docs/index.md)</sub>
@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, label=None)
+node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode='ALL', label=None)
 ```
 
 
@@ -23,6 +23,10 @@ node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, label
 - geometry : Geometry
 - selection : Boolean
 - distance : Float
+
+### Parameters
+
+- mode : str (default = 'ALL') in ('ALL', 'CONNECTED')
 
 ### Node label
 

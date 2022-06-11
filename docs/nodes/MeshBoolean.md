@@ -1,7 +1,7 @@
 
 # Node MeshBoolean
 
-> Geometry node name: [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_boolean.html)<br>
+> Geometry node name: [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_boolean.html)<br>
   Blender type: [Mesh Boolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
   
 <sub>go to [index](/docs/index.md)</sub>

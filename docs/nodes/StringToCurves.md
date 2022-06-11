@@ -1,7 +1,7 @@
 
 # Node StringToCurves
 
-> Geometry node name: [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/string_to_curves.html)<br>
+> Geometry node name: [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html)<br>
   Blender type: [String to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
   
 <sub>go to [index](/docs/index.md)</sub>

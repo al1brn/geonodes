@@ -1,7 +1,7 @@
 
 # Node Raycast
 
-> Geometry node name: [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/raycast.html)<br>
+> Geometry node name: [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html)<br>
   Blender type: [Raycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
   
 <sub>go to [index](/docs/index.md)</sub>

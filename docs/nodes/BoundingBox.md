@@ -1,7 +1,7 @@
 
 # Node BoundingBox
 
-> Geometry node name: [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/bounding_box.html)<br>
+> Geometry node name: [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html)<br>
   Blender type: [Bounding Box](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
   
 <sub>go to [index](/docs/index.md)</sub>

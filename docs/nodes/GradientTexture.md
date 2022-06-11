@@ -1,7 +1,7 @@
 
 # Node GradientTexture
 
-> Geometry node name: [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/gradient_texture.html)<br>
+> Geometry node name: [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)<br>
   Blender type: [Gradient Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
   
 <sub>go to [index](/docs/index.md)</sub>

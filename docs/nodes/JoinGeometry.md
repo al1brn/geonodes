@@ -1,7 +1,7 @@
 
 # Node JoinGeometry
 
-> Geometry node name: [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/join_geometry.html)<br>
+> Geometry node name: [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html)<br>
   Blender type: [Join Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html)
   
 <sub>go to [index](/docs/index.md)</sub>

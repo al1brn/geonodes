@@ -1,7 +1,7 @@
 
 # Node Cone
 
-> Geometry node name: [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/cone.html)<br>
+> Geometry node name: [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/cone.html)<br>
   Blender type: [Cone](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCone.html)
   
 <sub>go to [index](/docs/index.md)</sub>

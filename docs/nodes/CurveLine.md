@@ -1,7 +1,7 @@
 
 # Node CurveLine
 
-> Geometry node name: [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_line.html)<br>
+> Geometry node name: [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_line.html)<br>
   Blender type: [Curve Line](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveLine.html)
   
 <sub>go to [index](/docs/index.md)</sub>

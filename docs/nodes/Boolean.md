@@ -1,7 +1,7 @@
 
 # Node Boolean
 
-> Geometry node name: [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean.html)<br>
+> Geometry node name: [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/boolean.html)<br>
   Blender type: [Boolean](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputBool.html)
   
 <sub>go to [index](/docs/index.md)</sub>

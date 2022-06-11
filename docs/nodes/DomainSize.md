@@ -1,7 +1,7 @@
 
 # Node DomainSize
 
-> Geometry node name: [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/domain_size.html)<br>
+> Geometry node name: [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)<br>
   Blender type: [Domain Size](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
   
 <sub>go to [index](/docs/index.md)</sub>

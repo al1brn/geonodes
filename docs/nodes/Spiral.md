@@ -1,7 +1,7 @@
 
 # Node Spiral
 
-> Geometry node name: [Spiral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spiral.html)<br>
+> Geometry node name: [Spiral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_spiral.html)<br>
   Blender type: [Spiral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSpiral.html)
   
 <sub>go to [index](/docs/index.md)</sub>

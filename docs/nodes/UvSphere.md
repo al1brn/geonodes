@@ -1,7 +1,7 @@
 
 # Node UvSphere
 
-> Geometry node name: [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/uv_sphere.html)<br>
+> Geometry node name: [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/uv_sphere.html)<br>
   Blender type: [UV Sphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshUVSphere.html)
   
 <sub>go to [index](/docs/index.md)</sub>

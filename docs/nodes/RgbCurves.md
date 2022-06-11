@@ -1,7 +1,7 @@
 
 # Node RgbCurves
 
-> Geometry node name: [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/rgb_curves.html)<br>
+> Geometry node name: [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html)<br>
   Blender type: [RGB Curves](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html)
   
 <sub>go to [index](/docs/index.md)</sub>

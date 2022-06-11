@@ -1,7 +1,7 @@
 
 # Node Cube
 
-> Geometry node name: [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/cube.html)<br>
+> Geometry node name: [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/cube.html)<br>
   Blender type: [Cube](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCube.html)
   
 <sub>go to [index](/docs/index.md)</sub>

@@ -18,7 +18,7 @@
   
 <sub>go to: [top](#data-socket-material) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
+node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
 
 ```python
 v = material.switch(switch1, true)

@@ -18,7 +18,7 @@
   
 <sub>go to: [top](#data-socket-collection) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
+node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
 
 ```python
 v = collection.switch(switch1, true)
@@ -55,7 +55,7 @@ Collection
   
 <sub>go to: [top](#data-socket-collection) [index](/docs/index.md)
 blender ref [GeometryNodeCollectionInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeCollectionInfo.html)
-node ref [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/collection_info.html) </sub>
+node ref [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/collection_info.html) </sub>
 
 ```python
 v = collection.info(separate_children, reset_children, transform_space)

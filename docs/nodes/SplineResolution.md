@@ -1,7 +1,7 @@
 
 # Node SplineResolution
 
-> Geometry node name: [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_resolution.html)<br>
+> Geometry node name: [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_resolution.html)<br>
   Blender type: [Spline Resolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineResolution.html)
   
 <sub>go to [index](/docs/index.md)</sub>

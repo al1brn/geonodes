@@ -1,7 +1,7 @@
 
 # Node SplineParameter
 
-> Geometry node name: [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_parameter.html)<br>
+> Geometry node name: [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html)<br>
   Blender type: [Spline Parameter](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
   
 <sub>go to [index](/docs/index.md)</sub>

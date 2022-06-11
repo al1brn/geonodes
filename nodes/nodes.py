@@ -1478,73 +1478,6 @@ class DomainSize(Node):
         self.bnode.component = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node AttributeRemove for GeometryNodeAttributeRemove
-
-class AttributeRemove(Node):
-
-    """
-
-    Node AttributeRemove
-    --------------------
-        > Geometry node name: Attribute Remove<br>
-          Blender type: Attribute Remove
-          
-        <sub>go to index</sub>
-    
-
-        Initialization
-        --------------
-            ```python
-            from geonodes import nodes
-            node = nodes.AttributeRemove(*attribute, geometry=None, label=None)
-            ```
-            
-            
-    
-
-        Arguments
-        ---------
-    
-
-            Input sockets
-            -------------
-                - geometry : Geometry
-                - attribute : *String
-    
-
-            Node label
-            ----------
-                - label : Geometry node display label (default=None)
-    
-
-        Output sockets
-        --------------
-            - geometry : Geometry
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Geometry.attribute_remove : Method
-              
-    """
-
-    def __init__(self, *attribute, geometry=None, label=None):
-
-        super().__init__('GeometryNodeAttributeRemove', name='Attribute Remove', label=label)
-        # Input sockets
-
-        self.plug(1, *attribute)
-        self.plug(0, geometry)
-
-        # Output sockets
-
-        self.geometry        = self.Geometry(self.bnode.outputs[0])
-        self.output_sockets  = {'geometry': self.geometry}
-
-# ----------------------------------------------------------------------------------------------------
 # Node AttributeStatistic for GeometryNodeAttributeStatistic
 
 class AttributeStatistic(Node):
@@ -3692,6 +3625,85 @@ class DualMesh(Node):
         self.output_sockets  = {'dual_mesh': self.dual_mesh}
 
 # ----------------------------------------------------------------------------------------------------
+# Node DuplicateElements for GeometryNodeDuplicateElements
+
+class DuplicateElements(Node):
+
+    """
+
+    Node DuplicateElements
+    ----------------------
+        > Geometry node name: Duplicate Elements<br>
+          Blender type: Duplicate Elements
+          
+        <sub>go to index</sub>
+    
+
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domain='POINT', label=None)
+            ```
+            
+            
+    
+
+        Arguments
+        ---------
+    
+
+            Input sockets
+            -------------
+                - geometry : Geometry
+                - selection : Boolean
+                - amount : Integer
+    
+
+            Parameters
+            ----------
+                - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'SPLINE', 'INSTANCE')
+    
+
+            Node label
+            ----------
+                - label : Geometry node display label (default=None)
+    
+
+        Output sockets
+        --------------
+            - geometry : Geometry
+            - duplicate_index : Integer
+    """
+
+    def __init__(self, geometry=None, selection=None, amount=None, domain='POINT', label=None):
+
+        super().__init__('GeometryNodeDuplicateElements', name='Duplicate Elements', label=label)
+        # Parameters
+
+        self.bnode.domain          = domain
+
+        # Input sockets
+
+        self.plug(0, geometry)
+        self.plug(1, selection)
+        self.plug(2, amount)
+
+        # Output sockets
+
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.duplicate_index = self.Integer(self.bnode.outputs[1])
+        self.output_sockets  = {'geometry': self.geometry, 'duplicate_index': self.duplicate_index}
+
+    @property
+    def domain(self):
+        return self.bnode.domain
+
+    @domain.setter
+    def domain(self, value):
+        self.bnode.domain = value
+
+# ----------------------------------------------------------------------------------------------------
 # Node ExtrudeMesh for GeometryNodeExtrudeMesh
 
 class ExtrudeMesh(Node):
@@ -4949,6 +4961,62 @@ class FaceArea(Node):
         self.output_sockets  = {'area': self.area}
 
 # ----------------------------------------------------------------------------------------------------
+# Node FaceIsPlanar for GeometryNodeInputMeshFaceIsPlanar
+
+class FaceIsPlanar(Node):
+
+    """
+
+    Node FaceIsPlanar
+    -----------------
+        > Geometry node name: Face is Planar<br>
+          Blender type: Face is Planar
+          
+        <sub>go to index</sub>
+    
+
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.FaceIsPlanar(threshold=None, label=None)
+            ```
+            
+            
+    
+
+        Arguments
+        ---------
+    
+
+            Input sockets
+            -------------
+                - threshold : Float
+    
+
+            Node label
+            ----------
+                - label : Geometry node display label (default=None)
+    
+
+        Output sockets
+        --------------
+            - planar : Boolean
+    """
+
+    def __init__(self, threshold=None, label=None):
+
+        super().__init__('GeometryNodeInputMeshFaceIsPlanar', name='Face is Planar', label=label)
+        # Input sockets
+
+        self.plug(0, threshold)
+
+        # Output sockets
+
+        self.planar          = self.Boolean(self.bnode.outputs[0])
+        self.output_sockets  = {'planar': self.planar}
+
+# ----------------------------------------------------------------------------------------------------
 # Node FaceNeighbors for GeometryNodeInputMeshFaceNeighbors
 
 class FaceNeighbors(Node):
@@ -5126,6 +5194,99 @@ class VertexNeighbors(Node):
         self.vertex_count    = self.Integer(self.bnode.outputs[0])
         self.face_count      = self.Integer(self.bnode.outputs[1])
         self.output_sockets  = {'vertex_count': self.vertex_count, 'face_count': self.face_count}
+
+# ----------------------------------------------------------------------------------------------------
+# Node NamedAttribute for GeometryNodeInputNamedAttribute
+
+class NamedAttribute(Node):
+
+    """
+
+    Node NamedAttribute
+    -------------------
+        > Geometry node name: Named Attribute<br>
+          Blender type: Named Attribute
+          
+        <sub>go to index</sub>
+    
+
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.NamedAttribute(name=None, data_type='FLOAT', label=None)
+            ```
+            
+            
+    
+
+        Arguments
+        ---------
+    
+
+            Input sockets
+            -------------
+                - name : String
+    
+
+            Parameters
+            ----------
+                - data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+    
+
+            Node label
+            ----------
+                - label : Geometry node display label (default=None)
+    
+
+        Data type dependant sockets
+        ---------------------------
+            - Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+            - Input sockets  : []
+            - Output sockets : ['attribute']   
+              
+              
+    
+
+        Output sockets
+        --------------
+            - attribute : data_type dependant
+    """
+
+    def __init__(self, name=None, data_type='FLOAT', label=None):
+
+        super().__init__('GeometryNodeInputNamedAttribute', name='Named Attribute', label=label)
+        # Parameters
+
+        self.bnode.data_type       = data_type
+
+
+        # Input sockets
+
+        self.plug(0, name)
+
+        # Output sockets
+
+        if data_type == 'FLOAT':
+            self.attribute       = self.Float(self.bnode.outputs[1])
+        elif data_type == 'INT':
+            self.attribute       = self.Integer(self.bnode.outputs[4])
+        elif data_type == 'FLOAT_VECTOR':
+            self.attribute       = self.Vector(self.bnode.outputs[0])
+        elif data_type == 'FLOAT_COLOR':
+            self.attribute       = self.Color(self.bnode.outputs[2])
+        elif data_type == 'BOOLEAN':
+            self.attribute       = self.Boolean(self.bnode.outputs[3])
+
+        self.output_sockets  = {'attribute': self.attribute}
+
+    @property
+    def data_type(self):
+        return self.bnode.data_type
+
+    @data_type.setter
+    def data_type(self, value):
+        self.bnode.data_type = value
 
 # ----------------------------------------------------------------------------------------------------
 # Node Normal for GeometryNodeInputNormal
@@ -5939,7 +6100,7 @@ class MergeByDistance(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, label=None)
+            node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode='ALL', label=None)
             ```
             
             
@@ -5954,6 +6115,11 @@ class MergeByDistance(Node):
                 - geometry : Geometry
                 - selection : Boolean
                 - distance : Float
+    
+
+            Parameters
+            ----------
+                - mode : str (default = 'ALL') in ('ALL', 'CONNECTED')
     
 
             Node label
@@ -5975,9 +6141,13 @@ class MergeByDistance(Node):
               
     """
 
-    def __init__(self, geometry=None, selection=None, distance=None, label=None):
+    def __init__(self, geometry=None, selection=None, distance=None, mode='ALL', label=None):
 
         super().__init__('GeometryNodeMergeByDistance', name='Merge by Distance', label=label)
+        # Parameters
+
+        self.bnode.mode            = mode
+
         # Input sockets
 
         self.plug(0, geometry)
@@ -5988,6 +6158,14 @@ class MergeByDistance(Node):
 
         self.geometry        = self.Geometry(self.bnode.outputs[0])
         self.output_sockets  = {'geometry': self.geometry}
+
+    @property
+    def mode(self):
+        return self.bnode.mode
+
+    @mode.setter
+    def mode(self, value):
+        self.bnode.mode = value
 
 # ----------------------------------------------------------------------------------------------------
 # Node MeshBoolean for GeometryNodeMeshBoolean
@@ -7447,6 +7625,73 @@ class RealizeInstances(Node):
     @legacy_behavior.setter
     def legacy_behavior(self, value):
         self.bnode.legacy_behavior = value
+
+# ----------------------------------------------------------------------------------------------------
+# Node RemoveNamedAttribute for GeometryNodeRemoveAttribute
+
+class RemoveNamedAttribute(Node):
+
+    """
+
+    Node RemoveNamedAttribute
+    -------------------------
+        > Geometry node name: Remove Named Attribute<br>
+          Blender type: Remove Named Attribute
+          
+        <sub>go to index</sub>
+    
+
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.RemoveNamedAttribute(geometry=None, name=None, label=None)
+            ```
+            
+            
+    
+
+        Arguments
+        ---------
+    
+
+            Input sockets
+            -------------
+                - geometry : Geometry
+                - name : String
+    
+
+            Node label
+            ----------
+                - label : Geometry node display label (default=None)
+    
+
+        Output sockets
+        --------------
+            - geometry : Geometry
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - Geometry.remove_attribute : Method
+              
+    """
+
+    def __init__(self, geometry=None, name=None, label=None):
+
+        super().__init__('GeometryNodeRemoveAttribute', name='Remove Named Attribute', label=label)
+        # Input sockets
+
+        self.plug(0, geometry)
+        self.plug(1, name)
+
+        # Output sockets
+
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = {'geometry': self.geometry}
 
 # ----------------------------------------------------------------------------------------------------
 # Node ReplaceMaterial for GeometryNodeReplaceMaterial
@@ -9141,6 +9386,115 @@ class SplitEdges(Node):
 
         self.mesh            = self.Mesh(self.bnode.outputs[0])
         self.output_sockets  = {'mesh': self.mesh}
+
+# ----------------------------------------------------------------------------------------------------
+# Node StoreNamedAttribute for GeometryNodeStoreNamedAttribute
+
+class StoreNamedAttribute(Node):
+
+    """
+
+    Node StoreNamedAttribute
+    ------------------------
+        > Geometry node name: Store Named Attribute<br>
+          Blender type: Store Named Attribute
+          
+        <sub>go to index</sub>
+    
+
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type='FLOAT', domain='POINT', label=None)
+            ```
+            
+            
+    
+
+        Arguments
+        ---------
+    
+
+            Input sockets
+            -------------
+                - geometry : Geometry
+                - name : String
+                - value : data_type dependant
+    
+
+            Parameters
+            ----------
+                - data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN')
+                - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+    
+
+            Node label
+            ----------
+                - label : Geometry node display label (default=None)
+    
+
+        Data type dependant sockets
+        ---------------------------
+            - Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN')
+            - Input sockets  : ['value']
+            - Output sockets : []   
+              
+              
+    
+
+        Output sockets
+        --------------
+            - geometry : Geometry
+    """
+
+    def __init__(self, geometry=None, name=None, value=None, data_type='FLOAT', domain='POINT', label=None):
+
+        super().__init__('GeometryNodeStoreNamedAttribute', name='Store Named Attribute', label=label)
+        # Parameters
+
+        self.bnode.data_type       = data_type
+        self.bnode.domain          = domain
+
+        # Input sockets
+
+        if data_type == 'FLOAT':
+            self.plug(3, value)
+        elif data_type == 'INT':
+            self.plug(6, value)
+        elif data_type == 'FLOAT_VECTOR':
+            self.plug(2, value)
+        elif data_type == 'FLOAT_COLOR':
+            self.plug(4, value)
+        elif data_type == 'BYTE_COLOR':
+            self.plug(4, value)
+        elif data_type == 'BOOLEAN':
+            self.plug(5, value)
+
+        self.plug(0, geometry)
+        self.plug(1, name)
+
+
+        # Output sockets
+
+        self.geometry        = self.Geometry(self.bnode.outputs[0])
+        self.output_sockets  = {'geometry': self.geometry}
+
+    @property
+    def data_type(self):
+        return self.bnode.data_type
+
+    @data_type.setter
+    def data_type(self, value):
+        self.bnode.data_type = value
+
+    @property
+    def domain(self):
+        return self.bnode.domain
+
+    @domain.setter
+    def domain(self, value):
+        self.bnode.domain = value
 
 # ----------------------------------------------------------------------------------------------------
 # Node JoinStrings for GeometryNodeStringJoin

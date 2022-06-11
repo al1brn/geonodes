@@ -1,7 +1,7 @@
 
 # Node TransferAttribute
 
-> Geometry node name: [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/transfer_attribute.html)<br>
+> Geometry node name: [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html)<br>
   Blender type: [Transfer Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
   
 <sub>go to [index](/docs/index.md)</sub>

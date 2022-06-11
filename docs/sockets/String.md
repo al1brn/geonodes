@@ -30,7 +30,7 @@
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeStringLength](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
-node ref [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/string_length.html) </sub>
+node ref [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html) </sub>
 
 ```python
 v = string.length
@@ -65,7 +65,7 @@ Integer
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
+node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
 
 ```python
 v = string.switch(switch0, true)
@@ -102,7 +102,7 @@ String
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
 
 ```python
 v = string.element(b)
@@ -140,7 +140,7 @@ Boolean
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
 
 ```python
 v = string.length(b)
@@ -178,7 +178,7 @@ Boolean
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
 
 ```python
 v = string.average(b)
@@ -216,7 +216,7 @@ Boolean
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
 
 ```python
 v = string.dot_product(b)
@@ -254,7 +254,7 @@ Boolean
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
 
 ```python
 v = string.direction(b)
@@ -292,7 +292,7 @@ Boolean
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [GeometryNodeStringJoin](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
-node ref [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/join_strings.html) </sub>
+node ref [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html) </sub>
 
 ```python
 v = string.join(strings_1, strings_2, strings_3, delimiter)
@@ -324,7 +324,7 @@ String
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeReplaceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
-node ref [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_string.html) </sub>
+node ref [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html) </sub>
 
 ```python
 v = string.replace(find, replace)
@@ -357,7 +357,7 @@ String
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeSliceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
-node ref [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/slice_string.html) </sub>
+node ref [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html) </sub>
 
 ```python
 v = string.slice(position, length)
@@ -390,7 +390,7 @@ String
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [GeometryNodeStringToCurves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
-node ref [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/string_to_curves.html) </sub>
+node ref [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html) </sub>
 
 ```python
 v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_box_width, text_box_height, align_x, align_y, overflow, pivot_mode)

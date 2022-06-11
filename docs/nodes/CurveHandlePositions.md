@@ -1,7 +1,7 @@
 
 # Node CurveHandlePositions
 
-> Geometry node name: [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_handle_positions.html)<br>
+> Geometry node name: [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html)<br>
   Blender type: [Curve Handle Positions](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
   
 <sub>go to [index](/docs/index.md)</sub>

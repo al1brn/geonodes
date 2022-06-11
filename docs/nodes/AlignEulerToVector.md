@@ -1,7 +1,7 @@
 
 # Node AlignEulerToVector
 
-> Geometry node name: [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/align_euler_to_vector.html)<br>
+> Geometry node name: [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html)<br>
   Blender type: [Align Euler to Vector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
   
 <sub>go to [index](/docs/index.md)</sub>

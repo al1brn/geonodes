@@ -1,7 +1,7 @@
 
 # Node QuadraticBezier
 
-> Geometry node name: [Quadratic Bezier](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/quadratic_bezier.html)<br>
+> Geometry node name: [Quadratic Bezier](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/quadratic_bezier.html)<br>
   Blender type: [Quadratic Bezier](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveQuadraticBezier.html)
   
 <sub>go to [index](/docs/index.md)</sub>

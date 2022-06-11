@@ -1,7 +1,7 @@
 
 # Node RandomValue
 
-> Geometry node name: [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/random_value.html)<br>
+> Geometry node name: [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)<br>
   Blender type: [Random Value](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
   
 <sub>go to [index](/docs/index.md)</sub>

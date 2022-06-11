@@ -1,7 +1,7 @@
 
 # Node CurveCircle
 
-> Geometry node name: [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_circle.html)<br>
+> Geometry node name: [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_circle.html)<br>
   Blender type: [Curve Circle](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html)
   
 <sub>go to [index](/docs/index.md)</sub>

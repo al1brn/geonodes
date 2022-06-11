@@ -1,7 +1,7 @@
 
 # Node InstancesToPoints
 
-> Geometry node name: [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/instances_to_points.html)<br>
+> Geometry node name: [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html)<br>
   Blender type: [Instances to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html)
   
 <sub>go to [index](/docs/index.md)</sub>

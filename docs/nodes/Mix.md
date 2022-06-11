@@ -1,7 +1,7 @@
 
 # Node Mix
 
-> Geometry node name: [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html)<br>
+> Geometry node name: [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html)<br>
   Blender type: [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
   
 <sub>go to [index](/docs/index.md)</sub>

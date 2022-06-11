@@ -1,7 +1,7 @@
 
 # Node Index
 
-> Geometry node name: [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/index.html)<br>
+> Geometry node name: [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/index.html)<br>
   Blender type: [Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
   
 <sub>go to [index](/docs/index.md)</sub>

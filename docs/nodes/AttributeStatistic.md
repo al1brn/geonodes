@@ -1,7 +1,7 @@
 
 # Node AttributeStatistic
 
-> Geometry node name: [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/attribute_statistic.html)<br>
+> Geometry node name: [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html)<br>
   Blender type: [Attribute Statistic](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
   
 <sub>go to [index](/docs/index.md)</sub>

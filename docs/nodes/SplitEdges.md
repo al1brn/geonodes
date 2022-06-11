@@ -1,7 +1,7 @@
 
 # Node SplitEdges
 
-> Geometry node name: [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/split_edges.html)<br>
+> Geometry node name: [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/split_edges.html)<br>
   Blender type: [Split Edges](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitEdges.html)
   
 <sub>go to [index](/docs/index.md)</sub>

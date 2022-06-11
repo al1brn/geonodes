@@ -1,7 +1,7 @@
 
 # Node SetCurveRadius
 
-> Geometry node name: [Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_curve_radius.html)<br>
+> Geometry node name: [Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_radius.html)<br>
   Blender type: [Set Curve Radius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveRadius.html)
   
 <sub>go to [index](/docs/index.md)</sub>

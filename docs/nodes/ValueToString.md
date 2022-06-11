@@ -1,7 +1,7 @@
 
 # Node ValueToString
 
-> Geometry node name: [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/value_to_string.html)<br>
+> Geometry node name: [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/value_to_string.html)<br>
   Blender type: [Value to String](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html)
   
 <sub>go to [index](/docs/index.md)</sub>

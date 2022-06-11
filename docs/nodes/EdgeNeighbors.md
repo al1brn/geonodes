@@ -1,7 +1,7 @@
 
 # Node EdgeNeighbors
 
-> Geometry node name: [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_neighbors.html)<br>
+> Geometry node name: [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_neighbors.html)<br>
   Blender type: [Edge Neighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeNeighbors.html)
   
 <sub>go to [index](/docs/index.md)</sub>

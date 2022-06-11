@@ -1,7 +1,7 @@
 
 # Node SplineLength
 
-> Geometry node name: [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_length.html)<br>
+> Geometry node name: [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html)<br>
   Blender type: [Spline Length](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html)
   
 <sub>go to [index](/docs/index.md)</sub>

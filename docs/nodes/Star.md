@@ -1,7 +1,7 @@
 
 # Node Star
 
-> Geometry node name: [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/star.html)<br>
+> Geometry node name: [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/star.html)<br>
   Blender type: [Star](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveStar.html)
   
 <sub>go to [index](/docs/index.md)</sub>

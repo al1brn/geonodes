@@ -1,7 +1,7 @@
 
 # Node IsViewport
 
-> Geometry node name: [Is Viewport](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/is_viewport.html)<br>
+> Geometry node name: [Is Viewport](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/is_viewport.html)<br>
   Blender type: [Is Viewport](https://docs.blender.org/api/current/bpy.types.GeometryNodeIsViewport.html)
   
 <sub>go to [index](/docs/index.md)</sub>

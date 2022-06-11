@@ -73,7 +73,7 @@
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
-node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/random_value.html) </sub>
+node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) </sub>
 
 ```python
 v = Vector.Random(min, max, ID, seed)
@@ -111,7 +111,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeCombineXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html)
-node ref [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/combine_xyz.html) </sub>
+node ref [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/combine_xyz.html) </sub>
 
 ```python
 v = Vector.Combine(x, y, z)
@@ -144,7 +144,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeAlignEulerToVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
-node ref [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/align_euler_to_vector.html) </sub>
+node ref [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html) </sub>
 
 ```python
 v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis)
@@ -182,7 +182,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
-node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_xyz.html) </sub>
+node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html) </sub>
 
 ```python
 v = vector.separate
@@ -217,7 +217,7 @@ Sockets [x (Float), y (Float), z (Float)]
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
-node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_xyz.html) </sub>
+node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html) </sub>
 
 ```python
 v = vector.x
@@ -252,7 +252,7 @@ Sockets [x (Float), y (Float), z (Float)]
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
-node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_xyz.html) </sub>
+node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html) </sub>
 
 ```python
 v = vector.y
@@ -287,7 +287,7 @@ Sockets [x (Float), y (Float), z (Float)]
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
-node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_xyz.html) </sub>
+node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html) </sub>
 
 ```python
 v = vector.z
@@ -322,7 +322,7 @@ Sockets [x (Float), y (Float), z (Float)]
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeAccumulateField](https://docs.blender.org/api/current/bpy.types.GeometryNodeAccumulateField.html)
-node ref [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/accumulate_field.html) </sub>
+node ref [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/accumulate_field.html) </sub>
 
 ```python
 v = vector.accumulate_field(group_index, domain)
@@ -362,7 +362,7 @@ Sockets [leading (Vector), trailing (Vector), total (Vector)]
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeStatistic](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-node ref [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/attribute_statistic.html) </sub>
+node ref [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) </sub>
 
 ```python
 v = vector.attribute_statistic(geometry, selection, domain)
@@ -403,7 +403,7 @@ Sockets [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
-node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/transfer_attribute.html) </sub>
+node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
 
 ```python
 v = vector.transfer_attribute(source, source_position, index, domain, mapping)
@@ -446,7 +446,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
-node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/capture_attribute.html) </sub>
+node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) </sub>
 
 ```python
 v = vector.capture_attribute(geometry, domain)
@@ -486,7 +486,7 @@ Sockets [geometry (Geometry), attribute (Vector)]
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
-node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/field_at_index.html) </sub>
+node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) </sub>
 
 ```python
 v = vector.field_at_index(index, domain)
@@ -526,7 +526,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
-node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/raycast.html) </sub>
+node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) </sub>
 
 ```python
 v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
@@ -569,7 +569,7 @@ Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_dista
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
-node ref [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/map_range.html) </sub>
+node ref [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) </sub>
 
 ```python
 v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type)
@@ -613,7 +613,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
 
 ```python
 v = vector.less_than(b, c, angle, mode)
@@ -656,7 +656,7 @@ Boolean
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
 
 ```python
 v = vector.less_equal(b, c, angle, mode)
@@ -699,7 +699,7 @@ Boolean
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
 
 ```python
 v = vector.greater_than(b, c, angle, mode)
@@ -742,7 +742,7 @@ Boolean
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
 
 ```python
 v = vector.greater_equal(b, c, angle, mode)
@@ -785,7 +785,7 @@ Boolean
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
 
 ```python
 v = vector.equal(b, c, angle, epsilon, mode)
@@ -829,7 +829,7 @@ Boolean
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
 
 ```python
 v = vector.not_equal(b, c, angle, epsilon, mode)
@@ -873,7 +873,7 @@ Boolean
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.add(vector1)
@@ -909,7 +909,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.subtract(vector1)
@@ -945,7 +945,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.multiply(vector1)
@@ -981,7 +981,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.divide(vector1)
@@ -1017,7 +1017,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.multiply_add(vector1, vector2)
@@ -1054,7 +1054,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.cross(vector1)
@@ -1090,7 +1090,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.project(vector1)
@@ -1126,7 +1126,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.reflect(vector1)
@@ -1162,7 +1162,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.refract(vector1, scale)
@@ -1199,7 +1199,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.faceforward(vector1, vector2)
@@ -1236,7 +1236,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.dot(vector1)
@@ -1272,7 +1272,7 @@ Float
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.distance(vector1)
@@ -1308,7 +1308,7 @@ Float
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.length()
@@ -1343,7 +1343,7 @@ Float
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.scale(scale)
@@ -1379,7 +1379,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.normalize()
@@ -1414,7 +1414,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.absolute()
@@ -1449,7 +1449,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.min(vector1)
@@ -1485,7 +1485,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.max(vector1)
@@ -1521,7 +1521,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.floor()
@@ -1556,7 +1556,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.ceil()
@@ -1591,7 +1591,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.fraction()
@@ -1626,7 +1626,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.modulo(vector1)
@@ -1662,7 +1662,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.wrap(vector1, vector2)
@@ -1699,7 +1699,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.snap(vector1)
@@ -1735,7 +1735,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.sin()
@@ -1770,7 +1770,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.cos()
@@ -1805,7 +1805,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
+node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
 
 ```python
 v = vector.tan()
@@ -1840,7 +1840,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorCurve](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html)
-node ref [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_curves.html) </sub>
+node ref [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_curves.html) </sub>
 
 ```python
 v = vector.curves(fac)
@@ -1872,7 +1872,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeAlignEulerToVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
-node ref [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/align_euler_to_vector.html) </sub>
+node ref [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html) </sub>
 
 ```python
 v = vector.align_to_vector(factor, vector, axis, pivot_axis)
@@ -1910,7 +1910,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeRotateEuler](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
-node ref [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/rotate_euler.html) </sub>
+node ref [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html) </sub>
 
 ```python
 v = vector.rotate_euler(rotate_by, space)
@@ -1946,7 +1946,7 @@ Vector
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
-node ref [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_rotate.html) </sub>
+node ref [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) </sub>
 
 ```python
 v = vector.rotate(center, axis, angle, rotation, invert, rotation_type)

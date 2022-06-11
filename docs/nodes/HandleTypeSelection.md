@@ -1,7 +1,7 @@
 
 # Node HandleTypeSelection
 
-> Geometry node name: [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/handle_type_selection.html)<br>
+> Geometry node name: [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html)<br>
   Blender type: [Handle Type Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
   
 <sub>go to [index](/docs/index.md)</sub>

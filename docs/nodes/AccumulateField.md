@@ -1,7 +1,7 @@
 
 # Node AccumulateField
 
-> Geometry node name: [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/accumulate_field.html)<br>
+> Geometry node name: [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/accumulate_field.html)<br>
   Blender type: [Accumulate Field](https://docs.blender.org/api/current/bpy.types.GeometryNodeAccumulateField.html)
   
 <sub>go to [index](/docs/index.md)</sub>

@@ -1,7 +1,7 @@
 
 # Node Cylinder
 
-> Geometry node name: [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/cylinder.html)<br>
+> Geometry node name: [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/cylinder.html)<br>
   Blender type: [Cylinder](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCylinder.html)
   
 <sub>go to [index](/docs/index.md)</sub>

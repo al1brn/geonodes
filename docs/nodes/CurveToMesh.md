@@ -1,7 +1,7 @@
 
 # Node CurveToMesh
 
-> Geometry node name: [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_to_mesh.html)<br>
+> Geometry node name: [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_mesh.html)<br>
   Blender type: [Curve to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToMesh.html)
   
 <sub>go to [index](/docs/index.md)</sub>

@@ -1,7 +1,7 @@
 
 # Node MapRange
 
-> Geometry node name: [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/map_range.html)<br>
+> Geometry node name: [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)<br>
   Blender type: [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
   
 <sub>go to [index](/docs/index.md)</sub>

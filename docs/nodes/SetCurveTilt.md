@@ -1,7 +1,7 @@
 
 # Node SetCurveTilt
 
-> Geometry node name: [Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_curve_tilt.html)<br>
+> Geometry node name: [Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_tilt.html)<br>
   Blender type: [Set Curve Tilt](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveTilt.html)
   
 <sub>go to [index](/docs/index.md)</sub>

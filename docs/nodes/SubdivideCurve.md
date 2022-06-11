@@ -1,7 +1,7 @@
 
 # Node SubdivideCurve
 
-> Geometry node name: [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/subdivide_curve.html)<br>
+> Geometry node name: [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/subdivide_curve.html)<br>
   Blender type: [Subdivide Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideCurve.html)
   
 <sub>go to [index](/docs/index.md)</sub>

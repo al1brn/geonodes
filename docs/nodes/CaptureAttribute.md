@@ -1,7 +1,7 @@
 
 # Node CaptureAttribute
 
-> Geometry node name: [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/capture_attribute.html)<br>
+> Geometry node name: [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html)<br>
   Blender type: [Capture Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
   
 <sub>go to [index](/docs/index.md)</sub>

@@ -1,7 +1,7 @@
 
 # Node PointsToVolume
 
-> Geometry node name: [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/points_to_volume.html)<br>
+> Geometry node name: [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html)<br>
   Blender type: [Points to Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html)
   
 <sub>go to [index](/docs/index.md)</sub>

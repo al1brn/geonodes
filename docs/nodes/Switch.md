@@ -1,7 +1,7 @@
 
 # Node Switch
 
-> Geometry node name: [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html)<br>
+> Geometry node name: [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)<br>
   Blender type: [Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
   
 <sub>go to [index](/docs/index.md)</sub>

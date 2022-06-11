@@ -1,7 +1,7 @@
 
 # Node Integer
 
-> Geometry node name: [Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/integer.html)<br>
+> Geometry node name: [Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/integer.html)<br>
   Blender type: [Integer](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputInt.html)
   
 <sub>go to [index](/docs/index.md)</sub>

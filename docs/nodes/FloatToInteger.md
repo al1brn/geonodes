@@ -1,7 +1,7 @@
 
 # Node FloatToInteger
 
-> Geometry node name: [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/float_to_integer.html)<br>
+> Geometry node name: [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html)<br>
   Blender type: [Float to Integer](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
   
 <sub>go to [index](/docs/index.md)</sub>

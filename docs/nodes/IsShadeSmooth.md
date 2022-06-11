@@ -1,7 +1,7 @@
 
 # Node IsShadeSmooth
 
-> Geometry node name: [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/is_shade_smooth.html)<br>
+> Geometry node name: [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/is_shade_smooth.html)<br>
   Blender type: [Is Shade Smooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html)
   
 <sub>go to [index](/docs/index.md)</sub>

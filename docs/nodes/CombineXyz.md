@@ -1,7 +1,7 @@
 
 # Node CombineXyz
 
-> Geometry node name: [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/combine_xyz.html)<br>
+> Geometry node name: [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/combine_xyz.html)<br>
   Blender type: [Combine XYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html)
   
 <sub>go to [index](/docs/index.md)</sub>

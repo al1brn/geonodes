@@ -1,7 +1,7 @@
 
 # Node VectorCurves
 
-> Geometry node name: [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_curves.html)<br>
+> Geometry node name: [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_curves.html)<br>
   Blender type: [Vector Curves](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html)
   
 <sub>go to [index](/docs/index.md)</sub>

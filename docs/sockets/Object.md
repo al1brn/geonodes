@@ -25,7 +25,7 @@
   
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
-node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
+node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) </sub>
 
 ```python
 v = object.info
@@ -65,7 +65,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
   
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
-node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
+node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) </sub>
 
 ```python
 v = object.location
@@ -105,7 +105,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
   
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
-node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
+node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) </sub>
 
 ```python
 v = object.rotation
@@ -145,7 +145,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
   
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
-node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
+node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) </sub>
 
 ```python
 v = object.scale
@@ -185,7 +185,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
   
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
-node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
+node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) </sub>
 
 ```python
 v = object.geometry
@@ -225,7 +225,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
   
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
+node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
 
 ```python
 v = object.switch(switch1, true)

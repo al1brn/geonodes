@@ -1,7 +1,7 @@
 
 # Node DistributePointsOnFaces
 
-> Geometry node name: [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/distribute_points_on_faces.html)<br>
+> Geometry node name: [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html)<br>
   Blender type: [Distribute Points on Faces](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html)
   
 <sub>go to [index](/docs/index.md)</sub>

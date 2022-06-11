@@ -1,7 +1,7 @@
 
 # Node RotateInstances
 
-> Geometry node name: [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/rotate_instances.html)<br>
+> Geometry node name: [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html)<br>
   Blender type: [Rotate Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html)
   
 <sub>go to [index](/docs/index.md)</sub>

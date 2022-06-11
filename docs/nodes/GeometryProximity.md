@@ -1,7 +1,7 @@
 
 # Node GeometryProximity
 
-> Geometry node name: [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/geometry_proximity.html)<br>
+> Geometry node name: [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html)<br>
   Blender type: [Geometry Proximity](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
   
 <sub>go to [index](/docs/index.md)</sub>

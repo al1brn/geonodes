@@ -1,7 +1,7 @@
 
 # Node Compare
 
-> Geometry node name: [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html)<br>
+> Geometry node name: [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)<br>
   Blender type: [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
   
 <sub>go to [index](/docs/index.md)</sub>

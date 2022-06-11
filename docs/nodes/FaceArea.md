@@ -1,7 +1,7 @@
 
 # Node FaceArea
 
-> Geometry node name: [Face Area](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/face_area.html)<br>
+> Geometry node name: [Face Area](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_area.html)<br>
   Blender type: [Face Area](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceArea.html)
   
 <sub>go to [index](/docs/index.md)</sub>

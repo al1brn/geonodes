@@ -1,7 +1,7 @@
 
 # Node EdgeVertices
 
-> Geometry node name: [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_vertices.html)<br>
+> Geometry node name: [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html)<br>
   Blender type: [Edge Vertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
   
 <sub>go to [index](/docs/index.md)</sub>

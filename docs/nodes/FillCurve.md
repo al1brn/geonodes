@@ -1,7 +1,7 @@
 
 # Node FillCurve
 
-> Geometry node name: [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/fill_curve.html)<br>
+> Geometry node name: [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fill_curve.html)<br>
   Blender type: [Fill Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html)
   
 <sub>go to [index](/docs/index.md)</sub>

@@ -1,7 +1,7 @@
 
 # Node ObjectInfo
 
-> Geometry node name: [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html)<br>
+> Geometry node name: [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html)<br>
   Blender type: [Object Info](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
   
 <sub>go to [index](/docs/index.md)</sub>

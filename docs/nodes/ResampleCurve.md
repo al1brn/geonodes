@@ -1,7 +1,7 @@
 
 # Node ResampleCurve
 
-> Geometry node name: [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/resample_curve.html)<br>
+> Geometry node name: [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html)<br>
   Blender type: [Resample Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html)
   
 <sub>go to [index](/docs/index.md)</sub>

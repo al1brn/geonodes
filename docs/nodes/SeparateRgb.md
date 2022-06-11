@@ -1,7 +1,7 @@
 
 # Node SeparateRgb
 
-> Geometry node name: [Separate RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_rgb.html)<br>
+> Geometry node name: [Separate RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_rgb.html)<br>
   Blender type: [Separate RGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateRGB.html)
   
 <sub>go to [index](/docs/index.md)</sub>

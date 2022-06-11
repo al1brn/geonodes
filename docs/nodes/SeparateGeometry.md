@@ -1,7 +1,7 @@
 
 # Node SeparateGeometry
 
-> Geometry node name: [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_geometry.html)<br>
+> Geometry node name: [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html)<br>
   Blender type: [Separate Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
   
 <sub>go to [index](/docs/index.md)</sub>

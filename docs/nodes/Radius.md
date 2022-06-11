@@ -1,7 +1,7 @@
 
 # Node Radius
 
-> Geometry node name: [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/radius.html)<br>
+> Geometry node name: [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html)<br>
   Blender type: [Radius](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html)
   
 <sub>go to [index](/docs/index.md)</sub>

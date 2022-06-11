@@ -1,7 +1,7 @@
 
 # Node ReplaceString
 
-> Geometry node name: [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_string.html)<br>
+> Geometry node name: [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html)<br>
   Blender type: [Replace String](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
   
 <sub>go to [index](/docs/index.md)</sub>

@@ -1,7 +1,7 @@
 
 # Node Transform
 
-> Geometry node name: [Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/transform.html)<br>
+> Geometry node name: [Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/transform.html)<br>
   Blender type: [Transform](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
   
 <sub>go to [index](/docs/index.md)</sub>

@@ -1,7 +1,7 @@
 
 # Node WaveTexture
 
-> Geometry node name: [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/wave_texture.html)<br>
+> Geometry node name: [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)<br>
   Blender type: [Wave Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
   
 <sub>go to [index](/docs/index.md)</sub>
