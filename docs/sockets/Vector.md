@@ -3,7 +3,7 @@
 
 > Inherits from dsock.Vector
   
-<sub>go to [index](docs/index.md)</sub>
+<sub>go to [index](/docs/index.md)</sub>
 
 
 
@@ -71,7 +71,7 @@
 
 > Node: [RandomValue](section:nodes/RandomValue)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/random_value.html) </sub>
 
@@ -108,7 +108,7 @@ Vector
 
 > Node: [CombineXyz](section:nodes/CombineXyz)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeCombineXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html)
 node ref [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/combine_xyz.html) </sub>
 
@@ -140,7 +140,7 @@ Vector
 
 > Node: [AlignEulerToVector](section:nodes/AlignEulerToVector)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeAlignEulerToVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
 node ref [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/align_euler_to_vector.html) </sub>
 
@@ -177,7 +177,7 @@ Vector
 
 > Node: [SeparateXyz](section:nodes/SeparateXyz)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
 node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_xyz.html) </sub>
 
@@ -211,7 +211,7 @@ Sockets [x (Float), y (Float), z (Float)]
 
 > Node: [SeparateXyz](section:nodes/SeparateXyz)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
 node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_xyz.html) </sub>
 
@@ -245,7 +245,7 @@ Sockets [x (Float), y (Float), z (Float)]
 
 > Node: [SeparateXyz](section:nodes/SeparateXyz)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
 node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_xyz.html) </sub>
 
@@ -279,7 +279,7 @@ Sockets [x (Float), y (Float), z (Float)]
 
 > Node: [SeparateXyz](section:nodes/SeparateXyz)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
 node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_xyz.html) </sub>
 
@@ -313,7 +313,7 @@ Sockets [x (Float), y (Float), z (Float)]
 
 > Node: [AccumulateField](section:nodes/AccumulateField)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeAccumulateField](https://docs.blender.org/api/current/bpy.types.GeometryNodeAccumulateField.html)
 node ref [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/accumulate_field.html) </sub>
 
@@ -352,7 +352,7 @@ Sockets [leading (Vector), trailing (Vector), total (Vector)]
 
 > Node: [AttributeStatistic](section:nodes/AttributeStatistic)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeStatistic](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
 node ref [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/attribute_statistic.html) </sub>
 
@@ -392,7 +392,7 @@ Sockets [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector
 
 > Node: [TransferAttribute](section:nodes/TransferAttribute)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
 node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/transfer_attribute.html) </sub>
 
@@ -434,7 +434,7 @@ Vector
 
 > Node: [CaptureAttribute](section:nodes/CaptureAttribute)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
 node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/capture_attribute.html) </sub>
 
@@ -473,7 +473,7 @@ Sockets [geometry (Geometry), attribute (Vector)]
 
 > Node: [FieldAtIndex](section:nodes/FieldAtIndex)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
 node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/field_at_index.html) </sub>
 
@@ -512,7 +512,7 @@ Vector
 
 > Node: [Raycast](section:nodes/Raycast)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
 node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/raycast.html) </sub>
 
@@ -554,7 +554,7 @@ Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_dista
 
 > Node: [MapRange](section:nodes/MapRange)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 node ref [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/map_range.html) </sub>
 
@@ -597,7 +597,7 @@ Vector
 
 > Node: [Compare](section:nodes/Compare)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -639,7 +639,7 @@ Boolean
 
 > Node: [Compare](section:nodes/Compare)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -681,7 +681,7 @@ Boolean
 
 > Node: [Compare](section:nodes/Compare)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -723,7 +723,7 @@ Boolean
 
 > Node: [Compare](section:nodes/Compare)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -765,7 +765,7 @@ Boolean
 
 > Node: [Compare](section:nodes/Compare)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -808,7 +808,7 @@ Boolean
 
 > Node: [Compare](section:nodes/Compare)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -851,7 +851,7 @@ Boolean
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -886,7 +886,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -921,7 +921,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -956,7 +956,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -991,7 +991,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1027,7 +1027,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1062,7 +1062,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1097,7 +1097,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1132,7 +1132,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1168,7 +1168,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1204,7 +1204,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1239,7 +1239,7 @@ Float
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1274,7 +1274,7 @@ Float
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1308,7 +1308,7 @@ Float
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1343,7 +1343,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1377,7 +1377,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1411,7 +1411,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1446,7 +1446,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1481,7 +1481,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1515,7 +1515,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1549,7 +1549,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1583,7 +1583,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1618,7 +1618,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1654,7 +1654,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1689,7 +1689,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1723,7 +1723,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1757,7 +1757,7 @@ Vector
 
 > Node: [VectorMath](section:nodes/VectorMath)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_math.html) </sub>
 
@@ -1791,7 +1791,7 @@ Vector
 
 > Node: [VectorCurves](section:nodes/VectorCurves)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorCurve](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html)
 node ref [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_curves.html) </sub>
 
@@ -1822,7 +1822,7 @@ Vector
 
 > Node: [AlignEulerToVector](section:nodes/AlignEulerToVector)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeAlignEulerToVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
 node ref [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/align_euler_to_vector.html) </sub>
 
@@ -1859,7 +1859,7 @@ Vector
 
 > Node: [RotateEuler](section:nodes/RotateEuler)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeRotateEuler](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
 node ref [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/rotate_euler.html) </sub>
 
@@ -1894,7 +1894,7 @@ Vector
 
 > Node: [VectorRotate](section:nodes/VectorRotate)
   
-<sub>go to: [top](#data-socket-vector) [index](docs/index.md)
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
 node ref [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_rotate.html) </sub>
 

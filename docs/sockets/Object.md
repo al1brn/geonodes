@@ -3,7 +3,7 @@
 
 > Inherits from dsock.Object
   
-<sub>go to [index](docs/index.md)</sub>
+<sub>go to [index](/docs/index.md)</sub>
 
 
 
@@ -23,7 +23,7 @@
 
 > Node: [ObjectInfo](section:nodes/ObjectInfo)
   
-<sub>go to: [top](#data-socket-object) [index](docs/index.md)
+<sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
 
@@ -62,7 +62,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 
 > Node: [ObjectInfo](section:nodes/ObjectInfo)
   
-<sub>go to: [top](#data-socket-object) [index](docs/index.md)
+<sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
 
@@ -101,7 +101,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 
 > Node: [ObjectInfo](section:nodes/ObjectInfo)
   
-<sub>go to: [top](#data-socket-object) [index](docs/index.md)
+<sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
 
@@ -140,7 +140,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 
 > Node: [ObjectInfo](section:nodes/ObjectInfo)
   
-<sub>go to: [top](#data-socket-object) [index](docs/index.md)
+<sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
 
@@ -179,7 +179,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 
 > Node: [ObjectInfo](section:nodes/ObjectInfo)
   
-<sub>go to: [top](#data-socket-object) [index](docs/index.md)
+<sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
 
@@ -218,7 +218,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 
 > Node: [Switch](section:nodes/Switch)
   
-<sub>go to: [top](#data-socket-object) [index](docs/index.md)
+<sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 

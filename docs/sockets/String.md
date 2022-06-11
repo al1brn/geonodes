@@ -3,7 +3,7 @@
 
 > Inherits from dsock.String
   
-<sub>go to [index](docs/index.md)</sub>
+<sub>go to [index](/docs/index.md)</sub>
 
 
 
@@ -28,7 +28,7 @@
 
 > Node: [StringLength](section:nodes/StringLength)
   
-<sub>go to: [top](#data-socket-string) [index](docs/index.md)
+<sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeStringLength](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
 node ref [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/string_length.html) </sub>
 
@@ -62,7 +62,7 @@ Integer
 
 > Node: [Switch](section:nodes/Switch)
   
-<sub>go to: [top](#data-socket-string) [index](docs/index.md)
+<sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 
@@ -98,7 +98,7 @@ String
 
 > Node: [Compare](section:nodes/Compare)
   
-<sub>go to: [top](#data-socket-string) [index](docs/index.md)
+<sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -135,7 +135,7 @@ Boolean
 
 > Node: [Compare](section:nodes/Compare)
   
-<sub>go to: [top](#data-socket-string) [index](docs/index.md)
+<sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -172,7 +172,7 @@ Boolean
 
 > Node: [Compare](section:nodes/Compare)
   
-<sub>go to: [top](#data-socket-string) [index](docs/index.md)
+<sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -209,7 +209,7 @@ Boolean
 
 > Node: [Compare](section:nodes/Compare)
   
-<sub>go to: [top](#data-socket-string) [index](docs/index.md)
+<sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -246,7 +246,7 @@ Boolean
 
 > Node: [Compare](section:nodes/Compare)
   
-<sub>go to: [top](#data-socket-string) [index](docs/index.md)
+<sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -283,7 +283,7 @@ Boolean
 
 > Node: [JoinStrings](section:nodes/JoinStrings)
   
-<sub>go to: [top](#data-socket-string) [index](docs/index.md)
+<sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [GeometryNodeStringJoin](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
 node ref [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/join_strings.html) </sub>
 
@@ -314,7 +314,7 @@ String
 
 > Node: [ReplaceString](section:nodes/ReplaceString)
   
-<sub>go to: [top](#data-socket-string) [index](docs/index.md)
+<sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeReplaceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
 node ref [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_string.html) </sub>
 
@@ -346,7 +346,7 @@ String
 
 > Node: [SliceString](section:nodes/SliceString)
   
-<sub>go to: [top](#data-socket-string) [index](docs/index.md)
+<sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeSliceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
 node ref [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/slice_string.html) </sub>
 
@@ -378,7 +378,7 @@ String
 
 > Node: [StringToCurves](section:nodes/StringToCurves)
   
-<sub>go to: [top](#data-socket-string) [index](docs/index.md)
+<sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [GeometryNodeStringToCurves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
 node ref [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/string_to_curves.html) </sub>
 

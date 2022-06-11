@@ -3,7 +3,7 @@
 
 > Inherits from gn.Geometry
   
-<sub>go to [index](docs/index.md)</sub>
+<sub>go to [index](/docs/index.md)</sub>
 
 
 
@@ -79,7 +79,7 @@
 
 > Node: [MeshCircle](section:nodes/MeshCircle)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshCircle](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCircle.html)
 node ref [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_circle.html) </sub>
 
@@ -114,7 +114,7 @@ Mesh
 
 > Node: [Cone](section:nodes/Cone)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshCone](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCone.html)
 node ref [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/cone.html) </sub>
 
@@ -153,7 +153,7 @@ Sockets [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
 
 > Node: [Cube](section:nodes/Cube)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshCube](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCube.html)
 node ref [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/cube.html) </sub>
 
@@ -186,7 +186,7 @@ Mesh
 
 > Node: [Cylinder](section:nodes/Cylinder)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshCylinder](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCylinder.html)
 node ref [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/cylinder.html) </sub>
 
@@ -224,7 +224,7 @@ Sockets [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
 
 > Node: [Grid](section:nodes/Grid)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshGrid](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshGrid.html)
 node ref [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/grid.html) </sub>
 
@@ -257,7 +257,7 @@ Mesh
 
 > Node: [IcoSphere](section:nodes/IcoSphere)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshIcoSphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshIcoSphere.html)
 node ref [Ico Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/ico_sphere.html) </sub>
 
@@ -288,7 +288,7 @@ Mesh
 
 > Node: [MeshLine](section:nodes/MeshLine)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshLine](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html)
 node ref [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_line.html) </sub>
 
@@ -325,7 +325,7 @@ Mesh
 
 > Node: [UvSphere](section:nodes/UvSphere)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshUVSphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshUVSphere.html)
 node ref [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/uv_sphere.html) </sub>
 
@@ -357,7 +357,7 @@ Mesh
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -388,7 +388,7 @@ Sockets [unsigned_angle (Float), signed_angle (Float)]
 
 > Node: [EdgeNeighbors](section:nodes/EdgeNeighbors)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeNeighbors.html)
 node ref [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_neighbors.html) </sub>
 
@@ -419,7 +419,7 @@ Integer
 
 > Node: [EdgeVertices](section:nodes/EdgeVertices)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 node ref [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_vertices.html) </sub>
 
@@ -450,7 +450,7 @@ Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector)
 
 > Node: [FaceArea](section:nodes/FaceArea)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshFaceArea](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceArea.html)
 node ref [Face Area](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/face_area.html) </sub>
 
@@ -481,7 +481,7 @@ Float
 
 > Node: [FaceNeighbors](section:nodes/FaceNeighbors)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshFaceNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
 node ref [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/face_neighbors.html) </sub>
 
@@ -512,7 +512,7 @@ Sockets [vertex_count (Integer), face_count (Integer)]
 
 > Node: [MeshIsland](section:nodes/MeshIsland)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshIsland](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
 node ref [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_island.html) </sub>
 
@@ -543,7 +543,7 @@ Sockets [island_index (Integer), island_count (Integer)]
 
 > Node: [IsShadeSmooth](section:nodes/IsShadeSmooth)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputShadeSmooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html)
 node ref [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/is_shade_smooth.html) </sub>
 
@@ -574,7 +574,7 @@ Boolean
 
 > Node: [VertexNeighbors](section:nodes/VertexNeighbors)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshVertexNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
 node ref [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vertex_neighbors.html) </sub>
 
@@ -605,7 +605,7 @@ Sockets [vertex_count (Integer), face_count (Integer)]
 
 > Node: [MaterialIndex](section:nodes/MaterialIndex)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMaterialIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
 node ref [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) </sub>
 
@@ -636,7 +636,7 @@ Integer
 
 > Node: [MaterialSelection](section:nodes/MaterialSelection)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMaterialSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
 node ref [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) </sub>
 
@@ -671,7 +671,7 @@ Boolean
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -701,7 +701,7 @@ Float
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -731,7 +731,7 @@ Float
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -761,7 +761,7 @@ Float
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -791,7 +791,7 @@ Float
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -821,7 +821,7 @@ Float
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -851,7 +851,7 @@ Float
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -881,7 +881,7 @@ Float
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -911,7 +911,7 @@ Float
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -941,7 +941,7 @@ Float
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -971,7 +971,7 @@ Float
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -1001,7 +1001,7 @@ Float
 
 > Node: [EdgeNeighbors](section:nodes/EdgeNeighbors)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeNeighbors.html)
 node ref [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_neighbors.html) </sub>
 
@@ -1031,7 +1031,7 @@ Integer
 
 > Node: [EdgeVertices](section:nodes/EdgeVertices)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 node ref [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_vertices.html) </sub>
 
@@ -1061,7 +1061,7 @@ Integer
 
 > Node: [EdgeVertices](section:nodes/EdgeVertices)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 node ref [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_vertices.html) </sub>
 
@@ -1091,7 +1091,7 @@ Integer
 
 > Node: [EdgeVertices](section:nodes/EdgeVertices)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 node ref [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_vertices.html) </sub>
 
@@ -1121,7 +1121,7 @@ Vector
 
 > Node: [EdgeVertices](section:nodes/EdgeVertices)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 node ref [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_vertices.html) </sub>
 
@@ -1151,7 +1151,7 @@ Vector
 
 > Node: [FaceArea](section:nodes/FaceArea)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshFaceArea](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceArea.html)
 node ref [Face Area](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/face_area.html) </sub>
 
@@ -1181,7 +1181,7 @@ Float
 
 > Node: [FaceNeighbors](section:nodes/FaceNeighbors)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshFaceNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
 node ref [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/face_neighbors.html) </sub>
 
@@ -1211,7 +1211,7 @@ Integer
 
 > Node: [FaceNeighbors](section:nodes/FaceNeighbors)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshFaceNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
 node ref [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/face_neighbors.html) </sub>
 
@@ -1241,7 +1241,7 @@ Integer
 
 > Node: [MeshIsland](section:nodes/MeshIsland)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshIsland](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
 node ref [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_island.html) </sub>
 
@@ -1271,7 +1271,7 @@ Integer
 
 > Node: [IsShadeSmooth](section:nodes/IsShadeSmooth)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputShadeSmooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html)
 node ref [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/is_shade_smooth.html) </sub>
 
@@ -1301,7 +1301,7 @@ Boolean
 
 > Node: [VertexNeighbors](section:nodes/VertexNeighbors)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshVertexNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
 node ref [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vertex_neighbors.html) </sub>
 
@@ -1331,7 +1331,7 @@ Integer
 
 > Node: [VertexNeighbors](section:nodes/VertexNeighbors)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshVertexNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
 node ref [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vertex_neighbors.html) </sub>
 
@@ -1361,7 +1361,7 @@ Integer
 
 > Node: [MaterialIndex](section:nodes/MaterialIndex)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMaterialIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
 node ref [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) </sub>
 
@@ -1391,7 +1391,7 @@ Integer
 
 > Node: [MaterialSelection](section:nodes/MaterialSelection)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMaterialSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
 node ref [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) </sub>
 
@@ -1425,7 +1425,7 @@ Boolean
 
 > Node: [MeshBoolean](section:nodes/MeshBoolean)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshBoolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
 node ref [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_boolean.html) </sub>
 
@@ -1461,7 +1461,7 @@ Mesh
 
 > Node: [MeshBoolean](section:nodes/MeshBoolean)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshBoolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
 node ref [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_boolean.html) </sub>
 
@@ -1497,7 +1497,7 @@ Mesh
 
 > Node: [MeshBoolean](section:nodes/MeshBoolean)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshBoolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
 node ref [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_boolean.html) </sub>
 
@@ -1534,7 +1534,7 @@ Mesh
 
 > Node: [SplitEdges](section:nodes/SplitEdges)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeSplitEdges](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitEdges.html)
 node ref [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/split_edges.html) </sub>
 
@@ -1565,7 +1565,7 @@ Mesh
 
 > Node: [SubdivideMesh](section:nodes/SubdivideMesh)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeSubdivideMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideMesh.html)
 node ref [Subdivide Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/subdivide_mesh.html) </sub>
 
@@ -1596,7 +1596,7 @@ Mesh
 
 > Node: [SubdivisionSurface](section:nodes/SubdivisionSurface)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeSubdivisionSurface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivisionSurface.html)
 node ref [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/subdivision_surface.html) </sub>
 
@@ -1633,7 +1633,7 @@ Mesh
 
 > Node: [Triangulate](section:nodes/Triangulate)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeTriangulate](https://docs.blender.org/api/current/bpy.types.GeometryNodeTriangulate.html)
 node ref [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/triangulate.html) </sub>
 
@@ -1670,7 +1670,7 @@ Mesh
 
 > Node: [DualMesh](section:nodes/DualMesh)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeDualMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeDualMesh.html)
 node ref [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/dual_mesh.html) </sub>
 
@@ -1701,7 +1701,7 @@ Geometry
 
 > Node: [FlipFaces](section:nodes/FlipFaces)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeFlipFaces](https://docs.blender.org/api/current/bpy.types.GeometryNodeFlipFaces.html)
 node ref [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/flip_faces.html) </sub>
 
@@ -1732,7 +1732,7 @@ Mesh
 
 > Node: [ExtrudeMesh](section:nodes/ExtrudeMesh)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeExtrudeMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html)
 node ref [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/extrude_mesh.html) </sub>
 
@@ -1770,7 +1770,7 @@ Sockets [mesh (Mesh), top (Boolean), side (Boolean)]
 
 > Node: [MeshToCurve](section:nodes/MeshToCurve)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshToCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html)
 node ref [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_to_curve.html) </sub>
 
@@ -1801,7 +1801,7 @@ Curve
 
 > Node: [MeshToPoints](section:nodes/MeshToPoints)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshToPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html)
 node ref [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_to_points.html) </sub>
 
@@ -1838,7 +1838,7 @@ Points
 
 > Node: [DistributePointsOnFaces](section:nodes/DistributePointsOnFaces)
   
-<sub>go to: [top](#data-socket-mesh) [index](docs/index.md)
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeDistributePointsOnFaces](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html)
 node ref [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/distribute_points_on_faces.html) </sub>
 

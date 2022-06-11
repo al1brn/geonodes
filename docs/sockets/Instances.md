@@ -3,7 +3,7 @@
 
 > Inherits from gn.Geometry
   
-<sub>go to [index](docs/index.md)</sub>
+<sub>go to [index](/docs/index.md)</sub>
 
 
 
@@ -22,7 +22,7 @@
 
 > Node: [Index](section:nodes/Index)
   
-<sub>go to: [top](#data-socket-instances) [index](docs/index.md)
+<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
 blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
 node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/index.html) </sub>
 
@@ -52,7 +52,7 @@ Integer
 
 > Node: [RotateInstances](section:nodes/RotateInstances)
   
-<sub>go to: [top](#data-socket-instances) [index](docs/index.md)
+<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
 blender ref [GeometryNodeRotateInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html)
 node ref [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/rotate_instances.html) </sub>
 
@@ -86,7 +86,7 @@ Instances
 
 > Node: [ScaleInstances](section:nodes/ScaleInstances)
   
-<sub>go to: [top](#data-socket-instances) [index](docs/index.md)
+<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
 blender ref [GeometryNodeScaleInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html)
 node ref [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/scale_instances.html) </sub>
 
@@ -120,7 +120,7 @@ Instances
 
 > Node: [TranslateInstances](section:nodes/TranslateInstances)
   
-<sub>go to: [top](#data-socket-instances) [index](docs/index.md)
+<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
 blender ref [GeometryNodeTranslateInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html)
 node ref [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/translate_instances.html) </sub>
 
@@ -153,7 +153,7 @@ Instances
 
 > Node: [InstancesToPoints](section:nodes/InstancesToPoints)
   
-<sub>go to: [top](#data-socket-instances) [index](docs/index.md)
+<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
 blender ref [GeometryNodeInstancesToPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html)
 node ref [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/instances_to_points.html) </sub>
 

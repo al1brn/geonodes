@@ -3,7 +3,7 @@
 
 > Inherits from dsock.Texture
   
-<sub>go to [index](docs/index.md)</sub>
+<sub>go to [index](/docs/index.md)</sub>
 
 
 
@@ -28,7 +28,7 @@
 
 > Node: [BrickTexture](section:nodes/BrickTexture)
   
-<sub>go to: [top](#data-socket-texture) [index](docs/index.md)
+<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexBrick](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html)
 node ref [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/brick_texture.html) </sub>
 
@@ -74,7 +74,7 @@ Sockets [color (Color), fac (Float)]
 
 > Node: [CheckerTexture](section:nodes/CheckerTexture)
   
-<sub>go to: [top](#data-socket-texture) [index](docs/index.md)
+<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexChecker](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html)
 node ref [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/checker_texture.html) </sub>
 
@@ -107,7 +107,7 @@ Sockets [color (Color), fac (Float)]
 
 > Node: [GradientTexture](section:nodes/GradientTexture)
   
-<sub>go to: [top](#data-socket-texture) [index](docs/index.md)
+<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexGradient](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 node ref [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/gradient_texture.html) </sub>
 
@@ -141,7 +141,7 @@ Sockets [color (Color), fac (Float)]
 
 > Node: [MagicTexture](section:nodes/MagicTexture)
   
-<sub>go to: [top](#data-socket-texture) [index](docs/index.md)
+<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexMagic](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html)
 node ref [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/magic_texture.html) </sub>
 
@@ -177,7 +177,7 @@ Sockets [color (Color), fac (Float)]
 
 > Node: [MusgraveTexture](section:nodes/MusgraveTexture)
   
-<sub>go to: [top](#data-socket-texture) [index](docs/index.md)
+<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexMusgrave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMusgrave.html)
 node ref [Musgrave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/musgrave_texture.html) </sub>
 
@@ -219,7 +219,7 @@ Float
 
 > Node: [NoiseTexture](section:nodes/NoiseTexture)
   
-<sub>go to: [top](#data-socket-texture) [index](docs/index.md)
+<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 node ref [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/noise_texture.html) </sub>
 
@@ -258,7 +258,7 @@ Sockets [fac (Float), color (Color)]
 
 > Node: [VoronoiTexture](section:nodes/VoronoiTexture)
   
-<sub>go to: [top](#data-socket-texture) [index](docs/index.md)
+<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 node ref [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/voronoi_texture.html) </sub>
 
@@ -299,7 +299,7 @@ Sockets [distance (Float), color (Color), position (Vector), w (Float), radius (
 
 > Node: [WaveTexture](section:nodes/WaveTexture)
   
-<sub>go to: [top](#data-socket-texture) [index](docs/index.md)
+<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 node ref [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/wave_texture.html) </sub>
 
@@ -342,7 +342,7 @@ Sockets [color (Color), fac (Float)]
 
 > Node: [WhiteNoiseTexture](section:nodes/WhiteNoiseTexture)
   
-<sub>go to: [top](#data-socket-texture) [index](docs/index.md)
+<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 node ref [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/white_noise_texture.html) </sub>
 
@@ -377,7 +377,7 @@ Sockets [value (Float), color (Color)]
 
 > Node: [ImageTexture](section:nodes/ImageTexture)
   
-<sub>go to: [top](#data-socket-texture) [index](docs/index.md)
+<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [GeometryNodeImageTexture](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
 node ref [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/image_texture.html) </sub>
 
@@ -414,7 +414,7 @@ Sockets [color (Color), alpha (Float)]
 
 > Node: [Switch](section:nodes/Switch)
   
-<sub>go to: [top](#data-socket-texture) [index](docs/index.md)
+<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 
