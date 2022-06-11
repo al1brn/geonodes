@@ -9,7 +9,6 @@
 - [Data socket Color](/docs/sockets/Color.md)
 - [Data socket Curve](/docs/sockets/Curve.md)
 - [Data socket Float](/docs/sockets/Float.md)
-- [Data socket functions](/docs/sockets/functions.md)
 - [Data socket Geometry](/docs/sockets/Geometry.md)
 - [Data socket Image](/docs/sockets/Image.md)
 - [Data socket Instances](/docs/sockets/Instances.md)
@@ -23,6 +22,7 @@
 - [Data socket Texture](/docs/sockets/Texture.md)
 - [Data socket Vector](/docs/sockets/Vector.md)
 - [Data socket Volume](/docs/sockets/Volume.md)
+- [genodes functions](/docs/sockets/functions.md)
 
 ## Nodes
 

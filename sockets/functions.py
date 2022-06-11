@@ -24,13 +24,29 @@ from geonodes.sockets.functions import vector_wrap, wrap
 
 """ 
 
-Data socket functions
----------------------
-    > Inherits from 
+genodes functions
+-----------------
+    > global functions
       
     <sub>go to index</sub>
     
+    Example of use:
     
+    ```python
+    import geonodes as gn
+    value = gn.Float(14.)
+
+
+    A float value
+    -------------
+        v = gn.sin(v)
+
+
+    The sine of this value
+    ----------------------
+        ```
+        
+        
 
 
     Functions

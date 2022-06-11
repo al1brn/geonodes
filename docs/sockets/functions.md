@@ -1,9 +1,23 @@
 
-# Data socket functions
+# genodes functions
 
-> Inherits from 
+> global functions
   
 <sub>go to [index](/docs/index.md)</sub>
+
+Example of use:
+
+```python
+import geonodes as gn
+value = gn.Float(14.)
+
+## A float value
+
+v = gn.sin(v)
+
+## The sine of this value
+
+```
 
 
 
