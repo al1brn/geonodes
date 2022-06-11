@@ -1,13 +1,12 @@
 
-# Class CombineRgb
+# Node CombineRgb
 
-> Geometry node name: _'Combine RGB'_<br>Blender type:  **ShaderNodeCombineRGB**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Combine RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/combine_rgb.html)<br>
+  Blender type: [Combine RGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineRGB.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,42 +14,27 @@ node = nodes.CombineRgb(r=None, g=None, b=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+r : Float
+- g : Float
+- b : Float
 
+### Node label
 
-- **r** : _Float_
-- **g** : _Float_
-- **b** : _Float_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **image** : _Color_
-
-
+image : Color
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Color](../sockets/Color.md) [Combine](../sockets/Color.md#combine) : Constructor
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Color) [Combine](section:Data socket Color/Combine) : Constructor
 

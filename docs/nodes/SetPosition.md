@@ -1,13 +1,12 @@
 
-# Class SetPosition
+# Node SetPosition
 
-> Geometry node name: _'Set Position'_<br>Blender type:  **GeometryNodeSetPosition**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_position.html)<br>
+  Blender type: [Set Position](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,43 +14,28 @@ node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=No
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
+- selection : Boolean
+- position : Vector
+- offset : Vector
 
+### Node label
 
-- **geometry** : _Geometry_
-- **selection** : _Boolean_
-- **position** : _Vector_
-- **offset** : _Vector_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **geometry** : _Geometry_
-
-
+geometry : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [set_position](../sockets/Geometry.md#set_position) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [set_position](section:Data socket Geometry/set_position) : Method
 

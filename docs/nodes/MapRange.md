@@ -1,13 +1,12 @@
 
-# Class MapRange
+# Node MapRange
 
-> Geometry node name: _'Map Range'_<br>Blender type:  **ShaderNodeMapRange**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/map_range.html)<br>
+  Blender type: [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,67 +14,47 @@ node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+value : Float
+- from_min : data_type dependant
+- from_max : data_type dependant
+- to_min : data_type dependant
+- to_max : data_type dependant
+- steps : data_type dependant
+- vector : Vector
 
+### Parameters
 
-- **value** : _Float_
-- **from_min** : **data_type** dependant
-- **from_max** : **data_type** dependant
-- **to_min** : **data_type** dependant
-- **to_max** : **data_type** dependant
-- **steps** : **data_type** dependant
-- **vector** : _Vector_
+clamp : bool (default = True)
+- data_type : str (default = 'FLOAT') in ('FLOAT', 'FLOAT_VECTOR')
+- interpolation_type : str (default = 'LINEAR') in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **clamp** : _True_ bool
-- **data_type** : _'FLOAT'_ in ('FLOAT', 'FLOAT_VECTOR')
-- **interpolation_type** : _'LINEAR'_ in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Data type dependant sockets
 
-
-
-- Driving parameter : **data_type** in ('FLOAT', 'FLOAT_VECTOR')
-- Input sockets : from_min from_max to_min to_max steps
-
-
+- Driving parameter : data_type in ('FLOAT', 'FLOAT_VECTOR')
+- Input sockets  : ['from_min', 'from_max', 'to_min', 'to_max', 'steps']
+- Output sockets : []   
+  
+  
 
 ## Output sockets
 
-
-
-- **result** : _Float_
-- **vector** : _Vector_
-
-
+result : Float
+- vector : Vector
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Float](../sockets/Float.md) [map_range](../sockets/Float.md#map_range) : Method
-- [Vector](../sockets/Vector.md) [map_range](../sockets/Vector.md#map_range) : Method
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Float) [map_range](section:Data socket Float/map_range) : Method
+- [class_name](section:Data socket Vector) [map_range](section:Data socket Vector/map_range) : Method
+  

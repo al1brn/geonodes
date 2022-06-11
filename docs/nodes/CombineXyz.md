@@ -1,13 +1,12 @@
 
-# Class CombineXyz
+# Node CombineXyz
 
-> Geometry node name: _'Combine XYZ'_<br>Blender type:  **ShaderNodeCombineXYZ**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/combine_xyz.html)<br>
+  Blender type: [Combine XYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,42 +14,27 @@ node = nodes.CombineXyz(x=None, y=None, z=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+x : Float
+- y : Float
+- z : Float
 
+### Node label
 
-- **x** : _Float_
-- **y** : _Float_
-- **z** : _Float_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **vector** : _Vector_
-
-
+vector : Vector
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Vector](../sockets/Vector.md) [Combine](../sockets/Vector.md#combine) : Constructor
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Vector) [Combine](section:Data socket Vector/Combine) : Constructor
 

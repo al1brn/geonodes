@@ -1,13 +1,12 @@
 
-# Class AttributeRemove
+# Node AttributeRemove
 
-> Geometry node name: _'Attribute Remove'_<br>Blender type:  **GeometryNodeAttributeRemove**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Attribute Remove](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/attribute_remove.html)<br>
+  Blender type: [Attribute Remove](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeRemove.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,41 +14,26 @@ node = nodes.AttributeRemove(*attribute, geometry=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
+- attribute : *String
 
+### Node label
 
-- **geometry** : _Geometry_
-- **attribute** : * _String_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **geometry** : _Geometry_
-
-
+geometry : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [attribute_remove](../sockets/Geometry.md#attribute_remove) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [attribute_remove](section:Data socket Geometry/attribute_remove) : Method
 

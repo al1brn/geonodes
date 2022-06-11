@@ -1,13 +1,12 @@
 
-# Class MeshLine
+# Node MeshLine
 
-> Geometry node name: _'Mesh Line'_<br>Blender type:  **GeometryNodeMeshLine**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_line.html)<br>
+  Blender type: [Mesh Line](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,52 +14,33 @@ node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=N
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+count : Integer
+- resolution : Float
+- start_location : Vector
+- offset : Vector
 
+### Parameters
 
-- **count** : _Integer_
-- **resolution** : _Float_
-- **start_location** : _Vector_
-- **offset** : _Vector_
+count_mode : str (default = 'TOTAL') in ('TOTAL', 'RESOLUTION')
+- mode : str (default = 'OFFSET') in ('OFFSET', 'END_POINTS')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **count_mode** : _'TOTAL'_ in ('TOTAL', 'RESOLUTION')
-- **mode** : _'OFFSET'_ in ('OFFSET', 'END_POINTS')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-
-
+mesh : Mesh
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [Line](../sockets/Mesh.md#line) : Constructor
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [Line](section:Data socket Mesh/Line) : Constructor
 

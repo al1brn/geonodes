@@ -1,13 +1,12 @@
 
-# Class SubdivisionSurface
+# Node SubdivisionSurface
 
-> Geometry node name: _'Subdivision Surface'_<br>Blender type:  **GeometryNodeSubdivisionSurface**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/subdivision_surface.html)<br>
+  Blender type: [Subdivision Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivisionSurface.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,51 +14,32 @@ node = nodes.SubdivisionSurface(mesh=None, level=None, crease=None, boundary_smo
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+mesh : Mesh
+- level : Integer
+- crease : Float
 
+### Parameters
 
-- **mesh** : _Mesh_
-- **level** : _Integer_
-- **crease** : _Float_
+boundary_smooth : str (default = 'ALL') in ('PRESERVE_CORNERS', 'ALL')
+- uv_smooth : str (default = 'PRESERVE_BOUNDARIES') in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **boundary_smooth** : _'ALL'_ in ('PRESERVE_CORNERS', 'ALL')
-- **uv_smooth** : _'PRESERVE_BOUNDARIES'_ in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-
-
+mesh : Mesh
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [subdivision_surface](../sockets/Mesh.md#subdivision_surface) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [subdivision_surface](section:Data socket Mesh/subdivision_surface) : Method
 

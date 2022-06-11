@@ -1,13 +1,12 @@
 
-# Class FlipFaces
+# Node FlipFaces
 
-> Geometry node name: _'Flip Faces'_<br>Blender type:  **GeometryNodeFlipFaces**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/flip_faces.html)<br>
+  Blender type: [Flip Faces](https://docs.blender.org/api/current/bpy.types.GeometryNodeFlipFaces.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,41 +14,26 @@ node = nodes.FlipFaces(mesh=None, selection=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+mesh : Mesh
+- selection : Boolean
 
+### Node label
 
-- **mesh** : _Mesh_
-- **selection** : _Boolean_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-
-
+mesh : Mesh
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [flip_faces](../sockets/Mesh.md#flip_faces) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [flip_faces](section:Data socket Mesh/flip_faces) : Method
 

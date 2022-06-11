@@ -1,13 +1,12 @@
 
-# Class Normal
+# Node Normal
 
-> Geometry node name: _'Normal'_<br>Blender type:  **GeometryNodeInputNormal**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/normal.html)<br>
+  Blender type: [Normal](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,33 +14,22 @@ node = nodes.Normal(label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Node label
+### Node label
 
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **normal** : _Vector_
-
-
+normal : Vector
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [capture_normal](../sockets/Geometry.md#capture_normal) : Capture attribute
-- [Geometry](../sockets/Geometry.md) [normal](../sockets/Geometry.md#normal) : Attribute
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [capture_normal](section:Data socket Geometry/capture_normal) : Capture attribute
+- [class_name](section:Data socket Geometry) [normal](section:Data socket Geometry/normal) : Attribute
+  

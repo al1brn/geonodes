@@ -1,13 +1,12 @@
 
-# Class MaterialSelection
+# Node MaterialSelection
 
-> Geometry node name: _'Material Selection'_<br>Blender type:  **GeometryNodeMaterialSelection**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html)<br>
+  Blender type: [Material Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,42 +14,27 @@ node = nodes.MaterialSelection(material=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+material : Material
 
+### Node label
 
-- **material** : _Material_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **selection** : _Boolean_
-
-
+selection : Boolean
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Material](../sockets/Material.md) [selection](../sockets/Material.md#selection) : Method
-- [Mesh](../sockets/Mesh.md) [capture_material_selection](../sockets/Mesh.md#capture_material_selection) : Capture attribute
-- [Mesh](../sockets/Mesh.md) [material_selection](../sockets/Mesh.md#material_selection) : Attribute
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Material) [selection](section:Data socket Material/selection) : Method
+- [class_name](section:Data socket Mesh) [capture_material_selection](section:Data socket Mesh/capture_material_selection) : Capture attribute
+- [class_name](section:Data socket Mesh) [material_selection](section:Data socket Mesh/material_selection) : Attribute
+  

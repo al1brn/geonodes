@@ -1,13 +1,12 @@
 
-# Class AlignEulerToVector
+# Node AlignEulerToVector
 
-> Geometry node name: _'Align Euler to Vector'_<br>Blender type:  **FunctionNodeAlignEulerToVector**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/align_euler_to_vector.html)<br>
+  Blender type: [Align Euler to Vector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,52 +14,33 @@ node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+rotation : Vector
+- factor : Float
+- vector : Vector
 
+### Parameters
 
-- **rotation** : _Vector_
-- **factor** : _Float_
-- **vector** : _Vector_
+axis : str (default = 'X') in ('X', 'Y', 'Z')
+- pivot_axis : str (default = 'AUTO') in ('AUTO', 'X', 'Y', 'Z')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **axis** : _'X'_ in ('X', 'Y', 'Z')
-- **pivot_axis** : _'AUTO'_ in ('AUTO', 'X', 'Y', 'Z')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **rotation** : _Vector_
-
-
+rotation : Vector
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Vector](../sockets/Vector.md) [AlignToVector](../sockets/Vector.md#aligntovector) : Constructor
-- [Vector](../sockets/Vector.md) [align_to_vector](../sockets/Vector.md#align_to_vector) : Method
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Vector) [AlignToVector](section:Data socket Vector/AlignToVector) : Constructor
+- [class_name](section:Data socket Vector) [align_to_vector](section:Data socket Vector/align_to_vector) : Method
+  

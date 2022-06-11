@@ -1,13 +1,12 @@
 
-# Class BrickTexture
+# Node BrickTexture
 
-> Geometry node name: _'Brick Texture'_<br>Blender type:  **ShaderNodeTexBrick**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/brick_texture.html)<br>
+  Blender type: [Brick Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,61 +14,42 @@ node = nodes.BrickTexture(vector=None, color1=None, color2=None, mortar=None, sc
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+vector : Vector
+- color1 : Color
+- color2 : Color
+- mortar : Color
+- scale : Float
+- mortar_size : Float
+- mortar_smooth : Float
+- bias : Float
+- brick_width : Float
+- row_height : Float
 
+### Parameters
 
-- **vector** : _Vector_
-- **color1** : _Color_
-- **color2** : _Color_
-- **mortar** : _Color_
-- **scale** : _Float_
-- **mortar_size** : _Float_
-- **mortar_smooth** : _Float_
-- **bias** : _Float_
-- **brick_width** : _Float_
-- **row_height** : _Float_
+offset : float (default = 0.5)
+- offset_frequency : int (default = 2)
+- squash : float (default = 1.0)
+- squash_frequency : int (default = 2)
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **offset** : _0.5_ float
-- **offset_frequency** : _2_ int
-- **squash** : _1.0_ float
-- **squash_frequency** : _2_ int
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **color** : _Color_
-- **fac** : _Float_
-
-
+color : Color
+- fac : Float
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Texture](../sockets/Texture.md) [Brick](../sockets/Texture.md#brick) : Static method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Texture) [Brick](section:Data socket Texture/Brick) : Static method
 

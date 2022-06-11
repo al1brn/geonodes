@@ -1,13 +1,12 @@
 
-# Class EdgeNeighbors
+# Node EdgeNeighbors
 
-> Geometry node name: _'Edge Neighbors'_<br>Blender type:  **GeometryNodeInputMeshEdgeNeighbors**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_neighbors.html)<br>
+  Blender type: [Edge Neighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeNeighbors.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,33 +14,22 @@ node = nodes.EdgeNeighbors(label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Node label
+### Node label
 
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **face_count** : _Integer_
-
-
+face_count : Integer
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [capture_edge_neighbors](../sockets/Mesh.md#capture_edge_neighbors) : Capture attribute
-- [Mesh](../sockets/Mesh.md) [edge_neighbors](../sockets/Mesh.md#edge_neighbors) : Attribute
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [capture_edge_neighbors](section:Data socket Mesh/capture_edge_neighbors) : Capture attribute
+- [class_name](section:Data socket Mesh) [edge_neighbors](section:Data socket Mesh/edge_neighbors) : Attribute
+  

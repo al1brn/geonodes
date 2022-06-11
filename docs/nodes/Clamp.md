@@ -1,13 +1,12 @@
 
-# Class Clamp
+# Node Clamp
 
-> Geometry node name: _'Clamp'_<br>Blender type:  **ShaderNodeClamp**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/clamp.html)<br>
+  Blender type: [Clamp](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,50 +14,31 @@ node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX', label=No
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+value : Float
+- min : Float
+- max : Float
 
+### Parameters
 
-- **value** : _Float_
-- **min** : _Float_
-- **max** : _Float_
+clamp_type : str (default = 'MINMAX') in ('MINMAX', 'RANGE')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **clamp_type** : _'MINMAX'_ in ('MINMAX', 'RANGE')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **result** : _Float_
-
-
+result : Float
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Float](../sockets/Float.md) [clamp](../sockets/Float.md#clamp) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Float) [clamp](section:Data socket Float/clamp) : Method
 

@@ -1,13 +1,12 @@
 
-# Class AttributeStatistic
+# Node AttributeStatistic
 
-> Geometry node name: _'Attribute Statistic'_<br>Blender type:  **GeometryNodeAttributeStatistic**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/attribute_statistic.html)<br>
+  Blender type: [Attribute Statistic](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,69 +14,48 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
+- selection : Boolean
+- attribute : data_type dependant
 
+### Parameters
 
-- **geometry** : _Geometry_
-- **selection** : _Boolean_
-- **attribute** : **data_type** dependant
+data_type : str (default = 'FLOAT') in ('FLOAT', 'FLOAT_VECTOR')
+- domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **data_type** : _'FLOAT'_ in ('FLOAT', 'FLOAT_VECTOR')
-- **domain** : _'POINT'_ in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Data type dependant sockets
 
-
-
-- Driving parameter : **data_type** in ('FLOAT', 'FLOAT_VECTOR')
-- Input sockets : attribute
-- Output sockets : mean median sum min max range standard_deviation variance
-
-
+- Driving parameter : data_type in ('FLOAT', 'FLOAT_VECTOR')
+- Input sockets  : ['attribute']
+- Output sockets : ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']   
+  
+  
 
 ## Output sockets
 
-
-
-- **mean** : **data_type** dependant
-- **median** : **data_type** dependant
-- **sum** : **data_type** dependant
-- **min** : **data_type** dependant
-- **max** : **data_type** dependant
-- **range** : **data_type** dependant
-- **standard_deviation** : **data_type** dependant
-- **variance** : **data_type** dependant
-
-
+mean : data_type dependant
+- median : data_type dependant
+- sum : data_type dependant
+- min : data_type dependant
+- max : data_type dependant
+- range : data_type dependant
+- standard_deviation : data_type dependant
+- variance : data_type dependant
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Float](../sockets/Float.md) [attribute_statistic](../sockets/Float.md#attribute_statistic) : Method
-- [Vector](../sockets/Vector.md) [attribute_statistic](../sockets/Vector.md#attribute_statistic) : Method
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Float) [attribute_statistic](section:Data socket Float/attribute_statistic) : Method
+- [class_name](section:Data socket Vector) [attribute_statistic](section:Data socket Vector/attribute_statistic) : Method
+  

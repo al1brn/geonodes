@@ -1,13 +1,12 @@
 
-# Class Arc
+# Node Arc
 
-> Geometry node name: _'Arc'_<br>Blender type:  **GeometryNodeCurveArc**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/arc.html)<br>
+  Blender type: [Arc](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,61 +14,42 @@ node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+resolution : Integer
+- start : Vector
+- middle : Vector
+- end : Vector
+- radius : Float
+- start_angle : Float
+- sweep_angle : Float
+- offset_angle : Float
+- connect_center : Boolean
+- invert_arc : Boolean
 
+### Parameters
 
-- **resolution** : _Integer_
-- **start** : _Vector_
-- **middle** : _Vector_
-- **end** : _Vector_
-- **radius** : _Float_
-- **start_angle** : _Float_
-- **sweep_angle** : _Float_
-- **offset_angle** : _Float_
-- **connect_center** : _Boolean_
-- **invert_arc** : _Boolean_
+mode : str (default = 'RADIUS') in ('POINTS', 'RADIUS')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **mode** : _'RADIUS'_ in ('POINTS', 'RADIUS')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **curve** : _Curve_
-- **center** : _Vector_
-- **normal** : _Vector_
-- **radius** : _Float_
-
-
+curve : Curve
+- center : Vector
+- normal : Vector
+- radius : Float
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [ArcFromPoints](../sockets/Curve.md#arcfrompoints) : Static method
-- [Curve](../sockets/Curve.md) [ArcFromRadius](../sockets/Curve.md#arcfromradius) : Constructor
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [ArcFromPoints](section:Data socket Curve/ArcFromPoints) : Static method
+- [class_name](section:Data socket Curve) [ArcFromRadius](section:Data socket Curve/ArcFromRadius) : Constructor
+  

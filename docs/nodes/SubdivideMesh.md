@@ -1,13 +1,12 @@
 
-# Class SubdivideMesh
+# Node SubdivideMesh
 
-> Geometry node name: _'Subdivide Mesh'_<br>Blender type:  **GeometryNodeSubdivideMesh**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Subdivide Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/subdivide_mesh.html)<br>
+  Blender type: [Subdivide Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideMesh.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,41 +14,26 @@ node = nodes.SubdivideMesh(mesh=None, level=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+mesh : Mesh
+- level : Integer
 
+### Node label
 
-- **mesh** : _Mesh_
-- **level** : _Integer_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-
-
+mesh : Mesh
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [subdivide](../sockets/Mesh.md#subdivide) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [subdivide](section:Data socket Mesh/subdivide) : Method
 

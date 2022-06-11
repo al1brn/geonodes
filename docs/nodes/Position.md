@@ -1,13 +1,12 @@
 
-# Class Position
+# Node Position
 
-> Geometry node name: _'Position'_<br>Blender type:  **GeometryNodeInputPosition**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/position.html)<br>
+  Blender type: [Position](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,33 +14,22 @@ node = nodes.Position(label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Node label
+### Node label
 
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **position** : _Vector_
-
-
+position : Vector
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [capture_position](../sockets/Geometry.md#capture_position) : Capture attribute
-- [Geometry](../sockets/Geometry.md) [position](../sockets/Geometry.md#position) : Attribute
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [capture_position](section:Data socket Geometry/capture_position) : Capture attribute
+- [class_name](section:Data socket Geometry) [position](section:Data socket Geometry/position) : Attribute
+  

@@ -1,13 +1,12 @@
 
-# Class CurveToPoints
+# Node CurveToPoints
 
-> Geometry node name: _'Curve to Points'_<br>Blender type:  **GeometryNodeCurveToPoints**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_to_points.html)<br>
+  Blender type: [Curve to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,53 +14,34 @@ node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT', la
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+curve : Curve
+- count : Integer
+- length : Float
 
+### Parameters
 
-- **curve** : _Curve_
-- **count** : _Integer_
-- **length** : _Float_
+mode : str (default = 'COUNT') in ('EVALUATED', 'COUNT', 'LENGTH')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **mode** : _'COUNT'_ in ('EVALUATED', 'COUNT', 'LENGTH')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **points** : _Points_
-- **tangent** : _Vector_
-- **normal** : _Vector_
-- **rotation** : _Vector_
-
-
+points : Points
+- tangent : Vector
+- normal : Vector
+- rotation : Vector
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [to_points](../sockets/Curve.md#to_points) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [to_points](section:Data socket Curve/to_points) : Method
 

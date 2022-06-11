@@ -1,13 +1,12 @@
 
-# Class Triangulate
+# Node Triangulate
 
-> Geometry node name: _'Triangulate'_<br>Blender type:  **GeometryNodeTriangulate**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/triangulate.html)<br>
+  Blender type: [Triangulate](https://docs.blender.org/api/current/bpy.types.GeometryNodeTriangulate.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,51 +14,32 @@ node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+mesh : Mesh
+- selection : Boolean
+- minimum_vertices : Integer
 
+### Parameters
 
-- **mesh** : _Mesh_
-- **selection** : _Boolean_
-- **minimum_vertices** : _Integer_
+ngon_method : str (default = 'BEAUTY') in ('BEAUTY', 'CLIP')
+- quad_method : str (default = 'SHORTEST_DIAGONAL') in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **ngon_method** : _'BEAUTY'_ in ('BEAUTY', 'CLIP')
-- **quad_method** : _'SHORTEST_DIAGONAL'_ in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-
-
+mesh : Mesh
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [triangulate](../sockets/Mesh.md#triangulate) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [triangulate](section:Data socket Mesh/triangulate) : Method
 

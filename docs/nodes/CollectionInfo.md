@@ -1,13 +1,12 @@
 
-# Class CollectionInfo
+# Node CollectionInfo
 
-> Geometry node name: _'Collection Info'_<br>Blender type:  **GeometryNodeCollectionInfo**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/collection_info.html)<br>
+  Blender type: [Collection Info](https://docs.blender.org/api/current/bpy.types.GeometryNodeCollectionInfo.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,50 +14,31 @@ node = nodes.CollectionInfo(collection=None, separate_children=None, reset_child
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+collection : Collection
+- separate_children : Boolean
+- reset_children : Boolean
 
+### Parameters
 
-- **collection** : _Collection_
-- **separate_children** : _Boolean_
-- **reset_children** : _Boolean_
+transform_space : str (default = 'ORIGINAL') in ('ORIGINAL', 'RELATIVE')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **transform_space** : _'ORIGINAL'_ in ('ORIGINAL', 'RELATIVE')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **geometry** : _Geometry_
-
-
+geometry : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Collection](../sockets/Collection.md) [info](../sockets/Collection.md#info) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Collection) [info](section:Data socket Collection/info) : Method
 

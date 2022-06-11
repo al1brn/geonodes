@@ -1,13 +1,12 @@
 
-# Class UvSphere
+# Node UvSphere
 
-> Geometry node name: _'UV Sphere'_<br>Blender type:  **GeometryNodeMeshUVSphere**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/uv_sphere.html)<br>
+  Blender type: [UV Sphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshUVSphere.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,42 +14,27 @@ node = nodes.UvSphere(segments=None, rings=None, radius=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+segments : Integer
+- rings : Integer
+- radius : Float
 
+### Node label
 
-- **segments** : _Integer_
-- **rings** : _Integer_
-- **radius** : _Float_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-
-
+mesh : Mesh
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [UVSphere](../sockets/Mesh.md#uvsphere) : Constructor
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [UVSphere](section:Data socket Mesh/UVSphere) : Constructor
 

@@ -1,13 +1,12 @@
 
-# Class CurveToMesh
+# Node CurveToMesh
 
-> Geometry node name: _'Curve to Mesh'_<br>Blender type:  **GeometryNodeCurveToMesh**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_to_mesh.html)<br>
+  Blender type: [Curve to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToMesh.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,42 +14,27 @@ node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None, label=N
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+curve : Curve
+- profile_curve : Geometry
+- fill_caps : Boolean
 
+### Node label
 
-- **curve** : _Curve_
-- **profile_curve** : _Geometry_
-- **fill_caps** : _Boolean_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-
-
+mesh : Mesh
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [to_mesh](../sockets/Curve.md#to_mesh) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [to_mesh](section:Data socket Curve/to_mesh) : Method
 

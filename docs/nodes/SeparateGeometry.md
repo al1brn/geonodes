@@ -1,13 +1,12 @@
 
-# Class SeparateGeometry
+# Node SeparateGeometry
 
-> Geometry node name: _'Separate Geometry'_<br>Blender type:  **GeometryNodeSeparateGeometry**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_geometry.html)<br>
+  Blender type: [Separate Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,50 +14,31 @@ node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT', lab
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
+- selection : Boolean
 
+### Parameters
 
-- **geometry** : _Geometry_
-- **selection** : _Boolean_
+domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **domain** : _'POINT'_ in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **selection** : _Geometry_
-- **inverted** : _Geometry_
-
-
+selection : Geometry
+- inverted : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [components](../sockets/Geometry.md#components) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [components](section:Data socket Geometry/components) : Method
 

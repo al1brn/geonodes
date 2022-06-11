@@ -1,13 +1,12 @@
 
-# Class Star
+# Node Star
 
-> Geometry node name: _'Star'_<br>Blender type:  **GeometryNodeCurveStar**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/star.html)<br>
+  Blender type: [Star](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveStar.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,44 +14,29 @@ node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None,
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+points : Integer
+- inner_radius : Float
+- outer_radius : Float
+- twist : Float
 
+### Node label
 
-- **points** : _Integer_
-- **inner_radius** : _Float_
-- **outer_radius** : _Float_
-- **twist** : _Float_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **curve** : _Curve_
-- **outer_points** : _Boolean_
-
-
+curve : Curve
+- outer_points : Boolean
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [Star](../sockets/Curve.md#star) : Constructor
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [Star](section:Data socket Curve/Star) : Constructor
 

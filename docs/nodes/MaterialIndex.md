@@ -1,13 +1,12 @@
 
-# Class MaterialIndex
+# Node MaterialIndex
 
-> Geometry node name: _'Material Index'_<br>Blender type:  **GeometryNodeInputMaterialIndex**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html)<br>
+  Blender type: [Material Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,33 +14,22 @@ node = nodes.MaterialIndex(label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Node label
+### Node label
 
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **material_index** : _Integer_
-
-
+material_index : Integer
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [capture_material_index](../sockets/Mesh.md#capture_material_index) : Capture attribute
-- [Mesh](../sockets/Mesh.md) [material_index](../sockets/Mesh.md#material_index) : Attribute
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [capture_material_index](section:Data socket Mesh/capture_material_index) : Capture attribute
+- [class_name](section:Data socket Mesh) [material_index](section:Data socket Mesh/material_index) : Attribute
+  

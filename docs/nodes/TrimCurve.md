@@ -1,13 +1,12 @@
 
-# Class TrimCurve
+# Node TrimCurve
 
-> Geometry node name: _'Trim Curve'_<br>Blender type:  **GeometryNodeTrimCurve**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/trim_curve.html)<br>
+  Blender type: [Trim Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,52 +14,33 @@ node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=Non
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+curve : Curve
+- start0 : Float
+- start1 : Float
+- end0 : Float
+- end1 : Float
 
+### Parameters
 
-- **curve** : _Curve_
-- **start0** : _Float_
-- **start1** : _Float_
-- **end0** : _Float_
-- **end1** : _Float_
+mode : str (default = 'FACTOR') in ('FACTOR', 'LENGTH')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **mode** : _'FACTOR'_ in ('FACTOR', 'LENGTH')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **curve** : _Curve_
-
-
+curve : Curve
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [trim](../sockets/Curve.md#trim) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [trim](section:Data socket Curve/trim) : Method
 

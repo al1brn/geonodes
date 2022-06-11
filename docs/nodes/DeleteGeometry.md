@@ -1,13 +1,12 @@
 
-# Class DeleteGeometry
+# Node DeleteGeometry
 
-> Geometry node name: _'Delete Geometry'_<br>Blender type:  **GeometryNodeDeleteGeometry**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/delete_geometry.html)<br>
+  Blender type: [Delete Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,50 +14,31 @@ node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode=
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
+- selection : Boolean
 
+### Parameters
 
-- **geometry** : _Geometry_
-- **selection** : _Boolean_
+domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+- mode : str (default = 'ALL') in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **domain** : _'POINT'_ in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
-- **mode** : _'ALL'_ in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **geometry** : _Geometry_
-
-
+geometry : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [delete_geometry](../sockets/Geometry.md#delete_geometry) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [delete_geometry](section:Data socket Geometry/delete_geometry) : Method
 

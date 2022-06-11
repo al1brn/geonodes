@@ -1,13 +1,12 @@
 
-# Class InstancesToPoints
+# Node InstancesToPoints
 
-> Geometry node name: _'Instances to Points'_<br>Blender type:  **GeometryNodeInstancesToPoints**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/instances_to_points.html)<br>
+  Blender type: [Instances to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,43 +14,28 @@ node = nodes.InstancesToPoints(instances=None, selection=None, position=None, ra
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+instances : Instances
+- selection : Boolean
+- position : Vector
+- radius : Float
 
+### Node label
 
-- **instances** : _Instances_
-- **selection** : _Boolean_
-- **position** : _Vector_
-- **radius** : _Float_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **points** : _Points_
-
-
+points : Points
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Instances](../sockets/Instances.md) [to_points](../sockets/Instances.md#to_points) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Instances) [to_points](section:Data socket Instances/to_points) : Method
 

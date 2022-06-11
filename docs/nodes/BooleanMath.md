@@ -1,13 +1,12 @@
 
-# Class BooleanMath
+# Node BooleanMath
 
-> Geometry node name: _'Boolean Math'_<br>Blender type:  **FunctionNodeBooleanMath**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html)<br>
+  Blender type: [Boolean Math](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,57 +14,38 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND', label=No
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+boolean0 : Boolean
+- boolean1 : Boolean
 
+### Parameters
 
-- **boolean0** : _Boolean_
-- **boolean1** : _Boolean_
+operation : str (default = 'AND') in ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **operation** : _'AND'_ in ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **boolean** : _Boolean_
-
-
+boolean : Boolean
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Boolean](../sockets/Boolean.md) [b_and](../sockets/Boolean.md#b_and) : Method
-- [Boolean](../sockets/Boolean.md) [b_not](../sockets/Boolean.md#b_not) : Method
-- [Boolean](../sockets/Boolean.md) [b_or](../sockets/Boolean.md#b_or) : Method
-- [Boolean](../sockets/Boolean.md) [imply](../sockets/Boolean.md#imply) : Method
-- [Boolean](../sockets/Boolean.md) [nand](../sockets/Boolean.md#nand) : Method
-- [Boolean](../sockets/Boolean.md) [nimply](../sockets/Boolean.md#nimply) : Method
-- [Boolean](../sockets/Boolean.md) [nor](../sockets/Boolean.md#nor) : Method
-- [Boolean](../sockets/Boolean.md) [xnor](../sockets/Boolean.md#xnor) : Method
-- [Boolean](../sockets/Boolean.md) [xor](../sockets/Boolean.md#xor) : Method
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Boolean) [b_and](section:Data socket Boolean/b_and) : Method
+- [class_name](section:Data socket Boolean) [b_not](section:Data socket Boolean/b_not) : Method
+- [class_name](section:Data socket Boolean) [b_or](section:Data socket Boolean/b_or) : Method
+- [class_name](section:Data socket Boolean) [imply](section:Data socket Boolean/imply) : Method
+- [class_name](section:Data socket Boolean) [nand](section:Data socket Boolean/nand) : Method
+- [class_name](section:Data socket Boolean) [nimply](section:Data socket Boolean/nimply) : Method
+- [class_name](section:Data socket Boolean) [nor](section:Data socket Boolean/nor) : Method
+- [class_name](section:Data socket Boolean) [xnor](section:Data socket Boolean/xnor) : Method
+- [class_name](section:Data socket Boolean) [xor](section:Data socket Boolean/xor) : Method
+  

@@ -1,13 +1,12 @@
 
-# Class RotateEuler
+# Node RotateEuler
 
-> Geometry node name: _'Rotate Euler'_<br>Blender type:  **FunctionNodeRotateEuler**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/rotate_euler.html)<br>
+  Blender type: [Rotate Euler](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,51 +14,32 @@ node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, s
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+rotation : Vector
+- rotate_by : Vector
+- axis : Vector
+- angle : Float
 
+### Parameters
 
-- **rotation** : _Vector_
-- **rotate_by** : _Vector_
-- **axis** : _Vector_
-- **angle** : _Float_
+space : str (default = 'OBJECT') in ('OBJECT', 'LOCAL')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **space** : _'OBJECT'_ in ('OBJECT', 'LOCAL')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **rotation** : _Vector_
-
-
+rotation : Vector
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Vector](../sockets/Vector.md) [rotate_euler](../sockets/Vector.md#rotate_euler) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Vector) [rotate_euler](section:Data socket Vector/rotate_euler) : Method
 

@@ -1,13 +1,12 @@
 
-# Class Transform
+# Node Transform
 
-> Geometry node name: _'Transform'_<br>Blender type:  **GeometryNodeTransform**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/transform.html)<br>
+  Blender type: [Transform](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,43 +14,28 @@ node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=Non
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
+- translation : Vector
+- rotation : Vector
+- scale : Vector
 
+### Node label
 
-- **geometry** : _Geometry_
-- **translation** : _Vector_
-- **rotation** : _Vector_
-- **scale** : _Vector_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **geometry** : _Geometry_
-
-
+geometry : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [transform](../sockets/Geometry.md#transform) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [transform](section:Data socket Geometry/transform) : Method
 

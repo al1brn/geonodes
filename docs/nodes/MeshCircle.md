@@ -1,13 +1,12 @@
 
-# Class MeshCircle
+# Node MeshCircle
 
-> Geometry node name: _'Mesh Circle'_<br>Blender type:  **GeometryNodeMeshCircle**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_circle.html)<br>
+  Blender type: [Mesh Circle](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCircle.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,49 +14,30 @@ node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE', label=None
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+vertices : Integer
+- radius : Float
 
+### Parameters
 
-- **vertices** : _Integer_
-- **radius** : _Float_
+fill_type : str (default = 'NONE') in ('NONE', 'NGON', 'TRIANGLE_FAN')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **fill_type** : _'NONE'_ in ('NONE', 'NGON', 'TRIANGLE_FAN')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-
-
+mesh : Mesh
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [Circle](../sockets/Mesh.md#circle) : Constructor
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [Circle](section:Data socket Mesh/Circle) : Constructor
 

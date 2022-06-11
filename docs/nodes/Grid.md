@@ -1,13 +1,12 @@
 
-# Class Grid
+# Node Grid
 
-> Geometry node name: _'Grid'_<br>Blender type:  **GeometryNodeMeshGrid**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/grid.html)<br>
+  Blender type: [Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshGrid.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,43 +14,28 @@ node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, la
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+size_x : Float
+- size_y : Float
+- vertices_x : Integer
+- vertices_y : Integer
 
+### Node label
 
-- **size_x** : _Float_
-- **size_y** : _Float_
-- **vertices_x** : _Integer_
-- **vertices_y** : _Integer_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-
-
+mesh : Mesh
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [Grid](../sockets/Mesh.md#grid) : Constructor
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [Grid](section:Data socket Mesh/Grid) : Constructor
 

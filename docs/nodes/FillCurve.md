@@ -1,13 +1,12 @@
 
-# Class FillCurve
+# Node FillCurve
 
-> Geometry node name: _'Fill Curve'_<br>Blender type:  **GeometryNodeFillCurve**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/fill_curve.html)<br>
+  Blender type: [Fill Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,48 +14,29 @@ node = nodes.FillCurve(curve=None, mode='TRIANGLES', label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+curve : Curve
 
+### Parameters
 
-- **curve** : _Curve_
+mode : str (default = 'TRIANGLES') in ('TRIANGLES', 'NGONS')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **mode** : _'TRIANGLES'_ in ('TRIANGLES', 'NGONS')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-
-
+mesh : Mesh
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [fill](../sockets/Curve.md#fill) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [fill](section:Data socket Curve/fill) : Method
 

@@ -1,13 +1,12 @@
 
-# Class StringToCurves
+# Node StringToCurves
 
-> Geometry node name: _'String to Curves'_<br>Blender type:  **GeometryNodeStringToCurves**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/string_to_curves.html)<br>
+  Blender type: [String to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,60 +14,41 @@ node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+string : String
+- size : Float
+- character_spacing : Float
+- word_spacing : Float
+- line_spacing : Float
+- text_box_width : Float
+- text_box_height : Float
 
+### Parameters
 
-- **string** : _String_
-- **size** : _Float_
-- **character_spacing** : _Float_
-- **word_spacing** : _Float_
-- **line_spacing** : _Float_
-- **text_box_width** : _Float_
-- **text_box_height** : _Float_
+align_x : str (default = 'LEFT') in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
+- align_y : str (default = 'TOP_BASELINE') in ('TOP_BASELINE', 'TOP', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
+- overflow : str (default = 'OVERFLOW') in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
+- pivot_mode : str (default = 'BOTTOM_LEFT') in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **align_x** : _'LEFT'_ in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
-- **align_y** : _'TOP_BASELINE'_ in ('TOP_BASELINE', 'TOP', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
-- **overflow** : _'OVERFLOW'_ in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
-- **pivot_mode** : _'BOTTOM_LEFT'_ in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **curve_instances** : _Geometry_
-- **remainder** : _String_
-- **line** : _Integer_
-- **pivot_point** : _Vector_
-
-
+curve_instances : Geometry
+- remainder : String
+- line : Integer
+- pivot_point : Vector
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [String](../sockets/String.md) [to_curves](../sockets/String.md#to_curves) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket String) [to_curves](section:Data socket String/to_curves) : Method
 

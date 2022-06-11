@@ -1,13 +1,12 @@
 
-# Class TranslateInstances
+# Node TranslateInstances
 
-> Geometry node name: _'Translate Instances'_<br>Blender type:  **GeometryNodeTranslateInstances**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/translate_instances.html)<br>
+  Blender type: [Translate Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,43 +14,28 @@ node = nodes.TranslateInstances(instances=None, selection=None, translation=None
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+instances : Instances
+- selection : Boolean
+- translation : Vector
+- local_space : Boolean
 
+### Node label
 
-- **instances** : _Instances_
-- **selection** : _Boolean_
-- **translation** : _Vector_
-- **local_space** : _Boolean_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **instances** : _Instances_
-
-
+instances : Instances
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Instances](../sockets/Instances.md) [translate](../sockets/Instances.md#translate) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Instances) [translate](section:Data socket Instances/translate) : Method
 

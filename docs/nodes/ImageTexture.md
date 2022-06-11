@@ -1,13 +1,12 @@
 
-# Class ImageTexture
+# Node ImageTexture
 
-> Geometry node name: _'Image Texture'_<br>Blender type:  **GeometryNodeImageTexture**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/image_texture.html)<br>
+  Blender type: [Image Texture](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,52 +14,33 @@ node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+image : Image
+- vector : Vector
+- frame : Integer
 
+### Parameters
 
-- **image** : _Image_
-- **vector** : _Vector_
-- **frame** : _Integer_
+extension : str (default = 'REPEAT') in ('REPEAT', 'EXTEND', 'CLIP')
+- interpolation : str (default = 'Linear') in ('Linear', 'Closest', 'Cubic')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **extension** : _'REPEAT'_ in ('REPEAT', 'EXTEND', 'CLIP')
-- **interpolation** : _'Linear'_ in ('Linear', 'Closest', 'Cubic')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **color** : _Color_
-- **alpha** : _Float_
-
-
+color : Color
+- alpha : Float
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Texture](../sockets/Texture.md) [Image](../sockets/Texture.md#image) : Static method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Texture) [Image](section:Data socket Texture/Image) : Static method
 

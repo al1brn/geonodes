@@ -1,13 +1,12 @@
 
-# Class VolumeToMesh
+# Node VolumeToMesh
 
-> Geometry node name: _'Volume to Mesh'_<br>Blender type:  **GeometryNodeVolumeToMesh**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/volume_to_mesh.html)<br>
+  Blender type: [Volume to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,52 +14,33 @@ node = nodes.VolumeToMesh(volume=None, voxel_size=None, voxel_amount=None, thres
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+volume : Volume
+- voxel_size : Float
+- voxel_amount : Float
+- threshold : Float
+- adaptivity : Float
 
+### Parameters
 
-- **volume** : _Volume_
-- **voxel_size** : _Float_
-- **voxel_amount** : _Float_
-- **threshold** : _Float_
-- **adaptivity** : _Float_
+resolution_mode : str (default = 'GRID') in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **resolution_mode** : _'GRID'_ in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-
-
+mesh : Mesh
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Volume](../sockets/Volume.md) [to_mesh](../sockets/Volume.md#to_mesh) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Volume) [to_mesh](section:Data socket Volume/to_mesh) : Method
 

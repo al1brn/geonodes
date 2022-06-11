@@ -1,13 +1,12 @@
 
-# Class Cube
+# Node Cube
 
-> Geometry node name: _'Cube'_<br>Blender type:  **GeometryNodeMeshCube**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/cube.html)<br>
+  Blender type: [Cube](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCube.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,43 +14,28 @@ node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, 
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+size : Vector
+- vertices_x : Integer
+- vertices_y : Integer
+- vertices_z : Integer
 
+### Node label
 
-- **size** : _Vector_
-- **vertices_x** : _Integer_
-- **vertices_y** : _Integer_
-- **vertices_z** : _Integer_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-
-
+mesh : Mesh
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [Cube](../sockets/Mesh.md#cube) : Constructor
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [Cube](section:Data socket Mesh/Cube) : Constructor
 

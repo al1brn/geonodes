@@ -1,13 +1,12 @@
 
-# Class ResampleCurve
+# Node ResampleCurve
 
-> Geometry node name: _'Resample Curve'_<br>Blender type:  **GeometryNodeResampleCurve**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/resample_curve.html)<br>
+  Blender type: [Resample Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,51 +14,32 @@ node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, 
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+curve : Curve
+- selection : Boolean
+- count : Integer
+- length : Float
 
+### Parameters
 
-- **curve** : _Curve_
-- **selection** : _Boolean_
-- **count** : _Integer_
-- **length** : _Float_
+mode : str (default = 'COUNT') in ('EVALUATED', 'COUNT', 'LENGTH')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **mode** : _'COUNT'_ in ('EVALUATED', 'COUNT', 'LENGTH')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **curve** : _Curve_
-
-
+curve : Curve
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [resample](../sockets/Curve.md#resample) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [resample](section:Data socket Curve/resample) : Method
 

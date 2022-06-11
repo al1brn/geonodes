@@ -1,13 +1,12 @@
 
-# Class SetSplineResolution
+# Node SetSplineResolution
 
-> Geometry node name: _'Set Spline Resolution'_<br>Blender type:  **GeometryNodeSetSplineResolution**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_spline_resolution.html)<br>
+  Blender type: [Set Spline Resolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,42 +14,27 @@ node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None,
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
+- selection : Boolean
+- resolution : Integer
 
+### Node label
 
-- **geometry** : _Geometry_
-- **selection** : _Boolean_
-- **resolution** : _Integer_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **geometry** : _Geometry_
-
-
+geometry : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Spline](../sockets/Spline.md) [set_resolution](../sockets/Spline.md#set_resolution) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Spline) [set_resolution](section:Data socket Spline/set_resolution) : Method
 

@@ -1,13 +1,12 @@
 
-# Class RealizeInstances
+# Node RealizeInstances
 
-> Geometry node name: _'Realize Instances'_<br>Blender type:  **GeometryNodeRealizeInstances**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/realize_instances.html)<br>
+  Blender type: [Realize Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,48 +14,29 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
 
+### Parameters
 
-- **geometry** : _Geometry_
+legacy_behavior : bool (default = False)
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **legacy_behavior** : _False_ bool
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **geometry** : _Geometry_
-
-
+geometry : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [realize_instances](../sockets/Geometry.md#realize_instances) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [realize_instances](section:Data socket Geometry/realize_instances) : Method
 

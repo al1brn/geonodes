@@ -1,13 +1,12 @@
 
-# Class SliceString
+# Node SliceString
 
-> Geometry node name: _'Slice String'_<br>Blender type:  **FunctionNodeSliceString**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/slice_string.html)<br>
+  Blender type: [Slice String](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,42 +14,27 @@ node = nodes.SliceString(string=None, position=None, length=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+string : String
+- position : Integer
+- length : Integer
 
+### Node label
 
-- **string** : _String_
-- **position** : _Integer_
-- **length** : _Integer_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **string** : _String_
-
-
+string : String
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [String](../sockets/String.md) [slice](../sockets/String.md#slice) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket String) [slice](section:Data socket String/slice) : Method
 

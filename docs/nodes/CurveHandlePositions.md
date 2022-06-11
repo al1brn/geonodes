@@ -1,13 +1,12 @@
 
-# Class CurveHandlePositions
+# Node CurveHandlePositions
 
-> Geometry node name: _'Curve Handle Positions'_<br>Blender type:  **GeometryNodeInputCurveHandlePositions**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_handle_positions.html)<br>
+  Blender type: [Curve Handle Positions](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,43 +14,28 @@ node = nodes.CurveHandlePositions(relative=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+relative : Boolean
 
+### Node label
 
-- **relative** : _Boolean_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **left** : _Vector_
-- **right** : _Vector_
-
-
+left : Vector
+- right : Vector
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Spline](../sockets/Spline.md) [capture_handle_positions](../sockets/Spline.md#capture_handle_positions) : Capture attribute
-- [Spline](../sockets/Spline.md) [left_handle_position](../sockets/Spline.md#left_handle_position) : Attribute
-- [Spline](../sockets/Spline.md) [right_handle_position](../sockets/Spline.md#right_handle_position) : Attribute
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Spline) [capture_handle_positions](section:Data socket Spline/capture_handle_positions) : Capture attribute
+- [class_name](section:Data socket Spline) [left_handle_position](section:Data socket Spline/left_handle_position) : Attribute
+- [class_name](section:Data socket Spline) [right_handle_position](section:Data socket Spline/right_handle_position) : Attribute
+  

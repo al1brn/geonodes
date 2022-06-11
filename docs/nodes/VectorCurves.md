@@ -1,13 +1,12 @@
 
-# Class VectorCurves
+# Node VectorCurves
 
-> Geometry node name: _'Vector Curves'_<br>Blender type:  **ShaderNodeVectorCurve**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_curves.html)<br>
+  Blender type: [Vector Curves](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,41 +14,26 @@ node = nodes.VectorCurves(fac=None, vector=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+fac : Float
+- vector : Vector
 
+### Node label
 
-- **fac** : _Float_
-- **vector** : _Vector_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **vector** : _Vector_
-
-
+vector : Vector
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Vector](../sockets/Vector.md) [curves](../sockets/Vector.md#curves) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Vector) [curves](section:Data socket Vector/curves) : Method
 

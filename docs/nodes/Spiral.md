@@ -1,13 +1,12 @@
 
-# Class Spiral
+# Node Spiral
 
-> Geometry node name: _'Spiral'_<br>Blender type:  **GeometryNodeCurveSpiral**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Spiral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spiral.html)<br>
+  Blender type: [Spiral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSpiral.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,45 +14,30 @@ node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radi
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+resolution : Integer
+- rotations : Float
+- start_radius : Float
+- end_radius : Float
+- height : Float
+- reverse : Boolean
 
+### Node label
 
-- **resolution** : _Integer_
-- **rotations** : _Float_
-- **start_radius** : _Float_
-- **end_radius** : _Float_
-- **height** : _Float_
-- **reverse** : _Boolean_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **curve** : _Curve_
-
-
+curve : Curve
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [Spiral](../sockets/Curve.md#spiral) : Constructor
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [Spiral](section:Data socket Curve/Spiral) : Constructor
 

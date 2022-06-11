@@ -1,13 +1,12 @@
 
-# Class WhiteNoiseTexture
+# Node WhiteNoiseTexture
 
-> Geometry node name: _'White Noise Texture'_<br>Blender type:  **ShaderNodeTexWhiteNoise**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/white_noise_texture.html)<br>
+  Blender type: [White Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,50 +14,31 @@ node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', label
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+vector : Vector
+- w : Float
 
+### Parameters
 
-- **vector** : _Vector_
-- **w** : _Float_
+noise_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **noise_dimensions** : _'3D'_ in ('1D', '2D', '3D', '4D')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **value** : _Float_
-- **color** : _Color_
-
-
+value : Float
+- color : Color
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Texture](../sockets/Texture.md) [WhiteNoise](../sockets/Texture.md#whitenoise) : Static method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Texture) [WhiteNoise](section:Data socket Texture/WhiteNoise) : Static method
 

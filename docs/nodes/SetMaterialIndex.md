@@ -1,13 +1,12 @@
 
-# Class SetMaterialIndex
+# Node SetMaterialIndex
 
-> Geometry node name: _'Set Material Index'_<br>Blender type:  **GeometryNodeSetMaterialIndex**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Set Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html)<br>
+  Blender type: [Set Material Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,42 +14,27 @@ node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
+- selection : Boolean
+- material_index : Integer
 
+### Node label
 
-- **geometry** : _Geometry_
-- **selection** : _Boolean_
-- **material_index** : _Integer_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **geometry** : _Geometry_
-
-
+geometry : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [set_material_index](../sockets/Geometry.md#set_material_index) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [set_material_index](section:Data socket Geometry/set_material_index) : Method
 

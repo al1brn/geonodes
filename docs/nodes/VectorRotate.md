@@ -1,13 +1,12 @@
 
-# Class VectorRotate
+# Node VectorRotate
 
-> Geometry node name: _'Vector Rotate'_<br>Blender type:  **ShaderNodeVectorRotate**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector_rotate.html)<br>
+  Blender type: [Vector Rotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,53 +14,34 @@ node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotat
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+vector : Vector
+- center : Vector
+- axis : Vector
+- angle : Float
+- rotation : Vector
 
+### Parameters
 
-- **vector** : _Vector_
-- **center** : _Vector_
-- **axis** : _Vector_
-- **angle** : _Float_
-- **rotation** : _Vector_
+invert : bool (default = False)
+- rotation_type : str (default = 'AXIS_ANGLE') in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **invert** : _False_ bool
-- **rotation_type** : _'AXIS_ANGLE'_ in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **vector** : _Vector_
-
-
+vector : Vector
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Vector](../sockets/Vector.md) [rotate](../sockets/Vector.md#rotate) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Vector) [rotate](section:Data socket Vector/rotate) : Method
 

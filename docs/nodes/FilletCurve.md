@@ -1,13 +1,12 @@
 
-# Class FilletCurve
+# Node FilletCurve
 
-> Geometry node name: _'Fillet Curve'_<br>Blender type:  **GeometryNodeFilletCurve**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/fillet_curve.html)<br>
+  Blender type: [Fillet Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFilletCurve.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,51 +14,32 @@ node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None,
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+curve : Curve
+- count : Integer
+- radius : Float
+- limit_radius : Boolean
 
+### Parameters
 
-- **curve** : _Curve_
-- **count** : _Integer_
-- **radius** : _Float_
-- **limit_radius** : _Boolean_
+mode : str (default = 'BEZIER') in ('BEZIER', 'POLY')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **mode** : _'BEZIER'_ in ('BEZIER', 'POLY')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **curve** : _Curve_
-
-
+curve : Curve
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [fillet](../sockets/Curve.md#fillet) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [fillet](section:Data socket Curve/fillet) : Method
 

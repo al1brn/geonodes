@@ -1,13 +1,12 @@
 
-# Class SeparateComponents
+# Node SeparateComponents
 
-> Geometry node name: _'Separate Components'_<br>Blender type:  **GeometryNodeSeparateComponents**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_components.html)<br>
+  Blender type: [Separate Components](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,49 +14,34 @@ node = nodes.SeparateComponents(geometry=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
 
+### Node label
 
-- **geometry** : _Geometry_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-- **point_cloud** : _Geometry_
-- **curve** : _Curve_
-- **volume** : _Volume_
-- **instances** : _Instances_
-
-
+mesh : Mesh
+- point_cloud : Geometry
+- curve : Curve
+- volume : Volume
+- instances : Instances
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [components](../sockets/Geometry.md#components) : Property
-- [Geometry](../sockets/Geometry.md) [curve_component](../sockets/Geometry.md#curve_component) : Property
-- [Geometry](../sockets/Geometry.md) [instances_component](../sockets/Geometry.md#instances_component) : Property
-- [Geometry](../sockets/Geometry.md) [mesh_component](../sockets/Geometry.md#mesh_component) : Property
-- [Geometry](../sockets/Geometry.md) [points_component](../sockets/Geometry.md#points_component) : Property
-- [Geometry](../sockets/Geometry.md) [volume_component](../sockets/Geometry.md#volume_component) : Property
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [components](section:Data socket Geometry/components) : Property
+- [class_name](section:Data socket Geometry) [curve_component](section:Data socket Geometry/curve_component) : Property
+- [class_name](section:Data socket Geometry) [instances_component](section:Data socket Geometry/instances_component) : Property
+- [class_name](section:Data socket Geometry) [mesh_component](section:Data socket Geometry/mesh_component) : Property
+- [class_name](section:Data socket Geometry) [points_component](section:Data socket Geometry/points_component) : Property
+- [class_name](section:Data socket Geometry) [volume_component](section:Data socket Geometry/volume_component) : Property
+  

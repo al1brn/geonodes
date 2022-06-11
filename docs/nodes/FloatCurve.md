@@ -1,13 +1,12 @@
 
-# Class FloatCurve
+# Node FloatCurve
 
-> Geometry node name: _'Float Curve'_<br>Blender type:  **ShaderNodeFloatCurve**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/float_curve.html)<br>
+  Blender type: [Float Curve](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,41 +14,26 @@ node = nodes.FloatCurve(factor=None, value=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+factor : Float
+- value : Float
 
+### Node label
 
-- **factor** : _Float_
-- **value** : _Float_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **value** : _Float_
-
-
+value : Float
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Float](../sockets/Float.md) [curve](../sockets/Float.md#curve) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Float) [curve](section:Data socket Float/curve) : Method
 

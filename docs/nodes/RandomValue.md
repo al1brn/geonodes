@@ -1,13 +1,12 @@
 
-# Class RandomValue
+# Node RandomValue
 
-> Geometry node name: _'Random Value'_<br>Blender type:  **FunctionNodeRandomValue**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/random_value.html)<br>
+  Blender type: [Random Value](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,65 +14,44 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+min : data_type dependant
+- max : data_type dependant
+- probability : Float
+- ID : Integer
+- seed : Integer
 
+### Parameters
 
-- **min** : **data_type** dependant
-- **max** : **data_type** dependant
-- **probability** : _Float_
-- **ID** : _Integer_
-- **seed** : _Integer_
+data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **data_type** : _'FLOAT'_ in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Data type dependant sockets
 
-
-
-- Driving parameter : **data_type** in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
-- Input sockets : min max
-- Output sockets : value
-
-
+- Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
+- Input sockets  : ['min', 'max']
+- Output sockets : ['value']   
+  
+  
 
 ## Output sockets
 
-
-
-- **value** : **data_type** dependant
-
-
+value : data_type dependant
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Boolean](../sockets/Boolean.md) [Random](../sockets/Boolean.md#random) : Constructor
-- [Float](../sockets/Float.md) [Random](../sockets/Float.md#random) : Constructor
-- [Integer](../sockets/Integer.md) [Random](../sockets/Integer.md#random) : Constructor
-- [Vector](../sockets/Vector.md) [Random](../sockets/Vector.md#random) : Constructor
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Boolean) [Random](section:Data socket Boolean/Random) : Constructor
+- [class_name](section:Data socket Float) [Random](section:Data socket Float/Random) : Constructor
+- [class_name](section:Data socket Integer) [Random](section:Data socket Integer/Random) : Constructor
+- [class_name](section:Data socket Vector) [Random](section:Data socket Vector/Random) : Constructor
+  

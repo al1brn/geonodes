@@ -1,13 +1,12 @@
 
-# Class WaveTexture
+# Node WaveTexture
 
-> Geometry node name: _'Wave Texture'_<br>Blender type:  **ShaderNodeTexWave**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/wave_texture.html)<br>
+  Blender type: [Wave Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,58 +14,39 @@ node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, 
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+vector : Vector
+- scale : Float
+- distortion : Float
+- detail : Float
+- detail_scale : Float
+- detail_roughness : Float
+- phase_offset : Float
 
+### Parameters
 
-- **vector** : _Vector_
-- **scale** : _Float_
-- **distortion** : _Float_
-- **detail** : _Float_
-- **detail_scale** : _Float_
-- **detail_roughness** : _Float_
-- **phase_offset** : _Float_
+bands_direction : str (default = 'X') in ('X', 'Y', 'Z', 'DIAGONAL')
+- rings_direction : str (default = 'X') in ('X', 'Y', 'Z', 'SPHERICAL')
+- wave_profile : str (default = 'SIN') in ('SIN', 'SAW', 'TRI')
+- wave_type : str (default = 'BANDS') in ('BANDS', 'RINGS')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **bands_direction** : _'X'_ in ('X', 'Y', 'Z', 'DIAGONAL')
-- **rings_direction** : _'X'_ in ('X', 'Y', 'Z', 'SPHERICAL')
-- **wave_profile** : _'SIN'_ in ('SIN', 'SAW', 'TRI')
-- **wave_type** : _'BANDS'_ in ('BANDS', 'RINGS')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **color** : _Color_
-- **fac** : _Float_
-
-
+color : Color
+- fac : Float
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Texture](../sockets/Texture.md) [Wave](../sockets/Texture.md#wave) : Static method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Texture) [Wave](section:Data socket Texture/Wave) : Static method
 

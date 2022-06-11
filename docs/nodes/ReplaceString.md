@@ -1,13 +1,12 @@
 
-# Class ReplaceString
+# Node ReplaceString
 
-> Geometry node name: _'Replace String'_<br>Blender type:  **FunctionNodeReplaceString**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_string.html)<br>
+  Blender type: [Replace String](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,42 +14,27 @@ node = nodes.ReplaceString(string=None, find=None, replace=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+string : String
+- find : String
+- replace : String
 
+### Node label
 
-- **string** : _String_
-- **find** : _String_
-- **replace** : _String_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **string** : _String_
-
-
+string : String
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [String](../sockets/String.md) [replace](../sockets/String.md#replace) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket String) [replace](section:Data socket String/replace) : Method
 

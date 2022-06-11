@@ -1,13 +1,12 @@
 
-# Class SetMaterial
+# Node SetMaterial
 
-> Geometry node name: _'Set Material'_<br>Blender type:  **GeometryNodeSetMaterial**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html)<br>
+  Blender type: [Set Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,42 +14,27 @@ node = nodes.SetMaterial(geometry=None, selection=None, material=None, label=Non
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
+- selection : Boolean
+- material : Material
 
+### Node label
 
-- **geometry** : _Geometry_
-- **selection** : _Boolean_
-- **material** : _Material_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **geometry** : _Geometry_
-
-
+geometry : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [set_material](../sockets/Geometry.md#set_material) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [set_material](section:Data socket Geometry/set_material) : Method
 

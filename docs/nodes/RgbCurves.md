@@ -1,13 +1,12 @@
 
-# Class RgbCurves
+# Node RgbCurves
 
-> Geometry node name: _'RGB Curves'_<br>Blender type:  **ShaderNodeRGBCurve**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/rgb_curves.html)<br>
+  Blender type: [RGB Curves](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,41 +14,26 @@ node = nodes.RgbCurves(fac=None, color=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+fac : Float
+- color : Color
 
+### Node label
 
-- **fac** : _Float_
-- **color** : _Color_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **color** : _Color_
-
-
+color : Color
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Color](../sockets/Color.md) [curves](../sockets/Color.md#curves) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Color) [curves](section:Data socket Color/curves) : Method
 

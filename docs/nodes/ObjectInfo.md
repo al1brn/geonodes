@@ -1,13 +1,12 @@
 
-# Class ObjectInfo
+# Node ObjectInfo
 
-> Geometry node name: _'Object Info'_<br>Blender type:  **GeometryNodeObjectInfo**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html)<br>
+  Blender type: [Object Info](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,56 +14,37 @@ node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+object : Object
+- as_instance : Boolean
 
+### Parameters
 
-- **object** : _Object_
-- **as_instance** : _Boolean_
+transform_space : str (default = 'ORIGINAL') in ('ORIGINAL', 'RELATIVE')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **transform_space** : _'ORIGINAL'_ in ('ORIGINAL', 'RELATIVE')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **location** : _Vector_
-- **rotation** : _Vector_
-- **scale** : _Vector_
-- **geometry** : _Geometry_
-
-
+location : Vector
+- rotation : Vector
+- scale : Vector
+- geometry : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Object](../sockets/Object.md) [geometry](../sockets/Object.md#geometry) : Property
-- [Object](../sockets/Object.md) [info](../sockets/Object.md#info) : Property
-- [Object](../sockets/Object.md) [location](../sockets/Object.md#location) : Property
-- [Object](../sockets/Object.md) [rotation](../sockets/Object.md#rotation) : Property
-- [Object](../sockets/Object.md) [scale](../sockets/Object.md#scale) : Property
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Object) [geometry](section:Data socket Object/geometry) : Property
+- [class_name](section:Data socket Object) [info](section:Data socket Object/info) : Property
+- [class_name](section:Data socket Object) [location](section:Data socket Object/location) : Property
+- [class_name](section:Data socket Object) [rotation](section:Data socket Object/rotation) : Property
+- [class_name](section:Data socket Object) [scale](section:Data socket Object/scale) : Property
+  

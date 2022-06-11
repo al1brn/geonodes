@@ -1,13 +1,12 @@
 
-# Class FloatToInteger
+# Node FloatToInteger
 
-> Geometry node name: _'Float to Integer'_<br>Blender type:  **FunctionNodeFloatToInt**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/float_to_integer.html)<br>
+  Blender type: [Float to Integer](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,48 +14,29 @@ node = nodes.FloatToInteger(float=None, rounding_mode='ROUND', label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+float : Float
 
+### Parameters
 
-- **float** : _Float_
+rounding_mode : str (default = 'ROUND') in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **rounding_mode** : _'ROUND'_ in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **integer** : _Integer_
-
-
+integer : Integer
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Float](../sockets/Float.md) [to_integer](../sockets/Float.md#to_integer) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Float) [to_integer](section:Data socket Float/to_integer) : Method
 

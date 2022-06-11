@@ -1,13 +1,12 @@
 
-# Class VoronoiTexture
+# Node VoronoiTexture
 
-> Geometry node name: _'Voronoi Texture'_<br>Blender type:  **ShaderNodeTexVoronoi**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/voronoi_texture.html)<br>
+  Blender type: [Voronoi Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,59 +14,40 @@ node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, ex
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+vector : Vector
+- w : Float
+- scale : Float
+- smoothness : Float
+- exponent : Float
+- randomness : Float
 
+### Parameters
 
-- **vector** : _Vector_
-- **w** : _Float_
-- **scale** : _Float_
-- **smoothness** : _Float_
-- **exponent** : _Float_
-- **randomness** : _Float_
+distance : str (default = 'EUCLIDEAN') in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
+- feature : str (default = 'F1') in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
+- voronoi_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **distance** : _'EUCLIDEAN'_ in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
-- **feature** : _'F1'_ in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
-- **voronoi_dimensions** : _'3D'_ in ('1D', '2D', '3D', '4D')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **distance** : _Float_
-- **color** : _Color_
-- **position** : _Vector_
-- **w** : _Float_
-- **radius** : _Float_
-
-
+distance : Float
+- color : Color
+- position : Vector
+- w : Float
+- radius : Float
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Texture](../sockets/Texture.md) [Voronoi](../sockets/Texture.md#voronoi) : Static method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Texture) [Voronoi](section:Data socket Texture/Voronoi) : Static method
 

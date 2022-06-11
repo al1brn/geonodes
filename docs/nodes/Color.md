@@ -1,13 +1,12 @@
 
-# Class Color
+# Node Color
 
-> Geometry node name: _'Color'_<br>Blender type:  **FunctionNodeInputColor**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/color.html)<br>
+  Blender type: [Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,21 +14,14 @@ node = nodes.Color(label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Node label
+### Node label
 
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **color** : _Color_
-
-
+color : Color

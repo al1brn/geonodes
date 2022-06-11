@@ -1,13 +1,12 @@
 
-# Class MeshIsland
+# Node MeshIsland
 
-> Geometry node name: _'Mesh Island'_<br>Blender type:  **GeometryNodeInputMeshIsland**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_island.html)<br>
+  Blender type: [Mesh Island](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,34 +14,23 @@ node = nodes.MeshIsland(label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Node label
+### Node label
 
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **island_index** : _Integer_
-- **island_count** : _Integer_
-
-
+island_index : Integer
+- island_count : Integer
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [capture_island](../sockets/Mesh.md#capture_island) : Capture attribute
-- [Mesh](../sockets/Mesh.md) [island](../sockets/Mesh.md#island) : Attribute
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [capture_island](section:Data socket Mesh/capture_island) : Capture attribute
+- [class_name](section:Data socket Mesh) [island](section:Data socket Mesh/island) : Attribute
+  

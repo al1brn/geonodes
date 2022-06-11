@@ -1,13 +1,12 @@
 
-# Class ScaleInstances
+# Node ScaleInstances
 
-> Geometry node name: _'Scale Instances'_<br>Blender type:  **GeometryNodeScaleInstances**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/scale_instances.html)<br>
+  Blender type: [Scale Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,44 +14,29 @@ node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=N
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+instances : Instances
+- selection : Boolean
+- scale : Vector
+- center : Vector
+- local_space : Boolean
 
+### Node label
 
-- **instances** : _Instances_
-- **selection** : _Boolean_
-- **scale** : _Vector_
-- **center** : _Vector_
-- **local_space** : _Boolean_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **instances** : _Instances_
-
-
+instances : Instances
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Instances](../sockets/Instances.md) [scale](../sockets/Instances.md#scale) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Instances) [scale](section:Data socket Instances/scale) : Method
 

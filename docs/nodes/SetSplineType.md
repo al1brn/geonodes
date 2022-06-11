@@ -1,13 +1,12 @@
 
-# Class SetSplineType
+# Node SetSplineType
 
-> Geometry node name: _'Set Spline Type'_<br>Blender type:  **GeometryNodeCurveSplineType**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_spline_type.html)<br>
+  Blender type: [Set Spline Type](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,49 +14,30 @@ node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY', label
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+curve : Curve
+- selection : Boolean
 
+### Parameters
 
-- **curve** : _Curve_
-- **selection** : _Boolean_
+spline_type : str (default = 'POLY') in ('BEZIER', 'NURBS', 'POLY')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **spline_type** : _'POLY'_ in ('BEZIER', 'NURBS', 'POLY')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **curve** : _Curve_
-
-
+curve : Curve
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [set_spline_type](../sockets/Curve.md#set_spline_type) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [set_spline_type](section:Data socket Curve/set_spline_type) : Method
 

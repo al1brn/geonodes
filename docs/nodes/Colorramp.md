@@ -1,13 +1,12 @@
 
-# Class Colorramp
+# Node Colorramp
 
-> Geometry node name: _'ColorRamp'_<br>Blender type:  **ShaderNodeValToRGB**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [ColorRamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/colorramp.html)<br>
+  Blender type: [ColorRamp](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,41 +14,26 @@ node = nodes.Colorramp(fac=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+fac : Float
 
+### Node label
 
-- **fac** : _Float_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **color** : _Color_
-- **alpha** : _Float_
-
-
+color : Color
+- alpha : Float
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Float](../sockets/Float.md) [color_ramp](../sockets/Float.md#color_ramp) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Float) [color_ramp](section:Data socket Float/color_ramp) : Method
 

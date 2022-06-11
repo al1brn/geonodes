@@ -1,13 +1,12 @@
 
-# Class VertexNeighbors
+# Node VertexNeighbors
 
-> Geometry node name: _'Vertex Neighbors'_<br>Blender type:  **GeometryNodeInputMeshVertexNeighbors**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vertex_neighbors.html)<br>
+  Blender type: [Vertex Neighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,35 +14,24 @@ node = nodes.VertexNeighbors(label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Node label
+### Node label
 
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **vertex_count** : _Integer_
-- **face_count** : _Integer_
-
-
+vertex_count : Integer
+- face_count : Integer
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [capture_vertex_neighbors](../sockets/Mesh.md#capture_vertex_neighbors) : Capture attribute
-- [Mesh](../sockets/Mesh.md) [vertex_neighbors_face_count](../sockets/Mesh.md#vertex_neighbors_face_count) : Attribute
-- [Mesh](../sockets/Mesh.md) [vertex_neighbors_vertex_count](../sockets/Mesh.md#vertex_neighbors_vertex_count) : Attribute
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [capture_vertex_neighbors](section:Data socket Mesh/capture_vertex_neighbors) : Capture attribute
+- [class_name](section:Data socket Mesh) [vertex_neighbors_face_count](section:Data socket Mesh/vertex_neighbors_face_count) : Attribute
+- [class_name](section:Data socket Mesh) [vertex_neighbors_vertex_count](section:Data socket Mesh/vertex_neighbors_vertex_count) : Attribute
+  

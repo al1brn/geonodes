@@ -1,13 +1,12 @@
 
-# Class MeshToPoints
+# Node MeshToPoints
 
-> Geometry node name: _'Mesh to Points'_<br>Blender type:  **GeometryNodeMeshToPoints**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_to_points.html)<br>
+  Blender type: [Mesh to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,51 +14,32 @@ node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None,
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+mesh : Mesh
+- selection : Boolean
+- position : Vector
+- radius : Float
 
+### Parameters
 
-- **mesh** : _Mesh_
-- **selection** : _Boolean_
-- **position** : _Vector_
-- **radius** : _Float_
+mode : str (default = 'VERTICES') in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **mode** : _'VERTICES'_ in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **points** : _Points_
-
-
+points : Points
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [to_points](../sockets/Mesh.md#to_points) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [to_points](section:Data socket Mesh/to_points) : Method
 

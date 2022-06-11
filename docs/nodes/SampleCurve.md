@@ -1,13 +1,12 @@
 
-# Class SampleCurve
+# Node SampleCurve
 
-> Geometry node name: _'Sample Curve'_<br>Blender type:  **GeometryNodeSampleCurve**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/sample_curve.html)<br>
+  Blender type: [Sample Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleCurve.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,52 +14,33 @@ node = nodes.SampleCurve(curve=None, factor=None, length=None, mode='LENGTH', la
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+curve : Curve
+- factor : Float
+- length : Float
 
+### Parameters
 
-- **curve** : _Curve_
-- **factor** : _Float_
-- **length** : _Float_
+mode : str (default = 'LENGTH') in ('FACTOR', 'LENGTH')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **mode** : _'LENGTH'_ in ('FACTOR', 'LENGTH')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **position** : _Vector_
-- **tangent** : _Vector_
-- **normal** : _Vector_
-
-
+position : Vector
+- tangent : Vector
+- normal : Vector
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [sample](../sockets/Curve.md#sample) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [sample](section:Data socket Curve/sample) : Method
 

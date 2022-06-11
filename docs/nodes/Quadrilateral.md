@@ -1,13 +1,12 @@
 
-# Class Quadrilateral
+# Node Quadrilateral
 
-> Geometry node name: _'Quadrilateral'_<br>Blender type:  **GeometryNodeCurvePrimitiveQuadrilateral**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/quadrilateral.html)<br>
+  Blender type: [Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,58 +14,39 @@ node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+width : Float
+- height : Float
+- bottom_width : Float
+- top_width : Float
+- offset : Float
+- bottom_height : Float
+- top_height : Float
+- point_1 : Vector
+- point_2 : Vector
+- point_3 : Vector
+- point_4 : Vector
 
+### Parameters
 
-- **width** : _Float_
-- **height** : _Float_
-- **bottom_width** : _Float_
-- **top_width** : _Float_
-- **offset** : _Float_
-- **bottom_height** : _Float_
-- **top_height** : _Float_
-- **point_1** : _Vector_
-- **point_2** : _Vector_
-- **point_3** : _Vector_
-- **point_4** : _Vector_
+mode : str (default = 'RECTANGLE') in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **mode** : _'RECTANGLE'_ in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **curve** : _Curve_
-
-
+curve : Curve
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [Quadrilateral](../sockets/Curve.md#quadrilateral) : Constructor
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [Quadrilateral](section:Data socket Curve/Quadrilateral) : Constructor
 

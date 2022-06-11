@@ -1,13 +1,12 @@
 
-# Class SubdivideCurve
+# Node SubdivideCurve
 
-> Geometry node name: _'Subdivide Curve'_<br>Blender type:  **GeometryNodeSubdivideCurve**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/subdivide_curve.html)<br>
+  Blender type: [Subdivide Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideCurve.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,41 +14,26 @@ node = nodes.SubdivideCurve(curve=None, cuts=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+curve : Curve
+- cuts : Integer
 
+### Node label
 
-- **curve** : _Curve_
-- **cuts** : _Integer_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **curve** : _Curve_
-
-
+curve : Curve
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [subdivide](../sockets/Curve.md#subdivide) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [subdivide](section:Data socket Curve/subdivide) : Method
 

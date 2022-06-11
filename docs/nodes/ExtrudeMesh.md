@@ -1,13 +1,12 @@
 
-# Class ExtrudeMesh
+# Node ExtrudeMesh
 
-> Geometry node name: _'Extrude Mesh'_<br>Blender type:  **GeometryNodeExtrudeMesh**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/extrude_mesh.html)<br>
+  Blender type: [Extrude Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,54 +14,35 @@ node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=No
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+mesh : Mesh
+- selection : Boolean
+- offset : Vector
+- offset_scale : Float
+- individual : Boolean
 
+### Parameters
 
-- **mesh** : _Mesh_
-- **selection** : _Boolean_
-- **offset** : _Vector_
-- **offset_scale** : _Float_
-- **individual** : _Boolean_
+mode : str (default = 'FACES') in ('VERTICES', 'EDGES', 'FACES')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **mode** : _'FACES'_ in ('VERTICES', 'EDGES', 'FACES')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-- **top** : _Boolean_
-- **side** : _Boolean_
-
-
+mesh : Mesh
+- top : Boolean
+- side : Boolean
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [extrude](../sockets/Mesh.md#extrude) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [extrude](section:Data socket Mesh/extrude) : Method
 

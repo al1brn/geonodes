@@ -1,13 +1,12 @@
 
-# Class ValueToString
+# Node ValueToString
 
-> Geometry node name: _'Value to String'_<br>Blender type:  **FunctionNodeValueToString**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/value_to_string.html)<br>
+  Blender type: [Value to String](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,41 +14,26 @@ node = nodes.ValueToString(value=None, decimals=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+value : Float
+- decimals : Integer
 
+### Node label
 
-- **value** : _Float_
-- **decimals** : _Integer_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **string** : _String_
-
-
+string : String
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Float](../sockets/Float.md) [to_string](../sockets/Float.md#to_string) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Float) [to_string](section:Data socket Float/to_string) : Method
 

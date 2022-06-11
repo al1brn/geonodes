@@ -1,13 +1,12 @@
 
-# Class SetCurveRadius
+# Node SetCurveRadius
 
-> Geometry node name: _'Set Curve Radius'_<br>Blender type:  **GeometryNodeSetCurveRadius**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_curve_radius.html)<br>
+  Blender type: [Set Curve Radius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveRadius.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,42 +14,27 @@ node = nodes.SetCurveRadius(curve=None, selection=None, radius=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+curve : Curve
+- selection : Boolean
+- radius : Float
 
+### Node label
 
-- **curve** : _Curve_
-- **selection** : _Boolean_
-- **radius** : _Float_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **curve** : _Curve_
-
-
+curve : Curve
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [set_radius](../sockets/Curve.md#set_radius) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [set_radius](section:Data socket Curve/set_radius) : Method
 

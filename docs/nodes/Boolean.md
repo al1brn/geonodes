@@ -1,13 +1,12 @@
 
-# Class Boolean
+# Node Boolean
 
-> Geometry node name: _'Boolean'_<br>Blender type:  **FunctionNodeInputBool**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean.html)<br>
+  Blender type: [Boolean](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputBool.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,29 +14,18 @@ node = nodes.Boolean(boolean=False, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Parameters
+### Parameters
 
+boolean : bool (default = False)
 
+### Node label
 
-- **boolean** : _False_ bool
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **boolean** : _Boolean_
-
-
+boolean : Boolean

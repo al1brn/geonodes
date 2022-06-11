@@ -1,13 +1,12 @@
 
-# Class CurveLength
+# Node CurveLength
 
-> Geometry node name: _'Curve Length'_<br>Blender type:  **GeometryNodeCurveLength**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Curve Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_length.html)<br>
+  Blender type: [Curve Length](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveLength.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,40 +14,25 @@ node = nodes.CurveLength(curve=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+curve : Curve
 
+### Node label
 
-- **curve** : _Curve_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **length** : _Float_
-
-
+length : Float
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [length](../sockets/Curve.md#length) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [length](section:Data socket Curve/length) : Method
 

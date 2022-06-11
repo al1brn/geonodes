@@ -1,13 +1,12 @@
 
-# Class IsShadeSmooth
+# Node IsShadeSmooth
 
-> Geometry node name: _'Is Shade Smooth'_<br>Blender type:  **GeometryNodeInputShadeSmooth**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/is_shade_smooth.html)<br>
+  Blender type: [Is Shade Smooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,33 +14,22 @@ node = nodes.IsShadeSmooth(label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Node label
+### Node label
 
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **smooth** : _Boolean_
-
-
+smooth : Boolean
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [capture_shade_smooth](../sockets/Mesh.md#capture_shade_smooth) : Capture attribute
-- [Mesh](../sockets/Mesh.md) [shade_smooth](../sockets/Mesh.md#shade_smooth) : Attribute
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [capture_shade_smooth](section:Data socket Mesh/capture_shade_smooth) : Capture attribute
+- [class_name](section:Data socket Mesh) [shade_smooth](section:Data socket Mesh/shade_smooth) : Attribute
+  

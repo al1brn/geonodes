@@ -1,13 +1,12 @@
 
-# Class DistributePointsOnFaces
+# Node DistributePointsOnFaces
 
-> Geometry node name: _'Distribute Points on Faces'_<br>Blender type:  **GeometryNodeDistributePointsOnFaces**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/distribute_points_on_faces.html)<br>
+  Blender type: [Distribute Points on Faces](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,56 +14,37 @@ node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=Non
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+mesh : Mesh
+- selection : Boolean
+- distance_min : Float
+- density_max : Float
+- density : Float
+- density_factor : Float
+- seed : Integer
 
+### Parameters
 
-- **mesh** : _Mesh_
-- **selection** : _Boolean_
-- **distance_min** : _Float_
-- **density_max** : _Float_
-- **density** : _Float_
-- **density_factor** : _Float_
-- **seed** : _Integer_
+distribute_method : str (default = 'RANDOM') in ('RANDOM', 'POISSON')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **distribute_method** : _'RANDOM'_ in ('RANDOM', 'POISSON')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **points** : _Points_
-- **normal** : _Vector_
-- **rotation** : _Vector_
-
-
+points : Points
+- normal : Vector
+- rotation : Vector
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [distribute_points_on_faces](../sockets/Mesh.md#distribute_points_on_faces) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [distribute_points_on_faces](section:Data socket Mesh/distribute_points_on_faces) : Method
 

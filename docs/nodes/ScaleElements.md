@@ -1,13 +1,12 @@
 
-# Class ScaleElements
+# Node ScaleElements
 
-> Geometry node name: _'Scale Elements'_<br>Blender type:  **GeometryNodeScaleElements**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/scale_elements.html)<br>
+  Blender type: [Scale Elements](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,53 +14,34 @@ node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=Non
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
+- selection : Boolean
+- scale : Float
+- center : Vector
+- axis : Vector
 
+### Parameters
 
-- **geometry** : _Geometry_
-- **selection** : _Boolean_
-- **scale** : _Float_
-- **center** : _Vector_
-- **axis** : _Vector_
+domain : str (default = 'FACE') in ('FACE', 'EDGE')
+- scale_mode : str (default = 'UNIFORM') in ('UNIFORM', 'SINGLE_AXIS')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **domain** : _'FACE'_ in ('FACE', 'EDGE')
-- **scale_mode** : _'UNIFORM'_ in ('UNIFORM', 'SINGLE_AXIS')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **geometry** : _Geometry_
-
-
+geometry : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [scale_elements](../sockets/Geometry.md#scale_elements) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [scale_elements](section:Data socket Geometry/scale_elements) : Method
 

@@ -1,13 +1,12 @@
 
-# Class ReplaceMaterial
+# Node ReplaceMaterial
 
-> Geometry node name: _'Replace Material'_<br>Blender type:  **GeometryNodeReplaceMaterial**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html)<br>
+  Blender type: [Replace Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeReplaceMaterial.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,42 +14,27 @@ node = nodes.ReplaceMaterial(geometry=None, old=None, new=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
+- old : Material
+- new : Material
 
+### Node label
 
-- **geometry** : _Geometry_
-- **old** : _Material_
-- **new** : _Material_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **geometry** : _Geometry_
-
-
+geometry : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [replace_material](../sockets/Geometry.md#replace_material) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [replace_material](section:Data socket Geometry/replace_material) : Method
 

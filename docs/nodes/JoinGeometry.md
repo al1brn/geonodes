@@ -1,13 +1,12 @@
 
-# Class JoinGeometry
+# Node JoinGeometry
 
-> Geometry node name: _'Join Geometry'_<br>Blender type:  **GeometryNodeJoinGeometry**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/join_geometry.html)<br>
+  Blender type: [Join Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,40 +14,25 @@ node = nodes.JoinGeometry(*geometry, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : *Geometry
 
+### Node label
 
-- **geometry** : * _Geometry_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **geometry** : _Geometry_
-
-
+geometry : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [join](../sockets/Geometry.md#join) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [join](section:Data socket Geometry/join) : Method
 

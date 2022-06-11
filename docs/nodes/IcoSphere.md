@@ -1,13 +1,12 @@
 
-# Class IcoSphere
+# Node IcoSphere
 
-> Geometry node name: _'Ico Sphere'_<br>Blender type:  **GeometryNodeMeshIcoSphere**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Ico Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/ico_sphere.html)<br>
+  Blender type: [Ico Sphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshIcoSphere.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,41 +14,26 @@ node = nodes.IcoSphere(radius=None, subdivisions=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+radius : Float
+- subdivisions : Integer
 
+### Node label
 
-- **radius** : _Float_
-- **subdivisions** : _Integer_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-
-
+mesh : Mesh
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [IcoSphere](../sockets/Mesh.md#icosphere) : Constructor
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [IcoSphere](section:Data socket Mesh/IcoSphere) : Constructor
 

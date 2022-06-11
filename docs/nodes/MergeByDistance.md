@@ -1,13 +1,12 @@
 
-# Class MergeByDistance
+# Node MergeByDistance
 
-> Geometry node name: _'Merge by Distance'_<br>Blender type:  **GeometryNodeMergeByDistance**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/merge_by_distance.html)<br>
+  Blender type: [Merge by Distance](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,42 +14,27 @@ node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, label
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
+- selection : Boolean
+- distance : Float
 
+### Node label
 
-- **geometry** : _Geometry_
-- **selection** : _Boolean_
-- **distance** : _Float_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **geometry** : _Geometry_
-
-
+geometry : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [merge_by_distance](../sockets/Geometry.md#merge_by_distance) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [merge_by_distance](section:Data socket Geometry/merge_by_distance) : Method
 

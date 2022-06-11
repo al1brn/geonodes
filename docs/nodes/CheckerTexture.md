@@ -1,13 +1,12 @@
 
-# Class CheckerTexture
+# Node CheckerTexture
 
-> Geometry node name: _'Checker Texture'_<br>Blender type:  **ShaderNodeTexChecker**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/checker_texture.html)<br>
+  Blender type: [Checker Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,44 +14,29 @@ node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None, l
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+vector : Vector
+- color1 : Color
+- color2 : Color
+- scale : Float
 
+### Node label
 
-- **vector** : _Vector_
-- **color1** : _Color_
-- **color2** : _Color_
-- **scale** : _Float_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **color** : _Color_
-- **fac** : _Float_
-
-
+color : Color
+- fac : Float
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Texture](../sockets/Texture.md) [Checker](../sockets/Texture.md#checker) : Static method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Texture) [Checker](section:Data socket Texture/Checker) : Static method
 

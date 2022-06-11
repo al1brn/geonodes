@@ -1,13 +1,12 @@
 
-# Class RotateInstances
+# Node RotateInstances
 
-> Geometry node name: _'Rotate Instances'_<br>Blender type:  **GeometryNodeRotateInstances**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/rotate_instances.html)<br>
+  Blender type: [Rotate Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,44 +14,29 @@ node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivo
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+instances : Instances
+- selection : Boolean
+- rotation : Vector
+- pivot_point : Vector
+- local_space : Boolean
 
+### Node label
 
-- **instances** : _Instances_
-- **selection** : _Boolean_
-- **rotation** : _Vector_
-- **pivot_point** : _Vector_
-- **local_space** : _Boolean_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **instances** : _Instances_
-
-
+instances : Instances
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Instances](../sockets/Instances.md) [rotate](../sockets/Instances.md#rotate) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Instances) [rotate](section:Data socket Instances/rotate) : Method
 

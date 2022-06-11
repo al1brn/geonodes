@@ -1,13 +1,12 @@
 
-# Class SetSplineCyclic
+# Node SetSplineCyclic
 
-> Geometry node name: _'Set Spline Cyclic'_<br>Blender type:  **GeometryNodeSetSplineCyclic**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_spline_cyclic.html)<br>
+  Blender type: [Set Spline Cyclic](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,42 +14,27 @@ node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None, label=N
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
+- selection : Boolean
+- cyclic : Boolean
 
+### Node label
 
-- **geometry** : _Geometry_
-- **selection** : _Boolean_
-- **cyclic** : _Boolean_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **geometry** : _Geometry_
-
-
+geometry : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Spline](../sockets/Spline.md) [set_cyclic](../sockets/Spline.md#set_cyclic) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Spline) [set_cyclic](section:Data socket Spline/set_cyclic) : Method
 

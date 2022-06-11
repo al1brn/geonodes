@@ -1,13 +1,12 @@
 
-# Class BezierSegment
+# Node BezierSegment
 
-> Geometry node name: _'Bezier Segment'_<br>Blender type:  **GeometryNodeCurvePrimitiveBezierSegment**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Bezier Segment](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/bezier_segment.html)<br>
+  Blender type: [Bezier Segment](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,52 +14,33 @@ node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_h
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+resolution : Integer
+- start : Vector
+- start_handle : Vector
+- end_handle : Vector
+- end : Vector
 
+### Parameters
 
-- **resolution** : _Integer_
-- **start** : _Vector_
-- **start_handle** : _Vector_
-- **end_handle** : _Vector_
-- **end** : _Vector_
+mode : str (default = 'POSITION') in ('POSITION', 'OFFSET')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **mode** : _'POSITION'_ in ('POSITION', 'OFFSET')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **curve** : _Curve_
-
-
+curve : Curve
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [BezierSegment](../sockets/Curve.md#beziersegment) : Constructor
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [BezierSegment](section:Data socket Curve/BezierSegment) : Constructor
 

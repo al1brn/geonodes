@@ -1,13 +1,12 @@
 
-# Class QuadraticBezier
+# Node QuadraticBezier
 
-> Geometry node name: _'Quadratic Bezier'_<br>Blender type:  **GeometryNodeCurveQuadraticBezier**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Quadratic Bezier](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/quadratic_bezier.html)<br>
+  Blender type: [Quadratic Bezier](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveQuadraticBezier.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,43 +14,28 @@ node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None,
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+resolution : Integer
+- start : Vector
+- middle : Vector
+- end : Vector
 
+### Node label
 
-- **resolution** : _Integer_
-- **start** : _Vector_
-- **middle** : _Vector_
-- **end** : _Vector_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **curve** : _Curve_
-
-
+curve : Curve
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [QuadraticBezier](../sockets/Curve.md#quadraticbezier) : Constructor
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [QuadraticBezier](section:Data socket Curve/QuadraticBezier) : Constructor
 

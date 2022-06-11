@@ -1,13 +1,12 @@
 
-# Class Cylinder
+# Node Cylinder
 
-> Geometry node name: _'Cylinder'_<br>Blender type:  **GeometryNodeMeshCylinder**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/cylinder.html)<br>
+  Blender type: [Cylinder](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCylinder.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,55 +14,36 @@ node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, rad
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+vertices : Integer
+- side_segments : Integer
+- fill_segments : Integer
+- radius : Float
+- depth : Float
 
+### Parameters
 
-- **vertices** : _Integer_
-- **side_segments** : _Integer_
-- **fill_segments** : _Integer_
-- **radius** : _Float_
-- **depth** : _Float_
+fill_type : str (default = 'NGON') in ('NONE', 'NGON', 'TRIANGLE_FAN')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **fill_type** : _'NGON'_ in ('NONE', 'NGON', 'TRIANGLE_FAN')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-- **top** : _Boolean_
-- **side** : _Boolean_
-- **bottom** : _Boolean_
-
-
+mesh : Mesh
+- top : Boolean
+- side : Boolean
+- bottom : Boolean
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [Cylinder](../sockets/Mesh.md#cylinder) : Constructor
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [Cylinder](section:Data socket Mesh/Cylinder) : Constructor
 

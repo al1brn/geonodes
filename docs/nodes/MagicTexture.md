@@ -1,13 +1,12 @@
 
-# Class MagicTexture
+# Node MagicTexture
 
-> Geometry node name: _'Magic Texture'_<br>Blender type:  **ShaderNodeTexMagic**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/magic_texture.html)<br>
+  Blender type: [Magic Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,51 +14,32 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+vector : Vector
+- scale : Float
+- distortion : Float
 
+### Parameters
 
-- **vector** : _Vector_
-- **scale** : _Float_
-- **distortion** : _Float_
+turbulence_depth : int (default = 2)
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **turbulence_depth** : _2_ int
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **color** : _Color_
-- **fac** : _Float_
-
-
+color : Color
+- fac : Float
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Texture](../sockets/Texture.md) [Magic](../sockets/Texture.md#magic) : Static method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Texture) [Magic](section:Data socket Texture/Magic) : Static method
 

@@ -1,13 +1,12 @@
 
-# Class Vector
+# Node Vector
 
-> Geometry node name: _'Vector'_<br>Blender type:  **FunctionNodeInputVector**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vector.html)<br>
+  Blender type: [Vector](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputVector.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,29 +14,18 @@ node = nodes.Vector(vector=[0.0, 0.0, 0.0], label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Parameters
+### Parameters
 
+vector : Vector (default = [0.0, 0.0, 0.0])
 
+### Node label
 
-- **vector** : _[0.0, 0.0, 0.0]_ Vector
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **vector** : _Vector_
-
-
+vector : Vector

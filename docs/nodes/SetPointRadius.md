@@ -1,13 +1,12 @@
 
-# Class SetPointRadius
+# Node SetPointRadius
 
-> Geometry node name: _'Set Point Radius'_<br>Blender type:  **GeometryNodeSetPointRadius**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_point_radius.html)<br>
+  Blender type: [Set Point Radius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPointRadius.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,42 +14,27 @@ node = nodes.SetPointRadius(points=None, selection=None, radius=None, label=None
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+points : Points
+- selection : Boolean
+- radius : Float
 
+### Node label
 
-- **points** : _Points_
-- **selection** : _Boolean_
-- **radius** : _Float_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **points** : _Points_
-
-
+points : Points
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Points](../sockets/Points.md) [set_radius](../sockets/Points.md#set_radius) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Points) [set_radius](section:Data socket Points/set_radius) : Method
 

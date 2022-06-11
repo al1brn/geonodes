@@ -1,13 +1,12 @@
 
-# Class Cone
+# Node Cone
 
-> Geometry node name: _'Cone'_<br>Blender type:  **GeometryNodeMeshCone**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/cone.html)<br>
+  Blender type: [Cone](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCone.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,56 +14,37 @@ node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+vertices : Integer
+- side_segments : Integer
+- fill_segments : Integer
+- radius_top : Float
+- radius_bottom : Float
+- depth : Float
 
+### Parameters
 
-- **vertices** : _Integer_
-- **side_segments** : _Integer_
-- **fill_segments** : _Integer_
-- **radius_top** : _Float_
-- **radius_bottom** : _Float_
-- **depth** : _Float_
+fill_type : str (default = 'NGON') in ('NONE', 'NGON', 'TRIANGLE_FAN')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **fill_type** : _'NGON'_ in ('NONE', 'NGON', 'TRIANGLE_FAN')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-- **top** : _Boolean_
-- **bottom** : _Boolean_
-- **side** : _Boolean_
-
-
+mesh : Mesh
+- top : Boolean
+- bottom : Boolean
+- side : Boolean
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [Cone](../sockets/Mesh.md#cone) : Constructor
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [Cone](section:Data socket Mesh/Cone) : Constructor
 

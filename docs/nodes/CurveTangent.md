@@ -1,13 +1,12 @@
 
-# Class CurveTangent
+# Node CurveTangent
 
-> Geometry node name: _'Curve Tangent'_<br>Blender type:  **GeometryNodeInputTangent**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Curve Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_tangent.html)<br>
+  Blender type: [Curve Tangent](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputTangent.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,33 +14,22 @@ node = nodes.CurveTangent(label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Node label
+### Node label
 
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **tangent** : _Vector_
-
-
+tangent : Vector
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Spline](../sockets/Spline.md) [capture_tangent](../sockets/Spline.md#capture_tangent) : Capture attribute
-- [Spline](../sockets/Spline.md) [tangent](../sockets/Spline.md#tangent) : Attribute
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Spline) [capture_tangent](section:Data socket Spline/capture_tangent) : Capture attribute
+- [class_name](section:Data socket Spline) [tangent](section:Data socket Spline/tangent) : Attribute
+  

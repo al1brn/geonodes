@@ -1,13 +1,12 @@
 
-# Class NoiseTexture
+# Node NoiseTexture
 
-> Geometry node name: _'Noise Texture'_<br>Blender type:  **ShaderNodeTexNoise**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/noise_texture.html)<br>
+  Blender type: [Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,54 +14,35 @@ node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughnes
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+vector : Vector
+- w : Float
+- scale : Float
+- detail : Float
+- roughness : Float
+- distortion : Float
 
+### Parameters
 
-- **vector** : _Vector_
-- **w** : _Float_
-- **scale** : _Float_
-- **detail** : _Float_
-- **roughness** : _Float_
-- **distortion** : _Float_
+noise_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **noise_dimensions** : _'3D'_ in ('1D', '2D', '3D', '4D')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **fac** : _Float_
-- **color** : _Color_
-
-
+fac : Float
+- color : Color
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Texture](../sockets/Texture.md) [Noise](../sockets/Texture.md#noise) : Static method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Texture) [Noise](section:Data socket Texture/Noise) : Static method
 

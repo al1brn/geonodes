@@ -1,13 +1,12 @@
 
-# Class SceneTime
+# Node SceneTime
 
-> Geometry node name: _'Scene Time'_<br>Blender type:  **GeometryNodeInputSceneTime**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/scene_time.html)<br>
+  Blender type: [Scene Time](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,33 +14,22 @@ node = nodes.SceneTime(label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Node label
+### Node label
 
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **seconds** : _Float_
-- **frame** : _Float_
-
-
+seconds : Float
+- frame : Float
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [functions](../sockets/functions.md) [scene](../sockets/functions.md#scene) : Function
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket functions) [scene](section:Data socket functions/scene) : Function
 

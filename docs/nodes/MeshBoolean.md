@@ -1,13 +1,12 @@
 
-# Class MeshBoolean
+# Node MeshBoolean
 
-> Geometry node name: _'Mesh Boolean'_<br>Blender type:  **GeometryNodeMeshBoolean**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_boolean.html)<br>
+  Blender type: [Mesh Boolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,53 +14,34 @@ node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tole
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+mesh_1 : Geometry
+- mesh_2 : *Geometry
+- self_intersection : Boolean
+- hole_tolerant : Boolean
 
+### Parameters
 
-- **mesh_1** : _Geometry_
-- **mesh_2** : * _Geometry_
-- **self_intersection** : _Boolean_
-- **hole_tolerant** : _Boolean_
+operation : str (default = 'DIFFERENCE') in ('INTERSECT', 'UNION', 'DIFFERENCE')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **operation** : _'DIFFERENCE'_ in ('INTERSECT', 'UNION', 'DIFFERENCE')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **mesh** : _Mesh_
-
-
+mesh : Mesh
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [difference](../sockets/Mesh.md#difference) : Method
-- [Mesh](../sockets/Mesh.md) [intersect](../sockets/Mesh.md#intersect) : Method
-- [Mesh](../sockets/Mesh.md) [union](../sockets/Mesh.md#union) : Method
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [difference](section:Data socket Mesh/difference) : Method
+- [class_name](section:Data socket Mesh) [intersect](section:Data socket Mesh/intersect) : Method
+- [class_name](section:Data socket Mesh) [union](section:Data socket Mesh/union) : Method
+  

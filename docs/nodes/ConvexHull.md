@@ -1,13 +1,12 @@
 
-# Class ConvexHull
+# Node ConvexHull
 
-> Geometry node name: _'Convex Hull'_<br>Blender type:  **GeometryNodeConvexHull**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/convex_hull.html)<br>
+  Blender type: [Convex Hull](https://docs.blender.org/api/current/bpy.types.GeometryNodeConvexHull.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,40 +14,25 @@ node = nodes.ConvexHull(geometry=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
 
+### Node label
 
-- **geometry** : _Geometry_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **convex_hull** : _Geometry_
-
-
+convex_hull : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [convex_hull](../sockets/Geometry.md#convex_hull) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [convex_hull](section:Data socket Geometry/convex_hull) : Method
 

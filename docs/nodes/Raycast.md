@@ -1,13 +1,12 @@
 
-# Class Raycast
+# Node Raycast
 
-> Geometry node name: _'Raycast'_<br>Blender type:  **GeometryNodeRaycast**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/raycast.html)<br>
+  Blender type: [Raycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,71 +14,50 @@ node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None,
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+target_geometry : Geometry
+- attribute : data_type dependant
+- source_position : Vector
+- ray_direction : Vector
+- ray_length : Float
 
+### Parameters
 
-- **target_geometry** : _Geometry_
-- **attribute** : **data_type** dependant
-- **source_position** : _Vector_
-- **ray_direction** : _Vector_
-- **ray_length** : _Float_
+data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- mapping : str (default = 'INTERPOLATED') in ('INTERPOLATED', 'NEAREST')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **data_type** : _'FLOAT'_ in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
-- **mapping** : _'INTERPOLATED'_ in ('INTERPOLATED', 'NEAREST')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Data type dependant sockets
 
-
-
-- Driving parameter : **data_type** in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
-- Input sockets : attribute
-- Output sockets : attribute
-
-
+- Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- Input sockets  : ['attribute']
+- Output sockets : ['attribute']   
+  
+  
 
 ## Output sockets
 
-
-
-- **is_hit** : _Boolean_
-- **hit_position** : _Vector_
-- **hit_normal** : _Vector_
-- **hit_distance** : _Float_
-- **attribute** : **data_type** dependant
-
-
+is_hit : Boolean
+- hit_position : Vector
+- hit_normal : Vector
+- hit_distance : Float
+- attribute : data_type dependant
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Boolean](../sockets/Boolean.md) [raycast](../sockets/Boolean.md#raycast) : Method
-- [Color](../sockets/Color.md) [raycast](../sockets/Color.md#raycast) : Method
-- [Float](../sockets/Float.md) [raycast](../sockets/Float.md#raycast) : Method
-- [Integer](../sockets/Integer.md) [raycast](../sockets/Integer.md#raycast) : Method
-- [Vector](../sockets/Vector.md) [raycast](../sockets/Vector.md#raycast) : Method
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Boolean) [raycast](section:Data socket Boolean/raycast) : Method
+- [class_name](section:Data socket Color) [raycast](section:Data socket Color/raycast) : Method
+- [class_name](section:Data socket Float) [raycast](section:Data socket Float/raycast) : Method
+- [class_name](section:Data socket Integer) [raycast](section:Data socket Integer/raycast) : Method
+- [class_name](section:Data socket Vector) [raycast](section:Data socket Vector/raycast) : Method
+  

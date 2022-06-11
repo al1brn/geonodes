@@ -1,13 +1,12 @@
 
-# Class IsViewport
+# Node IsViewport
 
-> Geometry node name: _'Is Viewport'_<br>Blender type:  **GeometryNodeIsViewport**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Is Viewport](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/is_viewport.html)<br>
+  Blender type: [Is Viewport](https://docs.blender.org/api/current/bpy.types.GeometryNodeIsViewport.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,32 +14,21 @@ node = nodes.IsViewport(label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Node label
+### Node label
 
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **is_viewport** : _Boolean_
-
-
+is_viewport : Boolean
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [is_viewport](../sockets/Geometry.md#is_viewport) : Static method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [is_viewport](section:Data socket Geometry/is_viewport) : Static method
 

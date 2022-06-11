@@ -1,13 +1,12 @@
 
-# Class SplineParameter
+# Node SplineParameter
 
-> Geometry node name: _'Spline Parameter'_<br>Blender type:  **GeometryNodeSplineParameter**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_parameter.html)<br>
+  Blender type: [Spline Parameter](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,37 +14,26 @@ node = nodes.SplineParameter(label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Node label
+### Node label
 
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **factor** : _Float_
-- **length** : _Float_
-- **index** : _Integer_
-
-
+factor : Float
+- length : Float
+- index : Integer
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Spline](../sockets/Spline.md) [capture_parameter](../sockets/Spline.md#capture_parameter) : Capture attribute
-- [Spline](../sockets/Spline.md) [factor](../sockets/Spline.md#factor) : Attribute
-- [Spline](../sockets/Spline.md) [parameter_index](../sockets/Spline.md#parameter_index) : Attribute
-- [Spline](../sockets/Spline.md) [parameter_length](../sockets/Spline.md#parameter_length) : Attribute
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Spline) [capture_parameter](section:Data socket Spline/capture_parameter) : Capture attribute
+- [class_name](section:Data socket Spline) [factor](section:Data socket Spline/factor) : Attribute
+- [class_name](section:Data socket Spline) [parameter_index](section:Data socket Spline/parameter_index) : Attribute
+- [class_name](section:Data socket Spline) [parameter_length](section:Data socket Spline/parameter_length) : Attribute
+  

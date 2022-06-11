@@ -1,13 +1,12 @@
 
-# Class SetHandlePositions
+# Node SetHandlePositions
 
-> Geometry node name: _'Set Handle Positions'_<br>Blender type:  **GeometryNodeSetCurveHandlePositions**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_handle_positions.html)<br>
+  Blender type: [Set Handle Positions](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,51 +14,32 @@ node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offse
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+curve : Curve
+- selection : Boolean
+- position : Vector
+- offset : Vector
 
+### Parameters
 
-- **curve** : _Curve_
-- **selection** : _Boolean_
-- **position** : _Vector_
-- **offset** : _Vector_
+mode : str (default = 'LEFT') in ('LEFT', 'RIGHT')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **mode** : _'LEFT'_ in ('LEFT', 'RIGHT')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **curve** : _Curve_
-
-
+curve : Curve
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [set_handle_positions](../sockets/Curve.md#set_handle_positions) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [set_handle_positions](section:Data socket Curve/set_handle_positions) : Method
 

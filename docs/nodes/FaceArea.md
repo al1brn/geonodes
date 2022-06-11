@@ -1,13 +1,12 @@
 
-# Class FaceArea
+# Node FaceArea
 
-> Geometry node name: _'Face Area'_<br>Blender type:  **GeometryNodeInputMeshFaceArea**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Face Area](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/face_area.html)<br>
+  Blender type: [Face Area](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceArea.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,33 +14,22 @@ node = nodes.FaceArea(label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Node label
+### Node label
 
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **area** : _Float_
-
-
+area : Float
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [capture_face_area](../sockets/Mesh.md#capture_face_area) : Capture attribute
-- [Mesh](../sockets/Mesh.md) [face_area](../sockets/Mesh.md#face_area) : Attribute
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [capture_face_area](section:Data socket Mesh/capture_face_area) : Capture attribute
+- [class_name](section:Data socket Mesh) [face_area](section:Data socket Mesh/face_area) : Attribute
+  

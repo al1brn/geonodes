@@ -5,21 +5,24 @@ from geonodes.core.node import Node
 
 class AlignEulerToVector(Node):
 
-    """Class AlignEulerToVector
+    """
+
+    Node AlignEulerToVector
+    -----------------------
+        > Geometry node name: Align Euler to Vector<br>
+          Blender type: Align Euler to Vector
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Align Euler to Vector' 
-    | Blender type:  FunctionNodeAlignEulerToVector 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO',
-        label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -28,32 +31,34 @@ class AlignEulerToVector(Node):
 
             Input sockets
             -------------
-            - rotation : Vector 
-            - factor   : Float 
-            - vector   : Vector 
+                rotation : Vector
+                    - factor : Float
+                    - vector : Vector
     
 
             Parameters
             ----------
-            - axis       : 'X' in ('X', 'Y', 'Z') 
-            - pivot_axis : 'AUTO' in ('AUTO', 'X', 'Y', 'Z') 
+                axis : str (default = 'X') in ('X', 'Y', 'Z')
+                    - pivot_axis : str (default = 'AUTO') in ('AUTO', 'X', 'Y', 'Z')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - rotation : Vector 
+        Output sockets
+        --------------
+            rotation : Vector
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Vector AlignToVector   : Constructor 
-    - Vector align_to_vector : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name AlignToVector : Constructor
+                - class_name align_to_vector : Method
+                  
     """
 
     def __init__(self, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', label=None):
@@ -96,20 +101,24 @@ class AlignEulerToVector(Node):
 
 class BooleanMath(Node):
 
-    """Class BooleanMath
+    """
+
+    Node BooleanMath
+    ----------------
+        > Geometry node name: Boolean Math<br>
+          Blender type: Boolean Math
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Boolean Math' 
-    | Blender type:  FunctionNodeBooleanMath 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -118,37 +127,39 @@ class BooleanMath(Node):
 
             Input sockets
             -------------
-            - boolean0 : Boolean 
-            - boolean1 : Boolean 
+                boolean0 : Boolean
+                    - boolean1 : Boolean
     
 
             Parameters
             ----------
-            - operation : 'AND' in ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY') 
+                operation : str (default = 'AND') in ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - boolean : Boolean 
+        Output sockets
+        --------------
+            boolean : Boolean
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Boolean b_and  : Method 
-    - Boolean b_not  : Method 
-    - Boolean b_or   : Method 
-    - Boolean imply  : Method 
-    - Boolean nand   : Method 
-    - Boolean nimply : Method 
-    - Boolean nor    : Method 
-    - Boolean xnor   : Method 
-    - Boolean xor    : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name b_and : Method
+                - class_name b_not : Method
+                - class_name b_or : Method
+                - class_name imply : Method
+                - class_name nand : Method
+                - class_name nimply : Method
+                - class_name nor : Method
+                - class_name xnor : Method
+                - class_name xor : Method
+                  
     """
 
     def __init__(self, boolean0=None, boolean1=None, operation='AND', label=None):
@@ -181,21 +192,24 @@ class BooleanMath(Node):
 
 class Compare(Node):
 
-    """Class Compare
+    """
+
+    Node Compare
+    ------------
+        > Geometry node name: Compare<br>
+          Blender type: Compare
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Compare' 
-    | Blender type:  FunctionNodeCompare 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT',
-        operation='GREATER_THAN', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -204,67 +218,72 @@ class Compare(Node):
 
             Input sockets
             -------------
-            - a       : data_type dependant 
-            - b       : data_type dependant 
-            - c       : Float 
-            - angle   : Float 
-            - epsilon : Float 
+                a : data_type dependant
+                    - b : data_type dependant
+                    - c : Float
+                    - angle : Float
+                    - epsilon : Float
     
 
             Parameters
             ----------
-            - data_type : 'FLOAT' in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA') 
-            - mode      : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION') 
-            - operation : 'GREATER_THAN' in ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL')
+                data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')
+                    - mode : str (default = 'ELEMENT') in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+                    - operation : str (default = 'GREATER_THAN') in ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Data type dependant sockets
-    ===========================
-    - Driving parameter : data_type in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA') 
-    - Input sockets     : a b 
+        Data type dependant sockets
+        ---------------------------
+            - Driving parameter : data_type in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')
+            - Input sockets  : ['a', 'b']
+            - Output sockets : []   
+              
+              
     
 
-    Output sockets
-    ==============
-    - result : Boolean 
+        Output sockets
+        --------------
+            result : Boolean
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Color brighter        : Method 
-    - Color darker          : Method 
-    - Color equal           : Method 
-    - Color not_equal       : Method 
-    - Float equal           : Method 
-    - Float greater_equal   : Method 
-    - Float greater_than    : Method 
-    - Float less_equal      : Method 
-    - Float less_than       : Method 
-    - Float not_equal       : Method 
-    - Integer equal         : Method 
-    - Integer greater_equal : Method 
-    - Integer greater_than  : Method 
-    - Integer less_equal    : Method 
-    - Integer less_than     : Method 
-    - Integer not_equal     : Method 
-    - String average        : Method 
-    - String direction      : Method 
-    - String dot_product    : Method 
-    - String element        : Method 
-    - String length         : Method 
-    - Vector equal          : Method 
-    - Vector greater_equal  : Method 
-    - Vector greater_than   : Method 
-    - Vector less_equal     : Method 
-    - Vector less_than      : Method 
-    - Vector not_equal      : Method 
-    - functions compare     : Function 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name brighter : Method
+                - class_name darker : Method
+                - class_name equal : Method
+                - class_name not_equal : Method
+                - class_name equal : Method
+                - class_name greater_equal : Method
+                - class_name greater_than : Method
+                - class_name less_equal : Method
+                - class_name less_than : Method
+                - class_name not_equal : Method
+                - class_name equal : Method
+                - class_name greater_equal : Method
+                - class_name greater_than : Method
+                - class_name less_equal : Method
+                - class_name less_than : Method
+                - class_name not_equal : Method
+                - class_name average : Method
+                - class_name direction : Method
+                - class_name dot_product : Method
+                - class_name element : Method
+                - class_name length : Method
+                - class_name equal : Method
+                - class_name greater_equal : Method
+                - class_name greater_than : Method
+                - class_name less_equal : Method
+                - class_name less_than : Method
+                - class_name not_equal : Method
+                - class_name compare : Function
+                  
     """
 
     def __init__(self, a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', label=None):
@@ -333,20 +352,24 @@ class Compare(Node):
 
 class FloatToInteger(Node):
 
-    """Class FloatToInteger
+    """
+
+    Node FloatToInteger
+    -------------------
+        > Geometry node name: Float to Integer<br>
+          Blender type: Float to Integer
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Float to Integer' 
-    | Blender type:  FunctionNodeFloatToInt 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.FloatToInteger(float=None, rounding_mode='ROUND', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.FloatToInteger(float=None, rounding_mode='ROUND', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -355,28 +378,30 @@ class FloatToInteger(Node):
 
             Input sockets
             -------------
-            - float : Float 
+                float : Float
     
 
             Parameters
             ----------
-            - rounding_mode : 'ROUND' in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE') 
+                rounding_mode : str (default = 'ROUND') in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - integer : Integer 
+        Output sockets
+        --------------
+            integer : Integer
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Float to_integer : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name to_integer : Method
+            
     """
 
     def __init__(self, float=None, rounding_mode='ROUND', label=None):
@@ -408,20 +433,24 @@ class FloatToInteger(Node):
 
 class Boolean(Node):
 
-    """Class Boolean
+    """
+
+    Node Boolean
+    ------------
+        > Geometry node name: Boolean<br>
+          Blender type: Boolean
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Boolean' 
-    | Blender type:  FunctionNodeInputBool 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Boolean(boolean=False, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Boolean(boolean=False, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -430,17 +459,17 @@ class Boolean(Node):
 
             Parameters
             ----------
-            - boolean : False bool 
+                boolean : bool (default = False)
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - boolean : Boolean 
+        Output sockets
+        --------------
+            boolean : Boolean
     """
 
     def __init__(self, boolean=False, label=None):
@@ -468,20 +497,24 @@ class Boolean(Node):
 
 class Color(Node):
 
-    """Class Color
+    """
+
+    Node Color
+    ----------
+        > Geometry node name: Color<br>
+          Blender type: Color
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Color' 
-    | Blender type:  FunctionNodeInputColor 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Color(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Color(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -490,12 +523,12 @@ class Color(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - color : Color 
+        Output sockets
+        --------------
+            color : Color
     """
 
     def __init__(self, label=None):
@@ -511,20 +544,24 @@ class Color(Node):
 
 class Integer(Node):
 
-    """Class Integer
+    """
+
+    Node Integer
+    ------------
+        > Geometry node name: Integer<br>
+          Blender type: Integer
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Integer' 
-    | Blender type:  FunctionNodeInputInt 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Integer(integer=0, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Integer(integer=0, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -533,17 +570,17 @@ class Integer(Node):
 
             Parameters
             ----------
-            - integer : 0 int 
+                integer : int (default = 0)
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - integer : Integer 
+        Output sockets
+        --------------
+            integer : Integer
     """
 
     def __init__(self, integer=0, label=None):
@@ -571,20 +608,24 @@ class Integer(Node):
 
 class SpecialCharacters(Node):
 
-    """Class SpecialCharacters
+    """
+
+    Node SpecialCharacters
+    ----------------------
+        > Geometry node name: Special Characters<br>
+          Blender type: Special Characters
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Special Characters' 
-    | Blender type:  FunctionNodeInputSpecialCharacters 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SpecialCharacters(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SpecialCharacters(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -593,13 +634,13 @@ class SpecialCharacters(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - line_break : String 
-    - tab        : String 
+        Output sockets
+        --------------
+            line_break : String
+                - tab : String
     """
 
     def __init__(self, label=None):
@@ -616,20 +657,24 @@ class SpecialCharacters(Node):
 
 class String(Node):
 
-    """Class String
+    """
+
+    Node String
+    -----------
+        > Geometry node name: String<br>
+          Blender type: String
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'String' 
-    | Blender type:  FunctionNodeInputString 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.String(string='', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.String(string='', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -638,17 +683,17 @@ class String(Node):
 
             Parameters
             ----------
-            - string : '' str 
+                string : str (default = '')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - string : String 
+        Output sockets
+        --------------
+            string : String
     """
 
     def __init__(self, string='', label=None):
@@ -676,20 +721,24 @@ class String(Node):
 
 class Vector(Node):
 
-    """Class Vector
+    """
+
+    Node Vector
+    -----------
+        > Geometry node name: Vector<br>
+          Blender type: Vector
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Vector' 
-    | Blender type:  FunctionNodeInputVector 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Vector(vector=[0.0, 0.0, 0.0], label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Vector(vector=[0.0, 0.0, 0.0], label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -698,17 +747,17 @@ class Vector(Node):
 
             Parameters
             ----------
-            - vector : [0.0, 0.0, 0.0] Vector 
+                vector : Vector (default = [0.0, 0.0, 0.0])
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - vector : Vector 
+        Output sockets
+        --------------
+            vector : Vector
     """
 
     def __init__(self, vector=[0.0, 0.0, 0.0], label=None):
@@ -736,21 +785,24 @@ class Vector(Node):
 
 class RandomValue(Node):
 
-    """Class RandomValue
+    """
+
+    Node RandomValue
+    ----------------
+        > Geometry node name: Random Value<br>
+          Blender type: Random Value
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Random Value' 
-    | Blender type:  FunctionNodeRandomValue 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=None, data_type='FLOAT',
-        label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=None, data_type='FLOAT', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -759,42 +811,46 @@ class RandomValue(Node):
 
             Input sockets
             -------------
-            - min         : data_type dependant 
-            - max         : data_type dependant 
-            - probability : Float 
-            - ID          : Integer 
-            - seed        : Integer 
+                min : data_type dependant
+                    - max : data_type dependant
+                    - probability : Float
+                    - ID : Integer
+                    - seed : Integer
     
 
             Parameters
             ----------
-            - data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN') 
+                data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Data type dependant sockets
-    ===========================
-    - Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN') 
-    - Input sockets     : min max 
-    - Output sockets    : value 
+        Data type dependant sockets
+        ---------------------------
+            - Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
+            - Input sockets  : ['min', 'max']
+            - Output sockets : ['value']   
+              
+              
     
 
-    Output sockets
-    ==============
-    - value : data_type dependant 
+        Output sockets
+        --------------
+            value : data_type dependant
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Boolean Random : Constructor 
-    - Float Random   : Constructor 
-    - Integer Random : Constructor 
-    - Vector Random  : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Random : Constructor
+                - class_name Random : Constructor
+                - class_name Random : Constructor
+                - class_name Random : Constructor
+                  
     """
 
     def __init__(self, min=None, max=None, probability=None, ID=None, seed=None, data_type='FLOAT', label=None):
@@ -846,20 +902,24 @@ class RandomValue(Node):
 
 class ReplaceString(Node):
 
-    """Class ReplaceString
+    """
+
+    Node ReplaceString
+    ------------------
+        > Geometry node name: Replace String<br>
+          Blender type: Replace String
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Replace String' 
-    | Blender type:  FunctionNodeReplaceString 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.ReplaceString(string=None, find=None, replace=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.ReplaceString(string=None, find=None, replace=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -868,25 +928,27 @@ class ReplaceString(Node):
 
             Input sockets
             -------------
-            - string  : String 
-            - find    : String 
-            - replace : String 
+                string : String
+                    - find : String
+                    - replace : String
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - string : String 
+        Output sockets
+        --------------
+            string : String
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - String replace : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name replace : Method
+            
     """
 
     def __init__(self, string=None, find=None, replace=None, label=None):
@@ -908,20 +970,24 @@ class ReplaceString(Node):
 
 class RotateEuler(Node):
 
-    """Class RotateEuler
+    """
+
+    Node RotateEuler
+    ----------------
+        > Geometry node name: Rotate Euler<br>
+          Blender type: Rotate Euler
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Rotate Euler' 
-    | Blender type:  FunctionNodeRotateEuler 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', label=None)
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -930,31 +996,33 @@ class RotateEuler(Node):
 
             Input sockets
             -------------
-            - rotation  : Vector 
-            - rotate_by : Vector 
-            - axis      : Vector 
-            - angle     : Float 
+                rotation : Vector
+                    - rotate_by : Vector
+                    - axis : Vector
+                    - angle : Float
     
 
             Parameters
             ----------
-            - space : 'OBJECT' in ('OBJECT', 'LOCAL') 
+                space : str (default = 'OBJECT') in ('OBJECT', 'LOCAL')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - rotation : Vector 
+        Output sockets
+        --------------
+            rotation : Vector
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Vector rotate_euler : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name rotate_euler : Method
+            
     """
 
     def __init__(self, rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', label=None):
@@ -989,20 +1057,24 @@ class RotateEuler(Node):
 
 class SliceString(Node):
 
-    """Class SliceString
+    """
+
+    Node SliceString
+    ----------------
+        > Geometry node name: Slice String<br>
+          Blender type: Slice String
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Slice String' 
-    | Blender type:  FunctionNodeSliceString 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SliceString(string=None, position=None, length=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SliceString(string=None, position=None, length=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -1011,25 +1083,27 @@ class SliceString(Node):
 
             Input sockets
             -------------
-            - string   : String 
-            - position : Integer 
-            - length   : Integer 
+                string : String
+                    - position : Integer
+                    - length : Integer
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - string : String 
+        Output sockets
+        --------------
+            string : String
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - String slice : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name slice : Method
+            
     """
 
     def __init__(self, string=None, position=None, length=None, label=None):
@@ -1051,20 +1125,24 @@ class SliceString(Node):
 
 class StringLength(Node):
 
-    """Class StringLength
+    """
+
+    Node StringLength
+    -----------------
+        > Geometry node name: String Length<br>
+          Blender type: String Length
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'String Length' 
-    | Blender type:  FunctionNodeStringLength 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.StringLength(string=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.StringLength(string=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -1073,23 +1151,25 @@ class StringLength(Node):
 
             Input sockets
             -------------
-            - string : String 
+                string : String
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - length : Integer 
+        Output sockets
+        --------------
+            length : Integer
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - String length : Property 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name length : Property
+            
     """
 
     def __init__(self, string=None, label=None):
@@ -1109,20 +1189,24 @@ class StringLength(Node):
 
 class ValueToString(Node):
 
-    """Class ValueToString
+    """
+
+    Node ValueToString
+    ------------------
+        > Geometry node name: Value to String<br>
+          Blender type: Value to String
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Value to String' 
-    | Blender type:  FunctionNodeValueToString 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.ValueToString(value=None, decimals=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.ValueToString(value=None, decimals=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -1131,24 +1215,26 @@ class ValueToString(Node):
 
             Input sockets
             -------------
-            - value    : Float 
-            - decimals : Integer 
+                value : Float
+                    - decimals : Integer
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - string : String 
+        Output sockets
+        --------------
+            string : String
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Float to_string : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name to_string : Method
+            
     """
 
     def __init__(self, value=None, decimals=None, label=None):
@@ -1169,20 +1255,24 @@ class ValueToString(Node):
 
 class AccumulateField(Node):
 
-    """Class AccumulateField
+    """
+
+    Node AccumulateField
+    --------------------
+        > Geometry node name: Accumulate Field<br>
+          Blender type: Accumulate Field
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Accumulate Field' 
-    | Blender type:  GeometryNodeAccumulateField 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', domain='POINT', label=None)
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', domain='POINT', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -1191,41 +1281,45 @@ class AccumulateField(Node):
 
             Input sockets
             -------------
-            - value       : data_type dependant 
-            - group_index : Integer 
+                value : data_type dependant
+                    - group_index : Integer
     
 
             Parameters
             ----------
-            - data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR') 
-            - domain    : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE') 
+                data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR')
+                    - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Data type dependant sockets
-    ===========================
-    - Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR') 
-    - Input sockets     : value 
-    - Output sockets    : leading trailing total 
+        Data type dependant sockets
+        ---------------------------
+            - Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR')
+            - Input sockets  : ['value']
+            - Output sockets : ['leading', 'trailing', 'total']   
+              
+              
     
 
-    Output sockets
-    ==============
-    - leading  : data_type dependant 
-    - trailing : data_type dependant 
-    - total    : data_type dependant 
+        Output sockets
+        --------------
+            leading : data_type dependant
+                - trailing : data_type dependant
+                - total : data_type dependant
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Float accumulate_field   : Method 
-    - Integer accumulate_field : Method 
-    - Vector accumulate_field  : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name accumulate_field : Method
+                - class_name accumulate_field : Method
+                - class_name accumulate_field : Method
+                  
     """
 
     def __init__(self, value=None, group_index=None, data_type='FLOAT', domain='POINT', label=None):
@@ -1285,20 +1379,24 @@ class AccumulateField(Node):
 
 class DomainSize(Node):
 
-    """Class DomainSize
+    """
+
+    Node DomainSize
+    ---------------
+        > Geometry node name: Domain Size<br>
+          Blender type: Domain Size
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Domain Size' 
-    | Blender type:  GeometryNodeAttributeDomainSize 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.DomainSize(geometry=None, component='MESH', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.DomainSize(geometry=None, component='MESH', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -1307,33 +1405,35 @@ class DomainSize(Node):
 
             Input sockets
             -------------
-            - geometry : Geometry 
+                geometry : Geometry
     
 
             Parameters
             ----------
-            - component : 'MESH' in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES') 
+                component : str (default = 'MESH') in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - point_count       : Integer 
-    - edge_count        : Integer 
-    - face_count        : Integer 
-    - face_corner_count : Integer 
-    - spline_count      : Integer 
-    - instance_count    : Integer 
+        Output sockets
+        --------------
+            point_count : Integer
+                - edge_count : Integer
+                - face_count : Integer
+                - face_corner_count : Integer
+                - spline_count : Integer
+                - instance_count : Integer
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry attribute_domain_size : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name attribute_domain_size : Method
+            
     """
 
     def __init__(self, geometry=None, component='MESH', label=None):
@@ -1370,20 +1470,24 @@ class DomainSize(Node):
 
 class AttributeRemove(Node):
 
-    """Class AttributeRemove
+    """
+
+    Node AttributeRemove
+    --------------------
+        > Geometry node name: Attribute Remove<br>
+          Blender type: Attribute Remove
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Attribute Remove' 
-    | Blender type:  GeometryNodeAttributeRemove 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.AttributeRemove(*attribute, geometry=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.AttributeRemove(*attribute, geometry=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -1392,24 +1496,26 @@ class AttributeRemove(Node):
 
             Input sockets
             -------------
-            - geometry  : Geometry 
-            - attribute : * String 
+                geometry : Geometry
+                    - attribute : *String
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - geometry : Geometry 
+        Output sockets
+        --------------
+            geometry : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry attribute_remove : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name attribute_remove : Method
+            
     """
 
     def __init__(self, *attribute, geometry=None, label=None):
@@ -1430,21 +1536,24 @@ class AttributeRemove(Node):
 
 class AttributeStatistic(Node):
 
-    """Class AttributeStatistic
+    """
+
+    Node AttributeStatistic
+    -----------------------
+        > Geometry node name: Attribute Statistic<br>
+          Blender type: Attribute Statistic
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Attribute Statistic' 
-    | Blender type:  GeometryNodeAttributeStatistic 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT',
-        label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -1453,46 +1562,50 @@ class AttributeStatistic(Node):
 
             Input sockets
             -------------
-            - geometry  : Geometry 
-            - selection : Boolean 
-            - attribute : data_type dependant 
+                geometry : Geometry
+                    - selection : Boolean
+                    - attribute : data_type dependant
     
 
             Parameters
             ----------
-            - data_type : 'FLOAT' in ('FLOAT', 'FLOAT_VECTOR') 
-            - domain    : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE') 
+                data_type : str (default = 'FLOAT') in ('FLOAT', 'FLOAT_VECTOR')
+                    - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Data type dependant sockets
-    ===========================
-    - Driving parameter : data_type in ('FLOAT', 'FLOAT_VECTOR') 
-    - Input sockets     : attribute 
-    - Output sockets    : mean median sum min max range standard_deviation variance 
+        Data type dependant sockets
+        ---------------------------
+            - Driving parameter : data_type in ('FLOAT', 'FLOAT_VECTOR')
+            - Input sockets  : ['attribute']
+            - Output sockets : ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']   
+              
+              
     
 
-    Output sockets
-    ==============
-    - mean               : data_type dependant 
-    - median             : data_type dependant 
-    - sum                : data_type dependant 
-    - min                : data_type dependant 
-    - max                : data_type dependant 
-    - range              : data_type dependant 
-    - standard_deviation : data_type dependant 
-    - variance           : data_type dependant 
+        Output sockets
+        --------------
+            mean : data_type dependant
+                - median : data_type dependant
+                - sum : data_type dependant
+                - min : data_type dependant
+                - max : data_type dependant
+                - range : data_type dependant
+                - standard_deviation : data_type dependant
+                - variance : data_type dependant
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Float attribute_statistic  : Method 
-    - Vector attribute_statistic : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name attribute_statistic : Method
+                - class_name attribute_statistic : Method
+                  
     """
 
     def __init__(self, geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', label=None):
@@ -1557,21 +1670,24 @@ class AttributeStatistic(Node):
 
 class TransferAttribute(Node):
 
-    """Class TransferAttribute
+    """
+
+    Node TransferAttribute
+    ----------------------
+        > Geometry node name: Transfer Attribute<br>
+          Blender type: Transfer Attribute
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Transfer Attribute' 
-    | Blender type:  GeometryNodeAttributeTransfer 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.TransferAttribute(source=None, attribute=None, source_position=None, index=None, data_type='FLOAT',
-        domain='POINT', mapping='NEAREST_FACE_INTERPOLATED', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.TransferAttribute(source=None, attribute=None, source_position=None, index=None, data_type='FLOAT', domain='POINT', mapping='NEAREST_FACE_INTERPOLATED', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -1580,49 +1696,53 @@ class TransferAttribute(Node):
 
             Input sockets
             -------------
-            - source          : Geometry 
-            - attribute       : data_type dependant 
-            - source_position : Vector 
-            - index           : Integer 
+                source : Geometry
+                    - attribute : data_type dependant
+                    - source_position : Vector
+                    - index : Integer
     
 
             Parameters
             ----------
-            - data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
-            - domain    : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE') 
-            - mapping   : 'NEAREST_FACE_INTERPOLATED' in ('NEAREST_FACE_INTERPOLATED', 'NEAREST', 'INDEX') 
+                data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+                    - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+                    - mapping : str (default = 'NEAREST_FACE_INTERPOLATED') in ('NEAREST_FACE_INTERPOLATED', 'NEAREST', 'INDEX')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Data type dependant sockets
-    ===========================
-    - Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
-    - Input sockets     : attribute 
-    - Output sockets    : attribute 
+        Data type dependant sockets
+        ---------------------------
+            - Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+            - Input sockets  : ['attribute']
+            - Output sockets : ['attribute']   
+              
+              
     
 
-    Output sockets
-    ==============
-    - attribute : data_type dependant 
+        Output sockets
+        --------------
+            attribute : data_type dependant
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Boolean transfer_attribute : Method 
-    - Color transfer_attribute   : Method 
-    - Float transfer_attribute   : Method 
-    - Geometry transfer_boolean  : Method 
-    - Geometry transfer_color    : Method 
-    - Geometry transfer_float    : Method 
-    - Geometry transfer_integer  : Method 
-    - Geometry transfer_vector   : Method 
-    - Integer transfer_attribute : Method 
-    - Vector transfer_attribute  : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name transfer_attribute : Method
+                - class_name transfer_attribute : Method
+                - class_name transfer_attribute : Method
+                - class_name transfer_boolean : Method
+                - class_name transfer_color : Method
+                - class_name transfer_float : Method
+                - class_name transfer_integer : Method
+                - class_name transfer_vector : Method
+                - class_name transfer_attribute : Method
+                - class_name transfer_attribute : Method
+                  
     """
 
     def __init__(self, source=None, attribute=None, source_position=None, index=None, data_type='FLOAT', domain='POINT', mapping='NEAREST_FACE_INTERPOLATED', label=None):
@@ -1695,20 +1815,24 @@ class TransferAttribute(Node):
 
 class BoundingBox(Node):
 
-    """Class BoundingBox
+    """
+
+    Node BoundingBox
+    ----------------
+        > Geometry node name: Bounding Box<br>
+          Blender type: Bounding Box
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Bounding Box' 
-    | Blender type:  GeometryNodeBoundBox 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.BoundingBox(geometry=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.BoundingBox(geometry=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -1717,28 +1841,30 @@ class BoundingBox(Node):
 
             Input sockets
             -------------
-            - geometry : Geometry 
+                geometry : Geometry
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - bounding_box : Geometry 
-    - min          : Vector 
-    - max          : Vector 
+        Output sockets
+        --------------
+            bounding_box : Geometry
+                - min : Vector
+                - max : Vector
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry bound_box : Property 
-    - Geometry box       : Property 
-    - Geometry box_max   : Property 
-    - Geometry box_min   : Property 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name bound_box : Property
+                - class_name box : Property
+                - class_name box_max : Property
+                - class_name box_min : Property
+                  
     """
 
     def __init__(self, geometry=None, label=None):
@@ -1760,20 +1886,24 @@ class BoundingBox(Node):
 
 class CaptureAttribute(Node):
 
-    """Class CaptureAttribute
+    """
+
+    Node CaptureAttribute
+    ---------------------
+        > Geometry node name: Capture Attribute<br>
+          Blender type: Capture Attribute
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Capture Attribute' 
-    | Blender type:  GeometryNodeCaptureAttribute 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', domain='POINT', label=None)
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', domain='POINT', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -1782,43 +1912,47 @@ class CaptureAttribute(Node):
 
             Input sockets
             -------------
-            - geometry : Geometry 
-            - value    : data_type dependant 
+                geometry : Geometry
+                    - value : data_type dependant
     
 
             Parameters
             ----------
-            - data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
-            - domain    : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE') 
+                data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+                    - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Data type dependant sockets
-    ===========================
-    - Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
-    - Input sockets     : value 
-    - Output sockets    : attribute 
+        Data type dependant sockets
+        ---------------------------
+            - Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+            - Input sockets  : ['value']
+            - Output sockets : ['attribute']   
+              
+              
     
 
-    Output sockets
-    ==============
-    - geometry  : Geometry 
-    - attribute : data_type dependant 
+        Output sockets
+        --------------
+            geometry : Geometry
+                - attribute : data_type dependant
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Boolean capture_attribute  : Method 
-    - Color capture_attribute    : Method 
-    - Float capture_attribute    : Method 
-    - Geometry capture_attribute : Method 
-    - Integer capture_attribute  : Method 
-    - Vector capture_attribute   : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_attribute : Method
+                - class_name capture_attribute : Method
+                - class_name capture_attribute : Method
+                - class_name capture_attribute : Method
+                - class_name capture_attribute : Method
+                - class_name capture_attribute : Method
+                  
     """
 
     def __init__(self, geometry=None, value=None, data_type='FLOAT', domain='POINT', label=None):
@@ -1881,21 +2015,24 @@ class CaptureAttribute(Node):
 
 class CollectionInfo(Node):
 
-    """Class CollectionInfo
+    """
+
+    Node CollectionInfo
+    -------------------
+        > Geometry node name: Collection Info<br>
+          Blender type: Collection Info
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Collection Info' 
-    | Blender type:  GeometryNodeCollectionInfo 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.CollectionInfo(collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL',
-        label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.CollectionInfo(collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -1904,30 +2041,32 @@ class CollectionInfo(Node):
 
             Input sockets
             -------------
-            - collection        : Collection 
-            - separate_children : Boolean 
-            - reset_children    : Boolean 
+                collection : Collection
+                    - separate_children : Boolean
+                    - reset_children : Boolean
     
 
             Parameters
             ----------
-            - transform_space : 'ORIGINAL' in ('ORIGINAL', 'RELATIVE') 
+                transform_space : str (default = 'ORIGINAL') in ('ORIGINAL', 'RELATIVE')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - geometry : Geometry 
+        Output sockets
+        --------------
+            geometry : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Collection info : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name info : Method
+            
     """
 
     def __init__(self, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL', label=None):
@@ -1961,20 +2100,24 @@ class CollectionInfo(Node):
 
 class ConvexHull(Node):
 
-    """Class ConvexHull
+    """
+
+    Node ConvexHull
+    ---------------
+        > Geometry node name: Convex Hull<br>
+          Blender type: Convex Hull
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Convex Hull' 
-    | Blender type:  GeometryNodeConvexHull 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.ConvexHull(geometry=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.ConvexHull(geometry=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -1983,23 +2126,25 @@ class ConvexHull(Node):
 
             Input sockets
             -------------
-            - geometry : Geometry 
+                geometry : Geometry
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - convex_hull : Geometry 
+        Output sockets
+        --------------
+            convex_hull : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry convex_hull : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name convex_hull : Method
+            
     """
 
     def __init__(self, geometry=None, label=None):
@@ -2019,21 +2164,24 @@ class ConvexHull(Node):
 
 class Arc(Node):
 
-    """Class Arc
+    """
+
+    Node Arc
+    --------
+        > Geometry node name: Arc<br>
+          Blender type: Arc
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Arc' 
-    | Blender type:  GeometryNodeCurveArc 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None, start_angle=None, sweep_angle=None,
-        offset_angle=None, connect_center=None, invert_arc=None, mode='RADIUS', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None, start_angle=None, sweep_angle=None, offset_angle=None, connect_center=None, invert_arc=None, mode='RADIUS', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -2042,41 +2190,43 @@ class Arc(Node):
 
             Input sockets
             -------------
-            - resolution     : Integer 
-            - start          : Vector 
-            - middle         : Vector 
-            - end            : Vector 
-            - radius         : Float 
-            - start_angle    : Float 
-            - sweep_angle    : Float 
-            - offset_angle   : Float 
-            - connect_center : Boolean 
-            - invert_arc     : Boolean 
+                resolution : Integer
+                    - start : Vector
+                    - middle : Vector
+                    - end : Vector
+                    - radius : Float
+                    - start_angle : Float
+                    - sweep_angle : Float
+                    - offset_angle : Float
+                    - connect_center : Boolean
+                    - invert_arc : Boolean
     
 
             Parameters
             ----------
-            - mode : 'RADIUS' in ('POINTS', 'RADIUS') 
+                mode : str (default = 'RADIUS') in ('POINTS', 'RADIUS')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve  : Curve 
-    - center : Vector 
-    - normal : Vector 
-    - radius : Float 
+        Output sockets
+        --------------
+            curve : Curve
+                - center : Vector
+                - normal : Vector
+                - radius : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve ArcFromPoints : Static method 
-    - Curve ArcFromRadius : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name ArcFromPoints : Static method
+                - class_name ArcFromRadius : Constructor
+                  
     """
 
     def __init__(self, resolution=None, start=None, middle=None, end=None, radius=None, start_angle=None, sweep_angle=None, offset_angle=None, connect_center=None, invert_arc=None, mode='RADIUS', label=None):
@@ -2120,20 +2270,24 @@ class Arc(Node):
 
 class EndpointSelection(Node):
 
-    """Class EndpointSelection
+    """
+
+    Node EndpointSelection
+    ----------------------
+        > Geometry node name: Endpoint Selection<br>
+          Blender type: Endpoint Selection
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Endpoint Selection' 
-    | Blender type:  GeometryNodeCurveEndpointSelection 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.EndpointSelection(start_size=None, end_size=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.EndpointSelection(start_size=None, end_size=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -2142,25 +2296,27 @@ class EndpointSelection(Node):
 
             Input sockets
             -------------
-            - start_size : Integer 
-            - end_size   : Integer 
+                start_size : Integer
+                    - end_size : Integer
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - selection : Boolean 
+        Output sockets
+        --------------
+            selection : Boolean
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Spline capture_endpoint_selection : Capture attribute 
-    - Spline endpoint_selection         : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_endpoint_selection : Capture attribute
+                - class_name endpoint_selection : Attribute
+                  
     """
 
     def __init__(self, start_size=None, end_size=None, label=None):
@@ -2181,20 +2337,24 @@ class EndpointSelection(Node):
 
 class HandleTypeSelection(Node):
 
-    """Class HandleTypeSelection
+    """
+
+    Node HandleTypeSelection
+    ------------------------
+        > Geometry node name: Handle Type Selection<br>
+          Blender type: Handle Type Selection
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Handle Type Selection' 
-    | Blender type:  GeometryNodeCurveHandleTypeSelection 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -2203,25 +2363,27 @@ class HandleTypeSelection(Node):
 
             Parameters
             ----------
-            - handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN') 
-            - mode        : {'LEFT', 'RIGHT'} set 
+                handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+                    - mode : set (default = {'LEFT', 'RIGHT'})
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - selection : Boolean 
+        Output sockets
+        --------------
+            selection : Boolean
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Spline capture_handle_type_selection : Capture attribute 
-    - Spline handle_type_selection         : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_handle_type_selection : Capture attribute
+                - class_name handle_type_selection : Attribute
+                  
     """
 
     def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None):
@@ -2258,20 +2420,24 @@ class HandleTypeSelection(Node):
 
 class CurveLength(Node):
 
-    """Class CurveLength
+    """
+
+    Node CurveLength
+    ----------------
+        > Geometry node name: Curve Length<br>
+          Blender type: Curve Length
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Curve Length' 
-    | Blender type:  GeometryNodeCurveLength 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.CurveLength(curve=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.CurveLength(curve=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -2280,23 +2446,25 @@ class CurveLength(Node):
 
             Input sockets
             -------------
-            - curve : Curve 
+                curve : Curve
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - length : Float 
+        Output sockets
+        --------------
+            length : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve length : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name length : Method
+            
     """
 
     def __init__(self, curve=None, label=None):
@@ -2316,21 +2484,24 @@ class CurveLength(Node):
 
 class BezierSegment(Node):
 
-    """Class BezierSegment
+    """
+
+    Node BezierSegment
+    ------------------
+        > Geometry node name: Bezier Segment<br>
+          Blender type: Bezier Segment
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Bezier Segment' 
-    | Blender type:  GeometryNodeCurvePrimitiveBezierSegment 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, end=None,
-        mode='POSITION', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -2339,32 +2510,34 @@ class BezierSegment(Node):
 
             Input sockets
             -------------
-            - resolution   : Integer 
-            - start        : Vector 
-            - start_handle : Vector 
-            - end_handle   : Vector 
-            - end          : Vector 
+                resolution : Integer
+                    - start : Vector
+                    - start_handle : Vector
+                    - end_handle : Vector
+                    - end : Vector
     
 
             Parameters
             ----------
-            - mode : 'POSITION' in ('POSITION', 'OFFSET') 
+                mode : str (default = 'POSITION') in ('POSITION', 'OFFSET')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve : Curve 
+        Output sockets
+        --------------
+            curve : Curve
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve BezierSegment : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name BezierSegment : Constructor
+            
     """
 
     def __init__(self, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION', label=None):
@@ -2400,21 +2573,24 @@ class BezierSegment(Node):
 
 class CurveCircle(Node):
 
-    """Class CurveCircle
+    """
+
+    Node CurveCircle
+    ----------------
+        > Geometry node name: Curve Circle<br>
+          Blender type: Curve Circle
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Curve Circle' 
-    | Blender type:  GeometryNodeCurvePrimitiveCircle 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS',
-        label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -2423,33 +2599,35 @@ class CurveCircle(Node):
 
             Input sockets
             -------------
-            - resolution : Integer 
-            - point_1    : Vector 
-            - point_2    : Vector 
-            - point_3    : Vector 
-            - radius     : Float 
+                resolution : Integer
+                    - point_1 : Vector
+                    - point_2 : Vector
+                    - point_3 : Vector
+                    - radius : Float
     
 
             Parameters
             ----------
-            - mode : 'RADIUS' in ('POINTS', 'RADIUS') 
+                mode : str (default = 'RADIUS') in ('POINTS', 'RADIUS')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve  : Curve 
-    - center : Vector 
+        Output sockets
+        --------------
+            curve : Curve
+                - center : Vector
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve Circle : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Circle : Constructor
+            
     """
 
     def __init__(self, resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS', label=None):
@@ -2486,20 +2664,24 @@ class CurveCircle(Node):
 
 class CurveLine(Node):
 
-    """Class CurveLine
+    """
+
+    Node CurveLine
+    --------------
+        > Geometry node name: Curve Line<br>
+          Blender type: Curve Line
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Curve Line' 
-    | Blender type:  GeometryNodeCurvePrimitiveLine 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='POINTS', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='POINTS', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -2508,31 +2690,33 @@ class CurveLine(Node):
 
             Input sockets
             -------------
-            - start     : Vector 
-            - end       : Vector 
-            - direction : Vector 
-            - length    : Float 
+                start : Vector
+                    - end : Vector
+                    - direction : Vector
+                    - length : Float
     
 
             Parameters
             ----------
-            - mode : 'POINTS' in ('POINTS', 'DIRECTION') 
+                mode : str (default = 'POINTS') in ('POINTS', 'DIRECTION')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve : Curve 
+        Output sockets
+        --------------
+            curve : Curve
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve Line : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Line : Constructor
+            
     """
 
     def __init__(self, start=None, end=None, direction=None, length=None, mode='POINTS', label=None):
@@ -2567,21 +2751,24 @@ class CurveLine(Node):
 
 class Quadrilateral(Node):
 
-    """Class Quadrilateral
+    """
+
+    Node Quadrilateral
+    ------------------
+        > Geometry node name: Quadrilateral<br>
+          Blender type: Quadrilateral
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Quadrilateral' 
-    | Blender type:  GeometryNodeCurvePrimitiveQuadrilateral 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None,
-        top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', label=None)
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -2590,38 +2777,40 @@ class Quadrilateral(Node):
 
             Input sockets
             -------------
-            - width         : Float 
-            - height        : Float 
-            - bottom_width  : Float 
-            - top_width     : Float 
-            - offset        : Float 
-            - bottom_height : Float 
-            - top_height    : Float 
-            - point_1       : Vector 
-            - point_2       : Vector 
-            - point_3       : Vector 
-            - point_4       : Vector 
+                width : Float
+                    - height : Float
+                    - bottom_width : Float
+                    - top_width : Float
+                    - offset : Float
+                    - bottom_height : Float
+                    - top_height : Float
+                    - point_1 : Vector
+                    - point_2 : Vector
+                    - point_3 : Vector
+                    - point_4 : Vector
     
 
             Parameters
             ----------
-            - mode : 'RECTANGLE' in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS') 
+                mode : str (default = 'RECTANGLE') in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve : Curve 
+        Output sockets
+        --------------
+            curve : Curve
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve Quadrilateral : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Quadrilateral : Constructor
+            
     """
 
     def __init__(self, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', label=None):
@@ -2663,20 +2852,24 @@ class Quadrilateral(Node):
 
 class QuadraticBezier(Node):
 
-    """Class QuadraticBezier
+    """
+
+    Node QuadraticBezier
+    --------------------
+        > Geometry node name: Quadratic Bezier<br>
+          Blender type: Quadratic Bezier
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Quadratic Bezier' 
-    | Blender type:  GeometryNodeCurveQuadraticBezier 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -2685,26 +2878,28 @@ class QuadraticBezier(Node):
 
             Input sockets
             -------------
-            - resolution : Integer 
-            - start      : Vector 
-            - middle     : Vector 
-            - end        : Vector 
+                resolution : Integer
+                    - start : Vector
+                    - middle : Vector
+                    - end : Vector
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve : Curve 
+        Output sockets
+        --------------
+            curve : Curve
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve QuadraticBezier : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name QuadraticBezier : Constructor
+            
     """
 
     def __init__(self, resolution=None, start=None, middle=None, end=None, label=None):
@@ -2727,20 +2922,24 @@ class QuadraticBezier(Node):
 
 class SetHandleType(Node):
 
-    """Class SetHandleType
+    """
+
+    Node SetHandleType
+    ------------------
+        > Geometry node name: Set Handle Type<br>
+          Blender type: Set Handle Type
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Set Handle Type' 
-    | Blender type:  GeometryNodeCurveSetHandles 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None)
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -2749,30 +2948,32 @@ class SetHandleType(Node):
 
             Input sockets
             -------------
-            - curve     : Curve 
-            - selection : Boolean 
+                curve : Curve
+                    - selection : Boolean
     
 
             Parameters
             ----------
-            - handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN') 
-            - mode        : {'LEFT', 'RIGHT'} set 
+                handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+                    - mode : set (default = {'LEFT', 'RIGHT'})
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve : Curve 
+        Output sockets
+        --------------
+            curve : Curve
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve set_handles : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name set_handles : Method
+            
     """
 
     def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None):
@@ -2814,21 +3015,24 @@ class SetHandleType(Node):
 
 class Spiral(Node):
 
-    """Class Spiral
+    """
+
+    Node Spiral
+    -----------
+        > Geometry node name: Spiral<br>
+          Blender type: Spiral
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Spiral' 
-    | Blender type:  GeometryNodeCurveSpiral 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None,
-        reverse=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -2837,28 +3041,30 @@ class Spiral(Node):
 
             Input sockets
             -------------
-            - resolution   : Integer 
-            - rotations    : Float 
-            - start_radius : Float 
-            - end_radius   : Float 
-            - height       : Float 
-            - reverse      : Boolean 
+                resolution : Integer
+                    - rotations : Float
+                    - start_radius : Float
+                    - end_radius : Float
+                    - height : Float
+                    - reverse : Boolean
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve : Curve 
+        Output sockets
+        --------------
+            curve : Curve
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve Spiral : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Spiral : Constructor
+            
     """
 
     def __init__(self, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, label=None):
@@ -2883,20 +3089,24 @@ class Spiral(Node):
 
 class SetSplineType(Node):
 
-    """Class SetSplineType
+    """
+
+    Node SetSplineType
+    ------------------
+        > Geometry node name: Set Spline Type<br>
+          Blender type: Set Spline Type
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Set Spline Type' 
-    | Blender type:  GeometryNodeCurveSplineType 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -2905,29 +3115,31 @@ class SetSplineType(Node):
 
             Input sockets
             -------------
-            - curve     : Curve 
-            - selection : Boolean 
+                curve : Curve
+                    - selection : Boolean
     
 
             Parameters
             ----------
-            - spline_type : 'POLY' in ('BEZIER', 'NURBS', 'POLY') 
+                spline_type : str (default = 'POLY') in ('BEZIER', 'NURBS', 'POLY')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve : Curve 
+        Output sockets
+        --------------
+            curve : Curve
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve set_spline_type : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name set_spline_type : Method
+            
     """
 
     def __init__(self, curve=None, selection=None, spline_type='POLY', label=None):
@@ -2960,20 +3172,24 @@ class SetSplineType(Node):
 
 class Star(Node):
 
-    """Class Star
+    """
+
+    Node Star
+    ---------
+        > Geometry node name: Star<br>
+          Blender type: Star
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Star' 
-    | Blender type:  GeometryNodeCurveStar 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -2982,27 +3198,29 @@ class Star(Node):
 
             Input sockets
             -------------
-            - points       : Integer 
-            - inner_radius : Float 
-            - outer_radius : Float 
-            - twist        : Float 
+                points : Integer
+                    - inner_radius : Float
+                    - outer_radius : Float
+                    - twist : Float
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve        : Curve 
-    - outer_points : Boolean 
+        Output sockets
+        --------------
+            curve : Curve
+                - outer_points : Boolean
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve Star : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Star : Constructor
+            
     """
 
     def __init__(self, points=None, inner_radius=None, outer_radius=None, twist=None, label=None):
@@ -3026,20 +3244,24 @@ class Star(Node):
 
 class CurveToMesh(Node):
 
-    """Class CurveToMesh
+    """
+
+    Node CurveToMesh
+    ----------------
+        > Geometry node name: Curve to Mesh<br>
+          Blender type: Curve to Mesh
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Curve to Mesh' 
-    | Blender type:  GeometryNodeCurveToMesh 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -3048,25 +3270,27 @@ class CurveToMesh(Node):
 
             Input sockets
             -------------
-            - curve         : Curve 
-            - profile_curve : Geometry 
-            - fill_caps     : Boolean 
+                curve : Curve
+                    - profile_curve : Geometry
+                    - fill_caps : Boolean
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh : Mesh 
+        Output sockets
+        --------------
+            mesh : Mesh
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve to_mesh : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name to_mesh : Method
+            
     """
 
     def __init__(self, curve=None, profile_curve=None, fill_caps=None, label=None):
@@ -3088,20 +3312,24 @@ class CurveToMesh(Node):
 
 class CurveToPoints(Node):
 
-    """Class CurveToPoints
+    """
+
+    Node CurveToPoints
+    ------------------
+        > Geometry node name: Curve to Points<br>
+          Blender type: Curve to Points
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Curve to Points' 
-    | Blender type:  GeometryNodeCurveToPoints 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -3110,33 +3338,35 @@ class CurveToPoints(Node):
 
             Input sockets
             -------------
-            - curve  : Curve 
-            - count  : Integer 
-            - length : Float 
+                curve : Curve
+                    - count : Integer
+                    - length : Float
     
 
             Parameters
             ----------
-            - mode : 'COUNT' in ('EVALUATED', 'COUNT', 'LENGTH') 
+                mode : str (default = 'COUNT') in ('EVALUATED', 'COUNT', 'LENGTH')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - points   : Points 
-    - tangent  : Vector 
-    - normal   : Vector 
-    - rotation : Vector 
+        Output sockets
+        --------------
+            points : Points
+                - tangent : Vector
+                - normal : Vector
+                - rotation : Vector
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve to_points : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name to_points : Method
+            
     """
 
     def __init__(self, curve=None, count=None, length=None, mode='COUNT', label=None):
@@ -3173,20 +3403,24 @@ class CurveToPoints(Node):
 
 class DeleteGeometry(Node):
 
-    """Class DeleteGeometry
+    """
+
+    Node DeleteGeometry
+    -------------------
+        > Geometry node name: Delete Geometry<br>
+          Blender type: Delete Geometry
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Delete Geometry' 
-    | Blender type:  GeometryNodeDeleteGeometry 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode='ALL', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode='ALL', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -3195,30 +3429,32 @@ class DeleteGeometry(Node):
 
             Input sockets
             -------------
-            - geometry  : Geometry 
-            - selection : Boolean 
+                geometry : Geometry
+                    - selection : Boolean
     
 
             Parameters
             ----------
-            - domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE') 
-            - mode   : 'ALL' in ('ALL', 'EDGE_FACE', 'ONLY_FACE') 
+                domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+                    - mode : str (default = 'ALL') in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - geometry : Geometry 
+        Output sockets
+        --------------
+            geometry : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry delete_geometry : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name delete_geometry : Method
+            
     """
 
     def __init__(self, geometry=None, selection=None, domain='POINT', mode='ALL', label=None):
@@ -3260,21 +3496,24 @@ class DeleteGeometry(Node):
 
 class DistributePointsOnFaces(Node):
 
-    """Class DistributePointsOnFaces
+    """
+
+    Node DistributePointsOnFaces
+    ----------------------------
+        > Geometry node name: Distribute Points on Faces<br>
+          Blender type: Distribute Points on Faces
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Distribute Points on Faces' 
-    | Blender type:  GeometryNodeDistributePointsOnFaces 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=None, density_max=None, density=None,
-        density_factor=None, seed=None, distribute_method='RANDOM', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -3283,36 +3522,38 @@ class DistributePointsOnFaces(Node):
 
             Input sockets
             -------------
-            - mesh           : Mesh 
-            - selection      : Boolean 
-            - distance_min   : Float 
-            - density_max    : Float 
-            - density        : Float 
-            - density_factor : Float 
-            - seed           : Integer 
+                mesh : Mesh
+                    - selection : Boolean
+                    - distance_min : Float
+                    - density_max : Float
+                    - density : Float
+                    - density_factor : Float
+                    - seed : Integer
     
 
             Parameters
             ----------
-            - distribute_method : 'RANDOM' in ('RANDOM', 'POISSON') 
+                distribute_method : str (default = 'RANDOM') in ('RANDOM', 'POISSON')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - points   : Points 
-    - normal   : Vector 
-    - rotation : Vector 
+        Output sockets
+        --------------
+            points : Points
+                - normal : Vector
+                - rotation : Vector
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh distribute_points_on_faces : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name distribute_points_on_faces : Method
+            
     """
 
     def __init__(self, mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None):
@@ -3352,20 +3593,24 @@ class DistributePointsOnFaces(Node):
 
 class DualMesh(Node):
 
-    """Class DualMesh
+    """
+
+    Node DualMesh
+    -------------
+        > Geometry node name: Dual Mesh<br>
+          Blender type: Dual Mesh
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Dual Mesh' 
-    | Blender type:  GeometryNodeDualMesh 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.DualMesh(mesh=None, keep_boundaries=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.DualMesh(mesh=None, keep_boundaries=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -3374,24 +3619,26 @@ class DualMesh(Node):
 
             Input sockets
             -------------
-            - mesh            : Mesh 
-            - keep_boundaries : Boolean 
+                mesh : Mesh
+                    - keep_boundaries : Boolean
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - dual_mesh : Geometry 
+        Output sockets
+        --------------
+            dual_mesh : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh dual : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name dual : Method
+            
     """
 
     def __init__(self, mesh=None, keep_boundaries=None, label=None):
@@ -3412,21 +3659,24 @@ class DualMesh(Node):
 
 class ExtrudeMesh(Node):
 
-    """Class ExtrudeMesh
+    """
+
+    Node ExtrudeMesh
+    ----------------
+        > Geometry node name: Extrude Mesh<br>
+          Blender type: Extrude Mesh
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Extrude Mesh' 
-    | Blender type:  GeometryNodeExtrudeMesh 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES',
-        label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -3435,34 +3685,36 @@ class ExtrudeMesh(Node):
 
             Input sockets
             -------------
-            - mesh         : Mesh 
-            - selection    : Boolean 
-            - offset       : Vector 
-            - offset_scale : Float 
-            - individual   : Boolean 
+                mesh : Mesh
+                    - selection : Boolean
+                    - offset : Vector
+                    - offset_scale : Float
+                    - individual : Boolean
     
 
             Parameters
             ----------
-            - mode : 'FACES' in ('VERTICES', 'EDGES', 'FACES') 
+                mode : str (default = 'FACES') in ('VERTICES', 'EDGES', 'FACES')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh : Mesh 
-    - top  : Boolean 
-    - side : Boolean 
+        Output sockets
+        --------------
+            mesh : Mesh
+                - top : Boolean
+                - side : Boolean
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh extrude : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name extrude : Method
+            
     """
 
     def __init__(self, mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES', label=None):
@@ -3500,20 +3752,24 @@ class ExtrudeMesh(Node):
 
 class FieldAtIndex(Node):
 
-    """Class FieldAtIndex
+    """
+
+    Node FieldAtIndex
+    -----------------
+        > Geometry node name: Field at Index<br>
+          Blender type: Field at Index
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Field at Index' 
-    | Blender type:  GeometryNodeFieldAtIndex 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.FieldAtIndex(index=None, value=None, data_type='FLOAT', domain='POINT', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.FieldAtIndex(index=None, value=None, data_type='FLOAT', domain='POINT', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -3522,41 +3778,45 @@ class FieldAtIndex(Node):
 
             Input sockets
             -------------
-            - index : Integer 
-            - value : data_type dependant 
+                index : Integer
+                    - value : data_type dependant
     
 
             Parameters
             ----------
-            - data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
-            - domain    : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE') 
+                data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+                    - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Data type dependant sockets
-    ===========================
-    - Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
-    - Input sockets     : value 
-    - Output sockets    : value 
+        Data type dependant sockets
+        ---------------------------
+            - Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+            - Input sockets  : ['value']
+            - Output sockets : ['value']   
+              
+              
     
 
-    Output sockets
-    ==============
-    - value : data_type dependant 
+        Output sockets
+        --------------
+            value : data_type dependant
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Boolean field_at_index : Method 
-    - Color field_at_index   : Method 
-    - Float field_at_index   : Method 
-    - Integer field_at_index : Method 
-    - Vector field_at_index  : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name field_at_index : Method
+                - class_name field_at_index : Method
+                - class_name field_at_index : Method
+                - class_name field_at_index : Method
+                - class_name field_at_index : Method
+                  
     """
 
     def __init__(self, index=None, value=None, data_type='FLOAT', domain='POINT', label=None):
@@ -3618,20 +3878,24 @@ class FieldAtIndex(Node):
 
 class FillCurve(Node):
 
-    """Class FillCurve
+    """
+
+    Node FillCurve
+    --------------
+        > Geometry node name: Fill Curve<br>
+          Blender type: Fill Curve
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Fill Curve' 
-    | Blender type:  GeometryNodeFillCurve 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.FillCurve(curve=None, mode='TRIANGLES', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.FillCurve(curve=None, mode='TRIANGLES', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -3640,28 +3904,30 @@ class FillCurve(Node):
 
             Input sockets
             -------------
-            - curve : Curve 
+                curve : Curve
     
 
             Parameters
             ----------
-            - mode : 'TRIANGLES' in ('TRIANGLES', 'NGONS') 
+                mode : str (default = 'TRIANGLES') in ('TRIANGLES', 'NGONS')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh : Mesh 
+        Output sockets
+        --------------
+            mesh : Mesh
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve fill : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name fill : Method
+            
     """
 
     def __init__(self, curve=None, mode='TRIANGLES', label=None):
@@ -3693,20 +3959,24 @@ class FillCurve(Node):
 
 class FilletCurve(Node):
 
-    """Class FilletCurve
+    """
+
+    Node FilletCurve
+    ----------------
+        > Geometry node name: Fillet Curve<br>
+          Blender type: Fillet Curve
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Fillet Curve' 
-    | Blender type:  GeometryNodeFilletCurve 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER', label=None)
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -3715,31 +3985,33 @@ class FilletCurve(Node):
 
             Input sockets
             -------------
-            - curve        : Curve 
-            - count        : Integer 
-            - radius       : Float 
-            - limit_radius : Boolean 
+                curve : Curve
+                    - count : Integer
+                    - radius : Float
+                    - limit_radius : Boolean
     
 
             Parameters
             ----------
-            - mode : 'BEZIER' in ('BEZIER', 'POLY') 
+                mode : str (default = 'BEZIER') in ('BEZIER', 'POLY')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve : Curve 
+        Output sockets
+        --------------
+            curve : Curve
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve fillet : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name fillet : Method
+            
     """
 
     def __init__(self, curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER', label=None):
@@ -3774,20 +4046,24 @@ class FilletCurve(Node):
 
 class FlipFaces(Node):
 
-    """Class FlipFaces
+    """
+
+    Node FlipFaces
+    --------------
+        > Geometry node name: Flip Faces<br>
+          Blender type: Flip Faces
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Flip Faces' 
-    | Blender type:  GeometryNodeFlipFaces 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.FlipFaces(mesh=None, selection=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.FlipFaces(mesh=None, selection=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -3796,24 +4072,26 @@ class FlipFaces(Node):
 
             Input sockets
             -------------
-            - mesh      : Mesh 
-            - selection : Boolean 
+                mesh : Mesh
+                    - selection : Boolean
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh : Mesh 
+        Output sockets
+        --------------
+            mesh : Mesh
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh flip_faces : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name flip_faces : Method
+            
     """
 
     def __init__(self, mesh=None, selection=None, label=None):
@@ -3834,20 +4112,24 @@ class FlipFaces(Node):
 
 class GeometryToInstance(Node):
 
-    """Class GeometryToInstance
+    """
+
+    Node GeometryToInstance
+    -----------------------
+        > Geometry node name: Geometry to Instance<br>
+          Blender type: Geometry to Instance
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Geometry to Instance' 
-    | Blender type:  GeometryNodeGeometryToInstance 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.GeometryToInstance(*geometry, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.GeometryToInstance(*geometry, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -3856,23 +4138,25 @@ class GeometryToInstance(Node):
 
             Input sockets
             -------------
-            - geometry : * Geometry 
+                geometry : *Geometry
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - instances : Instances 
+        Output sockets
+        --------------
+            instances : Instances
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry to_instance : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name to_instance : Method
+            
     """
 
     def __init__(self, *geometry, label=None):
@@ -3892,20 +4176,24 @@ class GeometryToInstance(Node):
 
 class Group(Node):
 
-    """Class Group
+    """
+
+    Node Group
+    ----------
+        > Geometry node name: Group<br>
+          Blender type: Group
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Group' 
-    | Blender type:  GeometryNodeGroup 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Group(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Group(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -3914,7 +4202,7 @@ class Group(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     """
 
     def __init__(self, label=None):
@@ -3927,21 +4215,24 @@ class Group(Node):
 
 class ImageTexture(Node):
 
-    """Class ImageTexture
+    """
+
+    Node ImageTexture
+    -----------------
+        > Geometry node name: Image Texture<br>
+          Blender type: Image Texture
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Image Texture' 
-    | Blender type:  GeometryNodeImageTexture 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear',
-        label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -3950,32 +4241,34 @@ class ImageTexture(Node):
 
             Input sockets
             -------------
-            - image  : Image 
-            - vector : Vector 
-            - frame  : Integer 
+                image : Image
+                    - vector : Vector
+                    - frame : Integer
     
 
             Parameters
             ----------
-            - extension     : 'REPEAT' in ('REPEAT', 'EXTEND', 'CLIP') 
-            - interpolation : 'Linear' in ('Linear', 'Closest', 'Cubic') 
+                extension : str (default = 'REPEAT') in ('REPEAT', 'EXTEND', 'CLIP')
+                    - interpolation : str (default = 'Linear') in ('Linear', 'Closest', 'Cubic')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - color : Color 
-    - alpha : Float 
+        Output sockets
+        --------------
+            color : Color
+                - alpha : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Texture Image : Static method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Image : Static method
+            
     """
 
     def __init__(self, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', label=None):
@@ -4019,20 +4312,24 @@ class ImageTexture(Node):
 
 class CurveHandlePositions(Node):
 
-    """Class CurveHandlePositions
+    """
+
+    Node CurveHandlePositions
+    -------------------------
+        > Geometry node name: Curve Handle Positions<br>
+          Blender type: Curve Handle Positions
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Curve Handle Positions' 
-    | Blender type:  GeometryNodeInputCurveHandlePositions 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.CurveHandlePositions(relative=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.CurveHandlePositions(relative=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4041,26 +4338,28 @@ class CurveHandlePositions(Node):
 
             Input sockets
             -------------
-            - relative : Boolean 
+                relative : Boolean
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - left  : Vector 
-    - right : Vector 
+        Output sockets
+        --------------
+            left : Vector
+                - right : Vector
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Spline capture_handle_positions : Capture attribute 
-    - Spline left_handle_position     : Attribute 
-    - Spline right_handle_position    : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_handle_positions : Capture attribute
+                - class_name left_handle_position : Attribute
+                - class_name right_handle_position : Attribute
+                  
     """
 
     def __init__(self, relative=None, label=None):
@@ -4081,20 +4380,24 @@ class CurveHandlePositions(Node):
 
 class CurveTilt(Node):
 
-    """Class CurveTilt
+    """
+
+    Node CurveTilt
+    --------------
+        > Geometry node name: Curve Tilt<br>
+          Blender type: Curve Tilt
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Curve Tilt' 
-    | Blender type:  GeometryNodeInputCurveTilt 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.CurveTilt(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.CurveTilt(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4103,19 +4406,21 @@ class CurveTilt(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - tilt : Float 
+        Output sockets
+        --------------
+            tilt : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Spline capture_tilt : Capture attribute 
-    - Spline tilt         : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_tilt : Capture attribute
+                - class_name tilt : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -4131,20 +4436,24 @@ class CurveTilt(Node):
 
 class ID(Node):
 
-    """Class ID
+    """
+
+    Node ID
+    -------
+        > Geometry node name: ID<br>
+          Blender type: ID
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'ID' 
-    | Blender type:  GeometryNodeInputID 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.ID(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.ID(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4153,20 +4462,22 @@ class ID(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - ID : Integer 
+        Output sockets
+        --------------
+            ID : Integer
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry ID         : Attribute 
-    - Geometry capture_ID : Capture attribute 
-    - Spline spline_ID    : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name ID : Attribute
+                - class_name capture_ID : Capture attribute
+                - class_name spline_ID : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -4182,20 +4493,24 @@ class ID(Node):
 
 class Index(Node):
 
-    """Class Index
+    """
+
+    Node Index
+    ----------
+        > Geometry node name: Index<br>
+          Blender type: Index
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Index' 
-    | Blender type:  GeometryNodeInputIndex 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Index(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Index(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4204,22 +4519,24 @@ class Index(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - index : Integer 
+        Output sockets
+        --------------
+            index : Integer
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry capture_index   : Capture attribute 
-    - Geometry index           : Attribute 
-    - Instances instance_index : Attribute 
-    - Spline spline_index      : Attribute 
-    - Spline spline_position   : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_index : Capture attribute
+                - class_name index : Attribute
+                - class_name instance_index : Attribute
+                - class_name spline_index : Attribute
+                - class_name spline_position : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -4235,20 +4552,24 @@ class Index(Node):
 
 class Material(Node):
 
-    """Class Material
+    """
+
+    Node Material
+    -------------
+        > Geometry node name: Material<br>
+          Blender type: Material
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Material' 
-    | Blender type:  GeometryNodeInputMaterial 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Material(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Material(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4257,12 +4578,12 @@ class Material(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - material : Material 
+        Output sockets
+        --------------
+            material : Material
     """
 
     def __init__(self, label=None):
@@ -4278,20 +4599,24 @@ class Material(Node):
 
 class MaterialIndex(Node):
 
-    """Class MaterialIndex
+    """
+
+    Node MaterialIndex
+    ------------------
+        > Geometry node name: Material Index<br>
+          Blender type: Material Index
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Material Index' 
-    | Blender type:  GeometryNodeInputMaterialIndex 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.MaterialIndex(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.MaterialIndex(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4300,19 +4625,21 @@ class MaterialIndex(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - material_index : Integer 
+        Output sockets
+        --------------
+            material_index : Integer
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh capture_material_index : Capture attribute 
-    - Mesh material_index         : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_material_index : Capture attribute
+                - class_name material_index : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -4328,20 +4655,24 @@ class MaterialIndex(Node):
 
 class EdgeAngle(Node):
 
-    """Class EdgeAngle
+    """
+
+    Node EdgeAngle
+    --------------
+        > Geometry node name: Edge Angle<br>
+          Blender type: Edge Angle
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Edge Angle' 
-    | Blender type:  GeometryNodeInputMeshEdgeAngle 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.EdgeAngle(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.EdgeAngle(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4350,30 +4681,32 @@ class EdgeAngle(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - unsigned_angle : Float 
-    - signed_angle   : Float 
+        Output sockets
+        --------------
+            unsigned_angle : Float
+                - signed_angle : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh capture_edge_angle  : Capture attribute 
-    - Mesh corner_ID           : Attribute 
-    - Mesh corner_index        : Attribute 
-    - Mesh corner_porision     : Attribute 
-    - Mesh edge_angle          : Attribute 
-    - Mesh edge_unsigned_angle : Attribute 
-    - Mesh egde_ID             : Attribute 
-    - Mesh egde_index          : Attribute 
-    - Mesh egde_position       : Attribute 
-    - Mesh face_ID             : Attribute 
-    - Mesh face_index          : Attribute 
-    - Mesh face_position       : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_edge_angle : Capture attribute
+                - class_name corner_ID : Attribute
+                - class_name corner_index : Attribute
+                - class_name corner_porision : Attribute
+                - class_name edge_angle : Attribute
+                - class_name edge_unsigned_angle : Attribute
+                - class_name egde_ID : Attribute
+                - class_name egde_index : Attribute
+                - class_name egde_position : Attribute
+                - class_name face_ID : Attribute
+                - class_name face_index : Attribute
+                - class_name face_position : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -4390,20 +4723,24 @@ class EdgeAngle(Node):
 
 class EdgeNeighbors(Node):
 
-    """Class EdgeNeighbors
+    """
+
+    Node EdgeNeighbors
+    ------------------
+        > Geometry node name: Edge Neighbors<br>
+          Blender type: Edge Neighbors
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Edge Neighbors' 
-    | Blender type:  GeometryNodeInputMeshEdgeNeighbors 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.EdgeNeighbors(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.EdgeNeighbors(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4412,19 +4749,21 @@ class EdgeNeighbors(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - face_count : Integer 
+        Output sockets
+        --------------
+            face_count : Integer
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh capture_edge_neighbors : Capture attribute 
-    - Mesh edge_neighbors         : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_edge_neighbors : Capture attribute
+                - class_name edge_neighbors : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -4440,20 +4779,24 @@ class EdgeNeighbors(Node):
 
 class EdgeVertices(Node):
 
-    """Class EdgeVertices
+    """
+
+    Node EdgeVertices
+    -----------------
+        > Geometry node name: Edge Vertices<br>
+          Blender type: Edge Vertices
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Edge Vertices' 
-    | Blender type:  GeometryNodeInputMeshEdgeVertices 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.EdgeVertices(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.EdgeVertices(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4462,25 +4805,27 @@ class EdgeVertices(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - vertex_index_1 : Integer 
-    - vertex_index_2 : Integer 
-    - position_1     : Vector 
-    - position_2     : Vector 
+        Output sockets
+        --------------
+            vertex_index_1 : Integer
+                - vertex_index_2 : Integer
+                - position_1 : Vector
+                - position_2 : Vector
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh capture_edge_vertices   : Capture attribute 
-    - Mesh edge_vertices_index1    : Attribute 
-    - Mesh edge_vertices_index2    : Attribute 
-    - Mesh edge_vertices_position1 : Attribute 
-    - Mesh edge_vertices_position2 : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_edge_vertices : Capture attribute
+                - class_name edge_vertices_index1 : Attribute
+                - class_name edge_vertices_index2 : Attribute
+                - class_name edge_vertices_position1 : Attribute
+                - class_name edge_vertices_position2 : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -4499,20 +4844,24 @@ class EdgeVertices(Node):
 
 class FaceArea(Node):
 
-    """Class FaceArea
+    """
+
+    Node FaceArea
+    -------------
+        > Geometry node name: Face Area<br>
+          Blender type: Face Area
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Face Area' 
-    | Blender type:  GeometryNodeInputMeshFaceArea 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.FaceArea(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.FaceArea(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4521,19 +4870,21 @@ class FaceArea(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - area : Float 
+        Output sockets
+        --------------
+            area : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh capture_face_area : Capture attribute 
-    - Mesh face_area         : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_face_area : Capture attribute
+                - class_name face_area : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -4549,20 +4900,24 @@ class FaceArea(Node):
 
 class FaceNeighbors(Node):
 
-    """Class FaceNeighbors
+    """
+
+    Node FaceNeighbors
+    ------------------
+        > Geometry node name: Face Neighbors<br>
+          Blender type: Face Neighbors
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Face Neighbors' 
-    | Blender type:  GeometryNodeInputMeshFaceNeighbors 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.FaceNeighbors(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.FaceNeighbors(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4571,21 +4926,23 @@ class FaceNeighbors(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - vertex_count : Integer 
-    - face_count   : Integer 
+        Output sockets
+        --------------
+            vertex_count : Integer
+                - face_count : Integer
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh capture_face_neighbors      : Capture attribute 
-    - Mesh face_neighbors_face_count   : Attribute 
-    - Mesh face_neighbors_vertex_count : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_face_neighbors : Capture attribute
+                - class_name face_neighbors_face_count : Attribute
+                - class_name face_neighbors_vertex_count : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -4602,20 +4959,24 @@ class FaceNeighbors(Node):
 
 class MeshIsland(Node):
 
-    """Class MeshIsland
+    """
+
+    Node MeshIsland
+    ---------------
+        > Geometry node name: Mesh Island<br>
+          Blender type: Mesh Island
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Mesh Island' 
-    | Blender type:  GeometryNodeInputMeshIsland 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.MeshIsland(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.MeshIsland(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4624,20 +4985,22 @@ class MeshIsland(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - island_index : Integer 
-    - island_count : Integer 
+        Output sockets
+        --------------
+            island_index : Integer
+                - island_count : Integer
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh capture_island : Capture attribute 
-    - Mesh island         : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_island : Capture attribute
+                - class_name island : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -4654,20 +5017,24 @@ class MeshIsland(Node):
 
 class VertexNeighbors(Node):
 
-    """Class VertexNeighbors
+    """
+
+    Node VertexNeighbors
+    --------------------
+        > Geometry node name: Vertex Neighbors<br>
+          Blender type: Vertex Neighbors
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Vertex Neighbors' 
-    | Blender type:  GeometryNodeInputMeshVertexNeighbors 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.VertexNeighbors(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.VertexNeighbors(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4676,21 +5043,23 @@ class VertexNeighbors(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - vertex_count : Integer 
-    - face_count   : Integer 
+        Output sockets
+        --------------
+            vertex_count : Integer
+                - face_count : Integer
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh capture_vertex_neighbors      : Capture attribute 
-    - Mesh vertex_neighbors_face_count   : Attribute 
-    - Mesh vertex_neighbors_vertex_count : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_vertex_neighbors : Capture attribute
+                - class_name vertex_neighbors_face_count : Attribute
+                - class_name vertex_neighbors_vertex_count : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -4707,20 +5076,24 @@ class VertexNeighbors(Node):
 
 class Normal(Node):
 
-    """Class Normal
+    """
+
+    Node Normal
+    -----------
+        > Geometry node name: Normal<br>
+          Blender type: Normal
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Normal' 
-    | Blender type:  GeometryNodeInputNormal 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Normal(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Normal(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4729,19 +5102,21 @@ class Normal(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - normal : Vector 
+        Output sockets
+        --------------
+            normal : Vector
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry capture_normal : Capture attribute 
-    - Geometry normal         : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_normal : Capture attribute
+                - class_name normal : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -4757,20 +5132,24 @@ class Normal(Node):
 
 class Position(Node):
 
-    """Class Position
+    """
+
+    Node Position
+    -------------
+        > Geometry node name: Position<br>
+          Blender type: Position
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Position' 
-    | Blender type:  GeometryNodeInputPosition 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Position(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Position(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4779,19 +5158,21 @@ class Position(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - position : Vector 
+        Output sockets
+        --------------
+            position : Vector
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry capture_position : Capture attribute 
-    - Geometry position         : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_position : Capture attribute
+                - class_name position : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -4807,20 +5188,24 @@ class Position(Node):
 
 class Radius(Node):
 
-    """Class Radius
+    """
+
+    Node Radius
+    -----------
+        > Geometry node name: Radius<br>
+          Blender type: Radius
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Radius' 
-    | Blender type:  GeometryNodeInputRadius 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Radius(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Radius(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4829,19 +5214,21 @@ class Radius(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - radius : Float 
+        Output sockets
+        --------------
+            radius : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry capture_radius : Capture attribute 
-    - Geometry radius         : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_radius : Capture attribute
+                - class_name radius : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -4857,20 +5244,24 @@ class Radius(Node):
 
 class SceneTime(Node):
 
-    """Class SceneTime
+    """
+
+    Node SceneTime
+    --------------
+        > Geometry node name: Scene Time<br>
+          Blender type: Scene Time
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Scene Time' 
-    | Blender type:  GeometryNodeInputSceneTime 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SceneTime(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SceneTime(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4879,19 +5270,21 @@ class SceneTime(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - seconds : Float 
-    - frame   : Float 
+        Output sockets
+        --------------
+            seconds : Float
+                - frame : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - functions scene : Function 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name scene : Function
+            
     """
 
     def __init__(self, label=None):
@@ -4908,20 +5301,24 @@ class SceneTime(Node):
 
 class IsShadeSmooth(Node):
 
-    """Class IsShadeSmooth
+    """
+
+    Node IsShadeSmooth
+    ------------------
+        > Geometry node name: Is Shade Smooth<br>
+          Blender type: Is Shade Smooth
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Is Shade Smooth' 
-    | Blender type:  GeometryNodeInputShadeSmooth 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.IsShadeSmooth(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.IsShadeSmooth(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4930,19 +5327,21 @@ class IsShadeSmooth(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - smooth : Boolean 
+        Output sockets
+        --------------
+            smooth : Boolean
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh capture_shade_smooth : Capture attribute 
-    - Mesh shade_smooth         : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_shade_smooth : Capture attribute
+                - class_name shade_smooth : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -4958,20 +5357,24 @@ class IsShadeSmooth(Node):
 
 class IsSplineCyclic(Node):
 
-    """Class IsSplineCyclic
+    """
+
+    Node IsSplineCyclic
+    -------------------
+        > Geometry node name: Is Spline Cyclic<br>
+          Blender type: Is Spline Cyclic
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Is Spline Cyclic' 
-    | Blender type:  GeometryNodeInputSplineCyclic 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.IsSplineCyclic(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.IsSplineCyclic(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -4980,19 +5383,21 @@ class IsSplineCyclic(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - cyclic : Boolean 
+        Output sockets
+        --------------
+            cyclic : Boolean
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Spline capture_cyclic : Capture attribute 
-    - Spline cyclic         : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_cyclic : Capture attribute
+                - class_name cyclic : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -5008,20 +5413,24 @@ class IsSplineCyclic(Node):
 
 class SplineResolution(Node):
 
-    """Class SplineResolution
+    """
+
+    Node SplineResolution
+    ---------------------
+        > Geometry node name: Spline Resolution<br>
+          Blender type: Spline Resolution
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Spline Resolution' 
-    | Blender type:  GeometryNodeInputSplineResolution 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SplineResolution(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SplineResolution(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -5030,19 +5439,21 @@ class SplineResolution(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - resolution : Integer 
+        Output sockets
+        --------------
+            resolution : Integer
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Spline capture_resolution : Capture attribute 
-    - Spline resolution         : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_resolution : Capture attribute
+                - class_name resolution : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -5058,20 +5469,24 @@ class SplineResolution(Node):
 
 class CurveTangent(Node):
 
-    """Class CurveTangent
+    """
+
+    Node CurveTangent
+    -----------------
+        > Geometry node name: Curve Tangent<br>
+          Blender type: Curve Tangent
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Curve Tangent' 
-    | Blender type:  GeometryNodeInputTangent 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.CurveTangent(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.CurveTangent(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -5080,19 +5495,21 @@ class CurveTangent(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - tangent : Vector 
+        Output sockets
+        --------------
+            tangent : Vector
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Spline capture_tangent : Capture attribute 
-    - Spline tangent         : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_tangent : Capture attribute
+                - class_name tangent : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -5108,21 +5525,24 @@ class CurveTangent(Node):
 
 class InstanceOnPoints(Node):
 
-    """Class InstanceOnPoints
+    """
+
+    Node InstanceOnPoints
+    ---------------------
+        > Geometry node name: Instance on Points<br>
+          Blender type: Instance on Points
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Instance on Points' 
-    | Blender type:  GeometryNodeInstanceOnPoints 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_instance=None, instance_index=None,
-        rotation=None, scale=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -5131,29 +5551,31 @@ class InstanceOnPoints(Node):
 
             Input sockets
             -------------
-            - points         : Points 
-            - selection      : Boolean 
-            - instance       : Geometry 
-            - pick_instance  : Boolean 
-            - instance_index : Integer 
-            - rotation       : Vector 
-            - scale          : Vector 
+                points : Points
+                    - selection : Boolean
+                    - instance : Geometry
+                    - pick_instance : Boolean
+                    - instance_index : Integer
+                    - rotation : Vector
+                    - scale : Vector
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - instances : Instances 
+        Output sockets
+        --------------
+            instances : Instances
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Points instance_on_points : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name instance_on_points : Method
+            
     """
 
     def __init__(self, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, label=None):
@@ -5179,20 +5601,24 @@ class InstanceOnPoints(Node):
 
 class InstancesToPoints(Node):
 
-    """Class InstancesToPoints
+    """
+
+    Node InstancesToPoints
+    ----------------------
+        > Geometry node name: Instances to Points<br>
+          Blender type: Instances to Points
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Instances to Points' 
-    | Blender type:  GeometryNodeInstancesToPoints 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.InstancesToPoints(instances=None, selection=None, position=None, radius=None, label=None)
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.InstancesToPoints(instances=None, selection=None, position=None, radius=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -5201,26 +5627,28 @@ class InstancesToPoints(Node):
 
             Input sockets
             -------------
-            - instances : Instances 
-            - selection : Boolean 
-            - position  : Vector 
-            - radius    : Float 
+                instances : Instances
+                    - selection : Boolean
+                    - position : Vector
+                    - radius : Float
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - points : Points 
+        Output sockets
+        --------------
+            points : Points
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Instances to_points : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name to_points : Method
+            
     """
 
     def __init__(self, instances=None, selection=None, position=None, radius=None, label=None):
@@ -5243,20 +5671,24 @@ class InstancesToPoints(Node):
 
 class IsViewport(Node):
 
-    """Class IsViewport
+    """
+
+    Node IsViewport
+    ---------------
+        > Geometry node name: Is Viewport<br>
+          Blender type: Is Viewport
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Is Viewport' 
-    | Blender type:  GeometryNodeIsViewport 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.IsViewport(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.IsViewport(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -5265,18 +5697,20 @@ class IsViewport(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - is_viewport : Boolean 
+        Output sockets
+        --------------
+            is_viewport : Boolean
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry is_viewport : Static method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name is_viewport : Static method
+            
     """
 
     def __init__(self, label=None):
@@ -5292,20 +5726,24 @@ class IsViewport(Node):
 
 class JoinGeometry(Node):
 
-    """Class JoinGeometry
+    """
+
+    Node JoinGeometry
+    -----------------
+        > Geometry node name: Join Geometry<br>
+          Blender type: Join Geometry
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Join Geometry' 
-    | Blender type:  GeometryNodeJoinGeometry 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.JoinGeometry(*geometry, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.JoinGeometry(*geometry, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -5314,23 +5752,25 @@ class JoinGeometry(Node):
 
             Input sockets
             -------------
-            - geometry : * Geometry 
+                geometry : *Geometry
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - geometry : Geometry 
+        Output sockets
+        --------------
+            geometry : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry join : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name join : Method
+            
     """
 
     def __init__(self, *geometry, label=None):
@@ -5350,20 +5790,24 @@ class JoinGeometry(Node):
 
 class MaterialSelection(Node):
 
-    """Class MaterialSelection
+    """
+
+    Node MaterialSelection
+    ----------------------
+        > Geometry node name: Material Selection<br>
+          Blender type: Material Selection
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Material Selection' 
-    | Blender type:  GeometryNodeMaterialSelection 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.MaterialSelection(material=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.MaterialSelection(material=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -5372,25 +5816,27 @@ class MaterialSelection(Node):
 
             Input sockets
             -------------
-            - material : Material 
+                material : Material
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - selection : Boolean 
+        Output sockets
+        --------------
+            selection : Boolean
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Material selection              : Method 
-    - Mesh capture_material_selection : Capture attribute 
-    - Mesh material_selection         : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name selection : Method
+                - class_name capture_material_selection : Capture attribute
+                - class_name material_selection : Attribute
+                  
     """
 
     def __init__(self, material=None, label=None):
@@ -5410,20 +5856,24 @@ class MaterialSelection(Node):
 
 class MergeByDistance(Node):
 
-    """Class MergeByDistance
+    """
+
+    Node MergeByDistance
+    --------------------
+        > Geometry node name: Merge by Distance<br>
+          Blender type: Merge by Distance
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Merge by Distance' 
-    | Blender type:  GeometryNodeMergeByDistance 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -5432,25 +5882,27 @@ class MergeByDistance(Node):
 
             Input sockets
             -------------
-            - geometry  : Geometry 
-            - selection : Boolean 
-            - distance  : Float 
+                geometry : Geometry
+                    - selection : Boolean
+                    - distance : Float
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - geometry : Geometry 
+        Output sockets
+        --------------
+            geometry : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry merge_by_distance : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name merge_by_distance : Method
+            
     """
 
     def __init__(self, geometry=None, selection=None, distance=None, label=None):
@@ -5472,21 +5924,24 @@ class MergeByDistance(Node):
 
 class MeshBoolean(Node):
 
-    """Class MeshBoolean
+    """
+
+    Node MeshBoolean
+    ----------------
+        > Geometry node name: Mesh Boolean<br>
+          Blender type: Mesh Boolean
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Mesh Boolean' 
-    | Blender type:  GeometryNodeMeshBoolean 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE',
-        label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -5495,33 +5950,35 @@ class MeshBoolean(Node):
 
             Input sockets
             -------------
-            - mesh_1            : Geometry 
-            - mesh_2            : * Geometry 
-            - self_intersection : Boolean 
-            - hole_tolerant     : Boolean 
+                mesh_1 : Geometry
+                    - mesh_2 : *Geometry
+                    - self_intersection : Boolean
+                    - hole_tolerant : Boolean
     
 
             Parameters
             ----------
-            - operation : 'DIFFERENCE' in ('INTERSECT', 'UNION', 'DIFFERENCE') 
+                operation : str (default = 'DIFFERENCE') in ('INTERSECT', 'UNION', 'DIFFERENCE')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh : Mesh 
+        Output sockets
+        --------------
+            mesh : Mesh
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh difference : Method 
-    - Mesh intersect  : Method 
-    - Mesh union      : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name difference : Method
+                - class_name intersect : Method
+                - class_name union : Method
+                  
     """
 
     def __init__(self, *mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', label=None):
@@ -5556,20 +6013,24 @@ class MeshBoolean(Node):
 
 class MeshCircle(Node):
 
-    """Class MeshCircle
+    """
+
+    Node MeshCircle
+    ---------------
+        > Geometry node name: Mesh Circle<br>
+          Blender type: Mesh Circle
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Mesh Circle' 
-    | Blender type:  GeometryNodeMeshCircle 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -5578,29 +6039,31 @@ class MeshCircle(Node):
 
             Input sockets
             -------------
-            - vertices : Integer 
-            - radius   : Float 
+                vertices : Integer
+                    - radius : Float
     
 
             Parameters
             ----------
-            - fill_type : 'NONE' in ('NONE', 'NGON', 'TRIANGLE_FAN') 
+                fill_type : str (default = 'NONE') in ('NONE', 'NGON', 'TRIANGLE_FAN')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh : Mesh 
+        Output sockets
+        --------------
+            mesh : Mesh
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh Circle : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Circle : Constructor
+            
     """
 
     def __init__(self, vertices=None, radius=None, fill_type='NONE', label=None):
@@ -5633,21 +6096,24 @@ class MeshCircle(Node):
 
 class Cone(Node):
 
-    """Class Cone
+    """
+
+    Node Cone
+    ---------
+        > Geometry node name: Cone<br>
+          Blender type: Cone
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Cone' 
-    | Blender type:  GeometryNodeMeshCone 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None,
-        depth=None, fill_type='NGON', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -5656,36 +6122,38 @@ class Cone(Node):
 
             Input sockets
             -------------
-            - vertices      : Integer 
-            - side_segments : Integer 
-            - fill_segments : Integer 
-            - radius_top    : Float 
-            - radius_bottom : Float 
-            - depth         : Float 
+                vertices : Integer
+                    - side_segments : Integer
+                    - fill_segments : Integer
+                    - radius_top : Float
+                    - radius_bottom : Float
+                    - depth : Float
     
 
             Parameters
             ----------
-            - fill_type : 'NGON' in ('NONE', 'NGON', 'TRIANGLE_FAN') 
+                fill_type : str (default = 'NGON') in ('NONE', 'NGON', 'TRIANGLE_FAN')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh   : Mesh 
-    - top    : Boolean 
-    - bottom : Boolean 
-    - side   : Boolean 
+        Output sockets
+        --------------
+            mesh : Mesh
+                - top : Boolean
+                - bottom : Boolean
+                - side : Boolean
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh Cone : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Cone : Constructor
+            
     """
 
     def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', label=None):
@@ -5725,20 +6193,24 @@ class Cone(Node):
 
 class Cube(Node):
 
-    """Class Cube
+    """
+
+    Node Cube
+    ---------
+        > Geometry node name: Cube<br>
+          Blender type: Cube
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Cube' 
-    | Blender type:  GeometryNodeMeshCube 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -5747,26 +6219,28 @@ class Cube(Node):
 
             Input sockets
             -------------
-            - size       : Vector 
-            - vertices_x : Integer 
-            - vertices_y : Integer 
-            - vertices_z : Integer 
+                size : Vector
+                    - vertices_x : Integer
+                    - vertices_y : Integer
+                    - vertices_z : Integer
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh : Mesh 
+        Output sockets
+        --------------
+            mesh : Mesh
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh Cube : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Cube : Constructor
+            
     """
 
     def __init__(self, size=None, vertices_x=None, vertices_y=None, vertices_z=None, label=None):
@@ -5789,21 +6263,24 @@ class Cube(Node):
 
 class Cylinder(Node):
 
-    """Class Cylinder
+    """
+
+    Node Cylinder
+    -------------
+        > Geometry node name: Cylinder<br>
+          Blender type: Cylinder
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Cylinder' 
-    | Blender type:  GeometryNodeMeshCylinder 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None,
-        fill_type='NGON', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -5812,35 +6289,37 @@ class Cylinder(Node):
 
             Input sockets
             -------------
-            - vertices      : Integer 
-            - side_segments : Integer 
-            - fill_segments : Integer 
-            - radius        : Float 
-            - depth         : Float 
+                vertices : Integer
+                    - side_segments : Integer
+                    - fill_segments : Integer
+                    - radius : Float
+                    - depth : Float
     
 
             Parameters
             ----------
-            - fill_type : 'NGON' in ('NONE', 'NGON', 'TRIANGLE_FAN') 
+                fill_type : str (default = 'NGON') in ('NONE', 'NGON', 'TRIANGLE_FAN')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh   : Mesh 
-    - top    : Boolean 
-    - side   : Boolean 
-    - bottom : Boolean 
+        Output sockets
+        --------------
+            mesh : Mesh
+                - top : Boolean
+                - side : Boolean
+                - bottom : Boolean
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh Cylinder : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Cylinder : Constructor
+            
     """
 
     def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', label=None):
@@ -5879,20 +6358,24 @@ class Cylinder(Node):
 
 class Grid(Node):
 
-    """Class Grid
+    """
+
+    Node Grid
+    ---------
+        > Geometry node name: Grid<br>
+          Blender type: Grid
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Grid' 
-    | Blender type:  GeometryNodeMeshGrid 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -5901,26 +6384,28 @@ class Grid(Node):
 
             Input sockets
             -------------
-            - size_x     : Float 
-            - size_y     : Float 
-            - vertices_x : Integer 
-            - vertices_y : Integer 
+                size_x : Float
+                    - size_y : Float
+                    - vertices_x : Integer
+                    - vertices_y : Integer
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh : Mesh 
+        Output sockets
+        --------------
+            mesh : Mesh
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh Grid : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Grid : Constructor
+            
     """
 
     def __init__(self, size_x=None, size_y=None, vertices_x=None, vertices_y=None, label=None):
@@ -5943,20 +6428,24 @@ class Grid(Node):
 
 class IcoSphere(Node):
 
-    """Class IcoSphere
+    """
+
+    Node IcoSphere
+    --------------
+        > Geometry node name: Ico Sphere<br>
+          Blender type: Ico Sphere
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Ico Sphere' 
-    | Blender type:  GeometryNodeMeshIcoSphere 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.IcoSphere(radius=None, subdivisions=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.IcoSphere(radius=None, subdivisions=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -5965,24 +6454,26 @@ class IcoSphere(Node):
 
             Input sockets
             -------------
-            - radius       : Float 
-            - subdivisions : Integer 
+                radius : Float
+                    - subdivisions : Integer
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh : Mesh 
+        Output sockets
+        --------------
+            mesh : Mesh
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh IcoSphere : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name IcoSphere : Constructor
+            
     """
 
     def __init__(self, radius=None, subdivisions=None, label=None):
@@ -6003,21 +6494,24 @@ class IcoSphere(Node):
 
 class MeshLine(Node):
 
-    """Class MeshLine
+    """
+
+    Node MeshLine
+    -------------
+        > Geometry node name: Mesh Line<br>
+          Blender type: Mesh Line
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Mesh Line' 
-    | Blender type:  GeometryNodeMeshLine 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL',
-        mode='OFFSET', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -6026,32 +6520,34 @@ class MeshLine(Node):
 
             Input sockets
             -------------
-            - count          : Integer 
-            - resolution     : Float 
-            - start_location : Vector 
-            - offset         : Vector 
+                count : Integer
+                    - resolution : Float
+                    - start_location : Vector
+                    - offset : Vector
     
 
             Parameters
             ----------
-            - count_mode : 'TOTAL' in ('TOTAL', 'RESOLUTION') 
-            - mode       : 'OFFSET' in ('OFFSET', 'END_POINTS') 
+                count_mode : str (default = 'TOTAL') in ('TOTAL', 'RESOLUTION')
+                    - mode : str (default = 'OFFSET') in ('OFFSET', 'END_POINTS')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh : Mesh 
+        Output sockets
+        --------------
+            mesh : Mesh
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh Line : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Line : Constructor
+            
     """
 
     def __init__(self, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', label=None):
@@ -6095,20 +6591,24 @@ class MeshLine(Node):
 
 class MeshToCurve(Node):
 
-    """Class MeshToCurve
+    """
+
+    Node MeshToCurve
+    ----------------
+        > Geometry node name: Mesh to Curve<br>
+          Blender type: Mesh to Curve
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Mesh to Curve' 
-    | Blender type:  GeometryNodeMeshToCurve 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.MeshToCurve(mesh=None, selection=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.MeshToCurve(mesh=None, selection=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -6117,24 +6617,26 @@ class MeshToCurve(Node):
 
             Input sockets
             -------------
-            - mesh      : Mesh 
-            - selection : Boolean 
+                mesh : Mesh
+                    - selection : Boolean
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve : Curve 
+        Output sockets
+        --------------
+            curve : Curve
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh to_curve : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name to_curve : Method
+            
     """
 
     def __init__(self, mesh=None, selection=None, label=None):
@@ -6155,20 +6657,24 @@ class MeshToCurve(Node):
 
 class MeshToPoints(Node):
 
-    """Class MeshToPoints
+    """
+
+    Node MeshToPoints
+    -----------------
+        > Geometry node name: Mesh to Points<br>
+          Blender type: Mesh to Points
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Mesh to Points' 
-    | Blender type:  GeometryNodeMeshToPoints 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None)
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -6177,31 +6683,33 @@ class MeshToPoints(Node):
 
             Input sockets
             -------------
-            - mesh      : Mesh 
-            - selection : Boolean 
-            - position  : Vector 
-            - radius    : Float 
+                mesh : Mesh
+                    - selection : Boolean
+                    - position : Vector
+                    - radius : Float
     
 
             Parameters
             ----------
-            - mode : 'VERTICES' in ('VERTICES', 'EDGES', 'FACES', 'CORNERS') 
+                mode : str (default = 'VERTICES') in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - points : Points 
+        Output sockets
+        --------------
+            points : Points
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh to_points : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name to_points : Method
+            
     """
 
     def __init__(self, mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None):
@@ -6236,20 +6744,24 @@ class MeshToPoints(Node):
 
 class UvSphere(Node):
 
-    """Class UvSphere
+    """
+
+    Node UvSphere
+    -------------
+        > Geometry node name: UV Sphere<br>
+          Blender type: UV Sphere
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'UV Sphere' 
-    | Blender type:  GeometryNodeMeshUVSphere 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.UvSphere(segments=None, rings=None, radius=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.UvSphere(segments=None, rings=None, radius=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -6258,25 +6770,27 @@ class UvSphere(Node):
 
             Input sockets
             -------------
-            - segments : Integer 
-            - rings    : Integer 
-            - radius   : Float 
+                segments : Integer
+                    - rings : Integer
+                    - radius : Float
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh : Mesh 
+        Output sockets
+        --------------
+            mesh : Mesh
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh UVSphere : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name UVSphere : Constructor
+            
     """
 
     def __init__(self, segments=None, rings=None, radius=None, label=None):
@@ -6298,20 +6812,24 @@ class UvSphere(Node):
 
 class ObjectInfo(Node):
 
-    """Class ObjectInfo
+    """
+
+    Node ObjectInfo
+    ---------------
+        > Geometry node name: Object Info<br>
+          Blender type: Object Info
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Object Info' 
-    | Blender type:  GeometryNodeObjectInfo 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -6320,36 +6838,38 @@ class ObjectInfo(Node):
 
             Input sockets
             -------------
-            - object      : Object 
-            - as_instance : Boolean 
+                object : Object
+                    - as_instance : Boolean
     
 
             Parameters
             ----------
-            - transform_space : 'ORIGINAL' in ('ORIGINAL', 'RELATIVE') 
+                transform_space : str (default = 'ORIGINAL') in ('ORIGINAL', 'RELATIVE')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - location : Vector 
-    - rotation : Vector 
-    - scale    : Vector 
-    - geometry : Geometry 
+        Output sockets
+        --------------
+            location : Vector
+                - rotation : Vector
+                - scale : Vector
+                - geometry : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Object geometry : Property 
-    - Object info     : Property 
-    - Object location : Property 
-    - Object rotation : Property 
-    - Object scale    : Property 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name geometry : Property
+                - class_name info : Property
+                - class_name location : Property
+                - class_name rotation : Property
+                - class_name scale : Property
+                  
     """
 
     def __init__(self, object=None, as_instance=None, transform_space='ORIGINAL', label=None):
@@ -6385,20 +6905,24 @@ class ObjectInfo(Node):
 
 class PointsToVertices(Node):
 
-    """Class PointsToVertices
+    """
+
+    Node PointsToVertices
+    ---------------------
+        > Geometry node name: Points to Vertices<br>
+          Blender type: Points to Vertices
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Points to Vertices' 
-    | Blender type:  GeometryNodePointsToVertices 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.PointsToVertices(points=None, selection=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.PointsToVertices(points=None, selection=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -6407,24 +6931,26 @@ class PointsToVertices(Node):
 
             Input sockets
             -------------
-            - points    : Points 
-            - selection : Boolean 
+                points : Points
+                    - selection : Boolean
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh : Mesh 
+        Output sockets
+        --------------
+            mesh : Mesh
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Points to_vertices : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name to_vertices : Method
+            
     """
 
     def __init__(self, points=None, selection=None, label=None):
@@ -6445,21 +6971,24 @@ class PointsToVertices(Node):
 
 class PointsToVolume(Node):
 
-    """Class PointsToVolume
+    """
+
+    Node PointsToVolume
+    -------------------
+        > Geometry node name: Points to Volume<br>
+          Blender type: Points to Volume
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Points to Volume' 
-    | Blender type:  GeometryNodePointsToVolume 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_amount=None, radius=None,
-        resolution_mode='VOXEL_AMOUNT', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -6468,32 +6997,34 @@ class PointsToVolume(Node):
 
             Input sockets
             -------------
-            - points       : Points 
-            - density      : Float 
-            - voxel_size   : Float 
-            - voxel_amount : Float 
-            - radius       : Float 
+                points : Points
+                    - density : Float
+                    - voxel_size : Float
+                    - voxel_amount : Float
+                    - radius : Float
     
 
             Parameters
             ----------
-            - resolution_mode : 'VOXEL_AMOUNT' in ('VOXEL_AMOUNT', 'VOXEL_SIZE') 
+                resolution_mode : str (default = 'VOXEL_AMOUNT') in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - volume : Volume 
+        Output sockets
+        --------------
+            volume : Volume
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Points to_volume : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name to_volume : Method
+            
     """
 
     def __init__(self, points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', label=None):
@@ -6529,20 +7060,24 @@ class PointsToVolume(Node):
 
 class GeometryProximity(Node):
 
-    """Class GeometryProximity
+    """
+
+    Node GeometryProximity
+    ----------------------
+        > Geometry node name: Geometry Proximity<br>
+          Blender type: Geometry Proximity
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Geometry Proximity' 
-    | Blender type:  GeometryNodeProximity 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.GeometryProximity(target=None, source_position=None, target_element='FACES', label=None)
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.GeometryProximity(target=None, source_position=None, target_element='FACES', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -6551,30 +7086,32 @@ class GeometryProximity(Node):
 
             Input sockets
             -------------
-            - target          : Geometry 
-            - source_position : Vector 
+                target : Geometry
+                    - source_position : Vector
     
 
             Parameters
             ----------
-            - target_element : 'FACES' in ('POINTS', 'EDGES', 'FACES') 
+                target_element : str (default = 'FACES') in ('POINTS', 'EDGES', 'FACES')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - position : Vector 
-    - distance : Float 
+        Output sockets
+        --------------
+            position : Vector
+                - distance : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry proximity : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name proximity : Method
+            
     """
 
     def __init__(self, target=None, source_position=None, target_element='FACES', label=None):
@@ -6608,21 +7145,24 @@ class GeometryProximity(Node):
 
 class Raycast(Node):
 
-    """Class Raycast
+    """
+
+    Node Raycast
+    ------------
+        > Geometry node name: Raycast<br>
+          Blender type: Raycast
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Raycast' 
-    | Blender type:  GeometryNodeRaycast 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None,
-        data_type='FLOAT', mapping='INTERPOLATED', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -6631,48 +7171,52 @@ class Raycast(Node):
 
             Input sockets
             -------------
-            - target_geometry : Geometry 
-            - attribute       : data_type dependant 
-            - source_position : Vector 
-            - ray_direction   : Vector 
-            - ray_length      : Float 
+                target_geometry : Geometry
+                    - attribute : data_type dependant
+                    - source_position : Vector
+                    - ray_direction : Vector
+                    - ray_length : Float
     
 
             Parameters
             ----------
-            - data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
-            - mapping   : 'INTERPOLATED' in ('INTERPOLATED', 'NEAREST') 
+                data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+                    - mapping : str (default = 'INTERPOLATED') in ('INTERPOLATED', 'NEAREST')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Data type dependant sockets
-    ===========================
-    - Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN') 
-    - Input sockets     : attribute 
-    - Output sockets    : attribute 
+        Data type dependant sockets
+        ---------------------------
+            - Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+            - Input sockets  : ['attribute']
+            - Output sockets : ['attribute']   
+              
+              
     
 
-    Output sockets
-    ==============
-    - is_hit       : Boolean 
-    - hit_position : Vector 
-    - hit_normal   : Vector 
-    - hit_distance : Float 
-    - attribute    : data_type dependant 
+        Output sockets
+        --------------
+            is_hit : Boolean
+                - hit_position : Vector
+                - hit_normal : Vector
+                - hit_distance : Float
+                - attribute : data_type dependant
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Boolean raycast : Method 
-    - Color raycast   : Method 
-    - Float raycast   : Method 
-    - Integer raycast : Method 
-    - Vector raycast  : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name raycast : Method
+                - class_name raycast : Method
+                - class_name raycast : Method
+                - class_name raycast : Method
+                - class_name raycast : Method
+                  
     """
 
     def __init__(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED', label=None):
@@ -6741,20 +7285,24 @@ class Raycast(Node):
 
 class RealizeInstances(Node):
 
-    """Class RealizeInstances
+    """
+
+    Node RealizeInstances
+    ---------------------
+        > Geometry node name: Realize Instances<br>
+          Blender type: Realize Instances
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Realize Instances' 
-    | Blender type:  GeometryNodeRealizeInstances 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -6763,28 +7311,30 @@ class RealizeInstances(Node):
 
             Input sockets
             -------------
-            - geometry : Geometry 
+                geometry : Geometry
     
 
             Parameters
             ----------
-            - legacy_behavior : False bool 
+                legacy_behavior : bool (default = False)
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - geometry : Geometry 
+        Output sockets
+        --------------
+            geometry : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry realize_instances : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name realize_instances : Method
+            
     """
 
     def __init__(self, geometry=None, legacy_behavior=False, label=None):
@@ -6816,20 +7366,24 @@ class RealizeInstances(Node):
 
 class ReplaceMaterial(Node):
 
-    """Class ReplaceMaterial
+    """
+
+    Node ReplaceMaterial
+    --------------------
+        > Geometry node name: Replace Material<br>
+          Blender type: Replace Material
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Replace Material' 
-    | Blender type:  GeometryNodeReplaceMaterial 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.ReplaceMaterial(geometry=None, old=None, new=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.ReplaceMaterial(geometry=None, old=None, new=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -6838,25 +7392,27 @@ class ReplaceMaterial(Node):
 
             Input sockets
             -------------
-            - geometry : Geometry 
-            - old      : Material 
-            - new      : Material 
+                geometry : Geometry
+                    - old : Material
+                    - new : Material
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - geometry : Geometry 
+        Output sockets
+        --------------
+            geometry : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry replace_material : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name replace_material : Method
+            
     """
 
     def __init__(self, geometry=None, old=None, new=None, label=None):
@@ -6878,20 +7434,24 @@ class ReplaceMaterial(Node):
 
 class ResampleCurve(Node):
 
-    """Class ResampleCurve
+    """
+
+    Node ResampleCurve
+    ------------------
+        > Geometry node name: Resample Curve<br>
+          Blender type: Resample Curve
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Resample Curve' 
-    | Blender type:  GeometryNodeResampleCurve 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, mode='COUNT', label=None)
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, mode='COUNT', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -6900,31 +7460,33 @@ class ResampleCurve(Node):
 
             Input sockets
             -------------
-            - curve     : Curve 
-            - selection : Boolean 
-            - count     : Integer 
-            - length    : Float 
+                curve : Curve
+                    - selection : Boolean
+                    - count : Integer
+                    - length : Float
     
 
             Parameters
             ----------
-            - mode : 'COUNT' in ('EVALUATED', 'COUNT', 'LENGTH') 
+                mode : str (default = 'COUNT') in ('EVALUATED', 'COUNT', 'LENGTH')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve : Curve 
+        Output sockets
+        --------------
+            curve : Curve
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve resample : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name resample : Method
+            
     """
 
     def __init__(self, curve=None, selection=None, count=None, length=None, mode='COUNT', label=None):
@@ -6959,20 +7521,24 @@ class ResampleCurve(Node):
 
 class ReverseCurve(Node):
 
-    """Class ReverseCurve
+    """
+
+    Node ReverseCurve
+    -----------------
+        > Geometry node name: Reverse Curve<br>
+          Blender type: Reverse Curve
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Reverse Curve' 
-    | Blender type:  GeometryNodeReverseCurve 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.ReverseCurve(curve=None, selection=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.ReverseCurve(curve=None, selection=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -6981,24 +7547,26 @@ class ReverseCurve(Node):
 
             Input sockets
             -------------
-            - curve     : Curve 
-            - selection : Boolean 
+                curve : Curve
+                    - selection : Boolean
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve : Curve 
+        Output sockets
+        --------------
+            curve : Curve
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve reverse : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name reverse : Method
+            
     """
 
     def __init__(self, curve=None, selection=None, label=None):
@@ -7019,21 +7587,24 @@ class ReverseCurve(Node):
 
 class RotateInstances(Node):
 
-    """Class RotateInstances
+    """
+
+    Node RotateInstances
+    --------------------
+        > Geometry node name: Rotate Instances<br>
+          Blender type: Rotate Instances
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Rotate Instances' 
-    | Blender type:  GeometryNodeRotateInstances 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivot_point=None, local_space=None,
-        label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -7042,27 +7613,29 @@ class RotateInstances(Node):
 
             Input sockets
             -------------
-            - instances   : Instances 
-            - selection   : Boolean 
-            - rotation    : Vector 
-            - pivot_point : Vector 
-            - local_space : Boolean 
+                instances : Instances
+                    - selection : Boolean
+                    - rotation : Vector
+                    - pivot_point : Vector
+                    - local_space : Boolean
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - instances : Instances 
+        Output sockets
+        --------------
+            instances : Instances
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Instances rotate : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name rotate : Method
+            
     """
 
     def __init__(self, instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, label=None):
@@ -7086,20 +7659,24 @@ class RotateInstances(Node):
 
 class SampleCurve(Node):
 
-    """Class SampleCurve
+    """
+
+    Node SampleCurve
+    ----------------
+        > Geometry node name: Sample Curve<br>
+          Blender type: Sample Curve
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Sample Curve' 
-    | Blender type:  GeometryNodeSampleCurve 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SampleCurve(curve=None, factor=None, length=None, mode='LENGTH', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SampleCurve(curve=None, factor=None, length=None, mode='LENGTH', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -7108,32 +7685,34 @@ class SampleCurve(Node):
 
             Input sockets
             -------------
-            - curve  : Curve 
-            - factor : Float 
-            - length : Float 
+                curve : Curve
+                    - factor : Float
+                    - length : Float
     
 
             Parameters
             ----------
-            - mode : 'LENGTH' in ('FACTOR', 'LENGTH') 
+                mode : str (default = 'LENGTH') in ('FACTOR', 'LENGTH')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - position : Vector 
-    - tangent  : Vector 
-    - normal   : Vector 
+        Output sockets
+        --------------
+            position : Vector
+                - tangent : Vector
+                - normal : Vector
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve sample : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name sample : Method
+            
     """
 
     def __init__(self, curve=None, factor=None, length=None, mode='LENGTH', label=None):
@@ -7169,21 +7748,24 @@ class SampleCurve(Node):
 
 class ScaleElements(Node):
 
-    """Class ScaleElements
+    """
+
+    Node ScaleElements
+    ------------------
+        > Geometry node name: Scale Elements<br>
+          Blender type: Scale Elements
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Scale Elements' 
-    | Blender type:  GeometryNodeScaleElements 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE',
-        scale_mode='UNIFORM', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -7192,33 +7774,35 @@ class ScaleElements(Node):
 
             Input sockets
             -------------
-            - geometry  : Geometry 
-            - selection : Boolean 
-            - scale     : Float 
-            - center    : Vector 
-            - axis      : Vector 
+                geometry : Geometry
+                    - selection : Boolean
+                    - scale : Float
+                    - center : Vector
+                    - axis : Vector
     
 
             Parameters
             ----------
-            - domain     : 'FACE' in ('FACE', 'EDGE') 
-            - scale_mode : 'UNIFORM' in ('UNIFORM', 'SINGLE_AXIS') 
+                domain : str (default = 'FACE') in ('FACE', 'EDGE')
+                    - scale_mode : str (default = 'UNIFORM') in ('UNIFORM', 'SINGLE_AXIS')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - geometry : Geometry 
+        Output sockets
+        --------------
+            geometry : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry scale_elements : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name scale_elements : Method
+            
     """
 
     def __init__(self, geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', label=None):
@@ -7263,21 +7847,24 @@ class ScaleElements(Node):
 
 class ScaleInstances(Node):
 
-    """Class ScaleInstances
+    """
+
+    Node ScaleInstances
+    -------------------
+        > Geometry node name: Scale Instances<br>
+          Blender type: Scale Instances
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Scale Instances' 
-    | Blender type:  GeometryNodeScaleInstances 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=None, local_space=None,
-        label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=None, local_space=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -7286,27 +7873,29 @@ class ScaleInstances(Node):
 
             Input sockets
             -------------
-            - instances   : Instances 
-            - selection   : Boolean 
-            - scale       : Vector 
-            - center      : Vector 
-            - local_space : Boolean 
+                instances : Instances
+                    - selection : Boolean
+                    - scale : Vector
+                    - center : Vector
+                    - local_space : Boolean
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - instances : Instances 
+        Output sockets
+        --------------
+            instances : Instances
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Instances scale : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name scale : Method
+            
     """
 
     def __init__(self, instances=None, selection=None, scale=None, center=None, local_space=None, label=None):
@@ -7330,20 +7919,24 @@ class ScaleInstances(Node):
 
 class SeparateComponents(Node):
 
-    """Class SeparateComponents
+    """
+
+    Node SeparateComponents
+    -----------------------
+        > Geometry node name: Separate Components<br>
+          Blender type: Separate Components
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Separate Components' 
-    | Blender type:  GeometryNodeSeparateComponents 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SeparateComponents(geometry=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SeparateComponents(geometry=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -7352,32 +7945,34 @@ class SeparateComponents(Node):
 
             Input sockets
             -------------
-            - geometry : Geometry 
+                geometry : Geometry
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh        : Mesh 
-    - point_cloud : Geometry 
-    - curve       : Curve 
-    - volume      : Volume 
-    - instances   : Instances 
+        Output sockets
+        --------------
+            mesh : Mesh
+                - point_cloud : Geometry
+                - curve : Curve
+                - volume : Volume
+                - instances : Instances
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry components          : Property 
-    - Geometry curve_component     : Property 
-    - Geometry instances_component : Property 
-    - Geometry mesh_component      : Property 
-    - Geometry points_component    : Property 
-    - Geometry volume_component    : Property 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name components : Property
+                - class_name curve_component : Property
+                - class_name instances_component : Property
+                - class_name mesh_component : Property
+                - class_name points_component : Property
+                - class_name volume_component : Property
+                  
     """
 
     def __init__(self, geometry=None, label=None):
@@ -7401,20 +7996,24 @@ class SeparateComponents(Node):
 
 class SeparateGeometry(Node):
 
-    """Class SeparateGeometry
+    """
+
+    Node SeparateGeometry
+    ---------------------
+        > Geometry node name: Separate Geometry<br>
+          Blender type: Separate Geometry
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Separate Geometry' 
-    | Blender type:  GeometryNodeSeparateGeometry 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -7423,30 +8022,32 @@ class SeparateGeometry(Node):
 
             Input sockets
             -------------
-            - geometry  : Geometry 
-            - selection : Boolean 
+                geometry : Geometry
+                    - selection : Boolean
     
 
             Parameters
             ----------
-            - domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE') 
+                domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - selection : Geometry 
-    - inverted  : Geometry 
+        Output sockets
+        --------------
+            selection : Geometry
+                - inverted : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry components : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name components : Method
+            
     """
 
     def __init__(self, geometry=None, selection=None, domain='POINT', label=None):
@@ -7480,20 +8081,24 @@ class SeparateGeometry(Node):
 
 class SetHandlePositions(Node):
 
-    """Class SetHandlePositions
+    """
+
+    Node SetHandlePositions
+    -----------------------
+        > Geometry node name: Set Handle Positions<br>
+          Blender type: Set Handle Positions
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Set Handle Positions' 
-    | Blender type:  GeometryNodeSetCurveHandlePositions 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offset=None, mode='LEFT', label=None)
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offset=None, mode='LEFT', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -7502,31 +8107,33 @@ class SetHandlePositions(Node):
 
             Input sockets
             -------------
-            - curve     : Curve 
-            - selection : Boolean 
-            - position  : Vector 
-            - offset    : Vector 
+                curve : Curve
+                    - selection : Boolean
+                    - position : Vector
+                    - offset : Vector
     
 
             Parameters
             ----------
-            - mode : 'LEFT' in ('LEFT', 'RIGHT') 
+                mode : str (default = 'LEFT') in ('LEFT', 'RIGHT')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve : Curve 
+        Output sockets
+        --------------
+            curve : Curve
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve set_handle_positions : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name set_handle_positions : Method
+            
     """
 
     def __init__(self, curve=None, selection=None, position=None, offset=None, mode='LEFT', label=None):
@@ -7561,20 +8168,24 @@ class SetHandlePositions(Node):
 
 class SetCurveRadius(Node):
 
-    """Class SetCurveRadius
+    """
+
+    Node SetCurveRadius
+    -------------------
+        > Geometry node name: Set Curve Radius<br>
+          Blender type: Set Curve Radius
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Set Curve Radius' 
-    | Blender type:  GeometryNodeSetCurveRadius 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SetCurveRadius(curve=None, selection=None, radius=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SetCurveRadius(curve=None, selection=None, radius=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -7583,25 +8194,27 @@ class SetCurveRadius(Node):
 
             Input sockets
             -------------
-            - curve     : Curve 
-            - selection : Boolean 
-            - radius    : Float 
+                curve : Curve
+                    - selection : Boolean
+                    - radius : Float
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve : Curve 
+        Output sockets
+        --------------
+            curve : Curve
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve set_radius : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name set_radius : Method
+            
     """
 
     def __init__(self, curve=None, selection=None, radius=None, label=None):
@@ -7623,20 +8236,24 @@ class SetCurveRadius(Node):
 
 class SetCurveTilt(Node):
 
-    """Class SetCurveTilt
+    """
+
+    Node SetCurveTilt
+    -----------------
+        > Geometry node name: Set Curve Tilt<br>
+          Blender type: Set Curve Tilt
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Set Curve Tilt' 
-    | Blender type:  GeometryNodeSetCurveTilt 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -7645,25 +8262,27 @@ class SetCurveTilt(Node):
 
             Input sockets
             -------------
-            - curve     : Curve 
-            - selection : Boolean 
-            - tilt      : Float 
+                curve : Curve
+                    - selection : Boolean
+                    - tilt : Float
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve : Curve 
+        Output sockets
+        --------------
+            curve : Curve
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve set_tilt : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name set_tilt : Method
+            
     """
 
     def __init__(self, curve=None, selection=None, tilt=None, label=None):
@@ -7685,20 +8304,24 @@ class SetCurveTilt(Node):
 
 class SetID(Node):
 
-    """Class SetID
+    """
+
+    Node SetID
+    ----------
+        > Geometry node name: Set ID<br>
+          Blender type: Set ID
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Set ID' 
-    | Blender type:  GeometryNodeSetID 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SetID(geometry=None, selection=None, ID=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SetID(geometry=None, selection=None, ID=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -7707,25 +8330,27 @@ class SetID(Node):
 
             Input sockets
             -------------
-            - geometry  : Geometry 
-            - selection : Boolean 
-            - ID        : Integer 
+                geometry : Geometry
+                    - selection : Boolean
+                    - ID : Integer
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - geometry : Geometry 
+        Output sockets
+        --------------
+            geometry : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry set_ID : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name set_ID : Method
+            
     """
 
     def __init__(self, geometry=None, selection=None, ID=None, label=None):
@@ -7747,20 +8372,24 @@ class SetID(Node):
 
 class SetMaterial(Node):
 
-    """Class SetMaterial
+    """
+
+    Node SetMaterial
+    ----------------
+        > Geometry node name: Set Material<br>
+          Blender type: Set Material
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Set Material' 
-    | Blender type:  GeometryNodeSetMaterial 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SetMaterial(geometry=None, selection=None, material=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SetMaterial(geometry=None, selection=None, material=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -7769,25 +8398,27 @@ class SetMaterial(Node):
 
             Input sockets
             -------------
-            - geometry  : Geometry 
-            - selection : Boolean 
-            - material  : Material 
+                geometry : Geometry
+                    - selection : Boolean
+                    - material : Material
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - geometry : Geometry 
+        Output sockets
+        --------------
+            geometry : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry set_material : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name set_material : Method
+            
     """
 
     def __init__(self, geometry=None, selection=None, material=None, label=None):
@@ -7809,20 +8440,24 @@ class SetMaterial(Node):
 
 class SetMaterialIndex(Node):
 
-    """Class SetMaterialIndex
+    """
+
+    Node SetMaterialIndex
+    ---------------------
+        > Geometry node name: Set Material Index<br>
+          Blender type: Set Material Index
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Set Material Index' 
-    | Blender type:  GeometryNodeSetMaterialIndex 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -7831,25 +8466,27 @@ class SetMaterialIndex(Node):
 
             Input sockets
             -------------
-            - geometry       : Geometry 
-            - selection      : Boolean 
-            - material_index : Integer 
+                geometry : Geometry
+                    - selection : Boolean
+                    - material_index : Integer
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - geometry : Geometry 
+        Output sockets
+        --------------
+            geometry : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry set_material_index : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name set_material_index : Method
+            
     """
 
     def __init__(self, geometry=None, selection=None, material_index=None, label=None):
@@ -7871,20 +8508,24 @@ class SetMaterialIndex(Node):
 
 class SetPointRadius(Node):
 
-    """Class SetPointRadius
+    """
+
+    Node SetPointRadius
+    -------------------
+        > Geometry node name: Set Point Radius<br>
+          Blender type: Set Point Radius
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Set Point Radius' 
-    | Blender type:  GeometryNodeSetPointRadius 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SetPointRadius(points=None, selection=None, radius=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SetPointRadius(points=None, selection=None, radius=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -7893,25 +8534,27 @@ class SetPointRadius(Node):
 
             Input sockets
             -------------
-            - points    : Points 
-            - selection : Boolean 
-            - radius    : Float 
+                points : Points
+                    - selection : Boolean
+                    - radius : Float
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - points : Points 
+        Output sockets
+        --------------
+            points : Points
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Points set_radius : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name set_radius : Method
+            
     """
 
     def __init__(self, points=None, selection=None, radius=None, label=None):
@@ -7933,20 +8576,24 @@ class SetPointRadius(Node):
 
 class SetPosition(Node):
 
-    """Class SetPosition
+    """
+
+    Node SetPosition
+    ----------------
+        > Geometry node name: Set Position<br>
+          Blender type: Set Position
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Set Position' 
-    | Blender type:  GeometryNodeSetPosition 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -7955,26 +8602,28 @@ class SetPosition(Node):
 
             Input sockets
             -------------
-            - geometry  : Geometry 
-            - selection : Boolean 
-            - position  : Vector 
-            - offset    : Vector 
+                geometry : Geometry
+                    - selection : Boolean
+                    - position : Vector
+                    - offset : Vector
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - geometry : Geometry 
+        Output sockets
+        --------------
+            geometry : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry set_position : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name set_position : Method
+            
     """
 
     def __init__(self, geometry=None, selection=None, position=None, offset=None, label=None):
@@ -7997,20 +8646,24 @@ class SetPosition(Node):
 
 class SetShadeSmooth(Node):
 
-    """Class SetShadeSmooth
+    """
+
+    Node SetShadeSmooth
+    -------------------
+        > Geometry node name: Set Shade Smooth<br>
+          Blender type: Set Shade Smooth
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Set Shade Smooth' 
-    | Blender type:  GeometryNodeSetShadeSmooth 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -8019,25 +8672,27 @@ class SetShadeSmooth(Node):
 
             Input sockets
             -------------
-            - geometry     : Geometry 
-            - selection    : Boolean 
-            - shade_smooth : Boolean 
+                geometry : Geometry
+                    - selection : Boolean
+                    - shade_smooth : Boolean
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - geometry : Geometry 
+        Output sockets
+        --------------
+            geometry : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry set_shade_smooth : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name set_shade_smooth : Method
+            
     """
 
     def __init__(self, geometry=None, selection=None, shade_smooth=None, label=None):
@@ -8059,20 +8714,24 @@ class SetShadeSmooth(Node):
 
 class SetSplineCyclic(Node):
 
-    """Class SetSplineCyclic
+    """
+
+    Node SetSplineCyclic
+    --------------------
+        > Geometry node name: Set Spline Cyclic<br>
+          Blender type: Set Spline Cyclic
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Set Spline Cyclic' 
-    | Blender type:  GeometryNodeSetSplineCyclic 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -8081,25 +8740,27 @@ class SetSplineCyclic(Node):
 
             Input sockets
             -------------
-            - geometry  : Geometry 
-            - selection : Boolean 
-            - cyclic    : Boolean 
+                geometry : Geometry
+                    - selection : Boolean
+                    - cyclic : Boolean
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - geometry : Geometry 
+        Output sockets
+        --------------
+            geometry : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Spline set_cyclic : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name set_cyclic : Method
+            
     """
 
     def __init__(self, geometry=None, selection=None, cyclic=None, label=None):
@@ -8121,20 +8782,24 @@ class SetSplineCyclic(Node):
 
 class SetSplineResolution(Node):
 
-    """Class SetSplineResolution
+    """
+
+    Node SetSplineResolution
+    ------------------------
+        > Geometry node name: Set Spline Resolution<br>
+          Blender type: Set Spline Resolution
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Set Spline Resolution' 
-    | Blender type:  GeometryNodeSetSplineResolution 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -8143,25 +8808,27 @@ class SetSplineResolution(Node):
 
             Input sockets
             -------------
-            - geometry   : Geometry 
-            - selection  : Boolean 
-            - resolution : Integer 
+                geometry : Geometry
+                    - selection : Boolean
+                    - resolution : Integer
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - geometry : Geometry 
+        Output sockets
+        --------------
+            geometry : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Spline set_resolution : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name set_resolution : Method
+            
     """
 
     def __init__(self, geometry=None, selection=None, resolution=None, label=None):
@@ -8183,20 +8850,24 @@ class SetSplineResolution(Node):
 
 class SplineLength(Node):
 
-    """Class SplineLength
+    """
+
+    Node SplineLength
+    -----------------
+        > Geometry node name: Spline Length<br>
+          Blender type: Spline Length
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Spline Length' 
-    | Blender type:  GeometryNodeSplineLength 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SplineLength(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SplineLength(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -8205,21 +8876,23 @@ class SplineLength(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - length      : Float 
-    - point_count : Integer 
+        Output sockets
+        --------------
+            length : Float
+                - point_count : Integer
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Spline capture_length : Capture attribute 
-    - Spline length         : Attribute 
-    - Spline point_count    : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_length : Capture attribute
+                - class_name length : Attribute
+                - class_name point_count : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -8236,20 +8909,24 @@ class SplineLength(Node):
 
 class SplineParameter(Node):
 
-    """Class SplineParameter
+    """
+
+    Node SplineParameter
+    --------------------
+        > Geometry node name: Spline Parameter<br>
+          Blender type: Spline Parameter
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Spline Parameter' 
-    | Blender type:  GeometryNodeSplineParameter 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SplineParameter(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SplineParameter(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -8258,23 +8935,25 @@ class SplineParameter(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - factor : Float 
-    - length : Float 
-    - index  : Integer 
+        Output sockets
+        --------------
+            factor : Float
+                - length : Float
+                - index : Integer
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Spline capture_parameter : Capture attribute 
-    - Spline factor            : Attribute 
-    - Spline parameter_index   : Attribute 
-    - Spline parameter_length  : Attribute 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name capture_parameter : Capture attribute
+                - class_name factor : Attribute
+                - class_name parameter_index : Attribute
+                - class_name parameter_length : Attribute
+                  
     """
 
     def __init__(self, label=None):
@@ -8292,20 +8971,24 @@ class SplineParameter(Node):
 
 class SplitEdges(Node):
 
-    """Class SplitEdges
+    """
+
+    Node SplitEdges
+    ---------------
+        > Geometry node name: Split Edges<br>
+          Blender type: Split Edges
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Split Edges' 
-    | Blender type:  GeometryNodeSplitEdges 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SplitEdges(mesh=None, selection=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SplitEdges(mesh=None, selection=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -8314,24 +8997,26 @@ class SplitEdges(Node):
 
             Input sockets
             -------------
-            - mesh      : Mesh 
-            - selection : Boolean 
+                mesh : Mesh
+                    - selection : Boolean
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh : Mesh 
+        Output sockets
+        --------------
+            mesh : Mesh
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh split_edges : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name split_edges : Method
+            
     """
 
     def __init__(self, mesh=None, selection=None, label=None):
@@ -8352,20 +9037,24 @@ class SplitEdges(Node):
 
 class JoinStrings(Node):
 
-    """Class JoinStrings
+    """
+
+    Node JoinStrings
+    ----------------
+        > Geometry node name: Join Strings<br>
+          Blender type: Join Strings
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Join Strings' 
-    | Blender type:  GeometryNodeStringJoin 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.JoinStrings(*strings, delimiter=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.JoinStrings(*strings, delimiter=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -8374,25 +9063,27 @@ class JoinStrings(Node):
 
             Input sockets
             -------------
-            - delimiter : String 
-            - strings   : * String 
+                delimiter : String
+                    - strings : *String
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - string : String 
+        Output sockets
+        --------------
+            string : String
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - String join            : Method 
-    - functions join_strings : Function 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name join : Method
+                - class_name join_strings : Function
+                  
     """
 
     def __init__(self, *strings, delimiter=None, label=None):
@@ -8413,22 +9104,24 @@ class JoinStrings(Node):
 
 class StringToCurves(Node):
 
-    """Class StringToCurves
+    """
+
+    Node StringToCurves
+    -------------------
+        > Geometry node name: String to Curves<br>
+          Blender type: String to Curves
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'String to Curves' 
-    | Blender type:  GeometryNodeStringToCurves 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None,
-        text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW',
-        pivot_mode='BOTTOM_LEFT', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -8437,41 +9130,42 @@ class StringToCurves(Node):
 
             Input sockets
             -------------
-            - string            : String 
-            - size              : Float 
-            - character_spacing : Float 
-            - word_spacing      : Float 
-            - line_spacing      : Float 
-            - text_box_width    : Float 
-            - text_box_height   : Float 
+                string : String
+                    - size : Float
+                    - character_spacing : Float
+                    - word_spacing : Float
+                    - line_spacing : Float
+                    - text_box_width : Float
+                    - text_box_height : Float
     
 
             Parameters
             ----------
-            - align_x    : 'LEFT' in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH') 
-            - align_y    : 'TOP_BASELINE' in ('TOP_BASELINE', 'TOP', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM') 
-            - overflow   : 'OVERFLOW' in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE') 
-            - pivot_mode : 'BOTTOM_LEFT' in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER',
-              'BOTTOM_RIGHT') 
+                align_x : str (default = 'LEFT') in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
+                    - align_y : str (default = 'TOP_BASELINE') in ('TOP_BASELINE', 'TOP', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
+                    - overflow : str (default = 'OVERFLOW') in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
+                    - pivot_mode : str (default = 'BOTTOM_LEFT') in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve_instances : Geometry 
-    - remainder       : String 
-    - line            : Integer 
-    - pivot_point     : Vector 
+        Output sockets
+        --------------
+            curve_instances : Geometry
+                - remainder : String
+                - line : Integer
+                - pivot_point : Vector
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - String to_curves : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name to_curves : Method
+            
     """
 
     def __init__(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT', label=None):
@@ -8539,20 +9233,24 @@ class StringToCurves(Node):
 
 class SubdivideCurve(Node):
 
-    """Class SubdivideCurve
+    """
+
+    Node SubdivideCurve
+    -------------------
+        > Geometry node name: Subdivide Curve<br>
+          Blender type: Subdivide Curve
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Subdivide Curve' 
-    | Blender type:  GeometryNodeSubdivideCurve 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SubdivideCurve(curve=None, cuts=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SubdivideCurve(curve=None, cuts=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -8561,24 +9259,26 @@ class SubdivideCurve(Node):
 
             Input sockets
             -------------
-            - curve : Curve 
-            - cuts  : Integer 
+                curve : Curve
+                    - cuts : Integer
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve : Curve 
+        Output sockets
+        --------------
+            curve : Curve
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve subdivide : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name subdivide : Method
+            
     """
 
     def __init__(self, curve=None, cuts=None, label=None):
@@ -8599,20 +9299,24 @@ class SubdivideCurve(Node):
 
 class SubdivideMesh(Node):
 
-    """Class SubdivideMesh
+    """
+
+    Node SubdivideMesh
+    ------------------
+        > Geometry node name: Subdivide Mesh<br>
+          Blender type: Subdivide Mesh
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Subdivide Mesh' 
-    | Blender type:  GeometryNodeSubdivideMesh 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SubdivideMesh(mesh=None, level=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SubdivideMesh(mesh=None, level=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -8621,24 +9325,26 @@ class SubdivideMesh(Node):
 
             Input sockets
             -------------
-            - mesh  : Mesh 
-            - level : Integer 
+                mesh : Mesh
+                    - level : Integer
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh : Mesh 
+        Output sockets
+        --------------
+            mesh : Mesh
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh subdivide : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name subdivide : Method
+            
     """
 
     def __init__(self, mesh=None, level=None, label=None):
@@ -8659,21 +9365,24 @@ class SubdivideMesh(Node):
 
 class SubdivisionSurface(Node):
 
-    """Class SubdivisionSurface
+    """
+
+    Node SubdivisionSurface
+    -----------------------
+        > Geometry node name: Subdivision Surface<br>
+          Blender type: Subdivision Surface
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Subdivision Surface' 
-    | Blender type:  GeometryNodeSubdivisionSurface 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SubdivisionSurface(mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES',
-        label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SubdivisionSurface(mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -8682,32 +9391,33 @@ class SubdivisionSurface(Node):
 
             Input sockets
             -------------
-            - mesh   : Mesh 
-            - level  : Integer 
-            - crease : Float 
+                mesh : Mesh
+                    - level : Integer
+                    - crease : Float
     
 
             Parameters
             ----------
-            - boundary_smooth : 'ALL' in ('PRESERVE_CORNERS', 'ALL') 
-            - uv_smooth       : 'PRESERVE_BOUNDARIES' in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE',
-              'PRESERVE_BOUNDARIES', 'SMOOTH_ALL') 
+                boundary_smooth : str (default = 'ALL') in ('PRESERVE_CORNERS', 'ALL')
+                    - uv_smooth : str (default = 'PRESERVE_BOUNDARIES') in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh : Mesh 
+        Output sockets
+        --------------
+            mesh : Mesh
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh subdivision_surface : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name subdivision_surface : Method
+            
     """
 
     def __init__(self, mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None):
@@ -8750,20 +9460,24 @@ class SubdivisionSurface(Node):
 
 class Switch(Node):
 
-    """Class Switch
+    """
+
+    Node Switch
+    -----------
+        > Geometry node name: Switch<br>
+          Blender type: Switch
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Switch' 
-    | Blender type:  GeometryNodeSwitch 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Switch(switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', label=None)
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Switch(switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -8772,49 +9486,51 @@ class Switch(Node):
 
             Input sockets
             -------------
-            - switch0 : Boolean 
-            - switch1 : Boolean 
-            - false   : input_type dependant 
-            - true    : input_type dependant 
+                switch0 : Boolean
+                    - switch1 : Boolean
+                    - false : input_type dependant
+                    - true : input_type dependant
     
 
             Parameters
             ----------
-            - input_type : 'GEOMETRY' in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE',
-              'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL') 
+                input_type : str (default = 'GEOMETRY') in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Data type dependant sockets
-    ===========================
-    - Driving parameter : input_type in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE',
-      'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL') 
-    - Input sockets     : false true 
-    - Output sockets    : output 
+        Data type dependant sockets
+        ---------------------------
+            - Driving parameter : input_type in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')
+            - Input sockets  : ['false', 'true']
+            - Output sockets : ['output']   
+              
+              
     
 
-    Output sockets
-    ==============
-    - output : input_type dependant 
+        Output sockets
+        --------------
+            output : input_type dependant
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Boolean switch    : Method 
-    - Collection switch : Method 
-    - Float switch      : Method 
-    - Geometry switch   : Method 
-    - Image switch      : Method 
-    - Integer switch    : Method 
-    - Material switch   : Method 
-    - Object switch     : Method 
-    - String switch     : Method 
-    - Texture switch    : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name switch : Method
+                - class_name switch : Method
+                - class_name switch : Method
+                - class_name switch : Method
+                - class_name switch : Method
+                - class_name switch : Method
+                - class_name switch : Method
+                - class_name switch : Method
+                - class_name switch : Method
+                - class_name switch : Method
+                  
     """
 
     def __init__(self, switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', label=None):
@@ -8908,20 +9624,24 @@ class Switch(Node):
 
 class Transform(Node):
 
-    """Class Transform
+    """
+
+    Node Transform
+    --------------
+        > Geometry node name: Transform<br>
+          Blender type: Transform
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Transform' 
-    | Blender type:  GeometryNodeTransform 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -8930,26 +9650,28 @@ class Transform(Node):
 
             Input sockets
             -------------
-            - geometry    : Geometry 
-            - translation : Vector 
-            - rotation    : Vector 
-            - scale       : Vector 
+                geometry : Geometry
+                    - translation : Vector
+                    - rotation : Vector
+                    - scale : Vector
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - geometry : Geometry 
+        Output sockets
+        --------------
+            geometry : Geometry
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Geometry transform : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name transform : Method
+            
     """
 
     def __init__(self, geometry=None, translation=None, rotation=None, scale=None, label=None):
@@ -8972,20 +9694,24 @@ class Transform(Node):
 
 class TranslateInstances(Node):
 
-    """Class TranslateInstances
+    """
+
+    Node TranslateInstances
+    -----------------------
+        > Geometry node name: Translate Instances<br>
+          Blender type: Translate Instances
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Translate Instances' 
-    | Blender type:  GeometryNodeTranslateInstances 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.TranslateInstances(instances=None, selection=None, translation=None, local_space=None, label=None)
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.TranslateInstances(instances=None, selection=None, translation=None, local_space=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -8994,26 +9720,28 @@ class TranslateInstances(Node):
 
             Input sockets
             -------------
-            - instances   : Instances 
-            - selection   : Boolean 
-            - translation : Vector 
-            - local_space : Boolean 
+                instances : Instances
+                    - selection : Boolean
+                    - translation : Vector
+                    - local_space : Boolean
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - instances : Instances 
+        Output sockets
+        --------------
+            instances : Instances
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Instances translate : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name translate : Method
+            
     """
 
     def __init__(self, instances=None, selection=None, translation=None, local_space=None, label=None):
@@ -9036,21 +9764,24 @@ class TranslateInstances(Node):
 
 class Triangulate(Node):
 
-    """Class Triangulate
+    """
+
+    Node Triangulate
+    ----------------
+        > Geometry node name: Triangulate<br>
+          Blender type: Triangulate
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Triangulate' 
-    | Blender type:  GeometryNodeTriangulate 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL',
-        label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -9059,31 +9790,33 @@ class Triangulate(Node):
 
             Input sockets
             -------------
-            - mesh             : Mesh 
-            - selection        : Boolean 
-            - minimum_vertices : Integer 
+                mesh : Mesh
+                    - selection : Boolean
+                    - minimum_vertices : Integer
     
 
             Parameters
             ----------
-            - ngon_method : 'BEAUTY' in ('BEAUTY', 'CLIP') 
-            - quad_method : 'SHORTEST_DIAGONAL' in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
+                ngon_method : str (default = 'BEAUTY') in ('BEAUTY', 'CLIP')
+                    - quad_method : str (default = 'SHORTEST_DIAGONAL') in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh : Mesh 
+        Output sockets
+        --------------
+            mesh : Mesh
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Mesh triangulate : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name triangulate : Method
+            
     """
 
     def __init__(self, mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', label=None):
@@ -9126,20 +9859,24 @@ class Triangulate(Node):
 
 class TrimCurve(Node):
 
-    """Class TrimCurve
+    """
+
+    Node TrimCurve
+    --------------
+        > Geometry node name: Trim Curve<br>
+          Blender type: Trim Curve
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Trim Curve' 
-    | Blender type:  GeometryNodeTrimCurve 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR', label=None)
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -9148,32 +9885,34 @@ class TrimCurve(Node):
 
             Input sockets
             -------------
-            - curve  : Curve 
-            - start0 : Float 
-            - start1 : Float 
-            - end0   : Float 
-            - end1   : Float 
+                curve : Curve
+                    - start0 : Float
+                    - start1 : Float
+                    - end0 : Float
+                    - end1 : Float
     
 
             Parameters
             ----------
-            - mode : 'FACTOR' in ('FACTOR', 'LENGTH') 
+                mode : str (default = 'FACTOR') in ('FACTOR', 'LENGTH')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - curve : Curve 
+        Output sockets
+        --------------
+            curve : Curve
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Curve trim : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name trim : Method
+            
     """
 
     def __init__(self, curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR', label=None):
@@ -9209,21 +9948,24 @@ class TrimCurve(Node):
 
 class VolumeToMesh(Node):
 
-    """Class VolumeToMesh
+    """
+
+    Node VolumeToMesh
+    -----------------
+        > Geometry node name: Volume to Mesh<br>
+          Blender type: Volume to Mesh
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Volume to Mesh' 
-    | Blender type:  GeometryNodeVolumeToMesh 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.VolumeToMesh(volume=None, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None,
-        resolution_mode='GRID', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.VolumeToMesh(volume=None, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -9232,32 +9974,34 @@ class VolumeToMesh(Node):
 
             Input sockets
             -------------
-            - volume       : Volume 
-            - voxel_size   : Float 
-            - voxel_amount : Float 
-            - threshold    : Float 
-            - adaptivity   : Float 
+                volume : Volume
+                    - voxel_size : Float
+                    - voxel_amount : Float
+                    - threshold : Float
+                    - adaptivity : Float
     
 
             Parameters
             ----------
-            - resolution_mode : 'GRID' in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE') 
+                resolution_mode : str (default = 'GRID') in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - mesh : Mesh 
+        Output sockets
+        --------------
+            mesh : Mesh
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Volume to_mesh : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name to_mesh : Method
+            
     """
 
     def __init__(self, volume=None, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID', label=None):
@@ -9293,20 +10037,24 @@ class VolumeToMesh(Node):
 
 class Clamp(Node):
 
-    """Class Clamp
+    """
+
+    Node Clamp
+    ----------
+        > Geometry node name: Clamp<br>
+          Blender type: Clamp
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Clamp' 
-    | Blender type:  ShaderNodeClamp 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -9315,30 +10063,32 @@ class Clamp(Node):
 
             Input sockets
             -------------
-            - value : Float 
-            - min   : Float 
-            - max   : Float 
+                value : Float
+                    - min : Float
+                    - max : Float
     
 
             Parameters
             ----------
-            - clamp_type : 'MINMAX' in ('MINMAX', 'RANGE') 
+                clamp_type : str (default = 'MINMAX') in ('MINMAX', 'RANGE')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - result : Float 
+        Output sockets
+        --------------
+            result : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Float clamp : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name clamp : Method
+            
     """
 
     def __init__(self, value=None, min=None, max=None, clamp_type='MINMAX', label=None):
@@ -9372,20 +10122,24 @@ class Clamp(Node):
 
 class CombineRgb(Node):
 
-    """Class CombineRgb
+    """
+
+    Node CombineRgb
+    ---------------
+        > Geometry node name: Combine RGB<br>
+          Blender type: Combine RGB
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Combine RGB' 
-    | Blender type:  ShaderNodeCombineRGB 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.CombineRgb(r=None, g=None, b=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.CombineRgb(r=None, g=None, b=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -9394,25 +10148,27 @@ class CombineRgb(Node):
 
             Input sockets
             -------------
-            - r : Float 
-            - g : Float 
-            - b : Float 
+                r : Float
+                    - g : Float
+                    - b : Float
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - image : Color 
+        Output sockets
+        --------------
+            image : Color
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Color Combine : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Combine : Constructor
+            
     """
 
     def __init__(self, r=None, g=None, b=None, label=None):
@@ -9434,20 +10190,24 @@ class CombineRgb(Node):
 
 class CombineXyz(Node):
 
-    """Class CombineXyz
+    """
+
+    Node CombineXyz
+    ---------------
+        > Geometry node name: Combine XYZ<br>
+          Blender type: Combine XYZ
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Combine XYZ' 
-    | Blender type:  ShaderNodeCombineXYZ 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.CombineXyz(x=None, y=None, z=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.CombineXyz(x=None, y=None, z=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -9456,25 +10216,27 @@ class CombineXyz(Node):
 
             Input sockets
             -------------
-            - x : Float 
-            - y : Float 
-            - z : Float 
+                x : Float
+                    - y : Float
+                    - z : Float
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - vector : Vector 
+        Output sockets
+        --------------
+            vector : Vector
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Vector Combine : Constructor 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Combine : Constructor
+            
     """
 
     def __init__(self, x=None, y=None, z=None, label=None):
@@ -9496,20 +10258,24 @@ class CombineXyz(Node):
 
 class FloatCurve(Node):
 
-    """Class FloatCurve
+    """
+
+    Node FloatCurve
+    ---------------
+        > Geometry node name: Float Curve<br>
+          Blender type: Float Curve
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Float Curve' 
-    | Blender type:  ShaderNodeFloatCurve 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.FloatCurve(factor=None, value=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.FloatCurve(factor=None, value=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -9518,24 +10284,26 @@ class FloatCurve(Node):
 
             Input sockets
             -------------
-            - factor : Float 
-            - value  : Float 
+                factor : Float
+                    - value : Float
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - value : Float 
+        Output sockets
+        --------------
+            value : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Float curve : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name curve : Method
+            
     """
 
     def __init__(self, factor=None, value=None, label=None):
@@ -9556,21 +10324,24 @@ class FloatCurve(Node):
 
 class MapRange(Node):
 
-    """Class MapRange
+    """
+
+    Node MapRange
+    -------------
+        > Geometry node name: Map Range<br>
+          Blender type: Map Range
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Map Range' 
-    | Blender type:  ShaderNodeMapRange 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, steps=None,
-        vector=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, vector=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -9579,44 +10350,49 @@ class MapRange(Node):
 
             Input sockets
             -------------
-            - value    : Float 
-            - from_min : data_type dependant 
-            - from_max : data_type dependant 
-            - to_min   : data_type dependant 
-            - to_max   : data_type dependant 
-            - steps    : data_type dependant 
-            - vector   : Vector 
+                value : Float
+                    - from_min : data_type dependant
+                    - from_max : data_type dependant
+                    - to_min : data_type dependant
+                    - to_max : data_type dependant
+                    - steps : data_type dependant
+                    - vector : Vector
     
 
             Parameters
             ----------
-            - clamp              : True bool 
-            - data_type          : 'FLOAT' in ('FLOAT', 'FLOAT_VECTOR') 
-            - interpolation_type : 'LINEAR' in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP') 
+                clamp : bool (default = True)
+                    - data_type : str (default = 'FLOAT') in ('FLOAT', 'FLOAT_VECTOR')
+                    - interpolation_type : str (default = 'LINEAR') in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Data type dependant sockets
-    ===========================
-    - Driving parameter : data_type in ('FLOAT', 'FLOAT_VECTOR') 
-    - Input sockets     : from_min from_max to_min to_max steps 
+        Data type dependant sockets
+        ---------------------------
+            - Driving parameter : data_type in ('FLOAT', 'FLOAT_VECTOR')
+            - Input sockets  : ['from_min', 'from_max', 'to_min', 'to_max', 'steps']
+            - Output sockets : []   
+              
+              
     
 
-    Output sockets
-    ==============
-    - result : Float 
-    - vector : Vector 
+        Output sockets
+        --------------
+            result : Float
+                - vector : Vector
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Float map_range  : Method 
-    - Vector map_range : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name map_range : Method
+                - class_name map_range : Method
+                  
     """
 
     def __init__(self, value=None, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, vector=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', label=None):
@@ -9680,20 +10456,24 @@ class MapRange(Node):
 
 class Math(Node):
 
-    """Class Math
+    """
+
+    Node Math
+    ---------
+        > Geometry node name: Math<br>
+          Blender type: Math
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Math' 
-    | Blender type:  ShaderNodeMath 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -9702,153 +10482,151 @@ class Math(Node):
 
             Input sockets
             -------------
-            - value0 : Float 
-            - value1 : Float 
-            - value2 : Float 
+                value0 : Float
+                    - value1 : Float
+                    - value2 : Float
     
 
             Parameters
             ----------
-            - operation : 'ADD' in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT',
-              'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE',
-              'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'WRAP', 'SNAP', 'PINGPONG',
-              'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH',
-              'RADIANS', 'DEGREES') 
+                operation : str (default = 'ADD') in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - value : Float 
+        Output sockets
+        --------------
+            value : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Float abs              : Method 
-    - Float add              : Method 
-    - Float arccos           : Method 
-    - Float arcsin           : Method 
-    - Float arctan           : Method 
-    - Float arctan2          : Method 
-    - Float ceil             : Method 
-    - Float compare          : Method 
-    - Float cos              : Method 
-    - Float cosh             : Method 
-    - Float degrees          : Method 
-    - Float divide           : Method 
-    - Float exp              : Method 
-    - Float floor            : Method 
-    - Float fract            : Method 
-    - Float greater_than     : Method 
-    - Float inverse_sqrt     : Method 
-    - Float less_than        : Method 
-    - Float log              : Method 
-    - Float max              : Method 
-    - Float min              : Method 
-    - Float modulo           : Method 
-    - Float multiply         : Method 
-    - Float multiply_add     : Method 
-    - Float pingpong         : Method 
-    - Float pow              : Method 
-    - Float radians          : Method 
-    - Float round            : Method 
-    - Float sign             : Method 
-    - Float sin              : Method 
-    - Float sinh             : Method 
-    - Float smooth_max       : Method 
-    - Float smooth_min       : Method 
-    - Float snap             : Method 
-    - Float sqrt             : Method 
-    - Float subtract         : Method 
-    - Float tan              : Method 
-    - Float tanh             : Method 
-    - Float trunc            : Method 
-    - Float wrap             : Method 
-    - Integer abs            : Method 
-    - Integer add            : Method 
-    - Integer arccos         : Method 
-    - Integer arcsin         : Method 
-    - Integer arctan         : Method 
-    - Integer arctan2        : Method 
-    - Integer ceil           : Method 
-    - Integer compare        : Method 
-    - Integer cos            : Method 
-    - Integer cosh           : Method 
-    - Integer degrees        : Method 
-    - Integer divide         : Method 
-    - Integer exp            : Method 
-    - Integer floor          : Method 
-    - Integer fract          : Method 
-    - Integer greater_than   : Method 
-    - Integer inverse_sqrt   : Method 
-    - Integer less_than      : Method 
-    - Integer log            : Method 
-    - Integer max            : Method 
-    - Integer min            : Method 
-    - Integer modulo         : Method 
-    - Integer multiply       : Method 
-    - Integer multiply_add   : Method 
-    - Integer pingpong       : Method 
-    - Integer pow            : Method 
-    - Integer radians        : Method 
-    - Integer round          : Method 
-    - Integer sign           : Method 
-    - Integer sin            : Method 
-    - Integer sinh           : Method 
-    - Integer smooth_max     : Method 
-    - Integer smooth_min     : Method 
-    - Integer snap           : Method 
-    - Integer sqrt           : Method 
-    - Integer subtract       : Method 
-    - Integer tan            : Method 
-    - Integer tanh           : Method 
-    - Integer trunc          : Method 
-    - Integer wrap           : Method 
-    - functions abs          : Function 
-    - functions add          : Function 
-    - functions arccos       : Function 
-    - functions arcsin       : Function 
-    - functions arctan       : Function 
-    - functions arctan2      : Function 
-    - functions ceil         : Function 
-    - functions compare      : Function 
-    - functions cos          : Function 
-    - functions cosh         : Function 
-    - functions degrees      : Function 
-    - functions divide       : Function 
-    - functions exp          : Function 
-    - functions floor        : Function 
-    - functions fract        : Function 
-    - functions greater_than : Function 
-    - functions inverse_sqrt : Function 
-    - functions less_than    : Function 
-    - functions log          : Function 
-    - functions max          : Function 
-    - functions min          : Function 
-    - functions modulo       : Function 
-    - functions multiply     : Function 
-    - functions multiply_add : Function 
-    - functions pingpong     : Function 
-    - functions pow          : Function 
-    - functions radians      : Function 
-    - functions round        : Function 
-    - functions sign         : Function 
-    - functions sin          : Function 
-    - functions sinh         : Function 
-    - functions smooth_max   : Function 
-    - functions smooth_min   : Function 
-    - functions snap         : Function 
-    - functions sqrt         : Function 
-    - functions subtract     : Function 
-    - functions tan          : Function 
-    - functions tanh         : Function 
-    - functions trunc        : Function 
-    - functions wrap         : Function 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name abs : Method
+                - class_name add : Method
+                - class_name arccos : Method
+                - class_name arcsin : Method
+                - class_name arctan : Method
+                - class_name arctan2 : Method
+                - class_name ceil : Method
+                - class_name compare : Method
+                - class_name cos : Method
+                - class_name cosh : Method
+                - class_name degrees : Method
+                - class_name divide : Method
+                - class_name exp : Method
+                - class_name floor : Method
+                - class_name fract : Method
+                - class_name greater_than : Method
+                - class_name inverse_sqrt : Method
+                - class_name less_than : Method
+                - class_name log : Method
+                - class_name max : Method
+                - class_name min : Method
+                - class_name modulo : Method
+                - class_name multiply : Method
+                - class_name multiply_add : Method
+                - class_name pingpong : Method
+                - class_name pow : Method
+                - class_name radians : Method
+                - class_name round : Method
+                - class_name sign : Method
+                - class_name sin : Method
+                - class_name sinh : Method
+                - class_name smooth_max : Method
+                - class_name smooth_min : Method
+                - class_name snap : Method
+                - class_name sqrt : Method
+                - class_name subtract : Method
+                - class_name tan : Method
+                - class_name tanh : Method
+                - class_name trunc : Method
+                - class_name wrap : Method
+                - class_name abs : Method
+                - class_name add : Method
+                - class_name arccos : Method
+                - class_name arcsin : Method
+                - class_name arctan : Method
+                - class_name arctan2 : Method
+                - class_name ceil : Method
+                - class_name compare : Method
+                - class_name cos : Method
+                - class_name cosh : Method
+                - class_name degrees : Method
+                - class_name divide : Method
+                - class_name exp : Method
+                - class_name floor : Method
+                - class_name fract : Method
+                - class_name greater_than : Method
+                - class_name inverse_sqrt : Method
+                - class_name less_than : Method
+                - class_name log : Method
+                - class_name max : Method
+                - class_name min : Method
+                - class_name modulo : Method
+                - class_name multiply : Method
+                - class_name multiply_add : Method
+                - class_name pingpong : Method
+                - class_name pow : Method
+                - class_name radians : Method
+                - class_name round : Method
+                - class_name sign : Method
+                - class_name sin : Method
+                - class_name sinh : Method
+                - class_name smooth_max : Method
+                - class_name smooth_min : Method
+                - class_name snap : Method
+                - class_name sqrt : Method
+                - class_name subtract : Method
+                - class_name tan : Method
+                - class_name tanh : Method
+                - class_name trunc : Method
+                - class_name wrap : Method
+                - class_name abs : Function
+                - class_name add : Function
+                - class_name arccos : Function
+                - class_name arcsin : Function
+                - class_name arctan : Function
+                - class_name arctan2 : Function
+                - class_name ceil : Function
+                - class_name compare : Function
+                - class_name cos : Function
+                - class_name cosh : Function
+                - class_name degrees : Function
+                - class_name divide : Function
+                - class_name exp : Function
+                - class_name floor : Function
+                - class_name fract : Function
+                - class_name greater_than : Function
+                - class_name inverse_sqrt : Function
+                - class_name less_than : Function
+                - class_name log : Function
+                - class_name max : Function
+                - class_name min : Function
+                - class_name modulo : Function
+                - class_name multiply : Function
+                - class_name multiply_add : Function
+                - class_name pingpong : Function
+                - class_name pow : Function
+                - class_name radians : Function
+                - class_name round : Function
+                - class_name sign : Function
+                - class_name sin : Function
+                - class_name sinh : Function
+                - class_name smooth_max : Function
+                - class_name smooth_min : Function
+                - class_name snap : Function
+                - class_name sqrt : Function
+                - class_name subtract : Function
+                - class_name tan : Function
+                - class_name tanh : Function
+                - class_name trunc : Function
+                - class_name wrap : Function
+                  
     """
 
     def __init__(self, value0=None, value1=None, value2=None, operation='ADD', label=None):
@@ -9882,20 +10660,24 @@ class Math(Node):
 
 class Mix(Node):
 
-    """Class Mix
+    """
+
+    Node Mix
+    --------
+        > Geometry node name: Mix<br>
+          Blender type: Mix
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Mix' 
-    | Blender type:  ShaderNodeMixRGB 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Mix(color1=None, color2=None, fac=None, blend_type='MIX', use_alpha=False, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Mix(color1=None, color2=None, fac=None, blend_type='MIX', use_alpha=False, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -9904,68 +10686,69 @@ class Mix(Node):
 
             Input sockets
             -------------
-            - fac    : Float 
-            - color1 : Color 
-            - color2 : Color 
+                fac : Float
+                    - color1 : Color
+                    - color2 : Color
     
 
             Parameters
             ----------
-            - blend_type : 'MIX' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY',
-              'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
-            - use_alpha  : False bool 
+                blend_type : str (default = 'MIX') in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
+                    - use_alpha : bool (default = False)
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - color : Color 
+        Output sockets
+        --------------
+            color : Color
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Color add                    : Method 
-    - Color burn                   : Method 
-    - Color darken                 : Method 
-    - Color difference             : Method 
-    - Color divide                 : Method 
-    - Color dodge                  : Method 
-    - Color hue                    : Method 
-    - Color lighten                : Method 
-    - Color linear_light           : Method 
-    - Color mix                    : Method 
-    - Color mix                    : Method 
-    - Color mix_color              : Method 
-    - Color multiply               : Method 
-    - Color overlay                : Method 
-    - Color saturation             : Method 
-    - Color screen                 : Method 
-    - Color soft_light             : Method 
-    - Color subtract               : Method 
-    - Color value                  : Method 
-    - functions color_add          : Function 
-    - functions color_burn         : Function 
-    - functions color_darken       : Function 
-    - functions color_difference   : Function 
-    - functions color_divide       : Function 
-    - functions color_dodge        : Function 
-    - functions color_hue          : Function 
-    - functions color_lighten      : Function 
-    - functions color_linear_light : Function 
-    - functions color_mix          : Function 
-    - functions color_mix_color    : Function 
-    - functions color_multiply     : Function 
-    - functions color_overlay      : Function 
-    - functions color_saturation   : Function 
-    - functions color_screen       : Function 
-    - functions color_soft_light   : Function 
-    - functions color_subtract     : Function 
-    - functions color_value        : Function 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name add : Method
+                - class_name burn : Method
+                - class_name darken : Method
+                - class_name difference : Method
+                - class_name divide : Method
+                - class_name dodge : Method
+                - class_name hue : Method
+                - class_name lighten : Method
+                - class_name linear_light : Method
+                - class_name mix : Method
+                - class_name mix : Method
+                - class_name mix_color : Method
+                - class_name multiply : Method
+                - class_name overlay : Method
+                - class_name saturation : Method
+                - class_name screen : Method
+                - class_name soft_light : Method
+                - class_name subtract : Method
+                - class_name value : Method
+                - class_name color_add : Function
+                - class_name color_burn : Function
+                - class_name color_darken : Function
+                - class_name color_difference : Function
+                - class_name color_divide : Function
+                - class_name color_dodge : Function
+                - class_name color_hue : Function
+                - class_name color_lighten : Function
+                - class_name color_linear_light : Function
+                - class_name color_mix : Function
+                - class_name color_mix_color : Function
+                - class_name color_multiply : Function
+                - class_name color_overlay : Function
+                - class_name color_saturation : Function
+                - class_name color_screen : Function
+                - class_name color_soft_light : Function
+                - class_name color_subtract : Function
+                - class_name color_value : Function
+                  
     """
 
     def __init__(self, color1=None, color2=None, fac=None, blend_type='MIX', use_alpha=False, label=None):
@@ -10008,20 +10791,24 @@ class Mix(Node):
 
 class RgbCurves(Node):
 
-    """Class RgbCurves
+    """
+
+    Node RgbCurves
+    --------------
+        > Geometry node name: RGB Curves<br>
+          Blender type: RGB Curves
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'RGB Curves' 
-    | Blender type:  ShaderNodeRGBCurve 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.RgbCurves(fac=None, color=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.RgbCurves(fac=None, color=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -10030,24 +10817,26 @@ class RgbCurves(Node):
 
             Input sockets
             -------------
-            - fac   : Float 
-            - color : Color 
+                fac : Float
+                    - color : Color
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - color : Color 
+        Output sockets
+        --------------
+            color : Color
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Color curves : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name curves : Method
+            
     """
 
     def __init__(self, fac=None, color=None, label=None):
@@ -10068,20 +10857,24 @@ class RgbCurves(Node):
 
 class SeparateRgb(Node):
 
-    """Class SeparateRgb
+    """
+
+    Node SeparateRgb
+    ----------------
+        > Geometry node name: Separate RGB<br>
+          Blender type: Separate RGB
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Separate RGB' 
-    | Blender type:  ShaderNodeSeparateRGB 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SeparateRgb(image=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SeparateRgb(image=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -10090,28 +10883,30 @@ class SeparateRgb(Node):
 
             Input sockets
             -------------
-            - image : Color 
+                image : Color
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - r : Float 
-    - g : Float 
-    - b : Float 
+        Output sockets
+        --------------
+            r : Float
+                - g : Float
+                - b : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Color b        : Property 
-    - Color g        : Property 
-    - Color r        : Property 
-    - Color separate : Property 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name b : Property
+                - class_name g : Property
+                - class_name r : Property
+                - class_name separate : Property
+                  
     """
 
     def __init__(self, image=None, label=None):
@@ -10133,20 +10928,24 @@ class SeparateRgb(Node):
 
 class SeparateXyz(Node):
 
-    """Class SeparateXyz
+    """
+
+    Node SeparateXyz
+    ----------------
+        > Geometry node name: Separate XYZ<br>
+          Blender type: Separate XYZ
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Separate XYZ' 
-    | Blender type:  ShaderNodeSeparateXYZ 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.SeparateXyz(vector=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.SeparateXyz(vector=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -10155,28 +10954,30 @@ class SeparateXyz(Node):
 
             Input sockets
             -------------
-            - vector : Vector 
+                vector : Vector
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - x : Float 
-    - y : Float 
-    - z : Float 
+        Output sockets
+        --------------
+            x : Float
+                - y : Float
+                - z : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Vector separate : Property 
-    - Vector x        : Property 
-    - Vector y        : Property 
-    - Vector z        : Property 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name separate : Property
+                - class_name x : Property
+                - class_name y : Property
+                - class_name z : Property
+                  
     """
 
     def __init__(self, vector=None, label=None):
@@ -10198,22 +10999,24 @@ class SeparateXyz(Node):
 
 class BrickTexture(Node):
 
-    """Class BrickTexture
+    """
+
+    Node BrickTexture
+    -----------------
+        > Geometry node name: Brick Texture<br>
+          Blender type: Brick Texture
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Brick Texture' 
-    | Blender type:  ShaderNodeTexBrick 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.BrickTexture(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None,
-        mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0,
-        squash_frequency=2, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.BrickTexture(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -10222,41 +11025,43 @@ class BrickTexture(Node):
 
             Input sockets
             -------------
-            - vector        : Vector 
-            - color1        : Color 
-            - color2        : Color 
-            - mortar        : Color 
-            - scale         : Float 
-            - mortar_size   : Float 
-            - mortar_smooth : Float 
-            - bias          : Float 
-            - brick_width   : Float 
-            - row_height    : Float 
+                vector : Vector
+                    - color1 : Color
+                    - color2 : Color
+                    - mortar : Color
+                    - scale : Float
+                    - mortar_size : Float
+                    - mortar_smooth : Float
+                    - bias : Float
+                    - brick_width : Float
+                    - row_height : Float
     
 
             Parameters
             ----------
-            - offset           : 0.5 float 
-            - offset_frequency : 2 int 
-            - squash           : 1.0 float 
-            - squash_frequency : 2 int 
+                offset : float (default = 0.5)
+                    - offset_frequency : int (default = 2)
+                    - squash : float (default = 1.0)
+                    - squash_frequency : int (default = 2)
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - color : Color 
-    - fac   : Float 
+        Output sockets
+        --------------
+            color : Color
+                - fac : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Texture Brick : Static method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Brick : Static method
+            
     """
 
     def __init__(self, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, label=None):
@@ -10325,20 +11130,24 @@ class BrickTexture(Node):
 
 class CheckerTexture(Node):
 
-    """Class CheckerTexture
+    """
+
+    Node CheckerTexture
+    -------------------
+        > Geometry node name: Checker Texture<br>
+          Blender type: Checker Texture
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Checker Texture' 
-    | Blender type:  ShaderNodeTexChecker 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -10347,27 +11156,29 @@ class CheckerTexture(Node):
 
             Input sockets
             -------------
-            - vector : Vector 
-            - color1 : Color 
-            - color2 : Color 
-            - scale  : Float 
+                vector : Vector
+                    - color1 : Color
+                    - color2 : Color
+                    - scale : Float
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - color : Color 
-    - fac   : Float 
+        Output sockets
+        --------------
+            color : Color
+                - fac : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Texture Checker : Static method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Checker : Static method
+            
     """
 
     def __init__(self, vector=None, color1=None, color2=None, scale=None, label=None):
@@ -10391,20 +11202,24 @@ class CheckerTexture(Node):
 
 class GradientTexture(Node):
 
-    """Class GradientTexture
+    """
+
+    Node GradientTexture
+    --------------------
+        > Geometry node name: Gradient Texture<br>
+          Blender type: Gradient Texture
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Gradient Texture' 
-    | Blender type:  ShaderNodeTexGradient 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.GradientTexture(vector=None, gradient_type='LINEAR', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.GradientTexture(vector=None, gradient_type='LINEAR', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -10413,30 +11228,31 @@ class GradientTexture(Node):
 
             Input sockets
             -------------
-            - vector : Vector 
+                vector : Vector
     
 
             Parameters
             ----------
-            - gradient_type : 'LINEAR' in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE',
-              'RADIAL') 
+                gradient_type : str (default = 'LINEAR') in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - color : Color 
-    - fac   : Float 
+        Output sockets
+        --------------
+            color : Color
+                - fac : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Texture Gradient : Static method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Gradient : Static method
+            
     """
 
     def __init__(self, vector=None, gradient_type='LINEAR', label=None):
@@ -10469,20 +11285,24 @@ class GradientTexture(Node):
 
 class MagicTexture(Node):
 
-    """Class MagicTexture
+    """
+
+    Node MagicTexture
+    -----------------
+        > Geometry node name: Magic Texture<br>
+          Blender type: Magic Texture
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Magic Texture' 
-    | Blender type:  ShaderNodeTexMagic 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_depth=2, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_depth=2, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -10491,31 +11311,33 @@ class MagicTexture(Node):
 
             Input sockets
             -------------
-            - vector     : Vector 
-            - scale      : Float 
-            - distortion : Float 
+                vector : Vector
+                    - scale : Float
+                    - distortion : Float
     
 
             Parameters
             ----------
-            - turbulence_depth : 2 int 
+                turbulence_depth : int (default = 2)
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - color : Color 
-    - fac   : Float 
+        Output sockets
+        --------------
+            color : Color
+                - fac : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Texture Magic : Static method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Magic : Static method
+            
     """
 
     def __init__(self, vector=None, scale=None, distortion=None, turbulence_depth=2, label=None):
@@ -10550,21 +11372,24 @@ class MagicTexture(Node):
 
 class MusgraveTexture(Node):
 
-    """Class MusgraveTexture
+    """
+
+    Node MusgraveTexture
+    --------------------
+        > Geometry node name: Musgrave Texture<br>
+          Blender type: Musgrave Texture
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Musgrave Texture' 
-    | Blender type:  ShaderNodeTexMusgrave 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None,
-        offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -10573,36 +11398,38 @@ class MusgraveTexture(Node):
 
             Input sockets
             -------------
-            - vector     : Vector 
-            - w          : Float 
-            - scale      : Float 
-            - detail     : Float 
-            - dimension  : Float 
-            - lacunarity : Float 
-            - offset     : Float 
-            - gain       : Float 
+                vector : Vector
+                    - w : Float
+                    - scale : Float
+                    - detail : Float
+                    - dimension : Float
+                    - lacunarity : Float
+                    - offset : Float
+                    - gain : Float
     
 
             Parameters
             ----------
-            - musgrave_dimensions : '3D' in ('1D', '2D', '3D', '4D') 
-            - musgrave_type       : 'FBM' in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
+                musgrave_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
+                    - musgrave_type : str (default = 'FBM') in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - fac : Float 
+        Output sockets
+        --------------
+            fac : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Texture Musgrave : Static method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Musgrave : Static method
+            
     """
 
     def __init__(self, vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM', label=None):
@@ -10650,21 +11477,24 @@ class MusgraveTexture(Node):
 
 class NoiseTexture(Node):
 
-    """Class NoiseTexture
+    """
+
+    Node NoiseTexture
+    -----------------
+        > Geometry node name: Noise Texture<br>
+          Blender type: Noise Texture
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Noise Texture' 
-    | Blender type:  ShaderNodeTexNoise 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None,
-        noise_dimensions='3D', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -10673,34 +11503,36 @@ class NoiseTexture(Node):
 
             Input sockets
             -------------
-            - vector     : Vector 
-            - w          : Float 
-            - scale      : Float 
-            - detail     : Float 
-            - roughness  : Float 
-            - distortion : Float 
+                vector : Vector
+                    - w : Float
+                    - scale : Float
+                    - detail : Float
+                    - roughness : Float
+                    - distortion : Float
     
 
             Parameters
             ----------
-            - noise_dimensions : '3D' in ('1D', '2D', '3D', '4D') 
+                noise_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - fac   : Float 
-    - color : Color 
+        Output sockets
+        --------------
+            fac : Float
+                - color : Color
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Texture Noise : Static method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Noise : Static method
+            
     """
 
     def __init__(self, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D', label=None):
@@ -10738,21 +11570,24 @@ class NoiseTexture(Node):
 
 class VoronoiTexture(Node):
 
-    """Class VoronoiTexture
+    """
+
+    Node VoronoiTexture
+    -------------------
+        > Geometry node name: Voronoi Texture<br>
+          Blender type: Voronoi Texture
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Voronoi Texture' 
-    | Blender type:  ShaderNodeTexVoronoi 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None,
-        distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -10761,39 +11596,41 @@ class VoronoiTexture(Node):
 
             Input sockets
             -------------
-            - vector     : Vector 
-            - w          : Float 
-            - scale      : Float 
-            - smoothness : Float 
-            - exponent   : Float 
-            - randomness : Float 
+                vector : Vector
+                    - w : Float
+                    - scale : Float
+                    - smoothness : Float
+                    - exponent : Float
+                    - randomness : Float
     
 
             Parameters
             ----------
-            - distance           : 'EUCLIDEAN' in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI') 
-            - feature            : 'F1' in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS') 
-            - voronoi_dimensions : '3D' in ('1D', '2D', '3D', '4D') 
+                distance : str (default = 'EUCLIDEAN') in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
+                    - feature : str (default = 'F1') in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
+                    - voronoi_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - distance : Float 
-    - color    : Color 
-    - position : Vector 
-    - w        : Float 
-    - radius   : Float 
+        Output sockets
+        --------------
+            distance : Float
+                - color : Color
+                - position : Vector
+                - w : Float
+                - radius : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Texture Voronoi : Static method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Voronoi : Static method
+            
     """
 
     def __init__(self, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D', label=None):
@@ -10852,21 +11689,24 @@ class VoronoiTexture(Node):
 
 class WaveTexture(Node):
 
-    """Class WaveTexture
+    """
+
+    Node WaveTexture
+    ----------------
+        > Geometry node name: Wave Texture<br>
+          Blender type: Wave Texture
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Wave Texture' 
-    | Blender type:  ShaderNodeTexWave 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None,
-        phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS', label=None)
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -10875,38 +11715,40 @@ class WaveTexture(Node):
 
             Input sockets
             -------------
-            - vector           : Vector 
-            - scale            : Float 
-            - distortion       : Float 
-            - detail           : Float 
-            - detail_scale     : Float 
-            - detail_roughness : Float 
-            - phase_offset     : Float 
+                vector : Vector
+                    - scale : Float
+                    - distortion : Float
+                    - detail : Float
+                    - detail_scale : Float
+                    - detail_roughness : Float
+                    - phase_offset : Float
     
 
             Parameters
             ----------
-            - bands_direction : 'X' in ('X', 'Y', 'Z', 'DIAGONAL') 
-            - rings_direction : 'X' in ('X', 'Y', 'Z', 'SPHERICAL') 
-            - wave_profile    : 'SIN' in ('SIN', 'SAW', 'TRI') 
-            - wave_type       : 'BANDS' in ('BANDS', 'RINGS') 
+                bands_direction : str (default = 'X') in ('X', 'Y', 'Z', 'DIAGONAL')
+                    - rings_direction : str (default = 'X') in ('X', 'Y', 'Z', 'SPHERICAL')
+                    - wave_profile : str (default = 'SIN') in ('SIN', 'SAW', 'TRI')
+                    - wave_type : str (default = 'BANDS') in ('BANDS', 'RINGS')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - color : Color 
-    - fac   : Float 
+        Output sockets
+        --------------
+            color : Color
+                - fac : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Texture Wave : Static method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name Wave : Static method
+            
     """
 
     def __init__(self, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS', label=None):
@@ -10972,20 +11814,24 @@ class WaveTexture(Node):
 
 class WhiteNoiseTexture(Node):
 
-    """Class WhiteNoiseTexture
+    """
+
+    Node WhiteNoiseTexture
+    ----------------------
+        > Geometry node name: White Noise Texture<br>
+          Blender type: White Noise Texture
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'White Noise Texture' 
-    | Blender type:  ShaderNodeTexWhiteNoise 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -10994,30 +11840,32 @@ class WhiteNoiseTexture(Node):
 
             Input sockets
             -------------
-            - vector : Vector 
-            - w      : Float 
+                vector : Vector
+                    - w : Float
     
 
             Parameters
             ----------
-            - noise_dimensions : '3D' in ('1D', '2D', '3D', '4D') 
+                noise_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - value : Float 
-    - color : Color 
+        Output sockets
+        --------------
+            value : Float
+                - color : Color
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Texture WhiteNoise : Static method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name WhiteNoise : Static method
+            
     """
 
     def __init__(self, vector=None, w=None, noise_dimensions='3D', label=None):
@@ -11051,20 +11899,24 @@ class WhiteNoiseTexture(Node):
 
 class Colorramp(Node):
 
-    """Class Colorramp
+    """
+
+    Node Colorramp
+    --------------
+        > Geometry node name: ColorRamp<br>
+          Blender type: ColorRamp
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'ColorRamp' 
-    | Blender type:  ShaderNodeValToRGB 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Colorramp(fac=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Colorramp(fac=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -11073,24 +11925,26 @@ class Colorramp(Node):
 
             Input sockets
             -------------
-            - fac : Float 
+                fac : Float
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - color : Color 
-    - alpha : Float 
+        Output sockets
+        --------------
+            color : Color
+                - alpha : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Float color_ramp : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name color_ramp : Method
+            
     """
 
     def __init__(self, fac=None, label=None):
@@ -11111,20 +11965,24 @@ class Colorramp(Node):
 
 class Value(Node):
 
-    """Class Value
+    """
+
+    Node Value
+    ----------
+        > Geometry node name: Value<br>
+          Blender type: Value
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Value' 
-    | Blender type:  ShaderNodeValue 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.Value(label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.Value(label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -11133,12 +11991,12 @@ class Value(Node):
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - value : Float 
+        Output sockets
+        --------------
+            value : Float
     """
 
     def __init__(self, label=None):
@@ -11154,20 +12012,24 @@ class Value(Node):
 
 class VectorCurves(Node):
 
-    """Class VectorCurves
+    """
+
+    Node VectorCurves
+    -----------------
+        > Geometry node name: Vector Curves<br>
+          Blender type: Vector Curves
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Vector Curves' 
-    | Blender type:  ShaderNodeVectorCurve 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.VectorCurves(fac=None, vector=None, label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.VectorCurves(fac=None, vector=None, label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -11176,24 +12038,26 @@ class VectorCurves(Node):
 
             Input sockets
             -------------
-            - fac    : Float 
-            - vector : Vector 
+                fac : Float
+                    - vector : Vector
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - vector : Vector 
+        Output sockets
+        --------------
+            vector : Vector
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Vector curves : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name curves : Method
+            
     """
 
     def __init__(self, fac=None, vector=None, label=None):
@@ -11214,20 +12078,24 @@ class VectorCurves(Node):
 
 class VectorMath(Node):
 
-    """Class VectorMath
+    """
+
+    Node VectorMath
+    ---------------
+        > Geometry node name: Vector Math<br>
+          Blender type: Vector Math
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Vector Math' 
-    | Blender type:  ShaderNodeVectorMath 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, operation='ADD', label=None)
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, operation='ADD', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -11236,87 +12104,87 @@ class VectorMath(Node):
 
             Input sockets
             -------------
-            - vector0 : Vector 
-            - vector1 : Vector 
-            - vector2 : Vector 
-            - scale   : Float 
+                vector0 : Vector
+                    - vector1 : Vector
+                    - vector2 : Vector
+                    - scale : Float
     
 
             Parameters
             ----------
-            - operation : 'ADD' in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT',
-              'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE',
-              'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT')
+                operation : str (default = 'ADD') in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - vector : Vector 
-    - value  : Float 
+        Output sockets
+        --------------
+            vector : Vector
+                - value : Float
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Vector absolute               : Method 
-    - Vector add                    : Method 
-    - Vector ceil                   : Method 
-    - Vector cos                    : Method 
-    - Vector cross                  : Method 
-    - Vector distance               : Method 
-    - Vector divide                 : Method 
-    - Vector dot                    : Method 
-    - Vector faceforward            : Method 
-    - Vector floor                  : Method 
-    - Vector fraction               : Method 
-    - Vector length                 : Method 
-    - Vector max                    : Method 
-    - Vector min                    : Method 
-    - Vector modulo                 : Method 
-    - Vector multiply               : Method 
-    - Vector multiply_add           : Method 
-    - Vector normalize              : Method 
-    - Vector project                : Method 
-    - Vector reflect                : Method 
-    - Vector refract                : Method 
-    - Vector scale                  : Method 
-    - Vector sin                    : Method 
-    - Vector snap                   : Method 
-    - Vector subtract               : Method 
-    - Vector tan                    : Method 
-    - Vector wrap                   : Method 
-    - functions cross               : Function 
-    - functions distance            : Function 
-    - functions dot                 : Function 
-    - functions faceforward         : Function 
-    - functions fraction            : Function 
-    - functions length              : Function 
-    - functions normalize           : Function 
-    - functions project             : Function 
-    - functions reflect             : Function 
-    - functions refract             : Function 
-    - functions scale               : Function 
-    - functions vector_absolute     : Function 
-    - functions vector_add          : Function 
-    - functions vector_ceil         : Function 
-    - functions vector_cos          : Function 
-    - functions vector_divide       : Function 
-    - functions vector_floor        : Function 
-    - functions vector_max          : Function 
-    - functions vector_min          : Function 
-    - functions vector_modulo       : Function 
-    - functions vector_multiply     : Function 
-    - functions vector_multiply_add : Function 
-    - functions vector_sin          : Function 
-    - functions vector_snap         : Function 
-    - functions vector_subtract     : Function 
-    - functions vector_tan          : Function 
-    - functions vector_wrap         : Function 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name absolute : Method
+                - class_name add : Method
+                - class_name ceil : Method
+                - class_name cos : Method
+                - class_name cross : Method
+                - class_name distance : Method
+                - class_name divide : Method
+                - class_name dot : Method
+                - class_name faceforward : Method
+                - class_name floor : Method
+                - class_name fraction : Method
+                - class_name length : Method
+                - class_name max : Method
+                - class_name min : Method
+                - class_name modulo : Method
+                - class_name multiply : Method
+                - class_name multiply_add : Method
+                - class_name normalize : Method
+                - class_name project : Method
+                - class_name reflect : Method
+                - class_name refract : Method
+                - class_name scale : Method
+                - class_name sin : Method
+                - class_name snap : Method
+                - class_name subtract : Method
+                - class_name tan : Method
+                - class_name wrap : Method
+                - class_name cross : Function
+                - class_name distance : Function
+                - class_name dot : Function
+                - class_name faceforward : Function
+                - class_name fraction : Function
+                - class_name length : Function
+                - class_name normalize : Function
+                - class_name project : Function
+                - class_name reflect : Function
+                - class_name refract : Function
+                - class_name scale : Function
+                - class_name vector_absolute : Function
+                - class_name vector_add : Function
+                - class_name vector_ceil : Function
+                - class_name vector_cos : Function
+                - class_name vector_divide : Function
+                - class_name vector_floor : Function
+                - class_name vector_max : Function
+                - class_name vector_min : Function
+                - class_name vector_modulo : Function
+                - class_name vector_multiply : Function
+                - class_name vector_multiply_add : Function
+                - class_name vector_sin : Function
+                - class_name vector_snap : Function
+                - class_name vector_subtract : Function
+                - class_name vector_tan : Function
+                - class_name vector_wrap : Function
+                  
     """
 
     def __init__(self, vector0=None, vector1=None, vector2=None, scale=None, operation='ADD', label=None):
@@ -11352,21 +12220,24 @@ class VectorMath(Node):
 
 class VectorRotate(Node):
 
-    """Class VectorRotate
+    """
+
+    Node VectorRotate
+    -----------------
+        > Geometry node name: Vector Rotate<br>
+          Blender type: Vector Rotate
+          
+        <sub>go to index</sub>
     
 
-    | Geometry node name: 'Vector Rotate' 
-    | Blender type:  ShaderNodeVectorRotate 
-    Index 
-    
-
-    Initialization
-    ==============
-    
-
-        from geonodes import nodes 
-        node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotation=None, invert=False,
-        rotation_type='AXIS_ANGLE', label=None) 
+        Initialization
+        --------------
+            ```python
+            from geonodes import nodes
+            node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', label=None)
+            ```
+            
+            
     
 
         Arguments
@@ -11375,33 +12246,35 @@ class VectorRotate(Node):
 
             Input sockets
             -------------
-            - vector   : Vector 
-            - center   : Vector 
-            - axis     : Vector 
-            - angle    : Float 
-            - rotation : Vector 
+                vector : Vector
+                    - center : Vector
+                    - axis : Vector
+                    - angle : Float
+                    - rotation : Vector
     
 
             Parameters
             ----------
-            - invert        : False bool 
-            - rotation_type : 'AXIS_ANGLE' in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ') 
+                invert : bool (default = False)
+                    - rotation_type : str (default = 'AXIS_ANGLE') in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
     
 
             Node label
             ----------
-            - label : Geometry node label 
+                - label : Geometry node display label (default=None)
     
 
-    Output sockets
-    ==============
-    - vector : Vector 
+        Output sockets
+        --------------
+            vector : Vector
     
 
-    Data sockets
-    ============
-    | Data socket classes implementing this node 
-    - Vector rotate : Method 
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+            class_name rotate : Method
+            
     """
 
     def __init__(self, vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', label=None):

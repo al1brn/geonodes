@@ -1,13 +1,12 @@
 
-# Class EndpointSelection
+# Node EndpointSelection
 
-> Geometry node name: _'Endpoint Selection'_<br>Blender type:  **GeometryNodeCurveEndpointSelection**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/endpoint_selection.html)<br>
+  Blender type: [Endpoint Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveEndpointSelection.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,42 +14,27 @@ node = nodes.EndpointSelection(start_size=None, end_size=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+start_size : Integer
+- end_size : Integer
 
+### Node label
 
-- **start_size** : _Integer_
-- **end_size** : _Integer_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **selection** : _Boolean_
-
-
+selection : Boolean
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Spline](../sockets/Spline.md) [capture_endpoint_selection](../sockets/Spline.md#capture_endpoint_selection) : Capture attribute
-- [Spline](../sockets/Spline.md) [endpoint_selection](../sockets/Spline.md#endpoint_selection) : Attribute
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Spline) [capture_endpoint_selection](section:Data socket Spline/capture_endpoint_selection) : Capture attribute
+- [class_name](section:Data socket Spline) [endpoint_selection](section:Data socket Spline/endpoint_selection) : Attribute
+  

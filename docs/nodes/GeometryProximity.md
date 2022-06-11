@@ -1,13 +1,12 @@
 
-# Class GeometryProximity
+# Node GeometryProximity
 
-> Geometry node name: _'Geometry Proximity'_<br>Blender type:  **GeometryNodeProximity**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/geometry_proximity.html)<br>
+  Blender type: [Geometry Proximity](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,50 +14,31 @@ node = nodes.GeometryProximity(target=None, source_position=None, target_element
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+target : Geometry
+- source_position : Vector
 
+### Parameters
 
-- **target** : _Geometry_
-- **source_position** : _Vector_
+target_element : str (default = 'FACES') in ('POINTS', 'EDGES', 'FACES')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **target_element** : _'FACES'_ in ('POINTS', 'EDGES', 'FACES')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **position** : _Vector_
-- **distance** : _Float_
-
-
+position : Vector
+- distance : Float
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [proximity](../sockets/Geometry.md#proximity) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [proximity](section:Data socket Geometry/proximity) : Method
 

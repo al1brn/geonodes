@@ -1,13 +1,12 @@
 
-# Class Index
+# Node Index
 
-> Geometry node name: _'Index'_<br>Blender type:  **GeometryNodeInputIndex**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/index.html)<br>
+  Blender type: [Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,36 +14,25 @@ node = nodes.Index(label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Node label
+### Node label
 
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **index** : _Integer_
-
-
+index : Integer
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [capture_index](../sockets/Geometry.md#capture_index) : Capture attribute
-- [Geometry](../sockets/Geometry.md) [index](../sockets/Geometry.md#index) : Attribute
-- [Instances](../sockets/Instances.md) [instance_index](../sockets/Instances.md#instance_index) : Attribute
-- [Spline](../sockets/Spline.md) [spline_index](../sockets/Spline.md#spline_index) : Attribute
-- [Spline](../sockets/Spline.md) [spline_position](../sockets/Spline.md#spline_position) : Attribute
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [capture_index](section:Data socket Geometry/capture_index) : Capture attribute
+- [class_name](section:Data socket Geometry) [index](section:Data socket Geometry/index) : Attribute
+- [class_name](section:Data socket Instances) [instance_index](section:Data socket Instances/instance_index) : Attribute
+- [class_name](section:Data socket Spline) [spline_index](section:Data socket Spline/spline_index) : Attribute
+- [class_name](section:Data socket Spline) [spline_position](section:Data socket Spline/spline_position) : Attribute
+  

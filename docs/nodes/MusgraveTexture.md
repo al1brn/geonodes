@@ -1,13 +1,12 @@
 
-# Class MusgraveTexture
+# Node MusgraveTexture
 
-> Geometry node name: _'Musgrave Texture'_<br>Blender type:  **ShaderNodeTexMusgrave**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Musgrave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/musgrave_texture.html)<br>
+  Blender type: [Musgrave Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMusgrave.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,56 +14,37 @@ node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimen
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+vector : Vector
+- w : Float
+- scale : Float
+- detail : Float
+- dimension : Float
+- lacunarity : Float
+- offset : Float
+- gain : Float
 
+### Parameters
 
-- **vector** : _Vector_
-- **w** : _Float_
-- **scale** : _Float_
-- **detail** : _Float_
-- **dimension** : _Float_
-- **lacunarity** : _Float_
-- **offset** : _Float_
-- **gain** : _Float_
+musgrave_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
+- musgrave_type : str (default = 'FBM') in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **musgrave_dimensions** : _'3D'_ in ('1D', '2D', '3D', '4D')
-- **musgrave_type** : _'FBM'_ in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **fac** : _Float_
-
-
+fac : Float
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Texture](../sockets/Texture.md) [Musgrave](../sockets/Texture.md#musgrave) : Static method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Texture) [Musgrave](section:Data socket Texture/Musgrave) : Static method
 

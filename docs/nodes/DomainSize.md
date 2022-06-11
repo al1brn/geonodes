@@ -1,13 +1,12 @@
 
-# Class DomainSize
+# Node DomainSize
 
-> Geometry node name: _'Domain Size'_<br>Blender type:  **GeometryNodeAttributeDomainSize**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/domain_size.html)<br>
+  Blender type: [Domain Size](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,53 +14,34 @@ node = nodes.DomainSize(geometry=None, component='MESH', label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
 
+### Parameters
 
-- **geometry** : _Geometry_
+component : str (default = 'MESH') in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **component** : _'MESH'_ in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **point_count** : _Integer_
-- **edge_count** : _Integer_
-- **face_count** : _Integer_
-- **face_corner_count** : _Integer_
-- **spline_count** : _Integer_
-- **instance_count** : _Integer_
-
-
+point_count : Integer
+- edge_count : Integer
+- face_count : Integer
+- face_corner_count : Integer
+- spline_count : Integer
+- instance_count : Integer
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [attribute_domain_size](../sockets/Geometry.md#attribute_domain_size) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [attribute_domain_size](section:Data socket Geometry/attribute_domain_size) : Method
 

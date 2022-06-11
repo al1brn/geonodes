@@ -1,13 +1,12 @@
 
-# Class SetShadeSmooth
+# Node SetShadeSmooth
 
-> Geometry node name: _'Set Shade Smooth'_<br>Blender type:  **GeometryNodeSetShadeSmooth**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_shade_smooth.html)<br>
+  Blender type: [Set Shade Smooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,42 +14,27 @@ node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, la
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+geometry : Geometry
+- selection : Boolean
+- shade_smooth : Boolean
 
+### Node label
 
-- **geometry** : _Geometry_
-- **selection** : _Boolean_
-- **shade_smooth** : _Boolean_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **geometry** : _Geometry_
-
-
+geometry : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Geometry](../sockets/Geometry.md) [set_shade_smooth](../sockets/Geometry.md#set_shade_smooth) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Geometry) [set_shade_smooth](section:Data socket Geometry/set_shade_smooth) : Method
 

@@ -1,13 +1,12 @@
 
-# Class CurveCircle
+# Node CurveCircle
 
-> Geometry node name: _'Curve Circle'_<br>Blender type:  **GeometryNodeCurvePrimitiveCircle**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_circle.html)<br>
+  Blender type: [Curve Circle](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,53 +14,34 @@ node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=No
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+resolution : Integer
+- point_1 : Vector
+- point_2 : Vector
+- point_3 : Vector
+- radius : Float
 
+### Parameters
 
-- **resolution** : _Integer_
-- **point_1** : _Vector_
-- **point_2** : _Vector_
-- **point_3** : _Vector_
-- **radius** : _Float_
+mode : str (default = 'RADIUS') in ('POINTS', 'RADIUS')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **mode** : _'RADIUS'_ in ('POINTS', 'RADIUS')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **curve** : _Curve_
-- **center** : _Vector_
-
-
+curve : Curve
+- center : Vector
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Curve](../sockets/Curve.md) [Circle](../sockets/Curve.md#circle) : Constructor
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Curve) [Circle](section:Data socket Curve/Circle) : Constructor
 

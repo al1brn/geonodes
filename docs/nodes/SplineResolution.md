@@ -1,13 +1,12 @@
 
-# Class SplineResolution
+# Node SplineResolution
 
-> Geometry node name: _'Spline Resolution'_<br>Blender type:  **GeometryNodeInputSplineResolution**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_resolution.html)<br>
+  Blender type: [Spline Resolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineResolution.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,33 +14,22 @@ node = nodes.SplineResolution(label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Node label
+### Node label
 
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **resolution** : _Integer_
-
-
+resolution : Integer
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Spline](../sockets/Spline.md) [capture_resolution](../sockets/Spline.md#capture_resolution) : Capture attribute
-- [Spline](../sockets/Spline.md) [resolution](../sockets/Spline.md#resolution) : Attribute
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Spline) [capture_resolution](section:Data socket Spline/capture_resolution) : Capture attribute
+- [class_name](section:Data socket Spline) [resolution](section:Data socket Spline/resolution) : Attribute
+  

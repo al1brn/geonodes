@@ -1,13 +1,12 @@
 
-# Class PointsToVolume
+# Node PointsToVolume
 
-> Geometry node name: _'Points to Volume'_<br>Blender type:  **GeometryNodePointsToVolume**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/points_to_volume.html)<br>
+  Blender type: [Points to Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,52 +14,33 @@ node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_am
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+points : Points
+- density : Float
+- voxel_size : Float
+- voxel_amount : Float
+- radius : Float
 
+### Parameters
 
-- **points** : _Points_
-- **density** : _Float_
-- **voxel_size** : _Float_
-- **voxel_amount** : _Float_
-- **radius** : _Float_
+resolution_mode : str (default = 'VOXEL_AMOUNT') in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **resolution_mode** : _'VOXEL_AMOUNT'_ in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **volume** : _Volume_
-
-
+volume : Volume
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Points](../sockets/Points.md) [to_volume](../sockets/Points.md#to_volume) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Points) [to_volume](section:Data socket Points/to_volume) : Method
 

@@ -1,13 +1,12 @@
 
-# Class DualMesh
+# Node DualMesh
 
-> Geometry node name: _'Dual Mesh'_<br>Blender type:  **GeometryNodeDualMesh**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/dual_mesh.html)<br>
+  Blender type: [Dual Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeDualMesh.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,41 +14,26 @@ node = nodes.DualMesh(mesh=None, keep_boundaries=None, label=None)
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+mesh : Mesh
+- keep_boundaries : Boolean
 
+### Node label
 
-- **mesh** : _Mesh_
-- **keep_boundaries** : _Boolean_
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Output sockets
 
-
-
-- **dual_mesh** : _Geometry_
-
-
+dual_mesh : Geometry
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Mesh](../sockets/Mesh.md) [dual](../sockets/Mesh.md#dual) : Method
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Mesh) [dual](section:Data socket Mesh/dual) : Method
 

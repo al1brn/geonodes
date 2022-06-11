@@ -1,13 +1,12 @@
 
-# Class AccumulateField
+# Node AccumulateField
 
-> Geometry node name: _'Accumulate Field'_<br>Blender type:  **GeometryNodeAccumulateField**
-
-
-[Index](/docs/index.md)
+> Geometry node name: [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/accumulate_field.html)<br>
+  Blender type: [Accumulate Field](https://docs.blender.org/api/current/bpy.types.GeometryNodeAccumulateField.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
 
 ## Initialization
-
 
 ```python
 from geonodes import nodes
@@ -15,64 +14,43 @@ node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', do
 ```
 
 
-### Arguments
+
+## Arguments
 
 
-#### Input sockets
+### Input sockets
 
+value : data_type dependant
+- group_index : Integer
 
+### Parameters
 
-- **value** : **data_type** dependant
-- **group_index** : _Integer_
+data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR')
+- domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
+### Node label
 
-
-#### Parameters
-
-
-
-- **data_type** : _'FLOAT'_ in ('FLOAT', 'INT', 'FLOAT_VECTOR')
-- **domain** : _'POINT'_ in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
-
-
-
-#### Node label
-
-
-
-- **label** : Geometry node label
-
-
+- label : Geometry node display label (default=None)
 
 ## Data type dependant sockets
 
-
-
-- Driving parameter : **data_type** in ('FLOAT', 'INT', 'FLOAT_VECTOR')
-- Input sockets : value
-- Output sockets : leading trailing total
-
-
+- Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR')
+- Input sockets  : ['value']
+- Output sockets : ['leading', 'trailing', 'total']   
+  
+  
 
 ## Output sockets
 
-
-
-- **leading** : **data_type** dependant
-- **trailing** : **data_type** dependant
-- **total** : **data_type** dependant
-
-
+leading : data_type dependant
+- trailing : data_type dependant
+- total : data_type dependant
 
 ## Data sockets
 
-> Data socket classes implementing this node
-
-
-
-
-- [Float](../sockets/Float.md) [accumulate_field](../sockets/Float.md#accumulate_field) : Method
-- [Integer](../sockets/Integer.md) [accumulate_field](../sockets/Integer.md#accumulate_field) : Method
-- [Vector](../sockets/Vector.md) [accumulate_field](../sockets/Vector.md#accumulate_field) : Method
-
-
+> Data socket classes implementing this node.
+  
+[class_name](section:Data socket Float) [accumulate_field](section:Data socket Float/accumulate_field) : Method
+- [class_name](section:Data socket Integer) [accumulate_field](section:Data socket Integer/accumulate_field) : Method
+- [class_name](section:Data socket Vector) [accumulate_field](section:Data socket Vector/accumulate_field) : Method
+  
