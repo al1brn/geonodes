@@ -20,14 +20,14 @@ node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, 
 
 ### Input sockets
 
-curve : Curve
+- curve : Curve
 - selection : Boolean
 - count : Integer
 - length : Float
 
 ### Parameters
 
-mode : str (default = 'COUNT') in ('EVALUATED', 'COUNT', 'LENGTH')
+- mode : str (default = 'COUNT') in ('EVALUATED', 'COUNT', 'LENGTH')
 
 ### Node label
 
@@ -35,11 +35,12 @@ mode : str (default = 'COUNT') in ('EVALUATED', 'COUNT', 'LENGTH')
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[resample](/docs/sockets/Curve.md#resample) : Method
-
+  
+- [Curve](/docs/sockets/Curve.md).[resample](/docs/sockets/Curve.md#resample) : Method
+  

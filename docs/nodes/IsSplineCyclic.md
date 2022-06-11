@@ -24,12 +24,13 @@ node = nodes.IsSplineCyclic(label=None)
 
 ## Output sockets
 
-cyclic : Boolean
+- cyclic : Boolean
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Spline](/docs/sockets/Spline.md).[capture_cyclic](/docs/sockets/Spline.md#capture_cyclic) : Capture attribute
+  
+- [Spline](/docs/sockets/Spline.md).[capture_cyclic](/docs/sockets/Spline.md#capture_cyclic) : Capture attribute
 - [Spline](/docs/sockets/Spline.md).[cyclic](/docs/sockets/Spline.md#cyclic) : Attribute
   

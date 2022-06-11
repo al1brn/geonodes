@@ -24,7 +24,7 @@ node = nodes.EdgeVertices(label=None)
 
 ## Output sockets
 
-vertex_index_1 : Integer
+- vertex_index_1 : Integer
 - vertex_index_2 : Integer
 - position_1 : Vector
 - position_2 : Vector
@@ -33,7 +33,8 @@ vertex_index_1 : Integer
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[capture_edge_vertices](/docs/sockets/Mesh.md#capture_edge_vertices) : Capture attribute
+  
+- [Mesh](/docs/sockets/Mesh.md).[capture_edge_vertices](/docs/sockets/Mesh.md#capture_edge_vertices) : Capture attribute
 - [Mesh](/docs/sockets/Mesh.md).[edge_vertices_index1](/docs/sockets/Mesh.md#edge_vertices_index1) : Attribute
 - [Mesh](/docs/sockets/Mesh.md).[edge_vertices_index2](/docs/sockets/Mesh.md#edge_vertices_index2) : Attribute
 - [Mesh](/docs/sockets/Mesh.md).[edge_vertices_position1](/docs/sockets/Mesh.md#edge_vertices_position1) : Attribute

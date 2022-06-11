@@ -20,14 +20,14 @@ node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tole
 
 ### Input sockets
 
-mesh_1 : Geometry
+- mesh_1 : Geometry
 - mesh_2 : *Geometry
 - self_intersection : Boolean
 - hole_tolerant : Boolean
 
 ### Parameters
 
-operation : str (default = 'DIFFERENCE') in ('INTERSECT', 'UNION', 'DIFFERENCE')
+- operation : str (default = 'DIFFERENCE') in ('INTERSECT', 'UNION', 'DIFFERENCE')
 
 ### Node label
 
@@ -35,13 +35,14 @@ operation : str (default = 'DIFFERENCE') in ('INTERSECT', 'UNION', 'DIFFERENCE')
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[difference](/docs/sockets/Mesh.md#difference) : Method
+  
+- [Mesh](/docs/sockets/Mesh.md).[difference](/docs/sockets/Mesh.md#difference) : Method
 - [Mesh](/docs/sockets/Mesh.md).[intersect](/docs/sockets/Mesh.md#intersect) : Method
 - [Mesh](/docs/sockets/Mesh.md).[union](/docs/sockets/Mesh.md#union) : Method
   

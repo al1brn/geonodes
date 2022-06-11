@@ -24,12 +24,13 @@ node = nodes.FaceArea(label=None)
 
 ## Output sockets
 
-area : Float
+- area : Float
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[capture_face_area](/docs/sockets/Mesh.md#capture_face_area) : Capture attribute
+  
+- [Mesh](/docs/sockets/Mesh.md).[capture_face_area](/docs/sockets/Mesh.md#capture_face_area) : Capture attribute
 - [Mesh](/docs/sockets/Mesh.md).[face_area](/docs/sockets/Mesh.md#face_area) : Attribute
   

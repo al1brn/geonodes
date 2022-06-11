@@ -20,12 +20,12 @@ node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', label
 
 ### Input sockets
 
-vector : Vector
+- vector : Vector
 - w : Float
 
 ### Parameters
 
-noise_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
+- noise_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
 
 ### Node label
 
@@ -33,12 +33,13 @@ noise_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
 
 ## Output sockets
 
-value : Float
+- value : Float
 - color : Color
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Texture](/docs/sockets/Texture.md).[WhiteNoise](/docs/sockets/Texture.md#whitenoise) : Static method
-
+  
+- [Texture](/docs/sockets/Texture.md).[WhiteNoise](/docs/sockets/Texture.md#whitenoise) : Static method
+  

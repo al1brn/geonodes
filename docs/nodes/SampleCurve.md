@@ -20,13 +20,13 @@ node = nodes.SampleCurve(curve=None, factor=None, length=None, mode='LENGTH', la
 
 ### Input sockets
 
-curve : Curve
+- curve : Curve
 - factor : Float
 - length : Float
 
 ### Parameters
 
-mode : str (default = 'LENGTH') in ('FACTOR', 'LENGTH')
+- mode : str (default = 'LENGTH') in ('FACTOR', 'LENGTH')
 
 ### Node label
 
@@ -34,7 +34,7 @@ mode : str (default = 'LENGTH') in ('FACTOR', 'LENGTH')
 
 ## Output sockets
 
-position : Vector
+- position : Vector
 - tangent : Vector
 - normal : Vector
 
@@ -42,5 +42,6 @@ position : Vector
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[sample](/docs/sockets/Curve.md#sample) : Method
-
+  
+- [Curve](/docs/sockets/Curve.md).[sample](/docs/sockets/Curve.md#sample) : Method
+  

@@ -20,7 +20,7 @@ node = nodes.InstancesToPoints(instances=None, selection=None, position=None, ra
 
 ### Input sockets
 
-instances : Instances
+- instances : Instances
 - selection : Boolean
 - position : Vector
 - radius : Float
@@ -31,11 +31,12 @@ instances : Instances
 
 ## Output sockets
 
-points : Points
+- points : Points
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Instances](/docs/sockets/Instances.md).[to_points](/docs/sockets/Instances.md#to_points) : Method
-
+  
+- [Instances](/docs/sockets/Instances.md).[to_points](/docs/sockets/Instances.md#to_points) : Method
+  

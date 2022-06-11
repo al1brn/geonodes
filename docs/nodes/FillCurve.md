@@ -20,11 +20,11 @@ node = nodes.FillCurve(curve=None, mode='TRIANGLES', label=None)
 
 ### Input sockets
 
-curve : Curve
+- curve : Curve
 
 ### Parameters
 
-mode : str (default = 'TRIANGLES') in ('TRIANGLES', 'NGONS')
+- mode : str (default = 'TRIANGLES') in ('TRIANGLES', 'NGONS')
 
 ### Node label
 
@@ -32,11 +32,12 @@ mode : str (default = 'TRIANGLES') in ('TRIANGLES', 'NGONS')
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[fill](/docs/sockets/Curve.md#fill) : Method
-
+  
+- [Curve](/docs/sockets/Curve.md).[fill](/docs/sockets/Curve.md#fill) : Method
+  

@@ -20,7 +20,7 @@ node = nodes.BrickTexture(vector=None, color1=None, color2=None, mortar=None, sc
 
 ### Input sockets
 
-vector : Vector
+- vector : Vector
 - color1 : Color
 - color2 : Color
 - mortar : Color
@@ -33,7 +33,7 @@ vector : Vector
 
 ### Parameters
 
-offset : float (default = 0.5)
+- offset : float (default = 0.5)
 - offset_frequency : int (default = 2)
 - squash : float (default = 1.0)
 - squash_frequency : int (default = 2)
@@ -44,12 +44,13 @@ offset : float (default = 0.5)
 
 ## Output sockets
 
-color : Color
+- color : Color
 - fac : Float
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Texture](/docs/sockets/Texture.md).[Brick](/docs/sockets/Texture.md#brick) : Static method
-
+  
+- [Texture](/docs/sockets/Texture.md).[Brick](/docs/sockets/Texture.md#brick) : Static method
+  

@@ -20,13 +20,13 @@ node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X
 
 ### Input sockets
 
-rotation : Vector
+- rotation : Vector
 - factor : Float
 - vector : Vector
 
 ### Parameters
 
-axis : str (default = 'X') in ('X', 'Y', 'Z')
+- axis : str (default = 'X') in ('X', 'Y', 'Z')
 - pivot_axis : str (default = 'AUTO') in ('AUTO', 'X', 'Y', 'Z')
 
 ### Node label
@@ -35,12 +35,13 @@ axis : str (default = 'X') in ('X', 'Y', 'Z')
 
 ## Output sockets
 
-rotation : Vector
+- rotation : Vector
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Vector](/docs/sockets/Vector.md).[AlignToVector](/docs/sockets/Vector.md#aligntovector) : Constructor
+  
+- [Vector](/docs/sockets/Vector.md).[AlignToVector](/docs/sockets/Vector.md#aligntovector) : Constructor
 - [Vector](/docs/sockets/Vector.md).[align_to_vector](/docs/sockets/Vector.md#align_to_vector) : Method
   

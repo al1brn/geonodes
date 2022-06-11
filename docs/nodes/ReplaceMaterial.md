@@ -20,7 +20,7 @@ node = nodes.ReplaceMaterial(geometry=None, old=None, new=None, label=None)
 
 ### Input sockets
 
-geometry : Geometry
+- geometry : Geometry
 - old : Material
 - new : Material
 
@@ -30,11 +30,12 @@ geometry : Geometry
 
 ## Output sockets
 
-geometry : Geometry
+- geometry : Geometry
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[replace_material](/docs/sockets/Geometry.md#replace_material) : Method
-
+  
+- [Geometry](/docs/sockets/Geometry.md).[replace_material](/docs/sockets/Geometry.md#replace_material) : Method
+  

@@ -20,12 +20,12 @@ node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT', lab
 
 ### Input sockets
 
-geometry : Geometry
+- geometry : Geometry
 - selection : Boolean
 
 ### Parameters
 
-domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+- domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
 ### Node label
 
@@ -33,12 +33,13 @@ domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE
 
 ## Output sockets
 
-selection : Geometry
+- selection : Geometry
 - inverted : Geometry
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[components](/docs/sockets/Geometry.md#components) : Method
-
+  
+- [Geometry](/docs/sockets/Geometry.md).[components](/docs/sockets/Geometry.md#components) : Method
+  

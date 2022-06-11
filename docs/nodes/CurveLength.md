@@ -20,7 +20,7 @@ node = nodes.CurveLength(curve=None, label=None)
 
 ### Input sockets
 
-curve : Curve
+- curve : Curve
 
 ### Node label
 
@@ -28,11 +28,12 @@ curve : Curve
 
 ## Output sockets
 
-length : Float
+- length : Float
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[length](/docs/sockets/Curve.md#length) : Method
-
+  
+- [Curve](/docs/sockets/Curve.md).[length](/docs/sockets/Curve.md#length) : Method
+  

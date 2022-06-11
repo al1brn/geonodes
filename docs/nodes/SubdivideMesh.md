@@ -20,7 +20,7 @@ node = nodes.SubdivideMesh(mesh=None, level=None, label=None)
 
 ### Input sockets
 
-mesh : Mesh
+- mesh : Mesh
 - level : Integer
 
 ### Node label
@@ -29,11 +29,12 @@ mesh : Mesh
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[subdivide](/docs/sockets/Mesh.md#subdivide) : Method
-
+  
+- [Mesh](/docs/sockets/Mesh.md).[subdivide](/docs/sockets/Mesh.md#subdivide) : Method
+  

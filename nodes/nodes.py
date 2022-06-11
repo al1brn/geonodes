@@ -31,15 +31,15 @@ class AlignEulerToVector(Node):
 
             Input sockets
             -------------
-                rotation : Vector
-                    - factor : Float
-                    - vector : Vector
+                - rotation : Vector
+                - factor : Float
+                - vector : Vector
     
 
             Parameters
             ----------
-                axis : str (default = 'X') in ('X', 'Y', 'Z')
-                    - pivot_axis : str (default = 'AUTO') in ('AUTO', 'X', 'Y', 'Z')
+                - axis : str (default = 'X') in ('X', 'Y', 'Z')
+                - pivot_axis : str (default = 'AUTO') in ('AUTO', 'X', 'Y', 'Z')
     
 
             Node label
@@ -49,16 +49,17 @@ class AlignEulerToVector(Node):
 
         Output sockets
         --------------
-            rotation : Vector
+            - rotation : Vector
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Vector.AlignToVector : Constructor
-                - Vector.align_to_vector : Method
-                  
+              
+            - Vector.AlignToVector : Constructor
+            - Vector.align_to_vector : Method
+              
     """
 
     def __init__(self, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', label=None):
@@ -127,13 +128,13 @@ class BooleanMath(Node):
 
             Input sockets
             -------------
-                boolean0 : Boolean
-                    - boolean1 : Boolean
+                - boolean0 : Boolean
+                - boolean1 : Boolean
     
 
             Parameters
             ----------
-                operation : str (default = 'AND') in ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY')
+                - operation : str (default = 'AND') in ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY')
     
 
             Node label
@@ -143,23 +144,24 @@ class BooleanMath(Node):
 
         Output sockets
         --------------
-            boolean : Boolean
+            - boolean : Boolean
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Boolean.b_and : Method
-                - Boolean.b_not : Method
-                - Boolean.b_or : Method
-                - Boolean.imply : Method
-                - Boolean.nand : Method
-                - Boolean.nimply : Method
-                - Boolean.nor : Method
-                - Boolean.xnor : Method
-                - Boolean.xor : Method
-                  
+              
+            - Boolean.b_and : Method
+            - Boolean.b_not : Method
+            - Boolean.b_or : Method
+            - Boolean.imply : Method
+            - Boolean.nand : Method
+            - Boolean.nimply : Method
+            - Boolean.nor : Method
+            - Boolean.xnor : Method
+            - Boolean.xor : Method
+              
     """
 
     def __init__(self, boolean0=None, boolean1=None, operation='AND', label=None):
@@ -218,18 +220,18 @@ class Compare(Node):
 
             Input sockets
             -------------
-                a : data_type dependant
-                    - b : data_type dependant
-                    - c : Float
-                    - angle : Float
-                    - epsilon : Float
+                - a : data_type dependant
+                - b : data_type dependant
+                - c : Float
+                - angle : Float
+                - epsilon : Float
     
 
             Parameters
             ----------
-                data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')
-                    - mode : str (default = 'ELEMENT') in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
-                    - operation : str (default = 'GREATER_THAN') in ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL')
+                - data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')
+                - mode : str (default = 'ELEMENT') in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+                - operation : str (default = 'GREATER_THAN') in ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL')
     
 
             Node label
@@ -248,42 +250,43 @@ class Compare(Node):
 
         Output sockets
         --------------
-            result : Boolean
+            - result : Boolean
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Color.brighter : Method
-                - Color.darker : Method
-                - Color.equal : Method
-                - Color.not_equal : Method
-                - Float.equal : Method
-                - Float.greater_equal : Method
-                - Float.greater_than : Method
-                - Float.less_equal : Method
-                - Float.less_than : Method
-                - Float.not_equal : Method
-                - Integer.equal : Method
-                - Integer.greater_equal : Method
-                - Integer.greater_than : Method
-                - Integer.less_equal : Method
-                - Integer.less_than : Method
-                - Integer.not_equal : Method
-                - String.average : Method
-                - String.direction : Method
-                - String.dot_product : Method
-                - String.element : Method
-                - String.length : Method
-                - Vector.equal : Method
-                - Vector.greater_equal : Method
-                - Vector.greater_than : Method
-                - Vector.less_equal : Method
-                - Vector.less_than : Method
-                - Vector.not_equal : Method
-                - functions.compare : Function
-                  
+              
+            - Color.brighter : Method
+            - Color.darker : Method
+            - Color.equal : Method
+            - Color.not_equal : Method
+            - Float.equal : Method
+            - Float.greater_equal : Method
+            - Float.greater_than : Method
+            - Float.less_equal : Method
+            - Float.less_than : Method
+            - Float.not_equal : Method
+            - Integer.equal : Method
+            - Integer.greater_equal : Method
+            - Integer.greater_than : Method
+            - Integer.less_equal : Method
+            - Integer.less_than : Method
+            - Integer.not_equal : Method
+            - String.average : Method
+            - String.direction : Method
+            - String.dot_product : Method
+            - String.element : Method
+            - String.length : Method
+            - Vector.equal : Method
+            - Vector.greater_equal : Method
+            - Vector.greater_than : Method
+            - Vector.less_equal : Method
+            - Vector.less_than : Method
+            - Vector.not_equal : Method
+            - functions.compare : Function
+              
     """
 
     def __init__(self, a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', label=None):
@@ -378,12 +381,12 @@ class FloatToInteger(Node):
 
             Input sockets
             -------------
-                float : Float
+                - float : Float
     
 
             Parameters
             ----------
-                rounding_mode : str (default = 'ROUND') in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
+                - rounding_mode : str (default = 'ROUND') in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
     
 
             Node label
@@ -393,15 +396,16 @@ class FloatToInteger(Node):
 
         Output sockets
         --------------
-            integer : Integer
+            - integer : Integer
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Float.to_integer : Method
-            
+              
+            - Float.to_integer : Method
+              
     """
 
     def __init__(self, float=None, rounding_mode='ROUND', label=None):
@@ -459,7 +463,7 @@ class Boolean(Node):
 
             Parameters
             ----------
-                boolean : bool (default = False)
+                - boolean : bool (default = False)
     
 
             Node label
@@ -469,7 +473,7 @@ class Boolean(Node):
 
         Output sockets
         --------------
-            boolean : Boolean
+            - boolean : Boolean
     """
 
     def __init__(self, boolean=False, label=None):
@@ -528,7 +532,7 @@ class Color(Node):
 
         Output sockets
         --------------
-            color : Color
+            - color : Color
     """
 
     def __init__(self, label=None):
@@ -570,7 +574,7 @@ class Integer(Node):
 
             Parameters
             ----------
-                integer : int (default = 0)
+                - integer : int (default = 0)
     
 
             Node label
@@ -580,7 +584,7 @@ class Integer(Node):
 
         Output sockets
         --------------
-            integer : Integer
+            - integer : Integer
     """
 
     def __init__(self, integer=0, label=None):
@@ -639,8 +643,8 @@ class SpecialCharacters(Node):
 
         Output sockets
         --------------
-            line_break : String
-                - tab : String
+            - line_break : String
+            - tab : String
     """
 
     def __init__(self, label=None):
@@ -683,7 +687,7 @@ class String(Node):
 
             Parameters
             ----------
-                string : str (default = '')
+                - string : str (default = '')
     
 
             Node label
@@ -693,7 +697,7 @@ class String(Node):
 
         Output sockets
         --------------
-            string : String
+            - string : String
     """
 
     def __init__(self, string='', label=None):
@@ -747,7 +751,7 @@ class Vector(Node):
 
             Parameters
             ----------
-                vector : Vector (default = [0.0, 0.0, 0.0])
+                - vector : Vector (default = [0.0, 0.0, 0.0])
     
 
             Node label
@@ -757,7 +761,7 @@ class Vector(Node):
 
         Output sockets
         --------------
-            vector : Vector
+            - vector : Vector
     """
 
     def __init__(self, vector=[0.0, 0.0, 0.0], label=None):
@@ -811,16 +815,16 @@ class RandomValue(Node):
 
             Input sockets
             -------------
-                min : data_type dependant
-                    - max : data_type dependant
-                    - probability : Float
-                    - ID : Integer
-                    - seed : Integer
+                - min : data_type dependant
+                - max : data_type dependant
+                - probability : Float
+                - ID : Integer
+                - seed : Integer
     
 
             Parameters
             ----------
-                data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
+                - data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
     
 
             Node label
@@ -839,18 +843,19 @@ class RandomValue(Node):
 
         Output sockets
         --------------
-            value : data_type dependant
+            - value : data_type dependant
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Boolean.Random : Constructor
-                - Float.Random : Constructor
-                - Integer.Random : Constructor
-                - Vector.Random : Constructor
-                  
+              
+            - Boolean.Random : Constructor
+            - Float.Random : Constructor
+            - Integer.Random : Constructor
+            - Vector.Random : Constructor
+              
     """
 
     def __init__(self, min=None, max=None, probability=None, ID=None, seed=None, data_type='FLOAT', label=None):
@@ -928,9 +933,9 @@ class ReplaceString(Node):
 
             Input sockets
             -------------
-                string : String
-                    - find : String
-                    - replace : String
+                - string : String
+                - find : String
+                - replace : String
     
 
             Node label
@@ -940,15 +945,16 @@ class ReplaceString(Node):
 
         Output sockets
         --------------
-            string : String
+            - string : String
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            String.replace : Method
-            
+              
+            - String.replace : Method
+              
     """
 
     def __init__(self, string=None, find=None, replace=None, label=None):
@@ -996,15 +1002,15 @@ class RotateEuler(Node):
 
             Input sockets
             -------------
-                rotation : Vector
-                    - rotate_by : Vector
-                    - axis : Vector
-                    - angle : Float
+                - rotation : Vector
+                - rotate_by : Vector
+                - axis : Vector
+                - angle : Float
     
 
             Parameters
             ----------
-                space : str (default = 'OBJECT') in ('OBJECT', 'LOCAL')
+                - space : str (default = 'OBJECT') in ('OBJECT', 'LOCAL')
     
 
             Node label
@@ -1014,15 +1020,16 @@ class RotateEuler(Node):
 
         Output sockets
         --------------
-            rotation : Vector
+            - rotation : Vector
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Vector.rotate_euler : Method
-            
+              
+            - Vector.rotate_euler : Method
+              
     """
 
     def __init__(self, rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', label=None):
@@ -1083,9 +1090,9 @@ class SliceString(Node):
 
             Input sockets
             -------------
-                string : String
-                    - position : Integer
-                    - length : Integer
+                - string : String
+                - position : Integer
+                - length : Integer
     
 
             Node label
@@ -1095,15 +1102,16 @@ class SliceString(Node):
 
         Output sockets
         --------------
-            string : String
+            - string : String
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            String.slice : Method
-            
+              
+            - String.slice : Method
+              
     """
 
     def __init__(self, string=None, position=None, length=None, label=None):
@@ -1151,7 +1159,7 @@ class StringLength(Node):
 
             Input sockets
             -------------
-                string : String
+                - string : String
     
 
             Node label
@@ -1161,15 +1169,16 @@ class StringLength(Node):
 
         Output sockets
         --------------
-            length : Integer
+            - length : Integer
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            String.length : Property
-            
+              
+            - String.length : Property
+              
     """
 
     def __init__(self, string=None, label=None):
@@ -1215,8 +1224,8 @@ class ValueToString(Node):
 
             Input sockets
             -------------
-                value : Float
-                    - decimals : Integer
+                - value : Float
+                - decimals : Integer
     
 
             Node label
@@ -1226,15 +1235,16 @@ class ValueToString(Node):
 
         Output sockets
         --------------
-            string : String
+            - string : String
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Float.to_string : Method
-            
+              
+            - Float.to_string : Method
+              
     """
 
     def __init__(self, value=None, decimals=None, label=None):
@@ -1281,14 +1291,14 @@ class AccumulateField(Node):
 
             Input sockets
             -------------
-                value : data_type dependant
-                    - group_index : Integer
+                - value : data_type dependant
+                - group_index : Integer
     
 
             Parameters
             ----------
-                data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR')
-                    - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+                - data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR')
+                - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
     
 
             Node label
@@ -1307,19 +1317,20 @@ class AccumulateField(Node):
 
         Output sockets
         --------------
-            leading : data_type dependant
-                - trailing : data_type dependant
-                - total : data_type dependant
+            - leading : data_type dependant
+            - trailing : data_type dependant
+            - total : data_type dependant
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Float.accumulate_field : Method
-                - Integer.accumulate_field : Method
-                - Vector.accumulate_field : Method
-                  
+              
+            - Float.accumulate_field : Method
+            - Integer.accumulate_field : Method
+            - Vector.accumulate_field : Method
+              
     """
 
     def __init__(self, value=None, group_index=None, data_type='FLOAT', domain='POINT', label=None):
@@ -1405,12 +1416,12 @@ class DomainSize(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
+                - geometry : Geometry
     
 
             Parameters
             ----------
-                component : str (default = 'MESH') in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')
+                - component : str (default = 'MESH') in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')
     
 
             Node label
@@ -1420,20 +1431,21 @@ class DomainSize(Node):
 
         Output sockets
         --------------
-            point_count : Integer
-                - edge_count : Integer
-                - face_count : Integer
-                - face_corner_count : Integer
-                - spline_count : Integer
-                - instance_count : Integer
+            - point_count : Integer
+            - edge_count : Integer
+            - face_count : Integer
+            - face_corner_count : Integer
+            - spline_count : Integer
+            - instance_count : Integer
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.attribute_domain_size : Method
-            
+              
+            - Geometry.attribute_domain_size : Method
+              
     """
 
     def __init__(self, geometry=None, component='MESH', label=None):
@@ -1496,8 +1508,8 @@ class AttributeRemove(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
-                    - attribute : *String
+                - geometry : Geometry
+                - attribute : *String
     
 
             Node label
@@ -1507,15 +1519,16 @@ class AttributeRemove(Node):
 
         Output sockets
         --------------
-            geometry : Geometry
+            - geometry : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.attribute_remove : Method
-            
+              
+            - Geometry.attribute_remove : Method
+              
     """
 
     def __init__(self, *attribute, geometry=None, label=None):
@@ -1562,15 +1575,15 @@ class AttributeStatistic(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
-                    - selection : Boolean
-                    - attribute : data_type dependant
+                - geometry : Geometry
+                - selection : Boolean
+                - attribute : data_type dependant
     
 
             Parameters
             ----------
-                data_type : str (default = 'FLOAT') in ('FLOAT', 'FLOAT_VECTOR')
-                    - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+                - data_type : str (default = 'FLOAT') in ('FLOAT', 'FLOAT_VECTOR')
+                - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
     
 
             Node label
@@ -1589,23 +1602,24 @@ class AttributeStatistic(Node):
 
         Output sockets
         --------------
-            mean : data_type dependant
-                - median : data_type dependant
-                - sum : data_type dependant
-                - min : data_type dependant
-                - max : data_type dependant
-                - range : data_type dependant
-                - standard_deviation : data_type dependant
-                - variance : data_type dependant
+            - mean : data_type dependant
+            - median : data_type dependant
+            - sum : data_type dependant
+            - min : data_type dependant
+            - max : data_type dependant
+            - range : data_type dependant
+            - standard_deviation : data_type dependant
+            - variance : data_type dependant
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Float.attribute_statistic : Method
-                - Vector.attribute_statistic : Method
-                  
+              
+            - Float.attribute_statistic : Method
+            - Vector.attribute_statistic : Method
+              
     """
 
     def __init__(self, geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', label=None):
@@ -1696,17 +1710,17 @@ class TransferAttribute(Node):
 
             Input sockets
             -------------
-                source : Geometry
-                    - attribute : data_type dependant
-                    - source_position : Vector
-                    - index : Integer
+                - source : Geometry
+                - attribute : data_type dependant
+                - source_position : Vector
+                - index : Integer
     
 
             Parameters
             ----------
-                data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
-                    - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
-                    - mapping : str (default = 'NEAREST_FACE_INTERPOLATED') in ('NEAREST_FACE_INTERPOLATED', 'NEAREST', 'INDEX')
+                - data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+                - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+                - mapping : str (default = 'NEAREST_FACE_INTERPOLATED') in ('NEAREST_FACE_INTERPOLATED', 'NEAREST', 'INDEX')
     
 
             Node label
@@ -1725,24 +1739,25 @@ class TransferAttribute(Node):
 
         Output sockets
         --------------
-            attribute : data_type dependant
+            - attribute : data_type dependant
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Boolean.transfer_attribute : Method
-                - Color.transfer_attribute : Method
-                - Float.transfer_attribute : Method
-                - Geometry.transfer_boolean : Method
-                - Geometry.transfer_color : Method
-                - Geometry.transfer_float : Method
-                - Geometry.transfer_integer : Method
-                - Geometry.transfer_vector : Method
-                - Integer.transfer_attribute : Method
-                - Vector.transfer_attribute : Method
-                  
+              
+            - Boolean.transfer_attribute : Method
+            - Color.transfer_attribute : Method
+            - Float.transfer_attribute : Method
+            - Geometry.transfer_boolean : Method
+            - Geometry.transfer_color : Method
+            - Geometry.transfer_float : Method
+            - Geometry.transfer_integer : Method
+            - Geometry.transfer_vector : Method
+            - Integer.transfer_attribute : Method
+            - Vector.transfer_attribute : Method
+              
     """
 
     def __init__(self, source=None, attribute=None, source_position=None, index=None, data_type='FLOAT', domain='POINT', mapping='NEAREST_FACE_INTERPOLATED', label=None):
@@ -1841,7 +1856,7 @@ class BoundingBox(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
+                - geometry : Geometry
     
 
             Node label
@@ -1851,20 +1866,21 @@ class BoundingBox(Node):
 
         Output sockets
         --------------
-            bounding_box : Geometry
-                - min : Vector
-                - max : Vector
+            - bounding_box : Geometry
+            - min : Vector
+            - max : Vector
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.bound_box : Property
-                - Geometry.box : Property
-                - Geometry.box_max : Property
-                - Geometry.box_min : Property
-                  
+              
+            - Geometry.bound_box : Property
+            - Geometry.box : Property
+            - Geometry.box_max : Property
+            - Geometry.box_min : Property
+              
     """
 
     def __init__(self, geometry=None, label=None):
@@ -1912,14 +1928,14 @@ class CaptureAttribute(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
-                    - value : data_type dependant
+                - geometry : Geometry
+                - value : data_type dependant
     
 
             Parameters
             ----------
-                data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
-                    - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+                - data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+                - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
     
 
             Node label
@@ -1938,21 +1954,22 @@ class CaptureAttribute(Node):
 
         Output sockets
         --------------
-            geometry : Geometry
-                - attribute : data_type dependant
+            - geometry : Geometry
+            - attribute : data_type dependant
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Boolean.capture_attribute : Method
-                - Color.capture_attribute : Method
-                - Float.capture_attribute : Method
-                - Geometry.capture_attribute : Method
-                - Integer.capture_attribute : Method
-                - Vector.capture_attribute : Method
-                  
+              
+            - Boolean.capture_attribute : Method
+            - Color.capture_attribute : Method
+            - Float.capture_attribute : Method
+            - Geometry.capture_attribute : Method
+            - Integer.capture_attribute : Method
+            - Vector.capture_attribute : Method
+              
     """
 
     def __init__(self, geometry=None, value=None, data_type='FLOAT', domain='POINT', label=None):
@@ -2041,14 +2058,14 @@ class CollectionInfo(Node):
 
             Input sockets
             -------------
-                collection : Collection
-                    - separate_children : Boolean
-                    - reset_children : Boolean
+                - collection : Collection
+                - separate_children : Boolean
+                - reset_children : Boolean
     
 
             Parameters
             ----------
-                transform_space : str (default = 'ORIGINAL') in ('ORIGINAL', 'RELATIVE')
+                - transform_space : str (default = 'ORIGINAL') in ('ORIGINAL', 'RELATIVE')
     
 
             Node label
@@ -2058,15 +2075,16 @@ class CollectionInfo(Node):
 
         Output sockets
         --------------
-            geometry : Geometry
+            - geometry : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Collection.info : Method
-            
+              
+            - Collection.info : Method
+              
     """
 
     def __init__(self, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL', label=None):
@@ -2126,7 +2144,7 @@ class ConvexHull(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
+                - geometry : Geometry
     
 
             Node label
@@ -2136,15 +2154,16 @@ class ConvexHull(Node):
 
         Output sockets
         --------------
-            convex_hull : Geometry
+            - convex_hull : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.convex_hull : Method
-            
+              
+            - Geometry.convex_hull : Method
+              
     """
 
     def __init__(self, geometry=None, label=None):
@@ -2190,21 +2209,21 @@ class Arc(Node):
 
             Input sockets
             -------------
-                resolution : Integer
-                    - start : Vector
-                    - middle : Vector
-                    - end : Vector
-                    - radius : Float
-                    - start_angle : Float
-                    - sweep_angle : Float
-                    - offset_angle : Float
-                    - connect_center : Boolean
-                    - invert_arc : Boolean
+                - resolution : Integer
+                - start : Vector
+                - middle : Vector
+                - end : Vector
+                - radius : Float
+                - start_angle : Float
+                - sweep_angle : Float
+                - offset_angle : Float
+                - connect_center : Boolean
+                - invert_arc : Boolean
     
 
             Parameters
             ----------
-                mode : str (default = 'RADIUS') in ('POINTS', 'RADIUS')
+                - mode : str (default = 'RADIUS') in ('POINTS', 'RADIUS')
     
 
             Node label
@@ -2214,19 +2233,20 @@ class Arc(Node):
 
         Output sockets
         --------------
-            curve : Curve
-                - center : Vector
-                - normal : Vector
-                - radius : Float
+            - curve : Curve
+            - center : Vector
+            - normal : Vector
+            - radius : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.ArcFromPoints : Static method
-                - Curve.ArcFromRadius : Constructor
-                  
+              
+            - Curve.ArcFromPoints : Static method
+            - Curve.ArcFromRadius : Constructor
+              
     """
 
     def __init__(self, resolution=None, start=None, middle=None, end=None, radius=None, start_angle=None, sweep_angle=None, offset_angle=None, connect_center=None, invert_arc=None, mode='RADIUS', label=None):
@@ -2296,8 +2316,8 @@ class EndpointSelection(Node):
 
             Input sockets
             -------------
-                start_size : Integer
-                    - end_size : Integer
+                - start_size : Integer
+                - end_size : Integer
     
 
             Node label
@@ -2307,16 +2327,17 @@ class EndpointSelection(Node):
 
         Output sockets
         --------------
-            selection : Boolean
+            - selection : Boolean
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Spline.capture_endpoint_selection : Capture attribute
-                - Spline.endpoint_selection : Attribute
-                  
+              
+            - Spline.capture_endpoint_selection : Capture attribute
+            - Spline.endpoint_selection : Attribute
+              
     """
 
     def __init__(self, start_size=None, end_size=None, label=None):
@@ -2363,8 +2384,8 @@ class HandleTypeSelection(Node):
 
             Parameters
             ----------
-                handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                    - mode : set (default = {'LEFT', 'RIGHT'})
+                - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+                - mode : set (default = {'LEFT', 'RIGHT'})
     
 
             Node label
@@ -2374,16 +2395,17 @@ class HandleTypeSelection(Node):
 
         Output sockets
         --------------
-            selection : Boolean
+            - selection : Boolean
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Spline.capture_handle_type_selection : Capture attribute
-                - Spline.handle_type_selection : Attribute
-                  
+              
+            - Spline.capture_handle_type_selection : Capture attribute
+            - Spline.handle_type_selection : Attribute
+              
     """
 
     def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None):
@@ -2446,7 +2468,7 @@ class CurveLength(Node):
 
             Input sockets
             -------------
-                curve : Curve
+                - curve : Curve
     
 
             Node label
@@ -2456,15 +2478,16 @@ class CurveLength(Node):
 
         Output sockets
         --------------
-            length : Float
+            - length : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.length : Method
-            
+              
+            - Curve.length : Method
+              
     """
 
     def __init__(self, curve=None, label=None):
@@ -2510,16 +2533,16 @@ class BezierSegment(Node):
 
             Input sockets
             -------------
-                resolution : Integer
-                    - start : Vector
-                    - start_handle : Vector
-                    - end_handle : Vector
-                    - end : Vector
+                - resolution : Integer
+                - start : Vector
+                - start_handle : Vector
+                - end_handle : Vector
+                - end : Vector
     
 
             Parameters
             ----------
-                mode : str (default = 'POSITION') in ('POSITION', 'OFFSET')
+                - mode : str (default = 'POSITION') in ('POSITION', 'OFFSET')
     
 
             Node label
@@ -2529,15 +2552,16 @@ class BezierSegment(Node):
 
         Output sockets
         --------------
-            curve : Curve
+            - curve : Curve
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.BezierSegment : Constructor
-            
+              
+            - Curve.BezierSegment : Constructor
+              
     """
 
     def __init__(self, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION', label=None):
@@ -2599,16 +2623,16 @@ class CurveCircle(Node):
 
             Input sockets
             -------------
-                resolution : Integer
-                    - point_1 : Vector
-                    - point_2 : Vector
-                    - point_3 : Vector
-                    - radius : Float
+                - resolution : Integer
+                - point_1 : Vector
+                - point_2 : Vector
+                - point_3 : Vector
+                - radius : Float
     
 
             Parameters
             ----------
-                mode : str (default = 'RADIUS') in ('POINTS', 'RADIUS')
+                - mode : str (default = 'RADIUS') in ('POINTS', 'RADIUS')
     
 
             Node label
@@ -2618,16 +2642,17 @@ class CurveCircle(Node):
 
         Output sockets
         --------------
-            curve : Curve
-                - center : Vector
+            - curve : Curve
+            - center : Vector
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.Circle : Constructor
-            
+              
+            - Curve.Circle : Constructor
+              
     """
 
     def __init__(self, resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS', label=None):
@@ -2690,15 +2715,15 @@ class CurveLine(Node):
 
             Input sockets
             -------------
-                start : Vector
-                    - end : Vector
-                    - direction : Vector
-                    - length : Float
+                - start : Vector
+                - end : Vector
+                - direction : Vector
+                - length : Float
     
 
             Parameters
             ----------
-                mode : str (default = 'POINTS') in ('POINTS', 'DIRECTION')
+                - mode : str (default = 'POINTS') in ('POINTS', 'DIRECTION')
     
 
             Node label
@@ -2708,15 +2733,16 @@ class CurveLine(Node):
 
         Output sockets
         --------------
-            curve : Curve
+            - curve : Curve
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.Line : Constructor
-            
+              
+            - Curve.Line : Constructor
+              
     """
 
     def __init__(self, start=None, end=None, direction=None, length=None, mode='POINTS', label=None):
@@ -2777,22 +2803,22 @@ class Quadrilateral(Node):
 
             Input sockets
             -------------
-                width : Float
-                    - height : Float
-                    - bottom_width : Float
-                    - top_width : Float
-                    - offset : Float
-                    - bottom_height : Float
-                    - top_height : Float
-                    - point_1 : Vector
-                    - point_2 : Vector
-                    - point_3 : Vector
-                    - point_4 : Vector
+                - width : Float
+                - height : Float
+                - bottom_width : Float
+                - top_width : Float
+                - offset : Float
+                - bottom_height : Float
+                - top_height : Float
+                - point_1 : Vector
+                - point_2 : Vector
+                - point_3 : Vector
+                - point_4 : Vector
     
 
             Parameters
             ----------
-                mode : str (default = 'RECTANGLE') in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
+                - mode : str (default = 'RECTANGLE') in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
     
 
             Node label
@@ -2802,15 +2828,16 @@ class Quadrilateral(Node):
 
         Output sockets
         --------------
-            curve : Curve
+            - curve : Curve
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.Quadrilateral : Constructor
-            
+              
+            - Curve.Quadrilateral : Constructor
+              
     """
 
     def __init__(self, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', label=None):
@@ -2878,10 +2905,10 @@ class QuadraticBezier(Node):
 
             Input sockets
             -------------
-                resolution : Integer
-                    - start : Vector
-                    - middle : Vector
-                    - end : Vector
+                - resolution : Integer
+                - start : Vector
+                - middle : Vector
+                - end : Vector
     
 
             Node label
@@ -2891,15 +2918,16 @@ class QuadraticBezier(Node):
 
         Output sockets
         --------------
-            curve : Curve
+            - curve : Curve
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.QuadraticBezier : Constructor
-            
+              
+            - Curve.QuadraticBezier : Constructor
+              
     """
 
     def __init__(self, resolution=None, start=None, middle=None, end=None, label=None):
@@ -2948,14 +2976,14 @@ class SetHandleType(Node):
 
             Input sockets
             -------------
-                curve : Curve
-                    - selection : Boolean
+                - curve : Curve
+                - selection : Boolean
     
 
             Parameters
             ----------
-                handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                    - mode : set (default = {'LEFT', 'RIGHT'})
+                - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+                - mode : set (default = {'LEFT', 'RIGHT'})
     
 
             Node label
@@ -2965,15 +2993,16 @@ class SetHandleType(Node):
 
         Output sockets
         --------------
-            curve : Curve
+            - curve : Curve
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.set_handles : Method
-            
+              
+            - Curve.set_handles : Method
+              
     """
 
     def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None):
@@ -3041,12 +3070,12 @@ class Spiral(Node):
 
             Input sockets
             -------------
-                resolution : Integer
-                    - rotations : Float
-                    - start_radius : Float
-                    - end_radius : Float
-                    - height : Float
-                    - reverse : Boolean
+                - resolution : Integer
+                - rotations : Float
+                - start_radius : Float
+                - end_radius : Float
+                - height : Float
+                - reverse : Boolean
     
 
             Node label
@@ -3056,15 +3085,16 @@ class Spiral(Node):
 
         Output sockets
         --------------
-            curve : Curve
+            - curve : Curve
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.Spiral : Constructor
-            
+              
+            - Curve.Spiral : Constructor
+              
     """
 
     def __init__(self, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, label=None):
@@ -3115,13 +3145,13 @@ class SetSplineType(Node):
 
             Input sockets
             -------------
-                curve : Curve
-                    - selection : Boolean
+                - curve : Curve
+                - selection : Boolean
     
 
             Parameters
             ----------
-                spline_type : str (default = 'POLY') in ('BEZIER', 'NURBS', 'POLY')
+                - spline_type : str (default = 'POLY') in ('BEZIER', 'NURBS', 'POLY')
     
 
             Node label
@@ -3131,15 +3161,16 @@ class SetSplineType(Node):
 
         Output sockets
         --------------
-            curve : Curve
+            - curve : Curve
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.set_spline_type : Method
-            
+              
+            - Curve.set_spline_type : Method
+              
     """
 
     def __init__(self, curve=None, selection=None, spline_type='POLY', label=None):
@@ -3198,10 +3229,10 @@ class Star(Node):
 
             Input sockets
             -------------
-                points : Integer
-                    - inner_radius : Float
-                    - outer_radius : Float
-                    - twist : Float
+                - points : Integer
+                - inner_radius : Float
+                - outer_radius : Float
+                - twist : Float
     
 
             Node label
@@ -3211,16 +3242,17 @@ class Star(Node):
 
         Output sockets
         --------------
-            curve : Curve
-                - outer_points : Boolean
+            - curve : Curve
+            - outer_points : Boolean
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.Star : Constructor
-            
+              
+            - Curve.Star : Constructor
+              
     """
 
     def __init__(self, points=None, inner_radius=None, outer_radius=None, twist=None, label=None):
@@ -3270,9 +3302,9 @@ class CurveToMesh(Node):
 
             Input sockets
             -------------
-                curve : Curve
-                    - profile_curve : Geometry
-                    - fill_caps : Boolean
+                - curve : Curve
+                - profile_curve : Geometry
+                - fill_caps : Boolean
     
 
             Node label
@@ -3282,15 +3314,16 @@ class CurveToMesh(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
+            - mesh : Mesh
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.to_mesh : Method
-            
+              
+            - Curve.to_mesh : Method
+              
     """
 
     def __init__(self, curve=None, profile_curve=None, fill_caps=None, label=None):
@@ -3338,14 +3371,14 @@ class CurveToPoints(Node):
 
             Input sockets
             -------------
-                curve : Curve
-                    - count : Integer
-                    - length : Float
+                - curve : Curve
+                - count : Integer
+                - length : Float
     
 
             Parameters
             ----------
-                mode : str (default = 'COUNT') in ('EVALUATED', 'COUNT', 'LENGTH')
+                - mode : str (default = 'COUNT') in ('EVALUATED', 'COUNT', 'LENGTH')
     
 
             Node label
@@ -3355,18 +3388,19 @@ class CurveToPoints(Node):
 
         Output sockets
         --------------
-            points : Points
-                - tangent : Vector
-                - normal : Vector
-                - rotation : Vector
+            - points : Points
+            - tangent : Vector
+            - normal : Vector
+            - rotation : Vector
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.to_points : Method
-            
+              
+            - Curve.to_points : Method
+              
     """
 
     def __init__(self, curve=None, count=None, length=None, mode='COUNT', label=None):
@@ -3429,14 +3463,14 @@ class DeleteGeometry(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
-                    - selection : Boolean
+                - geometry : Geometry
+                - selection : Boolean
     
 
             Parameters
             ----------
-                domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
-                    - mode : str (default = 'ALL') in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+                - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+                - mode : str (default = 'ALL') in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
     
 
             Node label
@@ -3446,15 +3480,16 @@ class DeleteGeometry(Node):
 
         Output sockets
         --------------
-            geometry : Geometry
+            - geometry : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.delete_geometry : Method
-            
+              
+            - Geometry.delete_geometry : Method
+              
     """
 
     def __init__(self, geometry=None, selection=None, domain='POINT', mode='ALL', label=None):
@@ -3522,18 +3557,18 @@ class DistributePointsOnFaces(Node):
 
             Input sockets
             -------------
-                mesh : Mesh
-                    - selection : Boolean
-                    - distance_min : Float
-                    - density_max : Float
-                    - density : Float
-                    - density_factor : Float
-                    - seed : Integer
+                - mesh : Mesh
+                - selection : Boolean
+                - distance_min : Float
+                - density_max : Float
+                - density : Float
+                - density_factor : Float
+                - seed : Integer
     
 
             Parameters
             ----------
-                distribute_method : str (default = 'RANDOM') in ('RANDOM', 'POISSON')
+                - distribute_method : str (default = 'RANDOM') in ('RANDOM', 'POISSON')
     
 
             Node label
@@ -3543,17 +3578,18 @@ class DistributePointsOnFaces(Node):
 
         Output sockets
         --------------
-            points : Points
-                - normal : Vector
-                - rotation : Vector
+            - points : Points
+            - normal : Vector
+            - rotation : Vector
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.distribute_points_on_faces : Method
-            
+              
+            - Mesh.distribute_points_on_faces : Method
+              
     """
 
     def __init__(self, mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None):
@@ -3619,8 +3655,8 @@ class DualMesh(Node):
 
             Input sockets
             -------------
-                mesh : Mesh
-                    - keep_boundaries : Boolean
+                - mesh : Mesh
+                - keep_boundaries : Boolean
     
 
             Node label
@@ -3630,15 +3666,16 @@ class DualMesh(Node):
 
         Output sockets
         --------------
-            dual_mesh : Geometry
+            - dual_mesh : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.dual : Method
-            
+              
+            - Mesh.dual : Method
+              
     """
 
     def __init__(self, mesh=None, keep_boundaries=None, label=None):
@@ -3685,16 +3722,16 @@ class ExtrudeMesh(Node):
 
             Input sockets
             -------------
-                mesh : Mesh
-                    - selection : Boolean
-                    - offset : Vector
-                    - offset_scale : Float
-                    - individual : Boolean
+                - mesh : Mesh
+                - selection : Boolean
+                - offset : Vector
+                - offset_scale : Float
+                - individual : Boolean
     
 
             Parameters
             ----------
-                mode : str (default = 'FACES') in ('VERTICES', 'EDGES', 'FACES')
+                - mode : str (default = 'FACES') in ('VERTICES', 'EDGES', 'FACES')
     
 
             Node label
@@ -3704,17 +3741,18 @@ class ExtrudeMesh(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
-                - top : Boolean
-                - side : Boolean
+            - mesh : Mesh
+            - top : Boolean
+            - side : Boolean
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.extrude : Method
-            
+              
+            - Mesh.extrude : Method
+              
     """
 
     def __init__(self, mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES', label=None):
@@ -3778,14 +3816,14 @@ class FieldAtIndex(Node):
 
             Input sockets
             -------------
-                index : Integer
-                    - value : data_type dependant
+                - index : Integer
+                - value : data_type dependant
     
 
             Parameters
             ----------
-                data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
-                    - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+                - data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+                - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
     
 
             Node label
@@ -3804,19 +3842,20 @@ class FieldAtIndex(Node):
 
         Output sockets
         --------------
-            value : data_type dependant
+            - value : data_type dependant
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Boolean.field_at_index : Method
-                - Color.field_at_index : Method
-                - Float.field_at_index : Method
-                - Integer.field_at_index : Method
-                - Vector.field_at_index : Method
-                  
+              
+            - Boolean.field_at_index : Method
+            - Color.field_at_index : Method
+            - Float.field_at_index : Method
+            - Integer.field_at_index : Method
+            - Vector.field_at_index : Method
+              
     """
 
     def __init__(self, index=None, value=None, data_type='FLOAT', domain='POINT', label=None):
@@ -3904,12 +3943,12 @@ class FillCurve(Node):
 
             Input sockets
             -------------
-                curve : Curve
+                - curve : Curve
     
 
             Parameters
             ----------
-                mode : str (default = 'TRIANGLES') in ('TRIANGLES', 'NGONS')
+                - mode : str (default = 'TRIANGLES') in ('TRIANGLES', 'NGONS')
     
 
             Node label
@@ -3919,15 +3958,16 @@ class FillCurve(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
+            - mesh : Mesh
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.fill : Method
-            
+              
+            - Curve.fill : Method
+              
     """
 
     def __init__(self, curve=None, mode='TRIANGLES', label=None):
@@ -3985,15 +4025,15 @@ class FilletCurve(Node):
 
             Input sockets
             -------------
-                curve : Curve
-                    - count : Integer
-                    - radius : Float
-                    - limit_radius : Boolean
+                - curve : Curve
+                - count : Integer
+                - radius : Float
+                - limit_radius : Boolean
     
 
             Parameters
             ----------
-                mode : str (default = 'BEZIER') in ('BEZIER', 'POLY')
+                - mode : str (default = 'BEZIER') in ('BEZIER', 'POLY')
     
 
             Node label
@@ -4003,15 +4043,16 @@ class FilletCurve(Node):
 
         Output sockets
         --------------
-            curve : Curve
+            - curve : Curve
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.fillet : Method
-            
+              
+            - Curve.fillet : Method
+              
     """
 
     def __init__(self, curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER', label=None):
@@ -4072,8 +4113,8 @@ class FlipFaces(Node):
 
             Input sockets
             -------------
-                mesh : Mesh
-                    - selection : Boolean
+                - mesh : Mesh
+                - selection : Boolean
     
 
             Node label
@@ -4083,15 +4124,16 @@ class FlipFaces(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
+            - mesh : Mesh
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.flip_faces : Method
-            
+              
+            - Mesh.flip_faces : Method
+              
     """
 
     def __init__(self, mesh=None, selection=None, label=None):
@@ -4138,7 +4180,7 @@ class GeometryToInstance(Node):
 
             Input sockets
             -------------
-                geometry : *Geometry
+                - geometry : *Geometry
     
 
             Node label
@@ -4148,15 +4190,16 @@ class GeometryToInstance(Node):
 
         Output sockets
         --------------
-            instances : Instances
+            - instances : Instances
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.to_instance : Method
-            
+              
+            - Geometry.to_instance : Method
+              
     """
 
     def __init__(self, *geometry, label=None):
@@ -4241,15 +4284,15 @@ class ImageTexture(Node):
 
             Input sockets
             -------------
-                image : Image
-                    - vector : Vector
-                    - frame : Integer
+                - image : Image
+                - vector : Vector
+                - frame : Integer
     
 
             Parameters
             ----------
-                extension : str (default = 'REPEAT') in ('REPEAT', 'EXTEND', 'CLIP')
-                    - interpolation : str (default = 'Linear') in ('Linear', 'Closest', 'Cubic')
+                - extension : str (default = 'REPEAT') in ('REPEAT', 'EXTEND', 'CLIP')
+                - interpolation : str (default = 'Linear') in ('Linear', 'Closest', 'Cubic')
     
 
             Node label
@@ -4259,16 +4302,17 @@ class ImageTexture(Node):
 
         Output sockets
         --------------
-            color : Color
-                - alpha : Float
+            - color : Color
+            - alpha : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Texture.Image : Static method
-            
+              
+            - Texture.Image : Static method
+              
     """
 
     def __init__(self, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', label=None):
@@ -4338,7 +4382,7 @@ class CurveHandlePositions(Node):
 
             Input sockets
             -------------
-                relative : Boolean
+                - relative : Boolean
     
 
             Node label
@@ -4348,18 +4392,19 @@ class CurveHandlePositions(Node):
 
         Output sockets
         --------------
-            left : Vector
-                - right : Vector
+            - left : Vector
+            - right : Vector
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Spline.capture_handle_positions : Capture attribute
-                - Spline.left_handle_position : Attribute
-                - Spline.right_handle_position : Attribute
-                  
+              
+            - Spline.capture_handle_positions : Capture attribute
+            - Spline.left_handle_position : Attribute
+            - Spline.right_handle_position : Attribute
+              
     """
 
     def __init__(self, relative=None, label=None):
@@ -4411,16 +4456,17 @@ class CurveTilt(Node):
 
         Output sockets
         --------------
-            tilt : Float
+            - tilt : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Spline.capture_tilt : Capture attribute
-                - Spline.tilt : Attribute
-                  
+              
+            - Spline.capture_tilt : Capture attribute
+            - Spline.tilt : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -4467,17 +4513,18 @@ class ID(Node):
 
         Output sockets
         --------------
-            ID : Integer
+            - ID : Integer
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.ID : Attribute
-                - Geometry.capture_ID : Capture attribute
-                - Spline.spline_ID : Attribute
-                  
+              
+            - Geometry.ID : Attribute
+            - Geometry.capture_ID : Capture attribute
+            - Spline.spline_ID : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -4524,19 +4571,20 @@ class Index(Node):
 
         Output sockets
         --------------
-            index : Integer
+            - index : Integer
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.capture_index : Capture attribute
-                - Geometry.index : Attribute
-                - Instances.instance_index : Attribute
-                - Spline.spline_index : Attribute
-                - Spline.spline_position : Attribute
-                  
+              
+            - Geometry.capture_index : Capture attribute
+            - Geometry.index : Attribute
+            - Instances.instance_index : Attribute
+            - Spline.spline_index : Attribute
+            - Spline.spline_position : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -4583,7 +4631,7 @@ class Material(Node):
 
         Output sockets
         --------------
-            material : Material
+            - material : Material
     """
 
     def __init__(self, label=None):
@@ -4630,16 +4678,17 @@ class MaterialIndex(Node):
 
         Output sockets
         --------------
-            material_index : Integer
+            - material_index : Integer
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.capture_material_index : Capture attribute
-                - Mesh.material_index : Attribute
-                  
+              
+            - Mesh.capture_material_index : Capture attribute
+            - Mesh.material_index : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -4686,27 +4735,28 @@ class EdgeAngle(Node):
 
         Output sockets
         --------------
-            unsigned_angle : Float
-                - signed_angle : Float
+            - unsigned_angle : Float
+            - signed_angle : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.capture_edge_angle : Capture attribute
-                - Mesh.corner_ID : Attribute
-                - Mesh.corner_index : Attribute
-                - Mesh.corner_porision : Attribute
-                - Mesh.edge_angle : Attribute
-                - Mesh.edge_unsigned_angle : Attribute
-                - Mesh.egde_ID : Attribute
-                - Mesh.egde_index : Attribute
-                - Mesh.egde_position : Attribute
-                - Mesh.face_ID : Attribute
-                - Mesh.face_index : Attribute
-                - Mesh.face_position : Attribute
-                  
+              
+            - Mesh.capture_edge_angle : Capture attribute
+            - Mesh.corner_ID : Attribute
+            - Mesh.corner_index : Attribute
+            - Mesh.corner_porision : Attribute
+            - Mesh.edge_angle : Attribute
+            - Mesh.edge_unsigned_angle : Attribute
+            - Mesh.egde_ID : Attribute
+            - Mesh.egde_index : Attribute
+            - Mesh.egde_position : Attribute
+            - Mesh.face_ID : Attribute
+            - Mesh.face_index : Attribute
+            - Mesh.face_position : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -4754,16 +4804,17 @@ class EdgeNeighbors(Node):
 
         Output sockets
         --------------
-            face_count : Integer
+            - face_count : Integer
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.capture_edge_neighbors : Capture attribute
-                - Mesh.edge_neighbors : Attribute
-                  
+              
+            - Mesh.capture_edge_neighbors : Capture attribute
+            - Mesh.edge_neighbors : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -4810,22 +4861,23 @@ class EdgeVertices(Node):
 
         Output sockets
         --------------
-            vertex_index_1 : Integer
-                - vertex_index_2 : Integer
-                - position_1 : Vector
-                - position_2 : Vector
+            - vertex_index_1 : Integer
+            - vertex_index_2 : Integer
+            - position_1 : Vector
+            - position_2 : Vector
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.capture_edge_vertices : Capture attribute
-                - Mesh.edge_vertices_index1 : Attribute
-                - Mesh.edge_vertices_index2 : Attribute
-                - Mesh.edge_vertices_position1 : Attribute
-                - Mesh.edge_vertices_position2 : Attribute
-                  
+              
+            - Mesh.capture_edge_vertices : Capture attribute
+            - Mesh.edge_vertices_index1 : Attribute
+            - Mesh.edge_vertices_index2 : Attribute
+            - Mesh.edge_vertices_position1 : Attribute
+            - Mesh.edge_vertices_position2 : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -4875,16 +4927,17 @@ class FaceArea(Node):
 
         Output sockets
         --------------
-            area : Float
+            - area : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.capture_face_area : Capture attribute
-                - Mesh.face_area : Attribute
-                  
+              
+            - Mesh.capture_face_area : Capture attribute
+            - Mesh.face_area : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -4931,18 +4984,19 @@ class FaceNeighbors(Node):
 
         Output sockets
         --------------
-            vertex_count : Integer
-                - face_count : Integer
+            - vertex_count : Integer
+            - face_count : Integer
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.capture_face_neighbors : Capture attribute
-                - Mesh.face_neighbors_face_count : Attribute
-                - Mesh.face_neighbors_vertex_count : Attribute
-                  
+              
+            - Mesh.capture_face_neighbors : Capture attribute
+            - Mesh.face_neighbors_face_count : Attribute
+            - Mesh.face_neighbors_vertex_count : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -4990,17 +5044,18 @@ class MeshIsland(Node):
 
         Output sockets
         --------------
-            island_index : Integer
-                - island_count : Integer
+            - island_index : Integer
+            - island_count : Integer
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.capture_island : Capture attribute
-                - Mesh.island : Attribute
-                  
+              
+            - Mesh.capture_island : Capture attribute
+            - Mesh.island : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -5048,18 +5103,19 @@ class VertexNeighbors(Node):
 
         Output sockets
         --------------
-            vertex_count : Integer
-                - face_count : Integer
+            - vertex_count : Integer
+            - face_count : Integer
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.capture_vertex_neighbors : Capture attribute
-                - Mesh.vertex_neighbors_face_count : Attribute
-                - Mesh.vertex_neighbors_vertex_count : Attribute
-                  
+              
+            - Mesh.capture_vertex_neighbors : Capture attribute
+            - Mesh.vertex_neighbors_face_count : Attribute
+            - Mesh.vertex_neighbors_vertex_count : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -5107,16 +5163,17 @@ class Normal(Node):
 
         Output sockets
         --------------
-            normal : Vector
+            - normal : Vector
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.capture_normal : Capture attribute
-                - Geometry.normal : Attribute
-                  
+              
+            - Geometry.capture_normal : Capture attribute
+            - Geometry.normal : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -5163,16 +5220,17 @@ class Position(Node):
 
         Output sockets
         --------------
-            position : Vector
+            - position : Vector
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.capture_position : Capture attribute
-                - Geometry.position : Attribute
-                  
+              
+            - Geometry.capture_position : Capture attribute
+            - Geometry.position : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -5219,16 +5277,17 @@ class Radius(Node):
 
         Output sockets
         --------------
-            radius : Float
+            - radius : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.capture_radius : Capture attribute
-                - Geometry.radius : Attribute
-                  
+              
+            - Geometry.capture_radius : Capture attribute
+            - Geometry.radius : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -5275,16 +5334,17 @@ class SceneTime(Node):
 
         Output sockets
         --------------
-            seconds : Float
-                - frame : Float
+            - seconds : Float
+            - frame : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            functions.scene : Function
-            
+              
+            - functions.scene : Function
+              
     """
 
     def __init__(self, label=None):
@@ -5332,16 +5392,17 @@ class IsShadeSmooth(Node):
 
         Output sockets
         --------------
-            smooth : Boolean
+            - smooth : Boolean
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.capture_shade_smooth : Capture attribute
-                - Mesh.shade_smooth : Attribute
-                  
+              
+            - Mesh.capture_shade_smooth : Capture attribute
+            - Mesh.shade_smooth : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -5388,16 +5449,17 @@ class IsSplineCyclic(Node):
 
         Output sockets
         --------------
-            cyclic : Boolean
+            - cyclic : Boolean
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Spline.capture_cyclic : Capture attribute
-                - Spline.cyclic : Attribute
-                  
+              
+            - Spline.capture_cyclic : Capture attribute
+            - Spline.cyclic : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -5444,16 +5506,17 @@ class SplineResolution(Node):
 
         Output sockets
         --------------
-            resolution : Integer
+            - resolution : Integer
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Spline.capture_resolution : Capture attribute
-                - Spline.resolution : Attribute
-                  
+              
+            - Spline.capture_resolution : Capture attribute
+            - Spline.resolution : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -5500,16 +5563,17 @@ class CurveTangent(Node):
 
         Output sockets
         --------------
-            tangent : Vector
+            - tangent : Vector
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Spline.capture_tangent : Capture attribute
-                - Spline.tangent : Attribute
-                  
+              
+            - Spline.capture_tangent : Capture attribute
+            - Spline.tangent : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -5551,13 +5615,13 @@ class InstanceOnPoints(Node):
 
             Input sockets
             -------------
-                points : Points
-                    - selection : Boolean
-                    - instance : Geometry
-                    - pick_instance : Boolean
-                    - instance_index : Integer
-                    - rotation : Vector
-                    - scale : Vector
+                - points : Points
+                - selection : Boolean
+                - instance : Geometry
+                - pick_instance : Boolean
+                - instance_index : Integer
+                - rotation : Vector
+                - scale : Vector
     
 
             Node label
@@ -5567,15 +5631,16 @@ class InstanceOnPoints(Node):
 
         Output sockets
         --------------
-            instances : Instances
+            - instances : Instances
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Points.instance_on_points : Method
-            
+              
+            - Points.instance_on_points : Method
+              
     """
 
     def __init__(self, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, label=None):
@@ -5627,10 +5692,10 @@ class InstancesToPoints(Node):
 
             Input sockets
             -------------
-                instances : Instances
-                    - selection : Boolean
-                    - position : Vector
-                    - radius : Float
+                - instances : Instances
+                - selection : Boolean
+                - position : Vector
+                - radius : Float
     
 
             Node label
@@ -5640,15 +5705,16 @@ class InstancesToPoints(Node):
 
         Output sockets
         --------------
-            points : Points
+            - points : Points
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Instances.to_points : Method
-            
+              
+            - Instances.to_points : Method
+              
     """
 
     def __init__(self, instances=None, selection=None, position=None, radius=None, label=None):
@@ -5702,15 +5768,16 @@ class IsViewport(Node):
 
         Output sockets
         --------------
-            is_viewport : Boolean
+            - is_viewport : Boolean
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.is_viewport : Static method
-            
+              
+            - Geometry.is_viewport : Static method
+              
     """
 
     def __init__(self, label=None):
@@ -5752,7 +5819,7 @@ class JoinGeometry(Node):
 
             Input sockets
             -------------
-                geometry : *Geometry
+                - geometry : *Geometry
     
 
             Node label
@@ -5762,15 +5829,16 @@ class JoinGeometry(Node):
 
         Output sockets
         --------------
-            geometry : Geometry
+            - geometry : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.join : Method
-            
+              
+            - Geometry.join : Method
+              
     """
 
     def __init__(self, *geometry, label=None):
@@ -5816,7 +5884,7 @@ class MaterialSelection(Node):
 
             Input sockets
             -------------
-                material : Material
+                - material : Material
     
 
             Node label
@@ -5826,17 +5894,18 @@ class MaterialSelection(Node):
 
         Output sockets
         --------------
-            selection : Boolean
+            - selection : Boolean
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Material.selection : Method
-                - Mesh.capture_material_selection : Capture attribute
-                - Mesh.material_selection : Attribute
-                  
+              
+            - Material.selection : Method
+            - Mesh.capture_material_selection : Capture attribute
+            - Mesh.material_selection : Attribute
+              
     """
 
     def __init__(self, material=None, label=None):
@@ -5882,9 +5951,9 @@ class MergeByDistance(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
-                    - selection : Boolean
-                    - distance : Float
+                - geometry : Geometry
+                - selection : Boolean
+                - distance : Float
     
 
             Node label
@@ -5894,15 +5963,16 @@ class MergeByDistance(Node):
 
         Output sockets
         --------------
-            geometry : Geometry
+            - geometry : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.merge_by_distance : Method
-            
+              
+            - Geometry.merge_by_distance : Method
+              
     """
 
     def __init__(self, geometry=None, selection=None, distance=None, label=None):
@@ -5950,15 +6020,15 @@ class MeshBoolean(Node):
 
             Input sockets
             -------------
-                mesh_1 : Geometry
-                    - mesh_2 : *Geometry
-                    - self_intersection : Boolean
-                    - hole_tolerant : Boolean
+                - mesh_1 : Geometry
+                - mesh_2 : *Geometry
+                - self_intersection : Boolean
+                - hole_tolerant : Boolean
     
 
             Parameters
             ----------
-                operation : str (default = 'DIFFERENCE') in ('INTERSECT', 'UNION', 'DIFFERENCE')
+                - operation : str (default = 'DIFFERENCE') in ('INTERSECT', 'UNION', 'DIFFERENCE')
     
 
             Node label
@@ -5968,17 +6038,18 @@ class MeshBoolean(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
+            - mesh : Mesh
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.difference : Method
-                - Mesh.intersect : Method
-                - Mesh.union : Method
-                  
+              
+            - Mesh.difference : Method
+            - Mesh.intersect : Method
+            - Mesh.union : Method
+              
     """
 
     def __init__(self, *mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', label=None):
@@ -6039,13 +6110,13 @@ class MeshCircle(Node):
 
             Input sockets
             -------------
-                vertices : Integer
-                    - radius : Float
+                - vertices : Integer
+                - radius : Float
     
 
             Parameters
             ----------
-                fill_type : str (default = 'NONE') in ('NONE', 'NGON', 'TRIANGLE_FAN')
+                - fill_type : str (default = 'NONE') in ('NONE', 'NGON', 'TRIANGLE_FAN')
     
 
             Node label
@@ -6055,15 +6126,16 @@ class MeshCircle(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
+            - mesh : Mesh
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.Circle : Constructor
-            
+              
+            - Mesh.Circle : Constructor
+              
     """
 
     def __init__(self, vertices=None, radius=None, fill_type='NONE', label=None):
@@ -6122,17 +6194,17 @@ class Cone(Node):
 
             Input sockets
             -------------
-                vertices : Integer
-                    - side_segments : Integer
-                    - fill_segments : Integer
-                    - radius_top : Float
-                    - radius_bottom : Float
-                    - depth : Float
+                - vertices : Integer
+                - side_segments : Integer
+                - fill_segments : Integer
+                - radius_top : Float
+                - radius_bottom : Float
+                - depth : Float
     
 
             Parameters
             ----------
-                fill_type : str (default = 'NGON') in ('NONE', 'NGON', 'TRIANGLE_FAN')
+                - fill_type : str (default = 'NGON') in ('NONE', 'NGON', 'TRIANGLE_FAN')
     
 
             Node label
@@ -6142,18 +6214,19 @@ class Cone(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
-                - top : Boolean
-                - bottom : Boolean
-                - side : Boolean
+            - mesh : Mesh
+            - top : Boolean
+            - bottom : Boolean
+            - side : Boolean
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.Cone : Constructor
-            
+              
+            - Mesh.Cone : Constructor
+              
     """
 
     def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', label=None):
@@ -6219,10 +6292,10 @@ class Cube(Node):
 
             Input sockets
             -------------
-                size : Vector
-                    - vertices_x : Integer
-                    - vertices_y : Integer
-                    - vertices_z : Integer
+                - size : Vector
+                - vertices_x : Integer
+                - vertices_y : Integer
+                - vertices_z : Integer
     
 
             Node label
@@ -6232,15 +6305,16 @@ class Cube(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
+            - mesh : Mesh
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.Cube : Constructor
-            
+              
+            - Mesh.Cube : Constructor
+              
     """
 
     def __init__(self, size=None, vertices_x=None, vertices_y=None, vertices_z=None, label=None):
@@ -6289,16 +6363,16 @@ class Cylinder(Node):
 
             Input sockets
             -------------
-                vertices : Integer
-                    - side_segments : Integer
-                    - fill_segments : Integer
-                    - radius : Float
-                    - depth : Float
+                - vertices : Integer
+                - side_segments : Integer
+                - fill_segments : Integer
+                - radius : Float
+                - depth : Float
     
 
             Parameters
             ----------
-                fill_type : str (default = 'NGON') in ('NONE', 'NGON', 'TRIANGLE_FAN')
+                - fill_type : str (default = 'NGON') in ('NONE', 'NGON', 'TRIANGLE_FAN')
     
 
             Node label
@@ -6308,18 +6382,19 @@ class Cylinder(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
-                - top : Boolean
-                - side : Boolean
-                - bottom : Boolean
+            - mesh : Mesh
+            - top : Boolean
+            - side : Boolean
+            - bottom : Boolean
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.Cylinder : Constructor
-            
+              
+            - Mesh.Cylinder : Constructor
+              
     """
 
     def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', label=None):
@@ -6384,10 +6459,10 @@ class Grid(Node):
 
             Input sockets
             -------------
-                size_x : Float
-                    - size_y : Float
-                    - vertices_x : Integer
-                    - vertices_y : Integer
+                - size_x : Float
+                - size_y : Float
+                - vertices_x : Integer
+                - vertices_y : Integer
     
 
             Node label
@@ -6397,15 +6472,16 @@ class Grid(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
+            - mesh : Mesh
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.Grid : Constructor
-            
+              
+            - Mesh.Grid : Constructor
+              
     """
 
     def __init__(self, size_x=None, size_y=None, vertices_x=None, vertices_y=None, label=None):
@@ -6454,8 +6530,8 @@ class IcoSphere(Node):
 
             Input sockets
             -------------
-                radius : Float
-                    - subdivisions : Integer
+                - radius : Float
+                - subdivisions : Integer
     
 
             Node label
@@ -6465,15 +6541,16 @@ class IcoSphere(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
+            - mesh : Mesh
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.IcoSphere : Constructor
-            
+              
+            - Mesh.IcoSphere : Constructor
+              
     """
 
     def __init__(self, radius=None, subdivisions=None, label=None):
@@ -6520,16 +6597,16 @@ class MeshLine(Node):
 
             Input sockets
             -------------
-                count : Integer
-                    - resolution : Float
-                    - start_location : Vector
-                    - offset : Vector
+                - count : Integer
+                - resolution : Float
+                - start_location : Vector
+                - offset : Vector
     
 
             Parameters
             ----------
-                count_mode : str (default = 'TOTAL') in ('TOTAL', 'RESOLUTION')
-                    - mode : str (default = 'OFFSET') in ('OFFSET', 'END_POINTS')
+                - count_mode : str (default = 'TOTAL') in ('TOTAL', 'RESOLUTION')
+                - mode : str (default = 'OFFSET') in ('OFFSET', 'END_POINTS')
     
 
             Node label
@@ -6539,15 +6616,16 @@ class MeshLine(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
+            - mesh : Mesh
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.Line : Constructor
-            
+              
+            - Mesh.Line : Constructor
+              
     """
 
     def __init__(self, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', label=None):
@@ -6617,8 +6695,8 @@ class MeshToCurve(Node):
 
             Input sockets
             -------------
-                mesh : Mesh
-                    - selection : Boolean
+                - mesh : Mesh
+                - selection : Boolean
     
 
             Node label
@@ -6628,15 +6706,16 @@ class MeshToCurve(Node):
 
         Output sockets
         --------------
-            curve : Curve
+            - curve : Curve
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.to_curve : Method
-            
+              
+            - Mesh.to_curve : Method
+              
     """
 
     def __init__(self, mesh=None, selection=None, label=None):
@@ -6683,15 +6762,15 @@ class MeshToPoints(Node):
 
             Input sockets
             -------------
-                mesh : Mesh
-                    - selection : Boolean
-                    - position : Vector
-                    - radius : Float
+                - mesh : Mesh
+                - selection : Boolean
+                - position : Vector
+                - radius : Float
     
 
             Parameters
             ----------
-                mode : str (default = 'VERTICES') in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
+                - mode : str (default = 'VERTICES') in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
     
 
             Node label
@@ -6701,15 +6780,16 @@ class MeshToPoints(Node):
 
         Output sockets
         --------------
-            points : Points
+            - points : Points
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.to_points : Method
-            
+              
+            - Mesh.to_points : Method
+              
     """
 
     def __init__(self, mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None):
@@ -6770,9 +6850,9 @@ class UvSphere(Node):
 
             Input sockets
             -------------
-                segments : Integer
-                    - rings : Integer
-                    - radius : Float
+                - segments : Integer
+                - rings : Integer
+                - radius : Float
     
 
             Node label
@@ -6782,15 +6862,16 @@ class UvSphere(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
+            - mesh : Mesh
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.UVSphere : Constructor
-            
+              
+            - Mesh.UVSphere : Constructor
+              
     """
 
     def __init__(self, segments=None, rings=None, radius=None, label=None):
@@ -6838,13 +6919,13 @@ class ObjectInfo(Node):
 
             Input sockets
             -------------
-                object : Object
-                    - as_instance : Boolean
+                - object : Object
+                - as_instance : Boolean
     
 
             Parameters
             ----------
-                transform_space : str (default = 'ORIGINAL') in ('ORIGINAL', 'RELATIVE')
+                - transform_space : str (default = 'ORIGINAL') in ('ORIGINAL', 'RELATIVE')
     
 
             Node label
@@ -6854,22 +6935,23 @@ class ObjectInfo(Node):
 
         Output sockets
         --------------
-            location : Vector
-                - rotation : Vector
-                - scale : Vector
-                - geometry : Geometry
+            - location : Vector
+            - rotation : Vector
+            - scale : Vector
+            - geometry : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Object.geometry : Property
-                - Object.info : Property
-                - Object.location : Property
-                - Object.rotation : Property
-                - Object.scale : Property
-                  
+              
+            - Object.geometry : Property
+            - Object.info : Property
+            - Object.location : Property
+            - Object.rotation : Property
+            - Object.scale : Property
+              
     """
 
     def __init__(self, object=None, as_instance=None, transform_space='ORIGINAL', label=None):
@@ -6931,8 +7013,8 @@ class PointsToVertices(Node):
 
             Input sockets
             -------------
-                points : Points
-                    - selection : Boolean
+                - points : Points
+                - selection : Boolean
     
 
             Node label
@@ -6942,15 +7024,16 @@ class PointsToVertices(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
+            - mesh : Mesh
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Points.to_vertices : Method
-            
+              
+            - Points.to_vertices : Method
+              
     """
 
     def __init__(self, points=None, selection=None, label=None):
@@ -6997,16 +7080,16 @@ class PointsToVolume(Node):
 
             Input sockets
             -------------
-                points : Points
-                    - density : Float
-                    - voxel_size : Float
-                    - voxel_amount : Float
-                    - radius : Float
+                - points : Points
+                - density : Float
+                - voxel_size : Float
+                - voxel_amount : Float
+                - radius : Float
     
 
             Parameters
             ----------
-                resolution_mode : str (default = 'VOXEL_AMOUNT') in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+                - resolution_mode : str (default = 'VOXEL_AMOUNT') in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
     
 
             Node label
@@ -7016,15 +7099,16 @@ class PointsToVolume(Node):
 
         Output sockets
         --------------
-            volume : Volume
+            - volume : Volume
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Points.to_volume : Method
-            
+              
+            - Points.to_volume : Method
+              
     """
 
     def __init__(self, points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', label=None):
@@ -7086,13 +7170,13 @@ class GeometryProximity(Node):
 
             Input sockets
             -------------
-                target : Geometry
-                    - source_position : Vector
+                - target : Geometry
+                - source_position : Vector
     
 
             Parameters
             ----------
-                target_element : str (default = 'FACES') in ('POINTS', 'EDGES', 'FACES')
+                - target_element : str (default = 'FACES') in ('POINTS', 'EDGES', 'FACES')
     
 
             Node label
@@ -7102,16 +7186,17 @@ class GeometryProximity(Node):
 
         Output sockets
         --------------
-            position : Vector
-                - distance : Float
+            - position : Vector
+            - distance : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.proximity : Method
-            
+              
+            - Geometry.proximity : Method
+              
     """
 
     def __init__(self, target=None, source_position=None, target_element='FACES', label=None):
@@ -7171,17 +7256,17 @@ class Raycast(Node):
 
             Input sockets
             -------------
-                target_geometry : Geometry
-                    - attribute : data_type dependant
-                    - source_position : Vector
-                    - ray_direction : Vector
-                    - ray_length : Float
+                - target_geometry : Geometry
+                - attribute : data_type dependant
+                - source_position : Vector
+                - ray_direction : Vector
+                - ray_length : Float
     
 
             Parameters
             ----------
-                data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
-                    - mapping : str (default = 'INTERPOLATED') in ('INTERPOLATED', 'NEAREST')
+                - data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+                - mapping : str (default = 'INTERPOLATED') in ('INTERPOLATED', 'NEAREST')
     
 
             Node label
@@ -7200,23 +7285,24 @@ class Raycast(Node):
 
         Output sockets
         --------------
-            is_hit : Boolean
-                - hit_position : Vector
-                - hit_normal : Vector
-                - hit_distance : Float
-                - attribute : data_type dependant
+            - is_hit : Boolean
+            - hit_position : Vector
+            - hit_normal : Vector
+            - hit_distance : Float
+            - attribute : data_type dependant
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Boolean.raycast : Method
-                - Color.raycast : Method
-                - Float.raycast : Method
-                - Integer.raycast : Method
-                - Vector.raycast : Method
-                  
+              
+            - Boolean.raycast : Method
+            - Color.raycast : Method
+            - Float.raycast : Method
+            - Integer.raycast : Method
+            - Vector.raycast : Method
+              
     """
 
     def __init__(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED', label=None):
@@ -7311,12 +7397,12 @@ class RealizeInstances(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
+                - geometry : Geometry
     
 
             Parameters
             ----------
-                legacy_behavior : bool (default = False)
+                - legacy_behavior : bool (default = False)
     
 
             Node label
@@ -7326,15 +7412,16 @@ class RealizeInstances(Node):
 
         Output sockets
         --------------
-            geometry : Geometry
+            - geometry : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.realize_instances : Method
-            
+              
+            - Geometry.realize_instances : Method
+              
     """
 
     def __init__(self, geometry=None, legacy_behavior=False, label=None):
@@ -7392,9 +7479,9 @@ class ReplaceMaterial(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
-                    - old : Material
-                    - new : Material
+                - geometry : Geometry
+                - old : Material
+                - new : Material
     
 
             Node label
@@ -7404,15 +7491,16 @@ class ReplaceMaterial(Node):
 
         Output sockets
         --------------
-            geometry : Geometry
+            - geometry : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.replace_material : Method
-            
+              
+            - Geometry.replace_material : Method
+              
     """
 
     def __init__(self, geometry=None, old=None, new=None, label=None):
@@ -7460,15 +7548,15 @@ class ResampleCurve(Node):
 
             Input sockets
             -------------
-                curve : Curve
-                    - selection : Boolean
-                    - count : Integer
-                    - length : Float
+                - curve : Curve
+                - selection : Boolean
+                - count : Integer
+                - length : Float
     
 
             Parameters
             ----------
-                mode : str (default = 'COUNT') in ('EVALUATED', 'COUNT', 'LENGTH')
+                - mode : str (default = 'COUNT') in ('EVALUATED', 'COUNT', 'LENGTH')
     
 
             Node label
@@ -7478,15 +7566,16 @@ class ResampleCurve(Node):
 
         Output sockets
         --------------
-            curve : Curve
+            - curve : Curve
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.resample : Method
-            
+              
+            - Curve.resample : Method
+              
     """
 
     def __init__(self, curve=None, selection=None, count=None, length=None, mode='COUNT', label=None):
@@ -7547,8 +7636,8 @@ class ReverseCurve(Node):
 
             Input sockets
             -------------
-                curve : Curve
-                    - selection : Boolean
+                - curve : Curve
+                - selection : Boolean
     
 
             Node label
@@ -7558,15 +7647,16 @@ class ReverseCurve(Node):
 
         Output sockets
         --------------
-            curve : Curve
+            - curve : Curve
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.reverse : Method
-            
+              
+            - Curve.reverse : Method
+              
     """
 
     def __init__(self, curve=None, selection=None, label=None):
@@ -7613,11 +7703,11 @@ class RotateInstances(Node):
 
             Input sockets
             -------------
-                instances : Instances
-                    - selection : Boolean
-                    - rotation : Vector
-                    - pivot_point : Vector
-                    - local_space : Boolean
+                - instances : Instances
+                - selection : Boolean
+                - rotation : Vector
+                - pivot_point : Vector
+                - local_space : Boolean
     
 
             Node label
@@ -7627,15 +7717,16 @@ class RotateInstances(Node):
 
         Output sockets
         --------------
-            instances : Instances
+            - instances : Instances
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Instances.rotate : Method
-            
+              
+            - Instances.rotate : Method
+              
     """
 
     def __init__(self, instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, label=None):
@@ -7685,14 +7776,14 @@ class SampleCurve(Node):
 
             Input sockets
             -------------
-                curve : Curve
-                    - factor : Float
-                    - length : Float
+                - curve : Curve
+                - factor : Float
+                - length : Float
     
 
             Parameters
             ----------
-                mode : str (default = 'LENGTH') in ('FACTOR', 'LENGTH')
+                - mode : str (default = 'LENGTH') in ('FACTOR', 'LENGTH')
     
 
             Node label
@@ -7702,17 +7793,18 @@ class SampleCurve(Node):
 
         Output sockets
         --------------
-            position : Vector
-                - tangent : Vector
-                - normal : Vector
+            - position : Vector
+            - tangent : Vector
+            - normal : Vector
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.sample : Method
-            
+              
+            - Curve.sample : Method
+              
     """
 
     def __init__(self, curve=None, factor=None, length=None, mode='LENGTH', label=None):
@@ -7774,17 +7866,17 @@ class ScaleElements(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
-                    - selection : Boolean
-                    - scale : Float
-                    - center : Vector
-                    - axis : Vector
+                - geometry : Geometry
+                - selection : Boolean
+                - scale : Float
+                - center : Vector
+                - axis : Vector
     
 
             Parameters
             ----------
-                domain : str (default = 'FACE') in ('FACE', 'EDGE')
-                    - scale_mode : str (default = 'UNIFORM') in ('UNIFORM', 'SINGLE_AXIS')
+                - domain : str (default = 'FACE') in ('FACE', 'EDGE')
+                - scale_mode : str (default = 'UNIFORM') in ('UNIFORM', 'SINGLE_AXIS')
     
 
             Node label
@@ -7794,15 +7886,16 @@ class ScaleElements(Node):
 
         Output sockets
         --------------
-            geometry : Geometry
+            - geometry : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.scale_elements : Method
-            
+              
+            - Geometry.scale_elements : Method
+              
     """
 
     def __init__(self, geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', label=None):
@@ -7873,11 +7966,11 @@ class ScaleInstances(Node):
 
             Input sockets
             -------------
-                instances : Instances
-                    - selection : Boolean
-                    - scale : Vector
-                    - center : Vector
-                    - local_space : Boolean
+                - instances : Instances
+                - selection : Boolean
+                - scale : Vector
+                - center : Vector
+                - local_space : Boolean
     
 
             Node label
@@ -7887,15 +7980,16 @@ class ScaleInstances(Node):
 
         Output sockets
         --------------
-            instances : Instances
+            - instances : Instances
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Instances.scale : Method
-            
+              
+            - Instances.scale : Method
+              
     """
 
     def __init__(self, instances=None, selection=None, scale=None, center=None, local_space=None, label=None):
@@ -7945,7 +8039,7 @@ class SeparateComponents(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
+                - geometry : Geometry
     
 
             Node label
@@ -7955,24 +8049,25 @@ class SeparateComponents(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
-                - point_cloud : Geometry
-                - curve : Curve
-                - volume : Volume
-                - instances : Instances
+            - mesh : Mesh
+            - point_cloud : Geometry
+            - curve : Curve
+            - volume : Volume
+            - instances : Instances
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.components : Property
-                - Geometry.curve_component : Property
-                - Geometry.instances_component : Property
-                - Geometry.mesh_component : Property
-                - Geometry.points_component : Property
-                - Geometry.volume_component : Property
-                  
+              
+            - Geometry.components : Property
+            - Geometry.curve_component : Property
+            - Geometry.instances_component : Property
+            - Geometry.mesh_component : Property
+            - Geometry.points_component : Property
+            - Geometry.volume_component : Property
+              
     """
 
     def __init__(self, geometry=None, label=None):
@@ -8022,13 +8117,13 @@ class SeparateGeometry(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
-                    - selection : Boolean
+                - geometry : Geometry
+                - selection : Boolean
     
 
             Parameters
             ----------
-                domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+                - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
     
 
             Node label
@@ -8038,16 +8133,17 @@ class SeparateGeometry(Node):
 
         Output sockets
         --------------
-            selection : Geometry
-                - inverted : Geometry
+            - selection : Geometry
+            - inverted : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.components : Method
-            
+              
+            - Geometry.components : Method
+              
     """
 
     def __init__(self, geometry=None, selection=None, domain='POINT', label=None):
@@ -8107,15 +8203,15 @@ class SetHandlePositions(Node):
 
             Input sockets
             -------------
-                curve : Curve
-                    - selection : Boolean
-                    - position : Vector
-                    - offset : Vector
+                - curve : Curve
+                - selection : Boolean
+                - position : Vector
+                - offset : Vector
     
 
             Parameters
             ----------
-                mode : str (default = 'LEFT') in ('LEFT', 'RIGHT')
+                - mode : str (default = 'LEFT') in ('LEFT', 'RIGHT')
     
 
             Node label
@@ -8125,15 +8221,16 @@ class SetHandlePositions(Node):
 
         Output sockets
         --------------
-            curve : Curve
+            - curve : Curve
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.set_handle_positions : Method
-            
+              
+            - Curve.set_handle_positions : Method
+              
     """
 
     def __init__(self, curve=None, selection=None, position=None, offset=None, mode='LEFT', label=None):
@@ -8194,9 +8291,9 @@ class SetCurveRadius(Node):
 
             Input sockets
             -------------
-                curve : Curve
-                    - selection : Boolean
-                    - radius : Float
+                - curve : Curve
+                - selection : Boolean
+                - radius : Float
     
 
             Node label
@@ -8206,15 +8303,16 @@ class SetCurveRadius(Node):
 
         Output sockets
         --------------
-            curve : Curve
+            - curve : Curve
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.set_radius : Method
-            
+              
+            - Curve.set_radius : Method
+              
     """
 
     def __init__(self, curve=None, selection=None, radius=None, label=None):
@@ -8262,9 +8360,9 @@ class SetCurveTilt(Node):
 
             Input sockets
             -------------
-                curve : Curve
-                    - selection : Boolean
-                    - tilt : Float
+                - curve : Curve
+                - selection : Boolean
+                - tilt : Float
     
 
             Node label
@@ -8274,15 +8372,16 @@ class SetCurveTilt(Node):
 
         Output sockets
         --------------
-            curve : Curve
+            - curve : Curve
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.set_tilt : Method
-            
+              
+            - Curve.set_tilt : Method
+              
     """
 
     def __init__(self, curve=None, selection=None, tilt=None, label=None):
@@ -8330,9 +8429,9 @@ class SetID(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
-                    - selection : Boolean
-                    - ID : Integer
+                - geometry : Geometry
+                - selection : Boolean
+                - ID : Integer
     
 
             Node label
@@ -8342,15 +8441,16 @@ class SetID(Node):
 
         Output sockets
         --------------
-            geometry : Geometry
+            - geometry : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.set_ID : Method
-            
+              
+            - Geometry.set_ID : Method
+              
     """
 
     def __init__(self, geometry=None, selection=None, ID=None, label=None):
@@ -8398,9 +8498,9 @@ class SetMaterial(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
-                    - selection : Boolean
-                    - material : Material
+                - geometry : Geometry
+                - selection : Boolean
+                - material : Material
     
 
             Node label
@@ -8410,15 +8510,16 @@ class SetMaterial(Node):
 
         Output sockets
         --------------
-            geometry : Geometry
+            - geometry : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.set_material : Method
-            
+              
+            - Geometry.set_material : Method
+              
     """
 
     def __init__(self, geometry=None, selection=None, material=None, label=None):
@@ -8466,9 +8567,9 @@ class SetMaterialIndex(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
-                    - selection : Boolean
-                    - material_index : Integer
+                - geometry : Geometry
+                - selection : Boolean
+                - material_index : Integer
     
 
             Node label
@@ -8478,15 +8579,16 @@ class SetMaterialIndex(Node):
 
         Output sockets
         --------------
-            geometry : Geometry
+            - geometry : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.set_material_index : Method
-            
+              
+            - Geometry.set_material_index : Method
+              
     """
 
     def __init__(self, geometry=None, selection=None, material_index=None, label=None):
@@ -8534,9 +8636,9 @@ class SetPointRadius(Node):
 
             Input sockets
             -------------
-                points : Points
-                    - selection : Boolean
-                    - radius : Float
+                - points : Points
+                - selection : Boolean
+                - radius : Float
     
 
             Node label
@@ -8546,15 +8648,16 @@ class SetPointRadius(Node):
 
         Output sockets
         --------------
-            points : Points
+            - points : Points
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Points.set_radius : Method
-            
+              
+            - Points.set_radius : Method
+              
     """
 
     def __init__(self, points=None, selection=None, radius=None, label=None):
@@ -8602,10 +8705,10 @@ class SetPosition(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
-                    - selection : Boolean
-                    - position : Vector
-                    - offset : Vector
+                - geometry : Geometry
+                - selection : Boolean
+                - position : Vector
+                - offset : Vector
     
 
             Node label
@@ -8615,15 +8718,16 @@ class SetPosition(Node):
 
         Output sockets
         --------------
-            geometry : Geometry
+            - geometry : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.set_position : Method
-            
+              
+            - Geometry.set_position : Method
+              
     """
 
     def __init__(self, geometry=None, selection=None, position=None, offset=None, label=None):
@@ -8672,9 +8776,9 @@ class SetShadeSmooth(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
-                    - selection : Boolean
-                    - shade_smooth : Boolean
+                - geometry : Geometry
+                - selection : Boolean
+                - shade_smooth : Boolean
     
 
             Node label
@@ -8684,15 +8788,16 @@ class SetShadeSmooth(Node):
 
         Output sockets
         --------------
-            geometry : Geometry
+            - geometry : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.set_shade_smooth : Method
-            
+              
+            - Geometry.set_shade_smooth : Method
+              
     """
 
     def __init__(self, geometry=None, selection=None, shade_smooth=None, label=None):
@@ -8740,9 +8845,9 @@ class SetSplineCyclic(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
-                    - selection : Boolean
-                    - cyclic : Boolean
+                - geometry : Geometry
+                - selection : Boolean
+                - cyclic : Boolean
     
 
             Node label
@@ -8752,15 +8857,16 @@ class SetSplineCyclic(Node):
 
         Output sockets
         --------------
-            geometry : Geometry
+            - geometry : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Spline.set_cyclic : Method
-            
+              
+            - Spline.set_cyclic : Method
+              
     """
 
     def __init__(self, geometry=None, selection=None, cyclic=None, label=None):
@@ -8808,9 +8914,9 @@ class SetSplineResolution(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
-                    - selection : Boolean
-                    - resolution : Integer
+                - geometry : Geometry
+                - selection : Boolean
+                - resolution : Integer
     
 
             Node label
@@ -8820,15 +8926,16 @@ class SetSplineResolution(Node):
 
         Output sockets
         --------------
-            geometry : Geometry
+            - geometry : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Spline.set_resolution : Method
-            
+              
+            - Spline.set_resolution : Method
+              
     """
 
     def __init__(self, geometry=None, selection=None, resolution=None, label=None):
@@ -8881,18 +8988,19 @@ class SplineLength(Node):
 
         Output sockets
         --------------
-            length : Float
-                - point_count : Integer
+            - length : Float
+            - point_count : Integer
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Spline.capture_length : Capture attribute
-                - Spline.length : Attribute
-                - Spline.point_count : Attribute
-                  
+              
+            - Spline.capture_length : Capture attribute
+            - Spline.length : Attribute
+            - Spline.point_count : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -8940,20 +9048,21 @@ class SplineParameter(Node):
 
         Output sockets
         --------------
-            factor : Float
-                - length : Float
-                - index : Integer
+            - factor : Float
+            - length : Float
+            - index : Integer
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Spline.capture_parameter : Capture attribute
-                - Spline.factor : Attribute
-                - Spline.parameter_index : Attribute
-                - Spline.parameter_length : Attribute
-                  
+              
+            - Spline.capture_parameter : Capture attribute
+            - Spline.factor : Attribute
+            - Spline.parameter_index : Attribute
+            - Spline.parameter_length : Attribute
+              
     """
 
     def __init__(self, label=None):
@@ -8997,8 +9106,8 @@ class SplitEdges(Node):
 
             Input sockets
             -------------
-                mesh : Mesh
-                    - selection : Boolean
+                - mesh : Mesh
+                - selection : Boolean
     
 
             Node label
@@ -9008,15 +9117,16 @@ class SplitEdges(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
+            - mesh : Mesh
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.split_edges : Method
-            
+              
+            - Mesh.split_edges : Method
+              
     """
 
     def __init__(self, mesh=None, selection=None, label=None):
@@ -9063,8 +9173,8 @@ class JoinStrings(Node):
 
             Input sockets
             -------------
-                delimiter : String
-                    - strings : *String
+                - delimiter : String
+                - strings : *String
     
 
             Node label
@@ -9074,16 +9184,17 @@ class JoinStrings(Node):
 
         Output sockets
         --------------
-            string : String
+            - string : String
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            String.join : Method
-                - functions.join_strings : Function
-                  
+              
+            - String.join : Method
+            - functions.join_strings : Function
+              
     """
 
     def __init__(self, *strings, delimiter=None, label=None):
@@ -9130,21 +9241,21 @@ class StringToCurves(Node):
 
             Input sockets
             -------------
-                string : String
-                    - size : Float
-                    - character_spacing : Float
-                    - word_spacing : Float
-                    - line_spacing : Float
-                    - text_box_width : Float
-                    - text_box_height : Float
+                - string : String
+                - size : Float
+                - character_spacing : Float
+                - word_spacing : Float
+                - line_spacing : Float
+                - text_box_width : Float
+                - text_box_height : Float
     
 
             Parameters
             ----------
-                align_x : str (default = 'LEFT') in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
-                    - align_y : str (default = 'TOP_BASELINE') in ('TOP_BASELINE', 'TOP', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
-                    - overflow : str (default = 'OVERFLOW') in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
-                    - pivot_mode : str (default = 'BOTTOM_LEFT') in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
+                - align_x : str (default = 'LEFT') in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
+                - align_y : str (default = 'TOP_BASELINE') in ('TOP_BASELINE', 'TOP', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
+                - overflow : str (default = 'OVERFLOW') in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
+                - pivot_mode : str (default = 'BOTTOM_LEFT') in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
     
 
             Node label
@@ -9154,18 +9265,19 @@ class StringToCurves(Node):
 
         Output sockets
         --------------
-            curve_instances : Geometry
-                - remainder : String
-                - line : Integer
-                - pivot_point : Vector
+            - curve_instances : Geometry
+            - remainder : String
+            - line : Integer
+            - pivot_point : Vector
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            String.to_curves : Method
-            
+              
+            - String.to_curves : Method
+              
     """
 
     def __init__(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT', label=None):
@@ -9259,8 +9371,8 @@ class SubdivideCurve(Node):
 
             Input sockets
             -------------
-                curve : Curve
-                    - cuts : Integer
+                - curve : Curve
+                - cuts : Integer
     
 
             Node label
@@ -9270,15 +9382,16 @@ class SubdivideCurve(Node):
 
         Output sockets
         --------------
-            curve : Curve
+            - curve : Curve
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.subdivide : Method
-            
+              
+            - Curve.subdivide : Method
+              
     """
 
     def __init__(self, curve=None, cuts=None, label=None):
@@ -9325,8 +9438,8 @@ class SubdivideMesh(Node):
 
             Input sockets
             -------------
-                mesh : Mesh
-                    - level : Integer
+                - mesh : Mesh
+                - level : Integer
     
 
             Node label
@@ -9336,15 +9449,16 @@ class SubdivideMesh(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
+            - mesh : Mesh
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.subdivide : Method
-            
+              
+            - Mesh.subdivide : Method
+              
     """
 
     def __init__(self, mesh=None, level=None, label=None):
@@ -9391,15 +9505,15 @@ class SubdivisionSurface(Node):
 
             Input sockets
             -------------
-                mesh : Mesh
-                    - level : Integer
-                    - crease : Float
+                - mesh : Mesh
+                - level : Integer
+                - crease : Float
     
 
             Parameters
             ----------
-                boundary_smooth : str (default = 'ALL') in ('PRESERVE_CORNERS', 'ALL')
-                    - uv_smooth : str (default = 'PRESERVE_BOUNDARIES') in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
+                - boundary_smooth : str (default = 'ALL') in ('PRESERVE_CORNERS', 'ALL')
+                - uv_smooth : str (default = 'PRESERVE_BOUNDARIES') in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
     
 
             Node label
@@ -9409,15 +9523,16 @@ class SubdivisionSurface(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
+            - mesh : Mesh
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.subdivision_surface : Method
-            
+              
+            - Mesh.subdivision_surface : Method
+              
     """
 
     def __init__(self, mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None):
@@ -9486,15 +9601,15 @@ class Switch(Node):
 
             Input sockets
             -------------
-                switch0 : Boolean
-                    - switch1 : Boolean
-                    - false : input_type dependant
-                    - true : input_type dependant
+                - switch0 : Boolean
+                - switch1 : Boolean
+                - false : input_type dependant
+                - true : input_type dependant
     
 
             Parameters
             ----------
-                input_type : str (default = 'GEOMETRY') in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')
+                - input_type : str (default = 'GEOMETRY') in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')
     
 
             Node label
@@ -9513,24 +9628,25 @@ class Switch(Node):
 
         Output sockets
         --------------
-            output : input_type dependant
+            - output : input_type dependant
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Boolean.switch : Method
-                - Collection.switch : Method
-                - Float.switch : Method
-                - Geometry.switch : Method
-                - Image.switch : Method
-                - Integer.switch : Method
-                - Material.switch : Method
-                - Object.switch : Method
-                - String.switch : Method
-                - Texture.switch : Method
-                  
+              
+            - Boolean.switch : Method
+            - Collection.switch : Method
+            - Float.switch : Method
+            - Geometry.switch : Method
+            - Image.switch : Method
+            - Integer.switch : Method
+            - Material.switch : Method
+            - Object.switch : Method
+            - String.switch : Method
+            - Texture.switch : Method
+              
     """
 
     def __init__(self, switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', label=None):
@@ -9650,10 +9766,10 @@ class Transform(Node):
 
             Input sockets
             -------------
-                geometry : Geometry
-                    - translation : Vector
-                    - rotation : Vector
-                    - scale : Vector
+                - geometry : Geometry
+                - translation : Vector
+                - rotation : Vector
+                - scale : Vector
     
 
             Node label
@@ -9663,15 +9779,16 @@ class Transform(Node):
 
         Output sockets
         --------------
-            geometry : Geometry
+            - geometry : Geometry
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Geometry.transform : Method
-            
+              
+            - Geometry.transform : Method
+              
     """
 
     def __init__(self, geometry=None, translation=None, rotation=None, scale=None, label=None):
@@ -9720,10 +9837,10 @@ class TranslateInstances(Node):
 
             Input sockets
             -------------
-                instances : Instances
-                    - selection : Boolean
-                    - translation : Vector
-                    - local_space : Boolean
+                - instances : Instances
+                - selection : Boolean
+                - translation : Vector
+                - local_space : Boolean
     
 
             Node label
@@ -9733,15 +9850,16 @@ class TranslateInstances(Node):
 
         Output sockets
         --------------
-            instances : Instances
+            - instances : Instances
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Instances.translate : Method
-            
+              
+            - Instances.translate : Method
+              
     """
 
     def __init__(self, instances=None, selection=None, translation=None, local_space=None, label=None):
@@ -9790,15 +9908,15 @@ class Triangulate(Node):
 
             Input sockets
             -------------
-                mesh : Mesh
-                    - selection : Boolean
-                    - minimum_vertices : Integer
+                - mesh : Mesh
+                - selection : Boolean
+                - minimum_vertices : Integer
     
 
             Parameters
             ----------
-                ngon_method : str (default = 'BEAUTY') in ('BEAUTY', 'CLIP')
-                    - quad_method : str (default = 'SHORTEST_DIAGONAL') in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
+                - ngon_method : str (default = 'BEAUTY') in ('BEAUTY', 'CLIP')
+                - quad_method : str (default = 'SHORTEST_DIAGONAL') in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
     
 
             Node label
@@ -9808,15 +9926,16 @@ class Triangulate(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
+            - mesh : Mesh
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Mesh.triangulate : Method
-            
+              
+            - Mesh.triangulate : Method
+              
     """
 
     def __init__(self, mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', label=None):
@@ -9885,16 +10004,16 @@ class TrimCurve(Node):
 
             Input sockets
             -------------
-                curve : Curve
-                    - start0 : Float
-                    - start1 : Float
-                    - end0 : Float
-                    - end1 : Float
+                - curve : Curve
+                - start0 : Float
+                - start1 : Float
+                - end0 : Float
+                - end1 : Float
     
 
             Parameters
             ----------
-                mode : str (default = 'FACTOR') in ('FACTOR', 'LENGTH')
+                - mode : str (default = 'FACTOR') in ('FACTOR', 'LENGTH')
     
 
             Node label
@@ -9904,15 +10023,16 @@ class TrimCurve(Node):
 
         Output sockets
         --------------
-            curve : Curve
+            - curve : Curve
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Curve.trim : Method
-            
+              
+            - Curve.trim : Method
+              
     """
 
     def __init__(self, curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR', label=None):
@@ -9974,16 +10094,16 @@ class VolumeToMesh(Node):
 
             Input sockets
             -------------
-                volume : Volume
-                    - voxel_size : Float
-                    - voxel_amount : Float
-                    - threshold : Float
-                    - adaptivity : Float
+                - volume : Volume
+                - voxel_size : Float
+                - voxel_amount : Float
+                - threshold : Float
+                - adaptivity : Float
     
 
             Parameters
             ----------
-                resolution_mode : str (default = 'GRID') in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
+                - resolution_mode : str (default = 'GRID') in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
     
 
             Node label
@@ -9993,15 +10113,16 @@ class VolumeToMesh(Node):
 
         Output sockets
         --------------
-            mesh : Mesh
+            - mesh : Mesh
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Volume.to_mesh : Method
-            
+              
+            - Volume.to_mesh : Method
+              
     """
 
     def __init__(self, volume=None, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID', label=None):
@@ -10063,14 +10184,14 @@ class Clamp(Node):
 
             Input sockets
             -------------
-                value : Float
-                    - min : Float
-                    - max : Float
+                - value : Float
+                - min : Float
+                - max : Float
     
 
             Parameters
             ----------
-                clamp_type : str (default = 'MINMAX') in ('MINMAX', 'RANGE')
+                - clamp_type : str (default = 'MINMAX') in ('MINMAX', 'RANGE')
     
 
             Node label
@@ -10080,15 +10201,16 @@ class Clamp(Node):
 
         Output sockets
         --------------
-            result : Float
+            - result : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Float.clamp : Method
-            
+              
+            - Float.clamp : Method
+              
     """
 
     def __init__(self, value=None, min=None, max=None, clamp_type='MINMAX', label=None):
@@ -10148,9 +10270,9 @@ class CombineRgb(Node):
 
             Input sockets
             -------------
-                r : Float
-                    - g : Float
-                    - b : Float
+                - r : Float
+                - g : Float
+                - b : Float
     
 
             Node label
@@ -10160,15 +10282,16 @@ class CombineRgb(Node):
 
         Output sockets
         --------------
-            image : Color
+            - image : Color
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Color.Combine : Constructor
-            
+              
+            - Color.Combine : Constructor
+              
     """
 
     def __init__(self, r=None, g=None, b=None, label=None):
@@ -10216,9 +10339,9 @@ class CombineXyz(Node):
 
             Input sockets
             -------------
-                x : Float
-                    - y : Float
-                    - z : Float
+                - x : Float
+                - y : Float
+                - z : Float
     
 
             Node label
@@ -10228,15 +10351,16 @@ class CombineXyz(Node):
 
         Output sockets
         --------------
-            vector : Vector
+            - vector : Vector
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Vector.Combine : Constructor
-            
+              
+            - Vector.Combine : Constructor
+              
     """
 
     def __init__(self, x=None, y=None, z=None, label=None):
@@ -10284,8 +10408,8 @@ class FloatCurve(Node):
 
             Input sockets
             -------------
-                factor : Float
-                    - value : Float
+                - factor : Float
+                - value : Float
     
 
             Node label
@@ -10295,15 +10419,16 @@ class FloatCurve(Node):
 
         Output sockets
         --------------
-            value : Float
+            - value : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Float.curve : Method
-            
+              
+            - Float.curve : Method
+              
     """
 
     def __init__(self, factor=None, value=None, label=None):
@@ -10350,20 +10475,20 @@ class MapRange(Node):
 
             Input sockets
             -------------
-                value : Float
-                    - from_min : data_type dependant
-                    - from_max : data_type dependant
-                    - to_min : data_type dependant
-                    - to_max : data_type dependant
-                    - steps : data_type dependant
-                    - vector : Vector
+                - value : Float
+                - from_min : data_type dependant
+                - from_max : data_type dependant
+                - to_min : data_type dependant
+                - to_max : data_type dependant
+                - steps : data_type dependant
+                - vector : Vector
     
 
             Parameters
             ----------
-                clamp : bool (default = True)
-                    - data_type : str (default = 'FLOAT') in ('FLOAT', 'FLOAT_VECTOR')
-                    - interpolation_type : str (default = 'LINEAR') in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+                - clamp : bool (default = True)
+                - data_type : str (default = 'FLOAT') in ('FLOAT', 'FLOAT_VECTOR')
+                - interpolation_type : str (default = 'LINEAR') in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
     
 
             Node label
@@ -10382,17 +10507,18 @@ class MapRange(Node):
 
         Output sockets
         --------------
-            result : Float
-                - vector : Vector
+            - result : Float
+            - vector : Vector
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Float.map_range : Method
-                - Vector.map_range : Method
-                  
+              
+            - Float.map_range : Method
+            - Vector.map_range : Method
+              
     """
 
     def __init__(self, value=None, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, vector=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', label=None):
@@ -10482,14 +10608,14 @@ class Math(Node):
 
             Input sockets
             -------------
-                value0 : Float
-                    - value1 : Float
-                    - value2 : Float
+                - value0 : Float
+                - value1 : Float
+                - value2 : Float
     
 
             Parameters
             ----------
-                operation : str (default = 'ADD') in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES')
+                - operation : str (default = 'ADD') in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES')
     
 
             Node label
@@ -10499,134 +10625,135 @@ class Math(Node):
 
         Output sockets
         --------------
-            value : Float
+            - value : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Float.abs : Method
-                - Float.add : Method
-                - Float.arccos : Method
-                - Float.arcsin : Method
-                - Float.arctan : Method
-                - Float.arctan2 : Method
-                - Float.ceil : Method
-                - Float.compare : Method
-                - Float.cos : Method
-                - Float.cosh : Method
-                - Float.degrees : Method
-                - Float.divide : Method
-                - Float.exp : Method
-                - Float.floor : Method
-                - Float.fract : Method
-                - Float.greater_than : Method
-                - Float.inverse_sqrt : Method
-                - Float.less_than : Method
-                - Float.log : Method
-                - Float.max : Method
-                - Float.min : Method
-                - Float.modulo : Method
-                - Float.multiply : Method
-                - Float.multiply_add : Method
-                - Float.pingpong : Method
-                - Float.pow : Method
-                - Float.radians : Method
-                - Float.round : Method
-                - Float.sign : Method
-                - Float.sin : Method
-                - Float.sinh : Method
-                - Float.smooth_max : Method
-                - Float.smooth_min : Method
-                - Float.snap : Method
-                - Float.sqrt : Method
-                - Float.subtract : Method
-                - Float.tan : Method
-                - Float.tanh : Method
-                - Float.trunc : Method
-                - Float.wrap : Method
-                - Integer.abs : Method
-                - Integer.add : Method
-                - Integer.arccos : Method
-                - Integer.arcsin : Method
-                - Integer.arctan : Method
-                - Integer.arctan2 : Method
-                - Integer.ceil : Method
-                - Integer.compare : Method
-                - Integer.cos : Method
-                - Integer.cosh : Method
-                - Integer.degrees : Method
-                - Integer.divide : Method
-                - Integer.exp : Method
-                - Integer.floor : Method
-                - Integer.fract : Method
-                - Integer.greater_than : Method
-                - Integer.inverse_sqrt : Method
-                - Integer.less_than : Method
-                - Integer.log : Method
-                - Integer.max : Method
-                - Integer.min : Method
-                - Integer.modulo : Method
-                - Integer.multiply : Method
-                - Integer.multiply_add : Method
-                - Integer.pingpong : Method
-                - Integer.pow : Method
-                - Integer.radians : Method
-                - Integer.round : Method
-                - Integer.sign : Method
-                - Integer.sin : Method
-                - Integer.sinh : Method
-                - Integer.smooth_max : Method
-                - Integer.smooth_min : Method
-                - Integer.snap : Method
-                - Integer.sqrt : Method
-                - Integer.subtract : Method
-                - Integer.tan : Method
-                - Integer.tanh : Method
-                - Integer.trunc : Method
-                - Integer.wrap : Method
-                - functions.abs : Function
-                - functions.add : Function
-                - functions.arccos : Function
-                - functions.arcsin : Function
-                - functions.arctan : Function
-                - functions.arctan2 : Function
-                - functions.ceil : Function
-                - functions.compare : Function
-                - functions.cos : Function
-                - functions.cosh : Function
-                - functions.degrees : Function
-                - functions.divide : Function
-                - functions.exp : Function
-                - functions.floor : Function
-                - functions.fract : Function
-                - functions.greater_than : Function
-                - functions.inverse_sqrt : Function
-                - functions.less_than : Function
-                - functions.log : Function
-                - functions.max : Function
-                - functions.min : Function
-                - functions.modulo : Function
-                - functions.multiply : Function
-                - functions.multiply_add : Function
-                - functions.pingpong : Function
-                - functions.pow : Function
-                - functions.radians : Function
-                - functions.round : Function
-                - functions.sign : Function
-                - functions.sin : Function
-                - functions.sinh : Function
-                - functions.smooth_max : Function
-                - functions.smooth_min : Function
-                - functions.snap : Function
-                - functions.sqrt : Function
-                - functions.subtract : Function
-                - functions.tan : Function
-                - functions.tanh : Function
-                - functions.trunc : Function
-                - functions.wrap : Function
-                  
+              
+            - Float.abs : Method
+            - Float.add : Method
+            - Float.arccos : Method
+            - Float.arcsin : Method
+            - Float.arctan : Method
+            - Float.arctan2 : Method
+            - Float.ceil : Method
+            - Float.compare : Method
+            - Float.cos : Method
+            - Float.cosh : Method
+            - Float.degrees : Method
+            - Float.divide : Method
+            - Float.exp : Method
+            - Float.floor : Method
+            - Float.fract : Method
+            - Float.greater_than : Method
+            - Float.inverse_sqrt : Method
+            - Float.less_than : Method
+            - Float.log : Method
+            - Float.max : Method
+            - Float.min : Method
+            - Float.modulo : Method
+            - Float.multiply : Method
+            - Float.multiply_add : Method
+            - Float.pingpong : Method
+            - Float.pow : Method
+            - Float.radians : Method
+            - Float.round : Method
+            - Float.sign : Method
+            - Float.sin : Method
+            - Float.sinh : Method
+            - Float.smooth_max : Method
+            - Float.smooth_min : Method
+            - Float.snap : Method
+            - Float.sqrt : Method
+            - Float.subtract : Method
+            - Float.tan : Method
+            - Float.tanh : Method
+            - Float.trunc : Method
+            - Float.wrap : Method
+            - Integer.abs : Method
+            - Integer.add : Method
+            - Integer.arccos : Method
+            - Integer.arcsin : Method
+            - Integer.arctan : Method
+            - Integer.arctan2 : Method
+            - Integer.ceil : Method
+            - Integer.compare : Method
+            - Integer.cos : Method
+            - Integer.cosh : Method
+            - Integer.degrees : Method
+            - Integer.divide : Method
+            - Integer.exp : Method
+            - Integer.floor : Method
+            - Integer.fract : Method
+            - Integer.greater_than : Method
+            - Integer.inverse_sqrt : Method
+            - Integer.less_than : Method
+            - Integer.log : Method
+            - Integer.max : Method
+            - Integer.min : Method
+            - Integer.modulo : Method
+            - Integer.multiply : Method
+            - Integer.multiply_add : Method
+            - Integer.pingpong : Method
+            - Integer.pow : Method
+            - Integer.radians : Method
+            - Integer.round : Method
+            - Integer.sign : Method
+            - Integer.sin : Method
+            - Integer.sinh : Method
+            - Integer.smooth_max : Method
+            - Integer.smooth_min : Method
+            - Integer.snap : Method
+            - Integer.sqrt : Method
+            - Integer.subtract : Method
+            - Integer.tan : Method
+            - Integer.tanh : Method
+            - Integer.trunc : Method
+            - Integer.wrap : Method
+            - functions.abs : Function
+            - functions.add : Function
+            - functions.arccos : Function
+            - functions.arcsin : Function
+            - functions.arctan : Function
+            - functions.arctan2 : Function
+            - functions.ceil : Function
+            - functions.compare : Function
+            - functions.cos : Function
+            - functions.cosh : Function
+            - functions.degrees : Function
+            - functions.divide : Function
+            - functions.exp : Function
+            - functions.floor : Function
+            - functions.fract : Function
+            - functions.greater_than : Function
+            - functions.inverse_sqrt : Function
+            - functions.less_than : Function
+            - functions.log : Function
+            - functions.max : Function
+            - functions.min : Function
+            - functions.modulo : Function
+            - functions.multiply : Function
+            - functions.multiply_add : Function
+            - functions.pingpong : Function
+            - functions.pow : Function
+            - functions.radians : Function
+            - functions.round : Function
+            - functions.sign : Function
+            - functions.sin : Function
+            - functions.sinh : Function
+            - functions.smooth_max : Function
+            - functions.smooth_min : Function
+            - functions.snap : Function
+            - functions.sqrt : Function
+            - functions.subtract : Function
+            - functions.tan : Function
+            - functions.tanh : Function
+            - functions.trunc : Function
+            - functions.wrap : Function
+              
     """
 
     def __init__(self, value0=None, value1=None, value2=None, operation='ADD', label=None):
@@ -10686,15 +10813,15 @@ class Mix(Node):
 
             Input sockets
             -------------
-                fac : Float
-                    - color1 : Color
-                    - color2 : Color
+                - fac : Float
+                - color1 : Color
+                - color2 : Color
     
 
             Parameters
             ----------
-                blend_type : str (default = 'MIX') in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
-                    - use_alpha : bool (default = False)
+                - blend_type : str (default = 'MIX') in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
+                - use_alpha : bool (default = False)
     
 
             Node label
@@ -10704,51 +10831,52 @@ class Mix(Node):
 
         Output sockets
         --------------
-            color : Color
+            - color : Color
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Color.add : Method
-                - Color.burn : Method
-                - Color.darken : Method
-                - Color.difference : Method
-                - Color.divide : Method
-                - Color.dodge : Method
-                - Color.hue : Method
-                - Color.lighten : Method
-                - Color.linear_light : Method
-                - Color.mix : Method
-                - Color.mix : Method
-                - Color.mix_color : Method
-                - Color.multiply : Method
-                - Color.overlay : Method
-                - Color.saturation : Method
-                - Color.screen : Method
-                - Color.soft_light : Method
-                - Color.subtract : Method
-                - Color.value : Method
-                - functions.color_add : Function
-                - functions.color_burn : Function
-                - functions.color_darken : Function
-                - functions.color_difference : Function
-                - functions.color_divide : Function
-                - functions.color_dodge : Function
-                - functions.color_hue : Function
-                - functions.color_lighten : Function
-                - functions.color_linear_light : Function
-                - functions.color_mix : Function
-                - functions.color_mix_color : Function
-                - functions.color_multiply : Function
-                - functions.color_overlay : Function
-                - functions.color_saturation : Function
-                - functions.color_screen : Function
-                - functions.color_soft_light : Function
-                - functions.color_subtract : Function
-                - functions.color_value : Function
-                  
+              
+            - Color.add : Method
+            - Color.burn : Method
+            - Color.darken : Method
+            - Color.difference : Method
+            - Color.divide : Method
+            - Color.dodge : Method
+            - Color.hue : Method
+            - Color.lighten : Method
+            - Color.linear_light : Method
+            - Color.mix : Method
+            - Color.mix : Method
+            - Color.mix_color : Method
+            - Color.multiply : Method
+            - Color.overlay : Method
+            - Color.saturation : Method
+            - Color.screen : Method
+            - Color.soft_light : Method
+            - Color.subtract : Method
+            - Color.value : Method
+            - functions.color_add : Function
+            - functions.color_burn : Function
+            - functions.color_darken : Function
+            - functions.color_difference : Function
+            - functions.color_divide : Function
+            - functions.color_dodge : Function
+            - functions.color_hue : Function
+            - functions.color_lighten : Function
+            - functions.color_linear_light : Function
+            - functions.color_mix : Function
+            - functions.color_mix_color : Function
+            - functions.color_multiply : Function
+            - functions.color_overlay : Function
+            - functions.color_saturation : Function
+            - functions.color_screen : Function
+            - functions.color_soft_light : Function
+            - functions.color_subtract : Function
+            - functions.color_value : Function
+              
     """
 
     def __init__(self, color1=None, color2=None, fac=None, blend_type='MIX', use_alpha=False, label=None):
@@ -10817,8 +10945,8 @@ class RgbCurves(Node):
 
             Input sockets
             -------------
-                fac : Float
-                    - color : Color
+                - fac : Float
+                - color : Color
     
 
             Node label
@@ -10828,15 +10956,16 @@ class RgbCurves(Node):
 
         Output sockets
         --------------
-            color : Color
+            - color : Color
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Color.curves : Method
-            
+              
+            - Color.curves : Method
+              
     """
 
     def __init__(self, fac=None, color=None, label=None):
@@ -10883,7 +11012,7 @@ class SeparateRgb(Node):
 
             Input sockets
             -------------
-                image : Color
+                - image : Color
     
 
             Node label
@@ -10893,20 +11022,21 @@ class SeparateRgb(Node):
 
         Output sockets
         --------------
-            r : Float
-                - g : Float
-                - b : Float
+            - r : Float
+            - g : Float
+            - b : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Color.b : Property
-                - Color.g : Property
-                - Color.r : Property
-                - Color.separate : Property
-                  
+              
+            - Color.b : Property
+            - Color.g : Property
+            - Color.r : Property
+            - Color.separate : Property
+              
     """
 
     def __init__(self, image=None, label=None):
@@ -10954,7 +11084,7 @@ class SeparateXyz(Node):
 
             Input sockets
             -------------
-                vector : Vector
+                - vector : Vector
     
 
             Node label
@@ -10964,20 +11094,21 @@ class SeparateXyz(Node):
 
         Output sockets
         --------------
-            x : Float
-                - y : Float
-                - z : Float
+            - x : Float
+            - y : Float
+            - z : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Vector.separate : Property
-                - Vector.x : Property
-                - Vector.y : Property
-                - Vector.z : Property
-                  
+              
+            - Vector.separate : Property
+            - Vector.x : Property
+            - Vector.y : Property
+            - Vector.z : Property
+              
     """
 
     def __init__(self, vector=None, label=None):
@@ -11025,24 +11156,24 @@ class BrickTexture(Node):
 
             Input sockets
             -------------
-                vector : Vector
-                    - color1 : Color
-                    - color2 : Color
-                    - mortar : Color
-                    - scale : Float
-                    - mortar_size : Float
-                    - mortar_smooth : Float
-                    - bias : Float
-                    - brick_width : Float
-                    - row_height : Float
+                - vector : Vector
+                - color1 : Color
+                - color2 : Color
+                - mortar : Color
+                - scale : Float
+                - mortar_size : Float
+                - mortar_smooth : Float
+                - bias : Float
+                - brick_width : Float
+                - row_height : Float
     
 
             Parameters
             ----------
-                offset : float (default = 0.5)
-                    - offset_frequency : int (default = 2)
-                    - squash : float (default = 1.0)
-                    - squash_frequency : int (default = 2)
+                - offset : float (default = 0.5)
+                - offset_frequency : int (default = 2)
+                - squash : float (default = 1.0)
+                - squash_frequency : int (default = 2)
     
 
             Node label
@@ -11052,16 +11183,17 @@ class BrickTexture(Node):
 
         Output sockets
         --------------
-            color : Color
-                - fac : Float
+            - color : Color
+            - fac : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Texture.Brick : Static method
-            
+              
+            - Texture.Brick : Static method
+              
     """
 
     def __init__(self, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, label=None):
@@ -11156,10 +11288,10 @@ class CheckerTexture(Node):
 
             Input sockets
             -------------
-                vector : Vector
-                    - color1 : Color
-                    - color2 : Color
-                    - scale : Float
+                - vector : Vector
+                - color1 : Color
+                - color2 : Color
+                - scale : Float
     
 
             Node label
@@ -11169,16 +11301,17 @@ class CheckerTexture(Node):
 
         Output sockets
         --------------
-            color : Color
-                - fac : Float
+            - color : Color
+            - fac : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Texture.Checker : Static method
-            
+              
+            - Texture.Checker : Static method
+              
     """
 
     def __init__(self, vector=None, color1=None, color2=None, scale=None, label=None):
@@ -11228,12 +11361,12 @@ class GradientTexture(Node):
 
             Input sockets
             -------------
-                vector : Vector
+                - vector : Vector
     
 
             Parameters
             ----------
-                gradient_type : str (default = 'LINEAR') in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
+                - gradient_type : str (default = 'LINEAR') in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
     
 
             Node label
@@ -11243,16 +11376,17 @@ class GradientTexture(Node):
 
         Output sockets
         --------------
-            color : Color
-                - fac : Float
+            - color : Color
+            - fac : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Texture.Gradient : Static method
-            
+              
+            - Texture.Gradient : Static method
+              
     """
 
     def __init__(self, vector=None, gradient_type='LINEAR', label=None):
@@ -11311,14 +11445,14 @@ class MagicTexture(Node):
 
             Input sockets
             -------------
-                vector : Vector
-                    - scale : Float
-                    - distortion : Float
+                - vector : Vector
+                - scale : Float
+                - distortion : Float
     
 
             Parameters
             ----------
-                turbulence_depth : int (default = 2)
+                - turbulence_depth : int (default = 2)
     
 
             Node label
@@ -11328,16 +11462,17 @@ class MagicTexture(Node):
 
         Output sockets
         --------------
-            color : Color
-                - fac : Float
+            - color : Color
+            - fac : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Texture.Magic : Static method
-            
+              
+            - Texture.Magic : Static method
+              
     """
 
     def __init__(self, vector=None, scale=None, distortion=None, turbulence_depth=2, label=None):
@@ -11398,20 +11533,20 @@ class MusgraveTexture(Node):
 
             Input sockets
             -------------
-                vector : Vector
-                    - w : Float
-                    - scale : Float
-                    - detail : Float
-                    - dimension : Float
-                    - lacunarity : Float
-                    - offset : Float
-                    - gain : Float
+                - vector : Vector
+                - w : Float
+                - scale : Float
+                - detail : Float
+                - dimension : Float
+                - lacunarity : Float
+                - offset : Float
+                - gain : Float
     
 
             Parameters
             ----------
-                musgrave_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
-                    - musgrave_type : str (default = 'FBM') in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
+                - musgrave_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
+                - musgrave_type : str (default = 'FBM') in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
     
 
             Node label
@@ -11421,15 +11556,16 @@ class MusgraveTexture(Node):
 
         Output sockets
         --------------
-            fac : Float
+            - fac : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Texture.Musgrave : Static method
-            
+              
+            - Texture.Musgrave : Static method
+              
     """
 
     def __init__(self, vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM', label=None):
@@ -11503,17 +11639,17 @@ class NoiseTexture(Node):
 
             Input sockets
             -------------
-                vector : Vector
-                    - w : Float
-                    - scale : Float
-                    - detail : Float
-                    - roughness : Float
-                    - distortion : Float
+                - vector : Vector
+                - w : Float
+                - scale : Float
+                - detail : Float
+                - roughness : Float
+                - distortion : Float
     
 
             Parameters
             ----------
-                noise_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
+                - noise_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
     
 
             Node label
@@ -11523,16 +11659,17 @@ class NoiseTexture(Node):
 
         Output sockets
         --------------
-            fac : Float
-                - color : Color
+            - fac : Float
+            - color : Color
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Texture.Noise : Static method
-            
+              
+            - Texture.Noise : Static method
+              
     """
 
     def __init__(self, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D', label=None):
@@ -11596,19 +11733,19 @@ class VoronoiTexture(Node):
 
             Input sockets
             -------------
-                vector : Vector
-                    - w : Float
-                    - scale : Float
-                    - smoothness : Float
-                    - exponent : Float
-                    - randomness : Float
+                - vector : Vector
+                - w : Float
+                - scale : Float
+                - smoothness : Float
+                - exponent : Float
+                - randomness : Float
     
 
             Parameters
             ----------
-                distance : str (default = 'EUCLIDEAN') in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
-                    - feature : str (default = 'F1') in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
-                    - voronoi_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
+                - distance : str (default = 'EUCLIDEAN') in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
+                - feature : str (default = 'F1') in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
+                - voronoi_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
     
 
             Node label
@@ -11618,19 +11755,20 @@ class VoronoiTexture(Node):
 
         Output sockets
         --------------
-            distance : Float
-                - color : Color
-                - position : Vector
-                - w : Float
-                - radius : Float
+            - distance : Float
+            - color : Color
+            - position : Vector
+            - w : Float
+            - radius : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Texture.Voronoi : Static method
-            
+              
+            - Texture.Voronoi : Static method
+              
     """
 
     def __init__(self, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D', label=None):
@@ -11715,21 +11853,21 @@ class WaveTexture(Node):
 
             Input sockets
             -------------
-                vector : Vector
-                    - scale : Float
-                    - distortion : Float
-                    - detail : Float
-                    - detail_scale : Float
-                    - detail_roughness : Float
-                    - phase_offset : Float
+                - vector : Vector
+                - scale : Float
+                - distortion : Float
+                - detail : Float
+                - detail_scale : Float
+                - detail_roughness : Float
+                - phase_offset : Float
     
 
             Parameters
             ----------
-                bands_direction : str (default = 'X') in ('X', 'Y', 'Z', 'DIAGONAL')
-                    - rings_direction : str (default = 'X') in ('X', 'Y', 'Z', 'SPHERICAL')
-                    - wave_profile : str (default = 'SIN') in ('SIN', 'SAW', 'TRI')
-                    - wave_type : str (default = 'BANDS') in ('BANDS', 'RINGS')
+                - bands_direction : str (default = 'X') in ('X', 'Y', 'Z', 'DIAGONAL')
+                - rings_direction : str (default = 'X') in ('X', 'Y', 'Z', 'SPHERICAL')
+                - wave_profile : str (default = 'SIN') in ('SIN', 'SAW', 'TRI')
+                - wave_type : str (default = 'BANDS') in ('BANDS', 'RINGS')
     
 
             Node label
@@ -11739,16 +11877,17 @@ class WaveTexture(Node):
 
         Output sockets
         --------------
-            color : Color
-                - fac : Float
+            - color : Color
+            - fac : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Texture.Wave : Static method
-            
+              
+            - Texture.Wave : Static method
+              
     """
 
     def __init__(self, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS', label=None):
@@ -11840,13 +11979,13 @@ class WhiteNoiseTexture(Node):
 
             Input sockets
             -------------
-                vector : Vector
-                    - w : Float
+                - vector : Vector
+                - w : Float
     
 
             Parameters
             ----------
-                noise_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
+                - noise_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
     
 
             Node label
@@ -11856,16 +11995,17 @@ class WhiteNoiseTexture(Node):
 
         Output sockets
         --------------
-            value : Float
-                - color : Color
+            - value : Float
+            - color : Color
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Texture.WhiteNoise : Static method
-            
+              
+            - Texture.WhiteNoise : Static method
+              
     """
 
     def __init__(self, vector=None, w=None, noise_dimensions='3D', label=None):
@@ -11925,7 +12065,7 @@ class Colorramp(Node):
 
             Input sockets
             -------------
-                fac : Float
+                - fac : Float
     
 
             Node label
@@ -11935,16 +12075,17 @@ class Colorramp(Node):
 
         Output sockets
         --------------
-            color : Color
-                - alpha : Float
+            - color : Color
+            - alpha : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Float.color_ramp : Method
-            
+              
+            - Float.color_ramp : Method
+              
     """
 
     def __init__(self, fac=None, label=None):
@@ -11996,7 +12137,7 @@ class Value(Node):
 
         Output sockets
         --------------
-            value : Float
+            - value : Float
     """
 
     def __init__(self, label=None):
@@ -12038,8 +12179,8 @@ class VectorCurves(Node):
 
             Input sockets
             -------------
-                fac : Float
-                    - vector : Vector
+                - fac : Float
+                - vector : Vector
     
 
             Node label
@@ -12049,15 +12190,16 @@ class VectorCurves(Node):
 
         Output sockets
         --------------
-            vector : Vector
+            - vector : Vector
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Vector.curves : Method
-            
+              
+            - Vector.curves : Method
+              
     """
 
     def __init__(self, fac=None, vector=None, label=None):
@@ -12104,15 +12246,15 @@ class VectorMath(Node):
 
             Input sockets
             -------------
-                vector0 : Vector
-                    - vector1 : Vector
-                    - vector2 : Vector
-                    - scale : Float
+                - vector0 : Vector
+                - vector1 : Vector
+                - vector2 : Vector
+                - scale : Float
     
 
             Parameters
             ----------
-                operation : str (default = 'ADD') in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT')
+                - operation : str (default = 'ADD') in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT')
     
 
             Node label
@@ -12122,69 +12264,70 @@ class VectorMath(Node):
 
         Output sockets
         --------------
-            vector : Vector
-                - value : Float
+            - vector : Vector
+            - value : Float
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Vector.absolute : Method
-                - Vector.add : Method
-                - Vector.ceil : Method
-                - Vector.cos : Method
-                - Vector.cross : Method
-                - Vector.distance : Method
-                - Vector.divide : Method
-                - Vector.dot : Method
-                - Vector.faceforward : Method
-                - Vector.floor : Method
-                - Vector.fraction : Method
-                - Vector.length : Method
-                - Vector.max : Method
-                - Vector.min : Method
-                - Vector.modulo : Method
-                - Vector.multiply : Method
-                - Vector.multiply_add : Method
-                - Vector.normalize : Method
-                - Vector.project : Method
-                - Vector.reflect : Method
-                - Vector.refract : Method
-                - Vector.scale : Method
-                - Vector.sin : Method
-                - Vector.snap : Method
-                - Vector.subtract : Method
-                - Vector.tan : Method
-                - Vector.wrap : Method
-                - functions.cross : Function
-                - functions.distance : Function
-                - functions.dot : Function
-                - functions.faceforward : Function
-                - functions.fraction : Function
-                - functions.length : Function
-                - functions.normalize : Function
-                - functions.project : Function
-                - functions.reflect : Function
-                - functions.refract : Function
-                - functions.scale : Function
-                - functions.vector_absolute : Function
-                - functions.vector_add : Function
-                - functions.vector_ceil : Function
-                - functions.vector_cos : Function
-                - functions.vector_divide : Function
-                - functions.vector_floor : Function
-                - functions.vector_max : Function
-                - functions.vector_min : Function
-                - functions.vector_modulo : Function
-                - functions.vector_multiply : Function
-                - functions.vector_multiply_add : Function
-                - functions.vector_sin : Function
-                - functions.vector_snap : Function
-                - functions.vector_subtract : Function
-                - functions.vector_tan : Function
-                - functions.vector_wrap : Function
-                  
+              
+            - Vector.absolute : Method
+            - Vector.add : Method
+            - Vector.ceil : Method
+            - Vector.cos : Method
+            - Vector.cross : Method
+            - Vector.distance : Method
+            - Vector.divide : Method
+            - Vector.dot : Method
+            - Vector.faceforward : Method
+            - Vector.floor : Method
+            - Vector.fraction : Method
+            - Vector.length : Method
+            - Vector.max : Method
+            - Vector.min : Method
+            - Vector.modulo : Method
+            - Vector.multiply : Method
+            - Vector.multiply_add : Method
+            - Vector.normalize : Method
+            - Vector.project : Method
+            - Vector.reflect : Method
+            - Vector.refract : Method
+            - Vector.scale : Method
+            - Vector.sin : Method
+            - Vector.snap : Method
+            - Vector.subtract : Method
+            - Vector.tan : Method
+            - Vector.wrap : Method
+            - functions.cross : Function
+            - functions.distance : Function
+            - functions.dot : Function
+            - functions.faceforward : Function
+            - functions.fraction : Function
+            - functions.length : Function
+            - functions.normalize : Function
+            - functions.project : Function
+            - functions.reflect : Function
+            - functions.refract : Function
+            - functions.scale : Function
+            - functions.vector_absolute : Function
+            - functions.vector_add : Function
+            - functions.vector_ceil : Function
+            - functions.vector_cos : Function
+            - functions.vector_divide : Function
+            - functions.vector_floor : Function
+            - functions.vector_max : Function
+            - functions.vector_min : Function
+            - functions.vector_modulo : Function
+            - functions.vector_multiply : Function
+            - functions.vector_multiply_add : Function
+            - functions.vector_sin : Function
+            - functions.vector_snap : Function
+            - functions.vector_subtract : Function
+            - functions.vector_tan : Function
+            - functions.vector_wrap : Function
+              
     """
 
     def __init__(self, vector0=None, vector1=None, vector2=None, scale=None, operation='ADD', label=None):
@@ -12246,17 +12389,17 @@ class VectorRotate(Node):
 
             Input sockets
             -------------
-                vector : Vector
-                    - center : Vector
-                    - axis : Vector
-                    - angle : Float
-                    - rotation : Vector
+                - vector : Vector
+                - center : Vector
+                - axis : Vector
+                - angle : Float
+                - rotation : Vector
     
 
             Parameters
             ----------
-                invert : bool (default = False)
-                    - rotation_type : str (default = 'AXIS_ANGLE') in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
+                - invert : bool (default = False)
+                - rotation_type : str (default = 'AXIS_ANGLE') in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
     
 
             Node label
@@ -12266,15 +12409,16 @@ class VectorRotate(Node):
 
         Output sockets
         --------------
-            vector : Vector
+            - vector : Vector
     
 
         Data sockets
         ------------
             > Data socket classes implementing this node.
               
-            Vector.rotate : Method
-            
+              
+            - Vector.rotate : Method
+              
     """
 
     def __init__(self, vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', label=None):

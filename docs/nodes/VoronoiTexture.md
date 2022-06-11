@@ -20,7 +20,7 @@ node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, ex
 
 ### Input sockets
 
-vector : Vector
+- vector : Vector
 - w : Float
 - scale : Float
 - smoothness : Float
@@ -29,7 +29,7 @@ vector : Vector
 
 ### Parameters
 
-distance : str (default = 'EUCLIDEAN') in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
+- distance : str (default = 'EUCLIDEAN') in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
 - feature : str (default = 'F1') in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
 - voronoi_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
 
@@ -39,7 +39,7 @@ distance : str (default = 'EUCLIDEAN') in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV'
 
 ## Output sockets
 
-distance : Float
+- distance : Float
 - color : Color
 - position : Vector
 - w : Float
@@ -49,5 +49,6 @@ distance : Float
 
 > Data socket classes implementing this node.
   
-[Texture](/docs/sockets/Texture.md).[Voronoi](/docs/sockets/Texture.md#voronoi) : Static method
-
+  
+- [Texture](/docs/sockets/Texture.md).[Voronoi](/docs/sockets/Texture.md#voronoi) : Static method
+  

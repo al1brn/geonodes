@@ -20,13 +20,13 @@ node = nodes.SubdivisionSurface(mesh=None, level=None, crease=None, boundary_smo
 
 ### Input sockets
 
-mesh : Mesh
+- mesh : Mesh
 - level : Integer
 - crease : Float
 
 ### Parameters
 
-boundary_smooth : str (default = 'ALL') in ('PRESERVE_CORNERS', 'ALL')
+- boundary_smooth : str (default = 'ALL') in ('PRESERVE_CORNERS', 'ALL')
 - uv_smooth : str (default = 'PRESERVE_BOUNDARIES') in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
 
 ### Node label
@@ -35,11 +35,12 @@ boundary_smooth : str (default = 'ALL') in ('PRESERVE_CORNERS', 'ALL')
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[subdivision_surface](/docs/sockets/Mesh.md#subdivision_surface) : Method
-
+  
+- [Mesh](/docs/sockets/Mesh.md).[subdivision_surface](/docs/sockets/Mesh.md#subdivision_surface) : Method
+  

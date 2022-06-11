@@ -20,7 +20,7 @@ node = nodes.EndpointSelection(start_size=None, end_size=None, label=None)
 
 ### Input sockets
 
-start_size : Integer
+- start_size : Integer
 - end_size : Integer
 
 ### Node label
@@ -29,12 +29,13 @@ start_size : Integer
 
 ## Output sockets
 
-selection : Boolean
+- selection : Boolean
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Spline](/docs/sockets/Spline.md).[capture_endpoint_selection](/docs/sockets/Spline.md#capture_endpoint_selection) : Capture attribute
+  
+- [Spline](/docs/sockets/Spline.md).[capture_endpoint_selection](/docs/sockets/Spline.md#capture_endpoint_selection) : Capture attribute
 - [Spline](/docs/sockets/Spline.md).[endpoint_selection](/docs/sockets/Spline.md#endpoint_selection) : Attribute
   

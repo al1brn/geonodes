@@ -24,4 +24,4 @@ node = nodes.Material(label=None)
 
 ## Output sockets
 
-material : Material
+- material : Material

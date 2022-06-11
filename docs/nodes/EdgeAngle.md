@@ -24,14 +24,15 @@ node = nodes.EdgeAngle(label=None)
 
 ## Output sockets
 
-unsigned_angle : Float
+- unsigned_angle : Float
 - signed_angle : Float
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[capture_edge_angle](/docs/sockets/Mesh.md#capture_edge_angle) : Capture attribute
+  
+- [Mesh](/docs/sockets/Mesh.md).[capture_edge_angle](/docs/sockets/Mesh.md#capture_edge_angle) : Capture attribute
 - [Mesh](/docs/sockets/Mesh.md).[corner_ID](/docs/sockets/Mesh.md#corner_id) : Attribute
 - [Mesh](/docs/sockets/Mesh.md).[corner_index](/docs/sockets/Mesh.md#corner_index) : Attribute
 - [Mesh](/docs/sockets/Mesh.md).[corner_porision](/docs/sockets/Mesh.md#corner_porision) : Attribute

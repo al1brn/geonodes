@@ -20,7 +20,7 @@ node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None,
 
 ### Input sockets
 
-geometry : Geometry
+- geometry : Geometry
 - selection : Boolean
 - resolution : Integer
 
@@ -30,11 +30,12 @@ geometry : Geometry
 
 ## Output sockets
 
-geometry : Geometry
+- geometry : Geometry
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Spline](/docs/sockets/Spline.md).[set_resolution](/docs/sockets/Spline.md#set_resolution) : Method
-
+  
+- [Spline](/docs/sockets/Spline.md).[set_resolution](/docs/sockets/Spline.md#set_resolution) : Method
+  

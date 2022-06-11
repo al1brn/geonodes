@@ -20,7 +20,7 @@ node = nodes.FlipFaces(mesh=None, selection=None, label=None)
 
 ### Input sockets
 
-mesh : Mesh
+- mesh : Mesh
 - selection : Boolean
 
 ### Node label
@@ -29,11 +29,12 @@ mesh : Mesh
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[flip_faces](/docs/sockets/Mesh.md#flip_faces) : Method
-
+  
+- [Mesh](/docs/sockets/Mesh.md).[flip_faces](/docs/sockets/Mesh.md#flip_faces) : Method
+  

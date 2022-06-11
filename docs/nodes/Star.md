@@ -20,7 +20,7 @@ node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None,
 
 ### Input sockets
 
-points : Integer
+- points : Integer
 - inner_radius : Float
 - outer_radius : Float
 - twist : Float
@@ -31,12 +31,13 @@ points : Integer
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 - outer_points : Boolean
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[Star](/docs/sockets/Curve.md#star) : Constructor
-
+  
+- [Curve](/docs/sockets/Curve.md).[Star](/docs/sockets/Curve.md#star) : Constructor
+  

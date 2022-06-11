@@ -20,7 +20,7 @@ node = nodes.SliceString(string=None, position=None, length=None, label=None)
 
 ### Input sockets
 
-string : String
+- string : String
 - position : Integer
 - length : Integer
 
@@ -30,11 +30,12 @@ string : String
 
 ## Output sockets
 
-string : String
+- string : String
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[String](/docs/sockets/String.md).[slice](/docs/sockets/String.md#slice) : Method
-
+  
+- [String](/docs/sockets/String.md).[slice](/docs/sockets/String.md#slice) : Method
+  

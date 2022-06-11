@@ -20,7 +20,7 @@ node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_h
 
 ### Input sockets
 
-resolution : Integer
+- resolution : Integer
 - start : Vector
 - start_handle : Vector
 - end_handle : Vector
@@ -28,7 +28,7 @@ resolution : Integer
 
 ### Parameters
 
-mode : str (default = 'POSITION') in ('POSITION', 'OFFSET')
+- mode : str (default = 'POSITION') in ('POSITION', 'OFFSET')
 
 ### Node label
 
@@ -36,11 +36,12 @@ mode : str (default = 'POSITION') in ('POSITION', 'OFFSET')
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[BezierSegment](/docs/sockets/Curve.md#beziersegment) : Constructor
-
+  
+- [Curve](/docs/sockets/Curve.md).[BezierSegment](/docs/sockets/Curve.md#beziersegment) : Constructor
+  

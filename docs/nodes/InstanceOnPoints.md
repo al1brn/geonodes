@@ -20,7 +20,7 @@ node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_i
 
 ### Input sockets
 
-points : Points
+- points : Points
 - selection : Boolean
 - instance : Geometry
 - pick_instance : Boolean
@@ -34,11 +34,12 @@ points : Points
 
 ## Output sockets
 
-instances : Instances
+- instances : Instances
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Points](/docs/sockets/Points.md).[instance_on_points](/docs/sockets/Points.md#instance_on_points) : Method
-
+  
+- [Points](/docs/sockets/Points.md).[instance_on_points](/docs/sockets/Points.md#instance_on_points) : Method
+  

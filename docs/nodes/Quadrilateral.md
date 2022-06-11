@@ -20,7 +20,7 @@ node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width
 
 ### Input sockets
 
-width : Float
+- width : Float
 - height : Float
 - bottom_width : Float
 - top_width : Float
@@ -34,7 +34,7 @@ width : Float
 
 ### Parameters
 
-mode : str (default = 'RECTANGLE') in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
+- mode : str (default = 'RECTANGLE') in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
 
 ### Node label
 
@@ -42,11 +42,12 @@ mode : str (default = 'RECTANGLE') in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID'
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[Quadrilateral](/docs/sockets/Curve.md#quadrilateral) : Constructor
-
+  
+- [Curve](/docs/sockets/Curve.md).[Quadrilateral](/docs/sockets/Curve.md#quadrilateral) : Constructor
+  

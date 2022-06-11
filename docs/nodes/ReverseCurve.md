@@ -20,7 +20,7 @@ node = nodes.ReverseCurve(curve=None, selection=None, label=None)
 
 ### Input sockets
 
-curve : Curve
+- curve : Curve
 - selection : Boolean
 
 ### Node label
@@ -29,11 +29,12 @@ curve : Curve
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[reverse](/docs/sockets/Curve.md#reverse) : Method
-
+  
+- [Curve](/docs/sockets/Curve.md).[reverse](/docs/sockets/Curve.md#reverse) : Method
+  

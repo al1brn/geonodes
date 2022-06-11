@@ -20,14 +20,14 @@ node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=N
 
 ### Input sockets
 
-count : Integer
+- count : Integer
 - resolution : Float
 - start_location : Vector
 - offset : Vector
 
 ### Parameters
 
-count_mode : str (default = 'TOTAL') in ('TOTAL', 'RESOLUTION')
+- count_mode : str (default = 'TOTAL') in ('TOTAL', 'RESOLUTION')
 - mode : str (default = 'OFFSET') in ('OFFSET', 'END_POINTS')
 
 ### Node label
@@ -36,11 +36,12 @@ count_mode : str (default = 'TOTAL') in ('TOTAL', 'RESOLUTION')
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[Line](/docs/sockets/Mesh.md#line) : Constructor
-
+  
+- [Mesh](/docs/sockets/Mesh.md).[Line](/docs/sockets/Mesh.md#line) : Constructor
+  

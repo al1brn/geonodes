@@ -24,12 +24,13 @@ node = nodes.CurveTilt(label=None)
 
 ## Output sockets
 
-tilt : Float
+- tilt : Float
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Spline](/docs/sockets/Spline.md).[capture_tilt](/docs/sockets/Spline.md#capture_tilt) : Capture attribute
+  
+- [Spline](/docs/sockets/Spline.md).[capture_tilt](/docs/sockets/Spline.md#capture_tilt) : Capture attribute
 - [Spline](/docs/sockets/Spline.md).[tilt](/docs/sockets/Spline.md#tilt) : Attribute
   

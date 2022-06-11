@@ -20,7 +20,7 @@ node = nodes.VectorCurves(fac=None, vector=None, label=None)
 
 ### Input sockets
 
-fac : Float
+- fac : Float
 - vector : Vector
 
 ### Node label
@@ -29,11 +29,12 @@ fac : Float
 
 ## Output sockets
 
-vector : Vector
+- vector : Vector
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Vector](/docs/sockets/Vector.md).[curves](/docs/sockets/Vector.md#curves) : Method
-
+  
+- [Vector](/docs/sockets/Vector.md).[curves](/docs/sockets/Vector.md#curves) : Method
+  

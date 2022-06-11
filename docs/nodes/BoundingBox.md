@@ -20,7 +20,7 @@ node = nodes.BoundingBox(geometry=None, label=None)
 
 ### Input sockets
 
-geometry : Geometry
+- geometry : Geometry
 
 ### Node label
 
@@ -28,7 +28,7 @@ geometry : Geometry
 
 ## Output sockets
 
-bounding_box : Geometry
+- bounding_box : Geometry
 - min : Vector
 - max : Vector
 
@@ -36,7 +36,8 @@ bounding_box : Geometry
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[bound_box](/docs/sockets/Geometry.md#bound_box) : Property
+  
+- [Geometry](/docs/sockets/Geometry.md).[bound_box](/docs/sockets/Geometry.md#bound_box) : Property
 - [Geometry](/docs/sockets/Geometry.md).[box](/docs/sockets/Geometry.md#box) : Property
 - [Geometry](/docs/sockets/Geometry.md).[box_max](/docs/sockets/Geometry.md#box_max) : Property
 - [Geometry](/docs/sockets/Geometry.md).[box_min](/docs/sockets/Geometry.md#box_min) : Property

@@ -20,12 +20,12 @@ node = nodes.FieldAtIndex(index=None, value=None, data_type='FLOAT', domain='POI
 
 ### Input sockets
 
-index : Integer
+- index : Integer
 - value : data_type dependant
 
 ### Parameters
 
-data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
 - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
 ### Node label
@@ -42,13 +42,14 @@ data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_C
 
 ## Output sockets
 
-value : data_type dependant
+- value : data_type dependant
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Boolean](/docs/sockets/Boolean.md).[field_at_index](/docs/sockets/Boolean.md#field_at_index) : Method
+  
+- [Boolean](/docs/sockets/Boolean.md).[field_at_index](/docs/sockets/Boolean.md#field_at_index) : Method
 - [Color](/docs/sockets/Color.md).[field_at_index](/docs/sockets/Color.md#field_at_index) : Method
 - [Float](/docs/sockets/Float.md).[field_at_index](/docs/sockets/Float.md#field_at_index) : Method
 - [Integer](/docs/sockets/Integer.md).[field_at_index](/docs/sockets/Integer.md#field_at_index) : Method

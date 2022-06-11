@@ -20,13 +20,13 @@ node = nodes.Mix(color1=None, color2=None, fac=None, blend_type='MIX', use_alpha
 
 ### Input sockets
 
-fac : Float
+- fac : Float
 - color1 : Color
 - color2 : Color
 
 ### Parameters
 
-blend_type : str (default = 'MIX') in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
+- blend_type : str (default = 'MIX') in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
 - use_alpha : bool (default = False)
 
 ### Node label
@@ -35,13 +35,14 @@ blend_type : str (default = 'MIX') in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIG
 
 ## Output sockets
 
-color : Color
+- color : Color
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Color](/docs/sockets/Color.md).[add](/docs/sockets/Color.md#add) : Method
+  
+- [Color](/docs/sockets/Color.md).[add](/docs/sockets/Color.md#add) : Method
 - [Color](/docs/sockets/Color.md).[burn](/docs/sockets/Color.md#burn) : Method
 - [Color](/docs/sockets/Color.md).[darken](/docs/sockets/Color.md#darken) : Method
 - [Color](/docs/sockets/Color.md).[difference](/docs/sockets/Color.md#difference) : Method

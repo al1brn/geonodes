@@ -20,7 +20,7 @@ node = nodes.SetCurveRadius(curve=None, selection=None, radius=None, label=None)
 
 ### Input sockets
 
-curve : Curve
+- curve : Curve
 - selection : Boolean
 - radius : Float
 
@@ -30,11 +30,12 @@ curve : Curve
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[set_radius](/docs/sockets/Curve.md#set_radius) : Method
-
+  
+- [Curve](/docs/sockets/Curve.md).[set_radius](/docs/sockets/Curve.md#set_radius) : Method
+  

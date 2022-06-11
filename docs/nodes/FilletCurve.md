@@ -20,14 +20,14 @@ node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None,
 
 ### Input sockets
 
-curve : Curve
+- curve : Curve
 - count : Integer
 - radius : Float
 - limit_radius : Boolean
 
 ### Parameters
 
-mode : str (default = 'BEZIER') in ('BEZIER', 'POLY')
+- mode : str (default = 'BEZIER') in ('BEZIER', 'POLY')
 
 ### Node label
 
@@ -35,11 +35,12 @@ mode : str (default = 'BEZIER') in ('BEZIER', 'POLY')
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[fillet](/docs/sockets/Curve.md#fillet) : Method
-
+  
+- [Curve](/docs/sockets/Curve.md).[fillet](/docs/sockets/Curve.md#fillet) : Method
+  

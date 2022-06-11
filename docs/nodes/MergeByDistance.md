@@ -20,7 +20,7 @@ node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, label
 
 ### Input sockets
 
-geometry : Geometry
+- geometry : Geometry
 - selection : Boolean
 - distance : Float
 
@@ -30,11 +30,12 @@ geometry : Geometry
 
 ## Output sockets
 
-geometry : Geometry
+- geometry : Geometry
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[merge_by_distance](/docs/sockets/Geometry.md#merge_by_distance) : Method
-
+  
+- [Geometry](/docs/sockets/Geometry.md).[merge_by_distance](/docs/sockets/Geometry.md#merge_by_distance) : Method
+  

@@ -20,7 +20,7 @@ node = nodes.ValueToString(value=None, decimals=None, label=None)
 
 ### Input sockets
 
-value : Float
+- value : Float
 - decimals : Integer
 
 ### Node label
@@ -29,11 +29,12 @@ value : Float
 
 ## Output sockets
 
-string : String
+- string : String
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Float](/docs/sockets/Float.md).[to_string](/docs/sockets/Float.md#to_string) : Method
-
+  
+- [Float](/docs/sockets/Float.md).[to_string](/docs/sockets/Float.md#to_string) : Method
+  

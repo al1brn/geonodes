@@ -20,12 +20,12 @@ node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE', label=None
 
 ### Input sockets
 
-vertices : Integer
+- vertices : Integer
 - radius : Float
 
 ### Parameters
 
-fill_type : str (default = 'NONE') in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- fill_type : str (default = 'NONE') in ('NONE', 'NGON', 'TRIANGLE_FAN')
 
 ### Node label
 
@@ -33,11 +33,12 @@ fill_type : str (default = 'NONE') in ('NONE', 'NGON', 'TRIANGLE_FAN')
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[Circle](/docs/sockets/Mesh.md#circle) : Constructor
-
+  
+- [Mesh](/docs/sockets/Mesh.md).[Circle](/docs/sockets/Mesh.md#circle) : Constructor
+  

@@ -20,14 +20,14 @@ node = nodes.TransferAttribute(source=None, attribute=None, source_position=None
 
 ### Input sockets
 
-source : Geometry
+- source : Geometry
 - attribute : data_type dependant
 - source_position : Vector
 - index : Integer
 
 ### Parameters
 
-data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
 - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - mapping : str (default = 'NEAREST_FACE_INTERPOLATED') in ('NEAREST_FACE_INTERPOLATED', 'NEAREST', 'INDEX')
 
@@ -45,13 +45,14 @@ data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_C
 
 ## Output sockets
 
-attribute : data_type dependant
+- attribute : data_type dependant
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Boolean](/docs/sockets/Boolean.md).[transfer_attribute](/docs/sockets/Boolean.md#transfer_attribute) : Method
+  
+- [Boolean](/docs/sockets/Boolean.md).[transfer_attribute](/docs/sockets/Boolean.md#transfer_attribute) : Method
 - [Color](/docs/sockets/Color.md).[transfer_attribute](/docs/sockets/Color.md#transfer_attribute) : Method
 - [Float](/docs/sockets/Float.md).[transfer_attribute](/docs/sockets/Float.md#transfer_attribute) : Method
 - [Geometry](/docs/sockets/Geometry.md).[transfer_boolean](/docs/sockets/Geometry.md#transfer_boolean) : Method

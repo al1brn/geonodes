@@ -20,12 +20,12 @@ node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode=
 
 ### Input sockets
 
-geometry : Geometry
+- geometry : Geometry
 - selection : Boolean
 
 ### Parameters
 
-domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+- domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 - mode : str (default = 'ALL') in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
 
 ### Node label
@@ -34,11 +34,12 @@ domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE
 
 ## Output sockets
 
-geometry : Geometry
+- geometry : Geometry
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[delete_geometry](/docs/sockets/Geometry.md#delete_geometry) : Method
-
+  
+- [Geometry](/docs/sockets/Geometry.md).[delete_geometry](/docs/sockets/Geometry.md#delete_geometry) : Method
+  

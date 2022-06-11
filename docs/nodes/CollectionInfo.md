@@ -20,13 +20,13 @@ node = nodes.CollectionInfo(collection=None, separate_children=None, reset_child
 
 ### Input sockets
 
-collection : Collection
+- collection : Collection
 - separate_children : Boolean
 - reset_children : Boolean
 
 ### Parameters
 
-transform_space : str (default = 'ORIGINAL') in ('ORIGINAL', 'RELATIVE')
+- transform_space : str (default = 'ORIGINAL') in ('ORIGINAL', 'RELATIVE')
 
 ### Node label
 
@@ -34,11 +34,12 @@ transform_space : str (default = 'ORIGINAL') in ('ORIGINAL', 'RELATIVE')
 
 ## Output sockets
 
-geometry : Geometry
+- geometry : Geometry
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Collection](/docs/sockets/Collection.md).[info](/docs/sockets/Collection.md#info) : Method
-
+  
+- [Collection](/docs/sockets/Collection.md).[info](/docs/sockets/Collection.md#info) : Method
+  

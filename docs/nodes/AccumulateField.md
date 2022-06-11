@@ -20,12 +20,12 @@ node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', do
 
 ### Input sockets
 
-value : data_type dependant
+- value : data_type dependant
 - group_index : Integer
 
 ### Parameters
 
-data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR')
+- data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR')
 - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
 ### Node label
@@ -42,7 +42,7 @@ data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR')
 
 ## Output sockets
 
-leading : data_type dependant
+- leading : data_type dependant
 - trailing : data_type dependant
 - total : data_type dependant
 
@@ -50,7 +50,8 @@ leading : data_type dependant
 
 > Data socket classes implementing this node.
   
-[Float](/docs/sockets/Float.md).[accumulate_field](/docs/sockets/Float.md#accumulate_field) : Method
+  
+- [Float](/docs/sockets/Float.md).[accumulate_field](/docs/sockets/Float.md#accumulate_field) : Method
 - [Integer](/docs/sockets/Integer.md).[accumulate_field](/docs/sockets/Integer.md#accumulate_field) : Method
 - [Vector](/docs/sockets/Vector.md).[accumulate_field](/docs/sockets/Vector.md#accumulate_field) : Method
   

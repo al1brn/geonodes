@@ -24,4 +24,4 @@ node = nodes.Color(label=None)
 
 ## Output sockets
 
-color : Color
+- color : Color

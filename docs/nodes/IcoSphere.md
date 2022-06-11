@@ -20,7 +20,7 @@ node = nodes.IcoSphere(radius=None, subdivisions=None, label=None)
 
 ### Input sockets
 
-radius : Float
+- radius : Float
 - subdivisions : Integer
 
 ### Node label
@@ -29,11 +29,12 @@ radius : Float
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[IcoSphere](/docs/sockets/Mesh.md#icosphere) : Constructor
-
+  
+- [Mesh](/docs/sockets/Mesh.md).[IcoSphere](/docs/sockets/Mesh.md#icosphere) : Constructor
+  

@@ -20,7 +20,7 @@ node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, lab
 
 ### Parameters
 
-handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+- handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
 - mode : set (default = {'LEFT', 'RIGHT'})
 
 ### Node label
@@ -29,12 +29,13 @@ handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
 
 ## Output sockets
 
-selection : Boolean
+- selection : Boolean
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Spline](/docs/sockets/Spline.md).[capture_handle_type_selection](/docs/sockets/Spline.md#capture_handle_type_selection) : Capture attribute
+  
+- [Spline](/docs/sockets/Spline.md).[capture_handle_type_selection](/docs/sockets/Spline.md#capture_handle_type_selection) : Capture attribute
 - [Spline](/docs/sockets/Spline.md).[handle_type_selection](/docs/sockets/Spline.md#handle_type_selection) : Attribute
   

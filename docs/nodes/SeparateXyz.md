@@ -20,7 +20,7 @@ node = nodes.SeparateXyz(vector=None, label=None)
 
 ### Input sockets
 
-vector : Vector
+- vector : Vector
 
 ### Node label
 
@@ -28,7 +28,7 @@ vector : Vector
 
 ## Output sockets
 
-x : Float
+- x : Float
 - y : Float
 - z : Float
 
@@ -36,7 +36,8 @@ x : Float
 
 > Data socket classes implementing this node.
   
-[Vector](/docs/sockets/Vector.md).[separate](/docs/sockets/Vector.md#separate) : Property
+  
+- [Vector](/docs/sockets/Vector.md).[separate](/docs/sockets/Vector.md#separate) : Property
 - [Vector](/docs/sockets/Vector.md).[x](/docs/sockets/Vector.md#x) : Property
 - [Vector](/docs/sockets/Vector.md).[y](/docs/sockets/Vector.md#y) : Property
 - [Vector](/docs/sockets/Vector.md).[z](/docs/sockets/Vector.md#z) : Property

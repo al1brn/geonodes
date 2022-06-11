@@ -20,14 +20,14 @@ node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, op
 
 ### Input sockets
 
-vector0 : Vector
+- vector0 : Vector
 - vector1 : Vector
 - vector2 : Vector
 - scale : Float
 
 ### Parameters
 
-operation : str (default = 'ADD') in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT')
+- operation : str (default = 'ADD') in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT')
 
 ### Node label
 
@@ -35,14 +35,15 @@ operation : str (default = 'ADD') in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', '
 
 ## Output sockets
 
-vector : Vector
+- vector : Vector
 - value : Float
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Vector](/docs/sockets/Vector.md).[absolute](/docs/sockets/Vector.md#absolute) : Method
+  
+- [Vector](/docs/sockets/Vector.md).[absolute](/docs/sockets/Vector.md#absolute) : Method
 - [Vector](/docs/sockets/Vector.md).[add](/docs/sockets/Vector.md#add) : Method
 - [Vector](/docs/sockets/Vector.md).[ceil](/docs/sockets/Vector.md#ceil) : Method
 - [Vector](/docs/sockets/Vector.md).[cos](/docs/sockets/Vector.md#cos) : Method

@@ -20,7 +20,7 @@ node = nodes.SubdivideCurve(curve=None, cuts=None, label=None)
 
 ### Input sockets
 
-curve : Curve
+- curve : Curve
 - cuts : Integer
 
 ### Node label
@@ -29,11 +29,12 @@ curve : Curve
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[subdivide](/docs/sockets/Curve.md#subdivide) : Method
-
+  
+- [Curve](/docs/sockets/Curve.md).[subdivide](/docs/sockets/Curve.md#subdivide) : Method
+  

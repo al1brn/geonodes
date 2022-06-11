@@ -20,7 +20,7 @@ node = nodes.VolumeToMesh(volume=None, voxel_size=None, voxel_amount=None, thres
 
 ### Input sockets
 
-volume : Volume
+- volume : Volume
 - voxel_size : Float
 - voxel_amount : Float
 - threshold : Float
@@ -28,7 +28,7 @@ volume : Volume
 
 ### Parameters
 
-resolution_mode : str (default = 'GRID') in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
+- resolution_mode : str (default = 'GRID') in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
 
 ### Node label
 
@@ -36,11 +36,12 @@ resolution_mode : str (default = 'GRID') in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Volume](/docs/sockets/Volume.md).[to_mesh](/docs/sockets/Volume.md#to_mesh) : Method
-
+  
+- [Volume](/docs/sockets/Volume.md).[to_mesh](/docs/sockets/Volume.md#to_mesh) : Method
+  

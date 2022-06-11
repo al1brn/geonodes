@@ -20,7 +20,7 @@ node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_
 
 ### Input sockets
 
-value : Float
+- value : Float
 - from_min : data_type dependant
 - from_max : data_type dependant
 - to_min : data_type dependant
@@ -30,7 +30,7 @@ value : Float
 
 ### Parameters
 
-clamp : bool (default = True)
+- clamp : bool (default = True)
 - data_type : str (default = 'FLOAT') in ('FLOAT', 'FLOAT_VECTOR')
 - interpolation_type : str (default = 'LINEAR') in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
 
@@ -48,13 +48,14 @@ clamp : bool (default = True)
 
 ## Output sockets
 
-result : Float
+- result : Float
 - vector : Vector
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Float](/docs/sockets/Float.md).[map_range](/docs/sockets/Float.md#map_range) : Method
+  
+- [Float](/docs/sockets/Float.md).[map_range](/docs/sockets/Float.md#map_range) : Method
 - [Vector](/docs/sockets/Vector.md).[map_range](/docs/sockets/Vector.md#map_range) : Method
   

@@ -20,7 +20,7 @@ node = nodes.Integer(integer=0, label=None)
 
 ### Parameters
 
-integer : int (default = 0)
+- integer : int (default = 0)
 
 ### Node label
 
@@ -28,4 +28,4 @@ integer : int (default = 0)
 
 ## Output sockets
 
-integer : Integer
+- integer : Integer

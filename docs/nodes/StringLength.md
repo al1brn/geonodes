@@ -20,7 +20,7 @@ node = nodes.StringLength(string=None, label=None)
 
 ### Input sockets
 
-string : String
+- string : String
 
 ### Node label
 
@@ -28,11 +28,12 @@ string : String
 
 ## Output sockets
 
-length : Integer
+- length : Integer
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[String](/docs/sockets/String.md).[length](/docs/sockets/String.md#length) : Property
-
+  
+- [String](/docs/sockets/String.md).[length](/docs/sockets/String.md#length) : Property
+  

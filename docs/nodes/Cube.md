@@ -20,7 +20,7 @@ node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, 
 
 ### Input sockets
 
-size : Vector
+- size : Vector
 - vertices_x : Integer
 - vertices_y : Integer
 - vertices_z : Integer
@@ -31,11 +31,12 @@ size : Vector
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[Cube](/docs/sockets/Mesh.md#cube) : Constructor
-
+  
+- [Mesh](/docs/sockets/Mesh.md).[Cube](/docs/sockets/Mesh.md#cube) : Constructor
+  

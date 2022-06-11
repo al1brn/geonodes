@@ -20,12 +20,12 @@ node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', doma
 
 ### Input sockets
 
-geometry : Geometry
+- geometry : Geometry
 - value : data_type dependant
 
 ### Parameters
 
-data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
 - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
 ### Node label
@@ -42,14 +42,15 @@ data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_C
 
 ## Output sockets
 
-geometry : Geometry
+- geometry : Geometry
 - attribute : data_type dependant
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Boolean](/docs/sockets/Boolean.md).[capture_attribute](/docs/sockets/Boolean.md#capture_attribute) : Method
+  
+- [Boolean](/docs/sockets/Boolean.md).[capture_attribute](/docs/sockets/Boolean.md#capture_attribute) : Method
 - [Color](/docs/sockets/Color.md).[capture_attribute](/docs/sockets/Color.md#capture_attribute) : Method
 - [Float](/docs/sockets/Float.md).[capture_attribute](/docs/sockets/Float.md#capture_attribute) : Method
 - [Geometry](/docs/sockets/Geometry.md).[capture_attribute](/docs/sockets/Geometry.md#capture_attribute) : Method

@@ -20,11 +20,11 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None)
 
 ### Input sockets
 
-geometry : Geometry
+- geometry : Geometry
 
 ### Parameters
 
-legacy_behavior : bool (default = False)
+- legacy_behavior : bool (default = False)
 
 ### Node label
 
@@ -32,11 +32,12 @@ legacy_behavior : bool (default = False)
 
 ## Output sockets
 
-geometry : Geometry
+- geometry : Geometry
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[realize_instances](/docs/sockets/Geometry.md#realize_instances) : Method
-
+  
+- [Geometry](/docs/sockets/Geometry.md).[realize_instances](/docs/sockets/Geometry.md#realize_instances) : Method
+  

@@ -20,7 +20,7 @@ node = nodes.JoinGeometry(*geometry, label=None)
 
 ### Input sockets
 
-geometry : *Geometry
+- geometry : *Geometry
 
 ### Node label
 
@@ -28,11 +28,12 @@ geometry : *Geometry
 
 ## Output sockets
 
-geometry : Geometry
+- geometry : Geometry
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[join](/docs/sockets/Geometry.md#join) : Method
-
+  
+- [Geometry](/docs/sockets/Geometry.md).[join](/docs/sockets/Geometry.md#join) : Method
+  

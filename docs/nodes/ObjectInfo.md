@@ -20,12 +20,12 @@ node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL
 
 ### Input sockets
 
-object : Object
+- object : Object
 - as_instance : Boolean
 
 ### Parameters
 
-transform_space : str (default = 'ORIGINAL') in ('ORIGINAL', 'RELATIVE')
+- transform_space : str (default = 'ORIGINAL') in ('ORIGINAL', 'RELATIVE')
 
 ### Node label
 
@@ -33,7 +33,7 @@ transform_space : str (default = 'ORIGINAL') in ('ORIGINAL', 'RELATIVE')
 
 ## Output sockets
 
-location : Vector
+- location : Vector
 - rotation : Vector
 - scale : Vector
 - geometry : Geometry
@@ -42,7 +42,8 @@ location : Vector
 
 > Data socket classes implementing this node.
   
-[Object](/docs/sockets/Object.md).[geometry](/docs/sockets/Object.md#geometry) : Property
+  
+- [Object](/docs/sockets/Object.md).[geometry](/docs/sockets/Object.md#geometry) : Property
 - [Object](/docs/sockets/Object.md).[info](/docs/sockets/Object.md#info) : Property
 - [Object](/docs/sockets/Object.md).[location](/docs/sockets/Object.md#location) : Property
 - [Object](/docs/sockets/Object.md).[rotation](/docs/sockets/Object.md#rotation) : Property

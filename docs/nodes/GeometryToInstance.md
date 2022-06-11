@@ -20,7 +20,7 @@ node = nodes.GeometryToInstance(*geometry, label=None)
 
 ### Input sockets
 
-geometry : *Geometry
+- geometry : *Geometry
 
 ### Node label
 
@@ -28,11 +28,12 @@ geometry : *Geometry
 
 ## Output sockets
 
-instances : Instances
+- instances : Instances
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[to_instance](/docs/sockets/Geometry.md#to_instance) : Method
-
+  
+- [Geometry](/docs/sockets/Geometry.md).[to_instance](/docs/sockets/Geometry.md#to_instance) : Method
+  

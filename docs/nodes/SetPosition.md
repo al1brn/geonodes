@@ -20,7 +20,7 @@ node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=No
 
 ### Input sockets
 
-geometry : Geometry
+- geometry : Geometry
 - selection : Boolean
 - position : Vector
 - offset : Vector
@@ -31,11 +31,12 @@ geometry : Geometry
 
 ## Output sockets
 
-geometry : Geometry
+- geometry : Geometry
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[set_position](/docs/sockets/Geometry.md#set_position) : Method
-
+  
+- [Geometry](/docs/sockets/Geometry.md).[set_position](/docs/sockets/Geometry.md#set_position) : Method
+  

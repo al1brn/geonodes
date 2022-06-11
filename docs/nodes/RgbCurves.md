@@ -20,7 +20,7 @@ node = nodes.RgbCurves(fac=None, color=None, label=None)
 
 ### Input sockets
 
-fac : Float
+- fac : Float
 - color : Color
 
 ### Node label
@@ -29,11 +29,12 @@ fac : Float
 
 ## Output sockets
 
-color : Color
+- color : Color
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Color](/docs/sockets/Color.md).[curves](/docs/sockets/Color.md#curves) : Method
-
+  
+- [Color](/docs/sockets/Color.md).[curves](/docs/sockets/Color.md#curves) : Method
+  

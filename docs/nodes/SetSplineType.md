@@ -20,12 +20,12 @@ node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY', label
 
 ### Input sockets
 
-curve : Curve
+- curve : Curve
 - selection : Boolean
 
 ### Parameters
 
-spline_type : str (default = 'POLY') in ('BEZIER', 'NURBS', 'POLY')
+- spline_type : str (default = 'POLY') in ('BEZIER', 'NURBS', 'POLY')
 
 ### Node label
 
@@ -33,11 +33,12 @@ spline_type : str (default = 'POLY') in ('BEZIER', 'NURBS', 'POLY')
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[set_spline_type](/docs/sockets/Curve.md#set_spline_type) : Method
-
+  
+- [Curve](/docs/sockets/Curve.md).[set_spline_type](/docs/sockets/Curve.md#set_spline_type) : Method
+  

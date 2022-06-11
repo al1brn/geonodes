@@ -20,7 +20,7 @@ node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=Non
 
 ### Input sockets
 
-geometry : Geometry
+- geometry : Geometry
 - selection : Boolean
 - scale : Float
 - center : Vector
@@ -28,7 +28,7 @@ geometry : Geometry
 
 ### Parameters
 
-domain : str (default = 'FACE') in ('FACE', 'EDGE')
+- domain : str (default = 'FACE') in ('FACE', 'EDGE')
 - scale_mode : str (default = 'UNIFORM') in ('UNIFORM', 'SINGLE_AXIS')
 
 ### Node label
@@ -37,11 +37,12 @@ domain : str (default = 'FACE') in ('FACE', 'EDGE')
 
 ## Output sockets
 
-geometry : Geometry
+- geometry : Geometry
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[scale_elements](/docs/sockets/Geometry.md#scale_elements) : Method
-
+  
+- [Geometry](/docs/sockets/Geometry.md).[scale_elements](/docs/sockets/Geometry.md#scale_elements) : Method
+  

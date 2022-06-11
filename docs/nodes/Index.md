@@ -24,13 +24,14 @@ node = nodes.Index(label=None)
 
 ## Output sockets
 
-index : Integer
+- index : Integer
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[capture_index](/docs/sockets/Geometry.md#capture_index) : Capture attribute
+  
+- [Geometry](/docs/sockets/Geometry.md).[capture_index](/docs/sockets/Geometry.md#capture_index) : Capture attribute
 - [Geometry](/docs/sockets/Geometry.md).[index](/docs/sockets/Geometry.md#index) : Attribute
 - [Instances](/docs/sockets/Instances.md).[instance_index](/docs/sockets/Instances.md#instance_index) : Attribute
 - [Spline](/docs/sockets/Spline.md).[spline_index](/docs/sockets/Spline.md#spline_index) : Attribute

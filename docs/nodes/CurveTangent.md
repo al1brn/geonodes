@@ -24,12 +24,13 @@ node = nodes.CurveTangent(label=None)
 
 ## Output sockets
 
-tangent : Vector
+- tangent : Vector
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Spline](/docs/sockets/Spline.md).[capture_tangent](/docs/sockets/Spline.md#capture_tangent) : Capture attribute
+  
+- [Spline](/docs/sockets/Spline.md).[capture_tangent](/docs/sockets/Spline.md#capture_tangent) : Capture attribute
 - [Spline](/docs/sockets/Spline.md).[tangent](/docs/sockets/Spline.md#tangent) : Attribute
   

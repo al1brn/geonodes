@@ -20,7 +20,7 @@ node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_
 
 ### Input sockets
 
-vertices : Integer
+- vertices : Integer
 - side_segments : Integer
 - fill_segments : Integer
 - radius_top : Float
@@ -29,7 +29,7 @@ vertices : Integer
 
 ### Parameters
 
-fill_type : str (default = 'NGON') in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- fill_type : str (default = 'NGON') in ('NONE', 'NGON', 'TRIANGLE_FAN')
 
 ### Node label
 
@@ -37,7 +37,7 @@ fill_type : str (default = 'NGON') in ('NONE', 'NGON', 'TRIANGLE_FAN')
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 - top : Boolean
 - bottom : Boolean
 - side : Boolean
@@ -46,5 +46,6 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[Cone](/docs/sockets/Mesh.md#cone) : Constructor
-
+  
+- [Mesh](/docs/sockets/Mesh.md).[Cone](/docs/sockets/Mesh.md#cone) : Constructor
+  

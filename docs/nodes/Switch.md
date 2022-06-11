@@ -20,14 +20,14 @@ node = nodes.Switch(switch0=None, switch1=None, false=None, true=None, input_typ
 
 ### Input sockets
 
-switch0 : Boolean
+- switch0 : Boolean
 - switch1 : Boolean
 - false : input_type dependant
 - true : input_type dependant
 
 ### Parameters
 
-input_type : str (default = 'GEOMETRY') in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')
+- input_type : str (default = 'GEOMETRY') in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')
 
 ### Node label
 
@@ -43,13 +43,14 @@ input_type : str (default = 'GEOMETRY') in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR',
 
 ## Output sockets
 
-output : input_type dependant
+- output : input_type dependant
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Boolean](/docs/sockets/Boolean.md).[switch](/docs/sockets/Boolean.md#switch) : Method
+  
+- [Boolean](/docs/sockets/Boolean.md).[switch](/docs/sockets/Boolean.md#switch) : Method
 - [Collection](/docs/sockets/Collection.md).[switch](/docs/sockets/Collection.md#switch) : Method
 - [Float](/docs/sockets/Float.md).[switch](/docs/sockets/Float.md#switch) : Method
 - [Geometry](/docs/sockets/Geometry.md).[switch](/docs/sockets/Geometry.md#switch) : Method

@@ -20,7 +20,7 @@ node = nodes.MeshToCurve(mesh=None, selection=None, label=None)
 
 ### Input sockets
 
-mesh : Mesh
+- mesh : Mesh
 - selection : Boolean
 
 ### Node label
@@ -29,11 +29,12 @@ mesh : Mesh
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[to_curve](/docs/sockets/Mesh.md#to_curve) : Method
-
+  
+- [Mesh](/docs/sockets/Mesh.md).[to_curve](/docs/sockets/Mesh.md#to_curve) : Method
+  

@@ -20,7 +20,7 @@ node = nodes.CombineRgb(r=None, g=None, b=None, label=None)
 
 ### Input sockets
 
-r : Float
+- r : Float
 - g : Float
 - b : Float
 
@@ -30,11 +30,12 @@ r : Float
 
 ## Output sockets
 
-image : Color
+- image : Color
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Color](/docs/sockets/Color.md).[Combine](/docs/sockets/Color.md#combine) : Constructor
-
+  
+- [Color](/docs/sockets/Color.md).[Combine](/docs/sockets/Color.md#combine) : Constructor
+  

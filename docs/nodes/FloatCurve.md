@@ -20,7 +20,7 @@ node = nodes.FloatCurve(factor=None, value=None, label=None)
 
 ### Input sockets
 
-factor : Float
+- factor : Float
 - value : Float
 
 ### Node label
@@ -29,11 +29,12 @@ factor : Float
 
 ## Output sockets
 
-value : Float
+- value : Float
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Float](/docs/sockets/Float.md).[curve](/docs/sockets/Float.md#curve) : Method
-
+  
+- [Float](/docs/sockets/Float.md).[curve](/docs/sockets/Float.md#curve) : Method
+  

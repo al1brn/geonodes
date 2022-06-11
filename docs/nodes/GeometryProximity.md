@@ -20,12 +20,12 @@ node = nodes.GeometryProximity(target=None, source_position=None, target_element
 
 ### Input sockets
 
-target : Geometry
+- target : Geometry
 - source_position : Vector
 
 ### Parameters
 
-target_element : str (default = 'FACES') in ('POINTS', 'EDGES', 'FACES')
+- target_element : str (default = 'FACES') in ('POINTS', 'EDGES', 'FACES')
 
 ### Node label
 
@@ -33,12 +33,13 @@ target_element : str (default = 'FACES') in ('POINTS', 'EDGES', 'FACES')
 
 ## Output sockets
 
-position : Vector
+- position : Vector
 - distance : Float
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[proximity](/docs/sockets/Geometry.md#proximity) : Method
-
+  
+- [Geometry](/docs/sockets/Geometry.md).[proximity](/docs/sockets/Geometry.md#proximity) : Method
+  

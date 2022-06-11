@@ -20,7 +20,7 @@ node = nodes.DualMesh(mesh=None, keep_boundaries=None, label=None)
 
 ### Input sockets
 
-mesh : Mesh
+- mesh : Mesh
 - keep_boundaries : Boolean
 
 ### Node label
@@ -29,11 +29,12 @@ mesh : Mesh
 
 ## Output sockets
 
-dual_mesh : Geometry
+- dual_mesh : Geometry
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[dual](/docs/sockets/Mesh.md#dual) : Method
-
+  
+- [Mesh](/docs/sockets/Mesh.md).[dual](/docs/sockets/Mesh.md#dual) : Method
+  

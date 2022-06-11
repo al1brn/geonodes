@@ -20,7 +20,7 @@ node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, rad
 
 ### Input sockets
 
-vertices : Integer
+- vertices : Integer
 - side_segments : Integer
 - fill_segments : Integer
 - radius : Float
@@ -28,7 +28,7 @@ vertices : Integer
 
 ### Parameters
 
-fill_type : str (default = 'NGON') in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- fill_type : str (default = 'NGON') in ('NONE', 'NGON', 'TRIANGLE_FAN')
 
 ### Node label
 
@@ -36,7 +36,7 @@ fill_type : str (default = 'NGON') in ('NONE', 'NGON', 'TRIANGLE_FAN')
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 - top : Boolean
 - side : Boolean
 - bottom : Boolean
@@ -45,5 +45,6 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[Cylinder](/docs/sockets/Mesh.md#cylinder) : Constructor
-
+  
+- [Mesh](/docs/sockets/Mesh.md).[Cylinder](/docs/sockets/Mesh.md#cylinder) : Constructor
+  

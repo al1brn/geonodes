@@ -20,7 +20,7 @@ node = nodes.PointsToVertices(points=None, selection=None, label=None)
 
 ### Input sockets
 
-points : Points
+- points : Points
 - selection : Boolean
 
 ### Node label
@@ -29,11 +29,12 @@ points : Points
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Points](/docs/sockets/Points.md).[to_vertices](/docs/sockets/Points.md#to_vertices) : Method
-
+  
+- [Points](/docs/sockets/Points.md).[to_vertices](/docs/sockets/Points.md#to_vertices) : Method
+  

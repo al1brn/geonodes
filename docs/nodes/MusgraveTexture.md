@@ -20,7 +20,7 @@ node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimen
 
 ### Input sockets
 
-vector : Vector
+- vector : Vector
 - w : Float
 - scale : Float
 - detail : Float
@@ -31,7 +31,7 @@ vector : Vector
 
 ### Parameters
 
-musgrave_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
+- musgrave_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
 - musgrave_type : str (default = 'FBM') in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
 
 ### Node label
@@ -40,11 +40,12 @@ musgrave_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
 
 ## Output sockets
 
-fac : Float
+- fac : Float
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Texture](/docs/sockets/Texture.md).[Musgrave](/docs/sockets/Texture.md#musgrave) : Static method
-
+  
+- [Texture](/docs/sockets/Texture.md).[Musgrave](/docs/sockets/Texture.md#musgrave) : Static method
+  

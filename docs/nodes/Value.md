@@ -24,4 +24,4 @@ node = nodes.Value(label=None)
 
 ## Output sockets
 
-value : Float
+- value : Float

@@ -20,7 +20,7 @@ node = nodes.SplitEdges(mesh=None, selection=None, label=None)
 
 ### Input sockets
 
-mesh : Mesh
+- mesh : Mesh
 - selection : Boolean
 
 ### Node label
@@ -29,11 +29,12 @@ mesh : Mesh
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[split_edges](/docs/sockets/Mesh.md#split_edges) : Method
-
+  
+- [Mesh](/docs/sockets/Mesh.md).[split_edges](/docs/sockets/Mesh.md#split_edges) : Method
+  

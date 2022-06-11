@@ -20,7 +20,7 @@ node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=Non
 
 ### Input sockets
 
-mesh : Mesh
+- mesh : Mesh
 - selection : Boolean
 - distance_min : Float
 - density_max : Float
@@ -30,7 +30,7 @@ mesh : Mesh
 
 ### Parameters
 
-distribute_method : str (default = 'RANDOM') in ('RANDOM', 'POISSON')
+- distribute_method : str (default = 'RANDOM') in ('RANDOM', 'POISSON')
 
 ### Node label
 
@@ -38,7 +38,7 @@ distribute_method : str (default = 'RANDOM') in ('RANDOM', 'POISSON')
 
 ## Output sockets
 
-points : Points
+- points : Points
 - normal : Vector
 - rotation : Vector
 
@@ -46,5 +46,6 @@ points : Points
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[distribute_points_on_faces](/docs/sockets/Mesh.md#distribute_points_on_faces) : Method
-
+  
+- [Mesh](/docs/sockets/Mesh.md).[distribute_points_on_faces](/docs/sockets/Mesh.md#distribute_points_on_faces) : Method
+  

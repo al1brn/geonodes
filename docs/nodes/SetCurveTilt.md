@@ -20,7 +20,7 @@ node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None, label=None)
 
 ### Input sockets
 
-curve : Curve
+- curve : Curve
 - selection : Boolean
 - tilt : Float
 
@@ -30,11 +30,12 @@ curve : Curve
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[set_tilt](/docs/sockets/Curve.md#set_tilt) : Method
-
+  
+- [Curve](/docs/sockets/Curve.md).[set_tilt](/docs/sockets/Curve.md#set_tilt) : Method
+  

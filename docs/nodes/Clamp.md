@@ -20,13 +20,13 @@ node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX', label=No
 
 ### Input sockets
 
-value : Float
+- value : Float
 - min : Float
 - max : Float
 
 ### Parameters
 
-clamp_type : str (default = 'MINMAX') in ('MINMAX', 'RANGE')
+- clamp_type : str (default = 'MINMAX') in ('MINMAX', 'RANGE')
 
 ### Node label
 
@@ -34,11 +34,12 @@ clamp_type : str (default = 'MINMAX') in ('MINMAX', 'RANGE')
 
 ## Output sockets
 
-result : Float
+- result : Float
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Float](/docs/sockets/Float.md).[clamp](/docs/sockets/Float.md#clamp) : Method
-
+  
+- [Float](/docs/sockets/Float.md).[clamp](/docs/sockets/Float.md#clamp) : Method
+  

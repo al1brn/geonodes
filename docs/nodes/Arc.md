@@ -20,7 +20,7 @@ node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None
 
 ### Input sockets
 
-resolution : Integer
+- resolution : Integer
 - start : Vector
 - middle : Vector
 - end : Vector
@@ -33,7 +33,7 @@ resolution : Integer
 
 ### Parameters
 
-mode : str (default = 'RADIUS') in ('POINTS', 'RADIUS')
+- mode : str (default = 'RADIUS') in ('POINTS', 'RADIUS')
 
 ### Node label
 
@@ -41,7 +41,7 @@ mode : str (default = 'RADIUS') in ('POINTS', 'RADIUS')
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 - center : Vector
 - normal : Vector
 - radius : Float
@@ -50,6 +50,7 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[ArcFromPoints](/docs/sockets/Curve.md#arcfrompoints) : Static method
+  
+- [Curve](/docs/sockets/Curve.md).[ArcFromPoints](/docs/sockets/Curve.md#arcfrompoints) : Static method
 - [Curve](/docs/sockets/Curve.md).[ArcFromRadius](/docs/sockets/Curve.md#arcfromradius) : Constructor
   

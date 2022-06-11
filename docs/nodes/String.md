@@ -20,7 +20,7 @@ node = nodes.String(string='', label=None)
 
 ### Parameters
 
-string : str (default = '')
+- string : str (default = '')
 
 ### Node label
 
@@ -28,4 +28,4 @@ string : str (default = '')
 
 ## Output sockets
 
-string : String
+- string : String

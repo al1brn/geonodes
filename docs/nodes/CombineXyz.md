@@ -20,7 +20,7 @@ node = nodes.CombineXyz(x=None, y=None, z=None, label=None)
 
 ### Input sockets
 
-x : Float
+- x : Float
 - y : Float
 - z : Float
 
@@ -30,11 +30,12 @@ x : Float
 
 ## Output sockets
 
-vector : Vector
+- vector : Vector
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Vector](/docs/sockets/Vector.md).[Combine](/docs/sockets/Vector.md#combine) : Constructor
-
+  
+- [Vector](/docs/sockets/Vector.md).[Combine](/docs/sockets/Vector.md#combine) : Constructor
+  

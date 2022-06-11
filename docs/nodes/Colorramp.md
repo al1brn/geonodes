@@ -20,7 +20,7 @@ node = nodes.Colorramp(fac=None, label=None)
 
 ### Input sockets
 
-fac : Float
+- fac : Float
 
 ### Node label
 
@@ -28,12 +28,13 @@ fac : Float
 
 ## Output sockets
 
-color : Color
+- color : Color
 - alpha : Float
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Float](/docs/sockets/Float.md).[color_ramp](/docs/sockets/Float.md#color_ramp) : Method
-
+  
+- [Float](/docs/sockets/Float.md).[color_ramp](/docs/sockets/Float.md#color_ramp) : Method
+  

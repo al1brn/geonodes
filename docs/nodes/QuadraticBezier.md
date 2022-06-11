@@ -20,7 +20,7 @@ node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None,
 
 ### Input sockets
 
-resolution : Integer
+- resolution : Integer
 - start : Vector
 - middle : Vector
 - end : Vector
@@ -31,11 +31,12 @@ resolution : Integer
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[QuadraticBezier](/docs/sockets/Curve.md#quadraticbezier) : Constructor
-
+  
+- [Curve](/docs/sockets/Curve.md).[QuadraticBezier](/docs/sockets/Curve.md#quadraticbezier) : Constructor
+  

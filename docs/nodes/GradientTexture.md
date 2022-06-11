@@ -20,11 +20,11 @@ node = nodes.GradientTexture(vector=None, gradient_type='LINEAR', label=None)
 
 ### Input sockets
 
-vector : Vector
+- vector : Vector
 
 ### Parameters
 
-gradient_type : str (default = 'LINEAR') in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
+- gradient_type : str (default = 'LINEAR') in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
 
 ### Node label
 
@@ -32,12 +32,13 @@ gradient_type : str (default = 'LINEAR') in ('LINEAR', 'QUADRATIC', 'EASING', 'D
 
 ## Output sockets
 
-color : Color
+- color : Color
 - fac : Float
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Texture](/docs/sockets/Texture.md).[Gradient](/docs/sockets/Texture.md#gradient) : Static method
-
+  
+- [Texture](/docs/sockets/Texture.md).[Gradient](/docs/sockets/Texture.md#gradient) : Static method
+  

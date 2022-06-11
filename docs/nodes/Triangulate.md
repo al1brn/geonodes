@@ -20,13 +20,13 @@ node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_
 
 ### Input sockets
 
-mesh : Mesh
+- mesh : Mesh
 - selection : Boolean
 - minimum_vertices : Integer
 
 ### Parameters
 
-ngon_method : str (default = 'BEAUTY') in ('BEAUTY', 'CLIP')
+- ngon_method : str (default = 'BEAUTY') in ('BEAUTY', 'CLIP')
 - quad_method : str (default = 'SHORTEST_DIAGONAL') in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
 
 ### Node label
@@ -35,11 +35,12 @@ ngon_method : str (default = 'BEAUTY') in ('BEAUTY', 'CLIP')
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[triangulate](/docs/sockets/Mesh.md#triangulate) : Method
-
+  
+- [Mesh](/docs/sockets/Mesh.md).[triangulate](/docs/sockets/Mesh.md#triangulate) : Method
+  

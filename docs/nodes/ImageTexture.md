@@ -20,13 +20,13 @@ node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT
 
 ### Input sockets
 
-image : Image
+- image : Image
 - vector : Vector
 - frame : Integer
 
 ### Parameters
 
-extension : str (default = 'REPEAT') in ('REPEAT', 'EXTEND', 'CLIP')
+- extension : str (default = 'REPEAT') in ('REPEAT', 'EXTEND', 'CLIP')
 - interpolation : str (default = 'Linear') in ('Linear', 'Closest', 'Cubic')
 
 ### Node label
@@ -35,12 +35,13 @@ extension : str (default = 'REPEAT') in ('REPEAT', 'EXTEND', 'CLIP')
 
 ## Output sockets
 
-color : Color
+- color : Color
 - alpha : Float
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Texture](/docs/sockets/Texture.md).[Image](/docs/sockets/Texture.md#image) : Static method
-
+  
+- [Texture](/docs/sockets/Texture.md).[Image](/docs/sockets/Texture.md#image) : Static method
+  

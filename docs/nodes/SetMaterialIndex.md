@@ -20,7 +20,7 @@ node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None
 
 ### Input sockets
 
-geometry : Geometry
+- geometry : Geometry
 - selection : Boolean
 - material_index : Integer
 
@@ -30,11 +30,12 @@ geometry : Geometry
 
 ## Output sockets
 
-geometry : Geometry
+- geometry : Geometry
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[set_material_index](/docs/sockets/Geometry.md#set_material_index) : Method
-
+  
+- [Geometry](/docs/sockets/Geometry.md).[set_material_index](/docs/sockets/Geometry.md#set_material_index) : Method
+  

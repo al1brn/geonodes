@@ -20,7 +20,7 @@ node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None, label=N
 
 ### Input sockets
 
-curve : Curve
+- curve : Curve
 - profile_curve : Geometry
 - fill_caps : Boolean
 
@@ -30,11 +30,12 @@ curve : Curve
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[to_mesh](/docs/sockets/Curve.md#to_mesh) : Method
-
+  
+- [Curve](/docs/sockets/Curve.md).[to_mesh](/docs/sockets/Curve.md#to_mesh) : Method
+  

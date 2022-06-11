@@ -20,13 +20,13 @@ node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT', la
 
 ### Input sockets
 
-curve : Curve
+- curve : Curve
 - count : Integer
 - length : Float
 
 ### Parameters
 
-mode : str (default = 'COUNT') in ('EVALUATED', 'COUNT', 'LENGTH')
+- mode : str (default = 'COUNT') in ('EVALUATED', 'COUNT', 'LENGTH')
 
 ### Node label
 
@@ -34,7 +34,7 @@ mode : str (default = 'COUNT') in ('EVALUATED', 'COUNT', 'LENGTH')
 
 ## Output sockets
 
-points : Points
+- points : Points
 - tangent : Vector
 - normal : Vector
 - rotation : Vector
@@ -43,5 +43,6 @@ points : Points
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[to_points](/docs/sockets/Curve.md#to_points) : Method
-
+  
+- [Curve](/docs/sockets/Curve.md).[to_points](/docs/sockets/Curve.md#to_points) : Method
+  

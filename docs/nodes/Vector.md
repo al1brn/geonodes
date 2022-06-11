@@ -20,7 +20,7 @@ node = nodes.Vector(vector=[0.0, 0.0, 0.0], label=None)
 
 ### Parameters
 
-vector : Vector (default = [0.0, 0.0, 0.0])
+- vector : Vector (default = [0.0, 0.0, 0.0])
 
 ### Node label
 
@@ -28,4 +28,4 @@ vector : Vector (default = [0.0, 0.0, 0.0])
 
 ## Output sockets
 
-vector : Vector
+- vector : Vector

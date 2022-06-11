@@ -20,12 +20,12 @@ node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode=
 
 ### Input sockets
 
-curve : Curve
+- curve : Curve
 - selection : Boolean
 
 ### Parameters
 
-handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+- handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
 - mode : set (default = {'LEFT', 'RIGHT'})
 
 ### Node label
@@ -34,11 +34,12 @@ handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[set_handles](/docs/sockets/Curve.md#set_handles) : Method
-
+  
+- [Curve](/docs/sockets/Curve.md).[set_handles](/docs/sockets/Curve.md#set_handles) : Method
+  

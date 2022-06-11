@@ -20,7 +20,7 @@ node = nodes.SetPointRadius(points=None, selection=None, radius=None, label=None
 
 ### Input sockets
 
-points : Points
+- points : Points
 - selection : Boolean
 - radius : Float
 
@@ -30,11 +30,12 @@ points : Points
 
 ## Output sockets
 
-points : Points
+- points : Points
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Points](/docs/sockets/Points.md).[set_radius](/docs/sockets/Points.md#set_radius) : Method
-
+  
+- [Points](/docs/sockets/Points.md).[set_radius](/docs/sockets/Points.md#set_radius) : Method
+  

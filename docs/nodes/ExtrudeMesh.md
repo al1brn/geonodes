@@ -20,7 +20,7 @@ node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=No
 
 ### Input sockets
 
-mesh : Mesh
+- mesh : Mesh
 - selection : Boolean
 - offset : Vector
 - offset_scale : Float
@@ -28,7 +28,7 @@ mesh : Mesh
 
 ### Parameters
 
-mode : str (default = 'FACES') in ('VERTICES', 'EDGES', 'FACES')
+- mode : str (default = 'FACES') in ('VERTICES', 'EDGES', 'FACES')
 
 ### Node label
 
@@ -36,7 +36,7 @@ mode : str (default = 'FACES') in ('VERTICES', 'EDGES', 'FACES')
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 - top : Boolean
 - side : Boolean
 
@@ -44,5 +44,6 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[extrude](/docs/sockets/Mesh.md#extrude) : Method
-
+  
+- [Mesh](/docs/sockets/Mesh.md).[extrude](/docs/sockets/Mesh.md#extrude) : Method
+  

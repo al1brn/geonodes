@@ -20,7 +20,7 @@ node = nodes.UvSphere(segments=None, rings=None, radius=None, label=None)
 
 ### Input sockets
 
-segments : Integer
+- segments : Integer
 - rings : Integer
 - radius : Float
 
@@ -30,11 +30,12 @@ segments : Integer
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[UVSphere](/docs/sockets/Mesh.md#uvsphere) : Constructor
-
+  
+- [Mesh](/docs/sockets/Mesh.md).[UVSphere](/docs/sockets/Mesh.md#uvsphere) : Constructor
+  

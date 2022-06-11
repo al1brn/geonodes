@@ -20,13 +20,13 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=
 
 ### Input sockets
 
-value0 : Float
+- value0 : Float
 - value1 : Float
 - value2 : Float
 
 ### Parameters
 
-operation : str (default = 'ADD') in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES')
+- operation : str (default = 'ADD') in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES')
 
 ### Node label
 
@@ -34,13 +34,14 @@ operation : str (default = 'ADD') in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', '
 
 ## Output sockets
 
-value : Float
+- value : Float
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Float](/docs/sockets/Float.md).[abs](/docs/sockets/Float.md#abs) : Method
+  
+- [Float](/docs/sockets/Float.md).[abs](/docs/sockets/Float.md#abs) : Method
 - [Float](/docs/sockets/Float.md).[add](/docs/sockets/Float.md#add) : Method
 - [Float](/docs/sockets/Float.md).[arccos](/docs/sockets/Float.md#arccos) : Method
 - [Float](/docs/sockets/Float.md).[arcsin](/docs/sockets/Float.md#arcsin) : Method

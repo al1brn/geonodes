@@ -20,7 +20,7 @@ node = nodes.Boolean(boolean=False, label=None)
 
 ### Parameters
 
-boolean : bool (default = False)
+- boolean : bool (default = False)
 
 ### Node label
 
@@ -28,4 +28,4 @@ boolean : bool (default = False)
 
 ## Output sockets
 
-boolean : Boolean
+- boolean : Boolean

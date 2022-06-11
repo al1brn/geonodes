@@ -20,7 +20,7 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 
 ### Input sockets
 
-a : data_type dependant
+- a : data_type dependant
 - b : data_type dependant
 - c : Float
 - angle : Float
@@ -28,7 +28,7 @@ a : data_type dependant
 
 ### Parameters
 
-data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')
+- data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')
 - mode : str (default = 'ELEMENT') in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - operation : str (default = 'GREATER_THAN') in ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL')
 
@@ -46,13 +46,14 @@ data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGB
 
 ## Output sockets
 
-result : Boolean
+- result : Boolean
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Color](/docs/sockets/Color.md).[brighter](/docs/sockets/Color.md#brighter) : Method
+  
+- [Color](/docs/sockets/Color.md).[brighter](/docs/sockets/Color.md#brighter) : Method
 - [Color](/docs/sockets/Color.md).[darker](/docs/sockets/Color.md#darker) : Method
 - [Color](/docs/sockets/Color.md).[equal](/docs/sockets/Color.md#equal) : Method
 - [Color](/docs/sockets/Color.md).[not_equal](/docs/sockets/Color.md#not_equal) : Method

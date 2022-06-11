@@ -20,7 +20,7 @@ node = nodes.TranslateInstances(instances=None, selection=None, translation=None
 
 ### Input sockets
 
-instances : Instances
+- instances : Instances
 - selection : Boolean
 - translation : Vector
 - local_space : Boolean
@@ -31,11 +31,12 @@ instances : Instances
 
 ## Output sockets
 
-instances : Instances
+- instances : Instances
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Instances](/docs/sockets/Instances.md).[translate](/docs/sockets/Instances.md#translate) : Method
-
+  
+- [Instances](/docs/sockets/Instances.md).[translate](/docs/sockets/Instances.md#translate) : Method
+  

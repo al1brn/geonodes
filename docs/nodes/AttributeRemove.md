@@ -20,7 +20,7 @@ node = nodes.AttributeRemove(*attribute, geometry=None, label=None)
 
 ### Input sockets
 
-geometry : Geometry
+- geometry : Geometry
 - attribute : *String
 
 ### Node label
@@ -29,11 +29,12 @@ geometry : Geometry
 
 ## Output sockets
 
-geometry : Geometry
+- geometry : Geometry
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[attribute_remove](/docs/sockets/Geometry.md#attribute_remove) : Method
-
+  
+- [Geometry](/docs/sockets/Geometry.md).[attribute_remove](/docs/sockets/Geometry.md#attribute_remove) : Method
+  

@@ -20,12 +20,12 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND', label=No
 
 ### Input sockets
 
-boolean0 : Boolean
+- boolean0 : Boolean
 - boolean1 : Boolean
 
 ### Parameters
 
-operation : str (default = 'AND') in ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY')
+- operation : str (default = 'AND') in ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY')
 
 ### Node label
 
@@ -33,13 +33,14 @@ operation : str (default = 'AND') in ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR',
 
 ## Output sockets
 
-boolean : Boolean
+- boolean : Boolean
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Boolean](/docs/sockets/Boolean.md).[b_and](/docs/sockets/Boolean.md#b_and) : Method
+  
+- [Boolean](/docs/sockets/Boolean.md).[b_and](/docs/sockets/Boolean.md#b_and) : Method
 - [Boolean](/docs/sockets/Boolean.md).[b_not](/docs/sockets/Boolean.md#b_not) : Method
 - [Boolean](/docs/sockets/Boolean.md).[b_or](/docs/sockets/Boolean.md#b_or) : Method
 - [Boolean](/docs/sockets/Boolean.md).[imply](/docs/sockets/Boolean.md#imply) : Method

@@ -20,7 +20,7 @@ node = nodes.MaterialSelection(material=None, label=None)
 
 ### Input sockets
 
-material : Material
+- material : Material
 
 ### Node label
 
@@ -28,13 +28,14 @@ material : Material
 
 ## Output sockets
 
-selection : Boolean
+- selection : Boolean
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Material](/docs/sockets/Material.md).[selection](/docs/sockets/Material.md#selection) : Method
+  
+- [Material](/docs/sockets/Material.md).[selection](/docs/sockets/Material.md#selection) : Method
 - [Mesh](/docs/sockets/Mesh.md).[capture_material_selection](/docs/sockets/Mesh.md#capture_material_selection) : Capture attribute
 - [Mesh](/docs/sockets/Mesh.md).[material_selection](/docs/sockets/Mesh.md#material_selection) : Attribute
   

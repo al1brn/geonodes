@@ -20,7 +20,7 @@ node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=No
 
 ### Input sockets
 
-resolution : Integer
+- resolution : Integer
 - point_1 : Vector
 - point_2 : Vector
 - point_3 : Vector
@@ -28,7 +28,7 @@ resolution : Integer
 
 ### Parameters
 
-mode : str (default = 'RADIUS') in ('POINTS', 'RADIUS')
+- mode : str (default = 'RADIUS') in ('POINTS', 'RADIUS')
 
 ### Node label
 
@@ -36,12 +36,13 @@ mode : str (default = 'RADIUS') in ('POINTS', 'RADIUS')
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 - center : Vector
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[Circle](/docs/sockets/Curve.md#circle) : Constructor
-
+  
+- [Curve](/docs/sockets/Curve.md).[Circle](/docs/sockets/Curve.md#circle) : Constructor
+  

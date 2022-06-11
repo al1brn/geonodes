@@ -20,7 +20,7 @@ node = nodes.SeparateComponents(geometry=None, label=None)
 
 ### Input sockets
 
-geometry : Geometry
+- geometry : Geometry
 
 ### Node label
 
@@ -28,7 +28,7 @@ geometry : Geometry
 
 ## Output sockets
 
-mesh : Mesh
+- mesh : Mesh
 - point_cloud : Geometry
 - curve : Curve
 - volume : Volume
@@ -38,7 +38,8 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[components](/docs/sockets/Geometry.md#components) : Property
+  
+- [Geometry](/docs/sockets/Geometry.md).[components](/docs/sockets/Geometry.md#components) : Property
 - [Geometry](/docs/sockets/Geometry.md).[curve_component](/docs/sockets/Geometry.md#curve_component) : Property
 - [Geometry](/docs/sockets/Geometry.md).[instances_component](/docs/sockets/Geometry.md#instances_component) : Property
 - [Geometry](/docs/sockets/Geometry.md).[mesh_component](/docs/sockets/Geometry.md#mesh_component) : Property

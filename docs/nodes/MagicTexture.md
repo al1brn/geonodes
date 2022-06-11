@@ -20,13 +20,13 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 
 ### Input sockets
 
-vector : Vector
+- vector : Vector
 - scale : Float
 - distortion : Float
 
 ### Parameters
 
-turbulence_depth : int (default = 2)
+- turbulence_depth : int (default = 2)
 
 ### Node label
 
@@ -34,12 +34,13 @@ turbulence_depth : int (default = 2)
 
 ## Output sockets
 
-color : Color
+- color : Color
 - fac : Float
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Texture](/docs/sockets/Texture.md).[Magic](/docs/sockets/Texture.md#magic) : Static method
-
+  
+- [Texture](/docs/sockets/Texture.md).[Magic](/docs/sockets/Texture.md#magic) : Static method
+  

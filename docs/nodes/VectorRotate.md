@@ -20,7 +20,7 @@ node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotat
 
 ### Input sockets
 
-vector : Vector
+- vector : Vector
 - center : Vector
 - axis : Vector
 - angle : Float
@@ -28,7 +28,7 @@ vector : Vector
 
 ### Parameters
 
-invert : bool (default = False)
+- invert : bool (default = False)
 - rotation_type : str (default = 'AXIS_ANGLE') in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
 
 ### Node label
@@ -37,11 +37,12 @@ invert : bool (default = False)
 
 ## Output sockets
 
-vector : Vector
+- vector : Vector
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Vector](/docs/sockets/Vector.md).[rotate](/docs/sockets/Vector.md#rotate) : Method
-
+  
+- [Vector](/docs/sockets/Vector.md).[rotate](/docs/sockets/Vector.md#rotate) : Method
+  

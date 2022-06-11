@@ -20,7 +20,7 @@ node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=Non
 
 ### Input sockets
 
-curve : Curve
+- curve : Curve
 - start0 : Float
 - start1 : Float
 - end0 : Float
@@ -28,7 +28,7 @@ curve : Curve
 
 ### Parameters
 
-mode : str (default = 'FACTOR') in ('FACTOR', 'LENGTH')
+- mode : str (default = 'FACTOR') in ('FACTOR', 'LENGTH')
 
 ### Node label
 
@@ -36,11 +36,12 @@ mode : str (default = 'FACTOR') in ('FACTOR', 'LENGTH')
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[trim](/docs/sockets/Curve.md#trim) : Method
-
+  
+- [Curve](/docs/sockets/Curve.md).[trim](/docs/sockets/Curve.md#trim) : Method
+  

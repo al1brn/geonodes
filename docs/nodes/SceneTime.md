@@ -24,12 +24,13 @@ node = nodes.SceneTime(label=None)
 
 ## Output sockets
 
-seconds : Float
+- seconds : Float
 - frame : Float
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[functions](/docs/sockets/functions.md).[scene](/docs/sockets/functions.md#scene) : Function
-
+  
+- [functions](/docs/sockets/functions.md).[scene](/docs/sockets/functions.md#scene) : Function
+  

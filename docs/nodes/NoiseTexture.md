@@ -20,7 +20,7 @@ node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughnes
 
 ### Input sockets
 
-vector : Vector
+- vector : Vector
 - w : Float
 - scale : Float
 - detail : Float
@@ -29,7 +29,7 @@ vector : Vector
 
 ### Parameters
 
-noise_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
+- noise_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
 
 ### Node label
 
@@ -37,12 +37,13 @@ noise_dimensions : str (default = '3D') in ('1D', '2D', '3D', '4D')
 
 ## Output sockets
 
-fac : Float
+- fac : Float
 - color : Color
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Texture](/docs/sockets/Texture.md).[Noise](/docs/sockets/Texture.md#noise) : Static method
-
+  
+- [Texture](/docs/sockets/Texture.md).[Noise](/docs/sockets/Texture.md#noise) : Static method
+  

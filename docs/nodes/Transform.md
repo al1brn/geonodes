@@ -20,7 +20,7 @@ node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=Non
 
 ### Input sockets
 
-geometry : Geometry
+- geometry : Geometry
 - translation : Vector
 - rotation : Vector
 - scale : Vector
@@ -31,11 +31,12 @@ geometry : Geometry
 
 ## Output sockets
 
-geometry : Geometry
+- geometry : Geometry
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[transform](/docs/sockets/Geometry.md#transform) : Method
-
+  
+- [Geometry](/docs/sockets/Geometry.md).[transform](/docs/sockets/Geometry.md#transform) : Method
+  

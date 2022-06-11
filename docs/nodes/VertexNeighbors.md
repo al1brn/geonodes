@@ -24,14 +24,15 @@ node = nodes.VertexNeighbors(label=None)
 
 ## Output sockets
 
-vertex_count : Integer
+- vertex_count : Integer
 - face_count : Integer
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[capture_vertex_neighbors](/docs/sockets/Mesh.md#capture_vertex_neighbors) : Capture attribute
+  
+- [Mesh](/docs/sockets/Mesh.md).[capture_vertex_neighbors](/docs/sockets/Mesh.md#capture_vertex_neighbors) : Capture attribute
 - [Mesh](/docs/sockets/Mesh.md).[vertex_neighbors_face_count](/docs/sockets/Mesh.md#vertex_neighbors_face_count) : Attribute
 - [Mesh](/docs/sockets/Mesh.md).[vertex_neighbors_vertex_count](/docs/sockets/Mesh.md#vertex_neighbors_vertex_count) : Attribute
   

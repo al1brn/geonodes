@@ -24,5 +24,5 @@ node = nodes.SpecialCharacters(label=None)
 
 ## Output sockets
 
-line_break : String
+- line_break : String
 - tab : String

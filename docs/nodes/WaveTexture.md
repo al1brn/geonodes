@@ -20,7 +20,7 @@ node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, 
 
 ### Input sockets
 
-vector : Vector
+- vector : Vector
 - scale : Float
 - distortion : Float
 - detail : Float
@@ -30,7 +30,7 @@ vector : Vector
 
 ### Parameters
 
-bands_direction : str (default = 'X') in ('X', 'Y', 'Z', 'DIAGONAL')
+- bands_direction : str (default = 'X') in ('X', 'Y', 'Z', 'DIAGONAL')
 - rings_direction : str (default = 'X') in ('X', 'Y', 'Z', 'SPHERICAL')
 - wave_profile : str (default = 'SIN') in ('SIN', 'SAW', 'TRI')
 - wave_type : str (default = 'BANDS') in ('BANDS', 'RINGS')
@@ -41,12 +41,13 @@ bands_direction : str (default = 'X') in ('X', 'Y', 'Z', 'DIAGONAL')
 
 ## Output sockets
 
-color : Color
+- color : Color
 - fac : Float
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Texture](/docs/sockets/Texture.md).[Wave](/docs/sockets/Texture.md#wave) : Static method
-
+  
+- [Texture](/docs/sockets/Texture.md).[Wave](/docs/sockets/Texture.md#wave) : Static method
+  

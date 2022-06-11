@@ -20,13 +20,13 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
 
 ### Input sockets
 
-geometry : Geometry
+- geometry : Geometry
 - selection : Boolean
 - attribute : data_type dependant
 
 ### Parameters
 
-data_type : str (default = 'FLOAT') in ('FLOAT', 'FLOAT_VECTOR')
+- data_type : str (default = 'FLOAT') in ('FLOAT', 'FLOAT_VECTOR')
 - domain : str (default = 'POINT') in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
 ### Node label
@@ -43,7 +43,7 @@ data_type : str (default = 'FLOAT') in ('FLOAT', 'FLOAT_VECTOR')
 
 ## Output sockets
 
-mean : data_type dependant
+- mean : data_type dependant
 - median : data_type dependant
 - sum : data_type dependant
 - min : data_type dependant
@@ -56,6 +56,7 @@ mean : data_type dependant
 
 > Data socket classes implementing this node.
   
-[Float](/docs/sockets/Float.md).[attribute_statistic](/docs/sockets/Float.md#attribute_statistic) : Method
+  
+- [Float](/docs/sockets/Float.md).[attribute_statistic](/docs/sockets/Float.md#attribute_statistic) : Method
 - [Vector](/docs/sockets/Vector.md).[attribute_statistic](/docs/sockets/Vector.md#attribute_statistic) : Method
   

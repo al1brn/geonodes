@@ -20,14 +20,14 @@ node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None,
 
 ### Input sockets
 
-mesh : Mesh
+- mesh : Mesh
 - selection : Boolean
 - position : Vector
 - radius : Float
 
 ### Parameters
 
-mode : str (default = 'VERTICES') in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
+- mode : str (default = 'VERTICES') in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
 
 ### Node label
 
@@ -35,11 +35,12 @@ mode : str (default = 'VERTICES') in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
 
 ## Output sockets
 
-points : Points
+- points : Points
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[to_points](/docs/sockets/Mesh.md#to_points) : Method
-
+  
+- [Mesh](/docs/sockets/Mesh.md).[to_points](/docs/sockets/Mesh.md#to_points) : Method
+  

@@ -20,7 +20,7 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 
 ### Input sockets
 
-min : data_type dependant
+- min : data_type dependant
 - max : data_type dependant
 - probability : Float
 - ID : Integer
@@ -28,7 +28,7 @@ min : data_type dependant
 
 ### Parameters
 
-data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
+- data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
 
 ### Node label
 
@@ -44,13 +44,14 @@ data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN
 
 ## Output sockets
 
-value : data_type dependant
+- value : data_type dependant
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Boolean](/docs/sockets/Boolean.md).[Random](/docs/sockets/Boolean.md#random) : Constructor
+  
+- [Boolean](/docs/sockets/Boolean.md).[Random](/docs/sockets/Boolean.md#random) : Constructor
 - [Float](/docs/sockets/Float.md).[Random](/docs/sockets/Float.md#random) : Constructor
 - [Integer](/docs/sockets/Integer.md).[Random](/docs/sockets/Integer.md#random) : Constructor
 - [Vector](/docs/sockets/Vector.md).[Random](/docs/sockets/Vector.md#random) : Constructor

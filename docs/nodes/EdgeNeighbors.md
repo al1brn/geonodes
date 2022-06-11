@@ -24,12 +24,13 @@ node = nodes.EdgeNeighbors(label=None)
 
 ## Output sockets
 
-face_count : Integer
+- face_count : Integer
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md).[capture_edge_neighbors](/docs/sockets/Mesh.md#capture_edge_neighbors) : Capture attribute
+  
+- [Mesh](/docs/sockets/Mesh.md).[capture_edge_neighbors](/docs/sockets/Mesh.md#capture_edge_neighbors) : Capture attribute
 - [Mesh](/docs/sockets/Mesh.md).[edge_neighbors](/docs/sockets/Mesh.md#edge_neighbors) : Attribute
   

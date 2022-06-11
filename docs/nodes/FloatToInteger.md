@@ -20,11 +20,11 @@ node = nodes.FloatToInteger(float=None, rounding_mode='ROUND', label=None)
 
 ### Input sockets
 
-float : Float
+- float : Float
 
 ### Parameters
 
-rounding_mode : str (default = 'ROUND') in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
+- rounding_mode : str (default = 'ROUND') in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
 
 ### Node label
 
@@ -32,11 +32,12 @@ rounding_mode : str (default = 'ROUND') in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCA
 
 ## Output sockets
 
-integer : Integer
+- integer : Integer
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Float](/docs/sockets/Float.md).[to_integer](/docs/sockets/Float.md#to_integer) : Method
-
+  
+- [Float](/docs/sockets/Float.md).[to_integer](/docs/sockets/Float.md#to_integer) : Method
+  

@@ -20,7 +20,7 @@ node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_am
 
 ### Input sockets
 
-points : Points
+- points : Points
 - density : Float
 - voxel_size : Float
 - voxel_amount : Float
@@ -28,7 +28,7 @@ points : Points
 
 ### Parameters
 
-resolution_mode : str (default = 'VOXEL_AMOUNT') in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+- resolution_mode : str (default = 'VOXEL_AMOUNT') in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
 
 ### Node label
 
@@ -36,11 +36,12 @@ resolution_mode : str (default = 'VOXEL_AMOUNT') in ('VOXEL_AMOUNT', 'VOXEL_SIZE
 
 ## Output sockets
 
-volume : Volume
+- volume : Volume
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Points](/docs/sockets/Points.md).[to_volume](/docs/sockets/Points.md#to_volume) : Method
-
+  
+- [Points](/docs/sockets/Points.md).[to_volume](/docs/sockets/Points.md#to_volume) : Method
+  

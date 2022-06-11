@@ -20,14 +20,14 @@ node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, s
 
 ### Input sockets
 
-rotation : Vector
+- rotation : Vector
 - rotate_by : Vector
 - axis : Vector
 - angle : Float
 
 ### Parameters
 
-space : str (default = 'OBJECT') in ('OBJECT', 'LOCAL')
+- space : str (default = 'OBJECT') in ('OBJECT', 'LOCAL')
 
 ### Node label
 
@@ -35,11 +35,12 @@ space : str (default = 'OBJECT') in ('OBJECT', 'LOCAL')
 
 ## Output sockets
 
-rotation : Vector
+- rotation : Vector
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Vector](/docs/sockets/Vector.md).[rotate_euler](/docs/sockets/Vector.md#rotate_euler) : Method
-
+  
+- [Vector](/docs/sockets/Vector.md).[rotate_euler](/docs/sockets/Vector.md#rotate_euler) : Method
+  

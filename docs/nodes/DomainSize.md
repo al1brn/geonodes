@@ -20,11 +20,11 @@ node = nodes.DomainSize(geometry=None, component='MESH', label=None)
 
 ### Input sockets
 
-geometry : Geometry
+- geometry : Geometry
 
 ### Parameters
 
-component : str (default = 'MESH') in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')
+- component : str (default = 'MESH') in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')
 
 ### Node label
 
@@ -32,7 +32,7 @@ component : str (default = 'MESH') in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES
 
 ## Output sockets
 
-point_count : Integer
+- point_count : Integer
 - edge_count : Integer
 - face_count : Integer
 - face_corner_count : Integer
@@ -43,5 +43,6 @@ point_count : Integer
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[attribute_domain_size](/docs/sockets/Geometry.md#attribute_domain_size) : Method
-
+  
+- [Geometry](/docs/sockets/Geometry.md).[attribute_domain_size](/docs/sockets/Geometry.md#attribute_domain_size) : Method
+  

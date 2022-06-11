@@ -20,7 +20,7 @@ node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radi
 
 ### Input sockets
 
-resolution : Integer
+- resolution : Integer
 - rotations : Float
 - start_radius : Float
 - end_radius : Float
@@ -33,11 +33,12 @@ resolution : Integer
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[Spiral](/docs/sockets/Curve.md#spiral) : Constructor
-
+  
+- [Curve](/docs/sockets/Curve.md).[Spiral](/docs/sockets/Curve.md#spiral) : Constructor
+  

@@ -20,14 +20,14 @@ node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='
 
 ### Input sockets
 
-start : Vector
+- start : Vector
 - end : Vector
 - direction : Vector
 - length : Float
 
 ### Parameters
 
-mode : str (default = 'POINTS') in ('POINTS', 'DIRECTION')
+- mode : str (default = 'POINTS') in ('POINTS', 'DIRECTION')
 
 ### Node label
 
@@ -35,11 +35,12 @@ mode : str (default = 'POINTS') in ('POINTS', 'DIRECTION')
 
 ## Output sockets
 
-curve : Curve
+- curve : Curve
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md).[Line](/docs/sockets/Curve.md#line) : Constructor
-
+  
+- [Curve](/docs/sockets/Curve.md).[Line](/docs/sockets/Curve.md#line) : Constructor
+  

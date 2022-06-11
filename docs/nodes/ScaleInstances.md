@@ -20,7 +20,7 @@ node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=N
 
 ### Input sockets
 
-instances : Instances
+- instances : Instances
 - selection : Boolean
 - scale : Vector
 - center : Vector
@@ -32,11 +32,12 @@ instances : Instances
 
 ## Output sockets
 
-instances : Instances
+- instances : Instances
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Instances](/docs/sockets/Instances.md).[scale](/docs/sockets/Instances.md#scale) : Method
-
+  
+- [Instances](/docs/sockets/Instances.md).[scale](/docs/sockets/Instances.md#scale) : Method
+  

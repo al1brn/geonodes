@@ -20,7 +20,7 @@ node = nodes.SetID(geometry=None, selection=None, ID=None, label=None)
 
 ### Input sockets
 
-geometry : Geometry
+- geometry : Geometry
 - selection : Boolean
 - ID : Integer
 
@@ -30,11 +30,12 @@ geometry : Geometry
 
 ## Output sockets
 
-geometry : Geometry
+- geometry : Geometry
 
 ## Data sockets
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md).[set_ID](/docs/sockets/Geometry.md#set_id) : Method
-
+  
+- [Geometry](/docs/sockets/Geometry.md).[set_ID](/docs/sockets/Geometry.md#set_id) : Method
+  
