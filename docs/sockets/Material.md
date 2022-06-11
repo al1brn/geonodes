@@ -3,7 +3,7 @@
 
 > Inherits from dsock.Material
   
-<sub>go to [index](TBD)</sub>
+<sub>go to [index](docs/index.md)</sub>
 
 
 
@@ -16,7 +16,7 @@
 
 > Node: [Switch](section:nodes/Switch)
   
-<sub>go to: [top](#data-socket-material) [index](TBD)
+<sub>go to: [top](#data-socket-material) [index](docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 
@@ -52,7 +52,7 @@ Material
 
 > Node: [MaterialSelection](section:nodes/MaterialSelection)
   
-<sub>go to: [top](#data-socket-material) [index](TBD)
+<sub>go to: [top](#data-socket-material) [index](docs/index.md)
 blender ref [GeometryNodeMaterialSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
 node ref [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) </sub>
 

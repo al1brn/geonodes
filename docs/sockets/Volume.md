@@ -3,7 +3,7 @@
 
 > Inherits from gn.Geometry
   
-<sub>go to [index](TBD)</sub>
+<sub>go to [index](docs/index.md)</sub>
 
 
 
@@ -15,7 +15,7 @@
 
 > Node: [VolumeToMesh](section:nodes/VolumeToMesh)
   
-<sub>go to: [top](#data-socket-volume) [index](TBD)
+<sub>go to: [top](#data-socket-volume) [index](docs/index.md)
 blender ref [GeometryNodeVolumeToMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html)
 node ref [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/volume_to_mesh.html) </sub>
 

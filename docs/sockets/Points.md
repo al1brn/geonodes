@@ -3,7 +3,7 @@
 
 > Inherits from gn.Geometry
   
-<sub>go to [index](TBD)</sub>
+<sub>go to [index](docs/index.md)</sub>
 
 
 
@@ -18,7 +18,7 @@
 
 > Node: [SetPointRadius](section:nodes/SetPointRadius)
   
-<sub>go to: [top](#data-socket-points) [index](TBD)
+<sub>go to: [top](#data-socket-points) [index](docs/index.md)
 blender ref [GeometryNodeSetPointRadius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPointRadius.html)
 node ref [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_point_radius.html) </sub>
 
@@ -50,7 +50,7 @@ Points
 
 > Node: [InstanceOnPoints](section:nodes/InstanceOnPoints)
   
-<sub>go to: [top](#data-socket-points) [index](TBD)
+<sub>go to: [top](#data-socket-points) [index](docs/index.md)
 blender ref [GeometryNodeInstanceOnPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
 node ref [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/instance_on_points.html) </sub>
 
@@ -86,7 +86,7 @@ Instances
 
 > Node: [PointsToVertices](section:nodes/PointsToVertices)
   
-<sub>go to: [top](#data-socket-points) [index](TBD)
+<sub>go to: [top](#data-socket-points) [index](docs/index.md)
 blender ref [GeometryNodePointsToVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html)
 node ref [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/points_to_vertices.html) </sub>
 
@@ -117,7 +117,7 @@ Mesh
 
 > Node: [PointsToVolume](section:nodes/PointsToVolume)
   
-<sub>go to: [top](#data-socket-points) [index](TBD)
+<sub>go to: [top](#data-socket-points) [index](docs/index.md)
 blender ref [GeometryNodePointsToVolume](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html)
 node ref [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/points_to_volume.html) </sub>
 

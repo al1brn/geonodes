@@ -3,7 +3,7 @@
 
 > Inherits from dsock.Image
   
-<sub>go to [index](TBD)</sub>
+<sub>go to [index](docs/index.md)</sub>
 
 
 
@@ -15,7 +15,7 @@
 
 > Node: [Switch](section:nodes/Switch)
   
-<sub>go to: [top](#data-socket-image) [index](TBD)
+<sub>go to: [top](#data-socket-image) [index](docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 
