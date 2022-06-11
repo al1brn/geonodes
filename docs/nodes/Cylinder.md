@@ -45,5 +45,5 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/Mesh.md) [Cylinder](/docs/sockets/Mesh.md#cylinder) : Constructor
+[Mesh](/docs/sockets/Mesh.md) [Cylinder](/docs/sockets/Mesh.md#cylinder) : Constructor
 

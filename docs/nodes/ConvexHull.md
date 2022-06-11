@@ -34,5 +34,5 @@ convex_hull : Geometry
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/Geometry.md) [convex_hull](/docs/sockets/Geometry.md#convex_hull) : Method
+[Geometry](/docs/sockets/Geometry.md) [convex_hull](/docs/sockets/Geometry.md#convex_hull) : Method
 

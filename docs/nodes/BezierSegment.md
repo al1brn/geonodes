@@ -42,5 +42,5 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/Curve.md) [BezierSegment](/docs/sockets/Curve.md#beziersegment) : Constructor
+[Curve](/docs/sockets/Curve.md) [BezierSegment](/docs/sockets/Curve.md#beziersegment) : Constructor
 

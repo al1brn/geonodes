@@ -49,10 +49,10 @@ geometry : Geometry
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/Boolean.md) [capture_attribute](/docs/sockets/Boolean.md#capture_attribute) : Method
-- [class_name](/docs/sockets/Color.md) [capture_attribute](/docs/sockets/Color.md#capture_attribute) : Method
-- [class_name](/docs/sockets/Float.md) [capture_attribute](/docs/sockets/Float.md#capture_attribute) : Method
-- [class_name](/docs/sockets/Geometry.md) [capture_attribute](/docs/sockets/Geometry.md#capture_attribute) : Method
-- [class_name](/docs/sockets/Integer.md) [capture_attribute](/docs/sockets/Integer.md#capture_attribute) : Method
-- [class_name](/docs/sockets/Vector.md) [capture_attribute](/docs/sockets/Vector.md#capture_attribute) : Method
+[Boolean](/docs/sockets/Boolean.md) [capture_attribute](/docs/sockets/Boolean.md#capture_attribute) : Method
+- [Color](/docs/sockets/Color.md) [capture_attribute](/docs/sockets/Color.md#capture_attribute) : Method
+- [Float](/docs/sockets/Float.md) [capture_attribute](/docs/sockets/Float.md#capture_attribute) : Method
+- [Geometry](/docs/sockets/Geometry.md) [capture_attribute](/docs/sockets/Geometry.md#capture_attribute) : Method
+- [Integer](/docs/sockets/Integer.md) [capture_attribute](/docs/sockets/Integer.md#capture_attribute) : Method
+- [Vector](/docs/sockets/Vector.md) [capture_attribute](/docs/sockets/Vector.md#capture_attribute) : Method
   

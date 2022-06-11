@@ -35,5 +35,5 @@ dual_mesh : Geometry
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/Mesh.md) [dual](/docs/sockets/Mesh.md#dual) : Method
+[Mesh](/docs/sockets/Mesh.md) [dual](/docs/sockets/Mesh.md#dual) : Method
 

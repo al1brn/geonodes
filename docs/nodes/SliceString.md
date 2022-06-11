@@ -36,5 +36,5 @@ string : String
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/String.md) [slice](/docs/sockets/String.md#slice) : Method
+[String](/docs/sockets/String.md) [slice](/docs/sockets/String.md#slice) : Method
 

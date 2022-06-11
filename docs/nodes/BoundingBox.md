@@ -36,8 +36,8 @@ bounding_box : Geometry
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/Geometry.md) [bound_box](/docs/sockets/Geometry.md#bound_box) : Property
-- [class_name](/docs/sockets/Geometry.md) [box](/docs/sockets/Geometry.md#box) : Property
-- [class_name](/docs/sockets/Geometry.md) [box_max](/docs/sockets/Geometry.md#box_max) : Property
-- [class_name](/docs/sockets/Geometry.md) [box_min](/docs/sockets/Geometry.md#box_min) : Property
+[Geometry](/docs/sockets/Geometry.md) [bound_box](/docs/sockets/Geometry.md#bound_box) : Property
+- [Geometry](/docs/sockets/Geometry.md) [box](/docs/sockets/Geometry.md#box) : Property
+- [Geometry](/docs/sockets/Geometry.md) [box_max](/docs/sockets/Geometry.md#box_max) : Property
+- [Geometry](/docs/sockets/Geometry.md) [box_min](/docs/sockets/Geometry.md#box_min) : Property
   

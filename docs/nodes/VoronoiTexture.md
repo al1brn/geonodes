@@ -49,5 +49,5 @@ distance : Float
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/Texture.md) [Voronoi](/docs/sockets/Texture.md#voronoi) : Static method
+[Texture](/docs/sockets/Texture.md) [Voronoi](/docs/sockets/Texture.md#voronoi) : Static method
 

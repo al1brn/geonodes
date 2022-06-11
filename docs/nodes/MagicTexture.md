@@ -41,5 +41,5 @@ color : Color
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/Texture.md) [Magic](/docs/sockets/Texture.md#magic) : Static method
+[Texture](/docs/sockets/Texture.md) [Magic](/docs/sockets/Texture.md#magic) : Static method
 

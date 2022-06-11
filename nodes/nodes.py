@@ -56,8 +56,8 @@ class AlignEulerToVector(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name AlignToVector : Constructor
-                - class_name align_to_vector : Method
+            Vector AlignToVector : Constructor
+                - Vector align_to_vector : Method
                   
     """
 
@@ -150,15 +150,15 @@ class BooleanMath(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name b_and : Method
-                - class_name b_not : Method
-                - class_name b_or : Method
-                - class_name imply : Method
-                - class_name nand : Method
-                - class_name nimply : Method
-                - class_name nor : Method
-                - class_name xnor : Method
-                - class_name xor : Method
+            Boolean b_and : Method
+                - Boolean b_not : Method
+                - Boolean b_or : Method
+                - Boolean imply : Method
+                - Boolean nand : Method
+                - Boolean nimply : Method
+                - Boolean nor : Method
+                - Boolean xnor : Method
+                - Boolean xor : Method
                   
     """
 
@@ -255,34 +255,34 @@ class Compare(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name brighter : Method
-                - class_name darker : Method
-                - class_name equal : Method
-                - class_name not_equal : Method
-                - class_name equal : Method
-                - class_name greater_equal : Method
-                - class_name greater_than : Method
-                - class_name less_equal : Method
-                - class_name less_than : Method
-                - class_name not_equal : Method
-                - class_name equal : Method
-                - class_name greater_equal : Method
-                - class_name greater_than : Method
-                - class_name less_equal : Method
-                - class_name less_than : Method
-                - class_name not_equal : Method
-                - class_name average : Method
-                - class_name direction : Method
-                - class_name dot_product : Method
-                - class_name element : Method
-                - class_name length : Method
-                - class_name equal : Method
-                - class_name greater_equal : Method
-                - class_name greater_than : Method
-                - class_name less_equal : Method
-                - class_name less_than : Method
-                - class_name not_equal : Method
-                - class_name compare : Function
+            Color brighter : Method
+                - Color darker : Method
+                - Color equal : Method
+                - Color not_equal : Method
+                - Float equal : Method
+                - Float greater_equal : Method
+                - Float greater_than : Method
+                - Float less_equal : Method
+                - Float less_than : Method
+                - Float not_equal : Method
+                - Integer equal : Method
+                - Integer greater_equal : Method
+                - Integer greater_than : Method
+                - Integer less_equal : Method
+                - Integer less_than : Method
+                - Integer not_equal : Method
+                - String average : Method
+                - String direction : Method
+                - String dot_product : Method
+                - String element : Method
+                - String length : Method
+                - Vector equal : Method
+                - Vector greater_equal : Method
+                - Vector greater_than : Method
+                - Vector less_equal : Method
+                - Vector less_than : Method
+                - Vector not_equal : Method
+                - functions compare : Function
                   
     """
 
@@ -400,7 +400,7 @@ class FloatToInteger(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name to_integer : Method
+            Float to_integer : Method
             
     """
 
@@ -846,10 +846,10 @@ class RandomValue(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Random : Constructor
-                - class_name Random : Constructor
-                - class_name Random : Constructor
-                - class_name Random : Constructor
+            Boolean Random : Constructor
+                - Float Random : Constructor
+                - Integer Random : Constructor
+                - Vector Random : Constructor
                   
     """
 
@@ -947,7 +947,7 @@ class ReplaceString(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name replace : Method
+            String replace : Method
             
     """
 
@@ -1021,7 +1021,7 @@ class RotateEuler(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name rotate_euler : Method
+            Vector rotate_euler : Method
             
     """
 
@@ -1102,7 +1102,7 @@ class SliceString(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name slice : Method
+            String slice : Method
             
     """
 
@@ -1168,7 +1168,7 @@ class StringLength(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name length : Property
+            String length : Property
             
     """
 
@@ -1233,7 +1233,7 @@ class ValueToString(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name to_string : Method
+            Float to_string : Method
             
     """
 
@@ -1316,9 +1316,9 @@ class AccumulateField(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name accumulate_field : Method
-                - class_name accumulate_field : Method
-                - class_name accumulate_field : Method
+            Float accumulate_field : Method
+                - Integer accumulate_field : Method
+                - Vector accumulate_field : Method
                   
     """
 
@@ -1432,7 +1432,7 @@ class DomainSize(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name attribute_domain_size : Method
+            Geometry attribute_domain_size : Method
             
     """
 
@@ -1514,7 +1514,7 @@ class AttributeRemove(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name attribute_remove : Method
+            Geometry attribute_remove : Method
             
     """
 
@@ -1603,8 +1603,8 @@ class AttributeStatistic(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name attribute_statistic : Method
-                - class_name attribute_statistic : Method
+            Float attribute_statistic : Method
+                - Vector attribute_statistic : Method
                   
     """
 
@@ -1732,16 +1732,16 @@ class TransferAttribute(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name transfer_attribute : Method
-                - class_name transfer_attribute : Method
-                - class_name transfer_attribute : Method
-                - class_name transfer_boolean : Method
-                - class_name transfer_color : Method
-                - class_name transfer_float : Method
-                - class_name transfer_integer : Method
-                - class_name transfer_vector : Method
-                - class_name transfer_attribute : Method
-                - class_name transfer_attribute : Method
+            Boolean transfer_attribute : Method
+                - Color transfer_attribute : Method
+                - Float transfer_attribute : Method
+                - Geometry transfer_boolean : Method
+                - Geometry transfer_color : Method
+                - Geometry transfer_float : Method
+                - Geometry transfer_integer : Method
+                - Geometry transfer_vector : Method
+                - Integer transfer_attribute : Method
+                - Vector transfer_attribute : Method
                   
     """
 
@@ -1860,10 +1860,10 @@ class BoundingBox(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name bound_box : Property
-                - class_name box : Property
-                - class_name box_max : Property
-                - class_name box_min : Property
+            Geometry bound_box : Property
+                - Geometry box : Property
+                - Geometry box_max : Property
+                - Geometry box_min : Property
                   
     """
 
@@ -1946,12 +1946,12 @@ class CaptureAttribute(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_attribute : Method
-                - class_name capture_attribute : Method
-                - class_name capture_attribute : Method
-                - class_name capture_attribute : Method
-                - class_name capture_attribute : Method
-                - class_name capture_attribute : Method
+            Boolean capture_attribute : Method
+                - Color capture_attribute : Method
+                - Float capture_attribute : Method
+                - Geometry capture_attribute : Method
+                - Integer capture_attribute : Method
+                - Vector capture_attribute : Method
                   
     """
 
@@ -2065,7 +2065,7 @@ class CollectionInfo(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name info : Method
+            Collection info : Method
             
     """
 
@@ -2143,7 +2143,7 @@ class ConvexHull(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name convex_hull : Method
+            Geometry convex_hull : Method
             
     """
 
@@ -2224,8 +2224,8 @@ class Arc(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name ArcFromPoints : Static method
-                - class_name ArcFromRadius : Constructor
+            Curve ArcFromPoints : Static method
+                - Curve ArcFromRadius : Constructor
                   
     """
 
@@ -2314,8 +2314,8 @@ class EndpointSelection(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_endpoint_selection : Capture attribute
-                - class_name endpoint_selection : Attribute
+            Spline capture_endpoint_selection : Capture attribute
+                - Spline endpoint_selection : Attribute
                   
     """
 
@@ -2381,8 +2381,8 @@ class HandleTypeSelection(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_handle_type_selection : Capture attribute
-                - class_name handle_type_selection : Attribute
+            Spline capture_handle_type_selection : Capture attribute
+                - Spline handle_type_selection : Attribute
                   
     """
 
@@ -2463,7 +2463,7 @@ class CurveLength(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name length : Method
+            Curve length : Method
             
     """
 
@@ -2536,7 +2536,7 @@ class BezierSegment(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name BezierSegment : Constructor
+            Curve BezierSegment : Constructor
             
     """
 
@@ -2626,7 +2626,7 @@ class CurveCircle(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Circle : Constructor
+            Curve Circle : Constructor
             
     """
 
@@ -2715,7 +2715,7 @@ class CurveLine(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Line : Constructor
+            Curve Line : Constructor
             
     """
 
@@ -2809,7 +2809,7 @@ class Quadrilateral(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Quadrilateral : Constructor
+            Curve Quadrilateral : Constructor
             
     """
 
@@ -2898,7 +2898,7 @@ class QuadraticBezier(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name QuadraticBezier : Constructor
+            Curve QuadraticBezier : Constructor
             
     """
 
@@ -2972,7 +2972,7 @@ class SetHandleType(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name set_handles : Method
+            Curve set_handles : Method
             
     """
 
@@ -3063,7 +3063,7 @@ class Spiral(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Spiral : Constructor
+            Curve Spiral : Constructor
             
     """
 
@@ -3138,7 +3138,7 @@ class SetSplineType(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name set_spline_type : Method
+            Curve set_spline_type : Method
             
     """
 
@@ -3219,7 +3219,7 @@ class Star(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Star : Constructor
+            Curve Star : Constructor
             
     """
 
@@ -3289,7 +3289,7 @@ class CurveToMesh(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name to_mesh : Method
+            Curve to_mesh : Method
             
     """
 
@@ -3365,7 +3365,7 @@ class CurveToPoints(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name to_points : Method
+            Curve to_points : Method
             
     """
 
@@ -3453,7 +3453,7 @@ class DeleteGeometry(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name delete_geometry : Method
+            Geometry delete_geometry : Method
             
     """
 
@@ -3552,7 +3552,7 @@ class DistributePointsOnFaces(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name distribute_points_on_faces : Method
+            Mesh distribute_points_on_faces : Method
             
     """
 
@@ -3637,7 +3637,7 @@ class DualMesh(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name dual : Method
+            Mesh dual : Method
             
     """
 
@@ -3713,7 +3713,7 @@ class ExtrudeMesh(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name extrude : Method
+            Mesh extrude : Method
             
     """
 
@@ -3811,11 +3811,11 @@ class FieldAtIndex(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name field_at_index : Method
-                - class_name field_at_index : Method
-                - class_name field_at_index : Method
-                - class_name field_at_index : Method
-                - class_name field_at_index : Method
+            Boolean field_at_index : Method
+                - Color field_at_index : Method
+                - Float field_at_index : Method
+                - Integer field_at_index : Method
+                - Vector field_at_index : Method
                   
     """
 
@@ -3926,7 +3926,7 @@ class FillCurve(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name fill : Method
+            Curve fill : Method
             
     """
 
@@ -4010,7 +4010,7 @@ class FilletCurve(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name fillet : Method
+            Curve fillet : Method
             
     """
 
@@ -4090,7 +4090,7 @@ class FlipFaces(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name flip_faces : Method
+            Mesh flip_faces : Method
             
     """
 
@@ -4155,7 +4155,7 @@ class GeometryToInstance(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name to_instance : Method
+            Geometry to_instance : Method
             
     """
 
@@ -4267,7 +4267,7 @@ class ImageTexture(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Image : Static method
+            Texture Image : Static method
             
     """
 
@@ -4356,9 +4356,9 @@ class CurveHandlePositions(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_handle_positions : Capture attribute
-                - class_name left_handle_position : Attribute
-                - class_name right_handle_position : Attribute
+            Spline capture_handle_positions : Capture attribute
+                - Spline left_handle_position : Attribute
+                - Spline right_handle_position : Attribute
                   
     """
 
@@ -4418,8 +4418,8 @@ class CurveTilt(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_tilt : Capture attribute
-                - class_name tilt : Attribute
+            Spline capture_tilt : Capture attribute
+                - Spline tilt : Attribute
                   
     """
 
@@ -4474,9 +4474,9 @@ class ID(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name ID : Attribute
-                - class_name capture_ID : Capture attribute
-                - class_name spline_ID : Attribute
+            Geometry ID : Attribute
+                - Geometry capture_ID : Capture attribute
+                - Spline spline_ID : Attribute
                   
     """
 
@@ -4531,11 +4531,11 @@ class Index(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_index : Capture attribute
-                - class_name index : Attribute
-                - class_name instance_index : Attribute
-                - class_name spline_index : Attribute
-                - class_name spline_position : Attribute
+            Geometry capture_index : Capture attribute
+                - Geometry index : Attribute
+                - Instances instance_index : Attribute
+                - Spline spline_index : Attribute
+                - Spline spline_position : Attribute
                   
     """
 
@@ -4637,8 +4637,8 @@ class MaterialIndex(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_material_index : Capture attribute
-                - class_name material_index : Attribute
+            Mesh capture_material_index : Capture attribute
+                - Mesh material_index : Attribute
                   
     """
 
@@ -4694,18 +4694,18 @@ class EdgeAngle(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_edge_angle : Capture attribute
-                - class_name corner_ID : Attribute
-                - class_name corner_index : Attribute
-                - class_name corner_porision : Attribute
-                - class_name edge_angle : Attribute
-                - class_name edge_unsigned_angle : Attribute
-                - class_name egde_ID : Attribute
-                - class_name egde_index : Attribute
-                - class_name egde_position : Attribute
-                - class_name face_ID : Attribute
-                - class_name face_index : Attribute
-                - class_name face_position : Attribute
+            Mesh capture_edge_angle : Capture attribute
+                - Mesh corner_ID : Attribute
+                - Mesh corner_index : Attribute
+                - Mesh corner_porision : Attribute
+                - Mesh edge_angle : Attribute
+                - Mesh edge_unsigned_angle : Attribute
+                - Mesh egde_ID : Attribute
+                - Mesh egde_index : Attribute
+                - Mesh egde_position : Attribute
+                - Mesh face_ID : Attribute
+                - Mesh face_index : Attribute
+                - Mesh face_position : Attribute
                   
     """
 
@@ -4761,8 +4761,8 @@ class EdgeNeighbors(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_edge_neighbors : Capture attribute
-                - class_name edge_neighbors : Attribute
+            Mesh capture_edge_neighbors : Capture attribute
+                - Mesh edge_neighbors : Attribute
                   
     """
 
@@ -4820,11 +4820,11 @@ class EdgeVertices(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_edge_vertices : Capture attribute
-                - class_name edge_vertices_index1 : Attribute
-                - class_name edge_vertices_index2 : Attribute
-                - class_name edge_vertices_position1 : Attribute
-                - class_name edge_vertices_position2 : Attribute
+            Mesh capture_edge_vertices : Capture attribute
+                - Mesh edge_vertices_index1 : Attribute
+                - Mesh edge_vertices_index2 : Attribute
+                - Mesh edge_vertices_position1 : Attribute
+                - Mesh edge_vertices_position2 : Attribute
                   
     """
 
@@ -4882,8 +4882,8 @@ class FaceArea(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_face_area : Capture attribute
-                - class_name face_area : Attribute
+            Mesh capture_face_area : Capture attribute
+                - Mesh face_area : Attribute
                   
     """
 
@@ -4939,9 +4939,9 @@ class FaceNeighbors(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_face_neighbors : Capture attribute
-                - class_name face_neighbors_face_count : Attribute
-                - class_name face_neighbors_vertex_count : Attribute
+            Mesh capture_face_neighbors : Capture attribute
+                - Mesh face_neighbors_face_count : Attribute
+                - Mesh face_neighbors_vertex_count : Attribute
                   
     """
 
@@ -4998,8 +4998,8 @@ class MeshIsland(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_island : Capture attribute
-                - class_name island : Attribute
+            Mesh capture_island : Capture attribute
+                - Mesh island : Attribute
                   
     """
 
@@ -5056,9 +5056,9 @@ class VertexNeighbors(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_vertex_neighbors : Capture attribute
-                - class_name vertex_neighbors_face_count : Attribute
-                - class_name vertex_neighbors_vertex_count : Attribute
+            Mesh capture_vertex_neighbors : Capture attribute
+                - Mesh vertex_neighbors_face_count : Attribute
+                - Mesh vertex_neighbors_vertex_count : Attribute
                   
     """
 
@@ -5114,8 +5114,8 @@ class Normal(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_normal : Capture attribute
-                - class_name normal : Attribute
+            Geometry capture_normal : Capture attribute
+                - Geometry normal : Attribute
                   
     """
 
@@ -5170,8 +5170,8 @@ class Position(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_position : Capture attribute
-                - class_name position : Attribute
+            Geometry capture_position : Capture attribute
+                - Geometry position : Attribute
                   
     """
 
@@ -5226,8 +5226,8 @@ class Radius(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_radius : Capture attribute
-                - class_name radius : Attribute
+            Geometry capture_radius : Capture attribute
+                - Geometry radius : Attribute
                   
     """
 
@@ -5283,7 +5283,7 @@ class SceneTime(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name scene : Function
+            functions scene : Function
             
     """
 
@@ -5339,8 +5339,8 @@ class IsShadeSmooth(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_shade_smooth : Capture attribute
-                - class_name shade_smooth : Attribute
+            Mesh capture_shade_smooth : Capture attribute
+                - Mesh shade_smooth : Attribute
                   
     """
 
@@ -5395,8 +5395,8 @@ class IsSplineCyclic(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_cyclic : Capture attribute
-                - class_name cyclic : Attribute
+            Spline capture_cyclic : Capture attribute
+                - Spline cyclic : Attribute
                   
     """
 
@@ -5451,8 +5451,8 @@ class SplineResolution(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_resolution : Capture attribute
-                - class_name resolution : Attribute
+            Spline capture_resolution : Capture attribute
+                - Spline resolution : Attribute
                   
     """
 
@@ -5507,8 +5507,8 @@ class CurveTangent(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_tangent : Capture attribute
-                - class_name tangent : Attribute
+            Spline capture_tangent : Capture attribute
+                - Spline tangent : Attribute
                   
     """
 
@@ -5574,7 +5574,7 @@ class InstanceOnPoints(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name instance_on_points : Method
+            Points instance_on_points : Method
             
     """
 
@@ -5647,7 +5647,7 @@ class InstancesToPoints(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name to_points : Method
+            Instances to_points : Method
             
     """
 
@@ -5709,7 +5709,7 @@ class IsViewport(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name is_viewport : Static method
+            Geometry is_viewport : Static method
             
     """
 
@@ -5769,7 +5769,7 @@ class JoinGeometry(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name join : Method
+            Geometry join : Method
             
     """
 
@@ -5833,9 +5833,9 @@ class MaterialSelection(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name selection : Method
-                - class_name capture_material_selection : Capture attribute
-                - class_name material_selection : Attribute
+            Material selection : Method
+                - Mesh capture_material_selection : Capture attribute
+                - Mesh material_selection : Attribute
                   
     """
 
@@ -5901,7 +5901,7 @@ class MergeByDistance(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name merge_by_distance : Method
+            Geometry merge_by_distance : Method
             
     """
 
@@ -5975,9 +5975,9 @@ class MeshBoolean(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name difference : Method
-                - class_name intersect : Method
-                - class_name union : Method
+            Mesh difference : Method
+                - Mesh intersect : Method
+                - Mesh union : Method
                   
     """
 
@@ -6062,7 +6062,7 @@ class MeshCircle(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Circle : Constructor
+            Mesh Circle : Constructor
             
     """
 
@@ -6152,7 +6152,7 @@ class Cone(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Cone : Constructor
+            Mesh Cone : Constructor
             
     """
 
@@ -6239,7 +6239,7 @@ class Cube(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Cube : Constructor
+            Mesh Cube : Constructor
             
     """
 
@@ -6318,7 +6318,7 @@ class Cylinder(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Cylinder : Constructor
+            Mesh Cylinder : Constructor
             
     """
 
@@ -6404,7 +6404,7 @@ class Grid(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Grid : Constructor
+            Mesh Grid : Constructor
             
     """
 
@@ -6472,7 +6472,7 @@ class IcoSphere(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name IcoSphere : Constructor
+            Mesh IcoSphere : Constructor
             
     """
 
@@ -6546,7 +6546,7 @@ class MeshLine(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Line : Constructor
+            Mesh Line : Constructor
             
     """
 
@@ -6635,7 +6635,7 @@ class MeshToCurve(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name to_curve : Method
+            Mesh to_curve : Method
             
     """
 
@@ -6708,7 +6708,7 @@ class MeshToPoints(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name to_points : Method
+            Mesh to_points : Method
             
     """
 
@@ -6789,7 +6789,7 @@ class UvSphere(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name UVSphere : Constructor
+            Mesh UVSphere : Constructor
             
     """
 
@@ -6864,11 +6864,11 @@ class ObjectInfo(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name geometry : Property
-                - class_name info : Property
-                - class_name location : Property
-                - class_name rotation : Property
-                - class_name scale : Property
+            Object geometry : Property
+                - Object info : Property
+                - Object location : Property
+                - Object rotation : Property
+                - Object scale : Property
                   
     """
 
@@ -6949,7 +6949,7 @@ class PointsToVertices(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name to_vertices : Method
+            Points to_vertices : Method
             
     """
 
@@ -7023,7 +7023,7 @@ class PointsToVolume(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name to_volume : Method
+            Points to_volume : Method
             
     """
 
@@ -7110,7 +7110,7 @@ class GeometryProximity(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name proximity : Method
+            Geometry proximity : Method
             
     """
 
@@ -7211,11 +7211,11 @@ class Raycast(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name raycast : Method
-                - class_name raycast : Method
-                - class_name raycast : Method
-                - class_name raycast : Method
-                - class_name raycast : Method
+            Boolean raycast : Method
+                - Color raycast : Method
+                - Float raycast : Method
+                - Integer raycast : Method
+                - Vector raycast : Method
                   
     """
 
@@ -7333,7 +7333,7 @@ class RealizeInstances(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name realize_instances : Method
+            Geometry realize_instances : Method
             
     """
 
@@ -7411,7 +7411,7 @@ class ReplaceMaterial(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name replace_material : Method
+            Geometry replace_material : Method
             
     """
 
@@ -7485,7 +7485,7 @@ class ResampleCurve(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name resample : Method
+            Curve resample : Method
             
     """
 
@@ -7565,7 +7565,7 @@ class ReverseCurve(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name reverse : Method
+            Curve reverse : Method
             
     """
 
@@ -7634,7 +7634,7 @@ class RotateInstances(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name rotate : Method
+            Instances rotate : Method
             
     """
 
@@ -7711,7 +7711,7 @@ class SampleCurve(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name sample : Method
+            Curve sample : Method
             
     """
 
@@ -7801,7 +7801,7 @@ class ScaleElements(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name scale_elements : Method
+            Geometry scale_elements : Method
             
     """
 
@@ -7894,7 +7894,7 @@ class ScaleInstances(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name scale : Method
+            Instances scale : Method
             
     """
 
@@ -7966,12 +7966,12 @@ class SeparateComponents(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name components : Property
-                - class_name curve_component : Property
-                - class_name instances_component : Property
-                - class_name mesh_component : Property
-                - class_name points_component : Property
-                - class_name volume_component : Property
+            Geometry components : Property
+                - Geometry curve_component : Property
+                - Geometry instances_component : Property
+                - Geometry mesh_component : Property
+                - Geometry points_component : Property
+                - Geometry volume_component : Property
                   
     """
 
@@ -8046,7 +8046,7 @@ class SeparateGeometry(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name components : Method
+            Geometry components : Method
             
     """
 
@@ -8132,7 +8132,7 @@ class SetHandlePositions(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name set_handle_positions : Method
+            Curve set_handle_positions : Method
             
     """
 
@@ -8213,7 +8213,7 @@ class SetCurveRadius(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name set_radius : Method
+            Curve set_radius : Method
             
     """
 
@@ -8281,7 +8281,7 @@ class SetCurveTilt(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name set_tilt : Method
+            Curve set_tilt : Method
             
     """
 
@@ -8349,7 +8349,7 @@ class SetID(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name set_ID : Method
+            Geometry set_ID : Method
             
     """
 
@@ -8417,7 +8417,7 @@ class SetMaterial(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name set_material : Method
+            Geometry set_material : Method
             
     """
 
@@ -8485,7 +8485,7 @@ class SetMaterialIndex(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name set_material_index : Method
+            Geometry set_material_index : Method
             
     """
 
@@ -8553,7 +8553,7 @@ class SetPointRadius(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name set_radius : Method
+            Points set_radius : Method
             
     """
 
@@ -8622,7 +8622,7 @@ class SetPosition(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name set_position : Method
+            Geometry set_position : Method
             
     """
 
@@ -8691,7 +8691,7 @@ class SetShadeSmooth(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name set_shade_smooth : Method
+            Geometry set_shade_smooth : Method
             
     """
 
@@ -8759,7 +8759,7 @@ class SetSplineCyclic(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name set_cyclic : Method
+            Spline set_cyclic : Method
             
     """
 
@@ -8827,7 +8827,7 @@ class SetSplineResolution(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name set_resolution : Method
+            Spline set_resolution : Method
             
     """
 
@@ -8889,9 +8889,9 @@ class SplineLength(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_length : Capture attribute
-                - class_name length : Attribute
-                - class_name point_count : Attribute
+            Spline capture_length : Capture attribute
+                - Spline length : Attribute
+                - Spline point_count : Attribute
                   
     """
 
@@ -8949,10 +8949,10 @@ class SplineParameter(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name capture_parameter : Capture attribute
-                - class_name factor : Attribute
-                - class_name parameter_index : Attribute
-                - class_name parameter_length : Attribute
+            Spline capture_parameter : Capture attribute
+                - Spline factor : Attribute
+                - Spline parameter_index : Attribute
+                - Spline parameter_length : Attribute
                   
     """
 
@@ -9015,7 +9015,7 @@ class SplitEdges(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name split_edges : Method
+            Mesh split_edges : Method
             
     """
 
@@ -9081,8 +9081,8 @@ class JoinStrings(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name join : Method
-                - class_name join_strings : Function
+            String join : Method
+                - functions join_strings : Function
                   
     """
 
@@ -9164,7 +9164,7 @@ class StringToCurves(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name to_curves : Method
+            String to_curves : Method
             
     """
 
@@ -9277,7 +9277,7 @@ class SubdivideCurve(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name subdivide : Method
+            Curve subdivide : Method
             
     """
 
@@ -9343,7 +9343,7 @@ class SubdivideMesh(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name subdivide : Method
+            Mesh subdivide : Method
             
     """
 
@@ -9416,7 +9416,7 @@ class SubdivisionSurface(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name subdivision_surface : Method
+            Mesh subdivision_surface : Method
             
     """
 
@@ -9520,16 +9520,16 @@ class Switch(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name switch : Method
-                - class_name switch : Method
-                - class_name switch : Method
-                - class_name switch : Method
-                - class_name switch : Method
-                - class_name switch : Method
-                - class_name switch : Method
-                - class_name switch : Method
-                - class_name switch : Method
-                - class_name switch : Method
+            Boolean switch : Method
+                - Collection switch : Method
+                - Float switch : Method
+                - Geometry switch : Method
+                - Image switch : Method
+                - Integer switch : Method
+                - Material switch : Method
+                - Object switch : Method
+                - String switch : Method
+                - Texture switch : Method
                   
     """
 
@@ -9670,7 +9670,7 @@ class Transform(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name transform : Method
+            Geometry transform : Method
             
     """
 
@@ -9740,7 +9740,7 @@ class TranslateInstances(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name translate : Method
+            Instances translate : Method
             
     """
 
@@ -9815,7 +9815,7 @@ class Triangulate(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name triangulate : Method
+            Mesh triangulate : Method
             
     """
 
@@ -9911,7 +9911,7 @@ class TrimCurve(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name trim : Method
+            Curve trim : Method
             
     """
 
@@ -10000,7 +10000,7 @@ class VolumeToMesh(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name to_mesh : Method
+            Volume to_mesh : Method
             
     """
 
@@ -10087,7 +10087,7 @@ class Clamp(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name clamp : Method
+            Float clamp : Method
             
     """
 
@@ -10167,7 +10167,7 @@ class CombineRgb(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Combine : Constructor
+            Color Combine : Constructor
             
     """
 
@@ -10235,7 +10235,7 @@ class CombineXyz(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Combine : Constructor
+            Vector Combine : Constructor
             
     """
 
@@ -10302,7 +10302,7 @@ class FloatCurve(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name curve : Method
+            Float curve : Method
             
     """
 
@@ -10390,8 +10390,8 @@ class MapRange(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name map_range : Method
-                - class_name map_range : Method
+            Float map_range : Method
+                - Vector map_range : Method
                   
     """
 
@@ -10506,126 +10506,126 @@ class Math(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name abs : Method
-                - class_name add : Method
-                - class_name arccos : Method
-                - class_name arcsin : Method
-                - class_name arctan : Method
-                - class_name arctan2 : Method
-                - class_name ceil : Method
-                - class_name compare : Method
-                - class_name cos : Method
-                - class_name cosh : Method
-                - class_name degrees : Method
-                - class_name divide : Method
-                - class_name exp : Method
-                - class_name floor : Method
-                - class_name fract : Method
-                - class_name greater_than : Method
-                - class_name inverse_sqrt : Method
-                - class_name less_than : Method
-                - class_name log : Method
-                - class_name max : Method
-                - class_name min : Method
-                - class_name modulo : Method
-                - class_name multiply : Method
-                - class_name multiply_add : Method
-                - class_name pingpong : Method
-                - class_name pow : Method
-                - class_name radians : Method
-                - class_name round : Method
-                - class_name sign : Method
-                - class_name sin : Method
-                - class_name sinh : Method
-                - class_name smooth_max : Method
-                - class_name smooth_min : Method
-                - class_name snap : Method
-                - class_name sqrt : Method
-                - class_name subtract : Method
-                - class_name tan : Method
-                - class_name tanh : Method
-                - class_name trunc : Method
-                - class_name wrap : Method
-                - class_name abs : Method
-                - class_name add : Method
-                - class_name arccos : Method
-                - class_name arcsin : Method
-                - class_name arctan : Method
-                - class_name arctan2 : Method
-                - class_name ceil : Method
-                - class_name compare : Method
-                - class_name cos : Method
-                - class_name cosh : Method
-                - class_name degrees : Method
-                - class_name divide : Method
-                - class_name exp : Method
-                - class_name floor : Method
-                - class_name fract : Method
-                - class_name greater_than : Method
-                - class_name inverse_sqrt : Method
-                - class_name less_than : Method
-                - class_name log : Method
-                - class_name max : Method
-                - class_name min : Method
-                - class_name modulo : Method
-                - class_name multiply : Method
-                - class_name multiply_add : Method
-                - class_name pingpong : Method
-                - class_name pow : Method
-                - class_name radians : Method
-                - class_name round : Method
-                - class_name sign : Method
-                - class_name sin : Method
-                - class_name sinh : Method
-                - class_name smooth_max : Method
-                - class_name smooth_min : Method
-                - class_name snap : Method
-                - class_name sqrt : Method
-                - class_name subtract : Method
-                - class_name tan : Method
-                - class_name tanh : Method
-                - class_name trunc : Method
-                - class_name wrap : Method
-                - class_name abs : Function
-                - class_name add : Function
-                - class_name arccos : Function
-                - class_name arcsin : Function
-                - class_name arctan : Function
-                - class_name arctan2 : Function
-                - class_name ceil : Function
-                - class_name compare : Function
-                - class_name cos : Function
-                - class_name cosh : Function
-                - class_name degrees : Function
-                - class_name divide : Function
-                - class_name exp : Function
-                - class_name floor : Function
-                - class_name fract : Function
-                - class_name greater_than : Function
-                - class_name inverse_sqrt : Function
-                - class_name less_than : Function
-                - class_name log : Function
-                - class_name max : Function
-                - class_name min : Function
-                - class_name modulo : Function
-                - class_name multiply : Function
-                - class_name multiply_add : Function
-                - class_name pingpong : Function
-                - class_name pow : Function
-                - class_name radians : Function
-                - class_name round : Function
-                - class_name sign : Function
-                - class_name sin : Function
-                - class_name sinh : Function
-                - class_name smooth_max : Function
-                - class_name smooth_min : Function
-                - class_name snap : Function
-                - class_name sqrt : Function
-                - class_name subtract : Function
-                - class_name tan : Function
-                - class_name tanh : Function
-                - class_name trunc : Function
-                - class_name wrap : Function
+            Float abs : Method
+                - Float add : Method
+                - Float arccos : Method
+                - Float arcsin : Method
+                - Float arctan : Method
+                - Float arctan2 : Method
+                - Float ceil : Method
+                - Float compare : Method
+                - Float cos : Method
+                - Float cosh : Method
+                - Float degrees : Method
+                - Float divide : Method
+                - Float exp : Method
+                - Float floor : Method
+                - Float fract : Method
+                - Float greater_than : Method
+                - Float inverse_sqrt : Method
+                - Float less_than : Method
+                - Float log : Method
+                - Float max : Method
+                - Float min : Method
+                - Float modulo : Method
+                - Float multiply : Method
+                - Float multiply_add : Method
+                - Float pingpong : Method
+                - Float pow : Method
+                - Float radians : Method
+                - Float round : Method
+                - Float sign : Method
+                - Float sin : Method
+                - Float sinh : Method
+                - Float smooth_max : Method
+                - Float smooth_min : Method
+                - Float snap : Method
+                - Float sqrt : Method
+                - Float subtract : Method
+                - Float tan : Method
+                - Float tanh : Method
+                - Float trunc : Method
+                - Float wrap : Method
+                - Integer abs : Method
+                - Integer add : Method
+                - Integer arccos : Method
+                - Integer arcsin : Method
+                - Integer arctan : Method
+                - Integer arctan2 : Method
+                - Integer ceil : Method
+                - Integer compare : Method
+                - Integer cos : Method
+                - Integer cosh : Method
+                - Integer degrees : Method
+                - Integer divide : Method
+                - Integer exp : Method
+                - Integer floor : Method
+                - Integer fract : Method
+                - Integer greater_than : Method
+                - Integer inverse_sqrt : Method
+                - Integer less_than : Method
+                - Integer log : Method
+                - Integer max : Method
+                - Integer min : Method
+                - Integer modulo : Method
+                - Integer multiply : Method
+                - Integer multiply_add : Method
+                - Integer pingpong : Method
+                - Integer pow : Method
+                - Integer radians : Method
+                - Integer round : Method
+                - Integer sign : Method
+                - Integer sin : Method
+                - Integer sinh : Method
+                - Integer smooth_max : Method
+                - Integer smooth_min : Method
+                - Integer snap : Method
+                - Integer sqrt : Method
+                - Integer subtract : Method
+                - Integer tan : Method
+                - Integer tanh : Method
+                - Integer trunc : Method
+                - Integer wrap : Method
+                - functions abs : Function
+                - functions add : Function
+                - functions arccos : Function
+                - functions arcsin : Function
+                - functions arctan : Function
+                - functions arctan2 : Function
+                - functions ceil : Function
+                - functions compare : Function
+                - functions cos : Function
+                - functions cosh : Function
+                - functions degrees : Function
+                - functions divide : Function
+                - functions exp : Function
+                - functions floor : Function
+                - functions fract : Function
+                - functions greater_than : Function
+                - functions inverse_sqrt : Function
+                - functions less_than : Function
+                - functions log : Function
+                - functions max : Function
+                - functions min : Function
+                - functions modulo : Function
+                - functions multiply : Function
+                - functions multiply_add : Function
+                - functions pingpong : Function
+                - functions pow : Function
+                - functions radians : Function
+                - functions round : Function
+                - functions sign : Function
+                - functions sin : Function
+                - functions sinh : Function
+                - functions smooth_max : Function
+                - functions smooth_min : Function
+                - functions snap : Function
+                - functions sqrt : Function
+                - functions subtract : Function
+                - functions tan : Function
+                - functions tanh : Function
+                - functions trunc : Function
+                - functions wrap : Function
                   
     """
 
@@ -10711,43 +10711,43 @@ class Mix(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name add : Method
-                - class_name burn : Method
-                - class_name darken : Method
-                - class_name difference : Method
-                - class_name divide : Method
-                - class_name dodge : Method
-                - class_name hue : Method
-                - class_name lighten : Method
-                - class_name linear_light : Method
-                - class_name mix : Method
-                - class_name mix : Method
-                - class_name mix_color : Method
-                - class_name multiply : Method
-                - class_name overlay : Method
-                - class_name saturation : Method
-                - class_name screen : Method
-                - class_name soft_light : Method
-                - class_name subtract : Method
-                - class_name value : Method
-                - class_name color_add : Function
-                - class_name color_burn : Function
-                - class_name color_darken : Function
-                - class_name color_difference : Function
-                - class_name color_divide : Function
-                - class_name color_dodge : Function
-                - class_name color_hue : Function
-                - class_name color_lighten : Function
-                - class_name color_linear_light : Function
-                - class_name color_mix : Function
-                - class_name color_mix_color : Function
-                - class_name color_multiply : Function
-                - class_name color_overlay : Function
-                - class_name color_saturation : Function
-                - class_name color_screen : Function
-                - class_name color_soft_light : Function
-                - class_name color_subtract : Function
-                - class_name color_value : Function
+            Color add : Method
+                - Color burn : Method
+                - Color darken : Method
+                - Color difference : Method
+                - Color divide : Method
+                - Color dodge : Method
+                - Color hue : Method
+                - Color lighten : Method
+                - Color linear_light : Method
+                - Color mix : Method
+                - Color mix : Method
+                - Color mix_color : Method
+                - Color multiply : Method
+                - Color overlay : Method
+                - Color saturation : Method
+                - Color screen : Method
+                - Color soft_light : Method
+                - Color subtract : Method
+                - Color value : Method
+                - functions color_add : Function
+                - functions color_burn : Function
+                - functions color_darken : Function
+                - functions color_difference : Function
+                - functions color_divide : Function
+                - functions color_dodge : Function
+                - functions color_hue : Function
+                - functions color_lighten : Function
+                - functions color_linear_light : Function
+                - functions color_mix : Function
+                - functions color_mix_color : Function
+                - functions color_multiply : Function
+                - functions color_overlay : Function
+                - functions color_saturation : Function
+                - functions color_screen : Function
+                - functions color_soft_light : Function
+                - functions color_subtract : Function
+                - functions color_value : Function
                   
     """
 
@@ -10835,7 +10835,7 @@ class RgbCurves(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name curves : Method
+            Color curves : Method
             
     """
 
@@ -10902,10 +10902,10 @@ class SeparateRgb(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name b : Property
-                - class_name g : Property
-                - class_name r : Property
-                - class_name separate : Property
+            Color b : Property
+                - Color g : Property
+                - Color r : Property
+                - Color separate : Property
                   
     """
 
@@ -10973,10 +10973,10 @@ class SeparateXyz(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name separate : Property
-                - class_name x : Property
-                - class_name y : Property
-                - class_name z : Property
+            Vector separate : Property
+                - Vector x : Property
+                - Vector y : Property
+                - Vector z : Property
                   
     """
 
@@ -11060,7 +11060,7 @@ class BrickTexture(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Brick : Static method
+            Texture Brick : Static method
             
     """
 
@@ -11177,7 +11177,7 @@ class CheckerTexture(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Checker : Static method
+            Texture Checker : Static method
             
     """
 
@@ -11251,7 +11251,7 @@ class GradientTexture(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Gradient : Static method
+            Texture Gradient : Static method
             
     """
 
@@ -11336,7 +11336,7 @@ class MagicTexture(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Magic : Static method
+            Texture Magic : Static method
             
     """
 
@@ -11428,7 +11428,7 @@ class MusgraveTexture(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Musgrave : Static method
+            Texture Musgrave : Static method
             
     """
 
@@ -11531,7 +11531,7 @@ class NoiseTexture(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Noise : Static method
+            Texture Noise : Static method
             
     """
 
@@ -11629,7 +11629,7 @@ class VoronoiTexture(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Voronoi : Static method
+            Texture Voronoi : Static method
             
     """
 
@@ -11747,7 +11747,7 @@ class WaveTexture(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name Wave : Static method
+            Texture Wave : Static method
             
     """
 
@@ -11864,7 +11864,7 @@ class WhiteNoiseTexture(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name WhiteNoise : Static method
+            Texture WhiteNoise : Static method
             
     """
 
@@ -11943,7 +11943,7 @@ class Colorramp(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name color_ramp : Method
+            Float color_ramp : Method
             
     """
 
@@ -12056,7 +12056,7 @@ class VectorCurves(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name curves : Method
+            Vector curves : Method
             
     """
 
@@ -12130,60 +12130,60 @@ class VectorMath(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name absolute : Method
-                - class_name add : Method
-                - class_name ceil : Method
-                - class_name cos : Method
-                - class_name cross : Method
-                - class_name distance : Method
-                - class_name divide : Method
-                - class_name dot : Method
-                - class_name faceforward : Method
-                - class_name floor : Method
-                - class_name fraction : Method
-                - class_name length : Method
-                - class_name max : Method
-                - class_name min : Method
-                - class_name modulo : Method
-                - class_name multiply : Method
-                - class_name multiply_add : Method
-                - class_name normalize : Method
-                - class_name project : Method
-                - class_name reflect : Method
-                - class_name refract : Method
-                - class_name scale : Method
-                - class_name sin : Method
-                - class_name snap : Method
-                - class_name subtract : Method
-                - class_name tan : Method
-                - class_name wrap : Method
-                - class_name cross : Function
-                - class_name distance : Function
-                - class_name dot : Function
-                - class_name faceforward : Function
-                - class_name fraction : Function
-                - class_name length : Function
-                - class_name normalize : Function
-                - class_name project : Function
-                - class_name reflect : Function
-                - class_name refract : Function
-                - class_name scale : Function
-                - class_name vector_absolute : Function
-                - class_name vector_add : Function
-                - class_name vector_ceil : Function
-                - class_name vector_cos : Function
-                - class_name vector_divide : Function
-                - class_name vector_floor : Function
-                - class_name vector_max : Function
-                - class_name vector_min : Function
-                - class_name vector_modulo : Function
-                - class_name vector_multiply : Function
-                - class_name vector_multiply_add : Function
-                - class_name vector_sin : Function
-                - class_name vector_snap : Function
-                - class_name vector_subtract : Function
-                - class_name vector_tan : Function
-                - class_name vector_wrap : Function
+            Vector absolute : Method
+                - Vector add : Method
+                - Vector ceil : Method
+                - Vector cos : Method
+                - Vector cross : Method
+                - Vector distance : Method
+                - Vector divide : Method
+                - Vector dot : Method
+                - Vector faceforward : Method
+                - Vector floor : Method
+                - Vector fraction : Method
+                - Vector length : Method
+                - Vector max : Method
+                - Vector min : Method
+                - Vector modulo : Method
+                - Vector multiply : Method
+                - Vector multiply_add : Method
+                - Vector normalize : Method
+                - Vector project : Method
+                - Vector reflect : Method
+                - Vector refract : Method
+                - Vector scale : Method
+                - Vector sin : Method
+                - Vector snap : Method
+                - Vector subtract : Method
+                - Vector tan : Method
+                - Vector wrap : Method
+                - functions cross : Function
+                - functions distance : Function
+                - functions dot : Function
+                - functions faceforward : Function
+                - functions fraction : Function
+                - functions length : Function
+                - functions normalize : Function
+                - functions project : Function
+                - functions reflect : Function
+                - functions refract : Function
+                - functions scale : Function
+                - functions vector_absolute : Function
+                - functions vector_add : Function
+                - functions vector_ceil : Function
+                - functions vector_cos : Function
+                - functions vector_divide : Function
+                - functions vector_floor : Function
+                - functions vector_max : Function
+                - functions vector_min : Function
+                - functions vector_modulo : Function
+                - functions vector_multiply : Function
+                - functions vector_multiply_add : Function
+                - functions vector_sin : Function
+                - functions vector_snap : Function
+                - functions vector_subtract : Function
+                - functions vector_tan : Function
+                - functions vector_wrap : Function
                   
     """
 
@@ -12273,7 +12273,7 @@ class VectorRotate(Node):
         ------------
             > Data socket classes implementing this node.
               
-            class_name rotate : Method
+            Vector rotate : Method
             
     """
 

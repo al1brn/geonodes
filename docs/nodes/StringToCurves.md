@@ -50,5 +50,5 @@ curve_instances : Geometry
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/String.md) [to_curves](/docs/sockets/String.md#to_curves) : Method
+[String](/docs/sockets/String.md) [to_curves](/docs/sockets/String.md#to_curves) : Method
 

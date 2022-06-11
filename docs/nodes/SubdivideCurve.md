@@ -35,5 +35,5 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/Curve.md) [subdivide](/docs/sockets/Curve.md#subdivide) : Method
+[Curve](/docs/sockets/Curve.md) [subdivide](/docs/sockets/Curve.md#subdivide) : Method
 

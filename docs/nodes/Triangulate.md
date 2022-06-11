@@ -41,5 +41,5 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/Mesh.md) [triangulate](/docs/sockets/Mesh.md#triangulate) : Method
+[Mesh](/docs/sockets/Mesh.md) [triangulate](/docs/sockets/Mesh.md#triangulate) : Method
 

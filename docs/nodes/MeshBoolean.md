@@ -41,7 +41,7 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/Mesh.md) [difference](/docs/sockets/Mesh.md#difference) : Method
-- [class_name](/docs/sockets/Mesh.md) [intersect](/docs/sockets/Mesh.md#intersect) : Method
-- [class_name](/docs/sockets/Mesh.md) [union](/docs/sockets/Mesh.md#union) : Method
+[Mesh](/docs/sockets/Mesh.md) [difference](/docs/sockets/Mesh.md#difference) : Method
+- [Mesh](/docs/sockets/Mesh.md) [intersect](/docs/sockets/Mesh.md#intersect) : Method
+- [Mesh](/docs/sockets/Mesh.md) [union](/docs/sockets/Mesh.md#union) : Method
   

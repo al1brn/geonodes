@@ -46,5 +46,5 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/Mesh.md) [Cone](/docs/sockets/Mesh.md#cone) : Constructor
+[Mesh](/docs/sockets/Mesh.md) [Cone](/docs/sockets/Mesh.md#cone) : Constructor
 

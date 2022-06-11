@@ -40,5 +40,5 @@ value : Float
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/Texture.md) [WhiteNoise](/docs/sockets/Texture.md#whitenoise) : Static method
+[Texture](/docs/sockets/Texture.md) [WhiteNoise](/docs/sockets/Texture.md#whitenoise) : Static method
 

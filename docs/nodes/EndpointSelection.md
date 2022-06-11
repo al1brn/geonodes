@@ -35,6 +35,6 @@ selection : Boolean
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/Spline.md) [capture_endpoint_selection](/docs/sockets/Spline.md#capture_endpoint_selection) : Capture attribute
-- [class_name](/docs/sockets/Spline.md) [endpoint_selection](/docs/sockets/Spline.md#endpoint_selection) : Attribute
+[Spline](/docs/sockets/Spline.md) [capture_endpoint_selection](/docs/sockets/Spline.md#capture_endpoint_selection) : Capture attribute
+- [Spline](/docs/sockets/Spline.md) [endpoint_selection](/docs/sockets/Spline.md#endpoint_selection) : Attribute
   

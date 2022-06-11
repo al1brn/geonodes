@@ -35,5 +35,5 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/Mesh.md) [to_curve](/docs/sockets/Mesh.md#to_curve) : Method
+[Mesh](/docs/sockets/Mesh.md) [to_curve](/docs/sockets/Mesh.md#to_curve) : Method
 

@@ -35,5 +35,5 @@ color : Color
 
 > Data socket classes implementing this node.
   
-[class_name](/docs/sockets/Color.md) [curves](/docs/sockets/Color.md#curves) : Method
+[Color](/docs/sockets/Color.md) [curves](/docs/sockets/Color.md#curves) : Method
 
