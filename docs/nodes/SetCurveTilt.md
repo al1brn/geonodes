@@ -36,5 +36,5 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md) [set_tilt](/docs/sockets/Curve.md#set_tilt) : Method
+[Curve](/docs/sockets/Curve.md).[set_tilt](/docs/sockets/Curve.md#set_tilt) : Method
 

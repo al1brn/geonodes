@@ -36,5 +36,5 @@ geometry : Geometry
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md) [set_shade_smooth](/docs/sockets/Geometry.md#set_shade_smooth) : Method
+[Geometry](/docs/sockets/Geometry.md).[set_shade_smooth](/docs/sockets/Geometry.md#set_shade_smooth) : Method
 

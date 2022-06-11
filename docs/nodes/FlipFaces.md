@@ -35,5 +35,5 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md) [flip_faces](/docs/sockets/Mesh.md#flip_faces) : Method
+[Mesh](/docs/sockets/Mesh.md).[flip_faces](/docs/sockets/Mesh.md#flip_faces) : Method
 

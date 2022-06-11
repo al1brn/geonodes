@@ -30,6 +30,6 @@ radius : Float
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md) [capture_radius](/docs/sockets/Geometry.md#capture_radius) : Capture attribute
-- [Geometry](/docs/sockets/Geometry.md) [radius](/docs/sockets/Geometry.md#radius) : Attribute
+[Geometry](/docs/sockets/Geometry.md).[capture_radius](/docs/sockets/Geometry.md#capture_radius) : Capture attribute
+- [Geometry](/docs/sockets/Geometry.md).[radius](/docs/sockets/Geometry.md#radius) : Attribute
   

@@ -36,5 +36,5 @@ string : String
 
 > Data socket classes implementing this node.
   
-[String](/docs/sockets/String.md) [replace](/docs/sockets/String.md#replace) : Method
+[String](/docs/sockets/String.md).[replace](/docs/sockets/String.md#replace) : Method
 

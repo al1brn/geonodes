@@ -41,5 +41,5 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md) [Line](/docs/sockets/Curve.md#line) : Constructor
+[Curve](/docs/sockets/Curve.md).[Line](/docs/sockets/Curve.md#line) : Constructor
 

@@ -39,5 +39,5 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md) [set_spline_type](/docs/sockets/Curve.md#set_spline_type) : Method
+[Curve](/docs/sockets/Curve.md).[set_spline_type](/docs/sockets/Curve.md#set_spline_type) : Method
 

@@ -41,5 +41,5 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md) [resample](/docs/sockets/Curve.md#resample) : Method
+[Curve](/docs/sockets/Curve.md).[resample](/docs/sockets/Curve.md#resample) : Method
 

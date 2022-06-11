@@ -44,5 +44,5 @@ fac : Float
 
 > Data socket classes implementing this node.
   
-[Texture](/docs/sockets/Texture.md) [Noise](/docs/sockets/Texture.md#noise) : Static method
+[Texture](/docs/sockets/Texture.md).[Noise](/docs/sockets/Texture.md#noise) : Static method
 

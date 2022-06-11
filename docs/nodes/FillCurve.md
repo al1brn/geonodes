@@ -38,5 +38,5 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md) [fill](/docs/sockets/Curve.md#fill) : Method
+[Curve](/docs/sockets/Curve.md).[fill](/docs/sockets/Curve.md#fill) : Method
 

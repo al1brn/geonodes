@@ -40,5 +40,5 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md) [set_handles](/docs/sockets/Curve.md#set_handles) : Method
+[Curve](/docs/sockets/Curve.md).[set_handles](/docs/sockets/Curve.md#set_handles) : Method
 

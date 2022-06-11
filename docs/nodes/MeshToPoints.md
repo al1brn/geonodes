@@ -41,5 +41,5 @@ points : Points
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md) [to_points](/docs/sockets/Mesh.md#to_points) : Method
+[Mesh](/docs/sockets/Mesh.md).[to_points](/docs/sockets/Mesh.md#to_points) : Method
 

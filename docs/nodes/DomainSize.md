@@ -43,5 +43,5 @@ point_count : Integer
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md) [attribute_domain_size](/docs/sockets/Geometry.md#attribute_domain_size) : Method
+[Geometry](/docs/sockets/Geometry.md).[attribute_domain_size](/docs/sockets/Geometry.md#attribute_domain_size) : Method
 

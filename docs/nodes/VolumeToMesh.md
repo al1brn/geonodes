@@ -42,5 +42,5 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[Volume](/docs/sockets/Volume.md) [to_mesh](/docs/sockets/Volume.md#to_mesh) : Method
+[Volume](/docs/sockets/Volume.md).[to_mesh](/docs/sockets/Volume.md#to_mesh) : Method
 

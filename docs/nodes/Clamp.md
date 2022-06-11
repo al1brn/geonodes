@@ -40,5 +40,5 @@ result : Float
 
 > Data socket classes implementing this node.
   
-[Float](/docs/sockets/Float.md) [clamp](/docs/sockets/Float.md#clamp) : Method
+[Float](/docs/sockets/Float.md).[clamp](/docs/sockets/Float.md#clamp) : Method
 

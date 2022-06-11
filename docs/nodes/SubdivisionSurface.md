@@ -41,5 +41,5 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md) [subdivision_surface](/docs/sockets/Mesh.md#subdivision_surface) : Method
+[Mesh](/docs/sockets/Mesh.md).[subdivision_surface](/docs/sockets/Mesh.md#subdivision_surface) : Method
 

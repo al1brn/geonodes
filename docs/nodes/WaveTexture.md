@@ -48,5 +48,5 @@ color : Color
 
 > Data socket classes implementing this node.
   
-[Texture](/docs/sockets/Texture.md) [Wave](/docs/sockets/Texture.md#wave) : Static method
+[Texture](/docs/sockets/Texture.md).[Wave](/docs/sockets/Texture.md#wave) : Static method
 

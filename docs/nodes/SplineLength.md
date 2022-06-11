@@ -31,7 +31,7 @@ length : Float
 
 > Data socket classes implementing this node.
   
-[Spline](/docs/sockets/Spline.md) [capture_length](/docs/sockets/Spline.md#capture_length) : Capture attribute
-- [Spline](/docs/sockets/Spline.md) [length](/docs/sockets/Spline.md#length) : Attribute
-- [Spline](/docs/sockets/Spline.md) [point_count](/docs/sockets/Spline.md#point_count) : Attribute
+[Spline](/docs/sockets/Spline.md).[capture_length](/docs/sockets/Spline.md#capture_length) : Capture attribute
+- [Spline](/docs/sockets/Spline.md).[length](/docs/sockets/Spline.md#length) : Attribute
+- [Spline](/docs/sockets/Spline.md).[point_count](/docs/sockets/Spline.md#point_count) : Attribute
   

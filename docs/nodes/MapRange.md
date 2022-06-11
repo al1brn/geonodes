@@ -55,6 +55,6 @@ result : Float
 
 > Data socket classes implementing this node.
   
-[Float](/docs/sockets/Float.md) [map_range](/docs/sockets/Float.md#map_range) : Method
-- [Vector](/docs/sockets/Vector.md) [map_range](/docs/sockets/Vector.md#map_range) : Method
+[Float](/docs/sockets/Float.md).[map_range](/docs/sockets/Float.md#map_range) : Method
+- [Vector](/docs/sockets/Vector.md).[map_range](/docs/sockets/Vector.md#map_range) : Method
   

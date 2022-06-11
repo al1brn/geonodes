@@ -35,5 +35,5 @@ string : String
 
 > Data socket classes implementing this node.
   
-[Float](/docs/sockets/Float.md) [to_string](/docs/sockets/Float.md#to_string) : Method
+[Float](/docs/sockets/Float.md).[to_string](/docs/sockets/Float.md#to_string) : Method
 

@@ -38,5 +38,5 @@ integer : Integer
 
 > Data socket classes implementing this node.
   
-[Float](/docs/sockets/Float.md) [to_integer](/docs/sockets/Float.md#to_integer) : Method
+[Float](/docs/sockets/Float.md).[to_integer](/docs/sockets/Float.md#to_integer) : Method
 

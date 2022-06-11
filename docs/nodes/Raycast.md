@@ -55,9 +55,9 @@ is_hit : Boolean
 
 > Data socket classes implementing this node.
   
-[Boolean](/docs/sockets/Boolean.md) [raycast](/docs/sockets/Boolean.md#raycast) : Method
-- [Color](/docs/sockets/Color.md) [raycast](/docs/sockets/Color.md#raycast) : Method
-- [Float](/docs/sockets/Float.md) [raycast](/docs/sockets/Float.md#raycast) : Method
-- [Integer](/docs/sockets/Integer.md) [raycast](/docs/sockets/Integer.md#raycast) : Method
-- [Vector](/docs/sockets/Vector.md) [raycast](/docs/sockets/Vector.md#raycast) : Method
+[Boolean](/docs/sockets/Boolean.md).[raycast](/docs/sockets/Boolean.md#raycast) : Method
+- [Color](/docs/sockets/Color.md).[raycast](/docs/sockets/Color.md#raycast) : Method
+- [Float](/docs/sockets/Float.md).[raycast](/docs/sockets/Float.md#raycast) : Method
+- [Integer](/docs/sockets/Integer.md).[raycast](/docs/sockets/Integer.md#raycast) : Method
+- [Vector](/docs/sockets/Vector.md).[raycast](/docs/sockets/Vector.md#raycast) : Method
   

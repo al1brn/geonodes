@@ -42,5 +42,5 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md) [Line](/docs/sockets/Mesh.md#line) : Constructor
+[Mesh](/docs/sockets/Mesh.md).[Line](/docs/sockets/Mesh.md#line) : Constructor
 

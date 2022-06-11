@@ -40,5 +40,5 @@ position : Vector
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md) [proximity](/docs/sockets/Geometry.md#proximity) : Method
+[Geometry](/docs/sockets/Geometry.md).[proximity](/docs/sockets/Geometry.md#proximity) : Method
 

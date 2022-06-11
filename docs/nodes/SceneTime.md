@@ -31,5 +31,5 @@ seconds : Float
 
 > Data socket classes implementing this node.
   
-[functions](/docs/sockets/functions.md) [scene](/docs/sockets/functions.md#scene) : Function
+[functions](/docs/sockets/functions.md).[scene](/docs/sockets/functions.md#scene) : Function
 

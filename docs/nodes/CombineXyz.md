@@ -36,5 +36,5 @@ vector : Vector
 
 > Data socket classes implementing this node.
   
-[Vector](/docs/sockets/Vector.md) [Combine](/docs/sockets/Vector.md#combine) : Constructor
+[Vector](/docs/sockets/Vector.md).[Combine](/docs/sockets/Vector.md#combine) : Constructor
 

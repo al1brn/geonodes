@@ -36,8 +36,8 @@ r : Float
 
 > Data socket classes implementing this node.
   
-[Color](/docs/sockets/Color.md) [b](/docs/sockets/Color.md#b) : Property
-- [Color](/docs/sockets/Color.md) [g](/docs/sockets/Color.md#g) : Property
-- [Color](/docs/sockets/Color.md) [r](/docs/sockets/Color.md#r) : Property
-- [Color](/docs/sockets/Color.md) [separate](/docs/sockets/Color.md#separate) : Property
+[Color](/docs/sockets/Color.md).[b](/docs/sockets/Color.md#b) : Property
+- [Color](/docs/sockets/Color.md).[g](/docs/sockets/Color.md#g) : Property
+- [Color](/docs/sockets/Color.md).[r](/docs/sockets/Color.md#r) : Property
+- [Color](/docs/sockets/Color.md).[separate](/docs/sockets/Color.md#separate) : Property
   

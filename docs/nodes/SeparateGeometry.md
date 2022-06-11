@@ -40,5 +40,5 @@ selection : Geometry
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md) [components](/docs/sockets/Geometry.md#components) : Method
+[Geometry](/docs/sockets/Geometry.md).[components](/docs/sockets/Geometry.md#components) : Method
 

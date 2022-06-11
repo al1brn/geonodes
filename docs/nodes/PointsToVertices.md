@@ -35,5 +35,5 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[Points](/docs/sockets/Points.md) [to_vertices](/docs/sockets/Points.md#to_vertices) : Method
+[Points](/docs/sockets/Points.md).[to_vertices](/docs/sockets/Points.md#to_vertices) : Method
 

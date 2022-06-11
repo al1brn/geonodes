@@ -43,5 +43,5 @@ vector : Vector
 
 > Data socket classes implementing this node.
   
-[Vector](/docs/sockets/Vector.md) [rotate](/docs/sockets/Vector.md#rotate) : Method
+[Vector](/docs/sockets/Vector.md).[rotate](/docs/sockets/Vector.md#rotate) : Method
 

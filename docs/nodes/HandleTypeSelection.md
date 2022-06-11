@@ -35,6 +35,6 @@ selection : Boolean
 
 > Data socket classes implementing this node.
   
-[Spline](/docs/sockets/Spline.md) [capture_handle_type_selection](/docs/sockets/Spline.md#capture_handle_type_selection) : Capture attribute
-- [Spline](/docs/sockets/Spline.md) [handle_type_selection](/docs/sockets/Spline.md#handle_type_selection) : Attribute
+[Spline](/docs/sockets/Spline.md).[capture_handle_type_selection](/docs/sockets/Spline.md#capture_handle_type_selection) : Capture attribute
+- [Spline](/docs/sockets/Spline.md).[handle_type_selection](/docs/sockets/Spline.md#handle_type_selection) : Attribute
   

@@ -42,5 +42,5 @@ position : Vector
 
 > Data socket classes implementing this node.
   
-[Curve](/docs/sockets/Curve.md) [sample](/docs/sockets/Curve.md#sample) : Method
+[Curve](/docs/sockets/Curve.md).[sample](/docs/sockets/Curve.md#sample) : Method
 

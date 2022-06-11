@@ -30,5 +30,5 @@ is_viewport : Boolean
 
 > Data socket classes implementing this node.
   
-[Geometry](/docs/sockets/Geometry.md) [is_viewport](/docs/sockets/Geometry.md#is_viewport) : Static method
+[Geometry](/docs/sockets/Geometry.md).[is_viewport](/docs/sockets/Geometry.md#is_viewport) : Static method
 

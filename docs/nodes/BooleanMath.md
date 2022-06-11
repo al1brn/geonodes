@@ -39,13 +39,13 @@ boolean : Boolean
 
 > Data socket classes implementing this node.
   
-[Boolean](/docs/sockets/Boolean.md) [b_and](/docs/sockets/Boolean.md#b_and) : Method
-- [Boolean](/docs/sockets/Boolean.md) [b_not](/docs/sockets/Boolean.md#b_not) : Method
-- [Boolean](/docs/sockets/Boolean.md) [b_or](/docs/sockets/Boolean.md#b_or) : Method
-- [Boolean](/docs/sockets/Boolean.md) [imply](/docs/sockets/Boolean.md#imply) : Method
-- [Boolean](/docs/sockets/Boolean.md) [nand](/docs/sockets/Boolean.md#nand) : Method
-- [Boolean](/docs/sockets/Boolean.md) [nimply](/docs/sockets/Boolean.md#nimply) : Method
-- [Boolean](/docs/sockets/Boolean.md) [nor](/docs/sockets/Boolean.md#nor) : Method
-- [Boolean](/docs/sockets/Boolean.md) [xnor](/docs/sockets/Boolean.md#xnor) : Method
-- [Boolean](/docs/sockets/Boolean.md) [xor](/docs/sockets/Boolean.md#xor) : Method
+[Boolean](/docs/sockets/Boolean.md).[b_and](/docs/sockets/Boolean.md#b_and) : Method
+- [Boolean](/docs/sockets/Boolean.md).[b_not](/docs/sockets/Boolean.md#b_not) : Method
+- [Boolean](/docs/sockets/Boolean.md).[b_or](/docs/sockets/Boolean.md#b_or) : Method
+- [Boolean](/docs/sockets/Boolean.md).[imply](/docs/sockets/Boolean.md#imply) : Method
+- [Boolean](/docs/sockets/Boolean.md).[nand](/docs/sockets/Boolean.md#nand) : Method
+- [Boolean](/docs/sockets/Boolean.md).[nimply](/docs/sockets/Boolean.md#nimply) : Method
+- [Boolean](/docs/sockets/Boolean.md).[nor](/docs/sockets/Boolean.md#nor) : Method
+- [Boolean](/docs/sockets/Boolean.md).[xnor](/docs/sockets/Boolean.md#xnor) : Method
+- [Boolean](/docs/sockets/Boolean.md).[xor](/docs/sockets/Boolean.md#xor) : Method
   

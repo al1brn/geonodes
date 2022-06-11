@@ -37,5 +37,5 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[Mesh](/docs/sockets/Mesh.md) [Cube](/docs/sockets/Mesh.md#cube) : Constructor
+[Mesh](/docs/sockets/Mesh.md).[Cube](/docs/sockets/Mesh.md#cube) : Constructor
 

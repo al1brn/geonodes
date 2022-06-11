@@ -39,5 +39,5 @@ color : Color
 
 > Data socket classes implementing this node.
   
-[Texture](/docs/sockets/Texture.md) [Gradient](/docs/sockets/Texture.md#gradient) : Static method
+[Texture](/docs/sockets/Texture.md).[Gradient](/docs/sockets/Texture.md#gradient) : Static method
 
