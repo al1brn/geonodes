@@ -22,74 +22,74 @@ class Mesh(gn.Geometry):
 
         Constructors
         ------------
-            - Circle : MeshCircle, mesh (Mesh)
-            - Cone : Cone, Sockets      [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
-            - Cube : Cube, mesh (Mesh)
-            - Cylinder : Cylinder, Sockets      [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
-            - Grid : Grid, mesh (Mesh)
-            - IcoSphere : IcoSphere, mesh (Mesh)
-            - Line : MeshLine, mesh (Mesh)
-            - UVSphere : UvSphere, mesh (Mesh)
+            - Circle : mesh (Mesh)
+            - Cone : Sockets      [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
+            - Cube : mesh (Mesh)
+            - Cylinder : Sockets      [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
+            - Grid : mesh (Mesh)
+            - IcoSphere : mesh (Mesh)
+            - Line : mesh (Mesh)
+            - UVSphere : mesh (Mesh)
     
 
         Attribute capture
         -----------------
-            - capture_edge_angle : EdgeAngle, Sockets      [unsigned_angle (Float), signed_angle (Float)]
-            - capture_edge_neighbors : EdgeNeighbors, face_count (Integer)
-            - capture_edge_vertices : EdgeVertices, Sockets      [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-            - capture_face_area : FaceArea, area (Float)
-            - capture_face_neighbors : FaceNeighbors, Sockets      [vertex_count (Integer), face_count (Integer)]
-            - capture_island : MeshIsland, Sockets      [island_index (Integer), island_count (Integer)]
-            - capture_material_index : MaterialIndex, material_index (Integer)
-            - capture_material_selection : MaterialSelection, selection (Boolean)
-            - capture_shade_smooth : IsShadeSmooth, smooth (Boolean)
-            - capture_vertex_neighbors : VertexNeighbors, Sockets      [vertex_count (Integer), face_count (Integer)]
+            - capture_edge_angle : Sockets      [unsigned_angle (Float), signed_angle (Float)]
+            - capture_edge_neighbors : face_count (Integer)
+            - capture_edge_vertices : Sockets      [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
+            - capture_face_area : area (Float)
+            - capture_face_neighbors : Sockets      [vertex_count (Integer), face_count (Integer)]
+            - capture_island : Sockets      [island_index (Integer), island_count (Integer)]
+            - capture_material_index : material_index (Integer)
+            - capture_material_selection : selection (Boolean)
+            - capture_shade_smooth : smooth (Boolean)
+            - capture_vertex_neighbors : Sockets      [vertex_count (Integer), face_count (Integer)]
     
 
         Attributes
         ----------
-            - corner_ID : EdgeAngle, Float = capture_ID(domain='CORNER').unsigned_angle
-            - corner_index : EdgeAngle, Float = capture_index(domain='CORNER').unsigned_angle
-            - corner_porision : EdgeAngle, Float = capture_position(domain='CORNER').unsigned_angle
-            - edge_angle : EdgeAngle, Float = capture_edge_angle(domain='EDGE').unsigned_angle
-            - edge_neighbors : EdgeNeighbors, Integer = capture_edge_neighbors(domain='EDGE')
-            - edge_unsigned_angle : EdgeAngle, Float = capture_edge_angle(domain='EDGE').signed_angle
-            - edge_vertices_index1 : EdgeVertices, Integer = capture_edge_vertices(domain='EDGE').vertex_index_1
-            - edge_vertices_index2 : EdgeVertices, Integer = capture_edge_vertices(domain='EDGE').vertex_index_2
-            - edge_vertices_position1 : EdgeVertices, Vector = capture_edge_vertices(domain='EDGE').position_1
-            - edge_vertices_position2 : EdgeVertices, Vector = capture_edge_vertices(domain='EDGE').position_2
-            - egde_ID : EdgeAngle, Float = capture_ID(domain='EDGE').unsigned_angle
-            - egde_index : EdgeAngle, Float = capture_index(domain='EDGE').unsigned_angle
-            - egde_position : EdgeAngle, Float = capture_position(domain='EDGE').unsigned_angle
-            - face_ID : EdgeAngle, Float = capture_ID(domain='FACE').unsigned_angle
-            - face_area : FaceArea, Float = capture_face_area(domain='FACE')
-            - face_index : EdgeAngle, Float = capture_index(domain='FACE').unsigned_angle
-            - face_neighbors_face_count : FaceNeighbors, Integer = capture_face_neighbors(domain='FACE').face_count
-            - face_neighbors_vertex_count : FaceNeighbors, Integer = capture_face_neighbors(domain='FACE').vertex_count
-            - face_position : EdgeAngle, Float = capture_position(domain='FACE').unsigned_angle
-            - island : MeshIsland, Integer = capture_island(domain='POINT').island_index
-            - material_index : MaterialIndex, Integer = capture_material_index(domain='FACE')
-            - material_selection : MaterialSelection, Boolean = capture_material_selection(domain='FACE')
-            - shade_smooth : IsShadeSmooth, Boolean = capture_shade_smooth(domain='FACE')
-            - vertex_neighbors_face_count : VertexNeighbors, Integer = capture_vertex_neighbors(domain='POINT').face_count
-            - vertex_neighbors_vertex_count : VertexNeighbors, Integer = capture_vertex_neighbors(domain='POINT').vertex_count
+            - corner_ID : Float = capture_ID(domain='CORNER').unsigned_angle
+            - corner_index : Float = capture_index(domain='CORNER').unsigned_angle
+            - corner_porision : Float = capture_position(domain='CORNER').unsigned_angle
+            - edge_angle : Float = capture_edge_angle(domain='EDGE').unsigned_angle
+            - edge_neighbors : Integer = capture_edge_neighbors(domain='EDGE')
+            - edge_unsigned_angle : Float = capture_edge_angle(domain='EDGE').signed_angle
+            - edge_vertices_index1 : Integer = capture_edge_vertices(domain='EDGE').vertex_index_1
+            - edge_vertices_index2 : Integer = capture_edge_vertices(domain='EDGE').vertex_index_2
+            - edge_vertices_position1 : Vector = capture_edge_vertices(domain='EDGE').position_1
+            - edge_vertices_position2 : Vector = capture_edge_vertices(domain='EDGE').position_2
+            - egde_ID : Float = capture_ID(domain='EDGE').unsigned_angle
+            - egde_index : Float = capture_index(domain='EDGE').unsigned_angle
+            - egde_position : Float = capture_position(domain='EDGE').unsigned_angle
+            - face_ID : Float = capture_ID(domain='FACE').unsigned_angle
+            - face_area : Float = capture_face_area(domain='FACE')
+            - face_index : Float = capture_index(domain='FACE').unsigned_angle
+            - face_neighbors_face_count : Integer = capture_face_neighbors(domain='FACE').face_count
+            - face_neighbors_vertex_count : Integer = capture_face_neighbors(domain='FACE').vertex_count
+            - face_position : Float = capture_position(domain='FACE').unsigned_angle
+            - island : Integer = capture_island(domain='POINT').island_index
+            - material_index : Integer = capture_material_index(domain='FACE')
+            - material_selection : Boolean = capture_material_selection(domain='FACE')
+            - shade_smooth : Boolean = capture_shade_smooth(domain='FACE')
+            - vertex_neighbors_face_count : Integer = capture_vertex_neighbors(domain='POINT').face_count
+            - vertex_neighbors_vertex_count : Integer = capture_vertex_neighbors(domain='POINT').vertex_count
     
 
         Methods
         -------
-            - difference : MeshBoolean, mesh (Mesh)
-            - distribute_points_on_faces : DistributePointsOnFaces, Sockets      [points (Points), normal (Vector), rotation (Vector)]
-            - dual : DualMesh, dual_mesh (Geometry)
-            - extrude : ExtrudeMesh, Sockets      [mesh (Mesh), top (Boolean), side (Boolean)]
-            - flip_faces : FlipFaces, mesh (Mesh)
-            - intersect : MeshBoolean, mesh (Mesh)
-            - split_edges : SplitEdges, mesh (Mesh)
-            - subdivide : SubdivideMesh, mesh (Mesh)
-            - subdivision_surface : SubdivisionSurface, mesh (Mesh)
-            - to_curve : MeshToCurve, curve (Curve)
-            - to_points : MeshToPoints, points (Points)
-            - triangulate : Triangulate, mesh (Mesh)
-            - union : MeshBoolean, mesh (Mesh)
+            - difference : mesh (Mesh)
+            - distribute_points_on_faces : Sockets      [points (Points), normal (Vector), rotation (Vector)]
+            - dual : dual_mesh (Geometry)
+            - extrude : Sockets      [mesh (Mesh), top (Boolean), side (Boolean)]
+            - flip_faces : mesh (Mesh)
+            - intersect : mesh (Mesh)
+            - split_edges : mesh (Mesh)
+            - subdivide : mesh (Mesh)
+            - subdivision_surface : mesh (Mesh)
+            - to_curve : curve (Curve)
+            - to_points : points (Points)
+            - triangulate : mesh (Mesh)
+            - union : mesh (Mesh)
     """
 
 
@@ -127,6 +127,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.MeshCircle(vertices=vertices, radius=radius, fill_type=fill_type)
             ```
     
@@ -174,6 +175,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Cone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top, radius_bottom=radius_bottom, depth=depth, fill_type=fill_type)
             ```
     
@@ -214,6 +216,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Cube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, vertices_z=vertices_z)
             ```
     
@@ -260,6 +263,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Cylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius, depth=depth, fill_type=fill_type)
             ```
     
@@ -300,6 +304,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y)
             ```
     
@@ -338,6 +343,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.IcoSphere(radius=radius, subdivisions=subdivisions)
             ```
     
@@ -383,6 +389,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.MeshLine(count=count, start_location=start_location, offset=offset, count_mode=count_mode, mode=mode)
             ```
     
@@ -422,6 +429,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.UvSphere(segments=segments, rings=rings, radius=radius)
             ```
     
@@ -463,6 +471,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeAngle()
             ```
     
@@ -505,6 +514,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeNeighbors()
             ```
     
@@ -547,6 +557,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeVertices()
             ```
     
@@ -589,6 +600,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.FaceArea()
             ```
     
@@ -631,6 +643,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.FaceNeighbors()
             ```
     
@@ -673,6 +686,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.MeshIsland()
             ```
     
@@ -715,6 +729,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.IsShadeSmooth()
             ```
     
@@ -757,6 +772,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.VertexNeighbors()
             ```
     
@@ -799,6 +815,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.MaterialIndex()
             ```
     
@@ -846,6 +863,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.MaterialSelection(material=material)
             ```
     
@@ -892,6 +910,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeAngle()
             ```
     
@@ -929,6 +948,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeAngle()
             ```
     
@@ -966,6 +986,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeAngle()
             ```
     
@@ -1003,6 +1024,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeAngle()
             ```
     
@@ -1040,6 +1062,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeAngle()
             ```
     
@@ -1077,6 +1100,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeAngle()
             ```
     
@@ -1114,6 +1138,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeAngle()
             ```
     
@@ -1151,6 +1176,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeAngle()
             ```
     
@@ -1188,6 +1214,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeAngle()
             ```
     
@@ -1225,6 +1252,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeAngle()
             ```
     
@@ -1262,6 +1290,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeAngle()
             ```
     
@@ -1299,6 +1328,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeNeighbors()
             ```
     
@@ -1336,6 +1366,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeVertices()
             ```
     
@@ -1373,6 +1404,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeVertices()
             ```
     
@@ -1410,6 +1442,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeVertices()
             ```
     
@@ -1447,6 +1480,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EdgeVertices()
             ```
     
@@ -1484,6 +1518,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.FaceArea()
             ```
     
@@ -1521,6 +1556,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.FaceNeighbors()
             ```
     
@@ -1558,6 +1594,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.FaceNeighbors()
             ```
     
@@ -1595,6 +1632,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.MeshIsland()
             ```
     
@@ -1632,6 +1670,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.IsShadeSmooth()
             ```
     
@@ -1669,6 +1708,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.VertexNeighbors()
             ```
     
@@ -1706,6 +1746,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.VertexNeighbors()
             ```
     
@@ -1743,6 +1784,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.MaterialIndex()
             ```
     
@@ -1785,6 +1827,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.MaterialSelection(material=material)
             ```
     
@@ -1832,6 +1875,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT')
             ```
     
@@ -1875,6 +1919,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION')
             ```
     
@@ -1919,6 +1964,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE')
             ```
     
@@ -1956,6 +2002,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SplitEdges(mesh=self, selection=selection)
             ```
     
@@ -1993,6 +2040,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SubdivideMesh(mesh=self, level=level)
             ```
     
@@ -2037,6 +2085,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth)
             ```
     
@@ -2081,6 +2130,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method, quad_method=quad_method)
             ```
     
@@ -2118,6 +2168,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.DualMesh(mesh=self, keep_boundaries=keep_boundaries)
             ```
     
@@ -2155,6 +2206,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.FlipFaces(mesh=self, selection=selection)
             ```
     
@@ -2200,6 +2252,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual, mode=mode)
             ```
     
@@ -2237,6 +2290,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.MeshToCurve(mesh=self, selection=selection)
             ```
     
@@ -2281,6 +2335,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.MeshToPoints(mesh=self, selection=selection, position=position, radius=radius, mode=mode)
             ```
     
@@ -2328,6 +2383,7 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method)
             ```
     

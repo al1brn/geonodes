@@ -22,10 +22,10 @@ class Points(gn.Geometry):
 
         Methods
         -------
-            - instance_on_points : InstanceOnPoints, instances (Instances)
-            - set_radius : SetPointRadius, points (Points)
-            - to_vertices : PointsToVertices, mesh (Mesh)
-            - to_volume : PointsToVolume, volume (Volume)
+            - instance_on_points : instances (Instances)
+            - set_radius : points (Points)
+            - to_vertices : mesh (Mesh)
+            - to_volume : volume (Volume)
     """
 
 
@@ -58,6 +58,7 @@ class Points(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SetPointRadius(points=self, selection=selection, radius=radius)
             ```
     
@@ -100,6 +101,7 @@ class Points(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale)
             ```
     
@@ -137,6 +139,7 @@ class Points(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.PointsToVertices(points=self, selection=selection)
             ```
     
@@ -182,6 +185,7 @@ class Points(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode)
             ```
     

@@ -9,15 +9,15 @@
 
 ## Properties
 
-- [geometry](#geometry) : [ObjectInfo](/docs/nodes/ObjectInfo.md), geometry (Geometry) = info.geometry
-- [info](#info) : [ObjectInfo](/docs/nodes/ObjectInfo.md), Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-- [location](#location) : [ObjectInfo](/docs/nodes/ObjectInfo.md), location (Vector) = info.location
-- [rotation](#rotation) : [ObjectInfo](/docs/nodes/ObjectInfo.md), rotation (Vector) = info.rotation
-- [scale](#scale) : [ObjectInfo](/docs/nodes/ObjectInfo.md), scale (Vector) = info.scale
+- [geometry](#geometry) : geometry (Geometry) = info.geometry
+- [info](#info) : Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+- [location](#location) : location (Vector) = info.location
+- [rotation](#rotation) : rotation (Vector) = info.rotation
+- [scale](#scale) : scale (Vector) = info.scale
 
 ## Methods
 
-- [switch](#switch) : [Switch](/docs/nodes/Switch.md), output (Object)
+- [switch](#switch) : output (Object)
 
 ## info
 
@@ -50,6 +50,7 @@ v = object.info
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
 ```
 
@@ -89,6 +90,7 @@ v = object.location
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.location")
 ```
 
@@ -128,6 +130,7 @@ v = object.rotation
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.rotation")
 ```
 
@@ -167,6 +170,7 @@ v = object.scale
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.scale")
 ```
 
@@ -206,6 +210,7 @@ v = object.geometry
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.geometry")
 ```
 
@@ -242,6 +247,7 @@ v = object.switch(switch1, true)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Switch(false=self, switch1=switch1, true=true, input_type='OBJECT')
 ```
 

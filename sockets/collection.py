@@ -22,8 +22,8 @@ class Collection(dsock.Collection):
 
         Methods
         -------
-            - info : CollectionInfo, geometry (Geometry)
-            - switch : Switch, output (Collection)
+            - info : geometry (Geometry)
+            - switch : output (Collection)
     """
 
 
@@ -61,6 +61,7 @@ class Collection(dsock.Collection):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION')
             ```
     
@@ -104,6 +105,7 @@ class Collection(dsock.Collection):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space)
             ```
     

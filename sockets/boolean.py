@@ -22,25 +22,25 @@ class Boolean(dsock.Boolean):
 
         Constructors
         ------------
-            - Random : RandomValue, value (Boolean)
+            - Random : value (Boolean)
     
 
         Methods
         -------
-            - b_and : BooleanMath, boolean (Boolean)
-            - b_not : BooleanMath, boolean (Boolean)
-            - b_or : BooleanMath, boolean (Boolean)
-            - capture_attribute : CaptureAttribute, Sockets      [geometry (Geometry), attribute (Boolean)]
-            - field_at_index : FieldAtIndex, value (Boolean)
-            - imply : BooleanMath, boolean (Boolean)
-            - nand : BooleanMath, boolean (Boolean)
-            - nimply : BooleanMath, boolean (Boolean)
-            - nor : BooleanMath, boolean (Boolean)
-            - raycast : Raycast, Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
-            - switch : Switch, output (Boolean)
-            - transfer_attribute : TransferAttribute, attribute (Boolean)
-            - xnor : BooleanMath, boolean (Boolean)
-            - xor : BooleanMath, boolean (Boolean)
+            - b_and : boolean (Boolean)
+            - b_not : boolean (Boolean)
+            - b_or : boolean (Boolean)
+            - capture_attribute : Sockets      [geometry (Geometry), attribute (Boolean)]
+            - field_at_index : value (Boolean)
+            - imply : boolean (Boolean)
+            - nand : boolean (Boolean)
+            - nimply : boolean (Boolean)
+            - nor : boolean (Boolean)
+            - raycast : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
+            - switch : output (Boolean)
+            - transfer_attribute : attribute (Boolean)
+            - xnor : boolean (Boolean)
+            - xor : boolean (Boolean)
     """
 
 
@@ -79,6 +79,7 @@ class Boolean(dsock.Boolean):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN')
             ```
     
@@ -133,6 +134,7 @@ class Boolean(dsock.Boolean):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
             ```
     
@@ -180,6 +182,7 @@ class Boolean(dsock.Boolean):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain)
             ```
     
@@ -227,6 +230,7 @@ class Boolean(dsock.Boolean):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain)
             ```
     
@@ -277,6 +281,7 @@ class Boolean(dsock.Boolean):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping)
             ```
     
@@ -320,6 +325,7 @@ class Boolean(dsock.Boolean):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN')
             ```
     
@@ -362,6 +368,7 @@ class Boolean(dsock.Boolean):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND')
             ```
     
@@ -404,6 +411,7 @@ class Boolean(dsock.Boolean):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR')
             ```
     
@@ -445,6 +453,7 @@ class Boolean(dsock.Boolean):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.BooleanMath(boolean0=self, operation='NOT')
             ```
     
@@ -487,6 +496,7 @@ class Boolean(dsock.Boolean):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND')
             ```
     
@@ -529,6 +539,7 @@ class Boolean(dsock.Boolean):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR')
             ```
     
@@ -571,6 +582,7 @@ class Boolean(dsock.Boolean):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR')
             ```
     
@@ -613,6 +625,7 @@ class Boolean(dsock.Boolean):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR')
             ```
     
@@ -655,6 +668,7 @@ class Boolean(dsock.Boolean):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY')
             ```
     
@@ -697,6 +711,7 @@ class Boolean(dsock.Boolean):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY')
             ```
     

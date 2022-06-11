@@ -22,16 +22,16 @@ class Object(dsock.Object):
 
         Properties
         ----------
-            - geometry : ObjectInfo, geometry (Geometry) = info.geometry
-            - info : ObjectInfo, Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-            - location : ObjectInfo, location (Vector) = info.location
-            - rotation : ObjectInfo, rotation (Vector) = info.rotation
-            - scale : ObjectInfo, scale (Vector) = info.scale
+            - geometry : geometry (Geometry) = info.geometry
+            - info : Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+            - location : location (Vector) = info.location
+            - rotation : rotation (Vector) = info.rotation
+            - scale : scale (Vector) = info.scale
     
 
         Methods
         -------
-            - switch : Switch, output (Object)
+            - switch : output (Object)
     """
 
 
@@ -81,6 +81,7 @@ class Object(dsock.Object):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
             ```
     
@@ -131,6 +132,7 @@ class Object(dsock.Object):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.location")
             ```
     
@@ -179,6 +181,7 @@ class Object(dsock.Object):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.rotation")
             ```
     
@@ -227,6 +230,7 @@ class Object(dsock.Object):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.scale")
             ```
     
@@ -275,6 +279,7 @@ class Object(dsock.Object):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.geometry")
             ```
     
@@ -322,6 +327,7 @@ class Object(dsock.Object):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Switch(false=self, switch1=switch1, true=true, input_type='OBJECT')
             ```
     

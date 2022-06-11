@@ -9,20 +9,20 @@
 
 ## Static methods
 
-- [Brick](#brick) : [BrickTexture](/docs/nodes/BrickTexture.md), Sockets      [color (Color), fac (Float)]
-- [Checker](#checker) : [CheckerTexture](/docs/nodes/CheckerTexture.md), Sockets      [color (Color), fac (Float)]
-- [Gradient](#gradient) : [GradientTexture](/docs/nodes/GradientTexture.md), Sockets      [color (Color), fac (Float)]
-- [Image](#image) : [ImageTexture](/docs/nodes/ImageTexture.md), Sockets      [color (Color), alpha (Float)]
-- [Magic](#magic) : [MagicTexture](/docs/nodes/MagicTexture.md), Sockets      [color (Color), fac (Float)]
-- [Musgrave](#musgrave) : [MusgraveTexture](/docs/nodes/MusgraveTexture.md), fac (Float)
-- [Noise](#noise) : [NoiseTexture](/docs/nodes/NoiseTexture.md), Sockets      [fac (Float), color (Color)]
-- [Voronoi](#voronoi) : [VoronoiTexture](/docs/nodes/VoronoiTexture.md), Sockets      [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
-- [Wave](#wave) : [WaveTexture](/docs/nodes/WaveTexture.md), Sockets      [color (Color), fac (Float)]
-- [WhiteNoise](#whitenoise) : [WhiteNoiseTexture](/docs/nodes/WhiteNoiseTexture.md), Sockets      [value (Float), color (Color)]
+- [Brick](#brick) : Sockets      [color (Color), fac (Float)]
+- [Checker](#checker) : Sockets      [color (Color), fac (Float)]
+- [Gradient](#gradient) : Sockets      [color (Color), fac (Float)]
+- [Image](#image) : Sockets      [color (Color), alpha (Float)]
+- [Magic](#magic) : Sockets      [color (Color), fac (Float)]
+- [Musgrave](#musgrave) : fac (Float)
+- [Noise](#noise) : Sockets      [fac (Float), color (Color)]
+- [Voronoi](#voronoi) : Sockets      [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
+- [Wave](#wave) : Sockets      [color (Color), fac (Float)]
+- [WhiteNoise](#whitenoise) : Sockets      [value (Float), color (Color)]
 
 ## Methods
 
-- [switch](#switch) : [Switch](/docs/nodes/Switch.md), output (Texture)
+- [switch](#switch) : output (Texture)
 
 ## Brick
 
@@ -62,6 +62,7 @@ v = Texture.Brick(vector, color1, color2, mortar, scale, mortar_size, mortar_smo
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency)
 ```
 
@@ -95,6 +96,7 @@ v = Texture.Checker(vector, color1, color2, scale)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale)
 ```
 
@@ -129,6 +131,7 @@ v = Texture.Gradient(vector, gradient_type)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.GradientTexture(vector=vector, gradient_type=gradient_type)
 ```
 
@@ -165,6 +168,7 @@ v = Texture.Magic(vector, scale, distortion, turbulence_depth)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MagicTexture(vector=vector, scale=scale, distortion=distortion, turbulence_depth=turbulence_depth)
 ```
 
@@ -207,6 +211,7 @@ v = Texture.Musgrave(vector, w, scale, detail, dimension, lacunarity, offset, ga
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, offset=offset, gain=gain, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type)
 ```
 
@@ -246,6 +251,7 @@ v = Texture.Noise(vector, w, scale, detail, roughness, distortion, noise_dimensi
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions)
 ```
 
@@ -287,6 +293,7 @@ v = Texture.Voronoi(vector, w, scale, smoothness, exponent, randomness, distance
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
 ```
 
@@ -330,6 +337,7 @@ v = Texture.Wave(vector, scale, distortion, detail, detail_scale, detail_roughne
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
 ```
 
@@ -365,6 +373,7 @@ v = Texture.WhiteNoise(vector, w, noise_dimensions)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions)
 ```
 
@@ -402,6 +411,7 @@ v = Texture.Image(image, vector, frame, extension, interpolation)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=extension, interpolation=interpolation)
 ```
 
@@ -438,6 +448,7 @@ v = texture.switch(switch1, true)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Switch(false=self, switch1=switch1, true=true, input_type='TEXTURE')
 ```
 

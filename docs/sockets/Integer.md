@@ -9,62 +9,62 @@
 
 ## Constructors
 
-- [Random](#random) : [RandomValue](/docs/nodes/RandomValue.md), value (Integer)
+- [Random](#random) : value (Integer)
 
 ## Methods
 
-- [abs](#abs) : [Math](/docs/nodes/Math.md), value (Float)
-- [accumulate_field](#accumulate_field) : [AccumulateField](/docs/nodes/AccumulateField.md), Sockets      [leading (Integer), trailing (Integer), total (Integer)]
-- [add](#add) : [Math](/docs/nodes/Math.md), value (Float)
-- [arccos](#arccos) : [Math](/docs/nodes/Math.md), value (Float)
-- [arcsin](#arcsin) : [Math](/docs/nodes/Math.md), value (Float)
-- [arctan](#arctan) : [Math](/docs/nodes/Math.md), value (Float)
-- [arctan2](#arctan2) : [Math](/docs/nodes/Math.md), value (Float)
-- [capture_attribute](#capture_attribute) : [CaptureAttribute](/docs/nodes/CaptureAttribute.md), Sockets      [geometry (Geometry), attribute (Integer)]
-- [ceil](#ceil) : [Math](/docs/nodes/Math.md), value (Float)
-- [compare](#compare) : [Math](/docs/nodes/Math.md), value (Float)
-- [cos](#cos) : [Math](/docs/nodes/Math.md), value (Float)
-- [cosh](#cosh) : [Math](/docs/nodes/Math.md), value (Float)
-- [degrees](#degrees) : [Math](/docs/nodes/Math.md), value (Float)
-- [divide](#divide) : [Math](/docs/nodes/Math.md), value (Float)
-- [equal](#equal) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [exp](#exp) : [Math](/docs/nodes/Math.md), value (Float)
-- [field_at_index](#field_at_index) : [FieldAtIndex](/docs/nodes/FieldAtIndex.md), value (Integer)
-- [floor](#floor) : [Math](/docs/nodes/Math.md), value (Float)
-- [fract](#fract) : [Math](/docs/nodes/Math.md), value (Float)
-- [greater_equal](#greater_equal) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [greater_than](#greater_than) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [greater_than](#greater_than) : [Math](/docs/nodes/Math.md), value (Float)
-- [inverse_sqrt](#inverse_sqrt) : [Math](/docs/nodes/Math.md), value (Float)
-- [less_equal](#less_equal) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [less_than](#less_than) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [less_than](#less_than) : [Math](/docs/nodes/Math.md), value (Float)
-- [log](#log) : [Math](/docs/nodes/Math.md), value (Float)
-- [max](#max) : [Math](/docs/nodes/Math.md), value (Float)
-- [min](#min) : [Math](/docs/nodes/Math.md), value (Float)
-- [modulo](#modulo) : [Math](/docs/nodes/Math.md), value (Float)
-- [multiply](#multiply) : [Math](/docs/nodes/Math.md), value (Float)
-- [multiply_add](#multiply_add) : [Math](/docs/nodes/Math.md), value (Float)
-- [not_equal](#not_equal) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [pingpong](#pingpong) : [Math](/docs/nodes/Math.md), value (Float)
-- [pow](#pow) : [Math](/docs/nodes/Math.md), value (Float)
-- [radians](#radians) : [Math](/docs/nodes/Math.md), value (Float)
-- [raycast](#raycast) : [Raycast](/docs/nodes/Raycast.md), Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Integer)]
-- [round](#round) : [Math](/docs/nodes/Math.md), value (Float)
-- [sign](#sign) : [Math](/docs/nodes/Math.md), value (Float)
-- [sin](#sin) : [Math](/docs/nodes/Math.md), value (Float)
-- [sinh](#sinh) : [Math](/docs/nodes/Math.md), value (Float)
-- [smooth_max](#smooth_max) : [Math](/docs/nodes/Math.md), value (Float)
-- [smooth_min](#smooth_min) : [Math](/docs/nodes/Math.md), value (Float)
-- [snap](#snap) : [Math](/docs/nodes/Math.md), value (Float)
-- [sqrt](#sqrt) : [Math](/docs/nodes/Math.md), value (Float)
-- [subtract](#subtract) : [Math](/docs/nodes/Math.md), value (Float)
-- [switch](#switch) : [Switch](/docs/nodes/Switch.md), output (Integer)
-- [tan](#tan) : [Math](/docs/nodes/Math.md), value (Float)
-- [tanh](#tanh) : [Math](/docs/nodes/Math.md), value (Float)
-- [transfer_attribute](#transfer_attribute) : [TransferAttribute](/docs/nodes/TransferAttribute.md), attribute (Integer)
-- [trunc](#trunc) : [Math](/docs/nodes/Math.md), value (Float)
-- [wrap](#wrap) : [Math](/docs/nodes/Math.md), value (Float)
+- [abs](#abs) : value (Float)
+- [accumulate_field](#accumulate_field) : Sockets      [leading (Integer), trailing (Integer), total (Integer)]
+- [add](#add) : value (Float)
+- [arccos](#arccos) : value (Float)
+- [arcsin](#arcsin) : value (Float)
+- [arctan](#arctan) : value (Float)
+- [arctan2](#arctan2) : value (Float)
+- [capture_attribute](#capture_attribute) : Sockets      [geometry (Geometry), attribute (Integer)]
+- [ceil](#ceil) : value (Float)
+- [compare](#compare) : value (Float)
+- [cos](#cos) : value (Float)
+- [cosh](#cosh) : value (Float)
+- [degrees](#degrees) : value (Float)
+- [divide](#divide) : value (Float)
+- [equal](#equal) : result (Boolean)
+- [exp](#exp) : value (Float)
+- [field_at_index](#field_at_index) : value (Integer)
+- [floor](#floor) : value (Float)
+- [fract](#fract) : value (Float)
+- [greater_equal](#greater_equal) : result (Boolean)
+- [greater_than](#greater_than) : result (Boolean)
+- [greater_than](#greater_than) : value (Float)
+- [inverse_sqrt](#inverse_sqrt) : value (Float)
+- [less_equal](#less_equal) : result (Boolean)
+- [less_than](#less_than) : result (Boolean)
+- [less_than](#less_than) : value (Float)
+- [log](#log) : value (Float)
+- [max](#max) : value (Float)
+- [min](#min) : value (Float)
+- [modulo](#modulo) : value (Float)
+- [multiply](#multiply) : value (Float)
+- [multiply_add](#multiply_add) : value (Float)
+- [not_equal](#not_equal) : result (Boolean)
+- [pingpong](#pingpong) : value (Float)
+- [pow](#pow) : value (Float)
+- [radians](#radians) : value (Float)
+- [raycast](#raycast) : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Integer)]
+- [round](#round) : value (Float)
+- [sign](#sign) : value (Float)
+- [sin](#sin) : value (Float)
+- [sinh](#sinh) : value (Float)
+- [smooth_max](#smooth_max) : value (Float)
+- [smooth_min](#smooth_min) : value (Float)
+- [snap](#snap) : value (Float)
+- [sqrt](#sqrt) : value (Float)
+- [subtract](#subtract) : value (Float)
+- [switch](#switch) : output (Integer)
+- [tan](#tan) : value (Float)
+- [tanh](#tanh) : value (Float)
+- [transfer_attribute](#transfer_attribute) : attribute (Integer)
+- [trunc](#trunc) : value (Float)
+- [wrap](#wrap) : value (Float)
 
 ## Random
 
@@ -95,6 +95,7 @@ v = Integer.Random(min, max, ID, seed)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='INT')
 ```
 
@@ -134,6 +135,7 @@ v = integer.accumulate_field(group_index, domain)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.AccumulateField(value=self, group_index=group_index, data_type='INT', domain=domain)
 ```
 
@@ -176,6 +178,7 @@ v = integer.transfer_attribute(source, source_position, index, domain, mapping)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
 ```
 
@@ -215,6 +218,7 @@ v = integer.capture_attribute(geometry, domain)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.CaptureAttribute(value=self, geometry=geometry, data_type='INT', domain=domain)
 ```
 
@@ -254,6 +258,7 @@ v = integer.field_at_index(value, domain)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.FieldAtIndex(index=self, value=value, data_type='INT', domain=domain)
 ```
 
@@ -296,6 +301,7 @@ v = integer.raycast(target_geometry, source_position, ray_direction, ray_length,
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='INT', mapping=mapping)
 ```
 
@@ -332,6 +338,7 @@ v = integer.switch(switch0, true)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Switch(false=self, switch0=switch0, true=true, input_type='INT')
 ```
 
@@ -369,6 +376,7 @@ v = integer.less_than(b)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_THAN')
 ```
 
@@ -406,6 +414,7 @@ v = integer.less_equal(b)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL')
 ```
 
@@ -443,6 +452,7 @@ v = integer.greater_than(b)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_THAN')
 ```
 
@@ -480,6 +490,7 @@ v = integer.greater_equal(b)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL')
 ```
 
@@ -517,6 +528,7 @@ v = integer.equal(b)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='EQUAL')
 ```
 
@@ -554,6 +566,7 @@ v = integer.not_equal(b)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL')
 ```
 
@@ -589,6 +602,7 @@ v = integer.add(value1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, operation='ADD')
 ```
 
@@ -624,6 +638,7 @@ v = integer.subtract(value1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
 ```
 
@@ -659,6 +674,7 @@ v = integer.multiply(value1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
 ```
 
@@ -694,6 +710,7 @@ v = integer.divide(value1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, operation='DIVIDE')
 ```
 
@@ -730,6 +747,7 @@ v = integer.multiply_add(value1, value2)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD')
 ```
 
@@ -765,6 +783,7 @@ v = integer.pow(value1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, operation='POWER')
 ```
 
@@ -800,6 +819,7 @@ v = integer.log(value1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
 ```
 
@@ -834,6 +854,7 @@ v = integer.sqrt()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='SQRT')
 ```
 
@@ -868,6 +889,7 @@ v = integer.inverse_sqrt()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='INVERSE_SQRT')
 ```
 
@@ -902,6 +924,7 @@ v = integer.abs()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='ABSOLUTE')
 ```
 
@@ -936,6 +959,7 @@ v = integer.exp()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='EXPONENT')
 ```
 
@@ -971,6 +995,7 @@ v = integer.min(value1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, operation='MINIMUM')
 ```
 
@@ -1006,6 +1031,7 @@ v = integer.max(value1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
 ```
 
@@ -1041,6 +1067,7 @@ v = integer.less_than(value1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
 ```
 
@@ -1076,6 +1103,7 @@ v = integer.greater_than(value1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
 ```
 
@@ -1110,6 +1138,7 @@ v = integer.sign()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='SIGN')
 ```
 
@@ -1146,6 +1175,7 @@ v = integer.compare(value1, value2)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE')
 ```
 
@@ -1182,6 +1212,7 @@ v = integer.smooth_min(value1, value2)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN')
 ```
 
@@ -1218,6 +1249,7 @@ v = integer.smooth_max(value1, value2)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX')
 ```
 
@@ -1252,6 +1284,7 @@ v = integer.round()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='ROUND')
 ```
 
@@ -1286,6 +1319,7 @@ v = integer.floor()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='FLOOR')
 ```
 
@@ -1320,6 +1354,7 @@ v = integer.ceil()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='CEIL')
 ```
 
@@ -1354,6 +1389,7 @@ v = integer.trunc()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='TRUNC')
 ```
 
@@ -1388,6 +1424,7 @@ v = integer.fract()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='FRACT')
 ```
 
@@ -1423,6 +1460,7 @@ v = integer.modulo(value1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, operation='MODULO')
 ```
 
@@ -1459,6 +1497,7 @@ v = integer.wrap(value1, value2)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP')
 ```
 
@@ -1494,6 +1533,7 @@ v = integer.snap(value1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, operation='SNAP')
 ```
 
@@ -1529,6 +1569,7 @@ v = integer.pingpong(value1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, operation='PINGPONG')
 ```
 
@@ -1563,6 +1604,7 @@ v = integer.sin()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='SINE')
 ```
 
@@ -1597,6 +1639,7 @@ v = integer.cos()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='COSINE')
 ```
 
@@ -1631,6 +1674,7 @@ v = integer.tan()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='TANGENT')
 ```
 
@@ -1665,6 +1709,7 @@ v = integer.arcsin()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='ARCSINE')
 ```
 
@@ -1699,6 +1744,7 @@ v = integer.arccos()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='ARCCOSINE')
 ```
 
@@ -1733,6 +1779,7 @@ v = integer.arctan()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='ARCTANGENT')
 ```
 
@@ -1768,6 +1815,7 @@ v = integer.arctan2(value1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
 ```
 
@@ -1802,6 +1850,7 @@ v = integer.sinh()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='SINH')
 ```
 
@@ -1836,6 +1885,7 @@ v = integer.cosh()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='COSH')
 ```
 
@@ -1870,6 +1920,7 @@ v = integer.tanh()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='TANH')
 ```
 
@@ -1904,6 +1955,7 @@ v = integer.radians()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='RADIANS')
 ```
 
@@ -1938,6 +1990,7 @@ v = integer.degrees()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Math(value0=self, operation='DEGREES')
 ```
 

@@ -22,8 +22,8 @@ class Material(dsock.Material):
 
         Methods
         -------
-            - selection : MaterialSelection, selection (Boolean)
-            - switch : Switch, output (Material)
+            - selection : selection (Boolean)
+            - switch : output (Material)
     """
 
 
@@ -61,6 +61,7 @@ class Material(dsock.Material):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL')
             ```
     
@@ -97,6 +98,7 @@ class Material(dsock.Material):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.MaterialSelection(material=self)
             ```
     

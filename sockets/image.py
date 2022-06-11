@@ -22,7 +22,7 @@ class Image(dsock.Image):
 
         Methods
         -------
-            - switch : Switch, output (Image)
+            - switch : output (Image)
     """
 
 
@@ -60,6 +60,7 @@ class Image(dsock.Image):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE')
             ```
     

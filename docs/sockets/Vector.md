@@ -9,63 +9,63 @@
 
 ## Constructors
 
-- [AlignToVector](#aligntovector) : [AlignEulerToVector](/docs/nodes/AlignEulerToVector.md), rotation (Vector)
-- [Combine](#combine) : [CombineXyz](/docs/nodes/CombineXyz.md), vector (Vector)
-- [Random](#random) : [RandomValue](/docs/nodes/RandomValue.md), value (Vector)
+- [AlignToVector](#aligntovector) : rotation (Vector)
+- [Combine](#combine) : vector (Vector)
+- [Random](#random) : value (Vector)
 
 ## Properties
 
-- [separate](#separate) : [SeparateXyz](/docs/nodes/SeparateXyz.md), Sockets      [x (Float), y (Float), z (Float)]
-- [x](#x) : [SeparateXyz](/docs/nodes/SeparateXyz.md), x (Float) = separate.x
-- [y](#y) : [SeparateXyz](/docs/nodes/SeparateXyz.md), y (Float) = separate.y
-- [z](#z) : [SeparateXyz](/docs/nodes/SeparateXyz.md), z (Float) = separate.z
+- [separate](#separate) : Sockets      [x (Float), y (Float), z (Float)]
+- [x](#x) : x (Float) = separate.x
+- [y](#y) : y (Float) = separate.y
+- [z](#z) : z (Float) = separate.z
 
 ## Methods
 
-- [absolute](#absolute) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [accumulate_field](#accumulate_field) : [AccumulateField](/docs/nodes/AccumulateField.md), Sockets      [leading (Vector), trailing (Vector), total (Vector)]
-- [add](#add) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [align_to_vector](#align_to_vector) : [AlignEulerToVector](/docs/nodes/AlignEulerToVector.md), rotation (Vector)
-- [attribute_statistic](#attribute_statistic) : [AttributeStatistic](/docs/nodes/AttributeStatistic.md), Sockets      [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)]
-- [capture_attribute](#capture_attribute) : [CaptureAttribute](/docs/nodes/CaptureAttribute.md), Sockets      [geometry (Geometry), attribute (Vector)]
-- [ceil](#ceil) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [cos](#cos) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [cross](#cross) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [curves](#curves) : [VectorCurves](/docs/nodes/VectorCurves.md), vector (Vector)
-- [distance](#distance) : [VectorMath](/docs/nodes/VectorMath.md), value (Float)
-- [divide](#divide) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [dot](#dot) : [VectorMath](/docs/nodes/VectorMath.md), value (Float)
-- [equal](#equal) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [faceforward](#faceforward) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [field_at_index](#field_at_index) : [FieldAtIndex](/docs/nodes/FieldAtIndex.md), value (Vector)
-- [floor](#floor) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [fraction](#fraction) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [greater_equal](#greater_equal) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [greater_than](#greater_than) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [length](#length) : [VectorMath](/docs/nodes/VectorMath.md), value (Float)
-- [less_equal](#less_equal) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [less_than](#less_than) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [map_range](#map_range) : [MapRange](/docs/nodes/MapRange.md), vector (Vector)
-- [max](#max) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [min](#min) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [modulo](#modulo) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [multiply](#multiply) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [multiply_add](#multiply_add) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [normalize](#normalize) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [not_equal](#not_equal) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [project](#project) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [raycast](#raycast) : [Raycast](/docs/nodes/Raycast.md), Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Vector)]
-- [reflect](#reflect) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [refract](#refract) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [rotate](#rotate) : [VectorRotate](/docs/nodes/VectorRotate.md), vector (Vector)
-- [rotate_euler](#rotate_euler) : [RotateEuler](/docs/nodes/RotateEuler.md), rotation (Vector)
-- [scale](#scale) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [sin](#sin) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [snap](#snap) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [subtract](#subtract) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [tan](#tan) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
-- [transfer_attribute](#transfer_attribute) : [TransferAttribute](/docs/nodes/TransferAttribute.md), attribute (Vector)
-- [wrap](#wrap) : [VectorMath](/docs/nodes/VectorMath.md), vector (Vector)
+- [absolute](#absolute) : vector (Vector)
+- [accumulate_field](#accumulate_field) : Sockets      [leading (Vector), trailing (Vector), total (Vector)]
+- [add](#add) : vector (Vector)
+- [align_to_vector](#align_to_vector) : rotation (Vector)
+- [attribute_statistic](#attribute_statistic) : Sockets      [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)]
+- [capture_attribute](#capture_attribute) : Sockets      [geometry (Geometry), attribute (Vector)]
+- [ceil](#ceil) : vector (Vector)
+- [cos](#cos) : vector (Vector)
+- [cross](#cross) : vector (Vector)
+- [curves](#curves) : vector (Vector)
+- [distance](#distance) : value (Float)
+- [divide](#divide) : vector (Vector)
+- [dot](#dot) : value (Float)
+- [equal](#equal) : result (Boolean)
+- [faceforward](#faceforward) : vector (Vector)
+- [field_at_index](#field_at_index) : value (Vector)
+- [floor](#floor) : vector (Vector)
+- [fraction](#fraction) : vector (Vector)
+- [greater_equal](#greater_equal) : result (Boolean)
+- [greater_than](#greater_than) : result (Boolean)
+- [length](#length) : value (Float)
+- [less_equal](#less_equal) : result (Boolean)
+- [less_than](#less_than) : result (Boolean)
+- [map_range](#map_range) : vector (Vector)
+- [max](#max) : vector (Vector)
+- [min](#min) : vector (Vector)
+- [modulo](#modulo) : vector (Vector)
+- [multiply](#multiply) : vector (Vector)
+- [multiply_add](#multiply_add) : vector (Vector)
+- [normalize](#normalize) : vector (Vector)
+- [not_equal](#not_equal) : result (Boolean)
+- [project](#project) : vector (Vector)
+- [raycast](#raycast) : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Vector)]
+- [reflect](#reflect) : vector (Vector)
+- [refract](#refract) : vector (Vector)
+- [rotate](#rotate) : vector (Vector)
+- [rotate_euler](#rotate_euler) : rotation (Vector)
+- [scale](#scale) : vector (Vector)
+- [sin](#sin) : vector (Vector)
+- [snap](#snap) : vector (Vector)
+- [subtract](#subtract) : vector (Vector)
+- [tan](#tan) : vector (Vector)
+- [transfer_attribute](#transfer_attribute) : attribute (Vector)
+- [wrap](#wrap) : vector (Vector)
 
 ## Random
 
@@ -96,6 +96,7 @@ v = Vector.Random(min, max, ID, seed)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR')
 ```
 
@@ -128,6 +129,7 @@ v = Vector.Combine(x, y, z)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.CombineXyz(x=x, y=y, z=z)
 ```
 
@@ -165,6 +167,7 @@ v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
 ```
 
@@ -199,6 +202,7 @@ v = vector.separate
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.separate")
 ```
 
@@ -233,6 +237,7 @@ v = vector.x
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.x")
 ```
 
@@ -267,6 +272,7 @@ v = vector.y
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.y")
 ```
 
@@ -301,6 +307,7 @@ v = vector.z
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.z")
 ```
 
@@ -340,6 +347,7 @@ v = vector.accumulate_field(group_index, domain)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain)
 ```
 
@@ -380,6 +388,7 @@ v = vector.attribute_statistic(geometry, selection, domain)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT_VECTOR', domain=domain)
 ```
 
@@ -422,6 +431,7 @@ v = vector.transfer_attribute(source, source_position, index, domain, mapping)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
 ```
 
@@ -461,6 +471,7 @@ v = vector.capture_attribute(geometry, domain)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VECTOR', domain=domain)
 ```
 
@@ -500,6 +511,7 @@ v = vector.field_at_index(index, domain)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain)
 ```
 
@@ -542,6 +554,7 @@ v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, 
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping)
 ```
 
@@ -585,6 +598,7 @@ v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_ty
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type)
 ```
 
@@ -627,6 +641,7 @@ v = vector.less_than(b, c, angle, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN')
 ```
 
@@ -669,6 +684,7 @@ v = vector.less_equal(b, c, angle, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL')
 ```
 
@@ -711,6 +727,7 @@ v = vector.greater_than(b, c, angle, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN')
 ```
 
@@ -753,6 +770,7 @@ v = vector.greater_equal(b, c, angle, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL')
 ```
 
@@ -796,6 +814,7 @@ v = vector.equal(b, c, angle, epsilon, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL')
 ```
 
@@ -839,6 +858,7 @@ v = vector.not_equal(b, c, angle, epsilon, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL')
 ```
 
@@ -874,6 +894,7 @@ v = vector.add(vector1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD')
 ```
 
@@ -909,6 +930,7 @@ v = vector.subtract(vector1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT')
 ```
 
@@ -944,6 +966,7 @@ v = vector.multiply(vector1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY')
 ```
 
@@ -979,6 +1002,7 @@ v = vector.divide(vector1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE')
 ```
 
@@ -1015,6 +1039,7 @@ v = vector.multiply_add(vector1, vector2)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD')
 ```
 
@@ -1050,6 +1075,7 @@ v = vector.cross(vector1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT')
 ```
 
@@ -1085,6 +1111,7 @@ v = vector.project(vector1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT')
 ```
 
@@ -1120,6 +1147,7 @@ v = vector.reflect(vector1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT')
 ```
 
@@ -1156,6 +1184,7 @@ v = vector.refract(vector1, scale)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT')
 ```
 
@@ -1192,6 +1221,7 @@ v = vector.faceforward(vector1, vector2)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD')
 ```
 
@@ -1227,6 +1257,7 @@ v = vector.dot(vector1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT')
 ```
 
@@ -1262,6 +1293,7 @@ v = vector.distance(vector1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE')
 ```
 
@@ -1296,6 +1328,7 @@ v = vector.length()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, operation='LENGTH')
 ```
 
@@ -1331,6 +1364,7 @@ v = vector.scale(scale)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, scale=scale, operation='SCALE')
 ```
 
@@ -1365,6 +1399,7 @@ v = vector.normalize()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, operation='NORMALIZE')
 ```
 
@@ -1399,6 +1434,7 @@ v = vector.absolute()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, operation='ABSOLUTE')
 ```
 
@@ -1434,6 +1470,7 @@ v = vector.min(vector1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM')
 ```
 
@@ -1469,6 +1506,7 @@ v = vector.max(vector1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM')
 ```
 
@@ -1503,6 +1541,7 @@ v = vector.floor()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, operation='FLOOR')
 ```
 
@@ -1537,6 +1576,7 @@ v = vector.ceil()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, operation='CEIL')
 ```
 
@@ -1571,6 +1611,7 @@ v = vector.fraction()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, operation='FRACTION')
 ```
 
@@ -1606,6 +1647,7 @@ v = vector.modulo(vector1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO')
 ```
 
@@ -1642,6 +1684,7 @@ v = vector.wrap(vector1, vector2)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP')
 ```
 
@@ -1677,6 +1720,7 @@ v = vector.snap(vector1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP')
 ```
 
@@ -1711,6 +1755,7 @@ v = vector.sin()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, operation='SINE')
 ```
 
@@ -1745,6 +1790,7 @@ v = vector.cos()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, operation='COSINE')
 ```
 
@@ -1779,6 +1825,7 @@ v = vector.tan()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorMath(vector0=self, operation='TANGENT')
 ```
 
@@ -1810,6 +1857,7 @@ v = vector.curves(fac)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorCurves(vector=self, fac=fac)
 ```
 
@@ -1847,6 +1895,7 @@ v = vector.align_to_vector(factor, vector, axis, pivot_axis)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
 ```
 
@@ -1882,6 +1931,7 @@ v = vector.rotate_euler(rotate_by, space)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space)
 ```
 
@@ -1921,6 +1971,7 @@ v = vector.rotate(center, axis, angle, rotation, invert, rotation_type)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type)
 ```
 

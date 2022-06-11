@@ -9,7 +9,7 @@
 
 ## Methods
 
-- [to_mesh](#to_mesh) : [VolumeToMesh](/docs/nodes/VolumeToMesh.md), mesh (Mesh)
+- [to_mesh](#to_mesh) : mesh (Mesh)
 
 ## to_mesh
 
@@ -41,6 +41,7 @@ v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_m
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode)
 ```
 

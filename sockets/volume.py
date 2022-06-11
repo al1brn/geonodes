@@ -22,7 +22,7 @@ class Volume(gn.Geometry):
 
         Methods
         -------
-            - to_mesh : VolumeToMesh, mesh (Mesh)
+            - to_mesh : mesh (Mesh)
     """
 
 
@@ -62,6 +62,7 @@ class Volume(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode)
             ```
     

@@ -9,14 +9,14 @@
 
 ## Attributes
 
-- [instance_index](#instance_index) : [Index](/docs/nodes/Index.md), Integer = capture_index(domain='INSTANCE')
+- [instance_index](#instance_index) : Integer = capture_index(domain='INSTANCE')
 
 ## Methods
 
-- [rotate](#rotate) : [RotateInstances](/docs/nodes/RotateInstances.md), instances (Instances)
-- [scale](#scale) : [ScaleInstances](/docs/nodes/ScaleInstances.md), instances (Instances)
-- [to_points](#to_points) : [InstancesToPoints](/docs/nodes/InstancesToPoints.md), points (Points)
-- [translate](#translate) : [TranslateInstances](/docs/nodes/TranslateInstances.md), instances (Instances)
+- [rotate](#rotate) : instances (Instances)
+- [scale](#scale) : instances (Instances)
+- [to_points](#to_points) : points (Points)
+- [translate](#translate) : instances (Instances)
 
 ## instance_index
 
@@ -40,6 +40,7 @@ v = instances.instance_index(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Index()
 ```
 
@@ -74,6 +75,7 @@ v = instances.rotate(selection, rotation, pivot_point, local_space)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
 ```
 
@@ -108,6 +110,7 @@ v = instances.scale(selection, scale, center, local_space)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
 ```
 
@@ -141,6 +144,7 @@ v = instances.translate(selection, translation, local_space)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
 ```
 
@@ -174,6 +178,7 @@ v = instances.to_points(selection, position, radius)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
 ```
 

@@ -9,36 +9,36 @@
 
 ## Constructors
 
-- [ArcFromRadius](#arcfromradius) : [Arc](/docs/nodes/Arc.md), curve (Curve)
-- [BezierSegment](#beziersegment) : [BezierSegment](/docs/nodes/BezierSegment.md), curve (Curve)
-- [Circle](#circle) : [CurveCircle](/docs/nodes/CurveCircle.md), Sockets      [curve (Curve), center (Vector)]
-- [Line](#line) : [CurveLine](/docs/nodes/CurveLine.md), curve (Curve)
-- [QuadraticBezier](#quadraticbezier) : [QuadraticBezier](/docs/nodes/QuadraticBezier.md), curve (Curve)
-- [Quadrilateral](#quadrilateral) : [Quadrilateral](/docs/nodes/Quadrilateral.md), curve (Curve)
-- [Spiral](#spiral) : [Spiral](/docs/nodes/Spiral.md), curve (Curve)
-- [Star](#star) : [Star](/docs/nodes/Star.md), Sockets      [curve (Curve), outer_points (Boolean)]
+- [ArcFromRadius](#arcfromradius) : curve (Curve)
+- [BezierSegment](#beziersegment) : curve (Curve)
+- [Circle](#circle) : Sockets      [curve (Curve), center (Vector)]
+- [Line](#line) : curve (Curve)
+- [QuadraticBezier](#quadraticbezier) : curve (Curve)
+- [Quadrilateral](#quadrilateral) : curve (Curve)
+- [Spiral](#spiral) : curve (Curve)
+- [Star](#star) : Sockets      [curve (Curve), outer_points (Boolean)]
 
 ## Static methods
 
-- [ArcFromPoints](#arcfrompoints) : [Arc](/docs/nodes/Arc.md), Sockets      [curve (Curve), center (Vector), normal (Vector), radius (Float)]
+- [ArcFromPoints](#arcfrompoints) : Sockets      [curve (Curve), center (Vector), normal (Vector), radius (Float)]
 
 ## Methods
 
-- [fill](#fill) : [FillCurve](/docs/nodes/FillCurve.md), mesh (Mesh)
-- [fillet](#fillet) : [FilletCurve](/docs/nodes/FilletCurve.md), curve (Curve)
-- [length](#length) : [CurveLength](/docs/nodes/CurveLength.md), length (Float)
-- [resample](#resample) : [ResampleCurve](/docs/nodes/ResampleCurve.md), curve (Curve)
-- [reverse](#reverse) : [ReverseCurve](/docs/nodes/ReverseCurve.md), curve (Curve)
-- [sample](#sample) : [SampleCurve](/docs/nodes/SampleCurve.md), Sockets      [position (Vector), tangent (Vector), normal (Vector)]
-- [set_handle_positions](#set_handle_positions) : [SetHandlePositions](/docs/nodes/SetHandlePositions.md), curve (Curve)
-- [set_handles](#set_handles) : [SetHandleType](/docs/nodes/SetHandleType.md), curve (Curve)
-- [set_radius](#set_radius) : [SetCurveRadius](/docs/nodes/SetCurveRadius.md), curve (Curve)
-- [set_spline_type](#set_spline_type) : [SetSplineType](/docs/nodes/SetSplineType.md), curve (Curve)
-- [set_tilt](#set_tilt) : [SetCurveTilt](/docs/nodes/SetCurveTilt.md), curve (Curve)
-- [subdivide](#subdivide) : [SubdivideCurve](/docs/nodes/SubdivideCurve.md), curve (Curve)
-- [to_mesh](#to_mesh) : [CurveToMesh](/docs/nodes/CurveToMesh.md), mesh (Mesh)
-- [to_points](#to_points) : [CurveToPoints](/docs/nodes/CurveToPoints.md), Sockets      [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
-- [trim](#trim) : [TrimCurve](/docs/nodes/TrimCurve.md), curve (Curve)
+- [fill](#fill) : mesh (Mesh)
+- [fillet](#fillet) : curve (Curve)
+- [length](#length) : length (Float)
+- [resample](#resample) : curve (Curve)
+- [reverse](#reverse) : curve (Curve)
+- [sample](#sample) : Sockets      [position (Vector), tangent (Vector), normal (Vector)]
+- [set_handle_positions](#set_handle_positions) : curve (Curve)
+- [set_handles](#set_handles) : curve (Curve)
+- [set_radius](#set_radius) : curve (Curve)
+- [set_spline_type](#set_spline_type) : curve (Curve)
+- [set_tilt](#set_tilt) : curve (Curve)
+- [subdivide](#subdivide) : curve (Curve)
+- [to_mesh](#to_mesh) : mesh (Mesh)
+- [to_points](#to_points) : Sockets      [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
+- [trim](#trim) : curve (Curve)
 
 ## BezierSegment
 
@@ -70,6 +70,7 @@ v = Curve.BezierSegment(resolution, start, start_handle, end_handle, end, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode)
 ```
 
@@ -108,6 +109,7 @@ v = Curve.Circle(resolution, point_1, point_2, point_3, radius, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=radius, mode=mode)
 ```
 
@@ -145,6 +147,7 @@ v = Curve.Line(start, end, direction, length, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.CurveLine(start=start, end=end, direction=direction, length=length, mode=mode)
 ```
 
@@ -189,6 +192,7 @@ v = Curve.Quadrilateral(width, height, bottom_width, top_width, offset, bottom_h
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width, offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode)
 ```
 
@@ -222,6 +226,7 @@ v = Curve.QuadraticBezier(resolution, start, middle, end)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.QuadraticBezier(resolution=resolution, start=start, middle=middle, end=end)
 ```
 
@@ -255,6 +260,7 @@ v = Curve.Star(points, inner_radius, outer_radius, twist)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Star(points=points, inner_radius=inner_radius, outer_radius=outer_radius, twist=twist)
 ```
 
@@ -290,6 +296,7 @@ v = Curve.Spiral(resolution, rotations, start_radius, end_radius, height, revers
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Spiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius, height=height, reverse=reverse)
 ```
 
@@ -329,6 +336,7 @@ v = Curve.ArcFromRadius(resolution, radius, start_angle, sweep_angle, connect_ce
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Arc(resolution=resolution, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle, connect_center=connect_center, invert_arc=invert_arc, mode='RADIUS')
 ```
 
@@ -369,6 +377,7 @@ v = Curve.ArcFromPoints(resolution, start, middle, end, offset_angle, connect_ce
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, offset_angle=offset_angle, connect_center=connect_center, invert_arc=invert_arc, mode='POINTS')
 ```
 
@@ -405,6 +414,7 @@ v = curve.set_handles(selection, handle_type, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SetHandleType(curve=self, selection=selection, handle_type=handle_type, mode=mode)
 ```
 
@@ -440,6 +450,7 @@ v = curve.set_spline_type(selection, spline_type)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_type)
 ```
 
@@ -474,6 +485,7 @@ v = curve.fill(mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.FillCurve(curve=self, mode=mode)
 ```
 
@@ -511,6 +523,7 @@ v = curve.fillet(count, radius, limit_radius, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode=mode)
 ```
 
@@ -548,6 +561,7 @@ v = curve.resample(selection, count, length, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.ResampleCurve(curve=self, selection=selection, count=count, length=length, mode=mode)
 ```
 
@@ -579,6 +593,7 @@ v = curve.reverse(selection)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.ReverseCurve(curve=self, selection=selection)
 ```
 
@@ -616,6 +631,7 @@ v = curve.set_handle_positions(selection, position, offset, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SetHandlePositions(curve=self, selection=selection, position=position, offset=offset, mode=mode)
 ```
 
@@ -648,6 +664,7 @@ v = curve.set_radius(selection, radius)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SetCurveRadius(curve=self, selection=selection, radius=radius)
 ```
 
@@ -680,6 +697,7 @@ v = curve.set_tilt(selection, tilt)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SetCurveTilt(curve=self, selection=selection, tilt=tilt)
 ```
 
@@ -711,6 +729,7 @@ v = curve.subdivide(cuts)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SubdivideCurve(curve=self, cuts=cuts)
 ```
 
@@ -749,6 +768,7 @@ v = curve.trim(start0, end0, start1, end1, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1=end1, mode=mode)
 ```
 
@@ -781,6 +801,7 @@ v = curve.to_mesh(profile_curve, fill_caps)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps)
 ```
 
@@ -817,6 +838,7 @@ v = curve.to_points(count, length, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode)
 ```
 
@@ -853,6 +875,7 @@ v = curve.sample(factor, length, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode)
 ```
 
@@ -883,6 +906,7 @@ v = curve.length()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.CurveLength(curve=self)
 ```
 

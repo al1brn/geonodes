@@ -22,38 +22,38 @@ class Curve(gn.Spline):
 
         Constructors
         ------------
-            - ArcFromRadius : Arc, curve (Curve)
-            - BezierSegment : BezierSegment, curve (Curve)
-            - Circle : CurveCircle, Sockets      [curve (Curve), center (Vector)]
-            - Line : CurveLine, curve (Curve)
-            - QuadraticBezier : QuadraticBezier, curve (Curve)
-            - Quadrilateral : Quadrilateral, curve (Curve)
-            - Spiral : Spiral, curve (Curve)
-            - Star : Star, Sockets      [curve (Curve), outer_points (Boolean)]
+            - ArcFromRadius : curve (Curve)
+            - BezierSegment : curve (Curve)
+            - Circle : Sockets      [curve (Curve), center (Vector)]
+            - Line : curve (Curve)
+            - QuadraticBezier : curve (Curve)
+            - Quadrilateral : curve (Curve)
+            - Spiral : curve (Curve)
+            - Star : Sockets      [curve (Curve), outer_points (Boolean)]
     
 
         Static methods
         --------------
-            - ArcFromPoints : Arc, Sockets      [curve (Curve), center (Vector), normal (Vector), radius (Float)]
+            - ArcFromPoints : Sockets      [curve (Curve), center (Vector), normal (Vector), radius (Float)]
     
 
         Methods
         -------
-            - fill : FillCurve, mesh (Mesh)
-            - fillet : FilletCurve, curve (Curve)
-            - length : CurveLength, length (Float)
-            - resample : ResampleCurve, curve (Curve)
-            - reverse : ReverseCurve, curve (Curve)
-            - sample : SampleCurve, Sockets      [position (Vector), tangent (Vector), normal (Vector)]
-            - set_handle_positions : SetHandlePositions, curve (Curve)
-            - set_handles : SetHandleType, curve (Curve)
-            - set_radius : SetCurveRadius, curve (Curve)
-            - set_spline_type : SetSplineType, curve (Curve)
-            - set_tilt : SetCurveTilt, curve (Curve)
-            - subdivide : SubdivideCurve, curve (Curve)
-            - to_mesh : CurveToMesh, mesh (Mesh)
-            - to_points : CurveToPoints, Sockets      [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
-            - trim : TrimCurve, curve (Curve)
+            - fill : mesh (Mesh)
+            - fillet : curve (Curve)
+            - length : length (Float)
+            - resample : curve (Curve)
+            - reverse : curve (Curve)
+            - sample : Sockets      [position (Vector), tangent (Vector), normal (Vector)]
+            - set_handle_positions : curve (Curve)
+            - set_handles : curve (Curve)
+            - set_radius : curve (Curve)
+            - set_spline_type : curve (Curve)
+            - set_tilt : curve (Curve)
+            - subdivide : curve (Curve)
+            - to_mesh : mesh (Mesh)
+            - to_points : Sockets      [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
+            - trim : curve (Curve)
     """
 
 
@@ -94,6 +94,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode)
             ```
     
@@ -140,6 +141,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=radius, mode=mode)
             ```
     
@@ -185,6 +187,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.CurveLine(start=start, end=end, direction=direction, length=length, mode=mode)
             ```
     
@@ -237,6 +240,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width, offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode)
             ```
     
@@ -277,6 +281,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.QuadraticBezier(resolution=resolution, start=start, middle=middle, end=end)
             ```
     
@@ -317,6 +322,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Star(points=points, inner_radius=inner_radius, outer_radius=outer_radius, twist=twist)
             ```
     
@@ -359,6 +365,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Spiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius, height=height, reverse=reverse)
             ```
     
@@ -406,6 +413,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Arc(resolution=resolution, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle, connect_center=connect_center, invert_arc=invert_arc, mode='RADIUS')
             ```
     
@@ -458,6 +466,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, offset_angle=offset_angle, connect_center=connect_center, invert_arc=invert_arc, mode='POINTS')
             ```
     
@@ -505,6 +514,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SetHandleType(curve=self, selection=selection, handle_type=handle_type, mode=mode)
             ```
     
@@ -547,6 +557,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_type)
             ```
     
@@ -588,6 +599,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.FillCurve(curve=self, mode=mode)
             ```
     
@@ -632,6 +644,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode=mode)
             ```
     
@@ -676,6 +689,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.ResampleCurve(curve=self, selection=selection, count=count, length=length, mode=mode)
             ```
     
@@ -713,6 +727,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.ReverseCurve(curve=self, selection=selection)
             ```
     
@@ -757,6 +772,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SetHandlePositions(curve=self, selection=selection, position=position, offset=offset, mode=mode)
             ```
     
@@ -795,6 +811,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SetCurveRadius(curve=self, selection=selection, radius=radius)
             ```
     
@@ -833,6 +850,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SetCurveTilt(curve=self, selection=selection, tilt=tilt)
             ```
     
@@ -870,6 +888,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SubdivideCurve(curve=self, cuts=cuts)
             ```
     
@@ -915,6 +934,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1=end1, mode=mode)
             ```
     
@@ -953,6 +973,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps)
             ```
     
@@ -996,6 +1017,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode)
             ```
     
@@ -1039,6 +1061,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode)
             ```
     
@@ -1075,6 +1098,7 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.CurveLength(curve=self)
             ```
     

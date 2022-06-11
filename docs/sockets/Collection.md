@@ -9,8 +9,8 @@
 
 ## Methods
 
-- [info](#info) : [CollectionInfo](/docs/nodes/CollectionInfo.md), geometry (Geometry)
-- [switch](#switch) : [Switch](/docs/nodes/Switch.md), output (Collection)
+- [info](#info) : geometry (Geometry)
+- [switch](#switch) : output (Collection)
 
 ## switch
 
@@ -40,6 +40,7 @@ v = collection.switch(switch1, true)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION')
 ```
 
@@ -76,6 +77,7 @@ v = collection.info(separate_children, reset_children, transform_space)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space)
 ```
 

@@ -22,21 +22,21 @@ class String(dsock.String):
 
         Properties
         ----------
-            - length : StringLength, length (Integer)
+            - length : length (Integer)
     
 
         Methods
         -------
-            - average : Compare, result (Boolean)
-            - direction : Compare, result (Boolean)
-            - dot_product : Compare, result (Boolean)
-            - element : Compare, result (Boolean)
-            - join : JoinStrings, string (String)
-            - length : Compare, result (Boolean)
-            - replace : ReplaceString, string (String)
-            - slice : SliceString, string (String)
-            - switch : Switch, output (String)
-            - to_curves : StringToCurves, Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
+            - average : result (Boolean)
+            - direction : result (Boolean)
+            - dot_product : result (Boolean)
+            - element : result (Boolean)
+            - join : string (String)
+            - length : result (Boolean)
+            - replace : string (String)
+            - slice : string (String)
+            - switch : output (String)
+            - to_curves : Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
     """
 
 
@@ -76,6 +76,7 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.StringLength(string=self, label=f"{self.node_chain_label}.length")
             ```
     
@@ -125,6 +126,7 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING')
             ```
     
@@ -169,6 +171,7 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT')
             ```
     
@@ -213,6 +216,7 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH')
             ```
     
@@ -257,6 +261,7 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE')
             ```
     
@@ -301,6 +306,7 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT')
             ```
     
@@ -345,6 +351,7 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION')
             ```
     
@@ -382,6 +389,7 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.JoinStrings(self, *strings, delimiter=delimiter)
             ```
     
@@ -420,6 +428,7 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.ReplaceString(string=self, find=find, replace=replace)
             ```
     
@@ -458,6 +467,7 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SliceString(string=self, position=position, length=length)
             ```
     
@@ -508,6 +518,7 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
             ```
     

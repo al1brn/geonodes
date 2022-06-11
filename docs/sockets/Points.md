@@ -9,10 +9,10 @@
 
 ## Methods
 
-- [instance_on_points](#instance_on_points) : [InstanceOnPoints](/docs/nodes/InstanceOnPoints.md), instances (Instances)
-- [set_radius](#set_radius) : [SetPointRadius](/docs/nodes/SetPointRadius.md), points (Points)
-- [to_vertices](#to_vertices) : [PointsToVertices](/docs/nodes/PointsToVertices.md), mesh (Mesh)
-- [to_volume](#to_volume) : [PointsToVolume](/docs/nodes/PointsToVolume.md), volume (Volume)
+- [instance_on_points](#instance_on_points) : instances (Instances)
+- [set_radius](#set_radius) : points (Points)
+- [to_vertices](#to_vertices) : mesh (Mesh)
+- [to_volume](#to_volume) : volume (Volume)
 
 ## set_radius
 
@@ -38,6 +38,7 @@ v = points.set_radius(selection, radius)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SetPointRadius(points=self, selection=selection, radius=radius)
 ```
 
@@ -74,6 +75,7 @@ v = points.instance_on_points(selection, instance, pick_instance, instance_index
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale)
 ```
 
@@ -105,6 +107,7 @@ v = points.to_vertices(selection)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.PointsToVertices(points=self, selection=selection)
 ```
 
@@ -143,6 +146,7 @@ v = points.to_volume(density, voxel_size, voxel_amount, radius, resolution_mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode)
 ```
 

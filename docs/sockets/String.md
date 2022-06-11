@@ -9,20 +9,20 @@
 
 ## Properties
 
-- [length](#length) : [StringLength](/docs/nodes/StringLength.md), length (Integer)
+- [length](#length) : length (Integer)
 
 ## Methods
 
-- [average](#average) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [direction](#direction) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [dot_product](#dot_product) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [element](#element) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [join](#join) : [JoinStrings](/docs/nodes/JoinStrings.md), string (String)
-- [length](#length) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [replace](#replace) : [ReplaceString](/docs/nodes/ReplaceString.md), string (String)
-- [slice](#slice) : [SliceString](/docs/nodes/SliceString.md), string (String)
-- [switch](#switch) : [Switch](/docs/nodes/Switch.md), output (String)
-- [to_curves](#to_curves) : [StringToCurves](/docs/nodes/StringToCurves.md), Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
+- [average](#average) : result (Boolean)
+- [direction](#direction) : result (Boolean)
+- [dot_product](#dot_product) : result (Boolean)
+- [element](#element) : result (Boolean)
+- [join](#join) : string (String)
+- [length](#length) : result (Boolean)
+- [replace](#replace) : string (String)
+- [slice](#slice) : string (String)
+- [switch](#switch) : output (String)
+- [to_curves](#to_curves) : Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
 
 ## length
 
@@ -50,6 +50,7 @@ v = string.length
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.StringLength(string=self, label=f"{self.node_chain_label}.length")
 ```
 
@@ -86,6 +87,7 @@ v = string.switch(switch0, true)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING')
 ```
 
@@ -123,6 +125,7 @@ v = string.element(b)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT')
 ```
 
@@ -160,6 +163,7 @@ v = string.length(b)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH')
 ```
 
@@ -197,6 +201,7 @@ v = string.average(b)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE')
 ```
 
@@ -234,6 +239,7 @@ v = string.dot_product(b)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT')
 ```
 
@@ -271,6 +277,7 @@ v = string.direction(b)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION')
 ```
 
@@ -302,6 +309,7 @@ v = string.join(strings_1, strings_2, strings_3, delimiter)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.JoinStrings(self, *strings, delimiter=delimiter)
 ```
 
@@ -334,6 +342,7 @@ v = string.replace(find, replace)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.ReplaceString(string=self, find=find, replace=replace)
 ```
 
@@ -366,6 +375,7 @@ v = string.slice(position, length)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SliceString(string=self, position=position, length=length)
 ```
 
@@ -409,6 +419,7 @@ v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_b
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
 ```
 

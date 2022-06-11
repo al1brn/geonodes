@@ -9,8 +9,8 @@
 
 ## Methods
 
-- [selection](#selection) : [MaterialSelection](/docs/nodes/MaterialSelection.md), selection (Boolean)
-- [switch](#switch) : [Switch](/docs/nodes/Switch.md), output (Material)
+- [selection](#selection) : selection (Boolean)
+- [switch](#switch) : output (Material)
 
 ## switch
 
@@ -40,6 +40,7 @@ v = material.switch(switch1, true)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL')
 ```
 
@@ -70,6 +71,7 @@ v = material.selection()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MaterialSelection(material=self)
 ```
 

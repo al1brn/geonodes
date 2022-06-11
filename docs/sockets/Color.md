@@ -9,45 +9,45 @@
 
 ## Constructors
 
-- [Combine](#combine) : [CombineRgb](/docs/nodes/CombineRgb.md), image (Color)
+- [Combine](#combine) : image (Color)
 
 ## Properties
 
-- [b](#b) : [SeparateRgb](/docs/nodes/SeparateRgb.md), b (Float) = separate.b
-- [g](#g) : [SeparateRgb](/docs/nodes/SeparateRgb.md), g (Float) = separate.g
-- [r](#r) : [SeparateRgb](/docs/nodes/SeparateRgb.md), r (Float) = separate.r
-- [separate](#separate) : [SeparateRgb](/docs/nodes/SeparateRgb.md), Sockets      [r (Float), g (Float), b (Float)]
+- [b](#b) : b (Float) = separate.b
+- [g](#g) : g (Float) = separate.g
+- [r](#r) : r (Float) = separate.r
+- [separate](#separate) : Sockets      [r (Float), g (Float), b (Float)]
 
 ## Methods
 
-- [add](#add) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [brighter](#brighter) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [burn](#burn) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [capture_attribute](#capture_attribute) : [CaptureAttribute](/docs/nodes/CaptureAttribute.md), Sockets      [geometry (Geometry), attribute (Color)]
-- [curves](#curves) : [RgbCurves](/docs/nodes/RgbCurves.md), color (Color)
-- [darken](#darken) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [darker](#darker) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [difference](#difference) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [divide](#divide) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [dodge](#dodge) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [equal](#equal) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [field_at_index](#field_at_index) : [FieldAtIndex](/docs/nodes/FieldAtIndex.md), value (Color)
-- [hue](#hue) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [lighten](#lighten) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [linear_light](#linear_light) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [mix](#mix) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [mix](#mix) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [mix_color](#mix_color) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [multiply](#multiply) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [not_equal](#not_equal) : [Compare](/docs/nodes/Compare.md), result (Boolean)
-- [overlay](#overlay) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [raycast](#raycast) : [Raycast](/docs/nodes/Raycast.md), Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Color)]
-- [saturation](#saturation) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [screen](#screen) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [soft_light](#soft_light) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [subtract](#subtract) : [Mix](/docs/nodes/Mix.md), color (Color)
-- [transfer_attribute](#transfer_attribute) : [TransferAttribute](/docs/nodes/TransferAttribute.md), attribute (Color)
-- [value](#value) : [Mix](/docs/nodes/Mix.md), color (Color)
+- [add](#add) : color (Color)
+- [brighter](#brighter) : result (Boolean)
+- [burn](#burn) : color (Color)
+- [capture_attribute](#capture_attribute) : Sockets      [geometry (Geometry), attribute (Color)]
+- [curves](#curves) : color (Color)
+- [darken](#darken) : color (Color)
+- [darker](#darker) : result (Boolean)
+- [difference](#difference) : color (Color)
+- [divide](#divide) : color (Color)
+- [dodge](#dodge) : color (Color)
+- [equal](#equal) : result (Boolean)
+- [field_at_index](#field_at_index) : value (Color)
+- [hue](#hue) : color (Color)
+- [lighten](#lighten) : color (Color)
+- [linear_light](#linear_light) : color (Color)
+- [mix](#mix) : color (Color)
+- [mix](#mix) : color (Color)
+- [mix_color](#mix_color) : color (Color)
+- [multiply](#multiply) : color (Color)
+- [not_equal](#not_equal) : result (Boolean)
+- [overlay](#overlay) : color (Color)
+- [raycast](#raycast) : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Color)]
+- [saturation](#saturation) : color (Color)
+- [screen](#screen) : color (Color)
+- [soft_light](#soft_light) : color (Color)
+- [subtract](#subtract) : color (Color)
+- [transfer_attribute](#transfer_attribute) : attribute (Color)
+- [value](#value) : color (Color)
 
 ## Combine
 
@@ -73,6 +73,7 @@ v = Color.Combine(r, g, b)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.CombineRgb(r=r, g=g, b=b)
 ```
 
@@ -107,6 +108,7 @@ v = color.separate
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.separate")
 ```
 
@@ -141,6 +143,7 @@ v = color.r
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.r")
 ```
 
@@ -175,6 +178,7 @@ v = color.g
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.g")
 ```
 
@@ -209,6 +213,7 @@ v = color.b
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.b")
 ```
 
@@ -251,6 +256,7 @@ v = color.transfer_attribute(source, source_position, index, domain, mapping)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
 ```
 
@@ -290,6 +296,7 @@ v = color.capture_attribute(geometry, domain)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_COLOR', domain=domain)
 ```
 
@@ -329,6 +336,7 @@ v = color.field_at_index(index, domain)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_COLOR', domain=domain)
 ```
 
@@ -371,6 +379,7 @@ v = color.raycast(target_geometry, source_position, ray_direction, ray_length, m
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_COLOR', mapping=mapping)
 ```
 
@@ -409,6 +418,7 @@ v = color.equal(b, epsilon)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='EQUAL')
 ```
 
@@ -447,6 +457,7 @@ v = color.not_equal(b, epsilon)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='NOT_EQUAL')
 ```
 
@@ -484,6 +495,7 @@ v = color.brighter(b)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER')
 ```
 
@@ -521,6 +533,7 @@ v = color.darker(b)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='DARKER')
 ```
 
@@ -561,6 +574,7 @@ v = color.mix(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha)
 ```
 
@@ -601,6 +615,7 @@ v = color.darken(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha)
 ```
 
@@ -641,6 +656,7 @@ v = color.multiply(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha)
 ```
 
@@ -681,6 +697,7 @@ v = color.burn(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha)
 ```
 
@@ -721,6 +738,7 @@ v = color.lighten(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha)
 ```
 
@@ -761,6 +779,7 @@ v = color.screen(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha)
 ```
 
@@ -801,6 +820,7 @@ v = color.dodge(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha)
 ```
 
@@ -841,6 +861,7 @@ v = color.add(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha)
 ```
 
@@ -881,6 +902,7 @@ v = color.overlay(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha)
 ```
 
@@ -921,6 +943,7 @@ v = color.soft_light(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha)
 ```
 
@@ -961,6 +984,7 @@ v = color.linear_light(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha)
 ```
 
@@ -1001,6 +1025,7 @@ v = color.difference(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha)
 ```
 
@@ -1041,6 +1066,7 @@ v = color.subtract(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha)
 ```
 
@@ -1081,6 +1107,7 @@ v = color.divide(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha)
 ```
 
@@ -1121,6 +1148,7 @@ v = color.hue(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha)
 ```
 
@@ -1161,6 +1189,7 @@ v = color.saturation(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha)
 ```
 
@@ -1201,6 +1230,7 @@ v = color.mix_color(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha)
 ```
 
@@ -1241,6 +1271,7 @@ v = color.value(color2, fac, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha)
 ```
 
@@ -1272,6 +1303,7 @@ v = color.curves(fac)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.RgbCurves(color=self, fac=fac)
 ```
 
@@ -1309,6 +1341,7 @@ v = color.mix(color2, fac, blend_type, use_alpha)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Mix(color1=self, color2=color2, fac=fac, blend_type=blend_type, use_alpha=use_alpha)
 ```
 

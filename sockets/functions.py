@@ -35,94 +35,94 @@ Data socket functions
 
     Functions
     ---------
-        - abs : Math, value (Float)
-        - add : Math, value (Float)
-        - arccos : Math, value (Float)
-        - arcsin : Math, value (Float)
-        - arctan : Math, value (Float)
-        - arctan2 : Math, value (Float)
-        - ceil : Math, value (Float)
-        - color_add : Mix, color (Color)
-        - color_burn : Mix, color (Color)
-        - color_darken : Mix, color (Color)
-        - color_difference : Mix, color (Color)
-        - color_divide : Mix, color (Color)
-        - color_dodge : Mix, color (Color)
-        - color_hue : Mix, color (Color)
-        - color_lighten : Mix, color (Color)
-        - color_linear_light : Mix, color (Color)
-        - color_mix : Mix, color (Color)
-        - color_mix_color : Mix, color (Color)
-        - color_multiply : Mix, color (Color)
-        - color_overlay : Mix, color (Color)
-        - color_saturation : Mix, color (Color)
-        - color_screen : Mix, color (Color)
-        - color_soft_light : Mix, color (Color)
-        - color_subtract : Mix, color (Color)
-        - color_value : Mix, color (Color)
-        - compare : Compare, result (Boolean)
-        - compare : Math, value (Float)
-        - cos : Math, value (Float)
-        - cosh : Math, value (Float)
-        - cross : VectorMath, vector (Vector)
-        - degrees : Math, value (Float)
-        - distance : VectorMath, value (Float)
-        - divide : Math, value (Float)
-        - dot : VectorMath, value (Float)
-        - exp : Math, value (Float)
-        - faceforward : VectorMath, vector (Vector)
-        - floor : Math, value (Float)
-        - fract : Math, value (Float)
-        - fraction : VectorMath, vector (Vector)
-        - greater_than : Math, value (Float)
-        - inverse_sqrt : Math, value (Float)
-        - join_strings : JoinStrings, string (String)
-        - length : VectorMath, value (Float)
-        - less_than : Math, value (Float)
-        - log : Math, value (Float)
-        - max : Math, value (Float)
-        - min : Math, value (Float)
-        - modulo : Math, value (Float)
-        - multiply : Math, value (Float)
-        - multiply_add : Math, value (Float)
-        - normalize : VectorMath, vector (Vector)
-        - pingpong : Math, value (Float)
-        - pow : Math, value (Float)
-        - project : VectorMath, vector (Vector)
-        - radians : Math, value (Float)
-        - reflect : VectorMath, vector (Vector)
-        - refract : VectorMath, vector (Vector)
-        - round : Math, value (Float)
-        - scale : VectorMath, vector (Vector)
-        - scene : SceneTime, Sockets      [seconds (Float), frame (Float)]
-        - sign : Math, value (Float)
-        - sin : Math, value (Float)
-        - sinh : Math, value (Float)
-        - smooth_max : Math, value (Float)
-        - smooth_min : Math, value (Float)
-        - snap : Math, value (Float)
-        - sqrt : Math, value (Float)
-        - subtract : Math, value (Float)
-        - tan : Math, value (Float)
-        - tanh : Math, value (Float)
-        - trunc : Math, value (Float)
-        - vector_absolute : VectorMath, vector (Vector)
-        - vector_add : VectorMath, vector (Vector)
-        - vector_ceil : VectorMath, vector (Vector)
-        - vector_cos : VectorMath, vector (Vector)
-        - vector_divide : VectorMath, vector (Vector)
-        - vector_floor : VectorMath, vector (Vector)
-        - vector_max : VectorMath, vector (Vector)
-        - vector_min : VectorMath, vector (Vector)
-        - vector_modulo : VectorMath, vector (Vector)
-        - vector_multiply : VectorMath, vector (Vector)
-        - vector_multiply_add : VectorMath, vector (Vector)
-        - vector_sin : VectorMath, vector (Vector)
-        - vector_snap : VectorMath, vector (Vector)
-        - vector_subtract : VectorMath, vector (Vector)
-        - vector_tan : VectorMath, vector (Vector)
-        - vector_wrap : VectorMath, vector (Vector)
-        - wrap : Math, value (Float)
+        - abs : value (Float)
+        - add : value (Float)
+        - arccos : value (Float)
+        - arcsin : value (Float)
+        - arctan : value (Float)
+        - arctan2 : value (Float)
+        - ceil : value (Float)
+        - color_add : color (Color)
+        - color_burn : color (Color)
+        - color_darken : color (Color)
+        - color_difference : color (Color)
+        - color_divide : color (Color)
+        - color_dodge : color (Color)
+        - color_hue : color (Color)
+        - color_lighten : color (Color)
+        - color_linear_light : color (Color)
+        - color_mix : color (Color)
+        - color_mix_color : color (Color)
+        - color_multiply : color (Color)
+        - color_overlay : color (Color)
+        - color_saturation : color (Color)
+        - color_screen : color (Color)
+        - color_soft_light : color (Color)
+        - color_subtract : color (Color)
+        - color_value : color (Color)
+        - compare : result (Boolean)
+        - compare : value (Float)
+        - cos : value (Float)
+        - cosh : value (Float)
+        - cross : vector (Vector)
+        - degrees : value (Float)
+        - distance : value (Float)
+        - divide : value (Float)
+        - dot : value (Float)
+        - exp : value (Float)
+        - faceforward : vector (Vector)
+        - floor : value (Float)
+        - fract : value (Float)
+        - fraction : vector (Vector)
+        - greater_than : value (Float)
+        - inverse_sqrt : value (Float)
+        - join_strings : string (String)
+        - length : value (Float)
+        - less_than : value (Float)
+        - log : value (Float)
+        - max : value (Float)
+        - min : value (Float)
+        - modulo : value (Float)
+        - multiply : value (Float)
+        - multiply_add : value (Float)
+        - normalize : vector (Vector)
+        - pingpong : value (Float)
+        - pow : value (Float)
+        - project : vector (Vector)
+        - radians : value (Float)
+        - reflect : vector (Vector)
+        - refract : vector (Vector)
+        - round : value (Float)
+        - scale : vector (Vector)
+        - scene : Sockets      [seconds (Float), frame (Float)]
+        - sign : value (Float)
+        - sin : value (Float)
+        - sinh : value (Float)
+        - smooth_max : value (Float)
+        - smooth_min : value (Float)
+        - snap : value (Float)
+        - sqrt : value (Float)
+        - subtract : value (Float)
+        - tan : value (Float)
+        - tanh : value (Float)
+        - trunc : value (Float)
+        - vector_absolute : vector (Vector)
+        - vector_add : vector (Vector)
+        - vector_ceil : vector (Vector)
+        - vector_cos : vector (Vector)
+        - vector_divide : vector (Vector)
+        - vector_floor : vector (Vector)
+        - vector_max : vector (Vector)
+        - vector_min : vector (Vector)
+        - vector_modulo : vector (Vector)
+        - vector_multiply : vector (Vector)
+        - vector_multiply_add : vector (Vector)
+        - vector_sin : vector (Vector)
+        - vector_snap : vector (Vector)
+        - vector_subtract : vector (Vector)
+        - vector_tan : vector (Vector)
+        - vector_wrap : vector (Vector)
+        - wrap : value (Float)
 """
 
 
@@ -162,6 +162,7 @@ def compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', ope
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Compare(a=a, b=b, epsilon=epsilon, data_type=data_type, mode=mode, operation=operation)
         ```
 
@@ -199,6 +200,7 @@ def join_strings(*strings, delimiter=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.JoinStrings(*strings, delimiter=delimiter)
         ```
 
@@ -230,6 +232,7 @@ def scene():
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.SceneTime()
         ```
 
@@ -272,6 +275,7 @@ def add(value0=None, value1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, operation='ADD')
         ```
 
@@ -314,6 +318,7 @@ def subtract(value0=None, value1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, operation='SUBTRACT')
         ```
 
@@ -356,6 +361,7 @@ def multiply(value0=None, value1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, operation='MULTIPLY')
         ```
 
@@ -398,6 +404,7 @@ def divide(value0=None, value1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, operation='DIVIDE')
         ```
 
@@ -441,6 +448,7 @@ def multiply_add(value0=None, value1=None, value2=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, value2=value2, operation='MULTIPLY_ADD')
         ```
 
@@ -483,6 +491,7 @@ def pow(value0=None, value1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, operation='POWER')
         ```
 
@@ -525,6 +534,7 @@ def log(value0=None, value1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, operation='LOGARITHM')
         ```
 
@@ -566,6 +576,7 @@ def sqrt(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='SQRT')
         ```
 
@@ -607,6 +618,7 @@ def inverse_sqrt(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='INVERSE_SQRT')
         ```
 
@@ -648,6 +660,7 @@ def abs(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='ABSOLUTE')
         ```
 
@@ -689,6 +702,7 @@ def exp(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='EXPONENT')
         ```
 
@@ -731,6 +745,7 @@ def min(value0=None, value1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, operation='MINIMUM')
         ```
 
@@ -773,6 +788,7 @@ def max(value0=None, value1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, operation='MAXIMUM')
         ```
 
@@ -815,6 +831,7 @@ def less_than(value0=None, value1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, operation='LESS_THAN')
         ```
 
@@ -857,6 +874,7 @@ def greater_than(value0=None, value1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, operation='GREATER_THAN')
         ```
 
@@ -898,6 +916,7 @@ def sign(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='SIGN')
         ```
 
@@ -941,6 +960,7 @@ def compare(value0=None, value1=None, value2=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, value2=value2, operation='COMPARE')
         ```
 
@@ -984,6 +1004,7 @@ def smooth_min(value0=None, value1=None, value2=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MIN')
         ```
 
@@ -1027,6 +1048,7 @@ def smooth_max(value0=None, value1=None, value2=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MAX')
         ```
 
@@ -1068,6 +1090,7 @@ def round(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='ROUND')
         ```
 
@@ -1109,6 +1132,7 @@ def floor(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='FLOOR')
         ```
 
@@ -1150,6 +1174,7 @@ def ceil(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='CEIL')
         ```
 
@@ -1191,6 +1216,7 @@ def trunc(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='TRUNC')
         ```
 
@@ -1232,6 +1258,7 @@ def fract(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='FRACT')
         ```
 
@@ -1274,6 +1301,7 @@ def modulo(value0=None, value1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, operation='MODULO')
         ```
 
@@ -1317,6 +1345,7 @@ def wrap(value0=None, value1=None, value2=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, value2=value2, operation='WRAP')
         ```
 
@@ -1359,6 +1388,7 @@ def snap(value0=None, value1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, operation='SNAP')
         ```
 
@@ -1401,6 +1431,7 @@ def pingpong(value0=None, value1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, operation='PINGPONG')
         ```
 
@@ -1442,6 +1473,7 @@ def sin(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='SINE')
         ```
 
@@ -1483,6 +1515,7 @@ def cos(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='COSINE')
         ```
 
@@ -1524,6 +1557,7 @@ def tan(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='TANGENT')
         ```
 
@@ -1565,6 +1599,7 @@ def arcsin(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='ARCSINE')
         ```
 
@@ -1606,6 +1641,7 @@ def arccos(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='ARCCOSINE')
         ```
 
@@ -1647,6 +1683,7 @@ def arctan(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='ARCTANGENT')
         ```
 
@@ -1689,6 +1726,7 @@ def arctan2(value0=None, value1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, value1=value1, operation='ARCTAN2')
         ```
 
@@ -1730,6 +1768,7 @@ def sinh(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='SINH')
         ```
 
@@ -1771,6 +1810,7 @@ def cosh(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='COSH')
         ```
 
@@ -1812,6 +1852,7 @@ def tanh(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='TANH')
         ```
 
@@ -1853,6 +1894,7 @@ def radians(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='RADIANS')
         ```
 
@@ -1894,6 +1936,7 @@ def degrees(value0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Math(value0=value0, operation='DEGREES')
         ```
 
@@ -1936,6 +1979,7 @@ def vector_add(vector0=None, vector1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, vector1=vector1, operation='ADD')
         ```
 
@@ -1978,6 +2022,7 @@ def vector_subtract(vector0=None, vector1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SUBTRACT')
         ```
 
@@ -2020,6 +2065,7 @@ def vector_multiply(vector0=None, vector1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MULTIPLY')
         ```
 
@@ -2062,6 +2108,7 @@ def vector_divide(vector0=None, vector1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DIVIDE')
         ```
 
@@ -2105,6 +2152,7 @@ def vector_multiply_add(vector0=None, vector1=None, vector2=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD')
         ```
 
@@ -2147,6 +2195,7 @@ def cross(vector0=None, vector1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, vector1=vector1, operation='CROSS_PRODUCT')
         ```
 
@@ -2189,6 +2238,7 @@ def project(vector0=None, vector1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, vector1=vector1, operation='PROJECT')
         ```
 
@@ -2231,6 +2281,7 @@ def reflect(vector0=None, vector1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, vector1=vector1, operation='REFLECT')
         ```
 
@@ -2274,6 +2325,7 @@ def refract(vector0=None, vector1=None, scale=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, vector1=vector1, scale=scale, operation='REFRACT')
         ```
 
@@ -2317,6 +2369,7 @@ def faceforward(vector0=None, vector1=None, vector2=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='FACEFORWARD')
         ```
 
@@ -2359,6 +2412,7 @@ def dot(vector0=None, vector1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DOT_PRODUCT')
         ```
 
@@ -2401,6 +2455,7 @@ def distance(vector0=None, vector1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DISTANCE')
         ```
 
@@ -2442,6 +2497,7 @@ def length(vector0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, operation='LENGTH')
         ```
 
@@ -2484,6 +2540,7 @@ def scale(vector0=None, scale=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, scale=scale, operation='SCALE')
         ```
 
@@ -2525,6 +2582,7 @@ def normalize(vector0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, operation='NORMALIZE')
         ```
 
@@ -2566,6 +2624,7 @@ def vector_absolute(vector0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, operation='ABSOLUTE')
         ```
 
@@ -2608,6 +2667,7 @@ def vector_min(vector0=None, vector1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MINIMUM')
         ```
 
@@ -2650,6 +2710,7 @@ def vector_max(vector0=None, vector1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MAXIMUM')
         ```
 
@@ -2691,6 +2752,7 @@ def vector_floor(vector0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, operation='FLOOR')
         ```
 
@@ -2732,6 +2794,7 @@ def vector_ceil(vector0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, operation='CEIL')
         ```
 
@@ -2773,6 +2836,7 @@ def fraction(vector0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, operation='FRACTION')
         ```
 
@@ -2815,6 +2879,7 @@ def vector_modulo(vector0=None, vector1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MODULO')
         ```
 
@@ -2858,6 +2923,7 @@ def vector_wrap(vector0=None, vector1=None, vector2=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='WRAP')
         ```
 
@@ -2900,6 +2966,7 @@ def vector_snap(vector0=None, vector1=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SNAP')
         ```
 
@@ -2941,6 +3008,7 @@ def vector_sin(vector0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, operation='SINE')
         ```
 
@@ -2982,6 +3050,7 @@ def vector_cos(vector0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, operation='COSINE')
         ```
 
@@ -3023,6 +3092,7 @@ def vector_tan(vector0=None):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.VectorMath(vector0=vector0, operation='TANGENT')
         ```
 
@@ -3071,6 +3141,7 @@ def color_mix(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha)
         ```
 
@@ -3119,6 +3190,7 @@ def color_darken(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha)
         ```
 
@@ -3167,6 +3239,7 @@ def color_multiply(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha)
         ```
 
@@ -3215,6 +3288,7 @@ def color_burn(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha)
         ```
 
@@ -3263,6 +3337,7 @@ def color_lighten(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha)
         ```
 
@@ -3311,6 +3386,7 @@ def color_screen(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha)
         ```
 
@@ -3359,6 +3435,7 @@ def color_dodge(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha)
         ```
 
@@ -3407,6 +3484,7 @@ def color_add(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha)
         ```
 
@@ -3455,6 +3533,7 @@ def color_overlay(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha)
         ```
 
@@ -3503,6 +3582,7 @@ def color_soft_light(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha)
         ```
 
@@ -3551,6 +3631,7 @@ def color_linear_light(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha)
         ```
 
@@ -3599,6 +3680,7 @@ def color_difference(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha)
         ```
 
@@ -3647,6 +3729,7 @@ def color_subtract(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha)
         ```
 
@@ -3695,6 +3778,7 @@ def color_divide(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha)
         ```
 
@@ -3743,6 +3827,7 @@ def color_hue(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha)
         ```
 
@@ -3791,6 +3876,7 @@ def color_saturation(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha)
         ```
 
@@ -3839,6 +3925,7 @@ def color_mix_color(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha)
         ```
 
@@ -3887,6 +3974,7 @@ def color_value(color1=None, color2=None, fac=None, use_alpha=False):
     Node creation
     -------------
         ```python
+        from geondes import nodes
         nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha)
         ```
 

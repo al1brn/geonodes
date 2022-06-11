@@ -9,71 +9,71 @@
 
 ## Constructors
 
-- [Circle](#circle) : [MeshCircle](/docs/nodes/MeshCircle.md), mesh (Mesh)
-- [Cone](#cone) : [Cone](/docs/nodes/Cone.md), Sockets      [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
-- [Cube](#cube) : [Cube](/docs/nodes/Cube.md), mesh (Mesh)
-- [Cylinder](#cylinder) : [Cylinder](/docs/nodes/Cylinder.md), Sockets      [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
-- [Grid](#grid) : [Grid](/docs/nodes/Grid.md), mesh (Mesh)
-- [IcoSphere](#icosphere) : [IcoSphere](/docs/nodes/IcoSphere.md), mesh (Mesh)
-- [Line](#line) : [MeshLine](/docs/nodes/MeshLine.md), mesh (Mesh)
-- [UVSphere](#uvsphere) : [UvSphere](/docs/nodes/UvSphere.md), mesh (Mesh)
+- [Circle](#circle) : mesh (Mesh)
+- [Cone](#cone) : Sockets      [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
+- [Cube](#cube) : mesh (Mesh)
+- [Cylinder](#cylinder) : Sockets      [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
+- [Grid](#grid) : mesh (Mesh)
+- [IcoSphere](#icosphere) : mesh (Mesh)
+- [Line](#line) : mesh (Mesh)
+- [UVSphere](#uvsphere) : mesh (Mesh)
 
 ## Attribute capture
 
-- [capture_edge_angle](#capture_edge_angle) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Sockets      [unsigned_angle (Float), signed_angle (Float)]
-- [capture_edge_neighbors](#capture_edge_neighbors) : [EdgeNeighbors](/docs/nodes/EdgeNeighbors.md), face_count (Integer)
-- [capture_edge_vertices](#capture_edge_vertices) : [EdgeVertices](/docs/nodes/EdgeVertices.md), Sockets      [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-- [capture_face_area](#capture_face_area) : [FaceArea](/docs/nodes/FaceArea.md), area (Float)
-- [capture_face_neighbors](#capture_face_neighbors) : [FaceNeighbors](/docs/nodes/FaceNeighbors.md), Sockets      [vertex_count (Integer), face_count (Integer)]
-- [capture_island](#capture_island) : [MeshIsland](/docs/nodes/MeshIsland.md), Sockets      [island_index (Integer), island_count (Integer)]
-- [capture_material_index](#capture_material_index) : [MaterialIndex](/docs/nodes/MaterialIndex.md), material_index (Integer)
-- [capture_material_selection](#capture_material_selection) : [MaterialSelection](/docs/nodes/MaterialSelection.md), selection (Boolean)
-- [capture_shade_smooth](#capture_shade_smooth) : [IsShadeSmooth](/docs/nodes/IsShadeSmooth.md), smooth (Boolean)
-- [capture_vertex_neighbors](#capture_vertex_neighbors) : [VertexNeighbors](/docs/nodes/VertexNeighbors.md), Sockets      [vertex_count (Integer), face_count (Integer)]
+- [capture_edge_angle](#capture_edge_angle) : Sockets      [unsigned_angle (Float), signed_angle (Float)]
+- [capture_edge_neighbors](#capture_edge_neighbors) : face_count (Integer)
+- [capture_edge_vertices](#capture_edge_vertices) : Sockets      [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
+- [capture_face_area](#capture_face_area) : area (Float)
+- [capture_face_neighbors](#capture_face_neighbors) : Sockets      [vertex_count (Integer), face_count (Integer)]
+- [capture_island](#capture_island) : Sockets      [island_index (Integer), island_count (Integer)]
+- [capture_material_index](#capture_material_index) : material_index (Integer)
+- [capture_material_selection](#capture_material_selection) : selection (Boolean)
+- [capture_shade_smooth](#capture_shade_smooth) : smooth (Boolean)
+- [capture_vertex_neighbors](#capture_vertex_neighbors) : Sockets      [vertex_count (Integer), face_count (Integer)]
 
 ## Attributes
 
-- [corner_ID](#corner_id) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_ID(domain='CORNER').unsigned_angle
-- [corner_index](#corner_index) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_index(domain='CORNER').unsigned_angle
-- [corner_porision](#corner_porision) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_position(domain='CORNER').unsigned_angle
-- [edge_angle](#edge_angle) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_edge_angle(domain='EDGE').unsigned_angle
-- [edge_neighbors](#edge_neighbors) : [EdgeNeighbors](/docs/nodes/EdgeNeighbors.md), Integer = capture_edge_neighbors(domain='EDGE')
-- [edge_unsigned_angle](#edge_unsigned_angle) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_edge_angle(domain='EDGE').signed_angle
-- [edge_vertices_index1](#edge_vertices_index1) : [EdgeVertices](/docs/nodes/EdgeVertices.md), Integer = capture_edge_vertices(domain='EDGE').vertex_index_1
-- [edge_vertices_index2](#edge_vertices_index2) : [EdgeVertices](/docs/nodes/EdgeVertices.md), Integer = capture_edge_vertices(domain='EDGE').vertex_index_2
-- [edge_vertices_position1](#edge_vertices_position1) : [EdgeVertices](/docs/nodes/EdgeVertices.md), Vector = capture_edge_vertices(domain='EDGE').position_1
-- [edge_vertices_position2](#edge_vertices_position2) : [EdgeVertices](/docs/nodes/EdgeVertices.md), Vector = capture_edge_vertices(domain='EDGE').position_2
-- [egde_ID](#egde_id) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_ID(domain='EDGE').unsigned_angle
-- [egde_index](#egde_index) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_index(domain='EDGE').unsigned_angle
-- [egde_position](#egde_position) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_position(domain='EDGE').unsigned_angle
-- [face_ID](#face_id) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_ID(domain='FACE').unsigned_angle
-- [face_area](#face_area) : [FaceArea](/docs/nodes/FaceArea.md), Float = capture_face_area(domain='FACE')
-- [face_index](#face_index) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_index(domain='FACE').unsigned_angle
-- [face_neighbors_face_count](#face_neighbors_face_count) : [FaceNeighbors](/docs/nodes/FaceNeighbors.md), Integer = capture_face_neighbors(domain='FACE').face_count
-- [face_neighbors_vertex_count](#face_neighbors_vertex_count) : [FaceNeighbors](/docs/nodes/FaceNeighbors.md), Integer = capture_face_neighbors(domain='FACE').vertex_count
-- [face_position](#face_position) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_position(domain='FACE').unsigned_angle
-- [island](#island) : [MeshIsland](/docs/nodes/MeshIsland.md), Integer = capture_island(domain='POINT').island_index
-- [material_index](#material_index) : [MaterialIndex](/docs/nodes/MaterialIndex.md), Integer = capture_material_index(domain='FACE')
-- [material_selection](#material_selection) : [MaterialSelection](/docs/nodes/MaterialSelection.md), Boolean = capture_material_selection(domain='FACE')
-- [shade_smooth](#shade_smooth) : [IsShadeSmooth](/docs/nodes/IsShadeSmooth.md), Boolean = capture_shade_smooth(domain='FACE')
-- [vertex_neighbors_face_count](#vertex_neighbors_face_count) : [VertexNeighbors](/docs/nodes/VertexNeighbors.md), Integer = capture_vertex_neighbors(domain='POINT').face_count
-- [vertex_neighbors_vertex_count](#vertex_neighbors_vertex_count) : [VertexNeighbors](/docs/nodes/VertexNeighbors.md), Integer = capture_vertex_neighbors(domain='POINT').vertex_count
+- [corner_ID](#corner_id) : Float = capture_ID(domain='CORNER').unsigned_angle
+- [corner_index](#corner_index) : Float = capture_index(domain='CORNER').unsigned_angle
+- [corner_porision](#corner_porision) : Float = capture_position(domain='CORNER').unsigned_angle
+- [edge_angle](#edge_angle) : Float = capture_edge_angle(domain='EDGE').unsigned_angle
+- [edge_neighbors](#edge_neighbors) : Integer = capture_edge_neighbors(domain='EDGE')
+- [edge_unsigned_angle](#edge_unsigned_angle) : Float = capture_edge_angle(domain='EDGE').signed_angle
+- [edge_vertices_index1](#edge_vertices_index1) : Integer = capture_edge_vertices(domain='EDGE').vertex_index_1
+- [edge_vertices_index2](#edge_vertices_index2) : Integer = capture_edge_vertices(domain='EDGE').vertex_index_2
+- [edge_vertices_position1](#edge_vertices_position1) : Vector = capture_edge_vertices(domain='EDGE').position_1
+- [edge_vertices_position2](#edge_vertices_position2) : Vector = capture_edge_vertices(domain='EDGE').position_2
+- [egde_ID](#egde_id) : Float = capture_ID(domain='EDGE').unsigned_angle
+- [egde_index](#egde_index) : Float = capture_index(domain='EDGE').unsigned_angle
+- [egde_position](#egde_position) : Float = capture_position(domain='EDGE').unsigned_angle
+- [face_ID](#face_id) : Float = capture_ID(domain='FACE').unsigned_angle
+- [face_area](#face_area) : Float = capture_face_area(domain='FACE')
+- [face_index](#face_index) : Float = capture_index(domain='FACE').unsigned_angle
+- [face_neighbors_face_count](#face_neighbors_face_count) : Integer = capture_face_neighbors(domain='FACE').face_count
+- [face_neighbors_vertex_count](#face_neighbors_vertex_count) : Integer = capture_face_neighbors(domain='FACE').vertex_count
+- [face_position](#face_position) : Float = capture_position(domain='FACE').unsigned_angle
+- [island](#island) : Integer = capture_island(domain='POINT').island_index
+- [material_index](#material_index) : Integer = capture_material_index(domain='FACE')
+- [material_selection](#material_selection) : Boolean = capture_material_selection(domain='FACE')
+- [shade_smooth](#shade_smooth) : Boolean = capture_shade_smooth(domain='FACE')
+- [vertex_neighbors_face_count](#vertex_neighbors_face_count) : Integer = capture_vertex_neighbors(domain='POINT').face_count
+- [vertex_neighbors_vertex_count](#vertex_neighbors_vertex_count) : Integer = capture_vertex_neighbors(domain='POINT').vertex_count
 
 ## Methods
 
-- [difference](#difference) : [MeshBoolean](/docs/nodes/MeshBoolean.md), mesh (Mesh)
-- [distribute_points_on_faces](#distribute_points_on_faces) : [DistributePointsOnFaces](/docs/nodes/DistributePointsOnFaces.md), Sockets      [points (Points), normal (Vector), rotation (Vector)]
-- [dual](#dual) : [DualMesh](/docs/nodes/DualMesh.md), dual_mesh (Geometry)
-- [extrude](#extrude) : [ExtrudeMesh](/docs/nodes/ExtrudeMesh.md), Sockets      [mesh (Mesh), top (Boolean), side (Boolean)]
-- [flip_faces](#flip_faces) : [FlipFaces](/docs/nodes/FlipFaces.md), mesh (Mesh)
-- [intersect](#intersect) : [MeshBoolean](/docs/nodes/MeshBoolean.md), mesh (Mesh)
-- [split_edges](#split_edges) : [SplitEdges](/docs/nodes/SplitEdges.md), mesh (Mesh)
-- [subdivide](#subdivide) : [SubdivideMesh](/docs/nodes/SubdivideMesh.md), mesh (Mesh)
-- [subdivision_surface](#subdivision_surface) : [SubdivisionSurface](/docs/nodes/SubdivisionSurface.md), mesh (Mesh)
-- [to_curve](#to_curve) : [MeshToCurve](/docs/nodes/MeshToCurve.md), curve (Curve)
-- [to_points](#to_points) : [MeshToPoints](/docs/nodes/MeshToPoints.md), points (Points)
-- [triangulate](#triangulate) : [Triangulate](/docs/nodes/Triangulate.md), mesh (Mesh)
-- [union](#union) : [MeshBoolean](/docs/nodes/MeshBoolean.md), mesh (Mesh)
+- [difference](#difference) : mesh (Mesh)
+- [distribute_points_on_faces](#distribute_points_on_faces) : Sockets      [points (Points), normal (Vector), rotation (Vector)]
+- [dual](#dual) : dual_mesh (Geometry)
+- [extrude](#extrude) : Sockets      [mesh (Mesh), top (Boolean), side (Boolean)]
+- [flip_faces](#flip_faces) : mesh (Mesh)
+- [intersect](#intersect) : mesh (Mesh)
+- [split_edges](#split_edges) : mesh (Mesh)
+- [subdivide](#subdivide) : mesh (Mesh)
+- [subdivision_surface](#subdivision_surface) : mesh (Mesh)
+- [to_curve](#to_curve) : curve (Curve)
+- [to_points](#to_points) : points (Points)
+- [triangulate](#triangulate) : mesh (Mesh)
+- [union](#union) : mesh (Mesh)
 
 ## Circle
 
@@ -102,6 +102,7 @@ v = Mesh.Circle(vertices, radius, fill_type)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MeshCircle(vertices=vertices, radius=radius, fill_type=fill_type)
 ```
 
@@ -141,6 +142,7 @@ v = Mesh.Cone(vertices, side_segments, fill_segments, radius_top, radius_bottom,
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Cone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top, radius_bottom=radius_bottom, depth=depth, fill_type=fill_type)
 ```
 
@@ -174,6 +176,7 @@ v = Mesh.Cube(size, vertices_x, vertices_y, vertices_z)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Cube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, vertices_z=vertices_z)
 ```
 
@@ -212,6 +215,7 @@ v = Mesh.Cylinder(vertices, side_segments, fill_segments, radius, depth, fill_ty
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Cylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius, depth=depth, fill_type=fill_type)
 ```
 
@@ -245,6 +249,7 @@ v = Mesh.Grid(size_x, size_y, vertices_x, vertices_y)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y)
 ```
 
@@ -276,6 +281,7 @@ v = Mesh.IcoSphere(radius, subdivisions)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.IcoSphere(radius=radius, subdivisions=subdivisions)
 ```
 
@@ -313,6 +319,7 @@ v = Mesh.Line(count, start_location, offset, count_mode, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MeshLine(count=count, start_location=start_location, offset=offset, count_mode=count_mode, mode=mode)
 ```
 
@@ -345,6 +352,7 @@ v = Mesh.UVSphere(segments, rings, radius)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.UvSphere(segments=segments, rings=rings, radius=radius)
 ```
 
@@ -376,6 +384,7 @@ v = mesh.capture_edge_angle(self, domain='EDGE')
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeAngle()
 ```
 
@@ -407,6 +416,7 @@ v = mesh.capture_edge_neighbors(self, domain='EDGE')
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeNeighbors()
 ```
 
@@ -438,6 +448,7 @@ v = mesh.capture_edge_vertices(self, domain='EDGE')
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeVertices()
 ```
 
@@ -469,6 +480,7 @@ v = mesh.capture_face_area(self, domain='FACE')
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.FaceArea()
 ```
 
@@ -500,6 +512,7 @@ v = mesh.capture_face_neighbors(self, domain='FACE')
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.FaceNeighbors()
 ```
 
@@ -531,6 +544,7 @@ v = mesh.capture_island(self, domain='POINT')
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MeshIsland()
 ```
 
@@ -562,6 +576,7 @@ v = mesh.capture_shade_smooth(self, domain='FACE')
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.IsShadeSmooth()
 ```
 
@@ -593,6 +608,7 @@ v = mesh.capture_vertex_neighbors(self, domain='POINT')
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VertexNeighbors()
 ```
 
@@ -624,6 +640,7 @@ v = mesh.capture_material_index(self, domain='FACE')
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MaterialIndex()
 ```
 
@@ -659,6 +676,7 @@ v = mesh.capture_material_selection(self, material, domain='FACE')
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MaterialSelection(material=material)
 ```
 
@@ -689,6 +707,7 @@ v = mesh.face_ID(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeAngle()
 ```
 
@@ -719,6 +738,7 @@ v = mesh.egde_ID(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeAngle()
 ```
 
@@ -749,6 +769,7 @@ v = mesh.corner_ID(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeAngle()
 ```
 
@@ -779,6 +800,7 @@ v = mesh.face_index(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeAngle()
 ```
 
@@ -809,6 +831,7 @@ v = mesh.egde_index(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeAngle()
 ```
 
@@ -839,6 +862,7 @@ v = mesh.corner_index(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeAngle()
 ```
 
@@ -869,6 +893,7 @@ v = mesh.face_position(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeAngle()
 ```
 
@@ -899,6 +924,7 @@ v = mesh.egde_position(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeAngle()
 ```
 
@@ -929,6 +955,7 @@ v = mesh.corner_porision(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeAngle()
 ```
 
@@ -959,6 +986,7 @@ v = mesh.edge_angle(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeAngle()
 ```
 
@@ -989,6 +1017,7 @@ v = mesh.edge_unsigned_angle(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeAngle()
 ```
 
@@ -1019,6 +1048,7 @@ v = mesh.edge_neighbors(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeNeighbors()
 ```
 
@@ -1049,6 +1079,7 @@ v = mesh.edge_vertices_index1(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeVertices()
 ```
 
@@ -1079,6 +1110,7 @@ v = mesh.edge_vertices_index2(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeVertices()
 ```
 
@@ -1109,6 +1141,7 @@ v = mesh.edge_vertices_position1(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeVertices()
 ```
 
@@ -1139,6 +1172,7 @@ v = mesh.edge_vertices_position2(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.EdgeVertices()
 ```
 
@@ -1169,6 +1203,7 @@ v = mesh.face_area(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.FaceArea()
 ```
 
@@ -1199,6 +1234,7 @@ v = mesh.face_neighbors_vertex_count(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.FaceNeighbors()
 ```
 
@@ -1229,6 +1265,7 @@ v = mesh.face_neighbors_face_count(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.FaceNeighbors()
 ```
 
@@ -1259,6 +1296,7 @@ v = mesh.island(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MeshIsland()
 ```
 
@@ -1289,6 +1327,7 @@ v = mesh.shade_smooth(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.IsShadeSmooth()
 ```
 
@@ -1319,6 +1358,7 @@ v = mesh.vertex_neighbors_vertex_count(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VertexNeighbors()
 ```
 
@@ -1349,6 +1389,7 @@ v = mesh.vertex_neighbors_face_count(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.VertexNeighbors()
 ```
 
@@ -1379,6 +1420,7 @@ v = mesh.material_index(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MaterialIndex()
 ```
 
@@ -1413,6 +1455,7 @@ v = mesh.material_selection(self, material)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MaterialSelection(material=material)
 ```
 
@@ -1449,6 +1492,7 @@ v = mesh.intersect(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_toleran
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT')
 ```
 
@@ -1485,6 +1529,7 @@ v = mesh.union(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION')
 ```
 
@@ -1522,6 +1567,7 @@ v = mesh.difference(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolera
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE')
 ```
 
@@ -1553,6 +1599,7 @@ v = mesh.split_edges(selection)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SplitEdges(mesh=self, selection=selection)
 ```
 
@@ -1584,6 +1631,7 @@ v = mesh.subdivide(level)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SubdivideMesh(mesh=self, level=level)
 ```
 
@@ -1621,6 +1669,7 @@ v = mesh.subdivision_surface(level, crease, boundary_smooth, uv_smooth)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth)
 ```
 
@@ -1658,6 +1707,7 @@ v = mesh.triangulate(selection, minimum_vertices, ngon_method, quad_method)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method, quad_method=quad_method)
 ```
 
@@ -1689,6 +1739,7 @@ v = mesh.dual(keep_boundaries)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.DualMesh(mesh=self, keep_boundaries=keep_boundaries)
 ```
 
@@ -1720,6 +1771,7 @@ v = mesh.flip_faces(selection)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.FlipFaces(mesh=self, selection=selection)
 ```
 
@@ -1758,6 +1810,7 @@ v = mesh.extrude(selection, offset, offset_scale, individual, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual, mode=mode)
 ```
 
@@ -1789,6 +1842,7 @@ v = mesh.to_curve(selection)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MeshToCurve(mesh=self, selection=selection)
 ```
 
@@ -1826,6 +1880,7 @@ v = mesh.to_points(selection, position, radius, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MeshToPoints(mesh=self, selection=selection, position=position, radius=radius, mode=mode)
 ```
 
@@ -1866,6 +1921,7 @@ v = mesh.distribute_points_on_faces(selection, distance_min, density_max, densit
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method)
 ```
 

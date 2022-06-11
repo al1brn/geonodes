@@ -22,41 +22,41 @@ class Spline(gn.Geometry):
 
         Attribute capture
         -----------------
-            - capture_cyclic : IsSplineCyclic, cyclic (Boolean)
-            - capture_endpoint_selection : EndpointSelection, selection (Boolean)
-            - capture_handle_positions : CurveHandlePositions, Sockets      [left (Vector), right (Vector)]
-            - capture_handle_type_selection : HandleTypeSelection, selection (Boolean)
-            - capture_length : SplineLength, Sockets      [length (Float), point_count (Integer)]
-            - capture_parameter : SplineParameter, Sockets      [factor (Float), length (Float), index (Integer)]
-            - capture_resolution : SplineResolution, resolution (Integer)
-            - capture_tangent : CurveTangent, tangent (Vector)
-            - capture_tilt : CurveTilt, tilt (Float)
+            - capture_cyclic : cyclic (Boolean)
+            - capture_endpoint_selection : selection (Boolean)
+            - capture_handle_positions : Sockets      [left (Vector), right (Vector)]
+            - capture_handle_type_selection : selection (Boolean)
+            - capture_length : Sockets      [length (Float), point_count (Integer)]
+            - capture_parameter : Sockets      [factor (Float), length (Float), index (Integer)]
+            - capture_resolution : resolution (Integer)
+            - capture_tangent : tangent (Vector)
+            - capture_tilt : tilt (Float)
     
 
         Attributes
         ----------
-            - cyclic : IsSplineCyclic, Boolean = capture_cyclic(domain='CURVE')
-            - endpoint_selection : EndpointSelection, Boolean = capture_endpoint_selection(domain='CURVE')
-            - factor : SplineParameter, Float = capture_parameter(domain='CURVE').factor
-            - handle_type_selection : HandleTypeSelection, Boolean = capture_handle_type_selection(domain='CURVE')
-            - left_handle_position : CurveHandlePositions, Vector = capture_handle_positions(domain='CURVE').left
-            - length : SplineLength, Float = capture_length(domain='CURVE').length
-            - parameter_index : SplineParameter, Integer = capture_parameter(domain='CURVE').index
-            - parameter_length : SplineParameter, Float = capture_parameter(domain='CURVE').length
-            - point_count : SplineLength, Integer = capture_length(domain='CURVE').point_count
-            - resolution : SplineResolution, Integer = capture_resolution(domain='CURVE')
-            - right_handle_position : CurveHandlePositions, Vector = capture_handle_positions(domain='CURVE').right
-            - spline_ID : ID, Integer = capture_ID(domain='SPLINE')
-            - spline_index : Index, Integer = capture_index(domain='SPLINE')
-            - spline_position : Index, Integer = capture_position(domain='SPLINE')
-            - tangent : CurveTangent, Vector = capture_tangent(domain='CURVE')
-            - tilt : CurveTilt, Float = capture_tilt(domain='CURVE')
+            - cyclic : Boolean = capture_cyclic(domain='CURVE')
+            - endpoint_selection : Boolean = capture_endpoint_selection(domain='CURVE')
+            - factor : Float = capture_parameter(domain='CURVE').factor
+            - handle_type_selection : Boolean = capture_handle_type_selection(domain='CURVE')
+            - left_handle_position : Vector = capture_handle_positions(domain='CURVE').left
+            - length : Float = capture_length(domain='CURVE').length
+            - parameter_index : Integer = capture_parameter(domain='CURVE').index
+            - parameter_length : Float = capture_parameter(domain='CURVE').length
+            - point_count : Integer = capture_length(domain='CURVE').point_count
+            - resolution : Integer = capture_resolution(domain='CURVE')
+            - right_handle_position : Vector = capture_handle_positions(domain='CURVE').right
+            - spline_ID : Integer = capture_ID(domain='SPLINE')
+            - spline_index : Integer = capture_index(domain='SPLINE')
+            - spline_position : Integer = capture_position(domain='SPLINE')
+            - tangent : Vector = capture_tangent(domain='CURVE')
+            - tilt : Float = capture_tilt(domain='CURVE')
     
 
         Methods
         -------
-            - set_cyclic : SetSplineCyclic, geometry (Geometry)
-            - set_resolution : SetSplineResolution, geometry (Geometry)
+            - set_cyclic : geometry (Geometry)
+            - set_resolution : geometry (Geometry)
     """
 
 
@@ -93,6 +93,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.CurveHandlePositions(relative=relative)
             ```
     
@@ -135,6 +136,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.CurveTangent()
             ```
     
@@ -177,6 +179,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.CurveTilt()
             ```
     
@@ -225,6 +228,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EndpointSelection(start_size=start_size, end_size=end_size)
             ```
     
@@ -269,6 +273,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
             ```
     
@@ -311,6 +316,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.IsSplineCyclic()
             ```
     
@@ -353,6 +359,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SplineLength()
             ```
     
@@ -395,6 +402,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SplineParameter()
             ```
     
@@ -437,6 +445,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SplineResolution()
             ```
     
@@ -483,6 +492,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.ID()
             ```
     
@@ -520,6 +530,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Index()
             ```
     
@@ -557,6 +568,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Index()
             ```
     
@@ -599,6 +611,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.CurveHandlePositions(relative=relative)
             ```
     
@@ -641,6 +654,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.CurveHandlePositions(relative=relative)
             ```
     
@@ -678,6 +692,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.CurveTangent()
             ```
     
@@ -715,6 +730,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.CurveTilt()
             ```
     
@@ -758,6 +774,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.EndpointSelection(start_size=start_size, end_size=end_size)
             ```
     
@@ -797,6 +814,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
             ```
     
@@ -834,6 +852,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.IsSplineCyclic()
             ```
     
@@ -871,6 +890,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SplineLength()
             ```
     
@@ -908,6 +928,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SplineLength()
             ```
     
@@ -945,6 +966,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SplineParameter()
             ```
     
@@ -982,6 +1004,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SplineParameter()
             ```
     
@@ -1019,6 +1042,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SplineParameter()
             ```
     
@@ -1056,6 +1080,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SplineResolution()
             ```
     
@@ -1098,6 +1123,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic)
             ```
     
@@ -1136,6 +1162,7 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution)
             ```
     

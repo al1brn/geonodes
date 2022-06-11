@@ -22,68 +22,68 @@ class Geometry(dsock.Geometry):
 
         Static methods
         --------------
-            - is_viewport : IsViewport, is_viewport (Boolean)
+            - is_viewport : is_viewport (Boolean)
     
 
         Properties
         ----------
-            - bound_box : BoundingBox, Sockets      [bounding_box (Geometry), min (Vector), max (Vector)]
-            - box : BoundingBox, bounding_box (Geometry) = bound_box.bounding_box
-            - box_max : BoundingBox, max (Vector) = bound_box.max
-            - box_min : BoundingBox, min (Vector) = bound_box.min
-            - components : SeparateComponents, Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
-            - curve_component : SeparateComponents, curve (Curve) = components.curve
-            - instances_component : SeparateComponents, instances (Instances) = components.instances
-            - mesh_component : SeparateComponents, mesh (Mesh) = components.mesh
-            - points_component : SeparateComponents, point_cloud (Geometry) = components.point_cloud
-            - volume_component : SeparateComponents, volume (Volume) = components.volume
+            - bound_box : Sockets      [bounding_box (Geometry), min (Vector), max (Vector)]
+            - box : bounding_box (Geometry) = bound_box.bounding_box
+            - box_max : max (Vector) = bound_box.max
+            - box_min : min (Vector) = bound_box.min
+            - components : Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+            - curve_component : curve (Curve) = components.curve
+            - instances_component : instances (Instances) = components.instances
+            - mesh_component : mesh (Mesh) = components.mesh
+            - points_component : point_cloud (Geometry) = components.point_cloud
+            - volume_component : volume (Volume) = components.volume
     
 
         Attribute capture
         -----------------
-            - capture_ID : ID, ID (Integer)
-            - capture_index : Index, index (Integer)
-            - capture_normal : Normal, normal (Vector)
-            - capture_position : Position, position (Vector)
-            - capture_radius : Radius, radius (Float)
+            - capture_ID : ID (Integer)
+            - capture_index : index (Integer)
+            - capture_normal : normal (Vector)
+            - capture_position : position (Vector)
+            - capture_radius : radius (Float)
     
 
         Attributes
         ----------
-            - ID : ID, Integer = capture_ID(domain='POINT')
-            - index : Index, Integer = capture_index(domain='POINT')
-            - normal : Normal, Vector = capture_normal(domain='FACE')
-            - position : Position, Vector = capture_position(domain='POINT')
-            - radius : Radius, Float = capture_radius(domain='POINT')
+            - ID : Integer = capture_ID(domain='POINT')
+            - index : Integer = capture_index(domain='POINT')
+            - normal : Vector = capture_normal(domain='FACE')
+            - position : Vector = capture_position(domain='POINT')
+            - radius : Float = capture_radius(domain='POINT')
     
 
         Methods
         -------
-            - attribute_domain_size : DomainSize, Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
-            - attribute_remove : AttributeRemove, geometry (Geometry)
-            - capture_attribute : CaptureAttribute, attribute (data_type dependant)
-            - components : SeparateGeometry, Sockets      [selection (Geometry), inverted (Geometry)]
-            - convex_hull : ConvexHull, convex_hull (Geometry)
-            - delete_geometry : DeleteGeometry, geometry (Geometry)
-            - join : JoinGeometry, geometry (Geometry)
-            - merge_by_distance : MergeByDistance, geometry (Geometry)
-            - proximity : GeometryProximity, Sockets      [position (Vector), distance (Float)]
-            - realize_instances : RealizeInstances, geometry (Geometry)
-            - replace_material : ReplaceMaterial, geometry (Geometry)
-            - scale_elements : ScaleElements, geometry (Geometry)
-            - set_ID : SetID, geometry (Geometry)
-            - set_material : SetMaterial, geometry (Geometry)
-            - set_material_index : SetMaterialIndex, geometry (Geometry)
-            - set_position : SetPosition, geometry (Geometry)
-            - set_shade_smooth : SetShadeSmooth, geometry (Geometry)
-            - switch : Switch, output (Geometry)
-            - to_instance : GeometryToInstance, instances (Instances)
-            - transfer_boolean : TransferAttribute, attribute (Boolean)
-            - transfer_color : TransferAttribute, attribute (Color)
-            - transfer_float : TransferAttribute, attribute (Float)
-            - transfer_integer : TransferAttribute, attribute (Integer)
-            - transfer_vector : TransferAttribute, attribute (Vector)
-            - transform : Transform, geometry (Geometry)
+            - attribute_domain_size : Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
+            - attribute_remove : geometry (Geometry)
+            - capture_attribute : attribute (data_type dependant)
+            - components : Sockets      [selection (Geometry), inverted (Geometry)]
+            - convex_hull : convex_hull (Geometry)
+            - delete_geometry : geometry (Geometry)
+            - join : geometry (Geometry)
+            - merge_by_distance : geometry (Geometry)
+            - proximity : Sockets      [position (Vector), distance (Float)]
+            - realize_instances : geometry (Geometry)
+            - replace_material : geometry (Geometry)
+            - scale_elements : geometry (Geometry)
+            - set_ID : geometry (Geometry)
+            - set_material : geometry (Geometry)
+            - set_material_index : geometry (Geometry)
+            - set_position : geometry (Geometry)
+            - set_shade_smooth : geometry (Geometry)
+            - switch : output (Geometry)
+            - to_instance : instances (Instances)
+            - transfer_boolean : attribute (Boolean)
+            - transfer_color : attribute (Color)
+            - transfer_float : attribute (Float)
+            - transfer_integer : attribute (Integer)
+            - transfer_vector : attribute (Vector)
+            - transform : geometry (Geometry)
     """
 
 
@@ -122,6 +122,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.IsViewport()
             ```
     
@@ -168,6 +169,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_box")
             ```
     
@@ -212,6 +214,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box")
             ```
     
@@ -254,6 +257,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_min")
             ```
     
@@ -296,6 +300,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_max")
             ```
     
@@ -338,6 +343,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.components")
             ```
     
@@ -382,6 +388,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.mesh_component")
             ```
     
@@ -424,6 +431,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.points_component")
             ```
     
@@ -466,6 +474,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.curve_component")
             ```
     
@@ -508,6 +517,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.volume_component")
             ```
     
@@ -550,6 +560,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.instances_component")
             ```
     
@@ -591,6 +602,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.ID()
             ```
     
@@ -633,6 +645,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Index()
             ```
     
@@ -675,6 +688,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Normal()
             ```
     
@@ -717,6 +731,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Position()
             ```
     
@@ -759,6 +774,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Radius()
             ```
     
@@ -805,6 +821,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.ID()
             ```
     
@@ -842,6 +859,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Index()
             ```
     
@@ -879,6 +897,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Normal()
             ```
     
@@ -916,6 +935,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Position()
             ```
     
@@ -953,6 +973,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Radius()
             ```
     
@@ -1000,6 +1021,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY')
             ```
     
@@ -1043,6 +1065,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain)
             ```
     
@@ -1095,6 +1118,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
             ```
     
@@ -1145,6 +1169,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
             ```
     
@@ -1195,6 +1220,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
             ```
     
@@ -1245,6 +1271,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
             ```
     
@@ -1295,6 +1322,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
             ```
     
@@ -1338,6 +1366,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode)
             ```
     
@@ -1376,6 +1405,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.MergeByDistance(geometry=self, selection=selection, distance=distance)
             ```
     
@@ -1417,6 +1447,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior)
             ```
     
@@ -1455,6 +1486,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.ReplaceMaterial(geometry=self, old=old, new=new)
             ```
     
@@ -1501,6 +1533,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode)
             ```
     
@@ -1539,6 +1572,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SetID(geometry=self, selection=selection, ID=ID)
             ```
     
@@ -1577,6 +1611,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SetMaterial(geometry=self, selection=selection, material=material)
             ```
     
@@ -1615,6 +1650,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index)
             ```
     
@@ -1654,6 +1690,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset)
             ```
     
@@ -1692,6 +1729,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth)
             ```
     
@@ -1731,6 +1769,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale)
             ```
     
@@ -1772,6 +1811,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.DomainSize(geometry=self, component=component)
             ```
     
@@ -1809,6 +1849,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.AttributeRemove(*attribute, geometry=self)
             ```
     
@@ -1851,6 +1892,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain)
             ```
     
@@ -1887,6 +1929,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.ConvexHull(geometry=self)
             ```
     
@@ -1923,6 +1966,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.GeometryToInstance(self, *geometry)
             ```
     
@@ -1959,6 +2003,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.JoinGeometry(self, *geometry)
             ```
     
@@ -2001,6 +2046,7 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.GeometryProximity(target=self, source_position=source_position, target_element=target_element)
             ```
     

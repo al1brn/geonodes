@@ -22,15 +22,15 @@ class Instances(gn.Geometry):
 
         Attributes
         ----------
-            - instance_index : Index, Integer = capture_index(domain='INSTANCE')
+            - instance_index : Integer = capture_index(domain='INSTANCE')
     
 
         Methods
         -------
-            - rotate : RotateInstances, instances (Instances)
-            - scale : ScaleInstances, instances (Instances)
-            - to_points : InstancesToPoints, points (Points)
-            - translate : TranslateInstances, instances (Instances)
+            - rotate : instances (Instances)
+            - scale : instances (Instances)
+            - to_points : points (Points)
+            - translate : instances (Instances)
     """
 
 
@@ -62,6 +62,7 @@ class Instances(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Index()
             ```
     
@@ -106,6 +107,7 @@ class Instances(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
             ```
     
@@ -146,6 +148,7 @@ class Instances(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
             ```
     
@@ -185,6 +188,7 @@ class Instances(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
             ```
     
@@ -224,6 +228,7 @@ class Instances(gn.Geometry):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
             ```
     

@@ -9,7 +9,7 @@
 
 ## Methods
 
-- [switch](#switch) : [Switch](/docs/nodes/Switch.md), output (Image)
+- [switch](#switch) : output (Image)
 
 ## switch
 
@@ -39,6 +39,7 @@ v = image.switch(switch1, true)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE')
 ```
 

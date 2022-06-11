@@ -9,24 +9,24 @@
 
 ## Constructors
 
-- [Random](#random) : [RandomValue](/docs/nodes/RandomValue.md), value (Boolean)
+- [Random](#random) : value (Boolean)
 
 ## Methods
 
-- [b_and](#b_and) : [BooleanMath](/docs/nodes/BooleanMath.md), boolean (Boolean)
-- [b_not](#b_not) : [BooleanMath](/docs/nodes/BooleanMath.md), boolean (Boolean)
-- [b_or](#b_or) : [BooleanMath](/docs/nodes/BooleanMath.md), boolean (Boolean)
-- [capture_attribute](#capture_attribute) : [CaptureAttribute](/docs/nodes/CaptureAttribute.md), Sockets      [geometry (Geometry), attribute (Boolean)]
-- [field_at_index](#field_at_index) : [FieldAtIndex](/docs/nodes/FieldAtIndex.md), value (Boolean)
-- [imply](#imply) : [BooleanMath](/docs/nodes/BooleanMath.md), boolean (Boolean)
-- [nand](#nand) : [BooleanMath](/docs/nodes/BooleanMath.md), boolean (Boolean)
-- [nimply](#nimply) : [BooleanMath](/docs/nodes/BooleanMath.md), boolean (Boolean)
-- [nor](#nor) : [BooleanMath](/docs/nodes/BooleanMath.md), boolean (Boolean)
-- [raycast](#raycast) : [Raycast](/docs/nodes/Raycast.md), Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
-- [switch](#switch) : [Switch](/docs/nodes/Switch.md), output (Boolean)
-- [transfer_attribute](#transfer_attribute) : [TransferAttribute](/docs/nodes/TransferAttribute.md), attribute (Boolean)
-- [xnor](#xnor) : [BooleanMath](/docs/nodes/BooleanMath.md), boolean (Boolean)
-- [xor](#xor) : [BooleanMath](/docs/nodes/BooleanMath.md), boolean (Boolean)
+- [b_and](#b_and) : boolean (Boolean)
+- [b_not](#b_not) : boolean (Boolean)
+- [b_or](#b_or) : boolean (Boolean)
+- [capture_attribute](#capture_attribute) : Sockets      [geometry (Geometry), attribute (Boolean)]
+- [field_at_index](#field_at_index) : value (Boolean)
+- [imply](#imply) : boolean (Boolean)
+- [nand](#nand) : boolean (Boolean)
+- [nimply](#nimply) : boolean (Boolean)
+- [nor](#nor) : boolean (Boolean)
+- [raycast](#raycast) : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
+- [switch](#switch) : output (Boolean)
+- [transfer_attribute](#transfer_attribute) : attribute (Boolean)
+- [xnor](#xnor) : boolean (Boolean)
+- [xor](#xor) : boolean (Boolean)
 
 ## Random
 
@@ -56,6 +56,7 @@ v = Boolean.Random(probability, ID, seed)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN')
 ```
 
@@ -98,6 +99,7 @@ v = boolean.transfer_attribute(source, source_position, index, domain, mapping)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
 ```
 
@@ -137,6 +139,7 @@ v = boolean.capture_attribute(geometry, domain)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain)
 ```
 
@@ -176,6 +179,7 @@ v = boolean.field_at_index(index, domain)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain)
 ```
 
@@ -218,6 +222,7 @@ v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length,
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping)
 ```
 
@@ -254,6 +259,7 @@ v = boolean.switch(false, true)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN')
 ```
 
@@ -289,6 +295,7 @@ v = boolean.b_and(boolean1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND')
 ```
 
@@ -324,6 +331,7 @@ v = boolean.b_or(boolean1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR')
 ```
 
@@ -358,6 +366,7 @@ v = boolean.b_not()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.BooleanMath(boolean0=self, operation='NOT')
 ```
 
@@ -393,6 +402,7 @@ v = boolean.nand(boolean1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND')
 ```
 
@@ -428,6 +438,7 @@ v = boolean.nor(boolean1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR')
 ```
 
@@ -463,6 +474,7 @@ v = boolean.xnor(boolean1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR')
 ```
 
@@ -498,6 +510,7 @@ v = boolean.xor(boolean1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR')
 ```
 
@@ -533,6 +546,7 @@ v = boolean.imply(boolean1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY')
 ```
 
@@ -568,6 +582,7 @@ v = boolean.nimply(boolean1)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY')
 ```
 

@@ -9,64 +9,64 @@
 
 ## Static methods
 
-- [is_viewport](#is_viewport) : [IsViewport](/docs/nodes/IsViewport.md), is_viewport (Boolean)
+- [is_viewport](#is_viewport) : is_viewport (Boolean)
 
 ## Properties
 
-- [bound_box](#bound_box) : [BoundingBox](/docs/nodes/BoundingBox.md), Sockets      [bounding_box (Geometry), min (Vector), max (Vector)]
-- [box](#box) : [BoundingBox](/docs/nodes/BoundingBox.md), bounding_box (Geometry) = bound_box.bounding_box
-- [box_max](#box_max) : [BoundingBox](/docs/nodes/BoundingBox.md), max (Vector) = bound_box.max
-- [box_min](#box_min) : [BoundingBox](/docs/nodes/BoundingBox.md), min (Vector) = bound_box.min
-- [components](#components) : [SeparateComponents](/docs/nodes/SeparateComponents.md), Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
-- [curve_component](#curve_component) : [SeparateComponents](/docs/nodes/SeparateComponents.md), curve (Curve) = components.curve
-- [instances_component](#instances_component) : [SeparateComponents](/docs/nodes/SeparateComponents.md), instances (Instances) = components.instances
-- [mesh_component](#mesh_component) : [SeparateComponents](/docs/nodes/SeparateComponents.md), mesh (Mesh) = components.mesh
-- [points_component](#points_component) : [SeparateComponents](/docs/nodes/SeparateComponents.md), point_cloud (Geometry) = components.point_cloud
-- [volume_component](#volume_component) : [SeparateComponents](/docs/nodes/SeparateComponents.md), volume (Volume) = components.volume
+- [bound_box](#bound_box) : Sockets      [bounding_box (Geometry), min (Vector), max (Vector)]
+- [box](#box) : bounding_box (Geometry) = bound_box.bounding_box
+- [box_max](#box_max) : max (Vector) = bound_box.max
+- [box_min](#box_min) : min (Vector) = bound_box.min
+- [components](#components) : Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+- [curve_component](#curve_component) : curve (Curve) = components.curve
+- [instances_component](#instances_component) : instances (Instances) = components.instances
+- [mesh_component](#mesh_component) : mesh (Mesh) = components.mesh
+- [points_component](#points_component) : point_cloud (Geometry) = components.point_cloud
+- [volume_component](#volume_component) : volume (Volume) = components.volume
 
 ## Attribute capture
 
-- [capture_ID](#capture_id) : [ID](/docs/nodes/ID.md), ID (Integer)
-- [capture_index](#capture_index) : [Index](/docs/nodes/Index.md), index (Integer)
-- [capture_normal](#capture_normal) : [Normal](/docs/nodes/Normal.md), normal (Vector)
-- [capture_position](#capture_position) : [Position](/docs/nodes/Position.md), position (Vector)
-- [capture_radius](#capture_radius) : [Radius](/docs/nodes/Radius.md), radius (Float)
+- [capture_ID](#capture_id) : ID (Integer)
+- [capture_index](#capture_index) : index (Integer)
+- [capture_normal](#capture_normal) : normal (Vector)
+- [capture_position](#capture_position) : position (Vector)
+- [capture_radius](#capture_radius) : radius (Float)
 
 ## Attributes
 
-- [ID](#id) : [ID](/docs/nodes/ID.md), Integer = capture_ID(domain='POINT')
-- [index](#index) : [Index](/docs/nodes/Index.md), Integer = capture_index(domain='POINT')
-- [normal](#normal) : [Normal](/docs/nodes/Normal.md), Vector = capture_normal(domain='FACE')
-- [position](#position) : [Position](/docs/nodes/Position.md), Vector = capture_position(domain='POINT')
-- [radius](#radius) : [Radius](/docs/nodes/Radius.md), Float = capture_radius(domain='POINT')
+- [ID](#id) : Integer = capture_ID(domain='POINT')
+- [index](#index) : Integer = capture_index(domain='POINT')
+- [normal](#normal) : Vector = capture_normal(domain='FACE')
+- [position](#position) : Vector = capture_position(domain='POINT')
+- [radius](#radius) : Float = capture_radius(domain='POINT')
 
 ## Methods
 
-- [attribute_domain_size](#attribute_domain_size) : [DomainSize](/docs/nodes/DomainSize.md), Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
-- [attribute_remove](#attribute_remove) : [AttributeRemove](/docs/nodes/AttributeRemove.md), geometry (Geometry)
-- [capture_attribute](#capture_attribute) : [CaptureAttribute](/docs/nodes/CaptureAttribute.md), attribute (data_type dependant)
-- [components](#components) : [SeparateGeometry](/docs/nodes/SeparateGeometry.md), Sockets      [selection (Geometry), inverted (Geometry)]
-- [convex_hull](#convex_hull) : [ConvexHull](/docs/nodes/ConvexHull.md), convex_hull (Geometry)
-- [delete_geometry](#delete_geometry) : [DeleteGeometry](/docs/nodes/DeleteGeometry.md), geometry (Geometry)
-- [join](#join) : [JoinGeometry](/docs/nodes/JoinGeometry.md), geometry (Geometry)
-- [merge_by_distance](#merge_by_distance) : [MergeByDistance](/docs/nodes/MergeByDistance.md), geometry (Geometry)
-- [proximity](#proximity) : [GeometryProximity](/docs/nodes/GeometryProximity.md), Sockets      [position (Vector), distance (Float)]
-- [realize_instances](#realize_instances) : [RealizeInstances](/docs/nodes/RealizeInstances.md), geometry (Geometry)
-- [replace_material](#replace_material) : [ReplaceMaterial](/docs/nodes/ReplaceMaterial.md), geometry (Geometry)
-- [scale_elements](#scale_elements) : [ScaleElements](/docs/nodes/ScaleElements.md), geometry (Geometry)
-- [set_ID](#set_id) : [SetID](/docs/nodes/SetID.md), geometry (Geometry)
-- [set_material](#set_material) : [SetMaterial](/docs/nodes/SetMaterial.md), geometry (Geometry)
-- [set_material_index](#set_material_index) : [SetMaterialIndex](/docs/nodes/SetMaterialIndex.md), geometry (Geometry)
-- [set_position](#set_position) : [SetPosition](/docs/nodes/SetPosition.md), geometry (Geometry)
-- [set_shade_smooth](#set_shade_smooth) : [SetShadeSmooth](/docs/nodes/SetShadeSmooth.md), geometry (Geometry)
-- [switch](#switch) : [Switch](/docs/nodes/Switch.md), output (Geometry)
-- [to_instance](#to_instance) : [GeometryToInstance](/docs/nodes/GeometryToInstance.md), instances (Instances)
-- [transfer_boolean](#transfer_boolean) : [TransferAttribute](/docs/nodes/TransferAttribute.md), attribute (Boolean)
-- [transfer_color](#transfer_color) : [TransferAttribute](/docs/nodes/TransferAttribute.md), attribute (Color)
-- [transfer_float](#transfer_float) : [TransferAttribute](/docs/nodes/TransferAttribute.md), attribute (Float)
-- [transfer_integer](#transfer_integer) : [TransferAttribute](/docs/nodes/TransferAttribute.md), attribute (Integer)
-- [transfer_vector](#transfer_vector) : [TransferAttribute](/docs/nodes/TransferAttribute.md), attribute (Vector)
-- [transform](#transform) : [Transform](/docs/nodes/Transform.md), geometry (Geometry)
+- [attribute_domain_size](#attribute_domain_size) : Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
+- [attribute_remove](#attribute_remove) : geometry (Geometry)
+- [capture_attribute](#capture_attribute) : attribute (data_type dependant)
+- [components](#components) : Sockets      [selection (Geometry), inverted (Geometry)]
+- [convex_hull](#convex_hull) : convex_hull (Geometry)
+- [delete_geometry](#delete_geometry) : geometry (Geometry)
+- [join](#join) : geometry (Geometry)
+- [merge_by_distance](#merge_by_distance) : geometry (Geometry)
+- [proximity](#proximity) : Sockets      [position (Vector), distance (Float)]
+- [realize_instances](#realize_instances) : geometry (Geometry)
+- [replace_material](#replace_material) : geometry (Geometry)
+- [scale_elements](#scale_elements) : geometry (Geometry)
+- [set_ID](#set_id) : geometry (Geometry)
+- [set_material](#set_material) : geometry (Geometry)
+- [set_material_index](#set_material_index) : geometry (Geometry)
+- [set_position](#set_position) : geometry (Geometry)
+- [set_shade_smooth](#set_shade_smooth) : geometry (Geometry)
+- [switch](#switch) : output (Geometry)
+- [to_instance](#to_instance) : instances (Instances)
+- [transfer_boolean](#transfer_boolean) : attribute (Boolean)
+- [transfer_color](#transfer_color) : attribute (Color)
+- [transfer_float](#transfer_float) : attribute (Float)
+- [transfer_integer](#transfer_integer) : attribute (Integer)
+- [transfer_vector](#transfer_vector) : attribute (Vector)
+- [transform](#transform) : geometry (Geometry)
 
 ## is_viewport
 
@@ -86,6 +86,7 @@ v = Geometry.is_viewport()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.IsViewport()
 ```
 
@@ -120,6 +121,7 @@ v = geometry.bound_box
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_box")
 ```
 
@@ -154,6 +156,7 @@ v = geometry.box
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box")
 ```
 
@@ -188,6 +191,7 @@ v = geometry.box_min
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_min")
 ```
 
@@ -222,6 +226,7 @@ v = geometry.box_max
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_max")
 ```
 
@@ -256,6 +261,7 @@ v = geometry.components
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.components")
 ```
 
@@ -290,6 +296,7 @@ v = geometry.mesh_component
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.mesh_component")
 ```
 
@@ -324,6 +331,7 @@ v = geometry.points_component
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.points_component")
 ```
 
@@ -358,6 +366,7 @@ v = geometry.curve_component
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.curve_component")
 ```
 
@@ -392,6 +401,7 @@ v = geometry.volume_component
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.volume_component")
 ```
 
@@ -426,6 +436,7 @@ v = geometry.instances_component
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.instances_component")
 ```
 
@@ -457,6 +468,7 @@ v = geometry.capture_ID(self, domain='POINT')
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.ID()
 ```
 
@@ -488,6 +500,7 @@ v = geometry.capture_index(self, domain='POINT')
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Index()
 ```
 
@@ -519,6 +532,7 @@ v = geometry.capture_normal(self, domain='FACE')
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Normal()
 ```
 
@@ -550,6 +564,7 @@ v = geometry.capture_position(self, domain='POINT')
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Position()
 ```
 
@@ -581,6 +596,7 @@ v = geometry.capture_radius(self, domain='POINT')
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Radius()
 ```
 
@@ -611,6 +627,7 @@ v = geometry.ID(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.ID()
 ```
 
@@ -641,6 +658,7 @@ v = geometry.index(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Index()
 ```
 
@@ -671,6 +689,7 @@ v = geometry.normal(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Normal()
 ```
 
@@ -701,6 +720,7 @@ v = geometry.position(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Position()
 ```
 
@@ -731,6 +751,7 @@ v = geometry.radius(self)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Radius()
 ```
 
@@ -767,6 +788,7 @@ v = geometry.switch(switch1, true)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY')
 ```
 
@@ -803,6 +825,7 @@ v = geometry.capture_attribute(value, data_type, domain)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain)
 ```
 
@@ -845,6 +868,7 @@ v = geometry.transfer_boolean(attribute, source_position, index, domain, mapping
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
 ```
 
@@ -887,6 +911,7 @@ v = geometry.transfer_integer(attribute, source_position, index, domain, mapping
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
 ```
 
@@ -929,6 +954,7 @@ v = geometry.transfer_float(attribute, source_position, index, domain, mapping)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
 ```
 
@@ -971,6 +997,7 @@ v = geometry.transfer_vector(attribute, source_position, index, domain, mapping)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
 ```
 
@@ -1013,6 +1040,7 @@ v = geometry.transfer_color(attribute, source_position, index, domain, mapping)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
 ```
 
@@ -1049,6 +1077,7 @@ v = geometry.delete_geometry(selection, domain, mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode)
 ```
 
@@ -1081,6 +1110,7 @@ v = geometry.merge_by_distance(selection, distance)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.MergeByDistance(geometry=self, selection=selection, distance=distance)
 ```
 
@@ -1115,6 +1145,7 @@ v = geometry.realize_instances(legacy_behavior)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior)
 ```
 
@@ -1147,6 +1178,7 @@ v = geometry.replace_material(old, new)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.ReplaceMaterial(geometry=self, old=old, new=new)
 ```
 
@@ -1186,6 +1218,7 @@ v = geometry.scale_elements(selection, scale, center, axis, domain, scale_mode)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode)
 ```
 
@@ -1218,6 +1251,7 @@ v = geometry.set_ID(selection, ID)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SetID(geometry=self, selection=selection, ID=ID)
 ```
 
@@ -1250,6 +1284,7 @@ v = geometry.set_material(selection, material)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SetMaterial(geometry=self, selection=selection, material=material)
 ```
 
@@ -1282,6 +1317,7 @@ v = geometry.set_material_index(selection, material_index)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index)
 ```
 
@@ -1315,6 +1351,7 @@ v = geometry.set_position(selection, position, offset)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset)
 ```
 
@@ -1347,6 +1384,7 @@ v = geometry.set_shade_smooth(selection, shade_smooth)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth)
 ```
 
@@ -1380,6 +1418,7 @@ v = geometry.transform(translation, rotation, scale)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale)
 ```
 
@@ -1414,6 +1453,7 @@ v = geometry.attribute_domain_size(component)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.DomainSize(geometry=self, component=component)
 ```
 
@@ -1445,6 +1485,7 @@ v = geometry.attribute_remove(attribute_1, attribute_2, attribute_3)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.AttributeRemove(*attribute, geometry=self)
 ```
 
@@ -1480,6 +1521,7 @@ v = geometry.components(selection, domain)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain)
 ```
 
@@ -1510,6 +1552,7 @@ v = geometry.convex_hull()
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.ConvexHull(geometry=self)
 ```
 
@@ -1540,6 +1583,7 @@ v = geometry.to_instance(geometry_1, geometry_2, geometry_3)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.GeometryToInstance(self, *geometry)
 ```
 
@@ -1570,6 +1614,7 @@ v = geometry.join(geometry_1, geometry_2, geometry_3)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.JoinGeometry(self, *geometry)
 ```
 
@@ -1605,6 +1650,7 @@ v = geometry.proximity(source_position, target_element)
 ### Node creation
 
 ```python
+from geondes import nodes
 nodes.GeometryProximity(target=self, source_position=source_position, target_element=target_element)
 ```
 

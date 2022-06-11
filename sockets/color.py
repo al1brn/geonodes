@@ -22,47 +22,47 @@ class Color(dsock.Color):
 
         Constructors
         ------------
-            - Combine : CombineRgb, image (Color)
+            - Combine : image (Color)
     
 
         Properties
         ----------
-            - b : SeparateRgb, b (Float) = separate.b
-            - g : SeparateRgb, g (Float) = separate.g
-            - r : SeparateRgb, r (Float) = separate.r
-            - separate : SeparateRgb, Sockets      [r (Float), g (Float), b (Float)]
+            - b : b (Float) = separate.b
+            - g : g (Float) = separate.g
+            - r : r (Float) = separate.r
+            - separate : Sockets      [r (Float), g (Float), b (Float)]
     
 
         Methods
         -------
-            - add : Mix, color (Color)
-            - brighter : Compare, result (Boolean)
-            - burn : Mix, color (Color)
-            - capture_attribute : CaptureAttribute, Sockets      [geometry (Geometry), attribute (Color)]
-            - curves : RgbCurves, color (Color)
-            - darken : Mix, color (Color)
-            - darker : Compare, result (Boolean)
-            - difference : Mix, color (Color)
-            - divide : Mix, color (Color)
-            - dodge : Mix, color (Color)
-            - equal : Compare, result (Boolean)
-            - field_at_index : FieldAtIndex, value (Color)
-            - hue : Mix, color (Color)
-            - lighten : Mix, color (Color)
-            - linear_light : Mix, color (Color)
-            - mix : Mix, color (Color)
-            - mix : Mix, color (Color)
-            - mix_color : Mix, color (Color)
-            - multiply : Mix, color (Color)
-            - not_equal : Compare, result (Boolean)
-            - overlay : Mix, color (Color)
-            - raycast : Raycast, Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Color)]
-            - saturation : Mix, color (Color)
-            - screen : Mix, color (Color)
-            - soft_light : Mix, color (Color)
-            - subtract : Mix, color (Color)
-            - transfer_attribute : TransferAttribute, attribute (Color)
-            - value : Mix, color (Color)
+            - add : color (Color)
+            - brighter : result (Boolean)
+            - burn : color (Color)
+            - capture_attribute : Sockets      [geometry (Geometry), attribute (Color)]
+            - curves : color (Color)
+            - darken : color (Color)
+            - darker : result (Boolean)
+            - difference : color (Color)
+            - divide : color (Color)
+            - dodge : color (Color)
+            - equal : result (Boolean)
+            - field_at_index : value (Color)
+            - hue : color (Color)
+            - lighten : color (Color)
+            - linear_light : color (Color)
+            - mix : color (Color)
+            - mix : color (Color)
+            - mix_color : color (Color)
+            - multiply : color (Color)
+            - not_equal : result (Boolean)
+            - overlay : color (Color)
+            - raycast : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Color)]
+            - saturation : color (Color)
+            - screen : color (Color)
+            - soft_light : color (Color)
+            - subtract : color (Color)
+            - transfer_attribute : attribute (Color)
+            - value : color (Color)
     """
 
 
@@ -102,6 +102,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.CombineRgb(r=r, g=g, b=b)
             ```
     
@@ -148,6 +149,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.separate")
             ```
     
@@ -192,6 +194,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.r")
             ```
     
@@ -238,6 +241,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.g")
             ```
     
@@ -284,6 +288,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.b")
             ```
     
@@ -342,6 +347,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
             ```
     
@@ -389,6 +395,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_COLOR', domain=domain)
             ```
     
@@ -436,6 +443,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_COLOR', domain=domain)
             ```
     
@@ -486,6 +494,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_COLOR', mapping=mapping)
             ```
     
@@ -531,6 +540,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='EQUAL')
             ```
     
@@ -576,6 +586,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='NOT_EQUAL')
             ```
     
@@ -620,6 +631,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER')
             ```
     
@@ -664,6 +676,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='DARKER')
             ```
     
@@ -712,6 +725,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha)
             ```
     
@@ -760,6 +774,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha)
             ```
     
@@ -808,6 +823,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha)
             ```
     
@@ -856,6 +872,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha)
             ```
     
@@ -904,6 +921,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha)
             ```
     
@@ -952,6 +970,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha)
             ```
     
@@ -1000,6 +1019,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha)
             ```
     
@@ -1048,6 +1068,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha)
             ```
     
@@ -1096,6 +1117,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha)
             ```
     
@@ -1144,6 +1166,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha)
             ```
     
@@ -1192,6 +1215,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha)
             ```
     
@@ -1240,6 +1264,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha)
             ```
     
@@ -1288,6 +1313,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha)
             ```
     
@@ -1336,6 +1362,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha)
             ```
     
@@ -1384,6 +1411,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha)
             ```
     
@@ -1432,6 +1460,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha)
             ```
     
@@ -1480,6 +1509,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha)
             ```
     
@@ -1528,6 +1558,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha)
             ```
     
@@ -1565,6 +1596,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.RgbCurves(color=self, fac=fac)
             ```
     
@@ -1609,6 +1641,7 @@ class Color(dsock.Color):
         Node creation
         -------------
             ```python
+            from geondes import nodes
             nodes.Mix(color1=self, color2=color2, fac=fac, blend_type=blend_type, use_alpha=use_alpha)
             ```
     
