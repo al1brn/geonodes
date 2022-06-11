@@ -22,102 +22,107 @@ from geonodes.sockets.functions import vector_multiply_add, vector_sin, vector_s
 from geonodes.sockets.functions import vector_wrap, wrap
 """
 
-""" Class functions
+""" 
+
+Data socket functions
+---------------------
+    > Inherits from 
+      
+    <sub>go to index</sub>
+    
+    
 
 
-Index 
-
-
-Functions
-=========
-- **abs**                 : Math value (Float) 
-- **add**                 : Math value (Float) 
-- **arccos**              : Math value (Float) 
-- **arcsin**              : Math value (Float) 
-- **arctan**              : Math value (Float) 
-- **arctan2**             : Math value (Float) 
-- **ceil**                : Math value (Float) 
-- **color_add**           : Mix color (Color) 
-- **color_burn**          : Mix color (Color) 
-- **color_darken**        : Mix color (Color) 
-- **color_difference**    : Mix color (Color) 
-- **color_divide**        : Mix color (Color) 
-- **color_dodge**         : Mix color (Color) 
-- **color_hue**           : Mix color (Color) 
-- **color_lighten**       : Mix color (Color) 
-- **color_linear_light**  : Mix color (Color) 
-- **color_mix**           : Mix color (Color) 
-- **color_mix_color**     : Mix color (Color) 
-- **color_multiply**      : Mix color (Color) 
-- **color_overlay**       : Mix color (Color) 
-- **color_saturation**    : Mix color (Color) 
-- **color_screen**        : Mix color (Color) 
-- **color_soft_light**    : Mix color (Color) 
-- **color_subtract**      : Mix color (Color) 
-- **color_value**         : Mix color (Color) 
-- **compare**             : Compare result (Boolean) 
-- **compare**             : Math value (Float) 
-- **cos**                 : Math value (Float) 
-- **cosh**                : Math value (Float) 
-- **cross**               : VectorMath vector (Vector) 
-- **degrees**             : Math value (Float) 
-- **distance**            : VectorMath value (Float) 
-- **divide**              : Math value (Float) 
-- **dot**                 : VectorMath value (Float) 
-- **exp**                 : Math value (Float) 
-- **faceforward**         : VectorMath vector (Vector) 
-- **floor**               : Math value (Float) 
-- **fract**               : Math value (Float) 
-- **fraction**            : VectorMath vector (Vector) 
-- **greater_than**        : Math value (Float) 
-- **inverse_sqrt**        : Math value (Float) 
-- **join_strings**        : JoinStrings string (String) 
-- **length**              : VectorMath value (Float) 
-- **less_than**           : Math value (Float) 
-- **log**                 : Math value (Float) 
-- **max**                 : Math value (Float) 
-- **min**                 : Math value (Float) 
-- **modulo**              : Math value (Float) 
-- **multiply**            : Math value (Float) 
-- **multiply_add**        : Math value (Float) 
-- **normalize**           : VectorMath vector (Vector) 
-- **pingpong**            : Math value (Float) 
-- **pow**                 : Math value (Float) 
-- **project**             : VectorMath vector (Vector) 
-- **radians**             : Math value (Float) 
-- **reflect**             : VectorMath vector (Vector) 
-- **refract**             : VectorMath vector (Vector) 
-- **round**               : Math value (Float) 
-- **scale**               : VectorMath vector (Vector) 
-- **scene**               : SceneTime Sockets      [seconds (Float), frame (Float)] 
-- **sign**                : Math value (Float) 
-- **sin**                 : Math value (Float) 
-- **sinh**                : Math value (Float) 
-- **smooth_max**          : Math value (Float) 
-- **smooth_min**          : Math value (Float) 
-- **snap**                : Math value (Float) 
-- **sqrt**                : Math value (Float) 
-- **subtract**            : Math value (Float) 
-- **tan**                 : Math value (Float) 
-- **tanh**                : Math value (Float) 
-- **trunc**               : Math value (Float) 
-- **vector_absolute**     : VectorMath vector (Vector) 
-- **vector_add**          : VectorMath vector (Vector) 
-- **vector_ceil**         : VectorMath vector (Vector) 
-- **vector_cos**          : VectorMath vector (Vector) 
-- **vector_divide**       : VectorMath vector (Vector) 
-- **vector_floor**        : VectorMath vector (Vector) 
-- **vector_max**          : VectorMath vector (Vector) 
-- **vector_min**          : VectorMath vector (Vector) 
-- **vector_modulo**       : VectorMath vector (Vector) 
-- **vector_multiply**     : VectorMath vector (Vector) 
-- **vector_multiply_add** : VectorMath vector (Vector) 
-- **vector_sin**          : VectorMath vector (Vector) 
-- **vector_snap**         : VectorMath vector (Vector) 
-- **vector_subtract**     : VectorMath vector (Vector) 
-- **vector_tan**          : VectorMath vector (Vector) 
-- **vector_wrap**         : VectorMath vector (Vector) 
-- **wrap**                : Math value (Float) 
+    Functions
+    ---------
+        - abs : Math, value (Float)
+        - add : Math, value (Float)
+        - arccos : Math, value (Float)
+        - arcsin : Math, value (Float)
+        - arctan : Math, value (Float)
+        - arctan2 : Math, value (Float)
+        - ceil : Math, value (Float)
+        - color_add : Mix, color (Color)
+        - color_burn : Mix, color (Color)
+        - color_darken : Mix, color (Color)
+        - color_difference : Mix, color (Color)
+        - color_divide : Mix, color (Color)
+        - color_dodge : Mix, color (Color)
+        - color_hue : Mix, color (Color)
+        - color_lighten : Mix, color (Color)
+        - color_linear_light : Mix, color (Color)
+        - color_mix : Mix, color (Color)
+        - color_mix_color : Mix, color (Color)
+        - color_multiply : Mix, color (Color)
+        - color_overlay : Mix, color (Color)
+        - color_saturation : Mix, color (Color)
+        - color_screen : Mix, color (Color)
+        - color_soft_light : Mix, color (Color)
+        - color_subtract : Mix, color (Color)
+        - color_value : Mix, color (Color)
+        - compare : Compare, result (Boolean)
+        - compare : Math, value (Float)
+        - cos : Math, value (Float)
+        - cosh : Math, value (Float)
+        - cross : VectorMath, vector (Vector)
+        - degrees : Math, value (Float)
+        - distance : VectorMath, value (Float)
+        - divide : Math, value (Float)
+        - dot : VectorMath, value (Float)
+        - exp : Math, value (Float)
+        - faceforward : VectorMath, vector (Vector)
+        - floor : Math, value (Float)
+        - fract : Math, value (Float)
+        - fraction : VectorMath, vector (Vector)
+        - greater_than : Math, value (Float)
+        - inverse_sqrt : Math, value (Float)
+        - join_strings : JoinStrings, string (String)
+        - length : VectorMath, value (Float)
+        - less_than : Math, value (Float)
+        - log : Math, value (Float)
+        - max : Math, value (Float)
+        - min : Math, value (Float)
+        - modulo : Math, value (Float)
+        - multiply : Math, value (Float)
+        - multiply_add : Math, value (Float)
+        - normalize : VectorMath, vector (Vector)
+        - pingpong : Math, value (Float)
+        - pow : Math, value (Float)
+        - project : VectorMath, vector (Vector)
+        - radians : Math, value (Float)
+        - reflect : VectorMath, vector (Vector)
+        - refract : VectorMath, vector (Vector)
+        - round : Math, value (Float)
+        - scale : VectorMath, vector (Vector)
+        - scene : SceneTime, Sockets      [seconds (Float), frame (Float)]
+        - sign : Math, value (Float)
+        - sin : Math, value (Float)
+        - sinh : Math, value (Float)
+        - smooth_max : Math, value (Float)
+        - smooth_min : Math, value (Float)
+        - snap : Math, value (Float)
+        - sqrt : Math, value (Float)
+        - subtract : Math, value (Float)
+        - tan : Math, value (Float)
+        - tanh : Math, value (Float)
+        - trunc : Math, value (Float)
+        - vector_absolute : VectorMath, vector (Vector)
+        - vector_add : VectorMath, vector (Vector)
+        - vector_ceil : VectorMath, vector (Vector)
+        - vector_cos : VectorMath, vector (Vector)
+        - vector_divide : VectorMath, vector (Vector)
+        - vector_floor : VectorMath, vector (Vector)
+        - vector_max : VectorMath, vector (Vector)
+        - vector_min : VectorMath, vector (Vector)
+        - vector_modulo : VectorMath, vector (Vector)
+        - vector_multiply : VectorMath, vector (Vector)
+        - vector_multiply_add : VectorMath, vector (Vector)
+        - vector_sin : VectorMath, vector (Vector)
+        - vector_snap : VectorMath, vector (Vector)
+        - vector_subtract : VectorMath, vector (Vector)
+        - vector_tan : VectorMath, vector (Vector)
+        - vector_wrap : VectorMath, vector (Vector)
+        - wrap : Math, value (Float)
 """
 
 
@@ -125,3595 +130,3683 @@ Functions
 # Functions
 
 def compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN'):
-    """ compare
+    """ > Node: Compare
+    <sub>go to: top index
+    blender ref FunctionNodeCompare
+    node ref Compare </sub>
     
+    ```python
+    v = functions.compare(a, b, epsilon, data_type, mode, operation)
+    ```
 
-    | Node: Compare 
-    Top Index 
-    
-
-        v = functions.compare(a, b, epsilon, data_type, mode, operation) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - a       : Float 
-        - b       : Float 
-        - epsilon : Float 
-    
 
-        Parameters arguments
-        --------------------
-        - data_type : 'FLOAT' in [FLOAT, INT, VECTOR, STRING, RGBA] 
-        - mode      : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
-        - operation : 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL] 
-    
+        Sockets
+        -------
+            - a : Float
+            - b : Float
+            - epsilon : Float
+
+
+        Parameters
+        ----------
+            - data_type : 'FLOAT' in [FLOAT, INT, VECTOR, STRING, RGBA]
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+            - operation : 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Compare(a=a, b=b, epsilon=epsilon, data_type=data_type, mode=mode, operation=operation)
+        ```
 
-        node = nodes.Compare(a=a, b=b, epsilon=epsilon, data_type=data_type, mode=mode, operation=operation) 
-    
 
     Returns
-    =======
-            Boolean 
+    -------
+        Boolean
+        
     """
 
     return nodes.Compare(a=a, b=b, epsilon=epsilon, data_type=data_type, mode=mode, operation=operation).result
 
 def join_strings(*strings, delimiter=None):
-    """ join_strings
+    """ > Node: JoinStrings
+    <sub>go to: top index
+    blender ref GeometryNodeStringJoin
+    node ref Join Strings </sub>
     
+    ```python
+    v = functions.join_strings(strings_1, strings_2, strings_3, delimiter)
+    ```
 
-    | Node: JoinStrings 
-    Top Index 
-    
-
-        v = functions.join_strings(strings_1, strings_2, strings_3, delimiter) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - strings   : *String 
-        - delimiter : String 
-    
+
+        Sockets
+        -------
+            - strings : *String
+            - delimiter : String
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.JoinStrings(*strings, delimiter=delimiter)
+        ```
 
-        node = nodes.JoinStrings(*strings, delimiter=delimiter) 
-    
 
     Returns
-    =======
-            String 
+    -------
+        String
+        
     """
 
     return nodes.JoinStrings(*strings, delimiter=delimiter).string
 
 def scene():
-    """ scene
+    """ > Node: SceneTime
+    <sub>go to: top index
+    blender ref GeometryNodeInputSceneTime
+    node ref Scene Time </sub>
     
+    ```python
+    v = functions.scene()
+    ```
 
-    | Node: SceneTime 
-    Top Index 
-    
-
-        v = functions.scene() 
-    
 
     Arguments
-    =========
-    
+    ---------
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.SceneTime()
+        ```
 
-        node = nodes.SceneTime() 
-    
 
     Returns
-    =======
-            Sockets [seconds (Float), frame (Float)] 
+    -------
+        Sockets [seconds (Float), frame (Float)]
+        
     """
 
     return nodes.SceneTime()
 
 def add(value0=None, value1=None):
-    """ add
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.add(value0, value1)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.add(value0, value1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'ADD' 
-    
+            - operation : 'ADD'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, operation='ADD')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, operation='ADD') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='ADD').value
 
 def subtract(value0=None, value1=None):
-    """ subtract
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.subtract(value0, value1)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.subtract(value0, value1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'SUBTRACT' 
-    
+            - operation : 'SUBTRACT'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, operation='SUBTRACT')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, operation='SUBTRACT') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='SUBTRACT').value
 
 def multiply(value0=None, value1=None):
-    """ multiply
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.multiply(value0, value1)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.multiply(value0, value1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'MULTIPLY' 
-    
+            - operation : 'MULTIPLY'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, operation='MULTIPLY')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, operation='MULTIPLY') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='MULTIPLY').value
 
 def divide(value0=None, value1=None):
-    """ divide
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.divide(value0, value1)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.divide(value0, value1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'DIVIDE' 
-    
+            - operation : 'DIVIDE'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, operation='DIVIDE')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, operation='DIVIDE') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='DIVIDE').value
 
 def multiply_add(value0=None, value1=None, value2=None):
-    """ multiply_add
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.multiply_add(value0, value1, value2)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.multiply_add(value0, value1, value2) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-        - value2 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+            - value2 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'MULTIPLY_ADD' 
-    
+            - operation : 'MULTIPLY_ADD'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, value2=value2, operation='MULTIPLY_ADD')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, value2=value2, operation='MULTIPLY_ADD') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, value2=value2, operation='MULTIPLY_ADD').value
 
 def pow(value0=None, value1=None):
-    """ pow
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.pow(value0, value1)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.pow(value0, value1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'POWER' 
-    
+            - operation : 'POWER'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, operation='POWER')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, operation='POWER') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='POWER').value
 
 def log(value0=None, value1=None):
-    """ log
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.log(value0, value1)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.log(value0, value1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'LOGARITHM' 
-    
+            - operation : 'LOGARITHM'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, operation='LOGARITHM')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, operation='LOGARITHM') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='LOGARITHM').value
 
 def sqrt(value0=None):
-    """ sqrt
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.sqrt(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.sqrt(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'SQRT' 
-    
+            - operation : 'SQRT'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='SQRT')
+        ```
 
-        node = nodes.Math(value0=value0, operation='SQRT') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='SQRT').value
 
 def inverse_sqrt(value0=None):
-    """ inverse_sqrt
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.inverse_sqrt(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.inverse_sqrt(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'INVERSE_SQRT' 
-    
+            - operation : 'INVERSE_SQRT'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='INVERSE_SQRT')
+        ```
 
-        node = nodes.Math(value0=value0, operation='INVERSE_SQRT') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='INVERSE_SQRT').value
 
 def abs(value0=None):
-    """ abs
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.abs(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.abs(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'ABSOLUTE' 
-    
+            - operation : 'ABSOLUTE'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='ABSOLUTE')
+        ```
 
-        node = nodes.Math(value0=value0, operation='ABSOLUTE') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='ABSOLUTE').value
 
 def exp(value0=None):
-    """ exp
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.exp(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.exp(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'EXPONENT' 
-    
+            - operation : 'EXPONENT'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='EXPONENT')
+        ```
 
-        node = nodes.Math(value0=value0, operation='EXPONENT') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='EXPONENT').value
 
 def min(value0=None, value1=None):
-    """ min
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.min(value0, value1)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.min(value0, value1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'MINIMUM' 
-    
+            - operation : 'MINIMUM'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, operation='MINIMUM')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, operation='MINIMUM') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='MINIMUM').value
 
 def max(value0=None, value1=None):
-    """ max
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.max(value0, value1)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.max(value0, value1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'MAXIMUM' 
-    
+            - operation : 'MAXIMUM'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, operation='MAXIMUM')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, operation='MAXIMUM') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='MAXIMUM').value
 
 def less_than(value0=None, value1=None):
-    """ less_than
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.less_than(value0, value1)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.less_than(value0, value1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'LESS_THAN' 
-    
+            - operation : 'LESS_THAN'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, operation='LESS_THAN')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, operation='LESS_THAN') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='LESS_THAN').value
 
 def greater_than(value0=None, value1=None):
-    """ greater_than
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.greater_than(value0, value1)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.greater_than(value0, value1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'GREATER_THAN' 
-    
+            - operation : 'GREATER_THAN'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, operation='GREATER_THAN')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, operation='GREATER_THAN') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='GREATER_THAN').value
 
 def sign(value0=None):
-    """ sign
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.sign(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.sign(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'SIGN' 
-    
+            - operation : 'SIGN'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='SIGN')
+        ```
 
-        node = nodes.Math(value0=value0, operation='SIGN') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='SIGN').value
 
 def compare(value0=None, value1=None, value2=None):
-    """ compare
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.compare(value0, value1, value2)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.compare(value0, value1, value2) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-        - value2 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+            - value2 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'COMPARE' 
-    
+            - operation : 'COMPARE'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, value2=value2, operation='COMPARE')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, value2=value2, operation='COMPARE') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, value2=value2, operation='COMPARE').value
 
 def smooth_min(value0=None, value1=None, value2=None):
-    """ smooth_min
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.smooth_min(value0, value1, value2)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.smooth_min(value0, value1, value2) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-        - value2 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+            - value2 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'SMOOTH_MIN' 
-    
+            - operation : 'SMOOTH_MIN'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MIN')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MIN') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MIN').value
 
 def smooth_max(value0=None, value1=None, value2=None):
-    """ smooth_max
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.smooth_max(value0, value1, value2)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.smooth_max(value0, value1, value2) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-        - value2 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+            - value2 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'SMOOTH_MAX' 
-    
+            - operation : 'SMOOTH_MAX'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MAX')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MAX') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MAX').value
 
 def round(value0=None):
-    """ round
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.round(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.round(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'ROUND' 
-    
+            - operation : 'ROUND'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='ROUND')
+        ```
 
-        node = nodes.Math(value0=value0, operation='ROUND') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='ROUND').value
 
 def floor(value0=None):
-    """ floor
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.floor(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.floor(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'FLOOR' 
-    
+            - operation : 'FLOOR'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='FLOOR')
+        ```
 
-        node = nodes.Math(value0=value0, operation='FLOOR') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='FLOOR').value
 
 def ceil(value0=None):
-    """ ceil
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.ceil(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.ceil(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'CEIL' 
-    
+            - operation : 'CEIL'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='CEIL')
+        ```
 
-        node = nodes.Math(value0=value0, operation='CEIL') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='CEIL').value
 
 def trunc(value0=None):
-    """ trunc
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.trunc(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.trunc(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'TRUNC' 
-    
+            - operation : 'TRUNC'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='TRUNC')
+        ```
 
-        node = nodes.Math(value0=value0, operation='TRUNC') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='TRUNC').value
 
 def fract(value0=None):
-    """ fract
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.fract(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.fract(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'FRACT' 
-    
+            - operation : 'FRACT'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='FRACT')
+        ```
 
-        node = nodes.Math(value0=value0, operation='FRACT') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='FRACT').value
 
 def modulo(value0=None, value1=None):
-    """ modulo
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.modulo(value0, value1)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.modulo(value0, value1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'MODULO' 
-    
+            - operation : 'MODULO'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, operation='MODULO')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, operation='MODULO') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='MODULO').value
 
 def wrap(value0=None, value1=None, value2=None):
-    """ wrap
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.wrap(value0, value1, value2)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.wrap(value0, value1, value2) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-        - value2 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+            - value2 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'WRAP' 
-    
+            - operation : 'WRAP'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, value2=value2, operation='WRAP')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, value2=value2, operation='WRAP') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, value2=value2, operation='WRAP').value
 
 def snap(value0=None, value1=None):
-    """ snap
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.snap(value0, value1)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.snap(value0, value1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'SNAP' 
-    
+            - operation : 'SNAP'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, operation='SNAP')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, operation='SNAP') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='SNAP').value
 
 def pingpong(value0=None, value1=None):
-    """ pingpong
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.pingpong(value0, value1)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.pingpong(value0, value1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'PINGPONG' 
-    
+            - operation : 'PINGPONG'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, operation='PINGPONG')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, operation='PINGPONG') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='PINGPONG').value
 
 def sin(value0=None):
-    """ sin
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.sin(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.sin(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'SINE' 
-    
+            - operation : 'SINE'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='SINE')
+        ```
 
-        node = nodes.Math(value0=value0, operation='SINE') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='SINE').value
 
 def cos(value0=None):
-    """ cos
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.cos(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.cos(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'COSINE' 
-    
+            - operation : 'COSINE'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='COSINE')
+        ```
 
-        node = nodes.Math(value0=value0, operation='COSINE') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='COSINE').value
 
 def tan(value0=None):
-    """ tan
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.tan(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.tan(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'TANGENT' 
-    
+            - operation : 'TANGENT'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='TANGENT')
+        ```
 
-        node = nodes.Math(value0=value0, operation='TANGENT') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='TANGENT').value
 
 def arcsin(value0=None):
-    """ arcsin
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.arcsin(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.arcsin(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'ARCSINE' 
-    
+            - operation : 'ARCSINE'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='ARCSINE')
+        ```
 
-        node = nodes.Math(value0=value0, operation='ARCSINE') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='ARCSINE').value
 
 def arccos(value0=None):
-    """ arccos
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.arccos(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.arccos(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'ARCCOSINE' 
-    
+            - operation : 'ARCCOSINE'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='ARCCOSINE')
+        ```
 
-        node = nodes.Math(value0=value0, operation='ARCCOSINE') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='ARCCOSINE').value
 
 def arctan(value0=None):
-    """ arctan
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.arctan(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.arctan(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'ARCTANGENT' 
-    
+            - operation : 'ARCTANGENT'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='ARCTANGENT')
+        ```
 
-        node = nodes.Math(value0=value0, operation='ARCTANGENT') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='ARCTANGENT').value
 
 def arctan2(value0=None, value1=None):
-    """ arctan2
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.arctan2(value0, value1)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.arctan2(value0, value1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-        - value1 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+            - value1 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'ARCTAN2' 
-    
+            - operation : 'ARCTAN2'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, value1=value1, operation='ARCTAN2')
+        ```
 
-        node = nodes.Math(value0=value0, value1=value1, operation='ARCTAN2') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, value1=value1, operation='ARCTAN2').value
 
 def sinh(value0=None):
-    """ sinh
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.sinh(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.sinh(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'SINH' 
-    
+            - operation : 'SINH'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='SINH')
+        ```
 
-        node = nodes.Math(value0=value0, operation='SINH') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='SINH').value
 
 def cosh(value0=None):
-    """ cosh
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.cosh(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.cosh(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'COSH' 
-    
+            - operation : 'COSH'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='COSH')
+        ```
 
-        node = nodes.Math(value0=value0, operation='COSH') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='COSH').value
 
 def tanh(value0=None):
-    """ tanh
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.tanh(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.tanh(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'TANH' 
-    
+            - operation : 'TANH'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='TANH')
+        ```
 
-        node = nodes.Math(value0=value0, operation='TANH') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='TANH').value
 
 def radians(value0=None):
-    """ radians
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.radians(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.radians(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'RADIANS' 
-    
+            - operation : 'RADIANS'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='RADIANS')
+        ```
 
-        node = nodes.Math(value0=value0, operation='RADIANS') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='RADIANS').value
 
 def degrees(value0=None):
-    """ degrees
+    """ > Node: Math
+    <sub>go to: top index
+    blender ref ShaderNodeMath
+    node ref Math </sub>
     
+    ```python
+    v = functions.degrees(value0)
+    ```
 
-    | Node: Math 
-    Top Index 
-    
-
-        v = functions.degrees(value0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - value0 : Float 
-    
+
+        Sockets
+        -------
+            - value0 : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'DEGREES' 
-    
+            - operation : 'DEGREES'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Math(value0=value0, operation='DEGREES')
+        ```
 
-        node = nodes.Math(value0=value0, operation='DEGREES') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.Math(value0=value0, operation='DEGREES').value
 
 def vector_add(vector0=None, vector1=None):
-    """ vector_add
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.vector_add(vector0, vector1)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.vector_add(vector0, vector1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - vector1 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - vector1 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'ADD' 
-    
+            - operation : 'ADD'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='ADD')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='ADD') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='ADD').vector
 
 def vector_subtract(vector0=None, vector1=None):
-    """ vector_subtract
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.vector_subtract(vector0, vector1)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.vector_subtract(vector0, vector1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - vector1 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - vector1 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'SUBTRACT' 
-    
+            - operation : 'SUBTRACT'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SUBTRACT')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SUBTRACT') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SUBTRACT').vector
 
 def vector_multiply(vector0=None, vector1=None):
-    """ vector_multiply
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.vector_multiply(vector0, vector1)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.vector_multiply(vector0, vector1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - vector1 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - vector1 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'MULTIPLY' 
-    
+            - operation : 'MULTIPLY'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MULTIPLY')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MULTIPLY') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MULTIPLY').vector
 
 def vector_divide(vector0=None, vector1=None):
-    """ vector_divide
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.vector_divide(vector0, vector1)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.vector_divide(vector0, vector1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - vector1 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - vector1 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'DIVIDE' 
-    
+            - operation : 'DIVIDE'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DIVIDE')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DIVIDE') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DIVIDE').vector
 
 def vector_multiply_add(vector0=None, vector1=None, vector2=None):
-    """ vector_multiply_add
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.vector_multiply_add(vector0, vector1, vector2)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.vector_multiply_add(vector0, vector1, vector2) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - vector1 : Vector 
-        - vector2 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - vector1 : Vector
+            - vector2 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'MULTIPLY_ADD' 
-    
+            - operation : 'MULTIPLY_ADD'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD').vector
 
 def cross(vector0=None, vector1=None):
-    """ cross
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.cross(vector0, vector1)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.cross(vector0, vector1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - vector1 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - vector1 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'CROSS_PRODUCT' 
-    
+            - operation : 'CROSS_PRODUCT'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='CROSS_PRODUCT')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='CROSS_PRODUCT') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='CROSS_PRODUCT').vector
 
 def project(vector0=None, vector1=None):
-    """ project
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.project(vector0, vector1)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.project(vector0, vector1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - vector1 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - vector1 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'PROJECT' 
-    
+            - operation : 'PROJECT'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='PROJECT')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='PROJECT') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='PROJECT').vector
 
 def reflect(vector0=None, vector1=None):
-    """ reflect
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.reflect(vector0, vector1)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.reflect(vector0, vector1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - vector1 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - vector1 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'REFLECT' 
-    
+            - operation : 'REFLECT'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='REFLECT')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='REFLECT') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='REFLECT').vector
 
 def refract(vector0=None, vector1=None, scale=None):
-    """ refract
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.refract(vector0, vector1, scale)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.refract(vector0, vector1, scale) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - vector1 : Vector 
-        - scale   : Float 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - vector1 : Vector
+            - scale : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'REFRACT' 
-    
+            - operation : 'REFRACT'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, vector1=vector1, scale=scale, operation='REFRACT')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, vector1=vector1, scale=scale, operation='REFRACT') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, scale=scale, operation='REFRACT').vector
 
 def faceforward(vector0=None, vector1=None, vector2=None):
-    """ faceforward
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.faceforward(vector0, vector1, vector2)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.faceforward(vector0, vector1, vector2) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - vector1 : Vector 
-        - vector2 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - vector1 : Vector
+            - vector2 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'FACEFORWARD' 
-    
+            - operation : 'FACEFORWARD'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='FACEFORWARD')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='FACEFORWARD') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='FACEFORWARD').vector
 
 def dot(vector0=None, vector1=None):
-    """ dot
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.dot(vector0, vector1)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.dot(vector0, vector1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - vector1 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - vector1 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'DOT_PRODUCT' 
-    
+            - operation : 'DOT_PRODUCT'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DOT_PRODUCT')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DOT_PRODUCT') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DOT_PRODUCT').value
 
 def distance(vector0=None, vector1=None):
-    """ distance
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.distance(vector0, vector1)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.distance(vector0, vector1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - vector1 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - vector1 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'DISTANCE' 
-    
+            - operation : 'DISTANCE'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DISTANCE')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DISTANCE') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DISTANCE').value
 
 def length(vector0=None):
-    """ length
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.length(vector0)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.length(vector0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'LENGTH' 
-    
+            - operation : 'LENGTH'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, operation='LENGTH')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, operation='LENGTH') 
-    
 
     Returns
-    =======
-            Float 
+    -------
+        Float
+        
     """
 
     return nodes.VectorMath(vector0=vector0, operation='LENGTH').value
 
 def scale(vector0=None, scale=None):
-    """ scale
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.scale(vector0, scale)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.scale(vector0, scale) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - scale   : Float 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - scale : Float
+
 
         Fixed parameters
         ----------------
-        - operation : 'SCALE' 
-    
+            - operation : 'SCALE'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, scale=scale, operation='SCALE')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, scale=scale, operation='SCALE') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, scale=scale, operation='SCALE').vector
 
 def normalize(vector0=None):
-    """ normalize
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.normalize(vector0)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.normalize(vector0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'NORMALIZE' 
-    
+            - operation : 'NORMALIZE'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, operation='NORMALIZE')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, operation='NORMALIZE') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, operation='NORMALIZE').vector
 
 def vector_absolute(vector0=None):
-    """ vector_absolute
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.vector_absolute(vector0)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.vector_absolute(vector0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'ABSOLUTE' 
-    
+            - operation : 'ABSOLUTE'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, operation='ABSOLUTE')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, operation='ABSOLUTE') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, operation='ABSOLUTE').vector
 
 def vector_min(vector0=None, vector1=None):
-    """ vector_min
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.vector_min(vector0, vector1)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.vector_min(vector0, vector1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - vector1 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - vector1 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'MINIMUM' 
-    
+            - operation : 'MINIMUM'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MINIMUM')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MINIMUM') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MINIMUM').vector
 
 def vector_max(vector0=None, vector1=None):
-    """ vector_max
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.vector_max(vector0, vector1)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.vector_max(vector0, vector1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - vector1 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - vector1 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'MAXIMUM' 
-    
+            - operation : 'MAXIMUM'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MAXIMUM')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MAXIMUM') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MAXIMUM').vector
 
 def vector_floor(vector0=None):
-    """ vector_floor
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.vector_floor(vector0)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.vector_floor(vector0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'FLOOR' 
-    
+            - operation : 'FLOOR'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, operation='FLOOR')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, operation='FLOOR') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, operation='FLOOR').vector
 
 def vector_ceil(vector0=None):
-    """ vector_ceil
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.vector_ceil(vector0)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.vector_ceil(vector0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'CEIL' 
-    
+            - operation : 'CEIL'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, operation='CEIL')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, operation='CEIL') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, operation='CEIL').vector
 
 def fraction(vector0=None):
-    """ fraction
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.fraction(vector0)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.fraction(vector0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'FRACTION' 
-    
+            - operation : 'FRACTION'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, operation='FRACTION')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, operation='FRACTION') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, operation='FRACTION').vector
 
 def vector_modulo(vector0=None, vector1=None):
-    """ vector_modulo
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.vector_modulo(vector0, vector1)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.vector_modulo(vector0, vector1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - vector1 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - vector1 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'MODULO' 
-    
+            - operation : 'MODULO'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MODULO')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MODULO') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MODULO').vector
 
 def vector_wrap(vector0=None, vector1=None, vector2=None):
-    """ vector_wrap
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.vector_wrap(vector0, vector1, vector2)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.vector_wrap(vector0, vector1, vector2) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - vector1 : Vector 
-        - vector2 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - vector1 : Vector
+            - vector2 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'WRAP' 
-    
+            - operation : 'WRAP'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='WRAP')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='WRAP') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='WRAP').vector
 
 def vector_snap(vector0=None, vector1=None):
-    """ vector_snap
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.vector_snap(vector0, vector1)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.vector_snap(vector0, vector1) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-        - vector1 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+            - vector1 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'SNAP' 
-    
+            - operation : 'SNAP'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SNAP')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SNAP') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SNAP').vector
 
 def vector_sin(vector0=None):
-    """ vector_sin
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.vector_sin(vector0)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.vector_sin(vector0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'SINE' 
-    
+            - operation : 'SINE'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, operation='SINE')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, operation='SINE') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, operation='SINE').vector
 
 def vector_cos(vector0=None):
-    """ vector_cos
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.vector_cos(vector0)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.vector_cos(vector0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'COSINE' 
-    
+            - operation : 'COSINE'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, operation='COSINE')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, operation='COSINE') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, operation='COSINE').vector
 
 def vector_tan(vector0=None):
-    """ vector_tan
+    """ > Node: VectorMath
+    <sub>go to: top index
+    blender ref ShaderNodeVectorMath
+    node ref Vector Math </sub>
     
+    ```python
+    v = functions.vector_tan(vector0)
+    ```
 
-    | Node: VectorMath 
-    Top Index 
-    
-
-        v = functions.vector_tan(vector0) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - vector0 : Vector 
-    
+
+        Sockets
+        -------
+            - vector0 : Vector
+
 
         Fixed parameters
         ----------------
-        - operation : 'TANGENT' 
-    
+            - operation : 'TANGENT'
+
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.VectorMath(vector0=vector0, operation='TANGENT')
+        ```
 
-        node = nodes.VectorMath(vector0=vector0, operation='TANGENT') 
-    
 
     Returns
-    =======
-            Vector 
+    -------
+        Vector
+        
     """
 
     return nodes.VectorMath(vector0=vector0, operation='TANGENT').vector
 
 def color_mix(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_mix
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_mix(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_mix(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'MIX' 
-    
+            - blend_type : 'MIX'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha) 
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha).color
 
 def color_darken(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_darken
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_darken(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_darken(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'DARKEN' 
-    
+            - blend_type : 'DARKEN'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha) 
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha).color
 
 def color_multiply(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_multiply
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_multiply(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_multiply(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'MULTIPLY' 
-    
+            - blend_type : 'MULTIPLY'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha) 
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha).color
 
 def color_burn(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_burn
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_burn(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_burn(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'BURN' 
-    
+            - blend_type : 'BURN'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha) 
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha).color
 
 def color_lighten(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_lighten
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_lighten(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_lighten(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'LIGHTEN' 
-    
+            - blend_type : 'LIGHTEN'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha) 
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha).color
 
 def color_screen(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_screen
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_screen(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_screen(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'SCREEN' 
-    
+            - blend_type : 'SCREEN'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha) 
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha).color
 
 def color_dodge(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_dodge
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_dodge(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_dodge(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'DODGE' 
-    
+            - blend_type : 'DODGE'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha) 
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha).color
 
 def color_add(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_add
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_add(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_add(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'ADD' 
-    
+            - blend_type : 'ADD'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha) 
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha).color
 
 def color_overlay(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_overlay
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_overlay(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_overlay(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'OVERLAY' 
-    
+            - blend_type : 'OVERLAY'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha) 
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha).color
 
 def color_soft_light(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_soft_light
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_soft_light(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_soft_light(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'SOFT_LIGHT' 
-    
+            - blend_type : 'SOFT_LIGHT'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha)
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha).color
 
 def color_linear_light(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_linear_light
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_linear_light(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_linear_light(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'LINEAR_LIGHT' 
-    
+            - blend_type : 'LINEAR_LIGHT'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha)
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha).color
 
 def color_difference(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_difference
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_difference(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_difference(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'DIFFERENCE' 
-    
+            - blend_type : 'DIFFERENCE'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha)
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha).color
 
 def color_subtract(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_subtract
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_subtract(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_subtract(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'SUBTRACT' 
-    
+            - blend_type : 'SUBTRACT'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha) 
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha).color
 
 def color_divide(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_divide
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_divide(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_divide(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'DIVIDE' 
-    
+            - blend_type : 'DIVIDE'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha) 
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha).color
 
 def color_hue(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_hue
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_hue(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_hue(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'HUE' 
-    
+            - blend_type : 'HUE'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha) 
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha).color
 
 def color_saturation(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_saturation
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_saturation(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_saturation(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'SATURATION' 
-    
+            - blend_type : 'SATURATION'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha)
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha).color
 
 def color_mix_color(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_mix_color
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_mix_color(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_mix_color(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'COLOR' 
-    
+            - blend_type : 'COLOR'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha) 
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha).color
 
 def color_value(color1=None, color2=None, fac=None, use_alpha=False):
-    """ color_value
+    """ > Node: Mix
+    <sub>go to: top index
+    blender ref ShaderNodeMixRGB
+    node ref Mix </sub>
     
+    ```python
+    v = functions.color_value(color1, color2, fac, use_alpha)
+    ```
 
-    | Node: Mix 
-    Top Index 
-    
-
-        v = functions.color_value(color1, color2, fac, use_alpha) 
-    
 
     Arguments
-    =========
-    
+    ---------
 
-        Sockets arguments
-        -----------------
-        - color1 : Color 
-        - color2 : Color 
-        - fac    : Float 
-    
+
+        Sockets
+        -------
+            - color1 : Color
+            - color2 : Color
+            - fac : Float
+
+
+        Parameters
+        ----------
+            - use_alpha : False
+
 
         Fixed parameters
         ----------------
-        - blend_type : 'VALUE' 
-    
+            - blend_type : 'VALUE'
 
-        Parameters arguments
-        --------------------
-        - use_alpha : False 
-    
 
     Node creation
-    =============
-    
+    -------------
+        ```python
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha)
+        ```
 
-        node = nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha) 
-    
 
     Returns
-    =======
-            Color 
+    -------
+        Color
+        
     """
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha).color

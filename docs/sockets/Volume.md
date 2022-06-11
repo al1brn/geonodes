@@ -1,40 +1,31 @@
 
-# Class Volume
+# Data socket Volume
 
-> Inherits from: ***gn.Geometry***
+> Inherits from gn.Geometry
+  
+<sub>go to [index](TBD)</sub>
 
 
-[Index](/docs/index.md)
 
 ## Methods
 
+- [to_mesh](#to_mesh) : [VolumeToMesh](section:nodes/VolumeToMesh.md), mesh (Mesh)
 
+## to_mesh
 
-- [**to_mesh**](#to_mesh) : [VolumeToMesh](../nodes/VolumeToMesh.md) mesh (Mesh)
-
-
-
-## Methods reference
-
-
-### to_mesh
-
-> Node: [VolumeToMesh](../nodes/{self.node_name}.md)
-
-
-[Top](#class-volume) [Index](/docs/index.md)
+> Node: [VolumeToMesh](section:nodes/VolumeToMesh)
+<sub>go to: [top](#volume) [index](TBD)
+blender ref [GeometryNodeVolumeToMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html)
+node ref [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/volume_to_mesh.html) </sub>
 
 ```python
 v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_mode)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - volume : Volume (self)
 - voxel_size : Float
@@ -42,24 +33,17 @@ v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_m
 - threshold : Float
 - adaptivity : Float
 
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - resolution_mode : 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode)
+nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode)
 ```
 
+### Returns
 
-#### Returns
+Mesh
 
-    Mesh

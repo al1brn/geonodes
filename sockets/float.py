@@ -9,81 +9,83 @@ logger = logging.Logger('geonodes')
 # Data class Float
 
 class Float(dsock.Float):
-    """ Class Float
+    """ 
+
+    Data socket Float
+    -----------------
+        > Inherits from dsock.Float
+          
+        <sub>go to index</sub>
+        
+        
     
 
-    | Inherits from: dsock.Float 
-    Index 
+        Constructors
+        ------------
+            - Random : RandomValue, value (Float)
     
 
-    Constructors
-    ============
-    - **Random** : RandomValue value (Float) 
-    
-
-    Methods
-    =======
-    - **abs**                 : Math value (Float) 
-    - **accumulate_field**    : AccumulateField Sockets      [leading (Float), trailing (Float), total (Float)]
-    - **add**                 : Math value (Float) 
-    - **arccos**              : Math value (Float) 
-    - **arcsin**              : Math value (Float) 
-    - **arctan**              : Math value (Float) 
-    - **arctan2**             : Math value (Float) 
-    - **attribute_statistic** : AttributeStatistic Sockets      [mean (Float), median (Float), sum (Float),
-      min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)] 
-    - **capture_attribute**   : CaptureAttribute Sockets      [geometry (Geometry), attribute (Float)] 
-    - **ceil**                : Math value (Float) 
-    - **clamp**               : Clamp result (Float) 
-    - **color_ramp**          : Colorramp Sockets      [color (Color), alpha (Float)] 
-    - **compare**             : Math value (Float) 
-    - **cos**                 : Math value (Float) 
-    - **cosh**                : Math value (Float) 
-    - **curve**               : FloatCurve value (Float) 
-    - **degrees**             : Math value (Float) 
-    - **divide**              : Math value (Float) 
-    - **equal**               : Compare result (Boolean) 
-    - **exp**                 : Math value (Float) 
-    - **field_at_index**      : FieldAtIndex value (Float) 
-    - **floor**               : Math value (Float) 
-    - **fract**               : Math value (Float) 
-    - **greater_equal**       : Compare result (Boolean) 
-    - **greater_than**        : Compare result (Boolean) 
-    - **greater_than**        : Math value (Float) 
-    - **inverse_sqrt**        : Math value (Float) 
-    - **less_equal**          : Compare result (Boolean) 
-    - **less_than**           : Compare result (Boolean) 
-    - **less_than**           : Math value (Float) 
-    - **log**                 : Math value (Float) 
-    - **map_range**           : MapRange result (Float) 
-    - **max**                 : Math value (Float) 
-    - **min**                 : Math value (Float) 
-    - **modulo**              : Math value (Float) 
-    - **multiply**            : Math value (Float) 
-    - **multiply_add**        : Math value (Float) 
-    - **not_equal**           : Compare result (Boolean) 
-    - **pingpong**            : Math value (Float) 
-    - **pow**                 : Math value (Float) 
-    - **radians**             : Math value (Float) 
-    - **raycast**             : Raycast Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance
-      (Float), attribute (Float)] 
-    - **round**               : Math value (Float) 
-    - **sign**                : Math value (Float) 
-    - **sin**                 : Math value (Float) 
-    - **sinh**                : Math value (Float) 
-    - **smooth_max**          : Math value (Float) 
-    - **smooth_min**          : Math value (Float) 
-    - **snap**                : Math value (Float) 
-    - **sqrt**                : Math value (Float) 
-    - **subtract**            : Math value (Float) 
-    - **switch**              : Switch output (Float) 
-    - **tan**                 : Math value (Float) 
-    - **tanh**                : Math value (Float) 
-    - **to_integer**          : FloatToInteger integer (Integer) 
-    - **to_string**           : ValueToString string (String) 
-    - **transfer_attribute**  : TransferAttribute attribute (Float) 
-    - **trunc**               : Math value (Float) 
-    - **wrap**                : Math value (Float) 
+        Methods
+        -------
+            - abs : Math, value (Float)
+            - accumulate_field : AccumulateField, Sockets      [leading (Float), trailing (Float), total (Float)]
+            - add : Math, value (Float)
+            - arccos : Math, value (Float)
+            - arcsin : Math, value (Float)
+            - arctan : Math, value (Float)
+            - arctan2 : Math, value (Float)
+            - attribute_statistic : AttributeStatistic, Sockets      [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
+            - capture_attribute : CaptureAttribute, Sockets      [geometry (Geometry), attribute (Float)]
+            - ceil : Math, value (Float)
+            - clamp : Clamp, result (Float)
+            - color_ramp : Colorramp, Sockets      [color (Color), alpha (Float)]
+            - compare : Math, value (Float)
+            - cos : Math, value (Float)
+            - cosh : Math, value (Float)
+            - curve : FloatCurve, value (Float)
+            - degrees : Math, value (Float)
+            - divide : Math, value (Float)
+            - equal : Compare, result (Boolean)
+            - exp : Math, value (Float)
+            - field_at_index : FieldAtIndex, value (Float)
+            - floor : Math, value (Float)
+            - fract : Math, value (Float)
+            - greater_equal : Compare, result (Boolean)
+            - greater_than : Compare, result (Boolean)
+            - greater_than : Math, value (Float)
+            - inverse_sqrt : Math, value (Float)
+            - less_equal : Compare, result (Boolean)
+            - less_than : Compare, result (Boolean)
+            - less_than : Math, value (Float)
+            - log : Math, value (Float)
+            - map_range : MapRange, result (Float)
+            - max : Math, value (Float)
+            - min : Math, value (Float)
+            - modulo : Math, value (Float)
+            - multiply : Math, value (Float)
+            - multiply_add : Math, value (Float)
+            - not_equal : Compare, result (Boolean)
+            - pingpong : Math, value (Float)
+            - pow : Math, value (Float)
+            - radians : Math, value (Float)
+            - raycast : Raycast, Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
+            - round : Math, value (Float)
+            - sign : Math, value (Float)
+            - sin : Math, value (Float)
+            - sinh : Math, value (Float)
+            - smooth_max : Math, value (Float)
+            - smooth_min : Math, value (Float)
+            - snap : Math, value (Float)
+            - sqrt : Math, value (Float)
+            - subtract : Math, value (Float)
+            - switch : Switch, output (Float)
+            - tan : Math, value (Float)
+            - tanh : Math, value (Float)
+            - to_integer : FloatToInteger, integer (Integer)
+            - to_string : ValueToString, string (String)
+            - transfer_attribute : TransferAttribute, attribute (Float)
+            - trunc : Math, value (Float)
+            - wrap : Math, value (Float)
     """
 
 
@@ -92,43 +94,44 @@ class Float(dsock.Float):
 
     @classmethod
     def Random(cls, min=None, max=None, ID=None, seed=None):
-        """ Random
+        """ > Node: RandomValue
+        <sub>go to: top index
+        blender ref FunctionNodeRandomValue
+        node ref Random Value </sub>
         
-
-        | Node: RandomValue 
-        Top Index 
-        
-
-            v = Float.Random(min, max, ID, seed) 
-        
+        ```python
+        v = Float.Random(min, max, ID, seed)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - min  : Float 
-            - max  : Float 
-            - ID   : Integer 
-            - seed : Integer 
-        
+            Sockets
+            -------
+                - min : Float
+                - max : Float
+                - ID : Integer
+                - seed : Integer
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT' 
-        
+                - data_type : 'FLOAT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT') 
-        
+        -------------
+            ```python
+            nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return cls(nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT').value)
@@ -138,2396 +141,2449 @@ class Float(dsock.Float):
     # Methods
 
     def accumulate_field(self, group_index=None, domain='POINT'):
-        """ accumulate_field
+        """ > Node: AccumulateField
+        <sub>go to: top index
+        blender ref GeometryNodeAccumulateField
+        node ref Accumulate Field </sub>
         
-
-        | Node: AccumulateField 
-        Top Index 
-        
-
-            v = float.accumulate_field(group_index, domain) 
-        
+        ```python
+        v = float.accumulate_field(group_index, domain)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value       : Float (self) 
-            - group_index : Integer 
-        
+            Sockets
+            -------
+                - value : Float (self)
+                - group_index : Integer
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-        
+                - data_type : 'FLOAT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT', domain=domain) 
-        
+        -------------
+            ```python
+            nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT', domain=domain)
+            ```
+    
 
         Returns
-        =======
-                Sockets [leading (Float), trailing (Float), total (Float)] 
+        -------
+            Sockets [leading (Float), trailing (Float), total (Float)]
+            
         """
 
         return nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT', domain=domain)
 
     def attribute_statistic(self, geometry=None, selection=None, domain='POINT'):
-        """ attribute_statistic
+        """ > Node: AttributeStatistic
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeStatistic
+        node ref Attribute Statistic </sub>
         
-
-        | Node: AttributeStatistic 
-        Top Index 
-        
-
-            v = float.attribute_statistic(geometry, selection, domain) 
-        
+        ```python
+        v = float.attribute_statistic(geometry, selection, domain)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - attribute : Float (self) 
-            - geometry  : Geometry 
-            - selection : Boolean 
-        
+            Sockets
+            -------
+                - attribute : Float (self)
+                - geometry : Geometry
+                - selection : Boolean
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-        
+                - data_type : 'FLOAT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT',
-            domain=domain) 
-        
+        -------------
+            ```python
+            nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT', domain=domain)
+            ```
+    
 
         Returns
-        =======
-                Sockets [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation
-                (Float), variance (Float)] 
+        -------
+            Sockets [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
+            
         """
 
         return nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT', domain=domain)
 
     def transfer_attribute(self, source=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """ transfer_attribute
+        """ > Node: TransferAttribute
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeTransfer
+        node ref Transfer Attribute </sub>
         
-
-        | Node: TransferAttribute 
-        Top Index 
-        
-
-            v = float.transfer_attribute(source, source_position, index, domain, mapping) 
-        
+        ```python
+        v = float.transfer_attribute(source, source_position, index, domain, mapping)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - attribute       : Float (self) 
-            - source          : Geometry 
-            - source_position : Vector 
-            - index           : Integer 
-        
+            Sockets
+            -------
+                - attribute : Float (self)
+                - source : Geometry
+                - source_position : Vector
+                - index : Integer
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+                - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain  : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
-        
+                - data_type : 'FLOAT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index,
-            data_type='FLOAT', domain=domain, mapping=mapping) 
-        
+        -------------
+            ```python
+            nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping).attribute
 
     def capture_attribute(self, geometry=None, domain='POINT'):
-        """ capture_attribute
+        """ > Node: CaptureAttribute
+        <sub>go to: top index
+        blender ref GeometryNodeCaptureAttribute
+        node ref Capture Attribute </sub>
         
-
-        | Node: CaptureAttribute 
-        Top Index 
-        
-
-            v = float.capture_attribute(geometry, domain) 
-        
+        ```python
+        v = float.capture_attribute(geometry, domain)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value    : Float (self) 
-            - geometry : Geometry 
-        
+            Sockets
+            -------
+                - value : Float (self)
+                - geometry : Geometry
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-        
+                - data_type : 'FLOAT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT', domain=domain) 
-        
+        -------------
+            ```python
+            nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT', domain=domain)
+            ```
+    
 
         Returns
-        =======
-                Sockets [geometry (Geometry), attribute (Float)] 
+        -------
+            Sockets [geometry (Geometry), attribute (Float)]
+            
         """
 
         return nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT', domain=domain)
 
     def field_at_index(self, index=None, domain='POINT'):
-        """ field_at_index
+        """ > Node: FieldAtIndex
+        <sub>go to: top index
+        blender ref GeometryNodeFieldAtIndex
+        node ref Field at Index </sub>
         
-
-        | Node: FieldAtIndex 
-        Top Index 
-        
-
-            v = float.field_at_index(index, domain) 
-        
+        ```python
+        v = float.field_at_index(index, domain)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value : Float (self) 
-            - index : Integer 
-        
+            Sockets
+            -------
+                - value : Float (self)
+                - index : Integer
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-        
+                - data_type : 'FLOAT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT', domain=domain) 
-        
+        -------------
+            ```python
+            nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT', domain=domain)
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT', domain=domain).value
 
     def raycast(self, target_geometry=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
-        """ raycast
+        """ > Node: Raycast
+        <sub>go to: top index
+        blender ref GeometryNodeRaycast
+        node ref Raycast </sub>
         
-
-        | Node: Raycast 
-        Top Index 
-        
-
-            v = float.raycast(target_geometry, source_position, ray_direction, ray_length, mapping) 
-        
+        ```python
+        v = float.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - attribute       : Float (self) 
-            - target_geometry : Geometry 
-            - source_position : Vector 
-            - ray_direction   : Vector 
-            - ray_length      : Float 
-        
+            Sockets
+            -------
+                - attribute : Float (self)
+                - target_geometry : Geometry
+                - source_position : Vector
+                - ray_direction : Vector
+                - ray_length : Float
+    
+
+            Parameters
+            ----------
+                - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT' 
-        
-
-            Parameters arguments
-            --------------------
-            - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST] 
-        
+                - data_type : 'FLOAT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position,
-            ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping) 
-        
+        -------------
+            ```python
+            nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping)
+            ```
+    
 
         Returns
-        =======
-                Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute
-                (Float)] 
+        -------
+            Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
+            
         """
 
         return nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping)
 
     def switch(self, switch0=None, true=None):
-        """ switch
+        """ > Node: Switch
+        <sub>go to: top index
+        blender ref GeometryNodeSwitch
+        node ref Switch </sub>
         
-
-        | Node: Switch 
-        Top Index 
-        
-
-            v = float.switch(switch0, true) 
-        
+        ```python
+        v = float.switch(switch0, true)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - false   : Float (self) 
-            - switch0 : Boolean 
-            - true    : Float 
-        
+            Sockets
+            -------
+                - false : Float (self)
+                - switch0 : Boolean
+                - true : Float
+    
 
             Fixed parameters
             ----------------
-            - input_type : 'FLOAT' 
-        
+                - input_type : 'FLOAT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT') 
-        
+        -------------
+            ```python
+            nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT').output
 
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, interpolation_type='LINEAR'):
-        """ map_range
+        """ > Node: MapRange
+        <sub>go to: top index
+        blender ref ShaderNodeMapRange
+        node ref Map Range </sub>
         
-
-        | Node: MapRange 
-        Top Index 
-        
-
-            v = float.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type) 
-        
+        ```python
+        v = float.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value    : Float (self) 
-            - from_min : Float 
-            - from_max : Float 
-            - to_min   : Float 
-            - to_max   : Float 
-        
+            Sockets
+            -------
+                - value : Float (self)
+                - from_min : Float
+                - from_max : Float
+                - to_min : Float
+                - to_max : Float
+    
 
-            Parameters arguments
-            --------------------
-            - clamp              : True 
-            - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP] 
-        
+            Parameters
+            ----------
+                - clamp : True
+                - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT' 
-        
+                - data_type : 'FLOAT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max,
-            clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type) 
-        
+        -------------
+            ```python
+            nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type)
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type).result
 
     def less_than(self, b=None):
-        """ less_than
+        """ > Node: Compare
+        <sub>go to: top index
+        blender ref FunctionNodeCompare
+        node ref Compare </sub>
         
-
-        | Node: Compare 
-        Top Index 
-        
-
-            v = float.less_than(b) 
-        
+        ```python
+        v = float.less_than(b)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - a : Float (self) 
-            - b : Float 
-        
+            Sockets
+            -------
+                - a : Float (self)
+                - b : Float
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT' 
-            - mode      : 'ELEMENT' 
-            - operation : 'LESS_THAN' 
-        
+                - data_type : 'FLOAT'
+                - mode : 'ELEMENT'
+                - operation : 'LESS_THAN'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN') 
-        
+        -------------
+            ```python
+            nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN').result
 
     def less_equal(self, b=None):
-        """ less_equal
+        """ > Node: Compare
+        <sub>go to: top index
+        blender ref FunctionNodeCompare
+        node ref Compare </sub>
         
-
-        | Node: Compare 
-        Top Index 
-        
-
-            v = float.less_equal(b) 
-        
+        ```python
+        v = float.less_equal(b)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - a : Float (self) 
-            - b : Float 
-        
+            Sockets
+            -------
+                - a : Float (self)
+                - b : Float
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT' 
-            - mode      : 'ELEMENT' 
-            - operation : 'LESS_EQUAL' 
-        
+                - data_type : 'FLOAT'
+                - mode : 'ELEMENT'
+                - operation : 'LESS_EQUAL'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL') 
-        
+        -------------
+            ```python
+            nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL').result
 
     def greater_than(self, b=None):
-        """ greater_than
+        """ > Node: Compare
+        <sub>go to: top index
+        blender ref FunctionNodeCompare
+        node ref Compare </sub>
         
-
-        | Node: Compare 
-        Top Index 
-        
-
-            v = float.greater_than(b) 
-        
+        ```python
+        v = float.greater_than(b)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - a : Float (self) 
-            - b : Float 
-        
+            Sockets
+            -------
+                - a : Float (self)
+                - b : Float
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT' 
-            - mode      : 'ELEMENT' 
-            - operation : 'GREATER_THAN' 
-        
+                - data_type : 'FLOAT'
+                - mode : 'ELEMENT'
+                - operation : 'GREATER_THAN'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN') 
-        
+        -------------
+            ```python
+            nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN').result
 
     def greater_equal(self, b=None):
-        """ greater_equal
+        """ > Node: Compare
+        <sub>go to: top index
+        blender ref FunctionNodeCompare
+        node ref Compare </sub>
         
-
-        | Node: Compare 
-        Top Index 
-        
-
-            v = float.greater_equal(b) 
-        
+        ```python
+        v = float.greater_equal(b)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - a : Float (self) 
-            - b : Float 
-        
+            Sockets
+            -------
+                - a : Float (self)
+                - b : Float
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT' 
-            - mode      : 'ELEMENT' 
-            - operation : 'GREATER_EQUAL' 
-        
+                - data_type : 'FLOAT'
+                - mode : 'ELEMENT'
+                - operation : 'GREATER_EQUAL'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL') 
-        
+        -------------
+            ```python
+            nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL').result
 
     def equal(self, b=None, epsilon=None):
-        """ equal
+        """ > Node: Compare
+        <sub>go to: top index
+        blender ref FunctionNodeCompare
+        node ref Compare </sub>
         
-
-        | Node: Compare 
-        Top Index 
-        
-
-            v = float.equal(b, epsilon) 
-        
+        ```python
+        v = float.equal(b, epsilon)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - a       : Float (self) 
-            - b       : Float 
-            - epsilon : Float 
-        
+            Sockets
+            -------
+                - a : Float (self)
+                - b : Float
+                - epsilon : Float
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT' 
-            - mode      : 'ELEMENT' 
-            - operation : 'EQUAL' 
-        
+                - data_type : 'FLOAT'
+                - mode : 'ELEMENT'
+                - operation : 'EQUAL'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL')
-        
+        -------------
+            ```python
+            nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL').result
 
     def not_equal(self, b=None, epsilon=None):
-        """ not_equal
+        """ > Node: Compare
+        <sub>go to: top index
+        blender ref FunctionNodeCompare
+        node ref Compare </sub>
         
-
-        | Node: Compare 
-        Top Index 
-        
-
-            v = float.not_equal(b, epsilon) 
-        
+        ```python
+        v = float.not_equal(b, epsilon)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - a       : Float (self) 
-            - b       : Float 
-            - epsilon : Float 
-        
+            Sockets
+            -------
+                - a : Float (self)
+                - b : Float
+                - epsilon : Float
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT' 
-            - mode      : 'ELEMENT' 
-            - operation : 'NOT_EQUAL' 
-        
+                - data_type : 'FLOAT'
+                - mode : 'ELEMENT'
+                - operation : 'NOT_EQUAL'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL')
-        
+        -------------
+            ```python
+            nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL').result
 
     def add(self, value1=None):
-        """ add
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.add(value1) 
-        
+        ```python
+        v = float.add(value1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'ADD' 
-        
+                - operation : 'ADD'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, operation='ADD') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, operation='ADD')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, operation='ADD').value
 
     def subtract(self, value1=None):
-        """ subtract
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.subtract(value1) 
-        
+        ```python
+        v = float.subtract(value1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'SUBTRACT' 
-        
+                - operation : 'SUBTRACT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, operation='SUBTRACT') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, operation='SUBTRACT').value
 
     def multiply(self, value1=None):
-        """ multiply
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.multiply(value1) 
-        
+        ```python
+        v = float.multiply(value1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'MULTIPLY' 
-        
+                - operation : 'MULTIPLY'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, operation='MULTIPLY') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, operation='MULTIPLY').value
 
     def divide(self, value1=None):
-        """ divide
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.divide(value1) 
-        
+        ```python
+        v = float.divide(value1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'DIVIDE' 
-        
+                - operation : 'DIVIDE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, operation='DIVIDE') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, operation='DIVIDE')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, operation='DIVIDE').value
 
     def multiply_add(self, value1=None, value2=None):
-        """ multiply_add
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.multiply_add(value1, value2) 
-        
+        ```python
+        v = float.multiply_add(value1, value2)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-            - value2 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+                - value2 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'MULTIPLY_ADD' 
-        
+                - operation : 'MULTIPLY_ADD'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD').value
 
     def pow(self, value1=None):
-        """ pow
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.pow(value1) 
-        
+        ```python
+        v = float.pow(value1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'POWER' 
-        
+                - operation : 'POWER'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, operation='POWER') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, operation='POWER')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, operation='POWER').value
 
     def log(self, value1=None):
-        """ log
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.log(value1) 
-        
+        ```python
+        v = float.log(value1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'LOGARITHM' 
-        
+                - operation : 'LOGARITHM'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, operation='LOGARITHM') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, operation='LOGARITHM').value
 
     def sqrt(self):
-        """ sqrt
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.sqrt() 
-        
+        ```python
+        v = float.sqrt()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'SQRT' 
-        
+                - operation : 'SQRT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='SQRT') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='SQRT')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='SQRT').value
 
     def inverse_sqrt(self):
-        """ inverse_sqrt
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.inverse_sqrt() 
-        
+        ```python
+        v = float.inverse_sqrt()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'INVERSE_SQRT' 
-        
+                - operation : 'INVERSE_SQRT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='INVERSE_SQRT') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='INVERSE_SQRT')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='INVERSE_SQRT').value
 
     def abs(self):
-        """ abs
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.abs() 
-        
+        ```python
+        v = float.abs()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'ABSOLUTE' 
-        
+                - operation : 'ABSOLUTE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='ABSOLUTE') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='ABSOLUTE')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='ABSOLUTE').value
 
     def exp(self):
-        """ exp
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.exp() 
-        
+        ```python
+        v = float.exp()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'EXPONENT' 
-        
+                - operation : 'EXPONENT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='EXPONENT') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='EXPONENT')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='EXPONENT').value
 
     def min(self, value1=None):
-        """ min
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.min(value1) 
-        
+        ```python
+        v = float.min(value1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'MINIMUM' 
-        
+                - operation : 'MINIMUM'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, operation='MINIMUM') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, operation='MINIMUM')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, operation='MINIMUM').value
 
     def max(self, value1=None):
-        """ max
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.max(value1) 
-        
+        ```python
+        v = float.max(value1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'MAXIMUM' 
-        
+                - operation : 'MAXIMUM'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, operation='MAXIMUM') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, operation='MAXIMUM').value
 
     def less_than(self, value1=None):
-        """ less_than
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.less_than(value1) 
-        
+        ```python
+        v = float.less_than(value1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'LESS_THAN' 
-        
+                - operation : 'LESS_THAN'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, operation='LESS_THAN') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, operation='LESS_THAN').value
 
     def greater_than(self, value1=None):
-        """ greater_than
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.greater_than(value1) 
-        
+        ```python
+        v = float.greater_than(value1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'GREATER_THAN' 
-        
+                - operation : 'GREATER_THAN'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, operation='GREATER_THAN') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, operation='GREATER_THAN').value
 
     def sign(self):
-        """ sign
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.sign() 
-        
+        ```python
+        v = float.sign()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'SIGN' 
-        
+                - operation : 'SIGN'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='SIGN') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='SIGN')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='SIGN').value
 
     def compare(self, value1=None, value2=None):
-        """ compare
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.compare(value1, value2) 
-        
+        ```python
+        v = float.compare(value1, value2)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-            - value2 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+                - value2 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'COMPARE' 
-        
+                - operation : 'COMPARE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE').value
 
     def smooth_min(self, value1=None, value2=None):
-        """ smooth_min
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.smooth_min(value1, value2) 
-        
+        ```python
+        v = float.smooth_min(value1, value2)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-            - value2 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+                - value2 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'SMOOTH_MIN' 
-        
+                - operation : 'SMOOTH_MIN'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN').value
 
     def smooth_max(self, value1=None, value2=None):
-        """ smooth_max
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.smooth_max(value1, value2) 
-        
+        ```python
+        v = float.smooth_max(value1, value2)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-            - value2 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+                - value2 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'SMOOTH_MAX' 
-        
+                - operation : 'SMOOTH_MAX'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX').value
 
     def round(self):
-        """ round
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.round() 
-        
+        ```python
+        v = float.round()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'ROUND' 
-        
+                - operation : 'ROUND'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='ROUND') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='ROUND')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='ROUND').value
 
     def floor(self):
-        """ floor
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.floor() 
-        
+        ```python
+        v = float.floor()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'FLOOR' 
-        
+                - operation : 'FLOOR'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='FLOOR') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='FLOOR')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='FLOOR').value
 
     def ceil(self):
-        """ ceil
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.ceil() 
-        
+        ```python
+        v = float.ceil()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'CEIL' 
-        
+                - operation : 'CEIL'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='CEIL') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='CEIL')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='CEIL').value
 
     def trunc(self):
-        """ trunc
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.trunc() 
-        
+        ```python
+        v = float.trunc()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'TRUNC' 
-        
+                - operation : 'TRUNC'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='TRUNC') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='TRUNC')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='TRUNC').value
 
     def fract(self):
-        """ fract
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.fract() 
-        
+        ```python
+        v = float.fract()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'FRACT' 
-        
+                - operation : 'FRACT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='FRACT') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='FRACT')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='FRACT').value
 
     def modulo(self, value1=None):
-        """ modulo
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.modulo(value1) 
-        
+        ```python
+        v = float.modulo(value1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'MODULO' 
-        
+                - operation : 'MODULO'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, operation='MODULO') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, operation='MODULO')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, operation='MODULO').value
 
     def wrap(self, value1=None, value2=None):
-        """ wrap
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.wrap(value1, value2) 
-        
+        ```python
+        v = float.wrap(value1, value2)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-            - value2 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+                - value2 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'WRAP' 
-        
+                - operation : 'WRAP'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP').value
 
     def snap(self, value1=None):
-        """ snap
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.snap(value1) 
-        
+        ```python
+        v = float.snap(value1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'SNAP' 
-        
+                - operation : 'SNAP'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, operation='SNAP') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, operation='SNAP')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, operation='SNAP').value
 
     def pingpong(self, value1=None):
-        """ pingpong
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.pingpong(value1) 
-        
+        ```python
+        v = float.pingpong(value1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'PINGPONG' 
-        
+                - operation : 'PINGPONG'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, operation='PINGPONG') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, operation='PINGPONG')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, operation='PINGPONG').value
 
     def sin(self):
-        """ sin
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.sin() 
-        
+        ```python
+        v = float.sin()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'SINE' 
-        
+                - operation : 'SINE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='SINE') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='SINE')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='SINE').value
 
     def cos(self):
-        """ cos
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.cos() 
-        
+        ```python
+        v = float.cos()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'COSINE' 
-        
+                - operation : 'COSINE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='COSINE') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='COSINE')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='COSINE').value
 
     def tan(self):
-        """ tan
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.tan() 
-        
+        ```python
+        v = float.tan()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'TANGENT' 
-        
+                - operation : 'TANGENT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='TANGENT') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='TANGENT')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='TANGENT').value
 
     def arcsin(self):
-        """ arcsin
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.arcsin() 
-        
+        ```python
+        v = float.arcsin()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'ARCSINE' 
-        
+                - operation : 'ARCSINE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='ARCSINE') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='ARCSINE')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='ARCSINE').value
 
     def arccos(self):
-        """ arccos
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.arccos() 
-        
+        ```python
+        v = float.arccos()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'ARCCOSINE' 
-        
+                - operation : 'ARCCOSINE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='ARCCOSINE') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='ARCCOSINE')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='ARCCOSINE').value
 
     def arctan(self):
-        """ arctan
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.arctan() 
-        
+        ```python
+        v = float.arctan()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'ARCTANGENT' 
-        
+                - operation : 'ARCTANGENT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='ARCTANGENT') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='ARCTANGENT')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='ARCTANGENT').value
 
     def arctan2(self, value1=None):
-        """ arctan2
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.arctan2(value1) 
-        
+        ```python
+        v = float.arctan2(value1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-            - value1 : Float 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+                - value1 : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'ARCTAN2' 
-        
+                - operation : 'ARCTAN2'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, value1=value1, operation='ARCTAN2') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, value1=value1, operation='ARCTAN2').value
 
     def sinh(self):
-        """ sinh
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.sinh() 
-        
+        ```python
+        v = float.sinh()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'SINH' 
-        
+                - operation : 'SINH'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='SINH') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='SINH')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='SINH').value
 
     def cosh(self):
-        """ cosh
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.cosh() 
-        
+        ```python
+        v = float.cosh()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'COSH' 
-        
+                - operation : 'COSH'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='COSH') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='COSH')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='COSH').value
 
     def tanh(self):
-        """ tanh
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.tanh() 
-        
+        ```python
+        v = float.tanh()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'TANH' 
-        
+                - operation : 'TANH'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='TANH') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='TANH')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='TANH').value
 
     def radians(self):
-        """ radians
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.radians() 
-        
+        ```python
+        v = float.radians()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'RADIANS' 
-        
+                - operation : 'RADIANS'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='RADIANS') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='RADIANS')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='RADIANS').value
 
     def degrees(self):
-        """ degrees
+        """ > Node: Math
+        <sub>go to: top index
+        blender ref ShaderNodeMath
+        node ref Math </sub>
         
-
-        | Node: Math 
-        Top Index 
-        
-
-            v = float.degrees() 
-        
+        ```python
+        v = float.degrees()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value0 : Float (self) 
-        
+            Sockets
+            -------
+                - value0 : Float (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'DEGREES' 
-        
+                - operation : 'DEGREES'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Math(value0=self, operation='DEGREES') 
-        
+        -------------
+            ```python
+            nodes.Math(value0=self, operation='DEGREES')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.Math(value0=self, operation='DEGREES').value
 
     def to_integer(self, rounding_mode='ROUND'):
-        """ to_integer
+        """ > Node: FloatToInteger
+        <sub>go to: top index
+        blender ref FunctionNodeFloatToInt
+        node ref Float to Integer </sub>
         
-
-        | Node: FloatToInteger 
-        Top Index 
-        
-
-            v = float.to_integer(rounding_mode) 
-        
+        ```python
+        v = float.to_integer(rounding_mode)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - float : Float (self) 
-        
+            Sockets
+            -------
+                - float : Float (self)
+    
 
-            Parameters arguments
-            --------------------
-            - rounding_mode : 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE] 
-        
+            Parameters
+            ----------
+                - rounding_mode : 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.FloatToInteger(float=self, rounding_mode=rounding_mode) 
-        
+        -------------
+            ```python
+            nodes.FloatToInteger(float=self, rounding_mode=rounding_mode)
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return nodes.FloatToInteger(float=self, rounding_mode=rounding_mode).integer
 
     def to_string(self, decimals=None):
-        """ to_string
+        """ > Node: ValueToString
+        <sub>go to: top index
+        blender ref FunctionNodeValueToString
+        node ref Value to String </sub>
         
-
-        | Node: ValueToString 
-        Top Index 
-        
-
-            v = float.to_string(decimals) 
-        
+        ```python
+        v = float.to_string(decimals)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value    : Float (self) 
-            - decimals : Integer 
-        
+            Sockets
+            -------
+                - value : Float (self)
+                - decimals : Integer
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.ValueToString(value=self, decimals=decimals) 
-        
+        -------------
+            ```python
+            nodes.ValueToString(value=self, decimals=decimals)
+            ```
+    
 
         Returns
-        =======
-                String 
+        -------
+            String
+            
         """
 
         return nodes.ValueToString(value=self, decimals=decimals).string
 
     def color_ramp(self):
-        """ color_ramp
+        """ > Node: Colorramp
+        <sub>go to: top index
+        blender ref ShaderNodeValToRGB
+        node ref ColorRamp </sub>
         
-
-        | Node: Colorramp 
-        Top Index 
-        
-
-            v = float.color_ramp() 
-        
+        ```python
+        v = float.color_ramp()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - fac : Float (self) 
-        
+            Sockets
+            -------
+                - fac : Float (self)
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Colorramp(fac=self) 
-        
+        -------------
+            ```python
+            nodes.Colorramp(fac=self)
+            ```
+    
 
         Returns
-        =======
-                Sockets [color (Color), alpha (Float)] 
+        -------
+            Sockets [color (Color), alpha (Float)]
+            
         """
 
         return nodes.Colorramp(fac=self)
 
     def curve(self, factor=None):
-        """ curve
+        """ > Node: FloatCurve
+        <sub>go to: top index
+        blender ref ShaderNodeFloatCurve
+        node ref Float Curve </sub>
         
-
-        | Node: FloatCurve 
-        Top Index 
-        
-
-            v = float.curve(factor) 
-        
+        ```python
+        v = float.curve(factor)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value  : Float (self) 
-            - factor : Float 
-        
+            Sockets
+            -------
+                - value : Float (self)
+                - factor : Float
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.FloatCurve(value=self, factor=factor) 
-        
+        -------------
+            ```python
+            nodes.FloatCurve(value=self, factor=factor)
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.stack(nodes.FloatCurve(value=self, factor=factor))
 
     def clamp(self, min=None, max=None, clamp_type='MINMAX'):
-        """ clamp
+        """ > Node: Clamp
+        <sub>go to: top index
+        blender ref ShaderNodeClamp
+        node ref Clamp </sub>
         
-
-        | Node: Clamp 
-        Top Index 
-        
-
-            v = float.clamp(min, max, clamp_type) 
-        
+        ```python
+        v = float.clamp(min, max, clamp_type)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value : Float (self) 
-            - min   : Float 
-            - max   : Float 
-        
+            Sockets
+            -------
+                - value : Float (self)
+                - min : Float
+                - max : Float
+    
 
-            Parameters arguments
-            --------------------
-            - clamp_type : 'MINMAX' in [MINMAX, RANGE] 
-        
+            Parameters
+            ----------
+                - clamp_type : 'MINMAX' in [MINMAX, RANGE]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type) 
-        
+        -------------
+            ```python
+            nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type)
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.stack(nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type))

@@ -9,16 +9,20 @@ logger = logging.Logger('geonodes')
 # Data class Volume
 
 class Volume(gn.Geometry):
-    """ Class Volume
+    """ 
+
+    Data socket Volume
+    ------------------
+        > Inherits from gn.Geometry
+          
+        <sub>go to index</sub>
+        
+        
     
 
-    | Inherits from: gn.Geometry 
-    Index 
-    
-
-    Methods
-    =======
-    - **to_mesh** : VolumeToMesh mesh (Mesh) 
+        Methods
+        -------
+            - to_mesh : VolumeToMesh, mesh (Mesh)
     """
 
 
@@ -26,45 +30,45 @@ class Volume(gn.Geometry):
     # Methods
 
     def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):
-        """ to_mesh
+        """ > Node: VolumeToMesh
+        <sub>go to: top index
+        blender ref GeometryNodeVolumeToMesh
+        node ref Volume to Mesh </sub>
         
-
-        | Node: VolumeToMesh 
-        Top Index 
-        
-
-            v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_mode) 
-        
+        ```python
+        v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_mode)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - volume       : Volume (self) 
-            - voxel_size   : Float 
-            - voxel_amount : Float 
-            - threshold    : Float 
-            - adaptivity   : Float 
-        
+            Sockets
+            -------
+                - volume : Volume (self)
+                - voxel_size : Float
+                - voxel_amount : Float
+                - threshold : Float
+                - adaptivity : Float
+    
 
-            Parameters arguments
-            --------------------
-            - resolution_mode : 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE] 
-        
+            Parameters
+            ----------
+                - resolution_mode : 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold,
-            adaptivity=adaptivity, resolution_mode=resolution_mode) 
-        
+        -------------
+            ```python
+            nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode)
+            ```
+    
 
         Returns
-        =======
-                Mesh 
+        -------
+            Mesh
+            
         """
 
         return nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode).mesh

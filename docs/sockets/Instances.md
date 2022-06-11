@@ -1,86 +1,67 @@
 
-# Class Instances
+# Data socket Instances
 
-> Inherits from: ***gn.Geometry***
+> Inherits from gn.Geometry
+  
+<sub>go to [index](TBD)</sub>
 
 
-[Index](/docs/index.md)
 
 ## Attributes
 
-
-
-- [**instance_index**](#instance_index) : [Index](../nodes/Index.md) Integer = capture_index(domain='INSTANCE')
-
-
+- [instance_index](#instance_index) : [Index](section:nodes/Index.md), Integer = capture_index(domain='INSTANCE')
 
 ## Methods
 
+- [rotate](#rotate) : [RotateInstances](section:nodes/RotateInstances.md), instances (Instances)
+- [scale](#scale) : [ScaleInstances](section:nodes/ScaleInstances.md), instances (Instances)
+- [to_points](#to_points) : [InstancesToPoints](section:nodes/InstancesToPoints.md), points (Points)
+- [translate](#translate) : [TranslateInstances](section:nodes/TranslateInstances.md), instances (Instances)
 
+## instance_index
 
-- [**rotate**](#rotate) : [RotateInstances](../nodes/RotateInstances.md) instances (Instances)
-- [**scale**](#scale) : [ScaleInstances](../nodes/ScaleInstances.md) instances (Instances)
-- [**to_points**](#to_points) : [InstancesToPoints](../nodes/InstancesToPoints.md) points (Points)
-- [**translate**](#translate) : [TranslateInstances](../nodes/TranslateInstances.md) instances (Instances)
-
-
-
-## Methods reference
-
-
-### instance_index
-
-> Node: [Index](../nodes/{self.node_name}.md)
-
-
-[Top](#class-instances) [Index](/docs/index.md)
+> Node: [Index](section:nodes/Index)
+<sub>go to: [top](#instances) [index](TBD)
+blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
+node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/index.html) </sub>
 
 ```python
 v = instances.instance_index(self)
 ```
 
-
-#### Arguments
-
-
-##### Parameters arguments
+### Arguments
 
 
+#### Parameters
 
 - self
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.Index()
+nodes.Index()
 ```
 
+### Returns
 
-#### Returns
-
-    Integer
-
-### rotate
-
-> Node: [RotateInstances](../nodes/{self.node_name}.md)
+Integer
 
 
-[Top](#class-instances) [Index](/docs/index.md)
+## rotate
+
+> Node: [RotateInstances](section:nodes/RotateInstances)
+<sub>go to: [top](#instances) [index](TBD)
+blender ref [GeometryNodeRotateInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html)
+node ref [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/rotate_instances.html) </sub>
 
 ```python
 v = instances.rotate(selection, rotation, pivot_point, local_space)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - instances : Instances (self)
 - selection : Boolean
@@ -88,38 +69,32 @@ v = instances.rotate(selection, rotation, pivot_point, local_space)
 - pivot_point : Vector
 - local_space : Boolean
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
+nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
 ```
 
+### Returns
 
-#### Returns
-
-    Instances
-
-### scale
-
-> Node: [ScaleInstances](../nodes/{self.node_name}.md)
+Instances
 
 
-[Top](#class-instances) [Index](/docs/index.md)
+## scale
+
+> Node: [ScaleInstances](section:nodes/ScaleInstances)
+<sub>go to: [top](#instances) [index](TBD)
+blender ref [GeometryNodeScaleInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html)
+node ref [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/scale_instances.html) </sub>
 
 ```python
 v = instances.scale(selection, scale, center, local_space)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - instances : Instances (self)
 - selection : Boolean
@@ -127,92 +102,77 @@ v = instances.scale(selection, scale, center, local_space)
 - center : Vector
 - local_space : Boolean
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
+nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
 ```
 
+### Returns
 
-#### Returns
-
-    Instances
-
-### to_points
-
-> Node: [InstancesToPoints](../nodes/{self.node_name}.md)
+Instances
 
 
-[Top](#class-instances) [Index](/docs/index.md)
+## translate
 
-```python
-v = instances.to_points(selection, position, radius)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- instances : Instances (self)
-- selection : Boolean
-- position : Vector
-- radius : Float
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
-```
-
-
-#### Returns
-
-    Points
-
-### translate
-
-> Node: [TranslateInstances](../nodes/{self.node_name}.md)
-
-
-[Top](#class-instances) [Index](/docs/index.md)
+> Node: [TranslateInstances](section:nodes/TranslateInstances)
+<sub>go to: [top](#instances) [index](TBD)
+blender ref [GeometryNodeTranslateInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html)
+node ref [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/translate_instances.html) </sub>
 
 ```python
 v = instances.translate(selection, translation, local_space)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - instances : Instances (self)
 - selection : Boolean
 - translation : Vector
 - local_space : Boolean
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
+nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
 ```
 
+### Returns
 
-#### Returns
+Instances
 
-    Instances
+
+## to_points
+
+> Node: [InstancesToPoints](section:nodes/InstancesToPoints)
+<sub>go to: [top](#instances) [index](TBD)
+blender ref [GeometryNodeInstancesToPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html)
+node ref [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/instances_to_points.html) </sub>
+
+```python
+v = instances.to_points(selection, position, radius)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- instances : Instances (self)
+- selection : Boolean
+- position : Vector
+- radius : Float
+
+### Node creation
+
+```python
+nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
+```
+
+### Returns
+
+Points
+

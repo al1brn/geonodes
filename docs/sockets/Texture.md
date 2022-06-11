@@ -1,57 +1,44 @@
 
-# Class Texture
+# Data socket Texture
 
-> Inherits from: ***dsock.Texture***
+> Inherits from dsock.Texture
+  
+<sub>go to [index](TBD)</sub>
 
 
-[Index](/docs/index.md)
 
 ## Static methods
 
-
-
-- [**Brick**](#brick) : [BrickTexture](../nodes/BrickTexture.md) Sockets      [color (Color), fac (Float)]
-- [**Checker**](#checker) : [CheckerTexture](../nodes/CheckerTexture.md) Sockets      [color (Color), fac (Float)]
-- [**Gradient**](#gradient) : [GradientTexture](../nodes/GradientTexture.md) Sockets      [color (Color), fac (Float)]
-- [**Image**](#image) : [ImageTexture](../nodes/ImageTexture.md) Sockets      [color (Color), alpha (Float)]
-- [**Magic**](#magic) : [MagicTexture](../nodes/MagicTexture.md) Sockets      [color (Color), fac (Float)]
-- [**Musgrave**](#musgrave) : [MusgraveTexture](../nodes/MusgraveTexture.md) fac (Float)
-- [**Noise**](#noise) : [NoiseTexture](../nodes/NoiseTexture.md) Sockets      [fac (Float), color (Color)]
-- [**Voronoi**](#voronoi) : [VoronoiTexture](../nodes/VoronoiTexture.md) Sockets      [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
-- [**Wave**](#wave) : [WaveTexture](../nodes/WaveTexture.md) Sockets      [color (Color), fac (Float)]
-- [**WhiteNoise**](#whitenoise) : [WhiteNoiseTexture](../nodes/WhiteNoiseTexture.md) Sockets      [value (Float), color (Color)]
-
-
+- [Brick](#brick) : [BrickTexture](section:nodes/BrickTexture.md), Sockets      [color (Color), fac (Float)]
+- [Checker](#checker) : [CheckerTexture](section:nodes/CheckerTexture.md), Sockets      [color (Color), fac (Float)]
+- [Gradient](#gradient) : [GradientTexture](section:nodes/GradientTexture.md), Sockets      [color (Color), fac (Float)]
+- [Image](#image) : [ImageTexture](section:nodes/ImageTexture.md), Sockets      [color (Color), alpha (Float)]
+- [Magic](#magic) : [MagicTexture](section:nodes/MagicTexture.md), Sockets      [color (Color), fac (Float)]
+- [Musgrave](#musgrave) : [MusgraveTexture](section:nodes/MusgraveTexture.md), fac (Float)
+- [Noise](#noise) : [NoiseTexture](section:nodes/NoiseTexture.md), Sockets      [fac (Float), color (Color)]
+- [Voronoi](#voronoi) : [VoronoiTexture](section:nodes/VoronoiTexture.md), Sockets      [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
+- [Wave](#wave) : [WaveTexture](section:nodes/WaveTexture.md), Sockets      [color (Color), fac (Float)]
+- [WhiteNoise](#whitenoise) : [WhiteNoiseTexture](section:nodes/WhiteNoiseTexture.md), Sockets      [value (Float), color (Color)]
 
 ## Methods
 
+- [switch](#switch) : [Switch](section:nodes/Switch.md), output (Texture)
 
+## Brick
 
-- [**switch**](#switch) : [Switch](../nodes/Switch.md) output (Texture)
-
-
-
-## Methods reference
-
-
-### Brick
-
-> Node: [BrickTexture](../nodes/{self.node_name}.md)
-
-
-[Top](#class-texture) [Index](/docs/index.md)
+> Node: [BrickTexture](section:nodes/BrickTexture)
+<sub>go to: [top](#texture) [index](TBD)
+blender ref [ShaderNodeTexBrick](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html)
+node ref [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/brick_texture.html) </sub>
 
 ```python
 v = Texture.Brick(vector, color1, color2, mortar, scale, mortar_size, mortar_smooth, bias, brick_width, row_height, offset, offset_frequency, squash, squash_frequency)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - vector : Vector
 - color1 : Color
@@ -64,221 +51,139 @@ v = Texture.Brick(vector, color1, color2, mortar, scale, mortar_size, mortar_smo
 - brick_width : Float
 - row_height : Float
 
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - offset : 0.5
 - offset_frequency : 2
 - squash : 1.0
 - squash_frequency : 2
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency)
+nodes.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency)
 ```
 
+### Returns
 
-#### Returns
-
-    Sockets [color (Color), fac (Float)]
-
-### Checker
-
-> Node: [CheckerTexture](../nodes/{self.node_name}.md)
+Sockets [color (Color), fac (Float)]
 
 
-[Top](#class-texture) [Index](/docs/index.md)
+## Checker
+
+> Node: [CheckerTexture](section:nodes/CheckerTexture)
+<sub>go to: [top](#texture) [index](TBD)
+blender ref [ShaderNodeTexChecker](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html)
+node ref [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/checker_texture.html) </sub>
 
 ```python
 v = Texture.Checker(vector, color1, color2, scale)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - vector : Vector
 - color1 : Color
 - color2 : Color
 - scale : Float
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale)
+nodes.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale)
 ```
 
+### Returns
 
-#### Returns
-
-    Sockets [color (Color), fac (Float)]
-
-### Gradient
-
-> Node: [GradientTexture](../nodes/{self.node_name}.md)
+Sockets [color (Color), fac (Float)]
 
 
-[Top](#class-texture) [Index](/docs/index.md)
+## Gradient
+
+> Node: [GradientTexture](section:nodes/GradientTexture)
+<sub>go to: [top](#texture) [index](TBD)
+blender ref [ShaderNodeTexGradient](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
+node ref [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/gradient_texture.html) </sub>
 
 ```python
 v = Texture.Gradient(vector, gradient_type)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - vector : Vector
 
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - gradient_type : 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.GradientTexture(vector=vector, gradient_type=gradient_type)
+nodes.GradientTexture(vector=vector, gradient_type=gradient_type)
 ```
 
+### Returns
 
-#### Returns
-
-    Sockets [color (Color), fac (Float)]
-
-### Image
-
-> Node: [ImageTexture](../nodes/{self.node_name}.md)
+Sockets [color (Color), fac (Float)]
 
 
-[Top](#class-texture) [Index](/docs/index.md)
+## Magic
 
-```python
-v = Texture.Image(image, vector, frame, extension, interpolation)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- image : Image
-- vector : Vector
-- frame : Integer
-
-
-
-##### Parameters arguments
-
-
-
-- extension : 'REPEAT' in [REPEAT, EXTEND, CLIP]
-- interpolation : 'Linear' in [Linear, Closest, Cubic]
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=extension, interpolation=interpolation)
-```
-
-
-#### Returns
-
-    Sockets [color (Color), alpha (Float)]
-
-### Magic
-
-> Node: [MagicTexture](../nodes/{self.node_name}.md)
-
-
-[Top](#class-texture) [Index](/docs/index.md)
+> Node: [MagicTexture](section:nodes/MagicTexture)
+<sub>go to: [top](#texture) [index](TBD)
+blender ref [ShaderNodeTexMagic](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html)
+node ref [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/magic_texture.html) </sub>
 
 ```python
 v = Texture.Magic(vector, scale, distortion, turbulence_depth)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - vector : Vector
 - scale : Float
 - distortion : Float
 
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - turbulence_depth : 2
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.MagicTexture(vector=vector, scale=scale, distortion=distortion, turbulence_depth=turbulence_depth)
+nodes.MagicTexture(vector=vector, scale=scale, distortion=distortion, turbulence_depth=turbulence_depth)
 ```
 
+### Returns
 
-#### Returns
-
-    Sockets [color (Color), fac (Float)]
-
-### Musgrave
-
-> Node: [MusgraveTexture](../nodes/{self.node_name}.md)
+Sockets [color (Color), fac (Float)]
 
 
-[Top](#class-texture) [Index](/docs/index.md)
+## Musgrave
+
+> Node: [MusgraveTexture](section:nodes/MusgraveTexture)
+<sub>go to: [top](#texture) [index](TBD)
+blender ref [ShaderNodeTexMusgrave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMusgrave.html)
+node ref [Musgrave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/musgrave_texture.html) </sub>
 
 ```python
 v = Texture.Musgrave(vector, w, scale, detail, dimension, lacunarity, offset, gain, musgrave_dimensions, musgrave_type)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - vector : Vector
 - w : Float
@@ -289,47 +194,37 @@ v = Texture.Musgrave(vector, w, scale, detail, dimension, lacunarity, offset, ga
 - offset : Float
 - gain : Float
 
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - musgrave_dimensions : '3D' in [1D, 2D, 3D, 4D]
 - musgrave_type : 'FBM' in [MULTIFRACTAL, RIDGED_MULTIFRACTAL, HYBRID_MULTIFRACTAL, FBM, HETERO_TERRAIN]
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.MusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, offset=offset, gain=gain, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type)
+nodes.MusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, offset=offset, gain=gain, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type)
 ```
 
+### Returns
 
-#### Returns
-
-    Float
-
-### Noise
-
-> Node: [NoiseTexture](../nodes/{self.node_name}.md)
+Float
 
 
-[Top](#class-texture) [Index](/docs/index.md)
+## Noise
+
+> Node: [NoiseTexture](section:nodes/NoiseTexture)
+<sub>go to: [top](#texture) [index](TBD)
+blender ref [ShaderNodeTexNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
+node ref [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/noise_texture.html) </sub>
 
 ```python
 v = Texture.Noise(vector, w, scale, detail, roughness, distortion, noise_dimensions)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - vector : Vector
 - w : Float
@@ -338,46 +233,36 @@ v = Texture.Noise(vector, w, scale, detail, roughness, distortion, noise_dimensi
 - roughness : Float
 - distortion : Float
 
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - noise_dimensions : '3D' in [1D, 2D, 3D, 4D]
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions)
+nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions)
 ```
 
+### Returns
 
-#### Returns
-
-    Sockets [fac (Float), color (Color)]
-
-### Voronoi
-
-> Node: [VoronoiTexture](../nodes/{self.node_name}.md)
+Sockets [fac (Float), color (Color)]
 
 
-[Top](#class-texture) [Index](/docs/index.md)
+## Voronoi
+
+> Node: [VoronoiTexture](section:nodes/VoronoiTexture)
+<sub>go to: [top](#texture) [index](TBD)
+blender ref [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
+node ref [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/voronoi_texture.html) </sub>
 
 ```python
 v = Texture.Voronoi(vector, w, scale, smoothness, exponent, randomness, distance, feature, voronoi_dimensions)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - vector : Vector
 - w : Float
@@ -386,48 +271,38 @@ v = Texture.Voronoi(vector, w, scale, smoothness, exponent, randomness, distance
 - exponent : Float
 - randomness : Float
 
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - distance : 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
 - feature : 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions : '3D' in [1D, 2D, 3D, 4D]
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
+nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
 ```
 
+### Returns
 
-#### Returns
-
-    Sockets [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
-
-### Wave
-
-> Node: [WaveTexture](../nodes/{self.node_name}.md)
+Sockets [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
 
 
-[Top](#class-texture) [Index](/docs/index.md)
+## Wave
+
+> Node: [WaveTexture](section:nodes/WaveTexture)
+<sub>go to: [top](#texture) [index](TBD)
+blender ref [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
+node ref [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/wave_texture.html) </sub>
 
 ```python
 v = Texture.Wave(vector, scale, distortion, detail, detail_scale, detail_roughness, phase_offset, bands_direction, rings_direction, wave_profile, wave_type)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - vector : Vector
 - scale : Float
@@ -437,116 +312,125 @@ v = Texture.Wave(vector, scale, distortion, detail, detail_scale, detail_roughne
 - detail_roughness : Float
 - phase_offset : Float
 
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - bands_direction : 'X' in [X, Y, Z, DIAGONAL]
 - rings_direction : 'X' in [X, Y, Z, SPHERICAL]
 - wave_profile : 'SIN' in [SIN, SAW, TRI]
 - wave_type : 'BANDS' in [BANDS, RINGS]
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
+nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
 ```
 
+### Returns
 
-#### Returns
-
-    Sockets [color (Color), fac (Float)]
-
-### WhiteNoise
-
-> Node: [WhiteNoiseTexture](../nodes/{self.node_name}.md)
+Sockets [color (Color), fac (Float)]
 
 
-[Top](#class-texture) [Index](/docs/index.md)
+## WhiteNoise
+
+> Node: [WhiteNoiseTexture](section:nodes/WhiteNoiseTexture)
+<sub>go to: [top](#texture) [index](TBD)
+blender ref [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
+node ref [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/white_noise_texture.html) </sub>
 
 ```python
 v = Texture.WhiteNoise(vector, w, noise_dimensions)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - vector : Vector
 - w : Float
 
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - noise_dimensions : '3D' in [1D, 2D, 3D, 4D]
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions)
+nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions)
 ```
 
+### Returns
 
-#### Returns
-
-    Sockets [value (Float), color (Color)]
-
-### switch
-
-> Node: [Switch](../nodes/{self.node_name}.md)
+Sockets [value (Float), color (Color)]
 
 
-[Top](#class-texture) [Index](/docs/index.md)
+## Image
+
+> Node: [ImageTexture](section:nodes/ImageTexture)
+<sub>go to: [top](#texture) [index](TBD)
+blender ref [GeometryNodeImageTexture](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
+node ref [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/image_texture.html) </sub>
+
+```python
+v = Texture.Image(image, vector, frame, extension, interpolation)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- image : Image
+- vector : Vector
+- frame : Integer
+
+#### Parameters
+
+- extension : 'REPEAT' in [REPEAT, EXTEND, CLIP]
+- interpolation : 'Linear' in [Linear, Closest, Cubic]
+
+### Node creation
+
+```python
+nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=extension, interpolation=interpolation)
+```
+
+### Returns
+
+Sockets [color (Color), alpha (Float)]
+
+
+## switch
+
+> Node: [Switch](section:nodes/Switch)
+<sub>go to: [top](#texture) [index](TBD)
+blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 
 ```python
 v = texture.switch(switch1, true)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - false : Texture (self)
 - switch1 : Boolean
 - true : Texture
 
-
-
-##### Fixed parameters
-
-
+#### Fixed parameters
 
 - input_type : 'TEXTURE'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='TEXTURE')
+nodes.Switch(false=self, switch1=switch1, true=true, input_type='TEXTURE')
 ```
 
+### Returns
 
-#### Returns
+Texture
 
-    Texture

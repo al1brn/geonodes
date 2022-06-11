@@ -9,17 +9,21 @@ logger = logging.Logger('geonodes')
 # Data class Collection
 
 class Collection(dsock.Collection):
-    """ Class Collection
+    """ 
+
+    Data socket Collection
+    ----------------------
+        > Inherits from dsock.Collection
+          
+        <sub>go to index</sub>
+        
+        
     
 
-    | Inherits from: dsock.Collection 
-    Index 
-    
-
-    Methods
-    =======
-    - **info**   : CollectionInfo geometry (Geometry) 
-    - **switch** : Switch output (Collection) 
+        Methods
+        -------
+            - info : CollectionInfo, geometry (Geometry)
+            - switch : Switch, output (Collection)
     """
 
 
@@ -27,84 +31,85 @@ class Collection(dsock.Collection):
     # Methods
 
     def switch(self, switch1=None, true=None):
-        """ switch
+        """ > Node: Switch
+        <sub>go to: top index
+        blender ref GeometryNodeSwitch
+        node ref Switch </sub>
         
-
-        | Node: Switch 
-        Top Index 
-        
-
-            v = collection.switch(switch1, true) 
-        
+        ```python
+        v = collection.switch(switch1, true)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - false   : Collection (self) 
-            - switch1 : Boolean 
-            - true    : Collection 
-        
+            Sockets
+            -------
+                - false : Collection (self)
+                - switch1 : Boolean
+                - true : Collection
+    
 
             Fixed parameters
             ----------------
-            - input_type : 'COLLECTION' 
-        
+                - input_type : 'COLLECTION'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION') 
-        
+        -------------
+            ```python
+            nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION')
+            ```
+    
 
         Returns
-        =======
-                Collection 
+        -------
+            Collection
+            
         """
 
         return nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION').output
 
     def info(self, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
-        """ info
+        """ > Node: CollectionInfo
+        <sub>go to: top index
+        blender ref GeometryNodeCollectionInfo
+        node ref Collection Info </sub>
         
-
-        | Node: CollectionInfo 
-        Top Index 
-        
-
-            v = collection.info(separate_children, reset_children, transform_space) 
-        
+        ```python
+        v = collection.info(separate_children, reset_children, transform_space)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - collection        : Collection (self) 
-            - separate_children : Boolean 
-            - reset_children    : Boolean 
-        
+            Sockets
+            -------
+                - collection : Collection (self)
+                - separate_children : Boolean
+                - reset_children : Boolean
+    
 
-            Parameters arguments
-            --------------------
-            - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE] 
-        
+            Parameters
+            ----------
+                - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children,
-            transform_space=transform_space) 
-        
+        -------------
+            ```python
+            nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space).geometry

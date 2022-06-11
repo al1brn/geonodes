@@ -1,63 +1,47 @@
 
-# Class Image
+# Data socket Image
 
-> Inherits from: ***dsock.Image***
+> Inherits from dsock.Image
+  
+<sub>go to [index](TBD)</sub>
 
 
-[Index](/docs/index.md)
 
 ## Methods
 
+- [switch](#switch) : [Switch](section:nodes/Switch.md), output (Image)
 
+## switch
 
-- [**switch**](#switch) : [Switch](../nodes/Switch.md) output (Image)
-
-
-
-## Methods reference
-
-
-### switch
-
-> Node: [Switch](../nodes/{self.node_name}.md)
-
-
-[Top](#class-image) [Index](/docs/index.md)
+> Node: [Switch](section:nodes/Switch)
+<sub>go to: [top](#image) [index](TBD)
+blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 
 ```python
 v = image.switch(switch1, true)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - false : Image (self)
 - switch1 : Boolean
 - true : Image
 
-
-
-##### Fixed parameters
-
-
+#### Fixed parameters
 
 - input_type : 'IMAGE'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE')
+nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE')
 ```
 
+### Returns
 
-#### Returns
+Image
 
-    Image

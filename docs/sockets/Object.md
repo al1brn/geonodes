@@ -1,335 +1,245 @@
 
-# Class Object
+# Data socket Object
 
-> Inherits from: ***dsock.Object***
+> Inherits from dsock.Object
+  
+<sub>go to [index](TBD)</sub>
 
 
-[Index](/docs/index.md)
 
 ## Properties
 
-
-
-- [**geometry**](#geometry) : [ObjectInfo](../nodes/ObjectInfo.md) geometry (Geometry) = info.geometry
-- [**info**](#info) : [ObjectInfo](../nodes/ObjectInfo.md) Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-- [**location**](#location) : [ObjectInfo](../nodes/ObjectInfo.md) location (Vector) = info.location
-- [**rotation**](#rotation) : [ObjectInfo](../nodes/ObjectInfo.md) rotation (Vector) = info.rotation
-- [**scale**](#scale) : [ObjectInfo](../nodes/ObjectInfo.md) scale (Vector) = info.scale
-
-
+- [geometry](#geometry) : [ObjectInfo](section:nodes/ObjectInfo.md), geometry (Geometry) = info.geometry
+- [info](#info) : [ObjectInfo](section:nodes/ObjectInfo.md), Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+- [location](#location) : [ObjectInfo](section:nodes/ObjectInfo.md), location (Vector) = info.location
+- [rotation](#rotation) : [ObjectInfo](section:nodes/ObjectInfo.md), rotation (Vector) = info.rotation
+- [scale](#scale) : [ObjectInfo](section:nodes/ObjectInfo.md), scale (Vector) = info.scale
 
 ## Methods
 
+- [switch](#switch) : [Switch](section:nodes/Switch.md), output (Object)
 
+## info
 
-- [**switch**](#switch) : [Switch](../nodes/Switch.md) output (Object)
-
-
-
-## Methods reference
-
-
-### geometry
-
-> Node: [ObjectInfo](../nodes/{self.node_name}.md)
-
-
-[Top](#class-object) [Index](/docs/index.md)
-
-```python
-v = object.geometry
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- object : Object (self)
-- as_instance : Boolean
-
-
-
-##### Parameters arguments
-
-
-
-- transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
-
-
-
-##### Fixed parameters
-
-
-
-- label:f"{self.node_chain_label}.geometry"
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.geometry")
-```
-
-
-#### Returns
-
-    Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-
-### info
-
-> Node: [ObjectInfo](../nodes/{self.node_name}.md)
-
-
-[Top](#class-object) [Index](/docs/index.md)
+> Node: [ObjectInfo](section:nodes/ObjectInfo)
+<sub>go to: [top](#object) [index](TBD)
+blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
+node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
 
 ```python
 v = object.info
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - object : Object (self)
 - as_instance : Boolean
 
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
-
-
-##### Fixed parameters
-
-
+#### Fixed parameters
 
 - label:f"{self.node_chain_label}.info"
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
+nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
 ```
 
+### Returns
 
-#### Returns
-
-    Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-
-### location
-
-> Node: [ObjectInfo](../nodes/{self.node_name}.md)
+Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
 
 
-[Top](#class-object) [Index](/docs/index.md)
+## location
+
+> Node: [ObjectInfo](section:nodes/ObjectInfo)
+<sub>go to: [top](#object) [index](TBD)
+blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
+node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
 
 ```python
 v = object.location
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - object : Object (self)
 - as_instance : Boolean
 
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
-
-
-##### Fixed parameters
-
-
+#### Fixed parameters
 
 - label:f"{self.node_chain_label}.location"
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.location")
+nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.location")
 ```
 
+### Returns
 
-#### Returns
-
-    Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-
-### rotation
-
-> Node: [ObjectInfo](../nodes/{self.node_name}.md)
+Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
 
 
-[Top](#class-object) [Index](/docs/index.md)
+## rotation
+
+> Node: [ObjectInfo](section:nodes/ObjectInfo)
+<sub>go to: [top](#object) [index](TBD)
+blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
+node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
 
 ```python
 v = object.rotation
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - object : Object (self)
 - as_instance : Boolean
 
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
-
-
-##### Fixed parameters
-
-
+#### Fixed parameters
 
 - label:f"{self.node_chain_label}.rotation"
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.rotation")
+nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.rotation")
 ```
 
+### Returns
 
-#### Returns
-
-    Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-
-### scale
-
-> Node: [ObjectInfo](../nodes/{self.node_name}.md)
+Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
 
 
-[Top](#class-object) [Index](/docs/index.md)
+## scale
+
+> Node: [ObjectInfo](section:nodes/ObjectInfo)
+<sub>go to: [top](#object) [index](TBD)
+blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
+node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
 
 ```python
 v = object.scale
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - object : Object (self)
 - as_instance : Boolean
 
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
-
-
-##### Fixed parameters
-
-
+#### Fixed parameters
 
 - label:f"{self.node_chain_label}.scale"
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.scale")
+nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.scale")
 ```
 
+### Returns
 
-#### Returns
-
-    Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-
-### switch
-
-> Node: [Switch](../nodes/{self.node_name}.md)
+Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
 
 
-[Top](#class-object) [Index](/docs/index.md)
+## geometry
+
+> Node: [ObjectInfo](section:nodes/ObjectInfo)
+<sub>go to: [top](#object) [index](TBD)
+blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
+node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
+
+```python
+v = object.geometry
+```
+
+### Arguments
+
+
+#### Sockets
+
+- object : Object (self)
+- as_instance : Boolean
+
+#### Parameters
+
+- transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
+
+#### Fixed parameters
+
+- label:f"{self.node_chain_label}.geometry"
+
+### Node creation
+
+```python
+nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.geometry")
+```
+
+### Returns
+
+Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+
+
+## switch
+
+> Node: [Switch](section:nodes/Switch)
+<sub>go to: [top](#object) [index](TBD)
+blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 
 ```python
 v = object.switch(switch1, true)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - false : Object (self)
 - switch1 : Boolean
 - true : Object
 
-
-
-##### Fixed parameters
-
-
+#### Fixed parameters
 
 - input_type : 'OBJECT'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='OBJECT')
+nodes.Switch(false=self, switch1=switch1, true=true, input_type='OBJECT')
 ```
 
+### Returns
 
-#### Returns
+Object
 
-    Object

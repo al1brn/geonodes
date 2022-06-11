@@ -1,43 +1,65 @@
 
-# Class Points
+# Data socket Points
 
-> Inherits from: ***gn.Geometry***
+> Inherits from gn.Geometry
+  
+<sub>go to [index](TBD)</sub>
 
 
-[Index](/docs/index.md)
 
 ## Methods
 
+- [instance_on_points](#instance_on_points) : [InstanceOnPoints](section:nodes/InstanceOnPoints.md), instances (Instances)
+- [set_radius](#set_radius) : [SetPointRadius](section:nodes/SetPointRadius.md), points (Points)
+- [to_vertices](#to_vertices) : [PointsToVertices](section:nodes/PointsToVertices.md), mesh (Mesh)
+- [to_volume](#to_volume) : [PointsToVolume](section:nodes/PointsToVolume.md), volume (Volume)
+
+## set_radius
+
+> Node: [SetPointRadius](section:nodes/SetPointRadius)
+<sub>go to: [top](#points) [index](TBD)
+blender ref [GeometryNodeSetPointRadius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPointRadius.html)
+node ref [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_point_radius.html) </sub>
+
+```python
+v = points.set_radius(selection, radius)
+```
+
+### Arguments
 
 
-- [**instance_on_points**](#instance_on_points) : [InstanceOnPoints](../nodes/InstanceOnPoints.md) instances (Instances)
-- [**set_radius**](#set_radius) : [SetPointRadius](../nodes/SetPointRadius.md) points (Points)
-- [**to_vertices**](#to_vertices) : [PointsToVertices](../nodes/PointsToVertices.md) mesh (Mesh)
-- [**to_volume**](#to_volume) : [PointsToVolume](../nodes/PointsToVolume.md) volume (Volume)
+#### Sockets
+
+- points : Points (self)
+- selection : Boolean
+- radius : Float
+
+### Node creation
+
+```python
+nodes.SetPointRadius(points=self, selection=selection, radius=radius)
+```
+
+### Returns
+
+Points
 
 
+## instance_on_points
 
-## Methods reference
-
-
-### instance_on_points
-
-> Node: [InstanceOnPoints](../nodes/{self.node_name}.md)
-
-
-[Top](#class-points) [Index](/docs/index.md)
+> Node: [InstanceOnPoints](section:nodes/InstanceOnPoints)
+<sub>go to: [top](#points) [index](TBD)
+blender ref [GeometryNodeInstanceOnPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
+node ref [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/instance_on_points.html) </sub>
 
 ```python
 v = points.instance_on_points(selection, instance, pick_instance, instance_index, rotation, scale)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - points : Points (self)
 - selection : Boolean
@@ -47,111 +69,62 @@ v = points.instance_on_points(selection, instance, pick_instance, instance_index
 - rotation : Vector
 - scale : Vector
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale)
+nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale)
 ```
 
+### Returns
 
-#### Returns
-
-    Instances
-
-### set_radius
-
-> Node: [SetPointRadius](../nodes/{self.node_name}.md)
+Instances
 
 
-[Top](#class-points) [Index](/docs/index.md)
+## to_vertices
 
-```python
-v = points.set_radius(selection, radius)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- points : Points (self)
-- selection : Boolean
-- radius : Float
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.SetPointRadius(points=self, selection=selection, radius=radius)
-```
-
-
-#### Returns
-
-    Points
-
-### to_vertices
-
-> Node: [PointsToVertices](../nodes/{self.node_name}.md)
-
-
-[Top](#class-points) [Index](/docs/index.md)
+> Node: [PointsToVertices](section:nodes/PointsToVertices)
+<sub>go to: [top](#points) [index](TBD)
+blender ref [GeometryNodePointsToVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html)
+node ref [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/points_to_vertices.html) </sub>
 
 ```python
 v = points.to_vertices(selection)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - points : Points (self)
 - selection : Boolean
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.PointsToVertices(points=self, selection=selection)
+nodes.PointsToVertices(points=self, selection=selection)
 ```
 
+### Returns
 
-#### Returns
-
-    Mesh
-
-### to_volume
-
-> Node: [PointsToVolume](../nodes/{self.node_name}.md)
+Mesh
 
 
-[Top](#class-points) [Index](/docs/index.md)
+## to_volume
+
+> Node: [PointsToVolume](section:nodes/PointsToVolume)
+<sub>go to: [top](#points) [index](TBD)
+blender ref [GeometryNodePointsToVolume](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html)
+node ref [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/points_to_volume.html) </sub>
 
 ```python
 v = points.to_volume(density, voxel_size, voxel_amount, radius, resolution_mode)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - points : Points (self)
 - density : Float
@@ -159,24 +132,17 @@ v = points.to_volume(density, voxel_size, voxel_amount, radius, resolution_mode)
 - voxel_amount : Float
 - radius : Float
 
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - resolution_mode : 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode)
+nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode)
 ```
 
+### Returns
 
-#### Returns
+Volume
 
-    Volume

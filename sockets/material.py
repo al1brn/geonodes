@@ -9,17 +9,21 @@ logger = logging.Logger('geonodes')
 # Data class Material
 
 class Material(dsock.Material):
-    """ Class Material
+    """ 
+
+    Data socket Material
+    --------------------
+        > Inherits from dsock.Material
+          
+        <sub>go to index</sub>
+        
+        
     
 
-    | Inherits from: dsock.Material 
-    Index 
-    
-
-    Methods
-    =======
-    - **selection** : MaterialSelection selection (Boolean) 
-    - **switch**    : Switch output (Material) 
+        Methods
+        -------
+            - selection : MaterialSelection, selection (Boolean)
+            - switch : Switch, output (Material)
     """
 
 
@@ -27,76 +31,78 @@ class Material(dsock.Material):
     # Methods
 
     def switch(self, switch1=None, true=None):
-        """ switch
+        """ > Node: Switch
+        <sub>go to: top index
+        blender ref GeometryNodeSwitch
+        node ref Switch </sub>
         
-
-        | Node: Switch 
-        Top Index 
-        
-
-            v = material.switch(switch1, true) 
-        
+        ```python
+        v = material.switch(switch1, true)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - false   : Material (self) 
-            - switch1 : Boolean 
-            - true    : Material 
-        
+            Sockets
+            -------
+                - false : Material (self)
+                - switch1 : Boolean
+                - true : Material
+    
 
             Fixed parameters
             ----------------
-            - input_type : 'MATERIAL' 
-        
+                - input_type : 'MATERIAL'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL') 
-        
+        -------------
+            ```python
+            nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL')
+            ```
+    
 
         Returns
-        =======
-                Material 
+        -------
+            Material
+            
         """
 
         return nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL').output
 
     def selection(self):
-        """ selection
+        """ > Node: MaterialSelection
+        <sub>go to: top index
+        blender ref GeometryNodeMaterialSelection
+        node ref Material Selection </sub>
         
-
-        | Node: MaterialSelection 
-        Top Index 
-        
-
-            v = material.selection() 
-        
+        ```python
+        v = material.selection()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - material : Material (self) 
-        
+            Sockets
+            -------
+                - material : Material (self)
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.MaterialSelection(material=self) 
-        
+        -------------
+            ```python
+            nodes.MaterialSelection(material=self)
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.MaterialSelection(material=self).selection

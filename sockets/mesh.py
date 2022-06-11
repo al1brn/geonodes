@@ -9,85 +9,87 @@ logger = logging.Logger('geonodes')
 # Data class Mesh
 
 class Mesh(gn.Geometry):
-    """ Class Mesh
+    """ 
+
+    Data socket Mesh
+    ----------------
+        > Inherits from gn.Geometry
+          
+        <sub>go to index</sub>
+        
+        
     
 
-    | Inherits from: gn.Geometry 
-    Index 
+        Constructors
+        ------------
+            - Circle : MeshCircle, mesh (Mesh)
+            - Cone : Cone, Sockets      [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
+            - Cube : Cube, mesh (Mesh)
+            - Cylinder : Cylinder, Sockets      [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
+            - Grid : Grid, mesh (Mesh)
+            - IcoSphere : IcoSphere, mesh (Mesh)
+            - Line : MeshLine, mesh (Mesh)
+            - UVSphere : UvSphere, mesh (Mesh)
     
 
-    Constructors
-    ============
-    - **Circle**    : MeshCircle mesh (Mesh) 
-    - **Cone**      : Cone Sockets      [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)] 
-    - **Cube**      : Cube mesh (Mesh) 
-    - **Cylinder**  : Cylinder Sockets      [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)] 
-    - **Grid**      : Grid mesh (Mesh) 
-    - **IcoSphere** : IcoSphere mesh (Mesh) 
-    - **Line**      : MeshLine mesh (Mesh) 
-    - **UVSphere**  : UvSphere mesh (Mesh) 
+        Attribute capture
+        -----------------
+            - capture_edge_angle : EdgeAngle, Sockets      [unsigned_angle (Float), signed_angle (Float)]
+            - capture_edge_neighbors : EdgeNeighbors, face_count (Integer)
+            - capture_edge_vertices : EdgeVertices, Sockets      [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
+            - capture_face_area : FaceArea, area (Float)
+            - capture_face_neighbors : FaceNeighbors, Sockets      [vertex_count (Integer), face_count (Integer)]
+            - capture_island : MeshIsland, Sockets      [island_index (Integer), island_count (Integer)]
+            - capture_material_index : MaterialIndex, material_index (Integer)
+            - capture_material_selection : MaterialSelection, selection (Boolean)
+            - capture_shade_smooth : IsShadeSmooth, smooth (Boolean)
+            - capture_vertex_neighbors : VertexNeighbors, Sockets      [vertex_count (Integer), face_count (Integer)]
     
 
-    Attribute capture
-    =================
-    - **capture_edge_angle**         : EdgeAngle Sockets      [unsigned_angle (Float), signed_angle (Float)] 
-    - **capture_edge_neighbors**     : EdgeNeighbors face_count (Integer) 
-    - **capture_edge_vertices**      : EdgeVertices Sockets      [vertex_index_1 (Integer), vertex_index_2 (Integer),
-      position_1 (Vector), position_2 (Vector)] 
-    - **capture_face_area**          : FaceArea area (Float) 
-    - **capture_face_neighbors**     : FaceNeighbors Sockets      [vertex_count (Integer), face_count (Integer)]
-    - **capture_island**             : MeshIsland Sockets      [island_index (Integer), island_count (Integer)] 
-    - **capture_material_index**     : MaterialIndex material_index (Integer) 
-    - **capture_material_selection** : MaterialSelection selection (Boolean) 
-    - **capture_shade_smooth**       : IsShadeSmooth smooth (Boolean) 
-    - **capture_vertex_neighbors**   : VertexNeighbors Sockets      [vertex_count (Integer), face_count (Integer)]
+        Attributes
+        ----------
+            - corner_ID : EdgeAngle, Float = capture_ID(domain='CORNER').unsigned_angle
+            - corner_index : EdgeAngle, Float = capture_index(domain='CORNER').unsigned_angle
+            - corner_porision : EdgeAngle, Float = capture_position(domain='CORNER').unsigned_angle
+            - edge_angle : EdgeAngle, Float = capture_edge_angle(domain='EDGE').unsigned_angle
+            - edge_neighbors : EdgeNeighbors, Integer = capture_edge_neighbors(domain='EDGE')
+            - edge_unsigned_angle : EdgeAngle, Float = capture_edge_angle(domain='EDGE').signed_angle
+            - edge_vertices_index1 : EdgeVertices, Integer = capture_edge_vertices(domain='EDGE').vertex_index_1
+            - edge_vertices_index2 : EdgeVertices, Integer = capture_edge_vertices(domain='EDGE').vertex_index_2
+            - edge_vertices_position1 : EdgeVertices, Vector = capture_edge_vertices(domain='EDGE').position_1
+            - edge_vertices_position2 : EdgeVertices, Vector = capture_edge_vertices(domain='EDGE').position_2
+            - egde_ID : EdgeAngle, Float = capture_ID(domain='EDGE').unsigned_angle
+            - egde_index : EdgeAngle, Float = capture_index(domain='EDGE').unsigned_angle
+            - egde_position : EdgeAngle, Float = capture_position(domain='EDGE').unsigned_angle
+            - face_ID : EdgeAngle, Float = capture_ID(domain='FACE').unsigned_angle
+            - face_area : FaceArea, Float = capture_face_area(domain='FACE')
+            - face_index : EdgeAngle, Float = capture_index(domain='FACE').unsigned_angle
+            - face_neighbors_face_count : FaceNeighbors, Integer = capture_face_neighbors(domain='FACE').face_count
+            - face_neighbors_vertex_count : FaceNeighbors, Integer = capture_face_neighbors(domain='FACE').vertex_count
+            - face_position : EdgeAngle, Float = capture_position(domain='FACE').unsigned_angle
+            - island : MeshIsland, Integer = capture_island(domain='POINT').island_index
+            - material_index : MaterialIndex, Integer = capture_material_index(domain='FACE')
+            - material_selection : MaterialSelection, Boolean = capture_material_selection(domain='FACE')
+            - shade_smooth : IsShadeSmooth, Boolean = capture_shade_smooth(domain='FACE')
+            - vertex_neighbors_face_count : VertexNeighbors, Integer = capture_vertex_neighbors(domain='POINT').face_count
+            - vertex_neighbors_vertex_count : VertexNeighbors, Integer = capture_vertex_neighbors(domain='POINT').vertex_count
     
 
-    Attributes
-    ==========
-    - **corner_ID**                     : EdgeAngle Float = capture_ID(domain='CORNER').unsigned_angle 
-    - **corner_index**                  : EdgeAngle Float = capture_index(domain='CORNER').unsigned_angle 
-    - **corner_porision**               : EdgeAngle Float = capture_position(domain='CORNER').unsigned_angle 
-    - **edge_angle**                    : EdgeAngle Float = capture_edge_angle(domain='EDGE').unsigned_angle 
-    - **edge_neighbors**                : EdgeNeighbors Integer = capture_edge_neighbors(domain='EDGE') 
-    - **edge_unsigned_angle**           : EdgeAngle Float = capture_edge_angle(domain='EDGE').signed_angle 
-    - **edge_vertices_index1**          : EdgeVertices Integer = capture_edge_vertices(domain='EDGE').vertex_index_1
-    - **edge_vertices_index2**          : EdgeVertices Integer = capture_edge_vertices(domain='EDGE').vertex_index_2
-    - **edge_vertices_position1**       : EdgeVertices Vector = capture_edge_vertices(domain='EDGE').position_1 
-    - **edge_vertices_position2**       : EdgeVertices Vector = capture_edge_vertices(domain='EDGE').position_2 
-    - **egde_ID**                       : EdgeAngle Float = capture_ID(domain='EDGE').unsigned_angle 
-    - **egde_index**                    : EdgeAngle Float = capture_index(domain='EDGE').unsigned_angle 
-    - **egde_position**                 : EdgeAngle Float = capture_position(domain='EDGE').unsigned_angle 
-    - **face_ID**                       : EdgeAngle Float = capture_ID(domain='FACE').unsigned_angle 
-    - **face_area**                     : FaceArea Float = capture_face_area(domain='FACE') 
-    - **face_index**                    : EdgeAngle Float = capture_index(domain='FACE').unsigned_angle 
-    - **face_neighbors_face_count**     : FaceNeighbors Integer = capture_face_neighbors(domain='FACE').face_count
-    - **face_neighbors_vertex_count**   : FaceNeighbors Integer = capture_face_neighbors(domain='FACE').vertex_count
-    - **face_position**                 : EdgeAngle Float = capture_position(domain='FACE').unsigned_angle 
-    - **island**                        : MeshIsland Integer = capture_island(domain='POINT').island_index 
-    - **material_index**                : MaterialIndex Integer = capture_material_index(domain='FACE') 
-    - **material_selection**            : MaterialSelection Boolean = capture_material_selection(domain='FACE') 
-    - **shade_smooth**                  : IsShadeSmooth Boolean = capture_shade_smooth(domain='FACE') 
-    - **vertex_neighbors_face_count**   : VertexNeighbors Integer = capture_vertex_neighbors(domain='POINT').face_count
-    - **vertex_neighbors_vertex_count** : VertexNeighbors Integer = capture_vertex_neighbors(domain='POINT').vertex_count
-    
-
-    Methods
-    =======
-    - **difference**                 : MeshBoolean mesh (Mesh) 
-    - **distribute_points_on_faces** : DistributePointsOnFaces Sockets      [points (Points), normal (Vector),
-      rotation (Vector)] 
-    - **dual**                       : DualMesh dual_mesh (Geometry) 
-    - **extrude**                    : ExtrudeMesh Sockets      [mesh (Mesh), top (Boolean), side (Boolean)] 
-    - **flip_faces**                 : FlipFaces mesh (Mesh) 
-    - **intersect**                  : MeshBoolean mesh (Mesh) 
-    - **split_edges**                : SplitEdges mesh (Mesh) 
-    - **subdivide**                  : SubdivideMesh mesh (Mesh) 
-    - **subdivision_surface**        : SubdivisionSurface mesh (Mesh) 
-    - **to_curve**                   : MeshToCurve curve (Curve) 
-    - **to_points**                  : MeshToPoints points (Points) 
-    - **triangulate**                : Triangulate mesh (Mesh) 
-    - **union**                      : MeshBoolean mesh (Mesh) 
+        Methods
+        -------
+            - difference : MeshBoolean, mesh (Mesh)
+            - distribute_points_on_faces : DistributePointsOnFaces, Sockets      [points (Points), normal (Vector), rotation (Vector)]
+            - dual : DualMesh, dual_mesh (Geometry)
+            - extrude : ExtrudeMesh, Sockets      [mesh (Mesh), top (Boolean), side (Boolean)]
+            - flip_faces : FlipFaces, mesh (Mesh)
+            - intersect : MeshBoolean, mesh (Mesh)
+            - split_edges : SplitEdges, mesh (Mesh)
+            - subdivide : SubdivideMesh, mesh (Mesh)
+            - subdivision_surface : SubdivisionSurface, mesh (Mesh)
+            - to_curve : MeshToCurve, curve (Curve)
+            - to_points : MeshToPoints, points (Points)
+            - triangulate : Triangulate, mesh (Mesh)
+            - union : MeshBoolean, mesh (Mesh)
     """
 
 
@@ -96,325 +98,330 @@ class Mesh(gn.Geometry):
 
     @classmethod
     def Circle(cls, vertices=None, radius=None, fill_type='NONE'):
-        """ Circle
+        """ > Node: MeshCircle
+        <sub>go to: top index
+        blender ref GeometryNodeMeshCircle
+        node ref Mesh Circle </sub>
         
-
-        | Node: MeshCircle 
-        Top Index 
-        
-
-            v = Mesh.Circle(vertices, radius, fill_type) 
-        
+        ```python
+        v = Mesh.Circle(vertices, radius, fill_type)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vertices : Integer 
-            - radius   : Float 
-        
+            Sockets
+            -------
+                - vertices : Integer
+                - radius : Float
+    
 
-            Parameters arguments
-            --------------------
-            - fill_type : 'NONE' in [NONE, NGON, TRIANGLE_FAN] 
-        
+            Parameters
+            ----------
+                - fill_type : 'NONE' in [NONE, NGON, TRIANGLE_FAN]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.MeshCircle(vertices=vertices, radius=radius, fill_type=fill_type) 
-        
+        -------------
+            ```python
+            nodes.MeshCircle(vertices=vertices, radius=radius, fill_type=fill_type)
+            ```
+    
 
         Returns
-        =======
-                Mesh 
+        -------
+            Mesh
+            
         """
 
         return cls(nodes.MeshCircle(vertices=vertices, radius=radius, fill_type=fill_type).mesh)
 
     @classmethod
     def Cone(cls, vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON'):
-        """ Cone
+        """ > Node: Cone
+        <sub>go to: top index
+        blender ref GeometryNodeMeshCone
+        node ref Cone </sub>
         
-
-        | Node: Cone 
-        Top Index 
-        
-
-            v = Mesh.Cone(vertices, side_segments, fill_segments, radius_top, radius_bottom, depth, fill_type) 
-        
+        ```python
+        v = Mesh.Cone(vertices, side_segments, fill_segments, radius_top, radius_bottom, depth, fill_type)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vertices      : Integer 
-            - side_segments : Integer 
-            - fill_segments : Integer 
-            - radius_top    : Float 
-            - radius_bottom : Float 
-            - depth         : Float 
-        
+            Sockets
+            -------
+                - vertices : Integer
+                - side_segments : Integer
+                - fill_segments : Integer
+                - radius_top : Float
+                - radius_bottom : Float
+                - depth : Float
+    
 
-            Parameters arguments
-            --------------------
-            - fill_type : 'NGON' in [NONE, NGON, TRIANGLE_FAN] 
-        
+            Parameters
+            ----------
+                - fill_type : 'NGON' in [NONE, NGON, TRIANGLE_FAN]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Cone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top,
-            radius_bottom=radius_bottom, depth=depth, fill_type=fill_type) 
-        
+        -------------
+            ```python
+            nodes.Cone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top, radius_bottom=radius_bottom, depth=depth, fill_type=fill_type)
+            ```
+    
 
         Returns
-        =======
-                Sockets [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)] 
+        -------
+            Sockets [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
+            
         """
 
         return nodes.Cone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top, radius_bottom=radius_bottom, depth=depth, fill_type=fill_type)
 
     @classmethod
     def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None):
-        """ Cube
+        """ > Node: Cube
+        <sub>go to: top index
+        blender ref GeometryNodeMeshCube
+        node ref Cube </sub>
         
-
-        | Node: Cube 
-        Top Index 
-        
-
-            v = Mesh.Cube(size, vertices_x, vertices_y, vertices_z) 
-        
+        ```python
+        v = Mesh.Cube(size, vertices_x, vertices_y, vertices_z)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - size       : Vector 
-            - vertices_x : Integer 
-            - vertices_y : Integer 
-            - vertices_z : Integer 
-        
+            Sockets
+            -------
+                - size : Vector
+                - vertices_x : Integer
+                - vertices_y : Integer
+                - vertices_z : Integer
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Cube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, vertices_z=vertices_z) 
-        
+        -------------
+            ```python
+            nodes.Cube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, vertices_z=vertices_z)
+            ```
+    
 
         Returns
-        =======
-                Mesh 
+        -------
+            Mesh
+            
         """
 
         return cls(nodes.Cube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, vertices_z=vertices_z).mesh)
 
     @classmethod
     def Cylinder(cls, vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON'):
-        """ Cylinder
+        """ > Node: Cylinder
+        <sub>go to: top index
+        blender ref GeometryNodeMeshCylinder
+        node ref Cylinder </sub>
         
-
-        | Node: Cylinder 
-        Top Index 
-        
-
-            v = Mesh.Cylinder(vertices, side_segments, fill_segments, radius, depth, fill_type) 
-        
+        ```python
+        v = Mesh.Cylinder(vertices, side_segments, fill_segments, radius, depth, fill_type)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vertices      : Integer 
-            - side_segments : Integer 
-            - fill_segments : Integer 
-            - radius        : Float 
-            - depth         : Float 
-        
+            Sockets
+            -------
+                - vertices : Integer
+                - side_segments : Integer
+                - fill_segments : Integer
+                - radius : Float
+                - depth : Float
+    
 
-            Parameters arguments
-            --------------------
-            - fill_type : 'NGON' in [NONE, NGON, TRIANGLE_FAN] 
-        
+            Parameters
+            ----------
+                - fill_type : 'NGON' in [NONE, NGON, TRIANGLE_FAN]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Cylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius,
-            depth=depth, fill_type=fill_type) 
-        
+        -------------
+            ```python
+            nodes.Cylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius, depth=depth, fill_type=fill_type)
+            ```
+    
 
         Returns
-        =======
-                Sockets [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)] 
+        -------
+            Sockets [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
+            
         """
 
         return nodes.Cylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius, depth=depth, fill_type=fill_type)
 
     @classmethod
     def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):
-        """ Grid
+        """ > Node: Grid
+        <sub>go to: top index
+        blender ref GeometryNodeMeshGrid
+        node ref Grid </sub>
         
-
-        | Node: Grid 
-        Top Index 
-        
-
-            v = Mesh.Grid(size_x, size_y, vertices_x, vertices_y) 
-        
+        ```python
+        v = Mesh.Grid(size_x, size_y, vertices_x, vertices_y)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - size_x     : Float 
-            - size_y     : Float 
-            - vertices_x : Integer 
-            - vertices_y : Integer 
-        
+            Sockets
+            -------
+                - size_x : Float
+                - size_y : Float
+                - vertices_x : Integer
+                - vertices_y : Integer
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y) 
-        
+        -------------
+            ```python
+            nodes.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y)
+            ```
+    
 
         Returns
-        =======
-                Mesh 
+        -------
+            Mesh
+            
         """
 
         return cls(nodes.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y).mesh)
 
     @classmethod
     def IcoSphere(cls, radius=None, subdivisions=None):
-        """ IcoSphere
+        """ > Node: IcoSphere
+        <sub>go to: top index
+        blender ref GeometryNodeMeshIcoSphere
+        node ref Ico Sphere </sub>
         
-
-        | Node: IcoSphere 
-        Top Index 
-        
-
-            v = Mesh.IcoSphere(radius, subdivisions) 
-        
+        ```python
+        v = Mesh.IcoSphere(radius, subdivisions)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - radius       : Float 
-            - subdivisions : Integer 
-        
+            Sockets
+            -------
+                - radius : Float
+                - subdivisions : Integer
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.IcoSphere(radius=radius, subdivisions=subdivisions) 
-        
+        -------------
+            ```python
+            nodes.IcoSphere(radius=radius, subdivisions=subdivisions)
+            ```
+    
 
         Returns
-        =======
-                Mesh 
+        -------
+            Mesh
+            
         """
 
         return cls(nodes.IcoSphere(radius=radius, subdivisions=subdivisions).mesh)
 
     @classmethod
     def Line(cls, count=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET'):
-        """ Line
+        """ > Node: MeshLine
+        <sub>go to: top index
+        blender ref GeometryNodeMeshLine
+        node ref Mesh Line </sub>
         
-
-        | Node: MeshLine 
-        Top Index 
-        
-
-            v = Mesh.Line(count, start_location, offset, count_mode, mode) 
-        
+        ```python
+        v = Mesh.Line(count, start_location, offset, count_mode, mode)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - count          : Integer 
-            - start_location : Vector 
-            - offset         : Vector 
-        
+            Sockets
+            -------
+                - count : Integer
+                - start_location : Vector
+                - offset : Vector
+    
 
-            Parameters arguments
-            --------------------
-            - count_mode : 'TOTAL' in [TOTAL, RESOLUTION] 
-            - mode       : 'OFFSET' in [OFFSET, END_POINTS] 
-        
+            Parameters
+            ----------
+                - count_mode : 'TOTAL' in [TOTAL, RESOLUTION]
+                - mode : 'OFFSET' in [OFFSET, END_POINTS]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.MeshLine(count=count, start_location=start_location, offset=offset, count_mode=count_mode,
-            mode=mode) 
-        
+        -------------
+            ```python
+            nodes.MeshLine(count=count, start_location=start_location, offset=offset, count_mode=count_mode, mode=mode)
+            ```
+    
 
         Returns
-        =======
-                Mesh 
+        -------
+            Mesh
+            
         """
 
         return cls(nodes.MeshLine(count=count, start_location=start_location, offset=offset, count_mode=count_mode, mode=mode).mesh)
 
     @classmethod
     def UVSphere(cls, segments=None, rings=None, radius=None):
-        """ UVSphere
+        """ > Node: UvSphere
+        <sub>go to: top index
+        blender ref GeometryNodeMeshUVSphere
+        node ref UV Sphere </sub>
         
-
-        | Node: UvSphere 
-        Top Index 
-        
-
-            v = Mesh.UVSphere(segments, rings, radius) 
-        
+        ```python
+        v = Mesh.UVSphere(segments, rings, radius)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - segments : Integer 
-            - rings    : Integer 
-            - radius   : Float 
-        
+            Sockets
+            -------
+                - segments : Integer
+                - rings : Integer
+                - radius : Float
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.UvSphere(segments=segments, rings=rings, radius=radius) 
-        
+        -------------
+            ```python
+            nodes.UvSphere(segments=segments, rings=rings, radius=radius)
+            ```
+    
 
         Returns
-        =======
-                Mesh 
+        -------
+            Mesh
+            
         """
 
         return cls(nodes.UvSphere(segments=segments, rings=rings, radius=radius).mesh)
@@ -424,36 +431,37 @@ class Mesh(gn.Geometry):
     # Attribute capture
 
     def capture_edge_angle(self, domain='EDGE'):
-        """ capture_edge_angle
+        """ > Node: EdgeAngle
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeAngle
+        node ref Edge Angle </sub>
         
-
-        | Node: EdgeAngle 
-        Top Index 
-        
-
-            v = mesh.capture_edge_angle(self, domain='EDGE') 
-        
+        ```python
+        v = mesh.capture_edge_angle(self, domain='EDGE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'EDGE' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'EDGE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeAngle() 
-        
+        -------------
+            ```python
+            nodes.EdgeAngle()
+            ```
+    
 
         Returns
-        =======
-                Sockets [unsigned_angle (Float), signed_angle (Float)] 
+        -------
+            Sockets [unsigned_angle (Float), signed_angle (Float)]
+            
         """
 
         attr_name = 'capture_edge_angle_' + domain
@@ -464,36 +472,37 @@ class Mesh(gn.Geometry):
         return getattr(self, attr_name)
 
     def capture_edge_neighbors(self, domain='EDGE'):
-        """ capture_edge_neighbors
+        """ > Node: EdgeNeighbors
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeNeighbors
+        node ref Edge Neighbors </sub>
         
-
-        | Node: EdgeNeighbors 
-        Top Index 
-        
-
-            v = mesh.capture_edge_neighbors(self, domain='EDGE') 
-        
+        ```python
+        v = mesh.capture_edge_neighbors(self, domain='EDGE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'EDGE' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'EDGE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeNeighbors() 
-        
+        -------------
+            ```python
+            nodes.EdgeNeighbors()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         attr_name = 'capture_edge_neighbors_' + domain
@@ -504,36 +513,37 @@ class Mesh(gn.Geometry):
         return getattr(self, attr_name).face_count
 
     def capture_edge_vertices(self, domain='EDGE'):
-        """ capture_edge_vertices
+        """ > Node: EdgeVertices
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeVertices
+        node ref Edge Vertices </sub>
         
-
-        | Node: EdgeVertices 
-        Top Index 
-        
-
-            v = mesh.capture_edge_vertices(self, domain='EDGE') 
-        
+        ```python
+        v = mesh.capture_edge_vertices(self, domain='EDGE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'EDGE' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'EDGE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeVertices() 
-        
+        -------------
+            ```python
+            nodes.EdgeVertices()
+            ```
+    
 
         Returns
-        =======
-                Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
+        -------
+            Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
+            
         """
 
         attr_name = 'capture_edge_vertices_' + domain
@@ -544,36 +554,37 @@ class Mesh(gn.Geometry):
         return getattr(self, attr_name)
 
     def capture_face_area(self, domain='FACE'):
-        """ capture_face_area
+        """ > Node: FaceArea
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshFaceArea
+        node ref Face Area </sub>
         
-
-        | Node: FaceArea 
-        Top Index 
-        
-
-            v = mesh.capture_face_area(self, domain='FACE') 
-        
+        ```python
+        v = mesh.capture_face_area(self, domain='FACE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'FACE' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'FACE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.FaceArea() 
-        
+        -------------
+            ```python
+            nodes.FaceArea()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         attr_name = 'capture_face_area_' + domain
@@ -584,36 +595,37 @@ class Mesh(gn.Geometry):
         return getattr(self, attr_name).area
 
     def capture_face_neighbors(self, domain='FACE'):
-        """ capture_face_neighbors
+        """ > Node: FaceNeighbors
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshFaceNeighbors
+        node ref Face Neighbors </sub>
         
-
-        | Node: FaceNeighbors 
-        Top Index 
-        
-
-            v = mesh.capture_face_neighbors(self, domain='FACE') 
-        
+        ```python
+        v = mesh.capture_face_neighbors(self, domain='FACE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'FACE' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'FACE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.FaceNeighbors() 
-        
+        -------------
+            ```python
+            nodes.FaceNeighbors()
+            ```
+    
 
         Returns
-        =======
-                Sockets [vertex_count (Integer), face_count (Integer)] 
+        -------
+            Sockets [vertex_count (Integer), face_count (Integer)]
+            
         """
 
         attr_name = 'capture_face_neighbors_' + domain
@@ -624,36 +636,37 @@ class Mesh(gn.Geometry):
         return getattr(self, attr_name)
 
     def capture_island(self, domain='POINT'):
-        """ capture_island
+        """ > Node: MeshIsland
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshIsland
+        node ref Mesh Island </sub>
         
-
-        | Node: MeshIsland 
-        Top Index 
-        
-
-            v = mesh.capture_island(self, domain='POINT') 
-        
+        ```python
+        v = mesh.capture_island(self, domain='POINT')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'POINT' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'POINT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.MeshIsland() 
-        
+        -------------
+            ```python
+            nodes.MeshIsland()
+            ```
+    
 
         Returns
-        =======
-                Sockets [island_index (Integer), island_count (Integer)] 
+        -------
+            Sockets [island_index (Integer), island_count (Integer)]
+            
         """
 
         attr_name = 'capture_island_' + domain
@@ -664,36 +677,37 @@ class Mesh(gn.Geometry):
         return getattr(self, attr_name)
 
     def capture_shade_smooth(self, domain='FACE'):
-        """ capture_shade_smooth
+        """ > Node: IsShadeSmooth
+        <sub>go to: top index
+        blender ref GeometryNodeInputShadeSmooth
+        node ref Is Shade Smooth </sub>
         
-
-        | Node: IsShadeSmooth 
-        Top Index 
-        
-
-            v = mesh.capture_shade_smooth(self, domain='FACE') 
-        
+        ```python
+        v = mesh.capture_shade_smooth(self, domain='FACE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'FACE' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'FACE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.IsShadeSmooth() 
-        
+        -------------
+            ```python
+            nodes.IsShadeSmooth()
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         attr_name = 'capture_shade_smooth_' + domain
@@ -704,36 +718,37 @@ class Mesh(gn.Geometry):
         return getattr(self, attr_name).smooth
 
     def capture_vertex_neighbors(self, domain='POINT'):
-        """ capture_vertex_neighbors
+        """ > Node: VertexNeighbors
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshVertexNeighbors
+        node ref Vertex Neighbors </sub>
         
-
-        | Node: VertexNeighbors 
-        Top Index 
-        
-
-            v = mesh.capture_vertex_neighbors(self, domain='POINT') 
-        
+        ```python
+        v = mesh.capture_vertex_neighbors(self, domain='POINT')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'POINT' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'POINT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VertexNeighbors() 
-        
+        -------------
+            ```python
+            nodes.VertexNeighbors()
+            ```
+    
 
         Returns
-        =======
-                Sockets [vertex_count (Integer), face_count (Integer)] 
+        -------
+            Sockets [vertex_count (Integer), face_count (Integer)]
+            
         """
 
         attr_name = 'capture_vertex_neighbors_' + domain
@@ -744,36 +759,37 @@ class Mesh(gn.Geometry):
         return getattr(self, attr_name)
 
     def capture_material_index(self, domain='FACE'):
-        """ capture_material_index
+        """ > Node: MaterialIndex
+        <sub>go to: top index
+        blender ref GeometryNodeInputMaterialIndex
+        node ref Material Index </sub>
         
-
-        | Node: MaterialIndex 
-        Top Index 
-        
-
-            v = mesh.capture_material_index(self, domain='FACE') 
-        
+        ```python
+        v = mesh.capture_material_index(self, domain='FACE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'FACE' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'FACE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.MaterialIndex() 
-        
+        -------------
+            ```python
+            nodes.MaterialIndex()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         attr_name = 'capture_material_index_' + domain
@@ -784,41 +800,42 @@ class Mesh(gn.Geometry):
         return getattr(self, attr_name).material_index
 
     def capture_material_selection(self, material=None, domain='FACE'):
-        """ capture_material_selection
+        """ > Node: MaterialSelection
+        <sub>go to: top index
+        blender ref GeometryNodeMaterialSelection
+        node ref Material Selection </sub>
         
-
-        | Node: MaterialSelection 
-        Top Index 
-        
-
-            v = mesh.capture_material_selection(self, material, domain='FACE') 
-        
+        ```python
+        v = mesh.capture_material_selection(self, material, domain='FACE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'FACE' 
-        
+            Sockets
+            -------
+                - material : Material
+    
 
-            Sockets arguments
-            -----------------
-            - material : Material 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'FACE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.MaterialSelection(material=material) 
-        
+        -------------
+            ```python
+            nodes.MaterialSelection(material=material)
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         attr_name = 'capture_material_selection_' + domain
@@ -834,880 +851,905 @@ class Mesh(gn.Geometry):
 
     @property
     def face_ID(self):
-        """ face_ID
+        """ > Node: EdgeAngle
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeAngle
+        node ref Edge Angle </sub>
         
-
-        | Node: EdgeAngle 
-        Top Index 
-        
-
-            v = mesh.face_ID(self) 
-        
+        ```python
+        v = mesh.face_ID(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeAngle() 
-        
+        -------------
+            ```python
+            nodes.EdgeAngle()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.capture_ID(domain='FACE').unsigned_angle
 
     @property
     def egde_ID(self):
-        """ egde_ID
+        """ > Node: EdgeAngle
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeAngle
+        node ref Edge Angle </sub>
         
-
-        | Node: EdgeAngle 
-        Top Index 
-        
-
-            v = mesh.egde_ID(self) 
-        
+        ```python
+        v = mesh.egde_ID(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeAngle() 
-        
+        -------------
+            ```python
+            nodes.EdgeAngle()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.capture_ID(domain='EDGE').unsigned_angle
 
     @property
     def corner_ID(self):
-        """ corner_ID
+        """ > Node: EdgeAngle
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeAngle
+        node ref Edge Angle </sub>
         
-
-        | Node: EdgeAngle 
-        Top Index 
-        
-
-            v = mesh.corner_ID(self) 
-        
+        ```python
+        v = mesh.corner_ID(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeAngle() 
-        
+        -------------
+            ```python
+            nodes.EdgeAngle()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.capture_ID(domain='CORNER').unsigned_angle
 
     @property
     def face_index(self):
-        """ face_index
+        """ > Node: EdgeAngle
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeAngle
+        node ref Edge Angle </sub>
         
-
-        | Node: EdgeAngle 
-        Top Index 
-        
-
-            v = mesh.face_index(self) 
-        
+        ```python
+        v = mesh.face_index(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeAngle() 
-        
+        -------------
+            ```python
+            nodes.EdgeAngle()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.capture_index(domain='FACE').unsigned_angle
 
     @property
     def egde_index(self):
-        """ egde_index
+        """ > Node: EdgeAngle
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeAngle
+        node ref Edge Angle </sub>
         
-
-        | Node: EdgeAngle 
-        Top Index 
-        
-
-            v = mesh.egde_index(self) 
-        
+        ```python
+        v = mesh.egde_index(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeAngle() 
-        
+        -------------
+            ```python
+            nodes.EdgeAngle()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.capture_index(domain='EDGE').unsigned_angle
 
     @property
     def corner_index(self):
-        """ corner_index
+        """ > Node: EdgeAngle
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeAngle
+        node ref Edge Angle </sub>
         
-
-        | Node: EdgeAngle 
-        Top Index 
-        
-
-            v = mesh.corner_index(self) 
-        
+        ```python
+        v = mesh.corner_index(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeAngle() 
-        
+        -------------
+            ```python
+            nodes.EdgeAngle()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.capture_index(domain='CORNER').unsigned_angle
 
     @property
     def face_position(self):
-        """ face_position
+        """ > Node: EdgeAngle
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeAngle
+        node ref Edge Angle </sub>
         
-
-        | Node: EdgeAngle 
-        Top Index 
-        
-
-            v = mesh.face_position(self) 
-        
+        ```python
+        v = mesh.face_position(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeAngle() 
-        
+        -------------
+            ```python
+            nodes.EdgeAngle()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.capture_position(domain='FACE').unsigned_angle
 
     @property
     def egde_position(self):
-        """ egde_position
+        """ > Node: EdgeAngle
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeAngle
+        node ref Edge Angle </sub>
         
-
-        | Node: EdgeAngle 
-        Top Index 
-        
-
-            v = mesh.egde_position(self) 
-        
+        ```python
+        v = mesh.egde_position(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeAngle() 
-        
+        -------------
+            ```python
+            nodes.EdgeAngle()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.capture_position(domain='EDGE').unsigned_angle
 
     @property
     def corner_porision(self):
-        """ corner_porision
+        """ > Node: EdgeAngle
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeAngle
+        node ref Edge Angle </sub>
         
-
-        | Node: EdgeAngle 
-        Top Index 
-        
-
-            v = mesh.corner_porision(self) 
-        
+        ```python
+        v = mesh.corner_porision(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeAngle() 
-        
+        -------------
+            ```python
+            nodes.EdgeAngle()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.capture_position(domain='CORNER').unsigned_angle
 
     @property
     def edge_angle(self):
-        """ edge_angle
+        """ > Node: EdgeAngle
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeAngle
+        node ref Edge Angle </sub>
         
-
-        | Node: EdgeAngle 
-        Top Index 
-        
-
-            v = mesh.edge_angle(self) 
-        
+        ```python
+        v = mesh.edge_angle(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeAngle() 
-        
+        -------------
+            ```python
+            nodes.EdgeAngle()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.capture_edge_angle(domain='EDGE').unsigned_angle
 
     @property
     def edge_unsigned_angle(self):
-        """ edge_unsigned_angle
+        """ > Node: EdgeAngle
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeAngle
+        node ref Edge Angle </sub>
         
-
-        | Node: EdgeAngle 
-        Top Index 
-        
-
-            v = mesh.edge_unsigned_angle(self) 
-        
+        ```python
+        v = mesh.edge_unsigned_angle(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeAngle() 
-        
+        -------------
+            ```python
+            nodes.EdgeAngle()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.capture_edge_angle(domain='EDGE').signed_angle
 
     @property
     def edge_neighbors(self):
-        """ edge_neighbors
+        """ > Node: EdgeNeighbors
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeNeighbors
+        node ref Edge Neighbors </sub>
         
-
-        | Node: EdgeNeighbors 
-        Top Index 
-        
-
-            v = mesh.edge_neighbors(self) 
-        
+        ```python
+        v = mesh.edge_neighbors(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeNeighbors() 
-        
+        -------------
+            ```python
+            nodes.EdgeNeighbors()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return self.capture_edge_neighbors(domain='EDGE')
 
     @property
     def edge_vertices_index1(self):
-        """ edge_vertices_index1
+        """ > Node: EdgeVertices
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeVertices
+        node ref Edge Vertices </sub>
         
-
-        | Node: EdgeVertices 
-        Top Index 
-        
-
-            v = mesh.edge_vertices_index1(self) 
-        
+        ```python
+        v = mesh.edge_vertices_index1(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeVertices() 
-        
+        -------------
+            ```python
+            nodes.EdgeVertices()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return self.capture_edge_vertices(domain='EDGE').vertex_index_1
 
     @property
     def edge_vertices_index2(self):
-        """ edge_vertices_index2
+        """ > Node: EdgeVertices
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeVertices
+        node ref Edge Vertices </sub>
         
-
-        | Node: EdgeVertices 
-        Top Index 
-        
-
-            v = mesh.edge_vertices_index2(self) 
-        
+        ```python
+        v = mesh.edge_vertices_index2(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeVertices() 
-        
+        -------------
+            ```python
+            nodes.EdgeVertices()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return self.capture_edge_vertices(domain='EDGE').vertex_index_2
 
     @property
     def edge_vertices_position1(self):
-        """ edge_vertices_position1
+        """ > Node: EdgeVertices
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeVertices
+        node ref Edge Vertices </sub>
         
-
-        | Node: EdgeVertices 
-        Top Index 
-        
-
-            v = mesh.edge_vertices_position1(self) 
-        
+        ```python
+        v = mesh.edge_vertices_position1(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeVertices() 
-        
+        -------------
+            ```python
+            nodes.EdgeVertices()
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return self.capture_edge_vertices(domain='EDGE').position_1
 
     @property
     def edge_vertices_position2(self):
-        """ edge_vertices_position2
+        """ > Node: EdgeVertices
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshEdgeVertices
+        node ref Edge Vertices </sub>
         
-
-        | Node: EdgeVertices 
-        Top Index 
-        
-
-            v = mesh.edge_vertices_position2(self) 
-        
+        ```python
+        v = mesh.edge_vertices_position2(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EdgeVertices() 
-        
+        -------------
+            ```python
+            nodes.EdgeVertices()
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return self.capture_edge_vertices(domain='EDGE').position_2
 
     @property
     def face_area(self):
-        """ face_area
+        """ > Node: FaceArea
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshFaceArea
+        node ref Face Area </sub>
         
-
-        | Node: FaceArea 
-        Top Index 
-        
-
-            v = mesh.face_area(self) 
-        
+        ```python
+        v = mesh.face_area(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.FaceArea() 
-        
+        -------------
+            ```python
+            nodes.FaceArea()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.capture_face_area(domain='FACE')
 
     @property
     def face_neighbors_vertex_count(self):
-        """ face_neighbors_vertex_count
+        """ > Node: FaceNeighbors
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshFaceNeighbors
+        node ref Face Neighbors </sub>
         
-
-        | Node: FaceNeighbors 
-        Top Index 
-        
-
-            v = mesh.face_neighbors_vertex_count(self) 
-        
+        ```python
+        v = mesh.face_neighbors_vertex_count(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.FaceNeighbors() 
-        
+        -------------
+            ```python
+            nodes.FaceNeighbors()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return self.capture_face_neighbors(domain='FACE').vertex_count
 
     @property
     def face_neighbors_face_count(self):
-        """ face_neighbors_face_count
+        """ > Node: FaceNeighbors
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshFaceNeighbors
+        node ref Face Neighbors </sub>
         
-
-        | Node: FaceNeighbors 
-        Top Index 
-        
-
-            v = mesh.face_neighbors_face_count(self) 
-        
+        ```python
+        v = mesh.face_neighbors_face_count(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.FaceNeighbors() 
-        
+        -------------
+            ```python
+            nodes.FaceNeighbors()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return self.capture_face_neighbors(domain='FACE').face_count
 
     @property
     def island(self):
-        """ island
+        """ > Node: MeshIsland
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshIsland
+        node ref Mesh Island </sub>
         
-
-        | Node: MeshIsland 
-        Top Index 
-        
-
-            v = mesh.island(self) 
-        
+        ```python
+        v = mesh.island(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.MeshIsland() 
-        
+        -------------
+            ```python
+            nodes.MeshIsland()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return self.capture_island(domain='POINT').island_index
 
     @property
     def shade_smooth(self):
-        """ shade_smooth
+        """ > Node: IsShadeSmooth
+        <sub>go to: top index
+        blender ref GeometryNodeInputShadeSmooth
+        node ref Is Shade Smooth </sub>
         
-
-        | Node: IsShadeSmooth 
-        Top Index 
-        
-
-            v = mesh.shade_smooth(self) 
-        
+        ```python
+        v = mesh.shade_smooth(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.IsShadeSmooth() 
-        
+        -------------
+            ```python
+            nodes.IsShadeSmooth()
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return self.capture_shade_smooth(domain='FACE')
 
     @property
     def vertex_neighbors_vertex_count(self):
-        """ vertex_neighbors_vertex_count
+        """ > Node: VertexNeighbors
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshVertexNeighbors
+        node ref Vertex Neighbors </sub>
         
-
-        | Node: VertexNeighbors 
-        Top Index 
-        
-
-            v = mesh.vertex_neighbors_vertex_count(self) 
-        
+        ```python
+        v = mesh.vertex_neighbors_vertex_count(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VertexNeighbors() 
-        
+        -------------
+            ```python
+            nodes.VertexNeighbors()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return self.capture_vertex_neighbors(domain='POINT').vertex_count
 
     @property
     def vertex_neighbors_face_count(self):
-        """ vertex_neighbors_face_count
+        """ > Node: VertexNeighbors
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshVertexNeighbors
+        node ref Vertex Neighbors </sub>
         
-
-        | Node: VertexNeighbors 
-        Top Index 
-        
-
-            v = mesh.vertex_neighbors_face_count(self) 
-        
+        ```python
+        v = mesh.vertex_neighbors_face_count(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VertexNeighbors() 
-        
+        -------------
+            ```python
+            nodes.VertexNeighbors()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return self.capture_vertex_neighbors(domain='POINT').face_count
 
     @property
     def material_index(self):
-        """ material_index
+        """ > Node: MaterialIndex
+        <sub>go to: top index
+        blender ref GeometryNodeInputMaterialIndex
+        node ref Material Index </sub>
         
-
-        | Node: MaterialIndex 
-        Top Index 
-        
-
-            v = mesh.material_index(self) 
-        
+        ```python
+        v = mesh.material_index(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.MaterialIndex() 
-        
+        -------------
+            ```python
+            nodes.MaterialIndex()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return self.capture_material_index(domain='FACE')
 
     @property
     def material_selection(self, material=None):
-        """ material_selection
+        """ > Node: MaterialSelection
+        <sub>go to: top index
+        blender ref GeometryNodeMaterialSelection
+        node ref Material Selection </sub>
         
-
-        | Node: MaterialSelection 
-        Top Index 
-        
-
-            v = mesh.material_selection(self, material) 
-        
+        ```python
+        v = mesh.material_selection(self, material)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Sockets
+            -------
+                - material : Material
+    
 
-            Sockets arguments
-            -----------------
-            - material : Material 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.MaterialSelection(material=material) 
-        
+        -------------
+            ```python
+            nodes.MaterialSelection(material=material)
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return self.capture_material_selection(domain='FACE')
@@ -1717,523 +1759,527 @@ class Mesh(gn.Geometry):
     # Methods
 
     def intersect(self, *mesh_2, self_intersection=None, hole_tolerant=None):
-        """ intersect
+        """ > Node: MeshBoolean
+        <sub>go to: top index
+        blender ref GeometryNodeMeshBoolean
+        node ref Mesh Boolean </sub>
         
-
-        | Node: MeshBoolean 
-        Top Index 
-        
-
-            v = mesh.intersect(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant) 
-        
+        ```python
+        v = mesh.intersect(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - mesh_2            : *Geometry (self) 
-            - self_intersection : Boolean 
-            - hole_tolerant     : Boolean 
-        
+            Sockets
+            -------
+                - mesh_2 : *Geometry (self)
+                - self_intersection : Boolean
+                - hole_tolerant : Boolean
+    
 
             Fixed parameters
             ----------------
-            - operation : 'INTERSECT' 
-        
+                - operation : 'INTERSECT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant,
-            operation='INTERSECT') 
-        
+        -------------
+            ```python
+            nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT')
+            ```
+    
 
         Returns
-        =======
-                Mesh 
+        -------
+            Mesh
+            
         """
 
         return nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT').mesh
 
     def union(self, *mesh_2, self_intersection=None, hole_tolerant=None):
-        """ union
+        """ > Node: MeshBoolean
+        <sub>go to: top index
+        blender ref GeometryNodeMeshBoolean
+        node ref Mesh Boolean </sub>
         
-
-        | Node: MeshBoolean 
-        Top Index 
-        
-
-            v = mesh.union(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant) 
-        
+        ```python
+        v = mesh.union(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - mesh_2            : *Geometry (self) 
-            - self_intersection : Boolean 
-            - hole_tolerant     : Boolean 
-        
+            Sockets
+            -------
+                - mesh_2 : *Geometry (self)
+                - self_intersection : Boolean
+                - hole_tolerant : Boolean
+    
 
             Fixed parameters
             ----------------
-            - operation : 'UNION' 
-        
+                - operation : 'UNION'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant,
-            operation='UNION') 
-        
+        -------------
+            ```python
+            nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION')
+            ```
+    
 
         Returns
-        =======
-                Mesh 
+        -------
+            Mesh
+            
         """
 
         return nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION').mesh
 
     def difference(self, *mesh_2, self_intersection=None, hole_tolerant=None):
-        """ difference
+        """ > Node: MeshBoolean
+        <sub>go to: top index
+        blender ref GeometryNodeMeshBoolean
+        node ref Mesh Boolean </sub>
         
-
-        | Node: MeshBoolean 
-        Top Index 
-        
-
-            v = mesh.difference(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant) 
-        
+        ```python
+        v = mesh.difference(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - mesh_1            : Geometry (self) 
-            - mesh_2            : *Geometry 
-            - self_intersection : Boolean 
-            - hole_tolerant     : Boolean 
-        
+            Sockets
+            -------
+                - mesh_1 : Geometry (self)
+                - mesh_2 : *Geometry
+                - self_intersection : Boolean
+                - hole_tolerant : Boolean
+    
 
             Fixed parameters
             ----------------
-            - operation : 'DIFFERENCE' 
-        
+                - operation : 'DIFFERENCE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant,
-            operation='DIFFERENCE') 
-        
+        -------------
+            ```python
+            nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE')
+            ```
+    
 
         Returns
-        =======
-                Mesh 
+        -------
+            Mesh
+            
         """
 
         return nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE').mesh
 
     def split_edges(self, selection=None):
-        """ split_edges
+        """ > Node: SplitEdges
+        <sub>go to: top index
+        blender ref GeometryNodeSplitEdges
+        node ref Split Edges </sub>
         
-
-        | Node: SplitEdges 
-        Top Index 
-        
-
-            v = mesh.split_edges(selection) 
-        
+        ```python
+        v = mesh.split_edges(selection)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - mesh      : Mesh (self) 
-            - selection : Boolean 
-        
+            Sockets
+            -------
+                - mesh : Mesh (self)
+                - selection : Boolean
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SplitEdges(mesh=self, selection=selection) 
-        
+        -------------
+            ```python
+            nodes.SplitEdges(mesh=self, selection=selection)
+            ```
+    
 
         Returns
-        =======
-                Mesh 
+        -------
+            Mesh
+            
         """
 
         return self.stack(nodes.SplitEdges(mesh=self, selection=selection))
 
     def subdivide(self, level=None):
-        """ subdivide
+        """ > Node: SubdivideMesh
+        <sub>go to: top index
+        blender ref GeometryNodeSubdivideMesh
+        node ref Subdivide Mesh </sub>
         
-
-        | Node: SubdivideMesh 
-        Top Index 
-        
-
-            v = mesh.subdivide(level) 
-        
+        ```python
+        v = mesh.subdivide(level)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - mesh  : Mesh (self) 
-            - level : Integer 
-        
+            Sockets
+            -------
+                - mesh : Mesh (self)
+                - level : Integer
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SubdivideMesh(mesh=self, level=level) 
-        
+        -------------
+            ```python
+            nodes.SubdivideMesh(mesh=self, level=level)
+            ```
+    
 
         Returns
-        =======
-                Mesh 
+        -------
+            Mesh
+            
         """
 
         return self.stack(nodes.SubdivideMesh(mesh=self, level=level))
 
     def subdivision_surface(self, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
-        """ subdivision_surface
+        """ > Node: SubdivisionSurface
+        <sub>go to: top index
+        blender ref GeometryNodeSubdivisionSurface
+        node ref Subdivision Surface </sub>
         
-
-        | Node: SubdivisionSurface 
-        Top Index 
-        
-
-            v = mesh.subdivision_surface(level, crease, boundary_smooth, uv_smooth) 
-        
+        ```python
+        v = mesh.subdivision_surface(level, crease, boundary_smooth, uv_smooth)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - mesh   : Mesh (self) 
-            - level  : Integer 
-            - crease : Float 
-        
+            Sockets
+            -------
+                - mesh : Mesh (self)
+                - level : Integer
+                - crease : Float
+    
 
-            Parameters arguments
-            --------------------
-            - boundary_smooth : 'ALL' in [PRESERVE_CORNERS, ALL] 
-            - uv_smooth       : 'PRESERVE_BOUNDARIES' in [NONE, PRESERVE_CORNERS, PRESERVE_CORNERS_AND_JUNCTIONS, PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE,
-              PRESERVE_BOUNDARIES, SMOOTH_ALL] 
-        
+            Parameters
+            ----------
+                - boundary_smooth : 'ALL' in [PRESERVE_CORNERS, ALL]
+                - uv_smooth : 'PRESERVE_BOUNDARIES' in [NONE, PRESERVE_CORNERS, PRESERVE_CORNERS_AND_JUNCTIONS, PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE, PRESERVE_BOUNDARIES, SMOOTH_ALL]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth,
-            uv_smooth=uv_smooth) 
-        
+        -------------
+            ```python
+            nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth)
+            ```
+    
 
         Returns
-        =======
-                Mesh 
+        -------
+            Mesh
+            
         """
 
         return self.stack(nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth))
 
     def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
-        """ triangulate
+        """ > Node: Triangulate
+        <sub>go to: top index
+        blender ref GeometryNodeTriangulate
+        node ref Triangulate </sub>
         
-
-        | Node: Triangulate 
-        Top Index 
-        
-
-            v = mesh.triangulate(selection, minimum_vertices, ngon_method, quad_method) 
-        
+        ```python
+        v = mesh.triangulate(selection, minimum_vertices, ngon_method, quad_method)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - mesh             : Mesh (self) 
-            - selection        : Boolean 
-            - minimum_vertices : Integer 
-        
+            Sockets
+            -------
+                - mesh : Mesh (self)
+                - selection : Boolean
+                - minimum_vertices : Integer
+    
 
-            Parameters arguments
-            --------------------
-            - ngon_method : 'BEAUTY' in [BEAUTY, CLIP] 
-            - quad_method : 'SHORTEST_DIAGONAL' in [BEAUTY, FIXED, FIXED_ALTERNATE, SHORTEST_DIAGONAL, LONGEST_DIAGONAL]
-        
+            Parameters
+            ----------
+                - ngon_method : 'BEAUTY' in [BEAUTY, CLIP]
+                - quad_method : 'SHORTEST_DIAGONAL' in [BEAUTY, FIXED, FIXED_ALTERNATE, SHORTEST_DIAGONAL, LONGEST_DIAGONAL]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method,
-            quad_method=quad_method) 
-        
+        -------------
+            ```python
+            nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method, quad_method=quad_method)
+            ```
+    
 
         Returns
-        =======
-                Mesh 
+        -------
+            Mesh
+            
         """
 
         return self.stack(nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method, quad_method=quad_method))
 
     def dual(self, keep_boundaries=None):
-        """ dual
+        """ > Node: DualMesh
+        <sub>go to: top index
+        blender ref GeometryNodeDualMesh
+        node ref Dual Mesh </sub>
         
-
-        | Node: DualMesh 
-        Top Index 
-        
-
-            v = mesh.dual(keep_boundaries) 
-        
+        ```python
+        v = mesh.dual(keep_boundaries)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - mesh            : Mesh (self) 
-            - keep_boundaries : Boolean 
-        
+            Sockets
+            -------
+                - mesh : Mesh (self)
+                - keep_boundaries : Boolean
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.DualMesh(mesh=self, keep_boundaries=keep_boundaries) 
-        
+        -------------
+            ```python
+            nodes.DualMesh(mesh=self, keep_boundaries=keep_boundaries)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return self.stack(nodes.DualMesh(mesh=self, keep_boundaries=keep_boundaries))
 
     def flip_faces(self, selection=None):
-        """ flip_faces
+        """ > Node: FlipFaces
+        <sub>go to: top index
+        blender ref GeometryNodeFlipFaces
+        node ref Flip Faces </sub>
         
-
-        | Node: FlipFaces 
-        Top Index 
-        
-
-            v = mesh.flip_faces(selection) 
-        
+        ```python
+        v = mesh.flip_faces(selection)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - mesh      : Mesh (self) 
-            - selection : Boolean 
-        
+            Sockets
+            -------
+                - mesh : Mesh (self)
+                - selection : Boolean
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.FlipFaces(mesh=self, selection=selection) 
-        
+        -------------
+            ```python
+            nodes.FlipFaces(mesh=self, selection=selection)
+            ```
+    
 
         Returns
-        =======
-                Mesh 
+        -------
+            Mesh
+            
         """
 
         return self.stack(nodes.FlipFaces(mesh=self, selection=selection))
 
     def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):
-        """ extrude
+        """ > Node: ExtrudeMesh
+        <sub>go to: top index
+        blender ref GeometryNodeExtrudeMesh
+        node ref Extrude Mesh </sub>
         
-
-        | Node: ExtrudeMesh 
-        Top Index 
-        
-
-            v = mesh.extrude(selection, offset, offset_scale, individual, mode) 
-        
+        ```python
+        v = mesh.extrude(selection, offset, offset_scale, individual, mode)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - mesh         : Mesh (self) 
-            - selection    : Boolean 
-            - offset       : Vector 
-            - offset_scale : Float 
-            - individual   : Boolean 
-        
+            Sockets
+            -------
+                - mesh : Mesh (self)
+                - selection : Boolean
+                - offset : Vector
+                - offset_scale : Float
+                - individual : Boolean
+    
 
-            Parameters arguments
-            --------------------
-            - mode : 'FACES' in [VERTICES, EDGES, FACES] 
-        
+            Parameters
+            ----------
+                - mode : 'FACES' in [VERTICES, EDGES, FACES]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual,
-            mode=mode) 
-        
+        -------------
+            ```python
+            nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual, mode=mode)
+            ```
+    
 
         Returns
-        =======
-                Sockets [mesh (Mesh), top (Boolean), side (Boolean)] 
+        -------
+            Sockets [mesh (Mesh), top (Boolean), side (Boolean)]
+            
         """
 
         return nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual, mode=mode)
 
     def to_curve(self, selection=None):
-        """ to_curve
+        """ > Node: MeshToCurve
+        <sub>go to: top index
+        blender ref GeometryNodeMeshToCurve
+        node ref Mesh to Curve </sub>
         
-
-        | Node: MeshToCurve 
-        Top Index 
-        
-
-            v = mesh.to_curve(selection) 
-        
+        ```python
+        v = mesh.to_curve(selection)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - mesh      : Mesh (self) 
-            - selection : Boolean 
-        
+            Sockets
+            -------
+                - mesh : Mesh (self)
+                - selection : Boolean
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.MeshToCurve(mesh=self, selection=selection) 
-        
+        -------------
+            ```python
+            nodes.MeshToCurve(mesh=self, selection=selection)
+            ```
+    
 
         Returns
-        =======
-                Curve 
+        -------
+            Curve
+            
         """
 
         return nodes.MeshToCurve(mesh=self, selection=selection).curve
 
     def to_points(self, selection=None, position=None, radius=None, mode='VERTICES'):
-        """ to_points
+        """ > Node: MeshToPoints
+        <sub>go to: top index
+        blender ref GeometryNodeMeshToPoints
+        node ref Mesh to Points </sub>
         
-
-        | Node: MeshToPoints 
-        Top Index 
-        
-
-            v = mesh.to_points(selection, position, radius, mode) 
-        
+        ```python
+        v = mesh.to_points(selection, position, radius, mode)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - mesh      : Mesh (self) 
-            - selection : Boolean 
-            - position  : Vector 
-            - radius    : Float 
-        
+            Sockets
+            -------
+                - mesh : Mesh (self)
+                - selection : Boolean
+                - position : Vector
+                - radius : Float
+    
 
-            Parameters arguments
-            --------------------
-            - mode : 'VERTICES' in [VERTICES, EDGES, FACES, CORNERS] 
-        
+            Parameters
+            ----------
+                - mode : 'VERTICES' in [VERTICES, EDGES, FACES, CORNERS]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.MeshToPoints(mesh=self, selection=selection, position=position, radius=radius, mode=mode)
-        
+        -------------
+            ```python
+            nodes.MeshToPoints(mesh=self, selection=selection, position=position, radius=radius, mode=mode)
+            ```
+    
 
         Returns
-        =======
-                Points 
+        -------
+            Points
+            
         """
 
         return nodes.MeshToPoints(mesh=self, selection=selection, position=position, radius=radius, mode=mode).points
 
     def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):
-        """ distribute_points_on_faces
+        """ > Node: DistributePointsOnFaces
+        <sub>go to: top index
+        blender ref GeometryNodeDistributePointsOnFaces
+        node ref Distribute Points on Faces </sub>
         
-
-        | Node: DistributePointsOnFaces 
-        Top Index 
-        
-
-            v = mesh.distribute_points_on_faces(selection, distance_min, density_max, density, density_factor, seed,
-            distribute_method) 
-        
+        ```python
+        v = mesh.distribute_points_on_faces(selection, distance_min, density_max, density, density_factor, seed, distribute_method)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - mesh           : Mesh (self) 
-            - selection      : Boolean 
-            - distance_min   : Float 
-            - density_max    : Float 
-            - density        : Float 
-            - density_factor : Float 
-            - seed           : Integer 
-        
+            Sockets
+            -------
+                - mesh : Mesh (self)
+                - selection : Boolean
+                - distance_min : Float
+                - density_max : Float
+                - density : Float
+                - density_factor : Float
+                - seed : Integer
+    
 
-            Parameters arguments
-            --------------------
-            - distribute_method : 'RANDOM' in [RANDOM, POISSON] 
-        
+            Parameters
+            ----------
+                - distribute_method : 'RANDOM' in [RANDOM, POISSON]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max,
-            density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method) 
-        
+        -------------
+            ```python
+            nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method)
+            ```
+    
 
         Returns
-        =======
-                Sockets [points (Points), normal (Vector), rotation (Vector)] 
+        -------
+            Sockets [points (Points), normal (Vector), rotation (Vector)]
+            
         """
 
         return nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method)

@@ -9,76 +9,78 @@ logger = logging.Logger('geonodes')
 # Data class Vector
 
 class Vector(dsock.Vector):
-    """ Class Vector
+    """ 
+
+    Data socket Vector
+    ------------------
+        > Inherits from dsock.Vector
+          
+        <sub>go to index</sub>
+        
+        
     
 
-    | Inherits from: dsock.Vector 
-    Index 
+        Constructors
+        ------------
+            - AlignToVector : AlignEulerToVector, rotation (Vector)
+            - Combine : CombineXyz, vector (Vector)
+            - Random : RandomValue, value (Vector)
     
 
-    Constructors
-    ============
-    - **AlignToVector** : AlignEulerToVector rotation (Vector) 
-    - **Combine**       : CombineXyz vector (Vector) 
-    - **Random**        : RandomValue value (Vector) 
+        Properties
+        ----------
+            - separate : SeparateXyz, Sockets      [x (Float), y (Float), z (Float)]
+            - x : SeparateXyz, x (Float) = separate.x
+            - y : SeparateXyz, y (Float) = separate.y
+            - z : SeparateXyz, z (Float) = separate.z
     
 
-    Properties
-    ==========
-    - **separate** : SeparateXyz Sockets      [x (Float), y (Float), z (Float)] 
-    - **x**        : SeparateXyz x (Float) = separate.x 
-    - **y**        : SeparateXyz y (Float) = separate.y 
-    - **z**        : SeparateXyz z (Float) = separate.z 
-    
-
-    Methods
-    =======
-    - **absolute**            : VectorMath vector (Vector) 
-    - **accumulate_field**    : AccumulateField Sockets      [leading (Vector), trailing (Vector), total (Vector)]
-    - **add**                 : VectorMath vector (Vector) 
-    - **align_to_vector**     : AlignEulerToVector rotation (Vector) 
-    - **attribute_statistic** : AttributeStatistic Sockets      [mean (Vector), median (Vector), sum (Vector),
-      min (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)] 
-    - **capture_attribute**   : CaptureAttribute Sockets      [geometry (Geometry), attribute (Vector)] 
-    - **ceil**                : VectorMath vector (Vector) 
-    - **cos**                 : VectorMath vector (Vector) 
-    - **cross**               : VectorMath vector (Vector) 
-    - **curves**              : VectorCurves vector (Vector) 
-    - **distance**            : VectorMath value (Float) 
-    - **divide**              : VectorMath vector (Vector) 
-    - **dot**                 : VectorMath value (Float) 
-    - **equal**               : Compare result (Boolean) 
-    - **faceforward**         : VectorMath vector (Vector) 
-    - **field_at_index**      : FieldAtIndex value (Vector) 
-    - **floor**               : VectorMath vector (Vector) 
-    - **fraction**            : VectorMath vector (Vector) 
-    - **greater_equal**       : Compare result (Boolean) 
-    - **greater_than**        : Compare result (Boolean) 
-    - **length**              : VectorMath value (Float) 
-    - **less_equal**          : Compare result (Boolean) 
-    - **less_than**           : Compare result (Boolean) 
-    - **map_range**           : MapRange vector (Vector) 
-    - **max**                 : VectorMath vector (Vector) 
-    - **min**                 : VectorMath vector (Vector) 
-    - **modulo**              : VectorMath vector (Vector) 
-    - **multiply**            : VectorMath vector (Vector) 
-    - **multiply_add**        : VectorMath vector (Vector) 
-    - **normalize**           : VectorMath vector (Vector) 
-    - **not_equal**           : Compare result (Boolean) 
-    - **project**             : VectorMath vector (Vector) 
-    - **raycast**             : Raycast Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance
-      (Float), attribute (Vector)] 
-    - **reflect**             : VectorMath vector (Vector) 
-    - **refract**             : VectorMath vector (Vector) 
-    - **rotate**              : VectorRotate vector (Vector) 
-    - **rotate_euler**        : RotateEuler rotation (Vector) 
-    - **scale**               : VectorMath vector (Vector) 
-    - **sin**                 : VectorMath vector (Vector) 
-    - **snap**                : VectorMath vector (Vector) 
-    - **subtract**            : VectorMath vector (Vector) 
-    - **tan**                 : VectorMath vector (Vector) 
-    - **transfer_attribute**  : TransferAttribute attribute (Vector) 
-    - **wrap**                : VectorMath vector (Vector) 
+        Methods
+        -------
+            - absolute : VectorMath, vector (Vector)
+            - accumulate_field : AccumulateField, Sockets      [leading (Vector), trailing (Vector), total (Vector)]
+            - add : VectorMath, vector (Vector)
+            - align_to_vector : AlignEulerToVector, rotation (Vector)
+            - attribute_statistic : AttributeStatistic, Sockets      [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)]
+            - capture_attribute : CaptureAttribute, Sockets      [geometry (Geometry), attribute (Vector)]
+            - ceil : VectorMath, vector (Vector)
+            - cos : VectorMath, vector (Vector)
+            - cross : VectorMath, vector (Vector)
+            - curves : VectorCurves, vector (Vector)
+            - distance : VectorMath, value (Float)
+            - divide : VectorMath, vector (Vector)
+            - dot : VectorMath, value (Float)
+            - equal : Compare, result (Boolean)
+            - faceforward : VectorMath, vector (Vector)
+            - field_at_index : FieldAtIndex, value (Vector)
+            - floor : VectorMath, vector (Vector)
+            - fraction : VectorMath, vector (Vector)
+            - greater_equal : Compare, result (Boolean)
+            - greater_than : Compare, result (Boolean)
+            - length : VectorMath, value (Float)
+            - less_equal : Compare, result (Boolean)
+            - less_than : Compare, result (Boolean)
+            - map_range : MapRange, vector (Vector)
+            - max : VectorMath, vector (Vector)
+            - min : VectorMath, vector (Vector)
+            - modulo : VectorMath, vector (Vector)
+            - multiply : VectorMath, vector (Vector)
+            - multiply_add : VectorMath, vector (Vector)
+            - normalize : VectorMath, vector (Vector)
+            - not_equal : Compare, result (Boolean)
+            - project : VectorMath, vector (Vector)
+            - raycast : Raycast, Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Vector)]
+            - reflect : VectorMath, vector (Vector)
+            - refract : VectorMath, vector (Vector)
+            - rotate : VectorRotate, vector (Vector)
+            - rotate_euler : RotateEuler, rotation (Vector)
+            - scale : VectorMath, vector (Vector)
+            - sin : VectorMath, vector (Vector)
+            - snap : VectorMath, vector (Vector)
+            - subtract : VectorMath, vector (Vector)
+            - tan : VectorMath, vector (Vector)
+            - transfer_attribute : TransferAttribute, attribute (Vector)
+            - wrap : VectorMath, vector (Vector)
     """
 
 
@@ -93,123 +95,126 @@ class Vector(dsock.Vector):
 
     @classmethod
     def Random(cls, min=None, max=None, ID=None, seed=None):
-        """ Random
+        """ > Node: RandomValue
+        <sub>go to: top index
+        blender ref FunctionNodeRandomValue
+        node ref Random Value </sub>
         
-
-        | Node: RandomValue 
-        Top Index 
-        
-
-            v = Vector.Random(min, max, ID, seed) 
-        
+        ```python
+        v = Vector.Random(min, max, ID, seed)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - min  : Vector 
-            - max  : Vector 
-            - ID   : Integer 
-            - seed : Integer 
-        
+            Sockets
+            -------
+                - min : Vector
+                - max : Vector
+                - ID : Integer
+                - seed : Integer
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT_VECTOR' 
-        
+                - data_type : 'FLOAT_VECTOR'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR') 
-        
+        -------------
+            ```python
+            nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return cls(nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR').value)
 
     @classmethod
     def Combine(cls, x=None, y=None, z=None):
-        """ Combine
+        """ > Node: CombineXyz
+        <sub>go to: top index
+        blender ref ShaderNodeCombineXYZ
+        node ref Combine XYZ </sub>
         
-
-        | Node: CombineXyz 
-        Top Index 
-        
-
-            v = Vector.Combine(x, y, z) 
-        
+        ```python
+        v = Vector.Combine(x, y, z)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - x : Float 
-            - y : Float 
-            - z : Float 
-        
+            Sockets
+            -------
+                - x : Float
+                - y : Float
+                - z : Float
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.CombineXyz(x=x, y=y, z=z) 
-        
+        -------------
+            ```python
+            nodes.CombineXyz(x=x, y=y, z=z)
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return cls(nodes.CombineXyz(x=x, y=y, z=z).vector)
 
     @classmethod
     def AlignToVector(cls, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
-        """ AlignToVector
+        """ > Node: AlignEulerToVector
+        <sub>go to: top index
+        blender ref FunctionNodeAlignEulerToVector
+        node ref Align Euler to Vector </sub>
         
-
-        | Node: AlignEulerToVector 
-        Top Index 
-        
-
-            v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis) 
-        
+        ```python
+        v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - rotation : Vector 
-            - factor   : Float 
-            - vector   : Vector 
-        
+            Sockets
+            -------
+                - rotation : Vector
+                - factor : Float
+                - vector : Vector
+    
 
-            Parameters arguments
-            --------------------
-            - axis       : 'X' in [X, Y, Z] 
-            - pivot_axis : 'AUTO' in [AUTO, X, Y, Z] 
-        
+            Parameters
+            ----------
+                - axis : 'X' in [X, Y, Z]
+                - pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
-        
+        -------------
+            ```python
+            nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return cls(nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis).rotation)
@@ -220,40 +225,41 @@ class Vector(dsock.Vector):
 
     @property
     def separate(self):
-        """ separate
+        """ > Node: SeparateXyz
+        <sub>go to: top index
+        blender ref ShaderNodeSeparateXYZ
+        node ref Separate XYZ </sub>
         
-
-        | Node: SeparateXyz 
-        Top Index 
-        
-
-            v = vector.separate 
-        
+        ```python
+        v = vector.separate
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector : Vector (self) 
-        
+            Sockets
+            -------
+                - vector : Vector (self)
+    
 
             Fixed parameters
             ----------------
-            - label:f"{self.node_chain_label}.separate" 
-        
+                - label:f"{self.node_chain_label}.separate"
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.separate") 
-        
+        -------------
+            ```python
+            nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.separate")
+            ```
+    
 
         Returns
-        =======
-                Sockets [x (Float), y (Float), z (Float)] 
+        -------
+            Sockets [x (Float), y (Float), z (Float)]
+            
         """
 
         if self.separate_ is None:
@@ -262,40 +268,41 @@ class Vector(dsock.Vector):
 
     @property
     def x(self):
-        """ x
+        """ > Node: SeparateXyz
+        <sub>go to: top index
+        blender ref ShaderNodeSeparateXYZ
+        node ref Separate XYZ </sub>
         
-
-        | Node: SeparateXyz 
-        Top Index 
-        
-
-            v = vector.x 
-        
+        ```python
+        v = vector.x
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector : Vector (self) 
-        
+            Sockets
+            -------
+                - vector : Vector (self)
+    
 
             Fixed parameters
             ----------------
-            - label:f"{self.node_chain_label}.x" 
-        
+                - label:f"{self.node_chain_label}.x"
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.x") 
-        
+        -------------
+            ```python
+            nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.x")
+            ```
+    
 
         Returns
-        =======
-                Sockets [x (Float), y (Float), z (Float)] 
+        -------
+            Sockets [x (Float), y (Float), z (Float)]
+            
         """
 
         return self.separate.x
@@ -306,40 +313,41 @@ class Vector(dsock.Vector):
 
     @property
     def y(self):
-        """ y
+        """ > Node: SeparateXyz
+        <sub>go to: top index
+        blender ref ShaderNodeSeparateXYZ
+        node ref Separate XYZ </sub>
         
-
-        | Node: SeparateXyz 
-        Top Index 
-        
-
-            v = vector.y 
-        
+        ```python
+        v = vector.y
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector : Vector (self) 
-        
+            Sockets
+            -------
+                - vector : Vector (self)
+    
 
             Fixed parameters
             ----------------
-            - label:f"{self.node_chain_label}.y" 
-        
+                - label:f"{self.node_chain_label}.y"
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.y") 
-        
+        -------------
+            ```python
+            nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.y")
+            ```
+    
 
         Returns
-        =======
-                Sockets [x (Float), y (Float), z (Float)] 
+        -------
+            Sockets [x (Float), y (Float), z (Float)]
+            
         """
 
         return self.separate.y
@@ -350,40 +358,41 @@ class Vector(dsock.Vector):
 
     @property
     def z(self):
-        """ z
+        """ > Node: SeparateXyz
+        <sub>go to: top index
+        blender ref ShaderNodeSeparateXYZ
+        node ref Separate XYZ </sub>
         
-
-        | Node: SeparateXyz 
-        Top Index 
-        
-
-            v = vector.z 
-        
+        ```python
+        v = vector.z
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector : Vector (self) 
-        
+            Sockets
+            -------
+                - vector : Vector (self)
+    
 
             Fixed parameters
             ----------------
-            - label:f"{self.node_chain_label}.z" 
-        
+                - label:f"{self.node_chain_label}.z"
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.z") 
-        
+        -------------
+            ```python
+            nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.z")
+            ```
+    
 
         Returns
-        =======
-                Sockets [x (Float), y (Float), z (Float)] 
+        -------
+            Sockets [x (Float), y (Float), z (Float)]
+            
         """
 
         return self.separate.z
@@ -397,1860 +406,1897 @@ class Vector(dsock.Vector):
     # Methods
 
     def accumulate_field(self, group_index=None, domain='POINT'):
-        """ accumulate_field
+        """ > Node: AccumulateField
+        <sub>go to: top index
+        blender ref GeometryNodeAccumulateField
+        node ref Accumulate Field </sub>
         
-
-        | Node: AccumulateField 
-        Top Index 
-        
-
-            v = vector.accumulate_field(group_index, domain) 
-        
+        ```python
+        v = vector.accumulate_field(group_index, domain)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value       : Vector (self) 
-            - group_index : Integer 
-        
+            Sockets
+            -------
+                - value : Vector (self)
+                - group_index : Integer
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT_VECTOR' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-        
+                - data_type : 'FLOAT_VECTOR'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain)
-        
+        -------------
+            ```python
+            nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain)
+            ```
+    
 
         Returns
-        =======
-                Sockets [leading (Vector), trailing (Vector), total (Vector)] 
+        -------
+            Sockets [leading (Vector), trailing (Vector), total (Vector)]
+            
         """
 
         return nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain)
 
     def attribute_statistic(self, geometry=None, selection=None, domain='POINT'):
-        """ attribute_statistic
+        """ > Node: AttributeStatistic
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeStatistic
+        node ref Attribute Statistic </sub>
         
-
-        | Node: AttributeStatistic 
-        Top Index 
-        
-
-            v = vector.attribute_statistic(geometry, selection, domain) 
-        
+        ```python
+        v = vector.attribute_statistic(geometry, selection, domain)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - attribute : Vector (self) 
-            - geometry  : Geometry 
-            - selection : Boolean 
-        
+            Sockets
+            -------
+                - attribute : Vector (self)
+                - geometry : Geometry
+                - selection : Boolean
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT_VECTOR' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-        
+                - data_type : 'FLOAT_VECTOR'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT_VECTOR',
-            domain=domain) 
-        
+        -------------
+            ```python
+            nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT_VECTOR', domain=domain)
+            ```
+    
 
         Returns
-        =======
-                Sockets [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector), range (Vector), standard_deviation
-                (Vector), variance (Vector)] 
+        -------
+            Sockets [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)]
+            
         """
 
         return nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT_VECTOR', domain=domain)
 
     def transfer_attribute(self, source=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """ transfer_attribute
+        """ > Node: TransferAttribute
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeTransfer
+        node ref Transfer Attribute </sub>
         
-
-        | Node: TransferAttribute 
-        Top Index 
-        
-
-            v = vector.transfer_attribute(source, source_position, index, domain, mapping) 
-        
+        ```python
+        v = vector.transfer_attribute(source, source_position, index, domain, mapping)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - attribute       : Vector (self) 
-            - source          : Geometry 
-            - source_position : Vector 
-            - index           : Integer 
-        
+            Sockets
+            -------
+                - attribute : Vector (self)
+                - source : Geometry
+                - source_position : Vector
+                - index : Integer
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+                - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT_VECTOR' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain  : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
-        
+                - data_type : 'FLOAT_VECTOR'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index,
-            data_type='FLOAT_VECTOR', domain=domain, mapping=mapping) 
-        
+        -------------
+            ```python
+            nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping).attribute
 
     def capture_attribute(self, geometry=None, domain='POINT'):
-        """ capture_attribute
+        """ > Node: CaptureAttribute
+        <sub>go to: top index
+        blender ref GeometryNodeCaptureAttribute
+        node ref Capture Attribute </sub>
         
-
-        | Node: CaptureAttribute 
-        Top Index 
-        
-
-            v = vector.capture_attribute(geometry, domain) 
-        
+        ```python
+        v = vector.capture_attribute(geometry, domain)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value    : Vector (self) 
-            - geometry : Geometry 
-        
+            Sockets
+            -------
+                - value : Vector (self)
+                - geometry : Geometry
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT_VECTOR' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-        
+                - data_type : 'FLOAT_VECTOR'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VECTOR', domain=domain)
-        
+        -------------
+            ```python
+            nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VECTOR', domain=domain)
+            ```
+    
 
         Returns
-        =======
-                Sockets [geometry (Geometry), attribute (Vector)] 
+        -------
+            Sockets [geometry (Geometry), attribute (Vector)]
+            
         """
 
         return nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VECTOR', domain=domain)
 
     def field_at_index(self, index=None, domain='POINT'):
-        """ field_at_index
+        """ > Node: FieldAtIndex
+        <sub>go to: top index
+        blender ref GeometryNodeFieldAtIndex
+        node ref Field at Index </sub>
         
-
-        | Node: FieldAtIndex 
-        Top Index 
-        
-
-            v = vector.field_at_index(index, domain) 
-        
+        ```python
+        v = vector.field_at_index(index, domain)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value : Vector (self) 
-            - index : Integer 
-        
+            Sockets
+            -------
+                - value : Vector (self)
+                - index : Integer
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT_VECTOR' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-        
+                - data_type : 'FLOAT_VECTOR'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain) 
-        
+        -------------
+            ```python
+            nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain)
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain).value
 
     def raycast(self, target_geometry=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
-        """ raycast
+        """ > Node: Raycast
+        <sub>go to: top index
+        blender ref GeometryNodeRaycast
+        node ref Raycast </sub>
         
-
-        | Node: Raycast 
-        Top Index 
-        
-
-            v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, mapping) 
-        
+        ```python
+        v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - attribute       : Vector (self) 
-            - target_geometry : Geometry 
-            - source_position : Vector 
-            - ray_direction   : Vector 
-            - ray_length      : Float 
-        
+            Sockets
+            -------
+                - attribute : Vector (self)
+                - target_geometry : Geometry
+                - source_position : Vector
+                - ray_direction : Vector
+                - ray_length : Float
+    
+
+            Parameters
+            ----------
+                - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT_VECTOR' 
-        
-
-            Parameters arguments
-            --------------------
-            - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST] 
-        
+                - data_type : 'FLOAT_VECTOR'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position,
-            ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping) 
-        
+        -------------
+            ```python
+            nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping)
+            ```
+    
 
         Returns
-        =======
-                Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute
-                (Vector)] 
+        -------
+            Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Vector)]
+            
         """
 
         return nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping)
 
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, interpolation_type='LINEAR'):
-        """ map_range
+        """ > Node: MapRange
+        <sub>go to: top index
+        blender ref ShaderNodeMapRange
+        node ref Map Range </sub>
         
-
-        | Node: MapRange 
-        Top Index 
-        
-
-            v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type) 
-        
+        ```python
+        v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector   : Vector (self) 
-            - from_min : Vector 
-            - from_max : Vector 
-            - to_min   : Vector 
-            - to_max   : Vector 
-        
+            Sockets
+            -------
+                - vector : Vector (self)
+                - from_min : Vector
+                - from_max : Vector
+                - to_min : Vector
+                - to_max : Vector
+    
 
-            Parameters arguments
-            --------------------
-            - clamp              : True 
-            - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP] 
-        
+            Parameters
+            ----------
+                - clamp : True
+                - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT_VECTOR' 
-        
+                - data_type : 'FLOAT_VECTOR'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max,
-            clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type) 
-        
+        -------------
+            ```python
+            nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type)
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type).vector
 
     def less_than(self, b=None, c=None, angle=None, mode='ELEMENT'):
-        """ less_than
+        """ > Node: Compare
+        <sub>go to: top index
+        blender ref FunctionNodeCompare
+        node ref Compare </sub>
         
-
-        | Node: Compare 
-        Top Index 
-        
-
-            v = vector.less_than(b, c, angle, mode) 
-        
+        ```python
+        v = vector.less_than(b, c, angle, mode)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - a     : Vector (self) 
-            - b     : Vector 
-            - c     : Float 
-            - angle : Float 
-        
+            Sockets
+            -------
+                - a : Vector (self)
+                - b : Vector
+                - c : Float
+                - angle : Float
+    
+
+            Parameters
+            ----------
+                - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'VECTOR' 
-            - operation : 'LESS_THAN' 
-        
-
-            Parameters arguments
-            --------------------
-            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
-        
+                - data_type : 'VECTOR'
+                - operation : 'LESS_THAN'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN')
-        
+        -------------
+            ```python
+            nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN').result
 
     def less_equal(self, b=None, c=None, angle=None, mode='ELEMENT'):
-        """ less_equal
+        """ > Node: Compare
+        <sub>go to: top index
+        blender ref FunctionNodeCompare
+        node ref Compare </sub>
         
-
-        | Node: Compare 
-        Top Index 
-        
-
-            v = vector.less_equal(b, c, angle, mode) 
-        
+        ```python
+        v = vector.less_equal(b, c, angle, mode)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - a     : Vector (self) 
-            - b     : Vector 
-            - c     : Float 
-            - angle : Float 
-        
+            Sockets
+            -------
+                - a : Vector (self)
+                - b : Vector
+                - c : Float
+                - angle : Float
+    
+
+            Parameters
+            ----------
+                - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'VECTOR' 
-            - operation : 'LESS_EQUAL' 
-        
-
-            Parameters arguments
-            --------------------
-            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
-        
+                - data_type : 'VECTOR'
+                - operation : 'LESS_EQUAL'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL')
-        
+        -------------
+            ```python
+            nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL').result
 
     def greater_than(self, b=None, c=None, angle=None, mode='ELEMENT'):
-        """ greater_than
+        """ > Node: Compare
+        <sub>go to: top index
+        blender ref FunctionNodeCompare
+        node ref Compare </sub>
         
-
-        | Node: Compare 
-        Top Index 
-        
-
-            v = vector.greater_than(b, c, angle, mode) 
-        
+        ```python
+        v = vector.greater_than(b, c, angle, mode)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - a     : Vector (self) 
-            - b     : Vector 
-            - c     : Float 
-            - angle : Float 
-        
+            Sockets
+            -------
+                - a : Vector (self)
+                - b : Vector
+                - c : Float
+                - angle : Float
+    
+
+            Parameters
+            ----------
+                - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'VECTOR' 
-            - operation : 'GREATER_THAN' 
-        
-
-            Parameters arguments
-            --------------------
-            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
-        
+                - data_type : 'VECTOR'
+                - operation : 'GREATER_THAN'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN')
-        
+        -------------
+            ```python
+            nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN').result
 
     def greater_equal(self, b=None, c=None, angle=None, mode='ELEMENT'):
-        """ greater_equal
+        """ > Node: Compare
+        <sub>go to: top index
+        blender ref FunctionNodeCompare
+        node ref Compare </sub>
         
-
-        | Node: Compare 
-        Top Index 
-        
-
-            v = vector.greater_equal(b, c, angle, mode) 
-        
+        ```python
+        v = vector.greater_equal(b, c, angle, mode)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - a     : Vector (self) 
-            - b     : Vector 
-            - c     : Float 
-            - angle : Float 
-        
+            Sockets
+            -------
+                - a : Vector (self)
+                - b : Vector
+                - c : Float
+                - angle : Float
+    
+
+            Parameters
+            ----------
+                - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'VECTOR' 
-            - operation : 'GREATER_EQUAL' 
-        
-
-            Parameters arguments
-            --------------------
-            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
-        
+                - data_type : 'VECTOR'
+                - operation : 'GREATER_EQUAL'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL')
-        
+        -------------
+            ```python
+            nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL').result
 
     def equal(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT'):
-        """ equal
+        """ > Node: Compare
+        <sub>go to: top index
+        blender ref FunctionNodeCompare
+        node ref Compare </sub>
         
-
-        | Node: Compare 
-        Top Index 
-        
-
-            v = vector.equal(b, c, angle, epsilon, mode) 
-        
+        ```python
+        v = vector.equal(b, c, angle, epsilon, mode)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - a       : Vector (self) 
-            - b       : Vector 
-            - c       : Float 
-            - angle   : Float 
-            - epsilon : Float 
-        
+            Sockets
+            -------
+                - a : Vector (self)
+                - b : Vector
+                - c : Float
+                - angle : Float
+                - epsilon : Float
+    
+
+            Parameters
+            ----------
+                - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'VECTOR' 
-            - operation : 'EQUAL' 
-        
-
-            Parameters arguments
-            --------------------
-            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
-        
+                - data_type : 'VECTOR'
+                - operation : 'EQUAL'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL')
-        
+        -------------
+            ```python
+            nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL').result
 
     def not_equal(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT'):
-        """ not_equal
+        """ > Node: Compare
+        <sub>go to: top index
+        blender ref FunctionNodeCompare
+        node ref Compare </sub>
         
-
-        | Node: Compare 
-        Top Index 
-        
-
-            v = vector.not_equal(b, c, angle, epsilon, mode) 
-        
+        ```python
+        v = vector.not_equal(b, c, angle, epsilon, mode)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - a       : Vector (self) 
-            - b       : Vector 
-            - c       : Float 
-            - angle   : Float 
-            - epsilon : Float 
-        
+            Sockets
+            -------
+                - a : Vector (self)
+                - b : Vector
+                - c : Float
+                - angle : Float
+                - epsilon : Float
+    
+
+            Parameters
+            ----------
+                - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'VECTOR' 
-            - operation : 'NOT_EQUAL' 
-        
-
-            Parameters arguments
-            --------------------
-            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION] 
-        
+                - data_type : 'VECTOR'
+                - operation : 'NOT_EQUAL'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL')
-        
+        -------------
+            ```python
+            nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL').result
 
     def add(self, vector1=None):
-        """ add
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.add(vector1) 
-        
+        ```python
+        v = vector.add(vector1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - vector1 : Vector 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - vector1 : Vector
+    
 
             Fixed parameters
             ----------------
-            - operation : 'ADD' 
-        
+                - operation : 'ADD'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD').vector
 
     def subtract(self, vector1=None):
-        """ subtract
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.subtract(vector1) 
-        
+        ```python
+        v = vector.subtract(vector1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - vector1 : Vector 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - vector1 : Vector
+    
 
             Fixed parameters
             ----------------
-            - operation : 'SUBTRACT' 
-        
+                - operation : 'SUBTRACT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT').vector
 
     def multiply(self, vector1=None):
-        """ multiply
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.multiply(vector1) 
-        
+        ```python
+        v = vector.multiply(vector1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - vector1 : Vector 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - vector1 : Vector
+    
 
             Fixed parameters
             ----------------
-            - operation : 'MULTIPLY' 
-        
+                - operation : 'MULTIPLY'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY').vector
 
     def divide(self, vector1=None):
-        """ divide
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.divide(vector1) 
-        
+        ```python
+        v = vector.divide(vector1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - vector1 : Vector 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - vector1 : Vector
+    
 
             Fixed parameters
             ----------------
-            - operation : 'DIVIDE' 
-        
+                - operation : 'DIVIDE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE').vector
 
     def multiply_add(self, vector1=None, vector2=None):
-        """ multiply_add
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.multiply_add(vector1, vector2) 
-        
+        ```python
+        v = vector.multiply_add(vector1, vector2)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - vector1 : Vector 
-            - vector2 : Vector 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - vector1 : Vector
+                - vector2 : Vector
+    
 
             Fixed parameters
             ----------------
-            - operation : 'MULTIPLY_ADD' 
-        
+                - operation : 'MULTIPLY_ADD'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD').vector
 
     def cross(self, vector1=None):
-        """ cross
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.cross(vector1) 
-        
+        ```python
+        v = vector.cross(vector1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - vector1 : Vector 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - vector1 : Vector
+    
 
             Fixed parameters
             ----------------
-            - operation : 'CROSS_PRODUCT' 
-        
+                - operation : 'CROSS_PRODUCT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT').vector
 
     def project(self, vector1=None):
-        """ project
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.project(vector1) 
-        
+        ```python
+        v = vector.project(vector1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - vector1 : Vector 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - vector1 : Vector
+    
 
             Fixed parameters
             ----------------
-            - operation : 'PROJECT' 
-        
+                - operation : 'PROJECT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT').vector
 
     def reflect(self, vector1=None):
-        """ reflect
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.reflect(vector1) 
-        
+        ```python
+        v = vector.reflect(vector1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - vector1 : Vector 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - vector1 : Vector
+    
 
             Fixed parameters
             ----------------
-            - operation : 'REFLECT' 
-        
+                - operation : 'REFLECT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT').vector
 
     def refract(self, vector1=None, scale=None):
-        """ refract
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.refract(vector1, scale) 
-        
+        ```python
+        v = vector.refract(vector1, scale)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - vector1 : Vector 
-            - scale   : Float 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - vector1 : Vector
+                - scale : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'REFRACT' 
-        
+                - operation : 'REFRACT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT').vector
 
     def faceforward(self, vector1=None, vector2=None):
-        """ faceforward
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.faceforward(vector1, vector2) 
-        
+        ```python
+        v = vector.faceforward(vector1, vector2)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - vector1 : Vector 
-            - vector2 : Vector 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - vector1 : Vector
+                - vector2 : Vector
+    
 
             Fixed parameters
             ----------------
-            - operation : 'FACEFORWARD' 
-        
+                - operation : 'FACEFORWARD'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD').vector
 
     def dot(self, vector1=None):
-        """ dot
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.dot(vector1) 
-        
+        ```python
+        v = vector.dot(vector1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - vector1 : Vector 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - vector1 : Vector
+    
 
             Fixed parameters
             ----------------
-            - operation : 'DOT_PRODUCT' 
-        
+                - operation : 'DOT_PRODUCT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT').value
 
     def distance(self, vector1=None):
-        """ distance
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.distance(vector1) 
-        
+        ```python
+        v = vector.distance(vector1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - vector1 : Vector 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - vector1 : Vector
+    
 
             Fixed parameters
             ----------------
-            - operation : 'DISTANCE' 
-        
+                - operation : 'DISTANCE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE').value
 
     def length(self):
-        """ length
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.length() 
-        
+        ```python
+        v = vector.length()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'LENGTH' 
-        
+                - operation : 'LENGTH'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, operation='LENGTH') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, operation='LENGTH')
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.VectorMath(vector0=self, operation='LENGTH').value
 
     def scale(self, scale=None):
-        """ scale
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.scale(scale) 
-        
+        ```python
+        v = vector.scale(scale)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - scale   : Float 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - scale : Float
+    
 
             Fixed parameters
             ----------------
-            - operation : 'SCALE' 
-        
+                - operation : 'SCALE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, scale=scale, operation='SCALE') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, scale=scale, operation='SCALE')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, scale=scale, operation='SCALE').vector
 
     def normalize(self):
-        """ normalize
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.normalize() 
-        
+        ```python
+        v = vector.normalize()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'NORMALIZE' 
-        
+                - operation : 'NORMALIZE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, operation='NORMALIZE') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, operation='NORMALIZE')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, operation='NORMALIZE').vector
 
     def absolute(self):
-        """ absolute
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.absolute() 
-        
+        ```python
+        v = vector.absolute()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'ABSOLUTE' 
-        
+                - operation : 'ABSOLUTE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, operation='ABSOLUTE') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, operation='ABSOLUTE')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, operation='ABSOLUTE').vector
 
     def min(self, vector1=None):
-        """ min
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.min(vector1) 
-        
+        ```python
+        v = vector.min(vector1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - vector1 : Vector 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - vector1 : Vector
+    
 
             Fixed parameters
             ----------------
-            - operation : 'MINIMUM' 
-        
+                - operation : 'MINIMUM'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM').vector
 
     def max(self, vector1=None):
-        """ max
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.max(vector1) 
-        
+        ```python
+        v = vector.max(vector1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - vector1 : Vector 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - vector1 : Vector
+    
 
             Fixed parameters
             ----------------
-            - operation : 'MAXIMUM' 
-        
+                - operation : 'MAXIMUM'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM').vector
 
     def floor(self):
-        """ floor
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.floor() 
-        
+        ```python
+        v = vector.floor()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'FLOOR' 
-        
+                - operation : 'FLOOR'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, operation='FLOOR') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, operation='FLOOR')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, operation='FLOOR').vector
 
     def ceil(self):
-        """ ceil
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.ceil() 
-        
+        ```python
+        v = vector.ceil()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'CEIL' 
-        
+                - operation : 'CEIL'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, operation='CEIL') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, operation='CEIL')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, operation='CEIL').vector
 
     def fraction(self):
-        """ fraction
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.fraction() 
-        
+        ```python
+        v = vector.fraction()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'FRACTION' 
-        
+                - operation : 'FRACTION'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, operation='FRACTION') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, operation='FRACTION')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, operation='FRACTION').vector
 
     def modulo(self, vector1=None):
-        """ modulo
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.modulo(vector1) 
-        
+        ```python
+        v = vector.modulo(vector1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - vector1 : Vector 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - vector1 : Vector
+    
 
             Fixed parameters
             ----------------
-            - operation : 'MODULO' 
-        
+                - operation : 'MODULO'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO').vector
 
     def wrap(self, vector1=None, vector2=None):
-        """ wrap
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.wrap(vector1, vector2) 
-        
+        ```python
+        v = vector.wrap(vector1, vector2)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - vector1 : Vector 
-            - vector2 : Vector 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - vector1 : Vector
+                - vector2 : Vector
+    
 
             Fixed parameters
             ----------------
-            - operation : 'WRAP' 
-        
+                - operation : 'WRAP'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP').vector
 
     def snap(self, vector1=None):
-        """ snap
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.snap(vector1) 
-        
+        ```python
+        v = vector.snap(vector1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-            - vector1 : Vector 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+                - vector1 : Vector
+    
 
             Fixed parameters
             ----------------
-            - operation : 'SNAP' 
-        
+                - operation : 'SNAP'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP').vector
 
     def sin(self):
-        """ sin
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.sin() 
-        
+        ```python
+        v = vector.sin()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'SINE' 
-        
+                - operation : 'SINE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, operation='SINE') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, operation='SINE')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, operation='SINE').vector
 
     def cos(self):
-        """ cos
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.cos() 
-        
+        ```python
+        v = vector.cos()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'COSINE' 
-        
+                - operation : 'COSINE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, operation='COSINE') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, operation='COSINE')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, operation='COSINE').vector
 
     def tan(self):
-        """ tan
+        """ > Node: VectorMath
+        <sub>go to: top index
+        blender ref ShaderNodeVectorMath
+        node ref Vector Math </sub>
         
-
-        | Node: VectorMath 
-        Top Index 
-        
-
-            v = vector.tan() 
-        
+        ```python
+        v = vector.tan()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector0 : Vector (self) 
-        
+            Sockets
+            -------
+                - vector0 : Vector (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'TANGENT' 
-        
+                - operation : 'TANGENT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorMath(vector0=self, operation='TANGENT') 
-        
+        -------------
+            ```python
+            nodes.VectorMath(vector0=self, operation='TANGENT')
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorMath(vector0=self, operation='TANGENT').vector
 
     def curves(self, fac=None):
-        """ curves
+        """ > Node: VectorCurves
+        <sub>go to: top index
+        blender ref ShaderNodeVectorCurve
+        node ref Vector Curves </sub>
         
-
-        | Node: VectorCurves 
-        Top Index 
-        
-
-            v = vector.curves(fac) 
-        
+        ```python
+        v = vector.curves(fac)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector : Vector (self) 
-            - fac    : Float 
-        
+            Sockets
+            -------
+                - vector : Vector (self)
+                - fac : Float
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorCurves(vector=self, fac=fac) 
-        
+        -------------
+            ```python
+            nodes.VectorCurves(vector=self, fac=fac)
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return self.stack(nodes.VectorCurves(vector=self, fac=fac))
 
     def align_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
-        """ align_to_vector
+        """ > Node: AlignEulerToVector
+        <sub>go to: top index
+        blender ref FunctionNodeAlignEulerToVector
+        node ref Align Euler to Vector </sub>
         
-
-        | Node: AlignEulerToVector 
-        Top Index 
-        
-
-            v = vector.align_to_vector(factor, vector, axis, pivot_axis) 
-        
+        ```python
+        v = vector.align_to_vector(factor, vector, axis, pivot_axis)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - rotation : Vector (self) 
-            - factor   : Float 
-            - vector   : Vector 
-        
+            Sockets
+            -------
+                - rotation : Vector (self)
+                - factor : Float
+                - vector : Vector
+    
 
-            Parameters arguments
-            --------------------
-            - axis       : 'X' in [X, Y, Z] 
-            - pivot_axis : 'AUTO' in [AUTO, X, Y, Z] 
-        
+            Parameters
+            ----------
+                - axis : 'X' in [X, Y, Z]
+                - pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
-        
+        -------------
+            ```python
+            nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return self.stack(nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis))
 
     def rotate_euler(self, rotate_by=None, space='OBJECT'):
-        """ rotate_euler
+        """ > Node: RotateEuler
+        <sub>go to: top index
+        blender ref FunctionNodeRotateEuler
+        node ref Rotate Euler </sub>
         
-
-        | Node: RotateEuler 
-        Top Index 
-        
-
-            v = vector.rotate_euler(rotate_by, space) 
-        
+        ```python
+        v = vector.rotate_euler(rotate_by, space)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - rotation  : Vector (self) 
-            - rotate_by : Vector 
-        
+            Sockets
+            -------
+                - rotation : Vector (self)
+                - rotate_by : Vector
+    
 
-            Parameters arguments
-            --------------------
-            - space : 'OBJECT' in [OBJECT, LOCAL] 
-        
+            Parameters
+            ----------
+                - space : 'OBJECT' in [OBJECT, LOCAL]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space) 
-        
+        -------------
+            ```python
+            nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space)
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return self.stack(nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space))
 
     def rotate(self, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE'):
-        """ rotate
+        """ > Node: VectorRotate
+        <sub>go to: top index
+        blender ref ShaderNodeVectorRotate
+        node ref Vector Rotate </sub>
         
-
-        | Node: VectorRotate 
-        Top Index 
-        
-
-            v = vector.rotate(center, axis, angle, rotation, invert, rotation_type) 
-        
+        ```python
+        v = vector.rotate(center, axis, angle, rotation, invert, rotation_type)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - vector   : Vector (self) 
-            - center   : Vector 
-            - axis     : Vector 
-            - angle    : Float 
-            - rotation : Vector 
-        
+            Sockets
+            -------
+                - vector : Vector (self)
+                - center : Vector
+                - axis : Vector
+                - angle : Float
+                - rotation : Vector
+    
 
-            Parameters arguments
-            --------------------
-            - invert        : False 
-            - rotation_type : 'AXIS_ANGLE' in [AXIS_ANGLE, X_AXIS, Y_AXIS, Z_AXIS, EULER_XYZ] 
-        
+            Parameters
+            ----------
+                - invert : False
+                - rotation_type : 'AXIS_ANGLE' in [AXIS_ANGLE, X_AXIS, Y_AXIS, Z_AXIS, EULER_XYZ]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert,
-            rotation_type=rotation_type) 
-        
+        -------------
+            ```python
+            nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type)
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type).vector

@@ -9,16 +9,20 @@ logger = logging.Logger('geonodes')
 # Data class Image
 
 class Image(dsock.Image):
-    """ Class Image
+    """ 
+
+    Data socket Image
+    -----------------
+        > Inherits from dsock.Image
+          
+        <sub>go to index</sub>
+        
+        
     
 
-    | Inherits from: dsock.Image 
-    Index 
-    
-
-    Methods
-    =======
-    - **switch** : Switch output (Image) 
+        Methods
+        -------
+            - switch : Switch, output (Image)
     """
 
 
@@ -26,42 +30,43 @@ class Image(dsock.Image):
     # Methods
 
     def switch(self, switch1=None, true=None):
-        """ switch
+        """ > Node: Switch
+        <sub>go to: top index
+        blender ref GeometryNodeSwitch
+        node ref Switch </sub>
         
-
-        | Node: Switch 
-        Top Index 
-        
-
-            v = image.switch(switch1, true) 
-        
+        ```python
+        v = image.switch(switch1, true)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - false   : Image (self) 
-            - switch1 : Boolean 
-            - true    : Image 
-        
+            Sockets
+            -------
+                - false : Image (self)
+                - switch1 : Boolean
+                - true : Image
+    
 
             Fixed parameters
             ----------------
-            - input_type : 'IMAGE' 
-        
+                - input_type : 'IMAGE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE') 
-        
+        -------------
+            ```python
+            nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE')
+            ```
+    
 
         Returns
-        =======
-                Image 
+        -------
+            Image
+            
         """
 
         return nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE').output

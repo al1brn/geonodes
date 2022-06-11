@@ -1,1062 +1,866 @@
 
-# Class Spline
+# Data socket Spline
 
-> Inherits from: ***gn.Geometry***
+> Inherits from gn.Geometry
+  
+<sub>go to [index](TBD)</sub>
 
 
-[Index](/docs/index.md)
 
 ## Attribute capture
 
-
-
-- [**capture_cyclic**](#capture_cyclic) : [IsSplineCyclic](../nodes/IsSplineCyclic.md) cyclic (Boolean)
-- [**capture_endpoint_selection**](#capture_endpoint_selection) : [EndpointSelection](../nodes/EndpointSelection.md) selection (Boolean)
-- [**capture_handle_positions**](#capture_handle_positions) : [CurveHandlePositions](../nodes/CurveHandlePositions.md) Sockets      [left (Vector), right (Vector)]
-- [**capture_handle_type_selection**](#capture_handle_type_selection) : [HandleTypeSelection](../nodes/HandleTypeSelection.md) selection (Boolean)
-- [**capture_length**](#capture_length) : [SplineLength](../nodes/SplineLength.md) Sockets      [length (Float), point_count (Integer)]
-- [**capture_parameter**](#capture_parameter) : [SplineParameter](../nodes/SplineParameter.md) Sockets      [factor (Float), length (Float), index (Integer)]
-- [**capture_resolution**](#capture_resolution) : [SplineResolution](../nodes/SplineResolution.md) resolution (Integer)
-- [**capture_tangent**](#capture_tangent) : [CurveTangent](../nodes/CurveTangent.md) tangent (Vector)
-- [**capture_tilt**](#capture_tilt) : [CurveTilt](../nodes/CurveTilt.md) tilt (Float)
-
-
+- [capture_cyclic](#capture_cyclic) : [IsSplineCyclic](section:nodes/IsSplineCyclic.md), cyclic (Boolean)
+- [capture_endpoint_selection](#capture_endpoint_selection) : [EndpointSelection](section:nodes/EndpointSelection.md), selection (Boolean)
+- [capture_handle_positions](#capture_handle_positions) : [CurveHandlePositions](section:nodes/CurveHandlePositions.md), Sockets      [left (Vector), right (Vector)]
+- [capture_handle_type_selection](#capture_handle_type_selection) : [HandleTypeSelection](section:nodes/HandleTypeSelection.md), selection (Boolean)
+- [capture_length](#capture_length) : [SplineLength](section:nodes/SplineLength.md), Sockets      [length (Float), point_count (Integer)]
+- [capture_parameter](#capture_parameter) : [SplineParameter](section:nodes/SplineParameter.md), Sockets      [factor (Float), length (Float), index (Integer)]
+- [capture_resolution](#capture_resolution) : [SplineResolution](section:nodes/SplineResolution.md), resolution (Integer)
+- [capture_tangent](#capture_tangent) : [CurveTangent](section:nodes/CurveTangent.md), tangent (Vector)
+- [capture_tilt](#capture_tilt) : [CurveTilt](section:nodes/CurveTilt.md), tilt (Float)
 
 ## Attributes
 
-
-
-- [**cyclic**](#cyclic) : [IsSplineCyclic](../nodes/IsSplineCyclic.md) Boolean = capture_cyclic(domain='CURVE')
-- [**endpoint_selection**](#endpoint_selection) : [EndpointSelection](../nodes/EndpointSelection.md) Boolean = capture_endpoint_selection(domain='CURVE')
-- [**factor**](#factor) : [SplineParameter](../nodes/SplineParameter.md) Float = capture_parameter(domain='CURVE').factor
-- [**handle_type_selection**](#handle_type_selection) : [HandleTypeSelection](../nodes/HandleTypeSelection.md) Boolean = capture_handle_type_selection(domain='CURVE')
-- [**left_handle_position**](#left_handle_position) : [CurveHandlePositions](../nodes/CurveHandlePositions.md) Vector = capture_handle_positions(domain='CURVE').left
-- [**length**](#length) : [SplineLength](../nodes/SplineLength.md) Float = capture_length(domain='CURVE').length
-- [**parameter_index**](#parameter_index) : [SplineParameter](../nodes/SplineParameter.md) Integer = capture_parameter(domain='CURVE').index
-- [**parameter_length**](#parameter_length) : [SplineParameter](../nodes/SplineParameter.md) Float = capture_parameter(domain='CURVE').length
-- [**point_count**](#point_count) : [SplineLength](../nodes/SplineLength.md) Integer = capture_length(domain='CURVE').point_count
-- [**resolution**](#resolution) : [SplineResolution](../nodes/SplineResolution.md) Integer = capture_resolution(domain='CURVE')
-- [**right_handle_position**](#right_handle_position) : [CurveHandlePositions](../nodes/CurveHandlePositions.md) Vector = capture_handle_positions(domain='CURVE').right
-- [**spline_ID**](#spline_id) : [ID](../nodes/ID.md) Integer = capture_ID(domain='SPLINE')
-- [**spline_index**](#spline_index) : [Index](../nodes/Index.md) Integer = capture_index(domain='SPLINE')
-- [**spline_position**](#spline_position) : [Index](../nodes/Index.md) Integer = capture_position(domain='SPLINE')
-- [**tangent**](#tangent) : [CurveTangent](../nodes/CurveTangent.md) Vector = capture_tangent(domain='CURVE')
-- [**tilt**](#tilt) : [CurveTilt](../nodes/CurveTilt.md) Float = capture_tilt(domain='CURVE')
-
-
+- [cyclic](#cyclic) : [IsSplineCyclic](section:nodes/IsSplineCyclic.md), Boolean = capture_cyclic(domain='CURVE')
+- [endpoint_selection](#endpoint_selection) : [EndpointSelection](section:nodes/EndpointSelection.md), Boolean = capture_endpoint_selection(domain='CURVE')
+- [factor](#factor) : [SplineParameter](section:nodes/SplineParameter.md), Float = capture_parameter(domain='CURVE').factor
+- [handle_type_selection](#handle_type_selection) : [HandleTypeSelection](section:nodes/HandleTypeSelection.md), Boolean = capture_handle_type_selection(domain='CURVE')
+- [left_handle_position](#left_handle_position) : [CurveHandlePositions](section:nodes/CurveHandlePositions.md), Vector = capture_handle_positions(domain='CURVE').left
+- [length](#length) : [SplineLength](section:nodes/SplineLength.md), Float = capture_length(domain='CURVE').length
+- [parameter_index](#parameter_index) : [SplineParameter](section:nodes/SplineParameter.md), Integer = capture_parameter(domain='CURVE').index
+- [parameter_length](#parameter_length) : [SplineParameter](section:nodes/SplineParameter.md), Float = capture_parameter(domain='CURVE').length
+- [point_count](#point_count) : [SplineLength](section:nodes/SplineLength.md), Integer = capture_length(domain='CURVE').point_count
+- [resolution](#resolution) : [SplineResolution](section:nodes/SplineResolution.md), Integer = capture_resolution(domain='CURVE')
+- [right_handle_position](#right_handle_position) : [CurveHandlePositions](section:nodes/CurveHandlePositions.md), Vector = capture_handle_positions(domain='CURVE').right
+- [spline_ID](#spline_id) : [ID](section:nodes/ID.md), Integer = capture_ID(domain='SPLINE')
+- [spline_index](#spline_index) : [Index](section:nodes/Index.md), Integer = capture_index(domain='SPLINE')
+- [spline_position](#spline_position) : [Index](section:nodes/Index.md), Integer = capture_position(domain='SPLINE')
+- [tangent](#tangent) : [CurveTangent](section:nodes/CurveTangent.md), Vector = capture_tangent(domain='CURVE')
+- [tilt](#tilt) : [CurveTilt](section:nodes/CurveTilt.md), Float = capture_tilt(domain='CURVE')
 
 ## Methods
 
+- [set_cyclic](#set_cyclic) : [SetSplineCyclic](section:nodes/SetSplineCyclic.md), geometry (Geometry)
+- [set_resolution](#set_resolution) : [SetSplineResolution](section:nodes/SetSplineResolution.md), geometry (Geometry)
 
+## capture_handle_positions
 
-- [**set_cyclic**](#set_cyclic) : [SetSplineCyclic](../nodes/SetSplineCyclic.md) geometry (Geometry)
-- [**set_resolution**](#set_resolution) : [SetSplineResolution](../nodes/SetSplineResolution.md) geometry (Geometry)
-
-
-
-## Methods reference
-
-
-### capture_cyclic
-
-> Node: [IsSplineCyclic](../nodes/{self.node_name}.md)
-
-
-[Top](#class-spline) [Index](/docs/index.md)
-
-```python
-v = spline.capture_cyclic(self, domain='CURVE')
-```
-
-
-#### Arguments
-
-
-##### Parameters arguments
-
-
-
-- self
-- domain:'CURVE'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.IsSplineCyclic()
-```
-
-
-#### Returns
-
-    Boolean
-
-### capture_endpoint_selection
-
-> Node: [EndpointSelection](../nodes/{self.node_name}.md)
-
-
-[Top](#class-spline) [Index](/docs/index.md)
-
-```python
-v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE')
-```
-
-
-#### Arguments
-
-
-##### Parameters arguments
-
-
-
-- self
-- domain:'CURVE'
-
-
-
-##### Sockets arguments
-
-
-
-- start_size : Integer
-- end_size : Integer
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.EndpointSelection(start_size=start_size, end_size=end_size)
-```
-
-
-#### Returns
-
-    Boolean
-
-### capture_handle_positions
-
-> Node: [CurveHandlePositions](../nodes/{self.node_name}.md)
-
-
-[Top](#class-spline) [Index](/docs/index.md)
+> Node: [CurveHandlePositions](section:nodes/CurveHandlePositions)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeInputCurveHandlePositions](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
+node ref [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_handle_positions.html) </sub>
 
 ```python
 v = spline.capture_handle_positions(self, relative, domain='CURVE')
 ```
 
-
-#### Arguments
-
-
-##### Parameters arguments
+### Arguments
 
 
-
-- self
-- domain:'CURVE'
-
-
-
-##### Sockets arguments
-
-
+#### Sockets
 
 - relative : Boolean
 
-
-
-#### Node creation
-
-
-```python
-node = nodes.CurveHandlePositions(relative=relative)
-```
-
-
-#### Returns
-
-    Sockets [left (Vector), right (Vector)]
-
-### capture_handle_type_selection
-
-> Node: [HandleTypeSelection](../nodes/{self.node_name}.md)
-
-
-[Top](#class-spline) [Index](/docs/index.md)
-
-```python
-v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE')
-```
-
-
-#### Arguments
-
-
-##### Parameters arguments
-
-
-
-- self
-- handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode : {'LEFT', 'RIGHT'}
-- domain:'CURVE'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
-```
-
-
-#### Returns
-
-    Boolean
-
-### capture_length
-
-> Node: [SplineLength](../nodes/{self.node_name}.md)
-
-
-[Top](#class-spline) [Index](/docs/index.md)
-
-```python
-v = spline.capture_length(self, domain='CURVE')
-```
-
-
-#### Arguments
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - self
 - domain:'CURVE'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.SplineLength()
+nodes.CurveHandlePositions(relative=relative)
 ```
 
+### Returns
 
-#### Returns
-
-    Sockets [length (Float), point_count (Integer)]
-
-### capture_parameter
-
-> Node: [SplineParameter](../nodes/{self.node_name}.md)
+Sockets [left (Vector), right (Vector)]
 
 
-[Top](#class-spline) [Index](/docs/index.md)
+## capture_tangent
 
-```python
-v = spline.capture_parameter(self, domain='CURVE')
-```
-
-
-#### Arguments
-
-
-##### Parameters arguments
-
-
-
-- self
-- domain:'CURVE'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.SplineParameter()
-```
-
-
-#### Returns
-
-    Sockets [factor (Float), length (Float), index (Integer)]
-
-### capture_resolution
-
-> Node: [SplineResolution](../nodes/{self.node_name}.md)
-
-
-[Top](#class-spline) [Index](/docs/index.md)
-
-```python
-v = spline.capture_resolution(self, domain='CURVE')
-```
-
-
-#### Arguments
-
-
-##### Parameters arguments
-
-
-
-- self
-- domain:'CURVE'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.SplineResolution()
-```
-
-
-#### Returns
-
-    Integer
-
-### capture_tangent
-
-> Node: [CurveTangent](../nodes/{self.node_name}.md)
-
-
-[Top](#class-spline) [Index](/docs/index.md)
+> Node: [CurveTangent](section:nodes/CurveTangent)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeInputTangent](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputTangent.html)
+node ref [Curve Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_tangent.html) </sub>
 
 ```python
 v = spline.capture_tangent(self, domain='CURVE')
 ```
 
-
-#### Arguments
-
-
-##### Parameters arguments
+### Arguments
 
 
+#### Parameters
 
 - self
 - domain:'CURVE'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.CurveTangent()
+nodes.CurveTangent()
 ```
 
+### Returns
 
-#### Returns
-
-    Vector
-
-### capture_tilt
-
-> Node: [CurveTilt](../nodes/{self.node_name}.md)
+Vector
 
 
-[Top](#class-spline) [Index](/docs/index.md)
+## capture_tilt
+
+> Node: [CurveTilt](section:nodes/CurveTilt)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeInputCurveTilt](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveTilt.html)
+node ref [Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_tilt.html) </sub>
 
 ```python
 v = spline.capture_tilt(self, domain='CURVE')
 ```
 
-
-#### Arguments
-
-
-##### Parameters arguments
+### Arguments
 
 
+#### Parameters
 
 - self
 - domain:'CURVE'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.CurveTilt()
+nodes.CurveTilt()
 ```
 
+### Returns
 
-#### Returns
-
-    Float
-
-### cyclic
-
-> Node: [IsSplineCyclic](../nodes/{self.node_name}.md)
+Float
 
 
-[Top](#class-spline) [Index](/docs/index.md)
+## capture_endpoint_selection
+
+> Node: [EndpointSelection](section:nodes/EndpointSelection)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeCurveEndpointSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveEndpointSelection.html)
+node ref [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/endpoint_selection.html) </sub>
 
 ```python
-v = spline.cyclic(self)
+v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE')
 ```
 
-
-#### Arguments
-
-
-##### Parameters arguments
+### Arguments
 
 
-
-- self
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.IsSplineCyclic()
-```
-
-
-#### Returns
-
-    Boolean
-
-### endpoint_selection
-
-> Node: [EndpointSelection](../nodes/{self.node_name}.md)
-
-
-[Top](#class-spline) [Index](/docs/index.md)
-
-```python
-v = spline.endpoint_selection(self, start_size, end_size)
-```
-
-
-#### Arguments
-
-
-##### Parameters arguments
-
-
-
-- self
-
-
-
-##### Sockets arguments
-
-
+#### Sockets
 
 - start_size : Integer
 - end_size : Integer
 
-
-
-#### Node creation
-
-
-```python
-node = nodes.EndpointSelection(start_size=start_size, end_size=end_size)
-```
-
-
-#### Returns
-
-    Boolean
-
-### factor
-
-> Node: [SplineParameter](../nodes/{self.node_name}.md)
-
-
-[Top](#class-spline) [Index](/docs/index.md)
-
-```python
-v = spline.factor(self)
-```
-
-
-#### Arguments
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - self
+- domain:'CURVE'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.SplineParameter()
+nodes.EndpointSelection(start_size=start_size, end_size=end_size)
 ```
 
+### Returns
 
-#### Returns
-
-    Float
-
-### handle_type_selection
-
-> Node: [HandleTypeSelection](../nodes/{self.node_name}.md)
+Boolean
 
 
-[Top](#class-spline) [Index](/docs/index.md)
+## capture_handle_type_selection
+
+> Node: [HandleTypeSelection](section:nodes/HandleTypeSelection)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeCurveHandleTypeSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+node ref [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/handle_type_selection.html) </sub>
 
 ```python
-v = spline.handle_type_selection(self, handle_type, mode)
+v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE')
 ```
 
-
-#### Arguments
-
-
-##### Parameters arguments
+### Arguments
 
 
+#### Parameters
 
 - self
 - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
 - mode : {'LEFT', 'RIGHT'}
+- domain:'CURVE'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
+nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
 ```
 
+### Returns
 
-#### Returns
-
-    Boolean
-
-### left_handle_position
-
-> Node: [CurveHandlePositions](../nodes/{self.node_name}.md)
+Boolean
 
 
-[Top](#class-spline) [Index](/docs/index.md)
+## capture_cyclic
+
+> Node: [IsSplineCyclic](section:nodes/IsSplineCyclic)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeInputSplineCyclic](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineCyclic.html)
+node ref [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/is_spline_cyclic.html) </sub>
 
 ```python
-v = spline.left_handle_position(self, relative)
+v = spline.capture_cyclic(self, domain='CURVE')
 ```
 
-
-#### Arguments
-
-
-##### Parameters arguments
+### Arguments
 
 
+#### Parameters
 
 - self
+- domain:'CURVE'
 
-
-
-##### Sockets arguments
-
-
-
-- relative : Boolean
-
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.CurveHandlePositions(relative=relative)
+nodes.IsSplineCyclic()
 ```
 
+### Returns
 
-#### Returns
-
-    Vector
-
-### length
-
-> Node: [SplineLength](../nodes/{self.node_name}.md)
+Boolean
 
 
-[Top](#class-spline) [Index](/docs/index.md)
+## capture_length
+
+> Node: [SplineLength](section:nodes/SplineLength)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeSplineLength](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html)
+node ref [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_length.html) </sub>
 
 ```python
-v = spline.length(self)
+v = spline.capture_length(self, domain='CURVE')
 ```
 
-
-#### Arguments
-
-
-##### Parameters arguments
+### Arguments
 
 
+#### Parameters
 
 - self
+- domain:'CURVE'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.SplineLength()
+nodes.SplineLength()
 ```
 
+### Returns
 
-#### Returns
-
-    Float
-
-### parameter_index
-
-> Node: [SplineParameter](../nodes/{self.node_name}.md)
+Sockets [length (Float), point_count (Integer)]
 
 
-[Top](#class-spline) [Index](/docs/index.md)
+## capture_parameter
+
+> Node: [SplineParameter](section:nodes/SplineParameter)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeSplineParameter](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
+node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_parameter.html) </sub>
 
 ```python
-v = spline.parameter_index(self)
+v = spline.capture_parameter(self, domain='CURVE')
 ```
 
-
-#### Arguments
-
-
-##### Parameters arguments
+### Arguments
 
 
+#### Parameters
 
 - self
+- domain:'CURVE'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.SplineParameter()
+nodes.SplineParameter()
 ```
 
+### Returns
 
-#### Returns
-
-    Integer
-
-### parameter_length
-
-> Node: [SplineParameter](../nodes/{self.node_name}.md)
+Sockets [factor (Float), length (Float), index (Integer)]
 
 
-[Top](#class-spline) [Index](/docs/index.md)
+## capture_resolution
+
+> Node: [SplineResolution](section:nodes/SplineResolution)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeInputSplineResolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineResolution.html)
+node ref [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_resolution.html) </sub>
 
 ```python
-v = spline.parameter_length(self)
+v = spline.capture_resolution(self, domain='CURVE')
 ```
 
-
-#### Arguments
-
-
-##### Parameters arguments
+### Arguments
 
 
+#### Parameters
 
 - self
+- domain:'CURVE'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.SplineParameter()
+nodes.SplineResolution()
 ```
 
+### Returns
 
-#### Returns
+Integer
 
-    Float
 
-### point_count
+## spline_ID
 
-> Node: [SplineLength](../nodes/{self.node_name}.md)
-
-
-[Top](#class-spline) [Index](/docs/index.md)
-
-```python
-v = spline.point_count(self)
-```
-
-
-#### Arguments
-
-
-##### Parameters arguments
-
-
-
-- self
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.SplineLength()
-```
-
-
-#### Returns
-
-    Integer
-
-### resolution
-
-> Node: [SplineResolution](../nodes/{self.node_name}.md)
-
-
-[Top](#class-spline) [Index](/docs/index.md)
-
-```python
-v = spline.resolution(self)
-```
-
-
-#### Arguments
-
-
-##### Parameters arguments
-
-
-
-- self
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.SplineResolution()
-```
-
-
-#### Returns
-
-    Integer
-
-### right_handle_position
-
-> Node: [CurveHandlePositions](../nodes/{self.node_name}.md)
-
-
-[Top](#class-spline) [Index](/docs/index.md)
-
-```python
-v = spline.right_handle_position(self, relative)
-```
-
-
-#### Arguments
-
-
-##### Parameters arguments
-
-
-
-- self
-
-
-
-##### Sockets arguments
-
-
-
-- relative : Boolean
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.CurveHandlePositions(relative=relative)
-```
-
-
-#### Returns
-
-    Vector
-
-### set_cyclic
-
-> Node: [SetSplineCyclic](../nodes/{self.node_name}.md)
-
-
-[Top](#class-spline) [Index](/docs/index.md)
-
-```python
-v = spline.set_cyclic(selection, cyclic)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- geometry : Geometry (self)
-- selection : Boolean
-- cyclic : Boolean
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic)
-```
-
-
-#### Returns
-
-    Geometry
-
-### set_resolution
-
-> Node: [SetSplineResolution](../nodes/{self.node_name}.md)
-
-
-[Top](#class-spline) [Index](/docs/index.md)
-
-```python
-v = spline.set_resolution(selection, resolution)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- geometry : Geometry (self)
-- selection : Boolean
-- resolution : Integer
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution)
-```
-
-
-#### Returns
-
-    Geometry
-
-### spline_ID
-
-> Node: [ID](../nodes/{self.node_name}.md)
-
-
-[Top](#class-spline) [Index](/docs/index.md)
+> Node: [ID](section:nodes/ID)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeInputID](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html)
+node ref [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/id.html) </sub>
 
 ```python
 v = spline.spline_ID(self)
 ```
 
-
-#### Arguments
-
-
-##### Parameters arguments
+### Arguments
 
 
+#### Parameters
 
 - self
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.ID()
+nodes.ID()
 ```
 
+### Returns
 
-#### Returns
-
-    Integer
-
-### spline_index
-
-> Node: [Index](../nodes/{self.node_name}.md)
+Integer
 
 
-[Top](#class-spline) [Index](/docs/index.md)
+## spline_index
+
+> Node: [Index](section:nodes/Index)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
+node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/index.html) </sub>
 
 ```python
 v = spline.spline_index(self)
 ```
 
-
-#### Arguments
-
-
-##### Parameters arguments
+### Arguments
 
 
+#### Parameters
 
 - self
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.Index()
+nodes.Index()
 ```
 
+### Returns
 
-#### Returns
-
-    Integer
-
-### spline_position
-
-> Node: [Index](../nodes/{self.node_name}.md)
+Integer
 
 
-[Top](#class-spline) [Index](/docs/index.md)
+## spline_position
+
+> Node: [Index](section:nodes/Index)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
+node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/index.html) </sub>
 
 ```python
 v = spline.spline_position(self)
 ```
 
-
-#### Arguments
-
-
-##### Parameters arguments
+### Arguments
 
 
+#### Parameters
 
 - self
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.Index()
+nodes.Index()
 ```
 
+### Returns
 
-#### Returns
-
-    Integer
-
-### tangent
-
-> Node: [CurveTangent](../nodes/{self.node_name}.md)
+Integer
 
 
-[Top](#class-spline) [Index](/docs/index.md)
+## left_handle_position
+
+> Node: [CurveHandlePositions](section:nodes/CurveHandlePositions)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeInputCurveHandlePositions](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
+node ref [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_handle_positions.html) </sub>
+
+```python
+v = spline.left_handle_position(self, relative)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- relative : Boolean
+
+#### Parameters
+
+- self
+
+### Node creation
+
+```python
+nodes.CurveHandlePositions(relative=relative)
+```
+
+### Returns
+
+Vector
+
+
+## right_handle_position
+
+> Node: [CurveHandlePositions](section:nodes/CurveHandlePositions)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeInputCurveHandlePositions](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
+node ref [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_handle_positions.html) </sub>
+
+```python
+v = spline.right_handle_position(self, relative)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- relative : Boolean
+
+#### Parameters
+
+- self
+
+### Node creation
+
+```python
+nodes.CurveHandlePositions(relative=relative)
+```
+
+### Returns
+
+Vector
+
+
+## tangent
+
+> Node: [CurveTangent](section:nodes/CurveTangent)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeInputTangent](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputTangent.html)
+node ref [Curve Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_tangent.html) </sub>
 
 ```python
 v = spline.tangent(self)
 ```
 
-
-#### Arguments
-
-
-##### Parameters arguments
+### Arguments
 
 
+#### Parameters
 
 - self
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.CurveTangent()
+nodes.CurveTangent()
 ```
 
+### Returns
 
-#### Returns
-
-    Vector
-
-### tilt
-
-> Node: [CurveTilt](../nodes/{self.node_name}.md)
+Vector
 
 
-[Top](#class-spline) [Index](/docs/index.md)
+## tilt
+
+> Node: [CurveTilt](section:nodes/CurveTilt)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeInputCurveTilt](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveTilt.html)
+node ref [Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_tilt.html) </sub>
 
 ```python
 v = spline.tilt(self)
 ```
 
-
-#### Arguments
-
-
-##### Parameters arguments
+### Arguments
 
 
+#### Parameters
 
 - self
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.CurveTilt()
+nodes.CurveTilt()
 ```
 
+### Returns
 
-#### Returns
+Float
 
-    Float
+
+## endpoint_selection
+
+> Node: [EndpointSelection](section:nodes/EndpointSelection)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeCurveEndpointSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveEndpointSelection.html)
+node ref [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/endpoint_selection.html) </sub>
+
+```python
+v = spline.endpoint_selection(self, start_size, end_size)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- start_size : Integer
+- end_size : Integer
+
+#### Parameters
+
+- self
+
+### Node creation
+
+```python
+nodes.EndpointSelection(start_size=start_size, end_size=end_size)
+```
+
+### Returns
+
+Boolean
+
+
+## handle_type_selection
+
+> Node: [HandleTypeSelection](section:nodes/HandleTypeSelection)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeCurveHandleTypeSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+node ref [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/handle_type_selection.html) </sub>
+
+```python
+v = spline.handle_type_selection(self, handle_type, mode)
+```
+
+### Arguments
+
+
+#### Parameters
+
+- self
+- handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+- mode : {'LEFT', 'RIGHT'}
+
+### Node creation
+
+```python
+nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
+```
+
+### Returns
+
+Boolean
+
+
+## cyclic
+
+> Node: [IsSplineCyclic](section:nodes/IsSplineCyclic)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeInputSplineCyclic](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineCyclic.html)
+node ref [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/is_spline_cyclic.html) </sub>
+
+```python
+v = spline.cyclic(self)
+```
+
+### Arguments
+
+
+#### Parameters
+
+- self
+
+### Node creation
+
+```python
+nodes.IsSplineCyclic()
+```
+
+### Returns
+
+Boolean
+
+
+## length
+
+> Node: [SplineLength](section:nodes/SplineLength)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeSplineLength](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html)
+node ref [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_length.html) </sub>
+
+```python
+v = spline.length(self)
+```
+
+### Arguments
+
+
+#### Parameters
+
+- self
+
+### Node creation
+
+```python
+nodes.SplineLength()
+```
+
+### Returns
+
+Float
+
+
+## point_count
+
+> Node: [SplineLength](section:nodes/SplineLength)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeSplineLength](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html)
+node ref [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_length.html) </sub>
+
+```python
+v = spline.point_count(self)
+```
+
+### Arguments
+
+
+#### Parameters
+
+- self
+
+### Node creation
+
+```python
+nodes.SplineLength()
+```
+
+### Returns
+
+Integer
+
+
+## factor
+
+> Node: [SplineParameter](section:nodes/SplineParameter)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeSplineParameter](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
+node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_parameter.html) </sub>
+
+```python
+v = spline.factor(self)
+```
+
+### Arguments
+
+
+#### Parameters
+
+- self
+
+### Node creation
+
+```python
+nodes.SplineParameter()
+```
+
+### Returns
+
+Float
+
+
+## parameter_length
+
+> Node: [SplineParameter](section:nodes/SplineParameter)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeSplineParameter](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
+node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_parameter.html) </sub>
+
+```python
+v = spline.parameter_length(self)
+```
+
+### Arguments
+
+
+#### Parameters
+
+- self
+
+### Node creation
+
+```python
+nodes.SplineParameter()
+```
+
+### Returns
+
+Float
+
+
+## parameter_index
+
+> Node: [SplineParameter](section:nodes/SplineParameter)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeSplineParameter](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
+node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_parameter.html) </sub>
+
+```python
+v = spline.parameter_index(self)
+```
+
+### Arguments
+
+
+#### Parameters
+
+- self
+
+### Node creation
+
+```python
+nodes.SplineParameter()
+```
+
+### Returns
+
+Integer
+
+
+## resolution
+
+> Node: [SplineResolution](section:nodes/SplineResolution)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeInputSplineResolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineResolution.html)
+node ref [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_resolution.html) </sub>
+
+```python
+v = spline.resolution(self)
+```
+
+### Arguments
+
+
+#### Parameters
+
+- self
+
+### Node creation
+
+```python
+nodes.SplineResolution()
+```
+
+### Returns
+
+Integer
+
+
+## set_cyclic
+
+> Node: [SetSplineCyclic](section:nodes/SetSplineCyclic)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeSetSplineCyclic](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html)
+node ref [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_spline_cyclic.html) </sub>
+
+```python
+v = spline.set_cyclic(selection, cyclic)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- geometry : Geometry (self)
+- selection : Boolean
+- cyclic : Boolean
+
+### Node creation
+
+```python
+nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic)
+```
+
+### Returns
+
+Geometry
+
+
+## set_resolution
+
+> Node: [SetSplineResolution](section:nodes/SetSplineResolution)
+<sub>go to: [top](#spline) [index](TBD)
+blender ref [GeometryNodeSetSplineResolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html)
+node ref [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_spline_resolution.html) </sub>
+
+```python
+v = spline.set_resolution(selection, resolution)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- geometry : Geometry (self)
+- selection : Boolean
+- resolution : Integer
+
+### Node creation
+
+```python
+nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution)
+```
+
+### Returns
+
+Geometry
+

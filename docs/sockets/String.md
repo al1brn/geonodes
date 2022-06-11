@@ -1,442 +1,384 @@
 
-# Class String
+# Data socket String
 
-> Inherits from: ***dsock.String***
+> Inherits from dsock.String
+  
+<sub>go to [index](TBD)</sub>
 
 
-[Index](/docs/index.md)
 
 ## Properties
 
-
-
-- [**length**](#length) : [StringLength](../nodes/StringLength.md) length (Integer)
-
-
+- [length](#length) : [StringLength](section:nodes/StringLength.md), length (Integer)
 
 ## Methods
 
+- [average](#average) : [Compare](section:nodes/Compare.md), result (Boolean)
+- [direction](#direction) : [Compare](section:nodes/Compare.md), result (Boolean)
+- [dot_product](#dot_product) : [Compare](section:nodes/Compare.md), result (Boolean)
+- [element](#element) : [Compare](section:nodes/Compare.md), result (Boolean)
+- [join](#join) : [JoinStrings](section:nodes/JoinStrings.md), string (String)
+- [length](#length) : [Compare](section:nodes/Compare.md), result (Boolean)
+- [replace](#replace) : [ReplaceString](section:nodes/ReplaceString.md), string (String)
+- [slice](#slice) : [SliceString](section:nodes/SliceString.md), string (String)
+- [switch](#switch) : [Switch](section:nodes/Switch.md), output (String)
+- [to_curves](#to_curves) : [StringToCurves](section:nodes/StringToCurves.md), Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
 
+## length
 
-- [**average**](#average) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**direction**](#direction) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**dot_product**](#dot_product) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**element**](#element) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**join**](#join) : [JoinStrings](../nodes/JoinStrings.md) string (String)
-- [**length**](#length) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**replace**](#replace) : [ReplaceString](../nodes/ReplaceString.md) string (String)
-- [**slice**](#slice) : [SliceString](../nodes/SliceString.md) string (String)
-- [**switch**](#switch) : [Switch](../nodes/Switch.md) output (String)
-- [**to_curves**](#to_curves) : [StringToCurves](../nodes/StringToCurves.md) Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
-
-
-
-## Methods reference
-
-
-### average
-
-> Node: [Compare](../nodes/{self.node_name}.md)
-
-
-[Top](#class-string) [Index](/docs/index.md)
+> Node: [StringLength](section:nodes/StringLength)
+<sub>go to: [top](#string) [index](TBD)
+blender ref [FunctionNodeStringLength](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
+node ref [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/string_length.html) </sub>
 
 ```python
-v = string.average(b)
+v = string.length
 ```
 
+### Arguments
 
-#### Arguments
 
-
-##### Sockets arguments
-
-
-
-- a : String (self)
-- b : String
-
-
-
-##### Fixed parameters
-
-
-
-- data_type : 'STRING'
-- mode : 'ELEMENT'
-- operation : 'AVERAGE'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE')
-```
-
-
-#### Returns
-
-    Boolean
-
-### direction
-
-> Node: [Compare](../nodes/{self.node_name}.md)
-
-
-[Top](#class-string) [Index](/docs/index.md)
-
-```python
-v = string.direction(b)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- a : String (self)
-- b : String
-
-
-
-##### Fixed parameters
-
-
-
-- data_type : 'STRING'
-- mode : 'ELEMENT'
-- operation : 'DIRECTION'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION')
-```
-
-
-#### Returns
-
-    Boolean
-
-### dot_product
-
-> Node: [Compare](../nodes/{self.node_name}.md)
-
-
-[Top](#class-string) [Index](/docs/index.md)
-
-```python
-v = string.dot_product(b)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- a : String (self)
-- b : String
-
-
-
-##### Fixed parameters
-
-
-
-- data_type : 'STRING'
-- mode : 'ELEMENT'
-- operation : 'DOT_PRODUCT'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT')
-```
-
-
-#### Returns
-
-    Boolean
-
-### element
-
-> Node: [Compare](../nodes/{self.node_name}.md)
-
-
-[Top](#class-string) [Index](/docs/index.md)
-
-```python
-v = string.element(b)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- a : String (self)
-- b : String
-
-
-
-##### Fixed parameters
-
-
-
-- data_type : 'STRING'
-- mode : 'ELEMENT'
-- operation : 'ELEMENT'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT')
-```
-
-
-#### Returns
-
-    Boolean
-
-### join
-
-> Node: [JoinStrings](../nodes/{self.node_name}.md)
-
-
-[Top](#class-string) [Index](/docs/index.md)
-
-```python
-v = string.join(strings_1, strings_2, strings_3, delimiter)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- strings : *String (self)
-- delimiter : String
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.JoinStrings(self, *strings, delimiter=delimiter)
-```
-
-
-#### Returns
-
-    String
-
-### length
-
-> Node: [Compare](../nodes/{self.node_name}.md)
-
-
-[Top](#class-string) [Index](/docs/index.md)
-
-```python
-v = string.length(b)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- a : String (self)
-- b : String
-
-
-
-##### Fixed parameters
-
-
-
-- data_type : 'STRING'
-- mode : 'ELEMENT'
-- operation : 'LENGTH'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH')
-```
-
-
-#### Returns
-
-    Boolean
-
-### replace
-
-> Node: [ReplaceString](../nodes/{self.node_name}.md)
-
-
-[Top](#class-string) [Index](/docs/index.md)
-
-```python
-v = string.replace(find, replace)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
+#### Sockets
 
 - string : String (self)
-- find : String
-- replace : String
 
+#### Fixed parameters
 
+- label:f"{self.node_chain_label}.length"
 
-#### Node creation
-
-
-```python
-node = nodes.ReplaceString(string=self, find=find, replace=replace)
-```
-
-
-#### Returns
-
-    String
-
-### slice
-
-> Node: [SliceString](../nodes/{self.node_name}.md)
-
-
-[Top](#class-string) [Index](/docs/index.md)
+### Node creation
 
 ```python
-v = string.slice(position, length)
+nodes.StringLength(string=self, label=f"{self.node_chain_label}.length")
 ```
 
+### Returns
 
-#### Arguments
-
-
-##### Sockets arguments
+Integer
 
 
+## switch
 
-- string : String (self)
-- position : Integer
-- length : Integer
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.SliceString(string=self, position=position, length=length)
-```
-
-
-#### Returns
-
-    String
-
-### switch
-
-> Node: [Switch](../nodes/{self.node_name}.md)
-
-
-[Top](#class-string) [Index](/docs/index.md)
+> Node: [Switch](section:nodes/Switch)
+<sub>go to: [top](#string) [index](TBD)
+blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 
 ```python
 v = string.switch(switch0, true)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - false : String (self)
 - switch0 : Boolean
 - true : String
 
-
-
-##### Fixed parameters
-
-
+#### Fixed parameters
 
 - input_type : 'STRING'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING')
+nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING')
 ```
 
+### Returns
 
-#### Returns
-
-    String
-
-### to_curves
-
-> Node: [StringToCurves](../nodes/{self.node_name}.md)
+String
 
 
-[Top](#class-string) [Index](/docs/index.md)
+## element
+
+> Node: [Compare](section:nodes/Compare)
+<sub>go to: [top](#string) [index](TBD)
+blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+
+```python
+v = string.element(b)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- a : String (self)
+- b : String
+
+#### Fixed parameters
+
+- data_type : 'STRING'
+- mode : 'ELEMENT'
+- operation : 'ELEMENT'
+
+### Node creation
+
+```python
+nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT')
+```
+
+### Returns
+
+Boolean
+
+
+## length
+
+> Node: [Compare](section:nodes/Compare)
+<sub>go to: [top](#string) [index](TBD)
+blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+
+```python
+v = string.length(b)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- a : String (self)
+- b : String
+
+#### Fixed parameters
+
+- data_type : 'STRING'
+- mode : 'ELEMENT'
+- operation : 'LENGTH'
+
+### Node creation
+
+```python
+nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH')
+```
+
+### Returns
+
+Boolean
+
+
+## average
+
+> Node: [Compare](section:nodes/Compare)
+<sub>go to: [top](#string) [index](TBD)
+blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+
+```python
+v = string.average(b)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- a : String (self)
+- b : String
+
+#### Fixed parameters
+
+- data_type : 'STRING'
+- mode : 'ELEMENT'
+- operation : 'AVERAGE'
+
+### Node creation
+
+```python
+nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE')
+```
+
+### Returns
+
+Boolean
+
+
+## dot_product
+
+> Node: [Compare](section:nodes/Compare)
+<sub>go to: [top](#string) [index](TBD)
+blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+
+```python
+v = string.dot_product(b)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- a : String (self)
+- b : String
+
+#### Fixed parameters
+
+- data_type : 'STRING'
+- mode : 'ELEMENT'
+- operation : 'DOT_PRODUCT'
+
+### Node creation
+
+```python
+nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT')
+```
+
+### Returns
+
+Boolean
+
+
+## direction
+
+> Node: [Compare](section:nodes/Compare)
+<sub>go to: [top](#string) [index](TBD)
+blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+
+```python
+v = string.direction(b)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- a : String (self)
+- b : String
+
+#### Fixed parameters
+
+- data_type : 'STRING'
+- mode : 'ELEMENT'
+- operation : 'DIRECTION'
+
+### Node creation
+
+```python
+nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION')
+```
+
+### Returns
+
+Boolean
+
+
+## join
+
+> Node: [JoinStrings](section:nodes/JoinStrings)
+<sub>go to: [top](#string) [index](TBD)
+blender ref [GeometryNodeStringJoin](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
+node ref [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/join_strings.html) </sub>
+
+```python
+v = string.join(strings_1, strings_2, strings_3, delimiter)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- strings : *String (self)
+- delimiter : String
+
+### Node creation
+
+```python
+nodes.JoinStrings(self, *strings, delimiter=delimiter)
+```
+
+### Returns
+
+String
+
+
+## replace
+
+> Node: [ReplaceString](section:nodes/ReplaceString)
+<sub>go to: [top](#string) [index](TBD)
+blender ref [FunctionNodeReplaceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
+node ref [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_string.html) </sub>
+
+```python
+v = string.replace(find, replace)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- string : String (self)
+- find : String
+- replace : String
+
+### Node creation
+
+```python
+nodes.ReplaceString(string=self, find=find, replace=replace)
+```
+
+### Returns
+
+String
+
+
+## slice
+
+> Node: [SliceString](section:nodes/SliceString)
+<sub>go to: [top](#string) [index](TBD)
+blender ref [FunctionNodeSliceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
+node ref [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/slice_string.html) </sub>
+
+```python
+v = string.slice(position, length)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- string : String (self)
+- position : Integer
+- length : Integer
+
+### Node creation
+
+```python
+nodes.SliceString(string=self, position=position, length=length)
+```
+
+### Returns
+
+String
+
+
+## to_curves
+
+> Node: [StringToCurves](section:nodes/StringToCurves)
+<sub>go to: [top](#string) [index](TBD)
+blender ref [GeometryNodeStringToCurves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
+node ref [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/string_to_curves.html) </sub>
 
 ```python
 v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_box_width, text_box_height, align_x, align_y, overflow, pivot_mode)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - string : String (self)
 - size : Float
@@ -446,27 +388,20 @@ v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_b
 - text_box_width : Float
 - text_box_height : Float
 
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - align_x : 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
 - align_y : 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
 - overflow : 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
 - pivot_mode : 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
+nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
 ```
 
+### Returns
 
-#### Returns
+Sockets [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
 
-    Sockets [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]

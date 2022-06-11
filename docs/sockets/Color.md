@@ -1,1260 +1,349 @@
 
-# Class Color
+# Data socket Color
 
-> Inherits from: ***dsock.Color***
+> Inherits from dsock.Color
+  
+<sub>go to [index](TBD)</sub>
 
 
-[Index](/docs/index.md)
 
 ## Constructors
 
-
-
-- [**Combine**](#combine) : [CombineRgb](../nodes/CombineRgb.md) image (Color)
-
-
+- [Combine](#combine) : [CombineRgb](section:nodes/CombineRgb.md), image (Color)
 
 ## Properties
 
-
-
-- [**b**](#b) : [SeparateRgb](../nodes/SeparateRgb.md) b (Float) = separate.b
-- [**g**](#g) : [SeparateRgb](../nodes/SeparateRgb.md) g (Float) = separate.g
-- [**r**](#r) : [SeparateRgb](../nodes/SeparateRgb.md) r (Float) = separate.r
-- [**separate**](#separate) : [SeparateRgb](../nodes/SeparateRgb.md) Sockets      [r (Float), g (Float), b (Float)]
-
-
+- [b](#b) : [SeparateRgb](section:nodes/SeparateRgb.md), b (Float) = separate.b
+- [g](#g) : [SeparateRgb](section:nodes/SeparateRgb.md), g (Float) = separate.g
+- [r](#r) : [SeparateRgb](section:nodes/SeparateRgb.md), r (Float) = separate.r
+- [separate](#separate) : [SeparateRgb](section:nodes/SeparateRgb.md), Sockets      [r (Float), g (Float), b (Float)]
 
 ## Methods
 
+- [add](#add) : [Mix](section:nodes/Mix.md), color (Color)
+- [brighter](#brighter) : [Compare](section:nodes/Compare.md), result (Boolean)
+- [burn](#burn) : [Mix](section:nodes/Mix.md), color (Color)
+- [capture_attribute](#capture_attribute) : [CaptureAttribute](section:nodes/CaptureAttribute.md), Sockets      [geometry (Geometry), attribute (Color)]
+- [curves](#curves) : [RgbCurves](section:nodes/RgbCurves.md), color (Color)
+- [darken](#darken) : [Mix](section:nodes/Mix.md), color (Color)
+- [darker](#darker) : [Compare](section:nodes/Compare.md), result (Boolean)
+- [difference](#difference) : [Mix](section:nodes/Mix.md), color (Color)
+- [divide](#divide) : [Mix](section:nodes/Mix.md), color (Color)
+- [dodge](#dodge) : [Mix](section:nodes/Mix.md), color (Color)
+- [equal](#equal) : [Compare](section:nodes/Compare.md), result (Boolean)
+- [field_at_index](#field_at_index) : [FieldAtIndex](section:nodes/FieldAtIndex.md), value (Color)
+- [hue](#hue) : [Mix](section:nodes/Mix.md), color (Color)
+- [lighten](#lighten) : [Mix](section:nodes/Mix.md), color (Color)
+- [linear_light](#linear_light) : [Mix](section:nodes/Mix.md), color (Color)
+- [mix](#mix) : [Mix](section:nodes/Mix.md), color (Color)
+- [mix](#mix) : [Mix](section:nodes/Mix.md), color (Color)
+- [mix_color](#mix_color) : [Mix](section:nodes/Mix.md), color (Color)
+- [multiply](#multiply) : [Mix](section:nodes/Mix.md), color (Color)
+- [not_equal](#not_equal) : [Compare](section:nodes/Compare.md), result (Boolean)
+- [overlay](#overlay) : [Mix](section:nodes/Mix.md), color (Color)
+- [raycast](#raycast) : [Raycast](section:nodes/Raycast.md), Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Color)]
+- [saturation](#saturation) : [Mix](section:nodes/Mix.md), color (Color)
+- [screen](#screen) : [Mix](section:nodes/Mix.md), color (Color)
+- [soft_light](#soft_light) : [Mix](section:nodes/Mix.md), color (Color)
+- [subtract](#subtract) : [Mix](section:nodes/Mix.md), color (Color)
+- [transfer_attribute](#transfer_attribute) : [TransferAttribute](section:nodes/TransferAttribute.md), attribute (Color)
+- [value](#value) : [Mix](section:nodes/Mix.md), color (Color)
 
+## Combine
 
-- [**add**](#add) : [Mix](../nodes/Mix.md) color (Color)
-- [**brighter**](#brighter) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**burn**](#burn) : [Mix](../nodes/Mix.md) color (Color)
-- [**capture_attribute**](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) Sockets      [geometry (Geometry), attribute (Color)]
-- [**curves**](#curves) : [RgbCurves](../nodes/RgbCurves.md) color (Color)
-- [**darken**](#darken) : [Mix](../nodes/Mix.md) color (Color)
-- [**darker**](#darker) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**difference**](#difference) : [Mix](../nodes/Mix.md) color (Color)
-- [**divide**](#divide) : [Mix](../nodes/Mix.md) color (Color)
-- [**dodge**](#dodge) : [Mix](../nodes/Mix.md) color (Color)
-- [**equal**](#equal) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**field_at_index**](#field_at_index) : [FieldAtIndex](../nodes/FieldAtIndex.md) value (Color)
-- [**hue**](#hue) : [Mix](../nodes/Mix.md) color (Color)
-- [**lighten**](#lighten) : [Mix](../nodes/Mix.md) color (Color)
-- [**linear_light**](#linear_light) : [Mix](../nodes/Mix.md) color (Color)
-- [**mix**](#mix) : [Mix](../nodes/Mix.md) color (Color)
-- [**mix**](#mix) : [Mix](../nodes/Mix.md) color (Color)
-- [**mix_color**](#mix_color) : [Mix](../nodes/Mix.md) color (Color)
-- [**multiply**](#multiply) : [Mix](../nodes/Mix.md) color (Color)
-- [**not_equal**](#not_equal) : [Compare](../nodes/Compare.md) result (Boolean)
-- [**overlay**](#overlay) : [Mix](../nodes/Mix.md) color (Color)
-- [**raycast**](#raycast) : [Raycast](../nodes/Raycast.md) Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Color)]
-- [**saturation**](#saturation) : [Mix](../nodes/Mix.md) color (Color)
-- [**screen**](#screen) : [Mix](../nodes/Mix.md) color (Color)
-- [**soft_light**](#soft_light) : [Mix](../nodes/Mix.md) color (Color)
-- [**subtract**](#subtract) : [Mix](../nodes/Mix.md) color (Color)
-- [**transfer_attribute**](#transfer_attribute) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Color)
-- [**value**](#value) : [Mix](../nodes/Mix.md) color (Color)
-
-
-
-## Methods reference
-
-
-### Combine
-
-> Node: [CombineRgb](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
+> Node: [CombineRgb](section:nodes/CombineRgb)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeCombineRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineRGB.html)
+node ref [Combine RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/combine_rgb.html) </sub>
 
 ```python
 v = Color.Combine(r, g, b)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - r : Float
 - g : Float
 - b : Float
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.CombineRgb(r=r, g=g, b=b)
+nodes.CombineRgb(r=r, g=g, b=b)
 ```
 
+### Returns
 
-#### Returns
-
-    Color
-
-### add
-
-> Node: [Mix](../nodes/{self.node_name}.md)
+Color
 
 
-[Top](#class-color) [Index](/docs/index.md)
+## separate
+
+> Node: [SeparateRgb](section:nodes/SeparateRgb)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeSeparateRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateRGB.html)
+node ref [Separate RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_rgb.html) </sub>
 
 ```python
-v = color.add(color2, fac, use_alpha)
+v = color.separate
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
-
-- color1 : Color (self)
-- color2 : Color
-- fac : Float
-
-
-
-##### Fixed parameters
-
-
-
-- blend_type : 'ADD'
-
-
-
-##### Parameters arguments
-
-
-
-- use_alpha : False
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha)
-```
-
-
-#### Returns
-
-    Color
-
-### b
-
-> Node: [SeparateRgb](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.b
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
+#### Sockets
 
 - image : Color (self)
 
+#### Fixed parameters
 
+- label:f"{self.node_chain_label}.separate"
 
-##### Fixed parameters
-
-
-
-- label:f"{self.node_chain_label}.b"
-
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.b")
+nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.separate")
 ```
 
+### Returns
 
-#### Returns
+Sockets [r (Float), g (Float), b (Float)]
 
-    Sockets [r (Float), g (Float), b (Float)]
 
-### brighter
+## r
 
-> Node: [Compare](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.brighter(b)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- a : Color (self)
-- b : Color
-
-
-
-##### Fixed parameters
-
-
-
-- data_type : 'RGBA'
-- mode : 'ELEMENT'
-- operation : 'BRIGHTER'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER')
-```
-
-
-#### Returns
-
-    Boolean
-
-### burn
-
-> Node: [Mix](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.burn(color2, fac, use_alpha)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- color1 : Color (self)
-- color2 : Color
-- fac : Float
-
-
-
-##### Fixed parameters
-
-
-
-- blend_type : 'BURN'
-
-
-
-##### Parameters arguments
-
-
-
-- use_alpha : False
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha)
-```
-
-
-#### Returns
-
-    Color
-
-### capture_attribute
-
-> Node: [CaptureAttribute](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.capture_attribute(geometry, domain)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- value : Color (self)
-- geometry : Geometry
-
-
-
-##### Fixed parameters
-
-
-
-- data_type : 'FLOAT_COLOR'
-
-
-
-##### Parameters arguments
-
-
-
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_COLOR', domain=domain)
-```
-
-
-#### Returns
-
-    Sockets [geometry (Geometry), attribute (Color)]
-
-### curves
-
-> Node: [RgbCurves](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.curves(fac)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- color : Color (self)
-- fac : Float
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.RgbCurves(color=self, fac=fac)
-```
-
-
-#### Returns
-
-    Color
-
-### darken
-
-> Node: [Mix](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.darken(color2, fac, use_alpha)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- color1 : Color (self)
-- color2 : Color
-- fac : Float
-
-
-
-##### Fixed parameters
-
-
-
-- blend_type : 'DARKEN'
-
-
-
-##### Parameters arguments
-
-
-
-- use_alpha : False
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha)
-```
-
-
-#### Returns
-
-    Color
-
-### darker
-
-> Node: [Compare](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.darker(b)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- a : Color (self)
-- b : Color
-
-
-
-##### Fixed parameters
-
-
-
-- data_type : 'RGBA'
-- mode : 'ELEMENT'
-- operation : 'DARKER'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='DARKER')
-```
-
-
-#### Returns
-
-    Boolean
-
-### difference
-
-> Node: [Mix](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.difference(color2, fac, use_alpha)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- color1 : Color (self)
-- color2 : Color
-- fac : Float
-
-
-
-##### Fixed parameters
-
-
-
-- blend_type : 'DIFFERENCE'
-
-
-
-##### Parameters arguments
-
-
-
-- use_alpha : False
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha)
-```
-
-
-#### Returns
-
-    Color
-
-### divide
-
-> Node: [Mix](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.divide(color2, fac, use_alpha)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- color1 : Color (self)
-- color2 : Color
-- fac : Float
-
-
-
-##### Fixed parameters
-
-
-
-- blend_type : 'DIVIDE'
-
-
-
-##### Parameters arguments
-
-
-
-- use_alpha : False
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha)
-```
-
-
-#### Returns
-
-    Color
-
-### dodge
-
-> Node: [Mix](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.dodge(color2, fac, use_alpha)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- color1 : Color (self)
-- color2 : Color
-- fac : Float
-
-
-
-##### Fixed parameters
-
-
-
-- blend_type : 'DODGE'
-
-
-
-##### Parameters arguments
-
-
-
-- use_alpha : False
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha)
-```
-
-
-#### Returns
-
-    Color
-
-### equal
-
-> Node: [Compare](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.equal(b, epsilon)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- a : Color (self)
-- b : Color
-- epsilon : Float
-
-
-
-##### Fixed parameters
-
-
-
-- data_type : 'RGBA'
-- mode : 'ELEMENT'
-- operation : 'EQUAL'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='EQUAL')
-```
-
-
-#### Returns
-
-    Boolean
-
-### field_at_index
-
-> Node: [FieldAtIndex](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.field_at_index(index, domain)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- value : Color (self)
-- index : Integer
-
-
-
-##### Fixed parameters
-
-
-
-- data_type : 'FLOAT_COLOR'
-
-
-
-##### Parameters arguments
-
-
-
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_COLOR', domain=domain)
-```
-
-
-#### Returns
-
-    Color
-
-### g
-
-> Node: [SeparateRgb](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.g
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- image : Color (self)
-
-
-
-##### Fixed parameters
-
-
-
-- label:f"{self.node_chain_label}.g"
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.g")
-```
-
-
-#### Returns
-
-    Sockets [r (Float), g (Float), b (Float)]
-
-### hue
-
-> Node: [Mix](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.hue(color2, fac, use_alpha)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- color1 : Color (self)
-- color2 : Color
-- fac : Float
-
-
-
-##### Fixed parameters
-
-
-
-- blend_type : 'HUE'
-
-
-
-##### Parameters arguments
-
-
-
-- use_alpha : False
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha)
-```
-
-
-#### Returns
-
-    Color
-
-### lighten
-
-> Node: [Mix](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.lighten(color2, fac, use_alpha)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- color1 : Color (self)
-- color2 : Color
-- fac : Float
-
-
-
-##### Fixed parameters
-
-
-
-- blend_type : 'LIGHTEN'
-
-
-
-##### Parameters arguments
-
-
-
-- use_alpha : False
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha)
-```
-
-
-#### Returns
-
-    Color
-
-### linear_light
-
-> Node: [Mix](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.linear_light(color2, fac, use_alpha)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- color1 : Color (self)
-- color2 : Color
-- fac : Float
-
-
-
-##### Fixed parameters
-
-
-
-- blend_type : 'LINEAR_LIGHT'
-
-
-
-##### Parameters arguments
-
-
-
-- use_alpha : False
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha)
-```
-
-
-#### Returns
-
-    Color
-
-### mix
-
-> Node: [Mix](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.mix(color2, fac, blend_type, use_alpha)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- color1 : Color (self)
-- color2 : Color
-- fac : Float
-
-
-
-##### Parameters arguments
-
-
-
-- blend_type : 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
-- use_alpha : False
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type=blend_type, use_alpha=use_alpha)
-```
-
-
-#### Returns
-
-    Color
-
-### mix_color
-
-> Node: [Mix](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.mix_color(color2, fac, use_alpha)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- color1 : Color (self)
-- color2 : Color
-- fac : Float
-
-
-
-##### Fixed parameters
-
-
-
-- blend_type : 'COLOR'
-
-
-
-##### Parameters arguments
-
-
-
-- use_alpha : False
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha)
-```
-
-
-#### Returns
-
-    Color
-
-### multiply
-
-> Node: [Mix](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.multiply(color2, fac, use_alpha)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- color1 : Color (self)
-- color2 : Color
-- fac : Float
-
-
-
-##### Fixed parameters
-
-
-
-- blend_type : 'MULTIPLY'
-
-
-
-##### Parameters arguments
-
-
-
-- use_alpha : False
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha)
-```
-
-
-#### Returns
-
-    Color
-
-### not_equal
-
-> Node: [Compare](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.not_equal(b, epsilon)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- a : Color (self)
-- b : Color
-- epsilon : Float
-
-
-
-##### Fixed parameters
-
-
-
-- data_type : 'RGBA'
-- mode : 'ELEMENT'
-- operation : 'NOT_EQUAL'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='NOT_EQUAL')
-```
-
-
-#### Returns
-
-    Boolean
-
-### overlay
-
-> Node: [Mix](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
-
-```python
-v = color.overlay(color2, fac, use_alpha)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- color1 : Color (self)
-- color2 : Color
-- fac : Float
-
-
-
-##### Fixed parameters
-
-
-
-- blend_type : 'OVERLAY'
-
-
-
-##### Parameters arguments
-
-
-
-- use_alpha : False
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha)
-```
-
-
-#### Returns
-
-    Color
-
-### r
-
-> Node: [SeparateRgb](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
+> Node: [SeparateRgb](section:nodes/SeparateRgb)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeSeparateRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateRGB.html)
+node ref [Separate RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_rgb.html) </sub>
 
 ```python
 v = color.r
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - image : Color (self)
 
-
-
-##### Fixed parameters
-
-
+#### Fixed parameters
 
 - label:f"{self.node_chain_label}.r"
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.r")
+nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.r")
 ```
 
+### Returns
 
-#### Returns
-
-    Sockets [r (Float), g (Float), b (Float)]
-
-### raycast
-
-> Node: [Raycast](../nodes/{self.node_name}.md)
+Sockets [r (Float), g (Float), b (Float)]
 
 
-[Top](#class-color) [Index](/docs/index.md)
+## g
+
+> Node: [SeparateRgb](section:nodes/SeparateRgb)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeSeparateRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateRGB.html)
+node ref [Separate RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_rgb.html) </sub>
+
+```python
+v = color.g
+```
+
+### Arguments
+
+
+#### Sockets
+
+- image : Color (self)
+
+#### Fixed parameters
+
+- label:f"{self.node_chain_label}.g"
+
+### Node creation
+
+```python
+nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.g")
+```
+
+### Returns
+
+Sockets [r (Float), g (Float), b (Float)]
+
+
+## b
+
+> Node: [SeparateRgb](section:nodes/SeparateRgb)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeSeparateRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateRGB.html)
+node ref [Separate RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_rgb.html) </sub>
+
+```python
+v = color.b
+```
+
+### Arguments
+
+
+#### Sockets
+
+- image : Color (self)
+
+#### Fixed parameters
+
+- label:f"{self.node_chain_label}.b"
+
+### Node creation
+
+```python
+nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.b")
+```
+
+### Returns
+
+Sockets [r (Float), g (Float), b (Float)]
+
+
+## transfer_attribute
+
+> Node: [TransferAttribute](section:nodes/TransferAttribute)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
+node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/transfer_attribute.html) </sub>
+
+```python
+v = color.transfer_attribute(source, source_position, index, domain, mapping)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- attribute : Color (self)
+- source : Geometry
+- source_position : Vector
+- index : Integer
+
+#### Parameters
+
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+
+#### Fixed parameters
+
+- data_type : 'FLOAT_COLOR'
+
+### Node creation
+
+```python
+nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
+```
+
+### Returns
+
+Color
+
+
+## capture_attribute
+
+> Node: [CaptureAttribute](section:nodes/CaptureAttribute)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
+node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/capture_attribute.html) </sub>
+
+```python
+v = color.capture_attribute(geometry, domain)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- value : Color (self)
+- geometry : Geometry
+
+#### Parameters
+
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+
+#### Fixed parameters
+
+- data_type : 'FLOAT_COLOR'
+
+### Node creation
+
+```python
+nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_COLOR', domain=domain)
+```
+
+### Returns
+
+Sockets [geometry (Geometry), attribute (Color)]
+
+
+## field_at_index
+
+> Node: [FieldAtIndex](section:nodes/FieldAtIndex)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
+node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/field_at_index.html) </sub>
+
+```python
+v = color.field_at_index(index, domain)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- value : Color (self)
+- index : Integer
+
+#### Parameters
+
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+
+#### Fixed parameters
+
+- data_type : 'FLOAT_COLOR'
+
+### Node creation
+
+```python
+nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_COLOR', domain=domain)
+```
+
+### Returns
+
+Color
+
+
+## raycast
+
+> Node: [Raycast](section:nodes/Raycast)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/raycast.html) </sub>
 
 ```python
 v = color.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - attribute : Color (self)
 - target_geometry : Geometry
@@ -1262,395 +351,935 @@ v = color.raycast(target_geometry, source_position, ray_direction, ray_length, m
 - ray_direction : Vector
 - ray_length : Float
 
-
-
-##### Fixed parameters
-
-
-
-- data_type : 'FLOAT_COLOR'
-
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
 
+#### Fixed parameters
 
+- data_type : 'FLOAT_COLOR'
 
-#### Node creation
-
-
-```python
-node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_COLOR', mapping=mapping)
-```
-
-
-#### Returns
-
-    Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Color)]
-
-### saturation
-
-> Node: [Mix](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
+### Node creation
 
 ```python
-v = color.saturation(color2, fac, use_alpha)
+nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_COLOR', mapping=mapping)
 ```
 
+### Returns
 
-#### Arguments
-
-
-##### Sockets arguments
+Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Color)]
 
 
+## equal
+
+> Node: [Compare](section:nodes/Compare)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+
+```python
+v = color.equal(b, epsilon)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- a : Color (self)
+- b : Color
+- epsilon : Float
+
+#### Fixed parameters
+
+- data_type : 'RGBA'
+- mode : 'ELEMENT'
+- operation : 'EQUAL'
+
+### Node creation
+
+```python
+nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='EQUAL')
+```
+
+### Returns
+
+Boolean
+
+
+## not_equal
+
+> Node: [Compare](section:nodes/Compare)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+
+```python
+v = color.not_equal(b, epsilon)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- a : Color (self)
+- b : Color
+- epsilon : Float
+
+#### Fixed parameters
+
+- data_type : 'RGBA'
+- mode : 'ELEMENT'
+- operation : 'NOT_EQUAL'
+
+### Node creation
+
+```python
+nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='NOT_EQUAL')
+```
+
+### Returns
+
+Boolean
+
+
+## brighter
+
+> Node: [Compare](section:nodes/Compare)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+
+```python
+v = color.brighter(b)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- a : Color (self)
+- b : Color
+
+#### Fixed parameters
+
+- data_type : 'RGBA'
+- mode : 'ELEMENT'
+- operation : 'BRIGHTER'
+
+### Node creation
+
+```python
+nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER')
+```
+
+### Returns
+
+Boolean
+
+
+## darker
+
+> Node: [Compare](section:nodes/Compare)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
+
+```python
+v = color.darker(b)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- a : Color (self)
+- b : Color
+
+#### Fixed parameters
+
+- data_type : 'RGBA'
+- mode : 'ELEMENT'
+- operation : 'DARKER'
+
+### Node creation
+
+```python
+nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='DARKER')
+```
+
+### Returns
+
+Boolean
+
+
+## mix
+
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
+
+```python
+v = color.mix(color2, fac, use_alpha)
+```
+
+### Arguments
+
+
+#### Sockets
 
 - color1 : Color (self)
 - color2 : Color
 - fac : Float
 
-
-
-##### Fixed parameters
-
-
-
-- blend_type : 'SATURATION'
-
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - use_alpha : False
 
+#### Fixed parameters
 
+- blend_type : 'MIX'
 
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha)
 ```
 
+### Returns
 
-#### Returns
-
-    Color
-
-### screen
-
-> Node: [Mix](../nodes/{self.node_name}.md)
+Color
 
 
-[Top](#class-color) [Index](/docs/index.md)
+## darken
+
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
+
+```python
+v = color.darken(color2, fac, use_alpha)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- color1 : Color (self)
+- color2 : Color
+- fac : Float
+
+#### Parameters
+
+- use_alpha : False
+
+#### Fixed parameters
+
+- blend_type : 'DARKEN'
+
+### Node creation
+
+```python
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha)
+```
+
+### Returns
+
+Color
+
+
+## multiply
+
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
+
+```python
+v = color.multiply(color2, fac, use_alpha)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- color1 : Color (self)
+- color2 : Color
+- fac : Float
+
+#### Parameters
+
+- use_alpha : False
+
+#### Fixed parameters
+
+- blend_type : 'MULTIPLY'
+
+### Node creation
+
+```python
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha)
+```
+
+### Returns
+
+Color
+
+
+## burn
+
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
+
+```python
+v = color.burn(color2, fac, use_alpha)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- color1 : Color (self)
+- color2 : Color
+- fac : Float
+
+#### Parameters
+
+- use_alpha : False
+
+#### Fixed parameters
+
+- blend_type : 'BURN'
+
+### Node creation
+
+```python
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha)
+```
+
+### Returns
+
+Color
+
+
+## lighten
+
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
+
+```python
+v = color.lighten(color2, fac, use_alpha)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- color1 : Color (self)
+- color2 : Color
+- fac : Float
+
+#### Parameters
+
+- use_alpha : False
+
+#### Fixed parameters
+
+- blend_type : 'LIGHTEN'
+
+### Node creation
+
+```python
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha)
+```
+
+### Returns
+
+Color
+
+
+## screen
+
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
 ```python
 v = color.screen(color2, fac, use_alpha)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - color1 : Color (self)
 - color2 : Color
 - fac : Float
 
-
-
-##### Fixed parameters
-
-
-
-- blend_type : 'SCREEN'
-
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - use_alpha : False
 
+#### Fixed parameters
 
+- blend_type : 'SCREEN'
 
-#### Node creation
-
-
-```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha)
-```
-
-
-#### Returns
-
-    Color
-
-### separate
-
-> Node: [SeparateRgb](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
+### Node creation
 
 ```python
-v = color.separate
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha)
 ```
 
+### Returns
 
-#### Arguments
-
-
-##### Sockets arguments
+Color
 
 
+## dodge
 
-- image : Color (self)
-
-
-
-##### Fixed parameters
-
-
-
-- label:f"{self.node_chain_label}.separate"
-
-
-
-#### Node creation
-
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
 ```python
-node = nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.separate")
+v = color.dodge(color2, fac, use_alpha)
 ```
 
-
-#### Returns
-
-    Sockets [r (Float), g (Float), b (Float)]
-
-### soft_light
-
-> Node: [Mix](../nodes/{self.node_name}.md)
+### Arguments
 
 
-[Top](#class-color) [Index](/docs/index.md)
+#### Sockets
+
+- color1 : Color (self)
+- color2 : Color
+- fac : Float
+
+#### Parameters
+
+- use_alpha : False
+
+#### Fixed parameters
+
+- blend_type : 'DODGE'
+
+### Node creation
+
+```python
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha)
+```
+
+### Returns
+
+Color
+
+
+## add
+
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
+
+```python
+v = color.add(color2, fac, use_alpha)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- color1 : Color (self)
+- color2 : Color
+- fac : Float
+
+#### Parameters
+
+- use_alpha : False
+
+#### Fixed parameters
+
+- blend_type : 'ADD'
+
+### Node creation
+
+```python
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha)
+```
+
+### Returns
+
+Color
+
+
+## overlay
+
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
+
+```python
+v = color.overlay(color2, fac, use_alpha)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- color1 : Color (self)
+- color2 : Color
+- fac : Float
+
+#### Parameters
+
+- use_alpha : False
+
+#### Fixed parameters
+
+- blend_type : 'OVERLAY'
+
+### Node creation
+
+```python
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha)
+```
+
+### Returns
+
+Color
+
+
+## soft_light
+
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
 ```python
 v = color.soft_light(color2, fac, use_alpha)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - color1 : Color (self)
 - color2 : Color
 - fac : Float
 
-
-
-##### Fixed parameters
-
-
-
-- blend_type : 'SOFT_LIGHT'
-
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - use_alpha : False
 
+#### Fixed parameters
 
+- blend_type : 'SOFT_LIGHT'
 
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha)
 ```
 
+### Returns
 
-#### Returns
-
-    Color
-
-### subtract
-
-> Node: [Mix](../nodes/{self.node_name}.md)
+Color
 
 
-[Top](#class-color) [Index](/docs/index.md)
+## linear_light
+
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
+
+```python
+v = color.linear_light(color2, fac, use_alpha)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- color1 : Color (self)
+- color2 : Color
+- fac : Float
+
+#### Parameters
+
+- use_alpha : False
+
+#### Fixed parameters
+
+- blend_type : 'LINEAR_LIGHT'
+
+### Node creation
+
+```python
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha)
+```
+
+### Returns
+
+Color
+
+
+## difference
+
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
+
+```python
+v = color.difference(color2, fac, use_alpha)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- color1 : Color (self)
+- color2 : Color
+- fac : Float
+
+#### Parameters
+
+- use_alpha : False
+
+#### Fixed parameters
+
+- blend_type : 'DIFFERENCE'
+
+### Node creation
+
+```python
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha)
+```
+
+### Returns
+
+Color
+
+
+## subtract
+
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
 ```python
 v = color.subtract(color2, fac, use_alpha)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - color1 : Color (self)
 - color2 : Color
 - fac : Float
 
-
-
-##### Fixed parameters
-
-
-
-- blend_type : 'SUBTRACT'
-
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - use_alpha : False
 
+#### Fixed parameters
 
+- blend_type : 'SUBTRACT'
 
-#### Node creation
-
-
-```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha)
-```
-
-
-#### Returns
-
-    Color
-
-### transfer_attribute
-
-> Node: [TransferAttribute](../nodes/{self.node_name}.md)
-
-
-[Top](#class-color) [Index](/docs/index.md)
+### Node creation
 
 ```python
-v = color.transfer_attribute(source, source_position, index, domain, mapping)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha)
 ```
 
+### Returns
 
-#### Arguments
-
-
-##### Sockets arguments
+Color
 
 
+## divide
 
-- attribute : Color (self)
-- source : Geometry
-- source_position : Vector
-- index : Integer
-
-
-
-##### Fixed parameters
-
-
-
-- data_type : 'FLOAT_COLOR'
-
-
-
-##### Parameters arguments
-
-
-
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
-
-
-
-#### Node creation
-
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
 ```python
-node = nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
+v = color.divide(color2, fac, use_alpha)
 ```
 
-
-#### Returns
-
-    Color
-
-### value
-
-> Node: [Mix](../nodes/{self.node_name}.md)
+### Arguments
 
 
-[Top](#class-color) [Index](/docs/index.md)
+#### Sockets
+
+- color1 : Color (self)
+- color2 : Color
+- fac : Float
+
+#### Parameters
+
+- use_alpha : False
+
+#### Fixed parameters
+
+- blend_type : 'DIVIDE'
+
+### Node creation
+
+```python
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha)
+```
+
+### Returns
+
+Color
+
+
+## hue
+
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
+
+```python
+v = color.hue(color2, fac, use_alpha)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- color1 : Color (self)
+- color2 : Color
+- fac : Float
+
+#### Parameters
+
+- use_alpha : False
+
+#### Fixed parameters
+
+- blend_type : 'HUE'
+
+### Node creation
+
+```python
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha)
+```
+
+### Returns
+
+Color
+
+
+## saturation
+
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
+
+```python
+v = color.saturation(color2, fac, use_alpha)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- color1 : Color (self)
+- color2 : Color
+- fac : Float
+
+#### Parameters
+
+- use_alpha : False
+
+#### Fixed parameters
+
+- blend_type : 'SATURATION'
+
+### Node creation
+
+```python
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha)
+```
+
+### Returns
+
+Color
+
+
+## mix_color
+
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
+
+```python
+v = color.mix_color(color2, fac, use_alpha)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- color1 : Color (self)
+- color2 : Color
+- fac : Float
+
+#### Parameters
+
+- use_alpha : False
+
+#### Fixed parameters
+
+- blend_type : 'COLOR'
+
+### Node creation
+
+```python
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha)
+```
+
+### Returns
+
+Color
+
+
+## value
+
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
 ```python
 v = color.value(color2, fac, use_alpha)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - color1 : Color (self)
 - color2 : Color
 - fac : Float
 
-
-
-##### Fixed parameters
-
-
-
-- blend_type : 'VALUE'
-
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - use_alpha : False
 
+#### Fixed parameters
 
+- blend_type : 'VALUE'
 
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha)
 ```
 
+### Returns
 
-#### Returns
+Color
 
-    Color
+
+## curves
+
+> Node: [RgbCurves](section:nodes/RgbCurves)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeRGBCurve](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html)
+node ref [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/rgb_curves.html) </sub>
+
+```python
+v = color.curves(fac)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- color : Color (self)
+- fac : Float
+
+### Node creation
+
+```python
+nodes.RgbCurves(color=self, fac=fac)
+```
+
+### Returns
+
+Color
+
+
+## mix
+
+> Node: [Mix](section:nodes/Mix)
+<sub>go to: [top](#color) [index](TBD)
+blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
+node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
+
+```python
+v = color.mix(color2, fac, blend_type, use_alpha)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- color1 : Color (self)
+- color2 : Color
+- fac : Float
+
+#### Parameters
+
+- blend_type : 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
+- use_alpha : False
+
+### Node creation
+
+```python
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type=blend_type, use_alpha=use_alpha)
+```
+
+### Returns
+
+Color
+

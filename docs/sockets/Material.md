@@ -1,99 +1,77 @@
 
-# Class Material
+# Data socket Material
 
-> Inherits from: ***dsock.Material***
+> Inherits from dsock.Material
+  
+<sub>go to [index](TBD)</sub>
 
 
-[Index](/docs/index.md)
 
 ## Methods
 
+- [selection](#selection) : [MaterialSelection](section:nodes/MaterialSelection.md), selection (Boolean)
+- [switch](#switch) : [Switch](section:nodes/Switch.md), output (Material)
 
+## switch
 
-- [**selection**](#selection) : [MaterialSelection](../nodes/MaterialSelection.md) selection (Boolean)
-- [**switch**](#switch) : [Switch](../nodes/Switch.md) output (Material)
-
-
-
-## Methods reference
-
-
-### selection
-
-> Node: [MaterialSelection](../nodes/{self.node_name}.md)
-
-
-[Top](#class-material) [Index](/docs/index.md)
-
-```python
-v = material.selection()
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- material : Material (self)
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.MaterialSelection(material=self)
-```
-
-
-#### Returns
-
-    Boolean
-
-### switch
-
-> Node: [Switch](../nodes/{self.node_name}.md)
-
-
-[Top](#class-material) [Index](/docs/index.md)
+> Node: [Switch](section:nodes/Switch)
+<sub>go to: [top](#material) [index](TBD)
+blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 
 ```python
 v = material.switch(switch1, true)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - false : Material (self)
 - switch1 : Boolean
 - true : Material
 
-
-
-##### Fixed parameters
-
-
+#### Fixed parameters
 
 - input_type : 'MATERIAL'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL')
+nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL')
 ```
 
+### Returns
 
-#### Returns
+Material
 
-    Material
+
+## selection
+
+> Node: [MaterialSelection](section:nodes/MaterialSelection)
+<sub>go to: [top](#material) [index](TBD)
+blender ref [GeometryNodeMaterialSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
+node ref [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) </sub>
+
+```python
+v = material.selection()
+```
+
+### Arguments
+
+
+#### Sockets
+
+- material : Material (self)
+
+### Node creation
+
+```python
+nodes.MaterialSelection(material=self)
+```
+
+### Returns
+
+Boolean
+

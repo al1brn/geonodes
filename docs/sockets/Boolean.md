@@ -1,517 +1,200 @@
 
-# Class Boolean
+# Data socket Boolean
 
-> Inherits from: ***dsock.Boolean***
+> Inherits from dsock.Boolean
+  
+<sub>go to [index](TBD)</sub>
 
 
-[Index](/docs/index.md)
 
 ## Constructors
 
-
-
-- [**Random**](#random) : [RandomValue](../nodes/RandomValue.md) value (Boolean)
-
-
+- [Random](#random) : [RandomValue](section:nodes/RandomValue.md), value (Boolean)
 
 ## Methods
 
+- [b_and](#b_and) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
+- [b_not](#b_not) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
+- [b_or](#b_or) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
+- [capture_attribute](#capture_attribute) : [CaptureAttribute](section:nodes/CaptureAttribute.md), Sockets      [geometry (Geometry), attribute (Boolean)]
+- [field_at_index](#field_at_index) : [FieldAtIndex](section:nodes/FieldAtIndex.md), value (Boolean)
+- [imply](#imply) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
+- [nand](#nand) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
+- [nimply](#nimply) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
+- [nor](#nor) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
+- [raycast](#raycast) : [Raycast](section:nodes/Raycast.md), Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
+- [switch](#switch) : [Switch](section:nodes/Switch.md), output (Boolean)
+- [transfer_attribute](#transfer_attribute) : [TransferAttribute](section:nodes/TransferAttribute.md), attribute (Boolean)
+- [xnor](#xnor) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
+- [xor](#xor) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
 
+## Random
 
-- [**b_and**](#b_and) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
-- [**b_not**](#b_not) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
-- [**b_or**](#b_or) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
-- [**capture_attribute**](#capture_attribute) : [CaptureAttribute](../nodes/CaptureAttribute.md) Sockets      [geometry (Geometry), attribute (Boolean)]
-- [**field_at_index**](#field_at_index) : [FieldAtIndex](../nodes/FieldAtIndex.md) value (Boolean)
-- [**imply**](#imply) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
-- [**nand**](#nand) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
-- [**nimply**](#nimply) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
-- [**nor**](#nor) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
-- [**raycast**](#raycast) : [Raycast](../nodes/Raycast.md) Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
-- [**switch**](#switch) : [Switch](../nodes/Switch.md) output (Boolean)
-- [**transfer_attribute**](#transfer_attribute) : [TransferAttribute](../nodes/TransferAttribute.md) attribute (Boolean)
-- [**xnor**](#xnor) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
-- [**xor**](#xor) : [BooleanMath](../nodes/BooleanMath.md) boolean (Boolean)
-
-
-
-## Methods reference
-
-
-### Random
-
-> Node: [RandomValue](../nodes/{self.node_name}.md)
-
-
-[Top](#class-boolean) [Index](/docs/index.md)
+> Node: [RandomValue](section:nodes/RandomValue)
+<sub>go to: [top](#boolean) [index](TBD)
+blender ref [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/random_value.html) </sub>
 
 ```python
 v = Boolean.Random(probability, ID, seed)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - probability : Float
 - ID : Integer
 - seed : Integer
 
-
-
-##### Fixed parameters
-
-
+#### Fixed parameters
 
 - data_type : 'BOOLEAN'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN')
+nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN')
 ```
 
+### Returns
 
-#### Returns
-
-    Boolean
-
-### b_and
-
-> Node: [BooleanMath](../nodes/{self.node_name}.md)
+Boolean
 
 
-[Top](#class-boolean) [Index](/docs/index.md)
+## transfer_attribute
+
+> Node: [TransferAttribute](section:nodes/TransferAttribute)
+<sub>go to: [top](#boolean) [index](TBD)
+blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
+node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/transfer_attribute.html) </sub>
 
 ```python
-v = boolean.b_and(boolean1)
+v = boolean.transfer_attribute(source, source_position, index, domain, mapping)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
-- boolean0 : Boolean (self)
-- boolean1 : Boolean
+- attribute : Boolean (self)
+- source : Geometry
+- source_position : Vector
+- index : Integer
 
+#### Parameters
 
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
 
-##### Fixed parameters
+#### Fixed parameters
 
+- data_type : 'BOOLEAN'
 
-
-- operation : 'AND'
-
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND')
+nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
 ```
 
+### Returns
 
-#### Returns
-
-    Boolean
-
-### b_not
-
-> Node: [BooleanMath](../nodes/{self.node_name}.md)
+Boolean
 
 
-[Top](#class-boolean) [Index](/docs/index.md)
+## capture_attribute
 
-```python
-v = boolean.b_not()
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- boolean0 : Boolean (self)
-
-
-
-##### Fixed parameters
-
-
-
-- operation : 'NOT'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.BooleanMath(boolean0=self, operation='NOT')
-```
-
-
-#### Returns
-
-    Boolean
-
-### b_or
-
-> Node: [BooleanMath](../nodes/{self.node_name}.md)
-
-
-[Top](#class-boolean) [Index](/docs/index.md)
-
-```python
-v = boolean.b_or(boolean1)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- boolean0 : Boolean (self)
-- boolean1 : Boolean
-
-
-
-##### Fixed parameters
-
-
-
-- operation : 'OR'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR')
-```
-
-
-#### Returns
-
-    Boolean
-
-### capture_attribute
-
-> Node: [CaptureAttribute](../nodes/{self.node_name}.md)
-
-
-[Top](#class-boolean) [Index](/docs/index.md)
+> Node: [CaptureAttribute](section:nodes/CaptureAttribute)
+<sub>go to: [top](#boolean) [index](TBD)
+blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
+node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/capture_attribute.html) </sub>
 
 ```python
 v = boolean.capture_attribute(geometry, domain)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - value : Boolean (self)
 - geometry : Geometry
 
-
-
-##### Fixed parameters
-
-
-
-- data_type : 'BOOLEAN'
-
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
+#### Fixed parameters
 
+- data_type : 'BOOLEAN'
 
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain)
+nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain)
 ```
 
+### Returns
 
-#### Returns
-
-    Sockets [geometry (Geometry), attribute (Boolean)]
-
-### field_at_index
-
-> Node: [FieldAtIndex](../nodes/{self.node_name}.md)
+Sockets [geometry (Geometry), attribute (Boolean)]
 
 
-[Top](#class-boolean) [Index](/docs/index.md)
+## field_at_index
+
+> Node: [FieldAtIndex](section:nodes/FieldAtIndex)
+<sub>go to: [top](#boolean) [index](TBD)
+blender ref [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
+node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/field_at_index.html) </sub>
 
 ```python
 v = boolean.field_at_index(index, domain)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - value : Boolean (self)
 - index : Integer
 
-
-
-##### Fixed parameters
-
-
-
-- data_type : 'BOOLEAN'
-
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
+#### Fixed parameters
 
+- data_type : 'BOOLEAN'
 
-#### Node creation
-
-
-```python
-node = nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain)
-```
-
-
-#### Returns
-
-    Boolean
-
-### imply
-
-> Node: [BooleanMath](../nodes/{self.node_name}.md)
-
-
-[Top](#class-boolean) [Index](/docs/index.md)
+### Node creation
 
 ```python
-v = boolean.imply(boolean1)
+nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain)
 ```
 
+### Returns
 
-#### Arguments
+Boolean
 
 
-##### Sockets arguments
+## raycast
 
-
-
-- boolean0 : Boolean (self)
-- boolean1 : Boolean
-
-
-
-##### Fixed parameters
-
-
-
-- operation : 'IMPLY'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY')
-```
-
-
-#### Returns
-
-    Boolean
-
-### nand
-
-> Node: [BooleanMath](../nodes/{self.node_name}.md)
-
-
-[Top](#class-boolean) [Index](/docs/index.md)
-
-```python
-v = boolean.nand(boolean1)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- boolean0 : Boolean (self)
-- boolean1 : Boolean
-
-
-
-##### Fixed parameters
-
-
-
-- operation : 'NAND'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND')
-```
-
-
-#### Returns
-
-    Boolean
-
-### nimply
-
-> Node: [BooleanMath](../nodes/{self.node_name}.md)
-
-
-[Top](#class-boolean) [Index](/docs/index.md)
-
-```python
-v = boolean.nimply(boolean1)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- boolean0 : Boolean (self)
-- boolean1 : Boolean
-
-
-
-##### Fixed parameters
-
-
-
-- operation : 'NIMPLY'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY')
-```
-
-
-#### Returns
-
-    Boolean
-
-### nor
-
-> Node: [BooleanMath](../nodes/{self.node_name}.md)
-
-
-[Top](#class-boolean) [Index](/docs/index.md)
-
-```python
-v = boolean.nor(boolean1)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- boolean0 : Boolean (self)
-- boolean1 : Boolean
-
-
-
-##### Fixed parameters
-
-
-
-- operation : 'NOR'
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR')
-```
-
-
-#### Returns
-
-    Boolean
-
-### raycast
-
-> Node: [Raycast](../nodes/{self.node_name}.md)
-
-
-[Top](#class-boolean) [Index](/docs/index.md)
+> Node: [Raycast](section:nodes/Raycast)
+<sub>go to: [top](#boolean) [index](TBD)
+blender ref [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/raycast.html) </sub>
 
 ```python
 v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - attribute : Boolean (self)
 - target_geometry : Geometry
@@ -519,220 +202,361 @@ v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length,
 - ray_direction : Vector
 - ray_length : Float
 
-
-
-##### Fixed parameters
-
-
-
-- data_type : 'BOOLEAN'
-
-
-
-##### Parameters arguments
-
-
+#### Parameters
 
 - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
 
+#### Fixed parameters
 
+- data_type : 'BOOLEAN'
 
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping)
+nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping)
 ```
 
+### Returns
 
-#### Returns
-
-    Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
-
-### switch
-
-> Node: [Switch](../nodes/{self.node_name}.md)
+Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
 
 
-[Top](#class-boolean) [Index](/docs/index.md)
+## switch
+
+> Node: [Switch](section:nodes/Switch)
+<sub>go to: [top](#boolean) [index](TBD)
+blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 
 ```python
 v = boolean.switch(false, true)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - switch0 : Boolean (self)
 - false : Boolean
 - true : Boolean
 
-
-
-##### Fixed parameters
-
-
+#### Fixed parameters
 
 - input_type : 'BOOLEAN'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN')
+nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN')
 ```
 
+### Returns
 
-#### Returns
-
-    Boolean
-
-### transfer_attribute
-
-> Node: [TransferAttribute](../nodes/{self.node_name}.md)
+Boolean
 
 
-[Top](#class-boolean) [Index](/docs/index.md)
+## b_and
+
+> Node: [BooleanMath](section:nodes/BooleanMath)
+<sub>go to: [top](#boolean) [index](TBD)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
 
 ```python
-v = boolean.transfer_attribute(source, source_position, index, domain, mapping)
+v = boolean.b_and(boolean1)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
-- attribute : Boolean (self)
-- source : Geometry
-- source_position : Vector
-- index : Integer
+- boolean0 : Boolean (self)
+- boolean1 : Boolean
 
+#### Fixed parameters
 
+- operation : 'AND'
 
-##### Fixed parameters
-
-
-
-- data_type : 'BOOLEAN'
-
-
-
-##### Parameters arguments
-
-
-
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
-
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
+nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND')
 ```
 
+### Returns
 
-#### Returns
-
-    Boolean
-
-### xnor
-
-> Node: [BooleanMath](../nodes/{self.node_name}.md)
+Boolean
 
 
-[Top](#class-boolean) [Index](/docs/index.md)
+## b_or
+
+> Node: [BooleanMath](section:nodes/BooleanMath)
+<sub>go to: [top](#boolean) [index](TBD)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
+
+```python
+v = boolean.b_or(boolean1)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- boolean0 : Boolean (self)
+- boolean1 : Boolean
+
+#### Fixed parameters
+
+- operation : 'OR'
+
+### Node creation
+
+```python
+nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR')
+```
+
+### Returns
+
+Boolean
+
+
+## b_not
+
+> Node: [BooleanMath](section:nodes/BooleanMath)
+<sub>go to: [top](#boolean) [index](TBD)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
+
+```python
+v = boolean.b_not()
+```
+
+### Arguments
+
+
+#### Sockets
+
+- boolean0 : Boolean (self)
+
+#### Fixed parameters
+
+- operation : 'NOT'
+
+### Node creation
+
+```python
+nodes.BooleanMath(boolean0=self, operation='NOT')
+```
+
+### Returns
+
+Boolean
+
+
+## nand
+
+> Node: [BooleanMath](section:nodes/BooleanMath)
+<sub>go to: [top](#boolean) [index](TBD)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
+
+```python
+v = boolean.nand(boolean1)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- boolean0 : Boolean (self)
+- boolean1 : Boolean
+
+#### Fixed parameters
+
+- operation : 'NAND'
+
+### Node creation
+
+```python
+nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND')
+```
+
+### Returns
+
+Boolean
+
+
+## nor
+
+> Node: [BooleanMath](section:nodes/BooleanMath)
+<sub>go to: [top](#boolean) [index](TBD)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
+
+```python
+v = boolean.nor(boolean1)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- boolean0 : Boolean (self)
+- boolean1 : Boolean
+
+#### Fixed parameters
+
+- operation : 'NOR'
+
+### Node creation
+
+```python
+nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR')
+```
+
+### Returns
+
+Boolean
+
+
+## xnor
+
+> Node: [BooleanMath](section:nodes/BooleanMath)
+<sub>go to: [top](#boolean) [index](TBD)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
 
 ```python
 v = boolean.xnor(boolean1)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - boolean0 : Boolean (self)
 - boolean1 : Boolean
 
-
-
-##### Fixed parameters
-
-
+#### Fixed parameters
 
 - operation : 'XNOR'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR')
+nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR')
 ```
 
+### Returns
 
-#### Returns
-
-    Boolean
-
-### xor
-
-> Node: [BooleanMath](../nodes/{self.node_name}.md)
+Boolean
 
 
-[Top](#class-boolean) [Index](/docs/index.md)
+## xor
+
+> Node: [BooleanMath](section:nodes/BooleanMath)
+<sub>go to: [top](#boolean) [index](TBD)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
 
 ```python
 v = boolean.xor(boolean1)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - boolean0 : Boolean (self)
 - boolean1 : Boolean
 
-
-
-##### Fixed parameters
-
-
+#### Fixed parameters
 
 - operation : 'XOR'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR')
+nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR')
 ```
 
+### Returns
 
-#### Returns
+Boolean
 
-    Boolean
+
+## imply
+
+> Node: [BooleanMath](section:nodes/BooleanMath)
+<sub>go to: [top](#boolean) [index](TBD)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
+
+```python
+v = boolean.imply(boolean1)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- boolean0 : Boolean (self)
+- boolean1 : Boolean
+
+#### Fixed parameters
+
+- operation : 'IMPLY'
+
+### Node creation
+
+```python
+nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY')
+```
+
+### Returns
+
+Boolean
+
+
+## nimply
+
+> Node: [BooleanMath](section:nodes/BooleanMath)
+<sub>go to: [top](#boolean) [index](TBD)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
+
+```python
+v = boolean.nimply(boolean1)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- boolean0 : Boolean (self)
+- boolean1 : Boolean
+
+#### Fixed parameters
+
+- operation : 'NIMPLY'
+
+### Node creation
+
+```python
+nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY')
+```
+
+### Returns
+
+Boolean
+

@@ -9,31 +9,34 @@ logger = logging.Logger('geonodes')
 # Data class String
 
 class String(dsock.String):
-    """ Class String
+    """ 
+
+    Data socket String
+    ------------------
+        > Inherits from dsock.String
+          
+        <sub>go to index</sub>
+        
+        
     
 
-    | Inherits from: dsock.String 
-    Index 
+        Properties
+        ----------
+            - length : StringLength, length (Integer)
     
 
-    Properties
-    ==========
-    - **length** : StringLength length (Integer) 
-    
-
-    Methods
-    =======
-    - **average**     : Compare result (Boolean) 
-    - **direction**   : Compare result (Boolean) 
-    - **dot_product** : Compare result (Boolean) 
-    - **element**     : Compare result (Boolean) 
-    - **join**        : JoinStrings string (String) 
-    - **length**      : Compare result (Boolean) 
-    - **replace**     : ReplaceString string (String) 
-    - **slice**       : SliceString string (String) 
-    - **switch**      : Switch output (String) 
-    - **to_curves**   : StringToCurves Sockets      [curve_instances (Geometry), remainder (String), line (Integer),
-      pivot_point (Vector)] 
+        Methods
+        -------
+            - average : Compare, result (Boolean)
+            - direction : Compare, result (Boolean)
+            - dot_product : Compare, result (Boolean)
+            - element : Compare, result (Boolean)
+            - join : JoinStrings, string (String)
+            - length : Compare, result (Boolean)
+            - replace : ReplaceString, string (String)
+            - slice : SliceString, string (String)
+            - switch : Switch, output (String)
+            - to_curves : StringToCurves, Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
     """
 
 
@@ -45,40 +48,41 @@ class String(dsock.String):
 
     @property
     def length(self):
-        """ length
+        """ > Node: StringLength
+        <sub>go to: top index
+        blender ref FunctionNodeStringLength
+        node ref String Length </sub>
         
-
-        | Node: StringLength 
-        Top Index 
-        
-
-            v = string.length 
-        
+        ```python
+        v = string.length
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - string : String (self) 
-        
+            Sockets
+            -------
+                - string : String (self)
+    
 
             Fixed parameters
             ----------------
-            - label:f"{self.node_chain_label}.length" 
-        
+                - label:f"{self.node_chain_label}.length"
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.StringLength(string=self, label=f"{self.node_chain_label}.length") 
-        
+        -------------
+            ```python
+            nodes.StringLength(string=self, label=f"{self.node_chain_label}.length")
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         if self.length_ is None:
@@ -90,410 +94,417 @@ class String(dsock.String):
     # Methods
 
     def switch(self, switch0=None, true=None):
-        """ switch
+        """ > Node: Switch
+        <sub>go to: top index
+        blender ref GeometryNodeSwitch
+        node ref Switch </sub>
         
-
-        | Node: Switch 
-        Top Index 
-        
-
-            v = string.switch(switch0, true) 
-        
+        ```python
+        v = string.switch(switch0, true)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - false   : String (self) 
-            - switch0 : Boolean 
-            - true    : String 
-        
+            Sockets
+            -------
+                - false : String (self)
+                - switch0 : Boolean
+                - true : String
+    
 
             Fixed parameters
             ----------------
-            - input_type : 'STRING' 
-        
+                - input_type : 'STRING'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING') 
-        
+        -------------
+            ```python
+            nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING')
+            ```
+    
 
         Returns
-        =======
-                String 
+        -------
+            String
+            
         """
 
         return nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING').output
 
     def element(self, b=None):
-        """ element
+        """ > Node: Compare
+        <sub>go to: top index
+        blender ref FunctionNodeCompare
+        node ref Compare </sub>
         
-
-        | Node: Compare 
-        Top Index 
-        
-
-            v = string.element(b) 
-        
+        ```python
+        v = string.element(b)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - a : String (self) 
-            - b : String 
-        
+            Sockets
+            -------
+                - a : String (self)
+                - b : String
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'STRING' 
-            - mode      : 'ELEMENT' 
-            - operation : 'ELEMENT' 
-        
+                - data_type : 'STRING'
+                - mode : 'ELEMENT'
+                - operation : 'ELEMENT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT') 
-        
+        -------------
+            ```python
+            nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT').result
 
     def length(self, b=None):
-        """ length
+        """ > Node: Compare
+        <sub>go to: top index
+        blender ref FunctionNodeCompare
+        node ref Compare </sub>
         
-
-        | Node: Compare 
-        Top Index 
-        
-
-            v = string.length(b) 
-        
+        ```python
+        v = string.length(b)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - a : String (self) 
-            - b : String 
-        
+            Sockets
+            -------
+                - a : String (self)
+                - b : String
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'STRING' 
-            - mode      : 'ELEMENT' 
-            - operation : 'LENGTH' 
-        
+                - data_type : 'STRING'
+                - mode : 'ELEMENT'
+                - operation : 'LENGTH'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH') 
-        
+        -------------
+            ```python
+            nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH').result
 
     def average(self, b=None):
-        """ average
+        """ > Node: Compare
+        <sub>go to: top index
+        blender ref FunctionNodeCompare
+        node ref Compare </sub>
         
-
-        | Node: Compare 
-        Top Index 
-        
-
-            v = string.average(b) 
-        
+        ```python
+        v = string.average(b)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - a : String (self) 
-            - b : String 
-        
+            Sockets
+            -------
+                - a : String (self)
+                - b : String
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'STRING' 
-            - mode      : 'ELEMENT' 
-            - operation : 'AVERAGE' 
-        
+                - data_type : 'STRING'
+                - mode : 'ELEMENT'
+                - operation : 'AVERAGE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE') 
-        
+        -------------
+            ```python
+            nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE').result
 
     def dot_product(self, b=None):
-        """ dot_product
+        """ > Node: Compare
+        <sub>go to: top index
+        blender ref FunctionNodeCompare
+        node ref Compare </sub>
         
-
-        | Node: Compare 
-        Top Index 
-        
-
-            v = string.dot_product(b) 
-        
+        ```python
+        v = string.dot_product(b)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - a : String (self) 
-            - b : String 
-        
+            Sockets
+            -------
+                - a : String (self)
+                - b : String
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'STRING' 
-            - mode      : 'ELEMENT' 
-            - operation : 'DOT_PRODUCT' 
-        
+                - data_type : 'STRING'
+                - mode : 'ELEMENT'
+                - operation : 'DOT_PRODUCT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT') 
-        
+        -------------
+            ```python
+            nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT').result
 
     def direction(self, b=None):
-        """ direction
+        """ > Node: Compare
+        <sub>go to: top index
+        blender ref FunctionNodeCompare
+        node ref Compare </sub>
         
-
-        | Node: Compare 
-        Top Index 
-        
-
-            v = string.direction(b) 
-        
+        ```python
+        v = string.direction(b)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - a : String (self) 
-            - b : String 
-        
+            Sockets
+            -------
+                - a : String (self)
+                - b : String
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'STRING' 
-            - mode      : 'ELEMENT' 
-            - operation : 'DIRECTION' 
-        
+                - data_type : 'STRING'
+                - mode : 'ELEMENT'
+                - operation : 'DIRECTION'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION') 
-        
+        -------------
+            ```python
+            nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION').result
 
     def join(self, *strings, delimiter=None):
-        """ join
+        """ > Node: JoinStrings
+        <sub>go to: top index
+        blender ref GeometryNodeStringJoin
+        node ref Join Strings </sub>
         
-
-        | Node: JoinStrings 
-        Top Index 
-        
-
-            v = string.join(strings_1, strings_2, strings_3, delimiter) 
-        
+        ```python
+        v = string.join(strings_1, strings_2, strings_3, delimiter)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - strings   : *String (self) 
-            - delimiter : String 
-        
+            Sockets
+            -------
+                - strings : *String (self)
+                - delimiter : String
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.JoinStrings(self, *strings, delimiter=delimiter) 
-        
+        -------------
+            ```python
+            nodes.JoinStrings(self, *strings, delimiter=delimiter)
+            ```
+    
 
         Returns
-        =======
-                String 
+        -------
+            String
+            
         """
 
         return nodes.JoinStrings(self, *strings, delimiter=delimiter).string
 
     def replace(self, find=None, replace=None):
-        """ replace
+        """ > Node: ReplaceString
+        <sub>go to: top index
+        blender ref FunctionNodeReplaceString
+        node ref Replace String </sub>
         
-
-        | Node: ReplaceString 
-        Top Index 
-        
-
-            v = string.replace(find, replace) 
-        
+        ```python
+        v = string.replace(find, replace)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - string  : String (self) 
-            - find    : String 
-            - replace : String 
-        
+            Sockets
+            -------
+                - string : String (self)
+                - find : String
+                - replace : String
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.ReplaceString(string=self, find=find, replace=replace) 
-        
+        -------------
+            ```python
+            nodes.ReplaceString(string=self, find=find, replace=replace)
+            ```
+    
 
         Returns
-        =======
-                String 
+        -------
+            String
+            
         """
 
         return self.stack(nodes.ReplaceString(string=self, find=find, replace=replace))
 
     def slice(self, position=None, length=None):
-        """ slice
+        """ > Node: SliceString
+        <sub>go to: top index
+        blender ref FunctionNodeSliceString
+        node ref Slice String </sub>
         
-
-        | Node: SliceString 
-        Top Index 
-        
-
-            v = string.slice(position, length) 
-        
+        ```python
+        v = string.slice(position, length)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - string   : String (self) 
-            - position : Integer 
-            - length   : Integer 
-        
+            Sockets
+            -------
+                - string : String (self)
+                - position : Integer
+                - length : Integer
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SliceString(string=self, position=position, length=length) 
-        
+        -------------
+            ```python
+            nodes.SliceString(string=self, position=position, length=length)
+            ```
+    
 
         Returns
-        =======
-                String 
+        -------
+            String
+            
         """
 
         return nodes.SliceString(string=self, position=position, length=length).string
 
     def to_curves(self, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
-        """ to_curves
+        """ > Node: StringToCurves
+        <sub>go to: top index
+        blender ref GeometryNodeStringToCurves
+        node ref String to Curves </sub>
         
-
-        | Node: StringToCurves 
-        Top Index 
-        
-
-            v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_box_width, text_box_height,
-            align_x, align_y, overflow, pivot_mode) 
-        
+        ```python
+        v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_box_width, text_box_height, align_x, align_y, overflow, pivot_mode)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - string            : String (self) 
-            - size              : Float 
-            - character_spacing : Float 
-            - word_spacing      : Float 
-            - line_spacing      : Float 
-            - text_box_width    : Float 
-            - text_box_height   : Float 
-        
+            Sockets
+            -------
+                - string : String (self)
+                - size : Float
+                - character_spacing : Float
+                - word_spacing : Float
+                - line_spacing : Float
+                - text_box_width : Float
+                - text_box_height : Float
+    
 
-            Parameters arguments
-            --------------------
-            - align_x    : 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH] 
-            - align_y    : 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM] 
-            - overflow   : 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE] 
-            - pivot_mode : 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
-        
+            Parameters
+            ----------
+                - align_x : 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
+                - align_y : 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
+                - overflow : 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
+                - pivot_mode : 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing,
-            line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x,
-            align_y=align_y, overflow=overflow, pivot_mode=pivot_mode) 
-        
+        -------------
+            ```python
+            nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
+            ```
+    
 
         Returns
-        =======
-                Sockets [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)] 
+        -------
+            Sockets [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
+            
         """
 
         return nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)

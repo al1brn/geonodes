@@ -9,79 +9,81 @@ logger = logging.Logger('geonodes')
 # Data class Geometry
 
 class Geometry(dsock.Geometry):
-    """ Class Geometry
+    """ 
+
+    Data socket Geometry
+    --------------------
+        > Inherits from dsock.Geometry
+          
+        <sub>go to index</sub>
+        
+        
     
 
-    | Inherits from: dsock.Geometry 
-    Index 
+        Static methods
+        --------------
+            - is_viewport : IsViewport, is_viewport (Boolean)
     
 
-    Static methods
-    ==============
-    - **is_viewport** : IsViewport is_viewport (Boolean) 
+        Properties
+        ----------
+            - bound_box : BoundingBox, Sockets      [bounding_box (Geometry), min (Vector), max (Vector)]
+            - box : BoundingBox, bounding_box (Geometry) = bound_box.bounding_box
+            - box_max : BoundingBox, max (Vector) = bound_box.max
+            - box_min : BoundingBox, min (Vector) = bound_box.min
+            - components : SeparateComponents, Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+            - curve_component : SeparateComponents, curve (Curve) = components.curve
+            - instances_component : SeparateComponents, instances (Instances) = components.instances
+            - mesh_component : SeparateComponents, mesh (Mesh) = components.mesh
+            - points_component : SeparateComponents, point_cloud (Geometry) = components.point_cloud
+            - volume_component : SeparateComponents, volume (Volume) = components.volume
     
 
-    Properties
-    ==========
-    - **bound_box**           : BoundingBox Sockets      [bounding_box (Geometry), min (Vector), max (Vector)] 
-    - **box**                 : BoundingBox bounding_box (Geometry) = bound_box.bounding_box 
-    - **box_max**             : BoundingBox max (Vector) = bound_box.max 
-    - **box_min**             : BoundingBox min (Vector) = bound_box.min 
-    - **components**          : SeparateComponents Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve),
-      volume (Volume), instances (Instances)] 
-    - **curve_component**     : SeparateComponents curve (Curve) = components.curve 
-    - **instances_component** : SeparateComponents instances (Instances) = components.instances 
-    - **mesh_component**      : SeparateComponents mesh (Mesh) = components.mesh 
-    - **points_component**    : SeparateComponents point_cloud (Geometry) = components.point_cloud 
-    - **volume_component**    : SeparateComponents volume (Volume) = components.volume 
+        Attribute capture
+        -----------------
+            - capture_ID : ID, ID (Integer)
+            - capture_index : Index, index (Integer)
+            - capture_normal : Normal, normal (Vector)
+            - capture_position : Position, position (Vector)
+            - capture_radius : Radius, radius (Float)
     
 
-    Attribute capture
-    =================
-    - **capture_ID**       : ID ID (Integer) 
-    - **capture_index**    : Index index (Integer) 
-    - **capture_normal**   : Normal normal (Vector) 
-    - **capture_position** : Position position (Vector) 
-    - **capture_radius**   : Radius radius (Float) 
+        Attributes
+        ----------
+            - ID : ID, Integer = capture_ID(domain='POINT')
+            - index : Index, Integer = capture_index(domain='POINT')
+            - normal : Normal, Vector = capture_normal(domain='FACE')
+            - position : Position, Vector = capture_position(domain='POINT')
+            - radius : Radius, Float = capture_radius(domain='POINT')
     
 
-    Attributes
-    ==========
-    - **ID**       : ID Integer = capture_ID(domain='POINT') 
-    - **index**    : Index Integer = capture_index(domain='POINT') 
-    - **normal**   : Normal Vector = capture_normal(domain='FACE') 
-    - **position** : Position Vector = capture_position(domain='POINT') 
-    - **radius**   : Radius Float = capture_radius(domain='POINT') 
-    
-
-    Methods
-    =======
-    - **attribute_domain_size** : DomainSize Sockets      [point_count (Integer), edge_count (Integer), face_count
-      (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)] 
-    - **attribute_remove**      : AttributeRemove geometry (Geometry) 
-    - **capture_attribute**     : CaptureAttribute attribute (data_type dependant) 
-    - **components**            : SeparateGeometry Sockets      [selection (Geometry), inverted (Geometry)] 
-    - **convex_hull**           : ConvexHull convex_hull (Geometry) 
-    - **delete_geometry**       : DeleteGeometry geometry (Geometry) 
-    - **join**                  : JoinGeometry geometry (Geometry) 
-    - **merge_by_distance**     : MergeByDistance geometry (Geometry) 
-    - **proximity**             : GeometryProximity Sockets      [position (Vector), distance (Float)] 
-    - **realize_instances**     : RealizeInstances geometry (Geometry) 
-    - **replace_material**      : ReplaceMaterial geometry (Geometry) 
-    - **scale_elements**        : ScaleElements geometry (Geometry) 
-    - **set_ID**                : SetID geometry (Geometry) 
-    - **set_material**          : SetMaterial geometry (Geometry) 
-    - **set_material_index**    : SetMaterialIndex geometry (Geometry) 
-    - **set_position**          : SetPosition geometry (Geometry) 
-    - **set_shade_smooth**      : SetShadeSmooth geometry (Geometry) 
-    - **switch**                : Switch output (Geometry) 
-    - **to_instance**           : GeometryToInstance instances (Instances) 
-    - **transfer_boolean**      : TransferAttribute attribute (Boolean) 
-    - **transfer_color**        : TransferAttribute attribute (Color) 
-    - **transfer_float**        : TransferAttribute attribute (Float) 
-    - **transfer_integer**      : TransferAttribute attribute (Integer) 
-    - **transfer_vector**       : TransferAttribute attribute (Vector) 
-    - **transform**             : Transform geometry (Geometry) 
+        Methods
+        -------
+            - attribute_domain_size : DomainSize, Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
+            - attribute_remove : AttributeRemove, geometry (Geometry)
+            - capture_attribute : CaptureAttribute, attribute (data_type dependant)
+            - components : SeparateGeometry, Sockets      [selection (Geometry), inverted (Geometry)]
+            - convex_hull : ConvexHull, convex_hull (Geometry)
+            - delete_geometry : DeleteGeometry, geometry (Geometry)
+            - join : JoinGeometry, geometry (Geometry)
+            - merge_by_distance : MergeByDistance, geometry (Geometry)
+            - proximity : GeometryProximity, Sockets      [position (Vector), distance (Float)]
+            - realize_instances : RealizeInstances, geometry (Geometry)
+            - replace_material : ReplaceMaterial, geometry (Geometry)
+            - scale_elements : ScaleElements, geometry (Geometry)
+            - set_ID : SetID, geometry (Geometry)
+            - set_material : SetMaterial, geometry (Geometry)
+            - set_material_index : SetMaterialIndex, geometry (Geometry)
+            - set_position : SetPosition, geometry (Geometry)
+            - set_shade_smooth : SetShadeSmooth, geometry (Geometry)
+            - switch : Switch, output (Geometry)
+            - to_instance : GeometryToInstance, instances (Instances)
+            - transfer_boolean : TransferAttribute, attribute (Boolean)
+            - transfer_color : TransferAttribute, attribute (Color)
+            - transfer_float : TransferAttribute, attribute (Float)
+            - transfer_integer : TransferAttribute, attribute (Integer)
+            - transfer_vector : TransferAttribute, attribute (Vector)
+            - transform : Transform, geometry (Geometry)
     """
 
 
@@ -102,30 +104,31 @@ class Geometry(dsock.Geometry):
 
     @staticmethod
     def is_viewport():
-        """ is_viewport
+        """ > Node: IsViewport
+        <sub>go to: top index
+        blender ref GeometryNodeIsViewport
+        node ref Is Viewport </sub>
         
-
-        | Node: IsViewport 
-        Top Index 
-        
-
-            v = Geometry.is_viewport() 
-        
+        ```python
+        v = Geometry.is_viewport()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.IsViewport() 
-        
+        -------------
+            ```python
+            nodes.IsViewport()
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.IsViewport().is_viewport
@@ -136,40 +139,41 @@ class Geometry(dsock.Geometry):
 
     @property
     def bound_box(self):
-        """ bound_box
+        """ > Node: BoundingBox
+        <sub>go to: top index
+        blender ref GeometryNodeBoundBox
+        node ref Bounding Box </sub>
         
-
-        | Node: BoundingBox 
-        Top Index 
-        
-
-            v = geometry.bound_box 
-        
+        ```python
+        v = geometry.bound_box
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry : Geometry (self) 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+    
 
             Fixed parameters
             ----------------
-            - label:f"{self.node_chain_label}.bound_box" 
-        
+                - label:f"{self.node_chain_label}.bound_box"
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_box") 
-        
+        -------------
+            ```python
+            nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_box")
+            ```
+    
 
         Returns
-        =======
-                Sockets [bounding_box (Geometry), min (Vector), max (Vector)] 
+        -------
+            Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
+            
         """
 
         if self.bound_box_ is None:
@@ -178,160 +182,164 @@ class Geometry(dsock.Geometry):
 
     @property
     def box(self):
-        """ box
+        """ > Node: BoundingBox
+        <sub>go to: top index
+        blender ref GeometryNodeBoundBox
+        node ref Bounding Box </sub>
         
-
-        | Node: BoundingBox 
-        Top Index 
-        
-
-            v = geometry.box 
-        
+        ```python
+        v = geometry.box
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry : Geometry (self) 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+    
 
             Fixed parameters
             ----------------
-            - label:f"{self.node_chain_label}.box" 
-        
+                - label:f"{self.node_chain_label}.box"
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box") 
-        
+        -------------
+            ```python
+            nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box")
+            ```
+    
 
         Returns
-        =======
-                Sockets [bounding_box (Geometry), min (Vector), max (Vector)] 
+        -------
+            Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
+            
         """
 
         return self.bound_box.bounding_box
 
     @property
     def box_min(self):
-        """ box_min
+        """ > Node: BoundingBox
+        <sub>go to: top index
+        blender ref GeometryNodeBoundBox
+        node ref Bounding Box </sub>
         
-
-        | Node: BoundingBox 
-        Top Index 
-        
-
-            v = geometry.box_min 
-        
+        ```python
+        v = geometry.box_min
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry : Geometry (self) 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+    
 
             Fixed parameters
             ----------------
-            - label:f"{self.node_chain_label}.box_min" 
-        
+                - label:f"{self.node_chain_label}.box_min"
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_min") 
-        
+        -------------
+            ```python
+            nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_min")
+            ```
+    
 
         Returns
-        =======
-                Sockets [bounding_box (Geometry), min (Vector), max (Vector)] 
+        -------
+            Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
+            
         """
 
         return self.bound_box.min
 
     @property
     def box_max(self):
-        """ box_max
+        """ > Node: BoundingBox
+        <sub>go to: top index
+        blender ref GeometryNodeBoundBox
+        node ref Bounding Box </sub>
         
-
-        | Node: BoundingBox 
-        Top Index 
-        
-
-            v = geometry.box_max 
-        
+        ```python
+        v = geometry.box_max
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry : Geometry (self) 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+    
 
             Fixed parameters
             ----------------
-            - label:f"{self.node_chain_label}.box_max" 
-        
+                - label:f"{self.node_chain_label}.box_max"
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_max") 
-        
+        -------------
+            ```python
+            nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_max")
+            ```
+    
 
         Returns
-        =======
-                Sockets [bounding_box (Geometry), min (Vector), max (Vector)] 
+        -------
+            Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
+            
         """
 
         return self.bound_box.max
 
     @property
     def components(self):
-        """ components
+        """ > Node: SeparateComponents
+        <sub>go to: top index
+        blender ref GeometryNodeSeparateComponents
+        node ref Separate Components </sub>
         
-
-        | Node: SeparateComponents 
-        Top Index 
-        
-
-            v = geometry.components 
-        
+        ```python
+        v = geometry.components
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry : Geometry (self) 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+    
 
             Fixed parameters
             ----------------
-            - label:f"{self.node_chain_label}.components" 
-        
+                - label:f"{self.node_chain_label}.components"
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.components") 
-        
+        -------------
+            ```python
+            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.components")
+            ```
+    
 
         Returns
-        =======
-                Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)] 
+        -------
+            Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+            
         """
 
         if self.components_ is None:
@@ -340,200 +348,205 @@ class Geometry(dsock.Geometry):
 
     @property
     def mesh_component(self):
-        """ mesh_component
+        """ > Node: SeparateComponents
+        <sub>go to: top index
+        blender ref GeometryNodeSeparateComponents
+        node ref Separate Components </sub>
         
-
-        | Node: SeparateComponents 
-        Top Index 
-        
-
-            v = geometry.mesh_component 
-        
+        ```python
+        v = geometry.mesh_component
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry : Geometry (self) 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+    
 
             Fixed parameters
             ----------------
-            - label:f"{self.node_chain_label}.mesh_component" 
-        
+                - label:f"{self.node_chain_label}.mesh_component"
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.mesh_component") 
-        
+        -------------
+            ```python
+            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.mesh_component")
+            ```
+    
 
         Returns
-        =======
-                Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)] 
+        -------
+            Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+            
         """
 
         return self.components.mesh
 
     @property
     def points_component(self):
-        """ points_component
+        """ > Node: SeparateComponents
+        <sub>go to: top index
+        blender ref GeometryNodeSeparateComponents
+        node ref Separate Components </sub>
         
-
-        | Node: SeparateComponents 
-        Top Index 
-        
-
-            v = geometry.points_component 
-        
+        ```python
+        v = geometry.points_component
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry : Geometry (self) 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+    
 
             Fixed parameters
             ----------------
-            - label:f"{self.node_chain_label}.points_component" 
-        
+                - label:f"{self.node_chain_label}.points_component"
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.points_component") 
-        
+        -------------
+            ```python
+            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.points_component")
+            ```
+    
 
         Returns
-        =======
-                Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)] 
+        -------
+            Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+            
         """
 
         return self.components.point_cloud
 
     @property
     def curve_component(self):
-        """ curve_component
+        """ > Node: SeparateComponents
+        <sub>go to: top index
+        blender ref GeometryNodeSeparateComponents
+        node ref Separate Components </sub>
         
-
-        | Node: SeparateComponents 
-        Top Index 
-        
-
-            v = geometry.curve_component 
-        
+        ```python
+        v = geometry.curve_component
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry : Geometry (self) 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+    
 
             Fixed parameters
             ----------------
-            - label:f"{self.node_chain_label}.curve_component" 
-        
+                - label:f"{self.node_chain_label}.curve_component"
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.curve_component") 
-        
+        -------------
+            ```python
+            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.curve_component")
+            ```
+    
 
         Returns
-        =======
-                Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)] 
+        -------
+            Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+            
         """
 
         return self.components.curve
 
     @property
     def volume_component(self):
-        """ volume_component
+        """ > Node: SeparateComponents
+        <sub>go to: top index
+        blender ref GeometryNodeSeparateComponents
+        node ref Separate Components </sub>
         
-
-        | Node: SeparateComponents 
-        Top Index 
-        
-
-            v = geometry.volume_component 
-        
+        ```python
+        v = geometry.volume_component
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry : Geometry (self) 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+    
 
             Fixed parameters
             ----------------
-            - label:f"{self.node_chain_label}.volume_component" 
-        
+                - label:f"{self.node_chain_label}.volume_component"
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.volume_component") 
-        
+        -------------
+            ```python
+            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.volume_component")
+            ```
+    
 
         Returns
-        =======
-                Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)] 
+        -------
+            Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+            
         """
 
         return self.components.volume
 
     @property
     def instances_component(self):
-        """ instances_component
+        """ > Node: SeparateComponents
+        <sub>go to: top index
+        blender ref GeometryNodeSeparateComponents
+        node ref Separate Components </sub>
         
-
-        | Node: SeparateComponents 
-        Top Index 
-        
-
-            v = geometry.instances_component 
-        
+        ```python
+        v = geometry.instances_component
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry : Geometry (self) 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+    
 
             Fixed parameters
             ----------------
-            - label:f"{self.node_chain_label}.instances_component" 
-        
+                - label:f"{self.node_chain_label}.instances_component"
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.instances_component") 
-        
+        -------------
+            ```python
+            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.instances_component")
+            ```
+    
 
         Returns
-        =======
-                Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)] 
+        -------
+            Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+            
         """
 
         return self.components.instances
@@ -543,36 +556,37 @@ class Geometry(dsock.Geometry):
     # Attribute capture
 
     def capture_ID(self, domain='POINT'):
-        """ capture_ID
+        """ > Node: ID
+        <sub>go to: top index
+        blender ref GeometryNodeInputID
+        node ref ID </sub>
         
-
-        | Node: ID 
-        Top Index 
-        
-
-            v = geometry.capture_ID(self, domain='POINT') 
-        
+        ```python
+        v = geometry.capture_ID(self, domain='POINT')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'POINT' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'POINT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.ID() 
-        
+        -------------
+            ```python
+            nodes.ID()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         attr_name = 'capture_ID_' + domain
@@ -583,36 +597,37 @@ class Geometry(dsock.Geometry):
         return getattr(self, attr_name).ID
 
     def capture_index(self, domain='POINT'):
-        """ capture_index
+        """ > Node: Index
+        <sub>go to: top index
+        blender ref GeometryNodeInputIndex
+        node ref Index </sub>
         
-
-        | Node: Index 
-        Top Index 
-        
-
-            v = geometry.capture_index(self, domain='POINT') 
-        
+        ```python
+        v = geometry.capture_index(self, domain='POINT')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'POINT' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'POINT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Index() 
-        
+        -------------
+            ```python
+            nodes.Index()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         attr_name = 'capture_index_' + domain
@@ -623,36 +638,37 @@ class Geometry(dsock.Geometry):
         return getattr(self, attr_name).index
 
     def capture_normal(self, domain='FACE'):
-        """ capture_normal
+        """ > Node: Normal
+        <sub>go to: top index
+        blender ref GeometryNodeInputNormal
+        node ref Normal </sub>
         
-
-        | Node: Normal 
-        Top Index 
-        
-
-            v = geometry.capture_normal(self, domain='FACE') 
-        
+        ```python
+        v = geometry.capture_normal(self, domain='FACE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'FACE' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'FACE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Normal() 
-        
+        -------------
+            ```python
+            nodes.Normal()
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         attr_name = 'capture_normal_' + domain
@@ -663,36 +679,37 @@ class Geometry(dsock.Geometry):
         return getattr(self, attr_name).normal
 
     def capture_position(self, domain='POINT'):
-        """ capture_position
+        """ > Node: Position
+        <sub>go to: top index
+        blender ref GeometryNodeInputPosition
+        node ref Position </sub>
         
-
-        | Node: Position 
-        Top Index 
-        
-
-            v = geometry.capture_position(self, domain='POINT') 
-        
+        ```python
+        v = geometry.capture_position(self, domain='POINT')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'POINT' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'POINT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Position() 
-        
+        -------------
+            ```python
+            nodes.Position()
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         attr_name = 'capture_position_' + domain
@@ -703,36 +720,37 @@ class Geometry(dsock.Geometry):
         return getattr(self, attr_name).position
 
     def capture_radius(self, domain='POINT'):
-        """ capture_radius
+        """ > Node: Radius
+        <sub>go to: top index
+        blender ref GeometryNodeInputRadius
+        node ref Radius </sub>
         
-
-        | Node: Radius 
-        Top Index 
-        
-
-            v = geometry.capture_radius(self, domain='POINT') 
-        
+        ```python
+        v = geometry.capture_radius(self, domain='POINT')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'POINT' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'POINT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Radius() 
-        
+        -------------
+            ```python
+            nodes.Radius()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         attr_name = 'capture_radius_' + domain
@@ -748,175 +766,180 @@ class Geometry(dsock.Geometry):
 
     @property
     def ID(self):
-        """ ID
+        """ > Node: ID
+        <sub>go to: top index
+        blender ref GeometryNodeInputID
+        node ref ID </sub>
         
-
-        | Node: ID 
-        Top Index 
-        
-
-            v = geometry.ID(self) 
-        
+        ```python
+        v = geometry.ID(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.ID() 
-        
+        -------------
+            ```python
+            nodes.ID()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return self.capture_ID(domain='POINT')
 
     @property
     def index(self):
-        """ index
+        """ > Node: Index
+        <sub>go to: top index
+        blender ref GeometryNodeInputIndex
+        node ref Index </sub>
         
-
-        | Node: Index 
-        Top Index 
-        
-
-            v = geometry.index(self) 
-        
+        ```python
+        v = geometry.index(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Index() 
-        
+        -------------
+            ```python
+            nodes.Index()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return self.capture_index(domain='POINT')
 
     @property
     def normal(self):
-        """ normal
+        """ > Node: Normal
+        <sub>go to: top index
+        blender ref GeometryNodeInputNormal
+        node ref Normal </sub>
         
-
-        | Node: Normal 
-        Top Index 
-        
-
-            v = geometry.normal(self) 
-        
+        ```python
+        v = geometry.normal(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Normal() 
-        
+        -------------
+            ```python
+            nodes.Normal()
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return self.capture_normal(domain='FACE')
 
     @property
     def position(self):
-        """ position
+        """ > Node: Position
+        <sub>go to: top index
+        blender ref GeometryNodeInputPosition
+        node ref Position </sub>
         
-
-        | Node: Position 
-        Top Index 
-        
-
-            v = geometry.position(self) 
-        
+        ```python
+        v = geometry.position(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Position() 
-        
+        -------------
+            ```python
+            nodes.Position()
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return self.capture_position(domain='POINT')
 
     @property
     def radius(self):
-        """ radius
+        """ > Node: Radius
+        <sub>go to: top index
+        blender ref GeometryNodeInputRadius
+        node ref Radius </sub>
         
-
-        | Node: Radius 
-        Top Index 
-        
-
-            v = geometry.radius(self) 
-        
+        ```python
+        v = geometry.radius(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Radius() 
-        
+        -------------
+            ```python
+            nodes.Radius()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.capture_radius(domain='POINT')
@@ -926,83 +949,85 @@ class Geometry(dsock.Geometry):
     # Methods
 
     def switch(self, switch1=None, true=None):
-        """ switch
+        """ > Node: Switch
+        <sub>go to: top index
+        blender ref GeometryNodeSwitch
+        node ref Switch </sub>
         
-
-        | Node: Switch 
-        Top Index 
-        
-
-            v = geometry.switch(switch1, true) 
-        
+        ```python
+        v = geometry.switch(switch1, true)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - false   : Geometry (self) 
-            - switch1 : Boolean 
-            - true    : Geometry 
-        
+            Sockets
+            -------
+                - false : Geometry (self)
+                - switch1 : Boolean
+                - true : Geometry
+    
 
             Fixed parameters
             ----------------
-            - input_type : 'GEOMETRY' 
-        
+                - input_type : 'GEOMETRY'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY') 
-        
+        -------------
+            ```python
+            nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY')
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY').output
 
     def capture_attribute(self, value=None, data_type='FLOAT', domain='POINT'):
-        """ capture_attribute
+        """ > Node: CaptureAttribute
+        <sub>go to: top index
+        blender ref GeometryNodeCaptureAttribute
+        node ref Capture Attribute </sub>
         
-
-        | Node: CaptureAttribute 
-        Top Index 
-        
-
-            v = geometry.capture_attribute(value, data_type, domain) 
-        
+        ```python
+        v = geometry.capture_attribute(value, data_type, domain)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry : Geometry (self) 
-            - value    : Float 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                - value : Float
+    
 
-            Parameters arguments
-            --------------------
-            - data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN] 
-            - domain    : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-        
+            Parameters
+            ----------
+                - data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain) 
-        
+        -------------
+            ```python
+            nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain)
+            ```
+    
 
         Returns
-        =======
-                Sockets [geometry (Geometry), attribute (data_type dependant)] 
+        -------
+            Sockets [geometry (Geometry), attribute (data_type dependant)]
+            
         """
 
         node = nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain)
@@ -1010,918 +1035,934 @@ class Geometry(dsock.Geometry):
         return node.attribute
 
     def transfer_boolean(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """ transfer_boolean
+        """ > Node: TransferAttribute
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeTransfer
+        node ref Transfer Attribute </sub>
         
-
-        | Node: TransferAttribute 
-        Top Index 
-        
-
-            v = geometry.transfer_boolean(attribute, source_position, index, domain, mapping) 
-        
+        ```python
+        v = geometry.transfer_boolean(attribute, source_position, index, domain, mapping)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - source          : Geometry (self) 
-            - attribute       : Boolean 
-            - source_position : Vector 
-            - index           : Integer 
-        
+            Sockets
+            -------
+                - source : Geometry (self)
+                - attribute : Boolean
+                - source_position : Vector
+                - index : Integer
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+                - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'BOOLEAN' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain  : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
-        
+                - data_type : 'BOOLEAN'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index,
-            data_type='BOOLEAN', domain=domain, mapping=mapping) 
-        
+        -------------
+            ```python
+            nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping).attribute
 
     def transfer_integer(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """ transfer_integer
+        """ > Node: TransferAttribute
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeTransfer
+        node ref Transfer Attribute </sub>
         
-
-        | Node: TransferAttribute 
-        Top Index 
-        
-
-            v = geometry.transfer_integer(attribute, source_position, index, domain, mapping) 
-        
+        ```python
+        v = geometry.transfer_integer(attribute, source_position, index, domain, mapping)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - source          : Geometry (self) 
-            - attribute       : Integer 
-            - source_position : Vector 
-            - index           : Integer 
-        
+            Sockets
+            -------
+                - source : Geometry (self)
+                - attribute : Integer
+                - source_position : Vector
+                - index : Integer
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+                - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'INT' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain  : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
-        
+                - data_type : 'INT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index,
-            data_type='INT', domain=domain, mapping=mapping) 
-        
+        -------------
+            ```python
+            nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping).attribute
 
     def transfer_float(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """ transfer_float
+        """ > Node: TransferAttribute
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeTransfer
+        node ref Transfer Attribute </sub>
         
-
-        | Node: TransferAttribute 
-        Top Index 
-        
-
-            v = geometry.transfer_float(attribute, source_position, index, domain, mapping) 
-        
+        ```python
+        v = geometry.transfer_float(attribute, source_position, index, domain, mapping)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - source          : Geometry (self) 
-            - attribute       : Float 
-            - source_position : Vector 
-            - index           : Integer 
-        
+            Sockets
+            -------
+                - source : Geometry (self)
+                - attribute : Float
+                - source_position : Vector
+                - index : Integer
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+                - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain  : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
-        
+                - data_type : 'FLOAT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index,
-            data_type='FLOAT', domain=domain, mapping=mapping) 
-        
+        -------------
+            ```python
+            nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping).attribute
 
     def transfer_vector(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """ transfer_vector
+        """ > Node: TransferAttribute
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeTransfer
+        node ref Transfer Attribute </sub>
         
-
-        | Node: TransferAttribute 
-        Top Index 
-        
-
-            v = geometry.transfer_vector(attribute, source_position, index, domain, mapping) 
-        
+        ```python
+        v = geometry.transfer_vector(attribute, source_position, index, domain, mapping)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - source          : Geometry (self) 
-            - attribute       : Vector 
-            - source_position : Vector 
-            - index           : Integer 
-        
+            Sockets
+            -------
+                - source : Geometry (self)
+                - attribute : Vector
+                - source_position : Vector
+                - index : Integer
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+                - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT_VECTOR' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain  : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
-        
+                - data_type : 'FLOAT_VECTOR'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index,
-            data_type='FLOAT_VECTOR', domain=domain, mapping=mapping) 
-        
+        -------------
+            ```python
+            nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping).attribute
 
     def transfer_color(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """ transfer_color
+        """ > Node: TransferAttribute
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeTransfer
+        node ref Transfer Attribute </sub>
         
-
-        | Node: TransferAttribute 
-        Top Index 
-        
-
-            v = geometry.transfer_color(attribute, source_position, index, domain, mapping) 
-        
+        ```python
+        v = geometry.transfer_color(attribute, source_position, index, domain, mapping)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - source          : Geometry (self) 
-            - attribute       : Color 
-            - source_position : Vector 
-            - index           : Integer 
-        
+            Sockets
+            -------
+                - source : Geometry (self)
+                - attribute : Color
+                - source_position : Vector
+                - index : Integer
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+                - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'FLOAT_COLOR' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain  : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
-        
+                - data_type : 'FLOAT_COLOR'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index,
-            data_type='FLOAT_COLOR', domain=domain, mapping=mapping) 
-        
+        -------------
+            ```python
+            nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
+            ```
+    
 
         Returns
-        =======
-                Color 
+        -------
+            Color
+            
         """
 
         return nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping).attribute
 
     def delete_geometry(self, selection=None, domain='POINT', mode='ALL'):
-        """ delete_geometry
+        """ > Node: DeleteGeometry
+        <sub>go to: top index
+        blender ref GeometryNodeDeleteGeometry
+        node ref Delete Geometry </sub>
         
-
-        | Node: DeleteGeometry 
-        Top Index 
-        
-
-            v = geometry.delete_geometry(selection, domain, mode) 
-        
+        ```python
+        v = geometry.delete_geometry(selection, domain, mode)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry  : Geometry (self) 
-            - selection : Boolean 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                - selection : Boolean
+    
 
-            Parameters arguments
-            --------------------
-            - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE] 
-            - mode   : 'ALL' in [ALL, EDGE_FACE, ONLY_FACE] 
-        
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
+                - mode : 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode) 
-        
+        -------------
+            ```python
+            nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return self.stack(nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode))
 
     def merge_by_distance(self, selection=None, distance=None):
-        """ merge_by_distance
+        """ > Node: MergeByDistance
+        <sub>go to: top index
+        blender ref GeometryNodeMergeByDistance
+        node ref Merge by Distance </sub>
         
-
-        | Node: MergeByDistance 
-        Top Index 
-        
-
-            v = geometry.merge_by_distance(selection, distance) 
-        
+        ```python
+        v = geometry.merge_by_distance(selection, distance)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry  : Geometry (self) 
-            - selection : Boolean 
-            - distance  : Float 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                - selection : Boolean
+                - distance : Float
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.MergeByDistance(geometry=self, selection=selection, distance=distance) 
-        
+        -------------
+            ```python
+            nodes.MergeByDistance(geometry=self, selection=selection, distance=distance)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return self.stack(nodes.MergeByDistance(geometry=self, selection=selection, distance=distance))
 
     def realize_instances(self, legacy_behavior=False):
-        """ realize_instances
+        """ > Node: RealizeInstances
+        <sub>go to: top index
+        blender ref GeometryNodeRealizeInstances
+        node ref Realize Instances </sub>
         
-
-        | Node: RealizeInstances 
-        Top Index 
-        
-
-            v = geometry.realize_instances(legacy_behavior) 
-        
+        ```python
+        v = geometry.realize_instances(legacy_behavior)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry : Geometry (self) 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+    
 
-            Parameters arguments
-            --------------------
-            - legacy_behavior : False 
-        
+            Parameters
+            ----------
+                - legacy_behavior : False
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior) 
-        
+        -------------
+            ```python
+            nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return self.stack(nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior))
 
     def replace_material(self, old=None, new=None):
-        """ replace_material
+        """ > Node: ReplaceMaterial
+        <sub>go to: top index
+        blender ref GeometryNodeReplaceMaterial
+        node ref Replace Material </sub>
         
-
-        | Node: ReplaceMaterial 
-        Top Index 
-        
-
-            v = geometry.replace_material(old, new) 
-        
+        ```python
+        v = geometry.replace_material(old, new)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry : Geometry (self) 
-            - old      : Material 
-            - new      : Material 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                - old : Material
+                - new : Material
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.ReplaceMaterial(geometry=self, old=old, new=new) 
-        
+        -------------
+            ```python
+            nodes.ReplaceMaterial(geometry=self, old=old, new=new)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return self.stack(nodes.ReplaceMaterial(geometry=self, old=old, new=new))
 
     def scale_elements(self, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM'):
-        """ scale_elements
+        """ > Node: ScaleElements
+        <sub>go to: top index
+        blender ref GeometryNodeScaleElements
+        node ref Scale Elements </sub>
         
-
-        | Node: ScaleElements 
-        Top Index 
-        
-
-            v = geometry.scale_elements(selection, scale, center, axis, domain, scale_mode) 
-        
+        ```python
+        v = geometry.scale_elements(selection, scale, center, axis, domain, scale_mode)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry  : Geometry (self) 
-            - selection : Boolean 
-            - scale     : Float 
-            - center    : Vector 
-            - axis      : Vector 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                - selection : Boolean
+                - scale : Float
+                - center : Vector
+                - axis : Vector
+    
 
-            Parameters arguments
-            --------------------
-            - domain     : 'FACE' in [FACE, EDGE] 
-            - scale_mode : 'UNIFORM' in [UNIFORM, SINGLE_AXIS] 
-        
+            Parameters
+            ----------
+                - domain : 'FACE' in [FACE, EDGE]
+                - scale_mode : 'UNIFORM' in [UNIFORM, SINGLE_AXIS]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis,
-            domain=domain, scale_mode=scale_mode) 
-        
+        -------------
+            ```python
+            nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return self.stack(nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode))
 
     def set_ID(self, selection=None, ID=None):
-        """ set_ID
+        """ > Node: SetID
+        <sub>go to: top index
+        blender ref GeometryNodeSetID
+        node ref Set ID </sub>
         
-
-        | Node: SetID 
-        Top Index 
-        
-
-            v = geometry.set_ID(selection, ID) 
-        
+        ```python
+        v = geometry.set_ID(selection, ID)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry  : Geometry (self) 
-            - selection : Boolean 
-            - ID        : Integer 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                - selection : Boolean
+                - ID : Integer
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SetID(geometry=self, selection=selection, ID=ID) 
-        
+        -------------
+            ```python
+            nodes.SetID(geometry=self, selection=selection, ID=ID)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return self.stack(nodes.SetID(geometry=self, selection=selection, ID=ID))
 
     def set_material(self, selection=None, material=None):
-        """ set_material
+        """ > Node: SetMaterial
+        <sub>go to: top index
+        blender ref GeometryNodeSetMaterial
+        node ref Set Material </sub>
         
-
-        | Node: SetMaterial 
-        Top Index 
-        
-
-            v = geometry.set_material(selection, material) 
-        
+        ```python
+        v = geometry.set_material(selection, material)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry  : Geometry (self) 
-            - selection : Boolean 
-            - material  : Material 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                - selection : Boolean
+                - material : Material
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SetMaterial(geometry=self, selection=selection, material=material) 
-        
+        -------------
+            ```python
+            nodes.SetMaterial(geometry=self, selection=selection, material=material)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return self.stack(nodes.SetMaterial(geometry=self, selection=selection, material=material))
 
     def set_material_index(self, selection=None, material_index=None):
-        """ set_material_index
+        """ > Node: SetMaterialIndex
+        <sub>go to: top index
+        blender ref GeometryNodeSetMaterialIndex
+        node ref Set Material Index </sub>
         
-
-        | Node: SetMaterialIndex 
-        Top Index 
-        
-
-            v = geometry.set_material_index(selection, material_index) 
-        
+        ```python
+        v = geometry.set_material_index(selection, material_index)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry       : Geometry (self) 
-            - selection      : Boolean 
-            - material_index : Integer 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                - selection : Boolean
+                - material_index : Integer
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index) 
-        
+        -------------
+            ```python
+            nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return self.stack(nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index))
 
     def set_position(self, selection=None, position=None, offset=None):
-        """ set_position
+        """ > Node: SetPosition
+        <sub>go to: top index
+        blender ref GeometryNodeSetPosition
+        node ref Set Position </sub>
         
-
-        | Node: SetPosition 
-        Top Index 
-        
-
-            v = geometry.set_position(selection, position, offset) 
-        
+        ```python
+        v = geometry.set_position(selection, position, offset)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry  : Geometry (self) 
-            - selection : Boolean 
-            - position  : Vector 
-            - offset    : Vector 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                - selection : Boolean
+                - position : Vector
+                - offset : Vector
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset) 
-        
+        -------------
+            ```python
+            nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return self.stack(nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset))
 
     def set_shade_smooth(self, selection=None, shade_smooth=None):
-        """ set_shade_smooth
+        """ > Node: SetShadeSmooth
+        <sub>go to: top index
+        blender ref GeometryNodeSetShadeSmooth
+        node ref Set Shade Smooth </sub>
         
-
-        | Node: SetShadeSmooth 
-        Top Index 
-        
-
-            v = geometry.set_shade_smooth(selection, shade_smooth) 
-        
+        ```python
+        v = geometry.set_shade_smooth(selection, shade_smooth)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry     : Geometry (self) 
-            - selection    : Boolean 
-            - shade_smooth : Boolean 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                - selection : Boolean
+                - shade_smooth : Boolean
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth) 
-        
+        -------------
+            ```python
+            nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return self.stack(nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth))
 
     def transform(self, translation=None, rotation=None, scale=None):
-        """ transform
+        """ > Node: Transform
+        <sub>go to: top index
+        blender ref GeometryNodeTransform
+        node ref Transform </sub>
         
-
-        | Node: Transform 
-        Top Index 
-        
-
-            v = geometry.transform(translation, rotation, scale) 
-        
+        ```python
+        v = geometry.transform(translation, rotation, scale)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry    : Geometry (self) 
-            - translation : Vector 
-            - rotation    : Vector 
-            - scale       : Vector 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                - translation : Vector
+                - rotation : Vector
+                - scale : Vector
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale) 
-        
+        -------------
+            ```python
+            nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return self.stack(nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale))
 
     def attribute_domain_size(self, component='MESH'):
-        """ attribute_domain_size
+        """ > Node: DomainSize
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeDomainSize
+        node ref Domain Size </sub>
         
-
-        | Node: DomainSize 
-        Top Index 
-        
-
-            v = geometry.attribute_domain_size(component) 
-        
+        ```python
+        v = geometry.attribute_domain_size(component)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry : Geometry (self) 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+    
 
-            Parameters arguments
-            --------------------
-            - component : 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES] 
-        
+            Parameters
+            ----------
+                - component : 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.DomainSize(geometry=self, component=component) 
-        
+        -------------
+            ```python
+            nodes.DomainSize(geometry=self, component=component)
+            ```
+    
 
         Returns
-        =======
-                Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer),
-                spline_count (Integer), instance_count (Integer)] 
+        -------
+            Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
+            
         """
 
         return nodes.DomainSize(geometry=self, component=component)
 
     def attribute_remove(self, *attribute):
-        """ attribute_remove
+        """ > Node: AttributeRemove
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeRemove
+        node ref Attribute Remove </sub>
         
-
-        | Node: AttributeRemove 
-        Top Index 
-        
-
-            v = geometry.attribute_remove(attribute_1, attribute_2, attribute_3) 
-        
+        ```python
+        v = geometry.attribute_remove(attribute_1, attribute_2, attribute_3)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry  : Geometry (self) 
-            - attribute : *String 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                - attribute : *String
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.AttributeRemove(*attribute, geometry=self) 
-        
+        -------------
+            ```python
+            nodes.AttributeRemove(*attribute, geometry=self)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return nodes.AttributeRemove(*attribute, geometry=self).geometry
 
     def components(self, selection=None, domain='POINT'):
-        """ components
+        """ > Node: SeparateGeometry
+        <sub>go to: top index
+        blender ref GeometryNodeSeparateGeometry
+        node ref Separate Geometry </sub>
         
-
-        | Node: SeparateGeometry 
-        Top Index 
-        
-
-            v = geometry.components(selection, domain) 
-        
+        ```python
+        v = geometry.components(selection, domain)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry  : Geometry (self) 
-            - selection : Boolean 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                - selection : Boolean
+    
 
-            Parameters arguments
-            --------------------
-            - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE] 
-        
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain) 
-        
+        -------------
+            ```python
+            nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain)
+            ```
+    
 
         Returns
-        =======
-                Sockets [selection (Geometry), inverted (Geometry)] 
+        -------
+            Sockets [selection (Geometry), inverted (Geometry)]
+            
         """
 
         return nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain)
 
     def convex_hull(self):
-        """ convex_hull
+        """ > Node: ConvexHull
+        <sub>go to: top index
+        blender ref GeometryNodeConvexHull
+        node ref Convex Hull </sub>
         
-
-        | Node: ConvexHull 
-        Top Index 
-        
-
-            v = geometry.convex_hull() 
-        
+        ```python
+        v = geometry.convex_hull()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry : Geometry (self) 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.ConvexHull(geometry=self) 
-        
+        -------------
+            ```python
+            nodes.ConvexHull(geometry=self)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return nodes.ConvexHull(geometry=self).convex_hull
 
     def to_instance(self, *geometry):
-        """ to_instance
+        """ > Node: GeometryToInstance
+        <sub>go to: top index
+        blender ref GeometryNodeGeometryToInstance
+        node ref Geometry to Instance </sub>
         
-
-        | Node: GeometryToInstance 
-        Top Index 
-        
-
-            v = geometry.to_instance(geometry_1, geometry_2, geometry_3) 
-        
+        ```python
+        v = geometry.to_instance(geometry_1, geometry_2, geometry_3)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry : *Geometry (self) 
-        
+            Sockets
+            -------
+                - geometry : *Geometry (self)
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.GeometryToInstance(self, *geometry) 
-        
+        -------------
+            ```python
+            nodes.GeometryToInstance(self, *geometry)
+            ```
+    
 
         Returns
-        =======
-                Instances 
+        -------
+            Instances
+            
         """
 
         return nodes.GeometryToInstance(self, *geometry).instances
 
     def join(self, *geometry):
-        """ join
+        """ > Node: JoinGeometry
+        <sub>go to: top index
+        blender ref GeometryNodeJoinGeometry
+        node ref Join Geometry </sub>
         
-
-        | Node: JoinGeometry 
-        Top Index 
-        
-
-            v = geometry.join(geometry_1, geometry_2, geometry_3) 
-        
+        ```python
+        v = geometry.join(geometry_1, geometry_2, geometry_3)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry : *Geometry (self) 
-        
+            Sockets
+            -------
+                - geometry : *Geometry (self)
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.JoinGeometry(self, *geometry) 
-        
+        -------------
+            ```python
+            nodes.JoinGeometry(self, *geometry)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return nodes.JoinGeometry(self, *geometry).geometry
 
     def proximity(self, source_position=None, target_element='FACES'):
-        """ proximity
+        """ > Node: GeometryProximity
+        <sub>go to: top index
+        blender ref GeometryNodeProximity
+        node ref Geometry Proximity </sub>
         
-
-        | Node: GeometryProximity 
-        Top Index 
-        
-
-            v = geometry.proximity(source_position, target_element) 
-        
+        ```python
+        v = geometry.proximity(source_position, target_element)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - target          : Geometry (self) 
-            - source_position : Vector 
-        
+            Sockets
+            -------
+                - target : Geometry (self)
+                - source_position : Vector
+    
 
-            Parameters arguments
-            --------------------
-            - target_element : 'FACES' in [POINTS, EDGES, FACES] 
-        
+            Parameters
+            ----------
+                - target_element : 'FACES' in [POINTS, EDGES, FACES]
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.GeometryProximity(target=self, source_position=source_position, target_element=target_element)
-        
+        -------------
+            ```python
+            nodes.GeometryProximity(target=self, source_position=source_position, target_element=target_element)
+            ```
+    
 
         Returns
-        =======
-                Sockets [position (Vector), distance (Float)] 
+        -------
+            Sockets [position (Vector), distance (Float)]
+            
         """
 
         return nodes.GeometryProximity(target=self, source_position=source_position, target_element=target_element)

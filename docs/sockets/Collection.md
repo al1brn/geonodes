@@ -1,109 +1,83 @@
 
-# Class Collection
+# Data socket Collection
 
-> Inherits from: ***dsock.Collection***
+> Inherits from dsock.Collection
+  
+<sub>go to [index](TBD)</sub>
 
 
-[Index](/docs/index.md)
 
 ## Methods
 
+- [info](#info) : [CollectionInfo](section:nodes/CollectionInfo.md), geometry (Geometry)
+- [switch](#switch) : [Switch](section:nodes/Switch.md), output (Collection)
 
+## switch
 
-- [**info**](#info) : [CollectionInfo](../nodes/CollectionInfo.md) geometry (Geometry)
-- [**switch**](#switch) : [Switch](../nodes/Switch.md) output (Collection)
-
-
-
-## Methods reference
-
-
-### info
-
-> Node: [CollectionInfo](../nodes/{self.node_name}.md)
-
-
-[Top](#class-collection) [Index](/docs/index.md)
-
-```python
-v = collection.info(separate_children, reset_children, transform_space)
-```
-
-
-#### Arguments
-
-
-##### Sockets arguments
-
-
-
-- collection : Collection (self)
-- separate_children : Boolean
-- reset_children : Boolean
-
-
-
-##### Parameters arguments
-
-
-
-- transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
-
-
-
-#### Node creation
-
-
-```python
-node = nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space)
-```
-
-
-#### Returns
-
-    Geometry
-
-### switch
-
-> Node: [Switch](../nodes/{self.node_name}.md)
-
-
-[Top](#class-collection) [Index](/docs/index.md)
+> Node: [Switch](section:nodes/Switch)
+<sub>go to: [top](#collection) [index](TBD)
+blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 
 ```python
 v = collection.switch(switch1, true)
 ```
 
-
-#### Arguments
-
-
-##### Sockets arguments
+### Arguments
 
 
+#### Sockets
 
 - false : Collection (self)
 - switch1 : Boolean
 - true : Collection
 
-
-
-##### Fixed parameters
-
-
+#### Fixed parameters
 
 - input_type : 'COLLECTION'
 
-
-
-#### Node creation
-
+### Node creation
 
 ```python
-node = nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION')
+nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION')
 ```
 
+### Returns
 
-#### Returns
+Collection
 
-    Collection
+
+## info
+
+> Node: [CollectionInfo](section:nodes/CollectionInfo)
+<sub>go to: [top](#collection) [index](TBD)
+blender ref [GeometryNodeCollectionInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeCollectionInfo.html)
+node ref [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/collection_info.html) </sub>
+
+```python
+v = collection.info(separate_children, reset_children, transform_space)
+```
+
+### Arguments
+
+
+#### Sockets
+
+- collection : Collection (self)
+- separate_children : Boolean
+- reset_children : Boolean
+
+#### Parameters
+
+- transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
+
+### Node creation
+
+```python
+nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space)
+```
+
+### Returns
+
+Geometry
+

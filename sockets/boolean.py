@@ -9,35 +9,38 @@ logger = logging.Logger('geonodes')
 # Data class Boolean
 
 class Boolean(dsock.Boolean):
-    """ Class Boolean
+    """ 
+
+    Data socket Boolean
+    -------------------
+        > Inherits from dsock.Boolean
+          
+        <sub>go to index</sub>
+        
+        
     
 
-    | Inherits from: dsock.Boolean 
-    Index 
+        Constructors
+        ------------
+            - Random : RandomValue, value (Boolean)
     
 
-    Constructors
-    ============
-    - **Random** : RandomValue value (Boolean) 
-    
-
-    Methods
-    =======
-    - **b_and**              : BooleanMath boolean (Boolean) 
-    - **b_not**              : BooleanMath boolean (Boolean) 
-    - **b_or**               : BooleanMath boolean (Boolean) 
-    - **capture_attribute**  : CaptureAttribute Sockets      [geometry (Geometry), attribute (Boolean)] 
-    - **field_at_index**     : FieldAtIndex value (Boolean) 
-    - **imply**              : BooleanMath boolean (Boolean) 
-    - **nand**               : BooleanMath boolean (Boolean) 
-    - **nimply**             : BooleanMath boolean (Boolean) 
-    - **nor**                : BooleanMath boolean (Boolean) 
-    - **raycast**            : Raycast Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance
-      (Float), attribute (Boolean)] 
-    - **switch**             : Switch output (Boolean) 
-    - **transfer_attribute** : TransferAttribute attribute (Boolean) 
-    - **xnor**               : BooleanMath boolean (Boolean) 
-    - **xor**                : BooleanMath boolean (Boolean) 
+        Methods
+        -------
+            - b_and : BooleanMath, boolean (Boolean)
+            - b_not : BooleanMath, boolean (Boolean)
+            - b_or : BooleanMath, boolean (Boolean)
+            - capture_attribute : CaptureAttribute, Sockets      [geometry (Geometry), attribute (Boolean)]
+            - field_at_index : FieldAtIndex, value (Boolean)
+            - imply : BooleanMath, boolean (Boolean)
+            - nand : BooleanMath, boolean (Boolean)
+            - nimply : BooleanMath, boolean (Boolean)
+            - nor : BooleanMath, boolean (Boolean)
+            - raycast : Raycast, Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
+            - switch : Switch, output (Boolean)
+            - transfer_attribute : TransferAttribute, attribute (Boolean)
+            - xnor : BooleanMath, boolean (Boolean)
+            - xor : BooleanMath, boolean (Boolean)
     """
 
 
@@ -46,42 +49,43 @@ class Boolean(dsock.Boolean):
 
     @classmethod
     def Random(cls, probability=None, ID=None, seed=None):
-        """ Random
+        """ > Node: RandomValue
+        <sub>go to: top index
+        blender ref FunctionNodeRandomValue
+        node ref Random Value </sub>
         
-
-        | Node: RandomValue 
-        Top Index 
-        
-
-            v = Boolean.Random(probability, ID, seed) 
-        
+        ```python
+        v = Boolean.Random(probability, ID, seed)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - probability : Float 
-            - ID          : Integer 
-            - seed        : Integer 
-        
+            Sockets
+            -------
+                - probability : Float
+                - ID : Integer
+                - seed : Integer
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'BOOLEAN' 
-        
+                - data_type : 'BOOLEAN'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN') 
-        
+        -------------
+            ```python
+            nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return cls(nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN').value)
@@ -91,590 +95,601 @@ class Boolean(dsock.Boolean):
     # Methods
 
     def transfer_attribute(self, source=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
-        """ transfer_attribute
+        """ > Node: TransferAttribute
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeTransfer
+        node ref Transfer Attribute </sub>
         
-
-        | Node: TransferAttribute 
-        Top Index 
-        
-
-            v = boolean.transfer_attribute(source, source_position, index, domain, mapping) 
-        
+        ```python
+        v = boolean.transfer_attribute(source, source_position, index, domain, mapping)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - attribute       : Boolean (self) 
-            - source          : Geometry 
-            - source_position : Vector 
-            - index           : Integer 
-        
+            Sockets
+            -------
+                - attribute : Boolean (self)
+                - source : Geometry
+                - source_position : Vector
+                - index : Integer
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+                - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'BOOLEAN' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain  : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX] 
-        
+                - data_type : 'BOOLEAN'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index,
-            data_type='BOOLEAN', domain=domain, mapping=mapping) 
-        
+        -------------
+            ```python
+            nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping).attribute
 
     def capture_attribute(self, geometry=None, domain='POINT'):
-        """ capture_attribute
+        """ > Node: CaptureAttribute
+        <sub>go to: top index
+        blender ref GeometryNodeCaptureAttribute
+        node ref Capture Attribute </sub>
         
-
-        | Node: CaptureAttribute 
-        Top Index 
-        
-
-            v = boolean.capture_attribute(geometry, domain) 
-        
+        ```python
+        v = boolean.capture_attribute(geometry, domain)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value    : Boolean (self) 
-            - geometry : Geometry 
-        
+            Sockets
+            -------
+                - value : Boolean (self)
+                - geometry : Geometry
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'BOOLEAN' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-        
+                - data_type : 'BOOLEAN'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain) 
-        
+        -------------
+            ```python
+            nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain)
+            ```
+    
 
         Returns
-        =======
-                Sockets [geometry (Geometry), attribute (Boolean)] 
+        -------
+            Sockets [geometry (Geometry), attribute (Boolean)]
+            
         """
 
         return nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain)
 
     def field_at_index(self, index=None, domain='POINT'):
-        """ field_at_index
+        """ > Node: FieldAtIndex
+        <sub>go to: top index
+        blender ref GeometryNodeFieldAtIndex
+        node ref Field at Index </sub>
         
-
-        | Node: FieldAtIndex 
-        Top Index 
-        
-
-            v = boolean.field_at_index(index, domain) 
-        
+        ```python
+        v = boolean.field_at_index(index, domain)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - value : Boolean (self) 
-            - index : Integer 
-        
+            Sockets
+            -------
+                - value : Boolean (self)
+                - index : Integer
+    
+
+            Parameters
+            ----------
+                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'BOOLEAN' 
-        
-
-            Parameters arguments
-            --------------------
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE] 
-        
+                - data_type : 'BOOLEAN'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain) 
-        
+        -------------
+            ```python
+            nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain)
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain).value
 
     def raycast(self, target_geometry=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
-        """ raycast
+        """ > Node: Raycast
+        <sub>go to: top index
+        blender ref GeometryNodeRaycast
+        node ref Raycast </sub>
         
-
-        | Node: Raycast 
-        Top Index 
-        
-
-            v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length, mapping) 
-        
+        ```python
+        v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - attribute       : Boolean (self) 
-            - target_geometry : Geometry 
-            - source_position : Vector 
-            - ray_direction   : Vector 
-            - ray_length      : Float 
-        
+            Sockets
+            -------
+                - attribute : Boolean (self)
+                - target_geometry : Geometry
+                - source_position : Vector
+                - ray_direction : Vector
+                - ray_length : Float
+    
+
+            Parameters
+            ----------
+                - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+    
 
             Fixed parameters
             ----------------
-            - data_type : 'BOOLEAN' 
-        
-
-            Parameters arguments
-            --------------------
-            - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST] 
-        
+                - data_type : 'BOOLEAN'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position,
-            ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping) 
-        
+        -------------
+            ```python
+            nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping)
+            ```
+    
 
         Returns
-        =======
-                Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute
-                (Boolean)] 
+        -------
+            Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
+            
         """
 
         return nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping)
 
     def switch(self, false=None, true=None):
-        """ switch
+        """ > Node: Switch
+        <sub>go to: top index
+        blender ref GeometryNodeSwitch
+        node ref Switch </sub>
         
-
-        | Node: Switch 
-        Top Index 
-        
-
-            v = boolean.switch(false, true) 
-        
+        ```python
+        v = boolean.switch(false, true)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - switch0 : Boolean (self) 
-            - false   : Boolean 
-            - true    : Boolean 
-        
+            Sockets
+            -------
+                - switch0 : Boolean (self)
+                - false : Boolean
+                - true : Boolean
+    
 
             Fixed parameters
             ----------------
-            - input_type : 'BOOLEAN' 
-        
+                - input_type : 'BOOLEAN'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN') 
-        
+        -------------
+            ```python
+            nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN').output
 
     def b_and(self, boolean1=None):
-        """ b_and
+        """ > Node: BooleanMath
+        <sub>go to: top index
+        blender ref FunctionNodeBooleanMath
+        node ref Boolean Math </sub>
         
-
-        | Node: BooleanMath 
-        Top Index 
-        
-
-            v = boolean.b_and(boolean1) 
-        
+        ```python
+        v = boolean.b_and(boolean1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - boolean0 : Boolean (self) 
-            - boolean1 : Boolean 
-        
+            Sockets
+            -------
+                - boolean0 : Boolean (self)
+                - boolean1 : Boolean
+    
 
             Fixed parameters
             ----------------
-            - operation : 'AND' 
-        
+                - operation : 'AND'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND') 
-        
+        -------------
+            ```python
+            nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND').boolean
 
     def b_or(self, boolean1=None):
-        """ b_or
+        """ > Node: BooleanMath
+        <sub>go to: top index
+        blender ref FunctionNodeBooleanMath
+        node ref Boolean Math </sub>
         
-
-        | Node: BooleanMath 
-        Top Index 
-        
-
-            v = boolean.b_or(boolean1) 
-        
+        ```python
+        v = boolean.b_or(boolean1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - boolean0 : Boolean (self) 
-            - boolean1 : Boolean 
-        
+            Sockets
+            -------
+                - boolean0 : Boolean (self)
+                - boolean1 : Boolean
+    
 
             Fixed parameters
             ----------------
-            - operation : 'OR' 
-        
+                - operation : 'OR'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR') 
-        
+        -------------
+            ```python
+            nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR').boolean
 
     def b_not(self):
-        """ b_not
+        """ > Node: BooleanMath
+        <sub>go to: top index
+        blender ref FunctionNodeBooleanMath
+        node ref Boolean Math </sub>
         
-
-        | Node: BooleanMath 
-        Top Index 
-        
-
-            v = boolean.b_not() 
-        
+        ```python
+        v = boolean.b_not()
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - boolean0 : Boolean (self) 
-        
+            Sockets
+            -------
+                - boolean0 : Boolean (self)
+    
 
             Fixed parameters
             ----------------
-            - operation : 'NOT' 
-        
+                - operation : 'NOT'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.BooleanMath(boolean0=self, operation='NOT') 
-        
+        -------------
+            ```python
+            nodes.BooleanMath(boolean0=self, operation='NOT')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.BooleanMath(boolean0=self, operation='NOT').boolean
 
     def nand(self, boolean1=None):
-        """ nand
+        """ > Node: BooleanMath
+        <sub>go to: top index
+        blender ref FunctionNodeBooleanMath
+        node ref Boolean Math </sub>
         
-
-        | Node: BooleanMath 
-        Top Index 
-        
-
-            v = boolean.nand(boolean1) 
-        
+        ```python
+        v = boolean.nand(boolean1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - boolean0 : Boolean (self) 
-            - boolean1 : Boolean 
-        
+            Sockets
+            -------
+                - boolean0 : Boolean (self)
+                - boolean1 : Boolean
+    
 
             Fixed parameters
             ----------------
-            - operation : 'NAND' 
-        
+                - operation : 'NAND'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND') 
-        
+        -------------
+            ```python
+            nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND').boolean
 
     def nor(self, boolean1=None):
-        """ nor
+        """ > Node: BooleanMath
+        <sub>go to: top index
+        blender ref FunctionNodeBooleanMath
+        node ref Boolean Math </sub>
         
-
-        | Node: BooleanMath 
-        Top Index 
-        
-
-            v = boolean.nor(boolean1) 
-        
+        ```python
+        v = boolean.nor(boolean1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - boolean0 : Boolean (self) 
-            - boolean1 : Boolean 
-        
+            Sockets
+            -------
+                - boolean0 : Boolean (self)
+                - boolean1 : Boolean
+    
 
             Fixed parameters
             ----------------
-            - operation : 'NOR' 
-        
+                - operation : 'NOR'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR') 
-        
+        -------------
+            ```python
+            nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR').boolean
 
     def xnor(self, boolean1=None):
-        """ xnor
+        """ > Node: BooleanMath
+        <sub>go to: top index
+        blender ref FunctionNodeBooleanMath
+        node ref Boolean Math </sub>
         
-
-        | Node: BooleanMath 
-        Top Index 
-        
-
-            v = boolean.xnor(boolean1) 
-        
+        ```python
+        v = boolean.xnor(boolean1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - boolean0 : Boolean (self) 
-            - boolean1 : Boolean 
-        
+            Sockets
+            -------
+                - boolean0 : Boolean (self)
+                - boolean1 : Boolean
+    
 
             Fixed parameters
             ----------------
-            - operation : 'XNOR' 
-        
+                - operation : 'XNOR'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR') 
-        
+        -------------
+            ```python
+            nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR').boolean
 
     def xor(self, boolean1=None):
-        """ xor
+        """ > Node: BooleanMath
+        <sub>go to: top index
+        blender ref FunctionNodeBooleanMath
+        node ref Boolean Math </sub>
         
-
-        | Node: BooleanMath 
-        Top Index 
-        
-
-            v = boolean.xor(boolean1) 
-        
+        ```python
+        v = boolean.xor(boolean1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - boolean0 : Boolean (self) 
-            - boolean1 : Boolean 
-        
+            Sockets
+            -------
+                - boolean0 : Boolean (self)
+                - boolean1 : Boolean
+    
 
             Fixed parameters
             ----------------
-            - operation : 'XOR' 
-        
+                - operation : 'XOR'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR') 
-        
+        -------------
+            ```python
+            nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR').boolean
 
     def imply(self, boolean1=None):
-        """ imply
+        """ > Node: BooleanMath
+        <sub>go to: top index
+        blender ref FunctionNodeBooleanMath
+        node ref Boolean Math </sub>
         
-
-        | Node: BooleanMath 
-        Top Index 
-        
-
-            v = boolean.imply(boolean1) 
-        
+        ```python
+        v = boolean.imply(boolean1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - boolean0 : Boolean (self) 
-            - boolean1 : Boolean 
-        
+            Sockets
+            -------
+                - boolean0 : Boolean (self)
+                - boolean1 : Boolean
+    
 
             Fixed parameters
             ----------------
-            - operation : 'IMPLY' 
-        
+                - operation : 'IMPLY'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY') 
-        
+        -------------
+            ```python
+            nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY').boolean
 
     def nimply(self, boolean1=None):
-        """ nimply
+        """ > Node: BooleanMath
+        <sub>go to: top index
+        blender ref FunctionNodeBooleanMath
+        node ref Boolean Math </sub>
         
-
-        | Node: BooleanMath 
-        Top Index 
-        
-
-            v = boolean.nimply(boolean1) 
-        
+        ```python
+        v = boolean.nimply(boolean1)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - boolean0 : Boolean (self) 
-            - boolean1 : Boolean 
-        
+            Sockets
+            -------
+                - boolean0 : Boolean (self)
+                - boolean1 : Boolean
+    
 
             Fixed parameters
             ----------------
-            - operation : 'NIMPLY' 
-        
+                - operation : 'NIMPLY'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY') 
-        
+        -------------
+            ```python
+            nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY')
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY').boolean

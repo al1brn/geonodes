@@ -9,50 +9,54 @@ logger = logging.Logger('geonodes')
 # Data class Spline
 
 class Spline(gn.Geometry):
-    """ Class Spline
+    """ 
+
+    Data socket Spline
+    ------------------
+        > Inherits from gn.Geometry
+          
+        <sub>go to index</sub>
+        
+        
     
 
-    | Inherits from: gn.Geometry 
-    Index 
+        Attribute capture
+        -----------------
+            - capture_cyclic : IsSplineCyclic, cyclic (Boolean)
+            - capture_endpoint_selection : EndpointSelection, selection (Boolean)
+            - capture_handle_positions : CurveHandlePositions, Sockets      [left (Vector), right (Vector)]
+            - capture_handle_type_selection : HandleTypeSelection, selection (Boolean)
+            - capture_length : SplineLength, Sockets      [length (Float), point_count (Integer)]
+            - capture_parameter : SplineParameter, Sockets      [factor (Float), length (Float), index (Integer)]
+            - capture_resolution : SplineResolution, resolution (Integer)
+            - capture_tangent : CurveTangent, tangent (Vector)
+            - capture_tilt : CurveTilt, tilt (Float)
     
 
-    Attribute capture
-    =================
-    - **capture_cyclic**                : IsSplineCyclic cyclic (Boolean) 
-    - **capture_endpoint_selection**    : EndpointSelection selection (Boolean) 
-    - **capture_handle_positions**      : CurveHandlePositions Sockets      [left (Vector), right (Vector)] 
-    - **capture_handle_type_selection** : HandleTypeSelection selection (Boolean) 
-    - **capture_length**                : SplineLength Sockets      [length (Float), point_count (Integer)] 
-    - **capture_parameter**             : SplineParameter Sockets      [factor (Float), length (Float), index (Integer)]
-    - **capture_resolution**            : SplineResolution resolution (Integer) 
-    - **capture_tangent**               : CurveTangent tangent (Vector) 
-    - **capture_tilt**                  : CurveTilt tilt (Float) 
+        Attributes
+        ----------
+            - cyclic : IsSplineCyclic, Boolean = capture_cyclic(domain='CURVE')
+            - endpoint_selection : EndpointSelection, Boolean = capture_endpoint_selection(domain='CURVE')
+            - factor : SplineParameter, Float = capture_parameter(domain='CURVE').factor
+            - handle_type_selection : HandleTypeSelection, Boolean = capture_handle_type_selection(domain='CURVE')
+            - left_handle_position : CurveHandlePositions, Vector = capture_handle_positions(domain='CURVE').left
+            - length : SplineLength, Float = capture_length(domain='CURVE').length
+            - parameter_index : SplineParameter, Integer = capture_parameter(domain='CURVE').index
+            - parameter_length : SplineParameter, Float = capture_parameter(domain='CURVE').length
+            - point_count : SplineLength, Integer = capture_length(domain='CURVE').point_count
+            - resolution : SplineResolution, Integer = capture_resolution(domain='CURVE')
+            - right_handle_position : CurveHandlePositions, Vector = capture_handle_positions(domain='CURVE').right
+            - spline_ID : ID, Integer = capture_ID(domain='SPLINE')
+            - spline_index : Index, Integer = capture_index(domain='SPLINE')
+            - spline_position : Index, Integer = capture_position(domain='SPLINE')
+            - tangent : CurveTangent, Vector = capture_tangent(domain='CURVE')
+            - tilt : CurveTilt, Float = capture_tilt(domain='CURVE')
     
 
-    Attributes
-    ==========
-    - **cyclic**                : IsSplineCyclic Boolean = capture_cyclic(domain='CURVE') 
-    - **endpoint_selection**    : EndpointSelection Boolean = capture_endpoint_selection(domain='CURVE') 
-    - **factor**                : SplineParameter Float = capture_parameter(domain='CURVE').factor 
-    - **handle_type_selection** : HandleTypeSelection Boolean = capture_handle_type_selection(domain='CURVE')
-    - **left_handle_position**  : CurveHandlePositions Vector = capture_handle_positions(domain='CURVE').left
-    - **length**                : SplineLength Float = capture_length(domain='CURVE').length 
-    - **parameter_index**       : SplineParameter Integer = capture_parameter(domain='CURVE').index 
-    - **parameter_length**      : SplineParameter Float = capture_parameter(domain='CURVE').length 
-    - **point_count**           : SplineLength Integer = capture_length(domain='CURVE').point_count 
-    - **resolution**            : SplineResolution Integer = capture_resolution(domain='CURVE') 
-    - **right_handle_position** : CurveHandlePositions Vector = capture_handle_positions(domain='CURVE').right
-    - **spline_ID**             : ID Integer = capture_ID(domain='SPLINE') 
-    - **spline_index**          : Index Integer = capture_index(domain='SPLINE') 
-    - **spline_position**       : Index Integer = capture_position(domain='SPLINE') 
-    - **tangent**               : CurveTangent Vector = capture_tangent(domain='CURVE') 
-    - **tilt**                  : CurveTilt Float = capture_tilt(domain='CURVE') 
-    
-
-    Methods
-    =======
-    - **set_cyclic**     : SetSplineCyclic geometry (Geometry) 
-    - **set_resolution** : SetSplineResolution geometry (Geometry) 
+        Methods
+        -------
+            - set_cyclic : SetSplineCyclic, geometry (Geometry)
+            - set_resolution : SetSplineResolution, geometry (Geometry)
     """
 
 
@@ -60,41 +64,42 @@ class Spline(gn.Geometry):
     # Attribute capture
 
     def capture_handle_positions(self, relative=None, domain='CURVE'):
-        """ capture_handle_positions
+        """ > Node: CurveHandlePositions
+        <sub>go to: top index
+        blender ref GeometryNodeInputCurveHandlePositions
+        node ref Curve Handle Positions </sub>
         
-
-        | Node: CurveHandlePositions 
-        Top Index 
-        
-
-            v = spline.capture_handle_positions(self, relative, domain='CURVE') 
-        
+        ```python
+        v = spline.capture_handle_positions(self, relative, domain='CURVE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'CURVE' 
-        
+            Sockets
+            -------
+                - relative : Boolean
+    
 
-            Sockets arguments
-            -----------------
-            - relative : Boolean 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'CURVE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.CurveHandlePositions(relative=relative) 
-        
+        -------------
+            ```python
+            nodes.CurveHandlePositions(relative=relative)
+            ```
+    
 
         Returns
-        =======
-                Sockets [left (Vector), right (Vector)] 
+        -------
+            Sockets [left (Vector), right (Vector)]
+            
         """
 
         attr_name = 'capture_handle_positions_' + domain
@@ -105,36 +110,37 @@ class Spline(gn.Geometry):
         return getattr(self, attr_name)
 
     def capture_tangent(self, domain='CURVE'):
-        """ capture_tangent
+        """ > Node: CurveTangent
+        <sub>go to: top index
+        blender ref GeometryNodeInputTangent
+        node ref Curve Tangent </sub>
         
-
-        | Node: CurveTangent 
-        Top Index 
-        
-
-            v = spline.capture_tangent(self, domain='CURVE') 
-        
+        ```python
+        v = spline.capture_tangent(self, domain='CURVE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'CURVE' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'CURVE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.CurveTangent() 
-        
+        -------------
+            ```python
+            nodes.CurveTangent()
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         attr_name = 'capture_tangent_' + domain
@@ -145,36 +151,37 @@ class Spline(gn.Geometry):
         return getattr(self, attr_name).tangent
 
     def capture_tilt(self, domain='CURVE'):
-        """ capture_tilt
+        """ > Node: CurveTilt
+        <sub>go to: top index
+        blender ref GeometryNodeInputCurveTilt
+        node ref Curve Tilt </sub>
         
-
-        | Node: CurveTilt 
-        Top Index 
-        
-
-            v = spline.capture_tilt(self, domain='CURVE') 
-        
+        ```python
+        v = spline.capture_tilt(self, domain='CURVE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'CURVE' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'CURVE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.CurveTilt() 
-        
+        -------------
+            ```python
+            nodes.CurveTilt()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         attr_name = 'capture_tilt_' + domain
@@ -185,42 +192,43 @@ class Spline(gn.Geometry):
         return getattr(self, attr_name).tilt
 
     def capture_endpoint_selection(self, start_size=None, end_size=None, domain='CURVE'):
-        """ capture_endpoint_selection
+        """ > Node: EndpointSelection
+        <sub>go to: top index
+        blender ref GeometryNodeCurveEndpointSelection
+        node ref Endpoint Selection </sub>
         
-
-        | Node: EndpointSelection 
-        Top Index 
-        
-
-            v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE') 
-        
+        ```python
+        v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'CURVE' 
-        
+            Sockets
+            -------
+                - start_size : Integer
+                - end_size : Integer
+    
 
-            Sockets arguments
-            -----------------
-            - start_size : Integer 
-            - end_size   : Integer 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'CURVE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EndpointSelection(start_size=start_size, end_size=end_size) 
-        
+        -------------
+            ```python
+            nodes.EndpointSelection(start_size=start_size, end_size=end_size)
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         attr_name = 'capture_endpoint_selection_' + domain
@@ -231,38 +239,39 @@ class Spline(gn.Geometry):
         return getattr(self, attr_name).selection
 
     def capture_handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, domain='CURVE'):
-        """ capture_handle_type_selection
+        """ > Node: HandleTypeSelection
+        <sub>go to: top index
+        blender ref GeometryNodeCurveHandleTypeSelection
+        node ref Handle Type Selection </sub>
         
-
-        | Node: HandleTypeSelection 
-        Top Index 
-        
-
-            v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE') 
-        
+        ```python
+        v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self         
-            - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN] 
-            - mode        : {'LEFT', 'RIGHT'} 
-            - domain      :'CURVE' 
-        
+            Parameters
+            ----------
+                - self
+                - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+                - mode : {'LEFT', 'RIGHT'}
+                - domain:'CURVE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.HandleTypeSelection(handle_type=handle_type, mode=mode) 
-        
+        -------------
+            ```python
+            nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         attr_name = 'capture_handle_type_selection_' + domain
@@ -273,36 +282,37 @@ class Spline(gn.Geometry):
         return getattr(self, attr_name).selection
 
     def capture_cyclic(self, domain='CURVE'):
-        """ capture_cyclic
+        """ > Node: IsSplineCyclic
+        <sub>go to: top index
+        blender ref GeometryNodeInputSplineCyclic
+        node ref Is Spline Cyclic </sub>
         
-
-        | Node: IsSplineCyclic 
-        Top Index 
-        
-
-            v = spline.capture_cyclic(self, domain='CURVE') 
-        
+        ```python
+        v = spline.capture_cyclic(self, domain='CURVE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'CURVE' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'CURVE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.IsSplineCyclic() 
-        
+        -------------
+            ```python
+            nodes.IsSplineCyclic()
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         attr_name = 'capture_cyclic_' + domain
@@ -313,36 +323,37 @@ class Spline(gn.Geometry):
         return getattr(self, attr_name).cyclic
 
     def capture_length(self, domain='CURVE'):
-        """ capture_length
+        """ > Node: SplineLength
+        <sub>go to: top index
+        blender ref GeometryNodeSplineLength
+        node ref Spline Length </sub>
         
-
-        | Node: SplineLength 
-        Top Index 
-        
-
-            v = spline.capture_length(self, domain='CURVE') 
-        
+        ```python
+        v = spline.capture_length(self, domain='CURVE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'CURVE' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'CURVE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SplineLength() 
-        
+        -------------
+            ```python
+            nodes.SplineLength()
+            ```
+    
 
         Returns
-        =======
-                Sockets [length (Float), point_count (Integer)] 
+        -------
+            Sockets [length (Float), point_count (Integer)]
+            
         """
 
         attr_name = 'capture_length_' + domain
@@ -353,36 +364,37 @@ class Spline(gn.Geometry):
         return getattr(self, attr_name)
 
     def capture_parameter(self, domain='CURVE'):
-        """ capture_parameter
+        """ > Node: SplineParameter
+        <sub>go to: top index
+        blender ref GeometryNodeSplineParameter
+        node ref Spline Parameter </sub>
         
-
-        | Node: SplineParameter 
-        Top Index 
-        
-
-            v = spline.capture_parameter(self, domain='CURVE') 
-        
+        ```python
+        v = spline.capture_parameter(self, domain='CURVE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'CURVE' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'CURVE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SplineParameter() 
-        
+        -------------
+            ```python
+            nodes.SplineParameter()
+            ```
+    
 
         Returns
-        =======
-                Sockets [factor (Float), length (Float), index (Integer)] 
+        -------
+            Sockets [factor (Float), length (Float), index (Integer)]
+            
         """
 
         attr_name = 'capture_parameter_' + domain
@@ -393,36 +405,37 @@ class Spline(gn.Geometry):
         return getattr(self, attr_name)
 
     def capture_resolution(self, domain='CURVE'):
-        """ capture_resolution
+        """ > Node: SplineResolution
+        <sub>go to: top index
+        blender ref GeometryNodeInputSplineResolution
+        node ref Spline Resolution </sub>
         
-
-        | Node: SplineResolution 
-        Top Index 
-        
-
-            v = spline.capture_resolution(self, domain='CURVE') 
-        
+        ```python
+        v = spline.capture_resolution(self, domain='CURVE')
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self   
-            - domain:'CURVE' 
-        
+            Parameters
+            ----------
+                - self
+                - domain:'CURVE'
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SplineResolution() 
-        
+        -------------
+            ```python
+            nodes.SplineResolution()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         attr_name = 'capture_resolution_' + domain
@@ -438,578 +451,594 @@ class Spline(gn.Geometry):
 
     @property
     def spline_ID(self):
-        """ spline_ID
+        """ > Node: ID
+        <sub>go to: top index
+        blender ref GeometryNodeInputID
+        node ref ID </sub>
         
-
-        | Node: ID 
-        Top Index 
-        
-
-            v = spline.spline_ID(self) 
-        
+        ```python
+        v = spline.spline_ID(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.ID() 
-        
+        -------------
+            ```python
+            nodes.ID()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return self.capture_ID(domain='SPLINE')
 
     @property
     def spline_index(self):
-        """ spline_index
+        """ > Node: Index
+        <sub>go to: top index
+        blender ref GeometryNodeInputIndex
+        node ref Index </sub>
         
-
-        | Node: Index 
-        Top Index 
-        
-
-            v = spline.spline_index(self) 
-        
+        ```python
+        v = spline.spline_index(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Index() 
-        
+        -------------
+            ```python
+            nodes.Index()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return self.capture_index(domain='SPLINE')
 
     @property
     def spline_position(self):
-        """ spline_position
+        """ > Node: Index
+        <sub>go to: top index
+        blender ref GeometryNodeInputIndex
+        node ref Index </sub>
         
-
-        | Node: Index 
-        Top Index 
-        
-
-            v = spline.spline_position(self) 
-        
+        ```python
+        v = spline.spline_position(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.Index() 
-        
+        -------------
+            ```python
+            nodes.Index()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return self.capture_position(domain='SPLINE')
 
     @property
     def left_handle_position(self, relative=None):
-        """ left_handle_position
+        """ > Node: CurveHandlePositions
+        <sub>go to: top index
+        blender ref GeometryNodeInputCurveHandlePositions
+        node ref Curve Handle Positions </sub>
         
-
-        | Node: CurveHandlePositions 
-        Top Index 
-        
-
-            v = spline.left_handle_position(self, relative) 
-        
+        ```python
+        v = spline.left_handle_position(self, relative)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Sockets
+            -------
+                - relative : Boolean
+    
 
-            Sockets arguments
-            -----------------
-            - relative : Boolean 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.CurveHandlePositions(relative=relative) 
-        
+        -------------
+            ```python
+            nodes.CurveHandlePositions(relative=relative)
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return self.capture_handle_positions(domain='CURVE').left
 
     @property
     def right_handle_position(self, relative=None):
-        """ right_handle_position
+        """ > Node: CurveHandlePositions
+        <sub>go to: top index
+        blender ref GeometryNodeInputCurveHandlePositions
+        node ref Curve Handle Positions </sub>
         
-
-        | Node: CurveHandlePositions 
-        Top Index 
-        
-
-            v = spline.right_handle_position(self, relative) 
-        
+        ```python
+        v = spline.right_handle_position(self, relative)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Sockets
+            -------
+                - relative : Boolean
+    
 
-            Sockets arguments
-            -----------------
-            - relative : Boolean 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.CurveHandlePositions(relative=relative) 
-        
+        -------------
+            ```python
+            nodes.CurveHandlePositions(relative=relative)
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return self.capture_handle_positions(domain='CURVE').right
 
     @property
     def tangent(self):
-        """ tangent
+        """ > Node: CurveTangent
+        <sub>go to: top index
+        blender ref GeometryNodeInputTangent
+        node ref Curve Tangent </sub>
         
-
-        | Node: CurveTangent 
-        Top Index 
-        
-
-            v = spline.tangent(self) 
-        
+        ```python
+        v = spline.tangent(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.CurveTangent() 
-        
+        -------------
+            ```python
+            nodes.CurveTangent()
+            ```
+    
 
         Returns
-        =======
-                Vector 
+        -------
+            Vector
+            
         """
 
         return self.capture_tangent(domain='CURVE')
 
     @property
     def tilt(self):
-        """ tilt
+        """ > Node: CurveTilt
+        <sub>go to: top index
+        blender ref GeometryNodeInputCurveTilt
+        node ref Curve Tilt </sub>
         
-
-        | Node: CurveTilt 
-        Top Index 
-        
-
-            v = spline.tilt(self) 
-        
+        ```python
+        v = spline.tilt(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.CurveTilt() 
-        
+        -------------
+            ```python
+            nodes.CurveTilt()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.capture_tilt(domain='CURVE')
 
     @property
     def endpoint_selection(self, start_size=None, end_size=None):
-        """ endpoint_selection
+        """ > Node: EndpointSelection
+        <sub>go to: top index
+        blender ref GeometryNodeCurveEndpointSelection
+        node ref Endpoint Selection </sub>
         
-
-        | Node: EndpointSelection 
-        Top Index 
-        
-
-            v = spline.endpoint_selection(self, start_size, end_size) 
-        
+        ```python
+        v = spline.endpoint_selection(self, start_size, end_size)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Sockets
+            -------
+                - start_size : Integer
+                - end_size : Integer
+    
 
-            Sockets arguments
-            -----------------
-            - start_size : Integer 
-            - end_size   : Integer 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.EndpointSelection(start_size=start_size, end_size=end_size) 
-        
+        -------------
+            ```python
+            nodes.EndpointSelection(start_size=start_size, end_size=end_size)
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return self.capture_endpoint_selection(domain='CURVE')
 
     @property
     def handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
-        """ handle_type_selection
+        """ > Node: HandleTypeSelection
+        <sub>go to: top index
+        blender ref GeometryNodeCurveHandleTypeSelection
+        node ref Handle Type Selection </sub>
         
-
-        | Node: HandleTypeSelection 
-        Top Index 
-        
-
-            v = spline.handle_type_selection(self, handle_type, mode) 
-        
+        ```python
+        v = spline.handle_type_selection(self, handle_type, mode)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self         
-            - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN] 
-            - mode        : {'LEFT', 'RIGHT'} 
-        
+            Parameters
+            ----------
+                - self
+                - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+                - mode : {'LEFT', 'RIGHT'}
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.HandleTypeSelection(handle_type=handle_type, mode=mode) 
-        
+        -------------
+            ```python
+            nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return self.capture_handle_type_selection(domain='CURVE')
 
     @property
     def cyclic(self):
-        """ cyclic
+        """ > Node: IsSplineCyclic
+        <sub>go to: top index
+        blender ref GeometryNodeInputSplineCyclic
+        node ref Is Spline Cyclic </sub>
         
-
-        | Node: IsSplineCyclic 
-        Top Index 
-        
-
-            v = spline.cyclic(self) 
-        
+        ```python
+        v = spline.cyclic(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.IsSplineCyclic() 
-        
+        -------------
+            ```python
+            nodes.IsSplineCyclic()
+            ```
+    
 
         Returns
-        =======
-                Boolean 
+        -------
+            Boolean
+            
         """
 
         return self.capture_cyclic(domain='CURVE')
 
     @property
     def length(self):
-        """ length
+        """ > Node: SplineLength
+        <sub>go to: top index
+        blender ref GeometryNodeSplineLength
+        node ref Spline Length </sub>
         
-
-        | Node: SplineLength 
-        Top Index 
-        
-
-            v = spline.length(self) 
-        
+        ```python
+        v = spline.length(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SplineLength() 
-        
+        -------------
+            ```python
+            nodes.SplineLength()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.capture_length(domain='CURVE').length
 
     @property
     def point_count(self):
-        """ point_count
+        """ > Node: SplineLength
+        <sub>go to: top index
+        blender ref GeometryNodeSplineLength
+        node ref Spline Length </sub>
         
-
-        | Node: SplineLength 
-        Top Index 
-        
-
-            v = spline.point_count(self) 
-        
+        ```python
+        v = spline.point_count(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SplineLength() 
-        
+        -------------
+            ```python
+            nodes.SplineLength()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return self.capture_length(domain='CURVE').point_count
 
     @property
     def factor(self):
-        """ factor
+        """ > Node: SplineParameter
+        <sub>go to: top index
+        blender ref GeometryNodeSplineParameter
+        node ref Spline Parameter </sub>
         
-
-        | Node: SplineParameter 
-        Top Index 
-        
-
-            v = spline.factor(self) 
-        
+        ```python
+        v = spline.factor(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SplineParameter() 
-        
+        -------------
+            ```python
+            nodes.SplineParameter()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.capture_parameter(domain='CURVE').factor
 
     @property
     def parameter_length(self):
-        """ parameter_length
+        """ > Node: SplineParameter
+        <sub>go to: top index
+        blender ref GeometryNodeSplineParameter
+        node ref Spline Parameter </sub>
         
-
-        | Node: SplineParameter 
-        Top Index 
-        
-
-            v = spline.parameter_length(self) 
-        
+        ```python
+        v = spline.parameter_length(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SplineParameter() 
-        
+        -------------
+            ```python
+            nodes.SplineParameter()
+            ```
+    
 
         Returns
-        =======
-                Float 
+        -------
+            Float
+            
         """
 
         return self.capture_parameter(domain='CURVE').length
 
     @property
     def parameter_index(self):
-        """ parameter_index
+        """ > Node: SplineParameter
+        <sub>go to: top index
+        blender ref GeometryNodeSplineParameter
+        node ref Spline Parameter </sub>
         
-
-        | Node: SplineParameter 
-        Top Index 
-        
-
-            v = spline.parameter_index(self) 
-        
+        ```python
+        v = spline.parameter_index(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SplineParameter() 
-        
+        -------------
+            ```python
+            nodes.SplineParameter()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return self.capture_parameter(domain='CURVE').index
 
     @property
     def resolution(self):
-        """ resolution
+        """ > Node: SplineResolution
+        <sub>go to: top index
+        blender ref GeometryNodeInputSplineResolution
+        node ref Spline Resolution </sub>
         
-
-        | Node: SplineResolution 
-        Top Index 
-        
-
-            v = spline.resolution(self) 
-        
+        ```python
+        v = spline.resolution(self)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Parameters arguments
-            --------------------
-            - self 
-        
+            Parameters
+            ----------
+                - self
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SplineResolution() 
-        
+        -------------
+            ```python
+            nodes.SplineResolution()
+            ```
+    
 
         Returns
-        =======
-                Integer 
+        -------
+            Integer
+            
         """
 
         return self.capture_resolution(domain='CURVE')
@@ -1019,73 +1048,75 @@ class Spline(gn.Geometry):
     # Methods
 
     def set_cyclic(self, selection=None, cyclic=None):
-        """ set_cyclic
+        """ > Node: SetSplineCyclic
+        <sub>go to: top index
+        blender ref GeometryNodeSetSplineCyclic
+        node ref Set Spline Cyclic </sub>
         
-
-        | Node: SetSplineCyclic 
-        Top Index 
-        
-
-            v = spline.set_cyclic(selection, cyclic) 
-        
+        ```python
+        v = spline.set_cyclic(selection, cyclic)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry  : Geometry (self) 
-            - selection : Boolean 
-            - cyclic    : Boolean 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                - selection : Boolean
+                - cyclic : Boolean
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic) 
-        
+        -------------
+            ```python
+            nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return self.stack(nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic))
 
     def set_resolution(self, selection=None, resolution=None):
-        """ set_resolution
+        """ > Node: SetSplineResolution
+        <sub>go to: top index
+        blender ref GeometryNodeSetSplineResolution
+        node ref Set Spline Resolution </sub>
         
-
-        | Node: SetSplineResolution 
-        Top Index 
-        
-
-            v = spline.set_resolution(selection, resolution) 
-        
+        ```python
+        v = spline.set_resolution(selection, resolution)
+        ```
+    
 
         Arguments
-        =========
-        
+        ---------
+    
 
-            Sockets arguments
-            -----------------
-            - geometry   : Geometry (self) 
-            - selection  : Boolean 
-            - resolution : Integer 
-        
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                - selection : Boolean
+                - resolution : Integer
+    
 
         Node creation
-        =============
-        
-
-            node = nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution) 
-        
+        -------------
+            ```python
+            nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution)
+            ```
+    
 
         Returns
-        =======
-                Geometry 
+        -------
+            Geometry
+            
         """
 
         return self.stack(nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution))
