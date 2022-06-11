@@ -32,7 +32,9 @@ v = instances.instance_index(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -61,7 +63,9 @@ v = instances.rotate(selection, rotation, pivot_point, local_space)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - instances : Instances (self)
 - selection : Boolean
 - rotation : Vector
@@ -94,7 +98,9 @@ v = instances.scale(selection, scale, center, local_space)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - instances : Instances (self)
 - selection : Boolean
 - scale : Vector
@@ -127,7 +133,9 @@ v = instances.translate(selection, translation, local_space)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - instances : Instances (self)
 - selection : Boolean
 - translation : Vector
@@ -159,7 +167,9 @@ v = instances.to_points(selection, position, radius)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - instances : Instances (self)
 - selection : Boolean
 - position : Vector

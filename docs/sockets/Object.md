@@ -33,7 +33,9 @@ v = object.info
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - object : Object (self)
 - as_instance : Boolean## Parameters
 - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
@@ -65,7 +67,9 @@ v = object.location
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - object : Object (self)
 - as_instance : Boolean## Parameters
 - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
@@ -97,7 +101,9 @@ v = object.rotation
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - object : Object (self)
 - as_instance : Boolean## Parameters
 - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
@@ -129,7 +135,9 @@ v = object.scale
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - object : Object (self)
 - as_instance : Boolean## Parameters
 - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
@@ -161,7 +169,9 @@ v = object.geometry
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - object : Object (self)
 - as_instance : Boolean## Parameters
 - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
@@ -193,7 +203,9 @@ v = object.switch(switch1, true)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - false : Object (self)
 - switch1 : Boolean
 - true : Object## Fixed parameters

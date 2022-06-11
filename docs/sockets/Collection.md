@@ -26,7 +26,9 @@ v = collection.switch(switch1, true)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - false : Collection (self)
 - switch1 : Boolean
 - true : Collection## Fixed parameters
@@ -58,7 +60,9 @@ v = collection.info(separate_children, reset_children, transform_space)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - collection : Collection (self)
 - separate_children : Boolean
 - reset_children : Boolean## Parameters

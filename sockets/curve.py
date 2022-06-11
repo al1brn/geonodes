@@ -75,13 +75,16 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - resolution : Integer
-            - start : Vector
-            - start_handle : Vector
-            - end_handle : Vector
-            - end : Vector## Parameters
-            - mode : 'POSITION' in [POSITION, OFFSET]
+    
+
+            Sockets
+            -------
+                - resolution : Integer
+                    - start : Vector
+                    - start_handle : Vector
+                    - end_handle : Vector
+                    - end : Vector## Parameters
+                    - mode : 'POSITION' in [POSITION, OFFSET]
     
 
         Node creation
@@ -115,13 +118,16 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - resolution : Integer
-            - point_1 : Vector
-            - point_2 : Vector
-            - point_3 : Vector
-            - radius : Float## Parameters
-            - mode : 'RADIUS' in [POINTS, RADIUS]
+    
+
+            Sockets
+            -------
+                - resolution : Integer
+                    - point_1 : Vector
+                    - point_2 : Vector
+                    - point_3 : Vector
+                    - radius : Float## Parameters
+                    - mode : 'RADIUS' in [POINTS, RADIUS]
     
 
         Node creation
@@ -155,12 +161,15 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - start : Vector
-            - end : Vector
-            - direction : Vector
-            - length : Float## Parameters
-            - mode : 'POINTS' in [POINTS, DIRECTION]
+    
+
+            Sockets
+            -------
+                - start : Vector
+                    - end : Vector
+                    - direction : Vector
+                    - length : Float## Parameters
+                    - mode : 'POINTS' in [POINTS, DIRECTION]
     
 
         Node creation
@@ -194,19 +203,22 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - width : Float
-            - height : Float
-            - bottom_width : Float
-            - top_width : Float
-            - offset : Float
-            - bottom_height : Float
-            - top_height : Float
-            - point_1 : Vector
-            - point_2 : Vector
-            - point_3 : Vector
-            - point_4 : Vector## Parameters
-            - mode : 'RECTANGLE' in [RECTANGLE, PARALLELOGRAM, TRAPEZOID, KITE, POINTS]
+    
+
+            Sockets
+            -------
+                - width : Float
+                    - height : Float
+                    - bottom_width : Float
+                    - top_width : Float
+                    - offset : Float
+                    - bottom_height : Float
+                    - top_height : Float
+                    - point_1 : Vector
+                    - point_2 : Vector
+                    - point_3 : Vector
+                    - point_4 : Vector## Parameters
+                    - mode : 'RECTANGLE' in [RECTANGLE, PARALLELOGRAM, TRAPEZOID, KITE, POINTS]
     
 
         Node creation
@@ -240,11 +252,14 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - resolution : Integer
-            - start : Vector
-            - middle : Vector
-            - end : Vector
+    
+
+            Sockets
+            -------
+                - resolution : Integer
+                    - start : Vector
+                    - middle : Vector
+                    - end : Vector
     
 
         Node creation
@@ -278,11 +293,14 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - points : Integer
-            - inner_radius : Float
-            - outer_radius : Float
-            - twist : Float
+    
+
+            Sockets
+            -------
+                - points : Integer
+                    - inner_radius : Float
+                    - outer_radius : Float
+                    - twist : Float
     
 
         Node creation
@@ -316,13 +334,16 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - resolution : Integer
-            - rotations : Float
-            - start_radius : Float
-            - end_radius : Float
-            - height : Float
-            - reverse : Boolean
+    
+
+            Sockets
+            -------
+                - resolution : Integer
+                    - rotations : Float
+                    - start_radius : Float
+                    - end_radius : Float
+                    - height : Float
+                    - reverse : Boolean
     
 
         Node creation
@@ -356,14 +377,17 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - resolution : Integer
-            - radius : Float
-            - start_angle : Float
-            - sweep_angle : Float
-            - connect_center : Boolean
-            - invert_arc : Boolean## Fixed parameters
-            - mode : 'RADIUS'
+    
+
+            Sockets
+            -------
+                - resolution : Integer
+                    - radius : Float
+                    - start_angle : Float
+                    - sweep_angle : Float
+                    - connect_center : Boolean
+                    - invert_arc : Boolean## Fixed parameters
+                    - mode : 'RADIUS'
     
 
         Node creation
@@ -401,15 +425,18 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - resolution : Integer
-            - start : Vector
-            - middle : Vector
-            - end : Vector
-            - offset_angle : Float
-            - connect_center : Boolean
-            - invert_arc : Boolean## Fixed parameters
-            - mode : 'POINTS'
+    
+
+            Sockets
+            -------
+                - resolution : Integer
+                    - start : Vector
+                    - middle : Vector
+                    - end : Vector
+                    - offset_angle : Float
+                    - connect_center : Boolean
+                    - invert_arc : Boolean## Fixed parameters
+                    - mode : 'POINTS'
     
 
         Node creation
@@ -446,11 +473,14 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - curve : Curve (self)
-            - selection : Boolean## Parameters
-            - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-            - mode : {'LEFT', 'RIGHT'}
+    
+
+            Sockets
+            -------
+                - curve : Curve (self)
+                    - selection : Boolean## Parameters
+                    - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+                    - mode : {'LEFT', 'RIGHT'}
     
 
         Node creation
@@ -483,10 +513,13 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - curve : Curve (self)
-            - selection : Boolean## Parameters
-            - spline_type : 'POLY' in [BEZIER, NURBS, POLY]
+    
+
+            Sockets
+            -------
+                - curve : Curve (self)
+                    - selection : Boolean## Parameters
+                    - spline_type : 'POLY' in [BEZIER, NURBS, POLY]
     
 
         Node creation
@@ -519,9 +552,12 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - curve : Curve (self)## Parameters
-            - mode : 'TRIANGLES' in [TRIANGLES, NGONS]
+    
+
+            Sockets
+            -------
+                - curve : Curve (self)## Parameters
+                    - mode : 'TRIANGLES' in [TRIANGLES, NGONS]
     
 
         Node creation
@@ -554,12 +590,15 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - curve : Curve (self)
-            - count : Integer
-            - radius : Float
-            - limit_radius : Boolean## Parameters
-            - mode : 'BEZIER' in [BEZIER, POLY]
+    
+
+            Sockets
+            -------
+                - curve : Curve (self)
+                    - count : Integer
+                    - radius : Float
+                    - limit_radius : Boolean## Parameters
+                    - mode : 'BEZIER' in [BEZIER, POLY]
     
 
         Node creation
@@ -592,12 +631,15 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - curve : Curve (self)
-            - selection : Boolean
-            - count : Integer
-            - length : Float## Parameters
-            - mode : 'COUNT' in [EVALUATED, COUNT, LENGTH]
+    
+
+            Sockets
+            -------
+                - curve : Curve (self)
+                    - selection : Boolean
+                    - count : Integer
+                    - length : Float## Parameters
+                    - mode : 'COUNT' in [EVALUATED, COUNT, LENGTH]
     
 
         Node creation
@@ -630,9 +672,12 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - curve : Curve (self)
-            - selection : Boolean
+    
+
+            Sockets
+            -------
+                - curve : Curve (self)
+                    - selection : Boolean
     
 
         Node creation
@@ -665,12 +710,15 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - curve : Curve (self)
-            - selection : Boolean
-            - position : Vector
-            - offset : Vector## Parameters
-            - mode : 'LEFT' in [LEFT, RIGHT]
+    
+
+            Sockets
+            -------
+                - curve : Curve (self)
+                    - selection : Boolean
+                    - position : Vector
+                    - offset : Vector## Parameters
+                    - mode : 'LEFT' in [LEFT, RIGHT]
     
 
         Node creation
@@ -703,10 +751,13 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - curve : Curve (self)
-            - selection : Boolean
-            - radius : Float
+    
+
+            Sockets
+            -------
+                - curve : Curve (self)
+                    - selection : Boolean
+                    - radius : Float
     
 
         Node creation
@@ -739,10 +790,13 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - curve : Curve (self)
-            - selection : Boolean
-            - tilt : Float
+    
+
+            Sockets
+            -------
+                - curve : Curve (self)
+                    - selection : Boolean
+                    - tilt : Float
     
 
         Node creation
@@ -775,9 +829,12 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - curve : Curve (self)
-            - cuts : Integer
+    
+
+            Sockets
+            -------
+                - curve : Curve (self)
+                    - cuts : Integer
     
 
         Node creation
@@ -810,13 +867,16 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - curve : Curve (self)
-            - start0 : Float
-            - end0 : Float
-            - start1 : Float
-            - end1 : Float## Parameters
-            - mode : 'FACTOR' in [FACTOR, LENGTH]
+    
+
+            Sockets
+            -------
+                - curve : Curve (self)
+                    - start0 : Float
+                    - end0 : Float
+                    - start1 : Float
+                    - end1 : Float## Parameters
+                    - mode : 'FACTOR' in [FACTOR, LENGTH]
     
 
         Node creation
@@ -849,10 +909,13 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - curve : Curve (self)
-            - profile_curve : Geometry
-            - fill_caps : Boolean
+    
+
+            Sockets
+            -------
+                - curve : Curve (self)
+                    - profile_curve : Geometry
+                    - fill_caps : Boolean
     
 
         Node creation
@@ -885,11 +948,14 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - curve : Curve (self)
-            - count : Integer
-            - length : Float## Parameters
-            - mode : 'COUNT' in [EVALUATED, COUNT, LENGTH]
+    
+
+            Sockets
+            -------
+                - curve : Curve (self)
+                    - count : Integer
+                    - length : Float## Parameters
+                    - mode : 'COUNT' in [EVALUATED, COUNT, LENGTH]
     
 
         Node creation
@@ -922,11 +988,14 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - curve : Curve (self)
-            - factor : Float
-            - length : Float## Parameters
-            - mode : 'LENGTH' in [FACTOR, LENGTH]
+    
+
+            Sockets
+            -------
+                - curve : Curve (self)
+                    - factor : Float
+                    - length : Float## Parameters
+                    - mode : 'LENGTH' in [FACTOR, LENGTH]
     
 
         Node creation
@@ -959,8 +1028,11 @@ class Curve(gn.Spline):
 
         Arguments
         ---------
-            ## Sockets
-            - curve : Curve (self)
+    
+
+            Sockets
+            -------
+                - curve : Curve (self)
     
 
         Node creation

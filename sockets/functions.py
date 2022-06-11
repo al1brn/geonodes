@@ -24,8 +24,8 @@ from geonodes.sockets.functions import vector_wrap, wrap
 
 """ 
 
-genodes functions
------------------
+geonodes functions
+------------------
     > global functions
       
     <sub>go to index</sub>
@@ -151,13 +151,16 @@ def compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', ope
 
     Arguments
     ---------
-        ## Sockets
-        - a : Float
-        - b : Float
-        - epsilon : Float## Parameters
-        - data_type : 'FLOAT' in [FLOAT, INT, VECTOR, STRING, RGBA]
-        - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-        - operation : 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+
+
+        Sockets
+        -------
+            - a : Float
+                - b : Float
+                - epsilon : Float## Parameters
+                - data_type : 'FLOAT' in [FLOAT, INT, VECTOR, STRING, RGBA]
+                - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+                - operation : 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
 
 
     Node creation
@@ -190,9 +193,12 @@ def join_strings(*strings, delimiter=None):
 
     Arguments
     ---------
-        ## Sockets
-        - strings : *String
-        - delimiter : String
+
+
+        Sockets
+        -------
+            - strings : *String
+                - delimiter : String
 
 
     Node creation
@@ -257,10 +263,13 @@ def add(value0=None, value1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float## Fixed parameters
-        - operation : 'ADD'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float## Fixed parameters
+                - operation : 'ADD'
 
 
     Node creation
@@ -293,10 +302,13 @@ def subtract(value0=None, value1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float## Fixed parameters
-        - operation : 'SUBTRACT'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float## Fixed parameters
+                - operation : 'SUBTRACT'
 
 
     Node creation
@@ -329,10 +341,13 @@ def multiply(value0=None, value1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float## Fixed parameters
-        - operation : 'MULTIPLY'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float## Fixed parameters
+                - operation : 'MULTIPLY'
 
 
     Node creation
@@ -365,10 +380,13 @@ def divide(value0=None, value1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float## Fixed parameters
-        - operation : 'DIVIDE'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float## Fixed parameters
+                - operation : 'DIVIDE'
 
 
     Node creation
@@ -401,11 +419,14 @@ def multiply_add(value0=None, value1=None, value2=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float
-        - value2 : Float## Fixed parameters
-        - operation : 'MULTIPLY_ADD'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float
+                - value2 : Float## Fixed parameters
+                - operation : 'MULTIPLY_ADD'
 
 
     Node creation
@@ -438,10 +459,13 @@ def pow(value0=None, value1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float## Fixed parameters
-        - operation : 'POWER'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float## Fixed parameters
+                - operation : 'POWER'
 
 
     Node creation
@@ -474,10 +498,13 @@ def log(value0=None, value1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float## Fixed parameters
-        - operation : 'LOGARITHM'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float## Fixed parameters
+                - operation : 'LOGARITHM'
 
 
     Node creation
@@ -510,9 +537,12 @@ def sqrt(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'SQRT'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'SQRT'
 
 
     Node creation
@@ -545,9 +575,12 @@ def inverse_sqrt(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'INVERSE_SQRT'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'INVERSE_SQRT'
 
 
     Node creation
@@ -580,9 +613,12 @@ def abs(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'ABSOLUTE'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'ABSOLUTE'
 
 
     Node creation
@@ -615,9 +651,12 @@ def exp(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'EXPONENT'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'EXPONENT'
 
 
     Node creation
@@ -650,10 +689,13 @@ def min(value0=None, value1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float## Fixed parameters
-        - operation : 'MINIMUM'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float## Fixed parameters
+                - operation : 'MINIMUM'
 
 
     Node creation
@@ -686,10 +728,13 @@ def max(value0=None, value1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float## Fixed parameters
-        - operation : 'MAXIMUM'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float## Fixed parameters
+                - operation : 'MAXIMUM'
 
 
     Node creation
@@ -722,10 +767,13 @@ def less_than(value0=None, value1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float## Fixed parameters
-        - operation : 'LESS_THAN'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float## Fixed parameters
+                - operation : 'LESS_THAN'
 
 
     Node creation
@@ -758,10 +806,13 @@ def greater_than(value0=None, value1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float## Fixed parameters
-        - operation : 'GREATER_THAN'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float## Fixed parameters
+                - operation : 'GREATER_THAN'
 
 
     Node creation
@@ -794,9 +845,12 @@ def sign(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'SIGN'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'SIGN'
 
 
     Node creation
@@ -829,11 +883,14 @@ def compare(value0=None, value1=None, value2=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float
-        - value2 : Float## Fixed parameters
-        - operation : 'COMPARE'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float
+                - value2 : Float## Fixed parameters
+                - operation : 'COMPARE'
 
 
     Node creation
@@ -866,11 +923,14 @@ def smooth_min(value0=None, value1=None, value2=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float
-        - value2 : Float## Fixed parameters
-        - operation : 'SMOOTH_MIN'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float
+                - value2 : Float## Fixed parameters
+                - operation : 'SMOOTH_MIN'
 
 
     Node creation
@@ -903,11 +963,14 @@ def smooth_max(value0=None, value1=None, value2=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float
-        - value2 : Float## Fixed parameters
-        - operation : 'SMOOTH_MAX'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float
+                - value2 : Float## Fixed parameters
+                - operation : 'SMOOTH_MAX'
 
 
     Node creation
@@ -940,9 +1003,12 @@ def round(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'ROUND'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'ROUND'
 
 
     Node creation
@@ -975,9 +1041,12 @@ def floor(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'FLOOR'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'FLOOR'
 
 
     Node creation
@@ -1010,9 +1079,12 @@ def ceil(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'CEIL'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'CEIL'
 
 
     Node creation
@@ -1045,9 +1117,12 @@ def trunc(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'TRUNC'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'TRUNC'
 
 
     Node creation
@@ -1080,9 +1155,12 @@ def fract(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'FRACT'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'FRACT'
 
 
     Node creation
@@ -1115,10 +1193,13 @@ def modulo(value0=None, value1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float## Fixed parameters
-        - operation : 'MODULO'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float## Fixed parameters
+                - operation : 'MODULO'
 
 
     Node creation
@@ -1151,11 +1232,14 @@ def wrap(value0=None, value1=None, value2=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float
-        - value2 : Float## Fixed parameters
-        - operation : 'WRAP'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float
+                - value2 : Float## Fixed parameters
+                - operation : 'WRAP'
 
 
     Node creation
@@ -1188,10 +1272,13 @@ def snap(value0=None, value1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float## Fixed parameters
-        - operation : 'SNAP'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float## Fixed parameters
+                - operation : 'SNAP'
 
 
     Node creation
@@ -1224,10 +1311,13 @@ def pingpong(value0=None, value1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float## Fixed parameters
-        - operation : 'PINGPONG'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float## Fixed parameters
+                - operation : 'PINGPONG'
 
 
     Node creation
@@ -1260,9 +1350,12 @@ def sin(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'SINE'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'SINE'
 
 
     Node creation
@@ -1295,9 +1388,12 @@ def cos(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'COSINE'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'COSINE'
 
 
     Node creation
@@ -1330,9 +1426,12 @@ def tan(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'TANGENT'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'TANGENT'
 
 
     Node creation
@@ -1365,9 +1464,12 @@ def arcsin(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'ARCSINE'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'ARCSINE'
 
 
     Node creation
@@ -1400,9 +1502,12 @@ def arccos(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'ARCCOSINE'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'ARCCOSINE'
 
 
     Node creation
@@ -1435,9 +1540,12 @@ def arctan(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'ARCTANGENT'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'ARCTANGENT'
 
 
     Node creation
@@ -1470,10 +1578,13 @@ def arctan2(value0=None, value1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float
-        - value1 : Float## Fixed parameters
-        - operation : 'ARCTAN2'
+
+
+        Sockets
+        -------
+            - value0 : Float
+                - value1 : Float## Fixed parameters
+                - operation : 'ARCTAN2'
 
 
     Node creation
@@ -1506,9 +1617,12 @@ def sinh(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'SINH'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'SINH'
 
 
     Node creation
@@ -1541,9 +1655,12 @@ def cosh(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'COSH'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'COSH'
 
 
     Node creation
@@ -1576,9 +1693,12 @@ def tanh(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'TANH'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'TANH'
 
 
     Node creation
@@ -1611,9 +1731,12 @@ def radians(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'RADIANS'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'RADIANS'
 
 
     Node creation
@@ -1646,9 +1769,12 @@ def degrees(value0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - value0 : Float## Fixed parameters
-        - operation : 'DEGREES'
+
+
+        Sockets
+        -------
+            - value0 : Float## Fixed parameters
+                - operation : 'DEGREES'
 
 
     Node creation
@@ -1681,10 +1807,13 @@ def vector_add(vector0=None, vector1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
-        - operation : 'ADD'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - vector1 : Vector## Fixed parameters
+                - operation : 'ADD'
 
 
     Node creation
@@ -1717,10 +1846,13 @@ def vector_subtract(vector0=None, vector1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
-        - operation : 'SUBTRACT'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - vector1 : Vector## Fixed parameters
+                - operation : 'SUBTRACT'
 
 
     Node creation
@@ -1753,10 +1885,13 @@ def vector_multiply(vector0=None, vector1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
-        - operation : 'MULTIPLY'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - vector1 : Vector## Fixed parameters
+                - operation : 'MULTIPLY'
 
 
     Node creation
@@ -1789,10 +1924,13 @@ def vector_divide(vector0=None, vector1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
-        - operation : 'DIVIDE'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - vector1 : Vector## Fixed parameters
+                - operation : 'DIVIDE'
 
 
     Node creation
@@ -1825,11 +1963,14 @@ def vector_multiply_add(vector0=None, vector1=None, vector2=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - vector1 : Vector
-        - vector2 : Vector## Fixed parameters
-        - operation : 'MULTIPLY_ADD'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - vector1 : Vector
+                - vector2 : Vector## Fixed parameters
+                - operation : 'MULTIPLY_ADD'
 
 
     Node creation
@@ -1862,10 +2003,13 @@ def cross(vector0=None, vector1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
-        - operation : 'CROSS_PRODUCT'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - vector1 : Vector## Fixed parameters
+                - operation : 'CROSS_PRODUCT'
 
 
     Node creation
@@ -1898,10 +2042,13 @@ def project(vector0=None, vector1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
-        - operation : 'PROJECT'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - vector1 : Vector## Fixed parameters
+                - operation : 'PROJECT'
 
 
     Node creation
@@ -1934,10 +2081,13 @@ def reflect(vector0=None, vector1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
-        - operation : 'REFLECT'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - vector1 : Vector## Fixed parameters
+                - operation : 'REFLECT'
 
 
     Node creation
@@ -1970,11 +2120,14 @@ def refract(vector0=None, vector1=None, scale=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - vector1 : Vector
-        - scale : Float## Fixed parameters
-        - operation : 'REFRACT'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - vector1 : Vector
+                - scale : Float## Fixed parameters
+                - operation : 'REFRACT'
 
 
     Node creation
@@ -2007,11 +2160,14 @@ def faceforward(vector0=None, vector1=None, vector2=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - vector1 : Vector
-        - vector2 : Vector## Fixed parameters
-        - operation : 'FACEFORWARD'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - vector1 : Vector
+                - vector2 : Vector## Fixed parameters
+                - operation : 'FACEFORWARD'
 
 
     Node creation
@@ -2044,10 +2200,13 @@ def dot(vector0=None, vector1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
-        - operation : 'DOT_PRODUCT'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - vector1 : Vector## Fixed parameters
+                - operation : 'DOT_PRODUCT'
 
 
     Node creation
@@ -2080,10 +2239,13 @@ def distance(vector0=None, vector1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
-        - operation : 'DISTANCE'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - vector1 : Vector## Fixed parameters
+                - operation : 'DISTANCE'
 
 
     Node creation
@@ -2116,9 +2278,12 @@ def length(vector0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector## Fixed parameters
-        - operation : 'LENGTH'
+
+
+        Sockets
+        -------
+            - vector0 : Vector## Fixed parameters
+                - operation : 'LENGTH'
 
 
     Node creation
@@ -2151,10 +2316,13 @@ def scale(vector0=None, scale=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - scale : Float## Fixed parameters
-        - operation : 'SCALE'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - scale : Float## Fixed parameters
+                - operation : 'SCALE'
 
 
     Node creation
@@ -2187,9 +2355,12 @@ def normalize(vector0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector## Fixed parameters
-        - operation : 'NORMALIZE'
+
+
+        Sockets
+        -------
+            - vector0 : Vector## Fixed parameters
+                - operation : 'NORMALIZE'
 
 
     Node creation
@@ -2222,9 +2393,12 @@ def vector_absolute(vector0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector## Fixed parameters
-        - operation : 'ABSOLUTE'
+
+
+        Sockets
+        -------
+            - vector0 : Vector## Fixed parameters
+                - operation : 'ABSOLUTE'
 
 
     Node creation
@@ -2257,10 +2431,13 @@ def vector_min(vector0=None, vector1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
-        - operation : 'MINIMUM'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - vector1 : Vector## Fixed parameters
+                - operation : 'MINIMUM'
 
 
     Node creation
@@ -2293,10 +2470,13 @@ def vector_max(vector0=None, vector1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
-        - operation : 'MAXIMUM'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - vector1 : Vector## Fixed parameters
+                - operation : 'MAXIMUM'
 
 
     Node creation
@@ -2329,9 +2509,12 @@ def vector_floor(vector0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector## Fixed parameters
-        - operation : 'FLOOR'
+
+
+        Sockets
+        -------
+            - vector0 : Vector## Fixed parameters
+                - operation : 'FLOOR'
 
 
     Node creation
@@ -2364,9 +2547,12 @@ def vector_ceil(vector0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector## Fixed parameters
-        - operation : 'CEIL'
+
+
+        Sockets
+        -------
+            - vector0 : Vector## Fixed parameters
+                - operation : 'CEIL'
 
 
     Node creation
@@ -2399,9 +2585,12 @@ def fraction(vector0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector## Fixed parameters
-        - operation : 'FRACTION'
+
+
+        Sockets
+        -------
+            - vector0 : Vector## Fixed parameters
+                - operation : 'FRACTION'
 
 
     Node creation
@@ -2434,10 +2623,13 @@ def vector_modulo(vector0=None, vector1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
-        - operation : 'MODULO'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - vector1 : Vector## Fixed parameters
+                - operation : 'MODULO'
 
 
     Node creation
@@ -2470,11 +2662,14 @@ def vector_wrap(vector0=None, vector1=None, vector2=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - vector1 : Vector
-        - vector2 : Vector## Fixed parameters
-        - operation : 'WRAP'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - vector1 : Vector
+                - vector2 : Vector## Fixed parameters
+                - operation : 'WRAP'
 
 
     Node creation
@@ -2507,10 +2702,13 @@ def vector_snap(vector0=None, vector1=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
-        - operation : 'SNAP'
+
+
+        Sockets
+        -------
+            - vector0 : Vector
+                - vector1 : Vector## Fixed parameters
+                - operation : 'SNAP'
 
 
     Node creation
@@ -2543,9 +2741,12 @@ def vector_sin(vector0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector## Fixed parameters
-        - operation : 'SINE'
+
+
+        Sockets
+        -------
+            - vector0 : Vector## Fixed parameters
+                - operation : 'SINE'
 
 
     Node creation
@@ -2578,9 +2779,12 @@ def vector_cos(vector0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector## Fixed parameters
-        - operation : 'COSINE'
+
+
+        Sockets
+        -------
+            - vector0 : Vector## Fixed parameters
+                - operation : 'COSINE'
 
 
     Node creation
@@ -2613,9 +2817,12 @@ def vector_tan(vector0=None):
 
     Arguments
     ---------
-        ## Sockets
-        - vector0 : Vector## Fixed parameters
-        - operation : 'TANGENT'
+
+
+        Sockets
+        -------
+            - vector0 : Vector## Fixed parameters
+                - operation : 'TANGENT'
 
 
     Node creation
@@ -2648,12 +2855,15 @@ def color_mix(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'MIX'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'MIX'
 
 
     Node creation
@@ -2686,12 +2896,15 @@ def color_darken(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'DARKEN'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'DARKEN'
 
 
     Node creation
@@ -2724,12 +2937,15 @@ def color_multiply(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'MULTIPLY'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'MULTIPLY'
 
 
     Node creation
@@ -2762,12 +2978,15 @@ def color_burn(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'BURN'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'BURN'
 
 
     Node creation
@@ -2800,12 +3019,15 @@ def color_lighten(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'LIGHTEN'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'LIGHTEN'
 
 
     Node creation
@@ -2838,12 +3060,15 @@ def color_screen(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'SCREEN'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'SCREEN'
 
 
     Node creation
@@ -2876,12 +3101,15 @@ def color_dodge(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'DODGE'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'DODGE'
 
 
     Node creation
@@ -2914,12 +3142,15 @@ def color_add(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'ADD'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'ADD'
 
 
     Node creation
@@ -2952,12 +3183,15 @@ def color_overlay(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'OVERLAY'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'OVERLAY'
 
 
     Node creation
@@ -2990,12 +3224,15 @@ def color_soft_light(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'SOFT_LIGHT'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'SOFT_LIGHT'
 
 
     Node creation
@@ -3028,12 +3265,15 @@ def color_linear_light(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'LINEAR_LIGHT'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'LINEAR_LIGHT'
 
 
     Node creation
@@ -3066,12 +3306,15 @@ def color_difference(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'DIFFERENCE'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'DIFFERENCE'
 
 
     Node creation
@@ -3104,12 +3347,15 @@ def color_subtract(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'SUBTRACT'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'SUBTRACT'
 
 
     Node creation
@@ -3142,12 +3388,15 @@ def color_divide(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'DIVIDE'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'DIVIDE'
 
 
     Node creation
@@ -3180,12 +3429,15 @@ def color_hue(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'HUE'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'HUE'
 
 
     Node creation
@@ -3218,12 +3470,15 @@ def color_saturation(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'SATURATION'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'SATURATION'
 
 
     Node creation
@@ -3256,12 +3511,15 @@ def color_mix_color(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'COLOR'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'COLOR'
 
 
     Node creation
@@ -3294,12 +3552,15 @@ def color_value(color1=None, color2=None, fac=None, use_alpha=False):
 
     Arguments
     ---------
-        ## Sockets
-        - color1 : Color
-        - color2 : Color
-        - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
-        - blend_type : 'VALUE'
+
+
+        Sockets
+        -------
+            - color1 : Color
+                - color2 : Color
+                - fac : Float## Parameters
+                - use_alpha : False## Fixed parameters
+                - blend_type : 'VALUE'
 
 
     Node creation

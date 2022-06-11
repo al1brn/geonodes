@@ -22,7 +22,7 @@
 - [Data socket Texture](/docs/sockets/Texture.md)
 - [Data socket Vector](/docs/sockets/Vector.md)
 - [Data socket Volume](/docs/sockets/Volume.md)
-- [genodes functions](/docs/sockets/functions.md)
+- [geonodes functions](/docs/sockets/functions.md)
 
 ## Nodes
 

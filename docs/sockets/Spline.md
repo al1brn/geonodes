@@ -57,7 +57,9 @@ v = spline.capture_handle_positions(self, relative, domain='CURVE')
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - relative : Boolean## Parameters
 - self
 - domain:'CURVE'
@@ -88,7 +90,9 @@ v = spline.capture_tangent(self, domain='CURVE')
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 - domain:'CURVE'
 
@@ -118,7 +122,9 @@ v = spline.capture_tilt(self, domain='CURVE')
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 - domain:'CURVE'
 
@@ -148,7 +154,9 @@ v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE'
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - start_size : Integer
 - end_size : Integer## Parameters
 - self
@@ -180,7 +188,9 @@ v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE'
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
 - mode : {'LEFT', 'RIGHT'}
@@ -212,7 +222,9 @@ v = spline.capture_cyclic(self, domain='CURVE')
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 - domain:'CURVE'
 
@@ -242,7 +254,9 @@ v = spline.capture_length(self, domain='CURVE')
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 - domain:'CURVE'
 
@@ -272,7 +286,9 @@ v = spline.capture_parameter(self, domain='CURVE')
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 - domain:'CURVE'
 
@@ -302,7 +318,9 @@ v = spline.capture_resolution(self, domain='CURVE')
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 - domain:'CURVE'
 
@@ -332,7 +350,9 @@ v = spline.spline_ID(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -361,7 +381,9 @@ v = spline.spline_index(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -390,7 +412,9 @@ v = spline.spline_position(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -419,7 +443,9 @@ v = spline.left_handle_position(self, relative)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - relative : Boolean## Parameters
 - self
 
@@ -449,7 +475,9 @@ v = spline.right_handle_position(self, relative)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - relative : Boolean## Parameters
 - self
 
@@ -479,7 +507,9 @@ v = spline.tangent(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -508,7 +538,9 @@ v = spline.tilt(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -537,7 +569,9 @@ v = spline.endpoint_selection(self, start_size, end_size)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - start_size : Integer
 - end_size : Integer## Parameters
 - self
@@ -568,7 +602,9 @@ v = spline.handle_type_selection(self, handle_type, mode)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
 - mode : {'LEFT', 'RIGHT'}
@@ -599,7 +635,9 @@ v = spline.cyclic(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -628,7 +666,9 @@ v = spline.length(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -657,7 +697,9 @@ v = spline.point_count(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -686,7 +728,9 @@ v = spline.factor(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -715,7 +759,9 @@ v = spline.parameter_length(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -744,7 +790,9 @@ v = spline.parameter_index(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -773,7 +821,9 @@ v = spline.resolution(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -802,7 +852,9 @@ v = spline.set_cyclic(selection, cyclic)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)
 - selection : Boolean
 - cyclic : Boolean
@@ -833,7 +885,9 @@ v = spline.set_resolution(selection, resolution)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)
 - selection : Boolean
 - resolution : Integer

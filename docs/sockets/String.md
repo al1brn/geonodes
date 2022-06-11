@@ -38,7 +38,9 @@ v = string.length
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - string : String (self)## Fixed parameters
 - label:f"{self.node_chain_label}.length"
 
@@ -68,7 +70,9 @@ v = string.switch(switch0, true)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - false : String (self)
 - switch0 : Boolean
 - true : String## Fixed parameters
@@ -100,7 +104,9 @@ v = string.element(b)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : String (self)
 - b : String## Fixed parameters
 - data_type : 'STRING'
@@ -133,7 +139,9 @@ v = string.length(b)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : String (self)
 - b : String## Fixed parameters
 - data_type : 'STRING'
@@ -166,7 +174,9 @@ v = string.average(b)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : String (self)
 - b : String## Fixed parameters
 - data_type : 'STRING'
@@ -199,7 +209,9 @@ v = string.dot_product(b)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : String (self)
 - b : String## Fixed parameters
 - data_type : 'STRING'
@@ -232,7 +244,9 @@ v = string.direction(b)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : String (self)
 - b : String## Fixed parameters
 - data_type : 'STRING'
@@ -265,7 +279,9 @@ v = string.join(strings_1, strings_2, strings_3, delimiter)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - strings : *String (self)
 - delimiter : String
 
@@ -295,7 +311,9 @@ v = string.replace(find, replace)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - string : String (self)
 - find : String
 - replace : String
@@ -326,7 +344,9 @@ v = string.slice(position, length)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - string : String (self)
 - position : Integer
 - length : Integer
@@ -357,7 +377,9 @@ v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_b
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - string : String (self)
 - size : Float
 - character_spacing : Float

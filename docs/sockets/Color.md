@@ -63,7 +63,9 @@ v = Color.Combine(r, g, b)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - r : Float
 - g : Float
 - b : Float
@@ -94,7 +96,9 @@ v = color.separate
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - image : Color (self)## Fixed parameters
 - label:f"{self.node_chain_label}.separate"
 
@@ -124,7 +128,9 @@ v = color.r
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - image : Color (self)## Fixed parameters
 - label:f"{self.node_chain_label}.r"
 
@@ -154,7 +160,9 @@ v = color.g
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - image : Color (self)## Fixed parameters
 - label:f"{self.node_chain_label}.g"
 
@@ -184,7 +192,9 @@ v = color.b
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - image : Color (self)## Fixed parameters
 - label:f"{self.node_chain_label}.b"
 
@@ -214,7 +224,9 @@ v = color.transfer_attribute(source, source_position, index, domain, mapping)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - attribute : Color (self)
 - source : Geometry
 - source_position : Vector
@@ -249,7 +261,9 @@ v = color.capture_attribute(geometry, domain)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value : Color (self)
 - geometry : Geometry## Parameters
 - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
@@ -281,7 +295,9 @@ v = color.field_at_index(index, domain)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value : Color (self)
 - index : Integer## Parameters
 - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
@@ -313,7 +329,9 @@ v = color.raycast(target_geometry, source_position, ray_direction, ray_length, m
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - attribute : Color (self)
 - target_geometry : Geometry
 - source_position : Vector
@@ -348,7 +366,9 @@ v = color.equal(b, epsilon)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : Color (self)
 - b : Color
 - epsilon : Float## Fixed parameters
@@ -382,7 +402,9 @@ v = color.not_equal(b, epsilon)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : Color (self)
 - b : Color
 - epsilon : Float## Fixed parameters
@@ -416,7 +438,9 @@ v = color.brighter(b)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : Color (self)
 - b : Color## Fixed parameters
 - data_type : 'RGBA'
@@ -449,7 +473,9 @@ v = color.darker(b)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : Color (self)
 - b : Color## Fixed parameters
 - data_type : 'RGBA'
@@ -482,7 +508,9 @@ v = color.mix(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -515,7 +543,9 @@ v = color.darken(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -548,7 +578,9 @@ v = color.multiply(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -581,7 +613,9 @@ v = color.burn(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -614,7 +648,9 @@ v = color.lighten(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -647,7 +683,9 @@ v = color.screen(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -680,7 +718,9 @@ v = color.dodge(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -713,7 +753,9 @@ v = color.add(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -746,7 +788,9 @@ v = color.overlay(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -779,7 +823,9 @@ v = color.soft_light(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -812,7 +858,9 @@ v = color.linear_light(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -845,7 +893,9 @@ v = color.difference(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -878,7 +928,9 @@ v = color.subtract(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -911,7 +963,9 @@ v = color.divide(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -944,7 +998,9 @@ v = color.hue(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -977,7 +1033,9 @@ v = color.saturation(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -1010,7 +1068,9 @@ v = color.mix_color(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -1043,7 +1103,9 @@ v = color.value(color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
@@ -1076,7 +1138,9 @@ v = color.curves(fac)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color : Color (self)
 - fac : Float
 
@@ -1106,7 +1170,9 @@ v = color.mix(color2, fac, blend_type, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters

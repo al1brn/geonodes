@@ -25,7 +25,9 @@ v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_m
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - volume : Volume (self)
 - voxel_size : Float
 - voxel_amount : Float

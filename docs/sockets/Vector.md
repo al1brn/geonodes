@@ -81,7 +81,9 @@ v = Vector.Random(min, max, ID, seed)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - min : Vector
 - max : Vector
 - ID : Integer
@@ -114,7 +116,9 @@ v = Vector.Combine(x, y, z)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - x : Float
 - y : Float
 - z : Float
@@ -145,7 +149,9 @@ v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - rotation : Vector
 - factor : Float
 - vector : Vector## Parameters
@@ -178,7 +184,9 @@ v = vector.separate
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector : Vector (self)## Fixed parameters
 - label:f"{self.node_chain_label}.separate"
 
@@ -208,7 +216,9 @@ v = vector.x
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector : Vector (self)## Fixed parameters
 - label:f"{self.node_chain_label}.x"
 
@@ -238,7 +248,9 @@ v = vector.y
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector : Vector (self)## Fixed parameters
 - label:f"{self.node_chain_label}.y"
 
@@ -268,7 +280,9 @@ v = vector.z
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector : Vector (self)## Fixed parameters
 - label:f"{self.node_chain_label}.z"
 
@@ -298,7 +312,9 @@ v = vector.accumulate_field(group_index, domain)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value : Vector (self)
 - group_index : Integer## Parameters
 - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
@@ -330,7 +346,9 @@ v = vector.attribute_statistic(geometry, selection, domain)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - attribute : Vector (self)
 - geometry : Geometry
 - selection : Boolean## Parameters
@@ -363,7 +381,9 @@ v = vector.transfer_attribute(source, source_position, index, domain, mapping)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - attribute : Vector (self)
 - source : Geometry
 - source_position : Vector
@@ -398,7 +418,9 @@ v = vector.capture_attribute(geometry, domain)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value : Vector (self)
 - geometry : Geometry## Parameters
 - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
@@ -430,7 +452,9 @@ v = vector.field_at_index(index, domain)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value : Vector (self)
 - index : Integer## Parameters
 - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
@@ -462,7 +486,9 @@ v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, 
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - attribute : Vector (self)
 - target_geometry : Geometry
 - source_position : Vector
@@ -497,7 +523,9 @@ v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_ty
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector : Vector (self)
 - from_min : Vector
 - from_max : Vector
@@ -533,7 +561,9 @@ v = vector.less_than(b, c, angle, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : Vector (self)
 - b : Vector
 - c : Float
@@ -568,7 +598,9 @@ v = vector.less_equal(b, c, angle, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : Vector (self)
 - b : Vector
 - c : Float
@@ -603,7 +635,9 @@ v = vector.greater_than(b, c, angle, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : Vector (self)
 - b : Vector
 - c : Float
@@ -638,7 +672,9 @@ v = vector.greater_equal(b, c, angle, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : Vector (self)
 - b : Vector
 - c : Float
@@ -673,7 +709,9 @@ v = vector.equal(b, c, angle, epsilon, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : Vector (self)
 - b : Vector
 - c : Float
@@ -709,7 +747,9 @@ v = vector.not_equal(b, c, angle, epsilon, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : Vector (self)
 - b : Vector
 - c : Float
@@ -745,7 +785,9 @@ v = vector.add(vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - vector1 : Vector## Fixed parameters
 - operation : 'ADD'
@@ -776,7 +818,9 @@ v = vector.subtract(vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - vector1 : Vector## Fixed parameters
 - operation : 'SUBTRACT'
@@ -807,7 +851,9 @@ v = vector.multiply(vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - vector1 : Vector## Fixed parameters
 - operation : 'MULTIPLY'
@@ -838,7 +884,9 @@ v = vector.divide(vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - vector1 : Vector## Fixed parameters
 - operation : 'DIVIDE'
@@ -869,7 +917,9 @@ v = vector.multiply_add(vector1, vector2)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - vector1 : Vector
 - vector2 : Vector## Fixed parameters
@@ -901,7 +951,9 @@ v = vector.cross(vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - vector1 : Vector## Fixed parameters
 - operation : 'CROSS_PRODUCT'
@@ -932,7 +984,9 @@ v = vector.project(vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - vector1 : Vector## Fixed parameters
 - operation : 'PROJECT'
@@ -963,7 +1017,9 @@ v = vector.reflect(vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - vector1 : Vector## Fixed parameters
 - operation : 'REFLECT'
@@ -994,7 +1050,9 @@ v = vector.refract(vector1, scale)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - vector1 : Vector
 - scale : Float## Fixed parameters
@@ -1026,7 +1084,9 @@ v = vector.faceforward(vector1, vector2)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - vector1 : Vector
 - vector2 : Vector## Fixed parameters
@@ -1058,7 +1118,9 @@ v = vector.dot(vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - vector1 : Vector## Fixed parameters
 - operation : 'DOT_PRODUCT'
@@ -1089,7 +1151,9 @@ v = vector.distance(vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - vector1 : Vector## Fixed parameters
 - operation : 'DISTANCE'
@@ -1120,7 +1184,9 @@ v = vector.length()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)## Fixed parameters
 - operation : 'LENGTH'
 
@@ -1150,7 +1216,9 @@ v = vector.scale(scale)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - scale : Float## Fixed parameters
 - operation : 'SCALE'
@@ -1181,7 +1249,9 @@ v = vector.normalize()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)## Fixed parameters
 - operation : 'NORMALIZE'
 
@@ -1211,7 +1281,9 @@ v = vector.absolute()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)## Fixed parameters
 - operation : 'ABSOLUTE'
 
@@ -1241,7 +1313,9 @@ v = vector.min(vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - vector1 : Vector## Fixed parameters
 - operation : 'MINIMUM'
@@ -1272,7 +1346,9 @@ v = vector.max(vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - vector1 : Vector## Fixed parameters
 - operation : 'MAXIMUM'
@@ -1303,7 +1379,9 @@ v = vector.floor()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)## Fixed parameters
 - operation : 'FLOOR'
 
@@ -1333,7 +1411,9 @@ v = vector.ceil()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)## Fixed parameters
 - operation : 'CEIL'
 
@@ -1363,7 +1443,9 @@ v = vector.fraction()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)## Fixed parameters
 - operation : 'FRACTION'
 
@@ -1393,7 +1475,9 @@ v = vector.modulo(vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - vector1 : Vector## Fixed parameters
 - operation : 'MODULO'
@@ -1424,7 +1508,9 @@ v = vector.wrap(vector1, vector2)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - vector1 : Vector
 - vector2 : Vector## Fixed parameters
@@ -1456,7 +1542,9 @@ v = vector.snap(vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)
 - vector1 : Vector## Fixed parameters
 - operation : 'SNAP'
@@ -1487,7 +1575,9 @@ v = vector.sin()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)## Fixed parameters
 - operation : 'SINE'
 
@@ -1517,7 +1607,9 @@ v = vector.cos()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)## Fixed parameters
 - operation : 'COSINE'
 
@@ -1547,7 +1639,9 @@ v = vector.tan()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector (self)## Fixed parameters
 - operation : 'TANGENT'
 
@@ -1577,7 +1671,9 @@ v = vector.curves(fac)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector : Vector (self)
 - fac : Float
 
@@ -1607,7 +1703,9 @@ v = vector.align_to_vector(factor, vector, axis, pivot_axis)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - rotation : Vector (self)
 - factor : Float
 - vector : Vector## Parameters
@@ -1640,7 +1738,9 @@ v = vector.rotate_euler(rotate_by, space)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - rotation : Vector (self)
 - rotate_by : Vector## Parameters
 - space : 'OBJECT' in [OBJECT, LOCAL]
@@ -1671,7 +1771,9 @@ v = vector.rotate(center, axis, angle, rotation, invert, rotation_type)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector : Vector (self)
 - center : Vector
 - axis : Vector

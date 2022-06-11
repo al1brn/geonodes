@@ -26,7 +26,9 @@ v = material.switch(switch1, true)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - false : Material (self)
 - switch1 : Boolean
 - true : Material## Fixed parameters
@@ -58,7 +60,9 @@ v = material.selection()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - material : Material (self)
 
 ### Node creation

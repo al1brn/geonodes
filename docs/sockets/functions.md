@@ -1,5 +1,5 @@
 
-# genodes functions
+# geonodes functions
 
 > global functions
   
@@ -120,7 +120,9 @@ v = functions.compare(a, b, epsilon, data_type, mode, operation)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : Float
 - b : Float
 - epsilon : Float## Parameters
@@ -154,7 +156,9 @@ v = functions.join_strings(strings_1, strings_2, strings_3, delimiter)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - strings : *String
 - delimiter : String
 
@@ -211,7 +215,9 @@ v = functions.add(value0, value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float## Fixed parameters
 - operation : 'ADD'
@@ -242,7 +248,9 @@ v = functions.subtract(value0, value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float## Fixed parameters
 - operation : 'SUBTRACT'
@@ -273,7 +281,9 @@ v = functions.multiply(value0, value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float## Fixed parameters
 - operation : 'MULTIPLY'
@@ -304,7 +314,9 @@ v = functions.divide(value0, value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float## Fixed parameters
 - operation : 'DIVIDE'
@@ -335,7 +347,9 @@ v = functions.multiply_add(value0, value1, value2)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float
 - value2 : Float## Fixed parameters
@@ -367,7 +381,9 @@ v = functions.pow(value0, value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float## Fixed parameters
 - operation : 'POWER'
@@ -398,7 +414,9 @@ v = functions.log(value0, value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float## Fixed parameters
 - operation : 'LOGARITHM'
@@ -429,7 +447,9 @@ v = functions.sqrt(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'SQRT'
 
@@ -459,7 +479,9 @@ v = functions.inverse_sqrt(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'INVERSE_SQRT'
 
@@ -489,7 +511,9 @@ v = functions.abs(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'ABSOLUTE'
 
@@ -519,7 +543,9 @@ v = functions.exp(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'EXPONENT'
 
@@ -549,7 +575,9 @@ v = functions.min(value0, value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float## Fixed parameters
 - operation : 'MINIMUM'
@@ -580,7 +608,9 @@ v = functions.max(value0, value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float## Fixed parameters
 - operation : 'MAXIMUM'
@@ -611,7 +641,9 @@ v = functions.less_than(value0, value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float## Fixed parameters
 - operation : 'LESS_THAN'
@@ -642,7 +674,9 @@ v = functions.greater_than(value0, value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float## Fixed parameters
 - operation : 'GREATER_THAN'
@@ -673,7 +707,9 @@ v = functions.sign(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'SIGN'
 
@@ -703,7 +739,9 @@ v = functions.compare(value0, value1, value2)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float
 - value2 : Float## Fixed parameters
@@ -735,7 +773,9 @@ v = functions.smooth_min(value0, value1, value2)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float
 - value2 : Float## Fixed parameters
@@ -767,7 +807,9 @@ v = functions.smooth_max(value0, value1, value2)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float
 - value2 : Float## Fixed parameters
@@ -799,7 +841,9 @@ v = functions.round(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'ROUND'
 
@@ -829,7 +873,9 @@ v = functions.floor(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'FLOOR'
 
@@ -859,7 +905,9 @@ v = functions.ceil(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'CEIL'
 
@@ -889,7 +937,9 @@ v = functions.trunc(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'TRUNC'
 
@@ -919,7 +969,9 @@ v = functions.fract(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'FRACT'
 
@@ -949,7 +1001,9 @@ v = functions.modulo(value0, value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float## Fixed parameters
 - operation : 'MODULO'
@@ -980,7 +1034,9 @@ v = functions.wrap(value0, value1, value2)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float
 - value2 : Float## Fixed parameters
@@ -1012,7 +1068,9 @@ v = functions.snap(value0, value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float## Fixed parameters
 - operation : 'SNAP'
@@ -1043,7 +1101,9 @@ v = functions.pingpong(value0, value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float## Fixed parameters
 - operation : 'PINGPONG'
@@ -1074,7 +1134,9 @@ v = functions.sin(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'SINE'
 
@@ -1104,7 +1166,9 @@ v = functions.cos(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'COSINE'
 
@@ -1134,7 +1198,9 @@ v = functions.tan(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'TANGENT'
 
@@ -1164,7 +1230,9 @@ v = functions.arcsin(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'ARCSINE'
 
@@ -1194,7 +1262,9 @@ v = functions.arccos(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'ARCCOSINE'
 
@@ -1224,7 +1294,9 @@ v = functions.arctan(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'ARCTANGENT'
 
@@ -1254,7 +1326,9 @@ v = functions.arctan2(value0, value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float
 - value1 : Float## Fixed parameters
 - operation : 'ARCTAN2'
@@ -1285,7 +1359,9 @@ v = functions.sinh(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'SINH'
 
@@ -1315,7 +1391,9 @@ v = functions.cosh(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'COSH'
 
@@ -1345,7 +1423,9 @@ v = functions.tanh(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'TANH'
 
@@ -1375,7 +1455,9 @@ v = functions.radians(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'RADIANS'
 
@@ -1405,7 +1487,9 @@ v = functions.degrees(value0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float## Fixed parameters
 - operation : 'DEGREES'
 
@@ -1435,7 +1519,9 @@ v = functions.vector_add(vector0, vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - vector1 : Vector## Fixed parameters
 - operation : 'ADD'
@@ -1466,7 +1552,9 @@ v = functions.vector_subtract(vector0, vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - vector1 : Vector## Fixed parameters
 - operation : 'SUBTRACT'
@@ -1497,7 +1585,9 @@ v = functions.vector_multiply(vector0, vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - vector1 : Vector## Fixed parameters
 - operation : 'MULTIPLY'
@@ -1528,7 +1618,9 @@ v = functions.vector_divide(vector0, vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - vector1 : Vector## Fixed parameters
 - operation : 'DIVIDE'
@@ -1559,7 +1651,9 @@ v = functions.vector_multiply_add(vector0, vector1, vector2)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - vector1 : Vector
 - vector2 : Vector## Fixed parameters
@@ -1591,7 +1685,9 @@ v = functions.cross(vector0, vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - vector1 : Vector## Fixed parameters
 - operation : 'CROSS_PRODUCT'
@@ -1622,7 +1718,9 @@ v = functions.project(vector0, vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - vector1 : Vector## Fixed parameters
 - operation : 'PROJECT'
@@ -1653,7 +1751,9 @@ v = functions.reflect(vector0, vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - vector1 : Vector## Fixed parameters
 - operation : 'REFLECT'
@@ -1684,7 +1784,9 @@ v = functions.refract(vector0, vector1, scale)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - vector1 : Vector
 - scale : Float## Fixed parameters
@@ -1716,7 +1818,9 @@ v = functions.faceforward(vector0, vector1, vector2)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - vector1 : Vector
 - vector2 : Vector## Fixed parameters
@@ -1748,7 +1852,9 @@ v = functions.dot(vector0, vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - vector1 : Vector## Fixed parameters
 - operation : 'DOT_PRODUCT'
@@ -1779,7 +1885,9 @@ v = functions.distance(vector0, vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - vector1 : Vector## Fixed parameters
 - operation : 'DISTANCE'
@@ -1810,7 +1918,9 @@ v = functions.length(vector0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector## Fixed parameters
 - operation : 'LENGTH'
 
@@ -1840,7 +1950,9 @@ v = functions.scale(vector0, scale)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - scale : Float## Fixed parameters
 - operation : 'SCALE'
@@ -1871,7 +1983,9 @@ v = functions.normalize(vector0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector## Fixed parameters
 - operation : 'NORMALIZE'
 
@@ -1901,7 +2015,9 @@ v = functions.vector_absolute(vector0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector## Fixed parameters
 - operation : 'ABSOLUTE'
 
@@ -1931,7 +2047,9 @@ v = functions.vector_min(vector0, vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - vector1 : Vector## Fixed parameters
 - operation : 'MINIMUM'
@@ -1962,7 +2080,9 @@ v = functions.vector_max(vector0, vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - vector1 : Vector## Fixed parameters
 - operation : 'MAXIMUM'
@@ -1993,7 +2113,9 @@ v = functions.vector_floor(vector0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector## Fixed parameters
 - operation : 'FLOOR'
 
@@ -2023,7 +2145,9 @@ v = functions.vector_ceil(vector0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector## Fixed parameters
 - operation : 'CEIL'
 
@@ -2053,7 +2177,9 @@ v = functions.fraction(vector0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector## Fixed parameters
 - operation : 'FRACTION'
 
@@ -2083,7 +2209,9 @@ v = functions.vector_modulo(vector0, vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - vector1 : Vector## Fixed parameters
 - operation : 'MODULO'
@@ -2114,7 +2242,9 @@ v = functions.vector_wrap(vector0, vector1, vector2)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - vector1 : Vector
 - vector2 : Vector## Fixed parameters
@@ -2146,7 +2276,9 @@ v = functions.vector_snap(vector0, vector1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector
 - vector1 : Vector## Fixed parameters
 - operation : 'SNAP'
@@ -2177,7 +2309,9 @@ v = functions.vector_sin(vector0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector## Fixed parameters
 - operation : 'SINE'
 
@@ -2207,7 +2341,9 @@ v = functions.vector_cos(vector0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector## Fixed parameters
 - operation : 'COSINE'
 
@@ -2237,7 +2373,9 @@ v = functions.vector_tan(vector0)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector0 : Vector## Fixed parameters
 - operation : 'TANGENT'
 
@@ -2267,7 +2405,9 @@ v = functions.color_mix(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters
@@ -2300,7 +2440,9 @@ v = functions.color_darken(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters
@@ -2333,7 +2475,9 @@ v = functions.color_multiply(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters
@@ -2366,7 +2510,9 @@ v = functions.color_burn(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters
@@ -2399,7 +2545,9 @@ v = functions.color_lighten(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters
@@ -2432,7 +2580,9 @@ v = functions.color_screen(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters
@@ -2465,7 +2615,9 @@ v = functions.color_dodge(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters
@@ -2498,7 +2650,9 @@ v = functions.color_add(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters
@@ -2531,7 +2685,9 @@ v = functions.color_overlay(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters
@@ -2564,7 +2720,9 @@ v = functions.color_soft_light(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters
@@ -2597,7 +2755,9 @@ v = functions.color_linear_light(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters
@@ -2630,7 +2790,9 @@ v = functions.color_difference(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters
@@ -2663,7 +2825,9 @@ v = functions.color_subtract(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters
@@ -2696,7 +2860,9 @@ v = functions.color_divide(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters
@@ -2729,7 +2895,9 @@ v = functions.color_hue(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters
@@ -2762,7 +2930,9 @@ v = functions.color_saturation(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters
@@ -2795,7 +2965,9 @@ v = functions.color_mix_color(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters
@@ -2828,7 +3000,9 @@ v = functions.color_value(color1, color2, fac, use_alpha)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - color1 : Color
 - color2 : Color
 - fac : Float## Parameters

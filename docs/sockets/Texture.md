@@ -38,7 +38,9 @@ v = Texture.Brick(vector, color1, color2, mortar, scale, mortar_size, mortar_smo
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector : Vector
 - color1 : Color
 - color2 : Color
@@ -80,7 +82,9 @@ v = Texture.Checker(vector, color1, color2, scale)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector : Vector
 - color1 : Color
 - color2 : Color
@@ -112,7 +116,9 @@ v = Texture.Gradient(vector, gradient_type)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector : Vector## Parameters
 - gradient_type : 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
 
@@ -142,7 +148,9 @@ v = Texture.Magic(vector, scale, distortion, turbulence_depth)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector : Vector
 - scale : Float
 - distortion : Float## Parameters
@@ -174,7 +182,9 @@ v = Texture.Musgrave(vector, w, scale, detail, dimension, lacunarity, offset, ga
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector : Vector
 - w : Float
 - scale : Float
@@ -212,7 +222,9 @@ v = Texture.Noise(vector, w, scale, detail, roughness, distortion, noise_dimensi
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector : Vector
 - w : Float
 - scale : Float
@@ -247,7 +259,9 @@ v = Texture.Voronoi(vector, w, scale, smoothness, exponent, randomness, distance
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector : Vector
 - w : Float
 - scale : Float
@@ -284,7 +298,9 @@ v = Texture.Wave(vector, scale, distortion, detail, detail_scale, detail_roughne
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector : Vector
 - scale : Float
 - distortion : Float
@@ -323,7 +339,9 @@ v = Texture.WhiteNoise(vector, w, noise_dimensions)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - vector : Vector
 - w : Float## Parameters
 - noise_dimensions : '3D' in [1D, 2D, 3D, 4D]
@@ -354,7 +372,9 @@ v = Texture.Image(image, vector, frame, extension, interpolation)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - image : Image
 - vector : Vector
 - frame : Integer## Parameters
@@ -387,7 +407,9 @@ v = texture.switch(switch1, true)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - false : Texture (self)
 - switch1 : Boolean
 - true : Texture## Fixed parameters

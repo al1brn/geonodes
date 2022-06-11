@@ -52,8 +52,11 @@ class Instances(gn.Geometry):
 
         Arguments
         ---------
-            ## Parameters
-            - self
+    
+
+            Parameters
+            ----------
+                - self
     
 
         Node creation
@@ -90,12 +93,15 @@ class Instances(gn.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - instances : Instances (self)
-            - selection : Boolean
-            - rotation : Vector
-            - pivot_point : Vector
-            - local_space : Boolean
+    
+
+            Sockets
+            -------
+                - instances : Instances (self)
+                    - selection : Boolean
+                    - rotation : Vector
+                    - pivot_point : Vector
+                    - local_space : Boolean
     
 
         Node creation
@@ -128,12 +134,15 @@ class Instances(gn.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - instances : Instances (self)
-            - selection : Boolean
-            - scale : Vector
-            - center : Vector
-            - local_space : Boolean
+    
+
+            Sockets
+            -------
+                - instances : Instances (self)
+                    - selection : Boolean
+                    - scale : Vector
+                    - center : Vector
+                    - local_space : Boolean
     
 
         Node creation
@@ -166,11 +175,14 @@ class Instances(gn.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - instances : Instances (self)
-            - selection : Boolean
-            - translation : Vector
-            - local_space : Boolean
+    
+
+            Sockets
+            -------
+                - instances : Instances (self)
+                    - selection : Boolean
+                    - translation : Vector
+                    - local_space : Boolean
     
 
         Node creation
@@ -203,11 +215,14 @@ class Instances(gn.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - instances : Instances (self)
-            - selection : Boolean
-            - position : Vector
-            - radius : Float
+    
+
+            Sockets
+            -------
+                - instances : Instances (self)
+                    - selection : Boolean
+                    - position : Vector
+                    - radius : Float
     
 
         Node creation

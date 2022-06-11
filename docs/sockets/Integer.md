@@ -80,7 +80,9 @@ v = Integer.Random(min, max, ID, seed)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - min : Integer
 - max : Integer
 - ID : Integer
@@ -113,7 +115,9 @@ v = integer.accumulate_field(group_index, domain)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value : Integer (self)
 - group_index : Integer## Parameters
 - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
@@ -145,7 +149,9 @@ v = integer.transfer_attribute(source, source_position, index, domain, mapping)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - attribute : Integer (self)
 - source : Geometry
 - source_position : Vector
@@ -180,7 +186,9 @@ v = integer.capture_attribute(geometry, domain)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value : Integer (self)
 - geometry : Geometry## Parameters
 - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
@@ -212,7 +220,9 @@ v = integer.field_at_index(value, domain)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - index : Integer (self)
 - value : Integer## Parameters
 - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
@@ -244,7 +254,9 @@ v = integer.raycast(target_geometry, source_position, ray_direction, ray_length,
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - attribute : Integer (self)
 - target_geometry : Geometry
 - source_position : Vector
@@ -279,7 +291,9 @@ v = integer.switch(switch0, true)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - false : Integer (self)
 - switch0 : Boolean
 - true : Integer## Fixed parameters
@@ -311,7 +325,9 @@ v = integer.less_than(b)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : Integer (self)
 - b : Integer## Fixed parameters
 - data_type : 'INT'
@@ -344,7 +360,9 @@ v = integer.less_equal(b)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : Integer (self)
 - b : Integer## Fixed parameters
 - data_type : 'INT'
@@ -377,7 +395,9 @@ v = integer.greater_than(b)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : Integer (self)
 - b : Integer## Fixed parameters
 - data_type : 'INT'
@@ -410,7 +430,9 @@ v = integer.greater_equal(b)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : Integer (self)
 - b : Integer## Fixed parameters
 - data_type : 'INT'
@@ -443,7 +465,9 @@ v = integer.equal(b)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : Integer (self)
 - b : Integer## Fixed parameters
 - data_type : 'INT'
@@ -476,7 +500,9 @@ v = integer.not_equal(b)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - a : Integer (self)
 - b : Integer## Fixed parameters
 - data_type : 'INT'
@@ -509,7 +535,9 @@ v = integer.add(value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float## Fixed parameters
 - operation : 'ADD'
@@ -540,7 +568,9 @@ v = integer.subtract(value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float## Fixed parameters
 - operation : 'SUBTRACT'
@@ -571,7 +601,9 @@ v = integer.multiply(value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float## Fixed parameters
 - operation : 'MULTIPLY'
@@ -602,7 +634,9 @@ v = integer.divide(value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float## Fixed parameters
 - operation : 'DIVIDE'
@@ -633,7 +667,9 @@ v = integer.multiply_add(value1, value2)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float
 - value2 : Float## Fixed parameters
@@ -665,7 +701,9 @@ v = integer.pow(value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float## Fixed parameters
 - operation : 'POWER'
@@ -696,7 +734,9 @@ v = integer.log(value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float## Fixed parameters
 - operation : 'LOGARITHM'
@@ -727,7 +767,9 @@ v = integer.sqrt()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'SQRT'
 
@@ -757,7 +799,9 @@ v = integer.inverse_sqrt()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'INVERSE_SQRT'
 
@@ -787,7 +831,9 @@ v = integer.abs()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'ABSOLUTE'
 
@@ -817,7 +863,9 @@ v = integer.exp()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'EXPONENT'
 
@@ -847,7 +895,9 @@ v = integer.min(value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float## Fixed parameters
 - operation : 'MINIMUM'
@@ -878,7 +928,9 @@ v = integer.max(value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float## Fixed parameters
 - operation : 'MAXIMUM'
@@ -909,7 +961,9 @@ v = integer.less_than(value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float## Fixed parameters
 - operation : 'LESS_THAN'
@@ -940,7 +994,9 @@ v = integer.greater_than(value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float## Fixed parameters
 - operation : 'GREATER_THAN'
@@ -971,7 +1027,9 @@ v = integer.sign()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'SIGN'
 
@@ -1001,7 +1059,9 @@ v = integer.compare(value1, value2)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float
 - value2 : Float## Fixed parameters
@@ -1033,7 +1093,9 @@ v = integer.smooth_min(value1, value2)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float
 - value2 : Float## Fixed parameters
@@ -1065,7 +1127,9 @@ v = integer.smooth_max(value1, value2)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float
 - value2 : Float## Fixed parameters
@@ -1097,7 +1161,9 @@ v = integer.round()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'ROUND'
 
@@ -1127,7 +1193,9 @@ v = integer.floor()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'FLOOR'
 
@@ -1157,7 +1225,9 @@ v = integer.ceil()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'CEIL'
 
@@ -1187,7 +1257,9 @@ v = integer.trunc()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'TRUNC'
 
@@ -1217,7 +1289,9 @@ v = integer.fract()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'FRACT'
 
@@ -1247,7 +1321,9 @@ v = integer.modulo(value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float## Fixed parameters
 - operation : 'MODULO'
@@ -1278,7 +1354,9 @@ v = integer.wrap(value1, value2)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float
 - value2 : Float## Fixed parameters
@@ -1310,7 +1388,9 @@ v = integer.snap(value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float## Fixed parameters
 - operation : 'SNAP'
@@ -1341,7 +1421,9 @@ v = integer.pingpong(value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float## Fixed parameters
 - operation : 'PINGPONG'
@@ -1372,7 +1454,9 @@ v = integer.sin()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'SINE'
 
@@ -1402,7 +1486,9 @@ v = integer.cos()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'COSINE'
 
@@ -1432,7 +1518,9 @@ v = integer.tan()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'TANGENT'
 
@@ -1462,7 +1550,9 @@ v = integer.arcsin()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'ARCSINE'
 
@@ -1492,7 +1582,9 @@ v = integer.arccos()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'ARCCOSINE'
 
@@ -1522,7 +1614,9 @@ v = integer.arctan()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'ARCTANGENT'
 
@@ -1552,7 +1646,9 @@ v = integer.arctan2(value1)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)
 - value1 : Float## Fixed parameters
 - operation : 'ARCTAN2'
@@ -1583,7 +1679,9 @@ v = integer.sinh()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'SINH'
 
@@ -1613,7 +1711,9 @@ v = integer.cosh()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'COSH'
 
@@ -1643,7 +1743,9 @@ v = integer.tanh()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'TANH'
 
@@ -1673,7 +1775,9 @@ v = integer.radians()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'RADIANS'
 
@@ -1703,7 +1807,9 @@ v = integer.degrees()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - value0 : Float (self)## Fixed parameters
 - operation : 'DEGREES'
 

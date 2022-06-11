@@ -54,7 +54,9 @@ v = Curve.BezierSegment(resolution, start, start_handle, end_handle, end, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - resolution : Integer
 - start : Vector
 - start_handle : Vector
@@ -88,7 +90,9 @@ v = Curve.Circle(resolution, point_1, point_2, point_3, radius, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - resolution : Integer
 - point_1 : Vector
 - point_2 : Vector
@@ -122,7 +126,9 @@ v = Curve.Line(start, end, direction, length, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - start : Vector
 - end : Vector
 - direction : Vector
@@ -155,7 +161,9 @@ v = Curve.Quadrilateral(width, height, bottom_width, top_width, offset, bottom_h
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - width : Float
 - height : Float
 - bottom_width : Float
@@ -195,7 +203,9 @@ v = Curve.QuadraticBezier(resolution, start, middle, end)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - resolution : Integer
 - start : Vector
 - middle : Vector
@@ -227,7 +237,9 @@ v = Curve.Star(points, inner_radius, outer_radius, twist)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - points : Integer
 - inner_radius : Float
 - outer_radius : Float
@@ -259,7 +271,9 @@ v = Curve.Spiral(resolution, rotations, start_radius, end_radius, height, revers
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - resolution : Integer
 - rotations : Float
 - start_radius : Float
@@ -293,7 +307,9 @@ v = Curve.ArcFromRadius(resolution, radius, start_angle, sweep_angle, connect_ce
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - resolution : Integer
 - radius : Float
 - start_angle : Float
@@ -328,7 +344,9 @@ v = Curve.ArcFromPoints(resolution, start, middle, end, offset_angle, connect_ce
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - resolution : Integer
 - start : Vector
 - middle : Vector
@@ -364,7 +382,9 @@ v = curve.set_handles(selection, handle_type, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - curve : Curve (self)
 - selection : Boolean## Parameters
 - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
@@ -396,7 +416,9 @@ v = curve.set_spline_type(selection, spline_type)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - curve : Curve (self)
 - selection : Boolean## Parameters
 - spline_type : 'POLY' in [BEZIER, NURBS, POLY]
@@ -427,7 +449,9 @@ v = curve.fill(mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - curve : Curve (self)## Parameters
 - mode : 'TRIANGLES' in [TRIANGLES, NGONS]
 
@@ -457,7 +481,9 @@ v = curve.fillet(count, radius, limit_radius, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - curve : Curve (self)
 - count : Integer
 - radius : Float
@@ -490,7 +516,9 @@ v = curve.resample(selection, count, length, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - curve : Curve (self)
 - selection : Boolean
 - count : Integer
@@ -523,7 +551,9 @@ v = curve.reverse(selection)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - curve : Curve (self)
 - selection : Boolean
 
@@ -553,7 +583,9 @@ v = curve.set_handle_positions(selection, position, offset, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - curve : Curve (self)
 - selection : Boolean
 - position : Vector
@@ -586,7 +618,9 @@ v = curve.set_radius(selection, radius)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - curve : Curve (self)
 - selection : Boolean
 - radius : Float
@@ -617,7 +651,9 @@ v = curve.set_tilt(selection, tilt)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - curve : Curve (self)
 - selection : Boolean
 - tilt : Float
@@ -648,7 +684,9 @@ v = curve.subdivide(cuts)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - curve : Curve (self)
 - cuts : Integer
 
@@ -678,7 +716,9 @@ v = curve.trim(start0, end0, start1, end1, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - curve : Curve (self)
 - start0 : Float
 - end0 : Float
@@ -712,7 +752,9 @@ v = curve.to_mesh(profile_curve, fill_caps)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - curve : Curve (self)
 - profile_curve : Geometry
 - fill_caps : Boolean
@@ -743,7 +785,9 @@ v = curve.to_points(count, length, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - curve : Curve (self)
 - count : Integer
 - length : Float## Parameters
@@ -775,7 +819,9 @@ v = curve.sample(factor, length, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - curve : Curve (self)
 - factor : Float
 - length : Float## Parameters
@@ -807,7 +853,9 @@ v = curve.length()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - curve : Curve (self)
 
 ### Node creation

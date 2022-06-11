@@ -109,7 +109,9 @@ v = geometry.bound_box
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)## Fixed parameters
 - label:f"{self.node_chain_label}.bound_box"
 
@@ -139,7 +141,9 @@ v = geometry.box
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)## Fixed parameters
 - label:f"{self.node_chain_label}.box"
 
@@ -169,7 +173,9 @@ v = geometry.box_min
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)## Fixed parameters
 - label:f"{self.node_chain_label}.box_min"
 
@@ -199,7 +205,9 @@ v = geometry.box_max
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)## Fixed parameters
 - label:f"{self.node_chain_label}.box_max"
 
@@ -229,7 +237,9 @@ v = geometry.components
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)## Fixed parameters
 - label:f"{self.node_chain_label}.components"
 
@@ -259,7 +269,9 @@ v = geometry.mesh_component
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)## Fixed parameters
 - label:f"{self.node_chain_label}.mesh_component"
 
@@ -289,7 +301,9 @@ v = geometry.points_component
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)## Fixed parameters
 - label:f"{self.node_chain_label}.points_component"
 
@@ -319,7 +333,9 @@ v = geometry.curve_component
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)## Fixed parameters
 - label:f"{self.node_chain_label}.curve_component"
 
@@ -349,7 +365,9 @@ v = geometry.volume_component
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)## Fixed parameters
 - label:f"{self.node_chain_label}.volume_component"
 
@@ -379,7 +397,9 @@ v = geometry.instances_component
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)## Fixed parameters
 - label:f"{self.node_chain_label}.instances_component"
 
@@ -409,7 +429,9 @@ v = geometry.capture_ID(self, domain='POINT')
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 - domain:'POINT'
 
@@ -439,7 +461,9 @@ v = geometry.capture_index(self, domain='POINT')
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 - domain:'POINT'
 
@@ -469,7 +493,9 @@ v = geometry.capture_normal(self, domain='FACE')
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 - domain:'FACE'
 
@@ -499,7 +525,9 @@ v = geometry.capture_position(self, domain='POINT')
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 - domain:'POINT'
 
@@ -529,7 +557,9 @@ v = geometry.capture_radius(self, domain='POINT')
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 - domain:'POINT'
 
@@ -559,7 +589,9 @@ v = geometry.ID(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -588,7 +620,9 @@ v = geometry.index(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -617,7 +651,9 @@ v = geometry.normal(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -646,7 +682,9 @@ v = geometry.position(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -675,7 +713,9 @@ v = geometry.radius(self)
 
 ### Arguments
 
-## Parameters
+
+#### Parameters
+
 - self
 
 ### Node creation
@@ -704,7 +744,9 @@ v = geometry.switch(switch1, true)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - false : Geometry (self)
 - switch1 : Boolean
 - true : Geometry## Fixed parameters
@@ -736,7 +778,9 @@ v = geometry.capture_attribute(value, data_type, domain)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)
 - value : Float## Parameters
 - data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
@@ -768,7 +812,9 @@ v = geometry.transfer_boolean(attribute, source_position, index, domain, mapping
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - source : Geometry (self)
 - attribute : Boolean
 - source_position : Vector
@@ -803,7 +849,9 @@ v = geometry.transfer_integer(attribute, source_position, index, domain, mapping
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - source : Geometry (self)
 - attribute : Integer
 - source_position : Vector
@@ -838,7 +886,9 @@ v = geometry.transfer_float(attribute, source_position, index, domain, mapping)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - source : Geometry (self)
 - attribute : Float
 - source_position : Vector
@@ -873,7 +923,9 @@ v = geometry.transfer_vector(attribute, source_position, index, domain, mapping)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - source : Geometry (self)
 - attribute : Vector
 - source_position : Vector
@@ -908,7 +960,9 @@ v = geometry.transfer_color(attribute, source_position, index, domain, mapping)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - source : Geometry (self)
 - attribute : Color
 - source_position : Vector
@@ -943,7 +997,9 @@ v = geometry.delete_geometry(selection, domain, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)
 - selection : Boolean## Parameters
 - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
@@ -975,7 +1031,9 @@ v = geometry.merge_by_distance(selection, distance, mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)
 - selection : Boolean
 - distance : Float## Parameters
@@ -1007,7 +1065,9 @@ v = geometry.realize_instances(legacy_behavior)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)## Parameters
 - legacy_behavior : False
 
@@ -1037,7 +1097,9 @@ v = geometry.replace_material(old, new)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)
 - old : Material
 - new : Material
@@ -1068,7 +1130,9 @@ v = geometry.scale_elements(selection, scale, center, axis, domain, scale_mode)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)
 - selection : Boolean
 - scale : Float
@@ -1103,7 +1167,9 @@ v = geometry.set_ID(selection, ID)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)
 - selection : Boolean
 - ID : Integer
@@ -1134,7 +1200,9 @@ v = geometry.set_material(selection, material)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)
 - selection : Boolean
 - material : Material
@@ -1165,7 +1233,9 @@ v = geometry.set_material_index(selection, material_index)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)
 - selection : Boolean
 - material_index : Integer
@@ -1196,7 +1266,9 @@ v = geometry.set_position(selection, position, offset)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)
 - selection : Boolean
 - position : Vector
@@ -1228,7 +1300,9 @@ v = geometry.set_shade_smooth(selection, shade_smooth)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)
 - selection : Boolean
 - shade_smooth : Boolean
@@ -1259,7 +1333,9 @@ v = geometry.transform(translation, rotation, scale)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)
 - translation : Vector
 - rotation : Vector
@@ -1291,7 +1367,9 @@ v = geometry.attribute_domain_size(component)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)## Parameters
 - component : 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
@@ -1321,7 +1399,9 @@ v = geometry.remove_attribute(name)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)
 - name : String
 
@@ -1351,7 +1431,9 @@ v = geometry.components(selection, domain)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)
 - selection : Boolean## Parameters
 - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
@@ -1382,7 +1464,9 @@ v = geometry.convex_hull()
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : Geometry (self)
 
 ### Node creation
@@ -1411,7 +1495,9 @@ v = geometry.to_instance(geometry_1, geometry_2, geometry_3)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : *Geometry (self)
 
 ### Node creation
@@ -1440,7 +1526,9 @@ v = geometry.join(geometry_1, geometry_2, geometry_3)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - geometry : *Geometry (self)
 
 ### Node creation
@@ -1469,7 +1557,9 @@ v = geometry.proximity(source_position, target_element)
 
 ### Arguments
 
-## Sockets
+
+#### Sockets
+
 - target : Geometry (self)
 - source_position : Vector## Parameters
 - target_element : 'FACES' in [POINTS, EDGES, FACES]

@@ -154,9 +154,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)## Fixed parameters
-            - label:f"{self.node_chain_label}.bound_box"
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)## Fixed parameters
+                    - label:f"{self.node_chain_label}.bound_box"
     
 
         Node creation
@@ -192,9 +195,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)## Fixed parameters
-            - label:f"{self.node_chain_label}.box"
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)## Fixed parameters
+                    - label:f"{self.node_chain_label}.box"
     
 
         Node creation
@@ -228,9 +234,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)## Fixed parameters
-            - label:f"{self.node_chain_label}.box_min"
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)## Fixed parameters
+                    - label:f"{self.node_chain_label}.box_min"
     
 
         Node creation
@@ -264,9 +273,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)## Fixed parameters
-            - label:f"{self.node_chain_label}.box_max"
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)## Fixed parameters
+                    - label:f"{self.node_chain_label}.box_max"
     
 
         Node creation
@@ -300,9 +312,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)## Fixed parameters
-            - label:f"{self.node_chain_label}.components"
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)## Fixed parameters
+                    - label:f"{self.node_chain_label}.components"
     
 
         Node creation
@@ -338,9 +353,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)## Fixed parameters
-            - label:f"{self.node_chain_label}.mesh_component"
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)## Fixed parameters
+                    - label:f"{self.node_chain_label}.mesh_component"
     
 
         Node creation
@@ -374,9 +392,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)## Fixed parameters
-            - label:f"{self.node_chain_label}.points_component"
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)## Fixed parameters
+                    - label:f"{self.node_chain_label}.points_component"
     
 
         Node creation
@@ -410,9 +431,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)## Fixed parameters
-            - label:f"{self.node_chain_label}.curve_component"
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)## Fixed parameters
+                    - label:f"{self.node_chain_label}.curve_component"
     
 
         Node creation
@@ -446,9 +470,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)## Fixed parameters
-            - label:f"{self.node_chain_label}.volume_component"
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)## Fixed parameters
+                    - label:f"{self.node_chain_label}.volume_component"
     
 
         Node creation
@@ -482,9 +509,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)## Fixed parameters
-            - label:f"{self.node_chain_label}.instances_component"
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)## Fixed parameters
+                    - label:f"{self.node_chain_label}.instances_component"
     
 
         Node creation
@@ -521,9 +551,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Parameters
-            - self
-            - domain:'POINT'
+    
+
+            Parameters
+            ----------
+                - self
+                    - domain:'POINT'
     
 
         Node creation
@@ -561,9 +594,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Parameters
-            - self
-            - domain:'POINT'
+    
+
+            Parameters
+            ----------
+                - self
+                    - domain:'POINT'
     
 
         Node creation
@@ -601,9 +637,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Parameters
-            - self
-            - domain:'FACE'
+    
+
+            Parameters
+            ----------
+                - self
+                    - domain:'FACE'
     
 
         Node creation
@@ -641,9 +680,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Parameters
-            - self
-            - domain:'POINT'
+    
+
+            Parameters
+            ----------
+                - self
+                    - domain:'POINT'
     
 
         Node creation
@@ -681,9 +723,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Parameters
-            - self
-            - domain:'POINT'
+    
+
+            Parameters
+            ----------
+                - self
+                    - domain:'POINT'
     
 
         Node creation
@@ -726,8 +771,11 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Parameters
-            - self
+    
+
+            Parameters
+            ----------
+                - self
     
 
         Node creation
@@ -761,8 +809,11 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Parameters
-            - self
+    
+
+            Parameters
+            ----------
+                - self
     
 
         Node creation
@@ -796,8 +847,11 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Parameters
-            - self
+    
+
+            Parameters
+            ----------
+                - self
     
 
         Node creation
@@ -831,8 +885,11 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Parameters
-            - self
+    
+
+            Parameters
+            ----------
+                - self
     
 
         Node creation
@@ -866,8 +923,11 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Parameters
-            - self
+    
+
+            Parameters
+            ----------
+                - self
     
 
         Node creation
@@ -904,11 +964,14 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - false : Geometry (self)
-            - switch1 : Boolean
-            - true : Geometry## Fixed parameters
-            - input_type : 'GEOMETRY'
+    
+
+            Sockets
+            -------
+                - false : Geometry (self)
+                    - switch1 : Boolean
+                    - true : Geometry## Fixed parameters
+                    - input_type : 'GEOMETRY'
     
 
         Node creation
@@ -941,11 +1004,14 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - value : Float## Parameters
-            - data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                    - value : Float## Parameters
+                    - data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+                    - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
     
 
         Node creation
@@ -980,14 +1046,17 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - source : Geometry (self)
-            - attribute : Boolean
-            - source_position : Vector
-            - index : Integer## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-            - data_type : 'BOOLEAN'
+    
+
+            Sockets
+            -------
+                - source : Geometry (self)
+                    - attribute : Boolean
+                    - source_position : Vector
+                    - index : Integer## Parameters
+                    - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+                    - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+                    - data_type : 'BOOLEAN'
     
 
         Node creation
@@ -1020,14 +1089,17 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - source : Geometry (self)
-            - attribute : Integer
-            - source_position : Vector
-            - index : Integer## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-            - data_type : 'INT'
+    
+
+            Sockets
+            -------
+                - source : Geometry (self)
+                    - attribute : Integer
+                    - source_position : Vector
+                    - index : Integer## Parameters
+                    - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+                    - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+                    - data_type : 'INT'
     
 
         Node creation
@@ -1060,14 +1132,17 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - source : Geometry (self)
-            - attribute : Float
-            - source_position : Vector
-            - index : Integer## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-            - data_type : 'FLOAT'
+    
+
+            Sockets
+            -------
+                - source : Geometry (self)
+                    - attribute : Float
+                    - source_position : Vector
+                    - index : Integer## Parameters
+                    - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+                    - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+                    - data_type : 'FLOAT'
     
 
         Node creation
@@ -1100,14 +1175,17 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - source : Geometry (self)
-            - attribute : Vector
-            - source_position : Vector
-            - index : Integer## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-            - data_type : 'FLOAT_VECTOR'
+    
+
+            Sockets
+            -------
+                - source : Geometry (self)
+                    - attribute : Vector
+                    - source_position : Vector
+                    - index : Integer## Parameters
+                    - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+                    - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+                    - data_type : 'FLOAT_VECTOR'
     
 
         Node creation
@@ -1140,14 +1218,17 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - source : Geometry (self)
-            - attribute : Color
-            - source_position : Vector
-            - index : Integer## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-            - data_type : 'FLOAT_COLOR'
+    
+
+            Sockets
+            -------
+                - source : Geometry (self)
+                    - attribute : Color
+                    - source_position : Vector
+                    - index : Integer## Parameters
+                    - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+                    - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+                    - data_type : 'FLOAT_COLOR'
     
 
         Node creation
@@ -1180,11 +1261,14 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - selection : Boolean## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
-            - mode : 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                    - selection : Boolean## Parameters
+                    - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
+                    - mode : 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
     
 
         Node creation
@@ -1217,11 +1301,14 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - selection : Boolean
-            - distance : Float## Parameters
-            - mode : 'ALL' in [ALL, CONNECTED]
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                    - selection : Boolean
+                    - distance : Float## Parameters
+                    - mode : 'ALL' in [ALL, CONNECTED]
     
 
         Node creation
@@ -1254,9 +1341,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)## Parameters
-            - legacy_behavior : False
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)## Parameters
+                    - legacy_behavior : False
     
 
         Node creation
@@ -1289,10 +1379,13 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - old : Material
-            - new : Material
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                    - old : Material
+                    - new : Material
     
 
         Node creation
@@ -1325,14 +1418,17 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - selection : Boolean
-            - scale : Float
-            - center : Vector
-            - axis : Vector## Parameters
-            - domain : 'FACE' in [FACE, EDGE]
-            - scale_mode : 'UNIFORM' in [UNIFORM, SINGLE_AXIS]
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                    - selection : Boolean
+                    - scale : Float
+                    - center : Vector
+                    - axis : Vector## Parameters
+                    - domain : 'FACE' in [FACE, EDGE]
+                    - scale_mode : 'UNIFORM' in [UNIFORM, SINGLE_AXIS]
     
 
         Node creation
@@ -1365,10 +1461,13 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - selection : Boolean
-            - ID : Integer
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                    - selection : Boolean
+                    - ID : Integer
     
 
         Node creation
@@ -1401,10 +1500,13 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - selection : Boolean
-            - material : Material
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                    - selection : Boolean
+                    - material : Material
     
 
         Node creation
@@ -1437,10 +1539,13 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - selection : Boolean
-            - material_index : Integer
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                    - selection : Boolean
+                    - material_index : Integer
     
 
         Node creation
@@ -1473,11 +1578,14 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - selection : Boolean
-            - position : Vector
-            - offset : Vector
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                    - selection : Boolean
+                    - position : Vector
+                    - offset : Vector
     
 
         Node creation
@@ -1510,10 +1618,13 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - selection : Boolean
-            - shade_smooth : Boolean
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                    - selection : Boolean
+                    - shade_smooth : Boolean
     
 
         Node creation
@@ -1546,11 +1657,14 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - translation : Vector
-            - rotation : Vector
-            - scale : Vector
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                    - translation : Vector
+                    - rotation : Vector
+                    - scale : Vector
     
 
         Node creation
@@ -1583,9 +1697,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)## Parameters
-            - component : 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)## Parameters
+                    - component : 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
     
 
         Node creation
@@ -1618,9 +1735,12 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - name : String
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                    - name : String
     
 
         Node creation
@@ -1653,10 +1773,13 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - selection : Boolean## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)
+                    - selection : Boolean## Parameters
+                    - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
     
 
         Node creation
@@ -1689,8 +1812,11 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : Geometry (self)
+    
+
+            Sockets
+            -------
+                - geometry : Geometry (self)
     
 
         Node creation
@@ -1723,8 +1849,11 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : *Geometry (self)
+    
+
+            Sockets
+            -------
+                - geometry : *Geometry (self)
     
 
         Node creation
@@ -1757,8 +1886,11 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - geometry : *Geometry (self)
+    
+
+            Sockets
+            -------
+                - geometry : *Geometry (self)
     
 
         Node creation
@@ -1791,10 +1923,13 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            ## Sockets
-            - target : Geometry (self)
-            - source_position : Vector## Parameters
-            - target_element : 'FACES' in [POINTS, EDGES, FACES]
+    
+
+            Sockets
+            -------
+                - target : Geometry (self)
+                    - source_position : Vector## Parameters
+                    - target_element : 'FACES' in [POINTS, EDGES, FACES]
     
 
         Node creation
