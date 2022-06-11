@@ -77,17 +77,10 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - relative : Boolean
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'CURVE'
+            ## Sockets
+            - relative : Boolean## Parameters
+            - self
+            - domain:'CURVE'
     
 
         Node creation
@@ -125,12 +118,9 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'CURVE'
+            ## Parameters
+            - self
+            - domain:'CURVE'
     
 
         Node creation
@@ -168,12 +158,9 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'CURVE'
+            ## Parameters
+            - self
+            - domain:'CURVE'
     
 
         Node creation
@@ -211,18 +198,11 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - start_size : Integer
-                - end_size : Integer
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'CURVE'
+            ## Sockets
+            - start_size : Integer
+            - end_size : Integer## Parameters
+            - self
+            - domain:'CURVE'
     
 
         Node creation
@@ -260,14 +240,11 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
-                - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-                - mode : {'LEFT', 'RIGHT'}
-                - domain:'CURVE'
+            ## Parameters
+            - self
+            - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+            - mode : {'LEFT', 'RIGHT'}
+            - domain:'CURVE'
     
 
         Node creation
@@ -305,12 +282,9 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'CURVE'
+            ## Parameters
+            - self
+            - domain:'CURVE'
     
 
         Node creation
@@ -348,12 +322,9 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'CURVE'
+            ## Parameters
+            - self
+            - domain:'CURVE'
     
 
         Node creation
@@ -391,12 +362,9 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'CURVE'
+            ## Parameters
+            - self
+            - domain:'CURVE'
     
 
         Node creation
@@ -434,12 +402,9 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'CURVE'
+            ## Parameters
+            - self
+            - domain:'CURVE'
     
 
         Node creation
@@ -482,11 +447,8 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -520,11 +482,8 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -558,11 +517,8 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -596,16 +552,9 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - relative : Boolean
-    
-
-            Parameters
-            ----------
-                - self
+            ## Sockets
+            - relative : Boolean## Parameters
+            - self
     
 
         Node creation
@@ -639,16 +588,9 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - relative : Boolean
-    
-
-            Parameters
-            ----------
-                - self
+            ## Sockets
+            - relative : Boolean## Parameters
+            - self
     
 
         Node creation
@@ -682,11 +624,8 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -720,11 +659,8 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -758,17 +694,10 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - start_size : Integer
-                - end_size : Integer
-    
-
-            Parameters
-            ----------
-                - self
+            ## Sockets
+            - start_size : Integer
+            - end_size : Integer## Parameters
+            - self
     
 
         Node creation
@@ -802,13 +731,10 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
-                - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-                - mode : {'LEFT', 'RIGHT'}
+            ## Parameters
+            - self
+            - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+            - mode : {'LEFT', 'RIGHT'}
     
 
         Node creation
@@ -842,11 +768,8 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -880,11 +803,8 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -918,11 +838,8 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -956,11 +873,8 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -994,11 +908,8 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1032,11 +943,8 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1070,11 +978,8 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1111,13 +1016,10 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - geometry : Geometry (self)
-                - selection : Boolean
-                - cyclic : Boolean
+            ## Sockets
+            - geometry : Geometry (self)
+            - selection : Boolean
+            - cyclic : Boolean
     
 
         Node creation
@@ -1150,13 +1052,10 @@ class Spline(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - geometry : Geometry (self)
-                - selection : Boolean
-                - resolution : Integer
+            ## Sockets
+            - geometry : Geometry (self)
+            - selection : Boolean
+            - resolution : Integer
     
 
         Node creation

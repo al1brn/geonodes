@@ -89,14 +89,9 @@ v = Mesh.Circle(vertices, radius, fill_type)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vertices : Integer
-- radius : Float
-
-#### Parameters
-
+- radius : Float## Parameters
 - fill_type : 'NONE' in [NONE, NGON, TRIANGLE_FAN]
 
 ### Node creation
@@ -125,18 +120,13 @@ v = Mesh.Cone(vertices, side_segments, fill_segments, radius_top, radius_bottom,
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vertices : Integer
 - side_segments : Integer
 - fill_segments : Integer
 - radius_top : Float
 - radius_bottom : Float
-- depth : Float
-
-#### Parameters
-
+- depth : Float## Parameters
 - fill_type : 'NGON' in [NONE, NGON, TRIANGLE_FAN]
 
 ### Node creation
@@ -165,9 +155,7 @@ v = Mesh.Cube(size, vertices_x, vertices_y, vertices_z)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - size : Vector
 - vertices_x : Integer
 - vertices_y : Integer
@@ -199,17 +187,12 @@ v = Mesh.Cylinder(vertices, side_segments, fill_segments, radius, depth, fill_ty
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vertices : Integer
 - side_segments : Integer
 - fill_segments : Integer
 - radius : Float
-- depth : Float
-
-#### Parameters
-
+- depth : Float## Parameters
 - fill_type : 'NGON' in [NONE, NGON, TRIANGLE_FAN]
 
 ### Node creation
@@ -238,9 +221,7 @@ v = Mesh.Grid(size_x, size_y, vertices_x, vertices_y)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - size_x : Float
 - size_y : Float
 - vertices_x : Integer
@@ -272,9 +253,7 @@ v = Mesh.IcoSphere(radius, subdivisions)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - radius : Float
 - subdivisions : Integer
 
@@ -304,15 +283,10 @@ v = Mesh.Line(count, start_location, offset, count_mode, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - count : Integer
 - start_location : Vector
-- offset : Vector
-
-#### Parameters
-
+- offset : Vector## Parameters
 - count_mode : 'TOTAL' in [TOTAL, RESOLUTION]
 - mode : 'OFFSET' in [OFFSET, END_POINTS]
 
@@ -342,9 +316,7 @@ v = Mesh.UVSphere(segments, rings, radius)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - segments : Integer
 - rings : Integer
 - radius : Float
@@ -375,9 +347,7 @@ v = mesh.capture_edge_angle(self, domain='EDGE')
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 - domain:'EDGE'
 
@@ -407,9 +377,7 @@ v = mesh.capture_edge_neighbors(self, domain='EDGE')
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 - domain:'EDGE'
 
@@ -439,9 +407,7 @@ v = mesh.capture_edge_vertices(self, domain='EDGE')
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 - domain:'EDGE'
 
@@ -471,9 +437,7 @@ v = mesh.capture_face_area(self, domain='FACE')
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 - domain:'FACE'
 
@@ -503,9 +467,7 @@ v = mesh.capture_face_neighbors(self, domain='FACE')
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 - domain:'FACE'
 
@@ -535,9 +497,7 @@ v = mesh.capture_island(self, domain='POINT')
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 - domain:'POINT'
 
@@ -567,9 +527,7 @@ v = mesh.capture_shade_smooth(self, domain='FACE')
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 - domain:'FACE'
 
@@ -599,9 +557,7 @@ v = mesh.capture_vertex_neighbors(self, domain='POINT')
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 - domain:'POINT'
 
@@ -631,9 +587,7 @@ v = mesh.capture_material_index(self, domain='FACE')
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 - domain:'FACE'
 
@@ -663,13 +617,8 @@ v = mesh.capture_material_selection(self, material, domain='FACE')
 
 ### Arguments
 
-
-#### Sockets
-
-- material : Material
-
-#### Parameters
-
+## Sockets
+- material : Material## Parameters
 - self
 - domain:'FACE'
 
@@ -699,9 +648,7 @@ v = mesh.face_ID(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -730,9 +677,7 @@ v = mesh.egde_ID(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -761,9 +706,7 @@ v = mesh.corner_ID(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -792,9 +735,7 @@ v = mesh.face_index(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -823,9 +764,7 @@ v = mesh.egde_index(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -854,9 +793,7 @@ v = mesh.corner_index(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -885,9 +822,7 @@ v = mesh.face_position(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -916,9 +851,7 @@ v = mesh.egde_position(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -947,9 +880,7 @@ v = mesh.corner_porision(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -978,9 +909,7 @@ v = mesh.edge_angle(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -1009,9 +938,7 @@ v = mesh.edge_unsigned_angle(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -1040,9 +967,7 @@ v = mesh.edge_neighbors(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -1071,9 +996,7 @@ v = mesh.edge_vertices_index1(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -1102,9 +1025,7 @@ v = mesh.edge_vertices_index2(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -1133,9 +1054,7 @@ v = mesh.edge_vertices_position1(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -1164,9 +1083,7 @@ v = mesh.edge_vertices_position2(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -1195,9 +1112,7 @@ v = mesh.face_area(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -1226,9 +1141,7 @@ v = mesh.face_neighbors_vertex_count(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -1257,9 +1170,7 @@ v = mesh.face_neighbors_face_count(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -1288,9 +1199,7 @@ v = mesh.island(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -1319,9 +1228,7 @@ v = mesh.shade_smooth(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -1350,9 +1257,7 @@ v = mesh.vertex_neighbors_vertex_count(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -1381,9 +1286,7 @@ v = mesh.vertex_neighbors_face_count(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -1412,9 +1315,7 @@ v = mesh.material_index(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -1443,13 +1344,8 @@ v = mesh.material_selection(self, material)
 
 ### Arguments
 
-
-#### Sockets
-
-- material : Material
-
-#### Parameters
-
+## Sockets
+- material : Material## Parameters
 - self
 
 ### Node creation
@@ -1478,15 +1374,10 @@ v = mesh.intersect(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_toleran
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - mesh_2 : *Geometry (self)
 - self_intersection : Boolean
-- hole_tolerant : Boolean
-
-#### Fixed parameters
-
+- hole_tolerant : Boolean## Fixed parameters
 - operation : 'INTERSECT'
 
 ### Node creation
@@ -1515,15 +1406,10 @@ v = mesh.union(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - mesh_2 : *Geometry (self)
 - self_intersection : Boolean
-- hole_tolerant : Boolean
-
-#### Fixed parameters
-
+- hole_tolerant : Boolean## Fixed parameters
 - operation : 'UNION'
 
 ### Node creation
@@ -1552,16 +1438,11 @@ v = mesh.difference(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolera
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - mesh_1 : Geometry (self)
 - mesh_2 : *Geometry
 - self_intersection : Boolean
-- hole_tolerant : Boolean
-
-#### Fixed parameters
-
+- hole_tolerant : Boolean## Fixed parameters
 - operation : 'DIFFERENCE'
 
 ### Node creation
@@ -1590,9 +1471,7 @@ v = mesh.split_edges(selection)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - mesh : Mesh (self)
 - selection : Boolean
 
@@ -1622,9 +1501,7 @@ v = mesh.subdivide(level)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - mesh : Mesh (self)
 - level : Integer
 
@@ -1654,15 +1531,10 @@ v = mesh.subdivision_surface(level, crease, boundary_smooth, uv_smooth)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - mesh : Mesh (self)
 - level : Integer
-- crease : Float
-
-#### Parameters
-
+- crease : Float## Parameters
 - boundary_smooth : 'ALL' in [PRESERVE_CORNERS, ALL]
 - uv_smooth : 'PRESERVE_BOUNDARIES' in [NONE, PRESERVE_CORNERS, PRESERVE_CORNERS_AND_JUNCTIONS, PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE, PRESERVE_BOUNDARIES, SMOOTH_ALL]
 
@@ -1692,15 +1564,10 @@ v = mesh.triangulate(selection, minimum_vertices, ngon_method, quad_method)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - mesh : Mesh (self)
 - selection : Boolean
-- minimum_vertices : Integer
-
-#### Parameters
-
+- minimum_vertices : Integer## Parameters
 - ngon_method : 'BEAUTY' in [BEAUTY, CLIP]
 - quad_method : 'SHORTEST_DIAGONAL' in [BEAUTY, FIXED, FIXED_ALTERNATE, SHORTEST_DIAGONAL, LONGEST_DIAGONAL]
 
@@ -1730,9 +1597,7 @@ v = mesh.dual(keep_boundaries)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - mesh : Mesh (self)
 - keep_boundaries : Boolean
 
@@ -1762,9 +1627,7 @@ v = mesh.flip_faces(selection)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - mesh : Mesh (self)
 - selection : Boolean
 
@@ -1794,17 +1657,12 @@ v = mesh.extrude(selection, offset, offset_scale, individual, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - mesh : Mesh (self)
 - selection : Boolean
 - offset : Vector
 - offset_scale : Float
-- individual : Boolean
-
-#### Parameters
-
+- individual : Boolean## Parameters
 - mode : 'FACES' in [VERTICES, EDGES, FACES]
 
 ### Node creation
@@ -1833,9 +1691,7 @@ v = mesh.to_curve(selection)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - mesh : Mesh (self)
 - selection : Boolean
 
@@ -1865,16 +1721,11 @@ v = mesh.to_points(selection, position, radius, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - mesh : Mesh (self)
 - selection : Boolean
 - position : Vector
-- radius : Float
-
-#### Parameters
-
+- radius : Float## Parameters
 - mode : 'VERTICES' in [VERTICES, EDGES, FACES, CORNERS]
 
 ### Node creation
@@ -1903,19 +1754,14 @@ v = mesh.distribute_points_on_faces(selection, distance_min, density_max, densit
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - mesh : Mesh (self)
 - selection : Boolean
 - distance_min : Float
 - density_max : Float
 - density : Float
 - density_factor : Float
-- seed : Integer
-
-#### Parameters
-
+- seed : Integer## Parameters
 - distribute_method : 'RANDOM' in [RANDOM, POISSON]
 
 ### Node creation

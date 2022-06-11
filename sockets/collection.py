@@ -44,18 +44,11 @@ class Collection(dsock.Collection):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - false : Collection (self)
-                - switch1 : Boolean
-                - true : Collection
-    
-
-            Fixed parameters
-            ----------------
-                - input_type : 'COLLECTION'
+            ## Sockets
+            - false : Collection (self)
+            - switch1 : Boolean
+            - true : Collection## Fixed parameters
+            - input_type : 'COLLECTION'
     
 
         Node creation
@@ -88,18 +81,11 @@ class Collection(dsock.Collection):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - collection : Collection (self)
-                - separate_children : Boolean
-                - reset_children : Boolean
-    
-
-            Parameters
-            ----------
-                - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
+            ## Sockets
+            - collection : Collection (self)
+            - separate_children : Boolean
+            - reset_children : Boolean## Parameters
+            - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
     
 
         Node creation

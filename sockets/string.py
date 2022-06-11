@@ -61,16 +61,9 @@ class String(dsock.String):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - string : String (self)
-    
-
-            Fixed parameters
-            ----------------
-                - label:f"{self.node_chain_label}.length"
+            ## Sockets
+            - string : String (self)## Fixed parameters
+            - label:f"{self.node_chain_label}.length"
     
 
         Node creation
@@ -109,18 +102,11 @@ class String(dsock.String):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - false : String (self)
-                - switch0 : Boolean
-                - true : String
-    
-
-            Fixed parameters
-            ----------------
-                - input_type : 'STRING'
+            ## Sockets
+            - false : String (self)
+            - switch0 : Boolean
+            - true : String## Fixed parameters
+            - input_type : 'STRING'
     
 
         Node creation
@@ -153,19 +139,12 @@ class String(dsock.String):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : String (self)
-                - b : String
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'STRING'
-                - mode : 'ELEMENT'
-                - operation : 'ELEMENT'
+            ## Sockets
+            - a : String (self)
+            - b : String## Fixed parameters
+            - data_type : 'STRING'
+            - mode : 'ELEMENT'
+            - operation : 'ELEMENT'
     
 
         Node creation
@@ -198,19 +177,12 @@ class String(dsock.String):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : String (self)
-                - b : String
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'STRING'
-                - mode : 'ELEMENT'
-                - operation : 'LENGTH'
+            ## Sockets
+            - a : String (self)
+            - b : String## Fixed parameters
+            - data_type : 'STRING'
+            - mode : 'ELEMENT'
+            - operation : 'LENGTH'
     
 
         Node creation
@@ -243,19 +215,12 @@ class String(dsock.String):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : String (self)
-                - b : String
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'STRING'
-                - mode : 'ELEMENT'
-                - operation : 'AVERAGE'
+            ## Sockets
+            - a : String (self)
+            - b : String## Fixed parameters
+            - data_type : 'STRING'
+            - mode : 'ELEMENT'
+            - operation : 'AVERAGE'
     
 
         Node creation
@@ -288,19 +253,12 @@ class String(dsock.String):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : String (self)
-                - b : String
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'STRING'
-                - mode : 'ELEMENT'
-                - operation : 'DOT_PRODUCT'
+            ## Sockets
+            - a : String (self)
+            - b : String## Fixed parameters
+            - data_type : 'STRING'
+            - mode : 'ELEMENT'
+            - operation : 'DOT_PRODUCT'
     
 
         Node creation
@@ -333,19 +291,12 @@ class String(dsock.String):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : String (self)
-                - b : String
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'STRING'
-                - mode : 'ELEMENT'
-                - operation : 'DIRECTION'
+            ## Sockets
+            - a : String (self)
+            - b : String## Fixed parameters
+            - data_type : 'STRING'
+            - mode : 'ELEMENT'
+            - operation : 'DIRECTION'
     
 
         Node creation
@@ -378,12 +329,9 @@ class String(dsock.String):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - strings : *String (self)
-                - delimiter : String
+            ## Sockets
+            - strings : *String (self)
+            - delimiter : String
     
 
         Node creation
@@ -416,13 +364,10 @@ class String(dsock.String):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - string : String (self)
-                - find : String
-                - replace : String
+            ## Sockets
+            - string : String (self)
+            - find : String
+            - replace : String
     
 
         Node creation
@@ -455,13 +400,10 @@ class String(dsock.String):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - string : String (self)
-                - position : Integer
-                - length : Integer
+            ## Sockets
+            - string : String (self)
+            - position : Integer
+            - length : Integer
     
 
         Node creation
@@ -494,25 +436,18 @@ class String(dsock.String):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - string : String (self)
-                - size : Float
-                - character_spacing : Float
-                - word_spacing : Float
-                - line_spacing : Float
-                - text_box_width : Float
-                - text_box_height : Float
-    
-
-            Parameters
-            ----------
-                - align_x : 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
-                - align_y : 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
-                - overflow : 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
-                - pivot_mode : 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
+            ## Sockets
+            - string : String (self)
+            - size : Float
+            - character_spacing : Float
+            - word_spacing : Float
+            - line_spacing : Float
+            - text_box_width : Float
+            - text_box_height : Float## Parameters
+            - align_x : 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
+            - align_y : 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
+            - overflow : 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
+            - pivot_mode : 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
     
 
         Node creation

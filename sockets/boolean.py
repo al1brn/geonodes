@@ -62,18 +62,11 @@ class Boolean(dsock.Boolean):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - probability : Float
-                - ID : Integer
-                - seed : Integer
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'BOOLEAN'
+            ## Sockets
+            - probability : Float
+            - ID : Integer
+            - seed : Integer## Fixed parameters
+            - data_type : 'BOOLEAN'
     
 
         Node creation
@@ -110,25 +103,14 @@ class Boolean(dsock.Boolean):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - attribute : Boolean (self)
-                - source : Geometry
-                - source_position : Vector
-                - index : Integer
-    
-
-            Parameters
-            ----------
-                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-                - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'BOOLEAN'
+            ## Sockets
+            - attribute : Boolean (self)
+            - source : Geometry
+            - source_position : Vector
+            - index : Integer## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+            - data_type : 'BOOLEAN'
     
 
         Node creation
@@ -161,22 +143,11 @@ class Boolean(dsock.Boolean):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value : Boolean (self)
-                - geometry : Geometry
-    
-
-            Parameters
-            ----------
-                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'BOOLEAN'
+            ## Sockets
+            - value : Boolean (self)
+            - geometry : Geometry## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - data_type : 'BOOLEAN'
     
 
         Node creation
@@ -209,22 +180,11 @@ class Boolean(dsock.Boolean):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value : Boolean (self)
-                - index : Integer
-    
-
-            Parameters
-            ----------
-                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'BOOLEAN'
+            ## Sockets
+            - value : Boolean (self)
+            - index : Integer## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - data_type : 'BOOLEAN'
     
 
         Node creation
@@ -257,25 +217,14 @@ class Boolean(dsock.Boolean):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - attribute : Boolean (self)
-                - target_geometry : Geometry
-                - source_position : Vector
-                - ray_direction : Vector
-                - ray_length : Float
-    
-
-            Parameters
-            ----------
-                - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'BOOLEAN'
+            ## Sockets
+            - attribute : Boolean (self)
+            - target_geometry : Geometry
+            - source_position : Vector
+            - ray_direction : Vector
+            - ray_length : Float## Parameters
+            - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
+            - data_type : 'BOOLEAN'
     
 
         Node creation
@@ -308,18 +257,11 @@ class Boolean(dsock.Boolean):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - switch0 : Boolean (self)
-                - false : Boolean
-                - true : Boolean
-    
-
-            Fixed parameters
-            ----------------
-                - input_type : 'BOOLEAN'
+            ## Sockets
+            - switch0 : Boolean (self)
+            - false : Boolean
+            - true : Boolean## Fixed parameters
+            - input_type : 'BOOLEAN'
     
 
         Node creation
@@ -352,17 +294,10 @@ class Boolean(dsock.Boolean):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - boolean0 : Boolean (self)
-                - boolean1 : Boolean
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'AND'
+            ## Sockets
+            - boolean0 : Boolean (self)
+            - boolean1 : Boolean## Fixed parameters
+            - operation : 'AND'
     
 
         Node creation
@@ -395,17 +330,10 @@ class Boolean(dsock.Boolean):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - boolean0 : Boolean (self)
-                - boolean1 : Boolean
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'OR'
+            ## Sockets
+            - boolean0 : Boolean (self)
+            - boolean1 : Boolean## Fixed parameters
+            - operation : 'OR'
     
 
         Node creation
@@ -438,16 +366,9 @@ class Boolean(dsock.Boolean):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - boolean0 : Boolean (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'NOT'
+            ## Sockets
+            - boolean0 : Boolean (self)## Fixed parameters
+            - operation : 'NOT'
     
 
         Node creation
@@ -480,17 +401,10 @@ class Boolean(dsock.Boolean):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - boolean0 : Boolean (self)
-                - boolean1 : Boolean
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'NAND'
+            ## Sockets
+            - boolean0 : Boolean (self)
+            - boolean1 : Boolean## Fixed parameters
+            - operation : 'NAND'
     
 
         Node creation
@@ -523,17 +437,10 @@ class Boolean(dsock.Boolean):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - boolean0 : Boolean (self)
-                - boolean1 : Boolean
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'NOR'
+            ## Sockets
+            - boolean0 : Boolean (self)
+            - boolean1 : Boolean## Fixed parameters
+            - operation : 'NOR'
     
 
         Node creation
@@ -566,17 +473,10 @@ class Boolean(dsock.Boolean):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - boolean0 : Boolean (self)
-                - boolean1 : Boolean
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'XNOR'
+            ## Sockets
+            - boolean0 : Boolean (self)
+            - boolean1 : Boolean## Fixed parameters
+            - operation : 'XNOR'
     
 
         Node creation
@@ -609,17 +509,10 @@ class Boolean(dsock.Boolean):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - boolean0 : Boolean (self)
-                - boolean1 : Boolean
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'XOR'
+            ## Sockets
+            - boolean0 : Boolean (self)
+            - boolean1 : Boolean## Fixed parameters
+            - operation : 'XOR'
     
 
         Node creation
@@ -652,17 +545,10 @@ class Boolean(dsock.Boolean):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - boolean0 : Boolean (self)
-                - boolean1 : Boolean
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'IMPLY'
+            ## Sockets
+            - boolean0 : Boolean (self)
+            - boolean1 : Boolean## Fixed parameters
+            - operation : 'IMPLY'
     
 
         Node creation
@@ -695,17 +581,10 @@ class Boolean(dsock.Boolean):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - boolean0 : Boolean (self)
-                - boolean1 : Boolean
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'NIMPLY'
+            ## Sockets
+            - boolean0 : Boolean (self)
+            - boolean1 : Boolean## Fixed parameters
+            - operation : 'NIMPLY'
     
 
         Node creation

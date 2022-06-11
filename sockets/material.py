@@ -44,18 +44,11 @@ class Material(dsock.Material):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - false : Material (self)
-                - switch1 : Boolean
-                - true : Material
-    
-
-            Fixed parameters
-            ----------------
-                - input_type : 'MATERIAL'
+            ## Sockets
+            - false : Material (self)
+            - switch1 : Boolean
+            - true : Material## Fixed parameters
+            - input_type : 'MATERIAL'
     
 
         Node creation
@@ -88,11 +81,8 @@ class Material(dsock.Material):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - material : Material (self)
+            ## Sockets
+            - material : Material (self)
     
 
         Node creation

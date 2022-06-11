@@ -111,17 +111,10 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vertices : Integer
-                - radius : Float
-    
-
-            Parameters
-            ----------
-                - fill_type : 'NONE' in [NONE, NGON, TRIANGLE_FAN]
+            ## Sockets
+            - vertices : Integer
+            - radius : Float## Parameters
+            - fill_type : 'NONE' in [NONE, NGON, TRIANGLE_FAN]
     
 
         Node creation
@@ -155,21 +148,14 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vertices : Integer
-                - side_segments : Integer
-                - fill_segments : Integer
-                - radius_top : Float
-                - radius_bottom : Float
-                - depth : Float
-    
-
-            Parameters
-            ----------
-                - fill_type : 'NGON' in [NONE, NGON, TRIANGLE_FAN]
+            ## Sockets
+            - vertices : Integer
+            - side_segments : Integer
+            - fill_segments : Integer
+            - radius_top : Float
+            - radius_bottom : Float
+            - depth : Float## Parameters
+            - fill_type : 'NGON' in [NONE, NGON, TRIANGLE_FAN]
     
 
         Node creation
@@ -203,14 +189,11 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - size : Vector
-                - vertices_x : Integer
-                - vertices_y : Integer
-                - vertices_z : Integer
+            ## Sockets
+            - size : Vector
+            - vertices_x : Integer
+            - vertices_y : Integer
+            - vertices_z : Integer
     
 
         Node creation
@@ -244,20 +227,13 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vertices : Integer
-                - side_segments : Integer
-                - fill_segments : Integer
-                - radius : Float
-                - depth : Float
-    
-
-            Parameters
-            ----------
-                - fill_type : 'NGON' in [NONE, NGON, TRIANGLE_FAN]
+            ## Sockets
+            - vertices : Integer
+            - side_segments : Integer
+            - fill_segments : Integer
+            - radius : Float
+            - depth : Float## Parameters
+            - fill_type : 'NGON' in [NONE, NGON, TRIANGLE_FAN]
     
 
         Node creation
@@ -291,14 +267,11 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - size_x : Float
-                - size_y : Float
-                - vertices_x : Integer
-                - vertices_y : Integer
+            ## Sockets
+            - size_x : Float
+            - size_y : Float
+            - vertices_x : Integer
+            - vertices_y : Integer
     
 
         Node creation
@@ -332,12 +305,9 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - radius : Float
-                - subdivisions : Integer
+            ## Sockets
+            - radius : Float
+            - subdivisions : Integer
     
 
         Node creation
@@ -371,19 +341,12 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - count : Integer
-                - start_location : Vector
-                - offset : Vector
-    
-
-            Parameters
-            ----------
-                - count_mode : 'TOTAL' in [TOTAL, RESOLUTION]
-                - mode : 'OFFSET' in [OFFSET, END_POINTS]
+            ## Sockets
+            - count : Integer
+            - start_location : Vector
+            - offset : Vector## Parameters
+            - count_mode : 'TOTAL' in [TOTAL, RESOLUTION]
+            - mode : 'OFFSET' in [OFFSET, END_POINTS]
     
 
         Node creation
@@ -417,13 +380,10 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - segments : Integer
-                - rings : Integer
-                - radius : Float
+            ## Sockets
+            - segments : Integer
+            - rings : Integer
+            - radius : Float
     
 
         Node creation
@@ -460,12 +420,9 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'EDGE'
+            ## Parameters
+            - self
+            - domain:'EDGE'
     
 
         Node creation
@@ -503,12 +460,9 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'EDGE'
+            ## Parameters
+            - self
+            - domain:'EDGE'
     
 
         Node creation
@@ -546,12 +500,9 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'EDGE'
+            ## Parameters
+            - self
+            - domain:'EDGE'
     
 
         Node creation
@@ -589,12 +540,9 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'FACE'
+            ## Parameters
+            - self
+            - domain:'FACE'
     
 
         Node creation
@@ -632,12 +580,9 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'FACE'
+            ## Parameters
+            - self
+            - domain:'FACE'
     
 
         Node creation
@@ -675,12 +620,9 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'POINT'
+            ## Parameters
+            - self
+            - domain:'POINT'
     
 
         Node creation
@@ -718,12 +660,9 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'FACE'
+            ## Parameters
+            - self
+            - domain:'FACE'
     
 
         Node creation
@@ -761,12 +700,9 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'POINT'
+            ## Parameters
+            - self
+            - domain:'POINT'
     
 
         Node creation
@@ -804,12 +740,9 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'FACE'
+            ## Parameters
+            - self
+            - domain:'FACE'
     
 
         Node creation
@@ -847,17 +780,10 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - material : Material
-    
-
-            Parameters
-            ----------
-                - self
-                - domain:'FACE'
+            ## Sockets
+            - material : Material## Parameters
+            - self
+            - domain:'FACE'
     
 
         Node creation
@@ -900,11 +826,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -938,11 +861,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -976,11 +896,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1014,11 +931,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1052,11 +966,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1090,11 +1001,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1128,11 +1036,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1166,11 +1071,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1204,11 +1106,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1242,11 +1141,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1280,11 +1176,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1318,11 +1211,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1356,11 +1246,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1394,11 +1281,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1432,11 +1316,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1470,11 +1351,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1508,11 +1386,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1546,11 +1421,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1584,11 +1456,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1622,11 +1491,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1660,11 +1526,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1698,11 +1561,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1736,11 +1596,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1774,11 +1631,8 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Parameters
-            ----------
-                - self
+            ## Parameters
+            - self
     
 
         Node creation
@@ -1812,16 +1666,9 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - material : Material
-    
-
-            Parameters
-            ----------
-                - self
+            ## Sockets
+            - material : Material## Parameters
+            - self
     
 
         Node creation
@@ -1858,18 +1705,11 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - mesh_2 : *Geometry (self)
-                - self_intersection : Boolean
-                - hole_tolerant : Boolean
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'INTERSECT'
+            ## Sockets
+            - mesh_2 : *Geometry (self)
+            - self_intersection : Boolean
+            - hole_tolerant : Boolean## Fixed parameters
+            - operation : 'INTERSECT'
     
 
         Node creation
@@ -1902,18 +1742,11 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - mesh_2 : *Geometry (self)
-                - self_intersection : Boolean
-                - hole_tolerant : Boolean
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'UNION'
+            ## Sockets
+            - mesh_2 : *Geometry (self)
+            - self_intersection : Boolean
+            - hole_tolerant : Boolean## Fixed parameters
+            - operation : 'UNION'
     
 
         Node creation
@@ -1946,19 +1779,12 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - mesh_1 : Geometry (self)
-                - mesh_2 : *Geometry
-                - self_intersection : Boolean
-                - hole_tolerant : Boolean
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'DIFFERENCE'
+            ## Sockets
+            - mesh_1 : Geometry (self)
+            - mesh_2 : *Geometry
+            - self_intersection : Boolean
+            - hole_tolerant : Boolean## Fixed parameters
+            - operation : 'DIFFERENCE'
     
 
         Node creation
@@ -1991,12 +1817,9 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - mesh : Mesh (self)
-                - selection : Boolean
+            ## Sockets
+            - mesh : Mesh (self)
+            - selection : Boolean
     
 
         Node creation
@@ -2029,12 +1852,9 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - mesh : Mesh (self)
-                - level : Integer
+            ## Sockets
+            - mesh : Mesh (self)
+            - level : Integer
     
 
         Node creation
@@ -2067,19 +1887,12 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - mesh : Mesh (self)
-                - level : Integer
-                - crease : Float
-    
-
-            Parameters
-            ----------
-                - boundary_smooth : 'ALL' in [PRESERVE_CORNERS, ALL]
-                - uv_smooth : 'PRESERVE_BOUNDARIES' in [NONE, PRESERVE_CORNERS, PRESERVE_CORNERS_AND_JUNCTIONS, PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE, PRESERVE_BOUNDARIES, SMOOTH_ALL]
+            ## Sockets
+            - mesh : Mesh (self)
+            - level : Integer
+            - crease : Float## Parameters
+            - boundary_smooth : 'ALL' in [PRESERVE_CORNERS, ALL]
+            - uv_smooth : 'PRESERVE_BOUNDARIES' in [NONE, PRESERVE_CORNERS, PRESERVE_CORNERS_AND_JUNCTIONS, PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE, PRESERVE_BOUNDARIES, SMOOTH_ALL]
     
 
         Node creation
@@ -2112,19 +1925,12 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - mesh : Mesh (self)
-                - selection : Boolean
-                - minimum_vertices : Integer
-    
-
-            Parameters
-            ----------
-                - ngon_method : 'BEAUTY' in [BEAUTY, CLIP]
-                - quad_method : 'SHORTEST_DIAGONAL' in [BEAUTY, FIXED, FIXED_ALTERNATE, SHORTEST_DIAGONAL, LONGEST_DIAGONAL]
+            ## Sockets
+            - mesh : Mesh (self)
+            - selection : Boolean
+            - minimum_vertices : Integer## Parameters
+            - ngon_method : 'BEAUTY' in [BEAUTY, CLIP]
+            - quad_method : 'SHORTEST_DIAGONAL' in [BEAUTY, FIXED, FIXED_ALTERNATE, SHORTEST_DIAGONAL, LONGEST_DIAGONAL]
     
 
         Node creation
@@ -2157,12 +1963,9 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - mesh : Mesh (self)
-                - keep_boundaries : Boolean
+            ## Sockets
+            - mesh : Mesh (self)
+            - keep_boundaries : Boolean
     
 
         Node creation
@@ -2195,12 +1998,9 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - mesh : Mesh (self)
-                - selection : Boolean
+            ## Sockets
+            - mesh : Mesh (self)
+            - selection : Boolean
     
 
         Node creation
@@ -2233,20 +2033,13 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - mesh : Mesh (self)
-                - selection : Boolean
-                - offset : Vector
-                - offset_scale : Float
-                - individual : Boolean
-    
-
-            Parameters
-            ----------
-                - mode : 'FACES' in [VERTICES, EDGES, FACES]
+            ## Sockets
+            - mesh : Mesh (self)
+            - selection : Boolean
+            - offset : Vector
+            - offset_scale : Float
+            - individual : Boolean## Parameters
+            - mode : 'FACES' in [VERTICES, EDGES, FACES]
     
 
         Node creation
@@ -2279,12 +2072,9 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - mesh : Mesh (self)
-                - selection : Boolean
+            ## Sockets
+            - mesh : Mesh (self)
+            - selection : Boolean
     
 
         Node creation
@@ -2317,19 +2107,12 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - mesh : Mesh (self)
-                - selection : Boolean
-                - position : Vector
-                - radius : Float
-    
-
-            Parameters
-            ----------
-                - mode : 'VERTICES' in [VERTICES, EDGES, FACES, CORNERS]
+            ## Sockets
+            - mesh : Mesh (self)
+            - selection : Boolean
+            - position : Vector
+            - radius : Float## Parameters
+            - mode : 'VERTICES' in [VERTICES, EDGES, FACES, CORNERS]
     
 
         Node creation
@@ -2362,22 +2145,15 @@ class Mesh(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - mesh : Mesh (self)
-                - selection : Boolean
-                - distance_min : Float
-                - density_max : Float
-                - density : Float
-                - density_factor : Float
-                - seed : Integer
-    
-
-            Parameters
-            ----------
-                - distribute_method : 'RANDOM' in [RANDOM, POISSON]
+            ## Sockets
+            - mesh : Mesh (self)
+            - selection : Boolean
+            - distance_min : Float
+            - density_max : Float
+            - density : Float
+            - density_factor : Float
+            - seed : Integer## Parameters
+            - distribute_method : 'RANDOM' in [RANDOM, POISSON]
     
 
         Node creation

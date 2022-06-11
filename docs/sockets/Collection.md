@@ -26,15 +26,10 @@ v = collection.switch(switch1, true)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - false : Collection (self)
 - switch1 : Boolean
-- true : Collection
-
-#### Fixed parameters
-
+- true : Collection## Fixed parameters
 - input_type : 'COLLECTION'
 
 ### Node creation
@@ -63,15 +58,10 @@ v = collection.info(separate_children, reset_children, transform_space)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - collection : Collection (self)
 - separate_children : Boolean
-- reset_children : Boolean
-
-#### Parameters
-
+- reset_children : Boolean## Parameters
 - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
 ### Node creation

@@ -25,15 +25,10 @@ v = image.switch(switch1, true)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - false : Image (self)
 - switch1 : Boolean
-- true : Image
-
-#### Fixed parameters
-
+- true : Image## Fixed parameters
 - input_type : 'IMAGE'
 
 ### Node creation

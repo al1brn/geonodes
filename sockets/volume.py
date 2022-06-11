@@ -43,20 +43,13 @@ class Volume(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - volume : Volume (self)
-                - voxel_size : Float
-                - voxel_amount : Float
-                - threshold : Float
-                - adaptivity : Float
-    
-
-            Parameters
-            ----------
-                - resolution_mode : 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
+            ## Sockets
+            - volume : Volume (self)
+            - voxel_size : Float
+            - voxel_amount : Float
+            - threshold : Float
+            - adaptivity : Float## Parameters
+            - resolution_mode : 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
     
 
         Node creation

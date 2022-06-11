@@ -108,19 +108,12 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - min : Vector
-                - max : Vector
-                - ID : Integer
-                - seed : Integer
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT_VECTOR'
+            ## Sockets
+            - min : Vector
+            - max : Vector
+            - ID : Integer
+            - seed : Integer## Fixed parameters
+            - data_type : 'FLOAT_VECTOR'
     
 
         Node creation
@@ -154,13 +147,10 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - x : Float
-                - y : Float
-                - z : Float
+            ## Sockets
+            - x : Float
+            - y : Float
+            - z : Float
     
 
         Node creation
@@ -194,19 +184,12 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - rotation : Vector
-                - factor : Float
-                - vector : Vector
-    
-
-            Parameters
-            ----------
-                - axis : 'X' in [X, Y, Z]
-                - pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
+            ## Sockets
+            - rotation : Vector
+            - factor : Float
+            - vector : Vector## Parameters
+            - axis : 'X' in [X, Y, Z]
+            - pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
     
 
         Node creation
@@ -244,16 +227,9 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector : Vector (self)
-    
-
-            Fixed parameters
-            ----------------
-                - label:f"{self.node_chain_label}.separate"
+            ## Sockets
+            - vector : Vector (self)## Fixed parameters
+            - label:f"{self.node_chain_label}.separate"
     
 
         Node creation
@@ -289,16 +265,9 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector : Vector (self)
-    
-
-            Fixed parameters
-            ----------------
-                - label:f"{self.node_chain_label}.x"
+            ## Sockets
+            - vector : Vector (self)## Fixed parameters
+            - label:f"{self.node_chain_label}.x"
     
 
         Node creation
@@ -336,16 +305,9 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector : Vector (self)
-    
-
-            Fixed parameters
-            ----------------
-                - label:f"{self.node_chain_label}.y"
+            ## Sockets
+            - vector : Vector (self)## Fixed parameters
+            - label:f"{self.node_chain_label}.y"
     
 
         Node creation
@@ -383,16 +345,9 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector : Vector (self)
-    
-
-            Fixed parameters
-            ----------------
-                - label:f"{self.node_chain_label}.z"
+            ## Sockets
+            - vector : Vector (self)## Fixed parameters
+            - label:f"{self.node_chain_label}.z"
     
 
         Node creation
@@ -433,22 +388,11 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value : Vector (self)
-                - group_index : Integer
-    
-
-            Parameters
-            ----------
-                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT_VECTOR'
+            ## Sockets
+            - value : Vector (self)
+            - group_index : Integer## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - data_type : 'FLOAT_VECTOR'
     
 
         Node creation
@@ -481,23 +425,12 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - attribute : Vector (self)
-                - geometry : Geometry
-                - selection : Boolean
-    
-
-            Parameters
-            ----------
-                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT_VECTOR'
+            ## Sockets
+            - attribute : Vector (self)
+            - geometry : Geometry
+            - selection : Boolean## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - data_type : 'FLOAT_VECTOR'
     
 
         Node creation
@@ -530,25 +463,14 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - attribute : Vector (self)
-                - source : Geometry
-                - source_position : Vector
-                - index : Integer
-    
-
-            Parameters
-            ----------
-                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-                - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT_VECTOR'
+            ## Sockets
+            - attribute : Vector (self)
+            - source : Geometry
+            - source_position : Vector
+            - index : Integer## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+            - data_type : 'FLOAT_VECTOR'
     
 
         Node creation
@@ -581,22 +503,11 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value : Vector (self)
-                - geometry : Geometry
-    
-
-            Parameters
-            ----------
-                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT_VECTOR'
+            ## Sockets
+            - value : Vector (self)
+            - geometry : Geometry## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - data_type : 'FLOAT_VECTOR'
     
 
         Node creation
@@ -629,22 +540,11 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value : Vector (self)
-                - index : Integer
-    
-
-            Parameters
-            ----------
-                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT_VECTOR'
+            ## Sockets
+            - value : Vector (self)
+            - index : Integer## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - data_type : 'FLOAT_VECTOR'
     
 
         Node creation
@@ -677,25 +577,14 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - attribute : Vector (self)
-                - target_geometry : Geometry
-                - source_position : Vector
-                - ray_direction : Vector
-                - ray_length : Float
-    
-
-            Parameters
-            ----------
-                - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT_VECTOR'
+            ## Sockets
+            - attribute : Vector (self)
+            - target_geometry : Geometry
+            - source_position : Vector
+            - ray_direction : Vector
+            - ray_length : Float## Parameters
+            - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
+            - data_type : 'FLOAT_VECTOR'
     
 
         Node creation
@@ -728,26 +617,15 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector : Vector (self)
-                - from_min : Vector
-                - from_max : Vector
-                - to_min : Vector
-                - to_max : Vector
-    
-
-            Parameters
-            ----------
-                - clamp : True
-                - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT_VECTOR'
+            ## Sockets
+            - vector : Vector (self)
+            - from_min : Vector
+            - from_max : Vector
+            - to_min : Vector
+            - to_max : Vector## Parameters
+            - clamp : True
+            - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]## Fixed parameters
+            - data_type : 'FLOAT_VECTOR'
     
 
         Node creation
@@ -780,25 +658,14 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : Vector (self)
-                - b : Vector
-                - c : Float
-                - angle : Float
-    
-
-            Parameters
-            ----------
-                - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'VECTOR'
-                - operation : 'LESS_THAN'
+            ## Sockets
+            - a : Vector (self)
+            - b : Vector
+            - c : Float
+            - angle : Float## Parameters
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+            - data_type : 'VECTOR'
+            - operation : 'LESS_THAN'
     
 
         Node creation
@@ -831,25 +698,14 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : Vector (self)
-                - b : Vector
-                - c : Float
-                - angle : Float
-    
-
-            Parameters
-            ----------
-                - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'VECTOR'
-                - operation : 'LESS_EQUAL'
+            ## Sockets
+            - a : Vector (self)
+            - b : Vector
+            - c : Float
+            - angle : Float## Parameters
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+            - data_type : 'VECTOR'
+            - operation : 'LESS_EQUAL'
     
 
         Node creation
@@ -882,25 +738,14 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : Vector (self)
-                - b : Vector
-                - c : Float
-                - angle : Float
-    
-
-            Parameters
-            ----------
-                - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'VECTOR'
-                - operation : 'GREATER_THAN'
+            ## Sockets
+            - a : Vector (self)
+            - b : Vector
+            - c : Float
+            - angle : Float## Parameters
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+            - data_type : 'VECTOR'
+            - operation : 'GREATER_THAN'
     
 
         Node creation
@@ -933,25 +778,14 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : Vector (self)
-                - b : Vector
-                - c : Float
-                - angle : Float
-    
-
-            Parameters
-            ----------
-                - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'VECTOR'
-                - operation : 'GREATER_EQUAL'
+            ## Sockets
+            - a : Vector (self)
+            - b : Vector
+            - c : Float
+            - angle : Float## Parameters
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+            - data_type : 'VECTOR'
+            - operation : 'GREATER_EQUAL'
     
 
         Node creation
@@ -984,26 +818,15 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : Vector (self)
-                - b : Vector
-                - c : Float
-                - angle : Float
-                - epsilon : Float
-    
-
-            Parameters
-            ----------
-                - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'VECTOR'
-                - operation : 'EQUAL'
+            ## Sockets
+            - a : Vector (self)
+            - b : Vector
+            - c : Float
+            - angle : Float
+            - epsilon : Float## Parameters
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+            - data_type : 'VECTOR'
+            - operation : 'EQUAL'
     
 
         Node creation
@@ -1036,26 +859,15 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : Vector (self)
-                - b : Vector
-                - c : Float
-                - angle : Float
-                - epsilon : Float
-    
-
-            Parameters
-            ----------
-                - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'VECTOR'
-                - operation : 'NOT_EQUAL'
+            ## Sockets
+            - a : Vector (self)
+            - b : Vector
+            - c : Float
+            - angle : Float
+            - epsilon : Float## Parameters
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+            - data_type : 'VECTOR'
+            - operation : 'NOT_EQUAL'
     
 
         Node creation
@@ -1088,17 +900,10 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - vector1 : Vector
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'ADD'
+            ## Sockets
+            - vector0 : Vector (self)
+            - vector1 : Vector## Fixed parameters
+            - operation : 'ADD'
     
 
         Node creation
@@ -1131,17 +936,10 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - vector1 : Vector
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'SUBTRACT'
+            ## Sockets
+            - vector0 : Vector (self)
+            - vector1 : Vector## Fixed parameters
+            - operation : 'SUBTRACT'
     
 
         Node creation
@@ -1174,17 +972,10 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - vector1 : Vector
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'MULTIPLY'
+            ## Sockets
+            - vector0 : Vector (self)
+            - vector1 : Vector## Fixed parameters
+            - operation : 'MULTIPLY'
     
 
         Node creation
@@ -1217,17 +1008,10 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - vector1 : Vector
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'DIVIDE'
+            ## Sockets
+            - vector0 : Vector (self)
+            - vector1 : Vector## Fixed parameters
+            - operation : 'DIVIDE'
     
 
         Node creation
@@ -1260,18 +1044,11 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - vector1 : Vector
-                - vector2 : Vector
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'MULTIPLY_ADD'
+            ## Sockets
+            - vector0 : Vector (self)
+            - vector1 : Vector
+            - vector2 : Vector## Fixed parameters
+            - operation : 'MULTIPLY_ADD'
     
 
         Node creation
@@ -1304,17 +1081,10 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - vector1 : Vector
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'CROSS_PRODUCT'
+            ## Sockets
+            - vector0 : Vector (self)
+            - vector1 : Vector## Fixed parameters
+            - operation : 'CROSS_PRODUCT'
     
 
         Node creation
@@ -1347,17 +1117,10 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - vector1 : Vector
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'PROJECT'
+            ## Sockets
+            - vector0 : Vector (self)
+            - vector1 : Vector## Fixed parameters
+            - operation : 'PROJECT'
     
 
         Node creation
@@ -1390,17 +1153,10 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - vector1 : Vector
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'REFLECT'
+            ## Sockets
+            - vector0 : Vector (self)
+            - vector1 : Vector## Fixed parameters
+            - operation : 'REFLECT'
     
 
         Node creation
@@ -1433,18 +1189,11 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - vector1 : Vector
-                - scale : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'REFRACT'
+            ## Sockets
+            - vector0 : Vector (self)
+            - vector1 : Vector
+            - scale : Float## Fixed parameters
+            - operation : 'REFRACT'
     
 
         Node creation
@@ -1477,18 +1226,11 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - vector1 : Vector
-                - vector2 : Vector
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'FACEFORWARD'
+            ## Sockets
+            - vector0 : Vector (self)
+            - vector1 : Vector
+            - vector2 : Vector## Fixed parameters
+            - operation : 'FACEFORWARD'
     
 
         Node creation
@@ -1521,17 +1263,10 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - vector1 : Vector
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'DOT_PRODUCT'
+            ## Sockets
+            - vector0 : Vector (self)
+            - vector1 : Vector## Fixed parameters
+            - operation : 'DOT_PRODUCT'
     
 
         Node creation
@@ -1564,17 +1299,10 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - vector1 : Vector
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'DISTANCE'
+            ## Sockets
+            - vector0 : Vector (self)
+            - vector1 : Vector## Fixed parameters
+            - operation : 'DISTANCE'
     
 
         Node creation
@@ -1607,16 +1335,9 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'LENGTH'
+            ## Sockets
+            - vector0 : Vector (self)## Fixed parameters
+            - operation : 'LENGTH'
     
 
         Node creation
@@ -1649,17 +1370,10 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - scale : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'SCALE'
+            ## Sockets
+            - vector0 : Vector (self)
+            - scale : Float## Fixed parameters
+            - operation : 'SCALE'
     
 
         Node creation
@@ -1692,16 +1406,9 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'NORMALIZE'
+            ## Sockets
+            - vector0 : Vector (self)## Fixed parameters
+            - operation : 'NORMALIZE'
     
 
         Node creation
@@ -1734,16 +1441,9 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'ABSOLUTE'
+            ## Sockets
+            - vector0 : Vector (self)## Fixed parameters
+            - operation : 'ABSOLUTE'
     
 
         Node creation
@@ -1776,17 +1476,10 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - vector1 : Vector
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'MINIMUM'
+            ## Sockets
+            - vector0 : Vector (self)
+            - vector1 : Vector## Fixed parameters
+            - operation : 'MINIMUM'
     
 
         Node creation
@@ -1819,17 +1512,10 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - vector1 : Vector
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'MAXIMUM'
+            ## Sockets
+            - vector0 : Vector (self)
+            - vector1 : Vector## Fixed parameters
+            - operation : 'MAXIMUM'
     
 
         Node creation
@@ -1862,16 +1548,9 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'FLOOR'
+            ## Sockets
+            - vector0 : Vector (self)## Fixed parameters
+            - operation : 'FLOOR'
     
 
         Node creation
@@ -1904,16 +1583,9 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'CEIL'
+            ## Sockets
+            - vector0 : Vector (self)## Fixed parameters
+            - operation : 'CEIL'
     
 
         Node creation
@@ -1946,16 +1618,9 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'FRACTION'
+            ## Sockets
+            - vector0 : Vector (self)## Fixed parameters
+            - operation : 'FRACTION'
     
 
         Node creation
@@ -1988,17 +1653,10 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - vector1 : Vector
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'MODULO'
+            ## Sockets
+            - vector0 : Vector (self)
+            - vector1 : Vector## Fixed parameters
+            - operation : 'MODULO'
     
 
         Node creation
@@ -2031,18 +1689,11 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - vector1 : Vector
-                - vector2 : Vector
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'WRAP'
+            ## Sockets
+            - vector0 : Vector (self)
+            - vector1 : Vector
+            - vector2 : Vector## Fixed parameters
+            - operation : 'WRAP'
     
 
         Node creation
@@ -2075,17 +1726,10 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-                - vector1 : Vector
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'SNAP'
+            ## Sockets
+            - vector0 : Vector (self)
+            - vector1 : Vector## Fixed parameters
+            - operation : 'SNAP'
     
 
         Node creation
@@ -2118,16 +1762,9 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'SINE'
+            ## Sockets
+            - vector0 : Vector (self)## Fixed parameters
+            - operation : 'SINE'
     
 
         Node creation
@@ -2160,16 +1797,9 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'COSINE'
+            ## Sockets
+            - vector0 : Vector (self)## Fixed parameters
+            - operation : 'COSINE'
     
 
         Node creation
@@ -2202,16 +1832,9 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector0 : Vector (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'TANGENT'
+            ## Sockets
+            - vector0 : Vector (self)## Fixed parameters
+            - operation : 'TANGENT'
     
 
         Node creation
@@ -2244,12 +1867,9 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector : Vector (self)
-                - fac : Float
+            ## Sockets
+            - vector : Vector (self)
+            - fac : Float
     
 
         Node creation
@@ -2282,19 +1902,12 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - rotation : Vector (self)
-                - factor : Float
-                - vector : Vector
-    
-
-            Parameters
-            ----------
-                - axis : 'X' in [X, Y, Z]
-                - pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
+            ## Sockets
+            - rotation : Vector (self)
+            - factor : Float
+            - vector : Vector## Parameters
+            - axis : 'X' in [X, Y, Z]
+            - pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
     
 
         Node creation
@@ -2327,17 +1940,10 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - rotation : Vector (self)
-                - rotate_by : Vector
-    
-
-            Parameters
-            ----------
-                - space : 'OBJECT' in [OBJECT, LOCAL]
+            ## Sockets
+            - rotation : Vector (self)
+            - rotate_by : Vector## Parameters
+            - space : 'OBJECT' in [OBJECT, LOCAL]
     
 
         Node creation
@@ -2370,21 +1976,14 @@ class Vector(dsock.Vector):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - vector : Vector (self)
-                - center : Vector
-                - axis : Vector
-                - angle : Float
-                - rotation : Vector
-    
-
-            Parameters
-            ----------
-                - invert : False
-                - rotation_type : 'AXIS_ANGLE' in [AXIS_ANGLE, X_AXIS, Y_AXIS, Z_AXIS, EULER_XYZ]
+            ## Sockets
+            - vector : Vector (self)
+            - center : Vector
+            - axis : Vector
+            - angle : Float
+            - rotation : Vector## Parameters
+            - invert : False
+            - rotation_type : 'AXIS_ANGLE' in [AXIS_ANGLE, X_AXIS, Y_AXIS, Z_AXIS, EULER_XYZ]
     
 
         Node creation

@@ -42,15 +42,10 @@ v = Boolean.Random(probability, ID, seed)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - probability : Float
 - ID : Integer
-- seed : Integer
-
-#### Fixed parameters
-
+- seed : Integer## Fixed parameters
 - data_type : 'BOOLEAN'
 
 ### Node creation
@@ -79,21 +74,13 @@ v = boolean.transfer_attribute(source, source_position, index, domain, mapping)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - attribute : Boolean (self)
 - source : Geometry
 - source_position : Vector
-- index : Integer
-
-#### Parameters
-
+- index : Integer## Parameters
 - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
-
-#### Fixed parameters
-
+- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
 - data_type : 'BOOLEAN'
 
 ### Node creation
@@ -122,18 +109,10 @@ v = boolean.capture_attribute(geometry, domain)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value : Boolean (self)
-- geometry : Geometry
-
-#### Parameters
-
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-
-#### Fixed parameters
-
+- geometry : Geometry## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
 - data_type : 'BOOLEAN'
 
 ### Node creation
@@ -162,18 +141,10 @@ v = boolean.field_at_index(index, domain)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value : Boolean (self)
-- index : Integer
-
-#### Parameters
-
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-
-#### Fixed parameters
-
+- index : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
 - data_type : 'BOOLEAN'
 
 ### Node creation
@@ -202,21 +173,13 @@ v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length,
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - attribute : Boolean (self)
 - target_geometry : Geometry
 - source_position : Vector
 - ray_direction : Vector
-- ray_length : Float
-
-#### Parameters
-
-- mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
-
-#### Fixed parameters
-
+- ray_length : Float## Parameters
+- mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
 - data_type : 'BOOLEAN'
 
 ### Node creation
@@ -245,15 +208,10 @@ v = boolean.switch(false, true)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - switch0 : Boolean (self)
 - false : Boolean
-- true : Boolean
-
-#### Fixed parameters
-
+- true : Boolean## Fixed parameters
 - input_type : 'BOOLEAN'
 
 ### Node creation
@@ -282,14 +240,9 @@ v = boolean.b_and(boolean1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - boolean0 : Boolean (self)
-- boolean1 : Boolean
-
-#### Fixed parameters
-
+- boolean1 : Boolean## Fixed parameters
 - operation : 'AND'
 
 ### Node creation
@@ -318,14 +271,9 @@ v = boolean.b_or(boolean1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - boolean0 : Boolean (self)
-- boolean1 : Boolean
-
-#### Fixed parameters
-
+- boolean1 : Boolean## Fixed parameters
 - operation : 'OR'
 
 ### Node creation
@@ -354,13 +302,8 @@ v = boolean.b_not()
 
 ### Arguments
 
-
-#### Sockets
-
-- boolean0 : Boolean (self)
-
-#### Fixed parameters
-
+## Sockets
+- boolean0 : Boolean (self)## Fixed parameters
 - operation : 'NOT'
 
 ### Node creation
@@ -389,14 +332,9 @@ v = boolean.nand(boolean1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - boolean0 : Boolean (self)
-- boolean1 : Boolean
-
-#### Fixed parameters
-
+- boolean1 : Boolean## Fixed parameters
 - operation : 'NAND'
 
 ### Node creation
@@ -425,14 +363,9 @@ v = boolean.nor(boolean1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - boolean0 : Boolean (self)
-- boolean1 : Boolean
-
-#### Fixed parameters
-
+- boolean1 : Boolean## Fixed parameters
 - operation : 'NOR'
 
 ### Node creation
@@ -461,14 +394,9 @@ v = boolean.xnor(boolean1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - boolean0 : Boolean (self)
-- boolean1 : Boolean
-
-#### Fixed parameters
-
+- boolean1 : Boolean## Fixed parameters
 - operation : 'XNOR'
 
 ### Node creation
@@ -497,14 +425,9 @@ v = boolean.xor(boolean1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - boolean0 : Boolean (self)
-- boolean1 : Boolean
-
-#### Fixed parameters
-
+- boolean1 : Boolean## Fixed parameters
 - operation : 'XOR'
 
 ### Node creation
@@ -533,14 +456,9 @@ v = boolean.imply(boolean1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - boolean0 : Boolean (self)
-- boolean1 : Boolean
-
-#### Fixed parameters
-
+- boolean1 : Boolean## Fixed parameters
 - operation : 'IMPLY'
 
 ### Node creation
@@ -569,14 +487,9 @@ v = boolean.nimply(boolean1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - boolean0 : Boolean (self)
-- boolean1 : Boolean
-
-#### Fixed parameters
-
+- boolean1 : Boolean## Fixed parameters
 - operation : 'NIMPLY'
 
 ### Node creation

@@ -107,19 +107,12 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - min : Float
-                - max : Float
-                - ID : Integer
-                - seed : Integer
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT'
+            ## Sockets
+            - min : Float
+            - max : Float
+            - ID : Integer
+            - seed : Integer## Fixed parameters
+            - data_type : 'FLOAT'
     
 
         Node creation
@@ -156,22 +149,11 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value : Float (self)
-                - group_index : Integer
-    
-
-            Parameters
-            ----------
-                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT'
+            ## Sockets
+            - value : Float (self)
+            - group_index : Integer## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - data_type : 'FLOAT'
     
 
         Node creation
@@ -204,23 +186,12 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - attribute : Float (self)
-                - geometry : Geometry
-                - selection : Boolean
-    
-
-            Parameters
-            ----------
-                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT'
+            ## Sockets
+            - attribute : Float (self)
+            - geometry : Geometry
+            - selection : Boolean## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - data_type : 'FLOAT'
     
 
         Node creation
@@ -253,25 +224,14 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - attribute : Float (self)
-                - source : Geometry
-                - source_position : Vector
-                - index : Integer
-    
-
-            Parameters
-            ----------
-                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-                - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT'
+            ## Sockets
+            - attribute : Float (self)
+            - source : Geometry
+            - source_position : Vector
+            - index : Integer## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+            - data_type : 'FLOAT'
     
 
         Node creation
@@ -304,22 +264,11 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value : Float (self)
-                - geometry : Geometry
-    
-
-            Parameters
-            ----------
-                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT'
+            ## Sockets
+            - value : Float (self)
+            - geometry : Geometry## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - data_type : 'FLOAT'
     
 
         Node creation
@@ -352,22 +301,11 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value : Float (self)
-                - index : Integer
-    
-
-            Parameters
-            ----------
-                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT'
+            ## Sockets
+            - value : Float (self)
+            - index : Integer## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - data_type : 'FLOAT'
     
 
         Node creation
@@ -400,25 +338,14 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - attribute : Float (self)
-                - target_geometry : Geometry
-                - source_position : Vector
-                - ray_direction : Vector
-                - ray_length : Float
-    
-
-            Parameters
-            ----------
-                - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT'
+            ## Sockets
+            - attribute : Float (self)
+            - target_geometry : Geometry
+            - source_position : Vector
+            - ray_direction : Vector
+            - ray_length : Float## Parameters
+            - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
+            - data_type : 'FLOAT'
     
 
         Node creation
@@ -451,18 +378,11 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - false : Float (self)
-                - switch0 : Boolean
-                - true : Float
-    
-
-            Fixed parameters
-            ----------------
-                - input_type : 'FLOAT'
+            ## Sockets
+            - false : Float (self)
+            - switch0 : Boolean
+            - true : Float## Fixed parameters
+            - input_type : 'FLOAT'
     
 
         Node creation
@@ -495,26 +415,15 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value : Float (self)
-                - from_min : Float
-                - from_max : Float
-                - to_min : Float
-                - to_max : Float
-    
-
-            Parameters
-            ----------
-                - clamp : True
-                - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT'
+            ## Sockets
+            - value : Float (self)
+            - from_min : Float
+            - from_max : Float
+            - to_min : Float
+            - to_max : Float## Parameters
+            - clamp : True
+            - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]## Fixed parameters
+            - data_type : 'FLOAT'
     
 
         Node creation
@@ -547,19 +456,12 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : Float (self)
-                - b : Float
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT'
-                - mode : 'ELEMENT'
-                - operation : 'LESS_THAN'
+            ## Sockets
+            - a : Float (self)
+            - b : Float## Fixed parameters
+            - data_type : 'FLOAT'
+            - mode : 'ELEMENT'
+            - operation : 'LESS_THAN'
     
 
         Node creation
@@ -592,19 +494,12 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : Float (self)
-                - b : Float
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT'
-                - mode : 'ELEMENT'
-                - operation : 'LESS_EQUAL'
+            ## Sockets
+            - a : Float (self)
+            - b : Float## Fixed parameters
+            - data_type : 'FLOAT'
+            - mode : 'ELEMENT'
+            - operation : 'LESS_EQUAL'
     
 
         Node creation
@@ -637,19 +532,12 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : Float (self)
-                - b : Float
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT'
-                - mode : 'ELEMENT'
-                - operation : 'GREATER_THAN'
+            ## Sockets
+            - a : Float (self)
+            - b : Float## Fixed parameters
+            - data_type : 'FLOAT'
+            - mode : 'ELEMENT'
+            - operation : 'GREATER_THAN'
     
 
         Node creation
@@ -682,19 +570,12 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : Float (self)
-                - b : Float
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT'
-                - mode : 'ELEMENT'
-                - operation : 'GREATER_EQUAL'
+            ## Sockets
+            - a : Float (self)
+            - b : Float## Fixed parameters
+            - data_type : 'FLOAT'
+            - mode : 'ELEMENT'
+            - operation : 'GREATER_EQUAL'
     
 
         Node creation
@@ -727,20 +608,13 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : Float (self)
-                - b : Float
-                - epsilon : Float
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT'
-                - mode : 'ELEMENT'
-                - operation : 'EQUAL'
+            ## Sockets
+            - a : Float (self)
+            - b : Float
+            - epsilon : Float## Fixed parameters
+            - data_type : 'FLOAT'
+            - mode : 'ELEMENT'
+            - operation : 'EQUAL'
     
 
         Node creation
@@ -773,20 +647,13 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : Float (self)
-                - b : Float
-                - epsilon : Float
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT'
-                - mode : 'ELEMENT'
-                - operation : 'NOT_EQUAL'
+            ## Sockets
+            - a : Float (self)
+            - b : Float
+            - epsilon : Float## Fixed parameters
+            - data_type : 'FLOAT'
+            - mode : 'ELEMENT'
+            - operation : 'NOT_EQUAL'
     
 
         Node creation
@@ -819,17 +686,10 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'ADD'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float## Fixed parameters
+            - operation : 'ADD'
     
 
         Node creation
@@ -862,17 +722,10 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'SUBTRACT'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float## Fixed parameters
+            - operation : 'SUBTRACT'
     
 
         Node creation
@@ -905,17 +758,10 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'MULTIPLY'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float## Fixed parameters
+            - operation : 'MULTIPLY'
     
 
         Node creation
@@ -948,17 +794,10 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'DIVIDE'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float## Fixed parameters
+            - operation : 'DIVIDE'
     
 
         Node creation
@@ -991,18 +830,11 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-                - value2 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'MULTIPLY_ADD'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float
+            - value2 : Float## Fixed parameters
+            - operation : 'MULTIPLY_ADD'
     
 
         Node creation
@@ -1035,17 +867,10 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'POWER'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float## Fixed parameters
+            - operation : 'POWER'
     
 
         Node creation
@@ -1078,17 +903,10 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'LOGARITHM'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float## Fixed parameters
+            - operation : 'LOGARITHM'
     
 
         Node creation
@@ -1121,16 +939,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'SQRT'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'SQRT'
     
 
         Node creation
@@ -1163,16 +974,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'INVERSE_SQRT'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'INVERSE_SQRT'
     
 
         Node creation
@@ -1205,16 +1009,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'ABSOLUTE'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'ABSOLUTE'
     
 
         Node creation
@@ -1247,16 +1044,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'EXPONENT'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'EXPONENT'
     
 
         Node creation
@@ -1289,17 +1079,10 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'MINIMUM'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float## Fixed parameters
+            - operation : 'MINIMUM'
     
 
         Node creation
@@ -1332,17 +1115,10 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'MAXIMUM'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float## Fixed parameters
+            - operation : 'MAXIMUM'
     
 
         Node creation
@@ -1375,17 +1151,10 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'LESS_THAN'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float## Fixed parameters
+            - operation : 'LESS_THAN'
     
 
         Node creation
@@ -1418,17 +1187,10 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'GREATER_THAN'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float## Fixed parameters
+            - operation : 'GREATER_THAN'
     
 
         Node creation
@@ -1461,16 +1223,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'SIGN'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'SIGN'
     
 
         Node creation
@@ -1503,18 +1258,11 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-                - value2 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'COMPARE'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float
+            - value2 : Float## Fixed parameters
+            - operation : 'COMPARE'
     
 
         Node creation
@@ -1547,18 +1295,11 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-                - value2 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'SMOOTH_MIN'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float
+            - value2 : Float## Fixed parameters
+            - operation : 'SMOOTH_MIN'
     
 
         Node creation
@@ -1591,18 +1332,11 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-                - value2 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'SMOOTH_MAX'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float
+            - value2 : Float## Fixed parameters
+            - operation : 'SMOOTH_MAX'
     
 
         Node creation
@@ -1635,16 +1369,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'ROUND'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'ROUND'
     
 
         Node creation
@@ -1677,16 +1404,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'FLOOR'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'FLOOR'
     
 
         Node creation
@@ -1719,16 +1439,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'CEIL'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'CEIL'
     
 
         Node creation
@@ -1761,16 +1474,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'TRUNC'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'TRUNC'
     
 
         Node creation
@@ -1803,16 +1509,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'FRACT'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'FRACT'
     
 
         Node creation
@@ -1845,17 +1544,10 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'MODULO'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float## Fixed parameters
+            - operation : 'MODULO'
     
 
         Node creation
@@ -1888,18 +1580,11 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-                - value2 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'WRAP'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float
+            - value2 : Float## Fixed parameters
+            - operation : 'WRAP'
     
 
         Node creation
@@ -1932,17 +1617,10 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'SNAP'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float## Fixed parameters
+            - operation : 'SNAP'
     
 
         Node creation
@@ -1975,17 +1653,10 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'PINGPONG'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float## Fixed parameters
+            - operation : 'PINGPONG'
     
 
         Node creation
@@ -2018,16 +1689,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'SINE'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'SINE'
     
 
         Node creation
@@ -2060,16 +1724,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'COSINE'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'COSINE'
     
 
         Node creation
@@ -2102,16 +1759,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'TANGENT'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'TANGENT'
     
 
         Node creation
@@ -2144,16 +1794,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'ARCSINE'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'ARCSINE'
     
 
         Node creation
@@ -2186,16 +1829,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'ARCCOSINE'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'ARCCOSINE'
     
 
         Node creation
@@ -2228,16 +1864,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'ARCTANGENT'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'ARCTANGENT'
     
 
         Node creation
@@ -2270,17 +1899,10 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-                - value1 : Float
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'ARCTAN2'
+            ## Sockets
+            - value0 : Float (self)
+            - value1 : Float## Fixed parameters
+            - operation : 'ARCTAN2'
     
 
         Node creation
@@ -2313,16 +1935,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'SINH'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'SINH'
     
 
         Node creation
@@ -2355,16 +1970,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'COSH'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'COSH'
     
 
         Node creation
@@ -2397,16 +2005,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'TANH'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'TANH'
     
 
         Node creation
@@ -2439,16 +2040,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'RADIANS'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'RADIANS'
     
 
         Node creation
@@ -2481,16 +2075,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value0 : Float (self)
-    
-
-            Fixed parameters
-            ----------------
-                - operation : 'DEGREES'
+            ## Sockets
+            - value0 : Float (self)## Fixed parameters
+            - operation : 'DEGREES'
     
 
         Node creation
@@ -2523,16 +2110,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - float : Float (self)
-    
-
-            Parameters
-            ----------
-                - rounding_mode : 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE]
+            ## Sockets
+            - float : Float (self)## Parameters
+            - rounding_mode : 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE]
     
 
         Node creation
@@ -2565,12 +2145,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value : Float (self)
-                - decimals : Integer
+            ## Sockets
+            - value : Float (self)
+            - decimals : Integer
     
 
         Node creation
@@ -2603,11 +2180,8 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - fac : Float (self)
+            ## Sockets
+            - fac : Float (self)
     
 
         Node creation
@@ -2640,12 +2214,9 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value : Float (self)
-                - factor : Float
+            ## Sockets
+            - value : Float (self)
+            - factor : Float
     
 
         Node creation
@@ -2678,18 +2249,11 @@ class Float(dsock.Float):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value : Float (self)
-                - min : Float
-                - max : Float
-    
-
-            Parameters
-            ----------
-                - clamp_type : 'MINMAX' in [MINMAX, RANGE]
+            ## Sockets
+            - value : Float (self)
+            - min : Float
+            - max : Float## Parameters
+            - clamp_type : 'MINMAX' in [MINMAX, RANGE]
     
 
         Node creation

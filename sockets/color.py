@@ -90,13 +90,10 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - r : Float
-                - g : Float
-                - b : Float
+            ## Sockets
+            - r : Float
+            - g : Float
+            - b : Float
     
 
         Node creation
@@ -134,16 +131,9 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - image : Color (self)
-    
-
-            Fixed parameters
-            ----------------
-                - label:f"{self.node_chain_label}.separate"
+            ## Sockets
+            - image : Color (self)## Fixed parameters
+            - label:f"{self.node_chain_label}.separate"
     
 
         Node creation
@@ -179,16 +169,9 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - image : Color (self)
-    
-
-            Fixed parameters
-            ----------------
-                - label:f"{self.node_chain_label}.r"
+            ## Sockets
+            - image : Color (self)## Fixed parameters
+            - label:f"{self.node_chain_label}.r"
     
 
         Node creation
@@ -226,16 +209,9 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - image : Color (self)
-    
-
-            Fixed parameters
-            ----------------
-                - label:f"{self.node_chain_label}.g"
+            ## Sockets
+            - image : Color (self)## Fixed parameters
+            - label:f"{self.node_chain_label}.g"
     
 
         Node creation
@@ -273,16 +249,9 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - image : Color (self)
-    
-
-            Fixed parameters
-            ----------------
-                - label:f"{self.node_chain_label}.b"
+            ## Sockets
+            - image : Color (self)## Fixed parameters
+            - label:f"{self.node_chain_label}.b"
     
 
         Node creation
@@ -323,25 +292,14 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - attribute : Color (self)
-                - source : Geometry
-                - source_position : Vector
-                - index : Integer
-    
-
-            Parameters
-            ----------
-                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-                - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT_COLOR'
+            ## Sockets
+            - attribute : Color (self)
+            - source : Geometry
+            - source_position : Vector
+            - index : Integer## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+            - data_type : 'FLOAT_COLOR'
     
 
         Node creation
@@ -374,22 +332,11 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value : Color (self)
-                - geometry : Geometry
-    
-
-            Parameters
-            ----------
-                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT_COLOR'
+            ## Sockets
+            - value : Color (self)
+            - geometry : Geometry## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - data_type : 'FLOAT_COLOR'
     
 
         Node creation
@@ -422,22 +369,11 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - value : Color (self)
-                - index : Integer
-    
-
-            Parameters
-            ----------
-                - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT_COLOR'
+            ## Sockets
+            - value : Color (self)
+            - index : Integer## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - data_type : 'FLOAT_COLOR'
     
 
         Node creation
@@ -470,25 +406,14 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - attribute : Color (self)
-                - target_geometry : Geometry
-                - source_position : Vector
-                - ray_direction : Vector
-                - ray_length : Float
-    
-
-            Parameters
-            ----------
-                - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'FLOAT_COLOR'
+            ## Sockets
+            - attribute : Color (self)
+            - target_geometry : Geometry
+            - source_position : Vector
+            - ray_direction : Vector
+            - ray_length : Float## Parameters
+            - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
+            - data_type : 'FLOAT_COLOR'
     
 
         Node creation
@@ -521,20 +446,13 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : Color (self)
-                - b : Color
-                - epsilon : Float
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'RGBA'
-                - mode : 'ELEMENT'
-                - operation : 'EQUAL'
+            ## Sockets
+            - a : Color (self)
+            - b : Color
+            - epsilon : Float## Fixed parameters
+            - data_type : 'RGBA'
+            - mode : 'ELEMENT'
+            - operation : 'EQUAL'
     
 
         Node creation
@@ -567,20 +485,13 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : Color (self)
-                - b : Color
-                - epsilon : Float
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'RGBA'
-                - mode : 'ELEMENT'
-                - operation : 'NOT_EQUAL'
+            ## Sockets
+            - a : Color (self)
+            - b : Color
+            - epsilon : Float## Fixed parameters
+            - data_type : 'RGBA'
+            - mode : 'ELEMENT'
+            - operation : 'NOT_EQUAL'
     
 
         Node creation
@@ -613,19 +524,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : Color (self)
-                - b : Color
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'RGBA'
-                - mode : 'ELEMENT'
-                - operation : 'BRIGHTER'
+            ## Sockets
+            - a : Color (self)
+            - b : Color## Fixed parameters
+            - data_type : 'RGBA'
+            - mode : 'ELEMENT'
+            - operation : 'BRIGHTER'
     
 
         Node creation
@@ -658,19 +562,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - a : Color (self)
-                - b : Color
-    
-
-            Fixed parameters
-            ----------------
-                - data_type : 'RGBA'
-                - mode : 'ELEMENT'
-                - operation : 'DARKER'
+            ## Sockets
+            - a : Color (self)
+            - b : Color## Fixed parameters
+            - data_type : 'RGBA'
+            - mode : 'ELEMENT'
+            - operation : 'DARKER'
     
 
         Node creation
@@ -703,23 +600,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'MIX'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'MIX'
     
 
         Node creation
@@ -752,23 +638,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'DARKEN'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'DARKEN'
     
 
         Node creation
@@ -801,23 +676,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'MULTIPLY'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'MULTIPLY'
     
 
         Node creation
@@ -850,23 +714,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'BURN'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'BURN'
     
 
         Node creation
@@ -899,23 +752,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'LIGHTEN'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'LIGHTEN'
     
 
         Node creation
@@ -948,23 +790,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'SCREEN'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'SCREEN'
     
 
         Node creation
@@ -997,23 +828,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'DODGE'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'DODGE'
     
 
         Node creation
@@ -1046,23 +866,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'ADD'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'ADD'
     
 
         Node creation
@@ -1095,23 +904,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'OVERLAY'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'OVERLAY'
     
 
         Node creation
@@ -1144,23 +942,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'SOFT_LIGHT'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'SOFT_LIGHT'
     
 
         Node creation
@@ -1193,23 +980,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'LINEAR_LIGHT'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'LINEAR_LIGHT'
     
 
         Node creation
@@ -1242,23 +1018,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'DIFFERENCE'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'DIFFERENCE'
     
 
         Node creation
@@ -1291,23 +1056,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'SUBTRACT'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'SUBTRACT'
     
 
         Node creation
@@ -1340,23 +1094,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'DIVIDE'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'DIVIDE'
     
 
         Node creation
@@ -1389,23 +1132,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'HUE'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'HUE'
     
 
         Node creation
@@ -1438,23 +1170,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'SATURATION'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'SATURATION'
     
 
         Node creation
@@ -1487,23 +1208,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'COLOR'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'COLOR'
     
 
         Node creation
@@ -1536,23 +1246,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - use_alpha : False
-    
-
-            Fixed parameters
-            ----------------
-                - blend_type : 'VALUE'
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - use_alpha : False## Fixed parameters
+            - blend_type : 'VALUE'
     
 
         Node creation
@@ -1585,12 +1284,9 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color : Color (self)
-                - fac : Float
+            ## Sockets
+            - color : Color (self)
+            - fac : Float
     
 
         Node creation
@@ -1623,19 +1319,12 @@ class Color(dsock.Color):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - color1 : Color (self)
-                - color2 : Color
-                - fac : Float
-    
-
-            Parameters
-            ----------
-                - blend_type : 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
-                - use_alpha : False
+            ## Sockets
+            - color1 : Color (self)
+            - color2 : Color
+            - fac : Float## Parameters
+            - blend_type : 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
+            - use_alpha : False
     
 
         Node creation

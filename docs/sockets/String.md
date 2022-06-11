@@ -38,13 +38,8 @@ v = string.length
 
 ### Arguments
 
-
-#### Sockets
-
-- string : String (self)
-
-#### Fixed parameters
-
+## Sockets
+- string : String (self)## Fixed parameters
 - label:f"{self.node_chain_label}.length"
 
 ### Node creation
@@ -73,15 +68,10 @@ v = string.switch(switch0, true)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - false : String (self)
 - switch0 : Boolean
-- true : String
-
-#### Fixed parameters
-
+- true : String## Fixed parameters
 - input_type : 'STRING'
 
 ### Node creation
@@ -110,14 +100,9 @@ v = string.element(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : String (self)
-- b : String
-
-#### Fixed parameters
-
+- b : String## Fixed parameters
 - data_type : 'STRING'
 - mode : 'ELEMENT'
 - operation : 'ELEMENT'
@@ -148,14 +133,9 @@ v = string.length(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : String (self)
-- b : String
-
-#### Fixed parameters
-
+- b : String## Fixed parameters
 - data_type : 'STRING'
 - mode : 'ELEMENT'
 - operation : 'LENGTH'
@@ -186,14 +166,9 @@ v = string.average(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : String (self)
-- b : String
-
-#### Fixed parameters
-
+- b : String## Fixed parameters
 - data_type : 'STRING'
 - mode : 'ELEMENT'
 - operation : 'AVERAGE'
@@ -224,14 +199,9 @@ v = string.dot_product(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : String (self)
-- b : String
-
-#### Fixed parameters
-
+- b : String## Fixed parameters
 - data_type : 'STRING'
 - mode : 'ELEMENT'
 - operation : 'DOT_PRODUCT'
@@ -262,14 +232,9 @@ v = string.direction(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : String (self)
-- b : String
-
-#### Fixed parameters
-
+- b : String## Fixed parameters
 - data_type : 'STRING'
 - mode : 'ELEMENT'
 - operation : 'DIRECTION'
@@ -300,9 +265,7 @@ v = string.join(strings_1, strings_2, strings_3, delimiter)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - strings : *String (self)
 - delimiter : String
 
@@ -332,9 +295,7 @@ v = string.replace(find, replace)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - string : String (self)
 - find : String
 - replace : String
@@ -365,9 +326,7 @@ v = string.slice(position, length)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - string : String (self)
 - position : Integer
 - length : Integer
@@ -398,19 +357,14 @@ v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_b
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - string : String (self)
 - size : Float
 - character_spacing : Float
 - word_spacing : Float
 - line_spacing : Float
 - text_box_width : Float
-- text_box_height : Float
-
-#### Parameters
-
+- text_box_height : Float## Parameters
 - align_x : 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
 - align_y : 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
 - overflow : 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
