@@ -38,5 +38,5 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Curve.md) [Star](docs/sockets/Curve.md#star) : Constructor
+[class_name](/docs/sockets/Curve.md) [Star](/docs/sockets/Curve.md#star) : Constructor
 

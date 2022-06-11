@@ -35,5 +35,5 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Mesh.md) [split_edges](docs/sockets/Mesh.md#split_edges) : Method
+[class_name](/docs/sockets/Mesh.md) [split_edges](/docs/sockets/Mesh.md#split_edges) : Method
 

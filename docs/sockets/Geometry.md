@@ -9,68 +9,68 @@
 
 ## Static methods
 
-- [is_viewport](#is_viewport) : [IsViewport](docs/nodes/IsViewport.md), is_viewport (Boolean)
+- [is_viewport](#is_viewport) : [IsViewport](/docs/nodes/IsViewport.md), is_viewport (Boolean)
 
 ## Properties
 
-- [bound_box](#bound_box) : [BoundingBox](docs/nodes/BoundingBox.md), Sockets      [bounding_box (Geometry), min (Vector), max (Vector)]
-- [box](#box) : [BoundingBox](docs/nodes/BoundingBox.md), bounding_box (Geometry) = bound_box.bounding_box
-- [box_max](#box_max) : [BoundingBox](docs/nodes/BoundingBox.md), max (Vector) = bound_box.max
-- [box_min](#box_min) : [BoundingBox](docs/nodes/BoundingBox.md), min (Vector) = bound_box.min
-- [components](#components) : [SeparateComponents](docs/nodes/SeparateComponents.md), Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
-- [curve_component](#curve_component) : [SeparateComponents](docs/nodes/SeparateComponents.md), curve (Curve) = components.curve
-- [instances_component](#instances_component) : [SeparateComponents](docs/nodes/SeparateComponents.md), instances (Instances) = components.instances
-- [mesh_component](#mesh_component) : [SeparateComponents](docs/nodes/SeparateComponents.md), mesh (Mesh) = components.mesh
-- [points_component](#points_component) : [SeparateComponents](docs/nodes/SeparateComponents.md), point_cloud (Geometry) = components.point_cloud
-- [volume_component](#volume_component) : [SeparateComponents](docs/nodes/SeparateComponents.md), volume (Volume) = components.volume
+- [bound_box](#bound_box) : [BoundingBox](/docs/nodes/BoundingBox.md), Sockets      [bounding_box (Geometry), min (Vector), max (Vector)]
+- [box](#box) : [BoundingBox](/docs/nodes/BoundingBox.md), bounding_box (Geometry) = bound_box.bounding_box
+- [box_max](#box_max) : [BoundingBox](/docs/nodes/BoundingBox.md), max (Vector) = bound_box.max
+- [box_min](#box_min) : [BoundingBox](/docs/nodes/BoundingBox.md), min (Vector) = bound_box.min
+- [components](#components) : [SeparateComponents](/docs/nodes/SeparateComponents.md), Sockets      [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+- [curve_component](#curve_component) : [SeparateComponents](/docs/nodes/SeparateComponents.md), curve (Curve) = components.curve
+- [instances_component](#instances_component) : [SeparateComponents](/docs/nodes/SeparateComponents.md), instances (Instances) = components.instances
+- [mesh_component](#mesh_component) : [SeparateComponents](/docs/nodes/SeparateComponents.md), mesh (Mesh) = components.mesh
+- [points_component](#points_component) : [SeparateComponents](/docs/nodes/SeparateComponents.md), point_cloud (Geometry) = components.point_cloud
+- [volume_component](#volume_component) : [SeparateComponents](/docs/nodes/SeparateComponents.md), volume (Volume) = components.volume
 
 ## Attribute capture
 
-- [capture_ID](#capture_id) : [ID](docs/nodes/ID.md), ID (Integer)
-- [capture_index](#capture_index) : [Index](docs/nodes/Index.md), index (Integer)
-- [capture_normal](#capture_normal) : [Normal](docs/nodes/Normal.md), normal (Vector)
-- [capture_position](#capture_position) : [Position](docs/nodes/Position.md), position (Vector)
-- [capture_radius](#capture_radius) : [Radius](docs/nodes/Radius.md), radius (Float)
+- [capture_ID](#capture_id) : [ID](/docs/nodes/ID.md), ID (Integer)
+- [capture_index](#capture_index) : [Index](/docs/nodes/Index.md), index (Integer)
+- [capture_normal](#capture_normal) : [Normal](/docs/nodes/Normal.md), normal (Vector)
+- [capture_position](#capture_position) : [Position](/docs/nodes/Position.md), position (Vector)
+- [capture_radius](#capture_radius) : [Radius](/docs/nodes/Radius.md), radius (Float)
 
 ## Attributes
 
-- [ID](#id) : [ID](docs/nodes/ID.md), Integer = capture_ID(domain='POINT')
-- [index](#index) : [Index](docs/nodes/Index.md), Integer = capture_index(domain='POINT')
-- [normal](#normal) : [Normal](docs/nodes/Normal.md), Vector = capture_normal(domain='FACE')
-- [position](#position) : [Position](docs/nodes/Position.md), Vector = capture_position(domain='POINT')
-- [radius](#radius) : [Radius](docs/nodes/Radius.md), Float = capture_radius(domain='POINT')
+- [ID](#id) : [ID](/docs/nodes/ID.md), Integer = capture_ID(domain='POINT')
+- [index](#index) : [Index](/docs/nodes/Index.md), Integer = capture_index(domain='POINT')
+- [normal](#normal) : [Normal](/docs/nodes/Normal.md), Vector = capture_normal(domain='FACE')
+- [position](#position) : [Position](/docs/nodes/Position.md), Vector = capture_position(domain='POINT')
+- [radius](#radius) : [Radius](/docs/nodes/Radius.md), Float = capture_radius(domain='POINT')
 
 ## Methods
 
-- [attribute_domain_size](#attribute_domain_size) : [DomainSize](docs/nodes/DomainSize.md), Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
-- [attribute_remove](#attribute_remove) : [AttributeRemove](docs/nodes/AttributeRemove.md), geometry (Geometry)
-- [capture_attribute](#capture_attribute) : [CaptureAttribute](docs/nodes/CaptureAttribute.md), attribute (data_type dependant)
-- [components](#components) : [SeparateGeometry](docs/nodes/SeparateGeometry.md), Sockets      [selection (Geometry), inverted (Geometry)]
-- [convex_hull](#convex_hull) : [ConvexHull](docs/nodes/ConvexHull.md), convex_hull (Geometry)
-- [delete_geometry](#delete_geometry) : [DeleteGeometry](docs/nodes/DeleteGeometry.md), geometry (Geometry)
-- [join](#join) : [JoinGeometry](docs/nodes/JoinGeometry.md), geometry (Geometry)
-- [merge_by_distance](#merge_by_distance) : [MergeByDistance](docs/nodes/MergeByDistance.md), geometry (Geometry)
-- [proximity](#proximity) : [GeometryProximity](docs/nodes/GeometryProximity.md), Sockets      [position (Vector), distance (Float)]
-- [realize_instances](#realize_instances) : [RealizeInstances](docs/nodes/RealizeInstances.md), geometry (Geometry)
-- [replace_material](#replace_material) : [ReplaceMaterial](docs/nodes/ReplaceMaterial.md), geometry (Geometry)
-- [scale_elements](#scale_elements) : [ScaleElements](docs/nodes/ScaleElements.md), geometry (Geometry)
-- [set_ID](#set_id) : [SetID](docs/nodes/SetID.md), geometry (Geometry)
-- [set_material](#set_material) : [SetMaterial](docs/nodes/SetMaterial.md), geometry (Geometry)
-- [set_material_index](#set_material_index) : [SetMaterialIndex](docs/nodes/SetMaterialIndex.md), geometry (Geometry)
-- [set_position](#set_position) : [SetPosition](docs/nodes/SetPosition.md), geometry (Geometry)
-- [set_shade_smooth](#set_shade_smooth) : [SetShadeSmooth](docs/nodes/SetShadeSmooth.md), geometry (Geometry)
-- [switch](#switch) : [Switch](docs/nodes/Switch.md), output (Geometry)
-- [to_instance](#to_instance) : [GeometryToInstance](docs/nodes/GeometryToInstance.md), instances (Instances)
-- [transfer_boolean](#transfer_boolean) : [TransferAttribute](docs/nodes/TransferAttribute.md), attribute (Boolean)
-- [transfer_color](#transfer_color) : [TransferAttribute](docs/nodes/TransferAttribute.md), attribute (Color)
-- [transfer_float](#transfer_float) : [TransferAttribute](docs/nodes/TransferAttribute.md), attribute (Float)
-- [transfer_integer](#transfer_integer) : [TransferAttribute](docs/nodes/TransferAttribute.md), attribute (Integer)
-- [transfer_vector](#transfer_vector) : [TransferAttribute](docs/nodes/TransferAttribute.md), attribute (Vector)
-- [transform](#transform) : [Transform](docs/nodes/Transform.md), geometry (Geometry)
+- [attribute_domain_size](#attribute_domain_size) : [DomainSize](/docs/nodes/DomainSize.md), Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
+- [attribute_remove](#attribute_remove) : [AttributeRemove](/docs/nodes/AttributeRemove.md), geometry (Geometry)
+- [capture_attribute](#capture_attribute) : [CaptureAttribute](/docs/nodes/CaptureAttribute.md), attribute (data_type dependant)
+- [components](#components) : [SeparateGeometry](/docs/nodes/SeparateGeometry.md), Sockets      [selection (Geometry), inverted (Geometry)]
+- [convex_hull](#convex_hull) : [ConvexHull](/docs/nodes/ConvexHull.md), convex_hull (Geometry)
+- [delete_geometry](#delete_geometry) : [DeleteGeometry](/docs/nodes/DeleteGeometry.md), geometry (Geometry)
+- [join](#join) : [JoinGeometry](/docs/nodes/JoinGeometry.md), geometry (Geometry)
+- [merge_by_distance](#merge_by_distance) : [MergeByDistance](/docs/nodes/MergeByDistance.md), geometry (Geometry)
+- [proximity](#proximity) : [GeometryProximity](/docs/nodes/GeometryProximity.md), Sockets      [position (Vector), distance (Float)]
+- [realize_instances](#realize_instances) : [RealizeInstances](/docs/nodes/RealizeInstances.md), geometry (Geometry)
+- [replace_material](#replace_material) : [ReplaceMaterial](/docs/nodes/ReplaceMaterial.md), geometry (Geometry)
+- [scale_elements](#scale_elements) : [ScaleElements](/docs/nodes/ScaleElements.md), geometry (Geometry)
+- [set_ID](#set_id) : [SetID](/docs/nodes/SetID.md), geometry (Geometry)
+- [set_material](#set_material) : [SetMaterial](/docs/nodes/SetMaterial.md), geometry (Geometry)
+- [set_material_index](#set_material_index) : [SetMaterialIndex](/docs/nodes/SetMaterialIndex.md), geometry (Geometry)
+- [set_position](#set_position) : [SetPosition](/docs/nodes/SetPosition.md), geometry (Geometry)
+- [set_shade_smooth](#set_shade_smooth) : [SetShadeSmooth](/docs/nodes/SetShadeSmooth.md), geometry (Geometry)
+- [switch](#switch) : [Switch](/docs/nodes/Switch.md), output (Geometry)
+- [to_instance](#to_instance) : [GeometryToInstance](/docs/nodes/GeometryToInstance.md), instances (Instances)
+- [transfer_boolean](#transfer_boolean) : [TransferAttribute](/docs/nodes/TransferAttribute.md), attribute (Boolean)
+- [transfer_color](#transfer_color) : [TransferAttribute](/docs/nodes/TransferAttribute.md), attribute (Color)
+- [transfer_float](#transfer_float) : [TransferAttribute](/docs/nodes/TransferAttribute.md), attribute (Float)
+- [transfer_integer](#transfer_integer) : [TransferAttribute](/docs/nodes/TransferAttribute.md), attribute (Integer)
+- [transfer_vector](#transfer_vector) : [TransferAttribute](/docs/nodes/TransferAttribute.md), attribute (Vector)
+- [transform](#transform) : [Transform](/docs/nodes/Transform.md), geometry (Geometry)
 
 ## is_viewport
 
-> Node: [IsViewport](docs/nodes/IsViewport.md)
+> Node: [IsViewport](/docs/nodes/IsViewport.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeIsViewport](https://docs.blender.org/api/current/bpy.types.GeometryNodeIsViewport.html)
@@ -96,7 +96,7 @@ Boolean
 
 ## bound_box
 
-> Node: [BoundingBox](docs/nodes/BoundingBox.md)
+> Node: [BoundingBox](/docs/nodes/BoundingBox.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
@@ -130,7 +130,7 @@ Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
 
 ## box
 
-> Node: [BoundingBox](docs/nodes/BoundingBox.md)
+> Node: [BoundingBox](/docs/nodes/BoundingBox.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
@@ -164,7 +164,7 @@ Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
 
 ## box_min
 
-> Node: [BoundingBox](docs/nodes/BoundingBox.md)
+> Node: [BoundingBox](/docs/nodes/BoundingBox.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
@@ -198,7 +198,7 @@ Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
 
 ## box_max
 
-> Node: [BoundingBox](docs/nodes/BoundingBox.md)
+> Node: [BoundingBox](/docs/nodes/BoundingBox.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
@@ -232,7 +232,7 @@ Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
 
 ## components
 
-> Node: [SeparateComponents](docs/nodes/SeparateComponents.md)
+> Node: [SeparateComponents](/docs/nodes/SeparateComponents.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
@@ -266,7 +266,7 @@ Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), in
 
 ## mesh_component
 
-> Node: [SeparateComponents](docs/nodes/SeparateComponents.md)
+> Node: [SeparateComponents](/docs/nodes/SeparateComponents.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
@@ -300,7 +300,7 @@ Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), in
 
 ## points_component
 
-> Node: [SeparateComponents](docs/nodes/SeparateComponents.md)
+> Node: [SeparateComponents](/docs/nodes/SeparateComponents.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
@@ -334,7 +334,7 @@ Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), in
 
 ## curve_component
 
-> Node: [SeparateComponents](docs/nodes/SeparateComponents.md)
+> Node: [SeparateComponents](/docs/nodes/SeparateComponents.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
@@ -368,7 +368,7 @@ Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), in
 
 ## volume_component
 
-> Node: [SeparateComponents](docs/nodes/SeparateComponents.md)
+> Node: [SeparateComponents](/docs/nodes/SeparateComponents.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
@@ -402,7 +402,7 @@ Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), in
 
 ## instances_component
 
-> Node: [SeparateComponents](docs/nodes/SeparateComponents.md)
+> Node: [SeparateComponents](/docs/nodes/SeparateComponents.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
@@ -436,7 +436,7 @@ Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), in
 
 ## capture_ID
 
-> Node: [ID](docs/nodes/ID.md)
+> Node: [ID](/docs/nodes/ID.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputID](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html)
@@ -467,7 +467,7 @@ Integer
 
 ## capture_index
 
-> Node: [Index](docs/nodes/Index.md)
+> Node: [Index](/docs/nodes/Index.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
@@ -498,7 +498,7 @@ Integer
 
 ## capture_normal
 
-> Node: [Normal](docs/nodes/Normal.md)
+> Node: [Normal](/docs/nodes/Normal.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputNormal](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html)
@@ -529,7 +529,7 @@ Vector
 
 ## capture_position
 
-> Node: [Position](docs/nodes/Position.md)
+> Node: [Position](/docs/nodes/Position.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputPosition](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html)
@@ -560,7 +560,7 @@ Vector
 
 ## capture_radius
 
-> Node: [Radius](docs/nodes/Radius.md)
+> Node: [Radius](/docs/nodes/Radius.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputRadius](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html)
@@ -591,7 +591,7 @@ Float
 
 ## ID
 
-> Node: [ID](docs/nodes/ID.md)
+> Node: [ID](/docs/nodes/ID.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputID](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html)
@@ -621,7 +621,7 @@ Integer
 
 ## index
 
-> Node: [Index](docs/nodes/Index.md)
+> Node: [Index](/docs/nodes/Index.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
@@ -651,7 +651,7 @@ Integer
 
 ## normal
 
-> Node: [Normal](docs/nodes/Normal.md)
+> Node: [Normal](/docs/nodes/Normal.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputNormal](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html)
@@ -681,7 +681,7 @@ Vector
 
 ## position
 
-> Node: [Position](docs/nodes/Position.md)
+> Node: [Position](/docs/nodes/Position.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputPosition](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html)
@@ -711,7 +711,7 @@ Vector
 
 ## radius
 
-> Node: [Radius](docs/nodes/Radius.md)
+> Node: [Radius](/docs/nodes/Radius.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputRadius](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html)
@@ -741,7 +741,7 @@ Float
 
 ## switch
 
-> Node: [Switch](docs/nodes/Switch.md)
+> Node: [Switch](/docs/nodes/Switch.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
@@ -777,7 +777,7 @@ Geometry
 
 ## capture_attribute
 
-> Node: [CaptureAttribute](docs/nodes/CaptureAttribute.md)
+> Node: [CaptureAttribute](/docs/nodes/CaptureAttribute.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
@@ -813,7 +813,7 @@ Sockets [geometry (Geometry), attribute (data_type dependant)]
 
 ## transfer_boolean
 
-> Node: [TransferAttribute](docs/nodes/TransferAttribute.md)
+> Node: [TransferAttribute](/docs/nodes/TransferAttribute.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
@@ -855,7 +855,7 @@ Boolean
 
 ## transfer_integer
 
-> Node: [TransferAttribute](docs/nodes/TransferAttribute.md)
+> Node: [TransferAttribute](/docs/nodes/TransferAttribute.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
@@ -897,7 +897,7 @@ Integer
 
 ## transfer_float
 
-> Node: [TransferAttribute](docs/nodes/TransferAttribute.md)
+> Node: [TransferAttribute](/docs/nodes/TransferAttribute.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
@@ -939,7 +939,7 @@ Float
 
 ## transfer_vector
 
-> Node: [TransferAttribute](docs/nodes/TransferAttribute.md)
+> Node: [TransferAttribute](/docs/nodes/TransferAttribute.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
@@ -981,7 +981,7 @@ Vector
 
 ## transfer_color
 
-> Node: [TransferAttribute](docs/nodes/TransferAttribute.md)
+> Node: [TransferAttribute](/docs/nodes/TransferAttribute.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
@@ -1023,7 +1023,7 @@ Color
 
 ## delete_geometry
 
-> Node: [DeleteGeometry](docs/nodes/DeleteGeometry.md)
+> Node: [DeleteGeometry](/docs/nodes/DeleteGeometry.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeDeleteGeometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
@@ -1059,7 +1059,7 @@ Geometry
 
 ## merge_by_distance
 
-> Node: [MergeByDistance](docs/nodes/MergeByDistance.md)
+> Node: [MergeByDistance](/docs/nodes/MergeByDistance.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeMergeByDistance](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html)
@@ -1091,7 +1091,7 @@ Geometry
 
 ## realize_instances
 
-> Node: [RealizeInstances](docs/nodes/RealizeInstances.md)
+> Node: [RealizeInstances](/docs/nodes/RealizeInstances.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeRealizeInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html)
@@ -1125,7 +1125,7 @@ Geometry
 
 ## replace_material
 
-> Node: [ReplaceMaterial](docs/nodes/ReplaceMaterial.md)
+> Node: [ReplaceMaterial](/docs/nodes/ReplaceMaterial.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeReplaceMaterial](https://docs.blender.org/api/current/bpy.types.GeometryNodeReplaceMaterial.html)
@@ -1157,7 +1157,7 @@ Geometry
 
 ## scale_elements
 
-> Node: [ScaleElements](docs/nodes/ScaleElements.md)
+> Node: [ScaleElements](/docs/nodes/ScaleElements.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeScaleElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html)
@@ -1196,7 +1196,7 @@ Geometry
 
 ## set_ID
 
-> Node: [SetID](docs/nodes/SetID.md)
+> Node: [SetID](/docs/nodes/SetID.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSetID](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html)
@@ -1228,7 +1228,7 @@ Geometry
 
 ## set_material
 
-> Node: [SetMaterial](docs/nodes/SetMaterial.md)
+> Node: [SetMaterial](/docs/nodes/SetMaterial.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSetMaterial](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
@@ -1260,7 +1260,7 @@ Geometry
 
 ## set_material_index
 
-> Node: [SetMaterialIndex](docs/nodes/SetMaterialIndex.md)
+> Node: [SetMaterialIndex](/docs/nodes/SetMaterialIndex.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSetMaterialIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
@@ -1292,7 +1292,7 @@ Geometry
 
 ## set_position
 
-> Node: [SetPosition](docs/nodes/SetPosition.md)
+> Node: [SetPosition](/docs/nodes/SetPosition.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSetPosition](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html)
@@ -1325,7 +1325,7 @@ Geometry
 
 ## set_shade_smooth
 
-> Node: [SetShadeSmooth](docs/nodes/SetShadeSmooth.md)
+> Node: [SetShadeSmooth](/docs/nodes/SetShadeSmooth.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSetShadeSmooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html)
@@ -1357,7 +1357,7 @@ Geometry
 
 ## transform
 
-> Node: [Transform](docs/nodes/Transform.md)
+> Node: [Transform](/docs/nodes/Transform.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeTransform](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
@@ -1390,7 +1390,7 @@ Geometry
 
 ## attribute_domain_size
 
-> Node: [DomainSize](docs/nodes/DomainSize.md)
+> Node: [DomainSize](/docs/nodes/DomainSize.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
@@ -1424,7 +1424,7 @@ Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face
 
 ## attribute_remove
 
-> Node: [AttributeRemove](docs/nodes/AttributeRemove.md)
+> Node: [AttributeRemove](/docs/nodes/AttributeRemove.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeRemove](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeRemove.html)
@@ -1455,7 +1455,7 @@ Geometry
 
 ## components
 
-> Node: [SeparateGeometry](docs/nodes/SeparateGeometry.md)
+> Node: [SeparateGeometry](/docs/nodes/SeparateGeometry.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSeparateGeometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
@@ -1490,7 +1490,7 @@ Sockets [selection (Geometry), inverted (Geometry)]
 
 ## convex_hull
 
-> Node: [ConvexHull](docs/nodes/ConvexHull.md)
+> Node: [ConvexHull](/docs/nodes/ConvexHull.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeConvexHull](https://docs.blender.org/api/current/bpy.types.GeometryNodeConvexHull.html)
@@ -1520,7 +1520,7 @@ Geometry
 
 ## to_instance
 
-> Node: [GeometryToInstance](docs/nodes/GeometryToInstance.md)
+> Node: [GeometryToInstance](/docs/nodes/GeometryToInstance.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeGeometryToInstance](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html)
@@ -1550,7 +1550,7 @@ Instances
 
 ## join
 
-> Node: [JoinGeometry](docs/nodes/JoinGeometry.md)
+> Node: [JoinGeometry](/docs/nodes/JoinGeometry.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeJoinGeometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html)
@@ -1580,7 +1580,7 @@ Geometry
 
 ## proximity
 
-> Node: [GeometryProximity](docs/nodes/GeometryProximity.md)
+> Node: [GeometryProximity](/docs/nodes/GeometryProximity.md)
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeProximity](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)

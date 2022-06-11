@@ -37,5 +37,5 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Mesh.md) [Grid](docs/sockets/Mesh.md#grid) : Constructor
+[class_name](/docs/sockets/Mesh.md) [Grid](/docs/sockets/Mesh.md#grid) : Constructor
 

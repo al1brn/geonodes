@@ -36,8 +36,8 @@ x : Float
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Vector.md) [separate](docs/sockets/Vector.md#separate) : Property
-- [class_name](docs/sockets/Vector.md) [x](docs/sockets/Vector.md#x) : Property
-- [class_name](docs/sockets/Vector.md) [y](docs/sockets/Vector.md#y) : Property
-- [class_name](docs/sockets/Vector.md) [z](docs/sockets/Vector.md#z) : Property
+[class_name](/docs/sockets/Vector.md) [separate](/docs/sockets/Vector.md#separate) : Property
+- [class_name](/docs/sockets/Vector.md) [x](/docs/sockets/Vector.md#x) : Property
+- [class_name](/docs/sockets/Vector.md) [y](/docs/sockets/Vector.md#y) : Property
+- [class_name](/docs/sockets/Vector.md) [z](/docs/sockets/Vector.md#z) : Property
   

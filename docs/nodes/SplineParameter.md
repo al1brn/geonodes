@@ -32,8 +32,8 @@ factor : Float
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Spline.md) [capture_parameter](docs/sockets/Spline.md#capture_parameter) : Capture attribute
-- [class_name](docs/sockets/Spline.md) [factor](docs/sockets/Spline.md#factor) : Attribute
-- [class_name](docs/sockets/Spline.md) [parameter_index](docs/sockets/Spline.md#parameter_index) : Attribute
-- [class_name](docs/sockets/Spline.md) [parameter_length](docs/sockets/Spline.md#parameter_length) : Attribute
+[class_name](/docs/sockets/Spline.md) [capture_parameter](/docs/sockets/Spline.md#capture_parameter) : Capture attribute
+- [class_name](/docs/sockets/Spline.md) [factor](/docs/sockets/Spline.md#factor) : Attribute
+- [class_name](/docs/sockets/Spline.md) [parameter_index](/docs/sockets/Spline.md#parameter_index) : Attribute
+- [class_name](/docs/sockets/Spline.md) [parameter_length](/docs/sockets/Spline.md#parameter_length) : Attribute
   

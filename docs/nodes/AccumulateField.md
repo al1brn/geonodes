@@ -50,7 +50,7 @@ leading : data_type dependant
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Float.md) [accumulate_field](docs/sockets/Float.md#accumulate_field) : Method
-- [class_name](docs/sockets/Integer.md) [accumulate_field](docs/sockets/Integer.md#accumulate_field) : Method
-- [class_name](docs/sockets/Vector.md) [accumulate_field](docs/sockets/Vector.md#accumulate_field) : Method
+[class_name](/docs/sockets/Float.md) [accumulate_field](/docs/sockets/Float.md#accumulate_field) : Method
+- [class_name](/docs/sockets/Integer.md) [accumulate_field](/docs/sockets/Integer.md#accumulate_field) : Method
+- [class_name](/docs/sockets/Vector.md) [accumulate_field](/docs/sockets/Vector.md#accumulate_field) : Method
   

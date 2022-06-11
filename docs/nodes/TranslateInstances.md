@@ -37,5 +37,5 @@ instances : Instances
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Instances.md) [translate](docs/sockets/Instances.md#translate) : Method
+[class_name](/docs/sockets/Instances.md) [translate](/docs/sockets/Instances.md#translate) : Method
 

@@ -37,5 +37,5 @@ geometry : Geometry
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Geometry.md) [transform](docs/sockets/Geometry.md#transform) : Method
+[class_name](/docs/sockets/Geometry.md) [transform](/docs/sockets/Geometry.md#transform) : Method
 

@@ -50,8 +50,8 @@ value : data_type dependant
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Boolean.md) [Random](docs/sockets/Boolean.md#random) : Constructor
-- [class_name](docs/sockets/Float.md) [Random](docs/sockets/Float.md#random) : Constructor
-- [class_name](docs/sockets/Integer.md) [Random](docs/sockets/Integer.md#random) : Constructor
-- [class_name](docs/sockets/Vector.md) [Random](docs/sockets/Vector.md#random) : Constructor
+[class_name](/docs/sockets/Boolean.md) [Random](/docs/sockets/Boolean.md#random) : Constructor
+- [class_name](/docs/sockets/Float.md) [Random](/docs/sockets/Float.md#random) : Constructor
+- [class_name](/docs/sockets/Integer.md) [Random](/docs/sockets/Integer.md#random) : Constructor
+- [class_name](/docs/sockets/Vector.md) [Random](/docs/sockets/Vector.md#random) : Constructor
   

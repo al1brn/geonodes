@@ -41,6 +41,6 @@ rotation : Vector
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Vector.md) [AlignToVector](docs/sockets/Vector.md#aligntovector) : Constructor
-- [class_name](docs/sockets/Vector.md) [align_to_vector](docs/sockets/Vector.md#align_to_vector) : Method
+[class_name](/docs/sockets/Vector.md) [AlignToVector](/docs/sockets/Vector.md#aligntovector) : Constructor
+- [class_name](/docs/sockets/Vector.md) [align_to_vector](/docs/sockets/Vector.md#align_to_vector) : Method
   

@@ -36,5 +36,5 @@ geometry : Geometry
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Geometry.md) [set_ID](docs/sockets/Geometry.md#set_id) : Method
+[class_name](/docs/sockets/Geometry.md) [set_ID](/docs/sockets/Geometry.md#set_id) : Method
 

@@ -36,5 +36,5 @@ geometry : Geometry
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Geometry.md) [merge_by_distance](docs/sockets/Geometry.md#merge_by_distance) : Method
+[class_name](/docs/sockets/Geometry.md) [merge_by_distance](/docs/sockets/Geometry.md#merge_by_distance) : Method
 

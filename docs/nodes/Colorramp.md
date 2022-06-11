@@ -35,5 +35,5 @@ color : Color
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Float.md) [color_ramp](docs/sockets/Float.md#color_ramp) : Method
+[class_name](/docs/sockets/Float.md) [color_ramp](/docs/sockets/Float.md#color_ramp) : Method
 

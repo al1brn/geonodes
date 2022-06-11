@@ -40,5 +40,5 @@ geometry : Geometry
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Collection.md) [info](docs/sockets/Collection.md#info) : Method
+[class_name](/docs/sockets/Collection.md) [info](/docs/sockets/Collection.md#info) : Method
 

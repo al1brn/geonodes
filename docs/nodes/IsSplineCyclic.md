@@ -30,6 +30,6 @@ cyclic : Boolean
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Spline.md) [capture_cyclic](docs/sockets/Spline.md#capture_cyclic) : Capture attribute
-- [class_name](docs/sockets/Spline.md) [cyclic](docs/sockets/Spline.md#cyclic) : Attribute
+[class_name](/docs/sockets/Spline.md) [capture_cyclic](/docs/sockets/Spline.md#capture_cyclic) : Capture attribute
+- [class_name](/docs/sockets/Spline.md) [cyclic](/docs/sockets/Spline.md#cyclic) : Attribute
   

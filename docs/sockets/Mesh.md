@@ -9,75 +9,75 @@
 
 ## Constructors
 
-- [Circle](#circle) : [MeshCircle](docs/nodes/MeshCircle.md), mesh (Mesh)
-- [Cone](#cone) : [Cone](docs/nodes/Cone.md), Sockets      [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
-- [Cube](#cube) : [Cube](docs/nodes/Cube.md), mesh (Mesh)
-- [Cylinder](#cylinder) : [Cylinder](docs/nodes/Cylinder.md), Sockets      [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
-- [Grid](#grid) : [Grid](docs/nodes/Grid.md), mesh (Mesh)
-- [IcoSphere](#icosphere) : [IcoSphere](docs/nodes/IcoSphere.md), mesh (Mesh)
-- [Line](#line) : [MeshLine](docs/nodes/MeshLine.md), mesh (Mesh)
-- [UVSphere](#uvsphere) : [UvSphere](docs/nodes/UvSphere.md), mesh (Mesh)
+- [Circle](#circle) : [MeshCircle](/docs/nodes/MeshCircle.md), mesh (Mesh)
+- [Cone](#cone) : [Cone](/docs/nodes/Cone.md), Sockets      [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
+- [Cube](#cube) : [Cube](/docs/nodes/Cube.md), mesh (Mesh)
+- [Cylinder](#cylinder) : [Cylinder](/docs/nodes/Cylinder.md), Sockets      [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
+- [Grid](#grid) : [Grid](/docs/nodes/Grid.md), mesh (Mesh)
+- [IcoSphere](#icosphere) : [IcoSphere](/docs/nodes/IcoSphere.md), mesh (Mesh)
+- [Line](#line) : [MeshLine](/docs/nodes/MeshLine.md), mesh (Mesh)
+- [UVSphere](#uvsphere) : [UvSphere](/docs/nodes/UvSphere.md), mesh (Mesh)
 
 ## Attribute capture
 
-- [capture_edge_angle](#capture_edge_angle) : [EdgeAngle](docs/nodes/EdgeAngle.md), Sockets      [unsigned_angle (Float), signed_angle (Float)]
-- [capture_edge_neighbors](#capture_edge_neighbors) : [EdgeNeighbors](docs/nodes/EdgeNeighbors.md), face_count (Integer)
-- [capture_edge_vertices](#capture_edge_vertices) : [EdgeVertices](docs/nodes/EdgeVertices.md), Sockets      [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-- [capture_face_area](#capture_face_area) : [FaceArea](docs/nodes/FaceArea.md), area (Float)
-- [capture_face_neighbors](#capture_face_neighbors) : [FaceNeighbors](docs/nodes/FaceNeighbors.md), Sockets      [vertex_count (Integer), face_count (Integer)]
-- [capture_island](#capture_island) : [MeshIsland](docs/nodes/MeshIsland.md), Sockets      [island_index (Integer), island_count (Integer)]
-- [capture_material_index](#capture_material_index) : [MaterialIndex](docs/nodes/MaterialIndex.md), material_index (Integer)
-- [capture_material_selection](#capture_material_selection) : [MaterialSelection](docs/nodes/MaterialSelection.md), selection (Boolean)
-- [capture_shade_smooth](#capture_shade_smooth) : [IsShadeSmooth](docs/nodes/IsShadeSmooth.md), smooth (Boolean)
-- [capture_vertex_neighbors](#capture_vertex_neighbors) : [VertexNeighbors](docs/nodes/VertexNeighbors.md), Sockets      [vertex_count (Integer), face_count (Integer)]
+- [capture_edge_angle](#capture_edge_angle) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Sockets      [unsigned_angle (Float), signed_angle (Float)]
+- [capture_edge_neighbors](#capture_edge_neighbors) : [EdgeNeighbors](/docs/nodes/EdgeNeighbors.md), face_count (Integer)
+- [capture_edge_vertices](#capture_edge_vertices) : [EdgeVertices](/docs/nodes/EdgeVertices.md), Sockets      [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
+- [capture_face_area](#capture_face_area) : [FaceArea](/docs/nodes/FaceArea.md), area (Float)
+- [capture_face_neighbors](#capture_face_neighbors) : [FaceNeighbors](/docs/nodes/FaceNeighbors.md), Sockets      [vertex_count (Integer), face_count (Integer)]
+- [capture_island](#capture_island) : [MeshIsland](/docs/nodes/MeshIsland.md), Sockets      [island_index (Integer), island_count (Integer)]
+- [capture_material_index](#capture_material_index) : [MaterialIndex](/docs/nodes/MaterialIndex.md), material_index (Integer)
+- [capture_material_selection](#capture_material_selection) : [MaterialSelection](/docs/nodes/MaterialSelection.md), selection (Boolean)
+- [capture_shade_smooth](#capture_shade_smooth) : [IsShadeSmooth](/docs/nodes/IsShadeSmooth.md), smooth (Boolean)
+- [capture_vertex_neighbors](#capture_vertex_neighbors) : [VertexNeighbors](/docs/nodes/VertexNeighbors.md), Sockets      [vertex_count (Integer), face_count (Integer)]
 
 ## Attributes
 
-- [corner_ID](#corner_id) : [EdgeAngle](docs/nodes/EdgeAngle.md), Float = capture_ID(domain='CORNER').unsigned_angle
-- [corner_index](#corner_index) : [EdgeAngle](docs/nodes/EdgeAngle.md), Float = capture_index(domain='CORNER').unsigned_angle
-- [corner_porision](#corner_porision) : [EdgeAngle](docs/nodes/EdgeAngle.md), Float = capture_position(domain='CORNER').unsigned_angle
-- [edge_angle](#edge_angle) : [EdgeAngle](docs/nodes/EdgeAngle.md), Float = capture_edge_angle(domain='EDGE').unsigned_angle
-- [edge_neighbors](#edge_neighbors) : [EdgeNeighbors](docs/nodes/EdgeNeighbors.md), Integer = capture_edge_neighbors(domain='EDGE')
-- [edge_unsigned_angle](#edge_unsigned_angle) : [EdgeAngle](docs/nodes/EdgeAngle.md), Float = capture_edge_angle(domain='EDGE').signed_angle
-- [edge_vertices_index1](#edge_vertices_index1) : [EdgeVertices](docs/nodes/EdgeVertices.md), Integer = capture_edge_vertices(domain='EDGE').vertex_index_1
-- [edge_vertices_index2](#edge_vertices_index2) : [EdgeVertices](docs/nodes/EdgeVertices.md), Integer = capture_edge_vertices(domain='EDGE').vertex_index_2
-- [edge_vertices_position1](#edge_vertices_position1) : [EdgeVertices](docs/nodes/EdgeVertices.md), Vector = capture_edge_vertices(domain='EDGE').position_1
-- [edge_vertices_position2](#edge_vertices_position2) : [EdgeVertices](docs/nodes/EdgeVertices.md), Vector = capture_edge_vertices(domain='EDGE').position_2
-- [egde_ID](#egde_id) : [EdgeAngle](docs/nodes/EdgeAngle.md), Float = capture_ID(domain='EDGE').unsigned_angle
-- [egde_index](#egde_index) : [EdgeAngle](docs/nodes/EdgeAngle.md), Float = capture_index(domain='EDGE').unsigned_angle
-- [egde_position](#egde_position) : [EdgeAngle](docs/nodes/EdgeAngle.md), Float = capture_position(domain='EDGE').unsigned_angle
-- [face_ID](#face_id) : [EdgeAngle](docs/nodes/EdgeAngle.md), Float = capture_ID(domain='FACE').unsigned_angle
-- [face_area](#face_area) : [FaceArea](docs/nodes/FaceArea.md), Float = capture_face_area(domain='FACE')
-- [face_index](#face_index) : [EdgeAngle](docs/nodes/EdgeAngle.md), Float = capture_index(domain='FACE').unsigned_angle
-- [face_neighbors_face_count](#face_neighbors_face_count) : [FaceNeighbors](docs/nodes/FaceNeighbors.md), Integer = capture_face_neighbors(domain='FACE').face_count
-- [face_neighbors_vertex_count](#face_neighbors_vertex_count) : [FaceNeighbors](docs/nodes/FaceNeighbors.md), Integer = capture_face_neighbors(domain='FACE').vertex_count
-- [face_position](#face_position) : [EdgeAngle](docs/nodes/EdgeAngle.md), Float = capture_position(domain='FACE').unsigned_angle
-- [island](#island) : [MeshIsland](docs/nodes/MeshIsland.md), Integer = capture_island(domain='POINT').island_index
-- [material_index](#material_index) : [MaterialIndex](docs/nodes/MaterialIndex.md), Integer = capture_material_index(domain='FACE')
-- [material_selection](#material_selection) : [MaterialSelection](docs/nodes/MaterialSelection.md), Boolean = capture_material_selection(domain='FACE')
-- [shade_smooth](#shade_smooth) : [IsShadeSmooth](docs/nodes/IsShadeSmooth.md), Boolean = capture_shade_smooth(domain='FACE')
-- [vertex_neighbors_face_count](#vertex_neighbors_face_count) : [VertexNeighbors](docs/nodes/VertexNeighbors.md), Integer = capture_vertex_neighbors(domain='POINT').face_count
-- [vertex_neighbors_vertex_count](#vertex_neighbors_vertex_count) : [VertexNeighbors](docs/nodes/VertexNeighbors.md), Integer = capture_vertex_neighbors(domain='POINT').vertex_count
+- [corner_ID](#corner_id) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_ID(domain='CORNER').unsigned_angle
+- [corner_index](#corner_index) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_index(domain='CORNER').unsigned_angle
+- [corner_porision](#corner_porision) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_position(domain='CORNER').unsigned_angle
+- [edge_angle](#edge_angle) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_edge_angle(domain='EDGE').unsigned_angle
+- [edge_neighbors](#edge_neighbors) : [EdgeNeighbors](/docs/nodes/EdgeNeighbors.md), Integer = capture_edge_neighbors(domain='EDGE')
+- [edge_unsigned_angle](#edge_unsigned_angle) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_edge_angle(domain='EDGE').signed_angle
+- [edge_vertices_index1](#edge_vertices_index1) : [EdgeVertices](/docs/nodes/EdgeVertices.md), Integer = capture_edge_vertices(domain='EDGE').vertex_index_1
+- [edge_vertices_index2](#edge_vertices_index2) : [EdgeVertices](/docs/nodes/EdgeVertices.md), Integer = capture_edge_vertices(domain='EDGE').vertex_index_2
+- [edge_vertices_position1](#edge_vertices_position1) : [EdgeVertices](/docs/nodes/EdgeVertices.md), Vector = capture_edge_vertices(domain='EDGE').position_1
+- [edge_vertices_position2](#edge_vertices_position2) : [EdgeVertices](/docs/nodes/EdgeVertices.md), Vector = capture_edge_vertices(domain='EDGE').position_2
+- [egde_ID](#egde_id) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_ID(domain='EDGE').unsigned_angle
+- [egde_index](#egde_index) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_index(domain='EDGE').unsigned_angle
+- [egde_position](#egde_position) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_position(domain='EDGE').unsigned_angle
+- [face_ID](#face_id) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_ID(domain='FACE').unsigned_angle
+- [face_area](#face_area) : [FaceArea](/docs/nodes/FaceArea.md), Float = capture_face_area(domain='FACE')
+- [face_index](#face_index) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_index(domain='FACE').unsigned_angle
+- [face_neighbors_face_count](#face_neighbors_face_count) : [FaceNeighbors](/docs/nodes/FaceNeighbors.md), Integer = capture_face_neighbors(domain='FACE').face_count
+- [face_neighbors_vertex_count](#face_neighbors_vertex_count) : [FaceNeighbors](/docs/nodes/FaceNeighbors.md), Integer = capture_face_neighbors(domain='FACE').vertex_count
+- [face_position](#face_position) : [EdgeAngle](/docs/nodes/EdgeAngle.md), Float = capture_position(domain='FACE').unsigned_angle
+- [island](#island) : [MeshIsland](/docs/nodes/MeshIsland.md), Integer = capture_island(domain='POINT').island_index
+- [material_index](#material_index) : [MaterialIndex](/docs/nodes/MaterialIndex.md), Integer = capture_material_index(domain='FACE')
+- [material_selection](#material_selection) : [MaterialSelection](/docs/nodes/MaterialSelection.md), Boolean = capture_material_selection(domain='FACE')
+- [shade_smooth](#shade_smooth) : [IsShadeSmooth](/docs/nodes/IsShadeSmooth.md), Boolean = capture_shade_smooth(domain='FACE')
+- [vertex_neighbors_face_count](#vertex_neighbors_face_count) : [VertexNeighbors](/docs/nodes/VertexNeighbors.md), Integer = capture_vertex_neighbors(domain='POINT').face_count
+- [vertex_neighbors_vertex_count](#vertex_neighbors_vertex_count) : [VertexNeighbors](/docs/nodes/VertexNeighbors.md), Integer = capture_vertex_neighbors(domain='POINT').vertex_count
 
 ## Methods
 
-- [difference](#difference) : [MeshBoolean](docs/nodes/MeshBoolean.md), mesh (Mesh)
-- [distribute_points_on_faces](#distribute_points_on_faces) : [DistributePointsOnFaces](docs/nodes/DistributePointsOnFaces.md), Sockets      [points (Points), normal (Vector), rotation (Vector)]
-- [dual](#dual) : [DualMesh](docs/nodes/DualMesh.md), dual_mesh (Geometry)
-- [extrude](#extrude) : [ExtrudeMesh](docs/nodes/ExtrudeMesh.md), Sockets      [mesh (Mesh), top (Boolean), side (Boolean)]
-- [flip_faces](#flip_faces) : [FlipFaces](docs/nodes/FlipFaces.md), mesh (Mesh)
-- [intersect](#intersect) : [MeshBoolean](docs/nodes/MeshBoolean.md), mesh (Mesh)
-- [split_edges](#split_edges) : [SplitEdges](docs/nodes/SplitEdges.md), mesh (Mesh)
-- [subdivide](#subdivide) : [SubdivideMesh](docs/nodes/SubdivideMesh.md), mesh (Mesh)
-- [subdivision_surface](#subdivision_surface) : [SubdivisionSurface](docs/nodes/SubdivisionSurface.md), mesh (Mesh)
-- [to_curve](#to_curve) : [MeshToCurve](docs/nodes/MeshToCurve.md), curve (Curve)
-- [to_points](#to_points) : [MeshToPoints](docs/nodes/MeshToPoints.md), points (Points)
-- [triangulate](#triangulate) : [Triangulate](docs/nodes/Triangulate.md), mesh (Mesh)
-- [union](#union) : [MeshBoolean](docs/nodes/MeshBoolean.md), mesh (Mesh)
+- [difference](#difference) : [MeshBoolean](/docs/nodes/MeshBoolean.md), mesh (Mesh)
+- [distribute_points_on_faces](#distribute_points_on_faces) : [DistributePointsOnFaces](/docs/nodes/DistributePointsOnFaces.md), Sockets      [points (Points), normal (Vector), rotation (Vector)]
+- [dual](#dual) : [DualMesh](/docs/nodes/DualMesh.md), dual_mesh (Geometry)
+- [extrude](#extrude) : [ExtrudeMesh](/docs/nodes/ExtrudeMesh.md), Sockets      [mesh (Mesh), top (Boolean), side (Boolean)]
+- [flip_faces](#flip_faces) : [FlipFaces](/docs/nodes/FlipFaces.md), mesh (Mesh)
+- [intersect](#intersect) : [MeshBoolean](/docs/nodes/MeshBoolean.md), mesh (Mesh)
+- [split_edges](#split_edges) : [SplitEdges](/docs/nodes/SplitEdges.md), mesh (Mesh)
+- [subdivide](#subdivide) : [SubdivideMesh](/docs/nodes/SubdivideMesh.md), mesh (Mesh)
+- [subdivision_surface](#subdivision_surface) : [SubdivisionSurface](/docs/nodes/SubdivisionSurface.md), mesh (Mesh)
+- [to_curve](#to_curve) : [MeshToCurve](/docs/nodes/MeshToCurve.md), curve (Curve)
+- [to_points](#to_points) : [MeshToPoints](/docs/nodes/MeshToPoints.md), points (Points)
+- [triangulate](#triangulate) : [Triangulate](/docs/nodes/Triangulate.md), mesh (Mesh)
+- [union](#union) : [MeshBoolean](/docs/nodes/MeshBoolean.md), mesh (Mesh)
 
 ## Circle
 
-> Node: [MeshCircle](docs/nodes/MeshCircle.md)
+> Node: [MeshCircle](/docs/nodes/MeshCircle.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshCircle](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCircle.html)
@@ -112,7 +112,7 @@ Mesh
 
 ## Cone
 
-> Node: [Cone](docs/nodes/Cone.md)
+> Node: [Cone](/docs/nodes/Cone.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshCone](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCone.html)
@@ -151,7 +151,7 @@ Sockets [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
 
 ## Cube
 
-> Node: [Cube](docs/nodes/Cube.md)
+> Node: [Cube](/docs/nodes/Cube.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshCube](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCube.html)
@@ -184,7 +184,7 @@ Mesh
 
 ## Cylinder
 
-> Node: [Cylinder](docs/nodes/Cylinder.md)
+> Node: [Cylinder](/docs/nodes/Cylinder.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshCylinder](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCylinder.html)
@@ -222,7 +222,7 @@ Sockets [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
 
 ## Grid
 
-> Node: [Grid](docs/nodes/Grid.md)
+> Node: [Grid](/docs/nodes/Grid.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshGrid](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshGrid.html)
@@ -255,7 +255,7 @@ Mesh
 
 ## IcoSphere
 
-> Node: [IcoSphere](docs/nodes/IcoSphere.md)
+> Node: [IcoSphere](/docs/nodes/IcoSphere.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshIcoSphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshIcoSphere.html)
@@ -286,7 +286,7 @@ Mesh
 
 ## Line
 
-> Node: [MeshLine](docs/nodes/MeshLine.md)
+> Node: [MeshLine](/docs/nodes/MeshLine.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshLine](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html)
@@ -323,7 +323,7 @@ Mesh
 
 ## UVSphere
 
-> Node: [UvSphere](docs/nodes/UvSphere.md)
+> Node: [UvSphere](/docs/nodes/UvSphere.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshUVSphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshUVSphere.html)
@@ -355,7 +355,7 @@ Mesh
 
 ## capture_edge_angle
 
-> Node: [EdgeAngle](docs/nodes/EdgeAngle.md)
+> Node: [EdgeAngle](/docs/nodes/EdgeAngle.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
@@ -386,7 +386,7 @@ Sockets [unsigned_angle (Float), signed_angle (Float)]
 
 ## capture_edge_neighbors
 
-> Node: [EdgeNeighbors](docs/nodes/EdgeNeighbors.md)
+> Node: [EdgeNeighbors](/docs/nodes/EdgeNeighbors.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeNeighbors.html)
@@ -417,7 +417,7 @@ Integer
 
 ## capture_edge_vertices
 
-> Node: [EdgeVertices](docs/nodes/EdgeVertices.md)
+> Node: [EdgeVertices](/docs/nodes/EdgeVertices.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
@@ -448,7 +448,7 @@ Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector)
 
 ## capture_face_area
 
-> Node: [FaceArea](docs/nodes/FaceArea.md)
+> Node: [FaceArea](/docs/nodes/FaceArea.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshFaceArea](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceArea.html)
@@ -479,7 +479,7 @@ Float
 
 ## capture_face_neighbors
 
-> Node: [FaceNeighbors](docs/nodes/FaceNeighbors.md)
+> Node: [FaceNeighbors](/docs/nodes/FaceNeighbors.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshFaceNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
@@ -510,7 +510,7 @@ Sockets [vertex_count (Integer), face_count (Integer)]
 
 ## capture_island
 
-> Node: [MeshIsland](docs/nodes/MeshIsland.md)
+> Node: [MeshIsland](/docs/nodes/MeshIsland.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshIsland](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
@@ -541,7 +541,7 @@ Sockets [island_index (Integer), island_count (Integer)]
 
 ## capture_shade_smooth
 
-> Node: [IsShadeSmooth](docs/nodes/IsShadeSmooth.md)
+> Node: [IsShadeSmooth](/docs/nodes/IsShadeSmooth.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputShadeSmooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html)
@@ -572,7 +572,7 @@ Boolean
 
 ## capture_vertex_neighbors
 
-> Node: [VertexNeighbors](docs/nodes/VertexNeighbors.md)
+> Node: [VertexNeighbors](/docs/nodes/VertexNeighbors.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshVertexNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
@@ -603,7 +603,7 @@ Sockets [vertex_count (Integer), face_count (Integer)]
 
 ## capture_material_index
 
-> Node: [MaterialIndex](docs/nodes/MaterialIndex.md)
+> Node: [MaterialIndex](/docs/nodes/MaterialIndex.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMaterialIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
@@ -634,7 +634,7 @@ Integer
 
 ## capture_material_selection
 
-> Node: [MaterialSelection](docs/nodes/MaterialSelection.md)
+> Node: [MaterialSelection](/docs/nodes/MaterialSelection.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMaterialSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
@@ -669,7 +669,7 @@ Boolean
 
 ## face_ID
 
-> Node: [EdgeAngle](docs/nodes/EdgeAngle.md)
+> Node: [EdgeAngle](/docs/nodes/EdgeAngle.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
@@ -699,7 +699,7 @@ Float
 
 ## egde_ID
 
-> Node: [EdgeAngle](docs/nodes/EdgeAngle.md)
+> Node: [EdgeAngle](/docs/nodes/EdgeAngle.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
@@ -729,7 +729,7 @@ Float
 
 ## corner_ID
 
-> Node: [EdgeAngle](docs/nodes/EdgeAngle.md)
+> Node: [EdgeAngle](/docs/nodes/EdgeAngle.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
@@ -759,7 +759,7 @@ Float
 
 ## face_index
 
-> Node: [EdgeAngle](docs/nodes/EdgeAngle.md)
+> Node: [EdgeAngle](/docs/nodes/EdgeAngle.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
@@ -789,7 +789,7 @@ Float
 
 ## egde_index
 
-> Node: [EdgeAngle](docs/nodes/EdgeAngle.md)
+> Node: [EdgeAngle](/docs/nodes/EdgeAngle.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
@@ -819,7 +819,7 @@ Float
 
 ## corner_index
 
-> Node: [EdgeAngle](docs/nodes/EdgeAngle.md)
+> Node: [EdgeAngle](/docs/nodes/EdgeAngle.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
@@ -849,7 +849,7 @@ Float
 
 ## face_position
 
-> Node: [EdgeAngle](docs/nodes/EdgeAngle.md)
+> Node: [EdgeAngle](/docs/nodes/EdgeAngle.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
@@ -879,7 +879,7 @@ Float
 
 ## egde_position
 
-> Node: [EdgeAngle](docs/nodes/EdgeAngle.md)
+> Node: [EdgeAngle](/docs/nodes/EdgeAngle.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
@@ -909,7 +909,7 @@ Float
 
 ## corner_porision
 
-> Node: [EdgeAngle](docs/nodes/EdgeAngle.md)
+> Node: [EdgeAngle](/docs/nodes/EdgeAngle.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
@@ -939,7 +939,7 @@ Float
 
 ## edge_angle
 
-> Node: [EdgeAngle](docs/nodes/EdgeAngle.md)
+> Node: [EdgeAngle](/docs/nodes/EdgeAngle.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
@@ -969,7 +969,7 @@ Float
 
 ## edge_unsigned_angle
 
-> Node: [EdgeAngle](docs/nodes/EdgeAngle.md)
+> Node: [EdgeAngle](/docs/nodes/EdgeAngle.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
@@ -999,7 +999,7 @@ Float
 
 ## edge_neighbors
 
-> Node: [EdgeNeighbors](docs/nodes/EdgeNeighbors.md)
+> Node: [EdgeNeighbors](/docs/nodes/EdgeNeighbors.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeNeighbors.html)
@@ -1029,7 +1029,7 @@ Integer
 
 ## edge_vertices_index1
 
-> Node: [EdgeVertices](docs/nodes/EdgeVertices.md)
+> Node: [EdgeVertices](/docs/nodes/EdgeVertices.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
@@ -1059,7 +1059,7 @@ Integer
 
 ## edge_vertices_index2
 
-> Node: [EdgeVertices](docs/nodes/EdgeVertices.md)
+> Node: [EdgeVertices](/docs/nodes/EdgeVertices.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
@@ -1089,7 +1089,7 @@ Integer
 
 ## edge_vertices_position1
 
-> Node: [EdgeVertices](docs/nodes/EdgeVertices.md)
+> Node: [EdgeVertices](/docs/nodes/EdgeVertices.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
@@ -1119,7 +1119,7 @@ Vector
 
 ## edge_vertices_position2
 
-> Node: [EdgeVertices](docs/nodes/EdgeVertices.md)
+> Node: [EdgeVertices](/docs/nodes/EdgeVertices.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
@@ -1149,7 +1149,7 @@ Vector
 
 ## face_area
 
-> Node: [FaceArea](docs/nodes/FaceArea.md)
+> Node: [FaceArea](/docs/nodes/FaceArea.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshFaceArea](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceArea.html)
@@ -1179,7 +1179,7 @@ Float
 
 ## face_neighbors_vertex_count
 
-> Node: [FaceNeighbors](docs/nodes/FaceNeighbors.md)
+> Node: [FaceNeighbors](/docs/nodes/FaceNeighbors.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshFaceNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
@@ -1209,7 +1209,7 @@ Integer
 
 ## face_neighbors_face_count
 
-> Node: [FaceNeighbors](docs/nodes/FaceNeighbors.md)
+> Node: [FaceNeighbors](/docs/nodes/FaceNeighbors.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshFaceNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
@@ -1239,7 +1239,7 @@ Integer
 
 ## island
 
-> Node: [MeshIsland](docs/nodes/MeshIsland.md)
+> Node: [MeshIsland](/docs/nodes/MeshIsland.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshIsland](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
@@ -1269,7 +1269,7 @@ Integer
 
 ## shade_smooth
 
-> Node: [IsShadeSmooth](docs/nodes/IsShadeSmooth.md)
+> Node: [IsShadeSmooth](/docs/nodes/IsShadeSmooth.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputShadeSmooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html)
@@ -1299,7 +1299,7 @@ Boolean
 
 ## vertex_neighbors_vertex_count
 
-> Node: [VertexNeighbors](docs/nodes/VertexNeighbors.md)
+> Node: [VertexNeighbors](/docs/nodes/VertexNeighbors.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshVertexNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
@@ -1329,7 +1329,7 @@ Integer
 
 ## vertex_neighbors_face_count
 
-> Node: [VertexNeighbors](docs/nodes/VertexNeighbors.md)
+> Node: [VertexNeighbors](/docs/nodes/VertexNeighbors.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshVertexNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
@@ -1359,7 +1359,7 @@ Integer
 
 ## material_index
 
-> Node: [MaterialIndex](docs/nodes/MaterialIndex.md)
+> Node: [MaterialIndex](/docs/nodes/MaterialIndex.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMaterialIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
@@ -1389,7 +1389,7 @@ Integer
 
 ## material_selection
 
-> Node: [MaterialSelection](docs/nodes/MaterialSelection.md)
+> Node: [MaterialSelection](/docs/nodes/MaterialSelection.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMaterialSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
@@ -1423,7 +1423,7 @@ Boolean
 
 ## intersect
 
-> Node: [MeshBoolean](docs/nodes/MeshBoolean.md)
+> Node: [MeshBoolean](/docs/nodes/MeshBoolean.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshBoolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
@@ -1459,7 +1459,7 @@ Mesh
 
 ## union
 
-> Node: [MeshBoolean](docs/nodes/MeshBoolean.md)
+> Node: [MeshBoolean](/docs/nodes/MeshBoolean.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshBoolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
@@ -1495,7 +1495,7 @@ Mesh
 
 ## difference
 
-> Node: [MeshBoolean](docs/nodes/MeshBoolean.md)
+> Node: [MeshBoolean](/docs/nodes/MeshBoolean.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshBoolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
@@ -1532,7 +1532,7 @@ Mesh
 
 ## split_edges
 
-> Node: [SplitEdges](docs/nodes/SplitEdges.md)
+> Node: [SplitEdges](/docs/nodes/SplitEdges.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeSplitEdges](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitEdges.html)
@@ -1563,7 +1563,7 @@ Mesh
 
 ## subdivide
 
-> Node: [SubdivideMesh](docs/nodes/SubdivideMesh.md)
+> Node: [SubdivideMesh](/docs/nodes/SubdivideMesh.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeSubdivideMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideMesh.html)
@@ -1594,7 +1594,7 @@ Mesh
 
 ## subdivision_surface
 
-> Node: [SubdivisionSurface](docs/nodes/SubdivisionSurface.md)
+> Node: [SubdivisionSurface](/docs/nodes/SubdivisionSurface.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeSubdivisionSurface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivisionSurface.html)
@@ -1631,7 +1631,7 @@ Mesh
 
 ## triangulate
 
-> Node: [Triangulate](docs/nodes/Triangulate.md)
+> Node: [Triangulate](/docs/nodes/Triangulate.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeTriangulate](https://docs.blender.org/api/current/bpy.types.GeometryNodeTriangulate.html)
@@ -1668,7 +1668,7 @@ Mesh
 
 ## dual
 
-> Node: [DualMesh](docs/nodes/DualMesh.md)
+> Node: [DualMesh](/docs/nodes/DualMesh.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeDualMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeDualMesh.html)
@@ -1699,7 +1699,7 @@ Geometry
 
 ## flip_faces
 
-> Node: [FlipFaces](docs/nodes/FlipFaces.md)
+> Node: [FlipFaces](/docs/nodes/FlipFaces.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeFlipFaces](https://docs.blender.org/api/current/bpy.types.GeometryNodeFlipFaces.html)
@@ -1730,7 +1730,7 @@ Mesh
 
 ## extrude
 
-> Node: [ExtrudeMesh](docs/nodes/ExtrudeMesh.md)
+> Node: [ExtrudeMesh](/docs/nodes/ExtrudeMesh.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeExtrudeMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html)
@@ -1768,7 +1768,7 @@ Sockets [mesh (Mesh), top (Boolean), side (Boolean)]
 
 ## to_curve
 
-> Node: [MeshToCurve](docs/nodes/MeshToCurve.md)
+> Node: [MeshToCurve](/docs/nodes/MeshToCurve.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshToCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html)
@@ -1799,7 +1799,7 @@ Curve
 
 ## to_points
 
-> Node: [MeshToPoints](docs/nodes/MeshToPoints.md)
+> Node: [MeshToPoints](/docs/nodes/MeshToPoints.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshToPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html)
@@ -1836,7 +1836,7 @@ Points
 
 ## distribute_points_on_faces
 
-> Node: [DistributePointsOnFaces](docs/nodes/DistributePointsOnFaces.md)
+> Node: [DistributePointsOnFaces](/docs/nodes/DistributePointsOnFaces.md)
   
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeDistributePointsOnFaces](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html)

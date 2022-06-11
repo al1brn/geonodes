@@ -35,6 +35,6 @@ string : String
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/String.md) [join](docs/sockets/String.md#join) : Method
-- [class_name](docs/sockets/functions.md) [join_strings](docs/sockets/functions.md#join_strings) : Function
+[class_name](/docs/sockets/String.md) [join](/docs/sockets/String.md#join) : Method
+- [class_name](/docs/sockets/functions.md) [join_strings](/docs/sockets/functions.md#join_strings) : Function
   

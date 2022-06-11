@@ -35,5 +35,5 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Mesh.md) [IcoSphere](docs/sockets/Mesh.md#icosphere) : Constructor
+[class_name](/docs/sockets/Mesh.md) [IcoSphere](/docs/sockets/Mesh.md#icosphere) : Constructor
 

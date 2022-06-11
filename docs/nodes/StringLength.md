@@ -34,5 +34,5 @@ length : Integer
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/String.md) [length](docs/sockets/String.md#length) : Property
+[class_name](/docs/sockets/String.md) [length](/docs/sockets/String.md#length) : Property
 

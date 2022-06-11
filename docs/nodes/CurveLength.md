@@ -34,5 +34,5 @@ length : Float
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Curve.md) [length](docs/sockets/Curve.md#length) : Method
+[class_name](/docs/sockets/Curve.md) [length](/docs/sockets/Curve.md#length) : Method
 

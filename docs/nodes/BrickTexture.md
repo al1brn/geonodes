@@ -51,5 +51,5 @@ color : Color
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Texture.md) [Brick](docs/sockets/Texture.md#brick) : Static method
+[class_name](/docs/sockets/Texture.md) [Brick](/docs/sockets/Texture.md#brick) : Static method
 

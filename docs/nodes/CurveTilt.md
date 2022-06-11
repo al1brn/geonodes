@@ -30,6 +30,6 @@ tilt : Float
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Spline.md) [capture_tilt](docs/sockets/Spline.md#capture_tilt) : Capture attribute
-- [class_name](docs/sockets/Spline.md) [tilt](docs/sockets/Spline.md#tilt) : Attribute
+[class_name](/docs/sockets/Spline.md) [capture_tilt](/docs/sockets/Spline.md#capture_tilt) : Capture attribute
+- [class_name](/docs/sockets/Spline.md) [tilt](/docs/sockets/Spline.md#tilt) : Attribute
   

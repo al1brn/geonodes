@@ -38,5 +38,5 @@ instances : Instances
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Instances.md) [rotate](docs/sockets/Instances.md#rotate) : Method
+[class_name](/docs/sockets/Instances.md) [rotate](/docs/sockets/Instances.md#rotate) : Method
 

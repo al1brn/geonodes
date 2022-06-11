@@ -30,6 +30,6 @@ position : Vector
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Geometry.md) [capture_position](docs/sockets/Geometry.md#capture_position) : Capture attribute
-- [class_name](docs/sockets/Geometry.md) [position](docs/sockets/Geometry.md#position) : Attribute
+[class_name](/docs/sockets/Geometry.md) [capture_position](/docs/sockets/Geometry.md#capture_position) : Capture attribute
+- [class_name](/docs/sockets/Geometry.md) [position](/docs/sockets/Geometry.md#position) : Attribute
   

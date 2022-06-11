@@ -35,5 +35,5 @@ vector : Vector
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Vector.md) [curves](docs/sockets/Vector.md#curves) : Method
+[class_name](/docs/sockets/Vector.md) [curves](/docs/sockets/Vector.md#curves) : Method
 

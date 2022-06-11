@@ -36,5 +36,5 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Curve.md) [set_radius](docs/sockets/Curve.md#set_radius) : Method
+[class_name](/docs/sockets/Curve.md) [set_radius](/docs/sockets/Curve.md#set_radius) : Method
 

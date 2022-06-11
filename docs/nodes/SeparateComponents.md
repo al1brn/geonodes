@@ -38,10 +38,10 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Geometry.md) [components](docs/sockets/Geometry.md#components) : Property
-- [class_name](docs/sockets/Geometry.md) [curve_component](docs/sockets/Geometry.md#curve_component) : Property
-- [class_name](docs/sockets/Geometry.md) [instances_component](docs/sockets/Geometry.md#instances_component) : Property
-- [class_name](docs/sockets/Geometry.md) [mesh_component](docs/sockets/Geometry.md#mesh_component) : Property
-- [class_name](docs/sockets/Geometry.md) [points_component](docs/sockets/Geometry.md#points_component) : Property
-- [class_name](docs/sockets/Geometry.md) [volume_component](docs/sockets/Geometry.md#volume_component) : Property
+[class_name](/docs/sockets/Geometry.md) [components](/docs/sockets/Geometry.md#components) : Property
+- [class_name](/docs/sockets/Geometry.md) [curve_component](/docs/sockets/Geometry.md#curve_component) : Property
+- [class_name](/docs/sockets/Geometry.md) [instances_component](/docs/sockets/Geometry.md#instances_component) : Property
+- [class_name](/docs/sockets/Geometry.md) [mesh_component](/docs/sockets/Geometry.md#mesh_component) : Property
+- [class_name](/docs/sockets/Geometry.md) [points_component](/docs/sockets/Geometry.md#points_component) : Property
+- [class_name](/docs/sockets/Geometry.md) [volume_component](/docs/sockets/Geometry.md#volume_component) : Property
   

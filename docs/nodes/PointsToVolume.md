@@ -42,5 +42,5 @@ volume : Volume
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Points.md) [to_volume](docs/sockets/Points.md#to_volume) : Method
+[class_name](/docs/sockets/Points.md) [to_volume](/docs/sockets/Points.md#to_volume) : Method
 

@@ -30,6 +30,6 @@ area : Float
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Mesh.md) [capture_face_area](docs/sockets/Mesh.md#capture_face_area) : Capture attribute
-- [class_name](docs/sockets/Mesh.md) [face_area](docs/sockets/Mesh.md#face_area) : Attribute
+[class_name](/docs/sockets/Mesh.md) [capture_face_area](/docs/sockets/Mesh.md#capture_face_area) : Capture attribute
+- [class_name](/docs/sockets/Mesh.md) [face_area](/docs/sockets/Mesh.md#face_area) : Attribute
   

@@ -39,5 +39,5 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[class_name](docs/sockets/Mesh.md) [Circle](docs/sockets/Mesh.md#circle) : Constructor
+[class_name](/docs/sockets/Mesh.md) [Circle](/docs/sockets/Mesh.md#circle) : Constructor
 
