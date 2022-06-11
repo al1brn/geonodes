@@ -9,50 +9,51 @@
 
 ## Constructors
 
-- [Combine](#combine) : [CombineRgb](section:nodes/CombineRgb.md), image (Color)
+- [Combine](#combine) : [CombineRgb](section:nodes/CombineRgb), image (Color)
 
 ## Properties
 
-- [b](#b) : [SeparateRgb](section:nodes/SeparateRgb.md), b (Float) = separate.b
-- [g](#g) : [SeparateRgb](section:nodes/SeparateRgb.md), g (Float) = separate.g
-- [r](#r) : [SeparateRgb](section:nodes/SeparateRgb.md), r (Float) = separate.r
-- [separate](#separate) : [SeparateRgb](section:nodes/SeparateRgb.md), Sockets      [r (Float), g (Float), b (Float)]
+- [b](#b) : [SeparateRgb](section:nodes/SeparateRgb), b (Float) = separate.b
+- [g](#g) : [SeparateRgb](section:nodes/SeparateRgb), g (Float) = separate.g
+- [r](#r) : [SeparateRgb](section:nodes/SeparateRgb), r (Float) = separate.r
+- [separate](#separate) : [SeparateRgb](section:nodes/SeparateRgb), Sockets      [r (Float), g (Float), b (Float)]
 
 ## Methods
 
-- [add](#add) : [Mix](section:nodes/Mix.md), color (Color)
-- [brighter](#brighter) : [Compare](section:nodes/Compare.md), result (Boolean)
-- [burn](#burn) : [Mix](section:nodes/Mix.md), color (Color)
-- [capture_attribute](#capture_attribute) : [CaptureAttribute](section:nodes/CaptureAttribute.md), Sockets      [geometry (Geometry), attribute (Color)]
-- [curves](#curves) : [RgbCurves](section:nodes/RgbCurves.md), color (Color)
-- [darken](#darken) : [Mix](section:nodes/Mix.md), color (Color)
-- [darker](#darker) : [Compare](section:nodes/Compare.md), result (Boolean)
-- [difference](#difference) : [Mix](section:nodes/Mix.md), color (Color)
-- [divide](#divide) : [Mix](section:nodes/Mix.md), color (Color)
-- [dodge](#dodge) : [Mix](section:nodes/Mix.md), color (Color)
-- [equal](#equal) : [Compare](section:nodes/Compare.md), result (Boolean)
-- [field_at_index](#field_at_index) : [FieldAtIndex](section:nodes/FieldAtIndex.md), value (Color)
-- [hue](#hue) : [Mix](section:nodes/Mix.md), color (Color)
-- [lighten](#lighten) : [Mix](section:nodes/Mix.md), color (Color)
-- [linear_light](#linear_light) : [Mix](section:nodes/Mix.md), color (Color)
-- [mix](#mix) : [Mix](section:nodes/Mix.md), color (Color)
-- [mix](#mix) : [Mix](section:nodes/Mix.md), color (Color)
-- [mix_color](#mix_color) : [Mix](section:nodes/Mix.md), color (Color)
-- [multiply](#multiply) : [Mix](section:nodes/Mix.md), color (Color)
-- [not_equal](#not_equal) : [Compare](section:nodes/Compare.md), result (Boolean)
-- [overlay](#overlay) : [Mix](section:nodes/Mix.md), color (Color)
-- [raycast](#raycast) : [Raycast](section:nodes/Raycast.md), Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Color)]
-- [saturation](#saturation) : [Mix](section:nodes/Mix.md), color (Color)
-- [screen](#screen) : [Mix](section:nodes/Mix.md), color (Color)
-- [soft_light](#soft_light) : [Mix](section:nodes/Mix.md), color (Color)
-- [subtract](#subtract) : [Mix](section:nodes/Mix.md), color (Color)
-- [transfer_attribute](#transfer_attribute) : [TransferAttribute](section:nodes/TransferAttribute.md), attribute (Color)
-- [value](#value) : [Mix](section:nodes/Mix.md), color (Color)
+- [add](#add) : [Mix](section:nodes/Mix), color (Color)
+- [brighter](#brighter) : [Compare](section:nodes/Compare), result (Boolean)
+- [burn](#burn) : [Mix](section:nodes/Mix), color (Color)
+- [capture_attribute](#capture_attribute) : [CaptureAttribute](section:nodes/CaptureAttribute), Sockets      [geometry (Geometry), attribute (Color)]
+- [curves](#curves) : [RgbCurves](section:nodes/RgbCurves), color (Color)
+- [darken](#darken) : [Mix](section:nodes/Mix), color (Color)
+- [darker](#darker) : [Compare](section:nodes/Compare), result (Boolean)
+- [difference](#difference) : [Mix](section:nodes/Mix), color (Color)
+- [divide](#divide) : [Mix](section:nodes/Mix), color (Color)
+- [dodge](#dodge) : [Mix](section:nodes/Mix), color (Color)
+- [equal](#equal) : [Compare](section:nodes/Compare), result (Boolean)
+- [field_at_index](#field_at_index) : [FieldAtIndex](section:nodes/FieldAtIndex), value (Color)
+- [hue](#hue) : [Mix](section:nodes/Mix), color (Color)
+- [lighten](#lighten) : [Mix](section:nodes/Mix), color (Color)
+- [linear_light](#linear_light) : [Mix](section:nodes/Mix), color (Color)
+- [mix](#mix) : [Mix](section:nodes/Mix), color (Color)
+- [mix](#mix) : [Mix](section:nodes/Mix), color (Color)
+- [mix_color](#mix_color) : [Mix](section:nodes/Mix), color (Color)
+- [multiply](#multiply) : [Mix](section:nodes/Mix), color (Color)
+- [not_equal](#not_equal) : [Compare](section:nodes/Compare), result (Boolean)
+- [overlay](#overlay) : [Mix](section:nodes/Mix), color (Color)
+- [raycast](#raycast) : [Raycast](section:nodes/Raycast), Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Color)]
+- [saturation](#saturation) : [Mix](section:nodes/Mix), color (Color)
+- [screen](#screen) : [Mix](section:nodes/Mix), color (Color)
+- [soft_light](#soft_light) : [Mix](section:nodes/Mix), color (Color)
+- [subtract](#subtract) : [Mix](section:nodes/Mix), color (Color)
+- [transfer_attribute](#transfer_attribute) : [TransferAttribute](section:nodes/TransferAttribute), attribute (Color)
+- [value](#value) : [Mix](section:nodes/Mix), color (Color)
 
 ## Combine
 
 > Node: [CombineRgb](section:nodes/CombineRgb)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeCombineRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineRGB.html)
 node ref [Combine RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/combine_rgb.html) </sub>
 
@@ -83,7 +84,8 @@ Color
 ## separate
 
 > Node: [SeparateRgb](section:nodes/SeparateRgb)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeSeparateRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateRGB.html)
 node ref [Separate RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_rgb.html) </sub>
 
@@ -116,7 +118,8 @@ Sockets [r (Float), g (Float), b (Float)]
 ## r
 
 > Node: [SeparateRgb](section:nodes/SeparateRgb)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeSeparateRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateRGB.html)
 node ref [Separate RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_rgb.html) </sub>
 
@@ -149,7 +152,8 @@ Sockets [r (Float), g (Float), b (Float)]
 ## g
 
 > Node: [SeparateRgb](section:nodes/SeparateRgb)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeSeparateRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateRGB.html)
 node ref [Separate RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_rgb.html) </sub>
 
@@ -182,7 +186,8 @@ Sockets [r (Float), g (Float), b (Float)]
 ## b
 
 > Node: [SeparateRgb](section:nodes/SeparateRgb)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeSeparateRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateRGB.html)
 node ref [Separate RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/separate_rgb.html) </sub>
 
@@ -215,7 +220,8 @@ Sockets [r (Float), g (Float), b (Float)]
 ## transfer_attribute
 
 > Node: [TransferAttribute](section:nodes/TransferAttribute)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
 node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/transfer_attribute.html) </sub>
 
@@ -256,7 +262,8 @@ Color
 ## capture_attribute
 
 > Node: [CaptureAttribute](section:nodes/CaptureAttribute)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
 node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/capture_attribute.html) </sub>
 
@@ -294,7 +301,8 @@ Sockets [geometry (Geometry), attribute (Color)]
 ## field_at_index
 
 > Node: [FieldAtIndex](section:nodes/FieldAtIndex)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
 node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/field_at_index.html) </sub>
 
@@ -332,7 +340,8 @@ Color
 ## raycast
 
 > Node: [Raycast](section:nodes/Raycast)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
 node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/raycast.html) </sub>
 
@@ -373,7 +382,8 @@ Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_dista
 ## equal
 
 > Node: [Compare](section:nodes/Compare)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -410,7 +420,8 @@ Boolean
 ## not_equal
 
 > Node: [Compare](section:nodes/Compare)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -447,7 +458,8 @@ Boolean
 ## brighter
 
 > Node: [Compare](section:nodes/Compare)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -483,7 +495,8 @@ Boolean
 ## darker
 
 > Node: [Compare](section:nodes/Compare)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -519,7 +532,8 @@ Boolean
 ## mix
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -558,7 +572,8 @@ Color
 ## darken
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -597,7 +612,8 @@ Color
 ## multiply
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -636,7 +652,8 @@ Color
 ## burn
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -675,7 +692,8 @@ Color
 ## lighten
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -714,7 +732,8 @@ Color
 ## screen
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -753,7 +772,8 @@ Color
 ## dodge
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -792,7 +812,8 @@ Color
 ## add
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -831,7 +852,8 @@ Color
 ## overlay
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -870,7 +892,8 @@ Color
 ## soft_light
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -909,7 +932,8 @@ Color
 ## linear_light
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -948,7 +972,8 @@ Color
 ## difference
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -987,7 +1012,8 @@ Color
 ## subtract
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -1026,7 +1052,8 @@ Color
 ## divide
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -1065,7 +1092,8 @@ Color
 ## hue
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -1104,7 +1132,8 @@ Color
 ## saturation
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -1143,7 +1172,8 @@ Color
 ## mix_color
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -1182,7 +1212,8 @@ Color
 ## value
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 
@@ -1221,7 +1252,8 @@ Color
 ## curves
 
 > Node: [RgbCurves](section:nodes/RgbCurves)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeRGBCurve](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html)
 node ref [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/rgb_curves.html) </sub>
 
@@ -1251,7 +1283,8 @@ Color
 ## mix
 
 > Node: [Mix](section:nodes/Mix)
-<sub>go to: [top](#color) [index](TBD)
+  
+<sub>go to: [top](#data-socket-color) [index](TBD)
 blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixRGB.html)
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mix.html) </sub>
 

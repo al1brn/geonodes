@@ -32,6 +32,7 @@ class Material(dsock.Material):
 
     def switch(self, switch1=None, true=None):
         """ > Node: Switch
+          
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>
@@ -74,6 +75,7 @@ class Material(dsock.Material):
 
     def selection(self):
         """ > Node: MaterialSelection
+          
         <sub>go to: top index
         blender ref GeometryNodeMaterialSelection
         node ref Material Selection </sub>

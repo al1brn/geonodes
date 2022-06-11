@@ -50,6 +50,7 @@ class Boolean(dsock.Boolean):
     @classmethod
     def Random(cls, probability=None, ID=None, seed=None):
         """ > Node: RandomValue
+          
         <sub>go to: top index
         blender ref FunctionNodeRandomValue
         node ref Random Value </sub>
@@ -96,6 +97,7 @@ class Boolean(dsock.Boolean):
 
     def transfer_attribute(self, source=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
         """ > Node: TransferAttribute
+          
         <sub>go to: top index
         blender ref GeometryNodeAttributeTransfer
         node ref Transfer Attribute </sub>
@@ -145,6 +147,7 @@ class Boolean(dsock.Boolean):
 
     def capture_attribute(self, geometry=None, domain='POINT'):
         """ > Node: CaptureAttribute
+          
         <sub>go to: top index
         blender ref GeometryNodeCaptureAttribute
         node ref Capture Attribute </sub>
@@ -191,6 +194,7 @@ class Boolean(dsock.Boolean):
 
     def field_at_index(self, index=None, domain='POINT'):
         """ > Node: FieldAtIndex
+          
         <sub>go to: top index
         blender ref GeometryNodeFieldAtIndex
         node ref Field at Index </sub>
@@ -237,6 +241,7 @@ class Boolean(dsock.Boolean):
 
     def raycast(self, target_geometry=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
         """ > Node: Raycast
+          
         <sub>go to: top index
         blender ref GeometryNodeRaycast
         node ref Raycast </sub>
@@ -286,6 +291,7 @@ class Boolean(dsock.Boolean):
 
     def switch(self, false=None, true=None):
         """ > Node: Switch
+          
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>
@@ -328,6 +334,7 @@ class Boolean(dsock.Boolean):
 
     def b_and(self, boolean1=None):
         """ > Node: BooleanMath
+          
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>
@@ -369,6 +376,7 @@ class Boolean(dsock.Boolean):
 
     def b_or(self, boolean1=None):
         """ > Node: BooleanMath
+          
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>
@@ -410,6 +418,7 @@ class Boolean(dsock.Boolean):
 
     def b_not(self):
         """ > Node: BooleanMath
+          
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>
@@ -450,6 +459,7 @@ class Boolean(dsock.Boolean):
 
     def nand(self, boolean1=None):
         """ > Node: BooleanMath
+          
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>
@@ -491,6 +501,7 @@ class Boolean(dsock.Boolean):
 
     def nor(self, boolean1=None):
         """ > Node: BooleanMath
+          
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>
@@ -532,6 +543,7 @@ class Boolean(dsock.Boolean):
 
     def xnor(self, boolean1=None):
         """ > Node: BooleanMath
+          
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>
@@ -573,6 +585,7 @@ class Boolean(dsock.Boolean):
 
     def xor(self, boolean1=None):
         """ > Node: BooleanMath
+          
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>
@@ -614,6 +627,7 @@ class Boolean(dsock.Boolean):
 
     def imply(self, boolean1=None):
         """ > Node: BooleanMath
+          
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>
@@ -655,6 +669,7 @@ class Boolean(dsock.Boolean):
 
     def nimply(self, boolean1=None):
         """ > Node: BooleanMath
+          
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>

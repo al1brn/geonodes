@@ -46,6 +46,7 @@ class Texture(dsock.Texture):
     @staticmethod
     def Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
         """ > Node: BrickTexture
+          
         <sub>go to: top index
         blender ref ShaderNodeTexBrick
         node ref Brick Texture </sub>
@@ -99,6 +100,7 @@ class Texture(dsock.Texture):
     @staticmethod
     def Checker(vector=None, color1=None, color2=None, scale=None):
         """ > Node: CheckerTexture
+          
         <sub>go to: top index
         blender ref ShaderNodeTexChecker
         node ref Checker Texture </sub>
@@ -138,6 +140,7 @@ class Texture(dsock.Texture):
     @staticmethod
     def Gradient(vector=None, gradient_type='LINEAR'):
         """ > Node: GradientTexture
+          
         <sub>go to: top index
         blender ref ShaderNodeTexGradient
         node ref Gradient Texture </sub>
@@ -179,6 +182,7 @@ class Texture(dsock.Texture):
     @staticmethod
     def Magic(vector=None, scale=None, distortion=None, turbulence_depth=2):
         """ > Node: MagicTexture
+          
         <sub>go to: top index
         blender ref ShaderNodeTexMagic
         node ref Magic Texture </sub>
@@ -222,6 +226,7 @@ class Texture(dsock.Texture):
     @staticmethod
     def Musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'):
         """ > Node: MusgraveTexture
+          
         <sub>go to: top index
         blender ref ShaderNodeTexMusgrave
         node ref Musgrave Texture </sub>
@@ -271,6 +276,7 @@ class Texture(dsock.Texture):
     @staticmethod
     def Noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):
         """ > Node: NoiseTexture
+          
         <sub>go to: top index
         blender ref ShaderNodeTexNoise
         node ref Noise Texture </sub>
@@ -317,6 +323,7 @@ class Texture(dsock.Texture):
     @staticmethod
     def Voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
         """ > Node: VoronoiTexture
+          
         <sub>go to: top index
         blender ref ShaderNodeTexVoronoi
         node ref Voronoi Texture </sub>
@@ -365,6 +372,7 @@ class Texture(dsock.Texture):
     @staticmethod
     def Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
         """ > Node: WaveTexture
+          
         <sub>go to: top index
         blender ref ShaderNodeTexWave
         node ref Wave Texture </sub>
@@ -415,6 +423,7 @@ class Texture(dsock.Texture):
     @staticmethod
     def WhiteNoise(vector=None, w=None, noise_dimensions='3D'):
         """ > Node: WhiteNoiseTexture
+          
         <sub>go to: top index
         blender ref ShaderNodeTexWhiteNoise
         node ref White Noise Texture </sub>
@@ -457,6 +466,7 @@ class Texture(dsock.Texture):
     @staticmethod
     def Image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
         """ > Node: ImageTexture
+          
         <sub>go to: top index
         blender ref GeometryNodeImageTexture
         node ref Image Texture </sub>
@@ -504,6 +514,7 @@ class Texture(dsock.Texture):
 
     def switch(self, switch1=None, true=None):
         """ > Node: Switch
+          
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>

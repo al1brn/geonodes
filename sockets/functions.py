@@ -131,6 +131,7 @@ Data socket functions
 
 def compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN'):
     """ > Node: Compare
+      
     <sub>go to: top index
     blender ref FunctionNodeCompare
     node ref Compare </sub>
@@ -175,6 +176,7 @@ def compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', ope
 
 def join_strings(*strings, delimiter=None):
     """ > Node: JoinStrings
+      
     <sub>go to: top index
     blender ref GeometryNodeStringJoin
     node ref Join Strings </sub>
@@ -211,6 +213,7 @@ def join_strings(*strings, delimiter=None):
 
 def scene():
     """ > Node: SceneTime
+      
     <sub>go to: top index
     blender ref GeometryNodeInputSceneTime
     node ref Scene Time </sub>
@@ -241,6 +244,7 @@ def scene():
 
 def add(value0=None, value1=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -282,6 +286,7 @@ def add(value0=None, value1=None):
 
 def subtract(value0=None, value1=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -323,6 +328,7 @@ def subtract(value0=None, value1=None):
 
 def multiply(value0=None, value1=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -364,6 +370,7 @@ def multiply(value0=None, value1=None):
 
 def divide(value0=None, value1=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -405,6 +412,7 @@ def divide(value0=None, value1=None):
 
 def multiply_add(value0=None, value1=None, value2=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -447,6 +455,7 @@ def multiply_add(value0=None, value1=None, value2=None):
 
 def pow(value0=None, value1=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -488,6 +497,7 @@ def pow(value0=None, value1=None):
 
 def log(value0=None, value1=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -529,6 +539,7 @@ def log(value0=None, value1=None):
 
 def sqrt(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -569,6 +580,7 @@ def sqrt(value0=None):
 
 def inverse_sqrt(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -609,6 +621,7 @@ def inverse_sqrt(value0=None):
 
 def abs(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -649,6 +662,7 @@ def abs(value0=None):
 
 def exp(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -689,6 +703,7 @@ def exp(value0=None):
 
 def min(value0=None, value1=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -730,6 +745,7 @@ def min(value0=None, value1=None):
 
 def max(value0=None, value1=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -771,6 +787,7 @@ def max(value0=None, value1=None):
 
 def less_than(value0=None, value1=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -812,6 +829,7 @@ def less_than(value0=None, value1=None):
 
 def greater_than(value0=None, value1=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -853,6 +871,7 @@ def greater_than(value0=None, value1=None):
 
 def sign(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -893,6 +912,7 @@ def sign(value0=None):
 
 def compare(value0=None, value1=None, value2=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -935,6 +955,7 @@ def compare(value0=None, value1=None, value2=None):
 
 def smooth_min(value0=None, value1=None, value2=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -977,6 +998,7 @@ def smooth_min(value0=None, value1=None, value2=None):
 
 def smooth_max(value0=None, value1=None, value2=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1019,6 +1041,7 @@ def smooth_max(value0=None, value1=None, value2=None):
 
 def round(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1059,6 +1082,7 @@ def round(value0=None):
 
 def floor(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1099,6 +1123,7 @@ def floor(value0=None):
 
 def ceil(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1139,6 +1164,7 @@ def ceil(value0=None):
 
 def trunc(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1179,6 +1205,7 @@ def trunc(value0=None):
 
 def fract(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1219,6 +1246,7 @@ def fract(value0=None):
 
 def modulo(value0=None, value1=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1260,6 +1288,7 @@ def modulo(value0=None, value1=None):
 
 def wrap(value0=None, value1=None, value2=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1302,6 +1331,7 @@ def wrap(value0=None, value1=None, value2=None):
 
 def snap(value0=None, value1=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1343,6 +1373,7 @@ def snap(value0=None, value1=None):
 
 def pingpong(value0=None, value1=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1384,6 +1415,7 @@ def pingpong(value0=None, value1=None):
 
 def sin(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1424,6 +1456,7 @@ def sin(value0=None):
 
 def cos(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1464,6 +1497,7 @@ def cos(value0=None):
 
 def tan(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1504,6 +1538,7 @@ def tan(value0=None):
 
 def arcsin(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1544,6 +1579,7 @@ def arcsin(value0=None):
 
 def arccos(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1584,6 +1620,7 @@ def arccos(value0=None):
 
 def arctan(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1624,6 +1661,7 @@ def arctan(value0=None):
 
 def arctan2(value0=None, value1=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1665,6 +1703,7 @@ def arctan2(value0=None, value1=None):
 
 def sinh(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1705,6 +1744,7 @@ def sinh(value0=None):
 
 def cosh(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1745,6 +1785,7 @@ def cosh(value0=None):
 
 def tanh(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1785,6 +1826,7 @@ def tanh(value0=None):
 
 def radians(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1825,6 +1867,7 @@ def radians(value0=None):
 
 def degrees(value0=None):
     """ > Node: Math
+      
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
@@ -1865,6 +1908,7 @@ def degrees(value0=None):
 
 def vector_add(vector0=None, vector1=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -1906,6 +1950,7 @@ def vector_add(vector0=None, vector1=None):
 
 def vector_subtract(vector0=None, vector1=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -1947,6 +1992,7 @@ def vector_subtract(vector0=None, vector1=None):
 
 def vector_multiply(vector0=None, vector1=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -1988,6 +2034,7 @@ def vector_multiply(vector0=None, vector1=None):
 
 def vector_divide(vector0=None, vector1=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2029,6 +2076,7 @@ def vector_divide(vector0=None, vector1=None):
 
 def vector_multiply_add(vector0=None, vector1=None, vector2=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2071,6 +2119,7 @@ def vector_multiply_add(vector0=None, vector1=None, vector2=None):
 
 def cross(vector0=None, vector1=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2112,6 +2161,7 @@ def cross(vector0=None, vector1=None):
 
 def project(vector0=None, vector1=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2153,6 +2203,7 @@ def project(vector0=None, vector1=None):
 
 def reflect(vector0=None, vector1=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2194,6 +2245,7 @@ def reflect(vector0=None, vector1=None):
 
 def refract(vector0=None, vector1=None, scale=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2236,6 +2288,7 @@ def refract(vector0=None, vector1=None, scale=None):
 
 def faceforward(vector0=None, vector1=None, vector2=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2278,6 +2331,7 @@ def faceforward(vector0=None, vector1=None, vector2=None):
 
 def dot(vector0=None, vector1=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2319,6 +2373,7 @@ def dot(vector0=None, vector1=None):
 
 def distance(vector0=None, vector1=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2360,6 +2415,7 @@ def distance(vector0=None, vector1=None):
 
 def length(vector0=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2400,6 +2456,7 @@ def length(vector0=None):
 
 def scale(vector0=None, scale=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2441,6 +2498,7 @@ def scale(vector0=None, scale=None):
 
 def normalize(vector0=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2481,6 +2539,7 @@ def normalize(vector0=None):
 
 def vector_absolute(vector0=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2521,6 +2580,7 @@ def vector_absolute(vector0=None):
 
 def vector_min(vector0=None, vector1=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2562,6 +2622,7 @@ def vector_min(vector0=None, vector1=None):
 
 def vector_max(vector0=None, vector1=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2603,6 +2664,7 @@ def vector_max(vector0=None, vector1=None):
 
 def vector_floor(vector0=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2643,6 +2705,7 @@ def vector_floor(vector0=None):
 
 def vector_ceil(vector0=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2683,6 +2746,7 @@ def vector_ceil(vector0=None):
 
 def fraction(vector0=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2723,6 +2787,7 @@ def fraction(vector0=None):
 
 def vector_modulo(vector0=None, vector1=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2764,6 +2829,7 @@ def vector_modulo(vector0=None, vector1=None):
 
 def vector_wrap(vector0=None, vector1=None, vector2=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2806,6 +2872,7 @@ def vector_wrap(vector0=None, vector1=None, vector2=None):
 
 def vector_snap(vector0=None, vector1=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2847,6 +2914,7 @@ def vector_snap(vector0=None, vector1=None):
 
 def vector_sin(vector0=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2887,6 +2955,7 @@ def vector_sin(vector0=None):
 
 def vector_cos(vector0=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2927,6 +2996,7 @@ def vector_cos(vector0=None):
 
 def vector_tan(vector0=None):
     """ > Node: VectorMath
+      
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
@@ -2967,6 +3037,7 @@ def vector_tan(vector0=None):
 
 def color_mix(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
@@ -3014,6 +3085,7 @@ def color_mix(color1=None, color2=None, fac=None, use_alpha=False):
 
 def color_darken(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
@@ -3061,6 +3133,7 @@ def color_darken(color1=None, color2=None, fac=None, use_alpha=False):
 
 def color_multiply(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
@@ -3108,6 +3181,7 @@ def color_multiply(color1=None, color2=None, fac=None, use_alpha=False):
 
 def color_burn(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
@@ -3155,6 +3229,7 @@ def color_burn(color1=None, color2=None, fac=None, use_alpha=False):
 
 def color_lighten(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
@@ -3202,6 +3277,7 @@ def color_lighten(color1=None, color2=None, fac=None, use_alpha=False):
 
 def color_screen(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
@@ -3249,6 +3325,7 @@ def color_screen(color1=None, color2=None, fac=None, use_alpha=False):
 
 def color_dodge(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
@@ -3296,6 +3373,7 @@ def color_dodge(color1=None, color2=None, fac=None, use_alpha=False):
 
 def color_add(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
@@ -3343,6 +3421,7 @@ def color_add(color1=None, color2=None, fac=None, use_alpha=False):
 
 def color_overlay(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
@@ -3390,6 +3469,7 @@ def color_overlay(color1=None, color2=None, fac=None, use_alpha=False):
 
 def color_soft_light(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
@@ -3437,6 +3517,7 @@ def color_soft_light(color1=None, color2=None, fac=None, use_alpha=False):
 
 def color_linear_light(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
@@ -3484,6 +3565,7 @@ def color_linear_light(color1=None, color2=None, fac=None, use_alpha=False):
 
 def color_difference(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
@@ -3531,6 +3613,7 @@ def color_difference(color1=None, color2=None, fac=None, use_alpha=False):
 
 def color_subtract(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
@@ -3578,6 +3661,7 @@ def color_subtract(color1=None, color2=None, fac=None, use_alpha=False):
 
 def color_divide(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
@@ -3625,6 +3709,7 @@ def color_divide(color1=None, color2=None, fac=None, use_alpha=False):
 
 def color_hue(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
@@ -3672,6 +3757,7 @@ def color_hue(color1=None, color2=None, fac=None, use_alpha=False):
 
 def color_saturation(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
@@ -3719,6 +3805,7 @@ def color_saturation(color1=None, color2=None, fac=None, use_alpha=False):
 
 def color_mix_color(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
@@ -3766,6 +3853,7 @@ def color_mix_color(color1=None, color2=None, fac=None, use_alpha=False):
 
 def color_value(color1=None, color2=None, fac=None, use_alpha=False):
     """ > Node: Mix
+      
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>

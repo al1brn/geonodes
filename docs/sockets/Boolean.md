@@ -9,29 +9,30 @@
 
 ## Constructors
 
-- [Random](#random) : [RandomValue](section:nodes/RandomValue.md), value (Boolean)
+- [Random](#random) : [RandomValue](section:nodes/RandomValue), value (Boolean)
 
 ## Methods
 
-- [b_and](#b_and) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
-- [b_not](#b_not) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
-- [b_or](#b_or) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
-- [capture_attribute](#capture_attribute) : [CaptureAttribute](section:nodes/CaptureAttribute.md), Sockets      [geometry (Geometry), attribute (Boolean)]
-- [field_at_index](#field_at_index) : [FieldAtIndex](section:nodes/FieldAtIndex.md), value (Boolean)
-- [imply](#imply) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
-- [nand](#nand) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
-- [nimply](#nimply) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
-- [nor](#nor) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
-- [raycast](#raycast) : [Raycast](section:nodes/Raycast.md), Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
-- [switch](#switch) : [Switch](section:nodes/Switch.md), output (Boolean)
-- [transfer_attribute](#transfer_attribute) : [TransferAttribute](section:nodes/TransferAttribute.md), attribute (Boolean)
-- [xnor](#xnor) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
-- [xor](#xor) : [BooleanMath](section:nodes/BooleanMath.md), boolean (Boolean)
+- [b_and](#b_and) : [BooleanMath](section:nodes/BooleanMath), boolean (Boolean)
+- [b_not](#b_not) : [BooleanMath](section:nodes/BooleanMath), boolean (Boolean)
+- [b_or](#b_or) : [BooleanMath](section:nodes/BooleanMath), boolean (Boolean)
+- [capture_attribute](#capture_attribute) : [CaptureAttribute](section:nodes/CaptureAttribute), Sockets      [geometry (Geometry), attribute (Boolean)]
+- [field_at_index](#field_at_index) : [FieldAtIndex](section:nodes/FieldAtIndex), value (Boolean)
+- [imply](#imply) : [BooleanMath](section:nodes/BooleanMath), boolean (Boolean)
+- [nand](#nand) : [BooleanMath](section:nodes/BooleanMath), boolean (Boolean)
+- [nimply](#nimply) : [BooleanMath](section:nodes/BooleanMath), boolean (Boolean)
+- [nor](#nor) : [BooleanMath](section:nodes/BooleanMath), boolean (Boolean)
+- [raycast](#raycast) : [Raycast](section:nodes/Raycast), Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
+- [switch](#switch) : [Switch](section:nodes/Switch), output (Boolean)
+- [transfer_attribute](#transfer_attribute) : [TransferAttribute](section:nodes/TransferAttribute), attribute (Boolean)
+- [xnor](#xnor) : [BooleanMath](section:nodes/BooleanMath), boolean (Boolean)
+- [xor](#xor) : [BooleanMath](section:nodes/BooleanMath), boolean (Boolean)
 
 ## Random
 
 > Node: [RandomValue](section:nodes/RandomValue)
-<sub>go to: [top](#boolean) [index](TBD)
+  
+<sub>go to: [top](#data-socket-boolean) [index](TBD)
 blender ref [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/random_value.html) </sub>
 
@@ -66,7 +67,8 @@ Boolean
 ## transfer_attribute
 
 > Node: [TransferAttribute](section:nodes/TransferAttribute)
-<sub>go to: [top](#boolean) [index](TBD)
+  
+<sub>go to: [top](#data-socket-boolean) [index](TBD)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
 node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/transfer_attribute.html) </sub>
 
@@ -107,7 +109,8 @@ Boolean
 ## capture_attribute
 
 > Node: [CaptureAttribute](section:nodes/CaptureAttribute)
-<sub>go to: [top](#boolean) [index](TBD)
+  
+<sub>go to: [top](#data-socket-boolean) [index](TBD)
 blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
 node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/capture_attribute.html) </sub>
 
@@ -145,7 +148,8 @@ Sockets [geometry (Geometry), attribute (Boolean)]
 ## field_at_index
 
 > Node: [FieldAtIndex](section:nodes/FieldAtIndex)
-<sub>go to: [top](#boolean) [index](TBD)
+  
+<sub>go to: [top](#data-socket-boolean) [index](TBD)
 blender ref [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
 node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/field_at_index.html) </sub>
 
@@ -183,7 +187,8 @@ Boolean
 ## raycast
 
 > Node: [Raycast](section:nodes/Raycast)
-<sub>go to: [top](#boolean) [index](TBD)
+  
+<sub>go to: [top](#data-socket-boolean) [index](TBD)
 blender ref [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
 node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/raycast.html) </sub>
 
@@ -224,7 +229,8 @@ Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_dista
 ## switch
 
 > Node: [Switch](section:nodes/Switch)
-<sub>go to: [top](#boolean) [index](TBD)
+  
+<sub>go to: [top](#data-socket-boolean) [index](TBD)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 
@@ -259,7 +265,8 @@ Boolean
 ## b_and
 
 > Node: [BooleanMath](section:nodes/BooleanMath)
-<sub>go to: [top](#boolean) [index](TBD)
+  
+<sub>go to: [top](#data-socket-boolean) [index](TBD)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
 
@@ -293,7 +300,8 @@ Boolean
 ## b_or
 
 > Node: [BooleanMath](section:nodes/BooleanMath)
-<sub>go to: [top](#boolean) [index](TBD)
+  
+<sub>go to: [top](#data-socket-boolean) [index](TBD)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
 
@@ -327,7 +335,8 @@ Boolean
 ## b_not
 
 > Node: [BooleanMath](section:nodes/BooleanMath)
-<sub>go to: [top](#boolean) [index](TBD)
+  
+<sub>go to: [top](#data-socket-boolean) [index](TBD)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
 
@@ -360,7 +369,8 @@ Boolean
 ## nand
 
 > Node: [BooleanMath](section:nodes/BooleanMath)
-<sub>go to: [top](#boolean) [index](TBD)
+  
+<sub>go to: [top](#data-socket-boolean) [index](TBD)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
 
@@ -394,7 +404,8 @@ Boolean
 ## nor
 
 > Node: [BooleanMath](section:nodes/BooleanMath)
-<sub>go to: [top](#boolean) [index](TBD)
+  
+<sub>go to: [top](#data-socket-boolean) [index](TBD)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
 
@@ -428,7 +439,8 @@ Boolean
 ## xnor
 
 > Node: [BooleanMath](section:nodes/BooleanMath)
-<sub>go to: [top](#boolean) [index](TBD)
+  
+<sub>go to: [top](#data-socket-boolean) [index](TBD)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
 
@@ -462,7 +474,8 @@ Boolean
 ## xor
 
 > Node: [BooleanMath](section:nodes/BooleanMath)
-<sub>go to: [top](#boolean) [index](TBD)
+  
+<sub>go to: [top](#data-socket-boolean) [index](TBD)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
 
@@ -496,7 +509,8 @@ Boolean
 ## imply
 
 > Node: [BooleanMath](section:nodes/BooleanMath)
-<sub>go to: [top](#boolean) [index](TBD)
+  
+<sub>go to: [top](#data-socket-boolean) [index](TBD)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
 
@@ -530,7 +544,8 @@ Boolean
 ## nimply
 
 > Node: [BooleanMath](section:nodes/BooleanMath)
-<sub>go to: [top](#boolean) [index](TBD)
+  
+<sub>go to: [top](#data-socket-boolean) [index](TBD)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/boolean_math.html) </sub>
 

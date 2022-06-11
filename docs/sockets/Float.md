@@ -9,74 +9,75 @@
 
 ## Constructors
 
-- [Random](#random) : [RandomValue](section:nodes/RandomValue.md), value (Float)
+- [Random](#random) : [RandomValue](section:nodes/RandomValue), value (Float)
 
 ## Methods
 
-- [abs](#abs) : [Math](section:nodes/Math.md), value (Float)
-- [accumulate_field](#accumulate_field) : [AccumulateField](section:nodes/AccumulateField.md), Sockets      [leading (Float), trailing (Float), total (Float)]
-- [add](#add) : [Math](section:nodes/Math.md), value (Float)
-- [arccos](#arccos) : [Math](section:nodes/Math.md), value (Float)
-- [arcsin](#arcsin) : [Math](section:nodes/Math.md), value (Float)
-- [arctan](#arctan) : [Math](section:nodes/Math.md), value (Float)
-- [arctan2](#arctan2) : [Math](section:nodes/Math.md), value (Float)
-- [attribute_statistic](#attribute_statistic) : [AttributeStatistic](section:nodes/AttributeStatistic.md), Sockets      [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
-- [capture_attribute](#capture_attribute) : [CaptureAttribute](section:nodes/CaptureAttribute.md), Sockets      [geometry (Geometry), attribute (Float)]
-- [ceil](#ceil) : [Math](section:nodes/Math.md), value (Float)
-- [clamp](#clamp) : [Clamp](section:nodes/Clamp.md), result (Float)
-- [color_ramp](#color_ramp) : [Colorramp](section:nodes/Colorramp.md), Sockets      [color (Color), alpha (Float)]
-- [compare](#compare) : [Math](section:nodes/Math.md), value (Float)
-- [cos](#cos) : [Math](section:nodes/Math.md), value (Float)
-- [cosh](#cosh) : [Math](section:nodes/Math.md), value (Float)
-- [curve](#curve) : [FloatCurve](section:nodes/FloatCurve.md), value (Float)
-- [degrees](#degrees) : [Math](section:nodes/Math.md), value (Float)
-- [divide](#divide) : [Math](section:nodes/Math.md), value (Float)
-- [equal](#equal) : [Compare](section:nodes/Compare.md), result (Boolean)
-- [exp](#exp) : [Math](section:nodes/Math.md), value (Float)
-- [field_at_index](#field_at_index) : [FieldAtIndex](section:nodes/FieldAtIndex.md), value (Float)
-- [floor](#floor) : [Math](section:nodes/Math.md), value (Float)
-- [fract](#fract) : [Math](section:nodes/Math.md), value (Float)
-- [greater_equal](#greater_equal) : [Compare](section:nodes/Compare.md), result (Boolean)
-- [greater_than](#greater_than) : [Compare](section:nodes/Compare.md), result (Boolean)
-- [greater_than](#greater_than) : [Math](section:nodes/Math.md), value (Float)
-- [inverse_sqrt](#inverse_sqrt) : [Math](section:nodes/Math.md), value (Float)
-- [less_equal](#less_equal) : [Compare](section:nodes/Compare.md), result (Boolean)
-- [less_than](#less_than) : [Compare](section:nodes/Compare.md), result (Boolean)
-- [less_than](#less_than) : [Math](section:nodes/Math.md), value (Float)
-- [log](#log) : [Math](section:nodes/Math.md), value (Float)
-- [map_range](#map_range) : [MapRange](section:nodes/MapRange.md), result (Float)
-- [max](#max) : [Math](section:nodes/Math.md), value (Float)
-- [min](#min) : [Math](section:nodes/Math.md), value (Float)
-- [modulo](#modulo) : [Math](section:nodes/Math.md), value (Float)
-- [multiply](#multiply) : [Math](section:nodes/Math.md), value (Float)
-- [multiply_add](#multiply_add) : [Math](section:nodes/Math.md), value (Float)
-- [not_equal](#not_equal) : [Compare](section:nodes/Compare.md), result (Boolean)
-- [pingpong](#pingpong) : [Math](section:nodes/Math.md), value (Float)
-- [pow](#pow) : [Math](section:nodes/Math.md), value (Float)
-- [radians](#radians) : [Math](section:nodes/Math.md), value (Float)
-- [raycast](#raycast) : [Raycast](section:nodes/Raycast.md), Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
-- [round](#round) : [Math](section:nodes/Math.md), value (Float)
-- [sign](#sign) : [Math](section:nodes/Math.md), value (Float)
-- [sin](#sin) : [Math](section:nodes/Math.md), value (Float)
-- [sinh](#sinh) : [Math](section:nodes/Math.md), value (Float)
-- [smooth_max](#smooth_max) : [Math](section:nodes/Math.md), value (Float)
-- [smooth_min](#smooth_min) : [Math](section:nodes/Math.md), value (Float)
-- [snap](#snap) : [Math](section:nodes/Math.md), value (Float)
-- [sqrt](#sqrt) : [Math](section:nodes/Math.md), value (Float)
-- [subtract](#subtract) : [Math](section:nodes/Math.md), value (Float)
-- [switch](#switch) : [Switch](section:nodes/Switch.md), output (Float)
-- [tan](#tan) : [Math](section:nodes/Math.md), value (Float)
-- [tanh](#tanh) : [Math](section:nodes/Math.md), value (Float)
-- [to_integer](#to_integer) : [FloatToInteger](section:nodes/FloatToInteger.md), integer (Integer)
-- [to_string](#to_string) : [ValueToString](section:nodes/ValueToString.md), string (String)
-- [transfer_attribute](#transfer_attribute) : [TransferAttribute](section:nodes/TransferAttribute.md), attribute (Float)
-- [trunc](#trunc) : [Math](section:nodes/Math.md), value (Float)
-- [wrap](#wrap) : [Math](section:nodes/Math.md), value (Float)
+- [abs](#abs) : [Math](section:nodes/Math), value (Float)
+- [accumulate_field](#accumulate_field) : [AccumulateField](section:nodes/AccumulateField), Sockets      [leading (Float), trailing (Float), total (Float)]
+- [add](#add) : [Math](section:nodes/Math), value (Float)
+- [arccos](#arccos) : [Math](section:nodes/Math), value (Float)
+- [arcsin](#arcsin) : [Math](section:nodes/Math), value (Float)
+- [arctan](#arctan) : [Math](section:nodes/Math), value (Float)
+- [arctan2](#arctan2) : [Math](section:nodes/Math), value (Float)
+- [attribute_statistic](#attribute_statistic) : [AttributeStatistic](section:nodes/AttributeStatistic), Sockets      [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
+- [capture_attribute](#capture_attribute) : [CaptureAttribute](section:nodes/CaptureAttribute), Sockets      [geometry (Geometry), attribute (Float)]
+- [ceil](#ceil) : [Math](section:nodes/Math), value (Float)
+- [clamp](#clamp) : [Clamp](section:nodes/Clamp), result (Float)
+- [color_ramp](#color_ramp) : [Colorramp](section:nodes/Colorramp), Sockets      [color (Color), alpha (Float)]
+- [compare](#compare) : [Math](section:nodes/Math), value (Float)
+- [cos](#cos) : [Math](section:nodes/Math), value (Float)
+- [cosh](#cosh) : [Math](section:nodes/Math), value (Float)
+- [curve](#curve) : [FloatCurve](section:nodes/FloatCurve), value (Float)
+- [degrees](#degrees) : [Math](section:nodes/Math), value (Float)
+- [divide](#divide) : [Math](section:nodes/Math), value (Float)
+- [equal](#equal) : [Compare](section:nodes/Compare), result (Boolean)
+- [exp](#exp) : [Math](section:nodes/Math), value (Float)
+- [field_at_index](#field_at_index) : [FieldAtIndex](section:nodes/FieldAtIndex), value (Float)
+- [floor](#floor) : [Math](section:nodes/Math), value (Float)
+- [fract](#fract) : [Math](section:nodes/Math), value (Float)
+- [greater_equal](#greater_equal) : [Compare](section:nodes/Compare), result (Boolean)
+- [greater_than](#greater_than) : [Compare](section:nodes/Compare), result (Boolean)
+- [greater_than](#greater_than) : [Math](section:nodes/Math), value (Float)
+- [inverse_sqrt](#inverse_sqrt) : [Math](section:nodes/Math), value (Float)
+- [less_equal](#less_equal) : [Compare](section:nodes/Compare), result (Boolean)
+- [less_than](#less_than) : [Compare](section:nodes/Compare), result (Boolean)
+- [less_than](#less_than) : [Math](section:nodes/Math), value (Float)
+- [log](#log) : [Math](section:nodes/Math), value (Float)
+- [map_range](#map_range) : [MapRange](section:nodes/MapRange), result (Float)
+- [max](#max) : [Math](section:nodes/Math), value (Float)
+- [min](#min) : [Math](section:nodes/Math), value (Float)
+- [modulo](#modulo) : [Math](section:nodes/Math), value (Float)
+- [multiply](#multiply) : [Math](section:nodes/Math), value (Float)
+- [multiply_add](#multiply_add) : [Math](section:nodes/Math), value (Float)
+- [not_equal](#not_equal) : [Compare](section:nodes/Compare), result (Boolean)
+- [pingpong](#pingpong) : [Math](section:nodes/Math), value (Float)
+- [pow](#pow) : [Math](section:nodes/Math), value (Float)
+- [radians](#radians) : [Math](section:nodes/Math), value (Float)
+- [raycast](#raycast) : [Raycast](section:nodes/Raycast), Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
+- [round](#round) : [Math](section:nodes/Math), value (Float)
+- [sign](#sign) : [Math](section:nodes/Math), value (Float)
+- [sin](#sin) : [Math](section:nodes/Math), value (Float)
+- [sinh](#sinh) : [Math](section:nodes/Math), value (Float)
+- [smooth_max](#smooth_max) : [Math](section:nodes/Math), value (Float)
+- [smooth_min](#smooth_min) : [Math](section:nodes/Math), value (Float)
+- [snap](#snap) : [Math](section:nodes/Math), value (Float)
+- [sqrt](#sqrt) : [Math](section:nodes/Math), value (Float)
+- [subtract](#subtract) : [Math](section:nodes/Math), value (Float)
+- [switch](#switch) : [Switch](section:nodes/Switch), output (Float)
+- [tan](#tan) : [Math](section:nodes/Math), value (Float)
+- [tanh](#tanh) : [Math](section:nodes/Math), value (Float)
+- [to_integer](#to_integer) : [FloatToInteger](section:nodes/FloatToInteger), integer (Integer)
+- [to_string](#to_string) : [ValueToString](section:nodes/ValueToString), string (String)
+- [transfer_attribute](#transfer_attribute) : [TransferAttribute](section:nodes/TransferAttribute), attribute (Float)
+- [trunc](#trunc) : [Math](section:nodes/Math), value (Float)
+- [wrap](#wrap) : [Math](section:nodes/Math), value (Float)
 
 ## Random
 
 > Node: [RandomValue](section:nodes/RandomValue)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/random_value.html) </sub>
 
@@ -112,7 +113,8 @@ Float
 ## accumulate_field
 
 > Node: [AccumulateField](section:nodes/AccumulateField)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [GeometryNodeAccumulateField](https://docs.blender.org/api/current/bpy.types.GeometryNodeAccumulateField.html)
 node ref [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/accumulate_field.html) </sub>
 
@@ -150,7 +152,8 @@ Sockets [leading (Float), trailing (Float), total (Float)]
 ## attribute_statistic
 
 > Node: [AttributeStatistic](section:nodes/AttributeStatistic)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [GeometryNodeAttributeStatistic](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
 node ref [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/attribute_statistic.html) </sub>
 
@@ -189,7 +192,8 @@ Sockets [mean (Float), median (Float), sum (Float), min (Float), max (Float), ra
 ## transfer_attribute
 
 > Node: [TransferAttribute](section:nodes/TransferAttribute)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
 node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/transfer_attribute.html) </sub>
 
@@ -230,7 +234,8 @@ Float
 ## capture_attribute
 
 > Node: [CaptureAttribute](section:nodes/CaptureAttribute)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
 node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/capture_attribute.html) </sub>
 
@@ -268,7 +273,8 @@ Sockets [geometry (Geometry), attribute (Float)]
 ## field_at_index
 
 > Node: [FieldAtIndex](section:nodes/FieldAtIndex)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
 node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/field_at_index.html) </sub>
 
@@ -306,7 +312,8 @@ Float
 ## raycast
 
 > Node: [Raycast](section:nodes/Raycast)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
 node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/raycast.html) </sub>
 
@@ -347,7 +354,8 @@ Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_dista
 ## switch
 
 > Node: [Switch](section:nodes/Switch)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 
@@ -382,7 +390,8 @@ Float
 ## map_range
 
 > Node: [MapRange](section:nodes/MapRange)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 node ref [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/map_range.html) </sub>
 
@@ -424,7 +433,8 @@ Float
 ## less_than
 
 > Node: [Compare](section:nodes/Compare)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -460,7 +470,8 @@ Boolean
 ## less_equal
 
 > Node: [Compare](section:nodes/Compare)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -496,7 +507,8 @@ Boolean
 ## greater_than
 
 > Node: [Compare](section:nodes/Compare)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -532,7 +544,8 @@ Boolean
 ## greater_equal
 
 > Node: [Compare](section:nodes/Compare)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -568,7 +581,8 @@ Boolean
 ## equal
 
 > Node: [Compare](section:nodes/Compare)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -605,7 +619,8 @@ Boolean
 ## not_equal
 
 > Node: [Compare](section:nodes/Compare)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -642,7 +657,8 @@ Boolean
 ## add
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -676,7 +692,8 @@ Float
 ## subtract
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -710,7 +727,8 @@ Float
 ## multiply
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -744,7 +762,8 @@ Float
 ## divide
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -778,7 +797,8 @@ Float
 ## multiply_add
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -813,7 +833,8 @@ Float
 ## pow
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -847,7 +868,8 @@ Float
 ## log
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -881,7 +903,8 @@ Float
 ## sqrt
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -914,7 +937,8 @@ Float
 ## inverse_sqrt
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -947,7 +971,8 @@ Float
 ## abs
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -980,7 +1005,8 @@ Float
 ## exp
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1013,7 +1039,8 @@ Float
 ## min
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1047,7 +1074,8 @@ Float
 ## max
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1081,7 +1109,8 @@ Float
 ## less_than
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1115,7 +1144,8 @@ Float
 ## greater_than
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1149,7 +1179,8 @@ Float
 ## sign
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1182,7 +1213,8 @@ Float
 ## compare
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1217,7 +1249,8 @@ Float
 ## smooth_min
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1252,7 +1285,8 @@ Float
 ## smooth_max
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1287,7 +1321,8 @@ Float
 ## round
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1320,7 +1355,8 @@ Float
 ## floor
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1353,7 +1389,8 @@ Float
 ## ceil
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1386,7 +1423,8 @@ Float
 ## trunc
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1419,7 +1457,8 @@ Float
 ## fract
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1452,7 +1491,8 @@ Float
 ## modulo
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1486,7 +1526,8 @@ Float
 ## wrap
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1521,7 +1562,8 @@ Float
 ## snap
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1555,7 +1597,8 @@ Float
 ## pingpong
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1589,7 +1632,8 @@ Float
 ## sin
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1622,7 +1666,8 @@ Float
 ## cos
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1655,7 +1700,8 @@ Float
 ## tan
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1688,7 +1734,8 @@ Float
 ## arcsin
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1721,7 +1768,8 @@ Float
 ## arccos
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1754,7 +1802,8 @@ Float
 ## arctan
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1787,7 +1836,8 @@ Float
 ## arctan2
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1821,7 +1871,8 @@ Float
 ## sinh
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1854,7 +1905,8 @@ Float
 ## cosh
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1887,7 +1939,8 @@ Float
 ## tanh
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1920,7 +1973,8 @@ Float
 ## radians
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1953,7 +2007,8 @@ Float
 ## degrees
 
 > Node: [Math](section:nodes/Math)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/math.html) </sub>
 
@@ -1986,7 +2041,8 @@ Float
 ## to_integer
 
 > Node: [FloatToInteger](section:nodes/FloatToInteger)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [FunctionNodeFloatToInt](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 node ref [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/float_to_integer.html) </sub>
 
@@ -2019,7 +2075,8 @@ Integer
 ## to_string
 
 > Node: [ValueToString](section:nodes/ValueToString)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [FunctionNodeValueToString](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html)
 node ref [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/value_to_string.html) </sub>
 
@@ -2049,7 +2106,8 @@ String
 ## color_ramp
 
 > Node: [Colorramp](section:nodes/Colorramp)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeValToRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
 node ref [ColorRamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/colorramp.html) </sub>
 
@@ -2078,7 +2136,8 @@ Sockets [color (Color), alpha (Float)]
 ## curve
 
 > Node: [FloatCurve](section:nodes/FloatCurve)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeFloatCurve](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html)
 node ref [Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/float_curve.html) </sub>
 
@@ -2108,7 +2167,8 @@ Float
 ## clamp
 
 > Node: [Clamp](section:nodes/Clamp)
-<sub>go to: [top](#float) [index](TBD)
+  
+<sub>go to: [top](#data-socket-float) [index](TBD)
 blender ref [ShaderNodeClamp](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
 node ref [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/clamp.html) </sub>
 

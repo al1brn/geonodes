@@ -105,6 +105,7 @@ class Geometry(dsock.Geometry):
     @staticmethod
     def is_viewport():
         """ > Node: IsViewport
+          
         <sub>go to: top index
         blender ref GeometryNodeIsViewport
         node ref Is Viewport </sub>
@@ -140,6 +141,7 @@ class Geometry(dsock.Geometry):
     @property
     def bound_box(self):
         """ > Node: BoundingBox
+          
         <sub>go to: top index
         blender ref GeometryNodeBoundBox
         node ref Bounding Box </sub>
@@ -183,6 +185,7 @@ class Geometry(dsock.Geometry):
     @property
     def box(self):
         """ > Node: BoundingBox
+          
         <sub>go to: top index
         blender ref GeometryNodeBoundBox
         node ref Bounding Box </sub>
@@ -224,6 +227,7 @@ class Geometry(dsock.Geometry):
     @property
     def box_min(self):
         """ > Node: BoundingBox
+          
         <sub>go to: top index
         blender ref GeometryNodeBoundBox
         node ref Bounding Box </sub>
@@ -265,6 +269,7 @@ class Geometry(dsock.Geometry):
     @property
     def box_max(self):
         """ > Node: BoundingBox
+          
         <sub>go to: top index
         blender ref GeometryNodeBoundBox
         node ref Bounding Box </sub>
@@ -306,6 +311,7 @@ class Geometry(dsock.Geometry):
     @property
     def components(self):
         """ > Node: SeparateComponents
+          
         <sub>go to: top index
         blender ref GeometryNodeSeparateComponents
         node ref Separate Components </sub>
@@ -349,6 +355,7 @@ class Geometry(dsock.Geometry):
     @property
     def mesh_component(self):
         """ > Node: SeparateComponents
+          
         <sub>go to: top index
         blender ref GeometryNodeSeparateComponents
         node ref Separate Components </sub>
@@ -390,6 +397,7 @@ class Geometry(dsock.Geometry):
     @property
     def points_component(self):
         """ > Node: SeparateComponents
+          
         <sub>go to: top index
         blender ref GeometryNodeSeparateComponents
         node ref Separate Components </sub>
@@ -431,6 +439,7 @@ class Geometry(dsock.Geometry):
     @property
     def curve_component(self):
         """ > Node: SeparateComponents
+          
         <sub>go to: top index
         blender ref GeometryNodeSeparateComponents
         node ref Separate Components </sub>
@@ -472,6 +481,7 @@ class Geometry(dsock.Geometry):
     @property
     def volume_component(self):
         """ > Node: SeparateComponents
+          
         <sub>go to: top index
         blender ref GeometryNodeSeparateComponents
         node ref Separate Components </sub>
@@ -513,6 +523,7 @@ class Geometry(dsock.Geometry):
     @property
     def instances_component(self):
         """ > Node: SeparateComponents
+          
         <sub>go to: top index
         blender ref GeometryNodeSeparateComponents
         node ref Separate Components </sub>
@@ -557,6 +568,7 @@ class Geometry(dsock.Geometry):
 
     def capture_ID(self, domain='POINT'):
         """ > Node: ID
+          
         <sub>go to: top index
         blender ref GeometryNodeInputID
         node ref ID </sub>
@@ -598,6 +610,7 @@ class Geometry(dsock.Geometry):
 
     def capture_index(self, domain='POINT'):
         """ > Node: Index
+          
         <sub>go to: top index
         blender ref GeometryNodeInputIndex
         node ref Index </sub>
@@ -639,6 +652,7 @@ class Geometry(dsock.Geometry):
 
     def capture_normal(self, domain='FACE'):
         """ > Node: Normal
+          
         <sub>go to: top index
         blender ref GeometryNodeInputNormal
         node ref Normal </sub>
@@ -680,6 +694,7 @@ class Geometry(dsock.Geometry):
 
     def capture_position(self, domain='POINT'):
         """ > Node: Position
+          
         <sub>go to: top index
         blender ref GeometryNodeInputPosition
         node ref Position </sub>
@@ -721,6 +736,7 @@ class Geometry(dsock.Geometry):
 
     def capture_radius(self, domain='POINT'):
         """ > Node: Radius
+          
         <sub>go to: top index
         blender ref GeometryNodeInputRadius
         node ref Radius </sub>
@@ -767,6 +783,7 @@ class Geometry(dsock.Geometry):
     @property
     def ID(self):
         """ > Node: ID
+          
         <sub>go to: top index
         blender ref GeometryNodeInputID
         node ref ID </sub>
@@ -803,6 +820,7 @@ class Geometry(dsock.Geometry):
     @property
     def index(self):
         """ > Node: Index
+          
         <sub>go to: top index
         blender ref GeometryNodeInputIndex
         node ref Index </sub>
@@ -839,6 +857,7 @@ class Geometry(dsock.Geometry):
     @property
     def normal(self):
         """ > Node: Normal
+          
         <sub>go to: top index
         blender ref GeometryNodeInputNormal
         node ref Normal </sub>
@@ -875,6 +894,7 @@ class Geometry(dsock.Geometry):
     @property
     def position(self):
         """ > Node: Position
+          
         <sub>go to: top index
         blender ref GeometryNodeInputPosition
         node ref Position </sub>
@@ -911,6 +931,7 @@ class Geometry(dsock.Geometry):
     @property
     def radius(self):
         """ > Node: Radius
+          
         <sub>go to: top index
         blender ref GeometryNodeInputRadius
         node ref Radius </sub>
@@ -950,6 +971,7 @@ class Geometry(dsock.Geometry):
 
     def switch(self, switch1=None, true=None):
         """ > Node: Switch
+          
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>
@@ -992,6 +1014,7 @@ class Geometry(dsock.Geometry):
 
     def capture_attribute(self, value=None, data_type='FLOAT', domain='POINT'):
         """ > Node: CaptureAttribute
+          
         <sub>go to: top index
         blender ref GeometryNodeCaptureAttribute
         node ref Capture Attribute </sub>
@@ -1036,6 +1059,7 @@ class Geometry(dsock.Geometry):
 
     def transfer_boolean(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
         """ > Node: TransferAttribute
+          
         <sub>go to: top index
         blender ref GeometryNodeAttributeTransfer
         node ref Transfer Attribute </sub>
@@ -1085,6 +1109,7 @@ class Geometry(dsock.Geometry):
 
     def transfer_integer(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
         """ > Node: TransferAttribute
+          
         <sub>go to: top index
         blender ref GeometryNodeAttributeTransfer
         node ref Transfer Attribute </sub>
@@ -1134,6 +1159,7 @@ class Geometry(dsock.Geometry):
 
     def transfer_float(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
         """ > Node: TransferAttribute
+          
         <sub>go to: top index
         blender ref GeometryNodeAttributeTransfer
         node ref Transfer Attribute </sub>
@@ -1183,6 +1209,7 @@ class Geometry(dsock.Geometry):
 
     def transfer_vector(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
         """ > Node: TransferAttribute
+          
         <sub>go to: top index
         blender ref GeometryNodeAttributeTransfer
         node ref Transfer Attribute </sub>
@@ -1232,6 +1259,7 @@ class Geometry(dsock.Geometry):
 
     def transfer_color(self, attribute=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
         """ > Node: TransferAttribute
+          
         <sub>go to: top index
         blender ref GeometryNodeAttributeTransfer
         node ref Transfer Attribute </sub>
@@ -1281,6 +1309,7 @@ class Geometry(dsock.Geometry):
 
     def delete_geometry(self, selection=None, domain='POINT', mode='ALL'):
         """ > Node: DeleteGeometry
+          
         <sub>go to: top index
         blender ref GeometryNodeDeleteGeometry
         node ref Delete Geometry </sub>
@@ -1323,6 +1352,7 @@ class Geometry(dsock.Geometry):
 
     def merge_by_distance(self, selection=None, distance=None):
         """ > Node: MergeByDistance
+          
         <sub>go to: top index
         blender ref GeometryNodeMergeByDistance
         node ref Merge by Distance </sub>
@@ -1360,6 +1390,7 @@ class Geometry(dsock.Geometry):
 
     def realize_instances(self, legacy_behavior=False):
         """ > Node: RealizeInstances
+          
         <sub>go to: top index
         blender ref GeometryNodeRealizeInstances
         node ref Realize Instances </sub>
@@ -1400,6 +1431,7 @@ class Geometry(dsock.Geometry):
 
     def replace_material(self, old=None, new=None):
         """ > Node: ReplaceMaterial
+          
         <sub>go to: top index
         blender ref GeometryNodeReplaceMaterial
         node ref Replace Material </sub>
@@ -1437,6 +1469,7 @@ class Geometry(dsock.Geometry):
 
     def scale_elements(self, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM'):
         """ > Node: ScaleElements
+          
         <sub>go to: top index
         blender ref GeometryNodeScaleElements
         node ref Scale Elements </sub>
@@ -1482,6 +1515,7 @@ class Geometry(dsock.Geometry):
 
     def set_ID(self, selection=None, ID=None):
         """ > Node: SetID
+          
         <sub>go to: top index
         blender ref GeometryNodeSetID
         node ref Set ID </sub>
@@ -1519,6 +1553,7 @@ class Geometry(dsock.Geometry):
 
     def set_material(self, selection=None, material=None):
         """ > Node: SetMaterial
+          
         <sub>go to: top index
         blender ref GeometryNodeSetMaterial
         node ref Set Material </sub>
@@ -1556,6 +1591,7 @@ class Geometry(dsock.Geometry):
 
     def set_material_index(self, selection=None, material_index=None):
         """ > Node: SetMaterialIndex
+          
         <sub>go to: top index
         blender ref GeometryNodeSetMaterialIndex
         node ref Set Material Index </sub>
@@ -1593,6 +1629,7 @@ class Geometry(dsock.Geometry):
 
     def set_position(self, selection=None, position=None, offset=None):
         """ > Node: SetPosition
+          
         <sub>go to: top index
         blender ref GeometryNodeSetPosition
         node ref Set Position </sub>
@@ -1631,6 +1668,7 @@ class Geometry(dsock.Geometry):
 
     def set_shade_smooth(self, selection=None, shade_smooth=None):
         """ > Node: SetShadeSmooth
+          
         <sub>go to: top index
         blender ref GeometryNodeSetShadeSmooth
         node ref Set Shade Smooth </sub>
@@ -1668,6 +1706,7 @@ class Geometry(dsock.Geometry):
 
     def transform(self, translation=None, rotation=None, scale=None):
         """ > Node: Transform
+          
         <sub>go to: top index
         blender ref GeometryNodeTransform
         node ref Transform </sub>
@@ -1706,6 +1745,7 @@ class Geometry(dsock.Geometry):
 
     def attribute_domain_size(self, component='MESH'):
         """ > Node: DomainSize
+          
         <sub>go to: top index
         blender ref GeometryNodeAttributeDomainSize
         node ref Domain Size </sub>
@@ -1746,6 +1786,7 @@ class Geometry(dsock.Geometry):
 
     def attribute_remove(self, *attribute):
         """ > Node: AttributeRemove
+          
         <sub>go to: top index
         blender ref GeometryNodeAttributeRemove
         node ref Attribute Remove </sub>
@@ -1782,6 +1823,7 @@ class Geometry(dsock.Geometry):
 
     def components(self, selection=None, domain='POINT'):
         """ > Node: SeparateGeometry
+          
         <sub>go to: top index
         blender ref GeometryNodeSeparateGeometry
         node ref Separate Geometry </sub>
@@ -1823,6 +1865,7 @@ class Geometry(dsock.Geometry):
 
     def convex_hull(self):
         """ > Node: ConvexHull
+          
         <sub>go to: top index
         blender ref GeometryNodeConvexHull
         node ref Convex Hull </sub>
@@ -1858,6 +1901,7 @@ class Geometry(dsock.Geometry):
 
     def to_instance(self, *geometry):
         """ > Node: GeometryToInstance
+          
         <sub>go to: top index
         blender ref GeometryNodeGeometryToInstance
         node ref Geometry to Instance </sub>
@@ -1893,6 +1937,7 @@ class Geometry(dsock.Geometry):
 
     def join(self, *geometry):
         """ > Node: JoinGeometry
+          
         <sub>go to: top index
         blender ref GeometryNodeJoinGeometry
         node ref Join Geometry </sub>
@@ -1928,6 +1973,7 @@ class Geometry(dsock.Geometry):
 
     def proximity(self, source_position=None, target_element='FACES'):
         """ > Node: GeometryProximity
+          
         <sub>go to: top index
         blender ref GeometryNodeProximity
         node ref Geometry Proximity </sub>

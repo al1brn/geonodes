@@ -9,19 +9,20 @@
 
 ## Attributes
 
-- [instance_index](#instance_index) : [Index](section:nodes/Index.md), Integer = capture_index(domain='INSTANCE')
+- [instance_index](#instance_index) : [Index](section:nodes/Index), Integer = capture_index(domain='INSTANCE')
 
 ## Methods
 
-- [rotate](#rotate) : [RotateInstances](section:nodes/RotateInstances.md), instances (Instances)
-- [scale](#scale) : [ScaleInstances](section:nodes/ScaleInstances.md), instances (Instances)
-- [to_points](#to_points) : [InstancesToPoints](section:nodes/InstancesToPoints.md), points (Points)
-- [translate](#translate) : [TranslateInstances](section:nodes/TranslateInstances.md), instances (Instances)
+- [rotate](#rotate) : [RotateInstances](section:nodes/RotateInstances), instances (Instances)
+- [scale](#scale) : [ScaleInstances](section:nodes/ScaleInstances), instances (Instances)
+- [to_points](#to_points) : [InstancesToPoints](section:nodes/InstancesToPoints), points (Points)
+- [translate](#translate) : [TranslateInstances](section:nodes/TranslateInstances), instances (Instances)
 
 ## instance_index
 
 > Node: [Index](section:nodes/Index)
-<sub>go to: [top](#instances) [index](TBD)
+  
+<sub>go to: [top](#data-socket-instances) [index](TBD)
 blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
 node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/index.html) </sub>
 
@@ -50,7 +51,8 @@ Integer
 ## rotate
 
 > Node: [RotateInstances](section:nodes/RotateInstances)
-<sub>go to: [top](#instances) [index](TBD)
+  
+<sub>go to: [top](#data-socket-instances) [index](TBD)
 blender ref [GeometryNodeRotateInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html)
 node ref [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/rotate_instances.html) </sub>
 
@@ -83,7 +85,8 @@ Instances
 ## scale
 
 > Node: [ScaleInstances](section:nodes/ScaleInstances)
-<sub>go to: [top](#instances) [index](TBD)
+  
+<sub>go to: [top](#data-socket-instances) [index](TBD)
 blender ref [GeometryNodeScaleInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html)
 node ref [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/scale_instances.html) </sub>
 
@@ -116,7 +119,8 @@ Instances
 ## translate
 
 > Node: [TranslateInstances](section:nodes/TranslateInstances)
-<sub>go to: [top](#instances) [index](TBD)
+  
+<sub>go to: [top](#data-socket-instances) [index](TBD)
 blender ref [GeometryNodeTranslateInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html)
 node ref [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/translate_instances.html) </sub>
 
@@ -148,7 +152,8 @@ Instances
 ## to_points
 
 > Node: [InstancesToPoints](section:nodes/InstancesToPoints)
-<sub>go to: [top](#instances) [index](TBD)
+  
+<sub>go to: [top](#data-socket-instances) [index](TBD)
 blender ref [GeometryNodeInstancesToPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html)
 node ref [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/instances_to_points.html) </sub>
 

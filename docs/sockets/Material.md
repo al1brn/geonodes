@@ -9,13 +9,14 @@
 
 ## Methods
 
-- [selection](#selection) : [MaterialSelection](section:nodes/MaterialSelection.md), selection (Boolean)
-- [switch](#switch) : [Switch](section:nodes/Switch.md), output (Material)
+- [selection](#selection) : [MaterialSelection](section:nodes/MaterialSelection), selection (Boolean)
+- [switch](#switch) : [Switch](section:nodes/Switch), output (Material)
 
 ## switch
 
 > Node: [Switch](section:nodes/Switch)
-<sub>go to: [top](#material) [index](TBD)
+  
+<sub>go to: [top](#data-socket-material) [index](TBD)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 
@@ -50,7 +51,8 @@ Material
 ## selection
 
 > Node: [MaterialSelection](section:nodes/MaterialSelection)
-<sub>go to: [top](#material) [index](TBD)
+  
+<sub>go to: [top](#data-socket-material) [index](TBD)
 blender ref [GeometryNodeMaterialSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
 node ref [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) </sub>
 

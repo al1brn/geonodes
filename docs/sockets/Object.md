@@ -9,20 +9,21 @@
 
 ## Properties
 
-- [geometry](#geometry) : [ObjectInfo](section:nodes/ObjectInfo.md), geometry (Geometry) = info.geometry
-- [info](#info) : [ObjectInfo](section:nodes/ObjectInfo.md), Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-- [location](#location) : [ObjectInfo](section:nodes/ObjectInfo.md), location (Vector) = info.location
-- [rotation](#rotation) : [ObjectInfo](section:nodes/ObjectInfo.md), rotation (Vector) = info.rotation
-- [scale](#scale) : [ObjectInfo](section:nodes/ObjectInfo.md), scale (Vector) = info.scale
+- [geometry](#geometry) : [ObjectInfo](section:nodes/ObjectInfo), geometry (Geometry) = info.geometry
+- [info](#info) : [ObjectInfo](section:nodes/ObjectInfo), Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+- [location](#location) : [ObjectInfo](section:nodes/ObjectInfo), location (Vector) = info.location
+- [rotation](#rotation) : [ObjectInfo](section:nodes/ObjectInfo), rotation (Vector) = info.rotation
+- [scale](#scale) : [ObjectInfo](section:nodes/ObjectInfo), scale (Vector) = info.scale
 
 ## Methods
 
-- [switch](#switch) : [Switch](section:nodes/Switch.md), output (Object)
+- [switch](#switch) : [Switch](section:nodes/Switch), output (Object)
 
 ## info
 
 > Node: [ObjectInfo](section:nodes/ObjectInfo)
-<sub>go to: [top](#object) [index](TBD)
+  
+<sub>go to: [top](#data-socket-object) [index](TBD)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
 
@@ -60,7 +61,8 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 ## location
 
 > Node: [ObjectInfo](section:nodes/ObjectInfo)
-<sub>go to: [top](#object) [index](TBD)
+  
+<sub>go to: [top](#data-socket-object) [index](TBD)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
 
@@ -98,7 +100,8 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 ## rotation
 
 > Node: [ObjectInfo](section:nodes/ObjectInfo)
-<sub>go to: [top](#object) [index](TBD)
+  
+<sub>go to: [top](#data-socket-object) [index](TBD)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
 
@@ -136,7 +139,8 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 ## scale
 
 > Node: [ObjectInfo](section:nodes/ObjectInfo)
-<sub>go to: [top](#object) [index](TBD)
+  
+<sub>go to: [top](#data-socket-object) [index](TBD)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
 
@@ -174,7 +178,8 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 ## geometry
 
 > Node: [ObjectInfo](section:nodes/ObjectInfo)
-<sub>go to: [top](#object) [index](TBD)
+  
+<sub>go to: [top](#data-socket-object) [index](TBD)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/object_info.html) </sub>
 
@@ -212,7 +217,8 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 ## switch
 
 > Node: [Switch](section:nodes/Switch)
-<sub>go to: [top](#object) [index](TBD)
+  
+<sub>go to: [top](#data-socket-object) [index](TBD)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 

@@ -95,6 +95,7 @@ class Float(dsock.Float):
     @classmethod
     def Random(cls, min=None, max=None, ID=None, seed=None):
         """ > Node: RandomValue
+          
         <sub>go to: top index
         blender ref FunctionNodeRandomValue
         node ref Random Value </sub>
@@ -142,6 +143,7 @@ class Float(dsock.Float):
 
     def accumulate_field(self, group_index=None, domain='POINT'):
         """ > Node: AccumulateField
+          
         <sub>go to: top index
         blender ref GeometryNodeAccumulateField
         node ref Accumulate Field </sub>
@@ -188,6 +190,7 @@ class Float(dsock.Float):
 
     def attribute_statistic(self, geometry=None, selection=None, domain='POINT'):
         """ > Node: AttributeStatistic
+          
         <sub>go to: top index
         blender ref GeometryNodeAttributeStatistic
         node ref Attribute Statistic </sub>
@@ -235,6 +238,7 @@ class Float(dsock.Float):
 
     def transfer_attribute(self, source=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
         """ > Node: TransferAttribute
+          
         <sub>go to: top index
         blender ref GeometryNodeAttributeTransfer
         node ref Transfer Attribute </sub>
@@ -284,6 +288,7 @@ class Float(dsock.Float):
 
     def capture_attribute(self, geometry=None, domain='POINT'):
         """ > Node: CaptureAttribute
+          
         <sub>go to: top index
         blender ref GeometryNodeCaptureAttribute
         node ref Capture Attribute </sub>
@@ -330,6 +335,7 @@ class Float(dsock.Float):
 
     def field_at_index(self, index=None, domain='POINT'):
         """ > Node: FieldAtIndex
+          
         <sub>go to: top index
         blender ref GeometryNodeFieldAtIndex
         node ref Field at Index </sub>
@@ -376,6 +382,7 @@ class Float(dsock.Float):
 
     def raycast(self, target_geometry=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
         """ > Node: Raycast
+          
         <sub>go to: top index
         blender ref GeometryNodeRaycast
         node ref Raycast </sub>
@@ -425,6 +432,7 @@ class Float(dsock.Float):
 
     def switch(self, switch0=None, true=None):
         """ > Node: Switch
+          
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>
@@ -467,6 +475,7 @@ class Float(dsock.Float):
 
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, interpolation_type='LINEAR'):
         """ > Node: MapRange
+          
         <sub>go to: top index
         blender ref ShaderNodeMapRange
         node ref Map Range </sub>
@@ -517,6 +526,7 @@ class Float(dsock.Float):
 
     def less_than(self, b=None):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -560,6 +570,7 @@ class Float(dsock.Float):
 
     def less_equal(self, b=None):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -603,6 +614,7 @@ class Float(dsock.Float):
 
     def greater_than(self, b=None):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -646,6 +658,7 @@ class Float(dsock.Float):
 
     def greater_equal(self, b=None):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -689,6 +702,7 @@ class Float(dsock.Float):
 
     def equal(self, b=None, epsilon=None):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -733,6 +747,7 @@ class Float(dsock.Float):
 
     def not_equal(self, b=None, epsilon=None):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -777,6 +792,7 @@ class Float(dsock.Float):
 
     def add(self, value1=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -818,6 +834,7 @@ class Float(dsock.Float):
 
     def subtract(self, value1=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -859,6 +876,7 @@ class Float(dsock.Float):
 
     def multiply(self, value1=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -900,6 +918,7 @@ class Float(dsock.Float):
 
     def divide(self, value1=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -941,6 +960,7 @@ class Float(dsock.Float):
 
     def multiply_add(self, value1=None, value2=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -983,6 +1003,7 @@ class Float(dsock.Float):
 
     def pow(self, value1=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1024,6 +1045,7 @@ class Float(dsock.Float):
 
     def log(self, value1=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1065,6 +1087,7 @@ class Float(dsock.Float):
 
     def sqrt(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1105,6 +1128,7 @@ class Float(dsock.Float):
 
     def inverse_sqrt(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1145,6 +1169,7 @@ class Float(dsock.Float):
 
     def abs(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1185,6 +1210,7 @@ class Float(dsock.Float):
 
     def exp(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1225,6 +1251,7 @@ class Float(dsock.Float):
 
     def min(self, value1=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1266,6 +1293,7 @@ class Float(dsock.Float):
 
     def max(self, value1=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1307,6 +1335,7 @@ class Float(dsock.Float):
 
     def less_than(self, value1=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1348,6 +1377,7 @@ class Float(dsock.Float):
 
     def greater_than(self, value1=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1389,6 +1419,7 @@ class Float(dsock.Float):
 
     def sign(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1429,6 +1460,7 @@ class Float(dsock.Float):
 
     def compare(self, value1=None, value2=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1471,6 +1503,7 @@ class Float(dsock.Float):
 
     def smooth_min(self, value1=None, value2=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1513,6 +1546,7 @@ class Float(dsock.Float):
 
     def smooth_max(self, value1=None, value2=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1555,6 +1589,7 @@ class Float(dsock.Float):
 
     def round(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1595,6 +1630,7 @@ class Float(dsock.Float):
 
     def floor(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1635,6 +1671,7 @@ class Float(dsock.Float):
 
     def ceil(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1675,6 +1712,7 @@ class Float(dsock.Float):
 
     def trunc(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1715,6 +1753,7 @@ class Float(dsock.Float):
 
     def fract(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1755,6 +1794,7 @@ class Float(dsock.Float):
 
     def modulo(self, value1=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1796,6 +1836,7 @@ class Float(dsock.Float):
 
     def wrap(self, value1=None, value2=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1838,6 +1879,7 @@ class Float(dsock.Float):
 
     def snap(self, value1=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1879,6 +1921,7 @@ class Float(dsock.Float):
 
     def pingpong(self, value1=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1920,6 +1963,7 @@ class Float(dsock.Float):
 
     def sin(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -1960,6 +2004,7 @@ class Float(dsock.Float):
 
     def cos(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -2000,6 +2045,7 @@ class Float(dsock.Float):
 
     def tan(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -2040,6 +2086,7 @@ class Float(dsock.Float):
 
     def arcsin(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -2080,6 +2127,7 @@ class Float(dsock.Float):
 
     def arccos(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -2120,6 +2168,7 @@ class Float(dsock.Float):
 
     def arctan(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -2160,6 +2209,7 @@ class Float(dsock.Float):
 
     def arctan2(self, value1=None):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -2201,6 +2251,7 @@ class Float(dsock.Float):
 
     def sinh(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -2241,6 +2292,7 @@ class Float(dsock.Float):
 
     def cosh(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -2281,6 +2333,7 @@ class Float(dsock.Float):
 
     def tanh(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -2321,6 +2374,7 @@ class Float(dsock.Float):
 
     def radians(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -2361,6 +2415,7 @@ class Float(dsock.Float):
 
     def degrees(self):
         """ > Node: Math
+          
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
@@ -2401,6 +2456,7 @@ class Float(dsock.Float):
 
     def to_integer(self, rounding_mode='ROUND'):
         """ > Node: FloatToInteger
+          
         <sub>go to: top index
         blender ref FunctionNodeFloatToInt
         node ref Float to Integer </sub>
@@ -2441,6 +2497,7 @@ class Float(dsock.Float):
 
     def to_string(self, decimals=None):
         """ > Node: ValueToString
+          
         <sub>go to: top index
         blender ref FunctionNodeValueToString
         node ref Value to String </sub>
@@ -2477,6 +2534,7 @@ class Float(dsock.Float):
 
     def color_ramp(self):
         """ > Node: Colorramp
+          
         <sub>go to: top index
         blender ref ShaderNodeValToRGB
         node ref ColorRamp </sub>
@@ -2512,6 +2570,7 @@ class Float(dsock.Float):
 
     def curve(self, factor=None):
         """ > Node: FloatCurve
+          
         <sub>go to: top index
         blender ref ShaderNodeFloatCurve
         node ref Float Curve </sub>
@@ -2548,6 +2607,7 @@ class Float(dsock.Float):
 
     def clamp(self, min=None, max=None, clamp_type='MINMAX'):
         """ > Node: Clamp
+          
         <sub>go to: top index
         blender ref ShaderNodeClamp
         node ref Clamp </sub>

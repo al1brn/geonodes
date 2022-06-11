@@ -96,6 +96,7 @@ class Vector(dsock.Vector):
     @classmethod
     def Random(cls, min=None, max=None, ID=None, seed=None):
         """ > Node: RandomValue
+          
         <sub>go to: top index
         blender ref FunctionNodeRandomValue
         node ref Random Value </sub>
@@ -140,6 +141,7 @@ class Vector(dsock.Vector):
     @classmethod
     def Combine(cls, x=None, y=None, z=None):
         """ > Node: CombineXyz
+          
         <sub>go to: top index
         blender ref ShaderNodeCombineXYZ
         node ref Combine XYZ </sub>
@@ -178,6 +180,7 @@ class Vector(dsock.Vector):
     @classmethod
     def AlignToVector(cls, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
         """ > Node: AlignEulerToVector
+          
         <sub>go to: top index
         blender ref FunctionNodeAlignEulerToVector
         node ref Align Euler to Vector </sub>
@@ -226,6 +229,7 @@ class Vector(dsock.Vector):
     @property
     def separate(self):
         """ > Node: SeparateXyz
+          
         <sub>go to: top index
         blender ref ShaderNodeSeparateXYZ
         node ref Separate XYZ </sub>
@@ -269,6 +273,7 @@ class Vector(dsock.Vector):
     @property
     def x(self):
         """ > Node: SeparateXyz
+          
         <sub>go to: top index
         blender ref ShaderNodeSeparateXYZ
         node ref Separate XYZ </sub>
@@ -314,6 +319,7 @@ class Vector(dsock.Vector):
     @property
     def y(self):
         """ > Node: SeparateXyz
+          
         <sub>go to: top index
         blender ref ShaderNodeSeparateXYZ
         node ref Separate XYZ </sub>
@@ -359,6 +365,7 @@ class Vector(dsock.Vector):
     @property
     def z(self):
         """ > Node: SeparateXyz
+          
         <sub>go to: top index
         blender ref ShaderNodeSeparateXYZ
         node ref Separate XYZ </sub>
@@ -407,6 +414,7 @@ class Vector(dsock.Vector):
 
     def accumulate_field(self, group_index=None, domain='POINT'):
         """ > Node: AccumulateField
+          
         <sub>go to: top index
         blender ref GeometryNodeAccumulateField
         node ref Accumulate Field </sub>
@@ -453,6 +461,7 @@ class Vector(dsock.Vector):
 
     def attribute_statistic(self, geometry=None, selection=None, domain='POINT'):
         """ > Node: AttributeStatistic
+          
         <sub>go to: top index
         blender ref GeometryNodeAttributeStatistic
         node ref Attribute Statistic </sub>
@@ -500,6 +509,7 @@ class Vector(dsock.Vector):
 
     def transfer_attribute(self, source=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
         """ > Node: TransferAttribute
+          
         <sub>go to: top index
         blender ref GeometryNodeAttributeTransfer
         node ref Transfer Attribute </sub>
@@ -549,6 +559,7 @@ class Vector(dsock.Vector):
 
     def capture_attribute(self, geometry=None, domain='POINT'):
         """ > Node: CaptureAttribute
+          
         <sub>go to: top index
         blender ref GeometryNodeCaptureAttribute
         node ref Capture Attribute </sub>
@@ -595,6 +606,7 @@ class Vector(dsock.Vector):
 
     def field_at_index(self, index=None, domain='POINT'):
         """ > Node: FieldAtIndex
+          
         <sub>go to: top index
         blender ref GeometryNodeFieldAtIndex
         node ref Field at Index </sub>
@@ -641,6 +653,7 @@ class Vector(dsock.Vector):
 
     def raycast(self, target_geometry=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
         """ > Node: Raycast
+          
         <sub>go to: top index
         blender ref GeometryNodeRaycast
         node ref Raycast </sub>
@@ -690,6 +703,7 @@ class Vector(dsock.Vector):
 
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, interpolation_type='LINEAR'):
         """ > Node: MapRange
+          
         <sub>go to: top index
         blender ref ShaderNodeMapRange
         node ref Map Range </sub>
@@ -740,6 +754,7 @@ class Vector(dsock.Vector):
 
     def less_than(self, b=None, c=None, angle=None, mode='ELEMENT'):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -789,6 +804,7 @@ class Vector(dsock.Vector):
 
     def less_equal(self, b=None, c=None, angle=None, mode='ELEMENT'):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -838,6 +854,7 @@ class Vector(dsock.Vector):
 
     def greater_than(self, b=None, c=None, angle=None, mode='ELEMENT'):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -887,6 +904,7 @@ class Vector(dsock.Vector):
 
     def greater_equal(self, b=None, c=None, angle=None, mode='ELEMENT'):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -936,6 +954,7 @@ class Vector(dsock.Vector):
 
     def equal(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT'):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -986,6 +1005,7 @@ class Vector(dsock.Vector):
 
     def not_equal(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT'):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -1036,6 +1056,7 @@ class Vector(dsock.Vector):
 
     def add(self, vector1=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1077,6 +1098,7 @@ class Vector(dsock.Vector):
 
     def subtract(self, vector1=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1118,6 +1140,7 @@ class Vector(dsock.Vector):
 
     def multiply(self, vector1=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1159,6 +1182,7 @@ class Vector(dsock.Vector):
 
     def divide(self, vector1=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1200,6 +1224,7 @@ class Vector(dsock.Vector):
 
     def multiply_add(self, vector1=None, vector2=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1242,6 +1267,7 @@ class Vector(dsock.Vector):
 
     def cross(self, vector1=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1283,6 +1309,7 @@ class Vector(dsock.Vector):
 
     def project(self, vector1=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1324,6 +1351,7 @@ class Vector(dsock.Vector):
 
     def reflect(self, vector1=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1365,6 +1393,7 @@ class Vector(dsock.Vector):
 
     def refract(self, vector1=None, scale=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1407,6 +1436,7 @@ class Vector(dsock.Vector):
 
     def faceforward(self, vector1=None, vector2=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1449,6 +1479,7 @@ class Vector(dsock.Vector):
 
     def dot(self, vector1=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1490,6 +1521,7 @@ class Vector(dsock.Vector):
 
     def distance(self, vector1=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1531,6 +1563,7 @@ class Vector(dsock.Vector):
 
     def length(self):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1571,6 +1604,7 @@ class Vector(dsock.Vector):
 
     def scale(self, scale=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1612,6 +1646,7 @@ class Vector(dsock.Vector):
 
     def normalize(self):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1652,6 +1687,7 @@ class Vector(dsock.Vector):
 
     def absolute(self):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1692,6 +1728,7 @@ class Vector(dsock.Vector):
 
     def min(self, vector1=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1733,6 +1770,7 @@ class Vector(dsock.Vector):
 
     def max(self, vector1=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1774,6 +1812,7 @@ class Vector(dsock.Vector):
 
     def floor(self):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1814,6 +1853,7 @@ class Vector(dsock.Vector):
 
     def ceil(self):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1854,6 +1894,7 @@ class Vector(dsock.Vector):
 
     def fraction(self):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1894,6 +1935,7 @@ class Vector(dsock.Vector):
 
     def modulo(self, vector1=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1935,6 +1977,7 @@ class Vector(dsock.Vector):
 
     def wrap(self, vector1=None, vector2=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -1977,6 +2020,7 @@ class Vector(dsock.Vector):
 
     def snap(self, vector1=None):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -2018,6 +2062,7 @@ class Vector(dsock.Vector):
 
     def sin(self):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -2058,6 +2103,7 @@ class Vector(dsock.Vector):
 
     def cos(self):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -2098,6 +2144,7 @@ class Vector(dsock.Vector):
 
     def tan(self):
         """ > Node: VectorMath
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
@@ -2138,6 +2185,7 @@ class Vector(dsock.Vector):
 
     def curves(self, fac=None):
         """ > Node: VectorCurves
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorCurve
         node ref Vector Curves </sub>
@@ -2174,6 +2222,7 @@ class Vector(dsock.Vector):
 
     def align_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
         """ > Node: AlignEulerToVector
+          
         <sub>go to: top index
         blender ref FunctionNodeAlignEulerToVector
         node ref Align Euler to Vector </sub>
@@ -2217,6 +2266,7 @@ class Vector(dsock.Vector):
 
     def rotate_euler(self, rotate_by=None, space='OBJECT'):
         """ > Node: RotateEuler
+          
         <sub>go to: top index
         blender ref FunctionNodeRotateEuler
         node ref Rotate Euler </sub>
@@ -2258,6 +2308,7 @@ class Vector(dsock.Vector):
 
     def rotate(self, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE'):
         """ > Node: VectorRotate
+          
         <sub>go to: top index
         blender ref ShaderNodeVectorRotate
         node ref Vector Rotate </sub>

@@ -9,12 +9,13 @@
 
 ## Methods
 
-- [to_mesh](#to_mesh) : [VolumeToMesh](section:nodes/VolumeToMesh.md), mesh (Mesh)
+- [to_mesh](#to_mesh) : [VolumeToMesh](section:nodes/VolumeToMesh), mesh (Mesh)
 
 ## to_mesh
 
 > Node: [VolumeToMesh](section:nodes/VolumeToMesh)
-<sub>go to: [top](#volume) [index](TBD)
+  
+<sub>go to: [top](#data-socket-volume) [index](TBD)
 blender ref [GeometryNodeVolumeToMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html)
 node ref [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/volume_to_mesh.html) </sub>
 

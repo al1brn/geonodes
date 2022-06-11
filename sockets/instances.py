@@ -40,6 +40,7 @@ class Instances(gn.Geometry):
     @property
     def instance_index(self):
         """ > Node: Index
+          
         <sub>go to: top index
         blender ref GeometryNodeInputIndex
         node ref Index </sub>
@@ -79,6 +80,7 @@ class Instances(gn.Geometry):
 
     def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None):
         """ > Node: RotateInstances
+          
         <sub>go to: top index
         blender ref GeometryNodeRotateInstances
         node ref Rotate Instances </sub>
@@ -118,6 +120,7 @@ class Instances(gn.Geometry):
 
     def scale(self, selection=None, scale=None, center=None, local_space=None):
         """ > Node: ScaleInstances
+          
         <sub>go to: top index
         blender ref GeometryNodeScaleInstances
         node ref Scale Instances </sub>
@@ -157,6 +160,7 @@ class Instances(gn.Geometry):
 
     def translate(self, selection=None, translation=None, local_space=None):
         """ > Node: TranslateInstances
+          
         <sub>go to: top index
         blender ref GeometryNodeTranslateInstances
         node ref Translate Instances </sub>
@@ -195,6 +199,7 @@ class Instances(gn.Geometry):
 
     def to_points(self, selection=None, position=None, radius=None):
         """ > Node: InstancesToPoints
+          
         <sub>go to: top index
         blender ref GeometryNodeInstancesToPoints
         node ref Instances to Points </sub>

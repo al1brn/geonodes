@@ -78,6 +78,7 @@ class Color(dsock.Color):
     @classmethod
     def Combine(cls, r=None, g=None, b=None):
         """ > Node: CombineRgb
+          
         <sub>go to: top index
         blender ref ShaderNodeCombineRGB
         node ref Combine RGB </sub>
@@ -120,6 +121,7 @@ class Color(dsock.Color):
     @property
     def separate(self):
         """ > Node: SeparateRgb
+          
         <sub>go to: top index
         blender ref ShaderNodeSeparateRGB
         node ref Separate RGB </sub>
@@ -163,6 +165,7 @@ class Color(dsock.Color):
     @property
     def r(self):
         """ > Node: SeparateRgb
+          
         <sub>go to: top index
         blender ref ShaderNodeSeparateRGB
         node ref Separate RGB </sub>
@@ -208,6 +211,7 @@ class Color(dsock.Color):
     @property
     def g(self):
         """ > Node: SeparateRgb
+          
         <sub>go to: top index
         blender ref ShaderNodeSeparateRGB
         node ref Separate RGB </sub>
@@ -253,6 +257,7 @@ class Color(dsock.Color):
     @property
     def b(self):
         """ > Node: SeparateRgb
+          
         <sub>go to: top index
         blender ref ShaderNodeSeparateRGB
         node ref Separate RGB </sub>
@@ -301,6 +306,7 @@ class Color(dsock.Color):
 
     def transfer_attribute(self, source=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
         """ > Node: TransferAttribute
+          
         <sub>go to: top index
         blender ref GeometryNodeAttributeTransfer
         node ref Transfer Attribute </sub>
@@ -350,6 +356,7 @@ class Color(dsock.Color):
 
     def capture_attribute(self, geometry=None, domain='POINT'):
         """ > Node: CaptureAttribute
+          
         <sub>go to: top index
         blender ref GeometryNodeCaptureAttribute
         node ref Capture Attribute </sub>
@@ -396,6 +403,7 @@ class Color(dsock.Color):
 
     def field_at_index(self, index=None, domain='POINT'):
         """ > Node: FieldAtIndex
+          
         <sub>go to: top index
         blender ref GeometryNodeFieldAtIndex
         node ref Field at Index </sub>
@@ -442,6 +450,7 @@ class Color(dsock.Color):
 
     def raycast(self, target_geometry=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
         """ > Node: Raycast
+          
         <sub>go to: top index
         blender ref GeometryNodeRaycast
         node ref Raycast </sub>
@@ -491,6 +500,7 @@ class Color(dsock.Color):
 
     def equal(self, b=None, epsilon=None):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -535,6 +545,7 @@ class Color(dsock.Color):
 
     def not_equal(self, b=None, epsilon=None):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -579,6 +590,7 @@ class Color(dsock.Color):
 
     def brighter(self, b=None):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -622,6 +634,7 @@ class Color(dsock.Color):
 
     def darker(self, b=None):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -665,6 +678,7 @@ class Color(dsock.Color):
 
     def mix(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -712,6 +726,7 @@ class Color(dsock.Color):
 
     def darken(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -759,6 +774,7 @@ class Color(dsock.Color):
 
     def multiply(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -806,6 +822,7 @@ class Color(dsock.Color):
 
     def burn(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -853,6 +870,7 @@ class Color(dsock.Color):
 
     def lighten(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -900,6 +918,7 @@ class Color(dsock.Color):
 
     def screen(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -947,6 +966,7 @@ class Color(dsock.Color):
 
     def dodge(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -994,6 +1014,7 @@ class Color(dsock.Color):
 
     def add(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -1041,6 +1062,7 @@ class Color(dsock.Color):
 
     def overlay(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -1088,6 +1110,7 @@ class Color(dsock.Color):
 
     def soft_light(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -1135,6 +1158,7 @@ class Color(dsock.Color):
 
     def linear_light(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -1182,6 +1206,7 @@ class Color(dsock.Color):
 
     def difference(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -1229,6 +1254,7 @@ class Color(dsock.Color):
 
     def subtract(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -1276,6 +1302,7 @@ class Color(dsock.Color):
 
     def divide(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -1323,6 +1350,7 @@ class Color(dsock.Color):
 
     def hue(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -1370,6 +1398,7 @@ class Color(dsock.Color):
 
     def saturation(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -1417,6 +1446,7 @@ class Color(dsock.Color):
 
     def mix_color(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -1464,6 +1494,7 @@ class Color(dsock.Color):
 
     def value(self, color2=None, fac=None, use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
@@ -1511,6 +1542,7 @@ class Color(dsock.Color):
 
     def curves(self, fac=None):
         """ > Node: RgbCurves
+          
         <sub>go to: top index
         blender ref ShaderNodeRGBCurve
         node ref RGB Curves </sub>
@@ -1547,6 +1579,7 @@ class Color(dsock.Color):
 
     def mix(self, color2=None, fac=None, blend_type='MIX', use_alpha=False):
         """ > Node: Mix
+          
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>

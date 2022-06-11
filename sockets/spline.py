@@ -65,6 +65,7 @@ class Spline(gn.Geometry):
 
     def capture_handle_positions(self, relative=None, domain='CURVE'):
         """ > Node: CurveHandlePositions
+          
         <sub>go to: top index
         blender ref GeometryNodeInputCurveHandlePositions
         node ref Curve Handle Positions </sub>
@@ -111,6 +112,7 @@ class Spline(gn.Geometry):
 
     def capture_tangent(self, domain='CURVE'):
         """ > Node: CurveTangent
+          
         <sub>go to: top index
         blender ref GeometryNodeInputTangent
         node ref Curve Tangent </sub>
@@ -152,6 +154,7 @@ class Spline(gn.Geometry):
 
     def capture_tilt(self, domain='CURVE'):
         """ > Node: CurveTilt
+          
         <sub>go to: top index
         blender ref GeometryNodeInputCurveTilt
         node ref Curve Tilt </sub>
@@ -193,6 +196,7 @@ class Spline(gn.Geometry):
 
     def capture_endpoint_selection(self, start_size=None, end_size=None, domain='CURVE'):
         """ > Node: EndpointSelection
+          
         <sub>go to: top index
         blender ref GeometryNodeCurveEndpointSelection
         node ref Endpoint Selection </sub>
@@ -240,6 +244,7 @@ class Spline(gn.Geometry):
 
     def capture_handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, domain='CURVE'):
         """ > Node: HandleTypeSelection
+          
         <sub>go to: top index
         blender ref GeometryNodeCurveHandleTypeSelection
         node ref Handle Type Selection </sub>
@@ -283,6 +288,7 @@ class Spline(gn.Geometry):
 
     def capture_cyclic(self, domain='CURVE'):
         """ > Node: IsSplineCyclic
+          
         <sub>go to: top index
         blender ref GeometryNodeInputSplineCyclic
         node ref Is Spline Cyclic </sub>
@@ -324,6 +330,7 @@ class Spline(gn.Geometry):
 
     def capture_length(self, domain='CURVE'):
         """ > Node: SplineLength
+          
         <sub>go to: top index
         blender ref GeometryNodeSplineLength
         node ref Spline Length </sub>
@@ -365,6 +372,7 @@ class Spline(gn.Geometry):
 
     def capture_parameter(self, domain='CURVE'):
         """ > Node: SplineParameter
+          
         <sub>go to: top index
         blender ref GeometryNodeSplineParameter
         node ref Spline Parameter </sub>
@@ -406,6 +414,7 @@ class Spline(gn.Geometry):
 
     def capture_resolution(self, domain='CURVE'):
         """ > Node: SplineResolution
+          
         <sub>go to: top index
         blender ref GeometryNodeInputSplineResolution
         node ref Spline Resolution </sub>
@@ -452,6 +461,7 @@ class Spline(gn.Geometry):
     @property
     def spline_ID(self):
         """ > Node: ID
+          
         <sub>go to: top index
         blender ref GeometryNodeInputID
         node ref ID </sub>
@@ -488,6 +498,7 @@ class Spline(gn.Geometry):
     @property
     def spline_index(self):
         """ > Node: Index
+          
         <sub>go to: top index
         blender ref GeometryNodeInputIndex
         node ref Index </sub>
@@ -524,6 +535,7 @@ class Spline(gn.Geometry):
     @property
     def spline_position(self):
         """ > Node: Index
+          
         <sub>go to: top index
         blender ref GeometryNodeInputIndex
         node ref Index </sub>
@@ -560,6 +572,7 @@ class Spline(gn.Geometry):
     @property
     def left_handle_position(self, relative=None):
         """ > Node: CurveHandlePositions
+          
         <sub>go to: top index
         blender ref GeometryNodeInputCurveHandlePositions
         node ref Curve Handle Positions </sub>
@@ -601,6 +614,7 @@ class Spline(gn.Geometry):
     @property
     def right_handle_position(self, relative=None):
         """ > Node: CurveHandlePositions
+          
         <sub>go to: top index
         blender ref GeometryNodeInputCurveHandlePositions
         node ref Curve Handle Positions </sub>
@@ -642,6 +656,7 @@ class Spline(gn.Geometry):
     @property
     def tangent(self):
         """ > Node: CurveTangent
+          
         <sub>go to: top index
         blender ref GeometryNodeInputTangent
         node ref Curve Tangent </sub>
@@ -678,6 +693,7 @@ class Spline(gn.Geometry):
     @property
     def tilt(self):
         """ > Node: CurveTilt
+          
         <sub>go to: top index
         blender ref GeometryNodeInputCurveTilt
         node ref Curve Tilt </sub>
@@ -714,6 +730,7 @@ class Spline(gn.Geometry):
     @property
     def endpoint_selection(self, start_size=None, end_size=None):
         """ > Node: EndpointSelection
+          
         <sub>go to: top index
         blender ref GeometryNodeCurveEndpointSelection
         node ref Endpoint Selection </sub>
@@ -756,6 +773,7 @@ class Spline(gn.Geometry):
     @property
     def handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ > Node: HandleTypeSelection
+          
         <sub>go to: top index
         blender ref GeometryNodeCurveHandleTypeSelection
         node ref Handle Type Selection </sub>
@@ -794,6 +812,7 @@ class Spline(gn.Geometry):
     @property
     def cyclic(self):
         """ > Node: IsSplineCyclic
+          
         <sub>go to: top index
         blender ref GeometryNodeInputSplineCyclic
         node ref Is Spline Cyclic </sub>
@@ -830,6 +849,7 @@ class Spline(gn.Geometry):
     @property
     def length(self):
         """ > Node: SplineLength
+          
         <sub>go to: top index
         blender ref GeometryNodeSplineLength
         node ref Spline Length </sub>
@@ -866,6 +886,7 @@ class Spline(gn.Geometry):
     @property
     def point_count(self):
         """ > Node: SplineLength
+          
         <sub>go to: top index
         blender ref GeometryNodeSplineLength
         node ref Spline Length </sub>
@@ -902,6 +923,7 @@ class Spline(gn.Geometry):
     @property
     def factor(self):
         """ > Node: SplineParameter
+          
         <sub>go to: top index
         blender ref GeometryNodeSplineParameter
         node ref Spline Parameter </sub>
@@ -938,6 +960,7 @@ class Spline(gn.Geometry):
     @property
     def parameter_length(self):
         """ > Node: SplineParameter
+          
         <sub>go to: top index
         blender ref GeometryNodeSplineParameter
         node ref Spline Parameter </sub>
@@ -974,6 +997,7 @@ class Spline(gn.Geometry):
     @property
     def parameter_index(self):
         """ > Node: SplineParameter
+          
         <sub>go to: top index
         blender ref GeometryNodeSplineParameter
         node ref Spline Parameter </sub>
@@ -1010,6 +1034,7 @@ class Spline(gn.Geometry):
     @property
     def resolution(self):
         """ > Node: SplineResolution
+          
         <sub>go to: top index
         blender ref GeometryNodeInputSplineResolution
         node ref Spline Resolution </sub>
@@ -1049,6 +1074,7 @@ class Spline(gn.Geometry):
 
     def set_cyclic(self, selection=None, cyclic=None):
         """ > Node: SetSplineCyclic
+          
         <sub>go to: top index
         blender ref GeometryNodeSetSplineCyclic
         node ref Set Spline Cyclic </sub>
@@ -1086,6 +1112,7 @@ class Spline(gn.Geometry):
 
     def set_resolution(self, selection=None, resolution=None):
         """ > Node: SetSplineResolution
+          
         <sub>go to: top index
         blender ref GeometryNodeSetSplineResolution
         node ref Set Spline Resolution </sub>

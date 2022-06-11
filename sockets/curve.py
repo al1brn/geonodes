@@ -63,6 +63,7 @@ class Curve(gn.Spline):
     @classmethod
     def BezierSegment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):
         """ > Node: BezierSegment
+          
         <sub>go to: top index
         blender ref GeometryNodeCurvePrimitiveBezierSegment
         node ref Bezier Segment </sub>
@@ -108,6 +109,7 @@ class Curve(gn.Spline):
     @classmethod
     def Circle(cls, resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS'):
         """ > Node: CurveCircle
+          
         <sub>go to: top index
         blender ref GeometryNodeCurvePrimitiveCircle
         node ref Curve Circle </sub>
@@ -153,6 +155,7 @@ class Curve(gn.Spline):
     @classmethod
     def Line(cls, start=None, end=None, direction=None, length=None, mode='POINTS'):
         """ > Node: CurveLine
+          
         <sub>go to: top index
         blender ref GeometryNodeCurvePrimitiveLine
         node ref Curve Line </sub>
@@ -197,6 +200,7 @@ class Curve(gn.Spline):
     @classmethod
     def Quadrilateral(cls, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE'):
         """ > Node: Quadrilateral
+          
         <sub>go to: top index
         blender ref GeometryNodeCurvePrimitiveQuadrilateral
         node ref Quadrilateral </sub>
@@ -248,6 +252,7 @@ class Curve(gn.Spline):
     @classmethod
     def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):
         """ > Node: QuadraticBezier
+          
         <sub>go to: top index
         blender ref GeometryNodeCurveQuadraticBezier
         node ref Quadratic Bezier </sub>
@@ -287,6 +292,7 @@ class Curve(gn.Spline):
     @classmethod
     def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):
         """ > Node: Star
+          
         <sub>go to: top index
         blender ref GeometryNodeCurveStar
         node ref Star </sub>
@@ -326,6 +332,7 @@ class Curve(gn.Spline):
     @classmethod
     def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None):
         """ > Node: Spiral
+          
         <sub>go to: top index
         blender ref GeometryNodeCurveSpiral
         node ref Spiral </sub>
@@ -367,6 +374,7 @@ class Curve(gn.Spline):
     @classmethod
     def ArcFromRadius(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None):
         """ > Node: Arc
+          
         <sub>go to: top index
         blender ref GeometryNodeCurveArc
         node ref Arc </sub>
@@ -417,6 +425,7 @@ class Curve(gn.Spline):
     @staticmethod
     def ArcFromPoints(resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None):
         """ > Node: Arc
+          
         <sub>go to: top index
         blender ref GeometryNodeCurveArc
         node ref Arc </sub>
@@ -467,6 +476,7 @@ class Curve(gn.Spline):
 
     def set_handles(self, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ > Node: SetHandleType
+          
         <sub>go to: top index
         blender ref GeometryNodeCurveSetHandles
         node ref Set Handle Type </sub>
@@ -509,6 +519,7 @@ class Curve(gn.Spline):
 
     def set_spline_type(self, selection=None, spline_type='POLY'):
         """ > Node: SetSplineType
+          
         <sub>go to: top index
         blender ref GeometryNodeCurveSplineType
         node ref Set Spline Type </sub>
@@ -550,6 +561,7 @@ class Curve(gn.Spline):
 
     def fill(self, mode='TRIANGLES'):
         """ > Node: FillCurve
+          
         <sub>go to: top index
         blender ref GeometryNodeFillCurve
         node ref Fill Curve </sub>
@@ -590,6 +602,7 @@ class Curve(gn.Spline):
 
     def fillet(self, count=None, radius=None, limit_radius=None, mode='BEZIER'):
         """ > Node: FilletCurve
+          
         <sub>go to: top index
         blender ref GeometryNodeFilletCurve
         node ref Fillet Curve </sub>
@@ -633,6 +646,7 @@ class Curve(gn.Spline):
 
     def resample(self, selection=None, count=None, length=None, mode='COUNT'):
         """ > Node: ResampleCurve
+          
         <sub>go to: top index
         blender ref GeometryNodeResampleCurve
         node ref Resample Curve </sub>
@@ -676,6 +690,7 @@ class Curve(gn.Spline):
 
     def reverse(self, selection=None):
         """ > Node: ReverseCurve
+          
         <sub>go to: top index
         blender ref GeometryNodeReverseCurve
         node ref Reverse Curve </sub>
@@ -712,6 +727,7 @@ class Curve(gn.Spline):
 
     def set_handle_positions(self, selection=None, position=None, offset=None, mode='LEFT'):
         """ > Node: SetHandlePositions
+          
         <sub>go to: top index
         blender ref GeometryNodeSetCurveHandlePositions
         node ref Set Handle Positions </sub>
@@ -755,6 +771,7 @@ class Curve(gn.Spline):
 
     def set_radius(self, selection=None, radius=None):
         """ > Node: SetCurveRadius
+          
         <sub>go to: top index
         blender ref GeometryNodeSetCurveRadius
         node ref Set Curve Radius </sub>
@@ -792,6 +809,7 @@ class Curve(gn.Spline):
 
     def set_tilt(self, selection=None, tilt=None):
         """ > Node: SetCurveTilt
+          
         <sub>go to: top index
         blender ref GeometryNodeSetCurveTilt
         node ref Set Curve Tilt </sub>
@@ -829,6 +847,7 @@ class Curve(gn.Spline):
 
     def subdivide(self, cuts=None):
         """ > Node: SubdivideCurve
+          
         <sub>go to: top index
         blender ref GeometryNodeSubdivideCurve
         node ref Subdivide Curve </sub>
@@ -865,6 +884,7 @@ class Curve(gn.Spline):
 
     def trim(self, start0=None, end0=None, start1=None, end1=None, mode='FACTOR'):
         """ > Node: TrimCurve
+          
         <sub>go to: top index
         blender ref GeometryNodeTrimCurve
         node ref Trim Curve </sub>
@@ -909,6 +929,7 @@ class Curve(gn.Spline):
 
     def to_mesh(self, profile_curve=None, fill_caps=None):
         """ > Node: CurveToMesh
+          
         <sub>go to: top index
         blender ref GeometryNodeCurveToMesh
         node ref Curve to Mesh </sub>
@@ -946,6 +967,7 @@ class Curve(gn.Spline):
 
     def to_points(self, count=None, length=None, mode='COUNT'):
         """ > Node: CurveToPoints
+          
         <sub>go to: top index
         blender ref GeometryNodeCurveToPoints
         node ref Curve to Points </sub>
@@ -988,6 +1010,7 @@ class Curve(gn.Spline):
 
     def sample(self, factor=None, length=None, mode='LENGTH'):
         """ > Node: SampleCurve
+          
         <sub>go to: top index
         blender ref GeometryNodeSampleCurve
         node ref Sample Curve </sub>
@@ -1030,6 +1053,7 @@ class Curve(gn.Spline):
 
     def length(self):
         """ > Node: CurveLength
+          
         <sub>go to: top index
         blender ref GeometryNodeCurveLength
         node ref Curve Length </sub>

@@ -48,6 +48,7 @@ class Object(dsock.Object):
     @property
     def info(self, as_instance=None, transform_space='ORIGINAL'):
         """ > Node: ObjectInfo
+          
         <sub>go to: top index
         blender ref GeometryNodeObjectInfo
         node ref Object Info </sub>
@@ -97,6 +98,7 @@ class Object(dsock.Object):
     @property
     def location(self, as_instance=None, transform_space='ORIGINAL'):
         """ > Node: ObjectInfo
+          
         <sub>go to: top index
         blender ref GeometryNodeObjectInfo
         node ref Object Info </sub>
@@ -144,6 +146,7 @@ class Object(dsock.Object):
     @property
     def rotation(self, as_instance=None, transform_space='ORIGINAL'):
         """ > Node: ObjectInfo
+          
         <sub>go to: top index
         blender ref GeometryNodeObjectInfo
         node ref Object Info </sub>
@@ -191,6 +194,7 @@ class Object(dsock.Object):
     @property
     def scale(self, as_instance=None, transform_space='ORIGINAL'):
         """ > Node: ObjectInfo
+          
         <sub>go to: top index
         blender ref GeometryNodeObjectInfo
         node ref Object Info </sub>
@@ -238,6 +242,7 @@ class Object(dsock.Object):
     @property
     def geometry(self, as_instance=None, transform_space='ORIGINAL'):
         """ > Node: ObjectInfo
+          
         <sub>go to: top index
         blender ref GeometryNodeObjectInfo
         node ref Object Info </sub>
@@ -288,6 +293,7 @@ class Object(dsock.Object):
 
     def switch(self, switch1=None, true=None):
         """ > Node: Switch
+          
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>

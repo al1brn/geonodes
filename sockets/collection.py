@@ -32,6 +32,7 @@ class Collection(dsock.Collection):
 
     def switch(self, switch1=None, true=None):
         """ > Node: Switch
+          
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>
@@ -74,6 +75,7 @@ class Collection(dsock.Collection):
 
     def info(self, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
         """ > Node: CollectionInfo
+          
         <sub>go to: top index
         blender ref GeometryNodeCollectionInfo
         node ref Collection Info </sub>

@@ -9,13 +9,14 @@
 
 ## Methods
 
-- [info](#info) : [CollectionInfo](section:nodes/CollectionInfo.md), geometry (Geometry)
-- [switch](#switch) : [Switch](section:nodes/Switch.md), output (Collection)
+- [info](#info) : [CollectionInfo](section:nodes/CollectionInfo), geometry (Geometry)
+- [switch](#switch) : [Switch](section:nodes/Switch), output (Collection)
 
 ## switch
 
 > Node: [Switch](section:nodes/Switch)
-<sub>go to: [top](#collection) [index](TBD)
+  
+<sub>go to: [top](#data-socket-collection) [index](TBD)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 
@@ -50,7 +51,8 @@ Collection
 ## info
 
 > Node: [CollectionInfo](section:nodes/CollectionInfo)
-<sub>go to: [top](#collection) [index](TBD)
+  
+<sub>go to: [top](#data-socket-collection) [index](TBD)
 blender ref [GeometryNodeCollectionInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeCollectionInfo.html)
 node ref [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/collection_info.html) </sub>
 

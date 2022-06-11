@@ -9,76 +9,77 @@
 
 ## Constructors
 
-- [Circle](#circle) : [MeshCircle](section:nodes/MeshCircle.md), mesh (Mesh)
-- [Cone](#cone) : [Cone](section:nodes/Cone.md), Sockets      [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
-- [Cube](#cube) : [Cube](section:nodes/Cube.md), mesh (Mesh)
-- [Cylinder](#cylinder) : [Cylinder](section:nodes/Cylinder.md), Sockets      [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
-- [Grid](#grid) : [Grid](section:nodes/Grid.md), mesh (Mesh)
-- [IcoSphere](#icosphere) : [IcoSphere](section:nodes/IcoSphere.md), mesh (Mesh)
-- [Line](#line) : [MeshLine](section:nodes/MeshLine.md), mesh (Mesh)
-- [UVSphere](#uvsphere) : [UvSphere](section:nodes/UvSphere.md), mesh (Mesh)
+- [Circle](#circle) : [MeshCircle](section:nodes/MeshCircle), mesh (Mesh)
+- [Cone](#cone) : [Cone](section:nodes/Cone), Sockets      [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
+- [Cube](#cube) : [Cube](section:nodes/Cube), mesh (Mesh)
+- [Cylinder](#cylinder) : [Cylinder](section:nodes/Cylinder), Sockets      [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
+- [Grid](#grid) : [Grid](section:nodes/Grid), mesh (Mesh)
+- [IcoSphere](#icosphere) : [IcoSphere](section:nodes/IcoSphere), mesh (Mesh)
+- [Line](#line) : [MeshLine](section:nodes/MeshLine), mesh (Mesh)
+- [UVSphere](#uvsphere) : [UvSphere](section:nodes/UvSphere), mesh (Mesh)
 
 ## Attribute capture
 
-- [capture_edge_angle](#capture_edge_angle) : [EdgeAngle](section:nodes/EdgeAngle.md), Sockets      [unsigned_angle (Float), signed_angle (Float)]
-- [capture_edge_neighbors](#capture_edge_neighbors) : [EdgeNeighbors](section:nodes/EdgeNeighbors.md), face_count (Integer)
-- [capture_edge_vertices](#capture_edge_vertices) : [EdgeVertices](section:nodes/EdgeVertices.md), Sockets      [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
-- [capture_face_area](#capture_face_area) : [FaceArea](section:nodes/FaceArea.md), area (Float)
-- [capture_face_neighbors](#capture_face_neighbors) : [FaceNeighbors](section:nodes/FaceNeighbors.md), Sockets      [vertex_count (Integer), face_count (Integer)]
-- [capture_island](#capture_island) : [MeshIsland](section:nodes/MeshIsland.md), Sockets      [island_index (Integer), island_count (Integer)]
-- [capture_material_index](#capture_material_index) : [MaterialIndex](section:nodes/MaterialIndex.md), material_index (Integer)
-- [capture_material_selection](#capture_material_selection) : [MaterialSelection](section:nodes/MaterialSelection.md), selection (Boolean)
-- [capture_shade_smooth](#capture_shade_smooth) : [IsShadeSmooth](section:nodes/IsShadeSmooth.md), smooth (Boolean)
-- [capture_vertex_neighbors](#capture_vertex_neighbors) : [VertexNeighbors](section:nodes/VertexNeighbors.md), Sockets      [vertex_count (Integer), face_count (Integer)]
+- [capture_edge_angle](#capture_edge_angle) : [EdgeAngle](section:nodes/EdgeAngle), Sockets      [unsigned_angle (Float), signed_angle (Float)]
+- [capture_edge_neighbors](#capture_edge_neighbors) : [EdgeNeighbors](section:nodes/EdgeNeighbors), face_count (Integer)
+- [capture_edge_vertices](#capture_edge_vertices) : [EdgeVertices](section:nodes/EdgeVertices), Sockets      [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
+- [capture_face_area](#capture_face_area) : [FaceArea](section:nodes/FaceArea), area (Float)
+- [capture_face_neighbors](#capture_face_neighbors) : [FaceNeighbors](section:nodes/FaceNeighbors), Sockets      [vertex_count (Integer), face_count (Integer)]
+- [capture_island](#capture_island) : [MeshIsland](section:nodes/MeshIsland), Sockets      [island_index (Integer), island_count (Integer)]
+- [capture_material_index](#capture_material_index) : [MaterialIndex](section:nodes/MaterialIndex), material_index (Integer)
+- [capture_material_selection](#capture_material_selection) : [MaterialSelection](section:nodes/MaterialSelection), selection (Boolean)
+- [capture_shade_smooth](#capture_shade_smooth) : [IsShadeSmooth](section:nodes/IsShadeSmooth), smooth (Boolean)
+- [capture_vertex_neighbors](#capture_vertex_neighbors) : [VertexNeighbors](section:nodes/VertexNeighbors), Sockets      [vertex_count (Integer), face_count (Integer)]
 
 ## Attributes
 
-- [corner_ID](#corner_id) : [EdgeAngle](section:nodes/EdgeAngle.md), Float = capture_ID(domain='CORNER').unsigned_angle
-- [corner_index](#corner_index) : [EdgeAngle](section:nodes/EdgeAngle.md), Float = capture_index(domain='CORNER').unsigned_angle
-- [corner_porision](#corner_porision) : [EdgeAngle](section:nodes/EdgeAngle.md), Float = capture_position(domain='CORNER').unsigned_angle
-- [edge_angle](#edge_angle) : [EdgeAngle](section:nodes/EdgeAngle.md), Float = capture_edge_angle(domain='EDGE').unsigned_angle
-- [edge_neighbors](#edge_neighbors) : [EdgeNeighbors](section:nodes/EdgeNeighbors.md), Integer = capture_edge_neighbors(domain='EDGE')
-- [edge_unsigned_angle](#edge_unsigned_angle) : [EdgeAngle](section:nodes/EdgeAngle.md), Float = capture_edge_angle(domain='EDGE').signed_angle
-- [edge_vertices_index1](#edge_vertices_index1) : [EdgeVertices](section:nodes/EdgeVertices.md), Integer = capture_edge_vertices(domain='EDGE').vertex_index_1
-- [edge_vertices_index2](#edge_vertices_index2) : [EdgeVertices](section:nodes/EdgeVertices.md), Integer = capture_edge_vertices(domain='EDGE').vertex_index_2
-- [edge_vertices_position1](#edge_vertices_position1) : [EdgeVertices](section:nodes/EdgeVertices.md), Vector = capture_edge_vertices(domain='EDGE').position_1
-- [edge_vertices_position2](#edge_vertices_position2) : [EdgeVertices](section:nodes/EdgeVertices.md), Vector = capture_edge_vertices(domain='EDGE').position_2
-- [egde_ID](#egde_id) : [EdgeAngle](section:nodes/EdgeAngle.md), Float = capture_ID(domain='EDGE').unsigned_angle
-- [egde_index](#egde_index) : [EdgeAngle](section:nodes/EdgeAngle.md), Float = capture_index(domain='EDGE').unsigned_angle
-- [egde_position](#egde_position) : [EdgeAngle](section:nodes/EdgeAngle.md), Float = capture_position(domain='EDGE').unsigned_angle
-- [face_ID](#face_id) : [EdgeAngle](section:nodes/EdgeAngle.md), Float = capture_ID(domain='FACE').unsigned_angle
-- [face_area](#face_area) : [FaceArea](section:nodes/FaceArea.md), Float = capture_face_area(domain='FACE')
-- [face_index](#face_index) : [EdgeAngle](section:nodes/EdgeAngle.md), Float = capture_index(domain='FACE').unsigned_angle
-- [face_neighbors_face_count](#face_neighbors_face_count) : [FaceNeighbors](section:nodes/FaceNeighbors.md), Integer = capture_face_neighbors(domain='FACE').face_count
-- [face_neighbors_vertex_count](#face_neighbors_vertex_count) : [FaceNeighbors](section:nodes/FaceNeighbors.md), Integer = capture_face_neighbors(domain='FACE').vertex_count
-- [face_position](#face_position) : [EdgeAngle](section:nodes/EdgeAngle.md), Float = capture_position(domain='FACE').unsigned_angle
-- [island](#island) : [MeshIsland](section:nodes/MeshIsland.md), Integer = capture_island(domain='POINT').island_index
-- [material_index](#material_index) : [MaterialIndex](section:nodes/MaterialIndex.md), Integer = capture_material_index(domain='FACE')
-- [material_selection](#material_selection) : [MaterialSelection](section:nodes/MaterialSelection.md), Boolean = capture_material_selection(domain='FACE')
-- [shade_smooth](#shade_smooth) : [IsShadeSmooth](section:nodes/IsShadeSmooth.md), Boolean = capture_shade_smooth(domain='FACE')
-- [vertex_neighbors_face_count](#vertex_neighbors_face_count) : [VertexNeighbors](section:nodes/VertexNeighbors.md), Integer = capture_vertex_neighbors(domain='POINT').face_count
-- [vertex_neighbors_vertex_count](#vertex_neighbors_vertex_count) : [VertexNeighbors](section:nodes/VertexNeighbors.md), Integer = capture_vertex_neighbors(domain='POINT').vertex_count
+- [corner_ID](#corner_id) : [EdgeAngle](section:nodes/EdgeAngle), Float = capture_ID(domain='CORNER').unsigned_angle
+- [corner_index](#corner_index) : [EdgeAngle](section:nodes/EdgeAngle), Float = capture_index(domain='CORNER').unsigned_angle
+- [corner_porision](#corner_porision) : [EdgeAngle](section:nodes/EdgeAngle), Float = capture_position(domain='CORNER').unsigned_angle
+- [edge_angle](#edge_angle) : [EdgeAngle](section:nodes/EdgeAngle), Float = capture_edge_angle(domain='EDGE').unsigned_angle
+- [edge_neighbors](#edge_neighbors) : [EdgeNeighbors](section:nodes/EdgeNeighbors), Integer = capture_edge_neighbors(domain='EDGE')
+- [edge_unsigned_angle](#edge_unsigned_angle) : [EdgeAngle](section:nodes/EdgeAngle), Float = capture_edge_angle(domain='EDGE').signed_angle
+- [edge_vertices_index1](#edge_vertices_index1) : [EdgeVertices](section:nodes/EdgeVertices), Integer = capture_edge_vertices(domain='EDGE').vertex_index_1
+- [edge_vertices_index2](#edge_vertices_index2) : [EdgeVertices](section:nodes/EdgeVertices), Integer = capture_edge_vertices(domain='EDGE').vertex_index_2
+- [edge_vertices_position1](#edge_vertices_position1) : [EdgeVertices](section:nodes/EdgeVertices), Vector = capture_edge_vertices(domain='EDGE').position_1
+- [edge_vertices_position2](#edge_vertices_position2) : [EdgeVertices](section:nodes/EdgeVertices), Vector = capture_edge_vertices(domain='EDGE').position_2
+- [egde_ID](#egde_id) : [EdgeAngle](section:nodes/EdgeAngle), Float = capture_ID(domain='EDGE').unsigned_angle
+- [egde_index](#egde_index) : [EdgeAngle](section:nodes/EdgeAngle), Float = capture_index(domain='EDGE').unsigned_angle
+- [egde_position](#egde_position) : [EdgeAngle](section:nodes/EdgeAngle), Float = capture_position(domain='EDGE').unsigned_angle
+- [face_ID](#face_id) : [EdgeAngle](section:nodes/EdgeAngle), Float = capture_ID(domain='FACE').unsigned_angle
+- [face_area](#face_area) : [FaceArea](section:nodes/FaceArea), Float = capture_face_area(domain='FACE')
+- [face_index](#face_index) : [EdgeAngle](section:nodes/EdgeAngle), Float = capture_index(domain='FACE').unsigned_angle
+- [face_neighbors_face_count](#face_neighbors_face_count) : [FaceNeighbors](section:nodes/FaceNeighbors), Integer = capture_face_neighbors(domain='FACE').face_count
+- [face_neighbors_vertex_count](#face_neighbors_vertex_count) : [FaceNeighbors](section:nodes/FaceNeighbors), Integer = capture_face_neighbors(domain='FACE').vertex_count
+- [face_position](#face_position) : [EdgeAngle](section:nodes/EdgeAngle), Float = capture_position(domain='FACE').unsigned_angle
+- [island](#island) : [MeshIsland](section:nodes/MeshIsland), Integer = capture_island(domain='POINT').island_index
+- [material_index](#material_index) : [MaterialIndex](section:nodes/MaterialIndex), Integer = capture_material_index(domain='FACE')
+- [material_selection](#material_selection) : [MaterialSelection](section:nodes/MaterialSelection), Boolean = capture_material_selection(domain='FACE')
+- [shade_smooth](#shade_smooth) : [IsShadeSmooth](section:nodes/IsShadeSmooth), Boolean = capture_shade_smooth(domain='FACE')
+- [vertex_neighbors_face_count](#vertex_neighbors_face_count) : [VertexNeighbors](section:nodes/VertexNeighbors), Integer = capture_vertex_neighbors(domain='POINT').face_count
+- [vertex_neighbors_vertex_count](#vertex_neighbors_vertex_count) : [VertexNeighbors](section:nodes/VertexNeighbors), Integer = capture_vertex_neighbors(domain='POINT').vertex_count
 
 ## Methods
 
-- [difference](#difference) : [MeshBoolean](section:nodes/MeshBoolean.md), mesh (Mesh)
-- [distribute_points_on_faces](#distribute_points_on_faces) : [DistributePointsOnFaces](section:nodes/DistributePointsOnFaces.md), Sockets      [points (Points), normal (Vector), rotation (Vector)]
-- [dual](#dual) : [DualMesh](section:nodes/DualMesh.md), dual_mesh (Geometry)
-- [extrude](#extrude) : [ExtrudeMesh](section:nodes/ExtrudeMesh.md), Sockets      [mesh (Mesh), top (Boolean), side (Boolean)]
-- [flip_faces](#flip_faces) : [FlipFaces](section:nodes/FlipFaces.md), mesh (Mesh)
-- [intersect](#intersect) : [MeshBoolean](section:nodes/MeshBoolean.md), mesh (Mesh)
-- [split_edges](#split_edges) : [SplitEdges](section:nodes/SplitEdges.md), mesh (Mesh)
-- [subdivide](#subdivide) : [SubdivideMesh](section:nodes/SubdivideMesh.md), mesh (Mesh)
-- [subdivision_surface](#subdivision_surface) : [SubdivisionSurface](section:nodes/SubdivisionSurface.md), mesh (Mesh)
-- [to_curve](#to_curve) : [MeshToCurve](section:nodes/MeshToCurve.md), curve (Curve)
-- [to_points](#to_points) : [MeshToPoints](section:nodes/MeshToPoints.md), points (Points)
-- [triangulate](#triangulate) : [Triangulate](section:nodes/Triangulate.md), mesh (Mesh)
-- [union](#union) : [MeshBoolean](section:nodes/MeshBoolean.md), mesh (Mesh)
+- [difference](#difference) : [MeshBoolean](section:nodes/MeshBoolean), mesh (Mesh)
+- [distribute_points_on_faces](#distribute_points_on_faces) : [DistributePointsOnFaces](section:nodes/DistributePointsOnFaces), Sockets      [points (Points), normal (Vector), rotation (Vector)]
+- [dual](#dual) : [DualMesh](section:nodes/DualMesh), dual_mesh (Geometry)
+- [extrude](#extrude) : [ExtrudeMesh](section:nodes/ExtrudeMesh), Sockets      [mesh (Mesh), top (Boolean), side (Boolean)]
+- [flip_faces](#flip_faces) : [FlipFaces](section:nodes/FlipFaces), mesh (Mesh)
+- [intersect](#intersect) : [MeshBoolean](section:nodes/MeshBoolean), mesh (Mesh)
+- [split_edges](#split_edges) : [SplitEdges](section:nodes/SplitEdges), mesh (Mesh)
+- [subdivide](#subdivide) : [SubdivideMesh](section:nodes/SubdivideMesh), mesh (Mesh)
+- [subdivision_surface](#subdivision_surface) : [SubdivisionSurface](section:nodes/SubdivisionSurface), mesh (Mesh)
+- [to_curve](#to_curve) : [MeshToCurve](section:nodes/MeshToCurve), curve (Curve)
+- [to_points](#to_points) : [MeshToPoints](section:nodes/MeshToPoints), points (Points)
+- [triangulate](#triangulate) : [Triangulate](section:nodes/Triangulate), mesh (Mesh)
+- [union](#union) : [MeshBoolean](section:nodes/MeshBoolean), mesh (Mesh)
 
 ## Circle
 
 > Node: [MeshCircle](section:nodes/MeshCircle)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeMeshCircle](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCircle.html)
 node ref [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_circle.html) </sub>
 
@@ -112,7 +113,8 @@ Mesh
 ## Cone
 
 > Node: [Cone](section:nodes/Cone)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeMeshCone](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCone.html)
 node ref [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/cone.html) </sub>
 
@@ -150,7 +152,8 @@ Sockets [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
 ## Cube
 
 > Node: [Cube](section:nodes/Cube)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeMeshCube](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCube.html)
 node ref [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/cube.html) </sub>
 
@@ -182,7 +185,8 @@ Mesh
 ## Cylinder
 
 > Node: [Cylinder](section:nodes/Cylinder)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeMeshCylinder](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCylinder.html)
 node ref [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/cylinder.html) </sub>
 
@@ -219,7 +223,8 @@ Sockets [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
 ## Grid
 
 > Node: [Grid](section:nodes/Grid)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeMeshGrid](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshGrid.html)
 node ref [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/grid.html) </sub>
 
@@ -251,7 +256,8 @@ Mesh
 ## IcoSphere
 
 > Node: [IcoSphere](section:nodes/IcoSphere)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeMeshIcoSphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshIcoSphere.html)
 node ref [Ico Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/ico_sphere.html) </sub>
 
@@ -281,7 +287,8 @@ Mesh
 ## Line
 
 > Node: [MeshLine](section:nodes/MeshLine)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeMeshLine](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html)
 node ref [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_line.html) </sub>
 
@@ -317,7 +324,8 @@ Mesh
 ## UVSphere
 
 > Node: [UvSphere](section:nodes/UvSphere)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeMeshUVSphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshUVSphere.html)
 node ref [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/uv_sphere.html) </sub>
 
@@ -348,7 +356,8 @@ Mesh
 ## capture_edge_angle
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -378,7 +387,8 @@ Sockets [unsigned_angle (Float), signed_angle (Float)]
 ## capture_edge_neighbors
 
 > Node: [EdgeNeighbors](section:nodes/EdgeNeighbors)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeNeighbors.html)
 node ref [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_neighbors.html) </sub>
 
@@ -408,7 +418,8 @@ Integer
 ## capture_edge_vertices
 
 > Node: [EdgeVertices](section:nodes/EdgeVertices)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 node ref [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_vertices.html) </sub>
 
@@ -438,7 +449,8 @@ Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector)
 ## capture_face_area
 
 > Node: [FaceArea](section:nodes/FaceArea)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshFaceArea](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceArea.html)
 node ref [Face Area](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/face_area.html) </sub>
 
@@ -468,7 +480,8 @@ Float
 ## capture_face_neighbors
 
 > Node: [FaceNeighbors](section:nodes/FaceNeighbors)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshFaceNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
 node ref [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/face_neighbors.html) </sub>
 
@@ -498,7 +511,8 @@ Sockets [vertex_count (Integer), face_count (Integer)]
 ## capture_island
 
 > Node: [MeshIsland](section:nodes/MeshIsland)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshIsland](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
 node ref [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_island.html) </sub>
 
@@ -528,7 +542,8 @@ Sockets [island_index (Integer), island_count (Integer)]
 ## capture_shade_smooth
 
 > Node: [IsShadeSmooth](section:nodes/IsShadeSmooth)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputShadeSmooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html)
 node ref [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/is_shade_smooth.html) </sub>
 
@@ -558,7 +573,8 @@ Boolean
 ## capture_vertex_neighbors
 
 > Node: [VertexNeighbors](section:nodes/VertexNeighbors)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshVertexNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
 node ref [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vertex_neighbors.html) </sub>
 
@@ -588,7 +604,8 @@ Sockets [vertex_count (Integer), face_count (Integer)]
 ## capture_material_index
 
 > Node: [MaterialIndex](section:nodes/MaterialIndex)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMaterialIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
 node ref [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) </sub>
 
@@ -618,7 +635,8 @@ Integer
 ## capture_material_selection
 
 > Node: [MaterialSelection](section:nodes/MaterialSelection)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeMaterialSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
 node ref [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) </sub>
 
@@ -652,7 +670,8 @@ Boolean
 ## face_ID
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -681,7 +700,8 @@ Float
 ## egde_ID
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -710,7 +730,8 @@ Float
 ## corner_ID
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -739,7 +760,8 @@ Float
 ## face_index
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -768,7 +790,8 @@ Float
 ## egde_index
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -797,7 +820,8 @@ Float
 ## corner_index
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -826,7 +850,8 @@ Float
 ## face_position
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -855,7 +880,8 @@ Float
 ## egde_position
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -884,7 +910,8 @@ Float
 ## corner_porision
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -913,7 +940,8 @@ Float
 ## edge_angle
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -942,7 +970,8 @@ Float
 ## edge_unsigned_angle
 
 > Node: [EdgeAngle](section:nodes/EdgeAngle)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_angle.html) </sub>
 
@@ -971,7 +1000,8 @@ Float
 ## edge_neighbors
 
 > Node: [EdgeNeighbors](section:nodes/EdgeNeighbors)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeNeighbors.html)
 node ref [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_neighbors.html) </sub>
 
@@ -1000,7 +1030,8 @@ Integer
 ## edge_vertices_index1
 
 > Node: [EdgeVertices](section:nodes/EdgeVertices)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 node ref [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_vertices.html) </sub>
 
@@ -1029,7 +1060,8 @@ Integer
 ## edge_vertices_index2
 
 > Node: [EdgeVertices](section:nodes/EdgeVertices)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 node ref [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_vertices.html) </sub>
 
@@ -1058,7 +1090,8 @@ Integer
 ## edge_vertices_position1
 
 > Node: [EdgeVertices](section:nodes/EdgeVertices)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 node ref [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_vertices.html) </sub>
 
@@ -1087,7 +1120,8 @@ Vector
 ## edge_vertices_position2
 
 > Node: [EdgeVertices](section:nodes/EdgeVertices)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 node ref [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/edge_vertices.html) </sub>
 
@@ -1116,7 +1150,8 @@ Vector
 ## face_area
 
 > Node: [FaceArea](section:nodes/FaceArea)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshFaceArea](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceArea.html)
 node ref [Face Area](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/face_area.html) </sub>
 
@@ -1145,7 +1180,8 @@ Float
 ## face_neighbors_vertex_count
 
 > Node: [FaceNeighbors](section:nodes/FaceNeighbors)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshFaceNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
 node ref [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/face_neighbors.html) </sub>
 
@@ -1174,7 +1210,8 @@ Integer
 ## face_neighbors_face_count
 
 > Node: [FaceNeighbors](section:nodes/FaceNeighbors)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshFaceNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
 node ref [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/face_neighbors.html) </sub>
 
@@ -1203,7 +1240,8 @@ Integer
 ## island
 
 > Node: [MeshIsland](section:nodes/MeshIsland)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshIsland](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
 node ref [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_island.html) </sub>
 
@@ -1232,7 +1270,8 @@ Integer
 ## shade_smooth
 
 > Node: [IsShadeSmooth](section:nodes/IsShadeSmooth)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputShadeSmooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html)
 node ref [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/is_shade_smooth.html) </sub>
 
@@ -1261,7 +1300,8 @@ Boolean
 ## vertex_neighbors_vertex_count
 
 > Node: [VertexNeighbors](section:nodes/VertexNeighbors)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshVertexNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
 node ref [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vertex_neighbors.html) </sub>
 
@@ -1290,7 +1330,8 @@ Integer
 ## vertex_neighbors_face_count
 
 > Node: [VertexNeighbors](section:nodes/VertexNeighbors)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMeshVertexNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
 node ref [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/vertex_neighbors.html) </sub>
 
@@ -1319,7 +1360,8 @@ Integer
 ## material_index
 
 > Node: [MaterialIndex](section:nodes/MaterialIndex)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeInputMaterialIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
 node ref [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) </sub>
 
@@ -1348,7 +1390,8 @@ Integer
 ## material_selection
 
 > Node: [MaterialSelection](section:nodes/MaterialSelection)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeMaterialSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
 node ref [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) </sub>
 
@@ -1381,7 +1424,8 @@ Boolean
 ## intersect
 
 > Node: [MeshBoolean](section:nodes/MeshBoolean)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeMeshBoolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
 node ref [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_boolean.html) </sub>
 
@@ -1416,7 +1460,8 @@ Mesh
 ## union
 
 > Node: [MeshBoolean](section:nodes/MeshBoolean)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeMeshBoolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
 node ref [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_boolean.html) </sub>
 
@@ -1451,7 +1496,8 @@ Mesh
 ## difference
 
 > Node: [MeshBoolean](section:nodes/MeshBoolean)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeMeshBoolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
 node ref [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_boolean.html) </sub>
 
@@ -1487,7 +1533,8 @@ Mesh
 ## split_edges
 
 > Node: [SplitEdges](section:nodes/SplitEdges)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeSplitEdges](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitEdges.html)
 node ref [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/split_edges.html) </sub>
 
@@ -1517,7 +1564,8 @@ Mesh
 ## subdivide
 
 > Node: [SubdivideMesh](section:nodes/SubdivideMesh)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeSubdivideMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideMesh.html)
 node ref [Subdivide Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/subdivide_mesh.html) </sub>
 
@@ -1547,7 +1595,8 @@ Mesh
 ## subdivision_surface
 
 > Node: [SubdivisionSurface](section:nodes/SubdivisionSurface)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeSubdivisionSurface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivisionSurface.html)
 node ref [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/subdivision_surface.html) </sub>
 
@@ -1583,7 +1632,8 @@ Mesh
 ## triangulate
 
 > Node: [Triangulate](section:nodes/Triangulate)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeTriangulate](https://docs.blender.org/api/current/bpy.types.GeometryNodeTriangulate.html)
 node ref [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/triangulate.html) </sub>
 
@@ -1619,7 +1669,8 @@ Mesh
 ## dual
 
 > Node: [DualMesh](section:nodes/DualMesh)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeDualMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeDualMesh.html)
 node ref [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/dual_mesh.html) </sub>
 
@@ -1649,7 +1700,8 @@ Geometry
 ## flip_faces
 
 > Node: [FlipFaces](section:nodes/FlipFaces)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeFlipFaces](https://docs.blender.org/api/current/bpy.types.GeometryNodeFlipFaces.html)
 node ref [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/flip_faces.html) </sub>
 
@@ -1679,7 +1731,8 @@ Mesh
 ## extrude
 
 > Node: [ExtrudeMesh](section:nodes/ExtrudeMesh)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeExtrudeMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html)
 node ref [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/extrude_mesh.html) </sub>
 
@@ -1716,7 +1769,8 @@ Sockets [mesh (Mesh), top (Boolean), side (Boolean)]
 ## to_curve
 
 > Node: [MeshToCurve](section:nodes/MeshToCurve)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeMeshToCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html)
 node ref [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_to_curve.html) </sub>
 
@@ -1746,7 +1800,8 @@ Curve
 ## to_points
 
 > Node: [MeshToPoints](section:nodes/MeshToPoints)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeMeshToPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html)
 node ref [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/mesh_to_points.html) </sub>
 
@@ -1782,7 +1837,8 @@ Points
 ## distribute_points_on_faces
 
 > Node: [DistributePointsOnFaces](section:nodes/DistributePointsOnFaces)
-<sub>go to: [top](#mesh) [index](TBD)
+  
+<sub>go to: [top](#data-socket-mesh) [index](TBD)
 blender ref [GeometryNodeDistributePointsOnFaces](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html)
 node ref [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/distribute_points_on_faces.html) </sub>
 

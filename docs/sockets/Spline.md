@@ -9,44 +9,45 @@
 
 ## Attribute capture
 
-- [capture_cyclic](#capture_cyclic) : [IsSplineCyclic](section:nodes/IsSplineCyclic.md), cyclic (Boolean)
-- [capture_endpoint_selection](#capture_endpoint_selection) : [EndpointSelection](section:nodes/EndpointSelection.md), selection (Boolean)
-- [capture_handle_positions](#capture_handle_positions) : [CurveHandlePositions](section:nodes/CurveHandlePositions.md), Sockets      [left (Vector), right (Vector)]
-- [capture_handle_type_selection](#capture_handle_type_selection) : [HandleTypeSelection](section:nodes/HandleTypeSelection.md), selection (Boolean)
-- [capture_length](#capture_length) : [SplineLength](section:nodes/SplineLength.md), Sockets      [length (Float), point_count (Integer)]
-- [capture_parameter](#capture_parameter) : [SplineParameter](section:nodes/SplineParameter.md), Sockets      [factor (Float), length (Float), index (Integer)]
-- [capture_resolution](#capture_resolution) : [SplineResolution](section:nodes/SplineResolution.md), resolution (Integer)
-- [capture_tangent](#capture_tangent) : [CurveTangent](section:nodes/CurveTangent.md), tangent (Vector)
-- [capture_tilt](#capture_tilt) : [CurveTilt](section:nodes/CurveTilt.md), tilt (Float)
+- [capture_cyclic](#capture_cyclic) : [IsSplineCyclic](section:nodes/IsSplineCyclic), cyclic (Boolean)
+- [capture_endpoint_selection](#capture_endpoint_selection) : [EndpointSelection](section:nodes/EndpointSelection), selection (Boolean)
+- [capture_handle_positions](#capture_handle_positions) : [CurveHandlePositions](section:nodes/CurveHandlePositions), Sockets      [left (Vector), right (Vector)]
+- [capture_handle_type_selection](#capture_handle_type_selection) : [HandleTypeSelection](section:nodes/HandleTypeSelection), selection (Boolean)
+- [capture_length](#capture_length) : [SplineLength](section:nodes/SplineLength), Sockets      [length (Float), point_count (Integer)]
+- [capture_parameter](#capture_parameter) : [SplineParameter](section:nodes/SplineParameter), Sockets      [factor (Float), length (Float), index (Integer)]
+- [capture_resolution](#capture_resolution) : [SplineResolution](section:nodes/SplineResolution), resolution (Integer)
+- [capture_tangent](#capture_tangent) : [CurveTangent](section:nodes/CurveTangent), tangent (Vector)
+- [capture_tilt](#capture_tilt) : [CurveTilt](section:nodes/CurveTilt), tilt (Float)
 
 ## Attributes
 
-- [cyclic](#cyclic) : [IsSplineCyclic](section:nodes/IsSplineCyclic.md), Boolean = capture_cyclic(domain='CURVE')
-- [endpoint_selection](#endpoint_selection) : [EndpointSelection](section:nodes/EndpointSelection.md), Boolean = capture_endpoint_selection(domain='CURVE')
-- [factor](#factor) : [SplineParameter](section:nodes/SplineParameter.md), Float = capture_parameter(domain='CURVE').factor
-- [handle_type_selection](#handle_type_selection) : [HandleTypeSelection](section:nodes/HandleTypeSelection.md), Boolean = capture_handle_type_selection(domain='CURVE')
-- [left_handle_position](#left_handle_position) : [CurveHandlePositions](section:nodes/CurveHandlePositions.md), Vector = capture_handle_positions(domain='CURVE').left
-- [length](#length) : [SplineLength](section:nodes/SplineLength.md), Float = capture_length(domain='CURVE').length
-- [parameter_index](#parameter_index) : [SplineParameter](section:nodes/SplineParameter.md), Integer = capture_parameter(domain='CURVE').index
-- [parameter_length](#parameter_length) : [SplineParameter](section:nodes/SplineParameter.md), Float = capture_parameter(domain='CURVE').length
-- [point_count](#point_count) : [SplineLength](section:nodes/SplineLength.md), Integer = capture_length(domain='CURVE').point_count
-- [resolution](#resolution) : [SplineResolution](section:nodes/SplineResolution.md), Integer = capture_resolution(domain='CURVE')
-- [right_handle_position](#right_handle_position) : [CurveHandlePositions](section:nodes/CurveHandlePositions.md), Vector = capture_handle_positions(domain='CURVE').right
-- [spline_ID](#spline_id) : [ID](section:nodes/ID.md), Integer = capture_ID(domain='SPLINE')
-- [spline_index](#spline_index) : [Index](section:nodes/Index.md), Integer = capture_index(domain='SPLINE')
-- [spline_position](#spline_position) : [Index](section:nodes/Index.md), Integer = capture_position(domain='SPLINE')
-- [tangent](#tangent) : [CurveTangent](section:nodes/CurveTangent.md), Vector = capture_tangent(domain='CURVE')
-- [tilt](#tilt) : [CurveTilt](section:nodes/CurveTilt.md), Float = capture_tilt(domain='CURVE')
+- [cyclic](#cyclic) : [IsSplineCyclic](section:nodes/IsSplineCyclic), Boolean = capture_cyclic(domain='CURVE')
+- [endpoint_selection](#endpoint_selection) : [EndpointSelection](section:nodes/EndpointSelection), Boolean = capture_endpoint_selection(domain='CURVE')
+- [factor](#factor) : [SplineParameter](section:nodes/SplineParameter), Float = capture_parameter(domain='CURVE').factor
+- [handle_type_selection](#handle_type_selection) : [HandleTypeSelection](section:nodes/HandleTypeSelection), Boolean = capture_handle_type_selection(domain='CURVE')
+- [left_handle_position](#left_handle_position) : [CurveHandlePositions](section:nodes/CurveHandlePositions), Vector = capture_handle_positions(domain='CURVE').left
+- [length](#length) : [SplineLength](section:nodes/SplineLength), Float = capture_length(domain='CURVE').length
+- [parameter_index](#parameter_index) : [SplineParameter](section:nodes/SplineParameter), Integer = capture_parameter(domain='CURVE').index
+- [parameter_length](#parameter_length) : [SplineParameter](section:nodes/SplineParameter), Float = capture_parameter(domain='CURVE').length
+- [point_count](#point_count) : [SplineLength](section:nodes/SplineLength), Integer = capture_length(domain='CURVE').point_count
+- [resolution](#resolution) : [SplineResolution](section:nodes/SplineResolution), Integer = capture_resolution(domain='CURVE')
+- [right_handle_position](#right_handle_position) : [CurveHandlePositions](section:nodes/CurveHandlePositions), Vector = capture_handle_positions(domain='CURVE').right
+- [spline_ID](#spline_id) : [ID](section:nodes/ID), Integer = capture_ID(domain='SPLINE')
+- [spline_index](#spline_index) : [Index](section:nodes/Index), Integer = capture_index(domain='SPLINE')
+- [spline_position](#spline_position) : [Index](section:nodes/Index), Integer = capture_position(domain='SPLINE')
+- [tangent](#tangent) : [CurveTangent](section:nodes/CurveTangent), Vector = capture_tangent(domain='CURVE')
+- [tilt](#tilt) : [CurveTilt](section:nodes/CurveTilt), Float = capture_tilt(domain='CURVE')
 
 ## Methods
 
-- [set_cyclic](#set_cyclic) : [SetSplineCyclic](section:nodes/SetSplineCyclic.md), geometry (Geometry)
-- [set_resolution](#set_resolution) : [SetSplineResolution](section:nodes/SetSplineResolution.md), geometry (Geometry)
+- [set_cyclic](#set_cyclic) : [SetSplineCyclic](section:nodes/SetSplineCyclic), geometry (Geometry)
+- [set_resolution](#set_resolution) : [SetSplineResolution](section:nodes/SetSplineResolution), geometry (Geometry)
 
 ## capture_handle_positions
 
 > Node: [CurveHandlePositions](section:nodes/CurveHandlePositions)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeInputCurveHandlePositions](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
 node ref [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_handle_positions.html) </sub>
 
@@ -80,7 +81,8 @@ Sockets [left (Vector), right (Vector)]
 ## capture_tangent
 
 > Node: [CurveTangent](section:nodes/CurveTangent)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeInputTangent](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputTangent.html)
 node ref [Curve Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_tangent.html) </sub>
 
@@ -110,7 +112,8 @@ Vector
 ## capture_tilt
 
 > Node: [CurveTilt](section:nodes/CurveTilt)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeInputCurveTilt](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveTilt.html)
 node ref [Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_tilt.html) </sub>
 
@@ -140,7 +143,8 @@ Float
 ## capture_endpoint_selection
 
 > Node: [EndpointSelection](section:nodes/EndpointSelection)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeCurveEndpointSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveEndpointSelection.html)
 node ref [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/endpoint_selection.html) </sub>
 
@@ -175,7 +179,8 @@ Boolean
 ## capture_handle_type_selection
 
 > Node: [HandleTypeSelection](section:nodes/HandleTypeSelection)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeCurveHandleTypeSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
 node ref [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/handle_type_selection.html) </sub>
 
@@ -207,7 +212,8 @@ Boolean
 ## capture_cyclic
 
 > Node: [IsSplineCyclic](section:nodes/IsSplineCyclic)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeInputSplineCyclic](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineCyclic.html)
 node ref [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/is_spline_cyclic.html) </sub>
 
@@ -237,7 +243,8 @@ Boolean
 ## capture_length
 
 > Node: [SplineLength](section:nodes/SplineLength)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeSplineLength](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html)
 node ref [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_length.html) </sub>
 
@@ -267,7 +274,8 @@ Sockets [length (Float), point_count (Integer)]
 ## capture_parameter
 
 > Node: [SplineParameter](section:nodes/SplineParameter)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeSplineParameter](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
 node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_parameter.html) </sub>
 
@@ -297,7 +305,8 @@ Sockets [factor (Float), length (Float), index (Integer)]
 ## capture_resolution
 
 > Node: [SplineResolution](section:nodes/SplineResolution)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeInputSplineResolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineResolution.html)
 node ref [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_resolution.html) </sub>
 
@@ -327,7 +336,8 @@ Integer
 ## spline_ID
 
 > Node: [ID](section:nodes/ID)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeInputID](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html)
 node ref [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/id.html) </sub>
 
@@ -356,7 +366,8 @@ Integer
 ## spline_index
 
 > Node: [Index](section:nodes/Index)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
 node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/index.html) </sub>
 
@@ -385,7 +396,8 @@ Integer
 ## spline_position
 
 > Node: [Index](section:nodes/Index)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
 node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/index.html) </sub>
 
@@ -414,7 +426,8 @@ Integer
 ## left_handle_position
 
 > Node: [CurveHandlePositions](section:nodes/CurveHandlePositions)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeInputCurveHandlePositions](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
 node ref [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_handle_positions.html) </sub>
 
@@ -447,7 +460,8 @@ Vector
 ## right_handle_position
 
 > Node: [CurveHandlePositions](section:nodes/CurveHandlePositions)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeInputCurveHandlePositions](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
 node ref [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_handle_positions.html) </sub>
 
@@ -480,7 +494,8 @@ Vector
 ## tangent
 
 > Node: [CurveTangent](section:nodes/CurveTangent)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeInputTangent](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputTangent.html)
 node ref [Curve Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_tangent.html) </sub>
 
@@ -509,7 +524,8 @@ Vector
 ## tilt
 
 > Node: [CurveTilt](section:nodes/CurveTilt)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeInputCurveTilt](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveTilt.html)
 node ref [Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/curve_tilt.html) </sub>
 
@@ -538,7 +554,8 @@ Float
 ## endpoint_selection
 
 > Node: [EndpointSelection](section:nodes/EndpointSelection)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeCurveEndpointSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveEndpointSelection.html)
 node ref [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/endpoint_selection.html) </sub>
 
@@ -572,7 +589,8 @@ Boolean
 ## handle_type_selection
 
 > Node: [HandleTypeSelection](section:nodes/HandleTypeSelection)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeCurveHandleTypeSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
 node ref [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/handle_type_selection.html) </sub>
 
@@ -603,7 +621,8 @@ Boolean
 ## cyclic
 
 > Node: [IsSplineCyclic](section:nodes/IsSplineCyclic)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeInputSplineCyclic](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineCyclic.html)
 node ref [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/is_spline_cyclic.html) </sub>
 
@@ -632,7 +651,8 @@ Boolean
 ## length
 
 > Node: [SplineLength](section:nodes/SplineLength)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeSplineLength](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html)
 node ref [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_length.html) </sub>
 
@@ -661,7 +681,8 @@ Float
 ## point_count
 
 > Node: [SplineLength](section:nodes/SplineLength)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeSplineLength](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html)
 node ref [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_length.html) </sub>
 
@@ -690,7 +711,8 @@ Integer
 ## factor
 
 > Node: [SplineParameter](section:nodes/SplineParameter)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeSplineParameter](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
 node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_parameter.html) </sub>
 
@@ -719,7 +741,8 @@ Float
 ## parameter_length
 
 > Node: [SplineParameter](section:nodes/SplineParameter)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeSplineParameter](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
 node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_parameter.html) </sub>
 
@@ -748,7 +771,8 @@ Float
 ## parameter_index
 
 > Node: [SplineParameter](section:nodes/SplineParameter)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeSplineParameter](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
 node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_parameter.html) </sub>
 
@@ -777,7 +801,8 @@ Integer
 ## resolution
 
 > Node: [SplineResolution](section:nodes/SplineResolution)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeInputSplineResolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineResolution.html)
 node ref [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/spline_resolution.html) </sub>
 
@@ -806,7 +831,8 @@ Integer
 ## set_cyclic
 
 > Node: [SetSplineCyclic](section:nodes/SetSplineCyclic)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeSetSplineCyclic](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html)
 node ref [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_spline_cyclic.html) </sub>
 
@@ -837,7 +863,8 @@ Geometry
 ## set_resolution
 
 > Node: [SetSplineResolution](section:nodes/SetSplineResolution)
-<sub>go to: [top](#spline) [index](TBD)
+  
+<sub>go to: [top](#data-socket-spline) [index](TBD)
 blender ref [GeometryNodeSetSplineResolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html)
 node ref [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_spline_resolution.html) </sub>
 

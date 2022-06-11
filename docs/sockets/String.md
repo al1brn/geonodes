@@ -9,25 +9,26 @@
 
 ## Properties
 
-- [length](#length) : [StringLength](section:nodes/StringLength.md), length (Integer)
+- [length](#length) : [StringLength](section:nodes/StringLength), length (Integer)
 
 ## Methods
 
-- [average](#average) : [Compare](section:nodes/Compare.md), result (Boolean)
-- [direction](#direction) : [Compare](section:nodes/Compare.md), result (Boolean)
-- [dot_product](#dot_product) : [Compare](section:nodes/Compare.md), result (Boolean)
-- [element](#element) : [Compare](section:nodes/Compare.md), result (Boolean)
-- [join](#join) : [JoinStrings](section:nodes/JoinStrings.md), string (String)
-- [length](#length) : [Compare](section:nodes/Compare.md), result (Boolean)
-- [replace](#replace) : [ReplaceString](section:nodes/ReplaceString.md), string (String)
-- [slice](#slice) : [SliceString](section:nodes/SliceString.md), string (String)
-- [switch](#switch) : [Switch](section:nodes/Switch.md), output (String)
-- [to_curves](#to_curves) : [StringToCurves](section:nodes/StringToCurves.md), Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
+- [average](#average) : [Compare](section:nodes/Compare), result (Boolean)
+- [direction](#direction) : [Compare](section:nodes/Compare), result (Boolean)
+- [dot_product](#dot_product) : [Compare](section:nodes/Compare), result (Boolean)
+- [element](#element) : [Compare](section:nodes/Compare), result (Boolean)
+- [join](#join) : [JoinStrings](section:nodes/JoinStrings), string (String)
+- [length](#length) : [Compare](section:nodes/Compare), result (Boolean)
+- [replace](#replace) : [ReplaceString](section:nodes/ReplaceString), string (String)
+- [slice](#slice) : [SliceString](section:nodes/SliceString), string (String)
+- [switch](#switch) : [Switch](section:nodes/Switch), output (String)
+- [to_curves](#to_curves) : [StringToCurves](section:nodes/StringToCurves), Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
 
 ## length
 
 > Node: [StringLength](section:nodes/StringLength)
-<sub>go to: [top](#string) [index](TBD)
+  
+<sub>go to: [top](#data-socket-string) [index](TBD)
 blender ref [FunctionNodeStringLength](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
 node ref [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/string_length.html) </sub>
 
@@ -60,7 +61,8 @@ Integer
 ## switch
 
 > Node: [Switch](section:nodes/Switch)
-<sub>go to: [top](#string) [index](TBD)
+  
+<sub>go to: [top](#data-socket-string) [index](TBD)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/switch.html) </sub>
 
@@ -95,7 +97,8 @@ String
 ## element
 
 > Node: [Compare](section:nodes/Compare)
-<sub>go to: [top](#string) [index](TBD)
+  
+<sub>go to: [top](#data-socket-string) [index](TBD)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -131,7 +134,8 @@ Boolean
 ## length
 
 > Node: [Compare](section:nodes/Compare)
-<sub>go to: [top](#string) [index](TBD)
+  
+<sub>go to: [top](#data-socket-string) [index](TBD)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -167,7 +171,8 @@ Boolean
 ## average
 
 > Node: [Compare](section:nodes/Compare)
-<sub>go to: [top](#string) [index](TBD)
+  
+<sub>go to: [top](#data-socket-string) [index](TBD)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -203,7 +208,8 @@ Boolean
 ## dot_product
 
 > Node: [Compare](section:nodes/Compare)
-<sub>go to: [top](#string) [index](TBD)
+  
+<sub>go to: [top](#data-socket-string) [index](TBD)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -239,7 +245,8 @@ Boolean
 ## direction
 
 > Node: [Compare](section:nodes/Compare)
-<sub>go to: [top](#string) [index](TBD)
+  
+<sub>go to: [top](#data-socket-string) [index](TBD)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/compare.html) </sub>
 
@@ -275,7 +282,8 @@ Boolean
 ## join
 
 > Node: [JoinStrings](section:nodes/JoinStrings)
-<sub>go to: [top](#string) [index](TBD)
+  
+<sub>go to: [top](#data-socket-string) [index](TBD)
 blender ref [GeometryNodeStringJoin](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
 node ref [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/join_strings.html) </sub>
 
@@ -305,7 +313,8 @@ String
 ## replace
 
 > Node: [ReplaceString](section:nodes/ReplaceString)
-<sub>go to: [top](#string) [index](TBD)
+  
+<sub>go to: [top](#data-socket-string) [index](TBD)
 blender ref [FunctionNodeReplaceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
 node ref [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_string.html) </sub>
 
@@ -336,7 +345,8 @@ String
 ## slice
 
 > Node: [SliceString](section:nodes/SliceString)
-<sub>go to: [top](#string) [index](TBD)
+  
+<sub>go to: [top](#data-socket-string) [index](TBD)
 blender ref [FunctionNodeSliceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
 node ref [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/slice_string.html) </sub>
 
@@ -367,7 +377,8 @@ String
 ## to_curves
 
 > Node: [StringToCurves](section:nodes/StringToCurves)
-<sub>go to: [top](#string) [index](TBD)
+  
+<sub>go to: [top](#data-socket-string) [index](TBD)
 blender ref [GeometryNodeStringToCurves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
 node ref [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/string_to_curves.html) </sub>
 

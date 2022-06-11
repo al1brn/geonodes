@@ -49,6 +49,7 @@ class String(dsock.String):
     @property
     def length(self):
         """ > Node: StringLength
+          
         <sub>go to: top index
         blender ref FunctionNodeStringLength
         node ref String Length </sub>
@@ -95,6 +96,7 @@ class String(dsock.String):
 
     def switch(self, switch0=None, true=None):
         """ > Node: Switch
+          
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>
@@ -137,6 +139,7 @@ class String(dsock.String):
 
     def element(self, b=None):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -180,6 +183,7 @@ class String(dsock.String):
 
     def length(self, b=None):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -223,6 +227,7 @@ class String(dsock.String):
 
     def average(self, b=None):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -266,6 +271,7 @@ class String(dsock.String):
 
     def dot_product(self, b=None):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -309,6 +315,7 @@ class String(dsock.String):
 
     def direction(self, b=None):
         """ > Node: Compare
+          
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
@@ -352,6 +359,7 @@ class String(dsock.String):
 
     def join(self, *strings, delimiter=None):
         """ > Node: JoinStrings
+          
         <sub>go to: top index
         blender ref GeometryNodeStringJoin
         node ref Join Strings </sub>
@@ -388,6 +396,7 @@ class String(dsock.String):
 
     def replace(self, find=None, replace=None):
         """ > Node: ReplaceString
+          
         <sub>go to: top index
         blender ref FunctionNodeReplaceString
         node ref Replace String </sub>
@@ -425,6 +434,7 @@ class String(dsock.String):
 
     def slice(self, position=None, length=None):
         """ > Node: SliceString
+          
         <sub>go to: top index
         blender ref FunctionNodeSliceString
         node ref Slice String </sub>
@@ -462,6 +472,7 @@ class String(dsock.String):
 
     def to_curves(self, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
         """ > Node: StringToCurves
+          
         <sub>go to: top index
         blender ref GeometryNodeStringToCurves
         node ref String to Curves </sub>
