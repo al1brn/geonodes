@@ -483,7 +483,7 @@ Integer
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
-node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/index.html) </sub>
+node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) </sub>
 
 ```python
 v = geometry.capture_index(self, domain='POINT')
@@ -642,7 +642,7 @@ Integer
   
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
-node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/index.html) </sub>
+node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) </sub>
 
 ```python
 v = geometry.index(self)

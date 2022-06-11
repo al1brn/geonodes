@@ -379,7 +379,7 @@ Integer
   
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
-node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/index.html) </sub>
+node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) </sub>
 
 ```python
 v = spline.spline_index(self)
@@ -410,7 +410,7 @@ Integer
   
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
-node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/index.html) </sub>
+node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) </sub>
 
 ```python
 v = spline.spline_position(self)
