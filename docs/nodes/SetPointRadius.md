@@ -36,5 +36,5 @@ points : Points
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Points) [set_radius](section:Data socket Points/set_radius) : Method
+[class_name](docs/sockets/Points.md) [set_radius](docs/sockets/Points.md#set_radius) : Method
 

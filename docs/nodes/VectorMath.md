@@ -42,58 +42,58 @@ vector : Vector
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Vector) [absolute](section:Data socket Vector/absolute) : Method
-- [class_name](section:Data socket Vector) [add](section:Data socket Vector/add) : Method
-- [class_name](section:Data socket Vector) [ceil](section:Data socket Vector/ceil) : Method
-- [class_name](section:Data socket Vector) [cos](section:Data socket Vector/cos) : Method
-- [class_name](section:Data socket Vector) [cross](section:Data socket Vector/cross) : Method
-- [class_name](section:Data socket Vector) [distance](section:Data socket Vector/distance) : Method
-- [class_name](section:Data socket Vector) [divide](section:Data socket Vector/divide) : Method
-- [class_name](section:Data socket Vector) [dot](section:Data socket Vector/dot) : Method
-- [class_name](section:Data socket Vector) [faceforward](section:Data socket Vector/faceforward) : Method
-- [class_name](section:Data socket Vector) [floor](section:Data socket Vector/floor) : Method
-- [class_name](section:Data socket Vector) [fraction](section:Data socket Vector/fraction) : Method
-- [class_name](section:Data socket Vector) [length](section:Data socket Vector/length) : Method
-- [class_name](section:Data socket Vector) [max](section:Data socket Vector/max) : Method
-- [class_name](section:Data socket Vector) [min](section:Data socket Vector/min) : Method
-- [class_name](section:Data socket Vector) [modulo](section:Data socket Vector/modulo) : Method
-- [class_name](section:Data socket Vector) [multiply](section:Data socket Vector/multiply) : Method
-- [class_name](section:Data socket Vector) [multiply_add](section:Data socket Vector/multiply_add) : Method
-- [class_name](section:Data socket Vector) [normalize](section:Data socket Vector/normalize) : Method
-- [class_name](section:Data socket Vector) [project](section:Data socket Vector/project) : Method
-- [class_name](section:Data socket Vector) [reflect](section:Data socket Vector/reflect) : Method
-- [class_name](section:Data socket Vector) [refract](section:Data socket Vector/refract) : Method
-- [class_name](section:Data socket Vector) [scale](section:Data socket Vector/scale) : Method
-- [class_name](section:Data socket Vector) [sin](section:Data socket Vector/sin) : Method
-- [class_name](section:Data socket Vector) [snap](section:Data socket Vector/snap) : Method
-- [class_name](section:Data socket Vector) [subtract](section:Data socket Vector/subtract) : Method
-- [class_name](section:Data socket Vector) [tan](section:Data socket Vector/tan) : Method
-- [class_name](section:Data socket Vector) [wrap](section:Data socket Vector/wrap) : Method
-- [class_name](section:Data socket functions) [cross](section:Data socket functions/cross) : Function
-- [class_name](section:Data socket functions) [distance](section:Data socket functions/distance) : Function
-- [class_name](section:Data socket functions) [dot](section:Data socket functions/dot) : Function
-- [class_name](section:Data socket functions) [faceforward](section:Data socket functions/faceforward) : Function
-- [class_name](section:Data socket functions) [fraction](section:Data socket functions/fraction) : Function
-- [class_name](section:Data socket functions) [length](section:Data socket functions/length) : Function
-- [class_name](section:Data socket functions) [normalize](section:Data socket functions/normalize) : Function
-- [class_name](section:Data socket functions) [project](section:Data socket functions/project) : Function
-- [class_name](section:Data socket functions) [reflect](section:Data socket functions/reflect) : Function
-- [class_name](section:Data socket functions) [refract](section:Data socket functions/refract) : Function
-- [class_name](section:Data socket functions) [scale](section:Data socket functions/scale) : Function
-- [class_name](section:Data socket functions) [vector_absolute](section:Data socket functions/vector_absolute) : Function
-- [class_name](section:Data socket functions) [vector_add](section:Data socket functions/vector_add) : Function
-- [class_name](section:Data socket functions) [vector_ceil](section:Data socket functions/vector_ceil) : Function
-- [class_name](section:Data socket functions) [vector_cos](section:Data socket functions/vector_cos) : Function
-- [class_name](section:Data socket functions) [vector_divide](section:Data socket functions/vector_divide) : Function
-- [class_name](section:Data socket functions) [vector_floor](section:Data socket functions/vector_floor) : Function
-- [class_name](section:Data socket functions) [vector_max](section:Data socket functions/vector_max) : Function
-- [class_name](section:Data socket functions) [vector_min](section:Data socket functions/vector_min) : Function
-- [class_name](section:Data socket functions) [vector_modulo](section:Data socket functions/vector_modulo) : Function
-- [class_name](section:Data socket functions) [vector_multiply](section:Data socket functions/vector_multiply) : Function
-- [class_name](section:Data socket functions) [vector_multiply_add](section:Data socket functions/vector_multiply_add) : Function
-- [class_name](section:Data socket functions) [vector_sin](section:Data socket functions/vector_sin) : Function
-- [class_name](section:Data socket functions) [vector_snap](section:Data socket functions/vector_snap) : Function
-- [class_name](section:Data socket functions) [vector_subtract](section:Data socket functions/vector_subtract) : Function
-- [class_name](section:Data socket functions) [vector_tan](section:Data socket functions/vector_tan) : Function
-- [class_name](section:Data socket functions) [vector_wrap](section:Data socket functions/vector_wrap) : Function
+[class_name](docs/sockets/Vector.md) [absolute](docs/sockets/Vector.md#absolute) : Method
+- [class_name](docs/sockets/Vector.md) [add](docs/sockets/Vector.md#add) : Method
+- [class_name](docs/sockets/Vector.md) [ceil](docs/sockets/Vector.md#ceil) : Method
+- [class_name](docs/sockets/Vector.md) [cos](docs/sockets/Vector.md#cos) : Method
+- [class_name](docs/sockets/Vector.md) [cross](docs/sockets/Vector.md#cross) : Method
+- [class_name](docs/sockets/Vector.md) [distance](docs/sockets/Vector.md#distance) : Method
+- [class_name](docs/sockets/Vector.md) [divide](docs/sockets/Vector.md#divide) : Method
+- [class_name](docs/sockets/Vector.md) [dot](docs/sockets/Vector.md#dot) : Method
+- [class_name](docs/sockets/Vector.md) [faceforward](docs/sockets/Vector.md#faceforward) : Method
+- [class_name](docs/sockets/Vector.md) [floor](docs/sockets/Vector.md#floor) : Method
+- [class_name](docs/sockets/Vector.md) [fraction](docs/sockets/Vector.md#fraction) : Method
+- [class_name](docs/sockets/Vector.md) [length](docs/sockets/Vector.md#length) : Method
+- [class_name](docs/sockets/Vector.md) [max](docs/sockets/Vector.md#max) : Method
+- [class_name](docs/sockets/Vector.md) [min](docs/sockets/Vector.md#min) : Method
+- [class_name](docs/sockets/Vector.md) [modulo](docs/sockets/Vector.md#modulo) : Method
+- [class_name](docs/sockets/Vector.md) [multiply](docs/sockets/Vector.md#multiply) : Method
+- [class_name](docs/sockets/Vector.md) [multiply_add](docs/sockets/Vector.md#multiply_add) : Method
+- [class_name](docs/sockets/Vector.md) [normalize](docs/sockets/Vector.md#normalize) : Method
+- [class_name](docs/sockets/Vector.md) [project](docs/sockets/Vector.md#project) : Method
+- [class_name](docs/sockets/Vector.md) [reflect](docs/sockets/Vector.md#reflect) : Method
+- [class_name](docs/sockets/Vector.md) [refract](docs/sockets/Vector.md#refract) : Method
+- [class_name](docs/sockets/Vector.md) [scale](docs/sockets/Vector.md#scale) : Method
+- [class_name](docs/sockets/Vector.md) [sin](docs/sockets/Vector.md#sin) : Method
+- [class_name](docs/sockets/Vector.md) [snap](docs/sockets/Vector.md#snap) : Method
+- [class_name](docs/sockets/Vector.md) [subtract](docs/sockets/Vector.md#subtract) : Method
+- [class_name](docs/sockets/Vector.md) [tan](docs/sockets/Vector.md#tan) : Method
+- [class_name](docs/sockets/Vector.md) [wrap](docs/sockets/Vector.md#wrap) : Method
+- [class_name](docs/sockets/functions.md) [cross](docs/sockets/functions.md#cross) : Function
+- [class_name](docs/sockets/functions.md) [distance](docs/sockets/functions.md#distance) : Function
+- [class_name](docs/sockets/functions.md) [dot](docs/sockets/functions.md#dot) : Function
+- [class_name](docs/sockets/functions.md) [faceforward](docs/sockets/functions.md#faceforward) : Function
+- [class_name](docs/sockets/functions.md) [fraction](docs/sockets/functions.md#fraction) : Function
+- [class_name](docs/sockets/functions.md) [length](docs/sockets/functions.md#length) : Function
+- [class_name](docs/sockets/functions.md) [normalize](docs/sockets/functions.md#normalize) : Function
+- [class_name](docs/sockets/functions.md) [project](docs/sockets/functions.md#project) : Function
+- [class_name](docs/sockets/functions.md) [reflect](docs/sockets/functions.md#reflect) : Function
+- [class_name](docs/sockets/functions.md) [refract](docs/sockets/functions.md#refract) : Function
+- [class_name](docs/sockets/functions.md) [scale](docs/sockets/functions.md#scale) : Function
+- [class_name](docs/sockets/functions.md) [vector_absolute](docs/sockets/functions.md#vector_absolute) : Function
+- [class_name](docs/sockets/functions.md) [vector_add](docs/sockets/functions.md#vector_add) : Function
+- [class_name](docs/sockets/functions.md) [vector_ceil](docs/sockets/functions.md#vector_ceil) : Function
+- [class_name](docs/sockets/functions.md) [vector_cos](docs/sockets/functions.md#vector_cos) : Function
+- [class_name](docs/sockets/functions.md) [vector_divide](docs/sockets/functions.md#vector_divide) : Function
+- [class_name](docs/sockets/functions.md) [vector_floor](docs/sockets/functions.md#vector_floor) : Function
+- [class_name](docs/sockets/functions.md) [vector_max](docs/sockets/functions.md#vector_max) : Function
+- [class_name](docs/sockets/functions.md) [vector_min](docs/sockets/functions.md#vector_min) : Function
+- [class_name](docs/sockets/functions.md) [vector_modulo](docs/sockets/functions.md#vector_modulo) : Function
+- [class_name](docs/sockets/functions.md) [vector_multiply](docs/sockets/functions.md#vector_multiply) : Function
+- [class_name](docs/sockets/functions.md) [vector_multiply_add](docs/sockets/functions.md#vector_multiply_add) : Function
+- [class_name](docs/sockets/functions.md) [vector_sin](docs/sockets/functions.md#vector_sin) : Function
+- [class_name](docs/sockets/functions.md) [vector_snap](docs/sockets/functions.md#vector_snap) : Function
+- [class_name](docs/sockets/functions.md) [vector_subtract](docs/sockets/functions.md#vector_subtract) : Function
+- [class_name](docs/sockets/functions.md) [vector_tan](docs/sockets/functions.md#vector_tan) : Function
+- [class_name](docs/sockets/functions.md) [vector_wrap](docs/sockets/functions.md#vector_wrap) : Function
   

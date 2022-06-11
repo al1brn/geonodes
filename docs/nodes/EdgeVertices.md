@@ -33,9 +33,9 @@ vertex_index_1 : Integer
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Mesh) [capture_edge_vertices](section:Data socket Mesh/capture_edge_vertices) : Capture attribute
-- [class_name](section:Data socket Mesh) [edge_vertices_index1](section:Data socket Mesh/edge_vertices_index1) : Attribute
-- [class_name](section:Data socket Mesh) [edge_vertices_index2](section:Data socket Mesh/edge_vertices_index2) : Attribute
-- [class_name](section:Data socket Mesh) [edge_vertices_position1](section:Data socket Mesh/edge_vertices_position1) : Attribute
-- [class_name](section:Data socket Mesh) [edge_vertices_position2](section:Data socket Mesh/edge_vertices_position2) : Attribute
+[class_name](docs/sockets/Mesh.md) [capture_edge_vertices](docs/sockets/Mesh.md#capture_edge_vertices) : Capture attribute
+- [class_name](docs/sockets/Mesh.md) [edge_vertices_index1](docs/sockets/Mesh.md#edge_vertices_index1) : Attribute
+- [class_name](docs/sockets/Mesh.md) [edge_vertices_index2](docs/sockets/Mesh.md#edge_vertices_index2) : Attribute
+- [class_name](docs/sockets/Mesh.md) [edge_vertices_position1](docs/sockets/Mesh.md#edge_vertices_position1) : Attribute
+- [class_name](docs/sockets/Mesh.md) [edge_vertices_position2](docs/sockets/Mesh.md#edge_vertices_position2) : Attribute
   

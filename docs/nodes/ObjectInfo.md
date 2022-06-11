@@ -42,9 +42,9 @@ location : Vector
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Object) [geometry](section:Data socket Object/geometry) : Property
-- [class_name](section:Data socket Object) [info](section:Data socket Object/info) : Property
-- [class_name](section:Data socket Object) [location](section:Data socket Object/location) : Property
-- [class_name](section:Data socket Object) [rotation](section:Data socket Object/rotation) : Property
-- [class_name](section:Data socket Object) [scale](section:Data socket Object/scale) : Property
+[class_name](docs/sockets/Object.md) [geometry](docs/sockets/Object.md#geometry) : Property
+- [class_name](docs/sockets/Object.md) [info](docs/sockets/Object.md#info) : Property
+- [class_name](docs/sockets/Object.md) [location](docs/sockets/Object.md#location) : Property
+- [class_name](docs/sockets/Object.md) [rotation](docs/sockets/Object.md#rotation) : Property
+- [class_name](docs/sockets/Object.md) [scale](docs/sockets/Object.md#scale) : Property
   

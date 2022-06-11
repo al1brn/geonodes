@@ -46,5 +46,5 @@ points : Points
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Mesh) [distribute_points_on_faces](section:Data socket Mesh/distribute_points_on_faces) : Method
+[class_name](docs/sockets/Mesh.md) [distribute_points_on_faces](docs/sockets/Mesh.md#distribute_points_on_faces) : Method
 

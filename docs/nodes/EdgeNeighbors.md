@@ -30,6 +30,6 @@ face_count : Integer
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Mesh) [capture_edge_neighbors](section:Data socket Mesh/capture_edge_neighbors) : Capture attribute
-- [class_name](section:Data socket Mesh) [edge_neighbors](section:Data socket Mesh/edge_neighbors) : Attribute
+[class_name](docs/sockets/Mesh.md) [capture_edge_neighbors](docs/sockets/Mesh.md#capture_edge_neighbors) : Capture attribute
+- [class_name](docs/sockets/Mesh.md) [edge_neighbors](docs/sockets/Mesh.md#edge_neighbors) : Attribute
   

@@ -36,5 +36,5 @@ geometry : Geometry
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Spline) [set_resolution](section:Data socket Spline/set_resolution) : Method
+[class_name](docs/sockets/Spline.md) [set_resolution](docs/sockets/Spline.md#set_resolution) : Method
 

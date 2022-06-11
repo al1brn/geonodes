@@ -44,5 +44,5 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Mesh) [extrude](section:Data socket Mesh/extrude) : Method
+[class_name](docs/sockets/Mesh.md) [extrude](docs/sockets/Mesh.md#extrude) : Method
 

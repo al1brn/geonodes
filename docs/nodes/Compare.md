@@ -52,32 +52,32 @@ result : Boolean
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Color) [brighter](section:Data socket Color/brighter) : Method
-- [class_name](section:Data socket Color) [darker](section:Data socket Color/darker) : Method
-- [class_name](section:Data socket Color) [equal](section:Data socket Color/equal) : Method
-- [class_name](section:Data socket Color) [not_equal](section:Data socket Color/not_equal) : Method
-- [class_name](section:Data socket Float) [equal](section:Data socket Float/equal) : Method
-- [class_name](section:Data socket Float) [greater_equal](section:Data socket Float/greater_equal) : Method
-- [class_name](section:Data socket Float) [greater_than](section:Data socket Float/greater_than) : Method
-- [class_name](section:Data socket Float) [less_equal](section:Data socket Float/less_equal) : Method
-- [class_name](section:Data socket Float) [less_than](section:Data socket Float/less_than) : Method
-- [class_name](section:Data socket Float) [not_equal](section:Data socket Float/not_equal) : Method
-- [class_name](section:Data socket Integer) [equal](section:Data socket Integer/equal) : Method
-- [class_name](section:Data socket Integer) [greater_equal](section:Data socket Integer/greater_equal) : Method
-- [class_name](section:Data socket Integer) [greater_than](section:Data socket Integer/greater_than) : Method
-- [class_name](section:Data socket Integer) [less_equal](section:Data socket Integer/less_equal) : Method
-- [class_name](section:Data socket Integer) [less_than](section:Data socket Integer/less_than) : Method
-- [class_name](section:Data socket Integer) [not_equal](section:Data socket Integer/not_equal) : Method
-- [class_name](section:Data socket String) [average](section:Data socket String/average) : Method
-- [class_name](section:Data socket String) [direction](section:Data socket String/direction) : Method
-- [class_name](section:Data socket String) [dot_product](section:Data socket String/dot_product) : Method
-- [class_name](section:Data socket String) [element](section:Data socket String/element) : Method
-- [class_name](section:Data socket String) [length](section:Data socket String/length) : Method
-- [class_name](section:Data socket Vector) [equal](section:Data socket Vector/equal) : Method
-- [class_name](section:Data socket Vector) [greater_equal](section:Data socket Vector/greater_equal) : Method
-- [class_name](section:Data socket Vector) [greater_than](section:Data socket Vector/greater_than) : Method
-- [class_name](section:Data socket Vector) [less_equal](section:Data socket Vector/less_equal) : Method
-- [class_name](section:Data socket Vector) [less_than](section:Data socket Vector/less_than) : Method
-- [class_name](section:Data socket Vector) [not_equal](section:Data socket Vector/not_equal) : Method
-- [class_name](section:Data socket functions) [compare](section:Data socket functions/compare) : Function
+[class_name](docs/sockets/Color.md) [brighter](docs/sockets/Color.md#brighter) : Method
+- [class_name](docs/sockets/Color.md) [darker](docs/sockets/Color.md#darker) : Method
+- [class_name](docs/sockets/Color.md) [equal](docs/sockets/Color.md#equal) : Method
+- [class_name](docs/sockets/Color.md) [not_equal](docs/sockets/Color.md#not_equal) : Method
+- [class_name](docs/sockets/Float.md) [equal](docs/sockets/Float.md#equal) : Method
+- [class_name](docs/sockets/Float.md) [greater_equal](docs/sockets/Float.md#greater_equal) : Method
+- [class_name](docs/sockets/Float.md) [greater_than](docs/sockets/Float.md#greater_than) : Method
+- [class_name](docs/sockets/Float.md) [less_equal](docs/sockets/Float.md#less_equal) : Method
+- [class_name](docs/sockets/Float.md) [less_than](docs/sockets/Float.md#less_than) : Method
+- [class_name](docs/sockets/Float.md) [not_equal](docs/sockets/Float.md#not_equal) : Method
+- [class_name](docs/sockets/Integer.md) [equal](docs/sockets/Integer.md#equal) : Method
+- [class_name](docs/sockets/Integer.md) [greater_equal](docs/sockets/Integer.md#greater_equal) : Method
+- [class_name](docs/sockets/Integer.md) [greater_than](docs/sockets/Integer.md#greater_than) : Method
+- [class_name](docs/sockets/Integer.md) [less_equal](docs/sockets/Integer.md#less_equal) : Method
+- [class_name](docs/sockets/Integer.md) [less_than](docs/sockets/Integer.md#less_than) : Method
+- [class_name](docs/sockets/Integer.md) [not_equal](docs/sockets/Integer.md#not_equal) : Method
+- [class_name](docs/sockets/String.md) [average](docs/sockets/String.md#average) : Method
+- [class_name](docs/sockets/String.md) [direction](docs/sockets/String.md#direction) : Method
+- [class_name](docs/sockets/String.md) [dot_product](docs/sockets/String.md#dot_product) : Method
+- [class_name](docs/sockets/String.md) [element](docs/sockets/String.md#element) : Method
+- [class_name](docs/sockets/String.md) [length](docs/sockets/String.md#length) : Method
+- [class_name](docs/sockets/Vector.md) [equal](docs/sockets/Vector.md#equal) : Method
+- [class_name](docs/sockets/Vector.md) [greater_equal](docs/sockets/Vector.md#greater_equal) : Method
+- [class_name](docs/sockets/Vector.md) [greater_than](docs/sockets/Vector.md#greater_than) : Method
+- [class_name](docs/sockets/Vector.md) [less_equal](docs/sockets/Vector.md#less_equal) : Method
+- [class_name](docs/sockets/Vector.md) [less_than](docs/sockets/Vector.md#less_than) : Method
+- [class_name](docs/sockets/Vector.md) [not_equal](docs/sockets/Vector.md#not_equal) : Method
+- [class_name](docs/sockets/functions.md) [compare](docs/sockets/functions.md#compare) : Function
   

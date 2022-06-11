@@ -9,67 +9,67 @@
 
 ## Constructors
 
-- [AlignToVector](#aligntovector) : [AlignEulerToVector](section:nodes/AlignEulerToVector), rotation (Vector)
-- [Combine](#combine) : [CombineXyz](section:nodes/CombineXyz), vector (Vector)
-- [Random](#random) : [RandomValue](section:nodes/RandomValue), value (Vector)
+- [AlignToVector](#aligntovector) : [AlignEulerToVector](docs/nodes/AlignEulerToVector.md), rotation (Vector)
+- [Combine](#combine) : [CombineXyz](docs/nodes/CombineXyz.md), vector (Vector)
+- [Random](#random) : [RandomValue](docs/nodes/RandomValue.md), value (Vector)
 
 ## Properties
 
-- [separate](#separate) : [SeparateXyz](section:nodes/SeparateXyz), Sockets      [x (Float), y (Float), z (Float)]
-- [x](#x) : [SeparateXyz](section:nodes/SeparateXyz), x (Float) = separate.x
-- [y](#y) : [SeparateXyz](section:nodes/SeparateXyz), y (Float) = separate.y
-- [z](#z) : [SeparateXyz](section:nodes/SeparateXyz), z (Float) = separate.z
+- [separate](#separate) : [SeparateXyz](docs/nodes/SeparateXyz.md), Sockets      [x (Float), y (Float), z (Float)]
+- [x](#x) : [SeparateXyz](docs/nodes/SeparateXyz.md), x (Float) = separate.x
+- [y](#y) : [SeparateXyz](docs/nodes/SeparateXyz.md), y (Float) = separate.y
+- [z](#z) : [SeparateXyz](docs/nodes/SeparateXyz.md), z (Float) = separate.z
 
 ## Methods
 
-- [absolute](#absolute) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [accumulate_field](#accumulate_field) : [AccumulateField](section:nodes/AccumulateField), Sockets      [leading (Vector), trailing (Vector), total (Vector)]
-- [add](#add) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [align_to_vector](#align_to_vector) : [AlignEulerToVector](section:nodes/AlignEulerToVector), rotation (Vector)
-- [attribute_statistic](#attribute_statistic) : [AttributeStatistic](section:nodes/AttributeStatistic), Sockets      [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)]
-- [capture_attribute](#capture_attribute) : [CaptureAttribute](section:nodes/CaptureAttribute), Sockets      [geometry (Geometry), attribute (Vector)]
-- [ceil](#ceil) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [cos](#cos) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [cross](#cross) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [curves](#curves) : [VectorCurves](section:nodes/VectorCurves), vector (Vector)
-- [distance](#distance) : [VectorMath](section:nodes/VectorMath), value (Float)
-- [divide](#divide) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [dot](#dot) : [VectorMath](section:nodes/VectorMath), value (Float)
-- [equal](#equal) : [Compare](section:nodes/Compare), result (Boolean)
-- [faceforward](#faceforward) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [field_at_index](#field_at_index) : [FieldAtIndex](section:nodes/FieldAtIndex), value (Vector)
-- [floor](#floor) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [fraction](#fraction) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [greater_equal](#greater_equal) : [Compare](section:nodes/Compare), result (Boolean)
-- [greater_than](#greater_than) : [Compare](section:nodes/Compare), result (Boolean)
-- [length](#length) : [VectorMath](section:nodes/VectorMath), value (Float)
-- [less_equal](#less_equal) : [Compare](section:nodes/Compare), result (Boolean)
-- [less_than](#less_than) : [Compare](section:nodes/Compare), result (Boolean)
-- [map_range](#map_range) : [MapRange](section:nodes/MapRange), vector (Vector)
-- [max](#max) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [min](#min) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [modulo](#modulo) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [multiply](#multiply) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [multiply_add](#multiply_add) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [normalize](#normalize) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [not_equal](#not_equal) : [Compare](section:nodes/Compare), result (Boolean)
-- [project](#project) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [raycast](#raycast) : [Raycast](section:nodes/Raycast), Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Vector)]
-- [reflect](#reflect) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [refract](#refract) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [rotate](#rotate) : [VectorRotate](section:nodes/VectorRotate), vector (Vector)
-- [rotate_euler](#rotate_euler) : [RotateEuler](section:nodes/RotateEuler), rotation (Vector)
-- [scale](#scale) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [sin](#sin) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [snap](#snap) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [subtract](#subtract) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [tan](#tan) : [VectorMath](section:nodes/VectorMath), vector (Vector)
-- [transfer_attribute](#transfer_attribute) : [TransferAttribute](section:nodes/TransferAttribute), attribute (Vector)
-- [wrap](#wrap) : [VectorMath](section:nodes/VectorMath), vector (Vector)
+- [absolute](#absolute) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [accumulate_field](#accumulate_field) : [AccumulateField](docs/nodes/AccumulateField.md), Sockets      [leading (Vector), trailing (Vector), total (Vector)]
+- [add](#add) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [align_to_vector](#align_to_vector) : [AlignEulerToVector](docs/nodes/AlignEulerToVector.md), rotation (Vector)
+- [attribute_statistic](#attribute_statistic) : [AttributeStatistic](docs/nodes/AttributeStatistic.md), Sockets      [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)]
+- [capture_attribute](#capture_attribute) : [CaptureAttribute](docs/nodes/CaptureAttribute.md), Sockets      [geometry (Geometry), attribute (Vector)]
+- [ceil](#ceil) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [cos](#cos) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [cross](#cross) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [curves](#curves) : [VectorCurves](docs/nodes/VectorCurves.md), vector (Vector)
+- [distance](#distance) : [VectorMath](docs/nodes/VectorMath.md), value (Float)
+- [divide](#divide) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [dot](#dot) : [VectorMath](docs/nodes/VectorMath.md), value (Float)
+- [equal](#equal) : [Compare](docs/nodes/Compare.md), result (Boolean)
+- [faceforward](#faceforward) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [field_at_index](#field_at_index) : [FieldAtIndex](docs/nodes/FieldAtIndex.md), value (Vector)
+- [floor](#floor) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [fraction](#fraction) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [greater_equal](#greater_equal) : [Compare](docs/nodes/Compare.md), result (Boolean)
+- [greater_than](#greater_than) : [Compare](docs/nodes/Compare.md), result (Boolean)
+- [length](#length) : [VectorMath](docs/nodes/VectorMath.md), value (Float)
+- [less_equal](#less_equal) : [Compare](docs/nodes/Compare.md), result (Boolean)
+- [less_than](#less_than) : [Compare](docs/nodes/Compare.md), result (Boolean)
+- [map_range](#map_range) : [MapRange](docs/nodes/MapRange.md), vector (Vector)
+- [max](#max) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [min](#min) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [modulo](#modulo) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [multiply](#multiply) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [multiply_add](#multiply_add) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [normalize](#normalize) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [not_equal](#not_equal) : [Compare](docs/nodes/Compare.md), result (Boolean)
+- [project](#project) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [raycast](#raycast) : [Raycast](docs/nodes/Raycast.md), Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Vector)]
+- [reflect](#reflect) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [refract](#refract) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [rotate](#rotate) : [VectorRotate](docs/nodes/VectorRotate.md), vector (Vector)
+- [rotate_euler](#rotate_euler) : [RotateEuler](docs/nodes/RotateEuler.md), rotation (Vector)
+- [scale](#scale) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [sin](#sin) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [snap](#snap) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [subtract](#subtract) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [tan](#tan) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
+- [transfer_attribute](#transfer_attribute) : [TransferAttribute](docs/nodes/TransferAttribute.md), attribute (Vector)
+- [wrap](#wrap) : [VectorMath](docs/nodes/VectorMath.md), vector (Vector)
 
 ## Random
 
-> Node: [RandomValue](section:nodes/RandomValue)
+> Node: [RandomValue](docs/nodes/RandomValue.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
@@ -106,7 +106,7 @@ Vector
 
 ## Combine
 
-> Node: [CombineXyz](section:nodes/CombineXyz)
+> Node: [CombineXyz](docs/nodes/CombineXyz.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeCombineXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html)
@@ -138,7 +138,7 @@ Vector
 
 ## AlignToVector
 
-> Node: [AlignEulerToVector](section:nodes/AlignEulerToVector)
+> Node: [AlignEulerToVector](docs/nodes/AlignEulerToVector.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeAlignEulerToVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
@@ -175,7 +175,7 @@ Vector
 
 ## separate
 
-> Node: [SeparateXyz](section:nodes/SeparateXyz)
+> Node: [SeparateXyz](docs/nodes/SeparateXyz.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
@@ -209,7 +209,7 @@ Sockets [x (Float), y (Float), z (Float)]
 
 ## x
 
-> Node: [SeparateXyz](section:nodes/SeparateXyz)
+> Node: [SeparateXyz](docs/nodes/SeparateXyz.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
@@ -243,7 +243,7 @@ Sockets [x (Float), y (Float), z (Float)]
 
 ## y
 
-> Node: [SeparateXyz](section:nodes/SeparateXyz)
+> Node: [SeparateXyz](docs/nodes/SeparateXyz.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
@@ -277,7 +277,7 @@ Sockets [x (Float), y (Float), z (Float)]
 
 ## z
 
-> Node: [SeparateXyz](section:nodes/SeparateXyz)
+> Node: [SeparateXyz](docs/nodes/SeparateXyz.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
@@ -311,7 +311,7 @@ Sockets [x (Float), y (Float), z (Float)]
 
 ## accumulate_field
 
-> Node: [AccumulateField](section:nodes/AccumulateField)
+> Node: [AccumulateField](docs/nodes/AccumulateField.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeAccumulateField](https://docs.blender.org/api/current/bpy.types.GeometryNodeAccumulateField.html)
@@ -350,7 +350,7 @@ Sockets [leading (Vector), trailing (Vector), total (Vector)]
 
 ## attribute_statistic
 
-> Node: [AttributeStatistic](section:nodes/AttributeStatistic)
+> Node: [AttributeStatistic](docs/nodes/AttributeStatistic.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeStatistic](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
@@ -390,7 +390,7 @@ Sockets [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector
 
 ## transfer_attribute
 
-> Node: [TransferAttribute](section:nodes/TransferAttribute)
+> Node: [TransferAttribute](docs/nodes/TransferAttribute.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
@@ -432,7 +432,7 @@ Vector
 
 ## capture_attribute
 
-> Node: [CaptureAttribute](section:nodes/CaptureAttribute)
+> Node: [CaptureAttribute](docs/nodes/CaptureAttribute.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
@@ -471,7 +471,7 @@ Sockets [geometry (Geometry), attribute (Vector)]
 
 ## field_at_index
 
-> Node: [FieldAtIndex](section:nodes/FieldAtIndex)
+> Node: [FieldAtIndex](docs/nodes/FieldAtIndex.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
@@ -510,7 +510,7 @@ Vector
 
 ## raycast
 
-> Node: [Raycast](section:nodes/Raycast)
+> Node: [Raycast](docs/nodes/Raycast.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
@@ -552,7 +552,7 @@ Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_dista
 
 ## map_range
 
-> Node: [MapRange](section:nodes/MapRange)
+> Node: [MapRange](docs/nodes/MapRange.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
@@ -595,7 +595,7 @@ Vector
 
 ## less_than
 
-> Node: [Compare](section:nodes/Compare)
+> Node: [Compare](docs/nodes/Compare.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
@@ -637,7 +637,7 @@ Boolean
 
 ## less_equal
 
-> Node: [Compare](section:nodes/Compare)
+> Node: [Compare](docs/nodes/Compare.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
@@ -679,7 +679,7 @@ Boolean
 
 ## greater_than
 
-> Node: [Compare](section:nodes/Compare)
+> Node: [Compare](docs/nodes/Compare.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
@@ -721,7 +721,7 @@ Boolean
 
 ## greater_equal
 
-> Node: [Compare](section:nodes/Compare)
+> Node: [Compare](docs/nodes/Compare.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
@@ -763,7 +763,7 @@ Boolean
 
 ## equal
 
-> Node: [Compare](section:nodes/Compare)
+> Node: [Compare](docs/nodes/Compare.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
@@ -806,7 +806,7 @@ Boolean
 
 ## not_equal
 
-> Node: [Compare](section:nodes/Compare)
+> Node: [Compare](docs/nodes/Compare.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
@@ -849,7 +849,7 @@ Boolean
 
 ## add
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -884,7 +884,7 @@ Vector
 
 ## subtract
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -919,7 +919,7 @@ Vector
 
 ## multiply
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -954,7 +954,7 @@ Vector
 
 ## divide
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -989,7 +989,7 @@ Vector
 
 ## multiply_add
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1025,7 +1025,7 @@ Vector
 
 ## cross
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1060,7 +1060,7 @@ Vector
 
 ## project
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1095,7 +1095,7 @@ Vector
 
 ## reflect
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1130,7 +1130,7 @@ Vector
 
 ## refract
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1166,7 +1166,7 @@ Vector
 
 ## faceforward
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1202,7 +1202,7 @@ Vector
 
 ## dot
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1237,7 +1237,7 @@ Float
 
 ## distance
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1272,7 +1272,7 @@ Float
 
 ## length
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1306,7 +1306,7 @@ Float
 
 ## scale
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1341,7 +1341,7 @@ Vector
 
 ## normalize
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1375,7 +1375,7 @@ Vector
 
 ## absolute
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1409,7 +1409,7 @@ Vector
 
 ## min
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1444,7 +1444,7 @@ Vector
 
 ## max
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1479,7 +1479,7 @@ Vector
 
 ## floor
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1513,7 +1513,7 @@ Vector
 
 ## ceil
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1547,7 +1547,7 @@ Vector
 
 ## fraction
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1581,7 +1581,7 @@ Vector
 
 ## modulo
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1616,7 +1616,7 @@ Vector
 
 ## wrap
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1652,7 +1652,7 @@ Vector
 
 ## snap
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1687,7 +1687,7 @@ Vector
 
 ## sin
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1721,7 +1721,7 @@ Vector
 
 ## cos
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1755,7 +1755,7 @@ Vector
 
 ## tan
 
-> Node: [VectorMath](section:nodes/VectorMath)
+> Node: [VectorMath](docs/nodes/VectorMath.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -1789,7 +1789,7 @@ Vector
 
 ## curves
 
-> Node: [VectorCurves](section:nodes/VectorCurves)
+> Node: [VectorCurves](docs/nodes/VectorCurves.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorCurve](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html)
@@ -1820,7 +1820,7 @@ Vector
 
 ## align_to_vector
 
-> Node: [AlignEulerToVector](section:nodes/AlignEulerToVector)
+> Node: [AlignEulerToVector](docs/nodes/AlignEulerToVector.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeAlignEulerToVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
@@ -1857,7 +1857,7 @@ Vector
 
 ## rotate_euler
 
-> Node: [RotateEuler](section:nodes/RotateEuler)
+> Node: [RotateEuler](docs/nodes/RotateEuler.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeRotateEuler](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
@@ -1892,7 +1892,7 @@ Vector
 
 ## rotate
 
-> Node: [VectorRotate](section:nodes/VectorRotate)
+> Node: [VectorRotate](docs/nodes/VectorRotate.md)
   
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)

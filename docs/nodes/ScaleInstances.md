@@ -38,5 +38,5 @@ instances : Instances
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Instances) [scale](section:Data socket Instances/scale) : Method
+[class_name](docs/sockets/Instances.md) [scale](docs/sockets/Instances.md#scale) : Method
 

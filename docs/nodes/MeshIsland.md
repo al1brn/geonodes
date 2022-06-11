@@ -31,6 +31,6 @@ island_index : Integer
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Mesh) [capture_island](section:Data socket Mesh/capture_island) : Capture attribute
-- [class_name](section:Data socket Mesh) [island](section:Data socket Mesh/island) : Attribute
+[class_name](docs/sockets/Mesh.md) [capture_island](docs/sockets/Mesh.md#capture_island) : Capture attribute
+- [class_name](docs/sockets/Mesh.md) [island](docs/sockets/Mesh.md#island) : Attribute
   

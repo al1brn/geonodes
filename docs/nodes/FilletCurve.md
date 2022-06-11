@@ -41,5 +41,5 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Curve) [fillet](section:Data socket Curve/fillet) : Method
+[class_name](docs/sockets/Curve.md) [fillet](docs/sockets/Curve.md#fillet) : Method
 

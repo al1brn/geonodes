@@ -39,5 +39,5 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Curve) [Spiral](section:Data socket Curve/Spiral) : Constructor
+[class_name](docs/sockets/Curve.md) [Spiral](docs/sockets/Curve.md#spiral) : Constructor
 

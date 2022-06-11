@@ -9,24 +9,24 @@
 
 ## Static methods
 
-- [Brick](#brick) : [BrickTexture](section:nodes/BrickTexture), Sockets      [color (Color), fac (Float)]
-- [Checker](#checker) : [CheckerTexture](section:nodes/CheckerTexture), Sockets      [color (Color), fac (Float)]
-- [Gradient](#gradient) : [GradientTexture](section:nodes/GradientTexture), Sockets      [color (Color), fac (Float)]
-- [Image](#image) : [ImageTexture](section:nodes/ImageTexture), Sockets      [color (Color), alpha (Float)]
-- [Magic](#magic) : [MagicTexture](section:nodes/MagicTexture), Sockets      [color (Color), fac (Float)]
-- [Musgrave](#musgrave) : [MusgraveTexture](section:nodes/MusgraveTexture), fac (Float)
-- [Noise](#noise) : [NoiseTexture](section:nodes/NoiseTexture), Sockets      [fac (Float), color (Color)]
-- [Voronoi](#voronoi) : [VoronoiTexture](section:nodes/VoronoiTexture), Sockets      [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
-- [Wave](#wave) : [WaveTexture](section:nodes/WaveTexture), Sockets      [color (Color), fac (Float)]
-- [WhiteNoise](#whitenoise) : [WhiteNoiseTexture](section:nodes/WhiteNoiseTexture), Sockets      [value (Float), color (Color)]
+- [Brick](#brick) : [BrickTexture](docs/nodes/BrickTexture.md), Sockets      [color (Color), fac (Float)]
+- [Checker](#checker) : [CheckerTexture](docs/nodes/CheckerTexture.md), Sockets      [color (Color), fac (Float)]
+- [Gradient](#gradient) : [GradientTexture](docs/nodes/GradientTexture.md), Sockets      [color (Color), fac (Float)]
+- [Image](#image) : [ImageTexture](docs/nodes/ImageTexture.md), Sockets      [color (Color), alpha (Float)]
+- [Magic](#magic) : [MagicTexture](docs/nodes/MagicTexture.md), Sockets      [color (Color), fac (Float)]
+- [Musgrave](#musgrave) : [MusgraveTexture](docs/nodes/MusgraveTexture.md), fac (Float)
+- [Noise](#noise) : [NoiseTexture](docs/nodes/NoiseTexture.md), Sockets      [fac (Float), color (Color)]
+- [Voronoi](#voronoi) : [VoronoiTexture](docs/nodes/VoronoiTexture.md), Sockets      [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
+- [Wave](#wave) : [WaveTexture](docs/nodes/WaveTexture.md), Sockets      [color (Color), fac (Float)]
+- [WhiteNoise](#whitenoise) : [WhiteNoiseTexture](docs/nodes/WhiteNoiseTexture.md), Sockets      [value (Float), color (Color)]
 
 ## Methods
 
-- [switch](#switch) : [Switch](section:nodes/Switch), output (Texture)
+- [switch](#switch) : [Switch](docs/nodes/Switch.md), output (Texture)
 
 ## Brick
 
-> Node: [BrickTexture](section:nodes/BrickTexture)
+> Node: [BrickTexture](docs/nodes/BrickTexture.md)
   
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexBrick](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html)
@@ -72,7 +72,7 @@ Sockets [color (Color), fac (Float)]
 
 ## Checker
 
-> Node: [CheckerTexture](section:nodes/CheckerTexture)
+> Node: [CheckerTexture](docs/nodes/CheckerTexture.md)
   
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexChecker](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html)
@@ -105,7 +105,7 @@ Sockets [color (Color), fac (Float)]
 
 ## Gradient
 
-> Node: [GradientTexture](section:nodes/GradientTexture)
+> Node: [GradientTexture](docs/nodes/GradientTexture.md)
   
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexGradient](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
@@ -139,7 +139,7 @@ Sockets [color (Color), fac (Float)]
 
 ## Magic
 
-> Node: [MagicTexture](section:nodes/MagicTexture)
+> Node: [MagicTexture](docs/nodes/MagicTexture.md)
   
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexMagic](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html)
@@ -175,7 +175,7 @@ Sockets [color (Color), fac (Float)]
 
 ## Musgrave
 
-> Node: [MusgraveTexture](section:nodes/MusgraveTexture)
+> Node: [MusgraveTexture](docs/nodes/MusgraveTexture.md)
   
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexMusgrave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMusgrave.html)
@@ -217,7 +217,7 @@ Float
 
 ## Noise
 
-> Node: [NoiseTexture](section:nodes/NoiseTexture)
+> Node: [NoiseTexture](docs/nodes/NoiseTexture.md)
   
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
@@ -256,7 +256,7 @@ Sockets [fac (Float), color (Color)]
 
 ## Voronoi
 
-> Node: [VoronoiTexture](section:nodes/VoronoiTexture)
+> Node: [VoronoiTexture](docs/nodes/VoronoiTexture.md)
   
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
@@ -297,7 +297,7 @@ Sockets [distance (Float), color (Color), position (Vector), w (Float), radius (
 
 ## Wave
 
-> Node: [WaveTexture](section:nodes/WaveTexture)
+> Node: [WaveTexture](docs/nodes/WaveTexture.md)
   
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
@@ -340,7 +340,7 @@ Sockets [color (Color), fac (Float)]
 
 ## WhiteNoise
 
-> Node: [WhiteNoiseTexture](section:nodes/WhiteNoiseTexture)
+> Node: [WhiteNoiseTexture](docs/nodes/WhiteNoiseTexture.md)
   
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
@@ -375,7 +375,7 @@ Sockets [value (Float), color (Color)]
 
 ## Image
 
-> Node: [ImageTexture](section:nodes/ImageTexture)
+> Node: [ImageTexture](docs/nodes/ImageTexture.md)
   
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [GeometryNodeImageTexture](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
@@ -412,7 +412,7 @@ Sockets [color (Color), alpha (Float)]
 
 ## switch
 
-> Node: [Switch](section:nodes/Switch)
+> Node: [Switch](docs/nodes/Switch.md)
   
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)

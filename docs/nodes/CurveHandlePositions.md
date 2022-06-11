@@ -35,7 +35,7 @@ left : Vector
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Spline) [capture_handle_positions](section:Data socket Spline/capture_handle_positions) : Capture attribute
-- [class_name](section:Data socket Spline) [left_handle_position](section:Data socket Spline/left_handle_position) : Attribute
-- [class_name](section:Data socket Spline) [right_handle_position](section:Data socket Spline/right_handle_position) : Attribute
+[class_name](docs/sockets/Spline.md) [capture_handle_positions](docs/sockets/Spline.md#capture_handle_positions) : Capture attribute
+- [class_name](docs/sockets/Spline.md) [left_handle_position](docs/sockets/Spline.md#left_handle_position) : Attribute
+- [class_name](docs/sockets/Spline.md) [right_handle_position](docs/sockets/Spline.md#right_handle_position) : Attribute
   

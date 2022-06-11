@@ -36,5 +36,5 @@ geometry : Geometry
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Spline) [set_cyclic](section:Data socket Spline/set_cyclic) : Method
+[class_name](docs/sockets/Spline.md) [set_cyclic](docs/sockets/Spline.md#set_cyclic) : Method
 

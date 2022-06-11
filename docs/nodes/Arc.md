@@ -50,6 +50,6 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Curve) [ArcFromPoints](section:Data socket Curve/ArcFromPoints) : Static method
-- [class_name](section:Data socket Curve) [ArcFromRadius](section:Data socket Curve/ArcFromRadius) : Constructor
+[class_name](docs/sockets/Curve.md) [ArcFromPoints](docs/sockets/Curve.md#arcfrompoints) : Static method
+- [class_name](docs/sockets/Curve.md) [ArcFromRadius](docs/sockets/Curve.md#arcfromradius) : Constructor
   

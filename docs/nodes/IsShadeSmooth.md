@@ -30,6 +30,6 @@ smooth : Boolean
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Mesh) [capture_shade_smooth](section:Data socket Mesh/capture_shade_smooth) : Capture attribute
-- [class_name](section:Data socket Mesh) [shade_smooth](section:Data socket Mesh/shade_smooth) : Attribute
+[class_name](docs/sockets/Mesh.md) [capture_shade_smooth](docs/sockets/Mesh.md#capture_shade_smooth) : Capture attribute
+- [class_name](docs/sockets/Mesh.md) [shade_smooth](docs/sockets/Mesh.md#shade_smooth) : Attribute
   

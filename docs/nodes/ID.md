@@ -30,7 +30,7 @@ ID : Integer
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Geometry) [ID](section:Data socket Geometry/ID) : Attribute
-- [class_name](section:Data socket Geometry) [capture_ID](section:Data socket Geometry/capture_ID) : Capture attribute
-- [class_name](section:Data socket Spline) [spline_ID](section:Data socket Spline/spline_ID) : Attribute
+[class_name](docs/sockets/Geometry.md) [ID](docs/sockets/Geometry.md#id) : Attribute
+- [class_name](docs/sockets/Geometry.md) [capture_ID](docs/sockets/Geometry.md#capture_id) : Capture attribute
+- [class_name](docs/sockets/Spline.md) [spline_ID](docs/sockets/Spline.md#spline_id) : Attribute
   

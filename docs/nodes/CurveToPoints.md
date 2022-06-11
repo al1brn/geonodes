@@ -43,5 +43,5 @@ points : Points
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Curve) [to_points](section:Data socket Curve/to_points) : Method
+[class_name](docs/sockets/Curve.md) [to_points](docs/sockets/Curve.md#to_points) : Method
 

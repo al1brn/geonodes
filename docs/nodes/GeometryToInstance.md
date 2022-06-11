@@ -34,5 +34,5 @@ instances : Instances
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Geometry) [to_instance](section:Data socket Geometry/to_instance) : Method
+[class_name](docs/sockets/Geometry.md) [to_instance](docs/sockets/Geometry.md#to_instance) : Method
 

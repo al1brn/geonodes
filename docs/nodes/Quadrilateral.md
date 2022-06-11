@@ -48,5 +48,5 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Curve) [Quadrilateral](section:Data socket Curve/Quadrilateral) : Constructor
+[class_name](docs/sockets/Curve.md) [Quadrilateral](docs/sockets/Curve.md#quadrilateral) : Constructor
 

@@ -30,6 +30,6 @@ material_index : Integer
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Mesh) [capture_material_index](section:Data socket Mesh/capture_material_index) : Capture attribute
-- [class_name](section:Data socket Mesh) [material_index](section:Data socket Mesh/material_index) : Attribute
+[class_name](docs/sockets/Mesh.md) [capture_material_index](docs/sockets/Mesh.md#capture_material_index) : Capture attribute
+- [class_name](docs/sockets/Mesh.md) [material_index](docs/sockets/Mesh.md#material_index) : Attribute
   

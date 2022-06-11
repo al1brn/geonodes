@@ -36,8 +36,8 @@ r : Float
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Color) [b](section:Data socket Color/b) : Property
-- [class_name](section:Data socket Color) [g](section:Data socket Color/g) : Property
-- [class_name](section:Data socket Color) [r](section:Data socket Color/r) : Property
-- [class_name](section:Data socket Color) [separate](section:Data socket Color/separate) : Property
+[class_name](docs/sockets/Color.md) [b](docs/sockets/Color.md#b) : Property
+- [class_name](docs/sockets/Color.md) [g](docs/sockets/Color.md#g) : Property
+- [class_name](docs/sockets/Color.md) [r](docs/sockets/Color.md#r) : Property
+- [class_name](docs/sockets/Color.md) [separate](docs/sockets/Color.md#separate) : Property
   

@@ -30,9 +30,9 @@ index : Integer
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Geometry) [capture_index](section:Data socket Geometry/capture_index) : Capture attribute
-- [class_name](section:Data socket Geometry) [index](section:Data socket Geometry/index) : Attribute
-- [class_name](section:Data socket Instances) [instance_index](section:Data socket Instances/instance_index) : Attribute
-- [class_name](section:Data socket Spline) [spline_index](section:Data socket Spline/spline_index) : Attribute
-- [class_name](section:Data socket Spline) [spline_position](section:Data socket Spline/spline_position) : Attribute
+[class_name](docs/sockets/Geometry.md) [capture_index](docs/sockets/Geometry.md#capture_index) : Capture attribute
+- [class_name](docs/sockets/Geometry.md) [index](docs/sockets/Geometry.md#index) : Attribute
+- [class_name](docs/sockets/Instances.md) [instance_index](docs/sockets/Instances.md#instance_index) : Attribute
+- [class_name](docs/sockets/Spline.md) [spline_index](docs/sockets/Spline.md#spline_index) : Attribute
+- [class_name](docs/sockets/Spline.md) [spline_position](docs/sockets/Spline.md#spline_position) : Attribute
   

@@ -43,5 +43,5 @@ geometry : Geometry
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Geometry) [scale_elements](section:Data socket Geometry/scale_elements) : Method
+[class_name](docs/sockets/Geometry.md) [scale_elements](docs/sockets/Geometry.md#scale_elements) : Method
 

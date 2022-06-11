@@ -35,5 +35,5 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Mesh) [subdivide](section:Data socket Mesh/subdivide) : Method
+[class_name](docs/sockets/Mesh.md) [subdivide](docs/sockets/Mesh.md#subdivide) : Method
 

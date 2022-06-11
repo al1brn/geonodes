@@ -41,41 +41,41 @@ color : Color
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Color) [add](section:Data socket Color/add) : Method
-- [class_name](section:Data socket Color) [burn](section:Data socket Color/burn) : Method
-- [class_name](section:Data socket Color) [darken](section:Data socket Color/darken) : Method
-- [class_name](section:Data socket Color) [difference](section:Data socket Color/difference) : Method
-- [class_name](section:Data socket Color) [divide](section:Data socket Color/divide) : Method
-- [class_name](section:Data socket Color) [dodge](section:Data socket Color/dodge) : Method
-- [class_name](section:Data socket Color) [hue](section:Data socket Color/hue) : Method
-- [class_name](section:Data socket Color) [lighten](section:Data socket Color/lighten) : Method
-- [class_name](section:Data socket Color) [linear_light](section:Data socket Color/linear_light) : Method
-- [class_name](section:Data socket Color) [mix](section:Data socket Color/mix) : Method
-- [class_name](section:Data socket Color) [mix](section:Data socket Color/mix) : Method
-- [class_name](section:Data socket Color) [mix_color](section:Data socket Color/mix_color) : Method
-- [class_name](section:Data socket Color) [multiply](section:Data socket Color/multiply) : Method
-- [class_name](section:Data socket Color) [overlay](section:Data socket Color/overlay) : Method
-- [class_name](section:Data socket Color) [saturation](section:Data socket Color/saturation) : Method
-- [class_name](section:Data socket Color) [screen](section:Data socket Color/screen) : Method
-- [class_name](section:Data socket Color) [soft_light](section:Data socket Color/soft_light) : Method
-- [class_name](section:Data socket Color) [subtract](section:Data socket Color/subtract) : Method
-- [class_name](section:Data socket Color) [value](section:Data socket Color/value) : Method
-- [class_name](section:Data socket functions) [color_add](section:Data socket functions/color_add) : Function
-- [class_name](section:Data socket functions) [color_burn](section:Data socket functions/color_burn) : Function
-- [class_name](section:Data socket functions) [color_darken](section:Data socket functions/color_darken) : Function
-- [class_name](section:Data socket functions) [color_difference](section:Data socket functions/color_difference) : Function
-- [class_name](section:Data socket functions) [color_divide](section:Data socket functions/color_divide) : Function
-- [class_name](section:Data socket functions) [color_dodge](section:Data socket functions/color_dodge) : Function
-- [class_name](section:Data socket functions) [color_hue](section:Data socket functions/color_hue) : Function
-- [class_name](section:Data socket functions) [color_lighten](section:Data socket functions/color_lighten) : Function
-- [class_name](section:Data socket functions) [color_linear_light](section:Data socket functions/color_linear_light) : Function
-- [class_name](section:Data socket functions) [color_mix](section:Data socket functions/color_mix) : Function
-- [class_name](section:Data socket functions) [color_mix_color](section:Data socket functions/color_mix_color) : Function
-- [class_name](section:Data socket functions) [color_multiply](section:Data socket functions/color_multiply) : Function
-- [class_name](section:Data socket functions) [color_overlay](section:Data socket functions/color_overlay) : Function
-- [class_name](section:Data socket functions) [color_saturation](section:Data socket functions/color_saturation) : Function
-- [class_name](section:Data socket functions) [color_screen](section:Data socket functions/color_screen) : Function
-- [class_name](section:Data socket functions) [color_soft_light](section:Data socket functions/color_soft_light) : Function
-- [class_name](section:Data socket functions) [color_subtract](section:Data socket functions/color_subtract) : Function
-- [class_name](section:Data socket functions) [color_value](section:Data socket functions/color_value) : Function
+[class_name](docs/sockets/Color.md) [add](docs/sockets/Color.md#add) : Method
+- [class_name](docs/sockets/Color.md) [burn](docs/sockets/Color.md#burn) : Method
+- [class_name](docs/sockets/Color.md) [darken](docs/sockets/Color.md#darken) : Method
+- [class_name](docs/sockets/Color.md) [difference](docs/sockets/Color.md#difference) : Method
+- [class_name](docs/sockets/Color.md) [divide](docs/sockets/Color.md#divide) : Method
+- [class_name](docs/sockets/Color.md) [dodge](docs/sockets/Color.md#dodge) : Method
+- [class_name](docs/sockets/Color.md) [hue](docs/sockets/Color.md#hue) : Method
+- [class_name](docs/sockets/Color.md) [lighten](docs/sockets/Color.md#lighten) : Method
+- [class_name](docs/sockets/Color.md) [linear_light](docs/sockets/Color.md#linear_light) : Method
+- [class_name](docs/sockets/Color.md) [mix](docs/sockets/Color.md#mix) : Method
+- [class_name](docs/sockets/Color.md) [mix](docs/sockets/Color.md#mix) : Method
+- [class_name](docs/sockets/Color.md) [mix_color](docs/sockets/Color.md#mix_color) : Method
+- [class_name](docs/sockets/Color.md) [multiply](docs/sockets/Color.md#multiply) : Method
+- [class_name](docs/sockets/Color.md) [overlay](docs/sockets/Color.md#overlay) : Method
+- [class_name](docs/sockets/Color.md) [saturation](docs/sockets/Color.md#saturation) : Method
+- [class_name](docs/sockets/Color.md) [screen](docs/sockets/Color.md#screen) : Method
+- [class_name](docs/sockets/Color.md) [soft_light](docs/sockets/Color.md#soft_light) : Method
+- [class_name](docs/sockets/Color.md) [subtract](docs/sockets/Color.md#subtract) : Method
+- [class_name](docs/sockets/Color.md) [value](docs/sockets/Color.md#value) : Method
+- [class_name](docs/sockets/functions.md) [color_add](docs/sockets/functions.md#color_add) : Function
+- [class_name](docs/sockets/functions.md) [color_burn](docs/sockets/functions.md#color_burn) : Function
+- [class_name](docs/sockets/functions.md) [color_darken](docs/sockets/functions.md#color_darken) : Function
+- [class_name](docs/sockets/functions.md) [color_difference](docs/sockets/functions.md#color_difference) : Function
+- [class_name](docs/sockets/functions.md) [color_divide](docs/sockets/functions.md#color_divide) : Function
+- [class_name](docs/sockets/functions.md) [color_dodge](docs/sockets/functions.md#color_dodge) : Function
+- [class_name](docs/sockets/functions.md) [color_hue](docs/sockets/functions.md#color_hue) : Function
+- [class_name](docs/sockets/functions.md) [color_lighten](docs/sockets/functions.md#color_lighten) : Function
+- [class_name](docs/sockets/functions.md) [color_linear_light](docs/sockets/functions.md#color_linear_light) : Function
+- [class_name](docs/sockets/functions.md) [color_mix](docs/sockets/functions.md#color_mix) : Function
+- [class_name](docs/sockets/functions.md) [color_mix_color](docs/sockets/functions.md#color_mix_color) : Function
+- [class_name](docs/sockets/functions.md) [color_multiply](docs/sockets/functions.md#color_multiply) : Function
+- [class_name](docs/sockets/functions.md) [color_overlay](docs/sockets/functions.md#color_overlay) : Function
+- [class_name](docs/sockets/functions.md) [color_saturation](docs/sockets/functions.md#color_saturation) : Function
+- [class_name](docs/sockets/functions.md) [color_screen](docs/sockets/functions.md#color_screen) : Function
+- [class_name](docs/sockets/functions.md) [color_soft_light](docs/sockets/functions.md#color_soft_light) : Function
+- [class_name](docs/sockets/functions.md) [color_subtract](docs/sockets/functions.md#color_subtract) : Function
+- [class_name](docs/sockets/functions.md) [color_value](docs/sockets/functions.md#color_value) : Function
   

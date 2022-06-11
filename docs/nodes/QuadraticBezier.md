@@ -37,5 +37,5 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Curve) [QuadraticBezier](section:Data socket Curve/QuadraticBezier) : Constructor
+[class_name](docs/sockets/Curve.md) [QuadraticBezier](docs/sockets/Curve.md#quadraticbezier) : Constructor
 

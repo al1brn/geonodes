@@ -41,5 +41,5 @@ rotation : Vector
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Vector) [rotate_euler](section:Data socket Vector/rotate_euler) : Method
+[class_name](docs/sockets/Vector.md) [rotate_euler](docs/sockets/Vector.md#rotate_euler) : Method
 

@@ -9,14 +9,14 @@
 
 ## Methods
 
-- [instance_on_points](#instance_on_points) : [InstanceOnPoints](section:nodes/InstanceOnPoints), instances (Instances)
-- [set_radius](#set_radius) : [SetPointRadius](section:nodes/SetPointRadius), points (Points)
-- [to_vertices](#to_vertices) : [PointsToVertices](section:nodes/PointsToVertices), mesh (Mesh)
-- [to_volume](#to_volume) : [PointsToVolume](section:nodes/PointsToVolume), volume (Volume)
+- [instance_on_points](#instance_on_points) : [InstanceOnPoints](docs/nodes/InstanceOnPoints.md), instances (Instances)
+- [set_radius](#set_radius) : [SetPointRadius](docs/nodes/SetPointRadius.md), points (Points)
+- [to_vertices](#to_vertices) : [PointsToVertices](docs/nodes/PointsToVertices.md), mesh (Mesh)
+- [to_volume](#to_volume) : [PointsToVolume](docs/nodes/PointsToVolume.md), volume (Volume)
 
 ## set_radius
 
-> Node: [SetPointRadius](section:nodes/SetPointRadius)
+> Node: [SetPointRadius](docs/nodes/SetPointRadius.md)
   
 <sub>go to: [top](#data-socket-points) [index](/docs/index.md)
 blender ref [GeometryNodeSetPointRadius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPointRadius.html)
@@ -48,7 +48,7 @@ Points
 
 ## instance_on_points
 
-> Node: [InstanceOnPoints](section:nodes/InstanceOnPoints)
+> Node: [InstanceOnPoints](docs/nodes/InstanceOnPoints.md)
   
 <sub>go to: [top](#data-socket-points) [index](/docs/index.md)
 blender ref [GeometryNodeInstanceOnPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
@@ -84,7 +84,7 @@ Instances
 
 ## to_vertices
 
-> Node: [PointsToVertices](section:nodes/PointsToVertices)
+> Node: [PointsToVertices](docs/nodes/PointsToVertices.md)
   
 <sub>go to: [top](#data-socket-points) [index](/docs/index.md)
 blender ref [GeometryNodePointsToVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html)
@@ -115,7 +115,7 @@ Mesh
 
 ## to_volume
 
-> Node: [PointsToVolume](section:nodes/PointsToVolume)
+> Node: [PointsToVolume](docs/nodes/PointsToVolume.md)
   
 <sub>go to: [top](#data-socket-points) [index](/docs/index.md)
 blender ref [GeometryNodePointsToVolume](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html)

@@ -49,14 +49,14 @@ output : input_type dependant
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Boolean) [switch](section:Data socket Boolean/switch) : Method
-- [class_name](section:Data socket Collection) [switch](section:Data socket Collection/switch) : Method
-- [class_name](section:Data socket Float) [switch](section:Data socket Float/switch) : Method
-- [class_name](section:Data socket Geometry) [switch](section:Data socket Geometry/switch) : Method
-- [class_name](section:Data socket Image) [switch](section:Data socket Image/switch) : Method
-- [class_name](section:Data socket Integer) [switch](section:Data socket Integer/switch) : Method
-- [class_name](section:Data socket Material) [switch](section:Data socket Material/switch) : Method
-- [class_name](section:Data socket Object) [switch](section:Data socket Object/switch) : Method
-- [class_name](section:Data socket String) [switch](section:Data socket String/switch) : Method
-- [class_name](section:Data socket Texture) [switch](section:Data socket Texture/switch) : Method
+[class_name](docs/sockets/Boolean.md) [switch](docs/sockets/Boolean.md#switch) : Method
+- [class_name](docs/sockets/Collection.md) [switch](docs/sockets/Collection.md#switch) : Method
+- [class_name](docs/sockets/Float.md) [switch](docs/sockets/Float.md#switch) : Method
+- [class_name](docs/sockets/Geometry.md) [switch](docs/sockets/Geometry.md#switch) : Method
+- [class_name](docs/sockets/Image.md) [switch](docs/sockets/Image.md#switch) : Method
+- [class_name](docs/sockets/Integer.md) [switch](docs/sockets/Integer.md#switch) : Method
+- [class_name](docs/sockets/Material.md) [switch](docs/sockets/Material.md#switch) : Method
+- [class_name](docs/sockets/Object.md) [switch](docs/sockets/Object.md#switch) : Method
+- [class_name](docs/sockets/String.md) [switch](docs/sockets/String.md#switch) : Method
+- [class_name](docs/sockets/Texture.md) [switch](docs/sockets/Texture.md#switch) : Method
   

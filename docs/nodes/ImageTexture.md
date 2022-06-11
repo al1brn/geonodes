@@ -42,5 +42,5 @@ color : Color
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Texture) [Image](section:Data socket Texture/Image) : Static method
+[class_name](docs/sockets/Texture.md) [Image](docs/sockets/Texture.md#image) : Static method
 

@@ -30,6 +30,6 @@ resolution : Integer
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Spline) [capture_resolution](section:Data socket Spline/capture_resolution) : Capture attribute
-- [class_name](section:Data socket Spline) [resolution](section:Data socket Spline/resolution) : Attribute
+[class_name](docs/sockets/Spline.md) [capture_resolution](docs/sockets/Spline.md#capture_resolution) : Capture attribute
+- [class_name](docs/sockets/Spline.md) [resolution](docs/sockets/Spline.md#resolution) : Attribute
   

@@ -9,19 +9,19 @@
 
 ## Properties
 
-- [geometry](#geometry) : [ObjectInfo](section:nodes/ObjectInfo), geometry (Geometry) = info.geometry
-- [info](#info) : [ObjectInfo](section:nodes/ObjectInfo), Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-- [location](#location) : [ObjectInfo](section:nodes/ObjectInfo), location (Vector) = info.location
-- [rotation](#rotation) : [ObjectInfo](section:nodes/ObjectInfo), rotation (Vector) = info.rotation
-- [scale](#scale) : [ObjectInfo](section:nodes/ObjectInfo), scale (Vector) = info.scale
+- [geometry](#geometry) : [ObjectInfo](docs/nodes/ObjectInfo.md), geometry (Geometry) = info.geometry
+- [info](#info) : [ObjectInfo](docs/nodes/ObjectInfo.md), Sockets      [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+- [location](#location) : [ObjectInfo](docs/nodes/ObjectInfo.md), location (Vector) = info.location
+- [rotation](#rotation) : [ObjectInfo](docs/nodes/ObjectInfo.md), rotation (Vector) = info.rotation
+- [scale](#scale) : [ObjectInfo](docs/nodes/ObjectInfo.md), scale (Vector) = info.scale
 
 ## Methods
 
-- [switch](#switch) : [Switch](section:nodes/Switch), output (Object)
+- [switch](#switch) : [Switch](docs/nodes/Switch.md), output (Object)
 
 ## info
 
-> Node: [ObjectInfo](section:nodes/ObjectInfo)
+> Node: [ObjectInfo](docs/nodes/ObjectInfo.md)
   
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
@@ -60,7 +60,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 
 ## location
 
-> Node: [ObjectInfo](section:nodes/ObjectInfo)
+> Node: [ObjectInfo](docs/nodes/ObjectInfo.md)
   
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
@@ -99,7 +99,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 
 ## rotation
 
-> Node: [ObjectInfo](section:nodes/ObjectInfo)
+> Node: [ObjectInfo](docs/nodes/ObjectInfo.md)
   
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
@@ -138,7 +138,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 
 ## scale
 
-> Node: [ObjectInfo](section:nodes/ObjectInfo)
+> Node: [ObjectInfo](docs/nodes/ObjectInfo.md)
   
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
@@ -177,7 +177,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 
 ## geometry
 
-> Node: [ObjectInfo](section:nodes/ObjectInfo)
+> Node: [ObjectInfo](docs/nodes/ObjectInfo.md)
   
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
@@ -216,7 +216,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 
 ## switch
 
-> Node: [Switch](section:nodes/Switch)
+> Node: [Switch](docs/nodes/Switch.md)
   
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)

@@ -35,5 +35,5 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Curve) [reverse](section:Data socket Curve/reverse) : Method
+[class_name](docs/sockets/Curve.md) [reverse](docs/sockets/Curve.md#reverse) : Method
 

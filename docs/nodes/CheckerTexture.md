@@ -38,5 +38,5 @@ color : Color
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Texture) [Checker](section:Data socket Texture/Checker) : Static method
+[class_name](docs/sockets/Texture.md) [Checker](docs/sockets/Texture.md#checker) : Static method
 

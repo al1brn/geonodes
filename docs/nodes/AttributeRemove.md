@@ -35,5 +35,5 @@ geometry : Geometry
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Geometry) [attribute_remove](section:Data socket Geometry/attribute_remove) : Method
+[class_name](docs/sockets/Geometry.md) [attribute_remove](docs/sockets/Geometry.md#attribute_remove) : Method
 

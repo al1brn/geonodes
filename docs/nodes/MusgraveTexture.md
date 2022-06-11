@@ -46,5 +46,5 @@ fac : Float
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Texture) [Musgrave](section:Data socket Texture/Musgrave) : Static method
+[class_name](docs/sockets/Texture.md) [Musgrave](docs/sockets/Texture.md#musgrave) : Static method
 

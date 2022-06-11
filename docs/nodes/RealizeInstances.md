@@ -38,5 +38,5 @@ geometry : Geometry
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Geometry) [realize_instances](section:Data socket Geometry/realize_instances) : Method
+[class_name](docs/sockets/Geometry.md) [realize_instances](docs/sockets/Geometry.md#realize_instances) : Method
 

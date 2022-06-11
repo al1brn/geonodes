@@ -34,5 +34,5 @@ geometry : Geometry
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Geometry) [join](section:Data socket Geometry/join) : Method
+[class_name](docs/sockets/Geometry.md) [join](docs/sockets/Geometry.md#join) : Method
 

@@ -9,24 +9,24 @@
 
 ## Properties
 
-- [length](#length) : [StringLength](section:nodes/StringLength), length (Integer)
+- [length](#length) : [StringLength](docs/nodes/StringLength.md), length (Integer)
 
 ## Methods
 
-- [average](#average) : [Compare](section:nodes/Compare), result (Boolean)
-- [direction](#direction) : [Compare](section:nodes/Compare), result (Boolean)
-- [dot_product](#dot_product) : [Compare](section:nodes/Compare), result (Boolean)
-- [element](#element) : [Compare](section:nodes/Compare), result (Boolean)
-- [join](#join) : [JoinStrings](section:nodes/JoinStrings), string (String)
-- [length](#length) : [Compare](section:nodes/Compare), result (Boolean)
-- [replace](#replace) : [ReplaceString](section:nodes/ReplaceString), string (String)
-- [slice](#slice) : [SliceString](section:nodes/SliceString), string (String)
-- [switch](#switch) : [Switch](section:nodes/Switch), output (String)
-- [to_curves](#to_curves) : [StringToCurves](section:nodes/StringToCurves), Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
+- [average](#average) : [Compare](docs/nodes/Compare.md), result (Boolean)
+- [direction](#direction) : [Compare](docs/nodes/Compare.md), result (Boolean)
+- [dot_product](#dot_product) : [Compare](docs/nodes/Compare.md), result (Boolean)
+- [element](#element) : [Compare](docs/nodes/Compare.md), result (Boolean)
+- [join](#join) : [JoinStrings](docs/nodes/JoinStrings.md), string (String)
+- [length](#length) : [Compare](docs/nodes/Compare.md), result (Boolean)
+- [replace](#replace) : [ReplaceString](docs/nodes/ReplaceString.md), string (String)
+- [slice](#slice) : [SliceString](docs/nodes/SliceString.md), string (String)
+- [switch](#switch) : [Switch](docs/nodes/Switch.md), output (String)
+- [to_curves](#to_curves) : [StringToCurves](docs/nodes/StringToCurves.md), Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
 
 ## length
 
-> Node: [StringLength](section:nodes/StringLength)
+> Node: [StringLength](docs/nodes/StringLength.md)
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeStringLength](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
@@ -60,7 +60,7 @@ Integer
 
 ## switch
 
-> Node: [Switch](section:nodes/Switch)
+> Node: [Switch](docs/nodes/Switch.md)
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
@@ -96,7 +96,7 @@ String
 
 ## element
 
-> Node: [Compare](section:nodes/Compare)
+> Node: [Compare](docs/nodes/Compare.md)
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
@@ -133,7 +133,7 @@ Boolean
 
 ## length
 
-> Node: [Compare](section:nodes/Compare)
+> Node: [Compare](docs/nodes/Compare.md)
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
@@ -170,7 +170,7 @@ Boolean
 
 ## average
 
-> Node: [Compare](section:nodes/Compare)
+> Node: [Compare](docs/nodes/Compare.md)
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
@@ -207,7 +207,7 @@ Boolean
 
 ## dot_product
 
-> Node: [Compare](section:nodes/Compare)
+> Node: [Compare](docs/nodes/Compare.md)
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
@@ -244,7 +244,7 @@ Boolean
 
 ## direction
 
-> Node: [Compare](section:nodes/Compare)
+> Node: [Compare](docs/nodes/Compare.md)
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
@@ -281,7 +281,7 @@ Boolean
 
 ## join
 
-> Node: [JoinStrings](section:nodes/JoinStrings)
+> Node: [JoinStrings](docs/nodes/JoinStrings.md)
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [GeometryNodeStringJoin](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
@@ -312,7 +312,7 @@ String
 
 ## replace
 
-> Node: [ReplaceString](section:nodes/ReplaceString)
+> Node: [ReplaceString](docs/nodes/ReplaceString.md)
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeReplaceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
@@ -344,7 +344,7 @@ String
 
 ## slice
 
-> Node: [SliceString](section:nodes/SliceString)
+> Node: [SliceString](docs/nodes/SliceString.md)
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeSliceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
@@ -376,7 +376,7 @@ String
 
 ## to_curves
 
-> Node: [StringToCurves](section:nodes/StringToCurves)
+> Node: [StringToCurves](docs/nodes/StringToCurves.md)
   
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [GeometryNodeStringToCurves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)

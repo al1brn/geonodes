@@ -9,11 +9,11 @@
 
 ## Methods
 
-- [switch](#switch) : [Switch](section:nodes/Switch), output (Image)
+- [switch](#switch) : [Switch](docs/nodes/Switch.md), output (Image)
 
 ## switch
 
-> Node: [Switch](section:nodes/Switch)
+> Node: [Switch](docs/nodes/Switch.md)
   
 <sub>go to: [top](#data-socket-image) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)

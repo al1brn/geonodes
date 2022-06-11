@@ -51,14 +51,14 @@ attribute : data_type dependant
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Boolean) [transfer_attribute](section:Data socket Boolean/transfer_attribute) : Method
-- [class_name](section:Data socket Color) [transfer_attribute](section:Data socket Color/transfer_attribute) : Method
-- [class_name](section:Data socket Float) [transfer_attribute](section:Data socket Float/transfer_attribute) : Method
-- [class_name](section:Data socket Geometry) [transfer_boolean](section:Data socket Geometry/transfer_boolean) : Method
-- [class_name](section:Data socket Geometry) [transfer_color](section:Data socket Geometry/transfer_color) : Method
-- [class_name](section:Data socket Geometry) [transfer_float](section:Data socket Geometry/transfer_float) : Method
-- [class_name](section:Data socket Geometry) [transfer_integer](section:Data socket Geometry/transfer_integer) : Method
-- [class_name](section:Data socket Geometry) [transfer_vector](section:Data socket Geometry/transfer_vector) : Method
-- [class_name](section:Data socket Integer) [transfer_attribute](section:Data socket Integer/transfer_attribute) : Method
-- [class_name](section:Data socket Vector) [transfer_attribute](section:Data socket Vector/transfer_attribute) : Method
+[class_name](docs/sockets/Boolean.md) [transfer_attribute](docs/sockets/Boolean.md#transfer_attribute) : Method
+- [class_name](docs/sockets/Color.md) [transfer_attribute](docs/sockets/Color.md#transfer_attribute) : Method
+- [class_name](docs/sockets/Float.md) [transfer_attribute](docs/sockets/Float.md#transfer_attribute) : Method
+- [class_name](docs/sockets/Geometry.md) [transfer_boolean](docs/sockets/Geometry.md#transfer_boolean) : Method
+- [class_name](docs/sockets/Geometry.md) [transfer_color](docs/sockets/Geometry.md#transfer_color) : Method
+- [class_name](docs/sockets/Geometry.md) [transfer_float](docs/sockets/Geometry.md#transfer_float) : Method
+- [class_name](docs/sockets/Geometry.md) [transfer_integer](docs/sockets/Geometry.md#transfer_integer) : Method
+- [class_name](docs/sockets/Geometry.md) [transfer_vector](docs/sockets/Geometry.md#transfer_vector) : Method
+- [class_name](docs/sockets/Integer.md) [transfer_attribute](docs/sockets/Integer.md#transfer_attribute) : Method
+- [class_name](docs/sockets/Vector.md) [transfer_attribute](docs/sockets/Vector.md#transfer_attribute) : Method
   

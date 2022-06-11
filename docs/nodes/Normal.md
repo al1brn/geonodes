@@ -30,6 +30,6 @@ normal : Vector
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Geometry) [capture_normal](section:Data socket Geometry/capture_normal) : Capture attribute
-- [class_name](section:Data socket Geometry) [normal](section:Data socket Geometry/normal) : Attribute
+[class_name](docs/sockets/Geometry.md) [capture_normal](docs/sockets/Geometry.md#capture_normal) : Capture attribute
+- [class_name](docs/sockets/Geometry.md) [normal](docs/sockets/Geometry.md#normal) : Attribute
   

@@ -34,7 +34,7 @@ selection : Boolean
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Material) [selection](section:Data socket Material/selection) : Method
-- [class_name](section:Data socket Mesh) [capture_material_selection](section:Data socket Mesh/capture_material_selection) : Capture attribute
-- [class_name](section:Data socket Mesh) [material_selection](section:Data socket Mesh/material_selection) : Attribute
+[class_name](docs/sockets/Material.md) [selection](docs/sockets/Material.md#selection) : Method
+- [class_name](docs/sockets/Mesh.md) [capture_material_selection](docs/sockets/Mesh.md#capture_material_selection) : Capture attribute
+- [class_name](docs/sockets/Mesh.md) [material_selection](docs/sockets/Mesh.md#material_selection) : Attribute
   

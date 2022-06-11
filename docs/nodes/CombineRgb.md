@@ -36,5 +36,5 @@ image : Color
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Color) [Combine](section:Data socket Color/Combine) : Constructor
+[class_name](docs/sockets/Color.md) [Combine](docs/sockets/Color.md#combine) : Constructor
 

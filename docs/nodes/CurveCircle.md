@@ -43,5 +43,5 @@ curve : Curve
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Curve) [Circle](section:Data socket Curve/Circle) : Constructor
+[class_name](docs/sockets/Curve.md) [Circle](docs/sockets/Curve.md#circle) : Constructor
 

@@ -9,40 +9,40 @@
 
 ## Constructors
 
-- [ArcFromRadius](#arcfromradius) : [Arc](section:nodes/Arc), curve (Curve)
-- [BezierSegment](#beziersegment) : [BezierSegment](section:nodes/BezierSegment), curve (Curve)
-- [Circle](#circle) : [CurveCircle](section:nodes/CurveCircle), Sockets      [curve (Curve), center (Vector)]
-- [Line](#line) : [CurveLine](section:nodes/CurveLine), curve (Curve)
-- [QuadraticBezier](#quadraticbezier) : [QuadraticBezier](section:nodes/QuadraticBezier), curve (Curve)
-- [Quadrilateral](#quadrilateral) : [Quadrilateral](section:nodes/Quadrilateral), curve (Curve)
-- [Spiral](#spiral) : [Spiral](section:nodes/Spiral), curve (Curve)
-- [Star](#star) : [Star](section:nodes/Star), Sockets      [curve (Curve), outer_points (Boolean)]
+- [ArcFromRadius](#arcfromradius) : [Arc](docs/nodes/Arc.md), curve (Curve)
+- [BezierSegment](#beziersegment) : [BezierSegment](docs/nodes/BezierSegment.md), curve (Curve)
+- [Circle](#circle) : [CurveCircle](docs/nodes/CurveCircle.md), Sockets      [curve (Curve), center (Vector)]
+- [Line](#line) : [CurveLine](docs/nodes/CurveLine.md), curve (Curve)
+- [QuadraticBezier](#quadraticbezier) : [QuadraticBezier](docs/nodes/QuadraticBezier.md), curve (Curve)
+- [Quadrilateral](#quadrilateral) : [Quadrilateral](docs/nodes/Quadrilateral.md), curve (Curve)
+- [Spiral](#spiral) : [Spiral](docs/nodes/Spiral.md), curve (Curve)
+- [Star](#star) : [Star](docs/nodes/Star.md), Sockets      [curve (Curve), outer_points (Boolean)]
 
 ## Static methods
 
-- [ArcFromPoints](#arcfrompoints) : [Arc](section:nodes/Arc), Sockets      [curve (Curve), center (Vector), normal (Vector), radius (Float)]
+- [ArcFromPoints](#arcfrompoints) : [Arc](docs/nodes/Arc.md), Sockets      [curve (Curve), center (Vector), normal (Vector), radius (Float)]
 
 ## Methods
 
-- [fill](#fill) : [FillCurve](section:nodes/FillCurve), mesh (Mesh)
-- [fillet](#fillet) : [FilletCurve](section:nodes/FilletCurve), curve (Curve)
-- [length](#length) : [CurveLength](section:nodes/CurveLength), length (Float)
-- [resample](#resample) : [ResampleCurve](section:nodes/ResampleCurve), curve (Curve)
-- [reverse](#reverse) : [ReverseCurve](section:nodes/ReverseCurve), curve (Curve)
-- [sample](#sample) : [SampleCurve](section:nodes/SampleCurve), Sockets      [position (Vector), tangent (Vector), normal (Vector)]
-- [set_handle_positions](#set_handle_positions) : [SetHandlePositions](section:nodes/SetHandlePositions), curve (Curve)
-- [set_handles](#set_handles) : [SetHandleType](section:nodes/SetHandleType), curve (Curve)
-- [set_radius](#set_radius) : [SetCurveRadius](section:nodes/SetCurveRadius), curve (Curve)
-- [set_spline_type](#set_spline_type) : [SetSplineType](section:nodes/SetSplineType), curve (Curve)
-- [set_tilt](#set_tilt) : [SetCurveTilt](section:nodes/SetCurveTilt), curve (Curve)
-- [subdivide](#subdivide) : [SubdivideCurve](section:nodes/SubdivideCurve), curve (Curve)
-- [to_mesh](#to_mesh) : [CurveToMesh](section:nodes/CurveToMesh), mesh (Mesh)
-- [to_points](#to_points) : [CurveToPoints](section:nodes/CurveToPoints), Sockets      [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
-- [trim](#trim) : [TrimCurve](section:nodes/TrimCurve), curve (Curve)
+- [fill](#fill) : [FillCurve](docs/nodes/FillCurve.md), mesh (Mesh)
+- [fillet](#fillet) : [FilletCurve](docs/nodes/FilletCurve.md), curve (Curve)
+- [length](#length) : [CurveLength](docs/nodes/CurveLength.md), length (Float)
+- [resample](#resample) : [ResampleCurve](docs/nodes/ResampleCurve.md), curve (Curve)
+- [reverse](#reverse) : [ReverseCurve](docs/nodes/ReverseCurve.md), curve (Curve)
+- [sample](#sample) : [SampleCurve](docs/nodes/SampleCurve.md), Sockets      [position (Vector), tangent (Vector), normal (Vector)]
+- [set_handle_positions](#set_handle_positions) : [SetHandlePositions](docs/nodes/SetHandlePositions.md), curve (Curve)
+- [set_handles](#set_handles) : [SetHandleType](docs/nodes/SetHandleType.md), curve (Curve)
+- [set_radius](#set_radius) : [SetCurveRadius](docs/nodes/SetCurveRadius.md), curve (Curve)
+- [set_spline_type](#set_spline_type) : [SetSplineType](docs/nodes/SetSplineType.md), curve (Curve)
+- [set_tilt](#set_tilt) : [SetCurveTilt](docs/nodes/SetCurveTilt.md), curve (Curve)
+- [subdivide](#subdivide) : [SubdivideCurve](docs/nodes/SubdivideCurve.md), curve (Curve)
+- [to_mesh](#to_mesh) : [CurveToMesh](docs/nodes/CurveToMesh.md), mesh (Mesh)
+- [to_points](#to_points) : [CurveToPoints](docs/nodes/CurveToPoints.md), Sockets      [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
+- [trim](#trim) : [TrimCurve](docs/nodes/TrimCurve.md), curve (Curve)
 
 ## BezierSegment
 
-> Node: [BezierSegment](section:nodes/BezierSegment)
+> Node: [BezierSegment](docs/nodes/BezierSegment.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurvePrimitiveBezierSegment](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html)
@@ -80,7 +80,7 @@ Curve
 
 ## Circle
 
-> Node: [CurveCircle](section:nodes/CurveCircle)
+> Node: [CurveCircle](docs/nodes/CurveCircle.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurvePrimitiveCircle](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html)
@@ -118,7 +118,7 @@ Sockets [curve (Curve), center (Vector)]
 
 ## Line
 
-> Node: [CurveLine](section:nodes/CurveLine)
+> Node: [CurveLine](docs/nodes/CurveLine.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurvePrimitiveLine](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveLine.html)
@@ -155,7 +155,7 @@ Curve
 
 ## Quadrilateral
 
-> Node: [Quadrilateral](section:nodes/Quadrilateral)
+> Node: [Quadrilateral](docs/nodes/Quadrilateral.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurvePrimitiveQuadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html)
@@ -199,7 +199,7 @@ Curve
 
 ## QuadraticBezier
 
-> Node: [QuadraticBezier](section:nodes/QuadraticBezier)
+> Node: [QuadraticBezier](docs/nodes/QuadraticBezier.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveQuadraticBezier](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveQuadraticBezier.html)
@@ -232,7 +232,7 @@ Curve
 
 ## Star
 
-> Node: [Star](section:nodes/Star)
+> Node: [Star](docs/nodes/Star.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveStar](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveStar.html)
@@ -265,7 +265,7 @@ Sockets [curve (Curve), outer_points (Boolean)]
 
 ## Spiral
 
-> Node: [Spiral](section:nodes/Spiral)
+> Node: [Spiral](docs/nodes/Spiral.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveSpiral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSpiral.html)
@@ -300,7 +300,7 @@ Curve
 
 ## ArcFromRadius
 
-> Node: [Arc](section:nodes/Arc)
+> Node: [Arc](docs/nodes/Arc.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveArc](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html)
@@ -339,7 +339,7 @@ Curve
 
 ## ArcFromPoints
 
-> Node: [Arc](section:nodes/Arc)
+> Node: [Arc](docs/nodes/Arc.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveArc](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html)
@@ -379,7 +379,7 @@ Sockets [curve (Curve), center (Vector), normal (Vector), radius (Float)]
 
 ## set_handles
 
-> Node: [SetHandleType](section:nodes/SetHandleType)
+> Node: [SetHandleType](docs/nodes/SetHandleType.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveSetHandles](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSetHandles.html)
@@ -415,7 +415,7 @@ Curve
 
 ## set_spline_type
 
-> Node: [SetSplineType](section:nodes/SetSplineType)
+> Node: [SetSplineType](docs/nodes/SetSplineType.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveSplineType](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html)
@@ -450,7 +450,7 @@ Curve
 
 ## fill
 
-> Node: [FillCurve](section:nodes/FillCurve)
+> Node: [FillCurve](docs/nodes/FillCurve.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeFillCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html)
@@ -484,7 +484,7 @@ Mesh
 
 ## fillet
 
-> Node: [FilletCurve](section:nodes/FilletCurve)
+> Node: [FilletCurve](docs/nodes/FilletCurve.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeFilletCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFilletCurve.html)
@@ -521,7 +521,7 @@ Curve
 
 ## resample
 
-> Node: [ResampleCurve](section:nodes/ResampleCurve)
+> Node: [ResampleCurve](docs/nodes/ResampleCurve.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeResampleCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html)
@@ -558,7 +558,7 @@ Curve
 
 ## reverse
 
-> Node: [ReverseCurve](section:nodes/ReverseCurve)
+> Node: [ReverseCurve](docs/nodes/ReverseCurve.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeReverseCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeReverseCurve.html)
@@ -589,7 +589,7 @@ Curve
 
 ## set_handle_positions
 
-> Node: [SetHandlePositions](section:nodes/SetHandlePositions)
+> Node: [SetHandlePositions](docs/nodes/SetHandlePositions.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeSetCurveHandlePositions](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
@@ -626,7 +626,7 @@ Curve
 
 ## set_radius
 
-> Node: [SetCurveRadius](section:nodes/SetCurveRadius)
+> Node: [SetCurveRadius](docs/nodes/SetCurveRadius.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeSetCurveRadius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveRadius.html)
@@ -658,7 +658,7 @@ Curve
 
 ## set_tilt
 
-> Node: [SetCurveTilt](section:nodes/SetCurveTilt)
+> Node: [SetCurveTilt](docs/nodes/SetCurveTilt.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeSetCurveTilt](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveTilt.html)
@@ -690,7 +690,7 @@ Curve
 
 ## subdivide
 
-> Node: [SubdivideCurve](section:nodes/SubdivideCurve)
+> Node: [SubdivideCurve](docs/nodes/SubdivideCurve.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeSubdivideCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideCurve.html)
@@ -721,7 +721,7 @@ Curve
 
 ## trim
 
-> Node: [TrimCurve](section:nodes/TrimCurve)
+> Node: [TrimCurve](docs/nodes/TrimCurve.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeTrimCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html)
@@ -759,7 +759,7 @@ Curve
 
 ## to_mesh
 
-> Node: [CurveToMesh](section:nodes/CurveToMesh)
+> Node: [CurveToMesh](docs/nodes/CurveToMesh.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveToMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToMesh.html)
@@ -791,7 +791,7 @@ Mesh
 
 ## to_points
 
-> Node: [CurveToPoints](section:nodes/CurveToPoints)
+> Node: [CurveToPoints](docs/nodes/CurveToPoints.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveToPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html)
@@ -827,7 +827,7 @@ Sockets [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
 
 ## sample
 
-> Node: [SampleCurve](section:nodes/SampleCurve)
+> Node: [SampleCurve](docs/nodes/SampleCurve.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeSampleCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleCurve.html)
@@ -863,7 +863,7 @@ Sockets [position (Vector), tangent (Vector), normal (Vector)]
 
 ## length
 
-> Node: [CurveLength](section:nodes/CurveLength)
+> Node: [CurveLength](docs/nodes/CurveLength.md)
   
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveLength](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveLength.html)

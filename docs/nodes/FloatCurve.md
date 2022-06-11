@@ -35,5 +35,5 @@ value : Float
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Float) [curve](section:Data socket Float/curve) : Method
+[class_name](docs/sockets/Float.md) [curve](docs/sockets/Float.md#curve) : Method
 

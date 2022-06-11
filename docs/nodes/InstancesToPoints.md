@@ -37,5 +37,5 @@ points : Points
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Instances) [to_points](section:Data socket Instances/to_points) : Method
+[class_name](docs/sockets/Instances.md) [to_points](docs/sockets/Instances.md#to_points) : Method
 

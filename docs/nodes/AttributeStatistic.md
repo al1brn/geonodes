@@ -56,6 +56,6 @@ mean : data_type dependant
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Float) [attribute_statistic](section:Data socket Float/attribute_statistic) : Method
-- [class_name](section:Data socket Vector) [attribute_statistic](section:Data socket Vector/attribute_statistic) : Method
+[class_name](docs/sockets/Float.md) [attribute_statistic](docs/sockets/Float.md#attribute_statistic) : Method
+- [class_name](docs/sockets/Vector.md) [attribute_statistic](docs/sockets/Vector.md#attribute_statistic) : Method
   

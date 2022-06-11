@@ -36,5 +36,5 @@ mesh : Mesh
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Mesh) [UVSphere](section:Data socket Mesh/UVSphere) : Constructor
+[class_name](docs/sockets/Mesh.md) [UVSphere](docs/sockets/Mesh.md#uvsphere) : Constructor
 

@@ -42,5 +42,5 @@ position : Vector
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Curve) [sample](section:Data socket Curve/sample) : Method
+[class_name](docs/sockets/Curve.md) [sample](docs/sockets/Curve.md#sample) : Method
 

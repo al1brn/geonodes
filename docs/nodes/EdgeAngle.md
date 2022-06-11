@@ -31,16 +31,16 @@ unsigned_angle : Float
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Mesh) [capture_edge_angle](section:Data socket Mesh/capture_edge_angle) : Capture attribute
-- [class_name](section:Data socket Mesh) [corner_ID](section:Data socket Mesh/corner_ID) : Attribute
-- [class_name](section:Data socket Mesh) [corner_index](section:Data socket Mesh/corner_index) : Attribute
-- [class_name](section:Data socket Mesh) [corner_porision](section:Data socket Mesh/corner_porision) : Attribute
-- [class_name](section:Data socket Mesh) [edge_angle](section:Data socket Mesh/edge_angle) : Attribute
-- [class_name](section:Data socket Mesh) [edge_unsigned_angle](section:Data socket Mesh/edge_unsigned_angle) : Attribute
-- [class_name](section:Data socket Mesh) [egde_ID](section:Data socket Mesh/egde_ID) : Attribute
-- [class_name](section:Data socket Mesh) [egde_index](section:Data socket Mesh/egde_index) : Attribute
-- [class_name](section:Data socket Mesh) [egde_position](section:Data socket Mesh/egde_position) : Attribute
-- [class_name](section:Data socket Mesh) [face_ID](section:Data socket Mesh/face_ID) : Attribute
-- [class_name](section:Data socket Mesh) [face_index](section:Data socket Mesh/face_index) : Attribute
-- [class_name](section:Data socket Mesh) [face_position](section:Data socket Mesh/face_position) : Attribute
+[class_name](docs/sockets/Mesh.md) [capture_edge_angle](docs/sockets/Mesh.md#capture_edge_angle) : Capture attribute
+- [class_name](docs/sockets/Mesh.md) [corner_ID](docs/sockets/Mesh.md#corner_id) : Attribute
+- [class_name](docs/sockets/Mesh.md) [corner_index](docs/sockets/Mesh.md#corner_index) : Attribute
+- [class_name](docs/sockets/Mesh.md) [corner_porision](docs/sockets/Mesh.md#corner_porision) : Attribute
+- [class_name](docs/sockets/Mesh.md) [edge_angle](docs/sockets/Mesh.md#edge_angle) : Attribute
+- [class_name](docs/sockets/Mesh.md) [edge_unsigned_angle](docs/sockets/Mesh.md#edge_unsigned_angle) : Attribute
+- [class_name](docs/sockets/Mesh.md) [egde_ID](docs/sockets/Mesh.md#egde_id) : Attribute
+- [class_name](docs/sockets/Mesh.md) [egde_index](docs/sockets/Mesh.md#egde_index) : Attribute
+- [class_name](docs/sockets/Mesh.md) [egde_position](docs/sockets/Mesh.md#egde_position) : Attribute
+- [class_name](docs/sockets/Mesh.md) [face_ID](docs/sockets/Mesh.md#face_id) : Attribute
+- [class_name](docs/sockets/Mesh.md) [face_index](docs/sockets/Mesh.md#face_index) : Attribute
+- [class_name](docs/sockets/Mesh.md) [face_position](docs/sockets/Mesh.md#face_position) : Attribute
   

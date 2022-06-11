@@ -30,6 +30,6 @@ tangent : Vector
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Spline) [capture_tangent](section:Data socket Spline/capture_tangent) : Capture attribute
-- [class_name](section:Data socket Spline) [tangent](section:Data socket Spline/tangent) : Attribute
+[class_name](docs/sockets/Spline.md) [capture_tangent](docs/sockets/Spline.md#capture_tangent) : Capture attribute
+- [class_name](docs/sockets/Spline.md) [tangent](docs/sockets/Spline.md#tangent) : Attribute
   

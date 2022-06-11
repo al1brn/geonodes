@@ -48,9 +48,9 @@ value : data_type dependant
 
 > Data socket classes implementing this node.
   
-[class_name](section:Data socket Boolean) [field_at_index](section:Data socket Boolean/field_at_index) : Method
-- [class_name](section:Data socket Color) [field_at_index](section:Data socket Color/field_at_index) : Method
-- [class_name](section:Data socket Float) [field_at_index](section:Data socket Float/field_at_index) : Method
-- [class_name](section:Data socket Integer) [field_at_index](section:Data socket Integer/field_at_index) : Method
-- [class_name](section:Data socket Vector) [field_at_index](section:Data socket Vector/field_at_index) : Method
+[class_name](docs/sockets/Boolean.md) [field_at_index](docs/sockets/Boolean.md#field_at_index) : Method
+- [class_name](docs/sockets/Color.md) [field_at_index](docs/sockets/Color.md#field_at_index) : Method
+- [class_name](docs/sockets/Float.md) [field_at_index](docs/sockets/Float.md#field_at_index) : Method
+- [class_name](docs/sockets/Integer.md) [field_at_index](docs/sockets/Integer.md#field_at_index) : Method
+- [class_name](docs/sockets/Vector.md) [field_at_index](docs/sockets/Vector.md#field_at_index) : Method
   
