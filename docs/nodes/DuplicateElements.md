@@ -8,11 +8,11 @@
 
 Initialization
 --------------
-        
-        ```python
-        from geonodes import nodes
-        node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domain='POINT', label=None)
-        ```
+
+```python
+from geonodes import nodes
+node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domain='POINT', label=None)
+```
 
 
 

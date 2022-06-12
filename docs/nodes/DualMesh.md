@@ -8,11 +8,11 @@
 
 Initialization
 --------------
-        
-        ```python
-        from geonodes import nodes
-        node = nodes.DualMesh(mesh=None, keep_boundaries=None, label=None)
-        ```
+
+```python
+from geonodes import nodes
+node = nodes.DualMesh(mesh=None, keep_boundaries=None, label=None)
+```
 
 
 

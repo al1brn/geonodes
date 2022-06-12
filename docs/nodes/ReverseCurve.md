@@ -8,11 +8,11 @@
 
 Initialization
 --------------
-        
-        ```python
-        from geonodes import nodes
-        node = nodes.ReverseCurve(curve=None, selection=None, label=None)
-        ```
+
+```python
+from geonodes import nodes
+node = nodes.ReverseCurve(curve=None, selection=None, label=None)
+```
 
 
 

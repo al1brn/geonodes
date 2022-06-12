@@ -47,10 +47,10 @@
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurvePrimitiveBezierSegment](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html)
 node ref [Bezier Segment](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/bezier_segment.html) </sub>
-                          
-        ```python
-        v = Curve.BezierSegment(resolution, start, start_handle, end_handle, end, mode)
-        ```
+
+```python
+v = Curve.BezierSegment(resolution, start, start_handle, end_handle, end, mode)
+```
 
 ### Arguments
 
@@ -66,11 +66,11 @@ node ref [Bezier Segment](https://docs.blender.org/manual/en/latest/modeling/geo
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode)
+    ```
 
 ### Returns
 
@@ -84,10 +84,10 @@ Curve
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurvePrimitiveCircle](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html)
 node ref [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_circle.html) </sub>
-                          
-        ```python
-        v = Curve.Circle(resolution, point_1, point_2, point_3, radius, mode)
-        ```
+
+```python
+v = Curve.Circle(resolution, point_1, point_2, point_3, radius, mode)
+```
 
 ### Arguments
 
@@ -103,11 +103,11 @@ node ref [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geome
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=radius, mode=mode)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=radius, mode=mode)
+    ```
 
 ### Returns
 
@@ -121,10 +121,10 @@ Sockets [curve (Curve), center (Vector)]
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurvePrimitiveLine](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveLine.html)
 node ref [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_line.html) </sub>
-                          
-        ```python
-        v = Curve.Line(start, end, direction, length, mode)
-        ```
+
+```python
+v = Curve.Line(start, end, direction, length, mode)
+```
 
 ### Arguments
 
@@ -139,11 +139,11 @@ node ref [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometr
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.CurveLine(start=start, end=end, direction=direction, length=length, mode=mode)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.CurveLine(start=start, end=end, direction=direction, length=length, mode=mode)
+    ```
 
 ### Returns
 
@@ -157,10 +157,10 @@ Curve
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurvePrimitiveQuadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html)
 node ref [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/quadrilateral.html) </sub>
-                          
-        ```python
-        v = Curve.Quadrilateral(width, height, bottom_width, top_width, offset, bottom_height, top_height, point_1, point_2, point_3, point_4, mode)
-        ```
+
+```python
+v = Curve.Quadrilateral(width, height, bottom_width, top_width, offset, bottom_height, top_height, point_1, point_2, point_3, point_4, mode)
+```
 
 ### Arguments
 
@@ -182,11 +182,11 @@ node ref [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geom
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width, offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width, offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode)
+    ```
 
 ### Returns
 
@@ -200,10 +200,10 @@ Curve
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveQuadraticBezier](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveQuadraticBezier.html)
 node ref [Quadratic Bezier](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/quadratic_bezier.html) </sub>
-                          
-        ```python
-        v = Curve.QuadraticBezier(resolution, start, middle, end)
-        ```
+
+```python
+v = Curve.QuadraticBezier(resolution, start, middle, end)
+```
 
 ### Arguments
 
@@ -217,11 +217,11 @@ node ref [Quadratic Bezier](https://docs.blender.org/manual/en/latest/modeling/g
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.QuadraticBezier(resolution=resolution, start=start, middle=middle, end=end)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.QuadraticBezier(resolution=resolution, start=start, middle=middle, end=end)
+    ```
 
 ### Returns
 
@@ -235,10 +235,10 @@ Curve
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveStar](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveStar.html)
 node ref [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/star.html) </sub>
-                          
-        ```python
-        v = Curve.Star(points, inner_radius, outer_radius, twist)
-        ```
+
+```python
+v = Curve.Star(points, inner_radius, outer_radius, twist)
+```
 
 ### Arguments
 
@@ -252,11 +252,11 @@ node ref [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_node
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.Star(points=points, inner_radius=inner_radius, outer_radius=outer_radius, twist=twist)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.Star(points=points, inner_radius=inner_radius, outer_radius=outer_radius, twist=twist)
+    ```
 
 ### Returns
 
@@ -270,10 +270,10 @@ Sockets [curve (Curve), outer_points (Boolean)]
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveSpiral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSpiral.html)
 node ref [Spiral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_spiral.html) </sub>
-                          
-        ```python
-        v = Curve.Spiral(resolution, rotations, start_radius, end_radius, height, reverse)
-        ```
+
+```python
+v = Curve.Spiral(resolution, rotations, start_radius, end_radius, height, reverse)
+```
 
 ### Arguments
 
@@ -289,11 +289,11 @@ node ref [Spiral](https://docs.blender.org/manual/en/latest/modeling/geometry_no
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.Spiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius, height=height, reverse=reverse)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.Spiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius, height=height, reverse=reverse)
+    ```
 
 ### Returns
 
@@ -307,10 +307,10 @@ Curve
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveArc](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html)
 node ref [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/arc.html) </sub>
-                          
-        ```python
-        v = Curve.ArcFromRadius(resolution, radius, start_angle, sweep_angle, connect_center, invert_arc)
-        ```
+
+```python
+v = Curve.ArcFromRadius(resolution, radius, start_angle, sweep_angle, connect_center, invert_arc)
+```
 
 ### Arguments
 
@@ -327,11 +327,11 @@ node ref [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.Arc(resolution=resolution, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle, connect_center=connect_center, invert_arc=invert_arc, mode='RADIUS')
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.Arc(resolution=resolution, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle, connect_center=connect_center, invert_arc=invert_arc, mode='RADIUS')
+    ```
 
 ### Returns
 
@@ -345,10 +345,10 @@ Curve
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveArc](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html)
 node ref [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/arc.html) </sub>
-                          
-        ```python
-        v = Curve.ArcFromPoints(resolution, start, middle, end, offset_angle, connect_center, invert_arc)
-        ```
+
+```python
+v = Curve.ArcFromPoints(resolution, start, middle, end, offset_angle, connect_center, invert_arc)
+```
 
 ### Arguments
 
@@ -366,11 +366,11 @@ node ref [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, offset_angle=offset_angle, connect_center=connect_center, invert_arc=invert_arc, mode='POINTS')
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, offset_angle=offset_angle, connect_center=connect_center, invert_arc=invert_arc, mode='POINTS')
+    ```
 
 ### Returns
 
@@ -384,10 +384,10 @@ Sockets [curve (Curve), center (Vector), normal (Vector), radius (Float)]
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveSetHandles](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSetHandles.html)
 node ref [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_type.html) </sub>
-                          
-        ```python
-        v = curve.set_handles(selection, handle_type, mode)
-        ```
+
+```python
+v = curve.set_handles(selection, handle_type, mode)
+```
 
 ### Arguments
 
@@ -401,11 +401,11 @@ node ref [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/ge
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.SetHandleType(curve=self, selection=selection, handle_type=handle_type, mode=mode)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.SetHandleType(curve=self, selection=selection, handle_type=handle_type, mode=mode)
+    ```
 
 ### Returns
 
@@ -419,10 +419,10 @@ Curve
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveSplineType](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html)
 node ref [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) </sub>
-                          
-        ```python
-        v = curve.set_spline_type(selection, spline_type)
-        ```
+
+```python
+v = curve.set_spline_type(selection, spline_type)
+```
 
 ### Arguments
 
@@ -435,11 +435,11 @@ node ref [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/ge
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_type)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_type)
+    ```
 
 ### Returns
 
@@ -453,10 +453,10 @@ Curve
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeFillCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html)
 node ref [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fill_curve.html) </sub>
-                          
-        ```python
-        v = curve.fill(mode)
-        ```
+
+```python
+v = curve.fill(mode)
+```
 
 ### Arguments
 
@@ -468,11 +468,11 @@ node ref [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.FillCurve(curve=self, mode=mode)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.FillCurve(curve=self, mode=mode)
+    ```
 
 ### Returns
 
@@ -486,10 +486,10 @@ Mesh
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeFilletCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFilletCurve.html)
 node ref [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fillet_curve.html) </sub>
-                          
-        ```python
-        v = curve.fillet(count, radius, limit_radius, mode)
-        ```
+
+```python
+v = curve.fillet(count, radius, limit_radius, mode)
+```
 
 ### Arguments
 
@@ -504,11 +504,11 @@ node ref [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geome
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode=mode)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode=mode)
+    ```
 
 ### Returns
 
@@ -522,10 +522,10 @@ Curve
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeResampleCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html)
 node ref [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) </sub>
-                          
-        ```python
-        v = curve.resample(selection, count, length, mode)
-        ```
+
+```python
+v = curve.resample(selection, count, length, mode)
+```
 
 ### Arguments
 
@@ -540,11 +540,11 @@ node ref [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geo
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.ResampleCurve(curve=self, selection=selection, count=count, length=length, mode=mode)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.ResampleCurve(curve=self, selection=selection, count=count, length=length, mode=mode)
+    ```
 
 ### Returns
 
@@ -558,10 +558,10 @@ Curve
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeReverseCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeReverseCurve.html)
 node ref [Reverse Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/reverse_curve.html) </sub>
-                          
-        ```python
-        v = curve.reverse(selection)
-        ```
+
+```python
+v = curve.reverse(selection)
+```
 
 ### Arguments
 
@@ -573,11 +573,11 @@ node ref [Reverse Curve](https://docs.blender.org/manual/en/latest/modeling/geom
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.ReverseCurve(curve=self, selection=selection)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.ReverseCurve(curve=self, selection=selection)
+    ```
 
 ### Returns
 
@@ -591,10 +591,10 @@ Curve
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeSetCurveHandlePositions](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
 node ref [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) </sub>
-                          
-        ```python
-        v = curve.set_handle_positions(selection, position, offset, mode)
-        ```
+
+```python
+v = curve.set_handle_positions(selection, position, offset, mode)
+```
 
 ### Arguments
 
@@ -609,11 +609,11 @@ node ref [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeli
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.SetHandlePositions(curve=self, selection=selection, position=position, offset=offset, mode=mode)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.SetHandlePositions(curve=self, selection=selection, position=position, offset=offset, mode=mode)
+    ```
 
 ### Returns
 
@@ -627,10 +627,10 @@ Curve
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeSetCurveRadius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveRadius.html)
 node ref [Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_radius.html) </sub>
-                          
-        ```python
-        v = curve.set_radius(selection, radius)
-        ```
+
+```python
+v = curve.set_radius(selection, radius)
+```
 
 ### Arguments
 
@@ -643,11 +643,11 @@ node ref [Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/g
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.SetCurveRadius(curve=self, selection=selection, radius=radius)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.SetCurveRadius(curve=self, selection=selection, radius=radius)
+    ```
 
 ### Returns
 
@@ -661,10 +661,10 @@ Curve
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeSetCurveTilt](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveTilt.html)
 node ref [Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_tilt.html) </sub>
-                          
-        ```python
-        v = curve.set_tilt(selection, tilt)
-        ```
+
+```python
+v = curve.set_tilt(selection, tilt)
+```
 
 ### Arguments
 
@@ -677,11 +677,11 @@ node ref [Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geo
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.SetCurveTilt(curve=self, selection=selection, tilt=tilt)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.SetCurveTilt(curve=self, selection=selection, tilt=tilt)
+    ```
 
 ### Returns
 
@@ -695,10 +695,10 @@ Curve
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeSubdivideCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideCurve.html)
 node ref [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/subdivide_curve.html) </sub>
-                          
-        ```python
-        v = curve.subdivide(cuts)
-        ```
+
+```python
+v = curve.subdivide(cuts)
+```
 
 ### Arguments
 
@@ -710,11 +710,11 @@ node ref [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/ge
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.SubdivideCurve(curve=self, cuts=cuts)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.SubdivideCurve(curve=self, cuts=cuts)
+    ```
 
 ### Returns
 
@@ -728,10 +728,10 @@ Curve
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeTrimCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html)
 node ref [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/trim_curve.html) </sub>
-                          
-        ```python
-        v = curve.trim(start0, end0, start1, end1, mode)
-        ```
+
+```python
+v = curve.trim(start0, end0, start1, end1, mode)
+```
 
 ### Arguments
 
@@ -747,11 +747,11 @@ node ref [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1=end1, mode=mode)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1=end1, mode=mode)
+    ```
 
 ### Returns
 
@@ -765,10 +765,10 @@ Curve
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveToMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToMesh.html)
 node ref [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_mesh.html) </sub>
-                          
-        ```python
-        v = curve.to_mesh(profile_curve, fill_caps)
-        ```
+
+```python
+v = curve.to_mesh(profile_curve, fill_caps)
+```
 
 ### Arguments
 
@@ -781,11 +781,11 @@ node ref [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geom
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps)
+    ```
 
 ### Returns
 
@@ -799,10 +799,10 @@ Mesh
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveToPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html)
 node ref [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html) </sub>
-                          
-        ```python
-        v = curve.to_points(count, length, mode)
-        ```
+
+```python
+v = curve.to_points(count, length, mode)
+```
 
 ### Arguments
 
@@ -816,11 +816,11 @@ node ref [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/ge
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode)
+    ```
 
 ### Returns
 
@@ -834,10 +834,10 @@ Sockets [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeSampleCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleCurve.html)
 node ref [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample_curve.html) </sub>
-                          
-        ```python
-        v = curve.sample(factor, length, mode)
-        ```
+
+```python
+v = curve.sample(factor, length, mode)
+```
 
 ### Arguments
 
@@ -851,11 +851,11 @@ node ref [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geome
     
     Node creation
     -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode)
-            ```
+    
+    ```python
+    from geondes import nodes
+    nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode)
+    ```
 
 ### Returns
 
@@ -869,10 +869,10 @@ Sockets [position (Vector), tangent (Vector), normal (Vector)]
 <sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
 blender ref [GeometryNodeCurveLength](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveLength.html)
 node ref [Curve Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_length.html) </sub>
-                          
-        ```python
-        v = curve.length()
-        ```
+
+```python
+v = curve.length()
+```
 
 ### Arguments
 
@@ -883,11 +883,11 @@ node ref [Curve Length](https://docs.blender.org/manual/en/latest/modeling/geome
   
   Node creation
   -------------
-          
-          ```python
-          from geondes import nodes
-          nodes.CurveLength(curve=self)
-          ```
+  
+  ```python
+  from geondes import nodes
+  nodes.CurveLength(curve=self)
+  ```
 
 ### Returns
 

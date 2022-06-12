@@ -8,11 +8,11 @@
 
 Initialization
 --------------
-        
-        ```python
-        from geonodes import nodes
-        node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', label=None)
-        ```
+
+```python
+from geonodes import nodes
+node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', label=None)
+```
 
 
 

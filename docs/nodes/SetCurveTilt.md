@@ -8,11 +8,11 @@
 
 Initialization
 --------------
-        
-        ```python
-        from geonodes import nodes
-        node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None, label=None)
-        ```
+
+```python
+from geonodes import nodes
+node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None, label=None)
+```
 
 
 

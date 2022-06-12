@@ -8,11 +8,11 @@
 
 Initialization
 --------------
-        
-        ```python
-        from geonodes import nodes
-        node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None, label=None)
-        ```
+
+```python
+from geonodes import nodes
+node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None, label=None)
+```
 
 
 

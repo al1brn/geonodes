@@ -8,11 +8,11 @@
 
 Initialization
 --------------
-        
-        ```python
-        from geonodes import nodes
-        node = nodes.Index(label=None)
-        ```
+
+```python
+from geonodes import nodes
+node = nodes.Index(label=None)
+```
 
 
 

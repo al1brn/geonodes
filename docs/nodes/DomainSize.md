@@ -8,11 +8,11 @@
 
 Initialization
 --------------
-        
-        ```python
-        from geonodes import nodes
-        node = nodes.DomainSize(geometry=None, component='MESH', label=None)
-        ```
+
+```python
+from geonodes import nodes
+node = nodes.DomainSize(geometry=None, component='MESH', label=None)
+```
 
 
 
