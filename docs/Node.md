@@ -15,6 +15,7 @@ my_node = Node(geometry=value, parameter='PARAM')
 
 The Node sub classes are named accoridng their Blender label with a **Camel case** conversion,
 for instance:
+
 - _Set Shade Smooth_ --> SetShadeSmoth
 - _Split Edges_ --> SplitEdges
 _ _Normal_ --> Normal
@@ -23,11 +24,13 @@ _ _Normal_ --> Normal
 
 The node socket are named after the Blender sockets names with a **snake case** conversion,
 for instance:
+
 - _Geometry_ --> geometry
 - _Mesh 1_ --> mesh_1
   
 For some nodes, (Math node for instance), several sockets can share the same name. In that case, the
 sockets are numbered, starting from 0:
+
 - Value --> value0
 - Value --> value1
 

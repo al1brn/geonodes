@@ -1,24 +1,18 @@
 
 # Node SceneTime
 
-Node 'Scene Time' (GeometryNodeInputSceneTime)
+> Node 'Scene Time' (GeometryNodeInputSceneTime)
 
 ## Output sockets
 
-seconds         : Float
-frame           : Float
-
-
-
+- seconds         : Float
+- frame           : Float
+  
+  
+  
 
 ## \_\_init\_\_
 
-Node 'Scene Time' (GeometryNodeInputSceneTime)
-
-### Output sockets
-
-seconds         : Float
-frame           : Float
-
+Iniitialisation 
 
 

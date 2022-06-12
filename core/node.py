@@ -1223,43 +1223,46 @@ class Node:
     Nodes naming convention
     ----------------------
     
-    The Node sub classes are named accoridng their Blender label with a **Camel case** conversion,
-    for instance:
-    - _Set Shade Smooth_ --> SetShadeSmoth
-    - _Split Edges_ --> SplitEdges
-    _ _Normal_ --> Normal
+        The Node sub classes are named accoridng their Blender label with a **Camel case** conversion,
+        for instance:
+            
+        - _Set Shade Smooth_ --> SetShadeSmoth
+        - _Split Edges_ --> SplitEdges
+        _ _Normal_ --> Normal
     
     Sockets naming convention
     -------------------------
     
-    The node socket are named after the Blender sockets names with a **snake case** conversion,
-    for instance:
-    - _Geometry_ --> geometry
-    - _Mesh 1_ --> mesh_1
-    
-    For some nodes, (Math node for instance), several sockets can share the same name. In that case, the
-    sockets are numbered, starting from 0:
-    - Value --> value0
-    - Value --> value1
+        The node socket are named after the Blender sockets names with a **snake case** conversion,
+        for instance:
+            
+        - _Geometry_ --> geometry
+        - _Mesh 1_ --> mesh_1
+        
+        For some nodes, (Math node for instance), several sockets can share the same name. In that case, the
+        sockets are numbered, starting from 0:
+            
+        - Value --> value0
+        - Value --> value1
     
     Properties
     ----------
-    - tree : Tree
-      The tree the node bleongs to
-    - name : str
-      Standard Geometry node name
-    - label : str
-      User defined label. Can be None
-    - bnode : bpy.types.Node
-      The actual Blender Geometry node
-    - inputs : list
-      List of innput sockets
-    - outputs : list
-      List of output sockets
-    - is_attribute : bool
-      Indicates that the node is an field attribute
-    - bl_idname : str
-      The node type name
+        - tree : Tree
+          The tree the node bleongs to
+        - name : str
+          Standard Geometry node name
+        - label : str
+          User defined label. Can be None
+        - bnode : bpy.types.Node
+          The actual Blender Geometry node
+        - inputs : list
+          List of innput sockets
+        - outputs : list
+          List of output sockets
+        - is_attribute : bool
+          Indicates that the node is an field attribute
+        - bl_idname : str
+          The node type name
     """
         
     def __init__(self, bl_idname, name, label=None):
@@ -1692,14 +1695,22 @@ class NodeGroup(Node):
             if name == sock_name:
                 return i
         raise RuntimeError(f"Socket name '{name}' not found in node '{self.label}'. Check homonyms. Available sockets are {self.sock_names}.")
-            
-            
     
     
 # ----------------------------------------------------------------------------------------------------
 # Node NodeGroupInput for NodeGroupInput
 
 class GroupInput(NodeGroup):
+    
+    """ > Node 'Group input'
+    
+    > Note that the **outputs** sockets of this node are the **input** sockets of the group.
+    
+    The first socket must be a geometry socket: this is the gemetry of the object on which the modifier
+    applies. Make sure that this socket exists.
+    
+    """
+    
 
     def __init__(self):
         
@@ -1828,6 +1839,14 @@ class GroupInput(NodeGroup):
 # Node NodeGroupOutput for NodeGroupOutput
 
 class GroupOutput(NodeGroup):
+    """ > Node 'Group output'
+    
+    > Note that the **input** sockets of this node are the **output** sockets of the group.
+    
+    The first socket must be a geometry: this is the result of the modifier. Make sure that this
+    output socket exists.
+    
+    """
     
     def __init__(self):
         
@@ -1889,23 +1908,22 @@ class GroupOutput(NodeGroup):
 # Node NodeViewer for GeometryNodeViewer
 
 class Viewer(Node):
-    """Node 'Viewer' (GeometryNodeViewer)
+    """ > Node 'Viewer' (GeometryNodeViewer)
 
     Data type dependant sockets
     ---------------------------
 
-        Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
-
-        Input sockets     : ['value']
+        - Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+        - Input sockets     : ['value']
 
     Input sockets
     -------------
-        geometry        : Geometry
-        value           : data_type dependant
+        - geometry        : Geometry
+        - value           : data_type dependant
 
     Parameters
     ----------
-        data_type       : 'FLOAT' in [ 'FLOAT' 'INT' 'FLOAT_VECTOR' 'FLOAT_COLOR' 'BOOLEAN']
+        - data_type       : 'FLOAT' in [ 'FLOAT' 'INT' 'FLOAT_VECTOR' 'FLOAT_COLOR' 'BOOLEAN']
 
     """
 
@@ -1975,17 +1993,11 @@ class Viewer(Node):
 
 class Frame(Node):
 
-    """ Node 'Frame' (NodeFrame)
-
-    Parameters
-    ----------
-        - label_size      : (20) int
-        - shrink          : (True) bool
-
+    """ > Node 'Frame' (NodeFrame)
     """
 
     def __init__(self, label="Layout", label_size=42, color=colors.orange, shrink=True):
-        """ Initialization
+        """ > Initialization
         
         Parameters
         ----------
@@ -2030,15 +2042,16 @@ class Frame(Node):
 
 class SceneTime(Node):
 
-    """ Node 'Scene Time' (GeometryNodeInputSceneTime)
+    """ > Node 'Scene Time' (GeometryNodeInputSceneTime)
 
     Output sockets
     --------------
-        seconds         : Float
-        frame           : Float
+        - seconds         : Float
+        - frame           : Float
     """
 
     def __init__(self, label=None):
+        """ Iniitialisation """
 
         super().__init__('GeometryNodeInputSceneTime', name='Scene Time', label=label)
         # Output sockets

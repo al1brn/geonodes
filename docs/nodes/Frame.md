@@ -1,20 +1,14 @@
 
 # Node Frame
 
-Node 'Frame' (NodeFrame)
-
-## Parameters
-
-- label_size      : (20) int
-- shrink          : (True) bool
-  
+> Node 'Frame' (NodeFrame)
   
   
   
 
 ## \_\_init\_\_
 
-Initialization
+> Initialization
 
 ### Parameters
 
