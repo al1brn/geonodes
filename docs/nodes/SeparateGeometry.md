@@ -8,11 +8,11 @@
 
 Initialization
 --------------
-
-```python
-from geonodes import nodes
-node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT', label=None)
-```
+        
+        ```python
+        from geonodes import nodes
+        node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT', label=None)
+        ```
 
 
 

@@ -8,11 +8,11 @@
 
 Initialization
 --------------
-
-```python
-from geonodes import nodes
-node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', label=None)
-```
+        
+        ```python
+        from geonodes import nodes
+        node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', label=None)
+        ```
 
 
 

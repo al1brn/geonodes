@@ -8,11 +8,11 @@
 
 Initialization
 --------------
-
-```python
-from geonodes import nodes
-node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND', label=None)
-```
+        
+        ```python
+        from geonodes import nodes
+        node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND', label=None)
+        ```
 
 
 

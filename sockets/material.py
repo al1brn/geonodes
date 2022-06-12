@@ -36,10 +36,10 @@ class Material(dsock.Material):
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>
-        
-        ```python
-        v = material.switch(switch1, true)
-        ```
+                                  
+                ```python
+                v = material.switch(switch1, true)
+                ```
     
 
         Arguments
@@ -55,11 +55,11 @@ class Material(dsock.Material):
                       
                         Node creation
                         -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL')
-                        ```
+                                
+                                ```python
+                                from geondes import nodes
+                                nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL')
+                                ```
     
 
         Returns
@@ -76,10 +76,10 @@ class Material(dsock.Material):
         <sub>go to: top index
         blender ref GeometryNodeMaterialSelection
         node ref Material Selection </sub>
-        
-        ```python
-        v = material.selection()
-        ```
+                                  
+                ```python
+                v = material.selection()
+                ```
     
 
         Arguments
@@ -92,11 +92,11 @@ class Material(dsock.Material):
                   
                     Node creation
                     -------------
-                    
-                    ```python
-                    from geondes import nodes
-                    nodes.MaterialSelection(material=self)
-                    ```
+                            
+                            ```python
+                            from geondes import nodes
+                            nodes.MaterialSelection(material=self)
+                            ```
     
 
         Returns

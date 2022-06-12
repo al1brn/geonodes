@@ -8,11 +8,11 @@
 
 Initialization
 --------------
-
-```python
-from geonodes import nodes
-node = nodes.NamedAttribute(name=None, data_type='FLOAT', label=None)
-```
+        
+        ```python
+        from geonodes import nodes
+        node = nodes.NamedAttribute(name=None, data_type='FLOAT', label=None)
+        ```
 
 
 

@@ -36,10 +36,10 @@ class Collection(dsock.Collection):
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>
-        
-        ```python
-        v = collection.switch(switch1, true)
-        ```
+                                  
+                ```python
+                v = collection.switch(switch1, true)
+                ```
     
 
         Arguments
@@ -55,11 +55,11 @@ class Collection(dsock.Collection):
                       
                         Node creation
                         -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION')
-                        ```
+                                
+                                ```python
+                                from geondes import nodes
+                                nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION')
+                                ```
     
 
         Returns
@@ -76,10 +76,10 @@ class Collection(dsock.Collection):
         <sub>go to: top index
         blender ref GeometryNodeCollectionInfo
         node ref Collection Info </sub>
-        
-        ```python
-        v = collection.info(separate_children, reset_children, transform_space)
-        ```
+                                  
+                ```python
+                v = collection.info(separate_children, reset_children, transform_space)
+                ```
     
 
         Arguments
@@ -95,11 +95,11 @@ class Collection(dsock.Collection):
                       
                         Node creation
                         -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space)
-                        ```
+                                
+                                ```python
+                                from geondes import nodes
+                                nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space)
+                                ```
     
 
         Returns

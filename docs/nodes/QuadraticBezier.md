@@ -8,11 +8,11 @@
 
 Initialization
 --------------
-
-```python
-from geonodes import nodes
-node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None, label=None)
-```
+        
+        ```python
+        from geonodes import nodes
+        node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None, label=None)
+        ```
 
 
 

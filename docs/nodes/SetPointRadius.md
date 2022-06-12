@@ -8,11 +8,11 @@
 
 Initialization
 --------------
-
-```python
-from geonodes import nodes
-node = nodes.SetPointRadius(points=None, selection=None, radius=None, label=None)
-```
+        
+        ```python
+        from geonodes import nodes
+        node = nodes.SetPointRadius(points=None, selection=None, radius=None, label=None)
+        ```
 
 
 
