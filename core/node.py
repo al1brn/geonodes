@@ -1975,12 +1975,12 @@ class Viewer(Node):
 
 class Frame(Node):
 
-    """Node 'Frame' (NodeFrame)
+    """ Node 'Frame' (NodeFrame)
 
     Parameters
     ----------
-        label_size      : (20) int
-        shrink          : (True) bool
+        - label_size      : (20) int
+        - shrink          : (True) bool
 
     """
 
@@ -2017,7 +2017,7 @@ class Frame(Node):
 
 class SceneTime(Node):
 
-    """Node 'Scene Time' (GeometryNodeInputSceneTime)
+    """ Node 'Scene Time' (GeometryNodeInputSceneTime)
 
     Output sockets
     --------------
