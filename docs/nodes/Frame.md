@@ -14,13 +14,18 @@ Node 'Frame' (NodeFrame)
 
 ## \_\_init\_\_
 
-Node 'Frame' (NodeFrame)
+Initialization
 
 ### Parameters
 
-- label_size      : (20) int
-- shrink          : (True) bool
-  
-  
-  
-  
+- label : str, default="Layout"
+frame label
+- label_size : int, default=42
+label font size
+- color: color
+color specification
+- shrink: bool
+Node parameter
+
+
+

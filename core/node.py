@@ -1985,6 +1985,19 @@ class Frame(Node):
     """
 
     def __init__(self, label="Layout", label_size=42, color=colors.orange, shrink=True):
+        """ Initialization
+        
+        Parameters
+        ----------
+            - label : str, default="Layout"
+                  frame label
+            - label_size : int, default=42
+                  label font size
+            - color: color
+                  color specification
+            - shrink: bool
+                  Node parameter
+        """
 
         super().__init__('NodeFrame', name='Frame', label=label)
         self.node_color = color
