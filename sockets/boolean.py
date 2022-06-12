@@ -53,11 +53,9 @@ class Boolean(dsock.Boolean):
           
         <sub>go to: top index
         blender ref FunctionNodeRandomValue
-        node ref Random Value </sub>
-                                  
-                ```python
-                v = Boolean.Random(probability, ID, seed)
-                ```
+        node ref Random Value </sub>```python
+        v = Boolean.Random(probability, ID, seed)
+        ```
     
 
         Arguments
@@ -72,12 +70,10 @@ class Boolean(dsock.Boolean):
                     - data_type : 'BOOLEAN'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN')
+                        ```
     
 
         Returns
@@ -97,11 +93,9 @@ class Boolean(dsock.Boolean):
           
         <sub>go to: top index
         blender ref GeometryNodeAttributeTransfer
-        node ref Transfer Attribute </sub>
-                                  
-                ```python
-                v = boolean.transfer_attribute(source, source_position, index, domain, mapping)
-                ```
+        node ref Transfer Attribute </sub>```python
+        v = boolean.transfer_attribute(source, source_position, index, domain, mapping)
+        ```
     
 
         Arguments
@@ -119,12 +113,10 @@ class Boolean(dsock.Boolean):
                     - data_type : 'BOOLEAN'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
+                        ```
     
 
         Returns
@@ -140,11 +132,9 @@ class Boolean(dsock.Boolean):
           
         <sub>go to: top index
         blender ref GeometryNodeCaptureAttribute
-        node ref Capture Attribute </sub>
-                                  
-                ```python
-                v = boolean.capture_attribute(geometry, domain)
-                ```
+        node ref Capture Attribute </sub>```python
+        v = boolean.capture_attribute(geometry, domain)
+        ```
     
 
         Arguments
@@ -159,12 +149,10 @@ class Boolean(dsock.Boolean):
                     - data_type : 'BOOLEAN'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain)
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain)
+                        ```
     
 
         Returns
@@ -180,11 +168,9 @@ class Boolean(dsock.Boolean):
           
         <sub>go to: top index
         blender ref GeometryNodeFieldAtIndex
-        node ref Field at Index </sub>
-                                  
-                ```python
-                v = boolean.field_at_index(index, domain)
-                ```
+        node ref Field at Index </sub>```python
+        v = boolean.field_at_index(index, domain)
+        ```
     
 
         Arguments
@@ -199,12 +185,10 @@ class Boolean(dsock.Boolean):
                     - data_type : 'BOOLEAN'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain)
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain)
+                        ```
     
 
         Returns
@@ -220,11 +204,9 @@ class Boolean(dsock.Boolean):
           
         <sub>go to: top index
         blender ref GeometryNodeRaycast
-        node ref Raycast </sub>
-                                  
-                ```python
-                v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
-                ```
+        node ref Raycast </sub>```python
+        v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
+        ```
     
 
         Arguments
@@ -242,12 +224,10 @@ class Boolean(dsock.Boolean):
                     - data_type : 'BOOLEAN'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping)
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping)
+                        ```
     
 
         Returns
@@ -263,11 +243,9 @@ class Boolean(dsock.Boolean):
           
         <sub>go to: top index
         blender ref GeometryNodeSwitch
-        node ref Switch </sub>
-                                  
-                ```python
-                v = boolean.switch(false, true)
-                ```
+        node ref Switch </sub>```python
+        v = boolean.switch(false, true)
+        ```
     
 
         Arguments
@@ -282,12 +260,10 @@ class Boolean(dsock.Boolean):
                     - input_type : 'BOOLEAN'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN')
+                        ```
     
 
         Returns
@@ -303,11 +279,9 @@ class Boolean(dsock.Boolean):
           
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
-        node ref Boolean Math </sub>
-                                  
-                ```python
-                v = boolean.b_and(boolean1)
-                ```
+        node ref Boolean Math </sub>```python
+        v = boolean.b_and(boolean1)
+        ```
     
 
         Arguments
@@ -321,12 +295,10 @@ class Boolean(dsock.Boolean):
                     - operation : 'AND'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND')
+                        ```
     
 
         Returns
@@ -342,11 +314,9 @@ class Boolean(dsock.Boolean):
           
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
-        node ref Boolean Math </sub>
-                                  
-                ```python
-                v = boolean.b_or(boolean1)
-                ```
+        node ref Boolean Math </sub>```python
+        v = boolean.b_or(boolean1)
+        ```
     
 
         Arguments
@@ -360,12 +330,10 @@ class Boolean(dsock.Boolean):
                     - operation : 'OR'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR')
+                        ```
     
 
         Returns
@@ -381,11 +349,9 @@ class Boolean(dsock.Boolean):
           
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
-        node ref Boolean Math </sub>
-                                  
-                ```python
-                v = boolean.b_not()
-                ```
+        node ref Boolean Math </sub>```python
+        v = boolean.b_not()
+        ```
     
 
         Arguments
@@ -398,12 +364,10 @@ class Boolean(dsock.Boolean):
                     - operation : 'NOT'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.BooleanMath(boolean0=self, operation='NOT')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.BooleanMath(boolean0=self, operation='NOT')
+                        ```
     
 
         Returns
@@ -419,11 +383,9 @@ class Boolean(dsock.Boolean):
           
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
-        node ref Boolean Math </sub>
-                                  
-                ```python
-                v = boolean.nand(boolean1)
-                ```
+        node ref Boolean Math </sub>```python
+        v = boolean.nand(boolean1)
+        ```
     
 
         Arguments
@@ -437,12 +399,10 @@ class Boolean(dsock.Boolean):
                     - operation : 'NAND'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND')
+                        ```
     
 
         Returns
@@ -458,11 +418,9 @@ class Boolean(dsock.Boolean):
           
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
-        node ref Boolean Math </sub>
-                                  
-                ```python
-                v = boolean.nor(boolean1)
-                ```
+        node ref Boolean Math </sub>```python
+        v = boolean.nor(boolean1)
+        ```
     
 
         Arguments
@@ -476,12 +434,10 @@ class Boolean(dsock.Boolean):
                     - operation : 'NOR'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR')
+                        ```
     
 
         Returns
@@ -497,11 +453,9 @@ class Boolean(dsock.Boolean):
           
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
-        node ref Boolean Math </sub>
-                                  
-                ```python
-                v = boolean.xnor(boolean1)
-                ```
+        node ref Boolean Math </sub>```python
+        v = boolean.xnor(boolean1)
+        ```
     
 
         Arguments
@@ -515,12 +469,10 @@ class Boolean(dsock.Boolean):
                     - operation : 'XNOR'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR')
+                        ```
     
 
         Returns
@@ -536,11 +488,9 @@ class Boolean(dsock.Boolean):
           
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
-        node ref Boolean Math </sub>
-                                  
-                ```python
-                v = boolean.xor(boolean1)
-                ```
+        node ref Boolean Math </sub>```python
+        v = boolean.xor(boolean1)
+        ```
     
 
         Arguments
@@ -554,12 +504,10 @@ class Boolean(dsock.Boolean):
                     - operation : 'XOR'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR')
+                        ```
     
 
         Returns
@@ -575,11 +523,9 @@ class Boolean(dsock.Boolean):
           
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
-        node ref Boolean Math </sub>
-                                  
-                ```python
-                v = boolean.imply(boolean1)
-                ```
+        node ref Boolean Math </sub>```python
+        v = boolean.imply(boolean1)
+        ```
     
 
         Arguments
@@ -593,12 +539,10 @@ class Boolean(dsock.Boolean):
                     - operation : 'IMPLY'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY')
+                        ```
     
 
         Returns
@@ -614,11 +558,9 @@ class Boolean(dsock.Boolean):
           
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
-        node ref Boolean Math </sub>
-                                  
-                ```python
-                v = boolean.nimply(boolean1)
-                ```
+        node ref Boolean Math </sub>```python
+        v = boolean.nimply(boolean1)
+        ```
     
 
         Arguments
@@ -632,12 +574,10 @@ class Boolean(dsock.Boolean):
                     - operation : 'NIMPLY'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY')
+                        ```
     
 
         Returns

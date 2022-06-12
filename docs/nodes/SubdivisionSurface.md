@@ -7,12 +7,10 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Initialization
---------------
-        
-        ```python
-        from geonodes import nodes
-        node = nodes.SubdivisionSurface(mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None)
-        ```
+--------------```python
+from geonodes import nodes
+node = nodes.SubdivisionSurface(mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None)
+```
 
 
 

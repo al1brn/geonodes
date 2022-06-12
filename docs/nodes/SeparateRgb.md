@@ -7,12 +7,10 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Initialization
---------------
-        
-        ```python
-        from geonodes import nodes
-        node = nodes.SeparateRgb(image=None, label=None)
-        ```
+--------------```python
+from geonodes import nodes
+node = nodes.SeparateRgb(image=None, label=None)
+```
 
 
 

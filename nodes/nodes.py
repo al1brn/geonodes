@@ -15,12 +15,10 @@ class AlignEulerToVector(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', label=None)
+        ```
         
         
     
@@ -112,12 +110,10 @@ class BooleanMath(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND', label=None)
+        ```
         
         
     
@@ -204,12 +200,10 @@ class Compare(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', label=None)
+        ```
         
         
     
@@ -365,12 +359,10 @@ class FloatToInteger(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.FloatToInteger(float=None, rounding_mode='ROUND', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.FloatToInteger(float=None, rounding_mode='ROUND', label=None)
+        ```
         
         
     
@@ -447,12 +439,10 @@ class Boolean(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Boolean(boolean=False, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Boolean(boolean=False, label=None)
+        ```
         
         
     
@@ -511,12 +501,10 @@ class Color(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Color(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Color(label=None)
+        ```
         
         
     
@@ -558,12 +546,10 @@ class Integer(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Integer(integer=0, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Integer(integer=0, label=None)
+        ```
         
         
     
@@ -622,12 +608,10 @@ class SpecialCharacters(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SpecialCharacters(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SpecialCharacters(label=None)
+        ```
         
         
     
@@ -671,12 +655,10 @@ class String(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.String(string='', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.String(string='', label=None)
+        ```
         
         
     
@@ -735,12 +717,10 @@ class Vector(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Vector(vector=[0.0, 0.0, 0.0], label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Vector(vector=[0.0, 0.0, 0.0], label=None)
+        ```
         
         
     
@@ -799,12 +779,10 @@ class RandomValue(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=None, data_type='FLOAT', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=None, data_type='FLOAT', label=None)
+        ```
         
         
     
@@ -917,12 +895,10 @@ class ReplaceString(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.ReplaceString(string=None, find=None, replace=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.ReplaceString(string=None, find=None, replace=None, label=None)
+        ```
         
         
     
@@ -986,12 +962,10 @@ class RotateEuler(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', label=None)
+        ```
         
         
     
@@ -1074,12 +1048,10 @@ class SliceString(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SliceString(string=None, position=None, length=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SliceString(string=None, position=None, length=None, label=None)
+        ```
         
         
     
@@ -1143,12 +1115,10 @@ class StringLength(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.StringLength(string=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.StringLength(string=None, label=None)
+        ```
         
         
     
@@ -1208,12 +1178,10 @@ class ValueToString(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.ValueToString(value=None, decimals=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.ValueToString(value=None, decimals=None, label=None)
+        ```
         
         
     
@@ -1275,12 +1243,10 @@ class AccumulateField(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', domain='POINT', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', domain='POINT', label=None)
+        ```
         
         
     
@@ -1400,12 +1366,10 @@ class DomainSize(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.DomainSize(geometry=None, component='MESH', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.DomainSize(geometry=None, component='MESH', label=None)
+        ```
         
         
     
@@ -1492,12 +1456,10 @@ class AttributeStatistic(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', label=None)
+        ```
         
         
     
@@ -1627,12 +1589,10 @@ class TransferAttribute(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.TransferAttribute(source=None, attribute=None, source_position=None, index=None, data_type='FLOAT', domain='POINT', mapping='NEAREST_FACE_INTERPOLATED', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.TransferAttribute(source=None, attribute=None, source_position=None, index=None, data_type='FLOAT', domain='POINT', mapping='NEAREST_FACE_INTERPOLATED', label=None)
+        ```
         
         
     
@@ -1773,12 +1733,10 @@ class BoundingBox(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.BoundingBox(geometry=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.BoundingBox(geometry=None, label=None)
+        ```
         
         
     
@@ -1845,12 +1803,10 @@ class CaptureAttribute(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', domain='POINT', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', domain='POINT', label=None)
+        ```
         
         
     
@@ -1975,12 +1931,10 @@ class CollectionInfo(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.CollectionInfo(collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.CollectionInfo(collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL', label=None)
+        ```
         
         
     
@@ -2061,12 +2015,10 @@ class ConvexHull(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.ConvexHull(geometry=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.ConvexHull(geometry=None, label=None)
+        ```
         
         
     
@@ -2126,12 +2078,10 @@ class Arc(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None, start_angle=None, sweep_angle=None, offset_angle=None, connect_center=None, invert_arc=None, mode='RADIUS', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None, start_angle=None, sweep_angle=None, offset_angle=None, connect_center=None, invert_arc=None, mode='RADIUS', label=None)
+        ```
         
         
     
@@ -2233,12 +2183,10 @@ class EndpointSelection(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.EndpointSelection(start_size=None, end_size=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.EndpointSelection(start_size=None, end_size=None, label=None)
+        ```
         
         
     
@@ -2301,12 +2249,10 @@ class HandleTypeSelection(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None)
+        ```
         
         
     
@@ -2318,7 +2264,7 @@ class HandleTypeSelection(Node):
             Parameters
             ----------
                 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                - mode : set (default = {'LEFT', 'RIGHT'})
+                - mode : set (default = {'RIGHT', 'LEFT'})
     
 
             Node label
@@ -2341,7 +2287,7 @@ class HandleTypeSelection(Node):
               
     """
 
-    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None):
+    def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None):
 
         super().__init__('GeometryNodeCurveHandleTypeSelection', name='Handle Type Selection', label=label)
         # Parameters
@@ -2385,12 +2331,10 @@ class CurveLength(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.CurveLength(curve=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.CurveLength(curve=None, label=None)
+        ```
         
         
     
@@ -2450,12 +2394,10 @@ class BezierSegment(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION', label=None)
+        ```
         
         
     
@@ -2540,12 +2482,10 @@ class CurveCircle(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS', label=None)
+        ```
         
         
     
@@ -2632,12 +2572,10 @@ class CurveLine(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='POINTS', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='POINTS', label=None)
+        ```
         
         
     
@@ -2720,12 +2658,10 @@ class Quadrilateral(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', label=None)
+        ```
         
         
     
@@ -2822,12 +2758,10 @@ class QuadraticBezier(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None, label=None)
+        ```
         
         
     
@@ -2893,12 +2827,10 @@ class SetHandleType(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None)
+        ```
         
         
     
@@ -2916,7 +2848,7 @@ class SetHandleType(Node):
             Parameters
             ----------
                 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                - mode : set (default = {'LEFT', 'RIGHT'})
+                - mode : set (default = {'RIGHT', 'LEFT'})
     
 
             Node label
@@ -2938,7 +2870,7 @@ class SetHandleType(Node):
               
     """
 
-    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None):
+    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None):
 
         super().__init__('GeometryNodeCurveSetHandles', name='Set Handle Type', label=label)
         # Parameters
@@ -2987,12 +2919,10 @@ class Spiral(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, label=None)
+        ```
         
         
     
@@ -3062,12 +2992,10 @@ class SetSplineType(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY', label=None)
+        ```
         
         
     
@@ -3146,12 +3074,10 @@ class Star(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None, label=None)
+        ```
         
         
     
@@ -3219,12 +3145,10 @@ class CurveToMesh(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None, label=None)
+        ```
         
         
     
@@ -3288,12 +3212,10 @@ class CurveToPoints(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT', label=None)
+        ```
         
         
     
@@ -3380,12 +3302,10 @@ class DeleteGeometry(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode='ALL', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode='ALL', label=None)
+        ```
         
         
     
@@ -3474,12 +3394,10 @@ class DistributePointsOnFaces(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None)
+        ```
         
         
     
@@ -3572,12 +3490,10 @@ class DualMesh(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.DualMesh(mesh=None, keep_boundaries=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.DualMesh(mesh=None, keep_boundaries=None, label=None)
+        ```
         
         
     
@@ -3639,12 +3555,10 @@ class DuplicateElements(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domain='POINT', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domain='POINT', label=None)
+        ```
         
         
     
@@ -3718,12 +3632,10 @@ class ExtrudeMesh(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES', label=None)
+        ```
         
         
     
@@ -3812,12 +3724,10 @@ class FieldAtIndex(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.FieldAtIndex(index=None, value=None, data_type='FLOAT', domain='POINT', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.FieldAtIndex(index=None, value=None, data_type='FLOAT', domain='POINT', label=None)
+        ```
         
         
     
@@ -3939,12 +3849,10 @@ class FillCurve(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.FillCurve(curve=None, mode='TRIANGLES', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.FillCurve(curve=None, mode='TRIANGLES', label=None)
+        ```
         
         
     
@@ -4021,12 +3929,10 @@ class FilletCurve(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER', label=None)
+        ```
         
         
     
@@ -4109,12 +4015,10 @@ class FlipFaces(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.FlipFaces(mesh=None, selection=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.FlipFaces(mesh=None, selection=None, label=None)
+        ```
         
         
     
@@ -4176,12 +4080,10 @@ class GeometryToInstance(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.GeometryToInstance(*geometry, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.GeometryToInstance(*geometry, label=None)
+        ```
         
         
     
@@ -4241,12 +4143,10 @@ class Group(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Group(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Group(label=None)
+        ```
         
         
     
@@ -4280,12 +4180,10 @@ class ImageTexture(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', label=None)
+        ```
         
         
     
@@ -4378,12 +4276,10 @@ class CurveHandlePositions(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.CurveHandlePositions(relative=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.CurveHandlePositions(relative=None, label=None)
+        ```
         
         
     
@@ -4447,12 +4343,10 @@ class CurveTilt(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.CurveTilt(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.CurveTilt(label=None)
+        ```
         
         
     
@@ -4504,12 +4398,10 @@ class ID(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.ID(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.ID(label=None)
+        ```
         
         
     
@@ -4562,12 +4454,10 @@ class Index(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Index(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Index(label=None)
+        ```
         
         
     
@@ -4622,12 +4512,10 @@ class Material(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Material(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Material(label=None)
+        ```
         
         
     
@@ -4669,12 +4557,10 @@ class MaterialIndex(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.MaterialIndex(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.MaterialIndex(label=None)
+        ```
         
         
     
@@ -4726,12 +4612,10 @@ class EdgeAngle(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.EdgeAngle(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.EdgeAngle(label=None)
+        ```
         
         
     
@@ -4795,12 +4679,10 @@ class EdgeNeighbors(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.EdgeNeighbors(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.EdgeNeighbors(label=None)
+        ```
         
         
     
@@ -4852,12 +4734,10 @@ class EdgeVertices(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.EdgeVertices(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.EdgeVertices(label=None)
+        ```
         
         
     
@@ -4918,12 +4798,10 @@ class FaceArea(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.FaceArea(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.FaceArea(label=None)
+        ```
         
         
     
@@ -4975,12 +4853,10 @@ class FaceIsPlanar(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.FaceIsPlanar(threshold=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.FaceIsPlanar(threshold=None, label=None)
+        ```
         
         
     
@@ -5031,12 +4907,10 @@ class FaceNeighbors(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.FaceNeighbors(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.FaceNeighbors(label=None)
+        ```
         
         
     
@@ -5091,12 +4965,10 @@ class MeshIsland(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.MeshIsland(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.MeshIsland(label=None)
+        ```
         
         
     
@@ -5150,12 +5022,10 @@ class VertexNeighbors(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.VertexNeighbors(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.VertexNeighbors(label=None)
+        ```
         
         
     
@@ -5210,12 +5080,10 @@ class NamedAttribute(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.NamedAttribute(name=None, data_type='FLOAT', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.NamedAttribute(name=None, data_type='FLOAT', label=None)
+        ```
         
         
     
@@ -5303,12 +5171,10 @@ class Normal(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Normal(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Normal(label=None)
+        ```
         
         
     
@@ -5360,12 +5226,10 @@ class Position(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Position(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Position(label=None)
+        ```
         
         
     
@@ -5417,12 +5281,10 @@ class Radius(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Radius(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Radius(label=None)
+        ```
         
         
     
@@ -5474,12 +5336,10 @@ class SceneTime(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SceneTime(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SceneTime(label=None)
+        ```
         
         
     
@@ -5532,12 +5392,10 @@ class IsShadeSmooth(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.IsShadeSmooth(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.IsShadeSmooth(label=None)
+        ```
         
         
     
@@ -5589,12 +5447,10 @@ class IsSplineCyclic(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.IsSplineCyclic(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.IsSplineCyclic(label=None)
+        ```
         
         
     
@@ -5646,12 +5502,10 @@ class SplineResolution(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SplineResolution(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SplineResolution(label=None)
+        ```
         
         
     
@@ -5703,12 +5557,10 @@ class CurveTangent(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.CurveTangent(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.CurveTangent(label=None)
+        ```
         
         
     
@@ -5760,12 +5612,10 @@ class InstanceOnPoints(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, label=None)
+        ```
         
         
     
@@ -5837,12 +5687,10 @@ class InstancesToPoints(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.InstancesToPoints(instances=None, selection=None, position=None, radius=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.InstancesToPoints(instances=None, selection=None, position=None, radius=None, label=None)
+        ```
         
         
     
@@ -5908,12 +5756,10 @@ class IsViewport(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.IsViewport(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.IsViewport(label=None)
+        ```
         
         
     
@@ -5964,12 +5810,10 @@ class JoinGeometry(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.JoinGeometry(*geometry, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.JoinGeometry(*geometry, label=None)
+        ```
         
         
     
@@ -6029,12 +5873,10 @@ class MaterialSelection(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.MaterialSelection(material=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.MaterialSelection(material=None, label=None)
+        ```
         
         
     
@@ -6096,12 +5938,10 @@ class MergeByDistance(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode='ALL', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode='ALL', label=None)
+        ```
         
         
     
@@ -6182,12 +6022,10 @@ class MeshBoolean(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', label=None)
+        ```
         
         
     
@@ -6272,12 +6110,10 @@ class MeshCircle(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE', label=None)
+        ```
         
         
     
@@ -6356,12 +6192,10 @@ class Cone(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', label=None)
+        ```
         
         
     
@@ -6454,12 +6288,10 @@ class Cube(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, label=None)
+        ```
         
         
     
@@ -6525,12 +6357,10 @@ class Cylinder(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', label=None)
+        ```
         
         
     
@@ -6621,12 +6451,10 @@ class Grid(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, label=None)
+        ```
         
         
     
@@ -6692,12 +6520,10 @@ class IcoSphere(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.IcoSphere(radius=None, subdivisions=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.IcoSphere(radius=None, subdivisions=None, label=None)
+        ```
         
         
     
@@ -6759,12 +6585,10 @@ class MeshLine(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', label=None)
+        ```
         
         
     
@@ -6857,12 +6681,10 @@ class MeshToCurve(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.MeshToCurve(mesh=None, selection=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.MeshToCurve(mesh=None, selection=None, label=None)
+        ```
         
         
     
@@ -6924,12 +6746,10 @@ class MeshToPoints(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None)
+        ```
         
         
     
@@ -7012,12 +6832,10 @@ class UvSphere(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.UvSphere(segments=None, rings=None, radius=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.UvSphere(segments=None, rings=None, radius=None, label=None)
+        ```
         
         
     
@@ -7081,12 +6899,10 @@ class ObjectInfo(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL', label=None)
+        ```
         
         
     
@@ -7175,12 +6991,10 @@ class PointsToVertices(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.PointsToVertices(points=None, selection=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.PointsToVertices(points=None, selection=None, label=None)
+        ```
         
         
     
@@ -7242,12 +7056,10 @@ class PointsToVolume(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', label=None)
+        ```
         
         
     
@@ -7332,12 +7144,10 @@ class GeometryProximity(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.GeometryProximity(target=None, source_position=None, target_element='FACES', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.GeometryProximity(target=None, source_position=None, target_element='FACES', label=None)
+        ```
         
         
     
@@ -7418,12 +7228,10 @@ class Raycast(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED', label=None)
+        ```
         
         
     
@@ -7559,12 +7367,10 @@ class RealizeInstances(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None)
+        ```
         
         
     
@@ -7641,12 +7447,10 @@ class RemoveNamedAttribute(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.RemoveNamedAttribute(geometry=None, name=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.RemoveNamedAttribute(geometry=None, name=None, label=None)
+        ```
         
         
     
@@ -7708,12 +7512,10 @@ class ReplaceMaterial(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.ReplaceMaterial(geometry=None, old=None, new=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.ReplaceMaterial(geometry=None, old=None, new=None, label=None)
+        ```
         
         
     
@@ -7777,12 +7579,10 @@ class ResampleCurve(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, mode='COUNT', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, mode='COUNT', label=None)
+        ```
         
         
     
@@ -7865,12 +7665,10 @@ class ReverseCurve(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.ReverseCurve(curve=None, selection=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.ReverseCurve(curve=None, selection=None, label=None)
+        ```
         
         
     
@@ -7932,12 +7730,10 @@ class RotateInstances(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, label=None)
+        ```
         
         
     
@@ -8005,12 +7801,10 @@ class SampleCurve(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SampleCurve(curve=None, factor=None, length=None, mode='LENGTH', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SampleCurve(curve=None, factor=None, length=None, mode='LENGTH', label=None)
+        ```
         
         
     
@@ -8095,12 +7889,10 @@ class ScaleElements(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', label=None)
+        ```
         
         
     
@@ -8195,12 +7987,10 @@ class ScaleInstances(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=None, local_space=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=None, local_space=None, label=None)
+        ```
         
         
     
@@ -8268,12 +8058,10 @@ class SeparateComponents(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SeparateComponents(geometry=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SeparateComponents(geometry=None, label=None)
+        ```
         
         
     
@@ -8346,12 +8134,10 @@ class SeparateGeometry(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT', label=None)
+        ```
         
         
     
@@ -8432,12 +8218,10 @@ class SetHandlePositions(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offset=None, mode='LEFT', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offset=None, mode='LEFT', label=None)
+        ```
         
         
     
@@ -8520,12 +8304,10 @@ class SetCurveRadius(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SetCurveRadius(curve=None, selection=None, radius=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SetCurveRadius(curve=None, selection=None, radius=None, label=None)
+        ```
         
         
     
@@ -8589,12 +8371,10 @@ class SetCurveTilt(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None, label=None)
+        ```
         
         
     
@@ -8658,12 +8438,10 @@ class SetID(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SetID(geometry=None, selection=None, ID=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SetID(geometry=None, selection=None, ID=None, label=None)
+        ```
         
         
     
@@ -8727,12 +8505,10 @@ class SetMaterial(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SetMaterial(geometry=None, selection=None, material=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SetMaterial(geometry=None, selection=None, material=None, label=None)
+        ```
         
         
     
@@ -8796,12 +8572,10 @@ class SetMaterialIndex(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None, label=None)
+        ```
         
         
     
@@ -8865,12 +8639,10 @@ class SetPointRadius(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SetPointRadius(points=None, selection=None, radius=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SetPointRadius(points=None, selection=None, radius=None, label=None)
+        ```
         
         
     
@@ -8934,12 +8706,10 @@ class SetPosition(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=None, label=None)
+        ```
         
         
     
@@ -9005,12 +8775,10 @@ class SetShadeSmooth(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, label=None)
+        ```
         
         
     
@@ -9074,12 +8842,10 @@ class SetSplineCyclic(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None, label=None)
+        ```
         
         
     
@@ -9143,12 +8909,10 @@ class SetSplineResolution(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None, label=None)
+        ```
         
         
     
@@ -9212,12 +8976,10 @@ class SplineLength(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SplineLength(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SplineLength(label=None)
+        ```
         
         
     
@@ -9272,12 +9034,10 @@ class SplineParameter(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SplineParameter(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SplineParameter(label=None)
+        ```
         
         
     
@@ -9335,12 +9095,10 @@ class SplitEdges(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SplitEdges(mesh=None, selection=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SplitEdges(mesh=None, selection=None, label=None)
+        ```
         
         
     
@@ -9402,12 +9160,10 @@ class StoreNamedAttribute(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type='FLOAT', domain='POINT', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type='FLOAT', domain='POINT', label=None)
+        ```
         
         
     
@@ -9511,12 +9267,10 @@ class JoinStrings(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.JoinStrings(*strings, delimiter=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.JoinStrings(*strings, delimiter=None, label=None)
+        ```
         
         
     
@@ -9579,12 +9333,10 @@ class StringToCurves(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT', label=None)
+        ```
         
         
     
@@ -9709,12 +9461,10 @@ class SubdivideCurve(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SubdivideCurve(curve=None, cuts=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SubdivideCurve(curve=None, cuts=None, label=None)
+        ```
         
         
     
@@ -9776,12 +9526,10 @@ class SubdivideMesh(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SubdivideMesh(mesh=None, level=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SubdivideMesh(mesh=None, level=None, label=None)
+        ```
         
         
     
@@ -9843,12 +9591,10 @@ class SubdivisionSurface(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SubdivisionSurface(mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SubdivisionSurface(mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None)
+        ```
         
         
     
@@ -9939,12 +9685,10 @@ class Switch(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Switch(switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Switch(switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', label=None)
+        ```
         
         
     
@@ -10104,12 +9848,10 @@ class Transform(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=None, label=None)
+        ```
         
         
     
@@ -10175,12 +9917,10 @@ class TranslateInstances(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.TranslateInstances(instances=None, selection=None, translation=None, local_space=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.TranslateInstances(instances=None, selection=None, translation=None, local_space=None, label=None)
+        ```
         
         
     
@@ -10246,12 +9986,10 @@ class Triangulate(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', label=None)
+        ```
         
         
     
@@ -10342,12 +10080,10 @@ class TrimCurve(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR', label=None)
+        ```
         
         
     
@@ -10432,12 +10168,10 @@ class VolumeToMesh(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.VolumeToMesh(volume=None, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.VolumeToMesh(volume=None, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID', label=None)
+        ```
         
         
     
@@ -10522,12 +10256,10 @@ class Clamp(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX', label=None)
+        ```
         
         
     
@@ -10608,12 +10340,10 @@ class CombineRgb(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.CombineRgb(r=None, g=None, b=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.CombineRgb(r=None, g=None, b=None, label=None)
+        ```
         
         
     
@@ -10677,12 +10407,10 @@ class CombineXyz(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.CombineXyz(x=None, y=None, z=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.CombineXyz(x=None, y=None, z=None, label=None)
+        ```
         
         
     
@@ -10746,12 +10474,10 @@ class FloatCurve(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.FloatCurve(factor=None, value=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.FloatCurve(factor=None, value=None, label=None)
+        ```
         
         
     
@@ -10813,12 +10539,10 @@ class MapRange(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, vector=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, vector=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', label=None)
+        ```
         
         
     
@@ -10946,12 +10670,10 @@ class Math(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=None)
+        ```
         
         
     
@@ -11151,12 +10873,10 @@ class Mix(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Mix(color1=None, color2=None, fac=None, blend_type='MIX', use_alpha=False, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Mix(color1=None, color2=None, fac=None, blend_type='MIX', use_alpha=False, label=None)
+        ```
         
         
     
@@ -11283,12 +11003,10 @@ class RgbCurves(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.RgbCurves(fac=None, color=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.RgbCurves(fac=None, color=None, label=None)
+        ```
         
         
     
@@ -11350,12 +11068,10 @@ class SeparateRgb(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SeparateRgb(image=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SeparateRgb(image=None, label=None)
+        ```
         
         
     
@@ -11422,12 +11138,10 @@ class SeparateXyz(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.SeparateXyz(vector=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.SeparateXyz(vector=None, label=None)
+        ```
         
         
     
@@ -11494,12 +11208,10 @@ class BrickTexture(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.BrickTexture(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.BrickTexture(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, label=None)
+        ```
         
         
     
@@ -11626,12 +11338,10 @@ class CheckerTexture(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None, label=None)
+        ```
         
         
     
@@ -11699,12 +11409,10 @@ class GradientTexture(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.GradientTexture(vector=None, gradient_type='LINEAR', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.GradientTexture(vector=None, gradient_type='LINEAR', label=None)
+        ```
         
         
     
@@ -11783,12 +11491,10 @@ class MagicTexture(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_depth=2, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_depth=2, label=None)
+        ```
         
         
     
@@ -11871,12 +11577,10 @@ class MusgraveTexture(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM', label=None)
+        ```
         
         
     
@@ -11977,12 +11681,10 @@ class NoiseTexture(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D', label=None)
+        ```
         
         
     
@@ -12071,12 +11773,10 @@ class VoronoiTexture(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D', label=None)
+        ```
         
         
     
@@ -12191,12 +11891,10 @@ class WaveTexture(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS', label=None)
+        ```
         
         
     
@@ -12317,12 +12015,10 @@ class WhiteNoiseTexture(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', label=None)
+        ```
         
         
     
@@ -12403,12 +12099,10 @@ class Colorramp(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Colorramp(fac=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Colorramp(fac=None, label=None)
+        ```
         
         
     
@@ -12470,12 +12164,10 @@ class Value(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.Value(label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.Value(label=None)
+        ```
         
         
     
@@ -12517,12 +12209,10 @@ class VectorCurves(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.VectorCurves(fac=None, vector=None, label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.VectorCurves(fac=None, vector=None, label=None)
+        ```
         
         
     
@@ -12584,12 +12274,10 @@ class VectorMath(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, operation='ADD', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, operation='ADD', label=None)
+        ```
         
         
     
@@ -12727,12 +12415,10 @@ class VectorRotate(Node):
         <sub>go to index</sub>
         
         Initialization
-        --------------
-                
-                ```python
-                from geonodes import nodes
-                node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', label=None)
-                ```
+        --------------```python
+        from geonodes import nodes
+        node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', label=None)
+        ```
         
         
     

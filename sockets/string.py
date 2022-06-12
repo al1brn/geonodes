@@ -52,11 +52,9 @@ class String(dsock.String):
           
         <sub>go to: top index
         blender ref FunctionNodeStringLength
-        node ref String Length </sub>
-                                  
-                ```python
-                v = string.length
-                ```
+        node ref String Length </sub>```python
+        v = string.length
+        ```
     
 
         Arguments
@@ -69,12 +67,10 @@ class String(dsock.String):
                     - label:f"{self.node_chain_label}.length"
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.StringLength(string=self, label=f"{self.node_chain_label}.length")
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.StringLength(string=self, label=f"{self.node_chain_label}.length")
+                        ```
     
 
         Returns
@@ -96,11 +92,9 @@ class String(dsock.String):
           
         <sub>go to: top index
         blender ref GeometryNodeSwitch
-        node ref Switch </sub>
-                                  
-                ```python
-                v = string.switch(switch0, true)
-                ```
+        node ref Switch </sub>```python
+        v = string.switch(switch0, true)
+        ```
     
 
         Arguments
@@ -115,12 +109,10 @@ class String(dsock.String):
                     - input_type : 'STRING'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING')
+                        ```
     
 
         Returns
@@ -136,11 +128,9 @@ class String(dsock.String):
           
         <sub>go to: top index
         blender ref FunctionNodeCompare
-        node ref Compare </sub>
-                                  
-                ```python
-                v = string.element(b)
-                ```
+        node ref Compare </sub>```python
+        v = string.element(b)
+        ```
     
 
         Arguments
@@ -156,12 +146,10 @@ class String(dsock.String):
                     - operation : 'ELEMENT'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT')
+                        ```
     
 
         Returns
@@ -177,11 +165,9 @@ class String(dsock.String):
           
         <sub>go to: top index
         blender ref FunctionNodeCompare
-        node ref Compare </sub>
-                                  
-                ```python
-                v = string.length(b)
-                ```
+        node ref Compare </sub>```python
+        v = string.length(b)
+        ```
     
 
         Arguments
@@ -197,12 +183,10 @@ class String(dsock.String):
                     - operation : 'LENGTH'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH')
+                        ```
     
 
         Returns
@@ -218,11 +202,9 @@ class String(dsock.String):
           
         <sub>go to: top index
         blender ref FunctionNodeCompare
-        node ref Compare </sub>
-                                  
-                ```python
-                v = string.average(b)
-                ```
+        node ref Compare </sub>```python
+        v = string.average(b)
+        ```
     
 
         Arguments
@@ -238,12 +220,10 @@ class String(dsock.String):
                     - operation : 'AVERAGE'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE')
+                        ```
     
 
         Returns
@@ -259,11 +239,9 @@ class String(dsock.String):
           
         <sub>go to: top index
         blender ref FunctionNodeCompare
-        node ref Compare </sub>
-                                  
-                ```python
-                v = string.dot_product(b)
-                ```
+        node ref Compare </sub>```python
+        v = string.dot_product(b)
+        ```
     
 
         Arguments
@@ -279,12 +257,10 @@ class String(dsock.String):
                     - operation : 'DOT_PRODUCT'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT')
+                        ```
     
 
         Returns
@@ -300,11 +276,9 @@ class String(dsock.String):
           
         <sub>go to: top index
         blender ref FunctionNodeCompare
-        node ref Compare </sub>
-                                  
-                ```python
-                v = string.direction(b)
-                ```
+        node ref Compare </sub>```python
+        v = string.direction(b)
+        ```
     
 
         Arguments
@@ -320,12 +294,10 @@ class String(dsock.String):
                     - operation : 'DIRECTION'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION')
+                        ```
     
 
         Returns
@@ -341,11 +313,9 @@ class String(dsock.String):
           
         <sub>go to: top index
         blender ref GeometryNodeStringJoin
-        node ref Join Strings </sub>
-                                  
-                ```python
-                v = string.join(strings_1, strings_2, strings_3, delimiter)
-                ```
+        node ref Join Strings </sub>```python
+        v = string.join(strings_1, strings_2, strings_3, delimiter)
+        ```
     
 
         Arguments
@@ -358,12 +328,10 @@ class String(dsock.String):
                     - delimiter : String
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.JoinStrings(self, *strings, delimiter=delimiter)
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.JoinStrings(self, *strings, delimiter=delimiter)
+                        ```
     
 
         Returns
@@ -379,11 +347,9 @@ class String(dsock.String):
           
         <sub>go to: top index
         blender ref FunctionNodeReplaceString
-        node ref Replace String </sub>
-                                  
-                ```python
-                v = string.replace(find, replace)
-                ```
+        node ref Replace String </sub>```python
+        v = string.replace(find, replace)
+        ```
     
 
         Arguments
@@ -397,12 +363,10 @@ class String(dsock.String):
                     - replace : String
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.ReplaceString(string=self, find=find, replace=replace)
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.ReplaceString(string=self, find=find, replace=replace)
+                        ```
     
 
         Returns
@@ -418,11 +382,9 @@ class String(dsock.String):
           
         <sub>go to: top index
         blender ref FunctionNodeSliceString
-        node ref Slice String </sub>
-                                  
-                ```python
-                v = string.slice(position, length)
-                ```
+        node ref Slice String </sub>```python
+        v = string.slice(position, length)
+        ```
     
 
         Arguments
@@ -436,12 +398,10 @@ class String(dsock.String):
                     - length : Integer
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.SliceString(string=self, position=position, length=length)
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.SliceString(string=self, position=position, length=length)
+                        ```
     
 
         Returns
@@ -457,11 +417,9 @@ class String(dsock.String):
           
         <sub>go to: top index
         blender ref GeometryNodeStringToCurves
-        node ref String to Curves </sub>
-                                  
-                ```python
-                v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_box_width, text_box_height, align_x, align_y, overflow, pivot_mode)
-                ```
+        node ref String to Curves </sub>```python
+        v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_box_width, text_box_height, align_x, align_y, overflow, pivot_mode)
+        ```
     
 
         Arguments
@@ -483,12 +441,10 @@ class String(dsock.String):
                     - pivot_mode : 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
+                        ```
     
 
         Returns

@@ -7,12 +7,10 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Initialization
---------------
-        
-        ```python
-        from geonodes import nodes
-        node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None)
-        ```
+--------------```python
+from geonodes import nodes
+node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None)
+```
 
 
 

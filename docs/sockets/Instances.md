@@ -24,11 +24,9 @@
   
 <sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
 blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
-node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) </sub>
-                          
-        ```python
-        v = instances.instance_index(self)
-        ```
+node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) </sub>```python
+v = instances.instance_index(self)
+```
 
 ### Arguments
 
@@ -38,12 +36,10 @@ node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - self
   
   Node creation
-  -------------
-          
-          ```python
-          from geondes import nodes
-          nodes.Index()
-          ```
+  -------------```python
+  from geondes import nodes
+  nodes.Index()
+  ```
 
 ### Returns
 
@@ -56,11 +52,9 @@ Integer
   
 <sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
 blender ref [GeometryNodeRotateInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html)
-node ref [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html) </sub>
-                          
-        ```python
-        v = instances.rotate(selection, rotation, pivot_point, local_space)
-        ```
+node ref [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html) </sub>```python
+v = instances.rotate(selection, rotation, pivot_point, local_space)
+```
 
 ### Arguments
 
@@ -74,12 +68,10 @@ node ref [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/g
   - local_space : Boolean
     
     Node creation
-    -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
-            ```
+    -------------```python
+    from geondes import nodes
+    nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
+    ```
 
 ### Returns
 
@@ -92,11 +84,9 @@ Instances
   
 <sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
 blender ref [GeometryNodeScaleInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html)
-node ref [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html) </sub>
-                          
-        ```python
-        v = instances.scale(selection, scale, center, local_space)
-        ```
+node ref [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html) </sub>```python
+v = instances.scale(selection, scale, center, local_space)
+```
 
 ### Arguments
 
@@ -110,12 +100,10 @@ node ref [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/ge
   - local_space : Boolean
     
     Node creation
-    -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
-            ```
+    -------------```python
+    from geondes import nodes
+    nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
+    ```
 
 ### Returns
 
@@ -128,11 +116,9 @@ Instances
   
 <sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
 blender ref [GeometryNodeTranslateInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html)
-node ref [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html) </sub>
-                          
-        ```python
-        v = instances.translate(selection, translation, local_space)
-        ```
+node ref [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html) </sub>```python
+v = instances.translate(selection, translation, local_space)
+```
 
 ### Arguments
 
@@ -145,12 +131,10 @@ node ref [Translate Instances](https://docs.blender.org/manual/en/latest/modelin
   - local_space : Boolean
     
     Node creation
-    -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
-            ```
+    -------------```python
+    from geondes import nodes
+    nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
+    ```
 
 ### Returns
 
@@ -163,11 +147,9 @@ Instances
   
 <sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
 blender ref [GeometryNodeInstancesToPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html)
-node ref [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html) </sub>
-                          
-        ```python
-        v = instances.to_points(selection, position, radius)
-        ```
+node ref [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html) </sub>```python
+v = instances.to_points(selection, position, radius)
+```
 
 ### Arguments
 
@@ -180,12 +162,10 @@ node ref [Instances to Points](https://docs.blender.org/manual/en/latest/modelin
   - radius : Float
     
     Node creation
-    -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
-            ```
+    -------------```python
+    from geondes import nodes
+    nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
+    ```
 
 ### Returns
 

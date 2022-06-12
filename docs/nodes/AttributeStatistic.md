@@ -7,12 +7,10 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Initialization
---------------
-        
-        ```python
-        from geonodes import nodes
-        node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', label=None)
-        ```
+--------------```python
+from geonodes import nodes
+node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', label=None)
+```
 
 
 

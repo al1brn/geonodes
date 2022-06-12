@@ -7,12 +7,10 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Initialization
---------------
-        
-        ```python
-        from geonodes import nodes
-        node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None)
-        ```
+--------------```python
+from geonodes import nodes
+node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None)
+```
 
 
 
@@ -27,7 +25,7 @@ Initialization
 ### Parameters
 
 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- mode : set (default = {'LEFT', 'RIGHT'})
+- mode : set (default = {'RIGHT', 'LEFT'})
 
 ### Node label
 

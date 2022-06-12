@@ -7,12 +7,10 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Initialization
---------------
-        
-        ```python
-        from geonodes import nodes
-        node = nodes.GradientTexture(vector=None, gradient_type='LINEAR', label=None)
-        ```
+--------------```python
+from geonodes import nodes
+node = nodes.GradientTexture(vector=None, gradient_type='LINEAR', label=None)
+```
 
 
 

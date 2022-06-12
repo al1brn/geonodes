@@ -18,11 +18,9 @@
   
 <sub>go to: [top](#data-socket-material) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
-                          
-        ```python
-        v = material.switch(switch1, true)
-        ```
+node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>```python
+v = material.switch(switch1, true)
+```
 
 ### Arguments
 
@@ -35,12 +33,10 @@ node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_no
   - input_type : 'MATERIAL'
     
     Node creation
-    -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL')
-            ```
+    -------------```python
+    from geondes import nodes
+    nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL')
+    ```
 
 ### Returns
 
@@ -53,11 +49,9 @@ Material
   
 <sub>go to: [top](#data-socket-material) [index](/docs/index.md)
 blender ref [GeometryNodeMaterialSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
-node ref [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) </sub>
-                          
-        ```python
-        v = material.selection()
-        ```
+node ref [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) </sub>```python
+v = material.selection()
+```
 
 ### Arguments
 
@@ -67,12 +61,10 @@ node ref [Material Selection](https://docs.blender.org/manual/en/latest/modeling
 - material : Material (self)
   
   Node creation
-  -------------
-          
-          ```python
-          from geondes import nodes
-          nodes.MaterialSelection(material=self)
-          ```
+  -------------```python
+  from geondes import nodes
+  nodes.MaterialSelection(material=self)
+  ```
 
 ### Returns
 

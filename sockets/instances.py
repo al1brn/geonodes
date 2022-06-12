@@ -43,11 +43,9 @@ class Instances(gn.Geometry):
           
         <sub>go to: top index
         blender ref GeometryNodeInputIndex
-        node ref Index </sub>
-                                  
-                ```python
-                v = instances.instance_index(self)
-                ```
+        node ref Index </sub>```python
+        v = instances.instance_index(self)
+        ```
     
 
         Arguments
@@ -59,12 +57,10 @@ class Instances(gn.Geometry):
                 - self
                   
                     Node creation
-                    -------------
-                            
-                            ```python
-                            from geondes import nodes
-                            nodes.Index()
-                            ```
+                    -------------```python
+                    from geondes import nodes
+                    nodes.Index()
+                    ```
     
 
         Returns
@@ -84,11 +80,9 @@ class Instances(gn.Geometry):
           
         <sub>go to: top index
         blender ref GeometryNodeRotateInstances
-        node ref Rotate Instances </sub>
-                                  
-                ```python
-                v = instances.rotate(selection, rotation, pivot_point, local_space)
-                ```
+        node ref Rotate Instances </sub>```python
+        v = instances.rotate(selection, rotation, pivot_point, local_space)
+        ```
     
 
         Arguments
@@ -104,12 +98,10 @@ class Instances(gn.Geometry):
                     - local_space : Boolean
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
+                        ```
     
 
         Returns
@@ -125,11 +117,9 @@ class Instances(gn.Geometry):
           
         <sub>go to: top index
         blender ref GeometryNodeScaleInstances
-        node ref Scale Instances </sub>
-                                  
-                ```python
-                v = instances.scale(selection, scale, center, local_space)
-                ```
+        node ref Scale Instances </sub>```python
+        v = instances.scale(selection, scale, center, local_space)
+        ```
     
 
         Arguments
@@ -145,12 +135,10 @@ class Instances(gn.Geometry):
                     - local_space : Boolean
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
+                        ```
     
 
         Returns
@@ -166,11 +154,9 @@ class Instances(gn.Geometry):
           
         <sub>go to: top index
         blender ref GeometryNodeTranslateInstances
-        node ref Translate Instances </sub>
-                                  
-                ```python
-                v = instances.translate(selection, translation, local_space)
-                ```
+        node ref Translate Instances </sub>```python
+        v = instances.translate(selection, translation, local_space)
+        ```
     
 
         Arguments
@@ -185,12 +171,10 @@ class Instances(gn.Geometry):
                     - local_space : Boolean
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
+                        ```
     
 
         Returns
@@ -206,11 +190,9 @@ class Instances(gn.Geometry):
           
         <sub>go to: top index
         blender ref GeometryNodeInstancesToPoints
-        node ref Instances to Points </sub>
-                                  
-                ```python
-                v = instances.to_points(selection, position, radius)
-                ```
+        node ref Instances to Points </sub>```python
+        v = instances.to_points(selection, position, radius)
+        ```
     
 
         Arguments
@@ -225,12 +207,10 @@ class Instances(gn.Geometry):
                     - radius : Float
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
+                        ```
     
 
         Returns

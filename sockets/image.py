@@ -34,11 +34,9 @@ class Image(dsock.Image):
           
         <sub>go to: top index
         blender ref GeometryNodeSwitch
-        node ref Switch </sub>
-                                  
-                ```python
-                v = image.switch(switch1, true)
-                ```
+        node ref Switch </sub>```python
+        v = image.switch(switch1, true)
+        ```
     
 
         Arguments
@@ -53,12 +51,10 @@ class Image(dsock.Image):
                     - input_type : 'IMAGE'
                       
                         Node creation
-                        -------------
-                                
-                                ```python
-                                from geondes import nodes
-                                nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE')
-                                ```
+                        -------------```python
+                        from geondes import nodes
+                        nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE')
+                        ```
     
 
         Returns

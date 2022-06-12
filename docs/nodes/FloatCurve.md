@@ -7,12 +7,10 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Initialization
---------------
-        
-        ```python
-        from geonodes import nodes
-        node = nodes.FloatCurve(factor=None, value=None, label=None)
-        ```
+--------------```python
+from geonodes import nodes
+node = nodes.FloatCurve(factor=None, value=None, label=None)
+```
 
 
 

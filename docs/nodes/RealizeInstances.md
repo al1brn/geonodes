@@ -7,12 +7,10 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Initialization
---------------
-        
-        ```python
-        from geonodes import nodes
-        node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None)
-        ```
+--------------```python
+from geonodes import nodes
+node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None)
+```
 
 
 

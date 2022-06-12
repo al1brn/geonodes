@@ -20,11 +20,9 @@
   
 <sub>go to: [top](#data-socket-points) [index](/docs/index.md)
 blender ref [GeometryNodeSetPointRadius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPointRadius.html)
-node ref [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/set_point_radius.html) </sub>
-                          
-        ```python
-        v = points.set_radius(selection, radius)
-        ```
+node ref [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/set_point_radius.html) </sub>```python
+v = points.set_radius(selection, radius)
+```
 
 ### Arguments
 
@@ -36,12 +34,10 @@ node ref [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/g
   - radius : Float
     
     Node creation
-    -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.SetPointRadius(points=self, selection=selection, radius=radius)
-            ```
+    -------------```python
+    from geondes import nodes
+    nodes.SetPointRadius(points=self, selection=selection, radius=radius)
+    ```
 
 ### Returns
 
@@ -54,11 +50,9 @@ Points
   
 <sub>go to: [top](#data-socket-points) [index](/docs/index.md)
 blender ref [GeometryNodeInstanceOnPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
-node ref [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) </sub>
-                          
-        ```python
-        v = points.instance_on_points(selection, instance, pick_instance, instance_index, rotation, scale)
-        ```
+node ref [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) </sub>```python
+v = points.instance_on_points(selection, instance, pick_instance, instance_index, rotation, scale)
+```
 
 ### Arguments
 
@@ -74,12 +68,10 @@ node ref [Instance on Points](https://docs.blender.org/manual/en/latest/modeling
   - scale : Vector
     
     Node creation
-    -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale)
-            ```
+    -------------```python
+    from geondes import nodes
+    nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale)
+    ```
 
 ### Returns
 
@@ -92,11 +84,9 @@ Instances
   
 <sub>go to: [top](#data-socket-points) [index](/docs/index.md)
 blender ref [GeometryNodePointsToVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html)
-node ref [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html) </sub>
-                          
-        ```python
-        v = points.to_vertices(selection)
-        ```
+node ref [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html) </sub>```python
+v = points.to_vertices(selection)
+```
 
 ### Arguments
 
@@ -107,12 +97,10 @@ node ref [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling
   - selection : Boolean
     
     Node creation
-    -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.PointsToVertices(points=self, selection=selection)
-            ```
+    -------------```python
+    from geondes import nodes
+    nodes.PointsToVertices(points=self, selection=selection)
+    ```
 
 ### Returns
 
@@ -125,11 +113,9 @@ Mesh
   
 <sub>go to: [top](#data-socket-points) [index](/docs/index.md)
 blender ref [GeometryNodePointsToVolume](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html)
-node ref [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html) </sub>
-                          
-        ```python
-        v = points.to_volume(density, voxel_size, voxel_amount, radius, resolution_mode)
-        ```
+node ref [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html) </sub>```python
+v = points.to_volume(density, voxel_size, voxel_amount, radius, resolution_mode)
+```
 
 ### Arguments
 
@@ -144,12 +130,10 @@ node ref [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/g
   - resolution_mode : 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
     
     Node creation
-    -------------
-            
-            ```python
-            from geondes import nodes
-            nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode)
-            ```
+    -------------```python
+    from geondes import nodes
+    nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode)
+    ```
 
 ### Returns
 
