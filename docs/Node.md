@@ -1,5 +1,5 @@
 
-# Data socket Node
+# Class  Node
 
 The root class for Blender node wrappers.
 

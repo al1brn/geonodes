@@ -1,5 +1,5 @@
 
-# Data socket Tree
+# Class  Tree
 
 > Wrap a Blender NodeTree
   

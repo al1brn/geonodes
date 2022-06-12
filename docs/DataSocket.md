@@ -1,5 +1,5 @@
 
-# Data socket DataSocket
+# Class  DataSocket
 
 DataSocket class, sub class and domain data type from socket bl_idname
 

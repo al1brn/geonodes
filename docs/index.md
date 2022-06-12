@@ -23,12 +23,6 @@
 - [Data socket Vector](/docs/sockets/Vector.md)
 - [Data socket Volume](/docs/sockets/Volume.md)
 - [geonodes functions](/docs/sockets/functions.md)
-- [Node Frame](/docs/sockets/Frame.md)
-- [Node GroupInput](/docs/sockets/GroupInput.md)
-- [Node GroupOutput](/docs/sockets/GroupOutput.md)
-- [Node NodeGroup](/docs/sockets/NodeGroup.md)
-- [Node SceneTime](/docs/sockets/SceneTime.md)
-- [Node Viewer](/docs/sockets/Viewer.md)
 
 ## Nodes
 
@@ -81,11 +75,14 @@
 - [Node FlipFaces](/docs/nodes/FlipFaces.md)
 - [Node FloatCurve](/docs/nodes/FloatCurve.md)
 - [Node FloatToInteger](/docs/nodes/FloatToInteger.md)
+- [Node Frame](/docs/nodes/Frame.md)
 - [Node GeometryProximity](/docs/nodes/GeometryProximity.md)
 - [Node GeometryToInstance](/docs/nodes/GeometryToInstance.md)
 - [Node GradientTexture](/docs/nodes/GradientTexture.md)
 - [Node Grid](/docs/nodes/Grid.md)
 - [Node Group](/docs/nodes/Group.md)
+- [Node GroupInput](/docs/nodes/GroupInput.md)
+- [Node GroupOutput](/docs/nodes/GroupOutput.md)
 - [Node HandleTypeSelection](/docs/nodes/HandleTypeSelection.md)
 - [Node IcoSphere](/docs/nodes/IcoSphere.md)
 - [Node ID](/docs/nodes/ID.md)
@@ -115,6 +112,7 @@
 - [Node Mix](/docs/nodes/Mix.md)
 - [Node MusgraveTexture](/docs/nodes/MusgraveTexture.md)
 - [Node NamedAttribute](/docs/nodes/NamedAttribute.md)
+- [Node NodeGroup](/docs/nodes/NodeGroup.md)
 - [Node NoiseTexture](/docs/nodes/NoiseTexture.md)
 - [Node Normal](/docs/nodes/Normal.md)
 - [Node ObjectInfo](/docs/nodes/ObjectInfo.md)
@@ -185,6 +183,7 @@
 - [Node VectorMath](/docs/nodes/VectorMath.md)
 - [Node VectorRotate](/docs/nodes/VectorRotate.md)
 - [Node VertexNeighbors](/docs/nodes/VertexNeighbors.md)
+- [Node Viewer](/docs/nodes/Viewer.md)
 - [Node VolumeToMesh](/docs/nodes/VolumeToMesh.md)
 - [Node VoronoiTexture](/docs/nodes/VoronoiTexture.md)
 - [Node WaveTexture](/docs/nodes/WaveTexture.md)
@@ -192,6 +191,6 @@
 
 ## Core
 
-- [Data socket DataSocket](/docs/DataSocket.md)
-- [Data socket Node](/docs/Node.md)
-- [Data socket Tree](/docs/Tree.md)
+- [Class  DataSocket](/docs/DataSocket.md)
+- [Class  Node](/docs/Node.md)
+- [Class  Tree](/docs/Tree.md)
