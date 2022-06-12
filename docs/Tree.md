@@ -16,9 +16,9 @@ the tree when the script stops.
 
 Once the tree is completed, the `arrange` method tries to place the nodes in the most readable way.
 Hence, building a tree is made between the two instructions:
-- `tree = Tree(tree_name)` : creation / opening of the Blender NodeTree
-- `tree.close()` : arrange the nodes
-  
+  - `tree = Tree(tree_name)` : creation / opening of the Blender NodeTree
+  - `tree.close()` : arrange the nodes
+    
 It is recommanded to use the `with` syntax:
 
 ```python
@@ -261,23 +261,23 @@ If it is not the case, we must insert a "Capture Attribute" node.
 
 The insertion is made with the following algorithm
 
-1. Check if capture is needed
-- for each fed node:
-- if the node has an input geometry:
-- if the input geometry is the expected one:
-- ok
-- else
-- insertion is needed
-- else:
-- continue exploration with the nodes fed by this node
-  
-1. If insertion is needed
-- Create the capture node
-- Set the proper parameters
-- Input geometry with the owning socket
-- Output geometry to the sockets the owning socket was linked to
-- Output attribute to the sockets the attribute was connected to
-  
+  1. Check if capture is needed
+  - for each fed node:
+  - if the node has an input geometry:
+  - if the input geometry is the expected one:
+  - ok
+  - else
+  - insertion is needed
+  - else:
+  - continue exploration with the nodes fed by this node
+    
+    1. If insertion is needed
+  - Create the capture node
+  - Set the proper parameters
+  - Input geometry with the owning socket
+  - Output geometry to the sockets the owning socket was linked to
+  - Output attribute to the sockets the attribute was connected to
+    
 
 ## arrange
 
@@ -290,8 +290,8 @@ Arrange the created nodes in the tree background for more lisibility
 Call to indicated that the tree is completed and that it can be finalized
 
 Two actions are performed:
-- Insertion of "Capture Attribute" nodes for attributes which require it,
-  see [check_attributes](#check_attributes).
-- Nodes arrangement, see [arrange](#arrange)        
-  
-  
+  - Insertion of "Capture Attribute" nodes for attributes which require it,
+    see [check_attributes](#check_attributes).
+  - Nodes arrangement, see [arrange](#arrange)        
+    
+    

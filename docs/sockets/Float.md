@@ -91,10 +91,10 @@ node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - min : Float
-- max : Float
-- ID : Integer
-- seed : Integer## Fixed parameters
-- data_type : 'FLOAT'
+  - max : Float
+  - ID : Integer
+  - seed : Integer## Fixed parameters
+  - data_type : 'FLOAT'
 
 ### Node creation
 
@@ -126,9 +126,9 @@ node ref [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/g
 #### Sockets
 
 - value : Float (self)
-- group_index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-- data_type : 'FLOAT'
+  - group_index : Integer## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+  - data_type : 'FLOAT'
 
 ### Node creation
 
@@ -160,10 +160,10 @@ node ref [Attribute Statistic](https://docs.blender.org/manual/en/latest/modelin
 #### Sockets
 
 - attribute : Float (self)
-- geometry : Geometry
-- selection : Boolean## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-- data_type : 'FLOAT'
+  - geometry : Geometry
+  - selection : Boolean## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+  - data_type : 'FLOAT'
 
 ### Node creation
 
@@ -195,12 +195,12 @@ node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling
 #### Sockets
 
 - attribute : Float (self)
-- source : Geometry
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-- data_type : 'FLOAT'
+  - source : Geometry
+  - source_position : Vector
+  - index : Integer## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+  - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+  - data_type : 'FLOAT'
 
 ### Node creation
 
@@ -232,9 +232,9 @@ node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/
 #### Sockets
 
 - value : Float (self)
-- geometry : Geometry## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-- data_type : 'FLOAT'
+  - geometry : Geometry## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+  - data_type : 'FLOAT'
 
 ### Node creation
 
@@ -266,9 +266,9 @@ node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geo
 #### Sockets
 
 - value : Float (self)
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-- data_type : 'FLOAT'
+  - index : Integer## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+  - data_type : 'FLOAT'
 
 ### Node creation
 
@@ -300,12 +300,12 @@ node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - attribute : Float (self)
-- target_geometry : Geometry
-- source_position : Vector
-- ray_direction : Vector
-- ray_length : Float## Parameters
-- mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
-- data_type : 'FLOAT'
+  - target_geometry : Geometry
+  - source_position : Vector
+  - ray_direction : Vector
+  - ray_length : Float## Parameters
+  - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
+  - data_type : 'FLOAT'
 
 ### Node creation
 
@@ -337,9 +337,9 @@ node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 #### Sockets
 
 - false : Float (self)
-- switch0 : Boolean
-- true : Float## Fixed parameters
-- input_type : 'FLOAT'
+  - switch0 : Boolean
+  - true : Float## Fixed parameters
+  - input_type : 'FLOAT'
 
 ### Node creation
 
@@ -371,13 +371,13 @@ node ref [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry
 #### Sockets
 
 - value : Float (self)
-- from_min : Float
-- from_max : Float
-- to_min : Float
-- to_max : Float## Parameters
-- clamp : True
-- interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]## Fixed parameters
-- data_type : 'FLOAT'
+  - from_min : Float
+  - from_max : Float
+  - to_min : Float
+  - to_max : Float## Parameters
+  - clamp : True
+  - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]## Fixed parameters
+  - data_type : 'FLOAT'
 
 ### Node creation
 
@@ -409,10 +409,10 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : Float (self)
-- b : Float## Fixed parameters
-- data_type : 'FLOAT'
-- mode : 'ELEMENT'
-- operation : 'LESS_THAN'
+  - b : Float## Fixed parameters
+  - data_type : 'FLOAT'
+  - mode : 'ELEMENT'
+  - operation : 'LESS_THAN'
 
 ### Node creation
 
@@ -444,10 +444,10 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : Float (self)
-- b : Float## Fixed parameters
-- data_type : 'FLOAT'
-- mode : 'ELEMENT'
-- operation : 'LESS_EQUAL'
+  - b : Float## Fixed parameters
+  - data_type : 'FLOAT'
+  - mode : 'ELEMENT'
+  - operation : 'LESS_EQUAL'
 
 ### Node creation
 
@@ -479,10 +479,10 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : Float (self)
-- b : Float## Fixed parameters
-- data_type : 'FLOAT'
-- mode : 'ELEMENT'
-- operation : 'GREATER_THAN'
+  - b : Float## Fixed parameters
+  - data_type : 'FLOAT'
+  - mode : 'ELEMENT'
+  - operation : 'GREATER_THAN'
 
 ### Node creation
 
@@ -514,10 +514,10 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : Float (self)
-- b : Float## Fixed parameters
-- data_type : 'FLOAT'
-- mode : 'ELEMENT'
-- operation : 'GREATER_EQUAL'
+  - b : Float## Fixed parameters
+  - data_type : 'FLOAT'
+  - mode : 'ELEMENT'
+  - operation : 'GREATER_EQUAL'
 
 ### Node creation
 
@@ -549,11 +549,11 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : Float (self)
-- b : Float
-- epsilon : Float## Fixed parameters
-- data_type : 'FLOAT'
-- mode : 'ELEMENT'
-- operation : 'EQUAL'
+  - b : Float
+  - epsilon : Float## Fixed parameters
+  - data_type : 'FLOAT'
+  - mode : 'ELEMENT'
+  - operation : 'EQUAL'
 
 ### Node creation
 
@@ -585,11 +585,11 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : Float (self)
-- b : Float
-- epsilon : Float## Fixed parameters
-- data_type : 'FLOAT'
-- mode : 'ELEMENT'
-- operation : 'NOT_EQUAL'
+  - b : Float
+  - epsilon : Float## Fixed parameters
+  - data_type : 'FLOAT'
+  - mode : 'ELEMENT'
+  - operation : 'NOT_EQUAL'
 
 ### Node creation
 
@@ -621,8 +621,8 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float## Fixed parameters
-- operation : 'ADD'
+  - value1 : Float## Fixed parameters
+  - operation : 'ADD'
 
 ### Node creation
 
@@ -654,8 +654,8 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float## Fixed parameters
-- operation : 'SUBTRACT'
+  - value1 : Float## Fixed parameters
+  - operation : 'SUBTRACT'
 
 ### Node creation
 
@@ -687,8 +687,8 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float## Fixed parameters
-- operation : 'MULTIPLY'
+  - value1 : Float## Fixed parameters
+  - operation : 'MULTIPLY'
 
 ### Node creation
 
@@ -720,8 +720,8 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float## Fixed parameters
-- operation : 'DIVIDE'
+  - value1 : Float## Fixed parameters
+  - operation : 'DIVIDE'
 
 ### Node creation
 
@@ -753,9 +753,9 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float
-- value2 : Float## Fixed parameters
-- operation : 'MULTIPLY_ADD'
+  - value1 : Float
+  - value2 : Float## Fixed parameters
+  - operation : 'MULTIPLY_ADD'
 
 ### Node creation
 
@@ -787,8 +787,8 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float## Fixed parameters
-- operation : 'POWER'
+  - value1 : Float## Fixed parameters
+  - operation : 'POWER'
 
 ### Node creation
 
@@ -820,8 +820,8 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float## Fixed parameters
-- operation : 'LOGARITHM'
+  - value1 : Float## Fixed parameters
+  - operation : 'LOGARITHM'
 
 ### Node creation
 
@@ -853,7 +853,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'SQRT'
+  - operation : 'SQRT'
 
 ### Node creation
 
@@ -885,7 +885,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'INVERSE_SQRT'
+  - operation : 'INVERSE_SQRT'
 
 ### Node creation
 
@@ -917,7 +917,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'ABSOLUTE'
+  - operation : 'ABSOLUTE'
 
 ### Node creation
 
@@ -949,7 +949,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'EXPONENT'
+  - operation : 'EXPONENT'
 
 ### Node creation
 
@@ -981,8 +981,8 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float## Fixed parameters
-- operation : 'MINIMUM'
+  - value1 : Float## Fixed parameters
+  - operation : 'MINIMUM'
 
 ### Node creation
 
@@ -1014,8 +1014,8 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float## Fixed parameters
-- operation : 'MAXIMUM'
+  - value1 : Float## Fixed parameters
+  - operation : 'MAXIMUM'
 
 ### Node creation
 
@@ -1047,8 +1047,8 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float## Fixed parameters
-- operation : 'LESS_THAN'
+  - value1 : Float## Fixed parameters
+  - operation : 'LESS_THAN'
 
 ### Node creation
 
@@ -1080,8 +1080,8 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float## Fixed parameters
-- operation : 'GREATER_THAN'
+  - value1 : Float## Fixed parameters
+  - operation : 'GREATER_THAN'
 
 ### Node creation
 
@@ -1113,7 +1113,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'SIGN'
+  - operation : 'SIGN'
 
 ### Node creation
 
@@ -1145,9 +1145,9 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float
-- value2 : Float## Fixed parameters
-- operation : 'COMPARE'
+  - value1 : Float
+  - value2 : Float## Fixed parameters
+  - operation : 'COMPARE'
 
 ### Node creation
 
@@ -1179,9 +1179,9 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float
-- value2 : Float## Fixed parameters
-- operation : 'SMOOTH_MIN'
+  - value1 : Float
+  - value2 : Float## Fixed parameters
+  - operation : 'SMOOTH_MIN'
 
 ### Node creation
 
@@ -1213,9 +1213,9 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float
-- value2 : Float## Fixed parameters
-- operation : 'SMOOTH_MAX'
+  - value1 : Float
+  - value2 : Float## Fixed parameters
+  - operation : 'SMOOTH_MAX'
 
 ### Node creation
 
@@ -1247,7 +1247,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'ROUND'
+  - operation : 'ROUND'
 
 ### Node creation
 
@@ -1279,7 +1279,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'FLOOR'
+  - operation : 'FLOOR'
 
 ### Node creation
 
@@ -1311,7 +1311,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'CEIL'
+  - operation : 'CEIL'
 
 ### Node creation
 
@@ -1343,7 +1343,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'TRUNC'
+  - operation : 'TRUNC'
 
 ### Node creation
 
@@ -1375,7 +1375,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'FRACT'
+  - operation : 'FRACT'
 
 ### Node creation
 
@@ -1407,8 +1407,8 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float## Fixed parameters
-- operation : 'MODULO'
+  - value1 : Float## Fixed parameters
+  - operation : 'MODULO'
 
 ### Node creation
 
@@ -1440,9 +1440,9 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float
-- value2 : Float## Fixed parameters
-- operation : 'WRAP'
+  - value1 : Float
+  - value2 : Float## Fixed parameters
+  - operation : 'WRAP'
 
 ### Node creation
 
@@ -1474,8 +1474,8 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float## Fixed parameters
-- operation : 'SNAP'
+  - value1 : Float## Fixed parameters
+  - operation : 'SNAP'
 
 ### Node creation
 
@@ -1507,8 +1507,8 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float## Fixed parameters
-- operation : 'PINGPONG'
+  - value1 : Float## Fixed parameters
+  - operation : 'PINGPONG'
 
 ### Node creation
 
@@ -1540,7 +1540,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'SINE'
+  - operation : 'SINE'
 
 ### Node creation
 
@@ -1572,7 +1572,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'COSINE'
+  - operation : 'COSINE'
 
 ### Node creation
 
@@ -1604,7 +1604,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'TANGENT'
+  - operation : 'TANGENT'
 
 ### Node creation
 
@@ -1636,7 +1636,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'ARCSINE'
+  - operation : 'ARCSINE'
 
 ### Node creation
 
@@ -1668,7 +1668,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'ARCCOSINE'
+  - operation : 'ARCCOSINE'
 
 ### Node creation
 
@@ -1700,7 +1700,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'ARCTANGENT'
+  - operation : 'ARCTANGENT'
 
 ### Node creation
 
@@ -1732,8 +1732,8 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)
-- value1 : Float## Fixed parameters
-- operation : 'ARCTAN2'
+  - value1 : Float## Fixed parameters
+  - operation : 'ARCTAN2'
 
 ### Node creation
 
@@ -1765,7 +1765,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'SINH'
+  - operation : 'SINH'
 
 ### Node creation
 
@@ -1797,7 +1797,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'COSH'
+  - operation : 'COSH'
 
 ### Node creation
 
@@ -1829,7 +1829,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'TANH'
+  - operation : 'TANH'
 
 ### Node creation
 
@@ -1861,7 +1861,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'RADIANS'
+  - operation : 'RADIANS'
 
 ### Node creation
 
@@ -1893,7 +1893,7 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - value0 : Float (self)## Fixed parameters
-- operation : 'DEGREES'
+  - operation : 'DEGREES'
 
 ### Node creation
 
@@ -1925,7 +1925,7 @@ node ref [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/g
 #### Sockets
 
 - float : Float (self)## Parameters
-- rounding_mode : 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE]
+  - rounding_mode : 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE]
 
 ### Node creation
 
@@ -1957,7 +1957,7 @@ node ref [Value to String](https://docs.blender.org/manual/en/latest/modeling/ge
 #### Sockets
 
 - value : Float (self)
-- decimals : Integer
+  - decimals : Integer
 
 ### Node creation
 
@@ -2020,7 +2020,7 @@ node ref [Float Curve](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - value : Float (self)
-- factor : Float
+  - factor : Float
 
 ### Node creation
 
@@ -2052,9 +2052,9 @@ node ref [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 #### Sockets
 
 - value : Float (self)
-- min : Float
-- max : Float## Parameters
-- clamp_type : 'MINMAX' in [MINMAX, RANGE]
+  - min : Float
+  - max : Float## Parameters
+  - clamp_type : 'MINMAX' in [MINMAX, RANGE]
 
 ### Node creation
 

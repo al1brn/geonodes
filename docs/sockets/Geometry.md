@@ -113,7 +113,7 @@ node ref [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.bound_box"
+  - label:f"{self.node_chain_label}.bound_box"
 
 ### Node creation
 
@@ -145,7 +145,7 @@ node ref [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.box"
+  - label:f"{self.node_chain_label}.box"
 
 ### Node creation
 
@@ -177,7 +177,7 @@ node ref [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.box_min"
+  - label:f"{self.node_chain_label}.box_min"
 
 ### Node creation
 
@@ -209,7 +209,7 @@ node ref [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.box_max"
+  - label:f"{self.node_chain_label}.box_max"
 
 ### Node creation
 
@@ -241,7 +241,7 @@ node ref [Separate Components](https://docs.blender.org/manual/en/latest/modelin
 #### Sockets
 
 - geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.components"
+  - label:f"{self.node_chain_label}.components"
 
 ### Node creation
 
@@ -273,7 +273,7 @@ node ref [Separate Components](https://docs.blender.org/manual/en/latest/modelin
 #### Sockets
 
 - geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.mesh_component"
+  - label:f"{self.node_chain_label}.mesh_component"
 
 ### Node creation
 
@@ -305,7 +305,7 @@ node ref [Separate Components](https://docs.blender.org/manual/en/latest/modelin
 #### Sockets
 
 - geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.points_component"
+  - label:f"{self.node_chain_label}.points_component"
 
 ### Node creation
 
@@ -337,7 +337,7 @@ node ref [Separate Components](https://docs.blender.org/manual/en/latest/modelin
 #### Sockets
 
 - geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.curve_component"
+  - label:f"{self.node_chain_label}.curve_component"
 
 ### Node creation
 
@@ -369,7 +369,7 @@ node ref [Separate Components](https://docs.blender.org/manual/en/latest/modelin
 #### Sockets
 
 - geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.volume_component"
+  - label:f"{self.node_chain_label}.volume_component"
 
 ### Node creation
 
@@ -401,7 +401,7 @@ node ref [Separate Components](https://docs.blender.org/manual/en/latest/modelin
 #### Sockets
 
 - geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.instances_component"
+  - label:f"{self.node_chain_label}.instances_component"
 
 ### Node creation
 
@@ -433,7 +433,7 @@ node ref [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 #### Parameters
 
 - self
-- domain:'POINT'
+  - domain:'POINT'
 
 ### Node creation
 
@@ -465,7 +465,7 @@ node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 #### Parameters
 
 - self
-- domain:'POINT'
+  - domain:'POINT'
 
 ### Node creation
 
@@ -497,7 +497,7 @@ node ref [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 #### Parameters
 
 - self
-- domain:'FACE'
+  - domain:'FACE'
 
 ### Node creation
 
@@ -529,7 +529,7 @@ node ref [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_
 #### Parameters
 
 - self
-- domain:'POINT'
+  - domain:'POINT'
 
 ### Node creation
 
@@ -561,7 +561,7 @@ node ref [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 #### Parameters
 
 - self
-- domain:'POINT'
+  - domain:'POINT'
 
 ### Node creation
 
@@ -748,9 +748,9 @@ node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 #### Sockets
 
 - false : Geometry (self)
-- switch1 : Boolean
-- true : Geometry## Fixed parameters
-- input_type : 'GEOMETRY'
+  - switch1 : Boolean
+  - true : Geometry## Fixed parameters
+  - input_type : 'GEOMETRY'
 
 ### Node creation
 
@@ -782,9 +782,9 @@ node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/
 #### Sockets
 
 - geometry : Geometry (self)
-- value : Float## Parameters
-- data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+  - value : Float## Parameters
+  - data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
 ### Node creation
 
@@ -816,12 +816,12 @@ node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling
 #### Sockets
 
 - source : Geometry (self)
-- attribute : Boolean
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-- data_type : 'BOOLEAN'
+  - attribute : Boolean
+  - source_position : Vector
+  - index : Integer## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+  - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+  - data_type : 'BOOLEAN'
 
 ### Node creation
 
@@ -853,12 +853,12 @@ node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling
 #### Sockets
 
 - source : Geometry (self)
-- attribute : Integer
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-- data_type : 'INT'
+  - attribute : Integer
+  - source_position : Vector
+  - index : Integer## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+  - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+  - data_type : 'INT'
 
 ### Node creation
 
@@ -890,12 +890,12 @@ node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling
 #### Sockets
 
 - source : Geometry (self)
-- attribute : Float
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-- data_type : 'FLOAT'
+  - attribute : Float
+  - source_position : Vector
+  - index : Integer## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+  - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+  - data_type : 'FLOAT'
 
 ### Node creation
 
@@ -927,12 +927,12 @@ node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling
 #### Sockets
 
 - source : Geometry (self)
-- attribute : Vector
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-- data_type : 'FLOAT_VECTOR'
+  - attribute : Vector
+  - source_position : Vector
+  - index : Integer## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+  - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+  - data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -964,12 +964,12 @@ node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling
 #### Sockets
 
 - source : Geometry (self)
-- attribute : Color
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-- data_type : 'FLOAT_COLOR'
+  - attribute : Color
+  - source_position : Vector
+  - index : Integer## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+  - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+  - data_type : 'FLOAT_COLOR'
 
 ### Node creation
 
@@ -1001,9 +1001,9 @@ node ref [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/ge
 #### Sockets
 
 - geometry : Geometry (self)
-- selection : Boolean## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
-- mode : 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
+  - selection : Boolean## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
+  - mode : 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
 
 ### Node creation
 
@@ -1035,9 +1035,9 @@ node ref [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/
 #### Sockets
 
 - geometry : Geometry (self)
-- selection : Boolean
-- distance : Float## Parameters
-- mode : 'ALL' in [ALL, CONNECTED]
+  - selection : Boolean
+  - distance : Float## Parameters
+  - mode : 'ALL' in [ALL, CONNECTED]
 
 ### Node creation
 
@@ -1069,7 +1069,7 @@ node ref [Realize Instances](https://docs.blender.org/manual/en/latest/modeling/
 #### Sockets
 
 - geometry : Geometry (self)## Parameters
-- legacy_behavior : False
+  - legacy_behavior : False
 
 ### Node creation
 
@@ -1101,8 +1101,8 @@ node ref [Replace Material](https://docs.blender.org/manual/en/latest/modeling/g
 #### Sockets
 
 - geometry : Geometry (self)
-- old : Material
-- new : Material
+  - old : Material
+  - new : Material
 
 ### Node creation
 
@@ -1134,12 +1134,12 @@ node ref [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geo
 #### Sockets
 
 - geometry : Geometry (self)
-- selection : Boolean
-- scale : Float
-- center : Vector
-- axis : Vector## Parameters
-- domain : 'FACE' in [FACE, EDGE]
-- scale_mode : 'UNIFORM' in [UNIFORM, SINGLE_AXIS]
+  - selection : Boolean
+  - scale : Float
+  - center : Vector
+  - axis : Vector## Parameters
+  - domain : 'FACE' in [FACE, EDGE]
+  - scale_mode : 'UNIFORM' in [UNIFORM, SINGLE_AXIS]
 
 ### Node creation
 
@@ -1171,8 +1171,8 @@ node ref [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 #### Sockets
 
 - geometry : Geometry (self)
-- selection : Boolean
-- ID : Integer
+  - selection : Boolean
+  - ID : Integer
 
 ### Node creation
 
@@ -1204,8 +1204,8 @@ node ref [Set Material](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - geometry : Geometry (self)
-- selection : Boolean
-- material : Material
+  - selection : Boolean
+  - material : Material
 
 ### Node creation
 
@@ -1237,8 +1237,8 @@ node ref [Set Material Index](https://docs.blender.org/manual/en/latest/modeling
 #### Sockets
 
 - geometry : Geometry (self)
-- selection : Boolean
-- material_index : Integer
+  - selection : Boolean
+  - material_index : Integer
 
 ### Node creation
 
@@ -1270,9 +1270,9 @@ node ref [Set Position](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - geometry : Geometry (self)
-- selection : Boolean
-- position : Vector
-- offset : Vector
+  - selection : Boolean
+  - position : Vector
+  - offset : Vector
 
 ### Node creation
 
@@ -1304,8 +1304,8 @@ node ref [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/g
 #### Sockets
 
 - geometry : Geometry (self)
-- selection : Boolean
-- shade_smooth : Boolean
+  - selection : Boolean
+  - shade_smooth : Boolean
 
 ### Node creation
 
@@ -1337,9 +1337,9 @@ node ref [Transform](https://docs.blender.org/manual/en/latest/modeling/geometry
 #### Sockets
 
 - geometry : Geometry (self)
-- translation : Vector
-- rotation : Vector
-- scale : Vector
+  - translation : Vector
+  - rotation : Vector
+  - scale : Vector
 
 ### Node creation
 
@@ -1371,7 +1371,7 @@ node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - geometry : Geometry (self)## Parameters
-- component : 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+  - component : 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
 ### Node creation
 
@@ -1403,7 +1403,7 @@ node ref [Remove Named Attribute](https://docs.blender.org/manual/en/latest/mode
 #### Sockets
 
 - geometry : Geometry (self)
-- name : String
+  - name : String
 
 ### Node creation
 
@@ -1435,8 +1435,8 @@ node ref [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/
 #### Sockets
 
 - geometry : Geometry (self)
-- selection : Boolean## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
+  - selection : Boolean## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
 
 ### Node creation
 
@@ -1561,8 +1561,8 @@ node ref [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling
 #### Sockets
 
 - target : Geometry (self)
-- source_position : Vector## Parameters
-- target_element : 'FACES' in [POINTS, EDGES, FACES]
+  - source_position : Vector## Parameters
+  - target_element : 'FACES' in [POINTS, EDGES, FACES]
 
 ### Node creation
 

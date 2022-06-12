@@ -46,9 +46,9 @@ node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - probability : Float
-- ID : Integer
-- seed : Integer## Fixed parameters
-- data_type : 'BOOLEAN'
+  - ID : Integer
+  - seed : Integer## Fixed parameters
+  - data_type : 'BOOLEAN'
 
 ### Node creation
 
@@ -80,12 +80,12 @@ node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling
 #### Sockets
 
 - attribute : Boolean (self)
-- source : Geometry
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-- data_type : 'BOOLEAN'
+  - source : Geometry
+  - source_position : Vector
+  - index : Integer## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+  - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+  - data_type : 'BOOLEAN'
 
 ### Node creation
 
@@ -117,9 +117,9 @@ node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/
 #### Sockets
 
 - value : Boolean (self)
-- geometry : Geometry## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-- data_type : 'BOOLEAN'
+  - geometry : Geometry## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+  - data_type : 'BOOLEAN'
 
 ### Node creation
 
@@ -151,9 +151,9 @@ node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geo
 #### Sockets
 
 - value : Boolean (self)
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-- data_type : 'BOOLEAN'
+  - index : Integer## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+  - data_type : 'BOOLEAN'
 
 ### Node creation
 
@@ -185,12 +185,12 @@ node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - attribute : Boolean (self)
-- target_geometry : Geometry
-- source_position : Vector
-- ray_direction : Vector
-- ray_length : Float## Parameters
-- mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
-- data_type : 'BOOLEAN'
+  - target_geometry : Geometry
+  - source_position : Vector
+  - ray_direction : Vector
+  - ray_length : Float## Parameters
+  - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
+  - data_type : 'BOOLEAN'
 
 ### Node creation
 
@@ -222,9 +222,9 @@ node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 #### Sockets
 
 - switch0 : Boolean (self)
-- false : Boolean
-- true : Boolean## Fixed parameters
-- input_type : 'BOOLEAN'
+  - false : Boolean
+  - true : Boolean## Fixed parameters
+  - input_type : 'BOOLEAN'
 
 ### Node creation
 
@@ -256,8 +256,8 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - boolean0 : Boolean (self)
-- boolean1 : Boolean## Fixed parameters
-- operation : 'AND'
+  - boolean1 : Boolean## Fixed parameters
+  - operation : 'AND'
 
 ### Node creation
 
@@ -289,8 +289,8 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - boolean0 : Boolean (self)
-- boolean1 : Boolean## Fixed parameters
-- operation : 'OR'
+  - boolean1 : Boolean## Fixed parameters
+  - operation : 'OR'
 
 ### Node creation
 
@@ -322,7 +322,7 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - boolean0 : Boolean (self)## Fixed parameters
-- operation : 'NOT'
+  - operation : 'NOT'
 
 ### Node creation
 
@@ -354,8 +354,8 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - boolean0 : Boolean (self)
-- boolean1 : Boolean## Fixed parameters
-- operation : 'NAND'
+  - boolean1 : Boolean## Fixed parameters
+  - operation : 'NAND'
 
 ### Node creation
 
@@ -387,8 +387,8 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - boolean0 : Boolean (self)
-- boolean1 : Boolean## Fixed parameters
-- operation : 'NOR'
+  - boolean1 : Boolean## Fixed parameters
+  - operation : 'NOR'
 
 ### Node creation
 
@@ -420,8 +420,8 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - boolean0 : Boolean (self)
-- boolean1 : Boolean## Fixed parameters
-- operation : 'XNOR'
+  - boolean1 : Boolean## Fixed parameters
+  - operation : 'XNOR'
 
 ### Node creation
 
@@ -453,8 +453,8 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - boolean0 : Boolean (self)
-- boolean1 : Boolean## Fixed parameters
-- operation : 'XOR'
+  - boolean1 : Boolean## Fixed parameters
+  - operation : 'XOR'
 
 ### Node creation
 
@@ -486,8 +486,8 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - boolean0 : Boolean (self)
-- boolean1 : Boolean## Fixed parameters
-- operation : 'IMPLY'
+  - boolean1 : Boolean## Fixed parameters
+  - operation : 'IMPLY'
 
 ### Node creation
 
@@ -519,8 +519,8 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - boolean0 : Boolean (self)
-- boolean1 : Boolean## Fixed parameters
-- operation : 'NIMPLY'
+  - boolean1 : Boolean## Fixed parameters
+  - operation : 'NIMPLY'
 
 ### Node creation
 

@@ -30,9 +30,9 @@ node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 #### Sockets
 
 - false : Material (self)
-- switch1 : Boolean
-- true : Material## Fixed parameters
-- input_type : 'MATERIAL'
+  - switch1 : Boolean
+  - true : Material## Fixed parameters
+  - input_type : 'MATERIAL'
 
 ### Node creation
 

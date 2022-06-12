@@ -67,10 +67,10 @@ node ref [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/g
 #### Sockets
 
 - instances : Instances (self)
-- selection : Boolean
-- rotation : Vector
-- pivot_point : Vector
-- local_space : Boolean
+  - selection : Boolean
+  - rotation : Vector
+  - pivot_point : Vector
+  - local_space : Boolean
 
 ### Node creation
 
@@ -102,10 +102,10 @@ node ref [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/ge
 #### Sockets
 
 - instances : Instances (self)
-- selection : Boolean
-- scale : Vector
-- center : Vector
-- local_space : Boolean
+  - selection : Boolean
+  - scale : Vector
+  - center : Vector
+  - local_space : Boolean
 
 ### Node creation
 
@@ -137,9 +137,9 @@ node ref [Translate Instances](https://docs.blender.org/manual/en/latest/modelin
 #### Sockets
 
 - instances : Instances (self)
-- selection : Boolean
-- translation : Vector
-- local_space : Boolean
+  - selection : Boolean
+  - translation : Vector
+  - local_space : Boolean
 
 ### Node creation
 
@@ -171,9 +171,9 @@ node ref [Instances to Points](https://docs.blender.org/manual/en/latest/modelin
 #### Sockets
 
 - instances : Instances (self)
-- selection : Boolean
-- position : Vector
-- radius : Float
+  - selection : Boolean
+  - position : Vector
+  - radius : Float
 
 ### Node creation
 

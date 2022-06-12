@@ -16,8 +16,8 @@ supposingly have one single input socket named "geometry"
 The Node sub classes are named accoridng their Blender label with a **Camel case** conversion,
 for instance:
 
-- _Set Shade Smooth_ --> SetShadeSmoth
-- _Split Edges_ --> SplitEdges
+  - _Set Shade Smooth_ --> SetShadeSmoth
+  - _Split Edges_ --> SplitEdges
 _ _Normal_ --> Normal
 
 ## Sockets naming convention
@@ -25,14 +25,14 @@ _ _Normal_ --> Normal
 The node socket are named after the Blender sockets names with a **snake case** conversion,
 for instance:
 
-- _Geometry_ --> geometry
-- _Mesh 1_ --> mesh_1
-  
+  - _Geometry_ --> geometry
+  - _Mesh 1_ --> mesh_1
+    
 For some nodes, (Math node for instance), several sockets can share the same name. In that case, the
 sockets are numbered, starting from 0:
 
-- Value --> value0
-- Value --> value1
+  - Value --> value0
+  - Value --> value1
 
 ## Properties
 
@@ -130,9 +130,9 @@ If the socket is multi input, the plug method is called once per provide value.
 If a value is None, nothing happens.
 
 A not None value can be:
-- either a valid valud for the socket (eg: 123 for Integer socket)
-- or an output socket of another Node
-  
+  - either a valid valud for the socket (eg: 123 for Integer socket)
+  - or an output socket of another Node
+    
 When it is a socket, it can be a Blender socker or a DataSocket
 
 ### Arguments

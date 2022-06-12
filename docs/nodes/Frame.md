@@ -13,13 +13,13 @@
 ### Parameters
 
 - label : str, default="Layout"
-frame label
+  frame label
 - label_size : int, default=42
-label font size
+  label font size
 - color: color
-color specification
+  color specification
 - shrink: bool
-Node parameter
-
-
-
+  Node parameter
+  
+  
+  

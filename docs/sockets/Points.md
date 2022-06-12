@@ -32,8 +32,8 @@ node ref [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/g
 #### Sockets
 
 - points : Points (self)
-- selection : Boolean
-- radius : Float
+  - selection : Boolean
+  - radius : Float
 
 ### Node creation
 
@@ -65,12 +65,12 @@ node ref [Instance on Points](https://docs.blender.org/manual/en/latest/modeling
 #### Sockets
 
 - points : Points (self)
-- selection : Boolean
-- instance : Geometry
-- pick_instance : Boolean
-- instance_index : Integer
-- rotation : Vector
-- scale : Vector
+  - selection : Boolean
+  - instance : Geometry
+  - pick_instance : Boolean
+  - instance_index : Integer
+  - rotation : Vector
+  - scale : Vector
 
 ### Node creation
 
@@ -102,7 +102,7 @@ node ref [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling
 #### Sockets
 
 - points : Points (self)
-- selection : Boolean
+  - selection : Boolean
 
 ### Node creation
 
@@ -134,11 +134,11 @@ node ref [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/g
 #### Sockets
 
 - points : Points (self)
-- density : Float
-- voxel_size : Float
-- voxel_amount : Float
-- radius : Float## Parameters
-- resolution_mode : 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
+  - density : Float
+  - voxel_size : Float
+  - voxel_amount : Float
+  - radius : Float## Parameters
+  - resolution_mode : 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
 
 ### Node creation
 

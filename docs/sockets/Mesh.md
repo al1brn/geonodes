@@ -93,8 +93,8 @@ node ref [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vertices : Integer
-- radius : Float## Parameters
-- fill_type : 'NONE' in [NONE, NGON, TRIANGLE_FAN]
+  - radius : Float## Parameters
+  - fill_type : 'NONE' in [NONE, NGON, TRIANGLE_FAN]
 
 ### Node creation
 
@@ -126,12 +126,12 @@ node ref [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - vertices : Integer
-- side_segments : Integer
-- fill_segments : Integer
-- radius_top : Float
-- radius_bottom : Float
-- depth : Float## Parameters
-- fill_type : 'NGON' in [NONE, NGON, TRIANGLE_FAN]
+  - side_segments : Integer
+  - fill_segments : Integer
+  - radius_top : Float
+  - radius_bottom : Float
+  - depth : Float## Parameters
+  - fill_type : 'NGON' in [NONE, NGON, TRIANGLE_FAN]
 
 ### Node creation
 
@@ -163,9 +163,9 @@ node ref [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - size : Vector
-- vertices_x : Integer
-- vertices_y : Integer
-- vertices_z : Integer
+  - vertices_x : Integer
+  - vertices_y : Integer
+  - vertices_z : Integer
 
 ### Node creation
 
@@ -197,11 +197,11 @@ node ref [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_
 #### Sockets
 
 - vertices : Integer
-- side_segments : Integer
-- fill_segments : Integer
-- radius : Float
-- depth : Float## Parameters
-- fill_type : 'NGON' in [NONE, NGON, TRIANGLE_FAN]
+  - side_segments : Integer
+  - fill_segments : Integer
+  - radius : Float
+  - depth : Float## Parameters
+  - fill_type : 'NGON' in [NONE, NGON, TRIANGLE_FAN]
 
 ### Node creation
 
@@ -233,9 +233,9 @@ node ref [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - size_x : Float
-- size_y : Float
-- vertices_x : Integer
-- vertices_y : Integer
+  - size_y : Float
+  - vertices_x : Integer
+  - vertices_y : Integer
 
 ### Node creation
 
@@ -267,7 +267,7 @@ node ref [Ico Sphere](https://docs.blender.org/manual/en/latest/modeling/geometr
 #### Sockets
 
 - radius : Float
-- subdivisions : Integer
+  - subdivisions : Integer
 
 ### Node creation
 
@@ -299,10 +299,10 @@ node ref [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry
 #### Sockets
 
 - count : Integer
-- start_location : Vector
-- offset : Vector## Parameters
-- count_mode : 'TOTAL' in [TOTAL, RESOLUTION]
-- mode : 'OFFSET' in [OFFSET, END_POINTS]
+  - start_location : Vector
+  - offset : Vector## Parameters
+  - count_mode : 'TOTAL' in [TOTAL, RESOLUTION]
+  - mode : 'OFFSET' in [OFFSET, END_POINTS]
 
 ### Node creation
 
@@ -334,8 +334,8 @@ node ref [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry
 #### Sockets
 
 - segments : Integer
-- rings : Integer
-- radius : Float
+  - rings : Integer
+  - radius : Float
 
 ### Node creation
 
@@ -367,7 +367,7 @@ node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometr
 #### Parameters
 
 - self
-- domain:'EDGE'
+  - domain:'EDGE'
 
 ### Node creation
 
@@ -399,7 +399,7 @@ node ref [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geo
 #### Parameters
 
 - self
-- domain:'EDGE'
+  - domain:'EDGE'
 
 ### Node creation
 
@@ -431,7 +431,7 @@ node ref [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geom
 #### Parameters
 
 - self
-- domain:'EDGE'
+  - domain:'EDGE'
 
 ### Node creation
 
@@ -463,7 +463,7 @@ node ref [Face Area](https://docs.blender.org/manual/en/latest/modeling/geometry
 #### Parameters
 
 - self
-- domain:'FACE'
+  - domain:'FACE'
 
 ### Node creation
 
@@ -495,7 +495,7 @@ node ref [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geo
 #### Parameters
 
 - self
-- domain:'FACE'
+  - domain:'FACE'
 
 ### Node creation
 
@@ -527,7 +527,7 @@ node ref [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Parameters
 
 - self
-- domain:'POINT'
+  - domain:'POINT'
 
 ### Node creation
 
@@ -559,7 +559,7 @@ node ref [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/ge
 #### Parameters
 
 - self
-- domain:'FACE'
+  - domain:'FACE'
 
 ### Node creation
 
@@ -591,7 +591,7 @@ node ref [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/g
 #### Parameters
 
 - self
-- domain:'POINT'
+  - domain:'POINT'
 
 ### Node creation
 
@@ -623,7 +623,7 @@ node ref [Material Index](https://docs.blender.org/manual/en/latest/modeling/geo
 #### Parameters
 
 - self
-- domain:'FACE'
+  - domain:'FACE'
 
 ### Node creation
 
@@ -655,8 +655,8 @@ node ref [Material Selection](https://docs.blender.org/manual/en/latest/modeling
 #### Sockets
 
 - material : Material## Parameters
-- self
-- domain:'FACE'
+  - self
+  - domain:'FACE'
 
 ### Node creation
 
@@ -1432,7 +1432,7 @@ node ref [Material Selection](https://docs.blender.org/manual/en/latest/modeling
 #### Sockets
 
 - material : Material## Parameters
-- self
+  - self
 
 ### Node creation
 
@@ -1464,9 +1464,9 @@ node ref [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - mesh_2 : *Geometry (self)
-- self_intersection : Boolean
-- hole_tolerant : Boolean## Fixed parameters
-- operation : 'INTERSECT'
+  - self_intersection : Boolean
+  - hole_tolerant : Boolean## Fixed parameters
+  - operation : 'INTERSECT'
 
 ### Node creation
 
@@ -1498,9 +1498,9 @@ node ref [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - mesh_2 : *Geometry (self)
-- self_intersection : Boolean
-- hole_tolerant : Boolean## Fixed parameters
-- operation : 'UNION'
+  - self_intersection : Boolean
+  - hole_tolerant : Boolean## Fixed parameters
+  - operation : 'UNION'
 
 ### Node creation
 
@@ -1532,10 +1532,10 @@ node ref [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - mesh_1 : Geometry (self)
-- mesh_2 : *Geometry
-- self_intersection : Boolean
-- hole_tolerant : Boolean## Fixed parameters
-- operation : 'DIFFERENCE'
+  - mesh_2 : *Geometry
+  - self_intersection : Boolean
+  - hole_tolerant : Boolean## Fixed parameters
+  - operation : 'DIFFERENCE'
 
 ### Node creation
 
@@ -1567,7 +1567,7 @@ node ref [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - mesh : Mesh (self)
-- selection : Boolean
+  - selection : Boolean
 
 ### Node creation
 
@@ -1599,7 +1599,7 @@ node ref [Subdivide Mesh](https://docs.blender.org/manual/en/latest/modeling/geo
 #### Sockets
 
 - mesh : Mesh (self)
-- level : Integer
+  - level : Integer
 
 ### Node creation
 
@@ -1631,10 +1631,10 @@ node ref [Subdivision Surface](https://docs.blender.org/manual/en/latest/modelin
 #### Sockets
 
 - mesh : Mesh (self)
-- level : Integer
-- crease : Float## Parameters
-- boundary_smooth : 'ALL' in [PRESERVE_CORNERS, ALL]
-- uv_smooth : 'PRESERVE_BOUNDARIES' in [NONE, PRESERVE_CORNERS, PRESERVE_CORNERS_AND_JUNCTIONS, PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE, PRESERVE_BOUNDARIES, SMOOTH_ALL]
+  - level : Integer
+  - crease : Float## Parameters
+  - boundary_smooth : 'ALL' in [PRESERVE_CORNERS, ALL]
+  - uv_smooth : 'PRESERVE_BOUNDARIES' in [NONE, PRESERVE_CORNERS, PRESERVE_CORNERS_AND_JUNCTIONS, PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE, PRESERVE_BOUNDARIES, SMOOTH_ALL]
 
 ### Node creation
 
@@ -1666,10 +1666,10 @@ node ref [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - mesh : Mesh (self)
-- selection : Boolean
-- minimum_vertices : Integer## Parameters
-- ngon_method : 'BEAUTY' in [BEAUTY, CLIP]
-- quad_method : 'SHORTEST_DIAGONAL' in [BEAUTY, FIXED, FIXED_ALTERNATE, SHORTEST_DIAGONAL, LONGEST_DIAGONAL]
+  - selection : Boolean
+  - minimum_vertices : Integer## Parameters
+  - ngon_method : 'BEAUTY' in [BEAUTY, CLIP]
+  - quad_method : 'SHORTEST_DIAGONAL' in [BEAUTY, FIXED, FIXED_ALTERNATE, SHORTEST_DIAGONAL, LONGEST_DIAGONAL]
 
 ### Node creation
 
@@ -1701,7 +1701,7 @@ node ref [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry
 #### Sockets
 
 - mesh : Mesh (self)
-- keep_boundaries : Boolean
+  - keep_boundaries : Boolean
 
 ### Node creation
 
@@ -1733,7 +1733,7 @@ node ref [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometr
 #### Sockets
 
 - mesh : Mesh (self)
-- selection : Boolean
+  - selection : Boolean
 
 ### Node creation
 
@@ -1765,11 +1765,11 @@ node ref [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - mesh : Mesh (self)
-- selection : Boolean
-- offset : Vector
-- offset_scale : Float
-- individual : Boolean## Parameters
-- mode : 'FACES' in [VERTICES, EDGES, FACES]
+  - selection : Boolean
+  - offset : Vector
+  - offset_scale : Float
+  - individual : Boolean## Parameters
+  - mode : 'FACES' in [VERTICES, EDGES, FACES]
 
 ### Node creation
 
@@ -1801,7 +1801,7 @@ node ref [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geom
 #### Sockets
 
 - mesh : Mesh (self)
-- selection : Boolean
+  - selection : Boolean
 
 ### Node creation
 
@@ -1833,10 +1833,10 @@ node ref [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geo
 #### Sockets
 
 - mesh : Mesh (self)
-- selection : Boolean
-- position : Vector
-- radius : Float## Parameters
-- mode : 'VERTICES' in [VERTICES, EDGES, FACES, CORNERS]
+  - selection : Boolean
+  - position : Vector
+  - radius : Float## Parameters
+  - mode : 'VERTICES' in [VERTICES, EDGES, FACES, CORNERS]
 
 ### Node creation
 
@@ -1868,13 +1868,13 @@ node ref [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/
 #### Sockets
 
 - mesh : Mesh (self)
-- selection : Boolean
-- distance_min : Float
-- density_max : Float
-- density : Float
-- density_factor : Float
-- seed : Integer## Parameters
-- distribute_method : 'RANDOM' in [RANDOM, POISSON]
+  - selection : Boolean
+  - distance_min : Float
+  - density_max : Float
+  - density : Float
+  - density_factor : Float
+  - seed : Integer## Parameters
+  - distribute_method : 'RANDOM' in [RANDOM, POISSON]
 
 ### Node creation
 

@@ -85,10 +85,10 @@ node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - min : Vector
-- max : Vector
-- ID : Integer
-- seed : Integer## Fixed parameters
-- data_type : 'FLOAT_VECTOR'
+  - max : Vector
+  - ID : Integer
+  - seed : Integer## Fixed parameters
+  - data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -120,8 +120,8 @@ node ref [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - x : Float
-- y : Float
-- z : Float
+  - y : Float
+  - z : Float
 
 ### Node creation
 
@@ -153,10 +153,10 @@ node ref [Align Euler to Vector](https://docs.blender.org/manual/en/latest/model
 #### Sockets
 
 - rotation : Vector
-- factor : Float
-- vector : Vector## Parameters
-- axis : 'X' in [X, Y, Z]
-- pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
+  - factor : Float
+  - vector : Vector## Parameters
+  - axis : 'X' in [X, Y, Z]
+  - pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
 
 ### Node creation
 
@@ -188,7 +188,7 @@ node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - vector : Vector (self)## Fixed parameters
-- label:f"{self.node_chain_label}.separate"
+  - label:f"{self.node_chain_label}.separate"
 
 ### Node creation
 
@@ -220,7 +220,7 @@ node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - vector : Vector (self)## Fixed parameters
-- label:f"{self.node_chain_label}.x"
+  - label:f"{self.node_chain_label}.x"
 
 ### Node creation
 
@@ -252,7 +252,7 @@ node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - vector : Vector (self)## Fixed parameters
-- label:f"{self.node_chain_label}.y"
+  - label:f"{self.node_chain_label}.y"
 
 ### Node creation
 
@@ -284,7 +284,7 @@ node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - vector : Vector (self)## Fixed parameters
-- label:f"{self.node_chain_label}.z"
+  - label:f"{self.node_chain_label}.z"
 
 ### Node creation
 
@@ -316,9 +316,9 @@ node ref [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/g
 #### Sockets
 
 - value : Vector (self)
-- group_index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-- data_type : 'FLOAT_VECTOR'
+  - group_index : Integer## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+  - data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -350,10 +350,10 @@ node ref [Attribute Statistic](https://docs.blender.org/manual/en/latest/modelin
 #### Sockets
 
 - attribute : Vector (self)
-- geometry : Geometry
-- selection : Boolean## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-- data_type : 'FLOAT_VECTOR'
+  - geometry : Geometry
+  - selection : Boolean## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+  - data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -385,12 +385,12 @@ node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling
 #### Sockets
 
 - attribute : Vector (self)
-- source : Geometry
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-- data_type : 'FLOAT_VECTOR'
+  - source : Geometry
+  - source_position : Vector
+  - index : Integer## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+  - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+  - data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -422,9 +422,9 @@ node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/
 #### Sockets
 
 - value : Vector (self)
-- geometry : Geometry## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-- data_type : 'FLOAT_VECTOR'
+  - geometry : Geometry## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+  - data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -456,9 +456,9 @@ node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geo
 #### Sockets
 
 - value : Vector (self)
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-- data_type : 'FLOAT_VECTOR'
+  - index : Integer## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+  - data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -490,12 +490,12 @@ node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - attribute : Vector (self)
-- target_geometry : Geometry
-- source_position : Vector
-- ray_direction : Vector
-- ray_length : Float## Parameters
-- mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
-- data_type : 'FLOAT_VECTOR'
+  - target_geometry : Geometry
+  - source_position : Vector
+  - ray_direction : Vector
+  - ray_length : Float## Parameters
+  - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
+  - data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -527,13 +527,13 @@ node ref [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry
 #### Sockets
 
 - vector : Vector (self)
-- from_min : Vector
-- from_max : Vector
-- to_min : Vector
-- to_max : Vector## Parameters
-- clamp : True
-- interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]## Fixed parameters
-- data_type : 'FLOAT_VECTOR'
+  - from_min : Vector
+  - from_max : Vector
+  - to_min : Vector
+  - to_max : Vector## Parameters
+  - clamp : True
+  - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]## Fixed parameters
+  - data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -565,12 +565,12 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : Vector (self)
-- b : Vector
-- c : Float
-- angle : Float## Parameters
-- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
-- data_type : 'VECTOR'
-- operation : 'LESS_THAN'
+  - b : Vector
+  - c : Float
+  - angle : Float## Parameters
+  - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+  - data_type : 'VECTOR'
+  - operation : 'LESS_THAN'
 
 ### Node creation
 
@@ -602,12 +602,12 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : Vector (self)
-- b : Vector
-- c : Float
-- angle : Float## Parameters
-- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
-- data_type : 'VECTOR'
-- operation : 'LESS_EQUAL'
+  - b : Vector
+  - c : Float
+  - angle : Float## Parameters
+  - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+  - data_type : 'VECTOR'
+  - operation : 'LESS_EQUAL'
 
 ### Node creation
 
@@ -639,12 +639,12 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : Vector (self)
-- b : Vector
-- c : Float
-- angle : Float## Parameters
-- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
-- data_type : 'VECTOR'
-- operation : 'GREATER_THAN'
+  - b : Vector
+  - c : Float
+  - angle : Float## Parameters
+  - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+  - data_type : 'VECTOR'
+  - operation : 'GREATER_THAN'
 
 ### Node creation
 
@@ -676,12 +676,12 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : Vector (self)
-- b : Vector
-- c : Float
-- angle : Float## Parameters
-- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
-- data_type : 'VECTOR'
-- operation : 'GREATER_EQUAL'
+  - b : Vector
+  - c : Float
+  - angle : Float## Parameters
+  - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+  - data_type : 'VECTOR'
+  - operation : 'GREATER_EQUAL'
 
 ### Node creation
 
@@ -713,13 +713,13 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : Vector (self)
-- b : Vector
-- c : Float
-- angle : Float
-- epsilon : Float## Parameters
-- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
-- data_type : 'VECTOR'
-- operation : 'EQUAL'
+  - b : Vector
+  - c : Float
+  - angle : Float
+  - epsilon : Float## Parameters
+  - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+  - data_type : 'VECTOR'
+  - operation : 'EQUAL'
 
 ### Node creation
 
@@ -751,13 +751,13 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : Vector (self)
-- b : Vector
-- c : Float
-- angle : Float
-- epsilon : Float## Parameters
-- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
-- data_type : 'VECTOR'
-- operation : 'NOT_EQUAL'
+  - b : Vector
+  - c : Float
+  - angle : Float
+  - epsilon : Float## Parameters
+  - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+  - data_type : 'VECTOR'
+  - operation : 'NOT_EQUAL'
 
 ### Node creation
 
@@ -789,8 +789,8 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
-- operation : 'ADD'
+  - vector1 : Vector## Fixed parameters
+  - operation : 'ADD'
 
 ### Node creation
 
@@ -822,8 +822,8 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
-- operation : 'SUBTRACT'
+  - vector1 : Vector## Fixed parameters
+  - operation : 'SUBTRACT'
 
 ### Node creation
 
@@ -855,8 +855,8 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
-- operation : 'MULTIPLY'
+  - vector1 : Vector## Fixed parameters
+  - operation : 'MULTIPLY'
 
 ### Node creation
 
@@ -888,8 +888,8 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
-- operation : 'DIVIDE'
+  - vector1 : Vector## Fixed parameters
+  - operation : 'DIVIDE'
 
 ### Node creation
 
@@ -921,9 +921,9 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- vector1 : Vector
-- vector2 : Vector## Fixed parameters
-- operation : 'MULTIPLY_ADD'
+  - vector1 : Vector
+  - vector2 : Vector## Fixed parameters
+  - operation : 'MULTIPLY_ADD'
 
 ### Node creation
 
@@ -955,8 +955,8 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
-- operation : 'CROSS_PRODUCT'
+  - vector1 : Vector## Fixed parameters
+  - operation : 'CROSS_PRODUCT'
 
 ### Node creation
 
@@ -988,8 +988,8 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
-- operation : 'PROJECT'
+  - vector1 : Vector## Fixed parameters
+  - operation : 'PROJECT'
 
 ### Node creation
 
@@ -1021,8 +1021,8 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
-- operation : 'REFLECT'
+  - vector1 : Vector## Fixed parameters
+  - operation : 'REFLECT'
 
 ### Node creation
 
@@ -1054,9 +1054,9 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- vector1 : Vector
-- scale : Float## Fixed parameters
-- operation : 'REFRACT'
+  - vector1 : Vector
+  - scale : Float## Fixed parameters
+  - operation : 'REFRACT'
 
 ### Node creation
 
@@ -1088,9 +1088,9 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- vector1 : Vector
-- vector2 : Vector## Fixed parameters
-- operation : 'FACEFORWARD'
+  - vector1 : Vector
+  - vector2 : Vector## Fixed parameters
+  - operation : 'FACEFORWARD'
 
 ### Node creation
 
@@ -1122,8 +1122,8 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
-- operation : 'DOT_PRODUCT'
+  - vector1 : Vector## Fixed parameters
+  - operation : 'DOT_PRODUCT'
 
 ### Node creation
 
@@ -1155,8 +1155,8 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
-- operation : 'DISTANCE'
+  - vector1 : Vector## Fixed parameters
+  - operation : 'DISTANCE'
 
 ### Node creation
 
@@ -1188,7 +1188,7 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)## Fixed parameters
-- operation : 'LENGTH'
+  - operation : 'LENGTH'
 
 ### Node creation
 
@@ -1220,8 +1220,8 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- scale : Float## Fixed parameters
-- operation : 'SCALE'
+  - scale : Float## Fixed parameters
+  - operation : 'SCALE'
 
 ### Node creation
 
@@ -1253,7 +1253,7 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)## Fixed parameters
-- operation : 'NORMALIZE'
+  - operation : 'NORMALIZE'
 
 ### Node creation
 
@@ -1285,7 +1285,7 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)## Fixed parameters
-- operation : 'ABSOLUTE'
+  - operation : 'ABSOLUTE'
 
 ### Node creation
 
@@ -1317,8 +1317,8 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
-- operation : 'MINIMUM'
+  - vector1 : Vector## Fixed parameters
+  - operation : 'MINIMUM'
 
 ### Node creation
 
@@ -1350,8 +1350,8 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
-- operation : 'MAXIMUM'
+  - vector1 : Vector## Fixed parameters
+  - operation : 'MAXIMUM'
 
 ### Node creation
 
@@ -1383,7 +1383,7 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)## Fixed parameters
-- operation : 'FLOOR'
+  - operation : 'FLOOR'
 
 ### Node creation
 
@@ -1415,7 +1415,7 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)## Fixed parameters
-- operation : 'CEIL'
+  - operation : 'CEIL'
 
 ### Node creation
 
@@ -1447,7 +1447,7 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)## Fixed parameters
-- operation : 'FRACTION'
+  - operation : 'FRACTION'
 
 ### Node creation
 
@@ -1479,8 +1479,8 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
-- operation : 'MODULO'
+  - vector1 : Vector## Fixed parameters
+  - operation : 'MODULO'
 
 ### Node creation
 
@@ -1512,9 +1512,9 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- vector1 : Vector
-- vector2 : Vector## Fixed parameters
-- operation : 'WRAP'
+  - vector1 : Vector
+  - vector2 : Vector## Fixed parameters
+  - operation : 'WRAP'
 
 ### Node creation
 
@@ -1546,8 +1546,8 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
-- operation : 'SNAP'
+  - vector1 : Vector## Fixed parameters
+  - operation : 'SNAP'
 
 ### Node creation
 
@@ -1579,7 +1579,7 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)## Fixed parameters
-- operation : 'SINE'
+  - operation : 'SINE'
 
 ### Node creation
 
@@ -1611,7 +1611,7 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)## Fixed parameters
-- operation : 'COSINE'
+  - operation : 'COSINE'
 
 ### Node creation
 
@@ -1643,7 +1643,7 @@ node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - vector0 : Vector (self)## Fixed parameters
-- operation : 'TANGENT'
+  - operation : 'TANGENT'
 
 ### Node creation
 
@@ -1675,7 +1675,7 @@ node ref [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geom
 #### Sockets
 
 - vector : Vector (self)
-- fac : Float
+  - fac : Float
 
 ### Node creation
 
@@ -1707,10 +1707,10 @@ node ref [Align Euler to Vector](https://docs.blender.org/manual/en/latest/model
 #### Sockets
 
 - rotation : Vector (self)
-- factor : Float
-- vector : Vector## Parameters
-- axis : 'X' in [X, Y, Z]
-- pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
+  - factor : Float
+  - vector : Vector## Parameters
+  - axis : 'X' in [X, Y, Z]
+  - pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
 
 ### Node creation
 
@@ -1742,8 +1742,8 @@ node ref [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - rotation : Vector (self)
-- rotate_by : Vector## Parameters
-- space : 'OBJECT' in [OBJECT, LOCAL]
+  - rotate_by : Vector## Parameters
+  - space : 'OBJECT' in [OBJECT, LOCAL]
 
 ### Node creation
 
@@ -1775,12 +1775,12 @@ node ref [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geom
 #### Sockets
 
 - vector : Vector (self)
-- center : Vector
-- axis : Vector
-- angle : Float
-- rotation : Vector## Parameters
-- invert : False
-- rotation_type : 'AXIS_ANGLE' in [AXIS_ANGLE, X_AXIS, Y_AXIS, Z_AXIS, EULER_XYZ]
+  - center : Vector
+  - axis : Vector
+  - angle : Float
+  - rotation : Vector## Parameters
+  - invert : False
+  - rotation_type : 'AXIS_ANGLE' in [AXIS_ANGLE, X_AXIS, Y_AXIS, Z_AXIS, EULER_XYZ]
 
 ### Node creation
 

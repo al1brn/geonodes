@@ -29,9 +29,9 @@ node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 #### Sockets
 
 - false : Image (self)
-- switch1 : Boolean
-- true : Image## Fixed parameters
-- input_type : 'IMAGE'
+  - switch1 : Boolean
+  - true : Image## Fixed parameters
+  - input_type : 'IMAGE'
 
 ### Node creation
 

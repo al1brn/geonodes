@@ -42,7 +42,7 @@ node ref [String Length](https://docs.blender.org/manual/en/latest/modeling/geom
 #### Sockets
 
 - string : String (self)## Fixed parameters
-- label:f"{self.node_chain_label}.length"
+  - label:f"{self.node_chain_label}.length"
 
 ### Node creation
 
@@ -74,9 +74,9 @@ node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 #### Sockets
 
 - false : String (self)
-- switch0 : Boolean
-- true : String## Fixed parameters
-- input_type : 'STRING'
+  - switch0 : Boolean
+  - true : String## Fixed parameters
+  - input_type : 'STRING'
 
 ### Node creation
 
@@ -108,10 +108,10 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : String (self)
-- b : String## Fixed parameters
-- data_type : 'STRING'
-- mode : 'ELEMENT'
-- operation : 'ELEMENT'
+  - b : String## Fixed parameters
+  - data_type : 'STRING'
+  - mode : 'ELEMENT'
+  - operation : 'ELEMENT'
 
 ### Node creation
 
@@ -143,10 +143,10 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : String (self)
-- b : String## Fixed parameters
-- data_type : 'STRING'
-- mode : 'ELEMENT'
-- operation : 'LENGTH'
+  - b : String## Fixed parameters
+  - data_type : 'STRING'
+  - mode : 'ELEMENT'
+  - operation : 'LENGTH'
 
 ### Node creation
 
@@ -178,10 +178,10 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : String (self)
-- b : String## Fixed parameters
-- data_type : 'STRING'
-- mode : 'ELEMENT'
-- operation : 'AVERAGE'
+  - b : String## Fixed parameters
+  - data_type : 'STRING'
+  - mode : 'ELEMENT'
+  - operation : 'AVERAGE'
 
 ### Node creation
 
@@ -213,10 +213,10 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : String (self)
-- b : String## Fixed parameters
-- data_type : 'STRING'
-- mode : 'ELEMENT'
-- operation : 'DOT_PRODUCT'
+  - b : String## Fixed parameters
+  - data_type : 'STRING'
+  - mode : 'ELEMENT'
+  - operation : 'DOT_PRODUCT'
 
 ### Node creation
 
@@ -248,10 +248,10 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : String (self)
-- b : String## Fixed parameters
-- data_type : 'STRING'
-- mode : 'ELEMENT'
-- operation : 'DIRECTION'
+  - b : String## Fixed parameters
+  - data_type : 'STRING'
+  - mode : 'ELEMENT'
+  - operation : 'DIRECTION'
 
 ### Node creation
 
@@ -283,7 +283,7 @@ node ref [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - strings : *String (self)
-- delimiter : String
+  - delimiter : String
 
 ### Node creation
 
@@ -315,8 +315,8 @@ node ref [Replace String](https://docs.blender.org/manual/en/latest/modeling/geo
 #### Sockets
 
 - string : String (self)
-- find : String
-- replace : String
+  - find : String
+  - replace : String
 
 ### Node creation
 
@@ -348,8 +348,8 @@ node ref [Slice String](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - string : String (self)
-- position : Integer
-- length : Integer
+  - position : Integer
+  - length : Integer
 
 ### Node creation
 
@@ -381,16 +381,16 @@ node ref [String to Curves](https://docs.blender.org/manual/en/latest/modeling/g
 #### Sockets
 
 - string : String (self)
-- size : Float
-- character_spacing : Float
-- word_spacing : Float
-- line_spacing : Float
-- text_box_width : Float
-- text_box_height : Float## Parameters
-- align_x : 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
-- align_y : 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
-- overflow : 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
-- pivot_mode : 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
+  - size : Float
+  - character_spacing : Float
+  - word_spacing : Float
+  - line_spacing : Float
+  - text_box_width : Float
+  - text_box_height : Float## Parameters
+  - align_x : 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
+  - align_y : 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
+  - overflow : 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
+  - pivot_mode : 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 
 ### Node creation
 

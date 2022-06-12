@@ -18,8 +18,8 @@ DataSocket class, sub class and domain data type from socket bl_idname
 ## gives_bsocket
 
 Test if the argument provides a valid output socket. It can be:
-- A Blender Geometry Node Socket
-- An instance of DataSocket
+  - A Blender Geometry Node Socket
+  - An instance of DataSocket
 
 ### Arguments
 
@@ -96,21 +96,21 @@ _node.outputs_.
   
 The correspondance table is the following:
 
-- NodeSocketBool : 'BOOLEAN' 
-- NodeSocketInt : 'INT'
-- NodeSocketIntUnsigned : 'INT
-- NodeSocketFloat :'FLOAT'
-- NodeSocketFloatFactor : 'FLOAT'
-- NodeSocketFloatAngle : 'FLOAT' 
-- NodeSocketFloatDistance :'FLOAT' 
-- NodeSocketVector : 'FLOAT_VECTOR'
-- NodeSocketVectorEuler : 'FLOAT_VECTOR'
-- NodeSocketVectorXYZ : 'FLOAT_VECTOR'
-- NodeSocketVectorTranslation : 'FLOAT_VECTOR'
-- NodeSocketColor : 'FLOAT_COLOR' 
-- NodeSocketString : 'FLOAT_COLOR'
-  
-  
+  - NodeSocketBool : 'BOOLEAN' 
+  - NodeSocketInt : 'INT'
+  - NodeSocketIntUnsigned : 'INT
+  - NodeSocketFloat :'FLOAT'
+  - NodeSocketFloatFactor : 'FLOAT'
+  - NodeSocketFloatAngle : 'FLOAT' 
+  - NodeSocketFloatDistance :'FLOAT' 
+  - NodeSocketVector : 'FLOAT_VECTOR'
+  - NodeSocketVectorEuler : 'FLOAT_VECTOR'
+  - NodeSocketVectorXYZ : 'FLOAT_VECTOR'
+  - NodeSocketVectorTranslation : 'FLOAT_VECTOR'
+  - NodeSocketColor : 'FLOAT_COLOR' 
+  - NodeSocketString : 'FLOAT_COLOR'
+    
+    
 
 ## get_class_name
 
@@ -118,29 +118,29 @@ The correspondance table is the following:
   
 The correspondance table is the following:
 
-- NodeSocketBool : 'Boolean'
-- NodeSocketInt : 'Integer' 
-- NodeSocketIntUnsigned : Integer'
-- NodeSocketFloat : 'Float' 
-- NodeSocketFloatFactor : 'Float'
-- NodeSocketFloatAngle : 'Float'
-- NodeSocketFloatDistance : 'Float' 
-- NodeSocketVector : 'Vector'
-- NodeSocketVectorEuler : 'Vector'
-- NodeSocketVectorXYZ : 'Vector' 
-- NodeSocketVectorTranslation : 'Vector'
-- NodeSocketColor : 'Color'
-- NodeSocketString' : 'String'
-- NodeSocketCollection : 'Collection'
-- NodeSocketImage : 'Image'
-- NodeSocketMaterial : 'Material'
-- NodeSocketObject : 'Object'
-- NodeSocketTexture : 'Texture'
-- NodeSocketGeometry : 'Geometry'
-  If the name of the socket is in ['Mesh', 'Points', 'Instances', 'Volume', 'Spline', 'Curve'],
-  the name is chosen as the class name.
-  
-  
+  - NodeSocketBool : 'Boolean'
+  - NodeSocketInt : 'Integer' 
+  - NodeSocketIntUnsigned : Integer'
+  - NodeSocketFloat : 'Float' 
+  - NodeSocketFloatFactor : 'Float'
+  - NodeSocketFloatAngle : 'Float'
+  - NodeSocketFloatDistance : 'Float' 
+  - NodeSocketVector : 'Vector'
+  - NodeSocketVectorEuler : 'Vector'
+  - NodeSocketVectorXYZ : 'Vector' 
+  - NodeSocketVectorTranslation : 'Vector'
+  - NodeSocketColor : 'Color'
+  - NodeSocketString' : 'String'
+  - NodeSocketCollection : 'Collection'
+  - NodeSocketImage : 'Image'
+  - NodeSocketMaterial : 'Material'
+  - NodeSocketObject : 'Object'
+  - NodeSocketTexture : 'Texture'
+  - NodeSocketGeometry : 'Geometry'
+    If the name of the socket is in ['Mesh', 'Points', 'Instances', 'Volume', 'Spline', 'Curve'],
+    the name is chosen as the class name.
+    
+    
 
 ## get_bl_idname
 
@@ -151,31 +151,31 @@ which socket type must be created.
 
 Note that here the class_name argument accepts additional values which correspond to _sub classes_:
 
-- Unsigned: Integer sub class (NodeSocketIntUnsigned)
-- Factor : Float sub class (NodeSocketFloatFactor)
-- Angle : Float sub class  (NodeSocketFloatAngle)
-- Distance : Float sub class (NodeSocketFloatDistance)
-- Rotation : Vector sub class (NodeSocketVectorEuler)
-- Xyz : Vector sub class (NodeSocketVectorXYZ)
-- Translation : Vector sub class (NodeSocketVectorTranslation)
-  
+  - Unsigned: Integer sub class (NodeSocketIntUnsigned)
+  - Factor : Float sub class (NodeSocketFloatFactor)
+  - Angle : Float sub class  (NodeSocketFloatAngle)
+  - Distance : Float sub class (NodeSocketFloatDistance)
+  - Rotation : Vector sub class (NodeSocketVectorEuler)
+  - Xyz : Vector sub class (NodeSocketVectorXYZ)
+  - Translation : Vector sub class (NodeSocketVectorTranslation)
+    
 These additional values allow to enter angle, distance, factor... as group input values.
 
 ### Arguments
 
 - class_name: str in
-- Boolean
-- Integer, Unsigned
-- Float, Factor, Angle, Distance
-- Vector, Rotation, Xyz, Translation
-- Color
-- String
-- Geometry, Mesh, Points, Instances, Volume, Spline, Curve
-- Image
-- Material
-- Texture
-- Collection
-- Object
+  - Boolean
+  - Integer, Unsigned
+  - Float, Factor, Angle, Distance
+  - Vector, Rotation, Xyz, Translation
+  - Color
+  - String
+  - Geometry, Mesh, Points, Instances, Volume, Spline, Curve
+  - Image
+  - Material
+  - Texture
+  - Collection
+  - Object
 
 ### Returns
 
@@ -213,9 +213,9 @@ self.separate_ = None      # Created by property self.seperate() with node Separ
 > Utility changing the output sockets refered by the DataSocket instance
   
 Methods are implemented in two modes:
-- Creation
-- Transformation
-  
+  - Creation
+  - Transformation
+    
 In **creation mode**, the node is considered as creating new data. The result is a new instance of DataSocket.
 In **transformation mode**, the node is considered as transforming data which is kept in the result of the method.
 After the method return, the calling DataSocket instance refers to a new Blender output socket.
@@ -265,9 +265,9 @@ If the socket is multi input, the plug method is called once per provided value.
 If a value is None, nothing happens.
 
 A not None value can be:
-- either a valid value for the socket (eg: 123 for Integer socket)
-- or an output socket of another Node
-  
+  - either a valid value for the socket (eg: 123 for Integer socket)
+  - or an output socket of another Node
+    
 When it is a socket, it can be a Blender socker or a DataSocket
 
 ### Arguments

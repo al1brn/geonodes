@@ -30,9 +30,9 @@ node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 #### Sockets
 
 - false : Collection (self)
-- switch1 : Boolean
-- true : Collection## Fixed parameters
-- input_type : 'COLLECTION'
+  - switch1 : Boolean
+  - true : Collection## Fixed parameters
+  - input_type : 'COLLECTION'
 
 ### Node creation
 
@@ -64,9 +64,9 @@ node ref [Collection Info](https://docs.blender.org/manual/en/latest/modeling/ge
 #### Sockets
 
 - collection : Collection (self)
-- separate_children : Boolean
-- reset_children : Boolean## Parameters
-- transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
+  - separate_children : Boolean
+  - reset_children : Boolean## Parameters
+  - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
 ### Node creation
 

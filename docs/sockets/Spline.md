@@ -61,8 +61,8 @@ node ref [Curve Handle Positions](https://docs.blender.org/manual/en/latest/mode
 #### Sockets
 
 - relative : Boolean## Parameters
-- self
-- domain:'CURVE'
+  - self
+  - domain:'CURVE'
 
 ### Node creation
 
@@ -94,7 +94,7 @@ node ref [Curve Tangent](https://docs.blender.org/manual/en/latest/modeling/geom
 #### Parameters
 
 - self
-- domain:'CURVE'
+  - domain:'CURVE'
 
 ### Node creation
 
@@ -126,7 +126,7 @@ node ref [Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometr
 #### Parameters
 
 - self
-- domain:'CURVE'
+  - domain:'CURVE'
 
 ### Node creation
 
@@ -158,9 +158,9 @@ node ref [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling
 #### Sockets
 
 - start_size : Integer
-- end_size : Integer## Parameters
-- self
-- domain:'CURVE'
+  - end_size : Integer## Parameters
+  - self
+  - domain:'CURVE'
 
 ### Node creation
 
@@ -192,9 +192,9 @@ node ref [Handle Type Selection](https://docs.blender.org/manual/en/latest/model
 #### Parameters
 
 - self
-- handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode : {'LEFT', 'RIGHT'}
-- domain:'CURVE'
+  - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+  - mode : {'LEFT', 'RIGHT'}
+  - domain:'CURVE'
 
 ### Node creation
 
@@ -226,7 +226,7 @@ node ref [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/g
 #### Parameters
 
 - self
-- domain:'CURVE'
+  - domain:'CURVE'
 
 ### Node creation
 
@@ -258,7 +258,7 @@ node ref [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geom
 #### Parameters
 
 - self
-- domain:'CURVE'
+  - domain:'CURVE'
 
 ### Node creation
 
@@ -290,7 +290,7 @@ node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/g
 #### Parameters
 
 - self
-- domain:'CURVE'
+  - domain:'CURVE'
 
 ### Node creation
 
@@ -322,7 +322,7 @@ node ref [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/
 #### Parameters
 
 - self
-- domain:'CURVE'
+  - domain:'CURVE'
 
 ### Node creation
 
@@ -447,7 +447,7 @@ node ref [Curve Handle Positions](https://docs.blender.org/manual/en/latest/mode
 #### Sockets
 
 - relative : Boolean## Parameters
-- self
+  - self
 
 ### Node creation
 
@@ -479,7 +479,7 @@ node ref [Curve Handle Positions](https://docs.blender.org/manual/en/latest/mode
 #### Sockets
 
 - relative : Boolean## Parameters
-- self
+  - self
 
 ### Node creation
 
@@ -573,8 +573,8 @@ node ref [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling
 #### Sockets
 
 - start_size : Integer
-- end_size : Integer## Parameters
-- self
+  - end_size : Integer## Parameters
+  - self
 
 ### Node creation
 
@@ -606,8 +606,8 @@ node ref [Handle Type Selection](https://docs.blender.org/manual/en/latest/model
 #### Parameters
 
 - self
-- handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode : {'LEFT', 'RIGHT'}
+  - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+  - mode : {'LEFT', 'RIGHT'}
 
 ### Node creation
 
@@ -856,8 +856,8 @@ node ref [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/
 #### Sockets
 
 - geometry : Geometry (self)
-- selection : Boolean
-- cyclic : Boolean
+  - selection : Boolean
+  - cyclic : Boolean
 
 ### Node creation
 
@@ -889,8 +889,8 @@ node ref [Set Spline Resolution](https://docs.blender.org/manual/en/latest/model
 #### Sockets
 
 - geometry : Geometry (self)
-- selection : Boolean
-- resolution : Integer
+  - selection : Boolean
+  - resolution : Integer
 
 ### Node creation
 

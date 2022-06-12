@@ -29,11 +29,11 @@ node ref [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geo
 #### Sockets
 
 - volume : Volume (self)
-- voxel_size : Float
-- voxel_amount : Float
-- threshold : Float
-- adaptivity : Float## Parameters
-- resolution_mode : 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
+  - voxel_size : Float
+  - voxel_amount : Float
+  - threshold : Float
+  - adaptivity : Float## Parameters
+  - resolution_mode : 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
 
 ### Node creation
 

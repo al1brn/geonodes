@@ -67,8 +67,8 @@ node ref [Combine RGB](https://docs.blender.org/manual/en/latest/modeling/geomet
 #### Sockets
 
 - r : Float
-- g : Float
-- b : Float
+  - g : Float
+  - b : Float
 
 ### Node creation
 
@@ -100,7 +100,7 @@ node ref [Separate RGB](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - image : Color (self)## Fixed parameters
-- label:f"{self.node_chain_label}.separate"
+  - label:f"{self.node_chain_label}.separate"
 
 ### Node creation
 
@@ -132,7 +132,7 @@ node ref [Separate RGB](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - image : Color (self)## Fixed parameters
-- label:f"{self.node_chain_label}.r"
+  - label:f"{self.node_chain_label}.r"
 
 ### Node creation
 
@@ -164,7 +164,7 @@ node ref [Separate RGB](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - image : Color (self)## Fixed parameters
-- label:f"{self.node_chain_label}.g"
+  - label:f"{self.node_chain_label}.g"
 
 ### Node creation
 
@@ -196,7 +196,7 @@ node ref [Separate RGB](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - image : Color (self)## Fixed parameters
-- label:f"{self.node_chain_label}.b"
+  - label:f"{self.node_chain_label}.b"
 
 ### Node creation
 
@@ -228,12 +228,12 @@ node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling
 #### Sockets
 
 - attribute : Color (self)
-- source : Geometry
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-- data_type : 'FLOAT_COLOR'
+  - source : Geometry
+  - source_position : Vector
+  - index : Integer## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+  - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+  - data_type : 'FLOAT_COLOR'
 
 ### Node creation
 
@@ -265,9 +265,9 @@ node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/
 #### Sockets
 
 - value : Color (self)
-- geometry : Geometry## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-- data_type : 'FLOAT_COLOR'
+  - geometry : Geometry## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+  - data_type : 'FLOAT_COLOR'
 
 ### Node creation
 
@@ -299,9 +299,9 @@ node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geo
 #### Sockets
 
 - value : Color (self)
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-- data_type : 'FLOAT_COLOR'
+  - index : Integer## Parameters
+  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+  - data_type : 'FLOAT_COLOR'
 
 ### Node creation
 
@@ -333,12 +333,12 @@ node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - attribute : Color (self)
-- target_geometry : Geometry
-- source_position : Vector
-- ray_direction : Vector
-- ray_length : Float## Parameters
-- mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
-- data_type : 'FLOAT_COLOR'
+  - target_geometry : Geometry
+  - source_position : Vector
+  - ray_direction : Vector
+  - ray_length : Float## Parameters
+  - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
+  - data_type : 'FLOAT_COLOR'
 
 ### Node creation
 
@@ -370,11 +370,11 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : Color (self)
-- b : Color
-- epsilon : Float## Fixed parameters
-- data_type : 'RGBA'
-- mode : 'ELEMENT'
-- operation : 'EQUAL'
+  - b : Color
+  - epsilon : Float## Fixed parameters
+  - data_type : 'RGBA'
+  - mode : 'ELEMENT'
+  - operation : 'EQUAL'
 
 ### Node creation
 
@@ -406,11 +406,11 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : Color (self)
-- b : Color
-- epsilon : Float## Fixed parameters
-- data_type : 'RGBA'
-- mode : 'ELEMENT'
-- operation : 'NOT_EQUAL'
+  - b : Color
+  - epsilon : Float## Fixed parameters
+  - data_type : 'RGBA'
+  - mode : 'ELEMENT'
+  - operation : 'NOT_EQUAL'
 
 ### Node creation
 
@@ -442,10 +442,10 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : Color (self)
-- b : Color## Fixed parameters
-- data_type : 'RGBA'
-- mode : 'ELEMENT'
-- operation : 'BRIGHTER'
+  - b : Color## Fixed parameters
+  - data_type : 'RGBA'
+  - mode : 'ELEMENT'
+  - operation : 'BRIGHTER'
 
 ### Node creation
 
@@ -477,10 +477,10 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 #### Sockets
 
 - a : Color (self)
-- b : Color## Fixed parameters
-- data_type : 'RGBA'
-- mode : 'ELEMENT'
-- operation : 'DARKER'
+  - b : Color## Fixed parameters
+  - data_type : 'RGBA'
+  - mode : 'ELEMENT'
+  - operation : 'DARKER'
 
 ### Node creation
 
@@ -512,10 +512,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'MIX'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'MIX'
 
 ### Node creation
 
@@ -547,10 +547,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'DARKEN'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'DARKEN'
 
 ### Node creation
 
@@ -582,10 +582,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'MULTIPLY'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'MULTIPLY'
 
 ### Node creation
 
@@ -617,10 +617,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'BURN'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'BURN'
 
 ### Node creation
 
@@ -652,10 +652,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'LIGHTEN'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'LIGHTEN'
 
 ### Node creation
 
@@ -687,10 +687,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'SCREEN'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'SCREEN'
 
 ### Node creation
 
@@ -722,10 +722,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'DODGE'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'DODGE'
 
 ### Node creation
 
@@ -757,10 +757,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'ADD'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'ADD'
 
 ### Node creation
 
@@ -792,10 +792,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'OVERLAY'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'OVERLAY'
 
 ### Node creation
 
@@ -827,10 +827,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'SOFT_LIGHT'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'SOFT_LIGHT'
 
 ### Node creation
 
@@ -862,10 +862,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'LINEAR_LIGHT'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'LINEAR_LIGHT'
 
 ### Node creation
 
@@ -897,10 +897,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'DIFFERENCE'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'DIFFERENCE'
 
 ### Node creation
 
@@ -932,10 +932,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'SUBTRACT'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'SUBTRACT'
 
 ### Node creation
 
@@ -967,10 +967,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'DIVIDE'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'DIVIDE'
 
 ### Node creation
 
@@ -1002,10 +1002,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'HUE'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'HUE'
 
 ### Node creation
 
@@ -1037,10 +1037,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'SATURATION'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'SATURATION'
 
 ### Node creation
 
@@ -1072,10 +1072,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'COLOR'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'COLOR'
 
 ### Node creation
 
@@ -1107,10 +1107,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- use_alpha : False## Fixed parameters
-- blend_type : 'VALUE'
+  - color2 : Color
+  - fac : Float## Parameters
+  - use_alpha : False## Fixed parameters
+  - blend_type : 'VALUE'
 
 ### Node creation
 
@@ -1142,7 +1142,7 @@ node ref [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometr
 #### Sockets
 
 - color : Color (self)
-- fac : Float
+  - fac : Float
 
 ### Node creation
 
@@ -1174,10 +1174,10 @@ node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - color1 : Color (self)
-- color2 : Color
-- fac : Float## Parameters
-- blend_type : 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
-- use_alpha : False
+  - color2 : Color
+  - fac : Float## Parameters
+  - blend_type : 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
+  - use_alpha : False
 
 ### Node creation
 

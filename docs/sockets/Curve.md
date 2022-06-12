@@ -58,11 +58,11 @@ node ref [Bezier Segment](https://docs.blender.org/manual/en/latest/modeling/geo
 #### Sockets
 
 - resolution : Integer
-- start : Vector
-- start_handle : Vector
-- end_handle : Vector
-- end : Vector## Parameters
-- mode : 'POSITION' in [POSITION, OFFSET]
+  - start : Vector
+  - start_handle : Vector
+  - end_handle : Vector
+  - end : Vector## Parameters
+  - mode : 'POSITION' in [POSITION, OFFSET]
 
 ### Node creation
 
@@ -94,11 +94,11 @@ node ref [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - resolution : Integer
-- point_1 : Vector
-- point_2 : Vector
-- point_3 : Vector
-- radius : Float## Parameters
-- mode : 'RADIUS' in [POINTS, RADIUS]
+  - point_1 : Vector
+  - point_2 : Vector
+  - point_3 : Vector
+  - radius : Float## Parameters
+  - mode : 'RADIUS' in [POINTS, RADIUS]
 
 ### Node creation
 
@@ -130,10 +130,10 @@ node ref [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometr
 #### Sockets
 
 - start : Vector
-- end : Vector
-- direction : Vector
-- length : Float## Parameters
-- mode : 'POINTS' in [POINTS, DIRECTION]
+  - end : Vector
+  - direction : Vector
+  - length : Float## Parameters
+  - mode : 'POINTS' in [POINTS, DIRECTION]
 
 ### Node creation
 
@@ -165,17 +165,17 @@ node ref [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geom
 #### Sockets
 
 - width : Float
-- height : Float
-- bottom_width : Float
-- top_width : Float
-- offset : Float
-- bottom_height : Float
-- top_height : Float
-- point_1 : Vector
-- point_2 : Vector
-- point_3 : Vector
-- point_4 : Vector## Parameters
-- mode : 'RECTANGLE' in [RECTANGLE, PARALLELOGRAM, TRAPEZOID, KITE, POINTS]
+  - height : Float
+  - bottom_width : Float
+  - top_width : Float
+  - offset : Float
+  - bottom_height : Float
+  - top_height : Float
+  - point_1 : Vector
+  - point_2 : Vector
+  - point_3 : Vector
+  - point_4 : Vector## Parameters
+  - mode : 'RECTANGLE' in [RECTANGLE, PARALLELOGRAM, TRAPEZOID, KITE, POINTS]
 
 ### Node creation
 
@@ -207,9 +207,9 @@ node ref [Quadratic Bezier](https://docs.blender.org/manual/en/latest/modeling/g
 #### Sockets
 
 - resolution : Integer
-- start : Vector
-- middle : Vector
-- end : Vector
+  - start : Vector
+  - middle : Vector
+  - end : Vector
 
 ### Node creation
 
@@ -241,9 +241,9 @@ node ref [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 #### Sockets
 
 - points : Integer
-- inner_radius : Float
-- outer_radius : Float
-- twist : Float
+  - inner_radius : Float
+  - outer_radius : Float
+  - twist : Float
 
 ### Node creation
 
@@ -275,11 +275,11 @@ node ref [Spiral](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 #### Sockets
 
 - resolution : Integer
-- rotations : Float
-- start_radius : Float
-- end_radius : Float
-- height : Float
-- reverse : Boolean
+  - rotations : Float
+  - start_radius : Float
+  - end_radius : Float
+  - height : Float
+  - reverse : Boolean
 
 ### Node creation
 
@@ -311,12 +311,12 @@ node ref [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - resolution : Integer
-- radius : Float
-- start_angle : Float
-- sweep_angle : Float
-- connect_center : Boolean
-- invert_arc : Boolean## Fixed parameters
-- mode : 'RADIUS'
+  - radius : Float
+  - start_angle : Float
+  - sweep_angle : Float
+  - connect_center : Boolean
+  - invert_arc : Boolean## Fixed parameters
+  - mode : 'RADIUS'
 
 ### Node creation
 
@@ -348,13 +348,13 @@ node ref [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 #### Sockets
 
 - resolution : Integer
-- start : Vector
-- middle : Vector
-- end : Vector
-- offset_angle : Float
-- connect_center : Boolean
-- invert_arc : Boolean## Fixed parameters
-- mode : 'POINTS'
+  - start : Vector
+  - middle : Vector
+  - end : Vector
+  - offset_angle : Float
+  - connect_center : Boolean
+  - invert_arc : Boolean## Fixed parameters
+  - mode : 'POINTS'
 
 ### Node creation
 
@@ -386,9 +386,9 @@ node ref [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/ge
 #### Sockets
 
 - curve : Curve (self)
-- selection : Boolean## Parameters
-- handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode : {'LEFT', 'RIGHT'}
+  - selection : Boolean## Parameters
+  - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+  - mode : {'LEFT', 'RIGHT'}
 
 ### Node creation
 
@@ -420,8 +420,8 @@ node ref [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/ge
 #### Sockets
 
 - curve : Curve (self)
-- selection : Boolean## Parameters
-- spline_type : 'POLY' in [BEZIER, NURBS, POLY]
+  - selection : Boolean## Parameters
+  - spline_type : 'POLY' in [BEZIER, NURBS, POLY]
 
 ### Node creation
 
@@ -453,7 +453,7 @@ node ref [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 #### Sockets
 
 - curve : Curve (self)## Parameters
-- mode : 'TRIANGLES' in [TRIANGLES, NGONS]
+  - mode : 'TRIANGLES' in [TRIANGLES, NGONS]
 
 ### Node creation
 
@@ -485,10 +485,10 @@ node ref [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - curve : Curve (self)
-- count : Integer
-- radius : Float
-- limit_radius : Boolean## Parameters
-- mode : 'BEZIER' in [BEZIER, POLY]
+  - count : Integer
+  - radius : Float
+  - limit_radius : Boolean## Parameters
+  - mode : 'BEZIER' in [BEZIER, POLY]
 
 ### Node creation
 
@@ -520,10 +520,10 @@ node ref [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geo
 #### Sockets
 
 - curve : Curve (self)
-- selection : Boolean
-- count : Integer
-- length : Float## Parameters
-- mode : 'COUNT' in [EVALUATED, COUNT, LENGTH]
+  - selection : Boolean
+  - count : Integer
+  - length : Float## Parameters
+  - mode : 'COUNT' in [EVALUATED, COUNT, LENGTH]
 
 ### Node creation
 
@@ -555,7 +555,7 @@ node ref [Reverse Curve](https://docs.blender.org/manual/en/latest/modeling/geom
 #### Sockets
 
 - curve : Curve (self)
-- selection : Boolean
+  - selection : Boolean
 
 ### Node creation
 
@@ -587,10 +587,10 @@ node ref [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeli
 #### Sockets
 
 - curve : Curve (self)
-- selection : Boolean
-- position : Vector
-- offset : Vector## Parameters
-- mode : 'LEFT' in [LEFT, RIGHT]
+  - selection : Boolean
+  - position : Vector
+  - offset : Vector## Parameters
+  - mode : 'LEFT' in [LEFT, RIGHT]
 
 ### Node creation
 
@@ -622,8 +622,8 @@ node ref [Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/g
 #### Sockets
 
 - curve : Curve (self)
-- selection : Boolean
-- radius : Float
+  - selection : Boolean
+  - radius : Float
 
 ### Node creation
 
@@ -655,8 +655,8 @@ node ref [Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geo
 #### Sockets
 
 - curve : Curve (self)
-- selection : Boolean
-- tilt : Float
+  - selection : Boolean
+  - tilt : Float
 
 ### Node creation
 
@@ -688,7 +688,7 @@ node ref [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/ge
 #### Sockets
 
 - curve : Curve (self)
-- cuts : Integer
+  - cuts : Integer
 
 ### Node creation
 
@@ -720,11 +720,11 @@ node ref [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 #### Sockets
 
 - curve : Curve (self)
-- start0 : Float
-- end0 : Float
-- start1 : Float
-- end1 : Float## Parameters
-- mode : 'FACTOR' in [FACTOR, LENGTH]
+  - start0 : Float
+  - end0 : Float
+  - start1 : Float
+  - end1 : Float## Parameters
+  - mode : 'FACTOR' in [FACTOR, LENGTH]
 
 ### Node creation
 
@@ -756,8 +756,8 @@ node ref [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geom
 #### Sockets
 
 - curve : Curve (self)
-- profile_curve : Geometry
-- fill_caps : Boolean
+  - profile_curve : Geometry
+  - fill_caps : Boolean
 
 ### Node creation
 
@@ -789,9 +789,9 @@ node ref [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/ge
 #### Sockets
 
 - curve : Curve (self)
-- count : Integer
-- length : Float## Parameters
-- mode : 'COUNT' in [EVALUATED, COUNT, LENGTH]
+  - count : Integer
+  - length : Float## Parameters
+  - mode : 'COUNT' in [EVALUATED, COUNT, LENGTH]
 
 ### Node creation
 
@@ -823,9 +823,9 @@ node ref [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geome
 #### Sockets
 
 - curve : Curve (self)
-- factor : Float
-- length : Float## Parameters
-- mode : 'LENGTH' in [FACTOR, LENGTH]
+  - factor : Float
+  - length : Float## Parameters
+  - mode : 'LENGTH' in [FACTOR, LENGTH]
 
 ### Node creation
 
