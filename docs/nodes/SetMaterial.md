@@ -8,6 +8,7 @@
 
 Initialization
 --------------
+
 ```python
 from geonodes import nodes
 node = nodes.SetMaterial(geometry=None, selection=None, material=None, label=None)

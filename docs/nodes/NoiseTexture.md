@@ -8,6 +8,7 @@
 
 Initialization
 --------------
+
 ```python
 from geonodes import nodes
 node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D', label=None)

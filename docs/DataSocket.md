@@ -219,6 +219,7 @@ Methods are implemented in two modes:
 In **creation mode**, the node is considered as creating new data. The result is a new instance of DataSocket.
 In **transformation mode**, the node is considered as transforming data which is kept in the result of the method.
 After the method return, the calling DataSocket instance refers to a new Blender output socket.
+
 ```python
 # 1. Creation mode
 #

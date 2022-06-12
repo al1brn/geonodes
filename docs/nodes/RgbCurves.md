@@ -8,6 +8,7 @@
 
 Initialization
 --------------
+
 ```python
 from geonodes import nodes
 node = nodes.RgbCurves(fac=None, color=None, label=None)

@@ -8,6 +8,7 @@
 
 Initialization
 --------------
+
 ```python
 from geonodes import nodes
 node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, label=None)

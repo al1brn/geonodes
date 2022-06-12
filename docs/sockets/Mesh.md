@@ -82,6 +82,7 @@
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshCircle](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCircle.html)
 node ref [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_circle.html) </sub>
+
 ```python
 v = Mesh.Circle(vertices, radius, fill_type)
 ```
@@ -97,6 +98,7 @@ v = Mesh.Circle(vertices, radius, fill_type)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.MeshCircle(vertices=vertices, radius=radius, fill_type=fill_type)
@@ -114,6 +116,7 @@ Mesh
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshCone](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCone.html)
 node ref [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/cone.html) </sub>
+
 ```python
 v = Mesh.Cone(vertices, side_segments, fill_segments, radius_top, radius_bottom, depth, fill_type)
 ```
@@ -133,6 +136,7 @@ v = Mesh.Cone(vertices, side_segments, fill_segments, radius_top, radius_bottom,
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Cone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top, radius_bottom=radius_bottom, depth=depth, fill_type=fill_type)
@@ -150,6 +154,7 @@ Sockets [mesh (Mesh), top (Boolean), bottom (Boolean), side (Boolean)]
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshCube](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCube.html)
 node ref [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/cube.html) </sub>
+
 ```python
 v = Mesh.Cube(size, vertices_x, vertices_y, vertices_z)
 ```
@@ -166,6 +171,7 @@ v = Mesh.Cube(size, vertices_x, vertices_y, vertices_z)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Cube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, vertices_z=vertices_z)
@@ -183,6 +189,7 @@ Mesh
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshCylinder](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCylinder.html)
 node ref [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/cylinder.html) </sub>
+
 ```python
 v = Mesh.Cylinder(vertices, side_segments, fill_segments, radius, depth, fill_type)
 ```
@@ -201,6 +208,7 @@ v = Mesh.Cylinder(vertices, side_segments, fill_segments, radius, depth, fill_ty
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Cylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius, depth=depth, fill_type=fill_type)
@@ -218,6 +226,7 @@ Sockets [mesh (Mesh), top (Boolean), side (Boolean), bottom (Boolean)]
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshGrid](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshGrid.html)
 node ref [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/grid.html) </sub>
+
 ```python
 v = Mesh.Grid(size_x, size_y, vertices_x, vertices_y)
 ```
@@ -234,6 +243,7 @@ v = Mesh.Grid(size_x, size_y, vertices_x, vertices_y)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y)
@@ -251,6 +261,7 @@ Mesh
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshIcoSphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshIcoSphere.html)
 node ref [Ico Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/icosphere.html) </sub>
+
 ```python
 v = Mesh.IcoSphere(radius, subdivisions)
 ```
@@ -265,6 +276,7 @@ v = Mesh.IcoSphere(radius, subdivisions)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.IcoSphere(radius=radius, subdivisions=subdivisions)
@@ -282,6 +294,7 @@ Mesh
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshLine](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html)
 node ref [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_line.html) </sub>
+
 ```python
 v = Mesh.Line(count, start_location, offset, count_mode, mode)
 ```
@@ -299,6 +312,7 @@ v = Mesh.Line(count, start_location, offset, count_mode, mode)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.MeshLine(count=count, start_location=start_location, offset=offset, count_mode=count_mode, mode=mode)
@@ -316,6 +330,7 @@ Mesh
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshUVSphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshUVSphere.html)
 node ref [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/uv_sphere.html) </sub>
+
 ```python
 v = Mesh.UVSphere(segments, rings, radius)
 ```
@@ -331,6 +346,7 @@ v = Mesh.UVSphere(segments, rings, radius)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.UvSphere(segments=segments, rings=rings, radius=radius)
@@ -348,6 +364,7 @@ Mesh
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) </sub>
+
 ```python
 v = mesh.capture_edge_angle(self, domain='EDGE')
 ```
@@ -362,6 +379,7 @@ v = mesh.capture_edge_angle(self, domain='EDGE')
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.EdgeAngle()
@@ -379,6 +397,7 @@ Sockets [unsigned_angle (Float), signed_angle (Float)]
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeNeighbors.html)
 node ref [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_neighbors.html) </sub>
+
 ```python
 v = mesh.capture_edge_neighbors(self, domain='EDGE')
 ```
@@ -393,6 +412,7 @@ v = mesh.capture_edge_neighbors(self, domain='EDGE')
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.EdgeNeighbors()
@@ -410,6 +430,7 @@ Integer
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 node ref [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) </sub>
+
 ```python
 v = mesh.capture_edge_vertices(self, domain='EDGE')
 ```
@@ -424,6 +445,7 @@ v = mesh.capture_edge_vertices(self, domain='EDGE')
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.EdgeVertices()
@@ -441,6 +463,7 @@ Sockets [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector)
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshFaceArea](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceArea.html)
 node ref [Face Area](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_area.html) </sub>
+
 ```python
 v = mesh.capture_face_area(self, domain='FACE')
 ```
@@ -455,6 +478,7 @@ v = mesh.capture_face_area(self, domain='FACE')
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.FaceArea()
@@ -472,6 +496,7 @@ Float
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshFaceNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
 node ref [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) </sub>
+
 ```python
 v = mesh.capture_face_neighbors(self, domain='FACE')
 ```
@@ -486,6 +511,7 @@ v = mesh.capture_face_neighbors(self, domain='FACE')
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.FaceNeighbors()
@@ -503,6 +529,7 @@ Sockets [vertex_count (Integer), face_count (Integer)]
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshIsland](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
 node ref [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) </sub>
+
 ```python
 v = mesh.capture_island(self, domain='POINT')
 ```
@@ -517,6 +544,7 @@ v = mesh.capture_island(self, domain='POINT')
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.MeshIsland()
@@ -534,6 +562,7 @@ Sockets [island_index (Integer), island_count (Integer)]
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputShadeSmooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html)
 node ref [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/is_shade_smooth.html) </sub>
+
 ```python
 v = mesh.capture_shade_smooth(self, domain='FACE')
 ```
@@ -548,6 +577,7 @@ v = mesh.capture_shade_smooth(self, domain='FACE')
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.IsShadeSmooth()
@@ -565,6 +595,7 @@ Boolean
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshVertexNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
 node ref [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) </sub>
+
 ```python
 v = mesh.capture_vertex_neighbors(self, domain='POINT')
 ```
@@ -579,6 +610,7 @@ v = mesh.capture_vertex_neighbors(self, domain='POINT')
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VertexNeighbors()
@@ -596,6 +628,7 @@ Sockets [vertex_count (Integer), face_count (Integer)]
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMaterialIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
 node ref [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) </sub>
+
 ```python
 v = mesh.capture_material_index(self, domain='FACE')
 ```
@@ -610,6 +643,7 @@ v = mesh.capture_material_index(self, domain='FACE')
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.MaterialIndex()
@@ -627,6 +661,7 @@ Integer
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMaterialSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
 node ref [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) </sub>
+
 ```python
 v = mesh.capture_material_selection(self, material, domain='FACE')
 ```
@@ -642,6 +677,7 @@ v = mesh.capture_material_selection(self, material, domain='FACE')
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.MaterialSelection(material=material)
@@ -659,6 +695,7 @@ Boolean
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) </sub>
+
 ```python
 v = mesh.face_ID(self)
 ```
@@ -672,6 +709,7 @@ v = mesh.face_ID(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.EdgeAngle()
@@ -689,6 +727,7 @@ Float
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) </sub>
+
 ```python
 v = mesh.egde_ID(self)
 ```
@@ -702,6 +741,7 @@ v = mesh.egde_ID(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.EdgeAngle()
@@ -719,6 +759,7 @@ Float
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) </sub>
+
 ```python
 v = mesh.corner_ID(self)
 ```
@@ -732,6 +773,7 @@ v = mesh.corner_ID(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.EdgeAngle()
@@ -749,6 +791,7 @@ Float
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) </sub>
+
 ```python
 v = mesh.face_index(self)
 ```
@@ -762,6 +805,7 @@ v = mesh.face_index(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.EdgeAngle()
@@ -779,6 +823,7 @@ Float
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) </sub>
+
 ```python
 v = mesh.egde_index(self)
 ```
@@ -792,6 +837,7 @@ v = mesh.egde_index(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.EdgeAngle()
@@ -809,6 +855,7 @@ Float
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) </sub>
+
 ```python
 v = mesh.corner_index(self)
 ```
@@ -822,6 +869,7 @@ v = mesh.corner_index(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.EdgeAngle()
@@ -839,6 +887,7 @@ Float
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) </sub>
+
 ```python
 v = mesh.face_position(self)
 ```
@@ -852,6 +901,7 @@ v = mesh.face_position(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.EdgeAngle()
@@ -869,6 +919,7 @@ Float
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) </sub>
+
 ```python
 v = mesh.egde_position(self)
 ```
@@ -882,6 +933,7 @@ v = mesh.egde_position(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.EdgeAngle()
@@ -899,6 +951,7 @@ Float
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) </sub>
+
 ```python
 v = mesh.corner_porision(self)
 ```
@@ -912,6 +965,7 @@ v = mesh.corner_porision(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.EdgeAngle()
@@ -929,6 +983,7 @@ Float
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) </sub>
+
 ```python
 v = mesh.edge_angle(self)
 ```
@@ -942,6 +997,7 @@ v = mesh.edge_angle(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.EdgeAngle()
@@ -959,6 +1015,7 @@ Float
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) </sub>
+
 ```python
 v = mesh.edge_unsigned_angle(self)
 ```
@@ -972,6 +1029,7 @@ v = mesh.edge_unsigned_angle(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.EdgeAngle()
@@ -989,6 +1047,7 @@ Float
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeNeighbors.html)
 node ref [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_neighbors.html) </sub>
+
 ```python
 v = mesh.edge_neighbors(self)
 ```
@@ -1002,6 +1061,7 @@ v = mesh.edge_neighbors(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.EdgeNeighbors()
@@ -1019,6 +1079,7 @@ Integer
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 node ref [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) </sub>
+
 ```python
 v = mesh.edge_vertices_index1(self)
 ```
@@ -1032,6 +1093,7 @@ v = mesh.edge_vertices_index1(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.EdgeVertices()
@@ -1049,6 +1111,7 @@ Integer
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 node ref [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) </sub>
+
 ```python
 v = mesh.edge_vertices_index2(self)
 ```
@@ -1062,6 +1125,7 @@ v = mesh.edge_vertices_index2(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.EdgeVertices()
@@ -1079,6 +1143,7 @@ Integer
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 node ref [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) </sub>
+
 ```python
 v = mesh.edge_vertices_position1(self)
 ```
@@ -1092,6 +1157,7 @@ v = mesh.edge_vertices_position1(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.EdgeVertices()
@@ -1109,6 +1175,7 @@ Vector
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 node ref [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) </sub>
+
 ```python
 v = mesh.edge_vertices_position2(self)
 ```
@@ -1122,6 +1189,7 @@ v = mesh.edge_vertices_position2(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.EdgeVertices()
@@ -1139,6 +1207,7 @@ Vector
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshFaceArea](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceArea.html)
 node ref [Face Area](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_area.html) </sub>
+
 ```python
 v = mesh.face_area(self)
 ```
@@ -1152,6 +1221,7 @@ v = mesh.face_area(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.FaceArea()
@@ -1169,6 +1239,7 @@ Float
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshFaceNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
 node ref [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) </sub>
+
 ```python
 v = mesh.face_neighbors_vertex_count(self)
 ```
@@ -1182,6 +1253,7 @@ v = mesh.face_neighbors_vertex_count(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.FaceNeighbors()
@@ -1199,6 +1271,7 @@ Integer
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshFaceNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
 node ref [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) </sub>
+
 ```python
 v = mesh.face_neighbors_face_count(self)
 ```
@@ -1212,6 +1285,7 @@ v = mesh.face_neighbors_face_count(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.FaceNeighbors()
@@ -1229,6 +1303,7 @@ Integer
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshIsland](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
 node ref [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) </sub>
+
 ```python
 v = mesh.island(self)
 ```
@@ -1242,6 +1317,7 @@ v = mesh.island(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.MeshIsland()
@@ -1259,6 +1335,7 @@ Integer
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputShadeSmooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html)
 node ref [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/is_shade_smooth.html) </sub>
+
 ```python
 v = mesh.shade_smooth(self)
 ```
@@ -1272,6 +1349,7 @@ v = mesh.shade_smooth(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.IsShadeSmooth()
@@ -1289,6 +1367,7 @@ Boolean
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshVertexNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
 node ref [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) </sub>
+
 ```python
 v = mesh.vertex_neighbors_vertex_count(self)
 ```
@@ -1302,6 +1381,7 @@ v = mesh.vertex_neighbors_vertex_count(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.VertexNeighbors()
@@ -1319,6 +1399,7 @@ Integer
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMeshVertexNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
 node ref [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) </sub>
+
 ```python
 v = mesh.vertex_neighbors_face_count(self)
 ```
@@ -1332,6 +1413,7 @@ v = mesh.vertex_neighbors_face_count(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.VertexNeighbors()
@@ -1349,6 +1431,7 @@ Integer
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeInputMaterialIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
 node ref [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) </sub>
+
 ```python
 v = mesh.material_index(self)
 ```
@@ -1362,6 +1445,7 @@ v = mesh.material_index(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.MaterialIndex()
@@ -1379,6 +1463,7 @@ Integer
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMaterialSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
 node ref [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) </sub>
+
 ```python
 v = mesh.material_selection(self, material)
 ```
@@ -1393,6 +1478,7 @@ v = mesh.material_selection(self, material)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.MaterialSelection(material=material)
@@ -1410,6 +1496,7 @@ Boolean
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshBoolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
 node ref [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_boolean.html) </sub>
+
 ```python
 v = mesh.intersect(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
 ```
@@ -1426,6 +1513,7 @@ v = mesh.intersect(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_toleran
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT')
@@ -1443,6 +1531,7 @@ Mesh
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshBoolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
 node ref [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_boolean.html) </sub>
+
 ```python
 v = mesh.union(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
 ```
@@ -1459,6 +1548,7 @@ v = mesh.union(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION')
@@ -1476,6 +1566,7 @@ Mesh
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshBoolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
 node ref [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_boolean.html) </sub>
+
 ```python
 v = mesh.difference(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
 ```
@@ -1493,6 +1584,7 @@ v = mesh.difference(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolera
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE')
@@ -1510,6 +1602,7 @@ Mesh
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeSplitEdges](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitEdges.html)
 node ref [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/split_edges.html) </sub>
+
 ```python
 v = mesh.split_edges(selection)
 ```
@@ -1524,6 +1617,7 @@ v = mesh.split_edges(selection)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.SplitEdges(mesh=self, selection=selection)
@@ -1541,6 +1635,7 @@ Mesh
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeSubdivideMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideMesh.html)
 node ref [Subdivide Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/subdivide_mesh.html) </sub>
+
 ```python
 v = mesh.subdivide(level)
 ```
@@ -1555,6 +1650,7 @@ v = mesh.subdivide(level)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.SubdivideMesh(mesh=self, level=level)
@@ -1572,6 +1668,7 @@ Mesh
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeSubdivisionSurface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivisionSurface.html)
 node ref [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/subdivision_surface.html) </sub>
+
 ```python
 v = mesh.subdivision_surface(level, crease, boundary_smooth, uv_smooth)
 ```
@@ -1589,6 +1686,7 @@ v = mesh.subdivision_surface(level, crease, boundary_smooth, uv_smooth)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth)
@@ -1606,6 +1704,7 @@ Mesh
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeTriangulate](https://docs.blender.org/api/current/bpy.types.GeometryNodeTriangulate.html)
 node ref [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/triangulate.html) </sub>
+
 ```python
 v = mesh.triangulate(selection, minimum_vertices, ngon_method, quad_method)
 ```
@@ -1623,6 +1722,7 @@ v = mesh.triangulate(selection, minimum_vertices, ngon_method, quad_method)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method, quad_method=quad_method)
@@ -1640,6 +1740,7 @@ Mesh
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeDualMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeDualMesh.html)
 node ref [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/dual_mesh.html) </sub>
+
 ```python
 v = mesh.dual(keep_boundaries)
 ```
@@ -1654,6 +1755,7 @@ v = mesh.dual(keep_boundaries)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.DualMesh(mesh=self, keep_boundaries=keep_boundaries)
@@ -1671,6 +1773,7 @@ Geometry
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeFlipFaces](https://docs.blender.org/api/current/bpy.types.GeometryNodeFlipFaces.html)
 node ref [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/flip_faces.html) </sub>
+
 ```python
 v = mesh.flip_faces(selection)
 ```
@@ -1685,6 +1788,7 @@ v = mesh.flip_faces(selection)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.FlipFaces(mesh=self, selection=selection)
@@ -1702,6 +1806,7 @@ Mesh
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeExtrudeMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html)
 node ref [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/extrude_mesh.html) </sub>
+
 ```python
 v = mesh.extrude(selection, offset, offset_scale, individual, mode)
 ```
@@ -1720,6 +1825,7 @@ v = mesh.extrude(selection, offset, offset_scale, individual, mode)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual, mode=mode)
@@ -1737,6 +1843,7 @@ Sockets [mesh (Mesh), top (Boolean), side (Boolean)]
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshToCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html)
 node ref [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_curve.html) </sub>
+
 ```python
 v = mesh.to_curve(selection)
 ```
@@ -1751,6 +1858,7 @@ v = mesh.to_curve(selection)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.MeshToCurve(mesh=self, selection=selection)
@@ -1768,6 +1876,7 @@ Curve
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeMeshToPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html)
 node ref [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_points.html) </sub>
+
 ```python
 v = mesh.to_points(selection, position, radius, mode)
 ```
@@ -1785,6 +1894,7 @@ v = mesh.to_points(selection, position, radius, mode)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.MeshToPoints(mesh=self, selection=selection, position=position, radius=radius, mode=mode)
@@ -1802,6 +1912,7 @@ Points
 <sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
 blender ref [GeometryNodeDistributePointsOnFaces](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html)
 node ref [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html) </sub>
+
 ```python
 v = mesh.distribute_points_on_faces(selection, distance_min, density_max, density, density_factor, seed, distribute_method)
 ```
@@ -1822,6 +1933,7 @@ v = mesh.distribute_points_on_faces(selection, distance_min, density_max, densit
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method)

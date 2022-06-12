@@ -8,6 +8,7 @@
 
 Initialization
 --------------
+
 ```python
 from geonodes import nodes
 node = nodes.ConvexHull(geometry=None, label=None)

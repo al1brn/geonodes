@@ -8,6 +8,7 @@
 
 Initialization
 --------------
+
 ```python
 from geonodes import nodes
 node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, label=None)

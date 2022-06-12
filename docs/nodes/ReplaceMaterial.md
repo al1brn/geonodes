@@ -8,6 +8,7 @@
 
 Initialization
 --------------
+
 ```python
 from geonodes import nodes
 node = nodes.ReplaceMaterial(geometry=None, old=None, new=None, label=None)

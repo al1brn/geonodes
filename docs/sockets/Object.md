@@ -26,6 +26,7 @@
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) </sub>
+
 ```python
 v = object.info
 ```
@@ -42,6 +43,7 @@ v = object.info
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
@@ -59,6 +61,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) </sub>
+
 ```python
 v = object.location
 ```
@@ -75,6 +78,7 @@ v = object.location
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.location")
@@ -92,6 +96,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) </sub>
+
 ```python
 v = object.rotation
 ```
@@ -108,6 +113,7 @@ v = object.rotation
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.rotation")
@@ -125,6 +131,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) </sub>
+
 ```python
 v = object.scale
 ```
@@ -141,6 +148,7 @@ v = object.scale
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.scale")
@@ -158,6 +166,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) </sub>
+
 ```python
 v = object.geometry
 ```
@@ -174,6 +183,7 @@ v = object.geometry
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.geometry")
@@ -191,6 +201,7 @@ Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometr
 <sub>go to: [top](#data-socket-object) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
+
 ```python
 v = object.switch(switch1, true)
 ```
@@ -207,6 +218,7 @@ v = object.switch(switch1, true)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Switch(false=self, switch1=switch1, true=true, input_type='OBJECT')

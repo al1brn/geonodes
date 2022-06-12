@@ -8,6 +8,7 @@
 
 Initialization
 --------------
+
 ```python
 from geonodes import nodes
 node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_depth=2, label=None)

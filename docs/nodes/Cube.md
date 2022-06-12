@@ -8,6 +8,7 @@
 
 Initialization
 --------------
+
 ```python
 from geonodes import nodes
 node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, label=None)

@@ -8,6 +8,7 @@
 
 Initialization
 --------------
+
 ```python
 from geonodes import nodes
 node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='POINTS', label=None)

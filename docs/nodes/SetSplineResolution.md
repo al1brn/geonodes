@@ -8,6 +8,7 @@
 
 Initialization
 --------------
+
 ```python
 from geonodes import nodes
 node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None, label=None)

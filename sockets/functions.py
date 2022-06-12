@@ -31,6 +31,7 @@ geonodes functions
     <sub>go to index</sub>
     
     Example of use:
+    
     ```python
     import geonodes as gn
     value = gn.Float(14.) # A float value
@@ -142,6 +143,7 @@ def compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', ope
     <sub>go to: top index
     blender ref FunctionNodeCompare
     node ref Compare </sub>
+    
     ```python
     v = functions.compare(a, b, epsilon, data_type, mode, operation)
     ```
@@ -162,6 +164,7 @@ def compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', ope
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Compare(a=a, b=b, epsilon=epsilon, data_type=data_type, mode=mode, operation=operation)
@@ -182,6 +185,7 @@ def join_strings(*strings, delimiter=None):
     <sub>go to: top index
     blender ref GeometryNodeStringJoin
     node ref Join Strings </sub>
+    
     ```python
     v = functions.join_strings(strings_1, strings_2, strings_3, delimiter)
     ```
@@ -198,6 +202,7 @@ def join_strings(*strings, delimiter=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.JoinStrings(*strings, delimiter=delimiter)
@@ -218,6 +223,7 @@ def scene():
     <sub>go to: top index
     blender ref GeometryNodeInputSceneTime
     node ref Scene Time </sub>
+    
     ```python
     v = functions.scene()
     ```
@@ -227,6 +233,7 @@ def scene():
     ---------
         Node creation
         -------------
+        
         ```python
         from geondes import nodes
         nodes.SceneTime()
@@ -247,6 +254,7 @@ def add(value0=None, value1=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.add(value0, value1)
     ```
@@ -264,6 +272,7 @@ def add(value0=None, value1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, operation='ADD')
@@ -284,6 +293,7 @@ def subtract(value0=None, value1=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.subtract(value0, value1)
     ```
@@ -301,6 +311,7 @@ def subtract(value0=None, value1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, operation='SUBTRACT')
@@ -321,6 +332,7 @@ def multiply(value0=None, value1=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.multiply(value0, value1)
     ```
@@ -338,6 +350,7 @@ def multiply(value0=None, value1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, operation='MULTIPLY')
@@ -358,6 +371,7 @@ def divide(value0=None, value1=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.divide(value0, value1)
     ```
@@ -375,6 +389,7 @@ def divide(value0=None, value1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, operation='DIVIDE')
@@ -395,6 +410,7 @@ def multiply_add(value0=None, value1=None, value2=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.multiply_add(value0, value1, value2)
     ```
@@ -413,6 +429,7 @@ def multiply_add(value0=None, value1=None, value2=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, value2=value2, operation='MULTIPLY_ADD')
@@ -433,6 +450,7 @@ def pow(value0=None, value1=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.pow(value0, value1)
     ```
@@ -450,6 +468,7 @@ def pow(value0=None, value1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, operation='POWER')
@@ -470,6 +489,7 @@ def log(value0=None, value1=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.log(value0, value1)
     ```
@@ -487,6 +507,7 @@ def log(value0=None, value1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, operation='LOGARITHM')
@@ -507,6 +528,7 @@ def sqrt(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.sqrt(value0)
     ```
@@ -523,6 +545,7 @@ def sqrt(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='SQRT')
@@ -543,6 +566,7 @@ def inverse_sqrt(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.inverse_sqrt(value0)
     ```
@@ -559,6 +583,7 @@ def inverse_sqrt(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='INVERSE_SQRT')
@@ -579,6 +604,7 @@ def abs(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.abs(value0)
     ```
@@ -595,6 +621,7 @@ def abs(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='ABSOLUTE')
@@ -615,6 +642,7 @@ def exp(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.exp(value0)
     ```
@@ -631,6 +659,7 @@ def exp(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='EXPONENT')
@@ -651,6 +680,7 @@ def min(value0=None, value1=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.min(value0, value1)
     ```
@@ -668,6 +698,7 @@ def min(value0=None, value1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, operation='MINIMUM')
@@ -688,6 +719,7 @@ def max(value0=None, value1=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.max(value0, value1)
     ```
@@ -705,6 +737,7 @@ def max(value0=None, value1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, operation='MAXIMUM')
@@ -725,6 +758,7 @@ def less_than(value0=None, value1=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.less_than(value0, value1)
     ```
@@ -742,6 +776,7 @@ def less_than(value0=None, value1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, operation='LESS_THAN')
@@ -762,6 +797,7 @@ def greater_than(value0=None, value1=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.greater_than(value0, value1)
     ```
@@ -779,6 +815,7 @@ def greater_than(value0=None, value1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, operation='GREATER_THAN')
@@ -799,6 +836,7 @@ def sign(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.sign(value0)
     ```
@@ -815,6 +853,7 @@ def sign(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='SIGN')
@@ -835,6 +874,7 @@ def compare(value0=None, value1=None, value2=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.compare(value0, value1, value2)
     ```
@@ -853,6 +893,7 @@ def compare(value0=None, value1=None, value2=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, value2=value2, operation='COMPARE')
@@ -873,6 +914,7 @@ def smooth_min(value0=None, value1=None, value2=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.smooth_min(value0, value1, value2)
     ```
@@ -891,6 +933,7 @@ def smooth_min(value0=None, value1=None, value2=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MIN')
@@ -911,6 +954,7 @@ def smooth_max(value0=None, value1=None, value2=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.smooth_max(value0, value1, value2)
     ```
@@ -929,6 +973,7 @@ def smooth_max(value0=None, value1=None, value2=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MAX')
@@ -949,6 +994,7 @@ def round(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.round(value0)
     ```
@@ -965,6 +1011,7 @@ def round(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='ROUND')
@@ -985,6 +1032,7 @@ def floor(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.floor(value0)
     ```
@@ -1001,6 +1049,7 @@ def floor(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='FLOOR')
@@ -1021,6 +1070,7 @@ def ceil(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.ceil(value0)
     ```
@@ -1037,6 +1087,7 @@ def ceil(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='CEIL')
@@ -1057,6 +1108,7 @@ def trunc(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.trunc(value0)
     ```
@@ -1073,6 +1125,7 @@ def trunc(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='TRUNC')
@@ -1093,6 +1146,7 @@ def fract(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.fract(value0)
     ```
@@ -1109,6 +1163,7 @@ def fract(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='FRACT')
@@ -1129,6 +1184,7 @@ def modulo(value0=None, value1=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.modulo(value0, value1)
     ```
@@ -1146,6 +1202,7 @@ def modulo(value0=None, value1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, operation='MODULO')
@@ -1166,6 +1223,7 @@ def wrap(value0=None, value1=None, value2=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.wrap(value0, value1, value2)
     ```
@@ -1184,6 +1242,7 @@ def wrap(value0=None, value1=None, value2=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, value2=value2, operation='WRAP')
@@ -1204,6 +1263,7 @@ def snap(value0=None, value1=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.snap(value0, value1)
     ```
@@ -1221,6 +1281,7 @@ def snap(value0=None, value1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, operation='SNAP')
@@ -1241,6 +1302,7 @@ def pingpong(value0=None, value1=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.pingpong(value0, value1)
     ```
@@ -1258,6 +1320,7 @@ def pingpong(value0=None, value1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, operation='PINGPONG')
@@ -1278,6 +1341,7 @@ def sin(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.sin(value0)
     ```
@@ -1294,6 +1358,7 @@ def sin(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='SINE')
@@ -1314,6 +1379,7 @@ def cos(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.cos(value0)
     ```
@@ -1330,6 +1396,7 @@ def cos(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='COSINE')
@@ -1350,6 +1417,7 @@ def tan(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.tan(value0)
     ```
@@ -1366,6 +1434,7 @@ def tan(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='TANGENT')
@@ -1386,6 +1455,7 @@ def arcsin(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.arcsin(value0)
     ```
@@ -1402,6 +1472,7 @@ def arcsin(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='ARCSINE')
@@ -1422,6 +1493,7 @@ def arccos(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.arccos(value0)
     ```
@@ -1438,6 +1510,7 @@ def arccos(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='ARCCOSINE')
@@ -1458,6 +1531,7 @@ def arctan(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.arctan(value0)
     ```
@@ -1474,6 +1548,7 @@ def arctan(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='ARCTANGENT')
@@ -1494,6 +1569,7 @@ def arctan2(value0=None, value1=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.arctan2(value0, value1)
     ```
@@ -1511,6 +1587,7 @@ def arctan2(value0=None, value1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, value1=value1, operation='ARCTAN2')
@@ -1531,6 +1608,7 @@ def sinh(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.sinh(value0)
     ```
@@ -1547,6 +1625,7 @@ def sinh(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='SINH')
@@ -1567,6 +1646,7 @@ def cosh(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.cosh(value0)
     ```
@@ -1583,6 +1663,7 @@ def cosh(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='COSH')
@@ -1603,6 +1684,7 @@ def tanh(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.tanh(value0)
     ```
@@ -1619,6 +1701,7 @@ def tanh(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='TANH')
@@ -1639,6 +1722,7 @@ def radians(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.radians(value0)
     ```
@@ -1655,6 +1739,7 @@ def radians(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='RADIANS')
@@ -1675,6 +1760,7 @@ def degrees(value0=None):
     <sub>go to: top index
     blender ref ShaderNodeMath
     node ref Math </sub>
+    
     ```python
     v = functions.degrees(value0)
     ```
@@ -1691,6 +1777,7 @@ def degrees(value0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Math(value0=value0, operation='DEGREES')
@@ -1711,6 +1798,7 @@ def vector_add(vector0=None, vector1=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.vector_add(vector0, vector1)
     ```
@@ -1728,6 +1816,7 @@ def vector_add(vector0=None, vector1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, vector1=vector1, operation='ADD')
@@ -1748,6 +1837,7 @@ def vector_subtract(vector0=None, vector1=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.vector_subtract(vector0, vector1)
     ```
@@ -1765,6 +1855,7 @@ def vector_subtract(vector0=None, vector1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SUBTRACT')
@@ -1785,6 +1876,7 @@ def vector_multiply(vector0=None, vector1=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.vector_multiply(vector0, vector1)
     ```
@@ -1802,6 +1894,7 @@ def vector_multiply(vector0=None, vector1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MULTIPLY')
@@ -1822,6 +1915,7 @@ def vector_divide(vector0=None, vector1=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.vector_divide(vector0, vector1)
     ```
@@ -1839,6 +1933,7 @@ def vector_divide(vector0=None, vector1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DIVIDE')
@@ -1859,6 +1954,7 @@ def vector_multiply_add(vector0=None, vector1=None, vector2=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.vector_multiply_add(vector0, vector1, vector2)
     ```
@@ -1877,6 +1973,7 @@ def vector_multiply_add(vector0=None, vector1=None, vector2=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD')
@@ -1897,6 +1994,7 @@ def cross(vector0=None, vector1=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.cross(vector0, vector1)
     ```
@@ -1914,6 +2012,7 @@ def cross(vector0=None, vector1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, vector1=vector1, operation='CROSS_PRODUCT')
@@ -1934,6 +2033,7 @@ def project(vector0=None, vector1=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.project(vector0, vector1)
     ```
@@ -1951,6 +2051,7 @@ def project(vector0=None, vector1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, vector1=vector1, operation='PROJECT')
@@ -1971,6 +2072,7 @@ def reflect(vector0=None, vector1=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.reflect(vector0, vector1)
     ```
@@ -1988,6 +2090,7 @@ def reflect(vector0=None, vector1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, vector1=vector1, operation='REFLECT')
@@ -2008,6 +2111,7 @@ def refract(vector0=None, vector1=None, scale=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.refract(vector0, vector1, scale)
     ```
@@ -2026,6 +2130,7 @@ def refract(vector0=None, vector1=None, scale=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, vector1=vector1, scale=scale, operation='REFRACT')
@@ -2046,6 +2151,7 @@ def faceforward(vector0=None, vector1=None, vector2=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.faceforward(vector0, vector1, vector2)
     ```
@@ -2064,6 +2170,7 @@ def faceforward(vector0=None, vector1=None, vector2=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='FACEFORWARD')
@@ -2084,6 +2191,7 @@ def dot(vector0=None, vector1=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.dot(vector0, vector1)
     ```
@@ -2101,6 +2209,7 @@ def dot(vector0=None, vector1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DOT_PRODUCT')
@@ -2121,6 +2230,7 @@ def distance(vector0=None, vector1=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.distance(vector0, vector1)
     ```
@@ -2138,6 +2248,7 @@ def distance(vector0=None, vector1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DISTANCE')
@@ -2158,6 +2269,7 @@ def length(vector0=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.length(vector0)
     ```
@@ -2174,6 +2286,7 @@ def length(vector0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, operation='LENGTH')
@@ -2194,6 +2307,7 @@ def scale(vector0=None, scale=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.scale(vector0, scale)
     ```
@@ -2211,6 +2325,7 @@ def scale(vector0=None, scale=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, scale=scale, operation='SCALE')
@@ -2231,6 +2346,7 @@ def normalize(vector0=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.normalize(vector0)
     ```
@@ -2247,6 +2363,7 @@ def normalize(vector0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, operation='NORMALIZE')
@@ -2267,6 +2384,7 @@ def vector_absolute(vector0=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.vector_absolute(vector0)
     ```
@@ -2283,6 +2401,7 @@ def vector_absolute(vector0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, operation='ABSOLUTE')
@@ -2303,6 +2422,7 @@ def vector_min(vector0=None, vector1=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.vector_min(vector0, vector1)
     ```
@@ -2320,6 +2440,7 @@ def vector_min(vector0=None, vector1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MINIMUM')
@@ -2340,6 +2461,7 @@ def vector_max(vector0=None, vector1=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.vector_max(vector0, vector1)
     ```
@@ -2357,6 +2479,7 @@ def vector_max(vector0=None, vector1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MAXIMUM')
@@ -2377,6 +2500,7 @@ def vector_floor(vector0=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.vector_floor(vector0)
     ```
@@ -2393,6 +2517,7 @@ def vector_floor(vector0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, operation='FLOOR')
@@ -2413,6 +2538,7 @@ def vector_ceil(vector0=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.vector_ceil(vector0)
     ```
@@ -2429,6 +2555,7 @@ def vector_ceil(vector0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, operation='CEIL')
@@ -2449,6 +2576,7 @@ def fraction(vector0=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.fraction(vector0)
     ```
@@ -2465,6 +2593,7 @@ def fraction(vector0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, operation='FRACTION')
@@ -2485,6 +2614,7 @@ def vector_modulo(vector0=None, vector1=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.vector_modulo(vector0, vector1)
     ```
@@ -2502,6 +2632,7 @@ def vector_modulo(vector0=None, vector1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MODULO')
@@ -2522,6 +2653,7 @@ def vector_wrap(vector0=None, vector1=None, vector2=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.vector_wrap(vector0, vector1, vector2)
     ```
@@ -2540,6 +2672,7 @@ def vector_wrap(vector0=None, vector1=None, vector2=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='WRAP')
@@ -2560,6 +2693,7 @@ def vector_snap(vector0=None, vector1=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.vector_snap(vector0, vector1)
     ```
@@ -2577,6 +2711,7 @@ def vector_snap(vector0=None, vector1=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SNAP')
@@ -2597,6 +2732,7 @@ def vector_sin(vector0=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.vector_sin(vector0)
     ```
@@ -2613,6 +2749,7 @@ def vector_sin(vector0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, operation='SINE')
@@ -2633,6 +2770,7 @@ def vector_cos(vector0=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.vector_cos(vector0)
     ```
@@ -2649,6 +2787,7 @@ def vector_cos(vector0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, operation='COSINE')
@@ -2669,6 +2808,7 @@ def vector_tan(vector0=None):
     <sub>go to: top index
     blender ref ShaderNodeVectorMath
     node ref Vector Math </sub>
+    
     ```python
     v = functions.vector_tan(vector0)
     ```
@@ -2685,6 +2825,7 @@ def vector_tan(vector0=None):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.VectorMath(vector0=vector0, operation='TANGENT')
@@ -2705,6 +2846,7 @@ def color_mix(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_mix(color1, color2, fac, use_alpha)
     ```
@@ -2724,6 +2866,7 @@ def color_mix(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha)
@@ -2744,6 +2887,7 @@ def color_darken(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_darken(color1, color2, fac, use_alpha)
     ```
@@ -2763,6 +2907,7 @@ def color_darken(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha)
@@ -2783,6 +2928,7 @@ def color_multiply(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_multiply(color1, color2, fac, use_alpha)
     ```
@@ -2802,6 +2948,7 @@ def color_multiply(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha)
@@ -2822,6 +2969,7 @@ def color_burn(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_burn(color1, color2, fac, use_alpha)
     ```
@@ -2841,6 +2989,7 @@ def color_burn(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha)
@@ -2861,6 +3010,7 @@ def color_lighten(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_lighten(color1, color2, fac, use_alpha)
     ```
@@ -2880,6 +3030,7 @@ def color_lighten(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha)
@@ -2900,6 +3051,7 @@ def color_screen(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_screen(color1, color2, fac, use_alpha)
     ```
@@ -2919,6 +3071,7 @@ def color_screen(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha)
@@ -2939,6 +3092,7 @@ def color_dodge(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_dodge(color1, color2, fac, use_alpha)
     ```
@@ -2958,6 +3112,7 @@ def color_dodge(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha)
@@ -2978,6 +3133,7 @@ def color_add(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_add(color1, color2, fac, use_alpha)
     ```
@@ -2997,6 +3153,7 @@ def color_add(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha)
@@ -3017,6 +3174,7 @@ def color_overlay(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_overlay(color1, color2, fac, use_alpha)
     ```
@@ -3036,6 +3194,7 @@ def color_overlay(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha)
@@ -3056,6 +3215,7 @@ def color_soft_light(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_soft_light(color1, color2, fac, use_alpha)
     ```
@@ -3075,6 +3235,7 @@ def color_soft_light(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha)
@@ -3095,6 +3256,7 @@ def color_linear_light(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_linear_light(color1, color2, fac, use_alpha)
     ```
@@ -3114,6 +3276,7 @@ def color_linear_light(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha)
@@ -3134,6 +3297,7 @@ def color_difference(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_difference(color1, color2, fac, use_alpha)
     ```
@@ -3153,6 +3317,7 @@ def color_difference(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha)
@@ -3173,6 +3338,7 @@ def color_subtract(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_subtract(color1, color2, fac, use_alpha)
     ```
@@ -3192,6 +3358,7 @@ def color_subtract(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha)
@@ -3212,6 +3379,7 @@ def color_divide(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_divide(color1, color2, fac, use_alpha)
     ```
@@ -3231,6 +3399,7 @@ def color_divide(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha)
@@ -3251,6 +3420,7 @@ def color_hue(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_hue(color1, color2, fac, use_alpha)
     ```
@@ -3270,6 +3440,7 @@ def color_hue(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha)
@@ -3290,6 +3461,7 @@ def color_saturation(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_saturation(color1, color2, fac, use_alpha)
     ```
@@ -3309,6 +3481,7 @@ def color_saturation(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha)
@@ -3329,6 +3502,7 @@ def color_mix_color(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_mix_color(color1, color2, fac, use_alpha)
     ```
@@ -3348,6 +3522,7 @@ def color_mix_color(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha)
@@ -3368,6 +3543,7 @@ def color_value(color1=None, color2=None, fac=None, use_alpha=False):
     <sub>go to: top index
     blender ref ShaderNodeMixRGB
     node ref Mix </sub>
+    
     ```python
     v = functions.color_value(color1, color2, fac, use_alpha)
     ```
@@ -3387,6 +3563,7 @@ def color_value(color1=None, color2=None, fac=None, use_alpha=False):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha)

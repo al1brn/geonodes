@@ -8,6 +8,7 @@
 
 Initialization
 --------------
+
 ```python
 from geonodes import nodes
 node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY', label=None)

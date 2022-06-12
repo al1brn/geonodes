@@ -31,6 +31,7 @@
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeStringLength](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
 node ref [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html) </sub>
+
 ```python
 v = string.length
 ```
@@ -45,6 +46,7 @@ v = string.length
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.StringLength(string=self, label=f"{self.node_chain_label}.length")
@@ -62,6 +64,7 @@ Integer
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
+
 ```python
 v = string.switch(switch0, true)
 ```
@@ -78,6 +81,7 @@ v = string.switch(switch0, true)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING')
@@ -95,6 +99,7 @@ String
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
+
 ```python
 v = string.element(b)
 ```
@@ -112,6 +117,7 @@ v = string.element(b)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT')
@@ -129,6 +135,7 @@ Boolean
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
+
 ```python
 v = string.length(b)
 ```
@@ -146,6 +153,7 @@ v = string.length(b)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH')
@@ -163,6 +171,7 @@ Boolean
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
+
 ```python
 v = string.average(b)
 ```
@@ -180,6 +189,7 @@ v = string.average(b)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE')
@@ -197,6 +207,7 @@ Boolean
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
+
 ```python
 v = string.dot_product(b)
 ```
@@ -214,6 +225,7 @@ v = string.dot_product(b)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT')
@@ -231,6 +243,7 @@ Boolean
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
+
 ```python
 v = string.direction(b)
 ```
@@ -248,6 +261,7 @@ v = string.direction(b)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION')
@@ -265,6 +279,7 @@ Boolean
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [GeometryNodeStringJoin](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
 node ref [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html) </sub>
+
 ```python
 v = string.join(strings_1, strings_2, strings_3, delimiter)
 ```
@@ -279,6 +294,7 @@ v = string.join(strings_1, strings_2, strings_3, delimiter)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.JoinStrings(self, *strings, delimiter=delimiter)
@@ -296,6 +312,7 @@ String
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeReplaceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
 node ref [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html) </sub>
+
 ```python
 v = string.replace(find, replace)
 ```
@@ -311,6 +328,7 @@ v = string.replace(find, replace)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.ReplaceString(string=self, find=find, replace=replace)
@@ -328,6 +346,7 @@ String
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [FunctionNodeSliceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
 node ref [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html) </sub>
+
 ```python
 v = string.slice(position, length)
 ```
@@ -343,6 +362,7 @@ v = string.slice(position, length)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.SliceString(string=self, position=position, length=length)
@@ -360,6 +380,7 @@ String
 <sub>go to: [top](#data-socket-string) [index](/docs/index.md)
 blender ref [GeometryNodeStringToCurves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
 node ref [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html) </sub>
+
 ```python
 v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_box_width, text_box_height, align_x, align_y, overflow, pivot_mode)
 ```
@@ -383,6 +404,7 @@ v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_b
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)

@@ -44,6 +44,7 @@ class Instances(gn.Geometry):
         <sub>go to: top index
         blender ref GeometryNodeInputIndex
         node ref Index </sub>
+        
         ```python
         v = instances.instance_index(self)
         ```
@@ -59,6 +60,7 @@ class Instances(gn.Geometry):
                   
                     Node creation
                     -------------
+                    
                     ```python
                     from geondes import nodes
                     nodes.Index()
@@ -83,6 +85,7 @@ class Instances(gn.Geometry):
         <sub>go to: top index
         blender ref GeometryNodeRotateInstances
         node ref Rotate Instances </sub>
+        
         ```python
         v = instances.rotate(selection, rotation, pivot_point, local_space)
         ```
@@ -102,6 +105,7 @@ class Instances(gn.Geometry):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
@@ -122,6 +126,7 @@ class Instances(gn.Geometry):
         <sub>go to: top index
         blender ref GeometryNodeScaleInstances
         node ref Scale Instances </sub>
+        
         ```python
         v = instances.scale(selection, scale, center, local_space)
         ```
@@ -141,6 +146,7 @@ class Instances(gn.Geometry):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
@@ -161,6 +167,7 @@ class Instances(gn.Geometry):
         <sub>go to: top index
         blender ref GeometryNodeTranslateInstances
         node ref Translate Instances </sub>
+        
         ```python
         v = instances.translate(selection, translation, local_space)
         ```
@@ -179,6 +186,7 @@ class Instances(gn.Geometry):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
@@ -199,6 +207,7 @@ class Instances(gn.Geometry):
         <sub>go to: top index
         blender ref GeometryNodeInstancesToPoints
         node ref Instances to Points </sub>
+        
         ```python
         v = instances.to_points(selection, position, radius)
         ```
@@ -217,6 +226,7 @@ class Instances(gn.Geometry):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)

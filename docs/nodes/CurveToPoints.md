@@ -8,6 +8,7 @@
 
 Initialization
 --------------
+
 ```python
 from geonodes import nodes
 node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT', label=None)

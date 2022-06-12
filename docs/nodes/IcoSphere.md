@@ -8,6 +8,7 @@
 
 Initialization
 --------------
+
 ```python
 from geonodes import nodes
 node = nodes.IcoSphere(radius=None, subdivisions=None, label=None)

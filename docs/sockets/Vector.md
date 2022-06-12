@@ -74,6 +74,7 @@
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) </sub>
+
 ```python
 v = Vector.Random(min, max, ID, seed)
 ```
@@ -91,6 +92,7 @@ v = Vector.Random(min, max, ID, seed)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR')
@@ -108,6 +110,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeCombineXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html)
 node ref [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/combine_xyz.html) </sub>
+
 ```python
 v = Vector.Combine(x, y, z)
 ```
@@ -123,6 +126,7 @@ v = Vector.Combine(x, y, z)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.CombineXyz(x=x, y=y, z=z)
@@ -140,6 +144,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeAlignEulerToVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
 node ref [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html) </sub>
+
 ```python
 v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis)
 ```
@@ -157,6 +162,7 @@ v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
@@ -174,6 +180,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
 node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html) </sub>
+
 ```python
 v = vector.separate
 ```
@@ -188,6 +195,7 @@ v = vector.separate
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.separate")
@@ -205,6 +213,7 @@ Sockets [x (Float), y (Float), z (Float)]
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
 node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html) </sub>
+
 ```python
 v = vector.x
 ```
@@ -219,6 +228,7 @@ v = vector.x
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.x")
@@ -236,6 +246,7 @@ Sockets [x (Float), y (Float), z (Float)]
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
 node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html) </sub>
+
 ```python
 v = vector.y
 ```
@@ -250,6 +261,7 @@ v = vector.y
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.y")
@@ -267,6 +279,7 @@ Sockets [x (Float), y (Float), z (Float)]
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
 node ref [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html) </sub>
+
 ```python
 v = vector.z
 ```
@@ -281,6 +294,7 @@ v = vector.z
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.z")
@@ -298,6 +312,7 @@ Sockets [x (Float), y (Float), z (Float)]
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeAccumulateField](https://docs.blender.org/api/current/bpy.types.GeometryNodeAccumulateField.html)
 node ref [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/accumulate_field.html) </sub>
+
 ```python
 v = vector.accumulate_field(group_index, domain)
 ```
@@ -314,6 +329,7 @@ v = vector.accumulate_field(group_index, domain)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain)
@@ -331,6 +347,7 @@ Sockets [leading (Vector), trailing (Vector), total (Vector)]
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeStatistic](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
 node ref [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) </sub>
+
 ```python
 v = vector.attribute_statistic(geometry, selection, domain)
 ```
@@ -348,6 +365,7 @@ v = vector.attribute_statistic(geometry, selection, domain)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT_VECTOR', domain=domain)
@@ -365,6 +383,7 @@ Sockets [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
 node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
+
 ```python
 v = vector.transfer_attribute(source, source_position, index, domain, mapping)
 ```
@@ -384,6 +403,7 @@ v = vector.transfer_attribute(source, source_position, index, domain, mapping)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
@@ -401,6 +421,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
 node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) </sub>
+
 ```python
 v = vector.capture_attribute(geometry, domain)
 ```
@@ -417,6 +438,7 @@ v = vector.capture_attribute(geometry, domain)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VECTOR', domain=domain)
@@ -434,6 +456,7 @@ Sockets [geometry (Geometry), attribute (Vector)]
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
 node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) </sub>
+
 ```python
 v = vector.field_at_index(index, domain)
 ```
@@ -450,6 +473,7 @@ v = vector.field_at_index(index, domain)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain)
@@ -467,6 +491,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
 node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) </sub>
+
 ```python
 v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
 ```
@@ -486,6 +511,7 @@ v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, 
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping)
@@ -503,6 +529,7 @@ Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_dista
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 node ref [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) </sub>
+
 ```python
 v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type)
 ```
@@ -523,6 +550,7 @@ v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_ty
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type)
@@ -540,6 +568,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
+
 ```python
 v = vector.less_than(b, c, angle, mode)
 ```
@@ -559,6 +588,7 @@ v = vector.less_than(b, c, angle, mode)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN')
@@ -576,6 +606,7 @@ Boolean
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
+
 ```python
 v = vector.less_equal(b, c, angle, mode)
 ```
@@ -595,6 +626,7 @@ v = vector.less_equal(b, c, angle, mode)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL')
@@ -612,6 +644,7 @@ Boolean
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
+
 ```python
 v = vector.greater_than(b, c, angle, mode)
 ```
@@ -631,6 +664,7 @@ v = vector.greater_than(b, c, angle, mode)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN')
@@ -648,6 +682,7 @@ Boolean
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
+
 ```python
 v = vector.greater_equal(b, c, angle, mode)
 ```
@@ -667,6 +702,7 @@ v = vector.greater_equal(b, c, angle, mode)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL')
@@ -684,6 +720,7 @@ Boolean
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
+
 ```python
 v = vector.equal(b, c, angle, epsilon, mode)
 ```
@@ -704,6 +741,7 @@ v = vector.equal(b, c, angle, epsilon, mode)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL')
@@ -721,6 +759,7 @@ Boolean
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
+
 ```python
 v = vector.not_equal(b, c, angle, epsilon, mode)
 ```
@@ -741,6 +780,7 @@ v = vector.not_equal(b, c, angle, epsilon, mode)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL')
@@ -758,6 +798,7 @@ Boolean
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.add(vector1)
 ```
@@ -773,6 +814,7 @@ v = vector.add(vector1)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD')
@@ -790,6 +832,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.subtract(vector1)
 ```
@@ -805,6 +848,7 @@ v = vector.subtract(vector1)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT')
@@ -822,6 +866,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.multiply(vector1)
 ```
@@ -837,6 +882,7 @@ v = vector.multiply(vector1)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY')
@@ -854,6 +900,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.divide(vector1)
 ```
@@ -869,6 +916,7 @@ v = vector.divide(vector1)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE')
@@ -886,6 +934,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.multiply_add(vector1, vector2)
 ```
@@ -902,6 +951,7 @@ v = vector.multiply_add(vector1, vector2)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD')
@@ -919,6 +969,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.cross(vector1)
 ```
@@ -934,6 +985,7 @@ v = vector.cross(vector1)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT')
@@ -951,6 +1003,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.project(vector1)
 ```
@@ -966,6 +1019,7 @@ v = vector.project(vector1)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT')
@@ -983,6 +1037,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.reflect(vector1)
 ```
@@ -998,6 +1053,7 @@ v = vector.reflect(vector1)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT')
@@ -1015,6 +1071,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.refract(vector1, scale)
 ```
@@ -1031,6 +1088,7 @@ v = vector.refract(vector1, scale)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT')
@@ -1048,6 +1106,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.faceforward(vector1, vector2)
 ```
@@ -1064,6 +1123,7 @@ v = vector.faceforward(vector1, vector2)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD')
@@ -1081,6 +1141,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.dot(vector1)
 ```
@@ -1096,6 +1157,7 @@ v = vector.dot(vector1)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT')
@@ -1113,6 +1175,7 @@ Float
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.distance(vector1)
 ```
@@ -1128,6 +1191,7 @@ v = vector.distance(vector1)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE')
@@ -1145,6 +1209,7 @@ Float
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.length()
 ```
@@ -1159,6 +1224,7 @@ v = vector.length()
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, operation='LENGTH')
@@ -1176,6 +1242,7 @@ Float
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.scale(scale)
 ```
@@ -1191,6 +1258,7 @@ v = vector.scale(scale)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, scale=scale, operation='SCALE')
@@ -1208,6 +1276,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.normalize()
 ```
@@ -1222,6 +1291,7 @@ v = vector.normalize()
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, operation='NORMALIZE')
@@ -1239,6 +1309,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.absolute()
 ```
@@ -1253,6 +1324,7 @@ v = vector.absolute()
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, operation='ABSOLUTE')
@@ -1270,6 +1342,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.min(vector1)
 ```
@@ -1285,6 +1358,7 @@ v = vector.min(vector1)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM')
@@ -1302,6 +1376,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.max(vector1)
 ```
@@ -1317,6 +1392,7 @@ v = vector.max(vector1)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM')
@@ -1334,6 +1410,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.floor()
 ```
@@ -1348,6 +1425,7 @@ v = vector.floor()
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, operation='FLOOR')
@@ -1365,6 +1443,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.ceil()
 ```
@@ -1379,6 +1458,7 @@ v = vector.ceil()
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, operation='CEIL')
@@ -1396,6 +1476,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.fraction()
 ```
@@ -1410,6 +1491,7 @@ v = vector.fraction()
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, operation='FRACTION')
@@ -1427,6 +1509,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.modulo(vector1)
 ```
@@ -1442,6 +1525,7 @@ v = vector.modulo(vector1)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO')
@@ -1459,6 +1543,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.wrap(vector1, vector2)
 ```
@@ -1475,6 +1560,7 @@ v = vector.wrap(vector1, vector2)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP')
@@ -1492,6 +1578,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.snap(vector1)
 ```
@@ -1507,6 +1594,7 @@ v = vector.snap(vector1)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP')
@@ -1524,6 +1612,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.sin()
 ```
@@ -1538,6 +1627,7 @@ v = vector.sin()
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, operation='SINE')
@@ -1555,6 +1645,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.cos()
 ```
@@ -1569,6 +1660,7 @@ v = vector.cos()
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, operation='COSINE')
@@ -1586,6 +1678,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
+
 ```python
 v = vector.tan()
 ```
@@ -1600,6 +1693,7 @@ v = vector.tan()
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorMath(vector0=self, operation='TANGENT')
@@ -1617,6 +1711,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorCurve](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html)
 node ref [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_curves.html) </sub>
+
 ```python
 v = vector.curves(fac)
 ```
@@ -1631,6 +1726,7 @@ v = vector.curves(fac)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorCurves(vector=self, fac=fac)
@@ -1648,6 +1744,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeAlignEulerToVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
 node ref [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html) </sub>
+
 ```python
 v = vector.align_to_vector(factor, vector, axis, pivot_axis)
 ```
@@ -1665,6 +1762,7 @@ v = vector.align_to_vector(factor, vector, axis, pivot_axis)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
@@ -1682,6 +1780,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [FunctionNodeRotateEuler](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
 node ref [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html) </sub>
+
 ```python
 v = vector.rotate_euler(rotate_by, space)
 ```
@@ -1697,6 +1796,7 @@ v = vector.rotate_euler(rotate_by, space)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space)
@@ -1714,6 +1814,7 @@ Vector
 <sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
 blender ref [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
 node ref [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) </sub>
+
 ```python
 v = vector.rotate(center, axis, angle, rotation, invert, rotation_type)
 ```
@@ -1733,6 +1834,7 @@ v = vector.rotate(center, axis, angle, rotation, invert, rotation_type)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type)

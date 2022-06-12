@@ -8,6 +8,7 @@
 
 Initialization
 --------------
+
 ```python
 from geonodes import nodes
 node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=None)

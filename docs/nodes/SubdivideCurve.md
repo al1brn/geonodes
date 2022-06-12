@@ -8,6 +8,7 @@
 
 Initialization
 --------------
+
 ```python
 from geonodes import nodes
 node = nodes.SubdivideCurve(curve=None, cuts=None, label=None)

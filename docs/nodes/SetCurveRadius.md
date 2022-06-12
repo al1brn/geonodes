@@ -8,6 +8,7 @@
 
 Initialization
 --------------
+
 ```python
 from geonodes import nodes
 node = nodes.SetCurveRadius(curve=None, selection=None, radius=None, label=None)

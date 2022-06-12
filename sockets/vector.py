@@ -100,6 +100,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeRandomValue
         node ref Random Value </sub>
+        
         ```python
         v = Vector.Random(min, max, ID, seed)
         ```
@@ -119,6 +120,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR')
@@ -140,6 +142,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeCombineXYZ
         node ref Combine XYZ </sub>
+        
         ```python
         v = Vector.Combine(x, y, z)
         ```
@@ -157,6 +160,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.CombineXyz(x=x, y=y, z=z)
@@ -178,6 +182,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeAlignEulerToVector
         node ref Align Euler to Vector </sub>
+        
         ```python
         v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis)
         ```
@@ -197,6 +202,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
@@ -222,6 +228,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeSeparateXYZ
         node ref Separate XYZ </sub>
+        
         ```python
         v = vector.separate
         ```
@@ -238,6 +245,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.separate")
@@ -261,6 +269,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeSeparateXYZ
         node ref Separate XYZ </sub>
+        
         ```python
         v = vector.x
         ```
@@ -277,6 +286,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.x")
@@ -302,6 +312,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeSeparateXYZ
         node ref Separate XYZ </sub>
+        
         ```python
         v = vector.y
         ```
@@ -318,6 +329,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.y")
@@ -343,6 +355,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeSeparateXYZ
         node ref Separate XYZ </sub>
+        
         ```python
         v = vector.z
         ```
@@ -359,6 +372,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.z")
@@ -387,6 +401,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref GeometryNodeAccumulateField
         node ref Accumulate Field </sub>
+        
         ```python
         v = vector.accumulate_field(group_index, domain)
         ```
@@ -405,6 +420,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain)
@@ -425,6 +441,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref GeometryNodeAttributeStatistic
         node ref Attribute Statistic </sub>
+        
         ```python
         v = vector.attribute_statistic(geometry, selection, domain)
         ```
@@ -444,6 +461,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT_VECTOR', domain=domain)
@@ -464,6 +482,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref GeometryNodeAttributeTransfer
         node ref Transfer Attribute </sub>
+        
         ```python
         v = vector.transfer_attribute(source, source_position, index, domain, mapping)
         ```
@@ -485,6 +504,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
@@ -505,6 +525,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref GeometryNodeCaptureAttribute
         node ref Capture Attribute </sub>
+        
         ```python
         v = vector.capture_attribute(geometry, domain)
         ```
@@ -523,6 +544,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VECTOR', domain=domain)
@@ -543,6 +565,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref GeometryNodeFieldAtIndex
         node ref Field at Index </sub>
+        
         ```python
         v = vector.field_at_index(index, domain)
         ```
@@ -561,6 +584,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain)
@@ -581,6 +605,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref GeometryNodeRaycast
         node ref Raycast </sub>
+        
         ```python
         v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
         ```
@@ -602,6 +627,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping)
@@ -622,6 +648,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeMapRange
         node ref Map Range </sub>
+        
         ```python
         v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type)
         ```
@@ -644,6 +671,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type)
@@ -664,6 +692,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
+        
         ```python
         v = vector.less_than(b, c, angle, mode)
         ```
@@ -685,6 +714,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN')
@@ -705,6 +735,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
+        
         ```python
         v = vector.less_equal(b, c, angle, mode)
         ```
@@ -726,6 +757,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL')
@@ -746,6 +778,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
+        
         ```python
         v = vector.greater_than(b, c, angle, mode)
         ```
@@ -767,6 +800,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN')
@@ -787,6 +821,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
+        
         ```python
         v = vector.greater_equal(b, c, angle, mode)
         ```
@@ -808,6 +843,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL')
@@ -828,6 +864,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
+        
         ```python
         v = vector.equal(b, c, angle, epsilon, mode)
         ```
@@ -850,6 +887,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL')
@@ -870,6 +908,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
+        
         ```python
         v = vector.not_equal(b, c, angle, epsilon, mode)
         ```
@@ -892,6 +931,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL')
@@ -912,6 +952,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.add(vector1)
         ```
@@ -929,6 +970,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD')
@@ -949,6 +991,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.subtract(vector1)
         ```
@@ -966,6 +1009,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT')
@@ -986,6 +1030,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.multiply(vector1)
         ```
@@ -1003,6 +1048,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY')
@@ -1023,6 +1069,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.divide(vector1)
         ```
@@ -1040,6 +1087,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE')
@@ -1060,6 +1108,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.multiply_add(vector1, vector2)
         ```
@@ -1078,6 +1127,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD')
@@ -1098,6 +1148,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.cross(vector1)
         ```
@@ -1115,6 +1166,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT')
@@ -1135,6 +1187,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.project(vector1)
         ```
@@ -1152,6 +1205,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT')
@@ -1172,6 +1226,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.reflect(vector1)
         ```
@@ -1189,6 +1244,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT')
@@ -1209,6 +1265,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.refract(vector1, scale)
         ```
@@ -1227,6 +1284,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT')
@@ -1247,6 +1305,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.faceforward(vector1, vector2)
         ```
@@ -1265,6 +1324,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD')
@@ -1285,6 +1345,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.dot(vector1)
         ```
@@ -1302,6 +1363,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT')
@@ -1322,6 +1384,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.distance(vector1)
         ```
@@ -1339,6 +1402,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE')
@@ -1359,6 +1423,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.length()
         ```
@@ -1375,6 +1440,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, operation='LENGTH')
@@ -1395,6 +1461,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.scale(scale)
         ```
@@ -1412,6 +1479,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, scale=scale, operation='SCALE')
@@ -1432,6 +1500,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.normalize()
         ```
@@ -1448,6 +1517,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, operation='NORMALIZE')
@@ -1468,6 +1538,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.absolute()
         ```
@@ -1484,6 +1555,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, operation='ABSOLUTE')
@@ -1504,6 +1576,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.min(vector1)
         ```
@@ -1521,6 +1594,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM')
@@ -1541,6 +1615,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.max(vector1)
         ```
@@ -1558,6 +1633,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM')
@@ -1578,6 +1654,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.floor()
         ```
@@ -1594,6 +1671,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, operation='FLOOR')
@@ -1614,6 +1692,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.ceil()
         ```
@@ -1630,6 +1709,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, operation='CEIL')
@@ -1650,6 +1730,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.fraction()
         ```
@@ -1666,6 +1747,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, operation='FRACTION')
@@ -1686,6 +1768,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.modulo(vector1)
         ```
@@ -1703,6 +1786,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO')
@@ -1723,6 +1807,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.wrap(vector1, vector2)
         ```
@@ -1741,6 +1826,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP')
@@ -1761,6 +1847,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.snap(vector1)
         ```
@@ -1778,6 +1865,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP')
@@ -1798,6 +1886,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.sin()
         ```
@@ -1814,6 +1903,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, operation='SINE')
@@ -1834,6 +1924,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.cos()
         ```
@@ -1850,6 +1941,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, operation='COSINE')
@@ -1870,6 +1962,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
+        
         ```python
         v = vector.tan()
         ```
@@ -1886,6 +1979,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorMath(vector0=self, operation='TANGENT')
@@ -1906,6 +2000,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorCurve
         node ref Vector Curves </sub>
+        
         ```python
         v = vector.curves(fac)
         ```
@@ -1922,6 +2017,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorCurves(vector=self, fac=fac)
@@ -1942,6 +2038,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeAlignEulerToVector
         node ref Align Euler to Vector </sub>
+        
         ```python
         v = vector.align_to_vector(factor, vector, axis, pivot_axis)
         ```
@@ -1961,6 +2058,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
@@ -1981,6 +2079,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeRotateEuler
         node ref Rotate Euler </sub>
+        
         ```python
         v = vector.rotate_euler(rotate_by, space)
         ```
@@ -1998,6 +2097,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space)
@@ -2018,6 +2118,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorRotate
         node ref Vector Rotate </sub>
+        
         ```python
         v = vector.rotate(center, axis, angle, rotation, invert, rotation_type)
         ```
@@ -2039,6 +2140,7 @@ class Vector(dsock.Vector):
                       
                         Node creation
                         -------------
+                        
                         ```python
                         from geondes import nodes
                         nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type)

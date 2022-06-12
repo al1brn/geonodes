@@ -50,6 +50,7 @@
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeInputCurveHandlePositions](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
 node ref [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) </sub>
+
 ```python
 v = spline.capture_handle_positions(self, relative, domain='CURVE')
 ```
@@ -65,6 +66,7 @@ v = spline.capture_handle_positions(self, relative, domain='CURVE')
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.CurveHandlePositions(relative=relative)
@@ -82,6 +84,7 @@ Sockets [left (Vector), right (Vector)]
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeInputTangent](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputTangent.html)
 node ref [Curve Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tangent.html) </sub>
+
 ```python
 v = spline.capture_tangent(self, domain='CURVE')
 ```
@@ -96,6 +99,7 @@ v = spline.capture_tangent(self, domain='CURVE')
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.CurveTangent()
@@ -113,6 +117,7 @@ Vector
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeInputCurveTilt](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveTilt.html)
 node ref [Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tilt.html) </sub>
+
 ```python
 v = spline.capture_tilt(self, domain='CURVE')
 ```
@@ -127,6 +132,7 @@ v = spline.capture_tilt(self, domain='CURVE')
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.CurveTilt()
@@ -144,6 +150,7 @@ Float
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeCurveEndpointSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveEndpointSelection.html)
 node ref [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/endpoint_selection.html) </sub>
+
 ```python
 v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE')
 ```
@@ -160,6 +167,7 @@ v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE'
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.EndpointSelection(start_size=start_size, end_size=end_size)
@@ -177,6 +185,7 @@ Boolean
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeCurveHandleTypeSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
 node ref [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) </sub>
+
 ```python
 v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE')
 ```
@@ -193,6 +202,7 @@ v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE'
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
@@ -210,6 +220,7 @@ Boolean
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeInputSplineCyclic](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineCyclic.html)
 node ref [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/is_spline_cyclic.html) </sub>
+
 ```python
 v = spline.capture_cyclic(self, domain='CURVE')
 ```
@@ -224,6 +235,7 @@ v = spline.capture_cyclic(self, domain='CURVE')
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.IsSplineCyclic()
@@ -241,6 +253,7 @@ Boolean
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeSplineLength](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html)
 node ref [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html) </sub>
+
 ```python
 v = spline.capture_length(self, domain='CURVE')
 ```
@@ -255,6 +268,7 @@ v = spline.capture_length(self, domain='CURVE')
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.SplineLength()
@@ -272,6 +286,7 @@ Sockets [length (Float), point_count (Integer)]
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeSplineParameter](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
 node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) </sub>
+
 ```python
 v = spline.capture_parameter(self, domain='CURVE')
 ```
@@ -286,6 +301,7 @@ v = spline.capture_parameter(self, domain='CURVE')
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.SplineParameter()
@@ -303,6 +319,7 @@ Sockets [factor (Float), length (Float), index (Integer)]
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeInputSplineResolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineResolution.html)
 node ref [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_resolution.html) </sub>
+
 ```python
 v = spline.capture_resolution(self, domain='CURVE')
 ```
@@ -317,6 +334,7 @@ v = spline.capture_resolution(self, domain='CURVE')
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.SplineResolution()
@@ -334,6 +352,7 @@ Integer
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeInputID](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html)
 node ref [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/id.html) </sub>
+
 ```python
 v = spline.spline_ID(self)
 ```
@@ -347,6 +366,7 @@ v = spline.spline_ID(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.ID()
@@ -364,6 +384,7 @@ Integer
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
 node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) </sub>
+
 ```python
 v = spline.spline_index(self)
 ```
@@ -377,6 +398,7 @@ v = spline.spline_index(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.Index()
@@ -394,6 +416,7 @@ Integer
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
 node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) </sub>
+
 ```python
 v = spline.spline_position(self)
 ```
@@ -407,6 +430,7 @@ v = spline.spline_position(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.Index()
@@ -424,6 +448,7 @@ Integer
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeInputCurveHandlePositions](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
 node ref [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) </sub>
+
 ```python
 v = spline.left_handle_position(self, relative)
 ```
@@ -438,6 +463,7 @@ v = spline.left_handle_position(self, relative)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.CurveHandlePositions(relative=relative)
@@ -455,6 +481,7 @@ Vector
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeInputCurveHandlePositions](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
 node ref [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) </sub>
+
 ```python
 v = spline.right_handle_position(self, relative)
 ```
@@ -469,6 +496,7 @@ v = spline.right_handle_position(self, relative)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.CurveHandlePositions(relative=relative)
@@ -486,6 +514,7 @@ Vector
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeInputTangent](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputTangent.html)
 node ref [Curve Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tangent.html) </sub>
+
 ```python
 v = spline.tangent(self)
 ```
@@ -499,6 +528,7 @@ v = spline.tangent(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.CurveTangent()
@@ -516,6 +546,7 @@ Vector
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeInputCurveTilt](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveTilt.html)
 node ref [Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tilt.html) </sub>
+
 ```python
 v = spline.tilt(self)
 ```
@@ -529,6 +560,7 @@ v = spline.tilt(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.CurveTilt()
@@ -546,6 +578,7 @@ Float
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeCurveEndpointSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveEndpointSelection.html)
 node ref [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/endpoint_selection.html) </sub>
+
 ```python
 v = spline.endpoint_selection(self, start_size, end_size)
 ```
@@ -561,6 +594,7 @@ v = spline.endpoint_selection(self, start_size, end_size)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.EndpointSelection(start_size=start_size, end_size=end_size)
@@ -578,6 +612,7 @@ Boolean
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeCurveHandleTypeSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
 node ref [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) </sub>
+
 ```python
 v = spline.handle_type_selection(self, handle_type, mode)
 ```
@@ -593,6 +628,7 @@ v = spline.handle_type_selection(self, handle_type, mode)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
@@ -610,6 +646,7 @@ Boolean
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeInputSplineCyclic](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineCyclic.html)
 node ref [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/is_spline_cyclic.html) </sub>
+
 ```python
 v = spline.cyclic(self)
 ```
@@ -623,6 +660,7 @@ v = spline.cyclic(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.IsSplineCyclic()
@@ -640,6 +678,7 @@ Boolean
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeSplineLength](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html)
 node ref [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html) </sub>
+
 ```python
 v = spline.length(self)
 ```
@@ -653,6 +692,7 @@ v = spline.length(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.SplineLength()
@@ -670,6 +710,7 @@ Float
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeSplineLength](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html)
 node ref [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html) </sub>
+
 ```python
 v = spline.point_count(self)
 ```
@@ -683,6 +724,7 @@ v = spline.point_count(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.SplineLength()
@@ -700,6 +742,7 @@ Integer
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeSplineParameter](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
 node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) </sub>
+
 ```python
 v = spline.factor(self)
 ```
@@ -713,6 +756,7 @@ v = spline.factor(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.SplineParameter()
@@ -730,6 +774,7 @@ Float
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeSplineParameter](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
 node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) </sub>
+
 ```python
 v = spline.parameter_length(self)
 ```
@@ -743,6 +788,7 @@ v = spline.parameter_length(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.SplineParameter()
@@ -760,6 +806,7 @@ Float
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeSplineParameter](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
 node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) </sub>
+
 ```python
 v = spline.parameter_index(self)
 ```
@@ -773,6 +820,7 @@ v = spline.parameter_index(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.SplineParameter()
@@ -790,6 +838,7 @@ Integer
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeInputSplineResolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineResolution.html)
 node ref [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_resolution.html) </sub>
+
 ```python
 v = spline.resolution(self)
 ```
@@ -803,6 +852,7 @@ v = spline.resolution(self)
   
   Node creation
   -------------
+  
   ```python
   from geondes import nodes
   nodes.SplineResolution()
@@ -820,6 +870,7 @@ Integer
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeSetSplineCyclic](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html)
 node ref [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html) </sub>
+
 ```python
 v = spline.set_cyclic(selection, cyclic)
 ```
@@ -835,6 +886,7 @@ v = spline.set_cyclic(selection, cyclic)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic)
@@ -852,6 +904,7 @@ Geometry
 <sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
 blender ref [GeometryNodeSetSplineResolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html)
 node ref [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html) </sub>
+
 ```python
 v = spline.set_resolution(selection, resolution)
 ```
@@ -867,6 +920,7 @@ v = spline.set_resolution(selection, resolution)
     
     Node creation
     -------------
+    
     ```python
     from geondes import nodes
     nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution)
