@@ -388,7 +388,7 @@ v = curve.set_handles(selection, handle_type, mode)
 - curve : Curve (self)
 - selection : Boolean## Parameters
 - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode : {'LEFT', 'RIGHT'}
+- mode : {'RIGHT', 'LEFT'}
 
 ### Node creation
 

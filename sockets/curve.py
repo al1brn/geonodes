@@ -459,7 +459,7 @@ class Curve(gn.Spline):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def set_handles(self, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+    def set_handles(self, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
         """ > Node: SetHandleType
           
         <sub>go to: top index
@@ -480,7 +480,7 @@ class Curve(gn.Spline):
                 - curve : Curve (self)
                     - selection : Boolean## Parameters
                     - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-                    - mode : {'LEFT', 'RIGHT'}
+                    - mode : {'RIGHT', 'LEFT'}
     
 
         Node creation

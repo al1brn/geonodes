@@ -176,7 +176,7 @@ String
 
 ## scene
 
-> Node: [SceneTime](/docs/nodes/SceneTime.md)
+> Node: [SceneTime](/docs/sockets/SceneTime.md)
   
 <sub>go to: [top](#data-socket-functions) [index](/docs/index.md)
 blender ref [GeometryNodeInputSceneTime](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html)

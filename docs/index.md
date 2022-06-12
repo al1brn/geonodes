@@ -23,6 +23,12 @@
 - [Data socket Vector](/docs/sockets/Vector.md)
 - [Data socket Volume](/docs/sockets/Volume.md)
 - [geonodes functions](/docs/sockets/functions.md)
+- [Node Frame](/docs/sockets/Frame.md)
+- [Node GroupInput](/docs/sockets/GroupInput.md)
+- [Node GroupOutput](/docs/sockets/GroupOutput.md)
+- [Node NodeGroup](/docs/sockets/NodeGroup.md)
+- [Node SceneTime](/docs/sockets/SceneTime.md)
+- [Node Viewer](/docs/sockets/Viewer.md)
 
 ## Nodes
 
@@ -186,3 +192,6 @@
 
 ## Core
 
+- [Data socket DataSocket](/docs/DataSocket.md)
+- [Data socket Node](/docs/Node.md)
+- [Data socket Tree](/docs/Tree.md)
