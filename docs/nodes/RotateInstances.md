@@ -6,9 +6,10 @@
   
 <sub>go to [index](/docs/index.md)</sub>
 
-## Initialization
-
-```python
+Initialization
+--------------
+        
+        ```python
         from geonodes import nodes
         node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, label=None)
         ```

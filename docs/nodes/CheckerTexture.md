@@ -6,9 +6,10 @@
   
 <sub>go to [index](/docs/index.md)</sub>
 
-## Initialization
-
-```python
+Initialization
+--------------
+        
+        ```python
         from geonodes import nodes
         node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None, label=None)
         ```

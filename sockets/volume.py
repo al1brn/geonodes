@@ -35,8 +35,8 @@ class Volume(gn.Geometry):
         <sub>go to: top index
         blender ref GeometryNodeVolumeToMesh
         node ref Volume to Mesh </sub>
-        
-        ```python
+                                  
+                ```python
                 v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_mode)
                 ```
     
@@ -53,14 +53,14 @@ class Volume(gn.Geometry):
                     - threshold : Float
                     - adaptivity : Float## Parameters
                     - resolution_mode : 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
-    
-
-        Node creation
-        -------------
-            ```python
-                    from geondes import nodes
-                    nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode)
-                    ```
+                      
+                        Node creation
+                        -------------
+                                
+                                ```python
+                                from geondes import nodes
+                                nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode)
+                                ```
     
 
         Returns

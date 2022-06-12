@@ -6,9 +6,10 @@
   
 <sub>go to [index](/docs/index.md)</sub>
 
-## Initialization
-
-```python
+Initialization
+--------------
+        
+        ```python
         from geonodes import nodes
         node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None, start_angle=None, sweep_angle=None, offset_angle=None, connect_center=None, invert_arc=None, mode='RADIUS', label=None)
         ```

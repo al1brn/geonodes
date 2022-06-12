@@ -4,8 +4,8 @@
 > Wrap a Blender NodeTree
   
 A tree class encapsulates a Blender NodeTree:
-
-```python
+        
+    ```python
     blender_tree = tree.btree # The Blender NodeTree
     ```
 
@@ -20,8 +20,8 @@ Hence, building a tree is made between the two instructions:
   - `tree.close()` : arrange the nodes
     
 It is recommanded to use the `with` syntax:
-
-```python
+        
+    ```python
     with Tree("Geometry Nodes") as tree:
         # ... nodes creation
     ```
@@ -37,8 +37,8 @@ At creation time, a Tree instance becomes the current one.
 
 For clarity, it is possible to put the newly created nodes in a layout. At creation time, one can define
 both the layout label and color. The layout creation makes use of the `with` syntax:
-
-```python
+        
+    ```python
     with Tree("Geometry Node") as tree:
         
         # Nodes created here are placed directly on the tree background
@@ -206,8 +206,8 @@ Maintain a single instance of the node "Scene Time""
 The "Scene Time" output socket "frame"
 
 Used for animation:
-
-```python
+            
+        ```python
         with Tree("Geometry Nodes") as tree:
             height = tree.frame / 10 # a value which is a tenth of the current frame 
         ```
@@ -219,8 +219,8 @@ Used for animation:
 The "Scene Time" output socket "seconds"
 
 Used for animation:
-
-```python
+            
+        ```python
         with Tree("Geometry Nodes") as tree:
             time = tree.seconds.sqrt() # a value which is the square root of the time
         ```
@@ -232,8 +232,8 @@ Used for animation:
 Create a new layout where the newly created nodes will be placed
 
 To be used in a `with` block:
-
-```python
+            
+        ```python
         with tree.layout("My layout"): # Create a layout
             mesh = Mesh.UVSphere() # The node is parented in the layout
             

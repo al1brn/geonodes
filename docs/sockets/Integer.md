@@ -73,8 +73,8 @@
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) </sub>
-
-```python
+                          
+        ```python
         v = Integer.Random(min, max, ID, seed)
         ```
 
@@ -88,13 +88,14 @@ node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geome
   - ID : Integer
   - seed : Integer## Fixed parameters
   - data_type : 'INT'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='INT')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='INT')
+            ```
 
 ### Returns
 
@@ -108,8 +109,8 @@ Integer
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [GeometryNodeAccumulateField](https://docs.blender.org/api/current/bpy.types.GeometryNodeAccumulateField.html)
 node ref [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/accumulate_field.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.accumulate_field(group_index, domain)
         ```
 
@@ -122,13 +123,14 @@ node ref [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/g
   - group_index : Integer## Parameters
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
   - data_type : 'INT'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.AccumulateField(value=self, group_index=group_index, data_type='INT', domain=domain)
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.AccumulateField(value=self, group_index=group_index, data_type='INT', domain=domain)
+            ```
 
 ### Returns
 
@@ -142,8 +144,8 @@ Sockets [leading (Integer), trailing (Integer), total (Integer)]
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
 node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.transfer_attribute(source, source_position, index, domain, mapping)
         ```
 
@@ -159,13 +161,14 @@ node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
   - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
   - data_type : 'INT'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
+            ```
 
 ### Returns
 
@@ -179,8 +182,8 @@ Integer
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
 node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.capture_attribute(geometry, domain)
         ```
 
@@ -193,13 +196,14 @@ node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/
   - geometry : Geometry## Parameters
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
   - data_type : 'INT'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.CaptureAttribute(value=self, geometry=geometry, data_type='INT', domain=domain)
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.CaptureAttribute(value=self, geometry=geometry, data_type='INT', domain=domain)
+            ```
 
 ### Returns
 
@@ -213,8 +217,8 @@ Sockets [geometry (Geometry), attribute (Integer)]
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
 node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.field_at_index(value, domain)
         ```
 
@@ -227,13 +231,14 @@ node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geo
   - value : Integer## Parameters
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
   - data_type : 'INT'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.FieldAtIndex(index=self, value=value, data_type='INT', domain=domain)
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.FieldAtIndex(index=self, value=value, data_type='INT', domain=domain)
+            ```
 
 ### Returns
 
@@ -247,8 +252,8 @@ Integer
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
 node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
         ```
 
@@ -264,13 +269,14 @@ node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_n
   - ray_length : Float## Parameters
   - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
   - data_type : 'INT'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='INT', mapping=mapping)
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='INT', mapping=mapping)
+            ```
 
 ### Returns
 
@@ -284,8 +290,8 @@ Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_dista
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.switch(switch0, true)
         ```
 
@@ -298,13 +304,14 @@ node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_no
   - switch0 : Boolean
   - true : Integer## Fixed parameters
   - input_type : 'INT'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Switch(false=self, switch0=switch0, true=true, input_type='INT')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Switch(false=self, switch0=switch0, true=true, input_type='INT')
+            ```
 
 ### Returns
 
@@ -318,8 +325,8 @@ Integer
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.less_than(b)
         ```
 
@@ -333,13 +340,14 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
   - data_type : 'INT'
   - mode : 'ELEMENT'
   - operation : 'LESS_THAN'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_THAN')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_THAN')
+            ```
 
 ### Returns
 
@@ -353,8 +361,8 @@ Boolean
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.less_equal(b)
         ```
 
@@ -368,13 +376,14 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
   - data_type : 'INT'
   - mode : 'ELEMENT'
   - operation : 'LESS_EQUAL'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL')
+            ```
 
 ### Returns
 
@@ -388,8 +397,8 @@ Boolean
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.greater_than(b)
         ```
 
@@ -403,13 +412,14 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
   - data_type : 'INT'
   - mode : 'ELEMENT'
   - operation : 'GREATER_THAN'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_THAN')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_THAN')
+            ```
 
 ### Returns
 
@@ -423,8 +433,8 @@ Boolean
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.greater_equal(b)
         ```
 
@@ -438,13 +448,14 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
   - data_type : 'INT'
   - mode : 'ELEMENT'
   - operation : 'GREATER_EQUAL'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL')
+            ```
 
 ### Returns
 
@@ -458,8 +469,8 @@ Boolean
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.equal(b)
         ```
 
@@ -473,13 +484,14 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
   - data_type : 'INT'
   - mode : 'ELEMENT'
   - operation : 'EQUAL'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='EQUAL')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='EQUAL')
+            ```
 
 ### Returns
 
@@ -493,8 +505,8 @@ Boolean
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.not_equal(b)
         ```
 
@@ -508,13 +520,14 @@ node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_n
   - data_type : 'INT'
   - mode : 'ELEMENT'
   - operation : 'NOT_EQUAL'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL')
+            ```
 
 ### Returns
 
@@ -528,8 +541,8 @@ Boolean
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.add(value1)
         ```
 
@@ -541,13 +554,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'ADD'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, operation='ADD')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, operation='ADD')
+            ```
 
 ### Returns
 
@@ -561,8 +575,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.subtract(value1)
         ```
 
@@ -574,13 +588,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'SUBTRACT'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
+            ```
 
 ### Returns
 
@@ -594,8 +609,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.multiply(value1)
         ```
 
@@ -607,13 +622,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'MULTIPLY'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
+            ```
 
 ### Returns
 
@@ -627,8 +643,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.divide(value1)
         ```
 
@@ -640,13 +656,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'DIVIDE'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, operation='DIVIDE')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, operation='DIVIDE')
+            ```
 
 ### Returns
 
@@ -660,8 +677,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.multiply_add(value1, value2)
         ```
 
@@ -674,13 +691,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
   - value1 : Float
   - value2 : Float## Fixed parameters
   - operation : 'MULTIPLY_ADD'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD')
+            ```
 
 ### Returns
 
@@ -694,8 +712,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.pow(value1)
         ```
 
@@ -707,13 +725,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'POWER'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, operation='POWER')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, operation='POWER')
+            ```
 
 ### Returns
 
@@ -727,8 +746,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.log(value1)
         ```
 
@@ -740,13 +759,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'LOGARITHM'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
+            ```
 
 ### Returns
 
@@ -760,8 +780,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.sqrt()
         ```
 
@@ -772,13 +792,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'SQRT'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='SQRT')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='SQRT')
+            ```
 
 ### Returns
 
@@ -792,8 +813,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.inverse_sqrt()
         ```
 
@@ -804,13 +825,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'INVERSE_SQRT'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='INVERSE_SQRT')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='INVERSE_SQRT')
+            ```
 
 ### Returns
 
@@ -824,8 +846,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.abs()
         ```
 
@@ -836,13 +858,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'ABSOLUTE'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='ABSOLUTE')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='ABSOLUTE')
+            ```
 
 ### Returns
 
@@ -856,8 +879,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.exp()
         ```
 
@@ -868,13 +891,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'EXPONENT'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='EXPONENT')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='EXPONENT')
+            ```
 
 ### Returns
 
@@ -888,8 +912,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.min(value1)
         ```
 
@@ -901,13 +925,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'MINIMUM'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, operation='MINIMUM')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, operation='MINIMUM')
+            ```
 
 ### Returns
 
@@ -921,8 +946,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.max(value1)
         ```
 
@@ -934,13 +959,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'MAXIMUM'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
+            ```
 
 ### Returns
 
@@ -954,8 +980,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.less_than(value1)
         ```
 
@@ -967,13 +993,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'LESS_THAN'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
+            ```
 
 ### Returns
 
@@ -987,8 +1014,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.greater_than(value1)
         ```
 
@@ -1000,13 +1027,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'GREATER_THAN'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
+            ```
 
 ### Returns
 
@@ -1020,8 +1048,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.sign()
         ```
 
@@ -1032,13 +1060,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'SIGN'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='SIGN')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='SIGN')
+            ```
 
 ### Returns
 
@@ -1052,8 +1081,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.compare(value1, value2)
         ```
 
@@ -1066,13 +1095,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
   - value1 : Float
   - value2 : Float## Fixed parameters
   - operation : 'COMPARE'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE')
+            ```
 
 ### Returns
 
@@ -1086,8 +1116,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.smooth_min(value1, value2)
         ```
 
@@ -1100,13 +1130,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
   - value1 : Float
   - value2 : Float## Fixed parameters
   - operation : 'SMOOTH_MIN'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN')
+            ```
 
 ### Returns
 
@@ -1120,8 +1151,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.smooth_max(value1, value2)
         ```
 
@@ -1134,13 +1165,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
   - value1 : Float
   - value2 : Float## Fixed parameters
   - operation : 'SMOOTH_MAX'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX')
+            ```
 
 ### Returns
 
@@ -1154,8 +1186,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.round()
         ```
 
@@ -1166,13 +1198,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'ROUND'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='ROUND')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='ROUND')
+            ```
 
 ### Returns
 
@@ -1186,8 +1219,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.floor()
         ```
 
@@ -1198,13 +1231,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'FLOOR'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='FLOOR')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='FLOOR')
+            ```
 
 ### Returns
 
@@ -1218,8 +1252,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.ceil()
         ```
 
@@ -1230,13 +1264,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'CEIL'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='CEIL')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='CEIL')
+            ```
 
 ### Returns
 
@@ -1250,8 +1285,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.trunc()
         ```
 
@@ -1262,13 +1297,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'TRUNC'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='TRUNC')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='TRUNC')
+            ```
 
 ### Returns
 
@@ -1282,8 +1318,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.fract()
         ```
 
@@ -1294,13 +1330,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'FRACT'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='FRACT')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='FRACT')
+            ```
 
 ### Returns
 
@@ -1314,8 +1351,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.modulo(value1)
         ```
 
@@ -1327,13 +1364,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'MODULO'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, operation='MODULO')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, operation='MODULO')
+            ```
 
 ### Returns
 
@@ -1347,8 +1385,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.wrap(value1, value2)
         ```
 
@@ -1361,13 +1399,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
   - value1 : Float
   - value2 : Float## Fixed parameters
   - operation : 'WRAP'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP')
+            ```
 
 ### Returns
 
@@ -1381,8 +1420,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.snap(value1)
         ```
 
@@ -1394,13 +1433,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'SNAP'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, operation='SNAP')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, operation='SNAP')
+            ```
 
 ### Returns
 
@@ -1414,8 +1454,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.pingpong(value1)
         ```
 
@@ -1427,13 +1467,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'PINGPONG'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, operation='PINGPONG')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, operation='PINGPONG')
+            ```
 
 ### Returns
 
@@ -1447,8 +1488,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.sin()
         ```
 
@@ -1459,13 +1500,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'SINE'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='SINE')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='SINE')
+            ```
 
 ### Returns
 
@@ -1479,8 +1521,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.cos()
         ```
 
@@ -1491,13 +1533,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'COSINE'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='COSINE')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='COSINE')
+            ```
 
 ### Returns
 
@@ -1511,8 +1554,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.tan()
         ```
 
@@ -1523,13 +1566,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'TANGENT'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='TANGENT')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='TANGENT')
+            ```
 
 ### Returns
 
@@ -1543,8 +1587,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.arcsin()
         ```
 
@@ -1555,13 +1599,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'ARCSINE'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='ARCSINE')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='ARCSINE')
+            ```
 
 ### Returns
 
@@ -1575,8 +1620,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.arccos()
         ```
 
@@ -1587,13 +1632,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'ARCCOSINE'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='ARCCOSINE')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='ARCCOSINE')
+            ```
 
 ### Returns
 
@@ -1607,8 +1653,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.arctan()
         ```
 
@@ -1619,13 +1665,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'ARCTANGENT'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='ARCTANGENT')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='ARCTANGENT')
+            ```
 
 ### Returns
 
@@ -1639,8 +1686,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.arctan2(value1)
         ```
 
@@ -1652,13 +1699,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'ARCTAN2'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
+            ```
 
 ### Returns
 
@@ -1672,8 +1720,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.sinh()
         ```
 
@@ -1684,13 +1732,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'SINH'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='SINH')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='SINH')
+            ```
 
 ### Returns
 
@@ -1704,8 +1753,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.cosh()
         ```
 
@@ -1716,13 +1765,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'COSH'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='COSH')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='COSH')
+            ```
 
 ### Returns
 
@@ -1736,8 +1786,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.tanh()
         ```
 
@@ -1748,13 +1798,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'TANH'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='TANH')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='TANH')
+            ```
 
 ### Returns
 
@@ -1768,8 +1819,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.radians()
         ```
 
@@ -1780,13 +1831,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'RADIANS'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='RADIANS')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='RADIANS')
+            ```
 
 ### Returns
 
@@ -1800,8 +1852,8 @@ Float
 <sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
 blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-
-```python
+                          
+        ```python
         v = integer.degrees()
         ```
 
@@ -1812,13 +1864,14 @@ node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'DEGREES'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Math(value0=self, operation='DEGREES')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Math(value0=self, operation='DEGREES')
+            ```
 
 ### Returns
 

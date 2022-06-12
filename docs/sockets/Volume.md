@@ -18,8 +18,8 @@
 <sub>go to: [top](#data-socket-volume) [index](/docs/index.md)
 blender ref [GeometryNodeVolumeToMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html)
 node ref [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/volume_to_mesh.html) </sub>
-
-```python
+                          
+        ```python
         v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_mode)
         ```
 
@@ -34,13 +34,14 @@ node ref [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geo
   - threshold : Float
   - adaptivity : Float## Parameters
   - resolution_mode : 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode)
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode)
+            ```
 
 ### Returns
 

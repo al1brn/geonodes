@@ -38,8 +38,8 @@ class Points(gn.Geometry):
         <sub>go to: top index
         blender ref GeometryNodeSetPointRadius
         node ref Set Point Radius </sub>
-        
-        ```python
+                                  
+                ```python
                 v = points.set_radius(selection, radius)
                 ```
     
@@ -53,14 +53,14 @@ class Points(gn.Geometry):
                 - points : Points (self)
                     - selection : Boolean
                     - radius : Float
-    
-
-        Node creation
-        -------------
-            ```python
-                    from geondes import nodes
-                    nodes.SetPointRadius(points=self, selection=selection, radius=radius)
-                    ```
+                      
+                        Node creation
+                        -------------
+                                
+                                ```python
+                                from geondes import nodes
+                                nodes.SetPointRadius(points=self, selection=selection, radius=radius)
+                                ```
     
 
         Returns
@@ -77,8 +77,8 @@ class Points(gn.Geometry):
         <sub>go to: top index
         blender ref GeometryNodeInstanceOnPoints
         node ref Instance on Points </sub>
-        
-        ```python
+                                  
+                ```python
                 v = points.instance_on_points(selection, instance, pick_instance, instance_index, rotation, scale)
                 ```
     
@@ -96,14 +96,14 @@ class Points(gn.Geometry):
                     - instance_index : Integer
                     - rotation : Vector
                     - scale : Vector
-    
-
-        Node creation
-        -------------
-            ```python
-                    from geondes import nodes
-                    nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale)
-                    ```
+                      
+                        Node creation
+                        -------------
+                                
+                                ```python
+                                from geondes import nodes
+                                nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale)
+                                ```
     
 
         Returns
@@ -120,8 +120,8 @@ class Points(gn.Geometry):
         <sub>go to: top index
         blender ref GeometryNodePointsToVertices
         node ref Points to Vertices </sub>
-        
-        ```python
+                                  
+                ```python
                 v = points.to_vertices(selection)
                 ```
     
@@ -134,14 +134,14 @@ class Points(gn.Geometry):
             -------
                 - points : Points (self)
                     - selection : Boolean
-    
-
-        Node creation
-        -------------
-            ```python
-                    from geondes import nodes
-                    nodes.PointsToVertices(points=self, selection=selection)
-                    ```
+                      
+                        Node creation
+                        -------------
+                                
+                                ```python
+                                from geondes import nodes
+                                nodes.PointsToVertices(points=self, selection=selection)
+                                ```
     
 
         Returns
@@ -158,8 +158,8 @@ class Points(gn.Geometry):
         <sub>go to: top index
         blender ref GeometryNodePointsToVolume
         node ref Points to Volume </sub>
-        
-        ```python
+                                  
+                ```python
                 v = points.to_volume(density, voxel_size, voxel_amount, radius, resolution_mode)
                 ```
     
@@ -176,14 +176,14 @@ class Points(gn.Geometry):
                     - voxel_amount : Float
                     - radius : Float## Parameters
                     - resolution_mode : 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
-    
-
-        Node creation
-        -------------
-            ```python
-                    from geondes import nodes
-                    nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode)
-                    ```
+                      
+                        Node creation
+                        -------------
+                                
+                                ```python
+                                from geondes import nodes
+                                nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode)
+                                ```
     
 
         Returns

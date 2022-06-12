@@ -6,9 +6,10 @@
   
 <sub>go to [index](/docs/index.md)</sub>
 
-## Initialization
-
-```python
+Initialization
+--------------
+        
+        ```python
         from geonodes import nodes
         node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, label=None)
         ```

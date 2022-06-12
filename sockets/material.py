@@ -36,8 +36,8 @@ class Material(dsock.Material):
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>
-        
-        ```python
+                                  
+                ```python
                 v = material.switch(switch1, true)
                 ```
     
@@ -52,14 +52,14 @@ class Material(dsock.Material):
                     - switch1 : Boolean
                     - true : Material## Fixed parameters
                     - input_type : 'MATERIAL'
-    
-
-        Node creation
-        -------------
-            ```python
-                    from geondes import nodes
-                    nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL')
-                    ```
+                      
+                        Node creation
+                        -------------
+                                
+                                ```python
+                                from geondes import nodes
+                                nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL')
+                                ```
     
 
         Returns
@@ -76,8 +76,8 @@ class Material(dsock.Material):
         <sub>go to: top index
         blender ref GeometryNodeMaterialSelection
         node ref Material Selection </sub>
-        
-        ```python
+                                  
+                ```python
                 v = material.selection()
                 ```
     
@@ -89,14 +89,14 @@ class Material(dsock.Material):
             Sockets
             -------
                 - material : Material (self)
-    
-
-        Node creation
-        -------------
-            ```python
-                    from geondes import nodes
-                    nodes.MaterialSelection(material=self)
-                    ```
+                  
+                    Node creation
+                    -------------
+                            
+                            ```python
+                            from geondes import nodes
+                            nodes.MaterialSelection(material=self)
+                            ```
     
 
         Returns

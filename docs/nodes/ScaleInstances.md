@@ -6,9 +6,10 @@
   
 <sub>go to [index](/docs/index.md)</sub>
 
-## Initialization
-
-```python
+Initialization
+--------------
+        
+        ```python
         from geonodes import nodes
         node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=None, local_space=None, label=None)
         ```

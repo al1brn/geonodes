@@ -35,8 +35,8 @@
 <sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
 blender ref [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) </sub>
-
-```python
+                          
+        ```python
         v = Boolean.Random(probability, ID, seed)
         ```
 
@@ -49,13 +49,14 @@ node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geome
   - ID : Integer
   - seed : Integer## Fixed parameters
   - data_type : 'BOOLEAN'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN')
+            ```
 
 ### Returns
 
@@ -69,8 +70,8 @@ Boolean
 <sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
 node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
-
-```python
+                          
+        ```python
         v = boolean.transfer_attribute(source, source_position, index, domain, mapping)
         ```
 
@@ -86,13 +87,14 @@ node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
   - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
   - data_type : 'BOOLEAN'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
+            ```
 
 ### Returns
 
@@ -106,8 +108,8 @@ Boolean
 <sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
 blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
 node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) </sub>
-
-```python
+                          
+        ```python
         v = boolean.capture_attribute(geometry, domain)
         ```
 
@@ -120,13 +122,14 @@ node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/
   - geometry : Geometry## Parameters
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
   - data_type : 'BOOLEAN'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain)
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain)
+            ```
 
 ### Returns
 
@@ -140,8 +143,8 @@ Sockets [geometry (Geometry), attribute (Boolean)]
 <sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
 blender ref [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
 node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) </sub>
-
-```python
+                          
+        ```python
         v = boolean.field_at_index(index, domain)
         ```
 
@@ -154,13 +157,14 @@ node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geo
   - index : Integer## Parameters
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
   - data_type : 'BOOLEAN'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain)
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain)
+            ```
 
 ### Returns
 
@@ -174,8 +178,8 @@ Boolean
 <sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
 blender ref [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
 node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) </sub>
-
-```python
+                          
+        ```python
         v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
         ```
 
@@ -191,13 +195,14 @@ node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_n
   - ray_length : Float## Parameters
   - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
   - data_type : 'BOOLEAN'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping)
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping)
+            ```
 
 ### Returns
 
@@ -211,8 +216,8 @@ Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_dista
 <sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
-
-```python
+                          
+        ```python
         v = boolean.switch(false, true)
         ```
 
@@ -225,13 +230,14 @@ node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_no
   - false : Boolean
   - true : Boolean## Fixed parameters
   - input_type : 'BOOLEAN'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN')
+            ```
 
 ### Returns
 
@@ -245,8 +251,8 @@ Boolean
 <sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-
-```python
+                          
+        ```python
         v = boolean.b_and(boolean1)
         ```
 
@@ -258,13 +264,14 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 - boolean0 : Boolean (self)
   - boolean1 : Boolean## Fixed parameters
   - operation : 'AND'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND')
+            ```
 
 ### Returns
 
@@ -278,8 +285,8 @@ Boolean
 <sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-
-```python
+                          
+        ```python
         v = boolean.b_or(boolean1)
         ```
 
@@ -291,13 +298,14 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 - boolean0 : Boolean (self)
   - boolean1 : Boolean## Fixed parameters
   - operation : 'OR'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR')
+            ```
 
 ### Returns
 
@@ -311,8 +319,8 @@ Boolean
 <sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-
-```python
+                          
+        ```python
         v = boolean.b_not()
         ```
 
@@ -323,13 +331,14 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 
 - boolean0 : Boolean (self)## Fixed parameters
   - operation : 'NOT'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.BooleanMath(boolean0=self, operation='NOT')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.BooleanMath(boolean0=self, operation='NOT')
+            ```
 
 ### Returns
 
@@ -343,8 +352,8 @@ Boolean
 <sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-
-```python
+                          
+        ```python
         v = boolean.nand(boolean1)
         ```
 
@@ -356,13 +365,14 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 - boolean0 : Boolean (self)
   - boolean1 : Boolean## Fixed parameters
   - operation : 'NAND'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND')
+            ```
 
 ### Returns
 
@@ -376,8 +386,8 @@ Boolean
 <sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-
-```python
+                          
+        ```python
         v = boolean.nor(boolean1)
         ```
 
@@ -389,13 +399,14 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 - boolean0 : Boolean (self)
   - boolean1 : Boolean## Fixed parameters
   - operation : 'NOR'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR')
+            ```
 
 ### Returns
 
@@ -409,8 +420,8 @@ Boolean
 <sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-
-```python
+                          
+        ```python
         v = boolean.xnor(boolean1)
         ```
 
@@ -422,13 +433,14 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 - boolean0 : Boolean (self)
   - boolean1 : Boolean## Fixed parameters
   - operation : 'XNOR'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR')
+            ```
 
 ### Returns
 
@@ -442,8 +454,8 @@ Boolean
 <sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-
-```python
+                          
+        ```python
         v = boolean.xor(boolean1)
         ```
 
@@ -455,13 +467,14 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 - boolean0 : Boolean (self)
   - boolean1 : Boolean## Fixed parameters
   - operation : 'XOR'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR')
+            ```
 
 ### Returns
 
@@ -475,8 +488,8 @@ Boolean
 <sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-
-```python
+                          
+        ```python
         v = boolean.imply(boolean1)
         ```
 
@@ -488,13 +501,14 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 - boolean0 : Boolean (self)
   - boolean1 : Boolean## Fixed parameters
   - operation : 'IMPLY'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY')
+            ```
 
 ### Returns
 
@@ -508,8 +522,8 @@ Boolean
 <sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
 blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-
-```python
+                          
+        ```python
         v = boolean.nimply(boolean1)
         ```
 
@@ -521,13 +535,14 @@ node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geome
 - boolean0 : Boolean (self)
   - boolean1 : Boolean## Fixed parameters
   - operation : 'NIMPLY'
-
-### Node creation
-
-```python
-        from geondes import nodes
-        nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY')
-        ```
+    
+    Node creation
+    -------------
+            
+            ```python
+            from geondes import nodes
+            nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY')
+            ```
 
 ### Returns
 

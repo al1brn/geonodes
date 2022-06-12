@@ -6,9 +6,10 @@
   
 <sub>go to [index](/docs/index.md)</sub>
 
-## Initialization
-
-```python
+Initialization
+--------------
+        
+        ```python
         from geonodes import nodes
         node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', label=None)
         ```
