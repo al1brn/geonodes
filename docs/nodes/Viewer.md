@@ -22,7 +22,7 @@ data_type       : 'FLOAT' in [ 'FLOAT' 'INT' 'FLOAT_VECTOR' 'FLOAT_COLOR' 'BOOLE
 
 
 
-## __init__
+## \_\_init\_\_
 
 Node 'Viewer' (GeometryNodeViewer)
 

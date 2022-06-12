@@ -53,7 +53,7 @@ sockets are numbered, starting from 0:
   
   
 
-## __init__
+## \_\_init\_\_
 
 The root class for Blender node wrappers.
 

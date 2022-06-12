@@ -75,7 +75,7 @@ This allows not to loose nodes tuning.
 
 
 
-## __init__
+## \_\_init\_\_
 
 Initialize a new tree
 

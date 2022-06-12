@@ -11,7 +11,7 @@ frame           : Float
 
 
 
-## __init__
+## \_\_init\_\_
 
 Node 'Scene Time' (GeometryNodeInputSceneTime)
 

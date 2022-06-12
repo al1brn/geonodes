@@ -4,7 +4,7 @@
 DataSocket class, sub class and domain data type from socket bl_idname
 
 
-## __init__
+## \_\_init\_\_
 
 ----- Ensure the properties are create
 
