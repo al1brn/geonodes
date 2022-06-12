@@ -7,7 +7,8 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Initialization
---------------```python
+--------------
+```python
 from geonodes import nodes
 node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, label=None)
 ```

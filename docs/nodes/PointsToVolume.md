@@ -7,7 +7,8 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Initialization
---------------```python
+--------------
+```python
 from geonodes import nodes
 node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', label=None)
 ```

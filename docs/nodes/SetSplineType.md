@@ -7,7 +7,8 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Initialization
---------------```python
+--------------
+```python
 from geonodes import nodes
 node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY', label=None)
 ```

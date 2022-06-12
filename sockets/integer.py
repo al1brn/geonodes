@@ -91,7 +91,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref FunctionNodeRandomValue
-        node ref Random Value </sub>```python
+        node ref Random Value </sub>
+        ```python
         v = Integer.Random(min, max, ID, seed)
         ```
     
@@ -109,7 +110,8 @@ class Integer(dsock.Integer):
                     - data_type : 'INT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='INT')
                         ```
@@ -132,7 +134,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref GeometryNodeAccumulateField
-        node ref Accumulate Field </sub>```python
+        node ref Accumulate Field </sub>
+        ```python
         v = integer.accumulate_field(group_index, domain)
         ```
     
@@ -149,7 +152,8 @@ class Integer(dsock.Integer):
                     - data_type : 'INT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.AccumulateField(value=self, group_index=group_index, data_type='INT', domain=domain)
                         ```
@@ -168,7 +172,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref GeometryNodeAttributeTransfer
-        node ref Transfer Attribute </sub>```python
+        node ref Transfer Attribute </sub>
+        ```python
         v = integer.transfer_attribute(source, source_position, index, domain, mapping)
         ```
     
@@ -188,7 +193,8 @@ class Integer(dsock.Integer):
                     - data_type : 'INT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
                         ```
@@ -207,7 +213,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref GeometryNodeCaptureAttribute
-        node ref Capture Attribute </sub>```python
+        node ref Capture Attribute </sub>
+        ```python
         v = integer.capture_attribute(geometry, domain)
         ```
     
@@ -224,7 +231,8 @@ class Integer(dsock.Integer):
                     - data_type : 'INT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.CaptureAttribute(value=self, geometry=geometry, data_type='INT', domain=domain)
                         ```
@@ -243,7 +251,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref GeometryNodeFieldAtIndex
-        node ref Field at Index </sub>```python
+        node ref Field at Index </sub>
+        ```python
         v = integer.field_at_index(value, domain)
         ```
     
@@ -260,7 +269,8 @@ class Integer(dsock.Integer):
                     - data_type : 'INT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.FieldAtIndex(index=self, value=value, data_type='INT', domain=domain)
                         ```
@@ -279,7 +289,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref GeometryNodeRaycast
-        node ref Raycast </sub>```python
+        node ref Raycast </sub>
+        ```python
         v = integer.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
         ```
     
@@ -299,7 +310,8 @@ class Integer(dsock.Integer):
                     - data_type : 'INT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='INT', mapping=mapping)
                         ```
@@ -318,7 +330,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref GeometryNodeSwitch
-        node ref Switch </sub>```python
+        node ref Switch </sub>
+        ```python
         v = integer.switch(switch0, true)
         ```
     
@@ -335,7 +348,8 @@ class Integer(dsock.Integer):
                     - input_type : 'INT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Switch(false=self, switch0=switch0, true=true, input_type='INT')
                         ```
@@ -354,7 +368,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref FunctionNodeCompare
-        node ref Compare </sub>```python
+        node ref Compare </sub>
+        ```python
         v = integer.less_than(b)
         ```
     
@@ -372,7 +387,8 @@ class Integer(dsock.Integer):
                     - operation : 'LESS_THAN'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_THAN')
                         ```
@@ -391,7 +407,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref FunctionNodeCompare
-        node ref Compare </sub>```python
+        node ref Compare </sub>
+        ```python
         v = integer.less_equal(b)
         ```
     
@@ -409,7 +426,8 @@ class Integer(dsock.Integer):
                     - operation : 'LESS_EQUAL'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL')
                         ```
@@ -428,7 +446,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref FunctionNodeCompare
-        node ref Compare </sub>```python
+        node ref Compare </sub>
+        ```python
         v = integer.greater_than(b)
         ```
     
@@ -446,7 +465,8 @@ class Integer(dsock.Integer):
                     - operation : 'GREATER_THAN'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_THAN')
                         ```
@@ -465,7 +485,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref FunctionNodeCompare
-        node ref Compare </sub>```python
+        node ref Compare </sub>
+        ```python
         v = integer.greater_equal(b)
         ```
     
@@ -483,7 +504,8 @@ class Integer(dsock.Integer):
                     - operation : 'GREATER_EQUAL'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL')
                         ```
@@ -502,7 +524,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref FunctionNodeCompare
-        node ref Compare </sub>```python
+        node ref Compare </sub>
+        ```python
         v = integer.equal(b)
         ```
     
@@ -520,7 +543,8 @@ class Integer(dsock.Integer):
                     - operation : 'EQUAL'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='EQUAL')
                         ```
@@ -539,7 +563,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref FunctionNodeCompare
-        node ref Compare </sub>```python
+        node ref Compare </sub>
+        ```python
         v = integer.not_equal(b)
         ```
     
@@ -557,7 +582,8 @@ class Integer(dsock.Integer):
                     - operation : 'NOT_EQUAL'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL')
                         ```
@@ -576,7 +602,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.add(value1)
         ```
     
@@ -592,7 +619,8 @@ class Integer(dsock.Integer):
                     - operation : 'ADD'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='ADD')
                         ```
@@ -611,7 +639,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.subtract(value1)
         ```
     
@@ -627,7 +656,8 @@ class Integer(dsock.Integer):
                     - operation : 'SUBTRACT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
                         ```
@@ -646,7 +676,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.multiply(value1)
         ```
     
@@ -662,7 +693,8 @@ class Integer(dsock.Integer):
                     - operation : 'MULTIPLY'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
                         ```
@@ -681,7 +713,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.divide(value1)
         ```
     
@@ -697,7 +730,8 @@ class Integer(dsock.Integer):
                     - operation : 'DIVIDE'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='DIVIDE')
                         ```
@@ -716,7 +750,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.multiply_add(value1, value2)
         ```
     
@@ -733,7 +768,8 @@ class Integer(dsock.Integer):
                     - operation : 'MULTIPLY_ADD'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD')
                         ```
@@ -752,7 +788,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.pow(value1)
         ```
     
@@ -768,7 +805,8 @@ class Integer(dsock.Integer):
                     - operation : 'POWER'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='POWER')
                         ```
@@ -787,7 +825,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.log(value1)
         ```
     
@@ -803,7 +842,8 @@ class Integer(dsock.Integer):
                     - operation : 'LOGARITHM'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
                         ```
@@ -822,7 +862,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.sqrt()
         ```
     
@@ -837,7 +878,8 @@ class Integer(dsock.Integer):
                     - operation : 'SQRT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='SQRT')
                         ```
@@ -856,7 +898,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.inverse_sqrt()
         ```
     
@@ -871,7 +914,8 @@ class Integer(dsock.Integer):
                     - operation : 'INVERSE_SQRT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='INVERSE_SQRT')
                         ```
@@ -890,7 +934,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.abs()
         ```
     
@@ -905,7 +950,8 @@ class Integer(dsock.Integer):
                     - operation : 'ABSOLUTE'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='ABSOLUTE')
                         ```
@@ -924,7 +970,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.exp()
         ```
     
@@ -939,7 +986,8 @@ class Integer(dsock.Integer):
                     - operation : 'EXPONENT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='EXPONENT')
                         ```
@@ -958,7 +1006,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.min(value1)
         ```
     
@@ -974,7 +1023,8 @@ class Integer(dsock.Integer):
                     - operation : 'MINIMUM'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='MINIMUM')
                         ```
@@ -993,7 +1043,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.max(value1)
         ```
     
@@ -1009,7 +1060,8 @@ class Integer(dsock.Integer):
                     - operation : 'MAXIMUM'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
                         ```
@@ -1028,7 +1080,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.less_than(value1)
         ```
     
@@ -1044,7 +1097,8 @@ class Integer(dsock.Integer):
                     - operation : 'LESS_THAN'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
                         ```
@@ -1063,7 +1117,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.greater_than(value1)
         ```
     
@@ -1079,7 +1134,8 @@ class Integer(dsock.Integer):
                     - operation : 'GREATER_THAN'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
                         ```
@@ -1098,7 +1154,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.sign()
         ```
     
@@ -1113,7 +1170,8 @@ class Integer(dsock.Integer):
                     - operation : 'SIGN'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='SIGN')
                         ```
@@ -1132,7 +1190,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.compare(value1, value2)
         ```
     
@@ -1149,7 +1208,8 @@ class Integer(dsock.Integer):
                     - operation : 'COMPARE'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE')
                         ```
@@ -1168,7 +1228,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.smooth_min(value1, value2)
         ```
     
@@ -1185,7 +1246,8 @@ class Integer(dsock.Integer):
                     - operation : 'SMOOTH_MIN'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN')
                         ```
@@ -1204,7 +1266,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.smooth_max(value1, value2)
         ```
     
@@ -1221,7 +1284,8 @@ class Integer(dsock.Integer):
                     - operation : 'SMOOTH_MAX'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX')
                         ```
@@ -1240,7 +1304,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.round()
         ```
     
@@ -1255,7 +1320,8 @@ class Integer(dsock.Integer):
                     - operation : 'ROUND'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='ROUND')
                         ```
@@ -1274,7 +1340,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.floor()
         ```
     
@@ -1289,7 +1356,8 @@ class Integer(dsock.Integer):
                     - operation : 'FLOOR'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='FLOOR')
                         ```
@@ -1308,7 +1376,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.ceil()
         ```
     
@@ -1323,7 +1392,8 @@ class Integer(dsock.Integer):
                     - operation : 'CEIL'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='CEIL')
                         ```
@@ -1342,7 +1412,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.trunc()
         ```
     
@@ -1357,7 +1428,8 @@ class Integer(dsock.Integer):
                     - operation : 'TRUNC'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='TRUNC')
                         ```
@@ -1376,7 +1448,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.fract()
         ```
     
@@ -1391,7 +1464,8 @@ class Integer(dsock.Integer):
                     - operation : 'FRACT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='FRACT')
                         ```
@@ -1410,7 +1484,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.modulo(value1)
         ```
     
@@ -1426,7 +1501,8 @@ class Integer(dsock.Integer):
                     - operation : 'MODULO'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='MODULO')
                         ```
@@ -1445,7 +1521,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.wrap(value1, value2)
         ```
     
@@ -1462,7 +1539,8 @@ class Integer(dsock.Integer):
                     - operation : 'WRAP'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP')
                         ```
@@ -1481,7 +1559,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.snap(value1)
         ```
     
@@ -1497,7 +1576,8 @@ class Integer(dsock.Integer):
                     - operation : 'SNAP'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='SNAP')
                         ```
@@ -1516,7 +1596,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.pingpong(value1)
         ```
     
@@ -1532,7 +1613,8 @@ class Integer(dsock.Integer):
                     - operation : 'PINGPONG'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='PINGPONG')
                         ```
@@ -1551,7 +1633,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.sin()
         ```
     
@@ -1566,7 +1649,8 @@ class Integer(dsock.Integer):
                     - operation : 'SINE'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='SINE')
                         ```
@@ -1585,7 +1669,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.cos()
         ```
     
@@ -1600,7 +1685,8 @@ class Integer(dsock.Integer):
                     - operation : 'COSINE'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='COSINE')
                         ```
@@ -1619,7 +1705,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.tan()
         ```
     
@@ -1634,7 +1721,8 @@ class Integer(dsock.Integer):
                     - operation : 'TANGENT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='TANGENT')
                         ```
@@ -1653,7 +1741,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.arcsin()
         ```
     
@@ -1668,7 +1757,8 @@ class Integer(dsock.Integer):
                     - operation : 'ARCSINE'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='ARCSINE')
                         ```
@@ -1687,7 +1777,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.arccos()
         ```
     
@@ -1702,7 +1793,8 @@ class Integer(dsock.Integer):
                     - operation : 'ARCCOSINE'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='ARCCOSINE')
                         ```
@@ -1721,7 +1813,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.arctan()
         ```
     
@@ -1736,7 +1829,8 @@ class Integer(dsock.Integer):
                     - operation : 'ARCTANGENT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='ARCTANGENT')
                         ```
@@ -1755,7 +1849,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.arctan2(value1)
         ```
     
@@ -1771,7 +1866,8 @@ class Integer(dsock.Integer):
                     - operation : 'ARCTAN2'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
                         ```
@@ -1790,7 +1886,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.sinh()
         ```
     
@@ -1805,7 +1902,8 @@ class Integer(dsock.Integer):
                     - operation : 'SINH'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='SINH')
                         ```
@@ -1824,7 +1922,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.cosh()
         ```
     
@@ -1839,7 +1938,8 @@ class Integer(dsock.Integer):
                     - operation : 'COSH'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='COSH')
                         ```
@@ -1858,7 +1958,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.tanh()
         ```
     
@@ -1873,7 +1974,8 @@ class Integer(dsock.Integer):
                     - operation : 'TANH'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='TANH')
                         ```
@@ -1892,7 +1994,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.radians()
         ```
     
@@ -1907,7 +2010,8 @@ class Integer(dsock.Integer):
                     - operation : 'RADIANS'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='RADIANS')
                         ```
@@ -1926,7 +2030,8 @@ class Integer(dsock.Integer):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = integer.degrees()
         ```
     
@@ -1941,7 +2046,8 @@ class Integer(dsock.Integer):
                     - operation : 'DEGREES'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='DEGREES')
                         ```

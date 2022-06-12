@@ -17,7 +17,8 @@
   
 <sub>go to: [top](#data-socket-image) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>```python
+node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
+```python
 v = image.switch(switch1, true)
 ```
 
@@ -32,7 +33,8 @@ v = image.switch(switch1, true)
   - input_type : 'IMAGE'
     
     Node creation
-    -------------```python
+    -------------
+    ```python
     from geondes import nodes
     nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE')
     ```

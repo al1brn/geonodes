@@ -7,7 +7,8 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Initialization
---------------```python
+--------------
+```python
 from geonodes import nodes
 node = nodes.GeometryProximity(target=None, source_position=None, target_element='FACES', label=None)
 ```

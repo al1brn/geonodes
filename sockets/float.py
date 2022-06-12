@@ -98,7 +98,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref FunctionNodeRandomValue
-        node ref Random Value </sub>```python
+        node ref Random Value </sub>
+        ```python
         v = Float.Random(min, max, ID, seed)
         ```
     
@@ -116,7 +117,8 @@ class Float(dsock.Float):
                     - data_type : 'FLOAT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT')
                         ```
@@ -139,7 +141,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref GeometryNodeAccumulateField
-        node ref Accumulate Field </sub>```python
+        node ref Accumulate Field </sub>
+        ```python
         v = float.accumulate_field(group_index, domain)
         ```
     
@@ -156,7 +159,8 @@ class Float(dsock.Float):
                     - data_type : 'FLOAT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT', domain=domain)
                         ```
@@ -175,7 +179,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref GeometryNodeAttributeStatistic
-        node ref Attribute Statistic </sub>```python
+        node ref Attribute Statistic </sub>
+        ```python
         v = float.attribute_statistic(geometry, selection, domain)
         ```
     
@@ -193,7 +198,8 @@ class Float(dsock.Float):
                     - data_type : 'FLOAT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT', domain=domain)
                         ```
@@ -212,7 +218,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref GeometryNodeAttributeTransfer
-        node ref Transfer Attribute </sub>```python
+        node ref Transfer Attribute </sub>
+        ```python
         v = float.transfer_attribute(source, source_position, index, domain, mapping)
         ```
     
@@ -232,7 +239,8 @@ class Float(dsock.Float):
                     - data_type : 'FLOAT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
                         ```
@@ -251,7 +259,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref GeometryNodeCaptureAttribute
-        node ref Capture Attribute </sub>```python
+        node ref Capture Attribute </sub>
+        ```python
         v = float.capture_attribute(geometry, domain)
         ```
     
@@ -268,7 +277,8 @@ class Float(dsock.Float):
                     - data_type : 'FLOAT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT', domain=domain)
                         ```
@@ -287,7 +297,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref GeometryNodeFieldAtIndex
-        node ref Field at Index </sub>```python
+        node ref Field at Index </sub>
+        ```python
         v = float.field_at_index(index, domain)
         ```
     
@@ -304,7 +315,8 @@ class Float(dsock.Float):
                     - data_type : 'FLOAT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT', domain=domain)
                         ```
@@ -323,7 +335,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref GeometryNodeRaycast
-        node ref Raycast </sub>```python
+        node ref Raycast </sub>
+        ```python
         v = float.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
         ```
     
@@ -343,7 +356,8 @@ class Float(dsock.Float):
                     - data_type : 'FLOAT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping)
                         ```
@@ -362,7 +376,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref GeometryNodeSwitch
-        node ref Switch </sub>```python
+        node ref Switch </sub>
+        ```python
         v = float.switch(switch0, true)
         ```
     
@@ -379,7 +394,8 @@ class Float(dsock.Float):
                     - input_type : 'FLOAT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT')
                         ```
@@ -398,7 +414,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMapRange
-        node ref Map Range </sub>```python
+        node ref Map Range </sub>
+        ```python
         v = float.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type)
         ```
     
@@ -419,7 +436,8 @@ class Float(dsock.Float):
                     - data_type : 'FLOAT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type)
                         ```
@@ -438,7 +456,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref FunctionNodeCompare
-        node ref Compare </sub>```python
+        node ref Compare </sub>
+        ```python
         v = float.less_than(b)
         ```
     
@@ -456,7 +475,8 @@ class Float(dsock.Float):
                     - operation : 'LESS_THAN'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN')
                         ```
@@ -475,7 +495,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref FunctionNodeCompare
-        node ref Compare </sub>```python
+        node ref Compare </sub>
+        ```python
         v = float.less_equal(b)
         ```
     
@@ -493,7 +514,8 @@ class Float(dsock.Float):
                     - operation : 'LESS_EQUAL'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL')
                         ```
@@ -512,7 +534,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref FunctionNodeCompare
-        node ref Compare </sub>```python
+        node ref Compare </sub>
+        ```python
         v = float.greater_than(b)
         ```
     
@@ -530,7 +553,8 @@ class Float(dsock.Float):
                     - operation : 'GREATER_THAN'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
                         ```
@@ -549,7 +573,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref FunctionNodeCompare
-        node ref Compare </sub>```python
+        node ref Compare </sub>
+        ```python
         v = float.greater_equal(b)
         ```
     
@@ -567,7 +592,8 @@ class Float(dsock.Float):
                     - operation : 'GREATER_EQUAL'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL')
                         ```
@@ -586,7 +612,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref FunctionNodeCompare
-        node ref Compare </sub>```python
+        node ref Compare </sub>
+        ```python
         v = float.equal(b, epsilon)
         ```
     
@@ -605,7 +632,8 @@ class Float(dsock.Float):
                     - operation : 'EQUAL'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL')
                         ```
@@ -624,7 +652,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref FunctionNodeCompare
-        node ref Compare </sub>```python
+        node ref Compare </sub>
+        ```python
         v = float.not_equal(b, epsilon)
         ```
     
@@ -643,7 +672,8 @@ class Float(dsock.Float):
                     - operation : 'NOT_EQUAL'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL')
                         ```
@@ -662,7 +692,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.add(value1)
         ```
     
@@ -678,7 +709,8 @@ class Float(dsock.Float):
                     - operation : 'ADD'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='ADD')
                         ```
@@ -697,7 +729,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.subtract(value1)
         ```
     
@@ -713,7 +746,8 @@ class Float(dsock.Float):
                     - operation : 'SUBTRACT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
                         ```
@@ -732,7 +766,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.multiply(value1)
         ```
     
@@ -748,7 +783,8 @@ class Float(dsock.Float):
                     - operation : 'MULTIPLY'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
                         ```
@@ -767,7 +803,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.divide(value1)
         ```
     
@@ -783,7 +820,8 @@ class Float(dsock.Float):
                     - operation : 'DIVIDE'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='DIVIDE')
                         ```
@@ -802,7 +840,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.multiply_add(value1, value2)
         ```
     
@@ -819,7 +858,8 @@ class Float(dsock.Float):
                     - operation : 'MULTIPLY_ADD'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD')
                         ```
@@ -838,7 +878,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.pow(value1)
         ```
     
@@ -854,7 +895,8 @@ class Float(dsock.Float):
                     - operation : 'POWER'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='POWER')
                         ```
@@ -873,7 +915,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.log(value1)
         ```
     
@@ -889,7 +932,8 @@ class Float(dsock.Float):
                     - operation : 'LOGARITHM'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
                         ```
@@ -908,7 +952,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.sqrt()
         ```
     
@@ -923,7 +968,8 @@ class Float(dsock.Float):
                     - operation : 'SQRT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='SQRT')
                         ```
@@ -942,7 +988,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.inverse_sqrt()
         ```
     
@@ -957,7 +1004,8 @@ class Float(dsock.Float):
                     - operation : 'INVERSE_SQRT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='INVERSE_SQRT')
                         ```
@@ -976,7 +1024,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.abs()
         ```
     
@@ -991,7 +1040,8 @@ class Float(dsock.Float):
                     - operation : 'ABSOLUTE'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='ABSOLUTE')
                         ```
@@ -1010,7 +1060,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.exp()
         ```
     
@@ -1025,7 +1076,8 @@ class Float(dsock.Float):
                     - operation : 'EXPONENT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='EXPONENT')
                         ```
@@ -1044,7 +1096,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.min(value1)
         ```
     
@@ -1060,7 +1113,8 @@ class Float(dsock.Float):
                     - operation : 'MINIMUM'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='MINIMUM')
                         ```
@@ -1079,7 +1133,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.max(value1)
         ```
     
@@ -1095,7 +1150,8 @@ class Float(dsock.Float):
                     - operation : 'MAXIMUM'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
                         ```
@@ -1114,7 +1170,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.less_than(value1)
         ```
     
@@ -1130,7 +1187,8 @@ class Float(dsock.Float):
                     - operation : 'LESS_THAN'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
                         ```
@@ -1149,7 +1207,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.greater_than(value1)
         ```
     
@@ -1165,7 +1224,8 @@ class Float(dsock.Float):
                     - operation : 'GREATER_THAN'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
                         ```
@@ -1184,7 +1244,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.sign()
         ```
     
@@ -1199,7 +1260,8 @@ class Float(dsock.Float):
                     - operation : 'SIGN'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='SIGN')
                         ```
@@ -1218,7 +1280,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.compare(value1, value2)
         ```
     
@@ -1235,7 +1298,8 @@ class Float(dsock.Float):
                     - operation : 'COMPARE'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE')
                         ```
@@ -1254,7 +1318,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.smooth_min(value1, value2)
         ```
     
@@ -1271,7 +1336,8 @@ class Float(dsock.Float):
                     - operation : 'SMOOTH_MIN'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN')
                         ```
@@ -1290,7 +1356,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.smooth_max(value1, value2)
         ```
     
@@ -1307,7 +1374,8 @@ class Float(dsock.Float):
                     - operation : 'SMOOTH_MAX'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX')
                         ```
@@ -1326,7 +1394,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.round()
         ```
     
@@ -1341,7 +1410,8 @@ class Float(dsock.Float):
                     - operation : 'ROUND'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='ROUND')
                         ```
@@ -1360,7 +1430,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.floor()
         ```
     
@@ -1375,7 +1446,8 @@ class Float(dsock.Float):
                     - operation : 'FLOOR'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='FLOOR')
                         ```
@@ -1394,7 +1466,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.ceil()
         ```
     
@@ -1409,7 +1482,8 @@ class Float(dsock.Float):
                     - operation : 'CEIL'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='CEIL')
                         ```
@@ -1428,7 +1502,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.trunc()
         ```
     
@@ -1443,7 +1518,8 @@ class Float(dsock.Float):
                     - operation : 'TRUNC'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='TRUNC')
                         ```
@@ -1462,7 +1538,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.fract()
         ```
     
@@ -1477,7 +1554,8 @@ class Float(dsock.Float):
                     - operation : 'FRACT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='FRACT')
                         ```
@@ -1496,7 +1574,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.modulo(value1)
         ```
     
@@ -1512,7 +1591,8 @@ class Float(dsock.Float):
                     - operation : 'MODULO'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='MODULO')
                         ```
@@ -1531,7 +1611,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.wrap(value1, value2)
         ```
     
@@ -1548,7 +1629,8 @@ class Float(dsock.Float):
                     - operation : 'WRAP'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP')
                         ```
@@ -1567,7 +1649,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.snap(value1)
         ```
     
@@ -1583,7 +1666,8 @@ class Float(dsock.Float):
                     - operation : 'SNAP'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='SNAP')
                         ```
@@ -1602,7 +1686,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.pingpong(value1)
         ```
     
@@ -1618,7 +1703,8 @@ class Float(dsock.Float):
                     - operation : 'PINGPONG'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='PINGPONG')
                         ```
@@ -1637,7 +1723,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.sin()
         ```
     
@@ -1652,7 +1739,8 @@ class Float(dsock.Float):
                     - operation : 'SINE'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='SINE')
                         ```
@@ -1671,7 +1759,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.cos()
         ```
     
@@ -1686,7 +1775,8 @@ class Float(dsock.Float):
                     - operation : 'COSINE'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='COSINE')
                         ```
@@ -1705,7 +1795,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.tan()
         ```
     
@@ -1720,7 +1811,8 @@ class Float(dsock.Float):
                     - operation : 'TANGENT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='TANGENT')
                         ```
@@ -1739,7 +1831,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.arcsin()
         ```
     
@@ -1754,7 +1847,8 @@ class Float(dsock.Float):
                     - operation : 'ARCSINE'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='ARCSINE')
                         ```
@@ -1773,7 +1867,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.arccos()
         ```
     
@@ -1788,7 +1883,8 @@ class Float(dsock.Float):
                     - operation : 'ARCCOSINE'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='ARCCOSINE')
                         ```
@@ -1807,7 +1903,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.arctan()
         ```
     
@@ -1822,7 +1919,8 @@ class Float(dsock.Float):
                     - operation : 'ARCTANGENT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='ARCTANGENT')
                         ```
@@ -1841,7 +1939,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.arctan2(value1)
         ```
     
@@ -1857,7 +1956,8 @@ class Float(dsock.Float):
                     - operation : 'ARCTAN2'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
                         ```
@@ -1876,7 +1976,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.sinh()
         ```
     
@@ -1891,7 +1992,8 @@ class Float(dsock.Float):
                     - operation : 'SINH'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='SINH')
                         ```
@@ -1910,7 +2012,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.cosh()
         ```
     
@@ -1925,7 +2028,8 @@ class Float(dsock.Float):
                     - operation : 'COSH'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='COSH')
                         ```
@@ -1944,7 +2048,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.tanh()
         ```
     
@@ -1959,7 +2064,8 @@ class Float(dsock.Float):
                     - operation : 'TANH'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='TANH')
                         ```
@@ -1978,7 +2084,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.radians()
         ```
     
@@ -1993,7 +2100,8 @@ class Float(dsock.Float):
                     - operation : 'RADIANS'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='RADIANS')
                         ```
@@ -2012,7 +2120,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeMath
-        node ref Math </sub>```python
+        node ref Math </sub>
+        ```python
         v = float.degrees()
         ```
     
@@ -2027,7 +2136,8 @@ class Float(dsock.Float):
                     - operation : 'DEGREES'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Math(value0=self, operation='DEGREES')
                         ```
@@ -2046,7 +2156,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref FunctionNodeFloatToInt
-        node ref Float to Integer </sub>```python
+        node ref Float to Integer </sub>
+        ```python
         v = float.to_integer(rounding_mode)
         ```
     
@@ -2061,7 +2172,8 @@ class Float(dsock.Float):
                     - rounding_mode : 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE]
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.FloatToInteger(float=self, rounding_mode=rounding_mode)
                         ```
@@ -2080,7 +2192,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref FunctionNodeValueToString
-        node ref Value to String </sub>```python
+        node ref Value to String </sub>
+        ```python
         v = float.to_string(decimals)
         ```
     
@@ -2095,7 +2208,8 @@ class Float(dsock.Float):
                     - decimals : Integer
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.ValueToString(value=self, decimals=decimals)
                         ```
@@ -2114,7 +2228,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeValToRGB
-        node ref ColorRamp </sub>```python
+        node ref ColorRamp </sub>
+        ```python
         v = float.color_ramp()
         ```
     
@@ -2128,7 +2243,8 @@ class Float(dsock.Float):
                 - fac : Float (self)
                   
                     Node creation
-                    -------------```python
+                    -------------
+                    ```python
                     from geondes import nodes
                     nodes.Colorramp(fac=self)
                     ```
@@ -2147,7 +2263,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeFloatCurve
-        node ref Float Curve </sub>```python
+        node ref Float Curve </sub>
+        ```python
         v = float.curve(factor)
         ```
     
@@ -2162,7 +2279,8 @@ class Float(dsock.Float):
                     - factor : Float
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.FloatCurve(value=self, factor=factor)
                         ```
@@ -2181,7 +2299,8 @@ class Float(dsock.Float):
           
         <sub>go to: top index
         blender ref ShaderNodeClamp
-        node ref Clamp </sub>```python
+        node ref Clamp </sub>
+        ```python
         v = float.clamp(min, max, clamp_type)
         ```
     
@@ -2198,7 +2317,8 @@ class Float(dsock.Float):
                     - clamp_type : 'MINMAX' in [MINMAX, RANGE]
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type)
                         ```

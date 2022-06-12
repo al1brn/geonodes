@@ -49,7 +49,8 @@ class Texture(dsock.Texture):
           
         <sub>go to: top index
         blender ref ShaderNodeTexBrick
-        node ref Brick Texture </sub>```python
+        node ref Brick Texture </sub>
+        ```python
         v = Texture.Brick(vector, color1, color2, mortar, scale, mortar_size, mortar_smooth, bias, brick_width, row_height, offset, offset_frequency, squash, squash_frequency)
         ```
     
@@ -76,7 +77,8 @@ class Texture(dsock.Texture):
                     - squash_frequency : 2
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency)
                         ```
@@ -96,7 +98,8 @@ class Texture(dsock.Texture):
           
         <sub>go to: top index
         blender ref ShaderNodeTexChecker
-        node ref Checker Texture </sub>```python
+        node ref Checker Texture </sub>
+        ```python
         v = Texture.Checker(vector, color1, color2, scale)
         ```
     
@@ -113,7 +116,8 @@ class Texture(dsock.Texture):
                     - scale : Float
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale)
                         ```
@@ -133,7 +137,8 @@ class Texture(dsock.Texture):
           
         <sub>go to: top index
         blender ref ShaderNodeTexGradient
-        node ref Gradient Texture </sub>```python
+        node ref Gradient Texture </sub>
+        ```python
         v = Texture.Gradient(vector, gradient_type)
         ```
     
@@ -148,7 +153,8 @@ class Texture(dsock.Texture):
                     - gradient_type : 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.GradientTexture(vector=vector, gradient_type=gradient_type)
                         ```
@@ -168,7 +174,8 @@ class Texture(dsock.Texture):
           
         <sub>go to: top index
         blender ref ShaderNodeTexMagic
-        node ref Magic Texture </sub>```python
+        node ref Magic Texture </sub>
+        ```python
         v = Texture.Magic(vector, scale, distortion, turbulence_depth)
         ```
     
@@ -185,7 +192,8 @@ class Texture(dsock.Texture):
                     - turbulence_depth : 2
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.MagicTexture(vector=vector, scale=scale, distortion=distortion, turbulence_depth=turbulence_depth)
                         ```
@@ -205,7 +213,8 @@ class Texture(dsock.Texture):
           
         <sub>go to: top index
         blender ref ShaderNodeTexMusgrave
-        node ref Musgrave Texture </sub>```python
+        node ref Musgrave Texture </sub>
+        ```python
         v = Texture.Musgrave(vector, w, scale, detail, dimension, lacunarity, offset, gain, musgrave_dimensions, musgrave_type)
         ```
     
@@ -228,7 +237,8 @@ class Texture(dsock.Texture):
                     - musgrave_type : 'FBM' in [MULTIFRACTAL, RIDGED_MULTIFRACTAL, HYBRID_MULTIFRACTAL, FBM, HETERO_TERRAIN]
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.MusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, offset=offset, gain=gain, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type)
                         ```
@@ -248,7 +258,8 @@ class Texture(dsock.Texture):
           
         <sub>go to: top index
         blender ref ShaderNodeTexNoise
-        node ref Noise Texture </sub>```python
+        node ref Noise Texture </sub>
+        ```python
         v = Texture.Noise(vector, w, scale, detail, roughness, distortion, noise_dimensions)
         ```
     
@@ -268,7 +279,8 @@ class Texture(dsock.Texture):
                     - noise_dimensions : '3D' in [1D, 2D, 3D, 4D]
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions)
                         ```
@@ -288,7 +300,8 @@ class Texture(dsock.Texture):
           
         <sub>go to: top index
         blender ref ShaderNodeTexVoronoi
-        node ref Voronoi Texture </sub>```python
+        node ref Voronoi Texture </sub>
+        ```python
         v = Texture.Voronoi(vector, w, scale, smoothness, exponent, randomness, distance, feature, voronoi_dimensions)
         ```
     
@@ -310,7 +323,8 @@ class Texture(dsock.Texture):
                     - voronoi_dimensions : '3D' in [1D, 2D, 3D, 4D]
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
                         ```
@@ -330,7 +344,8 @@ class Texture(dsock.Texture):
           
         <sub>go to: top index
         blender ref ShaderNodeTexWave
-        node ref Wave Texture </sub>```python
+        node ref Wave Texture </sub>
+        ```python
         v = Texture.Wave(vector, scale, distortion, detail, detail_scale, detail_roughness, phase_offset, bands_direction, rings_direction, wave_profile, wave_type)
         ```
     
@@ -354,7 +369,8 @@ class Texture(dsock.Texture):
                     - wave_type : 'BANDS' in [BANDS, RINGS]
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
                         ```
@@ -374,7 +390,8 @@ class Texture(dsock.Texture):
           
         <sub>go to: top index
         blender ref ShaderNodeTexWhiteNoise
-        node ref White Noise Texture </sub>```python
+        node ref White Noise Texture </sub>
+        ```python
         v = Texture.WhiteNoise(vector, w, noise_dimensions)
         ```
     
@@ -390,7 +407,8 @@ class Texture(dsock.Texture):
                     - noise_dimensions : '3D' in [1D, 2D, 3D, 4D]
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions)
                         ```
@@ -410,7 +428,8 @@ class Texture(dsock.Texture):
           
         <sub>go to: top index
         blender ref GeometryNodeImageTexture
-        node ref Image Texture </sub>```python
+        node ref Image Texture </sub>
+        ```python
         v = Texture.Image(image, vector, frame, extension, interpolation)
         ```
     
@@ -428,7 +447,8 @@ class Texture(dsock.Texture):
                     - interpolation : 'Linear' in [Linear, Closest, Cubic]
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=extension, interpolation=interpolation)
                         ```
@@ -451,7 +471,8 @@ class Texture(dsock.Texture):
           
         <sub>go to: top index
         blender ref GeometryNodeSwitch
-        node ref Switch </sub>```python
+        node ref Switch </sub>
+        ```python
         v = texture.switch(switch1, true)
         ```
     
@@ -468,7 +489,8 @@ class Texture(dsock.Texture):
                     - input_type : 'TEXTURE'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Switch(false=self, switch1=switch1, true=true, input_type='TEXTURE')
                         ```

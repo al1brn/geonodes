@@ -7,7 +7,8 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Initialization
---------------```python
+--------------
+```python
 from geonodes import nodes
 node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL', label=None)
 ```

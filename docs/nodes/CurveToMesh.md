@@ -7,7 +7,8 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Initialization
---------------```python
+--------------
+```python
 from geonodes import nodes
 node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None, label=None)
 ```

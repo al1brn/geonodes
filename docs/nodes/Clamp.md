@@ -7,7 +7,8 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Initialization
---------------```python
+--------------
+```python
 from geonodes import nodes
 node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX', label=None)
 ```

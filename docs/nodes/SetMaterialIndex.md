@@ -7,7 +7,8 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Initialization
---------------```python
+--------------
+```python
 from geonodes import nodes
 node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None, label=None)
 ```

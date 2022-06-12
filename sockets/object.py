@@ -51,7 +51,8 @@ class Object(dsock.Object):
           
         <sub>go to: top index
         blender ref GeometryNodeObjectInfo
-        node ref Object Info </sub>```python
+        node ref Object Info </sub>
+        ```python
         v = object.info
         ```
     
@@ -68,7 +69,8 @@ class Object(dsock.Object):
                     - label:f"{self.node_chain_label}.info"
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
                         ```
@@ -90,7 +92,8 @@ class Object(dsock.Object):
           
         <sub>go to: top index
         blender ref GeometryNodeObjectInfo
-        node ref Object Info </sub>```python
+        node ref Object Info </sub>
+        ```python
         v = object.location
         ```
     
@@ -107,7 +110,8 @@ class Object(dsock.Object):
                     - label:f"{self.node_chain_label}.location"
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.location")
                         ```
@@ -127,7 +131,8 @@ class Object(dsock.Object):
           
         <sub>go to: top index
         blender ref GeometryNodeObjectInfo
-        node ref Object Info </sub>```python
+        node ref Object Info </sub>
+        ```python
         v = object.rotation
         ```
     
@@ -144,7 +149,8 @@ class Object(dsock.Object):
                     - label:f"{self.node_chain_label}.rotation"
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.rotation")
                         ```
@@ -164,7 +170,8 @@ class Object(dsock.Object):
           
         <sub>go to: top index
         blender ref GeometryNodeObjectInfo
-        node ref Object Info </sub>```python
+        node ref Object Info </sub>
+        ```python
         v = object.scale
         ```
     
@@ -181,7 +188,8 @@ class Object(dsock.Object):
                     - label:f"{self.node_chain_label}.scale"
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.scale")
                         ```
@@ -201,7 +209,8 @@ class Object(dsock.Object):
           
         <sub>go to: top index
         blender ref GeometryNodeObjectInfo
-        node ref Object Info </sub>```python
+        node ref Object Info </sub>
+        ```python
         v = object.geometry
         ```
     
@@ -218,7 +227,8 @@ class Object(dsock.Object):
                     - label:f"{self.node_chain_label}.geometry"
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.geometry")
                         ```
@@ -241,7 +251,8 @@ class Object(dsock.Object):
           
         <sub>go to: top index
         blender ref GeometryNodeSwitch
-        node ref Switch </sub>```python
+        node ref Switch </sub>
+        ```python
         v = object.switch(switch1, true)
         ```
     
@@ -258,7 +269,8 @@ class Object(dsock.Object):
                     - input_type : 'OBJECT'
                       
                         Node creation
-                        -------------```python
+                        -------------
+                        ```python
                         from geondes import nodes
                         nodes.Switch(false=self, switch1=switch1, true=true, input_type='OBJECT')
                         ```

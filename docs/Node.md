@@ -5,7 +5,8 @@ The root class for Blender node wrappers.
 
 This class is basically intended to expose its constructor as a way to create
 the associated Geometry Node. In the following example, we create a Node
-supposingly have one single input socket named "geometry"```python
+supposingly have one single input socket named "geometry"
+```python
 my_node = Node(geometry=value, parameter='PARAM')
 ```
 

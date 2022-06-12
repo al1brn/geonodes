@@ -7,7 +7,8 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Initialization
---------------```python
+--------------
+```python
 from geonodes import nodes
 node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='POINTS', label=None)
 ```
