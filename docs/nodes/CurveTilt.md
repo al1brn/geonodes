@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.CurveTilt(label=None)
-```
+        from geonodes import nodes
+        node = nodes.CurveTilt(label=None)
+        ```
 
 
 

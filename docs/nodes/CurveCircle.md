@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS', label=None)
-```
+        from geonodes import nodes
+        node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS', label=None)
+        ```
 
 
 

@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.Integer(integer=0, label=None)
-```
+        from geonodes import nodes
+        node = nodes.Integer(integer=0, label=None)
+        ```
 
 
 

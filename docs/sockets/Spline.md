@@ -52,8 +52,8 @@ blender ref [GeometryNodeInputCurveHandlePositions](https://docs.blender.org/api
 node ref [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) </sub>
 
 ```python
-v = spline.capture_handle_positions(self, relative, domain='CURVE')
-```
+        v = spline.capture_handle_positions(self, relative, domain='CURVE')
+        ```
 
 ### Arguments
 
@@ -67,9 +67,9 @@ v = spline.capture_handle_positions(self, relative, domain='CURVE')
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.CurveHandlePositions(relative=relative)
-```
+        from geondes import nodes
+        nodes.CurveHandlePositions(relative=relative)
+        ```
 
 ### Returns
 
@@ -85,8 +85,8 @@ blender ref [GeometryNodeInputTangent](https://docs.blender.org/api/current/bpy.
 node ref [Curve Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tangent.html) </sub>
 
 ```python
-v = spline.capture_tangent(self, domain='CURVE')
-```
+        v = spline.capture_tangent(self, domain='CURVE')
+        ```
 
 ### Arguments
 
@@ -99,9 +99,9 @@ v = spline.capture_tangent(self, domain='CURVE')
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.CurveTangent()
-```
+        from geondes import nodes
+        nodes.CurveTangent()
+        ```
 
 ### Returns
 
@@ -117,8 +117,8 @@ blender ref [GeometryNodeInputCurveTilt](https://docs.blender.org/api/current/bp
 node ref [Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tilt.html) </sub>
 
 ```python
-v = spline.capture_tilt(self, domain='CURVE')
-```
+        v = spline.capture_tilt(self, domain='CURVE')
+        ```
 
 ### Arguments
 
@@ -131,9 +131,9 @@ v = spline.capture_tilt(self, domain='CURVE')
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.CurveTilt()
-```
+        from geondes import nodes
+        nodes.CurveTilt()
+        ```
 
 ### Returns
 
@@ -149,8 +149,8 @@ blender ref [GeometryNodeCurveEndpointSelection](https://docs.blender.org/api/cu
 node ref [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/endpoint_selection.html) </sub>
 
 ```python
-v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE')
-```
+        v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE')
+        ```
 
 ### Arguments
 
@@ -165,9 +165,9 @@ v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE'
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.EndpointSelection(start_size=start_size, end_size=end_size)
-```
+        from geondes import nodes
+        nodes.EndpointSelection(start_size=start_size, end_size=end_size)
+        ```
 
 ### Returns
 
@@ -183,8 +183,8 @@ blender ref [GeometryNodeCurveHandleTypeSelection](https://docs.blender.org/api/
 node ref [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) </sub>
 
 ```python
-v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE')
-```
+        v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE')
+        ```
 
 ### Arguments
 
@@ -199,9 +199,9 @@ v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE'
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
-```
+        from geondes import nodes
+        nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
+        ```
 
 ### Returns
 
@@ -217,8 +217,8 @@ blender ref [GeometryNodeInputSplineCyclic](https://docs.blender.org/api/current
 node ref [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/is_spline_cyclic.html) </sub>
 
 ```python
-v = spline.capture_cyclic(self, domain='CURVE')
-```
+        v = spline.capture_cyclic(self, domain='CURVE')
+        ```
 
 ### Arguments
 
@@ -231,9 +231,9 @@ v = spline.capture_cyclic(self, domain='CURVE')
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.IsSplineCyclic()
-```
+        from geondes import nodes
+        nodes.IsSplineCyclic()
+        ```
 
 ### Returns
 
@@ -249,8 +249,8 @@ blender ref [GeometryNodeSplineLength](https://docs.blender.org/api/current/bpy.
 node ref [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html) </sub>
 
 ```python
-v = spline.capture_length(self, domain='CURVE')
-```
+        v = spline.capture_length(self, domain='CURVE')
+        ```
 
 ### Arguments
 
@@ -263,9 +263,9 @@ v = spline.capture_length(self, domain='CURVE')
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.SplineLength()
-```
+        from geondes import nodes
+        nodes.SplineLength()
+        ```
 
 ### Returns
 
@@ -281,8 +281,8 @@ blender ref [GeometryNodeSplineParameter](https://docs.blender.org/api/current/b
 node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) </sub>
 
 ```python
-v = spline.capture_parameter(self, domain='CURVE')
-```
+        v = spline.capture_parameter(self, domain='CURVE')
+        ```
 
 ### Arguments
 
@@ -295,9 +295,9 @@ v = spline.capture_parameter(self, domain='CURVE')
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.SplineParameter()
-```
+        from geondes import nodes
+        nodes.SplineParameter()
+        ```
 
 ### Returns
 
@@ -313,8 +313,8 @@ blender ref [GeometryNodeInputSplineResolution](https://docs.blender.org/api/cur
 node ref [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_resolution.html) </sub>
 
 ```python
-v = spline.capture_resolution(self, domain='CURVE')
-```
+        v = spline.capture_resolution(self, domain='CURVE')
+        ```
 
 ### Arguments
 
@@ -327,9 +327,9 @@ v = spline.capture_resolution(self, domain='CURVE')
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.SplineResolution()
-```
+        from geondes import nodes
+        nodes.SplineResolution()
+        ```
 
 ### Returns
 
@@ -345,8 +345,8 @@ blender ref [GeometryNodeInputID](https://docs.blender.org/api/current/bpy.types
 node ref [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/id.html) </sub>
 
 ```python
-v = spline.spline_ID(self)
-```
+        v = spline.spline_ID(self)
+        ```
 
 ### Arguments
 
@@ -358,9 +358,9 @@ v = spline.spline_ID(self)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.ID()
-```
+        from geondes import nodes
+        nodes.ID()
+        ```
 
 ### Returns
 
@@ -376,8 +376,8 @@ blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.ty
 node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) </sub>
 
 ```python
-v = spline.spline_index(self)
-```
+        v = spline.spline_index(self)
+        ```
 
 ### Arguments
 
@@ -389,9 +389,9 @@ v = spline.spline_index(self)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Index()
-```
+        from geondes import nodes
+        nodes.Index()
+        ```
 
 ### Returns
 
@@ -407,8 +407,8 @@ blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.ty
 node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) </sub>
 
 ```python
-v = spline.spline_position(self)
-```
+        v = spline.spline_position(self)
+        ```
 
 ### Arguments
 
@@ -420,9 +420,9 @@ v = spline.spline_position(self)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Index()
-```
+        from geondes import nodes
+        nodes.Index()
+        ```
 
 ### Returns
 
@@ -438,8 +438,8 @@ blender ref [GeometryNodeInputCurveHandlePositions](https://docs.blender.org/api
 node ref [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) </sub>
 
 ```python
-v = spline.left_handle_position(self, relative)
-```
+        v = spline.left_handle_position(self, relative)
+        ```
 
 ### Arguments
 
@@ -452,9 +452,9 @@ v = spline.left_handle_position(self, relative)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.CurveHandlePositions(relative=relative)
-```
+        from geondes import nodes
+        nodes.CurveHandlePositions(relative=relative)
+        ```
 
 ### Returns
 
@@ -470,8 +470,8 @@ blender ref [GeometryNodeInputCurveHandlePositions](https://docs.blender.org/api
 node ref [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) </sub>
 
 ```python
-v = spline.right_handle_position(self, relative)
-```
+        v = spline.right_handle_position(self, relative)
+        ```
 
 ### Arguments
 
@@ -484,9 +484,9 @@ v = spline.right_handle_position(self, relative)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.CurveHandlePositions(relative=relative)
-```
+        from geondes import nodes
+        nodes.CurveHandlePositions(relative=relative)
+        ```
 
 ### Returns
 
@@ -502,8 +502,8 @@ blender ref [GeometryNodeInputTangent](https://docs.blender.org/api/current/bpy.
 node ref [Curve Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tangent.html) </sub>
 
 ```python
-v = spline.tangent(self)
-```
+        v = spline.tangent(self)
+        ```
 
 ### Arguments
 
@@ -515,9 +515,9 @@ v = spline.tangent(self)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.CurveTangent()
-```
+        from geondes import nodes
+        nodes.CurveTangent()
+        ```
 
 ### Returns
 
@@ -533,8 +533,8 @@ blender ref [GeometryNodeInputCurveTilt](https://docs.blender.org/api/current/bp
 node ref [Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tilt.html) </sub>
 
 ```python
-v = spline.tilt(self)
-```
+        v = spline.tilt(self)
+        ```
 
 ### Arguments
 
@@ -546,9 +546,9 @@ v = spline.tilt(self)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.CurveTilt()
-```
+        from geondes import nodes
+        nodes.CurveTilt()
+        ```
 
 ### Returns
 
@@ -564,8 +564,8 @@ blender ref [GeometryNodeCurveEndpointSelection](https://docs.blender.org/api/cu
 node ref [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/endpoint_selection.html) </sub>
 
 ```python
-v = spline.endpoint_selection(self, start_size, end_size)
-```
+        v = spline.endpoint_selection(self, start_size, end_size)
+        ```
 
 ### Arguments
 
@@ -579,9 +579,9 @@ v = spline.endpoint_selection(self, start_size, end_size)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.EndpointSelection(start_size=start_size, end_size=end_size)
-```
+        from geondes import nodes
+        nodes.EndpointSelection(start_size=start_size, end_size=end_size)
+        ```
 
 ### Returns
 
@@ -597,8 +597,8 @@ blender ref [GeometryNodeCurveHandleTypeSelection](https://docs.blender.org/api/
 node ref [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) </sub>
 
 ```python
-v = spline.handle_type_selection(self, handle_type, mode)
-```
+        v = spline.handle_type_selection(self, handle_type, mode)
+        ```
 
 ### Arguments
 
@@ -612,9 +612,9 @@ v = spline.handle_type_selection(self, handle_type, mode)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
-```
+        from geondes import nodes
+        nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
+        ```
 
 ### Returns
 
@@ -630,8 +630,8 @@ blender ref [GeometryNodeInputSplineCyclic](https://docs.blender.org/api/current
 node ref [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/is_spline_cyclic.html) </sub>
 
 ```python
-v = spline.cyclic(self)
-```
+        v = spline.cyclic(self)
+        ```
 
 ### Arguments
 
@@ -643,9 +643,9 @@ v = spline.cyclic(self)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.IsSplineCyclic()
-```
+        from geondes import nodes
+        nodes.IsSplineCyclic()
+        ```
 
 ### Returns
 
@@ -661,8 +661,8 @@ blender ref [GeometryNodeSplineLength](https://docs.blender.org/api/current/bpy.
 node ref [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html) </sub>
 
 ```python
-v = spline.length(self)
-```
+        v = spline.length(self)
+        ```
 
 ### Arguments
 
@@ -674,9 +674,9 @@ v = spline.length(self)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.SplineLength()
-```
+        from geondes import nodes
+        nodes.SplineLength()
+        ```
 
 ### Returns
 
@@ -692,8 +692,8 @@ blender ref [GeometryNodeSplineLength](https://docs.blender.org/api/current/bpy.
 node ref [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html) </sub>
 
 ```python
-v = spline.point_count(self)
-```
+        v = spline.point_count(self)
+        ```
 
 ### Arguments
 
@@ -705,9 +705,9 @@ v = spline.point_count(self)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.SplineLength()
-```
+        from geondes import nodes
+        nodes.SplineLength()
+        ```
 
 ### Returns
 
@@ -723,8 +723,8 @@ blender ref [GeometryNodeSplineParameter](https://docs.blender.org/api/current/b
 node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) </sub>
 
 ```python
-v = spline.factor(self)
-```
+        v = spline.factor(self)
+        ```
 
 ### Arguments
 
@@ -736,9 +736,9 @@ v = spline.factor(self)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.SplineParameter()
-```
+        from geondes import nodes
+        nodes.SplineParameter()
+        ```
 
 ### Returns
 
@@ -754,8 +754,8 @@ blender ref [GeometryNodeSplineParameter](https://docs.blender.org/api/current/b
 node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) </sub>
 
 ```python
-v = spline.parameter_length(self)
-```
+        v = spline.parameter_length(self)
+        ```
 
 ### Arguments
 
@@ -767,9 +767,9 @@ v = spline.parameter_length(self)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.SplineParameter()
-```
+        from geondes import nodes
+        nodes.SplineParameter()
+        ```
 
 ### Returns
 
@@ -785,8 +785,8 @@ blender ref [GeometryNodeSplineParameter](https://docs.blender.org/api/current/b
 node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) </sub>
 
 ```python
-v = spline.parameter_index(self)
-```
+        v = spline.parameter_index(self)
+        ```
 
 ### Arguments
 
@@ -798,9 +798,9 @@ v = spline.parameter_index(self)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.SplineParameter()
-```
+        from geondes import nodes
+        nodes.SplineParameter()
+        ```
 
 ### Returns
 
@@ -816,8 +816,8 @@ blender ref [GeometryNodeInputSplineResolution](https://docs.blender.org/api/cur
 node ref [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_resolution.html) </sub>
 
 ```python
-v = spline.resolution(self)
-```
+        v = spline.resolution(self)
+        ```
 
 ### Arguments
 
@@ -829,9 +829,9 @@ v = spline.resolution(self)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.SplineResolution()
-```
+        from geondes import nodes
+        nodes.SplineResolution()
+        ```
 
 ### Returns
 
@@ -847,8 +847,8 @@ blender ref [GeometryNodeSetSplineCyclic](https://docs.blender.org/api/current/b
 node ref [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html) </sub>
 
 ```python
-v = spline.set_cyclic(selection, cyclic)
-```
+        v = spline.set_cyclic(selection, cyclic)
+        ```
 
 ### Arguments
 
@@ -862,9 +862,9 @@ v = spline.set_cyclic(selection, cyclic)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic)
-```
+        from geondes import nodes
+        nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic)
+        ```
 
 ### Returns
 
@@ -880,8 +880,8 @@ blender ref [GeometryNodeSetSplineResolution](https://docs.blender.org/api/curre
 node ref [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html) </sub>
 
 ```python
-v = spline.set_resolution(selection, resolution)
-```
+        v = spline.set_resolution(selection, resolution)
+        ```
 
 ### Arguments
 
@@ -895,9 +895,9 @@ v = spline.set_resolution(selection, resolution)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution)
-```
+        from geondes import nodes
+        nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution)
+        ```
 
 ### Returns
 

@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', label=None)
-```
+        from geonodes import nodes
+        node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', label=None)
+        ```
 
 
 

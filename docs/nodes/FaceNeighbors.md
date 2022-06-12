@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.FaceNeighbors(label=None)
-```
+        from geonodes import nodes
+        node = nodes.FaceNeighbors(label=None)
+        ```
 
 
 

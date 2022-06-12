@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.CurveHandlePositions(relative=None, label=None)
-```
+        from geonodes import nodes
+        node = nodes.CurveHandlePositions(relative=None, label=None)
+        ```
 
 
 

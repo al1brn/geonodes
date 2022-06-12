@@ -20,8 +20,8 @@ blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
 
 ```python
-v = image.switch(switch1, true)
-```
+        v = image.switch(switch1, true)
+        ```
 
 ### Arguments
 
@@ -36,9 +36,9 @@ v = image.switch(switch1, true)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE')
-```
+        from geondes import nodes
+        nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE')
+        ```
 
 ### Returns
 

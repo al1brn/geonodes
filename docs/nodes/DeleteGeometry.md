@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode='ALL', label=None)
-```
+        from geonodes import nodes
+        node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode='ALL', label=None)
+        ```
 
 
 

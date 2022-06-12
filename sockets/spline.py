@@ -71,8 +71,8 @@ class Spline(gn.Geometry):
         node ref Curve Handle Positions </sub>
         
         ```python
-        v = spline.capture_handle_positions(self, relative, domain='CURVE')
-        ```
+                v = spline.capture_handle_positions(self, relative, domain='CURVE')
+                ```
     
 
         Arguments
@@ -89,9 +89,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.CurveHandlePositions(relative=relative)
-            ```
+                    from geondes import nodes
+                    nodes.CurveHandlePositions(relative=relative)
+                    ```
     
 
         Returns
@@ -115,8 +115,8 @@ class Spline(gn.Geometry):
         node ref Curve Tangent </sub>
         
         ```python
-        v = spline.capture_tangent(self, domain='CURVE')
-        ```
+                v = spline.capture_tangent(self, domain='CURVE')
+                ```
     
 
         Arguments
@@ -132,9 +132,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.CurveTangent()
-            ```
+                    from geondes import nodes
+                    nodes.CurveTangent()
+                    ```
     
 
         Returns
@@ -158,8 +158,8 @@ class Spline(gn.Geometry):
         node ref Curve Tilt </sub>
         
         ```python
-        v = spline.capture_tilt(self, domain='CURVE')
-        ```
+                v = spline.capture_tilt(self, domain='CURVE')
+                ```
     
 
         Arguments
@@ -175,9 +175,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.CurveTilt()
-            ```
+                    from geondes import nodes
+                    nodes.CurveTilt()
+                    ```
     
 
         Returns
@@ -201,8 +201,8 @@ class Spline(gn.Geometry):
         node ref Endpoint Selection </sub>
         
         ```python
-        v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE')
-        ```
+                v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE')
+                ```
     
 
         Arguments
@@ -220,9 +220,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EndpointSelection(start_size=start_size, end_size=end_size)
-            ```
+                    from geondes import nodes
+                    nodes.EndpointSelection(start_size=start_size, end_size=end_size)
+                    ```
     
 
         Returns
@@ -246,8 +246,8 @@ class Spline(gn.Geometry):
         node ref Handle Type Selection </sub>
         
         ```python
-        v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE')
-        ```
+                v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE')
+                ```
     
 
         Arguments
@@ -265,9 +265,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
+                    ```
     
 
         Returns
@@ -291,8 +291,8 @@ class Spline(gn.Geometry):
         node ref Is Spline Cyclic </sub>
         
         ```python
-        v = spline.capture_cyclic(self, domain='CURVE')
-        ```
+                v = spline.capture_cyclic(self, domain='CURVE')
+                ```
     
 
         Arguments
@@ -308,9 +308,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.IsSplineCyclic()
-            ```
+                    from geondes import nodes
+                    nodes.IsSplineCyclic()
+                    ```
     
 
         Returns
@@ -334,8 +334,8 @@ class Spline(gn.Geometry):
         node ref Spline Length </sub>
         
         ```python
-        v = spline.capture_length(self, domain='CURVE')
-        ```
+                v = spline.capture_length(self, domain='CURVE')
+                ```
     
 
         Arguments
@@ -351,9 +351,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SplineLength()
-            ```
+                    from geondes import nodes
+                    nodes.SplineLength()
+                    ```
     
 
         Returns
@@ -377,8 +377,8 @@ class Spline(gn.Geometry):
         node ref Spline Parameter </sub>
         
         ```python
-        v = spline.capture_parameter(self, domain='CURVE')
-        ```
+                v = spline.capture_parameter(self, domain='CURVE')
+                ```
     
 
         Arguments
@@ -394,9 +394,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SplineParameter()
-            ```
+                    from geondes import nodes
+                    nodes.SplineParameter()
+                    ```
     
 
         Returns
@@ -420,8 +420,8 @@ class Spline(gn.Geometry):
         node ref Spline Resolution </sub>
         
         ```python
-        v = spline.capture_resolution(self, domain='CURVE')
-        ```
+                v = spline.capture_resolution(self, domain='CURVE')
+                ```
     
 
         Arguments
@@ -437,9 +437,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SplineResolution()
-            ```
+                    from geondes import nodes
+                    nodes.SplineResolution()
+                    ```
     
 
         Returns
@@ -468,8 +468,8 @@ class Spline(gn.Geometry):
         node ref ID </sub>
         
         ```python
-        v = spline.spline_ID(self)
-        ```
+                v = spline.spline_ID(self)
+                ```
     
 
         Arguments
@@ -484,9 +484,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.ID()
-            ```
+                    from geondes import nodes
+                    nodes.ID()
+                    ```
     
 
         Returns
@@ -506,8 +506,8 @@ class Spline(gn.Geometry):
         node ref Index </sub>
         
         ```python
-        v = spline.spline_index(self)
-        ```
+                v = spline.spline_index(self)
+                ```
     
 
         Arguments
@@ -522,9 +522,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Index()
-            ```
+                    from geondes import nodes
+                    nodes.Index()
+                    ```
     
 
         Returns
@@ -544,8 +544,8 @@ class Spline(gn.Geometry):
         node ref Index </sub>
         
         ```python
-        v = spline.spline_position(self)
-        ```
+                v = spline.spline_position(self)
+                ```
     
 
         Arguments
@@ -560,9 +560,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Index()
-            ```
+                    from geondes import nodes
+                    nodes.Index()
+                    ```
     
 
         Returns
@@ -582,8 +582,8 @@ class Spline(gn.Geometry):
         node ref Curve Handle Positions </sub>
         
         ```python
-        v = spline.left_handle_position(self, relative)
-        ```
+                v = spline.left_handle_position(self, relative)
+                ```
     
 
         Arguments
@@ -599,9 +599,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.CurveHandlePositions(relative=relative)
-            ```
+                    from geondes import nodes
+                    nodes.CurveHandlePositions(relative=relative)
+                    ```
     
 
         Returns
@@ -621,8 +621,8 @@ class Spline(gn.Geometry):
         node ref Curve Handle Positions </sub>
         
         ```python
-        v = spline.right_handle_position(self, relative)
-        ```
+                v = spline.right_handle_position(self, relative)
+                ```
     
 
         Arguments
@@ -638,9 +638,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.CurveHandlePositions(relative=relative)
-            ```
+                    from geondes import nodes
+                    nodes.CurveHandlePositions(relative=relative)
+                    ```
     
 
         Returns
@@ -660,8 +660,8 @@ class Spline(gn.Geometry):
         node ref Curve Tangent </sub>
         
         ```python
-        v = spline.tangent(self)
-        ```
+                v = spline.tangent(self)
+                ```
     
 
         Arguments
@@ -676,9 +676,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.CurveTangent()
-            ```
+                    from geondes import nodes
+                    nodes.CurveTangent()
+                    ```
     
 
         Returns
@@ -698,8 +698,8 @@ class Spline(gn.Geometry):
         node ref Curve Tilt </sub>
         
         ```python
-        v = spline.tilt(self)
-        ```
+                v = spline.tilt(self)
+                ```
     
 
         Arguments
@@ -714,9 +714,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.CurveTilt()
-            ```
+                    from geondes import nodes
+                    nodes.CurveTilt()
+                    ```
     
 
         Returns
@@ -736,8 +736,8 @@ class Spline(gn.Geometry):
         node ref Endpoint Selection </sub>
         
         ```python
-        v = spline.endpoint_selection(self, start_size, end_size)
-        ```
+                v = spline.endpoint_selection(self, start_size, end_size)
+                ```
     
 
         Arguments
@@ -754,9 +754,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EndpointSelection(start_size=start_size, end_size=end_size)
-            ```
+                    from geondes import nodes
+                    nodes.EndpointSelection(start_size=start_size, end_size=end_size)
+                    ```
     
 
         Returns
@@ -776,8 +776,8 @@ class Spline(gn.Geometry):
         node ref Handle Type Selection </sub>
         
         ```python
-        v = spline.handle_type_selection(self, handle_type, mode)
-        ```
+                v = spline.handle_type_selection(self, handle_type, mode)
+                ```
     
 
         Arguments
@@ -794,9 +794,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
+                    ```
     
 
         Returns
@@ -816,8 +816,8 @@ class Spline(gn.Geometry):
         node ref Is Spline Cyclic </sub>
         
         ```python
-        v = spline.cyclic(self)
-        ```
+                v = spline.cyclic(self)
+                ```
     
 
         Arguments
@@ -832,9 +832,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.IsSplineCyclic()
-            ```
+                    from geondes import nodes
+                    nodes.IsSplineCyclic()
+                    ```
     
 
         Returns
@@ -854,8 +854,8 @@ class Spline(gn.Geometry):
         node ref Spline Length </sub>
         
         ```python
-        v = spline.length(self)
-        ```
+                v = spline.length(self)
+                ```
     
 
         Arguments
@@ -870,9 +870,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SplineLength()
-            ```
+                    from geondes import nodes
+                    nodes.SplineLength()
+                    ```
     
 
         Returns
@@ -892,8 +892,8 @@ class Spline(gn.Geometry):
         node ref Spline Length </sub>
         
         ```python
-        v = spline.point_count(self)
-        ```
+                v = spline.point_count(self)
+                ```
     
 
         Arguments
@@ -908,9 +908,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SplineLength()
-            ```
+                    from geondes import nodes
+                    nodes.SplineLength()
+                    ```
     
 
         Returns
@@ -930,8 +930,8 @@ class Spline(gn.Geometry):
         node ref Spline Parameter </sub>
         
         ```python
-        v = spline.factor(self)
-        ```
+                v = spline.factor(self)
+                ```
     
 
         Arguments
@@ -946,9 +946,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SplineParameter()
-            ```
+                    from geondes import nodes
+                    nodes.SplineParameter()
+                    ```
     
 
         Returns
@@ -968,8 +968,8 @@ class Spline(gn.Geometry):
         node ref Spline Parameter </sub>
         
         ```python
-        v = spline.parameter_length(self)
-        ```
+                v = spline.parameter_length(self)
+                ```
     
 
         Arguments
@@ -984,9 +984,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SplineParameter()
-            ```
+                    from geondes import nodes
+                    nodes.SplineParameter()
+                    ```
     
 
         Returns
@@ -1006,8 +1006,8 @@ class Spline(gn.Geometry):
         node ref Spline Parameter </sub>
         
         ```python
-        v = spline.parameter_index(self)
-        ```
+                v = spline.parameter_index(self)
+                ```
     
 
         Arguments
@@ -1022,9 +1022,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SplineParameter()
-            ```
+                    from geondes import nodes
+                    nodes.SplineParameter()
+                    ```
     
 
         Returns
@@ -1044,8 +1044,8 @@ class Spline(gn.Geometry):
         node ref Spline Resolution </sub>
         
         ```python
-        v = spline.resolution(self)
-        ```
+                v = spline.resolution(self)
+                ```
     
 
         Arguments
@@ -1060,9 +1060,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SplineResolution()
-            ```
+                    from geondes import nodes
+                    nodes.SplineResolution()
+                    ```
     
 
         Returns
@@ -1085,8 +1085,8 @@ class Spline(gn.Geometry):
         node ref Set Spline Cyclic </sub>
         
         ```python
-        v = spline.set_cyclic(selection, cyclic)
-        ```
+                v = spline.set_cyclic(selection, cyclic)
+                ```
     
 
         Arguments
@@ -1103,9 +1103,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic)
-            ```
+                    from geondes import nodes
+                    nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic)
+                    ```
     
 
         Returns
@@ -1124,8 +1124,8 @@ class Spline(gn.Geometry):
         node ref Set Spline Resolution </sub>
         
         ```python
-        v = spline.set_resolution(selection, resolution)
-        ```
+                v = spline.set_resolution(selection, resolution)
+                ```
     
 
         Arguments
@@ -1142,9 +1142,9 @@ class Spline(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution)
-            ```
+                    from geondes import nodes
+                    nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution)
+                    ```
     
 
         Returns

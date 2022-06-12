@@ -21,8 +21,8 @@ blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
 
 ```python
-v = collection.switch(switch1, true)
-```
+        v = collection.switch(switch1, true)
+        ```
 
 ### Arguments
 
@@ -37,9 +37,9 @@ v = collection.switch(switch1, true)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION')
-```
+        from geondes import nodes
+        nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION')
+        ```
 
 ### Returns
 
@@ -55,8 +55,8 @@ blender ref [GeometryNodeCollectionInfo](https://docs.blender.org/api/current/bp
 node ref [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/collection_info.html) </sub>
 
 ```python
-v = collection.info(separate_children, reset_children, transform_space)
-```
+        v = collection.info(separate_children, reset_children, transform_space)
+        ```
 
 ### Arguments
 
@@ -71,9 +71,9 @@ v = collection.info(separate_children, reset_children, transform_space)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space)
-```
+        from geondes import nodes
+        nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space)
+        ```
 
 ### Returns
 

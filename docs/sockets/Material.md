@@ -21,8 +21,8 @@ blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
 
 ```python
-v = material.switch(switch1, true)
-```
+        v = material.switch(switch1, true)
+        ```
 
 ### Arguments
 
@@ -37,9 +37,9 @@ v = material.switch(switch1, true)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL')
-```
+        from geondes import nodes
+        nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL')
+        ```
 
 ### Returns
 
@@ -55,8 +55,8 @@ blender ref [GeometryNodeMaterialSelection](https://docs.blender.org/api/current
 node ref [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) </sub>
 
 ```python
-v = material.selection()
-```
+        v = material.selection()
+        ```
 
 ### Arguments
 
@@ -68,9 +68,9 @@ v = material.selection()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.MaterialSelection(material=self)
-```
+        from geondes import nodes
+        nodes.MaterialSelection(material=self)
+        ```
 
 ### Returns
 

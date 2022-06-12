@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.Colorramp(fac=None, label=None)
-```
+        from geonodes import nodes
+        node = nodes.Colorramp(fac=None, label=None)
+        ```
 
 
 

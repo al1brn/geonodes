@@ -55,8 +55,8 @@ class String(dsock.String):
         node ref String Length </sub>
         
         ```python
-        v = string.length
-        ```
+                v = string.length
+                ```
     
 
         Arguments
@@ -72,9 +72,9 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.StringLength(string=self, label=f"{self.node_chain_label}.length")
-            ```
+                    from geondes import nodes
+                    nodes.StringLength(string=self, label=f"{self.node_chain_label}.length")
+                    ```
     
 
         Returns
@@ -99,8 +99,8 @@ class String(dsock.String):
         node ref Switch </sub>
         
         ```python
-        v = string.switch(switch0, true)
-        ```
+                v = string.switch(switch0, true)
+                ```
     
 
         Arguments
@@ -118,9 +118,9 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING')
-            ```
+                    from geondes import nodes
+                    nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING')
+                    ```
     
 
         Returns
@@ -139,8 +139,8 @@ class String(dsock.String):
         node ref Compare </sub>
         
         ```python
-        v = string.element(b)
-        ```
+                v = string.element(b)
+                ```
     
 
         Arguments
@@ -159,9 +159,9 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT')
-            ```
+                    from geondes import nodes
+                    nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT')
+                    ```
     
 
         Returns
@@ -180,8 +180,8 @@ class String(dsock.String):
         node ref Compare </sub>
         
         ```python
-        v = string.length(b)
-        ```
+                v = string.length(b)
+                ```
     
 
         Arguments
@@ -200,9 +200,9 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH')
-            ```
+                    from geondes import nodes
+                    nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH')
+                    ```
     
 
         Returns
@@ -221,8 +221,8 @@ class String(dsock.String):
         node ref Compare </sub>
         
         ```python
-        v = string.average(b)
-        ```
+                v = string.average(b)
+                ```
     
 
         Arguments
@@ -241,9 +241,9 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE')
-            ```
+                    from geondes import nodes
+                    nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE')
+                    ```
     
 
         Returns
@@ -262,8 +262,8 @@ class String(dsock.String):
         node ref Compare </sub>
         
         ```python
-        v = string.dot_product(b)
-        ```
+                v = string.dot_product(b)
+                ```
     
 
         Arguments
@@ -282,9 +282,9 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT')
-            ```
+                    from geondes import nodes
+                    nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT')
+                    ```
     
 
         Returns
@@ -303,8 +303,8 @@ class String(dsock.String):
         node ref Compare </sub>
         
         ```python
-        v = string.direction(b)
-        ```
+                v = string.direction(b)
+                ```
     
 
         Arguments
@@ -323,9 +323,9 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION')
-            ```
+                    from geondes import nodes
+                    nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION')
+                    ```
     
 
         Returns
@@ -344,8 +344,8 @@ class String(dsock.String):
         node ref Join Strings </sub>
         
         ```python
-        v = string.join(strings_1, strings_2, strings_3, delimiter)
-        ```
+                v = string.join(strings_1, strings_2, strings_3, delimiter)
+                ```
     
 
         Arguments
@@ -361,9 +361,9 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.JoinStrings(self, *strings, delimiter=delimiter)
-            ```
+                    from geondes import nodes
+                    nodes.JoinStrings(self, *strings, delimiter=delimiter)
+                    ```
     
 
         Returns
@@ -382,8 +382,8 @@ class String(dsock.String):
         node ref Replace String </sub>
         
         ```python
-        v = string.replace(find, replace)
-        ```
+                v = string.replace(find, replace)
+                ```
     
 
         Arguments
@@ -400,9 +400,9 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.ReplaceString(string=self, find=find, replace=replace)
-            ```
+                    from geondes import nodes
+                    nodes.ReplaceString(string=self, find=find, replace=replace)
+                    ```
     
 
         Returns
@@ -421,8 +421,8 @@ class String(dsock.String):
         node ref Slice String </sub>
         
         ```python
-        v = string.slice(position, length)
-        ```
+                v = string.slice(position, length)
+                ```
     
 
         Arguments
@@ -439,9 +439,9 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SliceString(string=self, position=position, length=length)
-            ```
+                    from geondes import nodes
+                    nodes.SliceString(string=self, position=position, length=length)
+                    ```
     
 
         Returns
@@ -460,8 +460,8 @@ class String(dsock.String):
         node ref String to Curves </sub>
         
         ```python
-        v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_box_width, text_box_height, align_x, align_y, overflow, pivot_mode)
-        ```
+                v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_box_width, text_box_height, align_x, align_y, overflow, pivot_mode)
+                ```
     
 
         Arguments
@@ -486,9 +486,9 @@ class String(dsock.String):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
-            ```
+                    from geondes import nodes
+                    nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
+                    ```
     
 
         Returns

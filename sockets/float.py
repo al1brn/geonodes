@@ -101,8 +101,8 @@ class Float(dsock.Float):
         node ref Random Value </sub>
         
         ```python
-        v = Float.Random(min, max, ID, seed)
-        ```
+                v = Float.Random(min, max, ID, seed)
+                ```
     
 
         Arguments
@@ -121,9 +121,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT')
-            ```
+                    from geondes import nodes
+                    nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT')
+                    ```
     
 
         Returns
@@ -146,8 +146,8 @@ class Float(dsock.Float):
         node ref Accumulate Field </sub>
         
         ```python
-        v = float.accumulate_field(group_index, domain)
-        ```
+                v = float.accumulate_field(group_index, domain)
+                ```
     
 
         Arguments
@@ -165,9 +165,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT', domain=domain)
-            ```
+                    from geondes import nodes
+                    nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT', domain=domain)
+                    ```
     
 
         Returns
@@ -186,8 +186,8 @@ class Float(dsock.Float):
         node ref Attribute Statistic </sub>
         
         ```python
-        v = float.attribute_statistic(geometry, selection, domain)
-        ```
+                v = float.attribute_statistic(geometry, selection, domain)
+                ```
     
 
         Arguments
@@ -206,9 +206,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT', domain=domain)
-            ```
+                    from geondes import nodes
+                    nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT', domain=domain)
+                    ```
     
 
         Returns
@@ -227,8 +227,8 @@ class Float(dsock.Float):
         node ref Transfer Attribute </sub>
         
         ```python
-        v = float.transfer_attribute(source, source_position, index, domain, mapping)
-        ```
+                v = float.transfer_attribute(source, source_position, index, domain, mapping)
+                ```
     
 
         Arguments
@@ -249,9 +249,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
-            ```
+                    from geondes import nodes
+                    nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
+                    ```
     
 
         Returns
@@ -270,8 +270,8 @@ class Float(dsock.Float):
         node ref Capture Attribute </sub>
         
         ```python
-        v = float.capture_attribute(geometry, domain)
-        ```
+                v = float.capture_attribute(geometry, domain)
+                ```
     
 
         Arguments
@@ -289,9 +289,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT', domain=domain)
-            ```
+                    from geondes import nodes
+                    nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT', domain=domain)
+                    ```
     
 
         Returns
@@ -310,8 +310,8 @@ class Float(dsock.Float):
         node ref Field at Index </sub>
         
         ```python
-        v = float.field_at_index(index, domain)
-        ```
+                v = float.field_at_index(index, domain)
+                ```
     
 
         Arguments
@@ -329,9 +329,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT', domain=domain)
-            ```
+                    from geondes import nodes
+                    nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT', domain=domain)
+                    ```
     
 
         Returns
@@ -350,8 +350,8 @@ class Float(dsock.Float):
         node ref Raycast </sub>
         
         ```python
-        v = float.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
-        ```
+                v = float.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
+                ```
     
 
         Arguments
@@ -372,9 +372,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping)
-            ```
+                    from geondes import nodes
+                    nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping)
+                    ```
     
 
         Returns
@@ -393,8 +393,8 @@ class Float(dsock.Float):
         node ref Switch </sub>
         
         ```python
-        v = float.switch(switch0, true)
-        ```
+                v = float.switch(switch0, true)
+                ```
     
 
         Arguments
@@ -412,9 +412,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT')
-            ```
+                    from geondes import nodes
+                    nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT')
+                    ```
     
 
         Returns
@@ -433,8 +433,8 @@ class Float(dsock.Float):
         node ref Map Range </sub>
         
         ```python
-        v = float.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type)
-        ```
+                v = float.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type)
+                ```
     
 
         Arguments
@@ -456,9 +456,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type)
-            ```
+                    from geondes import nodes
+                    nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type)
+                    ```
     
 
         Returns
@@ -477,8 +477,8 @@ class Float(dsock.Float):
         node ref Compare </sub>
         
         ```python
-        v = float.less_than(b)
-        ```
+                v = float.less_than(b)
+                ```
     
 
         Arguments
@@ -497,9 +497,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN')
-            ```
+                    from geondes import nodes
+                    nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN')
+                    ```
     
 
         Returns
@@ -518,8 +518,8 @@ class Float(dsock.Float):
         node ref Compare </sub>
         
         ```python
-        v = float.less_equal(b)
-        ```
+                v = float.less_equal(b)
+                ```
     
 
         Arguments
@@ -538,9 +538,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL')
-            ```
+                    from geondes import nodes
+                    nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL')
+                    ```
     
 
         Returns
@@ -559,8 +559,8 @@ class Float(dsock.Float):
         node ref Compare </sub>
         
         ```python
-        v = float.greater_than(b)
-        ```
+                v = float.greater_than(b)
+                ```
     
 
         Arguments
@@ -579,9 +579,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
-            ```
+                    from geondes import nodes
+                    nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+                    ```
     
 
         Returns
@@ -600,8 +600,8 @@ class Float(dsock.Float):
         node ref Compare </sub>
         
         ```python
-        v = float.greater_equal(b)
-        ```
+                v = float.greater_equal(b)
+                ```
     
 
         Arguments
@@ -620,9 +620,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL')
-            ```
+                    from geondes import nodes
+                    nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL')
+                    ```
     
 
         Returns
@@ -641,8 +641,8 @@ class Float(dsock.Float):
         node ref Compare </sub>
         
         ```python
-        v = float.equal(b, epsilon)
-        ```
+                v = float.equal(b, epsilon)
+                ```
     
 
         Arguments
@@ -662,9 +662,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL')
-            ```
+                    from geondes import nodes
+                    nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL')
+                    ```
     
 
         Returns
@@ -683,8 +683,8 @@ class Float(dsock.Float):
         node ref Compare </sub>
         
         ```python
-        v = float.not_equal(b, epsilon)
-        ```
+                v = float.not_equal(b, epsilon)
+                ```
     
 
         Arguments
@@ -704,9 +704,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL')
-            ```
+                    from geondes import nodes
+                    nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL')
+                    ```
     
 
         Returns
@@ -725,8 +725,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.add(value1)
-        ```
+                v = float.add(value1)
+                ```
     
 
         Arguments
@@ -743,9 +743,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='ADD')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='ADD')
+                    ```
     
 
         Returns
@@ -764,8 +764,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.subtract(value1)
-        ```
+                v = float.subtract(value1)
+                ```
     
 
         Arguments
@@ -782,9 +782,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
+                    ```
     
 
         Returns
@@ -803,8 +803,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.multiply(value1)
-        ```
+                v = float.multiply(value1)
+                ```
     
 
         Arguments
@@ -821,9 +821,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
+                    ```
     
 
         Returns
@@ -842,8 +842,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.divide(value1)
-        ```
+                v = float.divide(value1)
+                ```
     
 
         Arguments
@@ -860,9 +860,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='DIVIDE')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='DIVIDE')
+                    ```
     
 
         Returns
@@ -881,8 +881,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.multiply_add(value1, value2)
-        ```
+                v = float.multiply_add(value1, value2)
+                ```
     
 
         Arguments
@@ -900,9 +900,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD')
+                    ```
     
 
         Returns
@@ -921,8 +921,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.pow(value1)
-        ```
+                v = float.pow(value1)
+                ```
     
 
         Arguments
@@ -939,9 +939,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='POWER')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='POWER')
+                    ```
     
 
         Returns
@@ -960,8 +960,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.log(value1)
-        ```
+                v = float.log(value1)
+                ```
     
 
         Arguments
@@ -978,9 +978,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
+                    ```
     
 
         Returns
@@ -999,8 +999,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.sqrt()
-        ```
+                v = float.sqrt()
+                ```
     
 
         Arguments
@@ -1016,9 +1016,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='SQRT')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='SQRT')
+                    ```
     
 
         Returns
@@ -1037,8 +1037,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.inverse_sqrt()
-        ```
+                v = float.inverse_sqrt()
+                ```
     
 
         Arguments
@@ -1054,9 +1054,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='INVERSE_SQRT')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='INVERSE_SQRT')
+                    ```
     
 
         Returns
@@ -1075,8 +1075,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.abs()
-        ```
+                v = float.abs()
+                ```
     
 
         Arguments
@@ -1092,9 +1092,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='ABSOLUTE')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='ABSOLUTE')
+                    ```
     
 
         Returns
@@ -1113,8 +1113,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.exp()
-        ```
+                v = float.exp()
+                ```
     
 
         Arguments
@@ -1130,9 +1130,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='EXPONENT')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='EXPONENT')
+                    ```
     
 
         Returns
@@ -1151,8 +1151,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.min(value1)
-        ```
+                v = float.min(value1)
+                ```
     
 
         Arguments
@@ -1169,9 +1169,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='MINIMUM')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='MINIMUM')
+                    ```
     
 
         Returns
@@ -1190,8 +1190,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.max(value1)
-        ```
+                v = float.max(value1)
+                ```
     
 
         Arguments
@@ -1208,9 +1208,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
+                    ```
     
 
         Returns
@@ -1229,8 +1229,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.less_than(value1)
-        ```
+                v = float.less_than(value1)
+                ```
     
 
         Arguments
@@ -1247,9 +1247,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
+                    ```
     
 
         Returns
@@ -1268,8 +1268,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.greater_than(value1)
-        ```
+                v = float.greater_than(value1)
+                ```
     
 
         Arguments
@@ -1286,9 +1286,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
+                    ```
     
 
         Returns
@@ -1307,8 +1307,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.sign()
-        ```
+                v = float.sign()
+                ```
     
 
         Arguments
@@ -1324,9 +1324,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='SIGN')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='SIGN')
+                    ```
     
 
         Returns
@@ -1345,8 +1345,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.compare(value1, value2)
-        ```
+                v = float.compare(value1, value2)
+                ```
     
 
         Arguments
@@ -1364,9 +1364,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE')
+                    ```
     
 
         Returns
@@ -1385,8 +1385,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.smooth_min(value1, value2)
-        ```
+                v = float.smooth_min(value1, value2)
+                ```
     
 
         Arguments
@@ -1404,9 +1404,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN')
+                    ```
     
 
         Returns
@@ -1425,8 +1425,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.smooth_max(value1, value2)
-        ```
+                v = float.smooth_max(value1, value2)
+                ```
     
 
         Arguments
@@ -1444,9 +1444,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX')
+                    ```
     
 
         Returns
@@ -1465,8 +1465,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.round()
-        ```
+                v = float.round()
+                ```
     
 
         Arguments
@@ -1482,9 +1482,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='ROUND')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='ROUND')
+                    ```
     
 
         Returns
@@ -1503,8 +1503,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.floor()
-        ```
+                v = float.floor()
+                ```
     
 
         Arguments
@@ -1520,9 +1520,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='FLOOR')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='FLOOR')
+                    ```
     
 
         Returns
@@ -1541,8 +1541,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.ceil()
-        ```
+                v = float.ceil()
+                ```
     
 
         Arguments
@@ -1558,9 +1558,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='CEIL')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='CEIL')
+                    ```
     
 
         Returns
@@ -1579,8 +1579,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.trunc()
-        ```
+                v = float.trunc()
+                ```
     
 
         Arguments
@@ -1596,9 +1596,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='TRUNC')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='TRUNC')
+                    ```
     
 
         Returns
@@ -1617,8 +1617,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.fract()
-        ```
+                v = float.fract()
+                ```
     
 
         Arguments
@@ -1634,9 +1634,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='FRACT')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='FRACT')
+                    ```
     
 
         Returns
@@ -1655,8 +1655,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.modulo(value1)
-        ```
+                v = float.modulo(value1)
+                ```
     
 
         Arguments
@@ -1673,9 +1673,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='MODULO')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='MODULO')
+                    ```
     
 
         Returns
@@ -1694,8 +1694,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.wrap(value1, value2)
-        ```
+                v = float.wrap(value1, value2)
+                ```
     
 
         Arguments
@@ -1713,9 +1713,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP')
+                    ```
     
 
         Returns
@@ -1734,8 +1734,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.snap(value1)
-        ```
+                v = float.snap(value1)
+                ```
     
 
         Arguments
@@ -1752,9 +1752,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='SNAP')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='SNAP')
+                    ```
     
 
         Returns
@@ -1773,8 +1773,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.pingpong(value1)
-        ```
+                v = float.pingpong(value1)
+                ```
     
 
         Arguments
@@ -1791,9 +1791,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='PINGPONG')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='PINGPONG')
+                    ```
     
 
         Returns
@@ -1812,8 +1812,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.sin()
-        ```
+                v = float.sin()
+                ```
     
 
         Arguments
@@ -1829,9 +1829,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='SINE')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='SINE')
+                    ```
     
 
         Returns
@@ -1850,8 +1850,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.cos()
-        ```
+                v = float.cos()
+                ```
     
 
         Arguments
@@ -1867,9 +1867,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='COSINE')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='COSINE')
+                    ```
     
 
         Returns
@@ -1888,8 +1888,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.tan()
-        ```
+                v = float.tan()
+                ```
     
 
         Arguments
@@ -1905,9 +1905,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='TANGENT')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='TANGENT')
+                    ```
     
 
         Returns
@@ -1926,8 +1926,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.arcsin()
-        ```
+                v = float.arcsin()
+                ```
     
 
         Arguments
@@ -1943,9 +1943,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='ARCSINE')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='ARCSINE')
+                    ```
     
 
         Returns
@@ -1964,8 +1964,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.arccos()
-        ```
+                v = float.arccos()
+                ```
     
 
         Arguments
@@ -1981,9 +1981,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='ARCCOSINE')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='ARCCOSINE')
+                    ```
     
 
         Returns
@@ -2002,8 +2002,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.arctan()
-        ```
+                v = float.arctan()
+                ```
     
 
         Arguments
@@ -2019,9 +2019,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='ARCTANGENT')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='ARCTANGENT')
+                    ```
     
 
         Returns
@@ -2040,8 +2040,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.arctan2(value1)
-        ```
+                v = float.arctan2(value1)
+                ```
     
 
         Arguments
@@ -2058,9 +2058,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
+                    ```
     
 
         Returns
@@ -2079,8 +2079,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.sinh()
-        ```
+                v = float.sinh()
+                ```
     
 
         Arguments
@@ -2096,9 +2096,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='SINH')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='SINH')
+                    ```
     
 
         Returns
@@ -2117,8 +2117,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.cosh()
-        ```
+                v = float.cosh()
+                ```
     
 
         Arguments
@@ -2134,9 +2134,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='COSH')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='COSH')
+                    ```
     
 
         Returns
@@ -2155,8 +2155,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.tanh()
-        ```
+                v = float.tanh()
+                ```
     
 
         Arguments
@@ -2172,9 +2172,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='TANH')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='TANH')
+                    ```
     
 
         Returns
@@ -2193,8 +2193,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.radians()
-        ```
+                v = float.radians()
+                ```
     
 
         Arguments
@@ -2210,9 +2210,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='RADIANS')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='RADIANS')
+                    ```
     
 
         Returns
@@ -2231,8 +2231,8 @@ class Float(dsock.Float):
         node ref Math </sub>
         
         ```python
-        v = float.degrees()
-        ```
+                v = float.degrees()
+                ```
     
 
         Arguments
@@ -2248,9 +2248,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='DEGREES')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='DEGREES')
+                    ```
     
 
         Returns
@@ -2269,8 +2269,8 @@ class Float(dsock.Float):
         node ref Float to Integer </sub>
         
         ```python
-        v = float.to_integer(rounding_mode)
-        ```
+                v = float.to_integer(rounding_mode)
+                ```
     
 
         Arguments
@@ -2286,9 +2286,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.FloatToInteger(float=self, rounding_mode=rounding_mode)
-            ```
+                    from geondes import nodes
+                    nodes.FloatToInteger(float=self, rounding_mode=rounding_mode)
+                    ```
     
 
         Returns
@@ -2307,8 +2307,8 @@ class Float(dsock.Float):
         node ref Value to String </sub>
         
         ```python
-        v = float.to_string(decimals)
-        ```
+                v = float.to_string(decimals)
+                ```
     
 
         Arguments
@@ -2324,9 +2324,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.ValueToString(value=self, decimals=decimals)
-            ```
+                    from geondes import nodes
+                    nodes.ValueToString(value=self, decimals=decimals)
+                    ```
     
 
         Returns
@@ -2345,8 +2345,8 @@ class Float(dsock.Float):
         node ref ColorRamp </sub>
         
         ```python
-        v = float.color_ramp()
-        ```
+                v = float.color_ramp()
+                ```
     
 
         Arguments
@@ -2361,9 +2361,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Colorramp(fac=self)
-            ```
+                    from geondes import nodes
+                    nodes.Colorramp(fac=self)
+                    ```
     
 
         Returns
@@ -2382,8 +2382,8 @@ class Float(dsock.Float):
         node ref Float Curve </sub>
         
         ```python
-        v = float.curve(factor)
-        ```
+                v = float.curve(factor)
+                ```
     
 
         Arguments
@@ -2399,9 +2399,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.FloatCurve(value=self, factor=factor)
-            ```
+                    from geondes import nodes
+                    nodes.FloatCurve(value=self, factor=factor)
+                    ```
     
 
         Returns
@@ -2420,8 +2420,8 @@ class Float(dsock.Float):
         node ref Clamp </sub>
         
         ```python
-        v = float.clamp(min, max, clamp_type)
-        ```
+                v = float.clamp(min, max, clamp_type)
+                ```
     
 
         Arguments
@@ -2439,9 +2439,9 @@ class Float(dsock.Float):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type)
-            ```
+                    from geondes import nodes
+                    nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type)
+                    ```
     
 
         Returns

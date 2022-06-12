@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.GeometryProximity(target=None, source_position=None, target_element='FACES', label=None)
-```
+        from geonodes import nodes
+        node = nodes.GeometryProximity(target=None, source_position=None, target_element='FACES', label=None)
+        ```
 
 
 

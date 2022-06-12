@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT', label=None)
-```
+        from geonodes import nodes
+        node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT', label=None)
+        ```
 
 
 

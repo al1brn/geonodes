@@ -8,8 +8,8 @@ the associated Geometry Node. In the following example, we create a Node
 supposingly have one single input socket named "geometry"
 
 ```python
-my_node = Node(geometry=value, parameter='PARAM')
-```
+    my_node = Node(geometry=value, parameter='PARAM')
+    ```
 
 ## Nodes naming convention
 

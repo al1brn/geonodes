@@ -69,8 +69,8 @@ class Curve(gn.Spline):
         node ref Bezier Segment </sub>
         
         ```python
-        v = Curve.BezierSegment(resolution, start, start_handle, end_handle, end, mode)
-        ```
+                v = Curve.BezierSegment(resolution, start, start_handle, end_handle, end, mode)
+                ```
     
 
         Arguments
@@ -90,9 +90,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode)
+                    ```
     
 
         Returns
@@ -112,8 +112,8 @@ class Curve(gn.Spline):
         node ref Curve Circle </sub>
         
         ```python
-        v = Curve.Circle(resolution, point_1, point_2, point_3, radius, mode)
-        ```
+                v = Curve.Circle(resolution, point_1, point_2, point_3, radius, mode)
+                ```
     
 
         Arguments
@@ -133,9 +133,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=radius, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=radius, mode=mode)
+                    ```
     
 
         Returns
@@ -155,8 +155,8 @@ class Curve(gn.Spline):
         node ref Curve Line </sub>
         
         ```python
-        v = Curve.Line(start, end, direction, length, mode)
-        ```
+                v = Curve.Line(start, end, direction, length, mode)
+                ```
     
 
         Arguments
@@ -175,9 +175,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.CurveLine(start=start, end=end, direction=direction, length=length, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.CurveLine(start=start, end=end, direction=direction, length=length, mode=mode)
+                    ```
     
 
         Returns
@@ -197,8 +197,8 @@ class Curve(gn.Spline):
         node ref Quadrilateral </sub>
         
         ```python
-        v = Curve.Quadrilateral(width, height, bottom_width, top_width, offset, bottom_height, top_height, point_1, point_2, point_3, point_4, mode)
-        ```
+                v = Curve.Quadrilateral(width, height, bottom_width, top_width, offset, bottom_height, top_height, point_1, point_2, point_3, point_4, mode)
+                ```
     
 
         Arguments
@@ -224,9 +224,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width, offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width, offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode)
+                    ```
     
 
         Returns
@@ -246,8 +246,8 @@ class Curve(gn.Spline):
         node ref Quadratic Bezier </sub>
         
         ```python
-        v = Curve.QuadraticBezier(resolution, start, middle, end)
-        ```
+                v = Curve.QuadraticBezier(resolution, start, middle, end)
+                ```
     
 
         Arguments
@@ -265,9 +265,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.QuadraticBezier(resolution=resolution, start=start, middle=middle, end=end)
-            ```
+                    from geondes import nodes
+                    nodes.QuadraticBezier(resolution=resolution, start=start, middle=middle, end=end)
+                    ```
     
 
         Returns
@@ -287,8 +287,8 @@ class Curve(gn.Spline):
         node ref Star </sub>
         
         ```python
-        v = Curve.Star(points, inner_radius, outer_radius, twist)
-        ```
+                v = Curve.Star(points, inner_radius, outer_radius, twist)
+                ```
     
 
         Arguments
@@ -306,9 +306,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Star(points=points, inner_radius=inner_radius, outer_radius=outer_radius, twist=twist)
-            ```
+                    from geondes import nodes
+                    nodes.Star(points=points, inner_radius=inner_radius, outer_radius=outer_radius, twist=twist)
+                    ```
     
 
         Returns
@@ -328,8 +328,8 @@ class Curve(gn.Spline):
         node ref Spiral </sub>
         
         ```python
-        v = Curve.Spiral(resolution, rotations, start_radius, end_radius, height, reverse)
-        ```
+                v = Curve.Spiral(resolution, rotations, start_radius, end_radius, height, reverse)
+                ```
     
 
         Arguments
@@ -349,9 +349,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Spiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius, height=height, reverse=reverse)
-            ```
+                    from geondes import nodes
+                    nodes.Spiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius, height=height, reverse=reverse)
+                    ```
     
 
         Returns
@@ -371,8 +371,8 @@ class Curve(gn.Spline):
         node ref Arc </sub>
         
         ```python
-        v = Curve.ArcFromRadius(resolution, radius, start_angle, sweep_angle, connect_center, invert_arc)
-        ```
+                v = Curve.ArcFromRadius(resolution, radius, start_angle, sweep_angle, connect_center, invert_arc)
+                ```
     
 
         Arguments
@@ -393,9 +393,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Arc(resolution=resolution, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle, connect_center=connect_center, invert_arc=invert_arc, mode='RADIUS')
-            ```
+                    from geondes import nodes
+                    nodes.Arc(resolution=resolution, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle, connect_center=connect_center, invert_arc=invert_arc, mode='RADIUS')
+                    ```
     
 
         Returns
@@ -419,8 +419,8 @@ class Curve(gn.Spline):
         node ref Arc </sub>
         
         ```python
-        v = Curve.ArcFromPoints(resolution, start, middle, end, offset_angle, connect_center, invert_arc)
-        ```
+                v = Curve.ArcFromPoints(resolution, start, middle, end, offset_angle, connect_center, invert_arc)
+                ```
     
 
         Arguments
@@ -442,9 +442,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, offset_angle=offset_angle, connect_center=connect_center, invert_arc=invert_arc, mode='POINTS')
-            ```
+                    from geondes import nodes
+                    nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, offset_angle=offset_angle, connect_center=connect_center, invert_arc=invert_arc, mode='POINTS')
+                    ```
     
 
         Returns
@@ -467,8 +467,8 @@ class Curve(gn.Spline):
         node ref Set Handle Type </sub>
         
         ```python
-        v = curve.set_handles(selection, handle_type, mode)
-        ```
+                v = curve.set_handles(selection, handle_type, mode)
+                ```
     
 
         Arguments
@@ -486,9 +486,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SetHandleType(curve=self, selection=selection, handle_type=handle_type, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.SetHandleType(curve=self, selection=selection, handle_type=handle_type, mode=mode)
+                    ```
     
 
         Returns
@@ -507,8 +507,8 @@ class Curve(gn.Spline):
         node ref Set Spline Type </sub>
         
         ```python
-        v = curve.set_spline_type(selection, spline_type)
-        ```
+                v = curve.set_spline_type(selection, spline_type)
+                ```
     
 
         Arguments
@@ -525,9 +525,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_type)
-            ```
+                    from geondes import nodes
+                    nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_type)
+                    ```
     
 
         Returns
@@ -546,8 +546,8 @@ class Curve(gn.Spline):
         node ref Fill Curve </sub>
         
         ```python
-        v = curve.fill(mode)
-        ```
+                v = curve.fill(mode)
+                ```
     
 
         Arguments
@@ -563,9 +563,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.FillCurve(curve=self, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.FillCurve(curve=self, mode=mode)
+                    ```
     
 
         Returns
@@ -584,8 +584,8 @@ class Curve(gn.Spline):
         node ref Fillet Curve </sub>
         
         ```python
-        v = curve.fillet(count, radius, limit_radius, mode)
-        ```
+                v = curve.fillet(count, radius, limit_radius, mode)
+                ```
     
 
         Arguments
@@ -604,9 +604,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode=mode)
+                    ```
     
 
         Returns
@@ -625,8 +625,8 @@ class Curve(gn.Spline):
         node ref Resample Curve </sub>
         
         ```python
-        v = curve.resample(selection, count, length, mode)
-        ```
+                v = curve.resample(selection, count, length, mode)
+                ```
     
 
         Arguments
@@ -645,9 +645,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.ResampleCurve(curve=self, selection=selection, count=count, length=length, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.ResampleCurve(curve=self, selection=selection, count=count, length=length, mode=mode)
+                    ```
     
 
         Returns
@@ -666,8 +666,8 @@ class Curve(gn.Spline):
         node ref Reverse Curve </sub>
         
         ```python
-        v = curve.reverse(selection)
-        ```
+                v = curve.reverse(selection)
+                ```
     
 
         Arguments
@@ -683,9 +683,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.ReverseCurve(curve=self, selection=selection)
-            ```
+                    from geondes import nodes
+                    nodes.ReverseCurve(curve=self, selection=selection)
+                    ```
     
 
         Returns
@@ -704,8 +704,8 @@ class Curve(gn.Spline):
         node ref Set Handle Positions </sub>
         
         ```python
-        v = curve.set_handle_positions(selection, position, offset, mode)
-        ```
+                v = curve.set_handle_positions(selection, position, offset, mode)
+                ```
     
 
         Arguments
@@ -724,9 +724,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SetHandlePositions(curve=self, selection=selection, position=position, offset=offset, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.SetHandlePositions(curve=self, selection=selection, position=position, offset=offset, mode=mode)
+                    ```
     
 
         Returns
@@ -745,8 +745,8 @@ class Curve(gn.Spline):
         node ref Set Curve Radius </sub>
         
         ```python
-        v = curve.set_radius(selection, radius)
-        ```
+                v = curve.set_radius(selection, radius)
+                ```
     
 
         Arguments
@@ -763,9 +763,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SetCurveRadius(curve=self, selection=selection, radius=radius)
-            ```
+                    from geondes import nodes
+                    nodes.SetCurveRadius(curve=self, selection=selection, radius=radius)
+                    ```
     
 
         Returns
@@ -784,8 +784,8 @@ class Curve(gn.Spline):
         node ref Set Curve Tilt </sub>
         
         ```python
-        v = curve.set_tilt(selection, tilt)
-        ```
+                v = curve.set_tilt(selection, tilt)
+                ```
     
 
         Arguments
@@ -802,9 +802,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SetCurveTilt(curve=self, selection=selection, tilt=tilt)
-            ```
+                    from geondes import nodes
+                    nodes.SetCurveTilt(curve=self, selection=selection, tilt=tilt)
+                    ```
     
 
         Returns
@@ -823,8 +823,8 @@ class Curve(gn.Spline):
         node ref Subdivide Curve </sub>
         
         ```python
-        v = curve.subdivide(cuts)
-        ```
+                v = curve.subdivide(cuts)
+                ```
     
 
         Arguments
@@ -840,9 +840,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SubdivideCurve(curve=self, cuts=cuts)
-            ```
+                    from geondes import nodes
+                    nodes.SubdivideCurve(curve=self, cuts=cuts)
+                    ```
     
 
         Returns
@@ -861,8 +861,8 @@ class Curve(gn.Spline):
         node ref Trim Curve </sub>
         
         ```python
-        v = curve.trim(start0, end0, start1, end1, mode)
-        ```
+                v = curve.trim(start0, end0, start1, end1, mode)
+                ```
     
 
         Arguments
@@ -882,9 +882,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1=end1, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1=end1, mode=mode)
+                    ```
     
 
         Returns
@@ -903,8 +903,8 @@ class Curve(gn.Spline):
         node ref Curve to Mesh </sub>
         
         ```python
-        v = curve.to_mesh(profile_curve, fill_caps)
-        ```
+                v = curve.to_mesh(profile_curve, fill_caps)
+                ```
     
 
         Arguments
@@ -921,9 +921,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps)
-            ```
+                    from geondes import nodes
+                    nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps)
+                    ```
     
 
         Returns
@@ -942,8 +942,8 @@ class Curve(gn.Spline):
         node ref Curve to Points </sub>
         
         ```python
-        v = curve.to_points(count, length, mode)
-        ```
+                v = curve.to_points(count, length, mode)
+                ```
     
 
         Arguments
@@ -961,9 +961,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode)
+                    ```
     
 
         Returns
@@ -982,8 +982,8 @@ class Curve(gn.Spline):
         node ref Sample Curve </sub>
         
         ```python
-        v = curve.sample(factor, length, mode)
-        ```
+                v = curve.sample(factor, length, mode)
+                ```
     
 
         Arguments
@@ -1001,9 +1001,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode)
+                    ```
     
 
         Returns
@@ -1022,8 +1022,8 @@ class Curve(gn.Spline):
         node ref Curve Length </sub>
         
         ```python
-        v = curve.length()
-        ```
+                v = curve.length()
+                ```
     
 
         Arguments
@@ -1038,9 +1038,9 @@ class Curve(gn.Spline):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.CurveLength(curve=self)
-            ```
+                    from geondes import nodes
+                    nodes.CurveLength(curve=self)
+                    ```
     
 
         Returns

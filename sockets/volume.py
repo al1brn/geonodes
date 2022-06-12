@@ -37,8 +37,8 @@ class Volume(gn.Geometry):
         node ref Volume to Mesh </sub>
         
         ```python
-        v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_mode)
-        ```
+                v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_mode)
+                ```
     
 
         Arguments
@@ -58,9 +58,9 @@ class Volume(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode)
-            ```
+                    from geondes import nodes
+                    nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode)
+                    ```
     
 
         Returns

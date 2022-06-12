@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None, label=None)
-```
+        from geonodes import nodes
+        node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None, label=None)
+        ```
 
 
 

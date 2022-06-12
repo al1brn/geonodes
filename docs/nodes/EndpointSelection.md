@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.EndpointSelection(start_size=None, end_size=None, label=None)
-```
+        from geonodes import nodes
+        node = nodes.EndpointSelection(start_size=None, end_size=None, label=None)
+        ```
 
 
 

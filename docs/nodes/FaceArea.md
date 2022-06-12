@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.FaceArea(label=None)
-```
+        from geonodes import nodes
+        node = nodes.FaceArea(label=None)
+        ```
 
 
 

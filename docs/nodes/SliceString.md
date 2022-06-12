@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.SliceString(string=None, position=None, length=None, label=None)
-```
+        from geonodes import nodes
+        node = nodes.SliceString(string=None, position=None, length=None, label=None)
+        ```
 
 
 

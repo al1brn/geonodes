@@ -105,8 +105,8 @@ class Mesh(gn.Geometry):
         node ref Mesh Circle </sub>
         
         ```python
-        v = Mesh.Circle(vertices, radius, fill_type)
-        ```
+                v = Mesh.Circle(vertices, radius, fill_type)
+                ```
     
 
         Arguments
@@ -123,9 +123,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.MeshCircle(vertices=vertices, radius=radius, fill_type=fill_type)
-            ```
+                    from geondes import nodes
+                    nodes.MeshCircle(vertices=vertices, radius=radius, fill_type=fill_type)
+                    ```
     
 
         Returns
@@ -145,8 +145,8 @@ class Mesh(gn.Geometry):
         node ref Cone </sub>
         
         ```python
-        v = Mesh.Cone(vertices, side_segments, fill_segments, radius_top, radius_bottom, depth, fill_type)
-        ```
+                v = Mesh.Cone(vertices, side_segments, fill_segments, radius_top, radius_bottom, depth, fill_type)
+                ```
     
 
         Arguments
@@ -167,9 +167,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Cone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top, radius_bottom=radius_bottom, depth=depth, fill_type=fill_type)
-            ```
+                    from geondes import nodes
+                    nodes.Cone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top, radius_bottom=radius_bottom, depth=depth, fill_type=fill_type)
+                    ```
     
 
         Returns
@@ -189,8 +189,8 @@ class Mesh(gn.Geometry):
         node ref Cube </sub>
         
         ```python
-        v = Mesh.Cube(size, vertices_x, vertices_y, vertices_z)
-        ```
+                v = Mesh.Cube(size, vertices_x, vertices_y, vertices_z)
+                ```
     
 
         Arguments
@@ -208,9 +208,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Cube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, vertices_z=vertices_z)
-            ```
+                    from geondes import nodes
+                    nodes.Cube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, vertices_z=vertices_z)
+                    ```
     
 
         Returns
@@ -230,8 +230,8 @@ class Mesh(gn.Geometry):
         node ref Cylinder </sub>
         
         ```python
-        v = Mesh.Cylinder(vertices, side_segments, fill_segments, radius, depth, fill_type)
-        ```
+                v = Mesh.Cylinder(vertices, side_segments, fill_segments, radius, depth, fill_type)
+                ```
     
 
         Arguments
@@ -251,9 +251,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Cylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius, depth=depth, fill_type=fill_type)
-            ```
+                    from geondes import nodes
+                    nodes.Cylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius, depth=depth, fill_type=fill_type)
+                    ```
     
 
         Returns
@@ -273,8 +273,8 @@ class Mesh(gn.Geometry):
         node ref Grid </sub>
         
         ```python
-        v = Mesh.Grid(size_x, size_y, vertices_x, vertices_y)
-        ```
+                v = Mesh.Grid(size_x, size_y, vertices_x, vertices_y)
+                ```
     
 
         Arguments
@@ -292,9 +292,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y)
-            ```
+                    from geondes import nodes
+                    nodes.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y)
+                    ```
     
 
         Returns
@@ -314,8 +314,8 @@ class Mesh(gn.Geometry):
         node ref Ico Sphere </sub>
         
         ```python
-        v = Mesh.IcoSphere(radius, subdivisions)
-        ```
+                v = Mesh.IcoSphere(radius, subdivisions)
+                ```
     
 
         Arguments
@@ -331,9 +331,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.IcoSphere(radius=radius, subdivisions=subdivisions)
-            ```
+                    from geondes import nodes
+                    nodes.IcoSphere(radius=radius, subdivisions=subdivisions)
+                    ```
     
 
         Returns
@@ -353,8 +353,8 @@ class Mesh(gn.Geometry):
         node ref Mesh Line </sub>
         
         ```python
-        v = Mesh.Line(count, start_location, offset, count_mode, mode)
-        ```
+                v = Mesh.Line(count, start_location, offset, count_mode, mode)
+                ```
     
 
         Arguments
@@ -373,9 +373,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.MeshLine(count=count, start_location=start_location, offset=offset, count_mode=count_mode, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.MeshLine(count=count, start_location=start_location, offset=offset, count_mode=count_mode, mode=mode)
+                    ```
     
 
         Returns
@@ -395,8 +395,8 @@ class Mesh(gn.Geometry):
         node ref UV Sphere </sub>
         
         ```python
-        v = Mesh.UVSphere(segments, rings, radius)
-        ```
+                v = Mesh.UVSphere(segments, rings, radius)
+                ```
     
 
         Arguments
@@ -413,9 +413,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.UvSphere(segments=segments, rings=rings, radius=radius)
-            ```
+                    from geondes import nodes
+                    nodes.UvSphere(segments=segments, rings=rings, radius=radius)
+                    ```
     
 
         Returns
@@ -438,8 +438,8 @@ class Mesh(gn.Geometry):
         node ref Edge Angle </sub>
         
         ```python
-        v = mesh.capture_edge_angle(self, domain='EDGE')
-        ```
+                v = mesh.capture_edge_angle(self, domain='EDGE')
+                ```
     
 
         Arguments
@@ -455,9 +455,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeAngle()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeAngle()
+                    ```
     
 
         Returns
@@ -481,8 +481,8 @@ class Mesh(gn.Geometry):
         node ref Edge Neighbors </sub>
         
         ```python
-        v = mesh.capture_edge_neighbors(self, domain='EDGE')
-        ```
+                v = mesh.capture_edge_neighbors(self, domain='EDGE')
+                ```
     
 
         Arguments
@@ -498,9 +498,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeNeighbors()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeNeighbors()
+                    ```
     
 
         Returns
@@ -524,8 +524,8 @@ class Mesh(gn.Geometry):
         node ref Edge Vertices </sub>
         
         ```python
-        v = mesh.capture_edge_vertices(self, domain='EDGE')
-        ```
+                v = mesh.capture_edge_vertices(self, domain='EDGE')
+                ```
     
 
         Arguments
@@ -541,9 +541,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeVertices()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeVertices()
+                    ```
     
 
         Returns
@@ -567,8 +567,8 @@ class Mesh(gn.Geometry):
         node ref Face Area </sub>
         
         ```python
-        v = mesh.capture_face_area(self, domain='FACE')
-        ```
+                v = mesh.capture_face_area(self, domain='FACE')
+                ```
     
 
         Arguments
@@ -584,9 +584,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.FaceArea()
-            ```
+                    from geondes import nodes
+                    nodes.FaceArea()
+                    ```
     
 
         Returns
@@ -610,8 +610,8 @@ class Mesh(gn.Geometry):
         node ref Face Neighbors </sub>
         
         ```python
-        v = mesh.capture_face_neighbors(self, domain='FACE')
-        ```
+                v = mesh.capture_face_neighbors(self, domain='FACE')
+                ```
     
 
         Arguments
@@ -627,9 +627,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.FaceNeighbors()
-            ```
+                    from geondes import nodes
+                    nodes.FaceNeighbors()
+                    ```
     
 
         Returns
@@ -653,8 +653,8 @@ class Mesh(gn.Geometry):
         node ref Mesh Island </sub>
         
         ```python
-        v = mesh.capture_island(self, domain='POINT')
-        ```
+                v = mesh.capture_island(self, domain='POINT')
+                ```
     
 
         Arguments
@@ -670,9 +670,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.MeshIsland()
-            ```
+                    from geondes import nodes
+                    nodes.MeshIsland()
+                    ```
     
 
         Returns
@@ -696,8 +696,8 @@ class Mesh(gn.Geometry):
         node ref Is Shade Smooth </sub>
         
         ```python
-        v = mesh.capture_shade_smooth(self, domain='FACE')
-        ```
+                v = mesh.capture_shade_smooth(self, domain='FACE')
+                ```
     
 
         Arguments
@@ -713,9 +713,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.IsShadeSmooth()
-            ```
+                    from geondes import nodes
+                    nodes.IsShadeSmooth()
+                    ```
     
 
         Returns
@@ -739,8 +739,8 @@ class Mesh(gn.Geometry):
         node ref Vertex Neighbors </sub>
         
         ```python
-        v = mesh.capture_vertex_neighbors(self, domain='POINT')
-        ```
+                v = mesh.capture_vertex_neighbors(self, domain='POINT')
+                ```
     
 
         Arguments
@@ -756,9 +756,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.VertexNeighbors()
-            ```
+                    from geondes import nodes
+                    nodes.VertexNeighbors()
+                    ```
     
 
         Returns
@@ -782,8 +782,8 @@ class Mesh(gn.Geometry):
         node ref Material Index </sub>
         
         ```python
-        v = mesh.capture_material_index(self, domain='FACE')
-        ```
+                v = mesh.capture_material_index(self, domain='FACE')
+                ```
     
 
         Arguments
@@ -799,9 +799,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.MaterialIndex()
-            ```
+                    from geondes import nodes
+                    nodes.MaterialIndex()
+                    ```
     
 
         Returns
@@ -825,8 +825,8 @@ class Mesh(gn.Geometry):
         node ref Material Selection </sub>
         
         ```python
-        v = mesh.capture_material_selection(self, material, domain='FACE')
-        ```
+                v = mesh.capture_material_selection(self, material, domain='FACE')
+                ```
     
 
         Arguments
@@ -843,9 +843,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.MaterialSelection(material=material)
-            ```
+                    from geondes import nodes
+                    nodes.MaterialSelection(material=material)
+                    ```
     
 
         Returns
@@ -874,8 +874,8 @@ class Mesh(gn.Geometry):
         node ref Edge Angle </sub>
         
         ```python
-        v = mesh.face_ID(self)
-        ```
+                v = mesh.face_ID(self)
+                ```
     
 
         Arguments
@@ -890,9 +890,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeAngle()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeAngle()
+                    ```
     
 
         Returns
@@ -912,8 +912,8 @@ class Mesh(gn.Geometry):
         node ref Edge Angle </sub>
         
         ```python
-        v = mesh.egde_ID(self)
-        ```
+                v = mesh.egde_ID(self)
+                ```
     
 
         Arguments
@@ -928,9 +928,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeAngle()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeAngle()
+                    ```
     
 
         Returns
@@ -950,8 +950,8 @@ class Mesh(gn.Geometry):
         node ref Edge Angle </sub>
         
         ```python
-        v = mesh.corner_ID(self)
-        ```
+                v = mesh.corner_ID(self)
+                ```
     
 
         Arguments
@@ -966,9 +966,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeAngle()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeAngle()
+                    ```
     
 
         Returns
@@ -988,8 +988,8 @@ class Mesh(gn.Geometry):
         node ref Edge Angle </sub>
         
         ```python
-        v = mesh.face_index(self)
-        ```
+                v = mesh.face_index(self)
+                ```
     
 
         Arguments
@@ -1004,9 +1004,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeAngle()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeAngle()
+                    ```
     
 
         Returns
@@ -1026,8 +1026,8 @@ class Mesh(gn.Geometry):
         node ref Edge Angle </sub>
         
         ```python
-        v = mesh.egde_index(self)
-        ```
+                v = mesh.egde_index(self)
+                ```
     
 
         Arguments
@@ -1042,9 +1042,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeAngle()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeAngle()
+                    ```
     
 
         Returns
@@ -1064,8 +1064,8 @@ class Mesh(gn.Geometry):
         node ref Edge Angle </sub>
         
         ```python
-        v = mesh.corner_index(self)
-        ```
+                v = mesh.corner_index(self)
+                ```
     
 
         Arguments
@@ -1080,9 +1080,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeAngle()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeAngle()
+                    ```
     
 
         Returns
@@ -1102,8 +1102,8 @@ class Mesh(gn.Geometry):
         node ref Edge Angle </sub>
         
         ```python
-        v = mesh.face_position(self)
-        ```
+                v = mesh.face_position(self)
+                ```
     
 
         Arguments
@@ -1118,9 +1118,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeAngle()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeAngle()
+                    ```
     
 
         Returns
@@ -1140,8 +1140,8 @@ class Mesh(gn.Geometry):
         node ref Edge Angle </sub>
         
         ```python
-        v = mesh.egde_position(self)
-        ```
+                v = mesh.egde_position(self)
+                ```
     
 
         Arguments
@@ -1156,9 +1156,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeAngle()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeAngle()
+                    ```
     
 
         Returns
@@ -1178,8 +1178,8 @@ class Mesh(gn.Geometry):
         node ref Edge Angle </sub>
         
         ```python
-        v = mesh.corner_porision(self)
-        ```
+                v = mesh.corner_porision(self)
+                ```
     
 
         Arguments
@@ -1194,9 +1194,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeAngle()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeAngle()
+                    ```
     
 
         Returns
@@ -1216,8 +1216,8 @@ class Mesh(gn.Geometry):
         node ref Edge Angle </sub>
         
         ```python
-        v = mesh.edge_angle(self)
-        ```
+                v = mesh.edge_angle(self)
+                ```
     
 
         Arguments
@@ -1232,9 +1232,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeAngle()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeAngle()
+                    ```
     
 
         Returns
@@ -1254,8 +1254,8 @@ class Mesh(gn.Geometry):
         node ref Edge Angle </sub>
         
         ```python
-        v = mesh.edge_unsigned_angle(self)
-        ```
+                v = mesh.edge_unsigned_angle(self)
+                ```
     
 
         Arguments
@@ -1270,9 +1270,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeAngle()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeAngle()
+                    ```
     
 
         Returns
@@ -1292,8 +1292,8 @@ class Mesh(gn.Geometry):
         node ref Edge Neighbors </sub>
         
         ```python
-        v = mesh.edge_neighbors(self)
-        ```
+                v = mesh.edge_neighbors(self)
+                ```
     
 
         Arguments
@@ -1308,9 +1308,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeNeighbors()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeNeighbors()
+                    ```
     
 
         Returns
@@ -1330,8 +1330,8 @@ class Mesh(gn.Geometry):
         node ref Edge Vertices </sub>
         
         ```python
-        v = mesh.edge_vertices_index1(self)
-        ```
+                v = mesh.edge_vertices_index1(self)
+                ```
     
 
         Arguments
@@ -1346,9 +1346,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeVertices()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeVertices()
+                    ```
     
 
         Returns
@@ -1368,8 +1368,8 @@ class Mesh(gn.Geometry):
         node ref Edge Vertices </sub>
         
         ```python
-        v = mesh.edge_vertices_index2(self)
-        ```
+                v = mesh.edge_vertices_index2(self)
+                ```
     
 
         Arguments
@@ -1384,9 +1384,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeVertices()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeVertices()
+                    ```
     
 
         Returns
@@ -1406,8 +1406,8 @@ class Mesh(gn.Geometry):
         node ref Edge Vertices </sub>
         
         ```python
-        v = mesh.edge_vertices_position1(self)
-        ```
+                v = mesh.edge_vertices_position1(self)
+                ```
     
 
         Arguments
@@ -1422,9 +1422,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeVertices()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeVertices()
+                    ```
     
 
         Returns
@@ -1444,8 +1444,8 @@ class Mesh(gn.Geometry):
         node ref Edge Vertices </sub>
         
         ```python
-        v = mesh.edge_vertices_position2(self)
-        ```
+                v = mesh.edge_vertices_position2(self)
+                ```
     
 
         Arguments
@@ -1460,9 +1460,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.EdgeVertices()
-            ```
+                    from geondes import nodes
+                    nodes.EdgeVertices()
+                    ```
     
 
         Returns
@@ -1482,8 +1482,8 @@ class Mesh(gn.Geometry):
         node ref Face Area </sub>
         
         ```python
-        v = mesh.face_area(self)
-        ```
+                v = mesh.face_area(self)
+                ```
     
 
         Arguments
@@ -1498,9 +1498,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.FaceArea()
-            ```
+                    from geondes import nodes
+                    nodes.FaceArea()
+                    ```
     
 
         Returns
@@ -1520,8 +1520,8 @@ class Mesh(gn.Geometry):
         node ref Face Neighbors </sub>
         
         ```python
-        v = mesh.face_neighbors_vertex_count(self)
-        ```
+                v = mesh.face_neighbors_vertex_count(self)
+                ```
     
 
         Arguments
@@ -1536,9 +1536,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.FaceNeighbors()
-            ```
+                    from geondes import nodes
+                    nodes.FaceNeighbors()
+                    ```
     
 
         Returns
@@ -1558,8 +1558,8 @@ class Mesh(gn.Geometry):
         node ref Face Neighbors </sub>
         
         ```python
-        v = mesh.face_neighbors_face_count(self)
-        ```
+                v = mesh.face_neighbors_face_count(self)
+                ```
     
 
         Arguments
@@ -1574,9 +1574,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.FaceNeighbors()
-            ```
+                    from geondes import nodes
+                    nodes.FaceNeighbors()
+                    ```
     
 
         Returns
@@ -1596,8 +1596,8 @@ class Mesh(gn.Geometry):
         node ref Mesh Island </sub>
         
         ```python
-        v = mesh.island(self)
-        ```
+                v = mesh.island(self)
+                ```
     
 
         Arguments
@@ -1612,9 +1612,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.MeshIsland()
-            ```
+                    from geondes import nodes
+                    nodes.MeshIsland()
+                    ```
     
 
         Returns
@@ -1634,8 +1634,8 @@ class Mesh(gn.Geometry):
         node ref Is Shade Smooth </sub>
         
         ```python
-        v = mesh.shade_smooth(self)
-        ```
+                v = mesh.shade_smooth(self)
+                ```
     
 
         Arguments
@@ -1650,9 +1650,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.IsShadeSmooth()
-            ```
+                    from geondes import nodes
+                    nodes.IsShadeSmooth()
+                    ```
     
 
         Returns
@@ -1672,8 +1672,8 @@ class Mesh(gn.Geometry):
         node ref Vertex Neighbors </sub>
         
         ```python
-        v = mesh.vertex_neighbors_vertex_count(self)
-        ```
+                v = mesh.vertex_neighbors_vertex_count(self)
+                ```
     
 
         Arguments
@@ -1688,9 +1688,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.VertexNeighbors()
-            ```
+                    from geondes import nodes
+                    nodes.VertexNeighbors()
+                    ```
     
 
         Returns
@@ -1710,8 +1710,8 @@ class Mesh(gn.Geometry):
         node ref Vertex Neighbors </sub>
         
         ```python
-        v = mesh.vertex_neighbors_face_count(self)
-        ```
+                v = mesh.vertex_neighbors_face_count(self)
+                ```
     
 
         Arguments
@@ -1726,9 +1726,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.VertexNeighbors()
-            ```
+                    from geondes import nodes
+                    nodes.VertexNeighbors()
+                    ```
     
 
         Returns
@@ -1748,8 +1748,8 @@ class Mesh(gn.Geometry):
         node ref Material Index </sub>
         
         ```python
-        v = mesh.material_index(self)
-        ```
+                v = mesh.material_index(self)
+                ```
     
 
         Arguments
@@ -1764,9 +1764,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.MaterialIndex()
-            ```
+                    from geondes import nodes
+                    nodes.MaterialIndex()
+                    ```
     
 
         Returns
@@ -1786,8 +1786,8 @@ class Mesh(gn.Geometry):
         node ref Material Selection </sub>
         
         ```python
-        v = mesh.material_selection(self, material)
-        ```
+                v = mesh.material_selection(self, material)
+                ```
     
 
         Arguments
@@ -1803,9 +1803,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.MaterialSelection(material=material)
-            ```
+                    from geondes import nodes
+                    nodes.MaterialSelection(material=material)
+                    ```
     
 
         Returns
@@ -1828,8 +1828,8 @@ class Mesh(gn.Geometry):
         node ref Mesh Boolean </sub>
         
         ```python
-        v = mesh.intersect(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
-        ```
+                v = mesh.intersect(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
+                ```
     
 
         Arguments
@@ -1847,9 +1847,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT')
-            ```
+                    from geondes import nodes
+                    nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT')
+                    ```
     
 
         Returns
@@ -1868,8 +1868,8 @@ class Mesh(gn.Geometry):
         node ref Mesh Boolean </sub>
         
         ```python
-        v = mesh.union(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
-        ```
+                v = mesh.union(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
+                ```
     
 
         Arguments
@@ -1887,9 +1887,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION')
-            ```
+                    from geondes import nodes
+                    nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION')
+                    ```
     
 
         Returns
@@ -1908,8 +1908,8 @@ class Mesh(gn.Geometry):
         node ref Mesh Boolean </sub>
         
         ```python
-        v = mesh.difference(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
-        ```
+                v = mesh.difference(mesh_2_1, mesh_2_2, mesh_2_3, self_intersection, hole_tolerant)
+                ```
     
 
         Arguments
@@ -1928,9 +1928,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE')
-            ```
+                    from geondes import nodes
+                    nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE')
+                    ```
     
 
         Returns
@@ -1949,8 +1949,8 @@ class Mesh(gn.Geometry):
         node ref Split Edges </sub>
         
         ```python
-        v = mesh.split_edges(selection)
-        ```
+                v = mesh.split_edges(selection)
+                ```
     
 
         Arguments
@@ -1966,9 +1966,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SplitEdges(mesh=self, selection=selection)
-            ```
+                    from geondes import nodes
+                    nodes.SplitEdges(mesh=self, selection=selection)
+                    ```
     
 
         Returns
@@ -1987,8 +1987,8 @@ class Mesh(gn.Geometry):
         node ref Subdivide Mesh </sub>
         
         ```python
-        v = mesh.subdivide(level)
-        ```
+                v = mesh.subdivide(level)
+                ```
     
 
         Arguments
@@ -2004,9 +2004,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SubdivideMesh(mesh=self, level=level)
-            ```
+                    from geondes import nodes
+                    nodes.SubdivideMesh(mesh=self, level=level)
+                    ```
     
 
         Returns
@@ -2025,8 +2025,8 @@ class Mesh(gn.Geometry):
         node ref Subdivision Surface </sub>
         
         ```python
-        v = mesh.subdivision_surface(level, crease, boundary_smooth, uv_smooth)
-        ```
+                v = mesh.subdivision_surface(level, crease, boundary_smooth, uv_smooth)
+                ```
     
 
         Arguments
@@ -2045,9 +2045,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth)
-            ```
+                    from geondes import nodes
+                    nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth)
+                    ```
     
 
         Returns
@@ -2066,8 +2066,8 @@ class Mesh(gn.Geometry):
         node ref Triangulate </sub>
         
         ```python
-        v = mesh.triangulate(selection, minimum_vertices, ngon_method, quad_method)
-        ```
+                v = mesh.triangulate(selection, minimum_vertices, ngon_method, quad_method)
+                ```
     
 
         Arguments
@@ -2086,9 +2086,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method, quad_method=quad_method)
-            ```
+                    from geondes import nodes
+                    nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method, quad_method=quad_method)
+                    ```
     
 
         Returns
@@ -2107,8 +2107,8 @@ class Mesh(gn.Geometry):
         node ref Dual Mesh </sub>
         
         ```python
-        v = mesh.dual(keep_boundaries)
-        ```
+                v = mesh.dual(keep_boundaries)
+                ```
     
 
         Arguments
@@ -2124,9 +2124,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.DualMesh(mesh=self, keep_boundaries=keep_boundaries)
-            ```
+                    from geondes import nodes
+                    nodes.DualMesh(mesh=self, keep_boundaries=keep_boundaries)
+                    ```
     
 
         Returns
@@ -2145,8 +2145,8 @@ class Mesh(gn.Geometry):
         node ref Flip Faces </sub>
         
         ```python
-        v = mesh.flip_faces(selection)
-        ```
+                v = mesh.flip_faces(selection)
+                ```
     
 
         Arguments
@@ -2162,9 +2162,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.FlipFaces(mesh=self, selection=selection)
-            ```
+                    from geondes import nodes
+                    nodes.FlipFaces(mesh=self, selection=selection)
+                    ```
     
 
         Returns
@@ -2183,8 +2183,8 @@ class Mesh(gn.Geometry):
         node ref Extrude Mesh </sub>
         
         ```python
-        v = mesh.extrude(selection, offset, offset_scale, individual, mode)
-        ```
+                v = mesh.extrude(selection, offset, offset_scale, individual, mode)
+                ```
     
 
         Arguments
@@ -2204,9 +2204,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual, mode=mode)
+                    ```
     
 
         Returns
@@ -2225,8 +2225,8 @@ class Mesh(gn.Geometry):
         node ref Mesh to Curve </sub>
         
         ```python
-        v = mesh.to_curve(selection)
-        ```
+                v = mesh.to_curve(selection)
+                ```
     
 
         Arguments
@@ -2242,9 +2242,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.MeshToCurve(mesh=self, selection=selection)
-            ```
+                    from geondes import nodes
+                    nodes.MeshToCurve(mesh=self, selection=selection)
+                    ```
     
 
         Returns
@@ -2263,8 +2263,8 @@ class Mesh(gn.Geometry):
         node ref Mesh to Points </sub>
         
         ```python
-        v = mesh.to_points(selection, position, radius, mode)
-        ```
+                v = mesh.to_points(selection, position, radius, mode)
+                ```
     
 
         Arguments
@@ -2283,9 +2283,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.MeshToPoints(mesh=self, selection=selection, position=position, radius=radius, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.MeshToPoints(mesh=self, selection=selection, position=position, radius=radius, mode=mode)
+                    ```
     
 
         Returns
@@ -2304,8 +2304,8 @@ class Mesh(gn.Geometry):
         node ref Distribute Points on Faces </sub>
         
         ```python
-        v = mesh.distribute_points_on_faces(selection, distance_min, density_max, density, density_factor, seed, distribute_method)
-        ```
+                v = mesh.distribute_points_on_faces(selection, distance_min, density_max, density, density_factor, seed, distribute_method)
+                ```
     
 
         Arguments
@@ -2327,9 +2327,9 @@ class Mesh(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method)
-            ```
+                    from geondes import nodes
+                    nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method)
+                    ```
     
 
         Returns

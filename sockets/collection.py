@@ -38,8 +38,8 @@ class Collection(dsock.Collection):
         node ref Switch </sub>
         
         ```python
-        v = collection.switch(switch1, true)
-        ```
+                v = collection.switch(switch1, true)
+                ```
     
 
         Arguments
@@ -57,9 +57,9 @@ class Collection(dsock.Collection):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION')
-            ```
+                    from geondes import nodes
+                    nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION')
+                    ```
     
 
         Returns
@@ -78,8 +78,8 @@ class Collection(dsock.Collection):
         node ref Collection Info </sub>
         
         ```python
-        v = collection.info(separate_children, reset_children, transform_space)
-        ```
+                v = collection.info(separate_children, reset_children, transform_space)
+                ```
     
 
         Arguments
@@ -97,9 +97,9 @@ class Collection(dsock.Collection):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space)
-            ```
+                    from geondes import nodes
+                    nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space)
+                    ```
     
 
         Returns

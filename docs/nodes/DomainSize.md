@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.DomainSize(geometry=None, component='MESH', label=None)
-```
+        from geonodes import nodes
+        node = nodes.DomainSize(geometry=None, component='MESH', label=None)
+        ```
 
 
 

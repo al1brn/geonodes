@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.FillCurve(curve=None, mode='TRIANGLES', label=None)
-```
+        from geonodes import nodes
+        node = nodes.FillCurve(curve=None, mode='TRIANGLES', label=None)
+        ```
 
 
 

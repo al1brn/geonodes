@@ -46,8 +46,8 @@ class Instances(gn.Geometry):
         node ref Index </sub>
         
         ```python
-        v = instances.instance_index(self)
-        ```
+                v = instances.instance_index(self)
+                ```
     
 
         Arguments
@@ -62,9 +62,9 @@ class Instances(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Index()
-            ```
+                    from geondes import nodes
+                    nodes.Index()
+                    ```
     
 
         Returns
@@ -87,8 +87,8 @@ class Instances(gn.Geometry):
         node ref Rotate Instances </sub>
         
         ```python
-        v = instances.rotate(selection, rotation, pivot_point, local_space)
-        ```
+                v = instances.rotate(selection, rotation, pivot_point, local_space)
+                ```
     
 
         Arguments
@@ -107,9 +107,9 @@ class Instances(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
-            ```
+                    from geondes import nodes
+                    nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
+                    ```
     
 
         Returns
@@ -128,8 +128,8 @@ class Instances(gn.Geometry):
         node ref Scale Instances </sub>
         
         ```python
-        v = instances.scale(selection, scale, center, local_space)
-        ```
+                v = instances.scale(selection, scale, center, local_space)
+                ```
     
 
         Arguments
@@ -148,9 +148,9 @@ class Instances(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
-            ```
+                    from geondes import nodes
+                    nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
+                    ```
     
 
         Returns
@@ -169,8 +169,8 @@ class Instances(gn.Geometry):
         node ref Translate Instances </sub>
         
         ```python
-        v = instances.translate(selection, translation, local_space)
-        ```
+                v = instances.translate(selection, translation, local_space)
+                ```
     
 
         Arguments
@@ -188,9 +188,9 @@ class Instances(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
-            ```
+                    from geondes import nodes
+                    nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
+                    ```
     
 
         Returns
@@ -209,8 +209,8 @@ class Instances(gn.Geometry):
         node ref Instances to Points </sub>
         
         ```python
-        v = instances.to_points(selection, position, radius)
-        ```
+                v = instances.to_points(selection, position, radius)
+                ```
     
 
         Arguments
@@ -228,9 +228,9 @@ class Instances(gn.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
-            ```
+                    from geondes import nodes
+                    nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
+                    ```
     
 
         Returns

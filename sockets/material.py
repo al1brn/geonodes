@@ -38,8 +38,8 @@ class Material(dsock.Material):
         node ref Switch </sub>
         
         ```python
-        v = material.switch(switch1, true)
-        ```
+                v = material.switch(switch1, true)
+                ```
     
 
         Arguments
@@ -57,9 +57,9 @@ class Material(dsock.Material):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL')
-            ```
+                    from geondes import nodes
+                    nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL')
+                    ```
     
 
         Returns
@@ -78,8 +78,8 @@ class Material(dsock.Material):
         node ref Material Selection </sub>
         
         ```python
-        v = material.selection()
-        ```
+                v = material.selection()
+                ```
     
 
         Arguments
@@ -94,9 +94,9 @@ class Material(dsock.Material):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.MaterialSelection(material=self)
-            ```
+                    from geondes import nodes
+                    nodes.MaterialSelection(material=self)
+                    ```
     
 
         Returns

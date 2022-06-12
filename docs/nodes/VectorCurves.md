@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.VectorCurves(fac=None, vector=None, label=None)
-```
+        from geonodes import nodes
+        node = nodes.VectorCurves(fac=None, vector=None, label=None)
+        ```
 
 
 

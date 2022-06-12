@@ -75,8 +75,8 @@ blender ref [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.t
 node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) </sub>
 
 ```python
-v = Integer.Random(min, max, ID, seed)
-```
+        v = Integer.Random(min, max, ID, seed)
+        ```
 
 ### Arguments
 
@@ -92,9 +92,9 @@ v = Integer.Random(min, max, ID, seed)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='INT')
-```
+        from geondes import nodes
+        nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='INT')
+        ```
 
 ### Returns
 
@@ -110,8 +110,8 @@ blender ref [GeometryNodeAccumulateField](https://docs.blender.org/api/current/b
 node ref [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/accumulate_field.html) </sub>
 
 ```python
-v = integer.accumulate_field(group_index, domain)
-```
+        v = integer.accumulate_field(group_index, domain)
+        ```
 
 ### Arguments
 
@@ -126,9 +126,9 @@ v = integer.accumulate_field(group_index, domain)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.AccumulateField(value=self, group_index=group_index, data_type='INT', domain=domain)
-```
+        from geondes import nodes
+        nodes.AccumulateField(value=self, group_index=group_index, data_type='INT', domain=domain)
+        ```
 
 ### Returns
 
@@ -144,8 +144,8 @@ blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current
 node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
 
 ```python
-v = integer.transfer_attribute(source, source_position, index, domain, mapping)
-```
+        v = integer.transfer_attribute(source, source_position, index, domain, mapping)
+        ```
 
 ### Arguments
 
@@ -163,9 +163,9 @@ v = integer.transfer_attribute(source, source_position, index, domain, mapping)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
-```
+        from geondes import nodes
+        nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
+        ```
 
 ### Returns
 
@@ -181,8 +181,8 @@ blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/
 node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) </sub>
 
 ```python
-v = integer.capture_attribute(geometry, domain)
-```
+        v = integer.capture_attribute(geometry, domain)
+        ```
 
 ### Arguments
 
@@ -197,9 +197,9 @@ v = integer.capture_attribute(geometry, domain)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.CaptureAttribute(value=self, geometry=geometry, data_type='INT', domain=domain)
-```
+        from geondes import nodes
+        nodes.CaptureAttribute(value=self, geometry=geometry, data_type='INT', domain=domain)
+        ```
 
 ### Returns
 
@@ -215,8 +215,8 @@ blender ref [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.
 node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) </sub>
 
 ```python
-v = integer.field_at_index(value, domain)
-```
+        v = integer.field_at_index(value, domain)
+        ```
 
 ### Arguments
 
@@ -231,9 +231,9 @@ v = integer.field_at_index(value, domain)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.FieldAtIndex(index=self, value=value, data_type='INT', domain=domain)
-```
+        from geondes import nodes
+        nodes.FieldAtIndex(index=self, value=value, data_type='INT', domain=domain)
+        ```
 
 ### Returns
 
@@ -249,8 +249,8 @@ blender ref [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types
 node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) </sub>
 
 ```python
-v = integer.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
-```
+        v = integer.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
+        ```
 
 ### Arguments
 
@@ -268,9 +268,9 @@ v = integer.raycast(target_geometry, source_position, ray_direction, ray_length,
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='INT', mapping=mapping)
-```
+        from geondes import nodes
+        nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='INT', mapping=mapping)
+        ```
 
 ### Returns
 
@@ -286,8 +286,8 @@ blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
 
 ```python
-v = integer.switch(switch0, true)
-```
+        v = integer.switch(switch0, true)
+        ```
 
 ### Arguments
 
@@ -302,9 +302,9 @@ v = integer.switch(switch0, true)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Switch(false=self, switch0=switch0, true=true, input_type='INT')
-```
+        from geondes import nodes
+        nodes.Switch(false=self, switch0=switch0, true=true, input_type='INT')
+        ```
 
 ### Returns
 
@@ -320,8 +320,8 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
 
 ```python
-v = integer.less_than(b)
-```
+        v = integer.less_than(b)
+        ```
 
 ### Arguments
 
@@ -337,9 +337,9 @@ v = integer.less_than(b)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_THAN')
-```
+        from geondes import nodes
+        nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_THAN')
+        ```
 
 ### Returns
 
@@ -355,8 +355,8 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
 
 ```python
-v = integer.less_equal(b)
-```
+        v = integer.less_equal(b)
+        ```
 
 ### Arguments
 
@@ -372,9 +372,9 @@ v = integer.less_equal(b)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL')
-```
+        from geondes import nodes
+        nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL')
+        ```
 
 ### Returns
 
@@ -390,8 +390,8 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
 
 ```python
-v = integer.greater_than(b)
-```
+        v = integer.greater_than(b)
+        ```
 
 ### Arguments
 
@@ -407,9 +407,9 @@ v = integer.greater_than(b)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_THAN')
-```
+        from geondes import nodes
+        nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_THAN')
+        ```
 
 ### Returns
 
@@ -425,8 +425,8 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
 
 ```python
-v = integer.greater_equal(b)
-```
+        v = integer.greater_equal(b)
+        ```
 
 ### Arguments
 
@@ -442,9 +442,9 @@ v = integer.greater_equal(b)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL')
-```
+        from geondes import nodes
+        nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL')
+        ```
 
 ### Returns
 
@@ -460,8 +460,8 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
 
 ```python
-v = integer.equal(b)
-```
+        v = integer.equal(b)
+        ```
 
 ### Arguments
 
@@ -477,9 +477,9 @@ v = integer.equal(b)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='EQUAL')
-```
+        from geondes import nodes
+        nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='EQUAL')
+        ```
 
 ### Returns
 
@@ -495,8 +495,8 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
 
 ```python
-v = integer.not_equal(b)
-```
+        v = integer.not_equal(b)
+        ```
 
 ### Arguments
 
@@ -512,9 +512,9 @@ v = integer.not_equal(b)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL')
-```
+        from geondes import nodes
+        nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL')
+        ```
 
 ### Returns
 
@@ -530,8 +530,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.add(value1)
-```
+        v = integer.add(value1)
+        ```
 
 ### Arguments
 
@@ -545,9 +545,9 @@ v = integer.add(value1)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='ADD')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, operation='ADD')
+        ```
 
 ### Returns
 
@@ -563,8 +563,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.subtract(value1)
-```
+        v = integer.subtract(value1)
+        ```
 
 ### Arguments
 
@@ -578,9 +578,9 @@ v = integer.subtract(value1)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
+        ```
 
 ### Returns
 
@@ -596,8 +596,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.multiply(value1)
-```
+        v = integer.multiply(value1)
+        ```
 
 ### Arguments
 
@@ -611,9 +611,9 @@ v = integer.multiply(value1)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
+        ```
 
 ### Returns
 
@@ -629,8 +629,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.divide(value1)
-```
+        v = integer.divide(value1)
+        ```
 
 ### Arguments
 
@@ -644,9 +644,9 @@ v = integer.divide(value1)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='DIVIDE')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, operation='DIVIDE')
+        ```
 
 ### Returns
 
@@ -662,8 +662,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.multiply_add(value1, value2)
-```
+        v = integer.multiply_add(value1, value2)
+        ```
 
 ### Arguments
 
@@ -678,9 +678,9 @@ v = integer.multiply_add(value1, value2)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD')
+        ```
 
 ### Returns
 
@@ -696,8 +696,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.pow(value1)
-```
+        v = integer.pow(value1)
+        ```
 
 ### Arguments
 
@@ -711,9 +711,9 @@ v = integer.pow(value1)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='POWER')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, operation='POWER')
+        ```
 
 ### Returns
 
@@ -729,8 +729,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.log(value1)
-```
+        v = integer.log(value1)
+        ```
 
 ### Arguments
 
@@ -744,9 +744,9 @@ v = integer.log(value1)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
+        ```
 
 ### Returns
 
@@ -762,8 +762,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.sqrt()
-```
+        v = integer.sqrt()
+        ```
 
 ### Arguments
 
@@ -776,9 +776,9 @@ v = integer.sqrt()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='SQRT')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='SQRT')
+        ```
 
 ### Returns
 
@@ -794,8 +794,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.inverse_sqrt()
-```
+        v = integer.inverse_sqrt()
+        ```
 
 ### Arguments
 
@@ -808,9 +808,9 @@ v = integer.inverse_sqrt()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='INVERSE_SQRT')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='INVERSE_SQRT')
+        ```
 
 ### Returns
 
@@ -826,8 +826,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.abs()
-```
+        v = integer.abs()
+        ```
 
 ### Arguments
 
@@ -840,9 +840,9 @@ v = integer.abs()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='ABSOLUTE')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='ABSOLUTE')
+        ```
 
 ### Returns
 
@@ -858,8 +858,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.exp()
-```
+        v = integer.exp()
+        ```
 
 ### Arguments
 
@@ -872,9 +872,9 @@ v = integer.exp()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='EXPONENT')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='EXPONENT')
+        ```
 
 ### Returns
 
@@ -890,8 +890,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.min(value1)
-```
+        v = integer.min(value1)
+        ```
 
 ### Arguments
 
@@ -905,9 +905,9 @@ v = integer.min(value1)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='MINIMUM')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, operation='MINIMUM')
+        ```
 
 ### Returns
 
@@ -923,8 +923,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.max(value1)
-```
+        v = integer.max(value1)
+        ```
 
 ### Arguments
 
@@ -938,9 +938,9 @@ v = integer.max(value1)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
+        ```
 
 ### Returns
 
@@ -956,8 +956,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.less_than(value1)
-```
+        v = integer.less_than(value1)
+        ```
 
 ### Arguments
 
@@ -971,9 +971,9 @@ v = integer.less_than(value1)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
+        ```
 
 ### Returns
 
@@ -989,8 +989,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.greater_than(value1)
-```
+        v = integer.greater_than(value1)
+        ```
 
 ### Arguments
 
@@ -1004,9 +1004,9 @@ v = integer.greater_than(value1)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
+        ```
 
 ### Returns
 
@@ -1022,8 +1022,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.sign()
-```
+        v = integer.sign()
+        ```
 
 ### Arguments
 
@@ -1036,9 +1036,9 @@ v = integer.sign()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='SIGN')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='SIGN')
+        ```
 
 ### Returns
 
@@ -1054,8 +1054,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.compare(value1, value2)
-```
+        v = integer.compare(value1, value2)
+        ```
 
 ### Arguments
 
@@ -1070,9 +1070,9 @@ v = integer.compare(value1, value2)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE')
+        ```
 
 ### Returns
 
@@ -1088,8 +1088,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.smooth_min(value1, value2)
-```
+        v = integer.smooth_min(value1, value2)
+        ```
 
 ### Arguments
 
@@ -1104,9 +1104,9 @@ v = integer.smooth_min(value1, value2)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN')
+        ```
 
 ### Returns
 
@@ -1122,8 +1122,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.smooth_max(value1, value2)
-```
+        v = integer.smooth_max(value1, value2)
+        ```
 
 ### Arguments
 
@@ -1138,9 +1138,9 @@ v = integer.smooth_max(value1, value2)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX')
+        ```
 
 ### Returns
 
@@ -1156,8 +1156,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.round()
-```
+        v = integer.round()
+        ```
 
 ### Arguments
 
@@ -1170,9 +1170,9 @@ v = integer.round()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='ROUND')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='ROUND')
+        ```
 
 ### Returns
 
@@ -1188,8 +1188,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.floor()
-```
+        v = integer.floor()
+        ```
 
 ### Arguments
 
@@ -1202,9 +1202,9 @@ v = integer.floor()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='FLOOR')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='FLOOR')
+        ```
 
 ### Returns
 
@@ -1220,8 +1220,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.ceil()
-```
+        v = integer.ceil()
+        ```
 
 ### Arguments
 
@@ -1234,9 +1234,9 @@ v = integer.ceil()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='CEIL')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='CEIL')
+        ```
 
 ### Returns
 
@@ -1252,8 +1252,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.trunc()
-```
+        v = integer.trunc()
+        ```
 
 ### Arguments
 
@@ -1266,9 +1266,9 @@ v = integer.trunc()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='TRUNC')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='TRUNC')
+        ```
 
 ### Returns
 
@@ -1284,8 +1284,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.fract()
-```
+        v = integer.fract()
+        ```
 
 ### Arguments
 
@@ -1298,9 +1298,9 @@ v = integer.fract()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='FRACT')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='FRACT')
+        ```
 
 ### Returns
 
@@ -1316,8 +1316,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.modulo(value1)
-```
+        v = integer.modulo(value1)
+        ```
 
 ### Arguments
 
@@ -1331,9 +1331,9 @@ v = integer.modulo(value1)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='MODULO')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, operation='MODULO')
+        ```
 
 ### Returns
 
@@ -1349,8 +1349,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.wrap(value1, value2)
-```
+        v = integer.wrap(value1, value2)
+        ```
 
 ### Arguments
 
@@ -1365,9 +1365,9 @@ v = integer.wrap(value1, value2)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP')
+        ```
 
 ### Returns
 
@@ -1383,8 +1383,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.snap(value1)
-```
+        v = integer.snap(value1)
+        ```
 
 ### Arguments
 
@@ -1398,9 +1398,9 @@ v = integer.snap(value1)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='SNAP')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, operation='SNAP')
+        ```
 
 ### Returns
 
@@ -1416,8 +1416,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.pingpong(value1)
-```
+        v = integer.pingpong(value1)
+        ```
 
 ### Arguments
 
@@ -1431,9 +1431,9 @@ v = integer.pingpong(value1)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='PINGPONG')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, operation='PINGPONG')
+        ```
 
 ### Returns
 
@@ -1449,8 +1449,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.sin()
-```
+        v = integer.sin()
+        ```
 
 ### Arguments
 
@@ -1463,9 +1463,9 @@ v = integer.sin()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='SINE')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='SINE')
+        ```
 
 ### Returns
 
@@ -1481,8 +1481,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.cos()
-```
+        v = integer.cos()
+        ```
 
 ### Arguments
 
@@ -1495,9 +1495,9 @@ v = integer.cos()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='COSINE')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='COSINE')
+        ```
 
 ### Returns
 
@@ -1513,8 +1513,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.tan()
-```
+        v = integer.tan()
+        ```
 
 ### Arguments
 
@@ -1527,9 +1527,9 @@ v = integer.tan()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='TANGENT')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='TANGENT')
+        ```
 
 ### Returns
 
@@ -1545,8 +1545,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.arcsin()
-```
+        v = integer.arcsin()
+        ```
 
 ### Arguments
 
@@ -1559,9 +1559,9 @@ v = integer.arcsin()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='ARCSINE')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='ARCSINE')
+        ```
 
 ### Returns
 
@@ -1577,8 +1577,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.arccos()
-```
+        v = integer.arccos()
+        ```
 
 ### Arguments
 
@@ -1591,9 +1591,9 @@ v = integer.arccos()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='ARCCOSINE')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='ARCCOSINE')
+        ```
 
 ### Returns
 
@@ -1609,8 +1609,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.arctan()
-```
+        v = integer.arctan()
+        ```
 
 ### Arguments
 
@@ -1623,9 +1623,9 @@ v = integer.arctan()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='ARCTANGENT')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='ARCTANGENT')
+        ```
 
 ### Returns
 
@@ -1641,8 +1641,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.arctan2(value1)
-```
+        v = integer.arctan2(value1)
+        ```
 
 ### Arguments
 
@@ -1656,9 +1656,9 @@ v = integer.arctan2(value1)
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
+        ```
 
 ### Returns
 
@@ -1674,8 +1674,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.sinh()
-```
+        v = integer.sinh()
+        ```
 
 ### Arguments
 
@@ -1688,9 +1688,9 @@ v = integer.sinh()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='SINH')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='SINH')
+        ```
 
 ### Returns
 
@@ -1706,8 +1706,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.cosh()
-```
+        v = integer.cosh()
+        ```
 
 ### Arguments
 
@@ -1720,9 +1720,9 @@ v = integer.cosh()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='COSH')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='COSH')
+        ```
 
 ### Returns
 
@@ -1738,8 +1738,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.tanh()
-```
+        v = integer.tanh()
+        ```
 
 ### Arguments
 
@@ -1752,9 +1752,9 @@ v = integer.tanh()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='TANH')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='TANH')
+        ```
 
 ### Returns
 
@@ -1770,8 +1770,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.radians()
-```
+        v = integer.radians()
+        ```
 
 ### Arguments
 
@@ -1784,9 +1784,9 @@ v = integer.radians()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='RADIANS')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='RADIANS')
+        ```
 
 ### Returns
 
@@ -1802,8 +1802,8 @@ blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.Shad
 node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
 
 ```python
-v = integer.degrees()
-```
+        v = integer.degrees()
+        ```
 
 ### Arguments
 
@@ -1816,9 +1816,9 @@ v = integer.degrees()
 ### Node creation
 
 ```python
-from geondes import nodes
-nodes.Math(value0=self, operation='DEGREES')
-```
+        from geondes import nodes
+        nodes.Math(value0=self, operation='DEGREES')
+        ```
 
 ### Returns
 

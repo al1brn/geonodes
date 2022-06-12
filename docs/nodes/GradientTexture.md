@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.GradientTexture(vector=None, gradient_type='LINEAR', label=None)
-```
+        from geonodes import nodes
+        node = nodes.GradientTexture(vector=None, gradient_type='LINEAR', label=None)
+        ```
 
 
 

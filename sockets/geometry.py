@@ -111,8 +111,8 @@ class Geometry(dsock.Geometry):
         node ref Is Viewport </sub>
         
         ```python
-        v = Geometry.is_viewport()
-        ```
+                v = Geometry.is_viewport()
+                ```
     
 
         Arguments
@@ -122,9 +122,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.IsViewport()
-            ```
+                    from geondes import nodes
+                    nodes.IsViewport()
+                    ```
     
 
         Returns
@@ -148,8 +148,8 @@ class Geometry(dsock.Geometry):
         node ref Bounding Box </sub>
         
         ```python
-        v = geometry.bound_box
-        ```
+                v = geometry.bound_box
+                ```
     
 
         Arguments
@@ -165,9 +165,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_box")
-            ```
+                    from geondes import nodes
+                    nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_box")
+                    ```
     
 
         Returns
@@ -189,8 +189,8 @@ class Geometry(dsock.Geometry):
         node ref Bounding Box </sub>
         
         ```python
-        v = geometry.box
-        ```
+                v = geometry.box
+                ```
     
 
         Arguments
@@ -206,9 +206,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box")
-            ```
+                    from geondes import nodes
+                    nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box")
+                    ```
     
 
         Returns
@@ -228,8 +228,8 @@ class Geometry(dsock.Geometry):
         node ref Bounding Box </sub>
         
         ```python
-        v = geometry.box_min
-        ```
+                v = geometry.box_min
+                ```
     
 
         Arguments
@@ -245,9 +245,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_min")
-            ```
+                    from geondes import nodes
+                    nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_min")
+                    ```
     
 
         Returns
@@ -267,8 +267,8 @@ class Geometry(dsock.Geometry):
         node ref Bounding Box </sub>
         
         ```python
-        v = geometry.box_max
-        ```
+                v = geometry.box_max
+                ```
     
 
         Arguments
@@ -284,9 +284,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_max")
-            ```
+                    from geondes import nodes
+                    nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_max")
+                    ```
     
 
         Returns
@@ -306,8 +306,8 @@ class Geometry(dsock.Geometry):
         node ref Separate Components </sub>
         
         ```python
-        v = geometry.components
-        ```
+                v = geometry.components
+                ```
     
 
         Arguments
@@ -323,9 +323,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.components")
-            ```
+                    from geondes import nodes
+                    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.components")
+                    ```
     
 
         Returns
@@ -347,8 +347,8 @@ class Geometry(dsock.Geometry):
         node ref Separate Components </sub>
         
         ```python
-        v = geometry.mesh_component
-        ```
+                v = geometry.mesh_component
+                ```
     
 
         Arguments
@@ -364,9 +364,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.mesh_component")
-            ```
+                    from geondes import nodes
+                    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.mesh_component")
+                    ```
     
 
         Returns
@@ -386,8 +386,8 @@ class Geometry(dsock.Geometry):
         node ref Separate Components </sub>
         
         ```python
-        v = geometry.points_component
-        ```
+                v = geometry.points_component
+                ```
     
 
         Arguments
@@ -403,9 +403,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.points_component")
-            ```
+                    from geondes import nodes
+                    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.points_component")
+                    ```
     
 
         Returns
@@ -425,8 +425,8 @@ class Geometry(dsock.Geometry):
         node ref Separate Components </sub>
         
         ```python
-        v = geometry.curve_component
-        ```
+                v = geometry.curve_component
+                ```
     
 
         Arguments
@@ -442,9 +442,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.curve_component")
-            ```
+                    from geondes import nodes
+                    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.curve_component")
+                    ```
     
 
         Returns
@@ -464,8 +464,8 @@ class Geometry(dsock.Geometry):
         node ref Separate Components </sub>
         
         ```python
-        v = geometry.volume_component
-        ```
+                v = geometry.volume_component
+                ```
     
 
         Arguments
@@ -481,9 +481,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.volume_component")
-            ```
+                    from geondes import nodes
+                    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.volume_component")
+                    ```
     
 
         Returns
@@ -503,8 +503,8 @@ class Geometry(dsock.Geometry):
         node ref Separate Components </sub>
         
         ```python
-        v = geometry.instances_component
-        ```
+                v = geometry.instances_component
+                ```
     
 
         Arguments
@@ -520,9 +520,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.instances_component")
-            ```
+                    from geondes import nodes
+                    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.instances_component")
+                    ```
     
 
         Returns
@@ -545,8 +545,8 @@ class Geometry(dsock.Geometry):
         node ref ID </sub>
         
         ```python
-        v = geometry.capture_ID(self, domain='POINT')
-        ```
+                v = geometry.capture_ID(self, domain='POINT')
+                ```
     
 
         Arguments
@@ -562,9 +562,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.ID()
-            ```
+                    from geondes import nodes
+                    nodes.ID()
+                    ```
     
 
         Returns
@@ -588,8 +588,8 @@ class Geometry(dsock.Geometry):
         node ref Index </sub>
         
         ```python
-        v = geometry.capture_index(self, domain='POINT')
-        ```
+                v = geometry.capture_index(self, domain='POINT')
+                ```
     
 
         Arguments
@@ -605,9 +605,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Index()
-            ```
+                    from geondes import nodes
+                    nodes.Index()
+                    ```
     
 
         Returns
@@ -631,8 +631,8 @@ class Geometry(dsock.Geometry):
         node ref Normal </sub>
         
         ```python
-        v = geometry.capture_normal(self, domain='FACE')
-        ```
+                v = geometry.capture_normal(self, domain='FACE')
+                ```
     
 
         Arguments
@@ -648,9 +648,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Normal()
-            ```
+                    from geondes import nodes
+                    nodes.Normal()
+                    ```
     
 
         Returns
@@ -674,8 +674,8 @@ class Geometry(dsock.Geometry):
         node ref Position </sub>
         
         ```python
-        v = geometry.capture_position(self, domain='POINT')
-        ```
+                v = geometry.capture_position(self, domain='POINT')
+                ```
     
 
         Arguments
@@ -691,9 +691,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Position()
-            ```
+                    from geondes import nodes
+                    nodes.Position()
+                    ```
     
 
         Returns
@@ -717,8 +717,8 @@ class Geometry(dsock.Geometry):
         node ref Radius </sub>
         
         ```python
-        v = geometry.capture_radius(self, domain='POINT')
-        ```
+                v = geometry.capture_radius(self, domain='POINT')
+                ```
     
 
         Arguments
@@ -734,9 +734,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Radius()
-            ```
+                    from geondes import nodes
+                    nodes.Radius()
+                    ```
     
 
         Returns
@@ -765,8 +765,8 @@ class Geometry(dsock.Geometry):
         node ref ID </sub>
         
         ```python
-        v = geometry.ID(self)
-        ```
+                v = geometry.ID(self)
+                ```
     
 
         Arguments
@@ -781,9 +781,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.ID()
-            ```
+                    from geondes import nodes
+                    nodes.ID()
+                    ```
     
 
         Returns
@@ -803,8 +803,8 @@ class Geometry(dsock.Geometry):
         node ref Index </sub>
         
         ```python
-        v = geometry.index(self)
-        ```
+                v = geometry.index(self)
+                ```
     
 
         Arguments
@@ -819,9 +819,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Index()
-            ```
+                    from geondes import nodes
+                    nodes.Index()
+                    ```
     
 
         Returns
@@ -841,8 +841,8 @@ class Geometry(dsock.Geometry):
         node ref Normal </sub>
         
         ```python
-        v = geometry.normal(self)
-        ```
+                v = geometry.normal(self)
+                ```
     
 
         Arguments
@@ -857,9 +857,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Normal()
-            ```
+                    from geondes import nodes
+                    nodes.Normal()
+                    ```
     
 
         Returns
@@ -879,8 +879,8 @@ class Geometry(dsock.Geometry):
         node ref Position </sub>
         
         ```python
-        v = geometry.position(self)
-        ```
+                v = geometry.position(self)
+                ```
     
 
         Arguments
@@ -895,9 +895,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Position()
-            ```
+                    from geondes import nodes
+                    nodes.Position()
+                    ```
     
 
         Returns
@@ -917,8 +917,8 @@ class Geometry(dsock.Geometry):
         node ref Radius </sub>
         
         ```python
-        v = geometry.radius(self)
-        ```
+                v = geometry.radius(self)
+                ```
     
 
         Arguments
@@ -933,9 +933,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Radius()
-            ```
+                    from geondes import nodes
+                    nodes.Radius()
+                    ```
     
 
         Returns
@@ -958,8 +958,8 @@ class Geometry(dsock.Geometry):
         node ref Switch </sub>
         
         ```python
-        v = geometry.switch(switch1, true)
-        ```
+                v = geometry.switch(switch1, true)
+                ```
     
 
         Arguments
@@ -977,9 +977,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY')
-            ```
+                    from geondes import nodes
+                    nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY')
+                    ```
     
 
         Returns
@@ -998,8 +998,8 @@ class Geometry(dsock.Geometry):
         node ref Capture Attribute </sub>
         
         ```python
-        v = geometry.capture_attribute(value, data_type, domain)
-        ```
+                v = geometry.capture_attribute(value, data_type, domain)
+                ```
     
 
         Arguments
@@ -1017,9 +1017,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain)
-            ```
+                    from geondes import nodes
+                    nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain)
+                    ```
     
 
         Returns
@@ -1040,8 +1040,8 @@ class Geometry(dsock.Geometry):
         node ref Transfer Attribute </sub>
         
         ```python
-        v = geometry.transfer_boolean(attribute, source_position, index, domain, mapping)
-        ```
+                v = geometry.transfer_boolean(attribute, source_position, index, domain, mapping)
+                ```
     
 
         Arguments
@@ -1062,9 +1062,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
-            ```
+                    from geondes import nodes
+                    nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
+                    ```
     
 
         Returns
@@ -1083,8 +1083,8 @@ class Geometry(dsock.Geometry):
         node ref Transfer Attribute </sub>
         
         ```python
-        v = geometry.transfer_integer(attribute, source_position, index, domain, mapping)
-        ```
+                v = geometry.transfer_integer(attribute, source_position, index, domain, mapping)
+                ```
     
 
         Arguments
@@ -1105,9 +1105,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
-            ```
+                    from geondes import nodes
+                    nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
+                    ```
     
 
         Returns
@@ -1126,8 +1126,8 @@ class Geometry(dsock.Geometry):
         node ref Transfer Attribute </sub>
         
         ```python
-        v = geometry.transfer_float(attribute, source_position, index, domain, mapping)
-        ```
+                v = geometry.transfer_float(attribute, source_position, index, domain, mapping)
+                ```
     
 
         Arguments
@@ -1148,9 +1148,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
-            ```
+                    from geondes import nodes
+                    nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
+                    ```
     
 
         Returns
@@ -1169,8 +1169,8 @@ class Geometry(dsock.Geometry):
         node ref Transfer Attribute </sub>
         
         ```python
-        v = geometry.transfer_vector(attribute, source_position, index, domain, mapping)
-        ```
+                v = geometry.transfer_vector(attribute, source_position, index, domain, mapping)
+                ```
     
 
         Arguments
@@ -1191,9 +1191,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
-            ```
+                    from geondes import nodes
+                    nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
+                    ```
     
 
         Returns
@@ -1212,8 +1212,8 @@ class Geometry(dsock.Geometry):
         node ref Transfer Attribute </sub>
         
         ```python
-        v = geometry.transfer_color(attribute, source_position, index, domain, mapping)
-        ```
+                v = geometry.transfer_color(attribute, source_position, index, domain, mapping)
+                ```
     
 
         Arguments
@@ -1234,9 +1234,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
-            ```
+                    from geondes import nodes
+                    nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
+                    ```
     
 
         Returns
@@ -1255,8 +1255,8 @@ class Geometry(dsock.Geometry):
         node ref Delete Geometry </sub>
         
         ```python
-        v = geometry.delete_geometry(selection, domain, mode)
-        ```
+                v = geometry.delete_geometry(selection, domain, mode)
+                ```
     
 
         Arguments
@@ -1274,9 +1274,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode)
+                    ```
     
 
         Returns
@@ -1295,8 +1295,8 @@ class Geometry(dsock.Geometry):
         node ref Merge by Distance </sub>
         
         ```python
-        v = geometry.merge_by_distance(selection, distance, mode)
-        ```
+                v = geometry.merge_by_distance(selection, distance, mode)
+                ```
     
 
         Arguments
@@ -1314,9 +1314,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.MergeByDistance(geometry=self, selection=selection, distance=distance, mode=mode)
-            ```
+                    from geondes import nodes
+                    nodes.MergeByDistance(geometry=self, selection=selection, distance=distance, mode=mode)
+                    ```
     
 
         Returns
@@ -1335,8 +1335,8 @@ class Geometry(dsock.Geometry):
         node ref Realize Instances </sub>
         
         ```python
-        v = geometry.realize_instances(legacy_behavior)
-        ```
+                v = geometry.realize_instances(legacy_behavior)
+                ```
     
 
         Arguments
@@ -1352,9 +1352,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior)
-            ```
+                    from geondes import nodes
+                    nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior)
+                    ```
     
 
         Returns
@@ -1373,8 +1373,8 @@ class Geometry(dsock.Geometry):
         node ref Replace Material </sub>
         
         ```python
-        v = geometry.replace_material(old, new)
-        ```
+                v = geometry.replace_material(old, new)
+                ```
     
 
         Arguments
@@ -1391,9 +1391,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.ReplaceMaterial(geometry=self, old=old, new=new)
-            ```
+                    from geondes import nodes
+                    nodes.ReplaceMaterial(geometry=self, old=old, new=new)
+                    ```
     
 
         Returns
@@ -1412,8 +1412,8 @@ class Geometry(dsock.Geometry):
         node ref Scale Elements </sub>
         
         ```python
-        v = geometry.scale_elements(selection, scale, center, axis, domain, scale_mode)
-        ```
+                v = geometry.scale_elements(selection, scale, center, axis, domain, scale_mode)
+                ```
     
 
         Arguments
@@ -1434,9 +1434,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode)
-            ```
+                    from geondes import nodes
+                    nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode)
+                    ```
     
 
         Returns
@@ -1455,8 +1455,8 @@ class Geometry(dsock.Geometry):
         node ref Set ID </sub>
         
         ```python
-        v = geometry.set_ID(selection, ID)
-        ```
+                v = geometry.set_ID(selection, ID)
+                ```
     
 
         Arguments
@@ -1473,9 +1473,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SetID(geometry=self, selection=selection, ID=ID)
-            ```
+                    from geondes import nodes
+                    nodes.SetID(geometry=self, selection=selection, ID=ID)
+                    ```
     
 
         Returns
@@ -1494,8 +1494,8 @@ class Geometry(dsock.Geometry):
         node ref Set Material </sub>
         
         ```python
-        v = geometry.set_material(selection, material)
-        ```
+                v = geometry.set_material(selection, material)
+                ```
     
 
         Arguments
@@ -1512,9 +1512,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SetMaterial(geometry=self, selection=selection, material=material)
-            ```
+                    from geondes import nodes
+                    nodes.SetMaterial(geometry=self, selection=selection, material=material)
+                    ```
     
 
         Returns
@@ -1533,8 +1533,8 @@ class Geometry(dsock.Geometry):
         node ref Set Material Index </sub>
         
         ```python
-        v = geometry.set_material_index(selection, material_index)
-        ```
+                v = geometry.set_material_index(selection, material_index)
+                ```
     
 
         Arguments
@@ -1551,9 +1551,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index)
-            ```
+                    from geondes import nodes
+                    nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index)
+                    ```
     
 
         Returns
@@ -1572,8 +1572,8 @@ class Geometry(dsock.Geometry):
         node ref Set Position </sub>
         
         ```python
-        v = geometry.set_position(selection, position, offset)
-        ```
+                v = geometry.set_position(selection, position, offset)
+                ```
     
 
         Arguments
@@ -1591,9 +1591,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset)
-            ```
+                    from geondes import nodes
+                    nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset)
+                    ```
     
 
         Returns
@@ -1612,8 +1612,8 @@ class Geometry(dsock.Geometry):
         node ref Set Shade Smooth </sub>
         
         ```python
-        v = geometry.set_shade_smooth(selection, shade_smooth)
-        ```
+                v = geometry.set_shade_smooth(selection, shade_smooth)
+                ```
     
 
         Arguments
@@ -1630,9 +1630,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth)
-            ```
+                    from geondes import nodes
+                    nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth)
+                    ```
     
 
         Returns
@@ -1651,8 +1651,8 @@ class Geometry(dsock.Geometry):
         node ref Transform </sub>
         
         ```python
-        v = geometry.transform(translation, rotation, scale)
-        ```
+                v = geometry.transform(translation, rotation, scale)
+                ```
     
 
         Arguments
@@ -1670,9 +1670,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale)
-            ```
+                    from geondes import nodes
+                    nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale)
+                    ```
     
 
         Returns
@@ -1691,8 +1691,8 @@ class Geometry(dsock.Geometry):
         node ref Domain Size </sub>
         
         ```python
-        v = geometry.attribute_domain_size(component)
-        ```
+                v = geometry.attribute_domain_size(component)
+                ```
     
 
         Arguments
@@ -1708,9 +1708,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.DomainSize(geometry=self, component=component)
-            ```
+                    from geondes import nodes
+                    nodes.DomainSize(geometry=self, component=component)
+                    ```
     
 
         Returns
@@ -1729,8 +1729,8 @@ class Geometry(dsock.Geometry):
         node ref Remove Named Attribute </sub>
         
         ```python
-        v = geometry.remove_attribute(name)
-        ```
+                v = geometry.remove_attribute(name)
+                ```
     
 
         Arguments
@@ -1746,9 +1746,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.RemoveNamedAttribute(geometry=self, name=name)
-            ```
+                    from geondes import nodes
+                    nodes.RemoveNamedAttribute(geometry=self, name=name)
+                    ```
     
 
         Returns
@@ -1767,8 +1767,8 @@ class Geometry(dsock.Geometry):
         node ref Separate Geometry </sub>
         
         ```python
-        v = geometry.components(selection, domain)
-        ```
+                v = geometry.components(selection, domain)
+                ```
     
 
         Arguments
@@ -1785,9 +1785,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain)
-            ```
+                    from geondes import nodes
+                    nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain)
+                    ```
     
 
         Returns
@@ -1806,8 +1806,8 @@ class Geometry(dsock.Geometry):
         node ref Convex Hull </sub>
         
         ```python
-        v = geometry.convex_hull()
-        ```
+                v = geometry.convex_hull()
+                ```
     
 
         Arguments
@@ -1822,9 +1822,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.ConvexHull(geometry=self)
-            ```
+                    from geondes import nodes
+                    nodes.ConvexHull(geometry=self)
+                    ```
     
 
         Returns
@@ -1843,8 +1843,8 @@ class Geometry(dsock.Geometry):
         node ref Geometry to Instance </sub>
         
         ```python
-        v = geometry.to_instance(geometry_1, geometry_2, geometry_3)
-        ```
+                v = geometry.to_instance(geometry_1, geometry_2, geometry_3)
+                ```
     
 
         Arguments
@@ -1859,9 +1859,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.GeometryToInstance(self, *geometry)
-            ```
+                    from geondes import nodes
+                    nodes.GeometryToInstance(self, *geometry)
+                    ```
     
 
         Returns
@@ -1880,8 +1880,8 @@ class Geometry(dsock.Geometry):
         node ref Join Geometry </sub>
         
         ```python
-        v = geometry.join(geometry_1, geometry_2, geometry_3)
-        ```
+                v = geometry.join(geometry_1, geometry_2, geometry_3)
+                ```
     
 
         Arguments
@@ -1896,9 +1896,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.JoinGeometry(self, *geometry)
-            ```
+                    from geondes import nodes
+                    nodes.JoinGeometry(self, *geometry)
+                    ```
     
 
         Returns
@@ -1917,8 +1917,8 @@ class Geometry(dsock.Geometry):
         node ref Geometry Proximity </sub>
         
         ```python
-        v = geometry.proximity(source_position, target_element)
-        ```
+                v = geometry.proximity(source_position, target_element)
+                ```
     
 
         Arguments
@@ -1935,9 +1935,9 @@ class Geometry(dsock.Geometry):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.GeometryProximity(target=self, source_position=source_position, target_element=target_element)
-            ```
+                    from geondes import nodes
+                    nodes.GeometryProximity(target=self, source_position=source_position, target_element=target_element)
+                    ```
     
 
         Returns

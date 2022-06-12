@@ -94,8 +94,8 @@ class Integer(dsock.Integer):
         node ref Random Value </sub>
         
         ```python
-        v = Integer.Random(min, max, ID, seed)
-        ```
+                v = Integer.Random(min, max, ID, seed)
+                ```
     
 
         Arguments
@@ -114,9 +114,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='INT')
-            ```
+                    from geondes import nodes
+                    nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='INT')
+                    ```
     
 
         Returns
@@ -139,8 +139,8 @@ class Integer(dsock.Integer):
         node ref Accumulate Field </sub>
         
         ```python
-        v = integer.accumulate_field(group_index, domain)
-        ```
+                v = integer.accumulate_field(group_index, domain)
+                ```
     
 
         Arguments
@@ -158,9 +158,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.AccumulateField(value=self, group_index=group_index, data_type='INT', domain=domain)
-            ```
+                    from geondes import nodes
+                    nodes.AccumulateField(value=self, group_index=group_index, data_type='INT', domain=domain)
+                    ```
     
 
         Returns
@@ -179,8 +179,8 @@ class Integer(dsock.Integer):
         node ref Transfer Attribute </sub>
         
         ```python
-        v = integer.transfer_attribute(source, source_position, index, domain, mapping)
-        ```
+                v = integer.transfer_attribute(source, source_position, index, domain, mapping)
+                ```
     
 
         Arguments
@@ -201,9 +201,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
-            ```
+                    from geondes import nodes
+                    nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
+                    ```
     
 
         Returns
@@ -222,8 +222,8 @@ class Integer(dsock.Integer):
         node ref Capture Attribute </sub>
         
         ```python
-        v = integer.capture_attribute(geometry, domain)
-        ```
+                v = integer.capture_attribute(geometry, domain)
+                ```
     
 
         Arguments
@@ -241,9 +241,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.CaptureAttribute(value=self, geometry=geometry, data_type='INT', domain=domain)
-            ```
+                    from geondes import nodes
+                    nodes.CaptureAttribute(value=self, geometry=geometry, data_type='INT', domain=domain)
+                    ```
     
 
         Returns
@@ -262,8 +262,8 @@ class Integer(dsock.Integer):
         node ref Field at Index </sub>
         
         ```python
-        v = integer.field_at_index(value, domain)
-        ```
+                v = integer.field_at_index(value, domain)
+                ```
     
 
         Arguments
@@ -281,9 +281,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.FieldAtIndex(index=self, value=value, data_type='INT', domain=domain)
-            ```
+                    from geondes import nodes
+                    nodes.FieldAtIndex(index=self, value=value, data_type='INT', domain=domain)
+                    ```
     
 
         Returns
@@ -302,8 +302,8 @@ class Integer(dsock.Integer):
         node ref Raycast </sub>
         
         ```python
-        v = integer.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
-        ```
+                v = integer.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
+                ```
     
 
         Arguments
@@ -324,9 +324,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='INT', mapping=mapping)
-            ```
+                    from geondes import nodes
+                    nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='INT', mapping=mapping)
+                    ```
     
 
         Returns
@@ -345,8 +345,8 @@ class Integer(dsock.Integer):
         node ref Switch </sub>
         
         ```python
-        v = integer.switch(switch0, true)
-        ```
+                v = integer.switch(switch0, true)
+                ```
     
 
         Arguments
@@ -364,9 +364,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Switch(false=self, switch0=switch0, true=true, input_type='INT')
-            ```
+                    from geondes import nodes
+                    nodes.Switch(false=self, switch0=switch0, true=true, input_type='INT')
+                    ```
     
 
         Returns
@@ -385,8 +385,8 @@ class Integer(dsock.Integer):
         node ref Compare </sub>
         
         ```python
-        v = integer.less_than(b)
-        ```
+                v = integer.less_than(b)
+                ```
     
 
         Arguments
@@ -405,9 +405,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_THAN')
-            ```
+                    from geondes import nodes
+                    nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_THAN')
+                    ```
     
 
         Returns
@@ -426,8 +426,8 @@ class Integer(dsock.Integer):
         node ref Compare </sub>
         
         ```python
-        v = integer.less_equal(b)
-        ```
+                v = integer.less_equal(b)
+                ```
     
 
         Arguments
@@ -446,9 +446,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL')
-            ```
+                    from geondes import nodes
+                    nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL')
+                    ```
     
 
         Returns
@@ -467,8 +467,8 @@ class Integer(dsock.Integer):
         node ref Compare </sub>
         
         ```python
-        v = integer.greater_than(b)
-        ```
+                v = integer.greater_than(b)
+                ```
     
 
         Arguments
@@ -487,9 +487,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_THAN')
-            ```
+                    from geondes import nodes
+                    nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_THAN')
+                    ```
     
 
         Returns
@@ -508,8 +508,8 @@ class Integer(dsock.Integer):
         node ref Compare </sub>
         
         ```python
-        v = integer.greater_equal(b)
-        ```
+                v = integer.greater_equal(b)
+                ```
     
 
         Arguments
@@ -528,9 +528,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL')
-            ```
+                    from geondes import nodes
+                    nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL')
+                    ```
     
 
         Returns
@@ -549,8 +549,8 @@ class Integer(dsock.Integer):
         node ref Compare </sub>
         
         ```python
-        v = integer.equal(b)
-        ```
+                v = integer.equal(b)
+                ```
     
 
         Arguments
@@ -569,9 +569,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='EQUAL')
-            ```
+                    from geondes import nodes
+                    nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='EQUAL')
+                    ```
     
 
         Returns
@@ -590,8 +590,8 @@ class Integer(dsock.Integer):
         node ref Compare </sub>
         
         ```python
-        v = integer.not_equal(b)
-        ```
+                v = integer.not_equal(b)
+                ```
     
 
         Arguments
@@ -610,9 +610,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL')
-            ```
+                    from geondes import nodes
+                    nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL')
+                    ```
     
 
         Returns
@@ -631,8 +631,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.add(value1)
-        ```
+                v = integer.add(value1)
+                ```
     
 
         Arguments
@@ -649,9 +649,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='ADD')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='ADD')
+                    ```
     
 
         Returns
@@ -670,8 +670,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.subtract(value1)
-        ```
+                v = integer.subtract(value1)
+                ```
     
 
         Arguments
@@ -688,9 +688,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
+                    ```
     
 
         Returns
@@ -709,8 +709,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.multiply(value1)
-        ```
+                v = integer.multiply(value1)
+                ```
     
 
         Arguments
@@ -727,9 +727,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
+                    ```
     
 
         Returns
@@ -748,8 +748,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.divide(value1)
-        ```
+                v = integer.divide(value1)
+                ```
     
 
         Arguments
@@ -766,9 +766,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='DIVIDE')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='DIVIDE')
+                    ```
     
 
         Returns
@@ -787,8 +787,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.multiply_add(value1, value2)
-        ```
+                v = integer.multiply_add(value1, value2)
+                ```
     
 
         Arguments
@@ -806,9 +806,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD')
+                    ```
     
 
         Returns
@@ -827,8 +827,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.pow(value1)
-        ```
+                v = integer.pow(value1)
+                ```
     
 
         Arguments
@@ -845,9 +845,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='POWER')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='POWER')
+                    ```
     
 
         Returns
@@ -866,8 +866,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.log(value1)
-        ```
+                v = integer.log(value1)
+                ```
     
 
         Arguments
@@ -884,9 +884,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
+                    ```
     
 
         Returns
@@ -905,8 +905,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.sqrt()
-        ```
+                v = integer.sqrt()
+                ```
     
 
         Arguments
@@ -922,9 +922,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='SQRT')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='SQRT')
+                    ```
     
 
         Returns
@@ -943,8 +943,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.inverse_sqrt()
-        ```
+                v = integer.inverse_sqrt()
+                ```
     
 
         Arguments
@@ -960,9 +960,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='INVERSE_SQRT')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='INVERSE_SQRT')
+                    ```
     
 
         Returns
@@ -981,8 +981,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.abs()
-        ```
+                v = integer.abs()
+                ```
     
 
         Arguments
@@ -998,9 +998,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='ABSOLUTE')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='ABSOLUTE')
+                    ```
     
 
         Returns
@@ -1019,8 +1019,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.exp()
-        ```
+                v = integer.exp()
+                ```
     
 
         Arguments
@@ -1036,9 +1036,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='EXPONENT')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='EXPONENT')
+                    ```
     
 
         Returns
@@ -1057,8 +1057,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.min(value1)
-        ```
+                v = integer.min(value1)
+                ```
     
 
         Arguments
@@ -1075,9 +1075,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='MINIMUM')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='MINIMUM')
+                    ```
     
 
         Returns
@@ -1096,8 +1096,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.max(value1)
-        ```
+                v = integer.max(value1)
+                ```
     
 
         Arguments
@@ -1114,9 +1114,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
+                    ```
     
 
         Returns
@@ -1135,8 +1135,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.less_than(value1)
-        ```
+                v = integer.less_than(value1)
+                ```
     
 
         Arguments
@@ -1153,9 +1153,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
+                    ```
     
 
         Returns
@@ -1174,8 +1174,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.greater_than(value1)
-        ```
+                v = integer.greater_than(value1)
+                ```
     
 
         Arguments
@@ -1192,9 +1192,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
+                    ```
     
 
         Returns
@@ -1213,8 +1213,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.sign()
-        ```
+                v = integer.sign()
+                ```
     
 
         Arguments
@@ -1230,9 +1230,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='SIGN')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='SIGN')
+                    ```
     
 
         Returns
@@ -1251,8 +1251,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.compare(value1, value2)
-        ```
+                v = integer.compare(value1, value2)
+                ```
     
 
         Arguments
@@ -1270,9 +1270,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE')
+                    ```
     
 
         Returns
@@ -1291,8 +1291,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.smooth_min(value1, value2)
-        ```
+                v = integer.smooth_min(value1, value2)
+                ```
     
 
         Arguments
@@ -1310,9 +1310,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN')
+                    ```
     
 
         Returns
@@ -1331,8 +1331,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.smooth_max(value1, value2)
-        ```
+                v = integer.smooth_max(value1, value2)
+                ```
     
 
         Arguments
@@ -1350,9 +1350,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX')
+                    ```
     
 
         Returns
@@ -1371,8 +1371,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.round()
-        ```
+                v = integer.round()
+                ```
     
 
         Arguments
@@ -1388,9 +1388,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='ROUND')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='ROUND')
+                    ```
     
 
         Returns
@@ -1409,8 +1409,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.floor()
-        ```
+                v = integer.floor()
+                ```
     
 
         Arguments
@@ -1426,9 +1426,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='FLOOR')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='FLOOR')
+                    ```
     
 
         Returns
@@ -1447,8 +1447,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.ceil()
-        ```
+                v = integer.ceil()
+                ```
     
 
         Arguments
@@ -1464,9 +1464,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='CEIL')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='CEIL')
+                    ```
     
 
         Returns
@@ -1485,8 +1485,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.trunc()
-        ```
+                v = integer.trunc()
+                ```
     
 
         Arguments
@@ -1502,9 +1502,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='TRUNC')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='TRUNC')
+                    ```
     
 
         Returns
@@ -1523,8 +1523,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.fract()
-        ```
+                v = integer.fract()
+                ```
     
 
         Arguments
@@ -1540,9 +1540,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='FRACT')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='FRACT')
+                    ```
     
 
         Returns
@@ -1561,8 +1561,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.modulo(value1)
-        ```
+                v = integer.modulo(value1)
+                ```
     
 
         Arguments
@@ -1579,9 +1579,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='MODULO')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='MODULO')
+                    ```
     
 
         Returns
@@ -1600,8 +1600,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.wrap(value1, value2)
-        ```
+                v = integer.wrap(value1, value2)
+                ```
     
 
         Arguments
@@ -1619,9 +1619,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP')
+                    ```
     
 
         Returns
@@ -1640,8 +1640,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.snap(value1)
-        ```
+                v = integer.snap(value1)
+                ```
     
 
         Arguments
@@ -1658,9 +1658,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='SNAP')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='SNAP')
+                    ```
     
 
         Returns
@@ -1679,8 +1679,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.pingpong(value1)
-        ```
+                v = integer.pingpong(value1)
+                ```
     
 
         Arguments
@@ -1697,9 +1697,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='PINGPONG')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='PINGPONG')
+                    ```
     
 
         Returns
@@ -1718,8 +1718,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.sin()
-        ```
+                v = integer.sin()
+                ```
     
 
         Arguments
@@ -1735,9 +1735,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='SINE')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='SINE')
+                    ```
     
 
         Returns
@@ -1756,8 +1756,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.cos()
-        ```
+                v = integer.cos()
+                ```
     
 
         Arguments
@@ -1773,9 +1773,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='COSINE')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='COSINE')
+                    ```
     
 
         Returns
@@ -1794,8 +1794,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.tan()
-        ```
+                v = integer.tan()
+                ```
     
 
         Arguments
@@ -1811,9 +1811,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='TANGENT')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='TANGENT')
+                    ```
     
 
         Returns
@@ -1832,8 +1832,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.arcsin()
-        ```
+                v = integer.arcsin()
+                ```
     
 
         Arguments
@@ -1849,9 +1849,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='ARCSINE')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='ARCSINE')
+                    ```
     
 
         Returns
@@ -1870,8 +1870,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.arccos()
-        ```
+                v = integer.arccos()
+                ```
     
 
         Arguments
@@ -1887,9 +1887,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='ARCCOSINE')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='ARCCOSINE')
+                    ```
     
 
         Returns
@@ -1908,8 +1908,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.arctan()
-        ```
+                v = integer.arctan()
+                ```
     
 
         Arguments
@@ -1925,9 +1925,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='ARCTANGENT')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='ARCTANGENT')
+                    ```
     
 
         Returns
@@ -1946,8 +1946,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.arctan2(value1)
-        ```
+                v = integer.arctan2(value1)
+                ```
     
 
         Arguments
@@ -1964,9 +1964,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
+                    ```
     
 
         Returns
@@ -1985,8 +1985,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.sinh()
-        ```
+                v = integer.sinh()
+                ```
     
 
         Arguments
@@ -2002,9 +2002,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='SINH')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='SINH')
+                    ```
     
 
         Returns
@@ -2023,8 +2023,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.cosh()
-        ```
+                v = integer.cosh()
+                ```
     
 
         Arguments
@@ -2040,9 +2040,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='COSH')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='COSH')
+                    ```
     
 
         Returns
@@ -2061,8 +2061,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.tanh()
-        ```
+                v = integer.tanh()
+                ```
     
 
         Arguments
@@ -2078,9 +2078,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='TANH')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='TANH')
+                    ```
     
 
         Returns
@@ -2099,8 +2099,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.radians()
-        ```
+                v = integer.radians()
+                ```
     
 
         Arguments
@@ -2116,9 +2116,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='RADIANS')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='RADIANS')
+                    ```
     
 
         Returns
@@ -2137,8 +2137,8 @@ class Integer(dsock.Integer):
         node ref Math </sub>
         
         ```python
-        v = integer.degrees()
-        ```
+                v = integer.degrees()
+                ```
     
 
         Arguments
@@ -2154,9 +2154,9 @@ class Integer(dsock.Integer):
         Node creation
         -------------
             ```python
-            from geondes import nodes
-            nodes.Math(value0=self, operation='DEGREES')
-            ```
+                    from geondes import nodes
+                    nodes.Math(value0=self, operation='DEGREES')
+                    ```
     
 
         Returns

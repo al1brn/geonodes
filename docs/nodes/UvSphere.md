@@ -9,9 +9,9 @@
 ## Initialization
 
 ```python
-from geonodes import nodes
-node = nodes.UvSphere(segments=None, rings=None, radius=None, label=None)
-```
+        from geonodes import nodes
+        node = nodes.UvSphere(segments=None, rings=None, radius=None, label=None)
+        ```
 
 
 
