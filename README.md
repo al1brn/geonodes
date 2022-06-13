@@ -111,7 +111,7 @@ my_mesh.set_shade_smoth()
 # to the input socket of 'Set Shade Smooth'
 ```
 
-For more details, see [Nodes and sockets](nodes_and_sockets.md)
+For more details, see [Nodes and sockets](docs/nodes_and_sockets.md)
 
 ### Data socket classes
 
