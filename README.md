@@ -2,24 +2,44 @@
 
 ![Scripting Geometry Nodes for Blender](docs/images/geonodes.png)
 
+## Short
+
+> **Geometry nodes** is a powerful **Blender** feature allowing the creation of amazing 3D models.
+> However, nodes trees can rapidly look like a _spaghetti plate_ difficult to understand and to maintain.
+> Complex formulas are not easy to build and debugging can be a headache.<br>
+> 
+> The purpose of **_geonodes_** is to to create geometry nodes with python scripts.<br>
+> 
+> You keep the full power of Blender geometry nodes but with the elegance of Python.
 
 # Table of contents
 
-- [Short description](#short-description)
 - [Installation](#installation)
-- [Overview](#overview)
-- [Quick reference](#quick-reference)
+- [A quick demo to understand](#a-quick-demo-to-undertand)
+- [Documentation](#document)
 - [Index](#index)
 
-## Short description
+# Installation
 
-Geometry nodes can be somehow difficult to maintain. The more nodes you have, the more difficult it is to
-understand the algorithm. Debugging and maintaining a geometry nodes tree can be difficult, especially if
-you get it from somebody else.
+**geonode** is a python package. To install it, copy the package folder **geonodes** in `scripts/modules`.
 
-Geonodes module offers an elegant alternative by using the python style way to create the nodes.
+The Blender `scripts` folder is defined in Blender preferences, see: [Blender File Paths settings](https://docs.blender.org/manual/en/latest/editors/preferences/file_paths.html).
 
-## Example
+> Note that **geonodes** is a python module, not an Blender addon
+
+After the install, the Blender scripts hierarchy should look like:
+```
+.../scripts/
+       modules/
+           geonodes/
+               __init__.py
+               core/
+               nodes/
+               sockets/
+               ...
+```
+
+## A quick demo to undertand
 
 Here after is an example of a simple script. It creates a surface from a grid by computing
 `z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the distance of the vertex to the center.
@@ -28,25 +48,30 @@ Here after is an example of a simple script. It creates a surface from a grid by
 import geonodes as gn
 
 with gn.Tree("Geometry Nodes") as tree:
-    
+
+    # Let's document our parameters
     count = 100   # Grid resolution
     size  = 20    # Size
     omega = 2.    # Period
     height = 2.   # Height of the surface
     
+    # The base (x, y) grid
     grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
     
+    # We compute z
     with tree.layout("Computing the wave", color="dark_rose"):
         
         distance = gn.sqrt(grid.position.x**2 + grid.position.y**2)
         z = height * gn.sin(distance*omega)/distance
         
+    # Let's change the z coordinate of our vertices
     grid.set_position(offset=(0, 0, z))
     
+    # We are done: plugging the deformed grid as the modified geometry
     tree.output_geometry = grid.set_shade_smooth()     
 ```
 
-### Generated nodes
+> See [Demo details TBD](docs/demo.md)
 
 The generated nodes and the result of the Geometry nodes modifier is given below:
 
