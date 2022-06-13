@@ -72,6 +72,32 @@ The `tree_name` is the name of a geometry nodes modifier. If it doesn't exist, i
 
 Fore more details, see [class Tree reference](Tree.md)
 
+### Variables
+
+You can use standard Python variables:
+
+```python
+    count  = 100  # Grid resolution
+    size   = 20   # Size
+    omega  = 2.   # Period
+    height = 2.   # Height of the surface
+```
+
+The variables can be used to standard python computing:
+
+```python
+# We need an angle of 30 degrees
+angle = pi / 6
+```
+
+The variables can also be used as default values of node sockets:
+
+```python
+# Let's create an UV sphere of radius 0.5
+r = 0.5
+sphere = gn.Mesh.UVSphere(radius=r)
+```
+
 
 
 
