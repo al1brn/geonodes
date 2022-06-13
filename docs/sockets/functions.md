@@ -23,6 +23,9 @@ v = gn.sin(v)         # The sine of this value
 - [arcsin](#arcsin) : value (Float)
 - [arctan](#arctan) : value (Float)
 - [arctan2](#arctan2) : value (Float)
+- [b_and](#b_and) : boolean (Boolean)
+- [b_not](#b_not) : boolean (Boolean)
+- [b_or](#b_or) : boolean (Boolean)
 - [ceil](#ceil) : value (Float)
 - [color_add](#color_add) : color (Color)
 - [color_burn](#color_burn) : color (Color)
@@ -57,6 +60,7 @@ v = gn.sin(v)         # The sine of this value
 - [fract](#fract) : value (Float)
 - [fraction](#fraction) : vector (Vector)
 - [greater_than](#greater_than) : value (Float)
+- [imply](#imply) : boolean (Boolean)
 - [inverse_sqrt](#inverse_sqrt) : value (Float)
 - [join_strings](#join_strings) : string (String)
 - [length](#length) : value (Float)
@@ -67,6 +71,9 @@ v = gn.sin(v)         # The sine of this value
 - [modulo](#modulo) : value (Float)
 - [multiply](#multiply) : value (Float)
 - [multiply_add](#multiply_add) : value (Float)
+- [nand](#nand) : boolean (Boolean)
+- [nimply](#nimply) : boolean (Boolean)
+- [nor](#nor) : boolean (Boolean)
 - [normalize](#normalize) : vector (Vector)
 - [pingpong](#pingpong) : value (Float)
 - [pow](#pow) : value (Float)
@@ -105,6 +112,8 @@ v = gn.sin(v)         # The sine of this value
 - [vector_tan](#vector_tan) : vector (Vector)
 - [vector_wrap](#vector_wrap) : vector (Vector)
 - [wrap](#wrap) : value (Float)
+- [xnor](#xnor) : boolean (Boolean)
+- [xor](#xor) : boolean (Boolean)
 
 ## compare
 
@@ -195,6 +204,285 @@ nodes.SceneTime()
 ### Returns
 
 Sockets [seconds (Float), frame (Float)]
+
+
+## b_and
+
+> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+  
+<sub>go to: [top](#data-socket-functions) [index](/docs/index.md)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
+                          
+```python
+v = functions.b_and(boolean0, boolean1, operation)
+```
+
+### Arguments
+
+## Sockets
+- boolean0 : Boolean
+- boolean1 : Boolean## Parameters
+- operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+```
+
+### Returns
+
+Boolean
+
+
+## b_or
+
+> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+  
+<sub>go to: [top](#data-socket-functions) [index](/docs/index.md)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
+                          
+```python
+v = functions.b_or(boolean0, boolean1, operation)
+```
+
+### Arguments
+
+## Sockets
+- boolean0 : Boolean
+- boolean1 : Boolean## Parameters
+- operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+```
+
+### Returns
+
+Boolean
+
+
+## b_not
+
+> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+  
+<sub>go to: [top](#data-socket-functions) [index](/docs/index.md)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
+                          
+```python
+v = functions.b_not(boolean0, boolean1, operation)
+```
+
+### Arguments
+
+## Sockets
+- boolean0 : Boolean
+- boolean1 : Boolean## Parameters
+- operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+```
+
+### Returns
+
+Boolean
+
+
+## nand
+
+> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+  
+<sub>go to: [top](#data-socket-functions) [index](/docs/index.md)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
+                          
+```python
+v = functions.nand(boolean0, boolean1, operation)
+```
+
+### Arguments
+
+## Sockets
+- boolean0 : Boolean
+- boolean1 : Boolean## Parameters
+- operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+```
+
+### Returns
+
+Boolean
+
+
+## nor
+
+> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+  
+<sub>go to: [top](#data-socket-functions) [index](/docs/index.md)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
+                          
+```python
+v = functions.nor(boolean0, boolean1, operation)
+```
+
+### Arguments
+
+## Sockets
+- boolean0 : Boolean
+- boolean1 : Boolean## Parameters
+- operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+```
+
+### Returns
+
+Boolean
+
+
+## xnor
+
+> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+  
+<sub>go to: [top](#data-socket-functions) [index](/docs/index.md)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
+                          
+```python
+v = functions.xnor(boolean0, boolean1, operation)
+```
+
+### Arguments
+
+## Sockets
+- boolean0 : Boolean
+- boolean1 : Boolean## Parameters
+- operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+```
+
+### Returns
+
+Boolean
+
+
+## xor
+
+> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+  
+<sub>go to: [top](#data-socket-functions) [index](/docs/index.md)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
+                          
+```python
+v = functions.xor(boolean0, boolean1, operation)
+```
+
+### Arguments
+
+## Sockets
+- boolean0 : Boolean
+- boolean1 : Boolean## Parameters
+- operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+```
+
+### Returns
+
+Boolean
+
+
+## imply
+
+> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+  
+<sub>go to: [top](#data-socket-functions) [index](/docs/index.md)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
+                          
+```python
+v = functions.imply(boolean0, boolean1, operation)
+```
+
+### Arguments
+
+## Sockets
+- boolean0 : Boolean
+- boolean1 : Boolean## Parameters
+- operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+```
+
+### Returns
+
+Boolean
+
+
+## nimply
+
+> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+  
+<sub>go to: [top](#data-socket-functions) [index](/docs/index.md)
+blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
+                          
+```python
+v = functions.nimply(boolean0, boolean1, operation)
+```
+
+### Arguments
+
+## Sockets
+- boolean0 : Boolean
+- boolean1 : Boolean## Parameters
+- operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+```
+
+### Returns
+
+Boolean
 
 
 ## add

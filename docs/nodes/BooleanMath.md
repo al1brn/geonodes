@@ -49,4 +49,13 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND', label=No
 - [Boolean](/docs/sockets/Boolean.md).[nor](/docs/sockets/Boolean.md#nor) : Method
 - [Boolean](/docs/sockets/Boolean.md).[xnor](/docs/sockets/Boolean.md#xnor) : Method
 - [Boolean](/docs/sockets/Boolean.md).[xor](/docs/sockets/Boolean.md#xor) : Method
+- [functions](/docs/sockets/functions.md).[b_and](/docs/sockets/functions.md#b_and) : Function
+- [functions](/docs/sockets/functions.md).[b_not](/docs/sockets/functions.md#b_not) : Function
+- [functions](/docs/sockets/functions.md).[b_or](/docs/sockets/functions.md#b_or) : Function
+- [functions](/docs/sockets/functions.md).[imply](/docs/sockets/functions.md#imply) : Function
+- [functions](/docs/sockets/functions.md).[nand](/docs/sockets/functions.md#nand) : Function
+- [functions](/docs/sockets/functions.md).[nimply](/docs/sockets/functions.md#nimply) : Function
+- [functions](/docs/sockets/functions.md).[nor](/docs/sockets/functions.md#nor) : Function
+- [functions](/docs/sockets/functions.md).[xnor](/docs/sockets/functions.md#xnor) : Function
+- [functions](/docs/sockets/functions.md).[xor](/docs/sockets/functions.md#xor) : Function
   

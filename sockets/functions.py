@@ -14,20 +14,21 @@ import logging
 logger = logging.Logger('geonodes')
 
 """ Function to declare in file __init__.py
-from geonodes.sockets.functions import abs, add, arccos, arcsin, arctan, arctan2, ceil, color_add, color_burn
-from geonodes.sockets.functions import color_darken, color_difference, color_divide, color_dodge, color_hue
-from geonodes.sockets.functions import color_lighten, color_linear_light, color_mix, color_mix_color, color_multiply
-from geonodes.sockets.functions import color_overlay, color_saturation, color_screen, color_soft_light
-from geonodes.sockets.functions import color_subtract, color_value, compare, compare, cos, cosh, cross
-from geonodes.sockets.functions import degrees, distance, divide, dot, exp, faceforward, floor, fract
-from geonodes.sockets.functions import fraction, greater_than, inverse_sqrt, join_strings, length, less_than
-from geonodes.sockets.functions import log, max, min, modulo, multiply, multiply_add, normalize, pingpong
-from geonodes.sockets.functions import pow, project, radians, reflect, refract, round, scale, scene, sign
-from geonodes.sockets.functions import sin, sinh, smooth_max, smooth_min, snap, sqrt, subtract, tan, tanh
-from geonodes.sockets.functions import trunc, vector_absolute, vector_add, vector_ceil, vector_cos, vector_divide
+from geonodes.sockets.functions import abs, add, arccos, arcsin, arctan, arctan2, b_and, b_not, b_or, ceil
+from geonodes.sockets.functions import color_add, color_burn, color_darken, color_difference, color_divide
+from geonodes.sockets.functions import color_dodge, color_hue, color_lighten, color_linear_light, color_mix
+from geonodes.sockets.functions import color_mix_color, color_multiply, color_overlay, color_saturation
+from geonodes.sockets.functions import color_screen, color_soft_light, color_subtract, color_value, compare
+from geonodes.sockets.functions import compare, cos, cosh, cross, degrees, distance, divide, dot, exp
+from geonodes.sockets.functions import faceforward, floor, fract, fraction, greater_than, imply, inverse_sqrt
+from geonodes.sockets.functions import join_strings, length, less_than, log, max, min, modulo, multiply
+from geonodes.sockets.functions import multiply_add, nand, nimply, nor, normalize, pingpong, pow, project
+from geonodes.sockets.functions import radians, reflect, refract, round, scale, scene, sign, sin, sinh
+from geonodes.sockets.functions import smooth_max, smooth_min, snap, sqrt, subtract, tan, tanh, trunc
+from geonodes.sockets.functions import vector_absolute, vector_add, vector_ceil, vector_cos, vector_divide
 from geonodes.sockets.functions import vector_floor, vector_max, vector_min, vector_modulo, vector_multiply
 from geonodes.sockets.functions import vector_multiply_add, vector_sin, vector_snap, vector_subtract, vector_tan
-from geonodes.sockets.functions import vector_wrap, wrap
+from geonodes.sockets.functions import vector_wrap, wrap, xnor, xor
 """
 
 """ 
@@ -57,6 +58,9 @@ geonodes functions
         - arcsin : value (Float)
         - arctan : value (Float)
         - arctan2 : value (Float)
+        - b_and : boolean (Boolean)
+        - b_not : boolean (Boolean)
+        - b_or : boolean (Boolean)
         - ceil : value (Float)
         - color_add : color (Color)
         - color_burn : color (Color)
@@ -91,6 +95,7 @@ geonodes functions
         - fract : value (Float)
         - fraction : vector (Vector)
         - greater_than : value (Float)
+        - imply : boolean (Boolean)
         - inverse_sqrt : value (Float)
         - join_strings : string (String)
         - length : value (Float)
@@ -101,6 +106,9 @@ geonodes functions
         - modulo : value (Float)
         - multiply : value (Float)
         - multiply_add : value (Float)
+        - nand : boolean (Boolean)
+        - nimply : boolean (Boolean)
+        - nor : boolean (Boolean)
         - normalize : vector (Vector)
         - pingpong : value (Float)
         - pow : value (Float)
@@ -139,6 +147,8 @@ geonodes functions
         - vector_tan : vector (Vector)
         - vector_wrap : vector (Vector)
         - wrap : value (Float)
+        - xnor : boolean (Boolean)
+        - xor : boolean (Boolean)
 """
 
 
@@ -250,6 +260,330 @@ def scene():
     """
 
     return nodes.SceneTime()
+
+def b_and(boolean0=None, boolean1=None, operation='AND'):
+    """ > Node: BooleanMath
+      
+    <sub>go to: top index
+    blender ref FunctionNodeBooleanMath
+    node ref Boolean Math </sub>
+                              
+    ```python
+    v = functions.b_and(boolean0, boolean1, operation)
+    ```
+
+
+    Arguments
+    ---------
+        ## Sockets
+        - boolean0 : Boolean
+        - boolean1 : Boolean## Parameters
+        - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+
+    Node creation
+    -------------
+        ```python
+        from geondes import nodes
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        ```
+
+
+    Returns
+    -------
+        Boolean
+        
+    """
+
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
+
+def b_or(boolean0=None, boolean1=None, operation='AND'):
+    """ > Node: BooleanMath
+      
+    <sub>go to: top index
+    blender ref FunctionNodeBooleanMath
+    node ref Boolean Math </sub>
+                              
+    ```python
+    v = functions.b_or(boolean0, boolean1, operation)
+    ```
+
+
+    Arguments
+    ---------
+        ## Sockets
+        - boolean0 : Boolean
+        - boolean1 : Boolean## Parameters
+        - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+
+    Node creation
+    -------------
+        ```python
+        from geondes import nodes
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        ```
+
+
+    Returns
+    -------
+        Boolean
+        
+    """
+
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
+
+def b_not(boolean0=None, boolean1=None, operation='AND'):
+    """ > Node: BooleanMath
+      
+    <sub>go to: top index
+    blender ref FunctionNodeBooleanMath
+    node ref Boolean Math </sub>
+                              
+    ```python
+    v = functions.b_not(boolean0, boolean1, operation)
+    ```
+
+
+    Arguments
+    ---------
+        ## Sockets
+        - boolean0 : Boolean
+        - boolean1 : Boolean## Parameters
+        - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+
+    Node creation
+    -------------
+        ```python
+        from geondes import nodes
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        ```
+
+
+    Returns
+    -------
+        Boolean
+        
+    """
+
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
+
+def nand(boolean0=None, boolean1=None, operation='AND'):
+    """ > Node: BooleanMath
+      
+    <sub>go to: top index
+    blender ref FunctionNodeBooleanMath
+    node ref Boolean Math </sub>
+                              
+    ```python
+    v = functions.nand(boolean0, boolean1, operation)
+    ```
+
+
+    Arguments
+    ---------
+        ## Sockets
+        - boolean0 : Boolean
+        - boolean1 : Boolean## Parameters
+        - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+
+    Node creation
+    -------------
+        ```python
+        from geondes import nodes
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        ```
+
+
+    Returns
+    -------
+        Boolean
+        
+    """
+
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
+
+def nor(boolean0=None, boolean1=None, operation='AND'):
+    """ > Node: BooleanMath
+      
+    <sub>go to: top index
+    blender ref FunctionNodeBooleanMath
+    node ref Boolean Math </sub>
+                              
+    ```python
+    v = functions.nor(boolean0, boolean1, operation)
+    ```
+
+
+    Arguments
+    ---------
+        ## Sockets
+        - boolean0 : Boolean
+        - boolean1 : Boolean## Parameters
+        - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+
+    Node creation
+    -------------
+        ```python
+        from geondes import nodes
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        ```
+
+
+    Returns
+    -------
+        Boolean
+        
+    """
+
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
+
+def xnor(boolean0=None, boolean1=None, operation='AND'):
+    """ > Node: BooleanMath
+      
+    <sub>go to: top index
+    blender ref FunctionNodeBooleanMath
+    node ref Boolean Math </sub>
+                              
+    ```python
+    v = functions.xnor(boolean0, boolean1, operation)
+    ```
+
+
+    Arguments
+    ---------
+        ## Sockets
+        - boolean0 : Boolean
+        - boolean1 : Boolean## Parameters
+        - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+
+    Node creation
+    -------------
+        ```python
+        from geondes import nodes
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        ```
+
+
+    Returns
+    -------
+        Boolean
+        
+    """
+
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
+
+def xor(boolean0=None, boolean1=None, operation='AND'):
+    """ > Node: BooleanMath
+      
+    <sub>go to: top index
+    blender ref FunctionNodeBooleanMath
+    node ref Boolean Math </sub>
+                              
+    ```python
+    v = functions.xor(boolean0, boolean1, operation)
+    ```
+
+
+    Arguments
+    ---------
+        ## Sockets
+        - boolean0 : Boolean
+        - boolean1 : Boolean## Parameters
+        - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+
+    Node creation
+    -------------
+        ```python
+        from geondes import nodes
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        ```
+
+
+    Returns
+    -------
+        Boolean
+        
+    """
+
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
+
+def imply(boolean0=None, boolean1=None, operation='AND'):
+    """ > Node: BooleanMath
+      
+    <sub>go to: top index
+    blender ref FunctionNodeBooleanMath
+    node ref Boolean Math </sub>
+                              
+    ```python
+    v = functions.imply(boolean0, boolean1, operation)
+    ```
+
+
+    Arguments
+    ---------
+        ## Sockets
+        - boolean0 : Boolean
+        - boolean1 : Boolean## Parameters
+        - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+
+    Node creation
+    -------------
+        ```python
+        from geondes import nodes
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        ```
+
+
+    Returns
+    -------
+        Boolean
+        
+    """
+
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
+
+def nimply(boolean0=None, boolean1=None, operation='AND'):
+    """ > Node: BooleanMath
+      
+    <sub>go to: top index
+    blender ref FunctionNodeBooleanMath
+    node ref Boolean Math </sub>
+                              
+    ```python
+    v = functions.nimply(boolean0, boolean1, operation)
+    ```
+
+
+    Arguments
+    ---------
+        ## Sockets
+        - boolean0 : Boolean
+        - boolean1 : Boolean## Parameters
+        - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+
+
+    Node creation
+    -------------
+        ```python
+        from geondes import nodes
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        ```
+
+
+    Returns
+    -------
+        Boolean
+        
+    """
+
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
 
 def add(value0=None, value1=None):
     """ > Node: Math
