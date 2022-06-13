@@ -117,7 +117,27 @@ In the following script, we slightly modify our script by initializing `size` as
     grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
 ````
 
-The resulting tree is the following:
+The resulting tree is the following. The two `Vertices` input sockets are initialized with the same value. The two `Size` sockets are linked to the output socket of a 'Value' node. One can change the value of the node to see the result on the outpur geometry.
+
+<img src="/docs/images/demo_1_grid_1.png" width = "200">
+
+> Note: remember that the nodes are deleted a each run of the script. Hence, if you change the value in a node, the change will be lost next time you will run the script. To avoid that, either your put the value you want in the script or your read the next section.
+
+### Group inputs
+
+Rather that creating an input Node to initialize your data, you can use a group socket, i.e. a **Group input socket**. All data classes expose the constructor method Input.
+
+Let's modify our script. This time, we initialize count as being a Group input socket.
+
+> Note: an **input** socket of the modifier is an **output socket** of the node 'Group Input'.
+
+```python
+    count  = gn.Integer.Input(100, "Grid resolution")
+    size   = gn.Float(20.)
+    
+    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
+````
+
 
 
 
