@@ -262,6 +262,7 @@ If it is not the case, we must insert a "Capture Attribute" node.
 The insertion is made with the following algorithm
 
   1. Check if capture is needed
+     
     - for each fed node:
       - if the node has an input geometry:
         - if the input geometry is the expected one:
