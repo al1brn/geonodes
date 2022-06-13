@@ -121,7 +121,7 @@ The resulting tree is the following. The two `Vertices` input sockets are initia
 
 <img src="/docs/images/demo_1_grid_1.png" width = "200">
 
-> Note: remember that the nodes are reinitialized a each run of the script. Hence, if you change the value in the nodes, the change will be lost next time you will run the script. To avoid that, either your capture the parameter which better fits your needs in the script or your read the wollowing section.
+> Note: remember that the nodes are deleted a each run of the script. Hence, if you change the value in a node, the change will be lost next time you will run the script. To avoid that, either your put the value you want in the script or your read the next section.
 
 ### Group inputs
 
