@@ -184,7 +184,7 @@ Layouts are ways to make the trees clearer. Creating a layout makes use of the `
 
 Note that the layout can be nested.
 
-### Operations and computations
+### Math
 
 Python operators can be used on geonodes values. Are after are example of valid operations:
 
@@ -194,17 +194,48 @@ a += 3                   # Node "Math" between previous node and default value 3
 b = gn.sin(a)            # Math operations are implemented as functions
 v = gn.Vector((1, 2, 3)) # Node "Combine XYZ"
 w = v - (2, 3, a)        # Vector math between the previous vector and a "Combine XYZ" node
+```
 
-# Python bool operators can't be used:
+### Boolean math
 
+Python bool operators `and`, `or` and `not` are reserved keywords. **geonodes** functions are respectively named `b_and`, `b_or` and `b_not`:
+
+```python
 yes = gn.Boolean(True)
 no = yes.b_not()            # Don't use no = not yes
 perhaps = gn.b_or(yes, no)  # don't use perhaps = yes or no
-perhaps = yes + no          # Operator + can be used as logical or
-sure = yes * no             # Operator * can be used as logical and 
-no = -yes                   # Unary operator can be used as logical not
 ```
-  
+
+The basic logical operations are implemented with math operator `+`, `*` and `-`:
+
+```python
+yes = gn.Boolean(True)
+no = -yes          # Unary operator can be used as logical not
+perhaps = yes + no # Operator + can be used as logical or
+sure = yes * no    # Operator * can be used as logical and 
+```
+
+### Nodes methods
+
+The call of a data socket method creates a Geometry node which performed the expected operation.
+
+```python
+    grid.set_position(offset=(0, 0, z))
+```
+
+The node "Set Position" has 4 input sockets:
+- Geometry
+- Selection
+- Position
+- Offset
+
+In this example, it is created with the following links:
+- Geometry : linked with the output socket grid
+- Selection : no link
+- Position : no link
+- Position : the output socket of a node 'Combine XYZ'
+
+
 - **Methods**
 
   Nodes such as "Set position" are implemented as methods.
