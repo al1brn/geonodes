@@ -118,7 +118,7 @@ In the created node, the input socket `radius` is initialized with `0.5`:
 
 In this example, the variables are initialized in the script. They are pure Python variables. To change them, one need to modify the script and to rerun it.
 
-We creating a tree, we often need to change settings to see the effect on the geometry. This can be achieved by initializing a **geonodes** type rather that a python type.
+When creating a tree, we often need to change settings to see the effect on the geometry. This can be achieved by initializing a **geonodes** type rather that a python type.
 
 In the following script, we slightly modify our script by initializing `size` as a **geonodes** type. It is not anymore a Python `float` but `gn.Float` i.e. the output socket of a Geometry Node (in that case, the output socket of the input node 'Value'):
 
