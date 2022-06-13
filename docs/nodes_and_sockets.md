@@ -2,7 +2,7 @@
 
 > Linking nodes is a way to program something
 
-If you are familiar with build Geometry Nodes in Blender (if it is not the case, you won't take the maximum benefit of continuing reading this page), you shouldn't have difficulties with these 4 concepts:
+If you are familiar with building Geometry Nodes in Blender (if it is not the case, you won't take the maximum benefit of continuing reading this page), you shouldn't have difficulties with these 4 concepts:
 
 - Node
 - Input socket
@@ -13,7 +13,30 @@ Linking two nodes consists in performing an action defined by the second node on
 
 For instance, let's have a look to the two following linked nodes:
 
-<img src="nns_basis.png" height="200">
+<img src="/docs/images/nns_basis.png" height="200">
+
+The operation 'Set Shade Smooth' is performed on the 'Geometry' output from the node 'UV Sphere'. We have then another geometry which is the smoothed sphere.
+
+In standard programming, you would translate that in:
+
+```python
+    smoothed_sphere = flat_sphere.set_shade_smooth()
+```
+
+Let's look at another example:
+
+<img src="/docs/images/nns_to_mesh.png" height="200">
+
+
+
+## 
+
+
+This is the way **geonodes** operates:
+- each output socket of a node is data
+- a node is an operation performed on a data
+- 
+
 
 
 
