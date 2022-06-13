@@ -171,8 +171,11 @@ Layouts are ways to make the trees clearer. Creating a layout makes use of the `
 
 ```python
     with tree.layout("Computing the wave", color="dark_rose"):
-        # From now on, the nodes will be created in the layout
+    
+        # From now on, nodes will be created in a dark pink layout
+        
         distance = gn.sqrt(grid.position.x**2 + grid.position.y**2)
+        z = height * gn.sin(distance*omega)/distance
         
    # New nodes are created out of the previous layout
 ```
@@ -181,23 +184,26 @@ Layouts are ways to make the trees clearer. Creating a layout makes use of the `
 
 Note that the layout can be nested.
 
+### Operations and computations
 
-  
-- **Layouts**
+Python operators can be used on geonodes values. Are after are example of valid operations:
 
-  Layouts can be created to make the result more readable and to help debug. Layout are initialized with a label and a color.
-  All nodes created in the `with tree.layout():` scope are placed in this layout.
-  
-- **Operators**
+```python
+a = gn.Float(10)         # The node "Value"
+a += 3                   # Node "Math" between previous node and default value 3
+b = gn.sin(a)            # Math operations are implemented as functions
+v = gn.Vector((1, 2, 3)) # Node "Combine XYZ"
+w = v - (2, 3, a)        # Vector math between the previous vector and a "Combine XYZ" node
 
-  Python operators can be used on geonodes types. Operations between geonodes types and standard python types are valid in some cases:
-  
-  ```python
-  a = gn.Float(10)         # The node "Value"
-  a += 3                   # Node "Math" between previous node and default value 3
-  v = gn.Vector((1, 2, 3)) # Node "Combine XYZ"
-  w = v - (2, 3, a)        # Vector math between the previous vector and a "Combine XYZ" node
-  ```
+# Python bool operators can't be used:
+
+yes = gn.Boolean(True)
+no = yes.b_not()            # Don't use no = not yes
+perhaps = gn.b_or(yes, no)  # don't use perhaps = yes or no
+perhaps = yes + no.         # Operator + can be used as logical or
+sure = yes * no             # Operator * can be used as logical and 
+no = -yes                   # Unary operator can be used as logical not
+```
   
 - **Methods**
 
