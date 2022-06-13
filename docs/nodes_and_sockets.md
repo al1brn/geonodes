@@ -117,7 +117,7 @@ It does mean that each node as a 'self' input socket which will be connected to 
 
 ## Nodes parameters and method names
 
-Some nodes have parameters. Let's look at the 'Mesh_to_points' node:
+Some nodes have parameters. Let's look at the 'Mesh to Points' node:
 
 <img src="/docs/images/mesh_to_points.png" height="250">
 
