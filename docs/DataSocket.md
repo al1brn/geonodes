@@ -226,21 +226,21 @@ After the method return, the calling DataSocket instance refers to a new Blender
 # to_mesh method creates a new mesh from a curve.
 # The curve instance refers to the same output node socket
 # We need to get the result of the method in a new variable
-                                                                                                   
+
 new_mesh = curve.to_mesh(profile_curve=circle)
-                                                                                                   
+
 # 2. Transformation mode
 #
 # set_shade_smooth method transformes the mesh.
 # After the call, the mesh instance refers to the output socket of the
 # newly created node "Set Shade Smooth". There is no need to get the result
 # of the method.
-                                                                                                   
+
 mesh.set_shade_smooth()
-                                                                                                   
+
 # Note that a transformation method returns self and so, the following line
 # is equivallent:
-                                                                                                   
+
 mesh = mesh.set_shade_smooth()
 ```
 
