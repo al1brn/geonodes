@@ -41,7 +41,22 @@ math_node = nodes.Math(operation='SUBTRACT')
 result = math_node.value
 ```
 
-> Note that the sockets are the snake_case version See the naming convention
+> Note that the sockets are the snake_case version See naming convention.
+
+Sockets are properties of the nodes and can be used to link nodes together:
+
+```python
+from geonodes import nodes
+
+a = nodes.Integer(9) # Node 'Integer' with 9 as default value
+b = nodes.Integer(5) # Node 'Integer' with 5 as default value
+
+subtract = nodes.Math(operation='SUBTRACT')
+subtract.value0 = a
+subtract.value1 = b
+
+result = subtract.value
+```
 
 
 
