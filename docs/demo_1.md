@@ -117,7 +117,7 @@ In the following script, we slightly modify our script by initializing `size` as
     grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
 ````
 
-The resulting tree is the following. The two `Vertices` input sockets are initialized with the same value. The two `Size` sockets are linked to the output socket of a 'Value' node. One can change the value of the node to see the result on the outpur geometry.
+The resulting tree is the following. The two `Vertices` input sockets are initialized with the same value. The two `Size` sockets are linked to the output socket of a 'Value' node. One can change the value of the node to see the result on the output geometry.
 
 <img src="/docs/images/demo_1_grid_1.png" height = "200">
 
@@ -125,7 +125,7 @@ The resulting tree is the following. The two `Vertices` input sockets are initia
 
 ### Group inputs
 
-Rather that creating an input Node to initialize your data, you can use a group socket, i.e. a **Group input socket**. All data classes expose the constructor method Input.
+Rather that creating an input Node to initialize your data, you can use a group socket, i.e. a **Group input socket**. All data classes expose the constructor method `Input`.
 
 Let's modify our script. This time, we initialize count as being a Group input socket.
 
@@ -140,6 +140,23 @@ Let's modify our script. This time, we initialize count as being a Group input s
 In the resulting tree, the node 'Grid' is now fed by one node and a user parameter named 'Resolution':
 
 <img src="/docs/images/demo_1_grid_2.png" height = "200">
+
+### Geometry creation
+
+In our demo, the initial grid is created with the following line:
+
+```python
+    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
+```
+
+Geometry creation is done through the nodes located in the menus **Mesh Primitives** and **Curve Primitives**.
+
+In **geonodes**, these nodes are implemented as **constructors** (class or static method) of [Mesh](/docs/sockets/Mesh.md] of [Curve](/docs/sockets/Curve.md] classes.
+
+
+
+
+
 
 
 
