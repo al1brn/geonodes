@@ -223,17 +223,11 @@ The call of a data socket method creates a Geometry node which performs the expe
     grid.set_position(offset=(0, 0, z))
 ```
 
-The node "Set Position" has 4 input sockets:
-- Geometry
-- Selection
-- Position
-- Offset
-
-In this example, it is created with the following links:
+The node 'Set Position' has 4 input sockets (Geometry, Selection, Position, Offset). In this example, the node is created with the following links:
 - Geometry : linked with the output socket grid
 - Selection : no link
 - Position : no link
-- Position : the output socket of a node 'Combine XYZ'
+- Position : linked ot the output socket of a node 'Combine XYZ'
 
 This is illustrated here below:
 
