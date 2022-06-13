@@ -25,7 +25,7 @@ The following script creates a surface from a grid by computing
 `z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the distance of the vertex to the center.
 
 ```python
-# Import the geonodes modules
+# Import the geonodes module
 # gn is the suggested alias
 import geonodes as gn
 
