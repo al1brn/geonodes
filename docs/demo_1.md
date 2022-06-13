@@ -45,7 +45,7 @@ The generated nodes and the result of the Geometry nodes modifier is given below
 import geonodes as gn
 ```
 
-Be sure to have properly installed the **geonodes** module as described in [Installation](..\readme.md#installation).
+Be sure to have properly installed the **geonodes** module as described in [Installation](..\README.md#installation).
 
 
 Let's review this demo in details and study alternative.
