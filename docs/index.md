@@ -40,7 +40,7 @@
 - [Node Clamp](/docs/nodes/Clamp.md)
 - [Node CollectionInfo](/docs/nodes/CollectionInfo.md)
 - [Node Color](/docs/nodes/Color.md)
-- [Node Colorramp](/docs/nodes/Colorramp.md)
+- [Node ColorRamp](/docs/nodes/ColorRamp.md)
 - [Node CombineRgb](/docs/nodes/CombineRgb.md)
 - [Node CombineXyz](/docs/nodes/CombineXyz.md)
 - [Node Compare](/docs/nodes/Compare.md)

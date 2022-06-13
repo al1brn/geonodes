@@ -1859,7 +1859,7 @@ String
 
 ## color_ramp
 
-> Node: [Colorramp](/docs/nodes/Colorramp.md)
+> Node: [ColorRamp](/docs/nodes/ColorRamp.md)
   
 <sub>go to: [top](#data-socket-float) [index](/docs/index.md)
 blender ref [ShaderNodeValToRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
@@ -1878,7 +1878,7 @@ v = float.color_ramp()
 
 ```python
 from geondes import nodes
-nodes.Colorramp(fac=self)
+nodes.ColorRamp(fac=self)
 ```
 
 ### Returns

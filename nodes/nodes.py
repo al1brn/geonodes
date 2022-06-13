@@ -12399,13 +12399,13 @@ class WhiteNoiseTexture(Node):
         self.bnode.noise_dimensions = value
 
 # ----------------------------------------------------------------------------------------------------
-# Node Colorramp for ShaderNodeValToRGB
+# Node ColorRamp for ShaderNodeValToRGB
 
-class Colorramp(Node):
+class ColorRamp(Node):
 
     """
 
-    Node Colorramp
+    Node ColorRamp
     --------------
         > Geometry node name: ColorRamp<br>
           Blender type: ColorRamp
@@ -12417,7 +12417,7 @@ class Colorramp(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Colorramp(fac=None, label=None)
+            node = nodes.ColorRamp(fac=None, label=None)
             ```
             
             

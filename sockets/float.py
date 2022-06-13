@@ -2175,7 +2175,7 @@ class Float(dsock.Float):
         return nodes.ValueToString(value=self, decimals=decimals).string
 
     def color_ramp(self):
-        """ > Node: Colorramp
+        """ > Node: ColorRamp
           
         <sub>go to: top index
         blender ref ShaderNodeValToRGB
@@ -2196,7 +2196,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Colorramp(fac=self)
+            nodes.ColorRamp(fac=self)
             ```
     
 
@@ -2206,7 +2206,7 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Colorramp(fac=self)
+        return nodes.ColorRamp(fac=self)
 
     def curve(self, factor=None):
         """ > Node: FloatCurve

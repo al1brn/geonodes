@@ -1,5 +1,5 @@
 
-# Node Colorramp
+# Node ColorRamp
 
 > Geometry node name: [ColorRamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html)<br>
   Blender type: [ColorRamp](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.Colorramp(fac=None, label=None)
+node = nodes.ColorRamp(fac=None, label=None)
 ```
 
 
