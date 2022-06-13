@@ -217,7 +217,7 @@ sure = yes * no    # Operator * can be used as logical and
 
 ### Nodes methods
 
-The call of a data socket method creates a Geometry node which performed the expected operation.
+The call of a data socket method creates a Geometry node which performs the expected operation.
 
 ```python
     grid.set_position(offset=(0, 0, z))
@@ -235,6 +235,9 @@ In this example, it is created with the following links:
 - Position : no link
 - Position : the output socket of a node 'Combine XYZ'
 
+This is illustrated here below:
+
+<img src="/docs/images/demo_1_set_position.png" height="200">
 
 - **Methods**
 
