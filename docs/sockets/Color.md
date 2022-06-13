@@ -63,12 +63,10 @@ v = Color.Combine(r, g, b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - r : Float
-  - g : Float
-  - b : Float
+- g : Float
+- b : Float
 
 ### Node creation
 
@@ -96,11 +94,9 @@ v = color.separate
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - image : Color (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.separate"
+- label:f"{self.node_chain_label}.separate"
 
 ### Node creation
 
@@ -128,11 +124,9 @@ v = color.r
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - image : Color (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.r"
+- label:f"{self.node_chain_label}.r"
 
 ### Node creation
 
@@ -160,11 +154,9 @@ v = color.g
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - image : Color (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.g"
+- label:f"{self.node_chain_label}.g"
 
 ### Node creation
 
@@ -192,11 +184,9 @@ v = color.b
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - image : Color (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.b"
+- label:f"{self.node_chain_label}.b"
 
 ### Node creation
 
@@ -224,16 +214,14 @@ v = color.transfer_attribute(source, source_position, index, domain, mapping)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - attribute : Color (self)
-  - source : Geometry
-  - source_position : Vector
-  - index : Integer## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-  - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-  - data_type : 'FLOAT_COLOR'
+- source : Geometry
+- source_position : Vector
+- index : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+- data_type : 'FLOAT_COLOR'
 
 ### Node creation
 
@@ -261,13 +249,11 @@ v = color.capture_attribute(geometry, domain)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value : Color (self)
-  - geometry : Geometry## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-  - data_type : 'FLOAT_COLOR'
+- geometry : Geometry## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+- data_type : 'FLOAT_COLOR'
 
 ### Node creation
 
@@ -295,13 +281,11 @@ v = color.field_at_index(index, domain)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value : Color (self)
-  - index : Integer## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-  - data_type : 'FLOAT_COLOR'
+- index : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+- data_type : 'FLOAT_COLOR'
 
 ### Node creation
 
@@ -329,16 +313,14 @@ v = color.raycast(target_geometry, source_position, ray_direction, ray_length, m
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - attribute : Color (self)
-  - target_geometry : Geometry
-  - source_position : Vector
-  - ray_direction : Vector
-  - ray_length : Float## Parameters
-  - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
-  - data_type : 'FLOAT_COLOR'
+- target_geometry : Geometry
+- source_position : Vector
+- ray_direction : Vector
+- ray_length : Float## Parameters
+- mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
+- data_type : 'FLOAT_COLOR'
 
 ### Node creation
 
@@ -366,15 +348,13 @@ v = color.equal(b, epsilon)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : Color (self)
-  - b : Color
-  - epsilon : Float## Fixed parameters
-  - data_type : 'RGBA'
-  - mode : 'ELEMENT'
-  - operation : 'EQUAL'
+- b : Color
+- epsilon : Float## Fixed parameters
+- data_type : 'RGBA'
+- mode : 'ELEMENT'
+- operation : 'EQUAL'
 
 ### Node creation
 
@@ -402,15 +382,13 @@ v = color.not_equal(b, epsilon)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : Color (self)
-  - b : Color
-  - epsilon : Float## Fixed parameters
-  - data_type : 'RGBA'
-  - mode : 'ELEMENT'
-  - operation : 'NOT_EQUAL'
+- b : Color
+- epsilon : Float## Fixed parameters
+- data_type : 'RGBA'
+- mode : 'ELEMENT'
+- operation : 'NOT_EQUAL'
 
 ### Node creation
 
@@ -438,14 +416,12 @@ v = color.brighter(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : Color (self)
-  - b : Color## Fixed parameters
-  - data_type : 'RGBA'
-  - mode : 'ELEMENT'
-  - operation : 'BRIGHTER'
+- b : Color## Fixed parameters
+- data_type : 'RGBA'
+- mode : 'ELEMENT'
+- operation : 'BRIGHTER'
 
 ### Node creation
 
@@ -473,14 +449,12 @@ v = color.darker(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : Color (self)
-  - b : Color## Fixed parameters
-  - data_type : 'RGBA'
-  - mode : 'ELEMENT'
-  - operation : 'DARKER'
+- b : Color## Fixed parameters
+- data_type : 'RGBA'
+- mode : 'ELEMENT'
+- operation : 'DARKER'
 
 ### Node creation
 
@@ -508,14 +482,12 @@ v = color.mix(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'MIX'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'MIX'
 
 ### Node creation
 
@@ -543,14 +515,12 @@ v = color.darken(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'DARKEN'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'DARKEN'
 
 ### Node creation
 
@@ -578,14 +548,12 @@ v = color.multiply(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'MULTIPLY'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'MULTIPLY'
 
 ### Node creation
 
@@ -613,14 +581,12 @@ v = color.burn(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'BURN'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'BURN'
 
 ### Node creation
 
@@ -648,14 +614,12 @@ v = color.lighten(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'LIGHTEN'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'LIGHTEN'
 
 ### Node creation
 
@@ -683,14 +647,12 @@ v = color.screen(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'SCREEN'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'SCREEN'
 
 ### Node creation
 
@@ -718,14 +680,12 @@ v = color.dodge(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'DODGE'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'DODGE'
 
 ### Node creation
 
@@ -753,14 +713,12 @@ v = color.add(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'ADD'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'ADD'
 
 ### Node creation
 
@@ -788,14 +746,12 @@ v = color.overlay(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'OVERLAY'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'OVERLAY'
 
 ### Node creation
 
@@ -823,14 +779,12 @@ v = color.soft_light(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'SOFT_LIGHT'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'SOFT_LIGHT'
 
 ### Node creation
 
@@ -858,14 +812,12 @@ v = color.linear_light(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'LINEAR_LIGHT'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'LINEAR_LIGHT'
 
 ### Node creation
 
@@ -893,14 +845,12 @@ v = color.difference(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'DIFFERENCE'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'DIFFERENCE'
 
 ### Node creation
 
@@ -928,14 +878,12 @@ v = color.subtract(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'SUBTRACT'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'SUBTRACT'
 
 ### Node creation
 
@@ -963,14 +911,12 @@ v = color.divide(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'DIVIDE'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'DIVIDE'
 
 ### Node creation
 
@@ -998,14 +944,12 @@ v = color.hue(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'HUE'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'HUE'
 
 ### Node creation
 
@@ -1033,14 +977,12 @@ v = color.saturation(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'SATURATION'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'SATURATION'
 
 ### Node creation
 
@@ -1068,14 +1010,12 @@ v = color.mix_color(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'COLOR'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'COLOR'
 
 ### Node creation
 
@@ -1103,14 +1043,12 @@ v = color.value(color2, fac, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - use_alpha : False## Fixed parameters
-  - blend_type : 'VALUE'
+- color2 : Color
+- fac : Float## Parameters
+- use_alpha : False## Fixed parameters
+- blend_type : 'VALUE'
 
 ### Node creation
 
@@ -1138,11 +1076,9 @@ v = color.curves(fac)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color : Color (self)
-  - fac : Float
+- fac : Float
 
 ### Node creation
 
@@ -1170,14 +1106,12 @@ v = color.mix(color2, fac, blend_type, use_alpha)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - color1 : Color (self)
-  - color2 : Color
-  - fac : Float## Parameters
-  - blend_type : 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
-  - use_alpha : False
+- color2 : Color
+- fac : Float## Parameters
+- blend_type : 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
+- use_alpha : False
 
 ### Node creation
 

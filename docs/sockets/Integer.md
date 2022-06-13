@@ -80,14 +80,12 @@ v = Integer.Random(min, max, ID, seed)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - min : Integer
-  - max : Integer
-  - ID : Integer
-  - seed : Integer## Fixed parameters
-  - data_type : 'INT'
+- max : Integer
+- ID : Integer
+- seed : Integer## Fixed parameters
+- data_type : 'INT'
 
 ### Node creation
 
@@ -115,13 +113,11 @@ v = integer.accumulate_field(group_index, domain)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value : Integer (self)
-  - group_index : Integer## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-  - data_type : 'INT'
+- group_index : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+- data_type : 'INT'
 
 ### Node creation
 
@@ -149,16 +145,14 @@ v = integer.transfer_attribute(source, source_position, index, domain, mapping)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - attribute : Integer (self)
-  - source : Geometry
-  - source_position : Vector
-  - index : Integer## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-  - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-  - data_type : 'INT'
+- source : Geometry
+- source_position : Vector
+- index : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+- data_type : 'INT'
 
 ### Node creation
 
@@ -186,13 +180,11 @@ v = integer.capture_attribute(geometry, domain)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value : Integer (self)
-  - geometry : Geometry## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-  - data_type : 'INT'
+- geometry : Geometry## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+- data_type : 'INT'
 
 ### Node creation
 
@@ -220,13 +212,11 @@ v = integer.field_at_index(value, domain)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - index : Integer (self)
-  - value : Integer## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-  - data_type : 'INT'
+- value : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+- data_type : 'INT'
 
 ### Node creation
 
@@ -254,16 +244,14 @@ v = integer.raycast(target_geometry, source_position, ray_direction, ray_length,
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - attribute : Integer (self)
-  - target_geometry : Geometry
-  - source_position : Vector
-  - ray_direction : Vector
-  - ray_length : Float## Parameters
-  - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
-  - data_type : 'INT'
+- target_geometry : Geometry
+- source_position : Vector
+- ray_direction : Vector
+- ray_length : Float## Parameters
+- mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
+- data_type : 'INT'
 
 ### Node creation
 
@@ -291,13 +279,11 @@ v = integer.switch(switch0, true)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - false : Integer (self)
-  - switch0 : Boolean
-  - true : Integer## Fixed parameters
-  - input_type : 'INT'
+- switch0 : Boolean
+- true : Integer## Fixed parameters
+- input_type : 'INT'
 
 ### Node creation
 
@@ -325,14 +311,12 @@ v = integer.less_than(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : Integer (self)
-  - b : Integer## Fixed parameters
-  - data_type : 'INT'
-  - mode : 'ELEMENT'
-  - operation : 'LESS_THAN'
+- b : Integer## Fixed parameters
+- data_type : 'INT'
+- mode : 'ELEMENT'
+- operation : 'LESS_THAN'
 
 ### Node creation
 
@@ -360,14 +344,12 @@ v = integer.less_equal(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : Integer (self)
-  - b : Integer## Fixed parameters
-  - data_type : 'INT'
-  - mode : 'ELEMENT'
-  - operation : 'LESS_EQUAL'
+- b : Integer## Fixed parameters
+- data_type : 'INT'
+- mode : 'ELEMENT'
+- operation : 'LESS_EQUAL'
 
 ### Node creation
 
@@ -395,14 +377,12 @@ v = integer.greater_than(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : Integer (self)
-  - b : Integer## Fixed parameters
-  - data_type : 'INT'
-  - mode : 'ELEMENT'
-  - operation : 'GREATER_THAN'
+- b : Integer## Fixed parameters
+- data_type : 'INT'
+- mode : 'ELEMENT'
+- operation : 'GREATER_THAN'
 
 ### Node creation
 
@@ -430,14 +410,12 @@ v = integer.greater_equal(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : Integer (self)
-  - b : Integer## Fixed parameters
-  - data_type : 'INT'
-  - mode : 'ELEMENT'
-  - operation : 'GREATER_EQUAL'
+- b : Integer## Fixed parameters
+- data_type : 'INT'
+- mode : 'ELEMENT'
+- operation : 'GREATER_EQUAL'
 
 ### Node creation
 
@@ -465,14 +443,12 @@ v = integer.equal(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : Integer (self)
-  - b : Integer## Fixed parameters
-  - data_type : 'INT'
-  - mode : 'ELEMENT'
-  - operation : 'EQUAL'
+- b : Integer## Fixed parameters
+- data_type : 'INT'
+- mode : 'ELEMENT'
+- operation : 'EQUAL'
 
 ### Node creation
 
@@ -500,14 +476,12 @@ v = integer.not_equal(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : Integer (self)
-  - b : Integer## Fixed parameters
-  - data_type : 'INT'
-  - mode : 'ELEMENT'
-  - operation : 'NOT_EQUAL'
+- b : Integer## Fixed parameters
+- data_type : 'INT'
+- mode : 'ELEMENT'
+- operation : 'NOT_EQUAL'
 
 ### Node creation
 
@@ -535,12 +509,10 @@ v = integer.add(value1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float## Fixed parameters
-  - operation : 'ADD'
+- value1 : Float## Fixed parameters
+- operation : 'ADD'
 
 ### Node creation
 
@@ -568,12 +540,10 @@ v = integer.subtract(value1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float## Fixed parameters
-  - operation : 'SUBTRACT'
+- value1 : Float## Fixed parameters
+- operation : 'SUBTRACT'
 
 ### Node creation
 
@@ -601,12 +571,10 @@ v = integer.multiply(value1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float## Fixed parameters
-  - operation : 'MULTIPLY'
+- value1 : Float## Fixed parameters
+- operation : 'MULTIPLY'
 
 ### Node creation
 
@@ -634,12 +602,10 @@ v = integer.divide(value1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float## Fixed parameters
-  - operation : 'DIVIDE'
+- value1 : Float## Fixed parameters
+- operation : 'DIVIDE'
 
 ### Node creation
 
@@ -667,13 +633,11 @@ v = integer.multiply_add(value1, value2)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float
-  - value2 : Float## Fixed parameters
-  - operation : 'MULTIPLY_ADD'
+- value1 : Float
+- value2 : Float## Fixed parameters
+- operation : 'MULTIPLY_ADD'
 
 ### Node creation
 
@@ -701,12 +665,10 @@ v = integer.pow(value1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float## Fixed parameters
-  - operation : 'POWER'
+- value1 : Float## Fixed parameters
+- operation : 'POWER'
 
 ### Node creation
 
@@ -734,12 +696,10 @@ v = integer.log(value1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float## Fixed parameters
-  - operation : 'LOGARITHM'
+- value1 : Float## Fixed parameters
+- operation : 'LOGARITHM'
 
 ### Node creation
 
@@ -767,11 +727,9 @@ v = integer.sqrt()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'SQRT'
+- operation : 'SQRT'
 
 ### Node creation
 
@@ -799,11 +757,9 @@ v = integer.inverse_sqrt()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'INVERSE_SQRT'
+- operation : 'INVERSE_SQRT'
 
 ### Node creation
 
@@ -831,11 +787,9 @@ v = integer.abs()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'ABSOLUTE'
+- operation : 'ABSOLUTE'
 
 ### Node creation
 
@@ -863,11 +817,9 @@ v = integer.exp()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'EXPONENT'
+- operation : 'EXPONENT'
 
 ### Node creation
 
@@ -895,12 +847,10 @@ v = integer.min(value1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float## Fixed parameters
-  - operation : 'MINIMUM'
+- value1 : Float## Fixed parameters
+- operation : 'MINIMUM'
 
 ### Node creation
 
@@ -928,12 +878,10 @@ v = integer.max(value1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float## Fixed parameters
-  - operation : 'MAXIMUM'
+- value1 : Float## Fixed parameters
+- operation : 'MAXIMUM'
 
 ### Node creation
 
@@ -961,12 +909,10 @@ v = integer.less_than(value1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float## Fixed parameters
-  - operation : 'LESS_THAN'
+- value1 : Float## Fixed parameters
+- operation : 'LESS_THAN'
 
 ### Node creation
 
@@ -994,12 +940,10 @@ v = integer.greater_than(value1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float## Fixed parameters
-  - operation : 'GREATER_THAN'
+- value1 : Float## Fixed parameters
+- operation : 'GREATER_THAN'
 
 ### Node creation
 
@@ -1027,11 +971,9 @@ v = integer.sign()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'SIGN'
+- operation : 'SIGN'
 
 ### Node creation
 
@@ -1059,13 +1001,11 @@ v = integer.compare(value1, value2)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float
-  - value2 : Float## Fixed parameters
-  - operation : 'COMPARE'
+- value1 : Float
+- value2 : Float## Fixed parameters
+- operation : 'COMPARE'
 
 ### Node creation
 
@@ -1093,13 +1033,11 @@ v = integer.smooth_min(value1, value2)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float
-  - value2 : Float## Fixed parameters
-  - operation : 'SMOOTH_MIN'
+- value1 : Float
+- value2 : Float## Fixed parameters
+- operation : 'SMOOTH_MIN'
 
 ### Node creation
 
@@ -1127,13 +1065,11 @@ v = integer.smooth_max(value1, value2)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float
-  - value2 : Float## Fixed parameters
-  - operation : 'SMOOTH_MAX'
+- value1 : Float
+- value2 : Float## Fixed parameters
+- operation : 'SMOOTH_MAX'
 
 ### Node creation
 
@@ -1161,11 +1097,9 @@ v = integer.round()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'ROUND'
+- operation : 'ROUND'
 
 ### Node creation
 
@@ -1193,11 +1127,9 @@ v = integer.floor()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'FLOOR'
+- operation : 'FLOOR'
 
 ### Node creation
 
@@ -1225,11 +1157,9 @@ v = integer.ceil()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'CEIL'
+- operation : 'CEIL'
 
 ### Node creation
 
@@ -1257,11 +1187,9 @@ v = integer.trunc()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'TRUNC'
+- operation : 'TRUNC'
 
 ### Node creation
 
@@ -1289,11 +1217,9 @@ v = integer.fract()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'FRACT'
+- operation : 'FRACT'
 
 ### Node creation
 
@@ -1321,12 +1247,10 @@ v = integer.modulo(value1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float## Fixed parameters
-  - operation : 'MODULO'
+- value1 : Float## Fixed parameters
+- operation : 'MODULO'
 
 ### Node creation
 
@@ -1354,13 +1278,11 @@ v = integer.wrap(value1, value2)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float
-  - value2 : Float## Fixed parameters
-  - operation : 'WRAP'
+- value1 : Float
+- value2 : Float## Fixed parameters
+- operation : 'WRAP'
 
 ### Node creation
 
@@ -1388,12 +1310,10 @@ v = integer.snap(value1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float## Fixed parameters
-  - operation : 'SNAP'
+- value1 : Float## Fixed parameters
+- operation : 'SNAP'
 
 ### Node creation
 
@@ -1421,12 +1341,10 @@ v = integer.pingpong(value1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float## Fixed parameters
-  - operation : 'PINGPONG'
+- value1 : Float## Fixed parameters
+- operation : 'PINGPONG'
 
 ### Node creation
 
@@ -1454,11 +1372,9 @@ v = integer.sin()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'SINE'
+- operation : 'SINE'
 
 ### Node creation
 
@@ -1486,11 +1402,9 @@ v = integer.cos()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'COSINE'
+- operation : 'COSINE'
 
 ### Node creation
 
@@ -1518,11 +1432,9 @@ v = integer.tan()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'TANGENT'
+- operation : 'TANGENT'
 
 ### Node creation
 
@@ -1550,11 +1462,9 @@ v = integer.arcsin()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'ARCSINE'
+- operation : 'ARCSINE'
 
 ### Node creation
 
@@ -1582,11 +1492,9 @@ v = integer.arccos()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'ARCCOSINE'
+- operation : 'ARCCOSINE'
 
 ### Node creation
 
@@ -1614,11 +1522,9 @@ v = integer.arctan()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'ARCTANGENT'
+- operation : 'ARCTANGENT'
 
 ### Node creation
 
@@ -1646,12 +1552,10 @@ v = integer.arctan2(value1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)
-  - value1 : Float## Fixed parameters
-  - operation : 'ARCTAN2'
+- value1 : Float## Fixed parameters
+- operation : 'ARCTAN2'
 
 ### Node creation
 
@@ -1679,11 +1583,9 @@ v = integer.sinh()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'SINH'
+- operation : 'SINH'
 
 ### Node creation
 
@@ -1711,11 +1613,9 @@ v = integer.cosh()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'COSH'
+- operation : 'COSH'
 
 ### Node creation
 
@@ -1743,11 +1643,9 @@ v = integer.tanh()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'TANH'
+- operation : 'TANH'
 
 ### Node creation
 
@@ -1775,11 +1673,9 @@ v = integer.radians()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'RADIANS'
+- operation : 'RADIANS'
 
 ### Node creation
 
@@ -1807,11 +1703,9 @@ v = integer.degrees()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value0 : Float (self)## Fixed parameters
-  - operation : 'DEGREES'
+- operation : 'DEGREES'
 
 ### Node creation
 

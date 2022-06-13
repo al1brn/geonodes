@@ -32,9 +32,7 @@ v = instances.instance_index(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -63,14 +61,12 @@ v = instances.rotate(selection, rotation, pivot_point, local_space)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - instances : Instances (self)
-  - selection : Boolean
-  - rotation : Vector
-  - pivot_point : Vector
-  - local_space : Boolean
+- selection : Boolean
+- rotation : Vector
+- pivot_point : Vector
+- local_space : Boolean
 
 ### Node creation
 
@@ -98,14 +94,12 @@ v = instances.scale(selection, scale, center, local_space)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - instances : Instances (self)
-  - selection : Boolean
-  - scale : Vector
-  - center : Vector
-  - local_space : Boolean
+- selection : Boolean
+- scale : Vector
+- center : Vector
+- local_space : Boolean
 
 ### Node creation
 
@@ -133,13 +127,11 @@ v = instances.translate(selection, translation, local_space)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - instances : Instances (self)
-  - selection : Boolean
-  - translation : Vector
-  - local_space : Boolean
+- selection : Boolean
+- translation : Vector
+- local_space : Boolean
 
 ### Node creation
 
@@ -167,13 +159,11 @@ v = instances.to_points(selection, position, radius)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - instances : Instances (self)
-  - selection : Boolean
-  - position : Vector
-  - radius : Float
+- selection : Boolean
+- position : Vector
+- radius : Float
 
 ### Node creation
 

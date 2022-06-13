@@ -43,14 +43,11 @@ class Image(dsock.Image):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - false : Image (self)
-                    - switch1 : Boolean
-                    - true : Image## Fixed parameters
-                    - input_type : 'IMAGE'
+            ## Sockets
+            - false : Image (self)
+            - switch1 : Boolean
+            - true : Image## Fixed parameters
+            - input_type : 'IMAGE'
     
 
         Node creation

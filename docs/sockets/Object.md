@@ -33,13 +33,11 @@ v = object.info
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - object : Object (self)
-  - as_instance : Boolean## Parameters
-  - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
-  - label:f"{self.node_chain_label}.info"
+- as_instance : Boolean## Parameters
+- transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
+- label:f"{self.node_chain_label}.info"
 
 ### Node creation
 
@@ -67,13 +65,11 @@ v = object.location
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - object : Object (self)
-  - as_instance : Boolean## Parameters
-  - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
-  - label:f"{self.node_chain_label}.location"
+- as_instance : Boolean## Parameters
+- transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
+- label:f"{self.node_chain_label}.location"
 
 ### Node creation
 
@@ -101,13 +97,11 @@ v = object.rotation
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - object : Object (self)
-  - as_instance : Boolean## Parameters
-  - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
-  - label:f"{self.node_chain_label}.rotation"
+- as_instance : Boolean## Parameters
+- transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
+- label:f"{self.node_chain_label}.rotation"
 
 ### Node creation
 
@@ -135,13 +129,11 @@ v = object.scale
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - object : Object (self)
-  - as_instance : Boolean## Parameters
-  - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
-  - label:f"{self.node_chain_label}.scale"
+- as_instance : Boolean## Parameters
+- transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
+- label:f"{self.node_chain_label}.scale"
 
 ### Node creation
 
@@ -169,13 +161,11 @@ v = object.geometry
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - object : Object (self)
-  - as_instance : Boolean## Parameters
-  - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
-  - label:f"{self.node_chain_label}.geometry"
+- as_instance : Boolean## Parameters
+- transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
+- label:f"{self.node_chain_label}.geometry"
 
 ### Node creation
 
@@ -203,13 +193,11 @@ v = object.switch(switch1, true)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - false : Object (self)
-  - switch1 : Boolean
-  - true : Object## Fixed parameters
-  - input_type : 'OBJECT'
+- switch1 : Boolean
+- true : Object## Fixed parameters
+- input_type : 'OBJECT'
 
 ### Node creation
 

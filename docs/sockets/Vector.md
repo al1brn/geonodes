@@ -81,14 +81,12 @@ v = Vector.Random(min, max, ID, seed)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - min : Vector
-  - max : Vector
-  - ID : Integer
-  - seed : Integer## Fixed parameters
-  - data_type : 'FLOAT_VECTOR'
+- max : Vector
+- ID : Integer
+- seed : Integer## Fixed parameters
+- data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -116,12 +114,10 @@ v = Vector.Combine(x, y, z)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - x : Float
-  - y : Float
-  - z : Float
+- y : Float
+- z : Float
 
 ### Node creation
 
@@ -149,14 +145,12 @@ v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - rotation : Vector
-  - factor : Float
-  - vector : Vector## Parameters
-  - axis : 'X' in [X, Y, Z]
-  - pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
+- factor : Float
+- vector : Vector## Parameters
+- axis : 'X' in [X, Y, Z]
+- pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
 
 ### Node creation
 
@@ -184,11 +178,9 @@ v = vector.separate
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector : Vector (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.separate"
+- label:f"{self.node_chain_label}.separate"
 
 ### Node creation
 
@@ -216,11 +208,9 @@ v = vector.x
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector : Vector (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.x"
+- label:f"{self.node_chain_label}.x"
 
 ### Node creation
 
@@ -248,11 +238,9 @@ v = vector.y
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector : Vector (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.y"
+- label:f"{self.node_chain_label}.y"
 
 ### Node creation
 
@@ -280,11 +268,9 @@ v = vector.z
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector : Vector (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.z"
+- label:f"{self.node_chain_label}.z"
 
 ### Node creation
 
@@ -312,13 +298,11 @@ v = vector.accumulate_field(group_index, domain)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value : Vector (self)
-  - group_index : Integer## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-  - data_type : 'FLOAT_VECTOR'
+- group_index : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+- data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -346,14 +330,12 @@ v = vector.attribute_statistic(geometry, selection, domain)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - attribute : Vector (self)
-  - geometry : Geometry
-  - selection : Boolean## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-  - data_type : 'FLOAT_VECTOR'
+- geometry : Geometry
+- selection : Boolean## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+- data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -381,16 +363,14 @@ v = vector.transfer_attribute(source, source_position, index, domain, mapping)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - attribute : Vector (self)
-  - source : Geometry
-  - source_position : Vector
-  - index : Integer## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-  - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-  - data_type : 'FLOAT_VECTOR'
+- source : Geometry
+- source_position : Vector
+- index : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+- data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -418,13 +398,11 @@ v = vector.capture_attribute(geometry, domain)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value : Vector (self)
-  - geometry : Geometry## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-  - data_type : 'FLOAT_VECTOR'
+- geometry : Geometry## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+- data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -452,13 +430,11 @@ v = vector.field_at_index(index, domain)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - value : Vector (self)
-  - index : Integer## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
-  - data_type : 'FLOAT_VECTOR'
+- index : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+- data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -486,16 +462,14 @@ v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, 
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - attribute : Vector (self)
-  - target_geometry : Geometry
-  - source_position : Vector
-  - ray_direction : Vector
-  - ray_length : Float## Parameters
-  - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
-  - data_type : 'FLOAT_VECTOR'
+- target_geometry : Geometry
+- source_position : Vector
+- ray_direction : Vector
+- ray_length : Float## Parameters
+- mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
+- data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -523,17 +497,15 @@ v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_ty
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector : Vector (self)
-  - from_min : Vector
-  - from_max : Vector
-  - to_min : Vector
-  - to_max : Vector## Parameters
-  - clamp : True
-  - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]## Fixed parameters
-  - data_type : 'FLOAT_VECTOR'
+- from_min : Vector
+- from_max : Vector
+- to_min : Vector
+- to_max : Vector## Parameters
+- clamp : True
+- interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]## Fixed parameters
+- data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -561,16 +533,14 @@ v = vector.less_than(b, c, angle, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : Vector (self)
-  - b : Vector
-  - c : Float
-  - angle : Float## Parameters
-  - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
-  - data_type : 'VECTOR'
-  - operation : 'LESS_THAN'
+- b : Vector
+- c : Float
+- angle : Float## Parameters
+- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+- data_type : 'VECTOR'
+- operation : 'LESS_THAN'
 
 ### Node creation
 
@@ -598,16 +568,14 @@ v = vector.less_equal(b, c, angle, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : Vector (self)
-  - b : Vector
-  - c : Float
-  - angle : Float## Parameters
-  - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
-  - data_type : 'VECTOR'
-  - operation : 'LESS_EQUAL'
+- b : Vector
+- c : Float
+- angle : Float## Parameters
+- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+- data_type : 'VECTOR'
+- operation : 'LESS_EQUAL'
 
 ### Node creation
 
@@ -635,16 +603,14 @@ v = vector.greater_than(b, c, angle, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : Vector (self)
-  - b : Vector
-  - c : Float
-  - angle : Float## Parameters
-  - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
-  - data_type : 'VECTOR'
-  - operation : 'GREATER_THAN'
+- b : Vector
+- c : Float
+- angle : Float## Parameters
+- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+- data_type : 'VECTOR'
+- operation : 'GREATER_THAN'
 
 ### Node creation
 
@@ -672,16 +638,14 @@ v = vector.greater_equal(b, c, angle, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : Vector (self)
-  - b : Vector
-  - c : Float
-  - angle : Float## Parameters
-  - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
-  - data_type : 'VECTOR'
-  - operation : 'GREATER_EQUAL'
+- b : Vector
+- c : Float
+- angle : Float## Parameters
+- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+- data_type : 'VECTOR'
+- operation : 'GREATER_EQUAL'
 
 ### Node creation
 
@@ -709,17 +673,15 @@ v = vector.equal(b, c, angle, epsilon, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : Vector (self)
-  - b : Vector
-  - c : Float
-  - angle : Float
-  - epsilon : Float## Parameters
-  - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
-  - data_type : 'VECTOR'
-  - operation : 'EQUAL'
+- b : Vector
+- c : Float
+- angle : Float
+- epsilon : Float## Parameters
+- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+- data_type : 'VECTOR'
+- operation : 'EQUAL'
 
 ### Node creation
 
@@ -747,17 +709,15 @@ v = vector.not_equal(b, c, angle, epsilon, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : Vector (self)
-  - b : Vector
-  - c : Float
-  - angle : Float
-  - epsilon : Float## Parameters
-  - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
-  - data_type : 'VECTOR'
-  - operation : 'NOT_EQUAL'
+- b : Vector
+- c : Float
+- angle : Float
+- epsilon : Float## Parameters
+- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+- data_type : 'VECTOR'
+- operation : 'NOT_EQUAL'
 
 ### Node creation
 
@@ -785,12 +745,10 @@ v = vector.add(vector1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - vector1 : Vector## Fixed parameters
-  - operation : 'ADD'
+- vector1 : Vector## Fixed parameters
+- operation : 'ADD'
 
 ### Node creation
 
@@ -818,12 +776,10 @@ v = vector.subtract(vector1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - vector1 : Vector## Fixed parameters
-  - operation : 'SUBTRACT'
+- vector1 : Vector## Fixed parameters
+- operation : 'SUBTRACT'
 
 ### Node creation
 
@@ -851,12 +807,10 @@ v = vector.multiply(vector1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - vector1 : Vector## Fixed parameters
-  - operation : 'MULTIPLY'
+- vector1 : Vector## Fixed parameters
+- operation : 'MULTIPLY'
 
 ### Node creation
 
@@ -884,12 +838,10 @@ v = vector.divide(vector1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - vector1 : Vector## Fixed parameters
-  - operation : 'DIVIDE'
+- vector1 : Vector## Fixed parameters
+- operation : 'DIVIDE'
 
 ### Node creation
 
@@ -917,13 +869,11 @@ v = vector.multiply_add(vector1, vector2)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - vector1 : Vector
-  - vector2 : Vector## Fixed parameters
-  - operation : 'MULTIPLY_ADD'
+- vector1 : Vector
+- vector2 : Vector## Fixed parameters
+- operation : 'MULTIPLY_ADD'
 
 ### Node creation
 
@@ -951,12 +901,10 @@ v = vector.cross(vector1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - vector1 : Vector## Fixed parameters
-  - operation : 'CROSS_PRODUCT'
+- vector1 : Vector## Fixed parameters
+- operation : 'CROSS_PRODUCT'
 
 ### Node creation
 
@@ -984,12 +932,10 @@ v = vector.project(vector1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - vector1 : Vector## Fixed parameters
-  - operation : 'PROJECT'
+- vector1 : Vector## Fixed parameters
+- operation : 'PROJECT'
 
 ### Node creation
 
@@ -1017,12 +963,10 @@ v = vector.reflect(vector1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - vector1 : Vector## Fixed parameters
-  - operation : 'REFLECT'
+- vector1 : Vector## Fixed parameters
+- operation : 'REFLECT'
 
 ### Node creation
 
@@ -1050,13 +994,11 @@ v = vector.refract(vector1, scale)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - vector1 : Vector
-  - scale : Float## Fixed parameters
-  - operation : 'REFRACT'
+- vector1 : Vector
+- scale : Float## Fixed parameters
+- operation : 'REFRACT'
 
 ### Node creation
 
@@ -1084,13 +1026,11 @@ v = vector.faceforward(vector1, vector2)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - vector1 : Vector
-  - vector2 : Vector## Fixed parameters
-  - operation : 'FACEFORWARD'
+- vector1 : Vector
+- vector2 : Vector## Fixed parameters
+- operation : 'FACEFORWARD'
 
 ### Node creation
 
@@ -1118,12 +1058,10 @@ v = vector.dot(vector1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - vector1 : Vector## Fixed parameters
-  - operation : 'DOT_PRODUCT'
+- vector1 : Vector## Fixed parameters
+- operation : 'DOT_PRODUCT'
 
 ### Node creation
 
@@ -1151,12 +1089,10 @@ v = vector.distance(vector1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - vector1 : Vector## Fixed parameters
-  - operation : 'DISTANCE'
+- vector1 : Vector## Fixed parameters
+- operation : 'DISTANCE'
 
 ### Node creation
 
@@ -1184,11 +1120,9 @@ v = vector.length()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)## Fixed parameters
-  - operation : 'LENGTH'
+- operation : 'LENGTH'
 
 ### Node creation
 
@@ -1216,12 +1150,10 @@ v = vector.scale(scale)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - scale : Float## Fixed parameters
-  - operation : 'SCALE'
+- scale : Float## Fixed parameters
+- operation : 'SCALE'
 
 ### Node creation
 
@@ -1249,11 +1181,9 @@ v = vector.normalize()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)## Fixed parameters
-  - operation : 'NORMALIZE'
+- operation : 'NORMALIZE'
 
 ### Node creation
 
@@ -1281,11 +1211,9 @@ v = vector.absolute()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)## Fixed parameters
-  - operation : 'ABSOLUTE'
+- operation : 'ABSOLUTE'
 
 ### Node creation
 
@@ -1313,12 +1241,10 @@ v = vector.min(vector1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - vector1 : Vector## Fixed parameters
-  - operation : 'MINIMUM'
+- vector1 : Vector## Fixed parameters
+- operation : 'MINIMUM'
 
 ### Node creation
 
@@ -1346,12 +1272,10 @@ v = vector.max(vector1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - vector1 : Vector## Fixed parameters
-  - operation : 'MAXIMUM'
+- vector1 : Vector## Fixed parameters
+- operation : 'MAXIMUM'
 
 ### Node creation
 
@@ -1379,11 +1303,9 @@ v = vector.floor()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)## Fixed parameters
-  - operation : 'FLOOR'
+- operation : 'FLOOR'
 
 ### Node creation
 
@@ -1411,11 +1333,9 @@ v = vector.ceil()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)## Fixed parameters
-  - operation : 'CEIL'
+- operation : 'CEIL'
 
 ### Node creation
 
@@ -1443,11 +1363,9 @@ v = vector.fraction()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)## Fixed parameters
-  - operation : 'FRACTION'
+- operation : 'FRACTION'
 
 ### Node creation
 
@@ -1475,12 +1393,10 @@ v = vector.modulo(vector1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - vector1 : Vector## Fixed parameters
-  - operation : 'MODULO'
+- vector1 : Vector## Fixed parameters
+- operation : 'MODULO'
 
 ### Node creation
 
@@ -1508,13 +1424,11 @@ v = vector.wrap(vector1, vector2)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - vector1 : Vector
-  - vector2 : Vector## Fixed parameters
-  - operation : 'WRAP'
+- vector1 : Vector
+- vector2 : Vector## Fixed parameters
+- operation : 'WRAP'
 
 ### Node creation
 
@@ -1542,12 +1456,10 @@ v = vector.snap(vector1)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)
-  - vector1 : Vector## Fixed parameters
-  - operation : 'SNAP'
+- vector1 : Vector## Fixed parameters
+- operation : 'SNAP'
 
 ### Node creation
 
@@ -1575,11 +1487,9 @@ v = vector.sin()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)## Fixed parameters
-  - operation : 'SINE'
+- operation : 'SINE'
 
 ### Node creation
 
@@ -1607,11 +1517,9 @@ v = vector.cos()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)## Fixed parameters
-  - operation : 'COSINE'
+- operation : 'COSINE'
 
 ### Node creation
 
@@ -1639,11 +1547,9 @@ v = vector.tan()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector0 : Vector (self)## Fixed parameters
-  - operation : 'TANGENT'
+- operation : 'TANGENT'
 
 ### Node creation
 
@@ -1671,11 +1577,9 @@ v = vector.curves(fac)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector : Vector (self)
-  - fac : Float
+- fac : Float
 
 ### Node creation
 
@@ -1703,14 +1607,12 @@ v = vector.align_to_vector(factor, vector, axis, pivot_axis)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - rotation : Vector (self)
-  - factor : Float
-  - vector : Vector## Parameters
-  - axis : 'X' in [X, Y, Z]
-  - pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
+- factor : Float
+- vector : Vector## Parameters
+- axis : 'X' in [X, Y, Z]
+- pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
 
 ### Node creation
 
@@ -1738,12 +1640,10 @@ v = vector.rotate_euler(rotate_by, space)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - rotation : Vector (self)
-  - rotate_by : Vector## Parameters
-  - space : 'OBJECT' in [OBJECT, LOCAL]
+- rotate_by : Vector## Parameters
+- space : 'OBJECT' in [OBJECT, LOCAL]
 
 ### Node creation
 
@@ -1771,16 +1671,14 @@ v = vector.rotate(center, axis, angle, rotation, invert, rotation_type)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector : Vector (self)
-  - center : Vector
-  - axis : Vector
-  - angle : Float
-  - rotation : Vector## Parameters
-  - invert : False
-  - rotation_type : 'AXIS_ANGLE' in [AXIS_ANGLE, X_AXIS, Y_AXIS, Z_AXIS, EULER_XYZ]
+- center : Vector
+- axis : Vector
+- angle : Float
+- rotation : Vector## Parameters
+- invert : False
+- rotation_type : 'AXIS_ANGLE' in [AXIS_ANGLE, X_AXIS, Y_AXIS, Z_AXIS, EULER_XYZ]
 
 ### Node creation
 

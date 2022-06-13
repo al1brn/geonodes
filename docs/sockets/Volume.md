@@ -25,15 +25,13 @@ v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_m
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - volume : Volume (self)
-  - voxel_size : Float
-  - voxel_amount : Float
-  - threshold : Float
-  - adaptivity : Float## Parameters
-  - resolution_mode : 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
+- voxel_size : Float
+- voxel_amount : Float
+- threshold : Float
+- adaptivity : Float## Parameters
+- resolution_mode : 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
 
 ### Node creation
 

@@ -38,23 +38,21 @@ v = Texture.Brick(vector, color1, color2, mortar, scale, mortar_size, mortar_smo
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector : Vector
-  - color1 : Color
-  - color2 : Color
-  - mortar : Color
-  - scale : Float
-  - mortar_size : Float
-  - mortar_smooth : Float
-  - bias : Float
-  - brick_width : Float
-  - row_height : Float## Parameters
-  - offset : 0.5
-  - offset_frequency : 2
-  - squash : 1.0
-  - squash_frequency : 2
+- color1 : Color
+- color2 : Color
+- mortar : Color
+- scale : Float
+- mortar_size : Float
+- mortar_smooth : Float
+- bias : Float
+- brick_width : Float
+- row_height : Float## Parameters
+- offset : 0.5
+- offset_frequency : 2
+- squash : 1.0
+- squash_frequency : 2
 
 ### Node creation
 
@@ -82,13 +80,11 @@ v = Texture.Checker(vector, color1, color2, scale)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector : Vector
-  - color1 : Color
-  - color2 : Color
-  - scale : Float
+- color1 : Color
+- color2 : Color
+- scale : Float
 
 ### Node creation
 
@@ -116,11 +112,9 @@ v = Texture.Gradient(vector, gradient_type)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector : Vector## Parameters
-  - gradient_type : 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
+- gradient_type : 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
 
 ### Node creation
 
@@ -148,13 +142,11 @@ v = Texture.Magic(vector, scale, distortion, turbulence_depth)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector : Vector
-  - scale : Float
-  - distortion : Float## Parameters
-  - turbulence_depth : 2
+- scale : Float
+- distortion : Float## Parameters
+- turbulence_depth : 2
 
 ### Node creation
 
@@ -182,19 +174,17 @@ v = Texture.Musgrave(vector, w, scale, detail, dimension, lacunarity, offset, ga
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector : Vector
-  - w : Float
-  - scale : Float
-  - detail : Float
-  - dimension : Float
-  - lacunarity : Float
-  - offset : Float
-  - gain : Float## Parameters
-  - musgrave_dimensions : '3D' in [1D, 2D, 3D, 4D]
-  - musgrave_type : 'FBM' in [MULTIFRACTAL, RIDGED_MULTIFRACTAL, HYBRID_MULTIFRACTAL, FBM, HETERO_TERRAIN]
+- w : Float
+- scale : Float
+- detail : Float
+- dimension : Float
+- lacunarity : Float
+- offset : Float
+- gain : Float## Parameters
+- musgrave_dimensions : '3D' in [1D, 2D, 3D, 4D]
+- musgrave_type : 'FBM' in [MULTIFRACTAL, RIDGED_MULTIFRACTAL, HYBRID_MULTIFRACTAL, FBM, HETERO_TERRAIN]
 
 ### Node creation
 
@@ -222,16 +212,14 @@ v = Texture.Noise(vector, w, scale, detail, roughness, distortion, noise_dimensi
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector : Vector
-  - w : Float
-  - scale : Float
-  - detail : Float
-  - roughness : Float
-  - distortion : Float## Parameters
-  - noise_dimensions : '3D' in [1D, 2D, 3D, 4D]
+- w : Float
+- scale : Float
+- detail : Float
+- roughness : Float
+- distortion : Float## Parameters
+- noise_dimensions : '3D' in [1D, 2D, 3D, 4D]
 
 ### Node creation
 
@@ -259,18 +247,16 @@ v = Texture.Voronoi(vector, w, scale, smoothness, exponent, randomness, distance
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector : Vector
-  - w : Float
-  - scale : Float
-  - smoothness : Float
-  - exponent : Float
-  - randomness : Float## Parameters
-  - distance : 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
-  - feature : 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
-  - voronoi_dimensions : '3D' in [1D, 2D, 3D, 4D]
+- w : Float
+- scale : Float
+- smoothness : Float
+- exponent : Float
+- randomness : Float## Parameters
+- distance : 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
+- feature : 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
+- voronoi_dimensions : '3D' in [1D, 2D, 3D, 4D]
 
 ### Node creation
 
@@ -298,20 +284,18 @@ v = Texture.Wave(vector, scale, distortion, detail, detail_scale, detail_roughne
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector : Vector
-  - scale : Float
-  - distortion : Float
-  - detail : Float
-  - detail_scale : Float
-  - detail_roughness : Float
-  - phase_offset : Float## Parameters
-  - bands_direction : 'X' in [X, Y, Z, DIAGONAL]
-  - rings_direction : 'X' in [X, Y, Z, SPHERICAL]
-  - wave_profile : 'SIN' in [SIN, SAW, TRI]
-  - wave_type : 'BANDS' in [BANDS, RINGS]
+- scale : Float
+- distortion : Float
+- detail : Float
+- detail_scale : Float
+- detail_roughness : Float
+- phase_offset : Float## Parameters
+- bands_direction : 'X' in [X, Y, Z, DIAGONAL]
+- rings_direction : 'X' in [X, Y, Z, SPHERICAL]
+- wave_profile : 'SIN' in [SIN, SAW, TRI]
+- wave_type : 'BANDS' in [BANDS, RINGS]
 
 ### Node creation
 
@@ -339,12 +323,10 @@ v = Texture.WhiteNoise(vector, w, noise_dimensions)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - vector : Vector
-  - w : Float## Parameters
-  - noise_dimensions : '3D' in [1D, 2D, 3D, 4D]
+- w : Float## Parameters
+- noise_dimensions : '3D' in [1D, 2D, 3D, 4D]
 
 ### Node creation
 
@@ -372,14 +354,12 @@ v = Texture.Image(image, vector, frame, extension, interpolation)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - image : Image
-  - vector : Vector
-  - frame : Integer## Parameters
-  - extension : 'REPEAT' in [REPEAT, EXTEND, CLIP]
-  - interpolation : 'Linear' in [Linear, Closest, Cubic]
+- vector : Vector
+- frame : Integer## Parameters
+- extension : 'REPEAT' in [REPEAT, EXTEND, CLIP]
+- interpolation : 'Linear' in [Linear, Closest, Cubic]
 
 ### Node creation
 
@@ -407,13 +387,11 @@ v = texture.switch(switch1, true)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - false : Texture (self)
-  - switch1 : Boolean
-  - true : Texture## Fixed parameters
-  - input_type : 'TEXTURE'
+- switch1 : Boolean
+- true : Texture## Fixed parameters
+- input_type : 'TEXTURE'
 
 ### Node creation
 

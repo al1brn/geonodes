@@ -38,11 +38,9 @@ v = string.length
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - string : String (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.length"
+- label:f"{self.node_chain_label}.length"
 
 ### Node creation
 
@@ -70,13 +68,11 @@ v = string.switch(switch0, true)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - false : String (self)
-  - switch0 : Boolean
-  - true : String## Fixed parameters
-  - input_type : 'STRING'
+- switch0 : Boolean
+- true : String## Fixed parameters
+- input_type : 'STRING'
 
 ### Node creation
 
@@ -104,14 +100,12 @@ v = string.element(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : String (self)
-  - b : String## Fixed parameters
-  - data_type : 'STRING'
-  - mode : 'ELEMENT'
-  - operation : 'ELEMENT'
+- b : String## Fixed parameters
+- data_type : 'STRING'
+- mode : 'ELEMENT'
+- operation : 'ELEMENT'
 
 ### Node creation
 
@@ -139,14 +133,12 @@ v = string.length(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : String (self)
-  - b : String## Fixed parameters
-  - data_type : 'STRING'
-  - mode : 'ELEMENT'
-  - operation : 'LENGTH'
+- b : String## Fixed parameters
+- data_type : 'STRING'
+- mode : 'ELEMENT'
+- operation : 'LENGTH'
 
 ### Node creation
 
@@ -174,14 +166,12 @@ v = string.average(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : String (self)
-  - b : String## Fixed parameters
-  - data_type : 'STRING'
-  - mode : 'ELEMENT'
-  - operation : 'AVERAGE'
+- b : String## Fixed parameters
+- data_type : 'STRING'
+- mode : 'ELEMENT'
+- operation : 'AVERAGE'
 
 ### Node creation
 
@@ -209,14 +199,12 @@ v = string.dot_product(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : String (self)
-  - b : String## Fixed parameters
-  - data_type : 'STRING'
-  - mode : 'ELEMENT'
-  - operation : 'DOT_PRODUCT'
+- b : String## Fixed parameters
+- data_type : 'STRING'
+- mode : 'ELEMENT'
+- operation : 'DOT_PRODUCT'
 
 ### Node creation
 
@@ -244,14 +232,12 @@ v = string.direction(b)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - a : String (self)
-  - b : String## Fixed parameters
-  - data_type : 'STRING'
-  - mode : 'ELEMENT'
-  - operation : 'DIRECTION'
+- b : String## Fixed parameters
+- data_type : 'STRING'
+- mode : 'ELEMENT'
+- operation : 'DIRECTION'
 
 ### Node creation
 
@@ -279,11 +265,9 @@ v = string.join(strings_1, strings_2, strings_3, delimiter)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - strings : *String (self)
-  - delimiter : String
+- delimiter : String
 
 ### Node creation
 
@@ -311,12 +295,10 @@ v = string.replace(find, replace)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - string : String (self)
-  - find : String
-  - replace : String
+- find : String
+- replace : String
 
 ### Node creation
 
@@ -344,12 +326,10 @@ v = string.slice(position, length)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - string : String (self)
-  - position : Integer
-  - length : Integer
+- position : Integer
+- length : Integer
 
 ### Node creation
 
@@ -377,20 +357,18 @@ v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_b
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - string : String (self)
-  - size : Float
-  - character_spacing : Float
-  - word_spacing : Float
-  - line_spacing : Float
-  - text_box_width : Float
-  - text_box_height : Float## Parameters
-  - align_x : 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
-  - align_y : 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
-  - overflow : 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
-  - pivot_mode : 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
+- size : Float
+- character_spacing : Float
+- word_spacing : Float
+- line_spacing : Float
+- text_box_width : Float
+- text_box_height : Float## Parameters
+- align_x : 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
+- align_y : 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
+- overflow : 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
+- pivot_mode : 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 
 ### Node creation
 

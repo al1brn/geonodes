@@ -46,13 +46,10 @@ class Points(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - points : Points (self)
-                    - selection : Boolean
-                    - radius : Float
+            ## Sockets
+            - points : Points (self)
+            - selection : Boolean
+            - radius : Float
     
 
         Node creation
@@ -85,17 +82,14 @@ class Points(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - points : Points (self)
-                    - selection : Boolean
-                    - instance : Geometry
-                    - pick_instance : Boolean
-                    - instance_index : Integer
-                    - rotation : Vector
-                    - scale : Vector
+            ## Sockets
+            - points : Points (self)
+            - selection : Boolean
+            - instance : Geometry
+            - pick_instance : Boolean
+            - instance_index : Integer
+            - rotation : Vector
+            - scale : Vector
     
 
         Node creation
@@ -128,12 +122,9 @@ class Points(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - points : Points (self)
-                    - selection : Boolean
+            ## Sockets
+            - points : Points (self)
+            - selection : Boolean
     
 
         Node creation
@@ -166,16 +157,13 @@ class Points(gn.Geometry):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - points : Points (self)
-                    - density : Float
-                    - voxel_size : Float
-                    - voxel_amount : Float
-                    - radius : Float## Parameters
-                    - resolution_mode : 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
+            ## Sockets
+            - points : Points (self)
+            - density : Float
+            - voxel_size : Float
+            - voxel_amount : Float
+            - radius : Float## Parameters
+            - resolution_mode : 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
     
 
         Node creation

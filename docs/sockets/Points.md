@@ -28,12 +28,10 @@ v = points.set_radius(selection, radius)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - points : Points (self)
-  - selection : Boolean
-  - radius : Float
+- selection : Boolean
+- radius : Float
 
 ### Node creation
 
@@ -61,16 +59,14 @@ v = points.instance_on_points(selection, instance, pick_instance, instance_index
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - points : Points (self)
-  - selection : Boolean
-  - instance : Geometry
-  - pick_instance : Boolean
-  - instance_index : Integer
-  - rotation : Vector
-  - scale : Vector
+- selection : Boolean
+- instance : Geometry
+- pick_instance : Boolean
+- instance_index : Integer
+- rotation : Vector
+- scale : Vector
 
 ### Node creation
 
@@ -98,11 +94,9 @@ v = points.to_vertices(selection)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - points : Points (self)
-  - selection : Boolean
+- selection : Boolean
 
 ### Node creation
 
@@ -130,15 +124,13 @@ v = points.to_volume(density, voxel_size, voxel_amount, radius, resolution_mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - points : Points (self)
-  - density : Float
-  - voxel_size : Float
-  - voxel_amount : Float
-  - radius : Float## Parameters
-  - resolution_mode : 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
+- density : Float
+- voxel_size : Float
+- voxel_amount : Float
+- radius : Float## Parameters
+- resolution_mode : 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
 
 ### Node creation
 

@@ -60,14 +60,11 @@ class Object(dsock.Object):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - object : Object (self)
-                    - as_instance : Boolean## Parameters
-                    - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
-                    - label:f"{self.node_chain_label}.info"
+            ## Sockets
+            - object : Object (self)
+            - as_instance : Boolean## Parameters
+            - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
+            - label:f"{self.node_chain_label}.info"
     
 
         Node creation
@@ -103,14 +100,11 @@ class Object(dsock.Object):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - object : Object (self)
-                    - as_instance : Boolean## Parameters
-                    - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
-                    - label:f"{self.node_chain_label}.location"
+            ## Sockets
+            - object : Object (self)
+            - as_instance : Boolean## Parameters
+            - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
+            - label:f"{self.node_chain_label}.location"
     
 
         Node creation
@@ -144,14 +138,11 @@ class Object(dsock.Object):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - object : Object (self)
-                    - as_instance : Boolean## Parameters
-                    - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
-                    - label:f"{self.node_chain_label}.rotation"
+            ## Sockets
+            - object : Object (self)
+            - as_instance : Boolean## Parameters
+            - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
+            - label:f"{self.node_chain_label}.rotation"
     
 
         Node creation
@@ -185,14 +176,11 @@ class Object(dsock.Object):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - object : Object (self)
-                    - as_instance : Boolean## Parameters
-                    - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
-                    - label:f"{self.node_chain_label}.scale"
+            ## Sockets
+            - object : Object (self)
+            - as_instance : Boolean## Parameters
+            - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
+            - label:f"{self.node_chain_label}.scale"
     
 
         Node creation
@@ -226,14 +214,11 @@ class Object(dsock.Object):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - object : Object (self)
-                    - as_instance : Boolean## Parameters
-                    - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
-                    - label:f"{self.node_chain_label}.geometry"
+            ## Sockets
+            - object : Object (self)
+            - as_instance : Boolean## Parameters
+            - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
+            - label:f"{self.node_chain_label}.geometry"
     
 
         Node creation
@@ -270,14 +255,11 @@ class Object(dsock.Object):
 
         Arguments
         ---------
-    
-
-            Sockets
-            -------
-                - false : Object (self)
-                    - switch1 : Boolean
-                    - true : Object## Fixed parameters
-                    - input_type : 'OBJECT'
+            ## Sockets
+            - false : Object (self)
+            - switch1 : Boolean
+            - true : Object## Fixed parameters
+            - input_type : 'OBJECT'
     
 
         Node creation

@@ -54,15 +54,13 @@ v = Curve.BezierSegment(resolution, start, start_handle, end_handle, end, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - resolution : Integer
-  - start : Vector
-  - start_handle : Vector
-  - end_handle : Vector
-  - end : Vector## Parameters
-  - mode : 'POSITION' in [POSITION, OFFSET]
+- start : Vector
+- start_handle : Vector
+- end_handle : Vector
+- end : Vector## Parameters
+- mode : 'POSITION' in [POSITION, OFFSET]
 
 ### Node creation
 
@@ -90,15 +88,13 @@ v = Curve.Circle(resolution, point_1, point_2, point_3, radius, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - resolution : Integer
-  - point_1 : Vector
-  - point_2 : Vector
-  - point_3 : Vector
-  - radius : Float## Parameters
-  - mode : 'RADIUS' in [POINTS, RADIUS]
+- point_1 : Vector
+- point_2 : Vector
+- point_3 : Vector
+- radius : Float## Parameters
+- mode : 'RADIUS' in [POINTS, RADIUS]
 
 ### Node creation
 
@@ -126,14 +122,12 @@ v = Curve.Line(start, end, direction, length, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - start : Vector
-  - end : Vector
-  - direction : Vector
-  - length : Float## Parameters
-  - mode : 'POINTS' in [POINTS, DIRECTION]
+- end : Vector
+- direction : Vector
+- length : Float## Parameters
+- mode : 'POINTS' in [POINTS, DIRECTION]
 
 ### Node creation
 
@@ -161,21 +155,19 @@ v = Curve.Quadrilateral(width, height, bottom_width, top_width, offset, bottom_h
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - width : Float
-  - height : Float
-  - bottom_width : Float
-  - top_width : Float
-  - offset : Float
-  - bottom_height : Float
-  - top_height : Float
-  - point_1 : Vector
-  - point_2 : Vector
-  - point_3 : Vector
-  - point_4 : Vector## Parameters
-  - mode : 'RECTANGLE' in [RECTANGLE, PARALLELOGRAM, TRAPEZOID, KITE, POINTS]
+- height : Float
+- bottom_width : Float
+- top_width : Float
+- offset : Float
+- bottom_height : Float
+- top_height : Float
+- point_1 : Vector
+- point_2 : Vector
+- point_3 : Vector
+- point_4 : Vector## Parameters
+- mode : 'RECTANGLE' in [RECTANGLE, PARALLELOGRAM, TRAPEZOID, KITE, POINTS]
 
 ### Node creation
 
@@ -203,13 +195,11 @@ v = Curve.QuadraticBezier(resolution, start, middle, end)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - resolution : Integer
-  - start : Vector
-  - middle : Vector
-  - end : Vector
+- start : Vector
+- middle : Vector
+- end : Vector
 
 ### Node creation
 
@@ -237,13 +227,11 @@ v = Curve.Star(points, inner_radius, outer_radius, twist)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - points : Integer
-  - inner_radius : Float
-  - outer_radius : Float
-  - twist : Float
+- inner_radius : Float
+- outer_radius : Float
+- twist : Float
 
 ### Node creation
 
@@ -271,15 +259,13 @@ v = Curve.Spiral(resolution, rotations, start_radius, end_radius, height, revers
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - resolution : Integer
-  - rotations : Float
-  - start_radius : Float
-  - end_radius : Float
-  - height : Float
-  - reverse : Boolean
+- rotations : Float
+- start_radius : Float
+- end_radius : Float
+- height : Float
+- reverse : Boolean
 
 ### Node creation
 
@@ -307,16 +293,14 @@ v = Curve.ArcFromRadius(resolution, radius, start_angle, sweep_angle, connect_ce
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - resolution : Integer
-  - radius : Float
-  - start_angle : Float
-  - sweep_angle : Float
-  - connect_center : Boolean
-  - invert_arc : Boolean## Fixed parameters
-  - mode : 'RADIUS'
+- radius : Float
+- start_angle : Float
+- sweep_angle : Float
+- connect_center : Boolean
+- invert_arc : Boolean## Fixed parameters
+- mode : 'RADIUS'
 
 ### Node creation
 
@@ -344,17 +328,15 @@ v = Curve.ArcFromPoints(resolution, start, middle, end, offset_angle, connect_ce
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - resolution : Integer
-  - start : Vector
-  - middle : Vector
-  - end : Vector
-  - offset_angle : Float
-  - connect_center : Boolean
-  - invert_arc : Boolean## Fixed parameters
-  - mode : 'POINTS'
+- start : Vector
+- middle : Vector
+- end : Vector
+- offset_angle : Float
+- connect_center : Boolean
+- invert_arc : Boolean## Fixed parameters
+- mode : 'POINTS'
 
 ### Node creation
 
@@ -382,13 +364,11 @@ v = curve.set_handles(selection, handle_type, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - curve : Curve (self)
-  - selection : Boolean## Parameters
-  - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-  - mode : {'RIGHT', 'LEFT'}
+- selection : Boolean## Parameters
+- handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+- mode : {'RIGHT', 'LEFT'}
 
 ### Node creation
 
@@ -416,12 +396,10 @@ v = curve.set_spline_type(selection, spline_type)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - curve : Curve (self)
-  - selection : Boolean## Parameters
-  - spline_type : 'POLY' in [BEZIER, NURBS, POLY]
+- selection : Boolean## Parameters
+- spline_type : 'POLY' in [BEZIER, NURBS, POLY]
 
 ### Node creation
 
@@ -449,11 +427,9 @@ v = curve.fill(mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - curve : Curve (self)## Parameters
-  - mode : 'TRIANGLES' in [TRIANGLES, NGONS]
+- mode : 'TRIANGLES' in [TRIANGLES, NGONS]
 
 ### Node creation
 
@@ -481,14 +457,12 @@ v = curve.fillet(count, radius, limit_radius, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - curve : Curve (self)
-  - count : Integer
-  - radius : Float
-  - limit_radius : Boolean## Parameters
-  - mode : 'BEZIER' in [BEZIER, POLY]
+- count : Integer
+- radius : Float
+- limit_radius : Boolean## Parameters
+- mode : 'BEZIER' in [BEZIER, POLY]
 
 ### Node creation
 
@@ -516,14 +490,12 @@ v = curve.resample(selection, count, length, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - curve : Curve (self)
-  - selection : Boolean
-  - count : Integer
-  - length : Float## Parameters
-  - mode : 'COUNT' in [EVALUATED, COUNT, LENGTH]
+- selection : Boolean
+- count : Integer
+- length : Float## Parameters
+- mode : 'COUNT' in [EVALUATED, COUNT, LENGTH]
 
 ### Node creation
 
@@ -551,11 +523,9 @@ v = curve.reverse(selection)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - curve : Curve (self)
-  - selection : Boolean
+- selection : Boolean
 
 ### Node creation
 
@@ -583,14 +553,12 @@ v = curve.set_handle_positions(selection, position, offset, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - curve : Curve (self)
-  - selection : Boolean
-  - position : Vector
-  - offset : Vector## Parameters
-  - mode : 'LEFT' in [LEFT, RIGHT]
+- selection : Boolean
+- position : Vector
+- offset : Vector## Parameters
+- mode : 'LEFT' in [LEFT, RIGHT]
 
 ### Node creation
 
@@ -618,12 +586,10 @@ v = curve.set_radius(selection, radius)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - curve : Curve (self)
-  - selection : Boolean
-  - radius : Float
+- selection : Boolean
+- radius : Float
 
 ### Node creation
 
@@ -651,12 +617,10 @@ v = curve.set_tilt(selection, tilt)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - curve : Curve (self)
-  - selection : Boolean
-  - tilt : Float
+- selection : Boolean
+- tilt : Float
 
 ### Node creation
 
@@ -684,11 +648,9 @@ v = curve.subdivide(cuts)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - curve : Curve (self)
-  - cuts : Integer
+- cuts : Integer
 
 ### Node creation
 
@@ -716,15 +678,13 @@ v = curve.trim(start0, end0, start1, end1, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - curve : Curve (self)
-  - start0 : Float
-  - end0 : Float
-  - start1 : Float
-  - end1 : Float## Parameters
-  - mode : 'FACTOR' in [FACTOR, LENGTH]
+- start0 : Float
+- end0 : Float
+- start1 : Float
+- end1 : Float## Parameters
+- mode : 'FACTOR' in [FACTOR, LENGTH]
 
 ### Node creation
 
@@ -752,12 +712,10 @@ v = curve.to_mesh(profile_curve, fill_caps)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - curve : Curve (self)
-  - profile_curve : Geometry
-  - fill_caps : Boolean
+- profile_curve : Geometry
+- fill_caps : Boolean
 
 ### Node creation
 
@@ -785,13 +743,11 @@ v = curve.to_points(count, length, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - curve : Curve (self)
-  - count : Integer
-  - length : Float## Parameters
-  - mode : 'COUNT' in [EVALUATED, COUNT, LENGTH]
+- count : Integer
+- length : Float## Parameters
+- mode : 'COUNT' in [EVALUATED, COUNT, LENGTH]
 
 ### Node creation
 
@@ -819,13 +775,11 @@ v = curve.sample(factor, length, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - curve : Curve (self)
-  - factor : Float
-  - length : Float## Parameters
-  - mode : 'LENGTH' in [FACTOR, LENGTH]
+- factor : Float
+- length : Float## Parameters
+- mode : 'LENGTH' in [FACTOR, LENGTH]
 
 ### Node creation
 
@@ -853,9 +807,7 @@ v = curve.length()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - curve : Curve (self)
 
 ### Node creation

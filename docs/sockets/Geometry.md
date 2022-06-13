@@ -109,11 +109,9 @@ v = geometry.bound_box
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.bound_box"
+- label:f"{self.node_chain_label}.bound_box"
 
 ### Node creation
 
@@ -141,11 +139,9 @@ v = geometry.box
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.box"
+- label:f"{self.node_chain_label}.box"
 
 ### Node creation
 
@@ -173,11 +169,9 @@ v = geometry.box_min
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.box_min"
+- label:f"{self.node_chain_label}.box_min"
 
 ### Node creation
 
@@ -205,11 +199,9 @@ v = geometry.box_max
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.box_max"
+- label:f"{self.node_chain_label}.box_max"
 
 ### Node creation
 
@@ -237,11 +229,9 @@ v = geometry.components
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.components"
+- label:f"{self.node_chain_label}.components"
 
 ### Node creation
 
@@ -269,11 +259,9 @@ v = geometry.mesh_component
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.mesh_component"
+- label:f"{self.node_chain_label}.mesh_component"
 
 ### Node creation
 
@@ -301,11 +289,9 @@ v = geometry.points_component
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.points_component"
+- label:f"{self.node_chain_label}.points_component"
 
 ### Node creation
 
@@ -333,11 +319,9 @@ v = geometry.curve_component
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.curve_component"
+- label:f"{self.node_chain_label}.curve_component"
 
 ### Node creation
 
@@ -365,11 +349,9 @@ v = geometry.volume_component
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.volume_component"
+- label:f"{self.node_chain_label}.volume_component"
 
 ### Node creation
 
@@ -397,11 +379,9 @@ v = geometry.instances_component
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)## Fixed parameters
-  - label:f"{self.node_chain_label}.instances_component"
+- label:f"{self.node_chain_label}.instances_component"
 
 ### Node creation
 
@@ -429,11 +409,9 @@ v = geometry.capture_ID(self, domain='POINT')
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
-  - domain:'POINT'
+- domain:'POINT'
 
 ### Node creation
 
@@ -461,11 +439,9 @@ v = geometry.capture_index(self, domain='POINT')
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
-  - domain:'POINT'
+- domain:'POINT'
 
 ### Node creation
 
@@ -493,11 +469,9 @@ v = geometry.capture_normal(self, domain='FACE')
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
-  - domain:'FACE'
+- domain:'FACE'
 
 ### Node creation
 
@@ -525,11 +499,9 @@ v = geometry.capture_position(self, domain='POINT')
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
-  - domain:'POINT'
+- domain:'POINT'
 
 ### Node creation
 
@@ -557,11 +529,9 @@ v = geometry.capture_radius(self, domain='POINT')
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
-  - domain:'POINT'
+- domain:'POINT'
 
 ### Node creation
 
@@ -589,9 +559,7 @@ v = geometry.ID(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -620,9 +588,7 @@ v = geometry.index(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -651,9 +617,7 @@ v = geometry.normal(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -682,9 +646,7 @@ v = geometry.position(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -713,9 +675,7 @@ v = geometry.radius(self)
 
 ### Arguments
 
-
-#### Parameters
-
+## Parameters
 - self
 
 ### Node creation
@@ -744,13 +704,11 @@ v = geometry.switch(switch1, true)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - false : Geometry (self)
-  - switch1 : Boolean
-  - true : Geometry## Fixed parameters
-  - input_type : 'GEOMETRY'
+- switch1 : Boolean
+- true : Geometry## Fixed parameters
+- input_type : 'GEOMETRY'
 
 ### Node creation
 
@@ -778,13 +736,11 @@ v = geometry.capture_attribute(value, data_type, domain)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)
-  - value : Float## Parameters
-  - data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- value : Float## Parameters
+- data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
 ### Node creation
 
@@ -812,16 +768,14 @@ v = geometry.transfer_boolean(attribute, source_position, index, domain, mapping
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - source : Geometry (self)
-  - attribute : Boolean
-  - source_position : Vector
-  - index : Integer## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-  - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-  - data_type : 'BOOLEAN'
+- attribute : Boolean
+- source_position : Vector
+- index : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+- data_type : 'BOOLEAN'
 
 ### Node creation
 
@@ -849,16 +803,14 @@ v = geometry.transfer_integer(attribute, source_position, index, domain, mapping
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - source : Geometry (self)
-  - attribute : Integer
-  - source_position : Vector
-  - index : Integer## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-  - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-  - data_type : 'INT'
+- attribute : Integer
+- source_position : Vector
+- index : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+- data_type : 'INT'
 
 ### Node creation
 
@@ -886,16 +838,14 @@ v = geometry.transfer_float(attribute, source_position, index, domain, mapping)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - source : Geometry (self)
-  - attribute : Float
-  - source_position : Vector
-  - index : Integer## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-  - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-  - data_type : 'FLOAT'
+- attribute : Float
+- source_position : Vector
+- index : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+- data_type : 'FLOAT'
 
 ### Node creation
 
@@ -923,16 +873,14 @@ v = geometry.transfer_vector(attribute, source_position, index, domain, mapping)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - source : Geometry (self)
-  - attribute : Vector
-  - source_position : Vector
-  - index : Integer## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-  - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-  - data_type : 'FLOAT_VECTOR'
+- attribute : Vector
+- source_position : Vector
+- index : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+- data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
@@ -960,16 +908,14 @@ v = geometry.transfer_color(attribute, source_position, index, domain, mapping)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - source : Geometry (self)
-  - attribute : Color
-  - source_position : Vector
-  - index : Integer## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-  - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
-  - data_type : 'FLOAT_COLOR'
+- attribute : Color
+- source_position : Vector
+- index : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+- data_type : 'FLOAT_COLOR'
 
 ### Node creation
 
@@ -997,13 +943,11 @@ v = geometry.delete_geometry(selection, domain, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)
-  - selection : Boolean## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
-  - mode : 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
+- selection : Boolean## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
+- mode : 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
 
 ### Node creation
 
@@ -1031,13 +975,11 @@ v = geometry.merge_by_distance(selection, distance, mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)
-  - selection : Boolean
-  - distance : Float## Parameters
-  - mode : 'ALL' in [ALL, CONNECTED]
+- selection : Boolean
+- distance : Float## Parameters
+- mode : 'ALL' in [ALL, CONNECTED]
 
 ### Node creation
 
@@ -1065,11 +1007,9 @@ v = geometry.realize_instances(legacy_behavior)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)## Parameters
-  - legacy_behavior : False
+- legacy_behavior : False
 
 ### Node creation
 
@@ -1097,12 +1037,10 @@ v = geometry.replace_material(old, new)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)
-  - old : Material
-  - new : Material
+- old : Material
+- new : Material
 
 ### Node creation
 
@@ -1130,16 +1068,14 @@ v = geometry.scale_elements(selection, scale, center, axis, domain, scale_mode)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)
-  - selection : Boolean
-  - scale : Float
-  - center : Vector
-  - axis : Vector## Parameters
-  - domain : 'FACE' in [FACE, EDGE]
-  - scale_mode : 'UNIFORM' in [UNIFORM, SINGLE_AXIS]
+- selection : Boolean
+- scale : Float
+- center : Vector
+- axis : Vector## Parameters
+- domain : 'FACE' in [FACE, EDGE]
+- scale_mode : 'UNIFORM' in [UNIFORM, SINGLE_AXIS]
 
 ### Node creation
 
@@ -1167,12 +1103,10 @@ v = geometry.set_ID(selection, ID)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)
-  - selection : Boolean
-  - ID : Integer
+- selection : Boolean
+- ID : Integer
 
 ### Node creation
 
@@ -1200,12 +1134,10 @@ v = geometry.set_material(selection, material)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)
-  - selection : Boolean
-  - material : Material
+- selection : Boolean
+- material : Material
 
 ### Node creation
 
@@ -1233,12 +1165,10 @@ v = geometry.set_material_index(selection, material_index)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)
-  - selection : Boolean
-  - material_index : Integer
+- selection : Boolean
+- material_index : Integer
 
 ### Node creation
 
@@ -1266,13 +1196,11 @@ v = geometry.set_position(selection, position, offset)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)
-  - selection : Boolean
-  - position : Vector
-  - offset : Vector
+- selection : Boolean
+- position : Vector
+- offset : Vector
 
 ### Node creation
 
@@ -1300,12 +1228,10 @@ v = geometry.set_shade_smooth(selection, shade_smooth)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)
-  - selection : Boolean
-  - shade_smooth : Boolean
+- selection : Boolean
+- shade_smooth : Boolean
 
 ### Node creation
 
@@ -1333,13 +1259,11 @@ v = geometry.transform(translation, rotation, scale)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)
-  - translation : Vector
-  - rotation : Vector
-  - scale : Vector
+- translation : Vector
+- rotation : Vector
+- scale : Vector
 
 ### Node creation
 
@@ -1367,11 +1291,9 @@ v = geometry.attribute_domain_size(component)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)## Parameters
-  - component : 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+- component : 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
 ### Node creation
 
@@ -1399,11 +1321,9 @@ v = geometry.remove_attribute(name)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)
-  - name : String
+- name : String
 
 ### Node creation
 
@@ -1431,12 +1351,10 @@ v = geometry.components(selection, domain)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)
-  - selection : Boolean## Parameters
-  - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
+- selection : Boolean## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
 
 ### Node creation
 
@@ -1464,9 +1382,7 @@ v = geometry.convex_hull()
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : Geometry (self)
 
 ### Node creation
@@ -1495,9 +1411,7 @@ v = geometry.to_instance(geometry_1, geometry_2, geometry_3)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : *Geometry (self)
 
 ### Node creation
@@ -1526,9 +1440,7 @@ v = geometry.join(geometry_1, geometry_2, geometry_3)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - geometry : *Geometry (self)
 
 ### Node creation
@@ -1557,12 +1469,10 @@ v = geometry.proximity(source_position, target_element)
 
 ### Arguments
 
-
-#### Sockets
-
+## Sockets
 - target : Geometry (self)
-  - source_position : Vector## Parameters
-  - target_element : 'FACES' in [POINTS, EDGES, FACES]
+- source_position : Vector## Parameters
+- target_element : 'FACES' in [POINTS, EDGES, FACES]
 
 ### Node creation
 
