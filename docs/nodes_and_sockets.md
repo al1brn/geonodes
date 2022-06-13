@@ -9,6 +9,8 @@ If you are familiar with building Geometry Nodes in Blender (if it is not the ca
 - Output socket
 - Link
 
+## Two ways of linking nodes
+
 Linking two nodes consists in performing an action defined by the second node on an output of the first node.
 
 For instance, let's have a look to the two following linked nodes:
@@ -39,8 +41,17 @@ But here we need a second curve, the profile, to perform the operation. Naturall
 ```
 
 We see the two ways links can be created:
-- The 'self' link: calling a method creates the link from the output socket it operates on to the proper input socket
-- The argument link: other sockets than the 'self' one are linked via method arguments
+- **The 'self' link**: calling a method creates the link from the output socket it operates on to the proper input socket
+- **The argument link**: other sockets than the 'self' one are linked via method arguments
+
+It does mean that each node as a 'self' input socket which will be connected to the output socket calling this method. The other nodes will be connected through arguments.
+
+## Nodes parameters
+
+Some nodes have parameters. The 
+
+
+
 
 
 
