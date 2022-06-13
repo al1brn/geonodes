@@ -239,6 +239,24 @@ This is illustrated here below:
 
 <img src="/docs/images/demo_1_set_position.png" height="200">
 
+### Output geometry
+
+To define a geometry as the result of the modifier, simply set the `output_geometry` property of the tree.
+
+```python
+    tree.output_geometry = grid.set_shade_smooth()     
+```
+
+## Further reading
+
+TBD
+
+
+
+
+
+
+
 - **Methods**
 
   Nodes such as "Set position" are implemented as methods.
