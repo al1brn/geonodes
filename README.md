@@ -52,7 +52,7 @@ with gn.Tree("Geometry Nodes") as tree:
     tree.output_geometry = grid.set_shade_smooth()     
 ```
 
-> See [Demo details TBD](docs/demo_1.md)
+> See [Demo details](docs/demo_1.md)
 
 The generated nodes and the result of the Geometry nodes modifier is given below:
 
