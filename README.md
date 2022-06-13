@@ -4,40 +4,20 @@
 
 ## Short
 
-> **Geometry nodes** is a powerful **Blender** feature allowing the creation of amazing 3D models.
-> However, nodes trees can rapidly look like a _spaghetti plate_ difficult to understand and to maintain.
-> Complex formulas are not easy to build and debugging can be a headache.<br>
-> 
+**Geometry nodes** is a powerful **Blender** feature allowing the creation of amazing 3D models.
+However, nodes trees can rapidly look like a _spaghetti plate_ difficult to understand and to maintain.
+Complex formulas are not easy to build and debugging can be a headache.<br>
+ 
 > The purpose of **_geonodes_** is to to create geometry nodes with python scripts.<br>
-> 
-> You keep the full power of Blender geometry nodes but with the elegance of Python.
+ 
+You keep the full power of Blender geometry nodes but with the elegance of Python.
 
-# Table of contents
+## Table of contents
 
-- [Installation](#installation)
 - [Better a demo than long words](#better-a-demo-than-long-words)
-- [Documentation](#document)
+- [Installation](#installation)
+- [Documentation](#documentation)
 - [Classes index](docs/index.md)
-
-# Installation
-
-**geonode** is a python package. To install it, copy the package folder **geonodes** in `scripts/modules`.
-
-The Blender `scripts` folder is defined in Blender preferences, see: [Blender File Paths settings](https://docs.blender.org/manual/en/latest/editors/preferences/file_paths.html).
-
-> Note that **geonodes** is a python module, not an Blender addon
-
-After the install, the Blender scripts hierarchy should look like:
-```
-.../scripts/
-       modules/
-           geonodes/
-               __init__.py
-               core/
-               nodes/
-               sockets/
-               ...
-```
 
 ## Better a demo than long words
 
@@ -62,7 +42,6 @@ with gn.Tree("Geometry Nodes") as tree:
     
     # We compute z
     with tree.layout("Computing the wave", color="dark_rose"):
-        
         distance = gn.sqrt(grid.position.x**2 + grid.position.y**2)
         z = height * gn.sin(distance*omega)/distance
         
@@ -79,11 +58,39 @@ The generated nodes and the result of the Geometry nodes modifier is given below
 
 <img src="docs/images/demo_intro.png" width="600" class="center">
 
-# Documentation
+## Installation
+
+**geonode** is a python package. To install it, copy the package folder **geonodes** in `scripts/modules`.
+
+The Blender `scripts` folder is defined in Blender preferences, see: [Blender File Paths settings](https://docs.blender.org/manual/en/latest/editors/preferences/file_paths.html).
+
+> Note that **geonodes** is a python module, not an Blender addon
+
+After the install, the Blender scripts hierarchy should look like:
+```
+.../scripts/
+       modules/
+           geonodes/
+               __init__.py
+               core/
+               nodes/
+               sockets/
+               ...
+```
+
+To make the module available in your script, use `import` in your script:
+
+```python
+import geonodes as gn
+```
+
+> `gn` is the recommanded alias for geonodes.
+
+## Documentation
 
 Uses [index](docs/index.md) to gain access to the list of availables classes.
 
-## Nodes and sockets
+### Nodes and sockets
 
 Geometry nodes are linked between their output and input sockets.
 
@@ -106,11 +113,11 @@ my_mesh.set_shade_smoth()
 
 For more details, see [Nodes and sockets TBD](nodes_and_sockets.md)
 
-## Data socket classes
+### Data socket classes
 
-Basically **geonodes** deals with the following data:
+Basically, all geometry nodes are created by calling methods and properties of the following data classes:
 
-### Value data
+#### Value data
 
 - [Boolean](docs/sockets/Boolean.md)
 - [Integer](docs/sockets/Integer.md)
@@ -119,7 +126,7 @@ Basically **geonodes** deals with the following data:
 - [Color](docs/sockets/Color.md)
 - [String](docs/sockets/String.md)
 
-### Geometry data
+#### Geometry data
 
 All geometry data classes inherit from Geometry:
 
@@ -131,14 +138,14 @@ All geometry data classes inherit from Geometry:
   - [Instances](docs/sockets/Instances.md)
   - [Volume](docs/sockets/Volume.md)
 
-### Other sockets
+#### Other sockets
   - [Collection](docs/sockets/Boolean.md)
   - [Object](docs/sockets/Object.md)
   - [Image](docs/sockets/Image.md)
   - [Texture](docs/sockets/Texture.md)
   - [Material](docs/sockets/Material.md)
-  
-## Naming
+
+### Naming
 
 **geonodes** classes and properties are named after the Blender names.
 
