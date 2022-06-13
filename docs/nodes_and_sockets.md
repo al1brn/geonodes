@@ -11,7 +11,7 @@ If you are familiar with building Geometry Nodes in Blender (if it is not the ca
 - Output socket
 - Link
 
-The **geonodes** scripts geometry nodes in the following way:
+The **geonodes** package scripts geometry nodes in the following way:
 
 - An **output socket** of a node is wrapped in a **geonodes** _Data Socket_ class (Boolean, Float, Mesh, Points,...)
 - A **node** is a method of a _Data Socket_ class
@@ -19,6 +19,10 @@ The **geonodes** scripts geometry nodes in the following way:
   - one of its input sockets is linked to the calling _Data Socket__
   - the other input sockets are linked with the _Data Sockets_ passed as method arguments
   - the node parameters are also passed as arguments
+
+**geonodes** is implemented in two layers:
+- **nodes layer**: each geometry node is wrapped in a dedicated class named after its Blender name
+- **data sockets layer**: nodes are created through _Data Socket_ classes methods 
 
 ## Two ways of linking nodes
 
@@ -57,9 +61,14 @@ We see the two ways links can be created:
 
 It does mean that each node as a 'self' input socket which will be connected to the output socket calling this method. The other nodes will be connected through arguments.
 
-## Nodes parameters
+## Nodes parameters and method names
 
-Some nodes have parameters. The 
+Some nodes have parameters. Let's look at the 'Math' node:
+
+<img src="/docs/images/math_node.png" height="200">
+
+It has one parameter named `Operation` which can take a lot of values
+
 
 
 
