@@ -186,7 +186,7 @@ Note that the layout can be nested.
 
 ### Math
 
-Python operators can be used on geonodes values. Are after are example of valid operations:
+**geonodes** provides math function such as `sin`, `arccos` or `color_subtract`. Math operators can also be used on geonodes values. Are after are example of valid operations:
 
 ```python
 a = gn.Float(10)         # The node "Value"
