@@ -27,6 +27,27 @@ Let's look at another example:
 
 <img src="/docs/images/nns_to_mesh.png" height="200">
 
+In this example, we have 3 nodes and 2 links. The operation 'Curve to Mesh' transforms a curve into a mesh. The scripting would be the same as the previous one:
+
+```python
+    mesh = curve.to_mesh()
+```
+But here we need a second curve, the profile, to perform the operation. Naturally we will pass this curve as an argument:
+
+```python
+    mesh = curve.to_mesh(profile_curve=circle)
+```
+
+We see the two ways links can be created:
+- The 'self' link: calling a method creates the link from the output socket it operates on to the proper input socket
+- The argument link: other sockets than the 'self' one are linked via method arguments
+
+
+
+
+
+
+
 
 
 ## 
