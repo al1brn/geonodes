@@ -26,14 +26,14 @@ The **geonodes** package scripts geometry nodes in the following way:
 
 ## Layer 1: Nodes classes
 
-The first layer of **geonodes** is made of Geometry node wrappers. Instancing a node, simply creates the node 'Math' for the operation `Subtract`:
+The first layer of **geonodes** is made of Geometry node wrappers. Instancing a node, simply creates the node. Here the node 'Math' is created for the operation `Subtract`:
 
 ```python
 from geonodes import nodes
 math_node = nodes.Math(operation='SUBTRACT')
 ```
 
-The result of this operation can be read through its single output socket whose name is `Value`:
+The result of this operation can be read through its single output socket whose name is `value`:
 
 ```python
 import geonodes as gn
@@ -44,7 +44,7 @@ with gn.Tree("Geometry Nodes") as tree:
     result = math_node.value
 ```
 
-> Note that the sockets are the snake_case version See naming convention.
+> Note that the sockets are the snake_case version of their Blender name, see naming convention.
 
 The nodes can be linked together with the method `plug` of the input sockets:
 
@@ -70,13 +70,13 @@ This is an uggly script to simply compute `a - b` but this is just the underlayi
 
 > The second layer of **geonodes** is centered on sockets, more precisely on **output sockets**.
 
-Output sockets own the data you want to manipulate to create your geometry. Data sockets can be of there types:
+Output sockets own the data you want to manipulate to create your geometry. Data sockets can be of 3 types:
 
 - **Values**: Boolean, Integer, Float, Vector, Color, String
 - **Geometry**: Geometry, Spline, Curve, Mesh, Points, Instances, Volume
 - **Other**: Collection, Object, Texture, Image, Material
 
-In the second layers, nodes are not created directly but through methods and properties of the _Data Socket_ classes.
+In the second layer, nodes are not created directly but through methods and properties of the _Data Socket_ classes.
 
 ## Two ways of linking nodes
 
@@ -133,15 +133,27 @@ with gn.Tree("Geometry Nodes") as tree:
 ```
 
 Some other nodes are implemented as many times as they are possible values for the parameter.
-This is for instance the case for the 'Math' node whose parameter "Operation" can take a lot of values (ADD, SUBTRACT, SINE, ARCTAN...)
+For instance, this is the case for the 'Math' node whose parameter "Operation" can take a lot of values (ADD, SUBTRACT, SINE, ARCTAN...).
 
-
-
-<img src="/docs/images/math_node2.png" height="250">
-
-It has one parameter named `Operation` which can take a lot of values. To perform and multiplication between two Integer, we can write:
+There is not `math` method but one method per operation named after this operation. Note that when a math operator exists, it is implemented.
 
 ```python
+import geonodes as gn
+
+with gn.Tree("Geometry Nodes") as tree:
+    
+    a = gn.Integer(9)
+    b = gn.Integer(5)
+    
+    # The following line will crash if uncommented
+    # c = a.math(b, operation='SUBTRACT')
+    
+    c = gn.subtract(a, b) # As global function
+    c = a.sub(b)          # As method of Integer
+    c = a - b             # As operator
+```
+
+Our subtraction is now written very naturally: `c = a - b` as expected.
 
 
 
