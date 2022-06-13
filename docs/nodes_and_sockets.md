@@ -24,7 +24,7 @@ The **geonodes** package scripts geometry nodes in the following way:
 - **nodes layer**: each geometry node is wrapped in a dedicated class named after its Blender name
 - **data sockets layer**: nodes are created through _Data Socket_ classes methods 
 
-## Nodes classes
+## Layer 1: Nodes classes
 
 The first layer of **geonodes** is made of Geometry node wrappers. Instancing a node, simply creates the node 'Math' for the operation `Subtract`:
 
@@ -36,31 +36,47 @@ math_node = nodes.Math(operation='SUBTRACT')
 The result of this operation can be read through its single output socket whose name is `Value`:
 
 ```python
+import geonodes as gn
 from geonodes import nodes
-math_node = nodes.Math(operation='SUBTRACT')
-result = math_node.value
+
+with gn.Tree("Geometry Nodes") as tree:
+    math_node = nodes.Math(operation='SUBTRACT')
+    result = math_node.value
 ```
 
 > Note that the sockets are the snake_case version See naming convention.
 
-Sockets are properties of the nodes and can be used to link nodes together:
+The nodes can be linked together with the method `plug` of the input sockets:
 
 ```python
+import geonodes as gn
 from geonodes import nodes
 
-a = nodes.Integer(9) # Node 'Integer' with 9 as default value
-b = nodes.Integer(5) # Node 'Integer' with 5 as default value
+with gn.Tree("Geometry Nodes") as tree:
 
-subtract = nodes.Math(operation='SUBTRACT')
-subtract.value0 = a
-subtract.value1 = b
+    a = nodes.Integer(9) # Node 'Integer' with 9 as default value
+    b = nodes.Integer(5) # Node 'Integer' with 5 as default value
 
-result = subtract.value
+    subtract = nodes.Math(operation='SUBTRACT')
+    subtract.inputs[0].plug(a.integer)
+    subtract.inputs[1].plug(b.integer)
+
+    result = subtract.value # 9 - 5
 ```
 
+This is an uggly script to simply compute `a - b` but this is just the underlaying fundation of **geonodes**.
 
+## Layer 2: nodes as methods
 
+> The second layer of **geonodes** is centered on sockets, more precisely on **output sockets**.
 
+Output sockets own the data you want to manipulate to create your geometry. Data sockets can be of there types:
+
+- **Values**: Boolean, Integer, Float, Vector, Color, String
+- **Geometry**: Geometry, Spline, Curve, Mesh, Points, Instances, Volume
+- **Other**: Collection, Object, Texture, Image, Material
+
+In the second layers, nodes are not created directly but through methods and properties of the _Data Socket_ classes.
 
 ## Two ways of linking nodes
 
@@ -101,11 +117,32 @@ It does mean that each node as a 'self' input socket which will be connected to 
 
 ## Nodes parameters and method names
 
-Some nodes have parameters. Let's look at the 'Math' node:
+Some nodes have parameters. Let's look at the 'Mesh_to_points' node:
+
+<img src="/docs/images/mesh_to_points.png" height="250">
+
+It has a parameter `mode` to define how the conversion must be made (vertices, edges,...). This parameter is passed as an argument of the method:
+
+```python
+import geonodes as gn
+
+with gn.Tree("Geometry Nodes") as tree:
+    
+    mesh = gn.Mesh.UVSphere()
+    points = mesh.to_points(mode='EDGES')
+```
+
+Some other nodes are implemented as many times as they are possible values for the parameter.
+This is for instance the case for the 'Math' node whose parameter "Operation" can take a lot of values (ADD, SUBTRACT, SINE, ARCTAN...)
+
+
 
 <img src="/docs/images/math_node2.png" height="250">
 
-It has one parameter named `Operation` which can take a lot of values.
+It has one parameter named `Operation` which can take a lot of values. To perform and multiplication between two Integer, we can write:
+
+```python
+
 
 
 
