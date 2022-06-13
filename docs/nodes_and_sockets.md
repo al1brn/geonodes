@@ -1,3 +1,23 @@
+# Nodes and sockets
+
+> Linking nodes is a way to program something
+
+If you are familiar with build Geometry Nodes in Blender (if it is not the case, you won't take the maximum benefit of continuing reading this page), you shouldn't have difficulties with these 4 concepts:
+
+- Node
+- Input socket
+- Output socket
+- Link
+
+Linking two nodes consists in performing an action defined by the second node on an output of the first node.
+
+For instance, let's have a look to the two following linked nodes:
+
+<img src="nns_basis.png" height="200">
+
+
+
+
 
 
 
