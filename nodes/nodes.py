@@ -1,4 +1,14 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+Created on 2022-06-13
+@author: Generated from generator module
+Blender version: 3.2.0
+"""
+
 from geonodes.core.node import Node
+
 
 # ----------------------------------------------------------------------------------------------------
 # Node AlignEulerToVector for FunctionNodeAlignEulerToVector
