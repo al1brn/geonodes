@@ -1,5 +1,54 @@
+# Demo script
+
+> Let's review this demo script in detail. Afterwards, you should be able to script your own tree.
+
+The script creates a surface from a grid by computing
+`z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the distance of the vertex to the center.
+
+```python
+# Import the geonodes modules
+# gn is the suggested alias
+import geonodes as gn
+
+with gn.Tree("Geometry Nodes") as tree:
+
+    # Let's document our parameters
+    count  = 100  # Grid resolution
+    size   = 20   # Size
+    omega  = 2.   # Period
+    height = 2.   # Height of the surface
+    
+    # The base (x, y) grid
+    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
+    
+    # We compute z
+    with tree.layout("Computing the wave", color="dark_rose"):
+        distance = gn.sqrt(grid.position.x**2 + grid.position.y**2)
+        z = height * gn.sin(distance*omega)/distance
+        
+    # Let's change the z coordinate of our vertices
+    grid.set_position(offset=(0, 0, z))
+    
+    # We are done: plugging the deformed grid as the modified geometry
+    tree.output_geometry = grid.set_shade_smooth()     
+```
+
+The generated nodes and the result of the Geometry nodes modifier is given below:
+
+<img src="images/demo_intro.png" width="600" class="center">
+
+## Description
+
+### Import
+
+```python
+import geonodes as gn
+```
+
+Be sure to have properly installed the **geonodes** module as described in [Installation](..\readme.md#installation).
 
 
+Let's review this demo in details and study alternative.
 
 
 
