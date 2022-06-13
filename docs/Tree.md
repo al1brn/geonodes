@@ -252,8 +252,8 @@ Get the current layout for the newly created nodes
 
 ## check_attributes
 
-Check the attributes
-
+> Check the attributes
+  
 Input attributes are initialized with a socket owner
 
 When finalizing the tree, we must check that the attribute actually feeds the expectedt geometry.
@@ -262,22 +262,25 @@ If it is not the case, we must insert a "Capture Attribute" node.
 The insertion is made with the following algorithm
 
   1. Check if capture is needed
-  - for each fed node:
-  - if the node has an input geometry:
-  - if the input geometry is the expected one:
-  - ok
-  - else
-  - insertion is needed
-  - else:
-  - continue exploration with the nodes fed by this node
-    
-    1. If insertion is needed
-  - Create the capture node
-  - Set the proper parameters
-  - Input geometry with the owning socket
-  - Output geometry to the sockets the owning socket was linked to
-  - Output attribute to the sockets the attribute was connected to
-    
+    - for each fed node:
+      - if the node has an input geometry:
+        - if the input geometry is the expected one:
+          - ok
+        - else
+          - insertion is needed
+      - else:
+        - continue exploration with the nodes fed by this node
+          
+  1. If insertion is needed
+    - Create the capture node
+    - Set the proper parameters
+    - Input geometry with the owning socket
+    - Output geometry to the sockets the owning socket was linked to
+    - Output attribute to the sockets the attribute was connected to
+      
+      
+      
+      
 
 ## arrange
 
