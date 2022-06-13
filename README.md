@@ -84,7 +84,7 @@ To make the module available in your script, use `import` in your script:
 import geonodes as gn
 ```
 
-> `gn` is the recommanded alias for geonodes.
+> `gn` is the recommended alias for geonodes.
 
 ## Documentation
 
