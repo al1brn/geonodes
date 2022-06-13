@@ -177,6 +177,7 @@ Layouts are ways to make the trees clearer. Creating a layout makes use of the `
    # New nodes are created out of the previous layout
 ```
 
+<img src="/docs/images/demo_1_layout.png" width=600>
 
 Note that the layout can be nested.
 
