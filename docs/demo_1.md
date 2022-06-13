@@ -70,6 +70,18 @@ The `tree_name` is the name of a geometry nodes modifier. If it doesn't exist, i
 
 > CAUTION: when calling `tree(tree_name)`, ***all the nodes and links are erased***. Be sure not to open a tree with an existing valuable tree you don't want to loose.
 
+<hr>
+
+> Important notice: within the scope of a Tree creation / closure, all the nodes are created within this tree. There is no need to make reference to this tree.
+
+In the following example, the `grid` mesh is created in `tree` without making any explicit reference to it. 
+
+```python
+with gn.Tree("Geometry Nodes') as tree:
+    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
+```
+<hr>
+
 Fore more details, see [class Tree reference](Tree.md)
 
 ### Variables
@@ -153,46 +165,22 @@ Geometry creation is done through the nodes located in the menus **Mesh Primitiv
 
 In **geonodes**, these nodes are implemented as **constructors** (class or static method) of [Mesh](/docs/sockets/Mesh.md) of [Curve](/docs/sockets/Curve.md) classes.
 
+### Layouts
+
+Layouts are ways to make the trees clearer. Creating a layout makes use of the `with` syntax: any new node created in the scope of a `with` is included in the layout:
+
+```python
+    with tree.layout("Computing the wave", color="dark_rose"):
+        # From now on, the nodes will be created in the layout
+        distance = gn.sqrt(grid.position.x**2 + grid.position.y**2)
+        
+   # New nodes are created out of the previous layout
+```
 
 
+Note that the layout can be nested.
 
 
-
-
-
-
-    
-    
-
-
-
-
-- **Variables**
-
-  Since it is standard python, one can use variables as global parameters. The variables can be changed in the script or can
-  be exposed to the user as a group input:
-  
-  ```python
-  # Alternative 1: change the script to change the parameter
-  
-  count = 100
-  
-  # Alternative 2: expose the parameter as modifier input
-  
-  count = gn.Integer.Input(100, "Count")
-
-  # Alternative 3: expose the parameter with security and tool tip
-  
-  count = gn.Integer.Input(100, "Count", min_value=2, max_value=1000, description="Set the resolution of the surface")
-  ```
-  
-- **geonodes types**
-
-  geonodes module implements all the node socket types: Boolean, Float, ..., Geometry, Mesh, ... Material,...
-
-- **Mesh creation**
-
-  The Mesh primitives are implemented as static method of the Mesh class.
   
 - **Layouts**
 
