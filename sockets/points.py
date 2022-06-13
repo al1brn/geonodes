@@ -53,14 +53,14 @@ class Points(gn.Geometry):
                 - points : Points (self)
                     - selection : Boolean
                     - radius : Float
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.SetPointRadius(points=self, selection=selection, radius=radius)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SetPointRadius(points=self, selection=selection, radius=radius)
+            ```
     
 
         Returns
@@ -96,14 +96,14 @@ class Points(gn.Geometry):
                     - instance_index : Integer
                     - rotation : Vector
                     - scale : Vector
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale)
+            ```
     
 
         Returns
@@ -134,14 +134,14 @@ class Points(gn.Geometry):
             -------
                 - points : Points (self)
                     - selection : Boolean
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.PointsToVertices(points=self, selection=selection)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.PointsToVertices(points=self, selection=selection)
+            ```
     
 
         Returns
@@ -176,14 +176,14 @@ class Points(gn.Geometry):
                     - voxel_amount : Float
                     - radius : Float## Parameters
                     - resolution_mode : 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode)
+            ```
     
 
         Returns

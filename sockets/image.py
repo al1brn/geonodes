@@ -51,14 +51,14 @@ class Image(dsock.Image):
                     - switch1 : Boolean
                     - true : Image## Fixed parameters
                     - input_type : 'IMAGE'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE')
+            ```
     
 
         Returns

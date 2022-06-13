@@ -63,14 +63,13 @@ v = spline.capture_handle_positions(self, relative, domain='CURVE')
 - relative : Boolean## Parameters
   - self
   - domain:'CURVE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.CurveHandlePositions(relative=relative)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.CurveHandlePositions(relative=relative)
+```
 
 ### Returns
 
@@ -96,14 +95,13 @@ v = spline.capture_tangent(self, domain='CURVE')
 
 - self
   - domain:'CURVE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.CurveTangent()
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.CurveTangent()
+```
 
 ### Returns
 
@@ -129,14 +127,13 @@ v = spline.capture_tilt(self, domain='CURVE')
 
 - self
   - domain:'CURVE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.CurveTilt()
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.CurveTilt()
+```
 
 ### Returns
 
@@ -164,14 +161,13 @@ v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE'
   - end_size : Integer## Parameters
   - self
   - domain:'CURVE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.EndpointSelection(start_size=start_size, end_size=end_size)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.EndpointSelection(start_size=start_size, end_size=end_size)
+```
 
 ### Returns
 
@@ -199,14 +195,13 @@ v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE'
   - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
   - mode : {'RIGHT', 'LEFT'}
   - domain:'CURVE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
+```
 
 ### Returns
 
@@ -232,14 +227,13 @@ v = spline.capture_cyclic(self, domain='CURVE')
 
 - self
   - domain:'CURVE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.IsSplineCyclic()
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.IsSplineCyclic()
+```
 
 ### Returns
 
@@ -265,14 +259,13 @@ v = spline.capture_length(self, domain='CURVE')
 
 - self
   - domain:'CURVE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SplineLength()
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SplineLength()
+```
 
 ### Returns
 
@@ -298,14 +291,13 @@ v = spline.capture_parameter(self, domain='CURVE')
 
 - self
   - domain:'CURVE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SplineParameter()
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SplineParameter()
+```
 
 ### Returns
 
@@ -331,14 +323,13 @@ v = spline.capture_resolution(self, domain='CURVE')
 
 - self
   - domain:'CURVE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SplineResolution()
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SplineResolution()
+```
 
 ### Returns
 
@@ -363,14 +354,13 @@ v = spline.spline_ID(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.ID()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.ID()
+```
 
 ### Returns
 
@@ -395,14 +385,13 @@ v = spline.spline_index(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.Index()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Index()
+```
 
 ### Returns
 
@@ -427,14 +416,13 @@ v = spline.spline_position(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.Index()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Index()
+```
 
 ### Returns
 
@@ -460,14 +448,13 @@ v = spline.left_handle_position(self, relative)
 
 - relative : Boolean## Parameters
   - self
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.CurveHandlePositions(relative=relative)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.CurveHandlePositions(relative=relative)
+```
 
 ### Returns
 
@@ -493,14 +480,13 @@ v = spline.right_handle_position(self, relative)
 
 - relative : Boolean## Parameters
   - self
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.CurveHandlePositions(relative=relative)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.CurveHandlePositions(relative=relative)
+```
 
 ### Returns
 
@@ -525,14 +511,13 @@ v = spline.tangent(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.CurveTangent()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.CurveTangent()
+```
 
 ### Returns
 
@@ -557,14 +542,13 @@ v = spline.tilt(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.CurveTilt()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.CurveTilt()
+```
 
 ### Returns
 
@@ -591,14 +575,13 @@ v = spline.endpoint_selection(self, start_size, end_size)
 - start_size : Integer
   - end_size : Integer## Parameters
   - self
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.EndpointSelection(start_size=start_size, end_size=end_size)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.EndpointSelection(start_size=start_size, end_size=end_size)
+```
 
 ### Returns
 
@@ -625,14 +608,13 @@ v = spline.handle_type_selection(self, handle_type, mode)
 - self
   - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
   - mode : {'RIGHT', 'LEFT'}
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
+```
 
 ### Returns
 
@@ -657,14 +639,13 @@ v = spline.cyclic(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.IsSplineCyclic()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.IsSplineCyclic()
+```
 
 ### Returns
 
@@ -689,14 +670,13 @@ v = spline.length(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.SplineLength()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SplineLength()
+```
 
 ### Returns
 
@@ -721,14 +701,13 @@ v = spline.point_count(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.SplineLength()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SplineLength()
+```
 
 ### Returns
 
@@ -753,14 +732,13 @@ v = spline.factor(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.SplineParameter()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SplineParameter()
+```
 
 ### Returns
 
@@ -785,14 +763,13 @@ v = spline.parameter_length(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.SplineParameter()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SplineParameter()
+```
 
 ### Returns
 
@@ -817,14 +794,13 @@ v = spline.parameter_index(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.SplineParameter()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SplineParameter()
+```
 
 ### Returns
 
@@ -849,14 +825,13 @@ v = spline.resolution(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.SplineResolution()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SplineResolution()
+```
 
 ### Returns
 
@@ -883,14 +858,13 @@ v = spline.set_cyclic(selection, cyclic)
 - geometry : Geometry (self)
   - selection : Boolean
   - cyclic : Boolean
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic)
+```
 
 ### Returns
 
@@ -917,14 +891,13 @@ v = spline.set_resolution(selection, resolution)
 - geometry : Geometry (self)
   - selection : Boolean
   - resolution : Integer
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution)
+```
 
 ### Returns
 

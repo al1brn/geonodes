@@ -43,14 +43,13 @@ v = string.length
 
 - string : String (self)## Fixed parameters
   - label:f"{self.node_chain_label}.length"
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.StringLength(string=self, label=f"{self.node_chain_label}.length")
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.StringLength(string=self, label=f"{self.node_chain_label}.length")
+```
 
 ### Returns
 
@@ -78,14 +77,13 @@ v = string.switch(switch0, true)
   - switch0 : Boolean
   - true : String## Fixed parameters
   - input_type : 'STRING'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING')
+```
 
 ### Returns
 
@@ -114,14 +112,13 @@ v = string.element(b)
   - data_type : 'STRING'
   - mode : 'ELEMENT'
   - operation : 'ELEMENT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT')
+```
 
 ### Returns
 
@@ -150,14 +147,13 @@ v = string.length(b)
   - data_type : 'STRING'
   - mode : 'ELEMENT'
   - operation : 'LENGTH'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH')
+```
 
 ### Returns
 
@@ -186,14 +182,13 @@ v = string.average(b)
   - data_type : 'STRING'
   - mode : 'ELEMENT'
   - operation : 'AVERAGE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE')
+```
 
 ### Returns
 
@@ -222,14 +217,13 @@ v = string.dot_product(b)
   - data_type : 'STRING'
   - mode : 'ELEMENT'
   - operation : 'DOT_PRODUCT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT')
+```
 
 ### Returns
 
@@ -258,14 +252,13 @@ v = string.direction(b)
   - data_type : 'STRING'
   - mode : 'ELEMENT'
   - operation : 'DIRECTION'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION')
+```
 
 ### Returns
 
@@ -291,14 +284,13 @@ v = string.join(strings_1, strings_2, strings_3, delimiter)
 
 - strings : *String (self)
   - delimiter : String
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.JoinStrings(self, *strings, delimiter=delimiter)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.JoinStrings(self, *strings, delimiter=delimiter)
+```
 
 ### Returns
 
@@ -325,14 +317,13 @@ v = string.replace(find, replace)
 - string : String (self)
   - find : String
   - replace : String
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.ReplaceString(string=self, find=find, replace=replace)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.ReplaceString(string=self, find=find, replace=replace)
+```
 
 ### Returns
 
@@ -359,14 +350,13 @@ v = string.slice(position, length)
 - string : String (self)
   - position : Integer
   - length : Integer
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SliceString(string=self, position=position, length=length)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SliceString(string=self, position=position, length=length)
+```
 
 ### Returns
 
@@ -401,14 +391,13 @@ v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_b
   - align_y : 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
   - overflow : 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
   - pivot_mode : 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
+```
 
 ### Returns
 

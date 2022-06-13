@@ -117,9 +117,10 @@ class Geometry(dsock.Geometry):
 
         Arguments
         ---------
-            Node creation
-            -------------
-            
+    
+
+        Node creation
+        -------------
             ```python
             from geondes import nodes
             nodes.IsViewport()
@@ -159,14 +160,14 @@ class Geometry(dsock.Geometry):
             -------
                 - geometry : Geometry (self)## Fixed parameters
                     - label:f"{self.node_chain_label}.bound_box"
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_box")
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_box")
+            ```
     
 
         Returns
@@ -200,14 +201,14 @@ class Geometry(dsock.Geometry):
             -------
                 - geometry : Geometry (self)## Fixed parameters
                     - label:f"{self.node_chain_label}.box"
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box")
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box")
+            ```
     
 
         Returns
@@ -239,14 +240,14 @@ class Geometry(dsock.Geometry):
             -------
                 - geometry : Geometry (self)## Fixed parameters
                     - label:f"{self.node_chain_label}.box_min"
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_min")
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_min")
+            ```
     
 
         Returns
@@ -278,14 +279,14 @@ class Geometry(dsock.Geometry):
             -------
                 - geometry : Geometry (self)## Fixed parameters
                     - label:f"{self.node_chain_label}.box_max"
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_max")
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_max")
+            ```
     
 
         Returns
@@ -317,14 +318,14 @@ class Geometry(dsock.Geometry):
             -------
                 - geometry : Geometry (self)## Fixed parameters
                     - label:f"{self.node_chain_label}.components"
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.components")
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.components")
+            ```
     
 
         Returns
@@ -358,14 +359,14 @@ class Geometry(dsock.Geometry):
             -------
                 - geometry : Geometry (self)## Fixed parameters
                     - label:f"{self.node_chain_label}.mesh_component"
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.mesh_component")
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.mesh_component")
+            ```
     
 
         Returns
@@ -397,14 +398,14 @@ class Geometry(dsock.Geometry):
             -------
                 - geometry : Geometry (self)## Fixed parameters
                     - label:f"{self.node_chain_label}.points_component"
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.points_component")
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.points_component")
+            ```
     
 
         Returns
@@ -436,14 +437,14 @@ class Geometry(dsock.Geometry):
             -------
                 - geometry : Geometry (self)## Fixed parameters
                     - label:f"{self.node_chain_label}.curve_component"
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.curve_component")
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.curve_component")
+            ```
     
 
         Returns
@@ -475,14 +476,14 @@ class Geometry(dsock.Geometry):
             -------
                 - geometry : Geometry (self)## Fixed parameters
                     - label:f"{self.node_chain_label}.volume_component"
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.volume_component")
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.volume_component")
+            ```
     
 
         Returns
@@ -514,14 +515,14 @@ class Geometry(dsock.Geometry):
             -------
                 - geometry : Geometry (self)## Fixed parameters
                     - label:f"{self.node_chain_label}.instances_component"
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.instances_component")
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.instances_component")
+            ```
     
 
         Returns
@@ -556,14 +557,14 @@ class Geometry(dsock.Geometry):
             ----------
                 - self
                     - domain:'POINT'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.ID()
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.ID()
+            ```
     
 
         Returns
@@ -599,14 +600,14 @@ class Geometry(dsock.Geometry):
             ----------
                 - self
                     - domain:'POINT'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.Index()
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Index()
+            ```
     
 
         Returns
@@ -642,14 +643,14 @@ class Geometry(dsock.Geometry):
             ----------
                 - self
                     - domain:'FACE'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.Normal()
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Normal()
+            ```
     
 
         Returns
@@ -685,14 +686,14 @@ class Geometry(dsock.Geometry):
             ----------
                 - self
                     - domain:'POINT'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.Position()
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Position()
+            ```
     
 
         Returns
@@ -728,14 +729,14 @@ class Geometry(dsock.Geometry):
             ----------
                 - self
                     - domain:'POINT'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.Radius()
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Radius()
+            ```
     
 
         Returns
@@ -775,14 +776,14 @@ class Geometry(dsock.Geometry):
             Parameters
             ----------
                 - self
-                  
-                    Node creation
-                    -------------
-                    
-                    ```python
-                    from geondes import nodes
-                    nodes.ID()
-                    ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.ID()
+            ```
     
 
         Returns
@@ -813,14 +814,14 @@ class Geometry(dsock.Geometry):
             Parameters
             ----------
                 - self
-                  
-                    Node creation
-                    -------------
-                    
-                    ```python
-                    from geondes import nodes
-                    nodes.Index()
-                    ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Index()
+            ```
     
 
         Returns
@@ -851,14 +852,14 @@ class Geometry(dsock.Geometry):
             Parameters
             ----------
                 - self
-                  
-                    Node creation
-                    -------------
-                    
-                    ```python
-                    from geondes import nodes
-                    nodes.Normal()
-                    ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Normal()
+            ```
     
 
         Returns
@@ -889,14 +890,14 @@ class Geometry(dsock.Geometry):
             Parameters
             ----------
                 - self
-                  
-                    Node creation
-                    -------------
-                    
-                    ```python
-                    from geondes import nodes
-                    nodes.Position()
-                    ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Position()
+            ```
     
 
         Returns
@@ -927,14 +928,14 @@ class Geometry(dsock.Geometry):
             Parameters
             ----------
                 - self
-                  
-                    Node creation
-                    -------------
-                    
-                    ```python
-                    from geondes import nodes
-                    nodes.Radius()
-                    ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Radius()
+            ```
     
 
         Returns
@@ -971,14 +972,14 @@ class Geometry(dsock.Geometry):
                     - switch1 : Boolean
                     - true : Geometry## Fixed parameters
                     - input_type : 'GEOMETRY'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY')
+            ```
     
 
         Returns
@@ -1011,14 +1012,14 @@ class Geometry(dsock.Geometry):
                     - value : Float## Parameters
                     - data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
                     - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain)
+            ```
     
 
         Returns
@@ -1056,14 +1057,14 @@ class Geometry(dsock.Geometry):
                     - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
                     - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
                     - data_type : 'BOOLEAN'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
+            ```
     
 
         Returns
@@ -1099,14 +1100,14 @@ class Geometry(dsock.Geometry):
                     - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
                     - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
                     - data_type : 'INT'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
+            ```
     
 
         Returns
@@ -1142,14 +1143,14 @@ class Geometry(dsock.Geometry):
                     - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
                     - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
                     - data_type : 'FLOAT'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
+            ```
     
 
         Returns
@@ -1185,14 +1186,14 @@ class Geometry(dsock.Geometry):
                     - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
                     - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
                     - data_type : 'FLOAT_VECTOR'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
+            ```
     
 
         Returns
@@ -1228,14 +1229,14 @@ class Geometry(dsock.Geometry):
                     - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
                     - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
                     - data_type : 'FLOAT_COLOR'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
+            ```
     
 
         Returns
@@ -1268,14 +1269,14 @@ class Geometry(dsock.Geometry):
                     - selection : Boolean## Parameters
                     - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
                     - mode : 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode)
+            ```
     
 
         Returns
@@ -1308,14 +1309,14 @@ class Geometry(dsock.Geometry):
                     - selection : Boolean
                     - distance : Float## Parameters
                     - mode : 'ALL' in [ALL, CONNECTED]
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.MergeByDistance(geometry=self, selection=selection, distance=distance, mode=mode)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.MergeByDistance(geometry=self, selection=selection, distance=distance, mode=mode)
+            ```
     
 
         Returns
@@ -1346,14 +1347,14 @@ class Geometry(dsock.Geometry):
             -------
                 - geometry : Geometry (self)## Parameters
                     - legacy_behavior : False
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior)
+            ```
     
 
         Returns
@@ -1385,14 +1386,14 @@ class Geometry(dsock.Geometry):
                 - geometry : Geometry (self)
                     - old : Material
                     - new : Material
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.ReplaceMaterial(geometry=self, old=old, new=new)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.ReplaceMaterial(geometry=self, old=old, new=new)
+            ```
     
 
         Returns
@@ -1428,14 +1429,14 @@ class Geometry(dsock.Geometry):
                     - axis : Vector## Parameters
                     - domain : 'FACE' in [FACE, EDGE]
                     - scale_mode : 'UNIFORM' in [UNIFORM, SINGLE_AXIS]
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode)
+            ```
     
 
         Returns
@@ -1467,14 +1468,14 @@ class Geometry(dsock.Geometry):
                 - geometry : Geometry (self)
                     - selection : Boolean
                     - ID : Integer
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.SetID(geometry=self, selection=selection, ID=ID)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SetID(geometry=self, selection=selection, ID=ID)
+            ```
     
 
         Returns
@@ -1506,14 +1507,14 @@ class Geometry(dsock.Geometry):
                 - geometry : Geometry (self)
                     - selection : Boolean
                     - material : Material
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.SetMaterial(geometry=self, selection=selection, material=material)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SetMaterial(geometry=self, selection=selection, material=material)
+            ```
     
 
         Returns
@@ -1545,14 +1546,14 @@ class Geometry(dsock.Geometry):
                 - geometry : Geometry (self)
                     - selection : Boolean
                     - material_index : Integer
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index)
+            ```
     
 
         Returns
@@ -1585,14 +1586,14 @@ class Geometry(dsock.Geometry):
                     - selection : Boolean
                     - position : Vector
                     - offset : Vector
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset)
+            ```
     
 
         Returns
@@ -1624,14 +1625,14 @@ class Geometry(dsock.Geometry):
                 - geometry : Geometry (self)
                     - selection : Boolean
                     - shade_smooth : Boolean
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth)
+            ```
     
 
         Returns
@@ -1664,14 +1665,14 @@ class Geometry(dsock.Geometry):
                     - translation : Vector
                     - rotation : Vector
                     - scale : Vector
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale)
+            ```
     
 
         Returns
@@ -1702,14 +1703,14 @@ class Geometry(dsock.Geometry):
             -------
                 - geometry : Geometry (self)## Parameters
                     - component : 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.DomainSize(geometry=self, component=component)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DomainSize(geometry=self, component=component)
+            ```
     
 
         Returns
@@ -1740,14 +1741,14 @@ class Geometry(dsock.Geometry):
             -------
                 - geometry : Geometry (self)
                     - name : String
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.RemoveNamedAttribute(geometry=self, name=name)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.RemoveNamedAttribute(geometry=self, name=name)
+            ```
     
 
         Returns
@@ -1779,14 +1780,14 @@ class Geometry(dsock.Geometry):
                 - geometry : Geometry (self)
                     - selection : Boolean## Parameters
                     - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain)
+            ```
     
 
         Returns
@@ -1816,14 +1817,14 @@ class Geometry(dsock.Geometry):
             Sockets
             -------
                 - geometry : Geometry (self)
-                  
-                    Node creation
-                    -------------
-                    
-                    ```python
-                    from geondes import nodes
-                    nodes.ConvexHull(geometry=self)
-                    ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.ConvexHull(geometry=self)
+            ```
     
 
         Returns
@@ -1853,14 +1854,14 @@ class Geometry(dsock.Geometry):
             Sockets
             -------
                 - geometry : *Geometry (self)
-                  
-                    Node creation
-                    -------------
-                    
-                    ```python
-                    from geondes import nodes
-                    nodes.GeometryToInstance(self, *geometry)
-                    ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.GeometryToInstance(self, *geometry)
+            ```
     
 
         Returns
@@ -1890,14 +1891,14 @@ class Geometry(dsock.Geometry):
             Sockets
             -------
                 - geometry : *Geometry (self)
-                  
-                    Node creation
-                    -------------
-                    
-                    ```python
-                    from geondes import nodes
-                    nodes.JoinGeometry(self, *geometry)
-                    ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.JoinGeometry(self, *geometry)
+            ```
     
 
         Returns
@@ -1929,14 +1930,14 @@ class Geometry(dsock.Geometry):
                 - target : Geometry (self)
                     - source_position : Vector## Parameters
                     - target_element : 'FACES' in [POINTS, EDGES, FACES]
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.GeometryProximity(target=self, source_position=source_position, target_element=target_element)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.GeometryProximity(target=self, source_position=source_position, target_element=target_element)
+            ```
     
 
         Returns

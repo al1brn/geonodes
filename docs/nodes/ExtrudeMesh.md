@@ -6,8 +6,7 @@
   
 <sub>go to [index](/docs/index.md)</sub>
 
-Initialization
---------------
+## Initialization
 
 ```python
 from geonodes import nodes

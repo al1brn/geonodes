@@ -57,14 +57,14 @@ class Instances(gn.Geometry):
             Parameters
             ----------
                 - self
-                  
-                    Node creation
-                    -------------
-                    
-                    ```python
-                    from geondes import nodes
-                    nodes.Index()
-                    ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Index()
+            ```
     
 
         Returns
@@ -102,14 +102,14 @@ class Instances(gn.Geometry):
                     - rotation : Vector
                     - pivot_point : Vector
                     - local_space : Boolean
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
+            ```
     
 
         Returns
@@ -143,14 +143,14 @@ class Instances(gn.Geometry):
                     - scale : Vector
                     - center : Vector
                     - local_space : Boolean
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
+            ```
     
 
         Returns
@@ -183,14 +183,14 @@ class Instances(gn.Geometry):
                     - selection : Boolean
                     - translation : Vector
                     - local_space : Boolean
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
+            ```
     
 
         Returns
@@ -223,14 +223,14 @@ class Instances(gn.Geometry):
                     - selection : Boolean
                     - position : Vector
                     - radius : Float
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
+            ```
     
 
         Returns

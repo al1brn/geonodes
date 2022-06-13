@@ -117,14 +117,14 @@ class Vector(dsock.Vector):
                     - ID : Integer
                     - seed : Integer## Fixed parameters
                     - data_type : 'FLOAT_VECTOR'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR')
+            ```
     
 
         Returns
@@ -157,14 +157,14 @@ class Vector(dsock.Vector):
                 - x : Float
                     - y : Float
                     - z : Float
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.CombineXyz(x=x, y=y, z=z)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.CombineXyz(x=x, y=y, z=z)
+            ```
     
 
         Returns
@@ -199,14 +199,14 @@ class Vector(dsock.Vector):
                     - vector : Vector## Parameters
                     - axis : 'X' in [X, Y, Z]
                     - pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
+            ```
     
 
         Returns
@@ -242,14 +242,14 @@ class Vector(dsock.Vector):
             -------
                 - vector : Vector (self)## Fixed parameters
                     - label:f"{self.node_chain_label}.separate"
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.separate")
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.separate")
+            ```
     
 
         Returns
@@ -283,14 +283,14 @@ class Vector(dsock.Vector):
             -------
                 - vector : Vector (self)## Fixed parameters
                     - label:f"{self.node_chain_label}.x"
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.x")
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.x")
+            ```
     
 
         Returns
@@ -326,14 +326,14 @@ class Vector(dsock.Vector):
             -------
                 - vector : Vector (self)## Fixed parameters
                     - label:f"{self.node_chain_label}.y"
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.y")
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.y")
+            ```
     
 
         Returns
@@ -369,14 +369,14 @@ class Vector(dsock.Vector):
             -------
                 - vector : Vector (self)## Fixed parameters
                     - label:f"{self.node_chain_label}.z"
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.z")
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.z")
+            ```
     
 
         Returns
@@ -417,14 +417,14 @@ class Vector(dsock.Vector):
                     - group_index : Integer## Parameters
                     - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
                     - data_type : 'FLOAT_VECTOR'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain)
+            ```
     
 
         Returns
@@ -458,14 +458,14 @@ class Vector(dsock.Vector):
                     - selection : Boolean## Parameters
                     - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
                     - data_type : 'FLOAT_VECTOR'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT_VECTOR', domain=domain)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT_VECTOR', domain=domain)
+            ```
     
 
         Returns
@@ -501,14 +501,14 @@ class Vector(dsock.Vector):
                     - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
                     - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
                     - data_type : 'FLOAT_VECTOR'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
+            ```
     
 
         Returns
@@ -541,14 +541,14 @@ class Vector(dsock.Vector):
                     - geometry : Geometry## Parameters
                     - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
                     - data_type : 'FLOAT_VECTOR'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VECTOR', domain=domain)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VECTOR', domain=domain)
+            ```
     
 
         Returns
@@ -581,14 +581,14 @@ class Vector(dsock.Vector):
                     - index : Integer## Parameters
                     - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
                     - data_type : 'FLOAT_VECTOR'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain)
+            ```
     
 
         Returns
@@ -624,14 +624,14 @@ class Vector(dsock.Vector):
                     - ray_length : Float## Parameters
                     - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
                     - data_type : 'FLOAT_VECTOR'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping)
+            ```
     
 
         Returns
@@ -668,14 +668,14 @@ class Vector(dsock.Vector):
                     - clamp : True
                     - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]## Fixed parameters
                     - data_type : 'FLOAT_VECTOR'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type)
+            ```
     
 
         Returns
@@ -711,14 +711,14 @@ class Vector(dsock.Vector):
                     - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
                     - data_type : 'VECTOR'
                     - operation : 'LESS_THAN'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN')
+            ```
     
 
         Returns
@@ -754,14 +754,14 @@ class Vector(dsock.Vector):
                     - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
                     - data_type : 'VECTOR'
                     - operation : 'LESS_EQUAL'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL')
+            ```
     
 
         Returns
@@ -797,14 +797,14 @@ class Vector(dsock.Vector):
                     - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
                     - data_type : 'VECTOR'
                     - operation : 'GREATER_THAN'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN')
+            ```
     
 
         Returns
@@ -840,14 +840,14 @@ class Vector(dsock.Vector):
                     - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
                     - data_type : 'VECTOR'
                     - operation : 'GREATER_EQUAL'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL')
+            ```
     
 
         Returns
@@ -884,14 +884,14 @@ class Vector(dsock.Vector):
                     - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
                     - data_type : 'VECTOR'
                     - operation : 'EQUAL'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL')
+            ```
     
 
         Returns
@@ -928,14 +928,14 @@ class Vector(dsock.Vector):
                     - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
                     - data_type : 'VECTOR'
                     - operation : 'NOT_EQUAL'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL')
+            ```
     
 
         Returns
@@ -967,14 +967,14 @@ class Vector(dsock.Vector):
                 - vector0 : Vector (self)
                     - vector1 : Vector## Fixed parameters
                     - operation : 'ADD'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD')
+            ```
     
 
         Returns
@@ -1006,14 +1006,14 @@ class Vector(dsock.Vector):
                 - vector0 : Vector (self)
                     - vector1 : Vector## Fixed parameters
                     - operation : 'SUBTRACT'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT')
+            ```
     
 
         Returns
@@ -1045,14 +1045,14 @@ class Vector(dsock.Vector):
                 - vector0 : Vector (self)
                     - vector1 : Vector## Fixed parameters
                     - operation : 'MULTIPLY'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY')
+            ```
     
 
         Returns
@@ -1084,14 +1084,14 @@ class Vector(dsock.Vector):
                 - vector0 : Vector (self)
                     - vector1 : Vector## Fixed parameters
                     - operation : 'DIVIDE'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE')
+            ```
     
 
         Returns
@@ -1124,14 +1124,14 @@ class Vector(dsock.Vector):
                     - vector1 : Vector
                     - vector2 : Vector## Fixed parameters
                     - operation : 'MULTIPLY_ADD'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD')
+            ```
     
 
         Returns
@@ -1163,14 +1163,14 @@ class Vector(dsock.Vector):
                 - vector0 : Vector (self)
                     - vector1 : Vector## Fixed parameters
                     - operation : 'CROSS_PRODUCT'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT')
+            ```
     
 
         Returns
@@ -1202,14 +1202,14 @@ class Vector(dsock.Vector):
                 - vector0 : Vector (self)
                     - vector1 : Vector## Fixed parameters
                     - operation : 'PROJECT'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT')
+            ```
     
 
         Returns
@@ -1241,14 +1241,14 @@ class Vector(dsock.Vector):
                 - vector0 : Vector (self)
                     - vector1 : Vector## Fixed parameters
                     - operation : 'REFLECT'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT')
+            ```
     
 
         Returns
@@ -1281,14 +1281,14 @@ class Vector(dsock.Vector):
                     - vector1 : Vector
                     - scale : Float## Fixed parameters
                     - operation : 'REFRACT'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT')
+            ```
     
 
         Returns
@@ -1321,14 +1321,14 @@ class Vector(dsock.Vector):
                     - vector1 : Vector
                     - vector2 : Vector## Fixed parameters
                     - operation : 'FACEFORWARD'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD')
+            ```
     
 
         Returns
@@ -1360,14 +1360,14 @@ class Vector(dsock.Vector):
                 - vector0 : Vector (self)
                     - vector1 : Vector## Fixed parameters
                     - operation : 'DOT_PRODUCT'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT')
+            ```
     
 
         Returns
@@ -1399,14 +1399,14 @@ class Vector(dsock.Vector):
                 - vector0 : Vector (self)
                     - vector1 : Vector## Fixed parameters
                     - operation : 'DISTANCE'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE')
+            ```
     
 
         Returns
@@ -1437,14 +1437,14 @@ class Vector(dsock.Vector):
             -------
                 - vector0 : Vector (self)## Fixed parameters
                     - operation : 'LENGTH'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, operation='LENGTH')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, operation='LENGTH')
+            ```
     
 
         Returns
@@ -1476,14 +1476,14 @@ class Vector(dsock.Vector):
                 - vector0 : Vector (self)
                     - scale : Float## Fixed parameters
                     - operation : 'SCALE'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, scale=scale, operation='SCALE')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, scale=scale, operation='SCALE')
+            ```
     
 
         Returns
@@ -1514,14 +1514,14 @@ class Vector(dsock.Vector):
             -------
                 - vector0 : Vector (self)## Fixed parameters
                     - operation : 'NORMALIZE'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, operation='NORMALIZE')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, operation='NORMALIZE')
+            ```
     
 
         Returns
@@ -1552,14 +1552,14 @@ class Vector(dsock.Vector):
             -------
                 - vector0 : Vector (self)## Fixed parameters
                     - operation : 'ABSOLUTE'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, operation='ABSOLUTE')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, operation='ABSOLUTE')
+            ```
     
 
         Returns
@@ -1591,14 +1591,14 @@ class Vector(dsock.Vector):
                 - vector0 : Vector (self)
                     - vector1 : Vector## Fixed parameters
                     - operation : 'MINIMUM'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM')
+            ```
     
 
         Returns
@@ -1630,14 +1630,14 @@ class Vector(dsock.Vector):
                 - vector0 : Vector (self)
                     - vector1 : Vector## Fixed parameters
                     - operation : 'MAXIMUM'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM')
+            ```
     
 
         Returns
@@ -1668,14 +1668,14 @@ class Vector(dsock.Vector):
             -------
                 - vector0 : Vector (self)## Fixed parameters
                     - operation : 'FLOOR'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, operation='FLOOR')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, operation='FLOOR')
+            ```
     
 
         Returns
@@ -1706,14 +1706,14 @@ class Vector(dsock.Vector):
             -------
                 - vector0 : Vector (self)## Fixed parameters
                     - operation : 'CEIL'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, operation='CEIL')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, operation='CEIL')
+            ```
     
 
         Returns
@@ -1744,14 +1744,14 @@ class Vector(dsock.Vector):
             -------
                 - vector0 : Vector (self)## Fixed parameters
                     - operation : 'FRACTION'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, operation='FRACTION')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, operation='FRACTION')
+            ```
     
 
         Returns
@@ -1783,14 +1783,14 @@ class Vector(dsock.Vector):
                 - vector0 : Vector (self)
                     - vector1 : Vector## Fixed parameters
                     - operation : 'MODULO'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO')
+            ```
     
 
         Returns
@@ -1823,14 +1823,14 @@ class Vector(dsock.Vector):
                     - vector1 : Vector
                     - vector2 : Vector## Fixed parameters
                     - operation : 'WRAP'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP')
+            ```
     
 
         Returns
@@ -1862,14 +1862,14 @@ class Vector(dsock.Vector):
                 - vector0 : Vector (self)
                     - vector1 : Vector## Fixed parameters
                     - operation : 'SNAP'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP')
+            ```
     
 
         Returns
@@ -1900,14 +1900,14 @@ class Vector(dsock.Vector):
             -------
                 - vector0 : Vector (self)## Fixed parameters
                     - operation : 'SINE'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, operation='SINE')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, operation='SINE')
+            ```
     
 
         Returns
@@ -1938,14 +1938,14 @@ class Vector(dsock.Vector):
             -------
                 - vector0 : Vector (self)## Fixed parameters
                     - operation : 'COSINE'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, operation='COSINE')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, operation='COSINE')
+            ```
     
 
         Returns
@@ -1976,14 +1976,14 @@ class Vector(dsock.Vector):
             -------
                 - vector0 : Vector (self)## Fixed parameters
                     - operation : 'TANGENT'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorMath(vector0=self, operation='TANGENT')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorMath(vector0=self, operation='TANGENT')
+            ```
     
 
         Returns
@@ -2014,14 +2014,14 @@ class Vector(dsock.Vector):
             -------
                 - vector : Vector (self)
                     - fac : Float
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorCurves(vector=self, fac=fac)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorCurves(vector=self, fac=fac)
+            ```
     
 
         Returns
@@ -2055,14 +2055,14 @@ class Vector(dsock.Vector):
                     - vector : Vector## Parameters
                     - axis : 'X' in [X, Y, Z]
                     - pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
+            ```
     
 
         Returns
@@ -2094,14 +2094,14 @@ class Vector(dsock.Vector):
                 - rotation : Vector (self)
                     - rotate_by : Vector## Parameters
                     - space : 'OBJECT' in [OBJECT, LOCAL]
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space)
+            ```
     
 
         Returns
@@ -2137,14 +2137,14 @@ class Vector(dsock.Vector):
                     - rotation : Vector## Parameters
                     - invert : False
                     - rotation_type : 'AXIS_ANGLE' in [AXIS_ANGLE, X_AXIS, Y_AXIS, Z_AXIS, EULER_XYZ]
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type)
+            ```
     
 
         Returns

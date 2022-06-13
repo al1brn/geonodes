@@ -52,14 +52,14 @@ class Collection(dsock.Collection):
                     - switch1 : Boolean
                     - true : Collection## Fixed parameters
                     - input_type : 'COLLECTION'
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION')
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION')
+            ```
     
 
         Returns
@@ -92,14 +92,14 @@ class Collection(dsock.Collection):
                     - separate_children : Boolean
                     - reset_children : Boolean## Parameters
                     - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
-                      
-                        Node creation
-                        -------------
-                        
-                        ```python
-                        from geondes import nodes
-                        nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space)
-                        ```
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space)
+            ```
     
 
         Returns

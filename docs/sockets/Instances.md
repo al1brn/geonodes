@@ -36,14 +36,13 @@ v = instances.instance_index(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.Index()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Index()
+```
 
 ### Returns
 
@@ -72,14 +71,13 @@ v = instances.rotate(selection, rotation, pivot_point, local_space)
   - rotation : Vector
   - pivot_point : Vector
   - local_space : Boolean
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
+```
 
 ### Returns
 
@@ -108,14 +106,13 @@ v = instances.scale(selection, scale, center, local_space)
   - scale : Vector
   - center : Vector
   - local_space : Boolean
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
+```
 
 ### Returns
 
@@ -143,14 +140,13 @@ v = instances.translate(selection, translation, local_space)
   - selection : Boolean
   - translation : Vector
   - local_space : Boolean
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
+```
 
 ### Returns
 
@@ -178,14 +174,13 @@ v = instances.to_points(selection, position, radius)
   - selection : Boolean
   - position : Vector
   - radius : Float
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
+```
 
 ### Returns
 

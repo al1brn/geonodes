@@ -95,14 +95,13 @@ v = Float.Random(min, max, ID, seed)
   - ID : Integer
   - seed : Integer## Fixed parameters
   - data_type : 'FLOAT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT')
+```
 
 ### Returns
 
@@ -130,14 +129,13 @@ v = float.accumulate_field(group_index, domain)
   - group_index : Integer## Parameters
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
   - data_type : 'FLOAT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT', domain=domain)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT', domain=domain)
+```
 
 ### Returns
 
@@ -166,14 +164,13 @@ v = float.attribute_statistic(geometry, selection, domain)
   - selection : Boolean## Parameters
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
   - data_type : 'FLOAT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT', domain=domain)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT', domain=domain)
+```
 
 ### Returns
 
@@ -204,14 +201,13 @@ v = float.transfer_attribute(source, source_position, index, domain, mapping)
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
   - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
   - data_type : 'FLOAT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
+```
 
 ### Returns
 
@@ -239,14 +235,13 @@ v = float.capture_attribute(geometry, domain)
   - geometry : Geometry## Parameters
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
   - data_type : 'FLOAT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT', domain=domain)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT', domain=domain)
+```
 
 ### Returns
 
@@ -274,14 +269,13 @@ v = float.field_at_index(index, domain)
   - index : Integer## Parameters
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
   - data_type : 'FLOAT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT', domain=domain)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT', domain=domain)
+```
 
 ### Returns
 
@@ -312,14 +306,13 @@ v = float.raycast(target_geometry, source_position, ray_direction, ray_length, m
   - ray_length : Float## Parameters
   - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
   - data_type : 'FLOAT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping)
+```
 
 ### Returns
 
@@ -347,14 +340,13 @@ v = float.switch(switch0, true)
   - switch0 : Boolean
   - true : Float## Fixed parameters
   - input_type : 'FLOAT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT')
+```
 
 ### Returns
 
@@ -386,14 +378,13 @@ v = float.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_typ
   - clamp : True
   - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]## Fixed parameters
   - data_type : 'FLOAT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type)
+```
 
 ### Returns
 
@@ -422,14 +413,13 @@ v = float.less_than(b)
   - data_type : 'FLOAT'
   - mode : 'ELEMENT'
   - operation : 'LESS_THAN'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN')
+```
 
 ### Returns
 
@@ -458,14 +448,13 @@ v = float.less_equal(b)
   - data_type : 'FLOAT'
   - mode : 'ELEMENT'
   - operation : 'LESS_EQUAL'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL')
+```
 
 ### Returns
 
@@ -494,14 +483,13 @@ v = float.greater_than(b)
   - data_type : 'FLOAT'
   - mode : 'ELEMENT'
   - operation : 'GREATER_THAN'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+```
 
 ### Returns
 
@@ -530,14 +518,13 @@ v = float.greater_equal(b)
   - data_type : 'FLOAT'
   - mode : 'ELEMENT'
   - operation : 'GREATER_EQUAL'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL')
+```
 
 ### Returns
 
@@ -567,14 +554,13 @@ v = float.equal(b, epsilon)
   - data_type : 'FLOAT'
   - mode : 'ELEMENT'
   - operation : 'EQUAL'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL')
+```
 
 ### Returns
 
@@ -604,14 +590,13 @@ v = float.not_equal(b, epsilon)
   - data_type : 'FLOAT'
   - mode : 'ELEMENT'
   - operation : 'NOT_EQUAL'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL')
+```
 
 ### Returns
 
@@ -638,14 +623,13 @@ v = float.add(value1)
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'ADD'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, operation='ADD')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, operation='ADD')
+```
 
 ### Returns
 
@@ -672,14 +656,13 @@ v = float.subtract(value1)
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'SUBTRACT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
+```
 
 ### Returns
 
@@ -706,14 +689,13 @@ v = float.multiply(value1)
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'MULTIPLY'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
+```
 
 ### Returns
 
@@ -740,14 +722,13 @@ v = float.divide(value1)
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'DIVIDE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, operation='DIVIDE')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, operation='DIVIDE')
+```
 
 ### Returns
 
@@ -775,14 +756,13 @@ v = float.multiply_add(value1, value2)
   - value1 : Float
   - value2 : Float## Fixed parameters
   - operation : 'MULTIPLY_ADD'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD')
+```
 
 ### Returns
 
@@ -809,14 +789,13 @@ v = float.pow(value1)
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'POWER'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, operation='POWER')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, operation='POWER')
+```
 
 ### Returns
 
@@ -843,14 +822,13 @@ v = float.log(value1)
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'LOGARITHM'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
+```
 
 ### Returns
 
@@ -876,14 +854,13 @@ v = float.sqrt()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'SQRT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='SQRT')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='SQRT')
+```
 
 ### Returns
 
@@ -909,14 +886,13 @@ v = float.inverse_sqrt()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'INVERSE_SQRT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='INVERSE_SQRT')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='INVERSE_SQRT')
+```
 
 ### Returns
 
@@ -942,14 +918,13 @@ v = float.abs()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'ABSOLUTE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='ABSOLUTE')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='ABSOLUTE')
+```
 
 ### Returns
 
@@ -975,14 +950,13 @@ v = float.exp()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'EXPONENT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='EXPONENT')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='EXPONENT')
+```
 
 ### Returns
 
@@ -1009,14 +983,13 @@ v = float.min(value1)
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'MINIMUM'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, operation='MINIMUM')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, operation='MINIMUM')
+```
 
 ### Returns
 
@@ -1043,14 +1016,13 @@ v = float.max(value1)
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'MAXIMUM'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
+```
 
 ### Returns
 
@@ -1077,14 +1049,13 @@ v = float.less_than(value1)
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'LESS_THAN'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
+```
 
 ### Returns
 
@@ -1111,14 +1082,13 @@ v = float.greater_than(value1)
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'GREATER_THAN'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
+```
 
 ### Returns
 
@@ -1144,14 +1114,13 @@ v = float.sign()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'SIGN'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='SIGN')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='SIGN')
+```
 
 ### Returns
 
@@ -1179,14 +1148,13 @@ v = float.compare(value1, value2)
   - value1 : Float
   - value2 : Float## Fixed parameters
   - operation : 'COMPARE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE')
+```
 
 ### Returns
 
@@ -1214,14 +1182,13 @@ v = float.smooth_min(value1, value2)
   - value1 : Float
   - value2 : Float## Fixed parameters
   - operation : 'SMOOTH_MIN'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN')
+```
 
 ### Returns
 
@@ -1249,14 +1216,13 @@ v = float.smooth_max(value1, value2)
   - value1 : Float
   - value2 : Float## Fixed parameters
   - operation : 'SMOOTH_MAX'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX')
+```
 
 ### Returns
 
@@ -1282,14 +1248,13 @@ v = float.round()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'ROUND'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='ROUND')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='ROUND')
+```
 
 ### Returns
 
@@ -1315,14 +1280,13 @@ v = float.floor()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'FLOOR'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='FLOOR')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='FLOOR')
+```
 
 ### Returns
 
@@ -1348,14 +1312,13 @@ v = float.ceil()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'CEIL'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='CEIL')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='CEIL')
+```
 
 ### Returns
 
@@ -1381,14 +1344,13 @@ v = float.trunc()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'TRUNC'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='TRUNC')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='TRUNC')
+```
 
 ### Returns
 
@@ -1414,14 +1376,13 @@ v = float.fract()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'FRACT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='FRACT')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='FRACT')
+```
 
 ### Returns
 
@@ -1448,14 +1409,13 @@ v = float.modulo(value1)
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'MODULO'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, operation='MODULO')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, operation='MODULO')
+```
 
 ### Returns
 
@@ -1483,14 +1443,13 @@ v = float.wrap(value1, value2)
   - value1 : Float
   - value2 : Float## Fixed parameters
   - operation : 'WRAP'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP')
+```
 
 ### Returns
 
@@ -1517,14 +1476,13 @@ v = float.snap(value1)
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'SNAP'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, operation='SNAP')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, operation='SNAP')
+```
 
 ### Returns
 
@@ -1551,14 +1509,13 @@ v = float.pingpong(value1)
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'PINGPONG'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, operation='PINGPONG')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, operation='PINGPONG')
+```
 
 ### Returns
 
@@ -1584,14 +1541,13 @@ v = float.sin()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'SINE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='SINE')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='SINE')
+```
 
 ### Returns
 
@@ -1617,14 +1573,13 @@ v = float.cos()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'COSINE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='COSINE')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='COSINE')
+```
 
 ### Returns
 
@@ -1650,14 +1605,13 @@ v = float.tan()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'TANGENT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='TANGENT')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='TANGENT')
+```
 
 ### Returns
 
@@ -1683,14 +1637,13 @@ v = float.arcsin()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'ARCSINE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='ARCSINE')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='ARCSINE')
+```
 
 ### Returns
 
@@ -1716,14 +1669,13 @@ v = float.arccos()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'ARCCOSINE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='ARCCOSINE')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='ARCCOSINE')
+```
 
 ### Returns
 
@@ -1749,14 +1701,13 @@ v = float.arctan()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'ARCTANGENT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='ARCTANGENT')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='ARCTANGENT')
+```
 
 ### Returns
 
@@ -1783,14 +1734,13 @@ v = float.arctan2(value1)
 - value0 : Float (self)
   - value1 : Float## Fixed parameters
   - operation : 'ARCTAN2'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
+```
 
 ### Returns
 
@@ -1816,14 +1766,13 @@ v = float.sinh()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'SINH'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='SINH')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='SINH')
+```
 
 ### Returns
 
@@ -1849,14 +1798,13 @@ v = float.cosh()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'COSH'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='COSH')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='COSH')
+```
 
 ### Returns
 
@@ -1882,14 +1830,13 @@ v = float.tanh()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'TANH'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='TANH')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='TANH')
+```
 
 ### Returns
 
@@ -1915,14 +1862,13 @@ v = float.radians()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'RADIANS'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='RADIANS')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='RADIANS')
+```
 
 ### Returns
 
@@ -1948,14 +1894,13 @@ v = float.degrees()
 
 - value0 : Float (self)## Fixed parameters
   - operation : 'DEGREES'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Math(value0=self, operation='DEGREES')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Math(value0=self, operation='DEGREES')
+```
 
 ### Returns
 
@@ -1981,14 +1926,13 @@ v = float.to_integer(rounding_mode)
 
 - float : Float (self)## Parameters
   - rounding_mode : 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE]
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.FloatToInteger(float=self, rounding_mode=rounding_mode)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.FloatToInteger(float=self, rounding_mode=rounding_mode)
+```
 
 ### Returns
 
@@ -2014,14 +1958,13 @@ v = float.to_string(decimals)
 
 - value : Float (self)
   - decimals : Integer
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.ValueToString(value=self, decimals=decimals)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.ValueToString(value=self, decimals=decimals)
+```
 
 ### Returns
 
@@ -2046,14 +1989,13 @@ v = float.color_ramp()
 #### Sockets
 
 - fac : Float (self)
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.Colorramp(fac=self)
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Colorramp(fac=self)
+```
 
 ### Returns
 
@@ -2079,14 +2021,13 @@ v = float.curve(factor)
 
 - value : Float (self)
   - factor : Float
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.FloatCurve(value=self, factor=factor)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.FloatCurve(value=self, factor=factor)
+```
 
 ### Returns
 
@@ -2114,14 +2055,13 @@ v = float.clamp(min, max, clamp_type)
   - min : Float
   - max : Float## Parameters
   - clamp_type : 'MINMAX' in [MINMAX, RANGE]
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type)
+```
 
 ### Returns
 

@@ -69,14 +69,13 @@ v = Color.Combine(r, g, b)
 - r : Float
   - g : Float
   - b : Float
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.CombineRgb(r=r, g=g, b=b)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.CombineRgb(r=r, g=g, b=b)
+```
 
 ### Returns
 
@@ -102,14 +101,13 @@ v = color.separate
 
 - image : Color (self)## Fixed parameters
   - label:f"{self.node_chain_label}.separate"
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.separate")
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.separate")
+```
 
 ### Returns
 
@@ -135,14 +133,13 @@ v = color.r
 
 - image : Color (self)## Fixed parameters
   - label:f"{self.node_chain_label}.r"
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.r")
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.r")
+```
 
 ### Returns
 
@@ -168,14 +165,13 @@ v = color.g
 
 - image : Color (self)## Fixed parameters
   - label:f"{self.node_chain_label}.g"
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.g")
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.g")
+```
 
 ### Returns
 
@@ -201,14 +197,13 @@ v = color.b
 
 - image : Color (self)## Fixed parameters
   - label:f"{self.node_chain_label}.b"
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.b")
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.b")
+```
 
 ### Returns
 
@@ -239,14 +234,13 @@ v = color.transfer_attribute(source, source_position, index, domain, mapping)
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
   - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
   - data_type : 'FLOAT_COLOR'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
+```
 
 ### Returns
 
@@ -274,14 +268,13 @@ v = color.capture_attribute(geometry, domain)
   - geometry : Geometry## Parameters
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
   - data_type : 'FLOAT_COLOR'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_COLOR', domain=domain)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_COLOR', domain=domain)
+```
 
 ### Returns
 
@@ -309,14 +302,13 @@ v = color.field_at_index(index, domain)
   - index : Integer## Parameters
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
   - data_type : 'FLOAT_COLOR'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_COLOR', domain=domain)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_COLOR', domain=domain)
+```
 
 ### Returns
 
@@ -347,14 +339,13 @@ v = color.raycast(target_geometry, source_position, ray_direction, ray_length, m
   - ray_length : Float## Parameters
   - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
   - data_type : 'FLOAT_COLOR'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_COLOR', mapping=mapping)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_COLOR', mapping=mapping)
+```
 
 ### Returns
 
@@ -384,14 +375,13 @@ v = color.equal(b, epsilon)
   - data_type : 'RGBA'
   - mode : 'ELEMENT'
   - operation : 'EQUAL'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='EQUAL')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='EQUAL')
+```
 
 ### Returns
 
@@ -421,14 +411,13 @@ v = color.not_equal(b, epsilon)
   - data_type : 'RGBA'
   - mode : 'ELEMENT'
   - operation : 'NOT_EQUAL'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='NOT_EQUAL')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='NOT_EQUAL')
+```
 
 ### Returns
 
@@ -457,14 +446,13 @@ v = color.brighter(b)
   - data_type : 'RGBA'
   - mode : 'ELEMENT'
   - operation : 'BRIGHTER'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER')
+```
 
 ### Returns
 
@@ -493,14 +481,13 @@ v = color.darker(b)
   - data_type : 'RGBA'
   - mode : 'ELEMENT'
   - operation : 'DARKER'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='DARKER')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='DARKER')
+```
 
 ### Returns
 
@@ -529,14 +516,13 @@ v = color.mix(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'MIX'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -565,14 +551,13 @@ v = color.darken(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'DARKEN'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -601,14 +586,13 @@ v = color.multiply(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'MULTIPLY'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -637,14 +621,13 @@ v = color.burn(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'BURN'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -673,14 +656,13 @@ v = color.lighten(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'LIGHTEN'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -709,14 +691,13 @@ v = color.screen(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'SCREEN'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -745,14 +726,13 @@ v = color.dodge(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'DODGE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -781,14 +761,13 @@ v = color.add(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'ADD'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -817,14 +796,13 @@ v = color.overlay(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'OVERLAY'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -853,14 +831,13 @@ v = color.soft_light(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'SOFT_LIGHT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -889,14 +866,13 @@ v = color.linear_light(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'LINEAR_LIGHT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -925,14 +901,13 @@ v = color.difference(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'DIFFERENCE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -961,14 +936,13 @@ v = color.subtract(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'SUBTRACT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -997,14 +971,13 @@ v = color.divide(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'DIVIDE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -1033,14 +1006,13 @@ v = color.hue(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'HUE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -1069,14 +1041,13 @@ v = color.saturation(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'SATURATION'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -1105,14 +1076,13 @@ v = color.mix_color(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'COLOR'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -1141,14 +1111,13 @@ v = color.value(color2, fac, use_alpha)
   - fac : Float## Parameters
   - use_alpha : False## Fixed parameters
   - blend_type : 'VALUE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha)
+```
 
 ### Returns
 
@@ -1174,14 +1143,13 @@ v = color.curves(fac)
 
 - color : Color (self)
   - fac : Float
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.RgbCurves(color=self, fac=fac)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.RgbCurves(color=self, fac=fac)
+```
 
 ### Returns
 
@@ -1210,14 +1178,13 @@ v = color.mix(color2, fac, blend_type, use_alpha)
   - fac : Float## Parameters
   - blend_type : 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
   - use_alpha : False
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Mix(color1=self, color2=color2, fac=fac, blend_type=blend_type, use_alpha=use_alpha)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type=blend_type, use_alpha=use_alpha)
+```
 
 ### Returns
 

@@ -82,8 +82,8 @@ v = Geometry.is_viewport()
 
 ### Arguments
 
-Node creation
--------------
+
+### Node creation
 
 ```python
 from geondes import nodes
@@ -114,14 +114,13 @@ v = geometry.bound_box
 
 - geometry : Geometry (self)## Fixed parameters
   - label:f"{self.node_chain_label}.bound_box"
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_box")
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_box")
+```
 
 ### Returns
 
@@ -147,14 +146,13 @@ v = geometry.box
 
 - geometry : Geometry (self)## Fixed parameters
   - label:f"{self.node_chain_label}.box"
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box")
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box")
+```
 
 ### Returns
 
@@ -180,14 +178,13 @@ v = geometry.box_min
 
 - geometry : Geometry (self)## Fixed parameters
   - label:f"{self.node_chain_label}.box_min"
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_min")
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_min")
+```
 
 ### Returns
 
@@ -213,14 +210,13 @@ v = geometry.box_max
 
 - geometry : Geometry (self)## Fixed parameters
   - label:f"{self.node_chain_label}.box_max"
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_max")
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_max")
+```
 
 ### Returns
 
@@ -246,14 +242,13 @@ v = geometry.components
 
 - geometry : Geometry (self)## Fixed parameters
   - label:f"{self.node_chain_label}.components"
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.components")
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.components")
+```
 
 ### Returns
 
@@ -279,14 +274,13 @@ v = geometry.mesh_component
 
 - geometry : Geometry (self)## Fixed parameters
   - label:f"{self.node_chain_label}.mesh_component"
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.mesh_component")
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.mesh_component")
+```
 
 ### Returns
 
@@ -312,14 +306,13 @@ v = geometry.points_component
 
 - geometry : Geometry (self)## Fixed parameters
   - label:f"{self.node_chain_label}.points_component"
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.points_component")
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.points_component")
+```
 
 ### Returns
 
@@ -345,14 +338,13 @@ v = geometry.curve_component
 
 - geometry : Geometry (self)## Fixed parameters
   - label:f"{self.node_chain_label}.curve_component"
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.curve_component")
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.curve_component")
+```
 
 ### Returns
 
@@ -378,14 +370,13 @@ v = geometry.volume_component
 
 - geometry : Geometry (self)## Fixed parameters
   - label:f"{self.node_chain_label}.volume_component"
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.volume_component")
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.volume_component")
+```
 
 ### Returns
 
@@ -411,14 +402,13 @@ v = geometry.instances_component
 
 - geometry : Geometry (self)## Fixed parameters
   - label:f"{self.node_chain_label}.instances_component"
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.instances_component")
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.instances_component")
+```
 
 ### Returns
 
@@ -444,14 +434,13 @@ v = geometry.capture_ID(self, domain='POINT')
 
 - self
   - domain:'POINT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.ID()
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.ID()
+```
 
 ### Returns
 
@@ -477,14 +466,13 @@ v = geometry.capture_index(self, domain='POINT')
 
 - self
   - domain:'POINT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Index()
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Index()
+```
 
 ### Returns
 
@@ -510,14 +498,13 @@ v = geometry.capture_normal(self, domain='FACE')
 
 - self
   - domain:'FACE'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Normal()
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Normal()
+```
 
 ### Returns
 
@@ -543,14 +530,13 @@ v = geometry.capture_position(self, domain='POINT')
 
 - self
   - domain:'POINT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Position()
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Position()
+```
 
 ### Returns
 
@@ -576,14 +562,13 @@ v = geometry.capture_radius(self, domain='POINT')
 
 - self
   - domain:'POINT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Radius()
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Radius()
+```
 
 ### Returns
 
@@ -608,14 +593,13 @@ v = geometry.ID(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.ID()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.ID()
+```
 
 ### Returns
 
@@ -640,14 +624,13 @@ v = geometry.index(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.Index()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Index()
+```
 
 ### Returns
 
@@ -672,14 +655,13 @@ v = geometry.normal(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.Normal()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Normal()
+```
 
 ### Returns
 
@@ -704,14 +686,13 @@ v = geometry.position(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.Position()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Position()
+```
 
 ### Returns
 
@@ -736,14 +717,13 @@ v = geometry.radius(self)
 #### Parameters
 
 - self
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.Radius()
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Radius()
+```
 
 ### Returns
 
@@ -771,14 +751,13 @@ v = geometry.switch(switch1, true)
   - switch1 : Boolean
   - true : Geometry## Fixed parameters
   - input_type : 'GEOMETRY'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY')
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY')
+```
 
 ### Returns
 
@@ -806,14 +785,13 @@ v = geometry.capture_attribute(value, data_type, domain)
   - value : Float## Parameters
   - data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain)
+```
 
 ### Returns
 
@@ -844,14 +822,13 @@ v = geometry.transfer_boolean(attribute, source_position, index, domain, mapping
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
   - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
   - data_type : 'BOOLEAN'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
+```
 
 ### Returns
 
@@ -882,14 +859,13 @@ v = geometry.transfer_integer(attribute, source_position, index, domain, mapping
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
   - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
   - data_type : 'INT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping)
+```
 
 ### Returns
 
@@ -920,14 +896,13 @@ v = geometry.transfer_float(attribute, source_position, index, domain, mapping)
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
   - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
   - data_type : 'FLOAT'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
+```
 
 ### Returns
 
@@ -958,14 +933,13 @@ v = geometry.transfer_vector(attribute, source_position, index, domain, mapping)
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
   - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
   - data_type : 'FLOAT_VECTOR'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
+```
 
 ### Returns
 
@@ -996,14 +970,13 @@ v = geometry.transfer_color(attribute, source_position, index, domain, mapping)
   - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
   - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
   - data_type : 'FLOAT_COLOR'
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
+```
 
 ### Returns
 
@@ -1031,14 +1004,13 @@ v = geometry.delete_geometry(selection, domain, mode)
   - selection : Boolean## Parameters
   - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
   - mode : 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode)
+```
 
 ### Returns
 
@@ -1066,14 +1038,13 @@ v = geometry.merge_by_distance(selection, distance, mode)
   - selection : Boolean
   - distance : Float## Parameters
   - mode : 'ALL' in [ALL, CONNECTED]
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.MergeByDistance(geometry=self, selection=selection, distance=distance, mode=mode)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.MergeByDistance(geometry=self, selection=selection, distance=distance, mode=mode)
+```
 
 ### Returns
 
@@ -1099,14 +1070,13 @@ v = geometry.realize_instances(legacy_behavior)
 
 - geometry : Geometry (self)## Parameters
   - legacy_behavior : False
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior)
+```
 
 ### Returns
 
@@ -1133,14 +1103,13 @@ v = geometry.replace_material(old, new)
 - geometry : Geometry (self)
   - old : Material
   - new : Material
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.ReplaceMaterial(geometry=self, old=old, new=new)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.ReplaceMaterial(geometry=self, old=old, new=new)
+```
 
 ### Returns
 
@@ -1171,14 +1140,13 @@ v = geometry.scale_elements(selection, scale, center, axis, domain, scale_mode)
   - axis : Vector## Parameters
   - domain : 'FACE' in [FACE, EDGE]
   - scale_mode : 'UNIFORM' in [UNIFORM, SINGLE_AXIS]
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode)
+```
 
 ### Returns
 
@@ -1205,14 +1173,13 @@ v = geometry.set_ID(selection, ID)
 - geometry : Geometry (self)
   - selection : Boolean
   - ID : Integer
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SetID(geometry=self, selection=selection, ID=ID)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SetID(geometry=self, selection=selection, ID=ID)
+```
 
 ### Returns
 
@@ -1239,14 +1206,13 @@ v = geometry.set_material(selection, material)
 - geometry : Geometry (self)
   - selection : Boolean
   - material : Material
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SetMaterial(geometry=self, selection=selection, material=material)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SetMaterial(geometry=self, selection=selection, material=material)
+```
 
 ### Returns
 
@@ -1273,14 +1239,13 @@ v = geometry.set_material_index(selection, material_index)
 - geometry : Geometry (self)
   - selection : Boolean
   - material_index : Integer
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index)
+```
 
 ### Returns
 
@@ -1308,14 +1273,13 @@ v = geometry.set_position(selection, position, offset)
   - selection : Boolean
   - position : Vector
   - offset : Vector
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset)
+```
 
 ### Returns
 
@@ -1342,14 +1306,13 @@ v = geometry.set_shade_smooth(selection, shade_smooth)
 - geometry : Geometry (self)
   - selection : Boolean
   - shade_smooth : Boolean
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth)
+```
 
 ### Returns
 
@@ -1377,14 +1340,13 @@ v = geometry.transform(translation, rotation, scale)
   - translation : Vector
   - rotation : Vector
   - scale : Vector
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale)
+```
 
 ### Returns
 
@@ -1410,14 +1372,13 @@ v = geometry.attribute_domain_size(component)
 
 - geometry : Geometry (self)## Parameters
   - component : 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.DomainSize(geometry=self, component=component)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DomainSize(geometry=self, component=component)
+```
 
 ### Returns
 
@@ -1443,14 +1404,13 @@ v = geometry.remove_attribute(name)
 
 - geometry : Geometry (self)
   - name : String
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.RemoveNamedAttribute(geometry=self, name=name)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.RemoveNamedAttribute(geometry=self, name=name)
+```
 
 ### Returns
 
@@ -1477,14 +1437,13 @@ v = geometry.components(selection, domain)
 - geometry : Geometry (self)
   - selection : Boolean## Parameters
   - domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain)
+```
 
 ### Returns
 
@@ -1509,14 +1468,13 @@ v = geometry.convex_hull()
 #### Sockets
 
 - geometry : Geometry (self)
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.ConvexHull(geometry=self)
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.ConvexHull(geometry=self)
+```
 
 ### Returns
 
@@ -1541,14 +1499,13 @@ v = geometry.to_instance(geometry_1, geometry_2, geometry_3)
 #### Sockets
 
 - geometry : *Geometry (self)
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.GeometryToInstance(self, *geometry)
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.GeometryToInstance(self, *geometry)
+```
 
 ### Returns
 
@@ -1573,14 +1530,13 @@ v = geometry.join(geometry_1, geometry_2, geometry_3)
 #### Sockets
 
 - geometry : *Geometry (self)
-  
-  Node creation
-  -------------
-  
-  ```python
-  from geondes import nodes
-  nodes.JoinGeometry(self, *geometry)
-  ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.JoinGeometry(self, *geometry)
+```
 
 ### Returns
 
@@ -1607,14 +1563,13 @@ v = geometry.proximity(source_position, target_element)
 - target : Geometry (self)
   - source_position : Vector## Parameters
   - target_element : 'FACES' in [POINTS, EDGES, FACES]
-    
-    Node creation
-    -------------
-    
-    ```python
-    from geondes import nodes
-    nodes.GeometryProximity(target=self, source_position=source_position, target_element=target_element)
-    ```
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.GeometryProximity(target=self, source_position=source_position, target_element=target_element)
+```
 
 ### Returns
 
