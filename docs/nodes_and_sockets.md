@@ -2,6 +2,8 @@
 
 > Linking nodes is a way to program something
 
+## In short words
+
 If you are familiar with building Geometry Nodes in Blender (if it is not the case, you won't take the maximum benefit of continuing reading this page), you shouldn't have difficulties with these 4 concepts:
 
 - Node
@@ -9,9 +11,18 @@ If you are familiar with building Geometry Nodes in Blender (if it is not the ca
 - Output socket
 - Link
 
+The **geonodes** scripts geometry nodes in the following way:
+
+- An **output socket** of a node is wrapped in a **geonodes** _Data Socket_ class (Boolean, Float, Mesh, Points,...)
+- A **node** is a method of a _Data Socket_ class
+- When calling a method, a node is created:
+  - one of its input sockets is linked to the calling _Data Socket__
+  - the other input sockets are linked with the _Data Sockets_ passed as method arguments
+  - the node parameters are also passed as arguments
+
 ## Two ways of linking nodes
 
-Linking two nodes consists in performing an action defined by the second node on an output of the first node.
+Linking two nodes consists in performing an action defined by the second node on one output of the first node.
 
 For instance, let's have a look to the two following linked nodes:
 
