@@ -59,7 +59,7 @@ tree = Tree(tree_name)
 tree.close()
 ```
 
-But it is recommande to use `with` syntax to ensure that the tree will be properly closed. The closing performs final mandatory treatments.
+But it is recommanded to use `with` syntax to ensure that the tree will be properly closed. The closing performs final mandatory treatments.
 
 ```python
 with gn.Tree("Geometry Nodes") as tree:
@@ -83,7 +83,7 @@ You can use standard Python variables:
     height = 2.   # Height of the surface
 ```
 
-The variables can be used to standard python computing:
+The variables can be used for standard python computing:
 
 ```python
 # We need an angle of 30 degrees
