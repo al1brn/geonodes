@@ -45,33 +45,29 @@ The generated nodes and the result of the Geometry nodes modifier is given below
 import geonodes as gn
 ```
 
-Be sure to have properly installed the **geonodes** module as described in [Installation](/README.md#installation).
+Be sure to have properly installed the **geonodes** module as described in the [Installation section](/README.md#installation).
 
+`gn` is the proposed alias to use as **geonodes** naming space.
 
-Let's review this demo in details and study alternative.
+### Tree creation
 
-
-
-
-## Comments
-
-- **Import**
-
-  The module can be installed in `blender/script/modules/geonodes` folder. Using `import geondes as gn` is sufficient to acces
-  all the module features.
-
-- **Creating the Tree**
-
-  A Tree instance can be created with
+A Tree instance can be created with
   
-  ```python
-  tree = Tree(tree_name)
-  #...
-  tree.close()
-  ```
-  
-  But it is recommande to use `with` syntax to ensure that the tree will be properly closed. The closing performs final mandatory treatments.
-  
+```python
+tree = Tree(tree_name)
+...
+tree.close()
+```
+
+But it is recommande to use `with` syntax to ensure that the tree will be properly closed. The closing performs final mandatory treatments.
+
+```python
+with gn.Tree("Geometry Nodes") as tree:
+    ...
+```
+
+
+
 - **Variables**
 
   Since it is standard python, one can use variables as global parameters. The variables can be changed in the script or can
