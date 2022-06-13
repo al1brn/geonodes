@@ -26,12 +26,26 @@ The **geonodes** package scripts geometry nodes in the following way:
 
 ## Nodes classes
 
-The first layer of **geonodes** is made of Geometry node wrappers. Instancing a node, simply creates the node in the Tree:
+The first layer of **geonodes** is made of Geometry node wrappers. Instancing a node, simply creates the node 'Math' for the operation `Subtract`:
 
 ```python
 from geonodes import nodes
-math_node = nodes.Math(operation='MULTIPLY')
+math_node = nodes.Math(operation='SUBTRACT')
 ```
+
+The result of this operation can be read through its single output socket whose name is `Value`:
+
+```python
+from geonodes import nodes
+math_node = nodes.Math(operation='SUBTRACT')
+result = math_node.value
+```
+
+> Note that the sockets are the snake_case version See the naming convention
+
+
+
+
 
 ## Two ways of linking nodes
 
