@@ -98,6 +98,8 @@ r = 0.5
 sphere = gn.Mesh.UVSphere(radius=r)
 ```
 
+<img src="/doc/images/demo_1_uvsphere.png" width="300">
+
 
 
 
