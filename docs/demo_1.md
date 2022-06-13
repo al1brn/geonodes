@@ -200,7 +200,7 @@ w = v - (2, 3, a)        # Vector math between the previous vector and a "Combin
 yes = gn.Boolean(True)
 no = yes.b_not()            # Don't use no = not yes
 perhaps = gn.b_or(yes, no)  # don't use perhaps = yes or no
-perhaps = yes + no.         # Operator + can be used as logical or
+perhaps = yes + no          # Operator + can be used as logical or
 sure = yes * no             # Operator * can be used as logical and 
 no = -yes                   # Unary operator can be used as logical not
 ```
