@@ -14,7 +14,7 @@ with gn.Tree("Geometry Nodes") as tree:
 
     # Let's document our parameters
     count  = 100  # Grid resolution
-    size   = 20   # Size
+    size   = 20.  # Size
     omega  = 2.   # Period
     height = 2.   # Height of the surface
     
@@ -98,7 +98,31 @@ r = 0.5
 sphere = gn.Mesh.UVSphere(radius=r)
 ```
 
-<img src="/doc/images/demo_1_uvsphere.png" width="300">
+In the created node, the input socket `radius` is initialized with `0.5`:
+
+<img src="/docs/images/demo_1_uvsphere.png" width="200">
+
+### Geonodes types
+
+In this example, the variables are initialized in the script. They are pure Python variables. To change them, one need to modify the script and to rerun it.
+
+We creating a tree, we often need to change settings to see the effect on the geometry. This can be achieved by initializing a **geonodes** type rather that a python type.
+
+In the following script, we slightly modify our script by initializing `size` as a **geonodes** type. It is not anymore a Python `float` but `gn.Float` i.e. the output socket of a Geometry Node (in that case, the output socket of the input node 'Value'):
+
+```python
+    count  = 100
+    size   = gn.Float(20.)
+    
+    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
+````
+
+The resulting tree is the following:
+
+
+
+    
+    
 
 
 
