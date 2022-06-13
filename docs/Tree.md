@@ -262,16 +262,15 @@ If it is not the case, we must insert a "Capture Attribute" node.
 The insertion is made with the following algorithm
 
   1. Check if capture is needed
-     
-    - for each fed node:
-      - if the node has an input geometry:
-        - if the input geometry is the expected one:
-          - ok
-        - else
-          - insertion is needed
-      - else:
-        - continue exploration with the nodes fed by this node
-          
+     for each fed node:
+    - if the node has an input geometry:
+      - if the input geometry is the expected one:
+        - ok
+      - else
+        - insertion is needed
+    - else:
+      - continue exploration with the nodes fed by this node
+        
   1. If insertion is needed
     - Create the capture node
     - Set the proper parameters
