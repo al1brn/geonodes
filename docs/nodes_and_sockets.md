@@ -24,6 +24,15 @@ The **geonodes** package scripts geometry nodes in the following way:
 - **nodes layer**: each geometry node is wrapped in a dedicated class named after its Blender name
 - **data sockets layer**: nodes are created through _Data Socket_ classes methods 
 
+## Nodes classes
+
+The first layer of **geonodes** is made of Geometry node wrappers. Instancing a node, simply creates the node in the Tree:
+
+```python
+from geonodes import nodes
+math_node = nodes.Math(operation='MULTIPLY')
+```
+
 ## Two ways of linking nodes
 
 Linking two nodes consists in performing an action defined by the second node on one output of the first node.
@@ -65,9 +74,9 @@ It does mean that each node as a 'self' input socket which will be connected to 
 
 Some nodes have parameters. Let's look at the 'Math' node:
 
-<img src="/docs/images/math_node.png" height="200">
+<img src="/docs/images/math_node2.png" height="250">
 
-It has one parameter named `Operation` which can take a lot of values
+It has one parameter named `Operation` which can take a lot of values.
 
 
 
