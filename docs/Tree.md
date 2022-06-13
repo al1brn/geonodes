@@ -43,7 +43,7 @@ with Tree("Geometry Node") as tree:
                                                                                                    
     # Nodes created here are placed directly on the tree background
                                                                                                    
-    with tree.layout("Some trick computation", color="green"):
+    with tree.layout("Some tricky computation", color="green"):
                                                                                                    
         # Nodes created here are placed in the current layout
                                                                                                    
