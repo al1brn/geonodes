@@ -15,9 +15,9 @@
 # Table of contents
 
 - [Installation](#installation)
-- [A quick demo to understand](#a-quick-demo-to-undertand)
+- [Better a demo than long words](#better-a-demo-than-long-words)
 - [Documentation](#document)
-- [Index](#index)
+- [Classes index](docs/index.md)
 
 # Installation
 
@@ -39,20 +39,22 @@ After the install, the Blender scripts hierarchy should look like:
                ...
 ```
 
-## A quick demo to undertand
+## Better a demo than long words
 
-Here after is an example of a simple script. It creates a surface from a grid by computing
+The following script creates a surface from a grid by computing
 `z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the distance of the vertex to the center.
 
 ```python
+# Import the geonodes modules
+# gn is the suggested alias
 import geonodes as gn
 
 with gn.Tree("Geometry Nodes") as tree:
 
     # Let's document our parameters
-    count = 100   # Grid resolution
-    size  = 20    # Size
-    omega = 2.    # Period
+    count  = 100  # Grid resolution
+    size   = 20   # Size
+    omega  = 2.   # Period
     height = 2.   # Height of the surface
     
     # The base (x, y) grid
@@ -76,6 +78,84 @@ with gn.Tree("Geometry Nodes") as tree:
 The generated nodes and the result of the Geometry nodes modifier is given below:
 
 <img src="docs/images/demo_intro.png" width="600" class="center">
+
+# Documentation
+
+Uses [index](docs/index.md) to gain access to the list of availables classes.
+
+## Nodes and sockets
+
+Geometry nodes are linked between their output and input sockets.
+
+In **geonodes**:
+- output sockets are the central **data classes**
+- nodes are **methods** of these data socket classes
+- A method (i.e. a geometry node) links the output socket to one input socket of the method node
+
+For instance:
+
+```python
+
+# Some initialization stuff where my_mesh refers to the output socket of a node
+
+my_mesh.set_shade_smoth()
+
+# The node 'Set Shade Smooth' was created. The output socket my_mesh is now linked
+# to the input socket of 'Set Shade Smooth'
+```
+
+For more details, see [Nodes and sockets TBD](nodes_and_sockets.md)
+
+## Data socket classes
+
+Basically **geonodes** deals with the following data:
+
+### Value data
+
+- [Boolean](docs/sockets/Boolean.md)
+- [Integer](docs/sockets/Integer.md)
+- [Float](docs/sockets/Float.md)
+- [Vector](docs/sockets/Vector.md)
+- [Color](docs/sockets/Color.md)
+- [String](docs/sockets/String.md)
+
+### Geometry data
+
+All geometry data classes inherit from Geometry:
+
+- [Geometry](docs/sockets/Geometry.md)
+  - [Spline](docs/sockets/Spline.md)
+  - [Curve](docs/sockets/Curve.md)
+  - [Mesh](docs/sockets/Mesh.md)
+  - [Points](docs/sockets/Points.md)
+  - [Instances](docs/sockets/Instances.md)
+  - [Volume](docs/sockets/Volume.md)
+
+### Other sockets
+  - [Collection](docs/sockets/Boolean.md)
+  - [Object](docs/sockets/Object.md)
+  - [Image](docs/sockets/Image.md)
+  - [Texture](docs/sockets/Texture.md)
+  - [Material](docs/sockets/Material.md)
+  
+## Naming
+
+**geonodes** classes and properties are named after the Blender names.
+
+- Nodes classes are **CamelCase** versions of Blender geometry nodes name:
+  - Node _'Set Shade Smooth'_ --> `SetShadeSmooth`
+- Methods calling a node are **snake_case** of the Blender name:
+  - `mesh.set_shade_smooth()`
+- Node sockets are **snake_case** of their Blender name:
+  - Socket _'Mesh'_ --> `mesh`
+
+For more details, refer to [Naming conventions TBD](docs/naming.md)
+
+
+
+
+
+
 
 ## Comments
 
