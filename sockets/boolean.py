@@ -54,7 +54,7 @@ class Boolean(dsock.Boolean):
         <sub>go to: top index
         blender ref FunctionNodeRandomValue
         node ref Random Value </sub>
-        
+                                  
         ```python
         v = Boolean.Random(probability, ID, seed)
         ```
@@ -98,7 +98,7 @@ class Boolean(dsock.Boolean):
         <sub>go to: top index
         blender ref GeometryNodeAttributeTransfer
         node ref Transfer Attribute </sub>
-        
+                                  
         ```python
         v = boolean.transfer_attribute(source, source_position, index, domain, mapping)
         ```
@@ -141,7 +141,7 @@ class Boolean(dsock.Boolean):
         <sub>go to: top index
         blender ref GeometryNodeCaptureAttribute
         node ref Capture Attribute </sub>
-        
+                                  
         ```python
         v = boolean.capture_attribute(geometry, domain)
         ```
@@ -181,7 +181,7 @@ class Boolean(dsock.Boolean):
         <sub>go to: top index
         blender ref GeometryNodeFieldAtIndex
         node ref Field at Index </sub>
-        
+                                  
         ```python
         v = boolean.field_at_index(index, domain)
         ```
@@ -221,7 +221,7 @@ class Boolean(dsock.Boolean):
         <sub>go to: top index
         blender ref GeometryNodeRaycast
         node ref Raycast </sub>
-        
+                                  
         ```python
         v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
         ```
@@ -264,7 +264,7 @@ class Boolean(dsock.Boolean):
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>
-        
+                                  
         ```python
         v = boolean.switch(false, true)
         ```
@@ -304,7 +304,7 @@ class Boolean(dsock.Boolean):
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>
-        
+                                  
         ```python
         v = boolean.b_and(boolean1)
         ```
@@ -343,7 +343,7 @@ class Boolean(dsock.Boolean):
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>
-        
+                                  
         ```python
         v = boolean.b_or(boolean1)
         ```
@@ -382,7 +382,7 @@ class Boolean(dsock.Boolean):
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>
-        
+                                  
         ```python
         v = boolean.b_not()
         ```
@@ -420,7 +420,7 @@ class Boolean(dsock.Boolean):
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>
-        
+                                  
         ```python
         v = boolean.nand(boolean1)
         ```
@@ -459,7 +459,7 @@ class Boolean(dsock.Boolean):
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>
-        
+                                  
         ```python
         v = boolean.nor(boolean1)
         ```
@@ -498,7 +498,7 @@ class Boolean(dsock.Boolean):
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>
-        
+                                  
         ```python
         v = boolean.xnor(boolean1)
         ```
@@ -537,7 +537,7 @@ class Boolean(dsock.Boolean):
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>
-        
+                                  
         ```python
         v = boolean.xor(boolean1)
         ```
@@ -576,7 +576,7 @@ class Boolean(dsock.Boolean):
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>
-        
+                                  
         ```python
         v = boolean.imply(boolean1)
         ```
@@ -615,7 +615,7 @@ class Boolean(dsock.Boolean):
         <sub>go to: top index
         blender ref FunctionNodeBooleanMath
         node ref Boolean Math </sub>
-        
+                                  
         ```python
         v = boolean.nimply(boolean1)
         ```

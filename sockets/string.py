@@ -53,7 +53,7 @@ class String(dsock.String):
         <sub>go to: top index
         blender ref FunctionNodeStringLength
         node ref String Length </sub>
-        
+                                  
         ```python
         v = string.length
         ```
@@ -97,7 +97,7 @@ class String(dsock.String):
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>
-        
+                                  
         ```python
         v = string.switch(switch0, true)
         ```
@@ -137,7 +137,7 @@ class String(dsock.String):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = string.element(b)
         ```
@@ -178,7 +178,7 @@ class String(dsock.String):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = string.length(b)
         ```
@@ -219,7 +219,7 @@ class String(dsock.String):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = string.average(b)
         ```
@@ -260,7 +260,7 @@ class String(dsock.String):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = string.dot_product(b)
         ```
@@ -301,7 +301,7 @@ class String(dsock.String):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = string.direction(b)
         ```
@@ -342,7 +342,7 @@ class String(dsock.String):
         <sub>go to: top index
         blender ref GeometryNodeStringJoin
         node ref Join Strings </sub>
-        
+                                  
         ```python
         v = string.join(strings_1, strings_2, strings_3, delimiter)
         ```
@@ -380,7 +380,7 @@ class String(dsock.String):
         <sub>go to: top index
         blender ref FunctionNodeReplaceString
         node ref Replace String </sub>
-        
+                                  
         ```python
         v = string.replace(find, replace)
         ```
@@ -419,7 +419,7 @@ class String(dsock.String):
         <sub>go to: top index
         blender ref FunctionNodeSliceString
         node ref Slice String </sub>
-        
+                                  
         ```python
         v = string.slice(position, length)
         ```
@@ -458,7 +458,7 @@ class String(dsock.String):
         <sub>go to: top index
         blender ref GeometryNodeStringToCurves
         node ref String to Curves </sub>
-        
+                                  
         ```python
         v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_box_width, text_box_height, align_x, align_y, overflow, pivot_mode)
         ```

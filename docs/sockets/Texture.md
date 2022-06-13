@@ -31,7 +31,7 @@
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexBrick](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html)
 node ref [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html) </sub>
-
+                          
 ```python
 v = Texture.Brick(vector, color1, color2, mortar, scale, mortar_size, mortar_smooth, bias, brick_width, row_height, offset, offset_frequency, squash, squash_frequency)
 ```
@@ -75,7 +75,7 @@ Sockets [color (Color), fac (Float)]
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexChecker](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html)
 node ref [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html) </sub>
-
+                          
 ```python
 v = Texture.Checker(vector, color1, color2, scale)
 ```
@@ -109,7 +109,7 @@ Sockets [color (Color), fac (Float)]
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexGradient](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 node ref [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) </sub>
-
+                          
 ```python
 v = Texture.Gradient(vector, gradient_type)
 ```
@@ -141,7 +141,7 @@ Sockets [color (Color), fac (Float)]
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexMagic](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html)
 node ref [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html) </sub>
-
+                          
 ```python
 v = Texture.Magic(vector, scale, distortion, turbulence_depth)
 ```
@@ -175,7 +175,7 @@ Sockets [color (Color), fac (Float)]
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexMusgrave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMusgrave.html)
 node ref [Musgrave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/musgrave.html) </sub>
-
+                          
 ```python
 v = Texture.Musgrave(vector, w, scale, detail, dimension, lacunarity, offset, gain, musgrave_dimensions, musgrave_type)
 ```
@@ -215,7 +215,7 @@ Float
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 node ref [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) </sub>
-
+                          
 ```python
 v = Texture.Noise(vector, w, scale, detail, roughness, distortion, noise_dimensions)
 ```
@@ -252,7 +252,7 @@ Sockets [fac (Float), color (Color)]
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 node ref [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) </sub>
-
+                          
 ```python
 v = Texture.Voronoi(vector, w, scale, smoothness, exponent, randomness, distance, feature, voronoi_dimensions)
 ```
@@ -291,7 +291,7 @@ Sockets [distance (Float), color (Color), position (Vector), w (Float), radius (
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 node ref [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) </sub>
-
+                          
 ```python
 v = Texture.Wave(vector, scale, distortion, detail, detail_scale, detail_roughness, phase_offset, bands_direction, rings_direction, wave_profile, wave_type)
 ```
@@ -332,7 +332,7 @@ Sockets [color (Color), fac (Float)]
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 node ref [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) </sub>
-
+                          
 ```python
 v = Texture.WhiteNoise(vector, w, noise_dimensions)
 ```
@@ -365,7 +365,7 @@ Sockets [value (Float), color (Color)]
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [GeometryNodeImageTexture](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
 node ref [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html) </sub>
-
+                          
 ```python
 v = Texture.Image(image, vector, frame, extension, interpolation)
 ```
@@ -400,7 +400,7 @@ Sockets [color (Color), alpha (Float)]
 <sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
-
+                          
 ```python
 v = texture.switch(switch1, true)
 ```

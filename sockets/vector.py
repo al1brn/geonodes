@@ -100,7 +100,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeRandomValue
         node ref Random Value </sub>
-        
+                                  
         ```python
         v = Vector.Random(min, max, ID, seed)
         ```
@@ -142,7 +142,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeCombineXYZ
         node ref Combine XYZ </sub>
-        
+                                  
         ```python
         v = Vector.Combine(x, y, z)
         ```
@@ -182,7 +182,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeAlignEulerToVector
         node ref Align Euler to Vector </sub>
-        
+                                  
         ```python
         v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis)
         ```
@@ -228,7 +228,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeSeparateXYZ
         node ref Separate XYZ </sub>
-        
+                                  
         ```python
         v = vector.separate
         ```
@@ -269,7 +269,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeSeparateXYZ
         node ref Separate XYZ </sub>
-        
+                                  
         ```python
         v = vector.x
         ```
@@ -312,7 +312,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeSeparateXYZ
         node ref Separate XYZ </sub>
-        
+                                  
         ```python
         v = vector.y
         ```
@@ -355,7 +355,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeSeparateXYZ
         node ref Separate XYZ </sub>
-        
+                                  
         ```python
         v = vector.z
         ```
@@ -401,7 +401,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref GeometryNodeAccumulateField
         node ref Accumulate Field </sub>
-        
+                                  
         ```python
         v = vector.accumulate_field(group_index, domain)
         ```
@@ -441,7 +441,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref GeometryNodeAttributeStatistic
         node ref Attribute Statistic </sub>
-        
+                                  
         ```python
         v = vector.attribute_statistic(geometry, selection, domain)
         ```
@@ -482,7 +482,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref GeometryNodeAttributeTransfer
         node ref Transfer Attribute </sub>
-        
+                                  
         ```python
         v = vector.transfer_attribute(source, source_position, index, domain, mapping)
         ```
@@ -525,7 +525,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref GeometryNodeCaptureAttribute
         node ref Capture Attribute </sub>
-        
+                                  
         ```python
         v = vector.capture_attribute(geometry, domain)
         ```
@@ -565,7 +565,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref GeometryNodeFieldAtIndex
         node ref Field at Index </sub>
-        
+                                  
         ```python
         v = vector.field_at_index(index, domain)
         ```
@@ -605,7 +605,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref GeometryNodeRaycast
         node ref Raycast </sub>
-        
+                                  
         ```python
         v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
         ```
@@ -648,7 +648,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeMapRange
         node ref Map Range </sub>
-        
+                                  
         ```python
         v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type)
         ```
@@ -692,7 +692,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = vector.less_than(b, c, angle, mode)
         ```
@@ -735,7 +735,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = vector.less_equal(b, c, angle, mode)
         ```
@@ -778,7 +778,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = vector.greater_than(b, c, angle, mode)
         ```
@@ -821,7 +821,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = vector.greater_equal(b, c, angle, mode)
         ```
@@ -864,7 +864,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = vector.equal(b, c, angle, epsilon, mode)
         ```
@@ -908,7 +908,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = vector.not_equal(b, c, angle, epsilon, mode)
         ```
@@ -952,7 +952,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.add(vector1)
         ```
@@ -991,7 +991,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.subtract(vector1)
         ```
@@ -1030,7 +1030,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.multiply(vector1)
         ```
@@ -1069,7 +1069,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.divide(vector1)
         ```
@@ -1108,7 +1108,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.multiply_add(vector1, vector2)
         ```
@@ -1148,7 +1148,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.cross(vector1)
         ```
@@ -1187,7 +1187,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.project(vector1)
         ```
@@ -1226,7 +1226,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.reflect(vector1)
         ```
@@ -1265,7 +1265,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.refract(vector1, scale)
         ```
@@ -1305,7 +1305,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.faceforward(vector1, vector2)
         ```
@@ -1345,7 +1345,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.dot(vector1)
         ```
@@ -1384,7 +1384,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.distance(vector1)
         ```
@@ -1423,7 +1423,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.length()
         ```
@@ -1461,7 +1461,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.scale(scale)
         ```
@@ -1500,7 +1500,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.normalize()
         ```
@@ -1538,7 +1538,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.absolute()
         ```
@@ -1576,7 +1576,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.min(vector1)
         ```
@@ -1615,7 +1615,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.max(vector1)
         ```
@@ -1654,7 +1654,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.floor()
         ```
@@ -1692,7 +1692,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.ceil()
         ```
@@ -1730,7 +1730,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.fraction()
         ```
@@ -1768,7 +1768,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.modulo(vector1)
         ```
@@ -1807,7 +1807,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.wrap(vector1, vector2)
         ```
@@ -1847,7 +1847,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.snap(vector1)
         ```
@@ -1886,7 +1886,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.sin()
         ```
@@ -1924,7 +1924,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.cos()
         ```
@@ -1962,7 +1962,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorMath
         node ref Vector Math </sub>
-        
+                                  
         ```python
         v = vector.tan()
         ```
@@ -2000,7 +2000,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorCurve
         node ref Vector Curves </sub>
-        
+                                  
         ```python
         v = vector.curves(fac)
         ```
@@ -2038,7 +2038,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeAlignEulerToVector
         node ref Align Euler to Vector </sub>
-        
+                                  
         ```python
         v = vector.align_to_vector(factor, vector, axis, pivot_axis)
         ```
@@ -2079,7 +2079,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref FunctionNodeRotateEuler
         node ref Rotate Euler </sub>
-        
+                                  
         ```python
         v = vector.rotate_euler(rotate_by, space)
         ```
@@ -2118,7 +2118,7 @@ class Vector(dsock.Vector):
         <sub>go to: top index
         blender ref ShaderNodeVectorRotate
         node ref Vector Rotate </sub>
-        
+                                  
         ```python
         v = vector.rotate(center, axis, angle, rotation, invert, rotation_type)
         ```

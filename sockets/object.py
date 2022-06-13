@@ -52,7 +52,7 @@ class Object(dsock.Object):
         <sub>go to: top index
         blender ref GeometryNodeObjectInfo
         node ref Object Info </sub>
-        
+                                  
         ```python
         v = object.info
         ```
@@ -95,7 +95,7 @@ class Object(dsock.Object):
         <sub>go to: top index
         blender ref GeometryNodeObjectInfo
         node ref Object Info </sub>
-        
+                                  
         ```python
         v = object.location
         ```
@@ -136,7 +136,7 @@ class Object(dsock.Object):
         <sub>go to: top index
         blender ref GeometryNodeObjectInfo
         node ref Object Info </sub>
-        
+                                  
         ```python
         v = object.rotation
         ```
@@ -177,7 +177,7 @@ class Object(dsock.Object):
         <sub>go to: top index
         blender ref GeometryNodeObjectInfo
         node ref Object Info </sub>
-        
+                                  
         ```python
         v = object.scale
         ```
@@ -218,7 +218,7 @@ class Object(dsock.Object):
         <sub>go to: top index
         blender ref GeometryNodeObjectInfo
         node ref Object Info </sub>
-        
+                                  
         ```python
         v = object.geometry
         ```
@@ -262,7 +262,7 @@ class Object(dsock.Object):
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>
-        
+                                  
         ```python
         v = object.switch(switch1, true)
         ```

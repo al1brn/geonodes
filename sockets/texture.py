@@ -50,7 +50,7 @@ class Texture(dsock.Texture):
         <sub>go to: top index
         blender ref ShaderNodeTexBrick
         node ref Brick Texture </sub>
-        
+                                  
         ```python
         v = Texture.Brick(vector, color1, color2, mortar, scale, mortar_size, mortar_smooth, bias, brick_width, row_height, offset, offset_frequency, squash, squash_frequency)
         ```
@@ -101,7 +101,7 @@ class Texture(dsock.Texture):
         <sub>go to: top index
         blender ref ShaderNodeTexChecker
         node ref Checker Texture </sub>
-        
+                                  
         ```python
         v = Texture.Checker(vector, color1, color2, scale)
         ```
@@ -142,7 +142,7 @@ class Texture(dsock.Texture):
         <sub>go to: top index
         blender ref ShaderNodeTexGradient
         node ref Gradient Texture </sub>
-        
+                                  
         ```python
         v = Texture.Gradient(vector, gradient_type)
         ```
@@ -181,7 +181,7 @@ class Texture(dsock.Texture):
         <sub>go to: top index
         blender ref ShaderNodeTexMagic
         node ref Magic Texture </sub>
-        
+                                  
         ```python
         v = Texture.Magic(vector, scale, distortion, turbulence_depth)
         ```
@@ -222,7 +222,7 @@ class Texture(dsock.Texture):
         <sub>go to: top index
         blender ref ShaderNodeTexMusgrave
         node ref Musgrave Texture </sub>
-        
+                                  
         ```python
         v = Texture.Musgrave(vector, w, scale, detail, dimension, lacunarity, offset, gain, musgrave_dimensions, musgrave_type)
         ```
@@ -269,7 +269,7 @@ class Texture(dsock.Texture):
         <sub>go to: top index
         blender ref ShaderNodeTexNoise
         node ref Noise Texture </sub>
-        
+                                  
         ```python
         v = Texture.Noise(vector, w, scale, detail, roughness, distortion, noise_dimensions)
         ```
@@ -313,7 +313,7 @@ class Texture(dsock.Texture):
         <sub>go to: top index
         blender ref ShaderNodeTexVoronoi
         node ref Voronoi Texture </sub>
-        
+                                  
         ```python
         v = Texture.Voronoi(vector, w, scale, smoothness, exponent, randomness, distance, feature, voronoi_dimensions)
         ```
@@ -359,7 +359,7 @@ class Texture(dsock.Texture):
         <sub>go to: top index
         blender ref ShaderNodeTexWave
         node ref Wave Texture </sub>
-        
+                                  
         ```python
         v = Texture.Wave(vector, scale, distortion, detail, detail_scale, detail_roughness, phase_offset, bands_direction, rings_direction, wave_profile, wave_type)
         ```
@@ -407,7 +407,7 @@ class Texture(dsock.Texture):
         <sub>go to: top index
         blender ref ShaderNodeTexWhiteNoise
         node ref White Noise Texture </sub>
-        
+                                  
         ```python
         v = Texture.WhiteNoise(vector, w, noise_dimensions)
         ```
@@ -447,7 +447,7 @@ class Texture(dsock.Texture):
         <sub>go to: top index
         blender ref GeometryNodeImageTexture
         node ref Image Texture </sub>
-        
+                                  
         ```python
         v = Texture.Image(image, vector, frame, extension, interpolation)
         ```
@@ -492,7 +492,7 @@ class Texture(dsock.Texture):
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>
-        
+                                  
         ```python
         v = texture.switch(switch1, true)
         ```

@@ -75,7 +75,7 @@
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeIsViewport](https://docs.blender.org/api/current/bpy.types.GeometryNodeIsViewport.html)
 node ref [Is Viewport](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/is_viewport.html) </sub>
-
+                          
 ```python
 v = Geometry.is_viewport()
 ```
@@ -102,7 +102,7 @@ Boolean
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
 node ref [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) </sub>
-
+                          
 ```python
 v = geometry.bound_box
 ```
@@ -134,7 +134,7 @@ Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
 node ref [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) </sub>
-
+                          
 ```python
 v = geometry.box
 ```
@@ -166,7 +166,7 @@ Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
 node ref [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) </sub>
-
+                          
 ```python
 v = geometry.box_min
 ```
@@ -198,7 +198,7 @@ Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
 node ref [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) </sub>
-
+                          
 ```python
 v = geometry.box_max
 ```
@@ -230,7 +230,7 @@ Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 node ref [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) </sub>
-
+                          
 ```python
 v = geometry.components
 ```
@@ -262,7 +262,7 @@ Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), in
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 node ref [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) </sub>
-
+                          
 ```python
 v = geometry.mesh_component
 ```
@@ -294,7 +294,7 @@ Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), in
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 node ref [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) </sub>
-
+                          
 ```python
 v = geometry.points_component
 ```
@@ -326,7 +326,7 @@ Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), in
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 node ref [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) </sub>
-
+                          
 ```python
 v = geometry.curve_component
 ```
@@ -358,7 +358,7 @@ Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), in
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 node ref [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) </sub>
-
+                          
 ```python
 v = geometry.volume_component
 ```
@@ -390,7 +390,7 @@ Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), in
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 node ref [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) </sub>
-
+                          
 ```python
 v = geometry.instances_component
 ```
@@ -422,7 +422,7 @@ Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), in
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputID](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html)
 node ref [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/id.html) </sub>
-
+                          
 ```python
 v = geometry.capture_ID(self, domain='POINT')
 ```
@@ -454,7 +454,7 @@ Integer
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
 node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) </sub>
-
+                          
 ```python
 v = geometry.capture_index(self, domain='POINT')
 ```
@@ -486,7 +486,7 @@ Integer
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputNormal](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html)
 node ref [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) </sub>
-
+                          
 ```python
 v = geometry.capture_normal(self, domain='FACE')
 ```
@@ -518,7 +518,7 @@ Vector
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputPosition](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html)
 node ref [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/position.html) </sub>
-
+                          
 ```python
 v = geometry.capture_position(self, domain='POINT')
 ```
@@ -550,7 +550,7 @@ Vector
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputRadius](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html)
 node ref [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html) </sub>
-
+                          
 ```python
 v = geometry.capture_radius(self, domain='POINT')
 ```
@@ -582,7 +582,7 @@ Float
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputID](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html)
 node ref [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/id.html) </sub>
-
+                          
 ```python
 v = geometry.ID(self)
 ```
@@ -613,7 +613,7 @@ Integer
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
 node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) </sub>
-
+                          
 ```python
 v = geometry.index(self)
 ```
@@ -644,7 +644,7 @@ Integer
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputNormal](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html)
 node ref [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) </sub>
-
+                          
 ```python
 v = geometry.normal(self)
 ```
@@ -675,7 +675,7 @@ Vector
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputPosition](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html)
 node ref [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/position.html) </sub>
-
+                          
 ```python
 v = geometry.position(self)
 ```
@@ -706,7 +706,7 @@ Vector
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeInputRadius](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html)
 node ref [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html) </sub>
-
+                          
 ```python
 v = geometry.radius(self)
 ```
@@ -737,7 +737,7 @@ Float
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
-
+                          
 ```python
 v = geometry.switch(switch1, true)
 ```
@@ -771,7 +771,7 @@ Geometry
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
 node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) </sub>
-
+                          
 ```python
 v = geometry.capture_attribute(value, data_type, domain)
 ```
@@ -805,7 +805,7 @@ Sockets [geometry (Geometry), attribute (data_type dependant)]
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
 node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
-
+                          
 ```python
 v = geometry.transfer_boolean(attribute, source_position, index, domain, mapping)
 ```
@@ -842,7 +842,7 @@ Boolean
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
 node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
-
+                          
 ```python
 v = geometry.transfer_integer(attribute, source_position, index, domain, mapping)
 ```
@@ -879,7 +879,7 @@ Integer
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
 node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
-
+                          
 ```python
 v = geometry.transfer_float(attribute, source_position, index, domain, mapping)
 ```
@@ -916,7 +916,7 @@ Float
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
 node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
-
+                          
 ```python
 v = geometry.transfer_vector(attribute, source_position, index, domain, mapping)
 ```
@@ -953,7 +953,7 @@ Vector
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
 node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
-
+                          
 ```python
 v = geometry.transfer_color(attribute, source_position, index, domain, mapping)
 ```
@@ -990,7 +990,7 @@ Color
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeDeleteGeometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 node ref [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) </sub>
-
+                          
 ```python
 v = geometry.delete_geometry(selection, domain, mode)
 ```
@@ -1024,7 +1024,7 @@ Geometry
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeMergeByDistance](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html)
 node ref [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/merge_by_distance.html) </sub>
-
+                          
 ```python
 v = geometry.merge_by_distance(selection, distance, mode)
 ```
@@ -1058,7 +1058,7 @@ Geometry
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeRealizeInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html)
 node ref [Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html) </sub>
-
+                          
 ```python
 v = geometry.realize_instances(legacy_behavior)
 ```
@@ -1090,7 +1090,7 @@ Geometry
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeReplaceMaterial](https://docs.blender.org/api/current/bpy.types.GeometryNodeReplaceMaterial.html)
 node ref [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html) </sub>
-
+                          
 ```python
 v = geometry.replace_material(old, new)
 ```
@@ -1123,7 +1123,7 @@ Geometry
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeScaleElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html)
 node ref [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) </sub>
-
+                          
 ```python
 v = geometry.scale_elements(selection, scale, center, axis, domain, scale_mode)
 ```
@@ -1160,7 +1160,7 @@ Geometry
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSetID](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html)
 node ref [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_id.html) </sub>
-
+                          
 ```python
 v = geometry.set_ID(selection, ID)
 ```
@@ -1193,7 +1193,7 @@ Geometry
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSetMaterial](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
 node ref [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) </sub>
-
+                          
 ```python
 v = geometry.set_material(selection, material)
 ```
@@ -1226,7 +1226,7 @@ Geometry
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSetMaterialIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
 node ref [Set Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) </sub>
-
+                          
 ```python
 v = geometry.set_material_index(selection, material_index)
 ```
@@ -1259,7 +1259,7 @@ Geometry
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSetPosition](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html)
 node ref [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_position.html) </sub>
-
+                          
 ```python
 v = geometry.set_position(selection, position, offset)
 ```
@@ -1293,7 +1293,7 @@ Geometry
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSetShadeSmooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html)
 node ref [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/set_shade_smooth.html) </sub>
-
+                          
 ```python
 v = geometry.set_shade_smooth(selection, shade_smooth)
 ```
@@ -1326,7 +1326,7 @@ Geometry
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeTransform](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
 node ref [Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/transform.html) </sub>
-
+                          
 ```python
 v = geometry.transform(translation, rotation, scale)
 ```
@@ -1360,7 +1360,7 @@ Geometry
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
-
+                          
 ```python
 v = geometry.attribute_domain_size(component)
 ```
@@ -1392,7 +1392,7 @@ Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeRemoveAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeRemoveAttribute.html)
 node ref [Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/remove_named_attribute.html) </sub>
-
+                          
 ```python
 v = geometry.remove_attribute(name)
 ```
@@ -1424,7 +1424,7 @@ Geometry
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeSeparateGeometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
 node ref [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) </sub>
-
+                          
 ```python
 v = geometry.components(selection, domain)
 ```
@@ -1457,7 +1457,7 @@ Sockets [selection (Geometry), inverted (Geometry)]
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeConvexHull](https://docs.blender.org/api/current/bpy.types.GeometryNodeConvexHull.html)
 node ref [Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/convex_hull.html) </sub>
-
+                          
 ```python
 v = geometry.convex_hull()
 ```
@@ -1488,7 +1488,7 @@ Geometry
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeGeometryToInstance](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html)
 node ref [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html) </sub>
-
+                          
 ```python
 v = geometry.to_instance(geometry_1, geometry_2, geometry_3)
 ```
@@ -1519,7 +1519,7 @@ Instances
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeJoinGeometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html)
 node ref [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html) </sub>
-
+                          
 ```python
 v = geometry.join(geometry_1, geometry_2, geometry_3)
 ```
@@ -1550,7 +1550,7 @@ Geometry
 <sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
 blender ref [GeometryNodeProximity](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
 node ref [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) </sub>
-
+                          
 ```python
 v = geometry.proximity(source_position, target_element)
 ```

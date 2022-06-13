@@ -36,7 +36,7 @@ class Collection(dsock.Collection):
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>
-        
+                                  
         ```python
         v = collection.switch(switch1, true)
         ```
@@ -76,7 +76,7 @@ class Collection(dsock.Collection):
         <sub>go to: top index
         blender ref GeometryNodeCollectionInfo
         node ref Collection Info </sub>
-        
+                                  
         ```python
         v = collection.info(separate_children, reset_children, transform_space)
         ```

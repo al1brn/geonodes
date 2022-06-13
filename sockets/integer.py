@@ -92,7 +92,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref FunctionNodeRandomValue
         node ref Random Value </sub>
-        
+                                  
         ```python
         v = Integer.Random(min, max, ID, seed)
         ```
@@ -137,7 +137,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref GeometryNodeAccumulateField
         node ref Accumulate Field </sub>
-        
+                                  
         ```python
         v = integer.accumulate_field(group_index, domain)
         ```
@@ -177,7 +177,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref GeometryNodeAttributeTransfer
         node ref Transfer Attribute </sub>
-        
+                                  
         ```python
         v = integer.transfer_attribute(source, source_position, index, domain, mapping)
         ```
@@ -220,7 +220,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref GeometryNodeCaptureAttribute
         node ref Capture Attribute </sub>
-        
+                                  
         ```python
         v = integer.capture_attribute(geometry, domain)
         ```
@@ -260,7 +260,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref GeometryNodeFieldAtIndex
         node ref Field at Index </sub>
-        
+                                  
         ```python
         v = integer.field_at_index(value, domain)
         ```
@@ -300,7 +300,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref GeometryNodeRaycast
         node ref Raycast </sub>
-        
+                                  
         ```python
         v = integer.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
         ```
@@ -343,7 +343,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>
-        
+                                  
         ```python
         v = integer.switch(switch0, true)
         ```
@@ -383,7 +383,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = integer.less_than(b)
         ```
@@ -424,7 +424,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = integer.less_equal(b)
         ```
@@ -465,7 +465,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = integer.greater_than(b)
         ```
@@ -506,7 +506,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = integer.greater_equal(b)
         ```
@@ -547,7 +547,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = integer.equal(b)
         ```
@@ -588,7 +588,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = integer.not_equal(b)
         ```
@@ -629,7 +629,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.add(value1)
         ```
@@ -668,7 +668,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.subtract(value1)
         ```
@@ -707,7 +707,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.multiply(value1)
         ```
@@ -746,7 +746,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.divide(value1)
         ```
@@ -785,7 +785,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.multiply_add(value1, value2)
         ```
@@ -825,7 +825,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.pow(value1)
         ```
@@ -864,7 +864,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.log(value1)
         ```
@@ -903,7 +903,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.sqrt()
         ```
@@ -941,7 +941,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.inverse_sqrt()
         ```
@@ -979,7 +979,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.abs()
         ```
@@ -1017,7 +1017,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.exp()
         ```
@@ -1055,7 +1055,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.min(value1)
         ```
@@ -1094,7 +1094,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.max(value1)
         ```
@@ -1133,7 +1133,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.less_than(value1)
         ```
@@ -1172,7 +1172,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.greater_than(value1)
         ```
@@ -1211,7 +1211,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.sign()
         ```
@@ -1249,7 +1249,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.compare(value1, value2)
         ```
@@ -1289,7 +1289,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.smooth_min(value1, value2)
         ```
@@ -1329,7 +1329,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.smooth_max(value1, value2)
         ```
@@ -1369,7 +1369,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.round()
         ```
@@ -1407,7 +1407,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.floor()
         ```
@@ -1445,7 +1445,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.ceil()
         ```
@@ -1483,7 +1483,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.trunc()
         ```
@@ -1521,7 +1521,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.fract()
         ```
@@ -1559,7 +1559,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.modulo(value1)
         ```
@@ -1598,7 +1598,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.wrap(value1, value2)
         ```
@@ -1638,7 +1638,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.snap(value1)
         ```
@@ -1677,7 +1677,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.pingpong(value1)
         ```
@@ -1716,7 +1716,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.sin()
         ```
@@ -1754,7 +1754,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.cos()
         ```
@@ -1792,7 +1792,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.tan()
         ```
@@ -1830,7 +1830,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.arcsin()
         ```
@@ -1868,7 +1868,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.arccos()
         ```
@@ -1906,7 +1906,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.arctan()
         ```
@@ -1944,7 +1944,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.arctan2(value1)
         ```
@@ -1983,7 +1983,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.sinh()
         ```
@@ -2021,7 +2021,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.cosh()
         ```
@@ -2059,7 +2059,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.tanh()
         ```
@@ -2097,7 +2097,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.radians()
         ```
@@ -2135,7 +2135,7 @@ class Integer(dsock.Integer):
         <sub>go to: top index
         blender ref ShaderNodeMath
         node ref Math </sub>
-        
+                                  
         ```python
         v = integer.degrees()
         ```

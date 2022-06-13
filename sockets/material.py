@@ -36,7 +36,7 @@ class Material(dsock.Material):
         <sub>go to: top index
         blender ref GeometryNodeSwitch
         node ref Switch </sub>
-        
+                                  
         ```python
         v = material.switch(switch1, true)
         ```
@@ -76,7 +76,7 @@ class Material(dsock.Material):
         <sub>go to: top index
         blender ref GeometryNodeMaterialSelection
         node ref Material Selection </sub>
-        
+                                  
         ```python
         v = material.selection()
         ```

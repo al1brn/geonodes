@@ -38,7 +38,7 @@ class Points(gn.Geometry):
         <sub>go to: top index
         blender ref GeometryNodeSetPointRadius
         node ref Set Point Radius </sub>
-        
+                                  
         ```python
         v = points.set_radius(selection, radius)
         ```
@@ -77,7 +77,7 @@ class Points(gn.Geometry):
         <sub>go to: top index
         blender ref GeometryNodeInstanceOnPoints
         node ref Instance on Points </sub>
-        
+                                  
         ```python
         v = points.instance_on_points(selection, instance, pick_instance, instance_index, rotation, scale)
         ```
@@ -120,7 +120,7 @@ class Points(gn.Geometry):
         <sub>go to: top index
         blender ref GeometryNodePointsToVertices
         node ref Points to Vertices </sub>
-        
+                                  
         ```python
         v = points.to_vertices(selection)
         ```
@@ -158,7 +158,7 @@ class Points(gn.Geometry):
         <sub>go to: top index
         blender ref GeometryNodePointsToVolume
         node ref Points to Volume </sub>
-        
+                                  
         ```python
         v = points.to_volume(density, voxel_size, voxel_amount, radius, resolution_mode)
         ```

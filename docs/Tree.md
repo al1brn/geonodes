@@ -4,7 +4,7 @@
 > Wrap a Blender NodeTree
   
 A tree class encapsulates a Blender NodeTree:
-
+        
 ```python
 blender_tree = tree.btree # The Blender NodeTree
 ```
@@ -20,10 +20,10 @@ Hence, building a tree is made between the two instructions:
   - `tree.close()` : arrange the nodes
     
 It is recommanded to use the `with` syntax:
-
+        
 ```python
 with Tree("Geometry Nodes") as tree:
-  # ... nodes creation
+    # ... nodes creation
 ```
 
 ## The TREE static property
@@ -37,21 +37,21 @@ At creation time, a Tree instance becomes the current one.
 
 For clarity, it is possible to put the newly created nodes in a layout. At creation time, one can define
 both the layout label and color. The layout creation makes use of the `with` syntax:
-
+        
 ```python
 with Tree("Geometry Node") as tree:
-
-  # Nodes created here are placed directly on the tree background
-  
-  with tree.layout("Some tricky computation", color="green"):
-  
-    # Nodes created here are placed in the current layout
-    
-    with tree.layout("The most difficult part", color="red"):
-    
-      # Layouts can be imbricated
-      
-  # Back to standard creation
+        
+    # Nodes created here are placed directly on the tree background
+        
+    with tree.layout("Some tricky computation", color="green"):
+            
+        # Nodes created here are placed in the current layout
+            
+        with tree.layout("The most difficult part", color="red"):
+                
+            # Layouts can be imbricated
+                
+    # Back to standard creation
 ```
 
 ## Initialization
@@ -206,10 +206,10 @@ Maintain a single instance of the node "Scene Time""
 The "Scene Time" output socket "frame"
 
 Used for animation:
-
+            
 ```python
 with Tree("Geometry Nodes") as tree:
-  height = tree.frame / 10 # a value which is a tenth of the current frame 
+    height = tree.frame / 10 # a value which is a tenth of the current frame 
 ```
 
 
@@ -219,10 +219,10 @@ with Tree("Geometry Nodes") as tree:
 The "Scene Time" output socket "seconds"
 
 Used for animation:
-
+            
 ```python
 with Tree("Geometry Nodes") as tree:
-  time = tree.seconds.sqrt() # a value which is the square root of the time
+    time = tree.seconds.sqrt() # a value which is the square root of the time
 ```
 
 
@@ -232,11 +232,11 @@ with Tree("Geometry Nodes") as tree:
 Create a new layout where the newly created nodes will be placed
 
 To be used in a `with` block:
-
+            
 ```python
 with tree.layout("My layout"): # Create a layout
-  mesh = Mesh.UVSphere() # The node is parented in the layout
-  
+    mesh = Mesh.UVSphere() # The node is parented in the layout
+            
 mesh.set_shade_smooth() # "Set Shade Smooth" node is created in the tree backrgound
 ```
 

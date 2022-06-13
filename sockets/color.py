@@ -82,7 +82,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeCombineRGB
         node ref Combine RGB </sub>
-        
+                                  
         ```python
         v = Color.Combine(r, g, b)
         ```
@@ -126,7 +126,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeSeparateRGB
         node ref Separate RGB </sub>
-        
+                                  
         ```python
         v = color.separate
         ```
@@ -167,7 +167,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeSeparateRGB
         node ref Separate RGB </sub>
-        
+                                  
         ```python
         v = color.r
         ```
@@ -210,7 +210,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeSeparateRGB
         node ref Separate RGB </sub>
-        
+                                  
         ```python
         v = color.g
         ```
@@ -253,7 +253,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeSeparateRGB
         node ref Separate RGB </sub>
-        
+                                  
         ```python
         v = color.b
         ```
@@ -299,7 +299,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref GeometryNodeAttributeTransfer
         node ref Transfer Attribute </sub>
-        
+                                  
         ```python
         v = color.transfer_attribute(source, source_position, index, domain, mapping)
         ```
@@ -342,7 +342,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref GeometryNodeCaptureAttribute
         node ref Capture Attribute </sub>
-        
+                                  
         ```python
         v = color.capture_attribute(geometry, domain)
         ```
@@ -382,7 +382,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref GeometryNodeFieldAtIndex
         node ref Field at Index </sub>
-        
+                                  
         ```python
         v = color.field_at_index(index, domain)
         ```
@@ -422,7 +422,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref GeometryNodeRaycast
         node ref Raycast </sub>
-        
+                                  
         ```python
         v = color.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
         ```
@@ -465,7 +465,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = color.equal(b, epsilon)
         ```
@@ -507,7 +507,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = color.not_equal(b, epsilon)
         ```
@@ -549,7 +549,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = color.brighter(b)
         ```
@@ -590,7 +590,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref FunctionNodeCompare
         node ref Compare </sub>
-        
+                                  
         ```python
         v = color.darker(b)
         ```
@@ -631,7 +631,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.mix(color2, fac, use_alpha)
         ```
@@ -672,7 +672,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.darken(color2, fac, use_alpha)
         ```
@@ -713,7 +713,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.multiply(color2, fac, use_alpha)
         ```
@@ -754,7 +754,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.burn(color2, fac, use_alpha)
         ```
@@ -795,7 +795,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.lighten(color2, fac, use_alpha)
         ```
@@ -836,7 +836,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.screen(color2, fac, use_alpha)
         ```
@@ -877,7 +877,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.dodge(color2, fac, use_alpha)
         ```
@@ -918,7 +918,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.add(color2, fac, use_alpha)
         ```
@@ -959,7 +959,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.overlay(color2, fac, use_alpha)
         ```
@@ -1000,7 +1000,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.soft_light(color2, fac, use_alpha)
         ```
@@ -1041,7 +1041,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.linear_light(color2, fac, use_alpha)
         ```
@@ -1082,7 +1082,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.difference(color2, fac, use_alpha)
         ```
@@ -1123,7 +1123,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.subtract(color2, fac, use_alpha)
         ```
@@ -1164,7 +1164,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.divide(color2, fac, use_alpha)
         ```
@@ -1205,7 +1205,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.hue(color2, fac, use_alpha)
         ```
@@ -1246,7 +1246,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.saturation(color2, fac, use_alpha)
         ```
@@ -1287,7 +1287,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.mix_color(color2, fac, use_alpha)
         ```
@@ -1328,7 +1328,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.value(color2, fac, use_alpha)
         ```
@@ -1369,7 +1369,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeRGBCurve
         node ref RGB Curves </sub>
-        
+                                  
         ```python
         v = color.curves(fac)
         ```
@@ -1407,7 +1407,7 @@ class Color(dsock.Color):
         <sub>go to: top index
         blender ref ShaderNodeMixRGB
         node ref Mix </sub>
-        
+                                  
         ```python
         v = color.mix(color2, fac, blend_type, use_alpha)
         ```

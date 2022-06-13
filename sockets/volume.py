@@ -35,7 +35,7 @@ class Volume(gn.Geometry):
         <sub>go to: top index
         blender ref GeometryNodeVolumeToMesh
         node ref Volume to Mesh </sub>
-        
+                                  
         ```python
         v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_mode)
         ```
