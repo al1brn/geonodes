@@ -28,7 +28,7 @@ with gn.Tree("Geometry Nodes") as tree:
     v = geo.position
     v = v.scale(scale=geo.index)
     
-    geo.set_position(offset=v)
+    geo.set_position(offset=v, node_color="green")
     
     tree.output_geometry = geo
 ```
@@ -49,11 +49,7 @@ with gn.Tree("Geometry Nodes") as tree:
     v = geo.position
     v = v.scale(scale=geo.index)
     
-    geo.set_position(offset=v)
-    
-    # ----- New set_position
-    
-    geo.set_position(offset=v)
+    geo.set_position(offset=v, node_color="green")
     
     tree.output_geometry = geo
 ```
