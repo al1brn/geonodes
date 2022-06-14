@@ -33,7 +33,7 @@ with gn.Tree("Geometry Nodes") as tree:
     tree.output_geometry = geo
 ```
 
-In the resulting tree, Position and Index nodes are fields of the input geometry because their links "join" at node 'Set Position':
+In the resulting tree, Position and Index nodes are fields of the input geometry because their links "join" at the green node 'Set Position':
 
 <img src="/docs/images/fields_1_tree.png" width="400">
 
