@@ -92,7 +92,6 @@ class Mesh(gn.Geometry):
             - dual : dual_mesh (Geometry)
             - duplicate_edges : Sockets      [geometry (Geometry), duplicate_index (Integer)]
             - duplicate_faces : Sockets      [geometry (Geometry), duplicate_index (Integer)]
-            - duplicate_points : Sockets      [geometry (Geometry), duplicate_index (Integer)]
             - extrude : Sockets      [mesh (Mesh), top (Boolean), side (Boolean)]
             - flip_faces : mesh (Mesh)
             - intersect : mesh (Mesh)
@@ -2165,45 +2164,6 @@ class Mesh(gn.Geometry):
         """
 
         return self.stack(nodes.FlipFaces(mesh=self, selection=selection, label=node_label, node_color=node_color))
-
-    def duplicate_points(self, selection=None, amount=None, node_label = None, node_color = None):
-        """ > Node: DuplicateElements
-          
-        <sub>go to: top index
-        blender ref GeometryNodeDuplicateElements
-        node ref Duplicate Elements </sub>
-                                  
-        ```python
-        v = mesh.duplicate_points(selection, amount, node_label = None, node_color = None)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - selection : Boolean
-            - amount : Integer## Parameters
-            - node_label : None
-            - node_color : None## Fixed parameters
-            - domain : 'POINT'
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='POINT', label=node_label, node_color=node_color)
-            ```
-    
-
-        Returns
-        -------
-            Sockets [geometry (Geometry), duplicate_index (Integer)]
-            
-        """
-
-        return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='POINT', label=node_label, node_color=node_color)
 
     def duplicate_edges(self, selection=None, amount=None, node_label = None, node_color = None):
         """ > Node: DuplicateElements

@@ -49,4 +49,9 @@ node = nodes.NamedAttribute(name=None, data_type='FLOAT', label=None, node_color
   
   
 - [Geometry](/docs/sockets/Geometry.md).[capture_named_attribute](/docs/sockets/Geometry.md#capture_named_attribute) : Capture attribute
+- [Geometry](/docs/sockets/Geometry.md).[capture_named_boolean](/docs/sockets/Geometry.md#capture_named_boolean) : Capture attribute
+- [Geometry](/docs/sockets/Geometry.md).[capture_named_boolean](/docs/sockets/Geometry.md#capture_named_boolean) : Capture attribute
+- [Geometry](/docs/sockets/Geometry.md).[capture_named_color](/docs/sockets/Geometry.md#capture_named_color) : Capture attribute
+- [Geometry](/docs/sockets/Geometry.md).[capture_named_integer](/docs/sockets/Geometry.md#capture_named_integer) : Capture attribute
+- [Geometry](/docs/sockets/Geometry.md).[capture_named_vector](/docs/sockets/Geometry.md#capture_named_vector) : Capture attribute
   

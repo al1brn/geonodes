@@ -52,4 +52,10 @@ node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type
   
   
 - [Geometry](/docs/sockets/Geometry.md).[store_named_attribute](/docs/sockets/Geometry.md#store_named_attribute) : Method
+- [Geometry](/docs/sockets/Geometry.md).[store_named_boolean](/docs/sockets/Geometry.md#store_named_boolean) : Method
+- [Geometry](/docs/sockets/Geometry.md).[store_named_byte_color](/docs/sockets/Geometry.md#store_named_byte_color) : Method
+- [Geometry](/docs/sockets/Geometry.md).[store_named_color](/docs/sockets/Geometry.md#store_named_color) : Method
+- [Geometry](/docs/sockets/Geometry.md).[store_named_float](/docs/sockets/Geometry.md#store_named_float) : Method
+- [Geometry](/docs/sockets/Geometry.md).[store_named_integer](/docs/sockets/Geometry.md#store_named_integer) : Method
+- [Geometry](/docs/sockets/Geometry.md).[store_named_vector](/docs/sockets/Geometry.md#store_named_vector) : Method
   

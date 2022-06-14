@@ -2350,7 +2350,7 @@ class HandleTypeSelection(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None)
+            node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None)
             ```
             
             
@@ -2363,7 +2363,7 @@ class HandleTypeSelection(Node):
             Parameters
             ----------
                 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                - mode : set (default = {'RIGHT', 'LEFT'})
+                - mode : set (default = {'LEFT', 'RIGHT'})
     
 
             Node label
@@ -2387,7 +2387,7 @@ class HandleTypeSelection(Node):
               
     """
 
-    def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
+    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveHandleTypeSelection', name='Handle Type Selection', label=label, node_color=node_color)
         # Parameters
@@ -2949,7 +2949,7 @@ class SetHandleType(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None)
+            node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None)
             ```
             
             
@@ -2968,7 +2968,7 @@ class SetHandleType(Node):
             Parameters
             ----------
                 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                - mode : set (default = {'RIGHT', 'LEFT'})
+                - mode : set (default = {'LEFT', 'RIGHT'})
     
 
             Node label
@@ -2991,7 +2991,7 @@ class SetHandleType(Node):
               
     """
 
-    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
+    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveSetHandles', name='Set Handle Type', label=label, node_color=node_color)
         # Parameters
@@ -3744,15 +3744,10 @@ class DuplicateElements(Node):
               
               
             - Geometry.duplicate_elements : Method
-            - Geometry.duplicate_elements : Method
-            - Geometry.duplicate_elements : Method
-            - Geometry.duplicate_elements : Method
-            - Geometry.duplicate_elements : Method
-            - Geometry.duplicate_elements : Method
+            - Geometry.duplicate_points : Method
             - Instances.duplicate_instances : Method
             - Mesh.duplicate_edges : Method
             - Mesh.duplicate_faces : Method
-            - Mesh.duplicate_points : Method
             - Spline.duplicate_splines : Method
               
     """
@@ -5373,6 +5368,11 @@ class NamedAttribute(Node):
               
               
             - Geometry.capture_named_attribute : Capture attribute
+            - Geometry.capture_named_boolean : Capture attribute
+            - Geometry.capture_named_boolean : Capture attribute
+            - Geometry.capture_named_color : Capture attribute
+            - Geometry.capture_named_integer : Capture attribute
+            - Geometry.capture_named_vector : Capture attribute
               
     """
 
@@ -7831,7 +7831,7 @@ class RemoveNamedAttribute(Node):
             > Data socket classes implementing this node.
               
               
-            - Geometry.remove_attribute : Method
+            - Geometry.remove_named_attribute : Method
               
     """
 
@@ -9633,6 +9633,12 @@ class StoreNamedAttribute(Node):
               
               
             - Geometry.store_named_attribute : Method
+            - Geometry.store_named_boolean : Method
+            - Geometry.store_named_byte_color : Method
+            - Geometry.store_named_color : Method
+            - Geometry.store_named_float : Method
+            - Geometry.store_named_integer : Method
+            - Geometry.store_named_vector : Method
               
     """
 
@@ -13034,3 +13040,166 @@ class VectorRotate(Node):
     @rotation_type.setter
     def rotation_type(self, value):
         self.bnode.rotation_type = value
+# --------------------------------------------------------------------------------
+# Create node from its bl_idname
+
+def create_node(bl_idname, *args, **kwargs):
+    nodes = {'FunctionNodeAlignEulerToVector': AlignEulerToVector,
+    'FunctionNodeBooleanMath': BooleanMath,
+    'FunctionNodeCompare': Compare,
+    'FunctionNodeFloatToInt': FloatToInteger,
+    'FunctionNodeInputBool': Boolean,
+    'FunctionNodeInputColor': Color,
+    'FunctionNodeInputInt': Integer,
+    'FunctionNodeInputSpecialCharacters': SpecialCharacters,
+    'FunctionNodeInputString': String,
+    'FunctionNodeInputVector': Vector,
+    'FunctionNodeRandomValue': RandomValue,
+    'FunctionNodeReplaceString': ReplaceString,
+    'FunctionNodeRotateEuler': RotateEuler,
+    'FunctionNodeSliceString': SliceString,
+    'FunctionNodeStringLength': StringLength,
+    'FunctionNodeValueToString': ValueToString,
+    'GeometryNodeAccumulateField': AccumulateField,
+    'GeometryNodeAttributeDomainSize': DomainSize,
+    'GeometryNodeAttributeStatistic': AttributeStatistic,
+    'GeometryNodeAttributeTransfer': TransferAttribute,
+    'GeometryNodeBoundBox': BoundingBox,
+    'GeometryNodeCaptureAttribute': CaptureAttribute,
+    'GeometryNodeCollectionInfo': CollectionInfo,
+    'GeometryNodeConvexHull': ConvexHull,
+    'GeometryNodeCurveArc': Arc,
+    'GeometryNodeCurveEndpointSelection': EndpointSelection,
+    'GeometryNodeCurveHandleTypeSelection': HandleTypeSelection,
+    'GeometryNodeCurveLength': CurveLength,
+    'GeometryNodeCurvePrimitiveBezierSegment': BezierSegment,
+    'GeometryNodeCurvePrimitiveCircle': CurveCircle,
+    'GeometryNodeCurvePrimitiveLine': CurveLine,
+    'GeometryNodeCurvePrimitiveQuadrilateral': Quadrilateral,
+    'GeometryNodeCurveQuadraticBezier': QuadraticBezier,
+    'GeometryNodeCurveSetHandles': SetHandleType,
+    'GeometryNodeCurveSpiral': Spiral,
+    'GeometryNodeCurveSplineType': SetSplineType,
+    'GeometryNodeCurveStar': Star,
+    'GeometryNodeCurveToMesh': CurveToMesh,
+    'GeometryNodeCurveToPoints': CurveToPoints,
+    'GeometryNodeDeleteGeometry': DeleteGeometry,
+    'GeometryNodeDistributePointsOnFaces': DistributePointsOnFaces,
+    'GeometryNodeDualMesh': DualMesh,
+    'GeometryNodeDuplicateElements': DuplicateElements,
+    'GeometryNodeExtrudeMesh': ExtrudeMesh,
+    'GeometryNodeFieldAtIndex': FieldAtIndex,
+    'GeometryNodeFillCurve': FillCurve,
+    'GeometryNodeFilletCurve': FilletCurve,
+    'GeometryNodeFlipFaces': FlipFaces,
+    'GeometryNodeGeometryToInstance': GeometryToInstance,
+    'GeometryNodeGroup': Group,
+    'GeometryNodeImageTexture': ImageTexture,
+    'GeometryNodeInputCurveHandlePositions': CurveHandlePositions,
+    'GeometryNodeInputCurveTilt': CurveTilt,
+    'GeometryNodeInputID': ID,
+    'GeometryNodeInputIndex': Index,
+    'GeometryNodeInputMaterial': Material,
+    'GeometryNodeInputMaterialIndex': MaterialIndex,
+    'GeometryNodeInputMeshEdgeAngle': EdgeAngle,
+    'GeometryNodeInputMeshEdgeNeighbors': EdgeNeighbors,
+    'GeometryNodeInputMeshEdgeVertices': EdgeVertices,
+    'GeometryNodeInputMeshFaceArea': FaceArea,
+    'GeometryNodeInputMeshFaceIsPlanar': FaceIsPlanar,
+    'GeometryNodeInputMeshFaceNeighbors': FaceNeighbors,
+    'GeometryNodeInputMeshIsland': MeshIsland,
+    'GeometryNodeInputMeshVertexNeighbors': VertexNeighbors,
+    'GeometryNodeInputNamedAttribute': NamedAttribute,
+    'GeometryNodeInputNormal': Normal,
+    'GeometryNodeInputPosition': Position,
+    'GeometryNodeInputRadius': Radius,
+    'GeometryNodeInputSceneTime': SceneTime,
+    'GeometryNodeInputShadeSmooth': IsShadeSmooth,
+    'GeometryNodeInputSplineCyclic': IsSplineCyclic,
+    'GeometryNodeInputSplineResolution': SplineResolution,
+    'GeometryNodeInputTangent': CurveTangent,
+    'GeometryNodeInstanceOnPoints': InstanceOnPoints,
+    'GeometryNodeInstancesToPoints': InstancesToPoints,
+    'GeometryNodeIsViewport': IsViewport,
+    'GeometryNodeJoinGeometry': JoinGeometry,
+    'GeometryNodeMaterialSelection': MaterialSelection,
+    'GeometryNodeMergeByDistance': MergeByDistance,
+    'GeometryNodeMeshBoolean': MeshBoolean,
+    'GeometryNodeMeshCircle': MeshCircle,
+    'GeometryNodeMeshCone': Cone,
+    'GeometryNodeMeshCube': Cube,
+    'GeometryNodeMeshCylinder': Cylinder,
+    'GeometryNodeMeshGrid': Grid,
+    'GeometryNodeMeshIcoSphere': IcoSphere,
+    'GeometryNodeMeshLine': MeshLine,
+    'GeometryNodeMeshToCurve': MeshToCurve,
+    'GeometryNodeMeshToPoints': MeshToPoints,
+    'GeometryNodeMeshUVSphere': UvSphere,
+    'GeometryNodeObjectInfo': ObjectInfo,
+    'GeometryNodePointsToVertices': PointsToVertices,
+    'GeometryNodePointsToVolume': PointsToVolume,
+    'GeometryNodeProximity': GeometryProximity,
+    'GeometryNodeRaycast': Raycast,
+    'GeometryNodeRealizeInstances': RealizeInstances,
+    'GeometryNodeRemoveAttribute': RemoveNamedAttribute,
+    'GeometryNodeReplaceMaterial': ReplaceMaterial,
+    'GeometryNodeResampleCurve': ResampleCurve,
+    'GeometryNodeReverseCurve': ReverseCurve,
+    'GeometryNodeRotateInstances': RotateInstances,
+    'GeometryNodeSampleCurve': SampleCurve,
+    'GeometryNodeScaleElements': ScaleElements,
+    'GeometryNodeScaleInstances': ScaleInstances,
+    'GeometryNodeSeparateComponents': SeparateComponents,
+    'GeometryNodeSeparateGeometry': SeparateGeometry,
+    'GeometryNodeSetCurveHandlePositions': SetHandlePositions,
+    'GeometryNodeSetCurveRadius': SetCurveRadius,
+    'GeometryNodeSetCurveTilt': SetCurveTilt,
+    'GeometryNodeSetID': SetID,
+    'GeometryNodeSetMaterial': SetMaterial,
+    'GeometryNodeSetMaterialIndex': SetMaterialIndex,
+    'GeometryNodeSetPointRadius': SetPointRadius,
+    'GeometryNodeSetPosition': SetPosition,
+    'GeometryNodeSetShadeSmooth': SetShadeSmooth,
+    'GeometryNodeSetSplineCyclic': SetSplineCyclic,
+    'GeometryNodeSetSplineResolution': SetSplineResolution,
+    'GeometryNodeSplineLength': SplineLength,
+    'GeometryNodeSplineParameter': SplineParameter,
+    'GeometryNodeSplitEdges': SplitEdges,
+    'GeometryNodeStoreNamedAttribute': StoreNamedAttribute,
+    'GeometryNodeStringJoin': JoinStrings,
+    'GeometryNodeStringToCurves': StringToCurves,
+    'GeometryNodeSubdivideCurve': SubdivideCurve,
+    'GeometryNodeSubdivideMesh': SubdivideMesh,
+    'GeometryNodeSubdivisionSurface': SubdivisionSurface,
+    'GeometryNodeSwitch': Switch,
+    'GeometryNodeTransform': Transform,
+    'GeometryNodeTranslateInstances': TranslateInstances,
+    'GeometryNodeTriangulate': Triangulate,
+    'GeometryNodeTrimCurve': TrimCurve,
+    'GeometryNodeVolumeToMesh': VolumeToMesh,
+    'ShaderNodeClamp': Clamp,
+    'ShaderNodeCombineRGB': CombineRgb,
+    'ShaderNodeCombineXYZ': CombineXyz,
+    'ShaderNodeFloatCurve': FloatCurve,
+    'ShaderNodeMapRange': MapRange,
+    'ShaderNodeMath': Math,
+    'ShaderNodeMixRGB': Mix,
+    'ShaderNodeRGBCurve': RgbCurves,
+    'ShaderNodeSeparateRGB': SeparateRgb,
+    'ShaderNodeSeparateXYZ': SeparateXyz,
+    'ShaderNodeTexBrick': BrickTexture,
+    'ShaderNodeTexChecker': CheckerTexture,
+    'ShaderNodeTexGradient': GradientTexture,
+    'ShaderNodeTexMagic': MagicTexture,
+    'ShaderNodeTexMusgrave': MusgraveTexture,
+    'ShaderNodeTexNoise': NoiseTexture,
+    'ShaderNodeTexVoronoi': VoronoiTexture,
+    'ShaderNodeTexWave': WaveTexture,
+    'ShaderNodeTexWhiteNoise': WhiteNoiseTexture,
+    'ShaderNodeValToRGB': ColorRamp,
+    'ShaderNodeValue': Value,
+    'ShaderNodeVectorCurve': VectorCurves,
+    'ShaderNodeVectorMath': VectorMath,
+    'ShaderNodeVectorRotate': VectorRotate}
+    return nodes[bl_idname](*args, **kwargs)
+

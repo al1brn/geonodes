@@ -68,7 +68,6 @@
 - [dual](#dual) : dual_mesh (Geometry)
 - [duplicate_edges](#duplicate_edges) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
 - [duplicate_faces](#duplicate_faces) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
-- [duplicate_points](#duplicate_points) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
 - [extrude](#extrude) : Sockets      [mesh (Mesh), top (Boolean), side (Boolean)]
 - [flip_faces](#flip_faces) : mesh (Mesh)
 - [intersect](#intersect) : mesh (Mesh)
@@ -1763,40 +1762,6 @@ nodes.FlipFaces(mesh=self, selection=selection, label=node_label, node_color=nod
 ### Returns
 
 Mesh
-
-
-## duplicate_points
-
-> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
-  
-<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
-blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
-node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
-                          
-```python
-v = mesh.duplicate_points(selection, amount, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- amount : Integer## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- domain : 'POINT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='POINT', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [geometry (Geometry), duplicate_index (Integer)]
 
 
 ## duplicate_edges

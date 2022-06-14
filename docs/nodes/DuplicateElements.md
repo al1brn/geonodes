@@ -44,14 +44,9 @@ node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domai
   
   
 - [Geometry](/docs/sockets/Geometry.md).[duplicate_elements](/docs/sockets/Geometry.md#duplicate_elements) : Method
-- [Geometry](/docs/sockets/Geometry.md).[duplicate_elements](/docs/sockets/Geometry.md#duplicate_elements) : Method
-- [Geometry](/docs/sockets/Geometry.md).[duplicate_elements](/docs/sockets/Geometry.md#duplicate_elements) : Method
-- [Geometry](/docs/sockets/Geometry.md).[duplicate_elements](/docs/sockets/Geometry.md#duplicate_elements) : Method
-- [Geometry](/docs/sockets/Geometry.md).[duplicate_elements](/docs/sockets/Geometry.md#duplicate_elements) : Method
-- [Geometry](/docs/sockets/Geometry.md).[duplicate_elements](/docs/sockets/Geometry.md#duplicate_elements) : Method
+- [Geometry](/docs/sockets/Geometry.md).[duplicate_points](/docs/sockets/Geometry.md#duplicate_points) : Method
 - [Instances](/docs/sockets/Instances.md).[duplicate_instances](/docs/sockets/Instances.md#duplicate_instances) : Method
 - [Mesh](/docs/sockets/Mesh.md).[duplicate_edges](/docs/sockets/Mesh.md#duplicate_edges) : Method
 - [Mesh](/docs/sockets/Mesh.md).[duplicate_faces](/docs/sockets/Mesh.md#duplicate_faces) : Method
-- [Mesh](/docs/sockets/Mesh.md).[duplicate_points](/docs/sockets/Mesh.md#duplicate_points) : Method
 - [Spline](/docs/sockets/Spline.md).[duplicate_splines](/docs/sockets/Spline.md#duplicate_splines) : Method
   

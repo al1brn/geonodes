@@ -239,7 +239,7 @@ class Spline(gn.Geometry):
         node.as_attribute(owning_socket=self, domain=domain)
         return node.selection
 
-    def capture_handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, domain='CURVE', node_label = None, node_color = None):
+    def capture_handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, domain='CURVE', node_label = None, node_color = None):
         """ > Node: HandleTypeSelection
           
         <sub>go to: top index
@@ -256,7 +256,7 @@ class Spline(gn.Geometry):
             ## Parameters
             - self
             - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-            - mode : {'RIGHT', 'LEFT'}
+            - mode : {'LEFT', 'RIGHT'}
             - domain:'CURVE'
             - node_label : None
             - node_color : None
@@ -742,7 +742,7 @@ class Spline(gn.Geometry):
         return self.capture_endpoint_selection(start_size=start_size, end_size=end_size, domain='CURVE')
 
     @property
-    def handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+    def handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ > Node: HandleTypeSelection
           
         <sub>go to: top index
@@ -759,7 +759,7 @@ class Spline(gn.Geometry):
             ## Parameters
             - self
             - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-            - mode : {'RIGHT', 'LEFT'}
+            - mode : {'LEFT', 'RIGHT'}
     
 
         Node creation

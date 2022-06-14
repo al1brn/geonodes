@@ -18,6 +18,9 @@ logger = logging.getLogger('geonodes')
 from geonodes import colors
 from .arrange import arrange
 
+
+        
+
 # =============================================================================================================================
 # > Root for data classes
 #
@@ -105,14 +108,6 @@ class DataSocket:
 
     def __init__(self, socket, node=None, label=None):
         
-        # ----- Attributes (fields) are cached dynamically
-        
-        self.attr_props = {}
-        
-        # ----- Ensure the properties are created
-        
-        self.reset_properties()
-        
         # ----- A class Object doesn't have a constructor Node
 
         if socket is None:
@@ -135,6 +130,16 @@ class DataSocket:
             
             if label is not None:
                 self.node.label = label
+
+        # ----- Attributes (fields) are cached dynamically
+        
+        self.attr_props = {}
+        
+        # ----- Ensure the properties are created
+        
+        self.reset_properties()
+        
+        
                 
         
                 
@@ -1217,7 +1222,7 @@ class Tree:
         if self.capture_attributes:
             self.check_attributes()
         self.arrange(True)
-        
+
     
 # ---------------------------------------------------------------------------
 # A Node    
@@ -1501,7 +1506,7 @@ class Node:
     # ====================================================================================================
     # The node is an attribute
     
-    def as_attribute(self, owning_socket, domain='POINT', data_type='FLOAT'):
+    def as_attribute(self, owning_socket, domain='POINT'): #, data_type='FLOAT'):
         """ Indicates that the node is an attribute
         
         An attribute is intended to provide information from a particular geometry.
@@ -1516,9 +1521,12 @@ class Node:
         See `Tree.check_attributes` method.
         """
         
-        self.is_attribute   = True
-        self.owning_bsocket = owning_socket.bsocket
-        self.domain         = domain
+        self.is_attribute = True
+        if isinstance(owning_socket, bpy.types.NodeSocket):
+            self.owning_bsocket = owning_socket
+        else:
+            self.owning_bsocket = owning_socket.bsocket
+        self.domain = domain
         
     # ----------------------------------------------------------------------------------------------------
     # List of the nodes which are connected through a GEOMETRY socket

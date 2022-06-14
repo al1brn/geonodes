@@ -52,6 +52,11 @@ class Geometry(dsock.Geometry):
             - capture_ID : ID (Integer)
             - capture_index : index (Integer)
             - capture_named_attribute : attribute (data_type dependant)
+            - capture_named_boolean : attribute (Float)
+            - capture_named_boolean : attribute (Boolean)
+            - capture_named_color : attribute (Color)
+            - capture_named_integer : attribute (Integer)
+            - capture_named_vector : attribute (Vector)
             - capture_normal : normal (Vector)
             - capture_position : position (Vector)
             - capture_radius : radius (Float)
@@ -74,15 +79,11 @@ class Geometry(dsock.Geometry):
             - convex_hull : convex_hull (Geometry)
             - delete_geometry : geometry (Geometry)
             - duplicate_elements : Sockets      [geometry (Geometry), duplicate_index (Integer)]
-            - duplicate_elements : Sockets      [geometry (Geometry), duplicate_index (Integer)]
-            - duplicate_elements : Sockets      [geometry (Geometry), duplicate_index (Integer)]
-            - duplicate_elements : Sockets      [geometry (Geometry), duplicate_index (Integer)]
-            - duplicate_elements : Sockets      [geometry (Geometry), duplicate_index (Integer)]
-            - duplicate_elements : Sockets      [geometry (Geometry), duplicate_index (Integer)]
+            - duplicate_points : Sockets      [geometry (Geometry), duplicate_index (Integer)]
             - join : geometry (Geometry)
             - merge_by_distance : geometry (Geometry)
             - proximity : Sockets      [position (Vector), distance (Float)]
-            - remove_attribute : geometry (Geometry)
+            - remove_named_attribute : geometry (Geometry)
             - replace_material : geometry (Geometry)
             - scale_elements : geometry (Geometry)
             - set_ID : geometry (Geometry)
@@ -91,6 +92,12 @@ class Geometry(dsock.Geometry):
             - set_position : geometry (Geometry)
             - set_shade_smooth : geometry (Geometry)
             - store_named_attribute : geometry (Geometry)
+            - store_named_boolean : geometry (Geometry)
+            - store_named_byte_color : geometry (Geometry)
+            - store_named_color : geometry (Geometry)
+            - store_named_float : geometry (Geometry)
+            - store_named_integer : geometry (Geometry)
+            - store_named_vector : geometry (Geometry)
             - switch : output (Geometry)
             - to_instance : instances (Instances)
             - transfer_boolean : attribute (Boolean)
@@ -793,6 +800,211 @@ class Geometry(dsock.Geometry):
         node.as_attribute(owning_socket=self, domain=domain)
         return node.attribute
 
+    def capture_named_boolean(self, name=None, domain='POINT', node_label = None, node_color = None):
+        """ > Node: NamedAttribute
+          
+        <sub>go to: top index
+        blender ref GeometryNodeInputNamedAttribute
+        node ref Named Attribute </sub>
+                                  
+        ```python
+        v = geometry.capture_named_boolean(self, name, domain='POINT', node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - name : String## Parameters
+            - self
+            - domain:'POINT'
+            - node_label : None
+            - node_color : None## Fixed parameters
+            - data_type : 'FLOAT'
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.NamedAttribute(name=name, data_type='FLOAT', label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Float
+            
+        """
+
+        node = nodes.NamedAttribute(name=name, data_type='FLOAT', label=node_label, node_color=node_color)
+        node.as_attribute(owning_socket=self, domain=domain)
+        return node.attribute
+
+    def capture_named_integer(self, name=None, domain='POINT', node_label = None, node_color = None):
+        """ > Node: NamedAttribute
+          
+        <sub>go to: top index
+        blender ref GeometryNodeInputNamedAttribute
+        node ref Named Attribute </sub>
+                                  
+        ```python
+        v = geometry.capture_named_integer(self, name, domain='POINT', node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - name : String## Parameters
+            - self
+            - domain:'POINT'
+            - node_label : None
+            - node_color : None## Fixed parameters
+            - data_type : 'INT'
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.NamedAttribute(name=name, data_type='INT', label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Integer
+            
+        """
+
+        node = nodes.NamedAttribute(name=name, data_type='INT', label=node_label, node_color=node_color)
+        node.as_attribute(owning_socket=self, domain=domain)
+        return node.attribute
+
+    def capture_named_vector(self, name=None, domain='POINT', node_label = None, node_color = None):
+        """ > Node: NamedAttribute
+          
+        <sub>go to: top index
+        blender ref GeometryNodeInputNamedAttribute
+        node ref Named Attribute </sub>
+                                  
+        ```python
+        v = geometry.capture_named_vector(self, name, domain='POINT', node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - name : String## Parameters
+            - self
+            - domain:'POINT'
+            - node_label : None
+            - node_color : None## Fixed parameters
+            - data_type : 'FLOAT_VECTOR'
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.NamedAttribute(name=name, data_type='FLOAT_VECTOR', label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Vector
+            
+        """
+
+        node = nodes.NamedAttribute(name=name, data_type='FLOAT_VECTOR', label=node_label, node_color=node_color)
+        node.as_attribute(owning_socket=self, domain=domain)
+        return node.attribute
+
+    def capture_named_color(self, name=None, domain='POINT', node_label = None, node_color = None):
+        """ > Node: NamedAttribute
+          
+        <sub>go to: top index
+        blender ref GeometryNodeInputNamedAttribute
+        node ref Named Attribute </sub>
+                                  
+        ```python
+        v = geometry.capture_named_color(self, name, domain='POINT', node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - name : String## Parameters
+            - self
+            - domain:'POINT'
+            - node_label : None
+            - node_color : None## Fixed parameters
+            - data_type : 'FLOAT_COLOR'
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.NamedAttribute(name=name, data_type='FLOAT_COLOR', label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Color
+            
+        """
+
+        node = nodes.NamedAttribute(name=name, data_type='FLOAT_COLOR', label=node_label, node_color=node_color)
+        node.as_attribute(owning_socket=self, domain=domain)
+        return node.attribute
+
+    def capture_named_boolean(self, name=None, domain='POINT', node_label = None, node_color = None):
+        """ > Node: NamedAttribute
+          
+        <sub>go to: top index
+        blender ref GeometryNodeInputNamedAttribute
+        node ref Named Attribute </sub>
+                                  
+        ```python
+        v = geometry.capture_named_boolean(self, name, domain='POINT', node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - name : String## Parameters
+            - self
+            - domain:'POINT'
+            - node_label : None
+            - node_color : None## Fixed parameters
+            - data_type : 'BOOLEAN'
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.NamedAttribute(name=name, data_type='BOOLEAN', label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Boolean
+            
+        """
+
+        node = nodes.NamedAttribute(name=name, data_type='BOOLEAN', label=node_label, node_color=node_color)
+        node.as_attribute(owning_socket=self, domain=domain)
+        return node.attribute
+
 
     # ----------------------------------------------------------------------------------------------------
     # Attributes
@@ -1305,7 +1517,7 @@ class Geometry(dsock.Geometry):
 
         return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
 
-    def duplicate_elements(self, selection=None, amount=None, domain='POINT', node_label = None, node_color = None):
+    def duplicate_points(self, selection=None, amount=None, node_label = None, node_color = None):
         """ > Node: DuplicateElements
           
         <sub>go to: top index
@@ -1313,7 +1525,7 @@ class Geometry(dsock.Geometry):
         node ref Duplicate Elements </sub>
                                   
         ```python
-        v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
+        v = geometry.duplicate_points(selection, amount, node_label = None, node_color = None)
         ```
     
 
@@ -1323,16 +1535,16 @@ class Geometry(dsock.Geometry):
             - geometry : Geometry (self)
             - selection : Boolean
             - amount : Integer## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
             - node_label : None
-            - node_color : None
+            - node_color : None## Fixed parameters
+            - domain : 'POINT'
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+            nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='POINT', label=node_label, node_color=node_color)
             ```
     
 
@@ -1342,163 +1554,7 @@ class Geometry(dsock.Geometry):
             
         """
 
-        return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
-
-    def duplicate_elements(self, selection=None, amount=None, domain='POINT', node_label = None, node_color = None):
-        """ > Node: DuplicateElements
-          
-        <sub>go to: top index
-        blender ref GeometryNodeDuplicateElements
-        node ref Duplicate Elements </sub>
-                                  
-        ```python
-        v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - selection : Boolean
-            - amount : Integer## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
-            - node_label : None
-            - node_color : None
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
-            ```
-    
-
-        Returns
-        -------
-            Sockets [geometry (Geometry), duplicate_index (Integer)]
-            
-        """
-
-        return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
-
-    def duplicate_elements(self, selection=None, amount=None, domain='POINT', node_label = None, node_color = None):
-        """ > Node: DuplicateElements
-          
-        <sub>go to: top index
-        blender ref GeometryNodeDuplicateElements
-        node ref Duplicate Elements </sub>
-                                  
-        ```python
-        v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - selection : Boolean
-            - amount : Integer## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
-            - node_label : None
-            - node_color : None
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
-            ```
-    
-
-        Returns
-        -------
-            Sockets [geometry (Geometry), duplicate_index (Integer)]
-            
-        """
-
-        return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
-
-    def duplicate_elements(self, selection=None, amount=None, domain='POINT', node_label = None, node_color = None):
-        """ > Node: DuplicateElements
-          
-        <sub>go to: top index
-        blender ref GeometryNodeDuplicateElements
-        node ref Duplicate Elements </sub>
-                                  
-        ```python
-        v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - selection : Boolean
-            - amount : Integer## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
-            - node_label : None
-            - node_color : None
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
-            ```
-    
-
-        Returns
-        -------
-            Sockets [geometry (Geometry), duplicate_index (Integer)]
-            
-        """
-
-        return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
-
-    def duplicate_elements(self, selection=None, amount=None, domain='POINT', node_label = None, node_color = None):
-        """ > Node: DuplicateElements
-          
-        <sub>go to: top index
-        blender ref GeometryNodeDuplicateElements
-        node ref Duplicate Elements </sub>
-                                  
-        ```python
-        v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Sockets
-            - geometry : Geometry (self)
-            - selection : Boolean
-            - amount : Integer## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
-            - node_label : None
-            - node_color : None
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
-            ```
-    
-
-        Returns
-        -------
-            Sockets [geometry (Geometry), duplicate_index (Integer)]
-            
-        """
-
-        return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+        return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='POINT', label=node_label, node_color=node_color)
 
     def delete_geometry(self, selection=None, domain='POINT', mode='ALL', node_label = None, node_color = None):
         """ > Node: DeleteGeometry
@@ -1928,6 +1984,246 @@ class Geometry(dsock.Geometry):
 
         return self.stack(nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type=data_type, domain=domain, label=node_label, node_color=node_color))
 
+    def store_named_float(self, name=None, value=None, domain='POINT', node_label = None, node_color = None):
+        """ > Node: StoreNamedAttribute
+          
+        <sub>go to: top index
+        blender ref GeometryNodeStoreNamedAttribute
+        node ref Store Named Attribute </sub>
+                                  
+        ```python
+        v = geometry.store_named_float(name, value, domain, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - name : String
+            - value : Float## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - node_label : None
+            - node_color : None## Fixed parameters
+            - data_type : 'FLOAT'
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT', domain=domain, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Geometry
+            
+        """
+
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT', domain=domain, label=node_label, node_color=node_color))
+
+    def store_named_integer(self, name=None, value=None, domain='POINT', node_label = None, node_color = None):
+        """ > Node: StoreNamedAttribute
+          
+        <sub>go to: top index
+        blender ref GeometryNodeStoreNamedAttribute
+        node ref Store Named Attribute </sub>
+                                  
+        ```python
+        v = geometry.store_named_integer(name, value, domain, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - name : String
+            - value : Integer## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - node_label : None
+            - node_color : None## Fixed parameters
+            - data_type : 'INT'
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='INT', domain=domain, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Geometry
+            
+        """
+
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='INT', domain=domain, label=node_label, node_color=node_color))
+
+    def store_named_vector(self, name=None, value=None, domain='POINT', node_label = None, node_color = None):
+        """ > Node: StoreNamedAttribute
+          
+        <sub>go to: top index
+        blender ref GeometryNodeStoreNamedAttribute
+        node ref Store Named Attribute </sub>
+                                  
+        ```python
+        v = geometry.store_named_vector(name, value, domain, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - name : String
+            - value : Vector## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - node_label : None
+            - node_color : None## Fixed parameters
+            - data_type : 'FLOAT_VECTOR'
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT_VECTOR', domain=domain, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Geometry
+            
+        """
+
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT_VECTOR', domain=domain, label=node_label, node_color=node_color))
+
+    def store_named_color(self, name=None, value=None, domain='POINT', node_label = None, node_color = None):
+        """ > Node: StoreNamedAttribute
+          
+        <sub>go to: top index
+        blender ref GeometryNodeStoreNamedAttribute
+        node ref Store Named Attribute </sub>
+                                  
+        ```python
+        v = geometry.store_named_color(name, value, domain, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - name : String
+            - value : Color## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - node_label : None
+            - node_color : None## Fixed parameters
+            - data_type : 'FLOAT_COLOR'
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT_COLOR', domain=domain, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Geometry
+            
+        """
+
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT_COLOR', domain=domain, label=node_label, node_color=node_color))
+
+    def store_named_byte_color(self, name=None, value=None, domain='POINT', node_label = None, node_color = None):
+        """ > Node: StoreNamedAttribute
+          
+        <sub>go to: top index
+        blender ref GeometryNodeStoreNamedAttribute
+        node ref Store Named Attribute </sub>
+                                  
+        ```python
+        v = geometry.store_named_byte_color(name, value, domain, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - name : String
+            - value : Color## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - node_label : None
+            - node_color : None## Fixed parameters
+            - data_type : 'BYTE_COLOR'
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='BYTE_COLOR', domain=domain, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Geometry
+            
+        """
+
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='BYTE_COLOR', domain=domain, label=node_label, node_color=node_color))
+
+    def store_named_boolean(self, name=None, value=None, domain='POINT', node_label = None, node_color = None):
+        """ > Node: StoreNamedAttribute
+          
+        <sub>go to: top index
+        blender ref GeometryNodeStoreNamedAttribute
+        node ref Store Named Attribute </sub>
+                                  
+        ```python
+        v = geometry.store_named_boolean(name, value, domain, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - name : String
+            - value : Boolean## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - node_label : None
+            - node_color : None## Fixed parameters
+            - data_type : 'BOOLEAN'
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='BOOLEAN', domain=domain, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Geometry
+            
+        """
+
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='BOOLEAN', domain=domain, label=node_label, node_color=node_color))
+
     def attribute_domain_size(self, component='MESH', node_label = None, node_color = None):
         """ > Node: DomainSize
           
@@ -1965,7 +2261,7 @@ class Geometry(dsock.Geometry):
 
         return nodes.DomainSize(geometry=self, component=component, label=node_label, node_color=node_color)
 
-    def remove_attribute(self, name=None, node_label = None, node_color = None):
+    def remove_named_attribute(self, name=None, node_label = None, node_color = None):
         """ > Node: RemoveNamedAttribute
           
         <sub>go to: top index
@@ -1973,7 +2269,7 @@ class Geometry(dsock.Geometry):
         node ref Remove Named Attribute </sub>
                                   
         ```python
-        v = geometry.remove_attribute(name, node_label = None, node_color = None)
+        v = geometry.remove_named_attribute(name, node_label = None, node_color = None)
         ```
     
 

@@ -29,6 +29,11 @@
 - [capture_ID](#capture_id) : ID (Integer)
 - [capture_index](#capture_index) : index (Integer)
 - [capture_named_attribute](#capture_named_attribute) : attribute (data_type dependant)
+- [capture_named_boolean](#capture_named_boolean) : attribute (Float)
+- [capture_named_boolean](#capture_named_boolean) : attribute (Boolean)
+- [capture_named_color](#capture_named_color) : attribute (Color)
+- [capture_named_integer](#capture_named_integer) : attribute (Integer)
+- [capture_named_vector](#capture_named_vector) : attribute (Vector)
 - [capture_normal](#capture_normal) : normal (Vector)
 - [capture_position](#capture_position) : position (Vector)
 - [capture_radius](#capture_radius) : radius (Float)
@@ -49,15 +54,11 @@
 - [convex_hull](#convex_hull) : convex_hull (Geometry)
 - [delete_geometry](#delete_geometry) : geometry (Geometry)
 - [duplicate_elements](#duplicate_elements) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
-- [duplicate_elements](#duplicate_elements) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
-- [duplicate_elements](#duplicate_elements) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
-- [duplicate_elements](#duplicate_elements) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
-- [duplicate_elements](#duplicate_elements) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
-- [duplicate_elements](#duplicate_elements) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
+- [duplicate_points](#duplicate_points) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
 - [join](#join) : geometry (Geometry)
 - [merge_by_distance](#merge_by_distance) : geometry (Geometry)
 - [proximity](#proximity) : Sockets      [position (Vector), distance (Float)]
-- [remove_attribute](#remove_attribute) : geometry (Geometry)
+- [remove_named_attribute](#remove_named_attribute) : geometry (Geometry)
 - [replace_material](#replace_material) : geometry (Geometry)
 - [scale_elements](#scale_elements) : geometry (Geometry)
 - [set_ID](#set_id) : geometry (Geometry)
@@ -66,6 +67,12 @@
 - [set_position](#set_position) : geometry (Geometry)
 - [set_shade_smooth](#set_shade_smooth) : geometry (Geometry)
 - [store_named_attribute](#store_named_attribute) : geometry (Geometry)
+- [store_named_boolean](#store_named_boolean) : geometry (Geometry)
+- [store_named_byte_color](#store_named_byte_color) : geometry (Geometry)
+- [store_named_color](#store_named_color) : geometry (Geometry)
+- [store_named_float](#store_named_float) : geometry (Geometry)
+- [store_named_integer](#store_named_integer) : geometry (Geometry)
+- [store_named_vector](#store_named_vector) : geometry (Geometry)
 - [switch](#switch) : output (Geometry)
 - [to_instance](#to_instance) : instances (Instances)
 - [transfer_boolean](#transfer_boolean) : attribute (Boolean)
@@ -599,6 +606,176 @@ nodes.NamedAttribute(name=name, data_type=data_type, label=node_label, node_colo
 data_type dependant
 
 
+## capture_named_boolean
+
+> Node: [NamedAttribute](/docs/nodes/NamedAttribute.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeInputNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+node ref [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) </sub>
+                          
+```python
+v = geometry.capture_named_boolean(self, name, domain='POINT', node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- name : String## Parameters
+- self
+- domain:'POINT'
+- node_label : None
+- node_color : None## Fixed parameters
+- data_type : 'FLOAT'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.NamedAttribute(name=name, data_type='FLOAT', label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Float
+
+
+## capture_named_integer
+
+> Node: [NamedAttribute](/docs/nodes/NamedAttribute.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeInputNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+node ref [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) </sub>
+                          
+```python
+v = geometry.capture_named_integer(self, name, domain='POINT', node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- name : String## Parameters
+- self
+- domain:'POINT'
+- node_label : None
+- node_color : None## Fixed parameters
+- data_type : 'INT'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.NamedAttribute(name=name, data_type='INT', label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Integer
+
+
+## capture_named_vector
+
+> Node: [NamedAttribute](/docs/nodes/NamedAttribute.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeInputNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+node ref [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) </sub>
+                          
+```python
+v = geometry.capture_named_vector(self, name, domain='POINT', node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- name : String## Parameters
+- self
+- domain:'POINT'
+- node_label : None
+- node_color : None## Fixed parameters
+- data_type : 'FLOAT_VECTOR'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.NamedAttribute(name=name, data_type='FLOAT_VECTOR', label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Vector
+
+
+## capture_named_color
+
+> Node: [NamedAttribute](/docs/nodes/NamedAttribute.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeInputNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+node ref [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) </sub>
+                          
+```python
+v = geometry.capture_named_color(self, name, domain='POINT', node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- name : String## Parameters
+- self
+- domain:'POINT'
+- node_label : None
+- node_color : None## Fixed parameters
+- data_type : 'FLOAT_COLOR'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.NamedAttribute(name=name, data_type='FLOAT_COLOR', label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Color
+
+
+## capture_named_boolean
+
+> Node: [NamedAttribute](/docs/nodes/NamedAttribute.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeInputNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+node ref [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) </sub>
+                          
+```python
+v = geometry.capture_named_boolean(self, name, domain='POINT', node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- name : String## Parameters
+- self
+- domain:'POINT'
+- node_label : None
+- node_color : None## Fixed parameters
+- data_type : 'BOOLEAN'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.NamedAttribute(name=name, data_type='BOOLEAN', label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Boolean
+
+
 ## ID
 
 > Node: [ID](/docs/nodes/ID.md)
@@ -1031,7 +1208,7 @@ nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domai
 Sockets [geometry (Geometry), duplicate_index (Integer)]
 
 
-## duplicate_elements
+## duplicate_points
 
 > Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
   
@@ -1040,7 +1217,7 @@ blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current
 node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
                           
 ```python
-v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
+v = geometry.duplicate_points(selection, amount, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -1049,151 +1226,15 @@ v = geometry.duplicate_elements(selection, amount, domain, node_label = None, no
 - geometry : Geometry (self)
 - selection : Boolean
 - amount : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
 - node_label : None
-- node_color : None
+- node_color : None## Fixed parameters
+- domain : 'POINT'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [geometry (Geometry), duplicate_index (Integer)]
-
-
-## duplicate_elements
-
-> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
-  
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
-node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
-                          
-```python
-v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- amount : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [geometry (Geometry), duplicate_index (Integer)]
-
-
-## duplicate_elements
-
-> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
-  
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
-node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
-                          
-```python
-v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- amount : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [geometry (Geometry), duplicate_index (Integer)]
-
-
-## duplicate_elements
-
-> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
-  
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
-node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
-                          
-```python
-v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- amount : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [geometry (Geometry), duplicate_index (Integer)]
-
-
-## duplicate_elements
-
-> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
-  
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
-node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
-                          
-```python
-v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- amount : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='POINT', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1574,6 +1615,216 @@ nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type=data_
 Geometry
 
 
+## store_named_float
+
+> Node: [StoreNamedAttribute](/docs/nodes/StoreNamedAttribute.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+node ref [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) </sub>
+                          
+```python
+v = geometry.store_named_float(name, value, domain, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- name : String
+- value : Float## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- node_label : None
+- node_color : None## Fixed parameters
+- data_type : 'FLOAT'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT', domain=domain, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Geometry
+
+
+## store_named_integer
+
+> Node: [StoreNamedAttribute](/docs/nodes/StoreNamedAttribute.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+node ref [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) </sub>
+                          
+```python
+v = geometry.store_named_integer(name, value, domain, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- name : String
+- value : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- node_label : None
+- node_color : None## Fixed parameters
+- data_type : 'INT'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='INT', domain=domain, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Geometry
+
+
+## store_named_vector
+
+> Node: [StoreNamedAttribute](/docs/nodes/StoreNamedAttribute.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+node ref [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) </sub>
+                          
+```python
+v = geometry.store_named_vector(name, value, domain, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- name : String
+- value : Vector## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- node_label : None
+- node_color : None## Fixed parameters
+- data_type : 'FLOAT_VECTOR'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT_VECTOR', domain=domain, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Geometry
+
+
+## store_named_color
+
+> Node: [StoreNamedAttribute](/docs/nodes/StoreNamedAttribute.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+node ref [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) </sub>
+                          
+```python
+v = geometry.store_named_color(name, value, domain, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- name : String
+- value : Color## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- node_label : None
+- node_color : None## Fixed parameters
+- data_type : 'FLOAT_COLOR'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT_COLOR', domain=domain, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Geometry
+
+
+## store_named_byte_color
+
+> Node: [StoreNamedAttribute](/docs/nodes/StoreNamedAttribute.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+node ref [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) </sub>
+                          
+```python
+v = geometry.store_named_byte_color(name, value, domain, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- name : String
+- value : Color## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- node_label : None
+- node_color : None## Fixed parameters
+- data_type : 'BYTE_COLOR'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='BYTE_COLOR', domain=domain, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Geometry
+
+
+## store_named_boolean
+
+> Node: [StoreNamedAttribute](/docs/nodes/StoreNamedAttribute.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+node ref [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) </sub>
+                          
+```python
+v = geometry.store_named_boolean(name, value, domain, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- name : String
+- value : Boolean## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- node_label : None
+- node_color : None## Fixed parameters
+- data_type : 'BOOLEAN'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='BOOLEAN', domain=domain, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Geometry
+
+
 ## attribute_domain_size
 
 > Node: [DomainSize](/docs/nodes/DomainSize.md)
@@ -1606,7 +1857,7 @@ nodes.DomainSize(geometry=self, component=component, label=node_label, node_colo
 Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
 
 
-## remove_attribute
+## remove_named_attribute
 
 > Node: [RemoveNamedAttribute](/docs/nodes/RemoveNamedAttribute.md)
   
@@ -1615,7 +1866,7 @@ blender ref [GeometryNodeRemoveAttribute](https://docs.blender.org/api/current/b
 node ref [Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/remove_named_attribute.html) </sub>
                           
 ```python
-v = geometry.remove_attribute(name, node_label = None, node_color = None)
+v = geometry.remove_named_attribute(name, node_label = None, node_color = None)
 ```
 
 ### Arguments

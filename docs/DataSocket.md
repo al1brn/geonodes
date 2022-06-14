@@ -6,7 +6,7 @@ DataSocket class, sub class and domain data type from socket bl_idname
 
 ## \_\_init\_\_
 
------ Attributes (fields) are cached dynamically
+----- A class Object doesn't have a constructor Node
 
 
 ## is_data_socket
