@@ -120,7 +120,7 @@ In this example, the variables are initialized in the script. They are pure Pyth
 
 When creating a tree, we often need to change settings to see the effect on the geometry. This can be achieved by initializing a **geonodes** type rather that a python type.
 
-In the following script, we slightly modify our script by initializing `size` as a **geonodes** type. It is not anymore a Python `float` but **geonodes** `Float` i.e. the output socket of a Geometry Node (in that case, the output socket of the input node 'Value'):
+In the following script, we slightly modify our script by initializing `size` as a **geonodes** type. It is not anymore a Python `float` but a **geonodes** `Float` i.e. the output socket of a Geometry Node (in that case, the output socket of the input node 'Value'):
 
 ```python
     count  = 100
