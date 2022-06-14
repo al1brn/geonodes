@@ -92,18 +92,32 @@ The following nodes are implemented as many times as their are possible value fo
 
 The mehod name is the **lower case** version of the operation value:
 - 'Math':
-  'ADD' -> **add** (gn.add or value.add)
-  'MULTIPLY' -> **multiply**
-  'SUBTRACT' -> **subtract**
+  - 'ADD' -> **add** (gn.add or value.add)
+  - 'MULTIPLY' -> **multiply**
+  - 'SUBTRACT' -> **subtract**
 
 Some values are the same for several nodes, in that case, the **global** functions are prefixed with the lower case version of the class name:
 
 - 'Vector Math':
-  'ADD' -> **gn.ector_add** and **Vector.add**
-  'MULTIPLY' -> **gn.vector_multiply** and **Vector.multiply**
-  'SUBTRACT' -> **gn_vector_subtract** and **Vector.subtract**
-  'DOT' -> **gn.dot** and **Vector.dot** (their is not ambiguity with 'Math' node)
+  - 'ADD' -> **gn.ector_add** and **Vector.add**
+  - 'MULTIPLY' -> **gn.vector_multiply** and **Vector.multiply**
+  - 'SUBTRACT' -> **gn_vector_subtract** and **Vector.subtract**
+  - 'DOT' -> **gn.dot** and **Vector.dot** (their is not ambiguity with 'Math' node)
   
+For 'Boolean math', since `and`, `or` and `not`are pythn reserved keywords, the methods are names **b_and**, **b_or** and **b_not**.
+
+Note that the node 'Mesh Boolean' gives birth to 3 methods:
+- intersect
+- union
+- difference
+
+```python
+    my_mesh.insersect(mesh1, mesh2)
+    my_mesh.union(other_mesh)
+    my_mesh.difference(other_mesh)
+```
+
+
 
 
 
