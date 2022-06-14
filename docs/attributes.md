@@ -108,7 +108,7 @@ The resulting tree is the following.
 
 <img src="/docs/images/fields_tree_4.png" width="700">
 
-There is not anymore 'Capture Attribute' node because it is useless, but there are now two 'Input' nodes and two 'Position' nodes, one for each geometry.
+There is not anymore 'Capture Attribute' node because it is useless, but there are now two 'Index' nodes and two 'Position' nodes, one for each geometry.
 
 
 
