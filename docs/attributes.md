@@ -37,7 +37,7 @@ In the resulting tree, Position and Index nodes are fields of the input geometry
 
 <img src="/docs/images/fields_1_tree.png" width="400">
 
-Let's add another 'Set Position' node after the second one, fed by the same offset input:
+Let's add another 'Set Position' node after the second one, fed by the same offset input. This second node is colored in blue.
 
 ```python
 import geonodes as gn
