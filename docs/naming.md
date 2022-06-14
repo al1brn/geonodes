@@ -104,7 +104,7 @@ Some values are the same for several nodes, in that case, the **global** functio
   - 'SUBTRACT' -> **gn_vector_subtract** and **Vector.subtract**
   - 'DOT' -> **gn.dot** and **Vector.dot** (their is not ambiguity with 'Math' node)
   
-For 'Boolean math', since `and`, `or` and `not`are pythn reserved keywords, the methods are names **b_and**, **b_or** and **b_not**.
+For 'Boolean math', since `and`, `or` and `not`are python reserved keywords, the methods are names **b_and**, **b_or** and **b_not**.
 
 Note that the node 'Mesh Boolean' gives birth to 3 methods:
 - intersect
