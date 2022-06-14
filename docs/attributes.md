@@ -1,6 +1,6 @@
 # Fields
 
-> Fields are implemented as _Data Socket_ properties
+> 'Capture Attribute' nodes are inserted automatically when required
 
 Be sure to be familiar with fields: [Blender reference documentation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/fields.html).
 
