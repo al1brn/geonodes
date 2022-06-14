@@ -28,8 +28,8 @@ _Data socket_ classes are named as basic names: **Boolean**, **Integer**, **Geom
 ## Methods and properties
 
 _Data sockets_ classes have methods and properties which can be named in two ways:
-1. After the node they implement ('Set Shade Smooth' --> **set_shade_smooth**)
-2. After the parameter value used when creating the node they implement ('Math', operation = 'ADD' --> **add**)
+1. After the node they implement ('Set Shade Smooth' -> **set_shade_smooth**)
+2. After the parameter value used when creating the node they implement ('Math', operation = 'ADD' -> **add**)
 
 ### Node methods
 
