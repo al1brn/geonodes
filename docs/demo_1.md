@@ -139,7 +139,7 @@ The resulting tree is the following. The two `Vertices` input sockets are initia
 
 Rather that creating an input Node to initialize your data, you can use a group socket, i.e. a **Group input socket**. All data socket classes expose the constructor method `Input`.
 
-Let's modify our script. This time, we initialize count as being a Group input socket.
+Let's modify our script. This time, we initialize `count` as being a Group input socket.
 
 > Note: an **input** socket of the modifier is an **output socket** of the node 'Group Input'.
 
