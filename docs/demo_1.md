@@ -116,7 +116,7 @@ In the created node, the input socket `radius` is initialized with `0.5`:
 
 ### Geonodes types
 
-In this example, the variables are initialized in the script. They are pure Python variables. To change them, one need to modify the script and to rerun it.
+In this example, the variables are initialized in the script. They are pure Python variables. To change them, one needs to modify the script and to rerun it.
 
 When creating a tree, we often need to change settings to see the effect on the geometry. This can be achieved by initializing a **geonodes** type rather that a python type.
 
