@@ -48,7 +48,7 @@ Nodes methods are **CamelCase** versions of their Blender name, but **removing t
   - 'Grid' -> **Mesh.Grid**
   - ...
 - Curve constructors
-  - 'Curve Line' -> Curve.Line
+  - 'Curve Line' -> **Curve.Line**
   - 'Curve Circle' -> **Curve.Circle**
   - 'Bezier Segment' -> **BezierSegment**
   - ...
