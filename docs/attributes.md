@@ -57,7 +57,7 @@ with gn.Tree("Geometry Nodes") as tree:
 
 *** THE RESULTING TREE IS NOT THE FOLLOWING ***
 
-<img src="/docs/images/fields_1.png" width="400">
+<img src="/docs/images/fields_2_tree.png" width="400">
 
 Because in the tree above, the fields **Index** and **Position** are evaluated twice, one for 
 
