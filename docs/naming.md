@@ -116,6 +116,26 @@ Note that the node 'Mesh Boolean' gives birth to 3 methods:
     my_mesh.union(mesh1, mesh2, mesh3)
     my_mesh.difference(mesh1, mesh2)
 ```
+## Node parameters names
+
+The node parameter names is equal to the python Blender class representing the object.
+
+## Node input socket names
+
+The node input socket names are used as arguments when creating a node or calling a method based on a node.
+As for the output sockets, their names is the **snake_case** version of their Blender name.
+
+When several sockets share the same name, their are suffixed by their rank, starting from 0 as illustrated in the class Math constructor
+
+```python
+class Math(Node):
+    def __init__(self, value0=None, value1=None, value2=None, operation='ADD', label=None):
+```
+
+The Math has between 1 and 3 visible nodes depending upon its operation.
+
+
+
 
 
 
