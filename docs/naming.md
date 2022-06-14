@@ -37,7 +37,7 @@ To follow python typo conventions, the naming depends upon if it is a constructo
 
 #### Constructors (class or static methods)
 
-This concerns the nodes accessible in the Blender Add menus: **Mesh Primitives**, **Curve Primitives** and Texture
+This concerns the nodes accessible in the Blender Add menus: **Mesh Primitives**, **Curve Primitives** and **Texture**.
 
 Nodes methods are CamelCase versions of their Blender name, but **removing the class name** when it exists:
 
