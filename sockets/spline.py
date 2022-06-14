@@ -63,6 +63,7 @@ class Spline(gn.Geometry):
 
         Methods
         -------
+            - duplicate_splines : Sockets      [geometry (Geometry), duplicate_index (Integer)]
             - set_cyclic : geometry (Geometry)
             - set_resolution : geometry (Geometry)
     """
@@ -1112,5 +1113,44 @@ class Spline(gn.Geometry):
         """
 
         return self.stack(nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution, label=node_label, node_color=node_color))
+
+    def duplicate_splines(self, selection=None, amount=None, node_label = None, node_color = None):
+        """ > Node: DuplicateElements
+          
+        <sub>go to: top index
+        blender ref GeometryNodeDuplicateElements
+        node ref Duplicate Elements </sub>
+                                  
+        ```python
+        v = spline.duplicate_splines(selection, amount, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - selection : Boolean
+            - amount : Integer## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
+            - domain : 'SPLINE'
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='SPLINE', label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Sockets [geometry (Geometry), duplicate_index (Integer)]
+            
+        """
+
+        return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='SPLINE', label=node_label, node_color=node_color)
 
 

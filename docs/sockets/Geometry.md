@@ -47,10 +47,15 @@
 - [components](#components) : Sockets      [selection (Geometry), inverted (Geometry)]
 - [convex_hull](#convex_hull) : convex_hull (Geometry)
 - [delete_geometry](#delete_geometry) : geometry (Geometry)
+- [duplicate_elements](#duplicate_elements) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
+- [duplicate_elements](#duplicate_elements) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
+- [duplicate_elements](#duplicate_elements) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
+- [duplicate_elements](#duplicate_elements) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
+- [duplicate_elements](#duplicate_elements) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
+- [duplicate_elements](#duplicate_elements) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
 - [join](#join) : geometry (Geometry)
 - [merge_by_distance](#merge_by_distance) : geometry (Geometry)
 - [proximity](#proximity) : Sockets      [position (Vector), distance (Float)]
-- [realize_instances](#realize_instances) : geometry (Geometry)
 - [remove_attribute](#remove_attribute) : geometry (Geometry)
 - [replace_material](#replace_material) : geometry (Geometry)
 - [scale_elements](#scale_elements) : geometry (Geometry)
@@ -956,6 +961,210 @@ nodes.TransferAttribute(source=self, attribute=attribute, source_position=source
 Color
 
 
+## duplicate_elements
+
+> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
+                          
+```python
+v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- selection : Boolean
+- amount : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
+- node_label : None
+- node_color : None
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Sockets [geometry (Geometry), duplicate_index (Integer)]
+
+
+## duplicate_elements
+
+> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
+                          
+```python
+v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- selection : Boolean
+- amount : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
+- node_label : None
+- node_color : None
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Sockets [geometry (Geometry), duplicate_index (Integer)]
+
+
+## duplicate_elements
+
+> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
+                          
+```python
+v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- selection : Boolean
+- amount : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
+- node_label : None
+- node_color : None
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Sockets [geometry (Geometry), duplicate_index (Integer)]
+
+
+## duplicate_elements
+
+> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
+                          
+```python
+v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- selection : Boolean
+- amount : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
+- node_label : None
+- node_color : None
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Sockets [geometry (Geometry), duplicate_index (Integer)]
+
+
+## duplicate_elements
+
+> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
+                          
+```python
+v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- selection : Boolean
+- amount : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
+- node_label : None
+- node_color : None
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Sockets [geometry (Geometry), duplicate_index (Integer)]
+
+
+## duplicate_elements
+
+> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
+                          
+```python
+v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- selection : Boolean
+- amount : Integer## Parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
+- node_label : None
+- node_color : None
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Sockets [geometry (Geometry), duplicate_index (Integer)]
+
+
 ## delete_geometry
 
 > Node: [DeleteGeometry](/docs/nodes/DeleteGeometry.md)
@@ -1017,38 +1226,6 @@ v = geometry.merge_by_distance(selection, distance, mode, node_label = None, nod
 ```python
 from geondes import nodes
 nodes.MergeByDistance(geometry=self, selection=selection, distance=distance, mode=mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
-
-## realize_instances
-
-> Node: [RealizeInstances](/docs/nodes/RealizeInstances.md)
-  
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeRealizeInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html)
-node ref [Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html) </sub>
-                          
-```python
-v = geometry.realize_instances(legacy_behavior, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Parameters
-- legacy_behavior : False
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior, label=node_label, node_color=node_color)
 ```
 
 ### Returns

@@ -3736,6 +3736,25 @@ class DuplicateElements(Node):
         --------------
             - geometry : Geometry
             - duplicate_index : Integer
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - Geometry.duplicate_elements : Method
+            - Geometry.duplicate_elements : Method
+            - Geometry.duplicate_elements : Method
+            - Geometry.duplicate_elements : Method
+            - Geometry.duplicate_elements : Method
+            - Geometry.duplicate_elements : Method
+            - Instances.duplicate_instances : Method
+            - Mesh.duplicate_edges : Method
+            - Mesh.duplicate_faces : Method
+            - Mesh.duplicate_points : Method
+            - Spline.duplicate_splines : Method
+              
     """
 
     def __init__(self, geometry=None, selection=None, amount=None, domain='POINT', label=None, node_color=None):
@@ -4836,7 +4855,7 @@ class EdgeAngle(Node):
             - Mesh.capture_edge_angle : Capture attribute
             - Mesh.corner_ID : Attribute
             - Mesh.corner_index : Attribute
-            - Mesh.corner_porision : Attribute
+            - Mesh.corner_position : Attribute
             - Mesh.edge_angle : Attribute
             - Mesh.edge_unsigned_angle : Attribute
             - Mesh.egde_ID : Attribute
@@ -5083,6 +5102,15 @@ class FaceIsPlanar(Node):
         Output sockets
         --------------
             - planar : Boolean
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - Mesh.face_is_planar : Attribute
+              
     """
 
     def __init__(self, threshold=None, label=None, node_color=None):
@@ -7714,7 +7742,7 @@ class RealizeInstances(Node):
             > Data socket classes implementing this node.
               
               
-            - Geometry.realize_instances : Method
+            - Instances.realize : Method
               
     """
 

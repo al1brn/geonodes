@@ -36,7 +36,7 @@ node = nodes.EdgeAngle(label=None, node_color=None)
 - [Mesh](/docs/sockets/Mesh.md).[capture_edge_angle](/docs/sockets/Mesh.md#capture_edge_angle) : Capture attribute
 - [Mesh](/docs/sockets/Mesh.md).[corner_ID](/docs/sockets/Mesh.md#corner_id) : Attribute
 - [Mesh](/docs/sockets/Mesh.md).[corner_index](/docs/sockets/Mesh.md#corner_index) : Attribute
-- [Mesh](/docs/sockets/Mesh.md).[corner_porision](/docs/sockets/Mesh.md#corner_porision) : Attribute
+- [Mesh](/docs/sockets/Mesh.md).[corner_position](/docs/sockets/Mesh.md#corner_position) : Attribute
 - [Mesh](/docs/sockets/Mesh.md).[edge_angle](/docs/sockets/Mesh.md#edge_angle) : Attribute
 - [Mesh](/docs/sockets/Mesh.md).[edge_unsigned_angle](/docs/sockets/Mesh.md#edge_unsigned_angle) : Attribute
 - [Mesh](/docs/sockets/Mesh.md).[egde_ID](/docs/sockets/Mesh.md#egde_id) : Attribute

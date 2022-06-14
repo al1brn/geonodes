@@ -13,6 +13,8 @@
 
 ## Methods
 
+- [duplicate_instances](#duplicate_instances) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
+- [realize](#realize) : geometry (Geometry)
 - [rotate](#rotate) : instances (Instances)
 - [scale](#scale) : instances (Instances)
 - [to_points](#to_points) : points (Points)
@@ -151,6 +153,38 @@ nodes.TranslateInstances(instances=self, selection=selection, translation=transl
 Instances
 
 
+## realize
+
+> Node: [RealizeInstances](/docs/nodes/RealizeInstances.md)
+  
+<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
+blender ref [GeometryNodeRealizeInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html)
+node ref [Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html) </sub>
+                          
+```python
+v = instances.realize(legacy_behavior, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)## Parameters
+- legacy_behavior : False
+- node_label : None
+- node_color : None
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Geometry
+
+
 ## to_points
 
 > Node: [InstancesToPoints](/docs/nodes/InstancesToPoints.md)
@@ -183,4 +217,38 @@ nodes.InstancesToPoints(instances=self, selection=selection, position=position, 
 ### Returns
 
 Points
+
+
+## duplicate_instances
+
+> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
+  
+<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
+blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
+                          
+```python
+v = instances.duplicate_instances(selection, amount, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- selection : Boolean
+- amount : Integer## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
+- domain : 'INSTANCE'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='INSTANCE', label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Sockets [geometry (Geometry), duplicate_index (Integer)]
 

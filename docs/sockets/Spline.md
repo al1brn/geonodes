@@ -40,6 +40,7 @@
 
 ## Methods
 
+- [duplicate_splines](#duplicate_splines) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
 - [set_cyclic](#set_cyclic) : geometry (Geometry)
 - [set_resolution](#set_resolution) : geometry (Geometry)
 
@@ -870,4 +871,38 @@ nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolut
 ### Returns
 
 Geometry
+
+
+## duplicate_splines
+
+> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
+  
+<sub>go to: [top](#data-socket-spline) [index](/docs/index.md)
+blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
+                          
+```python
+v = spline.duplicate_splines(selection, amount, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- selection : Boolean
+- amount : Integer## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
+- domain : 'SPLINE'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='SPLINE', label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Sockets [geometry (Geometry), duplicate_index (Integer)]
 

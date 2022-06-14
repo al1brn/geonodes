@@ -35,7 +35,7 @@
 
 - [corner_ID](#corner_id) : Float = capture_ID(domain='CORNER').unsigned_angle
 - [corner_index](#corner_index) : Float = capture_index(domain='CORNER').unsigned_angle
-- [corner_porision](#corner_porision) : Float = capture_position(domain='CORNER').unsigned_angle
+- [corner_position](#corner_position) : Float = capture_position(domain='CORNER').unsigned_angle
 - [edge_angle](#edge_angle) : Float = capture_edge_angle(domain='EDGE').unsigned_angle
 - [edge_neighbors](#edge_neighbors) : Integer = capture_edge_neighbors(domain='EDGE')
 - [edge_unsigned_angle](#edge_unsigned_angle) : Float = capture_edge_angle(domain='EDGE').signed_angle
@@ -49,6 +49,7 @@
 - [face_ID](#face_id) : Float = capture_ID(domain='FACE').unsigned_angle
 - [face_area](#face_area) : Float = capture_face_area(domain='FACE')
 - [face_index](#face_index) : Float = capture_index(domain='FACE').unsigned_angle
+- [face_is_planar](#face_is_planar) : Boolean = capture_face_is_planar(domain='FACE')
 - [face_neighbors_face_count](#face_neighbors_face_count) : Integer = capture_face_neighbors(domain='FACE').face_count
 - [face_neighbors_vertex_count](#face_neighbors_vertex_count) : Integer = capture_face_neighbors(domain='FACE').vertex_count
 - [face_position](#face_position) : Float = capture_position(domain='FACE').unsigned_angle
@@ -64,6 +65,9 @@
 - [difference](#difference) : mesh (Mesh)
 - [distribute_points_on_faces](#distribute_points_on_faces) : Sockets      [points (Points), normal (Vector), rotation (Vector)]
 - [dual](#dual) : dual_mesh (Geometry)
+- [duplicate_edges](#duplicate_edges) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
+- [duplicate_faces](#duplicate_faces) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
+- [duplicate_points](#duplicate_points) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
 - [extrude](#extrude) : Sockets      [mesh (Mesh), top (Boolean), side (Boolean)]
 - [flip_faces](#flip_faces) : mesh (Mesh)
 - [intersect](#intersect) : mesh (Mesh)
@@ -902,7 +906,7 @@ nodes.EdgeAngle()
 Float
 
 
-## corner_porision
+## corner_position
 
 > Node: [EdgeAngle](/docs/nodes/EdgeAngle.md)
   
@@ -911,7 +915,7 @@ blender ref [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/curren
 node ref [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) </sub>
                           
 ```python
-v = mesh.corner_porision(self)
+v = mesh.corner_position(self)
 ```
 
 ### Arguments
@@ -1396,6 +1400,36 @@ nodes.MaterialSelection(material=material)
 Boolean
 
 
+## face_is_planar
+
+> Node: [FaceIsPlanar](/docs/nodes/FaceIsPlanar.md)
+  
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
+blender ref [GeometryNodeInputMeshFaceIsPlanar](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceIsPlanar.html)
+node ref [Face is Planar](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_is_planar.html) </sub>
+                          
+```python
+v = mesh.face_is_planar(self, threshold)
+```
+
+### Arguments
+
+## Sockets
+- threshold : Float## Parameters
+- self
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.FaceIsPlanar(threshold=threshold)
+```
+
+### Returns
+
+Boolean
+
+
 ## intersect
 
 > Node: [MeshBoolean](/docs/nodes/MeshBoolean.md)
@@ -1695,6 +1729,108 @@ nodes.FlipFaces(mesh=self, selection=selection, label=node_label, node_color=nod
 ### Returns
 
 Mesh
+
+
+## duplicate_points
+
+> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
+  
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
+blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
+                          
+```python
+v = mesh.duplicate_points(selection, amount, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- selection : Boolean
+- amount : Integer## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
+- domain : 'POINT'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='POINT', label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Sockets [geometry (Geometry), duplicate_index (Integer)]
+
+
+## duplicate_edges
+
+> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
+  
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
+blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
+                          
+```python
+v = mesh.duplicate_edges(selection, amount, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- selection : Boolean
+- amount : Integer## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
+- domain : 'EDGE'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='EDGE', label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Sockets [geometry (Geometry), duplicate_index (Integer)]
+
+
+## duplicate_faces
+
+> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
+  
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
+blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
+                          
+```python
+v = mesh.duplicate_faces(selection, amount, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- selection : Boolean
+- amount : Integer## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
+- domain : 'FACE'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='FACE', label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Sockets [geometry (Geometry), duplicate_index (Integer)]
 
 
 ## extrude

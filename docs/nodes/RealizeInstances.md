@@ -40,5 +40,5 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None, 
 > Data socket classes implementing this node.
   
   
-- [Geometry](/docs/sockets/Geometry.md).[realize_instances](/docs/sockets/Geometry.md#realize_instances) : Method
+- [Instances](/docs/sockets/Instances.md).[realize](/docs/sockets/Instances.md#realize) : Method
   

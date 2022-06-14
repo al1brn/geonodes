@@ -35,6 +35,8 @@ class Instances(gn.Geometry):
 
         Methods
         -------
+            - duplicate_instances : Sockets      [geometry (Geometry), duplicate_index (Integer)]
+            - realize : geometry (Geometry)
             - rotate : instances (Instances)
             - scale : instances (Instances)
             - to_points : points (Points)
@@ -203,6 +205,43 @@ class Instances(gn.Geometry):
 
         return self.stack(nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space, label=node_label, node_color=node_color))
 
+    def realize(self, legacy_behavior=False, node_label = None, node_color = None):
+        """ > Node: RealizeInstances
+          
+        <sub>go to: top index
+        blender ref GeometryNodeRealizeInstances
+        node ref Realize Instances </sub>
+                                  
+        ```python
+        v = instances.realize(legacy_behavior, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)## Parameters
+            - legacy_behavior : False
+            - node_label : None
+            - node_color : None
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Geometry
+            
+        """
+
+        return self.stack(nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior, label=node_label, node_color=node_color))
+
     def to_points(self, selection=None, position=None, radius=None, node_label = None, node_color = None):
         """ > Node: InstancesToPoints
           
@@ -241,5 +280,44 @@ class Instances(gn.Geometry):
         """
 
         return nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius, label=node_label, node_color=node_color).points
+
+    def duplicate_instances(self, selection=None, amount=None, node_label = None, node_color = None):
+        """ > Node: DuplicateElements
+          
+        <sub>go to: top index
+        blender ref GeometryNodeDuplicateElements
+        node ref Duplicate Elements </sub>
+                                  
+        ```python
+        v = instances.duplicate_instances(selection, amount, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - selection : Boolean
+            - amount : Integer## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
+            - domain : 'INSTANCE'
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='INSTANCE', label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Sockets [geometry (Geometry), duplicate_index (Integer)]
+            
+        """
+
+        return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='INSTANCE', label=node_label, node_color=node_color)
 
 

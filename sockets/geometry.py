@@ -72,10 +72,15 @@ class Geometry(dsock.Geometry):
             - components : Sockets      [selection (Geometry), inverted (Geometry)]
             - convex_hull : convex_hull (Geometry)
             - delete_geometry : geometry (Geometry)
+            - duplicate_elements : Sockets      [geometry (Geometry), duplicate_index (Integer)]
+            - duplicate_elements : Sockets      [geometry (Geometry), duplicate_index (Integer)]
+            - duplicate_elements : Sockets      [geometry (Geometry), duplicate_index (Integer)]
+            - duplicate_elements : Sockets      [geometry (Geometry), duplicate_index (Integer)]
+            - duplicate_elements : Sockets      [geometry (Geometry), duplicate_index (Integer)]
+            - duplicate_elements : Sockets      [geometry (Geometry), duplicate_index (Integer)]
             - join : geometry (Geometry)
             - merge_by_distance : geometry (Geometry)
             - proximity : Sockets      [position (Vector), distance (Float)]
-            - realize_instances : geometry (Geometry)
             - remove_attribute : geometry (Geometry)
             - replace_material : geometry (Geometry)
             - scale_elements : geometry (Geometry)
@@ -1218,6 +1223,240 @@ class Geometry(dsock.Geometry):
 
         return nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping, label=node_label, node_color=node_color).attribute
 
+    def duplicate_elements(self, selection=None, amount=None, domain='POINT', node_label = None, node_color = None):
+        """ > Node: DuplicateElements
+          
+        <sub>go to: top index
+        blender ref GeometryNodeDuplicateElements
+        node ref Duplicate Elements </sub>
+                                  
+        ```python
+        v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - selection : Boolean
+            - amount : Integer## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
+            - node_label : None
+            - node_color : None
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Sockets [geometry (Geometry), duplicate_index (Integer)]
+            
+        """
+
+        return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+
+    def duplicate_elements(self, selection=None, amount=None, domain='POINT', node_label = None, node_color = None):
+        """ > Node: DuplicateElements
+          
+        <sub>go to: top index
+        blender ref GeometryNodeDuplicateElements
+        node ref Duplicate Elements </sub>
+                                  
+        ```python
+        v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - selection : Boolean
+            - amount : Integer## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
+            - node_label : None
+            - node_color : None
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Sockets [geometry (Geometry), duplicate_index (Integer)]
+            
+        """
+
+        return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+
+    def duplicate_elements(self, selection=None, amount=None, domain='POINT', node_label = None, node_color = None):
+        """ > Node: DuplicateElements
+          
+        <sub>go to: top index
+        blender ref GeometryNodeDuplicateElements
+        node ref Duplicate Elements </sub>
+                                  
+        ```python
+        v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - selection : Boolean
+            - amount : Integer## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
+            - node_label : None
+            - node_color : None
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Sockets [geometry (Geometry), duplicate_index (Integer)]
+            
+        """
+
+        return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+
+    def duplicate_elements(self, selection=None, amount=None, domain='POINT', node_label = None, node_color = None):
+        """ > Node: DuplicateElements
+          
+        <sub>go to: top index
+        blender ref GeometryNodeDuplicateElements
+        node ref Duplicate Elements </sub>
+                                  
+        ```python
+        v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - selection : Boolean
+            - amount : Integer## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
+            - node_label : None
+            - node_color : None
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Sockets [geometry (Geometry), duplicate_index (Integer)]
+            
+        """
+
+        return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+
+    def duplicate_elements(self, selection=None, amount=None, domain='POINT', node_label = None, node_color = None):
+        """ > Node: DuplicateElements
+          
+        <sub>go to: top index
+        blender ref GeometryNodeDuplicateElements
+        node ref Duplicate Elements </sub>
+                                  
+        ```python
+        v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - selection : Boolean
+            - amount : Integer## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
+            - node_label : None
+            - node_color : None
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Sockets [geometry (Geometry), duplicate_index (Integer)]
+            
+        """
+
+        return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+
+    def duplicate_elements(self, selection=None, amount=None, domain='POINT', node_label = None, node_color = None):
+        """ > Node: DuplicateElements
+          
+        <sub>go to: top index
+        blender ref GeometryNodeDuplicateElements
+        node ref Duplicate Elements </sub>
+                                  
+        ```python
+        v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - selection : Boolean
+            - amount : Integer## Parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
+            - node_label : None
+            - node_color : None
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Sockets [geometry (Geometry), duplicate_index (Integer)]
+            
+        """
+
+        return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+
     def delete_geometry(self, selection=None, domain='POINT', mode='ALL', node_label = None, node_color = None):
         """ > Node: DeleteGeometry
           
@@ -1295,43 +1534,6 @@ class Geometry(dsock.Geometry):
         """
 
         return self.stack(nodes.MergeByDistance(geometry=self, selection=selection, distance=distance, mode=mode, label=node_label, node_color=node_color))
-
-    def realize_instances(self, legacy_behavior=False, node_label = None, node_color = None):
-        """ > Node: RealizeInstances
-          
-        <sub>go to: top index
-        blender ref GeometryNodeRealizeInstances
-        node ref Realize Instances </sub>
-                                  
-        ```python
-        v = geometry.realize_instances(legacy_behavior, node_label = None, node_color = None)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Sockets
-            - geometry : Geometry (self)## Parameters
-            - legacy_behavior : False
-            - node_label : None
-            - node_color : None
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior, label=node_label, node_color=node_color)
-            ```
-    
-
-        Returns
-        -------
-            Geometry
-            
-        """
-
-        return self.stack(nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior, label=node_label, node_color=node_color))
 
     def replace_material(self, old=None, new=None, node_label = None, node_color = None):
         """ > Node: ReplaceMaterial
