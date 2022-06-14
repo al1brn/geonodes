@@ -145,6 +145,12 @@ All geometry data classes inherit from Geometry:
   - [Texture](docs/sockets/Texture.md)
   - [Material](docs/sockets/Material.md)
 
+#### Fields
+
+Fields are considered as _Data Socket_ classes properties. **geonodes** analyzes the tree to determine if a 'Capture Attribute' node is necessary or not.
+
+For more details see [Fields](/docs/fields.md)
+
 ### Naming
 
 **geonodes** classes and properties are named after the Blender names.
