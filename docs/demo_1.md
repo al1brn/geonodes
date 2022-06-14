@@ -186,7 +186,7 @@ Note that layouts can be imbricated.
 
 ### Math
 
-**geonodes** provides math function such as `sin`, `arccos` or `color_subtract`. Math operators can also be used on geonodes values. Here after are examples of valid operations:
+**geonodes** provides math functions such as `sin`, `arccos` or `color_subtract` based on the nodes 'Math', 'Vector Math' and 'Boolean Math'... Here after are examples of valid operations:
 
 ```python
 a = gn.Float(10)         # The node "Value"
