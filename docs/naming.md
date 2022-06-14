@@ -1,6 +1,6 @@
 # Naming conventions
 
-> Blend has names for nodes, nodes sockets, nodes parameters and nodes parameters values.
+> Blender has names for nodes, nodes sockets, nodes parameters and nodes parameters values.
 > This section explains the conventions used to name python classes, methods and properties after these names
 
 ## Nodes
