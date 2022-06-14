@@ -14,31 +14,62 @@ In a Blender tree, the geometry a field belongs to is found by following the lin
 > A field is a geometry property
 
 In **geonodes**, fields are implemented as properties of class Geometry.
-In the following example, we need the [Index](/docs/nodes/Index.md) and the [Position](/docs/nodes/Position.md) of a sphere.
-The corresponding nodes are created by referencing the corresponding properties `sphere.index` and `sphere.position`.
+In the following example (extracted from
+[Blender documentation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/fields.html#field-context)),
+we need the [Index](/docs/nodes/Index.md) and the [Position](/docs/nodes/Position.md) of the input geometry.
 
 ```python
 import geonodes as gn
 
 with gn.Tree("Geometry Nodes") as tree:
     
-    sphere = gn.Mesh.IcoSphere(subdivisions=2)
+    geo = tree.input_geometry
     
-    loc = sphere.position     # Field Position
-    loc.z += sphere.index/10  # Field Index
+    v = geo.position
+    v = v.scale(scale=geo.index)
     
-    sphere.set_position(position=loc)
+    geo.set_position(offset=v)
     
-    tree.output_geometry = sphere
+    tree.output_geometry = geo
 ```
 
-The resulting tree is given below:
+In the resulting tree, Position and Index nodes are fields of the input geometry because their links "join" at node 'Set Position':
 
-<img src="/docs/images/field_1.png" width="400">
+<img src="/docs/images/fields_1.png" width="400">
 
-## Capture attribute
+Let's add another 'Set Position' node after the second one, fed by the same offset input:
 
-When the tree is closed, the nodes fields are reviews
+```python
+import geonodes as gn
+
+with gn.Tree("Geometry Nodes") as tree:
+    
+    geo = tree.input_geometry
+    
+    v = geo.position
+    v = v.scale(scale=geo.index)
+    
+    geo.set_position(offset=v)
+    
+    # ----- New set_position
+    
+    geo.set_position(offset=v)
+    
+    tree.output_geometry = geo
+```
+
+*** THE RESULTING TREE IS NOT THE FOLLOWING ***
+
+<img src="/docs/images/fields_1.png" width="400">
+
+Because in the tree above, the fields **Index** and **Position** are evaluated twice, one for 
+
+
+
+
+
+
+
 
 
 
