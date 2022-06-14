@@ -55,19 +55,13 @@ with gn.Tree("Geometry Nodes") as tree:
     tree.output_geometry = geo
 ```
 
-*** THE RESULTING TREE IS NOT THE FOLLOWING ***
+**THE RESULTING TREE IS NOT THE FOLLOWING**
 
 <img src="/docs/images/fields_tree_2.png" width="400">
 
-Because in the tree above, the fields **Index** and **Position** are evaluated twice, one for 
+In the tree above, the fields **Index** and **Position** are evaluated twice, one for the green node and one for the blue node. These two nodes are fed by two different geometries, hence the fields **Index** and **Position** take different values.
 
+The tree resulting from the second script is the following:
 
-
-
-
-
-
-
-
-
+<img src="/docs/images/fields_tree_3.png" width="400">
 
