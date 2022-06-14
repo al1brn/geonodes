@@ -163,7 +163,7 @@ In our demo, the initial grid is created with the following line:
 
 Geometry creation is done through the nodes located in the Blender add menus **Mesh Primitives** and **Curve Primitives**.
 
-In **geonodes**, these nodes are implemented as **constructors** (class or static method) of [Mesh](/docs/sockets/Mesh.md) of [Curve](/docs/sockets/Curve.md) classes.
+In **geonodes**, these nodes are implemented as **constructors** (_class_ or _static_ methods) of [Mesh](/docs/sockets/Mesh.md) of [Curve](/docs/sockets/Curve.md) classes.
 
 ### Layouts
 
