@@ -50,6 +50,7 @@ with gn.Tree("Geometry Nodes") as tree:
     v = v.scale(scale=geo.index)
     
     geo.set_position(offset=v, node_color="green")
+    geo.set_position(offset=v, node_color="blue")
     
     tree.output_geometry = geo
 ```
