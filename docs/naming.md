@@ -113,8 +113,8 @@ Note that the node 'Mesh Boolean' gives birth to 3 methods:
 
 ```python
     my_mesh.insersect(mesh1, mesh2)
-    my_mesh.union(other_mesh)
-    my_mesh.difference(other_mesh)
+    my_mesh.union(mesh1, mesh2, mesh3)
+    my_mesh.difference(mesh1, mesh2)
 ```
 
 
