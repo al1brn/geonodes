@@ -35,7 +35,7 @@ with gn.Tree("Geometry Nodes") as tree:
 
 In the resulting tree, Position and Index nodes are fields of the input geometry because their links "join" at node 'Set Position':
 
-<img src="/docs/images/fields_1.png" width="400">
+<img src="/docs/images/fields_1_tree.png" width="400">
 
 Let's add another 'Set Position' node after the second one, fed by the same offset input:
 
