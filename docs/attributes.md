@@ -9,7 +9,7 @@ Be sure to be familiar with fields: [Blender reference documentation](https://do
 Fields such as [Index](/docs/nodes/Index.md) or [Position](/docs/nodes/Position.md)
 represents a value (Integer, Float, Vector...) associated to a domain (Point, Edge,...) of a geometry.
 
-In a Blender tree, the geometry a field belongs to is found by following the links forwards and backwards (see [Blender Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/fields.html).
+In a Blender tree, the geometry a field belongs to is found by following the links forwards and backwards (see [Blender Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/fields.html)).
 
 > A field is a geometry property
 
