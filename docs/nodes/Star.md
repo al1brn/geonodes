@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None, label=None)
+node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None, label=None, node_color=None)
 ```
 
 
@@ -28,6 +28,7 @@ node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None,
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, operation='ADD', label=None)
+node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, operation='ADD', label=None, node_color=None)
 ```
 
 
@@ -32,6 +32,7 @@ node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, op
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

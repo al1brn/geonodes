@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED', label=None)
+node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED', label=None, node_color=None)
 ```
 
 
@@ -34,6 +34,7 @@ node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None,
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Data type dependant sockets
 

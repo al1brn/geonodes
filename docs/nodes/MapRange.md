@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, vector=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', label=None)
+node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, vector=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', label=None, node_color=None)
 ```
 
 
@@ -37,6 +37,7 @@ node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Data type dependant sockets
 

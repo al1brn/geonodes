@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', label=None)
+node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', label=None, node_color=None)
 ```
 
 
@@ -32,6 +32,7 @@ node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

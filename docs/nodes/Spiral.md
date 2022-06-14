@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, label=None)
+node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, label=None, node_color=None)
 ```
 
 
@@ -30,6 +30,7 @@ node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radi
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

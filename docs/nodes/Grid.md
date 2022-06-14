@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, label=None)
+node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, label=None, node_color=None)
 ```
 
 
@@ -28,6 +28,7 @@ node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, la
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

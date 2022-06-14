@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type='FLOAT', domain='POINT', label=None)
+node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type='FLOAT', domain='POINT', label=None, node_color=None)
 ```
 
 
@@ -32,6 +32,7 @@ node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Data type dependant sockets
 

@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY', label=None)
+node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY', label=None, node_color=None)
 ```
 
 
@@ -30,6 +30,7 @@ node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY', label
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

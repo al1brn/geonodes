@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.SplitEdges(mesh=None, selection=None, label=None)
+node = nodes.SplitEdges(mesh=None, selection=None, label=None, node_color=None)
 ```
 
 
@@ -26,6 +26,7 @@ node = nodes.SplitEdges(mesh=None, selection=None, label=None)
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

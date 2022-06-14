@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.GeometryProximity(target=None, source_position=None, target_element='FACES', label=None)
+node = nodes.GeometryProximity(target=None, source_position=None, target_element='FACES', label=None, node_color=None)
 ```
 
 
@@ -30,6 +30,7 @@ node = nodes.GeometryProximity(target=None, source_position=None, target_element
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

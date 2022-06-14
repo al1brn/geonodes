@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', label=None)
+node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', label=None, node_color=None)
 ```
 
 
@@ -32,6 +32,7 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Data type dependant sockets
 

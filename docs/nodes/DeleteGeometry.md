@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode='ALL', label=None)
+node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode='ALL', label=None, node_color=None)
 ```
 
 
@@ -31,6 +31,7 @@ node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode=
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None)
+node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None, node_color=None)
 ```
 
 
@@ -35,6 +35,7 @@ node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=Non
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

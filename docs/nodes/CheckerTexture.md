@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None, label=None)
+node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None, label=None, node_color=None)
 ```
 
 
@@ -28,6 +28,7 @@ node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None, l
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

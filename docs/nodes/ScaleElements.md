@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', label=None)
+node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', label=None, node_color=None)
 ```
 
 
@@ -34,6 +34,7 @@ node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=Non
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

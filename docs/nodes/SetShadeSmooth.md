@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, label=None)
+node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, label=None, node_color=None)
 ```
 
 
@@ -27,6 +27,7 @@ node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, la
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

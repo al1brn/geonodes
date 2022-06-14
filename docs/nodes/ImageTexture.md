@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', label=None)
+node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', label=None, node_color=None)
 ```
 
 
@@ -32,6 +32,7 @@ node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

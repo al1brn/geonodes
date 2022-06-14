@@ -72,6 +72,8 @@ The blender Node is created by calling the method `tree.get_bnode` method.
   The node name
 - label: str, optional
   The node label
+- node_color: color, optional
+  The node color
   
   
   

@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX', label=None)
+node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX', label=None, node_color=None)
 ```
 
 
@@ -31,6 +31,7 @@ node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX', label=No
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

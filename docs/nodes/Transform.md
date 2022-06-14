@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=None, label=None)
+node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=None, label=None, node_color=None)
 ```
 
 
@@ -28,6 +28,7 @@ node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=Non
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

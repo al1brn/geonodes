@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None)
+node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None)
 ```
 
 
@@ -21,11 +21,12 @@ node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, lab
 ### Parameters
 
 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- mode : set (default = {'LEFT', 'RIGHT'})
+- mode : set (default = {'RIGHT', 'LEFT'})
 
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

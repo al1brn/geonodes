@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', label=None)
+node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', label=None, node_color=None)
 ```
 
 
@@ -34,6 +34,7 @@ node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotat
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

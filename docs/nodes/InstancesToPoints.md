@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.InstancesToPoints(instances=None, selection=None, position=None, radius=None, label=None)
+node = nodes.InstancesToPoints(instances=None, selection=None, position=None, radius=None, label=None, node_color=None)
 ```
 
 
@@ -28,6 +28,7 @@ node = nodes.InstancesToPoints(instances=None, selection=None, position=None, ra
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', label=None)
+node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', label=None, node_color=None)
 ```
 
 
@@ -33,6 +33,7 @@ node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_am
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

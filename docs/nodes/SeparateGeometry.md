@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT', label=None)
+node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT', label=None, node_color=None)
 ```
 
 
@@ -30,6 +30,7 @@ node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT', lab
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

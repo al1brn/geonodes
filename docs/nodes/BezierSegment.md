@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION', label=None)
+node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION', label=None, node_color=None)
 ```
 
 
@@ -33,6 +33,7 @@ node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_h
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', domain='POINT', label=None)
+node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', domain='POINT', label=None, node_color=None)
 ```
 
 
@@ -31,6 +31,7 @@ node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', do
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Data type dependant sockets
 

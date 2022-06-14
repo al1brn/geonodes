@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None, label=None)
+node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None, label=None, node_color=None)
 ```
 
 
@@ -27,6 +27,7 @@ node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None, label=N
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

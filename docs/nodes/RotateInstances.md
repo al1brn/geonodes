@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, label=None)
+node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, label=None, node_color=None)
 ```
 
 
@@ -29,6 +29,7 @@ node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivo
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

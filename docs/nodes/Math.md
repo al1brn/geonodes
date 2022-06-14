@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=None)
+node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=None, node_color=None)
 ```
 
 
@@ -31,6 +31,7 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

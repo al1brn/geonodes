@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.SliceString(string=None, position=None, length=None, label=None)
+node = nodes.SliceString(string=None, position=None, length=None, label=None, node_color=None)
 ```
 
 
@@ -27,6 +27,7 @@ node = nodes.SliceString(string=None, position=None, length=None, label=None)
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

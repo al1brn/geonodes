@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.Group(label=None)
+node = nodes.Group(label=None, node_color=None)
 ```
 
 
@@ -21,3 +21,4 @@ node = nodes.Group(label=None)
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)

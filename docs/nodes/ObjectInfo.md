@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL', label=None)
+node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL', label=None, node_color=None)
 ```
 
 
@@ -30,6 +30,7 @@ node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

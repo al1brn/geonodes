@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_depth=2, label=None)
+node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_depth=2, label=None, node_color=None)
 ```
 
 
@@ -31,6 +31,7 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

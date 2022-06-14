@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domain='POINT', label=None)
+node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domain='POINT', label=None, node_color=None)
 ```
 
 
@@ -31,6 +31,7 @@ node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domai
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.SubdivisionSurface(mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None)
+node = nodes.SubdivisionSurface(mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None, node_color=None)
 ```
 
 
@@ -32,6 +32,7 @@ node = nodes.SubdivisionSurface(mesh=None, level=None, crease=None, boundary_smo
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

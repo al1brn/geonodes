@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER', label=None)
+node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER', label=None, node_color=None)
 ```
 
 
@@ -32,6 +32,7 @@ node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None,
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS', label=None)
+node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS', label=None, node_color=None)
 ```
 
 
@@ -33,6 +33,7 @@ node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=No
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

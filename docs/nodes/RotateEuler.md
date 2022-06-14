@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', label=None)
+node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', label=None, node_color=None)
 ```
 
 
@@ -32,6 +32,7 @@ node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, s
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

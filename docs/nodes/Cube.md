@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, label=None)
+node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, label=None, node_color=None)
 ```
 
 
@@ -28,6 +28,7 @@ node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, 
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

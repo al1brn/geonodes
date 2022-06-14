@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D', label=None)
+node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D', label=None, node_color=None)
 ```
 
 
@@ -34,6 +34,7 @@ node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughnes
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-13
+Created on 2022-06-14
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -234,7 +234,7 @@ class Spline(gn.Geometry):
             setattr(self, attr_name, node)
         return getattr(self, attr_name).selection
 
-    def capture_handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, domain='CURVE'):
+    def capture_handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, domain='CURVE'):
         """ > Node: HandleTypeSelection
           
         <sub>go to: top index
@@ -251,7 +251,7 @@ class Spline(gn.Geometry):
             ## Parameters
             - self
             - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-            - mode : {'LEFT', 'RIGHT'}
+            - mode : {'RIGHT', 'LEFT'}
             - domain:'CURVE'
     
 
@@ -725,7 +725,7 @@ class Spline(gn.Geometry):
         return self.capture_endpoint_selection(domain='CURVE')
 
     @property
-    def handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+    def handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
         """ > Node: HandleTypeSelection
           
         <sub>go to: top index
@@ -742,7 +742,7 @@ class Spline(gn.Geometry):
             ## Parameters
             - self
             - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-            - mode : {'LEFT', 'RIGHT'}
+            - mode : {'RIGHT', 'LEFT'}
     
 
         Node creation

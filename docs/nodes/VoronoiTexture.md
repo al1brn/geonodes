@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D', label=None)
+node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D', label=None, node_color=None)
 ```
 
 
@@ -36,6 +36,7 @@ node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, ex
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

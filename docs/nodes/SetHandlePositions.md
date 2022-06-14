@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offset=None, mode='LEFT', label=None)
+node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offset=None, mode='LEFT', label=None, node_color=None)
 ```
 
 
@@ -32,6 +32,7 @@ node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offse
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

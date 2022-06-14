@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', label=None)
+node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', label=None, node_color=None)
 ```
 
 
@@ -35,6 +35,7 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Data type dependant sockets
 

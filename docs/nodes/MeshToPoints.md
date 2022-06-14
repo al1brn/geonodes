@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None)
+node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None, node_color=None)
 ```
 
 
@@ -32,6 +32,7 @@ node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None,
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

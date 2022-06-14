@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.Vector(vector=[0.0, 0.0, 0.0], label=None)
+node = nodes.Vector(vector=[0.0, 0.0, 0.0], label=None, node_color=None)
 ```
 
 
@@ -25,6 +25,7 @@ node = nodes.Vector(vector=[0.0, 0.0, 0.0], label=None)
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

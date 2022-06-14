@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode='ALL', label=None)
+node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode='ALL', label=None, node_color=None)
 ```
 
 
@@ -31,6 +31,7 @@ node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode=
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.Mix(color1=None, color2=None, fac=None, blend_type='MIX', use_alpha=False, label=None)
+node = nodes.Mix(color1=None, color2=None, fac=None, blend_type='MIX', use_alpha=False, label=None, node_color=None)
 ```
 
 
@@ -32,6 +32,7 @@ node = nodes.Mix(color1=None, color2=None, fac=None, blend_type='MIX', use_alpha
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

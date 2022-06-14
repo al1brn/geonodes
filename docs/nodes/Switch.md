@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.Switch(switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', label=None)
+node = nodes.Switch(switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', label=None, node_color=None)
 ```
 
 
@@ -32,6 +32,7 @@ node = nodes.Switch(switch0=None, switch1=None, false=None, true=None, input_typ
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Data type dependant sockets
 

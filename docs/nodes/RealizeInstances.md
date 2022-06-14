@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None)
+node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None, node_color=None)
 ```
 
 
@@ -29,6 +29,7 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None)
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

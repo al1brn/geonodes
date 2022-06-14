@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='POINTS', label=None)
+node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='POINTS', label=None, node_color=None)
 ```
 
 
@@ -32,6 +32,7 @@ node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

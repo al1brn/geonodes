@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND', label=None)
+node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND', label=None, node_color=None)
 ```
 
 
@@ -30,6 +30,7 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND', label=No
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

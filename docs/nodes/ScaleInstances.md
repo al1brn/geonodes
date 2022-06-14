@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=None, local_space=None, label=None)
+node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=None, local_space=None, label=None, node_color=None)
 ```
 
 
@@ -29,6 +29,7 @@ node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=N
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

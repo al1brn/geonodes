@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=None, data_type='FLOAT', label=None)
+node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=None, data_type='FLOAT', label=None, node_color=None)
 ```
 
 
@@ -33,6 +33,7 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Data type dependant sockets
 

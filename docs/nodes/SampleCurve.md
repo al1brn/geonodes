@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.SampleCurve(curve=None, factor=None, length=None, mode='LENGTH', label=None)
+node = nodes.SampleCurve(curve=None, factor=None, length=None, mode='LENGTH', label=None, node_color=None)
 ```
 
 
@@ -31,6 +31,7 @@ node = nodes.SampleCurve(curve=None, factor=None, length=None, mode='LENGTH', la
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

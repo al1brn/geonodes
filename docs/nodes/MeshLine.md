@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', label=None)
+node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', label=None, node_color=None)
 ```
 
 
@@ -33,6 +33,7 @@ node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=N
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

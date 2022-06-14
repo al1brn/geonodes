@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None, label=None)
+node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None, label=None, node_color=None)
 ```
 
 
@@ -27,6 +27,7 @@ node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-13
+Created on 2022-06-14
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -29,7 +29,7 @@ class AlignEulerToVector(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', label=None)
+            node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', label=None, node_color=None)
             ```
             
             
@@ -55,6 +55,7 @@ class AlignEulerToVector(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -72,9 +73,9 @@ class AlignEulerToVector(Node):
               
     """
 
-    def __init__(self, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', label=None):
+    def __init__(self, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', label=None, node_color=None):
 
-        super().__init__('FunctionNodeAlignEulerToVector', name='Align Euler to Vector', label=label)
+        super().__init__('FunctionNodeAlignEulerToVector', name='Align Euler to Vector', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.axis            = axis
@@ -126,7 +127,7 @@ class BooleanMath(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND', label=None)
+            node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND', label=None, node_color=None)
             ```
             
             
@@ -150,6 +151,7 @@ class BooleanMath(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -183,9 +185,9 @@ class BooleanMath(Node):
               
     """
 
-    def __init__(self, boolean0=None, boolean1=None, operation='AND', label=None):
+    def __init__(self, boolean0=None, boolean1=None, operation='AND', label=None, node_color=None):
 
-        super().__init__('FunctionNodeBooleanMath', name='Boolean Math', label=label)
+        super().__init__('FunctionNodeBooleanMath', name='Boolean Math', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.operation       = operation
@@ -227,7 +229,7 @@ class Compare(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', label=None)
+            node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', label=None, node_color=None)
             ```
             
             
@@ -256,6 +258,7 @@ class Compare(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Data type dependant sockets
@@ -308,9 +311,9 @@ class Compare(Node):
               
     """
 
-    def __init__(self, a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', label=None):
+    def __init__(self, a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', label=None, node_color=None):
 
-        super().__init__('FunctionNodeCompare', name='Compare', label=label)
+        super().__init__('FunctionNodeCompare', name='Compare', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.data_type       = data_type
@@ -388,7 +391,7 @@ class FloatToInteger(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.FloatToInteger(float=None, rounding_mode='ROUND', label=None)
+            node = nodes.FloatToInteger(float=None, rounding_mode='ROUND', label=None, node_color=None)
             ```
             
             
@@ -411,6 +414,7 @@ class FloatToInteger(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -427,9 +431,9 @@ class FloatToInteger(Node):
               
     """
 
-    def __init__(self, float=None, rounding_mode='ROUND', label=None):
+    def __init__(self, float=None, rounding_mode='ROUND', label=None, node_color=None):
 
-        super().__init__('FunctionNodeFloatToInt', name='Float to Integer', label=label)
+        super().__init__('FunctionNodeFloatToInt', name='Float to Integer', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.rounding_mode   = rounding_mode
@@ -470,7 +474,7 @@ class Boolean(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Boolean(boolean=False, label=None)
+            node = nodes.Boolean(boolean=False, label=None, node_color=None)
             ```
             
             
@@ -488,6 +492,7 @@ class Boolean(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -495,9 +500,9 @@ class Boolean(Node):
             - boolean : Boolean
     """
 
-    def __init__(self, boolean=False, label=None):
+    def __init__(self, boolean=False, label=None, node_color=None):
 
-        super().__init__('FunctionNodeInputBool', name='Boolean', label=label)
+        super().__init__('FunctionNodeInputBool', name='Boolean', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.boolean         = boolean
@@ -534,7 +539,7 @@ class Color(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Color(label=None)
+            node = nodes.Color(label=None, node_color=None)
             ```
             
             
@@ -547,6 +552,7 @@ class Color(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -554,9 +560,9 @@ class Color(Node):
             - color : Color
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('FunctionNodeInputColor', name='Color', label=label)
+        super().__init__('FunctionNodeInputColor', name='Color', label=label, node_color=node_color)
         # Output sockets
 
         self.color           = self.Color(self.bnode.outputs[0])
@@ -581,7 +587,7 @@ class Integer(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Integer(integer=0, label=None)
+            node = nodes.Integer(integer=0, label=None, node_color=None)
             ```
             
             
@@ -599,6 +605,7 @@ class Integer(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -606,9 +613,9 @@ class Integer(Node):
             - integer : Integer
     """
 
-    def __init__(self, integer=0, label=None):
+    def __init__(self, integer=0, label=None, node_color=None):
 
-        super().__init__('FunctionNodeInputInt', name='Integer', label=label)
+        super().__init__('FunctionNodeInputInt', name='Integer', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.integer         = integer
@@ -645,7 +652,7 @@ class SpecialCharacters(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SpecialCharacters(label=None)
+            node = nodes.SpecialCharacters(label=None, node_color=None)
             ```
             
             
@@ -658,6 +665,7 @@ class SpecialCharacters(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -666,9 +674,9 @@ class SpecialCharacters(Node):
             - tab : String
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('FunctionNodeInputSpecialCharacters', name='Special Characters', label=label)
+        super().__init__('FunctionNodeInputSpecialCharacters', name='Special Characters', label=label, node_color=node_color)
         # Output sockets
 
         self.line_break      = self.String(self.bnode.outputs[0])
@@ -694,7 +702,7 @@ class String(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.String(string='', label=None)
+            node = nodes.String(string='', label=None, node_color=None)
             ```
             
             
@@ -712,6 +720,7 @@ class String(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -719,9 +728,9 @@ class String(Node):
             - string : String
     """
 
-    def __init__(self, string='', label=None):
+    def __init__(self, string='', label=None, node_color=None):
 
-        super().__init__('FunctionNodeInputString', name='String', label=label)
+        super().__init__('FunctionNodeInputString', name='String', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.string          = string
@@ -758,7 +767,7 @@ class Vector(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Vector(vector=[0.0, 0.0, 0.0], label=None)
+            node = nodes.Vector(vector=[0.0, 0.0, 0.0], label=None, node_color=None)
             ```
             
             
@@ -776,6 +785,7 @@ class Vector(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -783,9 +793,9 @@ class Vector(Node):
             - vector : Vector
     """
 
-    def __init__(self, vector=[0.0, 0.0, 0.0], label=None):
+    def __init__(self, vector=[0.0, 0.0, 0.0], label=None, node_color=None):
 
-        super().__init__('FunctionNodeInputVector', name='Vector', label=label)
+        super().__init__('FunctionNodeInputVector', name='Vector', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.vector          = vector
@@ -822,7 +832,7 @@ class RandomValue(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=None, data_type='FLOAT', label=None)
+            node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=None, data_type='FLOAT', label=None, node_color=None)
             ```
             
             
@@ -849,6 +859,7 @@ class RandomValue(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Data type dependant sockets
@@ -877,9 +888,9 @@ class RandomValue(Node):
               
     """
 
-    def __init__(self, min=None, max=None, probability=None, ID=None, seed=None, data_type='FLOAT', label=None):
+    def __init__(self, min=None, max=None, probability=None, ID=None, seed=None, data_type='FLOAT', label=None, node_color=None):
 
-        super().__init__('FunctionNodeRandomValue', name='Random Value', label=label)
+        super().__init__('FunctionNodeRandomValue', name='Random Value', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.data_type       = data_type
@@ -940,7 +951,7 @@ class ReplaceString(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.ReplaceString(string=None, find=None, replace=None, label=None)
+            node = nodes.ReplaceString(string=None, find=None, replace=None, label=None, node_color=None)
             ```
             
             
@@ -960,6 +971,7 @@ class ReplaceString(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -976,9 +988,9 @@ class ReplaceString(Node):
               
     """
 
-    def __init__(self, string=None, find=None, replace=None, label=None):
+    def __init__(self, string=None, find=None, replace=None, label=None, node_color=None):
 
-        super().__init__('FunctionNodeReplaceString', name='Replace String', label=label)
+        super().__init__('FunctionNodeReplaceString', name='Replace String', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, string)
@@ -1009,7 +1021,7 @@ class RotateEuler(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', label=None)
+            node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', label=None, node_color=None)
             ```
             
             
@@ -1035,6 +1047,7 @@ class RotateEuler(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -1051,9 +1064,9 @@ class RotateEuler(Node):
               
     """
 
-    def __init__(self, rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', label=None):
+    def __init__(self, rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', label=None, node_color=None):
 
-        super().__init__('FunctionNodeRotateEuler', name='Rotate Euler', label=label)
+        super().__init__('FunctionNodeRotateEuler', name='Rotate Euler', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.space           = space
@@ -1097,7 +1110,7 @@ class SliceString(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SliceString(string=None, position=None, length=None, label=None)
+            node = nodes.SliceString(string=None, position=None, length=None, label=None, node_color=None)
             ```
             
             
@@ -1117,6 +1130,7 @@ class SliceString(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -1133,9 +1147,9 @@ class SliceString(Node):
               
     """
 
-    def __init__(self, string=None, position=None, length=None, label=None):
+    def __init__(self, string=None, position=None, length=None, label=None, node_color=None):
 
-        super().__init__('FunctionNodeSliceString', name='Slice String', label=label)
+        super().__init__('FunctionNodeSliceString', name='Slice String', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, string)
@@ -1166,7 +1180,7 @@ class StringLength(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.StringLength(string=None, label=None)
+            node = nodes.StringLength(string=None, label=None, node_color=None)
             ```
             
             
@@ -1184,6 +1198,7 @@ class StringLength(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -1200,9 +1215,9 @@ class StringLength(Node):
               
     """
 
-    def __init__(self, string=None, label=None):
+    def __init__(self, string=None, label=None, node_color=None):
 
-        super().__init__('FunctionNodeStringLength', name='String Length', label=label)
+        super().__init__('FunctionNodeStringLength', name='String Length', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, string)
@@ -1231,7 +1246,7 @@ class ValueToString(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.ValueToString(value=None, decimals=None, label=None)
+            node = nodes.ValueToString(value=None, decimals=None, label=None, node_color=None)
             ```
             
             
@@ -1250,6 +1265,7 @@ class ValueToString(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -1266,9 +1282,9 @@ class ValueToString(Node):
               
     """
 
-    def __init__(self, value=None, decimals=None, label=None):
+    def __init__(self, value=None, decimals=None, label=None, node_color=None):
 
-        super().__init__('FunctionNodeValueToString', name='Value to String', label=label)
+        super().__init__('FunctionNodeValueToString', name='Value to String', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, value)
@@ -1298,7 +1314,7 @@ class AccumulateField(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', domain='POINT', label=None)
+            node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', domain='POINT', label=None, node_color=None)
             ```
             
             
@@ -1323,6 +1339,7 @@ class AccumulateField(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Data type dependant sockets
@@ -1352,9 +1369,9 @@ class AccumulateField(Node):
               
     """
 
-    def __init__(self, value=None, group_index=None, data_type='FLOAT', domain='POINT', label=None):
+    def __init__(self, value=None, group_index=None, data_type='FLOAT', domain='POINT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeAccumulateField', name='Accumulate Field', label=label)
+        super().__init__('GeometryNodeAccumulateField', name='Accumulate Field', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.data_type       = data_type
@@ -1423,7 +1440,7 @@ class DomainSize(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.DomainSize(geometry=None, component='MESH', label=None)
+            node = nodes.DomainSize(geometry=None, component='MESH', label=None, node_color=None)
             ```
             
             
@@ -1446,6 +1463,7 @@ class DomainSize(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -1467,9 +1485,9 @@ class DomainSize(Node):
               
     """
 
-    def __init__(self, geometry=None, component='MESH', label=None):
+    def __init__(self, geometry=None, component='MESH', label=None, node_color=None):
 
-        super().__init__('GeometryNodeAttributeDomainSize', name='Domain Size', label=label)
+        super().__init__('GeometryNodeAttributeDomainSize', name='Domain Size', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.component       = component
@@ -1515,7 +1533,7 @@ class AttributeStatistic(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', label=None)
+            node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', label=None, node_color=None)
             ```
             
             
@@ -1541,6 +1559,7 @@ class AttributeStatistic(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Data type dependant sockets
@@ -1574,9 +1593,9 @@ class AttributeStatistic(Node):
               
     """
 
-    def __init__(self, geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', label=None):
+    def __init__(self, geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeAttributeStatistic', name='Attribute Statistic', label=label)
+        super().__init__('GeometryNodeAttributeStatistic', name='Attribute Statistic', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.data_type       = data_type
@@ -1650,7 +1669,7 @@ class TransferAttribute(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.TransferAttribute(source=None, attribute=None, source_position=None, index=None, data_type='FLOAT', domain='POINT', mapping='NEAREST_FACE_INTERPOLATED', label=None)
+            node = nodes.TransferAttribute(source=None, attribute=None, source_position=None, index=None, data_type='FLOAT', domain='POINT', mapping='NEAREST_FACE_INTERPOLATED', label=None, node_color=None)
             ```
             
             
@@ -1678,6 +1697,7 @@ class TransferAttribute(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Data type dependant sockets
@@ -1712,9 +1732,9 @@ class TransferAttribute(Node):
               
     """
 
-    def __init__(self, source=None, attribute=None, source_position=None, index=None, data_type='FLOAT', domain='POINT', mapping='NEAREST_FACE_INTERPOLATED', label=None):
+    def __init__(self, source=None, attribute=None, source_position=None, index=None, data_type='FLOAT', domain='POINT', mapping='NEAREST_FACE_INTERPOLATED', label=None, node_color=None):
 
-        super().__init__('GeometryNodeAttributeTransfer', name='Transfer Attribute', label=label)
+        super().__init__('GeometryNodeAttributeTransfer', name='Transfer Attribute', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.data_type       = data_type
@@ -1796,7 +1816,7 @@ class BoundingBox(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.BoundingBox(geometry=None, label=None)
+            node = nodes.BoundingBox(geometry=None, label=None, node_color=None)
             ```
             
             
@@ -1814,6 +1834,7 @@ class BoundingBox(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -1835,9 +1856,9 @@ class BoundingBox(Node):
               
     """
 
-    def __init__(self, geometry=None, label=None):
+    def __init__(self, geometry=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeBoundBox', name='Bounding Box', label=label)
+        super().__init__('GeometryNodeBoundBox', name='Bounding Box', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, geometry)
@@ -1868,7 +1889,7 @@ class CaptureAttribute(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', domain='POINT', label=None)
+            node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', domain='POINT', label=None, node_color=None)
             ```
             
             
@@ -1893,6 +1914,7 @@ class CaptureAttribute(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Data type dependant sockets
@@ -1924,9 +1946,9 @@ class CaptureAttribute(Node):
               
     """
 
-    def __init__(self, geometry=None, value=None, data_type='FLOAT', domain='POINT', label=None):
+    def __init__(self, geometry=None, value=None, data_type='FLOAT', domain='POINT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCaptureAttribute', name='Capture Attribute', label=label)
+        super().__init__('GeometryNodeCaptureAttribute', name='Capture Attribute', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.data_type       = data_type
@@ -1998,7 +2020,7 @@ class CollectionInfo(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.CollectionInfo(collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL', label=None)
+            node = nodes.CollectionInfo(collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL', label=None, node_color=None)
             ```
             
             
@@ -2023,6 +2045,7 @@ class CollectionInfo(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -2039,9 +2062,9 @@ class CollectionInfo(Node):
               
     """
 
-    def __init__(self, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL', label=None):
+    def __init__(self, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCollectionInfo', name='Collection Info', label=label)
+        super().__init__('GeometryNodeCollectionInfo', name='Collection Info', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.transform_space = transform_space
@@ -2084,7 +2107,7 @@ class ConvexHull(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.ConvexHull(geometry=None, label=None)
+            node = nodes.ConvexHull(geometry=None, label=None, node_color=None)
             ```
             
             
@@ -2102,6 +2125,7 @@ class ConvexHull(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -2118,9 +2142,9 @@ class ConvexHull(Node):
               
     """
 
-    def __init__(self, geometry=None, label=None):
+    def __init__(self, geometry=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeConvexHull', name='Convex Hull', label=label)
+        super().__init__('GeometryNodeConvexHull', name='Convex Hull', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, geometry)
@@ -2149,7 +2173,7 @@ class Arc(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None, start_angle=None, sweep_angle=None, offset_angle=None, connect_center=None, invert_arc=None, mode='RADIUS', label=None)
+            node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None, start_angle=None, sweep_angle=None, offset_angle=None, connect_center=None, invert_arc=None, mode='RADIUS', label=None, node_color=None)
             ```
             
             
@@ -2181,6 +2205,7 @@ class Arc(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -2201,9 +2226,9 @@ class Arc(Node):
               
     """
 
-    def __init__(self, resolution=None, start=None, middle=None, end=None, radius=None, start_angle=None, sweep_angle=None, offset_angle=None, connect_center=None, invert_arc=None, mode='RADIUS', label=None):
+    def __init__(self, resolution=None, start=None, middle=None, end=None, radius=None, start_angle=None, sweep_angle=None, offset_angle=None, connect_center=None, invert_arc=None, mode='RADIUS', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveArc', name='Arc', label=label)
+        super().__init__('GeometryNodeCurveArc', name='Arc', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.mode            = mode
@@ -2256,7 +2281,7 @@ class EndpointSelection(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.EndpointSelection(start_size=None, end_size=None, label=None)
+            node = nodes.EndpointSelection(start_size=None, end_size=None, label=None, node_color=None)
             ```
             
             
@@ -2275,6 +2300,7 @@ class EndpointSelection(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -2292,9 +2318,9 @@ class EndpointSelection(Node):
               
     """
 
-    def __init__(self, start_size=None, end_size=None, label=None):
+    def __init__(self, start_size=None, end_size=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveEndpointSelection', name='Endpoint Selection', label=label)
+        super().__init__('GeometryNodeCurveEndpointSelection', name='Endpoint Selection', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, start_size)
@@ -2324,7 +2350,7 @@ class HandleTypeSelection(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None)
+            node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None)
             ```
             
             
@@ -2337,12 +2363,13 @@ class HandleTypeSelection(Node):
             Parameters
             ----------
                 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                - mode : set (default = {'LEFT', 'RIGHT'})
+                - mode : set (default = {'RIGHT', 'LEFT'})
     
 
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -2360,9 +2387,9 @@ class HandleTypeSelection(Node):
               
     """
 
-    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None):
+    def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveHandleTypeSelection', name='Handle Type Selection', label=label)
+        super().__init__('GeometryNodeCurveHandleTypeSelection', name='Handle Type Selection', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.handle_type     = handle_type
@@ -2408,7 +2435,7 @@ class CurveLength(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.CurveLength(curve=None, label=None)
+            node = nodes.CurveLength(curve=None, label=None, node_color=None)
             ```
             
             
@@ -2426,6 +2453,7 @@ class CurveLength(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -2442,9 +2470,9 @@ class CurveLength(Node):
               
     """
 
-    def __init__(self, curve=None, label=None):
+    def __init__(self, curve=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveLength', name='Curve Length', label=label)
+        super().__init__('GeometryNodeCurveLength', name='Curve Length', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, curve)
@@ -2473,7 +2501,7 @@ class BezierSegment(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION', label=None)
+            node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION', label=None, node_color=None)
             ```
             
             
@@ -2500,6 +2528,7 @@ class BezierSegment(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -2516,9 +2545,9 @@ class BezierSegment(Node):
               
     """
 
-    def __init__(self, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION', label=None):
+    def __init__(self, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurvePrimitiveBezierSegment', name='Bezier Segment', label=label)
+        super().__init__('GeometryNodeCurvePrimitiveBezierSegment', name='Bezier Segment', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.mode            = mode
@@ -2563,7 +2592,7 @@ class CurveCircle(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS', label=None)
+            node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS', label=None, node_color=None)
             ```
             
             
@@ -2590,6 +2619,7 @@ class CurveCircle(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -2607,9 +2637,9 @@ class CurveCircle(Node):
               
     """
 
-    def __init__(self, resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS', label=None):
+    def __init__(self, resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurvePrimitiveCircle', name='Curve Circle', label=label)
+        super().__init__('GeometryNodeCurvePrimitiveCircle', name='Curve Circle', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.mode            = mode
@@ -2655,7 +2685,7 @@ class CurveLine(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='POINTS', label=None)
+            node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='POINTS', label=None, node_color=None)
             ```
             
             
@@ -2681,6 +2711,7 @@ class CurveLine(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -2697,9 +2728,9 @@ class CurveLine(Node):
               
     """
 
-    def __init__(self, start=None, end=None, direction=None, length=None, mode='POINTS', label=None):
+    def __init__(self, start=None, end=None, direction=None, length=None, mode='POINTS', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurvePrimitiveLine', name='Curve Line', label=label)
+        super().__init__('GeometryNodeCurvePrimitiveLine', name='Curve Line', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.mode            = mode
@@ -2743,7 +2774,7 @@ class Quadrilateral(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', label=None)
+            node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', label=None, node_color=None)
             ```
             
             
@@ -2776,6 +2807,7 @@ class Quadrilateral(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -2792,9 +2824,9 @@ class Quadrilateral(Node):
               
     """
 
-    def __init__(self, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', label=None):
+    def __init__(self, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurvePrimitiveQuadrilateral', name='Quadrilateral', label=label)
+        super().__init__('GeometryNodeCurvePrimitiveQuadrilateral', name='Quadrilateral', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.mode            = mode
@@ -2845,7 +2877,7 @@ class QuadraticBezier(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None, label=None)
+            node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None, label=None, node_color=None)
             ```
             
             
@@ -2866,6 +2898,7 @@ class QuadraticBezier(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -2882,9 +2915,9 @@ class QuadraticBezier(Node):
               
     """
 
-    def __init__(self, resolution=None, start=None, middle=None, end=None, label=None):
+    def __init__(self, resolution=None, start=None, middle=None, end=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveQuadraticBezier', name='Quadratic Bezier', label=label)
+        super().__init__('GeometryNodeCurveQuadraticBezier', name='Quadratic Bezier', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, resolution)
@@ -2916,7 +2949,7 @@ class SetHandleType(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None)
+            node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None)
             ```
             
             
@@ -2935,12 +2968,13 @@ class SetHandleType(Node):
             Parameters
             ----------
                 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                - mode : set (default = {'LEFT', 'RIGHT'})
+                - mode : set (default = {'RIGHT', 'LEFT'})
     
 
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -2957,9 +2991,9 @@ class SetHandleType(Node):
               
     """
 
-    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None):
+    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveSetHandles', name='Set Handle Type', label=label)
+        super().__init__('GeometryNodeCurveSetHandles', name='Set Handle Type', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.handle_type     = handle_type
@@ -3010,7 +3044,7 @@ class Spiral(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, label=None)
+            node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, label=None, node_color=None)
             ```
             
             
@@ -3033,6 +3067,7 @@ class Spiral(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -3049,9 +3084,9 @@ class Spiral(Node):
               
     """
 
-    def __init__(self, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, label=None):
+    def __init__(self, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveSpiral', name='Spiral', label=label)
+        super().__init__('GeometryNodeCurveSpiral', name='Spiral', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, resolution)
@@ -3085,7 +3120,7 @@ class SetSplineType(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY', label=None)
+            node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY', label=None, node_color=None)
             ```
             
             
@@ -3109,6 +3144,7 @@ class SetSplineType(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -3125,9 +3161,9 @@ class SetSplineType(Node):
               
     """
 
-    def __init__(self, curve=None, selection=None, spline_type='POLY', label=None):
+    def __init__(self, curve=None, selection=None, spline_type='POLY', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveSplineType', name='Set Spline Type', label=label)
+        super().__init__('GeometryNodeCurveSplineType', name='Set Spline Type', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.spline_type     = spline_type
@@ -3169,7 +3205,7 @@ class Star(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None, label=None)
+            node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None, label=None, node_color=None)
             ```
             
             
@@ -3190,6 +3226,7 @@ class Star(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -3207,9 +3244,9 @@ class Star(Node):
               
     """
 
-    def __init__(self, points=None, inner_radius=None, outer_radius=None, twist=None, label=None):
+    def __init__(self, points=None, inner_radius=None, outer_radius=None, twist=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveStar', name='Star', label=label)
+        super().__init__('GeometryNodeCurveStar', name='Star', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, points)
@@ -3242,7 +3279,7 @@ class CurveToMesh(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None, label=None)
+            node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None, label=None, node_color=None)
             ```
             
             
@@ -3262,6 +3299,7 @@ class CurveToMesh(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -3278,9 +3316,9 @@ class CurveToMesh(Node):
               
     """
 
-    def __init__(self, curve=None, profile_curve=None, fill_caps=None, label=None):
+    def __init__(self, curve=None, profile_curve=None, fill_caps=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveToMesh', name='Curve to Mesh', label=label)
+        super().__init__('GeometryNodeCurveToMesh', name='Curve to Mesh', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, curve)
@@ -3311,7 +3349,7 @@ class CurveToPoints(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT', label=None)
+            node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT', label=None, node_color=None)
             ```
             
             
@@ -3336,6 +3374,7 @@ class CurveToPoints(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -3355,9 +3394,9 @@ class CurveToPoints(Node):
               
     """
 
-    def __init__(self, curve=None, count=None, length=None, mode='COUNT', label=None):
+    def __init__(self, curve=None, count=None, length=None, mode='COUNT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveToPoints', name='Curve to Points', label=label)
+        super().__init__('GeometryNodeCurveToPoints', name='Curve to Points', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.mode            = mode
@@ -3403,7 +3442,7 @@ class DeleteGeometry(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode='ALL', label=None)
+            node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode='ALL', label=None, node_color=None)
             ```
             
             
@@ -3428,6 +3467,7 @@ class DeleteGeometry(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -3444,9 +3484,9 @@ class DeleteGeometry(Node):
               
     """
 
-    def __init__(self, geometry=None, selection=None, domain='POINT', mode='ALL', label=None):
+    def __init__(self, geometry=None, selection=None, domain='POINT', mode='ALL', label=None, node_color=None):
 
-        super().__init__('GeometryNodeDeleteGeometry', name='Delete Geometry', label=label)
+        super().__init__('GeometryNodeDeleteGeometry', name='Delete Geometry', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.domain          = domain
@@ -3497,7 +3537,7 @@ class DistributePointsOnFaces(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None)
+            node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None, node_color=None)
             ```
             
             
@@ -3526,6 +3566,7 @@ class DistributePointsOnFaces(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -3544,9 +3585,9 @@ class DistributePointsOnFaces(Node):
               
     """
 
-    def __init__(self, mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None):
+    def __init__(self, mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None, node_color=None):
 
-        super().__init__('GeometryNodeDistributePointsOnFaces', name='Distribute Points on Faces', label=label)
+        super().__init__('GeometryNodeDistributePointsOnFaces', name='Distribute Points on Faces', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.distribute_method = distribute_method
@@ -3595,7 +3636,7 @@ class DualMesh(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.DualMesh(mesh=None, keep_boundaries=None, label=None)
+            node = nodes.DualMesh(mesh=None, keep_boundaries=None, label=None, node_color=None)
             ```
             
             
@@ -3614,6 +3655,7 @@ class DualMesh(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -3630,9 +3672,9 @@ class DualMesh(Node):
               
     """
 
-    def __init__(self, mesh=None, keep_boundaries=None, label=None):
+    def __init__(self, mesh=None, keep_boundaries=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeDualMesh', name='Dual Mesh', label=label)
+        super().__init__('GeometryNodeDualMesh', name='Dual Mesh', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, mesh)
@@ -3662,7 +3704,7 @@ class DuplicateElements(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domain='POINT', label=None)
+            node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domain='POINT', label=None, node_color=None)
             ```
             
             
@@ -3687,6 +3729,7 @@ class DuplicateElements(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -3695,9 +3738,9 @@ class DuplicateElements(Node):
             - duplicate_index : Integer
     """
 
-    def __init__(self, geometry=None, selection=None, amount=None, domain='POINT', label=None):
+    def __init__(self, geometry=None, selection=None, amount=None, domain='POINT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeDuplicateElements', name='Duplicate Elements', label=label)
+        super().__init__('GeometryNodeDuplicateElements', name='Duplicate Elements', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.domain          = domain
@@ -3741,7 +3784,7 @@ class ExtrudeMesh(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES', label=None)
+            node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES', label=None, node_color=None)
             ```
             
             
@@ -3768,6 +3811,7 @@ class ExtrudeMesh(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -3786,9 +3830,9 @@ class ExtrudeMesh(Node):
               
     """
 
-    def __init__(self, mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES', label=None):
+    def __init__(self, mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES', label=None, node_color=None):
 
-        super().__init__('GeometryNodeExtrudeMesh', name='Extrude Mesh', label=label)
+        super().__init__('GeometryNodeExtrudeMesh', name='Extrude Mesh', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.mode            = mode
@@ -3835,7 +3879,7 @@ class FieldAtIndex(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.FieldAtIndex(index=None, value=None, data_type='FLOAT', domain='POINT', label=None)
+            node = nodes.FieldAtIndex(index=None, value=None, data_type='FLOAT', domain='POINT', label=None, node_color=None)
             ```
             
             
@@ -3860,6 +3904,7 @@ class FieldAtIndex(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Data type dependant sockets
@@ -3889,9 +3934,9 @@ class FieldAtIndex(Node):
               
     """
 
-    def __init__(self, index=None, value=None, data_type='FLOAT', domain='POINT', label=None):
+    def __init__(self, index=None, value=None, data_type='FLOAT', domain='POINT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeFieldAtIndex', name='Field at Index', label=label)
+        super().__init__('GeometryNodeFieldAtIndex', name='Field at Index', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.data_type       = data_type
@@ -3962,7 +4007,7 @@ class FillCurve(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.FillCurve(curve=None, mode='TRIANGLES', label=None)
+            node = nodes.FillCurve(curve=None, mode='TRIANGLES', label=None, node_color=None)
             ```
             
             
@@ -3985,6 +4030,7 @@ class FillCurve(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -4001,9 +4047,9 @@ class FillCurve(Node):
               
     """
 
-    def __init__(self, curve=None, mode='TRIANGLES', label=None):
+    def __init__(self, curve=None, mode='TRIANGLES', label=None, node_color=None):
 
-        super().__init__('GeometryNodeFillCurve', name='Fill Curve', label=label)
+        super().__init__('GeometryNodeFillCurve', name='Fill Curve', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.mode            = mode
@@ -4044,7 +4090,7 @@ class FilletCurve(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER', label=None)
+            node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER', label=None, node_color=None)
             ```
             
             
@@ -4070,6 +4116,7 @@ class FilletCurve(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -4086,9 +4133,9 @@ class FilletCurve(Node):
               
     """
 
-    def __init__(self, curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER', label=None):
+    def __init__(self, curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER', label=None, node_color=None):
 
-        super().__init__('GeometryNodeFilletCurve', name='Fillet Curve', label=label)
+        super().__init__('GeometryNodeFilletCurve', name='Fillet Curve', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.mode            = mode
@@ -4132,7 +4179,7 @@ class FlipFaces(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.FlipFaces(mesh=None, selection=None, label=None)
+            node = nodes.FlipFaces(mesh=None, selection=None, label=None, node_color=None)
             ```
             
             
@@ -4151,6 +4198,7 @@ class FlipFaces(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -4167,9 +4215,9 @@ class FlipFaces(Node):
               
     """
 
-    def __init__(self, mesh=None, selection=None, label=None):
+    def __init__(self, mesh=None, selection=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeFlipFaces', name='Flip Faces', label=label)
+        super().__init__('GeometryNodeFlipFaces', name='Flip Faces', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, mesh)
@@ -4199,7 +4247,7 @@ class GeometryToInstance(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.GeometryToInstance(*geometry, label=None)
+            node = nodes.GeometryToInstance(*geometry, label=None, node_color=None)
             ```
             
             
@@ -4217,6 +4265,7 @@ class GeometryToInstance(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -4233,9 +4282,9 @@ class GeometryToInstance(Node):
               
     """
 
-    def __init__(self, *geometry, label=None):
+    def __init__(self, *geometry, label=None, node_color=None):
 
-        super().__init__('GeometryNodeGeometryToInstance', name='Geometry to Instance', label=label)
+        super().__init__('GeometryNodeGeometryToInstance', name='Geometry to Instance', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, *geometry)
@@ -4264,7 +4313,7 @@ class Group(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Group(label=None)
+            node = nodes.Group(label=None, node_color=None)
             ```
             
             
@@ -4277,11 +4326,12 @@ class Group(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeGroup', name='Group', label=label)
+        super().__init__('GeometryNodeGroup', name='Group', label=label, node_color=node_color)
         self.output_sockets  = {}
 
 # ----------------------------------------------------------------------------------------------------
@@ -4303,7 +4353,7 @@ class ImageTexture(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', label=None)
+            node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', label=None, node_color=None)
             ```
             
             
@@ -4329,6 +4379,7 @@ class ImageTexture(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -4346,9 +4397,9 @@ class ImageTexture(Node):
               
     """
 
-    def __init__(self, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', label=None):
+    def __init__(self, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', label=None, node_color=None):
 
-        super().__init__('GeometryNodeImageTexture', name='Image Texture', label=label)
+        super().__init__('GeometryNodeImageTexture', name='Image Texture', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.extension       = extension
@@ -4401,7 +4452,7 @@ class CurveHandlePositions(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.CurveHandlePositions(relative=None, label=None)
+            node = nodes.CurveHandlePositions(relative=None, label=None, node_color=None)
             ```
             
             
@@ -4419,6 +4470,7 @@ class CurveHandlePositions(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -4438,9 +4490,9 @@ class CurveHandlePositions(Node):
               
     """
 
-    def __init__(self, relative=None, label=None):
+    def __init__(self, relative=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputCurveHandlePositions', name='Curve Handle Positions', label=label)
+        super().__init__('GeometryNodeInputCurveHandlePositions', name='Curve Handle Positions', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, relative)
@@ -4470,7 +4522,7 @@ class CurveTilt(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.CurveTilt(label=None)
+            node = nodes.CurveTilt(label=None, node_color=None)
             ```
             
             
@@ -4483,6 +4535,7 @@ class CurveTilt(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -4500,9 +4553,9 @@ class CurveTilt(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputCurveTilt', name='Curve Tilt', label=label)
+        super().__init__('GeometryNodeInputCurveTilt', name='Curve Tilt', label=label, node_color=node_color)
         # Output sockets
 
         self.tilt            = self.Float(self.bnode.outputs[0])
@@ -4527,7 +4580,7 @@ class ID(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.ID(label=None)
+            node = nodes.ID(label=None, node_color=None)
             ```
             
             
@@ -4540,6 +4593,7 @@ class ID(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -4558,9 +4612,9 @@ class ID(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputID', name='ID', label=label)
+        super().__init__('GeometryNodeInputID', name='ID', label=label, node_color=node_color)
         # Output sockets
 
         self.ID              = self.Integer(self.bnode.outputs[0])
@@ -4585,7 +4639,7 @@ class Index(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Index(label=None)
+            node = nodes.Index(label=None, node_color=None)
             ```
             
             
@@ -4598,6 +4652,7 @@ class Index(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -4618,9 +4673,9 @@ class Index(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputIndex', name='Index', label=label)
+        super().__init__('GeometryNodeInputIndex', name='Index', label=label, node_color=node_color)
         # Output sockets
 
         self.index           = self.Integer(self.bnode.outputs[0])
@@ -4645,7 +4700,7 @@ class Material(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Material(label=None)
+            node = nodes.Material(label=None, node_color=None)
             ```
             
             
@@ -4658,6 +4713,7 @@ class Material(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -4665,9 +4721,9 @@ class Material(Node):
             - material : Material
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMaterial', name='Material', label=label)
+        super().__init__('GeometryNodeInputMaterial', name='Material', label=label, node_color=node_color)
         # Output sockets
 
         self.material        = self.Material(self.bnode.outputs[0])
@@ -4692,7 +4748,7 @@ class MaterialIndex(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.MaterialIndex(label=None)
+            node = nodes.MaterialIndex(label=None, node_color=None)
             ```
             
             
@@ -4705,6 +4761,7 @@ class MaterialIndex(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -4722,9 +4779,9 @@ class MaterialIndex(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMaterialIndex', name='Material Index', label=label)
+        super().__init__('GeometryNodeInputMaterialIndex', name='Material Index', label=label, node_color=node_color)
         # Output sockets
 
         self.material_index  = self.Integer(self.bnode.outputs[0])
@@ -4749,7 +4806,7 @@ class EdgeAngle(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.EdgeAngle(label=None)
+            node = nodes.EdgeAngle(label=None, node_color=None)
             ```
             
             
@@ -4762,6 +4819,7 @@ class EdgeAngle(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -4790,9 +4848,9 @@ class EdgeAngle(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMeshEdgeAngle', name='Edge Angle', label=label)
+        super().__init__('GeometryNodeInputMeshEdgeAngle', name='Edge Angle', label=label, node_color=node_color)
         # Output sockets
 
         self.unsigned_angle  = self.Float(self.bnode.outputs[0])
@@ -4818,7 +4876,7 @@ class EdgeNeighbors(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.EdgeNeighbors(label=None)
+            node = nodes.EdgeNeighbors(label=None, node_color=None)
             ```
             
             
@@ -4831,6 +4889,7 @@ class EdgeNeighbors(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -4848,9 +4907,9 @@ class EdgeNeighbors(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMeshEdgeNeighbors', name='Edge Neighbors', label=label)
+        super().__init__('GeometryNodeInputMeshEdgeNeighbors', name='Edge Neighbors', label=label, node_color=node_color)
         # Output sockets
 
         self.face_count      = self.Integer(self.bnode.outputs[0])
@@ -4875,7 +4934,7 @@ class EdgeVertices(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.EdgeVertices(label=None)
+            node = nodes.EdgeVertices(label=None, node_color=None)
             ```
             
             
@@ -4888,6 +4947,7 @@ class EdgeVertices(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -4911,9 +4971,9 @@ class EdgeVertices(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMeshEdgeVertices', name='Edge Vertices', label=label)
+        super().__init__('GeometryNodeInputMeshEdgeVertices', name='Edge Vertices', label=label, node_color=node_color)
         # Output sockets
 
         self.vertex_index_1  = self.Integer(self.bnode.outputs[0])
@@ -4941,7 +5001,7 @@ class FaceArea(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.FaceArea(label=None)
+            node = nodes.FaceArea(label=None, node_color=None)
             ```
             
             
@@ -4954,6 +5014,7 @@ class FaceArea(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -4971,9 +5032,9 @@ class FaceArea(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMeshFaceArea', name='Face Area', label=label)
+        super().__init__('GeometryNodeInputMeshFaceArea', name='Face Area', label=label, node_color=node_color)
         # Output sockets
 
         self.area            = self.Float(self.bnode.outputs[0])
@@ -4998,7 +5059,7 @@ class FaceIsPlanar(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.FaceIsPlanar(threshold=None, label=None)
+            node = nodes.FaceIsPlanar(threshold=None, label=None, node_color=None)
             ```
             
             
@@ -5016,6 +5077,7 @@ class FaceIsPlanar(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -5023,9 +5085,9 @@ class FaceIsPlanar(Node):
             - planar : Boolean
     """
 
-    def __init__(self, threshold=None, label=None):
+    def __init__(self, threshold=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMeshFaceIsPlanar', name='Face is Planar', label=label)
+        super().__init__('GeometryNodeInputMeshFaceIsPlanar', name='Face is Planar', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, threshold)
@@ -5054,7 +5116,7 @@ class FaceNeighbors(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.FaceNeighbors(label=None)
+            node = nodes.FaceNeighbors(label=None, node_color=None)
             ```
             
             
@@ -5067,6 +5129,7 @@ class FaceNeighbors(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -5086,9 +5149,9 @@ class FaceNeighbors(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMeshFaceNeighbors', name='Face Neighbors', label=label)
+        super().__init__('GeometryNodeInputMeshFaceNeighbors', name='Face Neighbors', label=label, node_color=node_color)
         # Output sockets
 
         self.vertex_count    = self.Integer(self.bnode.outputs[0])
@@ -5114,7 +5177,7 @@ class MeshIsland(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.MeshIsland(label=None)
+            node = nodes.MeshIsland(label=None, node_color=None)
             ```
             
             
@@ -5127,6 +5190,7 @@ class MeshIsland(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -5145,9 +5209,9 @@ class MeshIsland(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMeshIsland', name='Mesh Island', label=label)
+        super().__init__('GeometryNodeInputMeshIsland', name='Mesh Island', label=label, node_color=node_color)
         # Output sockets
 
         self.island_index    = self.Integer(self.bnode.outputs[0])
@@ -5173,7 +5237,7 @@ class VertexNeighbors(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.VertexNeighbors(label=None)
+            node = nodes.VertexNeighbors(label=None, node_color=None)
             ```
             
             
@@ -5186,6 +5250,7 @@ class VertexNeighbors(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -5205,9 +5270,9 @@ class VertexNeighbors(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMeshVertexNeighbors', name='Vertex Neighbors', label=label)
+        super().__init__('GeometryNodeInputMeshVertexNeighbors', name='Vertex Neighbors', label=label, node_color=node_color)
         # Output sockets
 
         self.vertex_count    = self.Integer(self.bnode.outputs[0])
@@ -5233,7 +5298,7 @@ class NamedAttribute(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.NamedAttribute(name=None, data_type='FLOAT', label=None)
+            node = nodes.NamedAttribute(name=None, data_type='FLOAT', label=None, node_color=None)
             ```
             
             
@@ -5256,6 +5321,7 @@ class NamedAttribute(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Data type dependant sockets
@@ -5272,9 +5338,9 @@ class NamedAttribute(Node):
             - attribute : data_type dependant
     """
 
-    def __init__(self, name=None, data_type='FLOAT', label=None):
+    def __init__(self, name=None, data_type='FLOAT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputNamedAttribute', name='Named Attribute', label=label)
+        super().__init__('GeometryNodeInputNamedAttribute', name='Named Attribute', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.data_type       = data_type
@@ -5326,7 +5392,7 @@ class Normal(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Normal(label=None)
+            node = nodes.Normal(label=None, node_color=None)
             ```
             
             
@@ -5339,6 +5405,7 @@ class Normal(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -5356,9 +5423,9 @@ class Normal(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputNormal', name='Normal', label=label)
+        super().__init__('GeometryNodeInputNormal', name='Normal', label=label, node_color=node_color)
         # Output sockets
 
         self.normal          = self.Vector(self.bnode.outputs[0])
@@ -5383,7 +5450,7 @@ class Position(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Position(label=None)
+            node = nodes.Position(label=None, node_color=None)
             ```
             
             
@@ -5396,6 +5463,7 @@ class Position(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -5413,9 +5481,9 @@ class Position(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputPosition', name='Position', label=label)
+        super().__init__('GeometryNodeInputPosition', name='Position', label=label, node_color=node_color)
         # Output sockets
 
         self.position        = self.Vector(self.bnode.outputs[0])
@@ -5440,7 +5508,7 @@ class Radius(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Radius(label=None)
+            node = nodes.Radius(label=None, node_color=None)
             ```
             
             
@@ -5453,6 +5521,7 @@ class Radius(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -5470,9 +5539,9 @@ class Radius(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputRadius', name='Radius', label=label)
+        super().__init__('GeometryNodeInputRadius', name='Radius', label=label, node_color=node_color)
         # Output sockets
 
         self.radius          = self.Float(self.bnode.outputs[0])
@@ -5497,7 +5566,7 @@ class SceneTime(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SceneTime(label=None)
+            node = nodes.SceneTime(label=None, node_color=None)
             ```
             
             
@@ -5510,6 +5579,7 @@ class SceneTime(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -5527,9 +5597,9 @@ class SceneTime(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputSceneTime', name='Scene Time', label=label)
+        super().__init__('GeometryNodeInputSceneTime', name='Scene Time', label=label, node_color=node_color)
         # Output sockets
 
         self.seconds         = self.Float(self.bnode.outputs[0])
@@ -5555,7 +5625,7 @@ class IsShadeSmooth(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.IsShadeSmooth(label=None)
+            node = nodes.IsShadeSmooth(label=None, node_color=None)
             ```
             
             
@@ -5568,6 +5638,7 @@ class IsShadeSmooth(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -5585,9 +5656,9 @@ class IsShadeSmooth(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputShadeSmooth', name='Is Shade Smooth', label=label)
+        super().__init__('GeometryNodeInputShadeSmooth', name='Is Shade Smooth', label=label, node_color=node_color)
         # Output sockets
 
         self.smooth          = self.Boolean(self.bnode.outputs[0])
@@ -5612,7 +5683,7 @@ class IsSplineCyclic(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.IsSplineCyclic(label=None)
+            node = nodes.IsSplineCyclic(label=None, node_color=None)
             ```
             
             
@@ -5625,6 +5696,7 @@ class IsSplineCyclic(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -5642,9 +5714,9 @@ class IsSplineCyclic(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputSplineCyclic', name='Is Spline Cyclic', label=label)
+        super().__init__('GeometryNodeInputSplineCyclic', name='Is Spline Cyclic', label=label, node_color=node_color)
         # Output sockets
 
         self.cyclic          = self.Boolean(self.bnode.outputs[0])
@@ -5669,7 +5741,7 @@ class SplineResolution(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SplineResolution(label=None)
+            node = nodes.SplineResolution(label=None, node_color=None)
             ```
             
             
@@ -5682,6 +5754,7 @@ class SplineResolution(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -5699,9 +5772,9 @@ class SplineResolution(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputSplineResolution', name='Spline Resolution', label=label)
+        super().__init__('GeometryNodeInputSplineResolution', name='Spline Resolution', label=label, node_color=node_color)
         # Output sockets
 
         self.resolution      = self.Integer(self.bnode.outputs[0])
@@ -5726,7 +5799,7 @@ class CurveTangent(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.CurveTangent(label=None)
+            node = nodes.CurveTangent(label=None, node_color=None)
             ```
             
             
@@ -5739,6 +5812,7 @@ class CurveTangent(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -5756,9 +5830,9 @@ class CurveTangent(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputTangent', name='Curve Tangent', label=label)
+        super().__init__('GeometryNodeInputTangent', name='Curve Tangent', label=label, node_color=node_color)
         # Output sockets
 
         self.tangent         = self.Vector(self.bnode.outputs[0])
@@ -5783,7 +5857,7 @@ class InstanceOnPoints(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, label=None)
+            node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, label=None, node_color=None)
             ```
             
             
@@ -5807,6 +5881,7 @@ class InstanceOnPoints(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -5823,9 +5898,9 @@ class InstanceOnPoints(Node):
               
     """
 
-    def __init__(self, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, label=None):
+    def __init__(self, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInstanceOnPoints', name='Instance on Points', label=label)
+        super().__init__('GeometryNodeInstanceOnPoints', name='Instance on Points', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, points)
@@ -5860,7 +5935,7 @@ class InstancesToPoints(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.InstancesToPoints(instances=None, selection=None, position=None, radius=None, label=None)
+            node = nodes.InstancesToPoints(instances=None, selection=None, position=None, radius=None, label=None, node_color=None)
             ```
             
             
@@ -5881,6 +5956,7 @@ class InstancesToPoints(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -5897,9 +5973,9 @@ class InstancesToPoints(Node):
               
     """
 
-    def __init__(self, instances=None, selection=None, position=None, radius=None, label=None):
+    def __init__(self, instances=None, selection=None, position=None, radius=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInstancesToPoints', name='Instances to Points', label=label)
+        super().__init__('GeometryNodeInstancesToPoints', name='Instances to Points', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, instances)
@@ -5931,7 +6007,7 @@ class IsViewport(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.IsViewport(label=None)
+            node = nodes.IsViewport(label=None, node_color=None)
             ```
             
             
@@ -5944,6 +6020,7 @@ class IsViewport(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -5960,9 +6037,9 @@ class IsViewport(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeIsViewport', name='Is Viewport', label=label)
+        super().__init__('GeometryNodeIsViewport', name='Is Viewport', label=label, node_color=node_color)
         # Output sockets
 
         self.is_viewport     = self.Boolean(self.bnode.outputs[0])
@@ -5987,7 +6064,7 @@ class JoinGeometry(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.JoinGeometry(*geometry, label=None)
+            node = nodes.JoinGeometry(*geometry, label=None, node_color=None)
             ```
             
             
@@ -6005,6 +6082,7 @@ class JoinGeometry(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -6021,9 +6099,9 @@ class JoinGeometry(Node):
               
     """
 
-    def __init__(self, *geometry, label=None):
+    def __init__(self, *geometry, label=None, node_color=None):
 
-        super().__init__('GeometryNodeJoinGeometry', name='Join Geometry', label=label)
+        super().__init__('GeometryNodeJoinGeometry', name='Join Geometry', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, *geometry)
@@ -6052,7 +6130,7 @@ class MaterialSelection(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.MaterialSelection(material=None, label=None)
+            node = nodes.MaterialSelection(material=None, label=None, node_color=None)
             ```
             
             
@@ -6070,6 +6148,7 @@ class MaterialSelection(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -6088,9 +6167,9 @@ class MaterialSelection(Node):
               
     """
 
-    def __init__(self, material=None, label=None):
+    def __init__(self, material=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeMaterialSelection', name='Material Selection', label=label)
+        super().__init__('GeometryNodeMaterialSelection', name='Material Selection', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, material)
@@ -6119,7 +6198,7 @@ class MergeByDistance(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode='ALL', label=None)
+            node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode='ALL', label=None, node_color=None)
             ```
             
             
@@ -6144,6 +6223,7 @@ class MergeByDistance(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -6160,9 +6240,9 @@ class MergeByDistance(Node):
               
     """
 
-    def __init__(self, geometry=None, selection=None, distance=None, mode='ALL', label=None):
+    def __init__(self, geometry=None, selection=None, distance=None, mode='ALL', label=None, node_color=None):
 
-        super().__init__('GeometryNodeMergeByDistance', name='Merge by Distance', label=label)
+        super().__init__('GeometryNodeMergeByDistance', name='Merge by Distance', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.mode            = mode
@@ -6205,7 +6285,7 @@ class MeshBoolean(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', label=None)
+            node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', label=None, node_color=None)
             ```
             
             
@@ -6231,6 +6311,7 @@ class MeshBoolean(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -6249,9 +6330,9 @@ class MeshBoolean(Node):
               
     """
 
-    def __init__(self, *mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', label=None):
+    def __init__(self, *mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshBoolean', name='Mesh Boolean', label=label)
+        super().__init__('GeometryNodeMeshBoolean', name='Mesh Boolean', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.operation       = operation
@@ -6295,7 +6376,7 @@ class MeshCircle(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE', label=None)
+            node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE', label=None, node_color=None)
             ```
             
             
@@ -6319,6 +6400,7 @@ class MeshCircle(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -6335,9 +6417,9 @@ class MeshCircle(Node):
               
     """
 
-    def __init__(self, vertices=None, radius=None, fill_type='NONE', label=None):
+    def __init__(self, vertices=None, radius=None, fill_type='NONE', label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshCircle', name='Mesh Circle', label=label)
+        super().__init__('GeometryNodeMeshCircle', name='Mesh Circle', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.fill_type       = fill_type
@@ -6379,7 +6461,7 @@ class Cone(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', label=None)
+            node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', label=None, node_color=None)
             ```
             
             
@@ -6407,6 +6489,7 @@ class Cone(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -6426,9 +6509,9 @@ class Cone(Node):
               
     """
 
-    def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', label=None):
+    def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshCone', name='Cone', label=label)
+        super().__init__('GeometryNodeMeshCone', name='Cone', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.fill_type       = fill_type
@@ -6477,7 +6560,7 @@ class Cube(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, label=None)
+            node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, label=None, node_color=None)
             ```
             
             
@@ -6498,6 +6581,7 @@ class Cube(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -6514,9 +6598,9 @@ class Cube(Node):
               
     """
 
-    def __init__(self, size=None, vertices_x=None, vertices_y=None, vertices_z=None, label=None):
+    def __init__(self, size=None, vertices_x=None, vertices_y=None, vertices_z=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshCube', name='Cube', label=label)
+        super().__init__('GeometryNodeMeshCube', name='Cube', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, size)
@@ -6548,7 +6632,7 @@ class Cylinder(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', label=None)
+            node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', label=None, node_color=None)
             ```
             
             
@@ -6575,6 +6659,7 @@ class Cylinder(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -6594,9 +6679,9 @@ class Cylinder(Node):
               
     """
 
-    def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', label=None):
+    def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshCylinder', name='Cylinder', label=label)
+        super().__init__('GeometryNodeMeshCylinder', name='Cylinder', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.fill_type       = fill_type
@@ -6644,7 +6729,7 @@ class Grid(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, label=None)
+            node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, label=None, node_color=None)
             ```
             
             
@@ -6665,6 +6750,7 @@ class Grid(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -6681,9 +6767,9 @@ class Grid(Node):
               
     """
 
-    def __init__(self, size_x=None, size_y=None, vertices_x=None, vertices_y=None, label=None):
+    def __init__(self, size_x=None, size_y=None, vertices_x=None, vertices_y=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshGrid', name='Grid', label=label)
+        super().__init__('GeometryNodeMeshGrid', name='Grid', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, size_x)
@@ -6715,7 +6801,7 @@ class IcoSphere(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.IcoSphere(radius=None, subdivisions=None, label=None)
+            node = nodes.IcoSphere(radius=None, subdivisions=None, label=None, node_color=None)
             ```
             
             
@@ -6734,6 +6820,7 @@ class IcoSphere(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -6750,9 +6837,9 @@ class IcoSphere(Node):
               
     """
 
-    def __init__(self, radius=None, subdivisions=None, label=None):
+    def __init__(self, radius=None, subdivisions=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshIcoSphere', name='Ico Sphere', label=label)
+        super().__init__('GeometryNodeMeshIcoSphere', name='Ico Sphere', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, radius)
@@ -6782,7 +6869,7 @@ class MeshLine(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', label=None)
+            node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', label=None, node_color=None)
             ```
             
             
@@ -6809,6 +6896,7 @@ class MeshLine(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -6825,9 +6913,9 @@ class MeshLine(Node):
               
     """
 
-    def __init__(self, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', label=None):
+    def __init__(self, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshLine', name='Mesh Line', label=label)
+        super().__init__('GeometryNodeMeshLine', name='Mesh Line', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.count_mode      = count_mode
@@ -6880,7 +6968,7 @@ class MeshToCurve(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.MeshToCurve(mesh=None, selection=None, label=None)
+            node = nodes.MeshToCurve(mesh=None, selection=None, label=None, node_color=None)
             ```
             
             
@@ -6899,6 +6987,7 @@ class MeshToCurve(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -6915,9 +7004,9 @@ class MeshToCurve(Node):
               
     """
 
-    def __init__(self, mesh=None, selection=None, label=None):
+    def __init__(self, mesh=None, selection=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshToCurve', name='Mesh to Curve', label=label)
+        super().__init__('GeometryNodeMeshToCurve', name='Mesh to Curve', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, mesh)
@@ -6947,7 +7036,7 @@ class MeshToPoints(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None)
+            node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None, node_color=None)
             ```
             
             
@@ -6973,6 +7062,7 @@ class MeshToPoints(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -6989,9 +7079,9 @@ class MeshToPoints(Node):
               
     """
 
-    def __init__(self, mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None):
+    def __init__(self, mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshToPoints', name='Mesh to Points', label=label)
+        super().__init__('GeometryNodeMeshToPoints', name='Mesh to Points', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.mode            = mode
@@ -7035,7 +7125,7 @@ class UvSphere(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.UvSphere(segments=None, rings=None, radius=None, label=None)
+            node = nodes.UvSphere(segments=None, rings=None, radius=None, label=None, node_color=None)
             ```
             
             
@@ -7055,6 +7145,7 @@ class UvSphere(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -7071,9 +7162,9 @@ class UvSphere(Node):
               
     """
 
-    def __init__(self, segments=None, rings=None, radius=None, label=None):
+    def __init__(self, segments=None, rings=None, radius=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshUVSphere', name='UV Sphere', label=label)
+        super().__init__('GeometryNodeMeshUVSphere', name='UV Sphere', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, segments)
@@ -7104,7 +7195,7 @@ class ObjectInfo(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL', label=None)
+            node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL', label=None, node_color=None)
             ```
             
             
@@ -7128,6 +7219,7 @@ class ObjectInfo(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -7151,9 +7243,9 @@ class ObjectInfo(Node):
               
     """
 
-    def __init__(self, object=None, as_instance=None, transform_space='ORIGINAL', label=None):
+    def __init__(self, object=None, as_instance=None, transform_space='ORIGINAL', label=None, node_color=None):
 
-        super().__init__('GeometryNodeObjectInfo', name='Object Info', label=label)
+        super().__init__('GeometryNodeObjectInfo', name='Object Info', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.transform_space = transform_space
@@ -7198,7 +7290,7 @@ class PointsToVertices(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.PointsToVertices(points=None, selection=None, label=None)
+            node = nodes.PointsToVertices(points=None, selection=None, label=None, node_color=None)
             ```
             
             
@@ -7217,6 +7309,7 @@ class PointsToVertices(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -7233,9 +7326,9 @@ class PointsToVertices(Node):
               
     """
 
-    def __init__(self, points=None, selection=None, label=None):
+    def __init__(self, points=None, selection=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodePointsToVertices', name='Points to Vertices', label=label)
+        super().__init__('GeometryNodePointsToVertices', name='Points to Vertices', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, points)
@@ -7265,7 +7358,7 @@ class PointsToVolume(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', label=None)
+            node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', label=None, node_color=None)
             ```
             
             
@@ -7292,6 +7385,7 @@ class PointsToVolume(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -7308,9 +7402,9 @@ class PointsToVolume(Node):
               
     """
 
-    def __init__(self, points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', label=None):
+    def __init__(self, points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', label=None, node_color=None):
 
-        super().__init__('GeometryNodePointsToVolume', name='Points to Volume', label=label)
+        super().__init__('GeometryNodePointsToVolume', name='Points to Volume', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.resolution_mode = resolution_mode
@@ -7355,7 +7449,7 @@ class GeometryProximity(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.GeometryProximity(target=None, source_position=None, target_element='FACES', label=None)
+            node = nodes.GeometryProximity(target=None, source_position=None, target_element='FACES', label=None, node_color=None)
             ```
             
             
@@ -7379,6 +7473,7 @@ class GeometryProximity(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -7396,9 +7491,9 @@ class GeometryProximity(Node):
               
     """
 
-    def __init__(self, target=None, source_position=None, target_element='FACES', label=None):
+    def __init__(self, target=None, source_position=None, target_element='FACES', label=None, node_color=None):
 
-        super().__init__('GeometryNodeProximity', name='Geometry Proximity', label=label)
+        super().__init__('GeometryNodeProximity', name='Geometry Proximity', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.target_element  = target_element
@@ -7441,7 +7536,7 @@ class Raycast(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED', label=None)
+            node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED', label=None, node_color=None)
             ```
             
             
@@ -7469,6 +7564,7 @@ class Raycast(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Data type dependant sockets
@@ -7502,9 +7598,9 @@ class Raycast(Node):
               
     """
 
-    def __init__(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED', label=None):
+    def __init__(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED', label=None, node_color=None):
 
-        super().__init__('GeometryNodeRaycast', name='Raycast', label=label)
+        super().__init__('GeometryNodeRaycast', name='Raycast', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.data_type       = data_type
@@ -7582,7 +7678,7 @@ class RealizeInstances(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None)
+            node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None, node_color=None)
             ```
             
             
@@ -7605,6 +7701,7 @@ class RealizeInstances(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -7621,9 +7718,9 @@ class RealizeInstances(Node):
               
     """
 
-    def __init__(self, geometry=None, legacy_behavior=False, label=None):
+    def __init__(self, geometry=None, legacy_behavior=False, label=None, node_color=None):
 
-        super().__init__('GeometryNodeRealizeInstances', name='Realize Instances', label=label)
+        super().__init__('GeometryNodeRealizeInstances', name='Realize Instances', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.legacy_behavior = legacy_behavior
@@ -7664,7 +7761,7 @@ class RemoveNamedAttribute(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.RemoveNamedAttribute(geometry=None, name=None, label=None)
+            node = nodes.RemoveNamedAttribute(geometry=None, name=None, label=None, node_color=None)
             ```
             
             
@@ -7683,6 +7780,7 @@ class RemoveNamedAttribute(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -7699,9 +7797,9 @@ class RemoveNamedAttribute(Node):
               
     """
 
-    def __init__(self, geometry=None, name=None, label=None):
+    def __init__(self, geometry=None, name=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeRemoveAttribute', name='Remove Named Attribute', label=label)
+        super().__init__('GeometryNodeRemoveAttribute', name='Remove Named Attribute', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, geometry)
@@ -7731,7 +7829,7 @@ class ReplaceMaterial(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.ReplaceMaterial(geometry=None, old=None, new=None, label=None)
+            node = nodes.ReplaceMaterial(geometry=None, old=None, new=None, label=None, node_color=None)
             ```
             
             
@@ -7751,6 +7849,7 @@ class ReplaceMaterial(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -7767,9 +7866,9 @@ class ReplaceMaterial(Node):
               
     """
 
-    def __init__(self, geometry=None, old=None, new=None, label=None):
+    def __init__(self, geometry=None, old=None, new=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeReplaceMaterial', name='Replace Material', label=label)
+        super().__init__('GeometryNodeReplaceMaterial', name='Replace Material', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, geometry)
@@ -7800,7 +7899,7 @@ class ResampleCurve(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, mode='COUNT', label=None)
+            node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, mode='COUNT', label=None, node_color=None)
             ```
             
             
@@ -7826,6 +7925,7 @@ class ResampleCurve(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -7842,9 +7942,9 @@ class ResampleCurve(Node):
               
     """
 
-    def __init__(self, curve=None, selection=None, count=None, length=None, mode='COUNT', label=None):
+    def __init__(self, curve=None, selection=None, count=None, length=None, mode='COUNT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeResampleCurve', name='Resample Curve', label=label)
+        super().__init__('GeometryNodeResampleCurve', name='Resample Curve', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.mode            = mode
@@ -7888,7 +7988,7 @@ class ReverseCurve(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.ReverseCurve(curve=None, selection=None, label=None)
+            node = nodes.ReverseCurve(curve=None, selection=None, label=None, node_color=None)
             ```
             
             
@@ -7907,6 +8007,7 @@ class ReverseCurve(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -7923,9 +8024,9 @@ class ReverseCurve(Node):
               
     """
 
-    def __init__(self, curve=None, selection=None, label=None):
+    def __init__(self, curve=None, selection=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeReverseCurve', name='Reverse Curve', label=label)
+        super().__init__('GeometryNodeReverseCurve', name='Reverse Curve', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, curve)
@@ -7955,7 +8056,7 @@ class RotateInstances(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, label=None)
+            node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, label=None, node_color=None)
             ```
             
             
@@ -7977,6 +8078,7 @@ class RotateInstances(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -7993,9 +8095,9 @@ class RotateInstances(Node):
               
     """
 
-    def __init__(self, instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, label=None):
+    def __init__(self, instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeRotateInstances', name='Rotate Instances', label=label)
+        super().__init__('GeometryNodeRotateInstances', name='Rotate Instances', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, instances)
@@ -8028,7 +8130,7 @@ class SampleCurve(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SampleCurve(curve=None, factor=None, length=None, mode='LENGTH', label=None)
+            node = nodes.SampleCurve(curve=None, factor=None, length=None, mode='LENGTH', label=None, node_color=None)
             ```
             
             
@@ -8053,6 +8155,7 @@ class SampleCurve(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -8071,9 +8174,9 @@ class SampleCurve(Node):
               
     """
 
-    def __init__(self, curve=None, factor=None, length=None, mode='LENGTH', label=None):
+    def __init__(self, curve=None, factor=None, length=None, mode='LENGTH', label=None, node_color=None):
 
-        super().__init__('GeometryNodeSampleCurve', name='Sample Curve', label=label)
+        super().__init__('GeometryNodeSampleCurve', name='Sample Curve', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.mode            = mode
@@ -8118,7 +8221,7 @@ class ScaleElements(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', label=None)
+            node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', label=None, node_color=None)
             ```
             
             
@@ -8146,6 +8249,7 @@ class ScaleElements(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -8162,9 +8266,9 @@ class ScaleElements(Node):
               
     """
 
-    def __init__(self, geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', label=None):
+    def __init__(self, geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', label=None, node_color=None):
 
-        super().__init__('GeometryNodeScaleElements', name='Scale Elements', label=label)
+        super().__init__('GeometryNodeScaleElements', name='Scale Elements', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.domain          = domain
@@ -8218,7 +8322,7 @@ class ScaleInstances(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=None, local_space=None, label=None)
+            node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=None, local_space=None, label=None, node_color=None)
             ```
             
             
@@ -8240,6 +8344,7 @@ class ScaleInstances(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -8256,9 +8361,9 @@ class ScaleInstances(Node):
               
     """
 
-    def __init__(self, instances=None, selection=None, scale=None, center=None, local_space=None, label=None):
+    def __init__(self, instances=None, selection=None, scale=None, center=None, local_space=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeScaleInstances', name='Scale Instances', label=label)
+        super().__init__('GeometryNodeScaleInstances', name='Scale Instances', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, instances)
@@ -8291,7 +8396,7 @@ class SeparateComponents(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SeparateComponents(geometry=None, label=None)
+            node = nodes.SeparateComponents(geometry=None, label=None, node_color=None)
             ```
             
             
@@ -8309,6 +8414,7 @@ class SeparateComponents(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -8334,9 +8440,9 @@ class SeparateComponents(Node):
               
     """
 
-    def __init__(self, geometry=None, label=None):
+    def __init__(self, geometry=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSeparateComponents', name='Separate Components', label=label)
+        super().__init__('GeometryNodeSeparateComponents', name='Separate Components', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, geometry)
@@ -8369,7 +8475,7 @@ class SeparateGeometry(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT', label=None)
+            node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT', label=None, node_color=None)
             ```
             
             
@@ -8393,6 +8499,7 @@ class SeparateGeometry(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -8410,9 +8517,9 @@ class SeparateGeometry(Node):
               
     """
 
-    def __init__(self, geometry=None, selection=None, domain='POINT', label=None):
+    def __init__(self, geometry=None, selection=None, domain='POINT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeSeparateGeometry', name='Separate Geometry', label=label)
+        super().__init__('GeometryNodeSeparateGeometry', name='Separate Geometry', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.domain          = domain
@@ -8455,7 +8562,7 @@ class SetHandlePositions(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offset=None, mode='LEFT', label=None)
+            node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offset=None, mode='LEFT', label=None, node_color=None)
             ```
             
             
@@ -8481,6 +8588,7 @@ class SetHandlePositions(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -8497,9 +8605,9 @@ class SetHandlePositions(Node):
               
     """
 
-    def __init__(self, curve=None, selection=None, position=None, offset=None, mode='LEFT', label=None):
+    def __init__(self, curve=None, selection=None, position=None, offset=None, mode='LEFT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetCurveHandlePositions', name='Set Handle Positions', label=label)
+        super().__init__('GeometryNodeSetCurveHandlePositions', name='Set Handle Positions', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.mode            = mode
@@ -8543,7 +8651,7 @@ class SetCurveRadius(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetCurveRadius(curve=None, selection=None, radius=None, label=None)
+            node = nodes.SetCurveRadius(curve=None, selection=None, radius=None, label=None, node_color=None)
             ```
             
             
@@ -8563,6 +8671,7 @@ class SetCurveRadius(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -8579,9 +8688,9 @@ class SetCurveRadius(Node):
               
     """
 
-    def __init__(self, curve=None, selection=None, radius=None, label=None):
+    def __init__(self, curve=None, selection=None, radius=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetCurveRadius', name='Set Curve Radius', label=label)
+        super().__init__('GeometryNodeSetCurveRadius', name='Set Curve Radius', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, curve)
@@ -8612,7 +8721,7 @@ class SetCurveTilt(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None, label=None)
+            node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None, label=None, node_color=None)
             ```
             
             
@@ -8632,6 +8741,7 @@ class SetCurveTilt(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -8648,9 +8758,9 @@ class SetCurveTilt(Node):
               
     """
 
-    def __init__(self, curve=None, selection=None, tilt=None, label=None):
+    def __init__(self, curve=None, selection=None, tilt=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetCurveTilt', name='Set Curve Tilt', label=label)
+        super().__init__('GeometryNodeSetCurveTilt', name='Set Curve Tilt', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, curve)
@@ -8681,7 +8791,7 @@ class SetID(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetID(geometry=None, selection=None, ID=None, label=None)
+            node = nodes.SetID(geometry=None, selection=None, ID=None, label=None, node_color=None)
             ```
             
             
@@ -8701,6 +8811,7 @@ class SetID(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -8717,9 +8828,9 @@ class SetID(Node):
               
     """
 
-    def __init__(self, geometry=None, selection=None, ID=None, label=None):
+    def __init__(self, geometry=None, selection=None, ID=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetID', name='Set ID', label=label)
+        super().__init__('GeometryNodeSetID', name='Set ID', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, geometry)
@@ -8750,7 +8861,7 @@ class SetMaterial(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetMaterial(geometry=None, selection=None, material=None, label=None)
+            node = nodes.SetMaterial(geometry=None, selection=None, material=None, label=None, node_color=None)
             ```
             
             
@@ -8770,6 +8881,7 @@ class SetMaterial(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -8786,9 +8898,9 @@ class SetMaterial(Node):
               
     """
 
-    def __init__(self, geometry=None, selection=None, material=None, label=None):
+    def __init__(self, geometry=None, selection=None, material=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetMaterial', name='Set Material', label=label)
+        super().__init__('GeometryNodeSetMaterial', name='Set Material', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, geometry)
@@ -8819,7 +8931,7 @@ class SetMaterialIndex(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None, label=None)
+            node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None, label=None, node_color=None)
             ```
             
             
@@ -8839,6 +8951,7 @@ class SetMaterialIndex(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -8855,9 +8968,9 @@ class SetMaterialIndex(Node):
               
     """
 
-    def __init__(self, geometry=None, selection=None, material_index=None, label=None):
+    def __init__(self, geometry=None, selection=None, material_index=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetMaterialIndex', name='Set Material Index', label=label)
+        super().__init__('GeometryNodeSetMaterialIndex', name='Set Material Index', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, geometry)
@@ -8888,7 +9001,7 @@ class SetPointRadius(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetPointRadius(points=None, selection=None, radius=None, label=None)
+            node = nodes.SetPointRadius(points=None, selection=None, radius=None, label=None, node_color=None)
             ```
             
             
@@ -8908,6 +9021,7 @@ class SetPointRadius(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -8924,9 +9038,9 @@ class SetPointRadius(Node):
               
     """
 
-    def __init__(self, points=None, selection=None, radius=None, label=None):
+    def __init__(self, points=None, selection=None, radius=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetPointRadius', name='Set Point Radius', label=label)
+        super().__init__('GeometryNodeSetPointRadius', name='Set Point Radius', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, points)
@@ -8957,7 +9071,7 @@ class SetPosition(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=None, label=None)
+            node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=None, label=None, node_color=None)
             ```
             
             
@@ -8978,6 +9092,7 @@ class SetPosition(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -8994,9 +9109,9 @@ class SetPosition(Node):
               
     """
 
-    def __init__(self, geometry=None, selection=None, position=None, offset=None, label=None):
+    def __init__(self, geometry=None, selection=None, position=None, offset=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetPosition', name='Set Position', label=label)
+        super().__init__('GeometryNodeSetPosition', name='Set Position', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, geometry)
@@ -9028,7 +9143,7 @@ class SetShadeSmooth(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, label=None)
+            node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, label=None, node_color=None)
             ```
             
             
@@ -9048,6 +9163,7 @@ class SetShadeSmooth(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -9064,9 +9180,9 @@ class SetShadeSmooth(Node):
               
     """
 
-    def __init__(self, geometry=None, selection=None, shade_smooth=None, label=None):
+    def __init__(self, geometry=None, selection=None, shade_smooth=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetShadeSmooth', name='Set Shade Smooth', label=label)
+        super().__init__('GeometryNodeSetShadeSmooth', name='Set Shade Smooth', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, geometry)
@@ -9097,7 +9213,7 @@ class SetSplineCyclic(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None, label=None)
+            node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None, label=None, node_color=None)
             ```
             
             
@@ -9117,6 +9233,7 @@ class SetSplineCyclic(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -9133,9 +9250,9 @@ class SetSplineCyclic(Node):
               
     """
 
-    def __init__(self, geometry=None, selection=None, cyclic=None, label=None):
+    def __init__(self, geometry=None, selection=None, cyclic=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetSplineCyclic', name='Set Spline Cyclic', label=label)
+        super().__init__('GeometryNodeSetSplineCyclic', name='Set Spline Cyclic', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, geometry)
@@ -9166,7 +9283,7 @@ class SetSplineResolution(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None, label=None)
+            node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None, label=None, node_color=None)
             ```
             
             
@@ -9186,6 +9303,7 @@ class SetSplineResolution(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -9202,9 +9320,9 @@ class SetSplineResolution(Node):
               
     """
 
-    def __init__(self, geometry=None, selection=None, resolution=None, label=None):
+    def __init__(self, geometry=None, selection=None, resolution=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetSplineResolution', name='Set Spline Resolution', label=label)
+        super().__init__('GeometryNodeSetSplineResolution', name='Set Spline Resolution', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, geometry)
@@ -9235,7 +9353,7 @@ class SplineLength(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SplineLength(label=None)
+            node = nodes.SplineLength(label=None, node_color=None)
             ```
             
             
@@ -9248,6 +9366,7 @@ class SplineLength(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -9267,9 +9386,9 @@ class SplineLength(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSplineLength', name='Spline Length', label=label)
+        super().__init__('GeometryNodeSplineLength', name='Spline Length', label=label, node_color=node_color)
         # Output sockets
 
         self.length          = self.Float(self.bnode.outputs[0])
@@ -9295,7 +9414,7 @@ class SplineParameter(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SplineParameter(label=None)
+            node = nodes.SplineParameter(label=None, node_color=None)
             ```
             
             
@@ -9308,6 +9427,7 @@ class SplineParameter(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -9329,9 +9449,9 @@ class SplineParameter(Node):
               
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSplineParameter', name='Spline Parameter', label=label)
+        super().__init__('GeometryNodeSplineParameter', name='Spline Parameter', label=label, node_color=node_color)
         # Output sockets
 
         self.factor          = self.Float(self.bnode.outputs[0])
@@ -9358,7 +9478,7 @@ class SplitEdges(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SplitEdges(mesh=None, selection=None, label=None)
+            node = nodes.SplitEdges(mesh=None, selection=None, label=None, node_color=None)
             ```
             
             
@@ -9377,6 +9497,7 @@ class SplitEdges(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -9393,9 +9514,9 @@ class SplitEdges(Node):
               
     """
 
-    def __init__(self, mesh=None, selection=None, label=None):
+    def __init__(self, mesh=None, selection=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSplitEdges', name='Split Edges', label=label)
+        super().__init__('GeometryNodeSplitEdges', name='Split Edges', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, mesh)
@@ -9425,7 +9546,7 @@ class StoreNamedAttribute(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type='FLOAT', domain='POINT', label=None)
+            node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type='FLOAT', domain='POINT', label=None, node_color=None)
             ```
             
             
@@ -9451,6 +9572,7 @@ class StoreNamedAttribute(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Data type dependant sockets
@@ -9467,9 +9589,9 @@ class StoreNamedAttribute(Node):
             - geometry : Geometry
     """
 
-    def __init__(self, geometry=None, name=None, value=None, data_type='FLOAT', domain='POINT', label=None):
+    def __init__(self, geometry=None, name=None, value=None, data_type='FLOAT', domain='POINT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeStoreNamedAttribute', name='Store Named Attribute', label=label)
+        super().__init__('GeometryNodeStoreNamedAttribute', name='Store Named Attribute', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.data_type       = data_type
@@ -9534,7 +9656,7 @@ class JoinStrings(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.JoinStrings(*strings, delimiter=None, label=None)
+            node = nodes.JoinStrings(*strings, delimiter=None, label=None, node_color=None)
             ```
             
             
@@ -9553,6 +9675,7 @@ class JoinStrings(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -9570,9 +9693,9 @@ class JoinStrings(Node):
               
     """
 
-    def __init__(self, *strings, delimiter=None, label=None):
+    def __init__(self, *strings, delimiter=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeStringJoin', name='Join Strings', label=label)
+        super().__init__('GeometryNodeStringJoin', name='Join Strings', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(1, *strings)
@@ -9602,7 +9725,7 @@ class StringToCurves(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT', label=None)
+            node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT', label=None, node_color=None)
             ```
             
             
@@ -9634,6 +9757,7 @@ class StringToCurves(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -9653,9 +9777,9 @@ class StringToCurves(Node):
               
     """
 
-    def __init__(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT', label=None):
+    def __init__(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeStringToCurves', name='String to Curves', label=label)
+        super().__init__('GeometryNodeStringToCurves', name='String to Curves', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.align_x         = align_x
@@ -9732,7 +9856,7 @@ class SubdivideCurve(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SubdivideCurve(curve=None, cuts=None, label=None)
+            node = nodes.SubdivideCurve(curve=None, cuts=None, label=None, node_color=None)
             ```
             
             
@@ -9751,6 +9875,7 @@ class SubdivideCurve(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -9767,9 +9892,9 @@ class SubdivideCurve(Node):
               
     """
 
-    def __init__(self, curve=None, cuts=None, label=None):
+    def __init__(self, curve=None, cuts=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSubdivideCurve', name='Subdivide Curve', label=label)
+        super().__init__('GeometryNodeSubdivideCurve', name='Subdivide Curve', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, curve)
@@ -9799,7 +9924,7 @@ class SubdivideMesh(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SubdivideMesh(mesh=None, level=None, label=None)
+            node = nodes.SubdivideMesh(mesh=None, level=None, label=None, node_color=None)
             ```
             
             
@@ -9818,6 +9943,7 @@ class SubdivideMesh(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -9834,9 +9960,9 @@ class SubdivideMesh(Node):
               
     """
 
-    def __init__(self, mesh=None, level=None, label=None):
+    def __init__(self, mesh=None, level=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSubdivideMesh', name='Subdivide Mesh', label=label)
+        super().__init__('GeometryNodeSubdivideMesh', name='Subdivide Mesh', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, mesh)
@@ -9866,7 +9992,7 @@ class SubdivisionSurface(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SubdivisionSurface(mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None)
+            node = nodes.SubdivisionSurface(mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None, node_color=None)
             ```
             
             
@@ -9892,6 +10018,7 @@ class SubdivisionSurface(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -9908,9 +10035,9 @@ class SubdivisionSurface(Node):
               
     """
 
-    def __init__(self, mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None):
+    def __init__(self, mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None, node_color=None):
 
-        super().__init__('GeometryNodeSubdivisionSurface', name='Subdivision Surface', label=label)
+        super().__init__('GeometryNodeSubdivisionSurface', name='Subdivision Surface', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.boundary_smooth = boundary_smooth
@@ -9962,7 +10089,7 @@ class Switch(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Switch(switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', label=None)
+            node = nodes.Switch(switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', label=None, node_color=None)
             ```
             
             
@@ -9988,6 +10115,7 @@ class Switch(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Data type dependant sockets
@@ -10022,9 +10150,9 @@ class Switch(Node):
               
     """
 
-    def __init__(self, switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', label=None):
+    def __init__(self, switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', label=None, node_color=None):
 
-        super().__init__('GeometryNodeSwitch', name='Switch', label=label)
+        super().__init__('GeometryNodeSwitch', name='Switch', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.input_type      = input_type
@@ -10127,7 +10255,7 @@ class Transform(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=None, label=None)
+            node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=None, label=None, node_color=None)
             ```
             
             
@@ -10148,6 +10276,7 @@ class Transform(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -10164,9 +10293,9 @@ class Transform(Node):
               
     """
 
-    def __init__(self, geometry=None, translation=None, rotation=None, scale=None, label=None):
+    def __init__(self, geometry=None, translation=None, rotation=None, scale=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeTransform', name='Transform', label=label)
+        super().__init__('GeometryNodeTransform', name='Transform', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, geometry)
@@ -10198,7 +10327,7 @@ class TranslateInstances(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.TranslateInstances(instances=None, selection=None, translation=None, local_space=None, label=None)
+            node = nodes.TranslateInstances(instances=None, selection=None, translation=None, local_space=None, label=None, node_color=None)
             ```
             
             
@@ -10219,6 +10348,7 @@ class TranslateInstances(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -10235,9 +10365,9 @@ class TranslateInstances(Node):
               
     """
 
-    def __init__(self, instances=None, selection=None, translation=None, local_space=None, label=None):
+    def __init__(self, instances=None, selection=None, translation=None, local_space=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeTranslateInstances', name='Translate Instances', label=label)
+        super().__init__('GeometryNodeTranslateInstances', name='Translate Instances', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, instances)
@@ -10269,7 +10399,7 @@ class Triangulate(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', label=None)
+            node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', label=None, node_color=None)
             ```
             
             
@@ -10295,6 +10425,7 @@ class Triangulate(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -10311,9 +10442,9 @@ class Triangulate(Node):
               
     """
 
-    def __init__(self, mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', label=None):
+    def __init__(self, mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', label=None, node_color=None):
 
-        super().__init__('GeometryNodeTriangulate', name='Triangulate', label=label)
+        super().__init__('GeometryNodeTriangulate', name='Triangulate', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.ngon_method     = ngon_method
@@ -10365,7 +10496,7 @@ class TrimCurve(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR', label=None)
+            node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR', label=None, node_color=None)
             ```
             
             
@@ -10392,6 +10523,7 @@ class TrimCurve(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -10408,9 +10540,9 @@ class TrimCurve(Node):
               
     """
 
-    def __init__(self, curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR', label=None):
+    def __init__(self, curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR', label=None, node_color=None):
 
-        super().__init__('GeometryNodeTrimCurve', name='Trim Curve', label=label)
+        super().__init__('GeometryNodeTrimCurve', name='Trim Curve', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.mode            = mode
@@ -10455,7 +10587,7 @@ class VolumeToMesh(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.VolumeToMesh(volume=None, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID', label=None)
+            node = nodes.VolumeToMesh(volume=None, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID', label=None, node_color=None)
             ```
             
             
@@ -10482,6 +10614,7 @@ class VolumeToMesh(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -10498,9 +10631,9 @@ class VolumeToMesh(Node):
               
     """
 
-    def __init__(self, volume=None, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID', label=None):
+    def __init__(self, volume=None, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID', label=None, node_color=None):
 
-        super().__init__('GeometryNodeVolumeToMesh', name='Volume to Mesh', label=label)
+        super().__init__('GeometryNodeVolumeToMesh', name='Volume to Mesh', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.resolution_mode = resolution_mode
@@ -10545,7 +10678,7 @@ class Clamp(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX', label=None)
+            node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX', label=None, node_color=None)
             ```
             
             
@@ -10570,6 +10703,7 @@ class Clamp(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -10586,9 +10720,9 @@ class Clamp(Node):
               
     """
 
-    def __init__(self, value=None, min=None, max=None, clamp_type='MINMAX', label=None):
+    def __init__(self, value=None, min=None, max=None, clamp_type='MINMAX', label=None, node_color=None):
 
-        super().__init__('ShaderNodeClamp', name='Clamp', label=label)
+        super().__init__('ShaderNodeClamp', name='Clamp', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.clamp_type      = clamp_type
@@ -10631,7 +10765,7 @@ class CombineRgb(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.CombineRgb(r=None, g=None, b=None, label=None)
+            node = nodes.CombineRgb(r=None, g=None, b=None, label=None, node_color=None)
             ```
             
             
@@ -10651,6 +10785,7 @@ class CombineRgb(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -10667,9 +10802,9 @@ class CombineRgb(Node):
               
     """
 
-    def __init__(self, r=None, g=None, b=None, label=None):
+    def __init__(self, r=None, g=None, b=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeCombineRGB', name='Combine RGB', label=label)
+        super().__init__('ShaderNodeCombineRGB', name='Combine RGB', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, r)
@@ -10700,7 +10835,7 @@ class CombineXyz(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.CombineXyz(x=None, y=None, z=None, label=None)
+            node = nodes.CombineXyz(x=None, y=None, z=None, label=None, node_color=None)
             ```
             
             
@@ -10720,6 +10855,7 @@ class CombineXyz(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -10736,9 +10872,9 @@ class CombineXyz(Node):
               
     """
 
-    def __init__(self, x=None, y=None, z=None, label=None):
+    def __init__(self, x=None, y=None, z=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeCombineXYZ', name='Combine XYZ', label=label)
+        super().__init__('ShaderNodeCombineXYZ', name='Combine XYZ', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, x)
@@ -10769,7 +10905,7 @@ class FloatCurve(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.FloatCurve(factor=None, value=None, label=None)
+            node = nodes.FloatCurve(factor=None, value=None, label=None, node_color=None)
             ```
             
             
@@ -10788,6 +10924,7 @@ class FloatCurve(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -10804,9 +10941,9 @@ class FloatCurve(Node):
               
     """
 
-    def __init__(self, factor=None, value=None, label=None):
+    def __init__(self, factor=None, value=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeFloatCurve', name='Float Curve', label=label)
+        super().__init__('ShaderNodeFloatCurve', name='Float Curve', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, factor)
@@ -10836,7 +10973,7 @@ class MapRange(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, vector=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', label=None)
+            node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, vector=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', label=None, node_color=None)
             ```
             
             
@@ -10867,6 +11004,7 @@ class MapRange(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Data type dependant sockets
@@ -10894,9 +11032,9 @@ class MapRange(Node):
               
     """
 
-    def __init__(self, value=None, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, vector=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', label=None):
+    def __init__(self, value=None, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, vector=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', label=None, node_color=None):
 
-        super().__init__('ShaderNodeMapRange', name='Map Range', label=label)
+        super().__init__('ShaderNodeMapRange', name='Map Range', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.clamp           = clamp
@@ -10969,7 +11107,7 @@ class Math(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=None)
+            node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=None, node_color=None)
             ```
             
             
@@ -10994,6 +11132,7 @@ class Math(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -11129,9 +11268,9 @@ class Math(Node):
               
     """
 
-    def __init__(self, value0=None, value1=None, value2=None, operation='ADD', label=None):
+    def __init__(self, value0=None, value1=None, value2=None, operation='ADD', label=None, node_color=None):
 
-        super().__init__('ShaderNodeMath', name='Math', label=label)
+        super().__init__('ShaderNodeMath', name='Math', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.operation       = operation
@@ -11174,7 +11313,7 @@ class Mix(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Mix(color1=None, color2=None, fac=None, blend_type='MIX', use_alpha=False, label=None)
+            node = nodes.Mix(color1=None, color2=None, fac=None, blend_type='MIX', use_alpha=False, label=None, node_color=None)
             ```
             
             
@@ -11200,6 +11339,7 @@ class Mix(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -11252,9 +11392,9 @@ class Mix(Node):
               
     """
 
-    def __init__(self, color1=None, color2=None, fac=None, blend_type='MIX', use_alpha=False, label=None):
+    def __init__(self, color1=None, color2=None, fac=None, blend_type='MIX', use_alpha=False, label=None, node_color=None):
 
-        super().__init__('ShaderNodeMixRGB', name='Mix', label=label)
+        super().__init__('ShaderNodeMixRGB', name='Mix', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.blend_type      = blend_type
@@ -11306,7 +11446,7 @@ class RgbCurves(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.RgbCurves(fac=None, color=None, label=None)
+            node = nodes.RgbCurves(fac=None, color=None, label=None, node_color=None)
             ```
             
             
@@ -11325,6 +11465,7 @@ class RgbCurves(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -11341,9 +11482,9 @@ class RgbCurves(Node):
               
     """
 
-    def __init__(self, fac=None, color=None, label=None):
+    def __init__(self, fac=None, color=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeRGBCurve', name='RGB Curves', label=label)
+        super().__init__('ShaderNodeRGBCurve', name='RGB Curves', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, fac)
@@ -11373,7 +11514,7 @@ class SeparateRgb(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SeparateRgb(image=None, label=None)
+            node = nodes.SeparateRgb(image=None, label=None, node_color=None)
             ```
             
             
@@ -11391,6 +11532,7 @@ class SeparateRgb(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -11412,9 +11554,9 @@ class SeparateRgb(Node):
               
     """
 
-    def __init__(self, image=None, label=None):
+    def __init__(self, image=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeSeparateRGB', name='Separate RGB', label=label)
+        super().__init__('ShaderNodeSeparateRGB', name='Separate RGB', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, image)
@@ -11445,7 +11587,7 @@ class SeparateXyz(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SeparateXyz(vector=None, label=None)
+            node = nodes.SeparateXyz(vector=None, label=None, node_color=None)
             ```
             
             
@@ -11463,6 +11605,7 @@ class SeparateXyz(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -11484,9 +11627,9 @@ class SeparateXyz(Node):
               
     """
 
-    def __init__(self, vector=None, label=None):
+    def __init__(self, vector=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeSeparateXYZ', name='Separate XYZ', label=label)
+        super().__init__('ShaderNodeSeparateXYZ', name='Separate XYZ', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, vector)
@@ -11517,7 +11660,7 @@ class BrickTexture(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.BrickTexture(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, label=None)
+            node = nodes.BrickTexture(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, label=None, node_color=None)
             ```
             
             
@@ -11552,6 +11695,7 @@ class BrickTexture(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -11569,9 +11713,9 @@ class BrickTexture(Node):
               
     """
 
-    def __init__(self, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, label=None):
+    def __init__(self, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexBrick', name='Brick Texture', label=label)
+        super().__init__('ShaderNodeTexBrick', name='Brick Texture', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.offset          = offset
@@ -11649,7 +11793,7 @@ class CheckerTexture(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None, label=None)
+            node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None, label=None, node_color=None)
             ```
             
             
@@ -11670,6 +11814,7 @@ class CheckerTexture(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -11687,9 +11832,9 @@ class CheckerTexture(Node):
               
     """
 
-    def __init__(self, vector=None, color1=None, color2=None, scale=None, label=None):
+    def __init__(self, vector=None, color1=None, color2=None, scale=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexChecker', name='Checker Texture', label=label)
+        super().__init__('ShaderNodeTexChecker', name='Checker Texture', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, vector)
@@ -11722,7 +11867,7 @@ class GradientTexture(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.GradientTexture(vector=None, gradient_type='LINEAR', label=None)
+            node = nodes.GradientTexture(vector=None, gradient_type='LINEAR', label=None, node_color=None)
             ```
             
             
@@ -11745,6 +11890,7 @@ class GradientTexture(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -11762,9 +11908,9 @@ class GradientTexture(Node):
               
     """
 
-    def __init__(self, vector=None, gradient_type='LINEAR', label=None):
+    def __init__(self, vector=None, gradient_type='LINEAR', label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexGradient', name='Gradient Texture', label=label)
+        super().__init__('ShaderNodeTexGradient', name='Gradient Texture', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.gradient_type   = gradient_type
@@ -11806,7 +11952,7 @@ class MagicTexture(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_depth=2, label=None)
+            node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_depth=2, label=None, node_color=None)
             ```
             
             
@@ -11831,6 +11977,7 @@ class MagicTexture(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -11848,9 +11995,9 @@ class MagicTexture(Node):
               
     """
 
-    def __init__(self, vector=None, scale=None, distortion=None, turbulence_depth=2, label=None):
+    def __init__(self, vector=None, scale=None, distortion=None, turbulence_depth=2, label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexMagic', name='Magic Texture', label=label)
+        super().__init__('ShaderNodeTexMagic', name='Magic Texture', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.turbulence_depth = turbulence_depth
@@ -11894,7 +12041,7 @@ class MusgraveTexture(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM', label=None)
+            node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM', label=None, node_color=None)
             ```
             
             
@@ -11925,6 +12072,7 @@ class MusgraveTexture(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -11941,9 +12089,9 @@ class MusgraveTexture(Node):
               
     """
 
-    def __init__(self, vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM', label=None):
+    def __init__(self, vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM', label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexMusgrave', name='Musgrave Texture', label=label)
+        super().__init__('ShaderNodeTexMusgrave', name='Musgrave Texture', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.musgrave_dimensions = musgrave_dimensions
@@ -12000,7 +12148,7 @@ class NoiseTexture(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D', label=None)
+            node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D', label=None, node_color=None)
             ```
             
             
@@ -12028,6 +12176,7 @@ class NoiseTexture(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -12045,9 +12194,9 @@ class NoiseTexture(Node):
               
     """
 
-    def __init__(self, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D', label=None):
+    def __init__(self, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D', label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexNoise', name='Noise Texture', label=label)
+        super().__init__('ShaderNodeTexNoise', name='Noise Texture', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.noise_dimensions = noise_dimensions
@@ -12094,7 +12243,7 @@ class VoronoiTexture(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D', label=None)
+            node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D', label=None, node_color=None)
             ```
             
             
@@ -12124,6 +12273,7 @@ class VoronoiTexture(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -12144,9 +12294,9 @@ class VoronoiTexture(Node):
               
     """
 
-    def __init__(self, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D', label=None):
+    def __init__(self, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D', label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexVoronoi', name='Voronoi Texture', label=label)
+        super().__init__('ShaderNodeTexVoronoi', name='Voronoi Texture', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.distance        = distance
@@ -12214,7 +12364,7 @@ class WaveTexture(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS', label=None)
+            node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS', label=None, node_color=None)
             ```
             
             
@@ -12246,6 +12396,7 @@ class WaveTexture(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -12263,9 +12414,9 @@ class WaveTexture(Node):
               
     """
 
-    def __init__(self, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS', label=None):
+    def __init__(self, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS', label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexWave', name='Wave Texture', label=label)
+        super().__init__('ShaderNodeTexWave', name='Wave Texture', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.bands_direction = bands_direction
@@ -12340,7 +12491,7 @@ class WhiteNoiseTexture(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', label=None)
+            node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', label=None, node_color=None)
             ```
             
             
@@ -12364,6 +12515,7 @@ class WhiteNoiseTexture(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -12381,9 +12533,9 @@ class WhiteNoiseTexture(Node):
               
     """
 
-    def __init__(self, vector=None, w=None, noise_dimensions='3D', label=None):
+    def __init__(self, vector=None, w=None, noise_dimensions='3D', label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexWhiteNoise', name='White Noise Texture', label=label)
+        super().__init__('ShaderNodeTexWhiteNoise', name='White Noise Texture', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.noise_dimensions = noise_dimensions
@@ -12426,7 +12578,7 @@ class ColorRamp(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.ColorRamp(fac=None, label=None)
+            node = nodes.ColorRamp(fac=None, label=None, node_color=None)
             ```
             
             
@@ -12444,6 +12596,7 @@ class ColorRamp(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -12461,9 +12614,9 @@ class ColorRamp(Node):
               
     """
 
-    def __init__(self, fac=None, label=None):
+    def __init__(self, fac=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeValToRGB', name='ColorRamp', label=label)
+        super().__init__('ShaderNodeValToRGB', name='ColorRamp', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, fac)
@@ -12493,7 +12646,7 @@ class Value(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Value(label=None)
+            node = nodes.Value(label=None, node_color=None)
             ```
             
             
@@ -12506,6 +12659,7 @@ class Value(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -12513,9 +12667,9 @@ class Value(Node):
             - value : Float
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label=None, node_color=None):
 
-        super().__init__('ShaderNodeValue', name='Value', label=label)
+        super().__init__('ShaderNodeValue', name='Value', label=label, node_color=node_color)
         # Output sockets
 
         self.value           = self.Float(self.bnode.outputs[0])
@@ -12540,7 +12694,7 @@ class VectorCurves(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.VectorCurves(fac=None, vector=None, label=None)
+            node = nodes.VectorCurves(fac=None, vector=None, label=None, node_color=None)
             ```
             
             
@@ -12559,6 +12713,7 @@ class VectorCurves(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -12575,9 +12730,9 @@ class VectorCurves(Node):
               
     """
 
-    def __init__(self, fac=None, vector=None, label=None):
+    def __init__(self, fac=None, vector=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeVectorCurve', name='Vector Curves', label=label)
+        super().__init__('ShaderNodeVectorCurve', name='Vector Curves', label=label, node_color=node_color)
         # Input sockets
 
         self.plug(0, fac)
@@ -12607,7 +12762,7 @@ class VectorMath(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, operation='ADD', label=None)
+            node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, operation='ADD', label=None, node_color=None)
             ```
             
             
@@ -12633,6 +12788,7 @@ class VectorMath(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -12703,9 +12859,9 @@ class VectorMath(Node):
               
     """
 
-    def __init__(self, vector0=None, vector1=None, vector2=None, scale=None, operation='ADD', label=None):
+    def __init__(self, vector0=None, vector1=None, vector2=None, scale=None, operation='ADD', label=None, node_color=None):
 
-        super().__init__('ShaderNodeVectorMath', name='Vector Math', label=label)
+        super().__init__('ShaderNodeVectorMath', name='Vector Math', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.operation       = operation
@@ -12750,7 +12906,7 @@ class VectorRotate(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', label=None)
+            node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', label=None, node_color=None)
             ```
             
             
@@ -12778,6 +12934,7 @@ class VectorRotate(Node):
             Node label
             ----------
                 - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
     
 
         Output sockets
@@ -12794,9 +12951,9 @@ class VectorRotate(Node):
               
     """
 
-    def __init__(self, vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', label=None):
+    def __init__(self, vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', label=None, node_color=None):
 
-        super().__init__('ShaderNodeVectorRotate', name='Vector Rotate', label=label)
+        super().__init__('ShaderNodeVectorRotate', name='Vector Rotate', label=label, node_color=node_color)
         # Parameters
 
         self.bnode.invert          = invert

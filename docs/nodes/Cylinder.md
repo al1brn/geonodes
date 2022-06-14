@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', label=None)
+node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', label=None, node_color=None)
 ```
 
 
@@ -33,6 +33,7 @@ node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, rad
 ### Node label
 
 - label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
 
 ## Output sockets
 
