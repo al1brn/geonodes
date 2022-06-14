@@ -108,11 +108,12 @@ class Spline(gn.Geometry):
         """
 
         attr_name = 'capture_handle_positions_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.CurveHandlePositions(relative=relative, label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name)
+            self.attr_props[attr_name] = node
+        return node
 
     def capture_tangent(self, domain='CURVE', node_label = None, node_color = None):
         """ > Node: CurveTangent
@@ -150,11 +151,12 @@ class Spline(gn.Geometry):
         """
 
         attr_name = 'capture_tangent_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.CurveTangent(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).tangent
+            self.attr_props[attr_name] = node
+        return node.tangent
 
     def capture_tilt(self, domain='CURVE', node_label = None, node_color = None):
         """ > Node: CurveTilt
@@ -192,11 +194,12 @@ class Spline(gn.Geometry):
         """
 
         attr_name = 'capture_tilt_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.CurveTilt(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).tilt
+            self.attr_props[attr_name] = node
+        return node.tilt
 
     def capture_endpoint_selection(self, start_size=None, end_size=None, domain='CURVE', node_label = None, node_color = None):
         """ > Node: EndpointSelection
@@ -236,13 +239,14 @@ class Spline(gn.Geometry):
         """
 
         attr_name = 'capture_endpoint_selection_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.EndpointSelection(start_size=start_size, end_size=end_size, label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).selection
+            self.attr_props[attr_name] = node
+        return node.selection
 
-    def capture_handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, domain='CURVE', node_label = None, node_color = None):
+    def capture_handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, domain='CURVE', node_label = None, node_color = None):
         """ > Node: HandleTypeSelection
           
         <sub>go to: top index
@@ -259,7 +263,7 @@ class Spline(gn.Geometry):
             ## Parameters
             - self
             - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-            - mode : {'LEFT', 'RIGHT'}
+            - mode : {'RIGHT', 'LEFT'}
             - domain:'CURVE'
             - node_label : None
             - node_color : None
@@ -280,11 +284,12 @@ class Spline(gn.Geometry):
         """
 
         attr_name = 'capture_handle_type_selection_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.HandleTypeSelection(handle_type=handle_type, mode=mode, label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).selection
+            self.attr_props[attr_name] = node
+        return node.selection
 
     def capture_cyclic(self, domain='CURVE', node_label = None, node_color = None):
         """ > Node: IsSplineCyclic
@@ -322,11 +327,12 @@ class Spline(gn.Geometry):
         """
 
         attr_name = 'capture_cyclic_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.IsSplineCyclic(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).cyclic
+            self.attr_props[attr_name] = node
+        return node.cyclic
 
     def capture_length(self, domain='CURVE', node_label = None, node_color = None):
         """ > Node: SplineLength
@@ -364,11 +370,12 @@ class Spline(gn.Geometry):
         """
 
         attr_name = 'capture_length_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.SplineLength(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name)
+            self.attr_props[attr_name] = node
+        return node
 
     def capture_parameter(self, domain='CURVE', node_label = None, node_color = None):
         """ > Node: SplineParameter
@@ -406,11 +413,12 @@ class Spline(gn.Geometry):
         """
 
         attr_name = 'capture_parameter_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.SplineParameter(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name)
+            self.attr_props[attr_name] = node
+        return node
 
     def capture_resolution(self, domain='CURVE', node_label = None, node_color = None):
         """ > Node: SplineResolution
@@ -448,11 +456,12 @@ class Spline(gn.Geometry):
         """
 
         attr_name = 'capture_resolution_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.SplineResolution(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).resolution
+            self.attr_props[attr_name] = node
+        return node.resolution
 
 
     # ----------------------------------------------------------------------------------------------------
@@ -743,7 +752,7 @@ class Spline(gn.Geometry):
         return self.capture_endpoint_selection(domain='CURVE')
 
     @property
-    def handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+    def handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
         """ > Node: HandleTypeSelection
           
         <sub>go to: top index
@@ -760,7 +769,7 @@ class Spline(gn.Geometry):
             ## Parameters
             - self
             - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-            - mode : {'LEFT', 'RIGHT'}
+            - mode : {'RIGHT', 'LEFT'}
     
 
         Node creation

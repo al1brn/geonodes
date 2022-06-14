@@ -75,9 +75,15 @@ class Color(dsock.Color):
 
 
     def reset_properties(self):
+
+        super().reset_properties()
+
         self.separate_ = None
+
         self.r_ = None
+
         self.g_ = None
+
         self.b_ = None
 
     # ----------------------------------------------------------------------------------------------------

@@ -191,7 +191,7 @@ v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE'
 ## Parameters
 - self
 - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode : {'LEFT', 'RIGHT'}
+- mode : {'RIGHT', 'LEFT'}
 - domain:'CURVE'
 - node_label : None
 - node_color : None
@@ -589,7 +589,7 @@ v = spline.handle_type_selection(self, handle_type, mode)
 ## Parameters
 - self
 - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode : {'LEFT', 'RIGHT'}
+- mode : {'RIGHT', 'LEFT'}
 
 ### Node creation
 

@@ -44,10 +44,17 @@ class Object(dsock.Object):
 
 
     def reset_properties(self):
+
+        super().reset_properties()
+
         self.info_ = None
+
         self.location_ = None
+
         self.rotation_ = None
+
         self.scale_ = None
+
         self.geometry_ = None
 
     # ----------------------------------------------------------------------------------------------------

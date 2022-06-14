@@ -49,6 +49,9 @@ class String(dsock.String):
 
 
     def reset_properties(self):
+
+        super().reset_properties()
+
         self.length_ = None
 
     # ----------------------------------------------------------------------------------------------------

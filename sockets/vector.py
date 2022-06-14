@@ -93,9 +93,15 @@ class Vector(dsock.Vector):
 
 
     def reset_properties(self):
+
+        super().reset_properties()
+
         self.separate_ = None
+
         self.x_ = None
+
         self.y_ = None
+
         self.z_ = None
 
     # ----------------------------------------------------------------------------------------------------

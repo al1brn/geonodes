@@ -466,11 +466,12 @@ class Mesh(gn.Geometry):
         """
 
         attr_name = 'capture_edge_angle_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.EdgeAngle(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name)
+            self.attr_props[attr_name] = node
+        return node
 
     def capture_edge_neighbors(self, domain='EDGE', node_label = None, node_color = None):
         """ > Node: EdgeNeighbors
@@ -508,11 +509,12 @@ class Mesh(gn.Geometry):
         """
 
         attr_name = 'capture_edge_neighbors_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.EdgeNeighbors(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).face_count
+            self.attr_props[attr_name] = node
+        return node.face_count
 
     def capture_edge_vertices(self, domain='EDGE', node_label = None, node_color = None):
         """ > Node: EdgeVertices
@@ -550,11 +552,12 @@ class Mesh(gn.Geometry):
         """
 
         attr_name = 'capture_edge_vertices_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.EdgeVertices(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name)
+            self.attr_props[attr_name] = node
+        return node
 
     def capture_face_area(self, domain='FACE', node_label = None, node_color = None):
         """ > Node: FaceArea
@@ -592,11 +595,12 @@ class Mesh(gn.Geometry):
         """
 
         attr_name = 'capture_face_area_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.FaceArea(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).area
+            self.attr_props[attr_name] = node
+        return node.area
 
     def capture_face_neighbors(self, domain='FACE', node_label = None, node_color = None):
         """ > Node: FaceNeighbors
@@ -634,11 +638,12 @@ class Mesh(gn.Geometry):
         """
 
         attr_name = 'capture_face_neighbors_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.FaceNeighbors(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name)
+            self.attr_props[attr_name] = node
+        return node
 
     def capture_island(self, domain='POINT', node_label = None, node_color = None):
         """ > Node: MeshIsland
@@ -676,11 +681,12 @@ class Mesh(gn.Geometry):
         """
 
         attr_name = 'capture_island_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.MeshIsland(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name)
+            self.attr_props[attr_name] = node
+        return node
 
     def capture_shade_smooth(self, domain='FACE', node_label = None, node_color = None):
         """ > Node: IsShadeSmooth
@@ -718,11 +724,12 @@ class Mesh(gn.Geometry):
         """
 
         attr_name = 'capture_shade_smooth_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.IsShadeSmooth(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).smooth
+            self.attr_props[attr_name] = node
+        return node.smooth
 
     def capture_vertex_neighbors(self, domain='POINT', node_label = None, node_color = None):
         """ > Node: VertexNeighbors
@@ -760,11 +767,12 @@ class Mesh(gn.Geometry):
         """
 
         attr_name = 'capture_vertex_neighbors_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.VertexNeighbors(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name)
+            self.attr_props[attr_name] = node
+        return node
 
     def capture_material_index(self, domain='FACE', node_label = None, node_color = None):
         """ > Node: MaterialIndex
@@ -802,11 +810,12 @@ class Mesh(gn.Geometry):
         """
 
         attr_name = 'capture_material_index_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.MaterialIndex(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).material_index
+            self.attr_props[attr_name] = node
+        return node.material_index
 
     def capture_material_selection(self, material=None, domain='FACE', node_label = None, node_color = None):
         """ > Node: MaterialSelection
@@ -845,11 +854,12 @@ class Mesh(gn.Geometry):
         """
 
         attr_name = 'capture_material_selection_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.MaterialSelection(material=material, label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).selection
+            self.attr_props[attr_name] = node
+        return node.selection
 
 
     # ----------------------------------------------------------------------------------------------------

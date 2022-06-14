@@ -96,15 +96,27 @@ class Geometry(dsock.Geometry):
 
 
     def reset_properties(self):
+
+        super().reset_properties()
+
         self.bound_box_ = None
+
         self.box_ = None
+
         self.box_min_ = None
+
         self.box_max_ = None
+
         self.components_ = None
+
         self.mesh_component_ = None
+
         self.points_component_ = None
+
         self.curve_component_ = None
+
         self.volume_component_ = None
+
         self.instances_component_ = None
 
     # ----------------------------------------------------------------------------------------------------
@@ -554,11 +566,12 @@ class Geometry(dsock.Geometry):
         """
 
         attr_name = 'capture_ID_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.ID(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).ID
+            self.attr_props[attr_name] = node
+        return node.ID
 
     def capture_index(self, domain='POINT', node_label = None, node_color = None):
         """ > Node: Index
@@ -596,11 +609,12 @@ class Geometry(dsock.Geometry):
         """
 
         attr_name = 'capture_index_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.Index(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).index
+            self.attr_props[attr_name] = node
+        return node.index
 
     def capture_normal(self, domain='FACE', node_label = None, node_color = None):
         """ > Node: Normal
@@ -638,11 +652,12 @@ class Geometry(dsock.Geometry):
         """
 
         attr_name = 'capture_normal_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.Normal(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).normal
+            self.attr_props[attr_name] = node
+        return node.normal
 
     def capture_position(self, domain='POINT', node_label = None, node_color = None):
         """ > Node: Position
@@ -680,11 +695,12 @@ class Geometry(dsock.Geometry):
         """
 
         attr_name = 'capture_position_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.Position(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).position
+            self.attr_props[attr_name] = node
+        return node.position
 
     def capture_radius(self, domain='POINT', node_label = None, node_color = None):
         """ > Node: Radius
@@ -722,11 +738,12 @@ class Geometry(dsock.Geometry):
         """
 
         attr_name = 'capture_radius_' + domain
-        if not hasattr(self, attr_name):
+        node = self.attr_props.get(attr_name)
+        if node is None:
             node = nodes.Radius(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
-            setattr(self, attr_name, node)
-        return getattr(self, attr_name).radius
+            self.attr_props[attr_name] = node
+        return node.radius
 
 
     # ----------------------------------------------------------------------------------------------------

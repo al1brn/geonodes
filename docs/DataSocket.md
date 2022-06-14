@@ -6,7 +6,7 @@ DataSocket class, sub class and domain data type from socket bl_idname
 
 ## \_\_init\_\_
 
------ Ensure the properties are create
+----- Attributes (fields) are cached dynamically
 
 
 ## is_data_socket
@@ -193,19 +193,7 @@ This method can be used to implement specific code before connection
 
 ## reset_properties
 
-The DataSocket can have properties
-Reset the properties to None
-It is called at initialization time to create the properties
-
-class Vector(...):
-def __init__(self, ...):
-...
-self.reset_properties()
-...
-
-def reset_properties(self):
-super().reset_properties()
-self.separate_ = None      # Created by property self.seperate() with node SeparateXyz
+Reset the attribute properties dynamically created
 
 
 ## stack

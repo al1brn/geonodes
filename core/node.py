@@ -105,7 +105,11 @@ class DataSocket:
 
     def __init__(self, socket, node=None, label=None):
         
-        # ----- Ensure the properties are create
+        # ----- Attributes (fields) are cached dynamically
+        
+        self.attr_props = {}
+        
+        # ----- Ensure the properties are created
         
         self.reset_properties()
         
@@ -131,6 +135,9 @@ class DataSocket:
             
             if label is not None:
                 self.node.label = label
+                
+        
+                
         
     def __str__(self):
         snode = str(self.node)
@@ -438,7 +445,10 @@ class DataSocket:
     #         self.separate_ = None      # Created by property self.seperate() with node SeparateXyz
     
     def reset_properties(self):
-        pass
+        
+        # Reset the attribute properties dynamically created
+        
+        self.attr_props = {}
     
     # ----------------------------------------------------------------------------------------------------
     # > Utility changing the output sockets refered by the DataSocket instance
