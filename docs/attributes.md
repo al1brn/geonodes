@@ -65,3 +65,12 @@ The tree resulting from the second script is the following:
 
 <img src="/docs/images/fields_tree_3.png" height="250">
 
+Since the python script defined the `index` and `position` as property of the initial geometry (`v = geo.position`), it understand that a 'Capture Attribute' node is necessary to feed the blue node.
+
+On the illustration below, we can see the three resulting meshes with the same default cube as input:
+
+<img src="/docs/images/fields_comp.png" width="500">
+
+
+qslmdfjqlmsd
+
