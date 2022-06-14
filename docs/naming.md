@@ -17,9 +17,9 @@ Note that the Blender node 'ColorRamp' is strangely named in one word. This Came
 Output sockets are implemented as properties of node classes.
 Their python name is the **snake_case** of their name.
 Since, the most often, the socket names are single words, their python name is the lower case version of their name:
-- Geometry --> geomtry
-- Attribute --> attribute
-- Value --> value
+- Geometry -> **geometry**
+- Attribute -> **attribute**
+- Value -> **value**
 
 ## Data sockets
 
