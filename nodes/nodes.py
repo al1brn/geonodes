@@ -5365,6 +5365,15 @@ class NamedAttribute(Node):
         Output sockets
         --------------
             - attribute : data_type dependant
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - Geometry.capture_named_attribute : Capture attribute
+              
     """
 
     def __init__(self, name=None, data_type='FLOAT', label=None, node_color=None):
@@ -9616,6 +9625,15 @@ class StoreNamedAttribute(Node):
         Output sockets
         --------------
             - geometry : Geometry
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - Geometry.store_named_attribute : Method
+              
     """
 
     def __init__(self, geometry=None, name=None, value=None, data_type='FLOAT', domain='POINT', label=None, node_color=None):

@@ -51,6 +51,7 @@ class Geometry(dsock.Geometry):
         -----------------
             - capture_ID : ID (Integer)
             - capture_index : index (Integer)
+            - capture_named_attribute : attribute (data_type dependant)
             - capture_normal : normal (Vector)
             - capture_position : position (Vector)
             - capture_radius : radius (Float)
@@ -89,6 +90,7 @@ class Geometry(dsock.Geometry):
             - set_material_index : geometry (Geometry)
             - set_position : geometry (Geometry)
             - set_shade_smooth : geometry (Geometry)
+            - store_named_attribute : geometry (Geometry)
             - switch : output (Geometry)
             - to_instance : instances (Instances)
             - transfer_boolean : attribute (Boolean)
@@ -749,6 +751,47 @@ class Geometry(dsock.Geometry):
             node.as_attribute(owning_socket=self, domain=domain)
             self.attr_props[attr_name] = node
         return node.radius
+
+    def capture_named_attribute(self, name=None, data_type='FLOAT', domain='POINT', node_label = None, node_color = None):
+        """ > Node: NamedAttribute
+          
+        <sub>go to: top index
+        blender ref GeometryNodeInputNamedAttribute
+        node ref Named Attribute </sub>
+                                  
+        ```python
+        v = geometry.capture_named_attribute(self, name, data_type, domain='POINT', node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - name : String## Parameters
+            - self
+            - data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+            - domain:'POINT'
+            - node_label : None
+            - node_color : None
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.NamedAttribute(name=name, data_type=data_type, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            data_type dependant
+            
+        """
+
+        node = nodes.NamedAttribute(name=name, data_type=data_type, label=node_label, node_color=node_color)
+        node.as_attribute(owning_socket=self, domain=domain)
+        return node.attribute
 
 
     # ----------------------------------------------------------------------------------------------------
@@ -1844,6 +1887,46 @@ class Geometry(dsock.Geometry):
         """
 
         return self.stack(nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale, label=node_label, node_color=node_color))
+
+    def store_named_attribute(self, name=None, value=None, data_type='FLOAT', domain='POINT', node_label = None, node_color = None):
+        """ > Node: StoreNamedAttribute
+          
+        <sub>go to: top index
+        blender ref GeometryNodeStoreNamedAttribute
+        node ref Store Named Attribute </sub>
+                                  
+        ```python
+        v = geometry.store_named_attribute(name, value, data_type, domain, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - name : String
+            - value : Float## Parameters
+            - data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BYTE_COLOR, BOOLEAN]
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - node_label : None
+            - node_color : None
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type=data_type, domain=domain, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Geometry
+            
+        """
+
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type=data_type, domain=domain, label=node_label, node_color=node_color))
 
     def attribute_domain_size(self, component='MESH', node_label = None, node_color = None):
         """ > Node: DomainSize
