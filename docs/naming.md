@@ -85,10 +85,10 @@ Instances methods are named with the **snake_version** of the node name, but **r
 ```
 
 The following nodes are implemented as many times as their are possible value for their parameter:
-  - 'Math'
-  - 'Vector Math'
-  - 'Boolean Math'
-  - 'Mix RGB'
+  - [Math](/docs/nodes/Math.md)
+  - [Vector Math](/docs/nodes/VectorMath.md)
+  - [Boolean Math](/docs/nodes/BooleanMath.md)
+  - [Mix RGB](/docs/nodes/Mix.md)
 
 The mehod name is the **lower case** version of the operation value:
 - 'Math':
