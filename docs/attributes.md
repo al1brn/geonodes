@@ -16,7 +16,7 @@ In a Blender tree, the geometry a field belongs to is found by following the lin
 In **geonodes**, fields are implemented as properties of class Geometry.
 In the following example (extracted from
 [Blender documentation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/fields.html#field-context)),
-we need the [Index](/docs/nodes/Index.md) and the [Position](/docs/nodes/Position.md) of the input geometry.
+we use two fields of input geometry: [Index](/docs/nodes/Index.md) and the [Position](/docs/nodes/Position.md).
 
 ```python
 import geonodes as gn
