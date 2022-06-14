@@ -52,7 +52,7 @@ blender ref [GeometryNodeInputCurveHandlePositions](https://docs.blender.org/api
 node ref [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) </sub>
                           
 ```python
-v = spline.capture_handle_positions(self, relative, domain='CURVE')
+v = spline.capture_handle_positions(self, relative, domain='CURVE', node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -61,12 +61,14 @@ v = spline.capture_handle_positions(self, relative, domain='CURVE')
 - relative : Boolean## Parameters
 - self
 - domain:'CURVE'
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.CurveHandlePositions(relative=relative)
+nodes.CurveHandlePositions(relative=relative, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -83,7 +85,7 @@ blender ref [GeometryNodeInputTangent](https://docs.blender.org/api/current/bpy.
 node ref [Curve Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tangent.html) </sub>
                           
 ```python
-v = spline.capture_tangent(self, domain='CURVE')
+v = spline.capture_tangent(self, domain='CURVE', node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -91,12 +93,14 @@ v = spline.capture_tangent(self, domain='CURVE')
 ## Parameters
 - self
 - domain:'CURVE'
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.CurveTangent()
+nodes.CurveTangent(label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -113,7 +117,7 @@ blender ref [GeometryNodeInputCurveTilt](https://docs.blender.org/api/current/bp
 node ref [Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tilt.html) </sub>
                           
 ```python
-v = spline.capture_tilt(self, domain='CURVE')
+v = spline.capture_tilt(self, domain='CURVE', node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -121,12 +125,14 @@ v = spline.capture_tilt(self, domain='CURVE')
 ## Parameters
 - self
 - domain:'CURVE'
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.CurveTilt()
+nodes.CurveTilt(label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -143,7 +149,7 @@ blender ref [GeometryNodeCurveEndpointSelection](https://docs.blender.org/api/cu
 node ref [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/endpoint_selection.html) </sub>
                           
 ```python
-v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE')
+v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE', node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -153,12 +159,14 @@ v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE'
 - end_size : Integer## Parameters
 - self
 - domain:'CURVE'
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.EndpointSelection(start_size=start_size, end_size=end_size)
+nodes.EndpointSelection(start_size=start_size, end_size=end_size, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -175,7 +183,7 @@ blender ref [GeometryNodeCurveHandleTypeSelection](https://docs.blender.org/api/
 node ref [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) </sub>
                           
 ```python
-v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE')
+v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE', node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -183,14 +191,16 @@ v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE'
 ## Parameters
 - self
 - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode : {'RIGHT', 'LEFT'}
+- mode : {'LEFT', 'RIGHT'}
 - domain:'CURVE'
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
+nodes.HandleTypeSelection(handle_type=handle_type, mode=mode, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -207,7 +217,7 @@ blender ref [GeometryNodeInputSplineCyclic](https://docs.blender.org/api/current
 node ref [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/is_spline_cyclic.html) </sub>
                           
 ```python
-v = spline.capture_cyclic(self, domain='CURVE')
+v = spline.capture_cyclic(self, domain='CURVE', node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -215,12 +225,14 @@ v = spline.capture_cyclic(self, domain='CURVE')
 ## Parameters
 - self
 - domain:'CURVE'
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.IsSplineCyclic()
+nodes.IsSplineCyclic(label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -237,7 +249,7 @@ blender ref [GeometryNodeSplineLength](https://docs.blender.org/api/current/bpy.
 node ref [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html) </sub>
                           
 ```python
-v = spline.capture_length(self, domain='CURVE')
+v = spline.capture_length(self, domain='CURVE', node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -245,12 +257,14 @@ v = spline.capture_length(self, domain='CURVE')
 ## Parameters
 - self
 - domain:'CURVE'
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.SplineLength()
+nodes.SplineLength(label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -267,7 +281,7 @@ blender ref [GeometryNodeSplineParameter](https://docs.blender.org/api/current/b
 node ref [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) </sub>
                           
 ```python
-v = spline.capture_parameter(self, domain='CURVE')
+v = spline.capture_parameter(self, domain='CURVE', node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -275,12 +289,14 @@ v = spline.capture_parameter(self, domain='CURVE')
 ## Parameters
 - self
 - domain:'CURVE'
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.SplineParameter()
+nodes.SplineParameter(label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -297,7 +313,7 @@ blender ref [GeometryNodeInputSplineResolution](https://docs.blender.org/api/cur
 node ref [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_resolution.html) </sub>
                           
 ```python
-v = spline.capture_resolution(self, domain='CURVE')
+v = spline.capture_resolution(self, domain='CURVE', node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -305,12 +321,14 @@ v = spline.capture_resolution(self, domain='CURVE')
 ## Parameters
 - self
 - domain:'CURVE'
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.SplineResolution()
+nodes.SplineResolution(label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -571,7 +589,7 @@ v = spline.handle_type_selection(self, handle_type, mode)
 ## Parameters
 - self
 - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode : {'RIGHT', 'LEFT'}
+- mode : {'LEFT', 'RIGHT'}
 
 ### Node creation
 
@@ -797,7 +815,7 @@ blender ref [GeometryNodeSetSplineCyclic](https://docs.blender.org/api/current/b
 node ref [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html) </sub>
                           
 ```python
-v = spline.set_cyclic(selection, cyclic)
+v = spline.set_cyclic(selection, cyclic, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -805,13 +823,15 @@ v = spline.set_cyclic(selection, cyclic)
 ## Sockets
 - geometry : Geometry (self)
 - selection : Boolean
-- cyclic : Boolean
+- cyclic : Boolean## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic)
+nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -828,7 +848,7 @@ blender ref [GeometryNodeSetSplineResolution](https://docs.blender.org/api/curre
 node ref [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html) </sub>
                           
 ```python
-v = spline.set_resolution(selection, resolution)
+v = spline.set_resolution(selection, resolution, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -836,13 +856,15 @@ v = spline.set_resolution(selection, resolution)
 ## Sockets
 - geometry : Geometry (self)
 - selection : Boolean
-- resolution : Integer
+- resolution : Integer## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution)
+nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution, label=node_label, node_color=node_color)
 ```
 
 ### Returns

@@ -37,7 +37,7 @@ class Volume(gn.Geometry):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):
+    def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID', node_label = None, node_color = None):
         """ > Node: VolumeToMesh
           
         <sub>go to: top index
@@ -45,7 +45,7 @@ class Volume(gn.Geometry):
         node ref Volume to Mesh </sub>
                                   
         ```python
-        v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_mode)
+        v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_mode, node_label = None, node_color = None)
         ```
     
 
@@ -58,13 +58,15 @@ class Volume(gn.Geometry):
             - threshold : Float
             - adaptivity : Float## Parameters
             - resolution_mode : 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode)
+            nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode, label=node_label, node_color=node_color)
             ```
     
 
@@ -74,6 +76,6 @@ class Volume(gn.Geometry):
             
         """
 
-        return nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode).mesh
+        return nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode, label=node_label, node_color=node_color).mesh
 
 

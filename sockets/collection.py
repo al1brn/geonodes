@@ -38,7 +38,7 @@ class Collection(dsock.Collection):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def switch(self, switch1=None, true=None):
+    def switch(self, switch1=None, true=None, node_label = None, node_color = None):
         """ > Node: Switch
           
         <sub>go to: top index
@@ -46,7 +46,7 @@ class Collection(dsock.Collection):
         node ref Switch </sub>
                                   
         ```python
-        v = collection.switch(switch1, true)
+        v = collection.switch(switch1, true, node_label = None, node_color = None)
         ```
     
 
@@ -55,7 +55,9 @@ class Collection(dsock.Collection):
             ## Sockets
             - false : Collection (self)
             - switch1 : Boolean
-            - true : Collection## Fixed parameters
+            - true : Collection## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - input_type : 'COLLECTION'
     
 
@@ -63,7 +65,7 @@ class Collection(dsock.Collection):
         -------------
             ```python
             from geondes import nodes
-            nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION')
+            nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION', label=node_label, node_color=node_color)
             ```
     
 
@@ -73,9 +75,9 @@ class Collection(dsock.Collection):
             
         """
 
-        return nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION').output
+        return nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION', label=node_label, node_color=node_color).output
 
-    def info(self, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
+    def info(self, separate_children=None, reset_children=None, transform_space='ORIGINAL', node_label = None, node_color = None):
         """ > Node: CollectionInfo
           
         <sub>go to: top index
@@ -83,7 +85,7 @@ class Collection(dsock.Collection):
         node ref Collection Info </sub>
                                   
         ```python
-        v = collection.info(separate_children, reset_children, transform_space)
+        v = collection.info(separate_children, reset_children, transform_space, node_label = None, node_color = None)
         ```
     
 
@@ -94,13 +96,15 @@ class Collection(dsock.Collection):
             - separate_children : Boolean
             - reset_children : Boolean## Parameters
             - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space)
+            nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space, label=node_label, node_color=node_color)
             ```
     
 
@@ -110,6 +114,6 @@ class Collection(dsock.Collection):
             
         """
 
-        return nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space).geometry
+        return nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space, label=node_label, node_color=node_color).geometry
 
 

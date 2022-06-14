@@ -76,7 +76,7 @@ blender ref [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.t
 node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) </sub>
                           
 ```python
-v = Vector.Random(min, max, ID, seed)
+v = Vector.Random(min, max, ID, seed, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -85,14 +85,16 @@ v = Vector.Random(min, max, ID, seed)
 - min : Vector
 - max : Vector
 - ID : Integer
-- seed : Integer## Fixed parameters
+- seed : Integer## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR')
+nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -109,7 +111,7 @@ blender ref [ShaderNodeCombineXYZ](https://docs.blender.org/api/current/bpy.type
 node ref [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/combine_xyz.html) </sub>
                           
 ```python
-v = Vector.Combine(x, y, z)
+v = Vector.Combine(x, y, z, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -117,13 +119,15 @@ v = Vector.Combine(x, y, z)
 ## Sockets
 - x : Float
 - y : Float
-- z : Float
+- z : Float## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.CombineXyz(x=x, y=y, z=z)
+nodes.CombineXyz(x=x, y=y, z=z, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -140,7 +144,7 @@ blender ref [FunctionNodeAlignEulerToVector](https://docs.blender.org/api/curren
 node ref [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html) </sub>
                           
 ```python
-v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis)
+v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -151,12 +155,14 @@ v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis)
 - vector : Vector## Parameters
 - axis : 'X' in [X, Y, Z]
 - pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
+nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -293,7 +299,7 @@ blender ref [GeometryNodeAccumulateField](https://docs.blender.org/api/current/b
 node ref [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/accumulate_field.html) </sub>
                           
 ```python
-v = vector.accumulate_field(group_index, domain)
+v = vector.accumulate_field(group_index, domain, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -301,14 +307,16 @@ v = vector.accumulate_field(group_index, domain)
 ## Sockets
 - value : Vector (self)
 - group_index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain)
+nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -325,7 +333,7 @@ blender ref [GeometryNodeAttributeStatistic](https://docs.blender.org/api/curren
 node ref [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) </sub>
                           
 ```python
-v = vector.attribute_statistic(geometry, selection, domain)
+v = vector.attribute_statistic(geometry, selection, domain, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -334,14 +342,16 @@ v = vector.attribute_statistic(geometry, selection, domain)
 - attribute : Vector (self)
 - geometry : Geometry
 - selection : Boolean## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT_VECTOR', domain=domain)
+nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT_VECTOR', domain=domain, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -358,7 +368,7 @@ blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current
 node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
                           
 ```python
-v = vector.transfer_attribute(source, source_position, index, domain, mapping)
+v = vector.transfer_attribute(source, source_position, index, domain, mapping, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -369,14 +379,16 @@ v = vector.transfer_attribute(source, source_position, index, domain, mapping)
 - source_position : Vector
 - index : Integer## Parameters
 - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
+nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -393,7 +405,7 @@ blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/
 node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) </sub>
                           
 ```python
-v = vector.capture_attribute(geometry, domain)
+v = vector.capture_attribute(geometry, domain, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -401,14 +413,16 @@ v = vector.capture_attribute(geometry, domain)
 ## Sockets
 - value : Vector (self)
 - geometry : Geometry## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VECTOR', domain=domain)
+nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VECTOR', domain=domain, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -425,7 +439,7 @@ blender ref [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.
 node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) </sub>
                           
 ```python
-v = vector.field_at_index(index, domain)
+v = vector.field_at_index(index, domain, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -433,14 +447,16 @@ v = vector.field_at_index(index, domain)
 ## Sockets
 - value : Vector (self)
 - index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain)
+nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -457,7 +473,7 @@ blender ref [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types
 node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) </sub>
                           
 ```python
-v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
+v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, mapping, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -468,14 +484,16 @@ v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, 
 - source_position : Vector
 - ray_direction : Vector
 - ray_length : Float## Parameters
-- mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
+- mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping)
+nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -492,7 +510,7 @@ blender ref [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.
 node ref [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) </sub>
                           
 ```python
-v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type)
+v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -504,14 +522,16 @@ v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_ty
 - to_min : Vector
 - to_max : Vector## Parameters
 - clamp : True
-- interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]## Fixed parameters
+- interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'FLOAT_VECTOR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type)
+nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -528,7 +548,7 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = vector.less_than(b, c, angle, mode)
+v = vector.less_than(b, c, angle, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -538,7 +558,9 @@ v = vector.less_than(b, c, angle, mode)
 - b : Vector
 - c : Float
 - angle : Float## Parameters
-- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'VECTOR'
 - operation : 'LESS_THAN'
 
@@ -546,7 +568,7 @@ v = vector.less_than(b, c, angle, mode)
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN')
+nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -563,7 +585,7 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = vector.less_equal(b, c, angle, mode)
+v = vector.less_equal(b, c, angle, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -573,7 +595,9 @@ v = vector.less_equal(b, c, angle, mode)
 - b : Vector
 - c : Float
 - angle : Float## Parameters
-- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'VECTOR'
 - operation : 'LESS_EQUAL'
 
@@ -581,7 +605,7 @@ v = vector.less_equal(b, c, angle, mode)
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL')
+nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -598,7 +622,7 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = vector.greater_than(b, c, angle, mode)
+v = vector.greater_than(b, c, angle, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -608,7 +632,9 @@ v = vector.greater_than(b, c, angle, mode)
 - b : Vector
 - c : Float
 - angle : Float## Parameters
-- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'VECTOR'
 - operation : 'GREATER_THAN'
 
@@ -616,7 +642,7 @@ v = vector.greater_than(b, c, angle, mode)
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN')
+nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -633,7 +659,7 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = vector.greater_equal(b, c, angle, mode)
+v = vector.greater_equal(b, c, angle, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -643,7 +669,9 @@ v = vector.greater_equal(b, c, angle, mode)
 - b : Vector
 - c : Float
 - angle : Float## Parameters
-- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'VECTOR'
 - operation : 'GREATER_EQUAL'
 
@@ -651,7 +679,7 @@ v = vector.greater_equal(b, c, angle, mode)
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL')
+nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -668,7 +696,7 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = vector.equal(b, c, angle, epsilon, mode)
+v = vector.equal(b, c, angle, epsilon, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -679,7 +707,9 @@ v = vector.equal(b, c, angle, epsilon, mode)
 - c : Float
 - angle : Float
 - epsilon : Float## Parameters
-- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'VECTOR'
 - operation : 'EQUAL'
 
@@ -687,7 +717,7 @@ v = vector.equal(b, c, angle, epsilon, mode)
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL')
+nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -704,7 +734,7 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = vector.not_equal(b, c, angle, epsilon, mode)
+v = vector.not_equal(b, c, angle, epsilon, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -715,7 +745,9 @@ v = vector.not_equal(b, c, angle, epsilon, mode)
 - c : Float
 - angle : Float
 - epsilon : Float## Parameters
-- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'VECTOR'
 - operation : 'NOT_EQUAL'
 
@@ -723,7 +755,7 @@ v = vector.not_equal(b, c, angle, epsilon, mode)
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL')
+nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -740,21 +772,23 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.add(vector1)
+v = vector.add(vector1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
+- vector1 : Vector## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'ADD'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD')
+nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -771,21 +805,23 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.subtract(vector1)
+v = vector.subtract(vector1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
+- vector1 : Vector## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'SUBTRACT'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT')
+nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -802,21 +838,23 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.multiply(vector1)
+v = vector.multiply(vector1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
+- vector1 : Vector## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'MULTIPLY'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY')
+nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -833,21 +871,23 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.divide(vector1)
+v = vector.divide(vector1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
+- vector1 : Vector## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'DIVIDE'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE')
+nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -864,7 +904,7 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.multiply_add(vector1, vector2)
+v = vector.multiply_add(vector1, vector2, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -872,14 +912,16 @@ v = vector.multiply_add(vector1, vector2)
 ## Sockets
 - vector0 : Vector (self)
 - vector1 : Vector
-- vector2 : Vector## Fixed parameters
+- vector2 : Vector## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'MULTIPLY_ADD'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD')
+nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -896,21 +938,23 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.cross(vector1)
+v = vector.cross(vector1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
+- vector1 : Vector## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'CROSS_PRODUCT'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT')
+nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -927,21 +971,23 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.project(vector1)
+v = vector.project(vector1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
+- vector1 : Vector## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'PROJECT'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT')
+nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -958,21 +1004,23 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.reflect(vector1)
+v = vector.reflect(vector1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
+- vector1 : Vector## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'REFLECT'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT')
+nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -989,7 +1037,7 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.refract(vector1, scale)
+v = vector.refract(vector1, scale, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -997,14 +1045,16 @@ v = vector.refract(vector1, scale)
 ## Sockets
 - vector0 : Vector (self)
 - vector1 : Vector
-- scale : Float## Fixed parameters
+- scale : Float## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'REFRACT'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT')
+nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1021,7 +1071,7 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.faceforward(vector1, vector2)
+v = vector.faceforward(vector1, vector2, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -1029,14 +1079,16 @@ v = vector.faceforward(vector1, vector2)
 ## Sockets
 - vector0 : Vector (self)
 - vector1 : Vector
-- vector2 : Vector## Fixed parameters
+- vector2 : Vector## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'FACEFORWARD'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD')
+nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1053,21 +1105,23 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.dot(vector1)
+v = vector.dot(vector1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
+- vector1 : Vector## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'DOT_PRODUCT'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT')
+nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1084,21 +1138,23 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.distance(vector1)
+v = vector.distance(vector1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
+- vector1 : Vector## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'DISTANCE'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE')
+nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1115,20 +1171,22 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.length()
+v = vector.length(node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
-- vector0 : Vector (self)## Fixed parameters
+- vector0 : Vector (self)## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'LENGTH'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, operation='LENGTH')
+nodes.VectorMath(vector0=self, operation='LENGTH', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1145,21 +1203,23 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.scale(scale)
+v = vector.scale(scale, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - vector0 : Vector (self)
-- scale : Float## Fixed parameters
+- scale : Float## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'SCALE'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, scale=scale, operation='SCALE')
+nodes.VectorMath(vector0=self, scale=scale, operation='SCALE', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1176,20 +1236,22 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.normalize()
+v = vector.normalize(node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
-- vector0 : Vector (self)## Fixed parameters
+- vector0 : Vector (self)## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'NORMALIZE'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, operation='NORMALIZE')
+nodes.VectorMath(vector0=self, operation='NORMALIZE', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1206,20 +1268,22 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.absolute()
+v = vector.absolute(node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
-- vector0 : Vector (self)## Fixed parameters
+- vector0 : Vector (self)## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'ABSOLUTE'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, operation='ABSOLUTE')
+nodes.VectorMath(vector0=self, operation='ABSOLUTE', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1236,21 +1300,23 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.min(vector1)
+v = vector.min(vector1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
+- vector1 : Vector## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'MINIMUM'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM')
+nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1267,21 +1333,23 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.max(vector1)
+v = vector.max(vector1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
+- vector1 : Vector## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'MAXIMUM'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM')
+nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1298,20 +1366,22 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.floor()
+v = vector.floor(node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
-- vector0 : Vector (self)## Fixed parameters
+- vector0 : Vector (self)## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'FLOOR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, operation='FLOOR')
+nodes.VectorMath(vector0=self, operation='FLOOR', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1328,20 +1398,22 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.ceil()
+v = vector.ceil(node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
-- vector0 : Vector (self)## Fixed parameters
+- vector0 : Vector (self)## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'CEIL'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, operation='CEIL')
+nodes.VectorMath(vector0=self, operation='CEIL', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1358,20 +1430,22 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.fraction()
+v = vector.fraction(node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
-- vector0 : Vector (self)## Fixed parameters
+- vector0 : Vector (self)## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'FRACTION'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, operation='FRACTION')
+nodes.VectorMath(vector0=self, operation='FRACTION', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1388,21 +1462,23 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.modulo(vector1)
+v = vector.modulo(vector1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
+- vector1 : Vector## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'MODULO'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO')
+nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1419,7 +1495,7 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.wrap(vector1, vector2)
+v = vector.wrap(vector1, vector2, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -1427,14 +1503,16 @@ v = vector.wrap(vector1, vector2)
 ## Sockets
 - vector0 : Vector (self)
 - vector1 : Vector
-- vector2 : Vector## Fixed parameters
+- vector2 : Vector## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'WRAP'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP')
+nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1451,21 +1529,23 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.snap(vector1)
+v = vector.snap(vector1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - vector0 : Vector (self)
-- vector1 : Vector## Fixed parameters
+- vector1 : Vector## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'SNAP'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP')
+nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1482,20 +1562,22 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.sin()
+v = vector.sin(node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
-- vector0 : Vector (self)## Fixed parameters
+- vector0 : Vector (self)## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'SINE'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, operation='SINE')
+nodes.VectorMath(vector0=self, operation='SINE', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1512,20 +1594,22 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.cos()
+v = vector.cos(node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
-- vector0 : Vector (self)## Fixed parameters
+- vector0 : Vector (self)## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'COSINE'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, operation='COSINE')
+nodes.VectorMath(vector0=self, operation='COSINE', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1542,20 +1626,22 @@ blender ref [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.type
 node ref [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) </sub>
                           
 ```python
-v = vector.tan()
+v = vector.tan(node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
-- vector0 : Vector (self)## Fixed parameters
+- vector0 : Vector (self)## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'TANGENT'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorMath(vector0=self, operation='TANGENT')
+nodes.VectorMath(vector0=self, operation='TANGENT', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1572,20 +1658,22 @@ blender ref [ShaderNodeVectorCurve](https://docs.blender.org/api/current/bpy.typ
 node ref [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_curves.html) </sub>
                           
 ```python
-v = vector.curves(fac)
+v = vector.curves(fac, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - vector : Vector (self)
-- fac : Float
+- fac : Float## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorCurves(vector=self, fac=fac)
+nodes.VectorCurves(vector=self, fac=fac, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1602,7 +1690,7 @@ blender ref [FunctionNodeAlignEulerToVector](https://docs.blender.org/api/curren
 node ref [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html) </sub>
                           
 ```python
-v = vector.align_to_vector(factor, vector, axis, pivot_axis)
+v = vector.align_to_vector(factor, vector, axis, pivot_axis, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -1613,12 +1701,14 @@ v = vector.align_to_vector(factor, vector, axis, pivot_axis)
 - vector : Vector## Parameters
 - axis : 'X' in [X, Y, Z]
 - pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
+nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1635,7 +1725,7 @@ blender ref [FunctionNodeRotateEuler](https://docs.blender.org/api/current/bpy.t
 node ref [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html) </sub>
                           
 ```python
-v = vector.rotate_euler(rotate_by, space)
+v = vector.rotate_euler(rotate_by, space, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -1644,12 +1734,14 @@ v = vector.rotate_euler(rotate_by, space)
 - rotation : Vector (self)
 - rotate_by : Vector## Parameters
 - space : 'OBJECT' in [OBJECT, LOCAL]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space)
+nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1666,7 +1758,7 @@ blender ref [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.ty
 node ref [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) </sub>
                           
 ```python
-v = vector.rotate(center, axis, angle, rotation, invert, rotation_type)
+v = vector.rotate(center, axis, angle, rotation, invert, rotation_type, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -1679,12 +1771,14 @@ v = vector.rotate(center, axis, angle, rotation, invert, rotation_type)
 - rotation : Vector## Parameters
 - invert : False
 - rotation_type : 'AXIS_ANGLE' in [AXIS_ANGLE, X_AXIS, Y_AXIS, Z_AXIS, EULER_XYZ]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type)
+nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type, label=node_label, node_color=node_color)
 ```
 
 ### Returns

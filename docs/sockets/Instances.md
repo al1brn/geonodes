@@ -56,7 +56,7 @@ blender ref [GeometryNodeRotateInstances](https://docs.blender.org/api/current/b
 node ref [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html) </sub>
                           
 ```python
-v = instances.rotate(selection, rotation, pivot_point, local_space)
+v = instances.rotate(selection, rotation, pivot_point, local_space, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -66,13 +66,15 @@ v = instances.rotate(selection, rotation, pivot_point, local_space)
 - selection : Boolean
 - rotation : Vector
 - pivot_point : Vector
-- local_space : Boolean
+- local_space : Boolean## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
+nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -89,7 +91,7 @@ blender ref [GeometryNodeScaleInstances](https://docs.blender.org/api/current/bp
 node ref [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html) </sub>
                           
 ```python
-v = instances.scale(selection, scale, center, local_space)
+v = instances.scale(selection, scale, center, local_space, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -99,13 +101,15 @@ v = instances.scale(selection, scale, center, local_space)
 - selection : Boolean
 - scale : Vector
 - center : Vector
-- local_space : Boolean
+- local_space : Boolean## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
+nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -122,7 +126,7 @@ blender ref [GeometryNodeTranslateInstances](https://docs.blender.org/api/curren
 node ref [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html) </sub>
                           
 ```python
-v = instances.translate(selection, translation, local_space)
+v = instances.translate(selection, translation, local_space, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -131,13 +135,15 @@ v = instances.translate(selection, translation, local_space)
 - instances : Instances (self)
 - selection : Boolean
 - translation : Vector
-- local_space : Boolean
+- local_space : Boolean## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
+nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -154,7 +160,7 @@ blender ref [GeometryNodeInstancesToPoints](https://docs.blender.org/api/current
 node ref [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html) </sub>
                           
 ```python
-v = instances.to_points(selection, position, radius)
+v = instances.to_points(selection, position, radius, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -163,13 +169,15 @@ v = instances.to_points(selection, position, radius)
 - instances : Instances (self)
 - selection : Boolean
 - position : Vector
-- radius : Float
+- radius : Float## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
+nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius, label=node_label, node_color=node_color)
 ```
 
 ### Returns

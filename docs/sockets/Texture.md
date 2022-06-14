@@ -33,7 +33,7 @@ blender ref [ShaderNodeTexBrick](https://docs.blender.org/api/current/bpy.types.
 node ref [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html) </sub>
                           
 ```python
-v = Texture.Brick(vector, color1, color2, mortar, scale, mortar_size, mortar_smooth, bias, brick_width, row_height, offset, offset_frequency, squash, squash_frequency)
+v = Texture.Brick(vector, color1, color2, mortar, scale, mortar_size, mortar_smooth, bias, brick_width, row_height, offset, offset_frequency, squash, squash_frequency, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -53,12 +53,14 @@ v = Texture.Brick(vector, color1, color2, mortar, scale, mortar_size, mortar_smo
 - offset_frequency : 2
 - squash : 1.0
 - squash_frequency : 2
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency)
+nodes.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -75,7 +77,7 @@ blender ref [ShaderNodeTexChecker](https://docs.blender.org/api/current/bpy.type
 node ref [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html) </sub>
                           
 ```python
-v = Texture.Checker(vector, color1, color2, scale)
+v = Texture.Checker(vector, color1, color2, scale, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -84,13 +86,15 @@ v = Texture.Checker(vector, color1, color2, scale)
 - vector : Vector
 - color1 : Color
 - color2 : Color
-- scale : Float
+- scale : Float## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale)
+nodes.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -107,7 +111,7 @@ blender ref [ShaderNodeTexGradient](https://docs.blender.org/api/current/bpy.typ
 node ref [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) </sub>
                           
 ```python
-v = Texture.Gradient(vector, gradient_type)
+v = Texture.Gradient(vector, gradient_type, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -115,12 +119,14 @@ v = Texture.Gradient(vector, gradient_type)
 ## Sockets
 - vector : Vector## Parameters
 - gradient_type : 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.GradientTexture(vector=vector, gradient_type=gradient_type)
+nodes.GradientTexture(vector=vector, gradient_type=gradient_type, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -137,7 +143,7 @@ blender ref [ShaderNodeTexMagic](https://docs.blender.org/api/current/bpy.types.
 node ref [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html) </sub>
                           
 ```python
-v = Texture.Magic(vector, scale, distortion, turbulence_depth)
+v = Texture.Magic(vector, scale, distortion, turbulence_depth, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -147,12 +153,14 @@ v = Texture.Magic(vector, scale, distortion, turbulence_depth)
 - scale : Float
 - distortion : Float## Parameters
 - turbulence_depth : 2
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.MagicTexture(vector=vector, scale=scale, distortion=distortion, turbulence_depth=turbulence_depth)
+nodes.MagicTexture(vector=vector, scale=scale, distortion=distortion, turbulence_depth=turbulence_depth, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -169,7 +177,7 @@ blender ref [ShaderNodeTexMusgrave](https://docs.blender.org/api/current/bpy.typ
 node ref [Musgrave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/musgrave.html) </sub>
                           
 ```python
-v = Texture.Musgrave(vector, w, scale, detail, dimension, lacunarity, offset, gain, musgrave_dimensions, musgrave_type)
+v = Texture.Musgrave(vector, w, scale, detail, dimension, lacunarity, offset, gain, musgrave_dimensions, musgrave_type, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -185,12 +193,14 @@ v = Texture.Musgrave(vector, w, scale, detail, dimension, lacunarity, offset, ga
 - gain : Float## Parameters
 - musgrave_dimensions : '3D' in [1D, 2D, 3D, 4D]
 - musgrave_type : 'FBM' in [MULTIFRACTAL, RIDGED_MULTIFRACTAL, HYBRID_MULTIFRACTAL, FBM, HETERO_TERRAIN]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.MusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, offset=offset, gain=gain, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type)
+nodes.MusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, offset=offset, gain=gain, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -207,7 +217,7 @@ blender ref [ShaderNodeTexNoise](https://docs.blender.org/api/current/bpy.types.
 node ref [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) </sub>
                           
 ```python
-v = Texture.Noise(vector, w, scale, detail, roughness, distortion, noise_dimensions)
+v = Texture.Noise(vector, w, scale, detail, roughness, distortion, noise_dimensions, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -220,12 +230,14 @@ v = Texture.Noise(vector, w, scale, detail, roughness, distortion, noise_dimensi
 - roughness : Float
 - distortion : Float## Parameters
 - noise_dimensions : '3D' in [1D, 2D, 3D, 4D]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions)
+nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -242,7 +254,7 @@ blender ref [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/bpy.type
 node ref [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) </sub>
                           
 ```python
-v = Texture.Voronoi(vector, w, scale, smoothness, exponent, randomness, distance, feature, voronoi_dimensions)
+v = Texture.Voronoi(vector, w, scale, smoothness, exponent, randomness, distance, feature, voronoi_dimensions, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -257,12 +269,14 @@ v = Texture.Voronoi(vector, w, scale, smoothness, exponent, randomness, distance
 - distance : 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
 - feature : 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions : '3D' in [1D, 2D, 3D, 4D]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
+nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -279,7 +293,7 @@ blender ref [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy.types.S
 node ref [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) </sub>
                           
 ```python
-v = Texture.Wave(vector, scale, distortion, detail, detail_scale, detail_roughness, phase_offset, bands_direction, rings_direction, wave_profile, wave_type)
+v = Texture.Wave(vector, scale, distortion, detail, detail_scale, detail_roughness, phase_offset, bands_direction, rings_direction, wave_profile, wave_type, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -296,12 +310,14 @@ v = Texture.Wave(vector, scale, distortion, detail, detail_scale, detail_roughne
 - rings_direction : 'X' in [X, Y, Z, SPHERICAL]
 - wave_profile : 'SIN' in [SIN, SAW, TRI]
 - wave_type : 'BANDS' in [BANDS, RINGS]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
+nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -318,7 +334,7 @@ blender ref [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/current/bpy.t
 node ref [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) </sub>
                           
 ```python
-v = Texture.WhiteNoise(vector, w, noise_dimensions)
+v = Texture.WhiteNoise(vector, w, noise_dimensions, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -327,12 +343,14 @@ v = Texture.WhiteNoise(vector, w, noise_dimensions)
 - vector : Vector
 - w : Float## Parameters
 - noise_dimensions : '3D' in [1D, 2D, 3D, 4D]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions)
+nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -349,7 +367,7 @@ blender ref [GeometryNodeImageTexture](https://docs.blender.org/api/current/bpy.
 node ref [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html) </sub>
                           
 ```python
-v = Texture.Image(image, vector, frame, extension, interpolation)
+v = Texture.Image(image, vector, frame, extension, interpolation, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -360,12 +378,14 @@ v = Texture.Image(image, vector, frame, extension, interpolation)
 - frame : Integer## Parameters
 - extension : 'REPEAT' in [REPEAT, EXTEND, CLIP]
 - interpolation : 'Linear' in [Linear, Closest, Cubic]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=extension, interpolation=interpolation)
+nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=extension, interpolation=interpolation, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -382,7 +402,7 @@ blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
                           
 ```python
-v = texture.switch(switch1, true)
+v = texture.switch(switch1, true, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -390,14 +410,16 @@ v = texture.switch(switch1, true)
 ## Sockets
 - false : Texture (self)
 - switch1 : Boolean
-- true : Texture## Fixed parameters
+- true : Texture## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - input_type : 'TEXTURE'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Switch(false=self, switch1=switch1, true=true, input_type='TEXTURE')
+nodes.Switch(false=self, switch1=switch1, true=true, input_type='TEXTURE', label=node_label, node_color=node_color)
 ```
 
 ### Returns

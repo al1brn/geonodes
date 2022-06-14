@@ -49,7 +49,7 @@ blender ref [GeometryNodeCurvePrimitiveBezierSegment](https://docs.blender.org/a
 node ref [Bezier Segment](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/bezier_segment.html) </sub>
                           
 ```python
-v = Curve.BezierSegment(resolution, start, start_handle, end_handle, end, mode)
+v = Curve.BezierSegment(resolution, start, start_handle, end_handle, end, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -61,12 +61,14 @@ v = Curve.BezierSegment(resolution, start, start_handle, end_handle, end, mode)
 - end_handle : Vector
 - end : Vector## Parameters
 - mode : 'POSITION' in [POSITION, OFFSET]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode)
+nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -83,7 +85,7 @@ blender ref [GeometryNodeCurvePrimitiveCircle](https://docs.blender.org/api/curr
 node ref [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_circle.html) </sub>
                           
 ```python
-v = Curve.Circle(resolution, point_1, point_2, point_3, radius, mode)
+v = Curve.Circle(resolution, point_1, point_2, point_3, radius, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -95,12 +97,14 @@ v = Curve.Circle(resolution, point_1, point_2, point_3, radius, mode)
 - point_3 : Vector
 - radius : Float## Parameters
 - mode : 'RADIUS' in [POINTS, RADIUS]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=radius, mode=mode)
+nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=radius, mode=mode, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -117,7 +121,7 @@ blender ref [GeometryNodeCurvePrimitiveLine](https://docs.blender.org/api/curren
 node ref [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_line.html) </sub>
                           
 ```python
-v = Curve.Line(start, end, direction, length, mode)
+v = Curve.Line(start, end, direction, length, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -128,12 +132,14 @@ v = Curve.Line(start, end, direction, length, mode)
 - direction : Vector
 - length : Float## Parameters
 - mode : 'POINTS' in [POINTS, DIRECTION]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.CurveLine(start=start, end=end, direction=direction, length=length, mode=mode)
+nodes.CurveLine(start=start, end=end, direction=direction, length=length, mode=mode, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -150,7 +156,7 @@ blender ref [GeometryNodeCurvePrimitiveQuadrilateral](https://docs.blender.org/a
 node ref [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/quadrilateral.html) </sub>
                           
 ```python
-v = Curve.Quadrilateral(width, height, bottom_width, top_width, offset, bottom_height, top_height, point_1, point_2, point_3, point_4, mode)
+v = Curve.Quadrilateral(width, height, bottom_width, top_width, offset, bottom_height, top_height, point_1, point_2, point_3, point_4, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -168,12 +174,14 @@ v = Curve.Quadrilateral(width, height, bottom_width, top_width, offset, bottom_h
 - point_3 : Vector
 - point_4 : Vector## Parameters
 - mode : 'RECTANGLE' in [RECTANGLE, PARALLELOGRAM, TRAPEZOID, KITE, POINTS]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width, offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode)
+nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width, offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -190,7 +198,7 @@ blender ref [GeometryNodeCurveQuadraticBezier](https://docs.blender.org/api/curr
 node ref [Quadratic Bezier](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/quadratic_bezier.html) </sub>
                           
 ```python
-v = Curve.QuadraticBezier(resolution, start, middle, end)
+v = Curve.QuadraticBezier(resolution, start, middle, end, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -199,13 +207,15 @@ v = Curve.QuadraticBezier(resolution, start, middle, end)
 - resolution : Integer
 - start : Vector
 - middle : Vector
-- end : Vector
+- end : Vector## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.QuadraticBezier(resolution=resolution, start=start, middle=middle, end=end)
+nodes.QuadraticBezier(resolution=resolution, start=start, middle=middle, end=end, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -222,7 +232,7 @@ blender ref [GeometryNodeCurveStar](https://docs.blender.org/api/current/bpy.typ
 node ref [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/star.html) </sub>
                           
 ```python
-v = Curve.Star(points, inner_radius, outer_radius, twist)
+v = Curve.Star(points, inner_radius, outer_radius, twist, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -231,13 +241,15 @@ v = Curve.Star(points, inner_radius, outer_radius, twist)
 - points : Integer
 - inner_radius : Float
 - outer_radius : Float
-- twist : Float
+- twist : Float## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Star(points=points, inner_radius=inner_radius, outer_radius=outer_radius, twist=twist)
+nodes.Star(points=points, inner_radius=inner_radius, outer_radius=outer_radius, twist=twist, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -254,7 +266,7 @@ blender ref [GeometryNodeCurveSpiral](https://docs.blender.org/api/current/bpy.t
 node ref [Spiral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_spiral.html) </sub>
                           
 ```python
-v = Curve.Spiral(resolution, rotations, start_radius, end_radius, height, reverse)
+v = Curve.Spiral(resolution, rotations, start_radius, end_radius, height, reverse, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -265,13 +277,15 @@ v = Curve.Spiral(resolution, rotations, start_radius, end_radius, height, revers
 - start_radius : Float
 - end_radius : Float
 - height : Float
-- reverse : Boolean
+- reverse : Boolean## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Spiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius, height=height, reverse=reverse)
+nodes.Spiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius, height=height, reverse=reverse, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -288,7 +302,7 @@ blender ref [GeometryNodeCurveArc](https://docs.blender.org/api/current/bpy.type
 node ref [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/arc.html) </sub>
                           
 ```python
-v = Curve.ArcFromRadius(resolution, radius, start_angle, sweep_angle, connect_center, invert_arc)
+v = Curve.ArcFromRadius(resolution, radius, start_angle, sweep_angle, connect_center, invert_arc, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -299,14 +313,16 @@ v = Curve.ArcFromRadius(resolution, radius, start_angle, sweep_angle, connect_ce
 - start_angle : Float
 - sweep_angle : Float
 - connect_center : Boolean
-- invert_arc : Boolean## Fixed parameters
+- invert_arc : Boolean## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - mode : 'RADIUS'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Arc(resolution=resolution, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle, connect_center=connect_center, invert_arc=invert_arc, mode='RADIUS')
+nodes.Arc(resolution=resolution, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle, connect_center=connect_center, invert_arc=invert_arc, mode='RADIUS', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -323,7 +339,7 @@ blender ref [GeometryNodeCurveArc](https://docs.blender.org/api/current/bpy.type
 node ref [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/arc.html) </sub>
                           
 ```python
-v = Curve.ArcFromPoints(resolution, start, middle, end, offset_angle, connect_center, invert_arc)
+v = Curve.ArcFromPoints(resolution, start, middle, end, offset_angle, connect_center, invert_arc, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -335,14 +351,16 @@ v = Curve.ArcFromPoints(resolution, start, middle, end, offset_angle, connect_ce
 - end : Vector
 - offset_angle : Float
 - connect_center : Boolean
-- invert_arc : Boolean## Fixed parameters
+- invert_arc : Boolean## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - mode : 'POINTS'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, offset_angle=offset_angle, connect_center=connect_center, invert_arc=invert_arc, mode='POINTS')
+nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, offset_angle=offset_angle, connect_center=connect_center, invert_arc=invert_arc, mode='POINTS', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -359,7 +377,7 @@ blender ref [GeometryNodeCurveSetHandles](https://docs.blender.org/api/current/b
 node ref [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_type.html) </sub>
                           
 ```python
-v = curve.set_handles(selection, handle_type, mode)
+v = curve.set_handles(selection, handle_type, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -368,13 +386,15 @@ v = curve.set_handles(selection, handle_type, mode)
 - curve : Curve (self)
 - selection : Boolean## Parameters
 - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode : {'RIGHT', 'LEFT'}
+- mode : {'LEFT', 'RIGHT'}
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.SetHandleType(curve=self, selection=selection, handle_type=handle_type, mode=mode)
+nodes.SetHandleType(curve=self, selection=selection, handle_type=handle_type, mode=mode, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -391,7 +411,7 @@ blender ref [GeometryNodeCurveSplineType](https://docs.blender.org/api/current/b
 node ref [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) </sub>
                           
 ```python
-v = curve.set_spline_type(selection, spline_type)
+v = curve.set_spline_type(selection, spline_type, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -400,12 +420,14 @@ v = curve.set_spline_type(selection, spline_type)
 - curve : Curve (self)
 - selection : Boolean## Parameters
 - spline_type : 'POLY' in [BEZIER, NURBS, POLY]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_type)
+nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_type, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -422,7 +444,7 @@ blender ref [GeometryNodeFillCurve](https://docs.blender.org/api/current/bpy.typ
 node ref [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fill_curve.html) </sub>
                           
 ```python
-v = curve.fill(mode)
+v = curve.fill(mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -430,12 +452,14 @@ v = curve.fill(mode)
 ## Sockets
 - curve : Curve (self)## Parameters
 - mode : 'TRIANGLES' in [TRIANGLES, NGONS]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.FillCurve(curve=self, mode=mode)
+nodes.FillCurve(curve=self, mode=mode, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -452,7 +476,7 @@ blender ref [GeometryNodeFilletCurve](https://docs.blender.org/api/current/bpy.t
 node ref [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fillet_curve.html) </sub>
                           
 ```python
-v = curve.fillet(count, radius, limit_radius, mode)
+v = curve.fillet(count, radius, limit_radius, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -463,12 +487,14 @@ v = curve.fillet(count, radius, limit_radius, mode)
 - radius : Float
 - limit_radius : Boolean## Parameters
 - mode : 'BEZIER' in [BEZIER, POLY]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode=mode)
+nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode=mode, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -485,7 +511,7 @@ blender ref [GeometryNodeResampleCurve](https://docs.blender.org/api/current/bpy
 node ref [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) </sub>
                           
 ```python
-v = curve.resample(selection, count, length, mode)
+v = curve.resample(selection, count, length, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -496,12 +522,14 @@ v = curve.resample(selection, count, length, mode)
 - count : Integer
 - length : Float## Parameters
 - mode : 'COUNT' in [EVALUATED, COUNT, LENGTH]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.ResampleCurve(curve=self, selection=selection, count=count, length=length, mode=mode)
+nodes.ResampleCurve(curve=self, selection=selection, count=count, length=length, mode=mode, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -518,20 +546,22 @@ blender ref [GeometryNodeReverseCurve](https://docs.blender.org/api/current/bpy.
 node ref [Reverse Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/reverse_curve.html) </sub>
                           
 ```python
-v = curve.reverse(selection)
+v = curve.reverse(selection, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - curve : Curve (self)
-- selection : Boolean
+- selection : Boolean## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.ReverseCurve(curve=self, selection=selection)
+nodes.ReverseCurve(curve=self, selection=selection, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -548,7 +578,7 @@ blender ref [GeometryNodeSetCurveHandlePositions](https://docs.blender.org/api/c
 node ref [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) </sub>
                           
 ```python
-v = curve.set_handle_positions(selection, position, offset, mode)
+v = curve.set_handle_positions(selection, position, offset, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -559,12 +589,14 @@ v = curve.set_handle_positions(selection, position, offset, mode)
 - position : Vector
 - offset : Vector## Parameters
 - mode : 'LEFT' in [LEFT, RIGHT]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.SetHandlePositions(curve=self, selection=selection, position=position, offset=offset, mode=mode)
+nodes.SetHandlePositions(curve=self, selection=selection, position=position, offset=offset, mode=mode, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -581,7 +613,7 @@ blender ref [GeometryNodeSetCurveRadius](https://docs.blender.org/api/current/bp
 node ref [Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_radius.html) </sub>
                           
 ```python
-v = curve.set_radius(selection, radius)
+v = curve.set_radius(selection, radius, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -589,13 +621,15 @@ v = curve.set_radius(selection, radius)
 ## Sockets
 - curve : Curve (self)
 - selection : Boolean
-- radius : Float
+- radius : Float## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.SetCurveRadius(curve=self, selection=selection, radius=radius)
+nodes.SetCurveRadius(curve=self, selection=selection, radius=radius, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -612,7 +646,7 @@ blender ref [GeometryNodeSetCurveTilt](https://docs.blender.org/api/current/bpy.
 node ref [Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_tilt.html) </sub>
                           
 ```python
-v = curve.set_tilt(selection, tilt)
+v = curve.set_tilt(selection, tilt, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -620,13 +654,15 @@ v = curve.set_tilt(selection, tilt)
 ## Sockets
 - curve : Curve (self)
 - selection : Boolean
-- tilt : Float
+- tilt : Float## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.SetCurveTilt(curve=self, selection=selection, tilt=tilt)
+nodes.SetCurveTilt(curve=self, selection=selection, tilt=tilt, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -643,20 +679,22 @@ blender ref [GeometryNodeSubdivideCurve](https://docs.blender.org/api/current/bp
 node ref [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/subdivide_curve.html) </sub>
                           
 ```python
-v = curve.subdivide(cuts)
+v = curve.subdivide(cuts, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - curve : Curve (self)
-- cuts : Integer
+- cuts : Integer## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.SubdivideCurve(curve=self, cuts=cuts)
+nodes.SubdivideCurve(curve=self, cuts=cuts, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -673,7 +711,7 @@ blender ref [GeometryNodeTrimCurve](https://docs.blender.org/api/current/bpy.typ
 node ref [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/trim_curve.html) </sub>
                           
 ```python
-v = curve.trim(start0, end0, start1, end1, mode)
+v = curve.trim(start0, end0, start1, end1, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -685,12 +723,14 @@ v = curve.trim(start0, end0, start1, end1, mode)
 - start1 : Float
 - end1 : Float## Parameters
 - mode : 'FACTOR' in [FACTOR, LENGTH]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1=end1, mode=mode)
+nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1=end1, mode=mode, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -707,7 +747,7 @@ blender ref [GeometryNodeCurveToMesh](https://docs.blender.org/api/current/bpy.t
 node ref [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_mesh.html) </sub>
                           
 ```python
-v = curve.to_mesh(profile_curve, fill_caps)
+v = curve.to_mesh(profile_curve, fill_caps, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -715,13 +755,15 @@ v = curve.to_mesh(profile_curve, fill_caps)
 ## Sockets
 - curve : Curve (self)
 - profile_curve : Geometry
-- fill_caps : Boolean
+- fill_caps : Boolean## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps)
+nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -738,7 +780,7 @@ blender ref [GeometryNodeCurveToPoints](https://docs.blender.org/api/current/bpy
 node ref [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html) </sub>
                           
 ```python
-v = curve.to_points(count, length, mode)
+v = curve.to_points(count, length, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -748,12 +790,14 @@ v = curve.to_points(count, length, mode)
 - count : Integer
 - length : Float## Parameters
 - mode : 'COUNT' in [EVALUATED, COUNT, LENGTH]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode)
+nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -770,7 +814,7 @@ blender ref [GeometryNodeSampleCurve](https://docs.blender.org/api/current/bpy.t
 node ref [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample_curve.html) </sub>
                           
 ```python
-v = curve.sample(factor, length, mode)
+v = curve.sample(factor, length, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -780,12 +824,14 @@ v = curve.sample(factor, length, mode)
 - factor : Float
 - length : Float## Parameters
 - mode : 'LENGTH' in [FACTOR, LENGTH]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode)
+nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -802,19 +848,21 @@ blender ref [GeometryNodeCurveLength](https://docs.blender.org/api/current/bpy.t
 node ref [Curve Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_length.html) </sub>
                           
 ```python
-v = curve.length()
+v = curve.length(node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
-- curve : Curve (self)
+- curve : Curve (self)## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.CurveLength(curve=self)
+nodes.CurveLength(curve=self, label=node_label, node_color=node_color)
 ```
 
 ### Returns

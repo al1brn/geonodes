@@ -101,7 +101,7 @@ class Float(dsock.Float):
     # Constructors
 
     @classmethod
-    def Random(cls, min=None, max=None, ID=None, seed=None):
+    def Random(cls, min=None, max=None, ID=None, seed=None, node_label = None, node_color = None):
         """ > Node: RandomValue
           
         <sub>go to: top index
@@ -109,7 +109,7 @@ class Float(dsock.Float):
         node ref Random Value </sub>
                                   
         ```python
-        v = Float.Random(min, max, ID, seed)
+        v = Float.Random(min, max, ID, seed, node_label = None, node_color = None)
         ```
     
 
@@ -119,7 +119,9 @@ class Float(dsock.Float):
             - min : Float
             - max : Float
             - ID : Integer
-            - seed : Integer## Fixed parameters
+            - seed : Integer## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT'
     
 
@@ -127,7 +129,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT')
+            nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT', label=node_label, node_color=node_color)
             ```
     
 
@@ -137,13 +139,13 @@ class Float(dsock.Float):
             
         """
 
-        return cls(nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT').value)
+        return cls(nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT', label=node_label, node_color=node_color).value)
 
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def accumulate_field(self, group_index=None, domain='POINT'):
+    def accumulate_field(self, group_index=None, domain='POINT', node_label = None, node_color = None):
         """ > Node: AccumulateField
           
         <sub>go to: top index
@@ -151,7 +153,7 @@ class Float(dsock.Float):
         node ref Accumulate Field </sub>
                                   
         ```python
-        v = float.accumulate_field(group_index, domain)
+        v = float.accumulate_field(group_index, domain, node_label = None, node_color = None)
         ```
     
 
@@ -160,7 +162,9 @@ class Float(dsock.Float):
             ## Sockets
             - value : Float (self)
             - group_index : Integer## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT'
     
 
@@ -168,7 +172,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT', domain=domain)
+            nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT', domain=domain, label=node_label, node_color=node_color)
             ```
     
 
@@ -178,9 +182,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT', domain=domain)
+        return nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT', domain=domain, label=node_label, node_color=node_color)
 
-    def attribute_statistic(self, geometry=None, selection=None, domain='POINT'):
+    def attribute_statistic(self, geometry=None, selection=None, domain='POINT', node_label = None, node_color = None):
         """ > Node: AttributeStatistic
           
         <sub>go to: top index
@@ -188,7 +192,7 @@ class Float(dsock.Float):
         node ref Attribute Statistic </sub>
                                   
         ```python
-        v = float.attribute_statistic(geometry, selection, domain)
+        v = float.attribute_statistic(geometry, selection, domain, node_label = None, node_color = None)
         ```
     
 
@@ -198,7 +202,9 @@ class Float(dsock.Float):
             - attribute : Float (self)
             - geometry : Geometry
             - selection : Boolean## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT'
     
 
@@ -206,7 +212,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT', domain=domain)
+            nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT', domain=domain, label=node_label, node_color=node_color)
             ```
     
 
@@ -216,9 +222,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT', domain=domain)
+        return nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT', domain=domain, label=node_label, node_color=node_color)
 
-    def transfer_attribute(self, source=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
+    def transfer_attribute(self, source=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED', node_label = None, node_color = None):
         """ > Node: TransferAttribute
           
         <sub>go to: top index
@@ -226,7 +232,7 @@ class Float(dsock.Float):
         node ref Transfer Attribute </sub>
                                   
         ```python
-        v = float.transfer_attribute(source, source_position, index, domain, mapping)
+        v = float.transfer_attribute(source, source_position, index, domain, mapping, node_label = None, node_color = None)
         ```
     
 
@@ -238,7 +244,9 @@ class Float(dsock.Float):
             - source_position : Vector
             - index : Integer## Parameters
             - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT'
     
 
@@ -246,7 +254,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping)
+            nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
             ```
     
 
@@ -256,9 +264,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping).attribute
+        return nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping, label=node_label, node_color=node_color).attribute
 
-    def capture_attribute(self, geometry=None, domain='POINT'):
+    def capture_attribute(self, geometry=None, domain='POINT', node_label = None, node_color = None):
         """ > Node: CaptureAttribute
           
         <sub>go to: top index
@@ -266,7 +274,7 @@ class Float(dsock.Float):
         node ref Capture Attribute </sub>
                                   
         ```python
-        v = float.capture_attribute(geometry, domain)
+        v = float.capture_attribute(geometry, domain, node_label = None, node_color = None)
         ```
     
 
@@ -275,7 +283,9 @@ class Float(dsock.Float):
             ## Sockets
             - value : Float (self)
             - geometry : Geometry## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT'
     
 
@@ -283,7 +293,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT', domain=domain)
+            nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT', domain=domain, label=node_label, node_color=node_color)
             ```
     
 
@@ -293,9 +303,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT', domain=domain)
+        return nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT', domain=domain, label=node_label, node_color=node_color)
 
-    def field_at_index(self, index=None, domain='POINT'):
+    def field_at_index(self, index=None, domain='POINT', node_label = None, node_color = None):
         """ > Node: FieldAtIndex
           
         <sub>go to: top index
@@ -303,7 +313,7 @@ class Float(dsock.Float):
         node ref Field at Index </sub>
                                   
         ```python
-        v = float.field_at_index(index, domain)
+        v = float.field_at_index(index, domain, node_label = None, node_color = None)
         ```
     
 
@@ -312,7 +322,9 @@ class Float(dsock.Float):
             ## Sockets
             - value : Float (self)
             - index : Integer## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT'
     
 
@@ -320,7 +332,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT', domain=domain)
+            nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT', domain=domain, label=node_label, node_color=node_color)
             ```
     
 
@@ -330,9 +342,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT', domain=domain).value
+        return nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT', domain=domain, label=node_label, node_color=node_color).value
 
-    def raycast(self, target_geometry=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
+    def raycast(self, target_geometry=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED', node_label = None, node_color = None):
         """ > Node: Raycast
           
         <sub>go to: top index
@@ -340,7 +352,7 @@ class Float(dsock.Float):
         node ref Raycast </sub>
                                   
         ```python
-        v = float.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
+        v = float.raycast(target_geometry, source_position, ray_direction, ray_length, mapping, node_label = None, node_color = None)
         ```
     
 
@@ -352,7 +364,9 @@ class Float(dsock.Float):
             - source_position : Vector
             - ray_direction : Vector
             - ray_length : Float## Parameters
-            - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
+            - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT'
     
 
@@ -360,7 +374,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping)
+            nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping, label=node_label, node_color=node_color)
             ```
     
 
@@ -370,9 +384,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping)
+        return nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping, label=node_label, node_color=node_color)
 
-    def switch(self, switch0=None, true=None):
+    def switch(self, switch0=None, true=None, node_label = None, node_color = None):
         """ > Node: Switch
           
         <sub>go to: top index
@@ -380,7 +394,7 @@ class Float(dsock.Float):
         node ref Switch </sub>
                                   
         ```python
-        v = float.switch(switch0, true)
+        v = float.switch(switch0, true, node_label = None, node_color = None)
         ```
     
 
@@ -389,7 +403,9 @@ class Float(dsock.Float):
             ## Sockets
             - false : Float (self)
             - switch0 : Boolean
-            - true : Float## Fixed parameters
+            - true : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - input_type : 'FLOAT'
     
 
@@ -397,7 +413,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT')
+            nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT', label=node_label, node_color=node_color)
             ```
     
 
@@ -407,9 +423,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT').output
+        return nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT', label=node_label, node_color=node_color).output
 
-    def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, interpolation_type='LINEAR'):
+    def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, interpolation_type='LINEAR', node_label = None, node_color = None):
         """ > Node: MapRange
           
         <sub>go to: top index
@@ -417,7 +433,7 @@ class Float(dsock.Float):
         node ref Map Range </sub>
                                   
         ```python
-        v = float.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type)
+        v = float.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type, node_label = None, node_color = None)
         ```
     
 
@@ -430,7 +446,9 @@ class Float(dsock.Float):
             - to_min : Float
             - to_max : Float## Parameters
             - clamp : True
-            - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]## Fixed parameters
+            - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT'
     
 
@@ -438,7 +456,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type)
+            nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type, label=node_label, node_color=node_color)
             ```
     
 
@@ -448,9 +466,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type).result
+        return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type, label=node_label, node_color=node_color).result
 
-    def less_than(self, b=None):
+    def less_than(self, b=None, node_label = None, node_color = None):
         """ > Node: Compare
           
         <sub>go to: top index
@@ -458,7 +476,7 @@ class Float(dsock.Float):
         node ref Compare </sub>
                                   
         ```python
-        v = float.less_than(b)
+        v = float.less_than(b, node_label = None, node_color = None)
         ```
     
 
@@ -466,7 +484,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - a : Float (self)
-            - b : Float## Fixed parameters
+            - b : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT'
             - mode : 'ELEMENT'
             - operation : 'LESS_THAN'
@@ -476,7 +496,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN')
+            nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN', label=node_label, node_color=node_color)
             ```
     
 
@@ -486,9 +506,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN').result
+        return nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN', label=node_label, node_color=node_color).result
 
-    def less_equal(self, b=None):
+    def less_equal(self, b=None, node_label = None, node_color = None):
         """ > Node: Compare
           
         <sub>go to: top index
@@ -496,7 +516,7 @@ class Float(dsock.Float):
         node ref Compare </sub>
                                   
         ```python
-        v = float.less_equal(b)
+        v = float.less_equal(b, node_label = None, node_color = None)
         ```
     
 
@@ -504,7 +524,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - a : Float (self)
-            - b : Float## Fixed parameters
+            - b : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT'
             - mode : 'ELEMENT'
             - operation : 'LESS_EQUAL'
@@ -514,7 +536,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL')
+            nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL', label=node_label, node_color=node_color)
             ```
     
 
@@ -524,9 +546,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL').result
+        return nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL', label=node_label, node_color=node_color).result
 
-    def greater_than(self, b=None):
+    def greater_than(self, b=None, node_label = None, node_color = None):
         """ > Node: Compare
           
         <sub>go to: top index
@@ -534,7 +556,7 @@ class Float(dsock.Float):
         node ref Compare </sub>
                                   
         ```python
-        v = float.greater_than(b)
+        v = float.greater_than(b, node_label = None, node_color = None)
         ```
     
 
@@ -542,7 +564,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - a : Float (self)
-            - b : Float## Fixed parameters
+            - b : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT'
             - mode : 'ELEMENT'
             - operation : 'GREATER_THAN'
@@ -552,7 +576,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+            nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', label=node_label, node_color=node_color)
             ```
     
 
@@ -562,9 +586,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN').result
+        return nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', label=node_label, node_color=node_color).result
 
-    def greater_equal(self, b=None):
+    def greater_equal(self, b=None, node_label = None, node_color = None):
         """ > Node: Compare
           
         <sub>go to: top index
@@ -572,7 +596,7 @@ class Float(dsock.Float):
         node ref Compare </sub>
                                   
         ```python
-        v = float.greater_equal(b)
+        v = float.greater_equal(b, node_label = None, node_color = None)
         ```
     
 
@@ -580,7 +604,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - a : Float (self)
-            - b : Float## Fixed parameters
+            - b : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT'
             - mode : 'ELEMENT'
             - operation : 'GREATER_EQUAL'
@@ -590,7 +616,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL')
+            nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL', label=node_label, node_color=node_color)
             ```
     
 
@@ -600,9 +626,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL').result
+        return nodes.Compare(a=self, b=b, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL', label=node_label, node_color=node_color).result
 
-    def equal(self, b=None, epsilon=None):
+    def equal(self, b=None, epsilon=None, node_label = None, node_color = None):
         """ > Node: Compare
           
         <sub>go to: top index
@@ -610,7 +636,7 @@ class Float(dsock.Float):
         node ref Compare </sub>
                                   
         ```python
-        v = float.equal(b, epsilon)
+        v = float.equal(b, epsilon, node_label = None, node_color = None)
         ```
     
 
@@ -619,7 +645,9 @@ class Float(dsock.Float):
             ## Sockets
             - a : Float (self)
             - b : Float
-            - epsilon : Float## Fixed parameters
+            - epsilon : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT'
             - mode : 'ELEMENT'
             - operation : 'EQUAL'
@@ -629,7 +657,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL')
+            nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL', label=node_label, node_color=node_color)
             ```
     
 
@@ -639,9 +667,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL').result
+        return nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL', label=node_label, node_color=node_color).result
 
-    def not_equal(self, b=None, epsilon=None):
+    def not_equal(self, b=None, epsilon=None, node_label = None, node_color = None):
         """ > Node: Compare
           
         <sub>go to: top index
@@ -649,7 +677,7 @@ class Float(dsock.Float):
         node ref Compare </sub>
                                   
         ```python
-        v = float.not_equal(b, epsilon)
+        v = float.not_equal(b, epsilon, node_label = None, node_color = None)
         ```
     
 
@@ -658,7 +686,9 @@ class Float(dsock.Float):
             ## Sockets
             - a : Float (self)
             - b : Float
-            - epsilon : Float## Fixed parameters
+            - epsilon : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT'
             - mode : 'ELEMENT'
             - operation : 'NOT_EQUAL'
@@ -668,7 +698,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL')
+            nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL', label=node_label, node_color=node_color)
             ```
     
 
@@ -678,9 +708,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL').result
+        return nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL', label=node_label, node_color=node_color).result
 
-    def add(self, value1=None):
+    def add(self, value1=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -688,7 +718,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.add(value1)
+        v = float.add(value1, node_label = None, node_color = None)
         ```
     
 
@@ -696,7 +726,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - value0 : Float (self)
-            - value1 : Float## Fixed parameters
+            - value1 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'ADD'
     
 
@@ -704,7 +736,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='ADD')
+            nodes.Math(value0=self, value1=value1, operation='ADD', label=node_label, node_color=node_color)
             ```
     
 
@@ -714,9 +746,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, operation='ADD').value
+        return nodes.Math(value0=self, value1=value1, operation='ADD', label=node_label, node_color=node_color).value
 
-    def subtract(self, value1=None):
+    def subtract(self, value1=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -724,7 +756,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.subtract(value1)
+        v = float.subtract(value1, node_label = None, node_color = None)
         ```
     
 
@@ -732,7 +764,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - value0 : Float (self)
-            - value1 : Float## Fixed parameters
+            - value1 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'SUBTRACT'
     
 
@@ -740,7 +774,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='SUBTRACT')
+            nodes.Math(value0=self, value1=value1, operation='SUBTRACT', label=node_label, node_color=node_color)
             ```
     
 
@@ -750,9 +784,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, operation='SUBTRACT').value
+        return nodes.Math(value0=self, value1=value1, operation='SUBTRACT', label=node_label, node_color=node_color).value
 
-    def multiply(self, value1=None):
+    def multiply(self, value1=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -760,7 +794,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.multiply(value1)
+        v = float.multiply(value1, node_label = None, node_color = None)
         ```
     
 
@@ -768,7 +802,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - value0 : Float (self)
-            - value1 : Float## Fixed parameters
+            - value1 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'MULTIPLY'
     
 
@@ -776,7 +812,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='MULTIPLY')
+            nodes.Math(value0=self, value1=value1, operation='MULTIPLY', label=node_label, node_color=node_color)
             ```
     
 
@@ -786,9 +822,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, operation='MULTIPLY').value
+        return nodes.Math(value0=self, value1=value1, operation='MULTIPLY', label=node_label, node_color=node_color).value
 
-    def divide(self, value1=None):
+    def divide(self, value1=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -796,7 +832,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.divide(value1)
+        v = float.divide(value1, node_label = None, node_color = None)
         ```
     
 
@@ -804,7 +840,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - value0 : Float (self)
-            - value1 : Float## Fixed parameters
+            - value1 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'DIVIDE'
     
 
@@ -812,7 +850,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='DIVIDE')
+            nodes.Math(value0=self, value1=value1, operation='DIVIDE', label=node_label, node_color=node_color)
             ```
     
 
@@ -822,9 +860,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, operation='DIVIDE').value
+        return nodes.Math(value0=self, value1=value1, operation='DIVIDE', label=node_label, node_color=node_color).value
 
-    def multiply_add(self, value1=None, value2=None):
+    def multiply_add(self, value1=None, value2=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -832,7 +870,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.multiply_add(value1, value2)
+        v = float.multiply_add(value1, value2, node_label = None, node_color = None)
         ```
     
 
@@ -841,7 +879,9 @@ class Float(dsock.Float):
             ## Sockets
             - value0 : Float (self)
             - value1 : Float
-            - value2 : Float## Fixed parameters
+            - value2 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'MULTIPLY_ADD'
     
 
@@ -849,7 +889,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD')
+            nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD', label=node_label, node_color=node_color)
             ```
     
 
@@ -859,9 +899,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD').value
+        return nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD', label=node_label, node_color=node_color).value
 
-    def pow(self, value1=None):
+    def pow(self, value1=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -869,7 +909,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.pow(value1)
+        v = float.pow(value1, node_label = None, node_color = None)
         ```
     
 
@@ -877,7 +917,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - value0 : Float (self)
-            - value1 : Float## Fixed parameters
+            - value1 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'POWER'
     
 
@@ -885,7 +927,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='POWER')
+            nodes.Math(value0=self, value1=value1, operation='POWER', label=node_label, node_color=node_color)
             ```
     
 
@@ -895,9 +937,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, operation='POWER').value
+        return nodes.Math(value0=self, value1=value1, operation='POWER', label=node_label, node_color=node_color).value
 
-    def log(self, value1=None):
+    def log(self, value1=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -905,7 +947,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.log(value1)
+        v = float.log(value1, node_label = None, node_color = None)
         ```
     
 
@@ -913,7 +955,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - value0 : Float (self)
-            - value1 : Float## Fixed parameters
+            - value1 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'LOGARITHM'
     
 
@@ -921,7 +965,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='LOGARITHM')
+            nodes.Math(value0=self, value1=value1, operation='LOGARITHM', label=node_label, node_color=node_color)
             ```
     
 
@@ -931,9 +975,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, operation='LOGARITHM').value
+        return nodes.Math(value0=self, value1=value1, operation='LOGARITHM', label=node_label, node_color=node_color).value
 
-    def sqrt(self):
+    def sqrt(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -941,14 +985,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.sqrt()
+        v = float.sqrt(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'SQRT'
     
 
@@ -956,7 +1002,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='SQRT')
+            nodes.Math(value0=self, operation='SQRT', label=node_label, node_color=node_color)
             ```
     
 
@@ -966,9 +1012,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='SQRT').value
+        return nodes.Math(value0=self, operation='SQRT', label=node_label, node_color=node_color).value
 
-    def inverse_sqrt(self):
+    def inverse_sqrt(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -976,14 +1022,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.inverse_sqrt()
+        v = float.inverse_sqrt(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'INVERSE_SQRT'
     
 
@@ -991,7 +1039,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='INVERSE_SQRT')
+            nodes.Math(value0=self, operation='INVERSE_SQRT', label=node_label, node_color=node_color)
             ```
     
 
@@ -1001,9 +1049,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='INVERSE_SQRT').value
+        return nodes.Math(value0=self, operation='INVERSE_SQRT', label=node_label, node_color=node_color).value
 
-    def abs(self):
+    def abs(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1011,14 +1059,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.abs()
+        v = float.abs(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'ABSOLUTE'
     
 
@@ -1026,7 +1076,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='ABSOLUTE')
+            nodes.Math(value0=self, operation='ABSOLUTE', label=node_label, node_color=node_color)
             ```
     
 
@@ -1036,9 +1086,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='ABSOLUTE').value
+        return nodes.Math(value0=self, operation='ABSOLUTE', label=node_label, node_color=node_color).value
 
-    def exp(self):
+    def exp(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1046,14 +1096,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.exp()
+        v = float.exp(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'EXPONENT'
     
 
@@ -1061,7 +1113,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='EXPONENT')
+            nodes.Math(value0=self, operation='EXPONENT', label=node_label, node_color=node_color)
             ```
     
 
@@ -1071,9 +1123,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='EXPONENT').value
+        return nodes.Math(value0=self, operation='EXPONENT', label=node_label, node_color=node_color).value
 
-    def min(self, value1=None):
+    def min(self, value1=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1081,7 +1133,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.min(value1)
+        v = float.min(value1, node_label = None, node_color = None)
         ```
     
 
@@ -1089,7 +1141,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - value0 : Float (self)
-            - value1 : Float## Fixed parameters
+            - value1 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'MINIMUM'
     
 
@@ -1097,7 +1151,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='MINIMUM')
+            nodes.Math(value0=self, value1=value1, operation='MINIMUM', label=node_label, node_color=node_color)
             ```
     
 
@@ -1107,9 +1161,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, operation='MINIMUM').value
+        return nodes.Math(value0=self, value1=value1, operation='MINIMUM', label=node_label, node_color=node_color).value
 
-    def max(self, value1=None):
+    def max(self, value1=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1117,7 +1171,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.max(value1)
+        v = float.max(value1, node_label = None, node_color = None)
         ```
     
 
@@ -1125,7 +1179,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - value0 : Float (self)
-            - value1 : Float## Fixed parameters
+            - value1 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'MAXIMUM'
     
 
@@ -1133,7 +1189,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='MAXIMUM')
+            nodes.Math(value0=self, value1=value1, operation='MAXIMUM', label=node_label, node_color=node_color)
             ```
     
 
@@ -1143,9 +1199,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, operation='MAXIMUM').value
+        return nodes.Math(value0=self, value1=value1, operation='MAXIMUM', label=node_label, node_color=node_color).value
 
-    def less_than(self, value1=None):
+    def less_than(self, value1=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1153,7 +1209,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.less_than(value1)
+        v = float.less_than(value1, node_label = None, node_color = None)
         ```
     
 
@@ -1161,7 +1217,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - value0 : Float (self)
-            - value1 : Float## Fixed parameters
+            - value1 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'LESS_THAN'
     
 
@@ -1169,7 +1227,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='LESS_THAN')
+            nodes.Math(value0=self, value1=value1, operation='LESS_THAN', label=node_label, node_color=node_color)
             ```
     
 
@@ -1179,9 +1237,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, operation='LESS_THAN').value
+        return nodes.Math(value0=self, value1=value1, operation='LESS_THAN', label=node_label, node_color=node_color).value
 
-    def greater_than(self, value1=None):
+    def greater_than(self, value1=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1189,7 +1247,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.greater_than(value1)
+        v = float.greater_than(value1, node_label = None, node_color = None)
         ```
     
 
@@ -1197,7 +1255,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - value0 : Float (self)
-            - value1 : Float## Fixed parameters
+            - value1 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'GREATER_THAN'
     
 
@@ -1205,7 +1265,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='GREATER_THAN')
+            nodes.Math(value0=self, value1=value1, operation='GREATER_THAN', label=node_label, node_color=node_color)
             ```
     
 
@@ -1215,9 +1275,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, operation='GREATER_THAN').value
+        return nodes.Math(value0=self, value1=value1, operation='GREATER_THAN', label=node_label, node_color=node_color).value
 
-    def sign(self):
+    def sign(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1225,14 +1285,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.sign()
+        v = float.sign(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'SIGN'
     
 
@@ -1240,7 +1302,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='SIGN')
+            nodes.Math(value0=self, operation='SIGN', label=node_label, node_color=node_color)
             ```
     
 
@@ -1250,9 +1312,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='SIGN').value
+        return nodes.Math(value0=self, operation='SIGN', label=node_label, node_color=node_color).value
 
-    def compare(self, value1=None, value2=None):
+    def compare(self, value1=None, value2=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1260,7 +1322,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.compare(value1, value2)
+        v = float.compare(value1, value2, node_label = None, node_color = None)
         ```
     
 
@@ -1269,7 +1331,9 @@ class Float(dsock.Float):
             ## Sockets
             - value0 : Float (self)
             - value1 : Float
-            - value2 : Float## Fixed parameters
+            - value2 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'COMPARE'
     
 
@@ -1277,7 +1341,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE')
+            nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE', label=node_label, node_color=node_color)
             ```
     
 
@@ -1287,9 +1351,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE').value
+        return nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE', label=node_label, node_color=node_color).value
 
-    def smooth_min(self, value1=None, value2=None):
+    def smooth_min(self, value1=None, value2=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1297,7 +1361,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.smooth_min(value1, value2)
+        v = float.smooth_min(value1, value2, node_label = None, node_color = None)
         ```
     
 
@@ -1306,7 +1370,9 @@ class Float(dsock.Float):
             ## Sockets
             - value0 : Float (self)
             - value1 : Float
-            - value2 : Float## Fixed parameters
+            - value2 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'SMOOTH_MIN'
     
 
@@ -1314,7 +1380,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN')
+            nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN', label=node_label, node_color=node_color)
             ```
     
 
@@ -1324,9 +1390,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN').value
+        return nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN', label=node_label, node_color=node_color).value
 
-    def smooth_max(self, value1=None, value2=None):
+    def smooth_max(self, value1=None, value2=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1334,7 +1400,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.smooth_max(value1, value2)
+        v = float.smooth_max(value1, value2, node_label = None, node_color = None)
         ```
     
 
@@ -1343,7 +1409,9 @@ class Float(dsock.Float):
             ## Sockets
             - value0 : Float (self)
             - value1 : Float
-            - value2 : Float## Fixed parameters
+            - value2 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'SMOOTH_MAX'
     
 
@@ -1351,7 +1419,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX')
+            nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX', label=node_label, node_color=node_color)
             ```
     
 
@@ -1361,9 +1429,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX').value
+        return nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX', label=node_label, node_color=node_color).value
 
-    def round(self):
+    def round(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1371,14 +1439,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.round()
+        v = float.round(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'ROUND'
     
 
@@ -1386,7 +1456,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='ROUND')
+            nodes.Math(value0=self, operation='ROUND', label=node_label, node_color=node_color)
             ```
     
 
@@ -1396,9 +1466,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='ROUND').value
+        return nodes.Math(value0=self, operation='ROUND', label=node_label, node_color=node_color).value
 
-    def floor(self):
+    def floor(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1406,14 +1476,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.floor()
+        v = float.floor(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'FLOOR'
     
 
@@ -1421,7 +1493,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='FLOOR')
+            nodes.Math(value0=self, operation='FLOOR', label=node_label, node_color=node_color)
             ```
     
 
@@ -1431,9 +1503,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='FLOOR').value
+        return nodes.Math(value0=self, operation='FLOOR', label=node_label, node_color=node_color).value
 
-    def ceil(self):
+    def ceil(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1441,14 +1513,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.ceil()
+        v = float.ceil(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'CEIL'
     
 
@@ -1456,7 +1530,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='CEIL')
+            nodes.Math(value0=self, operation='CEIL', label=node_label, node_color=node_color)
             ```
     
 
@@ -1466,9 +1540,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='CEIL').value
+        return nodes.Math(value0=self, operation='CEIL', label=node_label, node_color=node_color).value
 
-    def trunc(self):
+    def trunc(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1476,14 +1550,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.trunc()
+        v = float.trunc(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'TRUNC'
     
 
@@ -1491,7 +1567,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='TRUNC')
+            nodes.Math(value0=self, operation='TRUNC', label=node_label, node_color=node_color)
             ```
     
 
@@ -1501,9 +1577,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='TRUNC').value
+        return nodes.Math(value0=self, operation='TRUNC', label=node_label, node_color=node_color).value
 
-    def fract(self):
+    def fract(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1511,14 +1587,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.fract()
+        v = float.fract(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'FRACT'
     
 
@@ -1526,7 +1604,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='FRACT')
+            nodes.Math(value0=self, operation='FRACT', label=node_label, node_color=node_color)
             ```
     
 
@@ -1536,9 +1614,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='FRACT').value
+        return nodes.Math(value0=self, operation='FRACT', label=node_label, node_color=node_color).value
 
-    def modulo(self, value1=None):
+    def modulo(self, value1=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1546,7 +1624,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.modulo(value1)
+        v = float.modulo(value1, node_label = None, node_color = None)
         ```
     
 
@@ -1554,7 +1632,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - value0 : Float (self)
-            - value1 : Float## Fixed parameters
+            - value1 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'MODULO'
     
 
@@ -1562,7 +1642,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='MODULO')
+            nodes.Math(value0=self, value1=value1, operation='MODULO', label=node_label, node_color=node_color)
             ```
     
 
@@ -1572,9 +1652,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, operation='MODULO').value
+        return nodes.Math(value0=self, value1=value1, operation='MODULO', label=node_label, node_color=node_color).value
 
-    def wrap(self, value1=None, value2=None):
+    def wrap(self, value1=None, value2=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1582,7 +1662,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.wrap(value1, value2)
+        v = float.wrap(value1, value2, node_label = None, node_color = None)
         ```
     
 
@@ -1591,7 +1671,9 @@ class Float(dsock.Float):
             ## Sockets
             - value0 : Float (self)
             - value1 : Float
-            - value2 : Float## Fixed parameters
+            - value2 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'WRAP'
     
 
@@ -1599,7 +1681,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP')
+            nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP', label=node_label, node_color=node_color)
             ```
     
 
@@ -1609,9 +1691,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP').value
+        return nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP', label=node_label, node_color=node_color).value
 
-    def snap(self, value1=None):
+    def snap(self, value1=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1619,7 +1701,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.snap(value1)
+        v = float.snap(value1, node_label = None, node_color = None)
         ```
     
 
@@ -1627,7 +1709,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - value0 : Float (self)
-            - value1 : Float## Fixed parameters
+            - value1 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'SNAP'
     
 
@@ -1635,7 +1719,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='SNAP')
+            nodes.Math(value0=self, value1=value1, operation='SNAP', label=node_label, node_color=node_color)
             ```
     
 
@@ -1645,9 +1729,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, operation='SNAP').value
+        return nodes.Math(value0=self, value1=value1, operation='SNAP', label=node_label, node_color=node_color).value
 
-    def pingpong(self, value1=None):
+    def pingpong(self, value1=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1655,7 +1739,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.pingpong(value1)
+        v = float.pingpong(value1, node_label = None, node_color = None)
         ```
     
 
@@ -1663,7 +1747,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - value0 : Float (self)
-            - value1 : Float## Fixed parameters
+            - value1 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'PINGPONG'
     
 
@@ -1671,7 +1757,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='PINGPONG')
+            nodes.Math(value0=self, value1=value1, operation='PINGPONG', label=node_label, node_color=node_color)
             ```
     
 
@@ -1681,9 +1767,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, operation='PINGPONG').value
+        return nodes.Math(value0=self, value1=value1, operation='PINGPONG', label=node_label, node_color=node_color).value
 
-    def sin(self):
+    def sin(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1691,14 +1777,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.sin()
+        v = float.sin(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'SINE'
     
 
@@ -1706,7 +1794,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='SINE')
+            nodes.Math(value0=self, operation='SINE', label=node_label, node_color=node_color)
             ```
     
 
@@ -1716,9 +1804,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='SINE').value
+        return nodes.Math(value0=self, operation='SINE', label=node_label, node_color=node_color).value
 
-    def cos(self):
+    def cos(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1726,14 +1814,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.cos()
+        v = float.cos(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'COSINE'
     
 
@@ -1741,7 +1831,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='COSINE')
+            nodes.Math(value0=self, operation='COSINE', label=node_label, node_color=node_color)
             ```
     
 
@@ -1751,9 +1841,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='COSINE').value
+        return nodes.Math(value0=self, operation='COSINE', label=node_label, node_color=node_color).value
 
-    def tan(self):
+    def tan(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1761,14 +1851,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.tan()
+        v = float.tan(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'TANGENT'
     
 
@@ -1776,7 +1868,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='TANGENT')
+            nodes.Math(value0=self, operation='TANGENT', label=node_label, node_color=node_color)
             ```
     
 
@@ -1786,9 +1878,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='TANGENT').value
+        return nodes.Math(value0=self, operation='TANGENT', label=node_label, node_color=node_color).value
 
-    def arcsin(self):
+    def arcsin(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1796,14 +1888,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.arcsin()
+        v = float.arcsin(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'ARCSINE'
     
 
@@ -1811,7 +1905,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='ARCSINE')
+            nodes.Math(value0=self, operation='ARCSINE', label=node_label, node_color=node_color)
             ```
     
 
@@ -1821,9 +1915,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='ARCSINE').value
+        return nodes.Math(value0=self, operation='ARCSINE', label=node_label, node_color=node_color).value
 
-    def arccos(self):
+    def arccos(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1831,14 +1925,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.arccos()
+        v = float.arccos(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'ARCCOSINE'
     
 
@@ -1846,7 +1942,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='ARCCOSINE')
+            nodes.Math(value0=self, operation='ARCCOSINE', label=node_label, node_color=node_color)
             ```
     
 
@@ -1856,9 +1952,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='ARCCOSINE').value
+        return nodes.Math(value0=self, operation='ARCCOSINE', label=node_label, node_color=node_color).value
 
-    def arctan(self):
+    def arctan(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1866,14 +1962,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.arctan()
+        v = float.arctan(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'ARCTANGENT'
     
 
@@ -1881,7 +1979,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='ARCTANGENT')
+            nodes.Math(value0=self, operation='ARCTANGENT', label=node_label, node_color=node_color)
             ```
     
 
@@ -1891,9 +1989,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='ARCTANGENT').value
+        return nodes.Math(value0=self, operation='ARCTANGENT', label=node_label, node_color=node_color).value
 
-    def arctan2(self, value1=None):
+    def arctan2(self, value1=None, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1901,7 +1999,7 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.arctan2(value1)
+        v = float.arctan2(value1, node_label = None, node_color = None)
         ```
     
 
@@ -1909,7 +2007,9 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - value0 : Float (self)
-            - value1 : Float## Fixed parameters
+            - value1 : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'ARCTAN2'
     
 
@@ -1917,7 +2017,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, value1=value1, operation='ARCTAN2')
+            nodes.Math(value0=self, value1=value1, operation='ARCTAN2', label=node_label, node_color=node_color)
             ```
     
 
@@ -1927,9 +2027,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, value1=value1, operation='ARCTAN2').value
+        return nodes.Math(value0=self, value1=value1, operation='ARCTAN2', label=node_label, node_color=node_color).value
 
-    def sinh(self):
+    def sinh(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1937,14 +2037,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.sinh()
+        v = float.sinh(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'SINH'
     
 
@@ -1952,7 +2054,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='SINH')
+            nodes.Math(value0=self, operation='SINH', label=node_label, node_color=node_color)
             ```
     
 
@@ -1962,9 +2064,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='SINH').value
+        return nodes.Math(value0=self, operation='SINH', label=node_label, node_color=node_color).value
 
-    def cosh(self):
+    def cosh(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -1972,14 +2074,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.cosh()
+        v = float.cosh(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'COSH'
     
 
@@ -1987,7 +2091,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='COSH')
+            nodes.Math(value0=self, operation='COSH', label=node_label, node_color=node_color)
             ```
     
 
@@ -1997,9 +2101,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='COSH').value
+        return nodes.Math(value0=self, operation='COSH', label=node_label, node_color=node_color).value
 
-    def tanh(self):
+    def tanh(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -2007,14 +2111,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.tanh()
+        v = float.tanh(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'TANH'
     
 
@@ -2022,7 +2128,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='TANH')
+            nodes.Math(value0=self, operation='TANH', label=node_label, node_color=node_color)
             ```
     
 
@@ -2032,9 +2138,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='TANH').value
+        return nodes.Math(value0=self, operation='TANH', label=node_label, node_color=node_color).value
 
-    def radians(self):
+    def radians(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -2042,14 +2148,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.radians()
+        v = float.radians(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'RADIANS'
     
 
@@ -2057,7 +2165,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='RADIANS')
+            nodes.Math(value0=self, operation='RADIANS', label=node_label, node_color=node_color)
             ```
     
 
@@ -2067,9 +2175,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='RADIANS').value
+        return nodes.Math(value0=self, operation='RADIANS', label=node_label, node_color=node_color).value
 
-    def degrees(self):
+    def degrees(self, node_label = None, node_color = None):
         """ > Node: Math
           
         <sub>go to: top index
@@ -2077,14 +2185,16 @@ class Float(dsock.Float):
         node ref Math </sub>
                                   
         ```python
-        v = float.degrees()
+        v = float.degrees(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - value0 : Float (self)## Fixed parameters
+            - value0 : Float (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'DEGREES'
     
 
@@ -2092,7 +2202,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Math(value0=self, operation='DEGREES')
+            nodes.Math(value0=self, operation='DEGREES', label=node_label, node_color=node_color)
             ```
     
 
@@ -2102,9 +2212,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Math(value0=self, operation='DEGREES').value
+        return nodes.Math(value0=self, operation='DEGREES', label=node_label, node_color=node_color).value
 
-    def to_integer(self, rounding_mode='ROUND'):
+    def to_integer(self, rounding_mode='ROUND', node_label = None, node_color = None):
         """ > Node: FloatToInteger
           
         <sub>go to: top index
@@ -2112,7 +2222,7 @@ class Float(dsock.Float):
         node ref Float to Integer </sub>
                                   
         ```python
-        v = float.to_integer(rounding_mode)
+        v = float.to_integer(rounding_mode, node_label = None, node_color = None)
         ```
     
 
@@ -2121,13 +2231,15 @@ class Float(dsock.Float):
             ## Sockets
             - float : Float (self)## Parameters
             - rounding_mode : 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE]
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.FloatToInteger(float=self, rounding_mode=rounding_mode)
+            nodes.FloatToInteger(float=self, rounding_mode=rounding_mode, label=node_label, node_color=node_color)
             ```
     
 
@@ -2137,9 +2249,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.FloatToInteger(float=self, rounding_mode=rounding_mode).integer
+        return nodes.FloatToInteger(float=self, rounding_mode=rounding_mode, label=node_label, node_color=node_color).integer
 
-    def to_string(self, decimals=None):
+    def to_string(self, decimals=None, node_label = None, node_color = None):
         """ > Node: ValueToString
           
         <sub>go to: top index
@@ -2147,7 +2259,7 @@ class Float(dsock.Float):
         node ref Value to String </sub>
                                   
         ```python
-        v = float.to_string(decimals)
+        v = float.to_string(decimals, node_label = None, node_color = None)
         ```
     
 
@@ -2155,14 +2267,16 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - value : Float (self)
-            - decimals : Integer
+            - decimals : Integer## Parameters
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.ValueToString(value=self, decimals=decimals)
+            nodes.ValueToString(value=self, decimals=decimals, label=node_label, node_color=node_color)
             ```
     
 
@@ -2172,9 +2286,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.ValueToString(value=self, decimals=decimals).string
+        return nodes.ValueToString(value=self, decimals=decimals, label=node_label, node_color=node_color).string
 
-    def color_ramp(self):
+    def color_ramp(self, node_label = None, node_color = None):
         """ > Node: ColorRamp
           
         <sub>go to: top index
@@ -2182,21 +2296,23 @@ class Float(dsock.Float):
         node ref ColorRamp </sub>
                                   
         ```python
-        v = float.color_ramp()
+        v = float.color_ramp(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - fac : Float (self)
+            - fac : Float (self)## Parameters
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.ColorRamp(fac=self)
+            nodes.ColorRamp(fac=self, label=node_label, node_color=node_color)
             ```
     
 
@@ -2206,9 +2322,9 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.ColorRamp(fac=self)
+        return nodes.ColorRamp(fac=self, label=node_label, node_color=node_color)
 
-    def curve(self, factor=None):
+    def curve(self, factor=None, node_label = None, node_color = None):
         """ > Node: FloatCurve
           
         <sub>go to: top index
@@ -2216,7 +2332,7 @@ class Float(dsock.Float):
         node ref Float Curve </sub>
                                   
         ```python
-        v = float.curve(factor)
+        v = float.curve(factor, node_label = None, node_color = None)
         ```
     
 
@@ -2224,14 +2340,16 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - value : Float (self)
-            - factor : Float
+            - factor : Float## Parameters
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.FloatCurve(value=self, factor=factor)
+            nodes.FloatCurve(value=self, factor=factor, label=node_label, node_color=node_color)
             ```
     
 
@@ -2241,9 +2359,9 @@ class Float(dsock.Float):
             
         """
 
-        return self.stack(nodes.FloatCurve(value=self, factor=factor))
+        return self.stack(nodes.FloatCurve(value=self, factor=factor, label=node_label, node_color=node_color))
 
-    def clamp(self, min=None, max=None, clamp_type='MINMAX'):
+    def clamp(self, min=None, max=None, clamp_type='MINMAX', node_label = None, node_color = None):
         """ > Node: Clamp
           
         <sub>go to: top index
@@ -2251,7 +2369,7 @@ class Float(dsock.Float):
         node ref Clamp </sub>
                                   
         ```python
-        v = float.clamp(min, max, clamp_type)
+        v = float.clamp(min, max, clamp_type, node_label = None, node_color = None)
         ```
     
 
@@ -2262,13 +2380,15 @@ class Float(dsock.Float):
             - min : Float
             - max : Float## Parameters
             - clamp_type : 'MINMAX' in [MINMAX, RANGE]
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type)
+            nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type, label=node_label, node_color=node_color)
             ```
     
 
@@ -2278,6 +2398,6 @@ class Float(dsock.Float):
             
         """
 
-        return self.stack(nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type))
+        return self.stack(nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type, label=node_label, node_color=node_color))
 
 

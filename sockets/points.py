@@ -40,7 +40,7 @@ class Points(gn.Geometry):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def set_radius(self, selection=None, radius=None):
+    def set_radius(self, selection=None, radius=None, node_label = None, node_color = None):
         """ > Node: SetPointRadius
           
         <sub>go to: top index
@@ -48,7 +48,7 @@ class Points(gn.Geometry):
         node ref Set Point Radius </sub>
                                   
         ```python
-        v = points.set_radius(selection, radius)
+        v = points.set_radius(selection, radius, node_label = None, node_color = None)
         ```
     
 
@@ -57,14 +57,16 @@ class Points(gn.Geometry):
             ## Sockets
             - points : Points (self)
             - selection : Boolean
-            - radius : Float
+            - radius : Float## Parameters
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.SetPointRadius(points=self, selection=selection, radius=radius)
+            nodes.SetPointRadius(points=self, selection=selection, radius=radius, label=node_label, node_color=node_color)
             ```
     
 
@@ -74,9 +76,9 @@ class Points(gn.Geometry):
             
         """
 
-        return self.stack(nodes.SetPointRadius(points=self, selection=selection, radius=radius))
+        return self.stack(nodes.SetPointRadius(points=self, selection=selection, radius=radius, label=node_label, node_color=node_color))
 
-    def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
+    def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, node_label = None, node_color = None):
         """ > Node: InstanceOnPoints
           
         <sub>go to: top index
@@ -84,7 +86,7 @@ class Points(gn.Geometry):
         node ref Instance on Points </sub>
                                   
         ```python
-        v = points.instance_on_points(selection, instance, pick_instance, instance_index, rotation, scale)
+        v = points.instance_on_points(selection, instance, pick_instance, instance_index, rotation, scale, node_label = None, node_color = None)
         ```
     
 
@@ -97,14 +99,16 @@ class Points(gn.Geometry):
             - pick_instance : Boolean
             - instance_index : Integer
             - rotation : Vector
-            - scale : Vector
+            - scale : Vector## Parameters
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale)
+            nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale, label=node_label, node_color=node_color)
             ```
     
 
@@ -114,9 +118,9 @@ class Points(gn.Geometry):
             
         """
 
-        return nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances
+        return nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale, label=node_label, node_color=node_color).instances
 
-    def to_vertices(self, selection=None):
+    def to_vertices(self, selection=None, node_label = None, node_color = None):
         """ > Node: PointsToVertices
           
         <sub>go to: top index
@@ -124,7 +128,7 @@ class Points(gn.Geometry):
         node ref Points to Vertices </sub>
                                   
         ```python
-        v = points.to_vertices(selection)
+        v = points.to_vertices(selection, node_label = None, node_color = None)
         ```
     
 
@@ -132,14 +136,16 @@ class Points(gn.Geometry):
         ---------
             ## Sockets
             - points : Points (self)
-            - selection : Boolean
+            - selection : Boolean## Parameters
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.PointsToVertices(points=self, selection=selection)
+            nodes.PointsToVertices(points=self, selection=selection, label=node_label, node_color=node_color)
             ```
     
 
@@ -149,9 +155,9 @@ class Points(gn.Geometry):
             
         """
 
-        return nodes.PointsToVertices(points=self, selection=selection).mesh
+        return nodes.PointsToVertices(points=self, selection=selection, label=node_label, node_color=node_color).mesh
 
-    def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
+    def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', node_label = None, node_color = None):
         """ > Node: PointsToVolume
           
         <sub>go to: top index
@@ -159,7 +165,7 @@ class Points(gn.Geometry):
         node ref Points to Volume </sub>
                                   
         ```python
-        v = points.to_volume(density, voxel_size, voxel_amount, radius, resolution_mode)
+        v = points.to_volume(density, voxel_size, voxel_amount, radius, resolution_mode, node_label = None, node_color = None)
         ```
     
 
@@ -172,13 +178,15 @@ class Points(gn.Geometry):
             - voxel_amount : Float
             - radius : Float## Parameters
             - resolution_mode : 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode)
+            nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode, label=node_label, node_color=node_color)
             ```
     
 
@@ -188,6 +196,6 @@ class Points(gn.Geometry):
             
         """
 
-        return nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode).volume
+        return nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode, label=node_label, node_color=node_color).volume
 
 

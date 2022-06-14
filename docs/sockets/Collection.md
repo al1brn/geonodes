@@ -21,7 +21,7 @@ blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
                           
 ```python
-v = collection.switch(switch1, true)
+v = collection.switch(switch1, true, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -29,14 +29,16 @@ v = collection.switch(switch1, true)
 ## Sockets
 - false : Collection (self)
 - switch1 : Boolean
-- true : Collection## Fixed parameters
+- true : Collection## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - input_type : 'COLLECTION'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION')
+nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -53,7 +55,7 @@ blender ref [GeometryNodeCollectionInfo](https://docs.blender.org/api/current/bp
 node ref [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/collection_info.html) </sub>
                           
 ```python
-v = collection.info(separate_children, reset_children, transform_space)
+v = collection.info(separate_children, reset_children, transform_space, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -63,12 +65,14 @@ v = collection.info(separate_children, reset_children, transform_space)
 - separate_children : Boolean
 - reset_children : Boolean## Parameters
 - transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space)
+nodes.CollectionInfo(collection=self, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space, label=node_label, node_color=node_color)
 ```
 
 ### Returns

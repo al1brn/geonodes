@@ -63,7 +63,7 @@ blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
                           
 ```python
-v = string.switch(switch0, true)
+v = string.switch(switch0, true, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -71,14 +71,16 @@ v = string.switch(switch0, true)
 ## Sockets
 - false : String (self)
 - switch0 : Boolean
-- true : String## Fixed parameters
+- true : String## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - input_type : 'STRING'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING')
+nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -95,14 +97,16 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = string.element(b)
+v = string.element(b, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - a : String (self)
-- b : String## Fixed parameters
+- b : String## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'STRING'
 - mode : 'ELEMENT'
 - operation : 'ELEMENT'
@@ -111,7 +115,7 @@ v = string.element(b)
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT')
+nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -128,14 +132,16 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = string.length(b)
+v = string.length(b, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - a : String (self)
-- b : String## Fixed parameters
+- b : String## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'STRING'
 - mode : 'ELEMENT'
 - operation : 'LENGTH'
@@ -144,7 +150,7 @@ v = string.length(b)
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH')
+nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -161,14 +167,16 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = string.average(b)
+v = string.average(b, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - a : String (self)
-- b : String## Fixed parameters
+- b : String## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'STRING'
 - mode : 'ELEMENT'
 - operation : 'AVERAGE'
@@ -177,7 +185,7 @@ v = string.average(b)
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE')
+nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -194,14 +202,16 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = string.dot_product(b)
+v = string.dot_product(b, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - a : String (self)
-- b : String## Fixed parameters
+- b : String## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'STRING'
 - mode : 'ELEMENT'
 - operation : 'DOT_PRODUCT'
@@ -210,7 +220,7 @@ v = string.dot_product(b)
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT')
+nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -227,14 +237,16 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = string.direction(b)
+v = string.direction(b, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - a : String (self)
-- b : String## Fixed parameters
+- b : String## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'STRING'
 - mode : 'ELEMENT'
 - operation : 'DIRECTION'
@@ -243,7 +255,7 @@ v = string.direction(b)
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION')
+nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -260,20 +272,22 @@ blender ref [GeometryNodeStringJoin](https://docs.blender.org/api/current/bpy.ty
 node ref [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html) </sub>
                           
 ```python
-v = string.join(strings_1, strings_2, strings_3, delimiter)
+v = string.join(strings_1, strings_2, strings_3, delimiter, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - strings : *String (self)
-- delimiter : String
+- delimiter : String## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.JoinStrings(self, *strings, delimiter=delimiter)
+nodes.JoinStrings(self, *strings, delimiter=delimiter, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -290,7 +304,7 @@ blender ref [FunctionNodeReplaceString](https://docs.blender.org/api/current/bpy
 node ref [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html) </sub>
                           
 ```python
-v = string.replace(find, replace)
+v = string.replace(find, replace, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -298,13 +312,15 @@ v = string.replace(find, replace)
 ## Sockets
 - string : String (self)
 - find : String
-- replace : String
+- replace : String## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.ReplaceString(string=self, find=find, replace=replace)
+nodes.ReplaceString(string=self, find=find, replace=replace, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -321,7 +337,7 @@ blender ref [FunctionNodeSliceString](https://docs.blender.org/api/current/bpy.t
 node ref [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html) </sub>
                           
 ```python
-v = string.slice(position, length)
+v = string.slice(position, length, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -329,13 +345,15 @@ v = string.slice(position, length)
 ## Sockets
 - string : String (self)
 - position : Integer
-- length : Integer
+- length : Integer## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.SliceString(string=self, position=position, length=length)
+nodes.SliceString(string=self, position=position, length=length, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -352,7 +370,7 @@ blender ref [GeometryNodeStringToCurves](https://docs.blender.org/api/current/bp
 node ref [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html) </sub>
                           
 ```python
-v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_box_width, text_box_height, align_x, align_y, overflow, pivot_mode)
+v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_box_width, text_box_height, align_x, align_y, overflow, pivot_mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -369,12 +387,14 @@ v = string.to_curves(size, character_spacing, word_spacing, line_spacing, text_b
 - align_y : 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
 - overflow : 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
 - pivot_mode : 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
+nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode, label=node_label, node_color=node_color)
 ```
 
 ### Returns

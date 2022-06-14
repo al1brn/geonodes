@@ -58,7 +58,7 @@ blender ref [ShaderNodeCombineRGB](https://docs.blender.org/api/current/bpy.type
 node ref [Combine RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_rgb.html) </sub>
                           
 ```python
-v = Color.Combine(r, g, b)
+v = Color.Combine(r, g, b, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -66,13 +66,15 @@ v = Color.Combine(r, g, b)
 ## Sockets
 - r : Float
 - g : Float
-- b : Float
+- b : Float## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.CombineRgb(r=r, g=g, b=b)
+nodes.CombineRgb(r=r, g=g, b=b, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -209,7 +211,7 @@ blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current
 node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
                           
 ```python
-v = color.transfer_attribute(source, source_position, index, domain, mapping)
+v = color.transfer_attribute(source, source_position, index, domain, mapping, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -220,14 +222,16 @@ v = color.transfer_attribute(source, source_position, index, domain, mapping)
 - source_position : Vector
 - index : Integer## Parameters
 - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'FLOAT_COLOR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping)
+nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -244,7 +248,7 @@ blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/
 node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) </sub>
                           
 ```python
-v = color.capture_attribute(geometry, domain)
+v = color.capture_attribute(geometry, domain, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -252,14 +256,16 @@ v = color.capture_attribute(geometry, domain)
 ## Sockets
 - value : Color (self)
 - geometry : Geometry## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'FLOAT_COLOR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_COLOR', domain=domain)
+nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_COLOR', domain=domain, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -276,7 +282,7 @@ blender ref [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.
 node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) </sub>
                           
 ```python
-v = color.field_at_index(index, domain)
+v = color.field_at_index(index, domain, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -284,14 +290,16 @@ v = color.field_at_index(index, domain)
 ## Sockets
 - value : Color (self)
 - index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'FLOAT_COLOR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_COLOR', domain=domain)
+nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_COLOR', domain=domain, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -308,7 +316,7 @@ blender ref [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types
 node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) </sub>
                           
 ```python
-v = color.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
+v = color.raycast(target_geometry, source_position, ray_direction, ray_length, mapping, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -319,14 +327,16 @@ v = color.raycast(target_geometry, source_position, ray_direction, ray_length, m
 - source_position : Vector
 - ray_direction : Vector
 - ray_length : Float## Parameters
-- mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
+- mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'FLOAT_COLOR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_COLOR', mapping=mapping)
+nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_COLOR', mapping=mapping, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -343,7 +353,7 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = color.equal(b, epsilon)
+v = color.equal(b, epsilon, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -351,7 +361,9 @@ v = color.equal(b, epsilon)
 ## Sockets
 - a : Color (self)
 - b : Color
-- epsilon : Float## Fixed parameters
+- epsilon : Float## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'RGBA'
 - mode : 'ELEMENT'
 - operation : 'EQUAL'
@@ -360,7 +372,7 @@ v = color.equal(b, epsilon)
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='EQUAL')
+nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='EQUAL', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -377,7 +389,7 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = color.not_equal(b, epsilon)
+v = color.not_equal(b, epsilon, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -385,7 +397,9 @@ v = color.not_equal(b, epsilon)
 ## Sockets
 - a : Color (self)
 - b : Color
-- epsilon : Float## Fixed parameters
+- epsilon : Float## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'RGBA'
 - mode : 'ELEMENT'
 - operation : 'NOT_EQUAL'
@@ -394,7 +408,7 @@ v = color.not_equal(b, epsilon)
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='NOT_EQUAL')
+nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='NOT_EQUAL', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -411,14 +425,16 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = color.brighter(b)
+v = color.brighter(b, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - a : Color (self)
-- b : Color## Fixed parameters
+- b : Color## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'RGBA'
 - mode : 'ELEMENT'
 - operation : 'BRIGHTER'
@@ -427,7 +443,7 @@ v = color.brighter(b)
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER')
+nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -444,14 +460,16 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = color.darker(b)
+v = color.darker(b, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - a : Color (self)
-- b : Color## Fixed parameters
+- b : Color## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'RGBA'
 - mode : 'ELEMENT'
 - operation : 'DARKER'
@@ -460,7 +478,7 @@ v = color.darker(b)
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='DARKER')
+nodes.Compare(a=self, b=b, data_type='RGBA', mode='ELEMENT', operation='DARKER', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -477,7 +495,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.mix(color2, fac, use_alpha)
+v = color.mix(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -486,14 +504,16 @@ v = color.mix(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'MIX'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -510,7 +530,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.darken(color2, fac, use_alpha)
+v = color.darken(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -519,14 +539,16 @@ v = color.darken(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'DARKEN'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -543,7 +565,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.multiply(color2, fac, use_alpha)
+v = color.multiply(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -552,14 +574,16 @@ v = color.multiply(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'MULTIPLY'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -576,7 +600,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.burn(color2, fac, use_alpha)
+v = color.burn(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -585,14 +609,16 @@ v = color.burn(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'BURN'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -609,7 +635,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.lighten(color2, fac, use_alpha)
+v = color.lighten(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -618,14 +644,16 @@ v = color.lighten(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'LIGHTEN'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -642,7 +670,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.screen(color2, fac, use_alpha)
+v = color.screen(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -651,14 +679,16 @@ v = color.screen(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'SCREEN'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -675,7 +705,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.dodge(color2, fac, use_alpha)
+v = color.dodge(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -684,14 +714,16 @@ v = color.dodge(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'DODGE'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -708,7 +740,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.add(color2, fac, use_alpha)
+v = color.add(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -717,14 +749,16 @@ v = color.add(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'ADD'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -741,7 +775,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.overlay(color2, fac, use_alpha)
+v = color.overlay(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -750,14 +784,16 @@ v = color.overlay(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'OVERLAY'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -774,7 +810,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.soft_light(color2, fac, use_alpha)
+v = color.soft_light(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -783,14 +819,16 @@ v = color.soft_light(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'SOFT_LIGHT'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -807,7 +845,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.linear_light(color2, fac, use_alpha)
+v = color.linear_light(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -816,14 +854,16 @@ v = color.linear_light(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'LINEAR_LIGHT'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -840,7 +880,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.difference(color2, fac, use_alpha)
+v = color.difference(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -849,14 +889,16 @@ v = color.difference(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'DIFFERENCE'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -873,7 +915,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.subtract(color2, fac, use_alpha)
+v = color.subtract(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -882,14 +924,16 @@ v = color.subtract(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'SUBTRACT'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -906,7 +950,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.divide(color2, fac, use_alpha)
+v = color.divide(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -915,14 +959,16 @@ v = color.divide(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'DIVIDE'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -939,7 +985,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.hue(color2, fac, use_alpha)
+v = color.hue(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -948,14 +994,16 @@ v = color.hue(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'HUE'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -972,7 +1020,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.saturation(color2, fac, use_alpha)
+v = color.saturation(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -981,14 +1029,16 @@ v = color.saturation(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'SATURATION'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1005,7 +1055,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.mix_color(color2, fac, use_alpha)
+v = color.mix_color(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -1014,14 +1064,16 @@ v = color.mix_color(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'COLOR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1038,7 +1090,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.value(color2, fac, use_alpha)
+v = color.value(color2, fac, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -1047,14 +1099,16 @@ v = color.value(color2, fac, use_alpha)
 - color1 : Color (self)
 - color2 : Color
 - fac : Float## Parameters
-- use_alpha : False## Fixed parameters
+- use_alpha : False
+- node_label : None
+- node_color : None## Fixed parameters
 - blend_type : 'VALUE'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1071,20 +1125,22 @@ blender ref [ShaderNodeRGBCurve](https://docs.blender.org/api/current/bpy.types.
 node ref [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html) </sub>
                           
 ```python
-v = color.curves(fac)
+v = color.curves(fac, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - color : Color (self)
-- fac : Float
+- fac : Float## Parameters
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.RgbCurves(color=self, fac=fac)
+nodes.RgbCurves(color=self, fac=fac, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -1101,7 +1157,7 @@ blender ref [ShaderNodeMixRGB](https://docs.blender.org/api/current/bpy.types.Sh
 node ref [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix_rgb.html) </sub>
                           
 ```python
-v = color.mix(color2, fac, blend_type, use_alpha)
+v = color.mix(color2, fac, blend_type, use_alpha, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -1112,12 +1168,14 @@ v = color.mix(color2, fac, blend_type, use_alpha)
 - fac : Float## Parameters
 - blend_type : 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
 - use_alpha : False
+- node_label : None
+- node_color : None
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Mix(color1=self, color2=color2, fac=fac, blend_type=blend_type, use_alpha=use_alpha)
+nodes.Mix(color1=self, color2=color2, fac=fac, blend_type=blend_type, use_alpha=use_alpha, label=node_label, node_color=node_color)
 ```
 
 ### Returns

@@ -188,7 +188,7 @@ blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
                           
 ```python
-v = object.switch(switch1, true)
+v = object.switch(switch1, true, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -196,14 +196,16 @@ v = object.switch(switch1, true)
 ## Sockets
 - false : Object (self)
 - switch1 : Boolean
-- true : Object## Fixed parameters
+- true : Object## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - input_type : 'OBJECT'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Switch(false=self, switch1=switch1, true=true, input_type='OBJECT')
+nodes.Switch(false=self, switch1=switch1, true=true, input_type='OBJECT', label=node_label, node_color=node_color)
 ```
 
 ### Returns

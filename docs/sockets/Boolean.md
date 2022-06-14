@@ -37,7 +37,7 @@ blender ref [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.t
 node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) </sub>
                           
 ```python
-v = Boolean.Random(probability, ID, seed)
+v = Boolean.Random(probability, ID, seed, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -45,14 +45,16 @@ v = Boolean.Random(probability, ID, seed)
 ## Sockets
 - probability : Float
 - ID : Integer
-- seed : Integer## Fixed parameters
+- seed : Integer## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'BOOLEAN'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN')
+nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -69,7 +71,7 @@ blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current
 node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
                           
 ```python
-v = boolean.transfer_attribute(source, source_position, index, domain, mapping)
+v = boolean.transfer_attribute(source, source_position, index, domain, mapping, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -80,14 +82,16 @@ v = boolean.transfer_attribute(source, source_position, index, domain, mapping)
 - source_position : Vector
 - index : Integer## Parameters
 - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'BOOLEAN'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping)
+nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -104,7 +108,7 @@ blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/
 node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) </sub>
                           
 ```python
-v = boolean.capture_attribute(geometry, domain)
+v = boolean.capture_attribute(geometry, domain, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -112,14 +116,16 @@ v = boolean.capture_attribute(geometry, domain)
 ## Sockets
 - value : Boolean (self)
 - geometry : Geometry## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'BOOLEAN'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain)
+nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -136,7 +142,7 @@ blender ref [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.
 node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) </sub>
                           
 ```python
-v = boolean.field_at_index(index, domain)
+v = boolean.field_at_index(index, domain, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -144,14 +150,16 @@ v = boolean.field_at_index(index, domain)
 ## Sockets
 - value : Boolean (self)
 - index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'BOOLEAN'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain)
+nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -168,7 +176,7 @@ blender ref [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types
 node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) </sub>
                           
 ```python
-v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
+v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length, mapping, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -179,14 +187,16 @@ v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length,
 - source_position : Vector
 - ray_direction : Vector
 - ray_length : Float## Parameters
-- mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
+- mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+- node_label : None
+- node_color : None## Fixed parameters
 - data_type : 'BOOLEAN'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping)
+nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping, label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -203,7 +213,7 @@ blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
                           
 ```python
-v = boolean.switch(false, true)
+v = boolean.switch(false, true, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -211,14 +221,16 @@ v = boolean.switch(false, true)
 ## Sockets
 - switch0 : Boolean (self)
 - false : Boolean
-- true : Boolean## Fixed parameters
+- true : Boolean## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - input_type : 'BOOLEAN'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN')
+nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -235,21 +247,23 @@ blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.t
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
                           
 ```python
-v = boolean.b_and(boolean1)
+v = boolean.b_and(boolean1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - boolean0 : Boolean (self)
-- boolean1 : Boolean## Fixed parameters
+- boolean1 : Boolean## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'AND'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND')
+nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -266,21 +280,23 @@ blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.t
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
                           
 ```python
-v = boolean.b_or(boolean1)
+v = boolean.b_or(boolean1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - boolean0 : Boolean (self)
-- boolean1 : Boolean## Fixed parameters
+- boolean1 : Boolean## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'OR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR')
+nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -297,20 +313,22 @@ blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.t
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
                           
 ```python
-v = boolean.b_not()
+v = boolean.b_not(node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
-- boolean0 : Boolean (self)## Fixed parameters
+- boolean0 : Boolean (self)## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'NOT'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.BooleanMath(boolean0=self, operation='NOT')
+nodes.BooleanMath(boolean0=self, operation='NOT', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -327,21 +345,23 @@ blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.t
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
                           
 ```python
-v = boolean.nand(boolean1)
+v = boolean.nand(boolean1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - boolean0 : Boolean (self)
-- boolean1 : Boolean## Fixed parameters
+- boolean1 : Boolean## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'NAND'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND')
+nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -358,21 +378,23 @@ blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.t
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
                           
 ```python
-v = boolean.nor(boolean1)
+v = boolean.nor(boolean1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - boolean0 : Boolean (self)
-- boolean1 : Boolean## Fixed parameters
+- boolean1 : Boolean## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'NOR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR')
+nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -389,21 +411,23 @@ blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.t
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
                           
 ```python
-v = boolean.xnor(boolean1)
+v = boolean.xnor(boolean1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - boolean0 : Boolean (self)
-- boolean1 : Boolean## Fixed parameters
+- boolean1 : Boolean## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'XNOR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR')
+nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -420,21 +444,23 @@ blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.t
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
                           
 ```python
-v = boolean.xor(boolean1)
+v = boolean.xor(boolean1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - boolean0 : Boolean (self)
-- boolean1 : Boolean## Fixed parameters
+- boolean1 : Boolean## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'XOR'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR')
+nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -451,21 +477,23 @@ blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.t
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
                           
 ```python
-v = boolean.imply(boolean1)
+v = boolean.imply(boolean1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - boolean0 : Boolean (self)
-- boolean1 : Boolean## Fixed parameters
+- boolean1 : Boolean## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'IMPLY'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY')
+nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -482,21 +510,23 @@ blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.t
 node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
                           
 ```python
-v = boolean.nimply(boolean1)
+v = boolean.nimply(boolean1, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - boolean0 : Boolean (self)
-- boolean1 : Boolean## Fixed parameters
+- boolean1 : Boolean## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
 - operation : 'NIMPLY'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY')
+nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY', label=node_label, node_color=node_color)
 ```
 
 ### Returns

@@ -71,7 +71,7 @@ class Spline(gn.Geometry):
     # ----------------------------------------------------------------------------------------------------
     # Attribute capture
 
-    def capture_handle_positions(self, relative=None, domain='CURVE'):
+    def capture_handle_positions(self, relative=None, domain='CURVE', node_label = None, node_color = None):
         """ > Node: CurveHandlePositions
           
         <sub>go to: top index
@@ -79,7 +79,7 @@ class Spline(gn.Geometry):
         node ref Curve Handle Positions </sub>
                                   
         ```python
-        v = spline.capture_handle_positions(self, relative, domain='CURVE')
+        v = spline.capture_handle_positions(self, relative, domain='CURVE', node_label = None, node_color = None)
         ```
     
 
@@ -89,13 +89,15 @@ class Spline(gn.Geometry):
             - relative : Boolean## Parameters
             - self
             - domain:'CURVE'
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.CurveHandlePositions(relative=relative)
+            nodes.CurveHandlePositions(relative=relative, label=node_label, node_color=node_color)
             ```
     
 
@@ -107,12 +109,12 @@ class Spline(gn.Geometry):
 
         attr_name = 'capture_handle_positions_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.CurveHandlePositions(relative=relative)
+            node = nodes.CurveHandlePositions(relative=relative, label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name)
 
-    def capture_tangent(self, domain='CURVE'):
+    def capture_tangent(self, domain='CURVE', node_label = None, node_color = None):
         """ > Node: CurveTangent
           
         <sub>go to: top index
@@ -120,7 +122,7 @@ class Spline(gn.Geometry):
         node ref Curve Tangent </sub>
                                   
         ```python
-        v = spline.capture_tangent(self, domain='CURVE')
+        v = spline.capture_tangent(self, domain='CURVE', node_label = None, node_color = None)
         ```
     
 
@@ -129,13 +131,15 @@ class Spline(gn.Geometry):
             ## Parameters
             - self
             - domain:'CURVE'
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.CurveTangent()
+            nodes.CurveTangent(label=node_label, node_color=node_color)
             ```
     
 
@@ -147,12 +151,12 @@ class Spline(gn.Geometry):
 
         attr_name = 'capture_tangent_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.CurveTangent()
+            node = nodes.CurveTangent(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).tangent
 
-    def capture_tilt(self, domain='CURVE'):
+    def capture_tilt(self, domain='CURVE', node_label = None, node_color = None):
         """ > Node: CurveTilt
           
         <sub>go to: top index
@@ -160,7 +164,7 @@ class Spline(gn.Geometry):
         node ref Curve Tilt </sub>
                                   
         ```python
-        v = spline.capture_tilt(self, domain='CURVE')
+        v = spline.capture_tilt(self, domain='CURVE', node_label = None, node_color = None)
         ```
     
 
@@ -169,13 +173,15 @@ class Spline(gn.Geometry):
             ## Parameters
             - self
             - domain:'CURVE'
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.CurveTilt()
+            nodes.CurveTilt(label=node_label, node_color=node_color)
             ```
     
 
@@ -187,12 +193,12 @@ class Spline(gn.Geometry):
 
         attr_name = 'capture_tilt_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.CurveTilt()
+            node = nodes.CurveTilt(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).tilt
 
-    def capture_endpoint_selection(self, start_size=None, end_size=None, domain='CURVE'):
+    def capture_endpoint_selection(self, start_size=None, end_size=None, domain='CURVE', node_label = None, node_color = None):
         """ > Node: EndpointSelection
           
         <sub>go to: top index
@@ -200,7 +206,7 @@ class Spline(gn.Geometry):
         node ref Endpoint Selection </sub>
                                   
         ```python
-        v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE')
+        v = spline.capture_endpoint_selection(self, start_size, end_size, domain='CURVE', node_label = None, node_color = None)
         ```
     
 
@@ -211,13 +217,15 @@ class Spline(gn.Geometry):
             - end_size : Integer## Parameters
             - self
             - domain:'CURVE'
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.EndpointSelection(start_size=start_size, end_size=end_size)
+            nodes.EndpointSelection(start_size=start_size, end_size=end_size, label=node_label, node_color=node_color)
             ```
     
 
@@ -229,12 +237,12 @@ class Spline(gn.Geometry):
 
         attr_name = 'capture_endpoint_selection_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.EndpointSelection(start_size=start_size, end_size=end_size)
+            node = nodes.EndpointSelection(start_size=start_size, end_size=end_size, label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).selection
 
-    def capture_handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, domain='CURVE'):
+    def capture_handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, domain='CURVE', node_label = None, node_color = None):
         """ > Node: HandleTypeSelection
           
         <sub>go to: top index
@@ -242,7 +250,7 @@ class Spline(gn.Geometry):
         node ref Handle Type Selection </sub>
                                   
         ```python
-        v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE')
+        v = spline.capture_handle_type_selection(self, handle_type, mode, domain='CURVE', node_label = None, node_color = None)
         ```
     
 
@@ -251,15 +259,17 @@ class Spline(gn.Geometry):
             ## Parameters
             - self
             - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-            - mode : {'RIGHT', 'LEFT'}
+            - mode : {'LEFT', 'RIGHT'}
             - domain:'CURVE'
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
+            nodes.HandleTypeSelection(handle_type=handle_type, mode=mode, label=node_label, node_color=node_color)
             ```
     
 
@@ -271,12 +281,12 @@ class Spline(gn.Geometry):
 
         attr_name = 'capture_handle_type_selection_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)
+            node = nodes.HandleTypeSelection(handle_type=handle_type, mode=mode, label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).selection
 
-    def capture_cyclic(self, domain='CURVE'):
+    def capture_cyclic(self, domain='CURVE', node_label = None, node_color = None):
         """ > Node: IsSplineCyclic
           
         <sub>go to: top index
@@ -284,7 +294,7 @@ class Spline(gn.Geometry):
         node ref Is Spline Cyclic </sub>
                                   
         ```python
-        v = spline.capture_cyclic(self, domain='CURVE')
+        v = spline.capture_cyclic(self, domain='CURVE', node_label = None, node_color = None)
         ```
     
 
@@ -293,13 +303,15 @@ class Spline(gn.Geometry):
             ## Parameters
             - self
             - domain:'CURVE'
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.IsSplineCyclic()
+            nodes.IsSplineCyclic(label=node_label, node_color=node_color)
             ```
     
 
@@ -311,12 +323,12 @@ class Spline(gn.Geometry):
 
         attr_name = 'capture_cyclic_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.IsSplineCyclic()
+            node = nodes.IsSplineCyclic(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).cyclic
 
-    def capture_length(self, domain='CURVE'):
+    def capture_length(self, domain='CURVE', node_label = None, node_color = None):
         """ > Node: SplineLength
           
         <sub>go to: top index
@@ -324,7 +336,7 @@ class Spline(gn.Geometry):
         node ref Spline Length </sub>
                                   
         ```python
-        v = spline.capture_length(self, domain='CURVE')
+        v = spline.capture_length(self, domain='CURVE', node_label = None, node_color = None)
         ```
     
 
@@ -333,13 +345,15 @@ class Spline(gn.Geometry):
             ## Parameters
             - self
             - domain:'CURVE'
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.SplineLength()
+            nodes.SplineLength(label=node_label, node_color=node_color)
             ```
     
 
@@ -351,12 +365,12 @@ class Spline(gn.Geometry):
 
         attr_name = 'capture_length_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.SplineLength()
+            node = nodes.SplineLength(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name)
 
-    def capture_parameter(self, domain='CURVE'):
+    def capture_parameter(self, domain='CURVE', node_label = None, node_color = None):
         """ > Node: SplineParameter
           
         <sub>go to: top index
@@ -364,7 +378,7 @@ class Spline(gn.Geometry):
         node ref Spline Parameter </sub>
                                   
         ```python
-        v = spline.capture_parameter(self, domain='CURVE')
+        v = spline.capture_parameter(self, domain='CURVE', node_label = None, node_color = None)
         ```
     
 
@@ -373,13 +387,15 @@ class Spline(gn.Geometry):
             ## Parameters
             - self
             - domain:'CURVE'
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.SplineParameter()
+            nodes.SplineParameter(label=node_label, node_color=node_color)
             ```
     
 
@@ -391,12 +407,12 @@ class Spline(gn.Geometry):
 
         attr_name = 'capture_parameter_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.SplineParameter()
+            node = nodes.SplineParameter(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name)
 
-    def capture_resolution(self, domain='CURVE'):
+    def capture_resolution(self, domain='CURVE', node_label = None, node_color = None):
         """ > Node: SplineResolution
           
         <sub>go to: top index
@@ -404,7 +420,7 @@ class Spline(gn.Geometry):
         node ref Spline Resolution </sub>
                                   
         ```python
-        v = spline.capture_resolution(self, domain='CURVE')
+        v = spline.capture_resolution(self, domain='CURVE', node_label = None, node_color = None)
         ```
     
 
@@ -413,13 +429,15 @@ class Spline(gn.Geometry):
             ## Parameters
             - self
             - domain:'CURVE'
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.SplineResolution()
+            nodes.SplineResolution(label=node_label, node_color=node_color)
             ```
     
 
@@ -431,7 +449,7 @@ class Spline(gn.Geometry):
 
         attr_name = 'capture_resolution_' + domain
         if not hasattr(self, attr_name):
-            node = nodes.SplineResolution()
+            node = nodes.SplineResolution(label=node_label, node_color=node_color)
             node.as_attribute(owning_socket=self, domain=domain)
             setattr(self, attr_name, node)
         return getattr(self, attr_name).resolution
@@ -725,7 +743,7 @@ class Spline(gn.Geometry):
         return self.capture_endpoint_selection(domain='CURVE')
 
     @property
-    def handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+    def handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ > Node: HandleTypeSelection
           
         <sub>go to: top index
@@ -742,7 +760,7 @@ class Spline(gn.Geometry):
             ## Parameters
             - self
             - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-            - mode : {'RIGHT', 'LEFT'}
+            - mode : {'LEFT', 'RIGHT'}
     
 
         Node creation
@@ -1010,7 +1028,7 @@ class Spline(gn.Geometry):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def set_cyclic(self, selection=None, cyclic=None):
+    def set_cyclic(self, selection=None, cyclic=None, node_label = None, node_color = None):
         """ > Node: SetSplineCyclic
           
         <sub>go to: top index
@@ -1018,7 +1036,7 @@ class Spline(gn.Geometry):
         node ref Set Spline Cyclic </sub>
                                   
         ```python
-        v = spline.set_cyclic(selection, cyclic)
+        v = spline.set_cyclic(selection, cyclic, node_label = None, node_color = None)
         ```
     
 
@@ -1027,14 +1045,16 @@ class Spline(gn.Geometry):
             ## Sockets
             - geometry : Geometry (self)
             - selection : Boolean
-            - cyclic : Boolean
+            - cyclic : Boolean## Parameters
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic)
+            nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic, label=node_label, node_color=node_color)
             ```
     
 
@@ -1044,9 +1064,9 @@ class Spline(gn.Geometry):
             
         """
 
-        return self.stack(nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic))
+        return self.stack(nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic, label=node_label, node_color=node_color))
 
-    def set_resolution(self, selection=None, resolution=None):
+    def set_resolution(self, selection=None, resolution=None, node_label = None, node_color = None):
         """ > Node: SetSplineResolution
           
         <sub>go to: top index
@@ -1054,7 +1074,7 @@ class Spline(gn.Geometry):
         node ref Set Spline Resolution </sub>
                                   
         ```python
-        v = spline.set_resolution(selection, resolution)
+        v = spline.set_resolution(selection, resolution, node_label = None, node_color = None)
         ```
     
 
@@ -1063,14 +1083,16 @@ class Spline(gn.Geometry):
             ## Sockets
             - geometry : Geometry (self)
             - selection : Boolean
-            - resolution : Integer
+            - resolution : Integer## Parameters
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution)
+            nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution, label=node_label, node_color=node_color)
             ```
     
 
@@ -1080,6 +1102,6 @@ class Spline(gn.Geometry):
             
         """
 
-        return self.stack(nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution))
+        return self.stack(nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution, label=node_label, node_color=node_color))
 
 

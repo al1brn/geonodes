@@ -84,7 +84,7 @@ class Instances(gn.Geometry):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None):
+    def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None, node_label = None, node_color = None):
         """ > Node: RotateInstances
           
         <sub>go to: top index
@@ -92,7 +92,7 @@ class Instances(gn.Geometry):
         node ref Rotate Instances </sub>
                                   
         ```python
-        v = instances.rotate(selection, rotation, pivot_point, local_space)
+        v = instances.rotate(selection, rotation, pivot_point, local_space, node_label = None, node_color = None)
         ```
     
 
@@ -103,14 +103,16 @@ class Instances(gn.Geometry):
             - selection : Boolean
             - rotation : Vector
             - pivot_point : Vector
-            - local_space : Boolean
+            - local_space : Boolean## Parameters
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space)
+            nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space, label=node_label, node_color=node_color)
             ```
     
 
@@ -120,9 +122,9 @@ class Instances(gn.Geometry):
             
         """
 
-        return self.stack(nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space))
+        return self.stack(nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space, label=node_label, node_color=node_color))
 
-    def scale(self, selection=None, scale=None, center=None, local_space=None):
+    def scale(self, selection=None, scale=None, center=None, local_space=None, node_label = None, node_color = None):
         """ > Node: ScaleInstances
           
         <sub>go to: top index
@@ -130,7 +132,7 @@ class Instances(gn.Geometry):
         node ref Scale Instances </sub>
                                   
         ```python
-        v = instances.scale(selection, scale, center, local_space)
+        v = instances.scale(selection, scale, center, local_space, node_label = None, node_color = None)
         ```
     
 
@@ -141,14 +143,16 @@ class Instances(gn.Geometry):
             - selection : Boolean
             - scale : Vector
             - center : Vector
-            - local_space : Boolean
+            - local_space : Boolean## Parameters
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space)
+            nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space, label=node_label, node_color=node_color)
             ```
     
 
@@ -158,9 +162,9 @@ class Instances(gn.Geometry):
             
         """
 
-        return self.stack(nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space))
+        return self.stack(nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space, label=node_label, node_color=node_color))
 
-    def translate(self, selection=None, translation=None, local_space=None):
+    def translate(self, selection=None, translation=None, local_space=None, node_label = None, node_color = None):
         """ > Node: TranslateInstances
           
         <sub>go to: top index
@@ -168,7 +172,7 @@ class Instances(gn.Geometry):
         node ref Translate Instances </sub>
                                   
         ```python
-        v = instances.translate(selection, translation, local_space)
+        v = instances.translate(selection, translation, local_space, node_label = None, node_color = None)
         ```
     
 
@@ -178,14 +182,16 @@ class Instances(gn.Geometry):
             - instances : Instances (self)
             - selection : Boolean
             - translation : Vector
-            - local_space : Boolean
+            - local_space : Boolean## Parameters
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space)
+            nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space, label=node_label, node_color=node_color)
             ```
     
 
@@ -195,9 +201,9 @@ class Instances(gn.Geometry):
             
         """
 
-        return self.stack(nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space))
+        return self.stack(nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space, label=node_label, node_color=node_color))
 
-    def to_points(self, selection=None, position=None, radius=None):
+    def to_points(self, selection=None, position=None, radius=None, node_label = None, node_color = None):
         """ > Node: InstancesToPoints
           
         <sub>go to: top index
@@ -205,7 +211,7 @@ class Instances(gn.Geometry):
         node ref Instances to Points </sub>
                                   
         ```python
-        v = instances.to_points(selection, position, radius)
+        v = instances.to_points(selection, position, radius, node_label = None, node_color = None)
         ```
     
 
@@ -215,14 +221,16 @@ class Instances(gn.Geometry):
             - instances : Instances (self)
             - selection : Boolean
             - position : Vector
-            - radius : Float
+            - radius : Float## Parameters
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius)
+            nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius, label=node_label, node_color=node_color)
             ```
     
 
@@ -232,6 +240,6 @@ class Instances(gn.Geometry):
             
         """
 
-        return nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius).points
+        return nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius, label=node_label, node_color=node_color).points
 
 

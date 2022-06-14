@@ -37,7 +37,7 @@ class Image(dsock.Image):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def switch(self, switch1=None, true=None):
+    def switch(self, switch1=None, true=None, node_label = None, node_color = None):
         """ > Node: Switch
           
         <sub>go to: top index
@@ -45,7 +45,7 @@ class Image(dsock.Image):
         node ref Switch </sub>
                                   
         ```python
-        v = image.switch(switch1, true)
+        v = image.switch(switch1, true, node_label = None, node_color = None)
         ```
     
 
@@ -54,7 +54,9 @@ class Image(dsock.Image):
             ## Sockets
             - false : Image (self)
             - switch1 : Boolean
-            - true : Image## Fixed parameters
+            - true : Image## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - input_type : 'IMAGE'
     
 
@@ -62,7 +64,7 @@ class Image(dsock.Image):
         -------------
             ```python
             from geondes import nodes
-            nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE')
+            nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE', label=node_label, node_color=node_color)
             ```
     
 
@@ -72,6 +74,6 @@ class Image(dsock.Image):
             
         """
 
-        return nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE').output
+        return nodes.Switch(false=self, switch1=switch1, true=true, input_type='IMAGE', label=node_label, node_color=node_color).output
 
 

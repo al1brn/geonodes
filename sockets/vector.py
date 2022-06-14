@@ -102,7 +102,7 @@ class Vector(dsock.Vector):
     # Constructors
 
     @classmethod
-    def Random(cls, min=None, max=None, ID=None, seed=None):
+    def Random(cls, min=None, max=None, ID=None, seed=None, node_label = None, node_color = None):
         """ > Node: RandomValue
           
         <sub>go to: top index
@@ -110,7 +110,7 @@ class Vector(dsock.Vector):
         node ref Random Value </sub>
                                   
         ```python
-        v = Vector.Random(min, max, ID, seed)
+        v = Vector.Random(min, max, ID, seed, node_label = None, node_color = None)
         ```
     
 
@@ -120,7 +120,9 @@ class Vector(dsock.Vector):
             - min : Vector
             - max : Vector
             - ID : Integer
-            - seed : Integer## Fixed parameters
+            - seed : Integer## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT_VECTOR'
     
 
@@ -128,7 +130,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR')
+            nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR', label=node_label, node_color=node_color)
             ```
     
 
@@ -138,10 +140,10 @@ class Vector(dsock.Vector):
             
         """
 
-        return cls(nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR').value)
+        return cls(nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR', label=node_label, node_color=node_color).value)
 
     @classmethod
-    def Combine(cls, x=None, y=None, z=None):
+    def Combine(cls, x=None, y=None, z=None, node_label = None, node_color = None):
         """ > Node: CombineXyz
           
         <sub>go to: top index
@@ -149,7 +151,7 @@ class Vector(dsock.Vector):
         node ref Combine XYZ </sub>
                                   
         ```python
-        v = Vector.Combine(x, y, z)
+        v = Vector.Combine(x, y, z, node_label = None, node_color = None)
         ```
     
 
@@ -158,14 +160,16 @@ class Vector(dsock.Vector):
             ## Sockets
             - x : Float
             - y : Float
-            - z : Float
+            - z : Float## Parameters
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.CombineXyz(x=x, y=y, z=z)
+            nodes.CombineXyz(x=x, y=y, z=z, label=node_label, node_color=node_color)
             ```
     
 
@@ -175,10 +179,10 @@ class Vector(dsock.Vector):
             
         """
 
-        return cls(nodes.CombineXyz(x=x, y=y, z=z).vector)
+        return cls(nodes.CombineXyz(x=x, y=y, z=z, label=node_label, node_color=node_color).vector)
 
     @classmethod
-    def AlignToVector(cls, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
+    def AlignToVector(cls, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', node_label = None, node_color = None):
         """ > Node: AlignEulerToVector
           
         <sub>go to: top index
@@ -186,7 +190,7 @@ class Vector(dsock.Vector):
         node ref Align Euler to Vector </sub>
                                   
         ```python
-        v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis)
+        v = Vector.AlignToVector(rotation, factor, vector, axis, pivot_axis, node_label = None, node_color = None)
         ```
     
 
@@ -198,13 +202,15 @@ class Vector(dsock.Vector):
             - vector : Vector## Parameters
             - axis : 'X' in [X, Y, Z]
             - pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
+            nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis, label=node_label, node_color=node_color)
             ```
     
 
@@ -214,7 +220,7 @@ class Vector(dsock.Vector):
             
         """
 
-        return cls(nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis).rotation)
+        return cls(nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis, label=node_label, node_color=node_color).rotation)
 
 
     # ----------------------------------------------------------------------------------------------------
@@ -382,7 +388,7 @@ class Vector(dsock.Vector):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def accumulate_field(self, group_index=None, domain='POINT'):
+    def accumulate_field(self, group_index=None, domain='POINT', node_label = None, node_color = None):
         """ > Node: AccumulateField
           
         <sub>go to: top index
@@ -390,7 +396,7 @@ class Vector(dsock.Vector):
         node ref Accumulate Field </sub>
                                   
         ```python
-        v = vector.accumulate_field(group_index, domain)
+        v = vector.accumulate_field(group_index, domain, node_label = None, node_color = None)
         ```
     
 
@@ -399,7 +405,9 @@ class Vector(dsock.Vector):
             ## Sockets
             - value : Vector (self)
             - group_index : Integer## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT_VECTOR'
     
 
@@ -407,7 +415,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain)
+            nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain, label=node_label, node_color=node_color)
             ```
     
 
@@ -417,9 +425,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain)
+        return nodes.AccumulateField(value=self, group_index=group_index, data_type='FLOAT_VECTOR', domain=domain, label=node_label, node_color=node_color)
 
-    def attribute_statistic(self, geometry=None, selection=None, domain='POINT'):
+    def attribute_statistic(self, geometry=None, selection=None, domain='POINT', node_label = None, node_color = None):
         """ > Node: AttributeStatistic
           
         <sub>go to: top index
@@ -427,7 +435,7 @@ class Vector(dsock.Vector):
         node ref Attribute Statistic </sub>
                                   
         ```python
-        v = vector.attribute_statistic(geometry, selection, domain)
+        v = vector.attribute_statistic(geometry, selection, domain, node_label = None, node_color = None)
         ```
     
 
@@ -437,7 +445,9 @@ class Vector(dsock.Vector):
             - attribute : Vector (self)
             - geometry : Geometry
             - selection : Boolean## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT_VECTOR'
     
 
@@ -445,7 +455,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT_VECTOR', domain=domain)
+            nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT_VECTOR', domain=domain, label=node_label, node_color=node_color)
             ```
     
 
@@ -455,9 +465,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT_VECTOR', domain=domain)
+        return nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT_VECTOR', domain=domain, label=node_label, node_color=node_color)
 
-    def transfer_attribute(self, source=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED'):
+    def transfer_attribute(self, source=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED', node_label = None, node_color = None):
         """ > Node: TransferAttribute
           
         <sub>go to: top index
@@ -465,7 +475,7 @@ class Vector(dsock.Vector):
         node ref Transfer Attribute </sub>
                                   
         ```python
-        v = vector.transfer_attribute(source, source_position, index, domain, mapping)
+        v = vector.transfer_attribute(source, source_position, index, domain, mapping, node_label = None, node_color = None)
         ```
     
 
@@ -477,7 +487,9 @@ class Vector(dsock.Vector):
             - source_position : Vector
             - index : Integer## Parameters
             - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]## Fixed parameters
+            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT_VECTOR'
     
 
@@ -485,7 +497,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping)
+            nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
             ```
     
 
@@ -495,9 +507,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping).attribute
+        return nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping, label=node_label, node_color=node_color).attribute
 
-    def capture_attribute(self, geometry=None, domain='POINT'):
+    def capture_attribute(self, geometry=None, domain='POINT', node_label = None, node_color = None):
         """ > Node: CaptureAttribute
           
         <sub>go to: top index
@@ -505,7 +517,7 @@ class Vector(dsock.Vector):
         node ref Capture Attribute </sub>
                                   
         ```python
-        v = vector.capture_attribute(geometry, domain)
+        v = vector.capture_attribute(geometry, domain, node_label = None, node_color = None)
         ```
     
 
@@ -514,7 +526,9 @@ class Vector(dsock.Vector):
             ## Sockets
             - value : Vector (self)
             - geometry : Geometry## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT_VECTOR'
     
 
@@ -522,7 +536,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VECTOR', domain=domain)
+            nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VECTOR', domain=domain, label=node_label, node_color=node_color)
             ```
     
 
@@ -532,9 +546,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VECTOR', domain=domain)
+        return nodes.CaptureAttribute(value=self, geometry=geometry, data_type='FLOAT_VECTOR', domain=domain, label=node_label, node_color=node_color)
 
-    def field_at_index(self, index=None, domain='POINT'):
+    def field_at_index(self, index=None, domain='POINT', node_label = None, node_color = None):
         """ > Node: FieldAtIndex
           
         <sub>go to: top index
@@ -542,7 +556,7 @@ class Vector(dsock.Vector):
         node ref Field at Index </sub>
                                   
         ```python
-        v = vector.field_at_index(index, domain)
+        v = vector.field_at_index(index, domain, node_label = None, node_color = None)
         ```
     
 
@@ -551,7 +565,9 @@ class Vector(dsock.Vector):
             ## Sockets
             - value : Vector (self)
             - index : Integer## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]## Fixed parameters
+            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT_VECTOR'
     
 
@@ -559,7 +575,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain)
+            nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain, label=node_label, node_color=node_color)
             ```
     
 
@@ -569,9 +585,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain).value
+        return nodes.FieldAtIndex(value=self, index=index, data_type='FLOAT_VECTOR', domain=domain, label=node_label, node_color=node_color).value
 
-    def raycast(self, target_geometry=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
+    def raycast(self, target_geometry=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED', node_label = None, node_color = None):
         """ > Node: Raycast
           
         <sub>go to: top index
@@ -579,7 +595,7 @@ class Vector(dsock.Vector):
         node ref Raycast </sub>
                                   
         ```python
-        v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, mapping)
+        v = vector.raycast(target_geometry, source_position, ray_direction, ray_length, mapping, node_label = None, node_color = None)
         ```
     
 
@@ -591,7 +607,9 @@ class Vector(dsock.Vector):
             - source_position : Vector
             - ray_direction : Vector
             - ray_length : Float## Parameters
-            - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]## Fixed parameters
+            - mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT_VECTOR'
     
 
@@ -599,7 +617,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping)
+            nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping, label=node_label, node_color=node_color)
             ```
     
 
@@ -609,9 +627,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping)
+        return nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping, label=node_label, node_color=node_color)
 
-    def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, interpolation_type='LINEAR'):
+    def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, interpolation_type='LINEAR', node_label = None, node_color = None):
         """ > Node: MapRange
           
         <sub>go to: top index
@@ -619,7 +637,7 @@ class Vector(dsock.Vector):
         node ref Map Range </sub>
                                   
         ```python
-        v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type)
+        v = vector.map_range(from_min, from_max, to_min, to_max, clamp, interpolation_type, node_label = None, node_color = None)
         ```
     
 
@@ -632,7 +650,9 @@ class Vector(dsock.Vector):
             - to_min : Vector
             - to_max : Vector## Parameters
             - clamp : True
-            - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]## Fixed parameters
+            - interpolation_type : 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'FLOAT_VECTOR'
     
 
@@ -640,7 +660,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type)
+            nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type, label=node_label, node_color=node_color)
             ```
     
 
@@ -650,9 +670,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type).vector
+        return nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type, label=node_label, node_color=node_color).vector
 
-    def less_than(self, b=None, c=None, angle=None, mode='ELEMENT'):
+    def less_than(self, b=None, c=None, angle=None, mode='ELEMENT', node_label = None, node_color = None):
         """ > Node: Compare
           
         <sub>go to: top index
@@ -660,7 +680,7 @@ class Vector(dsock.Vector):
         node ref Compare </sub>
                                   
         ```python
-        v = vector.less_than(b, c, angle, mode)
+        v = vector.less_than(b, c, angle, mode, node_label = None, node_color = None)
         ```
     
 
@@ -671,7 +691,9 @@ class Vector(dsock.Vector):
             - b : Vector
             - c : Float
             - angle : Float## Parameters
-            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'VECTOR'
             - operation : 'LESS_THAN'
     
@@ -680,7 +702,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN')
+            nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN', label=node_label, node_color=node_color)
             ```
     
 
@@ -690,9 +712,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN').result
+        return nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN', label=node_label, node_color=node_color).result
 
-    def less_equal(self, b=None, c=None, angle=None, mode='ELEMENT'):
+    def less_equal(self, b=None, c=None, angle=None, mode='ELEMENT', node_label = None, node_color = None):
         """ > Node: Compare
           
         <sub>go to: top index
@@ -700,7 +722,7 @@ class Vector(dsock.Vector):
         node ref Compare </sub>
                                   
         ```python
-        v = vector.less_equal(b, c, angle, mode)
+        v = vector.less_equal(b, c, angle, mode, node_label = None, node_color = None)
         ```
     
 
@@ -711,7 +733,9 @@ class Vector(dsock.Vector):
             - b : Vector
             - c : Float
             - angle : Float## Parameters
-            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'VECTOR'
             - operation : 'LESS_EQUAL'
     
@@ -720,7 +744,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL')
+            nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL', label=node_label, node_color=node_color)
             ```
     
 
@@ -730,9 +754,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL', label=node_label, node_color=node_color).result
 
-    def greater_than(self, b=None, c=None, angle=None, mode='ELEMENT'):
+    def greater_than(self, b=None, c=None, angle=None, mode='ELEMENT', node_label = None, node_color = None):
         """ > Node: Compare
           
         <sub>go to: top index
@@ -740,7 +764,7 @@ class Vector(dsock.Vector):
         node ref Compare </sub>
                                   
         ```python
-        v = vector.greater_than(b, c, angle, mode)
+        v = vector.greater_than(b, c, angle, mode, node_label = None, node_color = None)
         ```
     
 
@@ -751,7 +775,9 @@ class Vector(dsock.Vector):
             - b : Vector
             - c : Float
             - angle : Float## Parameters
-            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'VECTOR'
             - operation : 'GREATER_THAN'
     
@@ -760,7 +786,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN')
+            nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN', label=node_label, node_color=node_color)
             ```
     
 
@@ -770,9 +796,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN').result
+        return nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN', label=node_label, node_color=node_color).result
 
-    def greater_equal(self, b=None, c=None, angle=None, mode='ELEMENT'):
+    def greater_equal(self, b=None, c=None, angle=None, mode='ELEMENT', node_label = None, node_color = None):
         """ > Node: Compare
           
         <sub>go to: top index
@@ -780,7 +806,7 @@ class Vector(dsock.Vector):
         node ref Compare </sub>
                                   
         ```python
-        v = vector.greater_equal(b, c, angle, mode)
+        v = vector.greater_equal(b, c, angle, mode, node_label = None, node_color = None)
         ```
     
 
@@ -791,7 +817,9 @@ class Vector(dsock.Vector):
             - b : Vector
             - c : Float
             - angle : Float## Parameters
-            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'VECTOR'
             - operation : 'GREATER_EQUAL'
     
@@ -800,7 +828,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL')
+            nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL', label=node_label, node_color=node_color)
             ```
     
 
@@ -810,9 +838,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL', label=node_label, node_color=node_color).result
 
-    def equal(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT'):
+    def equal(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', node_label = None, node_color = None):
         """ > Node: Compare
           
         <sub>go to: top index
@@ -820,7 +848,7 @@ class Vector(dsock.Vector):
         node ref Compare </sub>
                                   
         ```python
-        v = vector.equal(b, c, angle, epsilon, mode)
+        v = vector.equal(b, c, angle, epsilon, mode, node_label = None, node_color = None)
         ```
     
 
@@ -832,7 +860,9 @@ class Vector(dsock.Vector):
             - c : Float
             - angle : Float
             - epsilon : Float## Parameters
-            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'VECTOR'
             - operation : 'EQUAL'
     
@@ -841,7 +871,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL')
+            nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL', label=node_label, node_color=node_color)
             ```
     
 
@@ -851,9 +881,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL').result
+        return nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL', label=node_label, node_color=node_color).result
 
-    def not_equal(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT'):
+    def not_equal(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', node_label = None, node_color = None):
         """ > Node: Compare
           
         <sub>go to: top index
@@ -861,7 +891,7 @@ class Vector(dsock.Vector):
         node ref Compare </sub>
                                   
         ```python
-        v = vector.not_equal(b, c, angle, epsilon, mode)
+        v = vector.not_equal(b, c, angle, epsilon, mode, node_label = None, node_color = None)
         ```
     
 
@@ -873,7 +903,9 @@ class Vector(dsock.Vector):
             - c : Float
             - angle : Float
             - epsilon : Float## Parameters
-            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]## Fixed parameters
+            - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+            - node_label : None
+            - node_color : None## Fixed parameters
             - data_type : 'VECTOR'
             - operation : 'NOT_EQUAL'
     
@@ -882,7 +914,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL')
+            nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL', label=node_label, node_color=node_color)
             ```
     
 
@@ -892,9 +924,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL', label=node_label, node_color=node_color).result
 
-    def add(self, vector1=None):
+    def add(self, vector1=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -902,7 +934,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.add(vector1)
+        v = vector.add(vector1, node_label = None, node_color = None)
         ```
     
 
@@ -910,7 +942,9 @@ class Vector(dsock.Vector):
         ---------
             ## Sockets
             - vector0 : Vector (self)
-            - vector1 : Vector## Fixed parameters
+            - vector1 : Vector## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'ADD'
     
 
@@ -918,7 +952,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD')
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD', label=node_label, node_color=node_color)
             ```
     
 
@@ -928,9 +962,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD').vector
+        return nodes.VectorMath(vector0=self, vector1=vector1, operation='ADD', label=node_label, node_color=node_color).vector
 
-    def subtract(self, vector1=None):
+    def subtract(self, vector1=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -938,7 +972,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.subtract(vector1)
+        v = vector.subtract(vector1, node_label = None, node_color = None)
         ```
     
 
@@ -946,7 +980,9 @@ class Vector(dsock.Vector):
         ---------
             ## Sockets
             - vector0 : Vector (self)
-            - vector1 : Vector## Fixed parameters
+            - vector1 : Vector## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'SUBTRACT'
     
 
@@ -954,7 +990,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT')
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT', label=node_label, node_color=node_color)
             ```
     
 
@@ -964,9 +1000,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT').vector
+        return nodes.VectorMath(vector0=self, vector1=vector1, operation='SUBTRACT', label=node_label, node_color=node_color).vector
 
-    def multiply(self, vector1=None):
+    def multiply(self, vector1=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -974,7 +1010,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.multiply(vector1)
+        v = vector.multiply(vector1, node_label = None, node_color = None)
         ```
     
 
@@ -982,7 +1018,9 @@ class Vector(dsock.Vector):
         ---------
             ## Sockets
             - vector0 : Vector (self)
-            - vector1 : Vector## Fixed parameters
+            - vector1 : Vector## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'MULTIPLY'
     
 
@@ -990,7 +1028,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY')
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY', label=node_label, node_color=node_color)
             ```
     
 
@@ -1000,9 +1038,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY').vector
+        return nodes.VectorMath(vector0=self, vector1=vector1, operation='MULTIPLY', label=node_label, node_color=node_color).vector
 
-    def divide(self, vector1=None):
+    def divide(self, vector1=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1010,7 +1048,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.divide(vector1)
+        v = vector.divide(vector1, node_label = None, node_color = None)
         ```
     
 
@@ -1018,7 +1056,9 @@ class Vector(dsock.Vector):
         ---------
             ## Sockets
             - vector0 : Vector (self)
-            - vector1 : Vector## Fixed parameters
+            - vector1 : Vector## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'DIVIDE'
     
 
@@ -1026,7 +1066,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE')
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE', label=node_label, node_color=node_color)
             ```
     
 
@@ -1036,9 +1076,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE').vector
+        return nodes.VectorMath(vector0=self, vector1=vector1, operation='DIVIDE', label=node_label, node_color=node_color).vector
 
-    def multiply_add(self, vector1=None, vector2=None):
+    def multiply_add(self, vector1=None, vector2=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1046,7 +1086,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.multiply_add(vector1, vector2)
+        v = vector.multiply_add(vector1, vector2, node_label = None, node_color = None)
         ```
     
 
@@ -1055,7 +1095,9 @@ class Vector(dsock.Vector):
             ## Sockets
             - vector0 : Vector (self)
             - vector1 : Vector
-            - vector2 : Vector## Fixed parameters
+            - vector2 : Vector## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'MULTIPLY_ADD'
     
 
@@ -1063,7 +1105,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD')
+            nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD', label=node_label, node_color=node_color)
             ```
     
 
@@ -1073,9 +1115,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD').vector
+        return nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD', label=node_label, node_color=node_color).vector
 
-    def cross(self, vector1=None):
+    def cross(self, vector1=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1083,7 +1125,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.cross(vector1)
+        v = vector.cross(vector1, node_label = None, node_color = None)
         ```
     
 
@@ -1091,7 +1133,9 @@ class Vector(dsock.Vector):
         ---------
             ## Sockets
             - vector0 : Vector (self)
-            - vector1 : Vector## Fixed parameters
+            - vector1 : Vector## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'CROSS_PRODUCT'
     
 
@@ -1099,7 +1143,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT')
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT', label=node_label, node_color=node_color)
             ```
     
 
@@ -1109,9 +1153,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT').vector
+        return nodes.VectorMath(vector0=self, vector1=vector1, operation='CROSS_PRODUCT', label=node_label, node_color=node_color).vector
 
-    def project(self, vector1=None):
+    def project(self, vector1=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1119,7 +1163,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.project(vector1)
+        v = vector.project(vector1, node_label = None, node_color = None)
         ```
     
 
@@ -1127,7 +1171,9 @@ class Vector(dsock.Vector):
         ---------
             ## Sockets
             - vector0 : Vector (self)
-            - vector1 : Vector## Fixed parameters
+            - vector1 : Vector## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'PROJECT'
     
 
@@ -1135,7 +1181,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT')
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT', label=node_label, node_color=node_color)
             ```
     
 
@@ -1145,9 +1191,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT').vector
+        return nodes.VectorMath(vector0=self, vector1=vector1, operation='PROJECT', label=node_label, node_color=node_color).vector
 
-    def reflect(self, vector1=None):
+    def reflect(self, vector1=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1155,7 +1201,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.reflect(vector1)
+        v = vector.reflect(vector1, node_label = None, node_color = None)
         ```
     
 
@@ -1163,7 +1209,9 @@ class Vector(dsock.Vector):
         ---------
             ## Sockets
             - vector0 : Vector (self)
-            - vector1 : Vector## Fixed parameters
+            - vector1 : Vector## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'REFLECT'
     
 
@@ -1171,7 +1219,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT')
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT', label=node_label, node_color=node_color)
             ```
     
 
@@ -1181,9 +1229,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT').vector
+        return nodes.VectorMath(vector0=self, vector1=vector1, operation='REFLECT', label=node_label, node_color=node_color).vector
 
-    def refract(self, vector1=None, scale=None):
+    def refract(self, vector1=None, scale=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1191,7 +1239,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.refract(vector1, scale)
+        v = vector.refract(vector1, scale, node_label = None, node_color = None)
         ```
     
 
@@ -1200,7 +1248,9 @@ class Vector(dsock.Vector):
             ## Sockets
             - vector0 : Vector (self)
             - vector1 : Vector
-            - scale : Float## Fixed parameters
+            - scale : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'REFRACT'
     
 
@@ -1208,7 +1258,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT')
+            nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT', label=node_label, node_color=node_color)
             ```
     
 
@@ -1218,9 +1268,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT').vector
+        return nodes.VectorMath(vector0=self, vector1=vector1, scale=scale, operation='REFRACT', label=node_label, node_color=node_color).vector
 
-    def faceforward(self, vector1=None, vector2=None):
+    def faceforward(self, vector1=None, vector2=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1228,7 +1278,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.faceforward(vector1, vector2)
+        v = vector.faceforward(vector1, vector2, node_label = None, node_color = None)
         ```
     
 
@@ -1237,7 +1287,9 @@ class Vector(dsock.Vector):
             ## Sockets
             - vector0 : Vector (self)
             - vector1 : Vector
-            - vector2 : Vector## Fixed parameters
+            - vector2 : Vector## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'FACEFORWARD'
     
 
@@ -1245,7 +1297,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD')
+            nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD', label=node_label, node_color=node_color)
             ```
     
 
@@ -1255,9 +1307,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD').vector
+        return nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='FACEFORWARD', label=node_label, node_color=node_color).vector
 
-    def dot(self, vector1=None):
+    def dot(self, vector1=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1265,7 +1317,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.dot(vector1)
+        v = vector.dot(vector1, node_label = None, node_color = None)
         ```
     
 
@@ -1273,7 +1325,9 @@ class Vector(dsock.Vector):
         ---------
             ## Sockets
             - vector0 : Vector (self)
-            - vector1 : Vector## Fixed parameters
+            - vector1 : Vector## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'DOT_PRODUCT'
     
 
@@ -1281,7 +1335,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT')
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT', label=node_label, node_color=node_color)
             ```
     
 
@@ -1291,9 +1345,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT').value
+        return nodes.VectorMath(vector0=self, vector1=vector1, operation='DOT_PRODUCT', label=node_label, node_color=node_color).value
 
-    def distance(self, vector1=None):
+    def distance(self, vector1=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1301,7 +1355,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.distance(vector1)
+        v = vector.distance(vector1, node_label = None, node_color = None)
         ```
     
 
@@ -1309,7 +1363,9 @@ class Vector(dsock.Vector):
         ---------
             ## Sockets
             - vector0 : Vector (self)
-            - vector1 : Vector## Fixed parameters
+            - vector1 : Vector## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'DISTANCE'
     
 
@@ -1317,7 +1373,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE')
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE', label=node_label, node_color=node_color)
             ```
     
 
@@ -1327,9 +1383,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE').value
+        return nodes.VectorMath(vector0=self, vector1=vector1, operation='DISTANCE', label=node_label, node_color=node_color).value
 
-    def length(self):
+    def length(self, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1337,14 +1393,16 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.length()
+        v = vector.length(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - vector0 : Vector (self)## Fixed parameters
+            - vector0 : Vector (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'LENGTH'
     
 
@@ -1352,7 +1410,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, operation='LENGTH')
+            nodes.VectorMath(vector0=self, operation='LENGTH', label=node_label, node_color=node_color)
             ```
     
 
@@ -1362,9 +1420,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, operation='LENGTH').value
+        return nodes.VectorMath(vector0=self, operation='LENGTH', label=node_label, node_color=node_color).value
 
-    def scale(self, scale=None):
+    def scale(self, scale=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1372,7 +1430,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.scale(scale)
+        v = vector.scale(scale, node_label = None, node_color = None)
         ```
     
 
@@ -1380,7 +1438,9 @@ class Vector(dsock.Vector):
         ---------
             ## Sockets
             - vector0 : Vector (self)
-            - scale : Float## Fixed parameters
+            - scale : Float## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'SCALE'
     
 
@@ -1388,7 +1448,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, scale=scale, operation='SCALE')
+            nodes.VectorMath(vector0=self, scale=scale, operation='SCALE', label=node_label, node_color=node_color)
             ```
     
 
@@ -1398,9 +1458,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, scale=scale, operation='SCALE').vector
+        return nodes.VectorMath(vector0=self, scale=scale, operation='SCALE', label=node_label, node_color=node_color).vector
 
-    def normalize(self):
+    def normalize(self, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1408,14 +1468,16 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.normalize()
+        v = vector.normalize(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - vector0 : Vector (self)## Fixed parameters
+            - vector0 : Vector (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'NORMALIZE'
     
 
@@ -1423,7 +1485,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, operation='NORMALIZE')
+            nodes.VectorMath(vector0=self, operation='NORMALIZE', label=node_label, node_color=node_color)
             ```
     
 
@@ -1433,9 +1495,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, operation='NORMALIZE').vector
+        return nodes.VectorMath(vector0=self, operation='NORMALIZE', label=node_label, node_color=node_color).vector
 
-    def absolute(self):
+    def absolute(self, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1443,14 +1505,16 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.absolute()
+        v = vector.absolute(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - vector0 : Vector (self)## Fixed parameters
+            - vector0 : Vector (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'ABSOLUTE'
     
 
@@ -1458,7 +1522,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, operation='ABSOLUTE')
+            nodes.VectorMath(vector0=self, operation='ABSOLUTE', label=node_label, node_color=node_color)
             ```
     
 
@@ -1468,9 +1532,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, operation='ABSOLUTE').vector
+        return nodes.VectorMath(vector0=self, operation='ABSOLUTE', label=node_label, node_color=node_color).vector
 
-    def min(self, vector1=None):
+    def min(self, vector1=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1478,7 +1542,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.min(vector1)
+        v = vector.min(vector1, node_label = None, node_color = None)
         ```
     
 
@@ -1486,7 +1550,9 @@ class Vector(dsock.Vector):
         ---------
             ## Sockets
             - vector0 : Vector (self)
-            - vector1 : Vector## Fixed parameters
+            - vector1 : Vector## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'MINIMUM'
     
 
@@ -1494,7 +1560,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM')
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM', label=node_label, node_color=node_color)
             ```
     
 
@@ -1504,9 +1570,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM').vector
+        return nodes.VectorMath(vector0=self, vector1=vector1, operation='MINIMUM', label=node_label, node_color=node_color).vector
 
-    def max(self, vector1=None):
+    def max(self, vector1=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1514,7 +1580,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.max(vector1)
+        v = vector.max(vector1, node_label = None, node_color = None)
         ```
     
 
@@ -1522,7 +1588,9 @@ class Vector(dsock.Vector):
         ---------
             ## Sockets
             - vector0 : Vector (self)
-            - vector1 : Vector## Fixed parameters
+            - vector1 : Vector## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'MAXIMUM'
     
 
@@ -1530,7 +1598,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM')
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM', label=node_label, node_color=node_color)
             ```
     
 
@@ -1540,9 +1608,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM').vector
+        return nodes.VectorMath(vector0=self, vector1=vector1, operation='MAXIMUM', label=node_label, node_color=node_color).vector
 
-    def floor(self):
+    def floor(self, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1550,14 +1618,16 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.floor()
+        v = vector.floor(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - vector0 : Vector (self)## Fixed parameters
+            - vector0 : Vector (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'FLOOR'
     
 
@@ -1565,7 +1635,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, operation='FLOOR')
+            nodes.VectorMath(vector0=self, operation='FLOOR', label=node_label, node_color=node_color)
             ```
     
 
@@ -1575,9 +1645,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, operation='FLOOR').vector
+        return nodes.VectorMath(vector0=self, operation='FLOOR', label=node_label, node_color=node_color).vector
 
-    def ceil(self):
+    def ceil(self, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1585,14 +1655,16 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.ceil()
+        v = vector.ceil(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - vector0 : Vector (self)## Fixed parameters
+            - vector0 : Vector (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'CEIL'
     
 
@@ -1600,7 +1672,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, operation='CEIL')
+            nodes.VectorMath(vector0=self, operation='CEIL', label=node_label, node_color=node_color)
             ```
     
 
@@ -1610,9 +1682,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, operation='CEIL').vector
+        return nodes.VectorMath(vector0=self, operation='CEIL', label=node_label, node_color=node_color).vector
 
-    def fraction(self):
+    def fraction(self, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1620,14 +1692,16 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.fraction()
+        v = vector.fraction(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - vector0 : Vector (self)## Fixed parameters
+            - vector0 : Vector (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'FRACTION'
     
 
@@ -1635,7 +1709,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, operation='FRACTION')
+            nodes.VectorMath(vector0=self, operation='FRACTION', label=node_label, node_color=node_color)
             ```
     
 
@@ -1645,9 +1719,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, operation='FRACTION').vector
+        return nodes.VectorMath(vector0=self, operation='FRACTION', label=node_label, node_color=node_color).vector
 
-    def modulo(self, vector1=None):
+    def modulo(self, vector1=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1655,7 +1729,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.modulo(vector1)
+        v = vector.modulo(vector1, node_label = None, node_color = None)
         ```
     
 
@@ -1663,7 +1737,9 @@ class Vector(dsock.Vector):
         ---------
             ## Sockets
             - vector0 : Vector (self)
-            - vector1 : Vector## Fixed parameters
+            - vector1 : Vector## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'MODULO'
     
 
@@ -1671,7 +1747,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO')
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO', label=node_label, node_color=node_color)
             ```
     
 
@@ -1681,9 +1757,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO').vector
+        return nodes.VectorMath(vector0=self, vector1=vector1, operation='MODULO', label=node_label, node_color=node_color).vector
 
-    def wrap(self, vector1=None, vector2=None):
+    def wrap(self, vector1=None, vector2=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1691,7 +1767,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.wrap(vector1, vector2)
+        v = vector.wrap(vector1, vector2, node_label = None, node_color = None)
         ```
     
 
@@ -1700,7 +1776,9 @@ class Vector(dsock.Vector):
             ## Sockets
             - vector0 : Vector (self)
             - vector1 : Vector
-            - vector2 : Vector## Fixed parameters
+            - vector2 : Vector## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'WRAP'
     
 
@@ -1708,7 +1786,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP')
+            nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP', label=node_label, node_color=node_color)
             ```
     
 
@@ -1718,9 +1796,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP').vector
+        return nodes.VectorMath(vector0=self, vector1=vector1, vector2=vector2, operation='WRAP', label=node_label, node_color=node_color).vector
 
-    def snap(self, vector1=None):
+    def snap(self, vector1=None, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1728,7 +1806,7 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.snap(vector1)
+        v = vector.snap(vector1, node_label = None, node_color = None)
         ```
     
 
@@ -1736,7 +1814,9 @@ class Vector(dsock.Vector):
         ---------
             ## Sockets
             - vector0 : Vector (self)
-            - vector1 : Vector## Fixed parameters
+            - vector1 : Vector## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'SNAP'
     
 
@@ -1744,7 +1824,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP')
+            nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP', label=node_label, node_color=node_color)
             ```
     
 
@@ -1754,9 +1834,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP').vector
+        return nodes.VectorMath(vector0=self, vector1=vector1, operation='SNAP', label=node_label, node_color=node_color).vector
 
-    def sin(self):
+    def sin(self, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1764,14 +1844,16 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.sin()
+        v = vector.sin(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - vector0 : Vector (self)## Fixed parameters
+            - vector0 : Vector (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'SINE'
     
 
@@ -1779,7 +1861,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, operation='SINE')
+            nodes.VectorMath(vector0=self, operation='SINE', label=node_label, node_color=node_color)
             ```
     
 
@@ -1789,9 +1871,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, operation='SINE').vector
+        return nodes.VectorMath(vector0=self, operation='SINE', label=node_label, node_color=node_color).vector
 
-    def cos(self):
+    def cos(self, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1799,14 +1881,16 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.cos()
+        v = vector.cos(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - vector0 : Vector (self)## Fixed parameters
+            - vector0 : Vector (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'COSINE'
     
 
@@ -1814,7 +1898,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, operation='COSINE')
+            nodes.VectorMath(vector0=self, operation='COSINE', label=node_label, node_color=node_color)
             ```
     
 
@@ -1824,9 +1908,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, operation='COSINE').vector
+        return nodes.VectorMath(vector0=self, operation='COSINE', label=node_label, node_color=node_color).vector
 
-    def tan(self):
+    def tan(self, node_label = None, node_color = None):
         """ > Node: VectorMath
           
         <sub>go to: top index
@@ -1834,14 +1918,16 @@ class Vector(dsock.Vector):
         node ref Vector Math </sub>
                                   
         ```python
-        v = vector.tan()
+        v = vector.tan(node_label = None, node_color = None)
         ```
     
 
         Arguments
         ---------
             ## Sockets
-            - vector0 : Vector (self)## Fixed parameters
+            - vector0 : Vector (self)## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
             - operation : 'TANGENT'
     
 
@@ -1849,7 +1935,7 @@ class Vector(dsock.Vector):
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorMath(vector0=self, operation='TANGENT')
+            nodes.VectorMath(vector0=self, operation='TANGENT', label=node_label, node_color=node_color)
             ```
     
 
@@ -1859,9 +1945,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorMath(vector0=self, operation='TANGENT').vector
+        return nodes.VectorMath(vector0=self, operation='TANGENT', label=node_label, node_color=node_color).vector
 
-    def curves(self, fac=None):
+    def curves(self, fac=None, node_label = None, node_color = None):
         """ > Node: VectorCurves
           
         <sub>go to: top index
@@ -1869,7 +1955,7 @@ class Vector(dsock.Vector):
         node ref Vector Curves </sub>
                                   
         ```python
-        v = vector.curves(fac)
+        v = vector.curves(fac, node_label = None, node_color = None)
         ```
     
 
@@ -1877,14 +1963,16 @@ class Vector(dsock.Vector):
         ---------
             ## Sockets
             - vector : Vector (self)
-            - fac : Float
+            - fac : Float## Parameters
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorCurves(vector=self, fac=fac)
+            nodes.VectorCurves(vector=self, fac=fac, label=node_label, node_color=node_color)
             ```
     
 
@@ -1894,9 +1982,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return self.stack(nodes.VectorCurves(vector=self, fac=fac))
+        return self.stack(nodes.VectorCurves(vector=self, fac=fac, label=node_label, node_color=node_color))
 
-    def align_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
+    def align_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO', node_label = None, node_color = None):
         """ > Node: AlignEulerToVector
           
         <sub>go to: top index
@@ -1904,7 +1992,7 @@ class Vector(dsock.Vector):
         node ref Align Euler to Vector </sub>
                                   
         ```python
-        v = vector.align_to_vector(factor, vector, axis, pivot_axis)
+        v = vector.align_to_vector(factor, vector, axis, pivot_axis, node_label = None, node_color = None)
         ```
     
 
@@ -1916,13 +2004,15 @@ class Vector(dsock.Vector):
             - vector : Vector## Parameters
             - axis : 'X' in [X, Y, Z]
             - pivot_axis : 'AUTO' in [AUTO, X, Y, Z]
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis)
+            nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis, label=node_label, node_color=node_color)
             ```
     
 
@@ -1932,9 +2022,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return self.stack(nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis))
+        return self.stack(nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis, label=node_label, node_color=node_color))
 
-    def rotate_euler(self, rotate_by=None, space='OBJECT'):
+    def rotate_euler(self, rotate_by=None, space='OBJECT', node_label = None, node_color = None):
         """ > Node: RotateEuler
           
         <sub>go to: top index
@@ -1942,7 +2032,7 @@ class Vector(dsock.Vector):
         node ref Rotate Euler </sub>
                                   
         ```python
-        v = vector.rotate_euler(rotate_by, space)
+        v = vector.rotate_euler(rotate_by, space, node_label = None, node_color = None)
         ```
     
 
@@ -1952,13 +2042,15 @@ class Vector(dsock.Vector):
             - rotation : Vector (self)
             - rotate_by : Vector## Parameters
             - space : 'OBJECT' in [OBJECT, LOCAL]
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space)
+            nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space, label=node_label, node_color=node_color)
             ```
     
 
@@ -1968,9 +2060,9 @@ class Vector(dsock.Vector):
             
         """
 
-        return self.stack(nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space))
+        return self.stack(nodes.RotateEuler(rotation=self, rotate_by=rotate_by, space=space, label=node_label, node_color=node_color))
 
-    def rotate(self, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE'):
+    def rotate(self, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', node_label = None, node_color = None):
         """ > Node: VectorRotate
           
         <sub>go to: top index
@@ -1978,7 +2070,7 @@ class Vector(dsock.Vector):
         node ref Vector Rotate </sub>
                                   
         ```python
-        v = vector.rotate(center, axis, angle, rotation, invert, rotation_type)
+        v = vector.rotate(center, axis, angle, rotation, invert, rotation_type, node_label = None, node_color = None)
         ```
     
 
@@ -1992,13 +2084,15 @@ class Vector(dsock.Vector):
             - rotation : Vector## Parameters
             - invert : False
             - rotation_type : 'AXIS_ANGLE' in [AXIS_ANGLE, X_AXIS, Y_AXIS, Z_AXIS, EULER_XYZ]
+            - node_label : None
+            - node_color : None
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type)
+            nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type, label=node_label, node_color=node_color)
             ```
     
 
@@ -2008,6 +2102,6 @@ class Vector(dsock.Vector):
             
         """
 
-        return nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type).vector
+        return nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=rotation, invert=invert, rotation_type=rotation_type, label=node_label, node_color=node_color).vector
 
 

@@ -155,7 +155,7 @@ geonodes functions
 # ----------------------------------------------------------------------------------------------------
 # Functions
 
-def compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN'):
+def compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', node_label = None, node_color = None):
     """ > Node: Compare
       
     <sub>go to: top index
@@ -163,7 +163,7 @@ def compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', ope
     node ref Compare </sub>
                               
     ```python
-    v = functions.compare(a, b, epsilon, data_type, mode, operation)
+    v = functions.compare(a, b, epsilon, data_type, mode, operation, node_label = None, node_color = None)
     ```
 
 
@@ -176,13 +176,15 @@ def compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', ope
         - data_type : 'FLOAT' in [FLOAT, INT, VECTOR, STRING, RGBA]
         - mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
         - operation : 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+        - node_label : None
+        - node_color : None
 
 
     Node creation
     -------------
         ```python
         from geondes import nodes
-        nodes.Compare(a=a, b=b, epsilon=epsilon, data_type=data_type, mode=mode, operation=operation)
+        nodes.Compare(a=a, b=b, epsilon=epsilon, data_type=data_type, mode=mode, operation=operation, label=node_label, node_color=node_color)
         ```
 
 
@@ -192,9 +194,9 @@ def compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', ope
         
     """
 
-    return nodes.Compare(a=a, b=b, epsilon=epsilon, data_type=data_type, mode=mode, operation=operation).result
+    return nodes.Compare(a=a, b=b, epsilon=epsilon, data_type=data_type, mode=mode, operation=operation, label=node_label, node_color=node_color).result
 
-def join_strings(*strings, delimiter=None):
+def join_strings(*strings, delimiter=None, node_label = None, node_color = None):
     """ > Node: JoinStrings
       
     <sub>go to: top index
@@ -202,7 +204,7 @@ def join_strings(*strings, delimiter=None):
     node ref Join Strings </sub>
                               
     ```python
-    v = functions.join_strings(strings_1, strings_2, strings_3, delimiter)
+    v = functions.join_strings(strings_1, strings_2, strings_3, delimiter, node_label = None, node_color = None)
     ```
 
 
@@ -210,14 +212,16 @@ def join_strings(*strings, delimiter=None):
     ---------
         ## Sockets
         - strings : *String
-        - delimiter : String
+        - delimiter : String## Parameters
+        - node_label : None
+        - node_color : None
 
 
     Node creation
     -------------
         ```python
         from geondes import nodes
-        nodes.JoinStrings(*strings, delimiter=delimiter)
+        nodes.JoinStrings(*strings, delimiter=delimiter, label=node_label, node_color=node_color)
         ```
 
 
@@ -227,9 +231,9 @@ def join_strings(*strings, delimiter=None):
         
     """
 
-    return nodes.JoinStrings(*strings, delimiter=delimiter).string
+    return nodes.JoinStrings(*strings, delimiter=delimiter, label=node_label, node_color=node_color).string
 
-def scene():
+def scene(node_label = None, node_color = None):
     """ > Node: SceneTime
       
     <sub>go to: top index
@@ -237,19 +241,22 @@ def scene():
     node ref Scene Time </sub>
                               
     ```python
-    v = functions.scene()
+    v = functions.scene(node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
+        ## Parameters
+        - node_label : None
+        - node_color : None
 
 
     Node creation
     -------------
         ```python
         from geondes import nodes
-        nodes.SceneTime()
+        nodes.SceneTime(label=node_label, node_color=node_color)
         ```
 
 
@@ -259,9 +266,9 @@ def scene():
         
     """
 
-    return nodes.SceneTime()
+    return nodes.SceneTime(label=node_label, node_color=node_color)
 
-def b_and(boolean0=None, boolean1=None, operation='AND'):
+def b_and(boolean0=None, boolean1=None, operation='AND', node_label = None, node_color = None):
     """ > Node: BooleanMath
       
     <sub>go to: top index
@@ -269,7 +276,7 @@ def b_and(boolean0=None, boolean1=None, operation='AND'):
     node ref Boolean Math </sub>
                               
     ```python
-    v = functions.b_and(boolean0, boolean1, operation)
+    v = functions.b_and(boolean0, boolean1, operation, node_label = None, node_color = None)
     ```
 
 
@@ -279,13 +286,15 @@ def b_and(boolean0=None, boolean1=None, operation='AND'):
         - boolean0 : Boolean
         - boolean1 : Boolean## Parameters
         - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+        - node_label : None
+        - node_color : None
 
 
     Node creation
     -------------
         ```python
         from geondes import nodes
-        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
         ```
 
 
@@ -295,9 +304,9 @@ def b_and(boolean0=None, boolean1=None, operation='AND'):
         
     """
 
-    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color).boolean
 
-def b_or(boolean0=None, boolean1=None, operation='AND'):
+def b_or(boolean0=None, boolean1=None, operation='AND', node_label = None, node_color = None):
     """ > Node: BooleanMath
       
     <sub>go to: top index
@@ -305,7 +314,7 @@ def b_or(boolean0=None, boolean1=None, operation='AND'):
     node ref Boolean Math </sub>
                               
     ```python
-    v = functions.b_or(boolean0, boolean1, operation)
+    v = functions.b_or(boolean0, boolean1, operation, node_label = None, node_color = None)
     ```
 
 
@@ -315,13 +324,15 @@ def b_or(boolean0=None, boolean1=None, operation='AND'):
         - boolean0 : Boolean
         - boolean1 : Boolean## Parameters
         - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+        - node_label : None
+        - node_color : None
 
 
     Node creation
     -------------
         ```python
         from geondes import nodes
-        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
         ```
 
 
@@ -331,9 +342,9 @@ def b_or(boolean0=None, boolean1=None, operation='AND'):
         
     """
 
-    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color).boolean
 
-def b_not(boolean0=None, boolean1=None, operation='AND'):
+def b_not(boolean0=None, boolean1=None, operation='AND', node_label = None, node_color = None):
     """ > Node: BooleanMath
       
     <sub>go to: top index
@@ -341,7 +352,7 @@ def b_not(boolean0=None, boolean1=None, operation='AND'):
     node ref Boolean Math </sub>
                               
     ```python
-    v = functions.b_not(boolean0, boolean1, operation)
+    v = functions.b_not(boolean0, boolean1, operation, node_label = None, node_color = None)
     ```
 
 
@@ -351,13 +362,15 @@ def b_not(boolean0=None, boolean1=None, operation='AND'):
         - boolean0 : Boolean
         - boolean1 : Boolean## Parameters
         - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+        - node_label : None
+        - node_color : None
 
 
     Node creation
     -------------
         ```python
         from geondes import nodes
-        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
         ```
 
 
@@ -367,9 +380,9 @@ def b_not(boolean0=None, boolean1=None, operation='AND'):
         
     """
 
-    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color).boolean
 
-def nand(boolean0=None, boolean1=None, operation='AND'):
+def nand(boolean0=None, boolean1=None, operation='AND', node_label = None, node_color = None):
     """ > Node: BooleanMath
       
     <sub>go to: top index
@@ -377,7 +390,7 @@ def nand(boolean0=None, boolean1=None, operation='AND'):
     node ref Boolean Math </sub>
                               
     ```python
-    v = functions.nand(boolean0, boolean1, operation)
+    v = functions.nand(boolean0, boolean1, operation, node_label = None, node_color = None)
     ```
 
 
@@ -387,13 +400,15 @@ def nand(boolean0=None, boolean1=None, operation='AND'):
         - boolean0 : Boolean
         - boolean1 : Boolean## Parameters
         - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+        - node_label : None
+        - node_color : None
 
 
     Node creation
     -------------
         ```python
         from geondes import nodes
-        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
         ```
 
 
@@ -403,9 +418,9 @@ def nand(boolean0=None, boolean1=None, operation='AND'):
         
     """
 
-    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color).boolean
 
-def nor(boolean0=None, boolean1=None, operation='AND'):
+def nor(boolean0=None, boolean1=None, operation='AND', node_label = None, node_color = None):
     """ > Node: BooleanMath
       
     <sub>go to: top index
@@ -413,7 +428,7 @@ def nor(boolean0=None, boolean1=None, operation='AND'):
     node ref Boolean Math </sub>
                               
     ```python
-    v = functions.nor(boolean0, boolean1, operation)
+    v = functions.nor(boolean0, boolean1, operation, node_label = None, node_color = None)
     ```
 
 
@@ -423,13 +438,15 @@ def nor(boolean0=None, boolean1=None, operation='AND'):
         - boolean0 : Boolean
         - boolean1 : Boolean## Parameters
         - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+        - node_label : None
+        - node_color : None
 
 
     Node creation
     -------------
         ```python
         from geondes import nodes
-        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
         ```
 
 
@@ -439,9 +456,9 @@ def nor(boolean0=None, boolean1=None, operation='AND'):
         
     """
 
-    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color).boolean
 
-def xnor(boolean0=None, boolean1=None, operation='AND'):
+def xnor(boolean0=None, boolean1=None, operation='AND', node_label = None, node_color = None):
     """ > Node: BooleanMath
       
     <sub>go to: top index
@@ -449,7 +466,7 @@ def xnor(boolean0=None, boolean1=None, operation='AND'):
     node ref Boolean Math </sub>
                               
     ```python
-    v = functions.xnor(boolean0, boolean1, operation)
+    v = functions.xnor(boolean0, boolean1, operation, node_label = None, node_color = None)
     ```
 
 
@@ -459,13 +476,15 @@ def xnor(boolean0=None, boolean1=None, operation='AND'):
         - boolean0 : Boolean
         - boolean1 : Boolean## Parameters
         - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+        - node_label : None
+        - node_color : None
 
 
     Node creation
     -------------
         ```python
         from geondes import nodes
-        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
         ```
 
 
@@ -475,9 +494,9 @@ def xnor(boolean0=None, boolean1=None, operation='AND'):
         
     """
 
-    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color).boolean
 
-def xor(boolean0=None, boolean1=None, operation='AND'):
+def xor(boolean0=None, boolean1=None, operation='AND', node_label = None, node_color = None):
     """ > Node: BooleanMath
       
     <sub>go to: top index
@@ -485,7 +504,7 @@ def xor(boolean0=None, boolean1=None, operation='AND'):
     node ref Boolean Math </sub>
                               
     ```python
-    v = functions.xor(boolean0, boolean1, operation)
+    v = functions.xor(boolean0, boolean1, operation, node_label = None, node_color = None)
     ```
 
 
@@ -495,13 +514,15 @@ def xor(boolean0=None, boolean1=None, operation='AND'):
         - boolean0 : Boolean
         - boolean1 : Boolean## Parameters
         - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+        - node_label : None
+        - node_color : None
 
 
     Node creation
     -------------
         ```python
         from geondes import nodes
-        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
         ```
 
 
@@ -511,9 +532,9 @@ def xor(boolean0=None, boolean1=None, operation='AND'):
         
     """
 
-    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color).boolean
 
-def imply(boolean0=None, boolean1=None, operation='AND'):
+def imply(boolean0=None, boolean1=None, operation='AND', node_label = None, node_color = None):
     """ > Node: BooleanMath
       
     <sub>go to: top index
@@ -521,7 +542,7 @@ def imply(boolean0=None, boolean1=None, operation='AND'):
     node ref Boolean Math </sub>
                               
     ```python
-    v = functions.imply(boolean0, boolean1, operation)
+    v = functions.imply(boolean0, boolean1, operation, node_label = None, node_color = None)
     ```
 
 
@@ -531,13 +552,15 @@ def imply(boolean0=None, boolean1=None, operation='AND'):
         - boolean0 : Boolean
         - boolean1 : Boolean## Parameters
         - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+        - node_label : None
+        - node_color : None
 
 
     Node creation
     -------------
         ```python
         from geondes import nodes
-        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
         ```
 
 
@@ -547,9 +570,9 @@ def imply(boolean0=None, boolean1=None, operation='AND'):
         
     """
 
-    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color).boolean
 
-def nimply(boolean0=None, boolean1=None, operation='AND'):
+def nimply(boolean0=None, boolean1=None, operation='AND', node_label = None, node_color = None):
     """ > Node: BooleanMath
       
     <sub>go to: top index
@@ -557,7 +580,7 @@ def nimply(boolean0=None, boolean1=None, operation='AND'):
     node ref Boolean Math </sub>
                               
     ```python
-    v = functions.nimply(boolean0, boolean1, operation)
+    v = functions.nimply(boolean0, boolean1, operation, node_label = None, node_color = None)
     ```
 
 
@@ -567,13 +590,15 @@ def nimply(boolean0=None, boolean1=None, operation='AND'):
         - boolean0 : Boolean
         - boolean1 : Boolean## Parameters
         - operation : 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
+        - node_label : None
+        - node_color : None
 
 
     Node creation
     -------------
         ```python
         from geondes import nodes
-        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation)
+        nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
         ```
 
 
@@ -583,9 +608,9 @@ def nimply(boolean0=None, boolean1=None, operation='AND'):
         
     """
 
-    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation).boolean
+    return nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color).boolean
 
-def add(value0=None, value1=None):
+def add(value0=None, value1=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -593,7 +618,7 @@ def add(value0=None, value1=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.add(value0, value1)
+    v = functions.add(value0, value1, node_label = None, node_color = None)
     ```
 
 
@@ -601,7 +626,9 @@ def add(value0=None, value1=None):
     ---------
         ## Sockets
         - value0 : Float
-        - value1 : Float## Fixed parameters
+        - value1 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'ADD'
 
 
@@ -609,7 +636,7 @@ def add(value0=None, value1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, operation='ADD')
+        nodes.Math(value0=value0, value1=value1, operation='ADD', label=node_label, node_color=node_color)
         ```
 
 
@@ -619,9 +646,9 @@ def add(value0=None, value1=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, operation='ADD').value
+    return nodes.Math(value0=value0, value1=value1, operation='ADD', label=node_label, node_color=node_color).value
 
-def subtract(value0=None, value1=None):
+def subtract(value0=None, value1=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -629,7 +656,7 @@ def subtract(value0=None, value1=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.subtract(value0, value1)
+    v = functions.subtract(value0, value1, node_label = None, node_color = None)
     ```
 
 
@@ -637,7 +664,9 @@ def subtract(value0=None, value1=None):
     ---------
         ## Sockets
         - value0 : Float
-        - value1 : Float## Fixed parameters
+        - value1 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'SUBTRACT'
 
 
@@ -645,7 +674,7 @@ def subtract(value0=None, value1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, operation='SUBTRACT')
+        nodes.Math(value0=value0, value1=value1, operation='SUBTRACT', label=node_label, node_color=node_color)
         ```
 
 
@@ -655,9 +684,9 @@ def subtract(value0=None, value1=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, operation='SUBTRACT').value
+    return nodes.Math(value0=value0, value1=value1, operation='SUBTRACT', label=node_label, node_color=node_color).value
 
-def multiply(value0=None, value1=None):
+def multiply(value0=None, value1=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -665,7 +694,7 @@ def multiply(value0=None, value1=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.multiply(value0, value1)
+    v = functions.multiply(value0, value1, node_label = None, node_color = None)
     ```
 
 
@@ -673,7 +702,9 @@ def multiply(value0=None, value1=None):
     ---------
         ## Sockets
         - value0 : Float
-        - value1 : Float## Fixed parameters
+        - value1 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'MULTIPLY'
 
 
@@ -681,7 +712,7 @@ def multiply(value0=None, value1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, operation='MULTIPLY')
+        nodes.Math(value0=value0, value1=value1, operation='MULTIPLY', label=node_label, node_color=node_color)
         ```
 
 
@@ -691,9 +722,9 @@ def multiply(value0=None, value1=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, operation='MULTIPLY').value
+    return nodes.Math(value0=value0, value1=value1, operation='MULTIPLY', label=node_label, node_color=node_color).value
 
-def divide(value0=None, value1=None):
+def divide(value0=None, value1=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -701,7 +732,7 @@ def divide(value0=None, value1=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.divide(value0, value1)
+    v = functions.divide(value0, value1, node_label = None, node_color = None)
     ```
 
 
@@ -709,7 +740,9 @@ def divide(value0=None, value1=None):
     ---------
         ## Sockets
         - value0 : Float
-        - value1 : Float## Fixed parameters
+        - value1 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'DIVIDE'
 
 
@@ -717,7 +750,7 @@ def divide(value0=None, value1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, operation='DIVIDE')
+        nodes.Math(value0=value0, value1=value1, operation='DIVIDE', label=node_label, node_color=node_color)
         ```
 
 
@@ -727,9 +760,9 @@ def divide(value0=None, value1=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, operation='DIVIDE').value
+    return nodes.Math(value0=value0, value1=value1, operation='DIVIDE', label=node_label, node_color=node_color).value
 
-def multiply_add(value0=None, value1=None, value2=None):
+def multiply_add(value0=None, value1=None, value2=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -737,7 +770,7 @@ def multiply_add(value0=None, value1=None, value2=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.multiply_add(value0, value1, value2)
+    v = functions.multiply_add(value0, value1, value2, node_label = None, node_color = None)
     ```
 
 
@@ -746,7 +779,9 @@ def multiply_add(value0=None, value1=None, value2=None):
         ## Sockets
         - value0 : Float
         - value1 : Float
-        - value2 : Float## Fixed parameters
+        - value2 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'MULTIPLY_ADD'
 
 
@@ -754,7 +789,7 @@ def multiply_add(value0=None, value1=None, value2=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, value2=value2, operation='MULTIPLY_ADD')
+        nodes.Math(value0=value0, value1=value1, value2=value2, operation='MULTIPLY_ADD', label=node_label, node_color=node_color)
         ```
 
 
@@ -764,9 +799,9 @@ def multiply_add(value0=None, value1=None, value2=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, value2=value2, operation='MULTIPLY_ADD').value
+    return nodes.Math(value0=value0, value1=value1, value2=value2, operation='MULTIPLY_ADD', label=node_label, node_color=node_color).value
 
-def pow(value0=None, value1=None):
+def pow(value0=None, value1=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -774,7 +809,7 @@ def pow(value0=None, value1=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.pow(value0, value1)
+    v = functions.pow(value0, value1, node_label = None, node_color = None)
     ```
 
 
@@ -782,7 +817,9 @@ def pow(value0=None, value1=None):
     ---------
         ## Sockets
         - value0 : Float
-        - value1 : Float## Fixed parameters
+        - value1 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'POWER'
 
 
@@ -790,7 +827,7 @@ def pow(value0=None, value1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, operation='POWER')
+        nodes.Math(value0=value0, value1=value1, operation='POWER', label=node_label, node_color=node_color)
         ```
 
 
@@ -800,9 +837,9 @@ def pow(value0=None, value1=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, operation='POWER').value
+    return nodes.Math(value0=value0, value1=value1, operation='POWER', label=node_label, node_color=node_color).value
 
-def log(value0=None, value1=None):
+def log(value0=None, value1=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -810,7 +847,7 @@ def log(value0=None, value1=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.log(value0, value1)
+    v = functions.log(value0, value1, node_label = None, node_color = None)
     ```
 
 
@@ -818,7 +855,9 @@ def log(value0=None, value1=None):
     ---------
         ## Sockets
         - value0 : Float
-        - value1 : Float## Fixed parameters
+        - value1 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'LOGARITHM'
 
 
@@ -826,7 +865,7 @@ def log(value0=None, value1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, operation='LOGARITHM')
+        nodes.Math(value0=value0, value1=value1, operation='LOGARITHM', label=node_label, node_color=node_color)
         ```
 
 
@@ -836,9 +875,9 @@ def log(value0=None, value1=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, operation='LOGARITHM').value
+    return nodes.Math(value0=value0, value1=value1, operation='LOGARITHM', label=node_label, node_color=node_color).value
 
-def sqrt(value0=None):
+def sqrt(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -846,14 +885,16 @@ def sqrt(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.sqrt(value0)
+    v = functions.sqrt(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'SQRT'
 
 
@@ -861,7 +902,7 @@ def sqrt(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='SQRT')
+        nodes.Math(value0=value0, operation='SQRT', label=node_label, node_color=node_color)
         ```
 
 
@@ -871,9 +912,9 @@ def sqrt(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='SQRT').value
+    return nodes.Math(value0=value0, operation='SQRT', label=node_label, node_color=node_color).value
 
-def inverse_sqrt(value0=None):
+def inverse_sqrt(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -881,14 +922,16 @@ def inverse_sqrt(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.inverse_sqrt(value0)
+    v = functions.inverse_sqrt(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'INVERSE_SQRT'
 
 
@@ -896,7 +939,7 @@ def inverse_sqrt(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='INVERSE_SQRT')
+        nodes.Math(value0=value0, operation='INVERSE_SQRT', label=node_label, node_color=node_color)
         ```
 
 
@@ -906,9 +949,9 @@ def inverse_sqrt(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='INVERSE_SQRT').value
+    return nodes.Math(value0=value0, operation='INVERSE_SQRT', label=node_label, node_color=node_color).value
 
-def abs(value0=None):
+def abs(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -916,14 +959,16 @@ def abs(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.abs(value0)
+    v = functions.abs(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'ABSOLUTE'
 
 
@@ -931,7 +976,7 @@ def abs(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='ABSOLUTE')
+        nodes.Math(value0=value0, operation='ABSOLUTE', label=node_label, node_color=node_color)
         ```
 
 
@@ -941,9 +986,9 @@ def abs(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='ABSOLUTE').value
+    return nodes.Math(value0=value0, operation='ABSOLUTE', label=node_label, node_color=node_color).value
 
-def exp(value0=None):
+def exp(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -951,14 +996,16 @@ def exp(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.exp(value0)
+    v = functions.exp(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'EXPONENT'
 
 
@@ -966,7 +1013,7 @@ def exp(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='EXPONENT')
+        nodes.Math(value0=value0, operation='EXPONENT', label=node_label, node_color=node_color)
         ```
 
 
@@ -976,9 +1023,9 @@ def exp(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='EXPONENT').value
+    return nodes.Math(value0=value0, operation='EXPONENT', label=node_label, node_color=node_color).value
 
-def min(value0=None, value1=None):
+def min(value0=None, value1=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -986,7 +1033,7 @@ def min(value0=None, value1=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.min(value0, value1)
+    v = functions.min(value0, value1, node_label = None, node_color = None)
     ```
 
 
@@ -994,7 +1041,9 @@ def min(value0=None, value1=None):
     ---------
         ## Sockets
         - value0 : Float
-        - value1 : Float## Fixed parameters
+        - value1 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'MINIMUM'
 
 
@@ -1002,7 +1051,7 @@ def min(value0=None, value1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, operation='MINIMUM')
+        nodes.Math(value0=value0, value1=value1, operation='MINIMUM', label=node_label, node_color=node_color)
         ```
 
 
@@ -1012,9 +1061,9 @@ def min(value0=None, value1=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, operation='MINIMUM').value
+    return nodes.Math(value0=value0, value1=value1, operation='MINIMUM', label=node_label, node_color=node_color).value
 
-def max(value0=None, value1=None):
+def max(value0=None, value1=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1022,7 +1071,7 @@ def max(value0=None, value1=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.max(value0, value1)
+    v = functions.max(value0, value1, node_label = None, node_color = None)
     ```
 
 
@@ -1030,7 +1079,9 @@ def max(value0=None, value1=None):
     ---------
         ## Sockets
         - value0 : Float
-        - value1 : Float## Fixed parameters
+        - value1 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'MAXIMUM'
 
 
@@ -1038,7 +1089,7 @@ def max(value0=None, value1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, operation='MAXIMUM')
+        nodes.Math(value0=value0, value1=value1, operation='MAXIMUM', label=node_label, node_color=node_color)
         ```
 
 
@@ -1048,9 +1099,9 @@ def max(value0=None, value1=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, operation='MAXIMUM').value
+    return nodes.Math(value0=value0, value1=value1, operation='MAXIMUM', label=node_label, node_color=node_color).value
 
-def less_than(value0=None, value1=None):
+def less_than(value0=None, value1=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1058,7 +1109,7 @@ def less_than(value0=None, value1=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.less_than(value0, value1)
+    v = functions.less_than(value0, value1, node_label = None, node_color = None)
     ```
 
 
@@ -1066,7 +1117,9 @@ def less_than(value0=None, value1=None):
     ---------
         ## Sockets
         - value0 : Float
-        - value1 : Float## Fixed parameters
+        - value1 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'LESS_THAN'
 
 
@@ -1074,7 +1127,7 @@ def less_than(value0=None, value1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, operation='LESS_THAN')
+        nodes.Math(value0=value0, value1=value1, operation='LESS_THAN', label=node_label, node_color=node_color)
         ```
 
 
@@ -1084,9 +1137,9 @@ def less_than(value0=None, value1=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, operation='LESS_THAN').value
+    return nodes.Math(value0=value0, value1=value1, operation='LESS_THAN', label=node_label, node_color=node_color).value
 
-def greater_than(value0=None, value1=None):
+def greater_than(value0=None, value1=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1094,7 +1147,7 @@ def greater_than(value0=None, value1=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.greater_than(value0, value1)
+    v = functions.greater_than(value0, value1, node_label = None, node_color = None)
     ```
 
 
@@ -1102,7 +1155,9 @@ def greater_than(value0=None, value1=None):
     ---------
         ## Sockets
         - value0 : Float
-        - value1 : Float## Fixed parameters
+        - value1 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'GREATER_THAN'
 
 
@@ -1110,7 +1165,7 @@ def greater_than(value0=None, value1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, operation='GREATER_THAN')
+        nodes.Math(value0=value0, value1=value1, operation='GREATER_THAN', label=node_label, node_color=node_color)
         ```
 
 
@@ -1120,9 +1175,9 @@ def greater_than(value0=None, value1=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, operation='GREATER_THAN').value
+    return nodes.Math(value0=value0, value1=value1, operation='GREATER_THAN', label=node_label, node_color=node_color).value
 
-def sign(value0=None):
+def sign(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1130,14 +1185,16 @@ def sign(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.sign(value0)
+    v = functions.sign(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'SIGN'
 
 
@@ -1145,7 +1202,7 @@ def sign(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='SIGN')
+        nodes.Math(value0=value0, operation='SIGN', label=node_label, node_color=node_color)
         ```
 
 
@@ -1155,9 +1212,9 @@ def sign(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='SIGN').value
+    return nodes.Math(value0=value0, operation='SIGN', label=node_label, node_color=node_color).value
 
-def compare(value0=None, value1=None, value2=None):
+def compare(value0=None, value1=None, value2=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1165,7 +1222,7 @@ def compare(value0=None, value1=None, value2=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.compare(value0, value1, value2)
+    v = functions.compare(value0, value1, value2, node_label = None, node_color = None)
     ```
 
 
@@ -1174,7 +1231,9 @@ def compare(value0=None, value1=None, value2=None):
         ## Sockets
         - value0 : Float
         - value1 : Float
-        - value2 : Float## Fixed parameters
+        - value2 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'COMPARE'
 
 
@@ -1182,7 +1241,7 @@ def compare(value0=None, value1=None, value2=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, value2=value2, operation='COMPARE')
+        nodes.Math(value0=value0, value1=value1, value2=value2, operation='COMPARE', label=node_label, node_color=node_color)
         ```
 
 
@@ -1192,9 +1251,9 @@ def compare(value0=None, value1=None, value2=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, value2=value2, operation='COMPARE').value
+    return nodes.Math(value0=value0, value1=value1, value2=value2, operation='COMPARE', label=node_label, node_color=node_color).value
 
-def smooth_min(value0=None, value1=None, value2=None):
+def smooth_min(value0=None, value1=None, value2=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1202,7 +1261,7 @@ def smooth_min(value0=None, value1=None, value2=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.smooth_min(value0, value1, value2)
+    v = functions.smooth_min(value0, value1, value2, node_label = None, node_color = None)
     ```
 
 
@@ -1211,7 +1270,9 @@ def smooth_min(value0=None, value1=None, value2=None):
         ## Sockets
         - value0 : Float
         - value1 : Float
-        - value2 : Float## Fixed parameters
+        - value2 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'SMOOTH_MIN'
 
 
@@ -1219,7 +1280,7 @@ def smooth_min(value0=None, value1=None, value2=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MIN')
+        nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MIN', label=node_label, node_color=node_color)
         ```
 
 
@@ -1229,9 +1290,9 @@ def smooth_min(value0=None, value1=None, value2=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MIN').value
+    return nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MIN', label=node_label, node_color=node_color).value
 
-def smooth_max(value0=None, value1=None, value2=None):
+def smooth_max(value0=None, value1=None, value2=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1239,7 +1300,7 @@ def smooth_max(value0=None, value1=None, value2=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.smooth_max(value0, value1, value2)
+    v = functions.smooth_max(value0, value1, value2, node_label = None, node_color = None)
     ```
 
 
@@ -1248,7 +1309,9 @@ def smooth_max(value0=None, value1=None, value2=None):
         ## Sockets
         - value0 : Float
         - value1 : Float
-        - value2 : Float## Fixed parameters
+        - value2 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'SMOOTH_MAX'
 
 
@@ -1256,7 +1319,7 @@ def smooth_max(value0=None, value1=None, value2=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MAX')
+        nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MAX', label=node_label, node_color=node_color)
         ```
 
 
@@ -1266,9 +1329,9 @@ def smooth_max(value0=None, value1=None, value2=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MAX').value
+    return nodes.Math(value0=value0, value1=value1, value2=value2, operation='SMOOTH_MAX', label=node_label, node_color=node_color).value
 
-def round(value0=None):
+def round(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1276,14 +1339,16 @@ def round(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.round(value0)
+    v = functions.round(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'ROUND'
 
 
@@ -1291,7 +1356,7 @@ def round(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='ROUND')
+        nodes.Math(value0=value0, operation='ROUND', label=node_label, node_color=node_color)
         ```
 
 
@@ -1301,9 +1366,9 @@ def round(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='ROUND').value
+    return nodes.Math(value0=value0, operation='ROUND', label=node_label, node_color=node_color).value
 
-def floor(value0=None):
+def floor(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1311,14 +1376,16 @@ def floor(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.floor(value0)
+    v = functions.floor(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'FLOOR'
 
 
@@ -1326,7 +1393,7 @@ def floor(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='FLOOR')
+        nodes.Math(value0=value0, operation='FLOOR', label=node_label, node_color=node_color)
         ```
 
 
@@ -1336,9 +1403,9 @@ def floor(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='FLOOR').value
+    return nodes.Math(value0=value0, operation='FLOOR', label=node_label, node_color=node_color).value
 
-def ceil(value0=None):
+def ceil(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1346,14 +1413,16 @@ def ceil(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.ceil(value0)
+    v = functions.ceil(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'CEIL'
 
 
@@ -1361,7 +1430,7 @@ def ceil(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='CEIL')
+        nodes.Math(value0=value0, operation='CEIL', label=node_label, node_color=node_color)
         ```
 
 
@@ -1371,9 +1440,9 @@ def ceil(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='CEIL').value
+    return nodes.Math(value0=value0, operation='CEIL', label=node_label, node_color=node_color).value
 
-def trunc(value0=None):
+def trunc(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1381,14 +1450,16 @@ def trunc(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.trunc(value0)
+    v = functions.trunc(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'TRUNC'
 
 
@@ -1396,7 +1467,7 @@ def trunc(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='TRUNC')
+        nodes.Math(value0=value0, operation='TRUNC', label=node_label, node_color=node_color)
         ```
 
 
@@ -1406,9 +1477,9 @@ def trunc(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='TRUNC').value
+    return nodes.Math(value0=value0, operation='TRUNC', label=node_label, node_color=node_color).value
 
-def fract(value0=None):
+def fract(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1416,14 +1487,16 @@ def fract(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.fract(value0)
+    v = functions.fract(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'FRACT'
 
 
@@ -1431,7 +1504,7 @@ def fract(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='FRACT')
+        nodes.Math(value0=value0, operation='FRACT', label=node_label, node_color=node_color)
         ```
 
 
@@ -1441,9 +1514,9 @@ def fract(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='FRACT').value
+    return nodes.Math(value0=value0, operation='FRACT', label=node_label, node_color=node_color).value
 
-def modulo(value0=None, value1=None):
+def modulo(value0=None, value1=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1451,7 +1524,7 @@ def modulo(value0=None, value1=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.modulo(value0, value1)
+    v = functions.modulo(value0, value1, node_label = None, node_color = None)
     ```
 
 
@@ -1459,7 +1532,9 @@ def modulo(value0=None, value1=None):
     ---------
         ## Sockets
         - value0 : Float
-        - value1 : Float## Fixed parameters
+        - value1 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'MODULO'
 
 
@@ -1467,7 +1542,7 @@ def modulo(value0=None, value1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, operation='MODULO')
+        nodes.Math(value0=value0, value1=value1, operation='MODULO', label=node_label, node_color=node_color)
         ```
 
 
@@ -1477,9 +1552,9 @@ def modulo(value0=None, value1=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, operation='MODULO').value
+    return nodes.Math(value0=value0, value1=value1, operation='MODULO', label=node_label, node_color=node_color).value
 
-def wrap(value0=None, value1=None, value2=None):
+def wrap(value0=None, value1=None, value2=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1487,7 +1562,7 @@ def wrap(value0=None, value1=None, value2=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.wrap(value0, value1, value2)
+    v = functions.wrap(value0, value1, value2, node_label = None, node_color = None)
     ```
 
 
@@ -1496,7 +1571,9 @@ def wrap(value0=None, value1=None, value2=None):
         ## Sockets
         - value0 : Float
         - value1 : Float
-        - value2 : Float## Fixed parameters
+        - value2 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'WRAP'
 
 
@@ -1504,7 +1581,7 @@ def wrap(value0=None, value1=None, value2=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, value2=value2, operation='WRAP')
+        nodes.Math(value0=value0, value1=value1, value2=value2, operation='WRAP', label=node_label, node_color=node_color)
         ```
 
 
@@ -1514,9 +1591,9 @@ def wrap(value0=None, value1=None, value2=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, value2=value2, operation='WRAP').value
+    return nodes.Math(value0=value0, value1=value1, value2=value2, operation='WRAP', label=node_label, node_color=node_color).value
 
-def snap(value0=None, value1=None):
+def snap(value0=None, value1=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1524,7 +1601,7 @@ def snap(value0=None, value1=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.snap(value0, value1)
+    v = functions.snap(value0, value1, node_label = None, node_color = None)
     ```
 
 
@@ -1532,7 +1609,9 @@ def snap(value0=None, value1=None):
     ---------
         ## Sockets
         - value0 : Float
-        - value1 : Float## Fixed parameters
+        - value1 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'SNAP'
 
 
@@ -1540,7 +1619,7 @@ def snap(value0=None, value1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, operation='SNAP')
+        nodes.Math(value0=value0, value1=value1, operation='SNAP', label=node_label, node_color=node_color)
         ```
 
 
@@ -1550,9 +1629,9 @@ def snap(value0=None, value1=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, operation='SNAP').value
+    return nodes.Math(value0=value0, value1=value1, operation='SNAP', label=node_label, node_color=node_color).value
 
-def pingpong(value0=None, value1=None):
+def pingpong(value0=None, value1=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1560,7 +1639,7 @@ def pingpong(value0=None, value1=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.pingpong(value0, value1)
+    v = functions.pingpong(value0, value1, node_label = None, node_color = None)
     ```
 
 
@@ -1568,7 +1647,9 @@ def pingpong(value0=None, value1=None):
     ---------
         ## Sockets
         - value0 : Float
-        - value1 : Float## Fixed parameters
+        - value1 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'PINGPONG'
 
 
@@ -1576,7 +1657,7 @@ def pingpong(value0=None, value1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, operation='PINGPONG')
+        nodes.Math(value0=value0, value1=value1, operation='PINGPONG', label=node_label, node_color=node_color)
         ```
 
 
@@ -1586,9 +1667,9 @@ def pingpong(value0=None, value1=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, operation='PINGPONG').value
+    return nodes.Math(value0=value0, value1=value1, operation='PINGPONG', label=node_label, node_color=node_color).value
 
-def sin(value0=None):
+def sin(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1596,14 +1677,16 @@ def sin(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.sin(value0)
+    v = functions.sin(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'SINE'
 
 
@@ -1611,7 +1694,7 @@ def sin(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='SINE')
+        nodes.Math(value0=value0, operation='SINE', label=node_label, node_color=node_color)
         ```
 
 
@@ -1621,9 +1704,9 @@ def sin(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='SINE').value
+    return nodes.Math(value0=value0, operation='SINE', label=node_label, node_color=node_color).value
 
-def cos(value0=None):
+def cos(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1631,14 +1714,16 @@ def cos(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.cos(value0)
+    v = functions.cos(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'COSINE'
 
 
@@ -1646,7 +1731,7 @@ def cos(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='COSINE')
+        nodes.Math(value0=value0, operation='COSINE', label=node_label, node_color=node_color)
         ```
 
 
@@ -1656,9 +1741,9 @@ def cos(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='COSINE').value
+    return nodes.Math(value0=value0, operation='COSINE', label=node_label, node_color=node_color).value
 
-def tan(value0=None):
+def tan(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1666,14 +1751,16 @@ def tan(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.tan(value0)
+    v = functions.tan(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'TANGENT'
 
 
@@ -1681,7 +1768,7 @@ def tan(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='TANGENT')
+        nodes.Math(value0=value0, operation='TANGENT', label=node_label, node_color=node_color)
         ```
 
 
@@ -1691,9 +1778,9 @@ def tan(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='TANGENT').value
+    return nodes.Math(value0=value0, operation='TANGENT', label=node_label, node_color=node_color).value
 
-def arcsin(value0=None):
+def arcsin(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1701,14 +1788,16 @@ def arcsin(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.arcsin(value0)
+    v = functions.arcsin(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'ARCSINE'
 
 
@@ -1716,7 +1805,7 @@ def arcsin(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='ARCSINE')
+        nodes.Math(value0=value0, operation='ARCSINE', label=node_label, node_color=node_color)
         ```
 
 
@@ -1726,9 +1815,9 @@ def arcsin(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='ARCSINE').value
+    return nodes.Math(value0=value0, operation='ARCSINE', label=node_label, node_color=node_color).value
 
-def arccos(value0=None):
+def arccos(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1736,14 +1825,16 @@ def arccos(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.arccos(value0)
+    v = functions.arccos(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'ARCCOSINE'
 
 
@@ -1751,7 +1842,7 @@ def arccos(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='ARCCOSINE')
+        nodes.Math(value0=value0, operation='ARCCOSINE', label=node_label, node_color=node_color)
         ```
 
 
@@ -1761,9 +1852,9 @@ def arccos(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='ARCCOSINE').value
+    return nodes.Math(value0=value0, operation='ARCCOSINE', label=node_label, node_color=node_color).value
 
-def arctan(value0=None):
+def arctan(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1771,14 +1862,16 @@ def arctan(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.arctan(value0)
+    v = functions.arctan(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'ARCTANGENT'
 
 
@@ -1786,7 +1879,7 @@ def arctan(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='ARCTANGENT')
+        nodes.Math(value0=value0, operation='ARCTANGENT', label=node_label, node_color=node_color)
         ```
 
 
@@ -1796,9 +1889,9 @@ def arctan(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='ARCTANGENT').value
+    return nodes.Math(value0=value0, operation='ARCTANGENT', label=node_label, node_color=node_color).value
 
-def arctan2(value0=None, value1=None):
+def arctan2(value0=None, value1=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1806,7 +1899,7 @@ def arctan2(value0=None, value1=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.arctan2(value0, value1)
+    v = functions.arctan2(value0, value1, node_label = None, node_color = None)
     ```
 
 
@@ -1814,7 +1907,9 @@ def arctan2(value0=None, value1=None):
     ---------
         ## Sockets
         - value0 : Float
-        - value1 : Float## Fixed parameters
+        - value1 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'ARCTAN2'
 
 
@@ -1822,7 +1917,7 @@ def arctan2(value0=None, value1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, value1=value1, operation='ARCTAN2')
+        nodes.Math(value0=value0, value1=value1, operation='ARCTAN2', label=node_label, node_color=node_color)
         ```
 
 
@@ -1832,9 +1927,9 @@ def arctan2(value0=None, value1=None):
         
     """
 
-    return nodes.Math(value0=value0, value1=value1, operation='ARCTAN2').value
+    return nodes.Math(value0=value0, value1=value1, operation='ARCTAN2', label=node_label, node_color=node_color).value
 
-def sinh(value0=None):
+def sinh(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1842,14 +1937,16 @@ def sinh(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.sinh(value0)
+    v = functions.sinh(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'SINH'
 
 
@@ -1857,7 +1954,7 @@ def sinh(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='SINH')
+        nodes.Math(value0=value0, operation='SINH', label=node_label, node_color=node_color)
         ```
 
 
@@ -1867,9 +1964,9 @@ def sinh(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='SINH').value
+    return nodes.Math(value0=value0, operation='SINH', label=node_label, node_color=node_color).value
 
-def cosh(value0=None):
+def cosh(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1877,14 +1974,16 @@ def cosh(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.cosh(value0)
+    v = functions.cosh(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'COSH'
 
 
@@ -1892,7 +1991,7 @@ def cosh(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='COSH')
+        nodes.Math(value0=value0, operation='COSH', label=node_label, node_color=node_color)
         ```
 
 
@@ -1902,9 +2001,9 @@ def cosh(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='COSH').value
+    return nodes.Math(value0=value0, operation='COSH', label=node_label, node_color=node_color).value
 
-def tanh(value0=None):
+def tanh(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1912,14 +2011,16 @@ def tanh(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.tanh(value0)
+    v = functions.tanh(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'TANH'
 
 
@@ -1927,7 +2028,7 @@ def tanh(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='TANH')
+        nodes.Math(value0=value0, operation='TANH', label=node_label, node_color=node_color)
         ```
 
 
@@ -1937,9 +2038,9 @@ def tanh(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='TANH').value
+    return nodes.Math(value0=value0, operation='TANH', label=node_label, node_color=node_color).value
 
-def radians(value0=None):
+def radians(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1947,14 +2048,16 @@ def radians(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.radians(value0)
+    v = functions.radians(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'RADIANS'
 
 
@@ -1962,7 +2065,7 @@ def radians(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='RADIANS')
+        nodes.Math(value0=value0, operation='RADIANS', label=node_label, node_color=node_color)
         ```
 
 
@@ -1972,9 +2075,9 @@ def radians(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='RADIANS').value
+    return nodes.Math(value0=value0, operation='RADIANS', label=node_label, node_color=node_color).value
 
-def degrees(value0=None):
+def degrees(value0=None, node_label = None, node_color = None):
     """ > Node: Math
       
     <sub>go to: top index
@@ -1982,14 +2085,16 @@ def degrees(value0=None):
     node ref Math </sub>
                               
     ```python
-    v = functions.degrees(value0)
+    v = functions.degrees(value0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - value0 : Float## Fixed parameters
+        - value0 : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'DEGREES'
 
 
@@ -1997,7 +2102,7 @@ def degrees(value0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.Math(value0=value0, operation='DEGREES')
+        nodes.Math(value0=value0, operation='DEGREES', label=node_label, node_color=node_color)
         ```
 
 
@@ -2007,9 +2112,9 @@ def degrees(value0=None):
         
     """
 
-    return nodes.Math(value0=value0, operation='DEGREES').value
+    return nodes.Math(value0=value0, operation='DEGREES', label=node_label, node_color=node_color).value
 
-def vector_add(vector0=None, vector1=None):
+def vector_add(vector0=None, vector1=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2017,7 +2122,7 @@ def vector_add(vector0=None, vector1=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.vector_add(vector0, vector1)
+    v = functions.vector_add(vector0, vector1, node_label = None, node_color = None)
     ```
 
 
@@ -2025,7 +2130,9 @@ def vector_add(vector0=None, vector1=None):
     ---------
         ## Sockets
         - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
+        - vector1 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'ADD'
 
 
@@ -2033,7 +2140,7 @@ def vector_add(vector0=None, vector1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='ADD')
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='ADD', label=node_label, node_color=node_color)
         ```
 
 
@@ -2043,9 +2150,9 @@ def vector_add(vector0=None, vector1=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='ADD').vector
+    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='ADD', label=node_label, node_color=node_color).vector
 
-def vector_subtract(vector0=None, vector1=None):
+def vector_subtract(vector0=None, vector1=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2053,7 +2160,7 @@ def vector_subtract(vector0=None, vector1=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.vector_subtract(vector0, vector1)
+    v = functions.vector_subtract(vector0, vector1, node_label = None, node_color = None)
     ```
 
 
@@ -2061,7 +2168,9 @@ def vector_subtract(vector0=None, vector1=None):
     ---------
         ## Sockets
         - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
+        - vector1 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'SUBTRACT'
 
 
@@ -2069,7 +2178,7 @@ def vector_subtract(vector0=None, vector1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SUBTRACT')
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SUBTRACT', label=node_label, node_color=node_color)
         ```
 
 
@@ -2079,9 +2188,9 @@ def vector_subtract(vector0=None, vector1=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SUBTRACT').vector
+    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SUBTRACT', label=node_label, node_color=node_color).vector
 
-def vector_multiply(vector0=None, vector1=None):
+def vector_multiply(vector0=None, vector1=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2089,7 +2198,7 @@ def vector_multiply(vector0=None, vector1=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.vector_multiply(vector0, vector1)
+    v = functions.vector_multiply(vector0, vector1, node_label = None, node_color = None)
     ```
 
 
@@ -2097,7 +2206,9 @@ def vector_multiply(vector0=None, vector1=None):
     ---------
         ## Sockets
         - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
+        - vector1 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'MULTIPLY'
 
 
@@ -2105,7 +2216,7 @@ def vector_multiply(vector0=None, vector1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MULTIPLY')
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MULTIPLY', label=node_label, node_color=node_color)
         ```
 
 
@@ -2115,9 +2226,9 @@ def vector_multiply(vector0=None, vector1=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MULTIPLY').vector
+    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MULTIPLY', label=node_label, node_color=node_color).vector
 
-def vector_divide(vector0=None, vector1=None):
+def vector_divide(vector0=None, vector1=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2125,7 +2236,7 @@ def vector_divide(vector0=None, vector1=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.vector_divide(vector0, vector1)
+    v = functions.vector_divide(vector0, vector1, node_label = None, node_color = None)
     ```
 
 
@@ -2133,7 +2244,9 @@ def vector_divide(vector0=None, vector1=None):
     ---------
         ## Sockets
         - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
+        - vector1 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'DIVIDE'
 
 
@@ -2141,7 +2254,7 @@ def vector_divide(vector0=None, vector1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DIVIDE')
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DIVIDE', label=node_label, node_color=node_color)
         ```
 
 
@@ -2151,9 +2264,9 @@ def vector_divide(vector0=None, vector1=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DIVIDE').vector
+    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DIVIDE', label=node_label, node_color=node_color).vector
 
-def vector_multiply_add(vector0=None, vector1=None, vector2=None):
+def vector_multiply_add(vector0=None, vector1=None, vector2=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2161,7 +2274,7 @@ def vector_multiply_add(vector0=None, vector1=None, vector2=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.vector_multiply_add(vector0, vector1, vector2)
+    v = functions.vector_multiply_add(vector0, vector1, vector2, node_label = None, node_color = None)
     ```
 
 
@@ -2170,7 +2283,9 @@ def vector_multiply_add(vector0=None, vector1=None, vector2=None):
         ## Sockets
         - vector0 : Vector
         - vector1 : Vector
-        - vector2 : Vector## Fixed parameters
+        - vector2 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'MULTIPLY_ADD'
 
 
@@ -2178,7 +2293,7 @@ def vector_multiply_add(vector0=None, vector1=None, vector2=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD')
+        nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD', label=node_label, node_color=node_color)
         ```
 
 
@@ -2188,9 +2303,9 @@ def vector_multiply_add(vector0=None, vector1=None, vector2=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD').vector
+    return nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='MULTIPLY_ADD', label=node_label, node_color=node_color).vector
 
-def cross(vector0=None, vector1=None):
+def cross(vector0=None, vector1=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2198,7 +2313,7 @@ def cross(vector0=None, vector1=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.cross(vector0, vector1)
+    v = functions.cross(vector0, vector1, node_label = None, node_color = None)
     ```
 
 
@@ -2206,7 +2321,9 @@ def cross(vector0=None, vector1=None):
     ---------
         ## Sockets
         - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
+        - vector1 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'CROSS_PRODUCT'
 
 
@@ -2214,7 +2331,7 @@ def cross(vector0=None, vector1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='CROSS_PRODUCT')
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='CROSS_PRODUCT', label=node_label, node_color=node_color)
         ```
 
 
@@ -2224,9 +2341,9 @@ def cross(vector0=None, vector1=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='CROSS_PRODUCT').vector
+    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='CROSS_PRODUCT', label=node_label, node_color=node_color).vector
 
-def project(vector0=None, vector1=None):
+def project(vector0=None, vector1=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2234,7 +2351,7 @@ def project(vector0=None, vector1=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.project(vector0, vector1)
+    v = functions.project(vector0, vector1, node_label = None, node_color = None)
     ```
 
 
@@ -2242,7 +2359,9 @@ def project(vector0=None, vector1=None):
     ---------
         ## Sockets
         - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
+        - vector1 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'PROJECT'
 
 
@@ -2250,7 +2369,7 @@ def project(vector0=None, vector1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='PROJECT')
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='PROJECT', label=node_label, node_color=node_color)
         ```
 
 
@@ -2260,9 +2379,9 @@ def project(vector0=None, vector1=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='PROJECT').vector
+    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='PROJECT', label=node_label, node_color=node_color).vector
 
-def reflect(vector0=None, vector1=None):
+def reflect(vector0=None, vector1=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2270,7 +2389,7 @@ def reflect(vector0=None, vector1=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.reflect(vector0, vector1)
+    v = functions.reflect(vector0, vector1, node_label = None, node_color = None)
     ```
 
 
@@ -2278,7 +2397,9 @@ def reflect(vector0=None, vector1=None):
     ---------
         ## Sockets
         - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
+        - vector1 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'REFLECT'
 
 
@@ -2286,7 +2407,7 @@ def reflect(vector0=None, vector1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='REFLECT')
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='REFLECT', label=node_label, node_color=node_color)
         ```
 
 
@@ -2296,9 +2417,9 @@ def reflect(vector0=None, vector1=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='REFLECT').vector
+    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='REFLECT', label=node_label, node_color=node_color).vector
 
-def refract(vector0=None, vector1=None, scale=None):
+def refract(vector0=None, vector1=None, scale=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2306,7 +2427,7 @@ def refract(vector0=None, vector1=None, scale=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.refract(vector0, vector1, scale)
+    v = functions.refract(vector0, vector1, scale, node_label = None, node_color = None)
     ```
 
 
@@ -2315,7 +2436,9 @@ def refract(vector0=None, vector1=None, scale=None):
         ## Sockets
         - vector0 : Vector
         - vector1 : Vector
-        - scale : Float## Fixed parameters
+        - scale : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'REFRACT'
 
 
@@ -2323,7 +2446,7 @@ def refract(vector0=None, vector1=None, scale=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, vector1=vector1, scale=scale, operation='REFRACT')
+        nodes.VectorMath(vector0=vector0, vector1=vector1, scale=scale, operation='REFRACT', label=node_label, node_color=node_color)
         ```
 
 
@@ -2333,9 +2456,9 @@ def refract(vector0=None, vector1=None, scale=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, vector1=vector1, scale=scale, operation='REFRACT').vector
+    return nodes.VectorMath(vector0=vector0, vector1=vector1, scale=scale, operation='REFRACT', label=node_label, node_color=node_color).vector
 
-def faceforward(vector0=None, vector1=None, vector2=None):
+def faceforward(vector0=None, vector1=None, vector2=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2343,7 +2466,7 @@ def faceforward(vector0=None, vector1=None, vector2=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.faceforward(vector0, vector1, vector2)
+    v = functions.faceforward(vector0, vector1, vector2, node_label = None, node_color = None)
     ```
 
 
@@ -2352,7 +2475,9 @@ def faceforward(vector0=None, vector1=None, vector2=None):
         ## Sockets
         - vector0 : Vector
         - vector1 : Vector
-        - vector2 : Vector## Fixed parameters
+        - vector2 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'FACEFORWARD'
 
 
@@ -2360,7 +2485,7 @@ def faceforward(vector0=None, vector1=None, vector2=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='FACEFORWARD')
+        nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='FACEFORWARD', label=node_label, node_color=node_color)
         ```
 
 
@@ -2370,9 +2495,9 @@ def faceforward(vector0=None, vector1=None, vector2=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='FACEFORWARD').vector
+    return nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='FACEFORWARD', label=node_label, node_color=node_color).vector
 
-def dot(vector0=None, vector1=None):
+def dot(vector0=None, vector1=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2380,7 +2505,7 @@ def dot(vector0=None, vector1=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.dot(vector0, vector1)
+    v = functions.dot(vector0, vector1, node_label = None, node_color = None)
     ```
 
 
@@ -2388,7 +2513,9 @@ def dot(vector0=None, vector1=None):
     ---------
         ## Sockets
         - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
+        - vector1 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'DOT_PRODUCT'
 
 
@@ -2396,7 +2523,7 @@ def dot(vector0=None, vector1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DOT_PRODUCT')
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DOT_PRODUCT', label=node_label, node_color=node_color)
         ```
 
 
@@ -2406,9 +2533,9 @@ def dot(vector0=None, vector1=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DOT_PRODUCT').value
+    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DOT_PRODUCT', label=node_label, node_color=node_color).value
 
-def distance(vector0=None, vector1=None):
+def distance(vector0=None, vector1=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2416,7 +2543,7 @@ def distance(vector0=None, vector1=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.distance(vector0, vector1)
+    v = functions.distance(vector0, vector1, node_label = None, node_color = None)
     ```
 
 
@@ -2424,7 +2551,9 @@ def distance(vector0=None, vector1=None):
     ---------
         ## Sockets
         - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
+        - vector1 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'DISTANCE'
 
 
@@ -2432,7 +2561,7 @@ def distance(vector0=None, vector1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DISTANCE')
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DISTANCE', label=node_label, node_color=node_color)
         ```
 
 
@@ -2442,9 +2571,9 @@ def distance(vector0=None, vector1=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DISTANCE').value
+    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='DISTANCE', label=node_label, node_color=node_color).value
 
-def length(vector0=None):
+def length(vector0=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2452,14 +2581,16 @@ def length(vector0=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.length(vector0)
+    v = functions.length(vector0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - vector0 : Vector## Fixed parameters
+        - vector0 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'LENGTH'
 
 
@@ -2467,7 +2598,7 @@ def length(vector0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, operation='LENGTH')
+        nodes.VectorMath(vector0=vector0, operation='LENGTH', label=node_label, node_color=node_color)
         ```
 
 
@@ -2477,9 +2608,9 @@ def length(vector0=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, operation='LENGTH').value
+    return nodes.VectorMath(vector0=vector0, operation='LENGTH', label=node_label, node_color=node_color).value
 
-def scale(vector0=None, scale=None):
+def scale(vector0=None, scale=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2487,7 +2618,7 @@ def scale(vector0=None, scale=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.scale(vector0, scale)
+    v = functions.scale(vector0, scale, node_label = None, node_color = None)
     ```
 
 
@@ -2495,7 +2626,9 @@ def scale(vector0=None, scale=None):
     ---------
         ## Sockets
         - vector0 : Vector
-        - scale : Float## Fixed parameters
+        - scale : Float## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'SCALE'
 
 
@@ -2503,7 +2636,7 @@ def scale(vector0=None, scale=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, scale=scale, operation='SCALE')
+        nodes.VectorMath(vector0=vector0, scale=scale, operation='SCALE', label=node_label, node_color=node_color)
         ```
 
 
@@ -2513,9 +2646,9 @@ def scale(vector0=None, scale=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, scale=scale, operation='SCALE').vector
+    return nodes.VectorMath(vector0=vector0, scale=scale, operation='SCALE', label=node_label, node_color=node_color).vector
 
-def normalize(vector0=None):
+def normalize(vector0=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2523,14 +2656,16 @@ def normalize(vector0=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.normalize(vector0)
+    v = functions.normalize(vector0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - vector0 : Vector## Fixed parameters
+        - vector0 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'NORMALIZE'
 
 
@@ -2538,7 +2673,7 @@ def normalize(vector0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, operation='NORMALIZE')
+        nodes.VectorMath(vector0=vector0, operation='NORMALIZE', label=node_label, node_color=node_color)
         ```
 
 
@@ -2548,9 +2683,9 @@ def normalize(vector0=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, operation='NORMALIZE').vector
+    return nodes.VectorMath(vector0=vector0, operation='NORMALIZE', label=node_label, node_color=node_color).vector
 
-def vector_absolute(vector0=None):
+def vector_absolute(vector0=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2558,14 +2693,16 @@ def vector_absolute(vector0=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.vector_absolute(vector0)
+    v = functions.vector_absolute(vector0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - vector0 : Vector## Fixed parameters
+        - vector0 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'ABSOLUTE'
 
 
@@ -2573,7 +2710,7 @@ def vector_absolute(vector0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, operation='ABSOLUTE')
+        nodes.VectorMath(vector0=vector0, operation='ABSOLUTE', label=node_label, node_color=node_color)
         ```
 
 
@@ -2583,9 +2720,9 @@ def vector_absolute(vector0=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, operation='ABSOLUTE').vector
+    return nodes.VectorMath(vector0=vector0, operation='ABSOLUTE', label=node_label, node_color=node_color).vector
 
-def vector_min(vector0=None, vector1=None):
+def vector_min(vector0=None, vector1=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2593,7 +2730,7 @@ def vector_min(vector0=None, vector1=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.vector_min(vector0, vector1)
+    v = functions.vector_min(vector0, vector1, node_label = None, node_color = None)
     ```
 
 
@@ -2601,7 +2738,9 @@ def vector_min(vector0=None, vector1=None):
     ---------
         ## Sockets
         - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
+        - vector1 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'MINIMUM'
 
 
@@ -2609,7 +2748,7 @@ def vector_min(vector0=None, vector1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MINIMUM')
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MINIMUM', label=node_label, node_color=node_color)
         ```
 
 
@@ -2619,9 +2758,9 @@ def vector_min(vector0=None, vector1=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MINIMUM').vector
+    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MINIMUM', label=node_label, node_color=node_color).vector
 
-def vector_max(vector0=None, vector1=None):
+def vector_max(vector0=None, vector1=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2629,7 +2768,7 @@ def vector_max(vector0=None, vector1=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.vector_max(vector0, vector1)
+    v = functions.vector_max(vector0, vector1, node_label = None, node_color = None)
     ```
 
 
@@ -2637,7 +2776,9 @@ def vector_max(vector0=None, vector1=None):
     ---------
         ## Sockets
         - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
+        - vector1 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'MAXIMUM'
 
 
@@ -2645,7 +2786,7 @@ def vector_max(vector0=None, vector1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MAXIMUM')
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MAXIMUM', label=node_label, node_color=node_color)
         ```
 
 
@@ -2655,9 +2796,9 @@ def vector_max(vector0=None, vector1=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MAXIMUM').vector
+    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MAXIMUM', label=node_label, node_color=node_color).vector
 
-def vector_floor(vector0=None):
+def vector_floor(vector0=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2665,14 +2806,16 @@ def vector_floor(vector0=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.vector_floor(vector0)
+    v = functions.vector_floor(vector0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - vector0 : Vector## Fixed parameters
+        - vector0 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'FLOOR'
 
 
@@ -2680,7 +2823,7 @@ def vector_floor(vector0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, operation='FLOOR')
+        nodes.VectorMath(vector0=vector0, operation='FLOOR', label=node_label, node_color=node_color)
         ```
 
 
@@ -2690,9 +2833,9 @@ def vector_floor(vector0=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, operation='FLOOR').vector
+    return nodes.VectorMath(vector0=vector0, operation='FLOOR', label=node_label, node_color=node_color).vector
 
-def vector_ceil(vector0=None):
+def vector_ceil(vector0=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2700,14 +2843,16 @@ def vector_ceil(vector0=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.vector_ceil(vector0)
+    v = functions.vector_ceil(vector0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - vector0 : Vector## Fixed parameters
+        - vector0 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'CEIL'
 
 
@@ -2715,7 +2860,7 @@ def vector_ceil(vector0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, operation='CEIL')
+        nodes.VectorMath(vector0=vector0, operation='CEIL', label=node_label, node_color=node_color)
         ```
 
 
@@ -2725,9 +2870,9 @@ def vector_ceil(vector0=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, operation='CEIL').vector
+    return nodes.VectorMath(vector0=vector0, operation='CEIL', label=node_label, node_color=node_color).vector
 
-def fraction(vector0=None):
+def fraction(vector0=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2735,14 +2880,16 @@ def fraction(vector0=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.fraction(vector0)
+    v = functions.fraction(vector0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - vector0 : Vector## Fixed parameters
+        - vector0 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'FRACTION'
 
 
@@ -2750,7 +2897,7 @@ def fraction(vector0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, operation='FRACTION')
+        nodes.VectorMath(vector0=vector0, operation='FRACTION', label=node_label, node_color=node_color)
         ```
 
 
@@ -2760,9 +2907,9 @@ def fraction(vector0=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, operation='FRACTION').vector
+    return nodes.VectorMath(vector0=vector0, operation='FRACTION', label=node_label, node_color=node_color).vector
 
-def vector_modulo(vector0=None, vector1=None):
+def vector_modulo(vector0=None, vector1=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2770,7 +2917,7 @@ def vector_modulo(vector0=None, vector1=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.vector_modulo(vector0, vector1)
+    v = functions.vector_modulo(vector0, vector1, node_label = None, node_color = None)
     ```
 
 
@@ -2778,7 +2925,9 @@ def vector_modulo(vector0=None, vector1=None):
     ---------
         ## Sockets
         - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
+        - vector1 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'MODULO'
 
 
@@ -2786,7 +2935,7 @@ def vector_modulo(vector0=None, vector1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MODULO')
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MODULO', label=node_label, node_color=node_color)
         ```
 
 
@@ -2796,9 +2945,9 @@ def vector_modulo(vector0=None, vector1=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MODULO').vector
+    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='MODULO', label=node_label, node_color=node_color).vector
 
-def vector_wrap(vector0=None, vector1=None, vector2=None):
+def vector_wrap(vector0=None, vector1=None, vector2=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2806,7 +2955,7 @@ def vector_wrap(vector0=None, vector1=None, vector2=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.vector_wrap(vector0, vector1, vector2)
+    v = functions.vector_wrap(vector0, vector1, vector2, node_label = None, node_color = None)
     ```
 
 
@@ -2815,7 +2964,9 @@ def vector_wrap(vector0=None, vector1=None, vector2=None):
         ## Sockets
         - vector0 : Vector
         - vector1 : Vector
-        - vector2 : Vector## Fixed parameters
+        - vector2 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'WRAP'
 
 
@@ -2823,7 +2974,7 @@ def vector_wrap(vector0=None, vector1=None, vector2=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='WRAP')
+        nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='WRAP', label=node_label, node_color=node_color)
         ```
 
 
@@ -2833,9 +2984,9 @@ def vector_wrap(vector0=None, vector1=None, vector2=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='WRAP').vector
+    return nodes.VectorMath(vector0=vector0, vector1=vector1, vector2=vector2, operation='WRAP', label=node_label, node_color=node_color).vector
 
-def vector_snap(vector0=None, vector1=None):
+def vector_snap(vector0=None, vector1=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2843,7 +2994,7 @@ def vector_snap(vector0=None, vector1=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.vector_snap(vector0, vector1)
+    v = functions.vector_snap(vector0, vector1, node_label = None, node_color = None)
     ```
 
 
@@ -2851,7 +3002,9 @@ def vector_snap(vector0=None, vector1=None):
     ---------
         ## Sockets
         - vector0 : Vector
-        - vector1 : Vector## Fixed parameters
+        - vector1 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'SNAP'
 
 
@@ -2859,7 +3012,7 @@ def vector_snap(vector0=None, vector1=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SNAP')
+        nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SNAP', label=node_label, node_color=node_color)
         ```
 
 
@@ -2869,9 +3022,9 @@ def vector_snap(vector0=None, vector1=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SNAP').vector
+    return nodes.VectorMath(vector0=vector0, vector1=vector1, operation='SNAP', label=node_label, node_color=node_color).vector
 
-def vector_sin(vector0=None):
+def vector_sin(vector0=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2879,14 +3032,16 @@ def vector_sin(vector0=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.vector_sin(vector0)
+    v = functions.vector_sin(vector0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - vector0 : Vector## Fixed parameters
+        - vector0 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'SINE'
 
 
@@ -2894,7 +3049,7 @@ def vector_sin(vector0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, operation='SINE')
+        nodes.VectorMath(vector0=vector0, operation='SINE', label=node_label, node_color=node_color)
         ```
 
 
@@ -2904,9 +3059,9 @@ def vector_sin(vector0=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, operation='SINE').vector
+    return nodes.VectorMath(vector0=vector0, operation='SINE', label=node_label, node_color=node_color).vector
 
-def vector_cos(vector0=None):
+def vector_cos(vector0=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2914,14 +3069,16 @@ def vector_cos(vector0=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.vector_cos(vector0)
+    v = functions.vector_cos(vector0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - vector0 : Vector## Fixed parameters
+        - vector0 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'COSINE'
 
 
@@ -2929,7 +3086,7 @@ def vector_cos(vector0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, operation='COSINE')
+        nodes.VectorMath(vector0=vector0, operation='COSINE', label=node_label, node_color=node_color)
         ```
 
 
@@ -2939,9 +3096,9 @@ def vector_cos(vector0=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, operation='COSINE').vector
+    return nodes.VectorMath(vector0=vector0, operation='COSINE', label=node_label, node_color=node_color).vector
 
-def vector_tan(vector0=None):
+def vector_tan(vector0=None, node_label = None, node_color = None):
     """ > Node: VectorMath
       
     <sub>go to: top index
@@ -2949,14 +3106,16 @@ def vector_tan(vector0=None):
     node ref Vector Math </sub>
                               
     ```python
-    v = functions.vector_tan(vector0)
+    v = functions.vector_tan(vector0, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - vector0 : Vector## Fixed parameters
+        - vector0 : Vector## Parameters
+        - node_label : None
+        - node_color : None## Fixed parameters
         - operation : 'TANGENT'
 
 
@@ -2964,7 +3123,7 @@ def vector_tan(vector0=None):
     -------------
         ```python
         from geondes import nodes
-        nodes.VectorMath(vector0=vector0, operation='TANGENT')
+        nodes.VectorMath(vector0=vector0, operation='TANGENT', label=node_label, node_color=node_color)
         ```
 
 
@@ -2974,9 +3133,9 @@ def vector_tan(vector0=None):
         
     """
 
-    return nodes.VectorMath(vector0=vector0, operation='TANGENT').vector
+    return nodes.VectorMath(vector0=vector0, operation='TANGENT', label=node_label, node_color=node_color).vector
 
-def color_mix(color1=None, color2=None, fac=None, use_alpha=False):
+def color_mix(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -2984,7 +3143,7 @@ def color_mix(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_mix(color1, color2, fac, use_alpha)
+    v = functions.color_mix(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -2994,7 +3153,9 @@ def color_mix(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'MIX'
 
 
@@ -3002,7 +3163,7 @@ def color_mix(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3012,9 +3173,9 @@ def color_mix(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_darken(color1=None, color2=None, fac=None, use_alpha=False):
+def color_darken(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -3022,7 +3183,7 @@ def color_darken(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_darken(color1, color2, fac, use_alpha)
+    v = functions.color_darken(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -3032,7 +3193,9 @@ def color_darken(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'DARKEN'
 
 
@@ -3040,7 +3203,7 @@ def color_darken(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3050,9 +3213,9 @@ def color_darken(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_multiply(color1=None, color2=None, fac=None, use_alpha=False):
+def color_multiply(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -3060,7 +3223,7 @@ def color_multiply(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_multiply(color1, color2, fac, use_alpha)
+    v = functions.color_multiply(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -3070,7 +3233,9 @@ def color_multiply(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'MULTIPLY'
 
 
@@ -3078,7 +3243,7 @@ def color_multiply(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3088,9 +3253,9 @@ def color_multiply(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_burn(color1=None, color2=None, fac=None, use_alpha=False):
+def color_burn(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -3098,7 +3263,7 @@ def color_burn(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_burn(color1, color2, fac, use_alpha)
+    v = functions.color_burn(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -3108,7 +3273,9 @@ def color_burn(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'BURN'
 
 
@@ -3116,7 +3283,7 @@ def color_burn(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3126,9 +3293,9 @@ def color_burn(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_lighten(color1=None, color2=None, fac=None, use_alpha=False):
+def color_lighten(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -3136,7 +3303,7 @@ def color_lighten(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_lighten(color1, color2, fac, use_alpha)
+    v = functions.color_lighten(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -3146,7 +3313,9 @@ def color_lighten(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'LIGHTEN'
 
 
@@ -3154,7 +3323,7 @@ def color_lighten(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3164,9 +3333,9 @@ def color_lighten(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_screen(color1=None, color2=None, fac=None, use_alpha=False):
+def color_screen(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -3174,7 +3343,7 @@ def color_screen(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_screen(color1, color2, fac, use_alpha)
+    v = functions.color_screen(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -3184,7 +3353,9 @@ def color_screen(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'SCREEN'
 
 
@@ -3192,7 +3363,7 @@ def color_screen(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3202,9 +3373,9 @@ def color_screen(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_dodge(color1=None, color2=None, fac=None, use_alpha=False):
+def color_dodge(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -3212,7 +3383,7 @@ def color_dodge(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_dodge(color1, color2, fac, use_alpha)
+    v = functions.color_dodge(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -3222,7 +3393,9 @@ def color_dodge(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'DODGE'
 
 
@@ -3230,7 +3403,7 @@ def color_dodge(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3240,9 +3413,9 @@ def color_dodge(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_add(color1=None, color2=None, fac=None, use_alpha=False):
+def color_add(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -3250,7 +3423,7 @@ def color_add(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_add(color1, color2, fac, use_alpha)
+    v = functions.color_add(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -3260,7 +3433,9 @@ def color_add(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'ADD'
 
 
@@ -3268,7 +3443,7 @@ def color_add(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3278,9 +3453,9 @@ def color_add(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_overlay(color1=None, color2=None, fac=None, use_alpha=False):
+def color_overlay(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -3288,7 +3463,7 @@ def color_overlay(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_overlay(color1, color2, fac, use_alpha)
+    v = functions.color_overlay(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -3298,7 +3473,9 @@ def color_overlay(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'OVERLAY'
 
 
@@ -3306,7 +3483,7 @@ def color_overlay(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3316,9 +3493,9 @@ def color_overlay(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_soft_light(color1=None, color2=None, fac=None, use_alpha=False):
+def color_soft_light(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -3326,7 +3503,7 @@ def color_soft_light(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_soft_light(color1, color2, fac, use_alpha)
+    v = functions.color_soft_light(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -3336,7 +3513,9 @@ def color_soft_light(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'SOFT_LIGHT'
 
 
@@ -3344,7 +3523,7 @@ def color_soft_light(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3354,9 +3533,9 @@ def color_soft_light(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_linear_light(color1=None, color2=None, fac=None, use_alpha=False):
+def color_linear_light(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -3364,7 +3543,7 @@ def color_linear_light(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_linear_light(color1, color2, fac, use_alpha)
+    v = functions.color_linear_light(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -3374,7 +3553,9 @@ def color_linear_light(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'LINEAR_LIGHT'
 
 
@@ -3382,7 +3563,7 @@ def color_linear_light(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3392,9 +3573,9 @@ def color_linear_light(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_difference(color1=None, color2=None, fac=None, use_alpha=False):
+def color_difference(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -3402,7 +3583,7 @@ def color_difference(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_difference(color1, color2, fac, use_alpha)
+    v = functions.color_difference(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -3412,7 +3593,9 @@ def color_difference(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'DIFFERENCE'
 
 
@@ -3420,7 +3603,7 @@ def color_difference(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3430,9 +3613,9 @@ def color_difference(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_subtract(color1=None, color2=None, fac=None, use_alpha=False):
+def color_subtract(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -3440,7 +3623,7 @@ def color_subtract(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_subtract(color1, color2, fac, use_alpha)
+    v = functions.color_subtract(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -3450,7 +3633,9 @@ def color_subtract(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'SUBTRACT'
 
 
@@ -3458,7 +3643,7 @@ def color_subtract(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3468,9 +3653,9 @@ def color_subtract(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_divide(color1=None, color2=None, fac=None, use_alpha=False):
+def color_divide(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -3478,7 +3663,7 @@ def color_divide(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_divide(color1, color2, fac, use_alpha)
+    v = functions.color_divide(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -3488,7 +3673,9 @@ def color_divide(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'DIVIDE'
 
 
@@ -3496,7 +3683,7 @@ def color_divide(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3506,9 +3693,9 @@ def color_divide(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_hue(color1=None, color2=None, fac=None, use_alpha=False):
+def color_hue(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -3516,7 +3703,7 @@ def color_hue(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_hue(color1, color2, fac, use_alpha)
+    v = functions.color_hue(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -3526,7 +3713,9 @@ def color_hue(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'HUE'
 
 
@@ -3534,7 +3723,7 @@ def color_hue(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3544,9 +3733,9 @@ def color_hue(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_saturation(color1=None, color2=None, fac=None, use_alpha=False):
+def color_saturation(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -3554,7 +3743,7 @@ def color_saturation(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_saturation(color1, color2, fac, use_alpha)
+    v = functions.color_saturation(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -3564,7 +3753,9 @@ def color_saturation(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'SATURATION'
 
 
@@ -3572,7 +3763,7 @@ def color_saturation(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3582,9 +3773,9 @@ def color_saturation(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_mix_color(color1=None, color2=None, fac=None, use_alpha=False):
+def color_mix_color(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -3592,7 +3783,7 @@ def color_mix_color(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_mix_color(color1, color2, fac, use_alpha)
+    v = functions.color_mix_color(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -3602,7 +3793,9 @@ def color_mix_color(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'COLOR'
 
 
@@ -3610,7 +3803,7 @@ def color_mix_color(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3620,9 +3813,9 @@ def color_mix_color(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_value(color1=None, color2=None, fac=None, use_alpha=False):
+def color_value(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ > Node: Mix
       
     <sub>go to: top index
@@ -3630,7 +3823,7 @@ def color_value(color1=None, color2=None, fac=None, use_alpha=False):
     node ref Mix </sub>
                               
     ```python
-    v = functions.color_value(color1, color2, fac, use_alpha)
+    v = functions.color_value(color1, color2, fac, use_alpha, node_label = None, node_color = None)
     ```
 
 
@@ -3640,7 +3833,9 @@ def color_value(color1=None, color2=None, fac=None, use_alpha=False):
         - color1 : Color
         - color2 : Color
         - fac : Float## Parameters
-        - use_alpha : False## Fixed parameters
+        - use_alpha : False
+        - node_label : None
+        - node_color : None## Fixed parameters
         - blend_type : 'VALUE'
 
 
@@ -3648,7 +3843,7 @@ def color_value(color1=None, color2=None, fac=None, use_alpha=False):
     -------------
         ```python
         from geondes import nodes
-        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha)
+        nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha, label=node_label, node_color=node_color)
         ```
 
 
@@ -3658,6 +3853,6 @@ def color_value(color1=None, color2=None, fac=None, use_alpha=False):
         
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha).color
+    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
 
