@@ -35,7 +35,7 @@ with gn.Tree("Geometry Nodes") as tree:
 
 In the resulting tree, Position and Index nodes are fields of the input geometry because their links "join" at the green node 'Set Position':
 
-<img src="/docs/images/fields_1_tree.png" width="400">
+<img src="/docs/images/fields_tree_1.png" width="400">
 
 Let's add another 'Set Position' node after the second one, fed by the same offset input. This second node is colored in blue.
 
@@ -57,7 +57,7 @@ with gn.Tree("Geometry Nodes") as tree:
 
 *** THE RESULTING TREE IS NOT THE FOLLOWING ***
 
-<img src="/docs/images/fields_2_tree.png" width="400">
+<img src="/docs/images/fields_tree_2.png" width="400">
 
 Because in the tree above, the fields **Index** and **Position** are evaluated twice, one for 
 
