@@ -62,9 +62,49 @@ Nodes methods are **CamelCase** versions of their Blender name, but **removing t
 
 Instances methods are named with the **snake_version** of the node name, but **removing the class name** when it exists:
 
-- 'Replace Material' -> **replace_material**
-- 'Set Position' -> **set_position**
-- 
+- 'Replace Material' -> **geometry.replace_material**
+- 'Set Position' -> **geometry.set_position**
+- 'Curve to Mesh' -> **curve.to_mesh**
+- ...
+
+### Operation methods
+
+> Operations are implemented both as global functions ans as method of their _Data Socket_ class
+
+```python
+    a = gn.Float(5.)
+    b = gn.Float(6.)
+    
+    c = gn.add(a, b)
+    # or
+    c = a.add(b)
+    
+    d = gn.sin(a)
+    # or
+    d = a.sin()
+```
+
+The following nodes are implemented as many times as their are possible value for their parameter:
+  - 'Math'
+  - 'Vector Math'
+  - 'Boolean Math'
+  - 'Mix RGB'
+
+The mehod name is the **lower case** version of the operation value:
+- 'Math':
+  'ADD' -> **add** (gn.add or value.add)
+  'MULTIPLY' -> **multiply**
+  'SUBTRACT' -> **subtract**
+
+Some values are the same for several nodes, in that case, the **global** functions are prefixed with the lower case version of the class name:
+
+- 'Vector Math':
+  'ADD' -> **gn.ector_add** and **Vector.add**
+  'MULTIPLY' -> **gn.vector_multiply** and **Vector.multiply**
+  'SUBTRACT' -> **gn_vector_subtract** and **Vector.subtract**
+  'DOT' -> **gn.dot** and **Vector.dot** (their is not ambiguity with 'Math' node)
+  
+
 
 
 
