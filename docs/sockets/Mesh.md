@@ -24,6 +24,7 @@
 - [capture_edge_neighbors](#capture_edge_neighbors) : face_count (Integer)
 - [capture_edge_vertices](#capture_edge_vertices) : Sockets      [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
 - [capture_face_area](#capture_face_area) : area (Float)
+- [capture_face_is_planar](#capture_face_is_planar) : planar (Boolean)
 - [capture_face_neighbors](#capture_face_neighbors) : Sockets      [vertex_count (Integer), face_count (Integer)]
 - [capture_island](#capture_island) : Sockets      [island_index (Integer), island_count (Integer)]
 - [capture_material_index](#capture_material_index) : material_index (Integer)
@@ -667,6 +668,39 @@ v = mesh.capture_material_selection(self, material, domain='FACE', node_label = 
 ```python
 from geondes import nodes
 nodes.MaterialSelection(material=material, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Boolean
+
+
+## capture_face_is_planar
+
+> Node: [FaceIsPlanar](/docs/nodes/FaceIsPlanar.md)
+  
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
+blender ref [GeometryNodeInputMeshFaceIsPlanar](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceIsPlanar.html)
+node ref [Face is Planar](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_is_planar.html) </sub>
+                          
+```python
+v = mesh.capture_face_is_planar(self, threshold, domain='FACE', node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- threshold : Float## Parameters
+- self
+- domain:'FACE'
+- node_label : None
+- node_color : None
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.FaceIsPlanar(threshold=threshold, label=node_label, node_color=node_color)
 ```
 
 ### Returns

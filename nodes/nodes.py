@@ -5109,6 +5109,7 @@ class FaceIsPlanar(Node):
             > Data socket classes implementing this node.
               
               
+            - Mesh.capture_face_is_planar : Capture attribute
             - Mesh.face_is_planar : Attribute
               
     """

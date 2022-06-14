@@ -108,12 +108,8 @@ class Spline(gn.Geometry):
             
         """
 
-        attr_name = 'capture_handle_positions_' + domain
-        node = self.attr_props.get(attr_name)
-        if node is None:
-            node = nodes.CurveHandlePositions(relative=relative, label=node_label, node_color=node_color)
-            node.as_attribute(owning_socket=self, domain=domain)
-            self.attr_props[attr_name] = node
+        node = nodes.CurveHandlePositions(relative=relative, label=node_label, node_color=node_color)
+        node.as_attribute(owning_socket=self, domain=domain)
         return node
 
     def capture_tangent(self, domain='CURVE', node_label = None, node_color = None):
@@ -239,12 +235,8 @@ class Spline(gn.Geometry):
             
         """
 
-        attr_name = 'capture_endpoint_selection_' + domain
-        node = self.attr_props.get(attr_name)
-        if node is None:
-            node = nodes.EndpointSelection(start_size=start_size, end_size=end_size, label=node_label, node_color=node_color)
-            node.as_attribute(owning_socket=self, domain=domain)
-            self.attr_props[attr_name] = node
+        node = nodes.EndpointSelection(start_size=start_size, end_size=end_size, label=node_label, node_color=node_color)
+        node.as_attribute(owning_socket=self, domain=domain)
         return node.selection
 
     def capture_handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, domain='CURVE', node_label = None, node_color = None):
@@ -573,7 +565,6 @@ class Spline(gn.Geometry):
 
         return self.capture_position(domain='SPLINE')
 
-    @property
     def left_handle_position(self, relative=None):
         """ > Node: CurveHandlePositions
           
@@ -607,9 +598,8 @@ class Spline(gn.Geometry):
             
         """
 
-        return self.capture_handle_positions(domain='CURVE').left
+        return self.capture_handle_positions(relative=relative, domain='CURVE').left
 
-    @property
     def right_handle_position(self, relative=None):
         """ > Node: CurveHandlePositions
           
@@ -643,7 +633,7 @@ class Spline(gn.Geometry):
             
         """
 
-        return self.capture_handle_positions(domain='CURVE').right
+        return self.capture_handle_positions(relative=relative, domain='CURVE').right
 
     @property
     def tangent(self):
@@ -715,7 +705,6 @@ class Spline(gn.Geometry):
 
         return self.capture_tilt(domain='CURVE')
 
-    @property
     def endpoint_selection(self, start_size=None, end_size=None):
         """ > Node: EndpointSelection
           
@@ -750,7 +739,7 @@ class Spline(gn.Geometry):
             
         """
 
-        return self.capture_endpoint_selection(domain='CURVE')
+        return self.capture_endpoint_selection(start_size=start_size, end_size=end_size, domain='CURVE')
 
     @property
     def handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):

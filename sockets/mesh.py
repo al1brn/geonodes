@@ -46,6 +46,7 @@ class Mesh(gn.Geometry):
             - capture_edge_neighbors : face_count (Integer)
             - capture_edge_vertices : Sockets      [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
             - capture_face_area : area (Float)
+            - capture_face_is_planar : planar (Boolean)
             - capture_face_neighbors : Sockets      [vertex_count (Integer), face_count (Integer)]
             - capture_island : Sockets      [island_index (Integer), island_count (Integer)]
             - capture_material_index : material_index (Integer)
@@ -857,13 +858,49 @@ class Mesh(gn.Geometry):
             
         """
 
-        attr_name = 'capture_material_selection_' + domain
-        node = self.attr_props.get(attr_name)
-        if node is None:
-            node = nodes.MaterialSelection(material=material, label=node_label, node_color=node_color)
-            node.as_attribute(owning_socket=self, domain=domain)
-            self.attr_props[attr_name] = node
+        node = nodes.MaterialSelection(material=material, label=node_label, node_color=node_color)
+        node.as_attribute(owning_socket=self, domain=domain)
         return node.selection
+
+    def capture_face_is_planar(self, threshold=None, domain='FACE', node_label = None, node_color = None):
+        """ > Node: FaceIsPlanar
+          
+        <sub>go to: top index
+        blender ref GeometryNodeInputMeshFaceIsPlanar
+        node ref Face is Planar </sub>
+                                  
+        ```python
+        v = mesh.capture_face_is_planar(self, threshold, domain='FACE', node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - threshold : Float## Parameters
+            - self
+            - domain:'FACE'
+            - node_label : None
+            - node_color : None
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.FaceIsPlanar(threshold=threshold, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Boolean
+            
+        """
+
+        node = nodes.FaceIsPlanar(threshold=threshold, label=node_label, node_color=node_color)
+        node.as_attribute(owning_socket=self, domain=domain)
+        return node.planar
 
 
     # ----------------------------------------------------------------------------------------------------
@@ -1709,7 +1746,6 @@ class Mesh(gn.Geometry):
 
         return self.capture_material_index(domain='FACE')
 
-    @property
     def material_selection(self, material=None):
         """ > Node: MaterialSelection
           
@@ -1743,9 +1779,8 @@ class Mesh(gn.Geometry):
             
         """
 
-        return self.capture_material_selection(domain='FACE')
+        return self.capture_material_selection(material=material, domain='FACE')
 
-    @property
     def face_is_planar(self, threshold=None):
         """ > Node: FaceIsPlanar
           
@@ -1779,7 +1814,7 @@ class Mesh(gn.Geometry):
             
         """
 
-        return self.capture_face_is_planar(domain='FACE')
+        return self.capture_face_is_planar(threshold=threshold, domain='FACE')
 
 
     # ----------------------------------------------------------------------------------------------------
