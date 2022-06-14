@@ -1268,7 +1268,7 @@ class Node:
           The node type name
     """
         
-    def __init__(self, bl_idname, name, label=None):
+    def __init__(self, bl_idname, name, label=None, node_color=None):
         """ The root class for Blender node wrappers.
         
         The creation tree is read in the static property Tree.TREE.
@@ -1283,6 +1283,8 @@ class Node:
           The node name
         - label: str, optional
           The node label
+        - node_color: color, optional
+          The node color
         """
         
         self.tree = Tree.TREE
@@ -1293,6 +1295,8 @@ class Node:
         self.bnode   = self.tree.get_bnode(bl_idname, label)
         self.bnode.name = str(self)
         self.label      = label
+        self.node_color = node_color
+        
 
         self.inputs  = [DataSocket(bsocket, node=self) for bsocket in self.bnode.inputs]
         self.outputs = [DataSocket(bsocket, node=self) for bsocket in self.bnode.outputs]
