@@ -45,3 +45,11 @@ node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type
 ## Output sockets
 
 - geometry : Geometry
+
+## Data sockets
+
+> Data socket classes implementing this node.
+  
+  
+- [Geometry](/docs/sockets/Geometry.md).[store_named_attribute](/docs/sockets/Geometry.md#store_named_attribute) : Method
+  

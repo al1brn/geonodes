@@ -28,6 +28,7 @@
 
 - [capture_ID](#capture_id) : ID (Integer)
 - [capture_index](#capture_index) : index (Integer)
+- [capture_named_attribute](#capture_named_attribute) : attribute (data_type dependant)
 - [capture_normal](#capture_normal) : normal (Vector)
 - [capture_position](#capture_position) : position (Vector)
 - [capture_radius](#capture_radius) : radius (Float)
@@ -64,6 +65,7 @@
 - [set_material_index](#set_material_index) : geometry (Geometry)
 - [set_position](#set_position) : geometry (Geometry)
 - [set_shade_smooth](#set_shade_smooth) : geometry (Geometry)
+- [store_named_attribute](#store_named_attribute) : geometry (Geometry)
 - [switch](#switch) : output (Geometry)
 - [to_instance](#to_instance) : instances (Instances)
 - [transfer_boolean](#transfer_boolean) : attribute (Boolean)
@@ -561,6 +563,40 @@ nodes.Radius(label=node_label, node_color=node_color)
 ### Returns
 
 Float
+
+
+## capture_named_attribute
+
+> Node: [NamedAttribute](/docs/nodes/NamedAttribute.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeInputNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+node ref [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) </sub>
+                          
+```python
+v = geometry.capture_named_attribute(self, name, data_type, domain='POINT', node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- name : String## Parameters
+- self
+- data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+- domain:'POINT'
+- node_label : None
+- node_color : None
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.NamedAttribute(name=name, data_type=data_type, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+data_type dependant
 
 
 ## ID
@@ -1496,6 +1532,41 @@ v = geometry.transform(translation, rotation, scale, node_label = None, node_col
 ```python
 from geondes import nodes
 nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Geometry
+
+
+## store_named_attribute
+
+> Node: [StoreNamedAttribute](/docs/nodes/StoreNamedAttribute.md)
+  
+<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
+blender ref [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+node ref [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) </sub>
+                          
+```python
+v = geometry.store_named_attribute(name, value, data_type, domain, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- name : String
+- value : Float## Parameters
+- data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BYTE_COLOR, BOOLEAN]
+- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+- node_label : None
+- node_color : None
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type=data_type, domain=domain, label=node_label, node_color=node_color)
 ```
 
 ### Returns
