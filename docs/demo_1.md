@@ -215,6 +215,8 @@ perhaps = yes + no # Operator + can be used as logical or
 sure = yes * no    # Operator * can be used as logical and 
 ```
 
+See [Nodes parameters and method names](/docs/nodes_and_sockets.md#nodes-parameters-and-method-names)
+
 ### Nodes methods
 
 The call of a data socket method creates a Geometry node which performs the expected operation.
