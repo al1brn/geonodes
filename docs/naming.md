@@ -9,7 +9,7 @@ The nodes class names are **CamelCase** versions of their Blender name:
 - 'Replace Material' -> **ReplaceMaterial**
 - 'Checker Texture' -> **CheckerTexture**
 
-Note the Blender node 'ColorRamp' which is strangely name in one word. This CamelCase named is kept:
+Note that the Blender node 'ColorRamp' which is strangely name in one word. This CamelCase named is kept:
 - 'ColorRamp' -> **ColorRamp**
 
 ## Output sockets
