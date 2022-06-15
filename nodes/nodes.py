@@ -2340,7 +2340,7 @@ class HandleTypeSelection(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None)
+            node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None)
             ```
             
             
@@ -2353,7 +2353,7 @@ class HandleTypeSelection(Node):
             Parameters
             ----------
                 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                - mode : set (default = {'RIGHT', 'LEFT'})
+                - mode : set (default = {'LEFT', 'RIGHT'})
     
 
             Node label
@@ -2367,7 +2367,7 @@ class HandleTypeSelection(Node):
             - selection : Boolean
     """
 
-    def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
+    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveHandleTypeSelection', name='Handle Type Selection', label=label, node_color=node_color)
         # Parameters
@@ -2929,7 +2929,7 @@ class SetHandleType(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None)
+            node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None)
             ```
             
             
@@ -2948,7 +2948,7 @@ class SetHandleType(Node):
             Parameters
             ----------
                 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                - mode : set (default = {'RIGHT', 'LEFT'})
+                - mode : set (default = {'LEFT', 'RIGHT'})
     
 
             Node label
@@ -2971,7 +2971,7 @@ class SetHandleType(Node):
               
     """
 
-    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
+    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveSetHandles', name='Set Handle Type', label=label, node_color=node_color)
         # Parameters
@@ -4734,6 +4734,15 @@ class MaterialIndex(Node):
         Output sockets
         --------------
             - material_index : Integer
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - material_index.FaceDomain : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -4934,6 +4943,15 @@ class FaceArea(Node):
         Output sockets
         --------------
             - area : Float
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - area.FaceDomain : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -4987,6 +5005,15 @@ class FaceIsPlanar(Node):
         Output sockets
         --------------
             - planar : Boolean
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - face_is_planar.FaceDomain : Fields
+              
     """
 
     def __init__(self, threshold=None, label=None, node_color=None):
@@ -5040,6 +5067,17 @@ class FaceNeighbors(Node):
         --------------
             - vertex_count : Integer
             - face_count : Integer
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - neighbors.FaceDomain : Fields
+            - neighbors_faces.FaceDomain : Fields
+            - neighbors_vertices.FaceDomain : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5090,6 +5128,17 @@ class MeshIsland(Node):
         --------------
             - island_index : Integer
             - island_count : Integer
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - island.FaceDomain : Fields
+            - island_faces.FaceDomain : Fields
+            - island_vertices.FaceDomain : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5538,6 +5587,15 @@ class IsShadeSmooth(Node):
         Output sockets
         --------------
             - smooth : Boolean
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - is_shade_smooth.FaceDomain : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -6016,6 +6074,7 @@ class MaterialSelection(Node):
               
               
             - Material.selection : Method
+            - material_selection.FaceDomain : Fields
               
     """
 

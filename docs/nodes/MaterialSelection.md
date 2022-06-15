@@ -37,4 +37,5 @@ node = nodes.MaterialSelection(material=None, label=None, node_color=None)
   
   
 - [Material](/docs/sockets/Material.md).[selection](/docs/sockets/Material.md#selection) : Method
+- [material_selection](???).[FaceDomain](???) : Fields
   

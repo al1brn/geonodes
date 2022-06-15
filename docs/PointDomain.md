@@ -1,20 +1,11 @@
 
 # Class PointDomain
 
-> Field domain Point
+> Field domain POINT
   
 Inherits from [Domain](/docs/core/domain.MD)
 
-
-
-
-## init_socket
-
-> Field domain Point
-  
-Inherits from [Domain](/docs/core/domain.MD)
-
-
+A property of Mesh, Curve, Points
 
 
 ## neighbors
@@ -24,12 +15,18 @@ Inherits from [Domain](/docs/core/domain.MD)
 Blender menu : mesh/vertex_neighbors
 
   Property
+  
+  Individual sockets can be accessed via propertyes:
+    - [neighbors_vertices](#neighbors_vertices)
+    - [neighbors_faces](#neighbors_faces)
 
 ### Returns
 
-Node
-
-
+Node with two sockets:
+  - vertex_count
+  - face_count
+    
+    
 
 ## neighbors_vertices
 
@@ -59,5 +56,5 @@ Blender menu : mesh/vertex_neighbors
 
 ### Returns
 
-Float
+Integer
 

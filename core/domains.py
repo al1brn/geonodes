@@ -16,11 +16,42 @@ logger = logging.getLogger('geonodes')
 
 
 # =============================================================================================================================
-# Root class for domains: Points, Faces, Edges, Corners, Curves, Instances
-    
+# Root class for domains: PointDomain, FaceDomain, EdgeDomain, CornerDomain, CurveDomain and Instance
+#    
 # Fields are properties of domains.
-    
+#   
 # Initialization is made in method init_socket called by initializer Socket.__init__
+#
+# Domains classes
+# ---------------
+#
+# Domain classes are implemented as properties of geometries:
+#     - Mesh owns `point`, `edge`, `face` and `corner` properties (`vertex` and `face_corner`
+#       can be used rather than `point` and `corner`)
+#     - Curve owns `point` and `spline` (`control_point` can be used rather than `point`)
+#     - Points owns `point`
+#     - Instances has no domain properties, fields are direct properties of this class
+#
+# To get the index of a point, use the syntax:
+#
+# ```python
+# position = mesh.point.position
+# ```
+#
+# Thanks to this syntax, you always know which field you want.
+#
+# ```python
+# # mesh, curve and instances are initialized respectively as Mesh, Curve ans Instances
+#
+# mesh.point.position  # position of the vertices
+# mesg.vertex.position # same
+# mesh.face.position   # position of the faces
+# mesh.face.area       # faces area
+# curve.point.position # location of the curve control_points
+# instances.index      # Indices of the individual instances
+# instances.position   # Location of the instances
+# ```
+#
 
 class Domain(Socket):
         
@@ -187,11 +218,14 @@ class Domain(Socket):
         return self.named_attribute(name, data_type='BOOLEAN')
         
 
+# ---------------------------------------------------------------------------
+# > Field domain POINT
+#
+# Inherits from [Domain](/docs/core/domain.MD)
+#
+# A property of Mesh, Curve, Points
+
 class PointDomain(Domain):
-    """ > Field domain Point
-    
-    Inherits from [Domain](/docs/core/domain.MD)
-    """
     
     def init_socket(self):
         super().init_socket()
@@ -202,10 +236,16 @@ class PointDomain(Domain):
         """ <field GeometryNodeInputMeshVertexNeighbors>
         
         Property
+
+        Individual sockets can be accessed via propertyes:
+            - [neighbors_vertices](#neighbors_vertices)
+            - [neighbors_faces](#neighbors_faces)
         
         Returns
         -------
-            Node
+            Node with two sockets:
+                - vertex_count
+                - face_count
         """
         return self.create_field_node('GeometryNodeInputMeshVertexNeighbors')
     
@@ -233,10 +273,16 @@ class PointDomain(Domain):
         
         Returns
         -------
-            Float
+            Integer
         """
         return self.neighbors.face_count
     
+# ---------------------------------------------------------------------------
+# > Field domain FACE
+#
+# Inherits from [Domain](/docs/core/domain.MD)
+#
+# A property of Mesh
 
 class FaceDomain(Domain):
 
@@ -246,57 +292,169 @@ class FaceDomain(Domain):
         
     @property
     def area(self):
+        """ <field GeometryNodeInputMeshFaceArea>
+        
+        Property
+        
+        Returns
+        -------
+            Float
+        """
         return self.create_field_node('GeometryNodeInputMeshFaceArea').area
     
     @property
     def neighbors(self):
+        """ <field GeometryNodeInputMeshFaceNeighbors>
+        
+        Property
+
+        Individual sockets can be accessed via propertyes:
+            - [neighbors_vertices](#neighbors_vertices)
+            - [neighbors_faces](#neighbors_faces)
+        
+        Returns
+        -------
+            Node with two sockets:
+                - vertex_count
+                - face_count
+        """
         return self.create_field_node('GeometryNodeInputMeshFaceNeighbors')
     
     @property
     def neighbors_vertices(self):
+        """ <field GeometryNodeInputMeshFaceNeighbors>
+        
+        Property
+        
+        Return the socket **vertex_count** of property [neighbors](#neighbors)
+        
+        Returns
+        -------
+            Integer
+        """
         return self.neighbors.vertex_count
     
     @property
     def neighbors_faces(self):
+        """ <field GeometryNodeInputMeshFaceNeighbors>
+        
+        Property
+        
+        Return the socket **face_count** of property [neighbors](#neighbors)
+        
+        Returns
+        -------
+            Integer
+        """
         return self.neighbors.face_count
     
     @property
     def is_shade_smooth(self):
+        """ <field GeometryNodeInputShadeSmooth>
+        
+        Property
+        
+        Returns
+        -------
+            Float
+        """
         return self.create_field_node('GeometryNodeInputShadeSmooth').smooth
     
     @property
     def island(self):
+        """ <field GeometryNodeInputMeshIsland>
+        
+        Property
+
+        Individual sockets can be accessed via propertyes:
+            - [neighbors_vertices](#neighbors_vertices)
+            - [neighbors_faces](#neighbors_faces)
+        
+        Returns
+        -------
+            Node with two sockets:
+                - vertex_count
+                - face_count
+        """
         return self.create_field_node('GeometryNodeInputMeshIsland')
     
     @property
     def island_vertices(self):
+        """ <field GeometryNodeInputMeshIsland>
+        
+        Property
+        
+        Return the socket **vertex_count** of property [island](#island)
+        
+        Returns
+        -------
+            Integer
+        """
         return self.island.vertex_count
     
     @property
     def island_faces(self):
+        """ <field GeometryNodeInputMeshIsland>
+        
+        Property
+        
+        Return the socket **face_count** of property [island](#island)
+        
+        Returns
+        -------
+            Integer
+        """
         return self.island.face_count
 
     @property
     def material_index(self):
+        """ <field GeometryNodeInputMaterialIndex>
+        
+        Property
+        
+        Returns
+        -------
+            Integer
+        """
         return self.create_field_node('GeometryNodeInputMaterialIndex').material_index
     
     def material_selection(self, material=None):
+        """ <field GeometryNodeMaterialSelection>
+        
+        Method
+        
+        Arguments
+        ---------
+            - material : Material
+        
+        Returns
+        -------
+            Boolean
+        """
         return self.create_field_node('GeometryNodeMaterialSelection', material=material).selection
     
     def face_is_planar(self, threshold=None):
+        """ <field GeometryNodeInputMeshFaceIsPlanar>
+        
+        Method
+        
+        Arguments
+        ---------
+            - threshold : Float
+        
+        Returns
+        -------
+            Boolean
+        """
         return self.create_field_node('GeometryNodeInputMeshFaceIsPlanar', threshold=threshold).planar
     
-    @property
-    def island(self):
-        return self.create_field_node('GeometryNodeInputMeshIsland')
     
-    @property
-    def island_vertices(self):
-        return self.island.vertex_count
-    
-    @property
-    def island_faces(self):
-        return self.island.face_count
+# ---------------------------------------------------------------------------
+# > Field domain FACE
+#
+# Inherits from [Domain](/docs/core/domain.MD)
+#
+# A property of Mesh
         
         
 class EdgeDomain(Domain):
@@ -348,6 +506,13 @@ class EdgeDomain(Domain):
     @property
     def island_faces(self):
         return self.island.face_count
+    
+# ---------------------------------------------------------------------------
+# > Field domain CORNER
+#
+# Inherits from [Domain](/docs/core/domain.MD)
+#
+# A property of Mesh
         
 
 class CornerDomain(Domain):
@@ -355,6 +520,13 @@ class CornerDomain(Domain):
     def init_socket(self):
         super().init_socket()
         self.domain = 'CORNER'
+        
+# ---------------------------------------------------------------------------
+# > Field domain CURVE
+#
+# Inherits from [Domain](/docs/core/domain.MD)
+#
+# A property of Spline and Curve
 
 class CurveDomain(Domain):
     

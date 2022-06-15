@@ -26,3 +26,11 @@ node = nodes.IsShadeSmooth(label=None, node_color=None)
 ## Output sockets
 
 - smooth : Boolean
+
+## Data sockets
+
+> Data socket classes implementing this node.
+  
+  
+- [is_shade_smooth](???).[FaceDomain](???) : Fields
+  

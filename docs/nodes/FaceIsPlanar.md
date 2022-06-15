@@ -30,3 +30,11 @@ node = nodes.FaceIsPlanar(threshold=None, label=None, node_color=None)
 ## Output sockets
 
 - planar : Boolean
+
+## Data sockets
+
+> Data socket classes implementing this node.
+  
+  
+- [face_is_planar](???).[FaceDomain](???) : Fields
+  

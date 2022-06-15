@@ -1,11 +1,42 @@
 
 # Class Domain
 
-Root class for domains: Points, Faces, Edges, Corners, Curves, Instances
+Root class for domains: PointDomain, FaceDomain, EdgeDomain, CornerDomain, CurveDomain and Instance
 
 Fields are properties of domains.
 
 Initialization is made in method init_socket called by initializer Socket.__init__
+
+Domains classes
+
+
+Domain classes are implemented as properties of geometries:
+  - Mesh owns `point`, `edge`, `face` and `corner` properties (`vertex` and `face_corner`
+can be used rather than `point` and `corner`)
+  - Curve owns `point` and `spline` (`control_point` can be used rather than `point`)
+  - Points owns `point`
+  - Instances has no domain properties, fields are direct properties of this class
+    
+To get the index of a point, use the syntax:
+
+```python
+position = mesh.point.position
+```
+
+Thanks to this syntax, you always know which field you want.
+
+```python
+# mesh, curve and instances are initialized respectively as Mesh, Curve ans Instances
+
+mesh.point.position  # position of the vertices
+mesg.vertex.position # same
+mesh.face.position   # position of the faces
+mesh.face.area       # faces area
+curve.point.position # location of the curve control_points
+instances.index      # Indices of the individual instances
+instances.position   # Location of the instances
+```
+
 
 
 ## create_field_node
