@@ -8,19 +8,6 @@ Fields are properties of domains.
 Initialization is made in method init_socket called by initializer Socket.__init__
 
 
-
-
-## init_socket
-
-Root class for domains: Points, Faces, Edges, Corners, Curves, Instances
-
-Fields are properties of domains.
-
-Initialization is made in method init_socket called by initializer Socket.__init__
-
-
-
-
 ## create_field_node
 
 > Create a **geonodes** from a bl_idname

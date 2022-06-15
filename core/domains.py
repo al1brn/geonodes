@@ -16,17 +16,13 @@ logger = logging.getLogger('geonodes')
 
 
 # =============================================================================================================================
-# Domain is used to implement points, edges, faces, corners, splines, instances properties 
-#
-# Mesh.faces.area : the area of the mesh faces
+# Root class for domains: Points, Faces, Edges, Corners, Curves, Instances
+    
+# Fields are properties of domains.
+    
+# Initialization is made in method init_socket called by initializer Socket.__init__
 
 class Domain(Socket):
-    """ Root class for domains: Points, Faces, Edges, Corners, Curves, Instances
-    
-    Fields are properties of domains.
-    
-    Initialization is made in method init_socket called by initializer Socket.__init__
-    """ 
         
     def init_socket(self):
         self.fields = {}
