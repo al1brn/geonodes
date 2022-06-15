@@ -12,7 +12,8 @@ A property of Mesh, Curve, Points
 
 > Field [VertexNeighbors](/docs/nodes/VertexNeighbors.md)
   
-Blender menu : mesh/vertex_neighbors
+Blender menu : **mesh/vertex_neighbors**
+<sub>go to [top](#pointdomain) [index](/docs/index.md)</sub>
 
   Property
   
@@ -33,7 +34,8 @@ Node with two sockets:
 
 > Field [VertexNeighbors](/docs/nodes/VertexNeighbors.md)
   
-Blender menu : mesh/vertex_neighbors
+Blender menu : **mesh/vertex_neighbors**
+<sub>go to [top](#pointdomain) [index](/docs/index.md)</sub>
 
   Property
   
@@ -49,7 +51,8 @@ Integer
 
 > Field [VertexNeighbors](/docs/nodes/VertexNeighbors.md)
   
-Blender menu : mesh/vertex_neighbors
+Blender menu : **mesh/vertex_neighbors**
+<sub>go to [top](#pointdomain) [index](/docs/index.md)</sub>
 
   Property
   

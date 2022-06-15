@@ -13,7 +13,8 @@ A property of Mesh
 
 > Field [EdgeAngle](/docs/nodes/EdgeAngle.md)
   
-Blender menu : mesh/edge_angle
+Blender menu : **mesh/edge_angle**
+<sub>go to [top](#edgedomain) [index](/docs/index.md)</sub>
 
   Property
   
@@ -29,7 +30,8 @@ Float
 
 > Field [EdgeAngle](/docs/nodes/EdgeAngle.md)
   
-Blender menu : mesh/edge_angle
+Blender menu : **mesh/edge_angle**
+<sub>go to [top](#edgedomain) [index](/docs/index.md)</sub>
 
   Property
   
@@ -45,7 +47,8 @@ Float
 
 > Field [EdgeNeighbors](/docs/nodes/EdgeNeighbors.md)
   
-Blender menu : mesh/edge_neighbors
+Blender menu : **mesh/edge_neighbors**
+<sub>go to [top](#edgedomain) [index](/docs/index.md)</sub>
 
   Property
 
@@ -59,7 +62,8 @@ Integer
 
 > Field [EdgeVertices](/docs/nodes/EdgeVertices.md)
   
-Blender menu : mesh/edge_vertices
+Blender menu : **mesh/edge_vertices**
+<sub>go to [top](#edgedomain) [index](/docs/index.md)</sub>
 
   Property
   
@@ -84,7 +88,8 @@ Node with 4 output sockets:
 
 > Field [EdgeVertices](/docs/nodes/EdgeVertices.md)
   
-Blender menu : mesh/edge_vertices
+Blender menu : **mesh/edge_vertices**
+<sub>go to [top](#edgedomain) [index](/docs/index.md)</sub>
 
   Property
 
@@ -98,7 +103,8 @@ Integer
 
 > Field [EdgeVertices](/docs/nodes/EdgeVertices.md)
   
-Blender menu : mesh/edge_vertices
+Blender menu : **mesh/edge_vertices**
+<sub>go to [top](#edgedomain) [index](/docs/index.md)</sub>
 
   Property
 
@@ -112,7 +118,8 @@ Integer
 
 > Field [EdgeVertices](/docs/nodes/EdgeVertices.md)
   
-Blender menu : mesh/edge_vertices
+Blender menu : **mesh/edge_vertices**
+<sub>go to [top](#edgedomain) [index](/docs/index.md)</sub>
 
   Property
 
@@ -126,7 +133,8 @@ Integer
 
 > Field [EdgeVertices](/docs/nodes/EdgeVertices.md)
   
-Blender menu : mesh/edge_vertices
+Blender menu : **mesh/edge_vertices**
+<sub>go to [top](#edgedomain) [index](/docs/index.md)</sub>
 
   Property
 
