@@ -1,5 +1,5 @@
 
-# Class  Tree
+# Class Tree
 
 > Wrap a Blender NodeTree
   

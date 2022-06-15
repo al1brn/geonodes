@@ -24,8 +24,6 @@ FAMILIES = {
     'STATIC'      : ('Static method',    'Static methods'        , False),
     'CLASS'       : ('Class method',     'Class methods'         , False),    
     'PROPERTY'    : ('Property',         'Properties'            , True ),
-    'CAPT_ATTR'   : ('Capture attribute','Attribute captures'    , True ),
-    'ATTRIBUTE'   : ('Attribute',        'Attributes'            , True ),
     'METHOD'      : ('Method',           'Methods'               , True ),        
     'STACK'       : ('Stacked method',   'Stacked methods'       , True ),
     
@@ -170,7 +168,6 @@ class NodeCall:
         self.fixed      = dict(fixed)
         
         self.properties = None
-        self.attribute  = {}
 
     # ----------------------------------------------------------------------------------------------------
     # A property
@@ -182,25 +179,6 @@ class NodeCall:
             'settable' : settable,
             'names'    : prop_names,
             }
-        return nc
-
-    # ----------------------------------------------------------------------------------------------------
-    # An attribute
-    
-    @classmethod
-    def Attribute(cls, wnode, class_name, meth_name, capture_meth=None, domain='POINT', output_index=0):
-        
-        capture = capture_meth is None
-
-        nc = cls('CAPT_ATTR' if capture else 'ATTRIBUTE', wnode, class_name, meth_name)
-
-        nc.attribute = {
-            'capture'      : capture,
-            'capture_meth' : capture_meth,
-            'domain'       : domain,
-            'output_index' : output_index,
-            }
-        
         return nc
 
     # ----------------------------------------------------------------------------------------------------
@@ -220,14 +198,6 @@ class NodeCall:
         
         if self.family == 'STACK':
             ret_str = self.class_name
-            
-        elif self.family == 'ATTRIBUTE':
-            
-            index = self.attribute['output_index']
-            
-            ret_str = f"{unames[list(unames)[index]]:9s} = {self.attribute['capture_meth']}(domain='{self.attribute['domain']}')"
-            if len(unames) > 1:
-                ret_str += f".{list(unames)[index]}"
             
         elif len(unames) == 0:
             ret_str = "None"
@@ -339,31 +309,6 @@ class DataClass:
     
     def add_property(self, bl_idname, meth_name, settable=False, prop_names=None, **kwargs):
         self.methods_.append(NodeCall.Property(self.wnodes[bl_idname], self.class_name, meth_name, settable=settable, prop_names=prop_names, **kwargs))
-        
-    # ----------------------------------------------------------------------------------------------------
-    # Add attributes
-    
-    def add_attribute(self, bl_idname, meth_name, capture=False, domains=None, no_prefix='NONE', prop_names=None):
-
-        if domains is None:
-            domains = ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE']
-            
-        capture_meth = f"capture_{meth_name}"
-            
-        if capture:
-            self.methods_.append(NodeCall.Attribute(self.wnodes[bl_idname], self.class_name, capture_meth, capture_meth=None, domain=domains[0]))
-            
-        for domain in domains:
-            if prop_names is None:
-                m_name = meth_name if domain == no_prefix else f"{domain.lower()}_{meth_name}"
-                self.methods_.append(NodeCall.Attribute(
-                    self.wnodes[bl_idname], self.class_name, m_name, capture_meth=capture_meth, domain=domain))
-                
-            else:
-                for i, m_name in enumerate(prop_names):
-                    self.methods_.append(NodeCall.Attribute(
-                        self.wnodes[bl_idname], self.class_name, m_name, capture_meth=capture_meth, domain=domain, output_index=i))
-                    
 
     # ----------------------------------------------------------------------------------------------------
     # Template
@@ -461,7 +406,7 @@ class DataClass:
             yield f"\n{_1_}# {'-'*100}{_1_}# {label[1]}\n"
             
             for nc in meths:
-                for line in nc.wnode.gen_call(family, nc.class_name, nc.meth_name, self_name=nc.self_name, properties=nc.properties, attribute=nc.attribute, **nc.fixed):
+                for line in nc.wnode.gen_call(family, nc.class_name, nc.meth_name, self_name=nc.self_name, properties=nc.properties, **nc.fixed):
                     yield line
                     
 
@@ -663,17 +608,6 @@ class GeometryGen(DataClass):
     def __init__(self, nodes):
         super().__init__(nodes, 'Geometry', 'dsock.Geometry')
         
-        self.add_attribute('GeometryNodeInputNormal',       'normal',           domains=None  , capture=True)
-        self.add_attribute('GeometryNodeInputTangent',      'tangent',          domains=None  , capture=True)
-        
-        # ----- ID and Index
-        
-        self.add_attribute('GeometryNodeInputID',           'ID',               capture=True, domains=['POINT']  )
-        self.add_attribute('GeometryNodeInputIndex',        'index',            capture=True, domains=['POINT']  )        
-        self.add_attribute('GeometryNodeInputPosition',     'position',         capture=True, domains=['POINT']  , no_prefix='POINT')
-        self.add_attribute('GeometryNodeIsViewport',        'is_viewport',      capture=True, domains=['POINT']  )
-        
-        
         self.add_property('GeometryNodeBoundBox',           'bound_box',  prop_names=['box', 'box_min', 'box_max'])
         self.add_property('GeometryNodeSeparateComponents', 'components', 
                           prop_names=('mesh_component', 'points_component', 'curve_component', 'volume_component', 'instances_component'))
@@ -734,30 +668,7 @@ class MeshGen(DataClass):
         self.add_call('METHOD', 'GeometryNodeMeshBoolean', 'difference', self_name='mesh_1',    operation='DIFFERENCE')
         
         # ----------------------------------------------------------------------------------------------------
-        # Attributes
-
-        self.add_attribute('GeometryNodeInputID',                   'ID',              domains={'FACE', 'EDGE', 'CORNER'})
-        self.add_attribute('GeometryNodeInputIndex',                'index',           domains={'FACE', 'EDGE', 'CORNER'})
-        self.add_attribute('GeometryNodeInputIndex',                'position',        domains={'FACE', 'EDGE', 'CORNER'})
-        
-        self.add_attribute('GeometryNodeInputMeshEdgeNeighbors',   'edge_neighbors',   capture=True, domains=['EDGE']  , no_prefix='EDGE')
-        self.add_attribute('GeometryNodeInputMeshFaceArea',        'face_area',        capture=True, domains=['FACE']  , no_prefix='FACE')
-        self.add_attribute('GeometryNodeInputMeshEdgeAngle',       'edge_angle',       capture=True, domains=['EDGE']  , prop_names=('edge_unsigned_angle', 'edge_angle'))
-        self.add_attribute('GeometryNodeInputMeshEdgeVertices',    'edge_vertices',    capture=True, domains=['EDGE']  , 
-                           prop_names=('edge_vertices_index1', 'edge_vertices_index2', 'edge_vertices_position1', 'edge_vertices_position2'))
-        self.add_attribute('GeometryNodeInputMeshFaceNeighbors',   'face_neighbors',   capture=True, domains=['FACE']  ,
-                           prop_names=('face_neighbors_vertex_count', 'face_neighbors_face_count'))
-        self.add_attribute('GeometryNodeInputMeshIsland',          'island',           capture=True, domains=['FACE']  , prop_names=('island_index', 'island_count'))
-        self.add_attribute('GeometryNodeInputMeshVertexNeighbors', 'vertex_neighbors', capture=True, domains=['POINT'] ,
-                           prop_names=('vertex_neighbors_vertex_count', 'vertex_neighbors_face_count'))
-        
-        
-        self.add_attribute('GeometryNodeInputMaterialIndex',       'material_index',   capture=True, domains=['FACE']  , no_prefix='FACE')
-        self.add_attribute('GeometryNodeInputShadeSmooth',         'shade_smooth',     capture=True, domains=['FACE']  , no_prefix='FACE')
-        
-        
-        # ----------------------------------------------------------------------------------------------------
-        # Attributes
+        # Methods
 
         self.add_call('STACK', 'GeometryNodeSplitEdges',         'split_edges'          )
         self.add_call('STACK', 'GeometryNodeSubdivideMesh',      'subdivide'            )
@@ -791,8 +702,6 @@ class InstancesGen(DataClass):
     def __init__(self, nodes):
         super().__init__(nodes, 'Instances', 'gn.Mesh')
         
-        self.add_attribute('GeometryNodeInputIndex',      'index',     domains=['INSTANCE']  )
-        
         self.add_call('STACK', 'GeometryNodeRotateInstances',    'rotate'    )
         self.add_call('STACK', 'GeometryNodeScaleInstances',     'scale'     )
         self.add_call('STACK', 'GeometryNodeTranslateInstances', 'translate' )
@@ -814,13 +723,6 @@ class VolumeGen(DataClass):
 class SplineGen(DataClass):
     def __init__(self, nodes):
         super().__init__(nodes, 'Spline', 'gn.Geometry')
-        
-        self.add_attribute('GeometryNodeInputSplineCyclic',         'cyclic',       capture=True, domains=['CURVE']  , no_prefix='CURVE')
-        self.add_attribute('GeometryNodeInputSplineResolution',     'resolution',   capture=True, domains=['CURVE']  , no_prefix='CURVE')
-        self.add_attribute('GeometryNodeSplineLength',              'length',       capture=True, domains=['CURVE']  ,
-                           prop_names = ['length', 'point_count'])
-        self.add_attribute('GeometryNodeSplineParameter',           'parameter',    capture=True, domains=['CURVE']  ,
-                           prop_names = ['factor', 'parameter_length', 'parameter_index'])
         
         self.add_call('STACK', 'GeometryNodeSetSplineCyclic',              'set_cyclic'     )
         self.add_call('STACK', 'GeometryNodeSetSplineResolution',          'set_resolution' )
@@ -846,18 +748,6 @@ class CurveGen(DataClass):
 
         self.add_call('CONSTRUCTOR', 'GeometryNodeCurveArc',            'ArcFromRadius', mode = 'RADIUS')
         self.add_call('STATIC',      'GeometryNodeCurveArc',            'ArcFromPoints', mode = 'POINTS')
-        
-        
-        self.add_attribute('GeometryNodeInputID',           'ID',               domains={'SPLINE'})
-        self.add_attribute('GeometryNodeInputIndex',        'index',            domains={'SPLINE'})
-        
-        
-        self.add_attribute('GeometryNodeCurveEndpointSelection',        'endpoint_selection',       capture=True, domains=['CURVE']  , no_prefix='CURVE')
-        self.add_attribute('GeometryNodeCurveHandleTypeSelection',      'handle_type_selection',    capture=True, domains=['CURVE']  , no_prefix='CURVE')
-        self.add_attribute('GeometryNodeInputCurveTilt',                'tilt',                     capture=True, domains=['CURVE']  , no_prefix='CURVE')
-        self.add_attribute('GeometryNodeInputRadius',                   'radius',                   capture=True, domains=['CURVE']  , no_prefix='CURVE')
-        self.add_attribute('GeometryNodeInputCurveHandlePositions',     'handle_positions',         capture=True, domains=['CURVE']  , 
-                           prop_names=('left_handle_position', 'right_handle_position'))
         
         self.add_call('STACK', 'GeometryNodeCurveSetHandles',          'set_handles'              )
         self.add_call('STACK', 'GeometryNodeCurveSplineType',          'set_spline_type'          )

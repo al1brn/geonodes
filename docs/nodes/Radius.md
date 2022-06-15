@@ -26,12 +26,3 @@ node = nodes.Radius(label=None, node_color=None)
 ## Output sockets
 
 - radius : Float
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Geometry](/docs/sockets/Geometry.md).[capture_radius](/docs/sockets/Geometry.md#capture_radius) : Capture attribute
-- [Geometry](/docs/sockets/Geometry.md).[radius](/docs/sockets/Geometry.md#radius) : Attribute
-  

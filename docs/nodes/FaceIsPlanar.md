@@ -30,12 +30,3 @@ node = nodes.FaceIsPlanar(threshold=None, label=None, node_color=None)
 ## Output sockets
 
 - planar : Boolean
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Mesh](/docs/sockets/Mesh.md).[capture_face_is_planar](/docs/sockets/Mesh.md#capture_face_is_planar) : Capture attribute
-- [Mesh](/docs/sockets/Mesh.md).[face_is_planar](/docs/sockets/Mesh.md#face_is_planar) : Attribute
-  

@@ -217,18 +217,238 @@ Step 4
 
 """
 
+from datetime import date
+import re
+
 import bpy
 import mathutils
 from pprint import pprint, pformat
 
-import logging
-logger = logging.getLogger('geonodes')
-logger.setLevel(logging.INFO)
-
 from generator import gen_sockets as gsock
+from generator.documentation import Doc, Section, Text
+from generator.pyparser import Parser
 
 import importlib
 importlib.reload(gsock)
+
+NODES_MENU = {
+    "index"                      : ("attribute"                 , "attribute/index"                       ),
+    "attribute_statistic"        : ("attribute"                 , "attribute/attribute_statistic"         ),
+    "capture_attribute"          : ("attribute"                 , "attribute/capture_attribute"           ),
+    "domain_size"                : ("attribute"                 , "attribute/domain_size"                 ),
+    "transfer_attribute"         : ("attribute"                 , "attribute/transfer_attribute"          ),
+    "store_named_attribute"      : ("attribute"                 , "attribute/store_named_attribute"       ),
+    "remove_named_attribute"     : ("attribute"                 , "attribute/remove_named_attribute"      ),
+    
+    "color_ramp"                 : ("color"                     , "color/color_ramp"                      ),
+    "colorramp"                  : ("color"                     , "color/color_ramp"                      ),
+    
+    "combine_rgb"                : ("color"                     , "color/combine_rgb"                     ),
+    
+    "mix_rgb"                    : ("color"                     , "color/mix_rgb"                         ),
+    "mix"                        : ("color"                     , "color/mix_rgb"                         ),
+
+    "rgb_curves"                 : ("color"                     , "color/rgb_curves"                      ),
+    "separate_rgb"               : ("color"                     , "color/separate_rgb"                    ),
+
+    "curve_length"               : ("curve"                     , "curve/curve_length"                    ),
+    "curve_to_mesh"              : ("curve"                     , "curve/curve_to_mesh"                   ),
+    "curve_to_points"            : ("curve"                     , "curve/curve_to_points"                 ),
+    "fill_curve"                 : ("curve"                     , "curve/fill_curve"                      ),
+    "fillet_curve"               : ("curve"                     , "curve/fillet_curve"                    ),
+    "resample_curve"             : ("curve"                     , "curve/resample_curve"                  ),
+    "reverse_curve"              : ("curve"                     , "curve/reverse_curve"                   ),
+    "sample_curve"               : ("curve"                     , "curve/sample_curve"                    ),
+    "subdivide_curve"            : ("curve"                     , "curve/subdivide_curve"                 ),
+    "trim_curve"                 : ("curve"                     , "curve/trim_curve"                      ),
+    
+    "curve_handle_position"      : ("curve"                     , "curve/curve_handle_position"           ),
+    "curve_handle_positions"     : ("curve"                     , "curve/curve_handle_position"           ),
+
+    "curve_tangent"              : ("curve"                     , "curve/curve_tangent"                   ),
+    "curve_tilt"                 : ("curve"                     , "curve/curve_tilt"                      ),
+    "endpoint_selection"         : ("curve"                     , "curve/endpoint_selection"              ),
+    "handle_type_selection"      : ("curve"                     , "curve/handle_type_selection"           ),
+    "is_spline_cyclic"           : ("curve"                     , "curve/is_spline_cyclic"                ),
+    "spline_length"              : ("curve"                     , "curve/spline_length"                   ),
+    "spline_parameter"           : ("curve"                     , "curve/spline_parameter"                ),
+    "spline_resolution"          : ("curve"                     , "curve/spline_resolution"               ),
+    "set_curve_radius"           : ("curve"                     , "curve/set_curve_radius"                ),
+    "set_curve_tilt"             : ("curve"                     , "curve/set_curve_tilt"                  ),
+    "set_handle_positions"       : ("curve"                     , "curve/set_handle_positions"            ),
+    "set_handle_type"            : ("curve"                     , "curve/set_handle_type"                 ),
+    "set_spline_cyclic"          : ("curve"                     , "curve/set_spline_cyclic"               ),
+    "set_spline_resolution"      : ("curve"                     , "curve/set_spline_resolution"           ),
+    "set_spline_type"            : ("curve"                     , "curve/set_spline_type"                 ),
+    "index"                      : ("curve_primitives"          , "curve_primitives/index"                ),
+    "arc"                        : ("curve_primitives"          , "curve_primitives/arc"                  ),
+    "bezier_segment"             : ("curve_primitives"          , "curve_primitives/bezier_segment"       ),
+    "curve_circle"               : ("curve_primitives"          , "curve_primitives/curve_circle"         ),
+    "curve_line"                 : ("curve_primitives"          , "curve_primitives/curve_line"           ),
+    
+    "curve_spiral"               : ("curve_primitives"          , "curve_primitives/curve_spiral"         ),
+    "spiral"                     : ("curve_primitives"          , "curve_primitives/curve_spiral"         ),
+    
+    "quadratic_bezier"           : ("curve_primitives"          , "curve_primitives/quadratic_bezier"     ),
+    "quadrilateral"              : ("curve_primitives"          , "curve_primitives/quadrilateral"        ),
+    "star"                       : ("curve_primitives"          , "curve_primitives/star"                 ),
+
+    "bounding_box"               : ("geometry"                  , "geometry/bounding_box"                 ),
+    "convex_hull"                : ("geometry"                  , "geometry/convex_hull"                  ),
+    "delete_geometry"            : ("geometry"                  , "geometry/delete_geometry"              ),
+    "duplicate_elements"         : ("geometry"                  , "geometry/duplicate_elements"           ),
+    "geometry_proximity"         : ("geometry"                  , "geometry/geometry_proximity"           ),
+    "geometry_to_instance"       : ("geometry"                  , "geometry/geometry_to_instance"         ),
+    "join_geometry"              : ("geometry"                  , "geometry/join_geometry"                ),
+    "merge_by_distance"          : ("geometry"                  , "geometry/merge_by_distance"            ),
+    "raycast"                    : ("geometry"                  , "geometry/raycast"                      ),
+    "separate_components"        : ("geometry"                  , "geometry/separate_components"          ),
+    "separate_geometry"          : ("geometry"                  , "geometry/separate_geometry"            ),
+    "transform"                  : ("geometry"                  , "geometry/transform"                    ),
+    "set_id"                     : ("geometry"                  , "geometry/set_id"                       ),
+    "set_position"               : ("geometry"                  , "geometry/set_position"                 ),
+
+    "boolean"                    : ("input"                     , "input/boolean"                         ),
+    "collection_info"            : ("input"                     , "input/collection_info"                 ),
+    "color"                      : ("input"                     , "input/color"                           ),
+    "integer"                    : ("input"                     , "input/integer"                         ),
+    "is_viewport"                : ("input"                     , "input/is_viewport"                     ),
+    "material"                   : ("input"                     , "input/material"                        ),
+    "object_info"                : ("input"                     , "input/object_info"                     ),
+    "scene_time"                 : ("input"                     , "input/scene_time"                      ),
+    "string"                     : ("input"                     , "input/string"                          ),
+    "value"                      : ("input"                     , "input/value"                           ),
+    "vector"                     : ("input"                     , "input/vector"                          ),
+
+    "input_index"                : ("input"                     , "input/input_index"                     ),
+    "index"                      : ("input"                     , "input/input_index"                     ),
+
+    "named_attribute"            : ("input"                     , "input/named_attribute"                 ),
+    "normal"                     : ("input"                     , "input/normal"                          ),
+    "position"                   : ("input"                     , "input/position"                        ),
+    "radius"                     : ("input"                     , "input/radius"                          ),
+    "id"                         : ("input"                     , "input/id"                              ),
+
+    "instance_on_points"         : ("instances"                 , "instances/instance_on_points"          ),
+    "instances_to_points"        : ("instances"                 , "instances/instances_to_points"         ),
+    "rotate_instances"           : ("instances"                 , "instances/rotate_instances"            ),
+    "scale_instances"            : ("instances"                 , "instances/scale_instances"             ),
+    "translate_instances"        : ("instances"                 , "instances/translate_instances"         ),
+    "realize_instances"          : ("instances"                 , "instances/realize_instances"           ),
+    
+    "replace_material"           : ("material"                  , "material/replace_material"             ),
+    "material_index"             : ("material"                  , "material/material_index"               ),
+    "material_selection"         : ("material"                  , "material/material_selection"           ),
+    "set_material"               : ("material"                  , "material/set_material"                 ),
+    "set_material_index"         : ("material"                  , "material/set_material_index"           ),
+
+    "dual_mesh"                  : ("mesh"                      , "mesh/dual_mesh"                        ),
+    "extrude_mesh"               : ("mesh"                      , "mesh/extrude_mesh"                     ),
+    "flip_faces"                 : ("mesh"                      , "mesh/flip_faces"                       ),
+    "mesh_boolean"               : ("mesh"                      , "mesh/mesh_boolean"                     ),
+    "mesh_to_curve"              : ("mesh"                      , "mesh/mesh_to_curve"                    ),
+    "mesh_to_points"             : ("mesh"                      , "mesh/mesh_to_points"                   ),
+    "scale_elements"             : ("mesh"                      , "mesh/scale_elements"                   ),
+    "split_edges"                : ("mesh"                      , "mesh/split_edges"                      ),
+    "subdivide_mesh"             : ("mesh"                      , "mesh/subdivide_mesh"                   ),
+    "subdivision_surface"        : ("mesh"                      , "mesh/subdivision_surface"              ),
+    "triangulate"                : ("mesh"                      , "mesh/triangulate"                      ),
+    "edge_angle"                 : ("mesh"                      , "mesh/edge_angle"                       ),
+    "edge_neighbors"             : ("mesh"                      , "mesh/edge_neighbors"                   ),
+    "edge_vertices"              : ("mesh"                      , "mesh/edge_vertices"                    ),
+    "face_area"                  : ("mesh"                      , "mesh/face_area"                        ),
+    "face_is_planar"             : ("mesh"                      , "mesh/face_is_planar"                   ),
+    "face_neighbors"             : ("mesh"                      , "mesh/face_neighbors"                   ),
+    "is_shade_smooth"            : ("mesh"                      , "mesh/is_shade_smooth"                  ),
+    "mesh_island"                : ("mesh"                      , "mesh/mesh_island"                      ),
+    "vertex_neighbors"           : ("mesh"                      , "mesh/vertex_neighbors"                 ),
+    "set_shade_smooth"           : ("mesh"                      , "mesh/set_shade_smooth"                 ),
+
+    "cone"                       : ("mesh_primitives"           , "mesh_primitives/cone"                  ),
+    "cube"                       : ("mesh_primitives"           , "mesh_primitives/cube"                  ),
+    "cylinder"                   : ("mesh_primitives"           , "mesh_primitives/cylinder"              ),
+    "grid"                       : ("mesh_primitives"           , "mesh_primitives/grid"                  ),
+    
+    "icosphere"                  : ("mesh_primitives"           , "mesh_primitives/icosphere"             ),
+    "ico_sphere"                 : ("mesh_primitives"           , "mesh_primitives/icosphere"             ),
+
+    "mesh_circle"                : ("mesh_primitives"           , "mesh_primitives/mesh_circle"           ),
+    "mesh_line"                  : ("mesh_primitives"           , "mesh_primitives/mesh_line"             ),
+    "uv_sphere"                  : ("mesh_primitives"           , "mesh_primitives/uv_sphere"             ),
+
+    "viewer"                     : ("output"                    , "output/viewer"                         ),
+
+    "distribute_points_on_faces" : ("point"                     , "point/distribute_points_on_faces"      ),
+    "points_to_vertices"         : ("point"                     , "point/points_to_vertices"              ),
+    "points_to_volume"           : ("point"                     , "point/points_to_volume"                ),
+    "set_point_radius"           : ("point"                     , "point/set_point_radius"                ),
+
+    "join_strings"               : ("text"                      , "text/join_strings"                     ),
+    "replace_string"             : ("text"                      , "text/replace_string"                   ),
+    "slice_string"               : ("text"                      , "text/slice_string"                     ),
+    "special_characters"         : ("text"                      , "text/special_characters"               ),
+    "string_length"              : ("text"                      , "text/string_length"                    ),
+    "string_to_curves"           : ("text"                      , "text/string_to_curves"                 ),
+    "value_to_string"            : ("text"                      , "text/value_to_string"                  ),
+
+    "brick"                      : ("texture"                   , "texture/brick"                         ),
+    "brick_texture"              : ("texture"                   , "texture/brick"                         ),
+    
+    "checker"                    : ("texture"                   , "texture/checker"                       ),
+    "checker_texture"            : ("texture"                   , "texture/checker"                       ),
+    
+    "gradient"                   : ("texture"                   , "texture/gradient"                      ),
+    "gradient_texture"           : ("texture"                   , "texture/gradient"                      ),
+
+    "image"                      : ("texture"                   , "texture/image"                         ),
+    "image_texture"              : ("texture"                   , "texture/image"                         ),
+    
+    "magic"                      : ("texture"                   , "texture/magic"                         ),
+    "magic_texture"              : ("texture"                   , "texture/magic"                         ),
+    
+    "musgrave"                   : ("texture"                   , "texture/musgrave"                      ),
+    "musgrave_texture"           : ("texture"                   , "texture/musgrave"                      ),
+    
+    "noise"                      : ("texture"                   , "texture/noise"                         ),
+    "noise_texture"              : ("texture"                   , "texture/noise"                         ),
+    
+    "voronoi"                    : ("texture"                   , "texture/voronoi"                       ),
+    "voronoi_texture"            : ("texture"                   , "texture/voronoi"                       ),
+    
+    "wave"                       : ("texture"                   , "texture/wave"                          ),
+    "wave_texture"               : ("texture"                   , "texture/wave"                          ),
+    
+    "white_noise"                : ("texture"                   , "texture/white_noise"                   ),
+    "white_noise_texture"        : ("texture"                   , "texture/white_noise"                   ),
+    
+    "accumulate_field"           : ("utilities"                 , "utilities/accumulate_field"            ),
+    "align_euler_to_vector"      : ("utilities"                 , "utilities/align_euler_to_vector"       ),
+    "boolean_math"               : ("utilities"                 , "utilities/boolean_math"                ),
+    "clamp"                      : ("utilities"                 , "utilities/clamp"                       ),
+    "compare"                    : ("utilities"                 , "utilities/compare"                     ),
+    "field_at_index"             : ("utilities"                 , "utilities/field_at_index"              ),
+    "float_curve"                : ("utilities"                 , "utilities/float_curve"                 ),
+    "float_to_integer"           : ("utilities"                 , "utilities/float_to_integer"            ),
+    "map_range"                  : ("utilities"                 , "utilities/map_range"                   ),
+    "math"                       : ("utilities"                 , "utilities/math"                        ),
+    "random_value"               : ("utilities"                 , "utilities/random_value"                ),
+    "rotate_euler"               : ("utilities"                 , "utilities/rotate_euler"                ),
+    "switch"                     : ("utilities"                 , "utilities/switch"                      ),
+
+    "combine_xyz"                : ("vector"                    , "vector/combine_xyz"                    ),
+    "separate_xyz"               : ("vector"                    , "vector/separate_xyz"                   ),
+    "vector_curves"              : ("vector"                    , "vector/vector_curves"                  ),
+    "vector_math"                : ("vector"                    , "vector/vector_math"                    ),
+    "vector_rotate"              : ("vector"                    , "vector/vector_rotate"                  ),
+
+    "volume_to_mesh"             : ("volume"                    , "volume/volume_to_mesh"                 ),
+    
+    "group"                      : ("group"                     , "group"                                 ),
+    
+    
+}
+
+
 
 # ====================================================================================================
 # Some nodes need to reorder the input sockets for more natural use
@@ -255,24 +475,6 @@ def indent_set(depth=0):
 
 _indent_, _0_, _1_, _2_, _3_, _4_ = indent_set(0)
 
-# ====================================================================================================
-# All nodes
-
-btree_nodes = bpy.data.node_groups["Geometry Nodes"].nodes
-btree_nodes.clear()
-
-class BNodes(dict):
-    def __init__(self):
-        super().__init__()
-        for tp in dir(bpy.types):
-            if tp.find('Legacy') < 0:
-                try:
-                    bnode = btree_nodes.new(tp)
-                except:
-                    continue
-                self[tp] = bnode
-                
-BNODES = BNodes()
 
 # ====================================================================================================
 # Call argument
@@ -354,7 +556,7 @@ class Argument:
         arg.header_str = header_str
         arg.call_str   = call_str
         for k, v in kwargs:
-            setattr(self, k, v)
+            setattr(arg, k, v)
         return arg
         
     @property
@@ -381,6 +583,33 @@ class Argument:
         return isinstance(self.wsocket, list)
     
     @property
+    def scall_demo(self):
+        
+        if self.arg_type == 'CLS':
+            return ""
+        
+        elif self.arg_type == 'SOCKET':
+            if self.is_multi:
+                return f"{self.name}_1, {self.name}_2, {self.name}_3"
+            elif self.is_self:
+                return ""
+            else:
+                return self.name
+        
+        elif self.arg_type == 'PARAM':
+            if self.is_fixed:
+                return ""
+            else:
+                return self.name
+            
+        elif self.arg_type == 'OTHER':
+            return self.header_str
+        
+        else:
+            raise RuntimeError(f"Unkwnon argument type: {self.arg_type}")
+        
+    
+    @property
     def sheader(self):
         
         if self.arg_type == 'CLS':
@@ -394,7 +623,7 @@ class Argument:
                     return f"*{self.name}"
             else:
                 if self.is_self:
-                    return f"self"
+                    return "self"
                 else:
                     return f"{self.name}=None"
         
@@ -444,10 +673,16 @@ class Argument:
     @property
     def scomment(self):
         
-        if self.arg_type in ['CLS', 'OTHER']:
+        if self.arg_type == 'CLS':
             return ""
         
-        s = f"{self.name:15s}: "
+        if self.arg_type == 'OTHER':
+            if self.header_str == "":
+                return ""
+            else:
+                return self.header_str.replace('=', ':')
+        
+        s = f"{self.name} : "
         if self.is_socket:
             if self.is_multi:
                 s += "*"
@@ -499,6 +734,18 @@ class Arguments(list):
                 
         else:
             self.append(arg)
+    
+    @property
+    def scall_demo(self):
+        s = ""
+        for arg in self:
+            sh = arg.scall_demo
+            if sh != "":
+                s += f", {sh}"
+        if s != "":
+            return s[2:]
+        else:
+            return s
         
     @property
     def sheader(self):
@@ -562,40 +809,47 @@ class Arguments(list):
 
     # ---------------------------------------------------------------------------
     # Generate the comments in a node call
+    
+    def documentation(self):
         
-    def gen_comment(self, _i_):
+        sections = {"Sockets": [], "Parameters": [], "Fixed parameters": []}
         
-        ok_sockets = True
-        ok_params  = True
-        ok_fixed   = False
         for arg in self:
-            if arg.is_socket:
-                if ok_sockets:
-                    yield _0_
-                    yield _i_ + "Sockets arguments"
-                    yield _i_ + "-----------------"
-                    ok_sockets = False
-                yield _i_ + _indent_ + arg.scomment
-
-            if arg.is_param:
-                if arg.is_fixed:
-                    ok_fixed = True
+            
+            section = None
+            if arg.arg_type == 'OTHER':
+                if arg.header_str == "":
+                    s = arg.call_str
+                    section = sections["Fixed parameters"]
                 else:
-                    if ok_params:
-                        yield _0_
-                        yield _i_ + "Parameters arguments"
-                        yield _i_ + "--------------------"
-                        ok_params = False
-                    yield _i_ + _indent_ + arg.scomment
+                    s = arg.header_str
+                    section = sections[ "Parameters"]
+                    
+                if s == "":
+                    continue
                 
-        if ok_fixed:
-            yield _0_
-            yield _i_ + "Fixed parameters"
-            yield _i_ + "----------------"
+                section.append(s.replace("=", ":"))
 
-            for arg in self:
-                if arg.is_param and arg.is_fixed:
-                    yield _i_ + _indent_ + arg.scomment
+            else:
+                scomment = arg.scomment
+                if scomment == "":
+                    continue
+            
+                if arg.is_socket:
+                    sections["Sockets"].append(scomment)
+                elif arg.is_param:
+                    if arg.is_fixed:
+                        sections["Fixed parameters"].append(scomment)
+                    else:
+                        sections["Parameters"].append(scomment)
+                        
+        text = ""
+        for section, lst in sections.items():
+            if lst:
+                lst.insert(0, f"## {section}")
+                text += "\n    - ".join(lst)
+                
+        return text
 
 # ====================================================================================================
 # Socket wrapper
@@ -844,7 +1098,8 @@ class Parameter:
         try:
             setattr(self.wnode.bnode, self.name, v)
         except:
-            print(f"CAUTION: error when setting parameter {self.name} with value '{v}'")
+            pass
+            #print(f"CAUTION: error when setting parameter {self.name} with value '{v}'")
         
     def reset(self):
         if self.default is not None:
@@ -883,6 +1138,8 @@ class WNode:
     
     def __init__(self, bnode):
         
+        #print("NODE bl_idname", bnode.bl_idname)
+        
         WNode.WNODES[bnode.bl_idname] = self
         
         self.bnode   = bnode
@@ -912,6 +1169,11 @@ class WNode:
                 param.value = value
                 self.inputs.update_unames_indices(value)
                 self.outputs.update_unames_indices(value)
+                
+        # ----- Data sockets calling this node
+        
+        self.data_sockets = {}
+                
 
     def __str__(self):
         return f"[{self.node_name}]"
@@ -922,6 +1184,14 @@ class WNode:
     
     @property
     def node_name(self):
+        
+        # ----- Some hacks
+        
+        if self.bnode.name == "ColorRamp":
+            return "ColorRamp"
+        
+        # ----- Standard
+        
         words = self.bnode.name.split(' ')
         s = ""
         for word in words:
@@ -934,6 +1204,14 @@ class WNode:
     
     @property
     def function_name(self):
+
+        # ----- Some hacks
+        
+        if self.bnode.name == "ColorRamp":
+            return "color_ramp"
+        
+        # ----- Standard
+
         words = self.bnode.name.split(' ')
         s = ""
         for word in words:
@@ -947,6 +1225,26 @@ class WNode:
                     s += '_'
                 s += w
         return s
+    
+    @property
+    def blender_ref_name(self):
+        return self.bnode.name.lower().replace(' ', '_')
+    
+    @property
+    def blender_ref_menu(self):
+        return NODES_MENU[self.blender_ref_name][0]
+    
+    # ---------------------------------------------------------------------------
+    # Blender reference
+
+    @property
+    def blender_python_ref(self):
+        return f"https://docs.blender.org/api/current/bpy.types.{self.bl_idname}.html"
+    
+    @property
+    def blender_ref(self):
+        return f"https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/{NODES_MENU[self.blender_ref_name][1]}.html"
+    
     
     # ---------------------------------------------------------------------------
     # Set parameters
@@ -1075,6 +1373,133 @@ class WNode:
                 
         if s != "":
             yield s + "]"
+            
+    # ====================================================================================================
+    # Build the documentation
+    
+    def documentation(self):
+
+        args = self.get_node_arguments()
+        
+        # ----- Source code demo
+        
+        s = args.sheader
+        scall = f"node = nodes.{self.node_name}({s}"
+        if s != "":
+            scall += ", "
+        scall += "label=None, node_color=None)"
+        
+        section = Section(None, f"Node {self.node_name}")
+        section.id = self.node_name
+        
+        section.set_text(f"""
+        > Geometry node name: [{self.bnode.name}]({self.blender_ref})<br>
+        > Blender type: [{self.bnode.name}]({self.blender_python_ref})
+        
+        <sub>go to [index](ref:index)</sub>
+        
+        Initialization
+        --------------
+        
+        ```python
+        from geonodes import nodes
+        {scall}
+        ```
+        
+        """)
+        
+        # ----- Arguments
+        
+        arg_section = Section(section, "Arguments")
+    
+        if self.inputs:
+            
+            lst = [""]
+            for uname, wsock in self.inputs.unames.items():
+                
+                if isinstance(wsock, list):
+                    sval = f"{self.driving_param} dependant"
+                elif wsock.is_multi_input:
+                    sval = f"*{wsock.class_name}"
+                else:
+                    sval = f"{wsock.class_name}"
+                
+                lst.append(f"{uname} : {sval}")
+                
+            new_section = Section(arg_section, "Input sockets")
+            new_section.set_text("\n- ".join(lst))
+            
+        if self.parameters:
+            
+            lst = [""]
+            for name, param in self.parameters.items():
+                
+                stype = param.param_type
+                if stype == 'str':
+                    stype = f"{stype} (default = '{param.default}')"
+                else:
+                    stype = f"{stype} (default = {param.default})"
+                
+                if param.is_enum:
+                    stype += f" in {param.values}"
+                    
+                lst.append(f"{name} : {stype}")
+                
+            new_section = Section(arg_section, "Parameters")
+            new_section.set_text("\n- ".join(lst))
+            
+        new_section = Section(arg_section, "Node label")
+        new_section.set_text(
+            f"- label : Geometry node display label (default=None)\n" +
+            f"- node_color : Geometry node color (default=None)")
+            
+        
+        # ----- Data type dependant sockets
+                    
+        if self.has_shared_sockets:
+            
+            new_section = Section(section, "Data type dependant sockets")
+            new_section.set_text(f"""
+                                 
+            - Driving parameter : {self.driving_param} in {self.parameters[self.driving_param].values}
+            - Input sockets  : {list(self.inputs.shared_sockets.keys())}
+            - Output sockets : {list(self.outputs.shared_sockets.keys())}   
+                              
+            """)
+
+        # ----- Output sockets
+    
+        if self.outputs:
+            lst = [""]
+            for uname, wsock in self.outputs.unames.items():
+                
+                if isinstance(wsock, list):
+                    sval = f"{self.driving_param} dependant"
+                else:
+                    sval = wsock.class_name
+                    if wsock.is_multi_input:
+                        sval += "(multi input)"
+                
+                lst.append(f"{uname} : {sval}")
+                
+            new_section = Section(section, "Output sockets")
+            new_section.set_text("\n- ".join(lst))
+                
+        # ----- Data classes
+        
+        if self.data_sockets:
+            
+            lst = [""]
+            for class_name in sorted(self.data_sockets):
+                refs = sorted(self.data_sockets[class_name], key=lambda nf: nf[0])
+                for meth_name, family in refs:
+                    lst.append(f"[{class_name}](id:{class_name}).[{meth_name}](id:{class_name}#{meth_name}) : {family}")
+                    
+            new_section = Section(section, "Data sockets")
+            slst = "\n- ".join(lst)
+            new_section.set_text(f"> Data socket classes implementing this node.\n\n{slst}\n")
+        
+        return section
     
     # ====================================================================================================
     # Generate the node class
@@ -1092,68 +1517,17 @@ class WNode:
     
         # ---------------------------------------------------------------------------
         # Class comment
-    
-        yield _1_ + '"""' + f"Node '{self.bnode.name}' ({self.bl_idname})\n"
-    
-        if self.has_shared_sockets:
-            yield _1_ + "Data type dependant sockets"
-            yield _1_ + "---------------------------\n"
-            yield _2_ + f"Driving parameter : {self.driving_param} in {self.parameters[self.driving_param].values}\n"
-            inds = self.inputs.shared_sockets
-            if inds:
-                yield _2_ + f"Input sockets     : {list(inds.keys())}"
-            inds = self.outputs.shared_sockets
-            if inds:
-                yield _2_ + f"Output sockets    : {list(inds.keys())}"
-            yield _0_
         
-        if self.inputs:
-            yield _1_ + "Input sockets"
-            yield _1_ + "-------------"
-            for uname, wsock in self.inputs.unames.items():
-                yield _2_ + f"{uname:15s} : "
-                if isinstance(wsock, list):
-                    yield f"{self.driving_param} dependant"
-                else:
-                    if wsock.is_multi_input:
-                        yield "*"
-                    yield wsock.class_name
-                    
-            yield _0_
-        
-        if self.parameters:
-            yield _1_ + "Parameters"
-            yield _1_ + "----------"
-            for name, param in self.parameters.items():
-                yield _2_ + f"{name:15s} : "
-                #stype = type(param.default).__name__
-                stype = param.param_type
-                sdef = f"'{param.default}'" if stype == 'str' else f"({param.default})"
-                yield sdef
+        section = self.documentation()
+        self.node_doc = section
+        first = True
+        for line in section.gen_text(False):
+            if first:
+                yield _1_ + '"""' + line
+                first = False
+            else:
+                yield _1_ + line
                 
-                if param.is_enum:
-                    yield " in "
-                    indent = ""
-                    for line in self.format_list(param.values, 100):
-                        yield indent + line
-                        indent = _2_ + _indent_*5
-                else:
-                    yield " " + stype
-            yield _0_
-            
-    
-        if self.outputs:
-            yield _1_ + "Output sockets"
-            yield _1_ + "--------------"
-            for uname, wsock in self.outputs.unames.items():
-                yield _2_ + f"{uname:15s} : "
-                if isinstance(wsock, list):
-                    yield f"{self.driving_param} dependant"
-                else:
-                    yield wsock.class_name
-                    if wsock.is_multi_input:
-                        yield " (multi input)"
-    
         yield _1_ + '"""' + "\n"
     
         # ---------------------------------------------------------------------------
@@ -1161,18 +1535,18 @@ class WNode:
         #
         # def __init__(self, input sockets, param sockets, label):
     
-        yield _1_ + f"def __init__(self"
+        yield _1_ + "def __init__(self"
         s = args.sheader
         if s != "":
             yield ", " + s
-        yield ", label=None):\n"
+        yield ", label=None, node_color=None):\n"
     
         # ---------------------------------------------------------------------------
         # Call of super
         #
         # super().__init__(bl_idname, name, label)
         
-        yield _2_ + f"super().__init__('{self.bl_idname}', name='{self.bnode.name}', label=label)"
+        yield _2_ + f"super().__init__('{self.bl_idname}', name='{self.bnode.name}', label=label, node_color=node_color)"
 
         # ---------------------------------------------------------------------------
         # Parameters
@@ -1181,7 +1555,7 @@ class WNode:
         
         yield_comment = True
         if False:
-            yield _2_ + f"self.parameters = ["
+            yield _2_ + "self.parameters = ["
             sep = ""
             for name in self.parameters:
                 yield f"{sep}'{name}'"
@@ -1327,288 +1701,130 @@ class WNode:
                 yield _1_ + f"@{param.uname}.setter"
                 yield _1_ + f"def {param.uname}(self, value):"
                 yield _2_ + f"self.bnode.{name} = value\n"
-    
-    
-    # ====================================================================================================
-    # Generate a call
-    
-    def gen_call(self, family, class_name, meth_name, self_name=None, settable=False, properties=None, **fixed):
-        
-        #print("GEN_CALL:", self.node_name, family, class_name, meth_name, self_name)
-        #print()
-        
-        _indent_, _0_, _1_, _2_, _3_, _4_ = indent_set(-1 if family == 'FUNCTION' else 0)
 
-        # ---------------------------------------------------------------------------
-        # Configure the node to steer the enablement
-
-        self.set_params(fixed)
-        
-        # ---------------------------------------------------------------------------
-        # Dictionary : {uname : class_name}
-        # of the input / ouput sockets in this configuration
-        
-        inp_unames = self.input_unames(fixed)
-        ret_unames = self.output_unames(fixed)
-        
-        # ---------------------------------------------------------------------------
-        # If self_name is None, use the first enabled input socket of the proper class
-
-        if family in ['FUNCTION', 'STATIC', 'CLASS', 'CONSTRUCTOR']:
-            if self_name is not None:
-                raise RuntimeError(f"The method {meth_name} on node {self.node_name} is {family}: it can have a self argument: {self_name}.")
-                
-        elif self_name is None and self.inputs:
-            geo_socket = None
-            for wsock in self.inputs:
-                #print(class_name, wsock.uname, wsock.class_name, wsock.enabled)
-                if wsock.enabled:
-                    if wsock.class_name == class_name:
-                        self_name = wsock.uname
-                        break
-                    if wsock.class_name == 'Geometry' and geo_socket is None:
-                        geo_socket = wsock.class_name
-                    
-            if self_name is None:
-                if class_name in ['Mesh', 'Points', 'Instances', 'Volume', 'Curve', 'Spline'] and geo_socket is not None:
-                    self_name = geo_socket
-                else:
-                    raise RuntimeError(f"The method {meth_name} on node {self.node_name} is {family}: it requires a self argument for class {class_name}.")
-                
-        # ---------------------------------------------------------------------------
-        # Arguments
-        
-        args     = Arguments()
-        arg_self = False
-        arg_mult = False
-
-        for uname in inp_unames:
-            wsocks = self.inputs.unames[uname]
-            
-            wsock = None
-            if isinstance(wsocks, list):
-                for ws in wsocks:
-                    if ws.enabled:
-                        wsock = ws
-                        break
-            else:
-                wsock = wsocks
-                
-            if wsock is None:
-                continue
-                
-            is_self  = uname == self_name
-            args.add(Argument.Socket(uname, wsocket=wsock, is_self=is_self))
-            
-        for name, param in self.parameters.items():
-            is_fixed = name in fixed
-            value = fixed[name] if is_fixed else param.default
-            args.append(Argument.Param(name, value, param=param, is_fixed=is_fixed))
-            
-        if family == 'PROPERTY':
-            args.add(Argument.Other(header_str="", call_str="label=f\"{self.node_chain_label}." + meth_name + "\""))
-
-        # ----- Ensure the socket arguments are properly ordered
-        
-        args.check_order(self.bl_idname)
-            
-        # ----------------------------------------------------------------------------------------------------
-        # Function header
-        #
-        # @decorator
-        # def method(self, args...):
-        
-        # ----- Static method
-        # @staticmethod
-        # def method(args,...):
-        
-        is_cls = False
-        if family in 'STATIC':
-            yield _1_ + "@staticmethod"
-
-        # ----- Class method
-        # @classmethod
-        # def method(cls, args,...):
-
-        elif family in ['CLASS', 'CONSTRUCTOR']:
-            yield _1_ + "@classmethod"
-            args.add(Argument.Cls())
-            is_cls = True
-
-        # ----- Property
-        # @property
-        # def method(self, args,...):
-
-        elif family == 'PROPERTY':
-            yield _1_ + "@property"
-
-        # ----- Other
-        # def method(self, args,...):
-        
-        yield _1_ + f"def {meth_name}({args.sheader}):"
-        
-        # ----------------------------------------------------------------------------------------------------
-        # Comment
-        
-        yield _2_ + '"""' + f"Call node {self.node_name} ({self.bl_idname})"
-        for line in args.gen_comment(_2_):
-            yield line
-    
-        yield _0_
-        yield _2_ + "Returns"
-        yield _2_ + "-------"
-        
-        if family == 'STACK':
-            yield _3_ + "self\n"
-        
-        else:
-            if len(ret_unames) == 0:
-                yield _3_ + f"self\n"
-
-            elif len(ret_unames) == 1:
-                yield _3_ + ret_unames[list(ret_unames)[0]]
-            
-            else:
-                yield _3_ + "Sockets ["
-                sep = ""
-                for uname in ret_unames:
-                    yield f"{sep}{uname} ({ret_unames[uname]})"
-                    sep = ", "
-                yield "]"
-        
-        yield _2_ + '"""' + "\n"
-    
-        # ----------------------------------------------------------------------------------------------------
-        # Node call string
-        
-        snode_call = f"nodes.{self.node_name}({args.scall})"
-            
-        # ----------------------------------------------------------------------------------------------------
-        # ----- Call and return
-
-        # ----------------------------------------------------------------------------------------------------
-        # STACK: call the stack with the node
-        #
-        # def method(self, ...):
-        #     return self.stack(node(...))
-    
-        if family == 'STACK':
-            yield _2_ + f"return self.stack({snode_call})\n"
-    
-        # ----------------------------------------------------------------------------------------------------
-        # PROPERTY: create a local attribute plus create children properties
-        # if the resulting node has several sockets:
-        #
-        # @property
-        # def length(self):
-        #     if self.length_ is None:
-        #         self.length_ = Node(...).length
-        #     return self.length_
-        #
-        # or
-        #
-        # @property
-        # def components(self):
-        #     if self.components is None:
-        #         self.components_ = Node(...)
-        #     return self.components_
-        #
-        # @property
-        # def mesh_component(self):
-        #     return self.components.mesh
-        #
-        # @property
-        # def curve_component(self):
-        #     return self.components.curve
-    
-        elif family == 'PROPERTY':
-            
-            settable   = properties['settable']
-            prop_names = properties['names']
-            
-            if len(ret_unames) == 0:
-                raise RuntimeError(f"Impossible to implement a property on {self.node_name} with not output sockets!")
-                
-            yield _2_ + f"if self.{meth_name}_ is None:"
-            yield _3_ + f"self.{meth_name}_ = {snode_call}"
-        
-            if len(ret_unames) == 1:
-                yield f".{list(ret_unames)[0]}"
-            yield _2_ + f"return self.{meth_name}_\n"
-        
-            if len(ret_unames) > 1:
-                yield "\n"
-                if prop_names is None:
-                    prop_names = ret_unames
-                for uname, pname in zip(ret_unames, prop_names):
-                    yield _1_ + "@property"
-                    yield _1_ + f"def {pname}(self):"
-                    yield _2_ + f"return self.{meth_name}.{uname}\n"
-            
-                    if settable:
-                        yield _1_ +f"@{pname}.setter"
-                        yield _1_ + f"def {pname}(self, value):"
-                        yield _2_ + f"self.{meth_name}.{uname} = value\n"
-                
-        # ----------------------------------------------------------------------------------------------------
-        # Other : can return 3 things depending on the number of output sockets in ret_unames
-        #
-        # 0. no socket   : return None
-        # 1. 1 socket    : return the socket
-        # 2: > 1 sockets : return the node
-        #
-        # def method(self,...):
-        #     Node(...)
-        #
-        # def method(self,...):
-        #     return Node(...).mesh
-        #
-        # def method(self,...):
-        #     return Node(...)
-    
-        else:
-            if len(ret_unames) == 0:
-                yield _2_ + f"{snode_call}\n"
-            
-            elif len(ret_unames) == 1:
-                if is_cls:
-                    yield _2_ + f"return cls({snode_call}.{list(ret_unames)[0]})\n"
-                else:
-                    yield _2_ + f"return {snode_call}.{list(ret_unames)[0]}\n"
-            
-            else:
-                yield _2_ + f"return {snode_call}\n"
-        
         
 # ====================================================================================================
-# Generate the nodes module
+# Create a tree with all the possible nodes
 
-def create_nodes_module(fname):
-    with open(fname, 'w') as f:
-        f.write("from geonodes.core.node import Node\n")
+class BNodes(dict):
+    
+    def __init__(self):
+        print("Collecting the available geometry nodes...")        
+        super().__init__()
+
+        btree_nodes = bpy.data.node_groups["Geometry Nodes"].nodes
+        btree_nodes.clear()
+
+        for tp in dir(bpy.types):
+            if tp.find('Legacy') < 0:
+                try:
+                    bnode = btree_nodes.new(tp)
+                except:
+                    continue
+                self[tp] = bnode
+
+# ====================================================================================================
+# Generate the files
+
+#generated_nodes = []
+#generated_sockets = []
+
+# ----------------------------------------------------------------------------------------------------
+# Package documentation
+
+package_doc = Doc()
+package_doc.md_folder = "docs"
+package_doc.references['index'] = "/docs/index.md"
+
+sockets_doc = Section(package_doc, "Data sockets")
+sockets_doc.md_folder = "sockets"
+
+nodes_doc   = Section(package_doc, "Nodes")
+nodes_doc.md_folder = "nodes"
+
+core_doc   = Section(package_doc, "Core")
+core_doc.md_folder = ""
+
+
+# ----------------------------------------------------------------------------------------------------
+# Generate the classes
+# 
+# When a classes is created, it update the nodes it uses
+                
+def create_data_sockets(fpath):
+    
+    # ----- sockets files
+
+    gsock.GEN_NODES = []
+    class_gens = []
+    
+    nodes_md = {}
+    
+    # ---------------------------------------------------------------------------
+    # Loop on the data sockets generators
+
+    for i, dgen in enumerate(gsock.DATA_CLASSES):
         
-        for bnode in BNODES.values():
-            wn = WNode(bnode)
+        class_gen = dgen(WNode.WNODES)
+        class_gens.append(class_gen)
+        
+        with open(fpath + f"sockets/{class_gen.class_name.lower()}.py", 'w') as f:
+
+            for line in class_gen.gen_class():
+                f.write(line)
+                
+            f.write("\n\n")
             
-            """
-            if wn.has_shared_sockets:
-                sblid = f"'{wn.bl_idname}'"
-                print(f"    {sblid:32s} : '{wn.function_name}', # {wn.parameters[wn.driving_param].values}")
-                dprm = wn.parameters[wn.driving_param]
-                for value in dprm.values:
-                    print('---', value)
-                    dprm.value = value
-                    prms = wn.non_driving_params()
-                    for n, p in prms.items():
-                        if p.is_enum:
-                            print(f"   {n:15s} : {p.values}")
-                    print()
-                print()
-            """
+        class_gen.register_nodes()
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Add the class documentation to the global doc
+        
+        sockets_doc.add_section(class_gen.class_doc)
+
+        # ----- For further indexing
+                
+        #generated_sockets.append(class_gen.class_name)
+
+
+# ----------------------------------------------------------------------------------------------------
+# Creat all the nodes in 
+
+def create_nodes(fpath, BNODES):
+    
+    fname = fpath + "nodes/nodes.py"
+    
+    with open(fname, 'w') as f:
+        
+        QUOTES = '"""'
+        
+        f.write(f"""#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+{QUOTES}
+Created on {date.today()}
+@author: Generated from generator module
+Blender version: {bpy.app.version_string}
+{QUOTES}
+
+from geonodes.core.node import Node
+
+""")
+
+        creation = []
+        for bnode in BNODES.values():
+            
+            # ----------------------------------------------------------------------------------------------------
+            # Load the node
+            
+            wn = WNode.WNODES[bnode.bl_idname]
+            
+            # ----- Some exclusion
             
             if wn.bl_idname in ['NodeReroute', 'NodeGroupInput', 'NodeGroupOutput', 'GeometryNodeViewer', 'NodeFrame']:
-                logger.info(f"Ignore: {wn.bl_idname}")
                 continue
+            
+            # ----- Write the node
             
             f.write(f"\n# {'-'*100}\n")
             f.write(f"# Node {wn.node_name} for {wn.bl_idname}\n")
@@ -1616,54 +1832,209 @@ def create_nodes_module(fname):
             for line in wn.gen_node_class():
                 f.write(line)
                 
-def gen_geonodes(fpath=None):
-
-    fpath = "/Users/alain/Documents/blender/scripts/modules/geonodes/"
-    
-    # ----- nodes.py
-
-    create_nodes_module(fpath + "nodes/nodes.py")
-    #create_nodes_module("/Users/alain/Documents/blender/scripts/modules/geonodes/nodes/nodes.py")
-
-    # ----- sockets files
-
-    gsock.GEN_NODES = []
-
-    for i, dgen in enumerate(gsock.DATA_CLASSES):
-        
-        class_gen = dgen(WNode.WNODES)
-        
-        #with open(get_folder("sockets").joinpath(f"{class_gen.class_name.lower()}.py"), 'w') as f:
-        with open(fpath + f"sockets/{class_gen.class_name.lower()}.py", 'w') as f:
-
-            for line in class_gen.gen_class():
-                f.write(line)
-                
-            f.write("\n\n")
-                
-                
-"""                    
+            # ----- The documentation
             
-
-create_nodes_module("/Users/alain/Documents/blender/scripts/modules/geonodes/nodes/nodes.py")
-
-gsock.GEN_NODES = []
-
-for i, dgen in enumerate(gsock.DATA_CLASSES):
-    
-    class_gen = dgen(WNode.WNODES)
-    
-    fpath = "/Users/alain/Documents/blender/scripts/modules/geonodes/sockets/"
-    
-    #with open(get_folder("sockets").joinpath(f"{class_gen.class_name.lower()}.py"), 'w') as f:
-    with open(fpath + f"{class_gen.class_name.lower()}.py", 'w') as f:
-
-        for line in class_gen.gen_class():
-            f.write(line)
+            wn.node_doc.md_file = f"{wn.node_name}.md"
+            nodes_doc.add_section(wn.node_doc)
+                    
+            # ----- For creation by bl_idname
             
-        f.write("\n\n")
+            creation.append(f"'{wn.bl_idname}': {wn.node_name}") 
+            
+        # ----- A function to create a node from the bl_idname
         
-"""
+        f.write(f"# {'-'*80}\n")
+        f.write("# Create node from its bl_idname\n\n")
+        
+        f.write( "def create_node(bl_idname, *args, **kwargs):\n")
+        sdict = ",\n    ".join(creation)
+        O = "{"
+        C = "}"
+        f.write(f"    nodes = {O}{sdict}{C}\n")
+        f.write( "    return nodes[bl_idname](*args, **kwargs)\n\n")
+        
+        
+        
+        
+                    
+# ====================================================================================================
+# Generate the nodes module
+                
+def create_geonodes(fpath):
+    
+    print("-"*80)
+    print("Generating nodes and sockets python from Blender geometry nodes")
+    print(f"Blender version: {bpy.app.version_string}")
+    print("")
+                
+    # ----- Create all the blender nodes
+    
+    BNODES = BNodes()
+
+    # ----- Create all the wrappers
+
+    for bnode in BNODES.values():
+        WNode(bnode)
+    
+    # ---------------------------------------------------------------------------
+    # data sockets classes
+    
+    print("Creating data sockets...")
+    
+    create_data_sockets(fpath)
+
+    # ---------------------------------------------------------------------------
+    # nodes.py
+
+    print("Creating geometry nodes from Blender...")
+
+    create_nodes(fpath, BNODES)
+
+    # ---------------------------------------------------------------------------
+    # Documentation
+    
+    # ----- Parse core files to get the inline documentation
+    
+    node_doc = Parser.FromFile(fpath + "core/node.py").documentation()
+    
+    for name in ["DataSocket", "Tree", "Node"]:
+        section = Section.FromParserDoc(parent=core_doc, prefix = "Class ", pdoc=node_doc[name])
+        section.id = name
+        section.md_file = f"{name}.md"
+    
+    for name in ["NodeGroup", "GroupInput", "GroupOutput", "Viewer", "Frame", "SceneTime"]:
+        section = Section.FromParserDoc(parent=nodes_doc, prefix = "Node", pdoc=node_doc[name])
+        section.id = name
+        section.md_file = f"{name}.md"
+    
+    
+    ds_doc = Parser.FromFile(fpath + "core/datasockets.py").documentation()
+    
+    # ----- Data sockets
+    
+    print("Data sockets documentation...")
+    
+    for section in sockets_doc:
+        
+        fname = fpath + section.file_link
+        with open(fname, 'w') as f:
+            for line in section.gen_text(True):
+                f.write(line + "\n")
+                
+    # ----- Nodes
+
+    print("Nodes documentation...")
+
+    for section in nodes_doc:
+        
+        fname = fpath + section.file_link
+        with open(fname, 'w') as f:
+            for line in section.gen_text(True):
+                f.write(line + "\n")
+
+    # ----- Core
+
+    for section in core_doc:
+        
+        fname = fpath + section.file_link
+        with open(fname, 'w') as f:
+            for line in section.gen_text(True):
+                f.write(line + "\n")
+                
+    # ----- Index
+
+    print("Index...")
+    
+    fname = fpath + f"docs/index.md"
+    with open(fname, 'w') as f:
+        f.write("\n# Index\n\n")
+        
+        for section in package_doc.get_sections():
+            f.write(f"\n## {section.title}\n\n")
             
+            for line in section.gen_toc(depth=1, sort=True, classify=None, markdown=True):
+                f.write(line + "\n")
+                
+    # ----- Implemented nodes
+    
+    print("Done\n")
+    
+    print("Nodes not implemented as socket methods:")
+    count = 0
+    for bnode in BNODES.values():
+        if bnode.bl_idname not in gsock.DataClass.GENS:
+            print(f"    {bnode.bl_idname:40s}: '{bnode.name}'")
+            count += 1
+    if count == 0:
+        print("   all (ok")
+    else:
+        print(f"\n   NOTE: Check if the {count} node{'s' if count > 1 else ''} should be implemented as methods.\n")
+        
+    print('Generation completed')
+    print()
+    print('-'*80)
+    print("NOTE: if new nodes are created, don't forget to run node_sizes():")
+    print("Node dimensions are intizalized to zero. To update the property correctly, go")
+    print("in the geometry nodes editor and then back to the script editor.")
+    print("Lauch generator.node_sizes() WITHOUT LAUNCHING create_geonodes AGAIN!")
+    print("... hope it works.")
+    
+    
+    return
+    
+    # ---------------------------------------------------------------------------
+    # Index
+    
+    doc = gd.Section("Index", level=0)
+
+    section = doc.get_subsection("Data sockets")
+    
+    lst = gd.List()
+    for class_name in generated_sockets:
+        lst.add_item(gd.Text(gd.Link(class_name, f"sockets/{class_name}.md")))
+
+    section.append(lst)
+        
+    
+    section = doc.get_subsection("Nodes")
+
+    lst = gd.List()
+    for node_name in generated_nodes:
+        lst.add_item(gd.Text(gd.Link(node_name, f"nodes/{node_name}.md")))
+
+    section.append(lst)
+    
+    
+    fname = fpath + f"docs/index.md"
+    with open(fname, 'w') as f:
+        for line in doc.gen_md():
+            f.write(line + "\n")
+            
+    # ---------------------------------------------------------------------------
+    # Done
+    
+    print("geondes files generated")
+    
+# ====================================================================================================
+# Generate the nodes module
+                    
+def node_sizes():
+    print()
+    print("Node sizes (to include in module 'arrange.py'")
+    print("To collect the proper size calls this function once they have been generated with create_geonodes")
+    print()
+    
+    
+    btree_nodes = bpy.data.node_groups["Geometry Nodes"].nodes
+    for bnode in btree_nodes:
+        s = f"'{bnode.bl_idname}'"
+        pat = r"\([^\)]*\)"
+        print(f"    {s:42s}: {re.findall(pat, str(bnode.dimensions))[0]},")
+        
+    print()
+        
+
+    
+    
 
     

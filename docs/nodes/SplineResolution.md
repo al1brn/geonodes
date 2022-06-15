@@ -26,12 +26,3 @@ node = nodes.SplineResolution(label=None, node_color=None)
 ## Output sockets
 
 - resolution : Integer
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Spline](/docs/sockets/Spline.md).[capture_resolution](/docs/sockets/Spline.md#capture_resolution) : Capture attribute
-- [Spline](/docs/sockets/Spline.md).[resolution](/docs/sockets/Spline.md#resolution) : Attribute
-  

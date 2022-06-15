@@ -191,6 +191,12 @@
 
 ## Core
 
-- [Class  DataSocket](/docs/DataSocket.md)
-- [Class  Node](/docs/Node.md)
-- [Class  Tree](/docs/Tree.md)
+- [Class Corner](/docs/Corner.md)
+- [Class Curve](/docs/Curve.md)
+- [Class DataSocket](/docs/DataSocket.md)
+- [Class Domain](/docs/Domain.md)
+- [Class Edge](/docs/Edge.md)
+- [Class Face](/docs/Face.md)
+- [Class Node](/docs/Node.md)
+- [Class Point](/docs/Point.md)
+- [Class Tree](/docs/Tree.md)

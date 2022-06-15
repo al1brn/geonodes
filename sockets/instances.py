@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-14
+Created on 2022-06-15
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -10,27 +10,25 @@ Blender version: 3.2.0
 import geonodes as gn
 from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
+from geonodes.core.domains import Domain
+from geonodes import Point, Edge, Face, Corner, Curve
+
 import logging
 logger = logging.Logger('geonodes')
 
 # ==============================================================================================================
 # Data class Instances
 
-class Instances(gn.Geometry):
+class Instances(gn.Geometry, Domain):
     """ 
 
     Data socket Instances
     ---------------------
-        > Inherits from gn.Geometry
+        > Inherits from gn.Geometry, Domain
           
         <sub>go to index</sub>
         
         
-    
-
-        Attributes
-        ----------
-            - instance_index : Integer = capture_index(domain='INSTANCE')
     
 
         Methods
@@ -43,44 +41,9 @@ class Instances(gn.Geometry):
             - translate : instances (Instances)
     """
 
-
-    # ----------------------------------------------------------------------------------------------------
-    # Attributes
-
-    @property
-    def instance_index(self):
-        """ > Node: Index
-          
-        <sub>go to: top index
-        blender ref GeometryNodeInputIndex
-        node ref Index </sub>
-                                  
-        ```python
-        v = instances.instance_index(self)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Parameters
-            - self
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.Index()
-            ```
-    
-
-        Returns
-        -------
-            Integer
-            
-        """
-
-        return self.capture_index(domain='INSTANCE')
+    def init_socket(self):
+        super().init_socket()
+        self.domain = 'INSTANCE'
 
 
     # ----------------------------------------------------------------------------------------------------

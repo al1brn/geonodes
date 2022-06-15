@@ -18,46 +18,14 @@ logger = logging.getLogger('geonodes')
 from geonodes import colors
 from .arrange import arrange
 
-
-        
-
 # =============================================================================================================================
-# > Root for data classes
+# Socket wrapper
 #
-# DataSocket refers to an output socket of a Geometry Node.
-#
-# ```python 
-# DataSocket.bsocket # The output socket of a Geometry Node
-# ```
-#
-# Methods of DataSocket instances are implemented with nodes. The output socket refered by
-# the DataSocket instance is linked to an input socket of the method node.
-#
-# For instance:
-# 
-# ```python
-# geo = Mesh.UVSphere()  # geo refers to the output socket of the node "Mesh UVSphere"
-# geo.set_shade_smooth() # the previous output socket is linked to the input socket of
-#                        # the node "Set Shade Smooth"
-# ````
-#
-# Properties
-# ----------
-#
-# - node: The node owning the output socket. The Blender Geometry Node itself is a property of node
-#
-#   ```python
-#   node = a_data_socket.node # The Node class wrapping the Geometry Node
-#   blender_node = node.bnode # The Blender geometry node
-#   ```
-#
-# - bsocket: The Blender output socket 
-# 
+# Root class for DataSocket and Domain
 
-
-class DataSocket:
+class Socket:
     
-    # DataSocket class, sub class and domain data type from socket bl_idname    
+    # Socket class, sub class and domain data type from socket bl_idname    
         
     SOCKET_IDS = {
         'NodeSocketBool'        : ('Boolean',    '',             'BOOLEAN'), 
@@ -88,12 +56,12 @@ class DataSocket:
     }
     
     # ----------------------------------------------------------------------------------------------------
-    # > DataSocket initialization
+    # > Socket initialization
     #
     # Arguments
     # ---------
-    # - socket: a node socket or a DataSocket
-    #   Passing a DataSocket instance as argument allows type casting
+    # - socket: a node socket or a Socket
+    #   Passing a Socket instance as argument allows type casting
     #
     #   ```python
     #   value = Float(10.) # Float data class pointing on the output socket of node "Value"
@@ -106,7 +74,7 @@ class DataSocket:
     # - label: optional node label. Used to name the created Geometry Nodes.
     #
 
-    def __init__(self, socket, node=None, label=None):
+    def __init__(self, socket, node=None):
         
         # ----- A class Object doesn't have a constructor Node
 
@@ -115,34 +83,24 @@ class DataSocket:
             self.node    = None
             
         else:
-            if DataSocket.is_data_socket(socket):
+            if Socket.is_socket(socket):
                 self.bsocket = socket.get_blender_socket()
     
             elif isinstance(socket, bpy.types.NodeSocket):
                 self.bsocket = socket
+                
             else:
-                raise RuntimeError(f"A DataSocket instance needs a socket to be initialized, not {socket}.")
+                raise RuntimeError(f"A Socket instance needs a socket to be initialized, not {socket}.")
                 
             if node is None:
                 self.node = Tree.TREE.get_bnode_wrapper(self.bsocket.node)
             else:
                 self.node = node
-            
-            if label is not None:
-                self.node.label = label
-
-        # ----- Attributes (fields) are cached dynamically
-        
-        self.attr_props = {}
-        
-        # ----- Ensure the properties are created
-        
-        self.reset_properties()
-        
-        
                 
+        # ----- Specific initialization
         
-                
+        self.init_socket()
+        
         
     def __str__(self):
         snode = str(self.node)
@@ -154,9 +112,15 @@ class DataSocket:
     def __repr__(self):
         return str(self)
     
+    # ----------------------------------------------------------------------------------------------------
+    # Called by init
+    
+    def init_socket(self):
+        pass
+    
     @staticmethod
-    def is_data_socket(value):
-        """ > An alternative to isinstance(value, DataSocket)
+    def is_socket(value):
+        """ > An alternative to isinstance(value, Socket)
         """
         return hasattr(value, 'get_blender_socket')
 
@@ -164,7 +128,7 @@ class DataSocket:
     def gives_bsocket(value):
         """ Test if the argument provides a valid output socket. It can be:
         - A Blender Geometry Node Socket
-        - An instance of DataSocket
+        - An instance of Socket
         
         Arguments
         ---------
@@ -174,7 +138,15 @@ class DataSocket:
         -------
         bool
         """
-        return DataSocket.is_data_socket(value) or isinstance(value, bpy.types.NodeSocket)
+        return Socket.is_socket(value) or isinstance(value, bpy.types.NodeSocket)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # The Blender socket is used to link nodes
+    # Rather than accessing it directly, one must use the method get_blender_socket
+    # This method can be used to implement specific code before connection
+    
+    def get_blender_socket(self):
+        return self.bsocket
     
     @property
     def bl_idname(self):
@@ -213,17 +185,6 @@ class DataSocket:
         return self.bsocket.node
     
     @property
-    def node_chain_label(self):
-        """ > Shortcut for `self.node.chain_label`
-        
-        _chain_label_ property is the name to be used when automatically naming nodes.
-        """
-        if self.node is None:
-            return ""
-        else:
-            return self.node.chain_label
-    
-    @property
     def socket_index(self):
         """ > Return the index of the socket within the list of node sockets.
         
@@ -242,7 +203,7 @@ class DataSocket:
         raise RuntimeError(f"Impossible to find the index of socket {self} of node {self.node}")
         
     def connected_sockets(self):
-        """ > Returns the list of DataSocket instances linked to this socket.
+        """ > Returns the list of Socket instances linked to this socket.
         """ 
         sockets = []
         for link in self.links:
@@ -276,7 +237,7 @@ class DataSocket:
           - NodeSocketColor : 'FLOAT_COLOR' 
           - NodeSocketString : 'FLOAT_COLOR'
         """
-        return DataSocket.SOCKET_IDS[socket.bl_idname][2]
+        return Socket.SOCKET_IDS[socket.bl_idname][2]
     
     # ----------------------------------------------------------------------------------------------------
     # Class name from socket bl_idname
@@ -310,20 +271,20 @@ class DataSocket:
             the name is chosen as the class name.
         """
         bl_idname = socket.bl_idname
-        class_name = DataSocket.SOCKET_IDS[bl_idname][0]
+        class_name = Socket.SOCKET_IDS[bl_idname][0]
         name = socket.name
         
         if class_name == 'Geometry' and name in ['Mesh', 'Points', 'Instances', 'Volume', 'Spline', 'Curve']:
             class_name = name
             
         if with_sub_class:
-            return class_name, DataSocket.SOCKET_IDS[bl_idname][1]
+            return class_name, Socket.SOCKET_IDS[bl_idname][1]
         else:
             return class_name
         
     @staticmethod
     def get_bl_idname(class_name):
-        """ > Get the node socket bl_idname name from the DataSocket class
+        """ > Get the node socket bl_idname name from the Socket class
         
         Used to create a new group input socket. Called in `DataClass.Input` method to determine
         which socket type must be created.
@@ -361,7 +322,7 @@ class DataSocket:
           str: the name of the socket type
         """
         
-        if DataSocket.is_data_socket(class_name):
+        if Socket.is_socket(class_name):
             class_name = type(class_name).__name__
         
         if class_name in ['Boolean']:
@@ -424,15 +385,101 @@ class DataSocket:
         
         elif class_name in ['Object']:
             return 'NodeSocketObject'
+        
 
-    
+# =============================================================================================================================
+# > Root for data classes
+#
+# DataSocket refers to an output socket of a Geometry Node.
+#
+# ```python 
+# DataSocket.bsocket # The output socket of a Geometry Node
+# ```
+#
+# Methods of DataSocket instances are implemented with nodes. The output socket refered by
+# the DataSocket instance is linked to an input socket of the method node.
+#
+# For instance:
+# 
+# ```python
+# geo = Mesh.UVSphere()  # geo refers to the output socket of the node "Mesh UVSphere"
+# geo.set_shade_smooth() # the previous output socket is linked to the input socket of
+#                        # the node "Set Shade Smooth"
+# ````
+#
+# Properties
+# ----------
+#
+# - node: The node owning the output socket. The Blender Geometry Node itself is a property of node
+#
+#   ```python
+#   node = a_data_socket.node # The Node class wrapping the Geometry Node
+#   blender_node = node.bnode # The Blender geometry node
+#   ```
+#
+# - bsocket: The Blender output socket 
+
+
+class DataSocket(Socket):
+
     # ----------------------------------------------------------------------------------------------------
-    # The Blender socket is used to link nodes
-    # Rather than accessing it directly, one must use the method get_blender_socket
-    # This method can be used to implement specific code before connection
+    # > DataSocket initialization
+    #
+    # Arguments
+    # ---------
+    # - socket: a node socket or a DataSocket
+    #   Passing a DataSocket instance as argument allows type casting
+    #
+    #   ```python
+    #   value = Float(10.) # Float data class pointing on the output socket of node "Value"
+    #   v = Vector(value)  # Cast the previous socket to Vector
+    #   ```
+    #
+    # - node: the node owning the socket. If node is None, the initializer searchs for it in the list
+    #  of existing nodes.
+    #
+    # - label: optional node label. Used to name the created Geometry Nodes.
+    #
+
+    def __init__(self, socket, node=None, label=None):
+        
+        super().__init__(socket, node)
+            
+        if self.node is not None and label is not None:
+            self.node.label = label
+        
+        # ----- Reset creates the place holder for properties
+        
+        self.reset_properties()
     
-    def get_blender_socket(self):
-        return self.bsocket
+    @property
+    def node_chain_label(self):
+        """ > Shortcut for `self.node.chain_label`
+        
+        _chain_label_ property is the name to be used when automatically naming nodes.
+        """
+        if self.node is None:
+            return ""
+        else:
+            return self.node.chain_label
+
+    # ----------------------------------------------------------------------------------------------------
+    # Initialize the geometry domains:
+    # - Mesh
+    #     - Vertex
+    #     - Edge
+    #     - Face
+    #     - Face corner
+    # - Curve
+    #     - Point
+    #     - Spline
+    # - Point cloud
+    #     - Point
+    # - Instances
+    #
+    
+    def init_domains(self):
+        pass
     
     # ----------------------------------------------------------------------------------------------------
     # The DataSocket can have properties
@@ -450,10 +497,7 @@ class DataSocket:
     #         self.separate_ = None      # Created by property self.seperate() with node SeparateXyz
     
     def reset_properties(self):
-        
-        # Reset the attribute properties dynamically created
-        
-        self.attr_props = {}
+        self.init_domains()
     
     # ----------------------------------------------------------------------------------------------------
     # > Utility changing the output sockets refered by the DataSocket instance
@@ -574,7 +618,7 @@ class DataSocket:
         out_socket = None
         if isinstance(value, bpy.types.NodeSocket):
             out_socket = value
-        elif DataSocket.is_data_socket(value):
+        elif Socket.is_socket(value):
             # Node is None: particular cases
             if value.node is None:
                 if hasattr(value, 'bobject'):        # An object socket not connected to input
@@ -596,10 +640,16 @@ class DataSocket:
                 
             # ----- Vector / Color hack: a single value is broadcasted in a triplet
             
-            if hasattr(bsocket, 'default_value') and isinstance(bsocket.default_value, (bpy.types.bpy_prop_array, mathutils.Vector)):
+            #if hasattr(bsocket, 'default_value') and isinstance(bsocket.default_value, (bpy.types.bpy_prop_array, mathutils.Vector, mathutils.Rotation)):
+            if hasattr(bsocket, 'default_value') and hasattr(bsocket.default_value, '__len__'):
                 
+                # Broadcast 1 --> 3
                 if not hasattr(value, '__len__'):
-                    value = (value, value, value)
+                    value = (value,) * len(bsocket.default_value)
+                    
+                # Color --> Vector
+                elif len(bsocket.default_value) == 3 and len(value) == 4:
+                    value = (value[0], value[1], value[2])
                     
                 # ----- Hack : transform a triplet (a, b, c) with a component
                 # which is a socket to a Vector
@@ -632,9 +682,24 @@ class DataSocket:
                 ok = False
                 
             if not ok:
+                logging.critical(f"Impossible to plug the value '{value}' to the socket '{bsocket.name}' of node '{bsocket.node.name}'")
+                logging.critical(f"    The value type is: {type(value)}")
+                logging.critical(f"    The expected type for socket default value is: {type(bsocket.default_value)}")
+                logging.critical(f"    Default value len: {len(bsocket.default_value) if hasattr(bsocket.default_value, '__len__') else 'no length'}")
+                logging.critical(f"    Error message: {msg}")
+                logging.critical("")
+                
                 raise RuntimeError(f"Impossible to set the default value {value} to socket {bsocket}.\n Error: {msg}")
                 
         else:
+            # Check that multi doesn't feed single
+            # sockets shapes = [‘CIRCLE’, ‘SQUARE’, ‘DIAMOND’, ‘CIRCLE_DOT’, ‘SQUARE_DOT’, ‘DIAMOND_DOT’]
+            
+            if out_socket.display_shape == 'DIAMOND' and bsocket.display_shape == 'CIRCLE':
+                logging.error(f"Link error: the socket '{out_socket.node.name}'.'{out_socket.name}' is ‘DIAMOND’. " +
+                f"It can't be linked with the socket '{bsocket.node.name}'.'{bsocket.name}' which is CIRCLE.")
+            
+            
             Tree.TREE.btree.links.new(bsocket, out_socket, verify_limits=True)
             
             #print(out_socket, bsocket, Tree.TREE.group_output.inputs[0].bsocket)
@@ -1106,7 +1171,7 @@ class Tree:
                     
                     bsocket = nd.input_geometry_bsocket
 
-                    print("CHECKING", attr_node, nd, '-->', bsocket)
+                    logging.debug("CHECKING", attr_node, nd, '-->', bsocket)
 
                     if bsocket is None:
                         if nd in security:
@@ -1154,7 +1219,7 @@ class Tree:
                     if attr_links is not None:
                         self.arrange(True)
                         attr_node.node_color = "red"
-                        raise RuntimeError(f"Error when inserting a capture node. The attribute node {attr_node} has several output sockets which are connected.")
+                        raise RuntimeError(f"Error when inserting a capture node. The attribute node '{attr_node}' has several output sockets which are connected.")
                         
                     attr_links   = links
                     output_index = index
@@ -1816,7 +1881,7 @@ class GroupInput(NodeGroup):
         
         if value is not None:
             
-            if DataSocket.is_data_socket(value):
+            if Socket.is_socket(value):
                 value.plug(socket)
                 
             elif not existing:
@@ -1985,7 +2050,7 @@ class Viewer(Node):
         
         class_name = DataSocket.get_class_name(socket, False)
         
-        if class_name == 'Geometry':
+        if class_name in ['Geometry', 'Mesh', 'Curve', 'Spline', 'Points', 'Volume', 'Instances']:
             self.plug(0, socket)
 
         elif class_name == 'Boolean':

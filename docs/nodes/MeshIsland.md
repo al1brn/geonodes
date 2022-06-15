@@ -27,12 +27,3 @@ node = nodes.MeshIsland(label=None, node_color=None)
 
 - island_index : Integer
 - island_count : Integer
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Mesh](/docs/sockets/Mesh.md).[capture_island](/docs/sockets/Mesh.md#capture_island) : Capture attribute
-- [Mesh](/docs/sockets/Mesh.md).[island](/docs/sockets/Mesh.md#island) : Attribute
-  

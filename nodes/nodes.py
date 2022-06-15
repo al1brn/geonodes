@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-14
+Created on 2022-06-15
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -2306,16 +2306,6 @@ class EndpointSelection(Node):
         Output sockets
         --------------
             - selection : Boolean
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Spline.capture_endpoint_selection : Capture attribute
-            - Spline.endpoint_selection : Attribute
-              
     """
 
     def __init__(self, start_size=None, end_size=None, label=None, node_color=None):
@@ -2350,7 +2340,7 @@ class HandleTypeSelection(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None)
+            node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None)
             ```
             
             
@@ -2363,7 +2353,7 @@ class HandleTypeSelection(Node):
             Parameters
             ----------
                 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                - mode : set (default = {'LEFT', 'RIGHT'})
+                - mode : set (default = {'RIGHT', 'LEFT'})
     
 
             Node label
@@ -2375,19 +2365,9 @@ class HandleTypeSelection(Node):
         Output sockets
         --------------
             - selection : Boolean
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Spline.capture_handle_type_selection : Capture attribute
-            - Spline.handle_type_selection : Attribute
-              
     """
 
-    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
+    def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveHandleTypeSelection', name='Handle Type Selection', label=label, node_color=node_color)
         # Parameters
@@ -2949,7 +2929,7 @@ class SetHandleType(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None)
+            node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None)
             ```
             
             
@@ -2968,7 +2948,7 @@ class SetHandleType(Node):
             Parameters
             ----------
                 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                - mode : set (default = {'LEFT', 'RIGHT'})
+                - mode : set (default = {'RIGHT', 'LEFT'})
     
 
             Node label
@@ -2991,7 +2971,7 @@ class SetHandleType(Node):
               
     """
 
-    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
+    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveSetHandles', name='Set Handle Type', label=label, node_color=node_color)
         # Parameters
@@ -4491,17 +4471,6 @@ class CurveHandlePositions(Node):
         --------------
             - left : Vector
             - right : Vector
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Spline.capture_handle_positions : Capture attribute
-            - Spline.left_handle_position : Attribute
-            - Spline.right_handle_position : Attribute
-              
     """
 
     def __init__(self, relative=None, label=None, node_color=None):
@@ -4555,16 +4524,6 @@ class CurveTilt(Node):
         Output sockets
         --------------
             - tilt : Float
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Spline.capture_tilt : Capture attribute
-            - Spline.tilt : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -4613,17 +4572,6 @@ class ID(Node):
         Output sockets
         --------------
             - ID : Integer
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Geometry.ID : Attribute
-            - Geometry.capture_ID : Capture attribute
-            - Spline.spline_ID : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -4672,19 +4620,6 @@ class Index(Node):
         Output sockets
         --------------
             - index : Integer
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Geometry.capture_index : Capture attribute
-            - Geometry.index : Attribute
-            - Instances.instance_index : Attribute
-            - Spline.spline_index : Attribute
-            - Spline.spline_position : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -4781,16 +4716,6 @@ class MaterialIndex(Node):
         Output sockets
         --------------
             - material_index : Integer
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Mesh.capture_material_index : Capture attribute
-            - Mesh.material_index : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -4840,26 +4765,6 @@ class EdgeAngle(Node):
         --------------
             - unsigned_angle : Float
             - signed_angle : Float
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Mesh.capture_edge_angle : Capture attribute
-            - Mesh.corner_ID : Attribute
-            - Mesh.corner_index : Attribute
-            - Mesh.corner_position : Attribute
-            - Mesh.edge_angle : Attribute
-            - Mesh.edge_unsigned_angle : Attribute
-            - Mesh.egde_ID : Attribute
-            - Mesh.egde_index : Attribute
-            - Mesh.egde_position : Attribute
-            - Mesh.face_ID : Attribute
-            - Mesh.face_index : Attribute
-            - Mesh.face_position : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -4909,16 +4814,6 @@ class EdgeNeighbors(Node):
         Output sockets
         --------------
             - face_count : Integer
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Mesh.capture_edge_neighbors : Capture attribute
-            - Mesh.edge_neighbors : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -4970,19 +4865,6 @@ class EdgeVertices(Node):
             - vertex_index_2 : Integer
             - position_1 : Vector
             - position_2 : Vector
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Mesh.capture_edge_vertices : Capture attribute
-            - Mesh.edge_vertices_index1 : Attribute
-            - Mesh.edge_vertices_index2 : Attribute
-            - Mesh.edge_vertices_position1 : Attribute
-            - Mesh.edge_vertices_position2 : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5034,16 +4916,6 @@ class FaceArea(Node):
         Output sockets
         --------------
             - area : Float
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Mesh.capture_face_area : Capture attribute
-            - Mesh.face_area : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5097,16 +4969,6 @@ class FaceIsPlanar(Node):
         Output sockets
         --------------
             - planar : Boolean
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Mesh.capture_face_is_planar : Capture attribute
-            - Mesh.face_is_planar : Attribute
-              
     """
 
     def __init__(self, threshold=None, label=None, node_color=None):
@@ -5160,17 +5022,6 @@ class FaceNeighbors(Node):
         --------------
             - vertex_count : Integer
             - face_count : Integer
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Mesh.capture_face_neighbors : Capture attribute
-            - Mesh.face_neighbors_face_count : Attribute
-            - Mesh.face_neighbors_vertex_count : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5221,16 +5072,6 @@ class MeshIsland(Node):
         --------------
             - island_index : Integer
             - island_count : Integer
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Mesh.capture_island : Capture attribute
-            - Mesh.island : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5281,17 +5122,6 @@ class VertexNeighbors(Node):
         --------------
             - vertex_count : Integer
             - face_count : Integer
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Mesh.capture_vertex_neighbors : Capture attribute
-            - Mesh.vertex_neighbors_face_count : Attribute
-            - Mesh.vertex_neighbors_vertex_count : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5360,20 +5190,6 @@ class NamedAttribute(Node):
         Output sockets
         --------------
             - attribute : data_type dependant
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Geometry.capture_named_attribute : Capture attribute
-            - Geometry.capture_named_boolean : Capture attribute
-            - Geometry.capture_named_boolean : Capture attribute
-            - Geometry.capture_named_color : Capture attribute
-            - Geometry.capture_named_integer : Capture attribute
-            - Geometry.capture_named_vector : Capture attribute
-              
     """
 
     def __init__(self, name=None, data_type='FLOAT', label=None, node_color=None):
@@ -5449,16 +5265,6 @@ class Normal(Node):
         Output sockets
         --------------
             - normal : Vector
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Geometry.capture_normal : Capture attribute
-            - Geometry.normal : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5507,16 +5313,6 @@ class Position(Node):
         Output sockets
         --------------
             - position : Vector
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Geometry.capture_position : Capture attribute
-            - Geometry.position : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5565,16 +5361,6 @@ class Radius(Node):
         Output sockets
         --------------
             - radius : Float
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Geometry.capture_radius : Capture attribute
-            - Geometry.radius : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5682,16 +5468,6 @@ class IsShadeSmooth(Node):
         Output sockets
         --------------
             - smooth : Boolean
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Mesh.capture_shade_smooth : Capture attribute
-            - Mesh.shade_smooth : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5740,16 +5516,6 @@ class IsSplineCyclic(Node):
         Output sockets
         --------------
             - cyclic : Boolean
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Spline.capture_cyclic : Capture attribute
-            - Spline.cyclic : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5798,16 +5564,6 @@ class SplineResolution(Node):
         Output sockets
         --------------
             - resolution : Integer
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Spline.capture_resolution : Capture attribute
-            - Spline.resolution : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5856,16 +5612,6 @@ class CurveTangent(Node):
         Output sockets
         --------------
             - tangent : Vector
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Spline.capture_tangent : Capture attribute
-            - Spline.tangent : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -6200,8 +5946,6 @@ class MaterialSelection(Node):
               
               
             - Material.selection : Method
-            - Mesh.capture_material_selection : Capture attribute
-            - Mesh.material_selection : Attribute
               
     """
 
@@ -9411,17 +9155,6 @@ class SplineLength(Node):
         --------------
             - length : Float
             - point_count : Integer
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Spline.capture_length : Capture attribute
-            - Spline.length : Attribute
-            - Spline.point_count : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -9473,18 +9206,6 @@ class SplineParameter(Node):
             - factor : Float
             - length : Float
             - index : Integer
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Spline.capture_parameter : Capture attribute
-            - Spline.factor : Attribute
-            - Spline.parameter_index : Attribute
-            - Spline.parameter_length : Attribute
-              
     """
 
     def __init__(self, label=None, node_color=None):

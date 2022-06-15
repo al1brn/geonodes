@@ -37,6 +37,4 @@ node = nodes.MaterialSelection(material=None, label=None, node_color=None)
   
   
 - [Material](/docs/sockets/Material.md).[selection](/docs/sockets/Material.md#selection) : Method
-- [Mesh](/docs/sockets/Mesh.md).[capture_material_selection](/docs/sockets/Mesh.md#capture_material_selection) : Capture attribute
-- [Mesh](/docs/sockets/Mesh.md).[material_selection](/docs/sockets/Mesh.md#material_selection) : Attribute
   

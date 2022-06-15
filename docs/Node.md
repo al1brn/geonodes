@@ -1,5 +1,5 @@
 
-# Class  Node
+# Class Node
 
 The root class for Blender node wrappers.
 
@@ -180,4 +180,3 @@ The attribute is "solved" when it feeds capture or transfer attribute
 ## Boolean
 
 Node socket classes will be created in generated modules
-

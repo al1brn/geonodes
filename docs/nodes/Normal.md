@@ -26,12 +26,3 @@ node = nodes.Normal(label=None, node_color=None)
 ## Output sockets
 
 - normal : Vector
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Geometry](/docs/sockets/Geometry.md).[capture_normal](/docs/sockets/Geometry.md#capture_normal) : Capture attribute
-- [Geometry](/docs/sockets/Geometry.md).[normal](/docs/sockets/Geometry.md#normal) : Attribute
-  

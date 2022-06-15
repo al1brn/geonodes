@@ -1,15 +1,11 @@
 
 # Data socket Instances
 
-> Inherits from gn.Geometry
+> Inherits from gn.Geometry, Domain
   
 <sub>go to [index](/docs/index.md)</sub>
 
 
-
-## Attributes
-
-- [instance_index](#instance_index) : Integer = capture_index(domain='INSTANCE')
 
 ## Methods
 
@@ -19,35 +15,6 @@
 - [scale](#scale) : instances (Instances)
 - [to_points](#to_points) : points (Points)
 - [translate](#translate) : instances (Instances)
-
-## instance_index
-
-> Node: [Index](/docs/nodes/Index.md)
-  
-<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
-blender ref [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
-node ref [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) </sub>
-                          
-```python
-v = instances.instance_index(self)
-```
-
-### Arguments
-
-## Parameters
-- self
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Index()
-```
-
-### Returns
-
-Integer
-
 
 ## rotate
 

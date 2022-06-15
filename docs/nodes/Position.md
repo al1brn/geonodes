@@ -26,12 +26,3 @@ node = nodes.Position(label=None, node_color=None)
 ## Output sockets
 
 - position : Vector
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Geometry](/docs/sockets/Geometry.md).[capture_position](/docs/sockets/Geometry.md#capture_position) : Capture attribute
-- [Geometry](/docs/sockets/Geometry.md).[position](/docs/sockets/Geometry.md#position) : Attribute
-  

@@ -26,12 +26,3 @@ node = nodes.MaterialIndex(label=None, node_color=None)
 ## Output sockets
 
 - material_index : Integer
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Mesh](/docs/sockets/Mesh.md).[capture_material_index](/docs/sockets/Mesh.md#capture_material_index) : Capture attribute
-- [Mesh](/docs/sockets/Mesh.md).[material_index](/docs/sockets/Mesh.md#material_index) : Attribute
-  
