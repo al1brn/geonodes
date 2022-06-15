@@ -48,6 +48,12 @@ Node, the created node
   
 Blender menu : input/id
 
+  Property
+
+### Returns
+
+Integer
+
 
 
 ## index
@@ -55,6 +61,12 @@ Blender menu : input/id
 > Field [Index](/docs/nodes/Index.md)
   
 Blender menu : input/input_index
+
+  Property
+
+### Returns
+
+Integer
 
 
 
@@ -64,6 +76,12 @@ Blender menu : input/input_index
   
 Blender menu : input/normal
 
+  Property
+
+### Returns
+
+Vector
+
 
 
 ## position
@@ -71,6 +89,12 @@ Blender menu : input/normal
 > Field [Position](/docs/nodes/Position.md)
   
 Blender menu : input/position
+
+  Property
+
+### Returns
+
+Vector
 
 
 
@@ -80,6 +104,12 @@ Blender menu : input/position
   
 Blender menu : input/radius
 
+  Property
+
+### Returns
+
+Float
+
 
 
 ## named_attribute
@@ -87,6 +117,17 @@ Blender menu : input/radius
 > Field [NamedAttribute](/docs/nodes/NamedAttribute.md)
   
 Blender menu : input/named_attribute
+
+  This method is called by the following methods:
+    - [named_float](#named_float)
+    - [named_integer](#named_integer)
+    - [named_vector](#named_vector)
+    - [named_color](#named_color)
+    - [named_boolean](#named_boolean)
+
+### Returns
+
+Linked to data_type
 
 
 
@@ -97,8 +138,12 @@ Blender menu : input/named_attribute
 Blender menu : input/named_attribute
 
   Call [named_attribute](#named_attribute) with data_type = 'FLOAT'
-  
-  
+
+### Returns
+
+Float
+
+
 
 ## named_integer
 
@@ -117,8 +162,12 @@ Blender menu : input/named_attribute
 Blender menu : input/named_attribute
 
   Call [named_attribute](#named_attribute) with data_type = 'FLOAT_VECTOR'
-  
-  
+
+### Returns
+
+Vector
+
+
 
 ## named_color
 
@@ -127,8 +176,12 @@ Blender menu : input/named_attribute
 Blender menu : input/named_attribute
 
   Call [named_attribute](#named_attribute) with data_type = 'FLOAT_COLOR'
-  
-  
+
+### Returns
+
+Color
+
+
 
 ## named_boolean
 
@@ -137,9 +190,8 @@ Blender menu : input/named_attribute
 Blender menu : input/named_attribute
 
   Call [named_attribute](#named_attribute) with data_type = 'BOOLEAN'
-  
-  
 
-## island
+### Returns
 
-Mesh menu
+Boolean
+

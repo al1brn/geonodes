@@ -34,4 +34,6 @@ node = nodes.VertexNeighbors(label=None, node_color=None)
   
   
 - [neighbors](???).[PointDomain](???) : Fields
+- [neighbors_faces](???).[PointDomain](???) : Fields
+- [neighbors_vertices](???).[PointDomain](???) : Fields
   

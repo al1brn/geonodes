@@ -5148,6 +5148,8 @@ class VertexNeighbors(Node):
               
               
             - neighbors.PointDomain : Fields
+            - neighbors_faces.PointDomain : Fields
+            - neighbors_vertices.PointDomain : Fields
               
     """
 
