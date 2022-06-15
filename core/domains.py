@@ -709,12 +709,10 @@ class CurveDomain(Domain):
         Method
         
         The values of the two parameters are declined in 2 methods:
-            
         - [left_handle_selection](#left_handle_selection)
         - [right_handle_selection](#right_handle_selection)
                                        
         and 8 properties:
-            
         - [left_handle_free](#left_handle_free)
         - [left_handle_vector](#left_handle_vector)
         - [left_handle_vector](#left_handle_vector)
