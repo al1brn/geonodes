@@ -28,3 +28,14 @@ node = nodes.SplineParameter(label=None, node_color=None)
 - factor : Float
 - length : Float
 - index : Integer
+
+## Data sockets
+
+> Data socket classes implementing this node.
+  
+  
+- [CurveDomain](/docs/CurveDomain.md).[factor](/docs/CurveDomain.md#factor) : Fields
+- [CurveDomain](/docs/CurveDomain.md).[parameter](/docs/CurveDomain.md#parameter) : Fields
+- [CurveDomain](/docs/CurveDomain.md).[parameter_index](/docs/CurveDomain.md#parameter_index) : Fields
+- [CurveDomain](/docs/CurveDomain.md).[parameter_length](/docs/CurveDomain.md#parameter_length) : Fields
+  

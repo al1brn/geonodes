@@ -237,7 +237,8 @@ class PointDomain(Domain):
         
         Property
 
-        Individual sockets can be accessed via propertyes:
+        Individual sockets can be accessed via properties:
+            
             - [neighbors_vertices](#neighbors_vertices)
             - [neighbors_faces](#neighbors_faces)
         
@@ -308,7 +309,8 @@ class FaceDomain(Domain):
         
         Property
 
-        Individual sockets can be accessed via propertyes:
+        Individual sockets can be accessed via properties:
+            
             - [neighbors_vertices](#neighbors_vertices)
             - [neighbors_faces](#neighbors_faces)
         
@@ -366,7 +368,8 @@ class FaceDomain(Domain):
         
         Property
 
-        Individual sockets can be accessed via propertyes:
+        Individual sockets can be accessed via properties:
+            
             - [neighbors_vertices](#neighbors_vertices)
             - [neighbors_faces](#neighbors_faces)
         
@@ -465,47 +468,116 @@ class EdgeDomain(Domain):
         
     @property
     def angle(self):
+        """ <field GeometryNodeInputMeshEdgeAngle>
+        
+        Property
+        
+        To get the unsigned angle, used the property [unsigned_angle](#unsigned_angle).
+        
+        Returns
+        -------
+            Float
+        """
         return self.create_field_node('GeometryNodeInputMeshEdgeAngle').signed_angle
     
     @property
     def unsigned_angle(self):
+        """ <field GeometryNodeInputMeshEdgeAngle>
+        
+        Property
+
+        To get the signed angle, used the property [angle](#angle).
+        
+        Returns
+        -------
+            Float
+        """
         return self.create_field_node('GeometryNodeInputMeshEdgeAngle').unsigned_angle
     
     @property
     def neighbors(self):
+        """ <field GeometryNodeInputMeshEdgeNeighbors>
+        
+        Property
+        
+        Returns
+        -------
+            Integer
+        """
         return self.create_field_node('GeometryNodeInputMeshEdgeNeighbors').face_count
     
     @property
     def vertices(self):
+        """ <field GeometryNodeInputMeshEdgeVertices>
+        
+        Property
+        
+        Sockets can be access individually via:
+            
+            - [vertices_index_1](#vertices_index_1)
+            - [vertices_index_2](#vertices_index_2)
+            - [vertices_position_1](#vertices_position_1)
+            - [vertices_position_2](#vertices_position_2)
+                                 
+        
+        Returns
+        -------
+            Node with 4 output sockets:
+                - vertex_index_1
+                - vertex_index_2
+                - position_1
+                - position_2
+        """
         return self.create_field_node('GeometryNodeInputMeshEdgeVertices')
     
     @property
     def vertices_index_1(self):
+        """ <field GeometryNodeInputMeshEdgeVertices>
+        
+        Property
+        
+        Returns
+        -------
+            Integer
+        """
         return self.vertices.vertex_index_1
     
     @property
     def vertices_index_2(self):
+        """ <field GeometryNodeInputMeshEdgeVertices>
+        
+        Property
+        
+        Returns
+        -------
+            Integer
+        """
         return self.vertices.vertex_index_2
     
     @property
     def vertices_position_1(self):
+        """ <field GeometryNodeInputMeshEdgeVertices>
+        
+        Property
+        
+        Returns
+        -------
+            Integer
+        """
         return self.vertices.position_1
     
     @property
     def vertices_position_2(self):
+        """ <field GeometryNodeInputMeshEdgeVertices>
+        
+        Property
+        
+        Returns
+        -------
+            Integer
+        """
         return self.vertices.position_2
     
-    @property
-    def island(self):
-        return self.create_field_node('GeometryNodeInputMeshIsland')
-    
-    @property
-    def island_vertices(self):
-        return self.island.vertex_count
-    
-    @property
-    def island_faces(self):
-        return self.island.face_count
     
 # ---------------------------------------------------------------------------
 # > Field domain CORNER
@@ -535,99 +607,390 @@ class CurveDomain(Domain):
         self.domain = 'CURVE'
         
     def handle_positions(self, relative=None):
+        """ <field GeometryNodeInputCurveHandlePositions>
+        
+        Method
+        
+        Sockets can be access individually via:
+            
+            - [handle_positions_left](#handle_positions_left)
+            - [handle_positions_right](#handle_positions_right)
+                                       
+        Arguments
+        ---------
+            - relative : Boolean
+        
+        Returns
+        -------
+            Node with 2 output sockets:
+                - left
+                - right
+        """                
         return self.create_field_node('GeometryNodeInputCurveHandlePositions', relative=relative)
     
     def handle_positions_left(self, relative=None):
+        """ <field GeometryNodeInputCurveHandlePositions>
+        
+        Method
+        
+        Returns the socket **left** of the methode [handle_positions(#handle_positions)]
+                                       
+        Arguments
+        ---------
+            - relative : Boolean
+        
+        Returns
+        -------
+            Vector
+        """                
         return self.handle_positions(relative=relative).left
     
     def handle_positions_right(self, relative=None):
+        """ <field GeometryNodeInputCurveHandlePositions>
+        
+        Method
+        
+        Returns the socket **right** of the methode [handle_positions(#handle_positions)]
+                                       
+        Arguments
+        ---------
+            - relative : Boolean
+        
+        Returns
+        -------
+            Vector
+        """                
         return self.handle_positions(relative=relative).right
     
     @property
     def tangent(self):
+        """ <field GeometryNodeInputTangent>
+        
+        Property
+        
+        Returns
+        -------
+            Vector
+        """
         return self.create_field_node('GeometryNodeInputTangent').tangent
     
     @property
     def tilt(self):
+        """ <field GeometryNodeInputCurveTilt>
+        
+        Property
+        
+        Returns
+        -------
+            Float
+        """
         return self.create_field_node('GeometryNodeInputCurveTilt').tilt
     
     def endpoint_selection(self, start_size=None, end_size=None):
+        """ <field GeometryNodeCurveEndpointSelection>
+        
+        Method
+        
+        Arguments
+        ---------
+            - start_size : Integer
+            - end_size : Integer
+        
+        Returns
+        -------
+            Float
+        """
         return self.create_field_node('GeometryNodeCurveEndpointSelection', start_size=start_size, end_size=end_size).selection
     
     def handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+        """ <field GeometryNodeCurveHandleTypeSelection>
+        
+        Method
+        
+        The values of the two parameters are declined in 2 methods:
+            
+            - [left_handle_selection](#left_handle_selection)
+            - [right_handle_selection](#right_handle_selection)
+                                       
+        and 8 properties:
+            
+            - [left_handle_free](#left_handle_free)
+            - [left_handle_vector](#left_handle_vector)
+            - [left_handle_vector](#left_handle_vector)
+            - [left_handle_align](#left_handle_align)
+            - [right_handle_free](#right_handle_free)
+            - [right_handle_auto](#right_handle_auto)
+            - [right_handle_vector](#right_handle_vector)
+            - [right_handle_align](#right_handle_align)
+        
+        Arguments
+        ---------
+            - handle_type : str in 'AUTO', 'FREE', 'VECTOR', 'ALIGN'
+            - mode : str in ['RIGHT', 'LEFT'] or set {'RIGHT', 'LEFT'}
+        
+        Returns
+        -------
+            Boolean
+        """
         return self.create_field_node('GeometryNodeCurveHandleTypeSelection', handle_type=handle_type, mode=mode).selection
     
     def left_handle_selection(self, handle_type='AUTO'):
+        """ <field GeometryNodeCurveHandleTypeSelection>
+        
+        Method
+        
+        See [handle_type_selection](#handle_type_selection)
+                                    
+        Returns
+            Boolean
+        """
         return self.handle_type_selection(handle_type=handle_type, mode='LEFT')
 
     def right_handle_selection(self, handle_type='AUTO'):
+        """ <field GeometryNodeCurveHandleTypeSelection>
+        
+        Method
+        
+        See [handle_type_selection](#handle_type_selection)
+                                    
+        Returns
+            Boolean
+        """
         return self.handle_type_selection(handle_type=handle_type, mode='RIGHT')
     
     @property
     def left_handle_free(self):
+        """ <field GeometryNodeCurveHandleTypeSelection>
+        
+        Property
+        
+        See [handle_type_selection](#handle_type_selection)
+                                    
+        Returns
+            Boolean
+        """
         return self.left_handle_selection(handle_type='FREE')
     
     @property
     def left_handle_auto(self):
+        """ <field GeometryNodeCurveHandleTypeSelection>
+        
+        Property
+        
+        See [handle_type_selection](#handle_type_selection)
+                                    
+        Returns
+            Boolean
+        """
         return self.left_handle_selection(handle_type='AUTO')
     
     @property
     def left_handle_vector(self):
+        """ <field GeometryNodeCurveHandleTypeSelection>
+        
+        Property
+        
+        See [handle_type_selection](#handle_type_selection)
+                                    
+        Returns
+            Boolean
+        """
         return self.left_handle_selection(handle_type='VECTOR')
     
     @property
     def left_handle_align(self):
+        """ <field GeometryNodeCurveHandleTypeSelection>
+        
+        Property
+        
+        See [handle_type_selection](#handle_type_selection)
+                                    
+        Returns
+            Boolean
+        """
         return self.left_handle_selection(handle_type='ALIGN')
     
     @property
     def right_handle_free(self):
+        """ <field GeometryNodeCurveHandleTypeSelection>
+        
+        Property
+        
+        See [handle_type_selection](#handle_type_selection)
+                                    
+        Returns
+            Boolean
+        """
         return self.left_handle_selection(handle_type='FREE')
     
     @property
     def right_handle_auto(self):
+        """ <field GeometryNodeCurveHandleTypeSelection>
+        
+        Property
+        
+        See [handle_type_selection](#handle_type_selection)
+                                    
+        Returns
+            Boolean
+        """
         return self.left_handle_selection(handle_type='AUTO')
     
     @property
     def right_handle_vector(self):
+        """ <field GeometryNodeCurveHandleTypeSelection>
+        
+        Property
+        
+        See [handle_type_selection](#handle_type_selection)
+                                    
+        Returns
+            Boolean
+        """
         return self.left_handle_selection(handle_type='VECTOR')
     
     @property
     def right_handle_align(self):
+        """ <field GeometryNodeCurveHandleTypeSelection>
+        
+        Property
+        
+        See [handle_type_selection](#handle_type_selection)
+                                    
+        Returns
+            Boolean
+        """
         return self.left_handle_selection(handle_type='ALIGN')
     
     @property
     def cyclic(self):
+        """ <field GeometryNodeInputSplineCyclic>
+        
+        Property
+        
+        Returns
+            Boolean
+        """
         return self.create_field_node('GeometryNodeInputSplineCyclic').cyclic
     
     @property
     def length_point_count(self):
+        """ <field GeometryNodeSplineLength>
+        
+        Property
+        
+        Sockets can be access individually via:
+            
+            - [length](#length)
+            - [point_count](#point_count)
+                                       
+        Returns
+        -------
+            Node with 2 output sockets:
+                - length
+                - point_count
+        """                
         return self.create_field_node('GeometryNodeSplineLength')
     
     @property
     def length(self):
+        """ <field GeometryNodeSplineLength>
+        
+        Property
+        
+        Returns the socket **length** of method [length_point_count(#length_point_count)]
+                                       
+        Returns
+        -------
+            Float
+        """                
         return self.length_point_count.length
     
     @property
     def point_count(self):
+        """ <field GeometryNodeSplineLength>
+        
+        Property
+        
+        Returns the socket **point_count** of method [length_point_count(#length_point_count)]
+                                       
+        Returns
+        -------
+            Integer
+        """                
         return self.length_point_count.point_count
     
     @property
     def parameter(self):
+        """ <field GeometryNodeSplineParameter>
+        
+        Property
+        
+        Sockets can be access individually via:
+            
+            - [factor](#factor)
+            - [parameter_length](#parameter_length)
+            - [parameter_index](#parameter_index)
+                                       
+        Returns
+        -------
+            Node with 3 output sockets:
+                - factor
+                - length
+                - index
+        """                
         return self.create_field_node('GeometryNodeSplineParameter')
     
     @property
     def factor(self):
+        """ <field GeometryNodeSplineParameter>
+        
+        Property
+        
+        Returns the socket **factor** of method [parameter(#parameter)]
+                                       
+        Returns
+        -------
+            Float
+        """                
         return self.parameter.factor
     
     @property
     def parameter_length(self):
+        """ <field GeometryNodeSplineParameter>
+        
+        Property
+        
+        Returns the socket **length** of method [parameter(#parameter)]
+                                       
+        Returns
+        -------
+            Float
+        """                
         return self.parameter.length
     
     @property
     def parameter_index(self):
+        """ <field GeometryNodeSplineParameter>
+        
+        Property
+        
+        Returns the socket **index** of method [parameter(#parameter)]
+                                       
+        Returns
+        -------
+            Integer
+        """                
         return self.parameter.index
     
     @property
     def resolution(self):
+        """ <field GeometryNodeInputSplineResolution>
+        
+        Property
+        
+        Returns
+            Integer
+        """
         return self.create_field_node('GeometryNodeInputSplineResolution').resolution
         

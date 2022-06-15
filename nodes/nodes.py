@@ -2306,6 +2306,15 @@ class EndpointSelection(Node):
         Output sockets
         --------------
             - selection : Boolean
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - CurveDomain.endpoint_selection : Fields
+              
     """
 
     def __init__(self, start_size=None, end_size=None, label=None, node_color=None):
@@ -2340,7 +2349,7 @@ class HandleTypeSelection(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None)
+            node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None)
             ```
             
             
@@ -2353,7 +2362,7 @@ class HandleTypeSelection(Node):
             Parameters
             ----------
                 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                - mode : set (default = {'LEFT', 'RIGHT'})
+                - mode : set (default = {'RIGHT', 'LEFT'})
     
 
             Node label
@@ -2365,9 +2374,28 @@ class HandleTypeSelection(Node):
         Output sockets
         --------------
             - selection : Boolean
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - CurveDomain.handle_type_selection : Fields
+            - CurveDomain.left_handle_align : Fields
+            - CurveDomain.left_handle_auto : Fields
+            - CurveDomain.left_handle_free : Fields
+            - CurveDomain.left_handle_selection : Fields
+            - CurveDomain.left_handle_vector : Fields
+            - CurveDomain.right_handle_align : Fields
+            - CurveDomain.right_handle_auto : Fields
+            - CurveDomain.right_handle_free : Fields
+            - CurveDomain.right_handle_selection : Fields
+            - CurveDomain.right_handle_vector : Fields
+              
     """
 
-    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
+    def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveHandleTypeSelection', name='Handle Type Selection', label=label, node_color=node_color)
         # Parameters
@@ -2929,7 +2957,7 @@ class SetHandleType(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None)
+            node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None)
             ```
             
             
@@ -2948,7 +2976,7 @@ class SetHandleType(Node):
             Parameters
             ----------
                 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                - mode : set (default = {'LEFT', 'RIGHT'})
+                - mode : set (default = {'RIGHT', 'LEFT'})
     
 
             Node label
@@ -2971,7 +2999,7 @@ class SetHandleType(Node):
               
     """
 
-    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
+    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveSetHandles', name='Set Handle Type', label=label, node_color=node_color)
         # Parameters
@@ -4471,6 +4499,17 @@ class CurveHandlePositions(Node):
         --------------
             - left : Vector
             - right : Vector
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - CurveDomain.handle_positions : Fields
+            - CurveDomain.handle_positions_left : Fields
+            - CurveDomain.handle_positions_right : Fields
+              
     """
 
     def __init__(self, relative=None, label=None, node_color=None):
@@ -4524,6 +4563,15 @@ class CurveTilt(Node):
         Output sockets
         --------------
             - tilt : Float
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - CurveDomain.tilt : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -4579,7 +4627,7 @@ class ID(Node):
             > Data socket classes implementing this node.
               
               
-            - ID.Domain : Fields
+            - Domain.ID : Fields
               
     """
 
@@ -4636,7 +4684,7 @@ class Index(Node):
             > Data socket classes implementing this node.
               
               
-            - index.Domain : Fields
+            - Domain.index : Fields
               
     """
 
@@ -4741,7 +4789,7 @@ class MaterialIndex(Node):
             > Data socket classes implementing this node.
               
               
-            - material_index.FaceDomain : Fields
+            - FaceDomain.material_index : Fields
               
     """
 
@@ -4792,6 +4840,16 @@ class EdgeAngle(Node):
         --------------
             - unsigned_angle : Float
             - signed_angle : Float
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - EdgeDomain.angle : Fields
+            - EdgeDomain.unsigned_angle : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -4841,6 +4899,15 @@ class EdgeNeighbors(Node):
         Output sockets
         --------------
             - face_count : Integer
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - EdgeDomain.neighbors : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -4892,6 +4959,19 @@ class EdgeVertices(Node):
             - vertex_index_2 : Integer
             - position_1 : Vector
             - position_2 : Vector
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - EdgeDomain.vertices : Fields
+            - EdgeDomain.vertices_index_1 : Fields
+            - EdgeDomain.vertices_index_2 : Fields
+            - EdgeDomain.vertices_position_1 : Fields
+            - EdgeDomain.vertices_position_2 : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -4950,7 +5030,7 @@ class FaceArea(Node):
             > Data socket classes implementing this node.
               
               
-            - area.FaceDomain : Fields
+            - FaceDomain.area : Fields
               
     """
 
@@ -5012,7 +5092,7 @@ class FaceIsPlanar(Node):
             > Data socket classes implementing this node.
               
               
-            - face_is_planar.FaceDomain : Fields
+            - FaceDomain.face_is_planar : Fields
               
     """
 
@@ -5074,9 +5154,9 @@ class FaceNeighbors(Node):
             > Data socket classes implementing this node.
               
               
-            - neighbors.FaceDomain : Fields
-            - neighbors_faces.FaceDomain : Fields
-            - neighbors_vertices.FaceDomain : Fields
+            - FaceDomain.neighbors : Fields
+            - FaceDomain.neighbors_faces : Fields
+            - FaceDomain.neighbors_vertices : Fields
               
     """
 
@@ -5135,9 +5215,9 @@ class MeshIsland(Node):
             > Data socket classes implementing this node.
               
               
-            - island.FaceDomain : Fields
-            - island_faces.FaceDomain : Fields
-            - island_vertices.FaceDomain : Fields
+            - FaceDomain.island : Fields
+            - FaceDomain.island_faces : Fields
+            - FaceDomain.island_vertices : Fields
               
     """
 
@@ -5196,9 +5276,9 @@ class VertexNeighbors(Node):
             > Data socket classes implementing this node.
               
               
-            - neighbors.PointDomain : Fields
-            - neighbors_faces.PointDomain : Fields
-            - neighbors_vertices.PointDomain : Fields
+            - PointDomain.neighbors : Fields
+            - PointDomain.neighbors_faces : Fields
+            - PointDomain.neighbors_vertices : Fields
               
     """
 
@@ -5275,12 +5355,12 @@ class NamedAttribute(Node):
             > Data socket classes implementing this node.
               
               
-            - named_attribute.Domain : Fields
-            - named_boolean.Domain : Fields
-            - named_color.Domain : Fields
-            - named_float.Domain : Fields
-            - named_integer.Domain : Fields
-            - named_vector.Domain : Fields
+            - Domain.named_attribute : Fields
+            - Domain.named_boolean : Fields
+            - Domain.named_color : Fields
+            - Domain.named_float : Fields
+            - Domain.named_integer : Fields
+            - Domain.named_vector : Fields
               
     """
 
@@ -5364,7 +5444,7 @@ class Normal(Node):
             > Data socket classes implementing this node.
               
               
-            - normal.Domain : Fields
+            - Domain.normal : Fields
               
     """
 
@@ -5421,7 +5501,7 @@ class Position(Node):
             > Data socket classes implementing this node.
               
               
-            - position.Domain : Fields
+            - Domain.position : Fields
               
     """
 
@@ -5478,7 +5558,7 @@ class Radius(Node):
             > Data socket classes implementing this node.
               
               
-            - radius.Domain : Fields
+            - Domain.radius : Fields
               
     """
 
@@ -5594,7 +5674,7 @@ class IsShadeSmooth(Node):
             > Data socket classes implementing this node.
               
               
-            - is_shade_smooth.FaceDomain : Fields
+            - FaceDomain.is_shade_smooth : Fields
               
     """
 
@@ -5644,6 +5724,15 @@ class IsSplineCyclic(Node):
         Output sockets
         --------------
             - cyclic : Boolean
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - CurveDomain.cyclic : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5692,6 +5781,15 @@ class SplineResolution(Node):
         Output sockets
         --------------
             - resolution : Integer
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - CurveDomain.resolution : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5740,6 +5838,15 @@ class CurveTangent(Node):
         Output sockets
         --------------
             - tangent : Vector
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - CurveDomain.tangent : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -6073,8 +6180,8 @@ class MaterialSelection(Node):
             > Data socket classes implementing this node.
               
               
+            - FaceDomain.material_selection : Fields
             - Material.selection : Method
-            - material_selection.FaceDomain : Fields
               
     """
 
@@ -9284,6 +9391,17 @@ class SplineLength(Node):
         --------------
             - length : Float
             - point_count : Integer
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - CurveDomain.length : Fields
+            - CurveDomain.length_point_count : Fields
+            - CurveDomain.point_count : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -9335,6 +9453,18 @@ class SplineParameter(Node):
             - factor : Float
             - length : Float
             - index : Integer
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - CurveDomain.factor : Fields
+            - CurveDomain.parameter : Fields
+            - CurveDomain.parameter_index : Fields
+            - CurveDomain.parameter_length : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):

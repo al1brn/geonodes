@@ -32,5 +32,5 @@ node = nodes.Radius(label=None, node_color=None)
 > Data socket classes implementing this node.
   
   
-- [radius](???).[Domain](???) : Fields
+- [Domain](/docs/Domain.md).[radius](/docs/Domain.md#radius) : Fields
   

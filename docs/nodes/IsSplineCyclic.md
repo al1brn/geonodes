@@ -26,3 +26,11 @@ node = nodes.IsSplineCyclic(label=None, node_color=None)
 ## Output sockets
 
 - cyclic : Boolean
+
+## Data sockets
+
+> Data socket classes implementing this node.
+  
+  
+- [CurveDomain](/docs/CurveDomain.md).[cyclic](/docs/CurveDomain.md#cyclic) : Fields
+  

@@ -32,5 +32,5 @@ node = nodes.FaceArea(label=None, node_color=None)
 > Data socket classes implementing this node.
   
   
-- [area](???).[FaceDomain](???) : Fields
+- [FaceDomain](/docs/FaceDomain.md).[area](/docs/FaceDomain.md#area) : Fields
   

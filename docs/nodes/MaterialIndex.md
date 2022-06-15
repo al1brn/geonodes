@@ -32,5 +32,5 @@ node = nodes.MaterialIndex(label=None, node_color=None)
 > Data socket classes implementing this node.
   
   
-- [material_index](???).[FaceDomain](???) : Fields
+- [FaceDomain](/docs/FaceDomain.md).[material_index](/docs/FaceDomain.md#material_index) : Fields
   

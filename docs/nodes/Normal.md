@@ -32,5 +32,5 @@ node = nodes.Normal(label=None, node_color=None)
 > Data socket classes implementing this node.
   
   
-- [normal](???).[Domain](???) : Fields
+- [Domain](/docs/Domain.md).[normal](/docs/Domain.md#normal) : Fields
   

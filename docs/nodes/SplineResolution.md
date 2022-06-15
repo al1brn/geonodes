@@ -26,3 +26,11 @@ node = nodes.SplineResolution(label=None, node_color=None)
 ## Output sockets
 
 - resolution : Integer
+
+## Data sockets
+
+> Data socket classes implementing this node.
+  
+  
+- [CurveDomain](/docs/CurveDomain.md).[resolution](/docs/CurveDomain.md#resolution) : Fields
+  

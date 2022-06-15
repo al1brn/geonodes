@@ -33,7 +33,7 @@ node = nodes.VertexNeighbors(label=None, node_color=None)
 > Data socket classes implementing this node.
   
   
-- [neighbors](???).[PointDomain](???) : Fields
-- [neighbors_faces](???).[PointDomain](???) : Fields
-- [neighbors_vertices](???).[PointDomain](???) : Fields
+- [PointDomain](/docs/PointDomain.md).[neighbors](/docs/PointDomain.md#neighbors) : Fields
+- [PointDomain](/docs/PointDomain.md).[neighbors_faces](/docs/PointDomain.md#neighbors_faces) : Fields
+- [PointDomain](/docs/PointDomain.md).[neighbors_vertices](/docs/PointDomain.md#neighbors_vertices) : Fields
   

@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None)
+node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None)
 ```
 
 
@@ -21,7 +21,7 @@ node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, lab
 ### Parameters
 
 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- mode : set (default = {'LEFT', 'RIGHT'})
+- mode : set (default = {'RIGHT', 'LEFT'})
 
 ### Node label
 
@@ -31,3 +31,21 @@ node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, lab
 ## Output sockets
 
 - selection : Boolean
+
+## Data sockets
+
+> Data socket classes implementing this node.
+  
+  
+- [CurveDomain](/docs/CurveDomain.md).[handle_type_selection](/docs/CurveDomain.md#handle_type_selection) : Fields
+- [CurveDomain](/docs/CurveDomain.md).[left_handle_align](/docs/CurveDomain.md#left_handle_align) : Fields
+- [CurveDomain](/docs/CurveDomain.md).[left_handle_auto](/docs/CurveDomain.md#left_handle_auto) : Fields
+- [CurveDomain](/docs/CurveDomain.md).[left_handle_free](/docs/CurveDomain.md#left_handle_free) : Fields
+- [CurveDomain](/docs/CurveDomain.md).[left_handle_selection](/docs/CurveDomain.md#left_handle_selection) : Fields
+- [CurveDomain](/docs/CurveDomain.md).[left_handle_vector](/docs/CurveDomain.md#left_handle_vector) : Fields
+- [CurveDomain](/docs/CurveDomain.md).[right_handle_align](/docs/CurveDomain.md#right_handle_align) : Fields
+- [CurveDomain](/docs/CurveDomain.md).[right_handle_auto](/docs/CurveDomain.md#right_handle_auto) : Fields
+- [CurveDomain](/docs/CurveDomain.md).[right_handle_free](/docs/CurveDomain.md#right_handle_free) : Fields
+- [CurveDomain](/docs/CurveDomain.md).[right_handle_selection](/docs/CurveDomain.md#right_handle_selection) : Fields
+- [CurveDomain](/docs/CurveDomain.md).[right_handle_vector](/docs/CurveDomain.md#right_handle_vector) : Fields
+  

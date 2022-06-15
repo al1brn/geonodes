@@ -29,3 +29,15 @@ node = nodes.EdgeVertices(label=None, node_color=None)
 - vertex_index_2 : Integer
 - position_1 : Vector
 - position_2 : Vector
+
+## Data sockets
+
+> Data socket classes implementing this node.
+  
+  
+- [EdgeDomain](/docs/EdgeDomain.md).[vertices](/docs/EdgeDomain.md#vertices) : Fields
+- [EdgeDomain](/docs/EdgeDomain.md).[vertices_index_1](/docs/EdgeDomain.md#vertices_index_1) : Fields
+- [EdgeDomain](/docs/EdgeDomain.md).[vertices_index_2](/docs/EdgeDomain.md#vertices_index_2) : Fields
+- [EdgeDomain](/docs/EdgeDomain.md).[vertices_position_1](/docs/EdgeDomain.md#vertices_position_1) : Fields
+- [EdgeDomain](/docs/EdgeDomain.md).[vertices_position_2](/docs/EdgeDomain.md#vertices_position_2) : Fields
+  

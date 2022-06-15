@@ -48,10 +48,10 @@ node = nodes.NamedAttribute(name=None, data_type='FLOAT', label=None, node_color
 > Data socket classes implementing this node.
   
   
-- [named_attribute](???).[Domain](???) : Fields
-- [named_boolean](???).[Domain](???) : Fields
-- [named_color](???).[Domain](???) : Fields
-- [named_float](???).[Domain](???) : Fields
-- [named_integer](???).[Domain](???) : Fields
-- [named_vector](???).[Domain](???) : Fields
+- [Domain](/docs/Domain.md).[named_attribute](/docs/Domain.md#named_attribute) : Fields
+- [Domain](/docs/Domain.md).[named_boolean](/docs/Domain.md#named_boolean) : Fields
+- [Domain](/docs/Domain.md).[named_color](/docs/Domain.md#named_color) : Fields
+- [Domain](/docs/Domain.md).[named_float](/docs/Domain.md#named_float) : Fields
+- [Domain](/docs/Domain.md).[named_integer](/docs/Domain.md#named_integer) : Fields
+- [Domain](/docs/Domain.md).[named_vector](/docs/Domain.md#named_vector) : Fields
   

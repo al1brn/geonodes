@@ -30,7 +30,8 @@ Blender menu : mesh/face_neighbors
 
   Property
   
-  Individual sockets can be accessed via propertyes:
+  Individual sockets can be accessed via properties:
+  
     - [neighbors_vertices](#neighbors_vertices)
     - [neighbors_faces](#neighbors_faces)
 
@@ -96,7 +97,8 @@ Blender menu : mesh/mesh_island
 
   Property
   
-  Individual sockets can be accessed via propertyes:
+  Individual sockets can be accessed via properties:
+  
     - [neighbors_vertices](#neighbors_vertices)
     - [neighbors_faces](#neighbors_faces)
 

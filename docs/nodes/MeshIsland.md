@@ -33,7 +33,7 @@ node = nodes.MeshIsland(label=None, node_color=None)
 > Data socket classes implementing this node.
   
   
-- [island](???).[FaceDomain](???) : Fields
-- [island_faces](???).[FaceDomain](???) : Fields
-- [island_vertices](???).[FaceDomain](???) : Fields
+- [FaceDomain](/docs/FaceDomain.md).[island](/docs/FaceDomain.md#island) : Fields
+- [FaceDomain](/docs/FaceDomain.md).[island_faces](/docs/FaceDomain.md#island_faces) : Fields
+- [FaceDomain](/docs/FaceDomain.md).[island_vertices](/docs/FaceDomain.md#island_vertices) : Fields
   

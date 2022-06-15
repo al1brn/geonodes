@@ -27,3 +27,12 @@ node = nodes.EdgeAngle(label=None, node_color=None)
 
 - unsigned_angle : Float
 - signed_angle : Float
+
+## Data sockets
+
+> Data socket classes implementing this node.
+  
+  
+- [EdgeDomain](/docs/EdgeDomain.md).[angle](/docs/EdgeDomain.md#angle) : Fields
+- [EdgeDomain](/docs/EdgeDomain.md).[unsigned_angle](/docs/EdgeDomain.md#unsigned_angle) : Fields
+  

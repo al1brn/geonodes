@@ -32,5 +32,5 @@ node = nodes.Position(label=None, node_color=None)
 > Data socket classes implementing this node.
   
   
-- [position](???).[Domain](???) : Fields
+- [Domain](/docs/Domain.md).[position](/docs/Domain.md#position) : Fields
   

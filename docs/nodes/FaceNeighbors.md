@@ -33,7 +33,7 @@ node = nodes.FaceNeighbors(label=None, node_color=None)
 > Data socket classes implementing this node.
   
   
-- [neighbors](???).[FaceDomain](???) : Fields
-- [neighbors_faces](???).[FaceDomain](???) : Fields
-- [neighbors_vertices](???).[FaceDomain](???) : Fields
+- [FaceDomain](/docs/FaceDomain.md).[neighbors](/docs/FaceDomain.md#neighbors) : Fields
+- [FaceDomain](/docs/FaceDomain.md).[neighbors_faces](/docs/FaceDomain.md#neighbors_faces) : Fields
+- [FaceDomain](/docs/FaceDomain.md).[neighbors_vertices](/docs/FaceDomain.md#neighbors_vertices) : Fields
   

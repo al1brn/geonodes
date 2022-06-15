@@ -26,3 +26,11 @@ node = nodes.EdgeNeighbors(label=None, node_color=None)
 ## Output sockets
 
 - face_count : Integer
+
+## Data sockets
+
+> Data socket classes implementing this node.
+  
+  
+- [EdgeDomain](/docs/EdgeDomain.md).[neighbors](/docs/EdgeDomain.md#neighbors) : Fields
+  
