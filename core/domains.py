@@ -154,11 +154,12 @@ class Domain(Socket):
         """ <field GeometryNodeInputNamedAttribute>
         
         This method is called by the following methods:
-            - [named_float](#named_float)
-            - [named_integer](#named_integer)
-            - [named_vector](#named_vector)
-            - [named_color](#named_color)
-            - [named_boolean](#named_boolean)
+            
+        - [named_float](#named_float)
+        - [named_integer](#named_integer)
+        - [named_vector](#named_vector)
+        - [named_color](#named_color)
+        - [named_boolean](#named_boolean)
         
         Returns
         -------
