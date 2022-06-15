@@ -26,3 +26,11 @@ node = nodes.Index(label=None, node_color=None)
 ## Output sockets
 
 - index : Integer
+
+## Data sockets
+
+> Data socket classes implementing this node.
+  
+  
+- [index](???).[Domain](???) : Fields
+  

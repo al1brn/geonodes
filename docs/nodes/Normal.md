@@ -26,3 +26,11 @@ node = nodes.Normal(label=None, node_color=None)
 ## Output sockets
 
 - normal : Vector
+
+## Data sockets
+
+> Data socket classes implementing this node.
+  
+  
+- [normal](???).[Domain](???) : Fields
+  

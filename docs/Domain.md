@@ -44,43 +44,101 @@ Node, the created node
 
 ## ID
 
- > Field [ID](/docs/nodes/ID.md)
-
+> Field [ID](/docs/nodes/ID.md)
+  
 Blender menu : input/id
 
 
 
 ## index
 
- > Field [Index](/docs/nodes/Index.md)
-
+> Field [Index](/docs/nodes/Index.md)
+  
 Blender menu : input/input_index
 
 
 
 ## normal
 
- > Field [Normal](/docs/nodes/Normal.md)
-
+> Field [Normal](/docs/nodes/Normal.md)
+  
 Blender menu : input/normal
 
 
 
 ## position
 
- > Field [Position](/docs/nodes/Position.md)
-
+> Field [Position](/docs/nodes/Position.md)
+  
 Blender menu : input/position
 
 
 
 ## radius
 
- > Field [Radius](/docs/nodes/Radius.md)
-
+> Field [Radius](/docs/nodes/Radius.md)
+  
 Blender menu : input/radius
 
 
+
+## named_attribute
+
+> Field [NamedAttribute](/docs/nodes/NamedAttribute.md)
+  
+Blender menu : input/named_attribute
+
+
+
+## named_float
+
+> Field [NamedAttribute](/docs/nodes/NamedAttribute.md)
+  
+Blender menu : input/named_attribute
+
+  Call [named_attribute](#named_attribute) with data_type = 'FLOAT'
+  
+  
+
+## named_integer
+
+> Field [NamedAttribute](/docs/nodes/NamedAttribute.md)
+  
+Blender menu : input/named_attribute
+
+  Call [named_attribute](#named_attribute) with data_type = 'INT'
+  
+  
+
+## named_vector
+
+> Field [NamedAttribute](/docs/nodes/NamedAttribute.md)
+  
+Blender menu : input/named_attribute
+
+  Call [named_attribute](#named_attribute) with data_type = 'FLOAT_VECTOR'
+  
+  
+
+## named_color
+
+> Field [NamedAttribute](/docs/nodes/NamedAttribute.md)
+  
+Blender menu : input/named_attribute
+
+  Call [named_attribute](#named_attribute) with data_type = 'FLOAT_COLOR'
+  
+  
+
+## named_boolean
+
+> Field [NamedAttribute](/docs/nodes/NamedAttribute.md)
+  
+Blender menu : input/named_attribute
+
+  Call [named_attribute](#named_attribute) with data_type = 'BOOLEAN'
+  
+  
 
 ## island
 

@@ -26,3 +26,11 @@ node = nodes.Position(label=None, node_color=None)
 ## Output sockets
 
 - position : Vector
+
+## Data sockets
+
+> Data socket classes implementing this node.
+  
+  
+- [position](???).[Domain](???) : Fields
+  

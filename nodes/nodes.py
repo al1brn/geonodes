@@ -4572,6 +4572,15 @@ class ID(Node):
         Output sockets
         --------------
             - ID : Integer
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - ID.Domain : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -4620,6 +4629,15 @@ class Index(Node):
         Output sockets
         --------------
             - index : Integer
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - index.Domain : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5122,6 +5140,15 @@ class VertexNeighbors(Node):
         --------------
             - vertex_count : Integer
             - face_count : Integer
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - neighbors.PointDomain : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5190,6 +5217,20 @@ class NamedAttribute(Node):
         Output sockets
         --------------
             - attribute : data_type dependant
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - named_attribute.Domain : Fields
+            - named_boolean.Domain : Fields
+            - named_color.Domain : Fields
+            - named_float.Domain : Fields
+            - named_integer.Domain : Fields
+            - named_vector.Domain : Fields
+              
     """
 
     def __init__(self, name=None, data_type='FLOAT', label=None, node_color=None):
@@ -5265,6 +5306,15 @@ class Normal(Node):
         Output sockets
         --------------
             - normal : Vector
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - normal.Domain : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5313,6 +5363,15 @@ class Position(Node):
         Output sockets
         --------------
             - position : Vector
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - position.Domain : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5361,6 +5420,15 @@ class Radius(Node):
         Output sockets
         --------------
             - radius : Float
+    
+
+        Data sockets
+        ------------
+            > Data socket classes implementing this node.
+              
+              
+            - radius.Domain : Fields
+              
     """
 
     def __init__(self, label=None, node_color=None):

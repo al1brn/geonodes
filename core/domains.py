@@ -94,21 +94,43 @@ class Domain(Socket):
         return self.create_field_node('GeometryNodeInputRadius').radius
     
     def named_attribute(self, name=None, data_type='FLOAT'):
-        return self.create_field_node('GeometryNodeInputPosition', name=name).attribute
+        """ <field GeometryNodeInputNamedAttribute>
+        """
+        return self.create_field_node('GeometryNodeInputNamedAttribute', name=name).attribute
     
     def named_float(self, name):
+        """ <field GeometryNodeInputNamedAttribute>
+        
+        Call [named_attribute](#named_attribute) with data_type = 'FLOAT'
+        """
         return self.named_attribute(name, data_type='FLOAT')
     
     def named_integer(self, name):
+        """ <field GeometryNodeInputNamedAttribute>
+        
+        Call [named_attribute](#named_attribute) with data_type = 'INT'
+        """
         return self.named_attribute(name, data_type='INT')
     
     def named_vector(self, name):
+        """ <field GeometryNodeInputNamedAttribute>
+        
+        Call [named_attribute](#named_attribute) with data_type = 'FLOAT_VECTOR'
+        """
         return self.named_attribute(name, data_type='FLOAT_VECTOR')
     
     def named_color(self, name):
+        """ <field GeometryNodeInputNamedAttribute>
+        
+        Call [named_attribute](#named_attribute) with data_type = 'FLOAT_COLOR'
+        """
         return self.named_attribute(name, data_type='FLOAT_COLOR')
     
     def named_boolean(self, name):
+        """ <field GeometryNodeInputNamedAttribute>
+        
+        Call [named_attribute](#named_attribute) with data_type = 'BOOLEAN'
+        """
         return self.named_attribute(name, data_type='BOOLEAN')
         
     # ---------------------------------------------------------------------------
@@ -269,14 +291,6 @@ class CornerDomain(Domain):
     def init_socket(self):
         super().init_socket()
         self.domain = 'CORNER'
-
-""" Instances inherits both from DataSocket and from Domain
-class Instances(Domain):
-    
-    def init_socket(self):
-        super().init_socket()
-        self.domain = 'INSTANCES'
-"""
 
 class CurveDomain(Domain):
     

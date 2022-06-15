@@ -26,3 +26,11 @@ node = nodes.ID(label=None, node_color=None)
 ## Output sockets
 
 - ID : Integer
+
+## Data sockets
+
+> Data socket classes implementing this node.
+  
+  
+- [ID](/docs/nodes/ID.md).[Domain](/docs/nodes/ID.md#domain) : Fields
+  

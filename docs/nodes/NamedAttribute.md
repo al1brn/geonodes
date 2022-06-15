@@ -42,3 +42,16 @@ node = nodes.NamedAttribute(name=None, data_type='FLOAT', label=None, node_color
 ## Output sockets
 
 - attribute : data_type dependant
+
+## Data sockets
+
+> Data socket classes implementing this node.
+  
+  
+- [named_attribute](???).[Domain](???) : Fields
+- [named_boolean](???).[Domain](???) : Fields
+- [named_color](???).[Domain](???) : Fields
+- [named_float](???).[Domain](???) : Fields
+- [named_integer](???).[Domain](???) : Fields
+- [named_vector](???).[Domain](???) : Fields
+  

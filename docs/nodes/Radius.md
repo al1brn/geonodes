@@ -26,3 +26,11 @@ node = nodes.Radius(label=None, node_color=None)
 ## Output sockets
 
 - radius : Float
+
+## Data sockets
+
+> Data socket classes implementing this node.
+  
+  
+- [radius](???).[Domain](???) : Fields
+  
