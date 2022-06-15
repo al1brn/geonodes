@@ -65,20 +65,20 @@ Blender menu : mesh/edge_vertices
   
   Sockets can be access individually via:
   
-    - [vertices_index_1](#vertices_index_1)
-    - [vertices_index_2](#vertices_index_2)
-    - [vertices_position_1](#vertices_position_1)
-    - [vertices_position_2](#vertices_position_2)
+  - [vertices_index_1](#vertices_index_1)
+  - [vertices_index_2](#vertices_index_2)
+  - [vertices_position_1](#vertices_position_1)
+  - [vertices_position_2](#vertices_position_2)
 
 ### Returns
 
 Node with 4 output sockets:
-  - vertex_index_1
-  - vertex_index_2
-  - position_1
-  - position_2
-    
-    
+- vertex_index_1
+- vertex_index_2
+- position_1
+- position_2
+  
+  
 
 ## vertices_index_1
 

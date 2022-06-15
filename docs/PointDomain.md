@@ -18,16 +18,16 @@ Blender menu : mesh/vertex_neighbors
   
   Individual sockets can be accessed via properties:
   
-    - [neighbors_vertices](#neighbors_vertices)
-    - [neighbors_faces](#neighbors_faces)
+  - [neighbors_vertices](#neighbors_vertices)
+  - [neighbors_faces](#neighbors_faces)
 
 ### Returns
 
 Node with two sockets:
-  - vertex_count
-  - face_count
-    
-    
+- vertex_count
+- face_count
+  
+  
 
 ## neighbors_vertices
 

@@ -11,12 +11,12 @@ Domains classes
 
 
 Domain classes are implemented as properties of geometries:
-  - Mesh owns `point`, `edge`, `face` and `corner` properties (`vertex` and `face_corner`
+- Mesh owns `point`, `edge`, `face` and `corner` properties (`vertex` and `face_corner`
 can be used rather than `point` and `corner`)
-  - Curve owns `point` and `spline` (`control_point` can be used rather than `point`)
-  - Points owns `point`
-  - Instances has no domain properties, fields are direct properties of this class
-    
+- Curve owns `point` and `spline` (`control_point` can be used rather than `point`)
+- Points owns `point`
+- Instances has no domain properties, fields are direct properties of this class
+  
 To get the index of a point, use the syntax:
 
 ```python
@@ -49,9 +49,9 @@ otherwise it is returned directly.
 ### Attributes
 
 - bl_idname : str
-  A valid node bl_idname
+A valid node bl_idname
 - kwargs : dict
-  Arguments to pass to initialize the node
+Arguments to pass to initialize the node
 
 ### Returns
 
@@ -138,11 +138,11 @@ Blender menu : input/named_attribute
 
   This method is called by the following methods:
   
-    - [named_float](#named_float)
-    - [named_integer](#named_integer)
-    - [named_vector](#named_vector)
-    - [named_color](#named_color)
-    - [named_boolean](#named_boolean)
+  - [named_float](#named_float)
+  - [named_integer](#named_integer)
+  - [named_vector](#named_vector)
+  - [named_color](#named_color)
+  - [named_boolean](#named_boolean)
 
 ### Returns
 

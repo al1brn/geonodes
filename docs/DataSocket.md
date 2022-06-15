@@ -5,7 +5,7 @@
   
 Arguments
 
-  - socket: a node socket or a DataSocket
+- socket: a node socket or a DataSocket
 Passing a DataSocket instance as argument allows type casting
 
 ```python
@@ -13,12 +13,12 @@ value = Float(10.) # Float data class pointing on the output socket of node "Val
 v = Vector(value)  # Cast the previous socket to Vector
 ```
 
-  - node: the node owning the socket. If node is None, the initializer searchs for it in the list
+- node: the node owning the socket. If node is None, the initializer searchs for it in the list
 of existing nodes.
 
-  - label: optional node label. Used to name the created Geometry Nodes.
-    
-    
+- label: optional node label. Used to name the created Geometry Nodes.
+  
+  
 
 ## \_\_init\_\_
 
@@ -26,7 +26,7 @@ of existing nodes.
   
 Arguments
 
-  - socket: a node socket or a DataSocket
+- socket: a node socket or a DataSocket
 Passing a DataSocket instance as argument allows type casting
 
 ```python
@@ -34,12 +34,12 @@ value = Float(10.) # Float data class pointing on the output socket of node "Val
 v = Vector(value)  # Cast the previous socket to Vector
 ```
 
-  - node: the node owning the socket. If node is None, the initializer searchs for it in the list
+- node: the node owning the socket. If node is None, the initializer searchs for it in the list
 of existing nodes.
 
-  - label: optional node label. Used to name the created Geometry Nodes.
-    
-    
+- label: optional node label. Used to name the created Geometry Nodes.
+  
+  
 
 ## node_chain_label
 
@@ -52,19 +52,19 @@ _chain_label_ property is the name to be used when automatically naming nodes.
 ## init_domains
 
 Initialize the geometry domains:
-  - Mesh
-  - Vertex
-  - Edge
-  - Face
-  - Face corner
-  - Curve
-  - Point
-  - Spline
-  - Point cloud
-  - Point
-  - Instances
-    
-    
+- Mesh
+- Vertex
+- Edge
+- Face
+- Face corner
+- Curve
+- Point
+- Spline
+- Point cloud
+- Point
+- Instances
+  
+  
 
 ## reset_properties
 
@@ -88,9 +88,9 @@ self.separate_ = None      # Created by property self.seperate() with node Separ
 > Utility changing the output sockets refered by the DataSocket instance
   
 Methods are implemented in two modes:
-  - Creation
-  - Transformation
-    
+- Creation
+- Transformation
+  
 In **creation mode**, the node is considered as creating new data. The result is a new instance of DataSocket.
 In **transformation mode**, the node is considered as transforming data which is kept in the result of the method.
 After the method return, the calling DataSocket instance refers to a new Blender output socket.
@@ -140,9 +140,9 @@ If the socket is multi input, the plug method is called once per provided value.
 If a value is None, nothing happens.
 
 A not None value can be:
-  - either a valid value for the socket (eg: 123 for Integer socket)
-  - or an output socket of another Node
-    
+- either a valid value for the socket (eg: 123 for Integer socket)
+- or an output socket of another Node
+  
 When it is a socket, it can be a Blender socker or a DataSocket
 
 ### Arguments

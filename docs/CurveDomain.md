@@ -18,8 +18,8 @@ Blender menu : curve/curve_handle_position
   
   Sockets can be access individually via:
   
-    - [handle_positions_left](#handle_positions_left)
-    - [handle_positions_right](#handle_positions_right)
+  - [handle_positions_left](#handle_positions_left)
+  - [handle_positions_right](#handle_positions_right)
 
 ### Arguments
 
@@ -28,10 +28,10 @@ Blender menu : curve/curve_handle_position
 ### Returns
 
 Node with 2 output sockets:
-  - left
-  - right
-    
-    
+- left
+- right
+  
+  
 
 ## handle_positions_left
 
@@ -129,18 +129,18 @@ Blender menu : curve/handle_type_selection
   Method
   
   The values of the two parameters are declined in 2 methods:
-    - [left_handle_selection](#left_handle_selection)
-    - [right_handle_selection](#right_handle_selection)
-      
+  - [left_handle_selection](#left_handle_selection)
+  - [right_handle_selection](#right_handle_selection)
+    
   and 8 properties:
-    - [left_handle_free](#left_handle_free)
-    - [left_handle_vector](#left_handle_vector)
-    - [left_handle_vector](#left_handle_vector)
-    - [left_handle_align](#left_handle_align)
-    - [right_handle_free](#right_handle_free)
-    - [right_handle_auto](#right_handle_auto)
-    - [right_handle_vector](#right_handle_vector)
-    - [right_handle_align](#right_handle_align)
+  - [left_handle_free](#left_handle_free)
+  - [left_handle_vector](#left_handle_vector)
+  - [left_handle_vector](#left_handle_vector)
+  - [left_handle_align](#left_handle_align)
+  - [right_handle_free](#right_handle_free)
+  - [right_handle_auto](#right_handle_auto)
+  - [right_handle_vector](#right_handle_vector)
+  - [right_handle_align](#right_handle_align)
 
 ### Arguments
 
@@ -326,16 +326,16 @@ Blender menu : curve/spline_length
   
   Sockets can be access individually via:
   
-    - [length](#length)
-    - [point_count](#point_count)
+  - [length](#length)
+  - [point_count](#point_count)
 
 ### Returns
 
 Node with 2 output sockets:
-  - length
-  - point_count
-    
-    
+- length
+- point_count
+  
+  
 
 ## length
 
@@ -379,18 +379,18 @@ Blender menu : curve/spline_parameter
   
   Sockets can be access individually via:
   
-    - [factor](#factor)
-    - [parameter_length](#parameter_length)
-    - [parameter_index](#parameter_index)
+  - [factor](#factor)
+  - [parameter_length](#parameter_length)
+  - [parameter_index](#parameter_index)
 
 ### Returns
 
 Node with 3 output sockets:
-  - factor
-  - length
-  - index
-    
-    
+- factor
+- length
+- index
+  
+  
 
 ## factor
 
