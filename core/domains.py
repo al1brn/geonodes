@@ -240,14 +240,14 @@ class PointDomain(Domain):
 
         Individual sockets can be accessed via properties:
             
-            - [neighbors_vertices](#neighbors_vertices)
-            - [neighbors_faces](#neighbors_faces)
+        - [neighbors_vertices](#neighbors_vertices)
+        - [neighbors_faces](#neighbors_faces)
         
         Returns
         -------
             Node with two sockets:
-                - vertex_count
-                - face_count
+            - vertex_count
+            - face_count
         """
         return self.create_field_node('GeometryNodeInputMeshVertexNeighbors')
     
@@ -312,8 +312,8 @@ class FaceDomain(Domain):
 
         Individual sockets can be accessed via properties:
             
-            - [neighbors_vertices](#neighbors_vertices)
-            - [neighbors_faces](#neighbors_faces)
+        - [neighbors_vertices](#neighbors_vertices)
+        - [neighbors_faces](#neighbors_faces)
         
         Returns
         -------
@@ -371,8 +371,8 @@ class FaceDomain(Domain):
 
         Individual sockets can be accessed via properties:
             
-            - [neighbors_vertices](#neighbors_vertices)
-            - [neighbors_faces](#neighbors_faces)
+        - [neighbors_vertices](#neighbors_vertices)
+        - [neighbors_faces](#neighbors_faces)
         
         Returns
         -------
@@ -515,10 +515,10 @@ class EdgeDomain(Domain):
         
         Sockets can be access individually via:
             
-            - [vertices_index_1](#vertices_index_1)
-            - [vertices_index_2](#vertices_index_2)
-            - [vertices_position_1](#vertices_position_1)
-            - [vertices_position_2](#vertices_position_2)
+        - [vertices_index_1](#vertices_index_1)
+        - [vertices_index_2](#vertices_index_2)
+        - [vertices_position_1](#vertices_position_1)
+        - [vertices_position_2](#vertices_position_2)
                                  
         
         Returns
@@ -614,8 +614,8 @@ class CurveDomain(Domain):
         
         Sockets can be access individually via:
             
-            - [handle_positions_left](#handle_positions_left)
-            - [handle_positions_right](#handle_positions_right)
+        - [handle_positions_left](#handle_positions_left)
+        - [handle_positions_right](#handle_positions_right)
                                        
         Arguments
         ---------
@@ -710,19 +710,19 @@ class CurveDomain(Domain):
         
         The values of the two parameters are declined in 2 methods:
             
-            - [left_handle_selection](#left_handle_selection)
-            - [right_handle_selection](#right_handle_selection)
+        - [left_handle_selection](#left_handle_selection)
+        - [right_handle_selection](#right_handle_selection)
                                        
         and 8 properties:
             
-            - [left_handle_free](#left_handle_free)
-            - [left_handle_vector](#left_handle_vector)
-            - [left_handle_vector](#left_handle_vector)
-            - [left_handle_align](#left_handle_align)
-            - [right_handle_free](#right_handle_free)
-            - [right_handle_auto](#right_handle_auto)
-            - [right_handle_vector](#right_handle_vector)
-            - [right_handle_align](#right_handle_align)
+        - [left_handle_free](#left_handle_free)
+        - [left_handle_vector](#left_handle_vector)
+        - [left_handle_vector](#left_handle_vector)
+        - [left_handle_align](#left_handle_align)
+        - [right_handle_free](#right_handle_free)
+        - [right_handle_auto](#right_handle_auto)
+        - [right_handle_vector](#right_handle_vector)
+        - [right_handle_align](#right_handle_align)
         
         Arguments
         ---------
@@ -882,8 +882,8 @@ class CurveDomain(Domain):
         
         Sockets can be access individually via:
             
-            - [length](#length)
-            - [point_count](#point_count)
+        - [length](#length)
+        - [point_count](#point_count)
                                        
         Returns
         -------
@@ -929,9 +929,9 @@ class CurveDomain(Domain):
         
         Sockets can be access individually via:
             
-            - [factor](#factor)
-            - [parameter_length](#parameter_length)
-            - [parameter_index](#parameter_index)
+        - [factor](#factor)
+        - [parameter_length](#parameter_length)
+        - [parameter_index](#parameter_index)
                                        
         Returns
         -------
