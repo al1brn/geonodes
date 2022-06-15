@@ -127,7 +127,7 @@ class Domain(Socket):
         return self.island.face_count
     
 
-class Point(Domain):
+class PointDomain(Domain):
     """ > Field domain Point
     
     Inherits from [Domain](/docs/core/domain.MD)
@@ -164,7 +164,7 @@ class Point(Domain):
         return self.island.face_count
 
 
-class Face(Domain):
+class FaceDomain(Domain):
 
     def init_socket(self):
         super().init_socket()
@@ -213,7 +213,7 @@ class Face(Domain):
         return self.create_field_node('GeometryNodeInputMeshFaceIsPlanar', threshold=threshold).planar
         
         
-class Edge(Domain):
+class EdgeDomain(Domain):
     
     def init_socket(self):
         super().init_socket()
@@ -264,7 +264,7 @@ class Edge(Domain):
         return self.island.face_count
         
 
-class Corner(Domain):
+class CornerDomain(Domain):
     
     def init_socket(self):
         super().init_socket()
@@ -278,7 +278,7 @@ class Instances(Domain):
         self.domain = 'INSTANCES'
 """
 
-class Curve(Domain):
+class CurveDomain(Domain):
     
     def init_socket(self):
         super().init_socket()

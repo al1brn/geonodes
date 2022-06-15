@@ -191,12 +191,12 @@
 
 ## Core
 
-- [Class Corner](/docs/Corner.md)
-- [Class Curve](/docs/Curve.md)
+- [Class CornerDomain](/docs/CornerDomain.md)
+- [Class CurveDomain](/docs/CurveDomain.md)
 - [Class DataSocket](/docs/DataSocket.md)
 - [Class Domain](/docs/Domain.md)
-- [Class Edge](/docs/Edge.md)
-- [Class Face](/docs/Face.md)
+- [Class EdgeDomain](/docs/EdgeDomain.md)
+- [Class FaceDomain](/docs/FaceDomain.md)
 - [Class Node](/docs/Node.md)
-- [Class Point](/docs/Point.md)
+- [Class PointDomain](/docs/PointDomain.md)
 - [Class Tree](/docs/Tree.md)

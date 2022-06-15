@@ -11,7 +11,7 @@ import geonodes as gn
 from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
 from geonodes.core.domains import Domain
-from geonodes import Point, Edge, Face, Corner, Curve
+from geonodes import PointDomain, EdgeDomain, FaceDomain, CornerDomain, CurveDomain
 
 import logging
 logger = logging.Logger('geonodes')
@@ -63,10 +63,10 @@ class Mesh(gn.Geometry):
     """
 
     def init_domains(self):
-        self.point  = Point(self)
-        self.edge   = Edge(self)
-        self.face   = Face(self)
-        self.corner = Corner(self)
+        self.point  = PointDomain(self)
+        self.edge   = EdgeDomain(self)
+        self.face   = FaceDomain(self)
+        self.corner = CornerDomain(self)
 
     @property
     def vertex(self):

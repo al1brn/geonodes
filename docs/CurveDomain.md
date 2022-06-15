@@ -1,5 +1,5 @@
 
-# Class Curve
+# Class CurveDomain
 
 Instances inherits both from DataSocket and from Domain
 class Instances(Domain):

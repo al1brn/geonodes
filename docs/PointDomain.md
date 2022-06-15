@@ -1,5 +1,5 @@
 
-# Class Point
+# Class PointDomain
 
 > Field domain Point
   
