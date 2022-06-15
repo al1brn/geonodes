@@ -19,5 +19,7 @@ Inherits from [Domain](/docs/core/domain.MD)
 
 ## neighbors
 
-<bl_idname GeometryNodeInputMeshVertexNeighbors>
+ > Field [VertexNeighbors](/docs/nodes/VertexNeighbors.md)
+
+Blender menu : mesh/vertex_neighbors
 

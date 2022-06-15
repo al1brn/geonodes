@@ -65,31 +65,31 @@ class Domain(Socket):
         
     @property
     def ID(self):
-        """ <bl_idname GeometryNodeInputID>
+        """ <field GeometryNodeInputID>
         """
         return self.create_field_node('GeometryNodeInputID').ID
         
     @property
     def index(self):
-        """ <bl_idname GeometryNodeInputIndex>
+        """ <field GeometryNodeInputIndex>
         """
         return self.create_field_node('GeometryNodeInputIndex').index
 
     @property
     def normal(self):
-        """ <bl_idname GeometryNodeInputNormal>
+        """ <field GeometryNodeInputNormal>
         """
         return self.create_field_node('GeometryNodeInputNormal').normal
     
     @property
     def position(self):
-        """ <bl_idname GeometryNodeInputPosition>
+        """ <field GeometryNodeInputPosition>
         """
         return self.create_field_node('GeometryNodeInputPosition').position
     
     @property
     def radius(self):
-        """ <bl_idname GeometryNodeInputRadius>
+        """ <field GeometryNodeInputRadius>
         """
         return self.create_field_node('GeometryNodeInputRadius').radius
     
@@ -139,7 +139,7 @@ class Point(Domain):
 
     @property
     def neighbors(self):
-        """ <bl_idname GeometryNodeInputMeshVertexNeighbors>
+        """ <field GeometryNodeInputMeshVertexNeighbors>
         """
         return self.create_field_node('GeometryNodeInputMeshVertexNeighbors')
     

@@ -44,31 +44,41 @@ Node, the created node
 
 ## ID
 
-<bl_idname GeometryNodeInputID>
+ > Field [ID](/docs/nodes/ID.md)
+
+Blender menu : input/id
 
 
 
 ## index
 
-<bl_idname GeometryNodeInputIndex>
+ > Field [Index](/docs/nodes/Index.md)
+
+Blender menu : input/input_index
 
 
 
 ## normal
 
-<bl_idname GeometryNodeInputNormal>
+ > Field [Normal](/docs/nodes/Normal.md)
+
+Blender menu : input/normal
 
 
 
 ## position
 
-<bl_idname GeometryNodeInputPosition>
+ > Field [Position](/docs/nodes/Position.md)
+
+Blender menu : input/position
 
 
 
 ## radius
 
-<bl_idname GeometryNodeInputRadius>
+ > Field [Radius](/docs/nodes/Radius.md)
+
+Blender menu : input/radius
 
 
 
