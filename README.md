@@ -162,5 +162,5 @@ For more details see [Fields](/docs/attributes.md)
 - Node sockets are **snake_case** of their Blender name:
   - Socket _'Mesh'_ --> `mesh`
 
-For more details, refer to [Naming conventions TBD](docs/naming.md)
+For more details, refer to [Naming conventions](docs/naming.md)
 
