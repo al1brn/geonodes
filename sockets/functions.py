@@ -272,7 +272,7 @@ def scene(node_label = None, node_color = None):
 
     return nodes.SceneTime(label=node_label, node_color=node_color)
 
-def switch(switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', node_label = None, node_color = None):
+def switch(switch=None, false=None, true=None, input_type='GEOMETRY', node_label = None, node_color = None):
     """ > Node: Switch
       
     <sub>go to: top index
@@ -280,15 +280,14 @@ def switch(switch0=None, switch1=None, false=None, true=None, input_type='GEOMET
     node ref Switch </sub>
                               
     ```python
-    v = functions.switch(switch0, switch1, false, true, input_type, node_label = None, node_color = None)
+    v = functions.switch(switch, false, true, input_type, node_label = None, node_color = None)
     ```
 
 
     Arguments
     ---------
         ## Sockets
-        - switch0 : Boolean
-        - switch1 : Boolean
+        - switch : Boolean
         - false : Geometry
         - true : Geometry## Parameters
         - input_type : 'GEOMETRY' in [FLOAT, INT, BOOLEAN, VECTOR, STRING,... , COLLECTION, TEXTURE, MATERIAL]
@@ -300,7 +299,7 @@ def switch(switch0=None, switch1=None, false=None, true=None, input_type='GEOMET
     -------------
         ```python
         from geondes import nodes
-        nodes.Switch(switch0=switch0, switch1=switch1, false=false, true=true, input_type=input_type, label=node_label, node_color=node_color)
+        nodes.Switch(switch=switch, false=false, true=true, input_type=input_type, label=node_label, node_color=node_color)
         ```
 
 
@@ -310,7 +309,7 @@ def switch(switch0=None, switch1=None, false=None, true=None, input_type='GEOMET
         
     """
 
-    return nodes.Switch(switch0=switch0, switch1=switch1, false=false, true=true, input_type=input_type, label=node_label, node_color=node_color).output
+    return nodes.Switch(switch=switch, false=false, true=true, input_type=input_type, label=node_label, node_color=node_color).output
 
 def b_and(boolean0=None, boolean1=None, operation='AND', node_label = None, node_color = None):
     """ > Node: BooleanMath

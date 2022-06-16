@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.Switch(switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', label=None, node_color=None)
+node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY', label=None, node_color=None)
 ```
 
 
@@ -20,8 +20,7 @@ node = nodes.Switch(switch0=None, switch1=None, false=None, true=None, input_typ
 
 ### Input sockets
 
-- switch0 : Boolean
-- switch1 : Boolean
+- switch : input_type dependant
 - false : input_type dependant
 - true : input_type dependant
 
@@ -37,7 +36,7 @@ node = nodes.Switch(switch0=None, switch1=None, false=None, true=None, input_typ
 ## Data type dependant sockets
 
 - Driving parameter : input_type in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')
-- Input sockets  : ['false', 'true']
+- Input sockets  : ['switch', 'false', 'true']
 - Output sockets : ['output']   
   
   

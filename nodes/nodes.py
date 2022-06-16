@@ -2349,7 +2349,7 @@ class HandleTypeSelection(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None)
+            node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None)
             ```
             
             
@@ -2362,7 +2362,7 @@ class HandleTypeSelection(Node):
             Parameters
             ----------
                 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                - mode : set (default = {'RIGHT', 'LEFT'})
+                - mode : set (default = {'LEFT', 'RIGHT'})
     
 
             Node label
@@ -2395,7 +2395,7 @@ class HandleTypeSelection(Node):
               
     """
 
-    def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
+    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveHandleTypeSelection', name='Handle Type Selection', label=label, node_color=node_color)
         # Parameters
@@ -2957,7 +2957,7 @@ class SetHandleType(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None)
+            node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None)
             ```
             
             
@@ -2976,7 +2976,7 @@ class SetHandleType(Node):
             Parameters
             ----------
                 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                - mode : set (default = {'RIGHT', 'LEFT'})
+                - mode : set (default = {'LEFT', 'RIGHT'})
     
 
             Node label
@@ -2999,7 +2999,7 @@ class SetHandleType(Node):
               
     """
 
-    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
+    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveSetHandles', name='Set Handle Type', label=label, node_color=node_color)
         # Parameters
@@ -10122,7 +10122,7 @@ class Switch(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.Switch(switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', label=None, node_color=None)
+            node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY', label=None, node_color=None)
             ```
             
             
@@ -10134,8 +10134,7 @@ class Switch(Node):
 
             Input sockets
             -------------
-                - switch0 : Boolean
-                - switch1 : Boolean
+                - switch : input_type dependant
                 - false : input_type dependant
                 - true : input_type dependant
     
@@ -10154,7 +10153,7 @@ class Switch(Node):
         Data type dependant sockets
         ---------------------------
             - Driving parameter : input_type in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')
-            - Input sockets  : ['false', 'true']
+            - Input sockets  : ['switch', 'false', 'true']
             - Output sockets : ['output']   
               
               
@@ -10184,7 +10183,7 @@ class Switch(Node):
               
     """
 
-    def __init__(self, switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', label=None, node_color=None):
+    def __init__(self, switch=None, false=None, true=None, input_type='GEOMETRY', label=None, node_color=None):
 
         super().__init__('GeometryNodeSwitch', name='Switch', label=label, node_color=node_color)
         # Parameters
@@ -10194,44 +10193,54 @@ class Switch(Node):
         # Input sockets
 
         if input_type == 'FLOAT':
+            self.plug(0, switch)
             self.plug(2, false)
             self.plug(3, true)
         elif input_type == 'INT':
+            self.plug(0, switch)
             self.plug(4, false)
             self.plug(5, true)
         elif input_type == 'BOOLEAN':
+            self.plug(0, switch)
             self.plug(6, false)
             self.plug(7, true)
         elif input_type == 'VECTOR':
+            self.plug(0, switch)
             self.plug(8, false)
             self.plug(9, true)
         elif input_type == 'STRING':
+            self.plug(0, switch)
             self.plug(12, false)
             self.plug(13, true)
         elif input_type == 'RGBA':
+            self.plug(0, switch)
             self.plug(10, false)
             self.plug(11, true)
         elif input_type == 'OBJECT':
+            self.plug(1, switch)
             self.plug(16, false)
             self.plug(17, true)
         elif input_type == 'IMAGE':
+            self.plug(1, switch)
             self.plug(24, false)
             self.plug(25, true)
         elif input_type == 'GEOMETRY':
+            self.plug(1, switch)
             self.plug(14, false)
             self.plug(15, true)
         elif input_type == 'COLLECTION':
+            self.plug(1, switch)
             self.plug(18, false)
             self.plug(19, true)
         elif input_type == 'TEXTURE':
+            self.plug(1, switch)
             self.plug(20, false)
             self.plug(21, true)
         elif input_type == 'MATERIAL':
+            self.plug(1, switch)
             self.plug(22, false)
             self.plug(23, true)
 
-        self.plug(0, switch0)
-        self.plug(1, switch1)
 
         # Output sockets
 

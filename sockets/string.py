@@ -102,7 +102,7 @@ class String(dsock.String):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def switch(self, switch0=None, true=None, node_label = None, node_color = None):
+    def switch(self, switch=None, true=None, node_label = None, node_color = None):
         """ > Node: Switch
           
         <sub>go to: top index
@@ -110,7 +110,7 @@ class String(dsock.String):
         node ref Switch </sub>
                                   
         ```python
-        v = string.switch(switch0, true, node_label = None, node_color = None)
+        v = string.switch(switch, true, node_label = None, node_color = None)
         ```
     
 
@@ -118,7 +118,7 @@ class String(dsock.String):
         ---------
             ## Sockets
             - false : String (self)
-            - switch0 : Boolean
+            - switch : Boolean
             - true : String## Parameters
             - node_label : None
             - node_color : None## Fixed parameters
@@ -129,7 +129,7 @@ class String(dsock.String):
         -------------
             ```python
             from geondes import nodes
-            nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING', label=node_label, node_color=node_color)
+            nodes.Switch(false=self, switch=switch, true=true, input_type='STRING', label=node_label, node_color=node_color)
             ```
     
 
@@ -139,7 +139,7 @@ class String(dsock.String):
             
         """
 
-        return nodes.Switch(false=self, switch0=switch0, true=true, input_type='STRING', label=node_label, node_color=node_color).output
+        return nodes.Switch(false=self, switch=switch, true=true, input_type='STRING', label=node_label, node_color=node_color).output
 
     def element(self, b=None, node_label = None, node_color = None):
         """ > Node: Compare

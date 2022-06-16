@@ -21,14 +21,14 @@ blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
                           
 ```python
-v = material.switch(switch1, true, node_label = None, node_color = None)
+v = material.switch(switch, true, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
 - false : Material (self)
-- switch1 : Boolean
+- switch : Boolean
 - true : Material## Parameters
 - node_label : None
 - node_color : None## Fixed parameters
@@ -38,7 +38,7 @@ v = material.switch(switch1, true, node_label = None, node_color = None)
 
 ```python
 from geondes import nodes
-nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL', label=node_label, node_color=node_color)
+nodes.Switch(false=self, switch=switch, true=true, input_type='MATERIAL', label=node_label, node_color=node_color)
 ```
 
 ### Returns

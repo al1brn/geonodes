@@ -389,7 +389,7 @@ class Float(dsock.Float):
 
         return nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping, label=node_label, node_color=node_color)
 
-    def switch(self, switch0=None, true=None, node_label = None, node_color = None):
+    def switch(self, switch=None, true=None, node_label = None, node_color = None):
         """ > Node: Switch
           
         <sub>go to: top index
@@ -397,7 +397,7 @@ class Float(dsock.Float):
         node ref Switch </sub>
                                   
         ```python
-        v = float.switch(switch0, true, node_label = None, node_color = None)
+        v = float.switch(switch, true, node_label = None, node_color = None)
         ```
     
 
@@ -405,7 +405,7 @@ class Float(dsock.Float):
         ---------
             ## Sockets
             - false : Float (self)
-            - switch0 : Boolean
+            - switch : Boolean
             - true : Float## Parameters
             - node_label : None
             - node_color : None## Fixed parameters
@@ -416,7 +416,7 @@ class Float(dsock.Float):
         -------------
             ```python
             from geondes import nodes
-            nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT', label=node_label, node_color=node_color)
+            nodes.Switch(false=self, switch=switch, true=true, input_type='FLOAT', label=node_label, node_color=node_color)
             ```
     
 
@@ -426,7 +426,7 @@ class Float(dsock.Float):
             
         """
 
-        return nodes.Switch(false=self, switch0=switch0, true=true, input_type='FLOAT', label=node_label, node_color=node_color).output
+        return nodes.Switch(false=self, switch=switch, true=true, input_type='FLOAT', label=node_label, node_color=node_color).output
 
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, interpolation_type='LINEAR', node_label = None, node_color = None):
         """ > Node: MapRange

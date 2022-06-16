@@ -41,7 +41,7 @@ class Material(dsock.Material):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def switch(self, switch1=None, true=None, node_label = None, node_color = None):
+    def switch(self, switch=None, true=None, node_label = None, node_color = None):
         """ > Node: Switch
           
         <sub>go to: top index
@@ -49,7 +49,7 @@ class Material(dsock.Material):
         node ref Switch </sub>
                                   
         ```python
-        v = material.switch(switch1, true, node_label = None, node_color = None)
+        v = material.switch(switch, true, node_label = None, node_color = None)
         ```
     
 
@@ -57,7 +57,7 @@ class Material(dsock.Material):
         ---------
             ## Sockets
             - false : Material (self)
-            - switch1 : Boolean
+            - switch : Boolean
             - true : Material## Parameters
             - node_label : None
             - node_color : None## Fixed parameters
@@ -68,7 +68,7 @@ class Material(dsock.Material):
         -------------
             ```python
             from geondes import nodes
-            nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL', label=node_label, node_color=node_color)
+            nodes.Switch(false=self, switch=switch, true=true, input_type='MATERIAL', label=node_label, node_color=node_color)
             ```
     
 
@@ -78,7 +78,7 @@ class Material(dsock.Material):
             
         """
 
-        return nodes.Switch(false=self, switch1=switch1, true=true, input_type='MATERIAL', label=node_label, node_color=node_color).output
+        return nodes.Switch(false=self, switch=switch, true=true, input_type='MATERIAL', label=node_label, node_color=node_color).output
 
     def selection(self, node_label = None, node_color = None):
         """ > Node: MaterialSelection

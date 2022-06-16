@@ -41,7 +41,7 @@ class Collection(dsock.Collection):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def switch(self, switch1=None, true=None, node_label = None, node_color = None):
+    def switch(self, switch=None, true=None, node_label = None, node_color = None):
         """ > Node: Switch
           
         <sub>go to: top index
@@ -49,7 +49,7 @@ class Collection(dsock.Collection):
         node ref Switch </sub>
                                   
         ```python
-        v = collection.switch(switch1, true, node_label = None, node_color = None)
+        v = collection.switch(switch, true, node_label = None, node_color = None)
         ```
     
 
@@ -57,7 +57,7 @@ class Collection(dsock.Collection):
         ---------
             ## Sockets
             - false : Collection (self)
-            - switch1 : Boolean
+            - switch : Boolean
             - true : Collection## Parameters
             - node_label : None
             - node_color : None## Fixed parameters
@@ -68,7 +68,7 @@ class Collection(dsock.Collection):
         -------------
             ```python
             from geondes import nodes
-            nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION', label=node_label, node_color=node_color)
+            nodes.Switch(false=self, switch=switch, true=true, input_type='COLLECTION', label=node_label, node_color=node_color)
             ```
     
 
@@ -78,7 +78,7 @@ class Collection(dsock.Collection):
             
         """
 
-        return nodes.Switch(false=self, switch1=switch1, true=true, input_type='COLLECTION', label=node_label, node_color=node_color).output
+        return nodes.Switch(false=self, switch=switch, true=true, input_type='COLLECTION', label=node_label, node_color=node_color).output
 
     def info(self, separate_children=None, reset_children=None, transform_space='ORIGINAL', node_label = None, node_color = None):
         """ > Node: CollectionInfo

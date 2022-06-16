@@ -342,7 +342,7 @@ class Integer(dsock.Integer):
 
         return nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='INT', mapping=mapping, label=node_label, node_color=node_color)
 
-    def switch(self, switch0=None, true=None, node_label = None, node_color = None):
+    def switch(self, switch=None, true=None, node_label = None, node_color = None):
         """ > Node: Switch
           
         <sub>go to: top index
@@ -350,7 +350,7 @@ class Integer(dsock.Integer):
         node ref Switch </sub>
                                   
         ```python
-        v = integer.switch(switch0, true, node_label = None, node_color = None)
+        v = integer.switch(switch, true, node_label = None, node_color = None)
         ```
     
 
@@ -358,7 +358,7 @@ class Integer(dsock.Integer):
         ---------
             ## Sockets
             - false : Integer (self)
-            - switch0 : Boolean
+            - switch : Boolean
             - true : Integer## Parameters
             - node_label : None
             - node_color : None## Fixed parameters
@@ -369,7 +369,7 @@ class Integer(dsock.Integer):
         -------------
             ```python
             from geondes import nodes
-            nodes.Switch(false=self, switch0=switch0, true=true, input_type='INT', label=node_label, node_color=node_color)
+            nodes.Switch(false=self, switch=switch, true=true, input_type='INT', label=node_label, node_color=node_color)
             ```
     
 
@@ -379,7 +379,7 @@ class Integer(dsock.Integer):
             
         """
 
-        return nodes.Switch(false=self, switch0=switch0, true=true, input_type='INT', label=node_label, node_color=node_color).output
+        return nodes.Switch(false=self, switch=switch, true=true, input_type='INT', label=node_label, node_color=node_color).output
 
     def less_than(self, b=None, node_label = None, node_color = None):
         """ > Node: Compare

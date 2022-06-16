@@ -223,14 +223,13 @@ blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.
 node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
                           
 ```python
-v = functions.switch(switch0, switch1, false, true, input_type, node_label = None, node_color = None)
+v = functions.switch(switch, false, true, input_type, node_label = None, node_color = None)
 ```
 
 ### Arguments
 
 ## Sockets
-- switch0 : Boolean
-- switch1 : Boolean
+- switch : Boolean
 - false : Geometry
 - true : Geometry## Parameters
 - input_type : 'GEOMETRY' in [FLOAT, INT, BOOLEAN, VECTOR, STRING,... , COLLECTION, TEXTURE, MATERIAL]
@@ -241,7 +240,7 @@ v = functions.switch(switch0, switch1, false, true, input_type, node_label = Non
 
 ```python
 from geondes import nodes
-nodes.Switch(switch0=switch0, switch1=switch1, false=false, true=true, input_type=input_type, label=node_label, node_color=node_color)
+nodes.Switch(switch=switch, false=false, true=true, input_type=input_type, label=node_label, node_color=node_color)
 ```
 
 ### Returns

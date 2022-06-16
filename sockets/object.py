@@ -259,7 +259,7 @@ class Object(dsock.Object):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def switch(self, switch1=None, true=None, node_label = None, node_color = None):
+    def switch(self, switch=None, true=None, node_label = None, node_color = None):
         """ > Node: Switch
           
         <sub>go to: top index
@@ -267,7 +267,7 @@ class Object(dsock.Object):
         node ref Switch </sub>
                                   
         ```python
-        v = object.switch(switch1, true, node_label = None, node_color = None)
+        v = object.switch(switch, true, node_label = None, node_color = None)
         ```
     
 
@@ -275,7 +275,7 @@ class Object(dsock.Object):
         ---------
             ## Sockets
             - false : Object (self)
-            - switch1 : Boolean
+            - switch : Boolean
             - true : Object## Parameters
             - node_label : None
             - node_color : None## Fixed parameters
@@ -286,7 +286,7 @@ class Object(dsock.Object):
         -------------
             ```python
             from geondes import nodes
-            nodes.Switch(false=self, switch1=switch1, true=true, input_type='OBJECT', label=node_label, node_color=node_color)
+            nodes.Switch(false=self, switch=switch, true=true, input_type='OBJECT', label=node_label, node_color=node_color)
             ```
     
 
@@ -296,6 +296,6 @@ class Object(dsock.Object):
             
         """
 
-        return nodes.Switch(false=self, switch1=switch1, true=true, input_type='OBJECT', label=node_label, node_color=node_color).output
+        return nodes.Switch(false=self, switch=switch, true=true, input_type='OBJECT', label=node_label, node_color=node_color).output
 
 

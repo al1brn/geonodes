@@ -523,7 +523,7 @@ class Geometry(dsock.Geometry):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def switch(self, switch1=None, true=None, node_label = None, node_color = None):
+    def switch(self, switch=None, true=None, node_label = None, node_color = None):
         """ > Node: Switch
           
         <sub>go to: top index
@@ -531,7 +531,7 @@ class Geometry(dsock.Geometry):
         node ref Switch </sub>
                                   
         ```python
-        v = geometry.switch(switch1, true, node_label = None, node_color = None)
+        v = geometry.switch(switch, true, node_label = None, node_color = None)
         ```
     
 
@@ -539,7 +539,7 @@ class Geometry(dsock.Geometry):
         ---------
             ## Sockets
             - false : Geometry (self)
-            - switch1 : Boolean
+            - switch : Boolean
             - true : Geometry## Parameters
             - node_label : None
             - node_color : None## Fixed parameters
@@ -550,7 +550,7 @@ class Geometry(dsock.Geometry):
         -------------
             ```python
             from geondes import nodes
-            nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY', label=node_label, node_color=node_color)
+            nodes.Switch(false=self, switch=switch, true=true, input_type='GEOMETRY', label=node_label, node_color=node_color)
             ```
     
 
@@ -560,7 +560,7 @@ class Geometry(dsock.Geometry):
             
         """
 
-        return nodes.Switch(false=self, switch1=switch1, true=true, input_type='GEOMETRY', label=node_label, node_color=node_color).output
+        return nodes.Switch(false=self, switch=switch, true=true, input_type='GEOMETRY', label=node_label, node_color=node_color).output
 
     def capture_attribute(self, value=None, data_type='FLOAT', domain='POINT', node_label = None, node_color = None):
         """ > Node: CaptureAttribute

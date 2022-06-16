@@ -279,7 +279,7 @@ class Boolean(dsock.Boolean):
         Arguments
         ---------
             ## Sockets
-            - switch0 : Boolean (self)
+            - switch : Boolean (self)
             - false : Boolean
             - true : Boolean## Parameters
             - node_label : None
@@ -291,7 +291,7 @@ class Boolean(dsock.Boolean):
         -------------
             ```python
             from geondes import nodes
-            nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN', label=node_label, node_color=node_color)
+            nodes.Switch(switch=self, false=false, true=true, input_type='BOOLEAN', label=node_label, node_color=node_color)
             ```
     
 
@@ -301,7 +301,7 @@ class Boolean(dsock.Boolean):
             
         """
 
-        return nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN', label=node_label, node_color=node_color).output
+        return nodes.Switch(switch=self, false=false, true=true, input_type='BOOLEAN', label=node_label, node_color=node_color).output
 
     def b_and(self, boolean1=None, node_label = None, node_color = None):
         """ > Node: BooleanMath

@@ -219,7 +219,7 @@ v = boolean.switch(false, true, node_label = None, node_color = None)
 ### Arguments
 
 ## Sockets
-- switch0 : Boolean (self)
+- switch : Boolean (self)
 - false : Boolean
 - true : Boolean## Parameters
 - node_label : None
@@ -230,7 +230,7 @@ v = boolean.switch(false, true, node_label = None, node_color = None)
 
 ```python
 from geondes import nodes
-nodes.Switch(switch0=self, false=false, true=true, input_type='BOOLEAN', label=node_label, node_color=node_color)
+nodes.Switch(switch=self, false=false, true=true, input_type='BOOLEAN', label=node_label, node_color=node_color)
 ```
 
 ### Returns
