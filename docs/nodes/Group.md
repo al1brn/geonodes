@@ -1,24 +1,45 @@
 
 # Node Group
 
-> Geometry node name: [Group](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/group.html)<br>
-  Blender type: [Group](https://docs.blender.org/api/current/bpy.types.GeometryNodeGroup.html)
+> Node group
   
-<sub>go to [index](/docs/index.md)</sub>
+Node groups are dynamically built by reading the input and output sockets of the group.
 
-## Initialization
+Input sockets are initialized in the keyword arguments.
 
-```python
-from geonodes import nodes
-node = nodes.Group(label=None, node_color=None)
-```
+They can later on be initialized by the snake_case names
 
 
 
-## Arguments
+
+## \_\_init\_\_
+
+> Node group
+  
+Node groups are dynamically built by reading the input and output sockets of the group.
+
+Input sockets are initialized in the keyword arguments.
+
+They can later on be initialized by the snake_case names
 
 
-### Node label
 
-- label : Geometry node display label (default=None)
-- node_color : Geometry node color (default=None)
+
+## unitize
+
+Class method to unitize a list of names
+
+
+## \_\_getattr\_\_
+
+Access to the output sockets
+We are idiot proof and accept capitalized versions :-)
+Output sockets are "write only"
+
+
+## \_\_setattr\_\_
+
+Access to the input sockets
+We are idiot proof and accept capitalized versions :-)
+Input sockets are "write only"
+

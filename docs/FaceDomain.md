@@ -201,3 +201,59 @@ Blender menu : **mesh/face_is_planar**<br>
 
 Boolean
 
+
+
+## distribute_points
+
+<method GeometryNodeDistributePointsOnFaces>
+
+### Call
+
+```python
+node = mesh.face.distribute_points(selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None, node_color=None)
+```
+
+### Arguments
+
+
+### Input sockets
+
+- mesh : Mesh
+- selection : Boolean
+- distance_min : Float
+- density_max : Float
+- density : Float
+- density_factor : Float
+- seed : Integer
+
+### Parameters
+
+- distribute_method : str (default = 'RANDOM') in ('RANDOM', 'POISSON')
+
+### Node label
+
+- label : Geometry node display label (default=None)
+- node_color : Geometry node color (default=None)
+
+### Returns
+
+Node with 3 sockets:
+- points : Points
+- normal : Vector
+- rotation : Vector
+  
+  
+  
+
+## extrude
+
+<method GeometryNodeExtrudeMesh>
+
+call [Mesh.extrude](/docs/sockets/Mesh.md#extrude) with mode = 'FACES'
+                            
+```python
+node = mesh.faces.extrude()
+```
+
+
+

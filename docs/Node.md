@@ -177,6 +177,6 @@ List of the nodes which are connected through a GEOMETRY socket
 The attribute is "solved" when it feeds capture or transfer attribute
 
 
-## Boolean
+## DataSocket
 
 Node socket classes will be created in generated modules

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-15
+Created on 2022-06-16
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -45,6 +45,12 @@ class Spline(gn.Geometry):
     @property
     def control_point(self):
         return self.point
+    @property
+    def points(self):
+        return self.point
+    @property
+    def splines(self):
+        return self.spline
 
 
     # ----------------------------------------------------------------------------------------------------

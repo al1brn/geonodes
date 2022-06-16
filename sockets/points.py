@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-15
+Created on 2022-06-16
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -41,6 +41,10 @@ class Points(gn.Geometry):
 
     def init_domains(self):
         self.point = PointDomain(self)
+
+    @property
+    def points(self):
+        return self.point
 
 
     # ----------------------------------------------------------------------------------------------------

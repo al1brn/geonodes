@@ -7,6 +7,7 @@ Created on Wed Jun 15 08:20:40 2022
 """
 
 from geonodes.core.node import Socket
+from geonodes.nodes import nodes
 from geonodes.nodes.nodes import create_node
 
 import bpy
@@ -279,6 +280,22 @@ class PointDomain(Domain):
         """
         return self.neighbors.face_count
     
+    def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, node_label = None, node_color = None):
+        """ <method GeometryNodeExtrudeMesh>
+        
+        call [Mesh.extrude](/docs/sockets/Mesh.md#extrude) with mode = 'VERTICES'
+                            
+        ```python
+        node = mesh.verts.extrude()
+        ```
+        
+        """
+        
+        return self.data_socket.extrude(selection=selection, offset=offset, offset_scale=offset_scale, individual=individual,
+                        mode='VERTICES', node_label=node_label, node_color=node_color)
+                            
+    
+    
 # ---------------------------------------------------------------------------
 # > Field domain FACE
 #
@@ -452,6 +469,67 @@ class FaceDomain(Domain):
         """
         return self.create_field_node('GeometryNodeInputMeshFaceIsPlanar', threshold=threshold).planar
     
+    def distribute_points(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None, node_color=None):
+        """ <method GeometryNodeDistributePointsOnFaces>
+    
+        Call
+        ----
+        
+        ```python
+        node = mesh.face.distribute_points(selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None, node_color=None)
+        ```
+
+        Arguments
+        ---------
+
+            Input sockets
+            -------------
+                - mesh : Mesh
+                - selection : Boolean
+                - distance_min : Float
+                - density_max : Float
+                - density : Float
+                - density_factor : Float
+                - seed : Integer
+    
+
+            Parameters
+            ----------
+                - distribute_method : str (default = 'RANDOM') in ('RANDOM', 'POISSON')
+    
+
+            Node label
+            ----------
+                - label : Geometry node display label (default=None)
+                - node_color : Geometry node color (default=None)
+    
+
+        Returns
+        -------
+        Node with 3 sockets:
+            - points : Points
+            - normal : Vector
+            - rotation : Vector
+        """
+        
+        return nodes.DistributePointsOnFaces(mesh=self, selection=selection,
+                distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor,
+                seed=seed, distribute_method=distribute_method, label=label, node_color=node_color)
+    
+    def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, node_label = None, node_color = None):
+        """ <method GeometryNodeExtrudeMesh>
+        
+        call [Mesh.extrude](/docs/sockets/Mesh.md#extrude) with mode = 'FACES'
+                            
+        ```python
+        node = mesh.faces.extrude()
+        ```
+        
+        """
+        
+        return self.data_socket.extrude(selection=selection, offset=offset, offset_scale=offset_scale, individual=individual,
+                        mode='FACES', node_label=node_label, node_color=node_color)
+    
     
 # ---------------------------------------------------------------------------
 # > Field domain FACE
@@ -578,6 +656,22 @@ class EdgeDomain(Domain):
             Integer
         """
         return self.vertices.position_2
+    
+    def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, node_label = None, node_color = None):
+        """ <method GeometryNodeExtrudeMesh>
+        
+        call [Mesh.extrude](/docs/sockets/Mesh.md#extrude) with mode = 'EDGES'
+                            
+        ```python
+        node = mesh.edges.extrude()
+        ```
+        
+        """
+        
+        return self.data_socket.extrude(selection=selection, offset=offset, offset_scale=offset_scale, individual=individual,
+                        mode='EDGES', node_label=node_label, node_color=node_color)
+                            
+    
     
     
 # ---------------------------------------------------------------------------

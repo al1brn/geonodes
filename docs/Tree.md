@@ -184,13 +184,13 @@ Don't use it directly, better call `DataSocket.to_output(...)`
 
 
 
-## to_viewer
+## view
 
 Connect a data socket to the viewer
 
-Don't use it directly, better call `DataSocket.to_viewer()`
+You can als call `DataSocket.view()`
 
-The `Tree.to_viewer` method reuses the Viewer node if already exists.
+The `Tree.view` method reuses the Viewer node if already exists.
 
 
 
@@ -281,6 +281,11 @@ The insertion is made with the following algorithm
   
   
   
+
+## prev_node
+
+Get the parameter previously changed in a node
+
 
 ## arrange
 

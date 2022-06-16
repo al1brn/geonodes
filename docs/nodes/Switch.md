@@ -61,4 +61,5 @@ node = nodes.Switch(switch0=None, switch1=None, false=None, true=None, input_typ
 - [Object](/docs/sockets/Object.md).[switch](/docs/sockets/Object.md#switch) : Method
 - [String](/docs/sockets/String.md).[switch](/docs/sockets/String.md#switch) : Method
 - [Texture](/docs/sockets/Texture.md).[switch](/docs/sockets/Texture.md#switch) : Method
+- [functions](/docs/sockets/functions.md).[switch](/docs/sockets/functions.md#switch) : Function
   

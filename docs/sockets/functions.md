@@ -92,6 +92,7 @@ v = gn.sin(v)         # The sine of this value
 - [snap](#snap) : value (Float)
 - [sqrt](#sqrt) : value (Float)
 - [subtract](#subtract) : value (Float)
+- [switch](#switch) : output (input_type dependant)
 - [tan](#tan) : value (Float)
 - [tanh](#tanh) : value (Float)
 - [trunc](#trunc) : value (Float)
@@ -211,6 +212,41 @@ nodes.SceneTime(label=node_label, node_color=node_color)
 ### Returns
 
 Sockets [seconds (Float), frame (Float)]
+
+
+## switch
+
+> Node: [Switch](/docs/nodes/Switch.md)
+  
+<sub>go to: [top](#data-socket-functions) [index](/docs/index.md)
+blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
+                          
+```python
+v = functions.switch(switch0, switch1, false, true, input_type, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- switch0 : Boolean
+- switch1 : Boolean
+- false : Geometry
+- true : Geometry## Parameters
+- input_type : 'GEOMETRY' in [FLOAT, INT, BOOLEAN, VECTOR, STRING,... , COLLECTION, TEXTURE, MATERIAL]
+- node_label : None
+- node_color : None
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Switch(switch0=switch0, switch1=switch1, false=false, true=true, input_type=input_type, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+input_type dependant
 
 
 ## b_and

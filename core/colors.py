@@ -7,7 +7,15 @@ Created on Thu May  5 09:22:32 2022
 """
 
 import mathutils
+import numpy as np
 
+np.random.seed = 0
+count = 1000
+color_stack = np.zeros((count, 3), float)
+color_stack[:, 0] = np.random.uniform(0. , 1. , count)
+color_stack[:, 1] = np.random.uniform(0.3, 1. , count)
+color_stack[:, 2] = np.random.uniform(0.3, 0.9, count)
+color_stack_index = 0
 
 COLORS = {
     'white'   : (0., 0., 1.00),
@@ -39,7 +47,7 @@ def gen():
 
 def color(name, saturation=None, value=None):
     
-    if isinstance(name, tuple):
+    if isinstance(name, (tuple, list, np.ndarray)):
         sname, sat, val = name
         if type(sname) is str:
             return color(sname, sat, val)
@@ -72,7 +80,7 @@ def color(name, saturation=None, value=None):
         return name
     
     else:
-        raise RuntimeError(f"Unknwon color : {name} ({type(color)/name}.")
+        raise RuntimeError(f"Unknown color : {name} ({type(name).__name__}).")
         
     if saturation is not None:
         hsv[1] = saturation
@@ -83,6 +91,17 @@ def color(name, saturation=None, value=None):
     c.hsv = hsv
         
     return c
+
+def next_color():
+    global color_stack_index
+    c = color(color_stack[color_stack_index])
+    color_stack_index += 1
+    return c
+
+def reset():
+    global color_stack_index
+    color_stack_index = 0
+    
 
 white         = color('white')
 black         = color('black')
@@ -151,4 +170,6 @@ light_rose    = color('rose', 0.25)
 mid_rose      = color('rose', 0.50)
 dark_rose     = color('rose', 0.75)
 rose          = color('rose')
+
+
 

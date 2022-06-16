@@ -551,6 +551,8 @@ class Geometry(DataSocket):
             return self
         return self.stack(self.add(other).node)
     
+    
+    
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # Collection

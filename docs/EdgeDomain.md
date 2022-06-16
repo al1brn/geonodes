@@ -142,3 +142,17 @@ Blender menu : **mesh/edge_vertices**<br>
 
 Integer
 
+
+
+## extrude
+
+<method GeometryNodeExtrudeMesh>
+
+call [Mesh.extrude](/docs/sockets/Mesh.md#extrude) with mode = 'EDGES'
+                            
+```python
+node = mesh.edges.extrude()
+```
+
+
+

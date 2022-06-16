@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-15
+Created on 2022-06-16
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -74,6 +74,20 @@ class Mesh(gn.Geometry):
 
     @property
     def face_corner(self):
+        return self.corner
+    @property
+    def verts(self):
+        return self.point
+
+    @property
+    def faces(self):
+        return self.face
+    @property
+    def edges(self):
+        return self.edge
+
+    @property
+    def corners(self):
         return self.corner
 
 

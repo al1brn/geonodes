@@ -62,3 +62,17 @@ Blender menu : **mesh/vertex_neighbors**<br>
 
 Integer
 
+
+
+## extrude
+
+<method GeometryNodeExtrudeMesh>
+
+call [Mesh.extrude](/docs/sockets/Mesh.md#extrude) with mode = 'VERTICES'
+                            
+```python
+node = mesh.verts.extrude()
+```
+
+
+

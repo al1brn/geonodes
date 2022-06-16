@@ -173,6 +173,18 @@ The socket is added to the outputs of the geometry nodes tree.
 
 
 
-## to_viewer
+## view
 
-To viewer (for output sockets only)
+> Link the data socket to the viewer
+  
+If the data socket is a geometry (Curve, Mesh...) it is linked to the geometry input of the viewer.
+If it ias a value (Integer, Float,...) it is linked to the value socket and the viewer is configured
+accordingly.
+
+
+
+## reroute
+
+> Reroute all output links
+  
+  

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-15
+Created on 2022-06-16
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -27,8 +27,8 @@ from geonodes.sockets.functions import faceforward, floor, fract, fraction, grea
 from geonodes.sockets.functions import join_strings, length, less_than, log, max, min, modulo, multiply
 from geonodes.sockets.functions import multiply_add, nand, nimply, nor, normalize, pingpong, pow, project
 from geonodes.sockets.functions import radians, reflect, refract, round, scale, scene, sign, sin, sinh
-from geonodes.sockets.functions import smooth_max, smooth_min, snap, sqrt, subtract, tan, tanh, trunc
-from geonodes.sockets.functions import vector_absolute, vector_add, vector_ceil, vector_cos, vector_divide
+from geonodes.sockets.functions import smooth_max, smooth_min, snap, sqrt, subtract, switch, tan, tanh
+from geonodes.sockets.functions import trunc, vector_absolute, vector_add, vector_ceil, vector_cos, vector_divide
 from geonodes.sockets.functions import vector_floor, vector_max, vector_min, vector_modulo, vector_multiply
 from geonodes.sockets.functions import vector_multiply_add, vector_sin, vector_snap, vector_subtract, vector_tan
 from geonodes.sockets.functions import vector_wrap, wrap, xnor, xor
@@ -130,6 +130,7 @@ geonodes functions
         - snap : value (Float)
         - sqrt : value (Float)
         - subtract : value (Float)
+        - switch : output (input_type dependant)
         - tan : value (Float)
         - tanh : value (Float)
         - trunc : value (Float)
@@ -270,6 +271,46 @@ def scene(node_label = None, node_color = None):
     """
 
     return nodes.SceneTime(label=node_label, node_color=node_color)
+
+def switch(switch0=None, switch1=None, false=None, true=None, input_type='GEOMETRY', node_label = None, node_color = None):
+    """ > Node: Switch
+      
+    <sub>go to: top index
+    blender ref GeometryNodeSwitch
+    node ref Switch </sub>
+                              
+    ```python
+    v = functions.switch(switch0, switch1, false, true, input_type, node_label = None, node_color = None)
+    ```
+
+
+    Arguments
+    ---------
+        ## Sockets
+        - switch0 : Boolean
+        - switch1 : Boolean
+        - false : Geometry
+        - true : Geometry## Parameters
+        - input_type : 'GEOMETRY' in [FLOAT, INT, BOOLEAN, VECTOR, STRING,... , COLLECTION, TEXTURE, MATERIAL]
+        - node_label : None
+        - node_color : None
+
+
+    Node creation
+    -------------
+        ```python
+        from geondes import nodes
+        nodes.Switch(switch0=switch0, switch1=switch1, false=false, true=true, input_type=input_type, label=node_label, node_color=node_color)
+        ```
+
+
+    Returns
+    -------
+        input_type dependant
+        
+    """
+
+    return nodes.Switch(switch0=switch0, switch1=switch1, false=false, true=true, input_type=input_type, label=node_label, node_color=node_color).output
 
 def b_and(boolean0=None, boolean1=None, operation='AND', node_label = None, node_color = None):
     """ > Node: BooleanMath

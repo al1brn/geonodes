@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-15
+Created on 2022-06-16
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -10180,6 +10180,7 @@ class Switch(Node):
             - Object.switch : Method
             - String.switch : Method
             - Texture.switch : Method
+            - functions.switch : Function
               
     """
 
