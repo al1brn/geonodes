@@ -24,27 +24,3 @@ They can later on be initialized by the snake_case names
 
 
 
-
-## unitize
-
-Class method to unitize a list of names
-
-
-## \_\_getattr\_\_
-
-Access to the output sockets
-We are idiot proof and accept capitalized versions :-)
-Output sockets are "write only"
-
-
-## \_\_setattr\_\_
-
-Access to the input sockets
-We are idiot proof and accept capitalized versions :-)
-Input sockets are "write only"
-
-
-## plug_node
-
-Plug all sockets with matching name
-

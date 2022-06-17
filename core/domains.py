@@ -55,8 +55,10 @@ logger = logging.getLogger('geonodes')
 #
 
 class Domain(Socket):
-        
-    def init_socket(self):
+    
+    def __init__(self, data_socket, domain):
+        super().__init__(data_socket, data_socket.node)
+        self.domain = domain
         self.fields = {}
         
     def create_field_node(self, bl_idname, **kwargs):
@@ -229,9 +231,8 @@ class Domain(Socket):
 
 class PointDomain(Domain):
     
-    def init_socket(self):
-        super().init_socket()
-        self.domain = 'POINT'
+    def __init__(self, data_socket):
+        super().__init__(data_socket, domain='POINT')
 
     @property
     def neighbors(self):
@@ -305,9 +306,8 @@ class PointDomain(Domain):
 
 class FaceDomain(Domain):
 
-    def init_socket(self):
-        super().init_socket()
-        self.domain = 'FACE'
+    def __init__(self, data_socket):
+        super().__init__(data_socket, domain='FACE')
         
     @property
     def area(self):
@@ -541,10 +541,9 @@ class FaceDomain(Domain):
         
 class EdgeDomain(Domain):
     
-    def init_socket(self):
-        super().init_socket()
-        self.domain = 'EDGE'
-        
+    def __init__(self, data_socket):
+        super().__init__(data_socket, domain='EDGE')
+
     @property
     def angle(self):
         """ <field GeometryNodeInputMeshEdgeAngle>
@@ -684,9 +683,9 @@ class EdgeDomain(Domain):
 
 class CornerDomain(Domain):
     
-    def init_socket(self):
-        super().init_socket()
-        self.domain = 'CORNER'
+    def __init__(self, data_socket):
+        super().__init__(data_socket, domain='CORNER')
+
         
 # ---------------------------------------------------------------------------
 # > Field domain CURVE
@@ -697,9 +696,9 @@ class CornerDomain(Domain):
 
 class CurveDomain(Domain):
     
-    def init_socket(self):
-        super().init_socket()
-        self.domain = 'CURVE'
+    def __init__(self, data_socket):
+        super().__init__(data_socket, domain='CURVE')
+
         
     def handle_positions(self, relative=None):
         """ <field GeometryNodeInputCurveHandlePositions>
@@ -1086,4 +1085,23 @@ class CurveDomain(Domain):
             Integer
         """
         return self.create_field_node('GeometryNodeInputSplineResolution').resolution
+    
+# ---------------------------------------------------------------------------
+# > Field domain INSTANCE
+#
+# Inherits from [Domain](/docs/core/domain.MD)
+#
+# A property of Instances
+
+class InstanceDomain(Domain):
+    
+    def __init__(self, data_socket):
+        super().__init__(data_socket, domain='INSTANCE')
+
+        
+
+
+
+
+    
         

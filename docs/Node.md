@@ -97,6 +97,11 @@ Input sockets are "write only"
 bl idname
 
 
+## unitize
+
+Class method to unitize a list of names
+
+
 ## get_label
 
 Build the node label
@@ -162,6 +167,11 @@ When it is a socket, it can be a Blender socker or a DataSocket
   
   
 ----- Index can be a string
+
+## plug_node
+
+Plug all sockets with matching name
+
 
 ## as_attribute
 

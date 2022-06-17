@@ -87,8 +87,6 @@ class AlignEulerToVector(Node):
         self.insockets = {'rotation' : 0, 'factor' : 1, 'vector' : 2, }
         self.outsockets = {'rotation' : 0, }
 
-        self.output_sockets  = {'rotation': self.rotation}
-
         # Input sockets plugging
 
         self.rotation        = rotation
@@ -200,8 +198,6 @@ class BooleanMath(Node):
 
         self.insockets = {'boolean0' : 0, 'boolean1' : 1, }
         self.outsockets = {'boolean' : 0, }
-
-        self.output_sockets  = {'boolean': self.boolean}
 
         # Input sockets plugging
 
@@ -332,8 +328,6 @@ class Compare(Node):
         self.insockets = {'a' : [0, 2, 4, 6, 8], 'b' : [1, 3, 5, 7, 9], 'c' : 10, 'angle' : 11, 'epsilon' : 12, }
         self.outsockets = {'result' : 0, }
 
-        self.output_sockets  = {'result': self.result}
-
         # Input sockets plugging
 
         self.a               = a
@@ -438,8 +432,6 @@ class FloatToInteger(Node):
         self.insockets = {'float' : 0, }
         self.outsockets = {'integer' : 0, }
 
-        self.output_sockets  = {'integer': self.integer}
-
         # Input sockets plugging
 
         self.float           = float
@@ -510,8 +502,6 @@ class Boolean(Node):
         self.insockets = {}
         self.outsockets = {'boolean' : 0, }
 
-        self.output_sockets  = {'boolean': self.boolean}
-
     @property
     def boolean_(self):
         return self.bnode.boolean
@@ -568,8 +558,6 @@ class Color(Node):
 
         self.insockets = {}
         self.outsockets = {'color' : 0, }
-
-        self.output_sockets  = {'color': self.color}
 
 # ----------------------------------------------------------------------------------------------------
 # Node Integer for FunctionNodeInputInt
@@ -629,8 +617,6 @@ class Integer(Node):
         self.insockets = {}
         self.outsockets = {'integer' : 0, }
 
-        self.output_sockets  = {'integer': self.integer}
-
     @property
     def integer_(self):
         return self.bnode.integer
@@ -689,8 +675,6 @@ class SpecialCharacters(Node):
         self.insockets = {}
         self.outsockets = {'line_break' : 0, 'tab' : 1, }
 
-        self.output_sockets  = {'line_break': self.line_break, 'tab': self.tab}
-
 # ----------------------------------------------------------------------------------------------------
 # Node String for FunctionNodeInputString
 
@@ -748,8 +732,6 @@ class String(Node):
 
         self.insockets = {}
         self.outsockets = {'string' : 0, }
-
-        self.output_sockets  = {'string': self.string}
 
     @property
     def string_(self):
@@ -816,8 +798,6 @@ class Vector(Node):
 
         self.insockets = {}
         self.outsockets = {'vector' : 0, }
-
-        self.output_sockets  = {'vector': self.vector}
 
     @property
     def vector_(self):
@@ -915,8 +895,6 @@ class RandomValue(Node):
         self.insockets = {'min' : [0, 2, 4], 'max' : [1, 3, 5], 'probability' : 6, 'ID' : 7, 'seed' : 8, }
         self.outsockets = {'value' : [0, 1, 2, 3], }
 
-        self.output_sockets  = {'value': self.value}
-
         # Input sockets plugging
 
         self.min             = min
@@ -997,8 +975,6 @@ class ReplaceString(Node):
 
         self.insockets = {'string' : 0, 'find' : 1, 'replace' : 2, }
         self.outsockets = {'string' : 0, }
-
-        self.output_sockets  = {'string': self.string}
 
         # Input sockets plugging
 
@@ -1081,8 +1057,6 @@ class RotateEuler(Node):
         self.insockets = {'rotation' : 0, 'rotate_by' : 1, 'axis' : 2, 'angle' : 3, }
         self.outsockets = {'rotation' : 0, }
 
-        self.output_sockets  = {'rotation': self.rotation}
-
         # Input sockets plugging
 
         self.rotation        = rotation
@@ -1163,8 +1137,6 @@ class SliceString(Node):
         self.insockets = {'string' : 0, 'position' : 1, 'length' : 2, }
         self.outsockets = {'string' : 0, }
 
-        self.output_sockets  = {'string': self.string}
-
         # Input sockets plugging
 
         self.string          = string
@@ -1234,8 +1206,6 @@ class StringLength(Node):
         self.insockets = {'string' : 0, }
         self.outsockets = {'length' : 0, }
 
-        self.output_sockets  = {'length': self.length}
-
         # Input sockets plugging
 
         self.string          = string
@@ -1303,8 +1273,6 @@ class ValueToString(Node):
 
         self.insockets = {'value' : 0, 'decimals' : 1, }
         self.outsockets = {'string' : 0, }
-
-        self.output_sockets  = {'string': self.string}
 
         # Input sockets plugging
 
@@ -1398,8 +1366,6 @@ class AccumulateField(Node):
 
         self.insockets = {'value' : [0, 1, 2], 'group_index' : 3, }
         self.outsockets = {'leading' : [0, 1, 2], 'trailing' : [3, 4, 5], 'total' : [6, 7, 8], }
-
-        self.output_sockets  = {'leading': self.leading, 'trailing': self.trailing, 'total': self.total}
 
         # Input sockets plugging
 
@@ -1498,8 +1464,6 @@ class DomainSize(Node):
 
         self.insockets = {'geometry' : 0, }
         self.outsockets = {'point_count' : 0, 'edge_count' : 1, 'face_count' : 2, 'face_corner_count' : 3, 'spline_count' : 4, 'instance_count' : 5, }
-
-        self.output_sockets  = {'point_count': self.point_count, 'edge_count': self.edge_count, 'face_count': self.face_count, 'face_corner_count': self.face_corner_count, 'spline_count': self.spline_count, 'instance_count': self.instance_count}
 
         # Input sockets plugging
 
@@ -1605,8 +1569,6 @@ class AttributeStatistic(Node):
 
         self.insockets = {'geometry' : 0, 'selection' : 1, 'attribute' : [2, 3], }
         self.outsockets = {'mean' : [0, 8], 'median' : [1, 9], 'sum' : [2, 10], 'min' : [3, 11], 'max' : [4, 12], 'range' : [5, 13], 'standard_deviation' : [6, 14], 'variance' : [7, 15], }
-
-        self.output_sockets  = {'mean': self.mean, 'median': self.median, 'sum': self.sum, 'min': self.min, 'max': self.max, 'range': self.range, 'standard_deviation': self.standard_deviation, 'variance': self.variance}
 
         # Input sockets plugging
 
@@ -1727,8 +1689,6 @@ class TransferAttribute(Node):
         self.insockets = {'source' : 0, 'attribute' : [1, 2, 3, 4, 5], 'source_position' : 6, 'index' : 7, }
         self.outsockets = {'attribute' : [0, 1, 2, 3, 4], }
 
-        self.output_sockets  = {'attribute': self.attribute}
-
         # Input sockets plugging
 
         self.source          = source
@@ -1828,8 +1788,6 @@ class BoundingBox(Node):
         self.insockets = {'geometry' : 0, }
         self.outsockets = {'bounding_box' : 0, 'min' : 1, 'max' : 2, }
 
-        self.output_sockets  = {'bounding_box': self.bounding_box, 'min': self.min, 'max': self.max}
-
         # Input sockets plugging
 
         self.geometry        = geometry
@@ -1923,8 +1881,6 @@ class CaptureAttribute(Node):
 
         self.insockets = {'geometry' : 0, 'value' : [1, 2, 3, 4, 5], }
         self.outsockets = {'geometry' : 0, 'attribute' : [1, 2, 3, 4, 5], }
-
-        self.output_sockets  = {'geometry': self.geometry, 'attribute': self.attribute}
 
         # Input sockets plugging
 
@@ -2021,8 +1977,6 @@ class CollectionInfo(Node):
         self.insockets = {'collection' : 0, 'separate_children' : 1, 'reset_children' : 2, }
         self.outsockets = {'geometry' : 0, }
 
-        self.output_sockets  = {'geometry': self.geometry}
-
         # Input sockets plugging
 
         self.collection      = collection
@@ -2099,8 +2053,6 @@ class ConvexHull(Node):
 
         self.insockets = {'geometry' : 0, }
         self.outsockets = {'convex_hull' : 0, }
-
-        self.output_sockets  = {'convex_hull': self.convex_hull}
 
         # Input sockets plugging
 
@@ -2191,8 +2143,6 @@ class Arc(Node):
         self.insockets = {'resolution' : 0, 'start' : 1, 'middle' : 2, 'end' : 3, 'radius' : 4, 'start_angle' : 5, 'sweep_angle' : 6, 'offset_angle' : 7, 'connect_center' : 8, 'invert_arc' : 9, }
         self.outsockets = {'curve' : 0, 'center' : 1, 'normal' : 2, 'radius' : 3, }
 
-        self.output_sockets  = {'curve': self.curve, 'center': self.center, 'normal': self.normal, 'radius': self.radius}
-
         # Input sockets plugging
 
         self.resolution      = resolution
@@ -2278,8 +2228,6 @@ class EndpointSelection(Node):
         self.insockets = {'start_size' : 0, 'end_size' : 1, }
         self.outsockets = {'selection' : 0, }
 
-        self.output_sockets  = {'selection': self.selection}
-
         # Input sockets plugging
 
         self.start_size      = start_size
@@ -2364,8 +2312,6 @@ class HandleTypeSelection(Node):
         self.insockets = {}
         self.outsockets = {'selection' : 0, }
 
-        self.output_sockets  = {'selection': self.selection}
-
     @property
     def handle_type(self):
         return self.bnode.handle_type
@@ -2444,8 +2390,6 @@ class CurveLength(Node):
 
         self.insockets = {'curve' : 0, }
         self.outsockets = {'length' : 0, }
-
-        self.output_sockets  = {'length': self.length}
 
         # Input sockets plugging
 
@@ -2526,8 +2470,6 @@ class BezierSegment(Node):
 
         self.insockets = {'resolution' : 0, 'start' : 1, 'start_handle' : 2, 'end_handle' : 3, 'end' : 4, }
         self.outsockets = {'curve' : 0, }
-
-        self.output_sockets  = {'curve': self.curve}
 
         # Input sockets plugging
 
@@ -2622,8 +2564,6 @@ class CurveCircle(Node):
         self.insockets = {'resolution' : 0, 'point_1' : 1, 'point_2' : 2, 'point_3' : 3, 'radius' : 4, }
         self.outsockets = {'curve' : 0, 'center' : 1, }
 
-        self.output_sockets  = {'curve': self.curve, 'center': self.center}
-
         # Input sockets plugging
 
         self.resolution      = resolution
@@ -2714,8 +2654,6 @@ class CurveLine(Node):
 
         self.insockets = {'start' : 0, 'end' : 1, 'direction' : 2, 'length' : 3, }
         self.outsockets = {'curve' : 0, }
-
-        self.output_sockets  = {'curve': self.curve}
 
         # Input sockets plugging
 
@@ -2814,8 +2752,6 @@ class Quadrilateral(Node):
         self.insockets = {'width' : 0, 'height' : 1, 'bottom_width' : 2, 'top_width' : 3, 'offset' : 4, 'bottom_height' : 5, 'top_height' : 6, 'point_1' : 7, 'point_2' : 8, 'point_3' : 9, 'point_4' : 10, }
         self.outsockets = {'curve' : 0, }
 
-        self.output_sockets  = {'curve': self.curve}
-
         # Input sockets plugging
 
         self.width           = width
@@ -2904,8 +2840,6 @@ class QuadraticBezier(Node):
         self.insockets = {'resolution' : 0, 'start' : 1, 'middle' : 2, 'end' : 3, }
         self.outsockets = {'curve' : 0, }
 
-        self.output_sockets  = {'curve': self.curve}
-
         # Input sockets plugging
 
         self.resolution      = resolution
@@ -2987,8 +2921,6 @@ class SetHandleType(Node):
 
         self.insockets = {'curve' : 0, 'selection' : 1, }
         self.outsockets = {'curve' : 0, }
-
-        self.output_sockets  = {'curve': self.curve}
 
         # Input sockets plugging
 
@@ -3079,8 +3011,6 @@ class Spiral(Node):
         self.insockets = {'resolution' : 0, 'rotations' : 1, 'start_radius' : 2, 'end_radius' : 3, 'height' : 4, 'reverse' : 5, }
         self.outsockets = {'curve' : 0, }
 
-        self.output_sockets  = {'curve': self.curve}
-
         # Input sockets plugging
 
         self.resolution      = resolution
@@ -3163,8 +3093,6 @@ class SetSplineType(Node):
         self.insockets = {'curve' : 0, 'selection' : 1, }
         self.outsockets = {'curve' : 0, }
 
-        self.output_sockets  = {'curve': self.curve}
-
         # Input sockets plugging
 
         self.curve           = curve
@@ -3245,8 +3173,6 @@ class Star(Node):
         self.insockets = {'points' : 0, 'inner_radius' : 1, 'outer_radius' : 2, 'twist' : 3, }
         self.outsockets = {'curve' : 0, 'outer_points' : 1, }
 
-        self.output_sockets  = {'curve': self.curve, 'outer_points': self.outer_points}
-
         # Input sockets plugging
 
         self.points          = points
@@ -3318,8 +3244,6 @@ class CurveToMesh(Node):
 
         self.insockets = {'curve' : 0, 'profile_curve' : 1, 'fill_caps' : 2, }
         self.outsockets = {'mesh' : 0, }
-
-        self.output_sockets  = {'mesh': self.mesh}
 
         # Input sockets plugging
 
@@ -3403,8 +3327,6 @@ class CurveToPoints(Node):
 
         self.insockets = {'curve' : 0, 'count' : 1, 'length' : 2, }
         self.outsockets = {'points' : 0, 'tangent' : 1, 'normal' : 2, 'rotation' : 3, }
-
-        self.output_sockets  = {'points': self.points, 'tangent': self.tangent, 'normal': self.normal, 'rotation': self.rotation}
 
         # Input sockets plugging
 
@@ -3494,8 +3416,6 @@ class DeleteGeometry(Node):
 
         self.insockets = {'geometry' : 0, 'selection' : 1, }
         self.outsockets = {'geometry' : 0, }
-
-        self.output_sockets  = {'geometry': self.geometry}
 
         # Input sockets plugging
 
@@ -3598,8 +3518,6 @@ class DistributePointsOnFaces(Node):
         self.insockets = {'mesh' : 0, 'selection' : 1, 'distance_min' : 2, 'density_max' : 3, 'density' : 4, 'density_factor' : 5, 'seed' : 6, }
         self.outsockets = {'points' : 0, 'normal' : 1, 'rotation' : 2, }
 
-        self.output_sockets  = {'points': self.points, 'normal': self.normal, 'rotation': self.rotation}
-
         # Input sockets plugging
 
         self.mesh            = mesh
@@ -3681,8 +3599,6 @@ class DualMesh(Node):
 
         self.insockets = {'mesh' : 0, 'keep_boundaries' : 1, }
         self.outsockets = {'dual_mesh' : 0, }
-
-        self.output_sockets  = {'dual_mesh': self.dual_mesh}
 
         # Input sockets plugging
 
@@ -3768,8 +3684,6 @@ class DuplicateElements(Node):
 
         self.insockets = {'geometry' : 0, 'selection' : 1, 'amount' : 2, }
         self.outsockets = {'geometry' : 0, 'duplicate_index' : 1, }
-
-        self.output_sockets  = {'geometry': self.geometry, 'duplicate_index': self.duplicate_index}
 
         # Input sockets plugging
 
@@ -3862,8 +3776,6 @@ class ExtrudeMesh(Node):
 
         self.insockets = {'mesh' : 0, 'selection' : 1, 'offset' : 2, 'offset_scale' : 3, 'individual' : 4, }
         self.outsockets = {'mesh' : 0, 'top' : 1, 'side' : 2, }
-
-        self.output_sockets  = {'mesh': self.mesh, 'top': self.top, 'side': self.side}
 
         # Input sockets plugging
 
@@ -3969,8 +3881,6 @@ class FieldAtIndex(Node):
         self.insockets = {'index' : 0, 'value' : [1, 2, 3, 4, 5], }
         self.outsockets = {'value' : [0, 1, 2, 3, 4], }
 
-        self.output_sockets  = {'value': self.value}
-
         # Input sockets plugging
 
         self.index           = index
@@ -4064,8 +3974,6 @@ class FillCurve(Node):
         self.insockets = {'curve' : 0, }
         self.outsockets = {'mesh' : 0, }
 
-        self.output_sockets  = {'mesh': self.mesh}
-
         # Input sockets plugging
 
         self.curve           = curve
@@ -4153,8 +4061,6 @@ class FilletCurve(Node):
         self.insockets = {'curve' : 0, 'count' : 1, 'radius' : 2, 'limit_radius' : 3, }
         self.outsockets = {'curve' : 0, }
 
-        self.output_sockets  = {'curve': self.curve}
-
         # Input sockets plugging
 
         self.curve           = curve
@@ -4234,8 +4140,6 @@ class FlipFaces(Node):
         self.insockets = {'mesh' : 0, 'selection' : 1, }
         self.outsockets = {'mesh' : 0, }
 
-        self.output_sockets  = {'mesh': self.mesh}
-
         # Input sockets plugging
 
         self.mesh            = mesh
@@ -4304,8 +4208,6 @@ class GeometryToInstance(Node):
         self.insockets = {'geometry' : 0, }
         self.outsockets = {'instances' : 0, }
 
-        self.output_sockets  = {'instances': self.instances}
-
         # Input sockets plugging
 
         self.plug(0, *geometry)
@@ -4353,8 +4255,6 @@ class Group(Node):
 
         self.insockets = {}
         self.outsockets = {}
-
-        self.output_sockets  = {}
 
 # ----------------------------------------------------------------------------------------------------
 # Node ImageTexture for GeometryNodeImageTexture
@@ -4432,8 +4332,6 @@ class ImageTexture(Node):
 
         self.insockets = {'image' : 0, 'vector' : 1, 'frame' : 2, }
         self.outsockets = {'color' : 0, 'alpha' : 1, }
-
-        self.output_sockets  = {'color': self.color, 'alpha': self.alpha}
 
         # Input sockets plugging
 
@@ -4523,8 +4421,6 @@ class CurveHandlePositions(Node):
         self.insockets = {'relative' : 0, }
         self.outsockets = {'left' : 0, 'right' : 1, }
 
-        self.output_sockets  = {'left': self.left, 'right': self.right}
-
         # Input sockets plugging
 
         self.relative        = relative
@@ -4587,8 +4483,6 @@ class CurveTilt(Node):
         self.insockets = {}
         self.outsockets = {'tilt' : 0, }
 
-        self.output_sockets  = {'tilt': self.tilt}
-
 # ----------------------------------------------------------------------------------------------------
 # Node ID for GeometryNodeInputID
 
@@ -4646,8 +4540,6 @@ class ID(Node):
 
         self.insockets = {}
         self.outsockets = {'ID' : 0, }
-
-        self.output_sockets  = {'ID': self.ID}
 
 # ----------------------------------------------------------------------------------------------------
 # Node Index for GeometryNodeInputIndex
@@ -4707,8 +4599,6 @@ class Index(Node):
         self.insockets = {}
         self.outsockets = {'index' : 0, }
 
-        self.output_sockets  = {'index': self.index}
-
 # ----------------------------------------------------------------------------------------------------
 # Node Material for GeometryNodeInputMaterial
 
@@ -4757,8 +4647,6 @@ class Material(Node):
 
         self.insockets = {}
         self.outsockets = {'material' : 0, }
-
-        self.output_sockets  = {'material': self.material}
 
 # ----------------------------------------------------------------------------------------------------
 # Node MaterialIndex for GeometryNodeInputMaterialIndex
@@ -4817,8 +4705,6 @@ class MaterialIndex(Node):
 
         self.insockets = {}
         self.outsockets = {'material_index' : 0, }
-
-        self.output_sockets  = {'material_index': self.material_index}
 
 # ----------------------------------------------------------------------------------------------------
 # Node EdgeAngle for GeometryNodeInputMeshEdgeAngle
@@ -4880,8 +4766,6 @@ class EdgeAngle(Node):
         self.insockets = {}
         self.outsockets = {'unsigned_angle' : 0, 'signed_angle' : 1, }
 
-        self.output_sockets  = {'unsigned_angle': self.unsigned_angle, 'signed_angle': self.signed_angle}
-
 # ----------------------------------------------------------------------------------------------------
 # Node EdgeNeighbors for GeometryNodeInputMeshEdgeNeighbors
 
@@ -4939,8 +4823,6 @@ class EdgeNeighbors(Node):
 
         self.insockets = {}
         self.outsockets = {'face_count' : 0, }
-
-        self.output_sockets  = {'face_count': self.face_count}
 
 # ----------------------------------------------------------------------------------------------------
 # Node EdgeVertices for GeometryNodeInputMeshEdgeVertices
@@ -5007,8 +4889,6 @@ class EdgeVertices(Node):
         self.insockets = {}
         self.outsockets = {'vertex_index_1' : 0, 'vertex_index_2' : 1, 'position_1' : 2, 'position_2' : 3, }
 
-        self.output_sockets  = {'vertex_index_1': self.vertex_index_1, 'vertex_index_2': self.vertex_index_2, 'position_1': self.position_1, 'position_2': self.position_2}
-
 # ----------------------------------------------------------------------------------------------------
 # Node FaceArea for GeometryNodeInputMeshFaceArea
 
@@ -5066,8 +4946,6 @@ class FaceArea(Node):
 
         self.insockets = {}
         self.outsockets = {'area' : 0, }
-
-        self.output_sockets  = {'area': self.area}
 
 # ----------------------------------------------------------------------------------------------------
 # Node FaceIsPlanar for GeometryNodeInputMeshFaceIsPlanar
@@ -5131,8 +5009,6 @@ class FaceIsPlanar(Node):
 
         self.insockets = {'threshold' : 0, }
         self.outsockets = {'planar' : 0, }
-
-        self.output_sockets  = {'planar': self.planar}
 
         # Input sockets plugging
 
@@ -5199,8 +5075,6 @@ class FaceNeighbors(Node):
         self.insockets = {}
         self.outsockets = {'vertex_count' : 0, 'face_count' : 1, }
 
-        self.output_sockets  = {'vertex_count': self.vertex_count, 'face_count': self.face_count}
-
 # ----------------------------------------------------------------------------------------------------
 # Node MeshIsland for GeometryNodeInputMeshIsland
 
@@ -5262,8 +5136,6 @@ class MeshIsland(Node):
         self.insockets = {}
         self.outsockets = {'island_index' : 0, 'island_count' : 1, }
 
-        self.output_sockets  = {'island_index': self.island_index, 'island_count': self.island_count}
-
 # ----------------------------------------------------------------------------------------------------
 # Node VertexNeighbors for GeometryNodeInputMeshVertexNeighbors
 
@@ -5324,8 +5196,6 @@ class VertexNeighbors(Node):
 
         self.insockets = {}
         self.outsockets = {'vertex_count' : 0, 'face_count' : 1, }
-
-        self.output_sockets  = {'vertex_count': self.vertex_count, 'face_count': self.face_count}
 
 # ----------------------------------------------------------------------------------------------------
 # Node NamedAttribute for GeometryNodeInputNamedAttribute
@@ -5413,8 +5283,6 @@ class NamedAttribute(Node):
         self.insockets = {'name' : 0, }
         self.outsockets = {'attribute' : [0, 1, 2, 3, 4], }
 
-        self.output_sockets  = {'attribute': self.attribute}
-
         # Input sockets plugging
 
         self.name            = name
@@ -5485,8 +5353,6 @@ class Normal(Node):
         self.insockets = {}
         self.outsockets = {'normal' : 0, }
 
-        self.output_sockets  = {'normal': self.normal}
-
 # ----------------------------------------------------------------------------------------------------
 # Node Position for GeometryNodeInputPosition
 
@@ -5545,8 +5411,6 @@ class Position(Node):
         self.insockets = {}
         self.outsockets = {'position' : 0, }
 
-        self.output_sockets  = {'position': self.position}
-
 # ----------------------------------------------------------------------------------------------------
 # Node Radius for GeometryNodeInputRadius
 
@@ -5604,8 +5468,6 @@ class Radius(Node):
 
         self.insockets = {}
         self.outsockets = {'radius' : 0, }
-
-        self.output_sockets  = {'radius': self.radius}
 
 # ----------------------------------------------------------------------------------------------------
 # Node SceneTime for GeometryNodeInputSceneTime
@@ -5666,8 +5528,6 @@ class SceneTime(Node):
         self.insockets = {}
         self.outsockets = {'seconds' : 0, 'frame' : 1, }
 
-        self.output_sockets  = {'seconds': self.seconds, 'frame': self.frame}
-
 # ----------------------------------------------------------------------------------------------------
 # Node IsShadeSmooth for GeometryNodeInputShadeSmooth
 
@@ -5725,8 +5585,6 @@ class IsShadeSmooth(Node):
 
         self.insockets = {}
         self.outsockets = {'smooth' : 0, }
-
-        self.output_sockets  = {'smooth': self.smooth}
 
 # ----------------------------------------------------------------------------------------------------
 # Node IsSplineCyclic for GeometryNodeInputSplineCyclic
@@ -5786,8 +5644,6 @@ class IsSplineCyclic(Node):
         self.insockets = {}
         self.outsockets = {'cyclic' : 0, }
 
-        self.output_sockets  = {'cyclic': self.cyclic}
-
 # ----------------------------------------------------------------------------------------------------
 # Node SplineResolution for GeometryNodeInputSplineResolution
 
@@ -5846,8 +5702,6 @@ class SplineResolution(Node):
         self.insockets = {}
         self.outsockets = {'resolution' : 0, }
 
-        self.output_sockets  = {'resolution': self.resolution}
-
 # ----------------------------------------------------------------------------------------------------
 # Node CurveTangent for GeometryNodeInputTangent
 
@@ -5905,8 +5759,6 @@ class CurveTangent(Node):
 
         self.insockets = {}
         self.outsockets = {'tangent' : 0, }
-
-        self.output_sockets  = {'tangent': self.tangent}
 
 # ----------------------------------------------------------------------------------------------------
 # Node InstanceOnPoints for GeometryNodeInstanceOnPoints
@@ -5976,8 +5828,6 @@ class InstanceOnPoints(Node):
 
         self.insockets = {'points' : 0, 'selection' : 1, 'instance' : 2, 'pick_instance' : 3, 'instance_index' : 4, 'rotation' : 5, 'scale' : 6, }
         self.outsockets = {'instances' : 0, }
-
-        self.output_sockets  = {'instances': self.instances}
 
         # Input sockets plugging
 
@@ -6055,8 +5905,6 @@ class InstancesToPoints(Node):
         self.insockets = {'instances' : 0, 'selection' : 1, 'position' : 2, 'radius' : 3, }
         self.outsockets = {'points' : 0, }
 
-        self.output_sockets  = {'points': self.points}
-
         # Input sockets plugging
 
         self.instances       = instances
@@ -6122,8 +5970,6 @@ class IsViewport(Node):
         self.insockets = {}
         self.outsockets = {'is_viewport' : 0, }
 
-        self.output_sockets  = {'is_viewport': self.is_viewport}
-
 # ----------------------------------------------------------------------------------------------------
 # Node JoinGeometry for GeometryNodeJoinGeometry
 
@@ -6186,8 +6032,6 @@ class JoinGeometry(Node):
 
         self.insockets = {'geometry' : 0, }
         self.outsockets = {'geometry' : 0, }
-
-        self.output_sockets  = {'geometry': self.geometry}
 
         # Input sockets plugging
 
@@ -6256,8 +6100,6 @@ class MaterialSelection(Node):
 
         self.insockets = {'material' : 0, }
         self.outsockets = {'selection' : 0, }
-
-        self.output_sockets  = {'selection': self.selection}
 
         # Input sockets plugging
 
@@ -6336,8 +6178,6 @@ class MergeByDistance(Node):
 
         self.insockets = {'geometry' : 0, 'selection' : 1, 'distance' : 2, }
         self.outsockets = {'geometry' : 0, }
-
-        self.output_sockets  = {'geometry': self.geometry}
 
         # Input sockets plugging
 
@@ -6430,8 +6270,6 @@ class MeshBoolean(Node):
         self.insockets = {'mesh_1' : 0, 'mesh_2' : 1, 'self_intersection' : 2, 'hole_tolerant' : 3, }
         self.outsockets = {'mesh' : 0, }
 
-        self.output_sockets  = {'mesh': self.mesh}
-
         # Input sockets plugging
 
         self.mesh_1          = mesh_1
@@ -6519,8 +6357,6 @@ class MeshCircle(Node):
 
         self.insockets = {'vertices' : 0, 'radius' : 1, }
         self.outsockets = {'mesh' : 0, }
-
-        self.output_sockets  = {'mesh': self.mesh}
 
         # Input sockets plugging
 
@@ -6615,8 +6451,6 @@ class Cone(Node):
         self.insockets = {'vertices' : 0, 'side_segments' : 1, 'fill_segments' : 2, 'radius_top' : 3, 'radius_bottom' : 4, 'depth' : 5, }
         self.outsockets = {'mesh' : 0, 'top' : 1, 'bottom' : 2, 'side' : 3, }
 
-        self.output_sockets  = {'mesh': self.mesh, 'top': self.top, 'bottom': self.bottom, 'side': self.side}
-
         # Input sockets plugging
 
         self.vertices        = vertices
@@ -6699,8 +6533,6 @@ class Cube(Node):
 
         self.insockets = {'size' : 0, 'vertices_x' : 1, 'vertices_y' : 2, 'vertices_z' : 3, }
         self.outsockets = {'mesh' : 0, }
-
-        self.output_sockets  = {'mesh': self.mesh}
 
         # Input sockets plugging
 
@@ -6788,8 +6620,6 @@ class Cylinder(Node):
         self.insockets = {'vertices' : 0, 'side_segments' : 1, 'fill_segments' : 2, 'radius' : 3, 'depth' : 4, }
         self.outsockets = {'mesh' : 0, 'top' : 1, 'side' : 2, 'bottom' : 3, }
 
-        self.output_sockets  = {'mesh': self.mesh, 'top': self.top, 'side': self.side, 'bottom': self.bottom}
-
         # Input sockets plugging
 
         self.vertices        = vertices
@@ -6872,8 +6702,6 @@ class Grid(Node):
         self.insockets = {'size_x' : 0, 'size_y' : 1, 'vertices_x' : 2, 'vertices_y' : 3, }
         self.outsockets = {'mesh' : 0, }
 
-        self.output_sockets  = {'mesh': self.mesh}
-
         # Input sockets plugging
 
         self.size_x          = size_x
@@ -6944,8 +6772,6 @@ class IcoSphere(Node):
 
         self.insockets = {'radius' : 0, 'subdivisions' : 1, }
         self.outsockets = {'mesh' : 0, }
-
-        self.output_sockets  = {'mesh': self.mesh}
 
         # Input sockets plugging
 
@@ -7028,8 +6854,6 @@ class MeshLine(Node):
 
         self.insockets = {'count' : 0, 'resolution' : 1, 'start_location' : 2, 'offset' : 3, }
         self.outsockets = {'mesh' : 0, }
-
-        self.output_sockets  = {'mesh': self.mesh}
 
         # Input sockets plugging
 
@@ -7118,8 +6942,6 @@ class MeshToCurve(Node):
         self.insockets = {'mesh' : 0, 'selection' : 1, }
         self.outsockets = {'curve' : 0, }
 
-        self.output_sockets  = {'curve': self.curve}
-
         # Input sockets plugging
 
         self.mesh            = mesh
@@ -7200,8 +7022,6 @@ class MeshToPoints(Node):
         self.insockets = {'mesh' : 0, 'selection' : 1, 'position' : 2, 'radius' : 3, }
         self.outsockets = {'points' : 0, }
 
-        self.output_sockets  = {'points': self.points}
-
         # Input sockets plugging
 
         self.mesh            = mesh
@@ -7281,8 +7101,6 @@ class UvSphere(Node):
 
         self.insockets = {'segments' : 0, 'rings' : 1, 'radius' : 2, }
         self.outsockets = {'mesh' : 0, }
-
-        self.output_sockets  = {'mesh': self.mesh}
 
         # Input sockets plugging
 
@@ -7370,8 +7188,6 @@ class ObjectInfo(Node):
         self.insockets = {'object' : 0, 'as_instance' : 1, }
         self.outsockets = {'location' : 0, 'rotation' : 1, 'scale' : 2, 'geometry' : 3, }
 
-        self.output_sockets  = {'location': self.location, 'rotation': self.rotation, 'scale': self.scale, 'geometry': self.geometry}
-
         # Input sockets plugging
 
         self.object          = object
@@ -7448,8 +7264,6 @@ class PointsToVertices(Node):
 
         self.insockets = {'points' : 0, 'selection' : 1, }
         self.outsockets = {'mesh' : 0, }
-
-        self.output_sockets  = {'mesh': self.mesh}
 
         # Input sockets plugging
 
@@ -7531,8 +7345,6 @@ class PointsToVolume(Node):
 
         self.insockets = {'points' : 0, 'density' : 1, 'voxel_size' : 2, 'voxel_amount' : 3, 'radius' : 4, }
         self.outsockets = {'volume' : 0, }
-
-        self.output_sockets  = {'volume': self.volume}
 
         # Input sockets plugging
 
@@ -7623,8 +7435,6 @@ class GeometryProximity(Node):
 
         self.insockets = {'target' : 0, 'source_position' : 1, }
         self.outsockets = {'position' : 0, 'distance' : 1, }
-
-        self.output_sockets  = {'position': self.position, 'distance': self.distance}
 
         # Input sockets plugging
 
@@ -7734,8 +7544,6 @@ class Raycast(Node):
         self.insockets = {'target_geometry' : 0, 'attribute' : [1, 2, 3, 4, 5], 'source_position' : 6, 'ray_direction' : 7, 'ray_length' : 8, }
         self.outsockets = {'is_hit' : 0, 'hit_position' : 1, 'hit_normal' : 2, 'hit_distance' : 3, 'attribute' : [4, 5, 6, 7, 8], }
 
-        self.output_sockets  = {'is_hit': self.is_hit, 'hit_position': self.hit_position, 'hit_normal': self.hit_normal, 'hit_distance': self.hit_distance, 'attribute': self.attribute}
-
         # Input sockets plugging
 
         self.target_geometry = target_geometry
@@ -7832,8 +7640,6 @@ class RealizeInstances(Node):
         self.insockets = {'geometry' : 0, }
         self.outsockets = {'geometry' : 0, }
 
-        self.output_sockets  = {'geometry': self.geometry}
-
         # Input sockets plugging
 
         self.geometry        = geometry
@@ -7910,8 +7716,6 @@ class RemoveNamedAttribute(Node):
         self.insockets = {'geometry' : 0, 'name' : 1, }
         self.outsockets = {'geometry' : 0, }
 
-        self.output_sockets  = {'geometry': self.geometry}
-
         # Input sockets plugging
 
         self.geometry        = geometry
@@ -7981,8 +7785,6 @@ class ReplaceMaterial(Node):
 
         self.insockets = {'geometry' : 0, 'old' : 1, 'new' : 2, }
         self.outsockets = {'geometry' : 0, }
-
-        self.output_sockets  = {'geometry': self.geometry}
 
         # Input sockets plugging
 
@@ -8065,8 +7867,6 @@ class ResampleCurve(Node):
         self.insockets = {'curve' : 0, 'selection' : 1, 'count' : 2, 'length' : 3, }
         self.outsockets = {'curve' : 0, }
 
-        self.output_sockets  = {'curve': self.curve}
-
         # Input sockets plugging
 
         self.curve           = curve
@@ -8146,8 +7946,6 @@ class ReverseCurve(Node):
         self.insockets = {'curve' : 0, 'selection' : 1, }
         self.outsockets = {'curve' : 0, }
 
-        self.output_sockets  = {'curve': self.curve}
-
         # Input sockets plugging
 
         self.curve           = curve
@@ -8219,8 +8017,6 @@ class RotateInstances(Node):
 
         self.insockets = {'instances' : 0, 'selection' : 1, 'rotation' : 2, 'pivot_point' : 3, 'local_space' : 4, }
         self.outsockets = {'instances' : 0, }
-
-        self.output_sockets  = {'instances': self.instances}
 
         # Input sockets plugging
 
@@ -8305,8 +8101,6 @@ class SampleCurve(Node):
 
         self.insockets = {'curve' : 0, 'factor' : 1, 'length' : 2, }
         self.outsockets = {'position' : 0, 'tangent' : 1, 'normal' : 2, }
-
-        self.output_sockets  = {'position': self.position, 'tangent': self.tangent, 'normal': self.normal}
 
         # Input sockets plugging
 
@@ -8400,8 +8194,6 @@ class ScaleElements(Node):
         self.insockets = {'geometry' : 0, 'selection' : 1, 'scale' : 2, 'center' : 3, 'axis' : 4, }
         self.outsockets = {'geometry' : 0, }
 
-        self.output_sockets  = {'geometry': self.geometry}
-
         # Input sockets plugging
 
         self.geometry        = geometry
@@ -8493,8 +8285,6 @@ class ScaleInstances(Node):
         self.insockets = {'instances' : 0, 'selection' : 1, 'scale' : 2, 'center' : 3, 'local_space' : 4, }
         self.outsockets = {'instances' : 0, }
 
-        self.output_sockets  = {'instances': self.instances}
-
         # Input sockets plugging
 
         self.instances       = instances
@@ -8575,8 +8365,6 @@ class SeparateComponents(Node):
         self.insockets = {'geometry' : 0, }
         self.outsockets = {'mesh' : 0, 'point_cloud' : 1, 'curve' : 2, 'volume' : 3, 'instances' : 4, }
 
-        self.output_sockets  = {'mesh': self.mesh, 'point_cloud': self.point_cloud, 'curve': self.curve, 'volume': self.volume, 'instances': self.instances}
-
         # Input sockets plugging
 
         self.geometry        = geometry
@@ -8654,8 +8442,6 @@ class SeparateGeometry(Node):
 
         self.insockets = {'geometry' : 0, 'selection' : 1, }
         self.outsockets = {'selection' : 0, 'inverted' : 1, }
-
-        self.output_sockets  = {'selection': self.selection, 'inverted': self.inverted}
 
         # Input sockets plugging
 
@@ -8745,8 +8531,6 @@ class SetHandlePositions(Node):
         self.insockets = {'curve' : 0, 'selection' : 1, 'position' : 2, 'offset' : 3, }
         self.outsockets = {'curve' : 0, }
 
-        self.output_sockets  = {'curve': self.curve}
-
         # Input sockets plugging
 
         self.curve           = curve
@@ -8827,8 +8611,6 @@ class SetCurveRadius(Node):
         self.insockets = {'curve' : 0, 'selection' : 1, 'radius' : 2, }
         self.outsockets = {'curve' : 0, }
 
-        self.output_sockets  = {'curve': self.curve}
-
         # Input sockets plugging
 
         self.curve           = curve
@@ -8899,8 +8681,6 @@ class SetCurveTilt(Node):
 
         self.insockets = {'curve' : 0, 'selection' : 1, 'tilt' : 2, }
         self.outsockets = {'curve' : 0, }
-
-        self.output_sockets  = {'curve': self.curve}
 
         # Input sockets plugging
 
@@ -8973,8 +8753,6 @@ class SetID(Node):
         self.insockets = {'geometry' : 0, 'selection' : 1, 'ID' : 2, }
         self.outsockets = {'geometry' : 0, }
 
-        self.output_sockets  = {'geometry': self.geometry}
-
         # Input sockets plugging
 
         self.geometry        = geometry
@@ -9045,8 +8823,6 @@ class SetMaterial(Node):
 
         self.insockets = {'geometry' : 0, 'selection' : 1, 'material' : 2, }
         self.outsockets = {'geometry' : 0, }
-
-        self.output_sockets  = {'geometry': self.geometry}
 
         # Input sockets plugging
 
@@ -9119,8 +8895,6 @@ class SetMaterialIndex(Node):
         self.insockets = {'geometry' : 0, 'selection' : 1, 'material_index' : 2, }
         self.outsockets = {'geometry' : 0, }
 
-        self.output_sockets  = {'geometry': self.geometry}
-
         # Input sockets plugging
 
         self.geometry        = geometry
@@ -9191,8 +8965,6 @@ class SetPointRadius(Node):
 
         self.insockets = {'points' : 0, 'selection' : 1, 'radius' : 2, }
         self.outsockets = {'points' : 0, }
-
-        self.output_sockets  = {'points': self.points}
 
         # Input sockets plugging
 
@@ -9266,8 +9038,6 @@ class SetPosition(Node):
         self.insockets = {'geometry' : 0, 'selection' : 1, 'position' : 2, 'offset' : 3, }
         self.outsockets = {'geometry' : 0, }
 
-        self.output_sockets  = {'geometry': self.geometry}
-
         # Input sockets plugging
 
         self.geometry        = geometry
@@ -9340,8 +9110,6 @@ class SetShadeSmooth(Node):
         self.insockets = {'geometry' : 0, 'selection' : 1, 'shade_smooth' : 2, }
         self.outsockets = {'geometry' : 0, }
 
-        self.output_sockets  = {'geometry': self.geometry}
-
         # Input sockets plugging
 
         self.geometry        = geometry
@@ -9412,8 +9180,6 @@ class SetSplineCyclic(Node):
 
         self.insockets = {'geometry' : 0, 'selection' : 1, 'cyclic' : 2, }
         self.outsockets = {'geometry' : 0, }
-
-        self.output_sockets  = {'geometry': self.geometry}
 
         # Input sockets plugging
 
@@ -9486,8 +9252,6 @@ class SetSplineResolution(Node):
         self.insockets = {'geometry' : 0, 'selection' : 1, 'resolution' : 2, }
         self.outsockets = {'geometry' : 0, }
 
-        self.output_sockets  = {'geometry': self.geometry}
-
         # Input sockets plugging
 
         self.geometry        = geometry
@@ -9555,8 +9319,6 @@ class SplineLength(Node):
         self.insockets = {}
         self.outsockets = {'length' : 0, 'point_count' : 1, }
 
-        self.output_sockets  = {'length': self.length, 'point_count': self.point_count}
-
 # ----------------------------------------------------------------------------------------------------
 # Node SplineParameter for GeometryNodeSplineParameter
 
@@ -9619,8 +9381,6 @@ class SplineParameter(Node):
 
         self.insockets = {}
         self.outsockets = {'factor' : 0, 'length' : 1, 'index' : 2, }
-
-        self.output_sockets  = {'factor': self.factor, 'length': self.length, 'index': self.index}
 
 # ----------------------------------------------------------------------------------------------------
 # Node SplitEdges for GeometryNodeSplitEdges
@@ -9685,8 +9445,6 @@ class SplitEdges(Node):
 
         self.insockets = {'mesh' : 0, 'selection' : 1, }
         self.outsockets = {'mesh' : 0, }
-
-        self.output_sockets  = {'mesh': self.mesh}
 
         # Input sockets plugging
 
@@ -9784,8 +9542,6 @@ class StoreNamedAttribute(Node):
         self.insockets = {'geometry' : 0, 'name' : 1, 'value' : [2, 3, 4, 5, 6], }
         self.outsockets = {'geometry' : 0, }
 
-        self.output_sockets  = {'geometry': self.geometry}
-
         # Input sockets plugging
 
         self.geometry        = geometry
@@ -9872,8 +9628,6 @@ class JoinStrings(Node):
 
         self.insockets = {'delimiter' : 0, 'strings' : 1, }
         self.outsockets = {'string' : 0, }
-
-        self.output_sockets  = {'string': self.string}
 
         # Input sockets plugging
 
@@ -9966,8 +9720,6 @@ class StringToCurves(Node):
 
         self.insockets = {'string' : 0, 'size' : 1, 'character_spacing' : 2, 'word_spacing' : 3, 'line_spacing' : 4, 'text_box_width' : 5, 'text_box_height' : 6, }
         self.outsockets = {'curve_instances' : 0, 'remainder' : 1, 'line' : 2, 'pivot_point' : 3, }
-
-        self.output_sockets  = {'curve_instances': self.curve_instances, 'remainder': self.remainder, 'line': self.line, 'pivot_point': self.pivot_point}
 
         # Input sockets plugging
 
@@ -10075,8 +9827,6 @@ class SubdivideCurve(Node):
         self.insockets = {'curve' : 0, 'cuts' : 1, }
         self.outsockets = {'curve' : 0, }
 
-        self.output_sockets  = {'curve': self.curve}
-
         # Input sockets plugging
 
         self.curve           = curve
@@ -10145,8 +9895,6 @@ class SubdivideMesh(Node):
 
         self.insockets = {'mesh' : 0, 'level' : 1, }
         self.outsockets = {'mesh' : 0, }
-
-        self.output_sockets  = {'mesh': self.mesh}
 
         # Input sockets plugging
 
@@ -10228,8 +9976,6 @@ class SubdivisionSurface(Node):
 
         self.insockets = {'mesh' : 0, 'level' : 1, 'crease' : 2, }
         self.outsockets = {'mesh' : 0, }
-
-        self.output_sockets  = {'mesh': self.mesh}
 
         # Input sockets plugging
 
@@ -10346,8 +10092,6 @@ class Switch(Node):
         self.insockets = {'switch' : [0, 1], 'false' : [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24], 'true' : [3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25], }
         self.outsockets = {'output' : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], }
 
-        self.output_sockets  = {'output': self.output}
-
         # Input sockets plugging
 
         self.switch          = switch
@@ -10428,8 +10172,6 @@ class Transform(Node):
         self.insockets = {'geometry' : 0, 'translation' : 1, 'rotation' : 2, 'scale' : 3, }
         self.outsockets = {'geometry' : 0, }
 
-        self.output_sockets  = {'geometry': self.geometry}
-
         # Input sockets plugging
 
         self.geometry        = geometry
@@ -10502,8 +10244,6 @@ class TranslateInstances(Node):
 
         self.insockets = {'instances' : 0, 'selection' : 1, 'translation' : 2, 'local_space' : 3, }
         self.outsockets = {'instances' : 0, }
-
-        self.output_sockets  = {'instances': self.instances}
 
         # Input sockets plugging
 
@@ -10587,8 +10327,6 @@ class Triangulate(Node):
 
         self.insockets = {'mesh' : 0, 'selection' : 1, 'minimum_vertices' : 2, }
         self.outsockets = {'mesh' : 0, }
-
-        self.output_sockets  = {'mesh': self.mesh}
 
         # Input sockets plugging
 
@@ -10688,8 +10426,6 @@ class TrimCurve(Node):
         self.insockets = {'curve' : 0, 'start0' : 1, 'start1' : 3, 'end0' : 2, 'end1' : 4, }
         self.outsockets = {'curve' : 0, }
 
-        self.output_sockets  = {'curve': self.curve}
-
         # Input sockets plugging
 
         self.curve           = curve
@@ -10782,8 +10518,6 @@ class VolumeToMesh(Node):
         self.insockets = {'volume' : 0, 'voxel_size' : 1, 'voxel_amount' : 2, 'threshold' : 3, 'adaptivity' : 4, }
         self.outsockets = {'mesh' : 0, }
 
-        self.output_sockets  = {'mesh': self.mesh}
-
         # Input sockets plugging
 
         self.volume          = volume
@@ -10874,8 +10608,6 @@ class Clamp(Node):
         self.insockets = {'value' : 0, 'min' : 1, 'max' : 2, }
         self.outsockets = {'result' : 0, }
 
-        self.output_sockets  = {'result': self.result}
-
         # Input sockets plugging
 
         self.value           = value
@@ -10955,8 +10687,6 @@ class CombineRgb(Node):
         self.insockets = {'r' : 0, 'g' : 1, 'b' : 2, }
         self.outsockets = {'image' : 0, }
 
-        self.output_sockets  = {'image': self.image}
-
         # Input sockets plugging
 
         self.r               = r
@@ -11028,8 +10758,6 @@ class CombineXyz(Node):
         self.insockets = {'x' : 0, 'y' : 1, 'z' : 2, }
         self.outsockets = {'vector' : 0, }
 
-        self.output_sockets  = {'vector': self.vector}
-
         # Input sockets plugging
 
         self.x               = x
@@ -11099,8 +10827,6 @@ class FloatCurve(Node):
 
         self.insockets = {'factor' : 0, 'value' : 1, }
         self.outsockets = {'value' : 0, }
-
-        self.output_sockets  = {'value': self.value}
 
         # Input sockets plugging
 
@@ -11199,8 +10925,6 @@ class MapRange(Node):
 
         self.insockets = {'value' : 0, 'from_min' : [1, 7], 'from_max' : [2, 8], 'to_min' : [3, 9], 'to_max' : [4, 10], 'steps' : [5, 11], 'vector' : 6, }
         self.outsockets = {'result' : 0, 'vector' : 1, }
-
-        self.output_sockets  = {'result': self.result, 'vector': self.vector}
 
         # Input sockets plugging
 
@@ -11429,8 +11153,6 @@ class Math(Node):
         self.insockets = {'value0' : 0, 'value1' : 1, 'value2' : 2, }
         self.outsockets = {'value' : 0, }
 
-        self.output_sockets  = {'value': self.value}
-
         # Input sockets plugging
 
         self.value0          = value0
@@ -11557,8 +11279,6 @@ class Mix(Node):
         self.insockets = {'fac' : 0, 'color1' : 1, 'color2' : 2, }
         self.outsockets = {'color' : 0, }
 
-        self.output_sockets  = {'color': self.color}
-
         # Input sockets plugging
 
         self.fac             = fac
@@ -11645,8 +11365,6 @@ class RgbCurves(Node):
         self.insockets = {'fac' : 0, 'color' : 1, }
         self.outsockets = {'color' : 0, }
 
-        self.output_sockets  = {'color': self.color}
-
         # Input sockets plugging
 
         self.fac             = fac
@@ -11720,8 +11438,6 @@ class SeparateRgb(Node):
         self.insockets = {'image' : 0, }
         self.outsockets = {'r' : 0, 'g' : 1, 'b' : 2, }
 
-        self.output_sockets  = {'r': self.r, 'g': self.g, 'b': self.b}
-
         # Input sockets plugging
 
         self.image           = image
@@ -11793,8 +11509,6 @@ class SeparateXyz(Node):
 
         self.insockets = {'vector' : 0, }
         self.outsockets = {'x' : 0, 'y' : 1, 'z' : 2, }
-
-        self.output_sockets  = {'x': self.x, 'y': self.y, 'z': self.z}
 
         # Input sockets plugging
 
@@ -11887,8 +11601,6 @@ class BrickTexture(Node):
 
         self.insockets = {'vector' : 0, 'color1' : 1, 'color2' : 2, 'mortar' : 3, 'scale' : 4, 'mortar_size' : 5, 'mortar_smooth' : 6, 'bias' : 7, 'brick_width' : 8, 'row_height' : 9, }
         self.outsockets = {'color' : 0, 'fac' : 1, }
-
-        self.output_sockets  = {'color': self.color, 'fac': self.fac}
 
         # Input sockets plugging
 
@@ -12002,8 +11714,6 @@ class CheckerTexture(Node):
         self.insockets = {'vector' : 0, 'color1' : 1, 'color2' : 2, 'scale' : 3, }
         self.outsockets = {'color' : 0, 'fac' : 1, }
 
-        self.output_sockets  = {'color': self.color, 'fac': self.fac}
-
         # Input sockets plugging
 
         self.vector          = vector
@@ -12083,8 +11793,6 @@ class GradientTexture(Node):
 
         self.insockets = {'vector' : 0, }
         self.outsockets = {'color' : 0, 'fac' : 1, }
-
-        self.output_sockets  = {'color': self.color, 'fac': self.fac}
 
         # Input sockets plugging
 
@@ -12172,8 +11880,6 @@ class MagicTexture(Node):
 
         self.insockets = {'vector' : 0, 'scale' : 1, 'distortion' : 2, }
         self.outsockets = {'color' : 0, 'fac' : 1, }
-
-        self.output_sockets  = {'color': self.color, 'fac': self.fac}
 
         # Input sockets plugging
 
@@ -12269,8 +11975,6 @@ class MusgraveTexture(Node):
 
         self.insockets = {'vector' : 0, 'w' : 1, 'scale' : 2, 'detail' : 3, 'dimension' : 4, 'lacunarity' : 5, 'offset' : 6, 'gain' : 7, }
         self.outsockets = {'fac' : 0, }
-
-        self.output_sockets  = {'fac': self.fac}
 
         # Input sockets plugging
 
@@ -12377,8 +12081,6 @@ class NoiseTexture(Node):
         self.insockets = {'vector' : 0, 'w' : 1, 'scale' : 2, 'detail' : 3, 'roughness' : 4, 'distortion' : 5, }
         self.outsockets = {'fac' : 0, 'color' : 1, }
 
-        self.output_sockets  = {'fac': self.fac, 'color': self.color}
-
         # Input sockets plugging
 
         self.vector          = vector
@@ -12480,8 +12182,6 @@ class VoronoiTexture(Node):
 
         self.insockets = {'vector' : 0, 'w' : 1, 'scale' : 2, 'smoothness' : 3, 'exponent' : 4, 'randomness' : 5, }
         self.outsockets = {'distance' : 0, 'color' : 1, 'position' : 2, 'w' : 3, 'radius' : 4, }
-
-        self.output_sockets  = {'distance': self.distance, 'color': self.color, 'position': self.position, 'w': self.w, 'radius': self.radius}
 
         # Input sockets plugging
 
@@ -12601,8 +12301,6 @@ class WaveTexture(Node):
         self.insockets = {'vector' : 0, 'scale' : 1, 'distortion' : 2, 'detail' : 3, 'detail_scale' : 4, 'detail_roughness' : 5, 'phase_offset' : 6, }
         self.outsockets = {'color' : 0, 'fac' : 1, }
 
-        self.output_sockets  = {'color': self.color, 'fac': self.fac}
-
         # Input sockets plugging
 
         self.vector          = vector
@@ -12719,8 +12417,6 @@ class WhiteNoiseTexture(Node):
         self.insockets = {'vector' : 0, 'w' : 1, }
         self.outsockets = {'value' : 0, 'color' : 1, }
 
-        self.output_sockets  = {'value': self.value, 'color': self.color}
-
         # Input sockets plugging
 
         self.vector          = vector
@@ -12798,8 +12494,6 @@ class ColorRamp(Node):
         self.insockets = {'fac' : 0, }
         self.outsockets = {'color' : 0, 'alpha' : 1, }
 
-        self.output_sockets  = {'color': self.color, 'alpha': self.alpha}
-
         # Input sockets plugging
 
         self.fac             = fac
@@ -12852,8 +12546,6 @@ class Value(Node):
 
         self.insockets = {}
         self.outsockets = {'value' : 0, }
-
-        self.output_sockets  = {'value': self.value}
 
 # ----------------------------------------------------------------------------------------------------
 # Node VectorCurves for ShaderNodeVectorCurve
@@ -12918,8 +12610,6 @@ class VectorCurves(Node):
 
         self.insockets = {'fac' : 0, 'vector' : 1, }
         self.outsockets = {'vector' : 0, }
-
-        self.output_sockets  = {'vector': self.vector}
 
         # Input sockets plugging
 
@@ -13055,8 +12745,6 @@ class VectorMath(Node):
         self.insockets = {'vector0' : 0, 'vector1' : 1, 'vector2' : 2, 'scale' : 3, }
         self.outsockets = {'vector' : 0, 'value' : 1, }
 
-        self.output_sockets  = {'vector': self.vector, 'value': self.value}
-
         # Input sockets plugging
 
         self.vector0         = vector0
@@ -13149,8 +12837,6 @@ class VectorRotate(Node):
 
         self.insockets = {'vector' : 0, 'center' : 1, 'axis' : 2, 'angle' : 3, 'rotation' : 4, }
         self.outsockets = {'vector' : 0, }
-
-        self.output_sockets  = {'vector': self.vector}
 
         # Input sockets plugging
 

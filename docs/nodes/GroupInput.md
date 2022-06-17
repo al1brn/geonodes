@@ -3,11 +3,10 @@
 
 > Node 'Group input'
   
-> Note that the **outputs** sockets of this node are the **input** sockets of the group.
+> Note that the **output** sockets of this node are the **input** sockets of the group.
   
-The first socket must be a geometry socket: this is the gemetry of the object on which the modifier
+For modifiers, the first socket must be a geometry socket: this is the gemetry of the object on which the modifier
 applies. Make sure that this socket exists.
-
 
 
 
@@ -16,11 +15,10 @@ applies. Make sure that this socket exists.
 
 > Node 'Group input'
   
-> Note that the **outputs** sockets of this node are the **input** sockets of the group.
+> Note that the **output** sockets of this node are the **input** sockets of the group.
   
-The first socket must be a geometry socket: this is the gemetry of the object on which the modifier
+For modifiers, the first socket must be a geometry socket: this is the gemetry of the object on which the modifier
 applies. Make sure that this socket exists.
-
 
 
 
