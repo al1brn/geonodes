@@ -36,5 +36,5 @@ node = nodes.FaceIsPlanar(threshold=None, label=None, node_color=None)
 > Data socket classes implementing this node.
   
   
-- [FaceDomain](/docs/FaceDomain.md).[face_is_planar](/docs/FaceDomain.md#face_is_planar) : Fields
+- [FaceDomain](/docs/FaceDomain.md).[is_planar](/docs/FaceDomain.md#is_planar) : Fields
   

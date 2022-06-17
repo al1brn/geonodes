@@ -23,147 +23,36 @@ Float
 
 
 
-## neighbors
+## is_planar
 
-> Field [FaceNeighbors](/docs/nodes/FaceNeighbors.md)
+> Field [FaceIsPlanar](/docs/nodes/FaceIsPlanar.md)
   
-Blender menu : **mesh/face_neighbors**<br>
+Blender menu : **mesh/face_is_planar**<br>
 <sub>go to [top](#class-facedomain) [index](/docs/index.md)</sub>
 
-  Property
-  
-  Individual sockets can be accessed via properties:
-  
-  - [neighbors_vertices](#neighbors_vertices)
-  - [neighbors_faces](#neighbors_faces)
+  Method
+
+### Arguments
+
+- threshold : Float
 
 ### Returns
 
-Node with two sockets:
-- vertex_count
-- face_count
-  
-  
+Boolean
 
-## neighbors_vertices
-
-> Field [FaceNeighbors](/docs/nodes/FaceNeighbors.md)
-  
-Blender menu : **mesh/face_neighbors**<br>
-<sub>go to [top](#class-facedomain) [index](/docs/index.md)</sub>
-
-  Property
-  
-  Return the socket **vertex_count** of property [neighbors](#neighbors)
-
-### Returns
-
-Integer
-
-
-
-## neighbors_faces
-
-> Field [FaceNeighbors](/docs/nodes/FaceNeighbors.md)
-  
-Blender menu : **mesh/face_neighbors**<br>
-<sub>go to [top](#class-facedomain) [index](/docs/index.md)</sub>
-
-  Property
-  
-  Return the socket **face_count** of property [neighbors](#neighbors)
-
-### Returns
-
-Integer
-
-
-
-## is_shade_smooth
-
-> Field [IsShadeSmooth](/docs/nodes/IsShadeSmooth.md)
-  
-Blender menu : **mesh/is_shade_smooth**<br>
-<sub>go to [top](#class-facedomain) [index](/docs/index.md)</sub>
-
-  Property
-
-### Returns
-
-Float
-
-
-
-## island
-
-> Field [MeshIsland](/docs/nodes/MeshIsland.md)
-  
-Blender menu : **mesh/mesh_island**<br>
-<sub>go to [top](#class-facedomain) [index](/docs/index.md)</sub>
-
-  Property
-  
-  Individual sockets can be accessed via properties:
-  
-  - [neighbors_vertices](#neighbors_vertices)
-  - [neighbors_faces](#neighbors_faces)
-
-### Returns
-
-Node with two sockets:
-- vertex_count
-- face_count
-  
-  
-
-## island_vertices
-
-> Field [MeshIsland](/docs/nodes/MeshIsland.md)
-  
-Blender menu : **mesh/mesh_island**<br>
-<sub>go to [top](#class-facedomain) [index](/docs/index.md)</sub>
-
-  Property
-  
-  Return the socket **vertex_count** of property [island](#island)
-
-### Returns
-
-Integer
-
-
-
-## island_faces
-
-> Field [MeshIsland](/docs/nodes/MeshIsland.md)
-  
-Blender menu : **mesh/mesh_island**<br>
-<sub>go to [top](#class-facedomain) [index](/docs/index.md)</sub>
-
-  Property
-  
-  Return the socket **face_count** of property [island](#island)
-
-### Returns
-
-Integer
 
 
 
 ## material_index
 
-> Field [MaterialIndex](/docs/nodes/MaterialIndex.md)
+> Field [SetMaterialIndex](/docs/nodes/SetMaterialIndex.md)
   
-Blender menu : **material/material_index**<br>
+Blender menu : **material/set_material_index**<br>
 <sub>go to [top](#class-facedomain) [index](/docs/index.md)</sub>
 
-  Property
-
-### Returns
-
-Integer
-
-
+  Property setter
+  
+  
 
 ## material_selection
 
@@ -176,26 +65,7 @@ Blender menu : **material/material_selection**<br>
 
 ### Arguments
 
-- material : Material
-
-### Returns
-
-Boolean
-
-
-
-## face_is_planar
-
-> Field [FaceIsPlanar](/docs/nodes/FaceIsPlanar.md)
-  
-Blender menu : **mesh/face_is_planar**<br>
-<sub>go to [top](#class-facedomain) [index](/docs/index.md)</sub>
-
-  Method
-
-### Arguments
-
-- threshold : Float
+- material : Material or str (material name)
 
 ### Returns
 

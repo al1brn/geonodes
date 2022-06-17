@@ -11,7 +11,7 @@ import geonodes as gn
 from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
 from geonodes.core.domains import Domain
-from geonodes import PointDomain, EdgeDomain, FaceDomain, CornerDomain, CurveDomain
+from geonodes import PointDomain, EdgeDomain, FaceDomain, CornerDomain, CurveDomain, InstanceDomain
 
 import logging
 logger = logging.Logger('geonodes')
@@ -47,8 +47,9 @@ class Instances(gn.Geometry):
     @property
     def insts(self):
         return self.instance
+
     @property
-    def instance(self):
+    def instances(self):
         return self.instance
 
 
@@ -209,7 +210,7 @@ class Instances(gn.Geometry):
             
         """
 
-        return self.stack(nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior, label=node_label, node_color=node_color))
+        return nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior, label=node_label, node_color=node_color).geometry
 
     def to_points(self, selection=None, position=None, radius=None, node_label = None, node_color = None):
         """ > Node: InstancesToPoints

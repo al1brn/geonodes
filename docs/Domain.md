@@ -39,189 +39,37 @@ instances.position   # Location of the instances
 
 
 
-## create_field_node
+## named_field
 
-> Create a **geonodes** from a bl_idname
+> Named field
   
-If kwargs is an empty dict, the node is put in cache in the _fields_ dict,
-otherwise it is returned directly.
+Exposed methods are get_named_attribute and set_named_attribute to be closed to the name of the nodes
+These methods use the named_field method (not named named_attribute to avoid misusing).
 
-### Attributes
+named_field creates an instance of NamedField and store it in a dedciated dictionnary
 
-- bl_idname : str
-A valid node bl_idname
-- kwargs : dict
-Arguments to pass to initialize the node
-
-### Returns
-
-Node, the created node
+Raise an error if different data types are used for the same name
 
 
+## get_named_attribute
 
-
-## ID
-
-> Field [ID](/docs/nodes/ID.md)
+> Get a named attribute socket
   
-Blender menu : **input/id**<br>
-<sub>go to [top](#class-domain) [index](/docs/index.md)</sub>
-
-  Property
-
-### Returns
-
-Integer
+Make use named_field method
 
 
+## set_named_attribute
 
-## index
-
-> Field [Index](/docs/nodes/Index.md)
+> Set a named attribute socket
   
-Blender menu : **input/input_index**<br>
-<sub>go to [top](#class-domain) [index](/docs/index.md)</sub>
+Make use named_field method
 
-  Property
-
-### Returns
-
-Integer
+If data_type is None, the data_type is infered from the type of the value
 
 
+## set_named_boolean
 
-## normal
-
-> Field [Normal](/docs/nodes/Normal.md)
-  
-Blender menu : **input/normal**<br>
-<sub>go to [top](#class-domain) [index](/docs/index.md)</sub>
-
-  Property
-
-### Returns
-
-Vector
-
-
-
-## position
-
-> Field [Position](/docs/nodes/Position.md)
-  
-Blender menu : **input/position**<br>
-<sub>go to [top](#class-domain) [index](/docs/index.md)</sub>
-
-  Property
-
-### Returns
-
-Vector
-
-
-
-## radius
-
-> Field [Radius](/docs/nodes/Radius.md)
-  
-Blender menu : **input/radius**<br>
-<sub>go to [top](#class-domain) [index](/docs/index.md)</sub>
-
-  Property
-
-### Returns
-
-Float
-
-
-
-## named_attribute
-
-> Field [NamedAttribute](/docs/nodes/NamedAttribute.md)
-  
-Blender menu : **input/named_attribute**<br>
-<sub>go to [top](#class-domain) [index](/docs/index.md)</sub>
-
-  This method is called by the following methods:
-  
-  - [named_float](#named_float)
-  - [named_integer](#named_integer)
-  - [named_vector](#named_vector)
-  - [named_color](#named_color)
-  - [named_boolean](#named_boolean)
-
-### Returns
-
-Linked to data_type
-
-
-
-## named_float
-
-> Field [NamedAttribute](/docs/nodes/NamedAttribute.md)
-  
-Blender menu : **input/named_attribute**<br>
-<sub>go to [top](#class-domain) [index](/docs/index.md)</sub>
-
-  Call [named_attribute](#named_attribute) with data_type = 'FLOAT'
-
-### Returns
-
-Float
-
-
-
-## named_integer
-
-> Field [NamedAttribute](/docs/nodes/NamedAttribute.md)
-  
-Blender menu : **input/named_attribute**<br>
-<sub>go to [top](#class-domain) [index](/docs/index.md)</sub>
-
-  Call [named_attribute](#named_attribute) with data_type = 'INT'
-  
-  
-
-## named_vector
-
-> Field [NamedAttribute](/docs/nodes/NamedAttribute.md)
-  
-Blender menu : **input/named_attribute**<br>
-<sub>go to [top](#class-domain) [index](/docs/index.md)</sub>
-
-  Call [named_attribute](#named_attribute) with data_type = 'FLOAT_VECTOR'
-
-### Returns
-
-Vector
-
-
-
-## named_color
-
-> Field [NamedAttribute](/docs/nodes/NamedAttribute.md)
-  
-Blender menu : **input/named_attribute**<br>
-<sub>go to [top](#class-domain) [index](/docs/index.md)</sub>
-
-  Call [named_attribute](#named_attribute) with data_type = 'FLOAT_COLOR'
-
-### Returns
-
-Color
-
-
-
-## named_boolean
-
-> Field [NamedAttribute](/docs/nodes/NamedAttribute.md)
-  
-Blender menu : **input/named_attribute**<br>
-<sub>go to [top](#class-domain) [index](/docs/index.md)</sub>
-
-  Call [named_attribute](#named_attribute) with data_type = 'BOOLEAN'
-
-### Returns
-
-Boolean
+NOT SUPPORTED YET
+ef get_named_byte_color(self, name):
+return self.get_named_attribute(name, data_type='BYTE_COLOR')
 

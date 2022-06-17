@@ -38,5 +38,6 @@ node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None,
 > Data socket classes implementing this node.
   
   
+- [CurveDomain](/docs/CurveDomain.md).[resolution](/docs/CurveDomain.md#resolution) : Fields
 - [Spline](/docs/sockets/Spline.md).[set_resolution](/docs/sockets/Spline.md#set_resolution) : Method
   

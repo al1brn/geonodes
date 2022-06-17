@@ -42,16 +42,3 @@ node = nodes.NamedAttribute(name=None, data_type='FLOAT', label=None, node_color
 ## Output sockets
 
 - attribute : data_type dependant
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Domain](/docs/Domain.md).[named_attribute](/docs/Domain.md#named_attribute) : Fields
-- [Domain](/docs/Domain.md).[named_boolean](/docs/Domain.md#named_boolean) : Fields
-- [Domain](/docs/Domain.md).[named_color](/docs/Domain.md#named_color) : Fields
-- [Domain](/docs/Domain.md).[named_float](/docs/Domain.md#named_float) : Fields
-- [Domain](/docs/Domain.md).[named_integer](/docs/Domain.md#named_integer) : Fields
-- [Domain](/docs/Domain.md).[named_vector](/docs/Domain.md#named_vector) : Fields
-  

@@ -89,9 +89,9 @@ class AlignEulerToVector(Node):
 
         # Input sockets plugging
 
-        self.rotation        = rotation
-        self.factor          = factor
-        self.vector          = vector
+        if rotation        is not None: self.rotation        = rotation
+        if factor          is not None: self.factor          = factor
+        if vector          is not None: self.vector          = vector
 
     @property
     def axis(self):
@@ -201,8 +201,8 @@ class BooleanMath(Node):
 
         # Input sockets plugging
 
-        self.boolean0        = boolean0
-        self.boolean1        = boolean1
+        if boolean0        is not None: self.boolean0        = boolean0
+        if boolean1        is not None: self.boolean1        = boolean1
 
     @property
     def operation(self):
@@ -330,11 +330,11 @@ class Compare(Node):
 
         # Input sockets plugging
 
-        self.a               = a
-        self.b               = b
-        self.c               = c
-        self.angle           = angle
-        self.epsilon         = epsilon
+        if a               is not None: self.a               = a
+        if b               is not None: self.b               = b
+        if c               is not None: self.c               = c
+        if angle           is not None: self.angle           = angle
+        if epsilon         is not None: self.epsilon         = epsilon
 
     @property
     def data_type(self):
@@ -434,7 +434,7 @@ class FloatToInteger(Node):
 
         # Input sockets plugging
 
-        self.float           = float
+        if float           is not None: self.float           = float
 
     @property
     def rounding_mode(self):
@@ -897,11 +897,11 @@ class RandomValue(Node):
 
         # Input sockets plugging
 
-        self.min             = min
-        self.max             = max
-        self.probability     = probability
-        self.ID              = ID
-        self.seed            = seed
+        if min             is not None: self.min             = min
+        if max             is not None: self.max             = max
+        if probability     is not None: self.probability     = probability
+        if ID              is not None: self.ID              = ID
+        if seed            is not None: self.seed            = seed
 
     @property
     def data_type(self):
@@ -978,9 +978,9 @@ class ReplaceString(Node):
 
         # Input sockets plugging
 
-        self.string          = string
-        self.find            = find
-        self.replace         = replace
+        if string          is not None: self.string          = string
+        if find            is not None: self.find            = find
+        if replace         is not None: self.replace         = replace
 
 # ----------------------------------------------------------------------------------------------------
 # Node RotateEuler for FunctionNodeRotateEuler
@@ -1059,10 +1059,10 @@ class RotateEuler(Node):
 
         # Input sockets plugging
 
-        self.rotation        = rotation
-        self.rotate_by       = rotate_by
-        self.axis            = axis
-        self.angle           = angle
+        if rotation        is not None: self.rotation        = rotation
+        if rotate_by       is not None: self.rotate_by       = rotate_by
+        if axis            is not None: self.axis            = axis
+        if angle           is not None: self.angle           = angle
 
     @property
     def space(self):
@@ -1139,9 +1139,9 @@ class SliceString(Node):
 
         # Input sockets plugging
 
-        self.string          = string
-        self.position        = position
-        self.length          = length
+        if string          is not None: self.string          = string
+        if position        is not None: self.position        = position
+        if length          is not None: self.length          = length
 
 # ----------------------------------------------------------------------------------------------------
 # Node StringLength for FunctionNodeStringLength
@@ -1208,7 +1208,7 @@ class StringLength(Node):
 
         # Input sockets plugging
 
-        self.string          = string
+        if string          is not None: self.string          = string
 
 # ----------------------------------------------------------------------------------------------------
 # Node ValueToString for FunctionNodeValueToString
@@ -1276,8 +1276,8 @@ class ValueToString(Node):
 
         # Input sockets plugging
 
-        self.value           = value
-        self.decimals        = decimals
+        if value           is not None: self.value           = value
+        if decimals        is not None: self.decimals        = decimals
 
 # ----------------------------------------------------------------------------------------------------
 # Node AccumulateField for GeometryNodeAccumulateField
@@ -1369,8 +1369,8 @@ class AccumulateField(Node):
 
         # Input sockets plugging
 
-        self.value           = value
-        self.group_index     = group_index
+        if value           is not None: self.value           = value
+        if group_index     is not None: self.group_index     = group_index
 
     @property
     def data_type(self):
@@ -1467,7 +1467,7 @@ class DomainSize(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
+        if geometry        is not None: self.geometry        = geometry
 
     @property
     def component(self):
@@ -1572,9 +1572,9 @@ class AttributeStatistic(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.selection       = selection
-        self.attribute       = attribute
+        if geometry        is not None: self.geometry        = geometry
+        if selection       is not None: self.selection       = selection
+        if attribute       is not None: self.attribute       = attribute
 
     @property
     def data_type(self):
@@ -1691,10 +1691,10 @@ class TransferAttribute(Node):
 
         # Input sockets plugging
 
-        self.source          = source
-        self.attribute       = attribute
-        self.source_position = source_position
-        self.index           = index
+        if source          is not None: self.source          = source
+        if attribute       is not None: self.attribute       = attribute
+        if source_position is not None: self.source_position = source_position
+        if index           is not None: self.index           = index
 
     @property
     def data_type(self):
@@ -1790,7 +1790,7 @@ class BoundingBox(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
+        if geometry        is not None: self.geometry        = geometry
 
 # ----------------------------------------------------------------------------------------------------
 # Node CaptureAttribute for GeometryNodeCaptureAttribute
@@ -1884,8 +1884,8 @@ class CaptureAttribute(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.value           = value
+        if geometry        is not None: self.geometry        = geometry
+        if value           is not None: self.value           = value
 
     @property
     def data_type(self):
@@ -1979,9 +1979,9 @@ class CollectionInfo(Node):
 
         # Input sockets plugging
 
-        self.collection      = collection
-        self.separate_children = separate_children
-        self.reset_children  = reset_children
+        if collection      is not None: self.collection      = collection
+        if separate_children is not None: self.separate_children = separate_children
+        if reset_children  is not None: self.reset_children  = reset_children
 
     @property
     def transform_space(self):
@@ -2056,7 +2056,7 @@ class ConvexHull(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
+        if geometry        is not None: self.geometry        = geometry
 
 # ----------------------------------------------------------------------------------------------------
 # Node Arc for GeometryNodeCurveArc
@@ -2145,16 +2145,16 @@ class Arc(Node):
 
         # Input sockets plugging
 
-        self.resolution      = resolution
-        self.start           = start
-        self.middle          = middle
-        self.end             = end
-        self.radius          = radius
-        self.start_angle     = start_angle
-        self.sweep_angle     = sweep_angle
-        self.offset_angle    = offset_angle
-        self.connect_center  = connect_center
-        self.invert_arc      = invert_arc
+        if resolution      is not None: self.resolution      = resolution
+        if start           is not None: self.start           = start
+        if middle          is not None: self.middle          = middle
+        if end             is not None: self.end             = end
+        if radius          is not None: self.radius          = radius
+        if start_angle     is not None: self.start_angle     = start_angle
+        if sweep_angle     is not None: self.sweep_angle     = sweep_angle
+        if offset_angle    is not None: self.offset_angle    = offset_angle
+        if connect_center  is not None: self.connect_center  = connect_center
+        if invert_arc      is not None: self.invert_arc      = invert_arc
 
     @property
     def mode(self):
@@ -2230,8 +2230,8 @@ class EndpointSelection(Node):
 
         # Input sockets plugging
 
-        self.start_size      = start_size
-        self.end_size        = end_size
+        if start_size      is not None: self.start_size      = start_size
+        if end_size        is not None: self.end_size        = end_size
 
 # ----------------------------------------------------------------------------------------------------
 # Node HandleTypeSelection for GeometryNodeCurveHandleTypeSelection
@@ -2252,7 +2252,7 @@ class HandleTypeSelection(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None)
+            node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None)
             ```
             
             
@@ -2265,7 +2265,7 @@ class HandleTypeSelection(Node):
             Parameters
             ----------
                 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                - mode : set (default = {'RIGHT', 'LEFT'})
+                - mode : set (default = {'LEFT', 'RIGHT'})
     
 
             Node label
@@ -2298,7 +2298,7 @@ class HandleTypeSelection(Node):
               
     """
 
-    def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
+    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveHandleTypeSelection', name='Handle Type Selection', label=label, node_color=node_color)
 
@@ -2393,7 +2393,7 @@ class CurveLength(Node):
 
         # Input sockets plugging
 
-        self.curve           = curve
+        if curve           is not None: self.curve           = curve
 
 # ----------------------------------------------------------------------------------------------------
 # Node BezierSegment for GeometryNodeCurvePrimitiveBezierSegment
@@ -2473,11 +2473,11 @@ class BezierSegment(Node):
 
         # Input sockets plugging
 
-        self.resolution      = resolution
-        self.start           = start
-        self.start_handle    = start_handle
-        self.end_handle      = end_handle
-        self.end             = end
+        if resolution      is not None: self.resolution      = resolution
+        if start           is not None: self.start           = start
+        if start_handle    is not None: self.start_handle    = start_handle
+        if end_handle      is not None: self.end_handle      = end_handle
+        if end             is not None: self.end             = end
 
     @property
     def mode(self):
@@ -2566,11 +2566,11 @@ class CurveCircle(Node):
 
         # Input sockets plugging
 
-        self.resolution      = resolution
-        self.point_1         = point_1
-        self.point_2         = point_2
-        self.point_3         = point_3
-        self.radius          = radius
+        if resolution      is not None: self.resolution      = resolution
+        if point_1         is not None: self.point_1         = point_1
+        if point_2         is not None: self.point_2         = point_2
+        if point_3         is not None: self.point_3         = point_3
+        if radius          is not None: self.radius          = radius
 
     @property
     def mode(self):
@@ -2657,10 +2657,10 @@ class CurveLine(Node):
 
         # Input sockets plugging
 
-        self.start           = start
-        self.end             = end
-        self.direction       = direction
-        self.length          = length
+        if start           is not None: self.start           = start
+        if end             is not None: self.end             = end
+        if direction       is not None: self.direction       = direction
+        if length          is not None: self.length          = length
 
     @property
     def mode(self):
@@ -2754,17 +2754,17 @@ class Quadrilateral(Node):
 
         # Input sockets plugging
 
-        self.width           = width
-        self.height          = height
-        self.bottom_width    = bottom_width
-        self.top_width       = top_width
-        self.offset          = offset
-        self.bottom_height   = bottom_height
-        self.top_height      = top_height
-        self.point_1         = point_1
-        self.point_2         = point_2
-        self.point_3         = point_3
-        self.point_4         = point_4
+        if width           is not None: self.width           = width
+        if height          is not None: self.height          = height
+        if bottom_width    is not None: self.bottom_width    = bottom_width
+        if top_width       is not None: self.top_width       = top_width
+        if offset          is not None: self.offset          = offset
+        if bottom_height   is not None: self.bottom_height   = bottom_height
+        if top_height      is not None: self.top_height      = top_height
+        if point_1         is not None: self.point_1         = point_1
+        if point_2         is not None: self.point_2         = point_2
+        if point_3         is not None: self.point_3         = point_3
+        if point_4         is not None: self.point_4         = point_4
 
     @property
     def mode(self):
@@ -2842,10 +2842,10 @@ class QuadraticBezier(Node):
 
         # Input sockets plugging
 
-        self.resolution      = resolution
-        self.start           = start
-        self.middle          = middle
-        self.end             = end
+        if resolution      is not None: self.resolution      = resolution
+        if start           is not None: self.start           = start
+        if middle          is not None: self.middle          = middle
+        if end             is not None: self.end             = end
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetHandleType for GeometryNodeCurveSetHandles
@@ -2866,7 +2866,7 @@ class SetHandleType(Node):
         --------------
             ```python
             from geonodes import nodes
-            node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None)
+            node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None)
             ```
             
             
@@ -2885,7 +2885,7 @@ class SetHandleType(Node):
             Parameters
             ----------
                 - handle_type : str (default = 'AUTO') in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-                - mode : set (default = {'RIGHT', 'LEFT'})
+                - mode : set (default = {'LEFT', 'RIGHT'})
     
 
             Node label
@@ -2908,7 +2908,7 @@ class SetHandleType(Node):
               
     """
 
-    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
+    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveSetHandles', name='Set Handle Type', label=label, node_color=node_color)
 
@@ -2924,8 +2924,8 @@ class SetHandleType(Node):
 
         # Input sockets plugging
 
-        self.curve           = curve
-        self.selection       = selection
+        if curve           is not None: self.curve           = curve
+        if selection       is not None: self.selection       = selection
 
     @property
     def handle_type(self):
@@ -3013,12 +3013,12 @@ class Spiral(Node):
 
         # Input sockets plugging
 
-        self.resolution      = resolution
-        self.rotations       = rotations
-        self.start_radius    = start_radius
-        self.end_radius      = end_radius
-        self.height          = height
-        self.reverse         = reverse
+        if resolution      is not None: self.resolution      = resolution
+        if rotations       is not None: self.rotations       = rotations
+        if start_radius    is not None: self.start_radius    = start_radius
+        if end_radius      is not None: self.end_radius      = end_radius
+        if height          is not None: self.height          = height
+        if reverse         is not None: self.reverse         = reverse
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetSplineType for GeometryNodeCurveSplineType
@@ -3095,8 +3095,8 @@ class SetSplineType(Node):
 
         # Input sockets plugging
 
-        self.curve           = curve
-        self.selection       = selection
+        if curve           is not None: self.curve           = curve
+        if selection       is not None: self.selection       = selection
 
     @property
     def spline_type(self):
@@ -3175,10 +3175,10 @@ class Star(Node):
 
         # Input sockets plugging
 
-        self.points          = points
-        self.inner_radius    = inner_radius
-        self.outer_radius    = outer_radius
-        self.twist           = twist
+        if points          is not None: self.points          = points
+        if inner_radius    is not None: self.inner_radius    = inner_radius
+        if outer_radius    is not None: self.outer_radius    = outer_radius
+        if twist           is not None: self.twist           = twist
 
 # ----------------------------------------------------------------------------------------------------
 # Node CurveToMesh for GeometryNodeCurveToMesh
@@ -3247,9 +3247,9 @@ class CurveToMesh(Node):
 
         # Input sockets plugging
 
-        self.curve           = curve
-        self.profile_curve   = profile_curve
-        self.fill_caps       = fill_caps
+        if curve           is not None: self.curve           = curve
+        if profile_curve   is not None: self.profile_curve   = profile_curve
+        if fill_caps       is not None: self.fill_caps       = fill_caps
 
 # ----------------------------------------------------------------------------------------------------
 # Node CurveToPoints for GeometryNodeCurveToPoints
@@ -3330,9 +3330,9 @@ class CurveToPoints(Node):
 
         # Input sockets plugging
 
-        self.curve           = curve
-        self.count           = count
-        self.length          = length
+        if curve           is not None: self.curve           = curve
+        if count           is not None: self.count           = count
+        if length          is not None: self.length          = length
 
     @property
     def mode(self):
@@ -3419,8 +3419,8 @@ class DeleteGeometry(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.selection       = selection
+        if geometry        is not None: self.geometry        = geometry
+        if selection       is not None: self.selection       = selection
 
     @property
     def domain(self):
@@ -3520,13 +3520,13 @@ class DistributePointsOnFaces(Node):
 
         # Input sockets plugging
 
-        self.mesh            = mesh
-        self.selection       = selection
-        self.distance_min    = distance_min
-        self.density_max     = density_max
-        self.density         = density
-        self.density_factor  = density_factor
-        self.seed            = seed
+        if mesh            is not None: self.mesh            = mesh
+        if selection       is not None: self.selection       = selection
+        if distance_min    is not None: self.distance_min    = distance_min
+        if density_max     is not None: self.density_max     = density_max
+        if density         is not None: self.density         = density
+        if density_factor  is not None: self.density_factor  = density_factor
+        if seed            is not None: self.seed            = seed
 
     @property
     def distribute_method(self):
@@ -3602,8 +3602,8 @@ class DualMesh(Node):
 
         # Input sockets plugging
 
-        self.mesh            = mesh
-        self.keep_boundaries = keep_boundaries
+        if mesh            is not None: self.mesh            = mesh
+        if keep_boundaries is not None: self.keep_boundaries = keep_boundaries
 
 # ----------------------------------------------------------------------------------------------------
 # Node DuplicateElements for GeometryNodeDuplicateElements
@@ -3687,9 +3687,9 @@ class DuplicateElements(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.selection       = selection
-        self.amount          = amount
+        if geometry        is not None: self.geometry        = geometry
+        if selection       is not None: self.selection       = selection
+        if amount          is not None: self.amount          = amount
 
     @property
     def domain(self):
@@ -3779,11 +3779,11 @@ class ExtrudeMesh(Node):
 
         # Input sockets plugging
 
-        self.mesh            = mesh
-        self.selection       = selection
-        self.offset          = offset
-        self.offset_scale    = offset_scale
-        self.individual      = individual
+        if mesh            is not None: self.mesh            = mesh
+        if selection       is not None: self.selection       = selection
+        if offset          is not None: self.offset          = offset
+        if offset_scale    is not None: self.offset_scale    = offset_scale
+        if individual      is not None: self.individual      = individual
 
     @property
     def mode(self):
@@ -3883,8 +3883,8 @@ class FieldAtIndex(Node):
 
         # Input sockets plugging
 
-        self.index           = index
-        self.value           = value
+        if index           is not None: self.index           = index
+        if value           is not None: self.value           = value
 
     @property
     def data_type(self):
@@ -3976,7 +3976,7 @@ class FillCurve(Node):
 
         # Input sockets plugging
 
-        self.curve           = curve
+        if curve           is not None: self.curve           = curve
 
     @property
     def mode(self):
@@ -4063,10 +4063,10 @@ class FilletCurve(Node):
 
         # Input sockets plugging
 
-        self.curve           = curve
-        self.count           = count
-        self.radius          = radius
-        self.limit_radius    = limit_radius
+        if curve           is not None: self.curve           = curve
+        if count           is not None: self.count           = count
+        if radius          is not None: self.radius          = radius
+        if limit_radius    is not None: self.limit_radius    = limit_radius
 
     @property
     def mode(self):
@@ -4142,8 +4142,8 @@ class FlipFaces(Node):
 
         # Input sockets plugging
 
-        self.mesh            = mesh
-        self.selection       = selection
+        if mesh            is not None: self.mesh            = mesh
+        if selection       is not None: self.selection       = selection
 
 # ----------------------------------------------------------------------------------------------------
 # Node GeometryToInstance for GeometryNodeGeometryToInstance
@@ -4335,9 +4335,9 @@ class ImageTexture(Node):
 
         # Input sockets plugging
 
-        self.image           = image
-        self.vector          = vector
-        self.frame           = frame
+        if image           is not None: self.image           = image
+        if vector          is not None: self.vector          = vector
+        if frame           is not None: self.frame           = frame
 
     @property
     def extension(self):
@@ -4407,8 +4407,6 @@ class CurveHandlePositions(Node):
               
               
             - CurveDomain.handle_positions : Fields
-            - CurveDomain.handle_positions_left : Fields
-            - CurveDomain.handle_positions_right : Fields
               
     """
 
@@ -4423,7 +4421,7 @@ class CurveHandlePositions(Node):
 
         # Input sockets plugging
 
-        self.relative        = relative
+        if relative        is not None: self.relative        = relative
 
 # ----------------------------------------------------------------------------------------------------
 # Node CurveTilt for GeometryNodeInputCurveTilt
@@ -4463,15 +4461,6 @@ class CurveTilt(Node):
         Output sockets
         --------------
             - tilt : Float
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - CurveDomain.tilt : Fields
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -4521,15 +4510,6 @@ class ID(Node):
         Output sockets
         --------------
             - ID : Integer
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Domain.ID : Fields
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -4579,15 +4559,6 @@ class Index(Node):
         Output sockets
         --------------
             - index : Integer
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Domain.index : Fields
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -4686,15 +4657,6 @@ class MaterialIndex(Node):
         Output sockets
         --------------
             - material_index : Integer
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - FaceDomain.material_index : Fields
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -4811,7 +4773,7 @@ class EdgeNeighbors(Node):
             > Data socket classes implementing this node.
               
               
-            - EdgeDomain.neighbors : Fields
+            - EdgeDomain.neighbors_faces : Fields
               
     """
 
@@ -4872,7 +4834,6 @@ class EdgeVertices(Node):
             > Data socket classes implementing this node.
               
               
-            - EdgeDomain.vertices : Fields
             - EdgeDomain.vertices_index_1 : Fields
             - EdgeDomain.vertices_index_2 : Fields
             - EdgeDomain.vertices_position_1 : Fields
@@ -4997,7 +4958,7 @@ class FaceIsPlanar(Node):
             > Data socket classes implementing this node.
               
               
-            - FaceDomain.face_is_planar : Fields
+            - FaceDomain.is_planar : Fields
               
     """
 
@@ -5012,7 +4973,7 @@ class FaceIsPlanar(Node):
 
         # Input sockets plugging
 
-        self.threshold       = threshold
+        if threshold       is not None: self.threshold       = threshold
 
 # ----------------------------------------------------------------------------------------------------
 # Node FaceNeighbors for GeometryNodeInputMeshFaceNeighbors
@@ -5053,17 +5014,6 @@ class FaceNeighbors(Node):
         --------------
             - vertex_count : Integer
             - face_count : Integer
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - FaceDomain.neighbors : Fields
-            - FaceDomain.neighbors_faces : Fields
-            - FaceDomain.neighbors_vertices : Fields
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5114,17 +5064,6 @@ class MeshIsland(Node):
         --------------
             - island_index : Integer
             - island_count : Integer
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - FaceDomain.island : Fields
-            - FaceDomain.island_faces : Fields
-            - FaceDomain.island_vertices : Fields
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5175,17 +5114,6 @@ class VertexNeighbors(Node):
         --------------
             - vertex_count : Integer
             - face_count : Integer
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - PointDomain.neighbors : Fields
-            - PointDomain.neighbors_faces : Fields
-            - PointDomain.neighbors_vertices : Fields
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5254,20 +5182,6 @@ class NamedAttribute(Node):
         Output sockets
         --------------
             - attribute : data_type dependant
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Domain.named_attribute : Fields
-            - Domain.named_boolean : Fields
-            - Domain.named_color : Fields
-            - Domain.named_float : Fields
-            - Domain.named_integer : Fields
-            - Domain.named_vector : Fields
-              
     """
 
     def __init__(self, name=None, data_type='FLOAT', label=None, node_color=None):
@@ -5285,7 +5199,7 @@ class NamedAttribute(Node):
 
         # Input sockets plugging
 
-        self.name            = name
+        if name            is not None: self.name            = name
 
     @property
     def data_type(self):
@@ -5333,15 +5247,6 @@ class Normal(Node):
         Output sockets
         --------------
             - normal : Vector
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Domain.normal : Fields
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5391,15 +5296,6 @@ class Position(Node):
         Output sockets
         --------------
             - position : Vector
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Domain.position : Fields
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5449,15 +5345,6 @@ class Radius(Node):
         Output sockets
         --------------
             - radius : Float
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - Domain.radius : Fields
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5566,15 +5453,6 @@ class IsShadeSmooth(Node):
         Output sockets
         --------------
             - smooth : Boolean
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - FaceDomain.is_shade_smooth : Fields
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5624,15 +5502,6 @@ class IsSplineCyclic(Node):
         Output sockets
         --------------
             - cyclic : Boolean
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - CurveDomain.cyclic : Fields
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5682,15 +5551,6 @@ class SplineResolution(Node):
         Output sockets
         --------------
             - resolution : Integer
-    
-
-        Data sockets
-        ------------
-            > Data socket classes implementing this node.
-              
-              
-            - CurveDomain.resolution : Fields
-              
     """
 
     def __init__(self, label=None, node_color=None):
@@ -5831,13 +5691,13 @@ class InstanceOnPoints(Node):
 
         # Input sockets plugging
 
-        self.points          = points
-        self.selection       = selection
-        self.instance        = instance
-        self.pick_instance   = pick_instance
-        self.instance_index  = instance_index
-        self.rotation        = rotation
-        self.scale           = scale
+        if points          is not None: self.points          = points
+        if selection       is not None: self.selection       = selection
+        if instance        is not None: self.instance        = instance
+        if pick_instance   is not None: self.pick_instance   = pick_instance
+        if instance_index  is not None: self.instance_index  = instance_index
+        if rotation        is not None: self.rotation        = rotation
+        if scale           is not None: self.scale           = scale
 
 # ----------------------------------------------------------------------------------------------------
 # Node InstancesToPoints for GeometryNodeInstancesToPoints
@@ -5907,10 +5767,10 @@ class InstancesToPoints(Node):
 
         # Input sockets plugging
 
-        self.instances       = instances
-        self.selection       = selection
-        self.position        = position
-        self.radius          = radius
+        if instances       is not None: self.instances       = instances
+        if selection       is not None: self.selection       = selection
+        if position        is not None: self.position        = position
+        if radius          is not None: self.radius          = radius
 
 # ----------------------------------------------------------------------------------------------------
 # Node IsViewport for GeometryNodeIsViewport
@@ -6103,7 +5963,7 @@ class MaterialSelection(Node):
 
         # Input sockets plugging
 
-        self.material        = material
+        if material        is not None: self.material        = material
 
 # ----------------------------------------------------------------------------------------------------
 # Node MergeByDistance for GeometryNodeMergeByDistance
@@ -6181,9 +6041,9 @@ class MergeByDistance(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.selection       = selection
-        self.distance        = distance
+        if geometry        is not None: self.geometry        = geometry
+        if selection       is not None: self.selection       = selection
+        if distance        is not None: self.distance        = distance
 
     @property
     def mode(self):
@@ -6272,10 +6132,10 @@ class MeshBoolean(Node):
 
         # Input sockets plugging
 
-        self.mesh_1          = mesh_1
+        if mesh_1          is not None: self.mesh_1          = mesh_1
         self.plug(1, *mesh_2)
-        self.self_intersection = self_intersection
-        self.hole_tolerant   = hole_tolerant
+        if self_intersection is not None: self.self_intersection = self_intersection
+        if hole_tolerant   is not None: self.hole_tolerant   = hole_tolerant
 
     @property
     def operation(self):
@@ -6360,8 +6220,8 @@ class MeshCircle(Node):
 
         # Input sockets plugging
 
-        self.vertices        = vertices
-        self.radius          = radius
+        if vertices        is not None: self.vertices        = vertices
+        if radius          is not None: self.radius          = radius
 
     @property
     def fill_type(self):
@@ -6453,12 +6313,12 @@ class Cone(Node):
 
         # Input sockets plugging
 
-        self.vertices        = vertices
-        self.side_segments   = side_segments
-        self.fill_segments   = fill_segments
-        self.radius_top      = radius_top
-        self.radius_bottom   = radius_bottom
-        self.depth           = depth
+        if vertices        is not None: self.vertices        = vertices
+        if side_segments   is not None: self.side_segments   = side_segments
+        if fill_segments   is not None: self.fill_segments   = fill_segments
+        if radius_top      is not None: self.radius_top      = radius_top
+        if radius_bottom   is not None: self.radius_bottom   = radius_bottom
+        if depth           is not None: self.depth           = depth
 
     @property
     def fill_type(self):
@@ -6536,10 +6396,10 @@ class Cube(Node):
 
         # Input sockets plugging
 
-        self.size            = size
-        self.vertices_x      = vertices_x
-        self.vertices_y      = vertices_y
-        self.vertices_z      = vertices_z
+        if size            is not None: self.size            = size
+        if vertices_x      is not None: self.vertices_x      = vertices_x
+        if vertices_y      is not None: self.vertices_y      = vertices_y
+        if vertices_z      is not None: self.vertices_z      = vertices_z
 
 # ----------------------------------------------------------------------------------------------------
 # Node Cylinder for GeometryNodeMeshCylinder
@@ -6622,11 +6482,11 @@ class Cylinder(Node):
 
         # Input sockets plugging
 
-        self.vertices        = vertices
-        self.side_segments   = side_segments
-        self.fill_segments   = fill_segments
-        self.radius          = radius
-        self.depth           = depth
+        if vertices        is not None: self.vertices        = vertices
+        if side_segments   is not None: self.side_segments   = side_segments
+        if fill_segments   is not None: self.fill_segments   = fill_segments
+        if radius          is not None: self.radius          = radius
+        if depth           is not None: self.depth           = depth
 
     @property
     def fill_type(self):
@@ -6704,10 +6564,10 @@ class Grid(Node):
 
         # Input sockets plugging
 
-        self.size_x          = size_x
-        self.size_y          = size_y
-        self.vertices_x      = vertices_x
-        self.vertices_y      = vertices_y
+        if size_x          is not None: self.size_x          = size_x
+        if size_y          is not None: self.size_y          = size_y
+        if vertices_x      is not None: self.vertices_x      = vertices_x
+        if vertices_y      is not None: self.vertices_y      = vertices_y
 
 # ----------------------------------------------------------------------------------------------------
 # Node IcoSphere for GeometryNodeMeshIcoSphere
@@ -6775,8 +6635,8 @@ class IcoSphere(Node):
 
         # Input sockets plugging
 
-        self.radius          = radius
-        self.subdivisions    = subdivisions
+        if radius          is not None: self.radius          = radius
+        if subdivisions    is not None: self.subdivisions    = subdivisions
 
 # ----------------------------------------------------------------------------------------------------
 # Node MeshLine for GeometryNodeMeshLine
@@ -6857,10 +6717,10 @@ class MeshLine(Node):
 
         # Input sockets plugging
 
-        self.count           = count
-        self.resolution      = resolution
-        self.start_location  = start_location
-        self.offset          = offset
+        if count           is not None: self.count           = count
+        if resolution      is not None: self.resolution      = resolution
+        if start_location  is not None: self.start_location  = start_location
+        if offset          is not None: self.offset          = offset
 
     @property
     def count_mode(self):
@@ -6944,8 +6804,8 @@ class MeshToCurve(Node):
 
         # Input sockets plugging
 
-        self.mesh            = mesh
-        self.selection       = selection
+        if mesh            is not None: self.mesh            = mesh
+        if selection       is not None: self.selection       = selection
 
 # ----------------------------------------------------------------------------------------------------
 # Node MeshToPoints for GeometryNodeMeshToPoints
@@ -7024,10 +6884,10 @@ class MeshToPoints(Node):
 
         # Input sockets plugging
 
-        self.mesh            = mesh
-        self.selection       = selection
-        self.position        = position
-        self.radius          = radius
+        if mesh            is not None: self.mesh            = mesh
+        if selection       is not None: self.selection       = selection
+        if position        is not None: self.position        = position
+        if radius          is not None: self.radius          = radius
 
     @property
     def mode(self):
@@ -7104,9 +6964,9 @@ class UvSphere(Node):
 
         # Input sockets plugging
 
-        self.segments        = segments
-        self.rings           = rings
-        self.radius          = radius
+        if segments        is not None: self.segments        = segments
+        if rings           is not None: self.rings           = rings
+        if radius          is not None: self.radius          = radius
 
 # ----------------------------------------------------------------------------------------------------
 # Node ObjectInfo for GeometryNodeObjectInfo
@@ -7190,8 +7050,8 @@ class ObjectInfo(Node):
 
         # Input sockets plugging
 
-        self.object          = object
-        self.as_instance     = as_instance
+        if object          is not None: self.object          = object
+        if as_instance     is not None: self.as_instance     = as_instance
 
     @property
     def transform_space(self):
@@ -7267,8 +7127,8 @@ class PointsToVertices(Node):
 
         # Input sockets plugging
 
-        self.points          = points
-        self.selection       = selection
+        if points          is not None: self.points          = points
+        if selection       is not None: self.selection       = selection
 
 # ----------------------------------------------------------------------------------------------------
 # Node PointsToVolume for GeometryNodePointsToVolume
@@ -7348,11 +7208,11 @@ class PointsToVolume(Node):
 
         # Input sockets plugging
 
-        self.points          = points
-        self.density         = density
-        self.voxel_size      = voxel_size
-        self.voxel_amount    = voxel_amount
-        self.radius          = radius
+        if points          is not None: self.points          = points
+        if density         is not None: self.density         = density
+        if voxel_size      is not None: self.voxel_size      = voxel_size
+        if voxel_amount    is not None: self.voxel_amount    = voxel_amount
+        if radius          is not None: self.radius          = radius
 
     @property
     def resolution_mode(self):
@@ -7438,8 +7298,8 @@ class GeometryProximity(Node):
 
         # Input sockets plugging
 
-        self.target          = target
-        self.source_position = source_position
+        if target          is not None: self.target          = target
+        if source_position is not None: self.source_position = source_position
 
     @property
     def target_element(self):
@@ -7546,11 +7406,11 @@ class Raycast(Node):
 
         # Input sockets plugging
 
-        self.target_geometry = target_geometry
-        self.attribute       = attribute
-        self.source_position = source_position
-        self.ray_direction   = ray_direction
-        self.ray_length      = ray_length
+        if target_geometry is not None: self.target_geometry = target_geometry
+        if attribute       is not None: self.attribute       = attribute
+        if source_position is not None: self.source_position = source_position
+        if ray_direction   is not None: self.ray_direction   = ray_direction
+        if ray_length      is not None: self.ray_length      = ray_length
 
     @property
     def data_type(self):
@@ -7642,7 +7502,7 @@ class RealizeInstances(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
+        if geometry        is not None: self.geometry        = geometry
 
     @property
     def legacy_behavior(self):
@@ -7718,8 +7578,8 @@ class RemoveNamedAttribute(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.name            = name
+        if geometry        is not None: self.geometry        = geometry
+        if name            is not None: self.name            = name
 
 # ----------------------------------------------------------------------------------------------------
 # Node ReplaceMaterial for GeometryNodeReplaceMaterial
@@ -7788,9 +7648,9 @@ class ReplaceMaterial(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.old             = old
-        self.new             = new
+        if geometry        is not None: self.geometry        = geometry
+        if old             is not None: self.old             = old
+        if new             is not None: self.new             = new
 
 # ----------------------------------------------------------------------------------------------------
 # Node ResampleCurve for GeometryNodeResampleCurve
@@ -7869,10 +7729,10 @@ class ResampleCurve(Node):
 
         # Input sockets plugging
 
-        self.curve           = curve
-        self.selection       = selection
-        self.count           = count
-        self.length          = length
+        if curve           is not None: self.curve           = curve
+        if selection       is not None: self.selection       = selection
+        if count           is not None: self.count           = count
+        if length          is not None: self.length          = length
 
     @property
     def mode(self):
@@ -7948,8 +7808,8 @@ class ReverseCurve(Node):
 
         # Input sockets plugging
 
-        self.curve           = curve
-        self.selection       = selection
+        if curve           is not None: self.curve           = curve
+        if selection       is not None: self.selection       = selection
 
 # ----------------------------------------------------------------------------------------------------
 # Node RotateInstances for GeometryNodeRotateInstances
@@ -8020,11 +7880,11 @@ class RotateInstances(Node):
 
         # Input sockets plugging
 
-        self.instances       = instances
-        self.selection       = selection
-        self.rotation        = rotation
-        self.pivot_point     = pivot_point
-        self.local_space     = local_space
+        if instances       is not None: self.instances       = instances
+        if selection       is not None: self.selection       = selection
+        if rotation        is not None: self.rotation        = rotation
+        if pivot_point     is not None: self.pivot_point     = pivot_point
+        if local_space     is not None: self.local_space     = local_space
 
 # ----------------------------------------------------------------------------------------------------
 # Node SampleCurve for GeometryNodeSampleCurve
@@ -8104,9 +7964,9 @@ class SampleCurve(Node):
 
         # Input sockets plugging
 
-        self.curve           = curve
-        self.factor          = factor
-        self.length          = length
+        if curve           is not None: self.curve           = curve
+        if factor          is not None: self.factor          = factor
+        if length          is not None: self.length          = length
 
     @property
     def mode(self):
@@ -8196,11 +8056,11 @@ class ScaleElements(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.selection       = selection
-        self.scale           = scale
-        self.center          = center
-        self.axis            = axis
+        if geometry        is not None: self.geometry        = geometry
+        if selection       is not None: self.selection       = selection
+        if scale           is not None: self.scale           = scale
+        if center          is not None: self.center          = center
+        if axis            is not None: self.axis            = axis
 
     @property
     def domain(self):
@@ -8287,11 +8147,11 @@ class ScaleInstances(Node):
 
         # Input sockets plugging
 
-        self.instances       = instances
-        self.selection       = selection
-        self.scale           = scale
-        self.center          = center
-        self.local_space     = local_space
+        if instances       is not None: self.instances       = instances
+        if selection       is not None: self.selection       = selection
+        if scale           is not None: self.scale           = scale
+        if center          is not None: self.center          = center
+        if local_space     is not None: self.local_space     = local_space
 
 # ----------------------------------------------------------------------------------------------------
 # Node SeparateComponents for GeometryNodeSeparateComponents
@@ -8367,7 +8227,7 @@ class SeparateComponents(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
+        if geometry        is not None: self.geometry        = geometry
 
 # ----------------------------------------------------------------------------------------------------
 # Node SeparateGeometry for GeometryNodeSeparateGeometry
@@ -8445,8 +8305,8 @@ class SeparateGeometry(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.selection       = selection
+        if geometry        is not None: self.geometry        = geometry
+        if selection       is not None: self.selection       = selection
 
     @property
     def domain(self):
@@ -8515,6 +8375,9 @@ class SetHandlePositions(Node):
               
               
             - Curve.set_handle_positions : Method
+            - CurveDomain.set_handle_positions : Fields
+            - CurveDomain.set_left_handle_positions : Fields
+            - CurveDomain.set_right_handle_positions : Fields
               
     """
 
@@ -8533,10 +8396,10 @@ class SetHandlePositions(Node):
 
         # Input sockets plugging
 
-        self.curve           = curve
-        self.selection       = selection
-        self.position        = position
-        self.offset          = offset
+        if curve           is not None: self.curve           = curve
+        if selection       is not None: self.selection       = selection
+        if position        is not None: self.position        = position
+        if offset          is not None: self.offset          = offset
 
     @property
     def mode(self):
@@ -8613,9 +8476,9 @@ class SetCurveRadius(Node):
 
         # Input sockets plugging
 
-        self.curve           = curve
-        self.selection       = selection
-        self.radius          = radius
+        if curve           is not None: self.curve           = curve
+        if selection       is not None: self.selection       = selection
+        if radius          is not None: self.radius          = radius
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetCurveTilt for GeometryNodeSetCurveTilt
@@ -8670,6 +8533,7 @@ class SetCurveTilt(Node):
               
               
             - Curve.set_tilt : Method
+            - CurveDomain.tilt : Fields
               
     """
 
@@ -8684,9 +8548,9 @@ class SetCurveTilt(Node):
 
         # Input sockets plugging
 
-        self.curve           = curve
-        self.selection       = selection
-        self.tilt            = tilt
+        if curve           is not None: self.curve           = curve
+        if selection       is not None: self.selection       = selection
+        if tilt            is not None: self.tilt            = tilt
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetID for GeometryNodeSetID
@@ -8755,9 +8619,9 @@ class SetID(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.selection       = selection
-        self.ID              = ID
+        if geometry        is not None: self.geometry        = geometry
+        if selection       is not None: self.selection       = selection
+        if ID              is not None: self.ID              = ID
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetMaterial for GeometryNodeSetMaterial
@@ -8826,9 +8690,9 @@ class SetMaterial(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.selection       = selection
-        self.material        = material
+        if geometry        is not None: self.geometry        = geometry
+        if selection       is not None: self.selection       = selection
+        if material        is not None: self.material        = material
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetMaterialIndex for GeometryNodeSetMaterialIndex
@@ -8882,6 +8746,7 @@ class SetMaterialIndex(Node):
             > Data socket classes implementing this node.
               
               
+            - FaceDomain.material_index : Fields
             - Geometry.set_material_index : Method
               
     """
@@ -8897,9 +8762,9 @@ class SetMaterialIndex(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.selection       = selection
-        self.material_index  = material_index
+        if geometry        is not None: self.geometry        = geometry
+        if selection       is not None: self.selection       = selection
+        if material_index  is not None: self.material_index  = material_index
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetPointRadius for GeometryNodeSetPointRadius
@@ -8968,9 +8833,9 @@ class SetPointRadius(Node):
 
         # Input sockets plugging
 
-        self.points          = points
-        self.selection       = selection
-        self.radius          = radius
+        if points          is not None: self.points          = points
+        if selection       is not None: self.selection       = selection
+        if radius          is not None: self.radius          = radius
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetPosition for GeometryNodeSetPosition
@@ -9040,10 +8905,10 @@ class SetPosition(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.selection       = selection
-        self.position        = position
-        self.offset          = offset
+        if geometry        is not None: self.geometry        = geometry
+        if selection       is not None: self.selection       = selection
+        if position        is not None: self.position        = position
+        if offset          is not None: self.offset          = offset
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetShadeSmooth for GeometryNodeSetShadeSmooth
@@ -9112,9 +8977,9 @@ class SetShadeSmooth(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.selection       = selection
-        self.shade_smooth    = shade_smooth
+        if geometry        is not None: self.geometry        = geometry
+        if selection       is not None: self.selection       = selection
+        if shade_smooth    is not None: self.shade_smooth    = shade_smooth
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetSplineCyclic for GeometryNodeSetSplineCyclic
@@ -9168,6 +9033,7 @@ class SetSplineCyclic(Node):
             > Data socket classes implementing this node.
               
               
+            - CurveDomain.cyclic : Fields
             - Spline.set_cyclic : Method
               
     """
@@ -9183,9 +9049,9 @@ class SetSplineCyclic(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.selection       = selection
-        self.cyclic          = cyclic
+        if geometry        is not None: self.geometry        = geometry
+        if selection       is not None: self.selection       = selection
+        if cyclic          is not None: self.cyclic          = cyclic
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetSplineResolution for GeometryNodeSetSplineResolution
@@ -9239,6 +9105,7 @@ class SetSplineResolution(Node):
             > Data socket classes implementing this node.
               
               
+            - CurveDomain.resolution : Fields
             - Spline.set_resolution : Method
               
     """
@@ -9254,9 +9121,9 @@ class SetSplineResolution(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.selection       = selection
-        self.resolution      = resolution
+        if geometry        is not None: self.geometry        = geometry
+        if selection       is not None: self.selection       = selection
+        if resolution      is not None: self.resolution      = resolution
 
 # ----------------------------------------------------------------------------------------------------
 # Node SplineLength for GeometryNodeSplineLength
@@ -9305,7 +9172,6 @@ class SplineLength(Node):
               
               
             - CurveDomain.length : Fields
-            - CurveDomain.length_point_count : Fields
             - CurveDomain.point_count : Fields
               
     """
@@ -9366,8 +9232,7 @@ class SplineParameter(Node):
             > Data socket classes implementing this node.
               
               
-            - CurveDomain.factor : Fields
-            - CurveDomain.parameter : Fields
+            - CurveDomain.parameter_factor : Fields
             - CurveDomain.parameter_index : Fields
             - CurveDomain.parameter_length : Fields
               
@@ -9448,8 +9313,8 @@ class SplitEdges(Node):
 
         # Input sockets plugging
 
-        self.mesh            = mesh
-        self.selection       = selection
+        if mesh            is not None: self.mesh            = mesh
+        if selection       is not None: self.selection       = selection
 
 # ----------------------------------------------------------------------------------------------------
 # Node StoreNamedAttribute for GeometryNodeStoreNamedAttribute
@@ -9544,9 +9409,9 @@ class StoreNamedAttribute(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.name            = name
-        self.value           = value
+        if geometry        is not None: self.geometry        = geometry
+        if name            is not None: self.name            = name
+        if value           is not None: self.value           = value
 
     @property
     def data_type(self):
@@ -9631,7 +9496,7 @@ class JoinStrings(Node):
 
         # Input sockets plugging
 
-        self.delimiter       = delimiter
+        if delimiter       is not None: self.delimiter       = delimiter
         self.plug(1, *strings)
 
 # ----------------------------------------------------------------------------------------------------
@@ -9723,13 +9588,13 @@ class StringToCurves(Node):
 
         # Input sockets plugging
 
-        self.string          = string
-        self.size            = size
-        self.character_spacing = character_spacing
-        self.word_spacing    = word_spacing
-        self.line_spacing    = line_spacing
-        self.text_box_width  = text_box_width
-        self.text_box_height = text_box_height
+        if string          is not None: self.string          = string
+        if size            is not None: self.size            = size
+        if character_spacing is not None: self.character_spacing = character_spacing
+        if word_spacing    is not None: self.word_spacing    = word_spacing
+        if line_spacing    is not None: self.line_spacing    = line_spacing
+        if text_box_width  is not None: self.text_box_width  = text_box_width
+        if text_box_height is not None: self.text_box_height = text_box_height
 
     @property
     def align_x(self):
@@ -9829,8 +9694,8 @@ class SubdivideCurve(Node):
 
         # Input sockets plugging
 
-        self.curve           = curve
-        self.cuts            = cuts
+        if curve           is not None: self.curve           = curve
+        if cuts            is not None: self.cuts            = cuts
 
 # ----------------------------------------------------------------------------------------------------
 # Node SubdivideMesh for GeometryNodeSubdivideMesh
@@ -9898,8 +9763,8 @@ class SubdivideMesh(Node):
 
         # Input sockets plugging
 
-        self.mesh            = mesh
-        self.level           = level
+        if mesh            is not None: self.mesh            = mesh
+        if level           is not None: self.level           = level
 
 # ----------------------------------------------------------------------------------------------------
 # Node SubdivisionSurface for GeometryNodeSubdivisionSurface
@@ -9979,9 +9844,9 @@ class SubdivisionSurface(Node):
 
         # Input sockets plugging
 
-        self.mesh            = mesh
-        self.level           = level
-        self.crease          = crease
+        if mesh            is not None: self.mesh            = mesh
+        if level           is not None: self.level           = level
+        if crease          is not None: self.crease          = crease
 
     @property
     def boundary_smooth(self):
@@ -10094,9 +9959,9 @@ class Switch(Node):
 
         # Input sockets plugging
 
-        self.switch          = switch
-        self.false           = false
-        self.true            = true
+        if switch          is not None: self.switch          = switch
+        if false           is not None: self.false           = false
+        if true            is not None: self.true            = true
 
     @property
     def input_type(self):
@@ -10174,10 +10039,10 @@ class Transform(Node):
 
         # Input sockets plugging
 
-        self.geometry        = geometry
-        self.translation     = translation
-        self.rotation        = rotation
-        self.scale           = scale
+        if geometry        is not None: self.geometry        = geometry
+        if translation     is not None: self.translation     = translation
+        if rotation        is not None: self.rotation        = rotation
+        if scale           is not None: self.scale           = scale
 
 # ----------------------------------------------------------------------------------------------------
 # Node TranslateInstances for GeometryNodeTranslateInstances
@@ -10247,10 +10112,10 @@ class TranslateInstances(Node):
 
         # Input sockets plugging
 
-        self.instances       = instances
-        self.selection       = selection
-        self.translation     = translation
-        self.local_space     = local_space
+        if instances       is not None: self.instances       = instances
+        if selection       is not None: self.selection       = selection
+        if translation     is not None: self.translation     = translation
+        if local_space     is not None: self.local_space     = local_space
 
 # ----------------------------------------------------------------------------------------------------
 # Node Triangulate for GeometryNodeTriangulate
@@ -10330,9 +10195,9 @@ class Triangulate(Node):
 
         # Input sockets plugging
 
-        self.mesh            = mesh
-        self.selection       = selection
-        self.minimum_vertices = minimum_vertices
+        if mesh            is not None: self.mesh            = mesh
+        if selection       is not None: self.selection       = selection
+        if minimum_vertices is not None: self.minimum_vertices = minimum_vertices
 
     @property
     def ngon_method(self):
@@ -10428,11 +10293,11 @@ class TrimCurve(Node):
 
         # Input sockets plugging
 
-        self.curve           = curve
-        self.start0          = start0
-        self.start1          = start1
-        self.end0            = end0
-        self.end1            = end1
+        if curve           is not None: self.curve           = curve
+        if start0          is not None: self.start0          = start0
+        if start1          is not None: self.start1          = start1
+        if end0            is not None: self.end0            = end0
+        if end1            is not None: self.end1            = end1
 
     @property
     def mode(self):
@@ -10520,11 +10385,11 @@ class VolumeToMesh(Node):
 
         # Input sockets plugging
 
-        self.volume          = volume
-        self.voxel_size      = voxel_size
-        self.voxel_amount    = voxel_amount
-        self.threshold       = threshold
-        self.adaptivity      = adaptivity
+        if volume          is not None: self.volume          = volume
+        if voxel_size      is not None: self.voxel_size      = voxel_size
+        if voxel_amount    is not None: self.voxel_amount    = voxel_amount
+        if threshold       is not None: self.threshold       = threshold
+        if adaptivity      is not None: self.adaptivity      = adaptivity
 
     @property
     def resolution_mode(self):
@@ -10610,9 +10475,9 @@ class Clamp(Node):
 
         # Input sockets plugging
 
-        self.value           = value
-        self.min             = min
-        self.max             = max
+        if value           is not None: self.value           = value
+        if min             is not None: self.min             = min
+        if max             is not None: self.max             = max
 
     @property
     def clamp_type(self):
@@ -10689,9 +10554,9 @@ class CombineRgb(Node):
 
         # Input sockets plugging
 
-        self.r               = r
-        self.g               = g
-        self.b               = b
+        if r               is not None: self.r               = r
+        if g               is not None: self.g               = g
+        if b               is not None: self.b               = b
 
 # ----------------------------------------------------------------------------------------------------
 # Node CombineXyz for ShaderNodeCombineXYZ
@@ -10760,9 +10625,9 @@ class CombineXyz(Node):
 
         # Input sockets plugging
 
-        self.x               = x
-        self.y               = y
-        self.z               = z
+        if x               is not None: self.x               = x
+        if y               is not None: self.y               = y
+        if z               is not None: self.z               = z
 
 # ----------------------------------------------------------------------------------------------------
 # Node FloatCurve for ShaderNodeFloatCurve
@@ -10830,8 +10695,8 @@ class FloatCurve(Node):
 
         # Input sockets plugging
 
-        self.factor          = factor
-        self.value           = value
+        if factor          is not None: self.factor          = factor
+        if value           is not None: self.value           = value
 
 # ----------------------------------------------------------------------------------------------------
 # Node MapRange for ShaderNodeMapRange
@@ -10928,13 +10793,13 @@ class MapRange(Node):
 
         # Input sockets plugging
 
-        self.value           = value
-        self.from_min        = from_min
-        self.from_max        = from_max
-        self.to_min          = to_min
-        self.to_max          = to_max
-        self.steps           = steps
-        self.vector          = vector
+        if value           is not None: self.value           = value
+        if from_min        is not None: self.from_min        = from_min
+        if from_max        is not None: self.from_max        = from_max
+        if to_min          is not None: self.to_min          = to_min
+        if to_max          is not None: self.to_max          = to_max
+        if steps           is not None: self.steps           = steps
+        if vector          is not None: self.vector          = vector
 
     @property
     def clamp(self):
@@ -11155,9 +11020,9 @@ class Math(Node):
 
         # Input sockets plugging
 
-        self.value0          = value0
-        self.value1          = value1
-        self.value2          = value2
+        if value0          is not None: self.value0          = value0
+        if value1          is not None: self.value1          = value1
+        if value2          is not None: self.value2          = value2
 
     @property
     def operation(self):
@@ -11281,9 +11146,9 @@ class Mix(Node):
 
         # Input sockets plugging
 
-        self.fac             = fac
-        self.color1          = color1
-        self.color2          = color2
+        if fac             is not None: self.fac             = fac
+        if color1          is not None: self.color1          = color1
+        if color2          is not None: self.color2          = color2
 
     @property
     def blend_type(self):
@@ -11367,8 +11232,8 @@ class RgbCurves(Node):
 
         # Input sockets plugging
 
-        self.fac             = fac
-        self.color           = color
+        if fac             is not None: self.fac             = fac
+        if color           is not None: self.color           = color
 
 # ----------------------------------------------------------------------------------------------------
 # Node SeparateRgb for ShaderNodeSeparateRGB
@@ -11440,7 +11305,7 @@ class SeparateRgb(Node):
 
         # Input sockets plugging
 
-        self.image           = image
+        if image           is not None: self.image           = image
 
 # ----------------------------------------------------------------------------------------------------
 # Node SeparateXyz for ShaderNodeSeparateXYZ
@@ -11512,7 +11377,7 @@ class SeparateXyz(Node):
 
         # Input sockets plugging
 
-        self.vector          = vector
+        if vector          is not None: self.vector          = vector
 
 # ----------------------------------------------------------------------------------------------------
 # Node BrickTexture for ShaderNodeTexBrick
@@ -11604,16 +11469,16 @@ class BrickTexture(Node):
 
         # Input sockets plugging
 
-        self.vector          = vector
-        self.color1          = color1
-        self.color2          = color2
-        self.mortar          = mortar
-        self.scale           = scale
-        self.mortar_size     = mortar_size
-        self.mortar_smooth   = mortar_smooth
-        self.bias            = bias
-        self.brick_width     = brick_width
-        self.row_height      = row_height
+        if vector          is not None: self.vector          = vector
+        if color1          is not None: self.color1          = color1
+        if color2          is not None: self.color2          = color2
+        if mortar          is not None: self.mortar          = mortar
+        if scale           is not None: self.scale           = scale
+        if mortar_size     is not None: self.mortar_size     = mortar_size
+        if mortar_smooth   is not None: self.mortar_smooth   = mortar_smooth
+        if bias            is not None: self.bias            = bias
+        if brick_width     is not None: self.brick_width     = brick_width
+        if row_height      is not None: self.row_height      = row_height
 
     @property
     def offset(self):
@@ -11716,10 +11581,10 @@ class CheckerTexture(Node):
 
         # Input sockets plugging
 
-        self.vector          = vector
-        self.color1          = color1
-        self.color2          = color2
-        self.scale           = scale
+        if vector          is not None: self.vector          = vector
+        if color1          is not None: self.color1          = color1
+        if color2          is not None: self.color2          = color2
+        if scale           is not None: self.scale           = scale
 
 # ----------------------------------------------------------------------------------------------------
 # Node GradientTexture for ShaderNodeTexGradient
@@ -11796,7 +11661,7 @@ class GradientTexture(Node):
 
         # Input sockets plugging
 
-        self.vector          = vector
+        if vector          is not None: self.vector          = vector
 
     @property
     def gradient_type(self):
@@ -11883,9 +11748,9 @@ class MagicTexture(Node):
 
         # Input sockets plugging
 
-        self.vector          = vector
-        self.scale           = scale
-        self.distortion      = distortion
+        if vector          is not None: self.vector          = vector
+        if scale           is not None: self.scale           = scale
+        if distortion      is not None: self.distortion      = distortion
 
     @property
     def turbulence_depth(self):
@@ -11978,14 +11843,14 @@ class MusgraveTexture(Node):
 
         # Input sockets plugging
 
-        self.vector          = vector
-        self.w               = w
-        self.scale           = scale
-        self.detail          = detail
-        self.dimension       = dimension
-        self.lacunarity      = lacunarity
-        self.offset          = offset
-        self.gain            = gain
+        if vector          is not None: self.vector          = vector
+        if w               is not None: self.w               = w
+        if scale           is not None: self.scale           = scale
+        if detail          is not None: self.detail          = detail
+        if dimension       is not None: self.dimension       = dimension
+        if lacunarity      is not None: self.lacunarity      = lacunarity
+        if offset          is not None: self.offset          = offset
+        if gain            is not None: self.gain            = gain
 
     @property
     def musgrave_dimensions(self):
@@ -12083,12 +11948,12 @@ class NoiseTexture(Node):
 
         # Input sockets plugging
 
-        self.vector          = vector
-        self.w               = w
-        self.scale           = scale
-        self.detail          = detail
-        self.roughness       = roughness
-        self.distortion      = distortion
+        if vector          is not None: self.vector          = vector
+        if w               is not None: self.w               = w
+        if scale           is not None: self.scale           = scale
+        if detail          is not None: self.detail          = detail
+        if roughness       is not None: self.roughness       = roughness
+        if distortion      is not None: self.distortion      = distortion
 
     @property
     def noise_dimensions(self):
@@ -12185,12 +12050,12 @@ class VoronoiTexture(Node):
 
         # Input sockets plugging
 
-        self.vector          = vector
-        self.w               = w
-        self.scale           = scale
-        self.smoothness      = smoothness
-        self.exponent        = exponent
-        self.randomness      = randomness
+        if vector          is not None: self.vector          = vector
+        if w               is not None: self.w               = w
+        if scale           is not None: self.scale           = scale
+        if smoothness      is not None: self.smoothness      = smoothness
+        if exponent        is not None: self.exponent        = exponent
+        if randomness      is not None: self.randomness      = randomness
 
     @property
     def distance_(self):
@@ -12303,13 +12168,13 @@ class WaveTexture(Node):
 
         # Input sockets plugging
 
-        self.vector          = vector
-        self.scale           = scale
-        self.distortion      = distortion
-        self.detail          = detail
-        self.detail_scale    = detail_scale
-        self.detail_roughness = detail_roughness
-        self.phase_offset    = phase_offset
+        if vector          is not None: self.vector          = vector
+        if scale           is not None: self.scale           = scale
+        if distortion      is not None: self.distortion      = distortion
+        if detail          is not None: self.detail          = detail
+        if detail_scale    is not None: self.detail_scale    = detail_scale
+        if detail_roughness is not None: self.detail_roughness = detail_roughness
+        if phase_offset    is not None: self.phase_offset    = phase_offset
 
     @property
     def bands_direction(self):
@@ -12419,8 +12284,8 @@ class WhiteNoiseTexture(Node):
 
         # Input sockets plugging
 
-        self.vector          = vector
-        self.w               = w
+        if vector          is not None: self.vector          = vector
+        if w               is not None: self.w               = w
 
     @property
     def noise_dimensions(self):
@@ -12496,7 +12361,7 @@ class ColorRamp(Node):
 
         # Input sockets plugging
 
-        self.fac             = fac
+        if fac             is not None: self.fac             = fac
 
 # ----------------------------------------------------------------------------------------------------
 # Node Value for ShaderNodeValue
@@ -12613,8 +12478,8 @@ class VectorCurves(Node):
 
         # Input sockets plugging
 
-        self.fac             = fac
-        self.vector          = vector
+        if fac             is not None: self.fac             = fac
+        if vector          is not None: self.vector          = vector
 
 # ----------------------------------------------------------------------------------------------------
 # Node VectorMath for ShaderNodeVectorMath
@@ -12747,10 +12612,10 @@ class VectorMath(Node):
 
         # Input sockets plugging
 
-        self.vector0         = vector0
-        self.vector1         = vector1
-        self.vector2         = vector2
-        self.scale           = scale
+        if vector0         is not None: self.vector0         = vector0
+        if vector1         is not None: self.vector1         = vector1
+        if vector2         is not None: self.vector2         = vector2
+        if scale           is not None: self.scale           = scale
 
     @property
     def operation(self):
@@ -12840,11 +12705,11 @@ class VectorRotate(Node):
 
         # Input sockets plugging
 
-        self.vector          = vector
-        self.center          = center
-        self.axis            = axis
-        self.angle           = angle
-        self.rotation        = rotation
+        if vector          is not None: self.vector          = vector
+        if center          is not None: self.center          = center
+        if axis            is not None: self.axis            = axis
+        if angle           is not None: self.angle           = angle
+        if rotation        is not None: self.rotation        = rotation
 
     @property
     def invert(self):

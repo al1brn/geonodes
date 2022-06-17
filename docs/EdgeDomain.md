@@ -9,20 +9,19 @@ A property of Mesh
 
 
 
-## angle
+## neighbors_faces
 
-> Field [EdgeAngle](/docs/nodes/EdgeAngle.md)
+> Field [EdgeNeighbors](/docs/nodes/EdgeNeighbors.md)
   
-Blender menu : **mesh/edge_angle**<br>
+Blender menu : **mesh/edge_neighbors**<br>
 <sub>go to [top](#class-edgedomain) [index](/docs/index.md)</sub>
 
   Property
-  
-  To get the unsigned angle, used the property [unsigned_angle](#unsigned_angle).
 
 ### Returns
 
-Float
+Integer
+
 
 
 
@@ -43,22 +42,24 @@ Float
 
 
 
-## neighbors
+## angle
 
-> Field [EdgeNeighbors](/docs/nodes/EdgeNeighbors.md)
+> Field [EdgeAngle](/docs/nodes/EdgeAngle.md)
   
-Blender menu : **mesh/edge_neighbors**<br>
+Blender menu : **mesh/edge_angle**<br>
 <sub>go to [top](#class-edgedomain) [index](/docs/index.md)</sub>
 
   Property
+  
+  To get the unsigned angle, used the property [unsigned_angle](#unsigned_angle).
 
 ### Returns
 
-Integer
+Float
 
 
 
-## vertices
+## vertices_index_1
 
 > Field [EdgeVertices](/docs/nodes/EdgeVertices.md)
   
@@ -76,25 +77,6 @@ Blender menu : **mesh/edge_vertices**<br>
 
 ### Returns
 
-Node with 4 output sockets:
-- vertex_index_1
-- vertex_index_2
-- position_1
-- position_2
-  
-  
-
-## vertices_index_1
-
-> Field [EdgeVertices](/docs/nodes/EdgeVertices.md)
-  
-Blender menu : **mesh/edge_vertices**<br>
-<sub>go to [top](#class-edgedomain) [index](/docs/index.md)</sub>
-
-  Property
-
-### Returns
-
 Integer
 
 
@@ -107,6 +89,13 @@ Blender menu : **mesh/edge_vertices**<br>
 <sub>go to [top](#class-edgedomain) [index](/docs/index.md)</sub>
 
   Property
+  
+  Sockets can be access individually via:
+  
+  - [vertices_index_1](#vertices_index_1)
+  - [vertices_index_2](#vertices_index_2)
+  - [vertices_position_1](#vertices_position_1)
+  - [vertices_position_2](#vertices_position_2)
 
 ### Returns
 
@@ -122,6 +111,13 @@ Blender menu : **mesh/edge_vertices**<br>
 <sub>go to [top](#class-edgedomain) [index](/docs/index.md)</sub>
 
   Property
+  
+  Sockets can be access individually via:
+  
+  - [vertices_index_1](#vertices_index_1)
+  - [vertices_index_2](#vertices_index_2)
+  - [vertices_position_1](#vertices_position_1)
+  - [vertices_position_2](#vertices_position_2)
 
 ### Returns
 
@@ -137,6 +133,13 @@ Blender menu : **mesh/edge_vertices**<br>
 <sub>go to [top](#class-edgedomain) [index](/docs/index.md)</sub>
 
   Property
+  
+  Sockets can be access individually via:
+  
+  - [vertices_index_1](#vertices_index_1)
+  - [vertices_index_2](#vertices_index_2)
+  - [vertices_position_1](#vertices_position_1)
+  - [vertices_position_2](#vertices_position_2)
 
 ### Returns
 

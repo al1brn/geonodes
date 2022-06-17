@@ -26,11 +26,3 @@ node = nodes.CurveTilt(label=None, node_color=None)
 ## Output sockets
 
 - tilt : Float
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [CurveDomain](/docs/CurveDomain.md).[tilt](/docs/CurveDomain.md#tilt) : Fields
-  

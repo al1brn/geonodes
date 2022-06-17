@@ -8,71 +8,21 @@ Inherits from [Domain](/docs/core/domain.MD)
 A property of Spline and Curve
 
 
-## handle_positions
+## tilt
 
-> Field [CurveHandlePositions](/docs/nodes/CurveHandlePositions.md)
+> Field [SetCurveTilt](/docs/nodes/SetCurveTilt.md)
   
-Blender menu : **curve/curve_handle_position**<br>
+Blender menu : **curve/set_curve_tilt**<br>
 <sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
 
-  Method
+
+
+## cyclic
+
+> Field [SetSplineCyclic](/docs/nodes/SetSplineCyclic.md)
   
-  Sockets can be access individually via:
-  
-  - [handle_positions_left](#handle_positions_left)
-  - [handle_positions_right](#handle_positions_right)
-
-### Arguments
-
-- relative : Boolean
-
-### Returns
-
-Node with 2 output sockets:
-- left
-- right
-  
-  
-
-## handle_positions_left
-
-> Field [CurveHandlePositions](/docs/nodes/CurveHandlePositions.md)
-  
-Blender menu : **curve/curve_handle_position**<br>
+Blender menu : **curve/set_spline_cyclic**<br>
 <sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
-
-  Method
-  
-  Returns the socket **left** of the methode [handle_positions(#handle_positions)]
-
-### Arguments
-
-- relative : Boolean
-
-### Returns
-
-Vector
-
-
-
-## handle_positions_right
-
-> Field [CurveHandlePositions](/docs/nodes/CurveHandlePositions.md)
-  
-Blender menu : **curve/curve_handle_position**<br>
-<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
-
-  Method
-  
-  Returns the socket **right** of the methode [handle_positions(#handle_positions)]
-
-### Arguments
-
-- relative : Boolean
-
-### Returns
-
-Vector
 
 
 
@@ -91,18 +41,105 @@ Vector
 
 
 
-## tilt
+## length
 
-> Field [CurveTilt](/docs/nodes/CurveTilt.md)
+> Field [SplineLength](/docs/nodes/SplineLength.md)
   
-Blender menu : **curve/curve_tilt**<br>
+Blender menu : **curve/spline_length**<br>
 <sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
 
   Property
+  
+  - **length: Float**
+  - _point_count: Integer_
 
 ### Returns
 
 Float
+
+
+
+## point_count
+
+> Field [SplineLength](/docs/nodes/SplineLength.md)
+  
+Blender menu : **curve/spline_length**<br>
+<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
+
+  Property
+  
+  - _length : Float_
+  - **point_count : Integer**
+
+### Returns
+
+Integer
+
+
+
+## parameter_factor
+
+> Field [SplineParameter](/docs/nodes/SplineParameter.md)
+  
+Blender menu : **curve/spline_parameter**<br>
+<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
+
+  Property
+  
+  - **factor : Float**
+  - _length  : Float_
+  - _index : Integer_
+
+### Returns
+
+Float
+
+
+
+## parameter_length
+
+> Field [SplineParameter](/docs/nodes/SplineParameter.md)
+  
+Blender menu : **curve/spline_parameter**<br>
+<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
+
+  Property
+  
+  - _factor : Float_
+  - **length  : Float**
+  - _index : Integer_
+
+### Returns
+
+Float
+
+
+
+## parameter_index
+
+> Field [SplineParameter](/docs/nodes/SplineParameter.md)
+  
+Blender menu : **curve/spline_parameter**<br>
+<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
+
+  Property
+  
+  - _factor : Float_
+  - _length  : Float**
+  - **index : Integer_
+
+### Returns
+
+Integer
+
+
+
+## resolution
+
+> Field [SetSplineResolution](/docs/nodes/SetSplineResolution.md)
+  
+Blender menu : **curve/set_spline_resolution**<br>
+<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
 
 
 
@@ -125,6 +162,58 @@ Blender menu : **curve/endpoint_selection**<br>
 Float
 
 
+
+## handle_positions
+
+> Field [CurveHandlePositions](/docs/nodes/CurveHandlePositions.md)
+  
+Blender menu : **curve/curve_handle_position**<br>
+<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
+
+  Method
+
+### Arguments
+
+- relative : Boolean
+
+### Returns
+
+Node with two sockets : left and right
+
+
+
+## set_handle_positions
+
+> Field [SetHandlePositions](/docs/nodes/SetHandlePositions.md)
+  
+Blender menu : **curve/set_handle_positions**<br>
+<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
+
+  Methodes set_left_handle_positions and set_right_handle_positions are available
+  
+  
+
+## set_left_handle_positions
+
+> Field [SetHandlePositions](/docs/nodes/SetHandlePositions.md)
+  
+Blender menu : **curve/set_handle_positions**<br>
+<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
+
+  Methodes set_left_handle_positions and set_right_handle_positions are available
+  
+  
+
+## set_right_handle_positions
+
+> Field [SetHandlePositions](/docs/nodes/SetHandlePositions.md)
+  
+Blender menu : **curve/set_handle_positions**<br>
+<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
+
+  Methodes set_left_handle_positions and set_right_handle_positions are available
+  
+  
 
 ## handle_type_selection
 
@@ -317,164 +406,5 @@ Blender menu : **curve/handle_type_selection**<br>
   
   Returns
     Boolean
-    
-    
-
-## cyclic
-
-> Field [IsSplineCyclic](/docs/nodes/IsSplineCyclic.md)
-  
-Blender menu : **curve/is_spline_cyclic**<br>
-<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
-
-  Property
-  
-  Returns
-    Boolean
-    
-    
-
-## length_point_count
-
-> Field [SplineLength](/docs/nodes/SplineLength.md)
-  
-Blender menu : **curve/spline_length**<br>
-<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
-
-  Property
-  
-  Sockets can be access individually via:
-  
-  - [length](#length)
-  - [point_count](#point_count)
-
-### Returns
-
-Node with 2 output sockets:
-- length
-- point_count
-  
-  
-
-## length
-
-> Field [SplineLength](/docs/nodes/SplineLength.md)
-  
-Blender menu : **curve/spline_length**<br>
-<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
-
-  Property
-  
-  Returns the socket **length** of method [length_point_count(#length_point_count)]
-
-### Returns
-
-Float
-
-
-
-## point_count
-
-> Field [SplineLength](/docs/nodes/SplineLength.md)
-  
-Blender menu : **curve/spline_length**<br>
-<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
-
-  Property
-  
-  Returns the socket **point_count** of method [length_point_count(#length_point_count)]
-
-### Returns
-
-Integer
-
-
-
-## parameter
-
-> Field [SplineParameter](/docs/nodes/SplineParameter.md)
-  
-Blender menu : **curve/spline_parameter**<br>
-<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
-
-  Property
-  
-  Sockets can be access individually via:
-  
-  - [factor](#factor)
-  - [parameter_length](#parameter_length)
-  - [parameter_index](#parameter_index)
-
-### Returns
-
-Node with 3 output sockets:
-- factor
-- length
-- index
-  
-  
-
-## factor
-
-> Field [SplineParameter](/docs/nodes/SplineParameter.md)
-  
-Blender menu : **curve/spline_parameter**<br>
-<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
-
-  Property
-  
-  Returns the socket **factor** of method [parameter(#parameter)]
-
-### Returns
-
-Float
-
-
-
-## parameter_length
-
-> Field [SplineParameter](/docs/nodes/SplineParameter.md)
-  
-Blender menu : **curve/spline_parameter**<br>
-<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
-
-  Property
-  
-  Returns the socket **length** of method [parameter(#parameter)]
-
-### Returns
-
-Float
-
-
-
-## parameter_index
-
-> Field [SplineParameter](/docs/nodes/SplineParameter.md)
-  
-Blender menu : **curve/spline_parameter**<br>
-<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
-
-  Property
-  
-  Returns the socket **index** of method [parameter(#parameter)]
-
-### Returns
-
-Integer
-
-
-
-## resolution
-
-> Field [SplineResolution](/docs/nodes/SplineResolution.md)
-  
-Blender menu : **curve/spline_resolution**<br>
-<sub>go to [top](#class-curvedomain) [index](/docs/index.md)</sub>
-
-  Property
-  
-  Returns
-    Integer
     
     

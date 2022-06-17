@@ -9,6 +9,8 @@ Created on Wed Jun 15 08:20:40 2022
 from geonodes.core.node import Socket
 from geonodes.nodes import nodes
 from geonodes.nodes.nodes import create_node
+import geonodes.core.field as field
+
 
 import bpy
 
@@ -54,192 +56,158 @@ logger = logging.getLogger('geonodes')
 # ```
 #
 
-from geonodes.core.field import Location
+class Domain:
+    
+    def __init__(self, data_socket, domain, selection=None):
 
-class Domain(Socket):
-    
-    def __init__(self, data_socket, domain):
-        super().__init__(data_socket, data_socket.node)
-        if domain is None:
-            raise RuntimeError(f"{type(self)}: init domain is None!")
-        self.domain = domain
-        self.fields = {}
+        self.data_socket = data_socket
+        self.domain      = domain
+        self.selection   = selection
+        self.init_cache()
         
-        self.location_ = None
+    def init_cache(self):
+        self.ID_       = None
+        self.index_    = None
+        self.normal_   = None
+        self.position_ = None
+        self.radius_   = None
         
-    @property
-    def location(self):
-        if self.location_ is None:
-            self.location_ = Location(self)
-        return self.location_.node_socket
-    
-    @location.setter
-    def location(self, value):
-        self.location.set_value(value)
+        self.named_fields = {}
         
-    def create_field_node(self, bl_idname, **kwargs):
-        """ > Create a **geonodes** from a bl_idname
+    def select(self, selection):
+        return type(self)(self.data_socket, selection=selection)
         
-        If kwargs is an empty dict, the node is put in cache in the _fields_ dict,
-        otherwise it is returned directly.
+    # ----------------------------------------------------------------------------------------------------
+    # > Named field
+    #
+    # Exposed methods are get_named_attribute and set_named_attribute to be closed to the name of the nodes
+    # These methods use the named_field method (not named named_attribute to avoid misusing).
+    # 
+    # named_field creates an instance of NamedField and store it in a dedciated dictionnary
+    #
+    # Raise an error if different data types are used for the same name
         
-        Attributes
-        ----------
-            - bl_idname : str
-                A valid node bl_idname
-            - kwargs : dict
-                Arguments to pass to initialize the node
+    def named_field(self, name, data_type):
+
+        nfield = self.named_fields.get(name)
+
+        if nfield is None:
+            nfield = field.NamedField(self, name, data_type=data_type)
+            self.named_fields[name] = nfield
+            return nfield
+        
+        if data_type is not None:
+            if nfield.data_type is None:
+                nfield.data_type = data_type
+
+            elif nfield.data_type != data_type:
+                raise RuntimeError(f"The named attribute '{name}' is defined with two different data types: '{nfield.data_type}' (first) and '{data_type}' (second).")
                 
-        Returns
-        -------
-            Node, the created node
-        """
-        
-        cache = len(kwargs) == 0
-        
-        node = self.fields.get(bl_idname) if cache else None
+        return nfield
 
-        if node is None:
-            node = create_node(bl_idname, **kwargs)
-            node.as_attribute(self.bsocket, domain=self.domain)
-            if cache:
-                self.fields[bl_idname] = node
-        return node
+    # ----------------------------------------------------------------------------------------------------
+    # > Get a named attribute socket
+    #
+    # Make use named_field method
     
-    # ---------------------------------------------------------------------------
-    # Input menu
+    def get_named_attribute(self, name, data_type=None):
+        return self.named_field(name, data_type).node_socket
+        
+    # ----------------------------------------------------------------------------------------------------
+    # > Set a named attribute socket
+    #
+    # Make use named_field method
+    #
+    # If data_type is None, the data_type is infered from the type of the value
+    
+    def set_named_attribute(self, name, value, data_type=None):
+        self.named_field(name, data_type).set_value(value)
+
+    def get_named_boolean(self, name):
+        return self.get_named_attribute(name, data_type='BOOLEAN')
+
+    def get_named_integer(self, name):
+        return self.get_named_attribute(name, data_type='INT')
+        
+    def get_named_float(self, name):
+        return self.get_named_attribute(name, data_type='FLOAT')
+
+    def get_named_vector(self, name):
+        return self.get_named_attribute(name, data_type='FLOAT_VECTOR')
+        
+    def get_named_color(self, name):
+        return self.get_named_attribute(name, data_type='FLOAT_COLOR')
+        
+    # NOT SUPPORTED YET
+    #def get_named_byte_color(self, name):
+    #    return self.get_named_attribute(name, data_type='BYTE_COLOR')
+    
+    
+    def set_named_boolean(self, name, value):
+        self.set_named_attribute(name, value, data_type='BOOLEAN')
+
+    def set_named_integer(self, name, value):
+        self.set_named_attribute(name, value, data_type='INT')
+        
+    def set_named_float(self, name, value):
+        self.set_named_attribute(name, value, data_type='FLOAT')
+
+    def set_named_vector(self, name, value):
+        self.set_named_attribute(name, value, data_type='FLOAT_VECTOR')
+        
+    def set_named_color(self, name, value):
+        self.set_named_attribute(name, value, data_type='FLOAT_COLOR')
+        
+    def set_named_byte_color(self, name, value):
+        self.set_named_attribute(name, value, data_type='BYTE_COLOR')
+        
+    # ----------------------------------------------------------------------------------------------------
         
     @property
     def ID(self):
-        """ <field GeometryNodeInputID>
-        
-        Property
-        
-        Returns
-        -------
-            Integer
-        """
-        return self.create_field_node('GeometryNodeInputID').ID
-        
+        if self.ID_ is None:
+            self.ID_ = field.ID(self)
+        return self.ID_.node_socket
+    
     @property
     def index(self):
-        """ <field GeometryNodeInputIndex>
+        if self.index_ is None:
+            self.index_ = field.Index(self)
+        return self.index_.node_socket
         
-        Property
-        
-        Returns
-        -------
-            Integer
-        """
-        return self.create_field_node('GeometryNodeInputIndex').index
-
     @property
     def normal(self):
-        """ <field GeometryNodeInputNormal>
-        
-        Property
-        
-        Returns
-        -------
-            Vector
-        """
-        return self.create_field_node('GeometryNodeInputNormal').normal
+        if self.normal_ is None:
+            self.normal_ = field.Normal(self)
+        return self.normal_.node_socket
     
     @property
     def position(self):
-        """ <field GeometryNodeInputPosition>
-        
-        Property
-        
-        Returns
-        -------
-            Vector
-        """
-        return self.create_field_node('GeometryNodeInputPosition').position
+        if self.position_ is None:
+            self.position_ = field.Position(self)
+        return self.position_.node_socket
     
+    @position.setter
+    def position(self, value):
+        if self.position_ is None:
+            self.position_ = Location(self)
+        self.position_.set_value(value)
+        
     @property
     def radius(self):
-        """ <field GeometryNodeInputRadius>
-        
-        Property
-        
-        Returns
-        -------
-            Float
-        """
-        return self.create_field_node('GeometryNodeInputRadius').radius
+        if self.radius_ is None:
+            self.radius_ = field.Radius(self)
+        return self.radius_.node_socket
     
-    def named_attribute(self, name=None, data_type='FLOAT'):
-        """ <field GeometryNodeInputNamedAttribute>
+    @radius.setter
+    def radius(self, value):
+        if self.radius_ is None:
+            self.radius_ = field.Radius(self)
+        self.radius_.set_value(value)
         
-        This method is called by the following methods:
-            
-        - [named_float](#named_float)
-        - [named_integer](#named_integer)
-        - [named_vector](#named_vector)
-        - [named_color](#named_color)
-        - [named_boolean](#named_boolean)
         
-        Returns
-        -------
-            Linked to data_type
-        """
-        return self.create_field_node('GeometryNodeInputNamedAttribute', name=name).attribute
-    
-    def named_float(self, name):
-        """ <field GeometryNodeInputNamedAttribute>
-        
-        Call [named_attribute](#named_attribute) with data_type = 'FLOAT'
-                               
-        Returns
-        -------
-            Float
-        """
-        return self.named_attribute(name, data_type='FLOAT')
-    
-    def named_integer(self, name):
-        """ <field GeometryNodeInputNamedAttribute>
-        
-        Call [named_attribute](#named_attribute) with data_type = 'INT'
-        """
-        return self.named_attribute(name, data_type='INT')
-    
-    def named_vector(self, name):
-        """ <field GeometryNodeInputNamedAttribute>
-        
-        Call [named_attribute](#named_attribute) with data_type = 'FLOAT_VECTOR'
-                               
-        Returns
-        -------
-            Vector
-        """
-        return self.named_attribute(name, data_type='FLOAT_VECTOR')
-    
-    def named_color(self, name):
-        """ <field GeometryNodeInputNamedAttribute>
-        
-        Call [named_attribute](#named_attribute) with data_type = 'FLOAT_COLOR'
-                               
-        Returns
-        -------
-            Color
-        """
-        return self.named_attribute(name, data_type='FLOAT_COLOR')
-    
-    def named_boolean(self, name):
-        """ <field GeometryNodeInputNamedAttribute>
-        
-        Call [named_attribute](#named_attribute) with data_type = 'BOOLEAN'
-                               
-        Returns
-        -------
-            Boolean
-        """
-        return self.named_attribute(name, data_type='BOOLEAN')
-        
-
-# ---------------------------------------------------------------------------
-# > Field domain POINT
+# =============================================================================================================================
+# Domain Point
 #
 # Inherits from [Domain](/docs/core/domain.MD)
 #
@@ -249,53 +217,26 @@ class PointDomain(Domain):
     
     def __init__(self, data_socket):
         super().__init__(data_socket, domain='POINT')
-
-    @property
-    def neighbors(self):
-        """ <field GeometryNodeInputMeshVertexNeighbors>
         
-        Property
-
-        Individual sockets can be accessed via properties:
-            
-        - [neighbors_vertices](#neighbors_vertices)
-        - [neighbors_faces](#neighbors_faces)
+    def init_cache(self):
+        super().init_cache()
         
-        Returns
-        -------
-            Node with two sockets:
-            - vertex_count
-            - face_count
-        """
-        return self.create_field_node('GeometryNodeInputMeshVertexNeighbors')
-    
+        self.neighbors_ = None
+        
     @property
     def neighbors_vertices(self):
-        """ <field GeometryNodeInputMeshVertexNeighbors>
+        if self.neighbors_ is None:
+            self.neighbors_ = field.Neighbors(self)
+        return self.neighbors_.input_node.get_datasocket(0)
         
-        Property
-        
-        Return the socket **vertex_count** of property [neighbors](#neighbors)
-        
-        Returns
-        -------
-            Integer
-        """
-        return self.neighbors.vertex_count
-    
     @property
     def neighbors_faces(self):
-        """ <field GeometryNodeInputMeshVertexNeighbors>
-        
-        Property
-        
-        Return the socket **face_count** of property [neighbors](#neighbors)
-        
-        Returns
-        -------
-            Integer
-        """
-        return self.neighbors.face_count
+        if self.neighbors_ is None:
+            self.neighbors_ = field.Neighbors(self)
+        return self.neighbors_.input_node.get_datasocket(1)
+    
+    # ====================================================================================================
+    # Functions
     
     def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, node_label = None, node_color = None):
         """ <method GeometryNodeExtrudeMesh>
@@ -310,8 +251,6 @@ class PointDomain(Domain):
         
         return self.data_socket.extrude(selection=selection, offset=offset, offset_scale=offset_scale, individual=individual,
                         mode='VERTICES', node_label=node_label, node_color=node_color)
-                            
-    
     
 # ---------------------------------------------------------------------------
 # > Field domain FACE
@@ -322,8 +261,29 @@ class PointDomain(Domain):
 
 class FaceDomain(Domain):
 
-    def __init__(self, data_socket):
-        super().__init__(data_socket, domain='FACE')
+    def __init__(self, data_socket, selection=None):
+        super().__init__(data_socket, domain='FACE', selection=selection)
+        
+    def init_cache(self):
+        super().init_cache()
+
+        self.neighbors_      = None
+        self.area_           = None
+        self.shade_smooth_   = None
+        self.island_         = None
+        self.material_index_ = None
+        
+    @property
+    def neighbors_vertices(self):
+        if self.neighbors_ is None:
+            self.neighbors_ = field.Neighbors(self)
+        return self.neighbors_.input_node.get_datasocket(0)
+        
+    @property
+    def neighbors_faces(self):
+        if self.neighbors_ is None:
+            self.neighbors_ = field.Neighbors(self)
+        return self.neighbors_.input_node.get_datasocket(1)
         
     @property
     def area(self):
@@ -335,142 +295,11 @@ class FaceDomain(Domain):
         -------
             Float
         """
-        return self.create_field_node('GeometryNodeInputMeshFaceArea').area
+        if self.area_ is None:
+            self.area_ = field.Area(self)
+        return self.area_.node_socket
     
-    @property
-    def neighbors(self):
-        """ <field GeometryNodeInputMeshFaceNeighbors>
-        
-        Property
-
-        Individual sockets can be accessed via properties:
-            
-        - [neighbors_vertices](#neighbors_vertices)
-        - [neighbors_faces](#neighbors_faces)
-        
-        Returns
-        -------
-            Node with two sockets:
-                - vertex_count
-                - face_count
-        """
-        return self.create_field_node('GeometryNodeInputMeshFaceNeighbors')
-    
-    @property
-    def neighbors_vertices(self):
-        """ <field GeometryNodeInputMeshFaceNeighbors>
-        
-        Property
-        
-        Return the socket **vertex_count** of property [neighbors](#neighbors)
-        
-        Returns
-        -------
-            Integer
-        """
-        return self.neighbors.vertex_count
-    
-    @property
-    def neighbors_faces(self):
-        """ <field GeometryNodeInputMeshFaceNeighbors>
-        
-        Property
-        
-        Return the socket **face_count** of property [neighbors](#neighbors)
-        
-        Returns
-        -------
-            Integer
-        """
-        return self.neighbors.face_count
-    
-    @property
-    def is_shade_smooth(self):
-        """ <field GeometryNodeInputShadeSmooth>
-        
-        Property
-        
-        Returns
-        -------
-            Float
-        """
-        return self.create_field_node('GeometryNodeInputShadeSmooth').smooth
-    
-    @property
-    def island(self):
-        """ <field GeometryNodeInputMeshIsland>
-        
-        Property
-
-        Individual sockets can be accessed via properties:
-            
-        - [neighbors_vertices](#neighbors_vertices)
-        - [neighbors_faces](#neighbors_faces)
-        
-        Returns
-        -------
-            Node with two sockets:
-                - vertex_count
-                - face_count
-        """
-        return self.create_field_node('GeometryNodeInputMeshIsland')
-    
-    @property
-    def island_vertices(self):
-        """ <field GeometryNodeInputMeshIsland>
-        
-        Property
-        
-        Return the socket **vertex_count** of property [island](#island)
-        
-        Returns
-        -------
-            Integer
-        """
-        return self.island.vertex_count
-    
-    @property
-    def island_faces(self):
-        """ <field GeometryNodeInputMeshIsland>
-        
-        Property
-        
-        Return the socket **face_count** of property [island](#island)
-        
-        Returns
-        -------
-            Integer
-        """
-        return self.island.face_count
-
-    @property
-    def material_index(self):
-        """ <field GeometryNodeInputMaterialIndex>
-        
-        Property
-        
-        Returns
-        -------
-            Integer
-        """
-        return self.create_field_node('GeometryNodeInputMaterialIndex').material_index
-    
-    def material_selection(self, material=None):
-        """ <field GeometryNodeMaterialSelection>
-        
-        Method
-        
-        Arguments
-        ---------
-            - material : Material
-        
-        Returns
-        -------
-            Boolean
-        """
-        return self.create_field_node('GeometryNodeMaterialSelection', material=material).selection
-    
-    def face_is_planar(self, threshold=None):
+    def is_planar(self, threshold=None):
         """ <field GeometryNodeInputMeshFaceIsPlanar>
         
         Method
@@ -483,7 +312,77 @@ class FaceDomain(Domain):
         -------
             Boolean
         """
-        return self.create_field_node('GeometryNodeInputMeshFaceIsPlanar', threshold=threshold).planar
+        
+        return field.IsPlanar(threshold=threshold).node_socket
+
+    @property
+    def shade_smooth(self):
+        if self.shade_smooth_ is None:
+            self.shade_smooth_ = field.ShadeSmooth(self)
+        return self.shade_smooth_.input_node.node_socket
+    
+    @shade_smooth.setter
+    def shade_smooth(self, value):
+        if self.shade_smooth_ is None:
+            self.shade_smooth_ = field.ShadeSmooth(self)
+        self.shade_smooth_.set_value(value)
+        
+    @property
+    def island_index(self):
+        if self.island_ is None:
+            self.island_ = field.Island(self)
+        self.shade_smooth_.get_datasocket(0)
+        
+    @property
+    def island_count(self):
+        if self.island_ is None:
+            self.island_ = field.Island(self)
+        self.shade_smooth_.get_datasocket(1)
+        
+    @property
+    def material_index(self):
+        """ <field GeometryNodeInputMaterialIndex>
+        
+        Property getter
+        
+        Returns
+        -------
+            Integer
+        """
+        if self.material_index_ is None:
+            self.material_index_ = field.MaterialIndex(self)
+        return self.material_index_.node_socket
+    
+    @material_index.setter
+    def material_index(self, value):
+        """ <field GeometryNodeSetMaterialIndex>
+        
+        Property setter
+        """
+        if self.material_index_ is None:
+            self.material_index_ = field.MaterialIndex(self)
+        self.material_index_.set_value(value)
+        
+    def set_material_index(self, value):
+        field.MaterialIndex(self).set_value(value)
+    
+    def material_selection(self, material=None):
+        """ <field GeometryNodeMaterialSelection>
+        
+        Method
+        
+        Arguments
+        ---------
+            - material : Material or str (material name)
+        
+        Returns
+        -------
+            Boolean
+        """
+        return field.MaterialSelection(self, material=material).node_socket
+    
+    # ====================================================================================================
+    # Methods
     
     def distribute_points(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None, node_color=None):
         """ <method GeometryNodeDistributePointsOnFaces>
@@ -557,8 +456,46 @@ class FaceDomain(Domain):
         
 class EdgeDomain(Domain):
     
-    def __init__(self, data_socket):
-        super().__init__(data_socket, domain='EDGE')
+    def __init__(self, data_socket, selection=None):
+        super().__init__(data_socket, domain='EDGE', selection=selection)
+        
+    def init_cache(self):
+        super().init_cache()
+        
+        self.neighbors_ = None
+        self.angle_     = None
+        self.vertices_  = None
+        
+    @property
+    def neighbors_faces(self):
+        """ <field GeometryNodeInputMeshEdgeNeighbors>
+        
+        Property
+        
+        Returns
+        -------
+            Integer
+        """
+        
+        if self.neighbors_ is None:
+            self.neighbors_ = field.Neighbors(self)
+        return self.neighbors_.input_node.node_socket
+
+    @property
+    def unsigned_angle(self):
+        """ <field GeometryNodeInputMeshEdgeAngle>
+        
+        Property
+
+        To get the signed angle, used the property [angle](#angle).
+        
+        Returns
+        -------
+            Float
+        """
+        if self.angle_ is None:
+            self.angle_ = field.Angle(self)
+        return self.angle_.get_datasocket(0)
 
     @property
     def angle(self):
@@ -572,36 +509,33 @@ class EdgeDomain(Domain):
         -------
             Float
         """
-        return self.create_field_node('GeometryNodeInputMeshEdgeAngle').signed_angle
+        if self.angle_ is None:
+            self.angle_ = field.Angle(self)
+        return self.angle_.get_datasocket(1)
     
     @property
-    def unsigned_angle(self):
-        """ <field GeometryNodeInputMeshEdgeAngle>
+    def vertices_index_1(self):
+        """ <field GeometryNodeInputMeshEdgeVertices>
         
         Property
 
-        To get the signed angle, used the property [angle](#angle).
-        
-        Returns
-        -------
-            Float
-        """
-        return self.create_field_node('GeometryNodeInputMeshEdgeAngle').unsigned_angle
-    
-    @property
-    def neighbors(self):
-        """ <field GeometryNodeInputMeshEdgeNeighbors>
-        
-        Property
+        Sockets can be access individually via:
+            
+        - [vertices_index_1](#vertices_index_1)
+        - [vertices_index_2](#vertices_index_2)
+        - [vertices_position_1](#vertices_position_1)
+        - [vertices_position_2](#vertices_position_2)
         
         Returns
         -------
             Integer
         """
-        return self.create_field_node('GeometryNodeInputMeshEdgeNeighbors').face_count
+        if self.vertices_ is None:
+            self.vertices_ = field.EdgeVertices(self)
+        self.vertices.get_datasocket(0)
     
     @property
-    def vertices(self):
+    def vertices_index_2(self):
         """ <field GeometryNodeInputMeshEdgeVertices>
         
         Property
@@ -612,41 +546,15 @@ class EdgeDomain(Domain):
         - [vertices_index_2](#vertices_index_2)
         - [vertices_position_1](#vertices_position_1)
         - [vertices_position_2](#vertices_position_2)
-                                 
         
-        Returns
-        -------
-            Node with 4 output sockets:
-                - vertex_index_1
-                - vertex_index_2
-                - position_1
-                - position_2
-        """
-        return self.create_field_node('GeometryNodeInputMeshEdgeVertices')
-    
-    @property
-    def vertices_index_1(self):
-        """ <field GeometryNodeInputMeshEdgeVertices>
-        
-        Property
         
         Returns
         -------
             Integer
         """
-        return self.vertices.vertex_index_1
-    
-    @property
-    def vertices_index_2(self):
-        """ <field GeometryNodeInputMeshEdgeVertices>
-        
-        Property
-        
-        Returns
-        -------
-            Integer
-        """
-        return self.vertices.vertex_index_2
+        if self.vertices_ is None:
+            self.vertices_ = field.EdgeVertices(self)
+        self.vertices.get_datasocket(1)
     
     @property
     def vertices_position_1(self):
@@ -654,11 +562,21 @@ class EdgeDomain(Domain):
         
         Property
         
+        Sockets can be access individually via:
+            
+        - [vertices_index_1](#vertices_index_1)
+        - [vertices_index_2](#vertices_index_2)
+        - [vertices_position_1](#vertices_position_1)
+        - [vertices_position_2](#vertices_position_2)
+        
+        
         Returns
         -------
             Integer
         """
-        return self.vertices.position_1
+        if self.vertices_ is None:
+            self.vertices_ = field.EdgeVertices(self)
+        self.vertices.get_datasocket(2)
     
     @property
     def vertices_position_2(self):
@@ -666,11 +584,25 @@ class EdgeDomain(Domain):
         
         Property
         
+        Sockets can be access individually via:
+            
+        - [vertices_index_1](#vertices_index_1)
+        - [vertices_index_2](#vertices_index_2)
+        - [vertices_position_1](#vertices_position_1)
+        - [vertices_position_2](#vertices_position_2)
+        
+        
         Returns
         -------
             Integer
         """
+        if self.vertices_ is None:
+            self.vertices_ = field.EdgeVertices(self)
+        self.vertices.get_datasocket(2)
         return self.vertices.position_2
+    
+    # ====================================================================================================
+    # Methods
     
     def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, node_label = None, node_color = None):
         """ <method GeometryNodeExtrudeMesh>
@@ -699,8 +631,8 @@ class EdgeDomain(Domain):
 
 class CornerDomain(Domain):
     
-    def __init__(self, data_socket):
-        super().__init__(data_socket, domain='CORNER')
+    def __init__(self, data_socket, selection=None):
+        super().__init__(data_socket, domain='CORNER', selection=selection)
 
         
 # ---------------------------------------------------------------------------
@@ -712,78 +644,19 @@ class CornerDomain(Domain):
 
 class CurveDomain(Domain):
     
-    def __init__(self, data_socket):
-        super().__init__(data_socket, domain='CURVE')
-
+    def __init__(self, data_socket, selection=None):
+        super().__init__(data_socket, domain='CURVE', selection=selection)
         
-    def handle_positions(self, relative=None):
-        """ <field GeometryNodeInputCurveHandlePositions>
+    def init_cache(self):
+        super().init_cache()
         
-        Method
+        self.tilt_       = None
+        self.cylic_      = None
+        self.tangent_    = None
+        self.length_     = None
+        self.parameter_  = None
+        self.resolution_ = None
         
-        Sockets can be access individually via:
-            
-        - [handle_positions_left](#handle_positions_left)
-        - [handle_positions_right](#handle_positions_right)
-                                       
-        Arguments
-        ---------
-            - relative : Boolean
-        
-        Returns
-        -------
-            Node with 2 output sockets:
-                - left
-                - right
-        """                
-        return self.create_field_node('GeometryNodeInputCurveHandlePositions', relative=relative)
-    
-    def handle_positions_left(self, relative=None):
-        """ <field GeometryNodeInputCurveHandlePositions>
-        
-        Method
-        
-        Returns the socket **left** of the methode [handle_positions(#handle_positions)]
-                                       
-        Arguments
-        ---------
-            - relative : Boolean
-        
-        Returns
-        -------
-            Vector
-        """                
-        return self.handle_positions(relative=relative).left
-    
-    def handle_positions_right(self, relative=None):
-        """ <field GeometryNodeInputCurveHandlePositions>
-        
-        Method
-        
-        Returns the socket **right** of the methode [handle_positions(#handle_positions)]
-                                       
-        Arguments
-        ---------
-            - relative : Boolean
-        
-        Returns
-        -------
-            Vector
-        """                
-        return self.handle_positions(relative=relative).right
-    
-    @property
-    def tangent(self):
-        """ <field GeometryNodeInputTangent>
-        
-        Property
-        
-        Returns
-        -------
-            Vector
-        """
-        return self.create_field_node('GeometryNodeInputTangent').tangent
-    
     @property
     def tilt(self):
         """ <field GeometryNodeInputCurveTilt>
@@ -794,7 +667,162 @@ class CurveDomain(Domain):
         -------
             Float
         """
-        return self.create_field_node('GeometryNodeInputCurveTilt').tilt
+        if self.tilt_ is None:
+            self.tilt_ = field.Tilt(self)
+        return self.tilt_.node_socket
+    
+    @tilt.setter
+    def tilt(self, value):
+        """ <field GeometryNodeSetCurveTilt>
+        """
+        if self.tilt_ is None:
+            self.tilt_ = field.Tilt(self)
+        self.tilt_.set_value(value)
+    
+    @property
+    def cyclic(self):
+        """ <field GeometryNodeInputSplineCyclic>
+        
+        Property
+        
+        Returns
+            Boolean
+        """
+        if self.cylic_ is None:
+            self.cylic_ = field.Tilt(self)
+        return self.cylic_.input_node.node_socket
+    
+    @cyclic.setter
+    def cyclic(self, value):
+        """ <field GeometryNodeSetSplineCyclic>
+        """
+        if self.cylic_ is None:
+            self.cylic_ = field.Tilt(self)
+        self.cylic_.set_value(value)
+        
+    @property
+    def tangent(self):
+        """ <field GeometryNodeInputTangent>
+        
+        Property
+        
+        Returns
+        -------
+            Vector
+        """
+        if self.tangent_ is None:
+            self.tangent_ = field.CurveTangent(self)
+        return self.tangent_.node_socket
+    
+    @property
+    def length(self):
+        """ <field GeometryNodeSplineLength>
+        
+        Property
+        
+        - **length: Float**
+        - _point_count: Integer_
+        
+        Returns
+        -------
+            Float
+        """                
+        if self.length_ is None:
+            self.length_ = field.SplineLength(self)
+        return self.length_.get_datasocket(0)
+    
+    @property
+    def point_count(self):
+        """ <field GeometryNodeSplineLength>
+        
+        Property
+        
+        - _length : Float_
+        - **point_count : Integer**
+                                       
+        Returns
+        -------
+            Integer
+        """                
+        if self.length_ is None:
+            self.length_ = field.SplineLength(self)
+        return self.length_.get_datasocket(1)
+    
+    @property
+    def parameter_factor(self):
+        """ <field GeometryNodeSplineParameter>
+        
+        Property
+        
+        - **factor : Float**
+        - _length  : Float_
+        - _index : Integer_
+                                       
+        Returns
+        -------
+            Float
+        """                
+        if self.parameter_ is None:
+            self.parameter_ = field.SplineParameter(self)
+        return self.parameter_.get_datasocket(0)
+        
+    @property
+    def parameter_length(self):
+        """ <field GeometryNodeSplineParameter>
+        
+        Property
+        
+        - _factor : Float_
+        - **length  : Float**
+        - _index : Integer_
+                                       
+        Returns
+        -------
+            Float
+        """                
+        if self.parameter_ is None:
+            self.parameter_ = field.SplineParameter(self)
+        return self.parameter_.get_datasocket(1)
+        
+    @property
+    def parameter_index(self):
+        """ <field GeometryNodeSplineParameter>
+        
+        Property
+        
+        - _factor : Float_
+        - _length  : Float**
+        - **index : Integer_
+                                       
+        Returns
+        -------
+            Integer
+        """                
+        if self.parameter_ is None:
+            self.parameter_ = field.SplineParameter(self)
+        return self.parameter_.get_datasocket(2)
+    
+    @property
+    def resolution(self):
+        """ <field GeometryNodeInputSplineResolution>
+        
+        Property
+        
+        Returns
+            Integer
+        """
+        if self.resolution_ is None:
+            self.resolution_ = field.SplineParameter(self)
+        return self.resolution_.node_socket
+    
+    @resolution.setter
+    def resolution(self, value):
+        """ <field GeometryNodeSetSplineResolution>
+        """
+        if self.resolution_ is None:
+            self.resolution_ = field.SplineParameter(self)
+        return self.resolution_.set_value(value)
+    
     
     def endpoint_selection(self, start_size=None, end_size=None):
         """ <field GeometryNodeCurveEndpointSelection>
@@ -810,9 +838,45 @@ class CurveDomain(Domain):
         -------
             Float
         """
-        return self.create_field_node('GeometryNodeCurveEndpointSelection', start_size=start_size, end_size=end_size).selection
+        return field.EndpointSelection(self, start_size=start_size, end_size=end_size).input_node.node_socket
+        
+    def handle_positions(self, relative=None):
+        """ <field GeometryNodeInputCurveHandlePositions>
+        
+        Method
+        
+        Arguments
+        ---------
+            - relative : Boolean
+        
+        Returns
+        -------
+            Node with two sockets : left and right
+        """
+        return field.HandlePositions(relative=relative).input_node
     
-    def handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+    def set_handle_positions(self, position=None, offset=None, mode={'LEFT', 'RIGHT'}):
+        """ <field GeometryNodeSetCurveHandlePositions>
+        
+        Methodes set_left_handle_positions and set_right_handle_positions are available
+        """
+        return field.HandlePositions(relative=relative).set_position(position=position, offset=offset, mode=mode)
+        
+    def set_left_handle_positions(self, position=None, offset=None):
+        """ <field GeometryNodeSetCurveHandlePositions>
+        
+        Methodes set_left_handle_positions and set_right_handle_positions are available
+        """
+        self.set_handle_position(position=position, offset=offset, mode='LEFT')
+        
+    def set_right_handle_positions(self, position=None, offset=None):
+        """ <field GeometryNodeSetCurveHandlePositions>
+        
+        Methodes set_left_handle_positions and set_right_handle_positions are available
+        """
+        self.set_handle_position(position=position, offset=offset, mode='RIGHT')
+        
+    def handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ <field GeometryNodeCurveHandleTypeSelection>
         
         Method
@@ -840,7 +904,7 @@ class CurveDomain(Domain):
         -------
             Boolean
         """
-        return self.create_field_node('GeometryNodeCurveHandleTypeSelection', handle_type=handle_type, mode=mode).selection
+        return field.HandleTypeSelection(handle_type=handle_type, mode=mode).node_socket
     
     def left_handle_selection(self, handle_type='AUTO'):
         """ <field GeometryNodeCurveHandleTypeSelection>
@@ -970,138 +1034,7 @@ class CurveDomain(Domain):
         """
         return self.left_handle_selection(handle_type='ALIGN')
     
-    @property
-    def cyclic(self):
-        """ <field GeometryNodeInputSplineCyclic>
-        
-        Property
-        
-        Returns
-            Boolean
-        """
-        return self.create_field_node('GeometryNodeInputSplineCyclic').cyclic
-    
-    @property
-    def length_point_count(self):
-        """ <field GeometryNodeSplineLength>
-        
-        Property
-        
-        Sockets can be access individually via:
-            
-        - [length](#length)
-        - [point_count](#point_count)
-                                       
-        Returns
-        -------
-            Node with 2 output sockets:
-                - length
-                - point_count
-        """                
-        return self.create_field_node('GeometryNodeSplineLength')
-    
-    @property
-    def length(self):
-        """ <field GeometryNodeSplineLength>
-        
-        Property
-        
-        Returns the socket **length** of method [length_point_count(#length_point_count)]
-                                       
-        Returns
-        -------
-            Float
-        """                
-        return self.length_point_count.length
-    
-    @property
-    def point_count(self):
-        """ <field GeometryNodeSplineLength>
-        
-        Property
-        
-        Returns the socket **point_count** of method [length_point_count(#length_point_count)]
-                                       
-        Returns
-        -------
-            Integer
-        """                
-        return self.length_point_count.point_count
-    
-    @property
-    def parameter(self):
-        """ <field GeometryNodeSplineParameter>
-        
-        Property
-        
-        Sockets can be access individually via:
-            
-        - [factor](#factor)
-        - [parameter_length](#parameter_length)
-        - [parameter_index](#parameter_index)
-                                       
-        Returns
-        -------
-            Node with 3 output sockets:
-                - factor
-                - length
-                - index
-        """                
-        return self.create_field_node('GeometryNodeSplineParameter')
-    
-    @property
-    def factor(self):
-        """ <field GeometryNodeSplineParameter>
-        
-        Property
-        
-        Returns the socket **factor** of method [parameter(#parameter)]
-                                       
-        Returns
-        -------
-            Float
-        """                
-        return self.parameter.factor
-    
-    @property
-    def parameter_length(self):
-        """ <field GeometryNodeSplineParameter>
-        
-        Property
-        
-        Returns the socket **length** of method [parameter(#parameter)]
-                                       
-        Returns
-        -------
-            Float
-        """                
-        return self.parameter.length
-    
-    @property
-    def parameter_index(self):
-        """ <field GeometryNodeSplineParameter>
-        
-        Property
-        
-        Returns the socket **index** of method [parameter(#parameter)]
-                                       
-        Returns
-        -------
-            Integer
-        """                
-        return self.parameter.index
-    
-    @property
-    def resolution(self):
-        """ <field GeometryNodeInputSplineResolution>
-        
-        Property
-        
-        Returns
-            Integer
-        """
-        return self.create_field_node('GeometryNodeInputSplineResolution').resolution
-    
+
 # ---------------------------------------------------------------------------
 # > Field domain INSTANCE
 #
@@ -1111,8 +1044,8 @@ class CurveDomain(Domain):
 
 class InstanceDomain(Domain):
     
-    def __init__(self, data_socket):
-        super().__init__(data_socket, domain='INSTANCE')
+    def __init__(self, data_socket, selection=None):
+        super().__init__(data_socket, domain='INSTANCE', selection=selection)
 
         
 

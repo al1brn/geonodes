@@ -11,7 +11,7 @@ import geonodes as gn
 from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
 from geonodes.core.domains import Domain
-from geonodes import PointDomain, EdgeDomain, FaceDomain, CornerDomain, CurveDomain
+from geonodes import PointDomain, EdgeDomain, FaceDomain, CornerDomain, CurveDomain, InstanceDomain
 
 import logging
 logger = logging.Logger('geonodes')

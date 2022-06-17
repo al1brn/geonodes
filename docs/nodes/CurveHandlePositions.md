@@ -38,6 +38,4 @@ node = nodes.CurveHandlePositions(relative=None, label=None, node_color=None)
   
   
 - [CurveDomain](/docs/CurveDomain.md).[handle_positions](/docs/CurveDomain.md#handle_positions) : Fields
-- [CurveDomain](/docs/CurveDomain.md).[handle_positions_left](/docs/CurveDomain.md#handle_positions_left) : Fields
-- [CurveDomain](/docs/CurveDomain.md).[handle_positions_right](/docs/CurveDomain.md#handle_positions_right) : Fields
   

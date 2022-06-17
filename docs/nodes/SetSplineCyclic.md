@@ -38,5 +38,6 @@ node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None, label=N
 > Data socket classes implementing this node.
   
   
+- [CurveDomain](/docs/CurveDomain.md).[cyclic](/docs/CurveDomain.md#cyclic) : Fields
 - [Spline](/docs/sockets/Spline.md).[set_cyclic](/docs/sockets/Spline.md#set_cyclic) : Method
   

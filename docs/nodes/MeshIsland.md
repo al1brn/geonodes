@@ -27,13 +27,3 @@ node = nodes.MeshIsland(label=None, node_color=None)
 
 - island_index : Integer
 - island_count : Integer
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [FaceDomain](/docs/FaceDomain.md).[island](/docs/FaceDomain.md#island) : Fields
-- [FaceDomain](/docs/FaceDomain.md).[island_faces](/docs/FaceDomain.md#island_faces) : Fields
-- [FaceDomain](/docs/FaceDomain.md).[island_vertices](/docs/FaceDomain.md#island_vertices) : Fields
-  

@@ -27,13 +27,3 @@ node = nodes.FaceNeighbors(label=None, node_color=None)
 
 - vertex_count : Integer
 - face_count : Integer
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [FaceDomain](/docs/FaceDomain.md).[neighbors](/docs/FaceDomain.md#neighbors) : Fields
-- [FaceDomain](/docs/FaceDomain.md).[neighbors_faces](/docs/FaceDomain.md#neighbors_faces) : Fields
-- [FaceDomain](/docs/FaceDomain.md).[neighbors_vertices](/docs/FaceDomain.md#neighbors_vertices) : Fields
-  

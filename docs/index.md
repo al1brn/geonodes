@@ -197,6 +197,7 @@
 - [Class Domain](/docs/Domain.md)
 - [Class EdgeDomain](/docs/EdgeDomain.md)
 - [Class FaceDomain](/docs/FaceDomain.md)
+- [Class InstanceDomain](/docs/InstanceDomain.md)
 - [Class Node](/docs/Node.md)
 - [Class PointDomain](/docs/PointDomain.md)
 - [Class Tree](/docs/Tree.md)

@@ -26,11 +26,3 @@ node = nodes.MaterialIndex(label=None, node_color=None)
 ## Output sockets
 
 - material_index : Integer
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [FaceDomain](/docs/FaceDomain.md).[material_index](/docs/FaceDomain.md#material_index) : Fields
-  

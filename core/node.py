@@ -233,7 +233,7 @@ class Socket:
     # Class name from socket bl_idname
     
     @staticmethod
-    def domain_data_type(socket):
+    def domain_data_type(value):
         """ > Returns the domain to which the socket belongs
         
         The correspondance table is the following:
@@ -252,7 +252,49 @@ class Socket:
           - NodeSocketColor : 'FLOAT_COLOR' 
           - NodeSocketString : 'FLOAT_COLOR'
         """
-        return Socket.SOCKET_IDS[socket.bl_idname][2]
+        
+        class_dt = {
+            'Boolean': 'BOOLEAN',
+            'Integer' : 'INT',
+            'Float'   : 'FLOAT',
+            'Vector'  : 'FLOAT_VECTOR',
+            'Color'   : 'FLOAT_COLOR'
+            }
+        
+        if isinstance(value, str):
+            if value in Socket.SOCKET_IDS:
+                return Socket.SOCKET_IDS[socket.bl_idname][2]
+            
+            elif value in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN'):
+                return value
+            
+            elif value in class_dt:
+                return class_dt[value]
+            
+        else:
+            if hasattr(value, 'bl_idname'):
+                return Socket.SOCKET_IDS[value.bl_idname][2]
+            
+            cname = type(value).__name__
+            if cname in class_dt:
+                return class_dt[cname]
+            
+            if isinstance(value, bool):
+                return 'BOOLEAN'
+            
+            elif isinstance(value, int):
+                return 'INT'
+            
+            elif isinstance(value, float):
+                return 'FLOAT'
+            
+            elif hasattr(value, '__len__'):
+                if len(value) == 3:
+                    return 'FLOAT_VECTOR'
+                elif len(value) == 4:
+                    return 'FLOAT_COLOR'
+        
+        raise RuntimeError(f"Unknown data type code: '{value}'")
     
     # ----------------------------------------------------------------------------------------------------
     # Class name from socket bl_idname
@@ -2444,7 +2486,7 @@ class Viewer(Node):
             else:
                 raise RuntimeError(f"Impossible to connect the socket {socket} to the viewer. Class {class_name} is not viewable.")
                 
-            self.value = value
+            self.value = socket
             
         self.tree.arrange(False)
         
