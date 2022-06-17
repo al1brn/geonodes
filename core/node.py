@@ -6,6 +6,7 @@ Created on Thu May 26 11:15:16 2022
 @author: alain
 """
 
+import sys
 import bpy
 import mathutils
 import itertools
@@ -670,7 +671,7 @@ class DataSocket(Socket):
                 
                 to_vector = False
                 for v in value:
-                    if isinstance(v, DataSocket):
+                    if Socket.is_socket(v):
                         to_vector = True
                         break
                     
@@ -1129,7 +1130,8 @@ class Tree:
     
     @output_geometry.setter
     def output_geometry(self, value):
-        self.group_output.plug(0, value)
+        self.group_output.output_geometry.plug(value)
+        #self.group_output.plug(0, value)
         
     @property
     def og(self):
@@ -1516,6 +1518,59 @@ class Node:
         
         self.is_attribute = False
         
+        # ----- Socket names
+        # Sockets have a unique name
+        # A name can cover several sockets for shared names
+        # These dicts must be intialized by sub classes
+        # They are used by __setattr__ and __getattr__
+
+        self.insockets  = {}
+        self.outsockets = {}
+        
+    # ------------------------------------------------------------------------------------------
+    # Access to the output sockets
+    # We are idiot proof and accept capitalized versions :-)
+    # Output sockets are "write only"
+        
+    def __getattr__(self, name):
+        if name != 'outsockets':
+            if hasattr(self, 'outsockets'):
+                if name.lower() in self.outsockets:
+                    sock_ind = self.outsockets[name.lower()]
+                    if isinstance(sock_ind, int):
+                        return self.DataClass(self.bnode.outputs[sock_ind])
+                    else:
+                        for index in sock_ind:
+                            if self.bnode.outputs[index].enabled:
+                                return self.DataClass(self.bnode.outputs[index])
+                        raise AttributeError(f"Output socket error on node {self}: all socket named '{name}' are disabled")
+                
+        #raise Exception(f"'{type(self).__name__}' object has not attribute '{name}'")
+        
+        raise AttributeError(f"'{type(self).__name__}' object has not attribute '{name}'")
+
+    # ------------------------------------------------------------------------------------------
+    # Access to the input sockets
+    # We are idiot proof and accept capitalized versions :-)
+    # Input sockets are "write only"
+        
+    def __setattr__(self, name, value):
+        if hasattr(self, 'insockets'):
+            if name.lower() in self.insockets:
+                sock_ind = self.insockets[name.lower()]
+                if isinstance(sock_ind, int):
+                    self.plug(sock_ind, value)
+                    return
+                else:
+                    for index in sock_ind:
+                        if self.bnode.inputs[index].enabled:
+                            self.plug(index, value)
+                            return
+                    raise RuntimeError(f"Input socket error on node {self}: all socket named '{name}' are disabled")
+            
+        super().__setattr__(name, value)    
+        
+        
     def __str__(self):
         return f"[{self.get_label()}]"
     
@@ -1538,6 +1593,23 @@ class Node:
     @property
     def bl_idname(self):
         return self.bnode.bl_idname
+    
+    # ------------------------------------------------------------------------------------------
+    # Class method to unitize a list of names
+        
+    @staticmethod
+    def unitize(names):
+        
+        counts = {name: 0 for name in set(names)}
+        unames = []
+        for i, name in enumerate(names):
+            if names.count(name) > 1:
+                unames.append(f"{name}{counts[name]}")
+                counts[name] += 1
+            else:
+                unames.append(name)
+                
+        return unames
     
     # ---------------------------------------------------------------------------
     # Node label
@@ -1599,7 +1671,6 @@ class Node:
                     nodes.append(node)
 
         return nodes
-
     
     # ---------------------------------------------------------------------------
     # Node color
@@ -1701,6 +1772,14 @@ class Node:
         DataSocket.plug_bsocket(self.bnode.inputs[index], *values)
         self.tree.arrange(False)
         
+    # ------------------------------------------------------------------------------------------
+    # Plug all sockets with matching name
+    
+    def plug_node(self, node):
+        for index, iname in enumerate(self.insockets):
+            if iname in node.outsockets:
+                self.plug(index, getattr(node, iname))
+        
     # ====================================================================================================
     # The node is an attribute
     
@@ -1771,6 +1850,8 @@ class Node:
     # ====================================================================================================
     # Node socket classes will be created in generated modules
     
+    """
+    
     @staticmethod
     def DataSocket(socket):
         if socket.bl_idname == 'NodeSocketBool':
@@ -1831,7 +1912,7 @@ class Node:
             return Node.Texture(socket)
         
         raise RuntimeError(f"Unknown bl_idname for socket '{socket.name}': '{socket.bl_idname}'")
-    
+    """
     
     @staticmethod
     def Boolean(socket):
@@ -1930,95 +2011,151 @@ class Node:
         
     
 # =============================================================================================================================
-# Node groups input and output
+# Node groups
+#
+# Node groups are
+# - user groups with inuts and outputs
+# - input group with only outputs
+# - output group with only inputs
+#
+# Since the inputs are outputs these three classes need initializers for the socket names
 
-class GroupIO(Node):
+# ----------------------------------------------------------------------------------------------------
+# Root for node groups
+
+class CustomGroup(Node):
+    """ > Root for the three types of groups
     
-    # --------------------------------------------------------------------------------
-    # Build the input names to avoid duplicates
+    Build the insockets and outsockets dictionaries
+    """
     
-    def update_sock_names(self):
+    def __init__(self, bl_idname, name, label=None, node_color=None):
         
-        if hasattr(self, 'sock_names'):
-            for name in self.sock_names:
-                delattr(self, name)
-    
-        self.sock_names = []
-        for bsocket in self.bsockets:
-            if bsocket.bl_idname != 'NodeSocketVirtual':
-                self.sock_names.append(bsocket.name)
-                
-        def count_name(name):
-            count = 0
-            for bsocket in self.bsockets:
-                if bsocket.name == name:
-                    count += 1
-            return count
-                    
-        def name_order(name, index):
-            count = 0
-            for i, bsocket in enumerate(self.bsockets):
-                if bsocket.name == name:
-                    if i == index:
-                        return count
-                    else:
-                        count += 1
-                        
-        for index in range(len(self.sock_names)):
-            name = self.sock_names[index]
-            if count_name(name) > 1:
-                self.sock_names[index] += str(name_order(name, index))
-                
-        for i, name in enumerate(self.sock_names):
-            setattr(self, name, Node.DataClass(self.bsockets[i]))
-            
-    # --------------------------------------------------------------------------------
-    # Socket index
-    
-    def socket_index(self, name):
-        for i, sock_name in enumerate(self.sock_names):
-            if name == sock_name:
-                return i
-        raise RuntimeError(f"Socket name '{name}' not found in node '{self.label}'. Check homonyms. Available sockets are {self.sock_names}.")
-
-    # --------------------------------------------------------------------------------
-    # Clear
-    
-    def clear(self):
-        bsockets = [bsocket for bsocket in self.bsockets]
+        super().__init__(bl_idname, name, label=label, node_color=node_color)
+        
+        self.build_insockets()
+        self.build_outsockets()
+        
+    @staticmethod
+    def build_unames_dict(bsockets):
+        
+        # snake_case version of the sockets names
+        sc_names = []
         for bsocket in bsockets:
-            self.bsockets.remove(bsocket)    
+            if bsocket.name != "":
+                sc_names.append(CustomGroup.snake_case(bsocket.name))
+        
+        # Unique version (homonyms are suffxed)
+        return {uname: i for i, uname in enumerate(Node.unitize(sc_names))}
+        
+    def build_insockets(self):
+        self.insockets = self.build_unames_dict(self.bnode.inputs)
+        
+    def build_outsockets(self):
+        self.outsockets = self.build_unames_dict(self.bnode.outputs)
+        
+    @staticmethod
+    def snake_case(name):
+        return name.lower().replace(' ', '_')
+        
+    @staticmethod
+    def unique_socket_name(name, dct, prefix=None):
+        
+        if name in dct:
+            if prefix is None:
+                pref_name = name
+            else:
+                pref_name = f"{prefix} {name}"
+        else:
+            return name
+            
+        uname = pref_name
+        for i in range(100): # Should be enough :-)
+            if uname in dct:
+                uname = f"{pref_name} {i}"
+            else:
+                return uname
+            
+        raise RuntimeError(f"You have so many sockets named '{pref_name}' that we have to stop that!")
+
+# ----------------------------------------------------------------------------------------------------
+# A node group
+
+class Group(CustomGroup):
+    """ > Node group
+    
+    Node groups are dynamically built by reading the input and output sockets of the group.
+    
+    Input sockets are initialized in the keyword arguments.
+    
+    They can later on be initialized by the snake_case names
+    """
+    
+    def __init__(self, name, **kwargs):
+        
+        if bpy.data.node_groups.get(name) is None:
+            raise RuntimeError(f"The node group '{name}' doesn't exist")
+        
+        label, node_color = kwargs.get('label'), kwargs.get('node_color')
+        if label is not None:
+            a.pop('label')
+        if node_color is not None:
+            a.pop('node_color')
+        
+        super().__init__('GeometryNodeGroup', name, label=label, node_color=node_color)
+
+        # But let's plug the values directly 
+        
+        for k, v in kwargs.items():
+            index = self.insockets.get(k.lower())
+            if index is None:
+                raise AttributeError(f"The node group '{name}' has no input socket named '{k}'.")
+            self.plug(k, v)
+
     
 # ----------------------------------------------------------------------------------------------------
 # NodeGroupInput
 
-class GroupInput(GroupIO):
+class GroupInput(CustomGroup):
     
     """ > Node 'Group input'
     
-    > Note that the **outputs** sockets of this node are the **input** sockets of the group.
+    > Note that the **output** sockets of this node are the **input** sockets of the group.
     
-    The first socket must be a geometry socket: this is the gemetry of the object on which the modifier
+    For modifiers, the first socket must be a geometry socket: this is the gemetry of the object on which the modifier
     applies. Make sure that this socket exists.
     """
-    
 
     def __init__(self):
         
         super().__init__('NodeGroupInput', 'Group Input')
         
         self.bsockets = self.bnode.outputs
-        self.update_sock_names()
         
     # --------------------------------------------------------------------------------
     # Default geometry input node
 
     @property
     def input_geometry(self):
-        return Node.Geometry(self.bnode.outputs[0])
+        
+        try:
+            sock0 = self.bnode.outputs[0]
+            if sock0.bl_idname in ['NodeSocketGeometry', 'NodeSocketVirtual']:
+                return Node.Geometry(sock0)
+            else:
+                geo = self.new_socket('Geometry')
+                for index, bsock in enumerate(self.bnode.outputs):
+                    if bsock.name == "Geometry":
+                        self.bnode.outputs.move(index, 0)
+                        logger.error("GEONODES> Blender error: the method 'outputs.move' doesn't work. You must move yourself the input geometry in first position...")
+                
+                return Node.Geometry(geo)
+
+        except AttributeError as e:
+            raise RuntimeError("GroupInput.input_geometry error: " + str(e), sys.exc_info()[2])
     
     # --------------------------------------------------------------------------------
-    # Create a new inpu socket
+    # Create a new input socket
     
     def new_socket(self, class_name, value=None, name=None, min_value=None, max_value=None, description=""):
         
@@ -2043,39 +2180,43 @@ class GroupInput(GroupIO):
                 socket = Node.DataClass(bsocket)
                 existing = True
                 
-                update = False
-                
                 if min_value is not None and inp.min_value != min_value:
                     inp.min_value = min_value
-                    update = True
+
                 if max_value is not None and inp.max_value != max_value:
                     inp.max_value = max_value
-                    update = True
+
                 if inp.description != description:
                     inp.description = description
-                    update= True
                     
-                if update:
-                    self.update_sock_names()
-
                 break
             
         # ----- Let's create it
             
         if socket is None:
-
+            
+            # ----- The name can be uses by other sockets which don't have the same class !
+            
+            name = CustomGroup.unique_socket_name(name, self.outsockets, prefix=class_name)
+                
+            # ----- Let's create the input
+            
             new_input = self.tree.btree.inputs.new(type=DataSocket.get_bl_idname(class_name), name=name)
             
             if min_value is not None:
                 new_input.min_value = min_value
+                
             if max_value is not None:
                 new_input.max_value = max_value
+                
             new_input.description = description
             
-            self.update_sock_names()
-        
-        index  = self.socket_index(name)
-        socket = getattr(self, self.sock_names[index])
+            self.build_outsockets()
+            
+            sc_name = self.snake_case(name)
+            index  = self.outsockets[sc_name]
+            socket = getattr(self, sc_name)
+            
             
         # ----- Let's set the value
         # Note: if the socket already exists, we don't override its value
@@ -2127,17 +2268,14 @@ class GroupInput(GroupIO):
                             if mod.node_group == self.tree.btree:
                                 mod[new_input.identifier] = value
                                 
-                    
         # ----- Return the newly created socket
         
         return socket
-    
-    
             
 # ----------------------------------------------------------------------------------------------------
 # NodeGroupOutput
 
-class GroupOutput(GroupIO):
+class GroupOutput(CustomGroup):
     """ > Node 'Group output'
     
     > Note that the **input** sockets of this node are the **output** sockets of the group.
@@ -2152,7 +2290,6 @@ class GroupOutput(GroupIO):
         super().__init__('NodeGroupOutput', 'Group Output')
         
         self.bsockets = self.bnode.inputs
-        self.update_sock_names()
         
         
     # --------------------------------------------------------------------------------
@@ -2160,7 +2297,37 @@ class GroupOutput(GroupIO):
 
     @property
     def output_geometry(self):
-        return Node.Geometry(self.bnode.inputs[0])
+
+        try:
+            sock0 = self.bnode.inputs[0]
+            if sock0.bl_idname == 'NodeSocketGeometry':
+                return Node.Geometry(sock0)
+            
+            else:
+                geo   = None
+                for i, sock in enumerate(self.bnode.inputs):
+                    if sock.name == "Geometry":
+                        geo   = sock
+                        break
+                    
+                if geo is None:
+                    self.tree.btree.outputs.new(type='NodeSocketGeometry', name="Geometry")
+
+                    self.build_insockets()
+                
+                index = self.insockets["geometry"]
+                geo   = self.inputs[index]
+                    
+                self.bnode.inputs.move(index, 0)
+                logger.error("GEONODES> Blender error: the method 'inputs.move' doesn't work. You must move yourself the outputs geometry in first position...")
+                
+                return Node.Geometry(geo)
+                #return getattr(self, "geometry")
+
+        except AttributeError as e:
+            raise RuntimeError("GroupInput.input_geometry error: " + str(e), sys.exc_info()[2])
+        
+        #return Node.Geometry(self.bnode.inputs[0])
     
     # --------------------------------------------------------------------------------
     # Create a new output socket
@@ -2178,15 +2345,9 @@ class GroupOutput(GroupIO):
         
         for index, bsocket in enumerate(self.bnode.inputs):
             
-            #print("TO OUTPUT", index, bsocket.name, bsocket.bl_idname, 'look for', socket, class_name, sub_class, socket.bl_idname)
             if bsocket.bl_idname != socket.bl_idname:
                 continue
             
-            #if bsocket.bl_idname == 'NodeSocketVirtual':
-            #    continue
-                
-            #cname, subclass = DataSocket.get_class_name(bsocket, True)
-            #if (cname == class_name or subclass == class_name) and bsocket.name == name:
             if bsocket.name == name:
                 self.plug(index, socket)
                 self.tree.arrange(True)
@@ -2194,15 +2355,21 @@ class GroupOutput(GroupIO):
 
         # ----- Let's create it
         
-        bsocket = self.tree.btree.outputs.new(type=DataSocket.get_bl_idname(class_name), name=name)
-        self.update_sock_names()
+        name = CustomGroup.unique_socket_name(name, self.insockets, prefix=class_name)
         
-        index  = self.socket_index(name)
+        bsocket = self.tree.btree.outputs.new(type=DataSocket.get_bl_idname(class_name), name=name)
+
+        self.build_insockets()
+        name = self.snake_case(name)
+        
+        index  = self.outsockets[name]
         self.plug(index, socket)
         
         self.tree.arrange(True) 
-
         
+# =============================================================================================================================
+# Unique nodes        
+
 # ----------------------------------------------------------------------------------------------------
 # Node NodeViewer for GeometryNodeViewer
 
@@ -2233,24 +2400,12 @@ class Viewer(Node):
         # Parameters
 
         self.bnode.data_type       = data_type
+        
+        self.insockets  = {'geometry': 0, 'value': [1, 2, 3, 4, 5]}
+        
+        self.geometry = geometry
+        self.value    = value
 
-        # Input sockets
-
-        if data_type == 'FLOAT':
-            self.plug(1, value)
-        elif data_type == 'INT':
-            self.plug(4, value)
-        elif data_type == 'FLOAT_VECTOR':
-            self.plug(2, value)
-        elif data_type == 'FLOAT_COLOR':
-            self.plug(3, value)
-        elif data_type == 'BOOLEAN':
-            self.plug(5, value)
-
-        self.plug(0, geometry)
-
-
-        self.output_sockets  = {}     
         
     def plug_socket(self, socket):
         
@@ -2260,30 +2415,28 @@ class Viewer(Node):
         class_name = DataSocket.get_class_name(socket, False)
         
         if class_name in ['Geometry', 'Mesh', 'Curve', 'Spline', 'Points', 'Volume', 'Instances']:
-            self.plug(0, socket)
-
-        elif class_name == 'Boolean':
-            self.bnode.data_type = 'BOOLEAN'
-            self.plug(5, socket)
-            
-        elif class_name == 'Integer':
-            self.bnode.data_type = 'INT'
-            self.plug(4, socket)
-            
-        elif class_name == 'Float':
-            self.bnode.data_type = 'FLOAT'
-            self.plug(1, socket)
-            
-        elif class_name == 'Vector':
-            self.bnode.data_type = 'FLOAT_VECTOR'
-            self.plug(2, socket)
-            
-        elif class_name == 'Color':
-            self.bnode.data_type = 'FLOAT_COLOR'
-            self.plug(3, socket)
-            
+            self.geometry = socket
+        
         else:
-            raise RuntimeError(f"Impossible to connect the socket {socket} to the viewer. Class {class_name} is not viewable.")
+            if class_name == 'Boolean':
+                self.bnode.data_type = 'BOOLEAN'
+                
+            elif class_name == 'Integer':
+                self.bnode.data_type = 'INT'
+                
+            elif class_name == 'Float':
+                self.bnode.data_type = 'FLOAT'
+                
+            elif class_name == 'Vector':
+                self.bnode.data_type = 'FLOAT_VECTOR'
+                
+            elif class_name == 'Color':
+                self.bnode.data_type = 'FLOAT_COLOR'
+                
+            else:
+                raise RuntimeError(f"Impossible to connect the socket {socket} to the viewer. Class {class_name} is not viewable.")
+                
+            self.value = value
             
         self.tree.arrange(False)
         
@@ -2319,8 +2472,6 @@ class Frame(Node):
 
         self.bnode.label_size      = label_size
         self.bnode.shrink          = shrink
-
-        self.output_sockets  = {}
         
     @property
     def label_size(self):
@@ -2355,114 +2506,13 @@ class SceneTime(Node):
         """ Iniitialisation """
 
         super().__init__('GeometryNodeInputSceneTime', name='Scene Time', label=label)
+
         # Output sockets
 
-        self.seconds         = self.Float(self.bnode.outputs[0])
-        self.frame           = self.Float(self.bnode.outputs[1])
-        self.output_sockets  = {'seconds': self.seconds, 'frame': self.frame}
+        self.outsockets = {'seconds': 0, 'frame': 1}
         
-# ---------------------------------------------------------------------------
-# A node group
+        
 
-class Group(Node):
-    """ > Node group
-    
-    Node groups are dynamically built by reading the input and output sockets of the group.
-    
-    Input sockets are initialized in the keyword arguments.
-    
-    They can later on be initialized by the snake_case names
-    """
-    
-    def __init__(self, name, **kwargs):
-        
-        if bpy.data.node_groups.get(name) is None:
-            raise RuntimeError(f"The node group '{name}' doesn't exist")
-        
-        label, node_color = kwargs.get('label'), kwargs.get('node_color')
-        if label is not None:
-            a.pop('label')
-        if node_color is not None:
-            a.pop('node_color')
-        
-        super().__init__('GeometryNodeGroup', name, label=label, node_color=node_color)
-
-        # snake_case version of the sockets names
-        
-        inames = [bsocket.name.lower().replace(' ', '_') for bsocket in self.bnode.inputs ]
-        onames = [bsocket.name.lower().replace(' ', '_') for bsocket in self.bnode.outputs]
-        
-        # Unique version (homonyms are suffxed)
-        # insockets and outsockets keep the unique name of the sockets
-        # used in __getattr__ and __setattr__
-        
-        self.insockets  = {uname: i for i, uname in enumerate(Group.unitize(inames))}
-        self.outsockets = {uname: i for i, uname in enumerate(Group.unitize(onames))}
-        
-        # Now the input sockets are accessible
-        # But let's plug the values directly 
-        
-        for k, v in kwargs.items():
-            index = self.insockets.get(k.lower())
-            if index is None:
-                raise AttributeError(f"The node group '{name}' has no input socket named '{k}'.")
-            self.plug(k, v)
-            
-        # ----- Compatible with standard Node
-            
-        self.output_sockets = {uname: getattr(self, uname) for uname in self.outsockets}
-        
-    # ------------------------------------------------------------------------------------------
-    # Class method to unitize a list of names
-        
-    @staticmethod
-    def unitize(names):
-        
-        counts = {name: 0 for name in set(names)}
-        unames = []
-        for i, name in enumerate(names):
-            if names.count(name) > 1:
-                unames.append(f"{name}{counts[name]}")
-                counts[name] += 1
-            else:
-                unames.append(name)
-                
-        return unames
-
-    # ------------------------------------------------------------------------------------------
-    # Access to the output sockets
-    # We are idiot proof and accept capitalized versions :-)
-    # Output sockets are "write only"
-        
-    def __getattr__(self, name):
-        if name != 'outsockets':
-            if hasattr(self, 'outsockets'):
-                if name.lower() in self.outsockets:
-                    return self.DataSocket(self.bnode.outputs[self.outsockets[name.lower()]])
-                
-        raise AttributeError(f"'{type(self).__name__}' object has not attribute '{name}'")
-
-    # ------------------------------------------------------------------------------------------
-    # Access to the input sockets
-    # We are idiot proof and accept capitalized versions :-)
-    # Input sockets are "write only"
-        
-    def __setattr__(self, name, value):
-        if hasattr(self, 'insockets'):
-            if name.lower() in self.insockets:
-                self.plug(self.insockets[name.lower()], value)
-                return
-            
-        super().__setattr__(name, value)    
-        
-    # ------------------------------------------------------------------------------------------
-    # Plug all sockets with matching name
-    
-    def plug_node(self, node):
-        for index, iname in enumerate(self.insockets):
-            if iname in node.output_sockets:
-                self.plug(index, getattr(node, iname))
-        
         
         
         

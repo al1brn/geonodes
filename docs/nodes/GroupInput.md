@@ -12,7 +12,6 @@ applies. Make sure that this socket exists.
 
 
 
-
 ## \_\_init\_\_
 
 > Node 'Group input'
@@ -26,7 +25,6 @@ applies. Make sure that this socket exists.
 
 
 
-
 ## input_geometry
 
 Default geometry input node
@@ -34,5 +32,5 @@ Default geometry input node
 
 ## new_socket
 
-Create a new output socket
+Create a new input socket
 

@@ -1,12 +1,12 @@
 
 # Node GroupIO
 
-Build the input names to avoid duplicates
+Build the socket names to avoid duplicates
 
 
 ## update_sock_names
 
-Build the input names to avoid duplicates
+Build the socket names to avoid duplicates
 
 
 ## socket_index
@@ -17,4 +17,5 @@ Socket index
 ## clear
 
 Clear
+CAUTION: it crashes !
 

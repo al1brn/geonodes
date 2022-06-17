@@ -43,3 +43,8 @@ Access to the input sockets
 We are idiot proof and accept capitalized versions :-)
 Input sockets are "write only"
 
+
+## plug_node
+
+Plug all sockets with matching name
+

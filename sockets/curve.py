@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-16
+Created on 2022-06-17
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -461,7 +461,7 @@ class Curve(gn.Spline):
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def set_handles(self, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label = None, node_color = None):
+    def set_handles(self, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label = None, node_color = None):
         """ > Node: SetHandleType
           
         <sub>go to: top index
@@ -479,7 +479,7 @@ class Curve(gn.Spline):
             - curve : Curve (self)
             - selection : Boolean## Parameters
             - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-            - mode : {'LEFT', 'RIGHT'}
+            - mode : {'RIGHT', 'LEFT'}
             - node_label : None
             - node_color : None
     

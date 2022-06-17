@@ -78,6 +78,20 @@ The blender Node is created by calling the method `tree.get_bnode` method.
   
   
 
+## \_\_getattr\_\_
+
+Access to the output sockets
+We are idiot proof and accept capitalized versions :-)
+Output sockets are "write only"
+
+
+## \_\_setattr\_\_
+
+Access to the input sockets
+We are idiot proof and accept capitalized versions :-)
+Input sockets are "write only"
+
+
 ## bl_idname
 
 bl idname
@@ -177,6 +191,72 @@ List of the nodes which are connected through a GEOMETRY socket
 The attribute is "solved" when it feeds capture or transfer attribute
 
 
-## DataSocket
+## Boolean
 
 Node socket classes will be created in generated modules
+
+
+
+  @staticmethod
+  def DataSocket(socket):
+    if socket.bl_idname == 'NodeSocketBool':
+      return Node.Boolean(socket)
+      
+    elif socket.bl_idname == 'NodeSocketInt':
+      return Node.Integer(socket)
+      
+    elif socket.bl_idname == 'NodeSocketIntUnsigned':
+      return Node.Integer(socket)
+      
+    elif socket.bl_idname == 'NodeSocketFloat':
+      return Node.Float(socket)
+      
+    elif socket.bl_idname == 'NodeSocketFloatFactor':
+      return Node.Float(socket)
+      
+    elif socket.bl_idname == 'NodeSocketFloatAngle':
+      return Node.Float(socket)
+      
+    elif socket.bl_idname == 'NodeSocketFloatDistance':
+      return Node.Float(socket)
+      
+    elif socket.bl_idname == 'NodeSocketVector':
+      return Node.Vector(socket)
+      
+    elif socket.bl_idname == 'NodeSocketVectorEuler':
+      return Node.Vector(socket)
+      
+    elif socket.bl_idname == 'NodeSocketVectorXYZ':
+      return Node.Vector(socket)
+      
+    elif socket.bl_idname == 'NodeSocketVectorTranslation':
+      return Node.Vector(socket)
+      
+    elif socket.bl_idname == 'NodeSocketColor':
+      return Node.Color(socket)
+      
+    elif socket.bl_idname == 'NodeSocketString':
+      return Node.String(socket)
+      
+    elif socket.bl_idname == 'NodeSocketGeometry':
+      return Node.Geometry(socket)
+      
+    elif socket.bl_idname == 'NodeSocketCollection':
+      return Node.Collection(socket)
+      
+    elif socket.bl_idname == 'NodeSocketImage':
+      return Node.Image(socket)
+      
+    elif socket.bl_idname == 'NodeSocketMaterial':
+      return Node.Material(socket)
+      
+    elif socket.bl_idname == 'NodeSocketObject':
+      return Node.Object(socket)
+      
+    elif socket.bl_idname == 'NodeSocketTexture':
+      return Node.Texture(socket)
+      
+    raise RuntimeError(f"Unknown bl_idname for socket '{socket.name}': '{socket.bl_idname}'")
+    
+    
+    
