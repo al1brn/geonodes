@@ -2000,7 +2000,6 @@ class GroupInput(GroupIO):
     
     The first socket must be a geometry socket: this is the gemetry of the object on which the modifier
     applies. Make sure that this socket exists.
-    
     """
     
 
@@ -2019,7 +2018,7 @@ class GroupInput(GroupIO):
         return Node.Geometry(self.bnode.outputs[0])
     
     # --------------------------------------------------------------------------------
-    # Create a new output socket
+    # Create a new inpu socket
     
     def new_socket(self, class_name, value=None, name=None, min_value=None, max_value=None, description=""):
         
@@ -2079,7 +2078,7 @@ class GroupInput(GroupIO):
         socket = getattr(self, self.sock_names[index])
             
         # ----- Let's set the value
-        # Note: if the socket already exists, we don't override it value
+        # Note: if the socket already exists, we don't override its value
         
         if value is not None:
             
@@ -2408,6 +2407,10 @@ class Group(Node):
             if index is None:
                 raise AttributeError(f"The node group '{name}' has no input socket named '{k}'.")
             self.plug(k, v)
+            
+        # ----- Compatible with standard Node
+            
+        self.output_sockets = {uname: getattr(self, uname) for uname in self.outsockets}
         
     # ------------------------------------------------------------------------------------------
     # Class method to unitize a list of names
@@ -2450,7 +2453,18 @@ class Group(Node):
                 self.plug(self.insockets[name.lower()], value)
                 return
             
-        super().__setattr__(name, value)        
+        super().__setattr__(name, value)    
+        
+    # ------------------------------------------------------------------------------------------
+    # Plug all sockets with matching name
+    
+    def plug_node(self, node):
+        for index, iname in enumerate(self.insockets):
+            if iname in node.output_sockets:
+                self.plug(index, getattr(node, iname))
+        
+        
+        
         
         
         
