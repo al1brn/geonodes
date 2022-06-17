@@ -23,7 +23,7 @@ with gn.Tree("Geometry Nodes") as tree:
     
     # We compute z
     with tree.layout("Computing the wave", color="dark_rose"):
-        distance = gn.sqrt(grid.position.x**2 + grid.position.y**2)
+        distance = gn.sqrt(grid.point.position.x**2 + grid.point.position.y**2)
         z = height * gn.sin(distance*omega)/distance
         
     # Let's change the z coordinate of our vertices
