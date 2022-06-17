@@ -19,12 +19,12 @@ logger = logging.Logger('geonodes')
 # ==============================================================================================================
 # Data class Instances
 
-class Instances(gn.Geometry, Domain):
+class Instances(gn.Geometry):
     """ 
 
     Data socket Instances
     ---------------------
-        > Inherits from gn.Geometry, Domain
+        > Inherits from gn.Geometry
           
         <sub>go to index</sub>
         
@@ -41,10 +41,15 @@ class Instances(gn.Geometry, Domain):
             - translate : instances (Instances)
     """
 
-    def init_socket(self):
-        self.data_socket = self
-        super().init_socket()
-        self.domain = 'INSTANCE'
+    def init_domains(self):
+        self.instance = InstanceDomain(self)
+
+    @property
+    def insts(self):
+        return self.instance
+    @property
+    def instance(self):
+        return self.instance
 
 
     # ----------------------------------------------------------------------------------------------------

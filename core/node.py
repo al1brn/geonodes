@@ -559,9 +559,6 @@ class DataSocket(Socket):
         self.bsocket = node.bnode.outputs[0]
         self.reset_properties()
 
-        #if self.node.label is None:
-        #    self.node.label = label
-            
         return self
 
     # ----------------------------------------------------------------------------------------------------
@@ -1354,6 +1351,8 @@ class Tree:
             
             data_type = DataSocket.SOCKET_IDS[attr_node.bnode.outputs[output_index].bl_idname][2]
             
+            print("CAPTURE", attr_node.domain)
+            
             capt_node = Geometry(attr_node.owning_bsocket).capture_attribute(value=attr_node.outputs[output_index], data_type=data_type, domain=attr_node.domain)
             capt_node.bnode.parent = attr_node.bnode.parent
             
@@ -1570,6 +1569,15 @@ class Node:
             
         super().__setattr__(name, value)    
         
+    # ---------------------------------------------------------------------------
+    # Output socket by index
+    
+    def get_datasocket(self, index):
+        name = list(self.outsockets.keys())[index]
+        return getattr(self, name)
+        
+    # ---------------------------------------------------------------------------
+    # Let's make thing readable
         
     def __str__(self):
         return f"[{self.get_label()}]"

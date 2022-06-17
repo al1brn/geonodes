@@ -26,29 +26,64 @@ logger = logging.getLogger('geonodes')
 
 # =============================================================================================================================
 # A field is the basic geometry data
+#
+# mesh.verts.position += (1, 2, 3)
+# mesh.verts.position = (1, 2, 3)
 
-class Field(Socket):
+class Field:
     
-    def __init__(self, domain, selection=None, name=None):
-        super().__init__(domain, node=domain.node)
-        self.domain    = domain
-        self.selection = selection
-        self.name      = name
+    def __init__(self, geo_domain, selection=None, name=None):
+        self.geo_domain  = geo_domain
+        self.selection   = selection
+        self.name        = name
+        self.input_node_ = None
         
     @property
-    def data
+    def geometry(self):
+        return self.geo_domain.data_socket
+    
+    @property
+    def input_node(self):
+        if self.input_node_ is None:
+            self.create_input_node()
+        return self.input_node_
+    
+    @property
+    def node_socket(self):
+        return self.input_node.get_datasocket(0)
+    
+    def create_input_node(self):
+        raise RuntimeError("Input node not implemented !")
+            
         
-    def stack(self, geometry):
-        
-        
+    def stack(self, node):
+        return self.geo_domain.data_socket.stack(node)
+    
+    def select(self, selection):
+        return type(self)(self.geo_domain, selection=selection, name=self.name)
+    
+    def set_value(self, value):
+        raise RuntimeError("set_value not implemented !")
         
         
 
-class Position(Field):
+class Location(Field):
+    
+    def create_input_node(self):
+        print("FIELD: AS ATTRIBUTE", self.geo_domain, self.geo_domain.domain)
+        self.input_node_ = nodes.Position()
+        self.input_node_.as_attribute(owning_socket=self.geo_domain.data_socket, domain=self.geo_domain.domain)
     
     def set_position(self, position=None, offset=None):
-        return nodes.SetPosition()
+        return self.stack(nodes.SetPosition(geometry=self.geometry, selection=self.selection, position=position, offset=offset))
+                          
+    def __add__(self, value):
+        self.set_position(position=value)
         
-        def __init__(self, geometry=None, selection=None, position=None, offset=None, label=None, node_color=None):
+    def __iadd__(self, value):
+        self.set_position(offset=value)
+                          
+    def set_value(self, value):
+        self.set_position(position=value)
 
         

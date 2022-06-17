@@ -92,6 +92,16 @@ We are idiot proof and accept capitalized versions :-)
 Input sockets are "write only"
 
 
+## get_datasocket
+
+Output socket by index
+
+
+## \_\_str\_\_
+
+Let's make thing readable
+
+
 ## bl_idname
 
 bl idname

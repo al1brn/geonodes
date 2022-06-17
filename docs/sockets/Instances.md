@@ -1,7 +1,7 @@
 
 # Data socket Instances
 
-> Inherits from gn.Geometry, Domain
+> Inherits from gn.Geometry
   
 <sub>go to [index](/docs/index.md)</sub>
 

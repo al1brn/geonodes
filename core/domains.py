@@ -54,12 +54,28 @@ logger = logging.getLogger('geonodes')
 # ```
 #
 
+from geonodes.core.field import Location
+
 class Domain(Socket):
     
     def __init__(self, data_socket, domain):
         super().__init__(data_socket, data_socket.node)
+        if domain is None:
+            raise RuntimeError(f"{type(self)}: init domain is None!")
         self.domain = domain
         self.fields = {}
+        
+        self.location_ = None
+        
+    @property
+    def location(self):
+        if self.location_ is None:
+            self.location_ = Location(self)
+        return self.location_.node_socket
+    
+    @location.setter
+    def location(self, value):
+        self.location.set_value(value)
         
     def create_field_node(self, bl_idname, **kwargs):
         """ > Create a **geonodes** from a bl_idname
