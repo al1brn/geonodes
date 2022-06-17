@@ -12,6 +12,8 @@ Complex formulas are not easy to build and debugging can be a headache.<br>
  
 You keep the full power of Blender geometry nodes but with the elegance of Python.
 
+> **NOTE** This is yet an alpha version. It is stable, but I'm still tuning node calls implementation.
+
 ## Table of contents
 
 - [Better a demo than long words](#better-a-demo-than-long-words)
