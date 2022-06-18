@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-17
+Created on 2022-06-18
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -10,8 +10,7 @@ Blender version: 3.2.0
 import geonodes as gn
 from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
-from geonodes.core.domains import Domain
-from geonodes import PointDomain, EdgeDomain, FaceDomain, CornerDomain, CurveDomain, InstanceDomain
+import geonodes.core.domains as domains
 
 import logging
 logger = logging.Logger('geonodes')
@@ -19,12 +18,12 @@ logger = logging.Logger('geonodes')
 # ==============================================================================================================
 # Data class Curve
 
-class Curve(gn.Spline):
+class Curve(gn.Geometry):
     """ 
 
     Data socket Curve
     -----------------
-        > Inherits from gn.Spline
+        > Inherits from gn.Geometry
           
         <sub>go to index</sub>
         
@@ -48,17 +47,27 @@ class Curve(gn.Spline):
             - ArcFromPoints : Sockets      [curve (Curve), center (Vector), normal (Vector), radius (Float)]
     
 
+        Properties
+        ----------
+            - domain_size : Sockets      [point_count (Integer), spline_count (Integer)]
+            - point_count : point_count (Integer) = domain_size.point_count
+            - spline_count : spline_count (Integer) = domain_size.spline_count
+    
+
         Methods
         -------
+            - duplicate_splines : Sockets      [geometry (Geometry), duplicate_index (Integer)]
             - fill : mesh (Mesh)
             - fillet : curve (Curve)
             - length : length (Float)
             - resample : curve (Curve)
             - reverse : curve (Curve)
             - sample : Sockets      [position (Vector), tangent (Vector), normal (Vector)]
+            - set_cyclic : geometry (Geometry)
             - set_handle_positions : curve (Curve)
             - set_handles : curve (Curve)
             - set_radius : curve (Curve)
+            - set_resolution : geometry (Geometry)
             - set_spline_type : curve (Curve)
             - set_tilt : curve (Curve)
             - subdivide : curve (Curve)
@@ -67,6 +76,27 @@ class Curve(gn.Spline):
             - trim : curve (Curve)
     """
 
+    def init_domains(self):
+        self.points  = domains.ControlPoint(self)
+        self.splines = domaines.Spline(self)
+
+    @property
+    def point(self):
+        return self.points
+    @property
+    def spline(self):
+        return self.splines
+
+
+    def reset_properties(self):
+
+        super().reset_properties()
+
+        self.domain_size_ = None
+
+        self.point_count_ = None
+
+        self.spline_count_ = None
 
     # ----------------------------------------------------------------------------------------------------
     # Constructors
@@ -459,7 +489,200 @@ class Curve(gn.Spline):
 
 
     # ----------------------------------------------------------------------------------------------------
+    # Properties
+
+    @property
+    def domain_size(self):
+        """ > Node: DomainSize
+          
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeDomainSize
+        node ref Domain Size </sub>
+                                  
+        ```python
+        v = curve.domain_size
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)## Fixed parameters
+            - component : 'CURVE'
+            - label:f"{self.node_chain_label}.domain_size"
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DomainSize(geometry=self, component='CURVE', label=f"{self.node_chain_label}.domain_size")
+            ```
+    
+
+        Returns
+        -------
+            Sockets [point_count (Integer), spline_count (Integer)]
+            
+        """
+
+        if self.domain_size_ is None:
+            self.domain_size_ = nodes.DomainSize(geometry=self, component='CURVE', label=f"{self.node_chain_label}.domain_size")
+        return self.domain_size_
+
+    @property
+    def point_count(self):
+        """ > Node: DomainSize
+          
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeDomainSize
+        node ref Domain Size </sub>
+                                  
+        ```python
+        v = curve.point_count
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)## Fixed parameters
+            - component : 'CURVE'
+            - label:f"{self.node_chain_label}.point_count"
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DomainSize(geometry=self, component='CURVE', label=f"{self.node_chain_label}.point_count")
+            ```
+    
+
+        Returns
+        -------
+            Sockets [point_count (Integer), spline_count (Integer)]
+            
+        """
+
+        return self.domain_size.point_count
+
+    @property
+    def spline_count(self):
+        """ > Node: DomainSize
+          
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeDomainSize
+        node ref Domain Size </sub>
+                                  
+        ```python
+        v = curve.spline_count
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)## Fixed parameters
+            - component : 'CURVE'
+            - label:f"{self.node_chain_label}.spline_count"
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DomainSize(geometry=self, component='CURVE', label=f"{self.node_chain_label}.spline_count")
+            ```
+    
+
+        Returns
+        -------
+            Sockets [point_count (Integer), spline_count (Integer)]
+            
+        """
+
+        return self.domain_size.spline_count
+
+
+    # ----------------------------------------------------------------------------------------------------
     # Methods
+
+    def set_cyclic(self, selection=None, cyclic=None, node_label = None, node_color = None):
+        """ > Node: SetSplineCyclic
+          
+        <sub>go to: top index
+        blender ref GeometryNodeSetSplineCyclic
+        node ref Set Spline Cyclic </sub>
+                                  
+        ```python
+        v = curve.set_cyclic(selection, cyclic, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - selection : Boolean
+            - cyclic : Boolean## Parameters
+            - node_label : None
+            - node_color : None
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Geometry
+            
+        """
+
+        return self.stack(nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic, label=node_label, node_color=node_color))
+
+    def set_resolution(self, selection=None, resolution=None, node_label = None, node_color = None):
+        """ > Node: SetSplineResolution
+          
+        <sub>go to: top index
+        blender ref GeometryNodeSetSplineResolution
+        node ref Set Spline Resolution </sub>
+                                  
+        ```python
+        v = curve.set_resolution(selection, resolution, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - selection : Boolean
+            - resolution : Integer## Parameters
+            - node_label : None
+            - node_color : None
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Geometry
+            
+        """
+
+        return self.stack(nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution, label=node_label, node_color=node_color))
 
     def set_handles(self, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label = None, node_color = None):
         """ > Node: SetHandleType
@@ -537,43 +760,6 @@ class Curve(gn.Spline):
         """
 
         return self.stack(nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_type, label=node_label, node_color=node_color))
-
-    def fill(self, mode='TRIANGLES', node_label = None, node_color = None):
-        """ > Node: FillCurve
-          
-        <sub>go to: top index
-        blender ref GeometryNodeFillCurve
-        node ref Fill Curve </sub>
-                                  
-        ```python
-        v = curve.fill(mode, node_label = None, node_color = None)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Sockets
-            - curve : Curve (self)## Parameters
-            - mode : 'TRIANGLES' in [TRIANGLES, NGONS]
-            - node_label : None
-            - node_color : None
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.FillCurve(curve=self, mode=mode, label=node_label, node_color=node_color)
-            ```
-    
-
-        Returns
-        -------
-            Mesh
-            
-        """
-
-        return self.stack(nodes.FillCurve(curve=self, mode=mode, label=node_label, node_color=node_color))
 
     def fillet(self, count=None, radius=None, limit_radius=None, mode='BEZIER', node_label = None, node_color = None):
         """ > Node: FilletCurve
@@ -885,6 +1071,82 @@ class Curve(gn.Spline):
         """
 
         return self.stack(nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1=end1, mode=mode, label=node_label, node_color=node_color))
+
+    def duplicate_splines(self, selection=None, amount=None, node_label = None, node_color = None):
+        """ > Node: DuplicateElements
+          
+        <sub>go to: top index
+        blender ref GeometryNodeDuplicateElements
+        node ref Duplicate Elements </sub>
+                                  
+        ```python
+        v = curve.duplicate_splines(selection, amount, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)
+            - selection : Boolean
+            - amount : Integer## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
+            - domain : 'SPLINE'
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='SPLINE', label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Sockets [geometry (Geometry), duplicate_index (Integer)]
+            
+        """
+
+        return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='SPLINE', label=node_label, node_color=node_color)
+
+    def fill(self, mode='TRIANGLES', node_label = None, node_color = None):
+        """ > Node: FillCurve
+          
+        <sub>go to: top index
+        blender ref GeometryNodeFillCurve
+        node ref Fill Curve </sub>
+                                  
+        ```python
+        v = curve.fill(mode, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - curve : Curve (self)## Parameters
+            - mode : 'TRIANGLES' in [TRIANGLES, NGONS]
+            - node_label : None
+            - node_color : None
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.FillCurve(curve=self, mode=mode, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Mesh
+            
+        """
+
+        return nodes.FillCurve(curve=self, mode=mode, label=node_label, node_color=node_color).mesh
 
     def to_mesh(self, profile_curve=None, fill_caps=None, node_label = None, node_color = None):
         """ > Node: CurveToMesh

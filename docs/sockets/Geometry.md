@@ -26,7 +26,6 @@
 
 ## Methods
 
-- [attribute_domain_size](#attribute_domain_size) : Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
 - [capture_attribute](#capture_attribute) : attribute (data_type dependant)
 - [components](#components) : Sockets      [selection (Geometry), inverted (Geometry)]
 - [convex_hull](#convex_hull) : convex_hull (Geometry)
@@ -1292,38 +1291,6 @@ nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='BOOL
 ### Returns
 
 Geometry
-
-
-## attribute_domain_size
-
-> Node: [DomainSize](/docs/nodes/DomainSize.md)
-  
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
-                          
-```python
-v = geometry.attribute_domain_size(component, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Parameters
-- component : 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DomainSize(geometry=self, component=component, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
 
 
 ## remove_named_attribute

@@ -254,14 +254,17 @@ class Socket:
         """
         
         class_dt = {
-            'Boolean': 'BOOLEAN',
+            'Boolean' : 'BOOLEAN',
             'Integer' : 'INT',
             'Float'   : 'FLOAT',
             'Vector'  : 'FLOAT_VECTOR',
             'Color'   : 'FLOAT_COLOR'
             }
         
-        if isinstance(value, str):
+        if value is None:
+            return 'POINT'
+        
+        elif isinstance(value, str):
             if value in Socket.SOCKET_IDS:
                 return Socket.SOCKET_IDS[socket.bl_idname][2]
             

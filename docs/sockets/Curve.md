@@ -1,7 +1,7 @@
 
 # Data socket Curve
 
-> Inherits from gn.Spline
+> Inherits from gn.Geometry
   
 <sub>go to [index](/docs/index.md)</sub>
 
@@ -22,17 +22,26 @@
 
 - [ArcFromPoints](#arcfrompoints) : Sockets      [curve (Curve), center (Vector), normal (Vector), radius (Float)]
 
+## Properties
+
+- [domain_size](#domain_size) : Sockets      [point_count (Integer), spline_count (Integer)]
+- [point_count](#point_count) : point_count (Integer) = domain_size.point_count
+- [spline_count](#spline_count) : spline_count (Integer) = domain_size.spline_count
+
 ## Methods
 
+- [duplicate_splines](#duplicate_splines) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
 - [fill](#fill) : mesh (Mesh)
 - [fillet](#fillet) : curve (Curve)
 - [length](#length) : length (Float)
 - [resample](#resample) : curve (Curve)
 - [reverse](#reverse) : curve (Curve)
 - [sample](#sample) : Sockets      [position (Vector), tangent (Vector), normal (Vector)]
+- [set_cyclic](#set_cyclic) : geometry (Geometry)
 - [set_handle_positions](#set_handle_positions) : curve (Curve)
 - [set_handles](#set_handles) : curve (Curve)
 - [set_radius](#set_radius) : curve (Curve)
+- [set_resolution](#set_resolution) : geometry (Geometry)
 - [set_spline_type](#set_spline_type) : curve (Curve)
 - [set_tilt](#set_tilt) : curve (Curve)
 - [subdivide](#subdivide) : curve (Curve)
@@ -368,6 +377,165 @@ nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, offset_ang
 Sockets [curve (Curve), center (Vector), normal (Vector), radius (Float)]
 
 
+## domain_size
+
+> Node: [DomainSize](/docs/nodes/DomainSize.md)
+  
+<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
+blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
+                          
+```python
+v = curve.domain_size
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)## Fixed parameters
+- component : 'CURVE'
+- label:f"{self.node_chain_label}.domain_size"
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DomainSize(geometry=self, component='CURVE', label=f"{self.node_chain_label}.domain_size")
+```
+
+### Returns
+
+Sockets [point_count (Integer), spline_count (Integer)]
+
+
+## point_count
+
+> Node: [DomainSize](/docs/nodes/DomainSize.md)
+  
+<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
+blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
+                          
+```python
+v = curve.point_count
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)## Fixed parameters
+- component : 'CURVE'
+- label:f"{self.node_chain_label}.point_count"
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DomainSize(geometry=self, component='CURVE', label=f"{self.node_chain_label}.point_count")
+```
+
+### Returns
+
+Sockets [point_count (Integer), spline_count (Integer)]
+
+
+## spline_count
+
+> Node: [DomainSize](/docs/nodes/DomainSize.md)
+  
+<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
+blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
+                          
+```python
+v = curve.spline_count
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)## Fixed parameters
+- component : 'CURVE'
+- label:f"{self.node_chain_label}.spline_count"
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DomainSize(geometry=self, component='CURVE', label=f"{self.node_chain_label}.spline_count")
+```
+
+### Returns
+
+Sockets [point_count (Integer), spline_count (Integer)]
+
+
+## set_cyclic
+
+> Node: [SetSplineCyclic](/docs/nodes/SetSplineCyclic.md)
+  
+<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
+blender ref [GeometryNodeSetSplineCyclic](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html)
+node ref [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html) </sub>
+                          
+```python
+v = curve.set_cyclic(selection, cyclic, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- selection : Boolean
+- cyclic : Boolean## Parameters
+- node_label : None
+- node_color : None
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Geometry
+
+
+## set_resolution
+
+> Node: [SetSplineResolution](/docs/nodes/SetSplineResolution.md)
+  
+<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
+blender ref [GeometryNodeSetSplineResolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html)
+node ref [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html) </sub>
+                          
+```python
+v = curve.set_resolution(selection, resolution, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- selection : Boolean
+- resolution : Integer## Parameters
+- node_label : None
+- node_color : None
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Geometry
+
+
 ## set_handles
 
 > Node: [SetHandleType](/docs/nodes/SetHandleType.md)
@@ -433,38 +601,6 @@ nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_type, la
 ### Returns
 
 Curve
-
-
-## fill
-
-> Node: [FillCurve](/docs/nodes/FillCurve.md)
-  
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeFillCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html)
-node ref [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fill_curve.html) </sub>
-                          
-```python
-v = curve.fill(mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- curve : Curve (self)## Parameters
-- mode : 'TRIANGLES' in [TRIANGLES, NGONS]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.FillCurve(curve=self, mode=mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Mesh
 
 
 ## fillet
@@ -736,6 +872,72 @@ nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1=end1, 
 ### Returns
 
 Curve
+
+
+## duplicate_splines
+
+> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
+  
+<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
+blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
+                          
+```python
+v = curve.duplicate_splines(selection, amount, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)
+- selection : Boolean
+- amount : Integer## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
+- domain : 'SPLINE'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='SPLINE', label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Sockets [geometry (Geometry), duplicate_index (Integer)]
+
+
+## fill
+
+> Node: [FillCurve](/docs/nodes/FillCurve.md)
+  
+<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
+blender ref [GeometryNodeFillCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html)
+node ref [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fill_curve.html) </sub>
+                          
+```python
+v = curve.fill(mode, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- curve : Curve (self)## Parameters
+- mode : 'TRIANGLES' in [TRIANGLES, NGONS]
+- node_label : None
+- node_color : None
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.FillCurve(curve=self, mode=mode, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Mesh
 
 
 ## to_mesh

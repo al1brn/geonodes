@@ -62,7 +62,6 @@
 - [switch](#switch) : output (Integer)
 - [tan](#tan) : value (Float)
 - [tanh](#tanh) : value (Float)
-- [transfer_attribute](#transfer_attribute) : attribute (Integer)
 - [trunc](#trunc) : value (Float)
 - [wrap](#wrap) : value (Float)
 
@@ -133,43 +132,6 @@ nodes.AccumulateField(value=self, group_index=group_index, data_type='INT', doma
 ### Returns
 
 Sockets [leading (Integer), trailing (Integer), total (Integer)]
-
-
-## transfer_attribute
-
-> Node: [TransferAttribute](/docs/nodes/TransferAttribute.md)
-  
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
-node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
-                          
-```python
-v = integer.transfer_attribute(source, source_position, index, domain, mapping, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- attribute : Integer (self)
-- source : Geometry
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'INT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Integer
 
 
 ## capture_attribute

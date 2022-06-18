@@ -18,6 +18,14 @@
 - [Line](#line) : mesh (Mesh)
 - [UVSphere](#uvsphere) : mesh (Mesh)
 
+## Properties
+
+- [corner_count](#corner_count) : face_corner_count (Integer) = domain_size.face_corner_count
+- [domain_size](#domain_size) : Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
+- [edge_count](#edge_count) : edge_count (Integer) = domain_size.edge_count
+- [face_count](#face_count) : face_count (Integer) = domain_size.face_count
+- [point_count](#point_count) : point_count (Integer) = domain_size.point_count
+
 ## Methods
 
 - [difference](#difference) : mesh (Mesh)
@@ -308,6 +316,161 @@ nodes.UvSphere(segments=segments, rings=rings, radius=radius, label=node_label, 
 ### Returns
 
 Mesh
+
+
+## domain_size
+
+> Node: [DomainSize](/docs/nodes/DomainSize.md)
+  
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
+blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
+                          
+```python
+v = mesh.domain_size
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)## Fixed parameters
+- component : 'MESH'
+- label:f"{self.node_chain_label}.domain_size"
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DomainSize(geometry=self, component='MESH', label=f"{self.node_chain_label}.domain_size")
+```
+
+### Returns
+
+Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
+
+
+## point_count
+
+> Node: [DomainSize](/docs/nodes/DomainSize.md)
+  
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
+blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
+                          
+```python
+v = mesh.point_count
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)## Fixed parameters
+- component : 'MESH'
+- label:f"{self.node_chain_label}.point_count"
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DomainSize(geometry=self, component='MESH', label=f"{self.node_chain_label}.point_count")
+```
+
+### Returns
+
+Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
+
+
+## edge_count
+
+> Node: [DomainSize](/docs/nodes/DomainSize.md)
+  
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
+blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
+                          
+```python
+v = mesh.edge_count
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)## Fixed parameters
+- component : 'MESH'
+- label:f"{self.node_chain_label}.edge_count"
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DomainSize(geometry=self, component='MESH', label=f"{self.node_chain_label}.edge_count")
+```
+
+### Returns
+
+Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
+
+
+## face_count
+
+> Node: [DomainSize](/docs/nodes/DomainSize.md)
+  
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
+blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
+                          
+```python
+v = mesh.face_count
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)## Fixed parameters
+- component : 'MESH'
+- label:f"{self.node_chain_label}.face_count"
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DomainSize(geometry=self, component='MESH', label=f"{self.node_chain_label}.face_count")
+```
+
+### Returns
+
+Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
+
+
+## corner_count
+
+> Node: [DomainSize](/docs/nodes/DomainSize.md)
+  
+<sub>go to: [top](#data-socket-mesh) [index](/docs/index.md)
+blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
+                          
+```python
+v = mesh.corner_count
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)## Fixed parameters
+- component : 'MESH'
+- label:f"{self.node_chain_label}.corner_count"
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DomainSize(geometry=self, component='MESH', label=f"{self.node_chain_label}.corner_count")
+```
+
+### Returns
+
+Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
 
 
 ## intersect

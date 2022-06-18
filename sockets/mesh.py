@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-17
+Created on 2022-06-18
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -10,8 +10,7 @@ Blender version: 3.2.0
 import geonodes as gn
 from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
-from geonodes.core.domains import Domain
-from geonodes import PointDomain, EdgeDomain, FaceDomain, CornerDomain, CurveDomain, InstanceDomain
+import geonodes.core.domains as domains
 
 import logging
 logger = logging.Logger('geonodes')
@@ -43,6 +42,15 @@ class Mesh(gn.Geometry):
             - UVSphere : mesh (Mesh)
     
 
+        Properties
+        ----------
+            - corner_count : face_corner_count (Integer) = domain_size.face_corner_count
+            - domain_size : Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
+            - edge_count : edge_count (Integer) = domain_size.edge_count
+            - face_count : face_count (Integer) = domain_size.face_count
+            - point_count : point_count (Integer) = domain_size.point_count
+    
+
         Methods
         -------
             - difference : mesh (Mesh)
@@ -63,33 +71,40 @@ class Mesh(gn.Geometry):
     """
 
     def init_domains(self):
-        self.point  = PointDomain(self)
-        self.edge   = EdgeDomain(self)
-        self.face   = FaceDomain(self)
-        self.corner = CornerDomain(self)
+        self.verts   = domains.Vertex(self)
+        self.edges   = domains.Edge(self)
+        self.faces   = domains.Face(self)
+        self.corners = domains.Corner(self)
 
     @property
-    def vertex(self):
-        return self.point
+    def point(self):
+        return self.verts
 
     @property
-    def face_corner(self):
-        return self.corner
+    def edge(self):
+        return self.edges
     @property
-    def verts(self):
-        return self.point
+    def face(self):
+        return self.faces
+    @property
+    def corner(self):
+        return self.corners
 
-    @property
-    def faces(self):
-        return self.face
-    @property
-    def edges(self):
-        return self.edge
 
-    @property
-    def corners(self):
-        return self.corner
 
+    def reset_properties(self):
+
+        super().reset_properties()
+
+        self.domain_size_ = None
+
+        self.point_count_ = None
+
+        self.edge_count_ = None
+
+        self.face_count_ = None
+
+        self.corner_count_ = None
 
     # ----------------------------------------------------------------------------------------------------
     # Constructors
@@ -415,6 +430,197 @@ class Mesh(gn.Geometry):
         """
 
         return cls(nodes.UvSphere(segments=segments, rings=rings, radius=radius, label=node_label, node_color=node_color).mesh)
+
+
+    # ----------------------------------------------------------------------------------------------------
+    # Properties
+
+    @property
+    def domain_size(self):
+        """ > Node: DomainSize
+          
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeDomainSize
+        node ref Domain Size </sub>
+                                  
+        ```python
+        v = mesh.domain_size
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)## Fixed parameters
+            - component : 'MESH'
+            - label:f"{self.node_chain_label}.domain_size"
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DomainSize(geometry=self, component='MESH', label=f"{self.node_chain_label}.domain_size")
+            ```
+    
+
+        Returns
+        -------
+            Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
+            
+        """
+
+        if self.domain_size_ is None:
+            self.domain_size_ = nodes.DomainSize(geometry=self, component='MESH', label=f"{self.node_chain_label}.domain_size")
+        return self.domain_size_
+
+    @property
+    def point_count(self):
+        """ > Node: DomainSize
+          
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeDomainSize
+        node ref Domain Size </sub>
+                                  
+        ```python
+        v = mesh.point_count
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)## Fixed parameters
+            - component : 'MESH'
+            - label:f"{self.node_chain_label}.point_count"
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DomainSize(geometry=self, component='MESH', label=f"{self.node_chain_label}.point_count")
+            ```
+    
+
+        Returns
+        -------
+            Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
+            
+        """
+
+        return self.domain_size.point_count
+
+    @property
+    def edge_count(self):
+        """ > Node: DomainSize
+          
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeDomainSize
+        node ref Domain Size </sub>
+                                  
+        ```python
+        v = mesh.edge_count
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)## Fixed parameters
+            - component : 'MESH'
+            - label:f"{self.node_chain_label}.edge_count"
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DomainSize(geometry=self, component='MESH', label=f"{self.node_chain_label}.edge_count")
+            ```
+    
+
+        Returns
+        -------
+            Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
+            
+        """
+
+        return self.domain_size.edge_count
+
+    @property
+    def face_count(self):
+        """ > Node: DomainSize
+          
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeDomainSize
+        node ref Domain Size </sub>
+                                  
+        ```python
+        v = mesh.face_count
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)## Fixed parameters
+            - component : 'MESH'
+            - label:f"{self.node_chain_label}.face_count"
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DomainSize(geometry=self, component='MESH', label=f"{self.node_chain_label}.face_count")
+            ```
+    
+
+        Returns
+        -------
+            Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
+            
+        """
+
+        return self.domain_size.face_count
+
+    @property
+    def corner_count(self):
+        """ > Node: DomainSize
+          
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeDomainSize
+        node ref Domain Size </sub>
+                                  
+        ```python
+        v = mesh.corner_count
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)## Fixed parameters
+            - component : 'MESH'
+            - label:f"{self.node_chain_label}.corner_count"
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DomainSize(geometry=self, component='MESH', label=f"{self.node_chain_label}.corner_count")
+            ```
+    
+
+        Returns
+        -------
+            Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
+            
+        """
+
+        return self.domain_size.face_corner_count
 
 
     # ----------------------------------------------------------------------------------------------------

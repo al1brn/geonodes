@@ -36,6 +36,6 @@ node = nodes.MaterialSelection(material=None, label=None, node_color=None)
 > Data socket classes implementing this node.
   
   
-- [FaceDomain](/docs/FaceDomain.md).[material_selection](/docs/FaceDomain.md#material_selection) : Fields
+- [Face](/docs/Face.md).[material_selection](/docs/Face.md#material_selection) : Fields
 - [Material](/docs/sockets/Material.md).[selection](/docs/sockets/Material.md#selection) : Method
   

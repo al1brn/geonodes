@@ -37,15 +37,15 @@ node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, lab
 > Data socket classes implementing this node.
   
   
-- [CurveDomain](/docs/CurveDomain.md).[handle_type_selection](/docs/CurveDomain.md#handle_type_selection) : Fields
-- [CurveDomain](/docs/CurveDomain.md).[left_handle_align](/docs/CurveDomain.md#left_handle_align) : Fields
-- [CurveDomain](/docs/CurveDomain.md).[left_handle_auto](/docs/CurveDomain.md#left_handle_auto) : Fields
-- [CurveDomain](/docs/CurveDomain.md).[left_handle_free](/docs/CurveDomain.md#left_handle_free) : Fields
-- [CurveDomain](/docs/CurveDomain.md).[left_handle_selection](/docs/CurveDomain.md#left_handle_selection) : Fields
-- [CurveDomain](/docs/CurveDomain.md).[left_handle_vector](/docs/CurveDomain.md#left_handle_vector) : Fields
-- [CurveDomain](/docs/CurveDomain.md).[right_handle_align](/docs/CurveDomain.md#right_handle_align) : Fields
-- [CurveDomain](/docs/CurveDomain.md).[right_handle_auto](/docs/CurveDomain.md#right_handle_auto) : Fields
-- [CurveDomain](/docs/CurveDomain.md).[right_handle_free](/docs/CurveDomain.md#right_handle_free) : Fields
-- [CurveDomain](/docs/CurveDomain.md).[right_handle_selection](/docs/CurveDomain.md#right_handle_selection) : Fields
-- [CurveDomain](/docs/CurveDomain.md).[right_handle_vector](/docs/CurveDomain.md#right_handle_vector) : Fields
+- [Spline](/docs/Spline.md).[handle_type_selection](/docs/Spline.md#handle_type_selection) : Fields
+- [Spline](/docs/Spline.md).[left_handle_align](/docs/Spline.md#left_handle_align) : Fields
+- [Spline](/docs/Spline.md).[left_handle_auto](/docs/Spline.md#left_handle_auto) : Fields
+- [Spline](/docs/Spline.md).[left_handle_free](/docs/Spline.md#left_handle_free) : Fields
+- [Spline](/docs/Spline.md).[left_handle_selection](/docs/Spline.md#left_handle_selection) : Fields
+- [Spline](/docs/Spline.md).[left_handle_vector](/docs/Spline.md#left_handle_vector) : Fields
+- [Spline](/docs/Spline.md).[right_handle_align](/docs/Spline.md#right_handle_align) : Fields
+- [Spline](/docs/Spline.md).[right_handle_auto](/docs/Spline.md#right_handle_auto) : Fields
+- [Spline](/docs/Spline.md).[right_handle_free](/docs/Spline.md#right_handle_free) : Fields
+- [Spline](/docs/Spline.md).[right_handle_selection](/docs/Spline.md#right_handle_selection) : Fields
+- [Spline](/docs/Spline.md).[right_handle_vector](/docs/Spline.md#right_handle_vector) : Fields
   

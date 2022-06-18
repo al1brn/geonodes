@@ -32,5 +32,5 @@ node = nodes.CurveTangent(label=None, node_color=None)
 > Data socket classes implementing this node.
   
   
-- [CurveDomain](/docs/CurveDomain.md).[tangent](/docs/CurveDomain.md#tangent) : Fields
+- [Spline](/docs/Spline.md).[tangent](/docs/Spline.md#tangent) : Fields
   

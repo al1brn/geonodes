@@ -33,6 +33,6 @@ node = nodes.SplineLength(label=None, node_color=None)
 > Data socket classes implementing this node.
   
   
-- [CurveDomain](/docs/CurveDomain.md).[length](/docs/CurveDomain.md#length) : Fields
-- [CurveDomain](/docs/CurveDomain.md).[point_count](/docs/CurveDomain.md#point_count) : Fields
+- [Spline](/docs/Spline.md).[length](/docs/Spline.md#length) : Fields
+- [Spline](/docs/Spline.md).[point_count](/docs/Spline.md#point_count) : Fields
   

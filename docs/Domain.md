@@ -5,37 +5,119 @@ Root class for domains: PointDomain, FaceDomain, EdgeDomain, CornerDomain, Curve
 
 Fields are properties of domains.
 
-Initialization is made in method init_socket called by initializer Socket.__init__
-
-Domains classes
+Components and domains
 
 
-Domain classes are implemented as properties of geometries:
-- Mesh owns `point`, `edge`, `face` and `corner` properties (`vertex` and `face_corner`
-can be used rather than `point` and `corner`)
-- Curve owns `point` and `spline` (`control_point` can be used rather than `point`)
-- Points owns `point`
-- Instances has no domain properties, fields are direct properties of this class
+- Mesh component
+- Point   : point (or points, verts)
+- Edge    : edge  (or edges)
+- Face    : face  (or faces)
+- Corner  : face_corner (or corner or corners)
+- Curve component
+- Point   : point (or points)
+- Spline  : spline (or splines)
+- Points
+- Point   : point (or points)
+- Instances components
+- Instance : instans (or insts)
   
-To get the index of a point, use the syntax:
+POINT domain is share between Mesh, Curve and Points but has not the same methods
 
-```python
-position = mesh.point.position
-```
+The inheritance diagram is the following:
 
-Thanks to this syntax, you always know which field you want.
+- Interfaces
+- PointInterface      : common to points : Vertex, ControlPoint and CloudPoint
+- MeshInterface       : common to all mesh domains: Vertex, Edge, Face, Corner
+- PEFInterface        : common to Mesh domains except Corner: Vertex, Edge and Face
+  
+- Classes
+- Domain
+- Vertex          : POINT
+- Edge            : EDGE
+- Face            : FACE
+- Corner          : CORNER
+- ControlPoint    : POINT
+- Spline          : CURVE
+- CloudPoint      : POINT
+- Instance        : INSTANCE
+  
+  
 
-```python
-# mesh, curve and instances are initialized respectively as Mesh, Curve ans Instances
+## statistic
 
-mesh.point.position  # position of the vertices
-mesg.vertex.position # same
-mesh.face.position   # position of the faces
-mesh.face.area       # faces area
-curve.point.position # location of the curve control_points
-instances.index      # Indices of the individual instances
-instances.position   # Location of the instances
-```
+<method GeometryNodeAttributeStatistic>
+
+
+
+## transfer_attribute
+
+<method GeometryNodeAttributeTransfer>
+
+mapping in ('NEAREST', 'INDEX'):
+- NEAREST if index is None
+- INDEX otherwise
+  
+call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
+
+
+
+## transfer_boolean
+
+<method GeometryNodeAttributeTransfer>
+
+mapping in ('NEAREST', 'INDEX'):
+- INDEX if source_position is None
+- NEAREST otherwise
+  
+call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
+
+
+
+## transfer_integer
+
+<method GeometryNodeAttributeTransfer>
+
+mapping in ('NEAREST', 'INDEX'):
+- INDEX if source_position is None
+- NEAREST otherwise
+  
+call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
+
+
+
+## transfer_float
+
+<method GeometryNodeAttributeTransfer>
+
+mapping in ('NEAREST', 'INDEX'):
+- INDEX if source_position is None
+- NEAREST otherwise
+  
+call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
+
+
+
+## transfer_vector
+
+<method GeometryNodeAttributeTransfer>
+
+mapping in ('NEAREST', 'INDEX'):
+- INDEX if source_position is None
+- NEAREST otherwise
+  
+call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
+
+
+
+## transfer_color
+
+<method GeometryNodeAttributeTransfer>
+
+mapping in ('NEAREST', 'INDEX'):
+- INDEX if source_position is None
+- NEAREST otherwise
+  
+call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
 
 
 
@@ -73,3 +155,8 @@ NOT SUPPORTED YET
 ef get_named_byte_color(self, name):
 return self.get_named_attribute(name, data_type='BYTE_COLOR')
 
+
+
+## ID
+
+Fields all domain have

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-17
+Created on 2022-06-18
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -10,8 +10,7 @@ Blender version: 3.2.0
 import geonodes as gn
 from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
-from geonodes.core.domains import Domain
-from geonodes import PointDomain, EdgeDomain, FaceDomain, CornerDomain, CurveDomain, InstanceDomain
+import geonodes.core.domains as domains
 
 import logging
 logger = logging.Logger('geonodes')
@@ -52,7 +51,6 @@ class Geometry(dsock.Geometry):
 
         Methods
         -------
-            - attribute_domain_size : Sockets      [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
             - capture_attribute : attribute (data_type dependant)
             - components : Sockets      [selection (Geometry), inverted (Geometry)]
             - convex_hull : convex_hull (Geometry)
@@ -1558,43 +1556,6 @@ class Geometry(dsock.Geometry):
         """
 
         return self.stack(nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='BOOLEAN', domain=domain, label=node_label, node_color=node_color))
-
-    def attribute_domain_size(self, component='MESH', node_label = None, node_color = None):
-        """ > Node: DomainSize
-          
-        <sub>go to: top index
-        blender ref GeometryNodeAttributeDomainSize
-        node ref Domain Size </sub>
-                                  
-        ```python
-        v = geometry.attribute_domain_size(component, node_label = None, node_color = None)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Sockets
-            - geometry : Geometry (self)## Parameters
-            - component : 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-            - node_label : None
-            - node_color : None
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.DomainSize(geometry=self, component=component, label=node_label, node_color=node_color)
-            ```
-    
-
-        Returns
-        -------
-            Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer)]
-            
-        """
-
-        return nodes.DomainSize(geometry=self, component=component, label=node_label, node_color=node_color)
 
     def remove_named_attribute(self, name=None, node_label = None, node_color = None):
         """ > Node: RemoveNamedAttribute

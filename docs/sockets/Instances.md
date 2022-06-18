@@ -7,6 +7,11 @@
 
 
 
+## Properties
+
+- [domain_size](#domain_size) : instance_count (Integer)
+- [instance_count](#instance_count) : instance_count (Integer)
+
 ## Methods
 
 - [duplicate_instances](#duplicate_instances) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
@@ -15,6 +20,68 @@
 - [scale](#scale) : instances (Instances)
 - [to_points](#to_points) : points (Points)
 - [translate](#translate) : instances (Instances)
+
+## domain_size
+
+> Node: [DomainSize](/docs/nodes/DomainSize.md)
+  
+<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
+blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
+                          
+```python
+v = instances.domain_size
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)## Fixed parameters
+- component : 'INSTANCES'
+- label:f"{self.node_chain_label}.domain_size"
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DomainSize(geometry=self, component='INSTANCES', label=f"{self.node_chain_label}.domain_size")
+```
+
+### Returns
+
+Integer
+
+
+## instance_count
+
+> Node: [DomainSize](/docs/nodes/DomainSize.md)
+  
+<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
+blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
+                          
+```python
+v = instances.instance_count
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)## Fixed parameters
+- component : 'INSTANCES'
+- label:f"{self.node_chain_label}.instance_count"
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DomainSize(geometry=self, component='INSTANCES', label=f"{self.node_chain_label}.instance_count")
+```
+
+### Returns
+
+Integer
+
 
 ## rotate
 

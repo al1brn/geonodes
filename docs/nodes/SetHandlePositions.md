@@ -44,7 +44,7 @@ node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offse
   
   
 - [Curve](/docs/sockets/Curve.md).[set_handle_positions](/docs/sockets/Curve.md#set_handle_positions) : Method
-- [CurveDomain](/docs/CurveDomain.md).[set_handle_positions](/docs/CurveDomain.md#set_handle_positions) : Fields
-- [CurveDomain](/docs/CurveDomain.md).[set_left_handle_positions](/docs/CurveDomain.md#set_left_handle_positions) : Fields
-- [CurveDomain](/docs/CurveDomain.md).[set_right_handle_positions](/docs/CurveDomain.md#set_right_handle_positions) : Fields
+- [Spline](/docs/Spline.md).[set_handle_positions](/docs/Spline.md#set_handle_positions) : Fields
+- [Spline](/docs/Spline.md).[set_left_handle_positions](/docs/Spline.md#set_left_handle_positions) : Fields
+- [Spline](/docs/Spline.md).[set_right_handle_positions](/docs/Spline.md#set_right_handle_positions) : Fields
   

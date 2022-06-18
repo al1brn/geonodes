@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-17
+Created on 2022-06-18
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -10,8 +10,7 @@ Blender version: 3.2.0
 import geonodes as gn
 from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
-from geonodes.core.domains import Domain
-from geonodes import PointDomain, EdgeDomain, FaceDomain, CornerDomain, CurveDomain, InstanceDomain
+import geonodes.core.domains as domains
 
 import logging
 logger = logging.Logger('geonodes')

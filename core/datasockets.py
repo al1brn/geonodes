@@ -521,6 +521,21 @@ class Geometry(DataSocket):
     
     def reset_properties(self):
         super().reset_properties()
+        
+    @property
+    def component(self):
+        """ > Component in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'VOLUME')
+        
+        return 'GEOMETRY' if not determined
+        """
+        
+        table = {'Geometry': 'GEOMETRY', 'Mesh': 'MESH', 'Curve': 'CURVE', 'Spline': 'Curve', 'Instances': 'INSTANCES', 'Points': 'POINTCLOUD', 'Volume': 'VOLUME'}
+
+        tp = tp(self.data_socket)
+        if tp in table:
+            return table[tp]
+        else:
+            raise Exception(f"INTERNAL ERROR: not component name for {type(self)}")
             
     @classmethod
     def Input(cls, name=None, description=""):

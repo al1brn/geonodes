@@ -32,5 +32,5 @@ node = nodes.EdgeNeighbors(label=None, node_color=None)
 > Data socket classes implementing this node.
   
   
-- [EdgeDomain](/docs/EdgeDomain.md).[neighbors_faces](/docs/EdgeDomain.md#neighbors_faces) : Fields
+- [Edge](/docs/Edge.md).[neighbors_faces](/docs/Edge.md#neighbors_faces) : Fields
   

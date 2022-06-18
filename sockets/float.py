@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-17
+Created on 2022-06-18
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -10,8 +10,7 @@ Blender version: 3.2.0
 import geonodes as gn
 from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
-from geonodes.core.domains import Domain
-from geonodes import PointDomain, EdgeDomain, FaceDomain, CornerDomain, CurveDomain, InstanceDomain
+import geonodes.core.domains as domains
 
 import logging
 logger = logging.Logger('geonodes')
@@ -94,7 +93,6 @@ class Float(dsock.Float):
             - tanh : value (Float)
             - to_integer : integer (Integer)
             - to_string : string (String)
-            - transfer_attribute : attribute (Float)
             - trunc : value (Float)
             - wrap : value (Float)
     """
@@ -226,48 +224,6 @@ class Float(dsock.Float):
         """
 
         return nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection, data_type='FLOAT', domain=domain, label=node_label, node_color=node_color)
-
-    def transfer_attribute(self, source=None, source_position=None, index=None, domain='POINT', mapping='NEAREST_FACE_INTERPOLATED', node_label = None, node_color = None):
-        """ > Node: TransferAttribute
-          
-        <sub>go to: top index
-        blender ref GeometryNodeAttributeTransfer
-        node ref Transfer Attribute </sub>
-                                  
-        ```python
-        v = float.transfer_attribute(source, source_position, index, domain, mapping, node_label = None, node_color = None)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Sockets
-            - attribute : Float (self)
-            - source : Geometry
-            - source_position : Vector
-            - index : Integer## Parameters
-            - domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-            - mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
-            - node_label : None
-            - node_color : None## Fixed parameters
-            - data_type : 'FLOAT'
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
-            ```
-    
-
-        Returns
-        -------
-            Float
-            
-        """
-
-        return nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping, label=node_label, node_color=node_color).attribute
 
     def capture_attribute(self, geometry=None, domain='POINT', node_label = None, node_color = None):
         """ > Node: CaptureAttribute

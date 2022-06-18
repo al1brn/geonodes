@@ -7,12 +7,79 @@
 
 
 
+## Properties
+
+- [domain_size](#domain_size) : point_count (Integer)
+- [point_count](#point_count) : point_count (Integer)
+
 ## Methods
 
 - [instance_on_points](#instance_on_points) : instances (Instances)
 - [set_radius](#set_radius) : points (Points)
 - [to_vertices](#to_vertices) : mesh (Mesh)
 - [to_volume](#to_volume) : volume (Volume)
+
+## domain_size
+
+> Node: [DomainSize](/docs/nodes/DomainSize.md)
+  
+<sub>go to: [top](#data-socket-points) [index](/docs/index.md)
+blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
+                          
+```python
+v = points.domain_size
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)## Fixed parameters
+- component : 'POINTCLOUD'
+- label:f"{self.node_chain_label}.domain_size"
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DomainSize(geometry=self, component='POINTCLOUD', label=f"{self.node_chain_label}.domain_size")
+```
+
+### Returns
+
+Integer
+
+
+## point_count
+
+> Node: [DomainSize](/docs/nodes/DomainSize.md)
+  
+<sub>go to: [top](#data-socket-points) [index](/docs/index.md)
+blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
+                          
+```python
+v = points.point_count
+```
+
+### Arguments
+
+## Sockets
+- geometry : Geometry (self)## Fixed parameters
+- component : 'POINTCLOUD'
+- label:f"{self.node_chain_label}.point_count"
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.DomainSize(geometry=self, component='POINTCLOUD', label=f"{self.node_chain_label}.point_count")
+```
+
+### Returns
+
+Integer
+
 
 ## set_radius
 

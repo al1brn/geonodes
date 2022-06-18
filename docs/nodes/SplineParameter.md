@@ -34,7 +34,7 @@ node = nodes.SplineParameter(label=None, node_color=None)
 > Data socket classes implementing this node.
   
   
-- [CurveDomain](/docs/CurveDomain.md).[parameter_factor](/docs/CurveDomain.md#parameter_factor) : Fields
-- [CurveDomain](/docs/CurveDomain.md).[parameter_index](/docs/CurveDomain.md#parameter_index) : Fields
-- [CurveDomain](/docs/CurveDomain.md).[parameter_length](/docs/CurveDomain.md#parameter_length) : Fields
+- [Spline](/docs/Spline.md).[parameter_factor](/docs/Spline.md#parameter_factor) : Fields
+- [Spline](/docs/Spline.md).[parameter_index](/docs/Spline.md#parameter_index) : Fields
+- [Spline](/docs/Spline.md).[parameter_length](/docs/Spline.md#parameter_length) : Fields
   

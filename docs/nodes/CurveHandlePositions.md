@@ -37,5 +37,5 @@ node = nodes.CurveHandlePositions(relative=None, label=None, node_color=None)
 > Data socket classes implementing this node.
   
   
-- [CurveDomain](/docs/CurveDomain.md).[handle_positions](/docs/CurveDomain.md#handle_positions) : Fields
+- [Spline](/docs/Spline.md).[handle_positions](/docs/Spline.md#handle_positions) : Fields
   

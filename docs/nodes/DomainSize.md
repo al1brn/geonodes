@@ -45,5 +45,16 @@ node = nodes.DomainSize(geometry=None, component='MESH', label=None, node_color=
 > Data socket classes implementing this node.
   
   
-- [Geometry](/docs/sockets/Geometry.md).[attribute_domain_size](/docs/sockets/Geometry.md#attribute_domain_size) : Method
+- [Curve](/docs/sockets/Curve.md).[domain_size](/docs/sockets/Curve.md#domain_size) : Property
+- [Curve](/docs/sockets/Curve.md).[point_count](/docs/sockets/Curve.md#point_count) : Property
+- [Curve](/docs/sockets/Curve.md).[spline_count](/docs/sockets/Curve.md#spline_count) : Property
+- [Instances](/docs/sockets/Instances.md).[domain_size](/docs/sockets/Instances.md#domain_size) : Property
+- [Instances](/docs/sockets/Instances.md).[instance_count](/docs/sockets/Instances.md#instance_count) : Property
+- [Mesh](/docs/sockets/Mesh.md).[corner_count](/docs/sockets/Mesh.md#corner_count) : Property
+- [Mesh](/docs/sockets/Mesh.md).[domain_size](/docs/sockets/Mesh.md#domain_size) : Property
+- [Mesh](/docs/sockets/Mesh.md).[edge_count](/docs/sockets/Mesh.md#edge_count) : Property
+- [Mesh](/docs/sockets/Mesh.md).[face_count](/docs/sockets/Mesh.md#face_count) : Property
+- [Mesh](/docs/sockets/Mesh.md).[point_count](/docs/sockets/Mesh.md#point_count) : Property
+- [Points](/docs/sockets/Points.md).[domain_size](/docs/sockets/Points.md#domain_size) : Property
+- [Points](/docs/sockets/Points.md).[point_count](/docs/sockets/Points.md#point_count) : Property
   

@@ -46,7 +46,6 @@
 - [screen](#screen) : color (Color)
 - [soft_light](#soft_light) : color (Color)
 - [subtract](#subtract) : color (Color)
-- [transfer_attribute](#transfer_attribute) : attribute (Color)
 - [value](#value) : color (Color)
 
 ## Combine
@@ -200,43 +199,6 @@ nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.b")
 ### Returns
 
 Sockets [r (Float), g (Float), b (Float)]
-
-
-## transfer_attribute
-
-> Node: [TransferAttribute](/docs/nodes/TransferAttribute.md)
-  
-<sub>go to: [top](#data-socket-color) [index](/docs/index.md)
-blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
-node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
-                          
-```python
-v = color.transfer_attribute(source, source_position, index, domain, mapping, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- attribute : Color (self)
-- source : Geometry
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'FLOAT_COLOR'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Color
 
 
 ## capture_attribute

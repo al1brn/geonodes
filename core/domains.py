@@ -19,42 +19,46 @@ logger = logging.getLogger('geonodes')
 
 
 # =============================================================================================================================
-# Root class for domains: PointDomain, FaceDomain, EdgeDomain, CornerDomain, CurveDomain and Instance
+# Root class for domains
 #    
 # Fields are properties of domains.
 #   
-# Initialization is made in method init_socket called by initializer Socket.__init__
+# Components and domains
+# ----------------------
 #
-# Domains classes
-# ---------------
+# - Mesh component
+#     - Point   : point (or points, verts)
+#     - Edge    : edge  (or edges)
+#     - Face    : face  (or faces)
+#     - Corner  : face_corner (or corner or corners)
+# - Curve component
+#     - Point   : point (or points)
+#     - Spline  : spline (or splines)
+# - Points
+#     - Point   : point (or points)
+# - Instances components
+#     - Instance : instans (or insts)
 #
-# Domain classes are implemented as properties of geometries:
-#     - Mesh owns `point`, `edge`, `face` and `corner` properties (`vertex` and `face_corner`
-#       can be used rather than `point` and `corner`)
-#     - Curve owns `point` and `spline` (`control_point` can be used rather than `point`)
-#     - Points owns `point`
-#     - Instances has no domain properties, fields are direct properties of this class
+# POINT domain is share between Mesh, Curve and Points but has not the same methods
 #
-# To get the index of a point, use the syntax:
+# The inheritance diagram is the following:
 #
-# ```python
-# position = mesh.point.position
-# ```
+# - Interfaces
+#   - PointInterface      : common to points : Vertex, ControlPoint and CloudPoint
+#   - MeshInterface       : common to all mesh domains: Vertex, Edge, Face, Corner
+#   - PEFInterface        : common to Mesh domains except Corner: Vertex, Edge and Face
 #
-# Thanks to this syntax, you always know which field you want.
-#
-# ```python
-# # mesh, curve and instances are initialized respectively as Mesh, Curve ans Instances
-#
-# mesh.point.position  # position of the vertices
-# mesg.vertex.position # same
-# mesh.face.position   # position of the faces
-# mesh.face.area       # faces area
-# curve.point.position # location of the curve control_points
-# instances.index      # Indices of the individual instances
-# instances.position   # Location of the instances
-# ```
-#
+# - Classes
+#   - Domain
+#     - Vertex          : POINT
+#     - Edge            : EDGE
+#     - Face            : FACE
+#     - Corner          : CORNER
+#     - ControlPoint    : POINT
+#     - Spline          : CURVE
+#     - CloudPoint      : POINT
+#     - Instance        : INSTANCE
+
 
 class Domain:
     
@@ -68,15 +72,109 @@ class Domain:
     def init_cache(self):
         self.ID_       = None
         self.index_    = None
-        self.normal_   = None
-        self.position_ = None
         self.radius_   = None
         
         self.named_fields = {}
         
     def select(self, selection):
         return type(self)(self.data_socket, selection=selection)
+    
+    def __repr__(self):
+        return f"<Domain {self.domain} of {self.data_socket}>"
+    
+    def stack(self, node):
+        return self.data_socket.stack(node)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Statistics
+    
+    def statistic(self, attribute, data_type=None):
+        """ <method GeometryNodeAttributeStatistic>
+        """
+        dt = Socket.domain_data_type(attribute) if data_type is None else Socket.domain_data_type(data_type)
         
+        return nodes.AttributeStatistic(self.data_socket, selection=self.selection, attribute=attribute, data_type=dt, domain=self.domain)
+
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Transfer attribute
+
+    def transfer_attribute(self, attribute, source_position=None, index=None, data_type=None, mapping=None):
+        """ <method GeometryNodeAttributeTransfer>
+        
+        mapping in ('NEAREST', 'INDEX'):
+        - NEAREST if index is None
+        - INDEX otherwise
+        
+        call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
+        """
+        dt = Socket.domain_data_type(attribute) if data_type is None else Socket.domain_data_type(data_type)
+        
+        # NEAREST_FACE_INTERPOLATED in a dedicated method
+        
+        if mapping is None:
+            if index is None:
+                mapping = 'NEAREST'
+            else:
+                mapping = 'INDEX'
+        
+        return nodes.TransferAttribute(self.data_socket, attribute=attribute, source_position=source_position, index=index, data_type=dt, domain=self.domain, mapping=mapping).node_socket
+    
+    def transfer_boolean(self, attribute, source_position=None, index=None, mapping=None):
+        """ <method GeometryNodeAttributeTransfer>
+        
+        mapping in ('NEAREST', 'INDEX'):
+        - INDEX if source_position is None
+        - NEAREST otherwise
+        
+        call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
+        """
+        return self.transfer_attribute(attribute, source_position=source_position, index=index, data_type='BOOLEAN', mapping=mapping)
+        
+    def transfer_integer(self, attribute, source_position=None, index=None, mapping=None):
+        """ <method GeometryNodeAttributeTransfer>
+        
+        mapping in ('NEAREST', 'INDEX'):
+        - INDEX if source_position is None
+        - NEAREST otherwise
+        
+        call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
+        """
+        return self.transfer_attribute(attribute, source_position=source_position, index=index, data_type='INT', mapping=mapping)
+        
+    def transfer_float(self, attribute, source_position=None, index=None, mapping=None):
+        """ <method GeometryNodeAttributeTransfer>
+        
+        mapping in ('NEAREST', 'INDEX'):
+        - INDEX if source_position is None
+        - NEAREST otherwise
+        
+        call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
+        """
+        return self.transfer_attribute(attribute, source_position=source_position, index=index, data_type='FLOAT', mapping=mapping)
+        
+    def transfer_vector(self, attribute, source_position=None, index=None, mapping=None):
+        """ <method GeometryNodeAttributeTransfer>
+        
+        mapping in ('NEAREST', 'INDEX'):
+        - INDEX if source_position is None
+        - NEAREST otherwise
+        
+        call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
+        """
+        return self.transfer_attribute(attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', mapping=mapping)
+        
+    def transfer_color(self, attribute, source_position=None, index=None, mapping=None):
+        """ <method GeometryNodeAttributeTransfer>
+        
+        mapping in ('NEAREST', 'INDEX'):
+        - INDEX if source_position is None
+        - NEAREST otherwise
+        
+        call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
+        """
+        return self.transfer_attribute(attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', mapping=mapping)
+
     # ----------------------------------------------------------------------------------------------------
     # > Named field
     #
@@ -162,6 +260,7 @@ class Domain:
         self.set_named_attribute(name, value, data_type='BYTE_COLOR')
         
     # ----------------------------------------------------------------------------------------------------
+    # Fields all domain have
         
     @property
     def ID(self):
@@ -174,71 +273,87 @@ class Domain:
         if self.index_ is None:
             self.index_ = field.Index(self)
         return self.index_.node_socket
+    
+        
+# =============================================================================================================================
+# Point interface
+#
+# Properties and methods shared by all POINT domains:
+# - Vertex
+# - ControlPoiint
+# - CloudPoint
+
+class PointInterface:
+    
+    def init_point_cache(self):
+        self.position_ = None
         
     @property
-    def normal(self):
-        if self.normal_ is None:
-            self.normal_ = field.Normal(self)
-        return self.normal_.node_socket
-    
-    @property
     def position(self):
+        """ > Property Point position
+        <blid GeometryNodeInputPosition>
+        """
         if self.position_ is None:
             self.position_ = field.Position(self)
         return self.position_.node_socket
     
     @position.setter
     def position(self, value):
+        """ > Property Point position setter
+        <blid GeometryNodeSetPosition>
+        """
         if self.position_ is None:
             self.position_ = Location(self)
         self.position_.set_value(value)
         
-    @property
-    def radius(self):
-        if self.radius_ is None:
-            self.radius_ = field.Radius(self)
-        return self.radius_.node_socket
-    
-    @radius.setter
-    def radius(self, value):
-        if self.radius_ is None:
-            self.radius_ = field.Radius(self)
-        self.radius_.set_value(value)
-        
-        
 # =============================================================================================================================
-# Domain Point
+# Mesh domains
 #
-# Inherits from [Domain](/docs/core/domain.MD)
+# Mesh domains are:
+# - Vertex
+# - Edge
+# - Face
+# - Corner
 #
-# A property of Mesh, Curve, Points
+# Vertex, Edge and Face share the interface PEFInterface
 
-class PointDomain(Domain):
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Properties and methodes shared by all Mesh domains: Point, Edeg,  Face and Corner
+
+class MeshInterface:
     
-    def __init__(self, data_socket):
-        super().__init__(data_socket, domain='POINT')
-        
-    def init_cache(self):
-        super().init_cache()
-        
-        self.neighbors_ = None
-        
+    def init_mesh_cache(self):
+        self.normal_   = None
+    
     @property
-    def neighbors_vertices(self):
-        if self.neighbors_ is None:
-            self.neighbors_ = field.Neighbors(self)
-        return self.neighbors_.input_node.get_datasocket(0)
+    def normal(self):
+        if self.normal_ is None:
+            self.normal_ = field.Normal(self)
+        return self.normal_.node_socket
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Properties and methodes shared by Mesh Point, Edge and Face (but not Corner)
+
+class PEFInterface:
+    
+    def init_PEF_cache(self):
+        pass
+    
+    def delete(self, mode='ALL'):
+        """ <method GeometryNodeDeleteGeometry>
         
-    @property
-    def neighbors_faces(self):
-        if self.neighbors_ is None:
-            self.neighbors_ = field.Neighbors(self)
-        return self.neighbors_.input_node.get_datasocket(1)
+        mode : str (default = 'ALL') in ('ALL', 'EDGE_FACE', 'ONLY_FACE')        
+        
+        ```python
+        geometry.verts.select(...).delete(mode='ALL')
+        geometry.edges.select(...).delete(mode='EDGE_FACE')
+        geometry.faces.select(...).delete(mode='ONLY_FACE')
+        ```
+        """
+        return self.stack(nodes.DeleteGeometry(self.data_socket, selection=self.selection, domain=self.domain, mode=mode))
     
-    # ====================================================================================================
-    # Functions
-    
-    def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, node_label = None, node_color = None):
+    def extrude(self, offset=None, offset_scale=None, individual=None, node_label = None, node_color = None):
         """ <method GeometryNodeExtrudeMesh>
         
         call [Mesh.extrude](/docs/sockets/Mesh.md#extrude) with mode = 'VERTICES'
@@ -247,31 +362,118 @@ class PointDomain(Domain):
         node = mesh.verts.extrude()
         ```
         
-        """
-        
-        return self.data_socket.extrude(selection=selection, offset=offset, offset_scale=offset_scale, individual=individual,
+        """    
+        return self.data_socket.extrude(selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual,
                         mode='VERTICES', node_label=node_label, node_color=node_color)
     
-# ---------------------------------------------------------------------------
-# > Field domain FACE
-#
-# Inherits from [Domain](/docs/core/domain.MD)
-#
-# A property of Mesh
+        
+# -----------------------------------------------------------------------------------------------------------------------------
+# vertex: the point domain of meshes
 
-class FaceDomain(Domain):
+class Vertex(Domain, PointInterface, MeshInterface, PEFInterface):
+    
+    def __init__(self, data_socket):
+        super().__init__(data_socket, domain='POINT')
+        
+    def init_cache(self):
+        super().init_cache()
+        self.init_point_cache()
+        self.init_mesh_cache()
+        self.init_PEF_cache()
+        
+        self.neighbors_ = None
+        
+    @property
+    def neighbors_vertices(self):
+        """ > Neighbors vertices
+        <blid GeometryNodeInputMeshVertexNeighbors>
+        """
+        if self.neighbors_ is None:
+            self.neighbors_ = field.Neighbors(self)
+        return self.neighbors_.input_node.get_datasocket(0)
+        
+    @property
+    def neighbors_faces(self):
+        """ > Neighbors faces
+        <blid GeometryNodeInputMeshVertexNeighbors>
+        """
+        if self.neighbors_ is None:
+            self.neighbors_ = field.Neighbors(self)
+        return self.neighbors_.input_node.get_datasocket(1)
+    
+    # ====================================================================================================
+    # Methods
+    
+        
+    
+    
+# -----------------------------------------------------------------------------------------------------------------------------
+# Face domain
+
+class Face(Domain, MeshInterface, PEFInterface):
 
     def __init__(self, data_socket, selection=None):
         super().__init__(data_socket, domain='FACE', selection=selection)
         
     def init_cache(self):
         super().init_cache()
+        
+        self.init_mesh_cache()
+        self.init_PEF_cache()
 
         self.neighbors_      = None
         self.area_           = None
         self.shade_smooth_   = None
         self.island_         = None
         self.material_index_ = None
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Transfer attribute
+
+    def transfer_attribute_interpolated(self, attribute, source_position=None, data_type=None):
+        """ <method GeometryNodeAttributeTransfer>
+        
+        for other mapping, use transfer_attribute
+        """
+        return self.transfer_attribute(attribute, source_position=source_position, data_type=data_type, mapping='NEAREST_FACE_INTERPOLATED')
+    
+    def transfer_boolean_interpolated(self, attribute, source_position=None):
+        """ <method GeometryNodeAttributeTransfer>
+        
+        for other mapping, use transfer_attribute
+        """
+        return self.transfer_attribute_interpolated(attribute, source_position=source_position, data_type='BOOLEAN')
+        
+    def transfer_integer_interpolated(self, attribute, source_position=None):
+        """ <method GeometryNodeAttributeTransfer>
+        
+        for other mapping, use transfer_attribute
+        """
+        return self.transfer_attribute_interpolated(attribute, source_position=source_position, data_type='INT')
+        
+    def transfer_float_interpolated(self, attribute, source_position=None):
+        """ <method GeometryNodeAttributeTransfer>
+        
+        for other mapping, use transfer_attribute
+        """
+        return self.transfer_attribute_interpolated(attribute, source_position=source_position, data_type='FLOAT')
+        
+    def transfer_vector_interpolated(self, attribute, source_position=None):
+        """ <method GeometryNodeAttributeTransfer>
+        
+        for other mapping, use transfer_attribute
+        """
+        return self.transfer_attribute_interpolated(attribute, source_position=source_position, data_type='FLOAT_VECTOR')
+        
+    def transfer_color_interpolated(self, attribute, source_position=None):
+        """ <method GeometryNodeAttributeTransfer>
+        
+        for other mapping, use transfer_attribute
+        """
+        return self.transfer_attribute_interpolated(attribute, source_position=source_position, data_type='FLOAT_COLOR')
+
+    # ----------------------------------------------------------------------------------------------------
+    # Fields
         
     @property
     def neighbors_vertices(self):
@@ -384,6 +586,7 @@ class FaceDomain(Domain):
     # ====================================================================================================
     # Methods
     
+    
     def distribute_points(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None, node_color=None):
         """ <method GeometryNodeDistributePointsOnFaces>
     
@@ -446,21 +649,19 @@ class FaceDomain(Domain):
                         mode='FACES', node_label=node_label, node_color=node_color)
     
     
-# ---------------------------------------------------------------------------
-# > Field domain FACE
-#
-# Inherits from [Domain](/docs/core/domain.MD)
-#
-# A property of Mesh
+# -----------------------------------------------------------------------------------------------------------------------------
+# Edge domain
         
-        
-class EdgeDomain(Domain):
+class Edge(Domain, MeshInterface, PEFInterface):
     
     def __init__(self, data_socket, selection=None):
         super().__init__(data_socket, domain='EDGE', selection=selection)
         
     def init_cache(self):
         super().init_cache()
+
+        self.init_mesh_cache()
+        self.init_PEF_cache()
         
         self.neighbors_ = None
         self.angle_     = None
@@ -617,32 +818,40 @@ class EdgeDomain(Domain):
         
         return self.data_socket.extrude(selection=selection, offset=offset, offset_scale=offset_scale, individual=individual,
                         mode='EDGES', node_label=node_label, node_color=node_color)
-                            
-    
-    
     
 # ---------------------------------------------------------------------------
-# > Field domain CORNER
-#
-# Inherits from [Domain](/docs/core/domain.MD)
-#
-# A property of Mesh
-        
+# Face corner domain
 
-class CornerDomain(Domain):
+class Corner(Domain, MeshInterface):
     
     def __init__(self, data_socket, selection=None):
         super().__init__(data_socket, domain='CORNER', selection=selection)
-
         
-# ---------------------------------------------------------------------------
-# > Field domain CURVE
-#
-# Inherits from [Domain](/docs/core/domain.MD)
-#
-# A property of Spline and Curve
+    def init_cache(self):
+        super().init_cache()
 
-class CurveDomain(Domain):
+        self.init_mesh_cache()
+        
+# =============================================================================================================================
+# Curve domains
+
+# ----------------------------------------------------------------------------------------------------
+# Control point : the point domain of faces
+
+class ControlPoint(Domain, PointInterface):
+
+    def __init__(self, data_socket):
+        super().__init__(data_socket, domain='POINT')
+        
+    def init_cache(self):
+        super().init_cache()
+
+        self.init_point_cache()
+    
+# ----------------------------------------------------------------------------------------------------
+# Spline
+
+class Spline(Domain):
     
     def __init__(self, data_socket, selection=None):
         super().__init__(data_socket, domain='CURVE', selection=selection)
@@ -650,12 +859,28 @@ class CurveDomain(Domain):
     def init_cache(self):
         super().init_cache()
         
+        self.radius_     = None
         self.tilt_       = None
         self.cylic_      = None
         self.tangent_    = None
         self.length_     = None
         self.parameter_  = None
         self.resolution_ = None
+        
+        self.radius_ = None
+        
+    @property
+    def radius(self):
+        if self.radius_ is None:
+            self.radius_ = field.Radius(self)
+        return self.radius_.node_socket
+    
+    @radius.setter
+    def radius(self, value):
+        if self.radius_ is None:
+            self.radius_ = field.Radius(self)
+        self.radius_.set_value(value)
+        
         
     @property
     def tilt(self):
@@ -1034,18 +1259,84 @@ class CurveDomain(Domain):
         """
         return self.left_handle_selection(handle_type='ALIGN')
     
+    # ====================================================================================================
+    # Methods
+    
+    def delete(self):
+        """ <method GeometryNodeDeleteGeometry>
+        
+        mode : str (default = 'ALL') in ('ALL', 'EDGE_FACE', 'ONLY_FACE')        
+        
+        ```python
+        curve.splines.select(...).delete()
+        ```
+        """
+        return self.stack(nodes.DeleteGeometry(self.data_socket, selection=self.selection, domain=self.domain))
+    
+# =============================================================================================================================
+# Cloud point : the point domain of cloud of points
 
-# ---------------------------------------------------------------------------
-# > Field domain INSTANCE
-#
-# Inherits from [Domain](/docs/core/domain.MD)
-#
-# A property of Instances
+class CloudPoint(Domain, PointInterface):
 
-class InstanceDomain(Domain):
+    def __init__(self, data_socket):
+        super().__init__(data_socket, domain='POINT')
+        
+    def init_cache(self):
+        super().init_cache()
+
+        self.init_point_cache()
+        
+        self.radius_ = None
+        
+    @property
+    def radius(self):
+        if self.radius_ is None:
+            self.radius_ = field.Radius(self)
+        return self.radius_.node_socket
+    
+    @radius.setter
+    def radius(self, value):
+        if self.radius_ is None:
+            self.radius_ = field.Radius(self)
+        self.radius_.set_value(value)
+        
+    # ====================================================================================================
+    # Methods
+
+    def delete(self):
+        """ <method GeometryNodeDeleteGeometry>
+        
+        mode : str (default = 'ALL') in ('ALL', 'EDGE_FACE', 'ONLY_FACE')        
+        
+        ```python
+        points.points.select(...).delete()
+        ```
+        """
+        return self.stack(nodes.DeleteGeometry(self.data_socket, selection=self.selection, domain=self.domain))
+        
+        
+        
+# =============================================================================================================================
+# Instance domain
+
+class Instance(Domain):
     
     def __init__(self, data_socket, selection=None):
         super().__init__(data_socket, domain='INSTANCE', selection=selection)
+        
+    # ====================================================================================================
+    # Methods
+    
+    def delete(self):
+        """ <method GeometryNodeDeleteGeometry>
+        
+        ```python
+        instances.insts.select(...).delete()
+        ```
+        """
+        return self.stack(nodes.DeleteGeometry(self.data_socket, selection=self.selection))
+    
+        
 
         
 

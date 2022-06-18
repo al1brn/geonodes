@@ -37,5 +37,5 @@ node = nodes.EndpointSelection(start_size=None, end_size=None, label=None, node_
 > Data socket classes implementing this node.
   
   
-- [CurveDomain](/docs/CurveDomain.md).[endpoint_selection](/docs/CurveDomain.md#endpoint_selection) : Fields
+- [Spline](/docs/Spline.md).[endpoint_selection](/docs/Spline.md#endpoint_selection) : Fields
   

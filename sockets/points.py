@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-17
+Created on 2022-06-18
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -10,8 +10,7 @@ Blender version: 3.2.0
 import geonodes as gn
 from geonodes.core import datasockets as dsock
 from geonodes.nodes import nodes
-from geonodes.core.domains import Domain
-from geonodes import PointDomain, EdgeDomain, FaceDomain, CornerDomain, CurveDomain, InstanceDomain
+import geonodes.core.domains as domains
 
 import logging
 logger = logging.Logger('geonodes')
@@ -31,6 +30,12 @@ class Points(gn.Geometry):
         
     
 
+        Properties
+        ----------
+            - domain_size : point_count (Integer)
+            - point_count : point_count (Integer)
+    
+
         Methods
         -------
             - instance_on_points : instances (Instances)
@@ -40,11 +45,99 @@ class Points(gn.Geometry):
     """
 
     def init_domains(self):
-        self.point = PointDomain(self)
+        self.points = PointDomain(self)
 
     @property
-    def points(self):
-        return self.point
+    def point(self):
+        return self.points
+
+
+    def reset_properties(self):
+
+        super().reset_properties()
+
+        self.domain_size_ = None
+
+        self.point_count_ = None
+
+    # ----------------------------------------------------------------------------------------------------
+    # Properties
+
+    @property
+    def domain_size(self):
+        """ > Node: DomainSize
+          
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeDomainSize
+        node ref Domain Size </sub>
+                                  
+        ```python
+        v = points.domain_size
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)## Fixed parameters
+            - component : 'POINTCLOUD'
+            - label:f"{self.node_chain_label}.domain_size"
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DomainSize(geometry=self, component='POINTCLOUD', label=f"{self.node_chain_label}.domain_size")
+            ```
+    
+
+        Returns
+        -------
+            Integer
+            
+        """
+
+        if self.domain_size_ is None:
+            self.domain_size_ = nodes.DomainSize(geometry=self, component='POINTCLOUD', label=f"{self.node_chain_label}.domain_size").point_count
+        return self.domain_size_
+
+    @property
+    def point_count(self):
+        """ > Node: DomainSize
+          
+        <sub>go to: top index
+        blender ref GeometryNodeAttributeDomainSize
+        node ref Domain Size </sub>
+                                  
+        ```python
+        v = points.point_count
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : Geometry (self)## Fixed parameters
+            - component : 'POINTCLOUD'
+            - label:f"{self.node_chain_label}.point_count"
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.DomainSize(geometry=self, component='POINTCLOUD', label=f"{self.node_chain_label}.point_count")
+            ```
+    
+
+        Returns
+        -------
+            Integer
+            
+        """
+
+        return self.domain_size.point_count
 
 
     # ----------------------------------------------------------------------------------------------------

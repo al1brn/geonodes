@@ -64,7 +64,6 @@
 - [snap](#snap) : vector (Vector)
 - [subtract](#subtract) : vector (Vector)
 - [tan](#tan) : vector (Vector)
-- [transfer_attribute](#transfer_attribute) : attribute (Vector)
 - [wrap](#wrap) : vector (Vector)
 
 ## Random
@@ -357,43 +356,6 @@ nodes.AttributeStatistic(attribute=self, geometry=geometry, selection=selection,
 ### Returns
 
 Sockets [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)]
-
-
-## transfer_attribute
-
-> Node: [TransferAttribute](/docs/nodes/TransferAttribute.md)
-  
-<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
-blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
-node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
-                          
-```python
-v = vector.transfer_attribute(source, source_position, index, domain, mapping, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- attribute : Vector (self)
-- source : Geometry
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'FLOAT_VECTOR'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Vector
 
 
 ## capture_attribute

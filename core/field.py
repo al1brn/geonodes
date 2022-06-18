@@ -23,6 +23,10 @@ import bpy
 import logging
 logger = logging.getLogger('geonodes')
 
+# =============================================================================================================================
+# An attribute is a value data socket keeping track 
+
+
 
 # =============================================================================================================================
 # A field is the basic geometry data
@@ -67,7 +71,7 @@ class Field:
         raise RuntimeError("Input node not implemented !")        
         
     def stack(self, node):
-        return self.geo_domain.data_socket.stack(node)
+        return self.geo_domain.stack(node)
     
     def set_value(self, value):
         raise RuntimeError(f"The field '{type(self).__name}' is read only.")

@@ -24,7 +24,6 @@
 - [nor](#nor) : boolean (Boolean)
 - [raycast](#raycast) : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
 - [switch](#switch) : output (Boolean)
-- [transfer_attribute](#transfer_attribute) : attribute (Boolean)
 - [xnor](#xnor) : boolean (Boolean)
 - [xor](#xor) : boolean (Boolean)
 
@@ -55,43 +54,6 @@ v = Boolean.Random(probability, ID, seed, node_label = None, node_color = None)
 ```python
 from geondes import nodes
 nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
-
-## transfer_attribute
-
-> Node: [TransferAttribute](/docs/nodes/TransferAttribute.md)
-  
-<sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
-blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
-node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
-                          
-```python
-v = boolean.transfer_attribute(source, source_position, index, domain, mapping, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- attribute : Boolean (self)
-- source : Geometry
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'BOOLEAN'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.TransferAttribute(attribute=self, source=source, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
 ```
 
 ### Returns

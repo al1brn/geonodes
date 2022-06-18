@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-17
+Created on 2022-06-18
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -1448,7 +1448,18 @@ class DomainSize(Node):
             > Data socket classes implementing this node.
               
               
-            - Geometry.attribute_domain_size : Method
+            - Curve.domain_size : Property
+            - Curve.point_count : Property
+            - Curve.spline_count : Property
+            - Instances.domain_size : Property
+            - Instances.instance_count : Property
+            - Mesh.corner_count : Property
+            - Mesh.domain_size : Property
+            - Mesh.edge_count : Property
+            - Mesh.face_count : Property
+            - Mesh.point_count : Property
+            - Points.domain_size : Property
+            - Points.point_count : Property
               
     """
 
@@ -1661,16 +1672,11 @@ class TransferAttribute(Node):
             > Data socket classes implementing this node.
               
               
-            - Boolean.transfer_attribute : Method
-            - Color.transfer_attribute : Method
-            - Float.transfer_attribute : Method
             - Geometry.transfer_boolean : Method
             - Geometry.transfer_color : Method
             - Geometry.transfer_float : Method
             - Geometry.transfer_integer : Method
             - Geometry.transfer_vector : Method
-            - Integer.transfer_attribute : Method
-            - Vector.transfer_attribute : Method
               
     """
 
@@ -2215,7 +2221,7 @@ class EndpointSelection(Node):
             > Data socket classes implementing this node.
               
               
-            - CurveDomain.endpoint_selection : Fields
+            - Spline.endpoint_selection : Fields
               
     """
 
@@ -2284,17 +2290,17 @@ class HandleTypeSelection(Node):
             > Data socket classes implementing this node.
               
               
-            - CurveDomain.handle_type_selection : Fields
-            - CurveDomain.left_handle_align : Fields
-            - CurveDomain.left_handle_auto : Fields
-            - CurveDomain.left_handle_free : Fields
-            - CurveDomain.left_handle_selection : Fields
-            - CurveDomain.left_handle_vector : Fields
-            - CurveDomain.right_handle_align : Fields
-            - CurveDomain.right_handle_auto : Fields
-            - CurveDomain.right_handle_free : Fields
-            - CurveDomain.right_handle_selection : Fields
-            - CurveDomain.right_handle_vector : Fields
+            - Spline.handle_type_selection : Fields
+            - Spline.left_handle_align : Fields
+            - Spline.left_handle_auto : Fields
+            - Spline.left_handle_free : Fields
+            - Spline.left_handle_selection : Fields
+            - Spline.left_handle_vector : Fields
+            - Spline.right_handle_align : Fields
+            - Spline.right_handle_auto : Fields
+            - Spline.right_handle_free : Fields
+            - Spline.right_handle_selection : Fields
+            - Spline.right_handle_vector : Fields
               
     """
 
@@ -3663,12 +3669,12 @@ class DuplicateElements(Node):
             > Data socket classes implementing this node.
               
               
+            - Curve.duplicate_splines : Method
             - Geometry.duplicate_elements : Method
             - Geometry.duplicate_points : Method
             - Instances.duplicate_instances : Method
             - Mesh.duplicate_edges : Method
             - Mesh.duplicate_faces : Method
-            - Spline.duplicate_splines : Method
               
     """
 
@@ -4406,7 +4412,7 @@ class CurveHandlePositions(Node):
             > Data socket classes implementing this node.
               
               
-            - CurveDomain.handle_positions : Fields
+            - Spline.handle_positions : Fields
               
     """
 
@@ -4714,8 +4720,8 @@ class EdgeAngle(Node):
             > Data socket classes implementing this node.
               
               
-            - EdgeDomain.angle : Fields
-            - EdgeDomain.unsigned_angle : Fields
+            - Edge.angle : Fields
+            - Edge.unsigned_angle : Fields
               
     """
 
@@ -4773,7 +4779,7 @@ class EdgeNeighbors(Node):
             > Data socket classes implementing this node.
               
               
-            - EdgeDomain.neighbors_faces : Fields
+            - Edge.neighbors_faces : Fields
               
     """
 
@@ -4834,10 +4840,10 @@ class EdgeVertices(Node):
             > Data socket classes implementing this node.
               
               
-            - EdgeDomain.vertices_index_1 : Fields
-            - EdgeDomain.vertices_index_2 : Fields
-            - EdgeDomain.vertices_position_1 : Fields
-            - EdgeDomain.vertices_position_2 : Fields
+            - Edge.vertices_index_1 : Fields
+            - Edge.vertices_index_2 : Fields
+            - Edge.vertices_position_1 : Fields
+            - Edge.vertices_position_2 : Fields
               
     """
 
@@ -4895,7 +4901,7 @@ class FaceArea(Node):
             > Data socket classes implementing this node.
               
               
-            - FaceDomain.area : Fields
+            - Face.area : Fields
               
     """
 
@@ -4958,7 +4964,7 @@ class FaceIsPlanar(Node):
             > Data socket classes implementing this node.
               
               
-            - FaceDomain.is_planar : Fields
+            - Face.is_planar : Fields
               
     """
 
@@ -5607,7 +5613,7 @@ class CurveTangent(Node):
             > Data socket classes implementing this node.
               
               
-            - CurveDomain.tangent : Fields
+            - Spline.tangent : Fields
               
     """
 
@@ -5947,7 +5953,7 @@ class MaterialSelection(Node):
             > Data socket classes implementing this node.
               
               
-            - FaceDomain.material_selection : Fields
+            - Face.material_selection : Fields
             - Material.selection : Method
               
     """
@@ -8375,9 +8381,9 @@ class SetHandlePositions(Node):
               
               
             - Curve.set_handle_positions : Method
-            - CurveDomain.set_handle_positions : Fields
-            - CurveDomain.set_left_handle_positions : Fields
-            - CurveDomain.set_right_handle_positions : Fields
+            - Spline.set_handle_positions : Fields
+            - Spline.set_left_handle_positions : Fields
+            - Spline.set_right_handle_positions : Fields
               
     """
 
@@ -8533,7 +8539,7 @@ class SetCurveTilt(Node):
               
               
             - Curve.set_tilt : Method
-            - CurveDomain.tilt : Fields
+            - Spline.tilt : Fields
               
     """
 
@@ -8746,7 +8752,7 @@ class SetMaterialIndex(Node):
             > Data socket classes implementing this node.
               
               
-            - FaceDomain.material_index : Fields
+            - Face.material_index : Fields
             - Geometry.set_material_index : Method
               
     """
@@ -9033,8 +9039,8 @@ class SetSplineCyclic(Node):
             > Data socket classes implementing this node.
               
               
-            - CurveDomain.cyclic : Fields
-            - Spline.set_cyclic : Method
+            - Curve.set_cyclic : Method
+            - Spline.cyclic : Fields
               
     """
 
@@ -9105,8 +9111,8 @@ class SetSplineResolution(Node):
             > Data socket classes implementing this node.
               
               
-            - CurveDomain.resolution : Fields
-            - Spline.set_resolution : Method
+            - Curve.set_resolution : Method
+            - Spline.resolution : Fields
               
     """
 
@@ -9171,8 +9177,8 @@ class SplineLength(Node):
             > Data socket classes implementing this node.
               
               
-            - CurveDomain.length : Fields
-            - CurveDomain.point_count : Fields
+            - Spline.length : Fields
+            - Spline.point_count : Fields
               
     """
 
@@ -9232,9 +9238,9 @@ class SplineParameter(Node):
             > Data socket classes implementing this node.
               
               
-            - CurveDomain.parameter_factor : Fields
-            - CurveDomain.parameter_index : Fields
-            - CurveDomain.parameter_length : Fields
+            - Spline.parameter_factor : Fields
+            - Spline.parameter_index : Fields
+            - Spline.parameter_length : Fields
               
     """
 
