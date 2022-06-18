@@ -6,7 +6,7 @@ Created on Wed Jun 15 08:20:40 2022
 @author: alain
 """
 
-from geonodes.core.node import Socket
+from geonodes.core.node import Socket, Node
 from geonodes.nodes import nodes
 from geonodes.nodes.nodes import create_node
 import geonodes.core.field as field
@@ -72,7 +72,9 @@ class Domain:
     def init_cache(self):
         self.ID_       = None
         self.index_    = None
-        self.radius_   = None
+        self.position_ = None
+        
+        
         
         self.named_fields = {}
         
@@ -259,7 +261,7 @@ class Domain:
     def set_named_byte_color(self, name, value):
         self.set_named_attribute(name, value, data_type='BYTE_COLOR')
         
-    # ----------------------------------------------------------------------------------------------------
+    # ====================================================================================================
     # Fields all domain have
         
     @property
@@ -268,26 +270,18 @@ class Domain:
             self.ID_ = field.ID(self)
         return self.ID_.node_socket
     
+    @ID.setter
+    def ID(self, value):
+        if self.ID_ is None:
+            self.ID_ = field.ID(self)
+        self.ID_.set_value(value)
+    
     @property
     def index(self):
         if self.index_ is None:
             self.index_ = field.Index(self)
         return self.index_.node_socket
     
-        
-# =============================================================================================================================
-# Point interface
-#
-# Properties and methods shared by all POINT domains:
-# - Vertex
-# - ControlPoiint
-# - CloudPoint
-
-class PointInterface:
-    
-    def init_point_cache(self):
-        self.position_ = None
-        
     @property
     def position(self):
         """ > Property Point position
@@ -301,10 +295,96 @@ class PointInterface:
     def position(self, value):
         """ > Property Point position setter
         <blid GeometryNodeSetPosition>
+        
+        Arguments
+        ---------
+            - value: Vector
         """
+        if self.domain in ['EDGE', 'FACE']:
+            raise Exception(f"The position of edges and faces is read only")
         if self.position_ is None:
-            self.position_ = Location(self)
+            self.position_ = field.Position(self)
         self.position_.set_value(value)
+        
+    @property
+    def offset(self):
+        return Node.Vector(0)
+    
+    @offset.setter
+    def offset(self, value):
+        """ > Property Point offset setter
+        <blid GeometryNodeSetPosition>
+        
+        Arguments
+        ---------
+            - value: Vector
+        """
+        if self.domain in ['EDGE', 'FACE']:
+            raise Exception(f"The position of edges and faces is read only")
+        if self.position_ is None:
+            self.position_ = field.Position(self)
+        self.position_.set_offset(value)
+        
+    
+    
+    # ====================================================================================================
+    # Methods for all domains
+    
+    def duplicate(self, amount=None):
+        """ > Duplicate domain
+        
+        <blid GeometryNodeDuplicateElements>
+        
+        Arguments
+        ---------
+            - amount : Integer
+            
+        Returns
+        -------
+            - duplicate index
+        """
+        node = nodes.DuplicateElements(self.data_socket, self.selection, amount=amount, domain=self.domain)
+        self.stack(node)
+        return node.duplicate_index
+    
+    
+        
+# =============================================================================================================================
+# Point interface
+#
+# Properties and methods shared by all POINT domains:
+# - Vertex
+# - ControlPoiint
+# - CloudPoint
+
+class PointInterface:
+    
+    def init_point_cache(self):
+        pass
+    
+    def instantiate(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
+        """ > Put instances on points
+        
+        <blid GeometryNodeInstanceOnPoints>
+        
+        Arguments
+        ---------
+            - instance : Geometry
+            - pick_instance : Boolean
+            - instance_index : Integer
+            - rotation : Vector
+            - scale : Vector
+        
+        ```python
+        mesh.vertss.select(...).instantiate(...)
+        curve.points.select(...).instantiate(...)
+        cloud.points.select(...).instantiate(...)
+        ```
+        """
+        return nodes.InstanceOnPoints(
+                points=self.data_socket, selection=self.selection, 
+                instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale
+                ).instances
         
 # =============================================================================================================================
 # Mesh domains
@@ -346,12 +426,74 @@ class PEFInterface:
         mode : str (default = 'ALL') in ('ALL', 'EDGE_FACE', 'ONLY_FACE')        
         
         ```python
-        geometry.verts.select(...).delete(mode='ALL')
-        geometry.edges.select(...).delete(mode='EDGE_FACE')
-        geometry.faces.select(...).delete(mode='ONLY_FACE')
+        mesh.verts.select(...).delete(mode='ALL')
+        mesh.edges.select(...).delete(mode='EDGE_FACE')
+        mesh.faces.select(...).delete(mode='ONLY_FACE')
         ```
         """
-        return self.stack(nodes.DeleteGeometry(self.data_socket, selection=self.selection, domain=self.domain, mode=mode))
+        return self.stack(nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain, mode=mode))
+    
+    def delete_all(self):
+        """ <method GeometryNodeDeleteGeometry>
+        
+        call delete with mode : 'ALL'
+        
+        ```python
+        mesh.verts.select(...).delete_all()
+        mesh.edges.select(...).delete_all()
+        mesh.faces.select(...).delete_all()
+        ```
+        """
+        return self.delete(mode='ALL')
+        
+    def delete_faces(self):
+        """ <method GeometryNodeDeleteGeometry>
+        
+        call delete with mode : 'ONLY_FACE'
+        
+        ```python
+        mesh.verts.select(...).delete_faces()
+        mesh.edges.select(...).delete_faces()
+        mesh.faces.select(...).delete_faces()
+        ```
+        """
+        return self.delete(mode='ONLY_FACE')
+        
+    def delete_edges_faces(self):
+        """ <method GeometryNodeDeleteGeometry>
+        
+        call delete with mode : 'EDGE_FACE'
+        
+        ```python
+        mesh.verts.select(...).delete_edges_faces()
+        mesh.edges.select(...).delete_edges_faces()
+        mesh.faces.select(...).delete_edges_faces()
+        ```
+        """
+        return self.delete(mode='EDGE_FACE')
+    
+    def proximity(self, source_position=None):
+        """ <method GeometryNodeProximity>
+        
+        ```python
+        mesh.verts.select(...).proximity()
+        mesh.edges.select(...).proximity()
+        mesh.faces.select(...).proximity()
+        ```
+        
+        Arguments
+        ---------
+            - source_position : Vector
+            
+        Returns
+        -------
+            - Node with sockets
+                - position : Vector
+                - distance : Float
+        """
+        target_element = self.domain + 'S'
+        return nodes.GeometryProximity(target=self.data_socket, source_position=source_position, target_element=target_element)
+        
     
     def extrude(self, offset=None, offset_scale=None, individual=None, node_label = None, node_color = None):
         """ <method GeometryNodeExtrudeMesh>
@@ -403,6 +545,41 @@ class Vertex(Domain, PointInterface, MeshInterface, PEFInterface):
     
     # ====================================================================================================
     # Methods
+    
+    def merge(self, distance=0.001, mode='ALL'):
+        """ > Merge vertices by distance
+        
+        <blid GeometryNodeMergeByDistance>
+        
+        '''python
+        mesh.verts.select().merge()
+        ````
+
+        Arguments
+        ---------
+            - mode : str (default = 'ALL') in ('ALL', 'CONNECTED')        
+            - distance : Float
+                The merge distance
+        """
+        return self.stack(nodes.MergeByDistance(self.data_socket, selection=self.selection, distance=distance, mode=mode))
+
+    def merge_connected(self, distance=0.001):
+        """ > Merge connected vertices by distance
+        
+        <blid GeometryNodeMergeByDistance>
+        
+        '''python
+        mesh.verts.select().merge_connected()
+        ````
+
+        Arguments
+        ---------
+            - distance : Float
+                The merge distance
+        """
+        return self.merge(distance=distance, mode='CONNECTED')
+        
+        
     
         
     
@@ -867,8 +1044,6 @@ class Spline(Domain):
         self.parameter_  = None
         self.resolution_ = None
         
-        self.radius_ = None
-        
     @property
     def radius(self):
         if self.radius_ is None:
@@ -1271,7 +1446,7 @@ class Spline(Domain):
         curve.splines.select(...).delete()
         ```
         """
-        return self.stack(nodes.DeleteGeometry(self.data_socket, selection=self.selection, domain=self.domain))
+        return self.stack(nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain))
     
 # =============================================================================================================================
 # Cloud point : the point domain of cloud of points
@@ -1309,10 +1484,27 @@ class CloudPoint(Domain, PointInterface):
         mode : str (default = 'ALL') in ('ALL', 'EDGE_FACE', 'ONLY_FACE')        
         
         ```python
-        points.points.select(...).delete()
+        cloud.points.select(...).delete()
         ```
         """
-        return self.stack(nodes.DeleteGeometry(self.data_socket, selection=self.selection, domain=self.domain))
+        return self.stack(nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain))
+    
+    def merge(self, distance=0.001):
+        """ > Merge points by distance
+        
+        <blid GeometryNodeMergeByDistance>
+        
+        '''python
+        cloud.points.select().merge()
+        ````
+
+        Arguments
+        ---------
+            - distance : Float
+                The merge distance
+        """
+        return self.stack(nodes.MergeByDistance(self.data_socket, selection=self.selection, distance=distance))
+    
         
         
         
@@ -1328,13 +1520,73 @@ class Instance(Domain):
     # Methods
     
     def delete(self):
-        """ <method GeometryNodeDeleteGeometry>
+        """ > Delete instances
+        
+        <blid GeometryNodeDeleteGeometry>
         
         ```python
         instances.insts.select(...).delete()
         ```
         """
-        return self.stack(nodes.DeleteGeometry(self.data_socket, selection=self.selection))
+        return self.stack(nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection))
+    
+    def rotate(self, rotation=None, pivot_point=None, local_space=None):
+        """ > Rotate instances
+        
+        <blid GeometryNodeRotateInstances>
+        
+        Arguments
+        ---------
+            - rotation : Vector
+            - pivot_point : Vector
+            - local_space : Boolean
+        
+        ```python
+        instances.insts.select(...).rotate(...)
+        ```
+        """
+        return self.stack(nodes.RotateInstances(
+            instances=self.data_socket, selection=self.selection,
+            rotation=rotation, pivot_point=pivot_point, local_space=local_space))
+    
+    def scale(self, scale=None, center=None, local_space=None):
+        """ > Scale instances
+        
+        <blid GeometryNodeScaleInstances>
+        
+        Arguments
+        ---------
+            - scale : Vector
+            - center : Vector
+            - local_space : Boolean
+        
+        ```python
+        instances.insts.select(...).scale(...)
+        ```
+        """
+        return self.stack(nodes.ScaleInstances(
+            instances=self.data_socket, selection=self.selection,
+            scale=scale, center=center, local_space=local_space))
+    
+    def translate(self, translation=None, local_space=None):
+        """ > Translate instances
+        
+        <blid GeometryNodeTranslateInstances>
+        
+        Arguments
+        ---------
+            - translation : Vector
+            - local_space : Boolean
+        
+        ```python
+        instances.insts.select(...).translate(...)
+        ```
+        """
+        return self.stack(nodes.TranslateInstances(
+            instances=self.data_socket, selection=self.selection,
+            translation=translation, local_space=local_space))
+    
+    
     
         
 

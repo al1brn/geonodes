@@ -11,6 +11,23 @@ Cloud point : the point domain of cloud of points
 mode : str (default = 'ALL') in ('ALL', 'EDGE_FACE', 'ONLY_FACE')        
         
 ```python
-points.points.select(...).delete()
+cloud.points.select(...).delete()
 ```
+
+
+
+## merge
+
+> Merge points by distance
+  
+<blid GeometryNodeMergeByDistance>
+
+'''python
+cloud.points.select().merge()
+````
+
+### Arguments
+
+- distance : Float
+The merge distance
 

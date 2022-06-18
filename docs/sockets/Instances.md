@@ -7,6 +7,11 @@
 
 
 
+## Static methods
+
+- [FromGeometries](#fromgeometries) : instances (Instances)
+- [InstanceOnPoints](#instanceonpoints) : instances (Instances)
+
 ## Properties
 
 - [domain_size](#domain_size) : instance_count (Integer)
@@ -20,6 +25,74 @@
 - [scale](#scale) : instances (Instances)
 - [to_points](#to_points) : points (Points)
 - [translate](#translate) : instances (Instances)
+
+## InstanceOnPoints
+
+> Node: [InstanceOnPoints](/docs/nodes/InstanceOnPoints.md)
+  
+<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
+blender ref [GeometryNodeInstanceOnPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
+node ref [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) </sub>
+                          
+```python
+v = Instances.InstanceOnPoints(points, selection, instance, pick_instance, instance_index, rotation, scale, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- points : Points
+- selection : Boolean
+- instance : Geometry
+- pick_instance : Boolean
+- instance_index : Integer
+- rotation : Vector
+- scale : Vector## Parameters
+- node_label : None
+- node_color : None
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.InstanceOnPoints(points=points, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Instances
+
+
+## FromGeometries
+
+> Node: [GeometryToInstance](/docs/nodes/GeometryToInstance.md)
+  
+<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
+blender ref [GeometryNodeGeometryToInstance](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html)
+node ref [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html) </sub>
+                          
+```python
+v = Instances.FromGeometries(geometry_1, geometry_2, geometry_3, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- geometry : *Geometry## Parameters
+- node_label : None
+- node_color : None
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.GeometryToInstance(*geometry, label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Instances
+
 
 ## domain_size
 

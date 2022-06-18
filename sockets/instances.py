@@ -30,6 +30,12 @@ class Instances(gn.Geometry):
         
     
 
+        Static methods
+        --------------
+            - FromGeometries : instances (Instances)
+            - InstanceOnPoints : instances (Instances)
+    
+
         Properties
         ----------
             - domain_size : instance_count (Integer)
@@ -54,6 +60,10 @@ class Instances(gn.Geometry):
         return self.insts
 
 
+    @staticmethod
+    def FromGeometriesOLD(*geometries):
+        return nodes.GeometryToInstance(*geometries).instances
+        
 
     def reset_properties(self):
 
@@ -62,6 +72,90 @@ class Instances(gn.Geometry):
         self.domain_size_ = None
 
         self.instance_count_ = None
+
+    # ----------------------------------------------------------------------------------------------------
+    # Static methods
+
+    @staticmethod
+    def InstanceOnPoints(points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, node_label = None, node_color = None):
+        """ > Node: InstanceOnPoints
+          
+        <sub>go to: top index
+        blender ref GeometryNodeInstanceOnPoints
+        node ref Instance on Points </sub>
+                                  
+        ```python
+        v = Instances.InstanceOnPoints(points, selection, instance, pick_instance, instance_index, rotation, scale, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - points : Points
+            - selection : Boolean
+            - instance : Geometry
+            - pick_instance : Boolean
+            - instance_index : Integer
+            - rotation : Vector
+            - scale : Vector## Parameters
+            - node_label : None
+            - node_color : None
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.InstanceOnPoints(points=points, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Instances
+            
+        """
+
+        return nodes.InstanceOnPoints(points=points, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale, label=node_label, node_color=node_color).instances
+
+    @staticmethod
+    def FromGeometries(*geometry, node_label = None, node_color = None):
+        """ > Node: GeometryToInstance
+          
+        <sub>go to: top index
+        blender ref GeometryNodeGeometryToInstance
+        node ref Geometry to Instance </sub>
+                                  
+        ```python
+        v = Instances.FromGeometries(geometry_1, geometry_2, geometry_3, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - geometry : *Geometry## Parameters
+            - node_label : None
+            - node_color : None
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.GeometryToInstance(*geometry, label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Instances
+            
+        """
+
+        return nodes.GeometryToInstance(*geometry, label=node_label, node_color=node_color).instances
+
 
     # ----------------------------------------------------------------------------------------------------
     # Properties

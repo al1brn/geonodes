@@ -1,7 +1,7 @@
 
 # Class Domain
 
-Root class for domains: PointDomain, FaceDomain, EdgeDomain, CornerDomain, CurveDomain and Instance
+Root class for domains
 
 Fields are properties of domains.
 
@@ -157,6 +157,40 @@ return self.get_named_attribute(name, data_type='BYTE_COLOR')
 
 
 
-## ID
+## position
 
-Fields all domain have
+> Property Point position setter
+<blid GeometryNodeSetPosition>
+
+### Arguments
+
+- value: Vector
+  
+  
+
+## offset
+
+> Property Point offset setter
+<blid GeometryNodeSetPosition>
+
+### Arguments
+
+- value: Vector
+  
+  
+
+## duplicate
+
+> Duplicate domain
+  
+<blid GeometryNodeDuplicateElements>
+
+### Arguments
+
+- amount : Integer
+
+### Returns
+
+- duplicate index
+  
+  

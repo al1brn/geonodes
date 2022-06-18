@@ -45,7 +45,7 @@ class Points(gn.Geometry):
     """
 
     def init_domains(self):
-        self.points = PointDomain(self)
+        self.points = domains.CloudPoint(self)
 
     @property
     def point(self):

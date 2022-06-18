@@ -113,11 +113,15 @@ class ID(Field):
     """ > Field index
 
     - get        : ID (Integer)
-    - set        : read only
-    - selectable : False
+    - set        : SetID
+    - selectable : True
     """
     def create_input_node(self):
         return nodes.ID()
+    
+    def set_value(self, value):
+        return self.stack(nodes.SetID(self.geometry, selection=self.selection, position=value))
+    
         
 # ----------------------------------------------------------------------------------------------------
 # Index
@@ -126,7 +130,7 @@ class Index(Field):
     """ > Field index
 
     - get        : Index (Integer)
-    - set        : read only
+    - set        : Read only
     - selectable : False
     """
     def create_input_node(self):
@@ -160,6 +164,9 @@ class Position(Field):
     
     def set_value(self, value):
         return self.stack(nodes.SetPosition(self.geometry, selection=self.selection, position=value))
+    
+    def set_offset(self, value):
+        return self.stack(nodes.SetPosition(self.geometry, selection=self.selection, offset=value))
     
         
 # ----------------------------------------------------------------------------------------------------

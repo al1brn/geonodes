@@ -78,7 +78,7 @@ class Curve(gn.Geometry):
 
     def init_domains(self):
         self.points  = domains.ControlPoint(self)
-        self.splines = domaines.Spline(self)
+        self.splines = domains.Spline(self)
 
     @property
     def point(self):
@@ -684,7 +684,7 @@ class Curve(gn.Geometry):
 
         return self.stack(nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution, label=node_label, node_color=node_color))
 
-    def set_handles(self, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label = None, node_color = None):
+    def set_handles(self, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label = None, node_color = None):
         """ > Node: SetHandleType
           
         <sub>go to: top index
@@ -702,7 +702,7 @@ class Curve(gn.Geometry):
             - curve : Curve (self)
             - selection : Boolean## Parameters
             - handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-            - mode : {'LEFT', 'RIGHT'}
+            - mode : {'RIGHT', 'LEFT'}
             - node_label : None
             - node_color : None
     
