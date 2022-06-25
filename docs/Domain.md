@@ -43,6 +43,18 @@ The inheritance diagram is the following:
   
   
 
+## \_\_getitem\_\_
+
+Access by index
+
+
+## as_verts
+
+Force a domain change
+
+For instance, it can be used to manage the faces of instances of meshes
+
+
 ## statistic
 
 <method GeometryNodeAttributeStatistic>
@@ -61,63 +73,27 @@ call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
 
 
 
-## transfer_boolean
+## transfer_index
 
 <method GeometryNodeAttributeTransfer>
 
-mapping in ('NEAREST', 'INDEX'):
-- INDEX if source_position is None
-- NEAREST otherwise
-  
-call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
+call transfer_attribute
 
 
 
-## transfer_integer
+## transfer_nearest
 
 <method GeometryNodeAttributeTransfer>
 
-mapping in ('NEAREST', 'INDEX'):
-- INDEX if source_position is None
-- NEAREST otherwise
-  
-call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
+call transfer_attribute
 
 
 
-## transfer_float
+## transfer_nearest_face
 
 <method GeometryNodeAttributeTransfer>
 
-mapping in ('NEAREST', 'INDEX'):
-- INDEX if source_position is None
-- NEAREST otherwise
-  
-call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
-
-
-
-## transfer_vector
-
-<method GeometryNodeAttributeTransfer>
-
-mapping in ('NEAREST', 'INDEX'):
-- INDEX if source_position is None
-- NEAREST otherwise
-  
-call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
-
-
-
-## transfer_color
-
-<method GeometryNodeAttributeTransfer>
-
-mapping in ('NEAREST', 'INDEX'):
-- INDEX if source_position is None
-- NEAREST otherwise
-  
-call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
+call transfer_attribute
 
 
 

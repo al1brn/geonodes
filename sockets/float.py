@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-18
+Created on 2022-06-24
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -96,6 +96,11 @@ class Float(dsock.Float):
             - trunc : value (Float)
             - wrap : value (Float)
     """
+
+
+    def copy(self):
+
+        return Float(self)
 
 
     # ----------------------------------------------------------------------------------------------------

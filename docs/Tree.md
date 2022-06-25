@@ -77,6 +77,8 @@ Initialize a new tree
   the name of the tree. The NodeTree is created if it doesn't exist.
 - clear: bool, default is False
   earase all the existing nodes
+- group : bool
+  if not for a group, ensure that there is one geometry input socket and one output geometry socket
   
   
   

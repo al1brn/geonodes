@@ -70,16 +70,12 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 - [Integer](/docs/sockets/Integer.md).[less_equal](/docs/sockets/Integer.md#less_equal) : Method
 - [Integer](/docs/sockets/Integer.md).[less_than](/docs/sockets/Integer.md#less_than) : Method
 - [Integer](/docs/sockets/Integer.md).[not_equal](/docs/sockets/Integer.md#not_equal) : Method
-- [String](/docs/sockets/String.md).[average](/docs/sockets/String.md#average) : Method
-- [String](/docs/sockets/String.md).[direction](/docs/sockets/String.md#direction) : Method
-- [String](/docs/sockets/String.md).[dot_product](/docs/sockets/String.md#dot_product) : Method
-- [String](/docs/sockets/String.md).[element](/docs/sockets/String.md#element) : Method
-- [String](/docs/sockets/String.md).[length](/docs/sockets/String.md#length) : Method
-- [Vector](/docs/sockets/Vector.md).[equal](/docs/sockets/Vector.md#equal) : Method
-- [Vector](/docs/sockets/Vector.md).[greater_equal](/docs/sockets/Vector.md#greater_equal) : Method
-- [Vector](/docs/sockets/Vector.md).[greater_than](/docs/sockets/Vector.md#greater_than) : Method
-- [Vector](/docs/sockets/Vector.md).[less_equal](/docs/sockets/Vector.md#less_equal) : Method
-- [Vector](/docs/sockets/Vector.md).[less_than](/docs/sockets/Vector.md#less_than) : Method
-- [Vector](/docs/sockets/Vector.md).[not_equal](/docs/sockets/Vector.md#not_equal) : Method
+- [String](/docs/sockets/String.md).[equal](/docs/sockets/String.md#equal) : Method
+- [String](/docs/sockets/String.md).[not_equal](/docs/sockets/String.md#not_equal) : Method
+- [Vector](/docs/sockets/Vector.md).[average](/docs/sockets/Vector.md#average) : Method
+- [Vector](/docs/sockets/Vector.md).[direction](/docs/sockets/Vector.md#direction) : Method
+- [Vector](/docs/sockets/Vector.md).[dot_product](/docs/sockets/Vector.md#dot_product) : Method
+- [Vector](/docs/sockets/Vector.md).[element](/docs/sockets/Vector.md#element) : Method
+- [Vector](/docs/sockets/Vector.md).[length](/docs/sockets/Vector.md#length) : Method
 - [functions](/docs/sockets/functions.md).[compare](/docs/sockets/functions.md#compare) : Function
   

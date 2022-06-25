@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-18
+Created on 2022-06-24
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -75,6 +75,11 @@ class Curve(gn.Geometry):
             - to_points : Sockets      [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
             - trim : curve (Curve)
     """
+
+
+    def copy(self):
+
+        return Curve(self)
 
     def init_domains(self):
         self.points  = domains.ControlPoint(self)

@@ -511,6 +511,10 @@ class DataSocket(Socket):
         # ----- Reset creates the place holder for properties
         
         self.reset_properties()
+        
+        # ----- Set by Field
+        
+        self.field_of     = None
     
     @property
     def node_chain_label(self):
@@ -697,7 +701,6 @@ class DataSocket(Socket):
                 
             # ----- Vector / Color hack: a single value is broadcasted in a triplet
             
-            #if hasattr(bsocket, 'default_value') and isinstance(bsocket.default_value, (bpy.types.bpy_prop_array, mathutils.Vector, mathutils.Rotation)):
             if hasattr(bsocket, 'default_value') and hasattr(bsocket.default_value, '__len__'):
                 
                 # Broadcast 1 --> 3
@@ -712,6 +715,11 @@ class DataSocket(Socket):
                 # which is a socket to a Vector
                 
                 to_vector = False
+                
+                # bsocket with hide_value == True doesn't accept a default-value
+                if bsocket.hide_value:
+                    to_vector = True
+                    
                 for v in value:
                     if Socket.is_socket(v):
                         to_vector = True
@@ -826,6 +834,26 @@ class DataSocket(Socket):
         
         for socket in sockets:
             btree.links.new(node.outputs[0], socket)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Transfer are steered by the Field it belongs to
+    
+    @property
+    def transfer_index(self):
+        if self.field_of is None:
+            raise Exception(f"{type(self).__name__}.transfer_index: the socket {self} is not a field.")
+        return self.field_of.transfer_index
+    
+    def transfer_nearest(self, source_position=None):
+        if self.field_of is None:
+            raise Exception(f"{type(self).__name__}.transfer_nearest: the socket {self} is not a field.")
+        return self.field_of.transfer_nearest(source_position=source_position)
+    
+    def transfer_nearest_face(self, source_position=None):
+        if self.field_of is None:
+            raise Exception(f"{type(self).__name__}.transfer_nearest_face: the socket {self} is not a field.")
+        return self.field_of.transfer_nearest_face(source_position=source_position)
+            
     
 
 # =============================================================================================================================
@@ -904,7 +932,7 @@ class Tree:
     
     TREE = None
     
-    def __init__(self, tree_name, clear=False):
+    def __init__(self, tree_name, clear=False, group=False):
         """ Initialize a new tree
         
         Arguments
@@ -913,6 +941,8 @@ class Tree:
           the name of the tree. The NodeTree is created if it doesn't exist.
         - clear: bool, default is False
           earase all the existing nodes
+        - group : bool
+          if not for a group, ensure that there is one geometry input socket and one output geometry socket
         """
         
         if bpy.data.node_groups.get(tree_name) is None:
@@ -1012,11 +1042,14 @@ class Tree:
         # ----- Layouts stack
         
         self.layouts = []
+        self.util_color = "dark_green"
+        self.gene_color = "dark_orange"
+        self.auto_color = "dark_rose"
         
         # ----- Input and outputs
         
-        self.group_input  = GroupInput()
-        self.group_output = GroupOutput()
+        self.group_input  = GroupInput(check_input_geometry=not group)
+        self.group_output = GroupOutput(check_output_geometry=not group)
         
         # ----- Viewer
         
@@ -1269,6 +1302,14 @@ class Tree:
         ```
 
         """
+        
+        if isinstance(color, str):
+            if color.upper() == 'UTIL':
+                color = self.util_color
+            elif color.upper() == 'GENE':
+                color = self.gene_color
+            elif color.upper() == 'AUTO':
+                color = self.auto_color
         
         try:
             layout = Frame(label=label, color=color)
@@ -1555,12 +1596,17 @@ class Node:
         self.bnode.name = str(self)
         self.label      = label
         self.node_color = node_color
-        
 
         self.inputs  = [DataSocket(bsocket, node=self) for bsocket in self.bnode.inputs]
         self.outputs = [DataSocket(bsocket, node=self) for bsocket in self.bnode.outputs]
         
+        # ----- Set by method as_attribute
+        
         self.is_attribute = False
+        
+        # ----- Set by field for all output sockets
+        
+        self.field_of = None
         
         # ----- Socket names
         # Sockets have a unique name
@@ -1577,21 +1623,27 @@ class Node:
     # Output sockets are "write only"
         
     def __getattr__(self, name):
+        ds = None
         if name != 'outsockets':
             if hasattr(self, 'outsockets'):
                 if name.lower() in self.outsockets:
                     sock_ind = self.outsockets[name.lower()]
                     if isinstance(sock_ind, int):
-                        return self.DataClass(self.bnode.outputs[sock_ind])
+                        ds = self.DataClass(self.bnode.outputs[sock_ind])
                     else:
                         for index in sock_ind:
                             if self.bnode.outputs[index].enabled:
-                                return self.DataClass(self.bnode.outputs[index])
-                        raise AttributeError(f"Output socket error on node {self}: all socket named '{name}' are disabled")
-                
-        #raise Exception(f"'{type(self).__name__}' object has not attribute '{name}'")
-        
-        raise AttributeError(f"'{type(self).__name__}' object has not attribute '{name}'")
+                                ds = self.DataClass(self.bnode.outputs[index])
+                                break
+                            
+                        if ds is None:
+                            raise AttributeError(f"Output socket error on node {self}: all socket named '{name}' are disabled")
+                        
+        if ds is None:
+            raise AttributeError(f"'{type(self).__name__}' object has not attribute '{name}'")
+        else:
+            ds.field_of = self.field_of
+            return ds
 
     # ------------------------------------------------------------------------------------------
     # Access to the input sockets
@@ -1673,7 +1725,7 @@ class Node:
         If the label provided at initialization time is None, the node is labeled by concatening
         its unique id with its standard name.
         """
-        return f"{self.node_id:2d} {self.name}" if self.label_ is None else self.label_
+        return f"{self.node_id:2d} {self.name}" if self.label_ is None else f"{self.node_id:2d} {self.label_}"
     
     @property
     def label(self):
@@ -2102,9 +2154,11 @@ class CustomGroup(Node):
         return {uname: i for i, uname in enumerate(Node.unitize(sc_names))}
         
     def build_insockets(self):
+        self.inputs  = [DataSocket(bsocket, node=self) for bsocket in self.bnode.inputs]
         self.insockets = self.build_unames_dict(self.bnode.inputs)
         
     def build_outsockets(self):
+        self.outputs = [DataSocket(bsocket, node=self) for bsocket in self.bnode.outputs]
         self.outsockets = self.build_unames_dict(self.bnode.outputs)
         
     @staticmethod
@@ -2179,11 +2233,32 @@ class GroupInput(CustomGroup):
     applies. Make sure that this socket exists.
     """
 
-    def __init__(self):
+    def __init__(self, check_input_geometry):
         
         super().__init__('NodeGroupInput', 'Group Input')
         
         self.bsockets = self.bnode.outputs
+        
+        if check_input_geometry:
+            ok = False
+            ok_virtual = False
+            for index, bsocket in enumerate(self.bnode.outputs):
+                if bsocket.bl_idname == 'NodeSocketVirtual':
+                    ok_virtual = True
+                    break
+
+                elif bsocket.bl_idname == 'NodeSocketGeometry':
+                    ok = index == 0
+                    break
+                
+            if not ok:
+                if ok_virtual and len(self.tree.btree.inputs) > 0:
+                    while len(self.tree.btree.inputs) > 0 and self.tree.btree.inputs[0].bl_idname != 'NodeSocketVirtual':
+                        self.tree.btree.inputs[0].remove(0)
+                
+                self.tree.btree.inputs.new(type='NodeSocketGeometry', name="Geometry")
+                self.build_insockets()
+        
         
     # --------------------------------------------------------------------------------
     # Default geometry input node
@@ -2338,19 +2413,40 @@ class GroupOutput(CustomGroup):
     
     """
     
-    def __init__(self):
+    def __init__(self, check_output_geometry):
         
         super().__init__('NodeGroupOutput', 'Group Output')
         
         self.bsockets = self.bnode.inputs
         
+        if check_output_geometry:
+            ok = False
+            ok_virtual = False
+            for index, bsocket in enumerate(self.bnode.inputs):
+                if bsocket.bl_idname == 'NodeSocketVirtual':
+                    ok_virtual = True
+                    break
+
+                elif bsocket.bl_idname == 'NodeSocketGeometry':
+                    ok = index == 0
+                    break
+
+                else:
+                    break
+                
+            if not ok:
+                if ok_virtual and len(self.tree.btree.outputs) > 0:
+                    while len(self.tree.btree.outputs) > 0 and self.tree.btree.outputs[0].bl_idname != 'NodeSocketVirtual':
+                        self.tree.btree.outputs.remove(0)
+                        
+                self.tree.btree.outputs.new(type='NodeSocketGeometry', name="Geometry")
+                self.build_insockets()
         
     # --------------------------------------------------------------------------------
     # Default geometry input node
 
     @property
     def output_geometry(self):
-
         try:
             sock0 = self.bnode.inputs[0]
             if sock0.bl_idname == 'NodeSocketGeometry':
@@ -2501,7 +2597,7 @@ class Frame(Node):
     """ > Node 'Frame' (NodeFrame)
     """
 
-    def __init__(self, label="Layout", label_size=42, color=None, shrink=True):
+    def __init__(self, label="Layout", label_size=16, color=None, shrink=True):
         """ > Initialization
         
         Parameters
@@ -2525,6 +2621,15 @@ class Frame(Node):
 
         self.bnode.label_size      = label_size
         self.bnode.shrink          = shrink
+        
+    def get_label(self):
+        """ Build the node label
+        
+        If the label provided at initialization time is None, the node is labeled by concatening
+        its unique id with its standard name.
+        """
+        return f"{self.node_id:2d} {self.name}" if self.label_ is None else f"{self.label_}"
+        
         
     @property
     def label_size(self):

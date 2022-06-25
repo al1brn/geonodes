@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-18
+Created on 2022-06-24
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -298,17 +298,13 @@ class Compare(Node):
             - Integer.less_equal : Method
             - Integer.less_than : Method
             - Integer.not_equal : Method
-            - String.average : Method
-            - String.direction : Method
-            - String.dot_product : Method
-            - String.element : Method
-            - String.length : Method
-            - Vector.equal : Method
-            - Vector.greater_equal : Method
-            - Vector.greater_than : Method
-            - Vector.less_equal : Method
-            - Vector.less_than : Method
-            - Vector.not_equal : Method
+            - String.equal : Method
+            - String.not_equal : Method
+            - Vector.average : Method
+            - Vector.direction : Method
+            - Vector.dot_product : Method
+            - Vector.element : Method
+            - Vector.length : Method
             - functions.compare : Function
               
     """
@@ -9488,7 +9484,6 @@ class JoinStrings(Node):
             > Data socket classes implementing this node.
               
               
-            - String.join : Method
             - functions.join_strings : Function
               
     """

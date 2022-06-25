@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-18
+Created on 2022-06-24
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -52,6 +52,11 @@ class Instances(gn.Geometry):
             - translate : instances (Instances)
     """
 
+
+    def copy(self):
+
+        return Instances(self)
+
     def init_domains(self):
         self.insts = domains.Instance(self)
 
@@ -60,10 +65,6 @@ class Instances(gn.Geometry):
         return self.insts
 
 
-    @staticmethod
-    def FromGeometriesOLD(*geometries):
-        return nodes.GeometryToInstance(*geometries).instances
-        
 
     def reset_properties(self):
 

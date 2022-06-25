@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-18
+Created on 2022-06-24
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -69,6 +69,11 @@ class Mesh(gn.Geometry):
             - triangulate : mesh (Mesh)
             - union : mesh (Mesh)
     """
+
+
+    def copy(self):
+
+        return Mesh(self)
 
     def init_domains(self):
         self.verts   = domains.Vertex(self)

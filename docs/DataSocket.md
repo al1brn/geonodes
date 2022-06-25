@@ -188,3 +188,7 @@ accordingly.
 > Reroute all output links
   
   
+
+## transfer_index
+
+Transfer are steered by the Field it belongs to

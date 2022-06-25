@@ -8,10 +8,10 @@ Cloud point : the point domain of cloud of points
 
 <method GeometryNodeDeleteGeometry>
 
-mode : str (default = 'ALL') in ('ALL', 'EDGE_FACE', 'ONLY_FACE')        
-        
+### Example
+
 ```python
-cloud.points.select(...).delete()
+cloud.points(...).delete()
 ```
 
 
@@ -22,12 +22,58 @@ cloud.points.select(...).delete()
   
 <blid GeometryNodeMergeByDistance>
 
+### Example
+
 '''python
-cloud.points.select().merge()
+cloud.points().merge()
 ````
 
 ### Arguments
 
 - distance : Float
 The merge distance
+
+
+
+## to_vertices
+
+> Convert points to vertices
+  
+<blid GeometryNodePointsToVertices>
+
+### Returns
+
+Points
+
+### Example
+
+```python
+verts = cloud.points.to_vertices()
+```
+
+
+
+## to_volume
+
+> Convert points to vertices
+  
+<blid GeometryNodePointsToVertices>
+
+### Parameters
+
+- density : Float
+- voxel_size : Float
+- voxel_amount : Float
+- radius : Float
+- resolution_mode : str (default = 'VOXEL_AMOUNT') in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+
+### Returns
+
+Volume
+
+### Example
+
+```python
+volume = cloud.points.to_volume()
+```
 

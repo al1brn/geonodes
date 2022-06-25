@@ -103,6 +103,24 @@ Blender menu : **material/set_material_index**<br>
   
   
 
+## set_material
+
+> Set a material on the faces
+  
+<blid GeometryNodeSetMaterial>
+
+### Arguments
+
+- material : material of material name
+
+### Example
+
+```python
+mesh.faces.set_material(...)
+```
+
+
+
 ## material_selection
 
 > Field [MaterialSelection](/docs/nodes/MaterialSelection.md)
@@ -122,37 +140,55 @@ Boolean
 
 
 
-## distribute_points
+## flip
 
-<method GeometryNodeDistributePointsOnFaces>
+> Flip faces
+  
+<blid GeometryNodeFlipFaces>
 
-### Call
+### Example
 
 ```python
-node = mesh.face.distribute_points(selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None, node_color=None)
+mesh.faces.flip()
 ```
+
+
+
+
+## triangulate
+
+> Triangulate faces
+  
+<blid GeometryNodeTriangulate>
 
 ### Arguments
 
+- minimum_vertices : Integer
+- ngon_method : str (default = 'BEAUTY') in ('BEAUTY', 'CLIP')
+- quad_method : str (default = 'SHORTEST_DIAGONAL') in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
 
-### Input sockets
+### Example
 
-- mesh : Mesh
-- selection : Boolean
+```python
+mesh.faces(...).triangulate(...)
+```
+
+
+
+## distribute_points
+
+> Distribute points on faces
+  
+<blid GeometryNodeDistributePointsOnFaces>
+
+### Arguments
+
 - distance_min : Float
 - density_max : Float
 - density : Float
 - density_factor : Float
 - seed : Integer
-
-### Parameters
-
 - distribute_method : str (default = 'RANDOM') in ('RANDOM', 'POISSON')
-
-### Node label
-
-- label : Geometry node display label (default=None)
-- node_color : Geometry node color (default=None)
 
 ### Returns
 
@@ -160,18 +196,15 @@ Node with 3 sockets:
 - points : Points
 - normal : Vector
 - rotation : Vector
-  
-  
-  
 
-## extrude
+### Example
 
-<method GeometryNodeExtrudeMesh>
-
-call [Mesh.extrude](/docs/sockets/Mesh.md#extrude) with mode = 'FACES'
-                            
 ```python
-node = mesh.faces.extrude()
+node = mesh.faces.distribute_points(...)
+cloud = node.points
+normal = node.normal
+rotation = node.rotation
+        
 ```
 
 

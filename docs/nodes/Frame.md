@@ -23,3 +23,12 @@ Node parameter
 
 
 
+
+## get_label
+
+Build the node label
+
+If the label provided at initialization time is None, the node is labeled by concatening
+its unique id with its standard name.
+
+

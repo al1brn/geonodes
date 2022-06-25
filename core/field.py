@@ -24,22 +24,43 @@ import logging
 logger = logging.getLogger('geonodes')
 
 # =============================================================================================================================
-# An attribute is a value data socket keeping track 
-
-
-
-# =============================================================================================================================
 # A field is the basic geometry data
-#
-# mesh.verts.position += (1, 2, 3)
-# mesh.verts.position = (1, 2, 3)
 
 class Field:
+    """ > Field
+    
+    Field is the root class for domain attributes : ID, index, position, radius...
+    
+    The fields are implemented by the domains:
+        
+    ```python
+        
+    class Domain:        
+        @property
+        def prop(self):
+            return Field(self)
+        
+        @prop.setter
+        def prop(self, value):
+            Field(self).set_value(value)
+    ```
+    
+    In a typical scheme Field(self) 
+        
+    
+    
+    """
     
     def __init__(self, geo_domain):
         self.geo_domain  = geo_domain
         self.input_node_ = None
         self.cache_node  = True
+        
+    def __repr__(self):
+        return f"<Field {self.geo_domain}.{type(self).__name__}>"
+    
+    def stack(self, node):
+        return self.geo_domain.stack(node)
         
     @property
     def geometry(self):
@@ -59,6 +80,7 @@ class Field:
         if node is None:
             node = self.create_input_node()
             node.as_attribute(owning_socket=self.geo_domain.data_socket, domain=self.domain)
+            node.field_of = self
             if self.cache_node:
                 self.input_node_ = node
         return node
@@ -70,15 +92,21 @@ class Field:
     def create_input_node(self):
         raise RuntimeError("Input node not implemented !")        
         
-    def stack(self, node):
-        return self.geo_domain.stack(node)
-    
     def set_value(self, value):
         raise RuntimeError(f"The field '{type(self).__name}' is read only.")
         
-    def __add__(self, value):
-        self.set_value(self.input_socket + value)
-        
+    # ---------------------------------------------------------------------------
+    # Transfers
+    
+    @property
+    def transfer_index(self):
+        return self.geo_domain.transfer_attribute(attribute=self.node_socket, index=self.geo_domain.index, mapping='INDEX')
+    
+    def transfer_nearest(self, source_position=None):
+        return self.geo_domain.transfer_attribute(attribute=self.node_socket, source_position=source_position, mapping='NEAREST')
+    
+    def transfer_nearest_face(self, source_position=None):
+        return self.geo_domain.transfer_attribute(attribute=self.node_socket, source_position=source_position, mapping='NEAREST_FACE_INTERPOLATED')
 
 # ----------------------------------------------------------------------------------------------------
 # Named field
@@ -162,11 +190,27 @@ class Position(Field):
     def create_input_node(self):
         return nodes.Position()
     
+    @property
+    def node_socket(self):
+        vector = self.input_node.get_datasocket(0)
+        
+        # ----- Hack to implement += in set_offset
+
+        vector.offset_setter = lambda value: self.set_position(position=vector, offset=value)
+        return vector
+    
+    def set_position(self, position=None, offset=None):
+        return self.stack(nodes.SetPosition(self.geometry, selection=self.selection, position=position, offset=offset))
+
     def set_value(self, value):
         return self.stack(nodes.SetPosition(self.geometry, selection=self.selection, position=value))
     
     def set_offset(self, value):
         return self.stack(nodes.SetPosition(self.geometry, selection=self.selection, offset=value))
+    
+    def __iadd__(self, value):
+        return self.set_offset(value)
+        
     
         
 # ----------------------------------------------------------------------------------------------------
@@ -462,16 +506,44 @@ class HandlePositions(Field):
     CAUTION: The getter takes the **relative** parameter but not the setter
     """
     
-    def __init__(self, geo_domain, relative=None):
+    def __init__(self, geo_domain, relative=None, mode={'LEFT', 'RIGHT'}):
         super().__init__(geo_domain)
-        self.relative = relative
+        self.relative   = relative
+        self.mode       = mode
         self.cache_node = False
     
     def create_input_node(self):
         return nodes.CurveHandlePositions(relative=self.relative)
     
-    def set_position(self, position=None, offset=None, mode={'LEFT', 'RIGHT'}):
-        return self.stack(nodes.SetHandlePositions(self.geometry, selection=self.selection, position=position, offset=offset, mode=mode))
+    @property
+    def node_socket(self):
+        if 'LEFT' in self.mode:
+            return self.input_node.left
+        else:
+            return self.input_node.right
+            
+    
+    @property
+    def left(self):
+        vector = self.input_node.left
+        
+        # ----- Hack to implement += in set_offset
+
+        vector.offset_setter = lambda value: self.stack(nodes.SetHandlePositions(self.geometry, selection=self.selection, position=vector, offset=value, mode='LEFT'))
+        return vector
+    
+    @property
+    def right(self):
+        vector = self.input_node.right
+        
+        # ----- Hack to implement += in set_offset
+        
+        vector.offset_setter = lambda value: self.stack(nodes.SetHandlePositions(self.geometry, selection=self.selection, position=vector, offset=value, mode='RIGHT'))
+        return vector
+    
+    def set_position(self, position=None, offset=None):
+        return self.stack(nodes.SetHandlePositions(self.geometry, selection=self.selection, position=position, offset=offset, mode=self.mode))
+    
 
 # ----------------------------------------------------------------------------------------------------
 # Handle type selection
@@ -497,14 +569,10 @@ class HandleTypeSelection(Field):
         self.cache_node  = False
     
     def create_input_node(self):
-        return nodes.HandleTypeSelection(handle_type=handle_type, mode=node)
+        
+        print("Field", self.mode)
+        return nodes.HandleTypeSelection(handle_type=self.handle_type, mode=self.mode)
     
-class Foo:
-    
-    def set_handle_type(self, value):
-        return self.stack(nodes.SetHandlePositions(self.geometry, selection=self.selection, position=position, offset=offset, mode=mode))
-
-
     
     
     

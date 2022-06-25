@@ -13,12 +13,8 @@
 
 ## Methods
 
-- [average](#average) : result (Boolean)
-- [direction](#direction) : result (Boolean)
-- [dot_product](#dot_product) : result (Boolean)
-- [element](#element) : result (Boolean)
-- [join](#join) : string (String)
-- [length](#length) : result (Boolean)
+- [equal](#equal) : result (Boolean)
+- [not_equal](#not_equal) : result (Boolean)
 - [replace](#replace) : string (String)
 - [slice](#slice) : string (String)
 - [switch](#switch) : output (String)
@@ -88,7 +84,7 @@ nodes.Switch(false=self, switch=switch, true=true, input_type='STRING', label=no
 String
 
 
-## element
+## equal
 
 > Node: [Compare](/docs/nodes/Compare.md)
   
@@ -97,7 +93,7 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = string.element(b, node_label = None, node_color = None)
+v = string.equal(b, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -109,13 +105,13 @@ v = string.element(b, node_label = None, node_color = None)
 - node_color : None## Fixed parameters
 - data_type : 'STRING'
 - mode : 'ELEMENT'
-- operation : 'ELEMENT'
+- operation : 'EQUAL'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT', label=node_label, node_color=node_color)
+nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='EQUAL', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -123,7 +119,7 @@ nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMEN
 Boolean
 
 
-## length
+## not_equal
 
 > Node: [Compare](/docs/nodes/Compare.md)
   
@@ -132,7 +128,7 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = string.length(b, node_label = None, node_color = None)
+v = string.not_equal(b, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -144,155 +140,18 @@ v = string.length(b, node_label = None, node_color = None)
 - node_color : None## Fixed parameters
 - data_type : 'STRING'
 - mode : 'ELEMENT'
-- operation : 'LENGTH'
+- operation : 'NOT_EQUAL'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH', label=node_label, node_color=node_color)
+nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='NOT_EQUAL', label=node_label, node_color=node_color)
 ```
 
 ### Returns
 
 Boolean
-
-
-## average
-
-> Node: [Compare](/docs/nodes/Compare.md)
-  
-<sub>go to: [top](#data-socket-string) [index](/docs/index.md)
-blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-                          
-```python
-v = string.average(b, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- a : String (self)
-- b : String## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'STRING'
-- mode : 'ELEMENT'
-- operation : 'AVERAGE'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
-
-## dot_product
-
-> Node: [Compare](/docs/nodes/Compare.md)
-  
-<sub>go to: [top](#data-socket-string) [index](/docs/index.md)
-blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-                          
-```python
-v = string.dot_product(b, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- a : String (self)
-- b : String## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'STRING'
-- mode : 'ELEMENT'
-- operation : 'DOT_PRODUCT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
-
-## direction
-
-> Node: [Compare](/docs/nodes/Compare.md)
-  
-<sub>go to: [top](#data-socket-string) [index](/docs/index.md)
-blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-                          
-```python
-v = string.direction(b, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- a : String (self)
-- b : String## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'STRING'
-- mode : 'ELEMENT'
-- operation : 'DIRECTION'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
-
-## join
-
-> Node: [JoinStrings](/docs/nodes/JoinStrings.md)
-  
-<sub>go to: [top](#data-socket-string) [index](/docs/index.md)
-blender ref [GeometryNodeStringJoin](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
-node ref [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html) </sub>
-                          
-```python
-v = string.join(strings_1, strings_2, strings_3, delimiter, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- strings : *String (self)
-- delimiter : String## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.JoinStrings(self, *strings, delimiter=delimiter, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-String
 
 
 ## replace

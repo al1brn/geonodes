@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-18
+Created on 2022-06-24
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -37,17 +37,18 @@ class String(dsock.String):
 
         Methods
         -------
-            - average : result (Boolean)
-            - direction : result (Boolean)
-            - dot_product : result (Boolean)
-            - element : result (Boolean)
-            - join : string (String)
-            - length : result (Boolean)
+            - equal : result (Boolean)
+            - not_equal : result (Boolean)
             - replace : string (String)
             - slice : string (String)
             - switch : output (String)
             - to_curves : Sockets      [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
     """
+
+
+    def copy(self):
+
+        return String(self)
 
 
     def reset_properties(self):
@@ -140,7 +141,7 @@ class String(dsock.String):
 
         return nodes.Switch(false=self, switch=switch, true=true, input_type='STRING', label=node_label, node_color=node_color).output
 
-    def element(self, b=None, node_label = None, node_color = None):
+    def equal(self, b=None, node_label = None, node_color = None):
         """ > Node: Compare
           
         <sub>go to: top index
@@ -148,7 +149,7 @@ class String(dsock.String):
         node ref Compare </sub>
                                   
         ```python
-        v = string.element(b, node_label = None, node_color = None)
+        v = string.equal(b, node_label = None, node_color = None)
         ```
     
 
@@ -161,14 +162,14 @@ class String(dsock.String):
             - node_color : None## Fixed parameters
             - data_type : 'STRING'
             - mode : 'ELEMENT'
-            - operation : 'ELEMENT'
+            - operation : 'EQUAL'
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT', label=node_label, node_color=node_color)
+            nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='EQUAL', label=node_label, node_color=node_color)
             ```
     
 
@@ -178,9 +179,9 @@ class String(dsock.String):
             
         """
 
-        return nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='ELEMENT', label=node_label, node_color=node_color).result
+        return nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='EQUAL', label=node_label, node_color=node_color).result
 
-    def length(self, b=None, node_label = None, node_color = None):
+    def not_equal(self, b=None, node_label = None, node_color = None):
         """ > Node: Compare
           
         <sub>go to: top index
@@ -188,7 +189,7 @@ class String(dsock.String):
         node ref Compare </sub>
                                   
         ```python
-        v = string.length(b, node_label = None, node_color = None)
+        v = string.not_equal(b, node_label = None, node_color = None)
         ```
     
 
@@ -201,14 +202,14 @@ class String(dsock.String):
             - node_color : None## Fixed parameters
             - data_type : 'STRING'
             - mode : 'ELEMENT'
-            - operation : 'LENGTH'
+            - operation : 'NOT_EQUAL'
     
 
         Node creation
         -------------
             ```python
             from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH', label=node_label, node_color=node_color)
+            nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='NOT_EQUAL', label=node_label, node_color=node_color)
             ```
     
 
@@ -218,164 +219,7 @@ class String(dsock.String):
             
         """
 
-        return nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='LENGTH', label=node_label, node_color=node_color).result
-
-    def average(self, b=None, node_label = None, node_color = None):
-        """ > Node: Compare
-          
-        <sub>go to: top index
-        blender ref FunctionNodeCompare
-        node ref Compare </sub>
-                                  
-        ```python
-        v = string.average(b, node_label = None, node_color = None)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Sockets
-            - a : String (self)
-            - b : String## Parameters
-            - node_label : None
-            - node_color : None## Fixed parameters
-            - data_type : 'STRING'
-            - mode : 'ELEMENT'
-            - operation : 'AVERAGE'
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE', label=node_label, node_color=node_color)
-            ```
-    
-
-        Returns
-        -------
-            Boolean
-            
-        """
-
-        return nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='AVERAGE', label=node_label, node_color=node_color).result
-
-    def dot_product(self, b=None, node_label = None, node_color = None):
-        """ > Node: Compare
-          
-        <sub>go to: top index
-        blender ref FunctionNodeCompare
-        node ref Compare </sub>
-                                  
-        ```python
-        v = string.dot_product(b, node_label = None, node_color = None)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Sockets
-            - a : String (self)
-            - b : String## Parameters
-            - node_label : None
-            - node_color : None## Fixed parameters
-            - data_type : 'STRING'
-            - mode : 'ELEMENT'
-            - operation : 'DOT_PRODUCT'
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT', label=node_label, node_color=node_color)
-            ```
-    
-
-        Returns
-        -------
-            Boolean
-            
-        """
-
-        return nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DOT_PRODUCT', label=node_label, node_color=node_color).result
-
-    def direction(self, b=None, node_label = None, node_color = None):
-        """ > Node: Compare
-          
-        <sub>go to: top index
-        blender ref FunctionNodeCompare
-        node ref Compare </sub>
-                                  
-        ```python
-        v = string.direction(b, node_label = None, node_color = None)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Sockets
-            - a : String (self)
-            - b : String## Parameters
-            - node_label : None
-            - node_color : None## Fixed parameters
-            - data_type : 'STRING'
-            - mode : 'ELEMENT'
-            - operation : 'DIRECTION'
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION', label=node_label, node_color=node_color)
-            ```
-    
-
-        Returns
-        -------
-            Boolean
-            
-        """
-
-        return nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='DIRECTION', label=node_label, node_color=node_color).result
-
-    def join(self, *strings, delimiter=None, node_label = None, node_color = None):
-        """ > Node: JoinStrings
-          
-        <sub>go to: top index
-        blender ref GeometryNodeStringJoin
-        node ref Join Strings </sub>
-                                  
-        ```python
-        v = string.join(strings_1, strings_2, strings_3, delimiter, node_label = None, node_color = None)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Sockets
-            - strings : *String (self)
-            - delimiter : String## Parameters
-            - node_label : None
-            - node_color : None
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.JoinStrings(self, *strings, delimiter=delimiter, label=node_label, node_color=node_color)
-            ```
-    
-
-        Returns
-        -------
-            String
-            
-        """
-
-        return nodes.JoinStrings(self, *strings, delimiter=delimiter, label=node_label, node_color=node_color).string
+        return nodes.Compare(a=self, b=b, data_type='STRING', mode='ELEMENT', operation='NOT_EQUAL', label=node_label, node_color=node_color).result
 
     def replace(self, find=None, replace=None, node_label = None, node_color = None):
         """ > Node: ReplaceString

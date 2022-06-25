@@ -159,6 +159,15 @@ Float
 
 
 
+## type
+
+> Set the spline type
+  
+<blid GeometryNodeCurveSplineType>
+
+
+
+
 ## handle_positions
 
 > Field [CurveHandlePositions](/docs/nodes/CurveHandlePositions.md)
@@ -409,9 +418,9 @@ Blender menu : **curve/handle_type_selection**<br>
 
 <method GeometryNodeDeleteGeometry>
 
-mode : str (default = 'ALL') in ('ALL', 'EDGE_FACE', 'ONLY_FACE')        
-        
+### Example
+
 ```python
-curve.splines.select(...).delete()
+curve.splines(...).delete()
 ```
 

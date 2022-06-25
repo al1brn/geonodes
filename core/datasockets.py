@@ -266,22 +266,131 @@ class String(DataSocket):
     def Input(cls, value="Text", name="String", description=""):
         return cls(Tree.TREE.new_input('String', value=value, name=name, description=description))
     
-    @classmethod
+    @staticmethod
     def Tab(cls):
-        return cls(nodes.SpecialCharacters().tab)
+        return nodes.SpecialCharacters().tab
     
-    @classmethod
+    @staticmethod
     def LineBreak(cls):
-        return cls(nodes.SpecialCharacters().line_break)
+        return nodes.SpecialCharacters().line_break
+    
+    @staticmethod
+    def Value(value=None, decimals=None):
+        """ Initialize a String with a value
+        
+        <blid FunctionNodeValueToString>
+        
+        Parameters
+        ----------
+            - value: Value
+                The value to convert
+            - decimals: Integer
+                The number fo decimals
+        
+        ```python
+        s = gn.String.Value(...)
+        ```
+        """
+        return nodes.ValueToString(value=value, decimals=decimals).string
+    
+    def join_strings(self, *strings, delimiter=None):
+        """ Join strings with a delimiter
+        
+        <blid GeometryNodeStringJoin>
+        
+        This method must not be confused with ``delimiter.join(*strings)``.
+            
+        Parameters
+        ----------
+            - strings : array of Strings
+            - delimiter : String
+                The delimiter between the joined strings
+            
+        Returns
+        -------
+        String
+            
+        Example
+        -------
+            
+        ```python
+        s.join(s0, s1, s2, delimiter="-")
+        ```
+        """
+        
+        import geonodes as gn
+        
+        strs = [self] + list(strings)
+        for i, s in enumerate(strs):
+            if isinstance(s, str):
+                strs[i] = gn.String(s)
+
+        return self.stack(nodes.JoinStrings(*reversed(strs), delimiter=delimiter))
+    
+    def join(self, *strings):
+        """ Join strings with the same use as in python
+        
+        <blid GeometryNodeStringJoin>
+        
+        This method must not be confused with ``string.join_strings(*strings, delimiter)``.
+        ``join`` behaves as the homonym python str method
+            
+        Parameters
+        ----------
+            - strings: array of Strings
+            
+        Returns
+        -------
+        String
+            
+        Example
+        -------
+            
+        ```python
+        delimiter = gn.String("-")
+        s = delimiter.join(s0, s1, s2)        
+        ```
+        """
+        
+        strs = list(strings)
+        for i, s in enumerate(strs):
+            if isinstance(s, str):
+                strs[i] = gn.String(s)
+        
+        return nodes.JoinStrings(*reversed(strs), delimiter=self).string
     
     def __add__(self, other):
-        return String(nodes.JoinStrings(self, other).outputs[0])
+        return nodes.JoinStrings(other, self).string
 
     def __radd__(self, other):
-        return String(nodes.JoinStrings(other, self).outputs[0])
+        return nodes.JoinStrings(self, other).string
     
     def __iadd__(self, other):
-        return self.stack(nodes.JoinStrings(self, other))
+        return self.join_strings(other)
+    
+    def __getitem__(self, index):
+        if isinstance(index, int) or self.is_socket(index):
+            return self.slice(position=index, length=1, node_label=f"{self}[{index}]")
+        
+        elif isinstance(index, slice):
+            if index.start is None:
+                return self.slice(position=0, length=index.stop, node_label=f"{self}[:{index.stop}]")
+            elif index.stop is None:
+                return self.slice(position=index.start, length=999, node_label=f"{self}[{index.start}:]")
+            else:
+                return self.slice(position=index.start, length=index.stop-index.start, node_label=f"{self}[{index.start}:{index.stop}]")
+            
+        else:
+            raise Exceptionf(f"String[]: invalid index: {index}. INdex must be int or slice")
+                
+            
+                
+            
+        
+                
+            
+    
+    
     
     
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -305,6 +414,11 @@ class Vector(DataSocket):
             node = nodes.CombineXyz(x=x, y=y, z=z, label=label)
 
             super().__init__(node.vector, node)
+            
+        # ----- Hack for implementing vector += value in set_position(offset=value)
+        # See domains and fields
+        
+        self.offset_setter = None
             
     @classmethod
     def Input(cls, value=(0, 0, 0), name="Vector", description=""):
@@ -342,7 +456,6 @@ class Vector(DataSocket):
     def __neg__(self):
         return self.multiply(-1)
 
-
     def __add__(self, other):
         return self.add(other)
     
@@ -352,7 +465,14 @@ class Vector(DataSocket):
         return ret
     
     def __iadd__(self, other):
-        return self.stack(self.add(other).node)
+        if self.offset_setter is None:
+            return self.stack(self.add(other).node)
+        
+        # ----- Hack to implement set_position(offeset = other)
+        # see domain Point and fields Position and Handle
+        
+        self.offset_setter(other)
+        return None
     
 
     def __sub__(self, other):
@@ -401,6 +521,7 @@ class Vector(DataSocket):
     
     def __imod__(self, other):
         return self.stack(self.modulo(other).node)
+    
     
 # -----------------------------------------------------------------------------------------------------------------------------
 # Color
@@ -566,7 +687,58 @@ class Geometry(DataSocket):
             return self
         return self.stack(self.add(other).node)
     
+    # ----------------------------------------------------------------------------------------------------
+    # Duplicate the geometry
     
+    def duplicate(self, count=10, realize=True):
+        
+        import geonodes as gn
+        
+        with self.node.tree.layout(f"Duplicate * {count}", color='GENE'):
+            line = gn.Mesh.Line(count=count)
+            insts = gn.Points(line).instance_on_points(instance=self)
+            if realize:
+                return insts.realize()
+            else:
+                return insts
+            
+    def __mul__(self, other):
+        if isinstance(other, int) or self.is_socket(other):
+            return self.duplicate(count=other)
+        
+        raise Exception(f"A geometry can only be multiplied by an int")
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Visualize the handles
+    
+    def show_handles(self):
+        
+        import geonodes as gn
+        
+        if type(self).__name__ != 'Curve':
+            raise Exception (f"‘{self}.show_handles: this method is only for Curve, not {type(self).__name__} ")
+            
+        with self.node.tree.layout("show handles", color='GENE'):
+
+            n  = self.points.count
+            
+            vs = gn.Mesh.Line(offset=(1, 0, 0), count=n)
+            vs.edges.delete_edges_faces()
+            vs.verts.position = self.points.position.transfer_index
+            vs.verts.extrude(offset=self.points.lefts(True).transfer_index)
+            
+            ctl = vs
+                
+            vs = gn.Mesh.Line(offset=(1, 0, 0), count=n)
+            vs.edges.delete_edges_faces()
+            vs.verts.position = self.points.position.transfer_index
+            vs.verts.extrude(offset=self.points.rights(True).transfer_index)
+            
+            ctl = ctl + vs
+            pts = gn.Mesh(ctl).to_points(radius=0.005)
+                
+            return self.join(ctl, pts)
+        
     
 
 # -----------------------------------------------------------------------------------------------------------------------------

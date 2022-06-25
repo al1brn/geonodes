@@ -24,15 +24,17 @@ vertex: the point domain of meshes
   
 <blid GeometryNodeMergeByDistance>
 
-'''python
-mesh.verts.select().merge()
-````
-
 ### Arguments
 
 - mode : str (default = 'ALL') in ('ALL', 'CONNECTED')        
 - distance : Float
 The merge distance
+
+### Example
+
+'''python
+mesh.verts().merge()
+````
 
 
 
@@ -42,12 +44,14 @@ The merge distance
   
 <blid GeometryNodeMergeByDistance>
 
-'''python
-mesh.verts.select().merge_connected()
-````
-
 ### Arguments
 
 - distance : Float
 The merge distance
+
+### Example
+
+'''python
+mesh.verts().merge_connected()
+````
 

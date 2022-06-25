@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-18
+Created on 2022-06-24
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -43,6 +43,11 @@ class Points(gn.Geometry):
             - to_vertices : mesh (Mesh)
             - to_volume : volume (Volume)
     """
+
+
+    def copy(self):
+
+        return Points(self)
 
     def init_domains(self):
         self.points = domains.CloudPoint(self)

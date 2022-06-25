@@ -27,24 +27,24 @@
 - [add](#add) : vector (Vector)
 - [align_to_vector](#align_to_vector) : rotation (Vector)
 - [attribute_statistic](#attribute_statistic) : Sockets      [mean (Vector), median (Vector), sum (Vector), min (Vector), max (Vector), range (Vector), standard_deviation (Vector), variance (Vector)]
+- [average](#average) : result (Boolean)
 - [capture_attribute](#capture_attribute) : Sockets      [geometry (Geometry), attribute (Vector)]
 - [ceil](#ceil) : vector (Vector)
 - [cos](#cos) : vector (Vector)
 - [cross](#cross) : vector (Vector)
 - [curves](#curves) : vector (Vector)
+- [direction](#direction) : result (Boolean)
 - [distance](#distance) : value (Float)
 - [divide](#divide) : vector (Vector)
 - [dot](#dot) : value (Float)
-- [equal](#equal) : result (Boolean)
+- [dot_product](#dot_product) : result (Boolean)
+- [element](#element) : result (Boolean)
 - [faceforward](#faceforward) : vector (Vector)
 - [field_at_index](#field_at_index) : value (Vector)
 - [floor](#floor) : vector (Vector)
 - [fraction](#fraction) : vector (Vector)
-- [greater_equal](#greater_equal) : result (Boolean)
-- [greater_than](#greater_than) : result (Boolean)
+- [length](#length) : result (Boolean)
 - [length](#length) : value (Float)
-- [less_equal](#less_equal) : result (Boolean)
-- [less_than](#less_than) : result (Boolean)
 - [map_range](#map_range) : vector (Vector)
 - [max](#max) : vector (Vector)
 - [min](#min) : vector (Vector)
@@ -52,7 +52,6 @@
 - [multiply](#multiply) : vector (Vector)
 - [multiply_add](#multiply_add) : vector (Vector)
 - [normalize](#normalize) : vector (Vector)
-- [not_equal](#not_equal) : result (Boolean)
 - [project](#project) : vector (Vector)
 - [raycast](#raycast) : Sockets      [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Vector)]
 - [reflect](#reflect) : vector (Vector)
@@ -501,7 +500,7 @@ nodes.MapRange(vector=self, from_min=from_min, from_max=from_max, to_min=to_min,
 Vector
 
 
-## less_than
+## element
 
 > Node: [Compare](/docs/nodes/Compare.md)
   
@@ -510,155 +509,7 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = vector.less_than(b, c, angle, mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- a : Vector (self)
-- b : Vector
-- c : Float
-- angle : Float## Parameters
-- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'VECTOR'
-- operation : 'LESS_THAN'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_THAN', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
-
-## less_equal
-
-> Node: [Compare](/docs/nodes/Compare.md)
-  
-<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
-blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-                          
-```python
-v = vector.less_equal(b, c, angle, mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- a : Vector (self)
-- b : Vector
-- c : Float
-- angle : Float## Parameters
-- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'VECTOR'
-- operation : 'LESS_EQUAL'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='LESS_EQUAL', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
-
-## greater_than
-
-> Node: [Compare](/docs/nodes/Compare.md)
-  
-<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
-blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-                          
-```python
-v = vector.greater_than(b, c, angle, mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- a : Vector (self)
-- b : Vector
-- c : Float
-- angle : Float## Parameters
-- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'VECTOR'
-- operation : 'GREATER_THAN'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_THAN', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
-
-## greater_equal
-
-> Node: [Compare](/docs/nodes/Compare.md)
-  
-<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
-blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-                          
-```python
-v = vector.greater_equal(b, c, angle, mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- a : Vector (self)
-- b : Vector
-- c : Float
-- angle : Float## Parameters
-- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'VECTOR'
-- operation : 'GREATER_EQUAL'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, c=c, angle=angle, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
-
-## equal
-
-> Node: [Compare](/docs/nodes/Compare.md)
-  
-<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
-blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-                          
-```python
-v = vector.equal(b, c, angle, epsilon, mode, node_label = None, node_color = None)
+v = vector.element(b, c, angle, epsilon, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -673,13 +524,13 @@ v = vector.equal(b, c, angle, epsilon, mode, node_label = None, node_color = Non
 - node_label : None
 - node_color : None## Fixed parameters
 - data_type : 'VECTOR'
-- operation : 'EQUAL'
+- operation : 'ELEMENT'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='EQUAL', label=node_label, node_color=node_color)
+nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='ELEMENT', label=node_label, node_color=node_color)
 ```
 
 ### Returns
@@ -687,7 +538,7 @@ nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR'
 Boolean
 
 
-## not_equal
+## length
 
 > Node: [Compare](/docs/nodes/Compare.md)
   
@@ -696,7 +547,7 @@ blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types
 node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
                           
 ```python
-v = vector.not_equal(b, c, angle, epsilon, mode, node_label = None, node_color = None)
+v = vector.length(b, c, angle, epsilon, mode, node_label = None, node_color = None)
 ```
 
 ### Arguments
@@ -711,13 +562,127 @@ v = vector.not_equal(b, c, angle, epsilon, mode, node_label = None, node_color =
 - node_label : None
 - node_color : None## Fixed parameters
 - data_type : 'VECTOR'
-- operation : 'NOT_EQUAL'
+- operation : 'LENGTH'
 
 ### Node creation
 
 ```python
 from geondes import nodes
-nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='NOT_EQUAL', label=node_label, node_color=node_color)
+nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='LENGTH', label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Boolean
+
+
+## average
+
+> Node: [Compare](/docs/nodes/Compare.md)
+  
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
+blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
+                          
+```python
+v = vector.average(b, c, angle, epsilon, mode, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- a : Vector (self)
+- b : Vector
+- c : Float
+- angle : Float
+- epsilon : Float## Parameters
+- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+- node_label : None
+- node_color : None## Fixed parameters
+- data_type : 'VECTOR'
+- operation : 'AVERAGE'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='AVERAGE', label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Boolean
+
+
+## dot_product
+
+> Node: [Compare](/docs/nodes/Compare.md)
+  
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
+blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
+                          
+```python
+v = vector.dot_product(b, c, angle, epsilon, mode, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- a : Vector (self)
+- b : Vector
+- c : Float
+- angle : Float
+- epsilon : Float## Parameters
+- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+- node_label : None
+- node_color : None## Fixed parameters
+- data_type : 'VECTOR'
+- operation : 'DOT_PRODUCT'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='DOT_PRODUCT', label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Boolean
+
+
+## direction
+
+> Node: [Compare](/docs/nodes/Compare.md)
+  
+<sub>go to: [top](#data-socket-vector) [index](/docs/index.md)
+blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
+                          
+```python
+v = vector.direction(b, c, angle, epsilon, mode, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- a : Vector (self)
+- b : Vector
+- c : Float
+- angle : Float
+- epsilon : Float## Parameters
+- mode : 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+- node_label : None
+- node_color : None## Fixed parameters
+- data_type : 'VECTOR'
+- operation : 'DIRECTION'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation='DIRECTION', label=node_label, node_color=node_color)
 ```
 
 ### Returns

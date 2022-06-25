@@ -142,15 +142,31 @@ Integer
 
 
 
-## extrude
+## to_curve
 
-<method GeometryNodeExtrudeMesh>
+> Convert edges to curve
+  
+<blid GeometryNodeMeshToCurve>
 
-call [Mesh.extrude](/docs/sockets/Mesh.md#extrude) with mode = 'EDGES'
-                            
+### Example
+
 ```python
-node = mesh.edges.extrude()
+mesh.edges.to_curve(...)
 ```
 
+
+
+
+## split
+
+> Split edges
+  
+<blid GeometryNodeSplitEdges>
+
+### Example
+
+```python
+mesh.edges.split()
+```
 
 

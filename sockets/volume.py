@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-18
+Created on 2022-06-24
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -34,6 +34,11 @@ class Volume(gn.Geometry):
         -------
             - to_mesh : mesh (Mesh)
     """
+
+
+    def copy(self):
+
+        return Volume(self)
 
 
     # ----------------------------------------------------------------------------------------------------
