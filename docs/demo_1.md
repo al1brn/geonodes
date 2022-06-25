@@ -231,12 +231,42 @@ This is illustrated here below:
 
 <img src="/docs/images/demo_1_set_position.png" height="200">
 
+### Domains
+
+But rather than using operations on geometry classes as above, the use of **domains** is better. In geometry nodes, domains are **points**, **faces**, **splines**, **edges** and **instances** which actually compose the geometry.
+
+Writing `grid.set_position()` means that you change the position of the grid.
+**But this is not what is done!**. In fact, you change the position of the **vertices** of the grid.
+
+This is why, it is far more better to write:
+
+```python
+grid.verts.position += (0, 0, z)
+```
+
+This explicitly tells that you change the position of the vertices of the mesh.
+
+The domains can be selected to operate on part of the vertices:
+
+```python
+
+# Only one vertex on two will be changed
+grid.verts((grid.verts.index % 2).equal(0)).position += (0, 0, z)
+
+# Only the vertices between 5000 and 8000 will be changed
+grid.verts[5000:8000].position += (0, 0, z)
+```
+
 ### Output geometry
 
 To define a geometry as the result of the modifier, simply set the `output_geometry` property of the tree.
 
 ```python
-    tree.output_geometry = grid.set_shade_smooth()     
+    tree.output_geometry = grid.set_shade_smooth()
+
+    # Or you can use the 'shortcut' og
+    tree.og = grid.set_shade_smooth()
+    
 ```
 
 ## Further reading
