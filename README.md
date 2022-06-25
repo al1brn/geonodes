@@ -214,6 +214,7 @@ b = gn.Boolean(False)
 c = a + b      # a or b
 d = a * b      # a and b
 e = -a         # not a
+```
 
 ### Other sockets
 
