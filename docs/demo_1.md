@@ -67,7 +67,7 @@ with gn.Tree("Geometry Nodes") as tree:
 
 The `tree_name` is the name of a geometry nodes modifier. If it doesn't exist, it will be created. However, it is recommended to create the geometry nodes first.
 
-> CAUTION: when calling `tree(tree_name)`, ***all the nodes and links are erased***. Be sure not to open a tree with an existing valuable tree you don't want to loose.
+> **Warning** when calling `tree(tree_name)`, ***all the nodes and links are erased***. Be sure not to open a tree with an existing valuable tree you don't want to loose.
 
 <hr>
 
