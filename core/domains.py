@@ -1324,11 +1324,11 @@ class ControlPoint(Domain, PointInterface):
         return self.stack(nodes.SetHandleType(curve=self.data_socket, selection=self.selection, handle_type=stype, mode=mode))
     
     @property
-    def handles_type(self):
-        raise Exception(f"'handles_type' is a write only property")
+    def handle_type(self):
+        raise Exception(f"'handle_type' is a write only property")
         
     @handles_type.setter
-    def handles_type(self, value):
+    def handle_type(self, value):
         """ > Set the handles type
         
         <blid GeometryNodeCurveSetHandles>
@@ -1337,7 +1337,7 @@ class ControlPoint(Domain, PointInterface):
         
         ```python
         curve.splines.type = 'BEZIER'
-        curve.points.handles_type = 'FREE'
+        curve.points.handle_type = 'FREE'
         ```
         """
         return self.set_handle_type(handle_type=value, mode={'LEFT', 'RIGHT'})
