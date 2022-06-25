@@ -27,8 +27,6 @@ The following script creates a surface from a grid by computing
 `z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the distance of the vertex to the center.
 
 ```python
-# Import the geonodes module
-# gn is the suggested alias
 import geonodes as gn
 
 with gn.Tree("Geometry Nodes") as tree:
@@ -48,10 +46,11 @@ with gn.Tree("Geometry Nodes") as tree:
         z = height * gn.sin(distance*omega)/distance
         
     # Let's change the z coordinate of our vertices
-    grid.set_position(offset=(0, 0, z))
+    grid.verts.position += (0, 0, z)
     
     # We are done: plugging the deformed grid as the modified geometry
-    tree.output_geometry = grid.set_shade_smooth()          
+    tree.output_geometry = grid.set_shade_smooth()
+               
 ```
 
 > See [Demo details](docs/demo_1.md)
