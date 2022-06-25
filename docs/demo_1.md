@@ -140,12 +140,12 @@ Let's modify our script. This time, we initialize `count` as being a Group input
 > Note: an **input** socket of the modifier is an **output socket** of the node 'Group Input'.
 
 ```python
-    count  = gn.Integer.Input(100, "Resolution")
+    count  = gn.Integer.Input(100, "Grid resolution")
     size   = gn.Float(20.)
     
     grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
 ````
-In the resulting tree, the node 'Grid' is now fed by one node and a user parameter named 'Resolution':
+In the resulting tree, the node 'Grid' is now fed by one node and a user parameter named 'Grid resolution':
 
 <img src="/docs/images/demo_1_grid_2.png" height = "200">
 
