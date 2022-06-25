@@ -6,15 +6,13 @@ The script creates a surface from a grid by computing
 `z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the distance of the vertex to the center.
 
 ```python
-# Import the geonodes modules
-# gn is the suggested alias
 import geonodes as gn
 
 with gn.Tree("Geometry Nodes") as tree:
 
     # Let's document our parameters
     count  = 100  # Grid resolution
-    size   = 20.  # Size
+    size   = 20   # Size
     omega  = 2.   # Period
     height = 2.   # Height of the surface
     
@@ -27,10 +25,11 @@ with gn.Tree("Geometry Nodes") as tree:
         z = height * gn.sin(distance*omega)/distance
         
     # Let's change the z coordinate of our vertices
-    grid.set_position(offset=(0, 0, z))
+    grid.verts.position += (0, 0, z)
     
     # We are done: plugging the deformed grid as the modified geometry
-    tree.output_geometry = grid.set_shade_smooth()     
+    tree.output_geometry = grid.set_shade_smooth()
+                   
 ```
 
 The generated nodes and the result of the Geometry nodes modifier is given below:
