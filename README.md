@@ -109,12 +109,12 @@ curve.splines[2].tilt = 1
 ### Geometry classes
 
 The geometry classes are:
-- Geometry (root class)
-- Mesh
-- Curve
-- Points
-- Instances
-- Volume
+- [Geometry](docs/sockets/Geometry.md) (root class)
+- [Mesh](docs/sockets/Mesh.md)
+- [Curve](docs/sockets/Curve.md)
+- [Points](docs/sockets/Points.md)
+- [Instances](docs/sockets/Instances.md)
+- [Volume](docs/sockets/Volume.md)
 
 `Geometry` methods are available in the other classes:
 
@@ -153,12 +153,12 @@ instances.insts[0].position = (1, 2, 3) # The instance # 0 is set at position (1
 ### Values
 
 To manipulate geometry, the available classes are:
-- Boolean
-- Integer
-- Float
-- Vector
-- Color
-- String
+- [Boolean](docs/sockets/Boolean.md)
+- [Integer](docs/sockets/Integer.md)
+- [Float](docs/sockets/Float.md)
+- [Vector](docs/sockets/Vector.md)
+- [Color](docs/sockets/Color.md)
+- [String](docs/sockets/String.md)
 
 These values are used as arguments of geometry and domain classes. With the notable exception of **Booleans**,
 the values can be manipulated with python operators:
@@ -186,75 +186,46 @@ with gn.Tree("Geometry Nodes") as tree:
                                                     # Setting the output_geometry property defines the ouput geometry
 ```
 
+### Booleans
 
-
-
-
-
-
-
-In Blender, you link geometry nodes with their output and input sockets.
-
-In **geonodes** you manipulate the vertices fo meshes, the splines of curves
-
-In **geonodes**:
-- output sockets are the pivot **data classes**
-- nodes are **methods** of these data socket classes
-- A method (i.e. a geometry node) links the output socket to one input socket of the method node
-
-For instance:
+**geonodes** Booleans can't be manipulated with standard python operators:
 
 ```python
-
-# Some initialization stuff where my_mesh refers to the output socket of a node
-
-my_mesh.set_shade_smoth()
-
-# The node 'Set Shade Smooth' was created. The output socket my_mesh is now linked
-# to the input socket of 'Set Shade Smooth'
+a = gn.Boolean(True)
+b = gn.Boolean(False)
+c = a or b            # No logical operation is performed, c has the value of a
+d = gn.b_or(a, b)     # The right instruction to compute a logical operation in geometry nodes
+d = a.b_or(b)         # Alternative syntax: boolean operators are also implemented as methods
 ```
 
-For more details, see [Nodes and sockets](docs/nodes_and_sockets.md)
+Similary, logical operations between values can't be used:
 
-### Data socket classes
+```python
+i = gn.Integer(10)
+a = i == 10           # a is a python bool, not a geonodes Boolean
+b = i.equal(10)       # Correct way to compare two values in geonodes
+```
 
-Basically, all geometry nodes are created by calling methods and properties of the following data classes:
+To ease the way to implement logical operations in geonodes, `+`, `-` and `*` can be used as alernative to `or`, `not` and `and`:
 
-#### Value data
+```python
+a = gn.Boolean(True)
+b = gn.Boolean(False)
+c = a + b      # a or b
+d = a * b      # a and b
+e = -a         # not a
 
-- [Boolean](docs/sockets/Boolean.md)
-- [Integer](docs/sockets/Integer.md)
-- [Float](docs/sockets/Float.md)
-- [Vector](docs/sockets/Vector.md)
-- [Color](docs/sockets/Color.md)
-- [String](docs/sockets/String.md)
+### Other sockets
 
-#### Geometry data
+Other data are available through the following classes:
 
-All geometry data classes inherit from Geometry:
-
-- [Geometry](docs/sockets/Geometry.md)
-  - [Spline](docs/sockets/Spline.md)
-  - [Curve](docs/sockets/Curve.md)
-  - [Mesh](docs/sockets/Mesh.md)
-  - [Points](docs/sockets/Points.md)
-  - [Instances](docs/sockets/Instances.md)
-  - [Volume](docs/sockets/Volume.md)
-
-#### Other sockets
   - [Collection](docs/sockets/Boolean.md)
   - [Object](docs/sockets/Object.md)
   - [Image](docs/sockets/Image.md)
   - [Texture](docs/sockets/Texture.md)
   - [Material](docs/sockets/Material.md)
 
-#### Fields
-
-Fields are considered as _Data Socket_ classes properties. **geonodes** analyzes the tree to determine if a 'Capture Attribute' node is necessary or not.
-
-For more details see [Fields](/docs/attributes.md)
-
-### Naming
+## Naming
 
 **geonodes** classes and properties are named after the Blender names.
 
