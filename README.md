@@ -91,12 +91,59 @@ import geonodes as gn
 
 Uses [index](docs/index.md) to gain access to the list of availables classes.
 
-### Nodes and sockets
+### Scripting geometry
 
-Geometry nodes are linked between their output and input sockets.
+A **geonodes** script generates nodes through the methods of geometry classes.
+
+The geometry classes are:
+- Geometry (root class)
+- Mesh
+- Curve
+- Points
+- Instances
+- Volume
+
+`Geometry` methods are available in all the other ones:
+
+```python
+geometry.set_shade_smooth()              # Generate the 'Set Shade Smooth' node
+geometry.transform(tranlation=(1, 2, 3)) # Generates the 'Transform' node
+``` 
+
+The other classes expose methods specific to their geometry:
+
+```python
+mesh2 = mesh.union(other_mesh) # 'Mesh Boolean' with Union parameter
+curve.fillet()                 # 'Fillet Curve'
+```
+
+But the majority of operations are made on the geometry **domains**:
+- Mesh: verts, faces, edges, corners
+- Curve : points, splines
+- Points : points
+- Instances : insts
+
+```python
+mesh.verts.position += (0, 0, 1)        # All the mesh points are moved 1 upwards (node 'Set Position')
+cloud = mesh.faces.distribute_points()  # Node 'Distribute Points on Faces'
+mesh.edges.extrude()                    # Node 'Extrude Mesh' with option 'Edges'
+curve.splines.type = 'BEZIER'           # Curve splines type to BEZIER
+curve.points.handle_type = 'FREE'       # Curve handle type to FREE
+```
+
+
+
+
+
+
+
+
+In Blender, you link geometry nodes with their output and input sockets.
+
+In **geonodes** you manipulate the vertices fo meshes, the splines of curves
 
 In **geonodes**:
-- output sockets are the central **data classes**
+- output sockets are the pivot **data classes**
 - nodes are **methods** of these data socket classes
 - A method (i.e. a geometry node) links the output socket to one input socket of the method node
 
