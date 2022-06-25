@@ -69,9 +69,8 @@ The `tree_name` is the name of a geometry nodes modifier. If it doesn't exist, i
 
 > **Warning** when calling `tree(tree_name)`, ***all the nodes and links are erased***. Be sure not to open a tree with an existing valuable tree you don't want to loose.
 
-<hr>
 
-> Important notice: within the scope of a Tree creation / closure, all the nodes are created within this tree. There is no need to make reference to this tree.
+Within the scope of a Tree creation / closure, all nodes are created within this tree without need to make explicit reference to this tree.
 
 In the following example, the `grid` mesh is created in `tree` without making any explicit reference to it. 
 
@@ -79,8 +78,6 @@ In the following example, the `grid` mesh is created in `tree` without making an
 with gn.Tree("Geometry Nodes') as tree:
     grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
 ```
-<hr>
-
 Fore more details, see [class Tree reference](Tree.md)
 
 ### Variables
@@ -143,7 +140,7 @@ Let's modify our script. This time, we initialize `count` as being a Group input
 > Note: an **input** socket of the modifier is an **output socket** of the node 'Group Input'.
 
 ```python
-    count  = gn.Integer.Input(100, "Grid resolution")
+    count  = gn.Integer.Input(100, "Resolution")
     size   = gn.Float(20.)
     
     grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
