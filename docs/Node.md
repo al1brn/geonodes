@@ -3,55 +3,49 @@
 
 The root class for Blender node wrappers.
 
+:param bl_idname: The node bl_idname
+:param name: The node name
+:param label: The node label
+:param node_color: The node color
+:type bl_idname: str
+:type name: str
+:type label: str
+:type node_color: triplet, str or mathutils.Color
+
+
 This class is basically intended to expose its constructor as a way to create
 the associated Geometry Node. In the following example, we create a Node
 supposingly have one single input socket named "geometry"
-        
-```python
-my_node = Node(geometry=value, parameter='PARAM')
-```
 
-## Nodes naming convention
 
-The Node sub classes are named accoridng their Blender label with a **Camel case** conversion,
+.. code-block:: python
+
+  my_node = Node(geometry=value, parameter='PARAM')
+  
+**Nodes naming convention**    
+
+The Node sub classes are named according their Blender label with a **CamelCase** conversion,
 for instance:
 
-- _Set Shade Smooth_ --> SetShadeSmoth
-- _Split Edges_ --> SplitEdges
-_ _Normal_ --> Normal
+-  *Set Shade Smooth* --> ``SetShadeSmooth``
+-  *Split Edges* --> ``SplitEdges``
+-  *Normal* --> ``Normal``
+  
+**Sockets naming convention**
 
-## Sockets naming convention
-
-The node socket are named after the Blender sockets names with a **snake case** conversion,
+The node sockets are named after the Blender sockets names with a **snake_case** conversion,
 for instance:
 
-- _Geometry_ --> geometry
-- _Mesh 1_ --> mesh_1
+-  *Geometry* --> ``geometry``
+-  *Mesh 1* --> ``mesh_1``
+-  *Curve instances* --> ``curve_instances``
   
 For some nodes, (Math node for instance), several sockets can share the same name. In that case, the
 sockets are numbered, starting from 0:
 
-- Value --> value0
-- Value --> value1
-
-## Properties
-
-- tree : Tree
-  The tree the node bleongs to
-- name : str
-  Standard Geometry node name
-- label : str
-  User defined label. Can be None
-- bnode : bpy.types.Node
-  The actual Blender Geometry node
-- inputs : list
-  List of innput sockets
-- outputs : list
-  List of output sockets
-- is_attribute : bool
-  Indicates that the node is an field attribute
-- bl_idname : str
-  The node type name
+-  *Value* --> ``value0``
+-  *Value* --> ``value1``
+  
   
   
   
@@ -60,20 +54,49 @@ sockets are numbered, starting from 0:
 
 The root class for Blender node wrappers.
 
-The creation tree is read in the static property Tree.TREE.
+:param bl_idname: The node bl_idname
+:param name: The node name
+:param label: The node label
+:param node_color: The node color
+:type bl_idname: str
+:type name: str
+:type label: str
+:type node_color: triplet, str or mathutils.Color
 
-The blender Node is created by calling the method `tree.get_bnode` method.
 
-### Arguments
+This class is basically intended to expose its constructor as a way to create
+the associated Geometry Node. In the following example, we create a Node
+supposingly have one single input socket named "geometry"
 
-- bl_idname: str
-  A valid node bl_idname
-- name: str
-  The node name
-- label: str, optional
-  The node label
-- node_color: color, optional
-  The node color
+
+.. code-block:: python
+
+  my_node = Node(geometry=value, parameter='PARAM')
+  
+**Nodes naming convention**    
+
+The Node sub classes are named according their Blender label with a **CamelCase** conversion,
+for instance:
+
+-  *Set Shade Smooth* --> ``SetShadeSmooth``
+-  *Split Edges* --> ``SplitEdges``
+-  *Normal* --> ``Normal``
+  
+**Sockets naming convention**
+
+The node sockets are named after the Blender sockets names with a **snake_case** conversion,
+for instance:
+
+-  *Geometry* --> ``geometry``
+-  *Mesh 1* --> ``mesh_1``
+-  *Curve instances* --> ``curve_instances``
+  
+For some nodes, (Math node for instance), several sockets can share the same name. In that case, the
+sockets are numbered, starting from 0:
+
+-  *Value* --> ``value0``
+-  *Value* --> ``value1``
+  
   
   
   
@@ -94,8 +117,69 @@ Input sockets are "write only"
 
 ## get_datasocket
 
-Output socket by index
+Get the data socket by its index.
 
+:param index: Index of the output socket to get
+:type index: int
+:return: The data socket at the given socket
+:rtype: DataSocket
+
+.. Note:: The index is the **user index**. It can differ from the **geometry node index** of the socket when
+  several sockets share the same name. For instance the node *Random value* has several output sockets
+  named *Value*. Only one is enabled at the same time. All these sockets share the same index, which is 0.
+  The socket returned by ``get_datasocket`` is the one which is enabled.
+  
+.. code-block:: python
+
+  import geonodes as gn
+  
+  with gn.Tree("Geometry Nodes") as tree:
+  
+
+### Node 'Random Value' initialized for FLOAT
+
+v = gn.Float.Random()
+
+
+### Let's explore the node
+
+random_node = v.node
+
+
+### The actual output sockets of the geometry node
+
+
+### Note that we loop on bnode which is the wrapped node
+
+print("Actual sockets:")
+for i, bsocket in enumerate(random_node.bnode.outputs):
+  print(i, bsocket.name, bsocket.enabled)
+print()
+
+
+### All the socket share the same name and user index
+
+
+### The one whih is return is the enabled one
+
+print("User sockets:")
+for key in random_node.outsockets:
+  socket = getattr(v.node, key)
+  print(key, socket.socket_index, socket.bl_idname)
+  
+.. code-block:: console
+
+  Actual sockets:
+  0 Value False
+  1 Value True
+  2 Value False
+  3 Value False
+  
+  User sockets:
+  value 1 NodeSocketFloat                    
+  
+  
+  
 
 ## \_\_str\_\_
 
@@ -104,12 +188,20 @@ Let's make thing readable
 
 ## bl_idname
 
-bl idname
+Shortcut for ``self.bnode.bl_idname``
+
 
 
 ## unitize
 
-Class method to unitize a list of names
+Utility to build unique names from a list with homonyms
+
+:param names: The list of names to unitize
+:type names: list of strs
+:return: list with the same number of names where homonyms are suffixed by their rank
+:rtype: list of strs
+
+
 
 
 ## get_label
@@ -123,37 +215,55 @@ its unique id with its standard name.
 
 ## chain_label
 
-Chain label used when labeling chained nodes
-eg: separate property of Vector is labeled: {chain_label}.separate
+Label to use when building chain labels
 
 
 ## input_geometry_bsocket
 
-The input geometry socket when exists
+The input geometry blender socket
 
 
 ## fed_nodes
 
-All the fed nodes (nodes connected to one output socket)
+List of the node with input sockets connected with this socket
+
 
 
 ## switch_input_sockets
 
-Utility method switch the links fo two sockets/
+Utility method which switchs the links of two sockets.
 
-Used when implementing operators
+:param index0: The first index
+:param index1: The second index
+:type index0: int
+:typ index1: int
+
+Used when implementing operators __rxxx___
 
 
 
 
 ## plugged
 
-Sockets plugged to an input socket
+The liste of plugged sockets
+
+:param index: the index of the socket to consider
+:type index: int
+:return: The list of connected sockets
+:rtype: list of DataSockets
+
+
 
 
 ## plug
 
 Plug the values to the input socket whose index is provided.
+
+:param index: The index of the input sockets (a valid index for Node.inputs)
+:param values: Each value can be an acceptable default value for the socket
+  or an output socket 
+:type index: int
+:type values: list of values
 
 Since an input socket can be multi input, the values argument is a list.
 
@@ -161,122 +271,154 @@ If the socket is multi input, the plug method is called once per provide value.
 If a value is None, nothing happens.
 
 A not None value can be:
+
 - either a valid valud for the socket (eg: 123 for Integer socket)
 - or an output socket of another Node
   
-When it is a socket, it can be a Blender socker or a DataSocket
+When it is a socket, it can be a Blender socket or a DataSocket
 
-### Arguments
 
-- index: int
-  The index of the input sockets (a valid index for Node.inputs)
-- *values: list of values
-  Each value can be an acceptable default value for the socket
-  or an output socket 
-  
-  
-  
+
 ----- Index can be a string
 
 ## plug_node
 
-Plug all sockets with matching name
+Plug all the sockets of a node.
+
+:param node: The node whose output sockets will be plugged
+:type node: Node
+
+Plug the output sockets of node whose name match an input socket of self.
+
+
+
 
 
 ## as_attribute
 
-Indicates that the node is an attribute
+Indicates that the node is an attribute.
 
-An attribute is intended to provide information from a particular geometry.
+:param owning_socket: The owning socket it is an atribute of
+:param domain: The domain if 'Capture Attribute' is necessary
+:type owning_socket: DataSocket
+:type domain: str
 
-In Blender, one has to check if he has to use a Capture Node or not.
+Set the property :attr:`is_atribute` to `True` to indicate that the socket
+is the attribute of a Geometry.
+The domain is stored in the property `domain`
 
-With geonodes scripting, attributes are considered as properties of geometry.
-At creation time, the Node maintains a reference to the geometry it is an attribute of.
-When closing the tree, all the attributes are check to see if a "Capture Node" must be
-created instead of keeping the single attribute node.
-
-See `Tree.check_attributes` method.
+see :func:`Tree.check_attributes` 
 
 
 
 
 ## connected_geometries
 
-List of the nodes which are connected through a GEOMETRY socket
+List of the connected geometries
+
+Explore the fowards links until finding a node with an input geometry.
+The resulting list will allow to determine if a 'Capture Attribute' is necessary.
+
+
 
 
 ## attribute_is_solved
 
-The attribute is "solved" when it feeds capture or transfer attribute
+Check if the attribute is already solved.
+
+No need to insert a  *Capture Attribute* Node when the socket is already
+connected to nodes  *Capture Attribute* or  *Transfer Attribute*.
+
+see :func:`Tree.check_attributes` 
+
+
 
 
 ## Boolean
 
-Node socket classes will be created in generated modules
+Initialize a Boolean with a DataSocket
 
 
+## Integer
 
-  @staticmethod
-  def DataSocket(socket):
-    if socket.bl_idname == 'NodeSocketBool':
-      return Node.Boolean(socket)
-      
-    elif socket.bl_idname == 'NodeSocketInt':
-      return Node.Integer(socket)
-      
-    elif socket.bl_idname == 'NodeSocketIntUnsigned':
-      return Node.Integer(socket)
-      
-    elif socket.bl_idname == 'NodeSocketFloat':
-      return Node.Float(socket)
-      
-    elif socket.bl_idname == 'NodeSocketFloatFactor':
-      return Node.Float(socket)
-      
-    elif socket.bl_idname == 'NodeSocketFloatAngle':
-      return Node.Float(socket)
-      
-    elif socket.bl_idname == 'NodeSocketFloatDistance':
-      return Node.Float(socket)
-      
-    elif socket.bl_idname == 'NodeSocketVector':
-      return Node.Vector(socket)
-      
-    elif socket.bl_idname == 'NodeSocketVectorEuler':
-      return Node.Vector(socket)
-      
-    elif socket.bl_idname == 'NodeSocketVectorXYZ':
-      return Node.Vector(socket)
-      
-    elif socket.bl_idname == 'NodeSocketVectorTranslation':
-      return Node.Vector(socket)
-      
-    elif socket.bl_idname == 'NodeSocketColor':
-      return Node.Color(socket)
-      
-    elif socket.bl_idname == 'NodeSocketString':
-      return Node.String(socket)
-      
-    elif socket.bl_idname == 'NodeSocketGeometry':
-      return Node.Geometry(socket)
-      
-    elif socket.bl_idname == 'NodeSocketCollection':
-      return Node.Collection(socket)
-      
-    elif socket.bl_idname == 'NodeSocketImage':
-      return Node.Image(socket)
-      
-    elif socket.bl_idname == 'NodeSocketMaterial':
-      return Node.Material(socket)
-      
-    elif socket.bl_idname == 'NodeSocketObject':
-      return Node.Object(socket)
-      
-    elif socket.bl_idname == 'NodeSocketTexture':
-      return Node.Texture(socket)
-      
-    raise RuntimeError(f"Unknown bl_idname for socket '{socket.name}': '{socket.bl_idname}'")
-    
-    
-    
+Initialize a Integer with a DataSocket
+
+
+## Float
+
+Initialize a Float with a DataSocket
+
+
+## Vector
+
+Initialize a Vector with a DataSocket
+
+
+## Color
+
+Initialize a Color with a DataSocket
+
+
+## String
+
+Initialize a String with a DataSocket
+
+
+## Geometry
+
+Initialize a Geometry with a DataSocket
+
+
+## Curve
+
+Initialize a Curve with a DataSocket
+
+
+## Mesh
+
+Initialize a Mesh with a DataSocket
+
+
+## Points
+
+Initialize a Points with a DataSocket
+
+
+## Instances
+
+Initialize a Instances with a DataSocket
+
+
+## Volume
+
+Initialize a Volume with a DataSocket
+
+
+## Texture
+
+Initialize a Texture with a DataSocket
+
+
+## Material
+
+Initialize a Material with a DataSocket
+
+
+## Image
+
+Initialize a Image with a DataSocket
+
+
+## Collection
+
+Initialize a Collection with a DataSocket
+
+
+## Object
+
+Initialize a Object with a DataSocket
+
+
+## DataClass
+
+Initialize a DataClass of the propert class from from the bl_idname of the socket

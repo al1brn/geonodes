@@ -5,8 +5,10 @@ Created on Mon Apr 25 08:10:09 2022
 
 @author: alain
 """
-
-import bpy
+try:
+    import bpy
+except:
+    pass
 
 DIMS = {
     'NodeFrame'                               : (300.0000, 200.0000),

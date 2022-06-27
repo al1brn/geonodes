@@ -1,43 +1,42 @@
 
 # Node Viewer
 
-> Node 'Viewer' (GeometryNodeViewer)
+Node *Viewer*
 
-## Data type dependant sockets
-
-- Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
-- Input sockets     : ['value']
-
-## Input sockets
-
-- geometry        : Geometry
-- value           : data_type dependant
-
-## Parameters
-
-- data_type       : 'FLOAT' in [ 'FLOAT' 'INT' 'FLOAT_VECTOR' 'FLOAT_COLOR' 'BOOLEAN']
+Args:
+  geometry: The geometry to view
+  value: The value to view
+  data_type: The value data_type in [ 'FLOAT' 'INT' 'FLOAT_VECTOR' 'FLOAT_COLOR' 'BOOLEAN']
   
   
-  
-  
+.. blid:: GeometryNodeViewer
+
+
+
+
 
 ## \_\_init\_\_
 
-> Node 'Viewer' (GeometryNodeViewer)
+Node *Viewer*
 
-### Data type dependant sockets
+Args:
+  geometry: The geometry to view
+  value: The value to view
+  data_type: The value data_type in [ 'FLOAT' 'INT' 'FLOAT_VECTOR' 'FLOAT_COLOR' 'BOOLEAN']
+  
+  
+.. blid:: GeometryNodeViewer
 
-- Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
-- Input sockets     : ['value']
 
-### Input sockets
 
-- geometry        : Geometry
-- value           : data_type dependant
 
-### Parameters
 
-- data_type       : 'FLOAT' in [ 'FLOAT' 'INT' 'FLOAT_VECTOR' 'FLOAT_COLOR' 'BOOLEAN']
+## plug_socket
+
+Plug a socket into the viewer.
+
+Args:
+  socket: The data socket to plug
   
   
   

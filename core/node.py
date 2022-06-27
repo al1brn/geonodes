@@ -7,8 +7,6 @@ Created on Thu May 26 11:15:16 2022
 """
 
 import sys
-import bpy
-import mathutils
 import itertools
 from contextlib import contextmanager
 import re
@@ -19,6 +17,15 @@ logger = logging.getLogger('geonodes')
 
 from geonodes import colors
 from .arrange import arrange
+
+from typing import Any
+
+try:
+    import bpy
+    import mathutils
+except:
+    pass
+
 
 NODE_STD_ATTRS = [
    '__doc__', '__module__', '__slots__', 'bl_description', 'bl_height_default', 'bl_height_max',
@@ -37,6 +44,22 @@ NODE_STD_ATTRS = [
 # Root class for DataSocket and Domain
 
 class Socket:
+    """ DataSocket root class
+    
+    :param socket: a node socket, or a instance of Socket
+    :param node: The Node owning the socket. If None the owner is searched.
+    :type socket: bpy.types.nodesocket, Socket
+    :type node: Node
+    
+    This class is the base class wrapper of node sockets.
+    
+    To avoid confusion between wrapped Node and Socket with wrapper Node and Socket,
+    the wrapped variables are prefixed by 'b':
+        
+    - **bnode** : a wrapped node (bpy.types.GeometryNode)
+    - **bsocket** : a wrapped socket (bpy.types.NodeSocket)
+    
+    """ 
     
     # Socket class, sub class and domain data type from socket bl_idname    
         
@@ -91,13 +114,15 @@ class Socket:
         
         # ----- A class Object doesn't have a constructor Node
         
-        self.data_socket = socket # Used in domain. This is a DataSocket for sure (except Instances :-( ))
+        self.data_socket = socket # Used in domain. This is a DataSocket for sure.
+        """ Used by domain"""
+        
+        self.bsocket = None
+        """ The wrapped geometry node socket"""
+        self.node    = None
+        """ The owning node"""
 
-        if socket is None:
-            self.bsocket = None
-            self.node    = None
-            
-        else:
+        if socket is not None:
             if Socket.is_socket(socket):
                 self.bsocket = socket.get_blender_socket()
     
@@ -131,28 +156,39 @@ class Socket:
     # Called by init
     
     def init_socket(self):
+        """ Complementary init
+        
+        Called at the end of initialization for further operations.
+        """
         pass
     
     @staticmethod
     def is_socket(value):
-        """ > An alternative to isinstance(value, Socket)
+        """ An alternative to isinstance(value, Socket)
+
+        :param value: The value to test
+        :type value: any
+        :return: True if *value* is an instance of Socket
+        :rtype: bool
         """
         return hasattr(value, 'get_blender_socket')
 
+    
     @staticmethod
     def gives_bsocket(value):
-        """ Test if the argument provides a valid output socket. It can be:
+        """ Test if the argument provides a valid output socket.
+        
+        :param value: The value to test
+        :type value: any
+        :return: True if *value* is or wraps a socket
+        :rtype: bool
+        
+        Returns True if value is:
+            
         - A Blender Geometry Node Socket
-        - An instance of Socket
-        
-        Arguments
-        ---------
-        - value: the argument to test
-        
-        Returns
-        -------
-        bool
+        - An instance of Socket        
         """
+        
         return Socket.is_socket(value) or isinstance(value, bpy.types.NodeSocket)
     
     # ----------------------------------------------------------------------------------------------------
@@ -161,51 +197,58 @@ class Socket:
     # This method can be used to implement specific code before connection
     
     def get_blender_socket(self):
+        """ Returns the property bsocket.
+        
+        :return: self.bsocket
+        :rtype: bpy.types.NodeSocket
+        """
+        
         return self.bsocket
     
     @property
     def bl_idname(self):
-        """ > Shortcut for `self.bsocket.bl_idname`
+        """ Shortcut for `self.bsocket.bl_idname`
         """
         return self.bsocket.bl_socket_idname if isinstance(self.bsocket, bpy.types.NodeSocketInterfaceGeometry) else self.bsocket.bl_idname
     
     @property
     def name(self):
-        """ > Shortcut for `self.bsocket.name`
+        """ Shortcut for `self.bsocket.name`
         """
         return self.bsocket.name
         
     @property
     def is_output(self):
-        """ > Shortcut for `self.bsocket.is_output`
+        """ Shortcut for `self.bsocket.is_output`
         """
         return self.bsocket.is_output
     
     @property
     def is_multi_input(self):
-        """ > Shortcut for `self.bsocket.is_multi_output`
+        """ Shortcut for `self.bsocket.is_multi_output`
         """
         return self.bsocket.is_multi_output
     
     @property
     def links(self):
-        """ > Shortcut for `self.bsocket.links`
+        """ Shortcut for `self.bsocket.links`
         """
         return self.bsocket.links
 
     @property
     def bnode(self):
-        """ > Shortcut for `self.bsocket.node`
+        """ Shortcut for `self.bsocket.node`
         """
         return self.bsocket.node
     
     @property
     def socket_index(self):
-        """ > Return the index of the socket within the list of node sockets.
+        """ Return the index of the socket within the list of node sockets.
         
-        Depending on the _is_output_ property, the socket belongs either to _node.inputs_ or
-        _node.outputs_.
+        Depending on the _is_output_ property, the socket belongs either to *node.inputs* or
+        *node.outputs*.
         """
+        
         if self.is_output:
             bsockets = self.bnode.outputs
         else:
@@ -218,8 +261,9 @@ class Socket:
         raise RuntimeError(f"Impossible to find the index of socket {self} of node {self.node}")
         
     def connected_sockets(self):
-        """ > Returns the list of Socket instances linked to this socket.
+        """ Returns the list of Socket instances linked to this socket.
         """ 
+        
         sockets = []
         for link in self.links:
             if self.is_output:
@@ -234,23 +278,46 @@ class Socket:
     
     @staticmethod
     def domain_data_type(value):
-        """ > Returns the domain to which the socket belongs
+        """ Returns the domain to which the socket belongs
         
-        The correspondance table is the following:
-
-          - NodeSocketBool : 'BOOLEAN' 
-          - NodeSocketInt : 'INT'
-          - NodeSocketIntUnsigned : 'INT
-          - NodeSocketFloat :'FLOAT'
-          - NodeSocketFloatFactor : 'FLOAT'
-          - NodeSocketFloatAngle : 'FLOAT' 
-          - NodeSocketFloatDistance :'FLOAT' 
-          - NodeSocketVector : 'FLOAT_VECTOR'
-          - NodeSocketVectorEuler : 'FLOAT_VECTOR'
-          - NodeSocketVectorXYZ : 'FLOAT_VECTOR'
-          - NodeSocketVectorTranslation : 'FLOAT_VECTOR'
-          - NodeSocketColor : 'FLOAT_COLOR' 
-          - NodeSocketString : 'FLOAT_COLOR'
+        :param value: The socket
+        :type value: bpy.types.NodeSocket, Socket
+        :return: Domain code in ['BOOLEAN', 'INT', 'FLOAT', 'FLOAT_VECTOR', 'FLOAT_COLOR']
+        :rtype: str
+        
+        .. list-table:: Correspondance table
+           :widths: 30 20
+           :header-rows: 1
+        
+           * - Socket bl_idname
+             - Domain code
+           * - NodeSocketBool
+             - 'BOOLEAN'
+           * - NodeSocketInt               
+             - 'INT'
+           * - NodeSocketIntUnsigned       
+             - 'INT'
+           * - NodeSocketFloat            
+             - 'FLOAT'
+           * - NodeSocketFloatFactor       
+             - 'FLOAT'
+           * - NodeSocketFloatAngle        
+             - 'FLOAT'
+           * - NodeSocketFloatDistance     
+             - 'FLOAT'         
+           * - NodeSocketVector            
+             - 'FLOAT_VECTOR'
+           * - NodeSocketVectorEuler       
+             - 'FLOAT_VECTOR'
+           * - NodeSocketVectorXYZ         
+             - 'FLOAT_VECTOR'
+           * - NodeSocketVectorTranslation
+             - 'FLOAT_VECTOR'
+           * - NodeSocketColor      
+             - 'FLOAT_COLOR'
+           * - NodeSocketString           
+             - 'FLOAT_COLOR'
+        
         """
         
         class_dt = {
@@ -304,31 +371,83 @@ class Socket:
     
     @staticmethod
     def get_class_name(socket, with_sub_class = False):
-        """ > Get the DataSocket class name corresponding to the socket type and name.
-
-        The correspondance table is the following:
+        """ Get the DataSocket class name corresponding to the socket type and name.
         
-          - NodeSocketBool : 'Boolean'
-          - NodeSocketInt : 'Integer' 
-          - NodeSocketIntUnsigned : Integer'
-          - NodeSocketFloat : 'Float' 
-          - NodeSocketFloatFactor : 'Float'
-          - NodeSocketFloatAngle : 'Float'
-          - NodeSocketFloatDistance : 'Float' 
-          - NodeSocketVector : 'Vector'
-          - NodeSocketVectorEuler : 'Vector'
-          - NodeSocketVectorXYZ : 'Vector' 
-          - NodeSocketVectorTranslation : 'Vector'
-          - NodeSocketColor : 'Color'
-          - NodeSocketString' : 'String'
-          - NodeSocketCollection : 'Collection'
-          - NodeSocketImage : 'Image'
-          - NodeSocketMaterial : 'Material'
-          - NodeSocketObject : 'Object'
-          - NodeSocketTexture : 'Texture'
-          - NodeSocketGeometry : 'Geometry'
-            If the name of the socket is in ['Mesh', 'Points', 'Instances', 'Volume', 'Spline', 'Curve'],
-            the name is chosen as the class name.
+        :param socket: The socket to determine the class of
+        :param with_sub_class: Return the sub class if True
+        :typ socket: bpy.types.NodeSocket, Socket
+        :type with_sub_class: bool
+        :return: The name of the class associated to the bl_idname of the socket
+        :rtype: str
+        
+        .. list-table:: Correspondance table
+           :widths: 30 20 20
+           :header-rows: 1
+           
+           * - NodeSocket
+             - class name
+             - sub class name
+           * - NodeSocketBool 
+             - 'Boolean'
+             - 
+           * - NodeSocketInt 
+             - 'Integer'
+             - 
+           * - NodeSocketIntUnsigned 
+             - 'Integer'
+             - 'Unsigned'
+           * - NodeSocketFloat 
+             - 'Float' 
+             - 
+           * - NodeSocketFloatFactor 
+             - 'Float'
+             - 'Factor'
+           * - NodeSocketFloatAngle  
+             - 'Float'
+             - 'Angle'
+           * - NodeSocketFloatDistance 
+             - 'Float'
+             - 'Distance'
+           * - NodeSocketVector 
+             - 'Vector'
+             - 
+           * - NodeSocketVectorEuler 
+             - 'Vector'
+             - 'Rotation'
+           * - NodeSocketVectorXYZ 
+             - 'Vector'
+             - 'xyz'
+           * - NodeSocketVectorTranslation 
+             - 'Vector'
+             - 'Translation'
+           * - NodeSocketColor 
+             - 'Color'
+             - 
+           * - NodeSocketString' 
+             - 'String'
+             - 
+           * - NodeSocketCollection 
+             - 'Collection'
+             - 
+           * - NodeSocketImage 
+             - 'Image'
+             - 
+           * - NodeSocketMaterial 
+             - 'Material'
+             - 
+           * - NodeSocketObject 
+             - 'Object'
+             - 
+           * - NodeSocketTexture 
+             - 'Texture'
+             - 
+           * - NodeSocketGeometry
+             - 'Geometry'
+             - 
+          
+          
+        If the name of the socket is in ['Mesh', 'Points', 'Instances', 'Volume', 'Spline', 'Curve'],
+        the name is chosen as the class name.
         """
         bl_idname = socket.bl_idname
         class_name = Socket.SOCKET_IDS[bl_idname][0]
@@ -344,42 +463,38 @@ class Socket:
         
     @staticmethod
     def get_bl_idname(class_name):
-        """ > Get the node socket bl_idname name from the Socket class
+        """ Get the node socket bl_idname name from the Socket class
+        
+        :param class_name: The class name
+        :type class_name: str
+        :return: The bl_idname associated to this class name
+        :rtype: str
         
         Used to create a new group input socket. Called in `DataClass.Input` method to determine
         which socket type must be created.
         
-        Note that here the class_name argument accepts additional values which correspond to _sub classes_:
+        Note that here the class_name argument accepts additional values which correspond to *sub classes*:
+            
+        .. list-table:: 
+           :widths: 20 40
+           :header-rows: 0
         
-          - Unsigned: Integer sub class (NodeSocketIntUnsigned)
-          - Factor : Float sub class (NodeSocketFloatFactor)
-          - Angle : Float sub class  (NodeSocketFloatAngle)
-          - Distance : Float sub class (NodeSocketFloatDistance)
-          - Rotation : Vector sub class (NodeSocketVectorEuler)
-          - Xyz : Vector sub class (NodeSocketVectorXYZ)
-          - Translation : Vector sub class (NodeSocketVectorTranslation)
+           * - Unsigned
+             - Integer sub class (NodeSocketIntUnsigned)
+           * - Factor
+             - Float sub class (NodeSocketFloatFactor)
+           * - Angle
+             - Float sub class  (NodeSocketFloatAngle)
+           * - Distance
+             - Float sub class (NodeSocketFloatDistance)
+           * - Rotation
+             - Vector sub class (NodeSocketVectorEuler)
+           * - xyz
+             - Vector sub class (NodeSocketVectorXYZ)
+           * - Translation
+             - Vector sub class (NodeSocketVectorTranslation)
           
         These additional values allow to enter angle, distance, factor... as group input values.
-        
-        Arguments
-        ---------
-          - class_name: str in
-            - Boolean
-            - Integer, Unsigned
-            - Float, Factor, Angle, Distance
-            - Vector, Rotation, Xyz, Translation
-            - Color
-            - String
-            - Geometry, Mesh, Points, Instances, Volume, Spline, Curve
-            - Image
-            - Material
-            - Texture
-            - Collection
-            - Object
-            
-        Returns
-        -------
-          str: the name of the socket type
         """
         
         if Socket.is_socket(class_name):
@@ -481,25 +596,27 @@ class Socket:
 
 
 class DataSocket(Socket):
+    """ Geometry wrapper: root class for data sockets: Boolean, Integer, Geometry, Curve, Object,...
+    
+    :param socket: a node socket, or a instance of Socket
+    :param node: The Node owning the socket. If None the owner is searched.
+    :param label: The label to use for the geometry node
+    :type socket: bpy.types.nodesocket, Socket
+    :type node: Node
+    :type label: str
+    
+    **Type casting**
+    
+    Passing a DataSocket instance as argument allows type casting
+    
+    :example:
+        
+    .. code-block:: python
 
-    # ----------------------------------------------------------------------------------------------------
-    # > DataSocket initialization
-    #
-    # Arguments
-    # ---------
-    # - socket: a node socket or a DataSocket
-    #   Passing a DataSocket instance as argument allows type casting
-    #
-    #   ```python
-    #   value = Float(10.) # Float data class pointing on the output socket of node "Value"
-    #   v = Vector(value)  # Cast the previous socket to Vector
-    #   ```
-    #
-    # - node: the node owning the socket. If node is None, the initializer searchs for it in the list
-    #  of existing nodes.
-    #
-    # - label: optional node label. Used to name the created Geometry Nodes.
-    #
+        value = Float(10.) # Float data class pointing on the output socket of node "Value"
+        v = Vector(value)  # Cast the previous socket to Vector
+    
+    """
 
     def __init__(self, socket, node=None, label=None):
         
@@ -514,13 +631,12 @@ class DataSocket(Socket):
         
         # ----- Set by Field
         
-        self.field_of     = None
+        self.field_of = None
+        """ Used by field to implement += """
     
     @property
     def node_chain_label(self):
-        """ > Shortcut for `self.node.chain_label`
-        
-        _chain_label_ property is the name to be used when automatically naming nodes.
+        """ Shortcut for *self.node.chain_label*
         """
         if self.node is None:
             return ""
@@ -543,66 +659,87 @@ class DataSocket(Socket):
     #
     
     def init_domains(self):
+        """ Initialize the geometry domains
+        
+        To be overloaded by sub classes.        
+        """
         pass
     
     # ----------------------------------------------------------------------------------------------------
-    # The DataSocket can have properties
-    # Reset the properties to None
-    # It is called at initialization time to create the properties
-    #
-    # class Vector(...):
-    #     def __init__(self, ...):
-    #         ...
-    #         self.reset_properties()
-    #         ...
-    #
-    #     def reset_properties(self):
-    #         super().reset_properties()
-    #         self.separate_ = None      # Created by property self.seperate() with node SeparateXyz
     
     def reset_properties(self):
+        """ Reset the properties
+        
+        Properties such as components are cached.
+        
+        After a node is called, the wrapped socket changes and this makes the cache obsolete.
+        After a change, the cache is erased.
+        
+        :example:
+        
+        .. code-block:: python
+    
+            class Vector(...):
+                def __init__(self, ...):
+                     ...
+                     self.reset_properties()
+                     ...
+            
+                 def reset_properties(self):
+                     super().reset_properties()
+                     self.separate_ = None      # Created by property self.seperate() with node SeparateXyz
+
+        
+        """
+        
         self.init_domains()
     
     # ----------------------------------------------------------------------------------------------------
-    # > Utility changing the output sockets refered by the DataSocket instance
-    #
-    # Methods are implemented in two modes:
-    # - Creation
-    # - Transformation
-    #
-    # In **creation mode**, the node is considered as creating new data. The result is a new instance of DataSocket.
-    # In **transformation mode**, the node is considered as transforming data which is kept in the result of the method.
-    # After the method return, the calling DataSocket instance refers to a new Blender output socket.
-    #
-    # ```python
-    # # 1. Creation mode
-    # # 
-    # # to_mesh method creates a new mesh from a curve.
-    # # The curve instance refers to the same output node socket
-    # # We need to get the result of the method in a new variable
-    #
-    # new_mesh = curve.to_mesh(profile_curve=circle)
-    #
-    # # 2. Transformation mode
-    # #
-    # # set_shade_smooth method transformes the mesh.
-    # # After the call, the mesh instance refers to the output socket of the
-    # # newly created node "Set Shade Smooth". There is no need to get the result
-    # # of the method.
-    #
-    # mesh.set_shade_smooth()
-    #
-    # # Note that a transformation method returns self and so, the following line
-    # # is equivallent:
-    #
-    # mesh = mesh.set_shade_smooth()
-    # ```
-    #
-    # The stack method changes the socket the instance refers to and reinitialize the
-    # properties
-    #
+    # Utility changing the output sockets refered by the DataSocket instance
     
     def stack(self, node):
+        """ Change the wrapped socket
+        
+        :param node: The new node owning the output socket to wrap
+        :type node: Node
+        :return: self
+        
+        Methods are implemented in two modes:
+        
+        - Creation
+        - Transformation
+        
+        In **creation mode**, the node is considered as creating new data. The result is a new instance of DataSocket.
+        
+        In **transformation mode**, the node is considered as transforming data which is kept in the result of the method.
+        After the method returns, the calling DataSocket instance refers to a new Blender output socket.
+        The stack method changes the socket the instance refers to and reinitialize properties
+        
+        .. code-block:: python
+
+            # 1. Creation mode
+            # 
+            # to_mesh method creates a new mesh from a curve.
+            # The curve instance refers to the same output node socket
+            # We need to get the result of the method in a new variable
+            
+            new_mesh = curve.to_mesh(profile_curve=circle)
+            
+            # 2. Transformation mode
+            #
+            # set_shade_smooth method transforms the mesh.
+            # After the call, the mesh instance refers to the output socket of the
+            # newly created node "Set Shade Smooth". There is no need to get the result
+            # of the method.
+            
+            mesh.set_shade_smooth()
+            
+            # Note that a transformation method returns self and so, the following line
+            # is equivallent:
+            
+            mesh = mesh.set_shade_smooth()
+        
+        """
         
         self.node    = node
         self.bsocket = node.bnode.outputs[0]
@@ -615,31 +752,30 @@ class DataSocket(Socket):
     
     @staticmethod
     def plug_bsocket(bsocket, *values):
-        """ > Plug the values to the input Blender socket.
+        """ Plug the values to the input Blender socket.
         
-        This static method is called by the DataClass method `plug(*values)`.
+        :param bsocket: The input socket to plug into 
+        :param values: The output sockets. More than one values can be passed
+            if the input socket is multi input.
+        :type bsocket: bpy.types.NodeSocket, Socket
+        :type values: array of bpy.types.NodeSocket, Socket, values
+
+        .. warning:: bsocket must be an **input socket** and values must be **output sockets-like**.
+        
+        This static method is called by the DataClass method :func:`plug`.
         
         This method is the one which links an output socket of a node to the input
         socket of another one.
-        
-        Several values or DataSocket instances can be passed in the case the socket is
-        multi input.
         
         If the socket is multi input, the plug method is called once per provided value.
         If a value is None, nothing happens.
         
         A not None value can be:
+            
         - either a valid value for the socket (eg: 123 for Integer socket)
         - or an output socket of another Node
             
-        When it is a socket, it can be a Blender socker or a DataSocket
-        
-        Arguments
-        ---------
-        - bsocket: Geometry Node input socket
-        - *values: list of values
-          Each value can be an acceptable default value for the socket
-          or an output socket 
+        When it is a socket, it can be a Blender socket or a DataSocket
         """
         
         if bsocket.is_output:
@@ -770,30 +906,35 @@ class DataSocket(Socket):
             #print(out_socket, bsocket, Tree.TREE.group_output.inputs[0].bsocket)
             
             outs = Tree.TREE.group_output.inputs
-            if outs and bsocket == outs[0].bsocket:
-                Tree.TREE.arrange()
                 
             
     # ----------------------------------------------------------------------------------------------------
     # Plug (for input sockets only)
             
     def plug(self, *values):
-        """ > Plug values in the socket (input sockets only)
+        """ Plug values in the socket (input sockets only)
         
-        see [plug_bsocket](#plug_bsocket)
+        :param values: The output sockets. More than one values can be passed
+            if the input socket is multi input.
+        :type values: array of bpy.types.NodeSocket, Socket, values
+        
+        see :func:`plug_bsocket`
         """
         DataSocket.plug_bsocket(self.bsocket, *values)
-        self.node.tree.arrange(False)
         
     # ----------------------------------------------------------------------------------------------------
     # To group output (for output sockets only)
     
     def to_output(self, name=None):
-        """ > Plug the data socket to the group output
+        """ Plug the data socket to the group output
+        
+        :param name: The name to give to the modifier output
+        :type name: str
         
         The socket is added to the outputs of the geometry nodes tree.
         
-        **Note**: to define a data socket as the result geometry of the node, use `tree.output_geometry = my_geomety`.
+        .. Note:: To define a data socket as the result geometry of the tree, use ``tree.output_geometry = my_geometry``.
+        
         """
         if not self.is_output:
             raise RuntimeError(f"The socket '{str(self)}' is not an output socket. It can't be sent to group output.")
@@ -803,9 +944,10 @@ class DataSocket(Socket):
     # To viewer (for output sockets only)
         
     def view(self):
-        """ > Link the data socket to the viewer
+        """ Link the data socket to the viewer
         
         If the data socket is a geometry (Curve, Mesh...) it is linked to the geometry input of the viewer.
+        
         If it ias a value (Integer, Float,...) it is linked to the value socket and the viewer is configured
         accordingly.
         """
@@ -817,7 +959,7 @@ class DataSocket(Socket):
     # Reroute
     
     def reroute(self):
-        """ > Reroute all output links
+        """ Reroute all output links
         """
         links = self.bsocket.links
         if not links:
@@ -860,69 +1002,78 @@ class DataSocket(Socket):
 # Nodes tree    
 
 class Tree:
-    """ > Wrap a Blender NodeTree
+    """ Wrap a Blender NodeTree
+    
+    :param tree_name: Name of the tree (index in ``bpy.data.node_groups``)
+    :param clear: delete the existing nodes
+    :param group: the tree node is not for a Geometry Node modifier but for a Group
+    :type tree_name: str
+    :type clear: bool
+    :type group: bool
+    
     
     A tree class encapsulates a Blender NodeTree:
         
-    ```python
-    blender_tree = tree.btree # The Blender NodeTree
-    ```
+    .. code-block:: python
+
+        blender_tree = tree.btree # The Blender NodeTree
+
     
-    Nodes are created by data sockets methods. In case of an error, the user cas see the state of
+    Nodes are created by data sockets methods. In case of an error, the user can see the state of
     the tree when the script stops.
     
-    Creation / closure
-    ------------------
+    **Creation / closure**
     
-    Once the tree is completed, the `arrange` method tries to place the nodes in the most readable way.
+    Once the tree is completed, the :func:`arrange` method tries to place the nodes in a readable shape.
     Hence, building a tree is made between the two instructions:
-    - `tree = Tree(tree_name)` : creation / opening of the Blender NodeTree
-    - `tree.close()` : arrange the nodes
-    
-    It is recommanded to use the `with` syntax:
         
-    ```python
-    with Tree("Geometry Nodes") as tree:
-        # ... nodes creation
-    ```
+    - ``tree = Tree(tree_name)`` : creation / opening of the Blender NodeTree
+    - ``tree.close()`` : arrange the nodes
     
-    The TREE static property
-    ------------------------
+    It is recommended to use the ``with`` context:
+        
+    .. code-block:: python
+
+        with Tree("Geometry Nodes") as tree:
+            # ... nodes creation
+
+    
+    **The TREE static property**
     
     The TREE static attribute of class Tree maintains the current active Tree, i.e. the tree into which
-    creating the new nodes. There is only one single _open_ tree at a time.
-    The method `activate` set the tree as the current one.
+    creating the new nodes. There is only one single *open* tree at a time.
+    The method :func:`activate` set the tree as the current one.
     At creation time, a Tree instance becomes the current one.
     
-    Layouts
-    -------
+    **Layouts**
     
-    For clarity, it is possible to put the newly created nodes in a layout. At creation time, one can define
-    both the layout label and color. The layout creation makes use of the `with` syntax:
+    For a better clarity of the resulting tree, it is possible to put the newly created nodes in a layout.
+    At creation time, one can define both the layout label and color.
+    The layout creation makes use of the ``with`` context (see :func:`layout`):
         
-    ```python
-    with Tree("Geometry Node") as tree:
-        
-        # Nodes created here are placed directly on the tree background
-        
-        with tree.layout("Some tricky computation", color="green"):
+    .. code-block:: python
+
+        with Tree("Geometry Node") as tree:
             
-            # Nodes created here are placed in the current layout
+            # Nodes created here are placed directly on the tree background
             
-            with tree.layout("The most difficult part", color="red"):
+            with tree.layout("Some tricky computation", color="green"):
                 
-                # Layouts can be imbricated
+                # Nodes created here are placed in the current layout
                 
-        # Back to standard creation
-    ```
+                with tree.layout("The most difficult part", color="red"):
+                    
+                    # Layouts can be imbricated
+                    
+            # Back to standard creation
     
-    Initialization
-    --------------
-    At initialization time, the existing nodes can be deleted or kept. Use clear=True
+    **Initialization**
+    
+    At initialization time, the existing nodes can be deleted or kept. Use ``clear=True``
     to erase all the existing nodes.
       
-    The nodes which are kep are the ones which can not be configured by script, for instance
-    the "Float Curve" or "ColorRamp" nodes. These nodes are reused when instancied in the script.
+    The nodes which are kept are the ones which can not be configured by script, for instance
+    the  *Float Curve* or  *ColorRamp* nodes. These nodes are reused when instancied in the script.
     This allows not to loose nodes tuning.
         
     """
@@ -933,22 +1084,12 @@ class Tree:
     TREE = None
     
     def __init__(self, tree_name, clear=False, group=False):
-        """ Initialize a new tree
-        
-        Arguments
-        ---------
-        - tree_name: str
-          the name of the tree. The NodeTree is created if it doesn't exist.
-        - clear: bool, default is False
-          earase all the existing nodes
-        - group : bool
-          if not for a group, ensure that there is one geometry input socket and one output geometry socket
-        """
         
         if bpy.data.node_groups.get(tree_name) is None:
             bpy.data.node_groups.new(tree_name, type='GeometryNodeTree')
 
         self.btree = bpy.data.node_groups[tree_name]
+        """ The geometry tree nodes"""
         
         # ---------------------------------------------------------------------------
         # Capture the configuration of the nodes
@@ -1009,6 +1150,7 @@ class Tree:
                 return ", ".join(a)
             
         self.previous = {}
+        """ Keep a list of the existing nodes before removing them"""
         for bnode in self.btree.nodes:
             onode = ONode(bnode)
             self.previous[onode.index] = onode
@@ -1019,6 +1161,8 @@ class Tree:
         self.btree.links.clear()
 
         self.old_bnodes = []
+        """ The old nodes which are not deleted"""
+        
         if clear:
             self.btree.nodes.clear()
         else:
@@ -1034,26 +1178,36 @@ class Tree:
             del rems
             
         self.nodes  = []
+        """ List of the created nodes"""
         self.node_id = 0
+        """ Node id counter. Incremented at each node registration"""
         self.activate()
-        self.auto_arrange = False
+
         self.capture_attributes = True
+        """ Flag to capture the attributes or not (see :func:`check_attributes`)"""
         
         # ----- Layouts stack
         
         self.layouts = []
+        """ Stack of layouts (see :func:`layout`)"""
         self.util_color = "dark_green"
+        """ Color code for internal layouts"""
         self.gene_color = "dark_orange"
+        """ Color code for internal layouts"""
         self.auto_color = "dark_rose"
+        """ Color code for internal layouts"""
         
         # ----- Input and outputs
         
         self.group_input  = GroupInput(check_input_geometry=not group)
+        """ The 'Group Input' node"""
         self.group_output = GroupOutput(check_output_geometry=not group)
+        """ The 'Group Output' node"""
         
         # ----- Viewer
         
         self.viewer = None
+        """ The 'Viewer' node"""
         self.scene_ = None
 
         # ----- Reset the colors carroussel
@@ -1070,22 +1224,19 @@ class Tree:
     # Get / create a Blender node
         
     def get_bnode(self, bl_idname, label=None):
-        """ Get or create a new Blender node in the tree.
+        """ Get an existing, or create a new, Blender node in the tree.
+        
+        :param bl_idname: The node bl_idname
+        :param label: Node label
+        :type bl_idname: str
+        :type name: str
+        :return: A geometry node
+        :rtype: bpy.types.GeometryNode
+        
         
         At initialization time, some nodes (the ones which can be changed by UX) are kept
-        in old_bnodes list. Before creating a new node, this list is scaned to find a node
+        in ``old_bnodes`` list. Before creating a new node, this list is scaned to find a node
         of the proper type and the proper label.
-        
-        Arguments
-        ---------
-        - bl_idname: str
-          A valid node bl_idname
-        - label: str, optional
-          The label of the node.
-        
-        Returns
-        -------
-          A blender Node
         """
         
         found = None
@@ -1118,19 +1269,23 @@ class Tree:
         
     def activate(self):
         """ Set this tree as the current one.
+        
+        The Tree class property ``TREE`` is set to ``self``
         """
         
         Tree.TREE = self
         
     def register_node(self, node):
-        """ Register the node passed in argument in the tree.
+        """ Register the node passed in parameter in the current tree.
+        
+        :param node: The node to register
+        :type node: Node
+        :return: The node
+        :rtype: Node
         
         When registered, a unique id is provided to the node.
         This allows the users to more clearly distinguish the nodes.
         
-        Arguments
-        ---------
-            node: Node
         """
         
         self.node_id += 1
@@ -1144,38 +1299,27 @@ class Tree:
     def get_bnode_wrapper(self, bnode):
         """ Get the Node instance wrapping the Blender node passed in argument.
         
-        Arguments
-        ---------
-        - bnode: Blender node
-            
-        Returns
-        -------
-          Node
-            
-        Raises
-        ------
-          Error if not found
+        :param bnode: The geometry node to look the warpper of
+        :type bnode: bpy.types.NodeSocket
+        :return: The wrapping node
+        :rtype: Node
+        :raise: Exception if the wrapper is not found
         """
         
         for node in self.nodes:
             if node.bnode == bnode:
                 return node
-        raise RuntimeError(f"Impossible to find the wrapper node of Blender node {bnode}.")
+        raise Exception(f"Impossible to find the wrapper node of Blender node {bnode}.")
             
     def get_bsocket_wrapper(self, bsocket):
         """ Get the DataSocket instance wrapping the Blender socket passed in argument.
         
-        Arguments
-        ---------
-          bsocket: Blender socket
-            
-        Returns
-        -------
-          DataSocket
-            
-        Raises
-        ------
-          Error if not found
+        :param bsocket: The blender socket to search the werapper of
+        :type bsocket: bpy.types.NodeSocket
+        :return: The node wrapping the socket
+        :rtype: Node
+        :raise: Exception if not found
+        
         """
         
         node = self.get_bnode_wrapper(bsocket.node)
@@ -1189,27 +1333,40 @@ class Tree:
     
     @property
     def input_geometry(self):
-        """ The group input geometry
+        """ The group input geometry.
+        
+        .. code-block:: python
+        
+            my_geometry = tree.input_geometry
+        
         """
         return self.group_input.input_geometry
     
     @property
     def ig(self):
+        """ Shortcut for :attr:`input_geometry`
+        """
         return self.input_geometry
         
     @property
     def output_geometry(self):
-        """ The group output geometry
+        """ The group output geometry.
+        
+        .. code-block:: python
+        
+            tree.output_geometry = my_geometry 
+        
         """
         return self.group_output.output_geometry
     
     @output_geometry.setter
     def output_geometry(self, value):
         self.group_output.output_geometry.plug(value)
-        #self.group_output.plug(0, value)
         
     @property
     def og(self):
+        """ Shortcut for :attr:`output_geometry`.
+        """
         return self.output_geometry
         
     @og.setter
@@ -1218,16 +1375,50 @@ class Tree:
         
         
     def new_input(self, class_name, value=None, name=None, min_value=None, max_value=None, description=""):
-        """ Create a new input socket
+        """ Create a new input socket.
         
-        Don't use it directly, better call `DataSocket.Input(...)`
+        :param class_name: Class name of the value to get
+        :param value: Initial value
+        :param min_value: Minimum value
+        :param max_value: Maximum value
+        :param description: User type
+        :type class_name: str
+        :type value: Depending on the class
+        :type min_value: Depending on the class
+        :type max_value: Depending on the class
+        :type description: str
+        :return: A data socket
+        :rtype: As defined by class_name
+        
+        .. code-block:: python
+        
+            res = tree.new_input('Integer', 10, "Resolution", min_value=2, max_value=100, descriptioo="Grid resolution")
+        
+        Don't use it directly, better call the constructor ``Input`` of data classes.
+        
+        .. code-block:: python
+        
+            res = Integer.Input(10, "Resolution", min_value=2, max_value=100, descriptioo="Grid resolution")
+            
         """
         return self.group_input.new_socket(class_name=class_name, value=value, name=name, min_value=min_value, max_value=max_value, description=description)
     
     def to_output(self, socket):
-        """ Create a new output socket linked to the data class
+        """ Create a new output socket linked to the data class.
         
-        Don't use it directly, better call `DataSocket.to_output(...)`
+        :param socket: The data socket to plug as group output
+        :type socket: DataSocket
+
+        .. code-block:: python
+        
+            tree.to_output(value)
+        
+        Don't use it directly, better call method ``to_output`` of data classes.
+        
+        .. code-block:: python
+        
+            value.to_output()
+
         """
         self.group_output.to_output(socket)
         
@@ -1235,9 +1426,14 @@ class Tree:
     # Viewer
     
     def view(self, geometry=None, socket=None):
-        """ Connect a data socket to the viewer
+        """ Connect a data socket to the viewer.
         
-        You can als call `DataSocket.view()`
+        :param geometry: The geometry to connect to the viewer
+        :param socket: The attribute to connect to the viewer
+        :type geometry: Geometry
+        :type socket: Value
+        
+        You can also call ``DataSocket.view()``
         
         The `Tree.view` method reuses the Viewer node if already exists.
         """
@@ -1253,7 +1449,7 @@ class Tree:
     
     @property
     def scene(self):
-        """ Maintain a single instance of the node "Scene Time""
+        """ Maintain a single instance of the node :class:`SceneTime`.
         """
         if self.scene_ is None:
             self.scene_ = SceneTime()
@@ -1261,27 +1457,29 @@ class Tree:
         
     @property
     def frame(self):
-        """ The "Scene Time" output socket "frame"
+        """ The "Scene Time" output socket "frame".
         
         Used for animation:
+
+        .. code-block:: python
+        
+            with Tree("Geometry Nodes") as tree:
+                height = tree.frame / 10 # a value which is a tenth of the current frame 
             
-        ```python
-        with Tree("Geometry Nodes") as tree:
-            height = tree.frame / 10 # a value which is a tenth of the current frame 
-        ```
         """
         return self.scene.frame
     
     @property
     def seconds(self):
-        """ The "Scene Time" output socket "seconds"
+        """ The "Scene Time" output socket "seconds".
         
         Used for animation:
             
-        ```python
-        with Tree("Geometry Nodes") as tree:
-            time = tree.seconds.sqrt() # a value which is the square root of the time
-        ```
+        .. code-block:: python
+        
+            with Tree("Geometry Nodes") as tree:
+                time = tree.seconds.sqrt() # a value which is the square root of the time
+
         """
         return self.scene.seconds
 
@@ -1290,16 +1488,21 @@ class Tree:
     
     @contextmanager
     def layout(self, label="Layout", color=None):
-        """ Create a new layout where the newly created nodes will be placed
+        """ Create a new layout where the newly created nodes will be placed.
+        
+        :param label: The layout label
+        :param color: The color of the layout
+        :type label: str
+        :type color: triplet, str or mathutils.Color
         
         To be used in a `with` block:
             
-        ```python
-        with tree.layout("My layout"): # Create a layout
-            mesh = Mesh.UVSphere() # The node is parented in the layout
-            
-        mesh.set_shade_smooth() # "Set Shade Smooth" node is created in the tree backrgound
-        ```
+        .. code-block:: python
+        
+            with tree.layout("My layout"): # Create a layout
+                mesh = Mesh.UVSphere() # The node is parented in the layout
+                
+            mesh.set_shade_smooth() # "Set Shade Smooth" node is created in the tree backrgound
 
         """
         
@@ -1320,7 +1523,7 @@ class Tree:
             
     @property
     def cur_frame(self):
-        """ Get the current layout for the newly created nodes
+        """ Get the current layout for the newly created nodes.
         """
         if self.layouts:
             return self.layouts[-1].bnode
@@ -1331,31 +1534,71 @@ class Tree:
     # Check attributes
     
     def check_attributes(self):
-        """ > Check the attributes
+        """ Check the attributes
         
-        Input attributes are initialized with a socket owner
+        This utility function is called when closing the tree to "solve" the attribute input nodes,
+        i.e. to determine if a 'Capture Attribute' node is required.
         
-        When finalizing the tree, we must check that the attribute actually feeds the expectedt geometry.
-        If it is not the case, we must insert a "Capture Attribute" node.
+        In **geonodes**, attributes are initialized as properties of a geometry.
+        For instance, in the following piece of code, the node 'Position' is to be the *position*
+        of the vertices of my_mesh:
+            
+        .. code-block:: python
+        
+            v = my_mesh.verts.position  # Create the node 'Position'
+            
+        To actually get these vertices, a 'Capture Attribute' can be necessary. This is determined
+        by `check_attribute` method.
         
         The insertion is made with the following algorithm
         
         1. Check if capture is needed
+        
            for each fed node:
+               
            - if the node has an input geometry:
+               
              - if the input geometry is the expected one:
+                 
                - ok
+               
              - else
+             
                - insertion is needed
+               
            - else:
+               
              - continue exploration with the nodes fed by this node
         
         2. If insertion is needed
-           - Create the capture node
+        
+           - Create the 'Capture Attribute' node
            - Set the proper parameters
            - Input geometry with the owning socket
            - Output geometry to the sockets the owning socket was linked to
            - Output attribute to the sockets the attribute was connected to
+           
+         
+        Note that by initializing an attribute with geometry and domain, we have what we need to insert
+        a 'Capture Attribute' node:
+            
+        .. code-block:: python
+        
+            # Get the position of the vertices of my_mesh
+        
+            v = my_mesh.verts.position
+            
+            # Create the capture node
+            
+            capture_node = nodes.CaptureNode(
+                geometry  = my_mesh,
+                value     = (output socket of Position node),
+                data_type = 'VECTOR',  # We deal with position which is a Vector
+                domain    = 'POINT',   # my_mesh.verts.position  --> 'POINT'
+                                       # my_mesh.edges.position  --> 'EDGE'
+                                       # my_mesh.faces.position  --> 'FACE'
+                )
+           
         """
         
         
@@ -1423,7 +1666,7 @@ class Tree:
                 links = bsocket.links
                 if links:
                     if attr_links is not None:
-                        self.arrange(True)
+                        self.arrange()
                         attr_node.node_color = "red"
                         raise RuntimeError(f"Error when inserting a capture node. The attribute node '{attr_node}' has several output sockets which are connected.")
                         
@@ -1463,15 +1706,21 @@ class Tree:
                 self.btree.links.remove(link)
                 self.btree.links.new(out_bsocket, to_socket)
                         
-            # ---------------------------------------------------------------------------
-            # ----- Done :-)
-                        
-            self.arrange(False)
      
     # ---------------------------------------------------------------------------
     # Get the parameter previously changed in a node
     
     def prev_node(self, index):
+        """ Utility which prints the configuration of a node in the console.
+        
+        :param index: The unique id of the node to print
+        :type index: int
+        
+        When a node is tweaked to obtain the expected result, the changes will be lost
+        next time the script will be run. By calling `prev_node` the parameters are printed
+        in the console and can be copied/pasted.
+    
+        """
         onode = self.previous.get(index)
         if onode is None:
             print(f"No previous node with index {index}")
@@ -1481,11 +1730,10 @@ class Tree:
     # ----------------------------------------------------------------------------------------------------
     # Arrange the nodes
     
-    def arrange(self, force=True):
+    def arrange(self):
         """ Arrange the created nodes in the tree background for more lisibility
         """ 
-        if self.auto_arrange or force:
-            arrange(self.btree.name)    
+        arrange(self.btree.name)    
 
     # ----------------------------------------------------------------------------------------------------
     # Close the tree
@@ -1493,16 +1741,19 @@ class Tree:
     # Called by __exit__
     
     def close(self):
-        """ Call to indicated that the tree is completed and that it can be finalized
+        """ Call to indicate that the tree is completed and that it can be finalized
         
         Two actions are performed:
+            
         - Insertion of "Capture Attribute" nodes for attributes which require it,
-          see [check_attributes](#check_attributes).
-        - Nodes arrangement, see [arrange](#arrange)        
+          see :func:`check_attributes`.
+        - Nodes arrangement, see :func:`arrange`.   
+                                           
         """
         if self.capture_attributes:
             self.check_attributes()
-        self.arrange(True)
+            
+        self.arrange()
 
     
 # ---------------------------------------------------------------------------
@@ -1511,82 +1762,60 @@ class Tree:
 class Node:
     """ The root class for Blender node wrappers.
     
+    :param bl_idname: The node bl_idname
+    :param name: The node name
+    :param label: The node label
+    :param node_color: The node color
+    :type bl_idname: str
+    :type name: str
+    :type label: str
+    :type node_color: triplet, str or mathutils.Color
+    
+    
     This class is basically intended to expose its constructor as a way to create
     the associated Geometry Node. In the following example, we create a Node
     supposingly have one single input socket named "geometry"
+    
         
-    ```python
-    my_node = Node(geometry=value, parameter='PARAM')
-    ```
-    
-    Nodes naming convention
-    ----------------------
-    
-        The Node sub classes are named accoridng their Blender label with a **Camel case** conversion,
-        for instance:
-            
-        - _Set Shade Smooth_ --> SetShadeSmoth
-        - _Split Edges_ --> SplitEdges
-        _ _Normal_ --> Normal
-    
-    Sockets naming convention
-    -------------------------
-    
-        The node socket are named after the Blender sockets names with a **snake case** conversion,
-        for instance:
-            
-        - _Geometry_ --> geometry
-        - _Mesh 1_ --> mesh_1
+    .. code-block:: python
         
-        For some nodes, (Math node for instance), several sockets can share the same name. In that case, the
-        sockets are numbered, starting from 0:
-            
-        - Value --> value0
-        - Value --> value1
+        my_node = Node(geometry=value, parameter='PARAM')
+        
+    **Nodes naming convention**    
     
-    Properties
-    ----------
-        - tree : Tree
-          The tree the node bleongs to
-        - name : str
-          Standard Geometry node name
-        - label : str
-          User defined label. Can be None
-        - bnode : bpy.types.Node
-          The actual Blender Geometry node
-        - inputs : list
-          List of innput sockets
-        - outputs : list
-          List of output sockets
-        - is_attribute : bool
-          Indicates that the node is an field attribute
-        - bl_idname : str
-          The node type name
+    The Node sub classes are named according their Blender label with a **CamelCase** conversion,
+    for instance:
+        
+    -  *Set Shade Smooth* --> ``SetShadeSmooth``
+    -  *Split Edges* --> ``SplitEdges``
+    -  *Normal* --> ``Normal``
+    
+    **Sockets naming convention**
+    
+    The node sockets are named after the Blender sockets names with a **snake_case** conversion,
+    for instance:
+        
+    -  *Geometry* --> ``geometry``
+    -  *Mesh 1* --> ``mesh_1``
+    -  *Curve instances* --> ``curve_instances``
+    
+    For some nodes, (Math node for instance), several sockets can share the same name. In that case, the
+    sockets are numbered, starting from 0:
+        
+    -  *Value* --> ``value0``
+    -  *Value* --> ``value1``
+    
     """
         
     def __init__(self, bl_idname, name, label=None, node_color=None):
-        """ The root class for Blender node wrappers.
-        
-        The creation tree is read in the static property Tree.TREE.
-        
-        The blender Node is created by calling the method `tree.get_bnode` method.
-        
-        Arguments
-        ---------
-        - bl_idname: str
-          A valid node bl_idname
-        - name: str
-          The node name
-        - label: str, optional
-          The node label
-        - node_color: color, optional
-          The node color
-        """
         
         self.tree = Tree.TREE
+        """ The tree belonging the node."""
+        
         self.tree.register_node(self)
 
         self.name    = name
+        """ Node name"""
         self.label_  = None
         if bl_idname == 'GeometryNodeGroup':
             self.bnode = self.tree.get_bnode(bl_idname, name)
@@ -1595,18 +1824,23 @@ class Node:
             
         self.bnode.name = str(self)
         self.label      = label
+        """ Node label"""
         self.node_color = node_color
 
         self.inputs  = [DataSocket(bsocket, node=self) for bsocket in self.bnode.inputs]
+        """ Input sockets list"""
         self.outputs = [DataSocket(bsocket, node=self) for bsocket in self.bnode.outputs]
+        """ Output sockets list"""
         
         # ----- Set by method as_attribute
         
         self.is_attribute = False
+        """ Initialized by method :func:`as_attribute`. Will be analyzed by :func:`check_attributes` to complete the Tree."""
         
         # ----- Set by field for all output sockets
         
         self.field_of = None
+        """ A pointer to the owning domain. Used to implement += with the offset socket of SetPosition node"""
         
         # ----- Socket names
         # Sockets have a unique name
@@ -1615,7 +1849,9 @@ class Node:
         # They are used by __setattr__ and __getattr__
 
         self.insockets  = {}
+        """ set: keys = unique names of input sockets, values: actual socket indices"""
         self.outsockets = {}
+        """ set: keys = unique names of output sockets, values: actual socket indices"""
         
     # ------------------------------------------------------------------------------------------
     # Access to the output sockets
@@ -1670,6 +1906,60 @@ class Node:
     # Output socket by index
     
     def get_datasocket(self, index):
+        """ Get the data socket by its index.
+        
+        :param index: Index of the output socket to get
+        :type index: int
+        :return: The data socket at the given socket
+        :rtype: DataSocket
+        
+        .. Note:: The index is the **user index**. It can differ from the **geometry node index** of the socket when
+            several sockets share the same name. For instance the node *Random value* has several output sockets
+            named *Value*. Only one is enabled at the same time. All these sockets share the same index, which is 0.
+            The socket returned by ``get_datasocket`` is the one which is enabled.
+            
+        .. code-block:: python
+        
+            import geonodes as gn
+            
+            with gn.Tree("Geometry Nodes") as tree:
+                
+                # Node 'Random Value' initialized for FLOAT
+                
+                v = gn.Float.Random()
+                
+                # Let's explore the node
+                 
+                random_node = v.node
+                
+                # The actual output sockets of the geometry node
+                # Note that we loop on bnode which is the wrapped node
+                
+                print("Actual sockets:")
+                for i, bsocket in enumerate(random_node.bnode.outputs):
+                    print(i, bsocket.name, bsocket.enabled)
+                print()
+            
+                # All the socket share the same name and user index
+                # The one whih is return is the enabled one
+                    
+                print("User sockets:")
+                for key in random_node.outsockets:
+                    socket = getattr(v.node, key)
+                    print(key, socket.socket_index, socket.bl_idname)
+                    
+        .. code-block:: console
+                    
+            Actual sockets:
+            0 Value False
+            1 Value True
+            2 Value False
+            3 Value False
+            
+            User sockets:
+            value 1 NodeSocketFloat                    
+        
+        """
         name = list(self.outsockets.keys())[index]
         return getattr(self, name)
         
@@ -1697,6 +1987,8 @@ class Node:
     
     @property
     def bl_idname(self):
+        """ Shortcut for ``self.bnode.bl_idname``
+        """
         return self.bnode.bl_idname
     
     # ------------------------------------------------------------------------------------------
@@ -1704,6 +1996,13 @@ class Node:
         
     @staticmethod
     def unitize(names):
+        """ Utility to build unique names from a list with homonyms
+        
+        :param names: The list of names to unitize
+        :type names: list of strs
+        :return: list with the same number of names where homonyms are suffixed by their rank
+        :rtype: list of strs
+        """
         
         counts = {name: 0 for name in set(names)}
         unames = []
@@ -1729,6 +2028,7 @@ class Node:
     
     @property
     def label(self):
+        """ Node label"""
         return self.label_
     
     @label.setter
@@ -1742,6 +2042,7 @@ class Node:
         
     @property
     def chain_label(self):
+        """ Label to use when building chain labels"""
         if self.label is None:
             return str(self.node_id)
         else:
@@ -1752,6 +2053,7 @@ class Node:
     
     @property
     def input_geometry_bsocket(self):
+        """ The input geometry blender socket"""
         for bsocket in self.bnode.inputs:
             if bsocket.bl_idname == 'NodeSocketGeometry':
                 return bsocket
@@ -1762,6 +2064,7 @@ class Node:
     
     @property
     def fed_nodes(self):
+        """ List of the node with input sockets connected with this socket"""
 
         bnodes = []
         for bsocket in self.outputs:
@@ -1782,6 +2085,7 @@ class Node:
     
     @property
     def node_color(self):
+        """ Noe color"""
         return self.bnode.color
     
     @node_color.setter
@@ -1796,9 +2100,14 @@ class Node:
     # Switch input sockets
     
     def switch_input_sockets(self, index0, index1):
-        """ Utility method switch the links fo two sockets/
+        """ Utility method which switchs the links of two sockets.
         
-        Used when implementing operators
+        :param index0: The first index
+        :param index1: The second index
+        :type index0: int
+        :typ index1: int
+        
+        Used when implementing operators __rxxx___
         """
         
         bsock0 = self.bnode.inputs[index0]
@@ -1832,6 +2141,14 @@ class Node:
     # Sockets plugged to an input socket
     
     def plugged(self, index):
+        """ The liste of plugged sockets
+        
+        :param index: the index of the socket to consider
+        :type index: int
+        :return: The list of connected sockets
+        :rtype: list of DataSockets
+        """
+        
         return self.inputs[index].connected_sockets()
     
     # ---------------------------------------------------------------------------
@@ -1840,24 +2157,23 @@ class Node:
     def plug(self, index, *values):
         """ Plug the values to the input socket whose index is provided.
         
+        :param index: The index of the input sockets (a valid index for Node.inputs)
+        :param values: Each value can be an acceptable default value for the socket
+                 or an output socket 
+        :type index: int
+        :type values: list of values
+        
         Since an input socket can be multi input, the values argument is a list.
         
         If the socket is multi input, the plug method is called once per provide value.
         If a value is None, nothing happens.
         
         A not None value can be:
+            
         - either a valid valud for the socket (eg: 123 for Integer socket)
         - or an output socket of another Node
             
-        When it is a socket, it can be a Blender socker or a DataSocket
-        
-        Arguments
-        ---------
-        - index: int
-          The index of the input sockets (a valid index for Node.inputs)
-        - *values: list of values
-          Each value can be an acceptable default value for the socket
-          or an output socket 
+        When it is a socket, it can be a Blender socket or a DataSocket
         """
         
         # ----- Index can be a string
@@ -1875,12 +2191,20 @@ class Node:
             raise RuntimeError(f"Invalid input socket name '{index}' for node {self}. Valid (names, index) are : {valids}.")
         
         DataSocket.plug_bsocket(self.bnode.inputs[index], *values)
-        self.tree.arrange(False)
         
     # ------------------------------------------------------------------------------------------
     # Plug all sockets with matching name
     
     def plug_node(self, node):
+        """ Plug all the sockets of a node.
+        
+        :param node: The node whose output sockets will be plugged
+        :type node: Node
+        
+        Plug the output sockets of node whose name match an input socket of self.
+        
+        """
+        
         for index, iname in enumerate(self.insockets):
             if iname in node.outsockets:
                 self.plug(index, getattr(node, iname))
@@ -1889,18 +2213,18 @@ class Node:
     # The node is an attribute
     
     def as_attribute(self, owning_socket, domain='POINT'): #, data_type='FLOAT'):
-        """ Indicates that the node is an attribute
+        """ Indicates that the node is an attribute.
         
-        An attribute is intended to provide information from a particular geometry.
+        :param owning_socket: The owning socket it is an atribute of
+        :param domain: The domain if 'Capture Attribute' is necessary
+        :type owning_socket: DataSocket
+        :type domain: str
         
-        In Blender, one has to check if he has to use a Capture Node or not.
+        Set the property :attr:`is_atribute` to `True` to indicate that the socket
+        is the attribute of a Geometry.
+        The domain is stored in the property `domain`
         
-        With geonodes scripting, attributes are considered as properties of geometry.
-        At creation time, the Node maintains a reference to the geometry it is an attribute of.
-        When closing the tree, all the attributes are check to see if a "Capture Node" must be
-        created instead of keeping the single attribute node.
-        
-        See `Tree.check_attributes` method.
+        see :func:`Tree.check_attributes` 
         """
         
         self.is_attribute = True
@@ -1914,6 +2238,11 @@ class Node:
     # List of the nodes which are connected through a GEOMETRY socket
     
     def connected_geometries(self):
+        """ List of the connected geometries
+        
+        Explore the fowards links until finding a node with an input geometry.
+        The resulting list will allow to determine if a 'Capture Attribute' is necessary.
+        """
         
         def conns(node):
             
@@ -1943,6 +2272,13 @@ class Node:
     # The attribute is "solved" when it feeds capture or transfer attribute
     
     def attribute_is_solved(self):
+        """ Check if the attribute is already solved.
+        
+        No need to insert a  *Capture Attribute* Node when the socket is already
+        connected to nodes  *Capture Attribute* or  *Transfer Attribute*.
+        
+        see :func:`Tree.check_attributes` 
+        """
 
         solvers = ['GeometryNodeCaptureAttribute', 'GeometryNodeAttributeTransfer']
         geos = self.connected_geometries()
@@ -1956,7 +2292,6 @@ class Node:
     # Node socket classes will be created in generated modules
     
     """
-    
     @staticmethod
     def DataSocket(socket):
         if socket.bl_idname == 'NodeSocketBool':
@@ -2021,96 +2356,109 @@ class Node:
     
     @staticmethod
     def Boolean(socket):
+        """ Initialize a Boolean with a DataSocket"""
         import geonodes as gn
         return gn.Boolean(socket)
     
     @staticmethod
     def Integer(socket):
+        """ Initialize a Integer with a DataSocket"""
         import geonodes as gn
         return gn.Integer(socket)
     
     @staticmethod
     def Float(socket):
+        """ Initialize a Float with a DataSocket"""
         import geonodes as gn
         return gn.Float(socket)
     
     @staticmethod
     def Vector(socket):
+        """ Initialize a Vector with a DataSocket"""
         import geonodes as gn
         return gn.Vector(socket)
     
     @staticmethod
     def Color(socket):
+        """ Initialize a Color with a DataSocket"""
         import geonodes as gn
         return gn.Color(socket)
     
     @staticmethod
     def String(socket):
+        """ Initialize a String with a DataSocket"""
         import geonodes as gn
         return gn.String(socket)
     
     @staticmethod
     def Geometry(socket):
+        """ Initialize a Geometry with a DataSocket"""
         import geonodes as gn
         return gn.Geometry(socket)
     
     @staticmethod
-    def Spline(socket):
-        import geonodes as gn
-        return gn.Spline(socket)
-    
-    @staticmethod
     def Curve(socket):
+        """ Initialize a Curve with a DataSocket"""
         import geonodes as gn
         return gn.Curve(socket)
     
     @staticmethod
     def Mesh(socket):
+        """ Initialize a Mesh with a DataSocket"""
         import geonodes as gn
         return gn.Mesh(socket)
     
     @staticmethod
     def Points(socket):
+        """ Initialize a Points with a DataSocket"""
         import geonodes as gn
         return gn.Points(socket)
     
     @staticmethod
     def Instances(socket):
+        """ Initialize a Instances with a DataSocket"""
         import geonodes as gn
         return gn.Instances(socket)
     
     @staticmethod
     def Volume(socket):
+        """ Initialize a Volume with a DataSocket"""
         import geonodes as gn
         return gn.Volume(socket)
     
     @staticmethod
     def Texture(socket):
+        """ Initialize a Texture with a DataSocket"""
         import geonodes as gn
         return gn.Texture(socket)
     
     @staticmethod
     def Material(socket):
+        """ Initialize a Material with a DataSocket"""
         import geonodes as gn
         return gn.Material(socket)
     
     @staticmethod
     def Image(socket):
+        """ Initialize a Image with a DataSocket"""
         import geonodes as gn
         return gn.Image(socket)
     
     @staticmethod
     def Collection(socket):
+        """ Initialize a Collection with a DataSocket"""
         import geonodes as gn
         return gn.Collection(socket)
     
     @staticmethod
     def Object(socket):
+        """ Initialize a Object with a DataSocket"""
         import geonodes as gn
         return gn.Object(socket)       
     
     @staticmethod
     def DataClass(socket):
+        """ Initialize a DataClass of the propert class from from the bl_idname of the socket"""
         class_name = DataSocket.get_class_name(socket)
         return getattr(Node, class_name)(socket)
         
@@ -2225,15 +2573,22 @@ class Group(CustomGroup):
 
 class GroupInput(CustomGroup):
     
-    """ > Node 'Group input'
+    """ Node *Group input*
     
-    > Note that the **output** sockets of this node are the **input** sockets of the group.
+    Args:
+        check_input_geometry: True for modifier
+        
+    
+    Note that the **output** sockets of this node are the **input** sockets of the group.
     
     For modifiers, the first socket must be a geometry socket: this is the gemetry of the object on which the modifier
     applies. Make sure that this socket exists.
+    
+    This node is created by the Tree at initialization time. 
+    
     """
 
-    def __init__(self, check_input_geometry):
+    def __init__(self, check_input_geometry: bool):
         
         super().__init__('NodeGroupInput', 'Group Input')
         
@@ -2264,7 +2619,13 @@ class GroupInput(CustomGroup):
     # Default geometry input node
 
     @property
-    def input_geometry(self):
+    def input_geometry(self) -> Node:
+        """ The default input geometry sockets.
+        
+        Returns:
+            Geometry: The input geometry socket
+        """
+            
         
         try:
             sock0 = self.bnode.outputs[0]
@@ -2285,7 +2646,26 @@ class GroupInput(CustomGroup):
     # --------------------------------------------------------------------------------
     # Create a new input socket
     
-    def new_socket(self, class_name, value=None, name=None, min_value=None, max_value=None, description=""):
+    def new_socket(self, class_name: str, value: Any = None, name: str = None, 
+                   min_value: Any = None, max_value: Any = None, description: str = "") -> DataSocket:
+        """ Create a new input ocket.
+        
+        Args:
+            class_name : the type of socket to create
+            value : Default value (when relevant)
+            name : Socket name
+            min_value : Minimum value
+            max_value : Maxium value
+            description : user tip
+            
+        Returns:
+            DataSocket : A data socket of class *class_name*
+            
+        Note
+        ----
+            The created socket is an **input** socket for the whole tree, i.e. an **output** socket for this node.
+
+        """
         
         if name is None:
             name = class_name
@@ -2404,16 +2784,22 @@ class GroupInput(CustomGroup):
 # NodeGroupOutput
 
 class GroupOutput(CustomGroup):
-    """ > Node 'Group output'
+    """ Node *Group Output*
     
-    > Note that the **input** sockets of this node are the **output** sockets of the group.
+    Args:
+        check_output_geometry: True for modifier
     
-    The first socket must be a geometry: this is the result of the modifier. Make sure that this
-    output socket exists.
+    Note
+    ----
+        The **input** sockets of this node are the **output** sockets of the group.
+        
+    This node is created by the Tree at initialization time. 
+    
+    .. blid:: NodeGroupOutput
     
     """
     
-    def __init__(self, check_output_geometry):
+    def __init__(self, check_output_geometry: bool):
         
         super().__init__('NodeGroupOutput', 'Group Output')
         
@@ -2447,6 +2833,14 @@ class GroupOutput(CustomGroup):
 
     @property
     def output_geometry(self):
+        """ The output geometry socket of the tree.
+        
+        Returns:
+            Geometry: The output geometry
+        
+        For a tree modifier, the first output socket of the group must be a geometry.
+        
+        """
         try:
             sock0 = self.bnode.inputs[0]
             if sock0.bl_idname == 'NodeSocketGeometry':
@@ -2481,7 +2875,14 @@ class GroupOutput(CustomGroup):
     # --------------------------------------------------------------------------------
     # Create a new output socket
     
-    def to_output(self, socket, name=None):
+    def to_output(self, socket: DataSocket, name: str = None):
+        """ Plug the socket as an output of the tree.
+        
+        Args:
+            socket: The socket to plug
+            name: The name to display
+            
+        """
         
         class_name, sub_class = DataSocket.get_class_name(socket, True)
         if sub_class != '':
@@ -2499,7 +2900,6 @@ class GroupOutput(CustomGroup):
             
             if bsocket.name == name:
                 self.plug(index, socket)
-                self.tree.arrange(True)
                 return
 
         # ----- Let's create it
@@ -2514,8 +2914,6 @@ class GroupOutput(CustomGroup):
         index  = self.outsockets[name]
         self.plug(index, socket)
         
-        self.tree.arrange(True) 
-        
 # =============================================================================================================================
 # Unique nodes        
 
@@ -2523,26 +2921,19 @@ class GroupOutput(CustomGroup):
 # Node NodeViewer for GeometryNodeViewer
 
 class Viewer(Node):
-    """ > Node 'Viewer' (GeometryNodeViewer)
+    """ Node *Viewer*
+    
+    Args:
+        geometry: The geometry to view
+        value: The value to view
+        data_type: The value data_type in [ 'FLOAT' 'INT' 'FLOAT_VECTOR' 'FLOAT_COLOR' 'BOOLEAN']
 
-    Data type dependant sockets
-    ---------------------------
-
-        - Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
-        - Input sockets     : ['value']
-
-    Input sockets
-    -------------
-        - geometry        : Geometry
-        - value           : data_type dependant
-
-    Parameters
-    ----------
-        - data_type       : 'FLOAT' in [ 'FLOAT' 'INT' 'FLOAT_VECTOR' 'FLOAT_COLOR' 'BOOLEAN']
+        
+    .. blid:: GeometryNodeViewer
 
     """
 
-    def __init__(self, geometry=None, value=None, data_type='FLOAT', label=None):
+    def __init__(self, geometry: DataSocket = None, value: Any = None, data_type: str = 'FLOAT', label: str = None):
 
         super().__init__('GeometryNodeViewer', name='Viewer', label=label)
 
@@ -2556,7 +2947,13 @@ class Viewer(Node):
         self.value    = value
 
         
-    def plug_socket(self, socket):
+    def plug_socket(self, socket: DataSocket):
+        """ Plug a socket into the viewer.
+        
+        Args:
+            socket: The data socket to plug
+            
+        """
         
         if socket is None:
             return
@@ -2586,31 +2983,25 @@ class Viewer(Node):
                 raise RuntimeError(f"Impossible to connect the socket {socket} to the viewer. Class {class_name} is not viewable.")
                 
             self.value = socket
-            
-        self.tree.arrange(False)
         
 # ----------------------------------------------------------------------------------------------------
 # Node NodeFrame for NodeFrame
 
 class Frame(Node):
-
-    """ > Node 'Frame' (NodeFrame)
+    """ Node *Frame*
+    
+    Args:
+        label: The frame label
+        label_size: The font size for the label
+        color: A valid color spec
+        shrink: Shrink the Frame
+        
+    Note that *Frame* is the internal name for *Layouts*
+    
+    .. blid:: NodeFrame
     """
 
-    def __init__(self, label="Layout", label_size=16, color=None, shrink=True):
-        """ > Initialization
-        
-        Parameters
-        ----------
-            - label : str, default="Layout"
-                  frame label
-            - label_size : int, default=42
-                  label font size
-            - color: color
-                  color specification
-            - shrink: bool
-                  Node parameter
-        """
+    def __init__(self, label: str = "Layout", label_size: int = 16, color: Any = None, shrink: bool = True):
 
         super().__init__('NodeFrame', name='Frame', label=label)
         if color is None:
@@ -2651,16 +3042,24 @@ class Frame(Node):
 # Scene
 
 class SceneTime(Node):
-
-    """ > Node 'Scene Time' (GeometryNodeInputSceneTime)
-
-    Output sockets
-    --------------
-        - seconds         : Float
-        - frame           : Float
+    """ Node *Scene Time* ()
+    
+    Args:
+        label: The node label
+        
+    Provides the *seconds* and *frame* value for animation.
+    
+    The :attr:`Tree.scene` property maintains an instance of this node:
+    
+    .. code-block:: python
+    
+        time = tree.scene.seconds
+        frame_number = tree.scene.frame
+        
+    .. blid: GeometryNodeInputSceneTime
     """
 
-    def __init__(self, label=None):
+    def __init__(self, label: str = None):
         """ Iniitialisation """
 
         super().__init__('GeometryNodeInputSceneTime', name='Scene Time', label=label)

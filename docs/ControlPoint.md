@@ -14,7 +14,7 @@ Handles
 ----- Handles type
 
 
-## handles_type
+## handle_type
 
 > Set the handles type
   
@@ -24,7 +24,7 @@ Set the type of the left and right handles
         
 ```python
 curve.splines.type = 'BEZIER'
-curve.points.handles_type = 'FREE'
+curve.points.handle_type = 'FREE'
 ```
 
 

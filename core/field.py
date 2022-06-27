@@ -18,81 +18,159 @@ from geonodes.core.node import Socket
 from geonodes.nodes import nodes
 from geonodes.nodes.nodes import create_node
 
-import bpy
-
 import logging
 logger = logging.getLogger('geonodes')
+
+try:
+    import bpy
+except:
+    pass
+
 
 # =============================================================================================================================
 # A field is the basic geometry data
 
 class Field:
-    """ > Field
+    """ Field is the root class for domain attributes : ID, index, position, radius...
     
-    Field is the root class for domain attributes : ID, index, position, radius...
+    Args
+        geo_domain(Domain) : The domain the field belongs to
+        
+    A field manages a couple of nodes (*Input*, *Set Value*) for a given field.
     
-    The fields are implemented by the domains:
+    Examples:
         
-    ```python
-        
-    class Domain:        
-        @property
-        def prop(self):
-            return Field(self)
-        
-        @prop.setter
-        def prop(self, value):
-            Field(self).set_value(value)
-    ```
+        +------------------------------+------------------------------+
+        | **Input node**               | **Set Value node**           |
+        +------------------------------+------------------------------+
+        | Position                     | Set Position                 |
+        +------------------------------+------------------------------+
+        | Is Spline Cylic              | Set Spline Cyclic            |
+        +------------------------------+------------------------------+
+        | Radius                       | Set Radius                   |
+        +------------------------------+------------------------------+
     
-    In a typical scheme Field(self) 
+    The fields are implemented by the domains exposing this couple as a property:
         
-    
+    .. code-block:: python
+        
+        class Domain:        
+            @property
+            def prop(self):
+                return Field(self).node_socket
+            
+            @prop.setter
+            def prop(self, value):
+                Field(self).set_value(value)
     
     """
     
     def __init__(self, geo_domain):
         self.geo_domain  = geo_domain
-        self.input_node_ = None
+        """ Domain: The geometry domain the field belongs to"""
+        self._input_node = None
         self.cache_node  = True
+        """ True if the input node can be cached"""
         
     def __repr__(self):
         return f"<Field {self.geo_domain}.{type(self).__name__}>"
     
     def stack(self, node):
+        """ Call self.geo_domain.stack()
+        
+        Args
+            node (Node): the newly create node
+            
+        The owning socket will be moved to the geometry output socket of node
+        """
         return self.geo_domain.stack(node)
         
     @property
     def geometry(self):
+        """ Geometry: the geometry the field belongs to
+        """
         return self.geo_domain.data_socket
     
     @property
     def domain(self):
+        """ Domain: the geometry domain the field belongs to
+        """
         return self.geo_domain.domain
     
     @property
     def selection(self):
+        """ Boolean: The domain selection to use when creating the node
+        """
         return self.geo_domain.selection
     
     @property
     def input_node(self):
-        node = self.input_node_
+        """ Node: The field input node
+        
+        The node is actually created by the method :func:`create_input_node`.
+        This property implements the cache mechanism.
+        When the input node is created, the method :func:`Node.as_attribute` is
+        called to tag the node as being an attribute.
+        
+        This will allow the :func:`Tree.check_attributes` to see if it is necessary
+        to create a *Capture Attribute* for this field.
+        """
+
+        node = self._input_node
         if node is None:
             node = self.create_input_node()
             node.as_attribute(owning_socket=self.geo_domain.data_socket, domain=self.domain)
             node.field_of = self
             if self.cache_node:
-                self.input_node_ = node
+                self._input_node = node
         return node
     
     @property
     def node_socket(self):
+        """ The output socket from the input node
+        
+        This is the value returned by the domain:
+            
+        .. code-block:: python
+        
+            class Domain:
+                
+                @property
+                def field(self):
+                    return Field(self).node_socket
+        """
         return self.input_node.get_datasocket(0)
     
     def create_input_node(self):
+        """ Create the input node
+        
+        Must be overriden by sub classes
+        """
         raise RuntimeError("Input node not implemented !")        
         
     def set_value(self, value):
+        """ Set the field value
+        
+        Args
+            value (field type): The value to set
+            
+        Must be overriden by subclasses.
+            
+        This is the method used by the domain to implement the property setter:
+            
+        .. code-block:: python
+        
+            class Domain:
+                
+                @property
+                def field(self):
+                    return Field(self).node_socket
+                
+                @field.setter
+                def field(self, value):
+                    Field(self).set_value(value)
+            
+        """
         raise RuntimeError(f"The field '{type(self).__name}' is read only.")
         
     # ---------------------------------------------------------------------------
@@ -100,23 +178,41 @@ class Field:
     
     @property
     def transfer_index(self):
+        """ Transfer the attribute with the 'INDEX' ``mapping``
+        
+        .. code-block:: python
+        
+            instances.insts.position = mesh.verts.position.transfer_index
+        
+        .. blid:: GeometryNodeAttributeTransfer
+        """
         return self.geo_domain.transfer_attribute(attribute=self.node_socket, index=self.geo_domain.index, mapping='INDEX')
     
     def transfer_nearest(self, source_position=None):
+        """ Transfer the attribute with the 'NEAREST' ``mapping``
+        
+        .. blid:: GeometryNodeAttributeTransfer
+        """
+        
         return self.geo_domain.transfer_attribute(attribute=self.node_socket, source_position=source_position, mapping='NEAREST')
     
     def transfer_nearest_face(self, source_position=None):
+        """ Transfer the attribute with the 'NEAREST_FACE_INTERPOLATED' ``mapping``
+        
+        .. blid:: GeometryNodeAttributeTransfer
+        """
         return self.geo_domain.transfer_attribute(attribute=self.node_socket, source_position=source_position, mapping='NEAREST_FACE_INTERPOLATED')
 
 # ----------------------------------------------------------------------------------------------------
 # Named field
 
 class NamedField(Field):
-    """ > Named attribute
-
-    - get        : NamedAttribute (type defined in data_type)
-    - set        : StoreNamedAttribute
-    - selectable : False
+    """ Named attribute
+    
+    Args:
+        geo_domain (Domain): The domains the field belongs to
+        name (str): Attribute name
+        data_type (str): A valid data type
     """
     
     def __init__(self, geo_domain, name, data_type=None):
@@ -125,11 +221,14 @@ class NamedField(Field):
         self.data_type = data_type
         
     def create_input_node(self):
+        """ .. blid:: GeometryNodeInputNamedAttribute"""
+
         if self.data_type is None:
             raise RuntimeError(f"Data type for named attribute '{name}' not defined. You must give it in __init__ if the attribute is already stored")
         return nodes.NamedAttribute(name=self.name, data_type=self.data_type)
         
     def set_value(self, value):
+        """ .. blid:: GeometryNodeStoreNamedAttribute"""
         if self.data_type is None:
             self.data_type = Socket.domain_data_type(value)
         return self.stack(nodes.StoreNamedAttribute(self.geometry, name=self.name, value=value, data_type=self.data_type, domain=self.domain))
@@ -138,16 +237,19 @@ class NamedField(Field):
 # ID
 
 class ID(Field):
-    """ > Field index
-
-    - get        : ID (Integer)
-    - set        : SetID
-    - selectable : True
+    """ Field ID
+    
+    Implementation:
+        - get: :class:`nodes.ID`
+        - set: :class:`nodes.SetID`
+        - selectable: *True*
     """
     def create_input_node(self):
+        """ .. blid:: GeometryNodeInputID"""
         return nodes.ID()
     
     def set_value(self, value):
+        """ .. blid:: GeometryNodeSetID"""
         return self.stack(nodes.SetID(self.geometry, selection=self.selection, position=value))
     
         
@@ -155,24 +257,28 @@ class ID(Field):
 # Index
 
 class Index(Field):
-    """ > Field index
-
-    - get        : Index (Integer)
-    - set        : Read only
-    - selectable : False
+    """ Field Index
+    
+    Implementation:
+        - get: :class:`nodes.Index`
+        - set: read only
+        - selectable: *False*
     """
+    
     def create_input_node(self):
+        """ .. blid:: GeometryNodeInputIndex"""
         return nodes.Index()
         
 # ----------------------------------------------------------------------------------------------------
 # Normal
 
 class Normal(Field):
-    """ > Field index
-
-    - get        : Normal (Vector)
-    - set        : read only
-    - selectable : False
+    """ Field Normal
+    
+    Implementation:
+        - get: :class:`nodes.Normal`
+        - set: read only
+        - selectable: *False*
     """
     def create_input_node(self):
         return nodes.Normal()
@@ -181,17 +287,41 @@ class Normal(Field):
 # Position field
 
 class Position(Field):
-    """ > Field position
+    """ Field Position
     
-    - get        : Position (Vector)
-    - set        : SetPosition
-    - selectable : True
+    Implementation:
+        - get: :class:`nodes.Position`
+        - set: :class:`nodes.SetPosition`
+        - selectable: *False*
+        
+    Note
+    ----
+        *SetPosition* node has two input sockets: *position* and *offset*. The owner domain can
+        implement this field in two properties:
+            
+            - position
+            - offset
+            
+    .. code-block:: python
+    
+        mesh.verts.position = (1, 2, 3)
+        mesh.verts.offset = (0.1, 0.2, 0.3)
+        # or
+        mesh.verts.position += (0.1, 0.2, 0.3)
+        
+    
     """
     def create_input_node(self):
+        """ .. blid:: GeometryNodeInputPosition"""
         return nodes.Position()
     
     @property
     def node_socket(self):
+        """ Overrides the inherited method to set a `offset_setter` property.
+        
+        This allows to implement operator ``+=`` with the *offset* socket of
+        the node *Set Position*
+        """
         vector = self.input_node.get_datasocket(0)
         
         # ----- Hack to implement += in set_offset
@@ -200,12 +330,15 @@ class Position(Field):
         return vector
     
     def set_position(self, position=None, offset=None):
+        """ .. blid:: GeometryNodeSetPosition"""
         return self.stack(nodes.SetPosition(self.geometry, selection=self.selection, position=position, offset=offset))
 
     def set_value(self, value):
+        """ .. blid:: GeometryNodeSetPosition"""
         return self.stack(nodes.SetPosition(self.geometry, selection=self.selection, position=value))
     
     def set_offset(self, value):
+        """ .. blid:: GeometryNodeSetPosition"""
         return self.stack(nodes.SetPosition(self.geometry, selection=self.selection, offset=value))
     
     def __iadd__(self, value):
@@ -217,6 +350,21 @@ class Position(Field):
 # Radius
 
 class Radius(Field):
+    """ Field Radius
+    
+    Implementation:
+        - get: :class:`nodes.Radius`
+        - set: :class:`nodes.SetPointRadius` or :class:`nodes.SetCurveRadius`
+        - selectable: *True*
+        
+    Note
+    ----
+        There are two setters for Radius, depending on the domain:
+            
+            - POINT : SetPointRadius
+            - CURVE : SetCurveRadius
+    """
+
     """ > Field index
 
     - get        : Radius (Float)
@@ -224,9 +372,14 @@ class Radius(Field):
     - selectable : True
     """
     def create_input_node(self):
+        """ .. blid:: GeometryNodeInputRadius"""
         return nodes.Radius()
         
     def set_value(self, value):
+        """ .. blid:: GeometryNodeSetPointRadius
+        
+        .. blid:: GeometryNodeSetCurveRadius"""
+        
         if self.domain == 'CURVE':
             return self.stack(nodes.SetCurveRadius(self.geometry, selection=self.selection, radius=value))
         elif self.domain == 'POINT':

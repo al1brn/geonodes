@@ -12,8 +12,6 @@ from geonodes.nodes.nodes import create_node
 import geonodes.core.field as field
 
 
-import bpy
-
 import logging
 logger = logging.getLogger('geonodes')
 
@@ -130,7 +128,6 @@ class Domain:
         else:
             raise Exceptionf(f"Invalid geometry index: {index}. Only ints, slices and arrays are valid.")
             
-    
     
     # ----------------------------------------------------------------------------------------------------
     # Force a domain change
@@ -261,13 +258,51 @@ class Domain:
                 raise RuntimeError(f"The named attribute '{name}' is defined with two different data types: '{nfield.data_type}' (first) and '{data_type}' (second).")
                 
         return nfield
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Def a node as attribute node
+    
+    def attribute(self, node):
+        """ Define an input node as attribute
+        
+        Called when creating an input node in a property getter.
+        Call the method :func:`Node.as_attribute` to tag the node as being an attribute.
+        
+        This will allow the :func:`Tree.check_attributes` to see if it is necessary
+        to create a *Capture Attribute* for this field.
+        """
+
+        node.as_attribute(owning_socket=self.data_socket, domain=self.domain)
+        node.field_of = self
+        return node
+    
 
     # ----------------------------------------------------------------------------------------------------
     # > Get a named attribute socket
     #
     # Make use named_field method
     
-    def get_named_attribute(self, name, data_type=None):
+    def get_named_attribute(self, name, data_type='FLOAT'):
+        """ Get a named attribute
+        
+        Called by methods set_named_xxx:
+            
+        - :func:`get_named_boolean`
+        - :func:`get_named_integer`
+        - :func:`get_named_float`
+        - :func:`get_named_vector`
+        - :func:`get_named_color`
+        """
+        
+        if data_type is None:
+            raise RuntimeError(f"Data type for named attribute '{name}' not defined")
+            
+        return self.attribute(nodes.NamedAttribute(name=name, data_type=data_type)).get_datasocket(0)
+    
+    
+        # -OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD
+    
+        
         return self.named_field(name, data_type).node_socket
         
     # ----------------------------------------------------------------------------------------------------
@@ -278,21 +313,46 @@ class Domain:
     # If data_type is None, the data_type is infered from the type of the value
     
     def set_named_attribute(self, name, value, data_type=None):
+        """ Set a named attribute
+        
+        Called by classes set_named_xxx:
+            
+        - :func:`set_named_boolean`
+        - :func:`set_named_integer`
+        - :func:`set_named_float`
+        - :func:`set_named_vector`
+        - :func:`set_named_color`
+        - :func:`set_named_byte_color`
+        """
+        
+        if data_type is None:
+            data_type = Socket.domain_data_type(value)
+        
+        return self.stack(nodes.StoreNamedAttribute(self.data_socket, name=name, value=value, data_type=data_type, domain=self.domain))
+        
+
+        # -OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD
+
         self.named_field(name, data_type).set_value(value)
 
     def get_named_boolean(self, name):
+        """ Get named attribute of type BOOLEAN"""
         return self.get_named_attribute(name, data_type='BOOLEAN')
 
     def get_named_integer(self, name):
+        """ Get named attribute of type INT"""
         return self.get_named_attribute(name, data_type='INT')
         
     def get_named_float(self, name):
+        """ Get named attribute of type FLOAT"""
         return self.get_named_attribute(name, data_type='FLOAT')
 
     def get_named_vector(self, name):
+        """ Get named attribute of type FLOAT_VECTOR"""
         return self.get_named_attribute(name, data_type='FLOAT_VECTOR')
         
     def get_named_color(self, name):
+        """ Get named attribute of type FLOAT_COLOR"""
         return self.get_named_attribute(name, data_type='FLOAT_COLOR')
         
     # NOT SUPPORTED YET
@@ -301,21 +361,27 @@ class Domain:
     
     
     def set_named_boolean(self, name, value):
+        """ Set named attribute of type BOOLEAN"""
         self.set_named_attribute(name, value, data_type='BOOLEAN')
 
     def set_named_integer(self, name, value):
+        """ Set named attribute of type INT"""
         self.set_named_attribute(name, value, data_type='INT')
         
     def set_named_float(self, name, value):
+        """ Set named attribute of type FLOAT"""
         self.set_named_attribute(name, value, data_type='FLOAT')
 
     def set_named_vector(self, name, value):
+        """ Set named attribute of type FLOAT_VECTOR"""
         self.set_named_attribute(name, value, data_type='FLOAT_VECTOR')
         
     def set_named_color(self, name, value):
+        """ Set named attribute of type FLOAT_COLOR"""
         self.set_named_attribute(name, value, data_type='FLOAT_COLOR')
         
     def set_named_byte_color(self, name, value):
+        """ Set named attribute of type BYTE_COLOR"""
         self.set_named_attribute(name, value, data_type='BYTE_COLOR')
         
     # ====================================================================================================
@@ -323,27 +389,63 @@ class Domain:
         
     @property
     def ID(self):
+        """ ID Attribute
+        
+        setter: :class:nodes.`ID`
+        getter: read only
+        selectable: yes
+        """
+        
+        return self.attribute(nodes.ID()).get_datasocket(0)
+        
+        
+        # -OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD
+        
+        
         if self.ID_ is None:
             self.ID_ = field.ID(self)
         return self.ID_.node_socket
     
     @ID.setter
     def ID(self, value):
+        return self.stack(nodes.SetID(self.data_socket, selection=self.selection, ID=value))
+        
+        
+        
+        # -OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD
+        
         if self.ID_ is None:
             self.ID_ = field.ID(self)
         self.ID_.set_value(value)
     
     @property
     def index(self):
+        """ .. blid:: GeometryNodeInputIndex"""
+        
+        return self.attribute(nodes.Index()).get_datasocket(0)
+        
+        # -OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD
+        
         if self.index_ is None:
             self.index_ = field.Index(self)
         return self.index_.node_socket
     
     @property
     def position(self):
-        """ > Property Point position
-        <blid GeometryNodeInputPosition>
-        """
+        """ .. blid:: GeometryNodeInputPosition"""
+        
+        vector = self.attribute(nodes.Position()).get_datasocket(0)
+        
+        # ----- Hack to implement += in set_offset
+
+        #vector.offset_setter = lambda value: self.set_position(position=vector, offset=value)
+        vector.offset_setter = lambda value: self.stack(nodes.SetPosition(self.data_socket, selection=self.selection, offset=value))
+        vector.point_domain  = self
+        
+        return vector
+        
+        # -OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD
+        
         if self.position_ is None:
             self.position_ = field.Position(self)
         vector = self.position_.node_socket
@@ -356,18 +458,32 @@ class Domain:
     
     @position.setter
     def position(self, value):
-        """ > Property Point position setter
-        <blid GeometryNodeSetPosition>
+        """ .. blid:: GeometryNodeSetPosition"""
         
-        Arguments
-        ---------
-            - value: Vector
-        """
+        # points.position += vector: __iadd__ return None
+        
+        if value is None:
+            return
+        
+        # No setter
+        
+        if self.domain in ['EDGE', 'FACE', 'CORNER']:
+            raise Exception(f"The position of edges, faces and corners is read only")
+            
+        # Let's go
+        
+        return self.stack(nodes.SetPosition(self.data_socket, selection=self.selection, position=value))
+        
+        
+        
+        # -OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD
+        
+        
         if value is None:  # points.position += vector: __iadd__ return None
             return
         
-        if self.domain in ['EDGE', 'FACE']:
-            raise Exception(f"The position of edges and faces is read only")
+        if self.domain in ['EDGE', 'FACE', 'CORNER']:
+            raise Exception(f"The position of edges, faces and corners is read only")
         if self.position_ is None:
             self.position_ = field.Position(self)
         self.position_.set_value(value)
@@ -378,6 +494,19 @@ class Domain:
     
     @offset.setter
     def offset(self, value):
+        """ .. blid:: GeometryNodeSetPosition"""
+        
+        # No setter
+        
+        if self.domain in ['EDGE', 'FACE', 'CORNER']:
+            raise Exception(f"The position of edges, faces and corners is read only")
+            
+        # Let's go
+        
+        return self.stack(nodes.SetPosition(self.data_socket, selection=self.selection, offset=value))
+    
+        # -OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD
+        
         """ > Property Point offset setter
         <blid GeometryNodeSetPosition>
         
@@ -1327,7 +1456,7 @@ class ControlPoint(Domain, PointInterface):
     def handle_type(self):
         raise Exception(f"'handle_type' is a write only property")
         
-    @handles_type.setter
+    @handle_type.setter
     def handle_type(self, value):
         """ > Set the handles type
         

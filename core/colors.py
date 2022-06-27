@@ -6,8 +6,23 @@ Created on Thu May  5 09:22:32 2022
 @author: alain
 """
 
-import mathutils
 import numpy as np
+
+# ----------------------------------------------------------------------------------------------------
+# Mathutils can't be imported by sphinx
+# Hack to simulate a correct loading
+
+try:
+    import mathutils
+except:
+    class mathutils:
+        @staticmethod
+        def Color(*args, **kwargs):
+            class C:
+                hsv = 0
+            return C()
+
+# ----------------------------------------------------------------------------------------------------
 
 np.random.seed = 0
 count = 1000

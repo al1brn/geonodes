@@ -1,25 +1,34 @@
 
 # Node Frame
 
-> Node 'Frame' (NodeFrame)
+Node *Frame*
+
+Args:
+  label: The frame label
+  label_size: The font size for the label
+  color: A valid color spec
+  shrink: Shrink the Frame
   
-  
-  
+Note that *Frame* is the internal name for *Layouts*
+
+.. blid:: NodeFrame
+
+
+
 
 ## \_\_init\_\_
 
-> Initialization
+Node *Frame*
 
-### Parameters
+Args:
+  label: The frame label
+  label_size: The font size for the label
+  color: A valid color spec
+  shrink: Shrink the Frame
+  
+Note that *Frame* is the internal name for *Layouts*
 
-- label : str, default="Layout"
-frame label
-- label_size : int, default=42
-label font size
-- color: color
-color specification
-- shrink: bool
-Node parameter
+.. blid:: NodeFrame
 
 
 

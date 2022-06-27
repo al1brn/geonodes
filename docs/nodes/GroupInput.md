@@ -1,32 +1,52 @@
 
 # Node GroupInput
 
-> Node 'Group input'
+Node *Group input*
+
+Args:
+  check_input_geometry: True for modifier
   
-> Note that the **output** sockets of this node are the **input** sockets of the group.
   
+Note that the **output** sockets of this node are the **input** sockets of the group.
+
 For modifiers, the first socket must be a geometry socket: this is the gemetry of the object on which the modifier
 applies. Make sure that this socket exists.
+
+This node is created by the Tree at initialization time. 
+
 
 
 
 
 ## \_\_init\_\_
 
-> Node 'Group input'
+Node *Group input*
+
+Args:
+  check_input_geometry: True for modifier
   
-> Note that the **output** sockets of this node are the **input** sockets of the group.
   
+Note that the **output** sockets of this node are the **input** sockets of the group.
+
 For modifiers, the first socket must be a geometry socket: this is the gemetry of the object on which the modifier
 applies. Make sure that this socket exists.
+
+This node is created by the Tree at initialization time. 
+
 
 
 
 
 ## input_geometry
 
-Default geometry input node
+The default input geometry sockets.
 
+Returns:
+  Geometry: The input geometry socket
+  
+  
+  
+  
 
 ## new_socket
 
