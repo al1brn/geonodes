@@ -389,11 +389,11 @@ class Domain:
         
     @property
     def ID(self):
-        """ ID Attribute
+        """ ID attribute
         
-        setter: :class:nodes.`ID`
-        getter: read only
-        selectable: yes
+        - setter: :class:`nodes.ID`
+        - getter: read only
+        - selectable: yes
         """
         
         return self.attribute(nodes.ID()).get_datasocket(0)
