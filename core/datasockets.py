@@ -975,11 +975,11 @@ class Geometry(DataSocket):
     def __radd__(self, other):
         return other.join(self.socket)
     
-    def __iadd__(self, other):
-        if self.node.bl_idname == 'GeometryNodeJoinGeometry':
-            self.node.plug(0, other)
-            return self
-        return self.stack(self.add(other).node)
+    #def __iadd__(self, other):
+    #    if self.node.bl_idname == 'GeometryNodeJoinGeometry':
+    #        self.node.plug(0, other)
+    #        return self
+    #    return self.stack(self.add(other).node)
     
     # ----------------------------------------------------------------------------------------------------
     # Duplicate the geometry
@@ -1057,20 +1057,25 @@ class Geometry(DataSocket):
             
             vs = gn.Mesh.Line(offset=(1, 0, 0), count=n)
             vs.edges.delete_edges_faces()
-            vs.verts.position = self.points.position.transfer_index
-            vs.verts.extrude(offset=self.points.lefts(True).transfer_index)
+            #vs.verts.extrude(offset=self.points.lefts(True).transfer_index)
+
+            vs.verts.position = self.points.position.index_transfer()
+            vs.verts.extrude(offset=self.points.handle_positions(True).left.index_transfer())
             
             ctl = vs
                 
             vs = gn.Mesh.Line(offset=(1, 0, 0), count=n)
             vs.edges.delete_edges_faces()
-            vs.verts.position = self.points.position.transfer_index
-            vs.verts.extrude(offset=self.points.rights(True).transfer_index)
+
+            vs.verts.position = self.points.position.index_transfer()
+            vs.verts.extrude(offset=self.points.handle_positions(True).right.index_transfer())
             
             ctl = ctl + vs
             pts = gn.Mesh(ctl).to_points(radius=0.005)
                 
             return self.join(ctl, pts)
+        
+        
         
     
 

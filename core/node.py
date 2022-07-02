@@ -632,7 +632,7 @@ class DataSocket(Socket):
         # ----- Set by Field
         
         self.field_of = None
-        """ Used by field to implement += """
+        """ Used by field to implement transfer attribute mechanism. This property is set to all node output sockets."""
     
     @property
     def node_chain_label(self):
@@ -980,21 +980,20 @@ class DataSocket(Socket):
     # ----------------------------------------------------------------------------------------------------
     # Transfer are steered by the Field it belongs to
     
-    @property
-    def transfer_index(self):
+    def index_transfer(self, index=None):
         if self.field_of is None:
-            raise Exception(f"{type(self).__name__}.transfer_index: the socket {self} is not a field.")
-        return self.field_of.transfer_index
+            raise Exception(f"{type(self).__name__}.index_transfer: the socket {self} is not a field.")
+        return self.field_of.index_transfer(attribute=self, index=index)
     
-    def transfer_nearest(self, source_position=None):
+    def nearest_transfer(self, source_position=None):
         if self.field_of is None:
-            raise Exception(f"{type(self).__name__}.transfer_nearest: the socket {self} is not a field.")
-        return self.field_of.transfer_nearest(source_position=source_position)
+            raise Exception(f"{type(self).__name__}.nearest_transfer: the socket {self} is not a field.")
+        return self.field_of.nearest_transfer(attribute=self, source_position=source_position)
     
-    def transfer_nearest_face(self, source_position=None):
+    def nearest_face_transfer(self, source_position=None):
         if self.field_of is None:
-            raise Exception(f"{type(self).__name__}.transfer_nearest_face: the socket {self} is not a field.")
-        return self.field_of.transfer_nearest_face(source_position=source_position)
+            raise Exception(f"{type(self).__name__}.nearest_face_transfer: the socket {self} is not a field.")
+        return self.field_of.nearest_face_transfer(attribute=self, source_position=source_position)
             
     
 
@@ -1840,7 +1839,7 @@ class Node:
         # ----- Set by field for all output sockets
         
         self.field_of = None
-        """ A pointer to the owning domain. Used to implement += with the offset socket of SetPosition node"""
+        """ A pointer to the owning domain. Used to implement transfer attribute."""
         
         # ----- Socket names
         # Sockets have a unique name

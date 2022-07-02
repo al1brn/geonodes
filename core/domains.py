@@ -59,28 +59,57 @@ logger = logging.getLogger('geonodes')
 
 
 class Domain:
+    """ Root class for domains
+    
+    Args:
+        data_socket (DataSocket): The geometry the domain belongs to
+        domain (str): Domain in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE']
+        selection (Boolean): selection input socket
+    
+        
+    Components and domains:
+        - Mesh component
+            - verts   : Vertex
+            - edges   : Edge
+            - faces   : Face
+            - corners : Corner
+            
+        - Curve component
+            - points  : ControlPoint
+            - splines : Spline
+            
+        - Points
+            - points   : CloudPoint
+            
+        - Instances components
+           - insts : Instance
+           
+    """
     
     def __init__(self, data_socket, domain, selection=None):
 
         self.data_socket = data_socket
         self.domain      = domain
         self.selection   = selection
-        self.init_cache()
-        
-    def init_cache(self):
-        self.ID_       = None
-        self.index_    = None
-        self.position_ = None
-        
-        self.named_fields = {}
         
     def select(self, selection):
+        """ Select the domain
+        
+        Args:
+            selection (Boolean): The selection condition
+        
+        If a selection is existing, the resulting selection is a logical and betwenn the two
+        """
+        
         if self.selection is None:
             sel = selection
+            
         elif selection is None:
             sel = self.selection
+            
         else:
             sel = self.selection.b_and(selection)
+            
         return type(self)(self.data_socket, selection=sel)
     
     def __call__(self, selection):
@@ -92,6 +121,11 @@ class Domain:
         return f"[Domain {self.domain} of {self.data_socket}{sel}]"
     
     def stack(self, node):
+        """ Make the owning socket jump to the output socket of the node passed in argumment.
+        
+        Args:
+            node (Node): The node to jump to
+        """
         return self.data_socket.stack(node)
 
     # ----------------------------------------------------------------------------------------------------
@@ -136,42 +170,53 @@ class Domain:
     
     @property
     def as_verts(self):
+        """ Type cast to Vertex."""
         return Vertex(self.data_socket)
         
     @property
     def as_edges(self):
+        """ Type cast to Edge."""
         return Edge(self.data_socket)
         
     @property
     def as_faces(self):
+        """ Type cast to Face."""
         return Face(self.data_socket)
         
     @property
     def as_corners(self):
+        """ Type cast to Corner."""
         return Corner(self.data_socket)
         
     @property
     def as_control_points(self):
+        """ Type cast to ControlPoint."""
         return ControlPoint(self.data_socket)
 
     @property
     def as_splines(self):
+        """ Type cast to Spline."""
         return Spline(self.data_socket)
         
     @property
     def as_cloud_points(self):
+        """ Type cast to CloudPoint."""
         return CloudPoint(self.data_socket)
         
     @property
     def as_insts(self):
+        """ Type cast to Instance."""
         return Instance(self.data_socket)
     
     # ----------------------------------------------------------------------------------------------------
     # Statistics
     
     def statistic(self, attribute, data_type=None):
-        """ <method GeometryNodeAttributeStatistic>
+        """ Attribute statistic
+        
+        call :class:`nodes.AttributeStatistic`
         """
+        
         dt = Socket.domain_data_type(attribute) if data_type is None else Socket.domain_data_type(data_type)
         if dt in ['BOOLEAN', 'INT', 'COLOR']:
             dt = 'FLOAT'
@@ -180,56 +225,21 @@ class Domain:
     
     @property
     def count(self):
+        """ Count the number of items by return static.max + 1
+        
+        Returns:
+            Integer
+        
+        getter: :class:`AttributeStatistic`
+        setter: read only
+        """
+        
         import geonodes as gn
         with self.data_socket.node.tree.layout(f"{self}.count", color='UTIL'):
             count = gn.Integer(self.statistic(self.index).max + 1)
-            count.node.label = "count"
+            count.node_label = "count"
             return count
     
-    # ----------------------------------------------------------------------------------------------------
-    # Transfer attribute
-
-    def transfer_attribute(self, attribute, source_position=None, index=None, data_type=None, mapping=None):
-        """ <method GeometryNodeAttributeTransfer>
-        
-        mapping in ('NEAREST', 'INDEX'):
-        - NEAREST if index is None
-        - INDEX otherwise
-        
-        call transfer_attribute_interpolated for NEAREST_FACE_INTERPOLATED
-        """
-        dt = Socket.domain_data_type(attribute) if data_type is None else Socket.domain_data_type(data_type)
-        
-        # NEAREST_FACE_INTERPOLATED in a dedicated method
-        
-        if mapping is None:
-            if index is None:
-                mapping = 'NEAREST'
-            else:
-                mapping = 'INDEX'
-        
-        return nodes.TransferAttribute(self.data_socket, attribute=attribute, source_position=source_position, index=index, data_type=dt, domain=self.domain, mapping=mapping).attribute
-
-    def transfer_index(self, attribute):
-        """ <method GeometryNodeAttributeTransfer>
-        
-        call transfer_attribute
-        """
-        return self.transfer_attribute(attribute, index=self.index, mapping='INDEX')
-
-    def transfer_nearest(self, attribute, source_position=None):
-        """ <method GeometryNodeAttributeTransfer>
-        
-        call transfer_attribute
-        """
-        return self.transfer_attribute(attribute, source_position=source_position, mapping='NEAREST')
-
-    def transfer_nearest_face(self, attribute, source_position=None):
-        """ <method GeometryNodeAttributeTransfer>
-        
-        call transfer_attribute
-        """
-        return self.transfer_attribute(attribute, source_position=source_position, mapping='NEAREST_FACE_INTERPOLATED')
 
     # ----------------------------------------------------------------------------------------------------
     # > Named field
@@ -241,7 +251,18 @@ class Domain:
     #
     # Raise an error if different data types are used for the same name
         
-    def named_field(self, name, data_type):
+    def named_field_OLD(self, name, data_type):
+        """ Named field
+        
+        Args:
+            name (str): Field name
+            data_TYPE (str): Field data type
+            
+        Returns:
+            as defined by data_type
+            
+        
+        """
 
         nfield = self.named_fields.get(name)
 
@@ -265,11 +286,19 @@ class Domain:
     def attribute(self, node):
         """ Define an input node as attribute
         
-        Called when creating an input node in a property getter.
-        Call the method :func:`Node.as_attribute` to tag the node as being an attribute.
+        Args:
+            node (Node): The node created by the domain
+            
+        Returns:
+            The node argument
         
-        This will allow the :func:`Tree.check_attributes` to see if it is necessary
-        to create a *Capture Attribute* for this field.
+        Called when creating an input node in a property getter. Performs two actions:
+            
+            - Call the method :func:`Node.as_attribute` to tag the node as being an attribute.
+              This will allow the :func:`Tree.check_attributes` to see if it is necessary to create
+              a *Capture Attribute* for this field.
+            - Set the nde property :attr:`field_of` to self in order to implement the transfer attribute
+              mechanism.
         """
 
         node.as_attribute(owning_socket=self.data_socket, domain=self.domain)
@@ -298,12 +327,6 @@ class Domain:
             raise RuntimeError(f"Data type for named attribute '{name}' not defined")
             
         return self.attribute(nodes.NamedAttribute(name=name, data_type=data_type)).get_datasocket(0)
-    
-    
-        # -OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD
-    
-        
-        return self.named_field(name, data_type).node_socket
         
     # ----------------------------------------------------------------------------------------------------
     # > Set a named attribute socket
@@ -329,11 +352,6 @@ class Domain:
             data_type = Socket.domain_data_type(value)
         
         return self.stack(nodes.StoreNamedAttribute(self.data_socket, name=name, value=value, data_type=data_type, domain=self.domain))
-        
-
-        # -OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD
-
-        self.named_field(name, data_type).set_value(value)
 
     def get_named_boolean(self, name):
         """ Get named attribute of type BOOLEAN"""
@@ -385,82 +403,152 @@ class Domain:
         self.set_named_attribute(name, value, data_type='BYTE_COLOR')
         
     # ====================================================================================================
+    # Transfer attribute
+
+    def transfer_attribute(self, attribute, source_position=None, index=None, data_type=None, mapping='NEAREST_FACE_INTERPOLATED'):
+        """ Transfer attribute
+        
+        Args:
+            attribute (Any): The attribute to transfer
+            source_position (Vector): Source position socket
+            index (Integer): Index socket
+            data_type (str): A valid data type
+            mapping (str): str in ('NEAREST', 'INDEX', 'NEAREST_FACE_INTERPOLATED').
+            
+        Returns:
+            As defined by data_type
+            
+        If data_type is None, it is computed from the attribute type.
+        
+        This method is called by a DataSocket with a property :attr:`field_of` pointing on the domain:
+            
+        .. code-block:: python
+        
+            # Domain Vertex
+        
+            verts = mesh.verts
+            
+            # Attribute position: position.field_of = verts
+        
+            position = verts.position
+            
+            # Transfer to a var
+
+            location = position.index_transfer()
+            
+            # Which is equivalent to:
+                
+            location = verts.index_transfer(verts.position)
+        
+        """
+        
+        print("TRANSFER ATTRIBUTE")
+        print("   attribute      ", attribute)
+        print("   source_position", source_position)
+        print("   index          ", index)
+        print("   data_type      ", data_type)
+        print("   mapping        ", mapping)
+        
+        dt = Socket.domain_data_type(attribute) if data_type is None else Socket.domain_data_type(data_type)
+        
+        return nodes.TransferAttribute(self.data_socket, attribute=attribute, source_position=source_position, index=index,
+                        data_type=dt, domain=self.domain, mapping=mapping).attribute
+
+    def index_transfer(self, attribute, index=None):
+        """ Transfer attribute with INDEX mapping
+        
+        Args:
+            attribute (Any): The attribute to transfer
+            index (Integer): Index
+            
+        Returns:
+            Same as attribute
+        """
+        return self.transfer_attribute(attribute, index=index, mapping='INDEX')
+
+    def nearest_transfer(self, attribute, source_position=None):
+        """ Transfer attribute with NEAREST mapping
+        
+        Args:
+            attribute (Any): The attribute to transfer
+            source_position (Vector): Source position socket
+            
+        Returns:
+            Same as attribute
+        """
+        return self.transfer_attribute(attribute, source_position=source_position, mapping='NEAREST')
+
+    def nearest_face_transfer(self, attribute, source_position=None):
+        """ Transfer attribute with NEAREST_FACE_INTERPOLATED mapping
+        
+        Args:
+            attribute (Any): The attribute to transfer
+            source_position (Vector): Source position socket
+            
+        Returns:
+            Same as attribute
+        """
+        return self.transfer_attribute(attribute, source_position=source_position, mapping='NEAREST_FACE_INTERPOLATED')        
+        
+    # ====================================================================================================
     # Fields all domain have
         
     @property
     def ID(self):
         """ ID attribute
         
-        - setter: :class:`nodes.ID`
-        - getter: read only
-        - selectable: yes
+        Returns:
+            Integer
+        
+        - getter: :class:`nodes.ID`
+        - setter: :class:`nodes.SetID`
         """
         
         return self.attribute(nodes.ID()).get_datasocket(0)
-        
-        
-        # -OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD
-        
-        
-        if self.ID_ is None:
-            self.ID_ = field.ID(self)
-        return self.ID_.node_socket
     
     @ID.setter
     def ID(self, value):
         return self.stack(nodes.SetID(self.data_socket, selection=self.selection, ID=value))
-        
-        
-        
-        # -OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD
-        
-        if self.ID_ is None:
-            self.ID_ = field.ID(self)
-        self.ID_.set_value(value)
     
     @property
     def index(self):
-        """ .. blid:: GeometryNodeInputIndex"""
+        """ Index attribute
+        
+        Returns:
+            Integer
+        
+        - setter: :class:`nodes.Index`
+        - setter: Read only
+        """
         
         return self.attribute(nodes.Index()).get_datasocket(0)
         
-        # -OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD
-        
-        if self.index_ is None:
-            self.index_ = field.Index(self)
-        return self.index_.node_socket
     
     @property
     def position(self):
-        """ .. blid:: GeometryNodeInputPosition"""
+        """ Position attribute
+        
+        Returns:
+            Vector
+        
+        - getter: :class:`nodes.Position`
+        - setter: :class:`nodes.SetPosition`
+        """
         
         vector = self.attribute(nodes.Position()).get_datasocket(0)
         
         # ----- Hack to implement += in set_offset
 
-        #vector.offset_setter = lambda value: self.set_position(position=vector, offset=value)
         vector.offset_setter = lambda value: self.stack(nodes.SetPosition(self.data_socket, selection=self.selection, offset=value))
         vector.point_domain  = self
         
         return vector
         
-        # -OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD
-        
-        if self.position_ is None:
-            self.position_ = field.Position(self)
-        vector = self.position_.node_socket
-        
-        # By setting the point_domain, += will be implemented in set_position(offset = value)
-        # rather that a vector math node incrementing the position
-        vector.point_domain = self
-        return vector
-        
     
     @position.setter
     def position(self, value):
-        """ .. blid:: GeometryNodeSetPosition"""
         
-        # points.position += vector: __iadd__ return None
+        # When implemented +=, __iadd__ returns None
         
         if value is None:
             return
@@ -474,27 +562,21 @@ class Domain:
         
         return self.stack(nodes.SetPosition(self.data_socket, selection=self.selection, position=value))
         
-        
-        
-        # -OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD
-        
-        
-        if value is None:  # points.position += vector: __iadd__ return None
-            return
-        
-        if self.domain in ['EDGE', 'FACE', 'CORNER']:
-            raise Exception(f"The position of edges, faces and corners is read only")
-        if self.position_ is None:
-            self.position_ = field.Position(self)
-        self.position_.set_value(value)
-        
     @property
     def offset(self):
+        """ "Offset" attribute (offset socket of *SetPosition* node)
+        
+        Returns:
+            Vector
+        
+        - getter: :class:`nodes.Position`
+        - setter: :class:`nodes.SetPosition`
+        """
+        
         return Node.Vector(0)
     
     @offset.setter
     def offset(self, value):
-        """ .. blid:: GeometryNodeSetPosition"""
         
         # No setter
         
@@ -504,23 +586,6 @@ class Domain:
         # Let's go
         
         return self.stack(nodes.SetPosition(self.data_socket, selection=self.selection, offset=value))
-    
-        # -OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD-OLD
-        
-        """ > Property Point offset setter
-        <blid GeometryNodeSetPosition>
-        
-        Arguments
-        ---------
-            - value: Vector
-        """
-        if self.domain in ['EDGE', 'FACE']:
-            raise Exception(f"The position of edges and faces is read only")
-            
-        if self.position_ is None:
-            self.position_ = field.Position(self)
-            
-        self.position_.set_offset(value)
     
     # ====================================================================================================
     # Methods for all domains
@@ -553,9 +618,6 @@ class Domain:
 # - CloudPoint
 
 class PointInterface:
-    
-    def init_point_cache(self):
-        pass
     
     def instantiate(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """ > Put instances on points
@@ -601,14 +663,59 @@ class PointInterface:
 
 class MeshInterface:
     
-    def init_mesh_cache(self):
-        self.normal_   = None
-    
     @property
     def normal(self):
-        if self.normal_ is None:
-            self.normal_ = field.Normal(self)
-        return self.normal_.node_socket
+        """ Normal attribute
+        
+        Returns:
+            Vector
+        
+        - getter: :class:`nodes.Normal`
+        - setter: readonly
+        """
+        
+        return self.attribute(nodes.Normal()).get_datasocket(0)
+    
+    @property
+    def island(self):
+        """ Island node attribute
+        
+        Returns:
+            Node MeshIsland
+            
+        getter: :class:`nodes.MeshIsland`
+        setter: read only
+        """
+        
+        return self.attribute(nodes.MeshIsland())
+        
+    @property
+    def island_index(self):
+        """ island_index output socket of Island attribute
+        
+        Returns:
+            Int
+            
+        getter: :class:`nodes.MeshIsland`
+        setter: read only
+        """
+
+        return self.island.island_index
+    
+        
+    @property
+    def island_count(self):
+        """ island_count output socket of Island attribute
+        
+        Returns:
+            Int
+            
+        getter: :class:`nodes.MeshIsland`
+        setter: read only
+        """
+
+        return self.island.island_count
+    
     
     # ====================================================================================================
     # Methods
@@ -646,9 +753,6 @@ class MeshInterface:
 # Properties and methodes shared by Mesh Point, Edge and Face (but not Corner)
 
 class PEFInterface:
-    
-    def init_PEF_cache(self):
-        pass
     
     def delete(self, mode='ALL'):
         """ <method GeometryNodeDeleteGeometry>
@@ -869,36 +973,57 @@ class Vertex(Domain, PointInterface, MeshInterface, PEFInterface):
     def __init__(self, data_socket, selection=None):
         super().__init__(data_socket, domain='POINT', selection=selection)
         
-    def init_cache(self):
-        super().init_cache()
-        self.init_point_cache()
-        self.init_mesh_cache()
-        self.init_PEF_cache()
+    @property
+    def neighbors(self):
+        """ Neighbors node
         
-        self.neighbors_ = None
+        Returns:
+            Node *VertexNeighbors*
+        
+        - getter: :class:`nodes.VertexNeighbors`
+        - setter: read only
+        """
+        return self.attribute(nodes.VertexNeighbors())
         
     @property
     def neighbors_vertices(self):
-        """ > Neighbors vertices
-        <blid GeometryNodeInputMeshVertexNeighbors>
+        """ Neighbors vertices attribute
+        
+        Returns:
+            Integer: The output socket *vertices* of the *VertexNeighbors* node.
+        
+        - getter: :class:`nodes.VertexNeighbors`
+        - setter: read only
         """
-        if self.neighbors_ is None:
-            self.neighbors_ = field.Neighbors(self)
-        return self.neighbors_.input_node.get_datasocket(0)
+        
+        return self.neighbors.get_datasocket(0)
+
+        
+        if self.domain == 'POINT':
+            return nodes.VertexNeighbors()
+        elif self.domain == 'EDGE':
+            return nodes.EdgeNeighbors()
+        elif self.domain == 'FACE':
+            return nodes.FaceNeighbors()
         
     @property
     def neighbors_faces(self):
-        """ > Neighbors faces
-        <blid GeometryNodeInputMeshVertexNeighbors>
+        """ Neighbors faces attribute
+        
+        Returns:
+            Integer: The output socket *faces* of the *VertexNeighbors* node.
+        
+        - getter: :class:`nodes.VertexNeighbors`
+        - setter: read only
         """
-        if self.neighbors_ is None:
-            self.neighbors_ = field.Neighbors(self)
-        return self.neighbors_.input_node.get_datasocket(1)
+        
+        return self.neighbors.get_datasocket(1)
     
     # ====================================================================================================
     # Methods
     
     def merge(self, distance=0.001, mode='ALL'):
+        
         """ > Merge vertices by distance
         
         <blid GeometryNodeMergeByDistance>
@@ -936,9 +1061,6 @@ class Vertex(Domain, PointInterface, MeshInterface, PEFInterface):
         """
         return self.merge(distance=distance, mode='CONNECTED')
         
-        
-    
-        
     
     
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -948,18 +1070,6 @@ class Face(Domain, MeshInterface, PEFInterface):
 
     def __init__(self, data_socket, selection=None):
         super().__init__(data_socket, domain='FACE', selection=selection)
-        
-    def init_cache(self):
-        super().init_cache()
-        
-        self.init_mesh_cache()
-        self.init_PEF_cache()
-
-        self.neighbors_      = None
-        self.area_           = None
-        self.shade_smooth_   = None
-        self.island_         = None
-        self.material_index_ = None
         
     # ----------------------------------------------------------------------------------------------------
     # Transfer attribute
@@ -1008,116 +1118,142 @@ class Face(Domain, MeshInterface, PEFInterface):
 
     # ----------------------------------------------------------------------------------------------------
     # Fields
+    
+    @property
+    def neighbors(self):
+        """ Neighbors node
         
+        Returns:
+            Node FaceNeighbors
+        
+        - getter: :class:`nodes.FaceNeighbors`
+        - setter: read only
+        """
+        return self.attribute(nodes.FaceNeighbors())
+    
     @property
     def neighbors_vertices(self):
-        if self.neighbors_ is None:
-            self.neighbors_ = field.Neighbors(self)
-        return self.neighbors_.input_node.get_datasocket(0)
+        """ Neighbors vertices attribute
+        
+        Returns:
+            Integer: the output socket *vertices* of the *FaceNeighbors* node.
+        
+        - getter: :class:`nodes.FaceNeighbors`
+        - setter: read only
+        """
+        
+        return self.neighbors.get_datasocket(0)
+
         
     @property
     def neighbors_faces(self):
-        if self.neighbors_ is None:
-            self.neighbors_ = field.Neighbors(self)
-        return self.neighbors_.input_node.get_datasocket(1)
+        """ Neighbors faces attribute
+        
+        Returns:
+            Integer: The output socket *faces* of the *FaceNeighbors* node.
+        
+        - getter: :class:`nodes.FaceNeighbors`
+        - setter: read only
+        """
+        
+        return self.neighbors.get_datasocket(1)
         
     @property
     def area(self):
-        """ <field GeometryNodeInputMeshFaceArea>
+        """ Area attribute
         
-        Property
-        
-        Returns
-        -------
+        Returns:
             Float
+
+        - getter: :class:`nodes.FaceArea`
+        - setter: read only
+        
         """
-        if self.area_ is None:
-            self.area_ = field.Area(self)
-        return self.area_.node_socket
+        
+        return self.attribute(nodes.FaceArea()).get_datasocket(0)
+        
     
     def is_planar(self, threshold=None):
-        """ <field GeometryNodeInputMeshFaceIsPlanar>
+        """ Attribute is_planar
         
-        Method
-        
-        Arguments
-        ---------
-            - threshold : Float
-        
-        Returns
-        -------
+        Args:
+            threshold: Float
+            
+        Returns:
             Boolean
+            
+        - getter: :class:`nodes.FaceIsPlanar`
+        - setter: read only
         """
         
-        return field.IsPlanar(threshold=threshold).node_socket
+        return self.attribute(nodes.FaceIsPlanar(threshold=threshold)).get_datasocket(0)
 
     @property
     def shade_smooth(self):
-        if self.shade_smooth_ is None:
-            self.shade_smooth_ = field.ShadeSmooth(self)
-        return self.shade_smooth_.input_node.node_socket
+        """ Area attribute
+        
+        Returns:
+            Boolean
+
+        - getter: :class:`nodes.IsShadeSmooth`
+        - setter: :class:`nodes.SetShadeSmooth`
+        """
+
+        return self.attribute(nodes.IsShadeSmooth()).get_datasocket(0)
     
     @shade_smooth.setter
     def shade_smooth(self, value):
-        if self.shade_smooth_ is None:
-            self.shade_smooth_ = field.ShadeSmooth(self)
-        self.shade_smooth_.set_value(value)
         
-    @property
-    def island_index(self):
-        if self.island_ is None:
-            self.island_ = field.Island(self)
-        self.shade_smooth_.get_datasocket(0)
-        
-    @property
-    def island_count(self):
-        if self.island_ is None:
-            self.island_ = field.Island(self)
-        self.shade_smooth_.get_datasocket(1)
+        self.stack(nodes.SetShadeSmooth(self.data_socket, selection=self.selection, shade_smooth=value))
+
         
     @property
     def material_index(self):
-        """ <field GeometryNodeInputMaterialIndex>
+        """ Material index attribute
         
-        Property getter
-        
-        Returns
-        -------
+        Returns:
             Integer
+
+        - getter: :class:`nodes.MaterialIndex`
+        - setter: :class:`nodes.SetMaterialIndex`
         """
-        if self.material_index_ is None:
-            self.material_index_ = field.MaterialIndex(self)
-        return self.material_index_.node_socket
+        
+        return self.attribute(nodes.MaterialIndex()).get_datasocket(0)
+        
     
     @material_index.setter
     def material_index(self, value):
-        """ <field GeometryNodeSetMaterialIndex>
         
-        Property setter
-        """
-        if self.material_index_ is None:
-            self.material_index_ = field.MaterialIndex(self)
-        self.material_index_.set_value(value)
+        self.stack(nodes.SetMaterialIndex(self.data_socket, selection=self.selection, material_index=value))
+        
         
     def set_material(self, material):
-        """ > Set a material on the faces
+        """ Material attribute
         
-        <blid GeometryNodeSetMaterial>
+        Args:
+            material (str or bpy.types.Material): The material to set
         
-        Arguments
-        ---------
-            - material : material of material name
-        
-        Example
-        -------
-        ```python
-        mesh.faces.set_material(...)
-        ```
+        - setter: :class:`nodes.SetMaterial`
         """
-        return self.stack(nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=material))
+        
+        import bpy
+        if isinstance(material, str):
+            mat = bpy.data.materials.get(material)
+            if mat is None:
+                raise Exception(f"Face.material: material {material} not found.")
+        else:
+            mat = material
+        
+        return self.stack(nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=mat))
     
     @property
     def material(self):
+        """ Material attribute
+        
+        - getter: write only
+        - setter: :class:`nodes.SetMaterial`
+        """
+        
         raise Exception(f"Face.material is a write only property")
         
     @material.setter
@@ -1125,19 +1261,26 @@ class Face(Domain, MeshInterface, PEFInterface):
         self.set_material(value)
     
     def material_selection(self, material=None):
-        """ <field GeometryNodeMaterialSelection>
+        """ Material selection attribule
         
-        Method
+        Args:
+            material (str or bpy.types.Material): The material to select
         
-        Arguments
-        ---------
-            - material : Material or str (material name)
-        
-        Returns
-        -------
+        Returns:
             Boolean
+
+        - getter: :class:`nodes.MaterialSelection`
         """
-        return field.MaterialSelection(self, material=material).node_socket
+        
+        import bpy
+        if isinstance(material, str):
+            mat = bpy.data.materials.get(material)
+            if mat is None:
+                raise Exception(f"Face.material: material {material} not found.")
+        else:
+            mat = material
+        
+        return self.attribute(nodes.MaterialSelection(mat)).get_datasocket(0)
     
     # ====================================================================================================
     # Methods
@@ -1226,150 +1369,105 @@ class Edge(Domain, MeshInterface, PEFInterface):
     def __init__(self, data_socket, selection=None):
         super().__init__(data_socket, domain='EDGE', selection=selection)
         
-    def init_cache(self):
-        super().init_cache()
-
-        self.init_mesh_cache()
-        self.init_PEF_cache()
-        
-        self.neighbors_ = None
-        self.angle_     = None
-        self.vertices_  = None
-        
     @property
     def neighbors_faces(self):
-        """ <field GeometryNodeInputMeshEdgeNeighbors>
+        """ Neighbors (faces count)
         
-        Property
-        
-        Returns
-        -------
+        Returns:
             Integer
-        """
         
-        if self.neighbors_ is None:
-            self.neighbors_ = field.Neighbors(self)
-        return self.neighbors_.input_node.node_socket
+        - getter: :class:`nodes.EdgeNeighbors`
+        - setter: read only
+        """
+        return self.attribute(nodes.EdgeNeighbors()).get_datasocket(0)
+    
+    @property
+    def edge_angle(self):
+        """ Edge angle node
+        
+        Returns:
+            Node *EdgeAngle*
+        
+        - getter: :class:`nodes.EdgeAngle`
+        - setter: read only
+        """
+        return self.attribute(nodes.EdgeAngle())
+    
+    
 
     @property
     def unsigned_angle(self):
-        """ <field GeometryNodeInputMeshEdgeAngle>
+        """ Unsigned angle
         
-        Property
-
-        To get the signed angle, used the property [angle](#angle).
+        Returns:
+            Float: Unsigned output socket of *EdgeAngle*
         
-        Returns
-        -------
-            Float
+        - getter: :class:`nodes.EdgeAngle`
+        - setter: read only
         """
-        if self.angle_ is None:
-            self.angle_ = field.Angle(self)
-        return self.angle_.get_datasocket(0)
+        
+        return self.edge_angle.unisgned_angle
 
     @property
     def angle(self):
-        """ <field GeometryNodeInputMeshEdgeAngle>
+        """ Signed angle
         
-        Property
+        Returns:
+            Float: Signed output socket of *EdgeAngle*
         
-        To get the unsigned angle, used the property [unsigned_angle](#unsigned_angle).
-        
-        Returns
-        -------
-            Float
+        - getter: :class:`nodes.EdgeAngle`
+        - setter: read only
         """
-        if self.angle_ is None:
-            self.angle_ = field.Angle(self)
-        return self.angle_.get_datasocket(1)
+        
+        return self.edge_angle.signed_angle
     
     @property
-    def vertices_index_1(self):
-        """ <field GeometryNodeInputMeshEdgeVertices>
+    def vertices(self):
+        """ EdgeVertices node
         
-        Property
+        Returns:
+            Node *EdgeVertices*
+            
+        Output sockets:
+            - vertex_index_1 : Integer
+            - vertex_index_2 : Integer
+            - position_1 : Vector
+            - position_2 : Vector
+        
+        - getter: :class:`nodes.EdgeVertices`
+        - setter: read only
+        """
+        
+        return self.attribute(nodes.EdgeAngle())
+    
+    @property
+    def vertex_index(self):
+        """ The indices of the vertices composing the edge
+        
+        Returns:
+            (Integer, Integer)
+        
+        - getter: :class:`nodes.EdgeVertices`
+        - setter: read only
+        """
+        
+        node = self.vertces
+        return node.vertex_index_1, node.vertex_index_2
+    
+    @property
+    def vertex_position(self):
+        """ The position of the vertices composing the edge
+        
+        Returns:
+            (Float, Float)
+        
+        - getter: :class:`nodes.EdgeVertices`
+        - setter: read only
+        """
+        
+        node = self.vertces
+        return node.position_1, node.position_2
 
-        Sockets can be access individually via:
-            
-        - [vertices_index_1](#vertices_index_1)
-        - [vertices_index_2](#vertices_index_2)
-        - [vertices_position_1](#vertices_position_1)
-        - [vertices_position_2](#vertices_position_2)
-        
-        Returns
-        -------
-            Integer
-        """
-        if self.vertices_ is None:
-            self.vertices_ = field.EdgeVertices(self)
-        self.vertices.get_datasocket(0)
-    
-    @property
-    def vertices_index_2(self):
-        """ <field GeometryNodeInputMeshEdgeVertices>
-        
-        Property
-        
-        Sockets can be access individually via:
-            
-        - [vertices_index_1](#vertices_index_1)
-        - [vertices_index_2](#vertices_index_2)
-        - [vertices_position_1](#vertices_position_1)
-        - [vertices_position_2](#vertices_position_2)
-        
-        
-        Returns
-        -------
-            Integer
-        """
-        if self.vertices_ is None:
-            self.vertices_ = field.EdgeVertices(self)
-        self.vertices.get_datasocket(1)
-    
-    @property
-    def vertices_position_1(self):
-        """ <field GeometryNodeInputMeshEdgeVertices>
-        
-        Property
-        
-        Sockets can be access individually via:
-            
-        - [vertices_index_1](#vertices_index_1)
-        - [vertices_index_2](#vertices_index_2)
-        - [vertices_position_1](#vertices_position_1)
-        - [vertices_position_2](#vertices_position_2)
-        
-        
-        Returns
-        -------
-            Integer
-        """
-        if self.vertices_ is None:
-            self.vertices_ = field.EdgeVertices(self)
-        self.vertices.get_datasocket(2)
-    
-    @property
-    def vertices_position_2(self):
-        """ <field GeometryNodeInputMeshEdgeVertices>
-        
-        Property
-        
-        Sockets can be access individually via:
-            
-        - [vertices_index_1](#vertices_index_1)
-        - [vertices_index_2](#vertices_index_2)
-        - [vertices_position_1](#vertices_position_1)
-        - [vertices_position_2](#vertices_position_2)
-        
-        
-        Returns
-        -------
-            Integer
-        """
-        if self.vertices_ is None:
-            self.vertices_ = field.EdgeVertices(self)
-        self.vertices.get_datasocket(2)
-        return self.vertices.position_2
     
     # ====================================================================================================
     # Methods
@@ -1417,11 +1515,6 @@ class Corner(Domain, MeshInterface):
     def __init__(self, data_socket, selection=None):
         super().__init__(data_socket, domain='CORNER', selection=selection)
         
-    def init_cache(self):
-        super().init_cache()
-
-        self.init_mesh_cache()
-        
 # =============================================================================================================================
 # Curve domains
 
@@ -1433,18 +1526,19 @@ class ControlPoint(Domain, PointInterface):
     def __init__(self, data_socket, selection=None):
         super().__init__(data_socket, domain='POINT', selection=selection)
         
-    def init_cache(self):
-        super().init_cache()
-
-        self.init_point_cache()
-        self.handles_ = None
-        
     # ----------------------------------------------------------------------------------------------------
     # Handles
         
     # ----- Handles type
 
     def set_handle_type(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+        """ Set handle type
+        
+        Args:
+            handle_type (str): in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+            mode (set of strs): {'LEFT', 'RIGHT'}
+        """
+        
         stype = handle_type.upper()
         valid_types = ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
         if not stype in valid_types:
@@ -1454,115 +1548,188 @@ class ControlPoint(Domain, PointInterface):
     
     @property
     def handle_type(self):
+        """ Handle type attribute
+        
+        - getter: write only
+        - setter: :class:`nodes.SetHandleType`
+        """
+
         raise Exception(f"'handle_type' is a write only property")
         
     @handle_type.setter
     def handle_type(self, value):
-        """ > Set the handles type
-        
-        <blid GeometryNodeCurveSetHandles>
-
-        Set the type of the left and right handles
-        
-        ```python
-        curve.splines.type = 'BEZIER'
-        curve.points.handle_type = 'FREE'
-        ```
-        """
-        return self.set_handle_type(handle_type=value, mode={'LEFT', 'RIGHT'})
+        self.set_handle_type(handle_type=value, mode={'LEFT', 'RIGHT'})
         
     @property
     def left_type(self):
+        """ Left handle type attribute
+        
+        - getter: write only
+        - setter: :class:`nodes.SetHandleType`
+        """
+
         raise Exception(f"'left_type' is a write only property")
         
     @left_type.setter
     def left_type(self, value):
-        """ > Set the left handles type
-        
-        <blid GeometryNodeCurveSetHandles>
-
-        Set the type of the left handles
-        
-        ```python
-        curve.splines.type = 'BEZIER'
-        curve.points.left_type = 'FREE'
-        ```
-        """
         return self.set_handle_type(handle_type=value, mode={'LEFT'})
         
     @property
     def right_type(self):
-        raise Exception(f"'handles_type' is a write only property")
+        """ Left handle type attribute
+        
+        - getter: write only
+        - setter: :class:`nodes.SetHandleType`
+        """
+        
+        raise Exception(f"'right_type' is a write only property")
         
     @right_type.setter
     def right_type(self, value):
-        """ > Set the right handles type
-        
-        <blid GeometryNodeCurveSetHandles>
-
-        Set the type of the right handles
-        
-        ```python
-        curve.splines.type = 'BEZIER'
-        curve.points.right_type = 'FREE'
-        ```
-        """
         return self.set_handle_type(handle_type=value, mode={'RIGHT'})
 
     # ----- Handles position / offset
     
-    def handles(self, relative=None, mode={'LEFT', 'RIGHT'}):
-        return field.HandlePositions(self, relative=relative, mode=mode)
-            
-    def lefts(self, relative=None):
-        return self.handles(relative=relative, mode={'LEFT'})
-            
-    def rights(self, relative=None):
-        return self.handles(relative=relative, mode={'RIGHT'})
-            
-    @property
-    def left(self):
-        vector = self.handles().left
+    def handle_positions(self, relative=None):
+        """ Handle positions node
         
-        # ----- Hack to implemenet += in offset
+        Args:
+            relative (Boolean): relative
+            
+        Returns:
+            node CurveHandlePositions
+            
+        Output sockets:
+            - left : Vector
+            - right : Vector
+        """
+        return self.attribute(nodes.CurveHandlePositions(relative=relative))
+    
+    def set_handle_positions(self, position=None, offset=None, mode='LEFT'):
+        """ Set handle positions
         
-        vector.point_domain = self
-        vector.is_handle    = True
+        Args:
+            position (Vector): Positions
+            offset (Vector): Offset
+            mode (str): 'LEFT' or 'RIGHT'
+
+        - setter: :class:`nodes.SetHandlePositions`
+        """
+        
+        self.stack(nodes.SetHandlePositions(curve=self.data_socket, selection=self.selection, position=position, offset=offset, mode=mode))
+        
+        
+    def left_handles(self, relative=None):
+        """ Left handle positions
+        
+        Args:
+            relative (Boolean): relative
+            
+        Returns:
+            Vector: the left output socket of node *CurveHandlePositions*
+        """
+        
+        vector = self.handle_positions(relative=relative).left
+        
+        # ----- Hack to implement += in set_offset
+
+        vector.offset_setter = lambda value: self.stack(nodes.SetHandlePositions(self.data_socket, selection=self.selection, offset=value, mode='LEFT'))
+        vector.point_domain  = self
+        
         return vector
     
-    @left.setter
-    def left(self, value):
-        if value is None:
-            return
-        return self.stack(nodes.SetHandlePositions(curve=self.data_socket, selection=self.selection, position=value, mode='LEFT'))
+    def right_handles(self, relative=None):
+        """ Right handle positions
+        
+        Args:
+            relative (Boolean): relative
+            
+        Returns:
+            Vector: the right output socket of node *CurveHandlePositions*
+        """
+        vector = self.handle_positions(relative=relative).left
+        
+        # ----- Hack to implement += in set_offset
 
-    @property
-    def right(self):
-        vector = self.handles().right
+        vector.offset_setter = lambda value: self.stack(nodes.SetHandlePositions(self.data_socket, selection=self.selection, offset=value, mode='RIGHT'))
+        vector.point_domain  = self
         
-        # ----- Hack to implemenet += in offset
-        
-        vector.point_domain = self
-        vector.is_handle    = True
         return vector
-
-    @right.setter
-    def right(self, value):
-        if value is None:
-            return
-        return self.stack(nodes.SetHandlePositions(curve=self.data_socket, selection=self.selection, position=value, mode='RIGHT'))
-
-    @property
-    def relative_left(self):
-        return self.handles(relative=True).left
     
     @property
-    def relative_right(self):
-        return self.handles(relative=True).right
+    def left_handle_positions(self):
+        """ Right handle positions, write only
+        
+        - getter: read only
+        - setter: :class:`nodes.SetHandlePositions`
+        """
+        
+        raise Exception(f"left_handle_positions is write only. Use left_handles(relative: Boolean) to get the positions of left handles")
+    
+    @left_handle_positions.setter
+    def left_handle_positions(self, value):
+        return self.set_handle_positions(position=value, mode='LEFT')
+    
+        
+    @property
+    def right_handle_positions(self):
+        """ Right handle positions, write only
+        
+        - getter: write only
+        - setter: :class:`nodes.SetHandlePositions`
+        """
+        
+        raise Exception(f"right_handle_positions is write only. Use right_handles(relative: Boolean) to get the positions of right handles")
+    
+    @right_handle_positions.setter
+    def right_handle_positions(self, value):
+        return self.set_handle_positions(position=value, mode='RIGHT')
+    
+    @property
+    def left_handle_offsets(self):
+        """ Left handle offsets, write only
+        
+        - getter: write only
+        - setter: :class:`nodes.SetHandlePositions`
+        """
+        
+        raise Exception(f"left_handle_offsets is write only. Use left_handles(relative: Boolean) to get the positions of left handles")
+    
+    @left_handle_offsets.setter
+    def left_handle_offsets(self, value):
+        return self.set_handle_positions(offset=value, mode='LEFT')
+    
+    @property
+    def right_handle_offsets(self):
+        """ Right handle offsets, write only
+        
+        - getter: write only
+        - setter: :class:`nodes.SetHandlePositions`
+        """
+        
+        raise Exception(f"right_handle_offsets is write only. Use right_handles(relative: Boolean) to get the positions of right handles")
+    
+    @right_handle_offsets.setter
+    def right_handle_offsets(self, value):
+        return self.set_handle_positions(offset=value, mode='RIGHT')
+    
 
     # ----- Handle selection
     
     def handles_selection(self, handle_type='AUTO', left=True, right=True):
+        """ Handle type selection
+        
+        Args:
+            handle_type (str): in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+            left (bool): select left handle
+            right (bool): select right handle
+            
+        Returns:
+            Boolean
+            
+        getter: :class:`nodes.HandleTypeSelection`
+        """
+        
         mode = set()
         if left:  mode.add('LEFT')
         if right: mode.add('RIGHT')
@@ -1571,113 +1738,140 @@ class ControlPoint(Domain, PointInterface):
         stype = handle_type.upper()
         if stype not in valids:
             raise Exception(f"Points.handles: the handle type '{handle_type}' is not valid. It should be in {valids}.")
-        
-        return field.HandleTypeSelection(self, handle_type=handle_type, mode=mode).node_socket
+            
+        return self.attribute(nodes.HandleTypeSelection(handle_type=stype, mode=mode)).get_datasocket(0)
     
     @property
     def handle_auto(self):
+        """ Auto Handle selection
+            
+        Returns:
+            Boolean
+            
+        getter: :class:`nodes.HandleTypeSelection`
+        """
         return self.handles_selection(handle_type='AUTO')
     
     @property
     def handle_free(self):
+        """ Free Handle selection
+            
+        Returns:
+            Boolean
+            
+        getter: :class:`nodes.HandleTypeSelection`
+        """
         return self.handles_selection(handle_type='FREE')
     
     @property
     def handle_vector(self):
+        """ Vector Handle selection
+            
+        Returns:
+            Boolean
+            
+        getter: :class:`nodes.HandleTypeSelection`
+        """
         return self.handles_selection(handle_type='VECTOR')
     
     @property
     def handle_align(self):
+        """ Align Handle selection
+            
+        Returns:
+            Boolean
+            
+        getter: :class:`nodes.HandleTypeSelection`
+        """
         return self.handles_selection(handle_type='ALIGN')
     
     @property
     def left_handle_auto(self):
+        """ Left Auto Handle selection
+            
+        Returns:
+            Boolean
+            
+        getter: :class:`nodes.HandleTypeSelection`
+        """
         return self.handles_selection(handle_type='AUTO', right=False)
     
     @property
     def right_handle_auto(self):
+        """ Right Auto Handle selection
+            
+        Returns:
+            Boolean
+            
+        getter: :class:`nodes.HandleTypeSelection`
+        """
         return self.handles_selection(handle_type='AUTO', left=False)
     
     @property
     def left_handle_free(self):
+        """ Left Free Handle selection
+            
+        Returns:
+            Boolean
+            
+        getter: :class:`nodes.HandleTypeSelection`
+        """
         return self.handles_selection(handle_type='FREE', right=False)
     
     @property
     def right_handle_free(self):
+        """ Right Free Handle selection
+            
+        Returns:
+            Boolean
+            
+        getter: :class:`nodes.HandleTypeSelection`
+        """
         return self.handles_selection(handle_type='FREE', left=False)
     
     @property
     def left_handle_vector(self):
+        """ Left Vector Handle selection
+            
+        Returns:
+            Boolean
+            
+        getter: :class:`nodes.HandleTypeSelection`
+        """
         return self.handles_selection(handle_type='VECTOR', right=False)
     
     @property
     def right_handle_vector(self):
+        """ Right Vector Handle selection
+            
+        Returns:
+            Boolean
+            
+        getter: :class:`nodes.HandleTypeSelection`
+        """
         return self.handles_selection(handle_type='VECTOR', left=False)
     
     @property
     def left_handle_align(self):
+        """ Left Align Handle selection
+            
+        Returns:
+            Boolean
+            
+        getter: :class:`nodes.HandleTypeSelection`
+        """
         return self.handles_selection(handle_type='ALIGN', right=False)
     
     @property
     def right_handle_align(self):
-        return self.handles_selection(handle_type='ALIGN', left=False)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        """ Right Align Handle selection
             
-
-
-
-
-
-
-
-
-
-
-
-    
-    @property
-    def left_offset(self):
-        return Node.Vector(0)
-    
-    @left_offset.setter
-    def left_offset(self, value):
-        """ > Property Handle offset setter
-        
-        <blid GeometryNodeSetCurveHandlePositions>
-        
-        Arguments
-        ---------
-            - value: Vector
+        Returns:
+            Boolean
+            
+        getter: :class:`nodes.HandleTypeSelection`
         """
-        return self.stack(nodes.SetHandlePositions(curve=self.data_socket, selection=self.selection, offset=value, mode='LEFT'))
-    
-    @property
-    def right_offset(self):
-        return Node.Vector(0)
-    
-    @right_offset.setter
-    def right_offset(self, value):
-        """ > Property Handle offset setter
-        
-        <blid GeometryNodeSetCurveHandlePositions>
-        
-        Arguments
-        ---------
-            - value: Vector
-        """
-        return self.stack(nodes.SetHandlePositions(curve=self.data_socket, selection=self.selection, offset=value, mode='RIGHT'))
-    
-
+        return self.handles_selection(handle_type='ALIGN', left=False)
     
 # ----------------------------------------------------------------------------------------------------
 # Spline
@@ -1687,424 +1881,215 @@ class Spline(Domain):
     def __init__(self, data_socket, selection=None):
         super().__init__(data_socket, domain='CURVE', selection=selection)
         
-    def init_cache(self):
-        super().init_cache()
-        
-        self.radius_     = None
-        self.tilt_       = None
-        self.cylic_      = None
-        self.tangent_    = None
-        self.length_     = None
-        self.parameter_  = None
-        self.resolution_ = None
-        
     @property
     def radius(self):
-        if self.radius_ is None:
-            self.radius_ = field.Radius(self)
-        return self.radius_.node_socket
+        """ Radius attribute
+        
+        Returns:
+            Float
+            
+        getter: :class:`nodes.Radius`
+        setter: :class: `nodes.SetCurveRadius`
+        """
+        return self.attribute(nodes.Radius()).get_datasocket(0)
     
     @radius.setter
     def radius(self, value):
-        if self.radius_ is None:
-            self.radius_ = field.Radius(self)
-        self.radius_.set_value(value)
-        
+        self.stack(nodes.SetCurveRadius(curve=self.data_socket, selection=self.selection, radius=value))
         
     @property
     def tilt(self):
-        """ <field GeometryNodeInputCurveTilt>
+        """ Tilt attribute
         
-        Property
-        
-        Returns
-        -------
+        Returns:
             Float
+            
+        getter: :class:`nodes.CurveTilt`
+        setter: :class: `nodes.SetCurveTilt`
         """
-        if self.tilt_ is None:
-            self.tilt_ = field.Tilt(self)
-        return self.tilt_.node_socket
+        return self.attribute(nodes.CurveTilt()).get_datasocket(0)
     
     @tilt.setter
     def tilt(self, value):
-        """ <field GeometryNodeSetCurveTilt>
-        """
-        if self.tilt_ is None:
-            self.tilt_ = field.Tilt(self)
-        self.tilt_.set_value(value)
+        self.stack(nodes.SetCurveTilt(curve=self.data_socket, selection=self.selection, tilt=value))
     
     @property
     def cyclic(self):
-        """ <field GeometryNodeInputSplineCyclic>
+        """ Cylic attribute
         
-        Property
-        
-        Returns
+        Returns:
             Boolean
+            
+        getter: :class:`nodes.IsSplineCyclic`
+        setter: :class: `nodes.SetSplineCyclic`
         """
-        if self.cylic_ is None:
-            self.cylic_ = field.Tilt(self)
-        return self.cylic_.input_node.node_socket
+        return self.attribute(nodes.IsSplineCyclic()).get_datasocket(0)
     
     @cyclic.setter
     def cyclic(self, value):
-        """ <field GeometryNodeSetSplineCyclic>
-        """
-        if self.cylic_ is None:
-            self.cylic_ = field.Tilt(self)
-        self.cylic_.set_value(value)
+        self.stack(nodes.SetSplineCyclic(geometry=self.data_socket, selection=self.selection, cyclic=value))
         
     @property
     def tangent(self):
-        """ <field GeometryNodeInputTangent>
+        """ Tangent attribute
         
-        Property
-        
-        Returns
-        -------
+        Returns:
             Vector
+            
+        getter: :class:`nodes.CurveTangent`
+        setter: read only
         """
-        if self.tangent_ is None:
-            self.tangent_ = field.CurveTangent(self)
-        return self.tangent_.node_socket
+        return self.attribute(nodes.CurveTangent()).get_datasocket(0)
+    
+    @property
+    def spline_length(self):
+        """ spline_length attribute
+        
+        Returns:
+            node SplineLength
+            
+        Output sockets:
+            - length : Float
+            - point_count : Integer
+            
+        getter: :class:`nodes.SplineLength`
+        setter: read only
+        """
+        return self.attribute(nodes.SplineLength())
     
     @property
     def length(self):
-        """ <field GeometryNodeSplineLength>
+        """ Length attribute
         
-        Property
-        
-        - **length: Float**
-        - _point_count: Integer_
-        
-        Returns
-        -------
-            Float
-        """                
-        if self.length_ is None:
-            self.length_ = field.SplineLength(self)
-        return self.length_.get_datasocket(0)
+        Returns:
+            Float: length socket of spline_length
+            
+        getter: :class:`nodes.SplineLength`
+        setter: read only
+        """
+        return self.spline_length.length
+    
     
     @property
     def point_count(self):
-        """ <field GeometryNodeSplineLength>
+        """ Point count attribute
         
-        Property
+        Returns:
+            Integer: point_count socket of spline_length
+            
+        getter: :class:`nodes.SplineLength`
+        setter: read only
+        """
+        return self.spline_length.point_count
+    
+    @property
+    def parameter(self):
+        """ Spline parameter attribute
         
-        - _length : Float_
-        - **point_count : Integer**
-                                       
-        Returns
-        -------
-            Integer
-        """                
-        if self.length_ is None:
-            self.length_ = field.SplineLength(self)
-        return self.length_.get_datasocket(1)
+        Returns:
+            Node SplineParameter
+            
+        Output sockets:
+            - factor : Float
+            - length : Float
+            - index : Integer
+            
+        getter: :class:`nodes.SplineParameter`
+        setter: read only
+        """        
+        return self.attribute(nodes.SplineParameter())
+    
     
     @property
     def parameter_factor(self):
-        """ <field GeometryNodeSplineParameter>
+        """ Parameter factor attribute
         
-        Property
-        
-        - **factor : Float**
-        - _length  : Float_
-        - _index : Integer_
-                                       
-        Returns
-        -------
-            Float
-        """                
-        if self.parameter_ is None:
-            self.parameter_ = field.SplineParameter(self)
-        return self.parameter_.get_datasocket(0)
+        Returns:
+            Float: factor socket of parameter
+            
+        getter: :class:`nodes.SplineParameter`
+        setter: read only
+        """
+        return self.parameter.factor
         
     @property
     def parameter_length(self):
-        """ <field GeometryNodeSplineParameter>
+        """ Parameter length attribute
         
-        Property
-        
-        - _factor : Float_
-        - **length  : Float**
-        - _index : Integer_
-                                       
-        Returns
-        -------
-            Float
-        """                
-        if self.parameter_ is None:
-            self.parameter_ = field.SplineParameter(self)
-        return self.parameter_.get_datasocket(1)
+        Returns:
+            Float: length socket of parameter
+            
+        getter: :class:`nodes.SplineParameter`
+        setter: read only
+        """
+        return self.parameter.length
         
     @property
     def parameter_index(self):
-        """ <field GeometryNodeSplineParameter>
+        """ Parameter factor attribute
         
-        Property
-        
-        - _factor : Float_
-        - _length  : Float**
-        - **index : Integer_
-                                       
-        Returns
-        -------
-            Integer
-        """                
-        if self.parameter_ is None:
-            self.parameter_ = field.SplineParameter(self)
-        return self.parameter_.get_datasocket(2)
+        Returns:
+            Integer: index socket of parameter
+            
+        getter: :class:`nodes.SplineParameter`
+        setter: read only
+        """
+        return self.parameter.index
     
     @property
     def resolution(self):
-        """ <field GeometryNodeInputSplineResolution>
+        """ Resolution attribute
         
-        Property
-        
-        Returns
+        Returns:
             Integer
+            
+        getter: :class:`nodes.SplineResolution`
+        setter: :class: `nodes.SetSplineResolution`
         """
-        if self.resolution_ is None:
-            self.resolution_ = field.SplineResolution(self)
-        return self.resolution_.node_socket
+        return self.attribute(nodes.SplineResolution()).get_datasocket(0)
     
     @resolution.setter
     def resolution(self, value):
-        """ <field GeometryNodeSetSplineResolution>
-        """
-        if self.resolution_ is None:
-            self.resolution_ = field.SplineResolution(self)
-        return self.resolution_.set_value(value)
-    
+        self.stack(nodes.SetSplineResolution(elf.data_socket, selection=self.selection, cyclic=value))
     
     def endpoint_selection(self, start_size=None, end_size=None):
-        """ <field GeometryNodeCurveEndpointSelection>
+        """ End point selection
         
-        Method
-        
-        Arguments
-        ---------
+        Args:
             - start_size : Integer
             - end_size : Integer
         
         Returns
         -------
             Float
+            
+        getter: :class:`nodes.EndpointSelection`
         """
-        return field.EndpointSelection(self, start_size=start_size, end_size=end_size).input_node.node_socket
+        return self.attribute(nodes.EndpointSelection(start_size=start_size, end_size=end_size)).get_datasocket(0)
     
     @property
     def type(self):
+        """ Parameter factor attribute
+        
+        Returns:
+            Float: factor socket of parameter
+            
+        type in ('BEZIER', 'NURBS', 'POLY')
+            
+        getter: write only
+        setter: :class:`nodes.SetSplineType`
+        """
+        
         raise Exception(f"'splines.type' property is write only")
     
     @type.setter
     def type(self, value):
-        """ > Set the spline type
-        
-        <blid GeometryNodeCurveSplineType>
-        
-        """
         valids = ('BEZIER', 'NURBS', 'POLY')
         stype = value.upper()
         if not stype in valids:
             raise Exception(f"{value}' is not a valide splien type. Valide spline types are {valids}")
             
         return self.stack(nodes.SetSplineType(curve=self.data_socket, selection=self.selection, spline_type=stype))
-        
-    def handle_positions(self, relative=None):
-        """ <field GeometryNodeInputCurveHandlePositions>
-        
-        Method
-        
-        Arguments
-        ---------
-            - relative : Boolean
-        
-        Returns
-        -------
-            Node with two sockets : left and right
-        """
-        return field.HandlePositions(relative=relative).input_node
-    
-    def set_handle_positions(self, position=None, offset=None, mode={'LEFT', 'RIGHT'}):
-        """ <field GeometryNodeSetCurveHandlePositions>
-        
-        Methodes set_left_handle_positions and set_right_handle_positions are available
-        """
-        return field.HandlePositions(relative=relative).set_position(position=position, offset=offset, mode=mode)
-        
-    def set_left_handle_positions(self, position=None, offset=None):
-        """ <field GeometryNodeSetCurveHandlePositions>
-        
-        Methodes set_left_handle_positions and set_right_handle_positions are available
-        """
-        self.set_handle_position(position=position, offset=offset, mode='LEFT')
-        
-    def set_right_handle_positions(self, position=None, offset=None):
-        """ <field GeometryNodeSetCurveHandlePositions>
-        
-        Methodes set_left_handle_positions and set_right_handle_positions are available
-        """
-        self.set_handle_position(position=position, offset=offset, mode='RIGHT')
-        
-    def handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
-        """ <field GeometryNodeCurveHandleTypeSelection>
-        
-        Method
-        
-        The values of the two parameters are declined in 2 methods:
-        - [left_handle_selection](#left_handle_selection)
-        - [right_handle_selection](#right_handle_selection)
-                                       
-        and 8 properties:
-        - [left_handle_free](#left_handle_free)
-        - [left_handle_vector](#left_handle_vector)
-        - [left_handle_vector](#left_handle_vector)
-        - [left_handle_align](#left_handle_align)
-        - [right_handle_free](#right_handle_free)
-        - [right_handle_auto](#right_handle_auto)
-        - [right_handle_vector](#right_handle_vector)
-        - [right_handle_align](#right_handle_align)
-        
-        Arguments
-        ---------
-            - handle_type : str in 'AUTO', 'FREE', 'VECTOR', 'ALIGN'
-            - mode : str in ['RIGHT', 'LEFT'] or set {'RIGHT', 'LEFT'}
-        
-        Returns
-        -------
-            Boolean
-        """
-        return field.HandleTypeSelection(handle_type=handle_type, mode=mode).node_socket
-    
-    def left_handle_selection(self, handle_type='AUTO'):
-        """ <field GeometryNodeCurveHandleTypeSelection>
-        
-        Method
-        
-        See [handle_type_selection](#handle_type_selection)
-                                    
-        Returns
-            Boolean
-        """
-        return self.handle_type_selection(handle_type=handle_type, mode='LEFT')
-
-    def right_handle_selection(self, handle_type='AUTO'):
-        """ <field GeometryNodeCurveHandleTypeSelection>
-        
-        Method
-        
-        See [handle_type_selection](#handle_type_selection)
-                                    
-        Returns
-            Boolean
-        """
-        return self.handle_type_selection(handle_type=handle_type, mode='RIGHT')
-    
-    @property
-    def left_handle_free(self):
-        """ <field GeometryNodeCurveHandleTypeSelection>
-        
-        Property
-        
-        See [handle_type_selection](#handle_type_selection)
-                                    
-        Returns
-            Boolean
-        """
-        return self.left_handle_selection(handle_type='FREE')
-    
-    @property
-    def left_handle_auto(self):
-        """ <field GeometryNodeCurveHandleTypeSelection>
-        
-        Property
-        
-        See [handle_type_selection](#handle_type_selection)
-                                    
-        Returns
-            Boolean
-        """
-        return self.left_handle_selection(handle_type='AUTO')
-    
-    @property
-    def left_handle_vector(self):
-        """ <field GeometryNodeCurveHandleTypeSelection>
-        
-        Property
-        
-        See [handle_type_selection](#handle_type_selection)
-                                    
-        Returns
-            Boolean
-        """
-        return self.left_handle_selection(handle_type='VECTOR')
-    
-    @property
-    def left_handle_align(self):
-        """ <field GeometryNodeCurveHandleTypeSelection>
-        
-        Property
-        
-        See [handle_type_selection](#handle_type_selection)
-                                    
-        Returns
-            Boolean
-        """
-        return self.left_handle_selection(handle_type='ALIGN')
-    
-    @property
-    def right_handle_free(self):
-        """ <field GeometryNodeCurveHandleTypeSelection>
-        
-        Property
-        
-        See [handle_type_selection](#handle_type_selection)
-                                    
-        Returns
-            Boolean
-        """
-        return self.left_handle_selection(handle_type='FREE')
-    
-    @property
-    def right_handle_auto(self):
-        """ <field GeometryNodeCurveHandleTypeSelection>
-        
-        Property
-        
-        See [handle_type_selection](#handle_type_selection)
-                                    
-        Returns
-            Boolean
-        """
-        return self.left_handle_selection(handle_type='AUTO')
-    
-    @property
-    def right_handle_vector(self):
-        """ <field GeometryNodeCurveHandleTypeSelection>
-        
-        Property
-        
-        See [handle_type_selection](#handle_type_selection)
-                                    
-        Returns
-            Boolean
-        """
-        return self.left_handle_selection(handle_type='VECTOR')
-    
-    @property
-    def right_handle_align(self):
-        """ <field GeometryNodeCurveHandleTypeSelection>
-        
-        Property
-        
-        See [handle_type_selection](#handle_type_selection)
-                                    
-        Returns
-            Boolean
-        """
-        return self.left_handle_selection(handle_type='ALIGN')
     
     # ====================================================================================================
     # Methods
@@ -2129,24 +2114,21 @@ class CloudPoint(Domain, PointInterface):
     def __init__(self, data_socket, selection=None):
         super().__init__(data_socket, domain='POINT', selection=selection)
         
-    def init_cache(self):
-        super().init_cache()
-
-        self.init_point_cache()
-        
-        self.radius_ = None
-        
     @property
     def radius(self):
-        if self.radius_ is None:
-            self.radius_ = field.Radius(self)
-        return self.radius_.node_socket
+        """ Radius attribute
+        
+        Returns:
+            Float
+            
+        getter: :class:`nodes.Radius`
+        setter: :class: `nodes.SetPointRadius`
+        """
+        return self.attribute(nodes.Radius()).get_datasocket(0)
     
     @radius.setter
     def radius(self, value):
-        if self.radius_ is None:
-            self.radius_ = field.Radius(self)
-        self.radius_.set_value(value)
+        self.stack(nodes.SetPointRadius(self.data_socket, selection=self.selection, radius=value))
         
     # ====================================================================================================
     # Methods
