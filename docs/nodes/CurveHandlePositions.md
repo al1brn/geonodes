@@ -31,11 +31,3 @@ node = nodes.CurveHandlePositions(relative=None, label=None, node_color=None)
 
 - left : Vector
 - right : Vector
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Spline](/docs/Spline.md).[handle_positions](/docs/Spline.md#handle_positions) : Fields
-  

@@ -39,5 +39,4 @@ node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None, label=N
   
   
 - [Curve](/docs/sockets/Curve.md).[set_cyclic](/docs/sockets/Curve.md#set_cyclic) : Method
-- [Spline](/docs/Spline.md).[cyclic](/docs/Spline.md#cyclic) : Fields
   

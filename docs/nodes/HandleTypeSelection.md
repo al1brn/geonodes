@@ -31,21 +31,3 @@ node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, lab
 ## Output sockets
 
 - selection : Boolean
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Spline](/docs/Spline.md).[handle_type_selection](/docs/Spline.md#handle_type_selection) : Fields
-- [Spline](/docs/Spline.md).[left_handle_align](/docs/Spline.md#left_handle_align) : Fields
-- [Spline](/docs/Spline.md).[left_handle_auto](/docs/Spline.md#left_handle_auto) : Fields
-- [Spline](/docs/Spline.md).[left_handle_free](/docs/Spline.md#left_handle_free) : Fields
-- [Spline](/docs/Spline.md).[left_handle_selection](/docs/Spline.md#left_handle_selection) : Fields
-- [Spline](/docs/Spline.md).[left_handle_vector](/docs/Spline.md#left_handle_vector) : Fields
-- [Spline](/docs/Spline.md).[right_handle_align](/docs/Spline.md#right_handle_align) : Fields
-- [Spline](/docs/Spline.md).[right_handle_auto](/docs/Spline.md#right_handle_auto) : Fields
-- [Spline](/docs/Spline.md).[right_handle_free](/docs/Spline.md#right_handle_free) : Fields
-- [Spline](/docs/Spline.md).[right_handle_selection](/docs/Spline.md#right_handle_selection) : Fields
-- [Spline](/docs/Spline.md).[right_handle_vector](/docs/Spline.md#right_handle_vector) : Fields
-  

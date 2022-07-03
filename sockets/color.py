@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-26
+Created on 2022-07-03
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -71,6 +71,7 @@ class Color(dsock.Color):
             - screen : color (Color)
             - soft_light : color (Color)
             - subtract : color (Color)
+            - switch : output (Color)
             - value : color (Color)
     """
 
@@ -419,6 +420,45 @@ class Color(dsock.Color):
         """
 
         return nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_COLOR', mapping=mapping, label=node_label, node_color=node_color)
+
+    def switch(self, switch=None, true=None, node_label = None, node_color = None):
+        """ > Node: Switch
+          
+        <sub>go to: top index
+        blender ref GeometryNodeSwitch
+        node ref Switch </sub>
+                                  
+        ```python
+        v = color.switch(switch, true, node_label = None, node_color = None)
+        ```
+    
+
+        Arguments
+        ---------
+            ## Sockets
+            - false : Color (self)
+            - switch : Boolean
+            - true : Color## Parameters
+            - node_label : None
+            - node_color : None## Fixed parameters
+            - input_type : 'RGBA'
+    
+
+        Node creation
+        -------------
+            ```python
+            from geondes import nodes
+            nodes.Switch(false=self, switch=switch, true=true, input_type='RGBA', label=node_label, node_color=node_color)
+            ```
+    
+
+        Returns
+        -------
+            Color
+            
+        """
+
+        return nodes.Switch(false=self, switch=switch, true=true, input_type='RGBA', label=node_label, node_color=node_color).output
 
     def equal(self, b=None, epsilon=None, node_label = None, node_color = None):
         """ > Node: Compare

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-26
+Created on 2022-07-03
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -1597,7 +1597,7 @@ class Geometry(dsock.Geometry):
             
         """
 
-        return nodes.RemoveNamedAttribute(geometry=self, name=name, label=node_label, node_color=node_color).geometry
+        return self.stack(nodes.RemoveNamedAttribute(geometry=self, name=name, label=node_label, node_color=node_color))
 
     def components(self, selection=None, domain='POINT', node_label = None, node_color = None):
         """ > Node: SeparateGeometry

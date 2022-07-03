@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', label=None, node_color=None)
+node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', type='EULER', label=None, node_color=None)
 ```
 
 
@@ -28,6 +28,7 @@ node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, s
 ### Parameters
 
 - space : str (default = 'OBJECT') in ('OBJECT', 'LOCAL')
+- type : str (default = 'EULER') in ('AXIS_ANGLE', 'EULER')
 
 ### Node label
 
@@ -43,5 +44,6 @@ node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, s
 > Data socket classes implementing this node.
   
   
+- [Vector](/docs/sockets/Vector.md).[RotateEuler](/docs/sockets/Vector.md#rotateeuler) : Constructor
 - [Vector](/docs/sockets/Vector.md).[rotate_euler](/docs/sockets/Vector.md#rotate_euler) : Method
   

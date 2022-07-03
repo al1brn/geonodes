@@ -38,6 +38,5 @@ node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None
 > Data socket classes implementing this node.
   
   
-- [Face](/docs/Face.md).[material_index](/docs/Face.md#material_index) : Fields
 - [Geometry](/docs/sockets/Geometry.md).[set_material_index](/docs/sockets/Geometry.md#set_material_index) : Method
   

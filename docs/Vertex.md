@@ -4,19 +4,43 @@
 vertex: the point domain of meshes
 
 
+## neighbors
+
+Neighbors node
+
+Returns:
+  Node *VertexNeighbors*
+  
+- getter: :class:`nodes.VertexNeighbors`
+- setter: read only
+  
+  
+
 ## neighbors_vertices
 
-> Neighbors vertices
-<blid GeometryNodeInputMeshVertexNeighbors>
+Neighbors vertices attribute
 
-
+Returns:
+  Integer: The output socket *vertices* of the *VertexNeighbors* node.
+  
+- getter: :class:`nodes.VertexNeighbors`
+- setter: read only
+  
+  
+  
 
 ## neighbors_faces
 
-> Neighbors faces
-<blid GeometryNodeInputMeshVertexNeighbors>
+Neighbors faces attribute
 
-
+Returns:
+  Integer: The output socket *faces* of the *VertexNeighbors* node.
+  
+- getter: :class:`nodes.VertexNeighbors`
+- setter: read only
+  
+  
+  
 
 ## merge
 

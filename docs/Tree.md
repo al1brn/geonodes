@@ -300,6 +300,11 @@ Get the current layout for the newly created nodes.
 
 
 
+## custom_group
+
+Custom group
+
+
 ## check_attributes
 
 Check the attributes

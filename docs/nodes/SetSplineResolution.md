@@ -39,5 +39,4 @@ node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None,
   
   
 - [Curve](/docs/sockets/Curve.md).[set_resolution](/docs/sockets/Curve.md#set_resolution) : Method
-- [Spline](/docs/Spline.md).[resolution](/docs/Spline.md#resolution) : Fields
   

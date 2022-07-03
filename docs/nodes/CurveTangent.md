@@ -26,11 +26,3 @@ node = nodes.CurveTangent(label=None, node_color=None)
 ## Output sockets
 
 - tangent : Vector
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Spline](/docs/Spline.md).[tangent](/docs/Spline.md#tangent) : Fields
-  

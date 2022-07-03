@@ -903,8 +903,6 @@ class DataSocket(Socket):
             
             Tree.TREE.btree.links.new(bsocket, out_socket, verify_limits=True)
             
-            #print(out_socket, bsocket, Tree.TREE.group_output.inputs[0].bsocket)
-            
             outs = Tree.TREE.group_output.inputs
                 
             
@@ -995,6 +993,27 @@ class DataSocket(Socket):
             raise Exception(f"{type(self).__name__}.nearest_face_transfer: the socket {self} is not a field.")
         return self.field_of.nearest_face_transfer(attribute=self, source_position=source_position)
             
+
+# =============================================================================================================================
+# Groups
+
+def call_group(name, **kwargs):
+    return Group(name, **kwargs)
+
+class Groups:
+    def __init__(self, prefix=""):
+        self.prefix = "" if prefix == "" else prefix + "_"
+        
+    def __getattr__(self, name):
+        lname = (self.prefix + name).lower()
+        reads = []
+        for tree in bpy.data.node_groups:
+            comp = tree.name.lower().replace(' ', '_')
+            reads.append(comp)
+            if comp == lname:
+                return lambda **kwargs: call_group(tree.name, **kwargs)
+
+        raise Exception(f"Groups: Node group '{self.prefix}{name}' ({lname}) not found in node_groups: {reads}")
     
 
 # =============================================================================================================================
@@ -1530,6 +1549,12 @@ class Tree:
             return None
     
     # ----------------------------------------------------------------------------------------------------
+    # Custom group
+    
+    def call(self, name, **kwargs):
+        return Group(name, **kwargs)
+    
+    # ----------------------------------------------------------------------------------------------------
     # Check attributes
     
     def check_attributes(self):
@@ -1678,8 +1703,6 @@ class Tree:
             # ----- Capture node creation in the proper frame
             
             data_type = DataSocket.SOCKET_IDS[attr_node.bnode.outputs[output_index].bl_idname][2]
-            
-            print("CAPTURE", attr_node.domain)
             
             capt_node = Geometry(attr_node.owning_bsocket).capture_attribute(value=attr_node.outputs[output_index], data_type=data_type, domain=attr_node.domain)
             capt_node.bnode.parent = attr_node.bnode.parent
@@ -2564,7 +2587,7 @@ class Group(CustomGroup):
             index = self.insockets.get(k.lower())
             if index is None:
                 raise AttributeError(f"The node group '{name}' has no input socket named '{k}'.")
-            self.plug(k, v)
+            self.plug(index, v)
 
     
 # ----------------------------------------------------------------------------------------------------
@@ -2607,8 +2630,8 @@ class GroupInput(CustomGroup):
                 
             if not ok:
                 if ok_virtual and len(self.tree.btree.inputs) > 0:
-                    while len(self.tree.btree.inputs) > 0 and self.tree.btree.inputs[0].bl_idname != 'NodeSocketVirtual':
-                        self.tree.btree.inputs[0].remove(0)
+                    while len(self.tree.btree.inputs) > 0 and self.tree.btree.inputs[0].bl_socket_idname != 'NodeSocketVirtual':
+                        self.tree.btree.inputs.remove(self.tree.btree.inputs[0])
                 
                 self.tree.btree.inputs.new(type='NodeSocketGeometry', name="Geometry")
                 self.build_insockets()
@@ -2719,10 +2742,12 @@ class GroupInput(CustomGroup):
             new_input.description = description
             
             self.build_outsockets()
+
+
             
             sc_name = self.snake_case(name)
-            index  = self.outsockets[sc_name]
-            socket = getattr(self, sc_name)
+            index   = self.outsockets[sc_name]
+            socket  = getattr(self, sc_name)
             
             
         # ----- Let's set the value
@@ -2821,11 +2846,13 @@ class GroupOutput(CustomGroup):
                 
             if not ok:
                 if ok_virtual and len(self.tree.btree.outputs) > 0:
-                    while len(self.tree.btree.outputs) > 0 and self.tree.btree.outputs[0].bl_idname != 'NodeSocketVirtual':
-                        self.tree.btree.outputs.remove(0)
+                    while len(self.tree.btree.outputs) > 0 and self.tree.btree.outputs[0].bl_socket_idname != 'NodeSocketVirtual':
+                        self.tree.btree.outputs.remove(self.tree.btree.outputs[0])
                         
                 self.tree.btree.outputs.new(type='NodeSocketGeometry', name="Geometry")
-                self.build_insockets()
+                self.build_outsockets()
+                
+                
         
     # --------------------------------------------------------------------------------
     # Default geometry input node
@@ -2910,7 +2937,7 @@ class GroupOutput(CustomGroup):
         self.build_insockets()
         name = self.snake_case(name)
         
-        index  = self.outsockets[name]
+        index  = self.insockets[name]
         self.plug(index, socket)
         
 # =============================================================================================================================

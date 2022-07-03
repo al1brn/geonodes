@@ -6,141 +6,98 @@ Edge domain
 
 ## neighbors_faces
 
-> Field [EdgeNeighbors](/docs/nodes/EdgeNeighbors.md)
+Neighbors (faces count)
+
+Returns:
+  Integer
   
-Blender menu : **mesh/edge_neighbors**<br>
-<sub>go to [top](#class-edge) [index](/docs/index.md)</sub>
+- getter: :class:`nodes.EdgeNeighbors`
+- setter: read only
+  
+  
 
-  Property
+## edge_angle
 
-### Returns
+Edge angle node
 
-Integer
-
-
-
+Returns:
+  Node *EdgeAngle*
+  
+- getter: :class:`nodes.EdgeAngle`
+- setter: read only
+  
+  
 
 ## unsigned_angle
 
-> Field [EdgeAngle](/docs/nodes/EdgeAngle.md)
+Unsigned angle
+
+Returns:
+  Float: Unsigned output socket of *EdgeAngle*
   
-Blender menu : **mesh/edge_angle**<br>
-<sub>go to [top](#class-edge) [index](/docs/index.md)</sub>
-
-  Property
+- getter: :class:`nodes.EdgeAngle`
+- setter: read only
   
-  To get the signed angle, used the property [angle](#angle).
-
-### Returns
-
-Float
-
-
+  
+  
 
 ## angle
 
-> Field [EdgeAngle](/docs/nodes/EdgeAngle.md)
+Signed angle
+
+Returns:
+  Float: Signed output socket of *EdgeAngle*
   
-Blender menu : **mesh/edge_angle**<br>
-<sub>go to [top](#class-edge) [index](/docs/index.md)</sub>
-
-  Property
+- getter: :class:`nodes.EdgeAngle`
+- setter: read only
   
-  To get the unsigned angle, used the property [unsigned_angle](#unsigned_angle).
-
-### Returns
-
-Float
-
-
-
-## vertices_index_1
-
-> Field [EdgeVertices](/docs/nodes/EdgeVertices.md)
   
-Blender menu : **mesh/edge_vertices**<br>
-<sub>go to [top](#class-edge) [index](/docs/index.md)</sub>
-
-  Property
   
-  Sockets can be access individually via:
+
+## vertices
+
+EdgeVertices node
+
+Returns:
+  Node *EdgeVertices*
   
-  - [vertices_index_1](#vertices_index_1)
-  - [vertices_index_2](#vertices_index_2)
-  - [vertices_position_1](#vertices_position_1)
-  - [vertices_position_2](#vertices_position_2)
-
-### Returns
-
-Integer
-
-
-
-## vertices_index_2
-
-> Field [EdgeVertices](/docs/nodes/EdgeVertices.md)
+Output sockets:
+- vertex_index_1 : Integer
+- vertex_index_2 : Integer
+- position_1 : Vector
+- position_2 : Vector
   
-Blender menu : **mesh/edge_vertices**<br>
-<sub>go to [top](#class-edge) [index](/docs/index.md)</sub>
-
-  Property
+- getter: :class:`nodes.EdgeVertices`
+- setter: read only
   
-  Sockets can be access individually via:
   
-  - [vertices_index_1](#vertices_index_1)
-  - [vertices_index_2](#vertices_index_2)
-  - [vertices_position_1](#vertices_position_1)
-  - [vertices_position_2](#vertices_position_2)
-
-### Returns
-
-Integer
-
-
-
-## vertices_position_1
-
-> Field [EdgeVertices](/docs/nodes/EdgeVertices.md)
   
-Blender menu : **mesh/edge_vertices**<br>
-<sub>go to [top](#class-edge) [index](/docs/index.md)</sub>
 
-  Property
+## vertex_index
+
+The indices of the vertices composing the edge
+
+Returns:
+  (Integer, Integer)
   
-  Sockets can be access individually via:
+- getter: :class:`nodes.EdgeVertices`
+- setter: read only
   
-  - [vertices_index_1](#vertices_index_1)
-  - [vertices_index_2](#vertices_index_2)
-  - [vertices_position_1](#vertices_position_1)
-  - [vertices_position_2](#vertices_position_2)
-
-### Returns
-
-Integer
-
-
-
-## vertices_position_2
-
-> Field [EdgeVertices](/docs/nodes/EdgeVertices.md)
   
-Blender menu : **mesh/edge_vertices**<br>
-<sub>go to [top](#class-edge) [index](/docs/index.md)</sub>
-
-  Property
   
-  Sockets can be access individually via:
+
+## vertex_position
+
+The position of the vertices composing the edge
+
+Returns:
+  (Float, Float)
   
-  - [vertices_index_1](#vertices_index_1)
-  - [vertices_index_2](#vertices_index_2)
-  - [vertices_position_1](#vertices_position_1)
-  - [vertices_position_2](#vertices_position_2)
-
-### Returns
-
-Integer
-
-
+- getter: :class:`nodes.EdgeVertices`
+- setter: read only
+  
+  
+  
 
 ## to_curve
 

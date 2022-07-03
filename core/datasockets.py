@@ -738,6 +738,28 @@ class Vector(DataSocket):
     def __imod__(self, other):
         return self.stack(self.modulo(other).node)
     
+    # ---------------------------------------------------------------------------
+    # Spherical
+    
+    def spherical(self, center=(0, 0, 0)):
+        
+        import geonodes as gn
+        
+        with self.node.tree.layout("Spherical coordinates"):
+        
+            v = self - center
+            rho = v.length()
+    
+            z = v.z
+            v.z = 0
+            r = v.length()
+            
+            theta = v.y.arctan2(v.x)
+            phi   = z.arctan2(r)
+            
+            return gn.Vector((rho, theta, phi))
+    
+    
     
 # -----------------------------------------------------------------------------------------------------------------------------
 # Color

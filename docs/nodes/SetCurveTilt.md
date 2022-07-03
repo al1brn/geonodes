@@ -39,5 +39,4 @@ node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None, label=None, nod
   
   
 - [Curve](/docs/sockets/Curve.md).[set_tilt](/docs/sockets/Curve.md#set_tilt) : Method
-- [Spline](/docs/Spline.md).[tilt](/docs/Spline.md#tilt) : Fields
   

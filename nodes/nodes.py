@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-06-26
+Created on 2022-07-03
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -28,7 +28,7 @@ class AlignEulerToVector(Node):
 
 
     Output sockets:
-        - rotation : Vector
+        - **rotation** : Vector
 
     .. blid:: FunctionNodeAlignEulerToVector
 
@@ -86,7 +86,7 @@ class BooleanMath(Node):
 
 
     Output sockets:
-        - boolean : Boolean
+        - **boolean** : Boolean
 
     .. blid:: FunctionNodeBooleanMath
 
@@ -139,7 +139,7 @@ class Compare(Node):
 
 
     Output sockets:
-        - result : Boolean
+        - **result** : Boolean
 
     Shared sockets:
         - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')
@@ -212,7 +212,7 @@ class FloatToInteger(Node):
 
 
     Output sockets:
-        - integer : Integer
+        - **integer** : Integer
 
     .. blid:: FunctionNodeFloatToInt
 
@@ -257,7 +257,7 @@ class Boolean(Node):
 
 
     Output sockets:
-        - boolean : Boolean
+        - **boolean** : Boolean
 
     .. blid:: FunctionNodeInputBool
 
@@ -297,7 +297,7 @@ class Color(Node):
 
 
     Output sockets:
-        - color : Color
+        - **color** : Color
 
     .. blid:: FunctionNodeInputColor
 
@@ -326,7 +326,7 @@ class Integer(Node):
 
 
     Output sockets:
-        - integer : Integer
+        - **integer** : Integer
 
     .. blid:: FunctionNodeInputInt
 
@@ -366,8 +366,8 @@ class SpecialCharacters(Node):
 
 
     Output sockets:
-        - line_break : String
-        - tab : String
+        - **line_break** : String
+        - **tab** : String
 
     .. blid:: FunctionNodeInputSpecialCharacters
 
@@ -396,7 +396,7 @@ class String(Node):
 
 
     Output sockets:
-        - string : String
+        - **string** : String
 
     .. blid:: FunctionNodeInputString
 
@@ -437,7 +437,7 @@ class Vector(Node):
 
 
     Output sockets:
-        - vector : Vector
+        - **vector** : Vector
 
     .. blid:: FunctionNodeInputVector
 
@@ -483,7 +483,7 @@ class RandomValue(Node):
 
 
     Output sockets:
-        - value : ``data_type`` dependant
+        - **value** : ``data_type`` dependant
 
     Shared sockets:
         - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
@@ -539,7 +539,7 @@ class ReplaceString(Node):
 
 
     Output sockets:
-        - string : String
+        - **string** : String
 
     .. blid:: FunctionNodeReplaceString
 
@@ -573,24 +573,26 @@ class RotateEuler(Node):
         axis (DataSocket): Vector
         angle (DataSocket): Float
         space (str): Node parameter, default = 'OBJECT' in ('OBJECT', 'LOCAL')
+        type (str): Node parameter, default = 'EULER' in ('AXIS_ANGLE', 'EULER')
         node_color (color): Node color
         node_label (str): Node label
 
 
     Output sockets:
-        - rotation : Vector
+        - **rotation** : Vector
 
     .. blid:: FunctionNodeRotateEuler
 
     """
 
-    def __init__(self, rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', label=None, node_color=None):
+    def __init__(self, rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', type='EULER', label=None, node_color=None):
 
         super().__init__('FunctionNodeRotateEuler', name='Rotate Euler', label=label, node_color=node_color)
 
         # Node parameters
 
         self.bnode.space           = space
+        self.bnode.type            = type
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -612,6 +614,14 @@ class RotateEuler(Node):
     def space(self, value):
         self.bnode.space = value
 
+    @property
+    def type(self):
+        return self.bnode.type
+
+    @type.setter
+    def type(self, value):
+        self.bnode.type = value
+
 # ----------------------------------------------------------------------------------------------------
 # Node SliceString for FunctionNodeSliceString
 
@@ -628,7 +638,7 @@ class SliceString(Node):
 
 
     Output sockets:
-        - string : String
+        - **string** : String
 
     .. blid:: FunctionNodeSliceString
 
@@ -663,7 +673,7 @@ class StringLength(Node):
 
 
     Output sockets:
-        - length : Integer
+        - **length** : Integer
 
     .. blid:: FunctionNodeStringLength
 
@@ -697,7 +707,7 @@ class ValueToString(Node):
 
 
     Output sockets:
-        - string : String
+        - **string** : String
 
     .. blid:: FunctionNodeValueToString
 
@@ -734,9 +744,9 @@ class AccumulateField(Node):
 
 
     Output sockets:
-        - leading : ``data_type`` dependant
-        - trailing : ``data_type`` dependant
-        - total : ``data_type`` dependant
+        - **leading** : ``data_type`` dependant
+        - **trailing** : ``data_type`` dependant
+        - **total** : ``data_type`` dependant
 
     Shared sockets:
         - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR')
@@ -797,12 +807,12 @@ class DomainSize(Node):
 
 
     Output sockets:
-        - point_count : Integer
-        - edge_count : Integer
-        - face_count : Integer
-        - face_corner_count : Integer
-        - spline_count : Integer
-        - instance_count : Integer
+        - **point_count** : Integer
+        - **edge_count** : Integer
+        - **face_count** : Integer
+        - **face_corner_count** : Integer
+        - **spline_count** : Integer
+        - **instance_count** : Integer
 
     .. blid:: GeometryNodeAttributeDomainSize
 
@@ -851,14 +861,14 @@ class AttributeStatistic(Node):
 
 
     Output sockets:
-        - mean : ``data_type`` dependant
-        - median : ``data_type`` dependant
-        - sum : ``data_type`` dependant
-        - min : ``data_type`` dependant
-        - max : ``data_type`` dependant
-        - range : ``data_type`` dependant
-        - standard_deviation : ``data_type`` dependant
-        - variance : ``data_type`` dependant
+        - **mean** : ``data_type`` dependant
+        - **median** : ``data_type`` dependant
+        - **sum** : ``data_type`` dependant
+        - **min** : ``data_type`` dependant
+        - **max** : ``data_type`` dependant
+        - **range** : ``data_type`` dependant
+        - **standard_deviation** : ``data_type`` dependant
+        - **variance** : ``data_type`` dependant
 
     Shared sockets:
         - Driving parameter : ``data_type`` in ('FLOAT', 'FLOAT_VECTOR')
@@ -925,7 +935,7 @@ class TransferAttribute(Node):
 
 
     Output sockets:
-        - attribute : ``data_type`` dependant
+        - **attribute** : ``data_type`` dependant
 
     Shared sockets:
         - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
@@ -996,9 +1006,9 @@ class BoundingBox(Node):
 
 
     Output sockets:
-        - bounding_box : Geometry
-        - min : Vector
-        - max : Vector
+        - **bounding_box** : Geometry
+        - **min** : Vector
+        - **max** : Vector
 
     .. blid:: GeometryNodeBoundBox
 
@@ -1034,8 +1044,8 @@ class CaptureAttribute(Node):
 
 
     Output sockets:
-        - geometry : Geometry
-        - attribute : ``data_type`` dependant
+        - **geometry** : Geometry
+        - **attribute** : ``data_type`` dependant
 
     Shared sockets:
         - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
@@ -1098,7 +1108,7 @@ class CollectionInfo(Node):
 
 
     Output sockets:
-        - geometry : Geometry
+        - **geometry** : Geometry
 
     .. blid:: GeometryNodeCollectionInfo
 
@@ -1145,7 +1155,7 @@ class ConvexHull(Node):
 
 
     Output sockets:
-        - convex_hull : Geometry
+        - **convex_hull** : Geometry
 
     .. blid:: GeometryNodeConvexHull
 
@@ -1188,10 +1198,10 @@ class Arc(Node):
 
 
     Output sockets:
-        - curve : Curve
-        - center : Vector
-        - normal : Vector
-        - radius : Float
+        - **curve** : Curve
+        - **center** : Vector
+        - **normal** : Vector
+        - **radius** : Float
 
     .. blid:: GeometryNodeCurveArc
 
@@ -1246,7 +1256,7 @@ class EndpointSelection(Node):
 
 
     Output sockets:
-        - selection : Boolean
+        - **selection** : Boolean
 
     .. blid:: GeometryNodeCurveEndpointSelection
 
@@ -1281,7 +1291,7 @@ class HandleTypeSelection(Node):
 
 
     Output sockets:
-        - selection : Boolean
+        - **selection** : Boolean
 
     .. blid:: GeometryNodeCurveHandleTypeSelection
 
@@ -1331,7 +1341,7 @@ class CurveLength(Node):
 
 
     Output sockets:
-        - length : Float
+        - **length** : Float
 
     .. blid:: GeometryNodeCurveLength
 
@@ -1369,7 +1379,7 @@ class BezierSegment(Node):
 
 
     Output sockets:
-        - curve : Curve
+        - **curve** : Curve
 
     .. blid:: GeometryNodeCurvePrimitiveBezierSegment
 
@@ -1423,8 +1433,8 @@ class CurveCircle(Node):
 
 
     Output sockets:
-        - curve : Curve
-        - center : Vector
+        - **curve** : Curve
+        - **center** : Vector
 
     .. blid:: GeometryNodeCurvePrimitiveCircle
 
@@ -1477,7 +1487,7 @@ class CurveLine(Node):
 
 
     Output sockets:
-        - curve : Curve
+        - **curve** : Curve
 
     .. blid:: GeometryNodeCurvePrimitiveLine
 
@@ -1536,7 +1546,7 @@ class Quadrilateral(Node):
 
 
     Output sockets:
-        - curve : Curve
+        - **curve** : Curve
 
     .. blid:: GeometryNodeCurvePrimitiveQuadrilateral
 
@@ -1594,7 +1604,7 @@ class QuadraticBezier(Node):
 
 
     Output sockets:
-        - curve : Curve
+        - **curve** : Curve
 
     .. blid:: GeometryNodeCurveQuadraticBezier
 
@@ -1633,7 +1643,7 @@ class SetHandleType(Node):
 
 
     Output sockets:
-        - curve : Curve
+        - **curve** : Curve
 
     .. blid:: GeometryNodeCurveSetHandles
 
@@ -1693,7 +1703,7 @@ class Spiral(Node):
 
 
     Output sockets:
-        - curve : Curve
+        - **curve** : Curve
 
     .. blid:: GeometryNodeCurveSpiral
 
@@ -1733,7 +1743,7 @@ class SetSplineType(Node):
 
 
     Output sockets:
-        - curve : Curve
+        - **curve** : Curve
 
     .. blid:: GeometryNodeCurveSplineType
 
@@ -1782,8 +1792,8 @@ class Star(Node):
 
 
     Output sockets:
-        - curve : Curve
-        - outer_points : Boolean
+        - **curve** : Curve
+        - **outer_points** : Boolean
 
     .. blid:: GeometryNodeCurveStar
 
@@ -1821,7 +1831,7 @@ class CurveToMesh(Node):
 
 
     Output sockets:
-        - mesh : Mesh
+        - **mesh** : Mesh
 
     .. blid:: GeometryNodeCurveToMesh
 
@@ -1859,10 +1869,10 @@ class CurveToPoints(Node):
 
 
     Output sockets:
-        - points : Points
-        - tangent : Vector
-        - normal : Vector
-        - rotation : Vector
+        - **points** : Points
+        - **tangent** : Vector
+        - **normal** : Vector
+        - **rotation** : Vector
 
     .. blid:: GeometryNodeCurveToPoints
 
@@ -1912,7 +1922,7 @@ class DeleteGeometry(Node):
 
 
     Output sockets:
-        - geometry : Geometry
+        - **geometry** : Geometry
 
     .. blid:: GeometryNodeDeleteGeometry
 
@@ -1974,9 +1984,9 @@ class DistributePointsOnFaces(Node):
 
 
     Output sockets:
-        - points : Points
-        - normal : Vector
-        - rotation : Vector
+        - **points** : Points
+        - **normal** : Vector
+        - **rotation** : Vector
 
     .. blid:: GeometryNodeDistributePointsOnFaces
 
@@ -2028,7 +2038,7 @@ class DualMesh(Node):
 
 
     Output sockets:
-        - dual_mesh : Geometry
+        - **dual_mesh** : Geometry
 
     .. blid:: GeometryNodeDualMesh
 
@@ -2065,8 +2075,8 @@ class DuplicateElements(Node):
 
 
     Output sockets:
-        - geometry : Geometry
-        - duplicate_index : Integer
+        - **geometry** : Geometry
+        - **duplicate_index** : Integer
 
     .. blid:: GeometryNodeDuplicateElements
 
@@ -2118,9 +2128,9 @@ class ExtrudeMesh(Node):
 
 
     Output sockets:
-        - mesh : Mesh
-        - top : Boolean
-        - side : Boolean
+        - **mesh** : Mesh
+        - **top** : Boolean
+        - **side** : Boolean
 
     .. blid:: GeometryNodeExtrudeMesh
 
@@ -2172,7 +2182,7 @@ class FieldAtIndex(Node):
 
 
     Output sockets:
-        - value : ``data_type`` dependant
+        - **value** : ``data_type`` dependant
 
     Shared sockets:
         - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
@@ -2233,7 +2243,7 @@ class FillCurve(Node):
 
 
     Output sockets:
-        - mesh : Mesh
+        - **mesh** : Mesh
 
     .. blid:: GeometryNodeFillCurve
 
@@ -2282,7 +2292,7 @@ class FilletCurve(Node):
 
 
     Output sockets:
-        - curve : Curve
+        - **curve** : Curve
 
     .. blid:: GeometryNodeFilletCurve
 
@@ -2331,7 +2341,7 @@ class FlipFaces(Node):
 
 
     Output sockets:
-        - mesh : Mesh
+        - **mesh** : Mesh
 
     .. blid:: GeometryNodeFlipFaces
 
@@ -2365,7 +2375,7 @@ class GeometryToInstance(Node):
 
 
     Output sockets:
-        - instances : Instances
+        - **instances** : Instances
 
     .. blid:: GeometryNodeGeometryToInstance
 
@@ -2427,8 +2437,8 @@ class ImageTexture(Node):
 
 
     Output sockets:
-        - color : Color
-        - alpha : Float
+        - **color** : Color
+        - **alpha** : Float
 
     .. blid:: GeometryNodeImageTexture
 
@@ -2484,8 +2494,8 @@ class CurveHandlePositions(Node):
 
 
     Output sockets:
-        - left : Vector
-        - right : Vector
+        - **left** : Vector
+        - **right** : Vector
 
     .. blid:: GeometryNodeInputCurveHandlePositions
 
@@ -2517,7 +2527,7 @@ class CurveTilt(Node):
 
 
     Output sockets:
-        - tilt : Float
+        - **tilt** : Float
 
     .. blid:: GeometryNodeInputCurveTilt
 
@@ -2545,7 +2555,7 @@ class ID(Node):
 
 
     Output sockets:
-        - ID : Integer
+        - **ID** : Integer
 
     .. blid:: GeometryNodeInputID
 
@@ -2573,7 +2583,7 @@ class Index(Node):
 
 
     Output sockets:
-        - index : Integer
+        - **index** : Integer
 
     .. blid:: GeometryNodeInputIndex
 
@@ -2601,7 +2611,7 @@ class Material(Node):
 
 
     Output sockets:
-        - material : Material
+        - **material** : Material
 
     .. blid:: GeometryNodeInputMaterial
 
@@ -2629,7 +2639,7 @@ class MaterialIndex(Node):
 
 
     Output sockets:
-        - material_index : Integer
+        - **material_index** : Integer
 
     .. blid:: GeometryNodeInputMaterialIndex
 
@@ -2657,8 +2667,8 @@ class EdgeAngle(Node):
 
 
     Output sockets:
-        - unsigned_angle : Float
-        - signed_angle : Float
+        - **unsigned_angle** : Float
+        - **signed_angle** : Float
 
     .. blid:: GeometryNodeInputMeshEdgeAngle
 
@@ -2686,7 +2696,7 @@ class EdgeNeighbors(Node):
 
 
     Output sockets:
-        - face_count : Integer
+        - **face_count** : Integer
 
     .. blid:: GeometryNodeInputMeshEdgeNeighbors
 
@@ -2714,10 +2724,10 @@ class EdgeVertices(Node):
 
 
     Output sockets:
-        - vertex_index_1 : Integer
-        - vertex_index_2 : Integer
-        - position_1 : Vector
-        - position_2 : Vector
+        - **vertex_index_1** : Integer
+        - **vertex_index_2** : Integer
+        - **position_1** : Vector
+        - **position_2** : Vector
 
     .. blid:: GeometryNodeInputMeshEdgeVertices
 
@@ -2745,7 +2755,7 @@ class FaceArea(Node):
 
 
     Output sockets:
-        - area : Float
+        - **area** : Float
 
     .. blid:: GeometryNodeInputMeshFaceArea
 
@@ -2774,7 +2784,7 @@ class FaceIsPlanar(Node):
 
 
     Output sockets:
-        - planar : Boolean
+        - **planar** : Boolean
 
     .. blid:: GeometryNodeInputMeshFaceIsPlanar
 
@@ -2806,8 +2816,8 @@ class FaceNeighbors(Node):
 
 
     Output sockets:
-        - vertex_count : Integer
-        - face_count : Integer
+        - **vertex_count** : Integer
+        - **face_count** : Integer
 
     .. blid:: GeometryNodeInputMeshFaceNeighbors
 
@@ -2835,8 +2845,8 @@ class MeshIsland(Node):
 
 
     Output sockets:
-        - island_index : Integer
-        - island_count : Integer
+        - **island_index** : Integer
+        - **island_count** : Integer
 
     .. blid:: GeometryNodeInputMeshIsland
 
@@ -2864,8 +2874,8 @@ class VertexNeighbors(Node):
 
 
     Output sockets:
-        - vertex_count : Integer
-        - face_count : Integer
+        - **vertex_count** : Integer
+        - **face_count** : Integer
 
     .. blid:: GeometryNodeInputMeshVertexNeighbors
 
@@ -2895,7 +2905,7 @@ class NamedAttribute(Node):
 
 
     Output sockets:
-        - attribute : ``data_type`` dependant
+        - **attribute** : ``data_type`` dependant
 
     Shared sockets:
         - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
@@ -2944,7 +2954,7 @@ class Normal(Node):
 
 
     Output sockets:
-        - normal : Vector
+        - **normal** : Vector
 
     .. blid:: GeometryNodeInputNormal
 
@@ -2972,7 +2982,7 @@ class Position(Node):
 
 
     Output sockets:
-        - position : Vector
+        - **position** : Vector
 
     .. blid:: GeometryNodeInputPosition
 
@@ -3000,7 +3010,7 @@ class Radius(Node):
 
 
     Output sockets:
-        - radius : Float
+        - **radius** : Float
 
     .. blid:: GeometryNodeInputRadius
 
@@ -3028,8 +3038,8 @@ class SceneTime(Node):
 
 
     Output sockets:
-        - seconds : Float
-        - frame : Float
+        - **seconds** : Float
+        - **frame** : Float
 
     .. blid:: GeometryNodeInputSceneTime
 
@@ -3057,7 +3067,7 @@ class IsShadeSmooth(Node):
 
 
     Output sockets:
-        - smooth : Boolean
+        - **smooth** : Boolean
 
     .. blid:: GeometryNodeInputShadeSmooth
 
@@ -3085,7 +3095,7 @@ class IsSplineCyclic(Node):
 
 
     Output sockets:
-        - cyclic : Boolean
+        - **cyclic** : Boolean
 
     .. blid:: GeometryNodeInputSplineCyclic
 
@@ -3113,7 +3123,7 @@ class SplineResolution(Node):
 
 
     Output sockets:
-        - resolution : Integer
+        - **resolution** : Integer
 
     .. blid:: GeometryNodeInputSplineResolution
 
@@ -3141,7 +3151,7 @@ class CurveTangent(Node):
 
 
     Output sockets:
-        - tangent : Vector
+        - **tangent** : Vector
 
     .. blid:: GeometryNodeInputTangent
 
@@ -3176,7 +3186,7 @@ class InstanceOnPoints(Node):
 
 
     Output sockets:
-        - instances : Instances
+        - **instances** : Instances
 
     .. blid:: GeometryNodeInstanceOnPoints
 
@@ -3218,7 +3228,7 @@ class InstancesToPoints(Node):
 
 
     Output sockets:
-        - points : Points
+        - **points** : Points
 
     .. blid:: GeometryNodeInstancesToPoints
 
@@ -3253,7 +3263,7 @@ class IsViewport(Node):
 
 
     Output sockets:
-        - is_viewport : Boolean
+        - **is_viewport** : Boolean
 
     .. blid:: GeometryNodeIsViewport
 
@@ -3282,7 +3292,7 @@ class JoinGeometry(Node):
 
 
     Output sockets:
-        - geometry : Geometry
+        - **geometry** : Geometry
 
     .. blid:: GeometryNodeJoinGeometry
 
@@ -3315,7 +3325,7 @@ class MaterialSelection(Node):
 
 
     Output sockets:
-        - selection : Boolean
+        - **selection** : Boolean
 
     .. blid:: GeometryNodeMaterialSelection
 
@@ -3351,7 +3361,7 @@ class MergeByDistance(Node):
 
 
     Output sockets:
-        - geometry : Geometry
+        - **geometry** : Geometry
 
     .. blid:: GeometryNodeMergeByDistance
 
@@ -3402,7 +3412,7 @@ class MeshBoolean(Node):
 
 
     Output sockets:
-        - mesh : Mesh
+        - **mesh** : Mesh
 
     .. blid:: GeometryNodeMeshBoolean
 
@@ -3452,7 +3462,7 @@ class MeshCircle(Node):
 
 
     Output sockets:
-        - mesh : Mesh
+        - **mesh** : Mesh
 
     .. blid:: GeometryNodeMeshCircle
 
@@ -3504,10 +3514,10 @@ class Cone(Node):
 
 
     Output sockets:
-        - mesh : Mesh
-        - top : Boolean
-        - bottom : Boolean
-        - side : Boolean
+        - **mesh** : Mesh
+        - **top** : Boolean
+        - **bottom** : Boolean
+        - **side** : Boolean
 
     .. blid:: GeometryNodeMeshCone
 
@@ -3560,7 +3570,7 @@ class Cube(Node):
 
 
     Output sockets:
-        - mesh : Mesh
+        - **mesh** : Mesh
 
     .. blid:: GeometryNodeMeshCube
 
@@ -3601,10 +3611,10 @@ class Cylinder(Node):
 
 
     Output sockets:
-        - mesh : Mesh
-        - top : Boolean
-        - side : Boolean
-        - bottom : Boolean
+        - **mesh** : Mesh
+        - **top** : Boolean
+        - **side** : Boolean
+        - **bottom** : Boolean
 
     .. blid:: GeometryNodeMeshCylinder
 
@@ -3656,7 +3666,7 @@ class Grid(Node):
 
 
     Output sockets:
-        - mesh : Mesh
+        - **mesh** : Mesh
 
     .. blid:: GeometryNodeMeshGrid
 
@@ -3693,7 +3703,7 @@ class IcoSphere(Node):
 
 
     Output sockets:
-        - mesh : Mesh
+        - **mesh** : Mesh
 
     .. blid:: GeometryNodeMeshIcoSphere
 
@@ -3732,7 +3742,7 @@ class MeshLine(Node):
 
 
     Output sockets:
-        - mesh : Mesh
+        - **mesh** : Mesh
 
     .. blid:: GeometryNodeMeshLine
 
@@ -3790,7 +3800,7 @@ class MeshToCurve(Node):
 
 
     Output sockets:
-        - curve : Curve
+        - **curve** : Curve
 
     .. blid:: GeometryNodeMeshToCurve
 
@@ -3828,7 +3838,7 @@ class MeshToPoints(Node):
 
 
     Output sockets:
-        - points : Points
+        - **points** : Points
 
     .. blid:: GeometryNodeMeshToPoints
 
@@ -3878,7 +3888,7 @@ class UvSphere(Node):
 
 
     Output sockets:
-        - mesh : Mesh
+        - **mesh** : Mesh
 
     .. blid:: GeometryNodeMeshUVSphere
 
@@ -3915,10 +3925,10 @@ class ObjectInfo(Node):
 
 
     Output sockets:
-        - location : Vector
-        - rotation : Vector
-        - scale : Vector
-        - geometry : Geometry
+        - **location** : Vector
+        - **rotation** : Vector
+        - **scale** : Vector
+        - **geometry** : Geometry
 
     .. blid:: GeometryNodeObjectInfo
 
@@ -3965,7 +3975,7 @@ class PointsToVertices(Node):
 
 
     Output sockets:
-        - mesh : Mesh
+        - **mesh** : Mesh
 
     .. blid:: GeometryNodePointsToVertices
 
@@ -4004,7 +4014,7 @@ class PointsToVolume(Node):
 
 
     Output sockets:
-        - volume : Volume
+        - **volume** : Volume
 
     .. blid:: GeometryNodePointsToVolume
 
@@ -4055,8 +4065,8 @@ class GeometryProximity(Node):
 
 
     Output sockets:
-        - position : Vector
-        - distance : Float
+        - **position** : Vector
+        - **distance** : Float
 
     .. blid:: GeometryNodeProximity
 
@@ -4108,11 +4118,11 @@ class Raycast(Node):
 
 
     Output sockets:
-        - is_hit : Boolean
-        - hit_position : Vector
-        - hit_normal : Vector
-        - hit_distance : Float
-        - attribute : ``data_type`` dependant
+        - **is_hit** : Boolean
+        - **hit_position** : Vector
+        - **hit_normal** : Vector
+        - **hit_distance** : Float
+        - **attribute** : ``data_type`` dependant
 
     Shared sockets:
         - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
@@ -4176,7 +4186,7 @@ class RealizeInstances(Node):
 
 
     Output sockets:
-        - geometry : Geometry
+        - **geometry** : Geometry
 
     .. blid:: GeometryNodeRealizeInstances
 
@@ -4222,7 +4232,7 @@ class RemoveNamedAttribute(Node):
 
 
     Output sockets:
-        - geometry : Geometry
+        - **geometry** : Geometry
 
     .. blid:: GeometryNodeRemoveAttribute
 
@@ -4258,7 +4268,7 @@ class ReplaceMaterial(Node):
 
 
     Output sockets:
-        - geometry : Geometry
+        - **geometry** : Geometry
 
     .. blid:: GeometryNodeReplaceMaterial
 
@@ -4297,7 +4307,7 @@ class ResampleCurve(Node):
 
 
     Output sockets:
-        - curve : Curve
+        - **curve** : Curve
 
     .. blid:: GeometryNodeResampleCurve
 
@@ -4346,7 +4356,7 @@ class ReverseCurve(Node):
 
 
     Output sockets:
-        - curve : Curve
+        - **curve** : Curve
 
     .. blid:: GeometryNodeReverseCurve
 
@@ -4384,7 +4394,7 @@ class RotateInstances(Node):
 
 
     Output sockets:
-        - instances : Instances
+        - **instances** : Instances
 
     .. blid:: GeometryNodeRotateInstances
 
@@ -4424,9 +4434,9 @@ class SampleCurve(Node):
 
 
     Output sockets:
-        - position : Vector
-        - tangent : Vector
-        - normal : Vector
+        - **position** : Vector
+        - **tangent** : Vector
+        - **normal** : Vector
 
     .. blid:: GeometryNodeSampleCurve
 
@@ -4479,7 +4489,7 @@ class ScaleElements(Node):
 
 
     Output sockets:
-        - geometry : Geometry
+        - **geometry** : Geometry
 
     .. blid:: GeometryNodeScaleElements
 
@@ -4541,7 +4551,7 @@ class ScaleInstances(Node):
 
 
     Output sockets:
-        - instances : Instances
+        - **instances** : Instances
 
     .. blid:: GeometryNodeScaleInstances
 
@@ -4578,11 +4588,11 @@ class SeparateComponents(Node):
 
 
     Output sockets:
-        - mesh : Mesh
-        - point_cloud : Geometry
-        - curve : Curve
-        - volume : Volume
-        - instances : Instances
+        - **mesh** : Mesh
+        - **point_cloud** : Geometry
+        - **curve** : Curve
+        - **volume** : Volume
+        - **instances** : Instances
 
     .. blid:: GeometryNodeSeparateComponents
 
@@ -4617,8 +4627,8 @@ class SeparateGeometry(Node):
 
 
     Output sockets:
-        - selection : Geometry
-        - inverted : Geometry
+        - **selection** : Geometry
+        - **inverted** : Geometry
 
     .. blid:: GeometryNodeSeparateGeometry
 
@@ -4668,7 +4678,7 @@ class SetHandlePositions(Node):
 
 
     Output sockets:
-        - curve : Curve
+        - **curve** : Curve
 
     .. blid:: GeometryNodeSetCurveHandlePositions
 
@@ -4718,7 +4728,7 @@ class SetCurveRadius(Node):
 
 
     Output sockets:
-        - curve : Curve
+        - **curve** : Curve
 
     .. blid:: GeometryNodeSetCurveRadius
 
@@ -4755,7 +4765,7 @@ class SetCurveTilt(Node):
 
 
     Output sockets:
-        - curve : Curve
+        - **curve** : Curve
 
     .. blid:: GeometryNodeSetCurveTilt
 
@@ -4792,7 +4802,7 @@ class SetID(Node):
 
 
     Output sockets:
-        - geometry : Geometry
+        - **geometry** : Geometry
 
     .. blid:: GeometryNodeSetID
 
@@ -4829,7 +4839,7 @@ class SetMaterial(Node):
 
 
     Output sockets:
-        - geometry : Geometry
+        - **geometry** : Geometry
 
     .. blid:: GeometryNodeSetMaterial
 
@@ -4866,7 +4876,7 @@ class SetMaterialIndex(Node):
 
 
     Output sockets:
-        - geometry : Geometry
+        - **geometry** : Geometry
 
     .. blid:: GeometryNodeSetMaterialIndex
 
@@ -4903,7 +4913,7 @@ class SetPointRadius(Node):
 
 
     Output sockets:
-        - points : Points
+        - **points** : Points
 
     .. blid:: GeometryNodeSetPointRadius
 
@@ -4941,7 +4951,7 @@ class SetPosition(Node):
 
 
     Output sockets:
-        - geometry : Geometry
+        - **geometry** : Geometry
 
     .. blid:: GeometryNodeSetPosition
 
@@ -4979,7 +4989,7 @@ class SetShadeSmooth(Node):
 
 
     Output sockets:
-        - geometry : Geometry
+        - **geometry** : Geometry
 
     .. blid:: GeometryNodeSetShadeSmooth
 
@@ -5016,7 +5026,7 @@ class SetSplineCyclic(Node):
 
 
     Output sockets:
-        - geometry : Geometry
+        - **geometry** : Geometry
 
     .. blid:: GeometryNodeSetSplineCyclic
 
@@ -5053,7 +5063,7 @@ class SetSplineResolution(Node):
 
 
     Output sockets:
-        - geometry : Geometry
+        - **geometry** : Geometry
 
     .. blid:: GeometryNodeSetSplineResolution
 
@@ -5087,8 +5097,8 @@ class SplineLength(Node):
 
 
     Output sockets:
-        - length : Float
-        - point_count : Integer
+        - **length** : Float
+        - **point_count** : Integer
 
     .. blid:: GeometryNodeSplineLength
 
@@ -5116,9 +5126,9 @@ class SplineParameter(Node):
 
 
     Output sockets:
-        - factor : Float
-        - length : Float
-        - index : Integer
+        - **factor** : Float
+        - **length** : Float
+        - **index** : Integer
 
     .. blid:: GeometryNodeSplineParameter
 
@@ -5148,7 +5158,7 @@ class SplitEdges(Node):
 
 
     Output sockets:
-        - mesh : Mesh
+        - **mesh** : Mesh
 
     .. blid:: GeometryNodeSplitEdges
 
@@ -5186,7 +5196,7 @@ class StoreNamedAttribute(Node):
 
 
     Output sockets:
-        - geometry : Geometry
+        - **geometry** : Geometry
 
     Shared sockets:
         - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN')
@@ -5248,7 +5258,7 @@ class JoinStrings(Node):
 
 
     Output sockets:
-        - string : String
+        - **string** : String
 
     .. blid:: GeometryNodeStringJoin
 
@@ -5292,10 +5302,10 @@ class StringToCurves(Node):
 
 
     Output sockets:
-        - curve_instances : Geometry
-        - remainder : String
-        - line : Integer
-        - pivot_point : Vector
+        - **curve_instances** : Geometry
+        - **remainder** : String
+        - **line** : Integer
+        - **pivot_point** : Vector
 
     .. blid:: GeometryNodeStringToCurves
 
@@ -5374,7 +5384,7 @@ class SubdivideCurve(Node):
 
 
     Output sockets:
-        - curve : Curve
+        - **curve** : Curve
 
     .. blid:: GeometryNodeSubdivideCurve
 
@@ -5409,7 +5419,7 @@ class SubdivideMesh(Node):
 
 
     Output sockets:
-        - mesh : Mesh
+        - **mesh** : Mesh
 
     .. blid:: GeometryNodeSubdivideMesh
 
@@ -5447,7 +5457,7 @@ class SubdivisionSurface(Node):
 
 
     Output sockets:
-        - mesh : Mesh
+        - **mesh** : Mesh
 
     .. blid:: GeometryNodeSubdivisionSurface
 
@@ -5506,7 +5516,7 @@ class Switch(Node):
 
 
     Output sockets:
-        - output : ``input_type`` dependant
+        - **output** : ``input_type`` dependant
 
     Shared sockets:
         - Driving parameter : ``input_type`` in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')
@@ -5561,7 +5571,7 @@ class Transform(Node):
 
 
     Output sockets:
-        - geometry : Geometry
+        - **geometry** : Geometry
 
     .. blid:: GeometryNodeTransform
 
@@ -5600,7 +5610,7 @@ class TranslateInstances(Node):
 
 
     Output sockets:
-        - instances : Instances
+        - **instances** : Instances
 
     .. blid:: GeometryNodeTranslateInstances
 
@@ -5640,7 +5650,7 @@ class Triangulate(Node):
 
 
     Output sockets:
-        - mesh : Mesh
+        - **mesh** : Mesh
 
     .. blid:: GeometryNodeTriangulate
 
@@ -5701,7 +5711,7 @@ class TrimCurve(Node):
 
 
     Output sockets:
-        - curve : Curve
+        - **curve** : Curve
 
     .. blid:: GeometryNodeTrimCurve
 
@@ -5755,7 +5765,7 @@ class VolumeToMesh(Node):
 
 
     Output sockets:
-        - mesh : Mesh
+        - **mesh** : Mesh
 
     .. blid:: GeometryNodeVolumeToMesh
 
@@ -5807,7 +5817,7 @@ class Clamp(Node):
 
 
     Output sockets:
-        - result : Float
+        - **result** : Float
 
     .. blid:: ShaderNodeClamp
 
@@ -5856,7 +5866,7 @@ class CombineRgb(Node):
 
 
     Output sockets:
-        - image : Color
+        - **image** : Color
 
     .. blid:: ShaderNodeCombineRGB
 
@@ -5893,7 +5903,7 @@ class CombineXyz(Node):
 
 
     Output sockets:
-        - vector : Vector
+        - **vector** : Vector
 
     .. blid:: ShaderNodeCombineXYZ
 
@@ -5929,7 +5939,7 @@ class FloatCurve(Node):
 
 
     Output sockets:
-        - value : Float
+        - **value** : Float
 
     .. blid:: ShaderNodeFloatCurve
 
@@ -5972,8 +5982,8 @@ class MapRange(Node):
 
 
     Output sockets:
-        - result : Float
-        - vector : Vector
+        - **result** : Float
+        - **vector** : Vector
 
     Shared sockets:
         - Driving parameter : ``data_type`` in ('FLOAT', 'FLOAT_VECTOR')
@@ -6050,7 +6060,7 @@ class Math(Node):
 
 
     Output sockets:
-        - value : Float
+        - **value** : Float
 
     .. blid:: ShaderNodeMath
 
@@ -6101,7 +6111,7 @@ class Mix(Node):
 
 
     Output sockets:
-        - color : Color
+        - **color** : Color
 
     .. blid:: ShaderNodeMixRGB
 
@@ -6158,7 +6168,7 @@ class RgbCurves(Node):
 
 
     Output sockets:
-        - color : Color
+        - **color** : Color
 
     .. blid:: ShaderNodeRGBCurve
 
@@ -6192,9 +6202,9 @@ class SeparateRgb(Node):
 
 
     Output sockets:
-        - r : Float
-        - g : Float
-        - b : Float
+        - **r** : Float
+        - **g** : Float
+        - **b** : Float
 
     .. blid:: ShaderNodeSeparateRGB
 
@@ -6227,9 +6237,9 @@ class SeparateXyz(Node):
 
 
     Output sockets:
-        - x : Float
-        - y : Float
-        - z : Float
+        - **x** : Float
+        - **y** : Float
+        - **z** : Float
 
     .. blid:: ShaderNodeSeparateXYZ
 
@@ -6275,8 +6285,8 @@ class BrickTexture(Node):
 
 
     Output sockets:
-        - color : Color
-        - fac : Float
+        - **color** : Color
+        - **fac** : Float
 
     .. blid:: ShaderNodeTexBrick
 
@@ -6360,8 +6370,8 @@ class CheckerTexture(Node):
 
 
     Output sockets:
-        - color : Color
-        - fac : Float
+        - **color** : Color
+        - **fac** : Float
 
     .. blid:: ShaderNodeTexChecker
 
@@ -6398,8 +6408,8 @@ class GradientTexture(Node):
 
 
     Output sockets:
-        - color : Color
-        - fac : Float
+        - **color** : Color
+        - **fac** : Float
 
     .. blid:: ShaderNodeTexGradient
 
@@ -6447,8 +6457,8 @@ class MagicTexture(Node):
 
 
     Output sockets:
-        - color : Color
-        - fac : Float
+        - **color** : Color
+        - **fac** : Float
 
     .. blid:: ShaderNodeTexMagic
 
@@ -6504,7 +6514,7 @@ class MusgraveTexture(Node):
 
 
     Output sockets:
-        - fac : Float
+        - **fac** : Float
 
     .. blid:: ShaderNodeTexMusgrave
 
@@ -6571,8 +6581,8 @@ class NoiseTexture(Node):
 
 
     Output sockets:
-        - fac : Float
-        - color : Color
+        - **fac** : Float
+        - **color** : Color
 
     .. blid:: ShaderNodeTexNoise
 
@@ -6630,11 +6640,11 @@ class VoronoiTexture(Node):
 
 
     Output sockets:
-        - distance : Float
-        - color : Color
-        - position : Vector
-        - w : Float
-        - radius : Float
+        - **distance** : Float
+        - **color** : Color
+        - **position** : Vector
+        - **w** : Float
+        - **radius** : Float
 
     .. blid:: ShaderNodeTexVoronoi
 
@@ -6712,8 +6722,8 @@ class WaveTexture(Node):
 
 
     Output sockets:
-        - color : Color
-        - fac : Float
+        - **color** : Color
+        - **fac** : Float
 
     .. blid:: ShaderNodeTexWave
 
@@ -6793,8 +6803,8 @@ class WhiteNoiseTexture(Node):
 
 
     Output sockets:
-        - value : Float
-        - color : Color
+        - **value** : Float
+        - **color** : Color
 
     .. blid:: ShaderNodeTexWhiteNoise
 
@@ -6840,8 +6850,8 @@ class ColorRamp(Node):
 
 
     Output sockets:
-        - color : Color
-        - alpha : Float
+        - **color** : Color
+        - **alpha** : Float
 
     .. blid:: ShaderNodeValToRGB
 
@@ -6873,7 +6883,7 @@ class Value(Node):
 
 
     Output sockets:
-        - value : Float
+        - **value** : Float
 
     .. blid:: ShaderNodeValue
 
@@ -6903,7 +6913,7 @@ class VectorCurves(Node):
 
 
     Output sockets:
-        - vector : Vector
+        - **vector** : Vector
 
     .. blid:: ShaderNodeVectorCurve
 
@@ -6941,8 +6951,8 @@ class VectorMath(Node):
 
 
     Output sockets:
-        - vector : Vector
-        - value : Float
+        - **vector** : Vector
+        - **value** : Float
 
     .. blid:: ShaderNodeVectorMath
 
@@ -6996,7 +7006,7 @@ class VectorRotate(Node):
 
 
     Output sockets:
-        - vector : Vector
+        - **vector** : Vector
 
     .. blid:: ShaderNodeVectorRotate
 

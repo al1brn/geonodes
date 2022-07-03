@@ -26,11 +26,3 @@ node = nodes.FaceArea(label=None, node_color=None)
 ## Output sockets
 
 - area : Float
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Face](/docs/Face.md).[area](/docs/Face.md#area) : Fields
-  

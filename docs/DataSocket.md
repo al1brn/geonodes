@@ -233,6 +233,6 @@ Reroute all output links
 
 
 
-## transfer_index
+## index_transfer
 
 Transfer are steered by the Field it belongs to

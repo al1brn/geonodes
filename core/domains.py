@@ -9,7 +9,6 @@ Created on Wed Jun 15 08:20:40 2022
 from geonodes.core.node import Socket, Node
 from geonodes.nodes import nodes
 from geonodes.nodes.nodes import create_node
-import geonodes.core.field as field
 
 
 import logging
@@ -239,46 +238,6 @@ class Domain:
             count = gn.Integer(self.statistic(self.index).max + 1)
             count.node_label = "count"
             return count
-    
-
-    # ----------------------------------------------------------------------------------------------------
-    # > Named field
-    #
-    # Exposed methods are get_named_attribute and set_named_attribute to be closed to the name of the nodes
-    # These methods use the named_field method (not named named_attribute to avoid misusing).
-    # 
-    # named_field creates an instance of NamedField and store it in a dedciated dictionnary
-    #
-    # Raise an error if different data types are used for the same name
-        
-    def named_field_OLD(self, name, data_type):
-        """ Named field
-        
-        Args:
-            name (str): Field name
-            data_TYPE (str): Field data type
-            
-        Returns:
-            as defined by data_type
-            
-        
-        """
-
-        nfield = self.named_fields.get(name)
-
-        if nfield is None:
-            nfield = field.NamedField(self, name, data_type=data_type)
-            self.named_fields[name] = nfield
-            return nfield
-        
-        if data_type is not None:
-            if nfield.data_type is None:
-                nfield.data_type = data_type
-
-            elif nfield.data_type != data_type:
-                raise RuntimeError(f"The named attribute '{name}' is defined with two different data types: '{nfield.data_type}' (first) and '{data_type}' (second).")
-                
-        return nfield
     
     # ----------------------------------------------------------------------------------------------------
     # Def a node as attribute node
@@ -961,8 +920,6 @@ class PEFInterface:
         
         """
         return self.scale(scale=scale, center=center, axis=axis, mode='SINGLE_AXIS')
-        
-        
     
         
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -1438,7 +1395,7 @@ class Edge(Domain, MeshInterface, PEFInterface):
         - setter: read only
         """
         
-        return self.attribute(nodes.EdgeAngle())
+        return self.attribute(nodes.EdgeVertices())
     
     @property
     def vertex_index(self):
@@ -1451,7 +1408,7 @@ class Edge(Domain, MeshInterface, PEFInterface):
         - setter: read only
         """
         
-        node = self.vertces
+        node = self.vertices
         return node.vertex_index_1, node.vertex_index_2
     
     @property
@@ -1465,7 +1422,7 @@ class Edge(Domain, MeshInterface, PEFInterface):
         - setter: read only
         """
         
-        node = self.vertces
+        node = self.vertices
         return node.position_1, node.position_2
 
     
@@ -1525,6 +1482,43 @@ class ControlPoint(Domain, PointInterface):
 
     def __init__(self, data_socket, selection=None):
         super().__init__(data_socket, domain='POINT', selection=selection)
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Radius and tilt
+        
+    @property
+    def radius(self):
+        """ Radius attribute
+        
+        Returns:
+            Float
+            
+        getter: :class:`nodes.Radius`
+        setter: :class: `nodes.SetCurveRadius`
+        """
+        return self.attribute(nodes.Radius()).get_datasocket(0)
+    
+    @radius.setter
+    def radius(self, value):
+        self.stack(nodes.SetCurveRadius(curve=self.data_socket, selection=self.selection, radius=value))
+        
+    @property
+    def tilt(self):
+        """ Tilt attribute
+        
+        Returns:
+            Float
+            
+        getter: :class:`nodes.CurveTilt`
+        setter: :class: `nodes.SetCurveTilt`
+        """
+        return self.attribute(nodes.CurveTilt()).get_datasocket(0)
+    
+    @tilt.setter
+    def tilt(self, value):
+        self.stack(nodes.SetCurveTilt(curve=self.data_socket, selection=self.selection, tilt=value))
+    
+        
         
     # ----------------------------------------------------------------------------------------------------
     # Handles
@@ -2234,7 +2228,7 @@ class Instance(Domain):
         instances.insts(...).delete()
         ```
         """
-        return self.stack(nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection))
+        return self.stack(nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain))
     
     def rotate(self, rotation=None, pivot_point=None, local_space=None):
         """ > Rotate instances

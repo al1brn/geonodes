@@ -27,12 +27,3 @@ node = nodes.SplineLength(label=None, node_color=None)
 
 - length : Float
 - point_count : Integer
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Spline](/docs/Spline.md).[length](/docs/Spline.md#length) : Fields
-- [Spline](/docs/Spline.md).[point_count](/docs/Spline.md#point_count) : Fields
-  

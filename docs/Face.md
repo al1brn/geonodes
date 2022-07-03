@@ -52,93 +52,100 @@ for other mapping, use transfer_attribute
 
 
 
+## neighbors
+
+Neighbors node
+
+Returns:
+  Node FaceNeighbors
+  
+- getter: :class:`nodes.FaceNeighbors`
+- setter: read only
+  
+  
+
 ## neighbors_vertices
 
-Fields
+Neighbors vertices attribute
 
+Returns:
+  Integer: the output socket *vertices* of the *FaceNeighbors* node.
+  
+- getter: :class:`nodes.FaceNeighbors`
+- setter: read only
+  
+  
+  
+
+## neighbors_faces
+
+Neighbors faces attribute
+
+Returns:
+  Integer: The output socket *faces* of the *FaceNeighbors* node.
+  
+- getter: :class:`nodes.FaceNeighbors`
+- setter: read only
+  
+  
+  
 
 ## area
 
-> Field [FaceArea](/docs/nodes/FaceArea.md)
+Area attribute
+
+Returns:
+  Float
   
-Blender menu : **mesh/face_area**<br>
-<sub>go to [top](#class-face) [index](/docs/index.md)</sub>
-
-  Property
-
-### Returns
-
-Float
-
-
+- getter: :class:`nodes.FaceArea`
+- setter: read only
+  
+  
+  
+  
 
 ## is_planar
 
-> Field [FaceIsPlanar](/docs/nodes/FaceIsPlanar.md)
+Attribute is_planar
+
+Args:
+  threshold: Float
   
-Blender menu : **mesh/face_is_planar**<br>
-<sub>go to [top](#class-face) [index](/docs/index.md)</sub>
-
-  Method
-
-### Arguments
-
-- threshold : Float
-
-### Returns
-
-Boolean
-
-
-
-
-## material_index
-
-> Field [SetMaterialIndex](/docs/nodes/SetMaterialIndex.md)
+Returns:
+  Boolean
   
-Blender menu : **material/set_material_index**<br>
-<sub>go to [top](#class-face) [index](/docs/index.md)</sub>
-
-  Property setter
+- getter: :class:`nodes.FaceIsPlanar`
+- setter: read only
+  
   
   
 
 ## set_material
 
-> Set a material on the faces
+Material attribute
+
+Args:
+  material (str or bpy.types.Material): The material to set
   
-<blid GeometryNodeSetMaterial>
-
-### Arguments
-
-- material : material of material name
-
-### Example
-
-```python
-mesh.faces.set_material(...)
-```
-
-
+- setter: :class:`nodes.SetMaterial`
+  
+  
+  
 
 ## material_selection
 
-> Field [MaterialSelection](/docs/nodes/MaterialSelection.md)
+Material selection attribule
+
+Args:
+  material (str or bpy.types.Material): The material to select
   
-Blender menu : **material/material_selection**<br>
-<sub>go to [top](#class-face) [index](/docs/index.md)</sub>
-
-  Method
-
-### Arguments
-
-- material : Material or str (material name)
-
-### Returns
-
-Boolean
-
-
+Returns:
+  Boolean
+  
+- getter: :class:`nodes.MaterialSelection`
+  
+  
+  
 
 ## flip
 

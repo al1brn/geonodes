@@ -46,6 +46,7 @@
 - [screen](#screen) : color (Color)
 - [soft_light](#soft_light) : color (Color)
 - [subtract](#subtract) : color (Color)
+- [switch](#switch) : output (Color)
 - [value](#value) : color (Color)
 
 ## Combine
@@ -304,6 +305,40 @@ nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=s
 ### Returns
 
 Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Color)]
+
+
+## switch
+
+> Node: [Switch](/docs/nodes/Switch.md)
+  
+<sub>go to: [top](#data-socket-color) [index](/docs/index.md)
+blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
+                          
+```python
+v = color.switch(switch, true, node_label = None, node_color = None)
+```
+
+### Arguments
+
+## Sockets
+- false : Color (self)
+- switch : Boolean
+- true : Color## Parameters
+- node_label : None
+- node_color : None## Fixed parameters
+- input_type : 'RGBA'
+
+### Node creation
+
+```python
+from geondes import nodes
+nodes.Switch(false=self, switch=switch, true=true, input_type='RGBA', label=node_label, node_color=node_color)
+```
+
+### Returns
+
+Color
 
 
 ## equal
