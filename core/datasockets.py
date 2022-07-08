@@ -1108,12 +1108,15 @@ class Collection(DataSocket):
     """ Collection DataSocket
     
     Args
-        bcoll (bpt.types.Collection, str): Collection or collection name    
+        bcoll (bpt.types.Collection, str): NodeSocketCollection, Collection or collection name    
     """
     
     def __init__(self, bcoll):
-        super().__init__(None)
-        self.bcollection = Collection.blender_collection(bcoll)
+        if isinstance(bcoll, bpy.types.NodeSocketCollection):
+            super().__init__(bcoll)
+        else:
+            super().__init__(None)
+            self.bcollection = Collection.blender_collection(bcoll)
     
     @staticmethod
     def blender_collection(coll):
@@ -1146,13 +1149,15 @@ class Object(DataSocket):
     """ Collection DataSocket
     
     Args
-        obj (bpt.types.Object, str): Object or object name    
+        obj (bpt.types.Object, str): NodeSocketObject or Object or object name    
     """
     
     def __init__(self, obj=None):
-        super().__init__(None)
-        self.bobject = Object.blender_object(obj)
-        
+        if isinstance(obj, bpy.types.NodeSocketObject) or self.is_socket(obj):
+            super().__init__(obj)
+        else:
+            super().__init__(None)
+            self.bobject = Object.blender_object(obj)
     
     @staticmethod
     def blender_object(obj):

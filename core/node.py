@@ -143,6 +143,10 @@ class Socket:
         
         
     def __str__(self):
+        
+        if self.node is None:
+            return f"<Socket {type(self).__name__} '{self.name}' on None Node>"
+        
         snode = str(self.node)
         if self.is_output:
             return f"{snode}.{self.name}"
@@ -815,13 +819,16 @@ class DataSocket(Socket):
         out_socket = None
         if isinstance(value, bpy.types.NodeSocket):
             out_socket = value
+            
         elif Socket.is_socket(value):
             # Node is None: particular cases
             if value.node is None:
                 if hasattr(value, 'bobject'):        # An object socket not connected to input
                     value = value.bobject
+                    
                 elif hasattr(value, 'bcollection'):  # Same for colleciton
                     value = value.bcollection
+                    
                 else:
                     raise RuntimeError("Impossible to plug a socket with a None Node: {value}.")
             else:
@@ -1419,6 +1426,7 @@ class Tree:
             res = Integer.Input(10, "Resolution", min_value=2, max_value=100, descriptioo="Grid resolution")
             
         """
+        
         return self.group_input.new_socket(class_name=class_name, value=value, name=name, min_value=min_value, max_value=max_value, description=description)
     
     def to_output(self, socket):
@@ -2696,14 +2704,15 @@ class GroupInput(CustomGroup):
         
         socket    = None
         existing  = False
+        
+        search_blid = Socket.get_bl_idname(class_name)
         for socket_index, bsocket in enumerate(self.bnode.outputs):
             
             # No virtual socket
             if bsocket.bl_idname == 'NodeSocketVirtual':
                 continue
             
-            cname, subclass = DataSocket.get_class_name(bsocket, True)
-            if (cname == class_name or subclass == class_name) and bsocket.name == name:
+            if (search_blid == bsocket.bl_idname) and bsocket.name == name:
                 
                 inp = self.tree.btree.inputs[socket_index]
                 
@@ -2742,8 +2751,6 @@ class GroupInput(CustomGroup):
             new_input.description = description
             
             self.build_outsockets()
-
-
             
             sc_name = self.snake_case(name)
             index   = self.outsockets[sc_name]
@@ -2801,6 +2808,8 @@ class GroupInput(CustomGroup):
                                 mod[new_input.identifier] = value
                                 
         # ----- Return the newly created socket
+        
+        #print("NEW SOCKET", socket.name, ":", socket, ", node", socket.node)
         
         return socket
             

@@ -401,13 +401,6 @@ class Domain:
         
         """
         
-        print("TRANSFER ATTRIBUTE")
-        print("   attribute      ", attribute)
-        print("   source_position", source_position)
-        print("   index          ", index)
-        print("   data_type      ", data_type)
-        print("   mapping        ", mapping)
-        
         dt = Socket.domain_data_type(attribute) if data_type is None else Socket.domain_data_type(data_type)
         
         return nodes.TransferAttribute(self.data_socket, attribute=attribute, source_position=source_position, index=index,
@@ -1517,8 +1510,18 @@ class ControlPoint(Domain, PointInterface):
     @tilt.setter
     def tilt(self, value):
         self.stack(nodes.SetCurveTilt(curve=self.data_socket, selection=self.selection, tilt=value))
-    
         
+    @property
+    def tangent(self):
+        """ Tangent attribute
+        
+        Returns:
+            Vector
+            
+        getter: :class:`nodes.CurveTangent`
+        setter: read only
+        """
+        return self.attribute(nodes.CurveTangent()).get_datasocket(0)
         
     # ----------------------------------------------------------------------------------------------------
     # Handles
