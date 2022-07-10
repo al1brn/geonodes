@@ -19,7 +19,7 @@ You keep the full power of Blender geometry nodes but with the elegance of Pytho
 - [Better a demo than long words](#better-a-demo-than-long-words)
 - [Installation](#installation)
 - [Documentation](#documentation)
-- [API reference](docs/html/index.html)
+- [API reference](https://al1brn.github.io/geonodes/)
 
 ## Better a demo than long words
 
