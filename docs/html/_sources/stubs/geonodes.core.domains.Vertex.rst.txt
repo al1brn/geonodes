@@ -1,6 +1,0 @@
-﻿geonodes.core.domains.Vertex
-============================
-
-.. currentmodule:: geonodes.core.domains
-
-.. autoclass:: Vertex
