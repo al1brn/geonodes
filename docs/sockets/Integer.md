@@ -67,1722 +67,1411 @@
 
 ## Random
 
-> Node: [RandomValue](/docs/nodes/RandomValue.md)
+Geometry node [*Random Value*].
+
+
+  Args:
+    min: Integer
+    max: Integer
+    ID: Integer
+    seed: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Integer
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
-node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) </sub>
-                          
-```python
-v = Integer.Random(min, max, ID, seed, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- min : Integer
-- max : Integer
-- ID : Integer
-- seed : Integer## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'INT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='INT', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Integer
-
+  Node :class:`~geonodes.nodes.nodes.RandomValue`
+  
+  - data_type = 'INT'
+    
+  .. blid:: FunctionNodeRandomValue
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='INT', label=node_label, node_color=node_color)
+    
 
 ## accumulate_field
 
-> Node: [AccumulateField](/docs/nodes/AccumulateField.md)
+Geometry node [*Accumulate Field*].
+
+
+  Args:
+    group_index: Integer
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [leading (Integer), trailing (Integer), total (Integer)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [GeometryNodeAccumulateField](https://docs.blender.org/api/current/bpy.types.GeometryNodeAccumulateField.html)
-node ref [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/accumulate_field.html) </sub>
-                          
-```python
-v = integer.accumulate_field(group_index, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value : Integer (self)
-- group_index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'INT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.AccumulateField(value=self, group_index=group_index, data_type='INT', domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [leading (Integer), trailing (Integer), total (Integer)]
-
+  Node :class:`~geonodes.nodes.nodes.AccumulateField`
+  
+  - data_type = 'INT'
+    
+  .. blid:: GeometryNodeAccumulateField
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.AccumulateField(value=self, group_index=group_index, data_type='INT', domain=domain, label=node_label, node_color=node_color)
+    
 
 ## capture_attribute
 
-> Node: [CaptureAttribute](/docs/nodes/CaptureAttribute.md)
+Geometry node [*Capture Attribute*].
+
+
+  Args:
+    geometry: Geometry
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [geometry (Geometry), attribute (Integer)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
-node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) </sub>
-                          
-```python
-v = integer.capture_attribute(geometry, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value : Integer (self)
-- geometry : Geometry## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'INT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.CaptureAttribute(value=self, geometry=geometry, data_type='INT', domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [geometry (Geometry), attribute (Integer)]
-
+  Node :class:`~geonodes.nodes.nodes.CaptureAttribute`
+  
+  - data_type = 'INT'
+    
+  .. blid:: GeometryNodeCaptureAttribute
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.CaptureAttribute(value=self, geometry=geometry, data_type='INT', domain=domain, label=node_label, node_color=node_color)
+    
 
 ## field_at_index
 
-> Node: [FieldAtIndex](/docs/nodes/FieldAtIndex.md)
+Geometry node [*Field at Index*].
+
+
+  Args:
+    value: Integer
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Integer
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
-node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) </sub>
-                          
-```python
-v = integer.field_at_index(value, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- index : Integer (self)
-- value : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'INT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.FieldAtIndex(index=self, value=value, data_type='INT', domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Integer
-
+  Node :class:`~geonodes.nodes.nodes.FieldAtIndex`
+  
+  - data_type = 'INT'
+    
+  .. blid:: GeometryNodeFieldAtIndex
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.FieldAtIndex(index=self, value=value, data_type='INT', domain=domain, label=node_label, node_color=node_color)
+    
 
 ## raycast
 
-> Node: [Raycast](/docs/nodes/Raycast.md)
+Geometry node [*Raycast*].
+
+
+  Args:
+    target_geometry: Geometry
+    source_position: Vector
+    ray_direction: Vector
+    ray_length: Float
+    mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Integer)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
-node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) </sub>
-                          
-```python
-v = integer.raycast(target_geometry, source_position, ray_direction, ray_length, mapping, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- attribute : Integer (self)
-- target_geometry : Geometry
-- source_position : Vector
-- ray_direction : Vector
-- ray_length : Float## Parameters
-- mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'INT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='INT', mapping=mapping, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Integer)]
-
+  Node :class:`~geonodes.nodes.nodes.Raycast`
+  
+  - data_type = 'INT'
+    
+  .. blid:: GeometryNodeRaycast
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='INT', mapping=mapping, label=node_label, node_color=node_color)
+    
 
 ## switch
 
-> Node: [Switch](/docs/nodes/Switch.md)
+Geometry node [*Switch*].
+
+
+  Args:
+    switch: Boolean
+    true: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Integer
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
-                          
-```python
-v = integer.switch(switch, true, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- false : Integer (self)
-- switch : Boolean
-- true : Integer## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- input_type : 'INT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Switch(false=self, switch=switch, true=true, input_type='INT', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Integer
-
+  Node :class:`~geonodes.nodes.nodes.Switch`
+  
+  - input_type = 'INT'
+    
+  .. blid:: GeometryNodeSwitch
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Switch(false=self, switch=switch, true=true, input_type='INT', label=node_label, node_color=node_color)
+    
 
 ## less_than
 
-> Node: [Compare](/docs/nodes/Compare.md)
+Geometry node [*Compare*].
+
+
+  Args:
+    b: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-                          
-```python
-v = integer.less_than(b, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- a : Integer (self)
-- b : Integer## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'INT'
-- mode : 'ELEMENT'
-- operation : 'LESS_THAN'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_THAN', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.Compare`
+  
+  - data_type = 'INT'
+  - mode = 'ELEMENT'
+  - operation = 'LESS_THAN'
+    
+  .. blid:: FunctionNodeCompare
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_THAN', label=node_label, node_color=node_color)
+    
 
 ## less_equal
 
-> Node: [Compare](/docs/nodes/Compare.md)
+Geometry node [*Compare*].
+
+
+  Args:
+    b: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-                          
-```python
-v = integer.less_equal(b, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- a : Integer (self)
-- b : Integer## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'INT'
-- mode : 'ELEMENT'
-- operation : 'LESS_EQUAL'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.Compare`
+  
+  - data_type = 'INT'
+  - mode = 'ELEMENT'
+  - operation = 'LESS_EQUAL'
+    
+  .. blid:: FunctionNodeCompare
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL', label=node_label, node_color=node_color)
+    
 
 ## greater_than
 
-> Node: [Compare](/docs/nodes/Compare.md)
+Geometry node [*Compare*].
+
+
+  Args:
+    b: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-                          
-```python
-v = integer.greater_than(b, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- a : Integer (self)
-- b : Integer## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'INT'
-- mode : 'ELEMENT'
-- operation : 'GREATER_THAN'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_THAN', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.Compare`
+  
+  - data_type = 'INT'
+  - mode = 'ELEMENT'
+  - operation = 'GREATER_THAN'
+    
+  .. blid:: FunctionNodeCompare
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_THAN', label=node_label, node_color=node_color)
+    
 
 ## greater_equal
 
-> Node: [Compare](/docs/nodes/Compare.md)
+Geometry node [*Compare*].
+
+
+  Args:
+    b: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-                          
-```python
-v = integer.greater_equal(b, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- a : Integer (self)
-- b : Integer## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'INT'
-- mode : 'ELEMENT'
-- operation : 'GREATER_EQUAL'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.Compare`
+  
+  - data_type = 'INT'
+  - mode = 'ELEMENT'
+  - operation = 'GREATER_EQUAL'
+    
+  .. blid:: FunctionNodeCompare
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL', label=node_label, node_color=node_color)
+    
 
 ## equal
 
-> Node: [Compare](/docs/nodes/Compare.md)
+Geometry node [*Compare*].
+
+
+  Args:
+    b: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-                          
-```python
-v = integer.equal(b, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- a : Integer (self)
-- b : Integer## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'INT'
-- mode : 'ELEMENT'
-- operation : 'EQUAL'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='EQUAL', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.Compare`
+  
+  - data_type = 'INT'
+  - mode = 'ELEMENT'
+  - operation = 'EQUAL'
+    
+  .. blid:: FunctionNodeCompare
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='EQUAL', label=node_label, node_color=node_color)
+    
 
 ## not_equal
 
-> Node: [Compare](/docs/nodes/Compare.md)
+Geometry node [*Compare*].
+
+
+  Args:
+    b: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-node ref [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) </sub>
-                          
-```python
-v = integer.not_equal(b, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- a : Integer (self)
-- b : Integer## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'INT'
-- mode : 'ELEMENT'
-- operation : 'NOT_EQUAL'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.Compare`
+  
+  - data_type = 'INT'
+  - mode = 'ELEMENT'
+  - operation = 'NOT_EQUAL'
+    
+  .. blid:: FunctionNodeCompare
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Compare(a=self, b=b, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL', label=node_label, node_color=node_color)
+    
 
 ## add
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.add(value1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'ADD'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='ADD', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'ADD'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, operation='ADD', label=node_label, node_color=node_color)
+    
 
 ## subtract
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.subtract(value1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'SUBTRACT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='SUBTRACT', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'SUBTRACT'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, operation='SUBTRACT', label=node_label, node_color=node_color)
+    
 
 ## multiply
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.multiply(value1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'MULTIPLY'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='MULTIPLY', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'MULTIPLY'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, operation='MULTIPLY', label=node_label, node_color=node_color)
+    
 
 ## divide
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.divide(value1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'DIVIDE'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='DIVIDE', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'DIVIDE'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, operation='DIVIDE', label=node_label, node_color=node_color)
+    
 
 ## multiply_add
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    value2: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.multiply_add(value1, value2, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float
-- value2 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'MULTIPLY_ADD'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'MULTIPLY_ADD'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, value2=value2, operation='MULTIPLY_ADD', label=node_label, node_color=node_color)
+    
 
 ## pow
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.pow(value1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'POWER'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='POWER', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'POWER'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, operation='POWER', label=node_label, node_color=node_color)
+    
 
 ## log
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.log(value1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'LOGARITHM'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='LOGARITHM', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'LOGARITHM'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, operation='LOGARITHM', label=node_label, node_color=node_color)
+    
 
 ## sqrt
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.sqrt(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'SQRT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='SQRT', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'SQRT'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='SQRT', label=node_label, node_color=node_color)
+    
 
 ## inverse_sqrt
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.inverse_sqrt(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'INVERSE_SQRT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='INVERSE_SQRT', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'INVERSE_SQRT'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='INVERSE_SQRT', label=node_label, node_color=node_color)
+    
 
 ## abs
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.abs(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'ABSOLUTE'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='ABSOLUTE', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'ABSOLUTE'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='ABSOLUTE', label=node_label, node_color=node_color)
+    
 
 ## exp
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.exp(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'EXPONENT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='EXPONENT', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'EXPONENT'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='EXPONENT', label=node_label, node_color=node_color)
+    
 
 ## min
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.min(value1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'MINIMUM'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='MINIMUM', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'MINIMUM'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, operation='MINIMUM', label=node_label, node_color=node_color)
+    
 
 ## max
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.max(value1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'MAXIMUM'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='MAXIMUM', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'MAXIMUM'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, operation='MAXIMUM', label=node_label, node_color=node_color)
+    
 
 ## less_than
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.less_than(value1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'LESS_THAN'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='LESS_THAN', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'LESS_THAN'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, operation='LESS_THAN', label=node_label, node_color=node_color)
+    
 
 ## greater_than
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.greater_than(value1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'GREATER_THAN'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='GREATER_THAN', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'GREATER_THAN'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, operation='GREATER_THAN', label=node_label, node_color=node_color)
+    
 
 ## sign
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.sign(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'SIGN'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='SIGN', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'SIGN'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='SIGN', label=node_label, node_color=node_color)
+    
 
 ## compare
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    value2: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.compare(value1, value2, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float
-- value2 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'COMPARE'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'COMPARE'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, value2=value2, operation='COMPARE', label=node_label, node_color=node_color)
+    
 
 ## smooth_min
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    value2: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.smooth_min(value1, value2, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float
-- value2 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'SMOOTH_MIN'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'SMOOTH_MIN'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MIN', label=node_label, node_color=node_color)
+    
 
 ## smooth_max
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    value2: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.smooth_max(value1, value2, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float
-- value2 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'SMOOTH_MAX'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'SMOOTH_MAX'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, value2=value2, operation='SMOOTH_MAX', label=node_label, node_color=node_color)
+    
 
 ## round
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.round(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'ROUND'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='ROUND', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'ROUND'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='ROUND', label=node_label, node_color=node_color)
+    
 
 ## floor
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.floor(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'FLOOR'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='FLOOR', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'FLOOR'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='FLOOR', label=node_label, node_color=node_color)
+    
 
 ## ceil
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.ceil(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'CEIL'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='CEIL', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'CEIL'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='CEIL', label=node_label, node_color=node_color)
+    
 
 ## trunc
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.trunc(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'TRUNC'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='TRUNC', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'TRUNC'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='TRUNC', label=node_label, node_color=node_color)
+    
 
 ## fract
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.fract(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'FRACT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='FRACT', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'FRACT'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='FRACT', label=node_label, node_color=node_color)
+    
 
 ## modulo
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.modulo(value1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'MODULO'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='MODULO', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'MODULO'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, operation='MODULO', label=node_label, node_color=node_color)
+    
 
 ## wrap
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    value2: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.wrap(value1, value2, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float
-- value2 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'WRAP'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'WRAP'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, value2=value2, operation='WRAP', label=node_label, node_color=node_color)
+    
 
 ## snap
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.snap(value1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'SNAP'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='SNAP', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'SNAP'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, operation='SNAP', label=node_label, node_color=node_color)
+    
 
 ## pingpong
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.pingpong(value1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'PINGPONG'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='PINGPONG', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'PINGPONG'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, operation='PINGPONG', label=node_label, node_color=node_color)
+    
 
 ## sin
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.sin(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'SINE'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='SINE', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'SINE'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='SINE', label=node_label, node_color=node_color)
+    
 
 ## cos
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.cos(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'COSINE'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='COSINE', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'COSINE'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='COSINE', label=node_label, node_color=node_color)
+    
 
 ## tan
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.tan(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'TANGENT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='TANGENT', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'TANGENT'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='TANGENT', label=node_label, node_color=node_color)
+    
 
 ## arcsin
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.arcsin(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'ARCSINE'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='ARCSINE', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'ARCSINE'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='ARCSINE', label=node_label, node_color=node_color)
+    
 
 ## arccos
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.arccos(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'ARCCOSINE'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='ARCCOSINE', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'ARCCOSINE'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='ARCCOSINE', label=node_label, node_color=node_color)
+    
 
 ## arctan
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.arctan(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'ARCTANGENT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='ARCTANGENT', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'ARCTANGENT'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='ARCTANGENT', label=node_label, node_color=node_color)
+    
 
 ## arctan2
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    value1: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.arctan2(value1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)
-- value1 : Float## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'ARCTAN2'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, value1=value1, operation='ARCTAN2', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'ARCTAN2'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, value1=value1, operation='ARCTAN2', label=node_label, node_color=node_color)
+    
 
 ## sinh
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.sinh(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'SINH'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='SINH', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'SINH'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='SINH', label=node_label, node_color=node_color)
+    
 
 ## cosh
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.cosh(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'COSH'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='COSH', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'COSH'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='COSH', label=node_label, node_color=node_color)
+    
 
 ## tanh
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.tanh(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'TANH'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='TANH', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'TANH'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='TANH', label=node_label, node_color=node_color)
+    
 
 ## radians
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.radians(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'RADIANS'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='RADIANS', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'RADIANS'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='RADIANS', label=node_label, node_color=node_color)
+    
 
 ## degrees
 
-> Node: [Math](/docs/nodes/Math.md)
+Geometry node [*Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-integer) [index](/docs/index.md)
-blender ref [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-node ref [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) </sub>
-                          
-```python
-v = integer.degrees(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value0 : Float (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'DEGREES'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Math(value0=self, operation='DEGREES', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.Math`
+  
+  - operation = 'DEGREES'
+    
+  .. blid:: ShaderNodeMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Math(value0=self, operation='DEGREES', label=node_label, node_color=node_color)
+    

@@ -6,72 +6,74 @@ Instance domain
 
 ## delete
 
-> Delete instances
+Delete instances.
+
+Node :class:`~geonodes.nodes.nodes.DeleteGeometry`
+
+Returns:
+  self
   
-<blid GeometryNodeDeleteGeometry>
+.. code-block:: python
 
-### Example
-
-```python
-instances.insts(...).delete()
-```
-
-
+  instances.insts(...).delete()
+  
+  
 
 ## rotate
 
-> Rotate instances
+Rotate instances.
+
+Node :class:`~geonodes.nodes.nodes.RotateInstances`
+
+Args:
+  rotation : Vector
+  pivot_point : Vector
+  local_space : Boolean
   
-<blid GeometryNodeRotateInstances>
+Returns:
+  self
+  
+.. code-block:: python
 
-### Arguments
-
-- rotation : Vector
-- pivot_point : Vector
-- local_space : Boolean
-
-### Example
-
-```python
-instances.insts(...).rotate(...)
-```
-
-
+  instances.insts(...).rotate(...)
+  
+  
 
 ## scale
 
-> Scale instances
+Scale instances.
+
+Node :class:`~geonodes.nodes.nodes.ScaleInstances`
+
+Args:
+  scale : Vector
+  center : Vector
+  local_space : Boolean
   
-<blid GeometryNodeScaleInstances>
+Returns:
+  self
+  
+.. code-block:: python
 
-### Arguments
-
-- scale : Vector
-- center : Vector
-- local_space : Boolean
-
-### Example
-
-```python
-instances.insts(...).scale(...)
-```
-
-
+  instances.insts(...).scale(...)
+  
+  
 
 ## translate
 
-> Translate instances
+> Translate instances.
   
-<blid GeometryNodeTranslateInstances>
+Node :class:`~geonodes.nodes.nodes.TranslateInstances`
 
-### Arguments
-
+Args:
 - translation : Vector
 - local_space : Boolean
+  
+Returns:
+  self
+  
+.. code-block:: python
 
-### Example
-
-```python
-instances.insts(...).translate(...)
-```
-
+  instances.insts(...).translate(...)
+  
+  

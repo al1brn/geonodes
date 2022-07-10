@@ -7,6 +7,18 @@ Curve domains
 Control point : the point domain of splines
 
 
+## tangent
+
+Tangent attribute
+
+Returns:
+  Vector
+  
+getter: :class:`~geonodes.nodes.nodes.CurveTangent`
+setter: read only
+
+
+
 ## set_handle_type
 
 Set handle type
@@ -43,7 +55,7 @@ Args:
   offset (Vector): Offset
   mode (str): 'LEFT' or 'RIGHT'
   
-- setter: :class:`nodes.SetHandlePositions`
+- setter: :class:`~geonodes.nodes.nodes.SetHandlePositions`
   
   
   
@@ -85,7 +97,7 @@ Args:
 Returns:
   Boolean
   
-getter: :class:`nodes.HandleTypeSelection`
+getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
 
 
 
@@ -97,7 +109,7 @@ Auto Handle selection
 Returns:
   Boolean
   
-getter: :class:`nodes.HandleTypeSelection`
+getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
 
 
 
@@ -108,7 +120,7 @@ Free Handle selection
 Returns:
   Boolean
   
-getter: :class:`nodes.HandleTypeSelection`
+getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
 
 
 
@@ -119,7 +131,7 @@ Vector Handle selection
 Returns:
   Boolean
   
-getter: :class:`nodes.HandleTypeSelection`
+getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
 
 
 
@@ -130,7 +142,7 @@ Align Handle selection
 Returns:
   Boolean
   
-getter: :class:`nodes.HandleTypeSelection`
+getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
 
 
 
@@ -141,7 +153,7 @@ Left Auto Handle selection
 Returns:
   Boolean
   
-getter: :class:`nodes.HandleTypeSelection`
+getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
 
 
 
@@ -152,7 +164,7 @@ Right Auto Handle selection
 Returns:
   Boolean
   
-getter: :class:`nodes.HandleTypeSelection`
+getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
 
 
 
@@ -163,7 +175,7 @@ Left Free Handle selection
 Returns:
   Boolean
   
-getter: :class:`nodes.HandleTypeSelection`
+getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
 
 
 
@@ -174,7 +186,7 @@ Right Free Handle selection
 Returns:
   Boolean
   
-getter: :class:`nodes.HandleTypeSelection`
+getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
 
 
 
@@ -185,7 +197,7 @@ Left Vector Handle selection
 Returns:
   Boolean
   
-getter: :class:`nodes.HandleTypeSelection`
+getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
 
 
 
@@ -196,7 +208,7 @@ Right Vector Handle selection
 Returns:
   Boolean
   
-getter: :class:`nodes.HandleTypeSelection`
+getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
 
 
 
@@ -207,7 +219,7 @@ Left Align Handle selection
 Returns:
   Boolean
   
-getter: :class:`nodes.HandleTypeSelection`
+getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
 
 
 
@@ -218,5 +230,5 @@ Right Align Handle selection
 Returns:
   Boolean
   
-getter: :class:`nodes.HandleTypeSelection`
+getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
 

@@ -131,7 +131,7 @@ Type cast to Instance.
 
 Attribute statistic
 
-call :class:`nodes.AttributeStatistic`
+call :class:`~geonodes.nodes.nodes.AttributeStatistic`
 
 
 
@@ -346,7 +346,7 @@ Index attribute
 Returns:
   Integer
   
-- setter: :class:`nodes.Index`
+- setter: :class:`~geonodes.nodes.nodes.Index`
 - setter: Read only
   
   
@@ -364,16 +364,15 @@ No setter
 
 ## duplicate
 
-> Duplicate domain
+Duplicate domain.
+
+Node :class:`~geonodes.nodes.nodes.DuplicateElements`
+
+Args:
+  amount : Integer
   
-<blid GeometryNodeDuplicateElements>
-
-### Arguments
-
-- amount : Integer
-
-### Returns
-
-- duplicate index
+Returns:
+  duplicate index
+  
   
   

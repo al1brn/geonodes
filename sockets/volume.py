@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-07-03
+Created on 2022-07-10
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -19,22 +19,8 @@ logger = logging.Logger('geonodes')
 # Data class Volume
 
 class Volume(gn.Geometry):
-    """ 
-
-    Data socket Volume
-    ------------------
-        > Inherits from gn.Geometry
-          
-        <sub>go to index</sub>
-        
-        
-    
-
-        Methods
-        -------
-            - to_mesh : mesh (Mesh)
+    """ Data class Volume
     """
-
 
     def copy(self):
 
@@ -45,42 +31,33 @@ class Volume(gn.Geometry):
     # Methods
 
     def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID', node_label = None, node_color = None):
-        """ > Node: VolumeToMesh
-          
-        <sub>go to: top index
-        blender ref GeometryNodeVolumeToMesh
-        node ref Volume to Mesh </sub>
-                                  
-        ```python
-        v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_mode, node_label = None, node_color = None)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Sockets
-            - volume : Volume (self)
-            - voxel_size : Float
-            - voxel_amount : Float
-            - threshold : Float
-            - adaptivity : Float## Parameters
-            - resolution_mode : 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
-            - node_label : None
-            - node_color : None
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode, label=node_label, node_color=node_color)
-            ```
-    
-
-        Returns
-        -------
-            Mesh
+        """ Geometry node [*Volume to Mesh*].
+        
+        
+            Args:
+                voxel_size: Float
+                voxel_amount: Float
+                threshold: Float
+                adaptivity: Float
+                resolution_mode (str): 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                Mesh
+                
+            **Node creation**
             
+            Node :class:`~geonodes.nodes.nodes.VolumeToMesh`
+            
+            
+            .. blid:: GeometryNodeVolumeToMesh
+            
+            .. code-block:: python
+            
+                from geonodes import nodes
+                nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode, label=node_label, node_color=node_color)
+                
         """
 
         return nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode, label=node_label, node_color=node_color).mesh

@@ -11,7 +11,7 @@ Tangent attribute
 Returns:
   Vector
   
-getter: :class:`nodes.CurveTangent`
+getter: :class:`~geonodes.nodes.nodes.CurveTangent`
 setter: read only
 
 
@@ -27,7 +27,7 @@ Output sockets:
 - length : Float
 - point_count : Integer
   
-getter: :class:`nodes.SplineLength`
+getter: :class:`~geonodes.nodes.nodes.SplineLength`
 setter: read only
 
 
@@ -39,7 +39,7 @@ Length attribute
 Returns:
   Float: length socket of spline_length
   
-getter: :class:`nodes.SplineLength`
+getter: :class:`~geonodes.nodes.nodes.SplineLength`
 setter: read only
 
 
@@ -51,7 +51,7 @@ Point count attribute
 Returns:
   Integer: point_count socket of spline_length
   
-getter: :class:`nodes.SplineLength`
+getter: :class:`~geonodes.nodes.nodes.SplineLength`
 setter: read only
 
 
@@ -68,7 +68,7 @@ Output sockets:
 - length : Float
 - index : Integer
   
-getter: :class:`nodes.SplineParameter`
+getter: :class:`~geonodes.nodes.nodes.SplineParameter`
 setter: read only
 
 
@@ -80,7 +80,7 @@ Parameter factor attribute
 Returns:
   Float: factor socket of parameter
   
-getter: :class:`nodes.SplineParameter`
+getter: :class:`~geonodes.nodes.nodes.SplineParameter`
 setter: read only
 
 
@@ -92,7 +92,7 @@ Parameter length attribute
 Returns:
   Float: length socket of parameter
   
-getter: :class:`nodes.SplineParameter`
+getter: :class:`~geonodes.nodes.nodes.SplineParameter`
 setter: read only
 
 
@@ -104,7 +104,7 @@ Parameter factor attribute
 Returns:
   Integer: index socket of parameter
   
-getter: :class:`nodes.SplineParameter`
+getter: :class:`~geonodes.nodes.nodes.SplineParameter`
 setter: read only
 
 
@@ -121,17 +121,21 @@ Args:
 
 Float
 
-getter: :class:`nodes.EndpointSelection`
+getter: :class:`~geonodes.nodes.nodes.EndpointSelection`
 
 
 
 ## delete
 
-<method GeometryNodeDeleteGeometry>
+Delete splines
 
-### Example
+Node :class:`~geonodes.nodes.nodes.DeleteGeometry`
 
-```python
-curve.splines(...).delete()
-```
+Returns:
+  self
+  
+.. code-block:: python
 
+  curve.splines(...).delete()
+  
+  

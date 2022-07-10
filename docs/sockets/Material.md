@@ -14,65 +14,53 @@
 
 ## switch
 
-> Node: [Switch](/docs/nodes/Switch.md)
+Geometry node [*Switch*].
+
+
+  Args:
+    switch: Boolean
+    true: Material
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Material
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-material) [index](/docs/index.md)
-blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
-                          
-```python
-v = material.switch(switch, true, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- false : Material (self)
-- switch : Boolean
-- true : Material## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- input_type : 'MATERIAL'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Switch(false=self, switch=switch, true=true, input_type='MATERIAL', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Material
-
+  Node :class:`~geonodes.nodes.nodes.Switch`
+  
+  - input_type = 'MATERIAL'
+    
+  .. blid:: GeometryNodeSwitch
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Switch(false=self, switch=switch, true=true, input_type='MATERIAL', label=node_label, node_color=node_color)
+    
 
 ## selection
 
-> Node: [MaterialSelection](/docs/nodes/MaterialSelection.md)
+Geometry node [*Material Selection*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-material) [index](/docs/index.md)
-blender ref [GeometryNodeMaterialSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
-node ref [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) </sub>
-                          
-```python
-v = material.selection(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- material : Material (self)## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.MaterialSelection(material=self, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.MaterialSelection`
+  
+  
+  .. blid:: GeometryNodeMaterialSelection
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.MaterialSelection(material=self, label=node_label, node_color=node_color)
+    

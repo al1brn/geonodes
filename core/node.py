@@ -1637,11 +1637,15 @@ class Tree:
         from geonodes import Geometry
         
         attr_nodes = []
-        for node in self.nodes:
-            if node.is_attribute:
-                attr_nodes.append(node)
+        #for node in self.nodes:
+        #    if node.is_attribute:
+        #        attr_nodes.append(node)
                 
-        for attr_node in attr_nodes:
+        #for attr_node in attr_nodes:
+        for attr_node in self.nodes:
+            
+            if not attr_node.is_attribute:
+                continue
             
             # ---------------------------------------------------------------------------
             # ----- Check if the fed nodes with geometry input are ok
@@ -1653,6 +1657,7 @@ class Tree:
                     bsocket = nd.input_geometry_bsocket
 
                     logging.debug("CHECKING", attr_node, nd, '-->', bsocket)
+                    #print("CHECKING", attr_node, nd, '-->', bsocket)
 
                     if bsocket is None:
                         if nd in security:
@@ -1662,6 +1667,7 @@ class Tree:
                             #node.node_color = "red"
                             #nd.node_color = "red"
                             #raise RuntimeError(f"Error when checking the attribute node {attr_node}, apparently, the tree loops on node {nd} {nd.bnode}")
+
                         security.append(nd)
                         
                         if not check_geo_nodes(nd):
@@ -1673,13 +1679,28 @@ class Tree:
                         
                         for link in bsocket.links:
                             if link.from_socket != attr_node.owning_bsocket:
+                                
+                                def getnode(bsock):
+                                    for dn in self.nodes:
+                                        for ss in dn.bnode.outputs:
+                                            if ss == bsock:
+                                                return dn
+                                    return None
+
+                                #print("CAPTURE NEEDED", link.from_socket, "!=", attr_node.owning_bsocket)
+                                #print("              ", getnode(link.from_socket), "!=", getnode(attr_node.owning_bsocket))
                                 return False
                 
                 return True
-            
                         
             if check_geo_nodes(attr_node):
                 continue
+            
+            attr_nodes.append(attr_node)
+            
+            
+            
+        for attr_node in attr_nodes:
             
             # ---------------------------------------------------------------------------
             # ----- A capture node is required

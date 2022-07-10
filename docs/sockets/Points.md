@@ -21,200 +21,160 @@
 
 ## domain_size
 
-> Node: [DomainSize](/docs/nodes/DomainSize.md)
+Geometry node [*Domain Size*].
+
+
+
+  Returns:
+    Integer
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-points) [index](/docs/index.md)
-blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
-                          
-```python
-v = points.domain_size
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Fixed parameters
-- component : 'POINTCLOUD'
-- label:f"{self.node_chain_label}.domain_size"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DomainSize(geometry=self, component='POINTCLOUD', label=f"{self.node_chain_label}.domain_size")
-```
-
-### Returns
-
-Integer
-
+  Node :class:`~geonodes.nodes.nodes.DomainSize`
+  
+  - component = 'POINTCLOUD'
+    
+  .. blid:: GeometryNodeAttributeDomainSize
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.DomainSize(geometry=self, component='POINTCLOUD', label=f"{self.node_chain_label}.domain_size")
+    
 
 ## point_count
 
-> Node: [DomainSize](/docs/nodes/DomainSize.md)
+Geometry node [*Domain Size*].
+
+
+
+  Returns:
+    Integer
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-points) [index](/docs/index.md)
-blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
-                          
-```python
-v = points.point_count
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Fixed parameters
-- component : 'POINTCLOUD'
-- label:f"{self.node_chain_label}.point_count"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DomainSize(geometry=self, component='POINTCLOUD', label=f"{self.node_chain_label}.point_count")
-```
-
-### Returns
-
-Integer
-
+  Node :class:`~geonodes.nodes.nodes.DomainSize`
+  
+  - component = 'POINTCLOUD'
+    
+  .. blid:: GeometryNodeAttributeDomainSize
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.DomainSize(geometry=self, component='POINTCLOUD', label=f"{self.node_chain_label}.point_count")
+    
 
 ## set_radius
 
-> Node: [SetPointRadius](/docs/nodes/SetPointRadius.md)
+Geometry node [*Set Point Radius*].
+
+
+  Args:
+    selection: Boolean
+    radius: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Points
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-points) [index](/docs/index.md)
-blender ref [GeometryNodeSetPointRadius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPointRadius.html)
-node ref [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/set_point_radius.html) </sub>
-                          
-```python
-v = points.set_radius(selection, radius, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- points : Points (self)
-- selection : Boolean
-- radius : Float## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SetPointRadius(points=self, selection=selection, radius=radius, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Points
-
+  Node :class:`~geonodes.nodes.nodes.SetPointRadius`
+  
+  
+  .. blid:: GeometryNodeSetPointRadius
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SetPointRadius(points=self, selection=selection, radius=radius, label=node_label, node_color=node_color)
+    
 
 ## instance_on_points
 
-> Node: [InstanceOnPoints](/docs/nodes/InstanceOnPoints.md)
+Geometry node [*Instance on Points*].
+
+
+  Args:
+    selection: Boolean
+    instance: Geometry
+    pick_instance: Boolean
+    instance_index: Integer
+    rotation: Vector
+    scale: Vector
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Instances
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-points) [index](/docs/index.md)
-blender ref [GeometryNodeInstanceOnPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
-node ref [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) </sub>
-                          
-```python
-v = points.instance_on_points(selection, instance, pick_instance, instance_index, rotation, scale, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- points : Points (self)
-- selection : Boolean
-- instance : Geometry
-- pick_instance : Boolean
-- instance_index : Integer
-- rotation : Vector
-- scale : Vector## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Instances
-
+  Node :class:`~geonodes.nodes.nodes.InstanceOnPoints`
+  
+  
+  .. blid:: GeometryNodeInstanceOnPoints
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale, label=node_label, node_color=node_color)
+    
 
 ## to_vertices
 
-> Node: [PointsToVertices](/docs/nodes/PointsToVertices.md)
+Geometry node [*Points to Vertices*].
+
+
+  Args:
+    selection: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Mesh
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-points) [index](/docs/index.md)
-blender ref [GeometryNodePointsToVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html)
-node ref [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html) </sub>
-                          
-```python
-v = points.to_vertices(selection, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- points : Points (self)
-- selection : Boolean## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.PointsToVertices(points=self, selection=selection, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Mesh
-
+  Node :class:`~geonodes.nodes.nodes.PointsToVertices`
+  
+  
+  .. blid:: GeometryNodePointsToVertices
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.PointsToVertices(points=self, selection=selection, label=node_label, node_color=node_color)
+    
 
 ## to_volume
 
-> Node: [PointsToVolume](/docs/nodes/PointsToVolume.md)
+Geometry node [*Points to Volume*].
+
+
+  Args:
+    density: Float
+    voxel_size: Float
+    voxel_amount: Float
+    radius: Float
+    resolution_mode (str): 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Volume
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-points) [index](/docs/index.md)
-blender ref [GeometryNodePointsToVolume](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html)
-node ref [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html) </sub>
-                          
-```python
-v = points.to_volume(density, voxel_size, voxel_amount, radius, resolution_mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- points : Points (self)
-- density : Float
-- voxel_size : Float
-- voxel_amount : Float
-- radius : Float## Parameters
-- resolution_mode : 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Volume
-
+  Node :class:`~geonodes.nodes.nodes.PointsToVolume`
+  
+  
+  .. blid:: GeometryNodePointsToVolume
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode, label=node_label, node_color=node_color)
+    

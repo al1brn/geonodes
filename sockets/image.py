@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-07-03
+Created on 2022-07-10
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -19,22 +19,8 @@ logger = logging.Logger('geonodes')
 # Data class Image
 
 class Image(dsock.Image):
-    """ 
-
-    Data socket Image
-    -----------------
-        > Inherits from dsock.Image
-          
-        <sub>go to index</sub>
-        
-        
-    
-
-        Methods
-        -------
-            - switch : output (Image)
+    """ Data class Image
     """
-
 
     def copy(self):
 
@@ -45,40 +31,31 @@ class Image(dsock.Image):
     # Methods
 
     def switch(self, switch=None, true=None, node_label = None, node_color = None):
-        """ > Node: Switch
-          
-        <sub>go to: top index
-        blender ref GeometryNodeSwitch
-        node ref Switch </sub>
-                                  
-        ```python
-        v = image.switch(switch, true, node_label = None, node_color = None)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Sockets
-            - false : Image (self)
-            - switch : Boolean
-            - true : Image## Parameters
-            - node_label : None
-            - node_color : None## Fixed parameters
-            - input_type : 'IMAGE'
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.Switch(false=self, switch=switch, true=true, input_type='IMAGE', label=node_label, node_color=node_color)
-            ```
-    
-
-        Returns
-        -------
-            Image
+        """ Geometry node [*Switch*].
+        
+        
+            Args:
+                switch: Boolean
+                true: Image
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                Image
+                
+            **Node creation**
             
+            Node :class:`~geonodes.nodes.nodes.Switch`
+            
+                - input_type = 'IMAGE'
+                  
+            .. blid:: GeometryNodeSwitch
+            
+            .. code-block:: python
+            
+                from geonodes import nodes
+                nodes.Switch(false=self, switch=switch, true=true, input_type='IMAGE', label=node_label, node_color=node_color)
+                
         """
 
         return nodes.Switch(false=self, switch=switch, true=true, input_type='IMAGE', label=node_label, node_color=node_color).output

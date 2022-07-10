@@ -20,7 +20,7 @@ node = nodes.GeometryToInstance(*geometry, label=None, node_color=None)
 
 ### Input sockets
 
-- geometry : *Geometry
+- geometry : <m> Geometry
 
 ### Node label
 

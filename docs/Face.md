@@ -59,7 +59,7 @@ Neighbors node
 Returns:
   Node FaceNeighbors
   
-- getter: :class:`nodes.FaceNeighbors`
+- getter: :class:`~geonodes.nodes.nodes.FaceNeighbors`
 - setter: read only
   
   
@@ -71,7 +71,7 @@ Neighbors vertices attribute
 Returns:
   Integer: the output socket *vertices* of the *FaceNeighbors* node.
   
-- getter: :class:`nodes.FaceNeighbors`
+- getter: :class:`~geonodes.nodes.nodes.FaceNeighbors`
 - setter: read only
   
   
@@ -84,7 +84,7 @@ Neighbors faces attribute
 Returns:
   Integer: The output socket *faces* of the *FaceNeighbors* node.
   
-- getter: :class:`nodes.FaceNeighbors`
+- getter: :class:`~geonodes.nodes.nodes.FaceNeighbors`
 - setter: read only
   
   
@@ -97,7 +97,7 @@ Area attribute
 Returns:
   Float
   
-- getter: :class:`nodes.FaceArea`
+- getter: :class:`~geonodes.nodes.nodes.FaceArea`
 - setter: read only
   
   
@@ -114,7 +114,7 @@ Args:
 Returns:
   Boolean
   
-- getter: :class:`nodes.FaceIsPlanar`
+- getter: :class:`~geonodes.nodes.nodes.FaceIsPlanar`
 - setter: read only
   
   
@@ -127,7 +127,7 @@ Material attribute
 Args:
   material (str or bpy.types.Material): The material to set
   
-- setter: :class:`nodes.SetMaterial`
+- setter: :class:`~geonodes.nodes.nodes.SetMaterial`
   
   
   
@@ -142,77 +142,73 @@ Args:
 Returns:
   Boolean
   
-- getter: :class:`nodes.MaterialSelection`
+- getter: :class:`~geonodes.nodes.nodes.MaterialSelection`
   
   
   
 
 ## flip
 
-> Flip faces
+Flip faces.
+
+Node :class:`~geonodes.nodes.nodes.FlipFaces`
+
+Returns:
+  self
   
-<blid GeometryNodeFlipFaces>
+.. code-block:: python
 
-### Example
-
-```python
-mesh.faces.flip()
-```
-
-
-
+  mesh.faces.flip()
+  
+  
 
 ## triangulate
 
-> Triangulate faces
+Triangulate faces.
+
+Node :class:`~geonodes.nodes.nodes.Triangulate`
+
+Args:
+  minimum_vertices : Integer
+  ngon_method (str): (default = 'BEAUTY') in ('BEAUTY', 'CLIP')
+  quad_method (str): (default = 'SHORTEST_DIAGONAL') in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
   
-<blid GeometryNodeTriangulate>
+Returns:
+  self
+  
+.. code-block:: python
 
-### Arguments
-
-- minimum_vertices : Integer
-- ngon_method : str (default = 'BEAUTY') in ('BEAUTY', 'CLIP')
-- quad_method : str (default = 'SHORTEST_DIAGONAL') in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
-
-### Example
-
-```python
-mesh.faces(...).triangulate(...)
-```
-
-
+  mesh.faces(...).triangulate(...)
+  
+  
 
 ## distribute_points
 
-> Distribute points on faces
+Distribute points on faces.
+
+Node :class:`~geonodes.nodes.nodes.DistributePointsOnFaces`
+
+Args:
+  distance_min : Float
+  density_max : Float
+  density : Float
+  density_factor : Float
+  seed : Integer
+  distribute_method (str): (default = 'RANDOM') in ('RANDOM', 'POISSON')
   
-<blid GeometryNodeDistributePointsOnFaces>
+Returns:
+  Node with 3 sockets:
+  
+  - points : Points
+  - normal : Vector
+  - rotation : Vector
+    
+.. code-block:: python
 
-### Arguments
-
-- distance_min : Float
-- density_max : Float
-- density : Float
-- density_factor : Float
-- seed : Integer
-- distribute_method : str (default = 'RANDOM') in ('RANDOM', 'POISSON')
-
-### Returns
-
-Node with 3 sockets:
-- points : Points
-- normal : Vector
-- rotation : Vector
-
-### Example
-
-```python
-node = mesh.faces.distribute_points(...)
-cloud = node.points
-normal = node.normal
-rotation = node.rotation
-        
-```
-
-
-
+  node = mesh.faces.distribute_points(...)
+  cloud = node.points
+  normal = node.normal
+  rotation = node.rotation
+  
+  
+  

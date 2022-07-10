@@ -29,469 +29,386 @@
 
 ## Random
 
-> Node: [RandomValue](/docs/nodes/RandomValue.md)
+Geometry node [*Random Value*].
+
+
+  Args:
+    probability: Float
+    ID: Integer
+    seed: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
-blender ref [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
-node ref [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) </sub>
-                          
-```python
-v = Boolean.Random(probability, ID, seed, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- probability : Float
-- ID : Integer
-- seed : Integer## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'BOOLEAN'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.RandomValue`
+  
+  - data_type = 'BOOLEAN'
+    
+  .. blid:: FunctionNodeRandomValue
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.RandomValue(probability=probability, ID=ID, seed=seed, data_type='BOOLEAN', label=node_label, node_color=node_color)
+    
 
 ## capture_attribute
 
-> Node: [CaptureAttribute](/docs/nodes/CaptureAttribute.md)
+Geometry node [*Capture Attribute*].
+
+
+  Args:
+    geometry: Geometry
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [geometry (Geometry), attribute (Boolean)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
-blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
-node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) </sub>
-                          
-```python
-v = boolean.capture_attribute(geometry, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value : Boolean (self)
-- geometry : Geometry## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'BOOLEAN'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [geometry (Geometry), attribute (Boolean)]
-
+  Node :class:`~geonodes.nodes.nodes.CaptureAttribute`
+  
+  - data_type = 'BOOLEAN'
+    
+  .. blid:: GeometryNodeCaptureAttribute
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.CaptureAttribute(value=self, geometry=geometry, data_type='BOOLEAN', domain=domain, label=node_label, node_color=node_color)
+    
 
 ## field_at_index
 
-> Node: [FieldAtIndex](/docs/nodes/FieldAtIndex.md)
+Geometry node [*Field at Index*].
+
+
+  Args:
+    index: Integer
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
-blender ref [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
-node ref [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) </sub>
-                          
-```python
-v = boolean.field_at_index(index, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- value : Boolean (self)
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'BOOLEAN'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.FieldAtIndex`
+  
+  - data_type = 'BOOLEAN'
+    
+  .. blid:: GeometryNodeFieldAtIndex
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.FieldAtIndex(value=self, index=index, data_type='BOOLEAN', domain=domain, label=node_label, node_color=node_color)
+    
 
 ## raycast
 
-> Node: [Raycast](/docs/nodes/Raycast.md)
+Geometry node [*Raycast*].
+
+
+  Args:
+    target_geometry: Geometry
+    source_position: Vector
+    ray_direction: Vector
+    ray_length: Float
+    mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
-blender ref [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
-node ref [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) </sub>
-                          
-```python
-v = boolean.raycast(target_geometry, source_position, ray_direction, ray_length, mapping, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- attribute : Boolean (self)
-- target_geometry : Geometry
-- source_position : Vector
-- ray_direction : Vector
-- ray_length : Float## Parameters
-- mapping : 'INTERPOLATED' in [INTERPOLATED, NEAREST]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'BOOLEAN'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Boolean)]
-
+  Node :class:`~geonodes.nodes.nodes.Raycast`
+  
+  - data_type = 'BOOLEAN'
+    
+  .. blid:: GeometryNodeRaycast
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Raycast(attribute=self, target_geometry=target_geometry, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping, label=node_label, node_color=node_color)
+    
 
 ## switch
 
-> Node: [Switch](/docs/nodes/Switch.md)
+Geometry node [*Switch*].
+
+
+  Args:
+    false: Boolean
+    true: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
-blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
-                          
-```python
-v = boolean.switch(false, true, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- switch : Boolean (self)
-- false : Boolean
-- true : Boolean## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- input_type : 'BOOLEAN'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Switch(switch=self, false=false, true=true, input_type='BOOLEAN', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.Switch`
+  
+  - input_type = 'BOOLEAN'
+    
+  .. blid:: GeometryNodeSwitch
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Switch(switch=self, false=false, true=true, input_type='BOOLEAN', label=node_label, node_color=node_color)
+    
 
 ## b_and
 
-> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+Geometry node [*Boolean Math*].
+
+
+  Args:
+    boolean1: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
-blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-                          
-```python
-v = boolean.b_and(boolean1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- boolean0 : Boolean (self)
-- boolean1 : Boolean## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'AND'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.BooleanMath`
+  
+  - operation = 'AND'
+    
+  .. blid:: FunctionNodeBooleanMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND', label=node_label, node_color=node_color)
+    
 
 ## b_or
 
-> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+Geometry node [*Boolean Math*].
+
+
+  Args:
+    boolean1: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
-blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-                          
-```python
-v = boolean.b_or(boolean1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- boolean0 : Boolean (self)
-- boolean1 : Boolean## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'OR'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.BooleanMath`
+  
+  - operation = 'OR'
+    
+  .. blid:: FunctionNodeBooleanMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR', label=node_label, node_color=node_color)
+    
 
 ## b_not
 
-> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+Geometry node [*Boolean Math*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
-blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-                          
-```python
-v = boolean.b_not(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- boolean0 : Boolean (self)## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'NOT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.BooleanMath(boolean0=self, operation='NOT', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.BooleanMath`
+  
+  - operation = 'NOT'
+    
+  .. blid:: FunctionNodeBooleanMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.BooleanMath(boolean0=self, operation='NOT', label=node_label, node_color=node_color)
+    
 
 ## nand
 
-> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+Geometry node [*Boolean Math*].
+
+
+  Args:
+    boolean1: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
-blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-                          
-```python
-v = boolean.nand(boolean1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- boolean0 : Boolean (self)
-- boolean1 : Boolean## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'NAND'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.BooleanMath`
+  
+  - operation = 'NAND'
+    
+  .. blid:: FunctionNodeBooleanMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND', label=node_label, node_color=node_color)
+    
 
 ## nor
 
-> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+Geometry node [*Boolean Math*].
+
+
+  Args:
+    boolean1: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
-blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-                          
-```python
-v = boolean.nor(boolean1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- boolean0 : Boolean (self)
-- boolean1 : Boolean## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'NOR'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.BooleanMath`
+  
+  - operation = 'NOR'
+    
+  .. blid:: FunctionNodeBooleanMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR', label=node_label, node_color=node_color)
+    
 
 ## xnor
 
-> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+Geometry node [*Boolean Math*].
+
+
+  Args:
+    boolean1: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
-blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-                          
-```python
-v = boolean.xnor(boolean1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- boolean0 : Boolean (self)
-- boolean1 : Boolean## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'XNOR'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.BooleanMath`
+  
+  - operation = 'XNOR'
+    
+  .. blid:: FunctionNodeBooleanMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR', label=node_label, node_color=node_color)
+    
 
 ## xor
 
-> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+Geometry node [*Boolean Math*].
+
+
+  Args:
+    boolean1: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
-blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-                          
-```python
-v = boolean.xor(boolean1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- boolean0 : Boolean (self)
-- boolean1 : Boolean## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'XOR'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.BooleanMath`
+  
+  - operation = 'XOR'
+    
+  .. blid:: FunctionNodeBooleanMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR', label=node_label, node_color=node_color)
+    
 
 ## imply
 
-> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+Geometry node [*Boolean Math*].
+
+
+  Args:
+    boolean1: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
-blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-                          
-```python
-v = boolean.imply(boolean1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- boolean0 : Boolean (self)
-- boolean1 : Boolean## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'IMPLY'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.BooleanMath`
+  
+  - operation = 'IMPLY'
+    
+  .. blid:: FunctionNodeBooleanMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY', label=node_label, node_color=node_color)
+    
 
 ## nimply
 
-> Node: [BooleanMath](/docs/nodes/BooleanMath.md)
+Geometry node [*Boolean Math*].
+
+
+  Args:
+    boolean1: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-boolean) [index](/docs/index.md)
-blender ref [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-node ref [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) </sub>
-                          
-```python
-v = boolean.nimply(boolean1, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- boolean0 : Boolean (self)
-- boolean1 : Boolean## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- operation : 'NIMPLY'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.BooleanMath`
+  
+  - operation = 'NIMPLY'
+    
+  .. blid:: FunctionNodeBooleanMath
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY', label=node_label, node_color=node_color)
+    

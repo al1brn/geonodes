@@ -51,1023 +51,846 @@
 
 ## BezierSegment
 
-> Node: [BezierSegment](/docs/nodes/BezierSegment.md)
+Geometry node [*Bezier Segment*].
+
+
+  Args:
+    resolution: Integer
+    start: Vector
+    start_handle: Vector
+    end_handle: Vector
+    end: Vector
+    mode (str): 'POSITION' in [POSITION, OFFSET]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curve
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeCurvePrimitiveBezierSegment](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html)
-node ref [Bezier Segment](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/bezier_segment.html) </sub>
-                          
-```python
-v = Curve.BezierSegment(resolution, start, start_handle, end_handle, end, mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- resolution : Integer
-- start : Vector
-- start_handle : Vector
-- end_handle : Vector
-- end : Vector## Parameters
-- mode : 'POSITION' in [POSITION, OFFSET]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Curve
-
+  Node :class:`~geonodes.nodes.nodes.BezierSegment`
+  
+  
+  .. blid:: GeometryNodeCurvePrimitiveBezierSegment
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode, label=node_label, node_color=node_color)
+    
 
 ## Circle
 
-> Node: [CurveCircle](/docs/nodes/CurveCircle.md)
+Geometry node [*Curve Circle*].
+
+
+  Args:
+    resolution: Integer
+    point_1: Vector
+    point_2: Vector
+    point_3: Vector
+    radius: Float
+    mode (str): 'RADIUS' in [POINTS, RADIUS]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [curve (Curve), center (Vector)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeCurvePrimitiveCircle](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html)
-node ref [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_circle.html) </sub>
-                          
-```python
-v = Curve.Circle(resolution, point_1, point_2, point_3, radius, mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- resolution : Integer
-- point_1 : Vector
-- point_2 : Vector
-- point_3 : Vector
-- radius : Float## Parameters
-- mode : 'RADIUS' in [POINTS, RADIUS]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=radius, mode=mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [curve (Curve), center (Vector)]
-
+  Node :class:`~geonodes.nodes.nodes.CurveCircle`
+  
+  
+  .. blid:: GeometryNodeCurvePrimitiveCircle
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=radius, mode=mode, label=node_label, node_color=node_color)
+    
 
 ## Line
 
-> Node: [CurveLine](/docs/nodes/CurveLine.md)
+Geometry node [*Curve Line*].
+
+
+  Args:
+    start: Vector
+    end: Vector
+    direction: Vector
+    length: Float
+    mode (str): 'POINTS' in [POINTS, DIRECTION]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curve
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeCurvePrimitiveLine](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveLine.html)
-node ref [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_line.html) </sub>
-                          
-```python
-v = Curve.Line(start, end, direction, length, mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- start : Vector
-- end : Vector
-- direction : Vector
-- length : Float## Parameters
-- mode : 'POINTS' in [POINTS, DIRECTION]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.CurveLine(start=start, end=end, direction=direction, length=length, mode=mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Curve
-
+  Node :class:`~geonodes.nodes.nodes.CurveLine`
+  
+  
+  .. blid:: GeometryNodeCurvePrimitiveLine
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.CurveLine(start=start, end=end, direction=direction, length=length, mode=mode, label=node_label, node_color=node_color)
+    
 
 ## Quadrilateral
 
-> Node: [Quadrilateral](/docs/nodes/Quadrilateral.md)
+Geometry node [*Quadrilateral*].
+
+
+  Args:
+    width: Float
+    height: Float
+    bottom_width: Float
+    top_width: Float
+    offset: Float
+    bottom_height: Float
+    top_height: Float
+    point_1: Vector
+    point_2: Vector
+    point_3: Vector
+    point_4: Vector
+    mode (str): 'RECTANGLE' in [RECTANGLE, PARALLELOGRAM, TRAPEZOID, KITE, POINTS]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curve
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeCurvePrimitiveQuadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html)
-node ref [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/quadrilateral.html) </sub>
-                          
-```python
-v = Curve.Quadrilateral(width, height, bottom_width, top_width, offset, bottom_height, top_height, point_1, point_2, point_3, point_4, mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- width : Float
-- height : Float
-- bottom_width : Float
-- top_width : Float
-- offset : Float
-- bottom_height : Float
-- top_height : Float
-- point_1 : Vector
-- point_2 : Vector
-- point_3 : Vector
-- point_4 : Vector## Parameters
-- mode : 'RECTANGLE' in [RECTANGLE, PARALLELOGRAM, TRAPEZOID, KITE, POINTS]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width, offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Curve
-
+  Node :class:`~geonodes.nodes.nodes.Quadrilateral`
+  
+  
+  .. blid:: GeometryNodeCurvePrimitiveQuadrilateral
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width, offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode, label=node_label, node_color=node_color)
+    
 
 ## QuadraticBezier
 
-> Node: [QuadraticBezier](/docs/nodes/QuadraticBezier.md)
+Geometry node [*Quadratic Bezier*].
+
+
+  Args:
+    resolution: Integer
+    start: Vector
+    middle: Vector
+    end: Vector
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curve
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeCurveQuadraticBezier](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveQuadraticBezier.html)
-node ref [Quadratic Bezier](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/quadratic_bezier.html) </sub>
-                          
-```python
-v = Curve.QuadraticBezier(resolution, start, middle, end, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- resolution : Integer
-- start : Vector
-- middle : Vector
-- end : Vector## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.QuadraticBezier(resolution=resolution, start=start, middle=middle, end=end, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Curve
-
+  Node :class:`~geonodes.nodes.nodes.QuadraticBezier`
+  
+  
+  .. blid:: GeometryNodeCurveQuadraticBezier
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.QuadraticBezier(resolution=resolution, start=start, middle=middle, end=end, label=node_label, node_color=node_color)
+    
 
 ## Star
 
-> Node: [Star](/docs/nodes/Star.md)
+Geometry node [*Star*].
+
+
+  Args:
+    points: Integer
+    inner_radius: Float
+    outer_radius: Float
+    twist: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [curve (Curve), outer_points (Boolean)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeCurveStar](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveStar.html)
-node ref [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/star.html) </sub>
-                          
-```python
-v = Curve.Star(points, inner_radius, outer_radius, twist, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- points : Integer
-- inner_radius : Float
-- outer_radius : Float
-- twist : Float## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Star(points=points, inner_radius=inner_radius, outer_radius=outer_radius, twist=twist, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [curve (Curve), outer_points (Boolean)]
-
+  Node :class:`~geonodes.nodes.nodes.Star`
+  
+  
+  .. blid:: GeometryNodeCurveStar
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Star(points=points, inner_radius=inner_radius, outer_radius=outer_radius, twist=twist, label=node_label, node_color=node_color)
+    
 
 ## Spiral
 
-> Node: [Spiral](/docs/nodes/Spiral.md)
+Geometry node [*Spiral*].
+
+
+  Args:
+    resolution: Integer
+    rotations: Float
+    start_radius: Float
+    end_radius: Float
+    height: Float
+    reverse: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curve
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeCurveSpiral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSpiral.html)
-node ref [Spiral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_spiral.html) </sub>
-                          
-```python
-v = Curve.Spiral(resolution, rotations, start_radius, end_radius, height, reverse, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- resolution : Integer
-- rotations : Float
-- start_radius : Float
-- end_radius : Float
-- height : Float
-- reverse : Boolean## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Spiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius, height=height, reverse=reverse, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Curve
-
+  Node :class:`~geonodes.nodes.nodes.Spiral`
+  
+  
+  .. blid:: GeometryNodeCurveSpiral
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Spiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius, height=height, reverse=reverse, label=node_label, node_color=node_color)
+    
 
 ## ArcFromRadius
 
-> Node: [Arc](/docs/nodes/Arc.md)
+Geometry node [*Arc*].
+
+
+  Args:
+    resolution: Integer
+    radius: Float
+    start_angle: Float
+    sweep_angle: Float
+    connect_center: Boolean
+    invert_arc: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curve
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeCurveArc](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html)
-node ref [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/arc.html) </sub>
-                          
-```python
-v = Curve.ArcFromRadius(resolution, radius, start_angle, sweep_angle, connect_center, invert_arc, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- resolution : Integer
-- radius : Float
-- start_angle : Float
-- sweep_angle : Float
-- connect_center : Boolean
-- invert_arc : Boolean## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- mode : 'RADIUS'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Arc(resolution=resolution, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle, connect_center=connect_center, invert_arc=invert_arc, mode='RADIUS', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Curve
-
+  Node :class:`~geonodes.nodes.nodes.Arc`
+  
+  - mode = 'RADIUS'
+    
+  .. blid:: GeometryNodeCurveArc
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Arc(resolution=resolution, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle, connect_center=connect_center, invert_arc=invert_arc, mode='RADIUS', label=node_label, node_color=node_color)
+    
 
 ## ArcFromPoints
 
-> Node: [Arc](/docs/nodes/Arc.md)
+Geometry node [*Arc*].
+
+
+  Args:
+    resolution: Integer
+    start: Vector
+    middle: Vector
+    end: Vector
+    offset_angle: Float
+    connect_center: Boolean
+    invert_arc: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [curve (Curve), center (Vector), normal (Vector), radius (Float)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeCurveArc](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html)
-node ref [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/arc.html) </sub>
-                          
-```python
-v = Curve.ArcFromPoints(resolution, start, middle, end, offset_angle, connect_center, invert_arc, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- resolution : Integer
-- start : Vector
-- middle : Vector
-- end : Vector
-- offset_angle : Float
-- connect_center : Boolean
-- invert_arc : Boolean## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- mode : 'POINTS'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, offset_angle=offset_angle, connect_center=connect_center, invert_arc=invert_arc, mode='POINTS', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [curve (Curve), center (Vector), normal (Vector), radius (Float)]
-
+  Node :class:`~geonodes.nodes.nodes.Arc`
+  
+  - mode = 'POINTS'
+    
+  .. blid:: GeometryNodeCurveArc
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, offset_angle=offset_angle, connect_center=connect_center, invert_arc=invert_arc, mode='POINTS', label=node_label, node_color=node_color)
+    
 
 ## domain_size
 
-> Node: [DomainSize](/docs/nodes/DomainSize.md)
+Geometry node [*Domain Size*].
+
+
+
+  Returns:
+    Sockets [point_count (Integer), spline_count (Integer)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
-                          
-```python
-v = curve.domain_size
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Fixed parameters
-- component : 'CURVE'
-- label:f"{self.node_chain_label}.domain_size"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DomainSize(geometry=self, component='CURVE', label=f"{self.node_chain_label}.domain_size")
-```
-
-### Returns
-
-Sockets [point_count (Integer), spline_count (Integer)]
-
+  Node :class:`~geonodes.nodes.nodes.DomainSize`
+  
+  - component = 'CURVE'
+    
+  .. blid:: GeometryNodeAttributeDomainSize
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.DomainSize(geometry=self, component='CURVE', label=f"{self.node_chain_label}.domain_size")
+    
 
 ## point_count
 
-> Node: [DomainSize](/docs/nodes/DomainSize.md)
+Geometry node [*Domain Size*].
+
+
+
+  Returns:
+    Sockets [point_count (Integer), spline_count (Integer)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
-                          
-```python
-v = curve.point_count
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Fixed parameters
-- component : 'CURVE'
-- label:f"{self.node_chain_label}.point_count"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DomainSize(geometry=self, component='CURVE', label=f"{self.node_chain_label}.point_count")
-```
-
-### Returns
-
-Sockets [point_count (Integer), spline_count (Integer)]
-
+  Node :class:`~geonodes.nodes.nodes.DomainSize`
+  
+  - component = 'CURVE'
+    
+  .. blid:: GeometryNodeAttributeDomainSize
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.DomainSize(geometry=self, component='CURVE', label=f"{self.node_chain_label}.point_count")
+    
 
 ## spline_count
 
-> Node: [DomainSize](/docs/nodes/DomainSize.md)
+Geometry node [*Domain Size*].
+
+
+
+  Returns:
+    Sockets [point_count (Integer), spline_count (Integer)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
-                          
-```python
-v = curve.spline_count
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Fixed parameters
-- component : 'CURVE'
-- label:f"{self.node_chain_label}.spline_count"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DomainSize(geometry=self, component='CURVE', label=f"{self.node_chain_label}.spline_count")
-```
-
-### Returns
-
-Sockets [point_count (Integer), spline_count (Integer)]
-
+  Node :class:`~geonodes.nodes.nodes.DomainSize`
+  
+  - component = 'CURVE'
+    
+  .. blid:: GeometryNodeAttributeDomainSize
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.DomainSize(geometry=self, component='CURVE', label=f"{self.node_chain_label}.spline_count")
+    
 
 ## set_cyclic
 
-> Node: [SetSplineCyclic](/docs/nodes/SetSplineCyclic.md)
+Geometry node [*Set Spline Cyclic*].
+
+
+  Args:
+    selection: Boolean
+    cyclic: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeSetSplineCyclic](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html)
-node ref [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html) </sub>
-                          
-```python
-v = curve.set_cyclic(selection, cyclic, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- cyclic : Boolean## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.SetSplineCyclic`
+  
+  
+  .. blid:: GeometryNodeSetSplineCyclic
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SetSplineCyclic(geometry=self, selection=selection, cyclic=cyclic, label=node_label, node_color=node_color)
+    
 
 ## set_resolution
 
-> Node: [SetSplineResolution](/docs/nodes/SetSplineResolution.md)
+Geometry node [*Set Spline Resolution*].
+
+
+  Args:
+    selection: Boolean
+    resolution: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeSetSplineResolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html)
-node ref [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html) </sub>
-                          
-```python
-v = curve.set_resolution(selection, resolution, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- resolution : Integer## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.SetSplineResolution`
+  
+  
+  .. blid:: GeometryNodeSetSplineResolution
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution, label=node_label, node_color=node_color)
+    
 
 ## set_handles
 
-> Node: [SetHandleType](/docs/nodes/SetHandleType.md)
+Geometry node [*Set Handle Type*].
+
+
+  Args:
+    selection: Boolean
+    handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+    mode (set): {'RIGHT', 'LEFT'}
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curve
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeCurveSetHandles](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSetHandles.html)
-node ref [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_type.html) </sub>
-                          
-```python
-v = curve.set_handles(selection, handle_type, mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- curve : Curve (self)
-- selection : Boolean## Parameters
-- handle_type : 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode : {'RIGHT', 'LEFT'}
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SetHandleType(curve=self, selection=selection, handle_type=handle_type, mode=mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Curve
-
+  Node :class:`~geonodes.nodes.nodes.SetHandleType`
+  
+  
+  .. blid:: GeometryNodeCurveSetHandles
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SetHandleType(curve=self, selection=selection, handle_type=handle_type, mode=mode, label=node_label, node_color=node_color)
+    
 
 ## set_spline_type
 
-> Node: [SetSplineType](/docs/nodes/SetSplineType.md)
+Geometry node [*Set Spline Type*].
+
+
+  Args:
+    selection: Boolean
+    spline_type (str): 'POLY' in [BEZIER, NURBS, POLY]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curve
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeCurveSplineType](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html)
-node ref [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) </sub>
-                          
-```python
-v = curve.set_spline_type(selection, spline_type, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- curve : Curve (self)
-- selection : Boolean## Parameters
-- spline_type : 'POLY' in [BEZIER, NURBS, POLY]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_type, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Curve
-
+  Node :class:`~geonodes.nodes.nodes.SetSplineType`
+  
+  
+  .. blid:: GeometryNodeCurveSplineType
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SetSplineType(curve=self, selection=selection, spline_type=spline_type, label=node_label, node_color=node_color)
+    
 
 ## fillet
 
-> Node: [FilletCurve](/docs/nodes/FilletCurve.md)
+Geometry node [*Fillet Curve*].
+
+
+  Args:
+    count: Integer
+    radius: Float
+    limit_radius: Boolean
+    mode (str): 'BEZIER' in [BEZIER, POLY]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curve
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeFilletCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFilletCurve.html)
-node ref [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fillet_curve.html) </sub>
-                          
-```python
-v = curve.fillet(count, radius, limit_radius, mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- curve : Curve (self)
-- count : Integer
-- radius : Float
-- limit_radius : Boolean## Parameters
-- mode : 'BEZIER' in [BEZIER, POLY]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode=mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Curve
-
+  Node :class:`~geonodes.nodes.nodes.FilletCurve`
+  
+  
+  .. blid:: GeometryNodeFilletCurve
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode=mode, label=node_label, node_color=node_color)
+    
 
 ## resample
 
-> Node: [ResampleCurve](/docs/nodes/ResampleCurve.md)
+Geometry node [*Resample Curve*].
+
+
+  Args:
+    selection: Boolean
+    count: Integer
+    length: Float
+    mode (str): 'COUNT' in [EVALUATED, COUNT, LENGTH]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curve
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeResampleCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html)
-node ref [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) </sub>
-                          
-```python
-v = curve.resample(selection, count, length, mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- curve : Curve (self)
-- selection : Boolean
-- count : Integer
-- length : Float## Parameters
-- mode : 'COUNT' in [EVALUATED, COUNT, LENGTH]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.ResampleCurve(curve=self, selection=selection, count=count, length=length, mode=mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Curve
-
+  Node :class:`~geonodes.nodes.nodes.ResampleCurve`
+  
+  
+  .. blid:: GeometryNodeResampleCurve
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.ResampleCurve(curve=self, selection=selection, count=count, length=length, mode=mode, label=node_label, node_color=node_color)
+    
 
 ## reverse
 
-> Node: [ReverseCurve](/docs/nodes/ReverseCurve.md)
+Geometry node [*Reverse Curve*].
+
+
+  Args:
+    selection: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curve
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeReverseCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeReverseCurve.html)
-node ref [Reverse Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/reverse_curve.html) </sub>
-                          
-```python
-v = curve.reverse(selection, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- curve : Curve (self)
-- selection : Boolean## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.ReverseCurve(curve=self, selection=selection, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Curve
-
+  Node :class:`~geonodes.nodes.nodes.ReverseCurve`
+  
+  
+  .. blid:: GeometryNodeReverseCurve
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.ReverseCurve(curve=self, selection=selection, label=node_label, node_color=node_color)
+    
 
 ## set_handle_positions
 
-> Node: [SetHandlePositions](/docs/nodes/SetHandlePositions.md)
+Geometry node [*Set Handle Positions*].
+
+
+  Args:
+    selection: Boolean
+    position: Vector
+    offset: Vector
+    mode (str): 'LEFT' in [LEFT, RIGHT]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curve
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeSetCurveHandlePositions](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
-node ref [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) </sub>
-                          
-```python
-v = curve.set_handle_positions(selection, position, offset, mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- curve : Curve (self)
-- selection : Boolean
-- position : Vector
-- offset : Vector## Parameters
-- mode : 'LEFT' in [LEFT, RIGHT]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SetHandlePositions(curve=self, selection=selection, position=position, offset=offset, mode=mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Curve
-
+  Node :class:`~geonodes.nodes.nodes.SetHandlePositions`
+  
+  
+  .. blid:: GeometryNodeSetCurveHandlePositions
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SetHandlePositions(curve=self, selection=selection, position=position, offset=offset, mode=mode, label=node_label, node_color=node_color)
+    
 
 ## set_radius
 
-> Node: [SetCurveRadius](/docs/nodes/SetCurveRadius.md)
+Geometry node [*Set Curve Radius*].
+
+
+  Args:
+    selection: Boolean
+    radius: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curve
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeSetCurveRadius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveRadius.html)
-node ref [Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_radius.html) </sub>
-                          
-```python
-v = curve.set_radius(selection, radius, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- curve : Curve (self)
-- selection : Boolean
-- radius : Float## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SetCurveRadius(curve=self, selection=selection, radius=radius, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Curve
-
+  Node :class:`~geonodes.nodes.nodes.SetCurveRadius`
+  
+  
+  .. blid:: GeometryNodeSetCurveRadius
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SetCurveRadius(curve=self, selection=selection, radius=radius, label=node_label, node_color=node_color)
+    
 
 ## set_tilt
 
-> Node: [SetCurveTilt](/docs/nodes/SetCurveTilt.md)
+Geometry node [*Set Curve Tilt*].
+
+
+  Args:
+    selection: Boolean
+    tilt: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curve
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeSetCurveTilt](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveTilt.html)
-node ref [Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_tilt.html) </sub>
-                          
-```python
-v = curve.set_tilt(selection, tilt, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- curve : Curve (self)
-- selection : Boolean
-- tilt : Float## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SetCurveTilt(curve=self, selection=selection, tilt=tilt, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Curve
-
+  Node :class:`~geonodes.nodes.nodes.SetCurveTilt`
+  
+  
+  .. blid:: GeometryNodeSetCurveTilt
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SetCurveTilt(curve=self, selection=selection, tilt=tilt, label=node_label, node_color=node_color)
+    
 
 ## subdivide
 
-> Node: [SubdivideCurve](/docs/nodes/SubdivideCurve.md)
+Geometry node [*Subdivide Curve*].
+
+
+  Args:
+    cuts: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curve
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeSubdivideCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideCurve.html)
-node ref [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/subdivide_curve.html) </sub>
-                          
-```python
-v = curve.subdivide(cuts, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- curve : Curve (self)
-- cuts : Integer## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SubdivideCurve(curve=self, cuts=cuts, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Curve
-
+  Node :class:`~geonodes.nodes.nodes.SubdivideCurve`
+  
+  
+  .. blid:: GeometryNodeSubdivideCurve
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SubdivideCurve(curve=self, cuts=cuts, label=node_label, node_color=node_color)
+    
 
 ## trim
 
-> Node: [TrimCurve](/docs/nodes/TrimCurve.md)
+Geometry node [*Trim Curve*].
+
+
+  Args:
+    start0: Float
+    end0: Float
+    start1: Float
+    end1: Float
+    mode (str): 'FACTOR' in [FACTOR, LENGTH]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curve
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeTrimCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html)
-node ref [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/trim_curve.html) </sub>
-                          
-```python
-v = curve.trim(start0, end0, start1, end1, mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- curve : Curve (self)
-- start0 : Float
-- end0 : Float
-- start1 : Float
-- end1 : Float## Parameters
-- mode : 'FACTOR' in [FACTOR, LENGTH]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1=end1, mode=mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Curve
-
+  Node :class:`~geonodes.nodes.nodes.TrimCurve`
+  
+  
+  .. blid:: GeometryNodeTrimCurve
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1=end1, mode=mode, label=node_label, node_color=node_color)
+    
 
 ## duplicate_splines
 
-> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
+Geometry node [*Duplicate Elements*].
+
+
+  Args:
+    selection: Boolean
+    amount: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [geometry (Geometry), duplicate_index (Integer)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
-node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
-                          
-```python
-v = curve.duplicate_splines(selection, amount, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- amount : Integer## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- domain : 'SPLINE'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='SPLINE', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [geometry (Geometry), duplicate_index (Integer)]
-
+  Node :class:`~geonodes.nodes.nodes.DuplicateElements`
+  
+  - domain = 'SPLINE'
+    
+  .. blid:: GeometryNodeDuplicateElements
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='SPLINE', label=node_label, node_color=node_color)
+    
 
 ## fill
 
-> Node: [FillCurve](/docs/nodes/FillCurve.md)
+Geometry node [*Fill Curve*].
+
+
+  Args:
+    mode (str): 'TRIANGLES' in [TRIANGLES, NGONS]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Mesh
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeFillCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html)
-node ref [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fill_curve.html) </sub>
-                          
-```python
-v = curve.fill(mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- curve : Curve (self)## Parameters
-- mode : 'TRIANGLES' in [TRIANGLES, NGONS]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.FillCurve(curve=self, mode=mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Mesh
-
+  Node :class:`~geonodes.nodes.nodes.FillCurve`
+  
+  
+  .. blid:: GeometryNodeFillCurve
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.FillCurve(curve=self, mode=mode, label=node_label, node_color=node_color)
+    
 
 ## to_mesh
 
-> Node: [CurveToMesh](/docs/nodes/CurveToMesh.md)
+Geometry node [*Curve to Mesh*].
+
+
+  Args:
+    profile_curve: Geometry
+    fill_caps: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Mesh
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeCurveToMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToMesh.html)
-node ref [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_mesh.html) </sub>
-                          
-```python
-v = curve.to_mesh(profile_curve, fill_caps, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- curve : Curve (self)
-- profile_curve : Geometry
-- fill_caps : Boolean## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Mesh
-
+  Node :class:`~geonodes.nodes.nodes.CurveToMesh`
+  
+  
+  .. blid:: GeometryNodeCurveToMesh
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps, label=node_label, node_color=node_color)
+    
 
 ## to_points
 
-> Node: [CurveToPoints](/docs/nodes/CurveToPoints.md)
+Geometry node [*Curve to Points*].
+
+
+  Args:
+    count: Integer
+    length: Float
+    mode (str): 'COUNT' in [EVALUATED, COUNT, LENGTH]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeCurveToPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html)
-node ref [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html) </sub>
-                          
-```python
-v = curve.to_points(count, length, mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- curve : Curve (self)
-- count : Integer
-- length : Float## Parameters
-- mode : 'COUNT' in [EVALUATED, COUNT, LENGTH]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [points (Points), tangent (Vector), normal (Vector), rotation (Vector)]
-
+  Node :class:`~geonodes.nodes.nodes.CurveToPoints`
+  
+  
+  .. blid:: GeometryNodeCurveToPoints
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode, label=node_label, node_color=node_color)
+    
 
 ## sample
 
-> Node: [SampleCurve](/docs/nodes/SampleCurve.md)
+Geometry node [*Sample Curve*].
+
+
+  Args:
+    factor: Float
+    length: Float
+    mode (str): 'LENGTH' in [FACTOR, LENGTH]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [position (Vector), tangent (Vector), normal (Vector)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeSampleCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleCurve.html)
-node ref [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample_curve.html) </sub>
-                          
-```python
-v = curve.sample(factor, length, mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- curve : Curve (self)
-- factor : Float
-- length : Float## Parameters
-- mode : 'LENGTH' in [FACTOR, LENGTH]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [position (Vector), tangent (Vector), normal (Vector)]
-
+  Node :class:`~geonodes.nodes.nodes.SampleCurve`
+  
+  
+  .. blid:: GeometryNodeSampleCurve
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode, label=node_label, node_color=node_color)
+    
 
 ## length
 
-> Node: [CurveLength](/docs/nodes/CurveLength.md)
+Geometry node [*Curve Length*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-curve) [index](/docs/index.md)
-blender ref [GeometryNodeCurveLength](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveLength.html)
-node ref [Curve Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_length.html) </sub>
-                          
-```python
-v = curve.length(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- curve : Curve (self)## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.CurveLength(curve=self, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.CurveLength`
+  
+  
+  .. blid:: GeometryNodeCurveLength
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.CurveLength(curve=self, label=node_label, node_color=node_color)
+    

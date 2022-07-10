@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-07-03
+Created on 2022-07-10
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -19,23 +19,8 @@ logger = logging.Logger('geonodes')
 # Data class Material
 
 class Material(dsock.Material):
-    """ 
-
-    Data socket Material
-    --------------------
-        > Inherits from dsock.Material
-          
-        <sub>go to index</sub>
-        
-        
-    
-
-        Methods
-        -------
-            - selection : selection (Boolean)
-            - switch : output (Material)
+    """ Data class Material
     """
-
 
     def copy(self):
 
@@ -46,76 +31,58 @@ class Material(dsock.Material):
     # Methods
 
     def switch(self, switch=None, true=None, node_label = None, node_color = None):
-        """ > Node: Switch
-          
-        <sub>go to: top index
-        blender ref GeometryNodeSwitch
-        node ref Switch </sub>
-                                  
-        ```python
-        v = material.switch(switch, true, node_label = None, node_color = None)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Sockets
-            - false : Material (self)
-            - switch : Boolean
-            - true : Material## Parameters
-            - node_label : None
-            - node_color : None## Fixed parameters
-            - input_type : 'MATERIAL'
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.Switch(false=self, switch=switch, true=true, input_type='MATERIAL', label=node_label, node_color=node_color)
-            ```
-    
-
-        Returns
-        -------
-            Material
+        """ Geometry node [*Switch*].
+        
+        
+            Args:
+                switch: Boolean
+                true: Material
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                Material
+                
+            **Node creation**
             
+            Node :class:`~geonodes.nodes.nodes.Switch`
+            
+                - input_type = 'MATERIAL'
+                  
+            .. blid:: GeometryNodeSwitch
+            
+            .. code-block:: python
+            
+                from geonodes import nodes
+                nodes.Switch(false=self, switch=switch, true=true, input_type='MATERIAL', label=node_label, node_color=node_color)
+                
         """
 
         return nodes.Switch(false=self, switch=switch, true=true, input_type='MATERIAL', label=node_label, node_color=node_color).output
 
     def selection(self, node_label = None, node_color = None):
-        """ > Node: MaterialSelection
-          
-        <sub>go to: top index
-        blender ref GeometryNodeMaterialSelection
-        node ref Material Selection </sub>
-                                  
-        ```python
-        v = material.selection(node_label = None, node_color = None)
-        ```
-    
-
-        Arguments
-        ---------
-            ## Sockets
-            - material : Material (self)## Parameters
-            - node_label : None
-            - node_color : None
-    
-
-        Node creation
-        -------------
-            ```python
-            from geondes import nodes
-            nodes.MaterialSelection(material=self, label=node_label, node_color=node_color)
-            ```
-    
-
-        Returns
-        -------
-            Boolean
+        """ Geometry node [*Material Selection*].
+        
+        
+            Args:
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                Boolean
+                
+            **Node creation**
             
+            Node :class:`~geonodes.nodes.nodes.MaterialSelection`
+            
+            
+            .. blid:: GeometryNodeMaterialSelection
+            
+            .. code-block:: python
+            
+                from geonodes import nodes
+                nodes.MaterialSelection(material=self, label=node_label, node_color=node_color)
+                
         """
 
         return nodes.MaterialSelection(material=self, label=node_label, node_color=node_color).selection

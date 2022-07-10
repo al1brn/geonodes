@@ -13,34 +13,28 @@
 
 ## switch
 
-> Node: [Switch](/docs/nodes/Switch.md)
+Geometry node [*Switch*].
+
+
+  Args:
+    switch: Boolean
+    true: Image
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Image
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-image) [index](/docs/index.md)
-blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
-                          
-```python
-v = image.switch(switch, true, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- false : Image (self)
-- switch : Boolean
-- true : Image## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- input_type : 'IMAGE'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Switch(false=self, switch=switch, true=true, input_type='IMAGE', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Image
-
+  Node :class:`~geonodes.nodes.nodes.Switch`
+  
+  - input_type = 'IMAGE'
+    
+  .. blid:: GeometryNodeSwitch
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Switch(false=self, switch=switch, true=true, input_type='IMAGE', label=node_label, node_color=node_color)
+    

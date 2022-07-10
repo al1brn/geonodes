@@ -21,7 +21,7 @@ node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tole
 ### Input sockets
 
 - mesh_1 : Geometry
-- mesh_2 : *Geometry
+- mesh_2 : <m> Geometry
 - self_intersection : Boolean
 - hole_tolerant : Boolean
 

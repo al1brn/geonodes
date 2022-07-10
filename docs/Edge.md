@@ -11,7 +11,7 @@ Neighbors (faces count)
 Returns:
   Integer
   
-- getter: :class:`nodes.EdgeNeighbors`
+- getter: :class:`~geonodes.nodes.nodes.EdgeNeighbors`
 - setter: read only
   
   
@@ -23,7 +23,7 @@ Edge angle node
 Returns:
   Node *EdgeAngle*
   
-- getter: :class:`nodes.EdgeAngle`
+- getter: :class:`~geonodes.nodes.nodes.EdgeAngle`
 - setter: read only
   
   
@@ -35,7 +35,7 @@ Unsigned angle
 Returns:
   Float: Unsigned output socket of *EdgeAngle*
   
-- getter: :class:`nodes.EdgeAngle`
+- getter: :class:`~geonodes.nodes.nodes.EdgeAngle`
 - setter: read only
   
   
@@ -48,7 +48,7 @@ Signed angle
 Returns:
   Float: Signed output socket of *EdgeAngle*
   
-- getter: :class:`nodes.EdgeAngle`
+- getter: :class:`~geonodes.nodes.nodes.EdgeAngle`
 - setter: read only
   
   
@@ -67,7 +67,7 @@ Output sockets:
 - position_1 : Vector
 - position_2 : Vector
   
-- getter: :class:`nodes.EdgeVertices`
+- getter: :class:`~geonodes.nodes.nodes.EdgeVertices`
 - setter: read only
   
   
@@ -80,7 +80,7 @@ The indices of the vertices composing the edge
 Returns:
   (Integer, Integer)
   
-- getter: :class:`nodes.EdgeVertices`
+- getter: :class:`~geonodes.nodes.nodes.EdgeVertices`
 - setter: read only
   
   
@@ -93,7 +93,7 @@ The position of the vertices composing the edge
 Returns:
   (Float, Float)
   
-- getter: :class:`nodes.EdgeVertices`
+- getter: :class:`~geonodes.nodes.nodes.EdgeVertices`
 - setter: read only
   
   
@@ -101,29 +101,30 @@ Returns:
 
 ## to_curve
 
-> Convert edges to curve
+Convert edges to curve.
+
+Node :class:`~geonodes.nodes.nodes.MeshToCurve`
+
+Returns:
+  Curve
   
-<blid GeometryNodeMeshToCurve>
+.. code-block:: python
 
-### Example
-
-```python
-mesh.edges.to_curve(...)
-```
-
-
-
+  mesh.edges.to_curve(...)
+  
+  
 
 ## split
 
-> Split edges
+Split edges.
+
+Node :class:`SplitEdges`
+
+Returns:
+  self
   
-<blid GeometryNodeSplitEdges>
+.. code-block:: python
 
-### Example
-
-```python
-mesh.edges.split()
-```
-
-
+  mesh.edges.split()
+  
+  

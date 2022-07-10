@@ -28,334 +28,272 @@
 
 ## InstanceOnPoints
 
-> Node: [InstanceOnPoints](/docs/nodes/InstanceOnPoints.md)
+Geometry node [*Instance on Points*].
+
+
+  Args:
+    points: Points
+    selection: Boolean
+    instance: Geometry
+    pick_instance: Boolean
+    instance_index: Integer
+    rotation: Vector
+    scale: Vector
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Instances
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
-blender ref [GeometryNodeInstanceOnPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
-node ref [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) </sub>
-                          
-```python
-v = Instances.InstanceOnPoints(points, selection, instance, pick_instance, instance_index, rotation, scale, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- points : Points
-- selection : Boolean
-- instance : Geometry
-- pick_instance : Boolean
-- instance_index : Integer
-- rotation : Vector
-- scale : Vector## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.InstanceOnPoints(points=points, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Instances
-
+  Node :class:`~geonodes.nodes.nodes.InstanceOnPoints`
+  
+  
+  .. blid:: GeometryNodeInstanceOnPoints
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.InstanceOnPoints(points=points, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale, label=node_label, node_color=node_color)
+    
 
 ## FromGeometries
 
-> Node: [GeometryToInstance](/docs/nodes/GeometryToInstance.md)
+Geometry node [*Geometry to Instance*].
+
+
+  Args:
+    geometry: <m>Geometry
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Instances
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
-blender ref [GeometryNodeGeometryToInstance](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html)
-node ref [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html) </sub>
-                          
-```python
-v = Instances.FromGeometries(geometry_1, geometry_2, geometry_3, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : *Geometry## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.GeometryToInstance(*geometry, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Instances
-
+  Node :class:`~geonodes.nodes.nodes.GeometryToInstance`
+  
+  
+  .. blid:: GeometryNodeGeometryToInstance
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.GeometryToInstance(*geometry, label=node_label, node_color=node_color)
+    
 
 ## domain_size
 
-> Node: [DomainSize](/docs/nodes/DomainSize.md)
+Geometry node [*Domain Size*].
+
+
+
+  Returns:
+    Integer
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
-blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
-                          
-```python
-v = instances.domain_size
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Fixed parameters
-- component : 'INSTANCES'
-- label:f"{self.node_chain_label}.domain_size"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DomainSize(geometry=self, component='INSTANCES', label=f"{self.node_chain_label}.domain_size")
-```
-
-### Returns
-
-Integer
-
+  Node :class:`~geonodes.nodes.nodes.DomainSize`
+  
+  - component = 'INSTANCES'
+    
+  .. blid:: GeometryNodeAttributeDomainSize
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.DomainSize(geometry=self, component='INSTANCES', label=f"{self.node_chain_label}.domain_size")
+    
 
 ## instance_count
 
-> Node: [DomainSize](/docs/nodes/DomainSize.md)
+Geometry node [*Domain Size*].
+
+
+
+  Returns:
+    Integer
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
-blender ref [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-node ref [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) </sub>
-                          
-```python
-v = instances.instance_count
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Fixed parameters
-- component : 'INSTANCES'
-- label:f"{self.node_chain_label}.instance_count"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DomainSize(geometry=self, component='INSTANCES', label=f"{self.node_chain_label}.instance_count")
-```
-
-### Returns
-
-Integer
-
+  Node :class:`~geonodes.nodes.nodes.DomainSize`
+  
+  - component = 'INSTANCES'
+    
+  .. blid:: GeometryNodeAttributeDomainSize
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.DomainSize(geometry=self, component='INSTANCES', label=f"{self.node_chain_label}.instance_count")
+    
 
 ## rotate
 
-> Node: [RotateInstances](/docs/nodes/RotateInstances.md)
+Geometry node [*Rotate Instances*].
+
+
+  Args:
+    selection: Boolean
+    rotation: Vector
+    pivot_point: Vector
+    local_space: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Instances
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
-blender ref [GeometryNodeRotateInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html)
-node ref [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html) </sub>
-                          
-```python
-v = instances.rotate(selection, rotation, pivot_point, local_space, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- instances : Instances (self)
-- selection : Boolean
-- rotation : Vector
-- pivot_point : Vector
-- local_space : Boolean## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Instances
-
+  Node :class:`~geonodes.nodes.nodes.RotateInstances`
+  
+  
+  .. blid:: GeometryNodeRotateInstances
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space, label=node_label, node_color=node_color)
+    
 
 ## scale
 
-> Node: [ScaleInstances](/docs/nodes/ScaleInstances.md)
+Geometry node [*Scale Instances*].
+
+
+  Args:
+    selection: Boolean
+    scale: Vector
+    center: Vector
+    local_space: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Instances
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
-blender ref [GeometryNodeScaleInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html)
-node ref [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html) </sub>
-                          
-```python
-v = instances.scale(selection, scale, center, local_space, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- instances : Instances (self)
-- selection : Boolean
-- scale : Vector
-- center : Vector
-- local_space : Boolean## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Instances
-
+  Node :class:`~geonodes.nodes.nodes.ScaleInstances`
+  
+  
+  .. blid:: GeometryNodeScaleInstances
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space, label=node_label, node_color=node_color)
+    
 
 ## translate
 
-> Node: [TranslateInstances](/docs/nodes/TranslateInstances.md)
+Geometry node [*Translate Instances*].
+
+
+  Args:
+    selection: Boolean
+    translation: Vector
+    local_space: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Instances
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
-blender ref [GeometryNodeTranslateInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html)
-node ref [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html) </sub>
-                          
-```python
-v = instances.translate(selection, translation, local_space, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- instances : Instances (self)
-- selection : Boolean
-- translation : Vector
-- local_space : Boolean## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Instances
-
+  Node :class:`~geonodes.nodes.nodes.TranslateInstances`
+  
+  
+  .. blid:: GeometryNodeTranslateInstances
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space, label=node_label, node_color=node_color)
+    
 
 ## realize
 
-> Node: [RealizeInstances](/docs/nodes/RealizeInstances.md)
+Geometry node [*Realize Instances*].
+
+
+  Args:
+    legacy_behavior (bool): False
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
-blender ref [GeometryNodeRealizeInstances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html)
-node ref [Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html) </sub>
-                          
-```python
-v = instances.realize(legacy_behavior, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Parameters
-- legacy_behavior : False
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.RealizeInstances`
+  
+  
+  .. blid:: GeometryNodeRealizeInstances
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior, label=node_label, node_color=node_color)
+    
 
 ## to_points
 
-> Node: [InstancesToPoints](/docs/nodes/InstancesToPoints.md)
+Geometry node [*Instances to Points*].
+
+
+  Args:
+    selection: Boolean
+    position: Vector
+    radius: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Points
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
-blender ref [GeometryNodeInstancesToPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html)
-node ref [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html) </sub>
-                          
-```python
-v = instances.to_points(selection, position, radius, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- instances : Instances (self)
-- selection : Boolean
-- position : Vector
-- radius : Float## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Points
-
+  Node :class:`~geonodes.nodes.nodes.InstancesToPoints`
+  
+  
+  .. blid:: GeometryNodeInstancesToPoints
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius, label=node_label, node_color=node_color)
+    
 
 ## duplicate_instances
 
-> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
+Geometry node [*Duplicate Elements*].
+
+
+  Args:
+    selection: Boolean
+    amount: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [geometry (Geometry), duplicate_index (Integer)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-instances) [index](/docs/index.md)
-blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
-node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
-                          
-```python
-v = instances.duplicate_instances(selection, amount, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- amount : Integer## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- domain : 'INSTANCE'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='INSTANCE', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [geometry (Geometry), duplicate_index (Integer)]
-
+  Node :class:`~geonodes.nodes.nodes.DuplicateElements`
+  
+  - domain = 'INSTANCE'
+    
+  .. blid:: GeometryNodeDuplicateElements
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='INSTANCE', label=node_label, node_color=node_color)
+    

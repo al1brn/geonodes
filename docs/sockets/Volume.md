@@ -13,36 +13,30 @@
 
 ## to_mesh
 
-> Node: [VolumeToMesh](/docs/nodes/VolumeToMesh.md)
+Geometry node [*Volume to Mesh*].
+
+
+  Args:
+    voxel_size: Float
+    voxel_amount: Float
+    threshold: Float
+    adaptivity: Float
+    resolution_mode (str): 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Mesh
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-volume) [index](/docs/index.md)
-blender ref [GeometryNodeVolumeToMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html)
-node ref [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/volume_to_mesh.html) </sub>
-                          
-```python
-v = volume.to_mesh(voxel_size, voxel_amount, threshold, adaptivity, resolution_mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- volume : Volume (self)
-- voxel_size : Float
-- voxel_amount : Float
-- threshold : Float
-- adaptivity : Float## Parameters
-- resolution_mode : 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Mesh
-
+  Node :class:`~geonodes.nodes.nodes.VolumeToMesh`
+  
+  
+  .. blid:: GeometryNodeVolumeToMesh
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode, label=node_label, node_color=node_color)
+    

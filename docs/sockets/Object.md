@@ -21,194 +21,153 @@
 
 ## info
 
-> Node: [ObjectInfo](/docs/nodes/ObjectInfo.md)
+Geometry node [*Object Info*].
+
+
+  Args:
+    as_instance: Boolean
+    transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
+    
+  Returns:
+    Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-object) [index](/docs/index.md)
-blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
-node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) </sub>
-                          
-```python
-v = object.info
-```
-
-### Arguments
-
-## Sockets
-- object : Object (self)
-- as_instance : Boolean## Parameters
-- transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
-- label:f"{self.node_chain_label}.info"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
-```
-
-### Returns
-
-Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-
+  Node :class:`~geonodes.nodes.nodes.ObjectInfo`
+  
+  
+  .. blid:: GeometryNodeObjectInfo
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
+    
 
 ## location
 
-> Node: [ObjectInfo](/docs/nodes/ObjectInfo.md)
+Geometry node [*Object Info*].
+
+
+  Args:
+    as_instance: Boolean
+    transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
+    
+  Returns:
+    Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-object) [index](/docs/index.md)
-blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
-node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) </sub>
-                          
-```python
-v = object.location
-```
-
-### Arguments
-
-## Sockets
-- object : Object (self)
-- as_instance : Boolean## Parameters
-- transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
-- label:f"{self.node_chain_label}.location"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.location")
-```
-
-### Returns
-
-Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-
+  Node :class:`~geonodes.nodes.nodes.ObjectInfo`
+  
+  
+  .. blid:: GeometryNodeObjectInfo
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.location")
+    
 
 ## rotation
 
-> Node: [ObjectInfo](/docs/nodes/ObjectInfo.md)
+Geometry node [*Object Info*].
+
+
+  Args:
+    as_instance: Boolean
+    transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
+    
+  Returns:
+    Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-object) [index](/docs/index.md)
-blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
-node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) </sub>
-                          
-```python
-v = object.rotation
-```
-
-### Arguments
-
-## Sockets
-- object : Object (self)
-- as_instance : Boolean## Parameters
-- transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
-- label:f"{self.node_chain_label}.rotation"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.rotation")
-```
-
-### Returns
-
-Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-
+  Node :class:`~geonodes.nodes.nodes.ObjectInfo`
+  
+  
+  .. blid:: GeometryNodeObjectInfo
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.rotation")
+    
 
 ## scale
 
-> Node: [ObjectInfo](/docs/nodes/ObjectInfo.md)
+Geometry node [*Object Info*].
+
+
+  Args:
+    as_instance: Boolean
+    transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
+    
+  Returns:
+    Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-object) [index](/docs/index.md)
-blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
-node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) </sub>
-                          
-```python
-v = object.scale
-```
-
-### Arguments
-
-## Sockets
-- object : Object (self)
-- as_instance : Boolean## Parameters
-- transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
-- label:f"{self.node_chain_label}.scale"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.scale")
-```
-
-### Returns
-
-Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-
+  Node :class:`~geonodes.nodes.nodes.ObjectInfo`
+  
+  
+  .. blid:: GeometryNodeObjectInfo
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.scale")
+    
 
 ## geometry
 
-> Node: [ObjectInfo](/docs/nodes/ObjectInfo.md)
+Geometry node [*Object Info*].
+
+
+  Args:
+    as_instance: Boolean
+    transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
+    
+  Returns:
+    Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-object) [index](/docs/index.md)
-blender ref [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
-node ref [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) </sub>
-                          
-```python
-v = object.geometry
-```
-
-### Arguments
-
-## Sockets
-- object : Object (self)
-- as_instance : Boolean## Parameters
-- transform_space : 'ORIGINAL' in [ORIGINAL, RELATIVE]## Fixed parameters
-- label:f"{self.node_chain_label}.geometry"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.geometry")
-```
-
-### Returns
-
-Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-
+  Node :class:`~geonodes.nodes.nodes.ObjectInfo`
+  
+  
+  .. blid:: GeometryNodeObjectInfo
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.geometry")
+    
 
 ## switch
 
-> Node: [Switch](/docs/nodes/Switch.md)
+Geometry node [*Switch*].
+
+
+  Args:
+    switch: Boolean
+    true: Object
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Object
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-object) [index](/docs/index.md)
-blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
-                          
-```python
-v = object.switch(switch, true, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- false : Object (self)
-- switch : Boolean
-- true : Object## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- input_type : 'OBJECT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Switch(false=self, switch=switch, true=true, input_type='OBJECT', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Object
-
+  Node :class:`~geonodes.nodes.nodes.Switch`
+  
+  - input_type = 'OBJECT'
+    
+  .. blid:: GeometryNodeSwitch
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Switch(false=self, switch=switch, true=true, input_type='OBJECT', label=node_label, node_color=node_color)
+    

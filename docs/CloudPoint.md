@@ -6,74 +6,71 @@ Cloud point : the point domain of cloud of points
 
 ## delete
 
-<method GeometryNodeDeleteGeometry>
+Delete points.
 
-### Example
+Node :class:`~geonodes.nodes.nodes.DeleteGeometry`        
 
-```python
-cloud.points(...).delete()
-```
+Returns:
+  self
+  
+.. code-block:: python
 
-
+  cloud.points(...).delete()
+  
+  
 
 ## merge
 
-> Merge points by distance
+Merge points by distance.
+
+Node :class:`~geonodes.nodes.nodes.MergeByDistance`
+
+Args:
+  distance : Float
   
-<blid GeometryNodeMergeByDistance>
+Returns:
+  self
+  
+.. code-block:: python
 
-### Example
-
-'''python
-cloud.points().merge()
-````
-
-### Arguments
-
-- distance : Float
-The merge distance
-
-
+  cloud.points().merge()
+  
+  
+  
 
 ## to_vertices
 
-> Convert points to vertices
+Convert points to vertices.
+
+Node :class:`~geonodes.nodes.nodes.PointsToVertices`
+
+Returns:
+  Points
   
-<blid GeometryNodePointsToVertices>
+.. code-block:: python
 
-### Returns
-
-Points
-
-### Example
-
-```python
-verts = cloud.points.to_vertices()
-```
-
-
+  verts = cloud.points.to_vertices()
+  
+  
 
 ## to_volume
 
-> Convert points to vertices
+Convert points to volume.
+
+Node :class:`~geonodes.nodes.nodes.PointsToVolume`
+
+Args:
+  density : Float
+  voxel_size : Float
+  voxel_amount : Float
+  radius : Float
+  resolution_mode (str): (default = 'VOXEL_AMOUNT') in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
   
-<blid GeometryNodePointsToVertices>
+Returns:
+  Volume
+  
+.. code-block:: python
 
-### Parameters
-
-- density : Float
-- voxel_size : Float
-- voxel_amount : Float
-- radius : Float
-- resolution_mode : str (default = 'VOXEL_AMOUNT') in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
-
-### Returns
-
-Volume
-
-### Example
-
-```python
-volume = cloud.points.to_volume()
-```
-
+  volume = cloud.points.to_volume()
+  
+  

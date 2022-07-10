@@ -26,403 +26,347 @@
 
 ## Brick
 
-> Node: [BrickTexture](/docs/nodes/BrickTexture.md)
+Geometry node [*Brick Texture*].
+
+
+  Args:
+    vector: Vector
+    color1: Color
+    color2: Color
+    mortar: Color
+    scale: Float
+    mortar_size: Float
+    mortar_smooth: Float
+    bias: Float
+    brick_width: Float
+    row_height: Float
+    offset (float): 0.5
+    offset_frequency (int): 2
+    squash (float): 1.0
+    squash_frequency (int): 2
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [color (Color), fac (Float)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
-blender ref [ShaderNodeTexBrick](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html)
-node ref [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html) </sub>
-                          
-```python
-v = Texture.Brick(vector, color1, color2, mortar, scale, mortar_size, mortar_smooth, bias, brick_width, row_height, offset, offset_frequency, squash, squash_frequency, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- vector : Vector
-- color1 : Color
-- color2 : Color
-- mortar : Color
-- scale : Float
-- mortar_size : Float
-- mortar_smooth : Float
-- bias : Float
-- brick_width : Float
-- row_height : Float## Parameters
-- offset : 0.5
-- offset_frequency : 2
-- squash : 1.0
-- squash_frequency : 2
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [color (Color), fac (Float)]
-
+  Node :class:`~geonodes.nodes.nodes.BrickTexture`
+  
+  
+  .. blid:: ShaderNodeTexBrick
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency, label=node_label, node_color=node_color)
+    
 
 ## Checker
 
-> Node: [CheckerTexture](/docs/nodes/CheckerTexture.md)
+Geometry node [*Checker Texture*].
+
+
+  Args:
+    vector: Vector
+    color1: Color
+    color2: Color
+    scale: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [color (Color), fac (Float)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
-blender ref [ShaderNodeTexChecker](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html)
-node ref [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html) </sub>
-                          
-```python
-v = Texture.Checker(vector, color1, color2, scale, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- vector : Vector
-- color1 : Color
-- color2 : Color
-- scale : Float## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [color (Color), fac (Float)]
-
+  Node :class:`~geonodes.nodes.nodes.CheckerTexture`
+  
+  
+  .. blid:: ShaderNodeTexChecker
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale, label=node_label, node_color=node_color)
+    
 
 ## Gradient
 
-> Node: [GradientTexture](/docs/nodes/GradientTexture.md)
+Geometry node [*Gradient Texture*].
+
+
+  Args:
+    vector: Vector
+    gradient_type (str): 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [color (Color), fac (Float)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
-blender ref [ShaderNodeTexGradient](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
-node ref [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) </sub>
-                          
-```python
-v = Texture.Gradient(vector, gradient_type, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- vector : Vector## Parameters
-- gradient_type : 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.GradientTexture(vector=vector, gradient_type=gradient_type, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [color (Color), fac (Float)]
-
+  Node :class:`~geonodes.nodes.nodes.GradientTexture`
+  
+  
+  .. blid:: ShaderNodeTexGradient
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.GradientTexture(vector=vector, gradient_type=gradient_type, label=node_label, node_color=node_color)
+    
 
 ## Magic
 
-> Node: [MagicTexture](/docs/nodes/MagicTexture.md)
+Geometry node [*Magic Texture*].
+
+
+  Args:
+    vector: Vector
+    scale: Float
+    distortion: Float
+    turbulence_depth (int): 2
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [color (Color), fac (Float)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
-blender ref [ShaderNodeTexMagic](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html)
-node ref [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html) </sub>
-                          
-```python
-v = Texture.Magic(vector, scale, distortion, turbulence_depth, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- vector : Vector
-- scale : Float
-- distortion : Float## Parameters
-- turbulence_depth : 2
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.MagicTexture(vector=vector, scale=scale, distortion=distortion, turbulence_depth=turbulence_depth, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [color (Color), fac (Float)]
-
+  Node :class:`~geonodes.nodes.nodes.MagicTexture`
+  
+  
+  .. blid:: ShaderNodeTexMagic
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.MagicTexture(vector=vector, scale=scale, distortion=distortion, turbulence_depth=turbulence_depth, label=node_label, node_color=node_color)
+    
 
 ## Musgrave
 
-> Node: [MusgraveTexture](/docs/nodes/MusgraveTexture.md)
+Geometry node [*Musgrave Texture*].
+
+
+  Args:
+    vector: Vector
+    w: Float
+    scale: Float
+    detail: Float
+    dimension: Float
+    lacunarity: Float
+    offset: Float
+    gain: Float
+    musgrave_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+    musgrave_type (str): 'FBM' in [MULTIFRACTAL, RIDGED_MULTIFRACTAL, HYBRID_MULTIFRACTAL, FBM, HETERO_TERRAIN]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
-blender ref [ShaderNodeTexMusgrave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMusgrave.html)
-node ref [Musgrave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/musgrave.html) </sub>
-                          
-```python
-v = Texture.Musgrave(vector, w, scale, detail, dimension, lacunarity, offset, gain, musgrave_dimensions, musgrave_type, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- vector : Vector
-- w : Float
-- scale : Float
-- detail : Float
-- dimension : Float
-- lacunarity : Float
-- offset : Float
-- gain : Float## Parameters
-- musgrave_dimensions : '3D' in [1D, 2D, 3D, 4D]
-- musgrave_type : 'FBM' in [MULTIFRACTAL, RIDGED_MULTIFRACTAL, HYBRID_MULTIFRACTAL, FBM, HETERO_TERRAIN]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.MusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, offset=offset, gain=gain, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.MusgraveTexture`
+  
+  
+  .. blid:: ShaderNodeTexMusgrave
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.MusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, offset=offset, gain=gain, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type, label=node_label, node_color=node_color)
+    
 
 ## Noise
 
-> Node: [NoiseTexture](/docs/nodes/NoiseTexture.md)
+Geometry node [*Noise Texture*].
+
+
+  Args:
+    vector: Vector
+    w: Float
+    scale: Float
+    detail: Float
+    roughness: Float
+    distortion: Float
+    noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [fac (Float), color (Color)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
-blender ref [ShaderNodeTexNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
-node ref [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) </sub>
-                          
-```python
-v = Texture.Noise(vector, w, scale, detail, roughness, distortion, noise_dimensions, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- vector : Vector
-- w : Float
-- scale : Float
-- detail : Float
-- roughness : Float
-- distortion : Float## Parameters
-- noise_dimensions : '3D' in [1D, 2D, 3D, 4D]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [fac (Float), color (Color)]
-
+  Node :class:`~geonodes.nodes.nodes.NoiseTexture`
+  
+  
+  .. blid:: ShaderNodeTexNoise
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions, label=node_label, node_color=node_color)
+    
 
 ## Voronoi
 
-> Node: [VoronoiTexture](/docs/nodes/VoronoiTexture.md)
+Geometry node [*Voronoi Texture*].
+
+
+  Args:
+    vector: Vector
+    w: Float
+    scale: Float
+    smoothness: Float
+    exponent: Float
+    randomness: Float
+    distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
+    feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
+    voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
-blender ref [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
-node ref [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) </sub>
-                          
-```python
-v = Texture.Voronoi(vector, w, scale, smoothness, exponent, randomness, distance, feature, voronoi_dimensions, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- vector : Vector
-- w : Float
-- scale : Float
-- smoothness : Float
-- exponent : Float
-- randomness : Float## Parameters
-- distance : 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
-- feature : 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
-- voronoi_dimensions : '3D' in [1D, 2D, 3D, 4D]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
-
+  Node :class:`~geonodes.nodes.nodes.VoronoiTexture`
+  
+  
+  .. blid:: ShaderNodeTexVoronoi
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions, label=node_label, node_color=node_color)
+    
 
 ## Wave
 
-> Node: [WaveTexture](/docs/nodes/WaveTexture.md)
+Geometry node [*Wave Texture*].
+
+
+  Args:
+    vector: Vector
+    scale: Float
+    distortion: Float
+    detail: Float
+    detail_scale: Float
+    detail_roughness: Float
+    phase_offset: Float
+    bands_direction (str): 'X' in [X, Y, Z, DIAGONAL]
+    rings_direction (str): 'X' in [X, Y, Z, SPHERICAL]
+    wave_profile (str): 'SIN' in [SIN, SAW, TRI]
+    wave_type (str): 'BANDS' in [BANDS, RINGS]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [color (Color), fac (Float)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
-blender ref [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
-node ref [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) </sub>
-                          
-```python
-v = Texture.Wave(vector, scale, distortion, detail, detail_scale, detail_roughness, phase_offset, bands_direction, rings_direction, wave_profile, wave_type, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- vector : Vector
-- scale : Float
-- distortion : Float
-- detail : Float
-- detail_scale : Float
-- detail_roughness : Float
-- phase_offset : Float## Parameters
-- bands_direction : 'X' in [X, Y, Z, DIAGONAL]
-- rings_direction : 'X' in [X, Y, Z, SPHERICAL]
-- wave_profile : 'SIN' in [SIN, SAW, TRI]
-- wave_type : 'BANDS' in [BANDS, RINGS]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [color (Color), fac (Float)]
-
+  Node :class:`~geonodes.nodes.nodes.WaveTexture`
+  
+  
+  .. blid:: ShaderNodeTexWave
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type, label=node_label, node_color=node_color)
+    
 
 ## WhiteNoise
 
-> Node: [WhiteNoiseTexture](/docs/nodes/WhiteNoiseTexture.md)
+Geometry node [*White Noise Texture*].
+
+
+  Args:
+    vector: Vector
+    w: Float
+    noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [value (Float), color (Color)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
-blender ref [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
-node ref [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) </sub>
-                          
-```python
-v = Texture.WhiteNoise(vector, w, noise_dimensions, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- vector : Vector
-- w : Float## Parameters
-- noise_dimensions : '3D' in [1D, 2D, 3D, 4D]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [value (Float), color (Color)]
-
+  Node :class:`~geonodes.nodes.nodes.WhiteNoiseTexture`
+  
+  
+  .. blid:: ShaderNodeTexWhiteNoise
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions, label=node_label, node_color=node_color)
+    
 
 ## Image
 
-> Node: [ImageTexture](/docs/nodes/ImageTexture.md)
+Geometry node [*Image Texture*].
+
+
+  Args:
+    image: Image
+    vector: Vector
+    frame: Integer
+    extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP]
+    interpolation (str): 'Linear' in [Linear, Closest, Cubic]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [color (Color), alpha (Float)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
-blender ref [GeometryNodeImageTexture](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
-node ref [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html) </sub>
-                          
-```python
-v = Texture.Image(image, vector, frame, extension, interpolation, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- image : Image
-- vector : Vector
-- frame : Integer## Parameters
-- extension : 'REPEAT' in [REPEAT, EXTEND, CLIP]
-- interpolation : 'Linear' in [Linear, Closest, Cubic]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=extension, interpolation=interpolation, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [color (Color), alpha (Float)]
-
+  Node :class:`~geonodes.nodes.nodes.ImageTexture`
+  
+  
+  .. blid:: GeometryNodeImageTexture
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=extension, interpolation=interpolation, label=node_label, node_color=node_color)
+    
 
 ## switch
 
-> Node: [Switch](/docs/nodes/Switch.md)
+Geometry node [*Switch*].
+
+
+  Args:
+    switch: Boolean
+    true: Texture
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Texture
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-texture) [index](/docs/index.md)
-blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
-                          
-```python
-v = texture.switch(switch, true, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- false : Texture (self)
-- switch : Boolean
-- true : Texture## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- input_type : 'TEXTURE'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Switch(false=self, switch=switch, true=true, input_type='TEXTURE', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Texture
-
+  Node :class:`~geonodes.nodes.nodes.Switch`
+  
+  - input_type = 'TEXTURE'
+    
+  .. blid:: GeometryNodeSwitch
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Switch(false=self, switch=switch, true=true, input_type='TEXTURE', label=node_label, node_color=node_color)
+    

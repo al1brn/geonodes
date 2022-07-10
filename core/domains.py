@@ -213,7 +213,7 @@ class Domain:
     def statistic(self, attribute, data_type=None):
         """ Attribute statistic
         
-        call :class:`nodes.AttributeStatistic`
+        call :class:`~geonodes.nodes.nodes.AttributeStatistic`
         """
         
         dt = Socket.domain_data_type(attribute) if data_type is None else Socket.domain_data_type(data_type)
@@ -452,8 +452,8 @@ class Domain:
         Returns:
             Integer
         
-        - getter: :class:`nodes.ID`
-        - setter: :class:`nodes.SetID`
+        - getter: :class:`~geonodes.nodes.nodes.ID`
+        - setter: :class:`~geonodes.nodes.nodes.SetID`
         """
         
         return self.attribute(nodes.ID()).get_datasocket(0)
@@ -469,7 +469,7 @@ class Domain:
         Returns:
             Integer
         
-        - setter: :class:`nodes.Index`
+        - setter: :class:`~geonodes.nodes.nodes.Index`
         - setter: Read only
         """
         
@@ -483,8 +483,8 @@ class Domain:
         Returns:
             Vector
         
-        - getter: :class:`nodes.Position`
-        - setter: :class:`nodes.SetPosition`
+        - getter: :class:`~geonodes.nodes.nodes.Position`
+        - setter: :class:`~geonodes.nodes.nodes.SetPosition`
         """
         
         vector = self.attribute(nodes.Position()).get_datasocket(0)
@@ -521,8 +521,8 @@ class Domain:
         Returns:
             Vector
         
-        - getter: :class:`nodes.Position`
-        - setter: :class:`nodes.SetPosition`
+        - getter: :class:`~geonodes.nodes.nodes.Position`
+        - setter: :class:`~geonodes.nodes.nodes.SetPosition`
         """
         
         return Node.Vector(0)
@@ -543,18 +543,17 @@ class Domain:
     # Methods for all domains
     
     def duplicate(self, amount=None):
-        """ > Duplicate domain
+        """ Duplicate domain.
         
-        <blid GeometryNodeDuplicateElements>
+        Node :class:`~geonodes.nodes.nodes.DuplicateElements`
         
-        Arguments
-        ---------
-            - amount : Integer
+        Args:
+            amount : Integer
             
-        Returns
-        -------
-            - duplicate index
+        Returns:
+            duplicate index
         """
+        
         node = nodes.DuplicateElements(self.data_socket, self.selection, amount=amount, domain=self.domain)
         self.stack(node)
         return node.duplicate_index
@@ -572,27 +571,29 @@ class Domain:
 class PointInterface:
     
     def instantiate(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
-        """ > Put instances on points
+        """ Put instances on points
         
-        <blid GeometryNodeInstanceOnPoints>
+        Node :class:`~geonodes.nodes.nodes.InstanceOnPoints`
         
-        Arguments
-        ---------
-            - instance : Geometry
-            - pick_instance : Boolean
-            - instance_index : Integer
-            - rotation : Vector
-            - scale : Vector
+        Args:
+            instance : Geometry
+            pick_instance : Boolean
+            instance_index : Integer
+            rotation : Vector
+            scale : Vector
+            
+        Returns:
+            Instances
 
-        Example
-        -------        
-        
-        ```python
-        mesh.verts(...).instantiate(...)
-        curve.points(...).instantiate(...)
-        cloud.points(...).instantiate(...)
-        ```
+        Example:
+            
+            .. code-block:: python
+
+            mesh.verts(...).instantiate(...)
+            curve.points(...).instantiate(...)
+            cloud.points(...).instantiate(...)
         """
+        
         return nodes.InstanceOnPoints(
                 points=self.data_socket, selection=self.selection, 
                 instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale
@@ -622,7 +623,7 @@ class MeshInterface:
         Returns:
             Vector
         
-        - getter: :class:`nodes.Normal`
+        - getter: :class:`~geonodes.nodes.nodes.Normal`
         - setter: readonly
         """
         
@@ -635,7 +636,7 @@ class MeshInterface:
         Returns:
             Node MeshIsland
             
-        getter: :class:`nodes.MeshIsland`
+        getter: :class:`~geonodes.nodes.nodes.MeshIsland`
         setter: read only
         """
         
@@ -648,7 +649,7 @@ class MeshInterface:
         Returns:
             Int
             
-        getter: :class:`nodes.MeshIsland`
+        getter: :class:`~geonodes.nodes.nodes.MeshIsland`
         setter: read only
         """
 
@@ -662,7 +663,7 @@ class MeshInterface:
         Returns:
             Int
             
-        getter: :class:`nodes.MeshIsland`
+        getter: :class:`~geonodes.nodes.nodes.MeshIsland`
         setter: read only
         """
 
@@ -673,30 +674,27 @@ class MeshInterface:
     # Methods
     
     def to_points(self, position=None, radius=None):
-        """ > Convert to points cloud
+        """ Convert to points cloud.
         
-        <blid GeometryNodeMeshToPoints>
+        Node :class:`MeshToPoints` 
         
-        Arguments
-        ---------
-            - position : Vector
-            - radius : Float
+        Args:
+            position : Vector
+            radius : Float
             
-        Returns
-        -------
-            - Points
+        Returns:
+            Points
             
-        Example
-        -------        
+        Example:
+            
+            .. code-block:: python
         
-        ```python
-        mesh.verts.to_points(...)
-        mesh.edges.to_points(...)
-        mesh.faces.to_points(...)
-        mesh.corners.to_points(...)
-        ```
-        
+            mesh.verts.to_points(...)
+            mesh.edges.to_points(...)
+            mesh.faces.to_points(...)
+            mesh.corners.to_points(...)
         """
+
         mode = {'POINT': 'VERTICES', 'EDGE': 'EDGES', 'FACE': 'FACES', 'CORNER': 'CORNERS'}[self.domain]
         return nodes.MeshToPoints(
             mesh=self.data_socket, selection=self.selection, position=position, radius=radius, mode=mode).points
@@ -707,126 +705,120 @@ class MeshInterface:
 class PEFInterface:
     
     def delete(self, mode='ALL'):
-        """ <method GeometryNodeDeleteGeometry>
+        """ Delete geometry
         
-        mode : str (default = 'ALL') in ('ALL', 'EDGE_FACE', 'ONLY_FACE')        
+        Node :class:`DeleteGeometry`
         
-        Example
-        -------        
+        Args:
+            mode : str (default = 'ALL') in ('ALL', 'EDGE_FACE', 'ONLY_FACE')      
+            
+        Returns:
+            self
         
-        ```python
-        mesh.verts(...).delete(mode='ALL')
-        mesh.edges(...).delete(mode='EDGE_FACE')
-        mesh.faces(...).delete(mode='ONLY_FACE')
-        ```
+        .. code-block:: python
+
+            mesh.verts(...).delete(mode='ALL')
+            mesh.edges(...).delete(mode='EDGE_FACE')
+            mesh.faces(...).delete(mode='ONLY_FACE')
         """
         return self.stack(nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain, mode=mode))
     
     def delete_all(self):
-        """ <method GeometryNodeDeleteGeometry>
+        """ Delete all geometry.
         
-        call delete with mode : 'ALL'
+        call :func:`delete` with mode : 'ALL'
+            
+        Returns:
+            self
         
-        Example
-        -------        
-        
-        ```python
-        mesh.verts(...).delete_all()
-        mesh.edges(...).delete_all()
-        mesh.faces(...).delete_all()
-        ```
+        .. code-block:: python
+
+            mesh.verts(...).delete_all()
+            mesh.edges(...).delete_all()
+            mesh.faces(...).delete_all()
         """
         return self.delete(mode='ALL')
         
     def delete_faces(self):
-        """ <method GeometryNodeDeleteGeometry>
+        """ Delete faces
         
-        call delete with mode : 'ONLY_FACE'
+        call :func:`delete` with mode : 'ONLY_FACE'
+            
+        Returns:
+            self
         
-        Example
-        -------        
-        
-        ```python
+        .. code-block:: python
+
         mesh.verts(...).delete_faces()
         mesh.edges(...).delete_faces()
         mesh.faces(...).delete_faces()
-        ```
         """
         return self.delete(mode='ONLY_FACE')
         
     def delete_edges_faces(self):
-        """ <method GeometryNodeDeleteGeometry>
+        """ Delete edges and faces.
         
-        call delete with mode : 'EDGE_FACE'
+        call :func:`delete` with mode : 'EDGE_FACE'
+            
+        Returns:
+            self
         
-        Example
-        -------        
+        .. code-block:: python
         
-        ```python
-        mesh.verts(...).delete_edges_faces()
-        mesh.edges(...).delete_edges_faces()
-        mesh.faces(...).delete_edges_faces()
-        ```
+            mesh.verts(...).delete_edges_faces()
+            mesh.edges(...).delete_edges_faces()
+            mesh.faces(...).delete_edges_faces()
         """
         return self.delete(mode='EDGE_FACE')
     
     def proximity(self, source_position=None):
-        """ <method GeometryNodeProximity>
+        """ Proximity.
         
-        Example
-        -------        
+        Node :class:`~geonodes.nodes.nodes.GeometryProximity`
         
-        ```python
-        mesh.verts(...).proximity()
-        mesh.edges(...).proximity()
-        mesh.faces(...).proximity()
-        ```
-        
-        Arguments
-        ---------
-            - source_position : Vector
+        Args:
+            source_position: Vector
             
-        Returns
-        -------
-            - Node with sockets
+        Returns:
+            Node with two sockets:
+                
                 - position : Vector
                 - distance : Float
+        
+        .. code-block:: python
+            
+            mesh.verts(...).proximity()
+            mesh.edges(...).proximity()
+            mesh.faces(...).proximity()
         """
         target_element = self.domain + 'S'
         return nodes.GeometryProximity(target=self.data_socket, source_position=source_position, target_element=target_element)
         
     
     def extrude(self, offset=None, offset_scale=None, individual=None):
-        """ > Extrusion
+        """ Extrusion.
         
-        <blid GeometryNodeExtrudeMesh>
+        Node :class:`~geonode.nodes.nodes.ExtrudeMesh`
         
-        Arguments
-        ---------
-            - offset : Vector
-            - offset_scale : Float
-            - individual : Boolean
+        Args:
+            offset : Vector
+            offset_scale : Float
+            individual : Boolean
             
-        Returns
-        -------
-            - tuple with top and side selections
+        Returns:
+            tuple with top and side selections
                             
-        Example
-        -------        
-        
-        ```python
-         top, side = mesh.verts(...).extrude(...)
-         top, side = mesh.edges(...).extrude(...)
-         top, side = mesh.faces(...).extrude(...)
-         
-         # Example of insetting and extruding the faces of a mesh
-         
-         top, _ = mesh.faces.extrude(offset_scale=0)
-         top.scale(0.5)
-         top1, _ = top.extrude(top.normal, .3)
-         
-        ```
-        
+        .. code-block:: python
+            
+             top, side = mesh.verts(...).extrude(...)
+             top, side = mesh.edges(...).extrude(...)
+             top, side = mesh.faces(...).extrude(...)
+             
+             # Example of insetting and extruding the faces of a mesh
+             
+             top, _ = mesh.faces.extrude(offset_scale=0)
+             top.scale(0.5)
+             top1, _ = top.extrude(top.normal, .3)
         """
         mode = {'POINT': 'VERTICES', 'EDGE': 'EDGES', 'FACE': 'FACES'}[self.domain]
         node = nodes.ExtrudeMesh(
@@ -836,28 +828,25 @@ class PEFInterface:
         return self.select(node.top), self.select(node.side)
     
     def scale(self, scale=None, center=None, axis=None, scale_mode='UNIFORM'):
-        """ > Scale a face or an edge
+        """ Scale a face or an edge.
         
-        <blid GeometryNodeScaleElements>
+        Node :class:`~geonodes.nodes.nodes.ScaleElements`
         
         scale_uniform and scale_single_axis can be called without the argument scale_mode
         
-        Arguments
-        ---------
-            - scale : Float
-            - center : Vector
-            - axis : Vector
-            - scale_mode : str (default = 'UNIFORM') in ('UNIFORM', 'SINGLE_AXIS')
+        Args:
+            scale : Float
+            center : Vector
+            axis : Vector
+            scale_mode : str (default = 'UNIFORM') in ('UNIFORM', 'SINGLE_AXIS')
             
+        Returns:
+            self
                             
-        Example
-        -------        
-        
-        ```python
-         mesh.edges(...).scale(...)
-         mesh.faces(...).scale(...)
-        ```
-        
+        .. code-block:: python
+            
+             mesh.edges(...).scale(...)
+             mesh.faces(...).scale(...)
         """
         
         if self.domain == 'POINT':
@@ -867,50 +856,40 @@ class PEFInterface:
             scale=scale, center=center, axis=axis, domain=self.domain, scale_mode=scale_mode))
         
     def scale_uniform(self, scale=None, center=None):
-        """ > Scale a face or an edge in uniform mode
+        """ Scale a face or an edge in uniform mode.
         
-        <blid GeometryNodeScaleElements>
+        call :func:`scale` with mode='UNIFORM'
         
-        call scale with mode='UNIFORM'
+        Args:
+            scale : Float
+            center : Vector
+            
+        Returns:
+            self
         
-        
-        Arguments
-        ---------
-            - scale : Float
-            - center : Vector
-                            
-        Example
-        -------        
-        
-        ```python
-         mesh.edges(...).scale_uniform(...)
-         mesh.faces(...).scale_uniform(...)
-        ```
-        
+        .. code-block:: python
+            
+             mesh.edges(...).scale_uniform(...)
+             mesh.faces(...).scale_uniform(...)
         """
         return self.scale(scale=scale, center=center, mode='UNIFORM')
         
     def scale_single_axis(self, scale=None, center=None, axis=None):
-        """ > Scale a face or an edge in single axis mode
+        """ Scale a face or an edge in single axis mode.
         
-        <blid GeometryNodeScaleElements>
+        call :func:`scale` with mode='SINGLE_AXIS'
         
-        call scale with mode='SINGLE_AXIS'
-        
-        
-        Arguments
-        ---------
-            - scale : Float
-            - center : Vector
+        Args:
+            scale : Float
+            center : Vector
             
-        Example
-        -------        
-        
-        ```python
-         mesh.edges(...).scale_single_axis(...)
-         mesh.faces(...).scale_single_axis(...)
-        ```
-        
+        Returns:
+            self
+            
+        .. code-block:: python
+            
+             mesh.edges(...).scale_single_axis(...)
+             mesh.faces(...).scale_single_axis(...)
         """
         return self.scale(scale=scale, center=center, axis=axis, mode='SINGLE_AXIS')
     
@@ -925,12 +904,12 @@ class Vertex(Domain, PointInterface, MeshInterface, PEFInterface):
         
     @property
     def neighbors(self):
-        """ Neighbors node
+        """ Neighbors
         
         Returns:
             Node *VertexNeighbors*
         
-        - getter: :class:`nodes.VertexNeighbors`
+        - getter: :class:`~geonodes.nodes.nodes.VertexNeighbors`
         - setter: read only
         """
         return self.attribute(nodes.VertexNeighbors())
@@ -942,7 +921,7 @@ class Vertex(Domain, PointInterface, MeshInterface, PEFInterface):
         Returns:
             Integer: The output socket *vertices* of the *VertexNeighbors* node.
         
-        - getter: :class:`nodes.VertexNeighbors`
+        - getter: :class:`~geonodes.nodes.nodes.VertexNeighbors`
         - setter: read only
         """
         
@@ -963,7 +942,7 @@ class Vertex(Domain, PointInterface, MeshInterface, PEFInterface):
         Returns:
             Integer: The output socket *faces* of the *VertexNeighbors* node.
         
-        - getter: :class:`nodes.VertexNeighbors`
+        - getter: :class:`~geonodes.nodes.nodes.VertexNeighbors`
         - setter: read only
         """
         
@@ -973,41 +952,37 @@ class Vertex(Domain, PointInterface, MeshInterface, PEFInterface):
     # Methods
     
     def merge(self, distance=0.001, mode='ALL'):
+        """ Merge vertices by distance.
         
-        """ > Merge vertices by distance
-        
-        <blid GeometryNodeMergeByDistance>
+        Node :class:`~geonodes.nodes.nodes.MergeByDistance`
 
-        Arguments
-        ---------
-            - mode : str (default = 'ALL') in ('ALL', 'CONNECTED')        
-            - distance : Float
-                The merge distance
-        Example
-        -------        
-        
-        '''python
-        mesh.verts().merge()
-        ````
+        Args:
+            distance (Float): The merge distance
+            mode (str): str (default = 'ALL') in ('ALL', 'CONNECTED')        
+            
+        Returns:
+            self
+
+        .. code-block:: python
+            
+            mesh.verts().merge()
         """
         return self.stack(nodes.MergeByDistance(self.data_socket, selection=self.selection, distance=distance, mode=mode))
 
     def merge_connected(self, distance=0.001):
-        """ > Merge connected vertices by distance
+        """ Merge connected vertices by distance.
         
-        <blid GeometryNodeMergeByDistance>
+        call :func:`merge` with mode = 'CONNECTED'
 
-        Arguments
-        ---------
-            - distance : Float
-                The merge distance
+        Args:
+            distance (Float): The merge distance
+            
+        Returns:
+            self
 
-        Example
-        -------        
-        
-        '''python
-        mesh.verts().merge_connected()
-        ````
+        .. code-block:: python
+            
+            mesh.verts().merge_connected()
         """
         return self.merge(distance=distance, mode='CONNECTED')
         
@@ -1076,7 +1051,7 @@ class Face(Domain, MeshInterface, PEFInterface):
         Returns:
             Node FaceNeighbors
         
-        - getter: :class:`nodes.FaceNeighbors`
+        - getter: :class:`~geonodes.nodes.nodes.FaceNeighbors`
         - setter: read only
         """
         return self.attribute(nodes.FaceNeighbors())
@@ -1088,7 +1063,7 @@ class Face(Domain, MeshInterface, PEFInterface):
         Returns:
             Integer: the output socket *vertices* of the *FaceNeighbors* node.
         
-        - getter: :class:`nodes.FaceNeighbors`
+        - getter: :class:`~geonodes.nodes.nodes.FaceNeighbors`
         - setter: read only
         """
         
@@ -1102,7 +1077,7 @@ class Face(Domain, MeshInterface, PEFInterface):
         Returns:
             Integer: The output socket *faces* of the *FaceNeighbors* node.
         
-        - getter: :class:`nodes.FaceNeighbors`
+        - getter: :class:`~geonodes.nodes.nodes.FaceNeighbors`
         - setter: read only
         """
         
@@ -1115,7 +1090,7 @@ class Face(Domain, MeshInterface, PEFInterface):
         Returns:
             Float
 
-        - getter: :class:`nodes.FaceArea`
+        - getter: :class:`~geonodes.nodes.nodes.FaceArea`
         - setter: read only
         
         """
@@ -1132,7 +1107,7 @@ class Face(Domain, MeshInterface, PEFInterface):
         Returns:
             Boolean
             
-        - getter: :class:`nodes.FaceIsPlanar`
+        - getter: :class:`~geonodes.nodes.nodes.FaceIsPlanar`
         - setter: read only
         """
         
@@ -1145,8 +1120,8 @@ class Face(Domain, MeshInterface, PEFInterface):
         Returns:
             Boolean
 
-        - getter: :class:`nodes.IsShadeSmooth`
-        - setter: :class:`nodes.SetShadeSmooth`
+        - getter: :class:`~geonodes.nodes.nodes.IsShadeSmooth`
+        - setter: :class:`~geonodes.nodes.nodes.SetShadeSmooth`
         """
 
         return self.attribute(nodes.IsShadeSmooth()).get_datasocket(0)
@@ -1164,8 +1139,8 @@ class Face(Domain, MeshInterface, PEFInterface):
         Returns:
             Integer
 
-        - getter: :class:`nodes.MaterialIndex`
-        - setter: :class:`nodes.SetMaterialIndex`
+        - getter: :class:`~geonodes.nodes.nodes.MaterialIndex`
+        - setter: :class:`~geonodes.nodes.nodes.SetMaterialIndex`
         """
         
         return self.attribute(nodes.MaterialIndex()).get_datasocket(0)
@@ -1183,7 +1158,7 @@ class Face(Domain, MeshInterface, PEFInterface):
         Args:
             material (str or bpy.types.Material): The material to set
         
-        - setter: :class:`nodes.SetMaterial`
+        - setter: :class:`~geonodes.nodes.nodes.SetMaterial`
         """
         
         import bpy
@@ -1201,7 +1176,7 @@ class Face(Domain, MeshInterface, PEFInterface):
         """ Material attribute
         
         - getter: write only
-        - setter: :class:`nodes.SetMaterial`
+        - setter: :class:`~geonodes.nodes.nodes.SetMaterial`
         """
         
         raise Exception(f"Face.material is a write only property")
@@ -1219,7 +1194,7 @@ class Face(Domain, MeshInterface, PEFInterface):
         Returns:
             Boolean
 
-        - getter: :class:`nodes.MaterialSelection`
+        - getter: :class:`~geonodes.nodes.nodes.MaterialSelection`
         """
         
         import bpy
@@ -1236,74 +1211,66 @@ class Face(Domain, MeshInterface, PEFInterface):
     # Methods
     
     def flip(self):
-        """ > Flip faces
+        """ Flip faces.
         
-        <blid GeometryNodeFlipFaces>
+        Node :class:`~geonodes.nodes.nodes.FlipFaces`
+            
+        Returns:
+            self
         
-        Example
-        -------        
-        
-        ```python
-        mesh.faces.flip()
-        ```
-        
+        .. code-block:: python
+            
+            mesh.faces.flip()
         """
         return self.stack(nodes.FlipFaces(mesh=self.data_socket, selection=self.selection))
     
     def triangulate(self, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
-        """ > Triangulate faces
+        """ Triangulate faces.
         
-        <blid GeometryNodeTriangulate>
+        Node :class:`~geonodes.nodes.nodes.Triangulate`
         
-        Arguments
-        ---------
-            - minimum_vertices : Integer
-            - ngon_method : str (default = 'BEAUTY') in ('BEAUTY', 'CLIP')
-            - quad_method : str (default = 'SHORTEST_DIAGONAL') in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
+        Args:
+            minimum_vertices : Integer
+            ngon_method (str): (default = 'BEAUTY') in ('BEAUTY', 'CLIP')
+            quad_method (str): (default = 'SHORTEST_DIAGONAL') in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
+            
+        Returns:
+            self
 
-        Example
-        -------        
-        
-        ```python
-        mesh.faces(...).triangulate(...)
-        ```
+        .. code-block:: python
+            
+            mesh.faces(...).triangulate(...)
         """
         return self.stack(nodes.Triangulate(
             mesh=self.data_socket, selection=self.selection,
             minimum_vertices=minimum_vertices, ngon_method=ngon_method, quad_method=quad_method))
     
     def distribute_points(self, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):
-        """ > Distribute points on faces
+        """ Distribute points on faces.
         
-        <blid GeometryNodeDistributePointsOnFaces>
+        Node :class:`~geonodes.nodes.nodes.DistributePointsOnFaces`
 
-        Arguments
-        ---------
-            - distance_min : Float
-            - density_max : Float
-            - density : Float
-            - density_factor : Float
-            - seed : Integer
-            - distribute_method : str (default = 'RANDOM') in ('RANDOM', 'POISSON')
+        Args:
+            distance_min : Float
+            density_max : Float
+            density : Float
+            density_factor : Float
+            seed : Integer
+            distribute_method (str): (default = 'RANDOM') in ('RANDOM', 'POISSON')
 
-        Returns
-        -------
-        Node with 3 sockets:
-            - points : Points
-            - normal : Vector
-            - rotation : Vector
+        Returns:
+            Node with 3 sockets:
+                
+                - points : Points
+                - normal : Vector
+                - rotation : Vector
             
-        Example
-        -------
-        
-        ```python
-        node = mesh.faces.distribute_points(...)
-        cloud = node.points
-        normal = node.normal
-        rotation = node.rotation
-        
-        ```
+        .. code-block:: python
             
+            node = mesh.faces.distribute_points(...)
+            cloud = node.points
+            normal = node.normal
+            rotation = node.rotation
         """
         
         return nodes.DistributePointsOnFaces(mesh=self.data_socket, selection=self.selection,
@@ -1326,7 +1293,7 @@ class Edge(Domain, MeshInterface, PEFInterface):
         Returns:
             Integer
         
-        - getter: :class:`nodes.EdgeNeighbors`
+        - getter: :class:`~geonodes.nodes.nodes.EdgeNeighbors`
         - setter: read only
         """
         return self.attribute(nodes.EdgeNeighbors()).get_datasocket(0)
@@ -1338,12 +1305,10 @@ class Edge(Domain, MeshInterface, PEFInterface):
         Returns:
             Node *EdgeAngle*
         
-        - getter: :class:`nodes.EdgeAngle`
+        - getter: :class:`~geonodes.nodes.nodes.EdgeAngle`
         - setter: read only
         """
         return self.attribute(nodes.EdgeAngle())
-    
-    
 
     @property
     def unsigned_angle(self):
@@ -1352,7 +1317,7 @@ class Edge(Domain, MeshInterface, PEFInterface):
         Returns:
             Float: Unsigned output socket of *EdgeAngle*
         
-        - getter: :class:`nodes.EdgeAngle`
+        - getter: :class:`~geonodes.nodes.nodes.EdgeAngle`
         - setter: read only
         """
         
@@ -1365,7 +1330,7 @@ class Edge(Domain, MeshInterface, PEFInterface):
         Returns:
             Float: Signed output socket of *EdgeAngle*
         
-        - getter: :class:`nodes.EdgeAngle`
+        - getter: :class:`~geonodes.nodes.nodes.EdgeAngle`
         - setter: read only
         """
         
@@ -1384,7 +1349,7 @@ class Edge(Domain, MeshInterface, PEFInterface):
             - position_1 : Vector
             - position_2 : Vector
         
-        - getter: :class:`nodes.EdgeVertices`
+        - getter: :class:`~geonodes.nodes.nodes.EdgeVertices`
         - setter: read only
         """
         
@@ -1397,7 +1362,7 @@ class Edge(Domain, MeshInterface, PEFInterface):
         Returns:
             (Integer, Integer)
         
-        - getter: :class:`nodes.EdgeVertices`
+        - getter: :class:`~geonodes.nodes.nodes.EdgeVertices`
         - setter: read only
         """
         
@@ -1411,7 +1376,7 @@ class Edge(Domain, MeshInterface, PEFInterface):
         Returns:
             (Float, Float)
         
-        - getter: :class:`nodes.EdgeVertices`
+        - getter: :class:`~geonodes.nodes.nodes.EdgeVertices`
         - setter: read only
         """
         
@@ -1423,39 +1388,33 @@ class Edge(Domain, MeshInterface, PEFInterface):
     # Methods
     
     def to_curve(self):
-        """ > Convert edges to curve
+        """ Convert edges to curve.
         
-        <blid GeometryNodeMeshToCurve>
-        
+        Node :class:`~geonodes.nodes.nodes.MeshToCurve`
             
-        Example
-        -------        
-        
-        ```python
-        mesh.edges.to_curve(...)
-        ```
-        
+        Returns:
+            Curve
+            
+        .. code-block:: python
+            
+            mesh.edges.to_curve(...)
         """
         return nodes.MeshToCurve(
             mesh=self.data_socket, selection=self.selection).curve
     
     def split(self):
-        """ > Split edges
+        """ Split edges.
         
-        <blid GeometryNodeSplitEdges>
+        Node :class:`SplitEdges`
+            
+        Returns:
+            self
         
-        Example
-        -------        
-        
-        ```python
-        mesh.edges.split()
-        ```
-        
+        .. code-block:: python
+            
+            mesh.edges.split()
         """
         return self.stack(nodes.SplitEdges(mesh=self.data_socket, selection=self.selectoin))
-    
-    
-    
     
 # ---------------------------------------------------------------------------
 # Face corner domain
@@ -1486,8 +1445,8 @@ class ControlPoint(Domain, PointInterface):
         Returns:
             Float
             
-        getter: :class:`nodes.Radius`
-        setter: :class: `nodes.SetCurveRadius`
+        getter: :class:`~geonodes.nodes.nodes.Radius`
+        setter: :class: `~geonodes.nodes.nodes.SetCurveRadius`
         """
         return self.attribute(nodes.Radius()).get_datasocket(0)
     
@@ -1502,8 +1461,8 @@ class ControlPoint(Domain, PointInterface):
         Returns:
             Float
             
-        getter: :class:`nodes.CurveTilt`
-        setter: :class: `nodes.SetCurveTilt`
+        getter: :class:`~geonodes.nodes.nodes.CurveTilt`
+        setter: :class: `~geonodes.nodes.nodes.SetCurveTilt`
         """
         return self.attribute(nodes.CurveTilt()).get_datasocket(0)
     
@@ -1518,7 +1477,7 @@ class ControlPoint(Domain, PointInterface):
         Returns:
             Vector
             
-        getter: :class:`nodes.CurveTangent`
+        getter: :class:`~geonodes.nodes.nodes.CurveTangent`
         setter: read only
         """
         return self.attribute(nodes.CurveTangent()).get_datasocket(0)
@@ -1548,7 +1507,7 @@ class ControlPoint(Domain, PointInterface):
         """ Handle type attribute
         
         - getter: write only
-        - setter: :class:`nodes.SetHandleType`
+        - setter: :class:`~geonodes.nodes.nodes.SetHandleType`
         """
 
         raise Exception(f"'handle_type' is a write only property")
@@ -1562,7 +1521,7 @@ class ControlPoint(Domain, PointInterface):
         """ Left handle type attribute
         
         - getter: write only
-        - setter: :class:`nodes.SetHandleType`
+        - setter: :class:`~geonodes.nodes.nodes.SetHandleType`
         """
 
         raise Exception(f"'left_type' is a write only property")
@@ -1576,7 +1535,7 @@ class ControlPoint(Domain, PointInterface):
         """ Left handle type attribute
         
         - getter: write only
-        - setter: :class:`nodes.SetHandleType`
+        - setter: :class:`~geonodes.nodes.nodes.SetHandleType`
         """
         
         raise Exception(f"'right_type' is a write only property")
@@ -1610,7 +1569,7 @@ class ControlPoint(Domain, PointInterface):
             offset (Vector): Offset
             mode (str): 'LEFT' or 'RIGHT'
 
-        - setter: :class:`nodes.SetHandlePositions`
+        - setter: :class:`~geonodes.nodes.nodes.SetHandlePositions`
         """
         
         self.stack(nodes.SetHandlePositions(curve=self.data_socket, selection=self.selection, position=position, offset=offset, mode=mode))
@@ -1658,7 +1617,7 @@ class ControlPoint(Domain, PointInterface):
         """ Right handle positions, write only
         
         - getter: read only
-        - setter: :class:`nodes.SetHandlePositions`
+        - setter: :class:`~geonodes.nodes.nodes.SetHandlePositions`
         """
         
         raise Exception(f"left_handle_positions is write only. Use left_handles(relative: Boolean) to get the positions of left handles")
@@ -1673,7 +1632,7 @@ class ControlPoint(Domain, PointInterface):
         """ Right handle positions, write only
         
         - getter: write only
-        - setter: :class:`nodes.SetHandlePositions`
+        - setter: :class:`~geonodes.nodes.nodes.SetHandlePositions`
         """
         
         raise Exception(f"right_handle_positions is write only. Use right_handles(relative: Boolean) to get the positions of right handles")
@@ -1687,7 +1646,7 @@ class ControlPoint(Domain, PointInterface):
         """ Left handle offsets, write only
         
         - getter: write only
-        - setter: :class:`nodes.SetHandlePositions`
+        - setter: :class:`~geonodes.nodes.nodes.SetHandlePositions`
         """
         
         raise Exception(f"left_handle_offsets is write only. Use left_handles(relative: Boolean) to get the positions of left handles")
@@ -1701,7 +1660,7 @@ class ControlPoint(Domain, PointInterface):
         """ Right handle offsets, write only
         
         - getter: write only
-        - setter: :class:`nodes.SetHandlePositions`
+        - setter: :class:`~geonodes.nodes.nodes.SetHandlePositions`
         """
         
         raise Exception(f"right_handle_offsets is write only. Use right_handles(relative: Boolean) to get the positions of right handles")
@@ -1724,7 +1683,7 @@ class ControlPoint(Domain, PointInterface):
         Returns:
             Boolean
             
-        getter: :class:`nodes.HandleTypeSelection`
+        getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
         """
         
         mode = set()
@@ -1745,7 +1704,7 @@ class ControlPoint(Domain, PointInterface):
         Returns:
             Boolean
             
-        getter: :class:`nodes.HandleTypeSelection`
+        getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
         """
         return self.handles_selection(handle_type='AUTO')
     
@@ -1756,7 +1715,7 @@ class ControlPoint(Domain, PointInterface):
         Returns:
             Boolean
             
-        getter: :class:`nodes.HandleTypeSelection`
+        getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
         """
         return self.handles_selection(handle_type='FREE')
     
@@ -1767,7 +1726,7 @@ class ControlPoint(Domain, PointInterface):
         Returns:
             Boolean
             
-        getter: :class:`nodes.HandleTypeSelection`
+        getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
         """
         return self.handles_selection(handle_type='VECTOR')
     
@@ -1778,7 +1737,7 @@ class ControlPoint(Domain, PointInterface):
         Returns:
             Boolean
             
-        getter: :class:`nodes.HandleTypeSelection`
+        getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
         """
         return self.handles_selection(handle_type='ALIGN')
     
@@ -1789,7 +1748,7 @@ class ControlPoint(Domain, PointInterface):
         Returns:
             Boolean
             
-        getter: :class:`nodes.HandleTypeSelection`
+        getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
         """
         return self.handles_selection(handle_type='AUTO', right=False)
     
@@ -1800,7 +1759,7 @@ class ControlPoint(Domain, PointInterface):
         Returns:
             Boolean
             
-        getter: :class:`nodes.HandleTypeSelection`
+        getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
         """
         return self.handles_selection(handle_type='AUTO', left=False)
     
@@ -1811,7 +1770,7 @@ class ControlPoint(Domain, PointInterface):
         Returns:
             Boolean
             
-        getter: :class:`nodes.HandleTypeSelection`
+        getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
         """
         return self.handles_selection(handle_type='FREE', right=False)
     
@@ -1822,7 +1781,7 @@ class ControlPoint(Domain, PointInterface):
         Returns:
             Boolean
             
-        getter: :class:`nodes.HandleTypeSelection`
+        getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
         """
         return self.handles_selection(handle_type='FREE', left=False)
     
@@ -1833,7 +1792,7 @@ class ControlPoint(Domain, PointInterface):
         Returns:
             Boolean
             
-        getter: :class:`nodes.HandleTypeSelection`
+        getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
         """
         return self.handles_selection(handle_type='VECTOR', right=False)
     
@@ -1844,7 +1803,7 @@ class ControlPoint(Domain, PointInterface):
         Returns:
             Boolean
             
-        getter: :class:`nodes.HandleTypeSelection`
+        getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
         """
         return self.handles_selection(handle_type='VECTOR', left=False)
     
@@ -1855,7 +1814,7 @@ class ControlPoint(Domain, PointInterface):
         Returns:
             Boolean
             
-        getter: :class:`nodes.HandleTypeSelection`
+        getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
         """
         return self.handles_selection(handle_type='ALIGN', right=False)
     
@@ -1866,7 +1825,7 @@ class ControlPoint(Domain, PointInterface):
         Returns:
             Boolean
             
-        getter: :class:`nodes.HandleTypeSelection`
+        getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
         """
         return self.handles_selection(handle_type='ALIGN', left=False)
     
@@ -1885,8 +1844,8 @@ class Spline(Domain):
         Returns:
             Float
             
-        getter: :class:`nodes.Radius`
-        setter: :class: `nodes.SetCurveRadius`
+        getter: :class:`~geonodes.nodes.nodes.Radius`
+        setter: :class: `~geonodes.nodes.nodes.SetCurveRadius`
         """
         return self.attribute(nodes.Radius()).get_datasocket(0)
     
@@ -1901,8 +1860,8 @@ class Spline(Domain):
         Returns:
             Float
             
-        getter: :class:`nodes.CurveTilt`
-        setter: :class: `nodes.SetCurveTilt`
+        getter: :class:`~geonodes.nodes.nodes.CurveTilt`
+        setter: :class: `~geonodes.nodes.nodes.SetCurveTilt`
         """
         return self.attribute(nodes.CurveTilt()).get_datasocket(0)
     
@@ -1917,8 +1876,8 @@ class Spline(Domain):
         Returns:
             Boolean
             
-        getter: :class:`nodes.IsSplineCyclic`
-        setter: :class: `nodes.SetSplineCyclic`
+        getter: :class:`~geonodes.nodes.nodes.IsSplineCyclic`
+        setter: :class: `~geonodes.nodes.nodes.SetSplineCyclic`
         """
         return self.attribute(nodes.IsSplineCyclic()).get_datasocket(0)
     
@@ -1933,7 +1892,7 @@ class Spline(Domain):
         Returns:
             Vector
             
-        getter: :class:`nodes.CurveTangent`
+        getter: :class:`~geonodes.nodes.nodes.CurveTangent`
         setter: read only
         """
         return self.attribute(nodes.CurveTangent()).get_datasocket(0)
@@ -1949,7 +1908,7 @@ class Spline(Domain):
             - length : Float
             - point_count : Integer
             
-        getter: :class:`nodes.SplineLength`
+        getter: :class:`~geonodes.nodes.nodes.SplineLength`
         setter: read only
         """
         return self.attribute(nodes.SplineLength())
@@ -1961,7 +1920,7 @@ class Spline(Domain):
         Returns:
             Float: length socket of spline_length
             
-        getter: :class:`nodes.SplineLength`
+        getter: :class:`~geonodes.nodes.nodes.SplineLength`
         setter: read only
         """
         return self.spline_length.length
@@ -1974,7 +1933,7 @@ class Spline(Domain):
         Returns:
             Integer: point_count socket of spline_length
             
-        getter: :class:`nodes.SplineLength`
+        getter: :class:`~geonodes.nodes.nodes.SplineLength`
         setter: read only
         """
         return self.spline_length.point_count
@@ -1991,7 +1950,7 @@ class Spline(Domain):
             - length : Float
             - index : Integer
             
-        getter: :class:`nodes.SplineParameter`
+        getter: :class:`~geonodes.nodes.nodes.SplineParameter`
         setter: read only
         """        
         return self.attribute(nodes.SplineParameter())
@@ -2004,7 +1963,7 @@ class Spline(Domain):
         Returns:
             Float: factor socket of parameter
             
-        getter: :class:`nodes.SplineParameter`
+        getter: :class:`~geonodes.nodes.nodes.SplineParameter`
         setter: read only
         """
         return self.parameter.factor
@@ -2016,7 +1975,7 @@ class Spline(Domain):
         Returns:
             Float: length socket of parameter
             
-        getter: :class:`nodes.SplineParameter`
+        getter: :class:`~geonodes.nodes.nodes.SplineParameter`
         setter: read only
         """
         return self.parameter.length
@@ -2028,7 +1987,7 @@ class Spline(Domain):
         Returns:
             Integer: index socket of parameter
             
-        getter: :class:`nodes.SplineParameter`
+        getter: :class:`~geonodes.nodes.nodes.SplineParameter`
         setter: read only
         """
         return self.parameter.index
@@ -2040,8 +1999,8 @@ class Spline(Domain):
         Returns:
             Integer
             
-        getter: :class:`nodes.SplineResolution`
-        setter: :class: `nodes.SetSplineResolution`
+        getter: :class:`~geonodes.nodes.nodes.SplineResolution`
+        setter: :class: `~geonodes.nodes.nodes.SetSplineResolution`
         """
         return self.attribute(nodes.SplineResolution()).get_datasocket(0)
     
@@ -2060,7 +2019,7 @@ class Spline(Domain):
         -------
             Float
             
-        getter: :class:`nodes.EndpointSelection`
+        getter: :class:`~geonodes.nodes.nodes.EndpointSelection`
         """
         return self.attribute(nodes.EndpointSelection(start_size=start_size, end_size=end_size)).get_datasocket(0)
     
@@ -2074,7 +2033,7 @@ class Spline(Domain):
         type in ('BEZIER', 'NURBS', 'POLY')
             
         getter: write only
-        setter: :class:`nodes.SetSplineType`
+        setter: :class:`~geonodes.nodes.nodes.SetSplineType`
         """
         
         raise Exception(f"'splines.type' property is write only")
@@ -2092,14 +2051,16 @@ class Spline(Domain):
     # Methods
     
     def delete(self):
-        """ <method GeometryNodeDeleteGeometry>
+        """ Delete splines
         
-        Example
-        -------        
+        Node :class:`~geonodes.nodes.nodes.DeleteGeometry`
+            
+        Returns:
+            self
         
-        ```python
-        curve.splines(...).delete()
-        ```
+        .. code-block:: python
+            
+            curve.splines(...).delete()
         """
         return self.stack(nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain))
     
@@ -2118,8 +2079,8 @@ class CloudPoint(Domain, PointInterface):
         Returns:
             Float
             
-        getter: :class:`nodes.Radius`
-        setter: :class: `nodes.SetPointRadius`
+        getter: :class:`~geonodes.nodes.nodes.Radius`
+        setter: :class: `~geonodes.nodes.nodes.SetPointRadius`
         """
         return self.attribute(nodes.Radius()).get_datasocket(0)
     
@@ -2131,78 +2092,69 @@ class CloudPoint(Domain, PointInterface):
     # Methods
 
     def delete(self):
-        """ <method GeometryNodeDeleteGeometry>
+        """ Delete points.
         
-        Example
-        -------        
+        Node :class:`~geonodes.nodes.nodes.DeleteGeometry`        
+            
+        Returns:
+            self
         
-        ```python
-        cloud.points(...).delete()
-        ```
+        .. code-block:: python
+            
+            cloud.points(...).delete()
         """
         return self.stack(nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain))
     
     def merge(self, distance=0.001):
-        """ > Merge points by distance
+        """ Merge points by distance.
         
-        <blid GeometryNodeMergeByDistance>
-        
-        Example
-        -------        
-        
-        '''python
-        cloud.points().merge()
-        ````
+        Node :class:`~geonodes.nodes.nodes.MergeByDistance`
 
-        Arguments
-        ---------
-            - distance : Float
-                The merge distance
+        Args:
+            distance : Float
+
+        Returns:
+            self
+
+        .. code-block:: python
+            
+            cloud.points().merge()
+
         """
         return self.stack(nodes.MergeByDistance(self.data_socket, selection=self.selection, distance=distance))
     
     def to_vertices(self):
-        """ > Convert points to vertices
+        """ Convert points to vertices.
         
-        <blid GeometryNodePointsToVertices>
+        Node :class:`~geonodes.nodes.nodes.PointsToVertices`
         
-        Returns
-        -------
-        Points
+        Returns:
+            Points
         
-        Example
-        -------
-        
-        ```python
-        verts = cloud.points.to_vertices()
-        ```
+        .. code-block:: python
+            
+            verts = cloud.points.to_vertices()
         """
         return nodes.PointsToVertices(points=self.data_socket, selection=self.selection)
         
     def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
-        """ > Convert points to vertices
+        """ Convert points to volume.
         
-        <blid GeometryNodePointsToVertices>
+        Node :class:`~geonodes.nodes.nodes.PointsToVolume`
         
-        Parameters
-        ----------
-            - density : Float
-            - voxel_size : Float
-            - voxel_amount : Float
-            - radius : Float
-            - resolution_mode : str (default = 'VOXEL_AMOUNT') in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+        Args:
+            density : Float
+            voxel_size : Float
+            voxel_amount : Float
+            radius : Float
+            resolution_mode (str): (default = 'VOXEL_AMOUNT') in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
         
+        Returns:
+            Volume
         
-        Returns
-        -------
-        Volume
-        
-        Example
-        -------
-        
-        ```python
-        volume = cloud.points.to_volume()
-        ```
+        .. code-block:: python
+            
+            volume = cloud.points.to_volume()
         """
         return nodes.PointsToVolume(points=self.data_socket, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode='VOXEL_AMOUNT')
         
@@ -2220,79 +2172,76 @@ class Instance(Domain):
     # Methods
     
     def delete(self):
-        """ > Delete instances
+        """ Delete instances.
         
-        <blid GeometryNodeDeleteGeometry>
+        Node :class:`~geonodes.nodes.nodes.DeleteGeometry`
+            
+        Returns:
+            self
         
-        Example
-        -------        
-        
-        ```python
-        instances.insts(...).delete()
-        ```
+        .. code-block:: python
+            
+            instances.insts(...).delete()
         """
         return self.stack(nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain))
     
     def rotate(self, rotation=None, pivot_point=None, local_space=None):
-        """ > Rotate instances
+        """ Rotate instances.
         
-        <blid GeometryNodeRotateInstances>
+        Node :class:`~geonodes.nodes.nodes.RotateInstances`
         
-        Arguments
-        ---------
-            - rotation : Vector
-            - pivot_point : Vector
-            - local_space : Boolean
+        Args:
+            rotation : Vector
+            pivot_point : Vector
+            local_space : Boolean
+            
+        Returns:
+            self
         
-        Example
-        -------        
-        
-        ```python
-        instances.insts(...).rotate(...)
-        ```
+        .. code-block:: python
+            
+            instances.insts(...).rotate(...)
         """
         return self.stack(nodes.RotateInstances(
             instances=self.data_socket, selection=self.selection,
             rotation=rotation, pivot_point=pivot_point, local_space=local_space))
     
     def scale(self, scale=None, center=None, local_space=None):
-        """ > Scale instances
+        """ Scale instances.
         
-        <blid GeometryNodeScaleInstances>
+        Node :class:`~geonodes.nodes.nodes.ScaleInstances`
         
-        Arguments
-        ---------
-            - scale : Vector
-            - center : Vector
-            - local_space : Boolean
+        Args:
+            scale : Vector
+            center : Vector
+            local_space : Boolean
+            
+        Returns:
+            self
         
-        Example
-        -------        
-        
-        ```python
-        instances.insts(...).scale(...)
-        ```
+        .. code-block:: python
+            
+            instances.insts(...).scale(...)
         """
         return self.stack(nodes.ScaleInstances(
             instances=self.data_socket, selection=self.selection,
             scale=scale, center=center, local_space=local_space))
     
     def translate(self, translation=None, local_space=None):
-        """ > Translate instances
+        """ > Translate instances.
         
-        <blid GeometryNodeTranslateInstances>
+        Node :class:`~geonodes.nodes.nodes.TranslateInstances`
         
-        Arguments
-        ---------
+        Args:
             - translation : Vector
             - local_space : Boolean
+            
+        Returns:
+            self
         
-        Example
-        -------        
-        
-        ```python
-        instances.insts(...).translate(...)
-        ```
+        .. code-block:: python
+            
+            instances.insts(...).translate(...)
         """
         return self.stack(nodes.TranslateInstances(
             instances=self.data_socket, selection=self.selection,

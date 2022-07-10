@@ -21,7 +21,7 @@ node = nodes.JoinStrings(*strings, delimiter=None, label=None, node_color=None)
 ### Input sockets
 
 - delimiter : String
-- strings : *String
+- strings : <m> String
 
 ### Node label
 

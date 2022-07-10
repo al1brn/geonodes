@@ -61,1425 +61,1148 @@
 
 ## is_viewport
 
-> Node: [IsViewport](/docs/nodes/IsViewport.md)
+Geometry node [*Is Viewport*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeIsViewport](https://docs.blender.org/api/current/bpy.types.GeometryNodeIsViewport.html)
-node ref [Is Viewport](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/is_viewport.html) </sub>
-                          
-```python
-v = Geometry.is_viewport(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.IsViewport(label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.IsViewport`
+  
+  
+  .. blid:: GeometryNodeIsViewport
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.IsViewport(label=node_label, node_color=node_color)
+    
 
 ## bound_box
 
-> Node: [BoundingBox](/docs/nodes/BoundingBox.md)
+Geometry node [*Bounding Box*].
+
+
+
+  Returns:
+    Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
-node ref [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) </sub>
-                          
-```python
-v = geometry.bound_box
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.bound_box"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_box")
-```
-
-### Returns
-
-Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
-
+  Node :class:`~geonodes.nodes.nodes.BoundingBox`
+  
+  
+  .. blid:: GeometryNodeBoundBox
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.bound_box")
+    
 
 ## box
 
-> Node: [BoundingBox](/docs/nodes/BoundingBox.md)
+Geometry node [*Bounding Box*].
+
+
+
+  Returns:
+    Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
-node ref [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) </sub>
-                          
-```python
-v = geometry.box
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.box"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box")
-```
-
-### Returns
-
-Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
-
+  Node :class:`~geonodes.nodes.nodes.BoundingBox`
+  
+  
+  .. blid:: GeometryNodeBoundBox
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box")
+    
 
 ## box_min
 
-> Node: [BoundingBox](/docs/nodes/BoundingBox.md)
+Geometry node [*Bounding Box*].
+
+
+
+  Returns:
+    Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
-node ref [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) </sub>
-                          
-```python
-v = geometry.box_min
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.box_min"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_min")
-```
-
-### Returns
-
-Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
-
+  Node :class:`~geonodes.nodes.nodes.BoundingBox`
+  
+  
+  .. blid:: GeometryNodeBoundBox
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_min")
+    
 
 ## box_max
 
-> Node: [BoundingBox](/docs/nodes/BoundingBox.md)
+Geometry node [*Bounding Box*].
+
+
+
+  Returns:
+    Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
-node ref [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) </sub>
-                          
-```python
-v = geometry.box_max
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.box_max"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_max")
-```
-
-### Returns
-
-Sockets [bounding_box (Geometry), min (Vector), max (Vector)]
-
+  Node :class:`~geonodes.nodes.nodes.BoundingBox`
+  
+  
+  .. blid:: GeometryNodeBoundBox
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.BoundingBox(geometry=self, label=f"{self.node_chain_label}.box_max")
+    
 
 ## components
 
-> Node: [SeparateComponents](/docs/nodes/SeparateComponents.md)
+Geometry node [*Separate Components*].
+
+
+
+  Returns:
+    Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
-node ref [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) </sub>
-                          
-```python
-v = geometry.components
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.components"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.components")
-```
-
-### Returns
-
-Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
-
+  Node :class:`~geonodes.nodes.nodes.SeparateComponents`
+  
+  
+  .. blid:: GeometryNodeSeparateComponents
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.components")
+    
 
 ## mesh_component
 
-> Node: [SeparateComponents](/docs/nodes/SeparateComponents.md)
+Geometry node [*Separate Components*].
+
+
+
+  Returns:
+    Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
-node ref [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) </sub>
-                          
-```python
-v = geometry.mesh_component
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.mesh_component"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.mesh_component")
-```
-
-### Returns
-
-Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
-
+  Node :class:`~geonodes.nodes.nodes.SeparateComponents`
+  
+  
+  .. blid:: GeometryNodeSeparateComponents
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.mesh_component")
+    
 
 ## points_component
 
-> Node: [SeparateComponents](/docs/nodes/SeparateComponents.md)
+Geometry node [*Separate Components*].
+
+
+
+  Returns:
+    Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
-node ref [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) </sub>
-                          
-```python
-v = geometry.points_component
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.points_component"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.points_component")
-```
-
-### Returns
-
-Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
-
+  Node :class:`~geonodes.nodes.nodes.SeparateComponents`
+  
+  
+  .. blid:: GeometryNodeSeparateComponents
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.points_component")
+    
 
 ## curve_component
 
-> Node: [SeparateComponents](/docs/nodes/SeparateComponents.md)
+Geometry node [*Separate Components*].
+
+
+
+  Returns:
+    Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
-node ref [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) </sub>
-                          
-```python
-v = geometry.curve_component
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.curve_component"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.curve_component")
-```
-
-### Returns
-
-Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
-
+  Node :class:`~geonodes.nodes.nodes.SeparateComponents`
+  
+  
+  .. blid:: GeometryNodeSeparateComponents
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.curve_component")
+    
 
 ## volume_component
 
-> Node: [SeparateComponents](/docs/nodes/SeparateComponents.md)
+Geometry node [*Separate Components*].
+
+
+
+  Returns:
+    Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
-node ref [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) </sub>
-                          
-```python
-v = geometry.volume_component
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.volume_component"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.volume_component")
-```
-
-### Returns
-
-Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
-
+  Node :class:`~geonodes.nodes.nodes.SeparateComponents`
+  
+  
+  .. blid:: GeometryNodeSeparateComponents
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.volume_component")
+    
 
 ## instances_component
 
-> Node: [SeparateComponents](/docs/nodes/SeparateComponents.md)
+Geometry node [*Separate Components*].
+
+
+
+  Returns:
+    Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
-node ref [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) </sub>
-                          
-```python
-v = geometry.instances_component
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Fixed parameters
-- label:f"{self.node_chain_label}.instances_component"
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.instances_component")
-```
-
-### Returns
-
-Sockets [mesh (Mesh), point_cloud (Geometry), curve (Curve), volume (Volume), instances (Instances)]
-
+  Node :class:`~geonodes.nodes.nodes.SeparateComponents`
+  
+  
+  .. blid:: GeometryNodeSeparateComponents
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SeparateComponents(geometry=self, label=f"{self.node_chain_label}.instances_component")
+    
 
 ## switch
 
-> Node: [Switch](/docs/nodes/Switch.md)
+Geometry node [*Switch*].
+
+
+  Args:
+    switch: Boolean
+    true: Geometry
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-node ref [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) </sub>
-                          
-```python
-v = geometry.switch(switch, true, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- false : Geometry (self)
-- switch : Boolean
-- true : Geometry## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- input_type : 'GEOMETRY'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Switch(false=self, switch=switch, true=true, input_type='GEOMETRY', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.Switch`
+  
+  - input_type = 'GEOMETRY'
+    
+  .. blid:: GeometryNodeSwitch
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Switch(false=self, switch=switch, true=true, input_type='GEOMETRY', label=node_label, node_color=node_color)
+    
 
 ## capture_attribute
 
-> Node: [CaptureAttribute](/docs/nodes/CaptureAttribute.md)
+Geometry node [*Capture Attribute*].
+
+
+  Args:
+    value: Float
+    data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [geometry (Geometry), attribute (data_type dependant)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
-node ref [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) </sub>
-                          
-```python
-v = geometry.capture_attribute(value, data_type, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- value : Float## Parameters
-- data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [geometry (Geometry), attribute (data_type dependant)]
-
+  Node :class:`~geonodes.nodes.nodes.CaptureAttribute`
+  
+  
+  .. blid:: GeometryNodeCaptureAttribute
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=domain, label=node_label, node_color=node_color)
+    
 
 ## transfer_boolean
 
-> Node: [TransferAttribute](/docs/nodes/TransferAttribute.md)
+Geometry node [*Transfer Attribute*].
+
+
+  Args:
+    attribute: Boolean
+    source_position: Vector
+    index: Integer
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    mapping (str): 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Boolean
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
-node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
-                          
-```python
-v = geometry.transfer_boolean(attribute, source_position, index, domain, mapping, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- source : Geometry (self)
-- attribute : Boolean
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'BOOLEAN'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Boolean
-
+  Node :class:`~geonodes.nodes.nodes.TransferAttribute`
+  
+  - data_type = 'BOOLEAN'
+    
+  .. blid:: GeometryNodeAttributeTransfer
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='BOOLEAN', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
+    
 
 ## transfer_integer
 
-> Node: [TransferAttribute](/docs/nodes/TransferAttribute.md)
+Geometry node [*Transfer Attribute*].
+
+
+  Args:
+    attribute: Integer
+    source_position: Vector
+    index: Integer
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    mapping (str): 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Integer
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
-node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
-                          
-```python
-v = geometry.transfer_integer(attribute, source_position, index, domain, mapping, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- source : Geometry (self)
-- attribute : Integer
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'INT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Integer
-
+  Node :class:`~geonodes.nodes.nodes.TransferAttribute`
+  
+  - data_type = 'INT'
+    
+  .. blid:: GeometryNodeAttributeTransfer
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='INT', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
+    
 
 ## transfer_float
 
-> Node: [TransferAttribute](/docs/nodes/TransferAttribute.md)
+Geometry node [*Transfer Attribute*].
+
+
+  Args:
+    attribute: Float
+    source_position: Vector
+    index: Integer
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    mapping (str): 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Float
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
-node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
-                          
-```python
-v = geometry.transfer_float(attribute, source_position, index, domain, mapping, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- source : Geometry (self)
-- attribute : Float
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'FLOAT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Float
-
+  Node :class:`~geonodes.nodes.nodes.TransferAttribute`
+  
+  - data_type = 'FLOAT'
+    
+  .. blid:: GeometryNodeAttributeTransfer
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
+    
 
 ## transfer_vector
 
-> Node: [TransferAttribute](/docs/nodes/TransferAttribute.md)
+Geometry node [*Transfer Attribute*].
+
+
+  Args:
+    attribute: Vector
+    source_position: Vector
+    index: Integer
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    mapping (str): 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Vector
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
-node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
-                          
-```python
-v = geometry.transfer_vector(attribute, source_position, index, domain, mapping, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- source : Geometry (self)
-- attribute : Vector
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'FLOAT_VECTOR'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Vector
-
+  Node :class:`~geonodes.nodes.nodes.TransferAttribute`
+  
+  - data_type = 'FLOAT_VECTOR'
+    
+  .. blid:: GeometryNodeAttributeTransfer
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_VECTOR', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
+    
 
 ## transfer_color
 
-> Node: [TransferAttribute](/docs/nodes/TransferAttribute.md)
+Geometry node [*Transfer Attribute*].
+
+
+  Args:
+    attribute: Color
+    source_position: Vector
+    index: Integer
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    mapping (str): 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Color
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeAttributeTransfer](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeTransfer.html)
-node ref [Transfer Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/transfer_attribute.html) </sub>
-                          
-```python
-v = geometry.transfer_color(attribute, source_position, index, domain, mapping, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- source : Geometry (self)
-- attribute : Color
-- source_position : Vector
-- index : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- mapping : 'NEAREST_FACE_INTERPOLATED' in [NEAREST_FACE_INTERPOLATED, NEAREST, INDEX]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'FLOAT_COLOR'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Color
-
+  Node :class:`~geonodes.nodes.nodes.TransferAttribute`
+  
+  - data_type = 'FLOAT_COLOR'
+    
+  .. blid:: GeometryNodeAttributeTransfer
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.TransferAttribute(source=self, attribute=attribute, source_position=source_position, index=index, data_type='FLOAT_COLOR', domain=domain, mapping=mapping, label=node_label, node_color=node_color)
+    
 
 ## duplicate_elements
 
-> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
+Geometry node [*Duplicate Elements*].
+
+
+  Args:
+    selection: Boolean
+    amount: Integer
+    domain (str): 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [geometry (Geometry), duplicate_index (Integer)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
-node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
-                          
-```python
-v = geometry.duplicate_elements(selection, amount, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- amount : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [geometry (Geometry), duplicate_index (Integer)]
-
+  Node :class:`~geonodes.nodes.nodes.DuplicateElements`
+  
+  
+  .. blid:: GeometryNodeDuplicateElements
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
+    
 
 ## duplicate_points
 
-> Node: [DuplicateElements](/docs/nodes/DuplicateElements.md)
+Geometry node [*Duplicate Elements*].
+
+
+  Args:
+    selection: Boolean
+    amount: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [geometry (Geometry), duplicate_index (Integer)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
-node ref [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) </sub>
-                          
-```python
-v = geometry.duplicate_points(selection, amount, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- amount : Integer## Parameters
-- node_label : None
-- node_color : None## Fixed parameters
-- domain : 'POINT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='POINT', label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [geometry (Geometry), duplicate_index (Integer)]
-
+  Node :class:`~geonodes.nodes.nodes.DuplicateElements`
+  
+  - domain = 'POINT'
+    
+  .. blid:: GeometryNodeDuplicateElements
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='POINT', label=node_label, node_color=node_color)
+    
 
 ## delete_geometry
 
-> Node: [DeleteGeometry](/docs/nodes/DeleteGeometry.md)
+Geometry node [*Delete Geometry*].
+
+
+  Args:
+    selection: Boolean
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
+    mode (str): 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeDeleteGeometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
-node ref [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) </sub>
-                          
-```python
-v = geometry.delete_geometry(selection, domain, mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
-- mode : 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.DeleteGeometry`
+  
+  
+  .. blid:: GeometryNodeDeleteGeometry
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode, label=node_label, node_color=node_color)
+    
 
 ## merge_by_distance
 
-> Node: [MergeByDistance](/docs/nodes/MergeByDistance.md)
+Geometry node [*Merge by Distance*].
+
+
+  Args:
+    selection: Boolean
+    distance: Float
+    mode (str): 'ALL' in [ALL, CONNECTED]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeMergeByDistance](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html)
-node ref [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/merge_by_distance.html) </sub>
-                          
-```python
-v = geometry.merge_by_distance(selection, distance, mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- distance : Float## Parameters
-- mode : 'ALL' in [ALL, CONNECTED]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.MergeByDistance(geometry=self, selection=selection, distance=distance, mode=mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.MergeByDistance`
+  
+  
+  .. blid:: GeometryNodeMergeByDistance
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.MergeByDistance(geometry=self, selection=selection, distance=distance, mode=mode, label=node_label, node_color=node_color)
+    
 
 ## replace_material
 
-> Node: [ReplaceMaterial](/docs/nodes/ReplaceMaterial.md)
+Geometry node [*Replace Material*].
+
+
+  Args:
+    old: Material
+    new: Material
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeReplaceMaterial](https://docs.blender.org/api/current/bpy.types.GeometryNodeReplaceMaterial.html)
-node ref [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html) </sub>
-                          
-```python
-v = geometry.replace_material(old, new, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- old : Material
-- new : Material## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.ReplaceMaterial(geometry=self, old=old, new=new, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.ReplaceMaterial`
+  
+  
+  .. blid:: GeometryNodeReplaceMaterial
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.ReplaceMaterial(geometry=self, old=old, new=new, label=node_label, node_color=node_color)
+    
 
 ## scale_elements
 
-> Node: [ScaleElements](/docs/nodes/ScaleElements.md)
+Geometry node [*Scale Elements*].
+
+
+  Args:
+    selection: Boolean
+    scale: Float
+    center: Vector
+    axis: Vector
+    domain (str): 'FACE' in [FACE, EDGE]
+    scale_mode (str): 'UNIFORM' in [UNIFORM, SINGLE_AXIS]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeScaleElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html)
-node ref [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) </sub>
-                          
-```python
-v = geometry.scale_elements(selection, scale, center, axis, domain, scale_mode, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- scale : Float
-- center : Vector
-- axis : Vector## Parameters
-- domain : 'FACE' in [FACE, EDGE]
-- scale_mode : 'UNIFORM' in [UNIFORM, SINGLE_AXIS]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.ScaleElements`
+  
+  
+  .. blid:: GeometryNodeScaleElements
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode, label=node_label, node_color=node_color)
+    
 
 ## set_ID
 
-> Node: [SetID](/docs/nodes/SetID.md)
+Geometry node [*Set ID*].
+
+
+  Args:
+    selection: Boolean
+    ID: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeSetID](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html)
-node ref [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_id.html) </sub>
-                          
-```python
-v = geometry.set_ID(selection, ID, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- ID : Integer## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SetID(geometry=self, selection=selection, ID=ID, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.SetID`
+  
+  
+  .. blid:: GeometryNodeSetID
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SetID(geometry=self, selection=selection, ID=ID, label=node_label, node_color=node_color)
+    
 
 ## set_material
 
-> Node: [SetMaterial](/docs/nodes/SetMaterial.md)
+Geometry node [*Set Material*].
+
+
+  Args:
+    selection: Boolean
+    material: Material
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeSetMaterial](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
-node ref [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) </sub>
-                          
-```python
-v = geometry.set_material(selection, material, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- material : Material## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SetMaterial(geometry=self, selection=selection, material=material, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.SetMaterial`
+  
+  
+  .. blid:: GeometryNodeSetMaterial
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SetMaterial(geometry=self, selection=selection, material=material, label=node_label, node_color=node_color)
+    
 
 ## set_material_index
 
-> Node: [SetMaterialIndex](/docs/nodes/SetMaterialIndex.md)
+Geometry node [*Set Material Index*].
+
+
+  Args:
+    selection: Boolean
+    material_index: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeSetMaterialIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
-node ref [Set Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) </sub>
-                          
-```python
-v = geometry.set_material_index(selection, material_index, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- material_index : Integer## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.SetMaterialIndex`
+  
+  
+  .. blid:: GeometryNodeSetMaterialIndex
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index, label=node_label, node_color=node_color)
+    
 
 ## set_position
 
-> Node: [SetPosition](/docs/nodes/SetPosition.md)
+Geometry node [*Set Position*].
+
+
+  Args:
+    selection: Boolean
+    position: Vector
+    offset: Vector
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeSetPosition](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html)
-node ref [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_position.html) </sub>
-                          
-```python
-v = geometry.set_position(selection, position, offset, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- position : Vector
-- offset : Vector## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.SetPosition`
+  
+  
+  .. blid:: GeometryNodeSetPosition
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset, label=node_label, node_color=node_color)
+    
 
 ## set_shade_smooth
 
-> Node: [SetShadeSmooth](/docs/nodes/SetShadeSmooth.md)
+Geometry node [*Set Shade Smooth*].
+
+
+  Args:
+    selection: Boolean
+    shade_smooth: Boolean
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeSetShadeSmooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html)
-node ref [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/set_shade_smooth.html) </sub>
-                          
-```python
-v = geometry.set_shade_smooth(selection, shade_smooth, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean
-- shade_smooth : Boolean## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.SetShadeSmooth`
+  
+  
+  .. blid:: GeometryNodeSetShadeSmooth
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth, label=node_label, node_color=node_color)
+    
 
 ## transform
 
-> Node: [Transform](/docs/nodes/Transform.md)
+Geometry node [*Transform*].
+
+
+  Args:
+    translation: Vector
+    rotation: Vector
+    scale: Vector
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeTransform](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
-node ref [Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/transform.html) </sub>
-                          
-```python
-v = geometry.transform(translation, rotation, scale, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- translation : Vector
-- rotation : Vector
-- scale : Vector## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.Transform`
+  
+  
+  .. blid:: GeometryNodeTransform
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale, label=node_label, node_color=node_color)
+    
 
 ## store_named_attribute
 
-> Node: [StoreNamedAttribute](/docs/nodes/StoreNamedAttribute.md)
+Geometry node [*Store Named Attribute*].
+
+
+  Args:
+    name: String
+    value: Float
+    data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BYTE_COLOR, BOOLEAN]
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-node ref [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) </sub>
-                          
-```python
-v = geometry.store_named_attribute(name, value, data_type, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- name : String
-- value : Float## Parameters
-- data_type : 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BYTE_COLOR, BOOLEAN]
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type=data_type, domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.StoreNamedAttribute`
+  
+  
+  .. blid:: GeometryNodeStoreNamedAttribute
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type=data_type, domain=domain, label=node_label, node_color=node_color)
+    
 
 ## store_named_float
 
-> Node: [StoreNamedAttribute](/docs/nodes/StoreNamedAttribute.md)
+Geometry node [*Store Named Attribute*].
+
+
+  Args:
+    name: String
+    value: Float
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-node ref [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) </sub>
-                          
-```python
-v = geometry.store_named_float(name, value, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- name : String
-- value : Float## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'FLOAT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT', domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.StoreNamedAttribute`
+  
+  - data_type = 'FLOAT'
+    
+  .. blid:: GeometryNodeStoreNamedAttribute
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT', domain=domain, label=node_label, node_color=node_color)
+    
 
 ## store_named_integer
 
-> Node: [StoreNamedAttribute](/docs/nodes/StoreNamedAttribute.md)
+Geometry node [*Store Named Attribute*].
+
+
+  Args:
+    name: String
+    value: Integer
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-node ref [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) </sub>
-                          
-```python
-v = geometry.store_named_integer(name, value, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- name : String
-- value : Integer## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'INT'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='INT', domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.StoreNamedAttribute`
+  
+  - data_type = 'INT'
+    
+  .. blid:: GeometryNodeStoreNamedAttribute
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='INT', domain=domain, label=node_label, node_color=node_color)
+    
 
 ## store_named_vector
 
-> Node: [StoreNamedAttribute](/docs/nodes/StoreNamedAttribute.md)
+Geometry node [*Store Named Attribute*].
+
+
+  Args:
+    name: String
+    value: Vector
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-node ref [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) </sub>
-                          
-```python
-v = geometry.store_named_vector(name, value, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- name : String
-- value : Vector## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'FLOAT_VECTOR'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT_VECTOR', domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.StoreNamedAttribute`
+  
+  - data_type = 'FLOAT_VECTOR'
+    
+  .. blid:: GeometryNodeStoreNamedAttribute
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT_VECTOR', domain=domain, label=node_label, node_color=node_color)
+    
 
 ## store_named_color
 
-> Node: [StoreNamedAttribute](/docs/nodes/StoreNamedAttribute.md)
+Geometry node [*Store Named Attribute*].
+
+
+  Args:
+    name: String
+    value: Color
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-node ref [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) </sub>
-                          
-```python
-v = geometry.store_named_color(name, value, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- name : String
-- value : Color## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'FLOAT_COLOR'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT_COLOR', domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.StoreNamedAttribute`
+  
+  - data_type = 'FLOAT_COLOR'
+    
+  .. blid:: GeometryNodeStoreNamedAttribute
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT_COLOR', domain=domain, label=node_label, node_color=node_color)
+    
 
 ## store_named_byte_color
 
-> Node: [StoreNamedAttribute](/docs/nodes/StoreNamedAttribute.md)
+Geometry node [*Store Named Attribute*].
+
+
+  Args:
+    name: String
+    value: Color
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-node ref [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) </sub>
-                          
-```python
-v = geometry.store_named_byte_color(name, value, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- name : String
-- value : Color## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'BYTE_COLOR'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='BYTE_COLOR', domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.StoreNamedAttribute`
+  
+  - data_type = 'BYTE_COLOR'
+    
+  .. blid:: GeometryNodeStoreNamedAttribute
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='BYTE_COLOR', domain=domain, label=node_label, node_color=node_color)
+    
 
 ## store_named_boolean
 
-> Node: [StoreNamedAttribute](/docs/nodes/StoreNamedAttribute.md)
+Geometry node [*Store Named Attribute*].
+
+
+  Args:
+    name: String
+    value: Boolean
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-node ref [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) </sub>
-                          
-```python
-v = geometry.store_named_boolean(name, value, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- name : String
-- value : Boolean## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-- node_label : None
-- node_color : None## Fixed parameters
-- data_type : 'BOOLEAN'
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='BOOLEAN', domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.StoreNamedAttribute`
+  
+  - data_type = 'BOOLEAN'
+    
+  .. blid:: GeometryNodeStoreNamedAttribute
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='BOOLEAN', domain=domain, label=node_label, node_color=node_color)
+    
 
 ## remove_named_attribute
 
-> Node: [RemoveNamedAttribute](/docs/nodes/RemoveNamedAttribute.md)
+Geometry node [*Remove Named Attribute*].
+
+
+  Args:
+    name: String
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeRemoveAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeRemoveAttribute.html)
-node ref [Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/remove_named_attribute.html) </sub>
-                          
-```python
-v = geometry.remove_named_attribute(name, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- name : String## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.RemoveNamedAttribute(geometry=self, name=name, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.RemoveNamedAttribute`
+  
+  
+  .. blid:: GeometryNodeRemoveAttribute
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.RemoveNamedAttribute(geometry=self, name=name, label=node_label, node_color=node_color)
+    
 
 ## components
 
-> Node: [SeparateGeometry](/docs/nodes/SeparateGeometry.md)
+Geometry node [*Separate Geometry*].
+
+
+  Args:
+    selection: Boolean
+    domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [selection (Geometry), inverted (Geometry)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeSeparateGeometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
-node ref [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) </sub>
-                          
-```python
-v = geometry.components(selection, domain, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)
-- selection : Boolean## Parameters
-- domain : 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [selection (Geometry), inverted (Geometry)]
-
+  Node :class:`~geonodes.nodes.nodes.SeparateGeometry`
+  
+  
+  .. blid:: GeometryNodeSeparateGeometry
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain, label=node_label, node_color=node_color)
+    
 
 ## convex_hull
 
-> Node: [ConvexHull](/docs/nodes/ConvexHull.md)
+Geometry node [*Convex Hull*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeConvexHull](https://docs.blender.org/api/current/bpy.types.GeometryNodeConvexHull.html)
-node ref [Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/convex_hull.html) </sub>
-                          
-```python
-v = geometry.convex_hull(node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : Geometry (self)## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.ConvexHull(geometry=self, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.ConvexHull`
+  
+  
+  .. blid:: GeometryNodeConvexHull
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.ConvexHull(geometry=self, label=node_label, node_color=node_color)
+    
 
 ## to_instance
 
-> Node: [GeometryToInstance](/docs/nodes/GeometryToInstance.md)
+Geometry node [*Geometry to Instance*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Instances
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeGeometryToInstance](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html)
-node ref [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html) </sub>
-                          
-```python
-v = geometry.to_instance(geometry_1, geometry_2, geometry_3, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : *Geometry (self)## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.GeometryToInstance(self, *geometry, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Instances
-
+  Node :class:`~geonodes.nodes.nodes.GeometryToInstance`
+  
+  
+  .. blid:: GeometryNodeGeometryToInstance
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.GeometryToInstance(self, *geometry, label=node_label, node_color=node_color)
+    
 
 ## join
 
-> Node: [JoinGeometry](/docs/nodes/JoinGeometry.md)
+Geometry node [*Join Geometry*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeJoinGeometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html)
-node ref [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html) </sub>
-                          
-```python
-v = geometry.join(geometry_1, geometry_2, geometry_3, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- geometry : *Geometry (self)## Parameters
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.JoinGeometry(self, *geometry, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Geometry
-
+  Node :class:`~geonodes.nodes.nodes.JoinGeometry`
+  
+  
+  .. blid:: GeometryNodeJoinGeometry
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.JoinGeometry(self, *geometry, label=node_label, node_color=node_color)
+    
 
 ## proximity
 
-> Node: [GeometryProximity](/docs/nodes/GeometryProximity.md)
+Geometry node [*Geometry Proximity*].
+
+
+  Args:
+    source_position: Vector
+    target_element (str): 'FACES' in [POINTS, EDGES, FACES]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Sockets [position (Vector), distance (Float)]
+    
+  **Node creation**
   
-<sub>go to: [top](#data-socket-geometry) [index](/docs/index.md)
-blender ref [GeometryNodeProximity](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-node ref [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) </sub>
-                          
-```python
-v = geometry.proximity(source_position, target_element, node_label = None, node_color = None)
-```
-
-### Arguments
-
-## Sockets
-- target : Geometry (self)
-- source_position : Vector## Parameters
-- target_element : 'FACES' in [POINTS, EDGES, FACES]
-- node_label : None
-- node_color : None
-
-### Node creation
-
-```python
-from geondes import nodes
-nodes.GeometryProximity(target=self, source_position=source_position, target_element=target_element, label=node_label, node_color=node_color)
-```
-
-### Returns
-
-Sockets [position (Vector), distance (Float)]
-
+  Node :class:`~geonodes.nodes.nodes.GeometryProximity`
+  
+  
+  .. blid:: GeometryNodeProximity
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.GeometryProximity(target=self, source_position=source_position, target_element=target_element, label=node_label, node_color=node_color)
+    
