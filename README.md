@@ -16,10 +16,10 @@ You keep the full power of Blender geometry nodes but with the elegance of Pytho
 
 ## Table of contents
 
-- [API reference](docs/html/index)
 - [Better a demo than long words](#better-a-demo-than-long-words)
 - [Installation](#installation)
 - [Documentation](#documentation)
+- [API reference](docs/html/index.html)
 
 ## Better a demo than long words
 
