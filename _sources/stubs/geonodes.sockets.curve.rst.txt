@@ -1,0 +1,29 @@
+﻿geonodes.sockets.curve
+======================
+
+.. automodule:: geonodes.sockets.curve
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Curve
+   
+   
+
+   
+   
+   
+
+
+

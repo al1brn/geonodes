@@ -1,0 +1,29 @@
+﻿geonodes.sockets.material
+=========================
+
+.. automodule:: geonodes.sockets.material
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Material
+   
+   
+
+   
+   
+   
+
+
+

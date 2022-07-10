@@ -1,0 +1,18 @@
+﻿Geometry nodes
+==============
+
+**geonodes** classed wrapping Blender geometry nodes
+
+.. aaa autosummary:: geonodes.nodes.nodes
+   :toctree:
+   :caption: Geometry nodes
+   :recursive:
+   
+   
+.. a :toctree: stubs
+
+.. automodule:: geonodes.nodes.nodes
+   :members:
+   
+   
+

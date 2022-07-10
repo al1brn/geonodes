@@ -1,0 +1,29 @@
+﻿geonodes.sockets.float
+======================
+
+.. automodule:: geonodes.sockets.float
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Float
+   
+   
+
+   
+   
+   
+
+
+

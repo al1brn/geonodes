@@ -1,0 +1,121 @@
+﻿geonodes.Float
+==============
+
+.. currentmodule:: geonodes
+
+.. autoclass:: Float
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Float.Angle
+      ~Float.Distance
+      ~Float.Factor
+      ~Float.Input
+      ~Float.Random
+      ~Float.__init__
+      ~Float.abs
+      ~Float.accumulate_field
+      ~Float.add
+      ~Float.arccos
+      ~Float.arcsin
+      ~Float.arctan
+      ~Float.arctan2
+      ~Float.attribute_statistic
+      ~Float.capture_attribute
+      ~Float.ceil
+      ~Float.clamp
+      ~Float.color_ramp
+      ~Float.compare
+      ~Float.connected_sockets
+      ~Float.copy
+      ~Float.cos
+      ~Float.cosh
+      ~Float.curve
+      ~Float.degrees
+      ~Float.divide
+      ~Float.domain_data_type
+      ~Float.equal
+      ~Float.exp
+      ~Float.field_at_index
+      ~Float.floor
+      ~Float.fract
+      ~Float.get_bl_idname
+      ~Float.get_blender_socket
+      ~Float.get_class_name
+      ~Float.gives_bsocket
+      ~Float.greater_equal
+      ~Float.greater_than
+      ~Float.index_transfer
+      ~Float.init_domains
+      ~Float.init_socket
+      ~Float.inverse_sqrt
+      ~Float.is_socket
+      ~Float.less_equal
+      ~Float.less_than
+      ~Float.log
+      ~Float.map_range
+      ~Float.max
+      ~Float.min
+      ~Float.modulo
+      ~Float.multiply
+      ~Float.multiply_add
+      ~Float.nearest_face_transfer
+      ~Float.nearest_transfer
+      ~Float.not_equal
+      ~Float.pingpong
+      ~Float.plug
+      ~Float.plug_bsocket
+      ~Float.pow
+      ~Float.radians
+      ~Float.raycast
+      ~Float.reroute
+      ~Float.reset_properties
+      ~Float.round
+      ~Float.sign
+      ~Float.sin
+      ~Float.sinh
+      ~Float.smooth_max
+      ~Float.smooth_min
+      ~Float.snap
+      ~Float.sqrt
+      ~Float.stack
+      ~Float.subtract
+      ~Float.switch
+      ~Float.tan
+      ~Float.tanh
+      ~Float.to_integer
+      ~Float.to_output
+      ~Float.to_string
+      ~Float.trunc
+      ~Float.view
+      ~Float.wrap
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Float.SOCKET_IDS
+      ~Float.bl_idname
+      ~Float.bnode
+      ~Float.is_multi_input
+      ~Float.is_output
+      ~Float.links
+      ~Float.name
+      ~Float.node_chain_label
+      ~Float.socket_index
+      ~Float.field_of
+      ~Float.data_socket
+      ~Float.bsocket
+      ~Float.node
+   
+   

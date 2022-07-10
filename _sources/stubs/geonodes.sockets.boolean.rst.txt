@@ -1,0 +1,29 @@
+﻿geonodes.sockets.boolean
+========================
+
+.. automodule:: geonodes.sockets.boolean
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Boolean
+   
+   
+
+   
+   
+   
+
+
+

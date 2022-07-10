@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instance &mdash; testdoc 1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Geometry nodes" href="../nodes.html" />
+    <link rel="prev" title="CloudPoint" href="cloudpoint.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> testdoc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sockets.html">Data sockets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../domains.html">Domains</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="face.html">Face</a></li>
+<li class="toctree-l2"><a class="reference internal" href="edge.html">Edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="corner.html">Corner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spline.html">Spline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controlpoint.html">ControlPoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudpoint.html">CloudPoint</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../nodes.html">Geometry nodes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">testdoc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../domains.html">Domains</a> &raquo;</li>
+      <li>Instance</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/domains/instance.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="instance">
+<span id="id1"></span><h1>Instance<a class="headerlink" href="#instance" title="Permalink to this heading"></a></h1>
+<p>Instance is a domain property of <a class="reference internal" href="../sockets/instances.html#instances"><span class="std std-ref">Instances</span></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">instances</span><span class="o">.</span><span class="n">insts</span> <span class="o">=</span> <span class="n">Instance</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Instance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_socket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance" title="Permalink to this definition"></a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.ID">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ID</span></span><a class="headerlink" href="#geonodes.core.domains.Instance.ID" title="Permalink to this definition"></a></dt>
+<dd><p>ID attribute</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>getter: <a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.ID" title="geonodes.nodes.nodes.ID"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID</span></code></a></p></li>
+<li><p>setter: <a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.SetID" title="geonodes.nodes.nodes.SetID"><code class="xref py py-class docutils literal notranslate"><span class="pre">SetID</span></code></a></p></li>
+</ul>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.as_cloud_points">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_cloud_points</span></span><a class="headerlink" href="#geonodes.core.domains.Instance.as_cloud_points" title="Permalink to this definition"></a></dt>
+<dd><p>Type cast to CloudPoint.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.as_control_points">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_control_points</span></span><a class="headerlink" href="#geonodes.core.domains.Instance.as_control_points" title="Permalink to this definition"></a></dt>
+<dd><p>Type cast to ControlPoint.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.as_corners">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_corners</span></span><a class="headerlink" href="#geonodes.core.domains.Instance.as_corners" title="Permalink to this definition"></a></dt>
+<dd><p>Type cast to Corner.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.as_edges">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_edges</span></span><a class="headerlink" href="#geonodes.core.domains.Instance.as_edges" title="Permalink to this definition"></a></dt>
+<dd><p>Type cast to Edge.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.as_faces">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_faces</span></span><a class="headerlink" href="#geonodes.core.domains.Instance.as_faces" title="Permalink to this definition"></a></dt>
+<dd><p>Type cast to Face.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.as_insts">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_insts</span></span><a class="headerlink" href="#geonodes.core.domains.Instance.as_insts" title="Permalink to this definition"></a></dt>
+<dd><p>Type cast to Instance.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.as_splines">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_splines</span></span><a class="headerlink" href="#geonodes.core.domains.Instance.as_splines" title="Permalink to this definition"></a></dt>
+<dd><p>Type cast to Spline.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.as_verts">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_verts</span></span><a class="headerlink" href="#geonodes.core.domains.Instance.as_verts" title="Permalink to this definition"></a></dt>
+<dd><p>Type cast to Vertex.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.attribute">
+<span class="sig-name descname"><span class="pre">attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.attribute" title="Permalink to this definition"></a></dt>
+<dd><p>Define an input node as attribute</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node</strong> (<em>Node</em>) – The node created by the domain</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The node argument</p>
+</dd>
+</dl>
+<p>Called when creating an input node in a property getter. Performs two actions:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Call the method <code class="xref py py-func docutils literal notranslate"><span class="pre">Node.as_attribute()</span></code> to tag the node as being an attribute.
+This will allow the <code class="xref py py-func docutils literal notranslate"><span class="pre">Tree.check_attributes()</span></code> to see if it is necessary to create
+a <em>Capture Attribute</em> for this field.</p></li>
+<li><p>Set the nde property <code class="xref py py-attr docutils literal notranslate"><span class="pre">field_of</span></code> to self in order to implement the transfer attribute
+mechanism.</p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.count">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">count</span></span><a class="headerlink" href="#geonodes.core.domains.Instance.count" title="Permalink to this definition"></a></dt>
+<dd><p>Count the number of items by return static.max + 1</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+<p>getter: <code class="xref py py-class docutils literal notranslate"><span class="pre">AttributeStatistic</span></code>
+setter: read only</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.delete" title="Permalink to this definition"></a></dt>
+<dd><p>Delete instances.</p>
+<p>Node <a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.DeleteGeometry" title="geonodes.nodes.nodes.DeleteGeometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">DeleteGeometry</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">instances</span><span class="o">.</span><span class="n">insts</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.duplicate">
+<span class="sig-name descname"><span class="pre">duplicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.duplicate" title="Permalink to this definition"></a></dt>
+<dd><p>Duplicate domain.</p>
+<p>Node <a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.DuplicateElements" title="geonodes.nodes.nodes.DuplicateElements"><code class="xref py py-class docutils literal notranslate"><span class="pre">DuplicateElements</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>amount</strong> – Integer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>duplicate index</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.get_named_attribute">
+<span class="sig-name descname"><span class="pre">get_named_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FLOAT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.get_named_attribute" title="Permalink to this definition"></a></dt>
+<dd><p>Get a named attribute</p>
+<p>Called by methods set_named_xxx:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#geonodes.core.domains.Instance.get_named_boolean" title="geonodes.core.domains.Instance.get_named_boolean"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_named_boolean()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#geonodes.core.domains.Instance.get_named_integer" title="geonodes.core.domains.Instance.get_named_integer"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_named_integer()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#geonodes.core.domains.Instance.get_named_float" title="geonodes.core.domains.Instance.get_named_float"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_named_float()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#geonodes.core.domains.Instance.get_named_vector" title="geonodes.core.domains.Instance.get_named_vector"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_named_vector()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#geonodes.core.domains.Instance.get_named_color" title="geonodes.core.domains.Instance.get_named_color"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_named_color()</span></code></a></p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.get_named_boolean">
+<span class="sig-name descname"><span class="pre">get_named_boolean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.get_named_boolean" title="Permalink to this definition"></a></dt>
+<dd><p>Get named attribute of type BOOLEAN</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.get_named_color">
+<span class="sig-name descname"><span class="pre">get_named_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.get_named_color" title="Permalink to this definition"></a></dt>
+<dd><p>Get named attribute of type FLOAT_COLOR</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.get_named_float">
+<span class="sig-name descname"><span class="pre">get_named_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.get_named_float" title="Permalink to this definition"></a></dt>
+<dd><p>Get named attribute of type FLOAT</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.get_named_integer">
+<span class="sig-name descname"><span class="pre">get_named_integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.get_named_integer" title="Permalink to this definition"></a></dt>
+<dd><p>Get named attribute of type INT</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.get_named_vector">
+<span class="sig-name descname"><span class="pre">get_named_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.get_named_vector" title="Permalink to this definition"></a></dt>
+<dd><p>Get named attribute of type FLOAT_VECTOR</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.index">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">index</span></span><a class="headerlink" href="#geonodes.core.domains.Instance.index" title="Permalink to this definition"></a></dt>
+<dd><p>Index attribute</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>setter: <a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.Index" title="geonodes.nodes.nodes.Index"><code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code></a></p></li>
+<li><p>setter: Read only</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.index_transfer">
+<span class="sig-name descname"><span class="pre">index_transfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.index_transfer" title="Permalink to this definition"></a></dt>
+<dd><p>Transfer attribute with INDEX mapping</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attribute</strong> (<em>Any</em>) – The attribute to transfer</p></li>
+<li><p><strong>index</strong> (<a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.Integer" title="geonodes.nodes.nodes.Integer"><em>Integer</em></a>) – Index</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Same as attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.nearest_face_transfer">
+<span class="sig-name descname"><span class="pre">nearest_face_transfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.nearest_face_transfer" title="Permalink to this definition"></a></dt>
+<dd><p>Transfer attribute with NEAREST_FACE_INTERPOLATED mapping</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attribute</strong> (<em>Any</em>) – The attribute to transfer</p></li>
+<li><p><strong>source_position</strong> (<a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.Vector" title="geonodes.nodes.nodes.Vector"><em>Vector</em></a>) – Source position socket</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Same as attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.nearest_transfer">
+<span class="sig-name descname"><span class="pre">nearest_transfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.nearest_transfer" title="Permalink to this definition"></a></dt>
+<dd><p>Transfer attribute with NEAREST mapping</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attribute</strong> (<em>Any</em>) – The attribute to transfer</p></li>
+<li><p><strong>source_position</strong> (<a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.Vector" title="geonodes.nodes.nodes.Vector"><em>Vector</em></a>) – Source position socket</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Same as attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.offset">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">offset</span></span><a class="headerlink" href="#geonodes.core.domains.Instance.offset" title="Permalink to this definition"></a></dt>
+<dd><p>“Offset” attribute (offset socket of <em>SetPosition</em> node)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Vector</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>getter: <a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.Position" title="geonodes.nodes.nodes.Position"><code class="xref py py-class docutils literal notranslate"><span class="pre">Position</span></code></a></p></li>
+<li><p>setter: <a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.SetPosition" title="geonodes.nodes.nodes.SetPosition"><code class="xref py py-class docutils literal notranslate"><span class="pre">SetPosition</span></code></a></p></li>
+</ul>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.position">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">position</span></span><a class="headerlink" href="#geonodes.core.domains.Instance.position" title="Permalink to this definition"></a></dt>
+<dd><p>Position attribute</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Vector</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>getter: <a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.Position" title="geonodes.nodes.nodes.Position"><code class="xref py py-class docutils literal notranslate"><span class="pre">Position</span></code></a></p></li>
+<li><p>setter: <a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.SetPosition" title="geonodes.nodes.nodes.SetPosition"><code class="xref py py-class docutils literal notranslate"><span class="pre">SetPosition</span></code></a></p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.rotate">
+<span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pivot_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.rotate" title="Permalink to this definition"></a></dt>
+<dd><p>Rotate instances.</p>
+<p>Node <a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.RotateInstances" title="geonodes.nodes.nodes.RotateInstances"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotateInstances</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rotation</strong> – Vector</p></li>
+<li><p><strong>pivot_point</strong> – Vector</p></li>
+<li><p><strong>local_space</strong> – Boolean</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">instances</span><span class="o">.</span><span class="n">insts</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.scale">
+<span class="sig-name descname"><span class="pre">scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.scale" title="Permalink to this definition"></a></dt>
+<dd><p>Scale instances.</p>
+<p>Node <a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.ScaleInstances" title="geonodes.nodes.nodes.ScaleInstances"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScaleInstances</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scale</strong> – Vector</p></li>
+<li><p><strong>center</strong> – Vector</p></li>
+<li><p><strong>local_space</strong> – Boolean</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">instances</span><span class="o">.</span><span class="n">insts</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.select">
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selection</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.select" title="Permalink to this definition"></a></dt>
+<dd><p>Select the domain</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>selection</strong> (<a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.Boolean" title="geonodes.nodes.nodes.Boolean"><em>Boolean</em></a>) – The selection condition</p>
+</dd>
+</dl>
+<p>If a selection is existing, the resulting selection is a logical and betwenn the two</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.set_named_attribute">
+<span class="sig-name descname"><span class="pre">set_named_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.set_named_attribute" title="Permalink to this definition"></a></dt>
+<dd><p>Set a named attribute</p>
+<p>Called by classes set_named_xxx:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#geonodes.core.domains.Instance.set_named_boolean" title="geonodes.core.domains.Instance.set_named_boolean"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_named_boolean()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#geonodes.core.domains.Instance.set_named_integer" title="geonodes.core.domains.Instance.set_named_integer"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_named_integer()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#geonodes.core.domains.Instance.set_named_float" title="geonodes.core.domains.Instance.set_named_float"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_named_float()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#geonodes.core.domains.Instance.set_named_vector" title="geonodes.core.domains.Instance.set_named_vector"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_named_vector()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#geonodes.core.domains.Instance.set_named_color" title="geonodes.core.domains.Instance.set_named_color"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_named_color()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#geonodes.core.domains.Instance.set_named_byte_color" title="geonodes.core.domains.Instance.set_named_byte_color"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_named_byte_color()</span></code></a></p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.set_named_boolean">
+<span class="sig-name descname"><span class="pre">set_named_boolean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.set_named_boolean" title="Permalink to this definition"></a></dt>
+<dd><p>Set named attribute of type BOOLEAN</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.set_named_byte_color">
+<span class="sig-name descname"><span class="pre">set_named_byte_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.set_named_byte_color" title="Permalink to this definition"></a></dt>
+<dd><p>Set named attribute of type BYTE_COLOR</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.set_named_color">
+<span class="sig-name descname"><span class="pre">set_named_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.set_named_color" title="Permalink to this definition"></a></dt>
+<dd><p>Set named attribute of type FLOAT_COLOR</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.set_named_float">
+<span class="sig-name descname"><span class="pre">set_named_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.set_named_float" title="Permalink to this definition"></a></dt>
+<dd><p>Set named attribute of type FLOAT</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.set_named_integer">
+<span class="sig-name descname"><span class="pre">set_named_integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.set_named_integer" title="Permalink to this definition"></a></dt>
+<dd><p>Set named attribute of type INT</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.set_named_vector">
+<span class="sig-name descname"><span class="pre">set_named_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.set_named_vector" title="Permalink to this definition"></a></dt>
+<dd><p>Set named attribute of type FLOAT_VECTOR</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.stack">
+<span class="sig-name descname"><span class="pre">stack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.stack" title="Permalink to this definition"></a></dt>
+<dd><p>Make the owning socket jump to the output socket of the node passed in argumment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node</strong> (<em>Node</em>) – The node to jump to</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.statistic">
+<span class="sig-name descname"><span class="pre">statistic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.statistic" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute statistic</p>
+<p>call <a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.AttributeStatistic" title="geonodes.nodes.nodes.AttributeStatistic"><code class="xref py py-class docutils literal notranslate"><span class="pre">AttributeStatistic</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.transfer_attribute">
+<span class="sig-name descname"><span class="pre">transfer_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NEAREST_FACE_INTERPOLATED'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.transfer_attribute" title="Permalink to this definition"></a></dt>
+<dd><p>Transfer attribute</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attribute</strong> (<em>Any</em>) – The attribute to transfer</p></li>
+<li><p><strong>source_position</strong> (<a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.Vector" title="geonodes.nodes.nodes.Vector"><em>Vector</em></a>) – Source position socket</p></li>
+<li><p><strong>index</strong> (<a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.Integer" title="geonodes.nodes.nodes.Integer"><em>Integer</em></a>) – Index socket</p></li>
+<li><p><strong>data_type</strong> (<em>str</em>) – A valid data type</p></li>
+<li><p><strong>mapping</strong> (<em>str</em>) – str in (‘NEAREST’, ‘INDEX’, ‘NEAREST_FACE_INTERPOLATED’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>As defined by data_type</p>
+</dd>
+</dl>
+<p>If data_type is None, it is computed from the attribute type.</p>
+<p>This method is called by a DataSocket with a property <code class="xref py py-attr docutils literal notranslate"><span class="pre">field_of</span></code> pointing on the domain:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Domain Vertex</span>
+
+<span class="n">verts</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">verts</span>
+
+<span class="c1"># Attribute position: position.field_of = verts</span>
+
+<span class="n">position</span> <span class="o">=</span> <span class="n">verts</span><span class="o">.</span><span class="n">position</span>
+
+<span class="c1"># Transfer to a var</span>
+
+<span class="n">location</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">index_transfer</span><span class="p">()</span>
+
+<span class="c1"># Which is equivalent to:</span>
+
+<span class="n">location</span> <span class="o">=</span> <span class="n">verts</span><span class="o">.</span><span class="n">index_transfer</span><span class="p">(</span><span class="n">verts</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="geonodes.core.domains.Instance.translate">
+<span class="sig-name descname"><span class="pre">translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">translation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#geonodes.core.domains.Instance.translate" title="Permalink to this definition"></a></dt>
+<dd><p>&gt; Translate instances.</p>
+<p>Node <a class="reference internal" href="../nodes.html#geonodes.nodes.nodes.TranslateInstances" title="geonodes.nodes.nodes.TranslateInstances"><code class="xref py py-class docutils literal notranslate"><span class="pre">TranslateInstances</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>translation</strong> (<em>-</em>) – Vector</p></li>
+<li><p><strong>local_space</strong> (<em>-</em>) – Boolean</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">instances</span><span class="o">.</span><span class="n">insts</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cloudpoint.html" class="btn btn-neutral float-left" title="CloudPoint" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../nodes.html" class="btn btn-neutral float-right" title="Geometry nodes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Alain Bernard.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

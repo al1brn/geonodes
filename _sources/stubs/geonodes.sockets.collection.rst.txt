@@ -1,0 +1,29 @@
+﻿geonodes.sockets.collection
+===========================
+
+.. automodule:: geonodes.sockets.collection
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Collection
+   
+   
+
+   
+   
+   
+
+
+

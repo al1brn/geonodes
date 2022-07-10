@@ -1,0 +1,29 @@
+﻿geonodes.sockets.geometry
+=========================
+
+.. automodule:: geonodes.sockets.geometry
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Geometry
+   
+   
+
+   
+   
+   
+
+
+

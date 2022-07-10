@@ -1,0 +1,6 @@
+﻿geonodes.core.domains.Face
+==========================
+
+.. currentmodule:: geonodes.core.domains
+
+.. autoclass:: Face
