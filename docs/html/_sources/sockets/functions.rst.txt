@@ -1,0 +1,15 @@
+﻿Global functions
+================
+
+.. toctree::
+   :maxdepth: 2
+
+.. autosummary:: geonodes.sockets.functions
+   :toctree: Auto summary
+
+
+.. automodule:: geonodes.sockets.functions
+   :members:
+   
+
+

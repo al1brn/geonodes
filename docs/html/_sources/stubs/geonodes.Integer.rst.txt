@@ -1,0 +1,112 @@
+﻿geonodes.Integer
+================
+
+.. currentmodule:: geonodes
+
+.. autoclass:: Integer
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Integer.Input
+      ~Integer.Random
+      ~Integer.Unsigned
+      ~Integer.__init__
+      ~Integer.abs
+      ~Integer.accumulate_field
+      ~Integer.add
+      ~Integer.arccos
+      ~Integer.arcsin
+      ~Integer.arctan
+      ~Integer.arctan2
+      ~Integer.capture_attribute
+      ~Integer.ceil
+      ~Integer.compare
+      ~Integer.connected_sockets
+      ~Integer.copy
+      ~Integer.cos
+      ~Integer.cosh
+      ~Integer.degrees
+      ~Integer.divide
+      ~Integer.domain_data_type
+      ~Integer.equal
+      ~Integer.exp
+      ~Integer.field_at_index
+      ~Integer.floor
+      ~Integer.fract
+      ~Integer.get_bl_idname
+      ~Integer.get_blender_socket
+      ~Integer.get_class_name
+      ~Integer.gives_bsocket
+      ~Integer.greater_equal
+      ~Integer.greater_than
+      ~Integer.index_transfer
+      ~Integer.init_domains
+      ~Integer.init_socket
+      ~Integer.inverse_sqrt
+      ~Integer.is_socket
+      ~Integer.less_equal
+      ~Integer.less_than
+      ~Integer.log
+      ~Integer.max
+      ~Integer.min
+      ~Integer.modulo
+      ~Integer.multiply
+      ~Integer.multiply_add
+      ~Integer.nearest_face_transfer
+      ~Integer.nearest_transfer
+      ~Integer.not_equal
+      ~Integer.pingpong
+      ~Integer.plug
+      ~Integer.plug_bsocket
+      ~Integer.pow
+      ~Integer.radians
+      ~Integer.raycast
+      ~Integer.reroute
+      ~Integer.reset_properties
+      ~Integer.round
+      ~Integer.sign
+      ~Integer.sin
+      ~Integer.sinh
+      ~Integer.smooth_max
+      ~Integer.smooth_min
+      ~Integer.snap
+      ~Integer.sqrt
+      ~Integer.stack
+      ~Integer.subtract
+      ~Integer.switch
+      ~Integer.tan
+      ~Integer.tanh
+      ~Integer.to_output
+      ~Integer.trunc
+      ~Integer.view
+      ~Integer.wrap
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Integer.SOCKET_IDS
+      ~Integer.bl_idname
+      ~Integer.bnode
+      ~Integer.is_multi_input
+      ~Integer.is_output
+      ~Integer.links
+      ~Integer.name
+      ~Integer.node_chain_label
+      ~Integer.socket_index
+      ~Integer.field_of
+      ~Integer.data_socket
+      ~Integer.bsocket
+      ~Integer.node
+   
+   

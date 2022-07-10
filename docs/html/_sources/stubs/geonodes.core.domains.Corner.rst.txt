@@ -1,0 +1,6 @@
+﻿geonodes.core.domains.Corner
+============================
+
+.. currentmodule:: geonodes.core.domains
+
+.. autoclass:: Corner

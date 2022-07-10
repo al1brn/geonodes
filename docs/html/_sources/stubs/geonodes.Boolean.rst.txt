@@ -1,0 +1,75 @@
+﻿geonodes.Boolean
+================
+
+.. currentmodule:: geonodes
+
+.. autoclass:: Boolean
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Boolean.Input
+      ~Boolean.Random
+      ~Boolean.__init__
+      ~Boolean.b_and
+      ~Boolean.b_not
+      ~Boolean.b_or
+      ~Boolean.capture_attribute
+      ~Boolean.connected_sockets
+      ~Boolean.copy
+      ~Boolean.domain_data_type
+      ~Boolean.field_at_index
+      ~Boolean.get_bl_idname
+      ~Boolean.get_blender_socket
+      ~Boolean.get_class_name
+      ~Boolean.gives_bsocket
+      ~Boolean.imply
+      ~Boolean.index_transfer
+      ~Boolean.init_domains
+      ~Boolean.init_socket
+      ~Boolean.is_socket
+      ~Boolean.nand
+      ~Boolean.nearest_face_transfer
+      ~Boolean.nearest_transfer
+      ~Boolean.nimply
+      ~Boolean.nor
+      ~Boolean.plug
+      ~Boolean.plug_bsocket
+      ~Boolean.raycast
+      ~Boolean.reroute
+      ~Boolean.reset_properties
+      ~Boolean.stack
+      ~Boolean.switch
+      ~Boolean.to_output
+      ~Boolean.view
+      ~Boolean.xnor
+      ~Boolean.xor
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Boolean.SOCKET_IDS
+      ~Boolean.bl_idname
+      ~Boolean.bnode
+      ~Boolean.is_multi_input
+      ~Boolean.is_output
+      ~Boolean.links
+      ~Boolean.name
+      ~Boolean.node_chain_label
+      ~Boolean.socket_index
+      ~Boolean.field_of
+      ~Boolean.data_socket
+      ~Boolean.bsocket
+      ~Boolean.node
+   
+   

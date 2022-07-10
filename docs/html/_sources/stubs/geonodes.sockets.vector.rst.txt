@@ -1,0 +1,29 @@
+﻿geonodes.sockets.vector
+=======================
+
+.. automodule:: geonodes.sockets.vector
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Vector
+   
+   
+
+   
+   
+   
+
+
+
