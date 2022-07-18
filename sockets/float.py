@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-07-10
+Created on 2022-07-17
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -473,122 +473,6 @@ class Float(dsock.Float):
 
         return nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL', label=node_label, node_color=node_color).result
 
-    def add(self, value1=None, node_label = None, node_color = None):
-        """ Geometry node [*Math*].
-        
-        
-            Args:
-                value1: Float
-                node_label (str): Node label
-                node_color (color): Node background color
-                
-            Returns:
-                Float
-                
-            **Node creation**
-            
-            Node :class:`~geonodes.nodes.nodes.Math`
-            
-                - operation = 'ADD'
-                  
-            .. blid:: ShaderNodeMath
-            
-            .. code-block:: python
-            
-                from geonodes import nodes
-                nodes.Math(value0=self, value1=value1, operation='ADD', label=node_label, node_color=node_color)
-                
-        """
-
-        return nodes.Math(value0=self, value1=value1, operation='ADD', label=node_label, node_color=node_color).value
-
-    def subtract(self, value1=None, node_label = None, node_color = None):
-        """ Geometry node [*Math*].
-        
-        
-            Args:
-                value1: Float
-                node_label (str): Node label
-                node_color (color): Node background color
-                
-            Returns:
-                Float
-                
-            **Node creation**
-            
-            Node :class:`~geonodes.nodes.nodes.Math`
-            
-                - operation = 'SUBTRACT'
-                  
-            .. blid:: ShaderNodeMath
-            
-            .. code-block:: python
-            
-                from geonodes import nodes
-                nodes.Math(value0=self, value1=value1, operation='SUBTRACT', label=node_label, node_color=node_color)
-                
-        """
-
-        return nodes.Math(value0=self, value1=value1, operation='SUBTRACT', label=node_label, node_color=node_color).value
-
-    def multiply(self, value1=None, node_label = None, node_color = None):
-        """ Geometry node [*Math*].
-        
-        
-            Args:
-                value1: Float
-                node_label (str): Node label
-                node_color (color): Node background color
-                
-            Returns:
-                Float
-                
-            **Node creation**
-            
-            Node :class:`~geonodes.nodes.nodes.Math`
-            
-                - operation = 'MULTIPLY'
-                  
-            .. blid:: ShaderNodeMath
-            
-            .. code-block:: python
-            
-                from geonodes import nodes
-                nodes.Math(value0=self, value1=value1, operation='MULTIPLY', label=node_label, node_color=node_color)
-                
-        """
-
-        return nodes.Math(value0=self, value1=value1, operation='MULTIPLY', label=node_label, node_color=node_color).value
-
-    def divide(self, value1=None, node_label = None, node_color = None):
-        """ Geometry node [*Math*].
-        
-        
-            Args:
-                value1: Float
-                node_label (str): Node label
-                node_color (color): Node background color
-                
-            Returns:
-                Float
-                
-            **Node creation**
-            
-            Node :class:`~geonodes.nodes.nodes.Math`
-            
-                - operation = 'DIVIDE'
-                  
-            .. blid:: ShaderNodeMath
-            
-            .. code-block:: python
-            
-                from geonodes import nodes
-                nodes.Math(value0=self, value1=value1, operation='DIVIDE', label=node_label, node_color=node_color)
-                
-        """
-
-        return nodes.Math(value0=self, value1=value1, operation='DIVIDE', label=node_label, node_color=node_color).value
-
     def multiply_add(self, value1=None, value2=None, node_label = None, node_color = None):
         """ Geometry node [*Math*].
         
@@ -847,7 +731,7 @@ class Float(dsock.Float):
 
         return nodes.Math(value0=self, value1=value1, operation='MAXIMUM', label=node_label, node_color=node_color).value
 
-    def less_than(self, value1=None, node_label = None, node_color = None):
+    def math_less_than(self, value1=None, node_label = None, node_color = None):
         """ Geometry node [*Math*].
         
         
@@ -876,7 +760,7 @@ class Float(dsock.Float):
 
         return nodes.Math(value0=self, value1=value1, operation='LESS_THAN', label=node_label, node_color=node_color).value
 
-    def greater_than(self, value1=None, node_label = None, node_color = None):
+    def math_greater_than(self, value1=None, node_label = None, node_color = None):
         """ Geometry node [*Math*].
         
         

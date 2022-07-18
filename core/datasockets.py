@@ -143,6 +143,93 @@ class Boolean(DataSocket):
 
 class IntFloat(DataSocket):
     
+    def add(self, value1=None, node_label = None, node_color = None):
+        """ Add two values.
+        
+            Args:
+                value1: Float
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                Float
+                
+            If value1 is a Vector or a Color, VectorMath node is used rather than Math.
+        """
+        
+        from geonodes import nodes
+        
+        if self.is_vector(value1):
+            return nodes.VectorMath(vector0=self, vector1=value1, operation='ADD', label=node_label, node_color=node_color).vector
+
+        return nodes.Math(value0=self, value1=value1, operation='ADD', label=node_label, node_color=node_color).value
+
+    def subtract(self, value1=None, node_label = None, node_color = None):
+        """ Subtract two values.
+        
+            Args:
+                value1: Float
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                Float
+                
+            If value1 is a Vector or a Color, VectorMath node is used rather than Math.
+        """
+
+        from geonodes import nodes
+        
+        if self.is_vector(value1):
+            return nodes.VectorMath(vector0=self, vector1=value1, operation='SUBTRACT', label=node_label, node_color=node_color).vector
+
+        return nodes.Math(value0=self, value1=value1, operation='SUBTRACT', label=node_label, node_color=node_color).value
+
+    def multiply(self, value1=None, node_label = None, node_color = None):
+        """ Multiply two values.
+        
+            Args:
+                value1: Float
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                Float
+                
+            If value1 is a Vector or a Color, VectorMath node is used rather than Math.
+        """
+
+        from geonodes import nodes
+        
+        if self.is_vector(value1):
+            return nodes.VectorMath(vector0=self, vector1=value1, operation='MULTIPLY', label=node_label, node_color=node_color).vector
+
+        return nodes.Math(value0=self, value1=value1, operation='MULTIPLY', label=node_label, node_color=node_color).value
+
+    def divide(self, value1=None, node_label = None, node_color = None):
+        """ Divide two values.
+        
+            Args:
+                value1: Float
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                Float
+                
+            If value1 is a Vector or a Color, VectorMath node is used rather than Math.
+        """
+
+        from geonodes import nodes
+        
+        if self.is_vector(value1):
+            return nodes.VectorMath(vector0=self, vector1=value1, operation='DIVIDE', label=node_label, node_color=node_color).vector
+
+        return nodes.Math(value0=self, value1=value1, operation='DIVIDE', label=node_label, node_color=node_color).value
+    
+    
+    
+    
     def __neg__(self):
         return self.multiply(-1)
 
@@ -213,7 +300,6 @@ class IntFloat(DataSocket):
         ret = self.pow(other)
         ret.node.switch_input_sockets(0, 1)
         return ret
-    
     
 
 # -----------------------------------------------------------------------------------------------------------------------------

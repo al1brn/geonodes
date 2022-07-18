@@ -59,13 +59,13 @@ v = gn.sin(v)         # The sine of this value
 - [floor](#floor) : value (Float)
 - [fract](#fract) : value (Float)
 - [fraction](#fraction) : vector (Vector)
-- [greater_than](#greater_than) : value (Float)
 - [imply](#imply) : boolean (Boolean)
 - [inverse_sqrt](#inverse_sqrt) : value (Float)
 - [join_strings](#join_strings) : string (String)
 - [length](#length) : value (Float)
-- [less_than](#less_than) : value (Float)
 - [log](#log) : value (Float)
+- [math_greater_than](#math_greater_than) : value (Float)
+- [math_less_than](#math_less_than) : value (Float)
 - [max](#max) : value (Float)
 - [min](#min) : value (Float)
 - [modulo](#modulo) : value (Float)
@@ -841,7 +841,7 @@ Geometry node [*Math*].
     nodes.Math(value0=value0, value1=value1, operation='MAXIMUM', label=node_label, node_color=node_color)
     
 
-## less_than
+## math_less_than
 
 Geometry node [*Math*].
 
@@ -869,7 +869,7 @@ Geometry node [*Math*].
     nodes.Math(value0=value0, value1=value1, operation='LESS_THAN', label=node_label, node_color=node_color)
     
 
-## greater_than
+## math_greater_than
 
 Geometry node [*Math*].
 

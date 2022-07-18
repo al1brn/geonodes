@@ -179,6 +179,25 @@ class Socket:
 
     
     @staticmethod
+    def is_vector(value):
+        """ Determine is the parameter is a vector.
+
+        :param value: The value to test
+        :type value: any
+        :return: True if *value* is an instance of Socket
+        :rtype: bool
+        """
+        
+        if Socket.is_socket(value):
+            return Socket.get_class_name(value) in ['Vector', 'Color']
+        
+        elif hasattr(value, '__len__'):
+            return True
+        
+        else:
+            return False
+    
+    @staticmethod
     def gives_bsocket(value):
         """ Test if the argument provides a valid output socket.
         

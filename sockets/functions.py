@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-07-10
+Created on 2022-07-17
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -22,15 +22,15 @@ from geonodes.sockets.functions import color_dodge, color_hue, color_lighten, co
 from geonodes.sockets.functions import color_mix_color, color_multiply, color_overlay, color_saturation
 from geonodes.sockets.functions import color_screen, color_soft_light, color_subtract, color_value, compare
 from geonodes.sockets.functions import compare, cos, cosh, cross, degrees, distance, divide, dot, exp
-from geonodes.sockets.functions import faceforward, floor, fract, fraction, greater_than, imply, inverse_sqrt
-from geonodes.sockets.functions import join_strings, length, less_than, log, max, min, modulo, multiply
-from geonodes.sockets.functions import multiply_add, nand, nimply, nor, normalize, pingpong, pow, project
-from geonodes.sockets.functions import radians, reflect, refract, round, scale, scene, sign, sin, sinh
-from geonodes.sockets.functions import smooth_max, smooth_min, snap, sqrt, subtract, switch, tan, tanh
-from geonodes.sockets.functions import trunc, vector_absolute, vector_add, vector_ceil, vector_cos, vector_divide
-from geonodes.sockets.functions import vector_floor, vector_max, vector_min, vector_modulo, vector_multiply
-from geonodes.sockets.functions import vector_multiply_add, vector_sin, vector_snap, vector_subtract, vector_tan
-from geonodes.sockets.functions import vector_wrap, wrap, xnor, xor
+from geonodes.sockets.functions import faceforward, floor, fract, fraction, imply, inverse_sqrt, join_strings
+from geonodes.sockets.functions import length, log, math_greater_than, math_less_than, max, min, modulo
+from geonodes.sockets.functions import multiply, multiply_add, nand, nimply, nor, normalize, pingpong
+from geonodes.sockets.functions import pow, project, radians, reflect, refract, round, scale, scene, sign
+from geonodes.sockets.functions import sin, sinh, smooth_max, smooth_min, snap, sqrt, subtract, switch
+from geonodes.sockets.functions import tan, tanh, trunc, vector_absolute, vector_add, vector_ceil, vector_cos
+from geonodes.sockets.functions import vector_divide, vector_floor, vector_max, vector_min, vector_modulo
+from geonodes.sockets.functions import vector_multiply, vector_multiply_add, vector_sin, vector_snap, vector_subtract
+from geonodes.sockets.functions import vector_tan, vector_wrap, wrap, xnor, xor
 """
 
 """ Data class functions
@@ -816,7 +816,7 @@ def max(value0=None, value1=None, node_label = None, node_color = None):
 
     return nodes.Math(value0=value0, value1=value1, operation='MAXIMUM', label=node_label, node_color=node_color).value
 
-def less_than(value0=None, value1=None, node_label = None, node_color = None):
+def math_less_than(value0=None, value1=None, node_label = None, node_color = None):
     """ Geometry node [*Math*].
     
     
@@ -846,7 +846,7 @@ def less_than(value0=None, value1=None, node_label = None, node_color = None):
 
     return nodes.Math(value0=value0, value1=value1, operation='LESS_THAN', label=node_label, node_color=node_color).value
 
-def greater_than(value0=None, value1=None, node_label = None, node_color = None):
+def math_greater_than(value0=None, value1=None, node_label = None, node_color = None):
     """ Geometry node [*Math*].
     
     

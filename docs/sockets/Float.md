@@ -15,7 +15,6 @@
 
 - [abs](#abs) : value (Float)
 - [accumulate_field](#accumulate_field) : Sockets      [leading (Float), trailing (Float), total (Float)]
-- [add](#add) : value (Float)
 - [arccos](#arccos) : value (Float)
 - [arcsin](#arcsin) : value (Float)
 - [arctan](#arctan) : value (Float)
@@ -30,7 +29,6 @@
 - [cosh](#cosh) : value (Float)
 - [curve](#curve) : value (Float)
 - [degrees](#degrees) : value (Float)
-- [divide](#divide) : value (Float)
 - [equal](#equal) : result (Boolean)
 - [exp](#exp) : value (Float)
 - [field_at_index](#field_at_index) : value (Float)
@@ -38,17 +36,16 @@
 - [fract](#fract) : value (Float)
 - [greater_equal](#greater_equal) : result (Boolean)
 - [greater_than](#greater_than) : result (Boolean)
-- [greater_than](#greater_than) : value (Float)
 - [inverse_sqrt](#inverse_sqrt) : value (Float)
 - [less_equal](#less_equal) : result (Boolean)
 - [less_than](#less_than) : result (Boolean)
-- [less_than](#less_than) : value (Float)
 - [log](#log) : value (Float)
 - [map_range](#map_range) : result (Float)
+- [math_greater_than](#math_greater_than) : value (Float)
+- [math_less_than](#math_less_than) : value (Float)
 - [max](#max) : value (Float)
 - [min](#min) : value (Float)
 - [modulo](#modulo) : value (Float)
-- [multiply](#multiply) : value (Float)
 - [multiply_add](#multiply_add) : value (Float)
 - [not_equal](#not_equal) : result (Boolean)
 - [pingpong](#pingpong) : value (Float)
@@ -63,7 +60,6 @@
 - [smooth_min](#smooth_min) : value (Float)
 - [snap](#snap) : value (Float)
 - [sqrt](#sqrt) : value (Float)
-- [subtract](#subtract) : value (Float)
 - [switch](#switch) : output (Float)
 - [tan](#tan) : value (Float)
 - [tanh](#tanh) : value (Float)
@@ -482,114 +478,6 @@ Geometry node [*Compare*].
     nodes.Compare(a=self, b=b, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL', label=node_label, node_color=node_color)
     
 
-## add
-
-Geometry node [*Math*].
-
-
-  Args:
-    value1: Float
-    node_label (str): Node label
-    node_color (color): Node background color
-    
-  Returns:
-    Float
-    
-  **Node creation**
-  
-  Node :class:`~geonodes.nodes.nodes.Math`
-  
-  - operation = 'ADD'
-    
-  .. blid:: ShaderNodeMath
-  
-  .. code-block:: python
-  
-    from geonodes import nodes
-    nodes.Math(value0=self, value1=value1, operation='ADD', label=node_label, node_color=node_color)
-    
-
-## subtract
-
-Geometry node [*Math*].
-
-
-  Args:
-    value1: Float
-    node_label (str): Node label
-    node_color (color): Node background color
-    
-  Returns:
-    Float
-    
-  **Node creation**
-  
-  Node :class:`~geonodes.nodes.nodes.Math`
-  
-  - operation = 'SUBTRACT'
-    
-  .. blid:: ShaderNodeMath
-  
-  .. code-block:: python
-  
-    from geonodes import nodes
-    nodes.Math(value0=self, value1=value1, operation='SUBTRACT', label=node_label, node_color=node_color)
-    
-
-## multiply
-
-Geometry node [*Math*].
-
-
-  Args:
-    value1: Float
-    node_label (str): Node label
-    node_color (color): Node background color
-    
-  Returns:
-    Float
-    
-  **Node creation**
-  
-  Node :class:`~geonodes.nodes.nodes.Math`
-  
-  - operation = 'MULTIPLY'
-    
-  .. blid:: ShaderNodeMath
-  
-  .. code-block:: python
-  
-    from geonodes import nodes
-    nodes.Math(value0=self, value1=value1, operation='MULTIPLY', label=node_label, node_color=node_color)
-    
-
-## divide
-
-Geometry node [*Math*].
-
-
-  Args:
-    value1: Float
-    node_label (str): Node label
-    node_color (color): Node background color
-    
-  Returns:
-    Float
-    
-  **Node creation**
-  
-  Node :class:`~geonodes.nodes.nodes.Math`
-  
-  - operation = 'DIVIDE'
-    
-  .. blid:: ShaderNodeMath
-  
-  .. code-block:: python
-  
-    from geonodes import nodes
-    nodes.Math(value0=self, value1=value1, operation='DIVIDE', label=node_label, node_color=node_color)
-    
-
 ## multiply_add
 
 Geometry node [*Math*].
@@ -830,7 +718,7 @@ Geometry node [*Math*].
     nodes.Math(value0=self, value1=value1, operation='MAXIMUM', label=node_label, node_color=node_color)
     
 
-## less_than
+## math_less_than
 
 Geometry node [*Math*].
 
@@ -857,7 +745,7 @@ Geometry node [*Math*].
     nodes.Math(value0=self, value1=value1, operation='LESS_THAN', label=node_label, node_color=node_color)
     
 
-## greater_than
+## math_greater_than
 
 Geometry node [*Math*].
 

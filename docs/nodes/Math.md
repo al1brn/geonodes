@@ -43,7 +43,6 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=
   
   
 - [Float](/docs/sockets/Float.md).[abs](/docs/sockets/Float.md#abs) : Method
-- [Float](/docs/sockets/Float.md).[add](/docs/sockets/Float.md#add) : Method
 - [Float](/docs/sockets/Float.md).[arccos](/docs/sockets/Float.md#arccos) : Method
 - [Float](/docs/sockets/Float.md).[arcsin](/docs/sockets/Float.md#arcsin) : Method
 - [Float](/docs/sockets/Float.md).[arctan](/docs/sockets/Float.md#arctan) : Method
@@ -53,18 +52,16 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=
 - [Float](/docs/sockets/Float.md).[cos](/docs/sockets/Float.md#cos) : Method
 - [Float](/docs/sockets/Float.md).[cosh](/docs/sockets/Float.md#cosh) : Method
 - [Float](/docs/sockets/Float.md).[degrees](/docs/sockets/Float.md#degrees) : Method
-- [Float](/docs/sockets/Float.md).[divide](/docs/sockets/Float.md#divide) : Method
 - [Float](/docs/sockets/Float.md).[exp](/docs/sockets/Float.md#exp) : Method
 - [Float](/docs/sockets/Float.md).[floor](/docs/sockets/Float.md#floor) : Method
 - [Float](/docs/sockets/Float.md).[fract](/docs/sockets/Float.md#fract) : Method
-- [Float](/docs/sockets/Float.md).[greater_than](/docs/sockets/Float.md#greater_than) : Method
 - [Float](/docs/sockets/Float.md).[inverse_sqrt](/docs/sockets/Float.md#inverse_sqrt) : Method
-- [Float](/docs/sockets/Float.md).[less_than](/docs/sockets/Float.md#less_than) : Method
 - [Float](/docs/sockets/Float.md).[log](/docs/sockets/Float.md#log) : Method
+- [Float](/docs/sockets/Float.md).[math_greater_than](/docs/sockets/Float.md#math_greater_than) : Method
+- [Float](/docs/sockets/Float.md).[math_less_than](/docs/sockets/Float.md#math_less_than) : Method
 - [Float](/docs/sockets/Float.md).[max](/docs/sockets/Float.md#max) : Method
 - [Float](/docs/sockets/Float.md).[min](/docs/sockets/Float.md#min) : Method
 - [Float](/docs/sockets/Float.md).[modulo](/docs/sockets/Float.md#modulo) : Method
-- [Float](/docs/sockets/Float.md).[multiply](/docs/sockets/Float.md#multiply) : Method
 - [Float](/docs/sockets/Float.md).[multiply_add](/docs/sockets/Float.md#multiply_add) : Method
 - [Float](/docs/sockets/Float.md).[pingpong](/docs/sockets/Float.md#pingpong) : Method
 - [Float](/docs/sockets/Float.md).[pow](/docs/sockets/Float.md#pow) : Method
@@ -77,13 +74,11 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=
 - [Float](/docs/sockets/Float.md).[smooth_min](/docs/sockets/Float.md#smooth_min) : Method
 - [Float](/docs/sockets/Float.md).[snap](/docs/sockets/Float.md#snap) : Method
 - [Float](/docs/sockets/Float.md).[sqrt](/docs/sockets/Float.md#sqrt) : Method
-- [Float](/docs/sockets/Float.md).[subtract](/docs/sockets/Float.md#subtract) : Method
 - [Float](/docs/sockets/Float.md).[tan](/docs/sockets/Float.md#tan) : Method
 - [Float](/docs/sockets/Float.md).[tanh](/docs/sockets/Float.md#tanh) : Method
 - [Float](/docs/sockets/Float.md).[trunc](/docs/sockets/Float.md#trunc) : Method
 - [Float](/docs/sockets/Float.md).[wrap](/docs/sockets/Float.md#wrap) : Method
 - [Integer](/docs/sockets/Integer.md).[abs](/docs/sockets/Integer.md#abs) : Method
-- [Integer](/docs/sockets/Integer.md).[add](/docs/sockets/Integer.md#add) : Method
 - [Integer](/docs/sockets/Integer.md).[arccos](/docs/sockets/Integer.md#arccos) : Method
 - [Integer](/docs/sockets/Integer.md).[arcsin](/docs/sockets/Integer.md#arcsin) : Method
 - [Integer](/docs/sockets/Integer.md).[arctan](/docs/sockets/Integer.md#arctan) : Method
@@ -93,18 +88,16 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=
 - [Integer](/docs/sockets/Integer.md).[cos](/docs/sockets/Integer.md#cos) : Method
 - [Integer](/docs/sockets/Integer.md).[cosh](/docs/sockets/Integer.md#cosh) : Method
 - [Integer](/docs/sockets/Integer.md).[degrees](/docs/sockets/Integer.md#degrees) : Method
-- [Integer](/docs/sockets/Integer.md).[divide](/docs/sockets/Integer.md#divide) : Method
 - [Integer](/docs/sockets/Integer.md).[exp](/docs/sockets/Integer.md#exp) : Method
 - [Integer](/docs/sockets/Integer.md).[floor](/docs/sockets/Integer.md#floor) : Method
 - [Integer](/docs/sockets/Integer.md).[fract](/docs/sockets/Integer.md#fract) : Method
-- [Integer](/docs/sockets/Integer.md).[greater_than](/docs/sockets/Integer.md#greater_than) : Method
 - [Integer](/docs/sockets/Integer.md).[inverse_sqrt](/docs/sockets/Integer.md#inverse_sqrt) : Method
-- [Integer](/docs/sockets/Integer.md).[less_than](/docs/sockets/Integer.md#less_than) : Method
 - [Integer](/docs/sockets/Integer.md).[log](/docs/sockets/Integer.md#log) : Method
+- [Integer](/docs/sockets/Integer.md).[math_greater_than](/docs/sockets/Integer.md#math_greater_than) : Method
+- [Integer](/docs/sockets/Integer.md).[math_less_than](/docs/sockets/Integer.md#math_less_than) : Method
 - [Integer](/docs/sockets/Integer.md).[max](/docs/sockets/Integer.md#max) : Method
 - [Integer](/docs/sockets/Integer.md).[min](/docs/sockets/Integer.md#min) : Method
 - [Integer](/docs/sockets/Integer.md).[modulo](/docs/sockets/Integer.md#modulo) : Method
-- [Integer](/docs/sockets/Integer.md).[multiply](/docs/sockets/Integer.md#multiply) : Method
 - [Integer](/docs/sockets/Integer.md).[multiply_add](/docs/sockets/Integer.md#multiply_add) : Method
 - [Integer](/docs/sockets/Integer.md).[pingpong](/docs/sockets/Integer.md#pingpong) : Method
 - [Integer](/docs/sockets/Integer.md).[pow](/docs/sockets/Integer.md#pow) : Method
@@ -117,7 +110,6 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=
 - [Integer](/docs/sockets/Integer.md).[smooth_min](/docs/sockets/Integer.md#smooth_min) : Method
 - [Integer](/docs/sockets/Integer.md).[snap](/docs/sockets/Integer.md#snap) : Method
 - [Integer](/docs/sockets/Integer.md).[sqrt](/docs/sockets/Integer.md#sqrt) : Method
-- [Integer](/docs/sockets/Integer.md).[subtract](/docs/sockets/Integer.md#subtract) : Method
 - [Integer](/docs/sockets/Integer.md).[tan](/docs/sockets/Integer.md#tan) : Method
 - [Integer](/docs/sockets/Integer.md).[tanh](/docs/sockets/Integer.md#tanh) : Method
 - [Integer](/docs/sockets/Integer.md).[trunc](/docs/sockets/Integer.md#trunc) : Method
@@ -137,10 +129,10 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', label=
 - [functions](/docs/sockets/functions.md).[exp](/docs/sockets/functions.md#exp) : Function
 - [functions](/docs/sockets/functions.md).[floor](/docs/sockets/functions.md#floor) : Function
 - [functions](/docs/sockets/functions.md).[fract](/docs/sockets/functions.md#fract) : Function
-- [functions](/docs/sockets/functions.md).[greater_than](/docs/sockets/functions.md#greater_than) : Function
 - [functions](/docs/sockets/functions.md).[inverse_sqrt](/docs/sockets/functions.md#inverse_sqrt) : Function
-- [functions](/docs/sockets/functions.md).[less_than](/docs/sockets/functions.md#less_than) : Function
 - [functions](/docs/sockets/functions.md).[log](/docs/sockets/functions.md#log) : Function
+- [functions](/docs/sockets/functions.md).[math_greater_than](/docs/sockets/functions.md#math_greater_than) : Function
+- [functions](/docs/sockets/functions.md).[math_less_than](/docs/sockets/functions.md#math_less_than) : Function
 - [functions](/docs/sockets/functions.md).[max](/docs/sockets/functions.md#max) : Function
 - [functions](/docs/sockets/functions.md).[min](/docs/sockets/functions.md#min) : Function
 - [functions](/docs/sockets/functions.md).[modulo](/docs/sockets/functions.md#modulo) : Function
