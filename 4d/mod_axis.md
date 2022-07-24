@@ -78,8 +78,6 @@ with gn.Tree(modifiers.name("Axis")) as tree:
     # The 4 edges give fours direction
 
     p0, p1 = edges.edges.vertex_position
-    #p0 = p0.index_transfer()
-    #p1 = p1.index_transfer()
 
     rot = gn.Vector((0, 0, 1)).align_to_vector(axis='Z', vector=p1-p0)
     rot = edges.edges.transfer_attribute(attribute=rot, mapping='INDEX')
