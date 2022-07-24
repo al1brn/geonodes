@@ -6,15 +6,18 @@
 
 ### Input sockets
 
-- **xyz** (Vector): vector part
-- **w** (Float): float part
+| Name        | Type        | Description                                                           |
+| ----------- | ----------- | --------------------------------------------------------------------- |
+| xyz         | Vector      | Vector part of the 4-vector                                           |
+| w           | Float       | Float part of the 4-vector                                            |
 
 ### Output sockets
 
-- **xyz** (Vector): vector part
-- **w** (Float): float part
-- **Null** (Boolean): True if the input vector is null
-
+| Name        | Type        | Description                                                           |
+| ----------- | ----------- | --------------------------------------------------------------------- |
+| xyz         | Vector      | Vector part of the normalized 4-vector                                |
+| w           | Float       | Float part of the normalized 4-vector                                 |
+| Null        | Boolean     | True if the input vector is null.                                     |
 
 ## Code
 
