@@ -2,6 +2,10 @@
 
 > Project a 4-vector in the 3D space XYZ.
 
+**Note 1:** The projection must be the last modifier of a 4D project.
+
+**Note 2:** The projection calls the [Projection Matrix](projection_matrix.md).
+
 ## Sockets
 
 ### Input sockets
