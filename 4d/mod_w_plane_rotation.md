@@ -8,7 +8,7 @@
 
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
-| Geometry    | Mesh        | Modifier input geometry                                               |
+| Geometry    | Geometry    | Modifier input geometry                                               |
 | Axis        | Integer     | Axis number: 0 for X, 1 for Y, 2 for Z                                |
 | Angle       | Float       | Rotation angle                                                        |
 
