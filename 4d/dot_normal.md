@@ -2,13 +2,15 @@
 
 > Utility that compute the dot product between a 4-vector and the normals.
 
-## Sockets & attributes
+## Sockets
 
 ### Input sockets
 
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
 | Geometry    | Mesh        | Modifier input geometry                                               |
+| xyz         | Vector      | Vector part of the 4-vector                                           |
+| w           | Float       | Float part of the 4-vector                                            |
 
 ### Output sockets
 
@@ -16,14 +18,6 @@
 | ----------- | ----------- | --------------------------------------------------------------------- |
 | Geometry    | Mesh        | Modifier output geometry                                              |
 | Dot         | Float       | The dot product                                                       |
-
-### Named attributes
-
-| Name        | Type        | Description                                                           |
-| ----------- | ----------- | --------------------------------------------------------------------- |
-| Orientation | Vector      | Vector part of the normals                                            |
-| Nw          | Float       | Float part of the normals                                             |
-
 
 
 ## Code
