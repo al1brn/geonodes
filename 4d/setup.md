@@ -110,24 +110,14 @@ The following code shows how the tangents and normals are initialized with the *
 
 ``` python
 
-        # Continuation of To 4D modifier
-
         mesh  = geo.mesh_component
         curve = geo.curve_component
-        cloud = geo.points_component
-        inst  = geo.instances_component
 
-        # ---- Mesh normals
+        mesh.verts.set_named_vector("Nxyz", mesh.verts.normal)
+        mesh.verts.set_named_float( "Nw",   0)
         
-        mesh = modifiers.add_normals(geometry=mesh).geometry
-        
-        # ---- Curve tangents
-        
-        curve = modifiers.add_tangents(geometry=curve).geometry
-            
-        # ---- Result
-        
-        tree.og = mesh + curve + cloud + inst
+        curve.points.set_named_vector("Txyz", curve.points.tangent)
+        curve.points.set_named_float( "Tw",   0)
 
 ```
 
