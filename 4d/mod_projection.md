@@ -15,7 +15,7 @@
 
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
-| Geometry    | Mesh        | Modifier output geometry                                              |
+| Geometry    | Geometry    | Modifier output geometry                                              |
 
 ### Named attributes
 
