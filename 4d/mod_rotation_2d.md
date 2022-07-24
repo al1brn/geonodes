@@ -9,7 +9,10 @@
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
 | Geometry    | Mesh        | Modifier input geometry                                               |
-| Axis        | Integer     | Axis number: 0 for X, 1 for Y, 2 for Z                                |
+| xyz 0       | Vector      | Vector part of the first 4-vector defining the plane                  |
+| w 0         | Float       | Float part of the first 4-vector defining the plane                   |
+| xyz 1       | Vector      | Vector part of the second 4-vector defining the plane                 |
+| w 1         | Float       | Float part of the second 4-vector defining the plane                  |
 | Angle       | Float       | Rotation angle                                                        |
 
 ### Output sockets
