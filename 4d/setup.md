@@ -123,7 +123,9 @@ The following code shows how the tangents and normals are initialized with the *
 
 ## Face orientation
 
-The projection computes how the face is oriented and stores the result 
+The projection computes how the faces are oriented and stores the result in the named attribute `orientation`.
+
+
 
 
 
