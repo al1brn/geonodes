@@ -72,18 +72,31 @@ The 4D engine is made of two layers, the second layers using the first one for t
   - [Build along curve](mod_build_along_curve.md)
 
 
-## A sphere plunged in 4D
+## Show case
+### A sphere plunged in 4D
 
 <img src="images/hypersphere 1.png"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" />
      
-## An hypersphere made of 7 slices
+### An hypersphere made of 7 slices
 
 <img src="images/hypersphere 2.png"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" />
-     
+
+### Clifford torus
+
+<img src="images/clifford 1.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
+
+### Cones along a circle
+
+<img src="images/cones 1.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
+
 
 
 
