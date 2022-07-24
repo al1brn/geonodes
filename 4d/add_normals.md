@@ -7,7 +7,7 @@ Normals are stored as vertices named attributes:
 - **Nxyz** (Vector): The vector part of the normals
 - **Nw** (Float): The float part of the normals
 
-## Sockets & named attributes
+## Sockets & attributes
 
 ### Input sockets
 
@@ -22,6 +22,11 @@ Normals are stored as vertices named attributes:
 | Geometry    | Mesh        | Modifier output geometry                                              |
 
 ### Named attributes
+
+| Name        | Type        | Description                                                           |
+| ----------- | ----------- | --------------------------------------------------------------------- |
+| Nxyz        | Vector      | Vector part of the normals                                            |
+| Nw          | Float       | Float part of the normals                                             |
 
 
 
