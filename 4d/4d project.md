@@ -14,7 +14,7 @@ The 4D engine is made of two layers, the second layers using the first one for t
 - **Maths trees**: Utilities to perform the computation on 4D vertices.
 - **Modifiers**: Trees with input and output geometries transforming the shapes.
 
-The following image shows a stack of modifiers to build an hypersphere:
+The following image shows a stack of 4 modifiers to build an hypersphere:
 
 - **4D Hypersphere:** Create 7 slices into the 4D space along the W axis
 - **4D Rotate in hyperplane:** Rotate the shape in 4D space
