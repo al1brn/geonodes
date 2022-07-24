@@ -21,7 +21,7 @@ The following image shows a stack of modifiers to build an hypersphere:
 - **4D Light:** Enlight the result with a 4D light
 - **4D Projection:**: Project the result into the 3D space
 
-<img src="images/Param hypersphere.png"
+<img src="images/hypersphere modifiers stack.png"
      alt="Markdown Monster icon"
      width="400px"/>
 
