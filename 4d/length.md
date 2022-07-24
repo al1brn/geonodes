@@ -6,13 +6,17 @@
 
 ### Input sockets
 
-- **xyz** (Vector): vector part
-- **w** (Float): float part
+| Name        | Type        | Description                                                           |
+| ----------- | ----------- | --------------------------------------------------------------------- |
+| xyz         | Vector      | Vector part of the 4-vector                                           |
+| w           | Float       | Float part of the 4-vector                                            |
 
 ### Output sockets
 
-- **Length** (Float): vector norm
-- **Null** (Boolean): True of norm is null (less than 0.001)
+| Name        | Type        | Description                                                           |
+| ----------- | ----------- | --------------------------------------------------------------------- |
+| Length      | Float       | Vector Length                                                         |
+| Null        | Boolean     | True if length is null (less than 0.001)                              |
 
 ## Code
 
