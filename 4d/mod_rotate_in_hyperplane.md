@@ -14,7 +14,7 @@
 
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
-| Geometry    | Mesh        | Modifier output geometry                                              |
+| Geometry    | Geometry    | Modifier output geometry                                              |
 | Hyper xyz   | Vector      | Vector part of the 4-vector defining the hyperplane                   |
 | Hyper w     | Float       | Float part of the 4-vector defining the hyperplane                    |
 | Euler       | Euler       | Euler XYZ 3-rotation to perform                                       |
