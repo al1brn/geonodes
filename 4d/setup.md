@@ -94,12 +94,17 @@ With modifiers, the naming convention is the following:
 - **Vector part**: xyz
 - **Float part**: w
 
-
-
 ## Normals and tangents
 
 When plunged into 4D, the tangents (curves) and normals (mesghes) are stored as named attribute to be transformed together with
 the vertices.
+
+The attribute names are the following:
+
+- **Normal vector part**: Nxyz
+- **Normal float part**: Nw
+- **Tangent vector part**: Txyz
+- **Tangent float part**: Tw
 
 The following code shows how the tangents and normals are initialized with the **To 4D** modifier:
 
