@@ -1,6 +1,6 @@
 # Rotate to Hyperplane (Maths)
 
-> Peforms a 4-rotation such as the hyperplane peprpendicular to the 4-vector passes in parameter becomes XYZ.
+> Peforms a 4-rotation such as the hyperplane peprpendicular to the 4-vector passed in parameter becomes XYZ.
 
 ## Sockets
 
