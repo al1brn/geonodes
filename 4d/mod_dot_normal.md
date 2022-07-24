@@ -8,7 +8,7 @@
 
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
-| Geometry    | Mesh        | Modifier input geometry                                               |
+| Geometry    | Geometry    | Modifier input geometry                                               |
 | xyz         | Vector      | Vector part of the 4-vector                                           |
 | w           | Float       | Float part of the 4-vector                                            |
 
@@ -16,7 +16,7 @@
 
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
-| Geometry    | Mesh        | Modifier output geometry                                              |
+| Geometry    | Geometry    | Modifier output geometry                                              |
 | Dot         | Float       | The dot product                                                       |
 
 
