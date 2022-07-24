@@ -73,17 +73,33 @@ The full modifier is given below:
 
 ``` python
 
-with gn.Tree(modifiers.name("Add tangents")) as tree:
+with gn.Tree(modifiers.name("To 4D")) as tree:
         
-    curve  = gn.Curve(tree.ig)
-    points = curve.points
+    geo = tree.ig
+    w   = gn.Float.Input(0 , "w")
 
-    # The tangents
+    # ----- The fourth dimention
 
-    points.set_named_vector("Txyz", points.tangent)
-    points.set_named_float( "Tw",   0)
+    geo.points.set_named_float("w", w)
 
-    tree.og = curve
+    # ----- Normals and tangent
+
+    mesh  = geo.mesh_component
+    curve = geo.curve_component
+    cloud = geo.points_component
+    inst  = geo.instances_component
+
+    # ---- Mesh normals
+
+    mesh = modifiers.add_normals(geometry=mesh).geometry
+
+    # ---- Curve tangents
+
+    curve = modifiers.add_tangents(geometry=curve).geometry
+
+    # ---- Result
+
+    tree.og = mesh + curve + cloud + inst
 
 ```
 
