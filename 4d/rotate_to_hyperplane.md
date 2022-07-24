@@ -2,6 +2,8 @@
 
 > Peforms a 4-rotation such as the hyperplane peprpendicular to the 4-vector passed in parameter becomes XYZ.
 
+**Note:** Performs the invert of *Rotate from hyperplane*
+
 ## Sockets
 
 ### Input sockets
