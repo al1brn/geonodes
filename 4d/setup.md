@@ -85,7 +85,7 @@ def to_4D():
         
         # ----- The fourth dimention
         
-        geo.points.set_named_float("w")
+        geo.points.set_named_float("w", w)
         
 ```
 
@@ -121,6 +121,9 @@ The following code shows how the tangents and normals are initialized with the *
 
 ```
 
+## Face orientation
+
+The projection computes how the face is oriented and stores the result 
 
 
 
