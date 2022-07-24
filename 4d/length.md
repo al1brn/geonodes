@@ -23,7 +23,7 @@ with gn.Tree(maths.name("Length"), group=True) as tree:
     v = gn.Vector.Input(0, "xyz")
     w = gn.Float.Input( 1, "w")
 
-    length = gen_dot(tree, v, w, v, w).sqrt()
+    length = (v.dot(v) + w*w).sqrt()
     null   = gn.Boolean(length.less_than(zero))
 
     length.to_output("Length")
