@@ -1,6 +1,6 @@
 # Rotation 2D (Modifier)
 
-> Rotate a geometry into a plane defined by two 4-vectors. See [Rotation 2D](rotation_2d.md).
+> Rotate a geometry into a plane defined by two 4-vectors. See [Rotation 2D (Maths)](rotation_2d.md).
 
 ## Sockets & attributes
 
