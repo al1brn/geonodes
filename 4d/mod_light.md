@@ -18,7 +18,7 @@
 
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
-| Geometry    | Mesh        | Modifier output geometry                                              |
+| Geometry    | Geometry    | Modifier output geometry                                              |
 | Light       | Float       | The enlightment of vertices                                           |
 
 ## Code
