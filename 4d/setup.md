@@ -66,6 +66,63 @@ with gn.Tree(maths.name("Do something else"), group=True) as tree:
 
 ```
 
+## 4D vertices
+
+The 4D vertices are implemented by a **Vector** and a **Float**.
+The vertices of a geometry gives the vector part. The fourth coordinate is stored in the named attribute `w`.
+
+The following piece of code shows how the fourth dimensions is added to plunge the geometry into 4D space using the
+`w` parameter passed as input of the modifier.
+
+``` python
+
+def to_4D():
+    
+    with gn.Tree(modifiers.name("To 4D")) as tree:
+        
+        geo = tree.ig
+        w   = gn.Float.Input(0 , "w")
+        
+        # ----- The fourth dimention
+        
+        geo.points.set_named_float("w")
+        
+```
+
+## Normals and tangent
+
+When plunged into 4D, the tangents (curves) and normals (mesghes) are stored as named attribute to be transformed together with
+the vertices.
+
+The following code shows how the tangents and normals are initialized with the **To 4D** modifier:
+
+``` python
+
+        # Continuation of To 4D modifier
+
+        mesh  = geo.mesh_component
+        curve = geo.curve_component
+        cloud = geo.points_component
+        inst  = geo.instances_component
+
+        # ---- Mesh normals
+        
+        mesh = modifiers.add_normals(geometry=mesh).geometry
+        
+        # ---- Curve tangents
+        
+        curve = modifiers.add_tangents(geometry=curve).geometry
+            
+        # ---- Result
+        
+        tree.og = mesh + curve + cloud + inst
+
+```
+
+
+
+
+
 
   
  
