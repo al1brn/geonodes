@@ -27,6 +27,8 @@
 
 ## Code
 
+> Note that the loop in the code generates 4 times the nodes for each of the 4 axis.
+
 ``` python
 
 with gn.Tree(maths.name("Cross"), group=True) as tree:
