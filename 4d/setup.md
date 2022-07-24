@@ -4,7 +4,7 @@
 
 Around 30 nodes trees are generated with **geonodes**.
 
-To keep the things clean are ordered, we me use of the *goenodes.Groups* class:
+To keep the things clean are ordered, we use of the *goenodes.Groups* class:
 
 ``` python
 
