@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-07-17
+Created on 2022-07-22
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -27,7 +27,7 @@ class Instances(gn.Geometry):
         return Instances(self)
 
     def init_domains(self):
-        self.insts = domains.Instance(self)
+        self.insts  = domains.Instance(self)
 
     @property
     def instance(self):

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-07-17
+Created on 2022-07-22
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -511,14 +511,14 @@ class Curve(gn.Geometry):
 
         return self.stack(nodes.SetSplineResolution(geometry=self, selection=selection, resolution=resolution, label=node_label, node_color=node_color))
 
-    def set_handles(self, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label = None, node_color = None):
+    def set_handles(self, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label = None, node_color = None):
         """ Geometry node [*Set Handle Type*].
         
         
             Args:
                 selection: Boolean
                 handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-                mode (set): {'RIGHT', 'LEFT'}
+                mode (set): {'LEFT', 'RIGHT'}
                 node_label (str): Node label
                 node_color (color): Node background color
                 

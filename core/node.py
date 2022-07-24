@@ -479,6 +479,9 @@ class Socket:
         if class_name == 'Geometry' and name in ['Mesh', 'Points', 'Instances', 'Volume', 'Spline', 'Curve']:
             class_name = name
             
+        if name == 'Point Cloud':
+            class_name = 'Points'
+            
         if with_sub_class:
             return class_name, Socket.SOCKET_IDS[bl_idname][1]
         else:
@@ -1028,10 +1031,17 @@ def call_group(name, **kwargs):
 
 class Groups:
     def __init__(self, prefix=""):
-        self.prefix = "" if prefix == "" else prefix + "_"
+        self.prefix = prefix
+        
+    @property
+    def snake_prefix(self):
+        return "" if self.prefix == "" else self.prefix.lower().replace(" ", "_") + "_"
+    
+    def name(self, name):
+        return f"{self.prefix} {name}"
         
     def __getattr__(self, name):
-        lname = (self.prefix + name).lower()
+        lname = (self.snake_prefix + name).lower()
         reads = []
         for tree in bpy.data.node_groups:
             comp = tree.name.lower().replace(' ', '_')
@@ -1039,7 +1049,19 @@ class Groups:
             if comp == lname:
                 return lambda **kwargs: call_group(tree.name, **kwargs)
 
-        raise Exception(f"Groups: Node group '{self.prefix}{name}' ({lname}) not found in node_groups: {reads}")
+        raise Exception(f"Groups: Node group '{self.snake_prefix}{name}' ({lname}) not found in node_groups: {reads}")
+        
+    def clear(self):
+        
+        import bpy
+        
+        names = [tree.name for tree in bpy.data.node_groups]
+        
+        n = len(self.prefix)
+        for name in names:
+            if name[:n] == self.prefix:
+                bpy.data.node_groups.remove(bpy.data.node_groups[name])
+        
     
 
 # =============================================================================================================================
@@ -1134,6 +1156,8 @@ class Tree:
 
         self.btree = bpy.data.node_groups[tree_name]
         """ The geometry tree nodes"""
+        
+        self.btree.use_fake_user = True
         
         # ---------------------------------------------------------------------------
         # Capture the configuration of the nodes
@@ -1656,27 +1680,25 @@ class Tree:
         from geonodes import Geometry
         
         attr_nodes = []
-        #for node in self.nodes:
-        #    if node.is_attribute:
-        #        attr_nodes.append(node)
-                
-        #for attr_node in attr_nodes:
+        
         for attr_node in self.nodes:
             
             if not attr_node.is_attribute:
                 continue
+            
+            #print("CHECKING:", attr_node.name, "bsocket", attr_node.owning_bsocket)
             
             # ---------------------------------------------------------------------------
             # ----- Check if the fed nodes with geometry input are ok
             
             security  = []
             def check_geo_nodes(node):
+                
                 for nd in node.fed_nodes:
                     
                     bsocket = nd.input_geometry_bsocket
 
                     logging.debug("CHECKING", attr_node, nd, '-->', bsocket)
-                    #print("CHECKING", attr_node, nd, '-->', bsocket)
 
                     if bsocket is None:
                         if nd in security:
@@ -1706,8 +1728,6 @@ class Tree:
                                                 return dn
                                     return None
 
-                                #print("CAPTURE NEEDED", link.from_socket, "!=", attr_node.owning_bsocket)
-                                #print("              ", getnode(link.from_socket), "!=", getnode(attr_node.owning_bsocket))
                                 return False
                 
                 return True

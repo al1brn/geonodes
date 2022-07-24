@@ -27,7 +27,6 @@
 ## Methods
 
 - [capture_attribute](#capture_attribute) : attribute (data_type dependant)
-- [components](#components) : Sockets      [selection (Geometry), inverted (Geometry)]
 - [convex_hull](#convex_hull) : convex_hull (Geometry)
 - [delete_geometry](#delete_geometry) : geometry (Geometry)
 - [duplicate_elements](#duplicate_elements) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
@@ -38,6 +37,7 @@
 - [remove_named_attribute](#remove_named_attribute) : geometry (Geometry)
 - [replace_material](#replace_material) : geometry (Geometry)
 - [scale_elements](#scale_elements) : geometry (Geometry)
+- [separate_geometry](#separate_geometry) : Sockets      [selection (Geometry), inverted (Geometry)]
 - [set_ID](#set_id) : geometry (Geometry)
 - [set_material](#set_material) : geometry (Geometry)
 - [set_material_index](#set_material_index) : geometry (Geometry)
@@ -1078,7 +1078,7 @@ Geometry node [*Remove Named Attribute*].
     nodes.RemoveNamedAttribute(geometry=self, name=name, label=node_label, node_color=node_color)
     
 
-## components
+## separate_geometry
 
 Geometry node [*Separate Geometry*].
 

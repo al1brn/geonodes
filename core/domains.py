@@ -217,9 +217,10 @@ class Domain:
         """
         
         dt = Socket.domain_data_type(attribute) if data_type is None else Socket.domain_data_type(data_type)
+        
         if dt in ['BOOLEAN', 'INT', 'COLOR']:
             dt = 'FLOAT'
-        
+
         return nodes.AttributeStatistic(self.data_socket, selection=self.selection, attribute=attribute, data_type=dt, domain=self.domain)
     
     @property
@@ -561,14 +562,18 @@ class Domain:
     
         
 # =============================================================================================================================
-# Point interface
+# Point
 #
 # Properties and methods shared by all POINT domains:
 # - Vertex
 # - ControlPoiint
 # - CloudPoint
 
-class PointInterface:
+class Point(Domain):
+    
+    def __init__(self, data_socket, selection=None):
+        super().__init__(data_socket, domain='POINT', selection=selection)
+    
     
     def instantiate(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """ Put instances on points
@@ -612,7 +617,7 @@ class PointInterface:
 
 
 # -----------------------------------------------------------------------------------------------------------------------------
-# Properties and methodes shared by all Mesh domains: Point, Edeg,  Face and Corner
+# Properties and methodes shared by all Mesh domains: Point, Edge,  Face and Corner
 
 class MeshInterface:
     
@@ -897,11 +902,8 @@ class PEFInterface:
 # -----------------------------------------------------------------------------------------------------------------------------
 # vertex: the point domain of meshes
 
-class Vertex(Domain, PointInterface, MeshInterface, PEFInterface):
+class Vertex(Point, MeshInterface, PEFInterface):
     
-    def __init__(self, data_socket, selection=None):
-        super().__init__(data_socket, domain='POINT', selection=selection)
-        
     @property
     def neighbors(self):
         """ Neighbors
@@ -1430,11 +1432,8 @@ class Corner(Domain, MeshInterface):
 # ----------------------------------------------------------------------------------------------------
 # Control point : the point domain of splines
 
-class ControlPoint(Domain, PointInterface):
+class ControlPoint(Point):
 
-    def __init__(self, data_socket, selection=None):
-        super().__init__(data_socket, domain='POINT', selection=selection)
-        
     # ----------------------------------------------------------------------------------------------------
     # Radius and tilt
         
@@ -1829,6 +1828,78 @@ class ControlPoint(Domain, PointInterface):
         """
         return self.handles_selection(handle_type='ALIGN', left=False)
     
+    @property
+    def parameter(self):
+        """ Spline parameter attribute
+        
+        Returns:
+            Node SplineParameter
+            
+        Output sockets:
+            - factor : Float
+            - length : Float
+            - index : Integer
+            
+        getter: :class:`~geonodes.nodes.nodes.SplineParameter`
+        setter: read only
+        """        
+        return self.attribute(nodes.SplineParameter())
+    
+    
+    @property
+    def parameter_factor(self):
+        """ Parameter factor attribute
+        
+        Returns:
+            Float: factor socket of parameter
+            
+        getter: :class:`~geonodes.nodes.nodes.SplineParameter`
+        setter: read only
+        """
+        return self.parameter.factor
+        
+    @property
+    def parameter_length(self):
+        """ Parameter length attribute
+        
+        Returns:
+            Float: length socket of parameter
+            
+        getter: :class:`~geonodes.nodes.nodes.SplineParameter`
+        setter: read only
+        """
+        return self.parameter.length
+        
+    @property
+    def parameter_index(self):
+        """ Parameter factor attribute
+        
+        Returns:
+            Integer: index socket of parameter
+            
+        getter: :class:`~geonodes.nodes.nodes.SplineParameter`
+        setter: read only
+        """
+        return self.parameter.index    
+    
+    # ====================================================================================================
+    # Methods
+    
+    def delete(self):
+        """ Delete points
+        
+        Node :class:`~geonodes.nodes.nodes.DeleteGeometry`
+            
+        Returns:
+            self
+        
+        .. code-block:: python
+            
+            curve.points(...).delete()
+        """
+        return self.stack(nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain))
+    
+    
 # ----------------------------------------------------------------------------------------------------
 # Spline
 
@@ -2067,11 +2138,8 @@ class Spline(Domain):
 # =============================================================================================================================
 # Cloud point : the point domain of cloud of points
 
-class CloudPoint(Domain, PointInterface):
+class CloudPoint(Point):
 
-    def __init__(self, data_socket, selection=None):
-        super().__init__(data_socket, domain='POINT', selection=selection)
-        
     @property
     def radius(self):
         """ Radius attribute

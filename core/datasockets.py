@@ -1023,8 +1023,19 @@ class Geometry(DataSocket):
     
     """
     
+    def __init__(self, socket, node=None, label=None):
+        
+        from geonodes.core.domains import Point
+        
+        self.points = Point(self) # Initialized befor super().__init__ which can override points
+        
+        super().__init__(socket, node=node, label=label)
+    
+    
     def reset_properties(self):
+        
         super().reset_properties()
+        
         
     @property
     def component_OLD(self):
@@ -1073,6 +1084,10 @@ class Geometry(DataSocket):
         else:
             coll = collection
         return cls(nodes.CollectionInfo(collection=coll, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space).outputs[0])
+    
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Join operators
     
     def __add__(self, other):
         if self.node.bl_idname == 'GeometryNodeJoinGeometry':

@@ -463,7 +463,7 @@ Geometry node [*Set Handle Type*].
   Args:
     selection: Boolean
     handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-    mode (set): {'RIGHT', 'LEFT'}
+    mode (set): {'LEFT', 'RIGHT'}
     node_label (str): Node label
     node_color (color): Node background color
     

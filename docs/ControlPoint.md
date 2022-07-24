@@ -1,10 +1,7 @@
 
 # Class ControlPoint
 
-Curve domains
-
-
-Control point : the point domain of splines
+Radius and tilt
 
 
 ## tangent
