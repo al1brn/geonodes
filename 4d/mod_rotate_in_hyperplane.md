@@ -1,6 +1,6 @@
 # Rotate in hyperplane (Modifier)
 
-> Rotate a geometry into an hyperplane defined by a 4-vector. See [Rotate in hyperplane](rotate_in_hyperplane.md).
+> Rotate a geometry into an hyperplane defined by a 4-vector. See [Rotate in hyperplane (Maths)](rotate_in_hyperplane.md).
 
 ## Sockets & attributes
 
@@ -15,6 +15,11 @@
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
 | Geometry    | Mesh        | Modifier output geometry                                              |
+| Hyper xyz   | Vector      | Vector part of the 4-vector defining the hyperplane                   |
+| Hyper w     | Float       | Float part of the 4-vector defining the hyperplane                    |
+| Euler       | Euler       | Euler XYZ 3-rotation to perform                                       |
+| Axis        | Vector      | 3-vector for (axis, angle) rotation                                   |
+| Angle       | Float       | Angle for (axis, angle) rotation                                      |
 
 ### Named attributes
 
