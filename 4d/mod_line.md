@@ -10,7 +10,7 @@
 
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
-| Geometry    | Mesh        | Modifier input geometry (unused)                                      |
+| Geometry    | Geometry    | Modifier input geometry (unused)                                      |
 | xyz 0       | Vector      | Vector part starting point                                            |
 | w 0         | Float       | Float part of starting point                                          |
 | xyz 1       | Vector      | Vector part of ending point                                           |
