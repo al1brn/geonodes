@@ -8,7 +8,7 @@
 
 | Name         | Type        | Description                                                           |
 | ------------ | ----------- | --------------------------------------------------------------------- |
-| Geometry     | Mesh        | Modifier input geometry                                               |
+| Geometry     | Geometry    | Modifier input geometry                                               |
 | Shade smooth | Boolean     | Shade smooth or not the result                                        |
 
 ### Output sockets
