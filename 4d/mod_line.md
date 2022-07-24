@@ -21,7 +21,7 @@
 
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
-| Geometry    | Mesh        | Modifier output geometry                                              |
+| Geometry    | Curve       | Modifier output geometry                                              |
 
 ### Named attributes
 
