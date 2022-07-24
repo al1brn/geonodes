@@ -2,7 +2,7 @@
 
 > Plunge a 3D geometry into a 4D shape by adding a fourth dimension.
 
-**Note:** See [Add normals](add_normals.md) and [Add tangents](add_tangents.md)
+**Note:** See [Add normals](mod_add_normals.md) and [Add tangents](mod_add_tangents.md)
 
 ## Sockets & attributes
 
