@@ -11,6 +11,11 @@
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
 | Geometry    | Mesh        | Modifier input geometry (unused)                                      |
+| xyz 0       | Vector      | Vector part starting point                                            |
+| w 0         | Float       | Float part of starting point                                          |
+| xyz 1       | Vector      | Vector part of ending point                                           |
+| w 1         | Float       | Float part of endinf point                                            |
+| Count       | Integer     | Number of point in the line                                           |
 
 ### Output sockets
 
