@@ -1,6 +1,6 @@
 # W Plane Rotation (Modifier)
 
-> Rotate a geometry into a plane containing the W axis. See [W Plane Rotation](w_plane_rotation.md).
+> Rotate a geometry into a plane containing the W axis. See [W Plane Rotation (Maths)](w_plane_rotation.md).
 
 ## Sockets & attributes
 
