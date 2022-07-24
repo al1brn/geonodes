@@ -102,16 +102,16 @@ with gn.Tree(maths.name("Projection"), group=True) as tree:
 
     mproj = maths.projection_matrix()
 
-      mv0 = mproj.row_0_xyz
-      mw0 = mproj.row_0_w
-      mv1 = mproj.row_1_xyz
-      mw1 = mproj.row_1_w
-      mv2 = mproj.row_2_xyz
-      mw2 = mproj.row_2_w
+    mv0 = mproj.row_0_xyz
+    mw0 = mproj.row_0_w
+    mv1 = mproj.row_1_xyz
+    mw1 = mproj.row_1_w
+    mv2 = mproj.row_2_xyz
+    mw2 = mproj.row_2_w
 
-      x = mv0.dot(v) + mw0*w
-      y = mv1.dot(v) + mw1*w
-      z = mv2.dot(v) + mw2*w
+    x = mv0.dot(v) + mw0*w
+    y = mv1.dot(v) + mw1*w
+    z = mv2.dot(v) + mw2*w
 
     gn.Vector((x, y, z)).to_output("Vector")
 
