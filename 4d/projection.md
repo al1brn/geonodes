@@ -36,6 +36,8 @@ Then, the resulting fourth vector along W axis is ignored.
 The fourth vector of the rotation matrix is the direction of projection, it will be used to compute the orientation of the faces.
 This fourth vector will be returned as *direction*.
 
+## Projection matrix
+
 The *Projection* modifier can be used on several object. To share the same parameters for all the projected objects,
 we use the rotation euler of the Blender object named `Projection`.
 
@@ -84,6 +86,34 @@ with gn.Tree(maths.name("Projection Matrix"), group=True) as tree:
 
     gn.Vector(M[3][:3]).to_output("Dir xyz")
     gn.Vector(M[3][ 3]).to_output("Dir w")
+
+``` 
+
+## Projection
+
+The projection matrix is used in the maths projection computation:
+
+``` python
+
+with gn.Tree(maths.name("Projection"), group=True) as tree:
+
+    v = gn.Vector.Input(0, "xyz")
+    w = gn.Float.Input(0, "w")
+
+    mproj = maths.projection_matrix()
+
+      mv0 = mproj.row_0_xyz
+      mw0 = mproj.row_0_w
+      mv1 = mproj.row_1_xyz
+      mw1 = mproj.row_1_w
+      mv2 = mproj.row_2_xyz
+      mw2 = mproj.row_2_w
+
+      x = mv0.dot(v) + mw0*w
+      y = mv1.dot(v) + mw1*w
+      z = mv2.dot(v) + mw2*w
+
+    gn.Vector((x, y, z)).to_output("Vector")
 
 ``` 
 
