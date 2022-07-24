@@ -29,6 +29,8 @@
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
 | w           | Float       | The fourth dimension                                                  |
+| Nxyz        | Vector      | Vector part of the normals                                            |
+| Nw          | Float       | Float part of the normals                                             |
 | Txyz        | Vector      | Vector part of the tangents                                           |
 | Tw          | Float       | Float part of the tangents                                           |
 
