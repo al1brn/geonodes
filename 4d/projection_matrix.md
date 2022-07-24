@@ -9,10 +9,20 @@ It is used to compute the orientation of the face.
 
 ### Input sockets
 
-None
+None (angles read from the object named *Projection*.
 
 ### Output sockets
 
+| Name        | Type        | Description                                                           |
+| ----------- | ----------- | --------------------------------------------------------------------- |
+| Row 0 xyz   | Vector      | Vector part of the row 0                                              |
+| Row 0 w     | Float       | Float part of the row 0                                               |
+| Row 1 xyz   | Vector      | Vector part of the row 1                                              |
+| Row 1 w     | Float       | Float part of the row 1                                               |
+| Row 2 xyz   | Vector      | Vector part of the row 2                                              |
+| Row 2 w     | Float       | Float part of the row 2                                               |
+| Dir xyz     | Vector      | Vector part of the row 3 (direction of projection)                    |
+| Dir w       | Float       | Float part of the row 3 (direction of projection)                     |
 
 ## Code
 
