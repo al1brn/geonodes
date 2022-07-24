@@ -1,4 +1,4 @@
-# Projection matrix (Maths)
+# Projection Matrix (Maths)
 
 > Return the 4x4 projection matrix from the rotation euler of the object named *Projection*.
 
