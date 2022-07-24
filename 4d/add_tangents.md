@@ -18,13 +18,12 @@ Tangents are stored as points named attributes.
 | ----------- | ----------- | --------------------------------------------------------------------- |
 | Geometry    | Curve       | Modifier output geometry                                              |
 
-## Named attributes
+### Named attributes
 
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
 | Txyz        | Vector      | Vector part of the tangents                                           |
 | Tw          | Float       | Float part of the tangents                                           |
-
 
 
 ## Code
