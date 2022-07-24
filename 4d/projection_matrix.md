@@ -5,6 +5,16 @@
 **Note:** The fourth row of the projection matrix is the direction of projection.
 It is used to compute the orientation of the face.
 
+## Parameters
+
+The projection is performed by rotating the 4-vertices according 3 angles:
+
+1. rotation in the plane XW
+2. rotation in the plane YW
+3. rotation in the plane ZW
+
+Then, the resulting fourth vector along W axis is ignored.
+
 ## Sockets
 
 ### Input sockets
