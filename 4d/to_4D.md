@@ -1,6 +1,6 @@
 # To 4D
 
-> The first step is to plunge a geometry into the 4th space
+> The first step is to plunge a geometry into the 4th dimension.
 
 ## The fourth coordinate
 
