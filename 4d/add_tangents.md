@@ -2,12 +2,9 @@
 
 > Store the tangents of a curve as named attributes.
 
-Tangents are stored as points named attributes:
+Tangents are stored as points named attributes.
 
-- **Txyz** (Vector): The vector part of the tangents
-- **Tw** (Float): The float part of the tangents
-
-## Sockets
+## Sockets & attributes
 
 ### Input sockets
 
@@ -20,6 +17,15 @@ Tangents are stored as points named attributes:
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
 | Geometry    | Curve       | Modifier output geometry                                              |
+
+## Named attributes
+
+| Name        | Type        | Description                                                           |
+| ----------- | ----------- | --------------------------------------------------------------------- |
+| Txyz        | Vector      | Vector part of the tangents                                           |
+| Tw          | Float       | Float part of the tangents                                           |
+
+
 
 ## Code
 
