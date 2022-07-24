@@ -4,7 +4,7 @@
 
 **Note 1:** This is a planar rotation in the plane defined by the two vectors.
 
-**Note 2:** Called by the modifier [Build along curve](build_along_curve.md)* to orient the base shape along the tangent ofthe curve.
+**Note 2:** Called by the modifier [Build along curve](build_along_curve.md) to orient the base shape along the tangent ofthe curve.
 
 ## Sockets
 
