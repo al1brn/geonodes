@@ -40,7 +40,6 @@
         node = maths.normalize(xyz=v, w=w)
         v    = node.xyz
         w    = node.w
-        #null = node.null
         
         # ----- Try to build a 3D-base with v and plane (k, l)
         
@@ -52,8 +51,6 @@
             xyz_2 = (0, 0, 0),
             w_2   = 1)
             
-        #u3 = node.xyz_0
-        #w3 = node.w_0
         u0 = node.xyz_1
         w0 = node.w_1
         u1 = node.xyz_2
