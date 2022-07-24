@@ -1,5 +1,31 @@
 # W Plane Rotation (Modifier)
 
+> Rotate a geometry into a plane containing the W axis.
+
+## Sockets & attributes
+
+### Input sockets
+
+| Name        | Type        | Description                                                           |
+| ----------- | ----------- | --------------------------------------------------------------------- |
+| Geometry    | Mesh        | Modifier input geometry                                               |
+
+### Output sockets
+
+| Name        | Type        | Description                                                           |
+| ----------- | ----------- | --------------------------------------------------------------------- |
+| Geometry    | Mesh        | Modifier output geometry                                              |
+
+### Named attributes
+
+| Name        | Type        | Description                                                           |
+| ----------- | ----------- | --------------------------------------------------------------------- |
+| w           | Float       | The fourth dimension                                                  |
+| Nxyz        | Vector      | Vector part of the normals                                            |
+| Nw          | Float       | Float part of the normals                                             |
+| Txyz        | Vector      | Vector part of the tangents                                           |
+| Tw          | Float       | Float part of the tangents                                           |
+
 
 ## Code
 
