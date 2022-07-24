@@ -10,7 +10,7 @@ Tangents are stored as points named attributes.
 
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
-| Geometry    | Curve       | Modifier input geometry.                                              |
+| Geometry    | Curve       | Modifier input geometry                                               |
 
 ### Output sockets
 
