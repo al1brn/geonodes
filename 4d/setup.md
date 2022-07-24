@@ -16,7 +16,7 @@ maths     = gn.Groups("Maths 4D")
 ```
 
 A *Groups* class manages a prefix which is added to the node trees name.
-In *geonodes*, it can be then used to call a node has a python function.
+In **geonodes**, it can then be used to call a node has a python function.
 
 The following code shows how building and then using a utility nodes tree.
 
