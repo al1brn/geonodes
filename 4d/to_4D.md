@@ -1,6 +1,8 @@
 # To 4D
 
-> The first step is to plunge a geometry into the 4th dimension.
+> Plunge a 3D geometry into a 4D shape by adding a fourth dimension.
+
+**Note:** See [Add normals](add_normals.md) and [Add tangents](add_tangents.md)
 
 ## The fourth coordinate
 
