@@ -27,7 +27,7 @@
 
 ## Code
 
-> Note that the loop in the code generates 4 times the nodes for each of the 4 axis.
+> Note that the loop in the code generates 4 times the same nodes, one for each of the 4 axis.
 
 ``` python
 
