@@ -2,18 +2,13 @@
 
 > Store the normals of a mesh as named attributes.
 
-Normals are stored as vertices named attributes:
-
-- **Nxyz** (Vector): The vector part of the normals
-- **Nw** (Float): The float part of the normals
-
 ## Sockets & attributes
 
 ### Input sockets
 
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
-| Geometry    | Mesh        | Modifier input geometry.                                              |
+| Geometry    | Mesh        | Modifier input geometry                                              |
 
 ### Output sockets
 
