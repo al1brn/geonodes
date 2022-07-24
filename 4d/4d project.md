@@ -19,9 +19,9 @@ The 4D engine is made of two layers, the second layers using the first one for t
   - *rotation*: rotate the geometry in 4D, including faces normals and curves tangents
   - *projection*: project the geometry to 3D space
 
-<img src="images/hypersphere 1.png"
+<img src="images/Param hypersphere.png"
      alt="Markdown Monster icon"
-     style="float: left; margin-right: 10px;" />
+     width="400px"/>
 
 
 ## A sphere plunged in 4D
