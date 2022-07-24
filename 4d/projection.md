@@ -1,6 +1,6 @@
-# Projection
+# Projection (Maths)
 
-> Projection consists in transforming 4D vertices in 3D vertices.
+> Project a 4-vector in the 3D space XYZ.
 
 ## Maths projection
 
