@@ -47,6 +47,29 @@ The 4D engine is made of two layers, the second layers using the first one for t
 
 ### Modifiers trees
 
+- Initiaiization / utilities
+  - [To 4D](mod_to_4D.md)
+  - [Add normals](mod_add_normals.md)
+  - [Add tangents](mod_add_tangents.md)
+
+- Projection
+  - [Dot normal](mod_dot_normal.md)
+  - [Projection](mod_projection.md)
+
+- Rotation
+  - [Rotate in hyperplane](mod_rotate_in_hyperplane.md)
+  - [Rotation 2D](mod_rotation_2d.md)
+  - [W Plane rotation](mod_w_plane_rotation.md)
+
+- Objects
+  - [Axis](mod_axis.md)
+  - [Line](mod_line.md)
+  - [Clifford torus](mod_clifford.md)
+  - [Hypersphere](mod_hypersphere.md)
+
+- Special
+  - [Light](mod_light.md)
+  - [Build along curve](mod_build_along_curve.md)
 
 
 ## A sphere plunged in 4D
