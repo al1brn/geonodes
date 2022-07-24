@@ -8,7 +8,7 @@
 
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
-| Geometry    | Mesh        | Modifier input geometry                                               |
+| Geometry    | Geometry    | Modifier input geometry                                               |
 | xyz 0       | Vector      | Vector part of the first 4-vector defining the plane                  |
 | w 0         | Float       | Float part of the first 4-vector defining the plane                   |
 | xyz 1       | Vector      | Vector part of the second 4-vector defining the plane                 |
