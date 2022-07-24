@@ -1,6 +1,6 @@
 # Axis (Modifier)
 
-> Build the projected four axis.
+> Build the fourd projected axis.
 
 **Note:** Used to easily visualize the space axis.
 
