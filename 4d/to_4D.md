@@ -4,6 +4,30 @@
 
 **Note:** See [Add normals](add_normals.md) and [Add tangents](add_tangents.md)
 
+## Sockets & attributes
+
+### Input sockets
+
+| Name        | Type        | Description                                                           |
+| ----------- | ----------- | --------------------------------------------------------------------- |
+| Geometry    | Mesh        | Modifier input geometry                                               |
+
+### Output sockets
+
+| Name        | Type        | Description                                                           |
+| ----------- | ----------- | --------------------------------------------------------------------- |
+| Geometry    | Mesh        | Modifier output geometry                                              |
+
+### Named attributes
+
+| Name        | Type        | Description                                                           |
+| ----------- | ----------- | --------------------------------------------------------------------- |
+| w           | Float       | The fourth dimension                                                  |
+| Nxyz        | Vector      | Vector part of the normals                                            |
+| Nw          | Float       | Float part of the normals                                             |
+
+
+
 ## The fourth coordinate
 
 Plunging a shape in the 4D space consists in adding a 4th coordinate named `w`:
