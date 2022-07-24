@@ -10,14 +10,13 @@
 
 ### Input sockets
 
-| Name        | Type        | Description                                                           |
-| ----------- | ----------- | --------------------------------------------------------------------- |
-| Geometry    | Geometry    | Modifier input geometry (unused)                                      |
-| xyz 0       | Vector      | Vector part starting point                                            |
-| w 0         | Float       | Float part of starting point                                          |
-| xyz 1       | Vector      | Vector part of ending point                                           |
-| w 1         | Float       | Float part of endinf point                                            |
-| Count       | Integer     | Number of point in the line                                           |
+| Name         | Type        | Description                                                           |
+| ------------ | ----------- | --------------------------------------------------------------------- |
+| Geometry     | Geometry    | Modifier input geometry (unused)                                      |
+| Segments     | Integer     | Number of segments                                                    |
+| Rings        | Integer     | Number of rings                                                       |
+| Major radius | Float       | Major radius                                                          |
+| Minor radius | Float       | Minor radius                                                          |
 
 ### Output sockets
 
