@@ -43,7 +43,7 @@ with gn.Tree("Maths 4D Do something else", group=True) as tree:
 
 In the following code, we use the *Groups* class to ease this naming process.
 Note that the python names are the snake_case version of the trees and sockets names.
-The result of these two pieces of code are exactly the same.
+The results of these two pieces of code are exactly the same.
 
 ``` python
 
