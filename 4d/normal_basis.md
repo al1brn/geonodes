@@ -4,24 +4,29 @@
 
 ## Sockets
 
+
 ### Input sockets
 
-- **xyz 0** (Vector): vector part of first vector
-- **w 0** (Float): float part of first vector
-- **xyz 1** (Vector): vector part of second vector
-- **w 1** (Float): float part of second vector
-- **xyz 2** (Vector): vector part of third vector
-- **w 2** (Float): float part of third vector
+| Name        | Type        | Description                                                           |
+| ----------- | ----------- | --------------------------------------------------------------------- |
+| xyz 0       | Vector      | Vector part of first vector                                           |
+| w 0         | Float       | Float part of first vector                                            |
+| xyz 1       | Vector      | Vector part of second vector                                          |
+| w 1         | Float       | Float part of second vector                                           |
+| xyz 2       | Vector      | Vector part of third vector                                           |
+| w 2         | Float       | Float part of third vector                                            |
 
 ### Output sockets
 
-- **xyz 0** (Vector): vector part of first vector of the basis
-- **w 0** (Float): float part of first vector of the basis
-- **xyz 1** (Vector): vector part of second vector of the basis
-- **w 1** (Float): float part of second vector of the basis
-- **xyz 2** (Vector): vector part of third vector of the basis
-- **w 2** (Float): float part of third vector of the basis
-- **Error** (Boolean): True if the input 4-vectors don't define a 3D space
+| Name        | Type        | Description                                                           |
+| ----------- | ----------- | --------------------------------------------------------------------- |
+| xyz 0       | Vector      | Vector part of first vector of the basis                              |
+| w 0         | Float       | Float part of first vector of the basis                               |
+| xyz 1       | Vector      | Vector part of second vector of the basis                             |
+| w 1         | Float       | Float part of second vector of the basis                              |
+| xyz 2       | Vector      | Vector part of third vector of the basis                              |
+| w 2         | Float       | Float part of third vector of the basis                               |
+| Error       | Boolean     | True if the input 4-vectors don't define a 3D space                   |
 
 ## Code
 
