@@ -1,6 +1,6 @@
 # Rotation 2D (Maths)
 
-> Rotate a 4-vector in a plane defined by two vectors
+> Rotate a 4-vector in a plane defined by two 4-vectors
 
 ## Sockets
 
