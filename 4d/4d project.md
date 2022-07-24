@@ -11,17 +11,42 @@ The 4D modifiers can be stacked to build more complex objects.
 
 The 4D engine is made of two layers, the second layers using the first one for the actual computation:
 
-- **Maths trees**: Nodes tree dealing with 4D vertices
-  - *rotation*: rotate vertices according parameters
-  - *projection*: projection of vertices from 4D to 3D
-  
-- **Modifiers**: nodes applied to geometries
-  - *rotation*: rotate the geometry in 4D, including faces normals and curves tangents
-  - *projection*: project the geometry to 3D space
+- **Maths trees**: Utilities to perform the computation on 4D vertices.
+- **Modifiers**: Trees with input and output geometries transforming the shapes.
 
 <img src="images/Param hypersphere.png"
      alt="Markdown Monster icon"
      width="400px"/>
+
+## The nodes trees
+
+### Maths trees
+
+- Projection
+  - [Projection matrix](projection_matrix.md)
+  - [Projection](projection.md)
+
+- Normalization
+  - [Length](length.md)
+  - [Normalize](normalize.md)
+  - [Normal basis](normal_basis.md)
+  - [Cross](cross.md)
+  - [Hyperplane](hyperplane.md)
+
+- Rotation
+  - [Rotate to hyperplane](rotate_to_hyperplane.md)
+  - [Rotate from hyperplane](rotate_from_hyperplane.md)
+  - [Rotate in hyperplane](rotate_in_hyperplane.md)
+  - [Follow vector](follow_vector.md)
+  - [W Plane rotation](w_plane_rotation.md)
+  - [Rotation 2D](rotation_2d.md)
+
+- Special
+  - [Build along curve](build_along_curve.md)
+
+
+### Modifiers trees
+
 
 
 ## A sphere plunged in 4D
