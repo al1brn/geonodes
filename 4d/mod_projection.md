@@ -1,6 +1,6 @@
 # Projection (Modifier)
 
-> Project a 4D geometry into the 3D XYZ space.
+> Project a 4D geometry into the 3D XYZ space. See [Projection (Maths)](projection.md).
 
 ## Sockets & attributes
 
