@@ -26,7 +26,7 @@
 
 ``` python
 
-with gn.Tree(maths.name("Rotate to hyperplane"), group=True) as tree:
+with gn.Tree(maths.name("Rotate from hyperplane"), group=True) as tree:
 
     v = gn.Vector.Input(0, "xyz")
     w = gn.Float.Input(0, "w")
@@ -36,13 +36,12 @@ with gn.Tree(maths.name("Rotate to hyperplane"), group=True) as tree:
 
     node = maths.hyperplane(xyz=hv, w=hw)
 
-    x = node.xyz_0.dot(v) + node.w_0*w
-    y = node.xyz_1.dot(v) + node.w_1*w
-    z = node.xyz_2.dot(v) + node.w_2*w
-    w = node.xyz_3.dot(v) + node.w_3*w
+    rv = node.xyz_0*v.x + node.xyz_1*v.y + node.xyz_2*v.z + node.xyz_3*w
+    rw = node.w_0*v.x   + node.w_1*v.y   + node.w_2*v.z   + node.w_3*w
 
-    gn.Vector((x, y, z)).to_output("xyz")
-    w.to_output("w")
+    rv.to_output("xyz")
+    rw.to_output("w")
+
         
 ```
 
