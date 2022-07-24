@@ -1,6 +1,6 @@
 # Normal basis (Maths)
 
-> Computes three 4-vectors forming a normal basis defined by hree input 4-vectors.
+> Computes three 4-vectors forming a normal basis in the 3D space defined by hree input 4-vectors.
 
 ## Sockets
 
