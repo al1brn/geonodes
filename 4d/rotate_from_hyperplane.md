@@ -2,7 +2,7 @@
 
 > Peforms a 4-rotation such as XYZ becomes the hyperplane peprpendicular to the 4-vector passed.
 
-**Note:** Performs the invert of *Rotate to hyperplane*
+**Note:** Performs the invert of *Rotate to Hyperplane*
 
 ## Sockets
 
