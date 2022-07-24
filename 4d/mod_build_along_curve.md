@@ -2,7 +2,9 @@
 
 > Duplicates a geometry along a given curve. See [Build along curve (Maths)](build_along_curve.md).
 
-**Note:** The curve is passed as object. The object must have been plunged into 4D **but not projected**.
+**Note 1:** The curve is passed as object. The object must have been plunged into 4D **but not projected**.
+
+**Note 2:** See an example of use with [Hypersphere](mod_hypersphere.md).
 
 ## Sockets
 
