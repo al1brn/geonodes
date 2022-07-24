@@ -4,9 +4,11 @@
 
 **Note 1:** Both the geometry to duplicate and the curve must be 4D geometries.
 
-**Note 2:** The geometry is duplicates as many points the curve has.
+**Note 2:** The geometry is duplicated as many times there are points in the curve.
 
-**Note 3:** The geometry is oriented along the curve tangent using [Follow vector](follow_vector.md).
+**Note 3:** The geometry is oriented along the curve using [Follow vector](follow_vector.md) with the curve tangent.
+
+**Note 4:** See [Hypersphere](hypersphere.md) for an example of use.
 
 ## Sockets
 
@@ -14,22 +16,17 @@
 
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
-| xyz         | Vector      | Vector part of the 4-vector to rotate                                 |
-| w           | Float       | Float part of the 4-vector to rotate                                  |
-| Hyper xyz   | Vector      | Vector part of the 4-vector defining the hyperplane                   |
-| Hyper w     | Float       | Float part of the 4-vector defining the hyperplane                    |
-| Euler       | Euler       | Euler XYZ 3-rotation to perform                                       |
-| Axis        | Vector      | 3-vector for (axis, angle) rotation                                   |
-| Angle       | Float       | Angle for (axis, angle) rotation                                      |
+| Geometry 4D | Geometry    | Geometry to duplicate along the curve                                 |
+| Curve 4D    | Curve       | The curve used as backbone to duplicate the geometry                  |
+| Align xyz   | Vector      | Vector part of the 4-vector to align with the curve tangent           |
+| Align w     | Float       | Float part of the 4-vector to align with the curve tangent            |
+| Use radius  | Boolean     | If True, scale the geometry using the curve radius as scale           |
 
 ### Output sockets
 
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
-| xyz         | Vector      | Vector part of the rotated vector                                     |
-| w           | Float       | Float part of the rotated vector                                      |
-
-
+| Geometry    | Geometry    | The resulting geometry                                                |
 
 ## Code
 
