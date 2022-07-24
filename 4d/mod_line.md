@@ -28,8 +28,6 @@
 | Name        | Type        | Description                                                           |
 | ----------- | ----------- | --------------------------------------------------------------------- |
 | w           | Float       | The fourth dimension                                                  |
-| Nxyz        | Vector      | Vector part of the normals                                            |
-| Nw          | Float       | Float part of the normals                                             |
 | Txyz        | Vector      | Vector part of the tangents                                           |
 | Tw          | Float       | Float part of the tangents                                           |
 
@@ -38,33 +36,35 @@
 
 ``` python
 
-with gn.Tree(modifiers.name("To 4D")) as tree:
-        
-    geo = tree.ig
-    w   = gn.Float.Input(0 , "w")
+with gn.Tree(modifiers.name("Line")) as tree:
 
-    # ----- The fourth dimention
+   v0 = gn.Vector.Input( 0, "xyz 0")
+   w0 = gn.Float.Input(-1, "w 0")
+   v1 = gn.Vector.Input( 0, "xyz 1")
+   w1 = gn.Float.Input( 1, "w 1")
+   count = gn.Integer.Input(10, "Count", min_value=2)
 
-    geo.points.set_named_float("w", w)
+   line = gn.Curve.Line(start=v0, end=v1).resample(count=count)
 
-    # ----- Normals and tangent
+   line.points.set_named_float("w", gn.Float(line.points.index).map_range(from_min=0, from_max=count-1, to_min=w0, to_max=w1))
 
-    mesh  = geo.mesh_component
-    curve = geo.curve_component
-    cloud = geo.points_component
-    inst  = geo.instances_component
+   # ----- Tangents
 
-    # ---- Mesh normals
+   tv = v1 - v0
+   tw = w1 - v0
+   node = maths.normalize(xyz=tv, w=tw)
 
-    mesh = modifiers.add_normals(geometry=mesh).geometry
+   tv = node.xyz
+   tw = node.w
 
-    # ---- Curve tangents
+   # ----- Store the named attributes
 
-    curve = modifiers.add_tangents(geometry=curve).geometry
+   line.points.set_named_float("w", gn.Float(line.points.index).map_range(from_min=0, from_max=count-1, to_min=w0, to_max=w1))
 
-    # ---- Result
+   line.points.set_named_vector("Txyz", tv)
+   line.points.set_named_float("Tw", tw)
 
-    tree.og = mesh + curve + cloud + inst
+   tree.og = line
 
 ```
 
