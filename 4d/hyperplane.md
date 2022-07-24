@@ -24,9 +24,7 @@
 | xyz 3       | Vector      | Vector part of fourth vector of the basis                              |
 | w 3         | Float       | Float part of fourth vector of the basis                               |
 
-Note:
-
-   The fourth 4-vector (xyz 3, w 3) is the normal 4-vector in the direction of the input vector.
+**Note:** The fourth 4-vector (xyz 3, w 3) is the normal 4-vector in the direction of the input vector.
 
 ## Code
 
