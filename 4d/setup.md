@@ -89,6 +89,13 @@ def to_4D():
         
 ```
 
+With modifiers, the naming convention is the following:
+
+- **Vector part**: xyz
+- **Float part**: w
+
+
+
 ## Normals and tangent
 
 When plunged into 4D, the tangents (curves) and normals (mesghes) are stored as named attribute to be transformed together with
