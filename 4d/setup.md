@@ -96,7 +96,7 @@ With modifiers, the naming convention is the following:
 
 
 
-## Normals and tangent
+## Normals and tangents
 
 When plunged into 4D, the tangents (curves) and normals (mesghes) are stored as named attribute to be transformed together with
 the vertices.
