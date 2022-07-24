@@ -2,7 +2,7 @@
 
 > Create an hypersphere from the input geometry (which should be a sphere).
 
-**Note:** See [Build along curve](mod_build_along_curve.md) and [Line](mod_line.md)
+**Note:** Call the modifier [Build along curve](mod_build_along_curve.md) along the curve generated with [Line](mod_line.md)
 
 ## Sockets & attributes
 
