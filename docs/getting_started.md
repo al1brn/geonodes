@@ -88,7 +88,7 @@ These inputs can be created with the class constructor `Input` available in all 
 ```
 
 The `input` constructor get a  socket name as parameter. For values such as Integer or Float, it takes the default value as first
-parameter. It can also take `min_value`, `max_value` and `description` parameter for better control.
+parameter. It can also take `min_value`, `max_value` and `description` parameters for better control.
 
 See [API reference](https://al1brn.github.io/geonodes/).
 
