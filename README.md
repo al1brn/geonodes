@@ -12,14 +12,13 @@ Complex formulas are not easy to build and debugging can be a headache.<br>
  
 You keep the full power of Blender geometry nodes but with the elegance of Python.
 
-> **NOTE** This is beta version 1.0
-
 ## Table of contents
 
 - [Better a demo than long words](#better-a-demo-than-long-words)
 - [Installation](#installation)
 - [Documentation](#documentation) **Not up to date**, update in progress
 - [API reference](https://al1brn.github.io/geonodes/)
+- [4D project](4d/4d project.md): creation of 4D geometry nodes with geondes
 
 ## Better a demo than long words
 
@@ -93,17 +92,17 @@ Uses [index](docs/index.md) to gain access to the list of availables classes.
 
 ## Scripting geometry
 
-In Blender, geometry nodes are global functions operating on geometry.
-You must think in terms of procedures and their arguments and parameters.
+Geometry nodes are global functions operating on geometry passed through sockets.
 
-**geonodes** is geometry oriented. Central classes are geometries and domains which expose geometry methods and properties.
+**geonodes** presents the nodes sockets as classes and the nodes as methods.
 
-Rather than thinking : _"What are the inputs of the 'Set Curve Tilt' node to change the tilt of the spline #2 of my curve ?"_,
-you take benefit of an object oriented language: a Curve object manages a list of Splines. A Spline has a `tilt` attribute.
-The script becomes natural:
+Rather than thinking : _"What are the inputs of the 'Set Curve Tilt' node to change the tilt of spline #2?"_,
+you take benefit of an object oriented language and simply write:
 
 ```python
+
 curve.splines[2].tilt = 1
+
 ```
 
 ### Geometry classes
@@ -116,39 +115,33 @@ The geometry classes are:
 - [Instances](docs/sockets/Instances.md)
 - [Volume](docs/sockets/Volume.md)
 
-`Geometry` methods are available in the other classes:
-
-```python
-geometry.set_shade_smooth()              # Generate the 'Set Shade Smooth' node
-geometry.transform(tranlation=(1, 2, 3)) # Generates the 'Transform' node
-``` 
-
-The other classes expose methods specific to their geometry:
-
-```python
-mesh2 = mesh.union(other_mesh) # 'Mesh Boolean' with Union parameter
-curve.fillet()                 # 'Fillet Curve'
-```
-
 ### Domains
 
-But the majority of operations are made on the geometry **domains**:
+In geometry nodes, attributes refer to domains such as Point, Corner, Face, Spline... 
+
+**geonodes** implement domains as properties of geometry classes.
 - Mesh: **verts**, **faces**, **edges**, **corners**
 - Curve : **points**, **splines**
 - Points : **points**
 - Instances : **insts**
 
+Attributes are properties or domain properties, for instances:
+
 ```python
+
 mesh.verts.position += (0, 0, 1)        # All the mesh points are moved 1 upwards (node 'Set Position')
 cloud = mesh.faces.distribute_points()  # Node 'Distribute Points on Faces'
 mesh.edges.extrude()                    # Node 'Extrude Mesh' with option 'Edges'
 curve.splines.type = 'BEZIER'           # Curve splines type to BEZIER
 curve.points.handle_type = 'FREE'       # Curve handle type to FREE
 instances.insts[0].position = (1, 2, 3) # The instance # 0 is set at position (1, 2, 3)
+
 ```
 
-> **Note** that Mesh and Curve have several domains, respectively (verts, faces, edges, corners) and (splines, points),
-> when Points and Instances have only one domain each, respectively points and insts.
+**Note 1:** Mesh and Curve have several domains, respectively (verts, faces, edges, corners) and (splines, points),
+when Points and Instances have only one domain each, respectively points and insts.
+
+**Note 2:** Points is a property of Geometry.
 
 ### Values
 
