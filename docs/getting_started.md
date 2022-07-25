@@ -107,17 +107,42 @@ To output other values, use the method `to_output` available in all classes:
    v.to_output("Location")   # Location output sockets is created. Its type is Vector 
 ```
 
+## A more advanced example
 
+Let's create an icosphere, add two materials and set randomly the materials on the faces.
+Once done, will extrude the faces with one particular material.
 
+To do that, we need to learn:
+- How to create a geometry
+- How the selectively change properties on domains
+- And perhaps how to created randomness
 
+### Creating geometries
 
+Geometries are created by calling constructors of geometry classes. These constructors correspond to the menus **Mesh Primitives**
+and **Curve Primitives** of the new node menu in Blender.
 
+The names of the constructors are build as CamelCase version of their node names.
 
+``` python
+   icosphere = gn.Mesh.IcoSphere()
+```
 
+This create the default icosphre. We may want some customization. Looking at the node reference [Ico Sphere Node](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/icosphere.html),
+we see that there are two parameters: **Radius** and **Subdivisions**. They are implemented as parameters of the constructors.
+As explained in the [naming conventions](naming.md), **geonodes** uses snake_case version of the nodes sockets and nodes parameters names:
 
+``` python
+   icosphere = gn.Mesh.IcoSphere(radius=1, subdivisions=3)
+```
 
+You may want to give more control on these parameters:
 
-
+``` python
+   radius = gn.Float.Input(1, "Radius", min_value=0.01, max_value=10, description="A reasonable radius for the sphere")
+   subs   = gn.Integer.Input(3, description="No limits: I trust you")
+   icosphere = gn.Mesh.IcoSphere(radius=radius, subdivisions=subs)
+```
 
 
 
