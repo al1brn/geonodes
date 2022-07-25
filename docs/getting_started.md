@@ -115,8 +115,7 @@ Once done, will extrude the faces with one particular material.
 To do that, we need to learn:
 - [How to create a geometry](#creating_geometries)
 - [Manipulating materials](#adding_materials)
-- How to selectively change properties on domains
-- And perhaps how to created randomness
+- [How to selectively change properties on domains](#selecting_faces)
 
 ### Creating geometries
 
@@ -149,12 +148,37 @@ We have now an icosphere which can be created with parameters exposed to the use
 
 ### Adding materials
 
-Materials, as Objects, Collections, Textures and Images can be addressed by their name rather than by their corresponding
-Blender instances.
+Materials are properties of faces. The syntax will look like `mesh.faces.material = ...`.
+
+A material is instantiated with its name. Let's suppose that we have to existing materials named "Red" and "Blue".
+To assign the materials to our icosphere, we write:
 
 ``` python
+   icosphere.faces.material = gn.Material("Red")
+   icosphere.faces.material = gn.Material("Blue")
+```
 
-   icosphere.add_
+### Selecting faces
+
+The resulting icosphere is blue because the second material was assigned to all faces, overwriting the previous assignment.
+But what we want is to have a random selection of faces with a different color.
+The faces can be selected by "calling" them with a selection parameter.
+
+``` python
+   icosphere.faces( random_selection ).faces = gn.Material("Blue")
+```
+
+A random selection can be generated using the `Random` constructor of class [Boolean](https://al1brn.github.io/geonodes/sockets/boolean.html):
+
+``` python
+   icosphere.faces( Boolean.Random(probability=0.5) ).faces = gn.Material("Blue")
+```
+
+
+
+
+
+
 
 
 
