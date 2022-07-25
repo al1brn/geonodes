@@ -128,7 +128,7 @@ The names of the constructors are build as CamelCase version of their node names
    icosphere = gn.Mesh.IcoSphere()
 ```
 
-This create the default icosphre. We may want some customization. Looking at the node reference [Ico Sphere Node](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/icosphere.html),
+This create the default icosphere. We may want some customization. Looking at the node reference [Ico Sphere Node](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/icosphere.html),
 we see that there are two parameters: **Radius** and **Subdivisions**. They are implemented as parameters of the constructors.
 As explained in the [naming conventions](naming.md), **geonodes** uses snake_case version of the nodes sockets and nodes parameters names:
 
