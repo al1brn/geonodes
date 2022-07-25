@@ -25,7 +25,7 @@ import geonodes as gn
 
 ## My first tree
 
-Execute the following piece of code (node forgetting the module import :-)).
+Execute the following piece of code (node forgetting the module import :-):
 
 ``` python
 with gn.Tree("Do nothing tree") as tree:
@@ -35,7 +35,7 @@ with gn.Tree("Do nothing tree") as tree:
    tree.og = tree.ig
 ```
 
-This code simply create the tree which connects the input geometry to the output geometry.
+This code simply creates the tree which connects the input geometry to the output geometry.
 
 Add a **Geometry Node** modifier to your Object and, as a parameter, select the node tree named "Do nothing tree" in the list.
 
