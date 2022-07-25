@@ -171,7 +171,7 @@ The faces can be selected by "calling" them with a selection parameter.
 A random selection can be generated using the `Random` constructor of class [Boolean](https://al1brn.github.io/geonodes/sockets/boolean.html):
 
 ``` python
-   icosphere.faces( Boolean.Random(probability=0.5) ).material = gn.Material("Blue")
+   icosphere.faces( gn.Boolean.Random(probability=0.5) ).material = gn.Material("Blue")
 ```
 
 This time, the blue material will overwrite only 50% of the red faces.
@@ -186,7 +186,7 @@ Another way to reach this result is to use the material index:
    # All faces have material index set to 1
    # Let's change half of them back to 0
    
-   icosphere.faces( Boolean.Random(propability=.5) ).material_index = 0
+   icosphere.faces( gn.Boolean.Random(propability=.5) ).material_index = 0
 ```
 
 ### Extrusion
@@ -242,7 +242,7 @@ with gn.Tree("Icosphere tuto") as tree:
    faces = icosphere.faces
 
    faces.material = gn.Material("Red")
-   faces( Boolean.Random(propability=.5) ).material_index = 0
+   faces( gn.Boolean.Random(propability=.5) ).material_index = 0
 
    # Extrude the blue faces
    
