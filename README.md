@@ -18,7 +18,7 @@ You keep the full power of Blender geometry nodes but with the elegance of Pytho
 - [Installation](#installation)
 - [Documentation](#documentation)
 - [API reference](https://al1brn.github.io/geonodes/)
-- [4D project](4d/4d%20project.md): a real use case of **geonodes** to create 4D geomtry
+- [4D project](4d/4d%20project.md): a comprehensive project using **geonodes** to create 4D geometry modifiers.
 
 ## Better a demo than long words
 
