@@ -65,19 +65,31 @@ with gn.Tree("Geometry Nodes") as tree:
     ...
 ```
 
-The `tree_name` is the name of a geometry nodes modifier. If it doesn't exist, it will be created. However, it is recommended to create the geometry nodes first.
+The `tree_name` is the name of a geometry nodes modifier. If it doesn't exist, it will be created.
 
 > **Warning** when calling `tree(tree_name)`, ***all the nodes and links are erased***. Be sure not to open a tree with an existing valuable tree you don't want to loose.
 
+The tree can be created with the argument `group=True` when the generated tree is not to be used as a modifier:
 
-Within the scope of a Tree creation / closure, all nodes are created within this tree without need to make explicit reference to this tree.
+``` python
+
+with gn.Tree("Custom function", group=True):
+   ...
+
+```
+
+With the default option `group=False`, first sockets (input and output) are `Geometry`.
+
+Within the scope of a Tree creation / closure, all nodes are created within this tree without the need to make explicit reference to this tree.
 
 In the following example, the `grid` mesh is created in `tree` without making any explicit reference to it. 
 
 ```python
 with gn.Tree("Geometry Nodes') as tree:
+
     grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
 ```
+
 Fore more details, see [class Tree reference](Tree.md)
 
 ### Variables
@@ -95,7 +107,7 @@ The variables can be used for standard python computing:
 
 ```python
 # We need an angle of 30 degrees
-angle = pi / 6
+angle = math.pi / 6
 ```
 
 The variables can also be used as default values of node sockets:
@@ -114,9 +126,9 @@ In the created node, the input socket `radius` is initialized with `0.5`:
 
 In this example, the variables are initialized in the script. They are pure Python variables. To change them, one needs to modify the script and to rerun it.
 
-When creating a tree, we often need to change settings to see the effect on the geometry. This can be achieved by initializing a **geonodes** type rather that a python type.
+When creating a tree, we often need to change settings to see the effect on the geometry. This can be achieved by initializing a **geonodes** type rather than a python type.
 
-In the following script, we slightly modify our script by initializing `size` as a **geonodes** type. It is not anymore a Python `float` but a **geonodes** `Float` i.e. the output socket of a Geometry Node (in that case, the output socket of the input node 'Value'):
+In the following script, we slightly modify our code by initializing `size` as a **geonodes** type. It is not anymore a Python `float` but a **geonodes** `Float` i.e. the output socket of a Geometry Node (in that case, the output socket of the input node 'Value'):
 
 ```python
     count  = 100
@@ -129,7 +141,9 @@ The resulting tree is the following. The two `Vertices` input sockets are initia
 
 <img src="/docs/images/demo_1_grid_1.png" height = "200">
 
-> Note: remember that the nodes are deleted a each run of the script. Hence, if you change the value in a node, the change will be lost next time you will run the script. To avoid that, either your put the value you want in the script or your read the next section.
+> Note: remember that the nodes are deleted a each run of the script.
+> Hence, if you change the value in a node, the change will be lost next time you will run the script.
+> To avoid that, either your put the value you want in the script or your read the next section.
 
 ### Group inputs
 
@@ -163,7 +177,7 @@ In **geonodes**, these nodes are implemented as **constructors** (_class_ or _st
 
 ### Layouts
 
-Layouts are ways to make the trees clearer. Creating a layout makes use of the `with` syntax: any new node created in the scope of a `with` is included in the layout:
+Layouts are ways to make the trees clearer. Creating a layout is done in the context of `with` syntax: any new node created in the scope of a `with` is included in the layout:
 
 ```python
     with tree.layout("Computing the wave", color="dark_rose"):
@@ -225,7 +239,7 @@ The node 'Set Position' has 4 input sockets (Geometry, Selection, Position, Offs
 - Geometry : linked with the output socket grid
 - Selection : no link
 - Position : no link
-- Position : linked ot the output socket of a node 'Combine XYZ'
+- Offset : linked ot the output socket of a node 'Combine XYZ'
 
 This is illustrated here below:
 
@@ -233,7 +247,20 @@ This is illustrated here below:
 
 ### Domains
 
-But rather than using operations on geometry classes as above, the use of **domains** is better. In geometry nodes, domains are **points**, **faces**, **splines**, **edges** and **instances** which actually compose the geometry.
+Geometry domains are implemented as properties of the geometry classes:
+
+- Mesh:
+  - verts
+  - faces
+  - edges
+  - corners
+- Curve
+  - points
+  - splines
+- Points (cloud points)
+  - points
+- Instances
+  - insts
 
 Writing `grid.set_position()` means that you change the position of the grid.
 **But this is not what is done!**. In fact, you change the position of the **vertices** of the grid.
@@ -244,18 +271,24 @@ This is why, it is far more better to write:
 grid.verts.position += (0, 0, z)
 ```
 
-This explicitly tells that you change the position of the vertices of the mesh.
+#### Domains selection
 
-The domains can be selected to operate on part of the vertices:
+Operations on domains use an **Selection** input socket. This feature is implemented in two different ways:
 
-```python
+- As argument of the domain property:
 
-# Only one vertex on two will be changed
-grid.verts((grid.verts.index % 2).equal(0)).position += (0, 0, z)
+  ```python
+  # Only one vertex on two will be changed
 
-# Only the vertices between 5000 and 8000 will be changed
-grid.verts[5000:8000].position += (0, 0, z)
-```
+  grid.verts((grid.verts.index % 2).equal(0)).position += (0, 0, z)
+  ```
+
+- Using array index:
+
+  ```python
+  # Only the vertices between 5000 and 8000 will be changed
+  grid.verts[5000:8000].position += (0, 0, z)
+  ```
 
 ### Output geometry
 
