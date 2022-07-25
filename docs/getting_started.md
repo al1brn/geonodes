@@ -165,13 +165,13 @@ But what we want is to have a random selection of faces with a different color.
 The faces can be selected by "calling" them with a selection parameter.
 
 ``` python
-   icosphere.faces( random_selection ).faces = gn.Material("Blue")
+   icosphere.faces( random_selection ).material = gn.Material("Blue")
 ```
 
 A random selection can be generated using the `Random` constructor of class [Boolean](https://al1brn.github.io/geonodes/sockets/boolean.html):
 
 ``` python
-   icosphere.faces( Boolean.Random(probability=0.5) ).faces = gn.Material("Blue")
+   icosphere.faces( Boolean.Random(probability=0.5) ).material = gn.Material("Blue")
 ```
 
 This time, the blue material will overwrite only 50% of the red faces.
