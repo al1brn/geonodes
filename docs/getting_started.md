@@ -17,7 +17,7 @@ Install the version of **geonodes** compatible with the Blender version you use.
 
 ## Importing the module
 
-We suppose that all scripts starts with the following import instruction:
+We suppose that all scripts start with the following import instruction:
 
 ``` python
 import geonodes as gn
