@@ -127,11 +127,25 @@ The node parameter names is equal to the python Blender class representing the o
 The node input socket names are used as arguments when creating a node or calling a method based on a node.
 As for the output sockets, their names is the **snake_case** version of their Blender name.
 
+**Note:** Input sockets are _write only_ when output sockets are _read only_.
+Hence, input and output sockets can share the same name without ambiguity:
+
+``` python
+
+node = nodes.SubdivideMesh()
+
+node.mesh = my_geometry         # node input socket
+subdivided_geometry = node.mesh # node output socket
+
+```
+
 When several sockets share the same name, their are suffixed by their rank, starting from 0 as illustrated in the class Math constructor
 
 ```python
+
 class Math(Node):
     def __init__(self, value0=None, value1=None, value2=None, operation='ADD', label=None):
+
 ```
 
 The Math has between 1 and 3 visible nodes depending upon its operation.
