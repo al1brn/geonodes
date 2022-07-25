@@ -50,7 +50,7 @@ Nodes methods are **CamelCase** versions of their Blender name, but **removing t
 - Curve constructors
   - 'Curve Line' -> **Curve.Line**
   - 'Curve Circle' -> **Curve.Circle**
-  - 'Bezier Segment' -> **BezierSegment**
+  - 'Bezier Segment' -> **Curve.BezierSegment**
   - ...
 - Texture constructors:
   - 'Brick Texture' -> **Texture.Brick**
