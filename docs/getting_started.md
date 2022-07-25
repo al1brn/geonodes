@@ -150,7 +150,7 @@ We have now an icosphere which can be created with parameters exposed to the use
 
 Materials are properties of faces. The syntax will look like `mesh.faces.material = ...`.
 
-A material is instantiated with its name. Let's suppose that we have to existing materials named "Red" and "Blue".
+A material is instantiated with its name. Let's suppose that we have two existing materials named "Red" and "Blue".
 To assign the materials to our icosphere, we write:
 
 ``` python
