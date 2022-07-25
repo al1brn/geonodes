@@ -174,6 +174,93 @@ A random selection can be generated using the `Random` constructor of class [Boo
    icosphere.faces( Boolean.Random(probability=0.5) ).faces = gn.Material("Blue")
 ```
 
+This time, the blue material will overwrite only 50% of the red faces.
+
+Another way to reach this result is to use the material index:
+
+``` python
+   icosphere.faces.material = gn.Material("Red")
+   icosphere.faces.material = gn.Material("Blue")
+   
+   # Two materials have be added
+   # All faces have material index set to 1
+   # Let's change half of them back to 0
+   
+   icosphere.faces( Boolean.Random(propability=.5) ).material_index = 0
+```
+
+### Extrusion
+
+The `Extrude Mesh` node accepts a domain parameter to define what must be extruded. With **geonodes**, the 3 possibilities
+are written:
+
+``` python
+   mesh.faces.extrude()
+   mesh.edges.extrude()
+   mesh.verts.extrude()
+```
+
+We want to extrude faces, but only the blue faces:
+
+``` python
+   faces = icosphere.faces
+   faces(faces.material_index.equal(1)).extrude()
+```
+
+**Note:** `material_index.equal(1)` is used rather than `material_index == 1`. This late expression would give a python `bool`
+result rather than the expected **geonodes** `Boolean`.
+
+Alternatively, if you are not confident with the material indices, you can use the `material_selection` method:
+
+``` python
+   faces(faces.material_selection(gn.Material("Blue"))).extrude()
+```
+
+The extrusion itself can be controlled with the extrusion parameters:
+
+``` python
+   faces(faces.material_index.equal(1)).extrude(offset_scale=0.3)
+```
+
+### The full code
+
+
+``` python
+with gn.Tree("Icosphere tuto") as tree:
+
+   # Good practice: let's start with the tree inputs
+
+   radius = gn.Float.Input(1, "Radius", min_value=0.01, max_value=10, description="A reasonable radius for the sphere")
+   subs   = gn.Integer.Input(3, description="No limits: I trust you")
+   
+   # The icosphere
+   
+   icosphere = gn.Mesh.IcoSphere(radius=radius, subdivisions=subs)
+   
+   # The materials
+   
+   faces = icosphere.faces
+
+   faces.material = gn.Material("Red")
+   faces( Boolean.Random(propability=.5) ).material_index = 0
+
+   # Extrude the blue faces
+   
+   faces(faces.material_index.equal(1)).extrude(offset_scale=0.3)
+   
+   
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
