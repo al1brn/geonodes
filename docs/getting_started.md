@@ -56,16 +56,27 @@ with gn.Tree("Shading smooth") as tree:
   tree.og = geo           # or tree.output_geometry = geo
 ``` 
 
-### Using domains
+## Using domains
 
 Operation on geometries are often operations on domains properties. You will write a clearer code by making explicit
-on which domain you operate. For instance, shading a mesh is in reality shading the faces.
+on which domain you operate. For instance, shading a mesh is in reality a property of the mesh faces.
 
 A better code is:
 
 ``` python
-  geo.faces.set_shade_smooth()  # Node named 'Set Shade Smooth'
+  geo.faces.shade_smooth = True
 ``` 
+
+This time, the smooth shading is treated as a property of faces. As any property, `shade_smooth' can be set and it can also be get.
+
+Ib the code below, the variable `smoothed_faces` contains the values `True` or `False` for all the mesh faces,
+depending if they are smoothed or not.
+
+``` python
+  smoothed_faces = geo.faces.shade_smooth
+``` 
+
+
 
 
 
