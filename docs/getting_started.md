@@ -48,7 +48,7 @@ Let's build something more interesting with our input geometry. We will subdivid
 ``` python
 with gn.Tree("Shading smooth") as tree:
 
-  geo = tree.ig            # Let's get the input geometry (allegedly a mesh)
+  geo = tree.ig           # Let's get the input geometry (allegedly a mesh)
   
   geo.subdivide()         # Node named 'Subdivide Mesh' (Mesh is implicit and is not used to build the method name)
   geo.set_shade_smooth()  # Node named 'Set Shade Smooth'
