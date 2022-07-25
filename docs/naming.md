@@ -71,7 +71,7 @@ Instances methods are named with the **snake_version** of the node name, but **r
 
 ### Operation methods
 
-> Operations are implemented both as global functions ans as method of their _Data Socket_ class
+> Operations are implemented both as global functions and as method of their _Data Socket_ class
 
 ```python
     a = gn.Float(5.)
