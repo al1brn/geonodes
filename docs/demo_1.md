@@ -289,6 +289,14 @@ Operations on domains use a **Selection** input socket. This feature is implemen
   # Only the vertices between 5000 and 8000 will be changed
   grid.verts[5000:8000].position += (0, 0, z)
   ```
+  
+Both methods can be combined:
+
+  ```python
+  grid.verts((grid.verts.index % 2).equal(0))[5000:8000].position += (0, 0, z)
+  ```
+
+
 
 ### Output geometry
 
