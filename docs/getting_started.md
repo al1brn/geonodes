@@ -67,7 +67,7 @@ A better code will be:
   geo.faces.shade_smooth = True
 ``` 
 
-This time, the smooth shading is treated as a property of faces. As any property, `shade_smooth' can be set and it can also be get.
+This time, the smooth shading is treated as a property of faces. As any property, `shade_smooth` can be set and it can also be get.
 
 In the code below, the variable `smoothed_faces` contains the values `True` or `False` for all the mesh faces,
 depending if they are smoothed or not.
