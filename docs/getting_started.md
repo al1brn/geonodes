@@ -113,9 +113,9 @@ Let's create an icosphere, add two materials and set randomly the materials on t
 Once done, will extrude the faces with one particular material.
 
 To do that, we need to learn:
-- [How to create a geometry](#creating_geometries)
-- [Manipulating materials](#adding_materials)
-- [How to selectively change properties on domains](#selecting_faces)
+- [How to create a geometry](#creating-geometries)
+- [Manipulating materials](#adding-materials)
+- [How to selectively change properties on domains](#selecting-faces)
 
 ### Creating geometries
 
