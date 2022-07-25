@@ -186,7 +186,7 @@ Another way to reach this result is to use the material index:
    # All faces have material index set to 1
    # Let's change half of them back to 0
    
-   icosphere.faces( gn.Boolean.Random(propability=.5) ).material_index = 0
+   icosphere.faces( gn.Boolean.Random(probability=.5) ).material_index = 0
 ```
 
 ### Extrusion
@@ -242,7 +242,7 @@ with gn.Tree("Icosphere tuto") as tree:
    faces = icosphere.faces
 
    faces.material = gn.Material("Red")
-   faces( gn.Boolean.Random(propability=.5) ).material_index = 0
+   faces( gn.Boolean.Random(probability=.5) ).material_index = 0
 
    # Extrude the blue faces
    
