@@ -273,7 +273,7 @@ grid.verts.position += (0, 0, z)
 
 #### Domains selection
 
-Operations on domains use an **Selection** input socket. This feature is implemented in two different ways:
+Operations on domains use a **Selection** input socket. This feature is implemented in two different ways:
 
 - As argument of the domain property:
 
