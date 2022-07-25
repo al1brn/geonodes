@@ -101,7 +101,7 @@ The mehod name is the **lower case** version of the operation value:
 Some values are the same for several nodes, in that case, the **global** functions are prefixed with the lower case version of the class name:
 
 - 'Vector Math':
-  - 'ADD' -> **gn.ector_add** and **Vector.add**
+  - 'ADD' -> **gn.vector_add** and **Vector.add**
   - 'MULTIPLY' -> **gn.vector_multiply** and **Vector.multiply**
   - 'SUBTRACT' -> **gn_vector_subtract** and **Vector.subtract**
   - 'DOT' -> **gn.dot** and **Vector.dot** (their is not ambiguity with 'Math' node)
