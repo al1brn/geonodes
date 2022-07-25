@@ -113,8 +113,9 @@ Let's create an icosphere, add two materials and set randomly the materials on t
 Once done, will extrude the faces with one particular material.
 
 To do that, we need to learn:
-- How to create a geometry
-- How the selectively change properties on domains
+- [How to create a geometry](#creating_geometries)
+- [Manipulating materials](#adding_materials)
+- How to selectively change properties on domains
 - And perhaps how to created randomness
 
 ### Creating geometries
@@ -144,8 +145,16 @@ You may want to give more control on these parameters:
    icosphere = gn.Mesh.IcoSphere(radius=radius, subdivisions=subs)
 ```
 
+We have now an icosphere which can be created with parameters exposed to the user.
 
+### Adding materials
 
+Materials, as Objects, Collections, Textures and Images can be addressed by their name rather than by their corresponding
+Blender instances.
+
+``` python
+
+   icosphere.add_
 
 
 
