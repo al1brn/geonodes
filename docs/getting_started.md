@@ -120,7 +120,7 @@ To do that, we need to learn:
 ### Creating geometries
 
 Geometries are created by calling constructors of geometry classes. These constructors correspond to the menus **Mesh Primitives**
-and **Curve Primitives** of the new node menu in Blender.
+and **Curve Primitives** of the `Add node` menu in Blender.
 
 The names of the constructors are build as CamelCase version of their node names.
 
