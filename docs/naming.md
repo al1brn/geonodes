@@ -66,7 +66,7 @@ Instances methods are named with the **snake_version** of the node name, but **r
 - 'Set Position' -> **geometry.set_position**
 - 'Curve to Mesh' -> **curve.to_mesh**
 - 'Realize Instances' -> **instances.realize**
-- 'Rotate Instances' -> **rotate**
+- 'Rotate Instances' -> **instances.insts.rotate**
 - ...
 
 ### Operation methods
