@@ -58,10 +58,10 @@ with gn.Tree("Shading smooth") as tree:
 
 ## Using domains
 
-Operation on geometries are often operations on domains properties. You will write a clearer code by making explicit
-on which domain you operate. For instance, shading a mesh is in reality a property of the mesh faces.
+Operations on geometries are often operations on domains properties. You will write a clearer code by making explicit
+on which domain you operate. For instance, shading a mesh is in reality setting a property of the mesh faces.
 
-A better code is:
+A better code will be:
 
 ``` python
   geo.faces.shade_smooth = True
@@ -69,13 +69,23 @@ A better code is:
 
 This time, the smooth shading is treated as a property of faces. As any property, `shade_smooth' can be set and it can also be get.
 
-Ib the code below, the variable `smoothed_faces` contains the values `True` or `False` for all the mesh faces,
+In the code below, the variable `smoothed_faces` contains the values `True` or `False` for all the mesh faces,
 depending if they are smoothed or not.
 
 ``` python
   smoothed_faces = geo.faces.shade_smooth
-``` 
+```
 
+## User inputs
+
+In Geometry Nodes, user parameters are group input sockets.
+These inputs can be created with the class constructor `Input` available in all the **geonodes** classes, for instance:
+
+``` python
+count  = gn.Integer(10, "Count", min_value=2)
+factor = gn.Float(0.5, "Factor", min_value=0, max_value=1)
+object = gn.Object.Input("Other geometry")
+```
 
 
 
