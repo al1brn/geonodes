@@ -82,10 +82,35 @@ In Geometry Nodes, user parameters are group input sockets.
 These inputs can be created with the class constructor `Input` available in all the **geonodes** classes, for instance:
 
 ``` python
-count  = gn.Integer(10, "Count", min_value=2)
-factor = gn.Float(0.5, "Factor", min_value=0, max_value=1)
-object = gn.Object.Input("Other geometry")
+   object = gn.Object.Input("Other geometry")
+   count  = gn.Integer.Input(10, "Count", min_value=2)
+   factor = gn.Float.Input(0.5, "Factor", min_value=0, max_value=1, description="Use this value to control the modifier effect")
 ```
+
+The `input` constructor get a  socket name as parameter. For values such as Integer or Float, it takes the default value as first
+parameter. It can also take `min_value`, `max_value` and `description` parameter for better control.
+
+See [API reference](https://al1brn.github.io/geonodes/).
+
+## Tree outputs
+
+As seen above, the resulting geometry can be output with:
+
+``` python
+   tree.output_geometry = geo # og alias can be also used
+```
+
+To output other values, use the method `to_output` available in all classes:
+
+``` python
+   v = mesh.verts.position   # Position of vertices
+   v.to_output("Location")   # Location output sockets is created. Its type is Vector 
+```
+
+
+
+
+
 
 
 
