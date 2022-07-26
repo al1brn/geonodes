@@ -20,7 +20,7 @@ You keep the full power of Blender geometry nodes but with the elegance of Pytho
 - [API reference](https://al1brn.github.io/geonodes/)
 - Tutorials by examples:
   - [Getting started](docs/getting_started.md) with the "Hello world" script
-  - [Building and arrow](docs/arrow.md)
+  - [Building an arrow](docs/arrow.md)
   - [4D project](4d/4d%20project.md): a"big" project using **geonodes** to create 4D geometry modifiers.
 
 ## Better a demo than long words
