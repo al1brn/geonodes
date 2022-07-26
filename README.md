@@ -131,7 +131,7 @@ In geometry nodes, attributes refer to [domains](https://al1brn.github.io/geonod
   - [points](https://al1brn.github.io/geonodes/domains/controlpoint.html)
   - [splines](https://al1brn.github.io/geonodes/domains/spline.html)
 - Points cloud
-  - [points](https://al1brn.github.io/geonodes/domains/point.html)
+  - [points](https://al1brn.github.io/geonodes/domains/cloudpoint.html)
 - Instances
   - [insts](https://al1brn.github.io/geonodes/domains/instance.html)
 
