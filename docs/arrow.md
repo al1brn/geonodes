@@ -269,7 +269,7 @@ The final code includes a smoothing option.
 
 **Note:** One may want to add a _Subdivision surface_ modifier to the arrow.
 To get a good result, we must add a crease property equal to 1 to "horizontal" edges.
-But at the time this tuto is written, their is a known bug in Blender which crashed when you try to set the attribute named "crease".
+But at the time this tuto is written, their is a known bug in Blender [T99310](https://developer.blender.org/T99310) which crashes when you try to set the attribute named "crease".
 The code is given by using "waiting" name rather than "crease".
 
 ``` python
