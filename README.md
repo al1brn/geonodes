@@ -111,7 +111,7 @@ curve.splines[2].tilt = 1
 ### Geometry classes
 
 The geometry classes are:
-- [Geometry](docs/sockets/Geometry.md) (root class)
+- [Geometry]([docs/sockets/Geometry.md](https://al1brn.github.io/geonodes/sockets/geometry.html)) (root class)
 - [Mesh](docs/sockets/Mesh.md)
 - [Curve](docs/sockets/Curve.md)
 - [Points](docs/sockets/Points.md)
