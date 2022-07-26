@@ -90,10 +90,10 @@ The shaft length was computed above, it is equal to `z1`. Hence, the shaft is bu
 ```
 
 The extrude method returns the extrudes edges and the side faces. The faces are useless for now.
-In the final version will set material to the faces and we will collect the faces.
+In the final version we will set material to the faces and we will collect the faces.
 
 The next extrusion step is to extrude the edges downwards and outwards.
-It the schema above, we are a points `Q'` and want to extrude to point `Q''`.
+It the scheme above, we are at points `Q'` and want to extrude to point `Q''`.
 The direction of extrusion is given by the vector `QQ'`.
 The amount of extrusion is given by the maths.
 
