@@ -44,7 +44,7 @@ class Object(dsock.Object):
     # ----------------------------------------------------------------------------------------------------
     # Properties
 
-    @property
+    #@property
     def info(self, as_instance=None, transform_space='ORIGINAL'):
         """ Geometry node [*Object Info*].
         
@@ -70,11 +70,15 @@ class Object(dsock.Object):
                 
         """
 
+        return nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
+        
+        # OLD 
+        
         if self.info_ is None:
             self.info_ = nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
         return self.info_
 
-    @property
+    #@property
     def location(self, as_instance=None, transform_space='ORIGINAL'):
         """ Geometry node [*Object Info*].
         
@@ -99,6 +103,10 @@ class Object(dsock.Object):
                 nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.location")
                 
         """
+        
+        return self.info(as_instance=as_instance, transform_space=transform_space).location
+    
+        # OLD
 
         return self.info.location
 
@@ -128,6 +136,10 @@ class Object(dsock.Object):
                 
         """
 
+        return self.info(as_instance=as_instance, transform_space=transform_space).rotation
+    
+        # OLD
+
         return self.info.rotation
 
     @property
@@ -155,6 +167,10 @@ class Object(dsock.Object):
                 nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.scale")
                 
         """
+        
+        return self.info(as_instance=as_instance, transform_space=transform_space).scale
+    
+        # OLD
 
         return self.info.scale
 
@@ -183,7 +199,11 @@ class Object(dsock.Object):
                 nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.geometry")
                 
         """
-
+        
+        return self.info(as_instance=as_instance, transform_space=transform_space).geometry
+    
+        # OLD
+    
         return self.info.geometry
 
 
