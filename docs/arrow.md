@@ -165,7 +165,7 @@ with gn.Tree("Arrow") as tree:
 
 ## Edges and vertices position
 
-The arrow looks like but a problem appearing with low number of vertices: the vertices don't join at the top of the arrowhead.
+The arrow looks good but a problem appearing with low number of vertices: the vertices don't join at the top of the arrowhead.
 For instance, with 5 vertices, the arrow is given below:
 
 <img src="images/arrow_2.png" width="600" class="center">
