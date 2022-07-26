@@ -245,7 +245,7 @@ Material is a property of faces, then we modify the code to:
 We want to orient our arrow. The orientation can be either the copy of the orientation of a reference object,
 or the tracking of a target object.
 
-We need to add object plus a Boolean option to indicate how to use this object:
+We need to add an object plus a Boolean option to indicate how to use this object:
 
 ``` python
     obj       = gn.Object.Input("Orientation")
