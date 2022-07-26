@@ -100,13 +100,13 @@ The amount of extrusion is given by the maths.
 **Note:** Points `Q'` and  `Q''` are multiple (points forming the top circle of the shaft) when the point `Q` is unique.
 
 ``` python
-top, _ = top.extrude(offset=top.position - (0, 0, z2), offset_scale=s - 1)
+    top, _ = top.extrude(offset=top.position - (0, 0, z2), offset_scale=s - 1)
 ```
 
 To finish the arrow, we simply extrude from the current position to the top of the arrow:
 
 ``` python
-top, _ = top.extrude(offset=(0, 0, length) - top.position)
+    top, _ = top.extrude(offset=(0, 0, length) - top.position)
 ```
 
 ## First version
@@ -134,14 +134,21 @@ with tree.layout("Maths stuff..."):
 
     z1 = z0 + d
     z2 = z0 + k*h*s
-    
+
+    # -----Extrusion
+
     arrow = gn.Mesh.Circle(vertices=vertices, radius=r, fill_type='NGON')
     
     top, _ = arrow.edges.extrude(offset=(0, 0, 1), offset_scale=z1)
-
-
-
     
+    top, _ = top.extrude(offset=top.position - (0, 0, z2), offset_scale=s - 1)
+
+    top, _ = top.extrude(offset=(0, 0, length) - top.position)
+
+    # ----- Output the arrow
+    
+    tree.og = arrows
+
 ```
 
 
