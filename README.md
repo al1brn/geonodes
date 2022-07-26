@@ -156,12 +156,12 @@ when Points and Instances have only one domain each, respectively points and ins
 ### Values
 
 To manipulate geometry, the available classes are:
-- [Boolean](docs/sockets/Boolean.md)
-- [Integer](docs/sockets/Integer.md)
-- [Float](docs/sockets/Float.md)
-- [Vector](docs/sockets/Vector.md)
-- [Color](docs/sockets/Color.md)
-- [String](docs/sockets/String.md)
+- [Boolean](https://al1brn.github.io/geonodes/sockets/boolean.html)
+- [Integer](https://al1brn.github.io/geonodes/sockets/integer.html)
+- [Float](https://al1brn.github.io/geonodes/sockets/float.html)
+- [Vector](https://al1brn.github.io/geonodes/sockets/vector.html)
+- [Color](https://al1brn.github.io/geonodes/sockets/vector.html)
+- [String](https://al1brn.github.io/geonodes/sockets/string.html)
 
 These values are used as arguments of geometry and domain classes. With the notable exception of **Booleans**,
 the values can be manipulated with python operators:
@@ -223,11 +223,11 @@ e = -a         # not a
 
 Other data are available through the following classes:
 
-  - [Collection](docs/sockets/Boolean.md)
-  - [Object](docs/sockets/Object.md)
-  - [Image](docs/sockets/Image.md)
-  - [Texture](docs/sockets/Texture.md)
-  - [Material](docs/sockets/Material.md)
+  - [Collection](https://al1brn.github.io/geonodes/sockets/collection.html)
+  - [Object](https://al1brn.github.io/geonodes/sockets/object.html)
+  - [Image](https://al1brn.github.io/geonodes/sockets/image.html)
+  - [Texture](https://al1brn.github.io/geonodes/sockets/texture.html)
+  - [Material](https://al1brn.github.io/geonodes/sockets/material.html)
 
 ## Naming
 
