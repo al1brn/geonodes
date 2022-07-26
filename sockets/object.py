@@ -110,7 +110,7 @@ class Object(dsock.Object):
 
         return self.info.location
 
-    @property
+    #@property
     def rotation(self, as_instance=None, transform_space='ORIGINAL'):
         """ Geometry node [*Object Info*].
         
@@ -142,7 +142,7 @@ class Object(dsock.Object):
 
         return self.info.rotation
 
-    @property
+    #@property
     def scale(self, as_instance=None, transform_space='ORIGINAL'):
         """ Geometry node [*Object Info*].
         
@@ -174,7 +174,7 @@ class Object(dsock.Object):
 
         return self.info.scale
 
-    @property
+    #@property
     def geometry(self, as_instance=None, transform_space='ORIGINAL'):
         """ Geometry node [*Object Info*].
         
