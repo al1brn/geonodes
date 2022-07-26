@@ -207,7 +207,7 @@ And then:
 
 We want to apply materials: one for the shaft and one for the rest.
 
-Material is a property of faces, the we modify the code to:
+Material is a property of faces, then we modify the code to:
 
 - Get the materials as input
 - Get the extruded faces
