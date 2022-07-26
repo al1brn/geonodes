@@ -21,4 +21,8 @@ The parameters to create are the following:
 | Length           | Float          | Total length of the arrow, including the arrowhead               |
 | Radius           | Float          | Radius shaft                                                     |
 | Head size        | Float          | Size of the arrow head, expressed as a factor applied to radius  |
+| Head angle       | Float (Angle)  | Angle of the arrowhead peak                                      |
+| Vertices         | Integer        | Circular resolution expressed inf number of vertices             |
+
+
 
