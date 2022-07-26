@@ -50,6 +50,52 @@ Some maths are required to build the arrow according the parameters.
 
 <img src="images/Arrow_comp.png" width="600" class="center">
 
+The corresponding python code is given here after:
+
+``` python
+
+with tree.layout("Maths stuff..."):
+
+    # ----- Arrowhead radius from the shaft radius
+
+    rh = r*s
+
+    # ----- Arrowhead height from the angle
+
+    tg = gn.tan(angle)
+    hh = rh/tg
+    z0 = length - hh
+
+    # ----- Recess computation
+
+    h  = r/tg
+    d  = k*h*(s - 1)
+
+    z1 = z0 + d
+    z2 = z0 + k*h*s
+```
+
+## Building by extrusion
+
+The starting point is a disk:
+
+``` python
+arrow = gn.Mesh.Circle(vertices=vertices, radius=r, fill_type='NGON')
+```
+
+The shaft length was computed above, it is equal to `z1`. Hence, the shaft is built by extruding the disk edges up to z1:
+
+``` python
+top, _ = arrow.edges.extrude(offset=(0, 0, 1), offset_scale=z1)
+```
+
+The extrude method returns the extrudes edges and the side faces. The faces are useless for now.
+In the final version will set material to the faces and we will collect the faces.
+
+The next extrusion step is to extrude the edges downwards and outwards. 
+
+
+
 
 
 
