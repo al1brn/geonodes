@@ -29,6 +29,7 @@ We will add complementatry parameters later on but for the moment, these paramet
 The good practice is to start by declaring the parameters at the begining of the tree.
 
 ``` python
+import numpy as np
 import geonodes as gn
 
   with gn.Tree("Arrow") as tree:
@@ -113,7 +114,7 @@ To finish the arrow, we simply extrude from the current position to the top of t
 The first version of our arrow is then the following:
 
 ``` python
-
+import numpy as np
 import geonodes as gn
 
 with gn.Tree("Arrow") as tree:
@@ -158,7 +159,7 @@ with gn.Tree("Arrow") as tree:
 
     # ----- Output the arrow
     
-    tree.og = arrows
+    tree.og = arrow
 
 ```
 
