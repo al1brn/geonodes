@@ -19,7 +19,7 @@ Then, the resulting fourth vector along W axis is ignored.
 
 ### Input sockets
 
-None (angles read from the object named *Projection*.
+None (angles read from the object named *Projection*).
 
 ### Output sockets
 
