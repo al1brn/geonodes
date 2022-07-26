@@ -119,13 +119,21 @@ The geometry classes are:
 
 ### Domains
 
-In geometry nodes, attributes refer to domains such as Point, Corner, Face, Spline... 
+In geometry nodes, attributes refer to [domains](https://al1brn.github.io/geonodes/domains.html) such as Point, Corner, Face, Spline... 
 
-**geonodes** implement domains as properties of geometry classes.
-- Mesh: **verts**, **faces**, **edges**, **corners**
-- Curve : **points**, **splines**
-- Points : **points**
-- Instances : **insts**
+**geonodes** implement [domains](https://al1brn.github.io/geonodes/domains.html) as properties of geometry classes.
+- Mesh
+  - [verts](https://al1brn.github.io/geonodes/domains/vertex.html)
+  - [faces](https://al1brn.github.io/geonodes/domains/face.html)
+  - [edges](https://al1brn.github.io/geonodes/domains/edge.html)
+  - [corners](https://al1brn.github.io/geonodes/domains/corner.html)
+- Curve
+  - [points](https://al1brn.github.io/geonodes/domains/controlpoint.html)
+  - [splines](https://al1brn.github.io/geonodes/domains/spline.html)
+- Points cloud
+  - [points](https://al1brn.github.io/geonodes/domains/point.html)
+- Instances
+  - [insts](https://al1brn.github.io/geonodes/domains/instance.html)
 
 Attributes are properties or domain properties, for instances:
 
