@@ -160,7 +160,7 @@ To manipulate geometry, the available classes are:
 - [Integer](https://al1brn.github.io/geonodes/sockets/integer.html)
 - [Float](https://al1brn.github.io/geonodes/sockets/float.html)
 - [Vector](https://al1brn.github.io/geonodes/sockets/vector.html)
-- [Color](https://al1brn.github.io/geonodes/sockets/vector.html)
+- [Color](https://al1brn.github.io/geonodes/sockets/color.html)
 - [String](https://al1brn.github.io/geonodes/sockets/string.html)
 
 These values are used as arguments of geometry and domain classes. With the notable exception of **Booleans**,
