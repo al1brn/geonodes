@@ -29,7 +29,6 @@ We will add complementatry parameters later on but for the moment, these paramet
 The good practice is to start by declaring the parameters at the begining of the tree.
 
 ``` python
-import numpy as np
 import geonodes as gn
 
   with gn.Tree("Arrow") as tree:
@@ -54,25 +53,25 @@ The corresponding python code is given here after:
 
 ``` python
 
-with tree.layout("Maths stuff..."):
+    with tree.layout("Maths stuff..."):
 
-    # ----- Arrowhead radius from the shaft radius
+        # ----- Arrowhead radius from the shaft radius
 
-    rh = r*s
+        rh = r*s
 
-    # ----- Arrowhead height from the angle
+        # ----- Arrowhead height from the angle
 
-    tg = gn.tan(angle)
-    hh = rh/tg
-    z0 = length - hh
+        tg = gn.tan(angle)
+        hh = rh/tg
+        z0 = length - hh
 
-    # ----- Recess computation
+        # ----- Recess computation
 
-    h  = r/tg
-    d  = k*h*(s - 1)
+        h  = r/tg
+        d  = k*h*(s - 1)
 
-    z1 = z0 + d
-    z2 = z0 + k*h*s
+        z1 = z0 + d
+        z2 = z0 + k*h*s
 ```
 
 ## Building by extrusion
@@ -115,25 +114,37 @@ The first version of our arrow is then the following:
 
 ``` python
 
-with tree.layout("Maths stuff..."):
+import geonodes as gn
 
-    # ----- Arrowhead radius from the shaft radius
+with gn.Tree("Arrow") as tree:
 
-    rh = r*s
+    length    = gn.Float.Input(1, "Length", min_value=0)
+    r         = gn.Float.Input(0.1, "Radius", min_value=0.001)
+    s         = gn.Float.Input(2, "Head size", min_value=1.001)
+    angle     = gn.Float.Angle(np.radians(20), "Angle", min_value=np.radians(10), max_value=0.999*gn.pi/2)
+    k         = gn.Float.Input(0.5, "Recess", min_value=0., max_value=0.99)
+    vertices  = gn.Integer.Input(12, "Vertices", min_value=3)
 
-    # ----- Arrowhead height from the angle
 
-    tg = gn.tan(angle)
-    hh = rh/tg
-    z0 = length - hh
+    with tree.layout("Maths stuff..."):
 
-    # ----- Recess computation
+        # ----- Arrowhead radius from the shaft radius
 
-    h  = r/tg
-    d  = k*h*(s - 1)
+        rh = r*s
 
-    z1 = z0 + d
-    z2 = z0 + k*h*s
+        # ----- Arrowhead height from the angle
+
+        tg = gn.tan(angle)
+        hh = rh/tg
+        z0 = length - hh
+
+        # ----- Recess computation
+
+        h  = r/tg
+        d  = k*h*(s - 1)
+
+        z1 = z0 + d
+        z2 = z0 + k*h*s
 
     # -----Extrusion
 
