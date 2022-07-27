@@ -229,3 +229,72 @@ Returns:
   
 getter: :class:`~geonodes.nodes.nodes.HandleTypeSelection`
 
+
+
+## parameter
+
+Spline parameter attribute
+
+Returns:
+  Node SplineParameter
+  
+Output sockets:
+- factor : Float
+- length : Float
+- index : Integer
+  
+getter: :class:`~geonodes.nodes.nodes.SplineParameter`
+setter: read only
+
+
+
+## parameter_factor
+
+Parameter factor attribute
+
+Returns:
+  Float: factor socket of parameter
+  
+getter: :class:`~geonodes.nodes.nodes.SplineParameter`
+setter: read only
+
+
+
+## parameter_length
+
+Parameter length attribute
+
+Returns:
+  Float: length socket of parameter
+  
+getter: :class:`~geonodes.nodes.nodes.SplineParameter`
+setter: read only
+
+
+
+## parameter_index
+
+Parameter factor attribute
+
+Returns:
+  Integer: index socket of parameter
+  
+getter: :class:`~geonodes.nodes.nodes.SplineParameter`
+setter: read only
+
+
+
+## delete
+
+Delete points
+
+Node :class:`~geonodes.nodes.nodes.DeleteGeometry`
+
+Returns:
+  self
+  
+.. code-block:: python
+
+  curve.points(...).delete()
+  
+  

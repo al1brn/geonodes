@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-07-22
+Created on 2022-07-27
 @author: Generated from generator module
 Blender version: 3.2.0
 """
@@ -25,186 +25,6 @@ class Object(dsock.Object):
     def copy(self):
 
         return Object(self)
-
-
-    def reset_properties(self):
-
-        super().reset_properties()
-
-        self.info_ = None
-
-        self.location_ = None
-
-        self.rotation_ = None
-
-        self.scale_ = None
-
-        self.geometry_ = None
-
-    # ----------------------------------------------------------------------------------------------------
-    # Properties
-
-    #@property
-    def info(self, as_instance=None, transform_space='ORIGINAL'):
-        """ Geometry node [*Object Info*].
-        
-        
-            Args:
-                as_instance: Boolean
-                transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
-                
-            Returns:
-                Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-                
-            **Node creation**
-            
-            Node :class:`~geonodes.nodes.nodes.ObjectInfo`
-            
-            
-            .. blid:: GeometryNodeObjectInfo
-            
-            .. code-block:: python
-            
-                from geonodes import nodes
-                nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
-                
-        """
-
-        return nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
-        
-        # OLD 
-        
-        if self.info_ is None:
-            self.info_ = nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.info")
-        return self.info_
-
-    #@property
-    def location(self, as_instance=None, transform_space='ORIGINAL'):
-        """ Geometry node [*Object Info*].
-        
-        
-            Args:
-                as_instance: Boolean
-                transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
-                
-            Returns:
-                Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-                
-            **Node creation**
-            
-            Node :class:`~geonodes.nodes.nodes.ObjectInfo`
-            
-            
-            .. blid:: GeometryNodeObjectInfo
-            
-            .. code-block:: python
-            
-                from geonodes import nodes
-                nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.location")
-                
-        """
-        
-        return self.info(as_instance=as_instance, transform_space=transform_space).location
-    
-        # OLD
-
-        return self.info.location
-
-    #@property
-    def rotation(self, as_instance=None, transform_space='ORIGINAL'):
-        """ Geometry node [*Object Info*].
-        
-        
-            Args:
-                as_instance: Boolean
-                transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
-                
-            Returns:
-                Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-                
-            **Node creation**
-            
-            Node :class:`~geonodes.nodes.nodes.ObjectInfo`
-            
-            
-            .. blid:: GeometryNodeObjectInfo
-            
-            .. code-block:: python
-            
-                from geonodes import nodes
-                nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.rotation")
-                
-        """
-
-        return self.info(as_instance=as_instance, transform_space=transform_space).rotation
-    
-        # OLD
-
-        return self.info.rotation
-
-    #@property
-    def scale(self, as_instance=None, transform_space='ORIGINAL'):
-        """ Geometry node [*Object Info*].
-        
-        
-            Args:
-                as_instance: Boolean
-                transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
-                
-            Returns:
-                Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-                
-            **Node creation**
-            
-            Node :class:`~geonodes.nodes.nodes.ObjectInfo`
-            
-            
-            .. blid:: GeometryNodeObjectInfo
-            
-            .. code-block:: python
-            
-                from geonodes import nodes
-                nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.scale")
-                
-        """
-        
-        return self.info(as_instance=as_instance, transform_space=transform_space).scale
-    
-        # OLD
-
-        return self.info.scale
-
-    #@property
-    def geometry(self, as_instance=None, transform_space='ORIGINAL'):
-        """ Geometry node [*Object Info*].
-        
-        
-            Args:
-                as_instance: Boolean
-                transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
-                
-            Returns:
-                Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
-                
-            **Node creation**
-            
-            Node :class:`~geonodes.nodes.nodes.ObjectInfo`
-            
-            
-            .. blid:: GeometryNodeObjectInfo
-            
-            .. code-block:: python
-            
-                from geonodes import nodes
-                nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=f"{self.node_chain_label}.geometry")
-                
-        """
-        
-        return self.info(as_instance=as_instance, transform_space=transform_space).geometry
-    
-        # OLD
-    
-        return self.info.geometry
 
 
     # ----------------------------------------------------------------------------------------------------
@@ -239,5 +59,150 @@ class Object(dsock.Object):
         """
 
         return nodes.Switch(false=self, switch=switch, true=true, input_type='OBJECT', label=node_label, node_color=node_color).output
+
+    def info(self, as_instance=None, transform_space='ORIGINAL', node_label = None, node_color = None):
+        """ Geometry node [*Object Info*].
+        
+        
+            Args:
+                as_instance: Boolean
+                transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+                
+            **Node creation**
+            
+            Node :class:`~geonodes.nodes.nodes.ObjectInfo`
+            
+            
+            .. blid:: GeometryNodeObjectInfo
+            
+            .. code-block:: python
+            
+                from geonodes import nodes
+                nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=node_label, node_color=node_color)
+                
+        """
+
+        return nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=node_label, node_color=node_color)
+
+    def location(self, as_instance=None, transform_space='ORIGINAL', node_label = None, node_color = None):
+        """ Geometry node [*Object Info*].
+        
+        
+            Args:
+                as_instance: Boolean
+                transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                location in Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+                
+            **Node creation**
+            
+            Node :class:`~geonodes.nodes.nodes.ObjectInfo`
+            
+            
+            .. blid:: GeometryNodeObjectInfo
+            
+            .. code-block:: python
+            
+                from geonodes import nodes
+                nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=node_label, node_color=node_color).location
+                
+        """
+
+        return nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=node_label, node_color=node_color).location
+
+    def rotation(self, as_instance=None, transform_space='ORIGINAL', node_label = None, node_color = None):
+        """ Geometry node [*Object Info*].
+        
+        
+            Args:
+                as_instance: Boolean
+                transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                rotation in Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+                
+            **Node creation**
+            
+            Node :class:`~geonodes.nodes.nodes.ObjectInfo`
+            
+            
+            .. blid:: GeometryNodeObjectInfo
+            
+            .. code-block:: python
+            
+                from geonodes import nodes
+                nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=node_label, node_color=node_color).rotation
+                
+        """
+
+        return nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=node_label, node_color=node_color).rotation
+
+    def scale(self, as_instance=None, transform_space='ORIGINAL', node_label = None, node_color = None):
+        """ Geometry node [*Object Info*].
+        
+        
+            Args:
+                as_instance: Boolean
+                transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                scale in Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+                
+            **Node creation**
+            
+            Node :class:`~geonodes.nodes.nodes.ObjectInfo`
+            
+            
+            .. blid:: GeometryNodeObjectInfo
+            
+            .. code-block:: python
+            
+                from geonodes import nodes
+                nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=node_label, node_color=node_color).scale
+                
+        """
+
+        return nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=node_label, node_color=node_color).scale
+
+    def geometry(self, as_instance=None, transform_space='ORIGINAL', node_label = None, node_color = None):
+        """ Geometry node [*Object Info*].
+        
+        
+            Args:
+                as_instance: Boolean
+                transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                geometry in Sockets [location (Vector), rotation (Vector), scale (Vector), geometry (Geometry)]
+                
+            **Node creation**
+            
+            Node :class:`~geonodes.nodes.nodes.ObjectInfo`
+            
+            
+            .. blid:: GeometryNodeObjectInfo
+            
+            .. code-block:: python
+            
+                from geonodes import nodes
+                nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=node_label, node_color=node_color).geometry
+                
+        """
+
+        return nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space, label=node_label, node_color=node_color).geometry
 
 

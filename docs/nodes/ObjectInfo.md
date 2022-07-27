@@ -44,9 +44,9 @@ node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL
 > Data socket classes implementing this node.
   
   
-- [Object](/docs/sockets/Object.md).[geometry](/docs/sockets/Object.md#geometry) : Property
-- [Object](/docs/sockets/Object.md).[info](/docs/sockets/Object.md#info) : Property
-- [Object](/docs/sockets/Object.md).[location](/docs/sockets/Object.md#location) : Property
-- [Object](/docs/sockets/Object.md).[rotation](/docs/sockets/Object.md#rotation) : Property
-- [Object](/docs/sockets/Object.md).[scale](/docs/sockets/Object.md#scale) : Property
+- [Object](/docs/sockets/Object.md).[geometry](/docs/sockets/Object.md#geometry) : Method
+- [Object](/docs/sockets/Object.md).[info](/docs/sockets/Object.md#info) : Method
+- [Object](/docs/sockets/Object.md).[location](/docs/sockets/Object.md#location) : Method
+- [Object](/docs/sockets/Object.md).[rotation](/docs/sockets/Object.md#rotation) : Method
+- [Object](/docs/sockets/Object.md).[scale](/docs/sockets/Object.md#scale) : Method
   
