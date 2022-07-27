@@ -18,7 +18,10 @@ You keep the full power of Blender geometry nodes but with the elegance of Pytho
 - [Installation](#installation)
 - [Documentation](#documentation)
 - [API reference](https://al1brn.github.io/geonodes/)
-- [4D project](4d/4d%20project.md): a comprehensive project using **geonodes** to create 4D geometry modifiers.
+- Tutorials by examples:
+  - [Getting started](docs/getting_started.md) with the "Hello world" script
+  - [Building an arrow](docs/arrow.md)
+  - [4D project](4d/4d%20project.md): a"big" project using **geonodes** to create 4D geometry modifiers.
 
 ## Better a demo than long words
 
@@ -88,7 +91,7 @@ import geonodes as gn
 
 ## Documentation
 
-Uses [index](docs/index.md) to gain access to the list of availables classes.
+Uses [index](https://al1brn.github.io/geonodes/) to gain access to the list of availables classes.
 
 ## Scripting geometry
 
@@ -108,22 +111,29 @@ curve.splines[2].tilt = 1
 ### Geometry classes
 
 The geometry classes are:
-- [Geometry](docs/sockets/Geometry.md) (root class)
-- [Mesh](docs/sockets/Mesh.md)
-- [Curve](docs/sockets/Curve.md)
-- [Points](docs/sockets/Points.md)
-- [Instances](docs/sockets/Instances.md)
-- [Volume](docs/sockets/Volume.md)
+- [Mesh](https://al1brn.github.io/geonodes/sockets/mesh.html)
+- [Curve](https://al1brn.github.io/geonodes/sockets/curve.html)
+- [Points](https://al1brn.github.io/geonodes/sockets/points.html)
+- [Instances](https://al1brn.github.io/geonodes/sockets/instances.html)
+- [Volume](https://al1brn.github.io/geonodes/sockets/volume.html)
 
 ### Domains
 
-In geometry nodes, attributes refer to domains such as Point, Corner, Face, Spline... 
+In geometry nodes, attributes refer to [domains](https://al1brn.github.io/geonodes/domains.html) such as Point, Corner, Face, Spline... 
 
-**geonodes** implement domains as properties of geometry classes.
-- Mesh: **verts**, **faces**, **edges**, **corners**
-- Curve : **points**, **splines**
-- Points : **points**
-- Instances : **insts**
+**geonodes** implement [domains](https://al1brn.github.io/geonodes/domains.html) as properties of geometry classes.
+- Mesh
+  - [verts](https://al1brn.github.io/geonodes/domains/vertex.html)
+  - [faces](https://al1brn.github.io/geonodes/domains/face.html)
+  - [edges](https://al1brn.github.io/geonodes/domains/edge.html)
+  - [corners](https://al1brn.github.io/geonodes/domains/corner.html)
+- Curve
+  - [points](https://al1brn.github.io/geonodes/domains/controlpoint.html)
+  - [splines](https://al1brn.github.io/geonodes/domains/spline.html)
+- Points cloud
+  - [points](https://al1brn.github.io/geonodes/domains/cloudpoint.html)
+- Instances
+  - [insts](https://al1brn.github.io/geonodes/domains/instance.html)
 
 Attributes are properties or domain properties, for instances:
 
@@ -146,12 +156,12 @@ when Points and Instances have only one domain each, respectively points and ins
 ### Values
 
 To manipulate geometry, the available classes are:
-- [Boolean](docs/sockets/Boolean.md)
-- [Integer](docs/sockets/Integer.md)
-- [Float](docs/sockets/Float.md)
-- [Vector](docs/sockets/Vector.md)
-- [Color](docs/sockets/Color.md)
-- [String](docs/sockets/String.md)
+- [Boolean](https://al1brn.github.io/geonodes/sockets/boolean.html)
+- [Integer](https://al1brn.github.io/geonodes/sockets/integer.html)
+- [Float](https://al1brn.github.io/geonodes/sockets/float.html)
+- [Vector](https://al1brn.github.io/geonodes/sockets/vector.html)
+- [Color](https://al1brn.github.io/geonodes/sockets/color.html)
+- [String](https://al1brn.github.io/geonodes/sockets/string.html)
 
 These values are used as arguments of geometry and domain classes. With the notable exception of **Booleans**,
 the values can be manipulated with python operators:
@@ -213,11 +223,11 @@ e = -a         # not a
 
 Other data are available through the following classes:
 
-  - [Collection](docs/sockets/Boolean.md)
-  - [Object](docs/sockets/Object.md)
-  - [Image](docs/sockets/Image.md)
-  - [Texture](docs/sockets/Texture.md)
-  - [Material](docs/sockets/Material.md)
+  - [Collection](https://al1brn.github.io/geonodes/sockets/collection.html)
+  - [Object](https://al1brn.github.io/geonodes/sockets/object.html)
+  - [Image](https://al1brn.github.io/geonodes/sockets/image.html)
+  - [Texture](https://al1brn.github.io/geonodes/sockets/texture.html)
+  - [Material](https://al1brn.github.io/geonodes/sockets/material.html)
 
 ## Naming
 

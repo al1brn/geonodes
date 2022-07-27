@@ -830,6 +830,17 @@ class PEFInterface:
             mesh=self.data_socket, selection=self.selection,
             offset=offset, offset_scale=offset_scale, individual=individual, mode=mode)
         self.stack(node)
+        
+        if self.domain == 'POINT':
+            return self.data_socket.verts(node.top), self.data_socket.faces(node.side)
+        
+        elif self.domain == 'EDGE':
+            return self.data_socket.edges(node.top), self.data_socket.faces(node.side)
+        else:
+            
+            return self.data_socket.faces(node.top), self.data_socket.faces(node.side)
+        
+        # OLD !
         return self.select(node.top), self.select(node.side)
     
     def scale(self, scale=None, center=None, axis=None, scale_mode='UNIFORM'):
