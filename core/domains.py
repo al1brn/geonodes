@@ -2088,7 +2088,7 @@ class Spline(Domain):
     
     @resolution.setter
     def resolution(self, value):
-        self.stack(nodes.SetSplineResolution(elf.data_socket, selection=self.selection, cyclic=value))
+        self.stack(nodes.SetSplineResolution(self.data_socket, selection=self.selection, resolution=value))
     
     def endpoint_selection(self, start_size=None, end_size=None):
         """ End point selection

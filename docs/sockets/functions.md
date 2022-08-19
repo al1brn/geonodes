@@ -236,7 +236,6 @@ Geometry node [*Boolean Math*].
   Args:
     boolean0: Boolean
     boolean1: Boolean
-    operation (str): 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
     node_label (str): Node label
     node_color (color): Node background color
     
@@ -247,13 +246,14 @@ Geometry node [*Boolean Math*].
   
   Node :class:`~geonodes.nodes.nodes.BooleanMath`
   
-  
+  - operation = 'AND'
+    
   .. blid:: FunctionNodeBooleanMath
   
   .. code-block:: python
   
     from geonodes import nodes
-    nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
+    nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation='AND', label=node_label, node_color=node_color)
     
 
 ## b_or
@@ -264,7 +264,6 @@ Geometry node [*Boolean Math*].
   Args:
     boolean0: Boolean
     boolean1: Boolean
-    operation (str): 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
     node_label (str): Node label
     node_color (color): Node background color
     
@@ -275,13 +274,14 @@ Geometry node [*Boolean Math*].
   
   Node :class:`~geonodes.nodes.nodes.BooleanMath`
   
-  
+  - operation = 'OR'
+    
   .. blid:: FunctionNodeBooleanMath
   
   .. code-block:: python
   
     from geonodes import nodes
-    nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
+    nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation='OR', label=node_label, node_color=node_color)
     
 
 ## b_not
@@ -291,8 +291,6 @@ Geometry node [*Boolean Math*].
 
   Args:
     boolean0: Boolean
-    boolean1: Boolean
-    operation (str): 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
     node_label (str): Node label
     node_color (color): Node background color
     
@@ -303,13 +301,14 @@ Geometry node [*Boolean Math*].
   
   Node :class:`~geonodes.nodes.nodes.BooleanMath`
   
-  
+  - operation = 'NOT'
+    
   .. blid:: FunctionNodeBooleanMath
   
   .. code-block:: python
   
     from geonodes import nodes
-    nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
+    nodes.BooleanMath(boolean0=boolean0, operation='NOT', label=node_label, node_color=node_color)
     
 
 ## nand
@@ -320,7 +319,6 @@ Geometry node [*Boolean Math*].
   Args:
     boolean0: Boolean
     boolean1: Boolean
-    operation (str): 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
     node_label (str): Node label
     node_color (color): Node background color
     
@@ -331,13 +329,14 @@ Geometry node [*Boolean Math*].
   
   Node :class:`~geonodes.nodes.nodes.BooleanMath`
   
-  
+  - operation = 'NAND'
+    
   .. blid:: FunctionNodeBooleanMath
   
   .. code-block:: python
   
     from geonodes import nodes
-    nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
+    nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation='NAND', label=node_label, node_color=node_color)
     
 
 ## nor
@@ -348,7 +347,6 @@ Geometry node [*Boolean Math*].
   Args:
     boolean0: Boolean
     boolean1: Boolean
-    operation (str): 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
     node_label (str): Node label
     node_color (color): Node background color
     
@@ -359,13 +357,14 @@ Geometry node [*Boolean Math*].
   
   Node :class:`~geonodes.nodes.nodes.BooleanMath`
   
-  
+  - operation = 'NOR'
+    
   .. blid:: FunctionNodeBooleanMath
   
   .. code-block:: python
   
     from geonodes import nodes
-    nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
+    nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation='NOR', label=node_label, node_color=node_color)
     
 
 ## xnor
@@ -376,7 +375,6 @@ Geometry node [*Boolean Math*].
   Args:
     boolean0: Boolean
     boolean1: Boolean
-    operation (str): 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
     node_label (str): Node label
     node_color (color): Node background color
     
@@ -387,13 +385,14 @@ Geometry node [*Boolean Math*].
   
   Node :class:`~geonodes.nodes.nodes.BooleanMath`
   
-  
+  - operation = 'XNOR'
+    
   .. blid:: FunctionNodeBooleanMath
   
   .. code-block:: python
   
     from geonodes import nodes
-    nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
+    nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation='XNOR', label=node_label, node_color=node_color)
     
 
 ## xor
@@ -404,7 +403,6 @@ Geometry node [*Boolean Math*].
   Args:
     boolean0: Boolean
     boolean1: Boolean
-    operation (str): 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
     node_label (str): Node label
     node_color (color): Node background color
     
@@ -415,13 +413,14 @@ Geometry node [*Boolean Math*].
   
   Node :class:`~geonodes.nodes.nodes.BooleanMath`
   
-  
+  - operation = 'XOR'
+    
   .. blid:: FunctionNodeBooleanMath
   
   .. code-block:: python
   
     from geonodes import nodes
-    nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
+    nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation='XOR', label=node_label, node_color=node_color)
     
 
 ## imply
@@ -432,7 +431,6 @@ Geometry node [*Boolean Math*].
   Args:
     boolean0: Boolean
     boolean1: Boolean
-    operation (str): 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
     node_label (str): Node label
     node_color (color): Node background color
     
@@ -443,13 +441,14 @@ Geometry node [*Boolean Math*].
   
   Node :class:`~geonodes.nodes.nodes.BooleanMath`
   
-  
+  - operation = 'IMPLY'
+    
   .. blid:: FunctionNodeBooleanMath
   
   .. code-block:: python
   
     from geonodes import nodes
-    nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
+    nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation='IMPLY', label=node_label, node_color=node_color)
     
 
 ## nimply
@@ -460,7 +459,6 @@ Geometry node [*Boolean Math*].
   Args:
     boolean0: Boolean
     boolean1: Boolean
-    operation (str): 'AND' in [AND, OR, NOT, NAND, NOR, XNOR, XOR, IMPLY, NIMPLY]
     node_label (str): Node label
     node_color (color): Node background color
     
@@ -471,13 +469,14 @@ Geometry node [*Boolean Math*].
   
   Node :class:`~geonodes.nodes.nodes.BooleanMath`
   
-  
+  - operation = 'NIMPLY'
+    
   .. blid:: FunctionNodeBooleanMath
   
   .. code-block:: python
   
     from geonodes import nodes
-    nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation=operation, label=node_label, node_color=node_color)
+    nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation='NIMPLY', label=node_label, node_color=node_color)
     
 
 ## add
