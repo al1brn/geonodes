@@ -17,9 +17,6 @@
 ## Properties
 
 - [separate](#separate) : Sockets      [x (Float), y (Float), z (Float)]
-- [x](#x) : x (Float) = separate.x
-- [y](#y) : y (Float) = separate.y
-- [z](#z) : z (Float) = separate.z
 
 ## Methods
 
@@ -237,72 +234,6 @@ Geometry node [*Separate XYZ*].
   
     from geonodes import nodes
     nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.separate")
-    
-
-## x
-
-Geometry node [*Separate XYZ*].
-
-
-
-  Returns:
-    Sockets [x (Float), y (Float), z (Float)]
-    
-  **Node creation**
-  
-  Node :class:`~geonodes.nodes.nodes.SeparateXyz`
-  
-  
-  .. blid:: ShaderNodeSeparateXYZ
-  
-  .. code-block:: python
-  
-    from geonodes import nodes
-    nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.x")
-    
-
-## y
-
-Geometry node [*Separate XYZ*].
-
-
-
-  Returns:
-    Sockets [x (Float), y (Float), z (Float)]
-    
-  **Node creation**
-  
-  Node :class:`~geonodes.nodes.nodes.SeparateXyz`
-  
-  
-  .. blid:: ShaderNodeSeparateXYZ
-  
-  .. code-block:: python
-  
-    from geonodes import nodes
-    nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.y")
-    
-
-## z
-
-Geometry node [*Separate XYZ*].
-
-
-
-  Returns:
-    Sockets [x (Float), y (Float), z (Float)]
-    
-  **Node creation**
-  
-  Node :class:`~geonodes.nodes.nodes.SeparateXyz`
-  
-  
-  .. blid:: ShaderNodeSeparateXYZ
-  
-  .. code-block:: python
-  
-    from geonodes import nodes
-    nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.z")
     
 
 ## accumulate_field

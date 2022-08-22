@@ -669,6 +669,12 @@ class Vector(DataSocket):
 
             super().__init__(node.vector, node)
             
+        # ----- x, y, z components can be accessed individually
+        
+        self.x_ = None
+        self.y_ = None
+        self.z_ = None
+            
         # ----- Hack for implementing vector += value in set_position(offset=value)
         # See domains and fields
         
@@ -732,6 +738,42 @@ class Vector(DataSocket):
         return cls(Tree.TREE.new_input('Xyz', value=value, name=name, description=description))
     
     # ---------------------------------------------------------------------------
+    # x, y and z components
+    
+    @property
+    def x(self):
+        if self.x_ is None:
+            return self.separate.x
+        else:
+            return self.x_
+        
+    @x.setter
+    def x(self, value):
+        self.x_ = value
+        
+    @property
+    def y(self):
+        if self.y_ is None:
+            return self.separate.y
+        else:
+            return self.y_
+        
+    @y.setter
+    def y(self, value):
+        self.y_ = value
+        
+    @property
+    def z(self):
+        if self.z_ is None:
+            return self.separate.z
+        else:
+            return self.z_
+        
+    @z.setter
+    def z(self, value):
+        self.z_ = value
+
+    # ---------------------------------------------------------------------------
     # The x, y, z components can be changed individually. If it is the case
     # the vector must be combined before being used
     
@@ -744,7 +786,7 @@ class Vector(DataSocket):
         .. blid:: ShaderNodeCombineXYZ
         """
         
-        if self.separate_ is None:
+        if self.separate_ is None and self.x_ is None and self.y_ is None and self.z_ is None:
             return super().get_blender_socket()
         
         else:
@@ -904,6 +946,13 @@ class Color(DataSocket):
                 
                 node = nodes.CombineRgb(r=r, g=g, b=b, label=label)
                 super().__init__(node.image, node)
+                
+        # ----- r, g, b components can be accessed individually
+        
+        self.r_ = None
+        self.g_ = None
+        self.b_ = None
+                
     
     @classmethod
     def Input(cls, value="blank", name: str = "Color", description: str = ""):
@@ -921,6 +970,42 @@ class Color(DataSocket):
         return cls(Tree.TREE.new_input('Color', value=value, name=name, description=description))
     
     # ---------------------------------------------------------------------------
+    # r, g and b components
+    
+    @property
+    def r(self):
+        if self.r_ is None:
+            return self.separate.r
+        else:
+            return self.r_
+        
+    @r.setter
+    def r(self, value):
+        self.r_ = value
+        
+    @property
+    def g(self):
+        if self.g_ is None:
+            return self.separate.g
+        else:
+            return self.g_
+        
+    @g.setter
+    def g(self, value):
+        self.g_ = value
+        
+    @property
+    def b(self):
+        if self.b_ is None:
+            return self.separate.b
+        else:
+            return self.b_
+        
+    @b.setter
+    def b(self, value):
+        self.b_ = value    
+    
+    # ---------------------------------------------------------------------------
     # The r, g, b components can be changed individually. If it is the case
     # the color must be combined before being used
     
@@ -933,7 +1018,7 @@ class Color(DataSocket):
         .. blid:: ShaderNodeCombineRGB
         """
         
-        if self.separate_ is None:
+        if self.separate_ is None and self.r_ is None and self.g_ is None and self.b_ is None:
             return super().get_blender_socket()
         
         else:

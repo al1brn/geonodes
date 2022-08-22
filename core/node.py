@@ -912,7 +912,7 @@ class DataSocket(Socket):
                 ok = False
                 
             if not ok:
-                logging.critical(f"Impossible to plug the value '{value}' to the socket '{bsocket.name}' of node '{bsocket.node.name}'")
+                logging.critical(f"Impossible to plug the value '{value}' to the socket '{bsocket.name}' of node '{bsocket.node.node_name}'")
                 logging.critical(f"    The value type is: {type(value)}")
                 logging.critical(f"    The expected type for socket default value is: {type(bsocket.default_value)}")
                 logging.critical(f"    Default value len: {len(bsocket.default_value) if hasattr(bsocket.default_value, '__len__') else 'no length'}")
@@ -926,8 +926,8 @@ class DataSocket(Socket):
             # sockets shapes = [‘CIRCLE’, ‘SQUARE’, ‘DIAMOND’, ‘CIRCLE_DOT’, ‘SQUARE_DOT’, ‘DIAMOND_DOT’]
             
             #if out_socket.display_shape == 'DIAMOND' and bsocket.display_shape == 'CIRCLE':
-            #    logging.error(f"Link error: the socket '{out_socket.node.name}'.'{out_socket.name}' is ‘DIAMOND’. " +
-            #    f"It can't be linked with the socket '{bsocket.node.name}'.'{bsocket.name}' which is CIRCLE.")
+            #    logging.error(f"Link error: the socket '{out_socket.node.node_name}'.'{out_socket.name}' is ‘DIAMOND’. " +
+            #    f"It can't be linked with the socket '{bsocket.node.node_name}'.'{bsocket.name}' which is CIRCLE.")
             
             
             Tree.TREE.btree.links.new(bsocket, out_socket, verify_limits=True)
@@ -1256,6 +1256,9 @@ class Tree:
         
         # ----- Layouts stack
         
+        self.disable_layouts = False
+        """ Just for fun"""
+        
         self.layouts = []
         """ Stack of layouts (see :func:`layout`)"""
         self.util_color = "dark_green"
@@ -1287,6 +1290,9 @@ class Tree:
     
     def __exit__(self, exception_type, exception_value, traceback):
         self.close()
+        
+    def __str__(self):
+        return f"<Tree {self.btree.name} with {len(self.nodes)} nodes and {len(self.btree.links)} links>"
         
     # ----------------------------------------------------------------------------------------------------
     # Get / create a Blender node
@@ -1582,13 +1588,20 @@ class Tree:
                 color = self.gene_color
             elif color.upper() == 'AUTO':
                 color = self.auto_color
-        
-        try:
-            layout = Frame(label=label, color=color)
-            self.layouts.append(layout)
-            yield layout
-        finally:
-            self.layouts.pop()
+                
+        if self.disable_layouts:
+            try:
+                yield False
+            finally:
+                pass
+            
+        else:
+            try:
+                layout = Frame(label=label, color=color)
+                self.layouts.append(layout)
+                yield layout
+            finally:
+                self.layouts.pop()
             
     @property
     def cur_frame(self):
@@ -1686,7 +1699,7 @@ class Tree:
             if not attr_node.is_attribute:
                 continue
             
-            #print("CHECKING:", attr_node.name, "bsocket", attr_node.owning_bsocket)
+            #print("CHECKING:", attr_node.node_name, "bsocket", attr_node.owning_bsocket)
             
             # ---------------------------------------------------------------------------
             # ----- Check if the fed nodes with geometry input are ok
@@ -1844,6 +1857,9 @@ class Tree:
             self.check_attributes()
             
         self.arrange()
+        
+        print(f"Geonodes: tree '{self.btree.name}' built with {len(self.nodes)} nodes and {len(self.btree.links)} links.")
+
 
     
 # ---------------------------------------------------------------------------
@@ -1897,18 +1913,18 @@ class Node:
     
     """
         
-    def __init__(self, bl_idname, name, label=None, node_color=None):
+    def __init__(self, bl_idname, node_name, label=None, node_color=None):
         
         self.tree = Tree.TREE
         """ The tree belonging the node."""
         
         self.tree.register_node(self)
 
-        self.name    = name
+        self.node_name = node_name
         """ Node name"""
         self.label_  = None
         if bl_idname == 'GeometryNodeGroup':
-            self.bnode = self.tree.get_bnode(bl_idname, name)
+            self.bnode = self.tree.get_bnode(bl_idname, node_name)
         else:
             self.bnode = self.tree.get_bnode(bl_idname, label)
             
@@ -1948,7 +1964,7 @@ class Node:
     # We are idiot proof and accept capitalized versions :-)
     # Output sockets are "write only"
         
-    def __getattr__(self, name):
+    def __getattr__OLD(self, name):
         ds = None
         if name != 'outsockets':
             if hasattr(self, 'outsockets'):
@@ -1976,7 +1992,7 @@ class Node:
     # We are idiot proof and accept capitalized versions :-)
     # Input sockets are "write only"
         
-    def __setattr__(self, name, value):
+    def __setattr__OLD(self, name, value):
         if hasattr(self, 'insockets'):
             if name.lower() in self.insockets:
                 sock_ind = self.insockets[name.lower()]
@@ -1990,7 +2006,56 @@ class Node:
                             return
                     raise RuntimeError(f"Input socket error on node {self}: all socket named '{name}' are disabled")
             
-        super().__setattr__(name, value)    
+        super().__setattr__(name, value)
+        
+    # ------------------------------------------------------------------------------------------
+    # Output socket by name
+    # We are idiot proof and accept capitalized versions :-)
+    
+    def get_output_socket(self, name):
+
+        sock_ind = self.outsockets.get(name.lower())
+        if sock_ind is None:
+            raise AttributeError(f"Node '{self}' has no output socket named '{name}'")
+            
+        ds = None
+        if isinstance(sock_ind, int):
+            ds = self.DataClass(self.bnode.outputs[sock_ind])
+        else:
+            for index in sock_ind:
+                if self.bnode.outputs[index].enabled:
+                    ds = self.DataClass(self.bnode.outputs[index])
+                    break
+                
+            if ds is None:
+                raise AttributeError(f"Output socket error on node {self}: all socket named '{name}' are disabled")
+                        
+        ds.field_of = self.field_of
+        return ds
+
+    # ------------------------------------------------------------------------------------------
+    # Set an input socket
+    # We are idiot proof and accept capitalized versions :-)
+    # Input sockets are "write only"
+        
+    def set_input_socket(self, name, value):
+        
+        sock_ind = self.insockets.get(name.lower())
+        if sock_ind is None:
+            raise AttributeError(f"Node '{self}' has no input socket named '{name}'")
+            
+        if isinstance(sock_ind, int):
+            self.plug(sock_ind, value)
+            return
+        
+        else:
+            for index in sock_ind:
+                if self.bnode.inputs[index].enabled:
+                    self.plug(index, value)
+                    return
+                
+            raise RuntimeError(f"Input socket error on node {self}: all socket named '{name}' are disabled")
+        
         
     # ---------------------------------------------------------------------------
     # Output socket by index
@@ -2055,7 +2120,7 @@ class Node:
         
     # ---------------------------------------------------------------------------
     # Let's make thing readable
-        
+    
     def __str__(self):
         return f"[{self.get_label()}]"
     
@@ -2114,7 +2179,7 @@ class Node:
         If the label provided at initialization time is None, the node is labeled by concatening
         its unique id with its standard name.
         """
-        return f"{self.node_id:2d} {self.name}" if self.label_ is None else f"{self.node_id:2d} {self.label_}"
+        return f"{self.node_id:2d} {self.node_name}" if self.label_ is None else f"{self.node_id:2d} {self.label_}"
     
     @property
     def label(self):
@@ -2572,9 +2637,9 @@ class CustomGroup(Node):
     Build the insockets and outsockets dictionaries
     """
     
-    def __init__(self, bl_idname, name, label=None, node_color=None):
+    def __init__(self, bl_idname, node_name, label=None, node_color=None):
         
-        super().__init__(bl_idname, name, label=label, node_color=node_color)
+        super().__init__(bl_idname, node_name, label=label, node_color=node_color)
         
         self.build_insockets()
         self.build_outsockets()
@@ -2636,10 +2701,10 @@ class Group(CustomGroup):
     They can later on be initialized by the snake_case names
     """
     
-    def __init__(self, name, **kwargs):
+    def __init__(self, node_name, **kwargs):
         
-        if bpy.data.node_groups.get(name) is None:
-            raise RuntimeError(f"The node group '{name}' doesn't exist")
+        if bpy.data.node_groups.get(node_name) is None:
+            raise RuntimeError(f"The node group '{node_name}' doesn't exist")
         
         label, node_color = kwargs.get('label'), kwargs.get('node_color')
         if label is not None:
@@ -2647,14 +2712,14 @@ class Group(CustomGroup):
         if node_color is not None:
             a.pop('node_color')
         
-        super().__init__('GeometryNodeGroup', name, label=label, node_color=node_color)
+        super().__init__('GeometryNodeGroup', node_name, label=label, node_color=node_color)
 
         # But let's plug the values directly 
         
         for k, v in kwargs.items():
             index = self.insockets.get(k.lower())
             if index is None:
-                raise AttributeError(f"The node group '{name}' has no input socket named '{k}'.")
+                raise AttributeError(f"The node group '{node_name}' has no input socket named '{k}'.")
             self.plug(index, v)
 
     
@@ -3030,7 +3095,7 @@ class Viewer(Node):
 
     def __init__(self, geometry: DataSocket = None, value: Any = None, data_type: str = 'FLOAT', label: str = None):
 
-        super().__init__('GeometryNodeViewer', name='Viewer', label=label)
+        super().__init__('GeometryNodeViewer', 'Viewer', label=label)
 
         # Parameters
 
@@ -3098,7 +3163,7 @@ class Frame(Node):
 
     def __init__(self, label: str = "Layout", label_size: int = 16, color: Any = None, shrink: bool = True):
 
-        super().__init__('NodeFrame', name='Frame', label=label)
+        super().__init__('NodeFrame', 'Frame', label=label)
         if color is None:
             color = colors.next_color()
         self.node_color = color
@@ -3114,7 +3179,7 @@ class Frame(Node):
         If the label provided at initialization time is None, the node is labeled by concatening
         its unique id with its standard name.
         """
-        return f"{self.node_id:2d} {self.name}" if self.label_ is None else f"{self.label_}"
+        return f"{self.node_id:2d} {self.node_name}" if self.label_ is None else f"{self.label_}"
         
         
     @property
@@ -3157,7 +3222,7 @@ class SceneTime(Node):
     def __init__(self, label: str = None):
         """ Iniitialisation """
 
-        super().__init__('GeometryNodeInputSceneTime', name='Scene Time', label=label)
+        super().__init__('GeometryNodeInputSceneTime', 'Scene Time', label=label)
 
         # Output sockets
 

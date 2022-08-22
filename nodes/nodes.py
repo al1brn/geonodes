@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-08-18
+Created on 2022-08-21
 
 @author: Generated from generator module
 
-Blender version: 3.2.0
+Blender version: 3.2.2
 """
 
 from geonodes.core.node import Node
@@ -40,7 +40,7 @@ class AlignEulerToVector(Node):
 
     def __init__(self, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', label=None, node_color=None):
 
-        super().__init__('FunctionNodeAlignEulerToVector', name='Align Euler to Vector', label=label, node_color=node_color)
+        super().__init__('FunctionNodeAlignEulerToVector', node_name='Align Euler to Vector', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -74,6 +74,30 @@ class AlignEulerToVector(Node):
     def pivot_axis(self, value):
         self.bnode.pivot_axis = value
 
+    @property
+    def rotation(self):
+        return self.get_output_socket('rotation')
+
+    @rotation.setter
+    def rotation(self, value):
+        self.set_input_socket('rotation', value)
+
+    @property
+    def factor(self):
+        raise AttributeError("Attribute error on node 'AlignEulerToVector': the input socket 'factor' is write only.")
+
+    @factor.setter
+    def factor(self, value):
+        self.set_input_socket('factor', value)
+
+    @property
+    def vector(self):
+        raise AttributeError("Attribute error on node 'AlignEulerToVector': the input socket 'vector' is write only.")
+
+    @vector.setter
+    def vector(self, value):
+        self.set_input_socket('vector', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node BooleanMath for FunctionNodeBooleanMath
 
@@ -100,7 +124,7 @@ class BooleanMath(Node):
 
     def __init__(self, boolean0=None, boolean1=None, operation='AND', label=None, node_color=None):
 
-        super().__init__('FunctionNodeBooleanMath', name='Boolean Math', label=label, node_color=node_color)
+        super().__init__('FunctionNodeBooleanMath', node_name='Boolean Math', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -123,6 +147,26 @@ class BooleanMath(Node):
     @operation.setter
     def operation(self, value):
         self.bnode.operation = value
+
+    @property
+    def boolean(self):
+        return self.get_output_socket('boolean')
+
+    @property
+    def boolean0(self):
+        raise AttributeError("Attribute error on node 'BooleanMath': the input socket 'boolean0' is write only.")
+
+    @boolean0.setter
+    def boolean0(self, value):
+        self.set_input_socket('boolean0', value)
+
+    @property
+    def boolean1(self):
+        raise AttributeError("Attribute error on node 'BooleanMath': the input socket 'boolean1' is write only.")
+
+    @boolean1.setter
+    def boolean1(self, value):
+        self.set_input_socket('boolean1', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Compare for FunctionNodeCompare
@@ -160,7 +204,7 @@ class Compare(Node):
 
     def __init__(self, a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', label=None, node_color=None):
 
-        super().__init__('FunctionNodeCompare', name='Compare', label=label, node_color=node_color)
+        super().__init__('FunctionNodeCompare', node_name='Compare', label=label, node_color=node_color)
 
         # Node parameters to configure the sockets enablement
 
@@ -205,6 +249,50 @@ class Compare(Node):
     def operation(self, value):
         self.bnode.operation = value
 
+    @property
+    def result(self):
+        return self.get_output_socket('result')
+
+    @property
+    def a(self):
+        raise AttributeError("Attribute error on node 'Compare': the input socket 'a' is write only.")
+
+    @a.setter
+    def a(self, value):
+        self.set_input_socket('a', value)
+
+    @property
+    def b(self):
+        raise AttributeError("Attribute error on node 'Compare': the input socket 'b' is write only.")
+
+    @b.setter
+    def b(self, value):
+        self.set_input_socket('b', value)
+
+    @property
+    def c(self):
+        raise AttributeError("Attribute error on node 'Compare': the input socket 'c' is write only.")
+
+    @c.setter
+    def c(self, value):
+        self.set_input_socket('c', value)
+
+    @property
+    def angle(self):
+        raise AttributeError("Attribute error on node 'Compare': the input socket 'angle' is write only.")
+
+    @angle.setter
+    def angle(self, value):
+        self.set_input_socket('angle', value)
+
+    @property
+    def epsilon(self):
+        raise AttributeError("Attribute error on node 'Compare': the input socket 'epsilon' is write only.")
+
+    @epsilon.setter
+    def epsilon(self, value):
+        self.set_input_socket('epsilon', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node FloatToInteger for FunctionNodeFloatToInt
 
@@ -230,7 +318,7 @@ class FloatToInteger(Node):
 
     def __init__(self, float=None, rounding_mode='ROUND', label=None, node_color=None):
 
-        super().__init__('FunctionNodeFloatToInt', name='Float to Integer', label=label, node_color=node_color)
+        super().__init__('FunctionNodeFloatToInt', node_name='Float to Integer', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -252,6 +340,18 @@ class FloatToInteger(Node):
     @rounding_mode.setter
     def rounding_mode(self, value):
         self.bnode.rounding_mode = value
+
+    @property
+    def integer(self):
+        return self.get_output_socket('integer')
+
+    @property
+    def float(self):
+        raise AttributeError("Attribute error on node 'FloatToInteger': the input socket 'float' is write only.")
+
+    @float.setter
+    def float(self, value):
+        self.set_input_socket('float', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Boolean for FunctionNodeInputBool
@@ -277,7 +377,7 @@ class Boolean(Node):
 
     def __init__(self, boolean=False, label=None, node_color=None):
 
-        super().__init__('FunctionNodeInputBool', name='Boolean', label=label, node_color=node_color)
+        super().__init__('FunctionNodeInputBool', node_name='Boolean', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -295,6 +395,10 @@ class Boolean(Node):
     @boolean_.setter
     def boolean_(self, value):
         self.bnode.boolean = value
+
+    @property
+    def boolean(self):
+        return self.get_output_socket('boolean')
 
 # ----------------------------------------------------------------------------------------------------
 # Node Color for FunctionNodeInputColor
@@ -319,12 +423,16 @@ class Color(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('FunctionNodeInputColor', name='Color', label=label, node_color=node_color)
+        super().__init__('FunctionNodeInputColor', node_name='Color', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'color' : 0, }
+
+    @property
+    def color(self):
+        return self.get_output_socket('color')
 
 # ----------------------------------------------------------------------------------------------------
 # Node Integer for FunctionNodeInputInt
@@ -350,7 +458,7 @@ class Integer(Node):
 
     def __init__(self, integer=0, label=None, node_color=None):
 
-        super().__init__('FunctionNodeInputInt', name='Integer', label=label, node_color=node_color)
+        super().__init__('FunctionNodeInputInt', node_name='Integer', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -368,6 +476,10 @@ class Integer(Node):
     @integer_.setter
     def integer_(self, value):
         self.bnode.integer = value
+
+    @property
+    def integer(self):
+        return self.get_output_socket('integer')
 
 # ----------------------------------------------------------------------------------------------------
 # Node SpecialCharacters for FunctionNodeInputSpecialCharacters
@@ -393,12 +505,20 @@ class SpecialCharacters(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('FunctionNodeInputSpecialCharacters', name='Special Characters', label=label, node_color=node_color)
+        super().__init__('FunctionNodeInputSpecialCharacters', node_name='Special Characters', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'line_break' : 0, 'tab' : 1, }
+
+    @property
+    def line_break(self):
+        return self.get_output_socket('line_break')
+
+    @property
+    def tab(self):
+        return self.get_output_socket('tab')
 
 # ----------------------------------------------------------------------------------------------------
 # Node String for FunctionNodeInputString
@@ -424,7 +544,7 @@ class String(Node):
 
     def __init__(self, string='', label=None, node_color=None):
 
-        super().__init__('FunctionNodeInputString', name='String', label=label, node_color=node_color)
+        super().__init__('FunctionNodeInputString', node_name='String', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -442,6 +562,10 @@ class String(Node):
     @string_.setter
     def string_(self, value):
         self.bnode.string = value
+
+    @property
+    def string(self):
+        return self.get_output_socket('string')
 
 # ----------------------------------------------------------------------------------------------------
 # Node Vector for FunctionNodeInputVector
@@ -467,7 +591,7 @@ class Vector(Node):
 
     def __init__(self, vector=[0.0, 0.0, 0.0], label=None, node_color=None):
 
-        super().__init__('FunctionNodeInputVector', name='Vector', label=label, node_color=node_color)
+        super().__init__('FunctionNodeInputVector', node_name='Vector', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -485,6 +609,10 @@ class Vector(Node):
     @vector_.setter
     def vector_(self, value):
         self.bnode.vector = value
+
+    @property
+    def vector(self):
+        return self.get_output_socket('vector')
 
 # ----------------------------------------------------------------------------------------------------
 # Node RandomValue for FunctionNodeRandomValue
@@ -520,7 +648,7 @@ class RandomValue(Node):
 
     def __init__(self, min=None, max=None, probability=None, ID=None, seed=None, data_type='FLOAT', label=None, node_color=None):
 
-        super().__init__('FunctionNodeRandomValue', name='Random Value', label=label, node_color=node_color)
+        super().__init__('FunctionNodeRandomValue', node_name='Random Value', label=label, node_color=node_color)
 
         # Node parameters to configure the sockets enablement
 
@@ -546,6 +674,50 @@ class RandomValue(Node):
     @data_type.setter
     def data_type(self, value):
         self.bnode.data_type = value
+
+    @property
+    def value(self):
+        return self.get_output_socket('value')
+
+    @property
+    def min(self):
+        raise AttributeError("Attribute error on node 'RandomValue': the input socket 'min' is write only.")
+
+    @min.setter
+    def min(self, value):
+        self.set_input_socket('min', value)
+
+    @property
+    def max(self):
+        raise AttributeError("Attribute error on node 'RandomValue': the input socket 'max' is write only.")
+
+    @max.setter
+    def max(self, value):
+        self.set_input_socket('max', value)
+
+    @property
+    def probability(self):
+        raise AttributeError("Attribute error on node 'RandomValue': the input socket 'probability' is write only.")
+
+    @probability.setter
+    def probability(self, value):
+        self.set_input_socket('probability', value)
+
+    @property
+    def ID(self):
+        raise AttributeError("Attribute error on node 'RandomValue': the input socket 'ID' is write only.")
+
+    @ID.setter
+    def ID(self, value):
+        self.set_input_socket('ID', value)
+
+    @property
+    def seed(self):
+        raise AttributeError("Attribute error on node 'RandomValue': the input socket 'seed' is write only.")
+
+    @seed.setter
+    def seed(self, value):
+        self.set_input_socket('seed', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node ReplaceString for FunctionNodeReplaceString
@@ -573,7 +745,7 @@ class ReplaceString(Node):
 
     def __init__(self, string=None, find=None, replace=None, label=None, node_color=None):
 
-        super().__init__('FunctionNodeReplaceString', name='Replace String', label=label, node_color=node_color)
+        super().__init__('FunctionNodeReplaceString', node_name='Replace String', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -585,6 +757,30 @@ class ReplaceString(Node):
         if string          is not None: self.string          = string
         if find            is not None: self.find            = find
         if replace         is not None: self.replace         = replace
+
+    @property
+    def string(self):
+        return self.get_output_socket('string')
+
+    @string.setter
+    def string(self, value):
+        self.set_input_socket('string', value)
+
+    @property
+    def find(self):
+        raise AttributeError("Attribute error on node 'ReplaceString': the input socket 'find' is write only.")
+
+    @find.setter
+    def find(self, value):
+        self.set_input_socket('find', value)
+
+    @property
+    def replace(self):
+        raise AttributeError("Attribute error on node 'ReplaceString': the input socket 'replace' is write only.")
+
+    @replace.setter
+    def replace(self, value):
+        self.set_input_socket('replace', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node RotateEuler for FunctionNodeRotateEuler
@@ -615,7 +811,7 @@ class RotateEuler(Node):
 
     def __init__(self, rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', type='EULER', label=None, node_color=None):
 
-        super().__init__('FunctionNodeRotateEuler', name='Rotate Euler', label=label, node_color=node_color)
+        super().__init__('FunctionNodeRotateEuler', node_name='Rotate Euler', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -650,6 +846,38 @@ class RotateEuler(Node):
     def type(self, value):
         self.bnode.type = value
 
+    @property
+    def rotation(self):
+        return self.get_output_socket('rotation')
+
+    @rotation.setter
+    def rotation(self, value):
+        self.set_input_socket('rotation', value)
+
+    @property
+    def rotate_by(self):
+        raise AttributeError("Attribute error on node 'RotateEuler': the input socket 'rotate_by' is write only.")
+
+    @rotate_by.setter
+    def rotate_by(self, value):
+        self.set_input_socket('rotate_by', value)
+
+    @property
+    def axis(self):
+        raise AttributeError("Attribute error on node 'RotateEuler': the input socket 'axis' is write only.")
+
+    @axis.setter
+    def axis(self, value):
+        self.set_input_socket('axis', value)
+
+    @property
+    def angle(self):
+        raise AttributeError("Attribute error on node 'RotateEuler': the input socket 'angle' is write only.")
+
+    @angle.setter
+    def angle(self, value):
+        self.set_input_socket('angle', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node SliceString for FunctionNodeSliceString
 
@@ -676,7 +904,7 @@ class SliceString(Node):
 
     def __init__(self, string=None, position=None, length=None, label=None, node_color=None):
 
-        super().__init__('FunctionNodeSliceString', name='Slice String', label=label, node_color=node_color)
+        super().__init__('FunctionNodeSliceString', node_name='Slice String', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -688,6 +916,30 @@ class SliceString(Node):
         if string          is not None: self.string          = string
         if position        is not None: self.position        = position
         if length          is not None: self.length          = length
+
+    @property
+    def string(self):
+        return self.get_output_socket('string')
+
+    @string.setter
+    def string(self, value):
+        self.set_input_socket('string', value)
+
+    @property
+    def position(self):
+        raise AttributeError("Attribute error on node 'SliceString': the input socket 'position' is write only.")
+
+    @position.setter
+    def position(self, value):
+        self.set_input_socket('position', value)
+
+    @property
+    def length(self):
+        raise AttributeError("Attribute error on node 'SliceString': the input socket 'length' is write only.")
+
+    @length.setter
+    def length(self, value):
+        self.set_input_socket('length', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node StringLength for FunctionNodeStringLength
@@ -713,7 +965,7 @@ class StringLength(Node):
 
     def __init__(self, string=None, label=None, node_color=None):
 
-        super().__init__('FunctionNodeStringLength', name='String Length', label=label, node_color=node_color)
+        super().__init__('FunctionNodeStringLength', node_name='String Length', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -723,6 +975,18 @@ class StringLength(Node):
         # Input sockets plugging
 
         if string          is not None: self.string          = string
+
+    @property
+    def length(self):
+        return self.get_output_socket('length')
+
+    @property
+    def string(self):
+        raise AttributeError("Attribute error on node 'StringLength': the input socket 'string' is write only.")
+
+    @string.setter
+    def string(self, value):
+        self.set_input_socket('string', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node ValueToString for FunctionNodeValueToString
@@ -749,7 +1013,7 @@ class ValueToString(Node):
 
     def __init__(self, value=None, decimals=None, label=None, node_color=None):
 
-        super().__init__('FunctionNodeValueToString', name='Value to String', label=label, node_color=node_color)
+        super().__init__('FunctionNodeValueToString', node_name='Value to String', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -760,6 +1024,26 @@ class ValueToString(Node):
 
         if value           is not None: self.value           = value
         if decimals        is not None: self.decimals        = decimals
+
+    @property
+    def string(self):
+        return self.get_output_socket('string')
+
+    @property
+    def value(self):
+        raise AttributeError("Attribute error on node 'ValueToString': the input socket 'value' is write only.")
+
+    @value.setter
+    def value(self, value):
+        self.set_input_socket('value', value)
+
+    @property
+    def decimals(self):
+        raise AttributeError("Attribute error on node 'ValueToString': the input socket 'decimals' is write only.")
+
+    @decimals.setter
+    def decimals(self, value):
+        self.set_input_socket('decimals', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node AccumulateField for GeometryNodeAccumulateField
@@ -795,7 +1079,7 @@ class AccumulateField(Node):
 
     def __init__(self, value=None, group_index=None, data_type='FLOAT', domain='POINT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeAccumulateField', name='Accumulate Field', label=label, node_color=node_color)
+        super().__init__('GeometryNodeAccumulateField', node_name='Accumulate Field', label=label, node_color=node_color)
 
         # Node parameters to configure the sockets enablement
 
@@ -828,6 +1112,34 @@ class AccumulateField(Node):
     def domain(self, value):
         self.bnode.domain = value
 
+    @property
+    def leading(self):
+        return self.get_output_socket('leading')
+
+    @property
+    def trailing(self):
+        return self.get_output_socket('trailing')
+
+    @property
+    def total(self):
+        return self.get_output_socket('total')
+
+    @property
+    def value(self):
+        raise AttributeError("Attribute error on node 'AccumulateField': the input socket 'value' is write only.")
+
+    @value.setter
+    def value(self, value):
+        self.set_input_socket('value', value)
+
+    @property
+    def group_index(self):
+        raise AttributeError("Attribute error on node 'AccumulateField': the input socket 'group_index' is write only.")
+
+    @group_index.setter
+    def group_index(self, value):
+        self.set_input_socket('group_index', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node DomainSize for GeometryNodeAttributeDomainSize
 
@@ -858,7 +1170,7 @@ class DomainSize(Node):
 
     def __init__(self, geometry=None, component='MESH', label=None, node_color=None):
 
-        super().__init__('GeometryNodeAttributeDomainSize', name='Domain Size', label=label, node_color=node_color)
+        super().__init__('GeometryNodeAttributeDomainSize', node_name='Domain Size', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -880,6 +1192,38 @@ class DomainSize(Node):
     @component.setter
     def component(self, value):
         self.bnode.component = value
+
+    @property
+    def point_count(self):
+        return self.get_output_socket('point_count')
+
+    @property
+    def edge_count(self):
+        return self.get_output_socket('edge_count')
+
+    @property
+    def face_count(self):
+        return self.get_output_socket('face_count')
+
+    @property
+    def face_corner_count(self):
+        return self.get_output_socket('face_corner_count')
+
+    @property
+    def spline_count(self):
+        return self.get_output_socket('spline_count')
+
+    @property
+    def instance_count(self):
+        return self.get_output_socket('instance_count')
+
+    @property
+    def geometry(self):
+        raise AttributeError("Attribute error on node 'DomainSize': the input socket 'geometry' is write only.")
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node AttributeStatistic for GeometryNodeAttributeStatistic
@@ -921,7 +1265,7 @@ class AttributeStatistic(Node):
 
     def __init__(self, geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeAttributeStatistic', name='Attribute Statistic', label=label, node_color=node_color)
+        super().__init__('GeometryNodeAttributeStatistic', node_name='Attribute Statistic', label=label, node_color=node_color)
 
         # Node parameters to configure the sockets enablement
 
@@ -954,6 +1298,62 @@ class AttributeStatistic(Node):
     @domain.setter
     def domain(self, value):
         self.bnode.domain = value
+
+    @property
+    def mean(self):
+        return self.get_output_socket('mean')
+
+    @property
+    def median(self):
+        return self.get_output_socket('median')
+
+    @property
+    def sum(self):
+        return self.get_output_socket('sum')
+
+    @property
+    def min(self):
+        return self.get_output_socket('min')
+
+    @property
+    def max(self):
+        return self.get_output_socket('max')
+
+    @property
+    def range(self):
+        return self.get_output_socket('range')
+
+    @property
+    def standard_deviation(self):
+        return self.get_output_socket('standard_deviation')
+
+    @property
+    def variance(self):
+        return self.get_output_socket('variance')
+
+    @property
+    def geometry(self):
+        raise AttributeError("Attribute error on node 'AttributeStatistic': the input socket 'geometry' is write only.")
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'AttributeStatistic': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def attribute(self):
+        raise AttributeError("Attribute error on node 'AttributeStatistic': the input socket 'attribute' is write only.")
+
+    @attribute.setter
+    def attribute(self, value):
+        self.set_input_socket('attribute', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node TransferAttribute for GeometryNodeAttributeTransfer
@@ -990,7 +1390,7 @@ class TransferAttribute(Node):
 
     def __init__(self, source=None, attribute=None, source_position=None, index=None, data_type='FLOAT', domain='POINT', mapping='NEAREST_FACE_INTERPOLATED', label=None, node_color=None):
 
-        super().__init__('GeometryNodeAttributeTransfer', name='Transfer Attribute', label=label, node_color=node_color)
+        super().__init__('GeometryNodeAttributeTransfer', node_name='Transfer Attribute', label=label, node_color=node_color)
 
         # Node parameters to configure the sockets enablement
 
@@ -1034,6 +1434,38 @@ class TransferAttribute(Node):
     def mapping(self, value):
         self.bnode.mapping = value
 
+    @property
+    def attribute(self):
+        return self.get_output_socket('attribute')
+
+    @property
+    def source(self):
+        raise AttributeError("Attribute error on node 'TransferAttribute': the input socket 'source' is write only.")
+
+    @source.setter
+    def source(self, value):
+        self.set_input_socket('source', value)
+
+    @attribute.setter
+    def attribute(self, value):
+        self.set_input_socket('attribute', value)
+
+    @property
+    def source_position(self):
+        raise AttributeError("Attribute error on node 'TransferAttribute': the input socket 'source_position' is write only.")
+
+    @source_position.setter
+    def source_position(self, value):
+        self.set_input_socket('source_position', value)
+
+    @property
+    def index(self):
+        raise AttributeError("Attribute error on node 'TransferAttribute': the input socket 'index' is write only.")
+
+    @index.setter
+    def index(self, value):
+        self.set_input_socket('index', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node BoundingBox for GeometryNodeBoundBox
 
@@ -1060,7 +1492,7 @@ class BoundingBox(Node):
 
     def __init__(self, geometry=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeBoundBox', name='Bounding Box', label=label, node_color=node_color)
+        super().__init__('GeometryNodeBoundBox', node_name='Bounding Box', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -1070,6 +1502,26 @@ class BoundingBox(Node):
         # Input sockets plugging
 
         if geometry        is not None: self.geometry        = geometry
+
+    @property
+    def bounding_box(self):
+        return self.get_output_socket('bounding_box')
+
+    @property
+    def min(self):
+        return self.get_output_socket('min')
+
+    @property
+    def max(self):
+        return self.get_output_socket('max')
+
+    @property
+    def geometry(self):
+        raise AttributeError("Attribute error on node 'BoundingBox': the input socket 'geometry' is write only.")
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node CaptureAttribute for GeometryNodeCaptureAttribute
@@ -1104,7 +1556,7 @@ class CaptureAttribute(Node):
 
     def __init__(self, geometry=None, value=None, data_type='FLOAT', domain='POINT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCaptureAttribute', name='Capture Attribute', label=label, node_color=node_color)
+        super().__init__('GeometryNodeCaptureAttribute', node_name='Capture Attribute', label=label, node_color=node_color)
 
         # Node parameters to configure the sockets enablement
 
@@ -1137,6 +1589,26 @@ class CaptureAttribute(Node):
     def domain(self, value):
         self.bnode.domain = value
 
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @property
+    def attribute(self):
+        return self.get_output_socket('attribute')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def value(self):
+        raise AttributeError("Attribute error on node 'CaptureAttribute': the input socket 'value' is write only.")
+
+    @value.setter
+    def value(self, value):
+        self.set_input_socket('value', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node CollectionInfo for GeometryNodeCollectionInfo
 
@@ -1164,7 +1636,7 @@ class CollectionInfo(Node):
 
     def __init__(self, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCollectionInfo', name='Collection Info', label=label, node_color=node_color)
+        super().__init__('GeometryNodeCollectionInfo', node_name='Collection Info', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -1188,6 +1660,34 @@ class CollectionInfo(Node):
     @transform_space.setter
     def transform_space(self, value):
         self.bnode.transform_space = value
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @property
+    def collection(self):
+        raise AttributeError("Attribute error on node 'CollectionInfo': the input socket 'collection' is write only.")
+
+    @collection.setter
+    def collection(self, value):
+        self.set_input_socket('collection', value)
+
+    @property
+    def separate_children(self):
+        raise AttributeError("Attribute error on node 'CollectionInfo': the input socket 'separate_children' is write only.")
+
+    @separate_children.setter
+    def separate_children(self, value):
+        self.set_input_socket('separate_children', value)
+
+    @property
+    def reset_children(self):
+        raise AttributeError("Attribute error on node 'CollectionInfo': the input socket 'reset_children' is write only.")
+
+    @reset_children.setter
+    def reset_children(self, value):
+        self.set_input_socket('reset_children', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node ConvexHull for GeometryNodeConvexHull
@@ -1213,7 +1713,7 @@ class ConvexHull(Node):
 
     def __init__(self, geometry=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeConvexHull', name='Convex Hull', label=label, node_color=node_color)
+        super().__init__('GeometryNodeConvexHull', node_name='Convex Hull', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -1223,6 +1723,18 @@ class ConvexHull(Node):
         # Input sockets plugging
 
         if geometry        is not None: self.geometry        = geometry
+
+    @property
+    def convex_hull(self):
+        return self.get_output_socket('convex_hull')
+
+    @property
+    def geometry(self):
+        raise AttributeError("Attribute error on node 'ConvexHull': the input socket 'geometry' is write only.")
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Arc for GeometryNodeCurveArc
@@ -1261,7 +1773,7 @@ class Arc(Node):
 
     def __init__(self, resolution=None, start=None, middle=None, end=None, radius=None, start_angle=None, sweep_angle=None, offset_angle=None, connect_center=None, invert_arc=None, mode='RADIUS', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveArc', name='Arc', label=label, node_color=node_color)
+        super().__init__('GeometryNodeCurveArc', node_name='Arc', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -1293,6 +1805,98 @@ class Arc(Node):
     def mode(self, value):
         self.bnode.mode = value
 
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @property
+    def center(self):
+        return self.get_output_socket('center')
+
+    @property
+    def normal(self):
+        return self.get_output_socket('normal')
+
+    @property
+    def radius(self):
+        return self.get_output_socket('radius')
+
+    @property
+    def resolution(self):
+        raise AttributeError("Attribute error on node 'Arc': the input socket 'resolution' is write only.")
+
+    @resolution.setter
+    def resolution(self, value):
+        self.set_input_socket('resolution', value)
+
+    @property
+    def start(self):
+        raise AttributeError("Attribute error on node 'Arc': the input socket 'start' is write only.")
+
+    @start.setter
+    def start(self, value):
+        self.set_input_socket('start', value)
+
+    @property
+    def middle(self):
+        raise AttributeError("Attribute error on node 'Arc': the input socket 'middle' is write only.")
+
+    @middle.setter
+    def middle(self, value):
+        self.set_input_socket('middle', value)
+
+    @property
+    def end(self):
+        raise AttributeError("Attribute error on node 'Arc': the input socket 'end' is write only.")
+
+    @end.setter
+    def end(self, value):
+        self.set_input_socket('end', value)
+
+    @radius.setter
+    def radius(self, value):
+        self.set_input_socket('radius', value)
+
+    @property
+    def start_angle(self):
+        raise AttributeError("Attribute error on node 'Arc': the input socket 'start_angle' is write only.")
+
+    @start_angle.setter
+    def start_angle(self, value):
+        self.set_input_socket('start_angle', value)
+
+    @property
+    def sweep_angle(self):
+        raise AttributeError("Attribute error on node 'Arc': the input socket 'sweep_angle' is write only.")
+
+    @sweep_angle.setter
+    def sweep_angle(self, value):
+        self.set_input_socket('sweep_angle', value)
+
+    @property
+    def offset_angle(self):
+        raise AttributeError("Attribute error on node 'Arc': the input socket 'offset_angle' is write only.")
+
+    @offset_angle.setter
+    def offset_angle(self, value):
+        self.set_input_socket('offset_angle', value)
+
+    @property
+    def connect_center(self):
+        raise AttributeError("Attribute error on node 'Arc': the input socket 'connect_center' is write only.")
+
+    @connect_center.setter
+    def connect_center(self, value):
+        self.set_input_socket('connect_center', value)
+
+    @property
+    def invert_arc(self):
+        raise AttributeError("Attribute error on node 'Arc': the input socket 'invert_arc' is write only.")
+
+    @invert_arc.setter
+    def invert_arc(self, value):
+        self.set_input_socket('invert_arc', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node EndpointSelection for GeometryNodeCurveEndpointSelection
 
@@ -1318,7 +1922,7 @@ class EndpointSelection(Node):
 
     def __init__(self, start_size=None, end_size=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveEndpointSelection', name='Endpoint Selection', label=label, node_color=node_color)
+        super().__init__('GeometryNodeCurveEndpointSelection', node_name='Endpoint Selection', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -1329,6 +1933,26 @@ class EndpointSelection(Node):
 
         if start_size      is not None: self.start_size      = start_size
         if end_size        is not None: self.end_size        = end_size
+
+    @property
+    def selection(self):
+        return self.get_output_socket('selection')
+
+    @property
+    def start_size(self):
+        raise AttributeError("Attribute error on node 'EndpointSelection': the input socket 'start_size' is write only.")
+
+    @start_size.setter
+    def start_size(self, value):
+        self.set_input_socket('start_size', value)
+
+    @property
+    def end_size(self):
+        raise AttributeError("Attribute error on node 'EndpointSelection': the input socket 'end_size' is write only.")
+
+    @end_size.setter
+    def end_size(self, value):
+        self.set_input_socket('end_size', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node HandleTypeSelection for GeometryNodeCurveHandleTypeSelection
@@ -1355,7 +1979,7 @@ class HandleTypeSelection(Node):
 
     def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveHandleTypeSelection', name='Handle Type Selection', label=label, node_color=node_color)
+        super().__init__('GeometryNodeCurveHandleTypeSelection', node_name='Handle Type Selection', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -1383,6 +2007,10 @@ class HandleTypeSelection(Node):
     def mode(self, value):
         self.bnode.mode = value
 
+    @property
+    def selection(self):
+        return self.get_output_socket('selection')
+
 # ----------------------------------------------------------------------------------------------------
 # Node CurveLength for GeometryNodeCurveLength
 
@@ -1407,7 +2035,7 @@ class CurveLength(Node):
 
     def __init__(self, curve=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveLength', name='Curve Length', label=label, node_color=node_color)
+        super().__init__('GeometryNodeCurveLength', node_name='Curve Length', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -1417,6 +2045,18 @@ class CurveLength(Node):
         # Input sockets plugging
 
         if curve           is not None: self.curve           = curve
+
+    @property
+    def length(self):
+        return self.get_output_socket('length')
+
+    @property
+    def curve(self):
+        raise AttributeError("Attribute error on node 'CurveLength': the input socket 'curve' is write only.")
+
+    @curve.setter
+    def curve(self, value):
+        self.set_input_socket('curve', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node BezierSegment for GeometryNodeCurvePrimitiveBezierSegment
@@ -1447,7 +2087,7 @@ class BezierSegment(Node):
 
     def __init__(self, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurvePrimitiveBezierSegment', name='Bezier Segment', label=label, node_color=node_color)
+        super().__init__('GeometryNodeCurvePrimitiveBezierSegment', node_name='Bezier Segment', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -1473,6 +2113,50 @@ class BezierSegment(Node):
     @mode.setter
     def mode(self, value):
         self.bnode.mode = value
+
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @property
+    def resolution(self):
+        raise AttributeError("Attribute error on node 'BezierSegment': the input socket 'resolution' is write only.")
+
+    @resolution.setter
+    def resolution(self, value):
+        self.set_input_socket('resolution', value)
+
+    @property
+    def start(self):
+        raise AttributeError("Attribute error on node 'BezierSegment': the input socket 'start' is write only.")
+
+    @start.setter
+    def start(self, value):
+        self.set_input_socket('start', value)
+
+    @property
+    def start_handle(self):
+        raise AttributeError("Attribute error on node 'BezierSegment': the input socket 'start_handle' is write only.")
+
+    @start_handle.setter
+    def start_handle(self, value):
+        self.set_input_socket('start_handle', value)
+
+    @property
+    def end_handle(self):
+        raise AttributeError("Attribute error on node 'BezierSegment': the input socket 'end_handle' is write only.")
+
+    @end_handle.setter
+    def end_handle(self, value):
+        self.set_input_socket('end_handle', value)
+
+    @property
+    def end(self):
+        raise AttributeError("Attribute error on node 'BezierSegment': the input socket 'end' is write only.")
+
+    @end.setter
+    def end(self, value):
+        self.set_input_socket('end', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node CurveCircle for GeometryNodeCurvePrimitiveCircle
@@ -1504,7 +2188,7 @@ class CurveCircle(Node):
 
     def __init__(self, resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurvePrimitiveCircle', name='Curve Circle', label=label, node_color=node_color)
+        super().__init__('GeometryNodeCurvePrimitiveCircle', node_name='Curve Circle', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -1530,6 +2214,54 @@ class CurveCircle(Node):
     @mode.setter
     def mode(self, value):
         self.bnode.mode = value
+
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @property
+    def center(self):
+        return self.get_output_socket('center')
+
+    @property
+    def resolution(self):
+        raise AttributeError("Attribute error on node 'CurveCircle': the input socket 'resolution' is write only.")
+
+    @resolution.setter
+    def resolution(self, value):
+        self.set_input_socket('resolution', value)
+
+    @property
+    def point_1(self):
+        raise AttributeError("Attribute error on node 'CurveCircle': the input socket 'point_1' is write only.")
+
+    @point_1.setter
+    def point_1(self, value):
+        self.set_input_socket('point_1', value)
+
+    @property
+    def point_2(self):
+        raise AttributeError("Attribute error on node 'CurveCircle': the input socket 'point_2' is write only.")
+
+    @point_2.setter
+    def point_2(self, value):
+        self.set_input_socket('point_2', value)
+
+    @property
+    def point_3(self):
+        raise AttributeError("Attribute error on node 'CurveCircle': the input socket 'point_3' is write only.")
+
+    @point_3.setter
+    def point_3(self, value):
+        self.set_input_socket('point_3', value)
+
+    @property
+    def radius(self):
+        raise AttributeError("Attribute error on node 'CurveCircle': the input socket 'radius' is write only.")
+
+    @radius.setter
+    def radius(self, value):
+        self.set_input_socket('radius', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node CurveLine for GeometryNodeCurvePrimitiveLine
@@ -1559,7 +2291,7 @@ class CurveLine(Node):
 
     def __init__(self, start=None, end=None, direction=None, length=None, mode='POINTS', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurvePrimitiveLine', name='Curve Line', label=label, node_color=node_color)
+        super().__init__('GeometryNodeCurvePrimitiveLine', node_name='Curve Line', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -1584,6 +2316,42 @@ class CurveLine(Node):
     @mode.setter
     def mode(self, value):
         self.bnode.mode = value
+
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @property
+    def start(self):
+        raise AttributeError("Attribute error on node 'CurveLine': the input socket 'start' is write only.")
+
+    @start.setter
+    def start(self, value):
+        self.set_input_socket('start', value)
+
+    @property
+    def end(self):
+        raise AttributeError("Attribute error on node 'CurveLine': the input socket 'end' is write only.")
+
+    @end.setter
+    def end(self, value):
+        self.set_input_socket('end', value)
+
+    @property
+    def direction(self):
+        raise AttributeError("Attribute error on node 'CurveLine': the input socket 'direction' is write only.")
+
+    @direction.setter
+    def direction(self, value):
+        self.set_input_socket('direction', value)
+
+    @property
+    def length(self):
+        raise AttributeError("Attribute error on node 'CurveLine': the input socket 'length' is write only.")
+
+    @length.setter
+    def length(self, value):
+        self.set_input_socket('length', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Quadrilateral for GeometryNodeCurvePrimitiveQuadrilateral
@@ -1620,7 +2388,7 @@ class Quadrilateral(Node):
 
     def __init__(self, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurvePrimitiveQuadrilateral', name='Quadrilateral', label=label, node_color=node_color)
+        super().__init__('GeometryNodeCurvePrimitiveQuadrilateral', node_name='Quadrilateral', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -1653,6 +2421,98 @@ class Quadrilateral(Node):
     def mode(self, value):
         self.bnode.mode = value
 
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @property
+    def width(self):
+        raise AttributeError("Attribute error on node 'Quadrilateral': the input socket 'width' is write only.")
+
+    @width.setter
+    def width(self, value):
+        self.set_input_socket('width', value)
+
+    @property
+    def height(self):
+        raise AttributeError("Attribute error on node 'Quadrilateral': the input socket 'height' is write only.")
+
+    @height.setter
+    def height(self, value):
+        self.set_input_socket('height', value)
+
+    @property
+    def bottom_width(self):
+        raise AttributeError("Attribute error on node 'Quadrilateral': the input socket 'bottom_width' is write only.")
+
+    @bottom_width.setter
+    def bottom_width(self, value):
+        self.set_input_socket('bottom_width', value)
+
+    @property
+    def top_width(self):
+        raise AttributeError("Attribute error on node 'Quadrilateral': the input socket 'top_width' is write only.")
+
+    @top_width.setter
+    def top_width(self, value):
+        self.set_input_socket('top_width', value)
+
+    @property
+    def offset(self):
+        raise AttributeError("Attribute error on node 'Quadrilateral': the input socket 'offset' is write only.")
+
+    @offset.setter
+    def offset(self, value):
+        self.set_input_socket('offset', value)
+
+    @property
+    def bottom_height(self):
+        raise AttributeError("Attribute error on node 'Quadrilateral': the input socket 'bottom_height' is write only.")
+
+    @bottom_height.setter
+    def bottom_height(self, value):
+        self.set_input_socket('bottom_height', value)
+
+    @property
+    def top_height(self):
+        raise AttributeError("Attribute error on node 'Quadrilateral': the input socket 'top_height' is write only.")
+
+    @top_height.setter
+    def top_height(self, value):
+        self.set_input_socket('top_height', value)
+
+    @property
+    def point_1(self):
+        raise AttributeError("Attribute error on node 'Quadrilateral': the input socket 'point_1' is write only.")
+
+    @point_1.setter
+    def point_1(self, value):
+        self.set_input_socket('point_1', value)
+
+    @property
+    def point_2(self):
+        raise AttributeError("Attribute error on node 'Quadrilateral': the input socket 'point_2' is write only.")
+
+    @point_2.setter
+    def point_2(self, value):
+        self.set_input_socket('point_2', value)
+
+    @property
+    def point_3(self):
+        raise AttributeError("Attribute error on node 'Quadrilateral': the input socket 'point_3' is write only.")
+
+    @point_3.setter
+    def point_3(self, value):
+        self.set_input_socket('point_3', value)
+
+    @property
+    def point_4(self):
+        raise AttributeError("Attribute error on node 'Quadrilateral': the input socket 'point_4' is write only.")
+
+    @point_4.setter
+    def point_4(self, value):
+        self.set_input_socket('point_4', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node QuadraticBezier for GeometryNodeCurveQuadraticBezier
 
@@ -1680,7 +2540,7 @@ class QuadraticBezier(Node):
 
     def __init__(self, resolution=None, start=None, middle=None, end=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveQuadraticBezier', name='Quadratic Bezier', label=label, node_color=node_color)
+        super().__init__('GeometryNodeCurveQuadraticBezier', node_name='Quadratic Bezier', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -1693,6 +2553,42 @@ class QuadraticBezier(Node):
         if start           is not None: self.start           = start
         if middle          is not None: self.middle          = middle
         if end             is not None: self.end             = end
+
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @property
+    def resolution(self):
+        raise AttributeError("Attribute error on node 'QuadraticBezier': the input socket 'resolution' is write only.")
+
+    @resolution.setter
+    def resolution(self, value):
+        self.set_input_socket('resolution', value)
+
+    @property
+    def start(self):
+        raise AttributeError("Attribute error on node 'QuadraticBezier': the input socket 'start' is write only.")
+
+    @start.setter
+    def start(self, value):
+        self.set_input_socket('start', value)
+
+    @property
+    def middle(self):
+        raise AttributeError("Attribute error on node 'QuadraticBezier': the input socket 'middle' is write only.")
+
+    @middle.setter
+    def middle(self, value):
+        self.set_input_socket('middle', value)
+
+    @property
+    def end(self):
+        raise AttributeError("Attribute error on node 'QuadraticBezier': the input socket 'end' is write only.")
+
+    @end.setter
+    def end(self, value):
+        self.set_input_socket('end', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetHandleType for GeometryNodeCurveSetHandles
@@ -1721,7 +2617,7 @@ class SetHandleType(Node):
 
     def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveSetHandles', name='Set Handle Type', label=label, node_color=node_color)
+        super().__init__('GeometryNodeCurveSetHandles', node_name='Set Handle Type', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -1754,6 +2650,22 @@ class SetHandleType(Node):
     def mode(self, value):
         self.bnode.mode = value
 
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @curve.setter
+    def curve(self, value):
+        self.set_input_socket('curve', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'SetHandleType': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node Spiral for GeometryNodeCurveSpiral
 
@@ -1783,7 +2695,7 @@ class Spiral(Node):
 
     def __init__(self, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveSpiral', name='Spiral', label=label, node_color=node_color)
+        super().__init__('GeometryNodeCurveSpiral', node_name='Spiral', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -1798,6 +2710,58 @@ class Spiral(Node):
         if end_radius      is not None: self.end_radius      = end_radius
         if height          is not None: self.height          = height
         if reverse         is not None: self.reverse         = reverse
+
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @property
+    def resolution(self):
+        raise AttributeError("Attribute error on node 'Spiral': the input socket 'resolution' is write only.")
+
+    @resolution.setter
+    def resolution(self, value):
+        self.set_input_socket('resolution', value)
+
+    @property
+    def rotations(self):
+        raise AttributeError("Attribute error on node 'Spiral': the input socket 'rotations' is write only.")
+
+    @rotations.setter
+    def rotations(self, value):
+        self.set_input_socket('rotations', value)
+
+    @property
+    def start_radius(self):
+        raise AttributeError("Attribute error on node 'Spiral': the input socket 'start_radius' is write only.")
+
+    @start_radius.setter
+    def start_radius(self, value):
+        self.set_input_socket('start_radius', value)
+
+    @property
+    def end_radius(self):
+        raise AttributeError("Attribute error on node 'Spiral': the input socket 'end_radius' is write only.")
+
+    @end_radius.setter
+    def end_radius(self, value):
+        self.set_input_socket('end_radius', value)
+
+    @property
+    def height(self):
+        raise AttributeError("Attribute error on node 'Spiral': the input socket 'height' is write only.")
+
+    @height.setter
+    def height(self, value):
+        self.set_input_socket('height', value)
+
+    @property
+    def reverse(self):
+        raise AttributeError("Attribute error on node 'Spiral': the input socket 'reverse' is write only.")
+
+    @reverse.setter
+    def reverse(self, value):
+        self.set_input_socket('reverse', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetSplineType for GeometryNodeCurveSplineType
@@ -1825,7 +2789,7 @@ class SetSplineType(Node):
 
     def __init__(self, curve=None, selection=None, spline_type='POLY', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveSplineType', name='Set Spline Type', label=label, node_color=node_color)
+        super().__init__('GeometryNodeCurveSplineType', node_name='Set Spline Type', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -1848,6 +2812,22 @@ class SetSplineType(Node):
     @spline_type.setter
     def spline_type(self, value):
         self.bnode.spline_type = value
+
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @curve.setter
+    def curve(self, value):
+        self.set_input_socket('curve', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'SetSplineType': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Star for GeometryNodeCurveStar
@@ -1877,7 +2857,7 @@ class Star(Node):
 
     def __init__(self, points=None, inner_radius=None, outer_radius=None, twist=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveStar', name='Star', label=label, node_color=node_color)
+        super().__init__('GeometryNodeCurveStar', node_name='Star', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -1890,6 +2870,46 @@ class Star(Node):
         if inner_radius    is not None: self.inner_radius    = inner_radius
         if outer_radius    is not None: self.outer_radius    = outer_radius
         if twist           is not None: self.twist           = twist
+
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @property
+    def outer_points(self):
+        return self.get_output_socket('outer_points')
+
+    @property
+    def points(self):
+        raise AttributeError("Attribute error on node 'Star': the input socket 'points' is write only.")
+
+    @points.setter
+    def points(self, value):
+        self.set_input_socket('points', value)
+
+    @property
+    def inner_radius(self):
+        raise AttributeError("Attribute error on node 'Star': the input socket 'inner_radius' is write only.")
+
+    @inner_radius.setter
+    def inner_radius(self, value):
+        self.set_input_socket('inner_radius', value)
+
+    @property
+    def outer_radius(self):
+        raise AttributeError("Attribute error on node 'Star': the input socket 'outer_radius' is write only.")
+
+    @outer_radius.setter
+    def outer_radius(self, value):
+        self.set_input_socket('outer_radius', value)
+
+    @property
+    def twist(self):
+        raise AttributeError("Attribute error on node 'Star': the input socket 'twist' is write only.")
+
+    @twist.setter
+    def twist(self, value):
+        self.set_input_socket('twist', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node CurveToMesh for GeometryNodeCurveToMesh
@@ -1917,7 +2937,7 @@ class CurveToMesh(Node):
 
     def __init__(self, curve=None, profile_curve=None, fill_caps=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveToMesh', name='Curve to Mesh', label=label, node_color=node_color)
+        super().__init__('GeometryNodeCurveToMesh', node_name='Curve to Mesh', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -1929,6 +2949,34 @@ class CurveToMesh(Node):
         if curve           is not None: self.curve           = curve
         if profile_curve   is not None: self.profile_curve   = profile_curve
         if fill_caps       is not None: self.fill_caps       = fill_caps
+
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @property
+    def curve(self):
+        raise AttributeError("Attribute error on node 'CurveToMesh': the input socket 'curve' is write only.")
+
+    @curve.setter
+    def curve(self, value):
+        self.set_input_socket('curve', value)
+
+    @property
+    def profile_curve(self):
+        raise AttributeError("Attribute error on node 'CurveToMesh': the input socket 'profile_curve' is write only.")
+
+    @profile_curve.setter
+    def profile_curve(self, value):
+        self.set_input_socket('profile_curve', value)
+
+    @property
+    def fill_caps(self):
+        raise AttributeError("Attribute error on node 'CurveToMesh': the input socket 'fill_caps' is write only.")
+
+    @fill_caps.setter
+    def fill_caps(self, value):
+        self.set_input_socket('fill_caps', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node CurveToPoints for GeometryNodeCurveToPoints
@@ -1960,7 +3008,7 @@ class CurveToPoints(Node):
 
     def __init__(self, curve=None, count=None, length=None, mode='COUNT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeCurveToPoints', name='Curve to Points', label=label, node_color=node_color)
+        super().__init__('GeometryNodeCurveToPoints', node_name='Curve to Points', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -1984,6 +3032,46 @@ class CurveToPoints(Node):
     @mode.setter
     def mode(self, value):
         self.bnode.mode = value
+
+    @property
+    def points(self):
+        return self.get_output_socket('points')
+
+    @property
+    def tangent(self):
+        return self.get_output_socket('tangent')
+
+    @property
+    def normal(self):
+        return self.get_output_socket('normal')
+
+    @property
+    def rotation(self):
+        return self.get_output_socket('rotation')
+
+    @property
+    def curve(self):
+        raise AttributeError("Attribute error on node 'CurveToPoints': the input socket 'curve' is write only.")
+
+    @curve.setter
+    def curve(self, value):
+        self.set_input_socket('curve', value)
+
+    @property
+    def count(self):
+        raise AttributeError("Attribute error on node 'CurveToPoints': the input socket 'count' is write only.")
+
+    @count.setter
+    def count(self, value):
+        self.set_input_socket('count', value)
+
+    @property
+    def length(self):
+        raise AttributeError("Attribute error on node 'CurveToPoints': the input socket 'length' is write only.")
+
+    @length.setter
+    def length(self, value):
+        self.set_input_socket('length', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node DeleteGeometry for GeometryNodeDeleteGeometry
@@ -2012,7 +3100,7 @@ class DeleteGeometry(Node):
 
     def __init__(self, geometry=None, selection=None, domain='POINT', mode='ALL', label=None, node_color=None):
 
-        super().__init__('GeometryNodeDeleteGeometry', name='Delete Geometry', label=label, node_color=node_color)
+        super().__init__('GeometryNodeDeleteGeometry', node_name='Delete Geometry', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -2044,6 +3132,22 @@ class DeleteGeometry(Node):
     @mode.setter
     def mode(self, value):
         self.bnode.mode = value
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'DeleteGeometry': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node DistributePointsOnFaces for GeometryNodeDistributePointsOnFaces
@@ -2078,7 +3182,7 @@ class DistributePointsOnFaces(Node):
 
     def __init__(self, mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None, node_color=None):
 
-        super().__init__('GeometryNodeDistributePointsOnFaces', name='Distribute Points on Faces', label=label, node_color=node_color)
+        super().__init__('GeometryNodeDistributePointsOnFaces', node_name='Distribute Points on Faces', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -2107,6 +3211,74 @@ class DistributePointsOnFaces(Node):
     def distribute_method(self, value):
         self.bnode.distribute_method = value
 
+    @property
+    def points(self):
+        return self.get_output_socket('points')
+
+    @property
+    def normal(self):
+        return self.get_output_socket('normal')
+
+    @property
+    def rotation(self):
+        return self.get_output_socket('rotation')
+
+    @property
+    def mesh(self):
+        raise AttributeError("Attribute error on node 'DistributePointsOnFaces': the input socket 'mesh' is write only.")
+
+    @mesh.setter
+    def mesh(self, value):
+        self.set_input_socket('mesh', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'DistributePointsOnFaces': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def distance_min(self):
+        raise AttributeError("Attribute error on node 'DistributePointsOnFaces': the input socket 'distance_min' is write only.")
+
+    @distance_min.setter
+    def distance_min(self, value):
+        self.set_input_socket('distance_min', value)
+
+    @property
+    def density_max(self):
+        raise AttributeError("Attribute error on node 'DistributePointsOnFaces': the input socket 'density_max' is write only.")
+
+    @density_max.setter
+    def density_max(self, value):
+        self.set_input_socket('density_max', value)
+
+    @property
+    def density(self):
+        raise AttributeError("Attribute error on node 'DistributePointsOnFaces': the input socket 'density' is write only.")
+
+    @density.setter
+    def density(self, value):
+        self.set_input_socket('density', value)
+
+    @property
+    def density_factor(self):
+        raise AttributeError("Attribute error on node 'DistributePointsOnFaces': the input socket 'density_factor' is write only.")
+
+    @density_factor.setter
+    def density_factor(self, value):
+        self.set_input_socket('density_factor', value)
+
+    @property
+    def seed(self):
+        raise AttributeError("Attribute error on node 'DistributePointsOnFaces': the input socket 'seed' is write only.")
+
+    @seed.setter
+    def seed(self, value):
+        self.set_input_socket('seed', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node DualMesh for GeometryNodeDualMesh
 
@@ -2132,7 +3304,7 @@ class DualMesh(Node):
 
     def __init__(self, mesh=None, keep_boundaries=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeDualMesh', name='Dual Mesh', label=label, node_color=node_color)
+        super().__init__('GeometryNodeDualMesh', node_name='Dual Mesh', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -2143,6 +3315,26 @@ class DualMesh(Node):
 
         if mesh            is not None: self.mesh            = mesh
         if keep_boundaries is not None: self.keep_boundaries = keep_boundaries
+
+    @property
+    def dual_mesh(self):
+        return self.get_output_socket('dual_mesh')
+
+    @property
+    def mesh(self):
+        raise AttributeError("Attribute error on node 'DualMesh': the input socket 'mesh' is write only.")
+
+    @mesh.setter
+    def mesh(self, value):
+        self.set_input_socket('mesh', value)
+
+    @property
+    def keep_boundaries(self):
+        raise AttributeError("Attribute error on node 'DualMesh': the input socket 'keep_boundaries' is write only.")
+
+    @keep_boundaries.setter
+    def keep_boundaries(self, value):
+        self.set_input_socket('keep_boundaries', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node DuplicateElements for GeometryNodeDuplicateElements
@@ -2172,7 +3364,7 @@ class DuplicateElements(Node):
 
     def __init__(self, geometry=None, selection=None, amount=None, domain='POINT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeDuplicateElements', name='Duplicate Elements', label=label, node_color=node_color)
+        super().__init__('GeometryNodeDuplicateElements', node_name='Duplicate Elements', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -2196,6 +3388,34 @@ class DuplicateElements(Node):
     @domain.setter
     def domain(self, value):
         self.bnode.domain = value
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @property
+    def duplicate_index(self):
+        return self.get_output_socket('duplicate_index')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'DuplicateElements': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def amount(self):
+        raise AttributeError("Attribute error on node 'DuplicateElements': the input socket 'amount' is write only.")
+
+    @amount.setter
+    def amount(self, value):
+        self.set_input_socket('amount', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node ExtrudeMesh for GeometryNodeExtrudeMesh
@@ -2228,7 +3448,7 @@ class ExtrudeMesh(Node):
 
     def __init__(self, mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES', label=None, node_color=None):
 
-        super().__init__('GeometryNodeExtrudeMesh', name='Extrude Mesh', label=label, node_color=node_color)
+        super().__init__('GeometryNodeExtrudeMesh', node_name='Extrude Mesh', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -2254,6 +3474,54 @@ class ExtrudeMesh(Node):
     @mode.setter
     def mode(self, value):
         self.bnode.mode = value
+
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @property
+    def top(self):
+        return self.get_output_socket('top')
+
+    @property
+    def side(self):
+        return self.get_output_socket('side')
+
+    @mesh.setter
+    def mesh(self, value):
+        self.set_input_socket('mesh', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'ExtrudeMesh': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def offset(self):
+        raise AttributeError("Attribute error on node 'ExtrudeMesh': the input socket 'offset' is write only.")
+
+    @offset.setter
+    def offset(self, value):
+        self.set_input_socket('offset', value)
+
+    @property
+    def offset_scale(self):
+        raise AttributeError("Attribute error on node 'ExtrudeMesh': the input socket 'offset_scale' is write only.")
+
+    @offset_scale.setter
+    def offset_scale(self, value):
+        self.set_input_socket('offset_scale', value)
+
+    @property
+    def individual(self):
+        raise AttributeError("Attribute error on node 'ExtrudeMesh': the input socket 'individual' is write only.")
+
+    @individual.setter
+    def individual(self, value):
+        self.set_input_socket('individual', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node FieldAtIndex for GeometryNodeFieldAtIndex
@@ -2287,7 +3555,7 @@ class FieldAtIndex(Node):
 
     def __init__(self, index=None, value=None, data_type='FLOAT', domain='POINT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeFieldAtIndex', name='Field at Index', label=label, node_color=node_color)
+        super().__init__('GeometryNodeFieldAtIndex', node_name='Field at Index', label=label, node_color=node_color)
 
         # Node parameters to configure the sockets enablement
 
@@ -2320,6 +3588,22 @@ class FieldAtIndex(Node):
     def domain(self, value):
         self.bnode.domain = value
 
+    @property
+    def value(self):
+        return self.get_output_socket('value')
+
+    @property
+    def index(self):
+        raise AttributeError("Attribute error on node 'FieldAtIndex': the input socket 'index' is write only.")
+
+    @index.setter
+    def index(self, value):
+        self.set_input_socket('index', value)
+
+    @value.setter
+    def value(self, value):
+        self.set_input_socket('value', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node FillCurve for GeometryNodeFillCurve
 
@@ -2345,7 +3629,7 @@ class FillCurve(Node):
 
     def __init__(self, curve=None, mode='TRIANGLES', label=None, node_color=None):
 
-        super().__init__('GeometryNodeFillCurve', name='Fill Curve', label=label, node_color=node_color)
+        super().__init__('GeometryNodeFillCurve', node_name='Fill Curve', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -2367,6 +3651,18 @@ class FillCurve(Node):
     @mode.setter
     def mode(self, value):
         self.bnode.mode = value
+
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @property
+    def curve(self):
+        raise AttributeError("Attribute error on node 'FillCurve': the input socket 'curve' is write only.")
+
+    @curve.setter
+    def curve(self, value):
+        self.set_input_socket('curve', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node FilletCurve for GeometryNodeFilletCurve
@@ -2396,7 +3692,7 @@ class FilletCurve(Node):
 
     def __init__(self, curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER', label=None, node_color=None):
 
-        super().__init__('GeometryNodeFilletCurve', name='Fillet Curve', label=label, node_color=node_color)
+        super().__init__('GeometryNodeFilletCurve', node_name='Fillet Curve', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -2421,6 +3717,38 @@ class FilletCurve(Node):
     @mode.setter
     def mode(self, value):
         self.bnode.mode = value
+
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @curve.setter
+    def curve(self, value):
+        self.set_input_socket('curve', value)
+
+    @property
+    def count(self):
+        raise AttributeError("Attribute error on node 'FilletCurve': the input socket 'count' is write only.")
+
+    @count.setter
+    def count(self, value):
+        self.set_input_socket('count', value)
+
+    @property
+    def radius(self):
+        raise AttributeError("Attribute error on node 'FilletCurve': the input socket 'radius' is write only.")
+
+    @radius.setter
+    def radius(self, value):
+        self.set_input_socket('radius', value)
+
+    @property
+    def limit_radius(self):
+        raise AttributeError("Attribute error on node 'FilletCurve': the input socket 'limit_radius' is write only.")
+
+    @limit_radius.setter
+    def limit_radius(self, value):
+        self.set_input_socket('limit_radius', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node FlipFaces for GeometryNodeFlipFaces
@@ -2447,7 +3775,7 @@ class FlipFaces(Node):
 
     def __init__(self, mesh=None, selection=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeFlipFaces', name='Flip Faces', label=label, node_color=node_color)
+        super().__init__('GeometryNodeFlipFaces', node_name='Flip Faces', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -2458,6 +3786,22 @@ class FlipFaces(Node):
 
         if mesh            is not None: self.mesh            = mesh
         if selection       is not None: self.selection       = selection
+
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @mesh.setter
+    def mesh(self, value):
+        self.set_input_socket('mesh', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'FlipFaces': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node GeometryToInstance for GeometryNodeGeometryToInstance
@@ -2483,7 +3827,7 @@ class GeometryToInstance(Node):
 
     def __init__(self, *geometry, label=None, node_color=None):
 
-        super().__init__('GeometryNodeGeometryToInstance', name='Geometry to Instance', label=label, node_color=node_color)
+        super().__init__('GeometryNodeGeometryToInstance', node_name='Geometry to Instance', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -2493,6 +3837,18 @@ class GeometryToInstance(Node):
         # Input sockets plugging
 
         self.plug(0, *geometry)
+
+    @property
+    def instances(self):
+        return self.get_output_socket('instances')
+
+    @property
+    def geometry(self):
+        raise AttributeError("Attribute error on node 'GeometryToInstance': the input socket 'geometry' is write only.")
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Group for GeometryNodeGroup
@@ -2514,7 +3870,7 @@ class Group(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeGroup', name='Group', label=label, node_color=node_color)
+        super().__init__('GeometryNodeGroup', node_name='Group', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -2550,7 +3906,7 @@ class ImageTexture(Node):
 
     def __init__(self, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', label=None, node_color=None):
 
-        super().__init__('GeometryNodeImageTexture', name='Image Texture', label=label, node_color=node_color)
+        super().__init__('GeometryNodeImageTexture', node_name='Image Texture', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -2584,6 +3940,38 @@ class ImageTexture(Node):
     def interpolation(self, value):
         self.bnode.interpolation = value
 
+    @property
+    def color(self):
+        return self.get_output_socket('color')
+
+    @property
+    def alpha(self):
+        return self.get_output_socket('alpha')
+
+    @property
+    def image(self):
+        raise AttributeError("Attribute error on node 'ImageTexture': the input socket 'image' is write only.")
+
+    @image.setter
+    def image(self, value):
+        self.set_input_socket('image', value)
+
+    @property
+    def vector(self):
+        raise AttributeError("Attribute error on node 'ImageTexture': the input socket 'vector' is write only.")
+
+    @vector.setter
+    def vector(self, value):
+        self.set_input_socket('vector', value)
+
+    @property
+    def frame(self):
+        raise AttributeError("Attribute error on node 'ImageTexture': the input socket 'frame' is write only.")
+
+    @frame.setter
+    def frame(self, value):
+        self.set_input_socket('frame', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node CurveHandlePositions for GeometryNodeInputCurveHandlePositions
 
@@ -2609,7 +3997,7 @@ class CurveHandlePositions(Node):
 
     def __init__(self, relative=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputCurveHandlePositions', name='Curve Handle Positions', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputCurveHandlePositions', node_name='Curve Handle Positions', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -2619,6 +4007,22 @@ class CurveHandlePositions(Node):
         # Input sockets plugging
 
         if relative        is not None: self.relative        = relative
+
+    @property
+    def left(self):
+        return self.get_output_socket('left')
+
+    @property
+    def right(self):
+        return self.get_output_socket('right')
+
+    @property
+    def relative(self):
+        raise AttributeError("Attribute error on node 'CurveHandlePositions': the input socket 'relative' is write only.")
+
+    @relative.setter
+    def relative(self, value):
+        self.set_input_socket('relative', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node CurveTilt for GeometryNodeInputCurveTilt
@@ -2643,12 +4047,16 @@ class CurveTilt(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputCurveTilt', name='Curve Tilt', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputCurveTilt', node_name='Curve Tilt', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'tilt' : 0, }
+
+    @property
+    def tilt(self):
+        return self.get_output_socket('tilt')
 
 # ----------------------------------------------------------------------------------------------------
 # Node ID for GeometryNodeInputID
@@ -2673,12 +4081,16 @@ class ID(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputID', name='ID', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputID', node_name='ID', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'ID' : 0, }
+
+    @property
+    def ID(self):
+        return self.get_output_socket('ID')
 
 # ----------------------------------------------------------------------------------------------------
 # Node Index for GeometryNodeInputIndex
@@ -2703,12 +4115,16 @@ class Index(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputIndex', name='Index', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputIndex', node_name='Index', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'index' : 0, }
+
+    @property
+    def index(self):
+        return self.get_output_socket('index')
 
 # ----------------------------------------------------------------------------------------------------
 # Node Material for GeometryNodeInputMaterial
@@ -2733,12 +4149,16 @@ class Material(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMaterial', name='Material', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputMaterial', node_name='Material', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'material' : 0, }
+
+    @property
+    def material(self):
+        return self.get_output_socket('material')
 
 # ----------------------------------------------------------------------------------------------------
 # Node MaterialIndex for GeometryNodeInputMaterialIndex
@@ -2763,12 +4183,16 @@ class MaterialIndex(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMaterialIndex', name='Material Index', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputMaterialIndex', node_name='Material Index', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'material_index' : 0, }
+
+    @property
+    def material_index(self):
+        return self.get_output_socket('material_index')
 
 # ----------------------------------------------------------------------------------------------------
 # Node EdgeAngle for GeometryNodeInputMeshEdgeAngle
@@ -2794,12 +4218,20 @@ class EdgeAngle(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMeshEdgeAngle', name='Edge Angle', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputMeshEdgeAngle', node_name='Edge Angle', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'unsigned_angle' : 0, 'signed_angle' : 1, }
+
+    @property
+    def unsigned_angle(self):
+        return self.get_output_socket('unsigned_angle')
+
+    @property
+    def signed_angle(self):
+        return self.get_output_socket('signed_angle')
 
 # ----------------------------------------------------------------------------------------------------
 # Node EdgeNeighbors for GeometryNodeInputMeshEdgeNeighbors
@@ -2824,12 +4256,16 @@ class EdgeNeighbors(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMeshEdgeNeighbors', name='Edge Neighbors', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputMeshEdgeNeighbors', node_name='Edge Neighbors', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'face_count' : 0, }
+
+    @property
+    def face_count(self):
+        return self.get_output_socket('face_count')
 
 # ----------------------------------------------------------------------------------------------------
 # Node EdgeVertices for GeometryNodeInputMeshEdgeVertices
@@ -2857,12 +4293,28 @@ class EdgeVertices(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMeshEdgeVertices', name='Edge Vertices', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputMeshEdgeVertices', node_name='Edge Vertices', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'vertex_index_1' : 0, 'vertex_index_2' : 1, 'position_1' : 2, 'position_2' : 3, }
+
+    @property
+    def vertex_index_1(self):
+        return self.get_output_socket('vertex_index_1')
+
+    @property
+    def vertex_index_2(self):
+        return self.get_output_socket('vertex_index_2')
+
+    @property
+    def position_1(self):
+        return self.get_output_socket('position_1')
+
+    @property
+    def position_2(self):
+        return self.get_output_socket('position_2')
 
 # ----------------------------------------------------------------------------------------------------
 # Node FaceArea for GeometryNodeInputMeshFaceArea
@@ -2887,12 +4339,16 @@ class FaceArea(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMeshFaceArea', name='Face Area', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputMeshFaceArea', node_name='Face Area', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'area' : 0, }
+
+    @property
+    def area(self):
+        return self.get_output_socket('area')
 
 # ----------------------------------------------------------------------------------------------------
 # Node FaceIsPlanar for GeometryNodeInputMeshFaceIsPlanar
@@ -2918,7 +4374,7 @@ class FaceIsPlanar(Node):
 
     def __init__(self, threshold=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMeshFaceIsPlanar', name='Face is Planar', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputMeshFaceIsPlanar', node_name='Face is Planar', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -2928,6 +4384,18 @@ class FaceIsPlanar(Node):
         # Input sockets plugging
 
         if threshold       is not None: self.threshold       = threshold
+
+    @property
+    def planar(self):
+        return self.get_output_socket('planar')
+
+    @property
+    def threshold(self):
+        raise AttributeError("Attribute error on node 'FaceIsPlanar': the input socket 'threshold' is write only.")
+
+    @threshold.setter
+    def threshold(self, value):
+        self.set_input_socket('threshold', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node FaceNeighbors for GeometryNodeInputMeshFaceNeighbors
@@ -2953,12 +4421,20 @@ class FaceNeighbors(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMeshFaceNeighbors', name='Face Neighbors', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputMeshFaceNeighbors', node_name='Face Neighbors', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'vertex_count' : 0, 'face_count' : 1, }
+
+    @property
+    def vertex_count(self):
+        return self.get_output_socket('vertex_count')
+
+    @property
+    def face_count(self):
+        return self.get_output_socket('face_count')
 
 # ----------------------------------------------------------------------------------------------------
 # Node MeshIsland for GeometryNodeInputMeshIsland
@@ -2984,12 +4460,20 @@ class MeshIsland(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMeshIsland', name='Mesh Island', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputMeshIsland', node_name='Mesh Island', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'island_index' : 0, 'island_count' : 1, }
+
+    @property
+    def island_index(self):
+        return self.get_output_socket('island_index')
+
+    @property
+    def island_count(self):
+        return self.get_output_socket('island_count')
 
 # ----------------------------------------------------------------------------------------------------
 # Node VertexNeighbors for GeometryNodeInputMeshVertexNeighbors
@@ -3015,12 +4499,20 @@ class VertexNeighbors(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMeshVertexNeighbors', name='Vertex Neighbors', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputMeshVertexNeighbors', node_name='Vertex Neighbors', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'vertex_count' : 0, 'face_count' : 1, }
+
+    @property
+    def vertex_count(self):
+        return self.get_output_socket('vertex_count')
+
+    @property
+    def face_count(self):
+        return self.get_output_socket('face_count')
 
 # ----------------------------------------------------------------------------------------------------
 # Node NamedAttribute for GeometryNodeInputNamedAttribute
@@ -3052,7 +4544,7 @@ class NamedAttribute(Node):
 
     def __init__(self, name=None, data_type='FLOAT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputNamedAttribute', name='Named Attribute', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputNamedAttribute', node_name='Named Attribute', label=label, node_color=node_color)
 
         # Node parameters to configure the sockets enablement
 
@@ -3074,6 +4566,18 @@ class NamedAttribute(Node):
     @data_type.setter
     def data_type(self, value):
         self.bnode.data_type = value
+
+    @property
+    def attribute(self):
+        return self.get_output_socket('attribute')
+
+    @property
+    def name(self):
+        raise AttributeError("Attribute error on node 'NamedAttribute': the input socket 'name' is write only.")
+
+    @name.setter
+    def name(self, value):
+        self.set_input_socket('name', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Normal for GeometryNodeInputNormal
@@ -3098,12 +4602,16 @@ class Normal(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputNormal', name='Normal', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputNormal', node_name='Normal', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'normal' : 0, }
+
+    @property
+    def normal(self):
+        return self.get_output_socket('normal')
 
 # ----------------------------------------------------------------------------------------------------
 # Node Position for GeometryNodeInputPosition
@@ -3128,12 +4636,16 @@ class Position(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputPosition', name='Position', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputPosition', node_name='Position', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'position' : 0, }
+
+    @property
+    def position(self):
+        return self.get_output_socket('position')
 
 # ----------------------------------------------------------------------------------------------------
 # Node Radius for GeometryNodeInputRadius
@@ -3158,12 +4670,16 @@ class Radius(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputRadius', name='Radius', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputRadius', node_name='Radius', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'radius' : 0, }
+
+    @property
+    def radius(self):
+        return self.get_output_socket('radius')
 
 # ----------------------------------------------------------------------------------------------------
 # Node SceneTime for GeometryNodeInputSceneTime
@@ -3189,12 +4705,20 @@ class SceneTime(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputSceneTime', name='Scene Time', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputSceneTime', node_name='Scene Time', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'seconds' : 0, 'frame' : 1, }
+
+    @property
+    def seconds(self):
+        return self.get_output_socket('seconds')
+
+    @property
+    def frame(self):
+        return self.get_output_socket('frame')
 
 # ----------------------------------------------------------------------------------------------------
 # Node IsShadeSmooth for GeometryNodeInputShadeSmooth
@@ -3219,12 +4743,16 @@ class IsShadeSmooth(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputShadeSmooth', name='Is Shade Smooth', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputShadeSmooth', node_name='Is Shade Smooth', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'smooth' : 0, }
+
+    @property
+    def smooth(self):
+        return self.get_output_socket('smooth')
 
 # ----------------------------------------------------------------------------------------------------
 # Node IsSplineCyclic for GeometryNodeInputSplineCyclic
@@ -3249,12 +4777,16 @@ class IsSplineCyclic(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputSplineCyclic', name='Is Spline Cyclic', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputSplineCyclic', node_name='Is Spline Cyclic', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'cyclic' : 0, }
+
+    @property
+    def cyclic(self):
+        return self.get_output_socket('cyclic')
 
 # ----------------------------------------------------------------------------------------------------
 # Node SplineResolution for GeometryNodeInputSplineResolution
@@ -3279,12 +4811,16 @@ class SplineResolution(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputSplineResolution', name='Spline Resolution', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputSplineResolution', node_name='Spline Resolution', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'resolution' : 0, }
+
+    @property
+    def resolution(self):
+        return self.get_output_socket('resolution')
 
 # ----------------------------------------------------------------------------------------------------
 # Node CurveTangent for GeometryNodeInputTangent
@@ -3309,12 +4845,16 @@ class CurveTangent(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputTangent', name='Curve Tangent', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputTangent', node_name='Curve Tangent', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'tangent' : 0, }
+
+    @property
+    def tangent(self):
+        return self.get_output_socket('tangent')
 
 # ----------------------------------------------------------------------------------------------------
 # Node InstanceOnPoints for GeometryNodeInstanceOnPoints
@@ -3346,7 +4886,7 @@ class InstanceOnPoints(Node):
 
     def __init__(self, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInstanceOnPoints', name='Instance on Points', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInstanceOnPoints', node_name='Instance on Points', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -3362,6 +4902,66 @@ class InstanceOnPoints(Node):
         if instance_index  is not None: self.instance_index  = instance_index
         if rotation        is not None: self.rotation        = rotation
         if scale           is not None: self.scale           = scale
+
+    @property
+    def instances(self):
+        return self.get_output_socket('instances')
+
+    @property
+    def points(self):
+        raise AttributeError("Attribute error on node 'InstanceOnPoints': the input socket 'points' is write only.")
+
+    @points.setter
+    def points(self, value):
+        self.set_input_socket('points', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'InstanceOnPoints': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def instance(self):
+        raise AttributeError("Attribute error on node 'InstanceOnPoints': the input socket 'instance' is write only.")
+
+    @instance.setter
+    def instance(self, value):
+        self.set_input_socket('instance', value)
+
+    @property
+    def pick_instance(self):
+        raise AttributeError("Attribute error on node 'InstanceOnPoints': the input socket 'pick_instance' is write only.")
+
+    @pick_instance.setter
+    def pick_instance(self, value):
+        self.set_input_socket('pick_instance', value)
+
+    @property
+    def instance_index(self):
+        raise AttributeError("Attribute error on node 'InstanceOnPoints': the input socket 'instance_index' is write only.")
+
+    @instance_index.setter
+    def instance_index(self, value):
+        self.set_input_socket('instance_index', value)
+
+    @property
+    def rotation(self):
+        raise AttributeError("Attribute error on node 'InstanceOnPoints': the input socket 'rotation' is write only.")
+
+    @rotation.setter
+    def rotation(self, value):
+        self.set_input_socket('rotation', value)
+
+    @property
+    def scale(self):
+        raise AttributeError("Attribute error on node 'InstanceOnPoints': the input socket 'scale' is write only.")
+
+    @scale.setter
+    def scale(self, value):
+        self.set_input_socket('scale', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node InstancesToPoints for GeometryNodeInstancesToPoints
@@ -3390,7 +4990,7 @@ class InstancesToPoints(Node):
 
     def __init__(self, instances=None, selection=None, position=None, radius=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInstancesToPoints', name='Instances to Points', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInstancesToPoints', node_name='Instances to Points', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -3403,6 +5003,42 @@ class InstancesToPoints(Node):
         if selection       is not None: self.selection       = selection
         if position        is not None: self.position        = position
         if radius          is not None: self.radius          = radius
+
+    @property
+    def points(self):
+        return self.get_output_socket('points')
+
+    @property
+    def instances(self):
+        raise AttributeError("Attribute error on node 'InstancesToPoints': the input socket 'instances' is write only.")
+
+    @instances.setter
+    def instances(self, value):
+        self.set_input_socket('instances', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'InstancesToPoints': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def position(self):
+        raise AttributeError("Attribute error on node 'InstancesToPoints': the input socket 'position' is write only.")
+
+    @position.setter
+    def position(self, value):
+        self.set_input_socket('position', value)
+
+    @property
+    def radius(self):
+        raise AttributeError("Attribute error on node 'InstancesToPoints': the input socket 'radius' is write only.")
+
+    @radius.setter
+    def radius(self, value):
+        self.set_input_socket('radius', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node IsViewport for GeometryNodeIsViewport
@@ -3427,12 +5063,16 @@ class IsViewport(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeIsViewport', name='Is Viewport', label=label, node_color=node_color)
+        super().__init__('GeometryNodeIsViewport', node_name='Is Viewport', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'is_viewport' : 0, }
+
+    @property
+    def is_viewport(self):
+        return self.get_output_socket('is_viewport')
 
 # ----------------------------------------------------------------------------------------------------
 # Node JoinGeometry for GeometryNodeJoinGeometry
@@ -3458,7 +5098,7 @@ class JoinGeometry(Node):
 
     def __init__(self, *geometry, label=None, node_color=None):
 
-        super().__init__('GeometryNodeJoinGeometry', name='Join Geometry', label=label, node_color=node_color)
+        super().__init__('GeometryNodeJoinGeometry', node_name='Join Geometry', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -3468,6 +5108,14 @@ class JoinGeometry(Node):
         # Input sockets plugging
 
         self.plug(0, *geometry)
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node MaterialSelection for GeometryNodeMaterialSelection
@@ -3493,7 +5141,7 @@ class MaterialSelection(Node):
 
     def __init__(self, material=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeMaterialSelection', name='Material Selection', label=label, node_color=node_color)
+        super().__init__('GeometryNodeMaterialSelection', node_name='Material Selection', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -3503,6 +5151,18 @@ class MaterialSelection(Node):
         # Input sockets plugging
 
         if material        is not None: self.material        = material
+
+    @property
+    def selection(self):
+        return self.get_output_socket('selection')
+
+    @property
+    def material(self):
+        raise AttributeError("Attribute error on node 'MaterialSelection': the input socket 'material' is write only.")
+
+    @material.setter
+    def material(self, value):
+        self.set_input_socket('material', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node MergeByDistance for GeometryNodeMergeByDistance
@@ -3531,7 +5191,7 @@ class MergeByDistance(Node):
 
     def __init__(self, geometry=None, selection=None, distance=None, mode='ALL', label=None, node_color=None):
 
-        super().__init__('GeometryNodeMergeByDistance', name='Merge by Distance', label=label, node_color=node_color)
+        super().__init__('GeometryNodeMergeByDistance', node_name='Merge by Distance', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -3555,6 +5215,30 @@ class MergeByDistance(Node):
     @mode.setter
     def mode(self, value):
         self.bnode.mode = value
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'MergeByDistance': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def distance(self):
+        raise AttributeError("Attribute error on node 'MergeByDistance': the input socket 'distance' is write only.")
+
+    @distance.setter
+    def distance(self, value):
+        self.set_input_socket('distance', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node MeshBoolean for GeometryNodeMeshBoolean
@@ -3584,7 +5268,7 @@ class MeshBoolean(Node):
 
     def __init__(self, *mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshBoolean', name='Mesh Boolean', label=label, node_color=node_color)
+        super().__init__('GeometryNodeMeshBoolean', node_name='Mesh Boolean', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -3609,6 +5293,42 @@ class MeshBoolean(Node):
     @operation.setter
     def operation(self, value):
         self.bnode.operation = value
+
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @property
+    def mesh_1(self):
+        raise AttributeError("Attribute error on node 'MeshBoolean': the input socket 'mesh_1' is write only.")
+
+    @mesh_1.setter
+    def mesh_1(self, value):
+        self.set_input_socket('mesh_1', value)
+
+    @property
+    def mesh_2(self):
+        raise AttributeError("Attribute error on node 'MeshBoolean': the input socket 'mesh_2' is write only.")
+
+    @mesh_2.setter
+    def mesh_2(self, value):
+        self.set_input_socket('mesh_2', value)
+
+    @property
+    def self_intersection(self):
+        raise AttributeError("Attribute error on node 'MeshBoolean': the input socket 'self_intersection' is write only.")
+
+    @self_intersection.setter
+    def self_intersection(self, value):
+        self.set_input_socket('self_intersection', value)
+
+    @property
+    def hole_tolerant(self):
+        raise AttributeError("Attribute error on node 'MeshBoolean': the input socket 'hole_tolerant' is write only.")
+
+    @hole_tolerant.setter
+    def hole_tolerant(self, value):
+        self.set_input_socket('hole_tolerant', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node MeshCircle for GeometryNodeMeshCircle
@@ -3636,7 +5356,7 @@ class MeshCircle(Node):
 
     def __init__(self, vertices=None, radius=None, fill_type='NONE', label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshCircle', name='Mesh Circle', label=label, node_color=node_color)
+        super().__init__('GeometryNodeMeshCircle', node_name='Mesh Circle', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -3659,6 +5379,26 @@ class MeshCircle(Node):
     @fill_type.setter
     def fill_type(self, value):
         self.bnode.fill_type = value
+
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @property
+    def vertices(self):
+        raise AttributeError("Attribute error on node 'MeshCircle': the input socket 'vertices' is write only.")
+
+    @vertices.setter
+    def vertices(self, value):
+        self.set_input_socket('vertices', value)
+
+    @property
+    def radius(self):
+        raise AttributeError("Attribute error on node 'MeshCircle': the input socket 'radius' is write only.")
+
+    @radius.setter
+    def radius(self, value):
+        self.set_input_socket('radius', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Cone for GeometryNodeMeshCone
@@ -3693,7 +5433,7 @@ class Cone(Node):
 
     def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshCone', name='Cone', label=label, node_color=node_color)
+        super().__init__('GeometryNodeMeshCone', node_name='Cone', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -3720,6 +5460,70 @@ class Cone(Node):
     @fill_type.setter
     def fill_type(self, value):
         self.bnode.fill_type = value
+
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @property
+    def top(self):
+        return self.get_output_socket('top')
+
+    @property
+    def bottom(self):
+        return self.get_output_socket('bottom')
+
+    @property
+    def side(self):
+        return self.get_output_socket('side')
+
+    @property
+    def vertices(self):
+        raise AttributeError("Attribute error on node 'Cone': the input socket 'vertices' is write only.")
+
+    @vertices.setter
+    def vertices(self, value):
+        self.set_input_socket('vertices', value)
+
+    @property
+    def side_segments(self):
+        raise AttributeError("Attribute error on node 'Cone': the input socket 'side_segments' is write only.")
+
+    @side_segments.setter
+    def side_segments(self, value):
+        self.set_input_socket('side_segments', value)
+
+    @property
+    def fill_segments(self):
+        raise AttributeError("Attribute error on node 'Cone': the input socket 'fill_segments' is write only.")
+
+    @fill_segments.setter
+    def fill_segments(self, value):
+        self.set_input_socket('fill_segments', value)
+
+    @property
+    def radius_top(self):
+        raise AttributeError("Attribute error on node 'Cone': the input socket 'radius_top' is write only.")
+
+    @radius_top.setter
+    def radius_top(self, value):
+        self.set_input_socket('radius_top', value)
+
+    @property
+    def radius_bottom(self):
+        raise AttributeError("Attribute error on node 'Cone': the input socket 'radius_bottom' is write only.")
+
+    @radius_bottom.setter
+    def radius_bottom(self, value):
+        self.set_input_socket('radius_bottom', value)
+
+    @property
+    def depth(self):
+        raise AttributeError("Attribute error on node 'Cone': the input socket 'depth' is write only.")
+
+    @depth.setter
+    def depth(self, value):
+        self.set_input_socket('depth', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Cube for GeometryNodeMeshCube
@@ -3748,7 +5552,7 @@ class Cube(Node):
 
     def __init__(self, size=None, vertices_x=None, vertices_y=None, vertices_z=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshCube', name='Cube', label=label, node_color=node_color)
+        super().__init__('GeometryNodeMeshCube', node_name='Cube', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -3761,6 +5565,42 @@ class Cube(Node):
         if vertices_x      is not None: self.vertices_x      = vertices_x
         if vertices_y      is not None: self.vertices_y      = vertices_y
         if vertices_z      is not None: self.vertices_z      = vertices_z
+
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @property
+    def size(self):
+        raise AttributeError("Attribute error on node 'Cube': the input socket 'size' is write only.")
+
+    @size.setter
+    def size(self, value):
+        self.set_input_socket('size', value)
+
+    @property
+    def vertices_x(self):
+        raise AttributeError("Attribute error on node 'Cube': the input socket 'vertices_x' is write only.")
+
+    @vertices_x.setter
+    def vertices_x(self, value):
+        self.set_input_socket('vertices_x', value)
+
+    @property
+    def vertices_y(self):
+        raise AttributeError("Attribute error on node 'Cube': the input socket 'vertices_y' is write only.")
+
+    @vertices_y.setter
+    def vertices_y(self, value):
+        self.set_input_socket('vertices_y', value)
+
+    @property
+    def vertices_z(self):
+        raise AttributeError("Attribute error on node 'Cube': the input socket 'vertices_z' is write only.")
+
+    @vertices_z.setter
+    def vertices_z(self, value):
+        self.set_input_socket('vertices_z', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Cylinder for GeometryNodeMeshCylinder
@@ -3794,7 +5634,7 @@ class Cylinder(Node):
 
     def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshCylinder', name='Cylinder', label=label, node_color=node_color)
+        super().__init__('GeometryNodeMeshCylinder', node_name='Cylinder', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -3820,6 +5660,62 @@ class Cylinder(Node):
     @fill_type.setter
     def fill_type(self, value):
         self.bnode.fill_type = value
+
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @property
+    def top(self):
+        return self.get_output_socket('top')
+
+    @property
+    def side(self):
+        return self.get_output_socket('side')
+
+    @property
+    def bottom(self):
+        return self.get_output_socket('bottom')
+
+    @property
+    def vertices(self):
+        raise AttributeError("Attribute error on node 'Cylinder': the input socket 'vertices' is write only.")
+
+    @vertices.setter
+    def vertices(self, value):
+        self.set_input_socket('vertices', value)
+
+    @property
+    def side_segments(self):
+        raise AttributeError("Attribute error on node 'Cylinder': the input socket 'side_segments' is write only.")
+
+    @side_segments.setter
+    def side_segments(self, value):
+        self.set_input_socket('side_segments', value)
+
+    @property
+    def fill_segments(self):
+        raise AttributeError("Attribute error on node 'Cylinder': the input socket 'fill_segments' is write only.")
+
+    @fill_segments.setter
+    def fill_segments(self, value):
+        self.set_input_socket('fill_segments', value)
+
+    @property
+    def radius(self):
+        raise AttributeError("Attribute error on node 'Cylinder': the input socket 'radius' is write only.")
+
+    @radius.setter
+    def radius(self, value):
+        self.set_input_socket('radius', value)
+
+    @property
+    def depth(self):
+        raise AttributeError("Attribute error on node 'Cylinder': the input socket 'depth' is write only.")
+
+    @depth.setter
+    def depth(self, value):
+        self.set_input_socket('depth', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Grid for GeometryNodeMeshGrid
@@ -3848,7 +5744,7 @@ class Grid(Node):
 
     def __init__(self, size_x=None, size_y=None, vertices_x=None, vertices_y=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshGrid', name='Grid', label=label, node_color=node_color)
+        super().__init__('GeometryNodeMeshGrid', node_name='Grid', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -3861,6 +5757,42 @@ class Grid(Node):
         if size_y          is not None: self.size_y          = size_y
         if vertices_x      is not None: self.vertices_x      = vertices_x
         if vertices_y      is not None: self.vertices_y      = vertices_y
+
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @property
+    def size_x(self):
+        raise AttributeError("Attribute error on node 'Grid': the input socket 'size_x' is write only.")
+
+    @size_x.setter
+    def size_x(self, value):
+        self.set_input_socket('size_x', value)
+
+    @property
+    def size_y(self):
+        raise AttributeError("Attribute error on node 'Grid': the input socket 'size_y' is write only.")
+
+    @size_y.setter
+    def size_y(self, value):
+        self.set_input_socket('size_y', value)
+
+    @property
+    def vertices_x(self):
+        raise AttributeError("Attribute error on node 'Grid': the input socket 'vertices_x' is write only.")
+
+    @vertices_x.setter
+    def vertices_x(self, value):
+        self.set_input_socket('vertices_x', value)
+
+    @property
+    def vertices_y(self):
+        raise AttributeError("Attribute error on node 'Grid': the input socket 'vertices_y' is write only.")
+
+    @vertices_y.setter
+    def vertices_y(self, value):
+        self.set_input_socket('vertices_y', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node IcoSphere for GeometryNodeMeshIcoSphere
@@ -3887,7 +5819,7 @@ class IcoSphere(Node):
 
     def __init__(self, radius=None, subdivisions=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshIcoSphere', name='Ico Sphere', label=label, node_color=node_color)
+        super().__init__('GeometryNodeMeshIcoSphere', node_name='Ico Sphere', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -3898,6 +5830,26 @@ class IcoSphere(Node):
 
         if radius          is not None: self.radius          = radius
         if subdivisions    is not None: self.subdivisions    = subdivisions
+
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @property
+    def radius(self):
+        raise AttributeError("Attribute error on node 'IcoSphere': the input socket 'radius' is write only.")
+
+    @radius.setter
+    def radius(self, value):
+        self.set_input_socket('radius', value)
+
+    @property
+    def subdivisions(self):
+        raise AttributeError("Attribute error on node 'IcoSphere': the input socket 'subdivisions' is write only.")
+
+    @subdivisions.setter
+    def subdivisions(self, value):
+        self.set_input_socket('subdivisions', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node MeshLine for GeometryNodeMeshLine
@@ -3928,7 +5880,7 @@ class MeshLine(Node):
 
     def __init__(self, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshLine', name='Mesh Line', label=label, node_color=node_color)
+        super().__init__('GeometryNodeMeshLine', node_name='Mesh Line', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -3963,6 +5915,42 @@ class MeshLine(Node):
     def mode(self, value):
         self.bnode.mode = value
 
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @property
+    def count(self):
+        raise AttributeError("Attribute error on node 'MeshLine': the input socket 'count' is write only.")
+
+    @count.setter
+    def count(self, value):
+        self.set_input_socket('count', value)
+
+    @property
+    def resolution(self):
+        raise AttributeError("Attribute error on node 'MeshLine': the input socket 'resolution' is write only.")
+
+    @resolution.setter
+    def resolution(self, value):
+        self.set_input_socket('resolution', value)
+
+    @property
+    def start_location(self):
+        raise AttributeError("Attribute error on node 'MeshLine': the input socket 'start_location' is write only.")
+
+    @start_location.setter
+    def start_location(self, value):
+        self.set_input_socket('start_location', value)
+
+    @property
+    def offset(self):
+        raise AttributeError("Attribute error on node 'MeshLine': the input socket 'offset' is write only.")
+
+    @offset.setter
+    def offset(self, value):
+        self.set_input_socket('offset', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node MeshToCurve for GeometryNodeMeshToCurve
 
@@ -3988,7 +5976,7 @@ class MeshToCurve(Node):
 
     def __init__(self, mesh=None, selection=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshToCurve', name='Mesh to Curve', label=label, node_color=node_color)
+        super().__init__('GeometryNodeMeshToCurve', node_name='Mesh to Curve', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -3999,6 +5987,26 @@ class MeshToCurve(Node):
 
         if mesh            is not None: self.mesh            = mesh
         if selection       is not None: self.selection       = selection
+
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @property
+    def mesh(self):
+        raise AttributeError("Attribute error on node 'MeshToCurve': the input socket 'mesh' is write only.")
+
+    @mesh.setter
+    def mesh(self, value):
+        self.set_input_socket('mesh', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'MeshToCurve': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node MeshToPoints for GeometryNodeMeshToPoints
@@ -4028,7 +6036,7 @@ class MeshToPoints(Node):
 
     def __init__(self, mesh=None, selection=None, position=None, radius=None, mode='VERTICES', label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshToPoints', name='Mesh to Points', label=label, node_color=node_color)
+        super().__init__('GeometryNodeMeshToPoints', node_name='Mesh to Points', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -4053,6 +6061,42 @@ class MeshToPoints(Node):
     @mode.setter
     def mode(self, value):
         self.bnode.mode = value
+
+    @property
+    def points(self):
+        return self.get_output_socket('points')
+
+    @property
+    def mesh(self):
+        raise AttributeError("Attribute error on node 'MeshToPoints': the input socket 'mesh' is write only.")
+
+    @mesh.setter
+    def mesh(self, value):
+        self.set_input_socket('mesh', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'MeshToPoints': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def position(self):
+        raise AttributeError("Attribute error on node 'MeshToPoints': the input socket 'position' is write only.")
+
+    @position.setter
+    def position(self, value):
+        self.set_input_socket('position', value)
+
+    @property
+    def radius(self):
+        raise AttributeError("Attribute error on node 'MeshToPoints': the input socket 'radius' is write only.")
+
+    @radius.setter
+    def radius(self, value):
+        self.set_input_socket('radius', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node UvSphere for GeometryNodeMeshUVSphere
@@ -4080,7 +6124,7 @@ class UvSphere(Node):
 
     def __init__(self, segments=None, rings=None, radius=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshUVSphere', name='UV Sphere', label=label, node_color=node_color)
+        super().__init__('GeometryNodeMeshUVSphere', node_name='UV Sphere', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -4092,6 +6136,34 @@ class UvSphere(Node):
         if segments        is not None: self.segments        = segments
         if rings           is not None: self.rings           = rings
         if radius          is not None: self.radius          = radius
+
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @property
+    def segments(self):
+        raise AttributeError("Attribute error on node 'UvSphere': the input socket 'segments' is write only.")
+
+    @segments.setter
+    def segments(self, value):
+        self.set_input_socket('segments', value)
+
+    @property
+    def rings(self):
+        raise AttributeError("Attribute error on node 'UvSphere': the input socket 'rings' is write only.")
+
+    @rings.setter
+    def rings(self, value):
+        self.set_input_socket('rings', value)
+
+    @property
+    def radius(self):
+        raise AttributeError("Attribute error on node 'UvSphere': the input socket 'radius' is write only.")
+
+    @radius.setter
+    def radius(self, value):
+        self.set_input_socket('radius', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node ObjectInfo for GeometryNodeObjectInfo
@@ -4122,7 +6194,7 @@ class ObjectInfo(Node):
 
     def __init__(self, object=None, as_instance=None, transform_space='ORIGINAL', label=None, node_color=None):
 
-        super().__init__('GeometryNodeObjectInfo', name='Object Info', label=label, node_color=node_color)
+        super().__init__('GeometryNodeObjectInfo', node_name='Object Info', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -4145,6 +6217,38 @@ class ObjectInfo(Node):
     @transform_space.setter
     def transform_space(self, value):
         self.bnode.transform_space = value
+
+    @property
+    def location(self):
+        return self.get_output_socket('location')
+
+    @property
+    def rotation(self):
+        return self.get_output_socket('rotation')
+
+    @property
+    def scale(self):
+        return self.get_output_socket('scale')
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @property
+    def object(self):
+        raise AttributeError("Attribute error on node 'ObjectInfo': the input socket 'object' is write only.")
+
+    @object.setter
+    def object(self, value):
+        self.set_input_socket('object', value)
+
+    @property
+    def as_instance(self):
+        raise AttributeError("Attribute error on node 'ObjectInfo': the input socket 'as_instance' is write only.")
+
+    @as_instance.setter
+    def as_instance(self, value):
+        self.set_input_socket('as_instance', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node PointsToVertices for GeometryNodePointsToVertices
@@ -4171,7 +6275,7 @@ class PointsToVertices(Node):
 
     def __init__(self, points=None, selection=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodePointsToVertices', name='Points to Vertices', label=label, node_color=node_color)
+        super().__init__('GeometryNodePointsToVertices', node_name='Points to Vertices', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -4182,6 +6286,26 @@ class PointsToVertices(Node):
 
         if points          is not None: self.points          = points
         if selection       is not None: self.selection       = selection
+
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @property
+    def points(self):
+        raise AttributeError("Attribute error on node 'PointsToVertices': the input socket 'points' is write only.")
+
+    @points.setter
+    def points(self, value):
+        self.set_input_socket('points', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'PointsToVertices': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node PointsToVolume for GeometryNodePointsToVolume
@@ -4212,7 +6336,7 @@ class PointsToVolume(Node):
 
     def __init__(self, points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', label=None, node_color=None):
 
-        super().__init__('GeometryNodePointsToVolume', name='Points to Volume', label=label, node_color=node_color)
+        super().__init__('GeometryNodePointsToVolume', node_name='Points to Volume', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -4238,6 +6362,50 @@ class PointsToVolume(Node):
     @resolution_mode.setter
     def resolution_mode(self, value):
         self.bnode.resolution_mode = value
+
+    @property
+    def volume(self):
+        return self.get_output_socket('volume')
+
+    @property
+    def points(self):
+        raise AttributeError("Attribute error on node 'PointsToVolume': the input socket 'points' is write only.")
+
+    @points.setter
+    def points(self, value):
+        self.set_input_socket('points', value)
+
+    @property
+    def density(self):
+        raise AttributeError("Attribute error on node 'PointsToVolume': the input socket 'density' is write only.")
+
+    @density.setter
+    def density(self, value):
+        self.set_input_socket('density', value)
+
+    @property
+    def voxel_size(self):
+        raise AttributeError("Attribute error on node 'PointsToVolume': the input socket 'voxel_size' is write only.")
+
+    @voxel_size.setter
+    def voxel_size(self, value):
+        self.set_input_socket('voxel_size', value)
+
+    @property
+    def voxel_amount(self):
+        raise AttributeError("Attribute error on node 'PointsToVolume': the input socket 'voxel_amount' is write only.")
+
+    @voxel_amount.setter
+    def voxel_amount(self, value):
+        self.set_input_socket('voxel_amount', value)
+
+    @property
+    def radius(self):
+        raise AttributeError("Attribute error on node 'PointsToVolume': the input socket 'radius' is write only.")
+
+    @radius.setter
+    def radius(self, value):
+        self.set_input_socket('radius', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node GeometryProximity for GeometryNodeProximity
@@ -4266,7 +6434,7 @@ class GeometryProximity(Node):
 
     def __init__(self, target=None, source_position=None, target_element='FACES', label=None, node_color=None):
 
-        super().__init__('GeometryNodeProximity', name='Geometry Proximity', label=label, node_color=node_color)
+        super().__init__('GeometryNodeProximity', node_name='Geometry Proximity', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -4289,6 +6457,30 @@ class GeometryProximity(Node):
     @target_element.setter
     def target_element(self, value):
         self.bnode.target_element = value
+
+    @property
+    def position(self):
+        return self.get_output_socket('position')
+
+    @property
+    def distance(self):
+        return self.get_output_socket('distance')
+
+    @property
+    def target(self):
+        raise AttributeError("Attribute error on node 'GeometryProximity': the input socket 'target' is write only.")
+
+    @target.setter
+    def target(self, value):
+        self.set_input_socket('target', value)
+
+    @property
+    def source_position(self):
+        raise AttributeError("Attribute error on node 'GeometryProximity': the input socket 'source_position' is write only.")
+
+    @source_position.setter
+    def source_position(self, value):
+        self.set_input_socket('source_position', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Raycast for GeometryNodeRaycast
@@ -4329,7 +6521,7 @@ class Raycast(Node):
 
     def __init__(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED', label=None, node_color=None):
 
-        super().__init__('GeometryNodeRaycast', name='Raycast', label=label, node_color=node_color)
+        super().__init__('GeometryNodeRaycast', node_name='Raycast', label=label, node_color=node_color)
 
         # Node parameters to configure the sockets enablement
 
@@ -4365,6 +6557,62 @@ class Raycast(Node):
     def mapping(self, value):
         self.bnode.mapping = value
 
+    @property
+    def is_hit(self):
+        return self.get_output_socket('is_hit')
+
+    @property
+    def hit_position(self):
+        return self.get_output_socket('hit_position')
+
+    @property
+    def hit_normal(self):
+        return self.get_output_socket('hit_normal')
+
+    @property
+    def hit_distance(self):
+        return self.get_output_socket('hit_distance')
+
+    @property
+    def attribute(self):
+        return self.get_output_socket('attribute')
+
+    @property
+    def target_geometry(self):
+        raise AttributeError("Attribute error on node 'Raycast': the input socket 'target_geometry' is write only.")
+
+    @target_geometry.setter
+    def target_geometry(self, value):
+        self.set_input_socket('target_geometry', value)
+
+    @attribute.setter
+    def attribute(self, value):
+        self.set_input_socket('attribute', value)
+
+    @property
+    def source_position(self):
+        raise AttributeError("Attribute error on node 'Raycast': the input socket 'source_position' is write only.")
+
+    @source_position.setter
+    def source_position(self, value):
+        self.set_input_socket('source_position', value)
+
+    @property
+    def ray_direction(self):
+        raise AttributeError("Attribute error on node 'Raycast': the input socket 'ray_direction' is write only.")
+
+    @ray_direction.setter
+    def ray_direction(self, value):
+        self.set_input_socket('ray_direction', value)
+
+    @property
+    def ray_length(self):
+        raise AttributeError("Attribute error on node 'Raycast': the input socket 'ray_length' is write only.")
+
+    @ray_length.setter
+    def ray_length(self, value):
+        self.set_input_socket('ray_length', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node RealizeInstances for GeometryNodeRealizeInstances
 
@@ -4390,7 +6638,7 @@ class RealizeInstances(Node):
 
     def __init__(self, geometry=None, legacy_behavior=False, label=None, node_color=None):
 
-        super().__init__('GeometryNodeRealizeInstances', name='Realize Instances', label=label, node_color=node_color)
+        super().__init__('GeometryNodeRealizeInstances', node_name='Realize Instances', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -4412,6 +6660,14 @@ class RealizeInstances(Node):
     @legacy_behavior.setter
     def legacy_behavior(self, value):
         self.bnode.legacy_behavior = value
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node RemoveNamedAttribute for GeometryNodeRemoveAttribute
@@ -4438,7 +6694,7 @@ class RemoveNamedAttribute(Node):
 
     def __init__(self, geometry=None, name=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeRemoveAttribute', name='Remove Named Attribute', label=label, node_color=node_color)
+        super().__init__('GeometryNodeRemoveAttribute', node_name='Remove Named Attribute', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -4449,6 +6705,22 @@ class RemoveNamedAttribute(Node):
 
         if geometry        is not None: self.geometry        = geometry
         if name            is not None: self.name            = name
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def name(self):
+        raise AttributeError("Attribute error on node 'RemoveNamedAttribute': the input socket 'name' is write only.")
+
+    @name.setter
+    def name(self, value):
+        self.set_input_socket('name', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node ReplaceMaterial for GeometryNodeReplaceMaterial
@@ -4476,7 +6748,7 @@ class ReplaceMaterial(Node):
 
     def __init__(self, geometry=None, old=None, new=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeReplaceMaterial', name='Replace Material', label=label, node_color=node_color)
+        super().__init__('GeometryNodeReplaceMaterial', node_name='Replace Material', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -4488,6 +6760,30 @@ class ReplaceMaterial(Node):
         if geometry        is not None: self.geometry        = geometry
         if old             is not None: self.old             = old
         if new             is not None: self.new             = new
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def old(self):
+        raise AttributeError("Attribute error on node 'ReplaceMaterial': the input socket 'old' is write only.")
+
+    @old.setter
+    def old(self, value):
+        self.set_input_socket('old', value)
+
+    @property
+    def new(self):
+        raise AttributeError("Attribute error on node 'ReplaceMaterial': the input socket 'new' is write only.")
+
+    @new.setter
+    def new(self, value):
+        self.set_input_socket('new', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node ResampleCurve for GeometryNodeResampleCurve
@@ -4517,7 +6813,7 @@ class ResampleCurve(Node):
 
     def __init__(self, curve=None, selection=None, count=None, length=None, mode='COUNT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeResampleCurve', name='Resample Curve', label=label, node_color=node_color)
+        super().__init__('GeometryNodeResampleCurve', node_name='Resample Curve', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -4542,6 +6838,38 @@ class ResampleCurve(Node):
     @mode.setter
     def mode(self, value):
         self.bnode.mode = value
+
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @curve.setter
+    def curve(self, value):
+        self.set_input_socket('curve', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'ResampleCurve': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def count(self):
+        raise AttributeError("Attribute error on node 'ResampleCurve': the input socket 'count' is write only.")
+
+    @count.setter
+    def count(self, value):
+        self.set_input_socket('count', value)
+
+    @property
+    def length(self):
+        raise AttributeError("Attribute error on node 'ResampleCurve': the input socket 'length' is write only.")
+
+    @length.setter
+    def length(self, value):
+        self.set_input_socket('length', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node ReverseCurve for GeometryNodeReverseCurve
@@ -4568,7 +6896,7 @@ class ReverseCurve(Node):
 
     def __init__(self, curve=None, selection=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeReverseCurve', name='Reverse Curve', label=label, node_color=node_color)
+        super().__init__('GeometryNodeReverseCurve', node_name='Reverse Curve', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -4579,6 +6907,22 @@ class ReverseCurve(Node):
 
         if curve           is not None: self.curve           = curve
         if selection       is not None: self.selection       = selection
+
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @curve.setter
+    def curve(self, value):
+        self.set_input_socket('curve', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'ReverseCurve': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node RotateInstances for GeometryNodeRotateInstances
@@ -4608,7 +6952,7 @@ class RotateInstances(Node):
 
     def __init__(self, instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeRotateInstances', name='Rotate Instances', label=label, node_color=node_color)
+        super().__init__('GeometryNodeRotateInstances', node_name='Rotate Instances', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -4622,6 +6966,46 @@ class RotateInstances(Node):
         if rotation        is not None: self.rotation        = rotation
         if pivot_point     is not None: self.pivot_point     = pivot_point
         if local_space     is not None: self.local_space     = local_space
+
+    @property
+    def instances(self):
+        return self.get_output_socket('instances')
+
+    @instances.setter
+    def instances(self, value):
+        self.set_input_socket('instances', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'RotateInstances': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def rotation(self):
+        raise AttributeError("Attribute error on node 'RotateInstances': the input socket 'rotation' is write only.")
+
+    @rotation.setter
+    def rotation(self, value):
+        self.set_input_socket('rotation', value)
+
+    @property
+    def pivot_point(self):
+        raise AttributeError("Attribute error on node 'RotateInstances': the input socket 'pivot_point' is write only.")
+
+    @pivot_point.setter
+    def pivot_point(self, value):
+        self.set_input_socket('pivot_point', value)
+
+    @property
+    def local_space(self):
+        raise AttributeError("Attribute error on node 'RotateInstances': the input socket 'local_space' is write only.")
+
+    @local_space.setter
+    def local_space(self, value):
+        self.set_input_socket('local_space', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SampleCurve for GeometryNodeSampleCurve
@@ -4652,7 +7036,7 @@ class SampleCurve(Node):
 
     def __init__(self, curve=None, factor=None, length=None, mode='LENGTH', label=None, node_color=None):
 
-        super().__init__('GeometryNodeSampleCurve', name='Sample Curve', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSampleCurve', node_name='Sample Curve', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -4676,6 +7060,42 @@ class SampleCurve(Node):
     @mode.setter
     def mode(self, value):
         self.bnode.mode = value
+
+    @property
+    def position(self):
+        return self.get_output_socket('position')
+
+    @property
+    def tangent(self):
+        return self.get_output_socket('tangent')
+
+    @property
+    def normal(self):
+        return self.get_output_socket('normal')
+
+    @property
+    def curve(self):
+        raise AttributeError("Attribute error on node 'SampleCurve': the input socket 'curve' is write only.")
+
+    @curve.setter
+    def curve(self, value):
+        self.set_input_socket('curve', value)
+
+    @property
+    def factor(self):
+        raise AttributeError("Attribute error on node 'SampleCurve': the input socket 'factor' is write only.")
+
+    @factor.setter
+    def factor(self, value):
+        self.set_input_socket('factor', value)
+
+    @property
+    def length(self):
+        raise AttributeError("Attribute error on node 'SampleCurve': the input socket 'length' is write only.")
+
+    @length.setter
+    def length(self, value):
+        self.set_input_socket('length', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node ScaleElements for GeometryNodeScaleElements
@@ -4707,7 +7127,7 @@ class ScaleElements(Node):
 
     def __init__(self, geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', label=None, node_color=None):
 
-        super().__init__('GeometryNodeScaleElements', name='Scale Elements', label=label, node_color=node_color)
+        super().__init__('GeometryNodeScaleElements', node_name='Scale Elements', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -4743,6 +7163,46 @@ class ScaleElements(Node):
     def scale_mode(self, value):
         self.bnode.scale_mode = value
 
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'ScaleElements': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def scale(self):
+        raise AttributeError("Attribute error on node 'ScaleElements': the input socket 'scale' is write only.")
+
+    @scale.setter
+    def scale(self, value):
+        self.set_input_socket('scale', value)
+
+    @property
+    def center(self):
+        raise AttributeError("Attribute error on node 'ScaleElements': the input socket 'center' is write only.")
+
+    @center.setter
+    def center(self, value):
+        self.set_input_socket('center', value)
+
+    @property
+    def axis(self):
+        raise AttributeError("Attribute error on node 'ScaleElements': the input socket 'axis' is write only.")
+
+    @axis.setter
+    def axis(self, value):
+        self.set_input_socket('axis', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node ScaleInstances for GeometryNodeScaleInstances
 
@@ -4771,7 +7231,7 @@ class ScaleInstances(Node):
 
     def __init__(self, instances=None, selection=None, scale=None, center=None, local_space=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeScaleInstances', name='Scale Instances', label=label, node_color=node_color)
+        super().__init__('GeometryNodeScaleInstances', node_name='Scale Instances', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -4785,6 +7245,46 @@ class ScaleInstances(Node):
         if scale           is not None: self.scale           = scale
         if center          is not None: self.center          = center
         if local_space     is not None: self.local_space     = local_space
+
+    @property
+    def instances(self):
+        return self.get_output_socket('instances')
+
+    @instances.setter
+    def instances(self, value):
+        self.set_input_socket('instances', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'ScaleInstances': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def scale(self):
+        raise AttributeError("Attribute error on node 'ScaleInstances': the input socket 'scale' is write only.")
+
+    @scale.setter
+    def scale(self, value):
+        self.set_input_socket('scale', value)
+
+    @property
+    def center(self):
+        raise AttributeError("Attribute error on node 'ScaleInstances': the input socket 'center' is write only.")
+
+    @center.setter
+    def center(self, value):
+        self.set_input_socket('center', value)
+
+    @property
+    def local_space(self):
+        raise AttributeError("Attribute error on node 'ScaleInstances': the input socket 'local_space' is write only.")
+
+    @local_space.setter
+    def local_space(self, value):
+        self.set_input_socket('local_space', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SeparateComponents for GeometryNodeSeparateComponents
@@ -4814,7 +7314,7 @@ class SeparateComponents(Node):
 
     def __init__(self, geometry=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSeparateComponents', name='Separate Components', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSeparateComponents', node_name='Separate Components', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -4824,6 +7324,34 @@ class SeparateComponents(Node):
         # Input sockets plugging
 
         if geometry        is not None: self.geometry        = geometry
+
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @property
+    def point_cloud(self):
+        return self.get_output_socket('point_cloud')
+
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @property
+    def volume(self):
+        return self.get_output_socket('volume')
+
+    @property
+    def instances(self):
+        return self.get_output_socket('instances')
+
+    @property
+    def geometry(self):
+        raise AttributeError("Attribute error on node 'SeparateComponents': the input socket 'geometry' is write only.")
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SeparateGeometry for GeometryNodeSeparateGeometry
@@ -4852,7 +7380,7 @@ class SeparateGeometry(Node):
 
     def __init__(self, geometry=None, selection=None, domain='POINT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeSeparateGeometry', name='Separate Geometry', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSeparateGeometry', node_name='Separate Geometry', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -4875,6 +7403,26 @@ class SeparateGeometry(Node):
     @domain.setter
     def domain(self, value):
         self.bnode.domain = value
+
+    @property
+    def selection(self):
+        return self.get_output_socket('selection')
+
+    @property
+    def inverted(self):
+        return self.get_output_socket('inverted')
+
+    @property
+    def geometry(self):
+        raise AttributeError("Attribute error on node 'SeparateGeometry': the input socket 'geometry' is write only.")
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetHandlePositions for GeometryNodeSetCurveHandlePositions
@@ -4904,7 +7452,7 @@ class SetHandlePositions(Node):
 
     def __init__(self, curve=None, selection=None, position=None, offset=None, mode='LEFT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetCurveHandlePositions', name='Set Handle Positions', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSetCurveHandlePositions', node_name='Set Handle Positions', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -4929,6 +7477,38 @@ class SetHandlePositions(Node):
     @mode.setter
     def mode(self, value):
         self.bnode.mode = value
+
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @curve.setter
+    def curve(self, value):
+        self.set_input_socket('curve', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'SetHandlePositions': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def position(self):
+        raise AttributeError("Attribute error on node 'SetHandlePositions': the input socket 'position' is write only.")
+
+    @position.setter
+    def position(self, value):
+        self.set_input_socket('position', value)
+
+    @property
+    def offset(self):
+        raise AttributeError("Attribute error on node 'SetHandlePositions': the input socket 'offset' is write only.")
+
+    @offset.setter
+    def offset(self, value):
+        self.set_input_socket('offset', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetCurveRadius for GeometryNodeSetCurveRadius
@@ -4956,7 +7536,7 @@ class SetCurveRadius(Node):
 
     def __init__(self, curve=None, selection=None, radius=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetCurveRadius', name='Set Curve Radius', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSetCurveRadius', node_name='Set Curve Radius', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -4968,6 +7548,30 @@ class SetCurveRadius(Node):
         if curve           is not None: self.curve           = curve
         if selection       is not None: self.selection       = selection
         if radius          is not None: self.radius          = radius
+
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @curve.setter
+    def curve(self, value):
+        self.set_input_socket('curve', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'SetCurveRadius': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def radius(self):
+        raise AttributeError("Attribute error on node 'SetCurveRadius': the input socket 'radius' is write only.")
+
+    @radius.setter
+    def radius(self, value):
+        self.set_input_socket('radius', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetCurveTilt for GeometryNodeSetCurveTilt
@@ -4995,7 +7599,7 @@ class SetCurveTilt(Node):
 
     def __init__(self, curve=None, selection=None, tilt=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetCurveTilt', name='Set Curve Tilt', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSetCurveTilt', node_name='Set Curve Tilt', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5007,6 +7611,30 @@ class SetCurveTilt(Node):
         if curve           is not None: self.curve           = curve
         if selection       is not None: self.selection       = selection
         if tilt            is not None: self.tilt            = tilt
+
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @curve.setter
+    def curve(self, value):
+        self.set_input_socket('curve', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'SetCurveTilt': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def tilt(self):
+        raise AttributeError("Attribute error on node 'SetCurveTilt': the input socket 'tilt' is write only.")
+
+    @tilt.setter
+    def tilt(self, value):
+        self.set_input_socket('tilt', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetID for GeometryNodeSetID
@@ -5034,7 +7662,7 @@ class SetID(Node):
 
     def __init__(self, geometry=None, selection=None, ID=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetID', name='Set ID', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSetID', node_name='Set ID', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5046,6 +7674,30 @@ class SetID(Node):
         if geometry        is not None: self.geometry        = geometry
         if selection       is not None: self.selection       = selection
         if ID              is not None: self.ID              = ID
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'SetID': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def ID(self):
+        raise AttributeError("Attribute error on node 'SetID': the input socket 'ID' is write only.")
+
+    @ID.setter
+    def ID(self, value):
+        self.set_input_socket('ID', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetMaterial for GeometryNodeSetMaterial
@@ -5073,7 +7725,7 @@ class SetMaterial(Node):
 
     def __init__(self, geometry=None, selection=None, material=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetMaterial', name='Set Material', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSetMaterial', node_name='Set Material', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5085,6 +7737,30 @@ class SetMaterial(Node):
         if geometry        is not None: self.geometry        = geometry
         if selection       is not None: self.selection       = selection
         if material        is not None: self.material        = material
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'SetMaterial': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def material(self):
+        raise AttributeError("Attribute error on node 'SetMaterial': the input socket 'material' is write only.")
+
+    @material.setter
+    def material(self, value):
+        self.set_input_socket('material', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetMaterialIndex for GeometryNodeSetMaterialIndex
@@ -5112,7 +7788,7 @@ class SetMaterialIndex(Node):
 
     def __init__(self, geometry=None, selection=None, material_index=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetMaterialIndex', name='Set Material Index', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSetMaterialIndex', node_name='Set Material Index', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5124,6 +7800,30 @@ class SetMaterialIndex(Node):
         if geometry        is not None: self.geometry        = geometry
         if selection       is not None: self.selection       = selection
         if material_index  is not None: self.material_index  = material_index
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'SetMaterialIndex': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def material_index(self):
+        raise AttributeError("Attribute error on node 'SetMaterialIndex': the input socket 'material_index' is write only.")
+
+    @material_index.setter
+    def material_index(self, value):
+        self.set_input_socket('material_index', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetPointRadius for GeometryNodeSetPointRadius
@@ -5151,7 +7851,7 @@ class SetPointRadius(Node):
 
     def __init__(self, points=None, selection=None, radius=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetPointRadius', name='Set Point Radius', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSetPointRadius', node_name='Set Point Radius', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5163,6 +7863,30 @@ class SetPointRadius(Node):
         if points          is not None: self.points          = points
         if selection       is not None: self.selection       = selection
         if radius          is not None: self.radius          = radius
+
+    @property
+    def points(self):
+        return self.get_output_socket('points')
+
+    @points.setter
+    def points(self, value):
+        self.set_input_socket('points', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'SetPointRadius': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def radius(self):
+        raise AttributeError("Attribute error on node 'SetPointRadius': the input socket 'radius' is write only.")
+
+    @radius.setter
+    def radius(self, value):
+        self.set_input_socket('radius', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetPosition for GeometryNodeSetPosition
@@ -5191,7 +7915,7 @@ class SetPosition(Node):
 
     def __init__(self, geometry=None, selection=None, position=None, offset=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetPosition', name='Set Position', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSetPosition', node_name='Set Position', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5204,6 +7928,38 @@ class SetPosition(Node):
         if selection       is not None: self.selection       = selection
         if position        is not None: self.position        = position
         if offset          is not None: self.offset          = offset
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'SetPosition': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def position(self):
+        raise AttributeError("Attribute error on node 'SetPosition': the input socket 'position' is write only.")
+
+    @position.setter
+    def position(self, value):
+        self.set_input_socket('position', value)
+
+    @property
+    def offset(self):
+        raise AttributeError("Attribute error on node 'SetPosition': the input socket 'offset' is write only.")
+
+    @offset.setter
+    def offset(self, value):
+        self.set_input_socket('offset', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetShadeSmooth for GeometryNodeSetShadeSmooth
@@ -5231,7 +7987,7 @@ class SetShadeSmooth(Node):
 
     def __init__(self, geometry=None, selection=None, shade_smooth=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetShadeSmooth', name='Set Shade Smooth', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSetShadeSmooth', node_name='Set Shade Smooth', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5243,6 +7999,30 @@ class SetShadeSmooth(Node):
         if geometry        is not None: self.geometry        = geometry
         if selection       is not None: self.selection       = selection
         if shade_smooth    is not None: self.shade_smooth    = shade_smooth
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'SetShadeSmooth': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def shade_smooth(self):
+        raise AttributeError("Attribute error on node 'SetShadeSmooth': the input socket 'shade_smooth' is write only.")
+
+    @shade_smooth.setter
+    def shade_smooth(self, value):
+        self.set_input_socket('shade_smooth', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetSplineCyclic for GeometryNodeSetSplineCyclic
@@ -5270,7 +8050,7 @@ class SetSplineCyclic(Node):
 
     def __init__(self, geometry=None, selection=None, cyclic=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetSplineCyclic', name='Set Spline Cyclic', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSetSplineCyclic', node_name='Set Spline Cyclic', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5282,6 +8062,30 @@ class SetSplineCyclic(Node):
         if geometry        is not None: self.geometry        = geometry
         if selection       is not None: self.selection       = selection
         if cyclic          is not None: self.cyclic          = cyclic
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'SetSplineCyclic': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def cyclic(self):
+        raise AttributeError("Attribute error on node 'SetSplineCyclic': the input socket 'cyclic' is write only.")
+
+    @cyclic.setter
+    def cyclic(self, value):
+        self.set_input_socket('cyclic', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SetSplineResolution for GeometryNodeSetSplineResolution
@@ -5309,7 +8113,7 @@ class SetSplineResolution(Node):
 
     def __init__(self, geometry=None, selection=None, resolution=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSetSplineResolution', name='Set Spline Resolution', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSetSplineResolution', node_name='Set Spline Resolution', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5321,6 +8125,30 @@ class SetSplineResolution(Node):
         if geometry        is not None: self.geometry        = geometry
         if selection       is not None: self.selection       = selection
         if resolution      is not None: self.resolution      = resolution
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'SetSplineResolution': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def resolution(self):
+        raise AttributeError("Attribute error on node 'SetSplineResolution': the input socket 'resolution' is write only.")
+
+    @resolution.setter
+    def resolution(self, value):
+        self.set_input_socket('resolution', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SplineLength for GeometryNodeSplineLength
@@ -5346,12 +8174,20 @@ class SplineLength(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSplineLength', name='Spline Length', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSplineLength', node_name='Spline Length', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'length' : 0, 'point_count' : 1, }
+
+    @property
+    def length(self):
+        return self.get_output_socket('length')
+
+    @property
+    def point_count(self):
+        return self.get_output_socket('point_count')
 
 # ----------------------------------------------------------------------------------------------------
 # Node SplineParameter for GeometryNodeSplineParameter
@@ -5378,12 +8214,24 @@ class SplineParameter(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSplineParameter', name='Spline Parameter', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSplineParameter', node_name='Spline Parameter', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'factor' : 0, 'length' : 1, 'index' : 2, }
+
+    @property
+    def factor(self):
+        return self.get_output_socket('factor')
+
+    @property
+    def length(self):
+        return self.get_output_socket('length')
+
+    @property
+    def index(self):
+        return self.get_output_socket('index')
 
 # ----------------------------------------------------------------------------------------------------
 # Node SplitEdges for GeometryNodeSplitEdges
@@ -5410,7 +8258,7 @@ class SplitEdges(Node):
 
     def __init__(self, mesh=None, selection=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSplitEdges', name='Split Edges', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSplitEdges', node_name='Split Edges', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5421,6 +8269,22 @@ class SplitEdges(Node):
 
         if mesh            is not None: self.mesh            = mesh
         if selection       is not None: self.selection       = selection
+
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @mesh.setter
+    def mesh(self, value):
+        self.set_input_socket('mesh', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'SplitEdges': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node StoreNamedAttribute for GeometryNodeStoreNamedAttribute
@@ -5455,7 +8319,7 @@ class StoreNamedAttribute(Node):
 
     def __init__(self, geometry=None, name=None, value=None, data_type='FLOAT', domain='POINT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeStoreNamedAttribute', name='Store Named Attribute', label=label, node_color=node_color)
+        super().__init__('GeometryNodeStoreNamedAttribute', node_name='Store Named Attribute', label=label, node_color=node_color)
 
         # Node parameters to configure the sockets enablement
 
@@ -5489,6 +8353,30 @@ class StoreNamedAttribute(Node):
     def domain(self, value):
         self.bnode.domain = value
 
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def name(self):
+        raise AttributeError("Attribute error on node 'StoreNamedAttribute': the input socket 'name' is write only.")
+
+    @name.setter
+    def name(self, value):
+        self.set_input_socket('name', value)
+
+    @property
+    def value(self):
+        raise AttributeError("Attribute error on node 'StoreNamedAttribute': the input socket 'value' is write only.")
+
+    @value.setter
+    def value(self, value):
+        self.set_input_socket('value', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node JoinStrings for GeometryNodeStringJoin
 
@@ -5514,7 +8402,7 @@ class JoinStrings(Node):
 
     def __init__(self, *strings, delimiter=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeStringJoin', name='Join Strings', label=label, node_color=node_color)
+        super().__init__('GeometryNodeStringJoin', node_name='Join Strings', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5525,6 +8413,26 @@ class JoinStrings(Node):
 
         if delimiter       is not None: self.delimiter       = delimiter
         self.plug(1, *strings)
+
+    @property
+    def string(self):
+        return self.get_output_socket('string')
+
+    @property
+    def delimiter(self):
+        raise AttributeError("Attribute error on node 'JoinStrings': the input socket 'delimiter' is write only.")
+
+    @delimiter.setter
+    def delimiter(self, value):
+        self.set_input_socket('delimiter', value)
+
+    @property
+    def strings(self):
+        raise AttributeError("Attribute error on node 'JoinStrings': the input socket 'strings' is write only.")
+
+    @strings.setter
+    def strings(self, value):
+        self.set_input_socket('strings', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node StringToCurves for GeometryNodeStringToCurves
@@ -5563,7 +8471,7 @@ class StringToCurves(Node):
 
     def __init__(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeStringToCurves', name='String to Curves', label=label, node_color=node_color)
+        super().__init__('GeometryNodeStringToCurves', node_name='String to Curves', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -5619,6 +8527,78 @@ class StringToCurves(Node):
     def pivot_mode(self, value):
         self.bnode.pivot_mode = value
 
+    @property
+    def curve_instances(self):
+        return self.get_output_socket('curve_instances')
+
+    @property
+    def remainder(self):
+        return self.get_output_socket('remainder')
+
+    @property
+    def line(self):
+        return self.get_output_socket('line')
+
+    @property
+    def pivot_point(self):
+        return self.get_output_socket('pivot_point')
+
+    @property
+    def string(self):
+        raise AttributeError("Attribute error on node 'StringToCurves': the input socket 'string' is write only.")
+
+    @string.setter
+    def string(self, value):
+        self.set_input_socket('string', value)
+
+    @property
+    def size(self):
+        raise AttributeError("Attribute error on node 'StringToCurves': the input socket 'size' is write only.")
+
+    @size.setter
+    def size(self, value):
+        self.set_input_socket('size', value)
+
+    @property
+    def character_spacing(self):
+        raise AttributeError("Attribute error on node 'StringToCurves': the input socket 'character_spacing' is write only.")
+
+    @character_spacing.setter
+    def character_spacing(self, value):
+        self.set_input_socket('character_spacing', value)
+
+    @property
+    def word_spacing(self):
+        raise AttributeError("Attribute error on node 'StringToCurves': the input socket 'word_spacing' is write only.")
+
+    @word_spacing.setter
+    def word_spacing(self, value):
+        self.set_input_socket('word_spacing', value)
+
+    @property
+    def line_spacing(self):
+        raise AttributeError("Attribute error on node 'StringToCurves': the input socket 'line_spacing' is write only.")
+
+    @line_spacing.setter
+    def line_spacing(self, value):
+        self.set_input_socket('line_spacing', value)
+
+    @property
+    def text_box_width(self):
+        raise AttributeError("Attribute error on node 'StringToCurves': the input socket 'text_box_width' is write only.")
+
+    @text_box_width.setter
+    def text_box_width(self, value):
+        self.set_input_socket('text_box_width', value)
+
+    @property
+    def text_box_height(self):
+        raise AttributeError("Attribute error on node 'StringToCurves': the input socket 'text_box_height' is write only.")
+
+    @text_box_height.setter
+    def text_box_height(self, value):
+        self.set_input_socket('text_box_height', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node SubdivideCurve for GeometryNodeSubdivideCurve
 
@@ -5644,7 +8624,7 @@ class SubdivideCurve(Node):
 
     def __init__(self, curve=None, cuts=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSubdivideCurve', name='Subdivide Curve', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSubdivideCurve', node_name='Subdivide Curve', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5655,6 +8635,22 @@ class SubdivideCurve(Node):
 
         if curve           is not None: self.curve           = curve
         if cuts            is not None: self.cuts            = cuts
+
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @curve.setter
+    def curve(self, value):
+        self.set_input_socket('curve', value)
+
+    @property
+    def cuts(self):
+        raise AttributeError("Attribute error on node 'SubdivideCurve': the input socket 'cuts' is write only.")
+
+    @cuts.setter
+    def cuts(self, value):
+        self.set_input_socket('cuts', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SubdivideMesh for GeometryNodeSubdivideMesh
@@ -5681,7 +8677,7 @@ class SubdivideMesh(Node):
 
     def __init__(self, mesh=None, level=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeSubdivideMesh', name='Subdivide Mesh', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSubdivideMesh', node_name='Subdivide Mesh', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5692,6 +8688,22 @@ class SubdivideMesh(Node):
 
         if mesh            is not None: self.mesh            = mesh
         if level           is not None: self.level           = level
+
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @mesh.setter
+    def mesh(self, value):
+        self.set_input_socket('mesh', value)
+
+    @property
+    def level(self):
+        raise AttributeError("Attribute error on node 'SubdivideMesh': the input socket 'level' is write only.")
+
+    @level.setter
+    def level(self, value):
+        self.set_input_socket('level', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SubdivisionSurface for GeometryNodeSubdivisionSurface
@@ -5721,7 +8733,7 @@ class SubdivisionSurface(Node):
 
     def __init__(self, mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None, node_color=None):
 
-        super().__init__('GeometryNodeSubdivisionSurface', name='Subdivision Surface', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSubdivisionSurface', node_name='Subdivision Surface', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -5755,6 +8767,30 @@ class SubdivisionSurface(Node):
     def uv_smooth(self, value):
         self.bnode.uv_smooth = value
 
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @mesh.setter
+    def mesh(self, value):
+        self.set_input_socket('mesh', value)
+
+    @property
+    def level(self):
+        raise AttributeError("Attribute error on node 'SubdivisionSurface': the input socket 'level' is write only.")
+
+    @level.setter
+    def level(self, value):
+        self.set_input_socket('level', value)
+
+    @property
+    def crease(self):
+        raise AttributeError("Attribute error on node 'SubdivisionSurface': the input socket 'crease' is write only.")
+
+    @crease.setter
+    def crease(self, value):
+        self.set_input_socket('crease', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node Switch for GeometryNodeSwitch
 
@@ -5787,7 +8823,7 @@ class Switch(Node):
 
     def __init__(self, switch=None, false=None, true=None, input_type='GEOMETRY', label=None, node_color=None):
 
-        super().__init__('GeometryNodeSwitch', name='Switch', label=label, node_color=node_color)
+        super().__init__('GeometryNodeSwitch', node_name='Switch', label=label, node_color=node_color)
 
         # Node parameters to configure the sockets enablement
 
@@ -5811,6 +8847,34 @@ class Switch(Node):
     @input_type.setter
     def input_type(self, value):
         self.bnode.input_type = value
+
+    @property
+    def output(self):
+        return self.get_output_socket('output')
+
+    @property
+    def switch(self):
+        raise AttributeError("Attribute error on node 'Switch': the input socket 'switch' is write only.")
+
+    @switch.setter
+    def switch(self, value):
+        self.set_input_socket('switch', value)
+
+    @property
+    def false(self):
+        raise AttributeError("Attribute error on node 'Switch': the input socket 'false' is write only.")
+
+    @false.setter
+    def false(self, value):
+        self.set_input_socket('false', value)
+
+    @property
+    def true(self):
+        raise AttributeError("Attribute error on node 'Switch': the input socket 'true' is write only.")
+
+    @true.setter
+    def true(self, value):
+        self.set_input_socket('true', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Transform for GeometryNodeTransform
@@ -5839,7 +8903,7 @@ class Transform(Node):
 
     def __init__(self, geometry=None, translation=None, rotation=None, scale=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeTransform', name='Transform', label=label, node_color=node_color)
+        super().__init__('GeometryNodeTransform', node_name='Transform', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5852,6 +8916,38 @@ class Transform(Node):
         if translation     is not None: self.translation     = translation
         if rotation        is not None: self.rotation        = rotation
         if scale           is not None: self.scale           = scale
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def translation(self):
+        raise AttributeError("Attribute error on node 'Transform': the input socket 'translation' is write only.")
+
+    @translation.setter
+    def translation(self, value):
+        self.set_input_socket('translation', value)
+
+    @property
+    def rotation(self):
+        raise AttributeError("Attribute error on node 'Transform': the input socket 'rotation' is write only.")
+
+    @rotation.setter
+    def rotation(self, value):
+        self.set_input_socket('rotation', value)
+
+    @property
+    def scale(self):
+        raise AttributeError("Attribute error on node 'Transform': the input socket 'scale' is write only.")
+
+    @scale.setter
+    def scale(self, value):
+        self.set_input_socket('scale', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node TranslateInstances for GeometryNodeTranslateInstances
@@ -5880,7 +8976,7 @@ class TranslateInstances(Node):
 
     def __init__(self, instances=None, selection=None, translation=None, local_space=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeTranslateInstances', name='Translate Instances', label=label, node_color=node_color)
+        super().__init__('GeometryNodeTranslateInstances', node_name='Translate Instances', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5893,6 +8989,38 @@ class TranslateInstances(Node):
         if selection       is not None: self.selection       = selection
         if translation     is not None: self.translation     = translation
         if local_space     is not None: self.local_space     = local_space
+
+    @property
+    def instances(self):
+        return self.get_output_socket('instances')
+
+    @instances.setter
+    def instances(self, value):
+        self.set_input_socket('instances', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'TranslateInstances': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def translation(self):
+        raise AttributeError("Attribute error on node 'TranslateInstances': the input socket 'translation' is write only.")
+
+    @translation.setter
+    def translation(self, value):
+        self.set_input_socket('translation', value)
+
+    @property
+    def local_space(self):
+        raise AttributeError("Attribute error on node 'TranslateInstances': the input socket 'local_space' is write only.")
+
+    @local_space.setter
+    def local_space(self, value):
+        self.set_input_socket('local_space', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Triangulate for GeometryNodeTriangulate
@@ -5922,7 +9050,7 @@ class Triangulate(Node):
 
     def __init__(self, mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', label=None, node_color=None):
 
-        super().__init__('GeometryNodeTriangulate', name='Triangulate', label=label, node_color=node_color)
+        super().__init__('GeometryNodeTriangulate', node_name='Triangulate', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -5956,6 +9084,30 @@ class Triangulate(Node):
     def quad_method(self, value):
         self.bnode.quad_method = value
 
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @mesh.setter
+    def mesh(self, value):
+        self.set_input_socket('mesh', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'Triangulate': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
+
+    @property
+    def minimum_vertices(self):
+        raise AttributeError("Attribute error on node 'Triangulate': the input socket 'minimum_vertices' is write only.")
+
+    @minimum_vertices.setter
+    def minimum_vertices(self, value):
+        self.set_input_socket('minimum_vertices', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node TrimCurve for GeometryNodeTrimCurve
 
@@ -5985,7 +9137,7 @@ class TrimCurve(Node):
 
     def __init__(self, curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR', label=None, node_color=None):
 
-        super().__init__('GeometryNodeTrimCurve', name='Trim Curve', label=label, node_color=node_color)
+        super().__init__('GeometryNodeTrimCurve', node_name='Trim Curve', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -6011,6 +9163,46 @@ class TrimCurve(Node):
     @mode.setter
     def mode(self, value):
         self.bnode.mode = value
+
+    @property
+    def curve(self):
+        return self.get_output_socket('curve')
+
+    @curve.setter
+    def curve(self, value):
+        self.set_input_socket('curve', value)
+
+    @property
+    def start0(self):
+        raise AttributeError("Attribute error on node 'TrimCurve': the input socket 'start0' is write only.")
+
+    @start0.setter
+    def start0(self, value):
+        self.set_input_socket('start0', value)
+
+    @property
+    def start1(self):
+        raise AttributeError("Attribute error on node 'TrimCurve': the input socket 'start1' is write only.")
+
+    @start1.setter
+    def start1(self, value):
+        self.set_input_socket('start1', value)
+
+    @property
+    def end0(self):
+        raise AttributeError("Attribute error on node 'TrimCurve': the input socket 'end0' is write only.")
+
+    @end0.setter
+    def end0(self, value):
+        self.set_input_socket('end0', value)
+
+    @property
+    def end1(self):
+        raise AttributeError("Attribute error on node 'TrimCurve': the input socket 'end1' is write only.")
+
+    @end1.setter
+    def end1(self, value):
+        self.set_input_socket('end1', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node VolumeToMesh for GeometryNodeVolumeToMesh
@@ -6041,7 +9233,7 @@ class VolumeToMesh(Node):
 
     def __init__(self, volume=None, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID', label=None, node_color=None):
 
-        super().__init__('GeometryNodeVolumeToMesh', name='Volume to Mesh', label=label, node_color=node_color)
+        super().__init__('GeometryNodeVolumeToMesh', node_name='Volume to Mesh', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -6067,6 +9259,50 @@ class VolumeToMesh(Node):
     @resolution_mode.setter
     def resolution_mode(self, value):
         self.bnode.resolution_mode = value
+
+    @property
+    def mesh(self):
+        return self.get_output_socket('mesh')
+
+    @property
+    def volume(self):
+        raise AttributeError("Attribute error on node 'VolumeToMesh': the input socket 'volume' is write only.")
+
+    @volume.setter
+    def volume(self, value):
+        self.set_input_socket('volume', value)
+
+    @property
+    def voxel_size(self):
+        raise AttributeError("Attribute error on node 'VolumeToMesh': the input socket 'voxel_size' is write only.")
+
+    @voxel_size.setter
+    def voxel_size(self, value):
+        self.set_input_socket('voxel_size', value)
+
+    @property
+    def voxel_amount(self):
+        raise AttributeError("Attribute error on node 'VolumeToMesh': the input socket 'voxel_amount' is write only.")
+
+    @voxel_amount.setter
+    def voxel_amount(self, value):
+        self.set_input_socket('voxel_amount', value)
+
+    @property
+    def threshold(self):
+        raise AttributeError("Attribute error on node 'VolumeToMesh': the input socket 'threshold' is write only.")
+
+    @threshold.setter
+    def threshold(self, value):
+        self.set_input_socket('threshold', value)
+
+    @property
+    def adaptivity(self):
+        raise AttributeError("Attribute error on node 'VolumeToMesh': the input socket 'adaptivity' is write only.")
+
+    @adaptivity.setter
+    def adaptivity(self, value):
+        self.set_input_socket('adaptivity', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Clamp for ShaderNodeClamp
@@ -6095,7 +9331,7 @@ class Clamp(Node):
 
     def __init__(self, value=None, min=None, max=None, clamp_type='MINMAX', label=None, node_color=None):
 
-        super().__init__('ShaderNodeClamp', name='Clamp', label=label, node_color=node_color)
+        super().__init__('ShaderNodeClamp', node_name='Clamp', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -6119,6 +9355,34 @@ class Clamp(Node):
     @clamp_type.setter
     def clamp_type(self, value):
         self.bnode.clamp_type = value
+
+    @property
+    def result(self):
+        return self.get_output_socket('result')
+
+    @property
+    def value(self):
+        raise AttributeError("Attribute error on node 'Clamp': the input socket 'value' is write only.")
+
+    @value.setter
+    def value(self, value):
+        self.set_input_socket('value', value)
+
+    @property
+    def min(self):
+        raise AttributeError("Attribute error on node 'Clamp': the input socket 'min' is write only.")
+
+    @min.setter
+    def min(self, value):
+        self.set_input_socket('min', value)
+
+    @property
+    def max(self):
+        raise AttributeError("Attribute error on node 'Clamp': the input socket 'max' is write only.")
+
+    @max.setter
+    def max(self, value):
+        self.set_input_socket('max', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node CombineRgb for ShaderNodeCombineRGB
@@ -6146,7 +9410,7 @@ class CombineRgb(Node):
 
     def __init__(self, r=None, g=None, b=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeCombineRGB', name='Combine RGB', label=label, node_color=node_color)
+        super().__init__('ShaderNodeCombineRGB', node_name='Combine RGB', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -6158,6 +9422,34 @@ class CombineRgb(Node):
         if r               is not None: self.r               = r
         if g               is not None: self.g               = g
         if b               is not None: self.b               = b
+
+    @property
+    def image(self):
+        return self.get_output_socket('image')
+
+    @property
+    def r(self):
+        raise AttributeError("Attribute error on node 'CombineRgb': the input socket 'r' is write only.")
+
+    @r.setter
+    def r(self, value):
+        self.set_input_socket('r', value)
+
+    @property
+    def g(self):
+        raise AttributeError("Attribute error on node 'CombineRgb': the input socket 'g' is write only.")
+
+    @g.setter
+    def g(self, value):
+        self.set_input_socket('g', value)
+
+    @property
+    def b(self):
+        raise AttributeError("Attribute error on node 'CombineRgb': the input socket 'b' is write only.")
+
+    @b.setter
+    def b(self, value):
+        self.set_input_socket('b', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node CombineXyz for ShaderNodeCombineXYZ
@@ -6185,7 +9477,7 @@ class CombineXyz(Node):
 
     def __init__(self, x=None, y=None, z=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeCombineXYZ', name='Combine XYZ', label=label, node_color=node_color)
+        super().__init__('ShaderNodeCombineXYZ', node_name='Combine XYZ', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -6197,6 +9489,34 @@ class CombineXyz(Node):
         if x               is not None: self.x               = x
         if y               is not None: self.y               = y
         if z               is not None: self.z               = z
+
+    @property
+    def vector(self):
+        return self.get_output_socket('vector')
+
+    @property
+    def x(self):
+        raise AttributeError("Attribute error on node 'CombineXyz': the input socket 'x' is write only.")
+
+    @x.setter
+    def x(self, value):
+        self.set_input_socket('x', value)
+
+    @property
+    def y(self):
+        raise AttributeError("Attribute error on node 'CombineXyz': the input socket 'y' is write only.")
+
+    @y.setter
+    def y(self, value):
+        self.set_input_socket('y', value)
+
+    @property
+    def z(self):
+        raise AttributeError("Attribute error on node 'CombineXyz': the input socket 'z' is write only.")
+
+    @z.setter
+    def z(self, value):
+        self.set_input_socket('z', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node FloatCurve for ShaderNodeFloatCurve
@@ -6223,7 +9543,7 @@ class FloatCurve(Node):
 
     def __init__(self, factor=None, value=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeFloatCurve', name='Float Curve', label=label, node_color=node_color)
+        super().__init__('ShaderNodeFloatCurve', node_name='Float Curve', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -6234,6 +9554,22 @@ class FloatCurve(Node):
 
         if factor          is not None: self.factor          = factor
         if value           is not None: self.value           = value
+
+    @property
+    def value(self):
+        return self.get_output_socket('value')
+
+    @property
+    def factor(self):
+        raise AttributeError("Attribute error on node 'FloatCurve': the input socket 'factor' is write only.")
+
+    @factor.setter
+    def factor(self, value):
+        self.set_input_socket('factor', value)
+
+    @value.setter
+    def value(self, value):
+        self.set_input_socket('value', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node MapRange for ShaderNodeMapRange
@@ -6274,7 +9610,7 @@ class MapRange(Node):
 
     def __init__(self, value=None, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, vector=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', label=None, node_color=None):
 
-        super().__init__('ShaderNodeMapRange', name='Map Range', label=label, node_color=node_color)
+        super().__init__('ShaderNodeMapRange', node_name='Map Range', label=label, node_color=node_color)
 
         # Node parameters to configure the sockets enablement
 
@@ -6321,6 +9657,66 @@ class MapRange(Node):
     def interpolation_type(self, value):
         self.bnode.interpolation_type = value
 
+    @property
+    def result(self):
+        return self.get_output_socket('result')
+
+    @property
+    def vector(self):
+        return self.get_output_socket('vector')
+
+    @property
+    def value(self):
+        raise AttributeError("Attribute error on node 'MapRange': the input socket 'value' is write only.")
+
+    @value.setter
+    def value(self, value):
+        self.set_input_socket('value', value)
+
+    @property
+    def from_min(self):
+        raise AttributeError("Attribute error on node 'MapRange': the input socket 'from_min' is write only.")
+
+    @from_min.setter
+    def from_min(self, value):
+        self.set_input_socket('from_min', value)
+
+    @property
+    def from_max(self):
+        raise AttributeError("Attribute error on node 'MapRange': the input socket 'from_max' is write only.")
+
+    @from_max.setter
+    def from_max(self, value):
+        self.set_input_socket('from_max', value)
+
+    @property
+    def to_min(self):
+        raise AttributeError("Attribute error on node 'MapRange': the input socket 'to_min' is write only.")
+
+    @to_min.setter
+    def to_min(self, value):
+        self.set_input_socket('to_min', value)
+
+    @property
+    def to_max(self):
+        raise AttributeError("Attribute error on node 'MapRange': the input socket 'to_max' is write only.")
+
+    @to_max.setter
+    def to_max(self, value):
+        self.set_input_socket('to_max', value)
+
+    @property
+    def steps(self):
+        raise AttributeError("Attribute error on node 'MapRange': the input socket 'steps' is write only.")
+
+    @steps.setter
+    def steps(self, value):
+        self.set_input_socket('steps', value)
+
+    @vector.setter
+    def vector(self, value):
+        self.set_input_socket('vector', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node Math for ShaderNodeMath
 
@@ -6348,7 +9744,7 @@ class Math(Node):
 
     def __init__(self, value0=None, value1=None, value2=None, operation='ADD', label=None, node_color=None):
 
-        super().__init__('ShaderNodeMath', name='Math', label=label, node_color=node_color)
+        super().__init__('ShaderNodeMath', node_name='Math', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -6372,6 +9768,34 @@ class Math(Node):
     @operation.setter
     def operation(self, value):
         self.bnode.operation = value
+
+    @property
+    def value(self):
+        return self.get_output_socket('value')
+
+    @property
+    def value0(self):
+        raise AttributeError("Attribute error on node 'Math': the input socket 'value0' is write only.")
+
+    @value0.setter
+    def value0(self, value):
+        self.set_input_socket('value0', value)
+
+    @property
+    def value1(self):
+        raise AttributeError("Attribute error on node 'Math': the input socket 'value1' is write only.")
+
+    @value1.setter
+    def value1(self, value):
+        self.set_input_socket('value1', value)
+
+    @property
+    def value2(self):
+        raise AttributeError("Attribute error on node 'Math': the input socket 'value2' is write only.")
+
+    @value2.setter
+    def value2(self, value):
+        self.set_input_socket('value2', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Mix for ShaderNodeMixRGB
@@ -6401,7 +9825,7 @@ class Mix(Node):
 
     def __init__(self, color1=None, color2=None, fac=None, blend_type='MIX', use_alpha=False, label=None, node_color=None):
 
-        super().__init__('ShaderNodeMixRGB', name='Mix', label=label, node_color=node_color)
+        super().__init__('ShaderNodeMixRGB', node_name='Mix', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -6435,6 +9859,34 @@ class Mix(Node):
     def use_alpha(self, value):
         self.bnode.use_alpha = value
 
+    @property
+    def color(self):
+        return self.get_output_socket('color')
+
+    @property
+    def fac(self):
+        raise AttributeError("Attribute error on node 'Mix': the input socket 'fac' is write only.")
+
+    @fac.setter
+    def fac(self, value):
+        self.set_input_socket('fac', value)
+
+    @property
+    def color1(self):
+        raise AttributeError("Attribute error on node 'Mix': the input socket 'color1' is write only.")
+
+    @color1.setter
+    def color1(self, value):
+        self.set_input_socket('color1', value)
+
+    @property
+    def color2(self):
+        raise AttributeError("Attribute error on node 'Mix': the input socket 'color2' is write only.")
+
+    @color2.setter
+    def color2(self, value):
+        self.set_input_socket('color2', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node RgbCurves for ShaderNodeRGBCurve
 
@@ -6460,7 +9912,7 @@ class RgbCurves(Node):
 
     def __init__(self, fac=None, color=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeRGBCurve', name='RGB Curves', label=label, node_color=node_color)
+        super().__init__('ShaderNodeRGBCurve', node_name='RGB Curves', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -6471,6 +9923,22 @@ class RgbCurves(Node):
 
         if fac             is not None: self.fac             = fac
         if color           is not None: self.color           = color
+
+    @property
+    def color(self):
+        return self.get_output_socket('color')
+
+    @property
+    def fac(self):
+        raise AttributeError("Attribute error on node 'RgbCurves': the input socket 'fac' is write only.")
+
+    @fac.setter
+    def fac(self, value):
+        self.set_input_socket('fac', value)
+
+    @color.setter
+    def color(self, value):
+        self.set_input_socket('color', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SeparateRgb for ShaderNodeSeparateRGB
@@ -6498,7 +9966,7 @@ class SeparateRgb(Node):
 
     def __init__(self, image=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeSeparateRGB', name='Separate RGB', label=label, node_color=node_color)
+        super().__init__('ShaderNodeSeparateRGB', node_name='Separate RGB', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -6508,6 +9976,26 @@ class SeparateRgb(Node):
         # Input sockets plugging
 
         if image           is not None: self.image           = image
+
+    @property
+    def r(self):
+        return self.get_output_socket('r')
+
+    @property
+    def g(self):
+        return self.get_output_socket('g')
+
+    @property
+    def b(self):
+        return self.get_output_socket('b')
+
+    @property
+    def image(self):
+        raise AttributeError("Attribute error on node 'SeparateRgb': the input socket 'image' is write only.")
+
+    @image.setter
+    def image(self, value):
+        self.set_input_socket('image', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SeparateXyz for ShaderNodeSeparateXYZ
@@ -6535,7 +10023,7 @@ class SeparateXyz(Node):
 
     def __init__(self, vector=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeSeparateXYZ', name='Separate XYZ', label=label, node_color=node_color)
+        super().__init__('ShaderNodeSeparateXYZ', node_name='Separate XYZ', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -6545,6 +10033,26 @@ class SeparateXyz(Node):
         # Input sockets plugging
 
         if vector          is not None: self.vector          = vector
+
+    @property
+    def x(self):
+        return self.get_output_socket('x')
+
+    @property
+    def y(self):
+        return self.get_output_socket('y')
+
+    @property
+    def z(self):
+        return self.get_output_socket('z')
+
+    @property
+    def vector(self):
+        raise AttributeError("Attribute error on node 'SeparateXyz': the input socket 'vector' is write only.")
+
+    @vector.setter
+    def vector(self, value):
+        self.set_input_socket('vector', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node BrickTexture for ShaderNodeTexBrick
@@ -6584,7 +10092,7 @@ class BrickTexture(Node):
 
     def __init__(self, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexBrick', name='Brick Texture', label=label, node_color=node_color)
+        super().__init__('ShaderNodeTexBrick', node_name='Brick Texture', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -6643,6 +10151,94 @@ class BrickTexture(Node):
     def squash_frequency(self, value):
         self.bnode.squash_frequency = value
 
+    @property
+    def color(self):
+        return self.get_output_socket('color')
+
+    @property
+    def fac(self):
+        return self.get_output_socket('fac')
+
+    @property
+    def vector(self):
+        raise AttributeError("Attribute error on node 'BrickTexture': the input socket 'vector' is write only.")
+
+    @vector.setter
+    def vector(self, value):
+        self.set_input_socket('vector', value)
+
+    @property
+    def color1(self):
+        raise AttributeError("Attribute error on node 'BrickTexture': the input socket 'color1' is write only.")
+
+    @color1.setter
+    def color1(self, value):
+        self.set_input_socket('color1', value)
+
+    @property
+    def color2(self):
+        raise AttributeError("Attribute error on node 'BrickTexture': the input socket 'color2' is write only.")
+
+    @color2.setter
+    def color2(self, value):
+        self.set_input_socket('color2', value)
+
+    @property
+    def mortar(self):
+        raise AttributeError("Attribute error on node 'BrickTexture': the input socket 'mortar' is write only.")
+
+    @mortar.setter
+    def mortar(self, value):
+        self.set_input_socket('mortar', value)
+
+    @property
+    def scale(self):
+        raise AttributeError("Attribute error on node 'BrickTexture': the input socket 'scale' is write only.")
+
+    @scale.setter
+    def scale(self, value):
+        self.set_input_socket('scale', value)
+
+    @property
+    def mortar_size(self):
+        raise AttributeError("Attribute error on node 'BrickTexture': the input socket 'mortar_size' is write only.")
+
+    @mortar_size.setter
+    def mortar_size(self, value):
+        self.set_input_socket('mortar_size', value)
+
+    @property
+    def mortar_smooth(self):
+        raise AttributeError("Attribute error on node 'BrickTexture': the input socket 'mortar_smooth' is write only.")
+
+    @mortar_smooth.setter
+    def mortar_smooth(self, value):
+        self.set_input_socket('mortar_smooth', value)
+
+    @property
+    def bias(self):
+        raise AttributeError("Attribute error on node 'BrickTexture': the input socket 'bias' is write only.")
+
+    @bias.setter
+    def bias(self, value):
+        self.set_input_socket('bias', value)
+
+    @property
+    def brick_width(self):
+        raise AttributeError("Attribute error on node 'BrickTexture': the input socket 'brick_width' is write only.")
+
+    @brick_width.setter
+    def brick_width(self, value):
+        self.set_input_socket('brick_width', value)
+
+    @property
+    def row_height(self):
+        raise AttributeError("Attribute error on node 'BrickTexture': the input socket 'row_height' is write only.")
+
+    @row_height.setter
+    def row_height(self, value):
+        self.set_input_socket('row_height', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node CheckerTexture for ShaderNodeTexChecker
 
@@ -6671,7 +10267,7 @@ class CheckerTexture(Node):
 
     def __init__(self, vector=None, color1=None, color2=None, scale=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexChecker', name='Checker Texture', label=label, node_color=node_color)
+        super().__init__('ShaderNodeTexChecker', node_name='Checker Texture', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -6684,6 +10280,46 @@ class CheckerTexture(Node):
         if color1          is not None: self.color1          = color1
         if color2          is not None: self.color2          = color2
         if scale           is not None: self.scale           = scale
+
+    @property
+    def color(self):
+        return self.get_output_socket('color')
+
+    @property
+    def fac(self):
+        return self.get_output_socket('fac')
+
+    @property
+    def vector(self):
+        raise AttributeError("Attribute error on node 'CheckerTexture': the input socket 'vector' is write only.")
+
+    @vector.setter
+    def vector(self, value):
+        self.set_input_socket('vector', value)
+
+    @property
+    def color1(self):
+        raise AttributeError("Attribute error on node 'CheckerTexture': the input socket 'color1' is write only.")
+
+    @color1.setter
+    def color1(self, value):
+        self.set_input_socket('color1', value)
+
+    @property
+    def color2(self):
+        raise AttributeError("Attribute error on node 'CheckerTexture': the input socket 'color2' is write only.")
+
+    @color2.setter
+    def color2(self, value):
+        self.set_input_socket('color2', value)
+
+    @property
+    def scale(self):
+        raise AttributeError("Attribute error on node 'CheckerTexture': the input socket 'scale' is write only.")
+
+    @scale.setter
+    def scale(self, value):
+        self.set_input_socket('scale', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node GradientTexture for ShaderNodeTexGradient
@@ -6711,7 +10347,7 @@ class GradientTexture(Node):
 
     def __init__(self, vector=None, gradient_type='LINEAR', label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexGradient', name='Gradient Texture', label=label, node_color=node_color)
+        super().__init__('ShaderNodeTexGradient', node_name='Gradient Texture', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -6733,6 +10369,22 @@ class GradientTexture(Node):
     @gradient_type.setter
     def gradient_type(self, value):
         self.bnode.gradient_type = value
+
+    @property
+    def color(self):
+        return self.get_output_socket('color')
+
+    @property
+    def fac(self):
+        return self.get_output_socket('fac')
+
+    @property
+    def vector(self):
+        raise AttributeError("Attribute error on node 'GradientTexture': the input socket 'vector' is write only.")
+
+    @vector.setter
+    def vector(self, value):
+        self.set_input_socket('vector', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node MagicTexture for ShaderNodeTexMagic
@@ -6762,7 +10414,7 @@ class MagicTexture(Node):
 
     def __init__(self, vector=None, scale=None, distortion=None, turbulence_depth=2, label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexMagic', name='Magic Texture', label=label, node_color=node_color)
+        super().__init__('ShaderNodeTexMagic', node_name='Magic Texture', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -6786,6 +10438,38 @@ class MagicTexture(Node):
     @turbulence_depth.setter
     def turbulence_depth(self, value):
         self.bnode.turbulence_depth = value
+
+    @property
+    def color(self):
+        return self.get_output_socket('color')
+
+    @property
+    def fac(self):
+        return self.get_output_socket('fac')
+
+    @property
+    def vector(self):
+        raise AttributeError("Attribute error on node 'MagicTexture': the input socket 'vector' is write only.")
+
+    @vector.setter
+    def vector(self, value):
+        self.set_input_socket('vector', value)
+
+    @property
+    def scale(self):
+        raise AttributeError("Attribute error on node 'MagicTexture': the input socket 'scale' is write only.")
+
+    @scale.setter
+    def scale(self, value):
+        self.set_input_socket('scale', value)
+
+    @property
+    def distortion(self):
+        raise AttributeError("Attribute error on node 'MagicTexture': the input socket 'distortion' is write only.")
+
+    @distortion.setter
+    def distortion(self, value):
+        self.set_input_socket('distortion', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node MusgraveTexture for ShaderNodeTexMusgrave
@@ -6820,7 +10504,7 @@ class MusgraveTexture(Node):
 
     def __init__(self, vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM', label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexMusgrave', name='Musgrave Texture', label=label, node_color=node_color)
+        super().__init__('ShaderNodeTexMusgrave', node_name='Musgrave Texture', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -6859,6 +10543,74 @@ class MusgraveTexture(Node):
     def musgrave_type(self, value):
         self.bnode.musgrave_type = value
 
+    @property
+    def fac(self):
+        return self.get_output_socket('fac')
+
+    @property
+    def vector(self):
+        raise AttributeError("Attribute error on node 'MusgraveTexture': the input socket 'vector' is write only.")
+
+    @vector.setter
+    def vector(self, value):
+        self.set_input_socket('vector', value)
+
+    @property
+    def w(self):
+        raise AttributeError("Attribute error on node 'MusgraveTexture': the input socket 'w' is write only.")
+
+    @w.setter
+    def w(self, value):
+        self.set_input_socket('w', value)
+
+    @property
+    def scale(self):
+        raise AttributeError("Attribute error on node 'MusgraveTexture': the input socket 'scale' is write only.")
+
+    @scale.setter
+    def scale(self, value):
+        self.set_input_socket('scale', value)
+
+    @property
+    def detail(self):
+        raise AttributeError("Attribute error on node 'MusgraveTexture': the input socket 'detail' is write only.")
+
+    @detail.setter
+    def detail(self, value):
+        self.set_input_socket('detail', value)
+
+    @property
+    def dimension(self):
+        raise AttributeError("Attribute error on node 'MusgraveTexture': the input socket 'dimension' is write only.")
+
+    @dimension.setter
+    def dimension(self, value):
+        self.set_input_socket('dimension', value)
+
+    @property
+    def lacunarity(self):
+        raise AttributeError("Attribute error on node 'MusgraveTexture': the input socket 'lacunarity' is write only.")
+
+    @lacunarity.setter
+    def lacunarity(self, value):
+        self.set_input_socket('lacunarity', value)
+
+    @property
+    def offset(self):
+        raise AttributeError("Attribute error on node 'MusgraveTexture': the input socket 'offset' is write only.")
+
+    @offset.setter
+    def offset(self, value):
+        self.set_input_socket('offset', value)
+
+    @property
+    def gain(self):
+        raise AttributeError("Attribute error on node 'MusgraveTexture': the input socket 'gain' is write only.")
+
+    @gain.setter
+    def gain(self, value):
+        self.set_input_socket('gain', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node NoiseTexture for ShaderNodeTexNoise
 
@@ -6890,7 +10642,7 @@ class NoiseTexture(Node):
 
     def __init__(self, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D', label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexNoise', name='Noise Texture', label=label, node_color=node_color)
+        super().__init__('ShaderNodeTexNoise', node_name='Noise Texture', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -6917,6 +10669,62 @@ class NoiseTexture(Node):
     @noise_dimensions.setter
     def noise_dimensions(self, value):
         self.bnode.noise_dimensions = value
+
+    @property
+    def fac(self):
+        return self.get_output_socket('fac')
+
+    @property
+    def color(self):
+        return self.get_output_socket('color')
+
+    @property
+    def vector(self):
+        raise AttributeError("Attribute error on node 'NoiseTexture': the input socket 'vector' is write only.")
+
+    @vector.setter
+    def vector(self, value):
+        self.set_input_socket('vector', value)
+
+    @property
+    def w(self):
+        raise AttributeError("Attribute error on node 'NoiseTexture': the input socket 'w' is write only.")
+
+    @w.setter
+    def w(self, value):
+        self.set_input_socket('w', value)
+
+    @property
+    def scale(self):
+        raise AttributeError("Attribute error on node 'NoiseTexture': the input socket 'scale' is write only.")
+
+    @scale.setter
+    def scale(self, value):
+        self.set_input_socket('scale', value)
+
+    @property
+    def detail(self):
+        raise AttributeError("Attribute error on node 'NoiseTexture': the input socket 'detail' is write only.")
+
+    @detail.setter
+    def detail(self, value):
+        self.set_input_socket('detail', value)
+
+    @property
+    def roughness(self):
+        raise AttributeError("Attribute error on node 'NoiseTexture': the input socket 'roughness' is write only.")
+
+    @roughness.setter
+    def roughness(self, value):
+        self.set_input_socket('roughness', value)
+
+    @property
+    def distortion(self):
+        raise AttributeError("Attribute error on node 'NoiseTexture': the input socket 'distortion' is write only.")
+
+    @distortion.setter
+    def distortion(self, value):
+        self.set_input_socket('distortion', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node VoronoiTexture for ShaderNodeTexVoronoi
@@ -6954,7 +10762,7 @@ class VoronoiTexture(Node):
 
     def __init__(self, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D', label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexVoronoi', name='Voronoi Texture', label=label, node_color=node_color)
+        super().__init__('ShaderNodeTexVoronoi', node_name='Voronoi Texture', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -7000,6 +10808,70 @@ class VoronoiTexture(Node):
     def voronoi_dimensions(self, value):
         self.bnode.voronoi_dimensions = value
 
+    @property
+    def distance(self):
+        return self.get_output_socket('distance')
+
+    @property
+    def color(self):
+        return self.get_output_socket('color')
+
+    @property
+    def position(self):
+        return self.get_output_socket('position')
+
+    @property
+    def w(self):
+        return self.get_output_socket('w')
+
+    @property
+    def radius(self):
+        return self.get_output_socket('radius')
+
+    @property
+    def vector(self):
+        raise AttributeError("Attribute error on node 'VoronoiTexture': the input socket 'vector' is write only.")
+
+    @vector.setter
+    def vector(self, value):
+        self.set_input_socket('vector', value)
+
+    @w.setter
+    def w(self, value):
+        self.set_input_socket('w', value)
+
+    @property
+    def scale(self):
+        raise AttributeError("Attribute error on node 'VoronoiTexture': the input socket 'scale' is write only.")
+
+    @scale.setter
+    def scale(self, value):
+        self.set_input_socket('scale', value)
+
+    @property
+    def smoothness(self):
+        raise AttributeError("Attribute error on node 'VoronoiTexture': the input socket 'smoothness' is write only.")
+
+    @smoothness.setter
+    def smoothness(self, value):
+        self.set_input_socket('smoothness', value)
+
+    @property
+    def exponent(self):
+        raise AttributeError("Attribute error on node 'VoronoiTexture': the input socket 'exponent' is write only.")
+
+    @exponent.setter
+    def exponent(self, value):
+        self.set_input_socket('exponent', value)
+
+    @property
+    def randomness(self):
+        raise AttributeError("Attribute error on node 'VoronoiTexture': the input socket 'randomness' is write only.")
+
+    @randomness.setter
+    def randomness(self, value):
+        self.set_input_socket('randomness', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node WaveTexture for ShaderNodeTexWave
 
@@ -7035,7 +10907,7 @@ class WaveTexture(Node):
 
     def __init__(self, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS', label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexWave', name='Wave Texture', label=label, node_color=node_color)
+        super().__init__('ShaderNodeTexWave', node_name='Wave Texture', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -7091,6 +10963,70 @@ class WaveTexture(Node):
     def wave_type(self, value):
         self.bnode.wave_type = value
 
+    @property
+    def color(self):
+        return self.get_output_socket('color')
+
+    @property
+    def fac(self):
+        return self.get_output_socket('fac')
+
+    @property
+    def vector(self):
+        raise AttributeError("Attribute error on node 'WaveTexture': the input socket 'vector' is write only.")
+
+    @vector.setter
+    def vector(self, value):
+        self.set_input_socket('vector', value)
+
+    @property
+    def scale(self):
+        raise AttributeError("Attribute error on node 'WaveTexture': the input socket 'scale' is write only.")
+
+    @scale.setter
+    def scale(self, value):
+        self.set_input_socket('scale', value)
+
+    @property
+    def distortion(self):
+        raise AttributeError("Attribute error on node 'WaveTexture': the input socket 'distortion' is write only.")
+
+    @distortion.setter
+    def distortion(self, value):
+        self.set_input_socket('distortion', value)
+
+    @property
+    def detail(self):
+        raise AttributeError("Attribute error on node 'WaveTexture': the input socket 'detail' is write only.")
+
+    @detail.setter
+    def detail(self, value):
+        self.set_input_socket('detail', value)
+
+    @property
+    def detail_scale(self):
+        raise AttributeError("Attribute error on node 'WaveTexture': the input socket 'detail_scale' is write only.")
+
+    @detail_scale.setter
+    def detail_scale(self, value):
+        self.set_input_socket('detail_scale', value)
+
+    @property
+    def detail_roughness(self):
+        raise AttributeError("Attribute error on node 'WaveTexture': the input socket 'detail_roughness' is write only.")
+
+    @detail_roughness.setter
+    def detail_roughness(self, value):
+        self.set_input_socket('detail_roughness', value)
+
+    @property
+    def phase_offset(self):
+        raise AttributeError("Attribute error on node 'WaveTexture': the input socket 'phase_offset' is write only.")
+
+    @phase_offset.setter
+    def phase_offset(self, value):
+        self.set_input_socket('phase_offset', value)
+
 # ----------------------------------------------------------------------------------------------------
 # Node WhiteNoiseTexture for ShaderNodeTexWhiteNoise
 
@@ -7118,7 +11054,7 @@ class WhiteNoiseTexture(Node):
 
     def __init__(self, vector=None, w=None, noise_dimensions='3D', label=None, node_color=None):
 
-        super().__init__('ShaderNodeTexWhiteNoise', name='White Noise Texture', label=label, node_color=node_color)
+        super().__init__('ShaderNodeTexWhiteNoise', node_name='White Noise Texture', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -7141,6 +11077,30 @@ class WhiteNoiseTexture(Node):
     @noise_dimensions.setter
     def noise_dimensions(self, value):
         self.bnode.noise_dimensions = value
+
+    @property
+    def value(self):
+        return self.get_output_socket('value')
+
+    @property
+    def color(self):
+        return self.get_output_socket('color')
+
+    @property
+    def vector(self):
+        raise AttributeError("Attribute error on node 'WhiteNoiseTexture': the input socket 'vector' is write only.")
+
+    @vector.setter
+    def vector(self, value):
+        self.set_input_socket('vector', value)
+
+    @property
+    def w(self):
+        raise AttributeError("Attribute error on node 'WhiteNoiseTexture': the input socket 'w' is write only.")
+
+    @w.setter
+    def w(self, value):
+        self.set_input_socket('w', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node ColorRamp for ShaderNodeValToRGB
@@ -7167,7 +11127,7 @@ class ColorRamp(Node):
 
     def __init__(self, fac=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeValToRGB', name='ColorRamp', label=label, node_color=node_color)
+        super().__init__('ShaderNodeValToRGB', node_name='ColorRamp', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -7177,6 +11137,22 @@ class ColorRamp(Node):
         # Input sockets plugging
 
         if fac             is not None: self.fac             = fac
+
+    @property
+    def color(self):
+        return self.get_output_socket('color')
+
+    @property
+    def alpha(self):
+        return self.get_output_socket('alpha')
+
+    @property
+    def fac(self):
+        raise AttributeError("Attribute error on node 'ColorRamp': the input socket 'fac' is write only.")
+
+    @fac.setter
+    def fac(self, value):
+        self.set_input_socket('fac', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Value for ShaderNodeValue
@@ -7201,12 +11177,16 @@ class Value(Node):
 
     def __init__(self, label=None, node_color=None):
 
-        super().__init__('ShaderNodeValue', name='Value', label=label, node_color=node_color)
+        super().__init__('ShaderNodeValue', node_name='Value', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {}
         self.outsockets = {'value' : 0, }
+
+    @property
+    def value(self):
+        return self.get_output_socket('value')
 
 # ----------------------------------------------------------------------------------------------------
 # Node VectorCurves for ShaderNodeVectorCurve
@@ -7233,7 +11213,7 @@ class VectorCurves(Node):
 
     def __init__(self, fac=None, vector=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeVectorCurve', name='Vector Curves', label=label, node_color=node_color)
+        super().__init__('ShaderNodeVectorCurve', node_name='Vector Curves', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -7244,6 +11224,22 @@ class VectorCurves(Node):
 
         if fac             is not None: self.fac             = fac
         if vector          is not None: self.vector          = vector
+
+    @property
+    def vector(self):
+        return self.get_output_socket('vector')
+
+    @property
+    def fac(self):
+        raise AttributeError("Attribute error on node 'VectorCurves': the input socket 'fac' is write only.")
+
+    @fac.setter
+    def fac(self, value):
+        self.set_input_socket('fac', value)
+
+    @vector.setter
+    def vector(self, value):
+        self.set_input_socket('vector', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node VectorMath for ShaderNodeVectorMath
@@ -7274,7 +11270,7 @@ class VectorMath(Node):
 
     def __init__(self, vector0=None, vector1=None, vector2=None, scale=None, operation='ADD', label=None, node_color=None):
 
-        super().__init__('ShaderNodeVectorMath', name='Vector Math', label=label, node_color=node_color)
+        super().__init__('ShaderNodeVectorMath', node_name='Vector Math', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -7299,6 +11295,46 @@ class VectorMath(Node):
     @operation.setter
     def operation(self, value):
         self.bnode.operation = value
+
+    @property
+    def vector(self):
+        return self.get_output_socket('vector')
+
+    @property
+    def value(self):
+        return self.get_output_socket('value')
+
+    @property
+    def vector0(self):
+        raise AttributeError("Attribute error on node 'VectorMath': the input socket 'vector0' is write only.")
+
+    @vector0.setter
+    def vector0(self, value):
+        self.set_input_socket('vector0', value)
+
+    @property
+    def vector1(self):
+        raise AttributeError("Attribute error on node 'VectorMath': the input socket 'vector1' is write only.")
+
+    @vector1.setter
+    def vector1(self, value):
+        self.set_input_socket('vector1', value)
+
+    @property
+    def vector2(self):
+        raise AttributeError("Attribute error on node 'VectorMath': the input socket 'vector2' is write only.")
+
+    @vector2.setter
+    def vector2(self, value):
+        self.set_input_socket('vector2', value)
+
+    @property
+    def scale(self):
+        raise AttributeError("Attribute error on node 'VectorMath': the input socket 'scale' is write only.")
+
+    @scale.setter
+    def scale(self, value):
+        self.set_input_socket('scale', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node VectorRotate for ShaderNodeVectorRotate
@@ -7330,7 +11366,7 @@ class VectorRotate(Node):
 
     def __init__(self, vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', label=None, node_color=None):
 
-        super().__init__('ShaderNodeVectorRotate', name='Vector Rotate', label=label, node_color=node_color)
+        super().__init__('ShaderNodeVectorRotate', node_name='Vector Rotate', label=label, node_color=node_color)
 
         # Node parameters
 
@@ -7365,6 +11401,46 @@ class VectorRotate(Node):
     @rotation_type.setter
     def rotation_type(self, value):
         self.bnode.rotation_type = value
+
+    @property
+    def vector(self):
+        return self.get_output_socket('vector')
+
+    @vector.setter
+    def vector(self, value):
+        self.set_input_socket('vector', value)
+
+    @property
+    def center(self):
+        raise AttributeError("Attribute error on node 'VectorRotate': the input socket 'center' is write only.")
+
+    @center.setter
+    def center(self, value):
+        self.set_input_socket('center', value)
+
+    @property
+    def axis(self):
+        raise AttributeError("Attribute error on node 'VectorRotate': the input socket 'axis' is write only.")
+
+    @axis.setter
+    def axis(self, value):
+        self.set_input_socket('axis', value)
+
+    @property
+    def angle(self):
+        raise AttributeError("Attribute error on node 'VectorRotate': the input socket 'angle' is write only.")
+
+    @angle.setter
+    def angle(self, value):
+        self.set_input_socket('angle', value)
+
+    @property
+    def rotation(self):
+        raise AttributeError("Attribute error on node 'VectorRotate': the input socket 'rotation' is write only.")
+
+    @rotation.setter
+    def rotation(self, value):
+        self.set_input_socket('rotation', value)
 # --------------------------------------------------------------------------------
 # Create node from its bl_idname
 

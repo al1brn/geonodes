@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-08-18
+Created on 2022-08-21
 @author: Generated from generator module
-Blender version: 3.2.0
+Blender version: 3.2.2
 """
 
 import geonodes as gn
@@ -32,12 +32,6 @@ class Vector(dsock.Vector):
         super().reset_properties()
 
         self.separate_ = None
-
-        self.x_ = None
-
-        self.y_ = None
-
-        self.z_ = None
 
     # ----------------------------------------------------------------------------------------------------
     # Constructors
@@ -203,93 +197,6 @@ class Vector(dsock.Vector):
         if self.separate_ is None:
             self.separate_ = nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.separate")
         return self.separate_
-
-    @property
-    def x(self):
-        """ Geometry node [*Separate XYZ*].
-        
-        
-        
-            Returns:
-                Sockets [x (Float), y (Float), z (Float)]
-                
-            **Node creation**
-            
-            Node :class:`~geonodes.nodes.nodes.SeparateXyz`
-            
-            
-            .. blid:: ShaderNodeSeparateXYZ
-            
-            .. code-block:: python
-            
-                from geonodes import nodes
-                nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.x")
-                
-        """
-
-        return self.separate.x
-
-    @x.setter
-    def x(self, value):
-        self.separate.x = value
-
-    @property
-    def y(self):
-        """ Geometry node [*Separate XYZ*].
-        
-        
-        
-            Returns:
-                Sockets [x (Float), y (Float), z (Float)]
-                
-            **Node creation**
-            
-            Node :class:`~geonodes.nodes.nodes.SeparateXyz`
-            
-            
-            .. blid:: ShaderNodeSeparateXYZ
-            
-            .. code-block:: python
-            
-                from geonodes import nodes
-                nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.y")
-                
-        """
-
-        return self.separate.y
-
-    @y.setter
-    def y(self, value):
-        self.separate.y = value
-
-    @property
-    def z(self):
-        """ Geometry node [*Separate XYZ*].
-        
-        
-        
-            Returns:
-                Sockets [x (Float), y (Float), z (Float)]
-                
-            **Node creation**
-            
-            Node :class:`~geonodes.nodes.nodes.SeparateXyz`
-            
-            
-            .. blid:: ShaderNodeSeparateXYZ
-            
-            .. code-block:: python
-            
-                from geonodes import nodes
-                nodes.SeparateXyz(vector=self, label=f"{self.node_chain_label}.z")
-                
-        """
-
-        return self.separate.z
-
-    @z.setter
-    def z(self, value):
-        self.separate.z = value
 
 
     # ----------------------------------------------------------------------------------------------------

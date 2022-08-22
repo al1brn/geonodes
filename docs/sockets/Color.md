@@ -13,9 +13,6 @@
 
 ## Properties
 
-- [b](#b) : b (Float) = separate.b
-- [g](#g) : g (Float) = separate.g
-- [r](#r) : r (Float) = separate.r
 - [separate](#separate) : Sockets      [r (Float), g (Float), b (Float)]
 
 ## Methods
@@ -97,72 +94,6 @@ Geometry node [*Separate RGB*].
   
     from geonodes import nodes
     nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.separate")
-    
-
-## r
-
-Geometry node [*Separate RGB*].
-
-
-
-  Returns:
-    Sockets [r (Float), g (Float), b (Float)]
-    
-  **Node creation**
-  
-  Node :class:`~geonodes.nodes.nodes.SeparateRgb`
-  
-  
-  .. blid:: ShaderNodeSeparateRGB
-  
-  .. code-block:: python
-  
-    from geonodes import nodes
-    nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.r")
-    
-
-## g
-
-Geometry node [*Separate RGB*].
-
-
-
-  Returns:
-    Sockets [r (Float), g (Float), b (Float)]
-    
-  **Node creation**
-  
-  Node :class:`~geonodes.nodes.nodes.SeparateRgb`
-  
-  
-  .. blid:: ShaderNodeSeparateRGB
-  
-  .. code-block:: python
-  
-    from geonodes import nodes
-    nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.g")
-    
-
-## b
-
-Geometry node [*Separate RGB*].
-
-
-
-  Returns:
-    Sockets [r (Float), g (Float), b (Float)]
-    
-  **Node creation**
-  
-  Node :class:`~geonodes.nodes.nodes.SeparateRgb`
-  
-  
-  .. blid:: ShaderNodeSeparateRGB
-  
-  .. code-block:: python
-  
-    from geonodes import nodes
-    nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.b")
     
 
 ## capture_attribute

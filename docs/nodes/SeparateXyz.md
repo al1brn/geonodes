@@ -39,7 +39,4 @@ node = nodes.SeparateXyz(vector=None, label=None, node_color=None)
   
   
 - [Vector](/docs/sockets/Vector.md).[separate](/docs/sockets/Vector.md#separate) : Property
-- [Vector](/docs/sockets/Vector.md).[x](/docs/sockets/Vector.md#x) : Property
-- [Vector](/docs/sockets/Vector.md).[y](/docs/sockets/Vector.md#y) : Property
-- [Vector](/docs/sockets/Vector.md).[z](/docs/sockets/Vector.md#z) : Property
   

@@ -115,6 +115,19 @@ We are idiot proof and accept capitalized versions :-)
 Input sockets are "write only"
 
 
+## get_output_socket
+
+Output socket by name
+We are idiot proof and accept capitalized versions :-)
+
+
+## set_input_socket
+
+Set an input socket
+We are idiot proof and accept capitalized versions :-)
+Input sockets are "write only"
+
+
 ## get_datasocket
 
 Get the data socket by its index.

@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-08-18
+Created on 2022-08-21
 @author: Generated from generator module
-Blender version: 3.2.0
+Blender version: 3.2.2
 """
 
 import geonodes as gn
@@ -32,12 +32,6 @@ class Color(dsock.Color):
         super().reset_properties()
 
         self.separate_ = None
-
-        self.r_ = None
-
-        self.g_ = None
-
-        self.b_ = None
 
     # ----------------------------------------------------------------------------------------------------
     # Constructors
@@ -103,93 +97,6 @@ class Color(dsock.Color):
         if self.separate_ is None:
             self.separate_ = nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.separate")
         return self.separate_
-
-    @property
-    def r(self):
-        """ Geometry node [*Separate RGB*].
-        
-        
-        
-            Returns:
-                Sockets [r (Float), g (Float), b (Float)]
-                
-            **Node creation**
-            
-            Node :class:`~geonodes.nodes.nodes.SeparateRgb`
-            
-            
-            .. blid:: ShaderNodeSeparateRGB
-            
-            .. code-block:: python
-            
-                from geonodes import nodes
-                nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.r")
-                
-        """
-
-        return self.separate.r
-
-    @r.setter
-    def r(self, value):
-        self.separate.r = value
-
-    @property
-    def g(self):
-        """ Geometry node [*Separate RGB*].
-        
-        
-        
-            Returns:
-                Sockets [r (Float), g (Float), b (Float)]
-                
-            **Node creation**
-            
-            Node :class:`~geonodes.nodes.nodes.SeparateRgb`
-            
-            
-            .. blid:: ShaderNodeSeparateRGB
-            
-            .. code-block:: python
-            
-                from geonodes import nodes
-                nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.g")
-                
-        """
-
-        return self.separate.g
-
-    @g.setter
-    def g(self, value):
-        self.separate.g = value
-
-    @property
-    def b(self):
-        """ Geometry node [*Separate RGB*].
-        
-        
-        
-            Returns:
-                Sockets [r (Float), g (Float), b (Float)]
-                
-            **Node creation**
-            
-            Node :class:`~geonodes.nodes.nodes.SeparateRgb`
-            
-            
-            .. blid:: ShaderNodeSeparateRGB
-            
-            .. code-block:: python
-            
-                from geonodes import nodes
-                nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.b")
-                
-        """
-
-        return self.separate.b
-
-    @b.setter
-    def b(self, value):
-        self.separate.b = value
 
 
     # ----------------------------------------------------------------------------------------------------
