@@ -786,12 +786,15 @@ class Vector(DataSocket):
         .. blid:: ShaderNodeCombineXYZ
         """
         
-        if self.separate_ is None and self.x_ is None and self.y_ is None and self.z_ is None:
+        if hasattr(self, 'bypass_gbs') or (self.separate_ is None and self.x_ is None and self.y_ is None and self.z_ is None):
             return super().get_blender_socket()
         
         else:
+            self.bypass_gbs = True
             node = nodes.CombineXyz(x=self.x, y=self.y, z=self.z, label=f"{self.node.chain_label}.combine")
             self.stack(node)
+            del self.bypass_gbs
+            
             return super().get_blender_socket()
         
     # ---------------------------------------------------------------------------
@@ -1018,12 +1021,15 @@ class Color(DataSocket):
         .. blid:: ShaderNodeCombineRGB
         """
         
-        if self.separate_ is None and self.r_ is None and self.g_ is None and self.b_ is None:
+        if hasattr(self, 'bypass_gbs') or (self.separate_ is None and self.r_ is None and self.g_ is None and self.b_ is None):
             return super().get_blender_socket()
         
         else:
+            self.bypass_gbs = True
             node = nodes.CombineRgb(r=self.r, g=self.g, b=self.b, label=f"{self.node.chain_label}.combine")
             self.stack(node)
+            del self.bypass_gbs
+            
             return super().get_blender_socket()
         
     # ---------------------------------------------------------------------------
