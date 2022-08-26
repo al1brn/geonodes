@@ -1198,7 +1198,7 @@ class Geometry(DataSocket):
     # ----------------------------------------------------------------------------------------------------
     # Duplicate the geometry
     
-    def duplicate(self, count: int = 10, realize: bool = True):
+    def duplicate_OLD(self, count: int = 10, realize: bool = True):
         """ Duplicate the geometry
         
         Args:

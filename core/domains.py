@@ -559,6 +559,32 @@ class Domain:
         self.stack(node)
         return node.duplicate_index
     
+    # ====================================================================================================
+    # Field at index
+    
+    def field_at_index(self, index=None, value=None, data_type=None):
+        """ Field at index
+        
+        Args:
+            index (Integer): index to use for getting the attributes
+            value (Any): the value to collect from the domain
+            data_type (str): the value data_type. Can be None
+            
+        Returns:
+            The field values
+            
+        If data_type is None, it is computed from the attribute type.
+        """
+
+
+        dt = Socket.domain_data_type(value) if data_type is None else Socket.domain_data_type(data_type)
+        
+        if index is None:
+            index = self.index
+        
+        return self.attribute(nodes.FieldAtIndex(index=index, value=value, data_type=dt, domain=self.domain)).value    
+    
+    
     
         
 # =============================================================================================================================
@@ -867,6 +893,7 @@ class PEFInterface:
         
         if self.domain == 'POINT':
             raise Exception(f"Vertices are not scalable: scale method can't be called")
+            
         return self.stack(nodes.ScaleElements(
             geometry=self.data_socket, selection=self.selection,
             scale=scale, center=center, axis=axis, domain=self.domain, scale_mode=scale_mode))
