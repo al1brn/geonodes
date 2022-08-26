@@ -38,6 +38,10 @@ NODE_STD_ATTRS = [
    'width', 'width_hidden']
 
 
+COLORS = {
+    'Viewer': 'Dark green',
+    }
+
 # =============================================================================================================================
 # Socket wrapper
 #
@@ -1002,12 +1006,14 @@ class DataSocket(Socket):
         if isinstance(value, Node):
             print("-"*80)
             print("It is not possible to plug a Node to a socket!")
-            print(f"You tried to plug the node {value} to the socket '{bsocket.name}' of type '{type(bsocket.default_value)}'.")
-            print("You certainly want to plug one the output sockets of the node:")
-            for name in node.outsockets:
-                print(f"   {name}")
+            print(f"You tried to plug the node {value} to the socket '{bsocket.name}' of type '{bsocket.bl_idname}'.")
+            print("You certainly want to plug one of the output sockets of the node. The output socket(s) are:")
+            for i, name in enumerate(value.outsockets):
+                print(f"   - {i}: {name}")
+            print("-"*80)
+            print()
             
-            raise RuntimeError(f"Impossible the plug the node {node} to the socket '{bsocket.name}'. See details above.")
+            raise RuntimeError(f"Impossible the plug the node {value} to the socket '{bsocket.name}'. See details above.")
 
         # ----------------------------------------------------------------------------------------------------
         # We can try to plug the value into the default value
@@ -1228,7 +1234,7 @@ class DataSocket(Socket):
     # ----------------------------------------------------------------------------------------------------
     # To viewer (for output sockets only)
         
-    def view(self):
+    def view(self, label=None, node_color=None):
         """ Link the data socket to the viewer
         
         If the data socket is a geometry (Curve, Mesh...) it is linked to the geometry input of the viewer.
@@ -1238,7 +1244,7 @@ class DataSocket(Socket):
         """
         if not self.is_output:
             raise RuntimeError(f"The socket '{str(self)}' is not an output socket. It can't be connected to the viewer.")
-        self.node.tree.view(self)
+        return self.node.tree.view(self, label=label, node_color=node_color)
         
     # ----------------------------------------------------------------------------------------------------
     # Reroute
@@ -1533,10 +1539,8 @@ class Tree:
         self.group_output = GroupOutput(check_output_geometry=not group)
         """ The 'Group Output' node"""
         
-        # ----- Viewer
+        # ----- Scene
         
-        self.viewer = None
-        """ The 'Viewer' node"""
         self.scene_ = None
 
         # ----- Reset the colors carroussel
@@ -1758,7 +1762,7 @@ class Tree:
     # ----------------------------------------------------------------------------------------------------
     # Viewer
     
-    def view(self, geometry=None, socket=None):
+    def view(self, geometry=None, socket=None, label=None, node_color=None):
         """ Connect a data socket to the viewer.
         
         :param geometry: The geometry to connect to the viewer
@@ -1768,14 +1772,14 @@ class Tree:
         
         You can also call ``DataSocket.view()``
         
-        The `Tree.view` method reuses the Viewer node if already exists.
         """
         
-        if self.viewer is None:
-            self.viewer = Viewer()
-            
-        self.viewer.plug_socket(geometry)
-        self.viewer.plug_socket(socket)
+        viewer = Viewer(label=label, node_color=node_color)
+        
+        viewer.plug_socket(geometry)
+        viewer.plug_socket(socket)
+        
+        return viewer
         
     # ----------------------------------------------------------------------------------------------------
     # Scene
@@ -1975,11 +1979,6 @@ class Tree:
                         if nd in security:
                             continue
                         
-                            #attr_node.node_color = "red"
-                            #node.node_color = "red"
-                            #nd.node_color = "red"
-                            #raise RuntimeError(f"Error when checking the attribute node {attr_node}, apparently, the tree loops on node {nd} {nd.bnode}")
-
                         security.append(nd)
                         
                         if not check_geo_nodes(nd):
@@ -3401,9 +3400,9 @@ class Viewer(Node):
 
     """
 
-    def __init__(self, geometry: DataSocket = None, value: Any = None, data_type: str = 'FLOAT', label: str = None):
+    def __init__(self, geometry: DataSocket = None, value: Any = None, data_type: str = 'FLOAT', label: str = None, node_color = None):
 
-        super().__init__('GeometryNodeViewer', 'Viewer', label=label)
+        super().__init__('GeometryNodeViewer', 'Viewer', label=label, node_color=COLORS['Viewer'] if node_color is None else node_color)
 
         # Parameters
 
@@ -3427,9 +3426,9 @@ class Viewer(Node):
             return
         
         class_name = DataSocket.get_class_name(socket, False)
-        
+
         if class_name in ['Geometry', 'Mesh', 'Curve', 'Spline', 'Points', 'Volume', 'Instances']:
-            self.geometry = socket
+            self.plug("geometry", socket)
         
         else:
             if class_name == 'Boolean':
@@ -3450,7 +3449,7 @@ class Viewer(Node):
             else:
                 raise RuntimeError(f"Impossible to connect the socket {socket} to the viewer. Class {class_name} is not viewable.")
                 
-            self.value = socket
+            self.plug("value", socket)
         
 # ----------------------------------------------------------------------------------------------------
 # Node NodeFrame for NodeFrame
