@@ -21,38 +21,38 @@ NODE_DIMS = {
    'FunctionNodeCompare'                     : {'dimensions': (280, 308), 'param_count': 2,
            'names'   : ['data_type', 'operation'],
            'changes' : {
-                ('FLOAT', 'LESS_THAN')                             : (280, 308),
-                ('FLOAT', 'LESS_EQUAL')                            : (280, 308),
-                ('FLOAT', 'GREATER_THAN')                          : (280, 308),
-                ('FLOAT', 'GREATER_EQUAL')                         : (280, 308),
-                ('FLOAT', 'EQUAL')                                 : (280, 348),
-                ('FLOAT', 'NOT_EQUAL')                             : (280, 348),
-                ('INT', 'LESS_THAN')                               : (280, 308),
-                ('INT', 'LESS_EQUAL')                              : (280, 308),
-                ('INT', 'GREATER_THAN')                            : (280, 308),
-                ('INT', 'GREATER_EQUAL')                           : (280, 308),
-                ('INT', 'EQUAL')                                   : (280, 308),
-                ('INT', 'NOT_EQUAL')                               : (280, 308),
-                ('VECTOR', 'LESS_THAN')                            : (280, 642),
-                ('VECTOR', 'LESS_EQUAL')                           : (280, 642),
-                ('VECTOR', 'GREATER_THAN')                         : (280, 642),
-                ('VECTOR', 'GREATER_EQUAL')                        : (280, 642),
-                ('VECTOR', 'EQUAL')                                : (280, 682),
-                ('VECTOR', 'NOT_EQUAL')                            : (280, 682),
-                ('STRING', 'EQUAL')                                : (280, 308),
-                ('STRING', 'NOT_EQUAL')                            : (280, 308),
-                ('RGBA', 'EQUAL')                                  : (280, 348),
-                ('RGBA', 'NOT_EQUAL')                              : (280, 348),
-                ('RGBA', 'BRIGHTER')                               : (280, 308),
-                ('RGBA', 'DARKER')                                 : (280, 308),
-                ('FLOAT', 'BRIGHTER')                              : (280, 348),
-                ('INT', 'BRIGHTER')                                : (280, 308),
-                ('VECTOR', 'BRIGHTER')                             : (280, 682),
-                ('STRING', 'BRIGHTER')                             : (280, 308),
-                ('FLOAT', 'DARKER')                                : (280, 348),
-                ('INT', 'DARKER')                                  : (280, 308),
-                ('VECTOR', 'DARKER')                               : (280, 682),
-                ('STRING', 'DARKER')                               : (280, 308),},},
+                ('FLOAT',  'LESS_THAN',     ) : (280, 308),
+                ('FLOAT',  'LESS_EQUAL',    ) : (280, 308),
+                ('FLOAT',  'GREATER_THAN',  ) : (280, 308),
+                ('FLOAT',  'GREATER_EQUAL', ) : (280, 308),
+                ('FLOAT',  'EQUAL',         ) : (280, 348),
+                ('FLOAT',  'NOT_EQUAL',     ) : (280, 348),
+                ('INT',    'LESS_THAN',     ) : (280, 308),
+                ('INT',    'LESS_EQUAL',    ) : (280, 308),
+                ('INT',    'GREATER_THAN',  ) : (280, 308),
+                ('INT',    'GREATER_EQUAL', ) : (280, 308),
+                ('INT',    'EQUAL',         ) : (280, 308),
+                ('INT',    'NOT_EQUAL',     ) : (280, 308),
+                ('VECTOR', 'LESS_THAN',     ) : (280, 642),
+                ('VECTOR', 'LESS_EQUAL',    ) : (280, 642),
+                ('VECTOR', 'GREATER_THAN',  ) : (280, 642),
+                ('VECTOR', 'GREATER_EQUAL', ) : (280, 642),
+                ('VECTOR', 'EQUAL',         ) : (280, 682),
+                ('VECTOR', 'NOT_EQUAL',     ) : (280, 682),
+                ('STRING', 'EQUAL',         ) : (280, 308),
+                ('STRING', 'NOT_EQUAL',     ) : (280, 308),
+                ('RGBA',   'EQUAL',         ) : (280, 348),
+                ('RGBA',   'NOT_EQUAL',     ) : (280, 348),
+                ('RGBA',   'BRIGHTER',      ) : (280, 308),
+                ('RGBA',   'DARKER',        ) : (280, 308),
+                ('FLOAT',  'BRIGHTER',      ) : (280, 348),
+                ('INT',    'BRIGHTER',      ) : (280, 308),
+                ('VECTOR', 'BRIGHTER',      ) : (280, 682),
+                ('STRING', 'BRIGHTER',      ) : (280, 308),
+                ('FLOAT',  'DARKER',        ) : (280, 348),
+                ('INT',    'DARKER',        ) : (280, 308),
+                ('VECTOR', 'DARKER',        ) : (280, 682),
+                ('STRING', 'DARKER',        ) : (280, 308),},},
    'FunctionNodeFloatToInt'                  : {'dimensions': (280, 210), 'param_count': 0,},
    'FunctionNodeInputBool'                   : {'dimensions': (280, 160), 'param_count': 0,},
    'FunctionNodeInputColor'                  : {'dimensions': (280, 370), 'param_count': 0,},
@@ -88,21 +88,21 @@ NODE_DIMS = {
    'GeometryNodeAttributeTransfer'           : {'dimensions': (280, 356), 'param_count': 2,
            'names'   : ['data_type', 'mapping'],
            'changes' : {
-                ('FLOAT', 'NEAREST_FACE_INTERPOLATED')             : (280, 356),
-                ('FLOAT', 'NEAREST')                               : (280, 406),
-                ('FLOAT', 'INDEX')                                 : (280, 402),
-                ('INT', 'NEAREST_FACE_INTERPOLATED')               : (280, 352),
-                ('INT', 'NEAREST')                                 : (280, 402),
-                ('INT', 'INDEX')                                   : (280, 398),
-                ('FLOAT_VECTOR', 'NEAREST_FACE_INTERPOLATED')      : (280, 356),
-                ('FLOAT_VECTOR', 'NEAREST')                        : (280, 406),
-                ('FLOAT_VECTOR', 'INDEX')                          : (280, 402),
-                ('FLOAT_COLOR', 'NEAREST_FACE_INTERPOLATED')       : (280, 356),
-                ('FLOAT_COLOR', 'NEAREST')                         : (280, 406),
-                ('FLOAT_COLOR', 'INDEX')                           : (280, 402),
-                ('BOOLEAN', 'NEAREST_FACE_INTERPOLATED')           : (280, 356),
-                ('BOOLEAN', 'NEAREST')                             : (280, 406),
-                ('BOOLEAN', 'INDEX')                               : (280, 402),},},
+                ('FLOAT',        'NEAREST_FACE_INTERPOLATED', ) : (280, 356),
+                ('FLOAT',        'NEAREST',                   ) : (280, 406),
+                ('FLOAT',        'INDEX',                     ) : (280, 402),
+                ('INT',          'NEAREST_FACE_INTERPOLATED', ) : (280, 352),
+                ('INT',          'NEAREST',                   ) : (280, 402),
+                ('INT',          'INDEX',                     ) : (280, 398),
+                ('FLOAT_VECTOR', 'NEAREST_FACE_INTERPOLATED', ) : (280, 356),
+                ('FLOAT_VECTOR', 'NEAREST',                   ) : (280, 406),
+                ('FLOAT_VECTOR', 'INDEX',                     ) : (280, 402),
+                ('FLOAT_COLOR',  'NEAREST_FACE_INTERPOLATED', ) : (280, 356),
+                ('FLOAT_COLOR',  'NEAREST',                   ) : (280, 406),
+                ('FLOAT_COLOR',  'INDEX',                     ) : (280, 402),
+                ('BOOLEAN',      'NEAREST_FACE_INTERPOLATED', ) : (280, 356),
+                ('BOOLEAN',      'NEAREST',                   ) : (280, 406),
+                ('BOOLEAN',      'INDEX',                     ) : (280, 402),},},
    'GeometryNodeBoundBox'                    : {'dimensions': (280, 238), 'param_count': 0,},
    'GeometryNodeCaptureAttribute'            : {'dimensions': (280, 356), 'param_count': 1,
            'name'    : 'data_type',
@@ -320,14 +320,14 @@ NODE_DIMS = {
    'ShaderNodeMapRange'                      : {'dimensions': (280, 494), 'param_count': 2,
            'names'   : ['data_type', 'interpolation_type'],
            'changes' : {
-                ('FLOAT', 'LINEAR')                                : (280, 494),
-                ('FLOAT', 'STEPPED')                               : (280, 538),
-                ('FLOAT', 'SMOOTHSTEP')                            : (280, 444),
-                ('FLOAT', 'SMOOTHERSTEP')                          : (280, 444),
-                ('FLOAT_VECTOR', 'LINEAR')                         : (280, 970),
-                ('FLOAT_VECTOR', 'STEPPED')                        : (280, 1130),
-                ('FLOAT_VECTOR', 'SMOOTHSTEP')                     : (280, 920),
-                ('FLOAT_VECTOR', 'SMOOTHERSTEP')                   : (280, 920),},},
+                ('FLOAT',        'LINEAR',       ) : (280, 494),
+                ('FLOAT',        'STEPPED',      ) : (280, 538),
+                ('FLOAT',        'SMOOTHSTEP',   ) : (280, 444),
+                ('FLOAT',        'SMOOTHERSTEP', ) : (280, 444),
+                ('FLOAT_VECTOR', 'LINEAR',       ) : (280, 970),
+                ('FLOAT_VECTOR', 'STEPPED',      ) : (280, 1130),
+                ('FLOAT_VECTOR', 'SMOOTHSTEP',   ) : (280, 920),
+                ('FLOAT_VECTOR', 'SMOOTHERSTEP', ) : (280, 920),},},
    'ShaderNodeMath'                          : {'dimensions': (280, 308), 'param_count': 1,
            'name'    : 'operation',
            'changes' : {
@@ -368,26 +368,26 @@ NODE_DIMS = {
    'ShaderNodeTexMusgrave'                   : {'dimensions': (300, 440), 'param_count': 2,
            'names'   : ['musgrave_dimensions', 'musgrave_type'],
            'changes' : {
-                ('1D', 'MULTIFRACTAL')                             : (300, 440),
-                ('1D', 'RIDGED_MULTIFRACTAL')                      : (300, 524),
-                ('1D', 'HYBRID_MULTIFRACTAL')                      : (300, 524),
-                ('1D', 'FBM')                                      : (300, 440),
-                ('1D', 'HETERO_TERRAIN')                           : (300, 484),
-                ('2D', 'MULTIFRACTAL')                             : (300, 440),
-                ('2D', 'RIDGED_MULTIFRACTAL')                      : (300, 524),
-                ('2D', 'HYBRID_MULTIFRACTAL')                      : (300, 524),
-                ('2D', 'FBM')                                      : (300, 440),
-                ('2D', 'HETERO_TERRAIN')                           : (300, 484),
-                ('3D', 'MULTIFRACTAL')                             : (300, 440),
-                ('3D', 'RIDGED_MULTIFRACTAL')                      : (300, 524),
-                ('3D', 'HYBRID_MULTIFRACTAL')                      : (300, 524),
-                ('3D', 'FBM')                                      : (300, 440),
-                ('3D', 'HETERO_TERRAIN')                           : (300, 484),
-                ('4D', 'MULTIFRACTAL')                             : (300, 484),
-                ('4D', 'RIDGED_MULTIFRACTAL')                      : (300, 568),
-                ('4D', 'HYBRID_MULTIFRACTAL')                      : (300, 568),
-                ('4D', 'FBM')                                      : (300, 484),
-                ('4D', 'HETERO_TERRAIN')                           : (300, 528),},},
+                ('1D', 'MULTIFRACTAL',        ) : (300, 440),
+                ('1D', 'RIDGED_MULTIFRACTAL', ) : (300, 524),
+                ('1D', 'HYBRID_MULTIFRACTAL', ) : (300, 524),
+                ('1D', 'FBM',                 ) : (300, 440),
+                ('1D', 'HETERO_TERRAIN',      ) : (300, 484),
+                ('2D', 'MULTIFRACTAL',        ) : (300, 440),
+                ('2D', 'RIDGED_MULTIFRACTAL', ) : (300, 524),
+                ('2D', 'HYBRID_MULTIFRACTAL', ) : (300, 524),
+                ('2D', 'FBM',                 ) : (300, 440),
+                ('2D', 'HETERO_TERRAIN',      ) : (300, 484),
+                ('3D', 'MULTIFRACTAL',        ) : (300, 440),
+                ('3D', 'RIDGED_MULTIFRACTAL', ) : (300, 524),
+                ('3D', 'HYBRID_MULTIFRACTAL', ) : (300, 524),
+                ('3D', 'FBM',                 ) : (300, 440),
+                ('3D', 'HETERO_TERRAIN',      ) : (300, 484),
+                ('4D', 'MULTIFRACTAL',        ) : (300, 484),
+                ('4D', 'RIDGED_MULTIFRACTAL', ) : (300, 568),
+                ('4D', 'HYBRID_MULTIFRACTAL', ) : (300, 568),
+                ('4D', 'FBM',                 ) : (300, 484),
+                ('4D', 'HETERO_TERRAIN',      ) : (300, 528),},},
    'ShaderNodeTexNoise'                      : {'dimensions': (280, 430), 'param_count': 1,
            'name'    : 'noise_dimensions',
            'changes' : {
@@ -395,86 +395,86 @@ NODE_DIMS = {
    'ShaderNodeTexVoronoi'                    : {'dimensions': (280, 490), 'param_count': 3,
            'names'   : ['distance', 'feature', 'voronoi_dimensions'],
            'changes' : {
-                ('EUCLIDEAN', 'F1', '1D')                          : (280, 440),
-                ('EUCLIDEAN', 'F1', '2D')                          : (280, 490),
-                ('EUCLIDEAN', 'F1', '3D')                          : (280, 490),
-                ('EUCLIDEAN', 'F1', '4D')                          : (280, 578),
-                ('EUCLIDEAN', 'F2', '1D')                          : (280, 440),
-                ('EUCLIDEAN', 'F2', '2D')                          : (280, 490),
-                ('EUCLIDEAN', 'F2', '3D')                          : (280, 490),
-                ('EUCLIDEAN', 'F2', '4D')                          : (280, 578),
-                ('EUCLIDEAN', 'SMOOTH_F1', '1D')                   : (280, 484),
-                ('EUCLIDEAN', 'SMOOTH_F1', '2D')                   : (280, 534),
-                ('EUCLIDEAN', 'SMOOTH_F1', '3D')                   : (280, 534),
-                ('EUCLIDEAN', 'SMOOTH_F1', '4D')                   : (280, 622),
-                ('EUCLIDEAN', 'DISTANCE_TO_EDGE', '1D')            : (280, 352),
-                ('EUCLIDEAN', 'DISTANCE_TO_EDGE', '2D')            : (280, 352),
-                ('EUCLIDEAN', 'DISTANCE_TO_EDGE', '3D')            : (280, 352),
-                ('EUCLIDEAN', 'DISTANCE_TO_EDGE', '4D')            : (280, 396),
-                ('EUCLIDEAN', 'N_SPHERE_RADIUS', '1D')             : (280, 348),
-                ('EUCLIDEAN', 'N_SPHERE_RADIUS', '2D')             : (280, 348),
-                ('EUCLIDEAN', 'N_SPHERE_RADIUS', '3D')             : (280, 348),
-                ('EUCLIDEAN', 'N_SPHERE_RADIUS', '4D')             : (280, 392),
-                ('MANHATTAN', 'F1', '1D')                          : (280, 440),
-                ('MANHATTAN', 'F1', '2D')                          : (280, 490),
-                ('MANHATTAN', 'F1', '3D')                          : (280, 490),
-                ('MANHATTAN', 'F1', '4D')                          : (280, 578),
-                ('MANHATTAN', 'F2', '1D')                          : (280, 440),
-                ('MANHATTAN', 'F2', '2D')                          : (280, 490),
-                ('MANHATTAN', 'F2', '3D')                          : (280, 490),
-                ('MANHATTAN', 'F2', '4D')                          : (280, 578),
-                ('MANHATTAN', 'SMOOTH_F1', '1D')                   : (280, 484),
-                ('MANHATTAN', 'SMOOTH_F1', '2D')                   : (280, 534),
-                ('MANHATTAN', 'SMOOTH_F1', '3D')                   : (280, 534),
-                ('MANHATTAN', 'SMOOTH_F1', '4D')                   : (280, 622),
-                ('MANHATTAN', 'DISTANCE_TO_EDGE', '1D')            : (280, 352),
-                ('MANHATTAN', 'DISTANCE_TO_EDGE', '2D')            : (280, 352),
-                ('MANHATTAN', 'DISTANCE_TO_EDGE', '3D')            : (280, 352),
-                ('MANHATTAN', 'DISTANCE_TO_EDGE', '4D')            : (280, 396),
-                ('MANHATTAN', 'N_SPHERE_RADIUS', '1D')             : (280, 348),
-                ('MANHATTAN', 'N_SPHERE_RADIUS', '2D')             : (280, 348),
-                ('MANHATTAN', 'N_SPHERE_RADIUS', '3D')             : (280, 348),
-                ('MANHATTAN', 'N_SPHERE_RADIUS', '4D')             : (280, 392),
-                ('CHEBYCHEV', 'F1', '1D')                          : (280, 440),
-                ('CHEBYCHEV', 'F1', '2D')                          : (280, 490),
-                ('CHEBYCHEV', 'F1', '3D')                          : (280, 490),
-                ('CHEBYCHEV', 'F1', '4D')                          : (280, 578),
-                ('CHEBYCHEV', 'F2', '1D')                          : (280, 440),
-                ('CHEBYCHEV', 'F2', '2D')                          : (280, 490),
-                ('CHEBYCHEV', 'F2', '3D')                          : (280, 490),
-                ('CHEBYCHEV', 'F2', '4D')                          : (280, 578),
-                ('CHEBYCHEV', 'SMOOTH_F1', '1D')                   : (280, 484),
-                ('CHEBYCHEV', 'SMOOTH_F1', '2D')                   : (280, 534),
-                ('CHEBYCHEV', 'SMOOTH_F1', '3D')                   : (280, 534),
-                ('CHEBYCHEV', 'SMOOTH_F1', '4D')                   : (280, 622),
-                ('CHEBYCHEV', 'DISTANCE_TO_EDGE', '1D')            : (280, 352),
-                ('CHEBYCHEV', 'DISTANCE_TO_EDGE', '2D')            : (280, 352),
-                ('CHEBYCHEV', 'DISTANCE_TO_EDGE', '3D')            : (280, 352),
-                ('CHEBYCHEV', 'DISTANCE_TO_EDGE', '4D')            : (280, 396),
-                ('CHEBYCHEV', 'N_SPHERE_RADIUS', '1D')             : (280, 348),
-                ('CHEBYCHEV', 'N_SPHERE_RADIUS', '2D')             : (280, 348),
-                ('CHEBYCHEV', 'N_SPHERE_RADIUS', '3D')             : (280, 348),
-                ('CHEBYCHEV', 'N_SPHERE_RADIUS', '4D')             : (280, 392),
-                ('MINKOWSKI', 'F1', '1D')                          : (280, 440),
-                ('MINKOWSKI', 'F1', '2D')                          : (280, 534),
-                ('MINKOWSKI', 'F1', '3D')                          : (280, 534),
-                ('MINKOWSKI', 'F1', '4D')                          : (280, 622),
-                ('MINKOWSKI', 'F2', '1D')                          : (280, 440),
-                ('MINKOWSKI', 'F2', '2D')                          : (280, 534),
-                ('MINKOWSKI', 'F2', '3D')                          : (280, 534),
-                ('MINKOWSKI', 'F2', '4D')                          : (280, 622),
-                ('MINKOWSKI', 'SMOOTH_F1', '1D')                   : (280, 484),
-                ('MINKOWSKI', 'SMOOTH_F1', '2D')                   : (280, 578),
-                ('MINKOWSKI', 'SMOOTH_F1', '3D')                   : (280, 578),
-                ('MINKOWSKI', 'SMOOTH_F1', '4D')                   : (280, 666),
-                ('MINKOWSKI', 'DISTANCE_TO_EDGE', '1D')            : (280, 352),
-                ('MINKOWSKI', 'DISTANCE_TO_EDGE', '2D')            : (280, 352),
-                ('MINKOWSKI', 'DISTANCE_TO_EDGE', '3D')            : (280, 352),
-                ('MINKOWSKI', 'DISTANCE_TO_EDGE', '4D')            : (280, 396),
-                ('MINKOWSKI', 'N_SPHERE_RADIUS', '1D')             : (280, 348),
-                ('MINKOWSKI', 'N_SPHERE_RADIUS', '2D')             : (280, 348),
-                ('MINKOWSKI', 'N_SPHERE_RADIUS', '3D')             : (280, 348),
-                ('MINKOWSKI', 'N_SPHERE_RADIUS', '4D')             : (280, 392),},},
+                ('EUCLIDEAN', 'F1',               '1D', ) : (280, 440),
+                ('EUCLIDEAN', 'F1',               '2D', ) : (280, 490),
+                ('EUCLIDEAN', 'F1',               '3D', ) : (280, 490),
+                ('EUCLIDEAN', 'F1',               '4D', ) : (280, 578),
+                ('EUCLIDEAN', 'F2',               '1D', ) : (280, 440),
+                ('EUCLIDEAN', 'F2',               '2D', ) : (280, 490),
+                ('EUCLIDEAN', 'F2',               '3D', ) : (280, 490),
+                ('EUCLIDEAN', 'F2',               '4D', ) : (280, 578),
+                ('EUCLIDEAN', 'SMOOTH_F1',        '1D', ) : (280, 484),
+                ('EUCLIDEAN', 'SMOOTH_F1',        '2D', ) : (280, 534),
+                ('EUCLIDEAN', 'SMOOTH_F1',        '3D', ) : (280, 534),
+                ('EUCLIDEAN', 'SMOOTH_F1',        '4D', ) : (280, 622),
+                ('EUCLIDEAN', 'DISTANCE_TO_EDGE', '1D', ) : (280, 352),
+                ('EUCLIDEAN', 'DISTANCE_TO_EDGE', '2D', ) : (280, 352),
+                ('EUCLIDEAN', 'DISTANCE_TO_EDGE', '3D', ) : (280, 352),
+                ('EUCLIDEAN', 'DISTANCE_TO_EDGE', '4D', ) : (280, 396),
+                ('EUCLIDEAN', 'N_SPHERE_RADIUS',  '1D', ) : (280, 348),
+                ('EUCLIDEAN', 'N_SPHERE_RADIUS',  '2D', ) : (280, 348),
+                ('EUCLIDEAN', 'N_SPHERE_RADIUS',  '3D', ) : (280, 348),
+                ('EUCLIDEAN', 'N_SPHERE_RADIUS',  '4D', ) : (280, 392),
+                ('MANHATTAN', 'F1',               '1D', ) : (280, 440),
+                ('MANHATTAN', 'F1',               '2D', ) : (280, 490),
+                ('MANHATTAN', 'F1',               '3D', ) : (280, 490),
+                ('MANHATTAN', 'F1',               '4D', ) : (280, 578),
+                ('MANHATTAN', 'F2',               '1D', ) : (280, 440),
+                ('MANHATTAN', 'F2',               '2D', ) : (280, 490),
+                ('MANHATTAN', 'F2',               '3D', ) : (280, 490),
+                ('MANHATTAN', 'F2',               '4D', ) : (280, 578),
+                ('MANHATTAN', 'SMOOTH_F1',        '1D', ) : (280, 484),
+                ('MANHATTAN', 'SMOOTH_F1',        '2D', ) : (280, 534),
+                ('MANHATTAN', 'SMOOTH_F1',        '3D', ) : (280, 534),
+                ('MANHATTAN', 'SMOOTH_F1',        '4D', ) : (280, 622),
+                ('MANHATTAN', 'DISTANCE_TO_EDGE', '1D', ) : (280, 352),
+                ('MANHATTAN', 'DISTANCE_TO_EDGE', '2D', ) : (280, 352),
+                ('MANHATTAN', 'DISTANCE_TO_EDGE', '3D', ) : (280, 352),
+                ('MANHATTAN', 'DISTANCE_TO_EDGE', '4D', ) : (280, 396),
+                ('MANHATTAN', 'N_SPHERE_RADIUS',  '1D', ) : (280, 348),
+                ('MANHATTAN', 'N_SPHERE_RADIUS',  '2D', ) : (280, 348),
+                ('MANHATTAN', 'N_SPHERE_RADIUS',  '3D', ) : (280, 348),
+                ('MANHATTAN', 'N_SPHERE_RADIUS',  '4D', ) : (280, 392),
+                ('CHEBYCHEV', 'F1',               '1D', ) : (280, 440),
+                ('CHEBYCHEV', 'F1',               '2D', ) : (280, 490),
+                ('CHEBYCHEV', 'F1',               '3D', ) : (280, 490),
+                ('CHEBYCHEV', 'F1',               '4D', ) : (280, 578),
+                ('CHEBYCHEV', 'F2',               '1D', ) : (280, 440),
+                ('CHEBYCHEV', 'F2',               '2D', ) : (280, 490),
+                ('CHEBYCHEV', 'F2',               '3D', ) : (280, 490),
+                ('CHEBYCHEV', 'F2',               '4D', ) : (280, 578),
+                ('CHEBYCHEV', 'SMOOTH_F1',        '1D', ) : (280, 484),
+                ('CHEBYCHEV', 'SMOOTH_F1',        '2D', ) : (280, 534),
+                ('CHEBYCHEV', 'SMOOTH_F1',        '3D', ) : (280, 534),
+                ('CHEBYCHEV', 'SMOOTH_F1',        '4D', ) : (280, 622),
+                ('CHEBYCHEV', 'DISTANCE_TO_EDGE', '1D', ) : (280, 352),
+                ('CHEBYCHEV', 'DISTANCE_TO_EDGE', '2D', ) : (280, 352),
+                ('CHEBYCHEV', 'DISTANCE_TO_EDGE', '3D', ) : (280, 352),
+                ('CHEBYCHEV', 'DISTANCE_TO_EDGE', '4D', ) : (280, 396),
+                ('CHEBYCHEV', 'N_SPHERE_RADIUS',  '1D', ) : (280, 348),
+                ('CHEBYCHEV', 'N_SPHERE_RADIUS',  '2D', ) : (280, 348),
+                ('CHEBYCHEV', 'N_SPHERE_RADIUS',  '3D', ) : (280, 348),
+                ('CHEBYCHEV', 'N_SPHERE_RADIUS',  '4D', ) : (280, 392),
+                ('MINKOWSKI', 'F1',               '1D', ) : (280, 440),
+                ('MINKOWSKI', 'F1',               '2D', ) : (280, 534),
+                ('MINKOWSKI', 'F1',               '3D', ) : (280, 534),
+                ('MINKOWSKI', 'F1',               '4D', ) : (280, 622),
+                ('MINKOWSKI', 'F2',               '1D', ) : (280, 440),
+                ('MINKOWSKI', 'F2',               '2D', ) : (280, 534),
+                ('MINKOWSKI', 'F2',               '3D', ) : (280, 534),
+                ('MINKOWSKI', 'F2',               '4D', ) : (280, 622),
+                ('MINKOWSKI', 'SMOOTH_F1',        '1D', ) : (280, 484),
+                ('MINKOWSKI', 'SMOOTH_F1',        '2D', ) : (280, 578),
+                ('MINKOWSKI', 'SMOOTH_F1',        '3D', ) : (280, 578),
+                ('MINKOWSKI', 'SMOOTH_F1',        '4D', ) : (280, 666),
+                ('MINKOWSKI', 'DISTANCE_TO_EDGE', '1D', ) : (280, 352),
+                ('MINKOWSKI', 'DISTANCE_TO_EDGE', '2D', ) : (280, 352),
+                ('MINKOWSKI', 'DISTANCE_TO_EDGE', '3D', ) : (280, 352),
+                ('MINKOWSKI', 'DISTANCE_TO_EDGE', '4D', ) : (280, 396),
+                ('MINKOWSKI', 'N_SPHERE_RADIUS',  '1D', ) : (280, 348),
+                ('MINKOWSKI', 'N_SPHERE_RADIUS',  '2D', ) : (280, 348),
+                ('MINKOWSKI', 'N_SPHERE_RADIUS',  '3D', ) : (280, 348),
+                ('MINKOWSKI', 'N_SPHERE_RADIUS',  '4D', ) : (280, 392),},},
    'ShaderNodeTexWave'                       : {'dimensions': (300, 618), 'param_count': 0,},
    'ShaderNodeTexWhiteNoise'                 : {'dimensions': (280, 258), 'param_count': 1,
            'name'    : 'noise_dimensions',
@@ -513,18 +513,227 @@ NODE_DIMS = {
 }
 
 # ====================================================================================================
-# Create all the nodes
+# Build the node dimensions by trying all the parameter configurations
+#
+# Must be run with an open "Geometry Nodes Editor"
 
-def create_all_nodes(tree):
+def gen_node_dims():
+    
+    print('-'*80)
+    print("Nodes dimensions dictionary builder.")
+    print()
+    print("The dictionary is used by the arrange algorithm to have the true nodes dimensions.")
+    print("This function calls a UI redraw and requires that a 'Geometry Nodes Editor' be open")
+    print("with the default 'Geometry Nodes' geometry.")
+    print()
+
+    STD_ATTRS = [
+       '__doc__', '__module__', '__slots__', 'bl_description', 'bl_height_default', 'bl_height_max',
+       'bl_height_min', 'bl_icon', 'bl_idname', 'bl_label', 'bl_rna', 'bl_static_type',
+       'bl_width_default', 'bl_width_max', 'bl_width_min', 'color', 'dimensions', 'draw_buttons',
+       'draw_buttons_ext', 'height', 'hide', 'input_template', 'inputs', 'internal_links',
+       'is_registered_node_type', 'label', 'location', 'mute', 'name', 'output_template', 'outputs',
+       'parent', 'poll', 'poll_instance', 'rna_type', 'select', 'show_options', 'show_preview',
+       'show_texture', 'socket_value_update', 'type', 'update', 'use_clamp', 'use_custom_color',
+       'width', 'width_hidden']
+       
+    tree_name = "Geometry Nodes"
+    tree = bpy.data.node_groups[tree_name]
     tree.nodes.clear()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get all the possible values of an enum param
+
+    def get_node_enums(node, param_name):
+        
+        value  = getattr(node, param_name)
+        values = None
+        if isinstance(value, str):
+            try:
+                setattr(node, param_name, "TOTO")
+            except TypeError as e:
+                values = eval(str(e)[54:])
+                
+        return values
+
+    # ----------------------------------------------------------------------------------------------------
+    # Set all the possible values of a node parameter et check if the dimensions change
+    # Return the values for which the dimensions differ from default
+
+    def get_changed_dims(node, param_name, values):
+        
+        default  = getattr(node, param_name)
+        def_dims = tuple(node.dimensions)
+        
+        changes = {}
+        
+        for value in values:
+
+            setattr(node, param_name, value)
+            bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
+            
+            dims = tuple(node.dimensions)
+            if dims != def_dims:
+                changes[value] = dims
+
+        setattr(node, param_name, value)
+        bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
+                
+        return changes
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get all the combinations
+
+    def get_combination_dims(node, param_names):
+        
+        inds = {name: index for index, name in enumerate(param_names)}
+        
+        combs = {}
+        for param_name in param_names:
+            
+            default = getattr(node, param_name)
+            values  = get_node_enums(node, param_name)
+            
+            rems   = [pname for pname in param_names if pname != param_name]
+            worder = [param_name]
+            worder.extend(rems)
+            
+            for value in values:
+                setattr(node, param_name, value)
+                
+                if rems:
+                    sub = get_combination_dims(node, rems)
+                    for k, v in sub.items():
+                        
+                        ukey = (value,) + k
+                        okey = [None] * len(param_names)
+                        for pname, pv in zip(worder, ukey):
+                            okey[inds[pname]] = pv
+                            
+                        key = tuple(okey)
+                        if not key in combs:
+                            combs[key] = v
+                        
+                        #combs[(value,) + k] = v
+                    
+                else:
+                    bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
+                    combs[(value,)] = tuple(node.dimensions)
+                    
+            setattr(node, param_name, default)
+            
+        return combs
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get the attributes and default dimensions
+    #
+    # nodes is a dict indexed by bl_idname
+    # the values are a dict with a list two entries:
+    # 'dimensions' (w, h) : the default dimensions of the node
+    # 'changes'    dict (key: attr_name, value: (w, h))
+        
+    nodes = {}
+    count = 0
+
     for tp in dir(bpy.types):
-        if 'Legacy' in tp:
-            continue
         
         try:
-            tree.nodes.new(type=tp)
+            node = tree.nodes.new(type=tp)
         except:
-            pass
+            continue
+        
+        bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
+        nodes[node.bl_idname] = {'dimensions': tuple(node.dimensions)}
+        
+        params = {}
+        for attr in dir(node):
+            
+            if attr in STD_ATTRS:
+                continue
+            
+            value  = getattr(node, attr)
+            values = None
+            if isinstance(value, str):
+                try:
+                    setattr(node, attr, "TOTO")
+                except TypeError as e:
+                    values = eval(str(e)[54:])
+                    
+            # ----- Store the dimensions if changed
+            
+            if values is not None:
+                ch_dims = get_changed_dims(node, attr, values)
+                if ch_dims:
+                    params[attr] = ch_dims
+
+        nodes[node.bl_idname]['param_count'] = len(params)
+        
+        if len(params) == 1:
+            name = list(params.keys())[0]
+            nodes[node.bl_idname]['name']    = name
+            nodes[node.bl_idname]['changes'] = params[name]
+            
+        elif len(params) > 1:
+            param_names = list(params.keys())
+            combs = get_combination_dims(node, param_names)
+
+            nodes[node.bl_idname]['names']   = param_names
+            nodes[node.bl_idname]['changes'] = combs
+            
+        tree.nodes.remove(node)
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Customized pretty print
+
+    for blid, ndims in nodes.items():
+        
+        def sdim(d):
+            try:
+                return f"({int(d[0]):3d}, {int(d[1]):3d})"
+            except:
+                return "???" + str(d) + "???"
+            
+        sblid  = f"'{blid}'"
+        pcount = ndims['param_count'] 
+        s = f"   {sblid:42s}: " + "{" + f"'dimensions': {sdim(ndims['dimensions'])}, 'param_count': {pcount},"
+        
+        if pcount == 1:
+            name    = ndims['name']
+            changes = ndims['changes']
+
+            s += f"\n{' ':10s} 'name'    : '{name}',"  
+            s += f"\n{' ':10s} 'changes' : " + "{"
+            for k, v in changes.items():
+                sk = f"'{k}'"
+                s += f"\n{' ':15s} {sk:20s} : {sdim(v)},"
+            s += "}," 
+            
+        elif pcount > 1:
+            names   = ndims['names']
+            changes = ndims['changes']
+
+            s += f"\n{' ':10s} 'names'   : {names},"  
+            s += f"\n{' ':10s} 'changes' : " + "{"
+            
+            lname = [0] * len(names)
+            for k in changes:
+                for i, name in enumerate(k):
+                    lname[i] = max(lname[i], len(name))
+            sks = []
+            for k in changes:
+                sk = "("
+                for i, name in enumerate(k):
+                    sk += f"'{name}',{' '*(lname[i]-len(name)+1)}"
+                sks.append(sk + ")")
+
+            for sk, v in zip(sks, changes.values()):
+                #s += f"\n{' ':15s} {str(k):50s} : {sdim(v)},"
+                s += f"\n{' ':15s} {sk} : {sdim(v)},"
+            s += "}," 
+        
+        s += "},"
+        
+        print(s)
         
 # ====================================================================================================
 # Custom group dimensions
@@ -554,7 +763,7 @@ def group_dim(node):
         
     nd[1] = h
             
-    return nd
+    return [nd[0]/2, nd[1]/2]
     
 
 # ====================================================================================================
@@ -715,6 +924,7 @@ def delete_reroute(tree):
             
     print(f"Removed: {count} reroute nodes.")
     
+    
 # ====================================================================================================
 # Create reroute nodes as entry and exit points in frames
 
@@ -843,6 +1053,35 @@ def frame_outputs(tree):
             node.location = (x, y)
             y -= y_sepa            
             
+# ====================================================================================================
+# Delete single nodes
+
+def delete_single_nodes(tree):
+    nodes = []
+    for node in tree.nodes:
+
+        if node.bl_idname in ['NodeFrame']:
+            continue
+        
+        single = True
+        
+        for socket in node.inputs:
+            if len(socket.links):
+                single = False
+                break
+            
+        for socket in node.outputs:
+            if len(socket.links):
+                single = False
+                break
+            
+        if single:
+            nodes.append(node)
+        
+    for node in nodes:
+        tree.nodes.remove(node)
+        
+    return len(nodes)
 
 # ====================================================================================================
 # Hierachical boxes
@@ -993,6 +1232,13 @@ class Box:
     def h(self):
         return self.dims[1]
         
+    # ---------------------------------------------------------------------------
+    # Sort the in_siblings links
+    # Used by frames
+    
+    def sorted_in_siblings(self):
+        return list(self.in_siblings.values())
+
     # ---------------------------------------------------------------------------
     # Sibling test
     
@@ -1217,7 +1463,13 @@ class Frame(Box):
             s += "\n   " + "\n   ".join(sc)
             
         return s
-
+    
+    # ---------------------------------------------------------------------------
+    # Sort the in_siblings links
+    
+    def sorted_in_siblings(self):
+        links = sorted(self.in_siblings.values(), key = lambda bl: -bl.box_to.y)
+        return links
     
     # ---------------------------------------------------------------------------
     # The frame is drawn as a rectangle around its boxes (plus a certain margin)
@@ -1434,6 +1686,9 @@ class Frame(Box):
             elif child.is_output_reroute:
                 out_rrs.append(child)
                 
+        if not self.boxes:
+            return
+                
         # ---------------------------------------------------------------------------
         # How many columns do we have ?
         # We put the input reroutes as first column
@@ -1477,7 +1732,7 @@ class Frame(Box):
         # ----- Order the boxes by growing col
         
         new_feedings = self.cols[0]
-        
+
         # ---- Loop while there is boxes to locate
         
         bug = True
@@ -1490,28 +1745,30 @@ class Frame(Box):
             #feedings = sorted(new_feedings, key=lambda b: b.col)
             feedings = new_feedings
             new_feedings = []
-        
+            
             # ----- Loop on the boxes
             
-            for box in feedings:
+            for i_box, box in enumerate(feedings):
                 
                 # ----- Already located
                 
                 if box.located:
                     continue
                 
+                # ----- Columns before the box's one are not yet initialized
+                # We'll do this box later
+                
+                if sum([c.no_located_box for c in self.cols[:box.col]]) != 0:
+                    new_feedings.append(box)
+                    continue
+                
                 # ----- The owning column
                 
                 col = self.cols[box.col]
                 
-                # ----- y is max of current_height and current_height of prev column
+                # ----- y is min of left columns
                 
-                if False:
-                    y = col.next_y
-                    if col.prev_col is not None:
-                        y = min(y, col.prev_col.next_y)
-                else:
-                    y = min([col.next_y for col in self.cols[col.col_index:]])
+                y = min([col.next_y for col in self.cols[col.col_index:]])
                     
                 # ----- Locate the box in the column
                 
@@ -1519,10 +1776,12 @@ class Frame(Box):
                 
                 # ----- The feeding nodes
                 
-                for box_link in box.in_siblings.values():
+                box_links = box.sorted_in_siblings()
+                for box_link in box_links:
                     fb = box_link.sib_from
                     if not fb.located and fb not in new_feedings:
                         new_feedings.append(fb)
+                    
                         
         if bug:
             raise RuntimeError("Algorithm error")
@@ -1627,6 +1886,13 @@ class Column(list):
                 n += 1
             else:
                 return n
+
+    # ----------------------------------------------------------------------------------------------------
+    # return 1 if no located boxes
+    
+    @property
+    def no_located_box(self):
+        return 1 if self.located_count == 0 else 0
             
     # ----------------------------------------------------------------------------------------------------
     # Locate a box
@@ -1667,8 +1933,9 @@ def arrange(name, reroutes=True):
     
     tree = bpy.data.node_groups[name]
     
-    #if reroutes:
-    #    delete_reroute(tree)
+    # Some cleaning
+    
+    delete_single_nodes(tree)
     
     top = Frame.Tree(tree, reroutes=reroutes)
     if top is None:

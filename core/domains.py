@@ -559,6 +559,16 @@ class Domain:
         self.stack(node)
         return node.duplicate_index
     
+    #def __mul__(self, other):
+    #    self.duplicate(amount=other)
+    #    return self
+    
+    #def __rmul__(self, other):
+    #    return self * other
+    
+    def __imul__(self, other):
+        self.duplicate(amount=other)
+    
     # ====================================================================================================
     # Field at index
     

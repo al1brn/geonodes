@@ -217,6 +217,29 @@ class Socket:
         """
         
         return Socket.is_socket(value) or isinstance(value, bpy.types.NodeSocket)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Is it an group input socket
+    
+    @property
+    def is_input_socket(self):
+        return self.node is not None and self.node.bl_idname == 'NodeGroupInput'
+    
+    def new_node(self):
+        if self.is_input_socket:
+            return GroupInput(check_input_geometry=False)
+        else:
+            return None
+
+    def new_instance(self, node=None):
+        if node is None:
+            node = self.new_node()
+            
+        if node is None:
+            return self
+        else:
+            #print("new instance", self.name, self.socket_index, '-->', node.outputs[self.socket_index].name)
+            return type(self)(node.outputs[self.socket_index])
     
     # ----------------------------------------------------------------------------------------------------
     # The Blender socket is used to link nodes
@@ -1539,6 +1562,9 @@ class Tree:
         self.group_output = GroupOutput(check_output_geometry=not group)
         """ The 'Group Output' node"""
         
+        self.capture_inputs = True
+        """ Flag for capture_inputs argument for layouts."""
+        
         # ----- Scene
         
         self.scene_ = None
@@ -1757,7 +1783,18 @@ class Tree:
             value.to_output()
 
         """
-        self.group_output.to_output(socket)
+
+    # ----------------------------------------------------------------------------------------------------
+    # New in / out groups
+    
+    def new_group_input(self):
+        """ Create a new instance in group input."""
+        return GroupInput(check_input_geometry=False)
+    
+    def new_group_output(self):
+        """ Create a new instance in group output."""
+        return GroupOutput(check_output_geometry=False)
+        
         
     # ----------------------------------------------------------------------------------------------------
     # Viewer
@@ -1824,13 +1861,15 @@ class Tree:
     # Layouts
     
     @contextmanager
-    def layout(self, label="Layout", color=None):
+    def layout(self, label="Layout", color=None, capture_inputs=None):
         """ Create a new layout where the newly created nodes will be placed.
         
         :param label: The layout label
         :param color: The color of the layout
+        :param capture_inputs: Create a new instance fo group inputs in the frame
         :type label: str
         :type color: triplet, str or mathutils.Color
+        :type capture_inputs: bool or None
         
         To be used in a `with` block:
             
@@ -1863,7 +1902,10 @@ class Tree:
                 self.layouts.append(layout)
                 yield layout
             finally:
-                self.layouts.pop()
+                frame = self.layouts.pop()
+                if capture_inputs is None:
+                    capture_inputs = self.capture_inputs
+                frame.ok_capture_inputs = capture_inputs
             
     @property
     def cur_frame(self):
@@ -2103,15 +2145,28 @@ class Tree:
     def close(self):
         """ Call to indicate that the tree is completed and that it can be finalized
         
-        Two actions are performed:
+        Three actions are performed:
             
         - Insertion of "Capture Attribute" nodes for attributes which require it,
           see :func:`check_attributes`.
+        - Insert group input nodes in frame when ok_capture_inputs is set to True
         - Nodes arrangement, see :func:`arrange`.   
                                            
         """
+        
+        # ----- Capture attributes
+        
         if self.capture_attributes:
             self.check_attributes()
+            
+        # ----- Capture inputs into the frames
+        
+        frames = [frame for frame in self.nodes if frame.bnode.bl_idname == 'NodeFrame']
+        for frame in frames:
+            if frame.ok_capture_inputs:
+                frame.capture_inputs()
+        
+        # ----- Arrange
             
         self.arrange()
         
@@ -3075,7 +3130,12 @@ class GroupInput(CustomGroup):
                 
                 self.tree.btree.inputs.new(type='NodeSocketGeometry', name="Geometry")
                 self.build_insockets()
-        
+                
+    # --------------------------------------------------------------------------------
+    # Input socket by their name
+    
+    def __getitem__(self, name):
+        return getattr(self, CustomGroup.snake_case(name))
         
     # --------------------------------------------------------------------------------
     # Default geometry input node
@@ -3477,8 +3537,9 @@ class Frame(Node):
 
         # Parameters
 
-        self.bnode.label_size      = label_size
-        self.bnode.shrink          = shrink
+        self.bnode.label_size  = label_size
+        self.bnode.shrink      = shrink
+        self.ok_capture_inputs = False
         
     def get_label(self):
         """ Build the node label
@@ -3504,6 +3565,68 @@ class Frame(Node):
     @shrink.setter
     def shrink(self, value):
         self.bnode.shrink = value
+
+    # ---------------------------------------------------------------------------
+    # The nodes within the frame
+    
+    @property
+    def children(self):
+        return [node for node in self.tree.nodes if node.bnode.parent == self.bnode]
+        
+    # ---------------------------------------------------------------------------
+    # Capture the inputs
+    # replace all the links from group input to one node internally by a
+    # link with a new instance of group input
+    #
+    # Note : deals only with blender nodes and links
+    # It is transparent for the script
+    
+    def capture_inputs(self):
+        
+        tree   = self.tree.btree
+        frame  = self.bnode
+        nodes  = []
+        inputs = []
+        
+        group_input = self.tree.group_input.bnode
+        frame_input = None
+        
+        # ----- Put the nodes in the chilren list
+        
+        for node in tree.nodes:
+            if node.parent == frame:
+                if node.bl_idname == 'NodeGroupInput':
+                    frame_input = node
+                else:
+                    nodes.append(node)
+                    
+        # ----- Get all the incoming links
+                
+        links = []
+        for link in tree.links:
+            if link.from_node == group_input and link.to_node in nodes:
+                links.append(link)
+                
+        if not links:
+            return
+        
+        if frame_input is None:
+            frame_input = tree.nodes.new(type='NodeGroupInput')
+            frame_input.parent = frame
+            
+        for link in links:
+            from_socket = None
+            to_socket   = link.to_socket
+            
+            for i_sock, socket in enumerate(group_input.outputs):
+                #print("   test", socket.name, "vs", link.from_socket.name, socket == link.from_socket)
+                if socket == link.from_socket:
+                    from_socket = frame_input.outputs[i_sock]
+                    break
+                
+            tree.links.remove(link)
+            tree.links.new(from_socket, to_socket)
+        
         
 # ----------------------------------------------------------------------------------------------------
 # Scene

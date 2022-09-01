@@ -1196,10 +1196,10 @@ class Geometry(DataSocket):
     #    return self.stack(self.add(other).node)
     
     # ----------------------------------------------------------------------------------------------------
-    # Duplicate the geometry
+    # Instantiate the geometry
     
-    def duplicate_OLD(self, count: int = 10, realize: bool = True):
-        """ Duplicate the geometry
+    def instantiate(self, count: int = 1, realize: bool = False):
+        """ Instantiate the geometry
         
         Args:
             count: Number of instances to create
@@ -1211,7 +1211,7 @@ class Geometry(DataSocket):
         The duplication is performed by instantiating the geometry along the vertices
         of a Mesh Line initialized with `count` points.
         
-        The operator ``*`` can be used to operate this method with `realize = True`:
+        The operator ``*`` can be used to operate this method with `realize = False`:
             
         .. code-block::
             
@@ -1219,13 +1219,13 @@ class Geometry(DataSocket):
             
             # is equivalent to
             
-            curves = curve.duplicate(10, realize=True)
+            curves = curve.duplicate(10, realize=False)
             
         """
         
         import geonodes as gn
         
-        with self.node.tree.layout(f"Duplicate * {count}", color='GENE'):
+        with self.node.tree.layout(f"Instantiate({count}, {realize})", color='GENE'):
             line = gn.Mesh.Line(count=count)
             insts = gn.Points(line).instance_on_points(instance=self)
             if realize:
@@ -1233,11 +1233,11 @@ class Geometry(DataSocket):
             else:
                 return insts
             
-    def __mul__(self, other):
-        if isinstance(other, int) or self.is_socket(other):
-            return self.duplicate(count=other)
+    def __mul__(self, count):
+        return self.instantiate(count=count, realize=False)
         
-        raise Exception(f"A geometry can only be multiplied by an int")
+    def __imul__(self, count):
+        return type(self)(self.instantiate(count=count, realize=True))
         
     # ----------------------------------------------------------------------------------------------------
     # Visualize the handles
