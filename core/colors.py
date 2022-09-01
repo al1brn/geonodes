@@ -71,8 +71,6 @@ def color(name, saturation=None, value=None):
             
     elif type(name) is str:
 
-        print("color name", name)      
-        
         name  = name.lower().replace(' ', '_')
         
         comps = name.split('_')
@@ -94,8 +92,6 @@ def color(name, saturation=None, value=None):
         elif change == "dark":
             hsv[1] = 0.75
             
-        print("   --->", name, change)      
-        
     elif type(name) is mathutils.Color:
         return name
     
