@@ -112,6 +112,12 @@ class Domain:
         return type(self)(self.data_socket, selection=sel)
     
     def __call__(self, selection):
+        print('-'*80)
+        print("Genodes deprecation warning: Domain(bool) syntax deprecated. Use syntax Domain[bool].")
+        print(f"Domain: {self}, argument: {selection}. Node is colored in red.")
+        print()
+        self.data_socket.node.node_color = 'Red'
+
         return self.select(selection)
     
     def __repr__(self):
@@ -134,8 +140,19 @@ class Domain:
         
         import geonodes as gn
         
-        if isinstance(index, int) or Socket.is_socket(index):
+        # ----- Index is a boolean
+        # We plug it directly
+        
+        if isinstance(index, (bool, gn.Boolean)):
+            return self.select(index)
+
+        # ----- Index is an int or a socket (different from Boolean addressed above)
+        # We plug it directly
+        
+        elif isinstance(index, int) or Socket.is_socket(index):
             return self.select(self.index.equal(index))
+
+        # ----- Index is slice
         
         elif isinstance(index, slice):
             if index.start is None:
@@ -149,6 +166,8 @@ class Domain:
                 amp    = (index.stop - index.start - 1)/2
                 return self.select(gn.Float(self.index).equal(center, epsilon=amp+0.1))
             
+        # ----- Index is an array of indices
+        
         elif hasattr(index, '__len__'):
             sel = None
             for i in index[:10]:
@@ -159,7 +178,7 @@ class Domain:
             return self.select(sel)
         
         else:
-            raise Exceptionf(f"Invalid geometry index: {index}. Only ints, slices and arrays are valid.")
+            raise Exceptionf(f"Invalid domain index: {index}. Only bool, int, slice and array are valid.")
             
     
     # ----------------------------------------------------------------------------------------------------
