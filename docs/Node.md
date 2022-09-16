@@ -407,6 +407,11 @@ Initialize a Instances with a DataSocket
 Initialize a Volume with a DataSocket
 
 
+## Curves
+
+Initialize a Curves with a DataSocket
+
+
 ## Texture
 
 Initialize a Texture with a DataSocket

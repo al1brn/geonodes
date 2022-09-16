@@ -740,8 +740,12 @@ def gen_node_dims():
 
 def group_dim(node):
     
-    nd = list(NODE_DIMS[node.bl_idname]['dimensions'])
+    dims = NODE_DIMS.get(node.bl_idname)
+    if dims is None:
+        print(f"WARNING geonodes arrange: the node '{node.bl_idname}' is not referenced in NODE_DIMS")
+        return [200, 200]
     
+    nd = list(dims['dimensions'])
     
     # ----- Output sockets
     
@@ -808,7 +812,11 @@ def node_dim(node, tree=None):
     
     # ----- General case
     
-    ddims = NODE_DIMS[node.bl_idname]
+    ddims = NODE_DIMS.get(node.bl_idname)
+    if ddims is None:
+        print(f"WARNING geonodes arrange: the node '{node.bl_idname}' is not referenced in NODE_DIMS")
+        return [200, 200]
+
     nd    = list(ddims['dimensions'])
     
     pcount = ddims['param_count']

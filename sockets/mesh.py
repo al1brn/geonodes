@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-08-21
+Created on 2022-09-16
 @author: Generated from generator module
-Blender version: 3.2.2
+Blender version: 3.3.0
 """
 
 import geonodes as gn
@@ -474,7 +474,7 @@ class Mesh(gn.Geometry):
                 node_color (color): Node background color
                 
             Returns:
-                Mesh
+                Sockets [mesh (Mesh), intersecting_edges (Boolean)]
                 
             **Node creation**
             
@@ -491,7 +491,7 @@ class Mesh(gn.Geometry):
                 
         """
 
-        return nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT', label=node_label, node_color=node_color).mesh
+        return nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT', label=node_label, node_color=node_color)
 
     def union(self, *mesh_2, self_intersection=None, hole_tolerant=None, node_label = None, node_color = None):
         """ Geometry node [*Mesh Boolean*].
@@ -504,7 +504,7 @@ class Mesh(gn.Geometry):
                 node_color (color): Node background color
                 
             Returns:
-                Mesh
+                Sockets [mesh (Mesh), intersecting_edges (Boolean)]
                 
             **Node creation**
             
@@ -521,7 +521,7 @@ class Mesh(gn.Geometry):
                 
         """
 
-        return nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION', label=node_label, node_color=node_color).mesh
+        return nodes.MeshBoolean(self, *mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION', label=node_label, node_color=node_color)
 
     def difference(self, *mesh_2, self_intersection=None, hole_tolerant=None, node_label = None, node_color = None):
         """ Geometry node [*Mesh Boolean*].
@@ -535,7 +535,7 @@ class Mesh(gn.Geometry):
                 node_color (color): Node background color
                 
             Returns:
-                Mesh
+                Sockets [mesh (Mesh), intersecting_edges (Boolean)]
                 
             **Node creation**
             
@@ -552,7 +552,7 @@ class Mesh(gn.Geometry):
                 
         """
 
-        return nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE', label=node_label, node_color=node_color).mesh
+        return nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE', label=node_label, node_color=node_color)
 
     def split_edges(self, selection=None, node_label = None, node_color = None):
         """ Geometry node [*Split Edges*].
@@ -610,13 +610,14 @@ class Mesh(gn.Geometry):
 
         return self.stack(nodes.SubdivideMesh(mesh=self, level=level, label=node_label, node_color=node_color))
 
-    def subdivision_surface(self, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', node_label = None, node_color = None):
+    def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', node_label = None, node_color = None):
         """ Geometry node [*Subdivision Surface*].
         
         
             Args:
                 level: Integer
-                crease: Float
+                edge_crease: Float
+                vertex_crease: Float
                 boundary_smooth (str): 'ALL' in [PRESERVE_CORNERS, ALL]
                 uv_smooth (str): 'PRESERVE_BOUNDARIES' in [NONE, PRESERVE_CORNERS, PRESERVE_CORNERS_AND_JUNCTIONS, PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE, PRESERVE_BOUNDARIES, SMOOTH_ALL]
                 node_label (str): Node label
@@ -635,11 +636,11 @@ class Mesh(gn.Geometry):
             .. code-block:: python
             
                 from geonodes import nodes
-                nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth, label=node_label, node_color=node_color)
+                nodes.SubdivisionSurface(mesh=self, level=level, edge_crease=edge_crease, vertex_crease=vertex_crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth, label=node_label, node_color=node_color)
                 
         """
 
-        return self.stack(nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth, label=node_label, node_color=node_color))
+        return self.stack(nodes.SubdivisionSurface(mesh=self, level=level, edge_crease=edge_crease, vertex_crease=vertex_crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth, label=node_label, node_color=node_color))
 
     def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', node_label = None, node_color = None):
         """ Geometry node [*Triangulate*].
@@ -848,6 +849,40 @@ class Mesh(gn.Geometry):
 
         return nodes.MeshToCurve(mesh=self, selection=selection, label=node_label, node_color=node_color).curve
 
+    def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT', node_label = None, node_color = None):
+        """ Geometry node [*Mesh to Volume*].
+        
+        
+            Args:
+                density: Float
+                voxel_size: Float
+                voxel_amount: Float
+                exterior_band_width: Float
+                interior_band_width: Float
+                fill_volume: Boolean
+                resolution_mode (str): 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                Volume
+                
+            **Node creation**
+            
+            Node :class:`~geonodes.nodes.nodes.MeshToVolume`
+            
+            
+            .. blid:: GeometryNodeMeshToVolume
+            
+            .. code-block:: python
+            
+                from geonodes import nodes
+                nodes.MeshToVolume(mesh=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, exterior_band_width=exterior_band_width, interior_band_width=interior_band_width, fill_volume=fill_volume, resolution_mode=resolution_mode, label=node_label, node_color=node_color)
+                
+        """
+
+        return nodes.MeshToVolume(mesh=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, exterior_band_width=exterior_band_width, interior_band_width=interior_band_width, fill_volume=fill_volume, resolution_mode=resolution_mode, label=node_label, node_color=node_color).volume
+
     def to_points(self, selection=None, position=None, radius=None, mode='VERTICES', node_label = None, node_color = None):
         """ Geometry node [*Mesh to Points*].
         
@@ -912,5 +947,34 @@ class Mesh(gn.Geometry):
         """
 
         return nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method, label=node_label, node_color=node_color)
+
+    def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None, node_label = None, node_color = None):
+        """ Geometry node [*Edge Paths to Curves*].
+        
+        
+            Args:
+                start_vertices: Boolean
+                next_vertex_index: Integer
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                Curves
+                
+            **Node creation**
+            
+            Node :class:`~geonodes.nodes.nodes.EdgePathsToCurves`
+            
+            
+            .. blid:: GeometryNodeEdgePathsToCurves
+            
+            .. code-block:: python
+            
+                from geonodes import nodes
+                nodes.EdgePathsToCurves(mesh=self, start_vertices=start_vertices, next_vertex_index=next_vertex_index, label=node_label, node_color=node_color)
+                
+        """
+
+        return nodes.EdgePathsToCurves(mesh=self, start_vertices=start_vertices, next_vertex_index=next_vertex_index, label=node_label, node_color=node_color).curves
 
 

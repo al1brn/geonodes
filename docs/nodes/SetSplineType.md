@@ -25,7 +25,7 @@ node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY', label
 
 ### Parameters
 
-- spline_type : str (default = 'POLY') in ('BEZIER', 'NURBS', 'POLY')
+- spline_type : str (default = 'POLY') in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
 
 ### Node label
 

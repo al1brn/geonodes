@@ -43,6 +43,14 @@ COLORS = {
     }
 
 # =============================================================================================================================
+# A Blender socket has a name and a label. Since we use the user label as key for sockets
+# we need a utility to get the right name.
+
+def socket_name(blender_socket):
+    return blender_socket.name #if blender_socket.label == "" else blender_socket.label
+
+
+# =============================================================================================================================
 # Socket wrapper
 #
 # Root class for DataSocket and Domain
@@ -238,7 +246,6 @@ class Socket:
         if node is None:
             return self
         else:
-            #print("new instance", self.name, self.socket_index, '-->', node.outputs[self.socket_index].name)
             return type(self)(node.outputs[self.socket_index])
     
     # ----------------------------------------------------------------------------------------------------
@@ -265,7 +272,7 @@ class Socket:
     def name(self):
         """ Shortcut for `self.bsocket.name`
         """
-        return self.bsocket.name
+        return socket_name(self.bsocket)
         
     @property
     def is_output(self):
@@ -496,14 +503,14 @@ class Socket:
              - 
           
           
-        If the name of the socket is in ['Mesh', 'Points', 'Instances', 'Volume', 'Spline', 'Curve'],
+        If the name of the socket is in ['Mesh', 'Points', 'Instances', 'Volume', 'Spline', 'Curve', 'Curves'],
         the name is chosen as the class name.
         """
         bl_idname = socket.bl_idname
         class_name = Socket.SOCKET_IDS[bl_idname][0]
-        name = socket.name
+        name = socket_name(socket)
         
-        if class_name == 'Geometry' and name in ['Mesh', 'Points', 'Instances', 'Volume', 'Spline', 'Curve']:
+        if class_name == 'Geometry' and name in ['Mesh', 'Points', 'Instances', 'Volume', 'Spline', 'Curve', 'Curves']:
             class_name = name
             
         if name == 'Point Cloud':
@@ -927,7 +934,7 @@ class DataSocket(Socket):
                 
             # Vector --> Color
             elif ndim == 4 and len(value) == 3:
-                value += (value[0], value[1], value[2], 0)
+                value += (value[0], value[1], value[2], 1.)
                 
             # ----- Transform a triplet (a, b, c) where one value is a socket to a vector
             # This is necessarily done if hide_value is True
@@ -940,8 +947,14 @@ class DataSocket(Socket):
                     break
                 
             if to_vector or bsocket.hide_value:
-                from geonodes import Vector
-                DataSocket.plug_bsocket(bsocket, Vector(value).bsocket)
+
+                from geonodes import Vector, Color
+
+                if ndim == 3:
+                    DataSocket.plug_bsocket(bsocket, Vector(value).bsocket)
+                else:
+                    DataSocket.plug_bsocket(bsocket, Color(value).bsocket)
+                    
                 return
             
         # ----------------------------------------------------------------------------------------------------
@@ -1029,14 +1042,14 @@ class DataSocket(Socket):
         if isinstance(value, Node):
             print("-"*80)
             print("It is not possible to plug a Node to a socket!")
-            print(f"You tried to plug the node {value} to the socket '{bsocket.name}' of type '{bsocket.bl_idname}'.")
+            print(f"You tried to plug the node {value} to the socket '{socket_name(bsocket)}' of type '{bsocket.bl_idname}'.")
             print("You certainly want to plug one of the output sockets of the node. The output socket(s) are:")
             for i, name in enumerate(value.outsockets):
                 print(f"   - {i}: {name}")
             print("-"*80)
             print()
             
-            raise RuntimeError(f"Impossible the plug the node {value} to the socket '{bsocket.name}'. See details above.")
+            raise RuntimeError(f"Impossible the plug the node {value} to the socket '{socket_name(bsocket)}'. See details above.")
 
         # ----------------------------------------------------------------------------------------------------
         # We can try to plug the value into the default value
@@ -1050,7 +1063,7 @@ class DataSocket(Socket):
             ok = False
             
         if not ok:
-            logging.critical(f"Impossible to plug the value '{value}' to the socket '{bsocket.name}' of node '{bsocket.node.name}'")
+            logging.critical(f"Impossible to plug the value '{value}' to the socket '{socket_name(bsocket)}' of node '{bsocket.node.name}'")
             logging.critical(f"    The value type is: {type(value)}")
             logging.critical(f"    The expected type for socket default value is: {type(bsocket.default_value)}")
             logging.critical(f"    Default value len: {len(bsocket.default_value) if hasattr(bsocket.default_value, '__len__') else 'no length'}")
@@ -1481,7 +1494,7 @@ class Tree:
                     except:
                         continue
                         
-                    name = socket.name.lower().replace(' ', '_')
+                    name = socket_name(socket).lower().replace(' ', '_')
                     if isinstance(value, str):
                         a.append(f"{name}='{value}'")
                     else:
@@ -2649,8 +2662,8 @@ class Node:
             for i, bsock in enumerate(self.bnode.inputs):
                 
                 if bsock.enabled:
-                    valids.append((bsock.name, i))
-                    if bsock.name.lower() == index.lower():
+                    valids.append((socket_name(bsock), i))
+                    if socket_name(bsock).lower() == index.lower():
                         index = i
                         break
 
@@ -2894,6 +2907,12 @@ class Node:
         return gn.Volume(socket)
     
     @staticmethod
+    def Curves(socket):
+        """ Initialize a Curves with a DataSocket"""
+        import geonodes as gn
+        return gn.Curves(socket)
+    
+    @staticmethod
     def Texture(socket):
         """ Initialize a Texture with a DataSocket"""
         import geonodes as gn
@@ -2962,8 +2981,8 @@ class CustomGroup(Node):
         # snake_case version of the sockets names
         sc_names = []
         for bsocket in bsockets:
-            if bsocket.name != "":
-                sc_names.append(CustomGroup.snake_case(bsocket.name))
+            if socket_name(bsocket) != "":
+                sc_names.append(CustomGroup.snake_case(socket_name(bsocket)))
         
         # Unique version (homonyms are suffxed)
         return {uname: i for i, uname in enumerate(Node.unitize(sc_names))}
@@ -3156,7 +3175,7 @@ class GroupInput(CustomGroup):
             else:
                 geo = self.new_socket('Geometry')
                 for index, bsock in enumerate(self.bnode.outputs):
-                    if bsock.name == "Geometry":
+                    if socket_name(bsock) == "Geometry":
                         self.bnode.outputs.move(index, 0)
                         logger.error("GEONODES> Blender error: the method 'outputs.move' doesn't work. You must move yourself the input geometry in first position...")
                 
@@ -3204,7 +3223,7 @@ class GroupInput(CustomGroup):
             if bsocket.bl_idname == 'NodeSocketVirtual':
                 continue
             
-            if (search_blid == bsocket.bl_idname) and bsocket.name == name:
+            if (search_blid == bsocket.bl_idname) and socket_name(bsocket) == name:
                 
                 inp = self.tree.btree.inputs[socket_index]
                 
@@ -3299,10 +3318,6 @@ class GroupInput(CustomGroup):
                             if mod.node_group == self.tree.btree:
                                 mod[new_input.identifier] = value
                                 
-        # ----- Return the newly created socket
-        
-        #print("NEW SOCKET", socket.name, ":", socket, ", node", socket.node)
-        
         return socket
             
 # ----------------------------------------------------------------------------------------------------
@@ -3376,7 +3391,7 @@ class GroupOutput(CustomGroup):
             else:
                 geo   = None
                 for i, sock in enumerate(self.bnode.inputs):
-                    if sock.name == "Geometry":
+                    if socket_name(sock) == "Geometry":
                         geo   = sock
                         break
                     
@@ -3425,7 +3440,7 @@ class GroupOutput(CustomGroup):
             if bsocket.bl_idname != socket.bl_idname:
                 continue
             
-            if bsocket.name == name:
+            if socket_name(bsocket) == name:
                 self.plug(index, socket)
                 return
 
@@ -3619,7 +3634,6 @@ class Frame(Node):
             to_socket   = link.to_socket
             
             for i_sock, socket in enumerate(group_input.outputs):
-                #print("   test", socket.name, "vs", link.from_socket.name, socket == link.from_socket)
                 if socket == link.from_socket:
                     from_socket = frame_input.outputs[i_sock]
                     break

@@ -222,6 +222,17 @@ Don't use it directly, better call method ``to_output`` of data classes.
   
   
   
+  
+
+## new_group_input
+
+Create a new instance in group input.
+
+
+## new_group_output
+
+Create a new instance in group output.
+
 
 ## view
 
@@ -234,7 +245,6 @@ Connect a data socket to the viewer.
 
 You can also call ``DataSocket.view()``
 
-The `Tree.view` method reuses the Viewer node if already exists.
 
 
 
@@ -279,8 +289,10 @@ Create a new layout where the newly created nodes will be placed.
 
 :param label: The layout label
 :param color: The color of the layout
+:param capture_inputs: Create a new instance fo group inputs in the frame
 :type label: str
 :type color: triplet, str or mathutils.Color
+:type capture_inputs: bool or None
 
 To be used in a `with` block:
 
@@ -409,11 +421,14 @@ Arrange the created nodes in the tree background for more lisibility
 
 Call to indicate that the tree is completed and that it can be finalized
 
-Two actions are performed:
+Three actions are performed:
 
 - Insertion of "Capture Attribute" nodes for attributes which require it,
   see :func:`check_attributes`.
+- Insert group input nodes in frame when ok_capture_inputs is set to True
 - Nodes arrangement, see :func:`arrange`.   
   
   
   
+  
+----- Capture attributes

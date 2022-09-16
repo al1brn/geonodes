@@ -941,20 +941,51 @@ class Color(DataSocket):
 
             else:
                 if isinstance(value, (list, tuple)):
-                    if len(value) != 3:
-                        raise RuntimeError(f"A Color must be initialized with arrays of 3 items, not {len(value)}: {value}")
-                    r, g, b = value
+                    if len(value) not in (3, 4):
+                        raise RuntimeError(f"A Color must be initialized with arrays of 3 or 4 items, not {len(value)}: {value}")
+                    
+                    if len(value) == 3:
+                        r, g, b = value
+                        a = 1
+                    else:
+                        r, g, b, a = value
+                        
                 else:
-                    r, g, b = (value, value, value)
+                    r, g, b, a = (value, value, value, 1)
                 
-                node = nodes.CombineRgb(r=r, g=g, b=b, label=label)
-                super().__init__(node.image, node)
+                node = nodes.CombineColor(red=r, green=g, blue=b, alpha=a, mode='RGB', label=label)
+                super().__init__(node.color, node)
                 
         # ----- r, g, b components can be accessed individually
+        # SeparateRGB is deprecated in Blender 3.3
         
-        self.r_ = None
-        self.g_ = None
-        self.b_ = None
+        #self.r_ = None
+        #self.g_ = None
+        #self.b_ = None
+        
+        # Cache
+        
+        self.reset_cache()
+        
+        
+    def reset_cache(self):
+        
+        self._separate_RGB = None # 3 possible read modes
+        self._separate_HSV = None
+        self._separate_HSL = None
+        
+        self._red          = None # RGB Components
+        self._green        = None
+        self._blue         = None
+        
+        self._hue          = None # HSV components
+        self._saturation   = None
+        self._value        = None
+        
+        self._lightness    = None # L component
+        
+        self._alpha        = None # Alpha component
+        
                 
     
     @classmethod
@@ -974,6 +1005,9 @@ class Color(DataSocket):
     
     # ---------------------------------------------------------------------------
     # r, g and b components
+    # DEPRECATED : separate_RGB is replaced by separate_color
+    
+    """
     
     @property
     def r(self):
@@ -1007,6 +1041,284 @@ class Color(DataSocket):
     @b.setter
     def b(self, value):
         self.b_ = value    
+        
+    """
+        
+    # ---------------------------------------------------------------------------
+    # Is modified
+    
+    @property
+    def rgb_modified(self):
+        return (self._red is not None) or (self._green is not None) or (self._blue is not None)
+    
+    @property
+    def hs_modified(self):
+        return (self._hue is not None) or (self._saturation is not None)
+    
+    @property
+    def v_modified(self):
+        return self._value is not None
+    
+    @property
+    def l_modified(self):
+        return self._lightness is not None
+    
+    @property
+    def a_modified(self):
+        return self._alpha is not None
+    
+    @property
+    def is_modified(self):
+        return self.rgb_modified or self.hs_modified or self.v_modified or self.l_modified or self.a_modified
+
+    
+    # ---------------------------------------------------------------------------
+    # Recompose the nodes from its modified components
+    #
+    # If for_mode is not in RGB, HSV, HSL, the recomposition is forced
+    
+    def recompose(self, for_modes=()):
+        
+        if hasattr(self, 'no_loop'):
+            return
+        
+        # ---------------------------------------------------------------------------
+        # What is the current modified mode ?
+        
+        # ----- lightness: HSL mode
+        
+        if self.l_modified:
+            cur_mode = ('HSL',)
+            
+        # ----- value: HSV mode
+            
+        elif self.v_modified:
+            cur_mode = ('HSV',)
+            
+        # ----- hue, saturation : HSL or HSV
+                
+        elif self.hs_modified:
+            cur_mode = ('HSV', 'HSL')
+                
+        # ----- rgb
+            
+        elif self.rgb_modified:
+            cur_mode = ('RGB',)
+            
+        # ----- alpha
+        
+        elif self.a_modified:
+            cur_mode = ('RGB', 'HSV', 'HSL')
+            
+        # ----- No modification
+        
+        else:
+            return self
+        
+        # ---------------------------------------------------------------------------
+        # Is the current mode compatible with the target modes
+        
+        if hasattr(for_modes, '__len__'):
+            for mode in for_modes:
+                if mode in cur_mode:
+                    return self
+        else:
+            if for_modes in cur_mode:
+                return self
+            
+        # ---------------------------------------------------------------------------
+        # We have to recompose the color
+        
+        self.no_loop = True
+        
+        mode = cur_mode[0]
+        
+        if mode == 'RGB':
+            node = nodes.CombineColor(red=self.red, green=self.green, blue=self.blue, alpha=self.alpha, mode='RGB')
+        
+        elif mode == 'HSV':
+            node = nodes.CombineColor(red=self.hue, green=self.saturation, blue=self.value, alpha=self.alpha, mode='HSV')
+
+        else:
+            node = nodes.CombineColor(red=self.hue, green=self.saturation, blue=self.lightness, alpha=self.alpha, mode='HSL')
+            
+        del self.no_loop
+        
+        self.reset_cache()
+            
+        return self.stack(node)
+                
+    # ---------------------------------------------------------------------------
+    # Separate color
+    
+    def separate(self, mode='RGB'):
+        
+        self.recompose(for_modes=mode)
+        
+        if mode == 'RGB':
+            if self._separate_RGB is None:
+                self._separate_RGB = self.separate_color(mode=mode)
+                
+            return self._separate_RGB
+        
+        elif mode == 'HSV':
+            if self._separate_HSV is None:
+                self._separate_HSV = self.separate_color(mode=mode)
+                
+            return self._separate_HSV
+            
+        elif mode == 'HSL':
+            if self._separate_HSL is None:
+                self._separate_HSL = self.separate_color(mode=mode)
+                
+            return self._separate_HSL
+        
+    # ---------------------------------------------------------------------------
+    # 3 possible separations
+    
+    @property
+    def separate_RGB(self):
+        return self.separate('RGB')
+        
+    @property
+    def separate_HSV(self):
+        return self.separate('HSV')
+        
+    @property
+    def separate_HSL(self):
+        return self.separate('HSL')
+    
+        
+    # ---------------------------------------------------------------------------
+    # The indivividual components
+    # CAUTION : node input sockets are named red, green, blue for all modes
+    
+    # ----- RGB
+    
+    @property
+    def red(self):
+        self.recompose('RGB')
+        
+        if self._red is None:
+            return self.separate('RGB').red
+        else:
+            return self._red
+        
+    @red.setter
+    def red(self, value):
+        self._red = value
+        
+    @property
+    def green(self):
+        self.recompose('RGB')
+        
+        if self._green is None:
+            return self.separate('RGB').green
+        else:
+            return self._green
+        
+    @green.setter
+    def green(self, value):
+        self._green = value
+        
+    @property
+    def blue(self):
+        self.recompose('RGB')
+        
+        if self._blue is None:
+            return self.separate('RGB').blue
+        else:
+            return self._blue
+        
+    @blue.setter
+    def blue(self, value):
+        self._blue = value
+        
+    # ----- HSV
+    
+    @property
+    def hue(self):
+        
+        self.recompose(('HSV', 'HSL'))
+        
+        if self._hue is None:
+            if self._separate_HSL is None:
+                return self.separate('HSV').red
+            else:
+                return self._separate_HSL.red
+        else:
+            return self._hue
+        
+    @hue.setter
+    def hue(self, value):
+        self._hue = value
+        
+    @property
+    def saturation(self):
+        self.recompose(('HSV', 'HSL'))
+        
+        if self._saturation is None:
+            if self._separate_HSL is None:
+                return self.separate('HSV').green
+            else:
+                return self._separate_HSL.green
+                
+        else:
+            return self._saturation
+        
+    @saturation.setter
+    def saturation(self, value):
+        self._saturation = value
+        
+    @property
+    def value(self):
+        self.recompose('HSV')
+        
+        if self._value is None:
+            return self.separate('HSV').blue
+        else:
+            return self._value
+        
+    @value.setter
+    def value(self, value):
+        self._value = value
+        
+    # ----- Lightness
+    
+    @property
+    def lightness(self):
+        self.recompose('HSL')
+        
+        if self._lightness is None:
+            return self.separate('HSL').blue
+        else:
+            return self._lightness
+        
+    @lightness.setter
+    def lightness(self, value):
+        self._lightness = value
+    
+    
+    # ----- Alpha
+    
+    @property
+    def alpha(self):
+        if self._alpha is None:
+            
+            if self._separate_HSV is not None:
+                return self._separate_HSV.alpha
+            
+            if self._separate_HSL is not None:
+                return self._separate_HSL.alpha
+
+            return self.separate('RGB').alpha
+                
+        else:
+            return self._alpha
+        
+    @alpha.setter
+    def alpha(self, value):
+        self._alpha = value
     
     # ---------------------------------------------------------------------------
     # The r, g, b components can be changed individually. If it is the case
@@ -1020,6 +1332,17 @@ class Color(DataSocket):
         
         .. blid:: ShaderNodeCombineRGB
         """
+        
+        if not self.is_modified or hasattr(self, 'bypass_gbs'):
+            return super().get_blender_socket()
+        
+        self.bypass_gbs = True # To avoid infinite loop
+        self.recompose()
+        del self.bypass_gbs
+            
+        return super().get_blender_socket()
+        
+            
         
         if hasattr(self, 'bypass_gbs') or (self.separate_ is None and self.r_ is None and self.g_ is None and self.b_ is None):
             return super().get_blender_socket()

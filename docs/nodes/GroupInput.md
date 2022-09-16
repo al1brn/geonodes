@@ -37,6 +37,11 @@ This node is created by the Tree at initialization time.
 
 
 
+## \_\_getitem\_\_
+
+Input socket by their name
+
+
 ## input_geometry
 
 The default input geometry sockets.

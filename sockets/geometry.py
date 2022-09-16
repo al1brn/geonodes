@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-08-21
+Created on 2022-09-16
 @author: Generated from generator module
-Blender version: 3.2.2
+Blender version: 3.3.0
 """
 
 import geonodes as gn
@@ -600,36 +600,6 @@ class Geometry(dsock.Geometry):
         """
 
         return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
-
-    def duplicate_points(self, selection=None, amount=None, node_label = None, node_color = None):
-        """ Geometry node [*Duplicate Elements*].
-        
-        
-            Args:
-                selection: Boolean
-                amount: Integer
-                node_label (str): Node label
-                node_color (color): Node background color
-                
-            Returns:
-                Sockets [geometry (Geometry), duplicate_index (Integer)]
-                
-            **Node creation**
-            
-            Node :class:`~geonodes.nodes.nodes.DuplicateElements`
-            
-                - domain = 'POINT'
-                  
-            .. blid:: GeometryNodeDuplicateElements
-            
-            .. code-block:: python
-            
-                from geonodes import nodes
-                nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='POINT', label=node_label, node_color=node_color)
-                
-        """
-
-        return nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='POINT', label=node_label, node_color=node_color)
 
     def delete_geometry(self, selection=None, domain='POINT', mode='ALL', node_label = None, node_color = None):
         """ Geometry node [*Delete Geometry*].

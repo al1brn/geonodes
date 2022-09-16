@@ -190,6 +190,39 @@ When it is a socket, it can be a Blender socket or a DataSocket
 
 
 
+Let's have a not None single value to plug
+
+
+## plug_bsocket_OLD
+
+Plug the values to the input Blender socket.
+
+:param bsocket: The input socket to plug into 
+:param values: The output sockets. More than one values can be passed
+  if the input socket is multi input.
+:type bsocket: bpy.types.NodeSocket, Socket
+:type values: array of bpy.types.NodeSocket, Socket, values
+
+.. warning:: bsocket must be an **input socket** and values must be **output sockets-like**.
+
+This static method is called by the DataClass method :func:`plug`.
+
+This method is the one which links an output socket of a node to the input
+socket of another one.
+
+If the socket is multi input, the plug method is called once per provided value.
+If a value is None, nothing happens.
+
+A not None value can be:
+
+- either a valid value for the socket (eg: 123 for Integer socket)
+- or an output socket of another Node
+  
+When it is a socket, it can be a Blender socket or a DataSocket
+
+
+
+
 ## plug
 
 Plug values in the socket (input sockets only)

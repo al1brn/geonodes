@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-08-21
+Created on 2022-09-16
 @author: Generated from generator module
-Blender version: 3.2.2
+Blender version: 3.3.0
 """
 
 import geonodes as gn
@@ -547,7 +547,7 @@ class Curve(gn.Geometry):
         
             Args:
                 selection: Boolean
-                spline_type (str): 'POLY' in [BEZIER, NURBS, POLY]
+                spline_type (str): 'POLY' in [CATMULL_ROM, POLY, BEZIER, NURBS]
                 node_label (str): Node label
                 node_color (color): Node background color
                 

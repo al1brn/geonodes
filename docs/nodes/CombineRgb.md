@@ -32,11 +32,3 @@ node = nodes.CombineRgb(r=None, g=None, b=None, label=None, node_color=None)
 ## Output sockets
 
 - image : Color
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Color](/docs/sockets/Color.md).[Combine](/docs/sockets/Color.md#combine) : Constructor
-  

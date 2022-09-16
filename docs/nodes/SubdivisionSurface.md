@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.SubdivisionSurface(mesh=None, level=None, crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None, node_color=None)
+node = nodes.SubdivisionSurface(mesh=None, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', label=None, node_color=None)
 ```
 
 
@@ -22,7 +22,8 @@ node = nodes.SubdivisionSurface(mesh=None, level=None, crease=None, boundary_smo
 
 - mesh : Mesh
 - level : Integer
-- crease : Float
+- edge_crease : Float
+- vertex_crease : Float
 
 ### Parameters
 

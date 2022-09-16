@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-08-21
+Created on 2022-09-16
 @author: Generated from generator module
-Blender version: 3.2.2
+Blender version: 3.3.0
 """
 
 import geonodes as gn
@@ -18,9 +18,9 @@ logger = logging.Logger('geonodes')
 """ Function to declare in file __init__.py
 from geonodes.sockets.functions import abs, add, arccos, arcsin, arctan, arctan2, b_and, b_not, b_or, ceil
 from geonodes.sockets.functions import color_add, color_burn, color_darken, color_difference, color_divide
-from geonodes.sockets.functions import color_dodge, color_hue, color_lighten, color_linear_light, color_mix
-from geonodes.sockets.functions import color_mix_color, color_multiply, color_overlay, color_saturation
-from geonodes.sockets.functions import color_screen, color_soft_light, color_subtract, color_value, compare
+from geonodes.sockets.functions import color_dodge, color_lighten, color_linear_light, color_mix, color_mix_color
+from geonodes.sockets.functions import color_mix_hue, color_mix_saturation, color_mix_value, color_multiply
+from geonodes.sockets.functions import color_overlay, color_screen, color_soft_light, color_subtract, compare
 from geonodes.sockets.functions import compare, cos, cosh, cross, degrees, distance, divide, dot, exp
 from geonodes.sockets.functions import faceforward, floor, fract, fraction, imply, inverse_sqrt, join_strings
 from geonodes.sockets.functions import length, log, math_greater_than, math_less_than, max, min, modulo
@@ -2865,7 +2865,7 @@ def color_divide(color1=None, color2=None, fac=None, use_alpha=False, node_label
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_hue(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
+def color_mix_hue(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ Geometry node [*Mix*].
     
     
@@ -2897,7 +2897,7 @@ def color_hue(color1=None, color2=None, fac=None, use_alpha=False, node_label = 
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_saturation(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
+def color_mix_saturation(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ Geometry node [*Mix*].
     
     
@@ -2961,7 +2961,7 @@ def color_mix_color(color1=None, color2=None, fac=None, use_alpha=False, node_la
 
     return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-def color_value(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
+def color_mix_value(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
     """ Geometry node [*Mix*].
     
     

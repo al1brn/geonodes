@@ -30,7 +30,6 @@
 - [convex_hull](#convex_hull) : convex_hull (Geometry)
 - [delete_geometry](#delete_geometry) : geometry (Geometry)
 - [duplicate_elements](#duplicate_elements) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
-- [duplicate_points](#duplicate_points) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
 - [join](#join) : geometry (Geometry)
 - [merge_by_distance](#merge_by_distance) : geometry (Geometry)
 - [proximity](#proximity) : Sockets      [position (Vector), distance (Float)]
@@ -541,34 +540,6 @@ Geometry node [*Duplicate Elements*].
   
     from geonodes import nodes
     nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain, label=node_label, node_color=node_color)
-    
-
-## duplicate_points
-
-Geometry node [*Duplicate Elements*].
-
-
-  Args:
-    selection: Boolean
-    amount: Integer
-    node_label (str): Node label
-    node_color (color): Node background color
-    
-  Returns:
-    Sockets [geometry (Geometry), duplicate_index (Integer)]
-    
-  **Node creation**
-  
-  Node :class:`~geonodes.nodes.nodes.DuplicateElements`
-  
-  - domain = 'POINT'
-    
-  .. blid:: GeometryNodeDuplicateElements
-  
-  .. code-block:: python
-  
-    from geonodes import nodes
-    nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain='POINT', label=node_label, node_color=node_color)
     
 
 ## delete_geometry

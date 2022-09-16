@@ -33,18 +33,18 @@ v = gn.sin(v)         # The sine of this value
 - [color_difference](#color_difference) : color (Color)
 - [color_divide](#color_divide) : color (Color)
 - [color_dodge](#color_dodge) : color (Color)
-- [color_hue](#color_hue) : color (Color)
 - [color_lighten](#color_lighten) : color (Color)
 - [color_linear_light](#color_linear_light) : color (Color)
 - [color_mix](#color_mix) : color (Color)
 - [color_mix_color](#color_mix_color) : color (Color)
+- [color_mix_hue](#color_mix_hue) : color (Color)
+- [color_mix_saturation](#color_mix_saturation) : color (Color)
+- [color_mix_value](#color_mix_value) : color (Color)
 - [color_multiply](#color_multiply) : color (Color)
 - [color_overlay](#color_overlay) : color (Color)
-- [color_saturation](#color_saturation) : color (Color)
 - [color_screen](#color_screen) : color (Color)
 - [color_soft_light](#color_soft_light) : color (Color)
 - [color_subtract](#color_subtract) : color (Color)
-- [color_value](#color_value) : color (Color)
 - [compare](#compare) : result (Boolean)
 - [compare](#compare) : value (Float)
 - [cos](#cos) : value (Float)
@@ -2754,7 +2754,7 @@ Geometry node [*Mix*].
     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha, label=node_label, node_color=node_color)
     
 
-## color_hue
+## color_mix_hue
 
 Geometry node [*Mix*].
 
@@ -2784,7 +2784,7 @@ Geometry node [*Mix*].
     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha, label=node_label, node_color=node_color)
     
 
-## color_saturation
+## color_mix_saturation
 
 Geometry node [*Mix*].
 
@@ -2844,7 +2844,7 @@ Geometry node [*Mix*].
     nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha, label=node_label, node_color=node_color)
     
 
-## color_value
+## color_mix_value
 
 Geometry node [*Mix*].
 

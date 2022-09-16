@@ -4,6 +4,32 @@
 Instance domain
 
 
+## rotation
+
+Rotation attribute
+
+Returns:
+  Vector
+  
+- getter: :class:`~geonodes.nodes.nodes.InstanceRotation`
+- setter: Read only
+  
+  
+  
+
+## scale
+
+Scale attribute
+
+Returns:
+  Vector
+  
+- getter: :class:`~geonodes.nodes.nodes.InstanceScale`
+- setter: Read only
+  
+  
+  
+
 ## delete
 
 Delete instances.
@@ -39,7 +65,7 @@ Returns:
   
   
 
-## scale
+## set_scale
 
 Scale instances.
 

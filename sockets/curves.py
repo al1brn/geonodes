@@ -16,48 +16,45 @@ import logging
 logger = logging.Logger('geonodes')
 
 # ==============================================================================================================
-# Data class Image
+# Data class Curves
 
-class Image(dsock.Image):
-    """ Data class Image
+class Curves(gn.Geometry):
+    """ Data class Curves
     """
 
     def copy(self):
 
-        return Image(self)
+        return Curves(self)
 
 
     # ----------------------------------------------------------------------------------------------------
     # Methods
 
-    def switch(self, switch=None, true=None, node_label = None, node_color = None):
-        """ Geometry node [*Switch*].
+    def deform_on_surface(self, node_label = None, node_color = None):
+        """ Geometry node [*Deform Curves on Surface*].
         
         
             Args:
-                switch: Boolean
-                true: Image
                 node_label (str): Node label
                 node_color (color): Node background color
                 
             Returns:
-                Image
+                Curves
                 
             **Node creation**
             
-            Node :class:`~geonodes.nodes.nodes.Switch`
+            Node :class:`~geonodes.nodes.nodes.DeformCurvesOnSurface`
             
-                - input_type = 'IMAGE'
-                  
-            .. blid:: GeometryNodeSwitch
+            
+            .. blid:: GeometryNodeDeformCurvesOnSurface
             
             .. code-block:: python
             
                 from geonodes import nodes
-                nodes.Switch(false=self, switch=switch, true=true, input_type='IMAGE', label=node_label, node_color=node_color)
+                nodes.DeformCurvesOnSurface(curves=self, label=node_label, node_color=node_color)
                 
         """
 
-        return nodes.Switch(false=self, switch=switch, true=true, input_type='IMAGE', label=node_label, node_color=node_color).output
+        return self.stack(nodes.DeformCurvesOnSurface(curves=self, label=node_label, node_color=node_color))
 
 

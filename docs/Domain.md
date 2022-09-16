@@ -339,6 +339,22 @@ Returns:
   
   
 
+## interpolate
+
+Interpolate attribute
+
+Args:
+  value (Any): The value to interpolate
+  data_type (str): A valid data type
+  
+Returns:
+  As defined by data_type
+  
+If data_type is None, it is computed from the value type.
+
+
+
+
 ## index
 
 Index attribute
@@ -346,7 +362,7 @@ Index attribute
 Returns:
   Integer
   
-- setter: :class:`~geonodes.nodes.nodes.Index`
+- getter: :class:`~geonodes.nodes.nodes.Index`
 - setter: Read only
   
   
@@ -376,3 +392,30 @@ Returns:
   
   
   
+
+## \_\_imul\_\_
+
+ef __mul__(self, other):
+self.duplicate(amount=other)
+return self
+
+ef __rmul__(self, other):
+return self * other
+
+
+## field_at_index
+
+Field at index
+
+Args:
+  index (Integer): index to use for getting the attributes
+  value (Any): the value to collect from the domain
+  data_type (str): the value data_type. Can be None
+  
+Returns:
+  The field values
+  
+If data_type is None, it is computed from the attribute type.
+
+
+

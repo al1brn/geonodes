@@ -490,7 +490,7 @@ Geometry node [*Set Spline Type*].
 
   Args:
     selection: Boolean
-    spline_type (str): 'POLY' in [BEZIER, NURBS, POLY]
+    spline_type (str): 'POLY' in [CATMULL_ROM, POLY, BEZIER, NURBS]
     node_label (str): Node label
     node_color (color): Node background color
     

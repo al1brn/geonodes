@@ -460,7 +460,29 @@ class Domain:
         Returns:
             Same as attribute
         """
-        return self.transfer_attribute(attribute, source_position=source_position, mapping='NEAREST_FACE_INTERPOLATED')        
+        return self.transfer_attribute(attribute, source_position=source_position, mapping='NEAREST_FACE_INTERPOLATED')    
+
+    # ====================================================================================================
+    # Interpolate an attribute
+    
+    def interpolate(self, value, data_type=None):
+        
+        """ Interpolate attribute
+        
+        Args:
+            value (Any): The value to interpolate
+            data_type (str): A valid data type
+            
+        Returns:
+            As defined by data_type
+            
+        If data_type is None, it is computed from the value type.
+        """
+        
+        dt = Socket.domain_data_type(value) if data_type is None else Socket.domain_data_type(data_type)
+        
+        return nodes.InterpolateDomain(value=value, data_type=dt, domain=self.domain).value
+    
         
     # ====================================================================================================
     # Fields all domain have
@@ -489,7 +511,7 @@ class Domain:
         Returns:
             Integer
         
-        - setter: :class:`~geonodes.nodes.nodes.Index`
+        - getter: :class:`~geonodes.nodes.nodes.Index`
         - setter: Read only
         """
         
@@ -630,7 +652,7 @@ class Point(Domain):
         super().__init__(data_socket, domain='POINT', selection=selection)
     
     
-    def instantiate(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
+    def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """ Put instances on points
         
         Node :class:`~geonodes.nodes.nodes.InstanceOnPoints`
@@ -981,6 +1003,7 @@ class Vertex(Point, MeshInterface, PEFInterface):
         - getter: :class:`~geonodes.nodes.nodes.VertexNeighbors`
         - setter: read only
         """
+
         return self.attribute(nodes.VertexNeighbors())
         
     @property
@@ -995,14 +1018,6 @@ class Vertex(Point, MeshInterface, PEFInterface):
         """
         
         return self.neighbors.get_datasocket(0)
-
-        
-        if self.domain == 'POINT':
-            return nodes.VertexNeighbors()
-        elif self.domain == 'EDGE':
-            return nodes.EdgeNeighbors()
-        elif self.domain == 'FACE':
-            return nodes.FaceNeighbors()
         
     @property
     def neighbors_faces(self):
@@ -1016,6 +1031,47 @@ class Vertex(Point, MeshInterface, PEFInterface):
         """
         
         return self.neighbors.get_datasocket(1)
+    
+    def shortest_edge_paths(self, edge_cost=None):
+        """ Shortest edge paths
+        
+        Returns:
+            tuple next_vertex_index, total_cost
+        
+        - getter: :class:`~geonodes.nodes.nodes.ShortestEdgePaths`
+        - setter: read only
+        """
+        
+        node = self.attribute(nodes.ShortestEdgePaths(end_vertex=self.selection, edge_cost=edge_cost))
+        
+        return node.next_vertex_index, node.total_cost
+        
+        #return self.attribute(nodes.ShortestEdgePaths(end_vertex=self.selection, edge_cost=edge_cost))
+        
+    def edge_paths_to_curves(self, next_vertex_index=None):
+        """ Shortest edge paths
+        
+        Returns:
+            Node Curves
+        
+        - getter: :class:`~geonodes.nodes.nodes.ShortestEdgePaths`
+        - setter: read only
+        """
+        
+        return nodes.EdgePathsToCurves(mesh=self.data_socket, start_vertices=self.selection, next_vertex_index=next_vertex_index).curves
+    
+    def edge_paths_to_selection(self, next_vertex_index=None):
+        """ edges paths to selectin
+        
+        Returns:
+            Boolean
+        
+        - getter: :class:`~geonodes.nodes.nodes.EdgePathsToSelection`
+        - setter: read only
+        """
+        
+        return self.attribute(nodes.EdgePathsToSelection(start_vertices=self.selection, next_vertex_index=next_vertex_index)).selection
+        
     
     # ====================================================================================================
     # Methods
@@ -1345,6 +1401,41 @@ class Face(Domain, MeshInterface, PEFInterface):
         return nodes.DistributePointsOnFaces(mesh=self.data_socket, selection=self.selection,
                 distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor,
                 seed=seed, distribute_method=distribute_method)
+    
+    # ====================================================================================================
+    # UV unwrappinp
+    
+    def uv_unwrap(self, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
+        """ UV Unwrap.
+        
+        Node :class:`~geonodes.nodes.nodes.GeometryNodeUVUnwrap`
+
+        Args:
+            seam: Boolean
+            margin: Float
+            fill_holes: Boolean
+
+        Returns:
+            UV
+        """
+        
+        return self.attribute(nodes.UvUnwrap(selection=self.selection, seam=seam, margin=margin, fill_holes=fill_holes)).uv
+    
+    def pack_uv_islands(self, uv=None, margin=None, rotate=None):
+        """ Pack UV islands.
+        
+        Node :class:`~geonodes.nodes.nodes.GeometryNodeUVPackIslands`
+
+        Args:
+            uv: Vector
+            margin: Float
+            rotate: Boolean
+
+        Returns:
+            UV
+        """
+        
+        return self.attribute(nodes.PackUvIslands(uv=uv, selection=self.selection, margin=margin, rotate=rotate)).uv
     
     
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -2302,6 +2393,37 @@ class Instance(Domain):
     
     def __init__(self, data_socket, selection=None):
         super().__init__(data_socket, domain='INSTANCE', selection=selection)
+
+    # ====================================================================================================
+    # Properties
+        
+    @property
+    def rotation(self):
+        """ Rotation attribute
+        
+        Returns:
+            Vector
+        
+        - getter: :class:`~geonodes.nodes.nodes.InstanceRotation`
+        - setter: Read only
+        """
+        
+        return self.attribute(nodes.InstanceRotation()).get_datasocket(0)
+        
+    @property
+    def scale(self):
+        """ Scale attribute
+        
+        Returns:
+            Vector
+        
+        - getter: :class:`~geonodes.nodes.nodes.InstanceScale`
+        - setter: Read only
+        """
+        
+        return self.attribute(nodes.InstanceScale()).get_datasocket(0)
+        
+        
         
     # ====================================================================================================
     # Methods
@@ -2341,7 +2463,7 @@ class Instance(Domain):
             instances=self.data_socket, selection=self.selection,
             rotation=rotation, pivot_point=pivot_point, local_space=local_space))
     
-    def scale(self, scale=None, center=None, local_space=None):
+    def set_scale(self, scale=None, center=None, local_space=None):
         """ Scale instances.
         
         Node :class:`~geonodes.nodes.nodes.ScaleInstances`

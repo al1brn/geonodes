@@ -41,3 +41,18 @@ If the label provided at initialization time is None, the node is labeled by con
 its unique id with its standard name.
 
 
+
+## children
+
+The nodes within the frame
+
+
+## capture_inputs
+
+Capture the inputs
+replace all the links from group input to one node internally by a
+link with a new instance of group input
+
+Note : deals only with blender nodes and links
+It is transparent for the script
+

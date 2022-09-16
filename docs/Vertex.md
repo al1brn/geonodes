@@ -15,6 +15,7 @@ Returns:
 - setter: read only
   
   
+  
 
 ## neighbors_vertices
 
@@ -37,6 +38,32 @@ Returns:
   Integer: The output socket *faces* of the *VertexNeighbors* node.
   
 - getter: :class:`~geonodes.nodes.nodes.VertexNeighbors`
+- setter: read only
+  
+  
+  
+
+## shortest_edge_paths
+
+Shortest edge paths
+
+Returns:
+  tuple next_vertex_index, total_cost
+  
+- getter: :class:`~geonodes.nodes.nodes.ShortestEdgePaths`
+- setter: read only
+  
+  
+  
+
+## edge_paths_to_curves
+
+Shortest edge paths
+
+Returns:
+  Node Curves
+  
+- getter: :class:`~geonodes.nodes.nodes.ShortestEdgePaths`
 - setter: read only
   
   

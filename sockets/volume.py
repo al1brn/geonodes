@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-08-21
+Created on 2022-09-16
 @author: Generated from generator module
-Blender version: 3.2.2
+Blender version: 3.3.0
 """
 
 import geonodes as gn
@@ -25,6 +25,45 @@ class Volume(gn.Geometry):
     def copy(self):
 
         return Volume(self)
+
+
+    # ----------------------------------------------------------------------------------------------------
+    # Constructors
+
+    @classmethod
+    def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None, node_label = None, node_color = None):
+        """ Geometry node [*Volume Cube*].
+        
+        
+            Args:
+                density: Float
+                background: Float
+                min: Vector
+                max: Vector
+                resolution_x: Integer
+                resolution_y: Integer
+                resolution_z: Integer
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                Volume
+                
+            **Node creation**
+            
+            Node :class:`~geonodes.nodes.nodes.VolumeCube`
+            
+            
+            .. blid:: GeometryNodeVolumeCube
+            
+            .. code-block:: python
+            
+                from geonodes import nodes
+                nodes.VolumeCube(density=density, background=background, min=min, max=max, resolution_x=resolution_x, resolution_y=resolution_y, resolution_z=resolution_z, label=node_label, node_color=node_color)
+                
+        """
+
+        return cls(nodes.VolumeCube(density=density, background=background, min=min, max=max, resolution_x=resolution_x, resolution_y=resolution_y, resolution_z=resolution_z, label=node_label, node_color=node_color).volume)
 
 
     # ----------------------------------------------------------------------------------------------------

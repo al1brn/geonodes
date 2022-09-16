@@ -7,9 +7,45 @@
 
 
 
+## Constructors
+
+- [Cube](#cube) : volume (Volume)
+
 ## Methods
 
 - [to_mesh](#to_mesh) : mesh (Mesh)
+
+## Cube
+
+Geometry node [*Volume Cube*].
+
+
+  Args:
+    density: Float
+    background: Float
+    min: Vector
+    max: Vector
+    resolution_x: Integer
+    resolution_y: Integer
+    resolution_z: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Volume
+    
+  **Node creation**
+  
+  Node :class:`~geonodes.nodes.nodes.VolumeCube`
+  
+  
+  .. blid:: GeometryNodeVolumeCube
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.VolumeCube(density=density, background=background, min=min, max=max, resolution_x=resolution_x, resolution_y=resolution_y, resolution_z=resolution_z, label=node_label, node_color=node_color)
+    
 
 ## to_mesh
 

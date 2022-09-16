@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-08-21
+Created on 2022-09-16
 @author: Generated from generator module
-Blender version: 3.2.2
+Blender version: 3.3.0
 """
 
 import geonodes as gn
@@ -27,24 +27,20 @@ class Color(dsock.Color):
         return Color(self)
 
 
-    def reset_properties(self):
-
-        super().reset_properties()
-
-        self.separate_ = None
-
     # ----------------------------------------------------------------------------------------------------
     # Constructors
 
     @classmethod
-    def Combine(cls, r=None, g=None, b=None, node_label = None, node_color = None):
-        """ Geometry node [*Combine RGB*].
+    def Combine(cls, red=None, green=None, blue=None, alpha=None, mode='RGB', node_label = None, node_color = None):
+        """ Geometry node [*Combine Color*].
         
         
             Args:
-                r: Float
-                g: Float
-                b: Float
+                red: Float
+                green: Float
+                blue: Float
+                alpha: Float
+                mode (str): 'RGB' in [RGB, HSV, HSL]
                 node_label (str): Node label
                 node_color (color): Node background color
                 
@@ -53,50 +49,118 @@ class Color(dsock.Color):
                 
             **Node creation**
             
-            Node :class:`~geonodes.nodes.nodes.CombineRgb`
+            Node :class:`~geonodes.nodes.nodes.CombineColor`
             
             
-            .. blid:: ShaderNodeCombineRGB
+            .. blid:: FunctionNodeCombineColor
             
             .. code-block:: python
             
                 from geonodes import nodes
-                nodes.CombineRgb(r=r, g=g, b=b, label=node_label, node_color=node_color)
+                nodes.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode=mode, label=node_label, node_color=node_color)
                 
         """
 
-        return cls(nodes.CombineRgb(r=r, g=g, b=b, label=node_label, node_color=node_color).image)
+        return cls(nodes.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode=mode, label=node_label, node_color=node_color).color)
 
-
-    # ----------------------------------------------------------------------------------------------------
-    # Properties
-
-    @property
-    def separate(self):
-        """ Geometry node [*Separate RGB*].
+    @classmethod
+    def CombineRGB(cls, red=None, green=None, blue=None, alpha=None, node_label = None, node_color = None):
+        """ Geometry node [*Combine Color*].
         
         
-        
+            Args:
+                red: Float
+                green: Float
+                blue: Float
+                alpha: Float
+                node_label (str): Node label
+                node_color (color): Node background color
+                
             Returns:
-                Sockets [r (Float), g (Float), b (Float)]
+                Color
                 
             **Node creation**
             
-            Node :class:`~geonodes.nodes.nodes.SeparateRgb`
+            Node :class:`~geonodes.nodes.nodes.CombineColor`
             
-            
-            .. blid:: ShaderNodeSeparateRGB
+                - mode = 'RGB'
+                  
+            .. blid:: FunctionNodeCombineColor
             
             .. code-block:: python
             
                 from geonodes import nodes
-                nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.separate")
+                nodes.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode='RGB', label=node_label, node_color=node_color)
                 
         """
 
-        if self.separate_ is None:
-            self.separate_ = nodes.SeparateRgb(image=self, label=f"{self.node_chain_label}.separate")
-        return self.separate_
+        return cls(nodes.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode='RGB', label=node_label, node_color=node_color).color)
+
+    @classmethod
+    def CombineHSV(cls, hue=None, saturation=None, value=None, alpha=None, node_label = None, node_color = None):
+        """ Geometry node [*Combine Color*].
+        
+        
+            Args:
+                red: Float
+                green: Float
+                blue: Float
+                alpha: Float
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                Color
+                
+            **Node creation**
+            
+            Node :class:`~geonodes.nodes.nodes.CombineColor`
+            
+                - mode = 'HSV'
+                  
+            .. blid:: FunctionNodeCombineColor
+            
+            .. code-block:: python
+            
+                from geonodes import nodes
+                nodes.CombineColor(red=hue, green=saturation, blue=value, alpha=alpha, mode='HSV', label=node_label, node_color=node_color)
+                
+        """
+
+        return cls(nodes.CombineColor(red=hue, green=saturation, blue=value, alpha=alpha, mode='HSV', label=node_label, node_color=node_color).color)
+
+    @classmethod
+    def CombineHSL(cls, hue=None, saturation=None, lightness=None, alpha=None, node_label = None, node_color = None):
+        """ Geometry node [*Combine Color*].
+        
+        
+            Args:
+                red: Float
+                green: Float
+                blue: Float
+                alpha: Float
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                Color
+                
+            **Node creation**
+            
+            Node :class:`~geonodes.nodes.nodes.CombineColor`
+            
+                - mode = 'HSL'
+                  
+            .. blid:: FunctionNodeCombineColor
+            
+            .. code-block:: python
+            
+                from geonodes import nodes
+                nodes.CombineColor(red=hue, green=saturation, blue=lightness, alpha=alpha, mode='HSL', label=node_label, node_color=node_color)
+                
+        """
+
+        return cls(nodes.CombineColor(red=hue, green=saturation, blue=lightness, alpha=alpha, mode='HSL', label=node_label, node_color=node_color).color)
 
 
     # ----------------------------------------------------------------------------------------------------
@@ -785,7 +849,7 @@ class Color(dsock.Color):
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-    def hue(self, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
+    def mix_hue(self, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
         """ Geometry node [*Mix*].
         
         
@@ -816,7 +880,7 @@ class Color(dsock.Color):
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-    def saturation(self, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
+    def mix_saturation(self, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
         """ Geometry node [*Mix*].
         
         
@@ -878,7 +942,7 @@ class Color(dsock.Color):
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
-    def value(self, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
+    def mix_value(self, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
         """ Geometry node [*Mix*].
         
         
@@ -908,6 +972,34 @@ class Color(dsock.Color):
         """
 
         return nodes.Mix(color1=self, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha, label=node_label, node_color=node_color).color
+
+    def separate_color(self, mode='RGB', node_label = None, node_color = None):
+        """ Geometry node [*Separate Color*].
+        
+        
+            Args:
+                mode (str): 'RGB' in [RGB, HSV, HSL]
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                Sockets [red (Float), green (Float), blue (Float), alpha (Float)]
+                
+            **Node creation**
+            
+            Node :class:`~geonodes.nodes.nodes.SeparateColor`
+            
+            
+            .. blid:: FunctionNodeSeparateColor
+            
+            .. code-block:: python
+            
+                from geonodes import nodes
+                nodes.SeparateColor(color=self, mode=mode, label=node_label, node_color=node_color)
+                
+        """
+
+        return nodes.SeparateColor(color=self, mode=mode, label=node_label, node_color=node_color)
 
     def curves(self, fac=None, node_label = None, node_color = None):
         """ Geometry node [*RGB Curves*].

@@ -28,21 +28,23 @@
 
 ## Methods
 
-- [difference](#difference) : mesh (Mesh)
+- [difference](#difference) : Sockets      [mesh (Mesh), intersecting_edges (Boolean)]
 - [distribute_points_on_faces](#distribute_points_on_faces) : Sockets      [points (Points), normal (Vector), rotation (Vector)]
 - [dual](#dual) : dual_mesh (Geometry)
 - [duplicate_edges](#duplicate_edges) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
 - [duplicate_faces](#duplicate_faces) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
+- [edge_paths_to_curves](#edge_paths_to_curves) : curves (Curves)
 - [extrude](#extrude) : Sockets      [mesh (Mesh), top (Boolean), side (Boolean)]
 - [flip_faces](#flip_faces) : mesh (Mesh)
-- [intersect](#intersect) : mesh (Mesh)
+- [intersect](#intersect) : Sockets      [mesh (Mesh), intersecting_edges (Boolean)]
 - [split_edges](#split_edges) : mesh (Mesh)
 - [subdivide](#subdivide) : mesh (Mesh)
 - [subdivision_surface](#subdivision_surface) : mesh (Mesh)
 - [to_curve](#to_curve) : curve (Curve)
 - [to_points](#to_points) : points (Points)
+- [to_volume](#to_volume) : volume (Volume)
 - [triangulate](#triangulate) : mesh (Mesh)
-- [union](#union) : mesh (Mesh)
+- [union](#union) : Sockets      [mesh (Mesh), intersecting_edges (Boolean)]
 
 ## Circle
 
@@ -405,7 +407,7 @@ Geometry node [*Mesh Boolean*].
     node_color (color): Node background color
     
   Returns:
-    Mesh
+    Sockets [mesh (Mesh), intersecting_edges (Boolean)]
     
   **Node creation**
   
@@ -433,7 +435,7 @@ Geometry node [*Mesh Boolean*].
     node_color (color): Node background color
     
   Returns:
-    Mesh
+    Sockets [mesh (Mesh), intersecting_edges (Boolean)]
     
   **Node creation**
   
@@ -462,7 +464,7 @@ Geometry node [*Mesh Boolean*].
     node_color (color): Node background color
     
   Returns:
-    Mesh
+    Sockets [mesh (Mesh), intersecting_edges (Boolean)]
     
   **Node creation**
   
@@ -537,7 +539,8 @@ Geometry node [*Subdivision Surface*].
 
   Args:
     level: Integer
-    crease: Float
+    edge_crease: Float
+    vertex_crease: Float
     boundary_smooth (str): 'ALL' in [PRESERVE_CORNERS, ALL]
     uv_smooth (str): 'PRESERVE_BOUNDARIES' in [NONE, PRESERVE_CORNERS, PRESERVE_CORNERS_AND_JUNCTIONS, PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE, PRESERVE_BOUNDARIES, SMOOTH_ALL]
     node_label (str): Node label
@@ -556,7 +559,7 @@ Geometry node [*Subdivision Surface*].
   .. code-block:: python
   
     from geonodes import nodes
-    nodes.SubdivisionSurface(mesh=self, level=level, crease=crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth, label=node_label, node_color=node_color)
+    nodes.SubdivisionSurface(mesh=self, level=level, edge_crease=edge_crease, vertex_crease=vertex_crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth, label=node_label, node_color=node_color)
     
 
 ## triangulate
@@ -752,6 +755,38 @@ Geometry node [*Mesh to Curve*].
     nodes.MeshToCurve(mesh=self, selection=selection, label=node_label, node_color=node_color)
     
 
+## to_volume
+
+Geometry node [*Mesh to Volume*].
+
+
+  Args:
+    density: Float
+    voxel_size: Float
+    voxel_amount: Float
+    exterior_band_width: Float
+    interior_band_width: Float
+    fill_volume: Boolean
+    resolution_mode (str): 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Volume
+    
+  **Node creation**
+  
+  Node :class:`~geonodes.nodes.nodes.MeshToVolume`
+  
+  
+  .. blid:: GeometryNodeMeshToVolume
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.MeshToVolume(mesh=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, exterior_band_width=exterior_band_width, interior_band_width=interior_band_width, fill_volume=fill_volume, resolution_mode=resolution_mode, label=node_label, node_color=node_color)
+    
+
 ## to_points
 
 Geometry node [*Mesh to Points*].
@@ -811,4 +846,31 @@ Geometry node [*Distribute Points on Faces*].
   
     from geonodes import nodes
     nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method, label=node_label, node_color=node_color)
+    
+
+## edge_paths_to_curves
+
+Geometry node [*Edge Paths to Curves*].
+
+
+  Args:
+    start_vertices: Boolean
+    next_vertex_index: Integer
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curves
+    
+  **Node creation**
+  
+  Node :class:`~geonodes.nodes.nodes.EdgePathsToCurves`
+  
+  
+  .. blid:: GeometryNodeEdgePathsToCurves
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.EdgePathsToCurves(mesh=self, start_vertices=start_vertices, next_vertex_index=next_vertex_index, label=node_label, node_color=node_color)
     

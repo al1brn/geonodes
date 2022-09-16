@@ -7,6 +7,10 @@
 
 
 
+## Constructors
+
+- [Points](#points) : geometry (Geometry)
+
 ## Properties
 
 - [domain_size](#domain_size) : point_count (Integer)
@@ -18,6 +22,34 @@
 - [set_radius](#set_radius) : points (Points)
 - [to_vertices](#to_vertices) : mesh (Mesh)
 - [to_volume](#to_volume) : volume (Volume)
+
+## Points
+
+Geometry node [*Points*].
+
+
+  Args:
+    count: Integer
+    position: Vector
+    radius: Float
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Geometry
+    
+  **Node creation**
+  
+  Node :class:`~geonodes.nodes.nodes.Points`
+  
+  
+  .. blid:: GeometryNodePoints
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.Points(count=count, position=position, radius=radius, label=node_label, node_color=node_color)
+    
 
 ## domain_size
 

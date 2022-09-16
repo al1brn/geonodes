@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-08-21
+Created on 2022-09-16
 @author: Generated from generator module
-Blender version: 3.2.2
+Blender version: 3.3.0
 """
 
 import geonodes as gn
@@ -41,6 +41,41 @@ class Points(gn.Geometry):
         self.domain_size_ = None
 
         self.point_count_ = None
+
+    # ----------------------------------------------------------------------------------------------------
+    # Constructors
+
+    @classmethod
+    def Points(cls, count=None, position=None, radius=None, node_label = None, node_color = None):
+        """ Geometry node [*Points*].
+        
+        
+            Args:
+                count: Integer
+                position: Vector
+                radius: Float
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                Geometry
+                
+            **Node creation**
+            
+            Node :class:`~geonodes.nodes.nodes.Points`
+            
+            
+            .. blid:: GeometryNodePoints
+            
+            .. code-block:: python
+            
+                from geonodes import nodes
+                nodes.Points(count=count, position=position, radius=radius, label=node_label, node_color=node_color)
+                
+        """
+
+        return cls(nodes.Points(count=count, position=position, radius=radius, label=node_label, node_color=node_color).geometry)
+
 
     # ----------------------------------------------------------------------------------------------------
     # Properties
