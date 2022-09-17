@@ -18,6 +18,7 @@ NODE_DIMS = {
            'name'    : 'operation',
            'changes' : {
                 'NOT'                : (280, 214),},},
+   'FunctionNodeCombineColor'                : {'dimensions': (280, 342), 'param_count': 0,},
    'FunctionNodeCompare'                     : {'dimensions': (280, 308), 'param_count': 2,
            'names'   : ['data_type', 'operation'],
            'changes' : {
@@ -67,6 +68,7 @@ NODE_DIMS = {
                 'BOOLEAN'            : (280, 298),},},
    'FunctionNodeReplaceString'               : {'dimensions': (280, 238), 'param_count': 0,},
    'FunctionNodeRotateEuler'                 : {'dimensions': (280, 428), 'param_count': 0,},
+   'FunctionNodeSeparateColor'               : {'dimensions': (280, 342), 'param_count': 0,},
    'FunctionNodeSliceString'                 : {'dimensions': (280, 238), 'param_count': 0,},
    'FunctionNodeStringLength'                : {'dimensions': (280, 150), 'param_count': 0,},
    'FunctionNodeValueToString'               : {'dimensions': (280, 194), 'param_count': 0,},
@@ -145,6 +147,7 @@ NODE_DIMS = {
            'changes' : {
                 'EVALUATED'          : (280, 346),
                 'LENGTH'             : (280, 386),},},
+   'GeometryNodeDeformCurvesOnSurface'       : {'dimensions': (340, 150), 'param_count': 0,},
    'GeometryNodeDeleteGeometry'              : {'dimensions': (280, 304), 'param_count': 1,
            'name'    : 'domain',
            'changes' : {
@@ -156,6 +159,8 @@ NODE_DIMS = {
                 'POISSON'            : (340, 518),},},
    'GeometryNodeDualMesh'                    : {'dimensions': (280, 194), 'param_count': 0,},
    'GeometryNodeDuplicateElements'           : {'dimensions': (280, 342), 'param_count': 0,},
+   'GeometryNodeEdgePathsToCurves'           : {'dimensions': (280, 238), 'param_count': 0,},
+   'GeometryNodeEdgePathsToSelection'        : {'dimensions': (300, 194), 'param_count': 0,},
    'GeometryNodeExtrudeMesh'                 : {'dimensions': (280, 474), 'param_count': 1,
            'name'    : 'mode',
            'changes' : {
@@ -164,8 +169,12 @@ NODE_DIMS = {
    'GeometryNodeFieldAtIndex'                : {'dimensions': (280, 312), 'param_count': 1,
            'name'    : 'data_type',
            'changes' : {
-                'FLOAT_VECTOR'       : (280, 432),
                 'BOOLEAN'            : (280, 304),},},
+   'GeometryNodeFieldOnDomain'               : {'dimensions': (280, 268), 'param_count': 1,
+           'name'    : 'data_type',
+           'changes' : {
+                'FLOAT_VECTOR'       : (280, 388),
+                'BOOLEAN'            : (280, 260),},},
    'GeometryNodeFillCurve'                   : {'dimensions': (280, 210), 'param_count': 0,},
    'GeometryNodeFilletCurve'                 : {'dimensions': (280, 298), 'param_count': 1,
            'name'    : 'mode',
@@ -179,6 +188,8 @@ NODE_DIMS = {
    'GeometryNodeInputCurveTilt'              : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInputID'                     : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInputIndex'                  : {'dimensions': (280, 100), 'param_count': 0,},
+   'GeometryNodeInputInstanceRotation'       : {'dimensions': (280, 100), 'param_count': 0,},
+   'GeometryNodeInputInstanceScale'          : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInputMaterial'               : {'dimensions': (280, 160), 'param_count': 0,},
    'GeometryNodeInputMaterialIndex'          : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInputMeshEdgeAngle'          : {'dimensions': (280, 144), 'param_count': 0,},
@@ -198,6 +209,7 @@ NODE_DIMS = {
    'GeometryNodeInputRadius'                 : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInputSceneTime'              : {'dimensions': (280, 144), 'param_count': 0,},
    'GeometryNodeInputShadeSmooth'            : {'dimensions': (280, 100), 'param_count': 0,},
+   'GeometryNodeInputShortestEdgePaths'      : {'dimensions': (280, 238), 'param_count': 0,},
    'GeometryNodeInputSplineCyclic'           : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInputSplineResolution'       : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInputTangent'                : {'dimensions': (280, 100), 'param_count': 0,},
@@ -207,11 +219,11 @@ NODE_DIMS = {
    'GeometryNodeJoinGeometry'                : {'dimensions': (280, 150), 'param_count': 0,},
    'GeometryNodeMaterialSelection'           : {'dimensions': (280, 150), 'param_count': 0,},
    'GeometryNodeMergeByDistance'             : {'dimensions': (280, 298), 'param_count': 0,},
-   'GeometryNodeMeshBoolean'                 : {'dimensions': (280, 342), 'param_count': 1,
+   'GeometryNodeMeshBoolean'                 : {'dimensions': (280, 386), 'param_count': 1,
            'name'    : 'operation',
            'changes' : {
-                'INTERSECT'          : (280, 298),
-                'UNION'              : (280, 298),},},
+                'INTERSECT'          : (280, 342),
+                'UNION'              : (280, 342),},},
    'GeometryNodeMeshCircle'                  : {'dimensions': (280, 254), 'param_count': 0,},
    'GeometryNodeMeshCone'                    : {'dimensions': (280, 562), 'param_count': 1,
            'name'    : 'fill_type',
@@ -230,8 +242,10 @@ NODE_DIMS = {
                 'END_POINTS'         : (280, 588),},},
    'GeometryNodeMeshToCurve'                 : {'dimensions': (280, 194), 'param_count': 0,},
    'GeometryNodeMeshToPoints'                : {'dimensions': (280, 342), 'param_count': 0,},
+   'GeometryNodeMeshToVolume'                : {'dimensions': (400, 430), 'param_count': 0,},
    'GeometryNodeMeshUVSphere'                : {'dimensions': (280, 238), 'param_count': 0,},
    'GeometryNodeObjectInfo'                  : {'dimensions': (280, 386), 'param_count': 0,},
+   'GeometryNodePoints'                      : {'dimensions': (280, 358), 'param_count': 0,},
    'GeometryNodePointsToVertices'            : {'dimensions': (280, 194), 'param_count': 0,},
    'GeometryNodePointsToVolume'              : {'dimensions': (340, 342), 'param_count': 0,},
    'GeometryNodeProximity'                   : {'dimensions': (280, 298), 'param_count': 0,},
@@ -287,7 +301,7 @@ NODE_DIMS = {
                 'TRUNCATE'           : (380, 806),},},
    'GeometryNodeSubdivideCurve'              : {'dimensions': (280, 194), 'param_count': 0,},
    'GeometryNodeSubdivideMesh'               : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodeSubdivisionSurface'          : {'dimensions': (300, 348), 'param_count': 0,},
+   'GeometryNodeSubdivisionSurface'          : {'dimensions': (300, 392), 'param_count': 0,},
    'GeometryNodeSwitch'                      : {'dimensions': (280, 306), 'param_count': 1,
            'name'    : 'input_type',
            'changes' : {
@@ -300,10 +314,13 @@ NODE_DIMS = {
            'name'    : 'mode',
            'changes' : {
                 'LENGTH'             : (280, 298),},},
+   'GeometryNodeUVPackIslands'               : {'dimensions': (280, 282), 'param_count': 0,},
+   'GeometryNodeUVUnwrap'                    : {'dimensions': (280, 342), 'param_count': 0,},
    'GeometryNodeViewer'                      : {'dimensions': (280, 148), 'param_count': 1,
            'name'    : 'data_type',
            'changes' : {
                 'BOOLEAN'            : (280, 144),},},
+   'GeometryNodeVolumeCube'                  : {'dimensions': (280, 654), 'param_count': 0,},
    'GeometryNodeVolumeToMesh'                : {'dimensions': (340, 298), 'param_count': 1,
            'name'    : 'resolution_mode',
            'changes' : {
