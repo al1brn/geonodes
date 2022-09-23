@@ -909,13 +909,13 @@ class PEFInterface:
         self.stack(node)
         
         if self.domain == 'POINT':
-            return self.data_socket.verts(node.top), self.data_socket.faces(node.side)
+            return self.data_socket.verts[node.top], self.data_socket.faces[node.side]
         
         elif self.domain == 'EDGE':
-            return self.data_socket.edges(node.top), self.data_socket.faces(node.side)
+            return self.data_socket.edges[node.top], self.data_socket.faces[node.side]
         else:
             
-            return self.data_socket.faces(node.top), self.data_socket.faces(node.side)
+            return self.data_socket.faces[node.top], self.data_socket.faces[node.side]
         
         # OLD !
         return self.select(node.top), self.select(node.side)
