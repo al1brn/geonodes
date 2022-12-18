@@ -33,11 +33,3 @@ node = nodes.TranslateInstances(instances=None, selection=None, translation=None
 ## Output sockets
 
 - instances : Instances
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Instances](/docs/sockets/Instances.md).[translate](/docs/sockets/Instances.md#translate) : Method
-  

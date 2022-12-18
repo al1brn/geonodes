@@ -37,11 +37,3 @@ node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='
 ## Output sockets
 
 - curve : Curve
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[Line](/docs/sockets/Curve.md#line) : Constructor
-  

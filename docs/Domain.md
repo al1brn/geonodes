@@ -87,6 +87,15 @@ Args:
 Access by index
 
 
+## view
+
+To viewer.
+
+Args:
+  socket (DataSocket): The value to view        
+  
+  
+
 ## as_verts
 
 Type cast to Vertex.
@@ -256,89 +265,6 @@ Set named attribute of type FLOAT_COLOR
 Set named attribute of type BYTE_COLOR
 
 
-## transfer_attribute
-
-Transfer attribute
-
-Args:
-  attribute (Any): The attribute to transfer
-  source_position (Vector): Source position socket
-  index (Integer): Index socket
-  data_type (str): A valid data type
-  mapping (str): str in ('NEAREST', 'INDEX', 'NEAREST_FACE_INTERPOLATED').
-  
-Returns:
-  As defined by data_type
-  
-If data_type is None, it is computed from the attribute type.
-
-This method is called by a DataSocket with a property :attr:`field_of` pointing on the domain:
-
-.. code-block:: python
-
-
-### Domain Vertex
-
-verts = mesh.verts
-
-
-### Attribute position: position.field_of = verts
-
-position = verts.position
-
-
-### Transfer to a var
-
-location = position.index_transfer()
-
-
-### Which is equivalent to:
-
-location = verts.index_transfer(verts.position)
-
-
-
-
-
-## index_transfer
-
-Transfer attribute with INDEX mapping
-
-Args:
-  attribute (Any): The attribute to transfer
-  index (Integer): Index
-  
-Returns:
-  Same as attribute
-  
-  
-
-## nearest_transfer
-
-Transfer attribute with NEAREST mapping
-
-Args:
-  attribute (Any): The attribute to transfer
-  source_position (Vector): Source position socket
-  
-Returns:
-  Same as attribute
-  
-  
-
-## nearest_face_transfer
-
-Transfer attribute with NEAREST_FACE_INTERPOLATED mapping
-
-Args:
-  attribute (Any): The attribute to transfer
-  source_position (Vector): Source position socket
-  
-Returns:
-  Same as attribute
-  
-  
-
 ## interpolate
 
 Interpolate attribute
@@ -354,6 +280,19 @@ If data_type is None, it is computed from the value type.
 
 
 
+
+## domain_index
+
+Index attribute
+
+Returns:
+  Integer
+  
+- getter: :class:`~geonodes.nodes.nodes.Index`
+- setter: Read only
+  
+  
+  
 
 ## index
 
@@ -419,3 +358,35 @@ If data_type is None, it is computed from the attribute type.
 
 
 
+
+## sample_index
+
+Sample index
+
+Similar to field_at_index but the geometry is used as input
+
+Args:
+  index (Integer): index to use for getting the attributes
+  value (Any): the value to collect from the domain
+  data_type (str): the value data_type. Can be None
+  
+Returns:
+  The field values
+  
+If data_type is None, it is computed from the attribute type.
+
+
+
+
+## sample_nearest
+
+Sample nearest
+
+Args:
+  sample_position (Vector): sample position
+  
+Returns:
+  index
+  
+  
+  

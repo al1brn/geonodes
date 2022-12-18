@@ -36,11 +36,3 @@ node = nodes.CollectionInfo(collection=None, separate_children=None, reset_child
 ## Output sockets
 
 - geometry : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Collection](/docs/sockets/Collection.md).[info](/docs/sockets/Collection.md#info) : Method
-  

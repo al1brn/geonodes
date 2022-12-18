@@ -31,12 +31,4 @@ node = nodes.EdgePathsToCurves(mesh=None, start_vertices=None, next_vertex_index
 
 ## Output sockets
 
-- curves : Curves
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Mesh](/docs/sockets/Mesh.md).[edge_paths_to_curves](/docs/sockets/Mesh.md#edge_paths_to_curves) : Method
-  
+- curves : Curve

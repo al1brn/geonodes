@@ -37,12 +37,3 @@ node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X
 ## Output sockets
 
 - rotation : Vector
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Vector](/docs/sockets/Vector.md).[AlignToVector](/docs/sockets/Vector.md#aligntovector) : Constructor
-- [Vector](/docs/sockets/Vector.md).[align_to_vector](/docs/sockets/Vector.md#align_to_vector) : Method
-  

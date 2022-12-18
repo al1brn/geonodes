@@ -35,11 +35,3 @@ node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY', label
 ## Output sockets
 
 - curve : Curve
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[set_spline_type](/docs/sockets/Curve.md#set_spline_type) : Method
-  

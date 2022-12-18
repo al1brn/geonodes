@@ -30,11 +30,3 @@ node = nodes.CurveLength(curve=None, label=None, node_color=None)
 ## Output sockets
 
 - length : Float
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[length](/docs/sockets/Curve.md#length) : Method
-  

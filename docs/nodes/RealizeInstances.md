@@ -34,11 +34,3 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False, label=None, 
 ## Output sockets
 
 - geometry : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Instances](/docs/sockets/Instances.md).[realize](/docs/sockets/Instances.md#realize) : Method
-  

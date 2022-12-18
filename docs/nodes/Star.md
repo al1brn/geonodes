@@ -34,11 +34,3 @@ node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None,
 
 - curve : Curve
 - outer_points : Boolean
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[Star](/docs/sockets/Curve.md#star) : Constructor
-  

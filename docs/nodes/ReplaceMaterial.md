@@ -32,11 +32,3 @@ node = nodes.ReplaceMaterial(geometry=None, old=None, new=None, label=None, node
 ## Output sockets
 
 - geometry : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Geometry](/docs/sockets/Geometry.md).[replace_material](/docs/sockets/Geometry.md#replace_material) : Method
-  

@@ -101,6 +101,11 @@ sockets are numbered, starting from 0:
   
   
 
+## is_Node
+
+Node class signature
+
+
 ## \_\_getattr\_\_
 
 Access to the output sockets

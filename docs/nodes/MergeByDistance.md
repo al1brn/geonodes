@@ -36,11 +36,3 @@ node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode=
 ## Output sockets
 
 - geometry : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Geometry](/docs/sockets/Geometry.md).[merge_by_distance](/docs/sockets/Geometry.md#merge_by_distance) : Method
-  

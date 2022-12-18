@@ -20,7 +20,7 @@ node = nodes.DeformCurvesOnSurface(curves=None, label=None, node_color=None)
 
 ### Input sockets
 
-- curves : Curves
+- curves : Curve
 
 ### Node label
 
@@ -29,12 +29,4 @@ node = nodes.DeformCurvesOnSurface(curves=None, label=None, node_color=None)
 
 ## Output sockets
 
-- curves : Curves
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curves](/docs/sockets/Curves.md).[deform_on_surface](/docs/sockets/Curves.md#deform_on_surface) : Method
-  
+- curves : Curve

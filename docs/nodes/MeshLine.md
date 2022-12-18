@@ -38,11 +38,3 @@ node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=N
 ## Output sockets
 
 - mesh : Mesh
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Mesh](/docs/sockets/Mesh.md).[Line](/docs/sockets/Mesh.md#line) : Constructor
-  

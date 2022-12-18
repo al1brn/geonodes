@@ -31,11 +31,3 @@ node = nodes.VectorCurves(fac=None, vector=None, label=None, node_color=None)
 ## Output sockets
 
 - vector : Vector
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Vector](/docs/sockets/Vector.md).[curves](/docs/sockets/Vector.md#curves) : Method
-  

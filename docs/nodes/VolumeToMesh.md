@@ -38,11 +38,3 @@ node = nodes.VolumeToMesh(volume=None, voxel_size=None, voxel_amount=None, thres
 ## Output sockets
 
 - mesh : Mesh
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Volume](/docs/sockets/Volume.md).[to_mesh](/docs/sockets/Volume.md#to_mesh) : Method
-  

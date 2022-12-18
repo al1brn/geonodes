@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-09-16
+Created on 2022-12-12
 @author: Generated from generator module
-Blender version: 3.3.0
+Blender version: 3.4.0
 """
 
 import geonodes as gn
@@ -17,20 +17,18 @@ logger = logging.Logger('geonodes')
 
 """ Function to declare in file __init__.py
 from geonodes.sockets.functions import abs, add, arccos, arcsin, arctan, arctan2, b_and, b_not, b_or, ceil
-from geonodes.sockets.functions import color_add, color_burn, color_darken, color_difference, color_divide
-from geonodes.sockets.functions import color_dodge, color_lighten, color_linear_light, color_mix, color_mix_color
-from geonodes.sockets.functions import color_mix_hue, color_mix_saturation, color_mix_value, color_multiply
-from geonodes.sockets.functions import color_overlay, color_screen, color_soft_light, color_subtract, compare
-from geonodes.sockets.functions import compare, cos, cosh, cross, degrees, distance, divide, dot, exp
-from geonodes.sockets.functions import faceforward, floor, fract, fraction, imply, inverse_sqrt, join_strings
-from geonodes.sockets.functions import length, log, math_greater_than, math_less_than, max, min, modulo
-from geonodes.sockets.functions import multiply, multiply_add, nand, nimply, nor, normalize, pingpong
-from geonodes.sockets.functions import pow, project, radians, reflect, refract, round, scale, scene, sign
-from geonodes.sockets.functions import sin, sinh, smooth_max, smooth_min, snap, sqrt, subtract, switch
-from geonodes.sockets.functions import tan, tanh, trunc, vector_absolute, vector_add, vector_ceil, vector_cos
-from geonodes.sockets.functions import vector_divide, vector_floor, vector_max, vector_min, vector_modulo
-from geonodes.sockets.functions import vector_multiply, vector_multiply_add, vector_sin, vector_snap, vector_subtract
-from geonodes.sockets.functions import vector_tan, vector_wrap, wrap, xnor, xor
+from geonodes.sockets.functions import compare, compare, corners_of_face, corners_of_vertex, cos, cosh
+from geonodes.sockets.functions import cross, curve_of_point, degrees, distance, divide, dot, edges_of_corner
+from geonodes.sockets.functions import edges_of_vertex, exp, face_of_corner, faceforward, floor, fract
+from geonodes.sockets.functions import fraction, imply, inverse_sqrt, join_strings, length, log, math_greater_than
+from geonodes.sockets.functions import math_less_than, max, min, modulo, multiply, multiply_add, nand
+from geonodes.sockets.functions import nimply, nor, normalize, offset_corner_in_face, pingpong, pow, project
+from geonodes.sockets.functions import radians, reflect, refract, round, scale, scene, sign, sin, sinh
+from geonodes.sockets.functions import smooth_max, smooth_min, snap, sqrt, subtract, switch, tan, tanh
+from geonodes.sockets.functions import trunc, vector_absolute, vector_add, vector_ceil, vector_cos, vector_divide
+from geonodes.sockets.functions import vector_floor, vector_max, vector_min, vector_modulo, vector_multiply
+from geonodes.sockets.functions import vector_multiply_add, vector_sin, vector_snap, vector_subtract, vector_tan
+from geonodes.sockets.functions import vector_wrap, vertex_of_corner, wrap, xnor, xor
 """
 
 """ Data class functions
@@ -2417,580 +2415,236 @@ def vector_tan(vector0=None, node_label = None, node_color = None):
 
     return nodes.VectorMath(vector0=vector0, operation='TANGENT', label=node_label, node_color=node_color).vector
 
-def color_mix(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
+def corners_of_face(face_index=None, weights=None, sort_index=None, node_label = None, node_color = None):
+    """ Geometry node [*Corners of Face*].
     
     
         Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
+            face_index: Integer
+            weights: Float
+            sort_index: Integer
             node_label (str): Node label
             node_color (color): Node background color
             
         Returns:
-            Color
+            Sockets [corner_index (Integer), total (Integer)]
             
         **Node creation**
         
-        Node :class:`~geonodes.nodes.nodes.Mix`
+        Node :class:`~geonodes.nodes.nodes.CornersOfFace`
         
-            - blend_type = 'MIX'
-              
-        .. blid:: ShaderNodeMixRGB
+        
+        .. blid:: GeometryNodeCornersOfFace
         
         .. code-block:: python
         
             from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha, label=node_label, node_color=node_color)
+            nodes.CornersOfFace(face_index=face_index, weights=weights, sort_index=sort_index, label=node_label, node_color=node_color)
             
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MIX', use_alpha=use_alpha, label=node_label, node_color=node_color).color
+    return nodes.CornersOfFace(face_index=face_index, weights=weights, sort_index=sort_index, label=node_label, node_color=node_color)
 
-def color_darken(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
+def corners_of_vertex(vertex_index=None, weights=None, sort_index=None, node_label = None, node_color = None):
+    """ Geometry node [*Corners of Vertex*].
     
     
         Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
+            vertex_index: Integer
+            weights: Float
+            sort_index: Integer
             node_label (str): Node label
             node_color (color): Node background color
             
         Returns:
-            Color
+            Sockets [corner_index (Integer), total (Integer)]
             
         **Node creation**
         
-        Node :class:`~geonodes.nodes.nodes.Mix`
+        Node :class:`~geonodes.nodes.nodes.CornersOfVertex`
         
-            - blend_type = 'DARKEN'
-              
-        .. blid:: ShaderNodeMixRGB
+        
+        .. blid:: GeometryNodeCornersOfVertex
         
         .. code-block:: python
         
             from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha, label=node_label, node_color=node_color)
+            nodes.CornersOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index, label=node_label, node_color=node_color)
             
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DARKEN', use_alpha=use_alpha, label=node_label, node_color=node_color).color
+    return nodes.CornersOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index, label=node_label, node_color=node_color)
 
-def color_multiply(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
+def edges_of_corner(corner_index=None, node_label = None, node_color = None):
+    """ Geometry node [*Edges of Corner*].
     
     
         Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
+            corner_index: Integer
             node_label (str): Node label
             node_color (color): Node background color
             
         Returns:
-            Color
+            Sockets [next_edge_index (Integer), previous_edge_index (Integer)]
             
         **Node creation**
         
-        Node :class:`~geonodes.nodes.nodes.Mix`
+        Node :class:`~geonodes.nodes.nodes.EdgesOfCorner`
         
-            - blend_type = 'MULTIPLY'
-              
-        .. blid:: ShaderNodeMixRGB
+        
+        .. blid:: GeometryNodeEdgesOfCorner
         
         .. code-block:: python
         
             from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha, label=node_label, node_color=node_color)
+            nodes.EdgesOfCorner(corner_index=corner_index, label=node_label, node_color=node_color)
             
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='MULTIPLY', use_alpha=use_alpha, label=node_label, node_color=node_color).color
+    return nodes.EdgesOfCorner(corner_index=corner_index, label=node_label, node_color=node_color)
 
-def color_burn(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
+def edges_of_vertex(vertex_index=None, weights=None, sort_index=None, node_label = None, node_color = None):
+    """ Geometry node [*Edges of Vertex*].
     
     
         Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
+            vertex_index: Integer
+            weights: Float
+            sort_index: Integer
             node_label (str): Node label
             node_color (color): Node background color
             
         Returns:
-            Color
+            Sockets [edge_index (Integer), total (Integer)]
             
         **Node creation**
         
-        Node :class:`~geonodes.nodes.nodes.Mix`
+        Node :class:`~geonodes.nodes.nodes.EdgesOfVertex`
         
-            - blend_type = 'BURN'
-              
-        .. blid:: ShaderNodeMixRGB
+        
+        .. blid:: GeometryNodeEdgesOfVertex
         
         .. code-block:: python
         
             from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha, label=node_label, node_color=node_color)
+            nodes.EdgesOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index, label=node_label, node_color=node_color)
             
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='BURN', use_alpha=use_alpha, label=node_label, node_color=node_color).color
+    return nodes.EdgesOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index, label=node_label, node_color=node_color)
 
-def color_lighten(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
+def face_of_corner(corner_index=None, node_label = None, node_color = None):
+    """ Geometry node [*Face of Corner*].
     
     
         Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
+            corner_index: Integer
             node_label (str): Node label
             node_color (color): Node background color
             
         Returns:
-            Color
+            Sockets [face_index (Integer), index_in_face (Integer)]
             
         **Node creation**
         
-        Node :class:`~geonodes.nodes.nodes.Mix`
+        Node :class:`~geonodes.nodes.nodes.FaceOfCorner`
         
-            - blend_type = 'LIGHTEN'
-              
-        .. blid:: ShaderNodeMixRGB
+        
+        .. blid:: GeometryNodeFaceOfCorner
         
         .. code-block:: python
         
             from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha, label=node_label, node_color=node_color)
+            nodes.FaceOfCorner(corner_index=corner_index, label=node_label, node_color=node_color)
             
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LIGHTEN', use_alpha=use_alpha, label=node_label, node_color=node_color).color
+    return nodes.FaceOfCorner(corner_index=corner_index, label=node_label, node_color=node_color)
 
-def color_screen(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
+def offset_corner_in_face(corner_index=None, offset=None, node_label = None, node_color = None):
+    """ Geometry node [*Offset Corner in Face*].
     
     
         Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
+            corner_index: Integer
+            offset: Integer
             node_label (str): Node label
             node_color (color): Node background color
             
         Returns:
-            Color
+            Integer
             
         **Node creation**
         
-        Node :class:`~geonodes.nodes.nodes.Mix`
+        Node :class:`~geonodes.nodes.nodes.OffsetCornerInFace`
         
-            - blend_type = 'SCREEN'
-              
-        .. blid:: ShaderNodeMixRGB
+        
+        .. blid:: GeometryNodeOffsetCornerInFace
         
         .. code-block:: python
         
             from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha, label=node_label, node_color=node_color)
+            nodes.OffsetCornerInFace(corner_index=corner_index, offset=offset, label=node_label, node_color=node_color)
             
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SCREEN', use_alpha=use_alpha, label=node_label, node_color=node_color).color
+    return nodes.OffsetCornerInFace(corner_index=corner_index, offset=offset, label=node_label, node_color=node_color).corner_index
 
-def color_dodge(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
+def vertex_of_corner(corner_index=None, node_label = None, node_color = None):
+    """ Geometry node [*Vertex of Corner*].
     
     
         Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
+            corner_index: Integer
             node_label (str): Node label
             node_color (color): Node background color
             
         Returns:
-            Color
+            Integer
             
         **Node creation**
         
-        Node :class:`~geonodes.nodes.nodes.Mix`
+        Node :class:`~geonodes.nodes.nodes.VertexOfCorner`
         
-            - blend_type = 'DODGE'
-              
-        .. blid:: ShaderNodeMixRGB
+        
+        .. blid:: GeometryNodeVertexOfCorner
         
         .. code-block:: python
         
             from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha, label=node_label, node_color=node_color)
+            nodes.VertexOfCorner(corner_index=corner_index, label=node_label, node_color=node_color)
             
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DODGE', use_alpha=use_alpha, label=node_label, node_color=node_color).color
+    return nodes.VertexOfCorner(corner_index=corner_index, label=node_label, node_color=node_color).vertex_index
 
-def color_add(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
+def curve_of_point(point_index=None, node_label = None, node_color = None):
+    """ Geometry node [*Curve of Point*].
     
     
         Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
+            point_index: Integer
             node_label (str): Node label
             node_color (color): Node background color
             
         Returns:
-            Color
+            Sockets [curve_index (Integer), index_in_curve (Integer)]
             
         **Node creation**
         
-        Node :class:`~geonodes.nodes.nodes.Mix`
+        Node :class:`~geonodes.nodes.nodes.CurveOfPoint`
         
-            - blend_type = 'ADD'
-              
-        .. blid:: ShaderNodeMixRGB
+        
+        .. blid:: GeometryNodeCurveOfPoint
         
         .. code-block:: python
         
             from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha, label=node_label, node_color=node_color)
+            nodes.CurveOfPoint(point_index=point_index, label=node_label, node_color=node_color)
             
     """
 
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='ADD', use_alpha=use_alpha, label=node_label, node_color=node_color).color
+    return nodes.CurveOfPoint(point_index=point_index, label=node_label, node_color=node_color)
 
-def color_overlay(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
-    
-    
-        Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
-            node_label (str): Node label
-            node_color (color): Node background color
-            
-        Returns:
-            Color
-            
-        **Node creation**
-        
-        Node :class:`~geonodes.nodes.nodes.Mix`
-        
-            - blend_type = 'OVERLAY'
-              
-        .. blid:: ShaderNodeMixRGB
-        
-        .. code-block:: python
-        
-            from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha, label=node_label, node_color=node_color)
-            
-    """
-
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='OVERLAY', use_alpha=use_alpha, label=node_label, node_color=node_color).color
-
-def color_soft_light(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
-    
-    
-        Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
-            node_label (str): Node label
-            node_color (color): Node background color
-            
-        Returns:
-            Color
-            
-        **Node creation**
-        
-        Node :class:`~geonodes.nodes.nodes.Mix`
-        
-            - blend_type = 'SOFT_LIGHT'
-              
-        .. blid:: ShaderNodeMixRGB
-        
-        .. code-block:: python
-        
-            from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha, label=node_label, node_color=node_color)
-            
-    """
-
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SOFT_LIGHT', use_alpha=use_alpha, label=node_label, node_color=node_color).color
-
-def color_linear_light(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
-    
-    
-        Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
-            node_label (str): Node label
-            node_color (color): Node background color
-            
-        Returns:
-            Color
-            
-        **Node creation**
-        
-        Node :class:`~geonodes.nodes.nodes.Mix`
-        
-            - blend_type = 'LINEAR_LIGHT'
-              
-        .. blid:: ShaderNodeMixRGB
-        
-        .. code-block:: python
-        
-            from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha, label=node_label, node_color=node_color)
-            
-    """
-
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='LINEAR_LIGHT', use_alpha=use_alpha, label=node_label, node_color=node_color).color
-
-def color_difference(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
-    
-    
-        Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
-            node_label (str): Node label
-            node_color (color): Node background color
-            
-        Returns:
-            Color
-            
-        **Node creation**
-        
-        Node :class:`~geonodes.nodes.nodes.Mix`
-        
-            - blend_type = 'DIFFERENCE'
-              
-        .. blid:: ShaderNodeMixRGB
-        
-        .. code-block:: python
-        
-            from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha, label=node_label, node_color=node_color)
-            
-    """
-
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIFFERENCE', use_alpha=use_alpha, label=node_label, node_color=node_color).color
-
-def color_subtract(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
-    
-    
-        Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
-            node_label (str): Node label
-            node_color (color): Node background color
-            
-        Returns:
-            Color
-            
-        **Node creation**
-        
-        Node :class:`~geonodes.nodes.nodes.Mix`
-        
-            - blend_type = 'SUBTRACT'
-              
-        .. blid:: ShaderNodeMixRGB
-        
-        .. code-block:: python
-        
-            from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha, label=node_label, node_color=node_color)
-            
-    """
-
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SUBTRACT', use_alpha=use_alpha, label=node_label, node_color=node_color).color
-
-def color_divide(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
-    
-    
-        Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
-            node_label (str): Node label
-            node_color (color): Node background color
-            
-        Returns:
-            Color
-            
-        **Node creation**
-        
-        Node :class:`~geonodes.nodes.nodes.Mix`
-        
-            - blend_type = 'DIVIDE'
-              
-        .. blid:: ShaderNodeMixRGB
-        
-        .. code-block:: python
-        
-            from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha, label=node_label, node_color=node_color)
-            
-    """
-
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='DIVIDE', use_alpha=use_alpha, label=node_label, node_color=node_color).color
-
-def color_mix_hue(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
-    
-    
-        Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
-            node_label (str): Node label
-            node_color (color): Node background color
-            
-        Returns:
-            Color
-            
-        **Node creation**
-        
-        Node :class:`~geonodes.nodes.nodes.Mix`
-        
-            - blend_type = 'HUE'
-              
-        .. blid:: ShaderNodeMixRGB
-        
-        .. code-block:: python
-        
-            from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha, label=node_label, node_color=node_color)
-            
-    """
-
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='HUE', use_alpha=use_alpha, label=node_label, node_color=node_color).color
-
-def color_mix_saturation(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
-    
-    
-        Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
-            node_label (str): Node label
-            node_color (color): Node background color
-            
-        Returns:
-            Color
-            
-        **Node creation**
-        
-        Node :class:`~geonodes.nodes.nodes.Mix`
-        
-            - blend_type = 'SATURATION'
-              
-        .. blid:: ShaderNodeMixRGB
-        
-        .. code-block:: python
-        
-            from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha, label=node_label, node_color=node_color)
-            
-    """
-
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='SATURATION', use_alpha=use_alpha, label=node_label, node_color=node_color).color
-
-def color_mix_color(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
-    
-    
-        Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
-            node_label (str): Node label
-            node_color (color): Node background color
-            
-        Returns:
-            Color
-            
-        **Node creation**
-        
-        Node :class:`~geonodes.nodes.nodes.Mix`
-        
-            - blend_type = 'COLOR'
-              
-        .. blid:: ShaderNodeMixRGB
-        
-        .. code-block:: python
-        
-            from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha, label=node_label, node_color=node_color)
-            
-    """
-
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='COLOR', use_alpha=use_alpha, label=node_label, node_color=node_color).color
-
-def color_mix_value(color1=None, color2=None, fac=None, use_alpha=False, node_label = None, node_color = None):
-    """ Geometry node [*Mix*].
-    
-    
-        Args:
-            color1: Color
-            color2: Color
-            fac: Float
-            use_alpha (bool): False
-            node_label (str): Node label
-            node_color (color): Node background color
-            
-        Returns:
-            Color
-            
-        **Node creation**
-        
-        Node :class:`~geonodes.nodes.nodes.Mix`
-        
-            - blend_type = 'VALUE'
-              
-        .. blid:: ShaderNodeMixRGB
-        
-        .. code-block:: python
-        
-            from geonodes import nodes
-            nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha, label=node_label, node_color=node_color)
-            
-    """
-
-    return nodes.Mix(color1=color1, color2=color2, fac=fac, blend_type='VALUE', use_alpha=use_alpha, label=node_label, node_color=node_color).color
 
 

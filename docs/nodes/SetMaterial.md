@@ -32,11 +32,3 @@ node = nodes.SetMaterial(geometry=None, selection=None, material=None, label=Non
 ## Output sockets
 
 - geometry : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Geometry](/docs/sockets/Geometry.md).[set_material](/docs/sockets/Geometry.md#set_material) : Method
-  

@@ -36,11 +36,3 @@ node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT', lab
 
 - selection : Geometry
 - inverted : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Geometry](/docs/sockets/Geometry.md).[separate_geometry](/docs/sockets/Geometry.md#separate_geometry) : Method
-  

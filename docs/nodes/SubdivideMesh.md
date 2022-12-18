@@ -31,11 +31,3 @@ node = nodes.SubdivideMesh(mesh=None, level=None, label=None, node_color=None)
 ## Output sockets
 
 - mesh : Mesh
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Mesh](/docs/sockets/Mesh.md).[subdivide](/docs/sockets/Mesh.md#subdivide) : Method
-  

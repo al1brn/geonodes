@@ -31,11 +31,3 @@ node = nodes.ValueToString(value=None, decimals=None, label=None, node_color=Non
 ## Output sockets
 
 - string : String
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Float](/docs/sockets/Float.md).[to_string](/docs/sockets/Float.md#to_string) : Method
-  

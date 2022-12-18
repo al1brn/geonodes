@@ -44,11 +44,3 @@ node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, 
 
 - color : Color
 - fac : Float
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Texture](/docs/sockets/Texture.md).[Wave](/docs/sockets/Texture.md#wave) : Static method
-  

@@ -36,11 +36,3 @@ node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode=
 ## Output sockets
 
 - geometry : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Geometry](/docs/sockets/Geometry.md).[delete_geometry](/docs/sockets/Geometry.md#delete_geometry) : Method
-  

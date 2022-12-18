@@ -38,11 +38,3 @@ node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=Non
 ## Output sockets
 
 - curve : Curve
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[trim](/docs/sockets/Curve.md#trim) : Method
-  

@@ -33,7 +33,7 @@
 - [dual](#dual) : dual_mesh (Geometry)
 - [duplicate_edges](#duplicate_edges) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
 - [duplicate_faces](#duplicate_faces) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
-- [edge_paths_to_curves](#edge_paths_to_curves) : curves (Curves)
+- [edge_paths_to_curves](#edge_paths_to_curves) : curves (Curve)
 - [extrude](#extrude) : Sockets      [mesh (Mesh), top (Boolean), side (Boolean)]
 - [flip_faces](#flip_faces) : mesh (Mesh)
 - [intersect](#intersect) : Sockets      [mesh (Mesh), intersecting_edges (Boolean)]
@@ -860,7 +860,7 @@ Geometry node [*Edge Paths to Curves*].
     node_color (color): Node background color
     
   Returns:
-    Curves
+    Curve
     
   **Node creation**
   

@@ -39,11 +39,3 @@ node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=No
 
 - curve : Curve
 - center : Vector
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[Circle](/docs/sockets/Curve.md#circle) : Constructor
-  

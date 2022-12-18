@@ -32,11 +32,3 @@ node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None, label=None, nod
 ## Output sockets
 
 - curve : Curve
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[set_tilt](/docs/sockets/Curve.md#set_tilt) : Method
-  

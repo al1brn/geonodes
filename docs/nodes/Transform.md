@@ -33,11 +33,3 @@ node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=Non
 ## Output sockets
 
 - geometry : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Geometry](/docs/sockets/Geometry.md).[transform](/docs/sockets/Geometry.md#transform) : Method
-  

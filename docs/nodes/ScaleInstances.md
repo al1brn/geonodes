@@ -34,11 +34,3 @@ node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=N
 ## Output sockets
 
 - instances : Instances
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Instances](/docs/sockets/Instances.md).[scale](/docs/sockets/Instances.md#scale) : Method
-  

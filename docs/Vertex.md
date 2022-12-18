@@ -69,6 +69,19 @@ Returns:
   
   
 
+## edge_paths_to_selection
+
+edges paths to selectin
+
+Returns:
+  Boolean
+  
+- getter: :class:`~geonodes.nodes.nodes.EdgePathsToSelection`
+- setter: read only
+  
+  
+  
+
 ## merge
 
 Merge vertices by distance.
@@ -103,5 +116,34 @@ Returns:
 .. code-block:: python
 
   mesh.verts().merge_connected()
+  
+  
+
+## weighted_corners
+
+Corners or Vertex
+
+Node :class:`~geonodes.nodes.nodes.CornersOfVertex`
+
+Args:
+  weights: Float
+  
+Returns:
+  WeightedList
+  
+  
+
+## weighted_edges
+
+Edges or Vertex
+
+Node :class:`~geonodes.nodes.nodes.EdgesOfVertex`
+
+Args:
+  weights: Float
+  
+Returns:
+  WeightedList
+  
   
   

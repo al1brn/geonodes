@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-09-16
+Created on 2022-12-12
 @author: Generated from generator module
-Blender version: 3.3.0
+Blender version: 3.4.0
 """
 
 import geonodes as gn
@@ -26,6 +26,12 @@ class Object(dsock.Object):
 
         return Object(self)
 
+    # ----------------------------------------------------------------------------------------------------
+    # Constructor
+    
+    @classmethod
+    def Self(cls):
+        return cls(nodes.SelfObject().self_object)
 
     # ----------------------------------------------------------------------------------------------------
     # Methods

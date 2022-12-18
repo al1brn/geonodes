@@ -35,11 +35,3 @@ node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE', label=None
 ## Output sockets
 
 - mesh : Mesh
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Mesh](/docs/sockets/Mesh.md).[Circle](/docs/sockets/Mesh.md#circle) : Constructor
-  

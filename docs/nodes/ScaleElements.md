@@ -39,11 +39,3 @@ node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=Non
 ## Output sockets
 
 - geometry : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Geometry](/docs/sockets/Geometry.md).[scale_elements](/docs/sockets/Geometry.md#scale_elements) : Method
-  

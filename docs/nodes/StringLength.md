@@ -30,11 +30,3 @@ node = nodes.StringLength(string=None, label=None, node_color=None)
 ## Output sockets
 
 - length : Integer
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [String](/docs/sockets/String.md).[length](/docs/sockets/String.md#length) : Property
-  

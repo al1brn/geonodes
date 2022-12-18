@@ -284,6 +284,11 @@ setter: read only
 
 
 
+## curve_of_point
+
+Curve topology Blender 3.4
+
+
 ## delete
 
 Delete points

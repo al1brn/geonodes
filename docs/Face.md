@@ -4,54 +4,6 @@
 Face domain
 
 
-## transfer_attribute_interpolated
-
-<method GeometryNodeAttributeTransfer>
-
-for other mapping, use transfer_attribute
-
-
-
-## transfer_boolean_interpolated
-
-<method GeometryNodeAttributeTransfer>
-
-for other mapping, use transfer_attribute
-
-
-
-## transfer_integer_interpolated
-
-<method GeometryNodeAttributeTransfer>
-
-for other mapping, use transfer_attribute
-
-
-
-## transfer_float_interpolated
-
-<method GeometryNodeAttributeTransfer>
-
-for other mapping, use transfer_attribute
-
-
-
-## transfer_vector_interpolated
-
-<method GeometryNodeAttributeTransfer>
-
-for other mapping, use transfer_attribute
-
-
-
-## transfer_color_interpolated
-
-<method GeometryNodeAttributeTransfer>
-
-for other mapping, use transfer_attribute
-
-
-
 ## neighbors
 
 Neighbors node
@@ -210,5 +162,54 @@ Returns:
   normal = node.normal
   rotation = node.rotation
   
+  
+  
+
+## uv_unwrap
+
+UV Unwrap.
+
+Node :class:`~geonodes.nodes.nodes.GeometryNodeUVUnwrap`
+
+Args:
+  seam: Boolean
+  margin: Float
+  fill_holes: Boolean
+  
+Returns:
+  UV
+  
+  
+  
+
+## pack_uv_islands
+
+Pack UV islands.
+
+Node :class:`~geonodes.nodes.nodes.GeometryNodeUVPackIslands`
+
+Args:
+  uv: Vector
+  margin: Float
+  rotate: Boolean
+  
+Returns:
+  UV
+  
+  
+  
+
+## weighted_corners
+
+Corners or Face
+
+Node :class:`~geonodes.nodes.nodes.CornersOfFace`
+
+Args:
+  weights: Float
+  sort_index: Int
+  
+Returns:
+  Node (corner_index, total)
   
   

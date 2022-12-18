@@ -35,11 +35,3 @@ node = nodes.GradientTexture(vector=None, gradient_type='LINEAR', label=None, no
 
 - color : Color
 - fac : Float
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Texture](/docs/sockets/Texture.md).[Gradient](/docs/sockets/Texture.md#gradient) : Static method
-  

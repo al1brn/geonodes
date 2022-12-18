@@ -30,12 +30,3 @@ node = nodes.GeometryToInstance(*geometry, label=None, node_color=None)
 ## Output sockets
 
 - instances : Instances
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Geometry](/docs/sockets/Geometry.md).[to_instance](/docs/sockets/Geometry.md#to_instance) : Method
-- [Instances](/docs/sockets/Instances.md).[FromGeometries](/docs/sockets/Instances.md#fromgeometries) : Static method
-  

@@ -14,6 +14,185 @@ from geonodes.nodes.nodes import create_node
 import logging
 logger = logging.getLogger('geonodes')
 
+# =============================================================================================================================
+# Index range
+
+# DOESN'T WORK : error message: the attrribute can't be used in output geometry
+
+"""
+
+def build_range(tree, values):
+    
+    import geonodes as gn
+    
+    if isinstance(values, (int, gn.Integer, bool, gn.Boolean, float, gn.Float)):
+        return values
+    
+    if isinstance(values, slice):
+        with tree.layout(f"Range {values}"):
+            count = values.stop - values.start
+            pts = gn.Mesh.Line(count=count)
+            return pts.verts.index + values.start
+        
+    with tree.layout(f"Indices {values}"):
+        count = len(values)
+        pts = gn.Mesh.Line(count=count)
+        for i, v in enumerate(values):
+            pts.verts[i].ID = v
+            
+        return pts.ID
+"""
+
+
+# =============================================================================================================================
+# Domain selector
+#
+# Domain uses selector property which can be used to get the selection or the index
+# - selection: selector.selection
+# - index:     selector.index
+
+class Selector:
+    
+    def __init__(self, domain, value):
+        self.domain     = domain
+        self.value      = value
+        self._selection = None
+        
+    def __repr__(self):
+        return str(self.value)
+        
+    @property
+    def is_index(self):
+        return isinstance(self.value, int) or Socket.is_socket(self.value)
+            
+    @property
+    def index(self):
+        
+        if self.value is None:
+            return self.domain.domain_index
+
+        # ----- Index is an int or a socket (different from Boolean addressed above)
+        
+        elif self.is_index:
+            return self.value
+        
+        else:
+            raise Exception(f"Invalid domain index: {self.value}. Only Int is a valid type to get an index from domain[value].")
+            
+    @property
+    def selection(self):
+        
+        import geonodes as gn
+        
+        if self.value is None:
+            return True
+        
+        # ----- Index is a boolean
+        
+        elif isinstance(self.value, (bool, gn.Boolean)):
+            return self.value
+
+        # ----- Index is an int or a socket (different from Boolean addressed above)
+        
+        elif isinstance(self.value, int) or Socket.is_socket(self.value):
+            return self.domain.domain_index.equal(self.value)
+
+        # ----- Index is slice
+        
+        elif isinstance(self.value, slice):
+            if self.value.start is None:
+                return self.domain.domain_index.less_equal(self.value.stop)
+            
+            elif self.value.stop is None:
+                return self.domain.domain_index.greater_equal(self.value.start)
+            
+            else:
+                center = (self.value.start + self.value.stop - 1)/2
+                amp    = (self.value.stop - self.value.start - 1)/2
+                return gn.Float(self.domain.domain_index).equal(center, epsilon=amp+0.1)
+            
+        # ----- Index is an array of indices
+        
+        elif hasattr(self.value, '__len__'):
+            sel = None
+            for i in self.value[:10]:
+                if sel is None:
+                    sel = self.domain.domain_index.equal(i)
+                else:
+                    sel = sel.b_or(self.domain.domain_index.equal(i))
+            return sel
+        
+        else:
+            msg = f"Invalid domain index: {self.value}. Only bool, int, slice and array are valid."
+            if hasattr(self.value, 'is_Node'):
+                msg += f"\nThe value is a Node, you certainly want to use one output socket in {list(self.value.outsockets.keys())}."
+                
+            raise Exception(msg)
+            
+# =============================================================================================================================
+# Weighted list
+# 
+# Implement nodes (index, weights, sorted_index) --> (index, total) as list
+#
+# - domain     : the calling domain
+# - node       : the node
+# - out_domain : domain class returned
+# - sorted_index_socket : name of sorted_index socket
+# - index_socket        : index of the output socket Index
+# - total_socket        : index of the output socket Total
+
+class WeightedList:
+    
+    def __init__(self, domain, node_class, weights=None, out_domain=None, sorted_index_socket="sort_index", index_socket=0, total_socket=1):
+
+        self.domain       = domain
+        
+        self.node_class   = node_class
+        self.weights      = weights
+        
+        self.out_domain   = out_domain
+
+        self.sorted_index_socket = sorted_index_socket
+
+        self.index_socket = index_socket
+        self.total_socket = total_socket
+        
+        self.nodes   = [(self.build_node(), None)]
+        self.weights = weights
+        
+    def build_node(self, sort_index=None):
+        return self.domain.attribute(self.node_class(self.domain.index, weights=self.weights, sort_index=sort_index))
+        
+    def __len__(self):
+        return self.nodes[0][0].get_datasocket(self.total_socket)
+    
+    def __getitem__(self, index):
+        
+        node = None
+        for nd, idx in self.nodes:
+            if idx == index:
+                node = nd
+                break
+                
+        if node is None:
+            if self.nodes[0][1] is None:
+                node = self.nodes[0][0]
+                node.set_input_socket(self.sorted_index_socket, index)
+                self.nodes[0] = (node, index)
+
+            else:
+                node = self.build_node(index)
+                self.nodes.append((node, index))
+                
+        #self.node.set_input_socket(self.sorted_index_socket, index)
+
+        domain_index = node.get_datasocket(self.index_socket)
+        
+        if self.out_domain is None:
+            return domain_index
+        else:
+            return self.out_domain(self.domain.data_socket, selection=domain_index)
+
 
 # =============================================================================================================================
 # Root class for domains
@@ -34,7 +213,7 @@ logger = logging.getLogger('geonodes')
 # - Points
 #     - Point   : point (or points)
 # - Instances components
-#     - Instance : instans (or insts)
+#     - Instance : instances (or insts)
 #
 # POINT domain is share between Mesh, Curve and Points but has not the same methods
 #
@@ -89,7 +268,11 @@ class Domain:
 
         self.data_socket = data_socket
         self.domain      = domain
-        self.selection   = selection
+        self.selector    = None if selection is None else Selector(self, selection)
+        
+    @property
+    def selection(self):
+        return None if self.selector is None else self.selector.selection
         
     def select(self, selection):
         """ Select the domain
@@ -100,14 +283,26 @@ class Domain:
         If a selection is existing, the resulting selection is a logical and betwenn the two
         """
         
-        if self.selection is None:
-            sel = selection
-            
-        elif selection is None:
-            sel = self.selection
-            
+        if True:
+            if self.selector is None:
+                sel = selection
+                
+            elif selection is None:
+                sel = self.selector.value
+                
+            else:
+                other = Selector(self, selection)
+                sel = self.selector.selection.b_and(other.selection)
+        
         else:
-            sel = self.selection.b_and(selection)
+            if self.selection is None:
+                sel = selection
+                
+            elif selection is None:
+                sel = self.selection
+                
+            else:
+                sel = self.selection.b_and(selection)
             
         return type(self)(self.data_socket, selection=sel)
     
@@ -121,8 +316,7 @@ class Domain:
         return self.select(selection)
     
     def __repr__(self):
-        sel = "" if self.selection is None else f" (selection: {self.selection})"
-        #return f"[Domain {self.data_socket}.{self.domain}{sel}]"
+        sel = "" if self.selector is None else f" [{self.selector}]"
         return f"[Domain {self.domain} of {self.data_socket}{sel}]"
     
     def stack(self, node):
@@ -138,47 +332,62 @@ class Domain:
     
     def __getitem__(self, index):
         
-        import geonodes as gn
-        
-        # ----- Index is a boolean
-        # We plug it directly
-        
-        if isinstance(index, (bool, gn.Boolean)):
+        if True:
             return self.select(index)
-
-        # ----- Index is an int or a socket (different from Boolean addressed above)
-        # We plug it directly
-        
-        elif isinstance(index, int) or Socket.is_socket(index):
-            return self.select(self.index.equal(index))
-
-        # ----- Index is slice
-        
-        elif isinstance(index, slice):
-            if index.start is None:
-                return self.select(self.index.less_equal(index.stop))
-            
-            elif index.stop is None:
-                return self.select(self.index.greater_equal(index.start))
-            
-            else:
-                center = (index.start + index.stop - 1)/2
-                amp    = (index.stop - index.start - 1)/2
-                return self.select(gn.Float(self.index).equal(center, epsilon=amp+0.1))
-            
-        # ----- Index is an array of indices
-        
-        elif hasattr(index, '__len__'):
-            sel = None
-            for i in index[:10]:
-                if sel is None:
-                    sel = self.index.equal(i)
-                else:
-                    sel = sel.b_or(self.index.equal(i))
-            return self.select(sel)
         
         else:
-            raise Exceptionf(f"Invalid domain index: {index}. Only bool, int, slice and array are valid.")
+            import geonodes as gn
+            
+            # ----- Index is a boolean
+            # We plug it directly
+            
+            if isinstance(index, (bool, gn.Boolean)):
+                return self.select(index)
+    
+            # ----- Index is an int or a socket (different from Boolean addressed above)
+            # We plug it directly
+            
+            elif isinstance(index, int) or Socket.is_socket(index):
+                return self.select(self.index.equal(index))
+    
+            # ----- Index is slice
+            
+            elif isinstance(index, slice):
+                if index.start is None:
+                    return self.select(self.index.less_equal(index.stop))
+                
+                elif index.stop is None:
+                    return self.select(self.index.greater_equal(index.start))
+                
+                else:
+                    center = (index.start + index.stop - 1)/2
+                    amp    = (index.stop - index.start - 1)/2
+                    return self.select(gn.Float(self.index).equal(center, epsilon=amp+0.1))
+                
+            # ----- Index is an array of indices
+            
+            elif hasattr(index, '__len__'):
+                sel = None
+                for i in index[:10]:
+                    if sel is None:
+                        sel = self.index.equal(i)
+                    else:
+                        sel = sel.b_or(self.index.equal(i))
+                return self.select(sel)
+            
+            else:
+                raise Exception(f"Invalid domain index: {index}. Only bool, int, slice and array are valid.")
+            
+    # ----------------------------------------------------------------------------------------------------
+    # To viewer
+    
+    def view(self, socket=None, label=None, node_color=None):
+        """ To viewer.
+        
+        Args:
+            socket (DataSocket): The value to view        
+        """
+        return self.data_socket.node.tree.view(geometry=self.data_socket, socket=socket, domain=self.domain, label=label, node_color=node_color)
             
     
     # ----------------------------------------------------------------------------------------------------
@@ -380,87 +589,6 @@ class Domain:
     def set_named_byte_color(self, name, value):
         """ Set named attribute of type BYTE_COLOR"""
         self.set_named_attribute(name, value, data_type='BYTE_COLOR')
-        
-    # ====================================================================================================
-    # Transfer attribute
-
-    def transfer_attribute(self, attribute, source_position=None, index=None, data_type=None, mapping='NEAREST_FACE_INTERPOLATED'):
-        """ Transfer attribute
-        
-        Args:
-            attribute (Any): The attribute to transfer
-            source_position (Vector): Source position socket
-            index (Integer): Index socket
-            data_type (str): A valid data type
-            mapping (str): str in ('NEAREST', 'INDEX', 'NEAREST_FACE_INTERPOLATED').
-            
-        Returns:
-            As defined by data_type
-            
-        If data_type is None, it is computed from the attribute type.
-        
-        This method is called by a DataSocket with a property :attr:`field_of` pointing on the domain:
-            
-        .. code-block:: python
-        
-            # Domain Vertex
-        
-            verts = mesh.verts
-            
-            # Attribute position: position.field_of = verts
-        
-            position = verts.position
-            
-            # Transfer to a var
-
-            location = position.index_transfer()
-            
-            # Which is equivalent to:
-                
-            location = verts.index_transfer(verts.position)
-        
-        """
-        
-        dt = Socket.domain_data_type(attribute) if data_type is None else Socket.domain_data_type(data_type)
-        
-        return nodes.TransferAttribute(self.data_socket, attribute=attribute, source_position=source_position, index=index,
-                        data_type=dt, domain=self.domain, mapping=mapping).attribute
-
-    def index_transfer(self, attribute, index=None):
-        """ Transfer attribute with INDEX mapping
-        
-        Args:
-            attribute (Any): The attribute to transfer
-            index (Integer): Index
-            
-        Returns:
-            Same as attribute
-        """
-        return self.transfer_attribute(attribute, index=index, mapping='INDEX')
-
-    def nearest_transfer(self, attribute, source_position=None):
-        """ Transfer attribute with NEAREST mapping
-        
-        Args:
-            attribute (Any): The attribute to transfer
-            source_position (Vector): Source position socket
-            
-        Returns:
-            Same as attribute
-        """
-        return self.transfer_attribute(attribute, source_position=source_position, mapping='NEAREST')
-
-    def nearest_face_transfer(self, attribute, source_position=None):
-        """ Transfer attribute with NEAREST_FACE_INTERPOLATED mapping
-        
-        Args:
-            attribute (Any): The attribute to transfer
-            source_position (Vector): Source position socket
-            
-        Returns:
-            Same as attribute
-        """
-        return self.transfer_attribute(attribute, source_position=source_position, mapping='NEAREST_FACE_INTERPOLATED')    
 
     # ====================================================================================================
     # Interpolate an attribute
@@ -505,7 +633,7 @@ class Domain:
         return self.stack(nodes.SetID(self.data_socket, selection=self.selection, ID=value))
     
     @property
-    def index(self):
+    def domain_index(self):
         """ Index attribute
         
         Returns:
@@ -516,6 +644,22 @@ class Domain:
         """
         
         return self.attribute(nodes.Index()).get_datasocket(0)
+        
+    @property
+    def index(self):
+        """ Index attribute
+        
+        Returns:
+            Integer
+        
+        - getter: :class:`~geonodes.nodes.nodes.Index`
+        - setter: Read only
+        """
+        
+        if self.selector is not None and self.selector.is_index:
+            return self.selector.index
+        else:
+            return self.domain_index
         
     
     @property
@@ -627,13 +771,60 @@ class Domain:
         If data_type is None, it is computed from the attribute type.
         """
 
-
-        dt = Socket.domain_data_type(value) if data_type is None else Socket.domain_data_type(data_type)
+        if value is None:
+            dt = 'FLOAT' if data_type is None else Socket.domain_data_type(data_type)
+        else:
+            dt = Socket.domain_data_type(value) if data_type is None else Socket.domain_data_type(data_type)
         
         if index is None:
             index = self.index
         
         return self.attribute(nodes.FieldAtIndex(index=index, value=value, data_type=dt, domain=self.domain)).value    
+    
+    # ====================================================================================================
+    # Sample at index
+    # Similar to field at index but having geometry input socket
+    
+    def sample_index(self, index=None, value=None, data_type=None):
+        """ Sample index
+        
+        Similar to field_at_index but the geometry is used as input
+        
+        Args:
+            index (Integer): index to use for getting the attributes
+            value (Any): the value to collect from the domain
+            data_type (str): the value data_type. Can be None
+            
+        Returns:
+            The field values
+            
+        If data_type is None, it is computed from the attribute type.
+        """
+        
+        if value is None:
+            dt = 'FLOAT' if data_type is None else Socket.domain_data_type(data_type)
+        else:
+            dt = Socket.domain_data_type(value) if data_type is None else Socket.domain_data_type(data_type)
+        
+        if index is None:
+            index = self.index
+        
+        return nodes.SampleIndex(geometry=self.data_socket, index=index, value=value, data_type=dt, domain=self.domain).value    
+    
+    # ====================================================================================================
+    # Sample nearest
+    
+    def sample_nearest(self, sample_position=None):
+        """ Sample nearest
+        
+        Args:
+            sample_position (Vector): sample position
+            
+        Returns:
+            index
+        """
+        
+        return nodes.SampleNearest(geometry=self.data_socket, sample_position=sample_position, domain=self.domain).index
     
     
     
@@ -1110,7 +1301,59 @@ class Vertex(Point, MeshInterface, PEFInterface):
             mesh.verts().merge_connected()
         """
         return self.merge(distance=distance, mode='CONNECTED')
+    
+    # ====================================================================================================
+    # Topology V3.4
+    
+    # ----- Vertex corners
+    
+    def weighted_corners(self, weights=None):
+        """ Corners or Vertex
         
+        Node :class:`~geonodes.nodes.nodes.CornersOfVertex`
+
+        Args:
+            weights: Float
+
+        Returns:
+            WeightedList
+        """
+        return WeightedList(
+            domain     = self, 
+            #node       = self.attribute(nodes.CornersOfVertex(vertex_index=self.index, weights=weights)),
+            node_class = nodes.CornersOfVertex,
+            weights    = weights,
+            out_domain = Corner)
+    
+    @property
+    def corners(self):
+        return self.weighted_corners()
+    
+    # ----- Vertex edges    
+
+    def weighted_edges(self, weights=None):
+        """ Edges or Vertex
+        
+        Node :class:`~geonodes.nodes.nodes.EdgesOfVertex`
+
+        Args:
+            weights: Float
+
+        Returns:
+            WeightedList
+        """
+
+        return WeightedList(
+            domain     = self, 
+            #node       = self.attribute(nodes.EdgesOfVertex(vertex_index=self.index, weights=weights)),
+            node_class = nodes.EdgesOfVertex,
+            weights    = weights,
+            out_domain = Edge)
+    
+    @property
+    def edges(self):
+        return self.weighted_edges()
+    
     
     
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -1120,51 +1363,6 @@ class Face(Domain, MeshInterface, PEFInterface):
 
     def __init__(self, data_socket, selection=None):
         super().__init__(data_socket, domain='FACE', selection=selection)
-        
-    # ----------------------------------------------------------------------------------------------------
-    # Transfer attribute
-
-    def transfer_attribute_interpolated(self, attribute, source_position=None, data_type=None):
-        """ <method GeometryNodeAttributeTransfer>
-        
-        for other mapping, use transfer_attribute
-        """
-        return self.transfer_attribute(attribute, source_position=source_position, data_type=data_type, mapping='NEAREST_FACE_INTERPOLATED')
-    
-    def transfer_boolean_interpolated(self, attribute, source_position=None):
-        """ <method GeometryNodeAttributeTransfer>
-        
-        for other mapping, use transfer_attribute
-        """
-        return self.transfer_attribute_interpolated(attribute, source_position=source_position, data_type='BOOLEAN')
-        
-    def transfer_integer_interpolated(self, attribute, source_position=None):
-        """ <method GeometryNodeAttributeTransfer>
-        
-        for other mapping, use transfer_attribute
-        """
-        return self.transfer_attribute_interpolated(attribute, source_position=source_position, data_type='INT')
-        
-    def transfer_float_interpolated(self, attribute, source_position=None):
-        """ <method GeometryNodeAttributeTransfer>
-        
-        for other mapping, use transfer_attribute
-        """
-        return self.transfer_attribute_interpolated(attribute, source_position=source_position, data_type='FLOAT')
-        
-    def transfer_vector_interpolated(self, attribute, source_position=None):
-        """ <method GeometryNodeAttributeTransfer>
-        
-        for other mapping, use transfer_attribute
-        """
-        return self.transfer_attribute_interpolated(attribute, source_position=source_position, data_type='FLOAT_VECTOR')
-        
-    def transfer_color_interpolated(self, attribute, source_position=None):
-        """ <method GeometryNodeAttributeTransfer>
-        
-        for other mapping, use transfer_attribute
-        """
-        return self.transfer_attribute_interpolated(attribute, source_position=source_position, data_type='FLOAT_COLOR')
 
     # ----------------------------------------------------------------------------------------------------
     # Fields
@@ -1403,7 +1601,7 @@ class Face(Domain, MeshInterface, PEFInterface):
                 seed=seed, distribute_method=distribute_method)
     
     # ====================================================================================================
-    # UV unwrappinp
+    # UV unwrapping
     
     def uv_unwrap(self, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
         """ UV Unwrap.
@@ -1436,6 +1634,32 @@ class Face(Domain, MeshInterface, PEFInterface):
         """
         
         return self.attribute(nodes.PackUvIslands(uv=uv, selection=self.selection, margin=margin, rotate=rotate)).uv
+    
+    # ====================================================================================================
+    # Topology V3.4
+    
+    def weighted_corners(self, weights=None):
+        """ Corners or Face
+        
+        Node :class:`~geonodes.nodes.nodes.CornersOfFace`
+
+        Args:
+            weights: Float
+            sort_index: Int
+
+        Returns:
+            Node (corner_index, total)
+        """
+        return WeightedList(
+            domain     = self, 
+            #node       = self.attribute(nodes.CornersOfFace(face_index=self.index, weights=weights)),
+            node_class = nodes.CornersOfFace,
+            weights    = weights,
+            out_domain = Corner)
+    
+    @property
+    def corners(self):
+        return self.weighted_corners()
     
     
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -1583,6 +1807,107 @@ class Corner(Domain, MeshInterface):
     
     def __init__(self, data_socket, selection=None):
         super().__init__(data_socket, domain='CORNER', selection=selection)
+        
+    # ====================================================================================================
+    # Topology V3.4
+    
+    # ----- Edges
+    
+    def edges(self):
+        """ Edges of corner
+        
+        Node :class:`~geonodes.nodes.nodes.EdgesOfCorner`
+
+        Args:
+            index: Int
+
+        Returns:
+            Node (next_edge_index, previous_edge_index)
+        """
+        
+        if not hasattr(self, '_edges'):
+            self._edges = self.attribute(nodes.EdgesOfCorner(corner_index=self.index))
+        return self._edges
+            
+    @property
+    def next_edge_index(self):
+        return self.edges().next_edge_index
+        
+    @property
+    def previous_edge_index(self):
+        return self.edges().previous_edge_index
+    
+    @property
+    def next_edge(self):
+        return self.data_socket.edges[self.next_edge_index]
+    
+    @property
+    def previous_edge(self):
+        return self.data_socket.edges[self.previous_edge_index]
+    
+    # ----- Face
+    
+    def face_of_corner(self):
+        """ Face of corner
+        
+        Node :class:`~geonodes.nodes.nodes.FaceOfCorner`
+
+        Returns:
+            Node (face_index, index_in_face)
+        """
+        
+        if not hasattr(self, '_face'):
+            self._face = self.attribute(nodes.FaceOfCorner(corner_index=self.index))
+        return self._face
+    
+    @property
+    def face_index(self):
+        return self.face_of_corner().face_index
+    
+    @property
+    def face(self):
+        return self.data_socket.faces[self.face_index]
+    
+    @property
+    def index_in_face(self):
+        return self.face_of_corner().index_in_face
+    
+    # ----- Offset in face
+    
+    def offset_in_face_index(self, offset=None):
+        """ Face of corner
+        
+        Node :class:`~geonodes.nodes.nodes.OffsetCornerInFace`
+
+        Args:
+            offset: INt
+
+        Returns:
+            Int
+        """
+        return self.attribute(nodes.OffsetCornerInFace(corner_index=self.index, offset=offset)).get_datasocket(0)
+    
+    def offset_in_face(self, offset):
+        return self.data_socket.corners[self.offset_in_face_index(offset=offset)]
+
+    # ----- Vertex
+    
+    @property
+    def vertex_index(self):
+        """ Vertex of corner
+        
+        Node :class:`~geonodes.nodes.nodes.VertexOfCorner`
+
+        Returns:
+            Int
+        """
+        
+        return self.attribute(nodes.VertexOfCorner(corner_index=self.index)).get_datasocket(0)
+    
+    @property
+    def vertex(self):
+        return self.data_socket.verts[self.vertex_index]
+    
         
 # =============================================================================================================================
 # Curve domains
@@ -2039,6 +2364,41 @@ class ControlPoint(Point):
         setter: read only
         """
         return self.parameter.index    
+
+    # ====================================================================================================
+    # Curve topology Blender 3.4
+    
+    def curve_of_point(self):
+        if not hasattr(self, '_curve_of_point'):
+            self._curve_of_point = self.attribute(nodes.CurveOfPoint(point_index=self.index))
+        
+        return self._curve_of_point
+    
+    @property
+    def curve_index(self):
+        return self.curve_of_point().curve_index
+    
+    @property
+    def curve(self):
+        return self.data_socket.splines[self.curve_index]
+    
+    @property
+    def index_in_curve(self):
+        return self.curve_of_point().index_in_curve
+    
+    
+    def offset_point_in_curve(self, offset=None):
+        return self.attribute(nodes.OffsetPointInCurve(point_index=self.index, offset=offset))
+    
+    def offset_point_in_curve_is_valid(self, offset=None):
+        return self.offset_point_in_curve(offset=offset).is_valid
+    
+    def offset_point_in_curve_index(self, offset=None):
+        return self.offset_point_in_curve(offset=offset).point_index
+    
+    def offset_in_curve(self, offset=None):
+        return self.data_socket.points[self.offset_point_in_curve_index(offset)]
+    
     
     # ====================================================================================================
     # Methods
@@ -2292,6 +2652,45 @@ class Spline(Domain):
             curve.splines(...).delete()
         """
         return self.stack(nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain))
+    
+    
+    def set_normal(self, mode='MINIMUM_TWIST'):
+        """ set normals
+        
+        Node :class:`~geonodes.nodes.nodes.SetCurveNormal`
+        
+        Args:
+            mode (str): Node parameter, default = 'MINIMUM_TWIST' in ('MINIMUM_TWIST', 'Z_UP')
+            
+        Returns:
+            self
+        """
+        
+        return self.stack(nodes.SetCurveNormal(curve=self.data_socket, selection=self.selection, mode=mode))
+    
+    def set_normal_min_twist(self):
+        return self.set_normal(mode='MINIMUM_TWIST')
+    
+    def set_normal_z_up(self):
+        return self.set_normal(mode='Z_UP')
+        
+    
+    # ====================================================================================================
+    # Topology Blender 3.4
+    
+    def weighted_points(self, weights=None):
+        return WeightedList(
+            domain     = self, 
+            #node       = self.attribute(nodes.PointsOfCurve(curve_index=self.index, weights=weights)),
+            node_class = nodes.PointsOfCurve,
+            weights    = weights,
+            out_domain = ControlPoint)
+    
+    @property
+    def points(self):
+        return self.weighted_points()
+    
+    
     
 # =============================================================================================================================
 # Cloud point : the point domain of cloud of points

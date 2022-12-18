@@ -38,12 +38,3 @@ node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, s
 ## Output sockets
 
 - rotation : Vector
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Vector](/docs/sockets/Vector.md).[RotateEuler](/docs/sockets/Vector.md#rotateeuler) : Constructor
-- [Vector](/docs/sockets/Vector.md).[rotate_euler](/docs/sockets/Vector.md#rotate_euler) : Method
-  

@@ -32,11 +32,3 @@ node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None, label=N
 ## Output sockets
 
 - geometry : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[set_cyclic](/docs/sockets/Curve.md#set_cyclic) : Method
-  

@@ -10,7 +10,7 @@
 
 ```python
 from geonodes import nodes
-node = nodes.SampleCurve(curve=None, factor=None, length=None, mode='LENGTH', label=None, node_color=None)
+node = nodes.SampleCurve(curves=None, value=None, factor=None, length=None, curve_index=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False, label=None, node_color=None)
 ```
 
 
@@ -20,29 +20,34 @@ node = nodes.SampleCurve(curve=None, factor=None, length=None, mode='LENGTH', la
 
 ### Input sockets
 
-- curve : Curve
+- curves : Curve
+- value : data_type dependant
 - factor : Float
 - length : Float
+- curve_index : Integer
 
 ### Parameters
 
-- mode : str (default = 'LENGTH') in ('FACTOR', 'LENGTH')
+- data_type : str (default = 'FLOAT') in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- mode : str (default = 'FACTOR') in ('FACTOR', 'LENGTH')
+- use_all_curves : bool (default = False)
 
 ### Node label
 
 - label : Geometry node display label (default=None)
 - node_color : Geometry node color (default=None)
 
+## Data type dependant sockets
+
+- Driving parameter : data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- Input sockets  : ['value']
+- Output sockets : ['value']   
+  
+  
+
 ## Output sockets
 
+- value : data_type dependant
 - position : Vector
 - tangent : Vector
 - normal : Vector
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[sample](/docs/sockets/Curve.md#sample) : Method
-  

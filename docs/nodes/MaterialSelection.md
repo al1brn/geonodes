@@ -30,11 +30,3 @@ node = nodes.MaterialSelection(material=None, label=None, node_color=None)
 ## Output sockets
 
 - selection : Boolean
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Material](/docs/sockets/Material.md).[selection](/docs/sockets/Material.md#selection) : Method
-  

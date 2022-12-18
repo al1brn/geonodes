@@ -38,11 +38,3 @@ node = nodes.SubdivisionSurface(mesh=None, level=None, edge_crease=None, vertex_
 ## Output sockets
 
 - mesh : Mesh
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Mesh](/docs/sockets/Mesh.md).[subdivision_surface](/docs/sockets/Mesh.md#subdivision_surface) : Method
-  

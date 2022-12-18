@@ -32,11 +32,3 @@ node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None, label=N
 ## Output sockets
 
 - mesh : Mesh
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[to_mesh](/docs/sockets/Curve.md#to_mesh) : Method
-  

@@ -30,13 +30,14 @@
 
 ## Methods
 
+- [deform_on_surface](#deform_on_surface) : curves (Curve)
 - [duplicate_splines](#duplicate_splines) : Sockets      [geometry (Geometry), duplicate_index (Integer)]
 - [fill](#fill) : mesh (Mesh)
 - [fillet](#fillet) : curve (Curve)
 - [length](#length) : length (Float)
 - [resample](#resample) : curve (Curve)
 - [reverse](#reverse) : curve (Curve)
-- [sample](#sample) : Sockets      [position (Vector), tangent (Vector), normal (Vector)]
+- [sample](#sample) : Sockets      [value (Boolean), position (Vector), tangent (Vector), normal (Vector)]
 - [set_cyclic](#set_cyclic) : geometry (Geometry)
 - [set_handle_positions](#set_handle_positions) : curve (Curve)
 - [set_handles](#set_handles) : curve (Curve)
@@ -733,6 +734,31 @@ Geometry node [*Trim Curve*].
     nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1=end1, mode=mode, label=node_label, node_color=node_color)
     
 
+## deform_on_surface
+
+Geometry node [*Deform Curves on Surface*].
+
+
+  Args:
+    node_label (str): Node label
+    node_color (color): Node background color
+    
+  Returns:
+    Curve
+    
+  **Node creation**
+  
+  Node :class:`~geonodes.nodes.nodes.DeformCurvesOnSurface`
+  
+  
+  .. blid:: GeometryNodeDeformCurvesOnSurface
+  
+  .. code-block:: python
+  
+    from geonodes import nodes
+    nodes.DeformCurvesOnSurface(curves=self, label=node_label, node_color=node_color)
+    
+
 ## duplicate_splines
 
 Geometry node [*Duplicate Elements*].
@@ -848,26 +874,30 @@ Geometry node [*Sample Curve*].
 
 
   Args:
+    value: Boolean
     factor: Float
     length: Float
-    mode (str): 'LENGTH' in [FACTOR, LENGTH]
+    curve_index: Integer
+    mode (str): 'FACTOR' in [FACTOR, LENGTH]
+    use_all_curves (bool): False
     node_label (str): Node label
     node_color (color): Node background color
     
   Returns:
-    Sockets [position (Vector), tangent (Vector), normal (Vector)]
+    Sockets [value (Boolean), position (Vector), tangent (Vector), normal (Vector)]
     
   **Node creation**
   
   Node :class:`~geonodes.nodes.nodes.SampleCurve`
   
-  
+  - data_type = None
+    
   .. blid:: GeometryNodeSampleCurve
   
   .. code-block:: python
   
     from geonodes import nodes
-    nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode, label=node_label, node_color=node_color)
+    nodes.SampleCurve(curves=self, value=value, factor=factor, length=length, curve_index=curve_index, data_type=None, mode=mode, use_all_curves=use_all_curves, label=node_label, node_color=node_color)
     
 
 ## length

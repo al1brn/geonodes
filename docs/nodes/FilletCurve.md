@@ -37,11 +37,3 @@ node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None,
 ## Output sockets
 
 - curve : Curve
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[fillet](/docs/sockets/Curve.md#fillet) : Method
-  

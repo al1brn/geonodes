@@ -37,11 +37,3 @@ node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, 
 ## Output sockets
 
 - curve : Curve
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[resample](/docs/sockets/Curve.md#resample) : Method
-  

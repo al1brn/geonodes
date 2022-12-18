@@ -40,11 +40,3 @@ node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughnes
 
 - fac : Float
 - color : Color
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Texture](/docs/sockets/Texture.md).[Noise](/docs/sockets/Texture.md#noise) : Static method
-  

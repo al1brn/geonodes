@@ -6,7 +6,10 @@ Created on Thu May  5 07:45:39 2022
 @author: alain
 """
 
-from geonodes.core.node import DataSocket, Tree, Node
+from geonodes.core.socket import DataSocket
+from geonodes.core.node import Node
+from geonodes.core.tree import Tree
+
 from geonodes import nodes
 
 import logging
@@ -1439,9 +1442,9 @@ class Geometry(DataSocket):
     
     def __init__(self, socket, node=None, label=None):
         
-        from geonodes.core.domains import Point
+        from geonodes.nodes.classes import Vertex
         
-        self.points = Point(self) # Initialized befor super().__init__ which can override points
+        self.points = Vertex(self) # Initialized before super().__init__ which can override points
         
         super().__init__(socket, node=node, label=label)
     

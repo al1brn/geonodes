@@ -34,11 +34,3 @@ node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivo
 ## Output sockets
 
 - instances : Instances
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Instances](/docs/sockets/Instances.md).[rotate](/docs/sockets/Instances.md#rotate) : Method
-  

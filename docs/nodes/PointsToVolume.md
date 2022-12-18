@@ -38,11 +38,3 @@ node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_am
 ## Output sockets
 
 - volume : Volume
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Points](/docs/sockets/Points.md).[to_volume](/docs/sockets/Points.md#to_volume) : Method
-  

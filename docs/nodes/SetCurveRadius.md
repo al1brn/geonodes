@@ -32,11 +32,3 @@ node = nodes.SetCurveRadius(curve=None, selection=None, radius=None, label=None,
 ## Output sockets
 
 - curve : Curve
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[set_radius](/docs/sockets/Curve.md#set_radius) : Method
-  

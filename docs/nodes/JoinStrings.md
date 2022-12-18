@@ -31,11 +31,3 @@ node = nodes.JoinStrings(*strings, delimiter=None, label=None, node_color=None)
 ## Output sockets
 
 - string : String
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [functions](/docs/sockets/functions.md).[join_strings](/docs/sockets/functions.md#join_strings) : Function
-  

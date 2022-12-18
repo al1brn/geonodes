@@ -36,11 +36,3 @@ node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', label
 
 - value : Float
 - color : Color
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Texture](/docs/sockets/Texture.md).[WhiteNoise](/docs/sockets/Texture.md#whitenoise) : Static method
-  

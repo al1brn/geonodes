@@ -36,11 +36,3 @@ node = nodes.VolumeCube(density=None, background=None, min=None, max=None, resol
 ## Output sockets
 
 - volume : Volume
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Volume](/docs/sockets/Volume.md).[Cube](/docs/sockets/Volume.md#cube) : Constructor
-  

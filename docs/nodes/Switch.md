@@ -44,23 +44,3 @@ node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY', l
 ## Output sockets
 
 - output : input_type dependant
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Boolean](/docs/sockets/Boolean.md).[switch](/docs/sockets/Boolean.md#switch) : Method
-- [Collection](/docs/sockets/Collection.md).[switch](/docs/sockets/Collection.md#switch) : Method
-- [Color](/docs/sockets/Color.md).[switch](/docs/sockets/Color.md#switch) : Method
-- [Float](/docs/sockets/Float.md).[switch](/docs/sockets/Float.md#switch) : Method
-- [Geometry](/docs/sockets/Geometry.md).[switch](/docs/sockets/Geometry.md#switch) : Method
-- [Image](/docs/sockets/Image.md).[switch](/docs/sockets/Image.md#switch) : Method
-- [Integer](/docs/sockets/Integer.md).[switch](/docs/sockets/Integer.md#switch) : Method
-- [Material](/docs/sockets/Material.md).[switch](/docs/sockets/Material.md#switch) : Method
-- [Object](/docs/sockets/Object.md).[switch](/docs/sockets/Object.md#switch) : Method
-- [String](/docs/sockets/String.md).[switch](/docs/sockets/String.md#switch) : Method
-- [Texture](/docs/sockets/Texture.md).[switch](/docs/sockets/Texture.md#switch) : Method
-- [Vector](/docs/sockets/Vector.md).[switch](/docs/sockets/Vector.md#switch) : Method
-- [functions](/docs/sockets/functions.md).[switch](/docs/sockets/functions.md#switch) : Function
-  

@@ -34,11 +34,3 @@ node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None, l
 
 - color : Color
 - fac : Float
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Texture](/docs/sockets/Texture.md).[Checker](/docs/sockets/Texture.md#checker) : Static method
-  

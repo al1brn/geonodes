@@ -33,11 +33,3 @@ node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, la
 ## Output sockets
 
 - mesh : Mesh
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Mesh](/docs/sockets/Mesh.md).[Grid](/docs/sockets/Mesh.md#grid) : Constructor
-  

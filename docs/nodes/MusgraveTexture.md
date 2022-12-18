@@ -42,11 +42,3 @@ node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimen
 ## Output sockets
 
 - fac : Float
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Texture](/docs/sockets/Texture.md).[Musgrave](/docs/sockets/Texture.md#musgrave) : Static method
-  

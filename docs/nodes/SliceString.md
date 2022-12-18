@@ -32,11 +32,3 @@ node = nodes.SliceString(string=None, position=None, length=None, label=None, no
 ## Output sockets
 
 - string : String
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [String](/docs/sockets/String.md).[slice](/docs/sockets/String.md#slice) : Method
-  

@@ -30,11 +30,3 @@ node = nodes.JoinGeometry(*geometry, label=None, node_color=None)
 ## Output sockets
 
 - geometry : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Geometry](/docs/sockets/Geometry.md).[join](/docs/sockets/Geometry.md#join) : Method
-  

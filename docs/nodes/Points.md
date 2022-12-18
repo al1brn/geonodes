@@ -32,11 +32,3 @@ node = nodes.Points(count=None, position=None, radius=None, label=None, node_col
 ## Output sockets
 
 - geometry : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Points](/docs/sockets/Points.md).[Points](/docs/sockets/Points.md#points) : Constructor
-  

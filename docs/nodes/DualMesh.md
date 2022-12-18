@@ -31,11 +31,3 @@ node = nodes.DualMesh(mesh=None, keep_boundaries=None, label=None, node_color=No
 ## Output sockets
 
 - dual_mesh : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Mesh](/docs/sockets/Mesh.md).[dual](/docs/sockets/Mesh.md#dual) : Method
-  

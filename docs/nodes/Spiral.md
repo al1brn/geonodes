@@ -35,11 +35,3 @@ node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radi
 ## Output sockets
 
 - curve : Curve
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[Spiral](/docs/sockets/Curve.md#spiral) : Constructor
-  

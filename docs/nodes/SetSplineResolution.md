@@ -32,11 +32,3 @@ node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None,
 ## Output sockets
 
 - geometry : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[set_resolution](/docs/sockets/Curve.md#set_resolution) : Method
-  

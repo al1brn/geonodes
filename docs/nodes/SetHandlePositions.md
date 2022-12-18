@@ -37,11 +37,3 @@ node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offse
 ## Output sockets
 
 - curve : Curve
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[set_handle_positions](/docs/sockets/Curve.md#set_handle_positions) : Method
-  

@@ -37,11 +37,3 @@ node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_
 ## Output sockets
 
 - mesh : Mesh
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Mesh](/docs/sockets/Mesh.md).[triangulate](/docs/sockets/Mesh.md#triangulate) : Method
-  

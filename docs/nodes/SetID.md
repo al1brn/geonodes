@@ -32,11 +32,3 @@ node = nodes.SetID(geometry=None, selection=None, ID=None, label=None, node_colo
 ## Output sockets
 
 - geometry : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Geometry](/docs/sockets/Geometry.md).[set_ID](/docs/sockets/Geometry.md#set_id) : Method
-  

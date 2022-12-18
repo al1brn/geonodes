@@ -37,11 +37,3 @@ node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None,
 ## Output sockets
 
 - points : Points
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Mesh](/docs/sockets/Mesh.md).[to_points](/docs/sockets/Mesh.md#to_points) : Method
-  

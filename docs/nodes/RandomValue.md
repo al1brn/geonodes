@@ -46,14 +46,3 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 ## Output sockets
 
 - value : data_type dependant
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Boolean](/docs/sockets/Boolean.md).[Random](/docs/sockets/Boolean.md#random) : Constructor
-- [Float](/docs/sockets/Float.md).[Random](/docs/sockets/Float.md#random) : Constructor
-- [Integer](/docs/sockets/Integer.md).[Random](/docs/sockets/Integer.md#random) : Constructor
-- [Vector](/docs/sockets/Vector.md).[Random](/docs/sockets/Vector.md#random) : Constructor
-  

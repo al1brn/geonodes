@@ -34,11 +34,3 @@ node = nodes.FloatToInteger(float=None, rounding_mode='ROUND', label=None, node_
 ## Output sockets
 
 - integer : Integer
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Float](/docs/sockets/Float.md).[to_integer](/docs/sockets/Float.md#to_integer) : Method
-  

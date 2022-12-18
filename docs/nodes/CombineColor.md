@@ -37,14 +37,3 @@ node = nodes.CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB
 ## Output sockets
 
 - color : Color
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Color](/docs/sockets/Color.md).[Combine](/docs/sockets/Color.md#combine) : Constructor
-- [Color](/docs/sockets/Color.md).[CombineHSL](/docs/sockets/Color.md#combinehsl) : Constructor
-- [Color](/docs/sockets/Color.md).[CombineHSV](/docs/sockets/Color.md#combinehsv) : Constructor
-- [Color](/docs/sockets/Color.md).[CombineRGB](/docs/sockets/Color.md#combinergb) : Constructor
-  

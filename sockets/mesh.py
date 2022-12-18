@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-09-16
+Created on 2022-12-12
 @author: Generated from generator module
-Blender version: 3.3.0
+Blender version: 3.4.0
 """
 
 import geonodes as gn
@@ -322,7 +322,28 @@ class Mesh(gn.Geometry):
         """
 
         return cls(nodes.UvSphere(segments=segments, rings=rings, radius=radius, label=node_label, node_color=node_color).mesh)
+    
 
+    # ----------------------------------------------------------------------------------------------------
+    # Static
+    
+    @staticmethod
+    def face_set_boundaries(face_set=None):
+        """ Geometry node [*Face Set Boundaries*].
+        
+            Returns:
+                boundary_edges (bool)
+                
+            **Node creation**
+            
+            Node :class:`~geonodes.nodes.nodes.GeometryNodeMeshFaceSetBoundaries`
+            
+                - component = 'MESH'
+                  
+            .. blid:: GeometryNodeMeshFaceSetBoundaries
+                
+        """
+        return nodes.FaceSetBoundaries(face_set=face_set).boundary_edges
 
     # ----------------------------------------------------------------------------------------------------
     # Properties
@@ -330,8 +351,6 @@ class Mesh(gn.Geometry):
     @property
     def domain_size(self):
         """ Geometry node [*Domain Size*].
-        
-        
         
             Returns:
                 Sockets [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
@@ -959,7 +978,7 @@ class Mesh(gn.Geometry):
                 node_color (color): Node background color
                 
             Returns:
-                Curves
+                Curve
                 
             **Node creation**
             
@@ -976,5 +995,51 @@ class Mesh(gn.Geometry):
         """
 
         return nodes.EdgePathsToCurves(mesh=self, start_vertices=start_vertices, next_vertex_index=next_vertex_index, label=node_label, node_color=node_color).curves
+
+    def sample_nearest_surface(self, value=None, sample_position=None, data_type=None):
+        """ Geometry node [*Sample Nearest Surface*].
+        
+            Args:
+                value (DataSocket): ``data_type`` dependant
+                sample_position (DataSocket): Vector
+                data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+                node_color (color): Node color
+                node_label (str): Node label
+                
+            Returns:
+                data_type dependant
+        """
+        
+        if value is None:
+            dt = 'FLOAT' if data_type is None else self.domain_data_type(data_type)
+        else:
+            dt = self.domain_data_type(value) if data_type is None else self.domain_data_type(data_type)        
+
+        return nodes.SampleNearestSurface(mesh=self, value=value, sample_position=sample_position, data_type=dt).value
+
+    def sample_uv_surface(self, mesh=None, value=None, source_uv_map=None, sample_uv=None, data_type=None):
+        """ Geometry node [*Sample Nearest Surface*].
+        
+            Args:
+                value (DataSocket): ``data_type`` dependant
+                source_uv_map (DataSocket): Vector
+                sample_uv (DataSocket): Vector
+                data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+                node_color (color): Node color
+                node_label (str): Node label
+
+            Returns:
+                - **value** : ``data_type`` dependant
+                - **is_valid** : Boolean
+        """
+        
+        if value is None:
+            dt = 'FLOAT' if data_type is None else self.domain_data_type(data_type)
+        else:
+            dt = self.domain_data_type(value) if data_type is None else self.domain_data_type(data_type)        
+
+        return nodes.SampleUvSurface(mesh=self, value=value, source_uv_map=source_uv_map, sample_uv=sample_uv, data_type=dt)
+
+
 
 

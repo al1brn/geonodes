@@ -37,11 +37,3 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 
 - color : Color
 - fac : Float
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Texture](/docs/sockets/Texture.md).[Magic](/docs/sockets/Texture.md#magic) : Static method
-  

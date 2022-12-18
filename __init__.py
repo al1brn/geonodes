@@ -1,1 +1,53 @@
-version = "1.0"name = f"geonodes version {version}"pi = 3.141592653589793import geonodes.core as coreimport geonodes.core.colors as colorsfrom geonodes.core.node import Socket, DataSocket, Tree, Node, Group, GroupInput, GroupOutput, Viewer, Frame, SceneTime, Groupsfrom geonodes.nodes import nodesfrom geonodes.sockets.boolean    import Booleanfrom geonodes.sockets.integer    import Integerfrom geonodes.sockets.float      import Floatfrom geonodes.sockets.vector     import Vectorfrom geonodes.sockets.color      import Colorfrom geonodes.sockets.string     import Stringfrom geonodes.sockets.geometry   import Geometryfrom geonodes.sockets.curve      import Curvefrom geonodes.sockets.mesh       import Meshfrom geonodes.sockets.points     import Pointsfrom geonodes.sockets.instances  import Instancesfrom geonodes.sockets.volume     import Volumefrom geonodes.sockets.curves     import Curvesfrom geonodes.sockets.material   import Materialfrom geonodes.sockets.image      import Imagefrom geonodes.sockets.texture    import Texturefrom geonodes.sockets.collection import Collectionfrom geonodes.sockets.object     import Objectfrom geonodes.sockets.functions import abs, add, arccos, arcsin, arctan, arctan2, b_and, b_not, b_or, ceilfrom geonodes.sockets.functions import color_add, color_burn, color_darken, color_difference, color_dividefrom geonodes.sockets.functions import color_dodge, color_lighten, color_linear_light, color_mix, color_mix_colorfrom geonodes.sockets.functions import color_mix_hue, color_mix_saturation, color_mix_value, color_multiplyfrom geonodes.sockets.functions import color_overlay, color_screen, color_soft_light, color_subtract, comparefrom geonodes.sockets.functions import compare, cos, cosh, cross, degrees, distance, divide, dot, expfrom geonodes.sockets.functions import faceforward, floor, fract, fraction, imply, inverse_sqrt, join_stringsfrom geonodes.sockets.functions import length, log, math_greater_than, math_less_than, max, min, modulofrom geonodes.sockets.functions import multiply, multiply_add, nand, nimply, nor, normalize, pingpongfrom geonodes.sockets.functions import pow, project, radians, reflect, refract, round, scale, scene, signfrom geonodes.sockets.functions import sin, sinh, smooth_max, smooth_min, snap, sqrt, subtract, switchfrom geonodes.sockets.functions import tan, tanh, trunc, vector_absolute, vector_add, vector_ceil, vector_cosfrom geonodes.sockets.functions import vector_divide, vector_floor, vector_max, vector_min, vector_modulofrom geonodes.sockets.functions import vector_multiply, vector_multiply_add, vector_sin, vector_snap, vector_subtractfrom geonodes.sockets.functions import vector_tan, vector_wrap, wrap, xnor, xor
+# geonodes init file
+
+version = (2, 0, 0)
+blender_version=(3, 4, 0)
+
+pi = 3.141592653589793
+
+from geonodes.core.node import Node, GroupInput, GroupOutput, Frame, Viewer, SceneTime
+from geonodes.core.tree import Tree, Groups
+
+from geonodes.nodes.classes import Boolean
+from geonodes.nodes.classes import CloudPoint
+from geonodes.nodes.classes import Collection
+from geonodes.nodes.classes import Color
+from geonodes.nodes.classes import ControlPoint
+from geonodes.nodes.classes import Corner
+from geonodes.nodes.classes import Curve
+from geonodes.nodes.classes import Domain
+from geonodes.nodes.classes import Edge
+from geonodes.nodes.classes import Face
+from geonodes.nodes.classes import Float
+from geonodes.nodes.classes import Geometry
+from geonodes.nodes.classes import Image
+from geonodes.nodes.classes import Instance
+from geonodes.nodes.classes import Instances
+from geonodes.nodes.classes import Integer
+from geonodes.nodes.classes import Material
+from geonodes.nodes.classes import Mesh
+from geonodes.nodes.classes import Object
+from geonodes.nodes.classes import Points
+from geonodes.nodes.classes import Rotation
+from geonodes.nodes.classes import Spline
+from geonodes.nodes.classes import String
+from geonodes.nodes.classes import Texture
+from geonodes.nodes.classes import Vector
+from geonodes.nodes.classes import Vertex
+from geonodes.nodes.classes import Volume
+
+from geonodes.nodes.classes import abs, absolute, add, align_euler_to_vector, arccos, arccosine, arcsin, arcsine, arctan, arctan2, arctangent
+from geonodes.nodes.classes import b_and, b_not, b_or, clamp, clamp_min_max, clamp_range, color_add, color_burn, color_color, color_darken, color_difference
+from geonodes.nodes.classes import color_divide, color_dodge, color_hue, color_lighten, color_linear_light, color_mix, color_multiply, color_overlay
+from geonodes.nodes.classes import color_ramp, color_saturation, color_screen, color_soft_light, color_subtract, color_value, combine_hsl, combine_hsv
+from geonodes.nodes.classes import combine_rgb, compare, cos, cosh, cosine, div, divide, exp, exponent, float_mix, fraction, geometry_to_instance
+from geonodes.nodes.classes import imply, inverse_sqrt, join_geometry, join_strings, log, logarithm, math, math_ceil, math_compare, math_floor
+from geonodes.nodes.classes import math_greater_than, math_less_than, math_round, math_trun, math_truncate, max, maximum, min, minimum, modulo
+from geonodes.nodes.classes import mul, mul_add, multiply, multiply_add, nand, nimply, nor, ping_pong, power, random_boolean, random_float, random_integer
+from geonodes.nodes.classes import random_vector, replace_string, rgb_curves, rotate_axis_angle, rotate_euler, separate_hsl, separate_hsv, separate_rgb
+from geonodes.nodes.classes import sign, sin, sine, sinh, slice_string, smooth_maximum, smooth_minimum, snap, sqrt, string_length, string_to_curves
+from geonodes.nodes.classes import sub, subtract, switch, switch_boolean, switch_collection, switch_color, switch_float, switch_geometry, switch_image
+from geonodes.nodes.classes import switch_integer, switch_material, switch_object, switch_string, switch_texture, switch_vector, tan, tangent
+from geonodes.nodes.classes import tanh, to_degrees, to_radians, value_to_string, vector_mix, wrap, xnor, xor
+
+

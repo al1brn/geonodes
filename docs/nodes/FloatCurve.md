@@ -31,11 +31,3 @@ node = nodes.FloatCurve(factor=None, value=None, label=None, node_color=None)
 ## Output sockets
 
 - value : Float
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Float](/docs/sockets/Float.md).[curve](/docs/sockets/Float.md#curve) : Method
-  

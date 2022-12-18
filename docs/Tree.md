@@ -240,8 +240,10 @@ Connect a data socket to the viewer.
 
 :param geometry: The geometry to connect to the viewer
 :param socket: The attribute to connect to the viewer
+:param domain: Geometry domain
 :type geometry: Geometry
 :type socket: Value
+:type domain: str
 
 You can also call ``DataSocket.view()``
 

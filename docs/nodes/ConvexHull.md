@@ -30,11 +30,3 @@ node = nodes.ConvexHull(geometry=None, label=None, node_color=None)
 ## Output sockets
 
 - convex_hull : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Geometry](/docs/sockets/Geometry.md).[convex_hull](/docs/sockets/Geometry.md#convex_hull) : Method
-  

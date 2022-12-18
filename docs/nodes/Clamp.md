@@ -36,11 +36,3 @@ node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX', label=No
 ## Output sockets
 
 - result : Float
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Float](/docs/sockets/Float.md).[clamp](/docs/sockets/Float.md#clamp) : Method
-  

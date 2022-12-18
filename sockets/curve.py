@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-09-16
+Created on 2022-12-12
 @author: Generated from generator module
-Blender version: 3.3.0
+Blender version: 3.4.0
 """
 
 import geonodes as gn
@@ -14,6 +14,7 @@ import geonodes.core.domains as domains
 
 import logging
 logger = logging.Logger('geonodes')
+
 
 # ==============================================================================================================
 # Data class Curve
@@ -809,6 +810,33 @@ class Curve(gn.Geometry):
 
         return self.stack(nodes.TrimCurve(curve=self, start0=start0, end0=end0, start1=start1, end1=end1, mode=mode, label=node_label, node_color=node_color))
 
+    def deform_on_surface(self, node_label = None, node_color = None):
+        """ Geometry node [*Deform Curves on Surface*].
+        
+        
+            Args:
+                node_label (str): Node label
+                node_color (color): Node background color
+                
+            Returns:
+                Curve
+                
+            **Node creation**
+            
+            Node :class:`~geonodes.nodes.nodes.DeformCurvesOnSurface`
+            
+            
+            .. blid:: GeometryNodeDeformCurvesOnSurface
+            
+            .. code-block:: python
+            
+                from geonodes import nodes
+                nodes.DeformCurvesOnSurface(curves=self, label=node_label, node_color=node_color)
+                
+        """
+
+        return self.stack(nodes.DeformCurvesOnSurface(curves=self, label=node_label, node_color=node_color))
+
     def duplicate_splines(self, selection=None, amount=None, node_label = None, node_color = None):
         """ Geometry node [*Duplicate Elements*].
         
@@ -926,35 +954,39 @@ class Curve(gn.Geometry):
 
         return nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode, label=node_label, node_color=node_color)
 
-    def sample(self, factor=None, length=None, mode='LENGTH', node_label = None, node_color = None):
+    def sample(self, value=None, factor=None, length=None, curve_index=None, mode='FACTOR', use_all_curves=False, node_label = None, node_color = None):
         """ Geometry node [*Sample Curve*].
         
         
             Args:
+                value: Boolean
                 factor: Float
                 length: Float
-                mode (str): 'LENGTH' in [FACTOR, LENGTH]
+                curve_index: Integer
+                mode (str): 'FACTOR' in [FACTOR, LENGTH]
+                use_all_curves (bool): False
                 node_label (str): Node label
                 node_color (color): Node background color
                 
             Returns:
-                Sockets [position (Vector), tangent (Vector), normal (Vector)]
+                Sockets [value (Boolean), position (Vector), tangent (Vector), normal (Vector)]
                 
             **Node creation**
             
             Node :class:`~geonodes.nodes.nodes.SampleCurve`
             
-            
+                - data_type = None
+                  
             .. blid:: GeometryNodeSampleCurve
             
             .. code-block:: python
             
                 from geonodes import nodes
-                nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode, label=node_label, node_color=node_color)
+                nodes.SampleCurve(curves=self, value=value, factor=factor, length=length, curve_index=curve_index, data_type=None, mode=mode, use_all_curves=use_all_curves, label=node_label, node_color=node_color)
                 
         """
 
-        return nodes.SampleCurve(curve=self, factor=factor, length=length, mode=mode, label=node_label, node_color=node_color)
+        return nodes.SampleCurve(curves=self, value=value, factor=factor, length=length, curve_index=curve_index, data_type=None, mode=mode, use_all_curves=use_all_curves, label=node_label, node_color=node_color)
 
     def length(self, node_label = None, node_color = None):
         """ Geometry node [*Curve Length*].
@@ -982,5 +1014,80 @@ class Curve(gn.Geometry):
         """
 
         return nodes.CurveLength(curve=self, label=node_label, node_color=node_color).length
-
-
+    
+    # ====================================================================================================
+    # Curve topology Blender V3.4
+    
+    # ----- Curve of point
+    
+    def offset_point_in_curve(self, point_index=None, offset=None):
+        """ Offset point in curve
+        
+        Node :class:`~geonodes.nodes.nodes.OffsetPointInCurve`
+        
+        Args:
+            point_index : Int
+            offset : Int
+            
+        Returns:
+            node (is_valid_offset, point_index)
+        """
+        
+        return nodes.OffsetPointInCurve(point_index=point_index, offset=offset).as_attribute(owning_socket=self, domain='POINT')
+    
+    def offset_point_in_curve_is_valid(self, point_index=None, offset=None):
+        return self.offset_point_in_curve(point_index=point_index, offset=offset).is_valid
+    
+    def offset_point_in_curve_index(self, point_index=None, offset=None):
+        return self.offset_point_in_curve(point_index=point_index, offset=offset).point_index
+    
+    
+    # ----- Curve of point
+    
+    def curve_of_point(self, point_index=None):
+        """ Curve index from point index
+        
+        Node :class:`~geonodes.nodes.nodes.CurveOfPoint`
+        
+        Args:
+            point_index : Int
+            
+        Returns:
+            node (curve_index, index_in_curve)
+        """
+        
+        return nodes.CurveOfPoint(point_index=point_index).as_attribute(owning_socket=self, domain='POINT')
+    
+    def curve_of_point_index(self, point_index=None):
+        return self.curve_of_point(point_index=point_index).curve_index
+    
+    def curve_of_point_index_in_curve(self, point_index=None):
+        return self.curve_of_point(point_index=point_index).index_in_curve
+        
+    # ----- Points of curve
+    
+    def points_of_curve(self, curve_index=None, weights=None, sort_index=None):
+        """ points of curve
+        
+        Node :class:`~geonodes.nodes.nodes.PointsOfCurve`
+        
+        Args:
+            point_index : Int
+            
+        Returns:
+            node (point_index, total)
+        """
+        
+        return nodes.PointsOfCurve(curve_index=curve_index, weights=weights, sort_index=sort_index).as_attribute(owning_socket=self, domain='SPLINE')
+    
+    def points_of_curve_index(self, curve_index=None, weights=None, sort_index=None):
+        return self.points_of_curve(curve_index=curve_index, weights=weights, sort_index=sort_index).point_index
+    
+    def points_of_curve_total(self, curve_index=None, weights=None, sort_index=None):
+        return self.points_of_curve(curve_index=curve_index, weights=weights, sort_index=sort_index).total
+        
+    
+    
+    
+    
+    

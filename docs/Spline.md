@@ -139,3 +139,22 @@ Returns:
   curve.splines(...).delete()
   
   
+
+## set_normal
+
+set normals
+
+Node :class:`~geonodes.nodes.nodes.SetCurveNormal`
+
+Args:
+  mode (str): Node parameter, default = 'MINIMUM_TWIST' in ('MINIMUM_TWIST', 'Z_UP')
+  
+Returns:
+  self
+  
+  
+  
+
+## weighted_points
+
+Topology Blender 3.4

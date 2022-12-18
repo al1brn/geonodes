@@ -38,11 +38,3 @@ node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT
 
 - color : Color
 - alpha : Float
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Texture](/docs/sockets/Texture.md).[Image](/docs/sockets/Texture.md#image) : Static method
-  

@@ -31,11 +31,3 @@ node = nodes.RemoveNamedAttribute(geometry=None, name=None, label=None, node_col
 ## Output sockets
 
 - geometry : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Geometry](/docs/sockets/Geometry.md).[remove_named_attribute](/docs/sockets/Geometry.md#remove_named_attribute) : Method
-  

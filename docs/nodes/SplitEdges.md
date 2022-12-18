@@ -31,11 +31,3 @@ node = nodes.SplitEdges(mesh=None, selection=None, label=None, node_color=None)
 ## Output sockets
 
 - mesh : Mesh
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Mesh](/docs/sockets/Mesh.md).[split_edges](/docs/sockets/Mesh.md#split_edges) : Method
-  

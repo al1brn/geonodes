@@ -31,11 +31,3 @@ node = nodes.PointsToVertices(points=None, selection=None, label=None, node_colo
 ## Output sockets
 
 - mesh : Mesh
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Points](/docs/sockets/Points.md).[to_vertices](/docs/sockets/Points.md#to_vertices) : Method
-  

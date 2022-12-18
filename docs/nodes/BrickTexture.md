@@ -47,11 +47,3 @@ node = nodes.BrickTexture(vector=None, color1=None, color2=None, mortar=None, sc
 
 - color : Color
 - fac : Float
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Texture](/docs/sockets/Texture.md).[Brick](/docs/sockets/Texture.md#brick) : Static method
-  

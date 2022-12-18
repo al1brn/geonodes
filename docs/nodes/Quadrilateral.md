@@ -44,11 +44,3 @@ node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width
 ## Output sockets
 
 - curve : Curve
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[Quadrilateral](/docs/sockets/Curve.md#quadrilateral) : Constructor
-  

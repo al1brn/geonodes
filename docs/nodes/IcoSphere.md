@@ -31,11 +31,3 @@ node = nodes.IcoSphere(radius=None, subdivisions=None, label=None, node_color=No
 ## Output sockets
 
 - mesh : Mesh
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Mesh](/docs/sockets/Mesh.md).[IcoSphere](/docs/sockets/Mesh.md#icosphere) : Constructor
-  

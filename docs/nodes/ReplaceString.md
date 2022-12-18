@@ -32,11 +32,3 @@ node = nodes.ReplaceString(string=None, find=None, replace=None, label=None, nod
 ## Output sockets
 
 - string : String
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [String](/docs/sockets/String.md).[replace](/docs/sockets/String.md#replace) : Method
-  

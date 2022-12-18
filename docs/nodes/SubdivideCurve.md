@@ -31,11 +31,3 @@ node = nodes.SubdivideCurve(curve=None, cuts=None, label=None, node_color=None)
 ## Output sockets
 
 - curve : Curve
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[subdivide](/docs/sockets/Curve.md#subdivide) : Method
-  

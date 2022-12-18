@@ -51,12 +51,3 @@ node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_
 
 - result : Float
 - vector : Vector
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Float](/docs/sockets/Float.md).[map_range](/docs/sockets/Float.md#map_range) : Method
-- [Vector](/docs/sockets/Vector.md).[map_range](/docs/sockets/Vector.md#map_range) : Method
-  

@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-09-16
+Created on 2022-12-12
 @author: Generated from generator module
-Blender version: 3.3.0
+Blender version: 3.4.0
 """
 
 import geonodes as gn
@@ -101,4 +101,24 @@ class Volume(gn.Geometry):
 
         return nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode, label=node_label, node_color=node_color).mesh
 
+
+    def distribute_points(self, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM'):
+        """ Distribute points in volume.
+        
+        Args:
+            volume (DataSocket): Volume
+            density (DataSocket): Float
+            seed (DataSocket): Integer
+            spacing (DataSocket): Vector
+            threshold (DataSocket): Float
+            mode (str): Node parameter, default = 'DENSITY_RANDOM' in ('DENSITY_RANDOM', 'DENSITY_GRID')
+            node_color (color): Node color
+            node_label (str): Node label
+    
+    
+        Output sockets:
+            - **points** : Points
+        """
+        
+        return nodes.DistributePointsInVolume(volume=self, density=density, seed=seed, spacing=spacing, threshold=threshold, mode=mode).points
 

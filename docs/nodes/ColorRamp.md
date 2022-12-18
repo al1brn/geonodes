@@ -31,11 +31,3 @@ node = nodes.ColorRamp(fac=None, label=None, node_color=None)
 
 - color : Color
 - alpha : Float
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Float](/docs/sockets/Float.md).[color_ramp](/docs/sockets/Float.md#color_ramp) : Method
-  

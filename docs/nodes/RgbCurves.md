@@ -31,11 +31,3 @@ node = nodes.RgbCurves(fac=None, color=None, label=None, node_color=None)
 ## Output sockets
 
 - color : Color
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Color](/docs/sockets/Color.md).[curves](/docs/sockets/Color.md#curves) : Method
-  

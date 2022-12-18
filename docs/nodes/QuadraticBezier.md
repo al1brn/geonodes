@@ -33,11 +33,3 @@ node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None,
 ## Output sockets
 
 - curve : Curve
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[QuadraticBezier](/docs/sockets/Curve.md#quadraticbezier) : Constructor
-  

@@ -31,11 +31,3 @@ node = nodes.ReverseCurve(curve=None, selection=None, label=None, node_color=Non
 ## Output sockets
 
 - curve : Curve
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[reverse](/docs/sockets/Curve.md#reverse) : Method
-  

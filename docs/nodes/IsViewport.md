@@ -26,11 +26,3 @@ node = nodes.IsViewport(label=None, node_color=None)
 ## Output sockets
 
 - is_viewport : Boolean
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Geometry](/docs/sockets/Geometry.md).[is_viewport](/docs/sockets/Geometry.md#is_viewport) : Static method
-  

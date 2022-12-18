@@ -38,13 +38,3 @@ node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tole
 
 - mesh : Mesh
 - intersecting_edges : Boolean
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Mesh](/docs/sockets/Mesh.md).[difference](/docs/sockets/Mesh.md#difference) : Method
-- [Mesh](/docs/sockets/Mesh.md).[intersect](/docs/sockets/Mesh.md#intersect) : Method
-- [Mesh](/docs/sockets/Mesh.md).[union](/docs/sockets/Mesh.md#union) : Method
-  

@@ -36,11 +36,3 @@ node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode=
 ## Output sockets
 
 - curve : Curve
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[set_handles](/docs/sockets/Curve.md#set_handles) : Method
-  

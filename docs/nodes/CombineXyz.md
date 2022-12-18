@@ -32,11 +32,3 @@ node = nodes.CombineXyz(x=None, y=None, z=None, label=None, node_color=None)
 ## Output sockets
 
 - vector : Vector
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Vector](/docs/sockets/Vector.md).[Combine](/docs/sockets/Vector.md#combine) : Constructor
-  

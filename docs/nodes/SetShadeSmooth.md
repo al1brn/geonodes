@@ -32,11 +32,3 @@ node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, la
 ## Output sockets
 
 - geometry : Geometry
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Geometry](/docs/sockets/Geometry.md).[set_shade_smooth](/docs/sockets/Geometry.md#set_shade_smooth) : Method
-  

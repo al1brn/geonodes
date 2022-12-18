@@ -34,11 +34,3 @@ node = nodes.FillCurve(curve=None, mode='TRIANGLES', label=None, node_color=None
 ## Output sockets
 
 - mesh : Mesh
-
-## Data sockets
-
-> Data socket classes implementing this node.
-  
-  
-- [Curve](/docs/sockets/Curve.md).[fill](/docs/sockets/Curve.md#fill) : Method
-  
